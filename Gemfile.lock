@@ -29,9 +29,6 @@ GEM
       activesupport (= 3.1.1)
     activesupport (3.1.1)
       multi_json (~> 1.0)
-    airbrake (2.4.11)
-      activesupport
-      builder
     ansi (1.4.1)
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
@@ -122,7 +119,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  airbrake
   coffee-rails (~> 3.1.1)
   devise
   jquery-rails
