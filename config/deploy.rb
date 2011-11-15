@@ -2,6 +2,7 @@ set :application, "tautoko"
 set :user, application
 set :repository,  "git@github.com:enspiral/tautoko.git"
 
+set :deploy_via, :remote_cache   
 set :use_sudo, false                                                                                                                                    
 set :rake, "bundle exec rake"
 
