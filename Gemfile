@@ -5,6 +5,7 @@ gem "haml-rails", ">= 0.2"
 gem 'devise', '1.4.9'
 gem 'pg'
 gem 'capistrano'
+gem 'jquery-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
