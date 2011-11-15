@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
 gem "haml-rails", ">= 0.2"
-gem 'devise'
+gem 'devise', '1.4.9'
 gem 'mysql2'
 gem 'capistrano'
 
