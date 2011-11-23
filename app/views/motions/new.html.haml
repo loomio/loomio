@@ -1,0 +1,9 @@
+%h2 New Motion
+
+=semantic_form_for(@motion, :url => group_motions_path(@group)) do |f|
+  =f.inputs do
+    =f.input :name
+    =f.input :description
+    =f.input :facilitator, :as => :select, :collection => @group.users
+    =f.buttons
+

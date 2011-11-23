@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
-gem "haml"
+gem "haml-rails"
 gem 'devise', '1.4.9'
 gem 'mysql2'
 gem 'capistrano'

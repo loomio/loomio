@@ -14,5 +14,6 @@ User.blueprint do
 end
 
 Group.blueprint do
+  owner
   name { Faker::Name.name}
 end

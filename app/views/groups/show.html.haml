@@ -4,5 +4,6 @@ Group
   =@group.name
 
 %ul
-  - @group.users.each |user|
+  -@group.users.each do |user|
     %li=user.email
+
