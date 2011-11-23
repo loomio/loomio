@@ -1,0 +1,8 @@
+Group
+%p
+  %strong Name
+  =@group.name
+
+%ul
+  - @group.users.each |user|
+    %li=user.email
