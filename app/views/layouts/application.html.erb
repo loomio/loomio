@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<% if @user = current_user %>
+  Hello <%=@user.email %>  <%=link_to('Sign out', destroy_user_session_path, :method => :delete)%>
+ <% else %>
+  <%=link_to('Sign in', new_user_session_path)%> or <%=link_to 'Sign Up', new_user_registration_path%>
+<% end %>
 <%= yield %>
 
 </body>

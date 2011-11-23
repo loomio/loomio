@@ -7,6 +7,7 @@ gem 'mysql2'
 gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
+gem 'formtastic'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -45,11 +46,11 @@ group :development, :test do
   gem "faker"
 end
 
-group :development do
-  gem 'sqlite3'
-end
+# group :development do
+#   gem 'sqlite3'
+# end
 
-group :test do
-  # Pretty printed test output
-#  gem 'turn', :require => false
-end
+# group :test do
+#   # Pretty printed test output
+# #  gem 'turn', :require => false
+# end
