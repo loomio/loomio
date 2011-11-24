@@ -1,9 +1,22 @@
-Group
-%p
-  %strong Name
-  =@group.name
+#group
+  Group
+  %p#name
+    %strong Name:
+    =@group.name
 
-%ul
-  -@group.users.each do |user|
-    %li=user.email
+  #motions
+    %strong Motions:
+    %ul
+      -@group.motions.each do |motion|
+        %li=link_to motion.name, group_motion_path(motion)
+
+  #users
+    %strong Users:
+    %ul
+      -@group.users.each do |user|
+        %li=user.email
+    -# %p
+    -#   add user:
+    -#   =semantic_form_for(@group, :url => group_path(@group)) do |f|
+    -#     =f.input :user, :as => :select, :collection => @group.users
 
