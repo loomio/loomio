@@ -4,6 +4,12 @@
     %strong Name:
     =@group.name
 
+  #motions
+    %strong Motions:
+    %ul
+      -@group.motions.each do |motion|
+        %li=link_to motion.name, group_motion_path(motion)
+
   #users
     %strong Users:
     %ul
