@@ -17,7 +17,7 @@ describe MembershipsController do
       assigns(:membership).access_level.should == 'request'
     end
 
-    context 'a group member' do
+    context 'group member' do
       before :each do
         @group = Group.make!
         @group.add_member!(@user)
@@ -35,7 +35,7 @@ describe MembershipsController do
       end
     end
 
-    context 'a non group member' do
+    context 'non group member' do
       before :each do
         @group = Group.make!
       end

@@ -1,5 +1,6 @@
 class MembershipsController < BaseController
   def update
+    redirect_to group_path(@group)
   end
   def create
     build_resource
