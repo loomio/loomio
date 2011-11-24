@@ -1,4 +1,4 @@
-class BaseController < ApplicationController 
+class BaseController < InheritedResources::Base
   before_filter :authenticate_user!
-  inherit_resources
+  # inherit_resources
 end

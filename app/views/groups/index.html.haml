@@ -1,0 +1,5 @@
+#groups Groups
+-@groups.each do |group|
+  .group
+    =group.name
+    =link_to "edit", edit_group_path(group)

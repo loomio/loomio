@@ -1,9 +1,12 @@
-Group
-%p
-  %strong Name
-  =@group.name
+#group
+  Group
+  %p#name
+    %strong Name:
+    =@group.name
 
-%ul
-  -@group.users.each do |user|
-    %li=user.email
+  #users
+    %strong Users:
+    %ul
+      -@group.users.each do |user|
+        %li=user.email
 
