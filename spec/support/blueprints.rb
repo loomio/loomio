@@ -16,3 +16,8 @@ end
 Group.blueprint do
   name { Faker::Name.name}
 end
+
+Membership.blueprint do
+  user
+  group
+end

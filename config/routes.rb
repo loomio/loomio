@@ -3,5 +3,6 @@ Tautoko::Application.routes.draw do
   resources :groups do
     resources :motions
   end
+  resources :memberships
   root :to => 'home#index'
 end
