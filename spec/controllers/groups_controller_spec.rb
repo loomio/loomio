@@ -9,7 +9,6 @@ describe GroupsController do
     context "existing group" do
       before :each do
         @group = Group.make!
-        @group.owner = @user
       end
       it "shows a group" do
         get :show, :id => @group.id
@@ -29,7 +28,6 @@ describe GroupsController do
     it "creates a group" do
       @group = Group.make
       post :create, :group => @group.attributes
-      assigns(:group).owner.should == @user
       response.should be_redirect
     end
   end

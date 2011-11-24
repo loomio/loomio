@@ -3,5 +3,4 @@ class Group < ActiveRecord::Base
   has_many :memberships
   has_many :users, :through => :memberships
   has_many :motions
-  belongs_to :owner, :class_name => 'User'
 end
