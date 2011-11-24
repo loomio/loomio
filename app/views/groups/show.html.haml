@@ -9,4 +9,8 @@
     %ul
       -@group.users.each do |user|
         %li=user.email
+    -# %p
+    -#   add user:
+    -#   =semantic_form_for(@group, :url => group_path(@group)) do |f|
+    -#     =f.input :user, :as => :select, :collection => @group.users
 
