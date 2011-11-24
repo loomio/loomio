@@ -3,5 +3,6 @@
   %ul
     -@groups.each do |group|
       %li.group
-        =group.name
+        =link_to group.name, group_path(group)
         =link_to "edit", edit_group_path(group)
+  =link_to "Add new group", new_group_path
