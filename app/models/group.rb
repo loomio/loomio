@@ -1,10 +1,10 @@
 class Group < ActiveRecord::Base
-  MEMBER_ACCESS_LEVELS = ['member', 'admin']
   validates_presence_of :name
   has_many :membership_requests, 
            :conditions => {:access_level => 'request'}, 
            :class_name => 'Membership'
-  has_many :memberships, :conditions => {:access_level => MEMBER_ACCESS_LEVELS}
+  has_many :memberships, 
+           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS}
   has_many :users, :through => :memberships 
   has_many :motions
 

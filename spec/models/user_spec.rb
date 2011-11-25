@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has many groups" do
+    @user = User.make!
+    @group = Group.make!
+    @group.add_member!(@user)
+    @user.groups.should include(@group)
+  end
 end

@@ -23,12 +23,13 @@ describe MembershipsController do
         @group.add_member!(@user)
       end
 
-      it "authorizes a membership request for another user" do
+      it "can authorize a membership request for another user" do
         @new_user = User.make!
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
-        post :update, :id => @membership.id, :membership => {:access_level => 'member'}
-        flash.notice.should =~ /success/
+        post :update, :id => @membership.id, 
+             :membership => {:access_level => 'member'}
+        flash[:notice].should =~ /Membership approved/
         response.should redirect_to(@group)
         assigns(:membership).access_level.should == 'member'
         assigns(:membership).id.should == @membership.id
@@ -40,12 +41,13 @@ describe MembershipsController do
         @group = Group.make!
       end
 
-      it "authorizes a membership request for another user" do
+      it "cannot authorize a membership request for another user" do
         @new_user = User.make!
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
-        post :update, :id => @membership.id, :membership => {:access_level => 'member'}
-        flash.error.should =~ /fail/
+        post :update, :id => @membership.id, 
+             :membership => {:access_level => 'member'}
+        flash[:error].should =~ /Membership not approved/
         response.should redirect_to(@group)
         assigns(:membership).access_level.should == 'request'
         assigns(:membership).id.should == @membership.id

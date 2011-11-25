@@ -6,5 +6,10 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  has_many :groups
+  has_many :membership_requests, 
+           :conditions => {:access_level => 'request'}, 
+           :class_name => 'Membership'
+  has_many :memberships, 
+           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS}
+  has_many :groups, through: :memberships
 end

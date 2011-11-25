@@ -3,6 +3,7 @@ class Membership < ActiveRecord::Base
   after_initialize :set_defaults
 
   ACCESS_LEVELS = ['request', 'member', 'admin']
+  MEMBER_ACCESS_LEVELS = ['member', 'admin']
   belongs_to :group
   belongs_to :user
   validates_presence_of :group, :user
