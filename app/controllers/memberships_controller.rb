@@ -3,7 +3,7 @@ class MembershipsController < BaseController
     @membership = Membership.find(params[:id])
     if @membership.group.users.include? current_user
         flash[:notice] = "Membership approved."
-        update! do |format| 
+        update! do |format|
           format.html { redirect_to @membership.group } # group_url(@membership.group) }
         end
     else
@@ -17,6 +17,8 @@ class MembershipsController < BaseController
     build_resource
     @membership.user = current_user
     @membership.access_level = 'request'
-    create!
+    create! do |format|
+      format.html { redirect_to groups_url }
+    end
   end
 end

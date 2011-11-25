@@ -1,0 +1,3 @@
+%h2
+  =@group.name
+=link_to "request membership to this group", memberships_path, action: :create, membership: {group_id: @group.id}
