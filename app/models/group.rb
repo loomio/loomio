@@ -25,4 +25,8 @@ class Group < ActiveRecord::Base
     self.memberships << m
     m.save!
   end
+
+  def requested_users_include?(user)
+    membership_requests.find_by_user_id(user)
+  end
 end

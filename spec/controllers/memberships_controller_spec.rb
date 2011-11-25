@@ -10,7 +10,8 @@ describe MembershipsController do
     it "requests membership to a group" do
       @group = Group.make!
       # note trying to sneek member level access.. should be ignored
-      post :create, :membership => {:group_id => @group.id, :access_level => 'member'}
+      post :create, 
+           :membership => {:group_id => @group.id, :access_level => 'member'}
       response.should redirect_to(groups_path)
       assigns(:membership).user.should == @user
       assigns(:membership).group.should == @group

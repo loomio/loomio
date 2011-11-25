@@ -41,4 +41,16 @@ describe Group do
       end
     end
   end
+
+  context "checking requested users" do
+    it "should return true if user has requested access to group" do
+      group = Group.make!
+      user = User.make!
+      user2 = User.make!
+      group.add_request!(user)
+      group.add_request!(user2)
+      group.requested_users_include?(user).should be_true
+      group.requested_users_include?(user2).should be_true
+    end
+  end
 end
