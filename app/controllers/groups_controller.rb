@@ -1,8 +1,8 @@
 class GroupsController < BaseController
-  before_filter :ensure_group_member, :except => [:new, :create]
+  before_filter :ensure_group_member, :except => [:new, :create, :index]
   def create
     build_resource
-    @group.users << current_user
+    @group.add_member! current_user
     create!
   end
 

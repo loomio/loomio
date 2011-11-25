@@ -11,6 +11,8 @@ class Group < ActiveRecord::Base
   def add_request!(user)
     m = Membership.new
     m.user = user
+    m.access_level = 'request'
+    m.group = self
     self.memberships << m
     m.save!
   end
@@ -19,6 +21,7 @@ class Group < ActiveRecord::Base
     m = Membership.new
     m.user = user
     m.access_level = 'member'
+    m.group = self
     self.memberships << m
     m.save!
   end

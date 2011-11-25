@@ -14,7 +14,11 @@
     %strong Users:
     %ul
       -@group.users.each do |user|
-        %li=user.email
+        %li
+          -m = user.memberships.find_by_group_id(@group.id)
+          =user.email
+          =m.access_level
+          =link_to "edit membership", edit_membership_path(m)
     -# %p
     -#   add user:
     -#   =semantic_form_for(@group, :url => group_path(@group)) do |f|
