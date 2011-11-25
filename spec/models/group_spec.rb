@@ -1,15 +1,56 @@
 require 'spec_helper'
- 
+
 describe Group do
-  before :each do
-    @group = Group.new
-    @group.valid?
-    @group
+  context "a new group" do
+    before :each do
+      @group = Group.new
+      @group.valid?
+      @group
+    end
+
+    it "must have a name" do
+      @group.should have(1).errors_on(:name)
+    end
+    it "has memberships" do
+      @group.respond_to?(:memberships)
+    end
   end
-  it "must have a name" do
-    @group.should have(1).errors_on(:name)
+
+  context "an existing group" do
+    before :each do
+      @group = Group.make!
+      @user = User.make!
+    end
+
+    it "can add a member" do
+      @group.add_member!(@user)
+      @group.users.should include(@user)
+    end
+
+    context "receiving a member request" do
+      before :each do
+        @group.add_request!(@user)
+      end
+
+      it "should not add user to group" do
+        @group.users.should_not include(@user)
+      end
+      it "should add user to member requests" do
+        @group.membership_requests.find_by_user_id(@user).should \
+          == @user.membership_requests.find_by_group_id(@group)
+      end
+    end
   end
-  it "has memberships" do
-    @group.respond_to?(:memberships)
+
+  context "checking requested users" do
+    it "should return true if user has requested access to group" do
+      group = Group.make!
+      user = User.make!
+      user2 = User.make!
+      group.add_request!(user)
+      group.add_request!(user2)
+      group.requested_users_include?(user).should be_true
+      group.requested_users_include?(user2).should be_true
+    end
   end
 end

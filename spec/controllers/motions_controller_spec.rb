@@ -5,7 +5,7 @@ describe MotionsController do
     before :each do
       @user = User.make!
       @group = Group.make!
-      @group.users << @user
+      @group.add_member!(@user)
       sign_in @user
     end
 

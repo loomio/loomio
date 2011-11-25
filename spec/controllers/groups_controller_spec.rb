@@ -10,13 +10,41 @@ describe GroupsController do
       before :each do
         @group = Group.make!
       end
-      it "shows a group" do
-        get :show, :id => @group.id
-        response.should be_success
+      context "a group member" do
+        before :each do
+          @group.add_member!(@user)
+        end
+        it "shows a group" do
+          get :show, :id => @group.id
+          response.should be_success
+        end
+        it "shows an edit group form" do
+          get :edit, :id => @group.id
+          response.should be_success
+        end
       end
-      it "shows an edit group form" do
-        get :edit, :id => @group.id
-        response.should be_success
+      context "a requested member" do
+        before :each do
+          @group.add_request!(@user)
+        end
+        it "shows a group" do
+          get :show, :id => @group.id
+          response.should redirect_to(groups_url)
+        end
+        it "shows an edit group form" do
+          get :edit, :id => @group.id
+          response.should redirect_to(groups_url)
+        end
+      end
+      context "not a group member" do
+        it "shows a group" do
+          get :show, :id => @group.id
+          response.should redirect_to(request_membership_group_url)
+        end
+        it "shows an edit group form" do
+          get :edit, :id => @group.id
+          response.should redirect_to(request_membership_group_url)
+        end
       end
 
     end
