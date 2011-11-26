@@ -21,4 +21,8 @@ class MembershipsController < BaseController
       format.html { redirect_to groups_url }
     end
   end
+  def destroy
+    destroy!
+    flash.notice("Membership request ignored")
+  end
 end
