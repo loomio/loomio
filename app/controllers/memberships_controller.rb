@@ -21,4 +21,14 @@ class MembershipsController < BaseController
       format.html { redirect_to groups_url }
     end
   end
+  def destroy
+    @membership = Membership.find(params[:id])
+    group = @membership.group
+    destroy! do |format|
+      format.html do
+        flash[:notice] = "Membership request ignored"
+        redirect_to group
+      end
+    end
+  end
 end

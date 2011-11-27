@@ -35,6 +35,16 @@ describe MembershipsController do
         assigns(:membership).access_level.should == 'member'
         assigns(:membership).id.should == @membership.id
       end
+
+      it "can ignore a membership request for another user" do
+        @new_user = User.make!
+        @group.add_request!(@new_user)
+        @membership = @group.membership_requests.first
+        delete :destroy, :id => @membership.id
+        flash[:notice].should =~ /request ignored/
+        response.should redirect_to(@group)
+        Membership.exists?(@membership).should be_false
+      end
     end
 
     context 'non group member' do
