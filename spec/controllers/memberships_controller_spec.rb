@@ -41,9 +41,9 @@ describe MembershipsController do
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
         delete :destroy, :id => @membership.id
-        flash[:notice].should =~ /Membership ignored/
+        flash[:notice].should =~ /request ignored/
         response.should redirect_to(@group)
-        Membership.all().should_not include?(@membership)
+        Membership.exists?(@membership).should be_false
       end
     end
 
