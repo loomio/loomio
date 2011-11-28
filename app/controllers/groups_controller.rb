@@ -12,8 +12,20 @@ class GroupsController < BaseController
     @membership = Membership.new
   end
 
-  def showall
-    index!
+  def index
+    @groups = []
+    memberships = Membership.where(
+      "user_id = ? AND (access_level = 'member' OR access_level = 'admin')", 
+      current_user.id)
+    memberships.each do |m|
+      @groups << m.group
+    end
+    @group_requests = []
+    memberships = Membership.where("user_id = ? AND access_level = 'request'", 
+                                   current_user.id)
+    memberships.each do |m|
+      @group_requests << m.group
+    end
   end
 
   private

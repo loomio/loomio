@@ -7,9 +7,10 @@ Tautoko::Application.routes.draw do
   end
   resources :memberships
 
-  namespace :admin do |admin|
+  namespace :admin do
     resources :groups
   end
+  match "/admin", :to => redirect("/admin/groups")
 
   root :to => 'home#index'
 end

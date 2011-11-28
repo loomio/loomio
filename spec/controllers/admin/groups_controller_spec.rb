@@ -6,20 +6,20 @@ describe Admin::GroupsController do
     sign_in @user
   end
 
-  context "logged in admin user" do
+  context "logged-in admin user views groups" do
     it "should display all groups" do
       @user.update_attribute :admin, true
       get :index
       response.should be_success
     end
   end
-  context "logged in non-admin user" do
-    it "should redirect to groups index" do
+  context "logged-in non-admin user views groups" do
+    it "should redirect to user's groups index" do
       get :index
       response.should be_redirect
     end
   end
-  context "logged-out user" do
+  context "logged-out user views groups" do
     it "should redirect to login page" do
       sign_out @user
       get :index
