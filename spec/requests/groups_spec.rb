@@ -11,7 +11,7 @@ describe "Groups" do
 
     it "lets us view the user's groups" do
       visit '/groups'
-      should have_selector('h3', text:'My Groups')
+      should have_selector('h3', text:'Your Groups')
     end
   end
 end
