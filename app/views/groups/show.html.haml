@@ -22,12 +22,13 @@
   #user-requests
     %strong User Requests:
     %ul
-      -@group.membership_requests.each do |request|
+      -@group.membership_requests.each do |mr|
         %li
-          -user = request.user
+          -user = mr.user
           =user.email
-          =link_to "approve", membership_path(request) + '/approve'
-          =link_to "ignore", membership_path(request), method: :delete
+          =link_to 'approve', membership_path(mr, {:membership => {:access_level => 'member'}}), :method => :put, :confirm => 'are you shure?'
+          =link_to "approve", membership_path(mr) + '/approve'
+          =link_to "ignore", membership_path(mr), method: :delete
     -# %p
     -#   add user:
     -#   =semantic_form_for(@group, :url => group_path(@group)) do |f|

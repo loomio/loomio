@@ -1,10 +1,10 @@
 class MembershipsController < BaseController
   def update
-    @membership = Membership.find(params[:id])
+    resource
     if @membership.group.users.include? current_user
         flash[:notice] = "Membership approved."
         update! do |format|
-          format.html { redirect_to @membership.group } # group_url(@membership.group) }
+          format.html { redirect_to @membership.group }
         end
     else
       flash[:error] = "Membership not approved. " + \
@@ -21,8 +21,9 @@ class MembershipsController < BaseController
       format.html { redirect_to groups_url }
     end
   end
+
   def destroy
-    @membership = Membership.find(params[:id])
+    resource
     group = @membership.group
     destroy! do |format|
       format.html do

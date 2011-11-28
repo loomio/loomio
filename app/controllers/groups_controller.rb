@@ -12,6 +12,10 @@ class GroupsController < BaseController
     @membership = Membership.new
   end
 
+  def showall
+    index!
+  end
+
   private
   def ensure_group_member
     unless resource.users.include? current_user
