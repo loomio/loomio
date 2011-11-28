@@ -13,8 +13,15 @@ User.blueprint do
   password { 'password'}
 end
 
+# Motion.blueprint do
+#   name { Faker::Name.name }
+#   author
+#   facilitator
+#   description "Fake description"
+# end
+
 Group.blueprint do
-  name { Faker::Name.name}
+  name { Faker::Name.name }
 end
 
 Membership.blueprint do
