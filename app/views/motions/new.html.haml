@@ -4,6 +4,6 @@
   =f.inputs do
     =f.input :name
     =f.input :description
-    =f.input :facilitator, :as => :select, :collection => @group.users
+    =f.input :facilitator, :as => :select, :collection => @group.users, :label_method => :email
     =f.buttons
 
