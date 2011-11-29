@@ -11,7 +11,8 @@ describe MotionsController do
 
     it "creates a motion" do
       @fuser = User.make!
-      @motion_attrs = {:name => 'testing motions is a good idea', :facilitator_id => @fuser.id}
+      @motion_attrs = {:name => 'testing motions is a good idea', 
+                       :facilitator_id => @fuser.id}
       post :create, :group_id => @group.id, :motion => @motion_attrs
       response.should be_redirect
       assigns(:motion).should be_valid
@@ -19,6 +20,4 @@ describe MotionsController do
       assigns(:motion).facilitator.should == @facilitator
     end
   end
-
-
 end
