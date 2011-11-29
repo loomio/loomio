@@ -59,7 +59,7 @@ describe GroupsController do
     end
 
     it "creates a group" do
-      @group = Group.make
+      @group = Group.make!
       post :create, :group => @group.attributes
       assigns(:group).users.should include(@user)
       response.should be_redirect

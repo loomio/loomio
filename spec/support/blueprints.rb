@@ -14,7 +14,15 @@ User.blueprint do
 end
 
 Group.blueprint do
-  name { Faker::Name.name}
+  name { Faker::Name.name }
+end
+
+Motion.blueprint do
+  name { Faker::Name.name }
+  author { User.make! }
+  group
+  facilitator { User.make! }
+  description { "Fake description" }
 end
 
 Membership.blueprint do

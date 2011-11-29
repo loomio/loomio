@@ -22,6 +22,7 @@ describe Membership do
     m.save
     m.should be_valid
     m1 = Membership.make(:user => @user, :group => @group)
+    m1.save
     m1.should_not be_valid
   end
 end
