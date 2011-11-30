@@ -11,6 +11,9 @@
     =@motion.description
   %p#votes
     %strong Votes
-    %ul
-    -@votes.each do |vote|
-      %li=vote.user.email + ": " + vote.position
+    %table
+    -@motion.votes.each do |vote|
+      %tr
+        %td=vote.user.email
+        %td=vote.position
+    %p=link_to "Cast your vote", new_vote_path#(vote: {motion_id: @motion.id}), method: :put
