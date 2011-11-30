@@ -7,7 +7,7 @@ describe "Groups" do
     before :all do
       @user = User.make!(email: "test123@test.com", password: "testing123")
       @group = Group.make!(name: 'Test Group')
-      @motion = Motion.make!(name: 'Test Motion', group: @group)
+      @motion = create_motion(name: 'Test Motion', group: @group)
       @group2 = Group.make!(name: 'Test Group')
     end
 

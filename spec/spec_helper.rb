@@ -43,5 +43,17 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+end
 
+def create_motion(*args)
+  unless args.empty?
+    motion = Motion.make(args[0])
+  else
+    motion = Motion.make
+  end
+  motion.facilitator = User.make!
+  motion.group.add_member!(motion.author)
+  motion.group.add_member!(motion.facilitator)
+  motion.save
+  motion
 end

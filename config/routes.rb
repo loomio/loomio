@@ -6,6 +6,7 @@ Tautoko::Application.routes.draw do
     get :request_membership, on: :member
   end
   resources :memberships
+  resources :votes
 
   namespace :admin do
     resources :groups

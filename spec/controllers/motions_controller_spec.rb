@@ -19,5 +19,12 @@ describe MotionsController do
       assigns(:motion).group.should == @group
       assigns(:motion).facilitator.should == @facilitator
     end
+
+    it "can view a motion" do
+      @motion = create_motion
+      @vote = Vote.make!(motion: @motion)
+      get :show, group_id: @motion.group.id, id: @motion.id
+      response.should be_success
+    end
   end
 end

@@ -9,3 +9,8 @@
   %p#description
     %strong Description:
     =@motion.description
+  %p#votes
+    %strong Votes
+    %ul
+    -@votes.each do |vote|
+      %li=vote.user.email + ": " + vote.position
