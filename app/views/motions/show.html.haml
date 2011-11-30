@@ -1,5 +1,8 @@
 #motion
-  =link_to @group.name, group_path(@group)
+  %h2
+    =link_to @motion.group.name, group_path(@motion.group)
+    > 
+    =@motion.name
   %p#name
     %strong Motion:
     =@motion.name

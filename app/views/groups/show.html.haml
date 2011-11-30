@@ -9,8 +9,9 @@
     %ul
       -@group.motions.each do |motion|
         %li=link_to motion.name, |
-            group_motion_path(id: motion.id, group_id: @group.id) |
-    %p=link_to "Create a motion", new_group_motion_path(group_id: @group.id)
+            motion_path(id: motion.id) |
+    %p=link_to "Create a motion", 
+      new_motion_path({group_id: @group.id}), method: :get
 
   #users
     %strong Users:
