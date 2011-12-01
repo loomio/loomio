@@ -1,0 +1,17 @@
+.topbar-wrapper
+  .topbar{:data => {:scrollspy =>'scrollspy', :dropdown =>'dropdown'}}
+    .topbar-inner
+      .container
+        =link_to 'Tautoko', "/", :class => 'brand'
+        %ul.nav
+          %li= link_to "Groups", groups_path
+        %ul.nav.secondary-nav
+          -if @user = current_user
+            %li.dropdown
+              =link_to @user.email, "#", :class => 'dropdown-toggle'
+              %ul.dropdown-menu
+                %li=link_to "Settings", "#"
+                %li.divider
+                %li=link_to('Sign out', destroy_user_session_path, method: :delete)
+          - else
+            = link_to('Sign in', new_user_session_path)
