@@ -13,9 +13,6 @@ class MotionsController < BaseController
     @motion.group = Group.find(params[:group_id])
     @motion.save
     redirect_to motion_url(id: @motion.id)
-    # create! do |format|
-    #   format.html { redirect_to motion_path(id: @motion.id) }
-    # end
   end
 
   private

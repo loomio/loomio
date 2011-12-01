@@ -21,8 +21,7 @@ describe MotionsController do
     end
 
     it "can view a motion" do
-      @motion = create_motion
-      @vote = Vote.make!(motion: @motion)
+      @motion = create_motion(group: @group)
       get :show, group_id: @motion.group.id, id: @motion.id
       response.should be_success
     end

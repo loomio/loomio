@@ -18,12 +18,21 @@ describe "Motions" do
                        'user[password]' => 'password'
     end
 
-    it "can view a motion belonging to one of the user's groups" do
-      visit group_motion_path(group_id: @group.id, id: @motion.id)
-      should have_content('Test Motion')
+    context "viewing a motion in a group they belong to" do
+      before :each do
+        visit group_motion_path(group_id: @group.id, id: @motion.id)
+      end
+
+      it "can see motion contents" do
+        should have_content('Test Motion')
+      end
+
+      it "can click on a link to vote" do
+        click_link "Cast your vote"
+      end
     end
 
-    it "cannot view a motion if they doesn't have priviledges" do
+    it "cannot view a motion if they don't belong to it's group" do
       # Machinist seems to cause problems when we call .make! in here
       # So we have to call .make and then .save
       g = Group.make

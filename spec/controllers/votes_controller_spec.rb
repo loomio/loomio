@@ -10,8 +10,8 @@ describe VotesController do
       @group.add_member!(@user)
       @motion = create_motion(:group => @group)
       @motion.save!
-      post :create, :vote => {:motion_id => @motion.id,
-                              :position => 'yes'}
+      post :create, :motion_id => @motion.id, 
+           :vote => {:position => 'yes'}
       response.should be_redirect
       flash[:notice].should =~ /Vote saved/
       assigns(:vote).user.should == @user
