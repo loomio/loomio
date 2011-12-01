@@ -8,6 +8,8 @@ gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
 gem 'formtastic'
+gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'formtastic-bootstrap'
 
 # Gems used only for assets and not required
 # in production environments by default.

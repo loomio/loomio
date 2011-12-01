@@ -1,20 +1,14 @@
 !!!
 %html
   %head
+    <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
     %title Tautoko
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    #header{style: "border-width:0px; border-style:solid; border-bottom-width:1px; padding-bottom:23px; margin-bottom:7px;"}
-      #links{style: "float: left"}
-        = link_to "Groups", groups_path
-      #login{style: "float: right"}
-        - if @user = current_user
-          Hello #{@user.email}  #{link_to('Sign out', destroy_user_session_path, method: :delete)}
-        - else
-          = link_to('Sign in', new_user_session_path)
-          or #{link_to 'Sign Up', new_user_registration_path}
-    - if flash[:notice]
-      %p= flash[:notice]
-    = yield
+    = render :partial => 'layouts/header'
+    .container
+      - if flash[:notice]
+        %p= flash[:notice]
+      = yield
