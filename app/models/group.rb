@@ -9,21 +9,27 @@ class Group < ActiveRecord::Base
   has_many :motions
 
   def add_request!(user)
-    m = Membership.new
-    m.user = user
-    m.access_level = 'request'
-    m.group = self
-    self.memberships << m
-    m.save!
+    unless requested_users_include?(user) || users.exists?(user)
+      m = Membership.new
+      m.user = user
+      m.access_level = 'request'
+      m.group = self
+      self.memberships << m
+      m.save!
+    end
   end
 
   def add_member!(user)
-    m = Membership.new
-    m.user = user
-    m.access_level = 'member'
-    m.group = self
-    self.memberships << m
-    m.save!
+    unless users.exists?(user)
+      unless m = requested_users_include?(user)
+        m = Membership.new
+        m.user = user
+        m.group = self
+        self.memberships << m
+      end
+      m.access_level = 'member'
+      m.save!
+    end
   end
 
   def requested_users_include?(user)

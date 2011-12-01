@@ -19,13 +19,18 @@ end
 
 Motion.blueprint do
   name { Faker::Name.name }
-  author { User.make! }
   group
-  facilitator { User.make! }
+  author { User.make }
   description { "Fake description" }
 end
 
 Membership.blueprint do
   user
   group
+end
+
+Vote.blueprint do
+  user
+  motion
+  position { Vote::POSITIONS.sample }
 end
