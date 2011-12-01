@@ -12,4 +12,11 @@ class User < ActiveRecord::Base
   has_many :memberships, 
            :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS}
   has_many :groups, through: :memberships
+  has_many :votes
+
+  def motions
+    self.groups.collect{|g| g.motions}.flatten!
+  end
+
 end
+
