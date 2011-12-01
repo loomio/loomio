@@ -10,6 +10,10 @@ class VotesController < BaseController
     @vote = Vote.new(motion: Motion.find(params[:motion_id]))
   end
 
+  def destroy
+    destroy! { @vote.motion }
+  end
+
   def create
     motion = Motion.find(params[:motion_id])
     vote = Vote.where("user_id = ? AND motion_id = ?", current_user.id, motion.id)
