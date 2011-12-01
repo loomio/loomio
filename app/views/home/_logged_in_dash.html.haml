@@ -1,0 +1,12 @@
+%section
+  -if @motions
+    %h3 Pending votes
+    %table
+      -@motions.each do |m|
+        -unless m.user_has_voted?(@user)
+          = render :partial => 'motions/motion_list', locals: {motion: m}
+    %h3 Past votes
+    %table
+      -@motions.each do |m|
+        -if m.user_has_voted?(@user)
+          = render :partial => 'motions/motion_list', locals: {motion: m}
