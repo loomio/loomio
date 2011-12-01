@@ -16,5 +16,7 @@
           = link_to('Sign in', new_user_session_path)
           or #{link_to 'Sign Up', new_user_registration_path}
     - if flash[:notice]
-      %p= flash[:notice]
+      %p#notice.flash= flash[:notice]
+    - if flash[:error]
+      %p#error.flash= flash[:error]
     = yield

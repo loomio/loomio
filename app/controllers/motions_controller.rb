@@ -1,13 +1,17 @@
 class MotionsController < BaseController
   before_filter :ensure_group_member
-  # belongs_to :group
 
   def new
     @motion = Motion.new(group: Group.find(params[:group_id]))
   end
 
+  def show
+    resource
+    @user_already_voted = @motion.votes.where('user_id = ?', 
+                                              current_user).exists?
+  end
+
   def create
-    # build_resource
     @motion = Motion.create(params[:motion])
     @motion.author = current_user
     @motion.group = Group.find(params[:group_id])

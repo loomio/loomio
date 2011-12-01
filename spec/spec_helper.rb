@@ -51,7 +51,9 @@ def create_motion(*args)
   else
     motion = Motion.make
   end
-  motion.facilitator = User.make!
+  unless motion.facilitator
+    motion.facilitator = User.make!
+  end
   motion.group.add_member!(motion.author)
   motion.group.add_member!(motion.facilitator)
   motion.save

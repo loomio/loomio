@@ -4,12 +4,12 @@ describe "Votes" do
   subject { page }
 
   context "a logged in user" do
-    before :all do
+    before :each do
       @user = User.make!
       @group = Group.make!(name: 'Test Group')
       @group.add_member!(@user)
-      @motion = create_motion(name: 'Test Motion', group: @group, author: @user)
-      @vote = Vote.make!(motion: @motion)
+      @motion = create_motion(name: 'Test Motion', group: @group, 
+                              author: @user, facilitator: @user)
     end
 
     before :each do

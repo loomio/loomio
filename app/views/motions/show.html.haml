@@ -20,5 +20,6 @@
           %td=vote.position
           %td=vote.user.email
           -if vote.user == current_user
-            %td=link_to "change your vote", edit_vote_path(vote)
-    %p=link_to "Cast your vote", new_vote_path({motion_id: @motion.id}), method: :get
+            %td=link_to "edit", edit_vote_path(vote)
+    -if !@user_already_voted
+      %p=link_to "Cast your vote", new_vote_path({motion_id: @motion.id}), method: :get

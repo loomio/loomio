@@ -1,5 +1,5 @@
 class Vote < ActiveRecord::Base
-  POSITIONS = %w[yes no abstain block]
+  POSITIONS = %w[yes abstain no block]
   belongs_to :motion
   belongs_to :user
 

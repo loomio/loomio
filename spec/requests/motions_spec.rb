@@ -4,31 +4,26 @@ describe "Motions" do
   subject { page }
 
   context "a logged in user" do
-    before :all do
+    before :each do
       @user = User.make!
-      @user2 = User.make!(email: 'test@test.com')
-      @group = Group.make!(name: 'Test Group')
+      @user2 = User.make!
+      @group = Group.make(name: 'Test Group')
+      @group.save
       @group.add_member!(@user)
       @group.add_member!(@user2)
-      @motion = create_motion(name: 'Test Motion', group: @group, author: @user)
-    end
-
-    before :each do
+      @motion = create_motion(name: 'Test Motion', group: @group, 
+                              author: @user, facilitator: @user)
       page.driver.post user_session_path, 'user[email]' => @user.email, 
                        'user[password]' => 'password'
     end
 
-    context "viewing a motion in a group they belong to" do
+    context "viewing a motion in one of their groups" do
       before :each do
-        visit group_motion_path(group_id: @group.id, id: @motion.id)
+        visit motion_path(id: @motion.id)
       end
 
       it "can see motion contents" do
         should have_content('Test Motion')
-      end
-
-      it "can click on a link to vote" do
-        click_link "Cast your vote"
       end
     end
 
@@ -49,7 +44,7 @@ describe "Motions" do
       visit new_motion_path(group_id: @group.id)
       fill_in 'Name', with: 'This is a new motion'
       fill_in 'Description', with: 'Blahhhhhh'
-      select 'test@test.com', from: 'Facilitator'
+      select @user2.email, from: 'Facilitator'
       click_on 'Create Motion'
     end
   end
