@@ -1,0 +1,10 @@
+-m = motion
+.motion
+  .row
+    .name.span10
+      =link_to m.name, motion_path(m)
+    .group.span3
+      =link_to m.group.name, group_path(m.group)
+    .facilitator.span3
+      %span vibe color?
+

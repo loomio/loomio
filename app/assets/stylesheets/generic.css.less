@@ -1,8 +1,22 @@
 @import "twitter/bootstrap";
 @basefont: 18px;
+@baseline: 24px;
 body { padding-top: 58px }
+form {
+  input, textarea, select {background: white;}
+}
 
 .topbar { 
-  font-family: 'Cuprum', sans-serif;
-  .brand{ font-size: 24px; padding: 8px 15px 4px 15px; }
+  //font-family: 'Cuprum', sans-serif;
+  .brand{ font-size: 24px; padding: 8px 15px 4px 15px; margin-left: -20px;}
+  ul.dropdown-menu{
+    li{text-shadow: none;}
+  }
+}
+
+.alert-message{
+  a.close, a.close:hover{
+    -khtml-opacity: 1;
+    margin-top: 2px;
+  }
 }
