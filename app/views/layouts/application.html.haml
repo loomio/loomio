@@ -9,8 +9,5 @@
   %body
     = render :partial => 'layouts/header'
     .container
-      - if flash[:notice]
-        %p= flash[:notice]
-      - if flash[:error]
-        %p= flash[:error]
+      = render :partial => 'layouts/flash_messages', :locals => {:flash => flash}
       = yield
