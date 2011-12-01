@@ -22,6 +22,12 @@ class VotesController < BaseController
     end
   end
 
+  def update
+    debugger
+    resources
+    update! { redirect_to motion_path(@vote.motion) }
+  end
+
   private
   def ensure_group_member
     # NOTE: this method is currently duplicated in groups_controller,
