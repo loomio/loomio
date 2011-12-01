@@ -1,2 +1,3 @@
 Your Vote
-=render :partial => 'form'
+=render partial: 'form',
+  locals: {form_args: [@vote, {url: votes_path(motion_id: @vote.motion.id)}]}
