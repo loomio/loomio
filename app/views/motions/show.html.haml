@@ -15,10 +15,15 @@
   %p#votes
     %strong Votes
     %table
+      %th position
+      %th user
+      %th statement
+      %th 
       -@motion.votes.each do |vote|
         %tr
           %td=vote.position
           %td=vote.user.email
+          %td=vote.statement
           -if vote.user == current_user
             %td
               =link_to "edit", edit_vote_path(vote)

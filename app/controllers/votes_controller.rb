@@ -22,7 +22,8 @@ class VotesController < BaseController
       redirect_to motion
       return
     end
-    @vote = Vote.new(position: params[:vote][:position], motion: motion)
+    @vote = Vote.new(params[:vote])
+    @vote.motion = motion
     @vote.user = current_user
     if @vote.save
       flash[:notice] = 'Vote saved'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111130020030) do
+ActiveRecord::Schema.define(:version => 20111201065901) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20111130020030) do
     t.string   "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "statement"
   end
 
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"

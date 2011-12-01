@@ -11,12 +11,13 @@ describe VotesController do
     end
     it 'can vote' do
       post :create, :motion_id => @motion.id, 
-           :vote => {:position => 'yes'}
+           :vote => {:position => 'yes', :statement => 'blah'}
       response.should be_redirect
       flash[:notice].should =~ /Vote saved/
       assigns(:vote).user.should == @user
       assigns(:vote).motion.should == @motion
       assigns(:vote).position.should == 'yes'
+      assigns(:vote).statement.should == 'blah'
     end
 
     it 'cannot vote multiple times' do
