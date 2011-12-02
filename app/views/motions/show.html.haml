@@ -4,8 +4,14 @@
     > 
     =@motion.name
   %p#name
-    %strong Motion:
+    %strong 
+      =(@motion.motion_type + ':').capitalize
     =@motion.name
+  -unless @motion.discussion_url.empty?
+    %p#discussion-url
+      %strong Discussion link:
+      %a{href: @motion.discussion_url}
+        =@motion.discussion_url
   %p#facilitator
     %strong Facilitator:
     =@motion.facilitator.email

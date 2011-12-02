@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111201065901) do
+ActiveRecord::Schema.define(:version => 20111202031656) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20111201065901) do
     t.integer  "facilitator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "motion_type",    :default => "proposal", :null => false
+    t.string   "discussion_url", :default => "",         :null => false
   end
 
   create_table "users", :force => true do |t|
