@@ -17,4 +17,16 @@ describe Motion do
     @vote.save!
     @motion.user_has_voted?(@user).should == true
   end
+
+  it "cannot have invalid types" do
+    @motion = create_motion
+    @motion.motion_type = 'bad'
+    @motion.should_not be_valid
+  end
+
+  it "has a discussion link" do
+    @motion = create_motion
+    @motion.discussion_url = "http://our-discussion.com"
+    @motion.should be_valid
+  end
 end
