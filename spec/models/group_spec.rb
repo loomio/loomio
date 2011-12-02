@@ -22,6 +22,19 @@ describe Group do
       @user = User.make!
     end
 
+    it "can add an admin" do
+      @group.add_admin!(@user)
+      @group.users.should include(@user)
+      @group.admins.should include(@user)
+    end
+    it "can promote existing member to admin" do
+      @group.add_member!(@user)
+      @group.add_admin!(@user)
+    end
+    it "can promote requested member to admin" do
+      @group.add_request!(@user)
+      @group.add_admin!(@user)
+    end
     it "can add a member" do
       @group.add_member!(@user)
       @group.users.should include(@user)

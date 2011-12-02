@@ -62,6 +62,7 @@ describe GroupsController do
       @group = Group.make!
       post :create, :group => @group.attributes
       assigns(:group).users.should include(@user)
+      assigns(:group).admins.should include(@user)
       response.should be_redirect
     end
   end
