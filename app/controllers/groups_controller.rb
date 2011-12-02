@@ -3,7 +3,7 @@ class GroupsController < BaseController
                 :except => [:new, :create, :index, :request_membership]
   def create
     build_resource
-    @group.add_member! current_user
+    @group.add_admin! current_user
     create!
   end
 
