@@ -25,5 +25,6 @@ describe MotionsController do
       get :show, group_id: @motion.group.id, id: @motion.id
       response.should be_success
     end
+
   end
 end

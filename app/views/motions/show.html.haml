@@ -1,8 +1,9 @@
 #motion
-  %h2
-    =link_to @motion.group.name, group_path(@motion.group)
-    > 
-    =@motion.name
+  %ul.breadcrumb
+    %li 
+      =link_to @motion.group.name, group_path(@motion.group)
+      %span.divider /
+    %li.active=@motion.name
   %p#name
     %strong 
       =(@motion.motion_type + ':').capitalize
@@ -18,23 +19,24 @@
   %p#description
     %strong Description:
     =@motion.description
-  %p#votes
-    %strong Votes
-    %table
-      %th position
-      %th user
-      %th statement
-      %th 
-      -@motion.votes.each do |vote|
-        %tr
-          %td=vote.position
-          %td=vote.user.email
-          %td=vote.statement
-          -if vote.user == current_user
-            %td
-              =link_to "edit", edit_vote_path(vote)
-              |
-              =link_to "delete", vote, method: :delete, 
-                confirm: "Are you sure you want to delete your vote?"
-    -if !@user_already_voted
-      %p=link_to "Cast your vote", new_vote_path({motion_id: @motion.id}), method: :get
+  -unless @motion.motion_type = 'discussion'
+    %p#votes
+      %strong Votes
+      %table
+        %th position
+        %th user
+        %th statement
+        %th 
+        -@motion.votes.each do |vote|
+          %tr
+            %td=vote.position
+            %td=vote.user.email
+            %td=vote.statement
+            -if vote.user == current_user
+              %td
+                =link_to "edit", edit_vote_path(vote)
+                |
+                =link_to "delete", vote, method: :delete, 
+                  confirm: "Are you sure you want to delete your vote?"
+      -if !@user_already_voted
+        %p=link_to "Cast your vote", new_vote_path({motion_id: @motion.id}), method: :get

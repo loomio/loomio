@@ -33,5 +33,13 @@ describe VotesController do
       votes = Vote.where("user_id = ? AND motion_id = ?", 
                          @user.id, @motion.id)
     end
+
+    it 'cannot vote on a motion_type of discussion' do
+      @discussion = create_motion(:group => @group, :motion_type => 'discussion')
+      @discussion.save!
+      post :create, :motion_id => @discussion.id, 
+           :vote => {:position => 'yes'}
+      flash[:error].should =~ /Can't vote on a discussion/
+    end
   end
 end
