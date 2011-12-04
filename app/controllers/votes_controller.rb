@@ -16,20 +16,25 @@ class VotesController < BaseController
 
   def create
     motion = Motion.find(params[:motion_id])
-    vote = Vote.where("user_id = ? AND motion_id = ?", current_user.id, motion.id)
-    if vote.exists?
-      flash[:error] = 'Only one vote is allowed per user'
+    if motion.motion_type == 'discussion'
+      flash[:error] = "Can't vote on a discussion"
       redirect_to motion
-      return
-    end
-    @vote = Vote.new(params[:vote])
-    @vote.motion = motion
-    @vote.user = current_user
-    if @vote.save
-      flash[:notice] = 'Vote saved'
-      redirect_to @vote.motion
     else
-      render :edit
+      vote = Vote.where("user_id = ? AND motion_id = ?", current_user.id, motion.id)
+      if vote.exists?
+        flash[:error] = 'Only one vote is allowed per user'
+        redirect_to motion
+        return
+      end
+      @vote = Vote.new(params[:vote])
+      @vote.motion = motion
+      @vote.user = current_user
+      if @vote.save
+        flash[:notice] = 'Vote saved'
+        redirect_to @vote.motion
+      else
+        render :edit
+      end
     end
   end
 
