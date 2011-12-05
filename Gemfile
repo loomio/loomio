@@ -10,6 +10,8 @@ gem 'inherited_resources'
 gem 'formtastic'
 gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'formtastic-bootstrap'
+gem 'jqplot-rails'
+gem "rails-backbone"
 
 # Gems used only for assets and not required
 # in production environments by default.
