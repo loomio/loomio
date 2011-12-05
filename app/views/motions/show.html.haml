@@ -6,6 +6,20 @@
   %div#name.info
     %strong Name:
     =@motion.name
+  %p="#{@motion.votes.size} / #{@motion.group.memberships.size} votes in."
+  %ul.tally.unstyled
+    %li.yes
+      %span Yes
+      =@votes['yes'].size
+    %li.no
+      %span No
+      =@votes['no'].size
+    %li.abstain
+      %span Abstain
+      =@votes['abstain'].size
+    %li.block
+      %span Block
+      =@votes['block'].size
   -unless @motion.discussion_url.empty?
     %div#discussion-url
       %strong Discussion link:

@@ -9,6 +9,12 @@ class MotionsController < BaseController
     resource
     @user_already_voted = @motion.votes.where('user_id = ?', 
                                               current_user).exists?
+    @votes = {
+      'yes' => @motion.votes.where('position = ?', 'yes'),
+      'no' => @motion.votes.where('position = ?', 'no'),
+      'abstain' => @motion.votes.where('position = ?', 'abstain'),
+      'block' => @motion.votes.where('position = ?', 'block')
+    }
   end
 
   def create
