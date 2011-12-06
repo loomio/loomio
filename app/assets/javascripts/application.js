@@ -7,4 +7,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require jqplot.1.0.0b2_r792
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/tautoko
 //= require_tree .
