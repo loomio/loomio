@@ -4,8 +4,8 @@ class Motion < ActiveRecord::Base
   belongs_to :author, :class_name => 'User'
   belongs_to :facilitator, :class_name => 'User'
   has_many :votes
-  validates_presence_of :name, :group, :author, :facilitator_id,
-                        :motion_type
+  validates_presence_of :name, :group, :author,
+                        :motion_type, :facilitator_id
   validates_inclusion_of :motion_type, in: MOTION_TYPES
 
   def user_has_voted?(user)

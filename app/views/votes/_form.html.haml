@@ -1,4 +1,4 @@
-=semantic_form_for(*form_args) do |f| #(form_object, form_path) #@vote, url: votes_path(motion_id: @vote.motion.id)) do |f|
+=semantic_form_for(*form_args) do |f|
   =f.input :position, as: :select, collection: Vote::POSITIONS
   =f.input :statement, as: :text
   =f.commit_button

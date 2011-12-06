@@ -19,6 +19,16 @@ class MotionsController < BaseController
     redirect_to motion_url(id: @motion.id)
   end
 
+  def edit
+    resource
+    if (@motion.author == current_user) || (@motion.facilitator == current_user)
+      edit!
+    else
+      flash[:error] = "Only the facilitator or author can edit a motion."
+      redirect_to motion_url(@motion)
+    end
+  end
+
   private
   def ensure_group_member
     # NOTE: this method is currently duplicated in groups_controller,
