@@ -1,4 +1,5 @@
 class VotesController < BaseController
+  belongs_to :motion
   # before_filter :ensure_group_member
   # belongs_to :motion
 
@@ -6,12 +7,8 @@ class VotesController < BaseController
   #   @motion
   # end
 
-  def new
-    @vote = Vote.new(motion: Motion.find(params[:motion_id]))
-  end
-
   def destroy
-    destroy! { @vote.motion }
+    destroy! { @motion }
   end
 
   def create
@@ -34,7 +31,7 @@ class VotesController < BaseController
   end
 
   def update
-    update! { motion_path(@vote.motion) }
+    update! {@motion}
   end
 
   private

@@ -5,8 +5,8 @@ Tautoko::Application.routes.draw do
     resources :motions, name_prefix: "groups_"
     get :request_membership, on: :member
   end
-  resources :motions, except: [:index] do
-    resources :votes, name_prefix: "motions_"
+  resources :motions do
+    resources :votes
   end
 
   resources :votes
