@@ -7,19 +7,8 @@
     %strong Name:
     =@motion.name
   %p="#{@motion.votes.size} / #{@motion.group.memberships.size} votes in."
-  %ul.tally.unstyled
-    %li.yes
-      %span Yes
-      =@votes['yes'].size
-    %li.no
-      %span No
-      =@votes['no'].size
-    %li.abstain
-      %span Abstain
-      =@votes['abstain'].size
-    %li.block
-      %span Block
-      =@votes['block'].size
+  #graph.pie
+  #chartpseudotooltip
   -unless @motion.discussion_url.empty?
     %div#discussion-url
       %strong Discussion link:
@@ -60,3 +49,9 @@
                 confirm: "Are you sure you want to delete your vote?"
     -if !@user_already_voted
       %div.info=link_to "Cast your vote", new_vote_path({motion_id: @motion.id}), method: :get
+  :coffeescript
+    jQuery ->
+      @pie_graph_view = new Tautoko.Views.Utils.GraphView
+        el: '#graph.pie'
+        data: #{@votes_for_graph.to_json.html_safe}
+        type: 'pie'

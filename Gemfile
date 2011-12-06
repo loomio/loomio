@@ -12,6 +12,7 @@ gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-boots
 gem 'formtastic-bootstrap'
 gem 'jqplot-rails'
 gem "rails-backbone"
+gem 'coffee-filter'
 
 # Gems used only for assets and not required
 # in production environments by default.

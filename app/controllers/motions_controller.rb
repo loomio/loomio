@@ -7,14 +7,19 @@ class MotionsController < BaseController
 
   def show
     resource
-    @user_already_voted = @motion.votes.where('user_id = ?', 
-                                              current_user).exists?
+    @user_already_voted = @motion.votes.where('user_id = ?', current_user).exists?
     @votes = {
       'yes' => @motion.votes.where('position = ?', 'yes'),
       'no' => @motion.votes.where('position = ?', 'no'),
       'abstain' => @motion.votes.where('position = ?', 'abstain'),
       'block' => @motion.votes.where('position = ?', 'block')
     }
+    @votes_for_graph = []
+    @votes.each do |k, v|
+      @votes_for_graph.push ["#{k.capitalize}", v.size, [v.map{|v| v.user.email}]]
+
+    end
+    @votes_for_graph.push ["Yet to vote", (@motion.group.memberships.size - @motion.votes.size), [@motion.group.memberships.map{|m| m.user.email unless @motion.votes.where('user_id = ?', m.user).exists?}.compact!]]
   end
 
   def create
