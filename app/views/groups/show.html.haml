@@ -23,22 +23,24 @@
           -# =m.access_level
           =link_to "edit membership", edit_membership_path(m)
   #user-requests
-    %strong User Requests:
-    %ul
-      -@group.membership_requests.each do |mr|
-        %li
-          -user = mr.user
-          =user.email
-          =link_to 'approve', membership_path(mr, 
-            {:membership => {:access_level => 'member'}}), 
-            :method => :put, 
-            :confirm => "Are you sure you want to add #{mr.user.email} to the group?"
-          -confirm = "Are you sure you want to ignore the member "
-          -confirm << "request from #{mr.user.email}?"
-          =link_to "ignore", membership_path(mr), method: :delete, 
-            :confirm => "Are you sure you want to ignore the member request from #{mr.user.email}?"
-    -# %p
-    -#   add user:
-    -#   =semantic_form_for(@group, :url => group_path(@group)) do |f|
-    -#     =f.input :user, :as => :select, :collection => @group.users
+    -unless @group.membership_requests.empty?
+      %strong User Requests:
+      %ul
+        -@group.membership_requests.each do |mr|
+          %li
+            -user = mr.user
+            =user.email
+            =link_to 'approve', membership_path(mr, 
+              {:membership => {:access_level => 'member'}}), 
+              :method => :put, 
+              :confirm => "Are you sure you want to add #{mr.user.email} to the group?"
+            -confirm = "Are you sure you want to ignore the member "
+            -confirm << "request from #{mr.user.email}?"
+            |
+            =link_to "ignore", membership_path(mr), method: :delete, 
+              :confirm => "Are you sure you want to ignore the member request from #{mr.user.email}?"
+      -# %p
+      -#   add user:
+      -#   =semantic_form_for(@group, :url => group_path(@group)) do |f|
+      -#     =f.input :user, :as => :select, :collection => @group.users
 

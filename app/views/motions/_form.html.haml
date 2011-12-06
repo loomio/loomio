@@ -1,0 +1,9 @@
+=semantic_form_for(*form_args) do |f|
+  =f.inputs do
+    =f.input :name
+    =f.input :facilitator, as: :select, 
+      collection: @motion.group.users, member_label: :email, required: true
+    =f.input :discussion_url
+    =f.input :description
+  =f.commit_button
+

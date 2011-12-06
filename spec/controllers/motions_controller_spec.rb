@@ -25,5 +25,12 @@ describe MotionsController do
       get :show, group_id: @motion.group.id, id: @motion.id
       response.should be_success
     end
+
+    it "cannot edit a motion" do
+      @motion = create_motion(group: @group)
+      get :edit, id: @motion.id
+      flash[:error].should =~ /Only the facilitator/
+      response.should be_redirect
+    end
   end
 end
