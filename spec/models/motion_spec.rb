@@ -9,6 +9,7 @@ describe Motion do
   it {should have(1).errors_on(:name)}
   it {should have(1).errors_on(:author)}
   it {should have(1).errors_on(:group)}
+  it {should have(1).errors_on(:facilitator_id)}
 
   it "user_has_votes?(user) returns true if the given user has voted on motion" do
     @user = User.make!

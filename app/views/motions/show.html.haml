@@ -3,22 +3,30 @@
     =link_to @motion.group.name, group_path(@motion.group)
     > 
     =@motion.name
-  %p#name
-    %strong 
-      =(@motion.motion_type + ':').capitalize
+  %div#name.info
+    %strong Name:
     =@motion.name
   -unless @motion.discussion_url.empty?
-    %p#discussion-url
+    %div#discussion-url
       %strong Discussion link:
       %a{href: @motion.discussion_url}
         =@motion.discussion_url
-  %p#facilitator
+  %div#author.info
+    %strong Proposed by:
+    =@motion.author.email
+    on
+    =@motion.created_at.to_formatted_s(:short)
+    -if @motion.updated_at != @motion.created_at
+      ="(last edited: " + @motion.updated_at.to_formatted_s(:short) + ")"
+  %div#facilitator.info
     %strong Facilitator:
     =@motion.facilitator.email
-  %p#description
+  %div#description.info
     %strong Description:
-    =@motion.description
-  %p#votes
+    =simple_format(@motion.description)
+  -if (@motion.author == current_user || @motion.facilitator == current_user)
+    %div#edit.info=link_to "Edit this motion", edit_motion_path(@motion)
+  %div#votes.info
     %strong Votes
     %table
       %th position
@@ -37,4 +45,4 @@
               =link_to "delete", vote, method: :delete, 
                 confirm: "Are you sure you want to delete your vote?"
     -if !@user_already_voted
-      %p=link_to "Cast your vote", new_vote_path({motion_id: @motion.id}), method: :get
+      %div.info=link_to "Cast your vote", new_vote_path({motion_id: @motion.id}), method: :get
