@@ -18,7 +18,8 @@ class Tautoko.Views.Utils.GraphView extends Backbone.View
           }
         },
         legend: { show:true, location: 'e' }
-        grid: { shadow: false, borderWidth: 0 }
+        grid: { background:'rgba(0,0,0,0)', shadow: false, borderWidth: 0 }
+
         seriesColors: [ "#90D490", "#D49090", "#F0BB67", "#FF0000", '#ccc']
 
       }

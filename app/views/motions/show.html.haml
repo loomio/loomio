@@ -1,37 +1,41 @@
 #motion
-  %h2
-    =link_to @motion.group.name, group_path(@motion.group)
-    > 
-    =@motion.name
-  %div#name.info
-    %strong Name:
-    =@motion.name
-  %p="#{@motion.votes.size} / #{@motion.group.memberships.size} votes in."
-  #graph.pie
-  #chartpseudotooltip
-  -unless @motion.discussion_url.empty?
-    %div#discussion-url
-      %strong Discussion link:
-      %a{href: @motion.discussion_url}
-        =@motion.discussion_url
-  %div#author.info
-    %strong Proposed by:
-    =@motion.author.email
-    on
-    =@motion.created_at.to_formatted_s(:short)
-    -if @motion.updated_at != @motion.created_at
-      ="(last edited: " + @motion.updated_at.to_formatted_s(:short) + ")"
-  %div#facilitator.info
-    %strong Facilitator:
-    =@motion.facilitator.email
-  %div#description.info
-    %strong Description:
-    =simple_format(@motion.description)
-  -if (@motion.author == current_user || @motion.facilitator == current_user)
-    %div#edit.info=link_to "Edit this motion", edit_motion_path(@motion)
-  %div#votes.info
-    %strong Votes
-    %table
+  %ul.breadcrumb
+    %li
+      =link_to @motion.group.name, group_path(@motion.group)
+      %span.divider >
+    %li 
+      =@motion.name
+  .row
+    #description.span7
+      %h2=@motion.name
+      -if (@motion.author == current_user || @motion.facilitator == current_user)
+        =link_to "Edit this motion", edit_motion_path(@motion), :class => 'btn small'
+      %h6
+        Proposed by:
+        %span
+          =@motion.author.email
+          on
+          =@motion.created_at.to_formatted_s(:short)
+          -if @motion.updated_at != @motion.created_at
+            ="(last edited: " + @motion.updated_at.to_formatted_s(:short) + ")"
+      %h6 
+        Facilitator:
+        %span=@motion.facilitator.email
+      -unless @motion.discussion_url.empty?
+        %h6 
+          Discussion:
+          =link_to @motion.discussion_url, @motion.discussion_url
+      %p=simple_format(@motion.description)
+    #stats.span8
+      %p="#{@motion.votes.size} / #{@motion.group.memberships.size} votes in."
+      #graph.pie
+      #chartpseudotooltip
+  #votes
+    %h2
+      Votes
+    -if !@user_already_voted
+      =link_to "Cast your vote", new_vote_path({motion_id: @motion.id}), :class => 'btn primary'
+    %table.zebra-striped
       %th position
       %th user
       %th statement
@@ -47,11 +51,9 @@
               |
               =link_to "delete", vote, method: :delete, 
                 confirm: "Are you sure you want to delete your vote?"
-    -if !@user_already_voted
-      %div.info=link_to "Cast your vote", new_vote_path({motion_id: @motion.id}), method: :get
-  :coffeescript
-    jQuery ->
-      @pie_graph_view = new Tautoko.Views.Utils.GraphView
-        el: '#graph.pie'
-        data: #{@votes_for_graph.to_json.html_safe}
-        type: 'pie'
+:coffeescript
+  jQuery ->
+    @pie_graph_view = new Tautoko.Views.Utils.GraphView
+      el: '#graph.pie'
+      data: #{@votes_for_graph.to_json.html_safe}
+      type: 'pie'
