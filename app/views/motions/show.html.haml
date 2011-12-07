@@ -34,7 +34,7 @@
     %h2
       Votes
     -if !@user_already_voted
-      =link_to "Cast your vote", new_vote_path({motion_id: @motion.id}), :class => 'btn primary'
+      =link_to "Cast your vote", new_motion_vote_path(@motion), :class => 'btn primary'
     %table.zebra-striped
       %th position
       %th user
@@ -47,9 +47,9 @@
           %td=vote.statement
           -if vote.user == current_user
             %td
-              =link_to "edit", edit_vote_path(vote)
+              =link_to "edit", edit_motion_vote_path(@motion, vote)
               |
-              =link_to "delete", vote, method: :delete, 
+              =link_to "delete", motion_vote_path(@motion, vote), method: :delete, 
                 confirm: "Are you sure you want to delete your vote?"
 :coffeescript
   jQuery ->
