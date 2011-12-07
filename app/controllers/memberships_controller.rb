@@ -1,6 +1,8 @@
 class MembershipsController < BaseController
   def update
-    # TODO: perhaps turn this into a state machine?
+    # TODO:
+    # - perhaps turn this into a state machine?
+    # - make flash messages more specific
     def check_permission(membership, action)
       return false unless @membership.group.users.include? current_user
       user_access_level = @membership.group.memberships.

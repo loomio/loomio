@@ -46,6 +46,7 @@ describe MembershipsController do
         assigns(:membership).access_level.should == 'admin'
         @group.admins.should include(@new_user)
       end
+
       it 'can remove a member' do
         @group.add_member!(@new_user)
         @membership = @group.memberships.find_by_user_id(@new_user.id)

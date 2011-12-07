@@ -1,3 +1,4 @@
+-user_is_group_admin = (current_user.memberships.find_by_group_id(@group.id).access_level == 'admin')
 %h1=@group.name
 .row
   #motions.span8
@@ -16,7 +17,11 @@
           -m = user.memberships.find_by_group_id(@group.id)
           =user.email
           -# =m.access_level
-          =link_to "edit membership", edit_membership_path(m)
+          -if user_is_group_admin
+            =link_to "edit", edit_membership_path(m)
+            |
+            =link_to "remove", m, method: :delete, 
+              confirm: "Are you sure you wish to remove #{user.email} from the group?"
     -if @group.membership_requests 
       #user-requests
         %h3 User Requests:
