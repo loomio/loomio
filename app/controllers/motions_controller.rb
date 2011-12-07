@@ -19,7 +19,7 @@ class MotionsController < BaseController
       @votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, [v.map{|v| v.user.email}]]
     end
     @yet_to_vote = @motion.group.memberships.size - @motion.votes.size
-    @votes_for_graph.push ["Yet to vote (#{@yet_to_vote})", @yet_to_vote, [@motion.group.memberships.map{|m| m.user.email unless @motion.votes.where('user_id = ?', m.user).exists?}.compact!]]
+    @votes_for_graph.push ["Yet to vote (#{@yet_to_vote})", @yet_to_vote, [@motion.group.users.map{|u| u.email unless @motion.votes.where('user_id = ?', u).exists?}.compact!]]
   end
 
   def create

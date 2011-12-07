@@ -1,14 +1,30 @@
 class MembershipsController < BaseController
   def update
+    # TODO: perhaps turn this into a state machine?
+    def check_permission(membership, action)
+      return false unless @membership.group.users.include? current_user
+      user_access_level = @membership.group.memberships.
+                          find_by_user_id(current_user.id).access_level
+      other_member = @membership.access_level
+
+      return true if user_access_level == 'admin'
+      if user_access_level == 'member'
+        return false if (other_member == 'admin' || other_member == 'member')
+        return false if action == 'admin'
+        return true if action == 'member'
+        return true if action == 'request'
+      end
+      return false
+    end
+
     resource
-    if @membership.group.users.include? current_user
-        flash[:notice] = "Membership approved."
-        update! do |format|
-          format.html { redirect_to @membership.group }
-        end
+    if check_permission(@membership, params[:membership][:access_level])
+      update! do |format|
+        format.html { redirect_to @membership.group }
+      end
+      flash[:notice] = "Membership approved."
     else
-      flash[:error] = "Membership not approved. " + \
-        "You cannot approve a membership to a group you don't belong to."
+      flash[:error] = "You do not have significant priviledges to do that."
       redirect_to @membership.group
     end
   end
@@ -23,13 +39,31 @@ class MembershipsController < BaseController
   end
 
   def destroy
-    resource
-    group = @membership.group
-    destroy! do |format|
-      format.html do
-        flash[:notice] = "Membership request ignored"
-        redirect_to group
+    def check_permission(membership)
+      return false unless @membership.group.users.include? current_user
+      user_access_level = @membership.group.memberships.
+                          find_by_user_id(current_user.id).access_level
+      other_member = @membership.access_level
+
+      if user_access_level == 'admin'
+        return true if (other_member == 'request' || other_member == 'member')
+      elsif user_access_level == 'member'
+        return true if other_member == 'request'
       end
+      return false
+    end
+
+    resource
+    if check_permission(@membership)
+      destroy! do |format|
+        format.html do
+          flash[:notice] = "Membership deleted."
+          redirect_to @membership.group
+        end
+      end
+    else
+      flash[:error] = "You do not have significant priviledges to do that."
+      redirect_to @membership.group
     end
   end
 end
