@@ -9,6 +9,9 @@ Tautoko::Application.routes.draw do
     resources :votes
   end
 
+
+  resource :email_group, :only => [:new, :create]
+
   resources :votes
   resources :memberships
 
