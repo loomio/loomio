@@ -12,22 +12,9 @@ class VotesController < BaseController
   end
 
   def create
-    motion = Motion.find(params[:motion_id])
-    vote = Vote.where("user_id = ? AND motion_id = ?", current_user.id, motion.id)
-    if vote.exists?
-      flash[:error] = 'Only one vote is allowed per user'
-      redirect_to motion
-      return
-    end
-    @vote = Vote.new(params[:vote])
-    @vote.motion = motion
+    build_resource
     @vote.user = current_user
-    if @vote.save
-      flash[:notice] = 'Vote saved'
-      redirect_to @vote.motion
-    else
-      render :edit
-    end
+    create! { @motion }
   end
 
   def update
