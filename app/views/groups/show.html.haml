@@ -22,7 +22,7 @@
             |
             =link_to "remove", m, method: :delete, 
               confirm: "Are you sure you wish to remove #{user.email} from the group?"
-    -if @group.membership_requests 
+    -unless @group.membership_requests.empty?
       #user-requests
         %h3 User Requests:
         %ul.unstyled

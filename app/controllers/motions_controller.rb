@@ -5,6 +5,18 @@ class MotionsController < BaseController
     @motion = Motion.new(group: Group.find(params[:group_id]))
   end
 
+  def destroy
+    resource
+    is_group_admin = @motion.group.admins.include?(current_user)
+    if is_group_admin || @motion.author == current_user
+      destroy! { @motion.group }
+      flash[:notice] = "Motion deleted."
+    else
+      flash[:error] = "You do not have significant priviledges to do that."
+      redirect_to @motion
+    end
+  end
+
   def show
     resource
     @user_already_voted = @motion.votes.where('user_id = ?', current_user).exists?

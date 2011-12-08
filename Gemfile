@@ -4,6 +4,7 @@ gem 'rails', '3.1.1'
 gem "haml-rails"
 gem 'devise', '1.4.9'
 gem 'mysql2'
+gem 'pg'
 gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
@@ -46,7 +47,7 @@ group :development, :test do
   gem "rspec-rails", ">= 2.6.0.rc2"
   gem "capybara"
   gem 'database_cleaner'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 # group :development do
