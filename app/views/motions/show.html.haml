@@ -1,3 +1,4 @@
+- user_is_group_admin = @motion.group.admins.include?(current_user)
 #motion
   %ul.breadcrumb
     %li
@@ -9,7 +10,11 @@
     #description.span7
       %h2=@motion.name
       -if (@motion.author == current_user || @motion.facilitator == current_user)
-        =link_to "Edit this motion", edit_motion_path(@motion), :class => 'btn small'
+        =link_to "Edit this motion", edit_motion_path(@motion), class: 'btn small'
+      -if (@motion.author == current_user || user_is_group_admin)
+        =link_to "Delete this motion", @motion, method: :delete,
+          confirm: "Are you sure you want to delete this motion?", 
+          class: 'btn small'
       %h6
         Proposed by:
         %span
@@ -34,7 +39,7 @@
     %h2
       Votes
     -if !@user_already_voted
-      =link_to "Cast your vote", new_motion_vote_path(@motion), :class => 'btn primary'
+      =link_to "Cast your vote", new_motion_vote_path(@motion), class: 'btn primary'
     %table.zebra-striped
       %th position
       %th user

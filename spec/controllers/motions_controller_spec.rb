@@ -9,7 +9,7 @@ describe MotionsController do
       sign_in @user
     end
 
-    it "creates a motion" do
+    it "can create a motion" do
       @fuser = User.make!
       @motion_attrs = {:name => 'testing motions is a good idea', 
                        :facilitator_id => @fuser.id}
@@ -26,11 +26,40 @@ describe MotionsController do
       response.should be_success
     end
 
-    it "cannot edit a motion" do
+    it "cannot edit a motion if they aren't the author or facilitator" do
       @motion = create_motion(group: @group)
       get :edit, id: @motion.id
       flash[:error].should =~ /Only the facilitator/
       response.should be_redirect
     end
+
+    it "can delete a motion if they are the author" do
+      motion = create_motion(author: @user, group: @group)
+      delete :destroy, id: motion.id
+      response.should be_redirect
+      flash[:notice].should =~ /Motion deleted/
+      @group.reload
+      @group.motions.should_not include(motion)
+    end
+
+    it "can delete a motion if they are a group admin" do
+      @group.add_admin!(@user)
+      motion = create_motion(group: @group)
+      delete :destroy, id: motion.id
+      response.should be_redirect
+      flash[:notice].should =~ /Motion deleted/
+      @group.reload
+      @group.motions.should_not include(motion)
+    end
+
+    it "cannot delete a motion if they are not a group admin or the author" do
+      motion = create_motion(group: @group)
+      delete :destroy, id: motion.id
+      response.should be_redirect
+      flash[:error].should =~ /You do not have significant priviledges to do that./
+      @group.reload
+      @group.motions.should include(motion)
+    end
+
   end
 end
