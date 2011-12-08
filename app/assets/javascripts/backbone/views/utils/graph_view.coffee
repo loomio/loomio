@@ -8,32 +8,45 @@ class Tautoko.Views.Utils.GraphView extends Backbone.View
 
   buildPie: ()->
     data = @options.data
-    console.log data
-    pie = jQuery.jqplot('graph', [data],
+    pie = jQuery.jqplot(@options.id_string, [data],
       {
         seriesDefaults: {
           renderer: jQuery.jqplot.PieRenderer,
           rendererOptions: {
             sliceMargin:8
+            padding: 10
           }
         },
-        legend: { show:true, location: 'e' }
+        legend: { show: @options.legend, location: 'e' }
         grid: { background:'rgba(0,0,0,0)', shadow: false, borderWidth: 0 }
 
         seriesColors: [ "#90D490", "#D49090", "#F0BB67", "#FF0000", '#ccc']
 
       }
      )
-     $('#graph').bind 'jqplotDataHighlight', (ev, seriesIndex, pointIndex, data)->
-       $('#chartpseudotooltip').html(data[1] + '  votes')
+     #$('#' + @options.id_string).bind 'jqplotDataHighlight', (ev, seriesIndex, pointIndex, data)=>
+       #$(@options.tooltip_selector).html(data[2] + " : " +data[1] + '  votes')
+       #$container = $(ev.currentTarget).closest('.pie')
+       #cssObj = {
+         #'position' : 'absolute',
+         #'left' : $container.offset().left + $container.width() / 2 - 77 +"px",
+         #'top' : $container.offset().top
+       #}
+       #$(@options.tooltip_selector).css(cssObj).show()
+
+     #$('#' + @options.id_string).bind 'jqplotDataUnhighlight', (ev)=>
+       #$(@options.tooltip_selector).html('').hide()
+
+     #conditional or extract out
+     $('#expand_' + @options.id_string.split('_')[1]).hide()
+     $("#motion_" + @options.motion_id).bind 'click', (e)=>
+       e.stopPropagation()
+       $container = $(e.currentTarget).closest('.motion')
        cssObj = {
          'position' : 'absolute',
-         'left' : $(ev.currentTarget).offset().left + 230 + 'px',
-         'top' : $(ev.currentTarget).offset().top + 35 +'px'
+         'left' : $container.offset().left,
+         'top' : $container.offset().top,
+         'z-index' : '100'
        }
-       $('#chartpseudotooltip').css(cssObj).show()
-
-     $('#graph').bind 'jqplotDataUnhighlight', (ev)->
-       $('#chartpseudotooltip').html('').hide()
-
+       $('#expand_' + @options.id_string.split('_')[1]).css(cssObj).toggle()
   

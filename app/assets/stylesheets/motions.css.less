@@ -1,25 +1,41 @@
 //Motion row
 div.motion{
-  background: #333;
-  margin-bottom: 8px;
-  box-shadow: 1px 1px 2px #999999; 
-  -webkit-box-shadow: 1px 1px 2px #999999;
-  -moz-box-shadow: 1px 1px 2px #999999;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
+  &.voted_no{background: fadeout(#d49090, 80%); }
+  &.voted_yes{background: fadeout(#90d490, 80%); }
+  &.voted_abstain{background: fadeout(#F0BB67, 80%); }
+  &.voted_block{background: fadeout(#Ff0000, 80%); }
+  margin-bottom: 1em;
+  font-size: 0.7em;
+  line-height: 1.2em;
+  box-shadow: 1px 1px 4px #999999; 
+  -webkit-box-shadow: 1px 1px 4px #999999;
+  -moz-box-shadow: 1px 1px 4px #999999;
   a{display: block; padding: 5px; margin-bottom: 0;}
+  .border{ border: solid 1px #ccc; min-height: 200px; }
   .name{
-    background: #ececec;
-    p{color: #333}
+    font-weight: bold;
     }
   .group{
-    a, a:visited, a:active {color:#fff}
+    height: 2.0em;
+    a{display: block; float: left; padding: 5px; margin-bottom: 0;}
+    text-align: left;
+    background: #ececec;
+    a, a:visited, a:active {color: #999;}
   }
-  .facilitator{
-    color: #fff;
-    background: #444;
-    span{display:inline-block; padding: 5px; }
+  .description{ padding: 7px; }
+  .toggle_motion_expand{font-size: 1.8em; font-weight: bold; color: #ccc;float: right; padding: 2px 10px; cursor: pointer;}
+  .toggle_motion_expand:hover{color: #999;}
+  .expanded{ 
+    box-shadow: 1px 1px 4px #999999; 
+    -webkit-box-shadow: 1px 1px 4px #999999;
+    -moz-box-shadow: 1px 1px 4px #999999;
+    background: #fff;
+    .graph_tooltip{display: none;}
+    .pie {height: 150px;}
+    .motion_actions{
+      .btn.small{font-size: 1em; line-height: 1.2em; padding: 3px;}
+      .btn.primary a{color:#fff;}
+    }
   }
 }
 
@@ -33,6 +49,7 @@ div.motion{
   h6 { line-height: 24px; text-transform: none;}
   .btn.small{font-size: 12px; float: right}
 }
+
 #votes{
   h2{float:left; width: 100px;}
   .btn.primary{ float:left; margin-top: 6px;}

@@ -15,7 +15,11 @@ class User < ActiveRecord::Base
   has_many :votes
 
   def motions
-    self.groups.collect{|g| g.motions}.flatten!
+    self.groups.collect{|g| g.motions.order('created_at DESC')}.flatten!
+  end
+ 
+  def motion_vote(motion)
+    Vote.where('motion_id = ? AND user_id = ?', motion.id, self.id).first
   end
 
 end

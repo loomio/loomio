@@ -1,12 +1,20 @@
-%section
+%section#motion_panels
   -if @motions
     %h3 Pending votes
-    %table
-      -@motions.each do |m|
+    .row
+      -@motions.each_with_index do |m, index|
         -unless m.user_has_voted?(@user)
           = render :partial => 'motions/motion_list', locals: {motion: m}
+
     %h3 Past votes
-    %table
-      -@motions.each do |m|
+    .row
+      -@motions.each_with_index do |m, index|
         -if m.user_has_voted?(@user)
           = render :partial => 'motions/motion_list', locals: {motion: m}
+
+:coffeescript
+  jQuery ->
+    $('html, body').bind 'click', ()->
+      $('.togglable').hide()
+    $('.stop_prop').click (e)->
+      e.stopPropagation()

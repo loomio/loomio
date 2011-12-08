@@ -27,22 +27,40 @@ form {
   }
 }
 
-#graph {
-  table.jqplot-table-legend {
-    width: auto;
+table.jqplot-table-legend {
+  width: auto;
+  border: none;
+  td {
     border: none;
-    td {
-      border: none;
-      line-height: 20px;
-      padding: 0 5px 0 5px;
-      }
-  }
+    line-height: 20px;
+    padding: 0 5px 0 5px;
+    }
 }
-#chartpseudotooltip{
+#tooltip, .graph_tooltip{
   padding: 3px 10px;
   background: #333;
   color: #fff;
   display: none;
   opacity: 0.8;
   font-size: 0.9em;
+  width: 100px;
+  text-align: center;
+  box-shadow: 1px 1px 4px #999999; 
+  -webkit-box-shadow: 1px 1px 4px #999999;
+  -moz-box-shadow: 1px 1px 4px #999999;
+}
+/* For modern browsers */
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+
+.cf:after {
+    clear:both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+    zoom:1;
 }
