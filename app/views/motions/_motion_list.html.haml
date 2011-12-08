@@ -1,5 +1,5 @@
 -m = motion
-.motion.span4{:id =>"motion_#{m.id}", :class => "voted_#{current_user.motion_vote(m) ? current_user.motion_vote(m).position : "notyet"}"}
+.motion.span4{:id =>"motion_#{m.id}", :class => "#{last_class} voted_#{current_user.motion_vote(m) ? current_user.motion_vote(m).position : "notyet"}"}
   .border
     .group.cf
       =link_to "Group: #{m.group.name}", group_path(m.group), :class => 'stop_prop'

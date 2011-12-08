@@ -4,13 +4,18 @@
     .row
       -@motions.each_with_index do |m, index|
         -unless m.user_has_voted?(@user)
-          = render :partial => 'motions/motion_list', locals: {motion: m}
-
+          -if index % 3 == 0
+            = render :partial => 'motions/motion_list', locals: {motion: m, last_class: 'last'}
+          -else
+            = render :partial => 'motions/motion_list', locals: {motion: m, last_class: ''}
     %h3 Past votes
     .row
       -@motions.each_with_index do |m, index|
         -if m.user_has_voted?(@user)
-          = render :partial => 'motions/motion_list', locals: {motion: m}
+          -if index % 3 == 0
+            = render :partial => 'motions/motion_list', locals: {motion: m, last_class: 'last'}
+          -else
+            = render :partial => 'motions/motion_list', locals: {motion: m, last_class: ''}
 
 :coffeescript
   jQuery ->

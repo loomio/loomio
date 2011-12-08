@@ -42,11 +42,19 @@ class Tautoko.Views.Utils.GraphView extends Backbone.View
      $("#motion_" + @options.motion_id).bind 'click', (e)=>
        e.stopPropagation()
        $container = $(e.currentTarget).closest('.motion')
-       cssObj = {
-         'position' : 'absolute',
-         'left' : $container.offset().left,
-         'top' : $container.offset().top,
-         'z-index' : '100'
-       }
+       if $container.hasClass('last')
+         cssObj = {
+           'position' : 'absolute',
+           'left' : $container.offset().left - 477 / 2 + 'px',#460 = span8
+           'top' : $container.offset().top,
+           'z-index' : '100'
+         }
+        else
+         cssObj = {
+           'position' : 'absolute',
+           'left' : $container.offset().left,
+           'top' : $container.offset().top,
+           'z-index' : '100'
+         }
        $('#expand_' + @options.id_string.split('_')[1]).css(cssObj).toggle()
   
