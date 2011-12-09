@@ -23,9 +23,19 @@ describe Vote do
     @vote.statement = "This is what I think about the motion"
     @vote.should be_valid
   end
-  it 'cannot have a statement over 500 chars' do
+
+  it 'cannot have a statement over 250 chars' do
     @vote = Vote.new(position: 'yes', motion: create_motion, user: User.make!)
-    @vote.statement = "fooo"*500
+    @vote.statement = "fooo"*250
     @vote.should_not be_valid
+  end
+
+  it 'should not accept multiple votes on the same motion by the same user' do
+    @motion = create_motion
+    @user = User.make!
+    @vote = Vote.new(position: 'yes', motion: @motion, user: @user)
+    @vote.save!
+    @vote1 = Vote.new(position: 'yes', motion: @motion, user: @user)
+    @vote1.should_not be_valid
   end
 end

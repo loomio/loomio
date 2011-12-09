@@ -24,8 +24,6 @@ class Motion < ActiveRecord::Base
   def votes_graph_ready
     @votes_for_graph = []
     self.votes_breakdown.each do |k, v|
-      puts k
-      puts v
       @votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|v| v.user.email}]]
     end
     @yet_to_vote = self.group.memberships.size - self.votes.size

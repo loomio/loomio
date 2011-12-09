@@ -6,5 +6,5 @@ class Vote < ActiveRecord::Base
   validates_presence_of :motion, :user, :position
   validates_inclusion_of :position, in: POSITIONS
   validates_uniqueness_of :user_id, scope: :motion_id
-  validates_length_of :statement, maximum: 500
+  validates_length_of :statement, maximum: 250
 end
