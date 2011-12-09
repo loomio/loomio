@@ -11,6 +11,8 @@ Tautoko::Application.routes.draw do
 
   resources :votes
   resources :memberships
+  resources :users
+  match "/settings", :to => "users#settings", :as => :user_settings
 
   namespace :admin do
     resources :groups

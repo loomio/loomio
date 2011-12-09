@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+
+  validates :name, :presence => true
+
   has_many :membership_requests, 
            :conditions => {:access_level => 'request'}, 
            :class_name => 'Membership'
@@ -13,6 +16,7 @@ class User < ActiveRecord::Base
            :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS}
   has_many :groups, through: :memberships
   has_many :votes
+
 
   def motions
     self.groups.collect{|g| g.motions.order('created_at DESC')}.flatten!

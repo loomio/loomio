@@ -41,7 +41,7 @@
         -@motion.votes.each do |vote|
           %tr
             %td=vote.position
-            %td=vote.user.email
+            %td=vote.user.name
             %td=vote.statement
             -if vote.user == current_user
               %td

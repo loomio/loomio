@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe User do
+  subject do 
+    @user = User.new
+    @user.valid?
+    @user
+  end
+  it {should have(1).errors_on(:name)}
+
   it "has many groups" do
     @user = User.make!
     @group = Group.make!
