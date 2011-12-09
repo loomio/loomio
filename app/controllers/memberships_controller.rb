@@ -25,6 +25,9 @@ class MembershipsController < BaseController
         format.html { redirect_to @membership.group }
       end
       flash[:notice] = "Membership approved."
+      if params[:membership][:access_level] =='member'
+        UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
+      end
     else
       flash[:error] = "You do not have significant priviledges to do that."
       redirect_to @membership.group

@@ -35,6 +35,21 @@ describe MembershipsController do
         assigns(:membership).id.should == @membership.id
       end
 
+      it "sends an email to notify the user of their membership approval" do
+        @group.add_request!(@new_user)
+        @membership = @group.membership_requests.first
+        post :update, :id => @membership.id, 
+             :membership => {:access_level => 'member'}
+        flash[:notice].should =~ /Membership approved/
+        last_email =  ActionMailer::Base.deliveries.last
+        last_email.to.should include @new_user.email
+        last_email.body.should =~ /request for access to (.*) has been approved/
+        response.should redirect_to(@group)
+        assigns(:membership).access_level.should == 'member'
+        assigns(:membership).id.should == @membership.id
+
+      end
+
       it 'can add an admin' do
         @group.add_member!(@new_user)
         @membership = @group.memberships.find_by_user_id(@new_user)
