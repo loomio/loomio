@@ -19,6 +19,16 @@ describe MembershipsController do
       assigns(:membership).access_level.should == 'request'
     end
 
+    it "sends an email to admins with new membership request" do
+      @group.add_admin!(User.make!)
+      # note trying to sneek member level access.. should be ignored
+      post :create, 
+           :membership => {:group_id => @group.id, :access_level => 'member'}
+      last_email =  ActionMailer::Base.deliveries.last
+      last_email.to.should == @group.admins.map(&:email)
+      last_email.body.should =~ /You have a new request for access to #{@group.name}/
+    end
+
     context 'group admin' do
       before :each do
         @group.add_admin!(@user)
@@ -44,10 +54,6 @@ describe MembershipsController do
         last_email =  ActionMailer::Base.deliveries.last
         last_email.to.should include @new_user.email
         last_email.body.should =~ /request for access to (.*) has been approved/
-        response.should redirect_to(@group)
-        assigns(:membership).access_level.should == 'member'
-        assigns(:membership).id.should == @membership.id
-
       end
 
       it 'can add an admin' do

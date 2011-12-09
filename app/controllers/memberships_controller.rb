@@ -38,6 +38,7 @@ class MembershipsController < BaseController
     build_resource
     @membership.user = current_user
     @membership.access_level = 'request'
+    GroupMailer.new_membership_request(@membership.group).deliver
     create! do |format|
       format.html { redirect_to groups_url }
     end
