@@ -16,6 +16,11 @@
             = render :partial => 'motions/motion_list', locals: {motion: m, last_class: 'last'}
           -else
             = render :partial => 'motions/motion_list', locals: {motion: m, last_class: ''}
+  -else
+    =link_to 'Create a group', new_group_path 
+    or wait until you are accepted into one.
+    or if there are public groups, then wooooooooo.
+
 
 :coffeescript
   jQuery ->
