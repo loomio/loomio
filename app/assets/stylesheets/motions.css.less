@@ -4,7 +4,7 @@ div.motion{
   &.voted_yes{background: fadeout(#90d490, 80%); }
   &.voted_abstain{background: fadeout(#F0BB67, 80%); }
   &.voted_block{background: fadeout(#Ff0000, 80%); }
-  margin-bottom: 1em;
+  margin-bottom: 1.6em;
   font-size: 0.7em;
   line-height: 1.2em;
   box-shadow: 1px 1px 4px #999999; 
@@ -33,24 +33,36 @@ div.motion{
     .graph_tooltip{display: none;}
     .pie {height: 150px;}
     .motion_actions{
+      .btn{width: 100%; clear: both; margin-bottom: 10px;}
       .btn.small{font-size: 1em; line-height: 1.2em; padding: 3px;}
       .btn.primary a{color:#fff;}
     }
   }
 }
-
+#description_text{
+  p{font-size: 0.8em;}
+  margin-top: 30px;
+}
+#stats{
+  float: right;
+  margin-left: 25px;
+  p{text-align: right; padding-right: 15px;}
+}
 #graph {
   width: 400px;
+  height: 250px;
 }
 
 //Show page
 #description{
-  padding-left: 15px;
-  h6 { line-height: 24px; text-transform: none;}
-  .btn.small{font-size: 12px; float: right}
+  h2, .buttons{line-height: 1.2em;}
+  h5 { line-height: 20px; color: #888;}
+  h6 { line-height: 20px; text-transform: none;}
+  .btn.small{font-size: 12px; }
 }
 
 #votes{
-  h2{float:left; width: 100px;}
-  .btn.primary{ float:left; margin-top: 6px;}
+  clear: both;
+  h2{ margin-bottom: 0px}
+  .btn.primary{ margin:10px 0;}
 } 

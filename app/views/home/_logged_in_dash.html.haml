@@ -4,7 +4,7 @@
     .row
       -@motions.each_with_index do |m, index|
         -unless m.user_has_voted?(@user)
-          -if index % 3 == 0 && index != 0
+          -if index % 4 == 0 && index != 0
             = render :partial => 'motions/motion_list', locals: {motion: m, last_class: 'last'}
           -else
             = render :partial => 'motions/motion_list', locals: {motion: m, last_class: ''}
@@ -12,7 +12,7 @@
     .row
       -@motions.each_with_index do |m, index|
         -if m.user_has_voted?(@user)
-          -if index % 3 == 0  && index != 0
+          -if index % 4 == 0  && index != 0
             = render :partial => 'motions/motion_list', locals: {motion: m, last_class: 'last'}
           -else
             = render :partial => 'motions/motion_list', locals: {motion: m, last_class: ''}

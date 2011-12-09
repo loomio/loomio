@@ -20,7 +20,8 @@
     .row.span8
       .pie.span5{ :id => "vgraph_#{m.id}" }
       .motion_actions.span2
-        .btn.primary.small=link_to 'View', motion_path(m)
+        .btn.primary.small=link_to 'Discuss', m.discussion_url, target: '_blank'
+        .btn.small=link_to 'View', motion_path(m)
         .btn.small=link_to 'Vote', new_motion_vote_path(m)
 :coffeescript
   jQuery ->
