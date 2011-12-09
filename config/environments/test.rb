@@ -36,4 +36,12 @@ Tautoko::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address => "localhost",
+    :port => 1025,
+    :domain => "tautoko.co.nz" }
 end

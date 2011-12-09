@@ -1,5 +1,7 @@
 -user_is_group_admin = (current_user.memberships.find_by_group_id(@group.id).access_level == 'admin')
 %h1=@group.name
+-@group.admins.each do |a|
+  =a.email
 .row
   #motions.span8
     %h3 Motions:

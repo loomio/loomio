@@ -1,0 +1,14 @@
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+%h4 Hi,
+%p="You have a new request for access to #{@group.name}."
+%p 
+  You can approve or decline it at: 
+  =link_to('Tautoko', group_url(@group))
+%br 
+%p Thanks!
+</body>
+</html>
