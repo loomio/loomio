@@ -22,7 +22,8 @@
       .motion_actions.span2
         .btn.primary.small=link_to 'Discuss', m.discussion_url, target: '_blank', class: 'stop_prop'
         .btn.small=link_to 'View', motion_path(m)
-        .btn.small=link_to 'Vote', new_motion_vote_path(m)
+        -if !m.user_has_voted?(current_user)
+          .btn.small=link_to 'Vote', new_motion_vote_path(m)
 :coffeescript
   jQuery ->
     @pie_graph_view_#{m.id} = new Tautoko.Views.Utils.GraphView
