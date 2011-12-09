@@ -26,7 +26,7 @@ describe MembershipsController do
            :membership => {:group_id => @group.id, :access_level => 'member'}
       last_email =  ActionMailer::Base.deliveries.last
       last_email.to.should == @group.admins.map(&:email)
-      last_email.body.should =~ /You have a new request for access to #{@group.name}/
+      last_email.subject.should include("[Tautoko: #{@group.name}] Membership waiting approval.")
     end
 
     context 'group admin' do
@@ -53,7 +53,7 @@ describe MembershipsController do
         flash[:notice].should =~ /Membership approved/
         last_email =  ActionMailer::Base.deliveries.last
         last_email.to.should include @new_user.email
-        last_email.body.should =~ /request for access to (.*) has been approved/
+        last_email.subject.should include("[Tautoko: #{@group.name}] Membership approved.")
       end
 
       it 'can add an admin' do

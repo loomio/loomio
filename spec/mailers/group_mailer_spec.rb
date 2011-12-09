@@ -1,6 +1,7 @@
 require "spec_helper"
 
 describe GroupMailer do
+
   describe 'sends email on membership request' do
     group = Group.make!
     mail = GroupMailer.new_membership_request(group)
@@ -15,12 +16,12 @@ describe GroupMailer do
       mail.from.should == ['noreply@tautoko.co.nz']
     end
  
-    #ensure that the @name variable appears in the email body
+    #ensure that the group name variable appears in the email body
     it 'assigns @group.name' do
       mail.body.encoded.should match(group.name)
     end
  
-    #ensure that the @confirmation_url variable appears in the email body
+    #ensure that the confirmation_url appears in the email body
     it 'assigns url_for group' do
       mail.body.encoded.should match("http://localhost:3000/groups/#{group.id}")
     end
