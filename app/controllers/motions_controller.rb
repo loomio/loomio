@@ -28,6 +28,11 @@ class MotionsController < BaseController
     @motion.author = current_user
     @motion.group = Group.find(params[:group_id])
     @motion.save
+    @group_members = []
+    @motion.group.memberships.each do |m|
+      @group_members << m.user.email unless m.user.nil? or @motion.author == m.user or m.access_level == 'request'
+    end
+    GroupMailer.new_motion_created(@group_members, @motion.group, @motion).deliver!
     redirect_to motion_url(id: @motion.id)
   end
 

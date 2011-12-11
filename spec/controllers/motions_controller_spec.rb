@@ -20,6 +20,17 @@ describe MotionsController do
       assigns(:motion).facilitator.should == @facilitator
     end
 
+    it "sends an email after motion creation to members of group" do
+      @fuser = User.make!
+      @fuser.save!
+      @user.save!
+      @motion_attrs = {:name => 'testing motions is a good idea', 
+                       :facilitator_id => @fuser.id}
+      post :create, :group_id => @group.id, :motion => @motion_attrs
+      last_email =  ActionMailer::Base.deliveries.last
+      last_email.to.should == @group_members
+    end
+
     it "can view a motion" do
       @motion = create_motion(group: @group)
       get :show, group_id: @motion.group.id, id: @motion.id
