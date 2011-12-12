@@ -45,6 +45,11 @@ describe GroupMailer do
     it 'renders the sender email' do
       mail.from.should == ['noreply@tautoko.co.nz']
     end
+
+    it 'sends email to group members but not author' do
+      mail.to.should_not include(motion.author.email)
+      mail.to.should == group_members
+    end
  
     #ensure that the group name variable appears in the email body
     it 'assigns @group.name' do

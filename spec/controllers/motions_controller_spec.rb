@@ -22,13 +22,13 @@ describe MotionsController do
 
     it "sends an email after motion creation to members of group" do
       @fuser = User.make!
-      @fuser.save!
-      @user.save!
+      @group.add_member!(User.make!)
+      @group.add_member!(User.make!)
       @motion_attrs = {:name => 'testing motions is a good idea', 
                        :facilitator_id => @fuser.id}
       post :create, :group_id => @group.id, :motion => @motion_attrs
       last_email =  ActionMailer::Base.deliveries.last
-      last_email.to.should == @group_members
+      last_email.subject.should include("[Tautoko: #{@group.name}] New motion:")
     end
 
     it "can view a motion" do
