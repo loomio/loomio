@@ -8,6 +8,10 @@ class Motion < ActiveRecord::Base
                         :phase, :facilitator_id
   validates_inclusion_of :phase, in: PHASES
 
+  scope :discussing, where(:phase == 'discussion')
+  scope :voting, where(:phase == 'voting')
+  scope :closed, where(:phase == 'closed')
+
   def user_has_voted?(user)
     self.votes.map{|v| v.user.id}.include? user.id
   end
