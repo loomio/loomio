@@ -14,7 +14,12 @@ class VotesController < BaseController
   def create
     build_resource
     @vote.user = current_user
-    create! { @motion }
+    if @motion.phase == 'voting'
+      create! { @motion }
+    else
+      flash[:notice] = "Can only vote in voting phase"
+      redirect_to @motion
+    end
   end
 
   def update

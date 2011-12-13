@@ -9,21 +9,24 @@
     .description
       =truncate(m.description, :length => 180)
   .expanded.togglable.span8{:id => "expand_#{m.id}"}
-    .group
-      =link_to "Group: #{m.group.name}", group_path(m.group)
-      %span.toggle_motion_expand &ndash; 
-    .name
-      =link_to m.name, motion_path(m)
-    .description
-      =m.description
-    .graph_tooltip{ :id => "tooltip_#{m.id}" }
-    .row.span8
-      .pie.span5{ :id => "vgraph_#{m.id}" }
-      .motion_actions.span2
-        .btn.primary.small=link_to 'Discuss', m.discussion_url, target: '_blank', class: 'stop_prop'
-        .btn.small=link_to 'View', motion_path(m)
-        -if !m.user_has_voted?(current_user)
-          .btn.small=link_to 'Vote', new_motion_vote_path(m)
+    .border
+      .group
+        =link_to "Group: #{m.group.name}", group_path(m.group)
+        %span.toggle_motion_expand &ndash; 
+      .name
+        =link_to m.name, motion_path(m)
+      .description
+        =m.description
+      .graph_tooltip{ :id => "tooltip_#{m.id}" }
+      .row.span8
+        .pie.span5{ :id => "vgraph_#{m.id}" }
+        .motion_actions.span2
+          .btn.primary.small=link_to 'Discuss', m.discussion_url, target: '_blank', class: 'stop_prop'
+          .btn.small=link_to 'View', motion_path(m)
+          -if m.user_has_voted?(current_user) && m.phase == 'voting'
+            .btn.small=link_to 'Change vote', new_motion_vote_path(m)
+          -elsif m.phase == 'voting'
+            .btn.small=link_to 'Vote', new_motion_vote_path(m)
 :coffeescript
   jQuery ->
     @pie_graph_view_#{m.id} = new Tautoko.Views.Utils.GraphView

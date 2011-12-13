@@ -19,9 +19,9 @@ describe Motion do
     @motion.user_has_voted?(@user).should == true
   end
 
-  it "cannot have invalid types" do
+  it "cannot have invalid phases" do
     @motion = create_motion
-    @motion.motion_type = 'bad'
+    @motion.phase = 'bad'
     @motion.should_not be_valid
   end
 
