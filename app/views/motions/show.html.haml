@@ -29,7 +29,7 @@
             #graph.pie
           =simple_format(@motion.description)
   #votes
-    -if !@user_already_voted
+    -if !@user_already_voted || @motion.phase == 'discussion'
       =link_to "Cast your vote", new_motion_vote_path(@motion), class: 'btn primary'
     -if @motion.votes.size > 0
       %h3 Cast votes

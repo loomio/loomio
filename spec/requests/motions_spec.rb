@@ -13,6 +13,7 @@ describe "Motions" do
       @group.add_member!(@user2)
       @motion = create_motion(name: 'Test Motion', group: @group, 
                               author: @user, facilitator: @user)
+      @motion.save!
       page.driver.post user_session_path, 'user[email]' => @user.email, 
                        'user[password]' => 'password'
     end

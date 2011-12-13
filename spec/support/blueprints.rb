@@ -22,6 +22,7 @@ Motion.blueprint do
   name { Faker::Name.name }
   group
   author { User.make }
+  phase { Motion::PHASES.sample }
   description { "Fake description" }
 end
 
