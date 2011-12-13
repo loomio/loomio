@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
   has_many :groups, through: :memberships
   has_many :votes
 
-
-  def motions
-    self.groups.collect{|g| g.motions.order('created_at DESC')}.flatten!
-  end
+  has_many :motions, through: :groups
+  has_many :motions_discussing, through: :groups, :source => :motions, :conditions => {phase: 'discussion'}
+  has_many :motions_voting, through: :groups, :source => :motions, :conditions => {phase: 'voting'}
+  has_many :motions_closed, through: :groups, :source => :motions, :conditions => {phase: 'closed'}
  
   def motion_vote(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, self.id).first
