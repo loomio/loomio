@@ -16,14 +16,6 @@
             = render :partial => 'motions/motion_list', locals: {motion: m, last_class: 'last'}
           -else
             = render :partial => 'motions/motion_list', locals: {motion: m, last_class: ''}
-    -if @motions_voted.size > 0
-      %h3 Vote submitted
-      .row
-        -@motions_voted.each_with_index do |m, index|
-          -if index % 4 == 0 && index != 0
-            = render :partial => 'motions/motion_list', locals: {motion: m, last_class: 'last'}
-          -else
-            = render :partial => 'motions/motion_list', locals: {motion: m, last_class: ''}
     -if @motions_closed.size > 0
       %h3 Closed
       .row

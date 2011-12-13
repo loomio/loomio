@@ -27,7 +27,6 @@ class MotionsController < BaseController
     @motion = Motion.create(params[:motion])
     @motion.author = current_user
     @motion.group = Group.find(params[:group_id])
-    @motion.phase = 'discussion'
     if @motion.save!
       GroupMailer.new_motion_created(@motion).deliver!
       redirect_to @motion
