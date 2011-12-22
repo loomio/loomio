@@ -31,7 +31,7 @@
           -@group.membership_requests.each do |mr|
             %li
               -user = mr.user
-              =user.email
+              =user.name
               =link_to 'approve', membership_path(mr, 
                 {:membership => {:access_level => 'member'}}), 
                 :method => :put, 
