@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
            :conditions => {:access_level => 'request'}, 
            :class_name => 'Membership'
   has_many :memberships, 
-           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS}
+           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
+           :dependent => :destroy
   has_many :groups, through: :memberships
   has_many :votes
 

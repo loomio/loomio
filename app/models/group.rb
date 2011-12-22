@@ -1,7 +1,8 @@
 class Group < ActiveRecord::Base
   validates_presence_of :name
   has_many :memberships, 
-           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS}
+           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS}, 
+           :dependent => :destroy
   has_many :membership_requests, 
            :conditions => {:access_level => 'request'}, 
            :class_name => 'Membership'

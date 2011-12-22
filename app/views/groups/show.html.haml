@@ -17,7 +17,7 @@
       -@group.users.each do |user|
         %li
           -m = user.memberships.find_by_group_id(@group.id)
-          =user.email
+          =user.name
           -# =m.access_level
           -if user_is_group_admin
             =link_to "edit", edit_membership_path(m)
