@@ -12,7 +12,7 @@ describe MotionsController do
     it "can create a motion" do
       @fuser = User.make!
       @motion_attrs = {:name => 'testing motions is a good idea', 
-                       :facilitator_id => @fuser.id}
+                       :facilitator_id => @fuser.id, :phase => 'discussion'}
       post :create, :group_id => @group.id, :motion => @motion_attrs
       response.should be_redirect
       assigns(:motion).should be_valid

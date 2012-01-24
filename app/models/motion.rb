@@ -6,8 +6,7 @@ class Motion < ActiveRecord::Base
   belongs_to :author, :class_name => 'User'
   belongs_to :facilitator, :class_name => 'User'
   has_many :votes
-  validates_presence_of :name, :group, :author,
-                        :phase, :facilitator_id
+  validates_presence_of :name, :group, :author, :facilitator_id
   validates_inclusion_of :phase, in: PHASES
 
   scope :that_user_has_voted_on, lambda {|user| 
@@ -50,6 +49,7 @@ class Motion < ActiveRecord::Base
     return @votes_for_graph
   end
 
+  private
   def set_defaults
     self.phase ||= 'discussion'
   end
