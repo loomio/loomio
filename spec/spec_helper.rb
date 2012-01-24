@@ -59,7 +59,6 @@ def create_motion(*args)
   end
   motion.group.add_member!(motion.author)
   motion.group.add_member!(motion.facilitator)
-  motion.save
+  motion.save!
   motion
 end
-

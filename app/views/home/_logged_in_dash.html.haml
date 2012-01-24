@@ -1,17 +1,25 @@
 %section#motion_panels
   -if @motions
-    %h3 Pending votes
-    .row
-      -@motions.each_with_index do |m, index|
-        -unless m.user_has_voted?(@user)
+    -if @motions_voting.size > 0
+      %h3 Vote required
+      .row
+        -@motions_voting.each_with_index do |m, index|
           -if index % 4 == 0 && index != 0
             = render :partial => 'motions/motion_list', locals: {motion: m, last_class: 'last'}
           -else
             = render :partial => 'motions/motion_list', locals: {motion: m, last_class: ''}
-    %h3 Past votes
-    .row
-      -@motions.each_with_index do |m, index|
-        -if m.user_has_voted?(@user)
+    -if @motions_discussing.size > 0
+      %h3 Dicussing
+      .row
+        -@motions_discussing.each_with_index do |m, index|
+          -if index % 4 == 0  && index != 0
+            = render :partial => 'motions/motion_list', locals: {motion: m, last_class: 'last'}
+          -else
+            = render :partial => 'motions/motion_list', locals: {motion: m, last_class: ''}
+    -if @motions_closed.size > 0
+      %h3 Closed
+      .row
+        -@motions_closed.each_with_index do |m, index|
           -if index % 4 == 0  && index != 0
             = render :partial => 'motions/motion_list', locals: {motion: m, last_class: 'last'}
           -else

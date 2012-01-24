@@ -34,7 +34,7 @@ describe GroupMailer do
     motion.group.memberships.each do |m|
       group_members << m.user.email unless m.user.nil? or motion.author == m.user or m.access_level == 'request'
     end
-    mail = GroupMailer.new_motion_created(group_members, group, motion)
+    mail = GroupMailer.new_motion_created(motion)
  
     #ensure that the subject is correct
     it 'renders the subject' do

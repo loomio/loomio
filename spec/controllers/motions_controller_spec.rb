@@ -12,7 +12,7 @@ describe MotionsController do
     it "can create a motion" do
       @fuser = User.make!
       @motion_attrs = {:name => 'testing motions is a good idea', 
-                       :facilitator_id => @fuser.id}
+                       :facilitator_id => @fuser.id, :phase => 'discussion'}
       post :create, :group_id => @group.id, :motion => @motion_attrs
       response.should be_redirect
       assigns(:motion).should be_valid
@@ -21,14 +21,15 @@ describe MotionsController do
     end
 
     it "sends an email after motion creation to members of group" do
-      @fuser = User.make!
-      @group.add_member!(User.make!)
-      @group.add_member!(User.make!)
-      @motion_attrs = {:name => 'testing motions is a good idea', 
-                       :facilitator_id => @fuser.id}
-      post :create, :group_id => @group.id, :motion => @motion_attrs
+      @motion = Motion.make
+      @motion.facilitator = User.make!
+      @motion.author = User.make!
+      @motion.group.add_member!(@motion.author)
+      @motion.group.add_member!(@motion.facilitator)
+      @motion.name = "Test Email"
+      post :create, :group_id => @group.id, :motion => @motion.attributes
       last_email =  ActionMailer::Base.deliveries.last
-      last_email.subject.should include("[Tautoko: #{@group.name}] New motion:")
+      last_email.subject.should =~ /[Tautoko]/
     end
 
     it "can view a motion" do
