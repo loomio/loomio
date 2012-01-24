@@ -13,7 +13,7 @@ describe Motion do
 
   it "user_has_votes?(user) returns true if the given user has voted on motion" do
     @user = User.make!
-    @motion = create_motion(:author => @user)
+    @motion = create_motion(:author => @user, :phase => 'voting')
     @vote = Vote.make(:user => @user, :motion => @motion, :position => "yes")
     @vote.save!
     @motion.user_has_voted?(@user).should == true

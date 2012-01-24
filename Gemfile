@@ -47,7 +47,7 @@ group :development, :test do
   gem "rspec-rails", ">= 2.6.0.rc2"
   gem "capybara"
   gem 'database_cleaner'
-  #gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 # group :development do
