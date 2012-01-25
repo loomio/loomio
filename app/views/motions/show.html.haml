@@ -3,7 +3,19 @@
   .row
     #description.span16
       .row
-        %h2.span13=@motion.name
+        %h2.span13
+          =@motion.name
+          -if @motion.phase == 'discussion'
+            -phase_style = "color:blue"
+            -phase_text = 'discussion phase'
+          -if @motion.phase == 'voting'
+            -phase_style = "color:green"
+            -phase_text = 'voting open'
+          -if @motion.phase == 'closed'
+            -phase_style = "color:red"
+            -phase_text = 'voting closed'
+          %span(style=phase_style)
+            ='[' + phase_text + ']'
         .buttons.span3
           -if (@motion.author == current_user || @motion.facilitator == current_user)
             =link_to "Edit", edit_motion_path(@motion), class: 'btn small'

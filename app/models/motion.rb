@@ -1,5 +1,6 @@
 class Motion < ActiveRecord::Base
-  PHASES = %w[discussion voting closed]
+  #PHASES = %w[discussion voting closed]
+  PHASES = %w[voting closed]
   after_initialize :set_defaults
 
   belongs_to :group
@@ -23,7 +24,18 @@ class Motion < ActiveRecord::Base
   def user_has_voted?(user)
     self.votes.map{|v| v.user.id}.include? user.id
   end
-  
+
+  def phase=(phase)
+    if (phase == 'closed')
+      unless (self.phase == 'closed')
+        self.no_vote_count = self.group.memberships.size - self.votes.size
+      end
+    else
+      self.no_vote_count = nil
+    end
+    self[:phase] = phase
+  end
+
   def with_votes
     if self.votes.size > 0
       self.votes
@@ -31,7 +43,7 @@ class Motion < ActiveRecord::Base
   end
 
   def votes_breakdown
-    return @votes = {
+    return votes = {
       'yes' => self.votes.where('position = ?', 'yes'),
       'no' => self.votes.where('position = ?', 'no'),
       'abstain' => self.votes.where('position = ?', 'abstain'),
@@ -40,13 +52,18 @@ class Motion < ActiveRecord::Base
   end
 
   def votes_graph_ready
-    @votes_for_graph = []
+    votes_for_graph = []
     self.votes_breakdown.each do |k, v|
-      @votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|v| v.user.email}]]
+      votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|v| v.user.email}]]
     end
-    @yet_to_vote = self.group.memberships.size - self.votes.size
-    @votes_for_graph.push ["Yet to vote (#{@yet_to_vote})", @yet_to_vote, 'Yet to vote', [self.group.users.map{|u| u.email unless self.votes.where('user_id = ?', u).exists?}.compact!]]
-    return @votes_for_graph
+    no_vote_count = self.group.memberships.size - self.votes.size
+    text = "Yet to vote "
+    if (self.phase == 'closed')
+      text = "Did not vote "
+      no_vote_count = self.no_vote_count
+    end
+    votes_for_graph.push [text + "(#{no_vote_count})", no_vote_count, 'Yet to vote', [self.group.users.map{|u| u.email unless self.votes.where('user_id = ?', u).exists?}.compact!]]
+    return votes_for_graph
   end
 
   private

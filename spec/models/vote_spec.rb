@@ -18,6 +18,10 @@ describe Vote do
     @vote.should have(1).errors_on(:position)
   end 
 
+  it 'should only accept votes from users who belong to the group containing the motion'
+
+  it "should only accept votes during the motion's voting phase"
+
   it 'can have a statement' do
     @vote = Vote.new(position: 'yes', motion: create_motion, user: User.make!)
     @vote.statement = "This is what I think about the motion"

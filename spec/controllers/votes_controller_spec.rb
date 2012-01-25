@@ -19,13 +19,13 @@ describe VotesController do
       assigns(:vote).position.should == 'yes'
       assigns(:vote).statement.should == 'blah'
     end
-    
+
     it 'can only vote in voting phase' do
       @motion = create_motion(:group => @group, :phase => 'closed')
       post :create, :motion_id => @motion.id, 
            :vote => {:position => 'yes', :statement => 'blah'}
       response.should be_redirect
-      flash[:notice].should =~ /Can only vote in voting phase/
+      flash[:error].should =~ /Can only vote in voting phase/
     end
   end
 end

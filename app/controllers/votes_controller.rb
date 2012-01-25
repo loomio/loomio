@@ -8,7 +8,13 @@ class VotesController < BaseController
   # end
 
   def destroy
-    destroy! { @motion }
+    build_resource
+    if @motion.phase == 'voting'
+      destroy! { @motion }
+    else
+      flash[:error] = "You can only delete your vote during the 'voting' phase"
+      redirect_to @motion
+    end
   end
 
   def create
@@ -17,13 +23,19 @@ class VotesController < BaseController
     if @motion.phase == 'voting'
       create! { @motion }
     else
-      flash[:notice] = "Can only vote in voting phase"
+      flash[:error] = "Can only vote in voting phase"
       redirect_to @motion
     end
   end
 
   def update
-    update! {@motion}
+    build_resource
+    if @motion.phase == 'voting'
+      update! { @motion }
+    else
+      flash[:error] = "Can only vote in voting phase"
+      redirect_to @motion
+    end
   end
 
   private
@@ -33,7 +45,7 @@ class VotesController < BaseController
     group = Motion.find(params[:motion_id]).group
     unless group.users.include? current_user
       if group.requested_users_include?(current_user)
-        flash[:notice] = "Cannot access group yet... waiting for membership approval."
+        flash[:error] = "Cannot access group yet... waiting for membership approval."
         redirect_to groups_url
       else
         redirect_to request_membership_group_url(group)

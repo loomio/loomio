@@ -1,14 +1,6 @@
 class RenameMotionTypeToPhase < ActiveRecord::Migration
   def up
     rename_column :motions, :motion_type, :phase
-    Motion.reset_column_information
-    Motion.all.each do |m| 
-      m.phase = 'discussion'
-      if (m.votes.size > 0)
-        m.phase = 'voting'
-      end
-      m.save!
-    end
   end
 
   def down
