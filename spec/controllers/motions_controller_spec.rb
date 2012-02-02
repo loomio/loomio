@@ -11,7 +11,7 @@ describe MotionsController do
 
     it "can close a motion" do
       @motion = create_motion(group: @group)
-      debugger
+      # debugger
       @motion.phase.should == 'voting'
       post :close_voting, id: @motion.id
       @motion.phase.should == 'closed'

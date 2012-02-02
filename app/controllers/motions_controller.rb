@@ -28,7 +28,8 @@ class MotionsController < BaseController
     @motion.author = current_user
     @motion.group = Group.find(params[:group_id])
     if @motion.save!
-      GroupMailer.new_motion_created(@motion).deliver!
+      # TODO: get this shit workin!
+      # GroupMailer.new_motion_created(@motion).deliver!
       redirect_to @motion
     else
       redirect_to edit_motion_path(@motion)

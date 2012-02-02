@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20120124225553) do
     t.integer  "facilitator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "phase",          :default => "voting"
+    t.string   "phase",          :default => "voting", :null => false
     t.string   "discussion_url", :default => "",       :null => false
     t.integer  "no_vote_count"
   end
