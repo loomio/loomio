@@ -35,6 +35,12 @@ class MotionsController < BaseController
     end
   end
 
+  def close_voting
+    resource
+    @motion.phase = 'closed'
+    redirect_to motion_path(@motion)
+  end
+
   def edit
     resource
     if (@motion.author == current_user) || (@motion.facilitator == current_user)

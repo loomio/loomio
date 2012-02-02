@@ -46,7 +46,7 @@ describe "Motions" do
       fill_in 'Name', with: 'This is a new motion'
       fill_in 'Description', with: 'Blahhhhhh'
       select @user2.email, from: 'Facilitator'
-      select 'discussion', from: 'Phase'
+      select 'voting', from: 'Phase'
       click_on 'Create Motion'
     end
   end

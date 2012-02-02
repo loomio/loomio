@@ -8,6 +8,8 @@ Tautoko::Application.routes.draw do
   resources :motions do
     resources :votes
   end
+  match "/motions/:id/close", :to => "motions#close_voting", :as => :close_motion_voting,
+    :via => :post
 
   resources :votes
   resources :memberships

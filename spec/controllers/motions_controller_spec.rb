@@ -1,6 +1,23 @@
 require 'spec_helper'
 
 describe MotionsController do
+  context "signed in user, admin of a group" do
+    before :each do
+      @user = User.make!
+      @group = Group.make!
+      @group.add_admin!(@user)
+      sign_in @user
+    end
+
+    it "can close a motion" do
+      @motion = create_motion(group: @group)
+      debugger
+      @motion.phase.should == 'voting'
+      post :close_voting, id: @motion.id
+      @motion.phase.should == 'closed'
+    end
+  end
+
   context "signed in user, in a group" do
     before :each do
       @user = User.make!
@@ -12,12 +29,20 @@ describe MotionsController do
     it "can create a motion" do
       @fuser = User.make!
       @motion_attrs = {:name => 'testing motions is a good idea', 
-                       :facilitator_id => @fuser.id, :phase => 'discussion'}
+                       :facilitator_id => @fuser.id, :phase => 'voting'}
       post :create, :group_id => @group.id, :motion => @motion_attrs
       response.should be_redirect
       assigns(:motion).should be_valid
       assigns(:motion).group.should == @group
       assigns(:motion).facilitator.should == @facilitator
+      assigns(:motion).phase.should == 'voting'
+    end
+
+    it "cannot close a motion" do
+      @motion = create_motion(group: @group)
+      @motion.phase.should == 'voting'
+      post :close_voting, id: @motion.id
+      @motion.phase.should == 'voting'
     end
 
     it "sends an email after motion creation to members of group" do
@@ -26,6 +51,7 @@ describe MotionsController do
       @motion.author = User.make!
       @motion.group.add_member!(@motion.author)
       @motion.group.add_member!(@motion.facilitator)
+      @motion.phase = 'voting'
       @motion.name = "Test Email"
       post :create, :group_id => @group.id, :motion => @motion.attributes
       last_email =  ActionMailer::Base.deliveries.last

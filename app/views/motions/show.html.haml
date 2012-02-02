@@ -18,6 +18,8 @@
             ='[' + phase_text + ']'
         .buttons.span3
           -if (@motion.author == current_user || @motion.facilitator == current_user)
+            -#-if @motion.phase == 'voting'
+              -#=link_to "Close voting", 
             =link_to "Edit", edit_motion_path(@motion), class: 'btn small'
           -if (@motion.author == current_user || user_is_group_admin)
             =link_to "Delete", @motion, method: :delete,

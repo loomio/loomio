@@ -36,6 +36,14 @@ class Motion < ActiveRecord::Base
     self[:phase] = phase
   end
 
+  def open_voting
+    self.phase = 'voting'
+  end
+
+  def close_voting
+    self.phase = 'closed'
+  end
+
   def with_votes
     if self.votes.size > 0
       self.votes
@@ -68,6 +76,6 @@ class Motion < ActiveRecord::Base
 
   private
   def set_defaults
-    self.phase ||= 'discussion'
+    self.phase ||= 'voting'
   end
 end
