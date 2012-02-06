@@ -28,6 +28,20 @@ class GroupsController < BaseController
     end
   end
 
+  def tag_user
+    @group = Group.find(params[:id])
+    @users = @group.users
+
+    if request.post?
+      @user = @group.users.find(params[:user])
+      @group.tag @user, with: params[:tag], on: :group_tags
+    end
+
+    @tags = @group.owned_tags
+    #debugger
+    #puts "yo"
+  end
+
   private
   def ensure_group_member
     unless resource.users.include? current_user

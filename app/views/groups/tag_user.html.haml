@@ -1,0 +1,16 @@
+
+%h3 Tag dat shiz.
+
+= form_tag do
+  = select_tag "user", options_from_collection_for_select(@users, "id", "email")
+  = text_field_tag "tag"
+
+- @tags.each do |tag|
+  = tag
+  (
+  - #debugger
+  - User.tagged_with(tag, on: :group_tags).each do |user|
+    = user.email
+  )
+  %br
+
