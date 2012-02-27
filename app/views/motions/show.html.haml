@@ -57,8 +57,8 @@
             %td=vote.position
             %td=vote.user.name
             %td=vote.statement
-            -if vote.user == current_user
-              %td
+            %td
+              -if vote.user == current_user
                 =link_to "edit", edit_motion_vote_path(@motion, vote)
                 |
                 =link_to "delete", motion_vote_path(@motion, vote), method: :delete, 
