@@ -22,7 +22,9 @@ class User < ActiveRecord::Base
   has_many :motions_discussing, through: :groups, :source => :motions, :conditions => {phase: 'discussion'}
   has_many :motions_voting, through: :groups, :source => :motions, :conditions => {phase: 'voting'}
   has_many :motions_closed, through: :groups, :source => :motions, :conditions => {phase: 'closed'}
- 
+
+  acts_as_taggable_on :group_tags
+
   def motion_vote(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, self.id).first
   end

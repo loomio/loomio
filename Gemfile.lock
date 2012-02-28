@@ -9,6 +9,13 @@ GIT
       less-rails (~> 2.1.0)
       railties
 
+GIT
+  remote: https://github.com/mbleigh/acts-as-taggable-on.git
+  revision: 1338cb82593be43928ecafbc09a0a18f5fc08a94
+  specs:
+    acts-as-taggable-on (2.2.2)
+      rails (~> 3.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -241,6 +248,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on (~> 2.2.2)!
   capistrano
   capybara
   coffee-filter

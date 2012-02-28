@@ -21,5 +21,7 @@ Tautoko::Application.routes.draw do
   end
   match "/admin", :to => redirect("/admin/groups")
 
+  match "/groups/:id/tag_user", :to => "groups#tag_user", :as => :group_tag_user
+
   root :to => 'home#index'
 end

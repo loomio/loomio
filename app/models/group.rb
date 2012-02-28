@@ -13,6 +13,8 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :motions
 
+  acts_as_tagger
+
   def add_request!(user)
     unless requested_users_include?(user) || users.exists?(user)
       m = Membership.new
