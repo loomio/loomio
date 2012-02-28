@@ -38,8 +38,6 @@ class GroupsController < BaseController
     end
 
     @tags = @group.owned_tags
-    #debugger
-    #puts "yo"
   end
 
   private
