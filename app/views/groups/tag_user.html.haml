@@ -1,13 +1,19 @@
 
 %h3 Tag dat shiz.
+%p Select a user and enter a comma separated list of tags
 
 = form_tag do
-  = select_tag "user", options_from_collection_for_select(@users, "id", "email")
-  = text_field_tag "tag"
+	= select_tag "user", options_from_collection_for_select(@users, "id", "email")
+	= text_field_tag "tag"
 
 %table
-  - @tags.each do |tag|
-    %tr
-      %td<= tag
-      %td<= User.tagged_with(tag, on: :group_tags).map { |u| u.email }.join(", ")
+	%tr
+		%td
+			%h3 Tag
+		%td
+			%h3 Users Associated to Tag
+	- @tags.each do |tag|
+		%tr
+			%td<= tag
+			%td<= User.tagged_with(tag, on: :group_tags).map { |u| u.email }.join(", ")
 
