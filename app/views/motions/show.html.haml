@@ -3,7 +3,7 @@
   .row
     #description.span16
       .row
-        %h2.span13
+        %h2.span11
           =@motion.name
           -if @motion.phase == 'discussion'
             -phase_style = "color:blue"
@@ -16,17 +16,17 @@
             -phase_text = 'voting closed'
           %span(style=phase_style)
             ='[' + phase_text + ']'
-        .buttons.span3
+        .buttons.span5
           -if (@motion.author == current_user || @motion.facilitator == current_user)
-            -#-if @motion.phase == 'voting'
-              -#=link_to "Close voting", 
+            -if @motion.phase == 'voting'
+              =link_to ("Close voting"), close_motion_voting_path, confirm: "Are you sure you want to close this motion?", method: :post, class: 'btn small'
             =link_to "Edit", edit_motion_path(@motion), class: 'btn small'
           -if (@motion.author == current_user || user_is_group_admin)
             =link_to "Delete", @motion, method: :delete,
-              confirm: "Are you sure you want to delete this motion?", 
+              confirm: "Are you sure you want to delete this motion?",
               class: 'btn small'
       -unless @motion.discussion_url.empty?
-        %h5 
+        %h5
           Discussion:
           =link_to @motion.discussion_url, @motion.discussion_url, target: "_blank"
       %h6
@@ -37,32 +37,50 @@
           -if @motion.updated_at != @motion.created_at
             ="(edited: #{time_ago_in_words(@motion.updated_at)} ago)"
         %span.facilitator=", Facilitator: #{@motion.facilitator.email}"
+      #description_text
+        =simple_format(@motion.description)
       .row
-        #description_text.span16
+        .span9
+          %h3 Cast votes
+          #votes-table
+            -if @motion.votes.size > 0
+              %table.zebra-striped
+                %th position
+                %th user
+                %th statement
+                %th 
+                -@motion.votes.each do |vote|
+                  %tr
+                    %td=vote.position
+                    %td=vote.user.name
+                    %td=vote.statement
+                    -if vote.user == current_user
+                      %td
+                        =link_to "edit", edit_motion_vote_path(@motion, vote)
+                        |
+                        =link_to "delete", motion_vote_path(@motion, vote), method: :delete, 
+                          confirm: "Are you sure you want to delete your vote?"
+            -else
+              #no-votes-msg
+                No votes presently cast
+        .span7
           #stats
             #graph.pie
-          =simple_format(@motion.description)
-  #votes
-    -if !@user_already_voted || @motion.phase == 'discussion'
-      =link_to "Cast your vote", new_motion_vote_path(@motion), class: 'btn primary'
-    -if @motion.votes.size > 0
-      %h3 Cast votes
-      %table.zebra-striped
-        %th position
-        %th user
-        %th statement
-        %th 
-        -@motion.votes.each do |vote|
-          %tr
-            %td=vote.position
-            %td=vote.user.name
-            %td=vote.statement
-            %td
-              -if vote.user == current_user
-                =link_to "edit", edit_motion_vote_path(@motion, vote)
-                |
-                =link_to "delete", motion_vote_path(@motion, vote), method: :delete, 
-                  confirm: "Are you sure you want to delete your vote?"
+            #votes
+              -if @motion.phase == 'voting'
+                -if !@user_already_voted || @motion.phase == 'discussion'
+                  #cast-votes-title
+                    %h3 Cast your vote
+                  #vote-buttons
+                    =link_to image_tag("vote-yes.png", height:'60', width:'60'), '#', onclick: "$('#vote_position').val('yes'); $('#new_vote').submit();"
+                    =link_to image_tag("vote-no.png", height:'60', width:'60'), '#', onclick: "$('#vote_position').val('no'); $('#new_vote').submit();"
+                    =link_to image_tag("vote-abstain.png", height:'60', width:'60'), '#', onclick: "$('#vote_position').val('abstain'); $('#new_vote').submit();"
+                    =link_to image_tag("vote-block.png", height:'60', width:'60'), '#', onclick: "$('#vote_position').val('block'); $('#new_vote').submit();"
+                  #vote-form
+                    =semantic_form_for([@motion, @vote], html:{class:'form-stacked'}) do |f|
+                      =f.hidden_field :position
+                      =f.input :statement, label: false, placeholder: "Give a reason for your vote"
+
 :coffeescript
   jQuery ->
     @pie_graph_view = new Tautoko.Views.Utils.GraphView
@@ -71,4 +89,4 @@
       legend: true
       data: #{@votes_for_graph.to_json.html_safe}
       type: 'pie'
-      tooltip_selector: '#tooltip'
+      t
