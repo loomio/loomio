@@ -98,10 +98,14 @@ GEM
     formtastic-bootstrap (1.0.2)
       formtastic
       rails (~> 3.1.0)
-    guard (0.8.8)
+    guard (1.0.0)
+      ffi (>= 0.5.0)
       thor (~> 0.14.6)
     guard-rspec (0.5.8)
       guard (>= 0.8.4)
+    guard-spork (0.5.2)
+      guard (>= 0.10.0)
+      spork (>= 0.8.4)
     haml (3.1.4)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -224,6 +228,7 @@ GEM
       ffi (~> 1.0.9)
       multi_json (~> 1.0.4)
       rubyzip
+    spork (0.9.0)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -260,6 +265,7 @@ DEPENDENCIES
   formtastic-bootstrap
   guard
   guard-rspec
+  guard-spork
   haml-rails
   inherited_resources
   jqplot-rails
@@ -276,5 +282,6 @@ DEPENDENCIES
   rspec-rails (>= 2.6.0.rc2)
   ruby-debug19
   sass-rails (~> 3.1.4)
+  spork
   twitter-bootstrap-rails!
   uglifier (>= 1.0.3)

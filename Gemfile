@@ -24,14 +24,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development do
-  gem 'guard'
-  gem 'guard-rspec'
-  gem 'rb-inotify', :require => false
-  gem 'rb-fsevent', :require => false
-  gem 'rb-fchange', :require => false
-  gem 'launchy'
-end
+#group :development do
+#end
 #gem 'jquery-rails'
 
 
@@ -45,10 +39,18 @@ end
 group :development, :test do
   gem 'machinist', '>= 2.0.0.beta2'
   gem 'faker'
-  gem "rspec-rails", ">= 2.6.0.rc2"
-  gem "capybara"
+  gem 'rspec-rails', '>= 2.6.0.rc2'
+  gem 'spork'
+  gem 'guard'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'rb-inotify', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-fchange', :require => false
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'launchy'
 end
 
 # group :development do
