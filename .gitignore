@@ -8,3 +8,4 @@ tmp/
 *.tmproj
 doc/twitter*
 *.DS_Store
+.gitignore
