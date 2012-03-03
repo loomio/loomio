@@ -6,6 +6,10 @@ tmp/
 *.swp
 .rvmrc
 *.tmproj
+<<<<<<< HEAD
 doc/twitter*
 *.DS_Store
 .gitignore
+=======
+doc/twitter-bootstrap-e4993fc/*
+>>>>>>> Add .DS_Store and TextMate project files to .gitignore file.
