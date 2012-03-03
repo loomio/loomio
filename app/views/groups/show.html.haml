@@ -1,20 +1,19 @@
 %h1=@group.name
--@group.admins.each do |a|
-  =a.email
+-# Commenting out admin name, as it is not terribly useful
+-#-@group.admins.each do |a|
+  -#=a.email
 .row
-  #motions.span8
-    %h3 Motions:
-    %ul.unstyled
-      -@group.motions.each do |motion|
-        %li=link_to motion.name, motion
-    =link_to "Create a motion",
-      new_motion_path({group_id: @group.id}), :class => 'btn primary'
-  #users.span8
-    %h3 Users:
-    %ul.unstyled
-      =render :partial => 'membership', :collection => @group.memberships
-    -if @group.membership_requests.present?
-      #user-requests
-        %h3 User Requests:
-        %ul.unstyled
-          =render :partial => 'membership_request', :collection => @group.membership_requests
+
+  %ul{:class => "tabs", :data => {:tabs => "tabs"}}
+    %li
+      %a{:href => "#motions"} Motions
+    -#AC TODO change active to motions tab
+    %li{:class => "active"}
+      %a{:href => "#users"} Users
+    
+  .tab-content 
+    #motions.span8.tab-pane
+      =render :partial => 'motions'
+    -#AC TODO change active to motions tab
+    #users.span8.tab-pane.active
+      =render :partial => 'users'
