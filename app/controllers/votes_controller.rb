@@ -5,8 +5,8 @@ class VotesController < BaseController
 
   # def begin_of_association_chain
   #   @motion
-  # end
-
+  #
+  
   def destroy
     resource
     if @motion.phase == 'voting'
@@ -40,7 +40,8 @@ class VotesController < BaseController
     redirect_to @motion
   end
 
-  private
+  private 
+
   def ensure_group_member
     # NOTE: this method is currently duplicated in groups_controller,
     # and motions_controller. We should figure out a way to DRY this up.
