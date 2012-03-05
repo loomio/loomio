@@ -18,6 +18,9 @@ Tautoko::Application.routes.draw do
   match "/motions/:id/close", :to => "motions#close_voting", :as => :close_motion_voting,
     :via => :post
 
+  match "/motions/:id/open", :to => "motions#open_voting", :as => :open_motion_voting,
+    :via => :post
+
   resources :votes
   resources :memberships
   resources :users
