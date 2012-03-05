@@ -21,6 +21,7 @@ class MotionsController < BaseController
     resource
     @user_already_voted = @motion.votes.where('user_id = ?', current_user).exists?
     @votes_for_graph = @motion.votes_graph_ready
+    @vote = Vote.new
   end
 
   def create
@@ -39,6 +40,7 @@ class MotionsController < BaseController
   def close_voting
     resource
     @motion.phase = 'closed'
+    @motion.save
     redirect_to motion_path(@motion)
   end
 
