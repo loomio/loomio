@@ -8,7 +8,7 @@ class VotesController < BaseController
   # end
 
   def destroy
-    build_resource
+    resource
     if @motion.phase == 'voting'
       destroy! { @motion }
     else
@@ -29,13 +29,15 @@ class VotesController < BaseController
   end
 
   def update
-    build_resource
+    resource
     if @motion.phase == 'voting'
-      update! { @motion }
+      @vote.update_attributes(params[:vote])
+      flash[:notice] = "Vote updated."
+      @vote.save
     else
       flash[:error] = "Can only vote in voting phase"
-      redirect_to @motion
     end
+    redirect_to @motion
   end
 
   private
