@@ -10,6 +10,11 @@ class Membership < ActiveRecord::Base
   validates_inclusion_of :access_level, :in => ACCESS_LEVELS
   validates_uniqueness_of :user_id, :scope => :group_id
 
+  scope :for_group, lambda {|group| where(:group_id => group)}
+  scope :with_access, lambda {|access| where(:access_level => access)}
+
+  delegate :name, :email, :to => :user, :prefix => :user
+
   private
 
     def set_defaults

@@ -9,6 +9,9 @@ class Motion < ActiveRecord::Base
   validates_presence_of :name, :group, :author, :facilitator_id
   validates_inclusion_of :phase, in: PHASES
 
+  delegate :email, :to => :author, :prefix => :author
+  delegate :email, :to => :facilitator, :prefix => :facilitator
+
   include AASM
   aasm :column => :phase do
     state :voting, :initial => true
@@ -63,6 +66,22 @@ class Motion < ActiveRecord::Base
     end
     votes_for_graph.push [text + "(#{yet_to_vote_count})", yet_to_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
     return votes_for_graph
+  end
+
+  def has_admin_user?(user)
+    group.has_admin_user?(user)
+  end
+
+  def user_has_voted?(user)
+    votes.for_user(user).exists?
+  end
+
+  def can_be_edited_by?(user)
+    user && ((author == user) || (facilitator == user))
+  end
+
+  def can_be_deleted_by?(user)
+    user && (author == user || has_admin_user?(user))
   end
 
   private

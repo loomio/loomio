@@ -45,4 +45,12 @@ class Group < ActiveRecord::Base
   def requested_users_include?(user)
     membership_requests.find_by_user_id(user)
   end
+
+  def can_be_edited_by?(user)
+    users.include? user
+  end
+
+  def has_admin_user?(user)
+    admins.include?(user)
+  end
 end

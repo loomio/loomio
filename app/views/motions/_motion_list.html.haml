@@ -2,19 +2,19 @@
 .motion.span4{:id =>"motion_#{m.id}", :class => "#{last_class} voted_#{current_user.motion_vote(m) ? current_user.motion_vote(m).position : "notyet"}"}
   .border
     .group.cf
-      =link_to "Group: #{m.group.name}", group_path(m.group), :class => 'stop_prop'
+      =link_to "Group: #{m.group.name}", m.group, :class => 'stop_prop'
       %span.toggle_motion_expand +
     .name
-      =link_to m.name, motion_path(m), :class => 'stop_prop'
+      =link_to m.name, m, :class => 'stop_prop'
     .description
       =truncate(m.description, :length => 180)
   .expanded.togglable.span8{:id => "expand_#{m.id}"}
     .border
       .group
-        =link_to "Group: #{m.group.name}", group_path(m.group)
+        =link_to "Group: #{m.group.name}", m.group
         %span.toggle_motion_expand &ndash;
       .name
-        =link_to m.name, motion_path(m)
+        =link_to m.name, m
       .description
         =m.description
       .graph_tooltip{ :id => "tooltip_#{m.id}" }
@@ -22,7 +22,7 @@
         .pie.span5{ :id => "vgraph_#{m.id}" }
         .motion_actions.span2
           .btn.primary.small=link_to 'Discuss', m.discussion_url, target: '_blank', class: 'stop_prop'
-          .btn.small=link_to 'View', motion_path(m)
+          .btn.small=link_to 'View', m
           -if m.user_has_voted?(current_user) && m.voting?
             .btn.small=link_to 'Change vote', new_motion_vote_path(m)
           -elsif m.voting?

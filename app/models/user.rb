@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
            :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
            :dependent => :destroy
   has_many :groups, through: :memberships
+  has_many :group_requests, through: :membership_requests, class_name: 'Group', source: :user
   has_many :votes
 
   has_many :motions, through: :groups
@@ -29,5 +30,12 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).first
   end
 
+  def is_group_admin?(group)
+    memberships.for_group(group).with_access('admin').exists?
+  end
+
+  def group_membership(group)
+    memberships.for_group(@group).first
+  end
 end
 

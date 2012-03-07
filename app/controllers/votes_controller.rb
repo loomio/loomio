@@ -1,4 +1,4 @@
-class VotesController < BaseController
+class VotesController < GroupBaseController
   belongs_to :motion
   # before_filter :ensure_group_member
   # belongs_to :motion
@@ -42,17 +42,7 @@ class VotesController < BaseController
 
   private
 
-  def ensure_group_member
-    # NOTE: this method is currently duplicated in groups_controller,
-    # and motions_controller. We should figure out a way to DRY this up.
-    group = Motion.find(params[:motion_id]).group
-    unless group.users.include? current_user
-      if group.requested_users_include?(current_user)
-        flash[:error] = "Cannot access group yet... waiting for membership approval."
-        redirect_to groups_url
-      else
-        redirect_to request_membership_group_url(group)
-      end
+    def group
+      group = Motion.find(params[:motion_id]).group
     end
-  end
 end
