@@ -12,7 +12,7 @@
     .border
       .group
         =link_to "Group: #{m.group.name}", group_path(m.group)
-        %span.toggle_motion_expand &ndash; 
+        %span.toggle_motion_expand &ndash;
       .name
         =link_to m.name, motion_path(m)
       .description
@@ -23,9 +23,9 @@
         .motion_actions.span2
           .btn.primary.small=link_to 'Discuss', m.discussion_url, target: '_blank', class: 'stop_prop'
           .btn.small=link_to 'View', motion_path(m)
-          -if m.user_has_voted?(current_user) && m.phase == 'voting'
+          -if m.user_has_voted?(current_user) && m.voting?
             .btn.small=link_to 'Change vote', new_motion_vote_path(m)
-          -elsif m.phase == 'voting'
+          -elsif m.voting?
             .btn.small=link_to 'Vote', new_motion_vote_path(m)
 :coffeescript
   jQuery ->

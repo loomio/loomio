@@ -1,12 +1,13 @@
 class Group < ActiveRecord::Base
   validates_presence_of :name
-  has_many :memberships, 
-           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS}, 
-           :dependent => :destroy
-  has_many :membership_requests, 
-           :conditions => {:access_level => 'request'}, 
+  has_many :memberships,
+           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
+           :dependent => :destroy,
+           :extend => GroupMemberships
+  has_many :membership_requests,
+           :conditions => {:access_level => 'request'},
            :class_name => 'Membership'
-  has_many :admin_memberships, 
+  has_many :admin_memberships,
            :conditions => {:access_level => 'admin'},
            :class_name => 'Membership'
   has_many :users, :through => :memberships
@@ -17,11 +18,7 @@ class Group < ActiveRecord::Base
 
   def add_request!(user)
     unless requested_users_include?(user) || users.exists?(user)
-      m = Membership.new
-      m.user = user
-      m.access_level = 'request'
-      m.group = self
-      self.memberships << m
+      m = memberships.build_for_user(user, access_level: 'request')
       m.save!
     end
   end
@@ -29,10 +26,7 @@ class Group < ActiveRecord::Base
   def add_member!(user)
     unless users.exists?(user)
       unless m = requested_users_include?(user)
-        m = Membership.new
-        m.user = user
-        m.group = self
-        self.memberships << m
+        m = memberships.build_for_user(user)
       end
       m.access_level = 'member'
       m.save!
@@ -42,10 +36,7 @@ class Group < ActiveRecord::Base
   def add_admin!(user)
     unless (m = memberships.find_by_user_id(user) ||
             m = membership_requests.find_by_user_id(user))
-      m = Membership.new
-      m.user = user
-      m.group = self
-      self.memberships << m
+      m = memberships.build_for_user(user)
     end
     m.access_level = 'admin'
     m.save!

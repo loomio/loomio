@@ -11,7 +11,8 @@ class Membership < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :group_id
 
   private
-  def set_defaults
-    self.access_level ||= 'request'
-  end
+
+    def set_defaults
+      self.access_level ||= 'request'
+    end
 end
