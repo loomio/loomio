@@ -1,4 +1,4 @@
-class MotionsController < BaseController
+class MotionsController < GroupBaseController
   before_filter :ensure_group_member
 
   def new
@@ -7,8 +7,7 @@ class MotionsController < BaseController
 
   def destroy
     resource
-    is_group_admin = @motion.group.admins.include?(current_user)
-    if is_group_admin || @motion.author == current_user
+    if @motion.has_admin_user?(current_user) || @motion.author == current_user
       destroy! { @motion.group }
       flash[:notice] = "Motion deleted."
     else
@@ -19,7 +18,7 @@ class MotionsController < BaseController
 
   def show
     resource
-    @user_already_voted = @motion.votes.where('user_id = ?', current_user).exists?
+    @user_already_voted = @motion.user_has_voted?(current_user)
     @votes_for_graph = @motion.votes_graph_ready
     @vote = Vote.new
   end
@@ -45,7 +44,7 @@ class MotionsController < BaseController
 
   def edit
     resource
-    if (@motion.author == current_user) || (@motion.facilitator == current_user)
+    if @motion.can_be_edited_by?(current_user)
       edit!
     else
       flash[:error] = "Only the facilitator or author can edit a motion."
@@ -54,21 +53,16 @@ class MotionsController < BaseController
   end
 
   private
-  def ensure_group_member
-    # NOTE: this method is currently duplicated in groups_controller,
-    # we should figure out a way to DRY this up.
-    if (params[:id] && (params[:id] != "new"))
-      group = Motion.find(params[:id]).group
-    elsif params[:group_id]
-      group = Group.find(params[:group_id])
+
+    def group
+      @group ||= find_group
     end
-    unless group.users.include? current_user
-      if group.requested_users_include?(current_user)
-        flash[:notice] = "Cannot access group yet... waiting for membership approval."
-        redirect_to groups_url
-      else
-        redirect_to request_membership_group_url(group)
+
+    def find_group
+      if (params[:id] && (params[:id] != "new"))
+        Motion.find(params[:id]).group
+      elsif params[:group_id]
+        Group.find(params[:group_id])
       end
     end
-  end
 end

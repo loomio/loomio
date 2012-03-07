@@ -65,6 +65,18 @@ class Motion < ActiveRecord::Base
     return votes_for_graph
   end
 
+  def has_admin_user?(user)
+    group.has_admin_user?(user)
+  end
+
+  def user_has_voted?(user)
+    votes.for_user(user).exists?
+  end
+
+  def can_be_edited_by?(user)
+    user && ((author == user) || (facilitator == user))
+  end
+
   private
 
     def store_no_vote_count
