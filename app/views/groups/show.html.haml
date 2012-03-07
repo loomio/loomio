@@ -1,4 +1,3 @@
--user_is_group_admin = (current_user.memberships.find_by_group_id(@group.id).access_level == 'admin')
 %h1=@group.name
 -@group.admins.each do |a|
   =a.email
@@ -7,37 +6,15 @@
     %h3 Motions:
     %ul.unstyled
       -@group.motions.each do |motion|
-        %li=link_to motion.name, |
-            motion_path(id: motion.id) |
-    =link_to "Create a motion", 
+        %li=link_to motion.name, motion
+    =link_to "Create a motion",
       new_motion_path({group_id: @group.id}), :class => 'btn primary'
   #users.span8
     %h3 Users:
     %ul.unstyled
-      -@group.users.each do |user|
-        %li
-          -m = user.memberships.find_by_group_id(@group.id)
-          =user.name
-          -# =m.access_level
-          -if user_is_group_admin
-            =link_to "edit", edit_membership_path(m)
-            |
-            =link_to "remove", m, method: :delete, 
-              confirm: "Are you sure you wish to remove #{user.email} from the group?"
-    -unless @group.membership_requests.empty?
+      =render :partial => 'membership', :collection => @group.memberships
+    -if @group.membership_requests.present?
       #user-requests
         %h3 User Requests:
         %ul.unstyled
-          -@group.membership_requests.each do |mr|
-            %li
-              -user = mr.user
-              =user.name
-              =link_to 'approve', membership_path(mr, 
-                {:membership => {:access_level => 'member'}}), 
-                :method => :put, 
-                :confirm => "Are you sure you want to add #{mr.user.email} to the group?"
-              -confirm = "Are you sure you want to ignore the member "
-              -confirm << "request from #{mr.user.email}?"
-              =link_to "ignore", membership_path(mr), method: :delete, 
-                :confirm => "Are you sure you want to ignore the member request from #{mr.user.email}?"
-
+          =render :partial => 'membership_request', :collection => @group.membership_requests

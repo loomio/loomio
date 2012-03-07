@@ -30,5 +30,12 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).first
   end
 
+  def is_group_admin?(group)
+    memberships.for_group(group).with_access('admin').exists?
+  end
+
+  def group_membership(group)
+    memberships.for_group(@group).first
+  end
 end
 

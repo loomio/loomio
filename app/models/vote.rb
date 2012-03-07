@@ -10,4 +10,10 @@ class Vote < ActiveRecord::Base
   validates_length_of :statement, maximum: 250
 
   scope :for_user, lambda {|user| where(:user_id => user)}
+
+  delegate :name, :to => :user, :prefix => :user
+
+  def can_be_edited_by?(current_user)
+    current_user && user == current_user
+  end
 end
