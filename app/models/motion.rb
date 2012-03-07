@@ -10,7 +10,7 @@ class Motion < ActiveRecord::Base
   validates_presence_of :name, :group, :author, :facilitator_id
   validates_inclusion_of :phase, in: PHASES
 
-  scope :that_user_has_voted_on, lambda {|user| 
+  scope :that_user_has_voted_on, lambda {|user|
     joins(:votes)
     .where('votes.user_id = ?', user.id)
     .having('count(votes.id) > 0')
@@ -21,61 +21,64 @@ class Motion < ActiveRecord::Base
     .where('votes.user_id = ?', user.id)
     .having('count(votes.id) = 0')
   }
+
   def user_has_voted?(user)
-    self.votes.map{|v| v.user.id}.include? user.id
+    votes.map{|v| v.user.id}.include? user.id
   end
 
-  def phase=(phase)
-    if (phase == 'closed')
-      unless (self.phase == 'closed')
-        self.no_vote_count = self.group.memberships.size - self.votes.size
+  def phase=(new_phase)
+    if new_phase == 'closed'
+      unless phase == 'closed'
+        self.no_vote_count = group.memberships.size - votes.size
       end
     else
       self.no_vote_count = nil
     end
-    self[:phase] = phase
+    self[:phase] = new_phase
   end
 
   def open_voting
-    self.phase = 'voting'
+    phase = 'voting'
   end
 
   def close_voting
-    self.phase = 'closed'
+    phase = 'closed'
   end
 
   def with_votes
-    if self.votes.size > 0
-      self.votes
+    if votes.size > 0
+      votes
     end
   end
 
   def votes_breakdown
-    return votes = {
-      'yes' => self.votes.where('position = ?', 'yes'),
-      'no' => self.votes.where('position = ?', 'no'),
-      'abstain' => self.votes.where('position = ?', 'abstain'),
-      'block' =>  self.votes.where('position = ?', 'block')
+    return {
+      'yes' => votes.where('position = ?', 'yes'),
+      'no' => votes.where('position = ?', 'no'),
+      'abstain' => votes.where('position = ?', 'abstain'),
+      'block' => votes.where('position = ?', 'block')
     }
   end
 
+  # Craig: This method seems too big, suggest refactoring (Extract Method).
   def votes_graph_ready
     votes_for_graph = []
-    self.votes_breakdown.each do |k, v|
+    votes_breakdown.each do |k, v|
       votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|v| v.user.email}]]
     end
-    no_vote_count = self.group.memberships.size - self.votes.size
+    yet_to_vote_count = group.memberships.size - votes.size
     text = "Yet to vote "
-    if (self.phase == 'closed')
+    if (phase == 'closed')
       text = "Did not vote "
-      no_vote_count = self.no_vote_count
+      yet_to_vote_count = no_vote_count
     end
-    votes_for_graph.push [text + "(#{no_vote_count})", no_vote_count, 'Yet to vote', [self.group.users.map{|u| u.email unless self.votes.where('user_id = ?', u).exists?}.compact!]]
+    votes_for_graph.push [text + "(#{yet_to_vote_count})", yet_to_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
     return votes_for_graph
   end
 
   private
-  def set_defaults
-    self.phase ||= 'voting'
-  end
+
+    def set_defaults
+      self.phase ||= 'voting'
+    end
 end
