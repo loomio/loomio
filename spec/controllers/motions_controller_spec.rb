@@ -57,7 +57,6 @@ describe MotionsController do
       @motion.author = User.make!
       @motion.group.add_member!(@motion.author)
       @motion.group.add_member!(@motion.facilitator)
-      @motion.phase = 'voting'
       @motion.name = "Test Email"
 
       post :create, :group_id => @group.id, :motion => @motion.attributes

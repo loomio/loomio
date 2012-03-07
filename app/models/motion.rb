@@ -1,7 +1,6 @@
 class Motion < ActiveRecord::Base
   #PHASES = %w[discussion voting closed]
   PHASES = %w[voting closed]
-  after_initialize :set_defaults
 
   belongs_to :group
   belongs_to :author, :class_name => 'User'
@@ -9,6 +8,20 @@ class Motion < ActiveRecord::Base
   has_many :votes
   validates_presence_of :name, :group, :author, :facilitator_id
   validates_inclusion_of :phase, in: PHASES
+
+  include AASM
+  aasm :column => :phase do
+    state :voting, :initial => true
+    state :closed
+
+    event :open_voting, :after => :clear_no_vote_count do
+      transitions :to => :voting, :from => [:voting, :closed]
+    end
+
+    event :close_voting, :after => :store_no_vote_count do
+      transitions :to => :closed, :from => [:voting]
+    end
+  end
 
   scope :that_user_has_voted_on, lambda {|user|
     joins(:votes)
@@ -26,38 +39,14 @@ class Motion < ActiveRecord::Base
     votes.map{|v| v.user.id}.include? user.id
   end
 
-  def phase=(new_phase)
-    if new_phase == 'closed'
-      unless phase == 'closed'
-        self.no_vote_count = group.memberships.size - votes.size
-      end
-    else
-      self.no_vote_count = nil
-    end
-    self[:phase] = new_phase
-  end
-
-  def open_voting
-    phase = 'voting'
-  end
-
-  def close_voting
-    phase = 'closed'
-  end
-
   def with_votes
-    if votes.size > 0
-      votes
-    end
+    votes if votes.size > 0
   end
 
   def votes_breakdown
-    return {
-      'yes' => votes.where('position = ?', 'yes'),
-      'no' => votes.where('position = ?', 'no'),
-      'abstain' => votes.where('position = ?', 'abstain'),
-      'block' => votes.where('position = ?', 'block')
-    }
+    Vote::POSITIONS.map {|position|
+      [position, votes.where(:position => position)]
+    }.to_hash
   end
 
   # Craig: This method seems too big, suggest refactoring (Extract Method).
@@ -66,9 +55,9 @@ class Motion < ActiveRecord::Base
     votes_breakdown.each do |k, v|
       votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|v| v.user.email}]]
     end
-    yet_to_vote_count = group.memberships.size - votes.size
+    yet_to_vote_count = calculate_no_vote_count
     text = "Yet to vote "
-    if (phase == 'closed')
+    if (closed?)
       text = "Did not vote "
       yet_to_vote_count = no_vote_count
     end
@@ -78,7 +67,15 @@ class Motion < ActiveRecord::Base
 
   private
 
-    def set_defaults
-      self.phase ||= 'voting'
+    def store_no_vote_count
+      self.no_vote_count = calculate_no_vote_count
+    end
+
+    def calculate_no_vote_count
+      group.memberships.size - votes.size
+    end
+
+    def clear_no_vote_count
+      self.no_vote_count = nil
     end
 end
