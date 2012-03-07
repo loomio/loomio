@@ -5,15 +5,13 @@
 .row
 
   %ul{:class => "tabs", :data => {:tabs => "tabs"}}
-    %li
-      %a{:href => "#motions"} Motions
-    -#AC TODO change active to motions tab
     %li{:class => "active"}
+      %a{:href => "#motions"} Motions
+    %li
       %a{:href => "#users"} Users
     
   .tab-content 
-    #motions.span8.tab-pane
+    #motions.tab-pane.active
       =render :partial => 'motions'
-    -#AC TODO change active to motions tab
-    #users.span8.tab-pane.active
+    #users.tab-pane
       =render :partial => 'users'

@@ -15,7 +15,7 @@ $ ->
         current_user_tags = eval(data)
         $("#user-tags-" + $(element).attr("id")).tokenInput(
           "/group/" + group_id + "/group_tags.json"
-          prePopulate: current_user_tags, crossDomain: false, processPrePopulate: true, preventDuplicates: true,
+          prePopulate: current_user_tags, crossDomain: false, processPrePopulate: true, preventDuplicates: true, theme: "facebook",
           onAdd: (item)-> $.ajax("/groups/" + group_id + "/add_user_tag/" + item.name + "/user/" + $(element).attr("id")),
           onDelete: (item)-> $.ajax("/groups/" + group_id + "/delete_user_tag/" + item.name + "/user/" + $(element).attr("id")),
         )
