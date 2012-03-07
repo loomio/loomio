@@ -4,7 +4,7 @@ class AddNoVoteCountToMotions < ActiveRecord::Migration
     Motion.reset_column_information
     change_column :motions, :phase, :string, default: 'voting'
     Motion.reset_column_information
-    Motion.all.each do |m| 
+    Motion.all.each do |m|
       m.phase = 'voting'
       m.save!
     end

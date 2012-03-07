@@ -9,10 +9,10 @@ class User < ActiveRecord::Base
 
   validates :name, :presence => true
 
-  has_many :membership_requests, 
-           :conditions => {:access_level => 'request'}, 
+  has_many :membership_requests,
+           :conditions => {:access_level => 'request'},
            :class_name => 'Membership'
-  has_many :memberships, 
+  has_many :memberships,
            :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
            :dependent => :destroy
   has_many :groups, through: :memberships
@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :group_tags
 
   def motion_vote(motion)
-    Vote.where('motion_id = ? AND user_id = ?', motion.id, self.id).first
+    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).first
   end
 
 end

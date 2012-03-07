@@ -39,8 +39,7 @@ class MotionsController < BaseController
 
   def close_voting
     resource
-    @motion.phase = 'closed'
-    @motion.save
+    @motion.close_voting!
     redirect_to motion_path(@motion)
   end
 

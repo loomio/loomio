@@ -13,7 +13,7 @@ describe Motion do
 
   it "user_has_votes?(user) returns true if the given user has voted on motion" do
     @user = User.make!
-    @motion = create_motion(:author => @user, :phase => 'voting')
+    @motion = create_motion(:author => @user)
     @vote = Vote.make(:user => @user, :motion => @motion, :position => "yes")
     @vote.save!
     @motion.user_has_voted?(@user).should == true
@@ -31,16 +31,15 @@ describe Motion do
       @motion.group.add_member!(user1)
       @motion.group.add_member!(user2)
       @motion.group.add_member!(user3)
-      @motion.phase = 'voting'
       Vote.create!(position: 'yes', motion: @motion, user: user1)
       Vote.create!(position: 'no', motion: @motion, user: user2)
       Vote.create!(position: 'yes', motion: @motion, user: user3)
-      @motion.phase = 'closed'
+      @motion.close_voting
     end
 
     it "changes votes graph text based on phase" do
       @motion.votes_graph_ready[4][0].should =~ /Did not vote \(2\)/
-      @motion.phase = 'voting'
+      @motion.open_voting
       @motion.votes_graph_ready[4][0].should =~ /Yet to vote \(2\)/
     end
 
@@ -51,7 +50,7 @@ describe Motion do
     end
 
     it "deletes no_vote_count when re-opened" do
-      @motion.phase = 'voting'
+      @motion.open_voting
       @motion.no_vote_count.should == nil
     end
   end

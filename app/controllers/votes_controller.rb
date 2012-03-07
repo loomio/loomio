@@ -6,10 +6,10 @@ class VotesController < BaseController
   # def begin_of_association_chain
   #   @motion
   #
-  
+
   def destroy
     resource
-    if @motion.phase == 'voting'
+    if @motion.voting?
       destroy! { @motion }
     else
       flash[:error] = "You can only delete your vote during the 'voting' phase"
@@ -20,7 +20,7 @@ class VotesController < BaseController
   def create
     build_resource
     @vote.user = current_user
-    if @motion.phase == 'voting'
+    if @motion.voting?
       create! { @motion }
     else
       flash[:error] = "Can only vote in voting phase"
@@ -30,7 +30,7 @@ class VotesController < BaseController
 
   def update
     resource
-    if @motion.phase == 'voting'
+    if @motion.voting?
       @vote.update_attributes(params[:vote])
       flash[:notice] = "Vote updated."
       @vote.save
@@ -40,7 +40,7 @@ class VotesController < BaseController
     redirect_to @motion
   end
 
-  private 
+  private
 
   def ensure_group_member
     # NOTE: this method is currently duplicated in groups_controller,

@@ -8,17 +8,17 @@
           -if @motion.phase == 'discussion'
             -phase_style = "color:blue"
             -phase_text = 'discussion phase'
-          -if @motion.phase == 'voting'
+          -if @motion.voting?
             -phase_style = "color:green"
             -phase_text = 'voting open'
-          -if @motion.phase == 'closed'
+          -if @motion.closed?
             -phase_style = "color:red"
             -phase_text = 'voting closed'
           %span(style=phase_style)
             ='[' + phase_text + ']'
         .buttons.span5
           -if (@motion.author == current_user || @motion.facilitator == current_user)
-            -if @motion.phase == 'voting'
+            -if @motion.voting?
               =link_to ("Close voting"), close_motion_voting_path, confirm: "Are you sure you want to close this motion?", method: :post, class: 'btn small'
             =link_to "Edit", edit_motion_path(@motion), class: 'btn small'
           -if (@motion.author == current_user || user_is_group_admin)
@@ -48,7 +48,7 @@
                 %th position
                 %th user
                 %th statement
-                %th 
+                %th
                 -@motion.votes.each do |vote|
                   %tr
                     %td=vote.position
@@ -58,7 +58,7 @@
                       %td
                         =link_to "edit", edit_motion_vote_path(@motion, vote)
                         |
-                        =link_to "delete", motion_vote_path(@motion, vote), method: :delete, 
+                        =link_to "delete", motion_vote_path(@motion, vote), method: :delete,
                           confirm: "Are you sure you want to delete your vote?"
             -else
               #no-votes-msg
@@ -67,7 +67,7 @@
           #stats
             #graph.pie
             #votes
-              -if @motion.phase == 'voting'
+              -if @motion.voting?
                 -if !@user_already_voted || @motion.phase == 'discussion'
                   #cast-votes-title
                     %h3 Cast your vote
