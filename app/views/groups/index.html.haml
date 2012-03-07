@@ -10,4 +10,4 @@
     -@group_requests.each do |group|
       %li.group
         =link_to group.name, group_path(group)
-  =link_to "Add new group", new_group_path
+  =link_to "Add new group", new_group_path, :class => 'btn primary'
