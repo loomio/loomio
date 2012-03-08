@@ -7,35 +7,36 @@
       .row
         %h2.span10
           =@motion.name
-        .span3
-          -if (@motion.author == current_user || @motion.facilitator == current_user)
-            -if @motion.phase == 'discussion'
-              -phase_style = "color:blue"
-              =link_to ("[discussion]"), open_motion_voting_path,
-                title: "open voting",
-                style: "color: blue",
-                method: :post
-            -if @motion.phase.closed?
-              -phase_style = "color:red"
-              =link_to ("[voting closed]"), open_motion_voting_path, 
-                title: "open voting",
-                style: "color: red",
-                method: :post
-            -if @motion.phase.voting?
-              -phase_style = "color:green"
-              =link_to ("[voting open]"), close_motion_voting_path,
-                confirm: "Are you sure you want to close this motion?",
-                title: "close voting",
-                style: "color: green",
-                method: :post
-        .buttons.span3
-          -if @motion.can_be_edited_by?(current_user)
-            -if @motion.voting?
-              =link_to ("Close voting"), close_motion_voting_path, confirm: "Are you sure you want to close this motion?", method: :post, class: 'btn small'
-          -if @motion.can_be_deleted_by?(current_user)
-            =link_to "Delete", @motion, method: :delete,
-              confirm: "Are you sure you want to delete this motion?",
-              class: 'btn small'
+        .span6
+          =render partial: "facilitator_options"
+          -#-if (@motion.author == current_user || @motion.facilitator == current_user)
+            -#-if @motion.phase == 'discussion'
+              -#-phase_style = "color:blue"
+              -#=link_to ("[discussion]"), open_motion_voting_path,
+                -#title: "open voting",
+                -#style: "color: blue",
+                -#method: :post
+            -#-if @motion.closed?
+              -#-phase_style = "color:red"
+              -#=link_to ("[voting closed]"), open_motion_voting_path, 
+                -#title: "open voting",
+                -#style: "color: red",
+                -#method: :post
+            -#-if @motion.voting?
+              -#-phase_style = "color:green"
+              -#=link_to ("[voting open]"), close_motion_voting_path,
+                -#confirm: "Are you sure you want to close this motion?",
+                -#title: "close voting",
+                -#style: "color: green",
+                -#method: :post
+        -#.buttons
+          -#-if @motion.can_be_edited_by?(current_user)
+            -#-if @motion.voting?
+              -#=link_to ("Close voting"), close_motion_voting_path, confirm: "Are you sure you want to close this motion?", method: :post, class: 'btn small'
+          -#-if @motion.can_be_deleted_by?(current_user)
+            -#=link_to "Delete", @motion, method: :delete,
+              -#confirm: "Are you sure you want to delete this motion?",
+              -#class: 'btn small'
       -if @motion.discussion_url.present?
         %h5
           Discussion:

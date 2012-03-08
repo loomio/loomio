@@ -1,10 +1,10 @@
--if (@motion.author == current_user || @motion.facilitator == current_user)
-  -if @motion.phase == 'closed'
+-if @motion.can_be_edited_by?(current_user)
+  -if @motion.closed?
     -link_route = open_motion_voting_path
     -link_confirm = false
     -link_title = "open voting"
     -link_style = "color: red"
-  -elsif @motion.phase == 'voting'
+  -elsif @motion.voting?
     -link_route = close_motion_voting_path
     -link_confirm = "Are you sure you want to close this motion?"
     -link_title = "close voting"
@@ -15,10 +15,8 @@
     style: link_style,
     method: :post
   =link_to "Edit", edit_motion_path(@motion), class: 'btn small'
-  -if (@motion.author == current_user || user_is_group_admin)
-    =link_to "Delete", @motion, method: :delete,
-      confirm: "Are you sure you want to delete this motion?",
-      class: 'btn small'
+  =link_to "Delete", @motion, method: :delete,
+    confirm: "Are you sure you want to delete this motion?",
+    class: 'btn small'
 -else
   %div{class: "phase-status-#{@motion.phase}"}= "[" + @motion.phase + "]"
-
