@@ -42,6 +42,13 @@ class MotionsController < GroupBaseController
     redirect_to motion_path(@motion)
   end
 
+  def open_voting
+    resource
+    @motion.phase = 'voting'
+    @motion.save
+    redirect_to motion_path(@motion)
+  end
+
   def edit
     resource
     if @motion.can_be_edited_by?(current_user)

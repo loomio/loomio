@@ -1,29 +1,42 @@
 #motion
+  #group.row
+    =link_to @motion.group.name, group_path(@motion.group), title: "group"
+  #description.span16
   .row
     #description.span16
       .row
-        %h2.span11
+        %h2.span10
           =@motion.name
-          -if @motion.phase == 'discussion'
-            -phase_style = "color:blue"
-            -phase_text = 'discussion phase'
-          -if @motion.voting?
-            -phase_style = "color:green"
-            -phase_text = 'voting open'
-          -if @motion.closed?
-            -phase_style = "color:red"
-            -phase_text = 'voting closed'
-          %span(style=phase_style)
-            ='[' + phase_text + ']'
-        .buttons.span5
-          -if @motion.can_be_edited_by?(current_user)
-            -if @motion.voting?
-              =link_to ("Close voting"), close_motion_voting_path, confirm: "Are you sure you want to close this motion?", method: :post, class: 'btn small'
-            =link_to "Edit", edit_motion_path(@motion), class: 'btn small'
-          -if @motion.can_be_deleted_by?(current_user)
-            =link_to "Delete", @motion, method: :delete,
-              confirm: "Are you sure you want to delete this motion?",
-              class: 'btn small'
+        .span6
+          =render partial: "facilitator_options"
+          -#-if (@motion.author == current_user || @motion.facilitator == current_user)
+            -#-if @motion.phase == 'discussion'
+              -#-phase_style = "color:blue"
+              -#=link_to ("[discussion]"), open_motion_voting_path,
+                -#title: "open voting",
+                -#style: "color: blue",
+                -#method: :post
+            -#-if @motion.closed?
+              -#-phase_style = "color:red"
+              -#=link_to ("[voting closed]"), open_motion_voting_path, 
+                -#title: "open voting",
+                -#style: "color: red",
+                -#method: :post
+            -#-if @motion.voting?
+              -#-phase_style = "color:green"
+              -#=link_to ("[voting open]"), close_motion_voting_path,
+                -#confirm: "Are you sure you want to close this motion?",
+                -#title: "close voting",
+                -#style: "color: green",
+                -#method: :post
+        -#.buttons
+          -#-if @motion.can_be_edited_by?(current_user)
+            -#-if @motion.voting?
+              -#=link_to ("Close voting"), close_motion_voting_path, confirm: "Are you sure you want to close this motion?", method: :post, class: 'btn small'
+          -#-if @motion.can_be_deleted_by?(current_user)
+            -#=link_to "Delete", @motion, method: :delete,
+              -#confirm: "Are you sure you want to delete this motion?",
+              -#class: 'btn small'
       -if @motion.discussion_url.present?
         %h5
           Discussion:
@@ -55,10 +68,11 @@
                     %td=vote.statement
                     -if vote.can_be_edited_by?(current_user)
                       %td
-                        =link_to "edit", edit_motion_vote_path(@motion, vote)
-                        |
-                        =link_to "delete", motion_vote_path(@motion, vote), method: :delete,
-                          confirm: "Are you sure you want to delete your vote?"
+                        -if @motion.phase == 'voting'
+                          =link_to "edit", edit_motion_vote_path(@motion, vote)
+                          |
+                          =link_to "delete", motion_vote_path(@motion, vote), method: :delete,
+                            confirm: "Are you sure you want to delete your vote?"
             -else
               #no-votes-msg
                 No votes presently cast
@@ -67,14 +81,18 @@
             #graph.pie
             #votes
               -if @motion.voting?
-                -if !@user_already_voted || @motion.phase == 'discussion'
+                -if (!@user_already_voted || @motion.phase == 'discussion')
                   #cast-votes-title
                     %h3 Cast your vote
                   #vote-buttons
-                    =link_to image_tag("vote-yes.png", height:'60', width:'60'), '#', onclick: "$('#vote_position').val('yes'); $('#new_vote').submit();"
-                    =link_to image_tag("vote-no.png", height:'60', width:'60'), '#', onclick: "$('#vote_position').val('no'); $('#new_vote').submit();"
-                    =link_to image_tag("vote-abstain.png", height:'60', width:'60'), '#', onclick: "$('#vote_position').val('abstain'); $('#new_vote').submit();"
-                    =link_to image_tag("vote-block.png", height:'60', width:'60'), '#', onclick: "$('#vote_position').val('block'); $('#new_vote').submit();"
+                    =link_to image_tag("vote-yes.png", height:'50', width:'50', title:'yes', alt:'yes image'), '#',
+                      class: 'btn vote', onclick: "$('#vote_position').val('yes'); $('#new_vote').submit();"
+                    =link_to image_tag("vote-abstain.png", height:'50', width:'50', title:'abstain', alt:'abstain image'), '#',
+                      class: 'btn vote', onclick: "$('#vote_position').val('abstain'); $('#new_vote').submit();"
+                    =link_to image_tag("vote-no.png", height:'50', width:'50', title:'no', alt:'no image'), '#',
+                      class: 'btn vote', onclick: "$('#vote_position').val('no'); $('#new_vote').submit();"
+                    =link_to image_tag("vote-block.png", height:'50', width:'50',title:'block', alt:'block image'), '#',
+                      class: 'btn vote', onclick: "$('#vote_position').val('block'); $('#new_vote').submit();"
                   #vote-form
                     =semantic_form_for([@motion, @vote], html:{class:'form-stacked'}) do |f|
                       =f.hidden_field :position
