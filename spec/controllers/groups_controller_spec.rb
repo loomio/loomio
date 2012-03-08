@@ -10,6 +10,26 @@ describe GroupsController do
       before :each do
         @group = Group.make!
       end
+      context "a group admin" do
+        before :each do
+          @group.add_admin!(@user)
+        end
+        it "can add a user tag" do
+          post :add_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
+          post :add_user_tag, id: @group.id, tag: "testytag2", user_id: @user.id
+          post :add_user_tag, id: @group.id, tag: "testytag3", user_id: @user.id
+          #debugger
+          @user.group_tags.find_by_name("testytag").name.should include("testytag")
+          @user.group_tags.find_by_name("testytag2").name.should include("testytag2")
+          @user.group_tags.find_by_name("testytag3").name.should include("testytag3")
+        end
+        it "can delete a user tag" do
+          post :add_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
+          @user.group_tags.first.name.should include("testytag")
+          post :delete_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
+          @user.group_tags.first.should be_nil
+        end
+      end
       context "a group member" do
         before :each do
           @group.add_member!(@user)

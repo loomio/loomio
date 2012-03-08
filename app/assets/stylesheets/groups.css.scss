@@ -1,3 +1,35 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.clear-both {
+  clear: both;
+  height: 15px;
+}
+
+ul.token-input-list-facebook {
+  width: 490px !important;
+  font-size: 11px;
+  line-height: 15px;
+}
+
+ul.token-input-list-facebook li {
+  line-height: 15px;
+}
+
+ul.token-input-list-facebook p {
+  line-height: 15px;
+  font-size: 11px;
+}
+
+div.token-input-dropdown-facebook p {
+  line-height: 15px;
+  font-size: 11px;
+}
+
+.token-input-input-token-facebook input {
+  height: auto;
+  line-height: 15px;
+  font-size: 11px;
+}
+
