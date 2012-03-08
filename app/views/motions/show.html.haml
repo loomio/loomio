@@ -7,6 +7,10 @@
       .row
         %h2.span10
           =@motion.name
+          -if @motion.voting?
+            =image_tag("phase-voting.png", height:'20', width:'60', alt:'voting phase image')
+          -if @motion.closed?
+            =image_tag("phase-closed.png", height:'20', width:'60', alt:'voting phase image')
         .span6
           =render partial: "facilitator_options"
       -if @motion.discussion_url.present?
@@ -27,27 +31,7 @@
         .span9
           %h3 Cast votes
           #votes-table
-            -if @motion.votes.size > 0
-              %table.zebra-striped
-                %th position
-                %th user
-                %th statement
-                %th
-                -@motion.votes.each do |vote|
-                  %tr
-                    %td=vote.position
-                    %td=vote.user_name
-                    %td=vote.statement
-                    -if vote.can_be_edited_by?(current_user)
-                      %td
-                        -if @motion.phase == 'voting'
-                          =link_to "edit", edit_motion_vote_path(@motion, vote)
-                          |
-                          =link_to "delete", motion_vote_path(@motion, vote), method: :delete,
-                            confirm: "Are you sure you want to delete your vote?"
-            -else
-              #no-votes-msg
-                No votes presently cast
+            =render partial: "votes_table"
         .span7
           #stats
             #graph.pie
