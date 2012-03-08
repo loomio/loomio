@@ -6,5 +6,4 @@ tmp/
 *.swp
 .rvmrc
 *.tmproj
-doc/twitter*
 *.DS_Store
