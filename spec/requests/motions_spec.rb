@@ -45,8 +45,6 @@ describe "Motions" do
       visit new_motion_path(group_id: @group.id)
       fill_in 'Name', with: 'This is a new motion'
       fill_in 'Description', with: 'Blahhhhhh'
-      select @user2.email, from: 'Facilitator'
-      select 'voting', from: 'Phase'
       click_on 'Create Motion'
     end
   end

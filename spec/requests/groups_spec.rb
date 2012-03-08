@@ -30,7 +30,7 @@ describe "Groups" do
       end
       it "can click on 'Create a motion'" do
         click_link 'Create a motion'
-        should have_content("New Motion")
+        should have_content("New motion")
       end
     end
 
