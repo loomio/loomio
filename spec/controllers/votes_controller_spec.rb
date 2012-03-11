@@ -11,7 +11,7 @@ describe VotesController do
     end
     context 'during voting phase' do
       it 'can vote' do
-        post :create, motion_id: @motion.id, 
+        post :create, motion_id: @motion.id,
              vote: {position: 'yes', statement: 'blah'}
         response.should be_redirect
         flash[:notice].should =~ /Vote was successfully created/
@@ -24,7 +24,7 @@ describe VotesController do
       it 'can update vote' do
         vote = Vote.new(motion: @motion, position: 'yes', user: @user)
         vote.save!
-        post :update, motion_id: @motion.id, id: vote.id, 
+        post :update, motion_id: @motion.id, id: vote.id,
              vote: {position: 'no', statement: 'blah'}
         response.should be_redirect
         flash[:notice].should =~ /Vote updated/
@@ -47,7 +47,7 @@ describe VotesController do
       end
 
       it 'cannot vote' do
-        post :create, motion_id: @motion.id, 
+        post :create, motion_id: @motion.id,
              vote: {position: 'yes', statement: 'blah'}
         response.should be_redirect
         flash[:error].should =~ /Can only vote in voting phase/

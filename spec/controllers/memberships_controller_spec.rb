@@ -11,7 +11,7 @@ describe MembershipsController do
 
     it "requests membership to a group" do
       # note trying to sneek member level access.. should be ignored
-      post :create, 
+      post :create,
            :membership => {:group_id => @group.id, :access_level => 'member'}
       response.should redirect_to(groups_path)
       assigns(:membership).user.should == @user
@@ -22,7 +22,7 @@ describe MembershipsController do
     it "sends an email to admins with new membership request" do
       @group.add_admin!(User.make!)
       # note trying to sneek member level access.. should be ignored
-      post :create, 
+      post :create,
            :membership => {:group_id => @group.id, :access_level => 'member'}
       last_email =  ActionMailer::Base.deliveries.last
       last_email.to.should == @group.admins.map(&:email)
@@ -37,7 +37,7 @@ describe MembershipsController do
       it "can authorize a membership request" do
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
-        post :update, :id => @membership.id, 
+        post :update, :id => @membership.id,
              :membership => {:access_level => 'member'}
         flash[:notice].should =~ /Membership approved/
         response.should redirect_to(@group)
@@ -48,7 +48,7 @@ describe MembershipsController do
       it "sends an email to notify the user of their membership approval" do
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
-        post :update, :id => @membership.id, 
+        post :update, :id => @membership.id,
              :membership => {:access_level => 'member'}
         flash[:notice].should =~ /Membership approved/
         last_email =  ActionMailer::Base.deliveries.last
@@ -59,7 +59,7 @@ describe MembershipsController do
       it 'can add an admin' do
         @group.add_member!(@new_user)
         @membership = @group.memberships.find_by_user_id(@new_user)
-        post :update, :id => @membership.id, 
+        post :update, :id => @membership.id,
              :membership => {:access_level => 'admin'}
         # flash[:notice].should =~ /Member has been promoted to an admin/
         flash[:notice].should =~ /Membership approved/
@@ -95,7 +95,7 @@ describe MembershipsController do
       it "can authorize a membership request" do
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
-        post :update, :id => @membership.id, 
+        post :update, :id => @membership.id,
              :membership => {:access_level => 'member'}
         flash[:notice].should =~ /Membership approved/
         response.should redirect_to(@group)
@@ -106,7 +106,7 @@ describe MembershipsController do
       it "cannot change a membership request to an admin" do
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
-        post :update, :id => @membership.id, 
+        post :update, :id => @membership.id,
              :membership => {:access_level => 'admin'}
         # flash[:error].should =~ /Only group admins can add other admins./
         flash[:error].should =~ /You do not have significant priviledges to do that./
@@ -148,7 +148,7 @@ describe MembershipsController do
       it "cannot change a member's access level" do
         @group.add_member!(@new_user)
         @membership = @group.memberships.find_by_user_id(@new_user.id)
-        post :update, :id => @membership.id, 
+        post :update, :id => @membership.id,
              :membership => {:access_level => 'admin'}
         # flash[:error].should =~ /Only group admins can change a member's access level./
         flash[:error].should =~ /You do not have significant priviledges to do that./
@@ -161,7 +161,7 @@ describe MembershipsController do
       it "cannot authorize a membership request for another user" do
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
-        post :update, :id => @membership.id, 
+        post :update, :id => @membership.id,
              :membership => {:access_level => 'member'}
         # flash[:error].should =~ /Membership not approved/
         flash[:error].should =~ /You do not have significant priviledges to do that./
