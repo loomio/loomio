@@ -9,7 +9,7 @@ begin
     :flay => 300,
     :complexity => 10,
     :line_length => 120,
-    :best_practices => 0
+    :best_practices => 76
   }
 
   namespace :metrics do
@@ -20,14 +20,18 @@ begin
     end
 
     task :flay do
-      require "flay"
-      flay = Flay.new
-      flay.process(*Flay.expand_dirs_to_files(%w(app lib spec)))
+      checker = FlayThresholdChecker.new
+      checker.check(METRIC_THRESHOLDS[:flay])
+      # puts 'starting flay'
+      # flay = Flay.new(Flay.default_options)
+      # flay.process(*Flay.expand_dirs_to_files(%w(app/models app/controllers app/helpers app/views lib)))
+      # # flay.process(*Flay.expand_dirs_to_files(['lib']))
+      # puts 'finished'
+      #
+      # max_value = flay.masses.values.max
+      # threshold = METRIC_THRESHOLDS[:flay]
 
-      max_value = flay.masses.values.max
-      threshold = METRIC_THRESHOLDS[:flay]
-
-      raise FlayThresholdBreached.new(flay, max_value, threshold) if max_value > threshold
+      # raise FlayThresholdBreached.new(flay, max_value, threshold) if max_value > threshold
     end
 
     task :rails_best_practices do
@@ -41,7 +45,9 @@ begin
   end
 
   desc "run all quality metrics"
-  task :quality => [:spec, 'metrics:cane', 'metrics:flay', 'metrics:rails_best_practices']
+  task :quality => [:spec, 'metrics:cane', 'metrics:flay', 'metrics:rails_best_practices'] do
+    puts "\n\nEVERYTHING IS PEACHY, SHIP IT!\n"
+  end
 
   task :default => :quality
 
