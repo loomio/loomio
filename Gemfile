@@ -56,6 +56,7 @@ end
 
 group :test do
   gem 'cane', :git => 'git://github.com/square/cane.git'
+  gem 'simplecov', :require => false
 end
 
 # group :development do
