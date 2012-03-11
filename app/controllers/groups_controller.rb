@@ -16,7 +16,7 @@ class GroupsController < GroupBaseController
     @groups = current_user.groups
     @group_requests = current_user.group_requests
   end
-  
+
   def add_user_tag
     @group = Group.find(params[:id])
     @user = User.find(params[:user_id])
@@ -25,7 +25,7 @@ class GroupsController < GroupBaseController
     #TODO remove
     redirect_to groups_url
   end
-  
+
   def delete_user_tag
     @group = Group.find(params[:id])
     @user = User.find(params[:user_id])
@@ -46,10 +46,10 @@ class GroupsController < GroupBaseController
 
     @tags = @group.owned_tags
   end
-  
+
   def group_tags
     @group = Group.find(params[:id])
-    @tags = @group.owned_tags.where("tags.name LIKE ?", "%#{params[:q]}%") 
+    @tags = @group.owned_tags.where("tags.name LIKE ?", "%#{params[:q]}%")
 
     respond_to do |format|
       format.html # index.html.erb
