@@ -1,4 +1,5 @@
 require 'simplecov'
+require File.expand_path("../support/spec_metrics", __FILE__)
 SimpleCov.start
 
 require 'rubygems'
