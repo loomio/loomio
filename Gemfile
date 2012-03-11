@@ -54,6 +54,10 @@ group :development, :test do
   gem 'launchy'
 end
 
+group :test do
+  gem 'cane', :git => 'git://github.com/square/cane.git'
+end
+
 # group :development do
 #   gem 'sqlite3'
 # end
