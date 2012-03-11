@@ -102,6 +102,9 @@ GEM
     faker (1.0.1)
       i18n (~> 0.4)
     ffi (1.0.11)
+    flay (1.4.3)
+      ruby_parser (~> 2.0)
+      sexp_processor (~> 3.0)
     formtastic (2.0.2)
       rails (~> 3.0)
     formtastic-bootstrap (1.0.2)
@@ -225,6 +228,8 @@ GEM
       ruby-debug-base19 (>= 0.11.19)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
+    ruby_parser (2.3.1)
+      sexp_processor (~> 3.0)
     rubyzip (0.9.5)
     sass (3.1.11)
     sass-rails (3.1.5)
@@ -237,6 +242,7 @@ GEM
       ffi (~> 1.0.9)
       multi_json (~> 1.0.4)
       rubyzip
+    sexp_processor (3.1.0)
     simplecov (0.6.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.5.3)
@@ -279,6 +285,7 @@ DEPENDENCIES
   database_cleaner
   devise (= 1.4.9)
   faker
+  flay
   formtastic
   formtastic-bootstrap
   guard
