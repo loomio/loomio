@@ -7,7 +7,7 @@ class RenameMotionTypeToPhase < ActiveRecord::Migration
     rename_column :motions, :phase, :motion_type
     Motion.reset_column_information
     @motions = Motion.all
-    @motions.each do |m| 
+    @motions.each do |m|
       m.motion_type = 'proposal'
       m.save!
     end
