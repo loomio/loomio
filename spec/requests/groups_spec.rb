@@ -8,9 +8,9 @@ describe "Groups" do
       @user = User.make!
       @group = Group.make!(name: 'Test Group')
       @group.add_member!(@user)
-      @motion = create_motion(name: 'Test Motion', group: @group, 
+      @motion = create_motion(name: 'Test Motion', group: @group,
                               author: @user, facilitator: @user)
-      page.driver.post user_session_path, 'user[email]' => @user.email, 
+      page.driver.post user_session_path, 'user[email]' => @user.email,
                                           'user[password]' => 'password'
     end
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  subject do 
+  subject do
     @user = User.new
     @user.valid?
     @user
@@ -16,7 +16,7 @@ describe User do
   end
 
   it 'returns an an array of user\'s group\'s motions' do
-    @user = User.make   
+    @user = User.make
     @user.save!
     @group = Group.make
     @group.add_member!(@user)
