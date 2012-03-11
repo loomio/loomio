@@ -1,9 +1,9 @@
 Tautoko::Application.routes.draw do
   devise_for :users
-  
+
   # Routes for jQuery TokenInput API calls and tag specific calls
-  get "users/:id/user_group_tags" => "users#user_group_tags", :as => "user_group_tags" 
-  get "group/:id/group_tags" => "groups#group_tags", :as => "user_group_tags" 
+  get "users/:id/user_group_tags" => "users#user_group_tags", :as => "user_group_tags"
+  get "group/:id/group_tags" => "groups#group_tags", :as => "user_group_tags"
   match "/groups/:id/add_user_tag/:tag/user/:user_id", :to => "groups#add_user_tag", :as => :add_user_tag
   match "/groups/:id/delete_user_tag/:tag/user/:user_id", :to => "groups#delete_user_tag", :as => :delete_user_tag
   match "/groups/:id/tag_user", :to => "groups#tag_user", :as => :group_tag_user

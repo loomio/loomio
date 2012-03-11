@@ -16,7 +16,7 @@ describe Vote do
     @vote = Vote.make(position: 'bad')
     @vote.valid?
     @vote.should have(1).errors_on(:position)
-  end 
+  end
 
   it 'should only accept votes from users who belong to the group containing the motion'
 

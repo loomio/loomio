@@ -7,3 +7,4 @@ tmp/
 .rvmrc
 *.tmproj
 *.DS_Store
+coverage

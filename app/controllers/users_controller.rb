@@ -5,7 +5,7 @@ class UsersController < BaseController
   def settings
     @user = current_user
   end
-  
+
   def user_group_tags
     @user = User.find(params[:id])
     @tags = @user.group_tags

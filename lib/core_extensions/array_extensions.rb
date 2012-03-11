@@ -1,4 +1,4 @@
-class Array
+module ArrayExtensions
   def flatten_once
     inject([]) { |v, e| v.concat(e)}
   end
@@ -7,3 +7,5 @@ class Array
     Hash[*self.flatten_once]
   end
 end
+
+Array.send(:include, ArrayExtensions)
