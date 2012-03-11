@@ -61,6 +61,7 @@ group :test do
   gem 'cane', :git => 'git://github.com/square/cane.git'
   gem 'simplecov', :require => false
   gem 'flay', :require => false
+  gem "rails_best_practices", :require => false
 end
 
 # group :development do

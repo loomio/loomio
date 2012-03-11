@@ -1,12 +1,15 @@
 begin
   require 'cane/rake_task'
+  require 'rails_best_practices'
   require 'support/flay_threshold'
+  require 'support/best_practices_threshold'
 
   METRIC_THRESHOLDS = {
     :coverage => 86.8,
     :flay => 300,
     :complexity => 10,
-    :line_length => 120
+    :line_length => 120,
+    :best_practices => 0
   }
 
   namespace :metrics do
@@ -26,10 +29,19 @@ begin
 
       raise FlayThresholdBreached.new(flay, max_value, threshold) if max_value > threshold
     end
+
+    task :rails_best_practices do
+      analyzer = RailsBestPractices::Analyzer.new('.', {})
+      analyzer.analyze
+
+      threshold = METRIC_THRESHOLDS[:best_practices]
+      error_count = analyzer.runner.errors.length
+      raise BestPracticesBreached.new(analyzer, threshold) if error_count > threshold
+    end
   end
 
   desc "run all quality metrics"
-  task :quality => [:spec, 'metrics:cane', 'metrics:flay']
+  task :quality => [:spec, 'metrics:cane', 'metrics:flay', 'metrics:rails_best_practices']
 
   task :default => :quality
 
