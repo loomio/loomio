@@ -61,8 +61,7 @@ describe MembershipsController do
         @membership = @group.memberships.find_by_user_id(@new_user)
         post :update, :id => @membership.id,
              :membership => {:access_level => 'admin'}
-        # flash[:notice].should =~ /Member has been promoted to an admin/
-        flash[:notice].should =~ /Membership approved/
+        flash[:notice].should =~ /Membership was successfully updated/
         response.should redirect_to(@group)
         assigns(:membership).access_level.should == 'admin'
         @group.admins.should include(@new_user)
@@ -81,8 +80,8 @@ describe MembershipsController do
         @group.add_admin!(@new_user)
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         delete :destroy, :id => @membership.id
-        flash[:error].should =~ /You do not have significant priviledges to do that./
-        response.should redirect_to(@group)
+        flash[:error].should =~ /Access denied/
+        response.should redirect_to(root_url)
         @group.admins.should include(@new_user)
       end
     end
@@ -108,9 +107,8 @@ describe MembershipsController do
         @membership = @group.membership_requests.first
         post :update, :id => @membership.id,
              :membership => {:access_level => 'admin'}
-        # flash[:error].should =~ /Only group admins can add other admins./
-        flash[:error].should =~ /You do not have significant priviledges to do that./
-        response.should redirect_to(@group)
+        flash[:error].should =~ /Access denied/
+        response.should redirect_to(root_url)
         assigns(:membership).access_level.should == 'request'
         assigns(:membership).id.should == @membership.id
       end
@@ -119,7 +117,6 @@ describe MembershipsController do
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
         delete :destroy, :id => @membership.id
-        # flash[:notice].should =~ /request ignored/
         flash[:notice].should =~ /Membership deleted/
         response.should redirect_to(@group)
         Membership.exists?(@membership).should be_false
@@ -129,9 +126,8 @@ describe MembershipsController do
         @group.add_member!(@new_user)
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         delete :destroy, :id => @membership.id
-        # flash[:error].should =~ /Only group admins can remove members from the group./
-        flash[:error].should =~ /You do not have significant priviledges to do that./
-        response.should redirect_to(@group)
+        flash[:error].should =~ /Access denied/
+        response.should redirect_to(root_url)
         @group.users.should include(@new_user)
       end
 
@@ -139,9 +135,8 @@ describe MembershipsController do
         @group.add_admin!(@new_user)
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         delete :destroy, :id => @membership.id
-        # flash[:error].should =~ /Only group admins can remove members from the group./
-        flash[:error].should =~ /You do not have significant priviledges to do that./
-        response.should redirect_to(@group)
+        flash[:error].should =~ /Access denied/
+        response.should redirect_to(root_url)
         @group.admins.should include(@new_user)
       end
 
@@ -150,10 +145,9 @@ describe MembershipsController do
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         post :update, :id => @membership.id,
              :membership => {:access_level => 'admin'}
-        # flash[:error].should =~ /Only group admins can change a member's access level./
-        flash[:error].should =~ /You do not have significant priviledges to do that./
-        response.should redirect_to(@group)
-        @group.users.should include(@new_user)
+        flash[:error].should =~ /Access denied/
+        response.should redirect_to(root_url)
+        @group.admins.should_not include(@new_user)
       end
     end
 
@@ -163,9 +157,8 @@ describe MembershipsController do
         @membership = @group.membership_requests.first
         post :update, :id => @membership.id,
              :membership => {:access_level => 'member'}
-        # flash[:error].should =~ /Membership not approved/
-        flash[:error].should =~ /You do not have significant priviledges to do that./
-        response.should redirect_to(@group)
+        flash[:error].should =~ /Access denied/
+        response.should redirect_to(root_url)
         assigns(:membership).access_level.should == 'request'
         assigns(:membership).id.should == @membership.id
       end
@@ -174,8 +167,8 @@ describe MembershipsController do
         @group.add_member!(@new_user)
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         delete :destroy, :id => @membership.id
-        flash[:error].should =~ /You do not have significant priviledges to do that./
-        response.should redirect_to(@group)
+        flash[:error].should =~ /Access denied/
+        response.should redirect_to(root_url)
         @group.users.should include(@new_user)
       end
 
@@ -183,8 +176,8 @@ describe MembershipsController do
         @group.add_admin!(@new_user)
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         delete :destroy, :id => @membership.id
-        flash[:error].should =~ /You do not have significant priviledges to do that./
-        response.should redirect_to(@group)
+        flash[:error].should =~ /Access denied/
+        response.should redirect_to(root_url)
         @group.admins.should include(@new_user)
       end
     end
