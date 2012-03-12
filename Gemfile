@@ -16,6 +16,7 @@ gem "rails-backbone"
 gem 'coffee-filter'
 gem 'acts-as-taggable-on', '~> 2.2.2', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'
 gem 'aasm'
+gem 'cancan'
 
 # Gems used only for assets and not required
 # in production environments by default.
