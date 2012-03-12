@@ -15,8 +15,24 @@ class Membership < ActiveRecord::Base
 
   delegate :name, :email, :to => :user, :prefix => :user
 
-  private
+  def can_be_made_admin_by?(user)
+    group.admins.include? user
+  end
 
+  def can_be_made_member_by?(user)
+    group.users.include? user
+  end
+
+  def can_be_deleted_by?(user)
+    if group.admins.include? self.user
+      false
+    else
+      (group.admins.include? user || self.user == user) ||
+        (access_level == 'request' && group.users.include?(user))
+    end
+  end
+
+  private
     def set_defaults
       self.access_level ||= 'request'
     end
