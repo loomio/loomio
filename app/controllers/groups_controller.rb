@@ -1,6 +1,7 @@
 class GroupsController < GroupBaseController
   before_filter :ensure_group_member,
                 :except => [:new, :create, :index, :request_membership]
+
   def create
     build_resource
     @group.add_admin! current_user
