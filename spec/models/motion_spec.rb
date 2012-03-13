@@ -61,6 +61,13 @@ describe Motion do
     @motion.should_not be_valid
   end
 
+  it "can have a close date" do
+    @motion = create_motion
+    @motion.close_date = '2012-12-12'
+    @motion.close_date.should == Date.parse('2012-12-12')
+    @motion.should be_valid
+  end
+
   it "has a discussion link" do
     @motion = create_motion
     @motion.discussion_url = "http://our-discussion.com"

@@ -11,7 +11,7 @@ class Motion < ActiveRecord::Base
 
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
-
+  
   include AASM
   aasm :column => :phase do
     state :voting, :initial => true
@@ -82,6 +82,14 @@ class Motion < ActiveRecord::Base
 
   def can_be_deleted_by?(user)
     user && (author == user || has_admin_user?(user))
+  end
+
+  def close_if_outdated
+    self.close_voting if close_date && Time.now > close_date
+  end
+
+  def has_closing_date?
+    close_date == nil
   end
 
   private
