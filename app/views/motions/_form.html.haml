@@ -1,12 +1,10 @@
-=semantic_form_for(*form_args) do |f|
-  =f.inputs do
-    #motion_partial
-      =f.input :name,
-        placeholder: "Enter a name for your motion"
+#motion-form
+  =semantic_form_for(*form_args) do |f|
+    =f.inputs do
+      =f.input :name, placeholder: "Enter a name for your motion"
       =f.input :discussion_url, placeholder: "http://site.com/your-discussion"
-      -#=f.input :close_date :unit_number, label: false
-      =f.input :description,
-        placeholder: "Enter a description for your motion"
-    =f.commit_button
-    =f.input :phase, as: :hidden, label: false, value: "voting"
-    =f.input :facilitator_id, as: :hidden, value: current_user.id, label: false
+      =f.input :close_date, as: :string, wrapper_html: {id: "close-date"}
+      =f.input :description
+      =f.commit_button
+      =f.input :phase, as: :hidden, label: false, value: "voting"
+      =f.input :facilitator_id, as: :hidden, value: current_user.id, label: false

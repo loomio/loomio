@@ -16,7 +16,6 @@
           -icon_name = "hand-block.png"
         %td
           =image_tag(icon_name, height:'20', width:'20', alt:vote.position + ' image')
-        -#%td=vote.position
         %td=vote.user_name
         %td.vote-statement=vote.statement
         -if vote.can_be_edited_by?(current_user)
