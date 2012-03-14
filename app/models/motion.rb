@@ -11,7 +11,7 @@ class Motion < ActiveRecord::Base
 
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
-  
+
   include AASM
   aasm :column => :phase do
     state :voting, :initial => true

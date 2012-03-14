@@ -3,12 +3,7 @@
     =f.inputs do
       =f.input :name, placeholder: "Enter a name for your motion"
       =f.input :discussion_url, placeholder: "http://site.com/your-discussion"
-      .row
-        .span7
-          =f.input :close_date, as: :string, wrapper_html: {id: "close-date"}
-        .span9
-          =f.input :no_close_date, as: :check_boxes, label: false,
-          :collection => ["No close date"]
+      =f.input :close_date, as: :string, wrapper_html: {id: "close-date"}
       =f.input :description
       =f.commit_button
       =f.input :phase, as: :hidden, label: false, value: "voting"
