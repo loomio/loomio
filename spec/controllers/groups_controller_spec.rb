@@ -14,11 +14,17 @@ describe GroupsController do
         before :each do
           @group.add_admin!(@user)
         end
+        it "get user tags" do
+          #TODO AC in progress: get group_tags missing template - StackO says to create the view
+          post :add_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
+          #get :group_tags, id: @group.id, q: "test"
+          #debugger
+          #response.should include("testytag")
+        end
         it "can add a user tag" do
           post :add_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
           post :add_user_tag, id: @group.id, tag: "testytag2", user_id: @user.id
           post :add_user_tag, id: @group.id, tag: "testytag3", user_id: @user.id
-          #debugger
           @user.group_tags.find_by_name("testytag").name.should include("testytag")
           @user.group_tags.find_by_name("testytag2").name.should include("testytag2")
           @user.group_tags.find_by_name("testytag3").name.should include("testytag3")
