@@ -88,6 +88,11 @@ class Motion < ActiveRecord::Base
     self.close_voting if close_date && Time.now > close_date
   end
 
+  def set_close_date(set_date)
+    set_date = set_date.to_date
+    self.close_date = set_date if close_date && close_date >= Time.now.to_date
+  end
+
   def has_closing_date?
     close_date == nil
   end
