@@ -2,24 +2,29 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-# TODO Check if group page - check the body class/id
-
-current_user_tags = ""
-
 $ ->
   # Only execute on group page
   if $("#group").length > 0
-    group_id = $("#group_id").val()
-    $("#users-list").children().each (index, element) =>
+    addUserTag = (group_id, tag_name, user_name) =>
+      $.ajax("/groups/#{group_id}/user/#{user_name}/add_user_tag/#{tag_name}")
+    
+    deleteUserTag = (group_id, tag_name, user_name) =>
+      $.ajax("/groups/#{group_id}/user/#{user_name}/delete_user_tag/#{tag_name}")
+
+    # Call this method to display user tags using the jQuery TokenInput Plugin
+    displayUserTag = (group_id, element, token_diplay_element) =>
+      current_user_group_tags_url = "/groups/#{group_id}/user/#{$(element).attr('id')}/user_group_tags.json"
+      available_group_tags = "/groups/#{group_id}/group_tags.json"
+    
       $.ajax(
-        url: '/users/' + $(element).attr("id")  + '/user_group_tags.json',
+        url: current_user_group_tags_url, 
         success: (data, status, o) ->
           current_user_tags = eval(data)
-          $("#user-tags-" + $(element).attr("id")).tokenInput(
-            "/group/" + group_id + "/group_tags.json"
-            prePopulate: current_user_tags, crossDomain: false, processPrePopulate: true, preventDuplicates: true, theme: "facebook",
-            onAdd: (item)-> $.ajax("/groups/" + group_id + "/add_user_tag/" + item.name + "/user/" + $(element).attr("id")),
-            onDelete: (item)-> $.ajax("/groups/" + group_id + "/delete_user_tag/" + item.name + "/user/" + $(element).attr("id")),
+          $(token_diplay_element).tokenInput(
+            available_group_tags
+            prePopulate: current_user_tags, crossDomain: false, processPrePopulate: true, preventDuplicates: true, theme: "facebook"
+            onAdd: (item)-> addUserTag group_id, item.name, $(element).attr("id")
+            onDelete: (item)-> deleteUserTag group_id, item.name, $(element).attr("id")
           )
         dataType: "text"
         type: "GET"
@@ -32,6 +37,11 @@ $ ->
         $(this).text("Membership Requested")
     )
 
+    # For each user in the list, display their current group tags
+    $("#users-list").children().each (index, user_list_element) => 
+      token_diplay_element = "#user-tags-#{$(user_list_element).attr("id")}"
+      displayUserTag $("#group_id").val(), user_list_element, token_diplay_element
+    
     if window.location.href.split("#")[1] == "users"
       $(".tabs a:last").click()
 
