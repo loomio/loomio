@@ -1,13 +1,18 @@
 %li{:id => membership.user_id}
-  =membership.user_name
-  -# =membership.access_level
-  -if current_user.is_group_admin?(@group)
-    =link_to "edit", edit_membership_path(membership)
-    |
-    =link_to "remove", membership, method: :delete,
-      confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
-    %br
-    %b Tags:
-    -#=membership.group_tags.join(", ") if membership.group_tags
-    %input{:id => "user-tags-" + membership.user_id.to_s}
-    .clear-both
+  %ul.unstyled.membership-row
+    %li.name-label
+      =membership.user_name
+    %li
+      -# =membership.access_level
+      -if current_user.is_group_admin?(@group)
+        %li.membership-admin-functions
+          =link_to "edit", edit_membership_path(membership)
+          |
+          =link_to "remove", membership, method: :delete,
+            confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
+        %li.tags-label
+          %span Tags:
+        %li
+          -#=membership.group_tags.join(", ") if membership.group_tags
+          %input{:id => "user-tags-" + membership.user_id.to_s}
+  .clear-both

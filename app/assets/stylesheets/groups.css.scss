@@ -1,35 +1,62 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$token-input-line-height: 10px;
+$token-input-font-size: 10px;
 
 .clear-both {
   clear: both;
   height: 15px;
 }
 
+div.token-input-dropdown-facebook {
+  width: 480px !important;
+}
+
 ul.token-input-list-facebook {
-  width: 490px !important;
-  font-size: 11px;
-  line-height: 15px;
+  line-height: $token-input-line-height;
+  font-size: $token-input-font-size;
+  width: 480px !important;
 }
 
 ul.token-input-list-facebook li {
-  line-height: 15px;
+  line-height: $token-input-line-height;
 }
 
 ul.token-input-list-facebook p {
-  line-height: 15px;
-  font-size: 11px;
+  line-height: $token-input-line-height;
+  font-size: $token-input-font-size;
 }
 
 div.token-input-dropdown-facebook p {
-  line-height: 15px;
-  font-size: 11px;
+  line-height: $token-input-line-height;
+  font-size: $token-input-font-size;
 }
 
 .token-input-input-token-facebook input {
+  line-height: $token-input-line-height;
+  font-size: $token-input-font-size;
   height: auto;
-  line-height: 15px;
-  font-size: 11px;
 }
+
+ul.membership-row li {
+  display: inline;
+  font-size: 14px;
+  float: left;
+}
+
+ul.membership-row li.membership-admin-functions {
+  font-size: 12px;
+  width: 120px;
+}
+
+ul.membership-row li.name-label {
+  width: 125px;
+}
+
+ul.membership-row li.tags-label {
+  margin-right: 10px;
+}
+
+
 
