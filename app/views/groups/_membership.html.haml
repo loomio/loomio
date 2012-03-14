@@ -7,7 +7,7 @@
     =link_to "remove", membership, method: :delete,
       confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
     %br
-    %b Tags:
-    -#=membership.group_tags.join(", ") if membership.group_tags
-    %input{:id => "user-tags-" + membership.user_id.to_s}
-    .clear-both
+    -# Hide tags for now
+    -#%b Tags:
+    -#%input{:id => "user-tags-" + membership.user_id.to_s}
+    -#.clear-both
