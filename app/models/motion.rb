@@ -84,13 +84,17 @@ class Motion < ActiveRecord::Base
     user && (author == user || has_admin_user?(user))
   end
 
-  def close_if_outdated
-    self.close_voting if close_date && Time.now > close_date
+  def open_close_motion
+    if close_date && close_date <= Time.now.to_date
+      close_voting
+    else
+      open_voting
+    end
   end
 
   def set_close_date(set_date)
-    set_date = set_date.to_date
-    self.close_date = set_date if close_date && close_date >= Time.now.to_date
+    self.close_date = set_date.to_date
+    save
   end
 
   def has_closing_date?

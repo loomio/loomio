@@ -18,7 +18,7 @@ class MotionsController < GroupBaseController
 
   def show
     resource
-    @motion.close_if_outdated
+    @motion.open_close_motion
     @user_already_voted = @motion.user_has_voted?(current_user)
     @votes_for_graph = @motion.votes_graph_ready
     @vote = Vote.new
@@ -40,15 +40,12 @@ class MotionsController < GroupBaseController
   def close_voting
     resource
     @motion.set_close_date(Time.now)
-    @motion.close_voting!
     redirect_to motion_path(@motion)
   end
 
   def open_voting
     resource
     @motion.set_close_date(Time.now + 1.week)
-    @motion.phase = 'voting'
-    @motion.save
     redirect_to motion_path(@motion)
   end
 
