@@ -1,35 +1,36 @@
 =link_to @motion.group.name, group_path(@motion.group), title: "group"
 #motion
-  .row
-    %h2.span10
-      =@motion.name
-      - if @motion.voting?
-        =image_tag("phase-voting.png", height:'20', width:'60', alt:'voting phase image')
-      - if @motion.closed?
-        =image_tag("phase-closed.png", height:'20', width:'60', alt:'voting phase image')
-    .span6
-      =render partial: "facilitator_options"
-  - if @motion.discussion_url.present?
-    %h5
-      Discussion:
-      =link_to @motion.discussion_url, @motion.discussion_url, target: "_blank"
-  %h6
-    Proposed by:
-    %span
-      =@motion.author_email
-      ="#{time_ago_in_words(@motion.created_at)} ago"
-      -if @motion.updated_at != @motion.created_at
-        ="(edited: #{time_ago_in_words(@motion.updated_at)} ago)"
-      -#%span.facilitator=", Facilitator: #{@motion.facilitator_email}"
-    .span
-      - if @motion.has_closing_date?
-        no specified closing date
-      - else
+  #description
+    .row
+      %h2.span10
+        =@motion.name
         - if @motion.voting?
-          closing:
+          =image_tag("phase-voting.png", height:'20', width:'60', alt:'voting phase image')
+        - if @motion.closed?
+          =image_tag("phase-closed.png", height:'20', width:'60', alt:'voting phase image')
+      .span6
+        =render partial: "facilitator_options"
+    - if @motion.discussion_url.present?
+      %h5
+        Discussion:
+        =link_to @motion.discussion_url, @motion.discussion_url, target: "_blank"
+    %h6
+      Proposed by:
+      %span
+        =@motion.author_email
+        ="#{time_ago_in_words(@motion.created_at)} ago"
+        -if @motion.updated_at != @motion.created_at
+          ="(edited: #{time_ago_in_words(@motion.updated_at)} ago)"
+        -#%span.facilitator=", Facilitator: #{@motion.facilitator_email}"
+      .span
+        - if @motion.has_closing_date?
+          No specified closing date
         - else
-          closed:
-        =@motion.close_date.strftime("%d/%m/%Y")
+          - if @motion.voting?
+            Closing:
+          - else
+            Closed:
+          =@motion.close_date.strftime("%d/%m/%Y")
   #motion_description
     =simple_format(@motion.description)
   .row
