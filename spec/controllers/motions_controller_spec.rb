@@ -17,8 +17,13 @@ describe MotionsController do
     end
 
     it "can close a motion" do
-      motion.should_receive(:close_voting!)
+      motion.should_receive(:set_close_date)
       post :close_voting, id: motion.id
+    end
+
+    it "can open a motion" do
+      motion.should_receive(:set_close_date)
+      post :open_voting, id: motion.id
     end
   end
 

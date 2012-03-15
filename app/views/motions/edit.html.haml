@@ -1,7 +1,5 @@
+= link_to @motion.group.name, @motion.group
 %h2
-  = link_to @motion.group.name, @motion.group
-  >
   =@motion.name
-
 =render partial: 'form',
   locals: {form_args: [@motion]}

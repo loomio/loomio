@@ -22,7 +22,7 @@ class Motion < ActiveRecord::Base
     end
 
     event :close_voting, :after => :store_no_vote_count do
-      transitions :to => :closed, :from => [:voting]
+      transitions :to => :closed, :from => [:voting, :closed]
     end
   end
 
@@ -82,6 +82,25 @@ class Motion < ActiveRecord::Base
 
   def can_be_deleted_by?(user)
     user && (author == user || has_admin_user?(user))
+  end
+
+  def open_close_motion
+    if close_date && close_date <= Time.now.to_date
+      close_voting
+    else
+      open_voting
+    end
+    save
+  end
+
+  def set_close_date(set_date)
+    self.close_date = set_date.to_date
+    save
+    open_close_motion
+  end
+
+  def has_closing_date?
+    close_date == nil
   end
 
   private
