@@ -47,7 +47,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'guard'
   gem 'guard-spork'
   gem 'guard-rspec'
