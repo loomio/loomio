@@ -44,3 +44,5 @@ after "deploy:update_code" do
   deploy.symlink_configs
   deploy.bundle
 end
+
+load 'deploy/assets'
