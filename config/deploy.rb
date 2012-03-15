@@ -3,7 +3,6 @@ set :user, application
 set :repository,  "git@github.com:enspiral/loomio.git"
 
 set :deploy_via, :remote_cache
-set :ssh_options, {:forward_agent => true}
 set :use_sudo, false
 set :rake, "bundle exec rake"
 
