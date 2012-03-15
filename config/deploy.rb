@@ -1,6 +1,6 @@
 set :application, "tautoko"
 set :user, application
-set :repository,  "git@github.com:enspiral/tautoko.git"
+set :repository,  "git@github.com:enspiral/loomio.git"
 
 set :deploy_via, :remote_cache
 set :use_sudo, false
