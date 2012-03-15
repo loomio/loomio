@@ -22,7 +22,7 @@ class Motion < ActiveRecord::Base
     end
 
     event :close_voting, :after => :store_no_vote_count do
-      transitions :to => :closed, :from => [:voting]
+      transitions :to => :closed, :from => [:voting, :closed]
     end
   end
 
@@ -90,11 +90,13 @@ class Motion < ActiveRecord::Base
     else
       open_voting
     end
+    save
   end
 
   def set_close_date(set_date)
     self.close_date = set_date.to_date
     save
+    open_close_motion
   end
 
   def has_closing_date?
