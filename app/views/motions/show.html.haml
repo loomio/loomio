@@ -27,10 +27,10 @@
           No specified closing date
         - else
           - if @motion.voting?
-            Closing on 
+            Closing on
           - else
-            Closed on 
-          =@motion.close_date.strftime("%d/%m/%Y")
+            Closed on
+          = @motion.close_date.strftime("%d/%m/%Y")
   #motion_description
     =simple_format(@motion.description)
   .row

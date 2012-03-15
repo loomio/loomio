@@ -12,6 +12,6 @@
 
   .tab-content
     #motions.tab-pane.active
-      =render :partial => 'motions'
+      =render partial: 'motions', locals: {group: @group}
     #users.tab-pane
-      =render :partial => 'users'
+      =render :partial => 'users', locals: {group: @group}

@@ -1,6 +1,6 @@
 %h3 Motions:
 %ul.unstyled
-  -@group.motions.each do |motion|
-    %li=link_to motion.name, motion
-=link_to "Create a motion",
-  new_motion_path({group_id: @group.id}), :class => 'btn primary'
+  - group.motions.each do |motion|
+    %li= link_to motion.name, motion
+= link_to "Create a motion",
+  new_motion_path({group_id: group.id}), :class => 'btn primary'
