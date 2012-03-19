@@ -6,16 +6,7 @@
     %th
     -@motion.votes.each do |vote|
       %tr
-        -if vote.position == "yes"
-          -icon_name = "hand-yes.png"
-        -if vote.position == "no"
-          -icon_name = "hand-no.png"
-        -if vote.position == "abstain"
-          -icon_name = "hand-abstain.png"
-        -if vote.position == "block"
-          -icon_name = "hand-block.png"
-        %td
-          =image_tag(icon_name, height:'20', width:'20', alt:vote.position + ' image')
+        %td=render partial: "display_icons", locals: {position: vote.position}
         %td=vote.user_name
         %td.vote-statement=vote.statement
         -if vote.can_be_edited_by?(current_user)
