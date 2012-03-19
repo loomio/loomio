@@ -22,6 +22,7 @@ class Group < ActiveRecord::Base
       membership = memberships.build_for_user(user, access_level: 'request')
       membership.save!
       GroupMailer.new_membership_request(membership).deliver
+      reload
       membership
     end
   end
@@ -33,6 +34,7 @@ class Group < ActiveRecord::Base
       end
       membership.access_level = 'member'
       membership.save!
+      reload
       membership
     end
   end
@@ -44,6 +46,7 @@ class Group < ActiveRecord::Base
     end
     membership.access_level = 'admin'
     membership.save!
+    reload
     membership
   end
 
