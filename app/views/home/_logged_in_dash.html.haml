@@ -4,32 +4,17 @@
       .group-motion-table
         %h3 Open
         %table
-          %tr{class: "grey-row"}
-            %th
-            %th group
-            %th motion
-            %th description
-            %th close
-            %th
-          -@motions.voting.each do |motion|
-            -class_name = ""
-            - if !motion.user_has_voted?(current_user)
-              - class_name = "highlight-row"
-            - else
+          - @motions.voting.each do |motion|
+            - class_name = ""
+            - if motion.user_has_voted?(current_user)
               - class_name = "grey-row"
             %tr{class: class_name}
               =render partial: "motions/motion_list", locals: {motion: motion}
         %h3 Closed
         %table
-          %th
-          %th group
-          %th motion
-          %th description
-          %th close
-          %th
-            -@motions.closed.each do |motion|
-              %tr
-                =render partial: "motions/motion_list", locals: {motion: motion}
+          - @motions.closed.each do |motion|
+            %tr.grey-row
+              =render partial: "motions/motion_list", locals: {motion: motion}
     - else
       =link_to 'Create a group', new_group_path
       or wait until you are accepted into one.
