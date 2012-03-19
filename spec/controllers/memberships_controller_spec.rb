@@ -18,12 +18,10 @@ describe MembershipsController do
     end
 
     it "sends an email to admins with new membership request" do
+      GroupMailer.should_receive(:new_membership_request).and_return(stub(deliver: true))
       @group.add_admin!(User.make!)
       post :create,
            :membership => {:group_id => @group.id}
-      last_email =  ActionMailer::Base.deliveries.last
-      last_email.to.should == @group.admins.map(&:email)
-      last_email.subject.should include("[Loomio: #{@group.name}] Membership waiting approval.")
     end
 
     context 'group admin' do
