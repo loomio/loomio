@@ -1,40 +1,45 @@
--m = motion
-.motion.span4{:id =>"motion_#{m.id}", :class => "#{last_class} voted_#{current_user.motion_vote(m) ? current_user.motion_vote(m).position : "notyet"}"}
+%td
+  -if motion.user_has_voted?(current_user)
+    - position = current_user.motion_vote(motion).position
+    =render partial: "motions/display_icons", locals: {position: position}
+%td=link_to motion.group.name, motion.group
+%td=link_to motion.name, motion
+%td=truncate(motion.description, :length => 25)
+%td
+  - if motion.close_date
+    Closing on
+    = motion.close_date
+  - else
+    No closed date specified
+%td.toggle_motion_expand +
+
+.expanded.togglable.span8{:id => "expand_#{motion.id}"}
   .border
-    .group.cf
-      =link_to "Group: #{m.group.name}", m.group, :class => 'stop_prop'
-      %span.toggle_motion_expand +
+    .group
+      =link_to "Group: #{motion.group.name}", motion.group
+      %span.toggle_motion_expand &ndash;
     .name
-      =link_to m.name, m, :class => 'stop_prop'
+      =link_to motion.name, motion
     .description
-      =truncate(m.description, :length => 180)
-  .expanded.togglable.span8{:id => "expand_#{m.id}"}
-    .border
-      .group
-        =link_to "Group: #{m.group.name}", m.group
-        %span.toggle_motion_expand &ndash;
-      .name
-        =link_to m.name, m
-      .description
-        =m.description
-      .graph_tooltip{ :id => "tooltip_#{m.id}" }
-      .row.span8
-        .pie.span5{ :id => "vgraph_#{m.id}" }
-        .motion_actions.span2
-          .btn.primary.small=link_to 'Discuss', m.discussion_url, target: '_blank', class: 'stop_prop'
-          .btn.small=link_to 'View', m
-          -if m.user_has_voted?(current_user) && m.voting?
-            .btn.small=link_to 'Change vote', new_motion_vote_path(m)
-          -elsif m.voting?
-            .btn.small=link_to 'Vote', new_motion_vote_path(m)
+      =motion.description
+    .graph_tooltip{ :id => "tooltip_#{motion.id}" }
+    .row.span8
+      .pie.span5{ :id => "vgraph_#{motion.id}" }
+      .motion_actions.span2
+        .btn.primary.small=link_to 'Discuss', motion.discussion_url, target: '_blank', class: 'stop_prop'
+        .btn.small=link_to 'View', motion
+        - if motion.user_has_voted?(current_user) && motion.voting?
+          .btn.small=link_to 'Change vote', new_motion_vote_path(motion)
+        - elsif motion.voting?
+          .btn.small=link_to 'Vote', new_motion_vote_path(motion)
 :coffeescript
   jQuery ->
-    @pie_graph_view_#{m.id} = new Tautoko.Views.Utils.GraphView
-      motion_id: #{m.id}
-      el: 'vgraph_#{m.id}'
-      id_string: 'vgraph_#{m.id}'
+    @pie_graph_view_#{motion.id} = new Tautoko.Views.Utils.GraphView
+      motion_id: #{motion.id}
+      el: 'vgraph_#{motion.id}'
+      id_string: 'vgraph_#{motion.id}'
       legend: true
-      data: #{m.votes_graph_ready.to_json.html_safe}
+      data: #{motion.votes_graph_ready.to_json.html_safe}
       type: 'pie'
-      tooltip_selector: '#tooltip_#{m.id}'
+      tooltip_selector: '#tooltip_#{motion.id}'
 
