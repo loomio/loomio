@@ -46,9 +46,8 @@ class Vote < ActiveRecord::Base
 
   private
     def send_notifications
-      debugger
       if position == "block" && old_position != "block"
-        MotionMailer.motion_blocked(self)
+        MotionMailer.motion_blocked(self).deliver
       end
     end
 end
