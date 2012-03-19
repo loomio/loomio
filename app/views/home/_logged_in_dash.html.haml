@@ -1,24 +1,39 @@
 %section#motion_panels
-  -if @motions
-    -if @motions_voting.size > 0
-      %h3 Vote required
-      .row
-        -@motions_voting.each_with_index do |m, index|
-          = render :partial => 'motions/motion_list', locals: {motion: m, last_class: motion_panel_class(index)}
-    -if @motions_discussing.size > 0
-      %h3 Dicussing
-      .row
-        -@motions_discussing.each_with_index do |m, index|
-          = render :partial => 'motions/motion_list', locals: {motion: m, last_class: motion_panel_class(index)}
-    -if @motions_closed.size > 0
-      %h3 Closed
-      .row
-        -@motions_closed.each_with_index do |m, index|
-          = render :partial => 'motions/motion_list', locals: {motion: m, last_class: motion_panel_class(index)}
-  -else
-    =link_to 'Create a group', new_group_path
-    or wait until you are accepted into one.
-    or if there are public groups, then wooooooooo.
+  - if @motions
+    - if @motions_voting.size > 0
+      .group-motion-table
+        %h3 Open
+        %table
+          %tr{class: "grey-row"}
+            %th
+            %th group
+            %th motion
+            %th description
+            %th close
+            %th
+          -@motions.voting.each do |motion|
+            -class_name = ""
+            - if !motion.user_has_voted?(current_user)
+              - class_name = "highlight-row"
+            - else
+              - class_name = "grey-row"
+            %tr{class: class_name}
+              =render partial: "motions/motion_list", locals: {motion: motion}
+        %h3 Closed
+        %table
+          %th
+          %th group
+          %th motion
+          %th description
+          %th close
+          %th
+            -@motions.closed.each do |motion|
+              %tr
+                =render partial: "motions/motion_list", locals: {motion: motion}
+    - else
+      =link_to 'Create a group', new_group_path
+      or wait until you are accepted into one.
+      or if there are public groups, then wooooooooo.
 
 
 :coffeescript
@@ -27,3 +42,4 @@
       $('.togglable').hide()
     $('.stop_prop').click (e)->
       e.stopPropagation()
+
