@@ -5,6 +5,6 @@ class GroupMailer < ActionMailer::Base
     @user = membership.user
     @group = membership.group
     @admins = @group.admins.map(&:email)
-    mail(:to => @admins, :subject => "[Loomio: #{@group.name}] Membership waiting approval.")
+    mail(:to => @admins, :subject => "[Loomio: #{@group.name}] Membership waiting approval")
   end
 end
