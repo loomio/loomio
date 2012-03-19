@@ -1,11 +1,12 @@
 A new motion was created in a Loomio group that you belong to.
 :plain
 
-= "Read, discuss and vote on the motion here: #{motion_url(@motion)}"
+= "View motion: #{motion_url(@motion)}"
 :plain
 
 
 = "Motion Name: #{@motion.name}"
 = "Group: #{@motion.group.name}"
-Description:
-= @motion.description
+- if @motion.description.present?
+  Description:
+  = @motion.description
