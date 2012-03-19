@@ -13,6 +13,12 @@ class Vote < ActiveRecord::Base
 
   delegate :name, :to => :user, :prefix => :user
 
+  #def position=(new_position)
+    #if new_position == "block" && self.position != "block"
+      #MotionMailer.block_issued(self)
+    #end
+  #end
+
   def can_be_edited_by?(current_user)
     current_user && user == current_user
   end

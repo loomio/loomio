@@ -10,4 +10,13 @@ class MotionMailer < ActionMailer::Base
     end
     mail(to: email_addresses, subject: "[Loomio: #{@group.name}] New motion: #{motion.name}.")
   end
+
+  def motion_blocked(vote)
+    @vote = vote
+    @user = vote.user
+    @motion = vote.motion
+    @group = @motion.group
+    mail(to: @motion.author.email,
+         subject: "A motion you are facilitating on Loomio has been blocked")
+  end
 end
