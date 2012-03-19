@@ -20,7 +20,7 @@ describe UserMailer do
 
     #ensure that the sender is correct
     it 'renders the sender email' do
-      @mail.from.should == ['noreply@tautoko.co.nz']
+      @mail.from.should == ['noreply@loom.io']
     end
 
     #ensure that the @name variable appears in the email body
