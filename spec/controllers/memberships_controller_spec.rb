@@ -14,19 +14,16 @@ describe MembershipsController do
       post :create,
            :membership => {:group_id => @group.id, :access_level => 'member'}
       response.should redirect_to(groups_path)
-      assigns(:membership).user.should == @user
-      assigns(:membership).group.should == @group
-      assigns(:membership).access_level.should == 'request'
+      assigns(:group).requested_users.should include(@user)
     end
 
     it "sends an email to admins with new membership request" do
       @group.add_admin!(User.make!)
-      # note trying to sneek member level access.. should be ignored
       post :create,
-           :membership => {:group_id => @group.id, :access_level => 'member'}
+           :membership => {:group_id => @group.id}
       last_email =  ActionMailer::Base.deliveries.last
       last_email.to.should == @group.admins.map(&:email)
-      last_email.subject.should include("[Tautoko: #{@group.name}] Membership waiting approval.")
+      last_email.subject.should include("[Loomio: #{@group.name}] Membership waiting approval.")
     end
 
     context 'group admin' do
