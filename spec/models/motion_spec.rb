@@ -20,8 +20,13 @@ describe Motion do
   end
 
   it "sends notification email to group members on successful create" do
-    MotionMailer.should_receive(:new_motion_created).with(kind_of(Motion))
-      .and_return(stub(deliver: true))
+    group = Group.make!
+    group.add_member!(User.make!)
+    group.add_member!(User.make!)
+    # Do not send email to author, so subtract one from total emails sent
+    MotionMailer.should_receive(:new_motion_created)
+      .exactly(group.users.count - 1).times
+      .with(kind_of(Motion), kind_of("")).and_return(stub(deliver: true))
     @motion = create_motion
   end
 

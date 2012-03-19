@@ -7,16 +7,16 @@ describe MotionMailer do
 
   describe 'sending email on new motion creation' do
     before(:all) do
-      @email = MotionMailer.new_motion_created(motion)
-      @email_addresses = []
-      group.users.each do |user|
-        @email_addresses << user.email unless motion.author == user
-      end
+      @email = MotionMailer.new_motion_created(motion, user.email)
+      #@email_addresses = []
+      #group.users.each do |user|
+        #@email_addresses << user.email unless motion.author == user
+      #end
     end
 
     #ensure that the subject is correct
     it 'renders the subject' do
-      @email.subject.should == "[Loomio: #{group.name}] New motion: #{motion.name}."
+      @email.subject.should == "[Loomio: #{group.name}] New motion"
     end
 
     #ensure that the sender is correct
@@ -25,8 +25,7 @@ describe MotionMailer do
     end
 
     it 'sends email to group members but not author' do
-      @email.to.should_not include(motion.author.email)
-      @email.to.should == @email_addresses
+      @email.to.should == [user.email]
     end
 
     #ensure that the group name variable appears in the email body
@@ -48,7 +47,7 @@ describe MotionMailer do
 
     #ensure that the subject is correct
     it 'renders the subject' do
-      @email.subject.should == "A motion you are facilitating on Loomio has been blocked"
+      @email.subject.should match(/Motion has been blocked/)
     end
 
     #ensure that the sender is correct
