@@ -1,14 +1,14 @@
 class MotionMailer < ActionMailer::Base
   default from: "noreply@loom.io"
 
-  def new_motion_created(motion)
+  def new_motion_created(motion, email)
     @motion = motion
     @group = motion.group
-    email_addresses = []
-    @group.users.each do |user|
-      email_addresses << user.email unless motion.author == user
-    end
-    mail(to: email_addresses, subject: "[Loomio: #{@group.name}] New motion: #{motion.name}.")
+    #email_addresses = []
+    #@group.users.each do |user|
+      #email_addresses << user.email unless motion.author == user
+    #end
+    mail(to: email, subject: "[Loomio: #{@group.name}] New motion")
   end
 
   def motion_blocked(vote)
@@ -17,6 +17,6 @@ class MotionMailer < ActionMailer::Base
     @motion = vote.motion
     @group = @motion.group
     mail(to: @motion.author.email,
-         subject: "A motion you are facilitating on Loomio has been blocked")
+         subject: "[Loomio: #{@group.name}] Motion has been blocked")
   end
 end
