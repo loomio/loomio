@@ -1,4 +1,4 @@
 Hi,
-="You have a new request for access to #{@group.name}."
-="You approve or decline it at #{group_url(@group)}"
+= "#{@user.name} (#{@user.email}) has requested access to your group #{@group.name}."
+= "You can approve or decline it at: " + group_url(@group) + "#users"
 Thanks!

@@ -13,13 +13,9 @@ class MembershipsController < BaseController
   end
 
   def create
-    build_resource
-    @membership.user = current_user
-    @membership.access_level = 'request'
-    GroupMailer.new_membership_request(@membership.group).deliver
-    create! do |format|
-      format.html { redirect_to groups_url }
-    end
+    @group = Group.find(params[:membership][:group_id])
+    @group.add_request!(current_user)
+    redirect_to groups_url
   end
 
   def destroy

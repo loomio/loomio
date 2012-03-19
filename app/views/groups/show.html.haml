@@ -1,17 +1,18 @@
-%h1=@group.name
--# Commenting out admin name, as it is not terribly useful
--#-@group.admins.each do |a|
-  -#=a.email
-.row
+#group
+  %h1=@group.name
+  -# Commenting out admin name, as it is not terribly useful
+  -#-@group.admins.each do |a|
+    -#=a.email
+  .row
 
-  %ul{:class => "tabs", :data => {:tabs => "tabs"}}
-    %li{:class => "active"}
-      %a{:href => "#motions"} Motions
-    %li
-      %a{:href => "#users"} Users
+    %ul{:class => "tabs", :data => {:tabs => "tabs"}}
+      %li{:class => "active"}
+        %a{:href => "#motions"} Motions
+      %li
+        %a{:href => "#users"} Users
 
-  .tab-content
-    #motions.tab-pane.active
-      =render partial: 'motions', locals: {group: @group}
-    #users.tab-pane
-      =render :partial => 'users', locals: {group: @group}
+    .tab-content
+      #motions.tab-pane.active
+        =render partial: 'motions', locals: {group: @group}
+      #users.tab-pane
+        =render :partial => 'users', locals: {group: @group}

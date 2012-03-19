@@ -4,10 +4,10 @@
 </head>
 <body>
 %h4 Hi,
-%p="You have a new request for access to #{@group.name}."
+%p="#{@user.name} (#{@user.email}) has requested access to your group #{@group.name}."
 %p
   You can approve or decline it at:
-  =link_to('Tautoko', group_url(@group))
+  =link_to("#{@group.name} - Loomio", group_url(@group) + "#users")
 %br
 %p Thanks!
 </body>
