@@ -11,7 +11,7 @@ describe GroupMailer do
 
     #ensure that the subject is correct
     it 'renders the subject' do
-      @mail.subject.should == "[Loomio: #{@group.name}] Membership waiting approval."
+      @mail.subject.should == "[Loomio: #{@group.name}] Membership waiting approval"
     end
 
     #ensure that the sender is correct
