@@ -11,6 +11,7 @@ class Group < ActiveRecord::Base
            :conditions => {:access_level => 'admin'},
            :class_name => 'Membership'
   has_many :users, :through => :memberships
+  has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
   has_many :motions
 
@@ -18,28 +19,32 @@ class Group < ActiveRecord::Base
 
   def add_request!(user)
     unless requested_users_include?(user) || users.exists?(user)
-      m = memberships.build_for_user(user, access_level: 'request')
-      m.save!
+      membership = memberships.build_for_user(user, access_level: 'request')
+      membership.save!
+      GroupMailer.new_membership_request(membership).deliver
+      membership
     end
   end
 
   def add_member!(user)
     unless users.exists?(user)
-      unless m = requested_users_include?(user)
-        m = memberships.build_for_user(user)
+      unless membership = requested_users_include?(user)
+        membership = memberships.build_for_user(user)
       end
-      m.access_level = 'member'
-      m.save!
+      membership.access_level = 'member'
+      membership.save!
+      membership
     end
   end
 
   def add_admin!(user)
-    unless (m = memberships.find_by_user_id(user) ||
-            m = membership_requests.find_by_user_id(user))
-      m = memberships.build_for_user(user)
+    unless (membership = memberships.find_by_user_id(user) ||
+            membership = membership_requests.find_by_user_id(user))
+      membership = memberships.build_for_user(user)
     end
-    m.access_level = 'admin'
-    m.save!
+    membership.access_level = 'admin'
+    membership.save!
+    membership
   end
 
   def requested_users_include?(user)
