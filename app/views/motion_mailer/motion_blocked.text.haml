@@ -1,7 +1,10 @@
 A motion you are facilitating has been blocked.
+:plain
 
 = "View the motion here: #{motion_url(@motion)}"
-= "\n\n"
+:plain
+
+
 = "Motion Name: #{@motion.name}"
 = "Group: #{@motion.group.name}"
 = "Blocked by: #{@user.name} (#{@user.email})"
