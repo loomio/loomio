@@ -12,6 +12,8 @@ class Motion < ActiveRecord::Base
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
 
+  after_create :email_motion_created
+
   include AASM
   aasm :column => :phase do
     state :voting, :initial => true
@@ -104,6 +106,9 @@ class Motion < ActiveRecord::Base
   end
 
   private
+    def email_motion_created
+      MotionMailer.new_motion_created(self).deliver
+    end
 
     def store_no_vote_count
       self.no_vote_count = calculate_no_vote_count
