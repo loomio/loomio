@@ -14,14 +14,13 @@ describe GroupMailer do
       @mail.subject.should == "[Loomio: #{@group.name}] Membership waiting approval"
     end
 
+    it "sends email to group admins" do
+      @mail.to.should == @group.admins.map(&:email)
+    end
+
     #ensure that the sender is correct
     it 'renders the sender email' do
       @mail.from.should == ['noreply@loom.io']
-    end
-
-    #ensure that the group name variable appears in the email body
-    it 'assigns group.name' do
-      @mail.body.encoded.should match(@group.name)
     end
 
     #ensure that the confirmation_url appears in the email body
