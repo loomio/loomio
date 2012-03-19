@@ -21,16 +21,21 @@ describe Vote do
     vote.should have(1).errors_on(:position)
   end
 
-  it 'should only accept votes from users who belong to the group containing the motion'
+  it 'motion should only accept votes from users who belong to motion.group' do
+    motion = create_motion(author: user)
+    vote = Vote.new(position: 'block', motion: motion, user: User.make!)
+    vote.should_not be_valid
+  end
 
-  it "should only accept votes during the motion's voting phase"
+  it "motion should only accept votes during the motion's voting phase"
 
   it 'sends notification email to author if block is issued' do
     motion = create_motion(author: user)
+    MotionMailer.should_receive(:motion_blocked).with(kind_of(Vote))
+      .and_return(stub(deliver: true))
     vote = Vote.new(position: 'block', motion: motion, user: User.make!)
     vote.statement = "I'm blocking this motion"
     vote.save
-    MotionMailer.motion_blocked(vote)
   end
 
   it 'can have a statement' do
