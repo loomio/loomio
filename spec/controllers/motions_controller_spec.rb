@@ -52,25 +52,6 @@ describe MotionsController do
 
         response.should be_redirect
       end
-
-      it "sends an email after motion creation to members of group" do
-        pending "Move this to the model layer"
-        # This spec is pending because the email doesn't actually get sent at present.
-        # It might be a good idea to make sending the email the responsibility of the model
-        # (on a succesful create) and then move this test into motion_spec.rb
-
-        @motion = Motion.make
-        @motion.facilitator = User.make!
-        @motion.author = User.make!
-        @motion.group.add_member!(@motion.author)
-        @motion.group.add_member!(@motion.facilitator)
-        @motion.name = "Test Email"
-
-        post :create, :group_id => @group.id, :motion => @motion.attributes
-
-        last_email =  ActionMailer::Base.deliveries.last
-        last_email.subject.should =~ /[Tautoko]/
-      end
     end
 
     context "showing a motion" do

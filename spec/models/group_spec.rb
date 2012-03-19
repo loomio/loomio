@@ -59,16 +59,19 @@ describe Group do
     end
 
     context "receiving a member request" do
-      before :each do
-        @group.add_request!(@user)
-      end
-
       it "should not add user to group" do
+        @group.add_request!(@user)
         @group.users.should_not include(@user)
       end
       it "should add user to member requests" do
+        @group.add_request!(@user)
         @group.membership_requests.find_by_user_id(@user).should \
           == @user.membership_requests.find_by_group_id(@group)
+      end
+      it "should send group admins a notification email" do
+        GroupMailer.should_receive(:new_membership_request).with(kind_of(Membership))
+          .and_return(stub(deliver: true))
+        @group.add_request!(@user)
       end
     end
   end

@@ -19,6 +19,31 @@ describe Motion do
     @motion.user_has_voted?(@user).should == true
   end
 
+  it "sends notification email to group members on successful create" do
+    MotionMailer.should_receive(:new_motion_created).with(kind_of(Motion))
+      .and_return(stub(deliver: true))
+    @motion = create_motion
+  end
+
+  it "cannot have invalid phases" do
+    @motion = create_motion
+    @motion.phase = 'bad'
+    @motion.should_not be_valid
+  end
+
+  it "can have a close date" do
+    @motion = create_motion
+    @motion.close_date = '2012-12-12'
+    @motion.close_date.should == Date.parse('2012-12-12')
+    @motion.should be_valid
+  end
+
+  it "has a discussion link" do
+    @motion = create_motion
+    @motion.discussion_url = "http://our-discussion.com"
+    @motion.should be_valid
+  end
+
   context "users have voted" do
     before :each do
       @motion = create_motion
@@ -53,24 +78,5 @@ describe Motion do
       @motion.open_voting
       @motion.no_vote_count.should == nil
     end
-  end
-
-  it "cannot have invalid phases" do
-    @motion = create_motion
-    @motion.phase = 'bad'
-    @motion.should_not be_valid
-  end
-
-  it "can have a close date" do
-    @motion = create_motion
-    @motion.close_date = '2012-12-12'
-    @motion.close_date.should == Date.parse('2012-12-12')
-    @motion.should be_valid
-  end
-
-  it "has a discussion link" do
-    @motion = create_motion
-    @motion.discussion_url = "http://our-discussion.com"
-    @motion.should be_valid
   end
 end
