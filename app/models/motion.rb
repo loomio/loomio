@@ -107,7 +107,11 @@ class Motion < ActiveRecord::Base
 
   private
     def email_motion_created
-      MotionMailer.new_motion_created(self).deliver
+      group.users.each do |user|
+        unless author == user
+          MotionMailer.new_motion_created(self, user.email).deliver
+        end
+      end
     end
 
     def store_no_vote_count

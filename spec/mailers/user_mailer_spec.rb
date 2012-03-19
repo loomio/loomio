@@ -10,7 +10,7 @@ describe UserMailer do
 
     #ensure that the subject is correct
     it 'renders the subject' do
-      @mail.subject.should == "[Tautoko: #{@group.name}] Membership approved."
+      @mail.subject.should == "[Loomio: #{@group.name}] Membership approved."
     end
 
     #ensure that the receiver is correct

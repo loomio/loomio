@@ -45,12 +45,10 @@ describe MembershipsController do
       it "sends an email to notify the user of their membership approval" do
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
+        UserMailer.should_receive(:group_membership_approved).and_return(stub(deliver: true))
         post :update, :id => @membership.id,
              :membership => {:access_level => 'member'}
         flash[:notice].should =~ /Membership approved/
-        last_email =  ActionMailer::Base.deliveries.last
-        last_email.to.should include @new_user.email
-        last_email.subject.should include("[Tautoko: #{@group.name}] Membership approved.")
       end
 
       it 'can add an admin' do

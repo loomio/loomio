@@ -4,6 +4,6 @@ class UserMailer < ActionMailer::Base
   def group_membership_approved(user, group)
     @user = user
     @group = group
-    mail(:to => user.email, :subject => "[Tautoko: #{group.name}] Membership approved.")
+    mail(:to => user.email, :subject => "[Loomio: #{group.name}] Membership approved.")
   end
 end
