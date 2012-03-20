@@ -1,30 +1,55 @@
 %section#motion_panels
   - if @motions
     - if @motions_voting.size > 0
-      .group-motion-table
-        %h3 Open
-        %table
+      %h3 Open
+      .row
+        .motions-list.span16
           - @motions.voting.each do |motion|
-            - class_name = ""
+            - class_name = "motion-row border-row "
             - if motion.user_has_voted?(current_user)
-              - class_name = "grey-row"
-            %tr{class: class_name}
+              - class_name += "grey-row"
+            .row{class: class_name, :id =>"motion_#{motion.id}", onclick: "$('#expand_#{motion.id}').toggle();"}
               =render partial: "motions/motion_list", locals: {motion: motion}
+              .row{id: "expand_#{motion.id}"}
+                .span8
+                  .dashboard-motion-description
+                    =motion.description
+                .span6
+                  .pie.span5{ :id => "vgraph_#{motion.id}" }
+                  .graph_tooltip{ :id => "tooltip_#{motion.id}" }
+                .span1
+                  .motion_actions.span2
+                    .btn.primary.small=link_to 'Discuss', motion.discussion_url, target: '_blank', class: 'stop_prop'
+                    .btn.small=link_to 'View', motion
+                    - if motion.user_has_voted?(current_user) && motion.voting?
+                      .btn.small=link_to 'Change vote', new_motion_vote_path(motion)
+                    - elsif motion.voting?
+                      .btn.small=link_to 'Vote', new_motion_vote_path(motion)
+      #closed-motion-list
         %h3 Closed
-        %table
-          - @motions.closed.each do |motion|
-            %tr.grey-row
-              =render partial: "motions/motion_list", locals: {motion: motion}
+        .row
+          .motions-list.span16
+            - @motions.closed.each do |motion|
+              - class_name = "motion-row border-row grey-row"
+              .row{class: class_name, :id =>"motion_#{motion.id}", onclick: "$('#expand_#{motion.id}').toggle();"}
+                =render partial: "motions/motion_list", locals: {motion: motion}
+                .row{id: "expand_#{motion.id}"}
+                  .span7
+                    .dashboard-motion-description
+                      =motion.description
+                  .span6
+                    .pie.span5{ :id => "vgraph_#{motion.id}" }
+                    .graph_tooltip{ :id => "tooltip_#{motion.id}" }
     - else
       =link_to 'Create a group', new_group_path
       or wait until you are accepted into one.
       or if there are public groups, then wooooooooo.
 
-
-:coffeescript
-  jQuery ->
-    $('html, body').bind 'click', ()->
-      $('.togglable').hide()
-    $('.stop_prop').click (e)->
-      e.stopPropagation()
+-#:coffeescript
+  -#jQuery ->
+    -#$('html, body').bind 'click', ()->
+    -#$('toggle_motion_expand').click ()->
+    -#$('.togglable').hide()
+    -#-#$('.stop_prop').click (e)->
+      -#-#e.stopPropagation()
 

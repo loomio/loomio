@@ -1,5 +1,4 @@
--#.motion.span16{:id =>"motion_#{motion.id}", :class => "#{last_class} voted_#{current_user.motion_vote(motion) ? current_user.motion_vote(motion).position : "notyet"}"}
-%td
+.span1.vote-icon
   - if motion.user_has_voted?(current_user)
     - voted = true
     - position = current_user.motion_vote(motion).position
@@ -7,50 +6,29 @@
   - else
     #no-vote-dash
       = "..."
-%td
+.span8
   - if voted
     =link_to motion.name, motion, :class => 'stop_prop'
   - else
     %strong
       =link_to motion.name, motion, :class => 'stop_prop'
-  = "-"
-  =truncate(motion.description, :length => 25)
-%td=link_to "Group: #{motion.group.name}", motion.group, :class => 'stop_prop'
-%td
+.span3.other-info
+  =link_to motion.group.name, motion.group, :class => 'stop_prop'
+.span3.other-info
   - if motion.close_date
     - if motion.closed?
       Closed on
     - else
       Closing on
-    = motion.close_date
+    = motion.close_date.strftime("%d/%m/%Y")
   - else
     No closed date specified
-%td
-  %span.toggle_motion_expand +
+.span1.toggle-button
+  +
 
-.expanded.togglable.span8{:id => "expand_#{motion.id}"}
-
-  -#.border
-    -#.group
-      -#=link_to "Group: #{motion.group.name}", motion.group
-      -#%span.toggle_motion_expand &ndash;
-    -#.name
-      -#=link_to motion.name, motion
-    -#.description
-      -#=motion.description
-    -#.graph_tooltip{ :id => "tooltip_#{motion.id}" }
-    -#.row.span8
-      -#.pie.span5{ :id => "vgraph_#{motion.id}" }
-      -#.motion_actions.span2
-        -#.btn.primary.small=link_to 'Discuss', motion.discussion_url, target: '_blank', class: 'stop_prop'
-        -#.btn.small=link_to 'View', motion
-        -#- if motion.user_has_voted?(current_user) && motion.voting?
-          -#.btn.small=link_to 'Change vote', new_motion_vote_path(motion)
-        -#- elsif motion.voting?
-          -#.btn.small=link_to 'Vote', new_motion_vote_path(motion)
 :coffeescript
   jQuery ->
-    @pie_graph_view_#{motion.id} = new Toutoko.Views.Utils.GraphView
+    @pie_graph_view_#{motion.id} = new Tautoko.Views.Utils.GraphView
       motion_id: #{motion.id}
       el: 'vgraph_#{motion.id}'
       id_string: 'vgraph_#{motion.id}'
@@ -58,4 +36,3 @@
       data: #{motion.votes_graph_ready.to_json.html_safe}
       type: 'pie'
       tooltip_selector: '#tooltip_#{motion.id}'
-

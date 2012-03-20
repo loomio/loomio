@@ -23,21 +23,58 @@ div.motion{
     a, a:visited, a:active {color: #999;}
   }
   .description{ padding: 7px; cursor: pointer;}
-  .toggle_motion_expand{font-size: 1.8em; font-weight: bold; color: #ccc;float: right; padding: 2px 10px; cursor: pointer;}
-  .toggle_motion_expand:hover{color: #999;}
+  /*.toggle_motion_expand{font-size: 1.8em; font-weight: bold; color: #ccc;float: right; padding: 2px 10px; cursor: pointer;}*/
+  /*.toggle_motion_expand:hover{color: #999;}*/
   .expanded{
-    box-shadow: 1px 1px 4px #999999;
-    -webkit-box-shadow: 1px 1px 4px #999999;
-    -moz-box-shadow: 1px 1px 4px #999999;
-    background: #fff;
-    .graph_tooltip{display: none;}
-    .pie {height: 150px;}
-    .motion_actions{
-      .btn{width: 100%; clear: both; margin-bottom: 10px;}
-      .btn.small{font-size: 1em; line-height: 1.2em; padding: 3px;}
-      .btn.primary a{color:#fff;}
-    }
+    /*box-shadow: 1px 1px 4px #999999;*/
+    /*-webkit-box-shadow: 1px 1px 4px #999999;*/
+    /*-moz-box-shadow: 1px 1px 4px #999999;*/
+    /*background: #fff;*/
+    /*.graph_tooltip{display: none;}*/
+    /*.pie {height: 150px;}*/
+    /*.motion_actions{*/
+      /*.btn{width: 100%; clear: both; margin-bottom: 10px;}*/
+      /*.btn.small{font-size: 1em; line-height: 1.2em; padding: 3px;}*/
+      /*.btn.primary a{color:#fff;}*/
+    /*}*/
   }
+}
+.grey-row{
+  background-color: #F9F9F9;
+}
+
+.border-row{
+  border-top: 1px solid grey;
+}
+.motions-list{
+  font-size: 16px;
+  margin-left: 0px;
+  border-bottom: 1px solid grey;
+  .other-info{
+    font-size: 14px;
+  }
+  .toggle-button{
+    font-weight: bold;
+    color: #999999;
+  }
+  .dashboard-motion-description{
+    font-size: 12px;
+    margin-left: 80px;
+  }
+  .pie {height: 175px;}
+  .motion_actions{
+    margin-top: 60px;
+    .btn{width: 60px; clear: both; margin-top: 5px;}
+    .btn.small{font-size: 0.8em; line-height: 1.2em; padding: 3px;}
+    .btn.primary a{color:#fff;}
+  }
+  #motion-row{
+    margin-top: 6px;
+  }
+}
+
+#closed-motion-list{
+  margin-top: 40px
 }
 
 #description_text{
