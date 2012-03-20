@@ -5,7 +5,7 @@ begin
   require 'support/best_practices_threshold'
 
   METRIC_THRESHOLDS = {
-    :coverage => 86.8,
+    :coverage => 88.0,
     :flay => 300,
     :complexity => 10,
     :line_length => 120,
