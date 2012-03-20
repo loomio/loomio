@@ -16,7 +16,7 @@ describe MotionMailer do
 
     #ensure that the subject is correct
     it 'renders the subject' do
-      @email.subject.should == "[Loomio: #{group.name}] New motion"
+      @email.subject.should == "[Loomio: #{group.name}] New motion - #{motion.name}"
     end
 
     #ensure that the sender is correct
@@ -47,7 +47,7 @@ describe MotionMailer do
 
     #ensure that the subject is correct
     it 'renders the subject' do
-      @email.subject.should match(/Motion has been blocked/)
+      @email.subject.should match(/Motion blocked - #{motion.name}/)
     end
 
     #ensure that the sender is correct
