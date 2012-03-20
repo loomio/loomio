@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
            :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
            :dependent => :destroy
   has_many :groups, through: :memberships
-  has_many :group_requests, through: :membership_requests, class_name: 'Group', source: :user
+  has_many :group_requests, through: :membership_requests, class_name: 'Group', source: :group
   has_many :votes
 
   has_many :motions, through: :groups
