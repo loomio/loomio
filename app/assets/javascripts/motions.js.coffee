@@ -5,7 +5,7 @@
 $ ->
   if $("#motion-form").length > 0
     # Display date in correct format
-    # ...A bunch of bullshit that we have to write because jquery's 
+    # ...A bunch of bullshit that we have to write because jquery's
     # datepicker wants to be a pain.
     currentVal = $("#motion_close_date").val()
     currentVal = $.datepicker.parseDate("yy-mm-dd", currentVal)
@@ -15,3 +15,12 @@ $ ->
     if $("#new-motion").length > 0
       now = new Date()
       $("#motion_close_date").datepicker("setDate", "now.getDate()+7")
+
+  $(".motion-row").click((event, ui) ->
+    expandableRow = $(this).children().first()
+    expandableRow.toggle()
+    if expandableRow.is(":visible")
+      $(this).find(".toggle-button").html('+')
+    else
+      $(this).find(".toggle-button").html('-')
+  )
