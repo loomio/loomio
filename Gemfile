@@ -2,7 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
 gem "haml-rails"
-gem 'devise', '1.4.9'
+gem 'devise', '~> 2.0.0'
+gem 'devise_invitable', '~> 1.0.0'
 gem 'mysql2'
 gem 'pg'
 gem 'capistrano'
@@ -25,18 +26,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
 end
-
-#group :development do
-#end
-#gem 'jquery-rails'
-
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
 
 group :development, :test do
   gem 'machinist', '>= 2.0.0.beta2'
@@ -65,11 +54,3 @@ group :test do
   gem "rails_best_practices", :require => false
 end
 
-# group :development do
-#   gem 'sqlite3'
-# end
-
-# group :test do
-#   # Pretty printed test output
-# #  gem 'turn', :require => false
-# end
