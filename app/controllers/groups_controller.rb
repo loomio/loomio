@@ -28,6 +28,7 @@ class GroupsController < GroupBaseController
   def add_user_tag
     @group = Group.find(params[:id])
     @user = User.find(params[:user_id])
+    debugger
     @new_tags = @user.group_tags_from(@group).join(",") + "," + params[:tag]
     @group.tag @user, with: @new_tags, on: :group_tags
     #TODO AC: tests fail without this redirect, open to suggestions here
