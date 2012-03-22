@@ -16,11 +16,15 @@ $ ->
       now = new Date()
       $("#motion_close_date").datepicker("setDate", "now.getDate()+7")
 
-  $(".motion-row").click((event, ui) ->
-    expandableRow = $(this).children().first()
+  $(".bordered").click((event, ui) ->
+    expandableRow = $(this).children().last()
     expandableRow.toggle()
     if expandableRow.is(":visible")
-      $(this).find(".toggle-button").html('+')
-    else
       $(this).find(".toggle-button").html('-')
+    else
+      $(this).find(".toggle-button").html('+')
+  )
+
+  $(".no-toggle").click((event) ->
+    event.stopPropagation()
   )
