@@ -1,30 +1,31 @@
-.span1.vote-icon
-  - if motion.user_has_voted?(current_user)
-    - voted = true
-    - position = current_user.motion_vote(motion).position
-    =render partial: "motions/display_icons", locals: {position: position}
-  - else
-    #no-vote-dash
-      = "..."
-.span8
-  - if voted
-    =link_to motion.name, motion, :class => 'stop_prop'
-  - else
-    %strong
-      =link_to motion.name, motion, :class => 'stop_prop'
-.span3.other-info
-  =link_to motion.group.name, motion.group, :class => 'stop_prop'
-.span3.other-info
-  - if motion.close_date
-    - if motion.closed?
-      Closed on
+.row
+  .span1{class: "centered vote-icon"}
+    - if motion.user_has_voted?(current_user)
+      - voted = true
+      - position = current_user.motion_vote(motion).position
+      =render partial: "motions/display_icons", locals: {position: position}
     - else
-      Closing on
-    = motion.close_date.strftime("%d/%m/%Y")
-  - else
-    No closed date specified
-.span1.toggle-button
-  +
+      #no-vote-dash
+        = "..."
+  .span8
+    - if voted
+      =link_to motion.name, motion, class: 'no-toggle'
+    - else
+      %strong
+        =link_to motion.name, motion, class: 'no-toggle'
+  .span3.other-info
+    =link_to motion.group.name, motion.group, class: 'no-toggle'
+  .span3.other-info
+    - if motion.close_date
+      - if motion.closed?
+        Closed on
+      - else
+        Closing on
+      = motion.close_date.strftime("%d/%m/%Y")
+    - else
+      No closed date specified
+  .span1.toggle-button
+    +
 
 :coffeescript
   jQuery ->

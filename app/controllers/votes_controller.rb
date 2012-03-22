@@ -18,10 +18,13 @@ class VotesController < GroupBaseController
   end
 
   def create
-    build_resource
-    @vote.user = current_user
+    @motion = Motion.find(params[:motion_id])
     if @motion.voting?
-      create! { @motion }
+      @vote = Vote.new(params[:vote])
+      @vote.motion = @motion
+      @vote.user = current_user
+      @vote.save
+      redirect_to :back
     else
       flash[:error] = "Can only vote in voting phase"
       redirect_to @motion
