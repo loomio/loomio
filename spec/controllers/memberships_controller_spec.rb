@@ -49,6 +49,11 @@ describe MembershipsController do
         flash[:notice].should =~ /Membership approved/
       end
 
+      it "can edit a user" do
+        membership = @group.add_member!(@new_user)
+        get :edit, :id => membership.id
+      end
+
       it 'can add an admin' do
         @group.add_member!(@new_user)
         @membership = @group.memberships.find_by_user_id(@new_user)
