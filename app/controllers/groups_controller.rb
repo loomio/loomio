@@ -8,14 +8,22 @@ class GroupsController < GroupBaseController
     create!
   end
 
-  def request_membership
-    @group = Group.find(params[:id])
-    @membership = Membership.new
-  end
-
   def index
     @groups = current_user.groups
     @group_requests = current_user.group_requests
+  end
+
+
+  # CUSTOM CONTROLLER ACTIONS
+
+  def invite_member
+    @group = Group.find(params[:id])
+    @user = User.new
+  end
+
+  def request_membership
+    @group = Group.find(params[:id])
+    @membership = Membership.new
   end
 
   def add_user_tag
