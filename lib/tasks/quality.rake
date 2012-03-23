@@ -9,7 +9,7 @@ begin
     :flay => 300,
     :complexity => 10,
     :line_length => 120,
-    :best_practices => 76
+    :best_practices => 79
   }
 
   namespace :metrics do

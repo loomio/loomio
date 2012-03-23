@@ -33,3 +33,13 @@ div.token-input-dropdown-facebook p {
   font-size: 11px;
 }
 
+#user_email_input {
+  display: inline;
+  .input {
+    display: inline;
+    margin-left: 0px;
+  }
+  #user_email {
+    width: 250px;
+  }
+}
