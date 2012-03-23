@@ -21,6 +21,12 @@ $ ->
     expandableRow.toggle()
     if expandableRow.is(":visible")
       $(this).find(".toggle-button").html('-')
+      if $(this).hasClass('greyed')
+        $(".jqplot-table-legend").addClass('greyed')
+        $(".jqplot-table-legend").removeClass('whited')
+      else
+        $(".jqplot-table-legend").addClass('whited')
+        $(".jqplot-table-legend").removeClass('greyed')
     else
       $(this).find(".toggle-button").html('+')
   )

@@ -22,22 +22,6 @@ div.motion{
     background: #ececec;
     a, a:visited, a:active {color: #999;}
   }
-  /*.description{ padding: 7px; cursor: pointer;}*/
-  /*.toggle_motion_expand{font-size: 1.8em; font-weight: bold; color: #ccc;float: right; padding: 2px 10px; cursor: pointer;}*/
-  /*.toggle_motion_expand:hover{color: #999;}*/
-  /*.expanded{*/
-    /*box-shadow: 1px 1px 4px #999999;*/
-    /*-webkit-box-shadow: 1px 1px 4px #999999;*/
-    /*-moz-box-shadow: 1px 1px 4px #999999;*/
-    /*background: #fff;*/
-    /*.graph_tooltip{display: none;}*/
-    /*.pie {height: 150px;}*/
-    /*.motion_actions{*/
-      /*.btn{width: 100%; clear: both; margin-bottom: 10px;}*/
-      /*.btn.small{font-size: 1em; line-height: 1.2em; padding: 3px;}*/
-      /*.btn.primary a{color:#fff;}*/
-    /*}*/
-  /*}*/
 }
 
 .bordered{
@@ -48,35 +32,45 @@ div.motion{
   text-align: center;
 }
 .motions-list{
-  font-size: 16px;
+  font-size: 17px;
+  padding-top: 2px;
   border-bottom: 1px solid grey;
-  .vote-icon {margin-top: 4px;}
-  .other-info {font-size: 14px;}
+  .vote-icon {padding-top: 12px;}
+  .close-info {
+    font-size: 14px;
+    text-align: right;
+    padding-top: 10px;
+  }
+  .group-name {
+    font-size: 14px;
+    margin-top: -18px;
+  }
   .toggle-button{
+    padding-top: 8px;
     font-weight: bold;
     color: #999999;
     text-align: center;
   }
   .action-links{
     a{color: grey}
-    margin-top: -9px;
-    padding-left: 60px;
+    margin-top: -8px;
+    /*padding-left: 60px;*/
     font-size: 12px;
   }
   .dashboard-motion-description{
-    padding-left: 50px;
     font-size: 14px;
     line-height: 1.4em;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   .pie {
-    margin-left: 15px;
-    height: 180px;
-    padding-left: 30px;
-   .jqplot-table-legend{background-color: #F9F9F9;}
+    /*margin-left: 0px;*/
+    height: 170px;
+    /*.jqplot-table-legend{*/
+      /*background-color: #F9F9F9;*/
+    /*}*/
  }
   #vote-buttons{
-    left-margin: 0px;
+    padding-top: 5px;
     .sml-vote-btn{
               border-radius: 1px;
               webkit-border-radius: 5px;
@@ -90,12 +84,14 @@ div.motion{
               }
   }
   #dash-vote-form{
-    margin-top: 10px;
-    /*padding-left: 0px;*/
     .form-stacked{
       padding-left: 0px;
     }
-    input { font-size: 14px; }
+    input {
+      padding-top: 0px;
+      font-size: 14px;
+      width: 170px;
+    }
   }
 }
 #closed-motion-list{
