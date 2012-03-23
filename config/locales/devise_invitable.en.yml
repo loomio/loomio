@@ -1,0 +1,10 @@
+en:
+  devise:
+    invitations:
+      send_instructions: 'An invite has been sent to %{email}.'
+      invitation_token_invalid: 'The invitation token provided is not valid!'
+      updated: 'Account created.'
+      no_invitations_remaining: "No invitations remaining"
+    mailer:
+      invitation_instructions:
+        subject: 'Someone has invited you to join their Loomio group'

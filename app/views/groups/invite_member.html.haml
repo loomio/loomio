@@ -1,0 +1,6 @@
+%h2 Invite someone to the group
+
+= semantic_form_for(@user, url: user_invitation_path, html: { method: :post }) do |f|
+  = f.input :group_id, as: :hidden, label: false, input_html: { value: @group.id}
+  = f.input :email
+  = f.submit "Send invitation"

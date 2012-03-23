@@ -1,5 +1,8 @@
 %li{:id => membership.user_id}
-  =membership.user_name
+  - if membership.user_name
+    = membership.user_name
+  - else
+    = membership.user_email
   -# =membership.access_level
   -if current_user.is_group_admin?(@group)
     =link_to "edit", edit_membership_path(membership)
