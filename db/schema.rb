@@ -12,7 +12,6 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20120326091356) do
-
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -39,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20120326091356) do
     t.string   "phase",          :default => "voting", :null => false
     t.string   "discussion_url", :default => "",       :null => false
     t.integer  "no_vote_count"
-    t.date     "close_date"
+    t.datetime "close_date"
   end
 
   create_table "taggings", :force => true do |t|
