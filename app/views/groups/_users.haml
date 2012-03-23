@@ -1,9 +1,15 @@
+- if current_user.is_group_admin?(@group)
+  %h3 Add member
+  = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
+    = f.input :group_id, as: :hidden, label: false, input_html: { value: @group.id}
+    = f.input :email, placeholder: "Email address", label: false
+    = f.submit "Invite"
 %input#group_id{ type: "hidden", value: group.id }
--if group.membership_requests.present?
+- if group.membership_requests.present?
   #user-requests
-    %h3 User Requests:
+    %h3 User Requests
     %ul.unstyled
       =render :partial => 'membership_request', :collection => group.membership_requests
-%h3 Users:
+%h3 Users
 %ul.unstyled{:id => "users-list"}
   =render :partial => 'membership', :collection => group.memberships
