@@ -2,16 +2,16 @@
   - if @motions_voting.size > 0
     %h3 Open
     .row
-      .motions-list.span16
+      .motions-list.span13
         - @motions.voting.each do |motion|
           - class_name = "bordered "
           - if motion.user_has_voted?(current_user)
             - class_name += "greyed"
           .row
-            .span16{class: class_name, :id =>"motion_#{motion.id}"}
+            .span13{class: class_name, :id =>"motion_#{motion.id}"}
               =render partial: "motions/motion_list", locals: {motion: motion}
               .row{id: "expand_#{motion.id}"}
-                .span9
+                .span5.offset1
                   .action-links
                     =link_to 'discuss', motion.discussion_url, class: 'no-toggle'
                     |
@@ -22,42 +22,45 @@
                   .dashboard-motion-description
                     =motion.description
                 .span7
-                  .pie.span5{ :id => "vgraph_#{motion.id}" }
-                  -#.jqplot-table-legend{ style: "backgound-color: grey" }
+                  .pie{ :id => "vgraph_#{motion.id}" }
+                  .graph_tooltip{ :id => "tooltip_#{motion.id}" }
+                  .jqplot-table-legend{ :style => 'grey' }
                     -#- if motion.user_has_voted?(current_user)
                     -#.jqplot-table-legend.greyed
                     -#- else
                     -#.jqplot-table-legend.whited
-                  .graph_tooltip{ :id => "tooltip_#{motion.id}" }
-                  #vote-buttons
-                    - if !motion.user_has_voted?(current_user)
-                      =link_to image_tag("hand-yes.png", height:'20', width:'20', title:'yes', alt:'yes image'), '#',
-                        class: 'sml-vote-btn no-toggle', onclick: "$('#vote_position').val('yes'); $('#new_vote').submit();"
-                      =link_to image_tag("hand-abstain.png", height:'20', width:'20', title:'abstain', alt:'abstain image'), '#',
-                        class: 'sml-vote-btn no-toggle', onclick: "$('#vote_position').val('abstain'); $('#new_vote').submit();"
-                      =link_to image_tag("hand-no.png", height:'20', width:'20', title:'no', alt:'no image'), '#',
-                        class: 'sml-vote-btn no-toggle', onclick: "$('#vote_position').val('no'); $('#new_vote').submit();"
-                      =link_to image_tag("hand-block.png", height:'20', width:'20',title:'block', alt:'block image'), '#',
-                        class: 'sml-vote-btn no-toggle', onclick: "$('#vote_position').val('block'); $('#new_vote').submit();"
+                - if !motion.user_has_voted?(current_user)
+                  .row
+                    .span3.offset7
+                      #vote-buttons
+                        =link_to image_tag("hand-yes.png", height:'20', width:'20', title:'yes', alt:'yes image'), '#',
+                          class: 'sml-vote-btn no-toggle', onclick: "$('#vote_position').val('yes'); $('#new_vote').submit();"
+                        =link_to image_tag("hand-abstain.png", height:'20', width:'20', title:'abstain', alt:'abstain image'), '#',
+                          class: 'sml-vote-btn no-toggle', onclick: "$('#vote_position').val('abstain'); $('#new_vote').submit();"
+                        =link_to image_tag("hand-no.png", height:'20', width:'20', title:'no', alt:'no image'), '#',
+                          class: 'sml-vote-btn no-toggle', onclick: "$('#vote_position').val('no'); $('#new_vote').submit();"
+                        =link_to image_tag("hand-block.png", height:'20', width:'20',title:'block', alt:'block image'), '#',
+                          class: 'sml-vote-btn no-toggle', onclick: "$('#vote_position').val('block'); $('#new_vote').submit();"
+                    .span3
                       #dash-vote-form
                         =semantic_form_for([motion, Vote.new], html:{class:'form-stacked no-toggle'}) do |f|
+                          =f.input :statement, label: false, placeholder: "Reason for your descicion"
                           =f.hidden_field :position
-                          =f.input :statement, label: false, placeholder: "Give a reason for your vote"
     #closed-motion-list
       %h3 Closed
       .row
-        .motions-list.span16
+        .motions-list.span13
           - @motions.closed.each do |motion|
             - class_name = "bordered greyed"
             .row
-              .span16{class: class_name, :id =>"motion_#{motion.id}"}
+              .span13{class: class_name, :id =>"motion_#{motion.id}"}
                 =render partial: "motions/motion_list", locals: {motion: motion}
                 .row{id: "expand_#{motion.id}"}
-                  .span9
+                  .span6.offset1
                     .dashboard-motion-description
                       =motion.description
-                  .span7
-                    .pie.span5{ :id => "vgraph_#{motion.id}" }
+                  .span6
+                    .pie{ :id => "vgraph_#{motion.id}" }
                     .graph_tooltip{ :id => "tooltip_#{motion.id}" }
   - else
     =link_to 'Create a group', new_group_path

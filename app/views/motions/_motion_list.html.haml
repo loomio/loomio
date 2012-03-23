@@ -7,25 +7,26 @@
     - else
       #no-vote-dash
         = "..."
-  .span8
+  .span7
     - if voted
       =link_to motion.name, motion, class: 'no-toggle'
     - else
       %strong
         =link_to motion.name, motion, class: 'no-toggle'
-  .span3.other-info
-    =link_to motion.group.name, motion.group, class: 'no-toggle'
-  .span3.other-info
+  .span4.close-info
     - if motion.close_date
       - if motion.closed?
-        Closed on
+        closed on
       - else
-        Closing on
+        closing on
       = motion.close_date.strftime("%d/%m/%Y")
     - else
-      No closed date specified
+      no closed date specified
   .span1.toggle-button
     +
+.row
+  .span3.offset1.group-name
+    =link_to motion.group.name, motion.group, class: 'no-toggle'
 
 :coffeescript
   jQuery ->
