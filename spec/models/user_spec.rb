@@ -40,7 +40,7 @@ describe User do
   it "can be invited" do
     @inviter = User.make!
     @group = Group.make!
-    @user = User.invite_and_notify!({email: "test@example.com" }, @inviter, @group)
+    @user = User.invite_and_notify!({email: "test@example.com"}, @inviter, @group)
     @group.users.should include(@user)
   end
 end
