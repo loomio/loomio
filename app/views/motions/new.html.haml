@@ -1,6 +1,5 @@
-#new-motion
-  =link_to @motion.group.name, group_path(@motion.group), title: "group"
-  %h2
-    New motion
-  =render partial: 'form',
-    locals: {form_args: [@motion, {url: motions_path(group_id: @motion.group)}]}
+#motion-form-header
+  %h2 New motion
+  %h3=link_to @motion.group.name, group_path(@motion.group), title: "group"
+=render partial: 'form',
+  locals: {form_args: [@motion, {url: motions_path(group_id: @motion.group)}]}
