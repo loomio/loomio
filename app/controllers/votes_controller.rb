@@ -24,6 +24,7 @@ class VotesController < GroupBaseController
       @vote.motion = @motion
       @vote.user = current_user
       @vote.save
+      flash[:notice] = "Your vote has been submitted"
       redirect_to :back
     else
       flash[:error] = "Can only vote in voting phase"
