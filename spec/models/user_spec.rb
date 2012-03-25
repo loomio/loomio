@@ -36,4 +36,16 @@ describe User do
     Membership.make!(:group => @group, :user => @user)
     @user.group_requests.should include(@group)
   end
+
+  it "can be invited" do
+    @inviter = User.make!
+    @group = Group.make!
+    @user = User.invite_and_notify!({email: "foo@example.com"}, @inviter, @group)
+    @group.users.should include(@user)
+  end
+
+  it "can find user by email (case-insensitive)" do
+    @user = User.make!(email: "foobar@example.com")
+    User.find_by_email("foObAr@exaMPLE.coM").should == @user
+  end
 end
