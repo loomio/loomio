@@ -1,29 +1,29 @@
 #motion
   .row
-    %h2.span9
-      =@motion.name
-      - if @motion.voting?
-        =image_tag("phase-voting.png", height:'20', width:'60', alt:'voting phase image')
-      - if @motion.closed?
-        =image_tag("phase-closed.png", height:'20', width:'60', alt:'voting phase image')
-      #group-name
-        =link_to @motion.group.name, group_path(@motion.group), title: "group"
+    .span9
+      %h2
+        =@motion.name
+        - if @motion.voting?
+          =image_tag("phase-voting.png", height:'20', width:'60', alt:'voting phase image')
+        - if @motion.closed?
+          =image_tag("phase-closed.png", height:'20', width:'60', alt:'voting phase image')
+      .span
+        %h3=link_to @motion.group.name, group_path(@motion.group), title: "group"
     .span7
       #admin-buttons
         =render partial: "facilitator_options"
-  #description
+  %h4
     #discussion
       - if @motion.discussion_url.present?
-        Discussion:
+        Discussion -
         =link_to @motion.discussion_url, @motion.discussion_url, target: "_blank"
     #other-info
-      Proposed by:
-      %span
-        =@motion.author_email
-        ="#{time_ago_in_words(@motion.created_at)} ago"
-        -if @motion.updated_at != @motion.created_at
-          ="(edited: #{time_ago_in_words(@motion.updated_at)} ago)"
-        -#%span.facilitator=", Facilitator: #{@motion.facilitator_email}"
+      Proposed by
+      =@motion.author_email
+      ="#{time_ago_in_words(@motion.created_at)} ago"
+      -if @motion.updated_at != @motion.created_at
+        ="(edited: #{time_ago_in_words(@motion.updated_at)} ago)"
+      -#%span.facilitator=", Facilitator: #{@motion.facilitator_email}"
       .span
         - if @motion.has_closing_date?
           No specified closing date

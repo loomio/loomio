@@ -5,5 +5,5 @@
  *= require_self
  *= require twitter/bootstrap
  *= require jqplot.1.0.0b2_r792
- *= require_tree . 
+ *= require_tree .
 */
