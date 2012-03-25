@@ -1,0 +1,11 @@
+= "Hello #{@new_user.email}!"
+:plain
+
+= "#{@inviter.name} has invited you to join their group on Loomio called '#{@group.name}'. Click the link below to accept their invitation."
+:plain
+
+= "Invite link: " + accept_invitation_url(@new_user, :invitation_token => @new_user.invitation_token)
+:plain
+
+If you don't want to accept the invitation, please ignore this email.
+Your account won't be created until you click the link above.
