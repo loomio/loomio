@@ -36,4 +36,11 @@ describe User do
     Membership.make!(:group => @group, :user => @user)
     @user.group_requests.should include(@group)
   end
+
+  it "can be invited" do
+    @inviter = User.make!
+    @group = Group.make!
+    @user = User.invite_and_notify!({email: "test@example.com" }, @inviter, @group)
+    @group.users.should include(@user)
+  end
 end

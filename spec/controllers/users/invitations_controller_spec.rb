@@ -10,7 +10,6 @@ describe Users::InvitationsController do
   context "logged-in" do
     before :each do
       sign_in user
-      #group.stub(:has_admin_user?).with(user).and_return(true)
       Group.stub(:find).with(group.id.to_s).and_return(group)
       Group.stub(:find).with(group.id, nil).and_return(group)
 
@@ -22,6 +21,7 @@ describe Users::InvitationsController do
     context "non-admin user invites member" do
       it "should display error and redirect" do
         post :create, user: {email: "test@example.com", group_id: group.id}
+
         flash[:error].should match(/Only group admins can invite/)
         response.should be_redirect
       end
@@ -43,8 +43,11 @@ describe Users::InvitationsController do
           group.should_receive(:add_member!).with(invited_user)
           invited_user.should_receive(:errors).twice.and_return([])
           invited_user.should_receive(:groups).and_return([group])
+          UserMailer.should_receive(:invited_to_loomio)
+            .and_return(stub(deliver: true))
 
           post :create, user: {email: "test@example.com", group_id: group.id}
+
           flash[:notice].should match(/An invite has been sent/)
           response.should be_redirect
         end
@@ -63,6 +66,7 @@ describe Users::InvitationsController do
           UserMailer.should_receive(:added_to_group).and_return(stub(deliver: true))
 
           post :create, user: {email: email, group_id: group.id}
+
           flash[:notice].should match(/has been added to the group/)
           response.should be_redirect
         end
@@ -71,6 +75,7 @@ describe Users::InvitationsController do
           invited_user.should_receive(:groups).twice.and_return([group])
 
           post :create, user: {email: email, group_id: group.id}
+
           flash[:alert].should match(/already in the group/)
           response.should be_redirect
         end

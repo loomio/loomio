@@ -1,12 +1,14 @@
 class Users::InvitationsController < Devise::InvitationsController
   def create
+    # TODO: Move most of this logic to User model if possible
     group = Group.find params[:user].delete(:group_id)
     if group.has_admin_user?(current_user)
-      email = params[:user][:email].downcase
+      email = params[:user][:email]
+      # TODO: move this sql logic to a new user model method
       existing_user = User.where('LOWER(email) LIKE ?', email).first
+      # override find_by_email to do above
       if existing_user.nil?
-        @user = User.invite! params[:user], current_inviter
-        group.add_member! @user
+        @user = User.invite_and_notify! params[:user], current_inviter, group
         if @user.errors.empty?
           set_flash_message :notice, :send_instructions, :email => email
           respond_with @user, :location => after_invite_path_for(@user)
