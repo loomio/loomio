@@ -38,7 +38,7 @@ describe Users::InvitationsController do
 
       context "invites member (with no existing loomio account)" do
         it "should succeed and redirect" do
-          User.should_receive(:where).and_return([])
+          User.should_receive(:find_by_email).and_return(nil)
           User.should_receive(:invite!).and_return(invited_user)
           group.should_receive(:add_member!).with(invited_user)
           invited_user.should_receive(:errors).twice.and_return([])
@@ -55,9 +55,7 @@ describe Users::InvitationsController do
 
       context "invites member (with an existing loomio account)" do
         before :each do
-          User.should_receive(:where)
-            .with('LOWER(email) LIKE ?', email)
-            .and_return([invited_user])
+          User.should_receive(:find_by_email).with(email).and_return(invited_user)
         end
 
         it "should succeed and redirect if member is not in group" do

@@ -1,7 +1,7 @@
 = "Hello #{@new_user.email}!"
 :plain
 
-= "#{@inviter.name} has invited you to join their group on Loomio called '#{@group.name}'. Click the link below to accept their invitation."
+= "#{@inviter.name} has invited you to join their group on Loomio called '#{@group.name}'. Click the link below to create an account and accept their invitation."
 :plain
 
 = "Invite link: " + accept_invitation_url(@new_user, :invitation_token => @new_user.invitation_token)
