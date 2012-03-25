@@ -11,10 +11,11 @@ describe VotesController do
     end
     context 'during voting phase' do
       it 'can vote' do
+        request.env["HTTP_REFERER"] = motion_url(@motion)
         post :create, motion_id: @motion.id,
              vote: {position: 'yes', statement: 'blah'}
         response.should be_redirect
-        flash[:notice].should =~ /Vote was successfully created/
+        flash[:notice].should =~ /Your vote has been submitted/
         assigns(:vote).user.should == @user
         assigns(:vote).motion.should == @motion
         assigns(:vote).position.should == 'yes'
