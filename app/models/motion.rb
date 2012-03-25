@@ -14,6 +14,9 @@ class Motion < ActiveRecord::Base
 
   after_create :email_motion_created
 
+  #attr_accessible :days_until_expired
+  #attr_accessible :hours_until_expired
+
   include AASM
   aasm :column => :phase do
     state :voting, :initial => true
@@ -99,16 +102,24 @@ class Motion < ActiveRecord::Base
   end
 
   def open_close_motion
-    if close_date && close_date <= Time.now.to_date
-      close_voting
-    else
+    if !hours_to_expirey || hours_to_expirey > 0
       open_voting
+    else
+      close_voting
     end
     save
   end
 
+  def set_expirey
+    self.hours_to_expirey = 168
+    #self.close_date = nil
+    save
+    open_close_motion
+  end
+
   def set_close_date(set_date)
-    self.close_date = set_date.to_date
+    self.hours_to_expirey = 0
+    self.close_date = Time.now
     save
     open_close_motion
   end

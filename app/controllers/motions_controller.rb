@@ -39,16 +39,29 @@ class MotionsController < GroupBaseController
 
   def close_voting
     resource
-    @motion.set_close_date(Time.now)
+    @motion.set_close_date
     redirect_to motion_path(@motion)
   end
 
   def open_voting
     resource
-    @motion.set_close_date(Time.now + 1.week)
+    @motion.set_expirey
     redirect_to motion_path(@motion)
   end
 
+<<<<<<< HEAD
+=======
+  def edit
+    resource
+    if @motion.can_be_edited_by?(current_user)
+      edit!
+    else
+      flash[:error] = "Only the Author or author can edit a motion."
+      redirect_to motion_url(@motion)
+    end
+  end
+
+>>>>>>> migration added for date format change
   private
 
     def group
