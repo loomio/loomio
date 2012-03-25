@@ -25,7 +25,7 @@ describe MotionsController do
     end
 
     it "can open a motion" do
-      motion.should_receive(:set_close_date)
+      motion.should_receive(:set_expirey)
       post :open_voting, id: motion.id
     end
   end

@@ -6,15 +6,16 @@
       .row
         .span5
           =label_tag('Duration')
-          =select_tag(:days_to_expirey, options_for_select((0..90), {selected: '7'}))
+          =select_tag(:days_until_expired, options_for_select((0..90), {selected: '7'}))
           days
         .span4
-          =select_tag(:hours_to_expirey, options_for_select(0..23))
+          =select_tag(:hours_until_expired, options_for_select(0..23))
           hours
       #description
         =f.input :description
       #commit
         =f.commit_button
+      =f.input :hours_to_expirey
       =f.input :close_date, as: :hidden
       =f.input :phase, as: :hidden, label: false, value: "voting"
       =f.input :facilitator_id, as: :hidden, value: current_user.id, label: false
