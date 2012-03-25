@@ -6,7 +6,7 @@
       =render partial: "motions/display_icons", locals: {position: position}
     - else
       #no-vote-dash
-        = "..."
+        = " "
   .span7
     - if voted
       =link_to motion.name, motion, class: 'no-toggle'
@@ -18,10 +18,10 @@
       - if motion.closed?
         closed on
       - else
-        closing on
+        closes on
       = motion.close_date.strftime("%d/%m/%Y")
     - else
-      no closed date specified
+      no close date
   .span1.toggle-button
     +
 .row
