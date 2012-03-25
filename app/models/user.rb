@@ -37,5 +37,14 @@ class User < ActiveRecord::Base
   def group_membership(group)
     memberships.for_group(@group).first
   end
+
+  def self.invite_and_notify!(user_params, inviter, group)
+    new_user = User.invite!(user_params, inviter) do |u|
+      u.skip_invitation = true
+    end
+    group.add_member! new_user
+  UserMailer.invited_to_loomio(new_user, inviter, group).deliver
+  new_user
+  end
 end
 
