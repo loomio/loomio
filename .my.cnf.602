@@ -1,4 +1,0 @@
-# mysql_secure_installation config file
-[mysql]
-user=root
-password='puppet'
