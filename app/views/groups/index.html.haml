@@ -5,9 +5,10 @@
       %li.group
         =link_to group.name, group_path(group)
         -# =link_to "edit", edit_group_path(group)
-  %h3 Groups you've requested to join (waiting for approval from a group member)
-  %ul
-    -@group_requests.each do |group|
-      %li.group
-        =link_to group.name, group_path(group)
-  =link_to "Add new group", new_group_path, :class => 'btn primary'
+  - if @group_requests.present?
+    %h3 Groups you've requested to join (waiting for approval from a group member)
+    %ul
+      -@group_requests.each do |group|
+        %li.group
+          =link_to group.name, group_path(group)
+    =link_to "Add new group", new_group_path, :class => 'btn primary'

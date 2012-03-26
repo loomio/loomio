@@ -6,7 +6,7 @@ describe "Groups" do
   context "a logged in user" do
     before :each do
       @user = User.make!
-      @group = Group.make!(name: 'Test Group')
+      @group = Group.make!(name: 'Test Group', viewable_by: :members)
       @group.add_member!(@user)
       @motion = create_motion(name: 'Test Motion', group: @group,
                               author: @user, facilitator: @user)
@@ -19,7 +19,7 @@ describe "Groups" do
       should have_selector('h3', text:'Your groups')
     end
 
-    context "viewing a group" do
+    context "viewing a group visible to members only" do
       before :each do
         visit group_path(@group)
       end
@@ -35,7 +35,7 @@ describe "Groups" do
     end
 
     it "doesn't let us view a group the user does not belongs to" do
-      @group2 = Group.make(name: 'Test Group2')
+      @group2 = Group.make(name: 'Test Group2', viewable_by: :members)
       @group2.save
       @group2.add_member!(User.make!)
       visit group_path(@group2)

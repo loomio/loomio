@@ -1,14 +1,32 @@
 require 'spec_helper'
 
 describe GroupsController do
-  context "as a logged in user" do
+  context "logged in user" do
     before :each do
       @user = User.make!
       sign_in @user
     end
-    context "existing group" do
+    context "group viewable by everyone" do
       before :each do
-        @group = Group.make!
+        @group = Group.make!(viewable_by: :everyone)
+      end
+      context "non-member views group" do
+        it "should show group page" do
+          get :show, :id => @group.id
+          response.should be_success
+        end
+      end
+      context "member views group" do
+        it "should show group page" do
+          @group.add_member!(@user)
+          get :show, :id => @group.id
+          response.should be_success
+        end
+      end
+    end
+    context "group viewable by members" do
+      before :each do
+        @group = Group.make!(viewable_by: :members)
       end
       context "a group admin" do
         before :each do
@@ -50,24 +68,30 @@ describe GroupsController do
       context "a requested member" do
         before :each do
           @group.add_request!(@user)
+          @previous_url = groups_url
+          request.env["HTTP_REFERER"] = @previous_url
         end
-        it "shows a group" do
+        it "viewing a group should redirect to previous url" do
           get :show, :id => @group.id
-          response.should redirect_to(groups_url)
+          response.should redirect_to(@previous_url)
         end
-        it "shows an edit group form" do
+        it "editing a group should redirect to previous url" do
           get :edit, :id => @group.id
-          response.should redirect_to(groups_url)
+          response.should redirect_to(@previous_url)
         end
       end
-      context "not a group member" do
-        it "shows a group" do
+      context "a non-member" do
+        before :each do
+          @previous_url = groups_url
+          request.env["HTTP_REFERER"] = @previous_url
+        end
+        it "viewing a group should redirect to request page" do
           get :show, :id => @group.id
           response.should redirect_to(request_membership_group_url)
         end
-        it "shows an edit group form" do
+        it "editing a group should redirect to previous url" do
           get :edit, :id => @group.id
-          response.should redirect_to(request_membership_group_url)
+          response.should redirect_to(@previous_url)
         end
       end
 
