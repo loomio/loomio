@@ -1,6 +1,6 @@
 class GroupsController < GroupBaseController
-  before_filter :ensure_group_member,
-                :except => [:new, :create, :index, :request_membership]
+  load_and_authorize_resource except: :show
+  before_filter :check_group_read_permissions, only: :show
 
   def create
     build_resource
@@ -12,7 +12,6 @@ class GroupsController < GroupBaseController
     @groups = current_user.groups
     @group_requests = current_user.group_requests
   end
-
 
   # CUSTOM CONTROLLER ACTIONS
 

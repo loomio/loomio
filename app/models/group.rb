@@ -1,5 +1,10 @@
 class Group < ActiveRecord::Base
+  PERMISSION_CATEGORIES = [:everyone, :members, :admins]
+
   validates_presence_of :name
+  validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
+  after_initialize :set_defaults
+
   has_many :memberships,
            :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
            :dependent => :destroy,
@@ -10,7 +15,7 @@ class Group < ActiveRecord::Base
   has_many :admin_memberships,
            :conditions => {:access_level => 'admin'},
            :class_name => 'Membership'
-  has_many :users, :through => :memberships
+  has_many :users, :through => :memberships # TODO: rename to members
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
   has_many :motions
@@ -61,4 +66,23 @@ class Group < ActiveRecord::Base
   def has_admin_user?(user)
     admins.include?(user)
   end
+
+  def can_be_viewed_by?(user)
+    return true if viewable_by == :everyone
+    return true if (viewable_by == :members && users.include?(user))
+  end
+
+  def viewable_by
+    value = read_attribute(:viewable_by)
+    value.to_sym if value.present?
+  end
+
+  def viewable_by=(value)
+    write_attribute(:viewable_by, value.to_s)
+  end
+
+  private
+    def set_defaults
+      self.viewable_by ||= :everyone
+    end
 end
