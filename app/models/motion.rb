@@ -79,7 +79,7 @@ class Motion < ActiveRecord::Base
   end
 
   def can_be_viewed_by?(user)
-    group.can_be_viewed_by? user
+    user && group.can_be_viewed_by?(user)
   end
 
   def can_be_edited_by?(user)
@@ -92,6 +92,10 @@ class Motion < ActiveRecord::Base
 
   def can_be_deleted_by?(user)
     user && (author == user || has_admin_user?(user))
+  end
+
+  def can_be_voted_on_by?(user)
+    user && group.users.include?(user)
   end
 
   def open_close_motion

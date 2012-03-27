@@ -1,3 +1,4 @@
 =semantic_form_for(@group) do |f|
   =f.input :name
-  =f.buttons
+  =f.input :viewable_by, as: :radio, collection: [:everyone, :members], member_label: Proc.new { |option| fancy_label(option) }
+  =f.commit_button
