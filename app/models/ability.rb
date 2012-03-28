@@ -2,8 +2,23 @@ class Ability
   include CanCan::Ability
 
   def initialize(user, params)
-    can :create, Membership
-    can :edit, Membership
+
+    #
+    # GROUPS
+    #
+
+    can [:edit, :add_user_tag, :delete_user_tag, :invite_member], Group do |group|
+      group.can_be_edited_by? user
+    end
+
+    can [:create, :index, :request_membership], Group
+
+    #
+    # MEMBERSHIPS
+    #
+
+    can [:create, :edit], Membership
+
     can :update, Membership do |membership|
       if params[:membership]
         if params[:membership][:access_level] == 'member'
@@ -17,5 +32,6 @@ class Ability
     can :destroy, Membership do |membership|
       membership.can_be_deleted_by? user
     end
+
   end
 end

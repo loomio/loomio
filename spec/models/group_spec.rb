@@ -14,11 +14,14 @@ describe Group do
     it "has memberships" do
       @group.respond_to?(:memberships)
     end
+    it "viewable by everyone by default" do
+      @group.viewable_by.should == :everyone
+    end
   end
 
-  context "an existing group" do
+  context "an existing closed group" do
     before :each do
-      @group = Group.make!
+      @group = Group.make!(viewable_by: "members")
       @user = User.make!
     end
 

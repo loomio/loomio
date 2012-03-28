@@ -32,7 +32,7 @@ class Users::InvitationsController < Devise::InvitationsController
 
   def after_invite_path_for(user)
     group = user.groups.first
-    group_path(group) + "#users"
+    group_path(group)
   end
 
   def after_accept_path_for(user)

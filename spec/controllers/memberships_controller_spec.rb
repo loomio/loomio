@@ -7,14 +7,35 @@ describe MembershipsController do
       sign_in @user
       @new_user = User.make!
       @group = Group.make!
+      request.env["HTTP_REFERER"] = group_url(@group)
     end
 
-    it "requests membership to a group" do
-      # note trying to sneek member level access.. should be ignored
-      post :create,
-           :membership => {:group_id => @group.id, :access_level => 'member'}
-      response.should redirect_to(groups_path)
-      assigns(:group).requested_users.should include(@user)
+    context "requests membership to a group visible to members" do
+      it "should succeed and redirect to groups index page" do
+        # note trying to sneek member level access.. should be ignored
+        @group.update_attributes({viewable_by: :members})
+        post :create,
+             :membership => {:group_id => @group.id, :access_level => 'member'}
+        response.should redirect_to(groups_path)
+        assigns(:group).requested_users.should include(@user)
+      end
+    end
+
+    context "requests membership to a visible to everyone" do
+      it "should succeed and redirect to group show page" do
+        # note trying to sneek member level access.. should be ignored
+        post :create,
+             :membership => {:group_id => @group.id, :access_level => 'member'}
+        response.should redirect_to(group_url(@group))
+        assigns(:group).requested_users.should include(@user)
+      end
+    end
+
+    it "cancels their membership request" do
+      membership = @group.add_request!(@user)
+      delete :destroy, :id => membership.id
+      @group.requested_users.should_not include(@user)
+      flash[:notice].should =~ /Membership request canceled/
     end
 
     it "sends an email to admins with new membership request" do
@@ -69,7 +90,7 @@ describe MembershipsController do
         @group.add_member!(@new_user)
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         delete :destroy, :id => @membership.id
-        flash[:notice].should =~ /Membership deleted/
+        flash[:notice].should =~ /Member removed/
         response.should redirect_to(@group)
         @group.users.should_not include(@new_user)
       end
@@ -79,7 +100,7 @@ describe MembershipsController do
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         delete :destroy, :id => @membership.id
         flash[:error].should =~ /Access denied/
-        response.should redirect_to(root_url)
+        response.should redirect_to(group_url(@group))
         @group.admins.should include(@new_user)
       end
     end
@@ -106,7 +127,7 @@ describe MembershipsController do
         post :update, :id => @membership.id,
              :membership => {:access_level => 'admin'}
         flash[:error].should =~ /Access denied/
-        response.should redirect_to(root_url)
+        response.should redirect_to(group_url(@group))
         assigns(:membership).access_level.should == 'request'
         assigns(:membership).id.should == @membership.id
       end
@@ -115,7 +136,7 @@ describe MembershipsController do
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
         delete :destroy, :id => @membership.id
-        flash[:notice].should =~ /Membership deleted/
+        flash[:notice].should =~ /Membership request ignored/
         response.should redirect_to(@group)
         Membership.exists?(@membership).should be_false
       end
@@ -125,7 +146,7 @@ describe MembershipsController do
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         delete :destroy, :id => @membership.id
         flash[:error].should =~ /Access denied/
-        response.should redirect_to(root_url)
+        response.should redirect_to(group_url(@group))
         @group.users.should include(@new_user)
       end
 
@@ -134,7 +155,7 @@ describe MembershipsController do
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         delete :destroy, :id => @membership.id
         flash[:error].should =~ /Access denied/
-        response.should redirect_to(root_url)
+        response.should redirect_to(group_url(@group))
         @group.admins.should include(@new_user)
       end
 
@@ -144,7 +165,7 @@ describe MembershipsController do
         post :update, :id => @membership.id,
              :membership => {:access_level => 'admin'}
         flash[:error].should =~ /Access denied/
-        response.should redirect_to(root_url)
+        response.should redirect_to(group_url(@group))
         @group.admins.should_not include(@new_user)
       end
     end
@@ -156,7 +177,7 @@ describe MembershipsController do
         post :update, :id => @membership.id,
              :membership => {:access_level => 'member'}
         flash[:error].should =~ /Access denied/
-        response.should redirect_to(root_url)
+        response.should redirect_to(group_url(@group))
         assigns(:membership).access_level.should == 'request'
         assigns(:membership).id.should == @membership.id
       end
@@ -166,7 +187,7 @@ describe MembershipsController do
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         delete :destroy, :id => @membership.id
         flash[:error].should =~ /Access denied/
-        response.should redirect_to(root_url)
+        response.should redirect_to(group_url(@group))
         @group.users.should include(@new_user)
       end
 
@@ -175,7 +196,7 @@ describe MembershipsController do
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         delete :destroy, :id => @membership.id
         flash[:error].should =~ /Access denied/
-        response.should redirect_to(root_url)
+        response.should redirect_to(group_url(@group))
         @group.admins.should include(@new_user)
       end
     end
