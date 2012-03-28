@@ -32,8 +32,11 @@ div.motion{
   text-align: center;
 }
 .motions-list{
-  font-size: 17px;
   padding-top: 2px;
+  #motion-title{
+    font-size: 17px;
+    line-height: 20px;
+  }
   border-bottom: 1px solid lightgrey;
   .vote-icon {padding-top: 12px;}
   .close-info {
@@ -44,7 +47,7 @@ div.motion{
   }
   .group-name {
     font-size: 14px;
-    margin-top: -18px;
+    padding-left: 20px;
     a {color: grey;}
   }
   .toggle-button{
@@ -100,14 +103,15 @@ div.motion{
   margin-top: 40px
 }
 
-.greyed{
+.closed{
   background-color: #F9F9F9;
+  #motion-title{ font-weight: normal; }
 }
 
-.whited{
+.open{
   background-color: #FFFFFF;
+  #motion-title{ font-weight: bold; }
 }
-
 
 #description_text{
   p{font-size: 1.0em;}
