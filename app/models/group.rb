@@ -20,6 +20,8 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :motions
 
+  delegate :include?, :to => :users, :prefix => :users
+
   acts_as_tagger
 
   def add_request!(user)

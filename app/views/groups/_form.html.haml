@@ -1,4 +1,11 @@
-=semantic_form_for(@group) do |f|
-  =f.input :name
-  =f.input :viewable_by, as: :radio, collection: [:everyone, :members], member_label: Proc.new { |option| fancy_label(option) }
-  =f.commit_button
+#group-form.row
+  .span10
+    =semantic_form_for(@group) do |f|
+      =f.input :name, label: "Group Name:"#, placeholder: "Group Name"
+      %hr
+      .privacy-settings
+        %h3 Privacy Settings
+        =f.input :viewable_by, as: :select, collection: [:everyone, :members],
+          member_label: Proc.new { |option| viewable_by_label(option) },
+          label: "Who can see this group?"
+      =f.commit_button
