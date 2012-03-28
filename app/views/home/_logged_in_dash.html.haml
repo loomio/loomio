@@ -6,7 +6,9 @@
         - @motions.voting.each do |motion|
           - class_name = "bordered "
           - if motion.user_has_voted?(current_user)
-            - class_name += "greyed"
+            - class_name += "closed"
+          - else
+            - class_name += "open"
           .row
             .span13{class: class_name, :id =>"motion_#{motion.id}"}
               =render partial: "motions/motion_list", locals: {motion: motion}
