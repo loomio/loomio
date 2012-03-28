@@ -8,6 +8,7 @@ class MotionsController < GroupBaseController
   def show
     resource
     @motion.open_close_motion
+    @group = @motion.group
     @user_already_voted = @motion.user_has_voted?(current_user)
     @votes_for_graph = @motion.votes_graph_ready
     @vote = Vote.new
