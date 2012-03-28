@@ -32,6 +32,34 @@ div.token-input-dropdown-facebook p {
   line-height: 15px;
   font-size: 11px;
 }
+#group {
+  h1 { margin-bottom: 0px; }
+  .btn.small { font-size: 12px }
+  #right-panel {
+    margin-top: 10px;
+    #membership-requested { width: 200px; }
+  }
+}
+
+#group-form {
+  form {
+    width: 500px;
+    label { text-align: left; }
+    .privacy-settings {
+      label { width: 300px; }
+      select { width: 150px; }
+      .input { text-align: right; }
+    }
+    /*#group_name_input .input { margin-left: 0px; }*/
+    /*.radio-hint {*/
+      /*font-size: .8em;*/
+    /*}*/
+
+    /*.choice {*/
+      /*border-bottom: 1px lightgrey solid;*/
+    /*}*/
+  }
+}
 
 #user_email_input {
   display: inline;

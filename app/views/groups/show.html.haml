@@ -1,18 +1,11 @@
 #group
-  %h1=@group.name
-  -# Commenting out admin name, as it is not terribly useful
-  -#-@group.admins.each do |a|
-    -#=a.email
   .row
-
-    %ul{:class => "tabs", :data => {:tabs => "tabs"}}
-      %li{:class => "active"}
-        %a{:href => "#motions"} Motions
-      %li
-        %a{:href => "#users"} Users
-
-    .tab-content
-      #motions.tab-pane.active
+    .span10
+      %h1=@group.name
+      #motions
         =render partial: 'motions', locals: {group: @group}
-      #users.tab-pane
+    .span6#right-panel
+      - if @group.can_be_edited_by? current_user
+        =link_to "Edit Group", edit_group_path(@group), class: "btn small"
+      #users
         =render :partial => 'users', locals: {group: @group}

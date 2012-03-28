@@ -25,6 +25,13 @@ $ ->
         type: "GET"
       )
 
+    $("#membership-requested").hover(
+      (e) ->
+        $(this).text("Cancel Request")
+      (e) ->
+        $(this).text("Membership Requested")
+    )
+
     if window.location.href.split("#")[1] == "users"
       $(".tabs a:last").click()
 
