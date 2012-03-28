@@ -10,7 +10,7 @@ $ ->
     currentVal = $("#motion_close_date").val()
     dateVal = currentVal.substring(0,10)
     timeVal = currentVal.substring(11,13)
-    dateVal = $.datepicker.parseDate("dd-mm-YY", dateVal)
+    dateVal = $.datepicker.parseDate("YY-mm-dd", dateVal)
     $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
     $("#input_date").datepicker("setDate", dateVal)
     $("#date_hour").val(timeVal)
