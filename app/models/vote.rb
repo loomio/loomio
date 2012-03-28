@@ -1,8 +1,8 @@
 class Vote < ActiveRecord::Base
-  class UserInGroupValidator < ActiveModel::EachValidator
+  class UserCanVoteValidator < ActiveModel::EachValidator
     def validate_each(object, attribute, value)
-      unless value && object.motion.group.users.include?(User.find(value))
-        object.errors.add attribute, "must belong to the motion's group to vote."
+      unless value && object.motion.can_be_voted_on_by?(User.find(value))
+        object.errors.add attribute, "does not have permission to vote on motion."
       end
     end
   end
@@ -24,7 +24,7 @@ class Vote < ActiveRecord::Base
   validates_inclusion_of :position, in: POSITIONS
   validates_uniqueness_of :user_id, scope: :motion_id
   validates_length_of :statement, maximum: 250
-  validates :user_id, user_in_group: true
+  validates :user_id, user_can_vote: true
   validates :position, :statement, closable: true
 
   scope :for_user, lambda {|user| where(:user_id => user)}

@@ -24,10 +24,12 @@ class Membership < ActiveRecord::Base
   end
 
   def can_be_deleted_by?(user)
-    unless group.admins.include? self.user
-      (group.admins.include? user || self.user == user) ||
-        (access_level == 'request' && group.users.include?(user))
-    end
+    # Admins can delete everyone except admins
+    return false if group.admins.include?(self.user)
+    return true if group.admins.include?(user)
+
+    return true if self.user == user
+    return true if (access_level == 'request' && group.users.include?(user))
   end
 
   private

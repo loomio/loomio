@@ -4,16 +4,19 @@ describe MotionsController do
   let(:group) { stub_model(Group) }
   let(:user)  { stub_model(User) }
   let(:motion) { stub_model(Motion, :group => group) }
+  let(:previous_url) { groups_url }
 
   before :each do
     Motion.stub(:find).with(motion.id.to_s).and_return(motion)
     Group.stub(:find).with(group.id.to_s).and_return(group)
     group.stub(:can_be_edited_by?).with(user).and_return(true)
+    request.env["HTTP_REFERER"] = previous_url
   end
 
   context "signed in user, admin of a group" do
     before :each do
       sign_in user
+      motion.stub(:can_be_closed_by?).with(user).and_return(true)
     end
 
     it "can close a motion" do
@@ -27,15 +30,59 @@ describe MotionsController do
     end
   end
 
+  context "signed in user, non-member of a group" do
+    before :each do
+      sign_in user
+    end
+    context "viewable to members only" do
+      before :each do
+        group.stub(:can_be_viewed_by?).with(user).and_return(false)
+      end
+
+      context "views a motion" do
+        it "should redirect to request url" do
+          get :show, group_id: group.id, id: motion.id
+          response.should redirect_to(request_membership_group_url(group))
+        end
+      end
+
+      context "creates a motion" do
+        it "should redirect to request url" do
+          get :create, group_id: group.id, id: motion.id
+          response.should redirect_to(request_membership_group_url(group))
+        end
+      end
+    end
+
+    context "viewable to everyone" do
+      before :each do
+        group.stub(:can_be_viewed_by?).with(user).and_return(true)
+      end
+
+      context "views a motion" do
+        it "succeeds" do
+          get :show, group_id: group.id, id: motion.id
+          response.should be_success
+        end
+      end
+
+      context "creates a motion" do
+        it "should redirect to previous url" do
+          get :create, group_id: group.id, id: motion.id
+          response.should redirect_to(previous_url)
+        end
+      end
+    end
+  end
+
   context "signed in user, in a group" do
     before :each do
       sign_in user
     end
 
     it "cannot close a motion" do
-      pending "This test is not actually passing, the code for this doesn't work"
+      motion.should_not_receive(:set_close_date)
 
-      motion.should_not_receive(:close_voting!)
       post :close_voting, id: motion.id
     end
 
@@ -43,10 +90,11 @@ describe MotionsController do
       it "can create a motion" do
         motion_attrs = {'key' => 'value'}
 
+        group.stub_chain(:users, :include?).with(user).and_return(true)
         Motion.should_receive(:create).with(motion_attrs).and_return(motion)
         motion.should_receive(:author=).with(user)
         motion.should_receive(:group=).with(group)
-        motion.should_receive(:save!)
+        motion.should_receive(:save)
 
         post :create, :group_id => group.id, :motion => motion_attrs
 
@@ -110,8 +158,8 @@ describe MotionsController do
 
         delete :destroy, id: motion.id
 
-        response.should redirect_to(motion)
-        flash[:error].should =~ /You do not have significant priviledges to do that./
+        response.should redirect_to(previous_url)
+        flash[:error].should =~ /You do not have permission to delete this motion./
       end
     end
   end
