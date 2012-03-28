@@ -145,7 +145,7 @@ div.motion{
 #stats{
   float: right;
   margin-left: 25px;
-  p{text-align: right; padding-right: 15px;}
+  p{ text-align: right; padding-right: 15px;}
 }
 #graph {
   width: 400px;
@@ -153,7 +153,8 @@ div.motion{
 }
 #vote-buttons{
   margin-left: 20px;
-  .btn.vote{border-radius: 5px;
+  .btn.vote{
+            border-radius: 5px;
             webkit-border-radius: 5px;
             moz-border-radius: 5px;
             box-shadow: 1px 1px 4px #999999;
@@ -169,17 +170,29 @@ div.motion{
   margin-top: 10px
 }
 
-/*New Motion Form*/
-#motion-form-header{padding-left: 150px;}
 #motion-form{
-  select{
-    width: 60px;
-    margin-left: 20px;
+  #closing-date-label{ padding-left: 150px; }
+  #input_date{
+    margin-left: 170px;
+    width: 140px;
   }
-  #description{padding-top: 25px;}
+  /*#close-date {*/
+    /*display: inline;*/
+    /*.input{ display: inline; }*/
+  /*}*/
+  /*#motion_close_date{*/
+    /*width: 140px;*/
+    /*margin-left: 20px;*/
+  /*}*/
+  select{ width: 100px;}
+  #description{
+    padding-left: 150px;
+    padding-top: 20px;
+  }
   #commit{padding-left: 150px;}
 }
-h2 { font-size: 24px; line-height: 26px; }
-h3 { font-size: 16px; line-height: 20px; font-weight: normal; }
-h4 { font-size: 14px; line-height: 18px; font-weight: normal; }
-h6 { line-height: 20px; text-transform: none; }
+
+h2 { font-size: 24px; line-height: 26px; } /* Main Header */
+h3 { font-size: 16px; line-height: 20px; font-weight: normal; } /* Group sub header */
+h4 { font-size: 16px; line-height: 20px; font-weight: normal; color: lightgrey; padding-bottom: 5px; } /* label grey with bottom padding */
+h5 { font-size: 14px; line-height: 18px; font-weight: normal; } /* other details */
