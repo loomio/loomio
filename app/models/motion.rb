@@ -99,8 +99,8 @@ class Motion < ActiveRecord::Base
   end
 
   def open_close_motion
-    localTime = Time.zone.utc_to_local(Time.now)
-    if close_date && close_date <= localTime
+    local_time = Time.zone.utc_to_local(Time.now)
+    if close_date && close_date <= local_time
       close_voting
     else
       open_voting
@@ -109,7 +109,8 @@ class Motion < ActiveRecord::Base
   end
 
   def set_close_date(set_date)
-    self.close_date = set_date.to_date
+    local_time = Time.zone.utc_to_local(set_date)
+    self.close_date = local_time
     save
     open_close_motion
   end

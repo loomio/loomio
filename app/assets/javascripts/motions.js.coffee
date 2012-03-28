@@ -4,31 +4,30 @@
 
 $ ->
   if $("#motion-form").length > 0
-    # Display date in correct format
-    # ...A bunch of bullshit that we have to write because jquery's
-    # datepicker wants to be a pain.
-    currentVal = $("#motion_close_date").val()
-    dateVal = currentVal.substring(0,10)
-    timeVal = currentVal.substring(11,13)
-    dateVal = $.datepicker.parseDate("YY-mm-dd", dateVal)
+    #** Edit Moition **
+    datetime_string = $("#motion_close_date").val()
+    date_string = datetime_string.substring(0,10)
+    time_string = datetime_string.substring(11,13)
+    datetime_format = new Date(date_string)
     $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
-    $("#input_date").datepicker("setDate", dateVal)
-    $("#date_hour").val(timeVal)
-
+    $("#input_date").datepicker("setDate", datetime_format)
+    $("#date_hour").val(time_string)
+    #** New Motion **
     if $("#new-motion").length > 0
       now = new Date()
-      timeVal = now.getHours()
-      $("#input_date").datepicker("setDate", "now.getDate()+7")
-      $("#date_hour").val(timeVal)
+      $("#input_date").datepicker("setDate", now.getDate()+7)
+      $("#date_hour").val(now.getHours())
       $("#motion_close_date").val($(".date-input").val() + " " + $("#date_hour").val())
-
+  #** Reload hidden close_date field **
   $(".date-input").change((e) ->
-    $("#motion_close_date").val($(this).val() + " " + $("#date_hour").val())
+    local_datetime = $(this).val() + " " + $("#date_hour").val()
+    $("#motion_close_date").val(local_datetime)
   )
   $("#date_hour").change((e) ->
-    $("#motion_close_date").val($(".date-input").val() + " " + $(this).val())
+    local_datetime = $(".date-input").val() + " " + $(this).val()
+    $("#motion_close_date").val(local_datetime)
   )
-
+  #** expand motion row on dashboard and match colour for legend **
   $(".bordered").click((event, ui) ->
     expandableRow = $(this).children().last()
     expandableRow.toggle()
@@ -43,7 +42,7 @@ $ ->
     else
       $(this).find(".toggle-button").html('+')
   )
-
+  #** prevent expansion of motion **
   $(".no-toggle").click((event) ->
     event.stopPropagation()
   )
