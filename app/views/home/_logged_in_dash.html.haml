@@ -1,6 +1,6 @@
 - if @motions
   - if @motions_voting.size > 0
-    %h3 Open
+    %h2 Open
     .row
       .motions-list.span13
         - @motions.voting.each do |motion|
@@ -8,7 +8,8 @@
           - if motion.user_has_voted?(current_user)
             - class_name += "closed"
           - else
-            - class_name += "open"
+            - class_name += "voting"
+          - motion.open_close_motion
           .row
             .span13{class: class_name, :id =>"motion_#{motion.id}"}
               =render partial: "motions/motion_list", locals: {motion: motion}
@@ -27,10 +28,6 @@
                   .pie{ :id => "vgraph_#{motion.id}" }
                   .graph_tooltip{ :id => "tooltip_#{motion.id}" }
                   .jqplot-table-legend{ :style => 'grey' }
-                    -#- if motion.user_has_voted?(current_user)
-                    -#.jqplot-table-legend.greyed
-                    -#- else
-                    -#.jqplot-table-legend.whited
                 - unless motion.user_has_voted?(current_user)
                   .row
                     .span3.offset7
@@ -49,11 +46,11 @@
                           =f.input :statement, label: false, placeholder: "Reason for your decision"
                           =f.input :position, as: :hidden, input_html: {id: "vote_position_#{motion.id}"}
     #closed-motion-list
-      %h3 Closed
+      %h2 Closed
       .row
         .motions-list.span13
           - @motions.closed.each do |motion|
-            - class_name = "bordered greyed"
+            - class_name = "bordered closed"
             .row
               .span13{class: class_name, :id =>"motion_#{motion.id}"}
                 =render partial: "motions/motion_list", locals: {motion: motion}
