@@ -25,17 +25,16 @@
         ="(edited: #{time_ago_in_words(@motion.updated_at)} ago)"
       -#%span.facilitator=", Facilitator: #{@motion.facilitator_email}"
       .span
-        = @motion.close_date
-        = Time.now
+        - localTime = Time.zone.utc_to_local(Time.now)
         - if @motion.has_closing_date?
           No close date
         - else
           - if @motion.voting?
             Closing in
-            = distance_of_time_in_words(Time.now + 1.day, @motion.close_date, false)
+            = distance_of_time_in_words(localTime, @motion.close_date, false)
           - else
             Closed at
-            = @motion.close_date.strftime("%k%p on %d/%m/%Y")
+            = @motion.close_date.strftime("%l%p on %d/%m/%Y")
   #motion-description
     =simple_format(@motion.description)
   .row

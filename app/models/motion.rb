@@ -99,7 +99,8 @@ class Motion < ActiveRecord::Base
   end
 
   def open_close_motion
-    if close_date && close_date < Time.now
+    localTime = Time.zone.utc_to_local(Time.now)
+    if close_date && close_date <= localTime
       close_voting
     else
       open_voting
