@@ -12,7 +12,7 @@
     .span7
       #admin-buttons
         =render partial: "facilitator_options"
-  %h4
+  %h5
     #discussion
       - if @motion.discussion_url.present?
         Discussion -
@@ -25,18 +25,17 @@
         ="(edited: #{time_ago_in_words(@motion.updated_at)} ago)"
       -#%span.facilitator=", Facilitator: #{@motion.facilitator_email}"
       .span
+        = @motion.close_date
+        = Time.now
         - if @motion.has_closing_date?
-          = @motion.hours_to_expirey
-          No specified closing date
+          No close date
         - else
           - if @motion.voting?
             Closing in
-            = @motion.hours_to_expirey
-            -#= distance_of_time_in_words(Time.now, @motion.close_date, false)
+            = distance_of_time_in_words(Time.now + 1.day, @motion.close_date, false)
           - else
             Closed at
-            =@motion.hours_to_expirey
-            -#= @motion.close_date.strftime("%k%p on %d/%m/%Y")
+            = @motion.close_date.strftime("%k%p on %d/%m/%Y")
   #motion-description
     =simple_format(@motion.description)
   .row

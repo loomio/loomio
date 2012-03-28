@@ -39,18 +39,16 @@ class MotionsController < GroupBaseController
 
   def close_voting
     resource
-    @motion.set_close_date
+    @motion.set_close_date(Time.now)
     redirect_to motion_path(@motion)
   end
 
   def open_voting
     resource
-    @motion.set_expirey
+    @motion.set_close_date(Time.now + 1.week)
     redirect_to motion_path(@motion)
   end
 
-<<<<<<< HEAD
-=======
   def edit
     resource
     if @motion.can_be_edited_by?(current_user)
@@ -61,7 +59,6 @@ class MotionsController < GroupBaseController
     end
   end
 
->>>>>>> migration added for date format change
   private
 
     def group

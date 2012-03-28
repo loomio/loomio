@@ -8,13 +8,26 @@ $ ->
     # ...A bunch of bullshit that we have to write because jquery's
     # datepicker wants to be a pain.
     currentVal = $("#motion_close_date").val()
-    currentVal = $.datepicker.parseDate("yy-mm-dd", currentVal)
-    $("#motion_close_date").datepicker({"dateFormat": "dd-mm-yy"})
-    $("#motion_close_date").datepicker("setDate", currentVal)
+    dateVal = currentVal.substring(0,10)
+    timeVal = currentVal.substring(11,13)
+    dateVal = $.datepicker.parseDate("dd-mm-YY", dateVal)
+    $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
+    $("#input_date").datepicker("setDate", dateVal)
+    $("#date_hour").val(timeVal)
 
     if $("#new-motion").length > 0
       now = new Date()
-      $("#motion_close_date").datepicker("setDate", "now.getDate()+7")
+      timeVal = now.getHours()
+      $("#input_date").datepicker("setDate", "now.getDate()+7")
+      $("#date_hour").val(timeVal)
+      $("#motion_close_date").val($(".date-input").val() + " " + $("#date_hour").val())
+
+  $(".date-input").change((e) ->
+    $("#motion_close_date").val($(this).val() + " " + $("#date_hour").val())
+  )
+  $("#date_hour").change((e) ->
+    $("#motion_close_date").val($(".date-input").val() + " " + $(this).val())
+  )
 
   $(".bordered").click((event, ui) ->
     expandableRow = $(this).children().last()
