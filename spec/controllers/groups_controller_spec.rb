@@ -60,10 +60,6 @@ describe GroupsController do
           get :show, :id => @group.id
           response.should be_success
         end
-        it "shows an edit group form" do
-          get :edit, :id => @group.id
-          response.should be_success
-        end
       end
       context "a requested member" do
         before :each do

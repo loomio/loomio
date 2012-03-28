@@ -1,7 +1,11 @@
 #group
-  %h1=@group.name
   .row
-    .span10#motions
-      =render partial: 'motions', locals: {group: @group}
-    .span6#users
-      =render :partial => 'users', locals: {group: @group}
+    .span10
+      %h1=@group.name
+      #motions
+        =render partial: 'motions', locals: {group: @group}
+    .span6#right-panel
+      - if @group.can_be_edited_by? current_user
+        =link_to "Edit Group", edit_group_path(@group), class: "btn small"
+      #users
+        =render :partial => 'users', locals: {group: @group}

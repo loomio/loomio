@@ -33,8 +33,12 @@ div.token-input-dropdown-facebook p {
   font-size: 11px;
 }
 #group {
-  h1 { margin-bottom: 15px; }
-  #membership-requested { width: 200px; }
+  h1 { margin-bottom: 0px; }
+  .btn.small { font-size: 12px }
+  #right-panel {
+    margin-top: 10px;
+    #membership-requested { width: 200px; }
+  }
 }
 
 #group-form {
