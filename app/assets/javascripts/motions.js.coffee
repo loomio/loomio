@@ -23,9 +23,9 @@ $ ->
       $(this).find(".toggle-button").html('-')
       if $(this).hasClass('closed')
         $(".jqplot-table-legend").addClass('closed')
-        $(".jqplot-table-legend").removeClass('open')
+        $(".jqplot-table-legend").removeClass('voting')
       else
-        $(".jqplot-table-legend").addClass('open')
+        $(".jqplot-table-legend").addClass('voting')
         $(".jqplot-table-legend").removeClass('closed')
     else
       $(this).find(".toggle-button").html('+')
