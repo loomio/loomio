@@ -5,28 +5,44 @@
 $ ->
   if $("#motion-form").length > 0
     #** Edit Moition **
-    datetime_string = $("#motion_close_date").val()
-    date_string = datetime_string.substring(0,10)
-    time_string = datetime_string.substring(11,13)
+    date = new Date($("#motion_close_date").val())
+    date_string = "#{date.getDate()}-#{date.getMonth() + 1}-#{date.getFullYear()}"
+    hours = date.getHours()
     datetime_format = new Date(date_string)
     $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
-    $("#input_date").datepicker("setDate", datetime_format)
-    $("#date_hour").val(time_string)
+    $("#input_date").datepicker("setDate", date_string)
+    $("#date_hour").val(hours)
+
     #** New Motion **
     if $("#new-motion").length > 0
-      now = new Date()
-      $("#input_date").datepicker("setDate", now.getDate()+7)
-      $("#date_hour").val(now.getHours())
-      $("#motion_close_date").val($(".date-input").val() + " " + $("#date_hour").val())
+      datetime = new Date()
+      datetime.setDate(datetime.getDate() + 7)
+      hours = datetime.getHours()
+      $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
+      $("#input_date").datepicker("setDate", datetime)
+      $("#date_hour").val(hours)
+      $("#motion_close_date").val(datetime)
+
   #** Reload hidden close_date field **
-  $(".date-input").change((e) ->
-    local_datetime = $(this).val() + " " + $("#date_hour").val()
+  $("#input_date").change((e) ->
+    date = $(this).val()
+    day = date.substring(0,2)
+    month = (parseInt(date.substring(3,5)) - 1).toString()
+    year = date.substring(6,10)
+    hour = $("#date_hour").val()
+    local_datetime = new Date(year, month, day, hour)
     $("#motion_close_date").val(local_datetime)
   )
   $("#date_hour").change((e) ->
-    local_datetime = $(".date-input").val() + " " + $(this).val()
+    date = $("#input_date").val()
+    day = date.substring(0,2)
+    month = (parseInt(date.substring(3,5)) - 1).toString()
+    year = date.substring(6,10)
+    hour = $(this).val()
+    local_datetime = new Date(year, month, day, hour)
     $("#motion_close_date").val(local_datetime)
   )
+
   #** expand motion row on dashboard and match colour for legend **
   $(".bordered").click((event, ui) ->
     expandableRow = $(this).children().last()
@@ -42,6 +58,7 @@ $ ->
     else
       $(this).find(".toggle-button").html('+')
   )
+
   #** prevent expansion of motion **
   $(".no-toggle").click((event) ->
     event.stopPropagation()
