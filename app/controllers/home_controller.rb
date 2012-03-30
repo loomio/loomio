@@ -7,6 +7,7 @@ class HomeController < ApplicationController
       @motions_voting = @user.motions_voting
       @motions_voted = @user.motions_voting.that_user_has_voted_on(@user)
       @motions_closed = @user.motions_closed
+      @groups = @user.groups
     end
   end
 
