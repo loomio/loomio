@@ -1,4 +1,7 @@
 class Motion < ActiveRecord::Base
+  #require 'time_functions'
+  #include TimeFunctions
+
   #PHASES = %w[discussion voting closed]
   PHASES = %w[voting closed]
 
@@ -99,8 +102,7 @@ class Motion < ActiveRecord::Base
   end
 
   def open_close_motion
-    local_time = Time.zone.utc_to_local(Time.now)
-    if close_date && close_date <= local_time
+    if close_date && close_date <= Time.now
       close_voting
     else
       open_voting
@@ -108,9 +110,8 @@ class Motion < ActiveRecord::Base
     save
   end
 
-  def set_close_date(set_date)
-    local_time = Time.zone.utc_to_local(set_date)
-    self.close_date = local_time
+  def set_close_date(date)
+    self.close_date = date
     save
     open_close_motion
   end
