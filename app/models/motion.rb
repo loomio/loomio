@@ -1,7 +1,4 @@
 class Motion < ActiveRecord::Base
-  #require 'time_functions'
-  #include TimeFunctions
-
   #PHASES = %w[discussion voting closed]
   PHASES = %w[voting closed]
 

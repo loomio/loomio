@@ -25,7 +25,7 @@ describe MotionsController do
     end
 
     it "can open a motion" do
-      motion.should_receive(:set_expirey)
+      motion.should_receive(:set_close_date)
       post :open_voting, id: motion.id
     end
   end
@@ -110,12 +110,12 @@ describe MotionsController do
     end
 
     context "editing a motion" do
-      it "redirects with error if they aren't the author or facilitator" do
+      it "redirects with error if they aren't the author" do
         motion.should_receive(:can_be_edited_by?).with(user).and_return(false)
 
         get :edit, id: motion.id
 
-        flash[:error].should =~ /Only the facilitator/
+        flash[:error].should =~ /Only the author/
         response.should be_redirect
       end
 
