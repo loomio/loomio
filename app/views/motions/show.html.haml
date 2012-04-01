@@ -41,6 +41,13 @@
         =render partial: "votes_table"
     .span7
       #stats
+        %h6
+          #percentage-to-vote
+            = @motion.display_yet_to_vote_percentage.to_s + "%"
+            - unless @motion.closed?
+              yet to vote
+            - else
+              did not vote
         #graph.pie
       #votes
         -if @motion.voting?

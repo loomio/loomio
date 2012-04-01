@@ -54,20 +54,24 @@ class Motion < ActiveRecord::Base
     }.to_hash
   end
 
-  # Craig: This method seems too big, suggest refactoring (Extract Method).
   def votes_graph_ready
     votes_for_graph = []
     votes_breakdown.each do |k, v|
       votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|v| v.user.email}]]
     end
-    yet_to_vote_count = calculate_no_vote_count
-    text = "Yet to vote "
-    if (closed?)
-      text = "Did not vote "
-      yet_to_vote_count = no_vote_count
-    end
-    votes_for_graph.push [text + "(#{yet_to_vote_count})", yet_to_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
+    #yet_to_vote_count = calculate_no_vote_count
+    #
+    #text = "Yet to vote "
+    #if (closed?)
+      #text = "Did not vote "
+      #yet_to_vote_count = no_vote_count
+    #end
+    #votes_for_graph.push [text + "(#{yet_to_vote_count})", yet_to_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
     return votes_for_graph
+  end
+
+  def display_yet_to_vote_percentage
+    calculate_no_vote_count/group.memberships.size * 100
   end
 
   def has_admin_user?(user)
