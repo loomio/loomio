@@ -42,6 +42,13 @@
     .span7
       #stats
         =render "votes_filters", clicked_tag: @clicked_tag, motion: @motion
+        %h6
+          #percentage-to-vote
+            = @motion.display_yet_to_vote_percentage.to_s + "%"
+            - unless @motion.closed?
+              yet to vote
+            - else
+              did not vote
         #graph.pie
       #votes
         -if @motion.voting?
