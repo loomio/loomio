@@ -49,18 +49,6 @@ describe Motion do
     @motion.should be_valid
   end
 
-  it "has time functions" do
-    @motion = create_motion
-    time = Time.zone.now
-    puts time
-    Time.zone = ActiveSupport::TimeZone.new("Wellington")
-    puts Time.zone
-
-    local_time = @motion.local_time time
-    local_time.should == "dsfash"
-    local_time.should_not == nil
-  end
-
   context "users have voted" do
     before :each do
       @motion = create_motion

@@ -43,8 +43,8 @@ describe "Motions" do
 
     it "can create a motion" do
       visit new_motion_path(group_id: @group.id)
-      fill_in 'Name', with: 'This is a new motion'
-      fill_in 'Description', with: 'Blahhhhhh'
+      fill_in 'motion_name', with: 'This is a new motion'
+      fill_in 'motion_description', with: 'Blahhhhhh'
       click_on 'Create Motion'
     end
   end

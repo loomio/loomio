@@ -54,7 +54,7 @@ class MotionsController < GroupBaseController
     if @motion.can_be_edited_by?(current_user)
       edit!
     else
-      flash[:error] = "Only the Author or author can edit a motion."
+      flash[:error] = "Only the author can edit a motion."
       redirect_to motion_url(@motion)
     end
   end
