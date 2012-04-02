@@ -2,9 +2,9 @@
   %ul.unstyled.membership-row
     %li.name-label
       - if membership.user_name
-         = membership.user_name
-       - else
-         = membership.user_email
+        = membership.user_name
+      - else
+        = membership.user_email
     %li
       -if current_user.is_group_admin?(@group)
         %li.membership-admin-functions

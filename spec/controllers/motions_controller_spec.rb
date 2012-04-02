@@ -120,7 +120,7 @@ describe MotionsController do
       end
 
       it "succeeds if they are the author" do
-        motion.should_receive(:can_be_edited_by?).with(user).and_return(true)
+        motion.should_receive(:can_be_edited_by?).with(user).at_least(:once).and_return(true)
 
         get :edit, id: motion.id
 
