@@ -5,5 +5,5 @@ class UsersController < BaseController
   def settings
     @user = current_user
   end
-  
+
 end

@@ -58,7 +58,7 @@ class MotionsController < GroupBaseController
       redirect_to motion_url(@motion)
     end
   end
-  
+
   def toggle_tag_filter 
     @motion = Motion.find(params[:id])
     @active_tags = params[:tags]
