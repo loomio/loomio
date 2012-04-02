@@ -34,19 +34,23 @@ div.motion{
 .motions-list{
   padding-top: 2px;
   border-bottom: 1px solid lightgrey;
-  .vote-icon {padding-top: 10px;}
-  #motion-title{
-    font-size: 17px;
-    line-height: 20px;
+  .vote-icon {
+    padding-top: 10px;
+    padding-left: 8px;
+    width: 13px;
+    text-align: left;
   }
-  .group-name {
-    font-size: 14px;
-    padding-left: 20px;
-    line-height: 20px;
-    a {color: grey;}
+  #motion-header{
+    #motion-title{ font-size: 16px; }
+    line-height: 18px;
+    width: 360px;
+    .group-name {
+      font-size: 14px;
+      a {color: grey;}
+    }
   }
   .close-info {
-    font-size: 14px;
+    font-size: 13px;
     text-align: right;
     padding-top: 8px;
     color: grey;
@@ -59,20 +63,24 @@ div.motion{
   }
   .action-links{
     a{color: grey}
-    margin-top: -7px;
-    font-size: 12px;
+    margin-top: -5px;
+    font-size: 11px;
   }
+  .expanded-area{ margin-left: 60px; }
   .dashboard-motion-description{
     font-size: 14px;
     line-height: 1.4em;
     margin-top: 10px;
   }
   .pie {
-    margin-left: 0px;
     height: 170px;
+    width: 400px;
+    float: left;
  }
+
   #vote-buttons{
     padding-top: 5px;
+    width: 140px;
     .sml-vote-btn{
               border-radius: 1px;
               webkit-border-radius: 5px;
@@ -86,13 +94,10 @@ div.motion{
               }
   }
   #dash-vote-form{
-    .form-stacked{
-      padding-left: 0px;
-    }
+    margin-left: 0px;
     input {
-      padding-top: 0px;
       font-size: 14px;
-      width: 170px;
+      width: 190px;
     }
   }
 }
@@ -139,7 +144,7 @@ div.motion{
   font-size: 14px;
 }
 #stats{
-  #percentage-to-vote { margin-left: 30px }
+  #percentage-to-vote { margin-left: 20px }
   float: right;
   margin-left: 25px;
   p{ text-align: right; padding-right: 15px;}
@@ -147,6 +152,9 @@ div.motion{
 #graph {
   width: 400px;
   height: 250px;
+}
+#percentage-to-vote{
+  padding-bottom: 10px;
 }
 #vote-buttons{
   margin-left: 20px;
@@ -161,6 +169,7 @@ div.motion{
             height: 40px;
             }
 }
+#closed-motion-list{ padding-bottom: 50px;}
 
 /*Hidden vote form on show motions page*/
 #vote-form{
@@ -173,14 +182,6 @@ div.motion{
     margin-left: 170px;
     width: 140px;
   }
-  /*#close-date {*/
-    /*display: inline;*/
-    /*.input{ display: inline; }*/
-  /*}*/
-  /*#motion_close_date{*/
-    /*width: 140px;*/
-    /*margin-left: 20px;*/
-  /*}*/
   select{ width: 100px;}
   #description{
     padding-left: 150px;
@@ -192,7 +193,7 @@ div.motion{
 h2 { font-size: 24px; line-height: 26px; } /* Main Header */
 h3 { font-size: 16px; line-height: 20px; font-weight: normal; } /* Group sub header */
 h4 { font-size: 16px; line-height: 20px; font-weight: normal; color: lightgrey; padding-bottom: 5px; } /* label grey with bottom padding */
-h5 { font-size: 14px; line-height: 18px; font-weight: normal; color: lightgrey; } /* other details */
+h5 { font-size: 14px; line-height: 18px; font-weight: normal; color: #BBB; } /* other details */
 
 .group-tags .btn {
   font-size: 12px;
