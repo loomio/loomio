@@ -49,16 +49,6 @@ class MotionsController < GroupBaseController
     redirect_to motion_path(@motion)
   end
 
-  def edit
-    resource
-    if @motion.can_be_edited_by?(current_user)
-      edit!
-    else
-      flash[:error] = "Only the author can edit a motion."
-      redirect_to motion_url(@motion)
-    end
-  end
-
   private
 
     def group
@@ -89,7 +79,7 @@ class MotionsController < GroupBaseController
 
     def check_motion_update_permissions
       unless resource.can_be_edited_by?(current_user)
-        flash[:error] = "Only the facilitator or author can edit a motion."
+        flash[:error] = "Only the author can edit a motion."
         redirect_to :back
       end
     end
