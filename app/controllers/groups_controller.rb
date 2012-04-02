@@ -64,7 +64,7 @@ class GroupsController < GroupBaseController
       format.json { render json: @tags.collect {|tag| {:id => tag.id, :name => tag.name } } }
     end
   end
-  
+
   def user_group_tags
     @group = Group.find(params[:id])
     @user = User.find(params[:user_id])
