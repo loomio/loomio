@@ -86,6 +86,10 @@ describe GroupsController do
           response.should be_success
         end
       end
+      #context "members invitable by members" do
+        #context "member invites user" do
+        #end
+      #end
     end
     context "group viewable by members" do
       before :each do

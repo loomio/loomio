@@ -51,10 +51,11 @@ div.token-input-dropdown-facebook p {
 
 #group-form {
   form {
-    width: 500px;
+    width: 550px;
+    #group_name { width: 390px; }
     label { text-align: left; }
     .privacy-settings {
-      label { width: 300px; }
+      label { width: 400px; }
       select { width: 150px; }
       .input { text-align: right; }
     }
