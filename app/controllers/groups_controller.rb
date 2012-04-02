@@ -1,4 +1,7 @@
 class GroupsController < GroupBaseController
+  # TODO Jon: some of the code for tagging in this controller can probably
+  # be moved into the model
+
   load_and_authorize_resource except: :show
   before_filter :check_group_read_permissions, only: :show
 
@@ -66,13 +69,12 @@ class GroupsController < GroupBaseController
   end
 
   def user_group_tags
-    @group = Group.find(params[:id])
-    @user = User.find(params[:user_id])
-    @tags = @user.owner_tags_on(@group, :group_tags)
+    group = Group.find(params[:id])
+    user = User.find(params[:user_id])
+    tags = group.get_user_tags(user)
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @tags.collect {|tag| {:id => tag.id, :name => tag.name } } }
+      format.json { render json: tags.collect {|tag| {:id => tag.id, :name => tag.name } } }
     end
   end
 

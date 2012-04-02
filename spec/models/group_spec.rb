@@ -61,6 +61,8 @@ describe Group do
       @group.users.should include(@user)
     end
 
+    it "can get user tags"
+
     context "receiving a member request" do
       it "should not add user to group" do
         @group.add_request!(@user)
