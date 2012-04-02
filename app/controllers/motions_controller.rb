@@ -49,10 +49,6 @@ class MotionsController < GroupBaseController
     redirect_to motion_path(@motion)
   end
 
-  def display_yet_to_vote
-
-  end
-
   private
 
     def group

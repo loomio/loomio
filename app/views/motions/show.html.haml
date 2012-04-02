@@ -44,11 +44,12 @@
         #graph.pie
         %h6
           #percentage-to-vote
-            = @motion.display_yet_to_vote_percentage.to_s + "%"
+            - group_size = @motion.group.memberships.count
+            - percent_voted = (100-(@motion.no_vote_count/group_size.to_f * 100)).to_i
             - if @motion.closed?
-              of memebers voted on this motion (
+              = "#{percent_voted}% of memebers voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
             - else
-              of members have voted on this motion
+              = "#{percent_voted}% of members have voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
         #votes
           - if @motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
             #vote-buttons
