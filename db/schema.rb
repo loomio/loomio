@@ -12,6 +12,7 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20120326091356) do
+
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
