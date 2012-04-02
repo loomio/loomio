@@ -15,7 +15,7 @@
     = f.input :email, placeholder: "Email address", label: false
     = f.submit "Invite"
 %input#group_id{ type: "hidden", value: group.id }
-- if group.membership_requests.present? && group.users_include?(current_user)
+- if group.membership_requests.present? && group.can_invite_members?(current_user)
   #user-requests
     %h3 User Requests
     %ul.unstyled
