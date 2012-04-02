@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe GroupsController do
-  
+
   let(:group) { stub_model(Group) }
   let(:user)  { stub_model(User) }
 
