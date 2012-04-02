@@ -99,7 +99,7 @@ class Motion < ActiveRecord::Base
   end
 
   def open_close_motion
-    if close_date && close_date <= Time.now.to_date
+    if close_date && close_date <= Time.now
       close_voting
     else
       open_voting
@@ -107,8 +107,8 @@ class Motion < ActiveRecord::Base
     save
   end
 
-  def set_close_date(set_date)
-    self.close_date = set_date.to_date
+  def set_close_date(date)
+    self.close_date = date
     save
     open_close_motion
   end

@@ -117,9 +117,20 @@ div.motion{
   p{font-size: 1.0em;}
   margin-top: 40px;
 }
-#motion_description{
+/*Show Motions Page*/
+#admin-buttons{
+  margin-top: 20px;
+  margin-left: 20px;
+  .btn-mini{font-size: 8px;}
+}
+#discussion{
+  padding-top: 10px;
+  color: grey;
+}
+#other-info{color: lightgrey;}
+#motion-description{
   p{font-size: 1.0em;}
-  margin-top: 40px;
+  margin-top: 30px;
 }
 #votes-table table{
   font-size: 14px;
@@ -134,7 +145,7 @@ div.motion{
 #stats{
   float: right;
   margin-left: 25px;
-  p{text-align: right; padding-right: 15px;}
+  p{ text-align: right; padding-right: 15px;}
 }
 #graph {
   width: 400px;
@@ -142,23 +153,46 @@ div.motion{
 }
 #vote-buttons{
   margin-left: 20px;
-  .btn.vote{border-radius: 5px;
+  .btn.vote{
+            border-radius: 5px;
             webkit-border-radius: 5px;
             moz-border-radius: 5px;
             box-shadow: 1px 1px 4px #999999;
             webkit-box-shadow: 1px 1px 4px #999999;
             moz-box-shadow: 1px 1px 4px #999999;
             padding: 3px;
-            height: 50px;
+            height: 40px;
             }
 }
+
+/*Hidden vote form on show motions page*/
 #vote-form{
   margin-top: 10px
 }
-//Show page
-#description{
-  h2, .buttons{line-height: 1.2em;}
-  h5 { line-height: 20px; color: #888;}
-  h6 { line-height: 20px; text-transform: none;}
-  .btn.small{font-size: 12px; }
+
+#motion-form{
+  #closing-date-label{ padding-left: 150px; }
+  #input_date{
+    margin-left: 170px;
+    width: 140px;
+  }
+  /*#close-date {*/
+    /*display: inline;*/
+    /*.input{ display: inline; }*/
+  /*}*/
+  /*#motion_close_date{*/
+    /*width: 140px;*/
+    /*margin-left: 20px;*/
+  /*}*/
+  select{ width: 100px;}
+  #description{
+    padding-left: 150px;
+    padding-top: 20px;
+  }
+  #commit{padding-left: 150px;}
 }
+
+h2 { font-size: 24px; line-height: 26px; } /* Main Header */
+h3 { font-size: 16px; line-height: 20px; font-weight: normal; } /* Group sub header */
+h4 { font-size: 16px; line-height: 20px; font-weight: normal; color: lightgrey; padding-bottom: 5px; } /* label grey with bottom padding */
+h5 { font-size: 14px; line-height: 18px; font-weight: normal; } /* other details */

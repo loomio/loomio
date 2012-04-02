@@ -1,10 +1,19 @@
 #motion-form
   =semantic_form_for(*form_args) do |f|
     =f.inputs do
-      =f.input :name, placeholder: "Enter a name for your motion"
-      =f.input :discussion_url, placeholder: "http://site.com/your-discussion"
-      =f.input :close_date, as: :string, wrapper_html: {id: "close-date"}
-      =f.input :description
-      =f.commit_button
+      =f.input :name, placeholder: "Enter a title for your motion",  label: false
+      =f.input :discussion_url, placeholder: "http://site.com/your-discussion",  label: false
+      #closing-date-label
+        %h4 Closing
+      .row
+        - input_time = Time.now
+        = text_field_tag :input_date, nil, class: "date-input"
+        = select_hour(input_time, ampm: true)
+      #description
+        %h4 Details
+      =f.input :description, label: false
+      #commit
+        =f.commit_button
+      =f.input :close_date, as: :hidden
       =f.input :phase, as: :hidden, label: false, value: "voting"
       =f.input :facilitator_id, as: :hidden, value: current_user.id, label: false
