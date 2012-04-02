@@ -57,6 +57,10 @@ class Group < ActiveRecord::Base
     membership
   end
 
+  def get_user_tags(user)
+    user.owner_tags_on(self, :group_tags)
+  end
+
   def requested_users_include?(user)
     membership_requests.find_by_user_id(user)
   end
@@ -68,7 +72,7 @@ class Group < ActiveRecord::Base
   def has_admin_user?(user)
     admins.include?(user)
   end
-  
+
   def can_be_viewed_by?(user)
     return true if viewable_by == :everyone
     return true if (viewable_by == :members && users.include?(user))
