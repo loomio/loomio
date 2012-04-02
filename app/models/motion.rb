@@ -123,6 +123,10 @@ class Motion < ActiveRecord::Base
     end
   end
 
+  def group_count
+    group.memberships.count
+  end
+
   private
     def email_motion_created
       group.users.each do |user|
