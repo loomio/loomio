@@ -7,8 +7,12 @@ class Ability
     # GROUPS
     #
 
+<<<<<<< HEAD
     can [:edit, :add_user_tag, :delete_user_tag, :invite_member,
          :user_group_tags, :group_tags], Group do |group|
+=======
+    can [:edit, :update, :add_user_tag, :delete_user_tag, :invite_member], Group do |group|
+>>>>>>> BUGFIX: admin cannot edit group.
       group.can_be_edited_by? user
     end
 

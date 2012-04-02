@@ -19,6 +19,24 @@ describe "Groups" do
       should have_selector('h1', text:'Your groups')
     end
 
+    context "admin of a group" do
+      before :each do
+        @group.add_admin!(@user)
+      end
+
+      it "can visit group edit page" do
+        visit edit_group_path(@group)
+        current_url.should == edit_group_url(@group)
+      end
+
+      it "can edit group" do
+        visit edit_group_path(@group)
+        fill_in 'group_name', with: 'New groupie'
+        click_on 'Update Group'
+        should have_content("New groupie")
+      end
+    end
+
     context "viewing a group visible to members only" do
       before :each do
         visit group_path(@group)

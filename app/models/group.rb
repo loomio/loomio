@@ -87,7 +87,7 @@ class Group < ActiveRecord::Base
   end
 
   def can_be_edited_by?(user)
-    admins.include? user
+    has_admin_user? user
   end
 
   def has_admin_user?(user)
