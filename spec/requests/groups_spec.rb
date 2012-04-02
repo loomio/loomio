@@ -35,11 +35,42 @@ describe "Groups" do
         click_on 'Update Group'
         should have_content("New groupie")
       end
+
+      context "viewing a group" do
+        it "can see membership request section" do
+          requested_user = User.make
+          requested_user.save
+          @group.add_request!(requested_user)
+          visit group_path(@group)
+
+          should have_content("User Requests")
+        end
+        it "can see add member section" do
+          visit group_path(@group)
+          should have_content("Add member")
+        end
+      end
     end
 
     context "viewing a group visible to members only" do
       before :each do
+        requested_user = User.make
+        requested_user.save
+        @group.add_request!(requested_user)
+
         visit group_path(@group)
+      end
+
+      context "members invitable by admins only" do
+        it "cannot see membership request section" do
+          should_not have_content("User Requests")
+        end
+        it "cannot see add member section"
+      end
+
+      context "members invitable by members" do
+        it "can see membership request section"
+        it "can see add member section"
       end
 
       it "can view the group's contents" do
