@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
 
   validates_presence_of :name
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
+  validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   after_initialize :set_defaults
 
   has_many :memberships,
@@ -116,9 +117,19 @@ class Group < ActiveRecord::Base
     set_user_tags user, new_tags
   end
 
+  def members_invitable_by
+    value = read_attribute(:members_invitable_by)
+    value.to_sym if value.present?
+  end
+
+  def members_invitable_by=(value)
+    write_attribute(:members_invitable_by, value.to_s)
+  end
+
   private
 
     def set_defaults
       self.viewable_by ||= :everyone
+      self.members_invitable_by ||= :members
     end
 end

@@ -21,7 +21,7 @@ describe MembershipsController do
       end
     end
 
-    context "requests membership to a visible to everyone" do
+    context "requests membership to a group visible to everyone" do
       it "should succeed and redirect to group show page" do
         # note trying to sneek member level access.. should be ignored
         post :create,
