@@ -71,21 +71,24 @@ describe Motion do
       @motion.close_voting
     end
 
-    it "changes votes graph text based on phase" do
-      @motion.votes_graph_ready[4][0].should =~ /Did not vote \(2\)/
-      @motion.open_voting
-      @motion.votes_graph_ready[4][0].should =~ /Yet to vote \(2\)/
+    context "motion closed" do
+      it "records and freezes no_vote_count" do
+        @motion.no_vote_count.should == 2
+        @motion.group.add_member!(User.make!)
+        @motion.no_vote_count.should == 2
+      end
     end
 
-    it "records and freezes no_vote_count when closed" do
-      @motion.no_vote_count.should == 2
-      @motion.group.add_member!(User.make!)
-      @motion.no_vote_count.should == 2
-    end
+    context "motion re-opened" do
+      before :each do
+        @motion.open_voting
+      end
 
-    it "deletes no_vote_count when re-opened" do
-      @motion.open_voting
-      @motion.no_vote_count.should == nil
+      it "no_vote_count should not be frozen" do
+        @motion.no_vote_count.should == 2
+        @motion.group.add_member!(User.make!)
+        @motion.no_vote_count.should == 3
+      end
     end
   end
 end
