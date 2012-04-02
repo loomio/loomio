@@ -8,6 +8,8 @@ class MembershipsController < BaseController
     end
     if params[:membership][:access_level] == 'member'
       flash[:notice] = "Membership approved."
+      #Add default tag to user and group
+      @membership.group.tag @membership.user, with: "everyone", on: :group_tags
       UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
     end
   end

@@ -48,6 +48,10 @@ describe Motion do
     @motion.discussion_url = "http://our-discussion.com"
     @motion.should be_valid
   end
+  
+  it "has group user tag" do
+    pending "To be completed"
+  end
 
   context "users have voted" do
     before :each do

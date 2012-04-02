@@ -116,6 +116,18 @@ class Motion < ActiveRecord::Base
   def has_closing_date?
     close_date == nil
   end
+  
+  def has_group_user_tag(tag_name)
+    has_tag = false
+    votes.each do |vote|
+      vote.user.group_tags_from(group).each do |tag|
+        if tag == tag_name
+          return has_tag = true
+        end
+      end
+    end
+    return has_tag
+  end
 
   private
     def email_motion_created

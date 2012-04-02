@@ -1,0 +1,10 @@
+.group-tags
+  %button.btn.active{:id => "everyone"} everyone
+  %span.tag-separator
+    |
+  - @motion.group.owned_tags.each do |tag|
+    -if tag.name != "everyone" && @motion.has_group_user_tag(tag.name)
+      %button.btn= tag.name
+    -elsif tag.name != "everyone"
+      %button{:class => "btn not-used"}= tag.name
+    

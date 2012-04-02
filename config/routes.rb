@@ -7,6 +7,7 @@ Tautoko::Application.routes.draw do
   match "/groups/:id/user/:user_id/add_user_tag/:tag", :to => "groups#add_user_tag", :as => :add_user_tag
   match "/groups/:id/user/:user_id/delete_user_tag/:tag", :to => "groups#delete_user_tag", :as => :delete_user_tag
   match "/groups/:id/tag_user", :to => "groups#tag_user", :as => :group_tag_user
+  get "/motions/:id/active_tags/:tags/clicked_tag/:tag" => "motions#toggle_tag_filter", :as => "toggle_tag_filter"
 
   resources :groups do
     get :invite_member, on: :member
