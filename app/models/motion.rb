@@ -60,18 +60,12 @@ class Motion < ActiveRecord::Base
       votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|v| v.user.email}]]
     end
     #yet_to_vote_count = calculate_no_vote_count
-    #
-    #text = "Yet to vote "
-    #if (closed?)
-      #text = "Did not vote "
+    if votes.size == 0
       #yet_to_vote_count = no_vote_count
-    #end
+      votes_for_graph.push ["Yet to vote (#{no_vote_count})", no_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
     #votes_for_graph.push [text + "(#{yet_to_vote_count})", yet_to_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
+    end
     return votes_for_graph
-  end
-
-  def display_yet_to_vote_percentage
-    calculate_no_vote_count/group.memberships.size * 100
   end
 
   def has_admin_user?(user)
@@ -131,6 +125,14 @@ class Motion < ActiveRecord::Base
       end
     end
     return has_tag
+  end
+
+  def no_vote_count
+    if closed?
+      read_attribute(:no_vote_count)
+    else
+      calculate_no_vote_count
+    end
   end
 
   private
