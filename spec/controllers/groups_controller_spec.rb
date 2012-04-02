@@ -18,15 +18,15 @@ describe GroupsController do
       #group.stub(:has_admin_user?).with(user).and_return(true)
       #sign_in user
     end
-    
+
     it "can add a user tag" do
       pending "Reworking spec to use mocks"
       tag_attrs = "testytag"
       new_tags = "testytag,testy"
-      
+
       user.should_receive(:group_tags_from).with(group).and_return("")
       #group.should_receive(:tag).with(user, with: new_tags, on: :group_tags)
-      
+
       get :add_user_tag, id: group.id, user_id: user.id, tag: tag_attrs
 
       response.should be_redirect

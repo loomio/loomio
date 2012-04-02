@@ -68,7 +68,7 @@ class Group < ActiveRecord::Base
   def has_admin_user?(user)
     admins.include?(user)
   end
-
+  
   def can_be_viewed_by?(user)
     return true if viewable_by == :everyone
     return true if (viewable_by == :members && users.include?(user))
