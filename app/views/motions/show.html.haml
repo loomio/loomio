@@ -42,9 +42,15 @@
     .span7
       #stats
         #graph.pie
-      #votes
-        -if @motion.voting?
-          -if (!@user_already_voted)
+        %h5#percentage-to-vote
+          - group_size = @motion.group_count
+          - percent_voted = (100-(@motion.no_vote_count/group_size.to_f * 100)).to_i
+          - if @motion.closed?
+            = "#{percent_voted}% of memebers voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
+          - else
+            = "#{percent_voted}% of members have voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
+        #votes
+          - if @motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
             #vote-buttons
               =link_to image_tag("hand-yes.png", height:'40', width:'40', title:'yes', alt:'yes image'), '#',
                 class: 'btn vote', onclick: "$('#vote_position').val('yes'); $('#new_vote').submit();"

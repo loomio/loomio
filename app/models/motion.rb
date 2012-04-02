@@ -54,19 +54,17 @@ class Motion < ActiveRecord::Base
     }.to_hash
   end
 
-  # Craig: This method seems too big, suggest refactoring (Extract Method).
   def votes_graph_ready
     votes_for_graph = []
     votes_breakdown.each do |k, v|
       votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|v| v.user.email}]]
     end
-    yet_to_vote_count = calculate_no_vote_count
-    text = "Yet to vote "
-    if (closed?)
-      text = "Did not vote "
-      yet_to_vote_count = no_vote_count
+    #yet_to_vote_count = calculate_no_vote_count
+    if votes.size == 0
+      #yet_to_vote_count = no_vote_count
+      votes_for_graph.push ["Yet to vote (#{no_vote_count})", no_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
+    #votes_for_graph.push [text + "(#{yet_to_vote_count})", yet_to_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
     end
-    votes_for_graph.push [text + "(#{yet_to_vote_count})", yet_to_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
     return votes_for_graph
   end
 
@@ -115,6 +113,18 @@ class Motion < ActiveRecord::Base
 
   def has_closing_date?
     close_date == nil
+  end
+
+  def no_vote_count
+    if closed?
+      read_attribute(:no_vote_count)
+    else
+      calculate_no_vote_count
+    end
+  end
+
+  def group_count
+    group.memberships.count
   end
 
   private
