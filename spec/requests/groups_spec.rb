@@ -16,7 +16,7 @@ describe "Groups" do
 
     it "can view their groups" do
       visit '/groups'
-      should have_selector('h1', text:'Your groups')
+      should have_selector('h3', text:'Groups')
     end
 
     context "viewing a group visible to members only" do
