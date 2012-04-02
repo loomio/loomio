@@ -42,7 +42,7 @@
     .span7
       #stats
         #graph.pie
-        %h6
+        %h4
           #percentage-to-vote
             - group_size = @motion.group.memberships.count
             - percent_voted = (100-(@motion.no_vote_count/group_size.to_f * 100)).to_i
