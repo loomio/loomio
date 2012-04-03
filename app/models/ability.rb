@@ -7,7 +7,7 @@ class Ability
     # GROUPS
     #
 
-    can [:edit, :add_user_tag, :delete_user_tag, :invite_member, :user_group_tags], Group do |group|
+    can [:edit, :add_user_tag, :delete_user_tag, :invite_member, :user_group_tags, :group_tags], Group do |group|
       group.can_be_edited_by? user
     end
 

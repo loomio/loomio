@@ -5,7 +5,7 @@
     %th statement
     %th
     -@motion.votes.each do |vote|
-      %tr{:class => vote.user.group_tags_from(@motion.group).join(" ")}
+      %tr{:class => "everyone #{vote.user.group_tags_from(@motion.group).join(" ")}" }
         %td=render partial: "display_icons", locals: {position: vote.position}
         %td=vote.user_name
         %td.vote-statement=vote.statement
