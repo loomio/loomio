@@ -1,5 +1,6 @@
 -if @user = current_user
-  =render :partial => 'home/logged_in_dash'
+  =render partial: 'home/logged_in_dash',
+    locals: { motions: @motions, groups: @groups }
 -else
   .container
     %h1 The Public Homepage
