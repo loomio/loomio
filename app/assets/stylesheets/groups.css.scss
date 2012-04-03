@@ -59,14 +59,6 @@ div.token-input-dropdown-facebook p {
       select { width: 150px; }
       .input { text-align: right; }
     }
-    /*#group_name_input .input { margin-left: 0px; }*/
-    /*.radio-hint {*/
-      /*font-size: .8em;*/
-    /*}*/
-
-    /*.choice {*/
-      /*border-bottom: 1px lightgrey solid;*/
-    /*}*/
   }
 }
 
@@ -113,6 +105,9 @@ ul.membership-row li.tags-label {
 .unstyled.membership-row.tags {
   float: left;
 }
-h3 { font-size: 24px; }
+h2 { font-size: 24px; line-height: 26px; } /* Main Header */
+h3 { font-size: 16px; line-height: 20px; font-weight: normal; } /* Group sub header */
+h4 { font-size: 16px; line-height: 20px; font-weight: normal; color: lightgrey; padding-bottom: 5px; } /* label grey with bottom padding */
+h5 { font-size: 14px; line-height: 18px; font-weight: normal; color: #BBB; } /* other details */
 h8 { font-size: 20px; }
 h7 { font-size: 14px; line-height: 20px; }

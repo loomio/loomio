@@ -10,27 +10,55 @@ div.motion{
   box-shadow: 1px 1px 4px #999999;
   -webkit-box-shadow: 1px 1px 4px #999999;
   -moz-box-shadow: 1px 1px 4px #999999;
-  a{display: block; padding: 5px; margin-bottom: 0;}
-  .border{ border: solid 1px #ccc; min-height: 200px; }
-  .name{
-    font-weight: bold;
+}
+
+.bordered{ border-top: 1px solid lightgrey; }
+.centered{ text-align: center; }
+
+/*** Show Motions Page ***/
+#motion{
+  #admin-buttons{
+    margin-top: 20px;
+    margin-left: 20px;
+    .btn-mini{font-size: 8px;}
+  }
+  #discussion{ padding-top: 10px; }
+  #description{
+    p{font-size: 1.0em;}
+    margin-top: 30px;
+  }
+  #votes-table table{
+    font-size: 14px;
+    .vote-statement{
+      max-width: 300px;
     }
-  .group{
-    height: 2.0em;
-    a{display: block; float: left; padding: 4px; margin-bottom: 0;}
-    text-align: left;
-    background: #ececec;
-    a, a:visited, a:active {color: #999;}
+    margin-top: 50px;
+    #no-votes-msg{ font-size: 14px; }
+  }
+  #graph{ height: 380px; }
+  #percentage-to-vote { margin-left: 20px }
+  #vote-buttons{
+    margin-left: 20px;
+    .btn.vote{
+      border-radius: 5px;
+      webkit-border-radius: 5px;
+      moz-border-radius: 5px;
+      box-shadow: 1px 1px 4px #999999;
+      webkit-box-shadow: 1px 1px 4px #999999;
+      moz-box-shadow: 1px 1px 4px #999999;
+      padding: 3px;
+      height: 40px;
+      }
+  }
+
+  /*Hidden vote form on show motions page*/
+  #vote-form{
+    margin-top: 10px;
+    #vote-statement{ margin-left: 0px; padding-left: 0px; }
   }
 }
 
-.bordered{
-  border-top: 1px solid lightgrey;
-}
-
-.centered{
-  text-align: center;
-}
+/*** Dashboard Page ***/
 .motions-list{
   padding-top: 2px;
   border-bottom: 1px solid lightgrey;
@@ -76,106 +104,38 @@ div.motion{
     height: 170px;
     width: 400px;
     float: left;
- }
-
+  }
   #vote-buttons{
+    margin-left: 0px;
     padding-top: 5px;
     width: 140px;
     .sml-vote-btn{
-              border-radius: 1px;
-              webkit-border-radius: 5px;
-              moz-border-radius: 5px;
-              box-shadow: 1px 1px 4px #999999;
-              webkit-box-shadow: 1px 1px 4px #999999;
-              moz-box-shadow: 1px 1px 4px #999999;
-              padding: 5px;
-              padding-top: 10px;
-              padding-bottom: 3px;
-              }
-  }
-  #dash-vote-form{
-    margin-left: 0px;
-    input {
-      font-size: 14px;
-      width: 190px;
+      border-radius: 1px;
+      webkit-border-radius: 5px;
+      moz-border-radius: 5px;
+      box-shadow: 1px 1px 4px #999999;
+      webkit-box-shadow: 1px 1px 4px #999999;
+      moz-box-shadow: 1px 1px 4px #999999;
+      padding: 5px;
+      padding-top: 10px;
+      padding-bottom: 3px;
     }
   }
-}
-#closed-motion-list{
-  margin-top: 40px
-}
-
-.closed{
-  background-color: #F9F9F9;
-  #motion-title{ font-weight: normal; }
-}
-
-.voting{
-  background-color: #FFFFFF;
-  #motion-title{ font-weight: bold; }
-}
-
-#description_text{
-  p{font-size: 1.0em;}
-  margin-top: 40px;
-}
-/*Show Motions Page*/
-#admin-buttons{
-  margin-top: 20px;
-  margin-left: 20px;
-  .btn-mini{font-size: 8px;}
-}
-#discussion{
-  padding-top: 10px;
-  color: grey;
-}
-#motion-description{
-  p{font-size: 1.0em;}
-  margin-top: 30px;
-}
-#votes-table table{
-  font-size: 14px;
-  .vote-statement{
-    max-width: 300px;
+  #vote-form{
+    margin-left: 0px;
+    input { font-size: 14px; width: 190px; }
   }
-  margin-top: 50px;
-}
-#no-votes-msg{
-  font-size: 14px;
-}
-#stats{
-  #percentage-to-vote { margin-left: 20px }
-  float: right;
-  margin-left: 25px;
-  p{ text-align: right; padding-right: 15px;}
-}
-#graph {
-  width: 400px;
-  height: 250px;
-}
-#percentage-to-vote{
-  padding-bottom: 10px;
-}
-#vote-buttons{
-  margin-left: 20px;
-  .btn.vote{
-            border-radius: 5px;
-            webkit-border-radius: 5px;
-            moz-border-radius: 5px;
-            box-shadow: 1px 1px 4px #999999;
-            webkit-box-shadow: 1px 1px 4px #999999;
-            moz-box-shadow: 1px 1px 4px #999999;
-            padding: 3px;
-            height: 40px;
-            }
-}
-#closed-motion-list{ padding-bottom: 50px;}
-
-/*Hidden vote form on show motions page*/
-#vote-form{
-  margin-top: 10px
+  .closed{
+    background-color: #F9F9F9;
+    #motion-title{ font-weight: normal; }
+  }
+  .voting{
+    background-color: #FFFFFF;
+    #motion-title{ font-weight: bold; }
+  }
 }
 
+/*** New & Edit motion ***/
 #motion-form{
   #closing-date-label{ padding-left: 150px; }
   #input_date{
@@ -188,6 +148,15 @@ div.motion{
     padding-top: 20px;
   }
   #commit{padding-left: 150px;}
+}
+
+/*** Shared properties ***/
+
+#percentage-to-vote{ padding-bottom: 10px; }
+
+#closed-motion-list{
+  margin-top: 40px;
+  padding-bottom: 50px;
 }
 
 h2 { font-size: 24px; line-height: 26px; } /* Main Header */

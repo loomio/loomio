@@ -3,8 +3,8 @@
     .topbar-inner
       .container
         =link_to 'Loom.io', "/", :class => 'brand'
-        %ul.nav
-          %li= link_to "Groups", groups_path
+        -#%ul.nav
+          -#%li= link_to "Groups", groups_path
         %ul.nav.secondary-nav
           -if @user = current_user
             %li.dropdown
