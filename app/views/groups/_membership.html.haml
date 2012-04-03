@@ -17,5 +17,6 @@
     %li.tags-label
       %span Tags:
     %li
-      %input{:id => "user-tags-" + membership.user_id.to_s}
+      %input.hidden{:id => "user-existing-tags-" + membership.user_id.to_s, :value => membership.user.group_tags_from(@group).join(",")}
+      %input.hidden{:id => "user-tags-" + membership.user_id.to_s}
   .clear-both
