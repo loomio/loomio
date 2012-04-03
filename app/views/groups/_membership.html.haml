@@ -5,15 +5,17 @@
         = membership.user_name
       - else
         = membership.user_email
+    
+    -if current_user.is_group_admin?(@group)
+      %li.membership-admin-functions
+        =link_to "edit", edit_membership_path(membership)
+        |
+        =link_to "remove", membership, method: :delete,
+          confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
+    
+  %ul.unstyled.membership-row.tags
+    %li.tags-label
+      %span Tags:
     %li
-      -if current_user.is_group_admin?(@group)
-        %li.membership-admin-functions
-          =link_to "edit", edit_membership_path(membership)
-          |
-          =link_to "remove", membership, method: :delete,
-            confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
-        %li.tags-label
-          %span Tags:
-        %li
-          %input{:id => "user-tags-" + membership.user_id.to_s}
+      %input{:id => "user-tags-" + membership.user_id.to_s}
   .clear-both

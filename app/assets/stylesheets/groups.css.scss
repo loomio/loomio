@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $token-input-line-height: 10px;
 $token-input-font-size: 10px;
+$token-input-width: 278px;
 
 .clear-both {
   clear: both;
@@ -10,13 +11,13 @@ $token-input-font-size: 10px;
 }
 
 div.token-input-dropdown-facebook {
-  width: 480px !important;
+  width: $token-input-width !important;
 }
 
 ul.token-input-list-facebook {
   line-height: $token-input-line-height;
   font-size: $token-input-font-size;
-  width: 480px !important;
+  width: $token-input-width !important;
 }
 
 ul.token-input-list-facebook li {
@@ -37,6 +38,7 @@ div.token-input-dropdown-facebook p {
   line-height: $token-input-line-height;
   font-size: $token-input-font-size;
   height: auto;
+  width: 50px !important;
 }
 #group {
   h1 { margin-bottom: 0px; }
@@ -91,13 +93,22 @@ ul.membership-row li {
 
 ul.membership-row li.membership-admin-functions {
   font-size: 12px;
-  width: 120px;
+  float:right;
 }
 
 ul.membership-row li.name-label {
-  width: 125px;
+  width: 180px;
 }
 
 ul.membership-row li.tags-label {
   margin-right: 10px;
+  font-size: 12px;
+}
+
+#users-list {
+  width: 319px;
+}
+
+.unstyled.membership-row.tags {
+  float: left;
 }
