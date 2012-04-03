@@ -1,20 +1,20 @@
-- if @motion.votes.size > 0
+- if motion.votes.size > 0
   %table.zebra-striped
     %th
     %th user
     %th statement
     %th
-    -@motion.votes.each do |vote|
-      %tr{:class => vote.user.group_tags_from(@motion.group).join(" ")}
+    -motion.votes.each do |vote|
+      %tr{:class => vote.user.group_tags_from(motion.group).join(" ")}
         %td=render partial: "display_icons", locals: {position: vote.position}
         %td=vote.user_name
         %td.vote-statement=vote.statement
         - if vote.can_be_edited_by?(current_user)
           %td
-            -if @motion.phase == 'voting'
-              =link_to "edit", edit_motion_vote_path(@motion, vote)
+            -if motion.phase == 'voting'
+              =link_to "edit", edit_motion_vote_path(motion, vote)
               |
-              =link_to "delete", motion_vote_path(@motion, vote), method: :delete,
+              =link_to "delete", motion_vote_path(motion, vote), method: :delete,
                 confirm: "Are you sure you want to delete your vote?"
         - else
           %td
