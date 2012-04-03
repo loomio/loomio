@@ -7,7 +7,7 @@ $ ->
   if $("#group").length > 0
     addUserTag = (group_id, tag_name, user_name) =>
       $.ajax("/groups/#{group_id}/user/#{user_name}/add_user_tag/#{tag_name}")
-    
+
     deleteUserTag = (group_id, tag_name, user_name) =>
       $.ajax("/groups/#{group_id}/user/#{user_name}/delete_user_tag/#{tag_name}")
 
@@ -19,7 +19,7 @@ $ ->
     )
 
     # For each user in the list, display their current group tags
-    $("#users-list").children().each (index, user_list_element) => 
+    $("#users-list").children().each (index, user_list_element) =>
       token_diplay_element = "#user-tags-#{$(user_list_element).attr("id")}"
       group_id = $("#group_id").val()
       available_group_tags = "/groups/#{group_id}/group_tags.json"

@@ -11,7 +11,7 @@
         %h3=link_to @motion.group.name, group_path(@motion.group), title: "group"
     .span7
       #admin-buttons
-        =render partial: "facilitator_options"
+        =render "facilitator_options", motion: @motion
   %h5
     #discussion
       - if @motion.discussion_url.present?
@@ -38,10 +38,10 @@
   .row
     .span9
       #votes-table
-        =render partial: "votes_table"
+        =render "votes_table", motion: @motion
     .span7
       #stats
-        =render partial: "votes_filters", locals: {clicked_tag: @clicked_tag}
+        =render "votes_filters", clicked_tag: @clicked_tag, motion: @motion
         #graph.pie
       #votes
         -if @motion.voting?

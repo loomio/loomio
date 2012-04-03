@@ -1,4 +1,7 @@
 class GroupsController < GroupBaseController
+  # TODO Jon: some of the code for tagging in this controller can probably
+  # be moved into the model
+
   load_and_authorize_resource except: :show
   before_filter :check_group_read_permissions, only: :show
 
@@ -26,53 +29,38 @@ class GroupsController < GroupBaseController
   end
 
   def add_user_tag
-    @group = Group.find(params[:id])
-    @user = User.find(params[:user_id])
-    @new_tags = @user.group_tags_from(@group).join(",") + "," + params[:tag]
-    @group.tag @user, with: @new_tags, on: :group_tags
+    group = Group.find(params[:id])
+    user = User.find(params[:user_id])
+    new_tags = user.group_tags_from(group).join(",") + "," + params[:tag]
+    group.set_user_tags user, new_tags
     #TODO AC: tests fail without this redirect, open to suggestions here
     redirect_to groups_url
   end
 
   def delete_user_tag
-    @group = Group.find(params[:id])
-    @user = User.find(params[:user_id])
-    @new_tags = @user.group_tags_from(@group).join(",").gsub(params[:tag], "")
-    @group.tag @user, with: @new_tags, on: :group_tags
+    group = Group.find(params[:id])
+    user = User.find(params[:user_id])
+    group.delete_user_tag user, params[:tag]
     #TODO AC: tests fail without this redirect, open to suggestions here
     redirect_to groups_url
   end
 
-  def tag_user
-    @group = Group.find(params[:id])
-    @users = @group.users
-
-    if request.post?
-      @user = @group.users.find(params[:user])
-      @group.tag @user, with: params[:tag], on: :group_tags
-    end
-
-    @tags = @group.owned_tags
-  end
-
   def group_tags
-    @group = Group.find(params[:id])
-    @tags = @group.owned_tags.where("tags.name LIKE ?", "%#{params[:q]}%")
+    group = Group.find(params[:id])
+    tags = group.owned_tags.where("tags.name LIKE ?", "%#{params[:q]}%")
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @tags.collect {|tag| {:id => tag.id, :name => tag.name } } }
+      format.json { render json: tags.collect {|tag| {:id => tag.id, :name => tag.name } } }
     end
   end
 
   def user_group_tags
-    @group = Group.find(params[:id])
-    @user = User.find(params[:user_id])
-    @tags = @user.owner_tags_on(@group, :group_tags)
+    group = Group.find params[:id]
+    user = User.find params[:user_id]
+    tags = group.get_user_tags user
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @tags.collect {|tag| {:id => tag.id, :name => tag.name } } }
+      format.json { render json: tags.collect {|tag| {:id => tag.id, :name => tag.name } } }
     end
   end
 
