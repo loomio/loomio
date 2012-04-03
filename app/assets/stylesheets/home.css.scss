@@ -1,10 +1,19 @@
 h2 { padding-bottom: 5px; }
+h5 { font-size: 14px; line-height: 18px; font-weight: normal; color: #BBB; } /* other details */
 h8 { font-size: 20px; }
 h7 { font-size: 16px; line-height: 20px; display: block; }
+
+#percentage-to-vote{ padding-bottom: 10px; }
+
+#closed-motion-list{
+  margin-top: 40px;
+  padding-bottom: 50px;
+}
+
 .side-pannel{
   display: block;
   margin-left: 20px;
-  /*background-color: white;*/
+  #motion-list{ padding-bottom: 10px }
   /*[>border-radius: 6px;<]*/
   /*[>border-color: grey; <]*/
   /*[>.border{ border: solid 1px #ccc }<]*/
