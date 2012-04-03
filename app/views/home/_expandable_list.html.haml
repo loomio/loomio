@@ -1,0 +1,45 @@
+.span{class: class_name, :id =>"motion_#{motion.id}"}
+  =render partial: "motions/motion_list", locals: {motion: motion}
+  .row{id: "expand_#{motion.id}"}
+    .expanded-area
+      - unless motion.closed?
+        .action-links
+          =link_to 'discuss', motion.discussion_url, class: 'no-toggle'
+          |
+          =link_to 'view', motion, class: 'no-toggle'
+          - if motion.user_has_voted?(current_user)
+            |
+            =link_to 'change vote', edit_motion_vote_path(motion, current_user.motion_vote(motion)), class: 'no-toggle'
+      .dashboard-motion-description
+        =motion.description
+      .row
+        .span4
+          .pie{ :id => "vgraph_#{motion.id}" }
+          .graph_tooltip{ :id => "tooltip_#{motion.id}" }
+          .jqplot-table-legend{ :style => 'grey' }
+      .row
+        .span6
+          %h5#percentage-to-vote
+            - group_size = motion.group_count
+            - still_to_vote = motion.no_vote_count
+            - percent_voted = (100-(still_to_vote/group_size.to_f * 100)).to_i
+            - if motion.closed?
+              = "#{percent_voted}% of memebers voted on this motion (#{group_size - still_to_vote}/#{group_size})"
+            - else
+              = "#{percent_voted}% of members have voted on this motion (#{group_size - still_to_vote}/#{group_size})"
+      - unless motion.user_has_voted?(current_user) || motion.closed?
+        .row
+          .span3
+            #vote-buttons
+              =link_to image_tag("hand-yes.png", height:'20', width:'20', title:'yes', alt:'yes image'), '#',
+                class: 'sml-vote-btn no-toggle', onclick: "$('#vote_position_#{motion.id}').val('yes'); $('#new_vote_#{motion.id}').submit();"
+              =link_to image_tag("hand-abstain.png", height:'20', width:'20', title:'abstain', alt:'abstain image'), '#',
+                class: 'sml-vote-btn no-toggle', onclick: "$('#vote_position_#{motion.id}').val('abstain'); $('#new_vote_#{motion.id}').submit();"
+              =link_to image_tag("hand-no.png", height:'20', width:'20', title:'no', alt:'no image'), '#',
+                class: 'sml-vote-btn no-toggle', onclick: "$('#vote_position_#{motion.id}').val('no'); $('#new_vote_#{motion.id}').submit();"
+              =link_to image_tag("hand-block.png", height:'20', width:'20',title:'block', alt:'block image'), '#',
+                class: 'sml-vote-btn no-toggle', onclick: "$('#vote_position_#{motion.id}').val('block'); $('#new_vote_#{motion.id}').submit();"
+          .span3#vote-form
+            =semantic_form_for([motion, Vote.new], html:{class: 'form-stacked no-toggle', id: "new_vote_#{motion.id}"}) do |f|
+              =f.input :statement, label: false, placeholder: "Reason for your decision"
+              =f.input :position, as: :hidden, input_html: {id: "vote_position_#{motion.id}"}

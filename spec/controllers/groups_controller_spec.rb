@@ -165,10 +165,6 @@ describe GroupsController do
       end
 
     end
-    it "shows all groups" do
-      get :index
-      response.should be_success
-    end
 
     it "shows a new group form" do
       get :new
