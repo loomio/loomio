@@ -33,7 +33,8 @@ $ ->
       
       # Prepopulate token inputs with tags
       $($("#user-existing-tags-#{$(user_list_element).attr("id")}").val().split(",")).each (index, element) =>
-        token_input_object.tokenInput("add", {id: element, name: element})
+        if (element != "")
+          token_input_object.tokenInput("add", {id: element, name: element})
     
     if window.location.href.split("#")[1] == "users"
       $(".tabs a:last").click()
