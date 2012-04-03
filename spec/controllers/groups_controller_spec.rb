@@ -5,33 +5,63 @@ describe GroupsController do
   let(:group) { stub_model(Group) }
   let(:user)  { stub_model(User) }
 
-  before :each do
-    pending "Reworking spec to use mocks"
-    #Group.stub(:find).with(group.id.to_s).and_return(group)
-    #group.stub(:can_be_edited_by?).with(user).and_return(true)
-    #User.stub(:find).with(user.id.to_s).and_return(user)
-  end
-
-  context "signed in user, admin of a group" do
+  context "signed in user" do
     before :each do
-      pending "Reworking spec to use mocks"
-      #group.stub(:has_admin_user?).with(user).and_return(true)
-      #sign_in user
+      User.stub(:find).with(user.id.to_s).and_return(user)
+      sign_in user
+      Group.stub(:find).with(group.id.to_s).and_return(group)
     end
 
-    it "can add a user tag" do
-      pending "Reworking spec to use mocks"
-      tag_attrs = "testytag"
-      new_tags = "testytag,testy"
+    context "admin of a group" do
+      before :each do
+        group.stub(:can_be_edited_by?).with(user).and_return(true)
+      end
 
-      user.should_receive(:group_tags_from).with(group).and_return("")
-      #group.should_receive(:tag).with(user, with: new_tags, on: :group_tags)
+      it "can add a user tag" do
+        old_tags = ["testytag", "testy"]
+        new_tag = "newww"
+        new_tags = "testytag,testy,newww"
 
-      get :add_user_tag, id: group.id, user_id: user.id, tag: tag_attrs
+        user.should_receive(:group_tags_from).with(group).and_return(old_tags)
+        group.should_receive(:tag).with user, with: new_tags, on: :group_tags
 
-      response.should be_redirect
+        post :add_user_tag, id: group.id, user_id: user.id, tag: new_tag
+      end
+
+      it "can get all group tags" do
+        group.stub_chain(:owned_tags, :where)
+          .and_return([stub(id: 1, name: "testytag")])
+
+        get :group_tags, format: :json, id: group.id, q: "test"
+
+        response.body.should == [{ id: 1, name: "testytag" }].to_json
+      end
+
+      it "get user group tags" do
+        group.should_receive(:get_user_tags).with(user)
+          .and_return([stub(id: 1, name: "testy")])
+
+        get :user_group_tags, format: :json, id: group.id, user_id: user.id
+
+        response.body.should == [{ id: 1, name: "testy" }].to_json
+      end
+
+      it "can add a user tag and doesn't explode when being called 3 times" do
+        pending "refactor test to use stubs"
+        post :add_user_tag, id: group.id, user_id: user.id, tag: "testytag"
+        post :add_user_tag, id: group.id, user_id: user.id, tag: "testytag2"
+        post :add_user_tag, id: group.id, user_id: user.id, tag: "testytag3"
+        user.group_tags.find_by_name("testytag").name.should include("testytag")
+        user.group_tags.find_by_name("testytag2").name.should include("testytag2")
+        user.group_tags.find_by_name("testytag3").name.should include("testytag3")
+      end
+
+      it "can delete a user tag" do
+        group.should_receive(:delete_user_tag).with(user, "testytag")
+
+        post :delete_user_tag, id: group.id, tag: "testytag", user_id: user.id
+      end
     end
-
   end
 
   context "logged in user" do
@@ -64,38 +94,6 @@ describe GroupsController do
       context "a group admin" do
         before :each do
           @group.add_admin!(@user)
-        end
-        it "can get all group tags" do
-          pending "Not sure how to handle missing template error.  Will try using mocks and see if error persists."
-          #TODO AC in progress: get group_tags missing template - StackO says to create the view
-          post :add_user_tag, id: @group.id, user_id: @user.id, tag: "testytag"
-          #get :group_tags, id: group.id, q: "test"
-          #response.should include("testytag")
-        end
-        it "get user group tags" do
-          pending "Not sure how to handle missing template error.  Will try using mocks and see if error persists."
-          #TODO AC in progress: get group_tags missing template - StackO says to create the view
-          post :add_user_tag, id: @group.id, user_id: @user.id, tag: "testytag"
-          #get :user_group_tags, id: @group.id, q: "test"
-          #response.should include("testytag")
-        end
-        it "can add a user tag" do
-          post :add_user_tag, id: @group.id, user_id: @user.id, tag: "testytag"
-          @user.group_tags.find_by_name("testytag").name.should include("testytag")
-        end
-        it "can add a user tag and doesn't explode when being called 3 times" do
-          post :add_user_tag, id: @group.id, user_id: @user.id, tag: "testytag"
-          post :add_user_tag, id: @group.id, user_id: @user.id, tag: "testytag2"
-          post :add_user_tag, id: @group.id, user_id: @user.id, tag: "testytag3"
-          @user.group_tags.find_by_name("testytag").name.should include("testytag")
-          @user.group_tags.find_by_name("testytag2").name.should include("testytag2")
-          @user.group_tags.find_by_name("testytag3").name.should include("testytag3")
-        end
-        it "can delete a user tag" do
-          post :add_user_tag, id: @group.id, user_id: @user.id, tag: "testytag"
-          @user.group_tags.first.name.should include("testytag")
-          post :delete_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
-          @user.group_tags.first.should be_nil
         end
         it "can visit the invite a new member page" do
           get :invite_member, id: @group.id
