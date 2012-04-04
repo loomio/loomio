@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
 
   validates_presence_of :name
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
+  validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   after_initialize :set_defaults
 
   has_many :memberships,
@@ -36,6 +37,15 @@ class Group < ActiveRecord::Base
 
   def viewable_by=(value)
     write_attribute(:viewable_by, value.to_s)
+  end
+
+  def members_invitable_by
+    value = read_attribute(:members_invitable_by)
+    value.to_sym if value.present?
+  end
+
+  def members_invitable_by=(value)
+    write_attribute(:members_invitable_by, value.to_s)
   end
 
 
@@ -86,7 +96,7 @@ class Group < ActiveRecord::Base
   end
 
   def can_be_edited_by?(user)
-    admins.include? user
+    has_admin_user? user
   end
 
   def has_admin_user?(user)
@@ -96,6 +106,14 @@ class Group < ActiveRecord::Base
   def can_be_viewed_by?(user)
     return true if viewable_by == :everyone
     return true if (viewable_by == :members && users.include?(user))
+  end
+
+  def can_invite_members?(user)
+    if members_invitable_by == :members
+      return true if users.include?(user)
+    elsif members_invitable_by == :admins
+      return true if has_admin_user?(user)
+    end
   end
 
 
@@ -120,5 +138,6 @@ class Group < ActiveRecord::Base
 
     def set_defaults
       self.viewable_by ||= :everyone
+      self.members_invitable_by ||= :members
     end
 end
