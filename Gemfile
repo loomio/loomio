@@ -48,7 +48,6 @@ group :development do
 end
 
 group :test do
-  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'cane', :git => 'git://github.com/square/cane.git'
   gem 'simplecov', :require => false
   gem 'flay', :require => false
