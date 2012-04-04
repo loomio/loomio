@@ -28,7 +28,7 @@ describe "Motions" do
       end
     end
 
-    it "cannot view a motion if they don't belong to it's (private) group" do
+    it "cannot view a motion if they don't belong to its (private) group" do
       # Machinist seems to cause problems when we call .make! in here
       # So we have to call .make and then .save
       g = Group.make(viewable_by: :members)

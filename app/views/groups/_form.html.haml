@@ -6,6 +6,9 @@
       .privacy-settings
         %h3 Privacy Settings
         =f.input :viewable_by, as: :select, collection: [:everyone, :members],
-          member_label: Proc.new { |option| viewable_by_label(option) },
+          member_label: Proc.new { |option| group_permissions_label(option) },
           label: "Who can see this group?"
+        =f.input :members_invitable_by, as: :select, collection: [:members, :admins],
+          member_label: Proc.new { |option| group_permissions_label(option) },
+          label: "Who can invite members to this group?"
       =f.commit_button

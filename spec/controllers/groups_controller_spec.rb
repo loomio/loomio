@@ -86,6 +86,11 @@ describe GroupsController do
           response.should be_success
         end
       end
+      context "members invitable by members" do
+        context "member invites user" do
+          it "succeeds"
+        end
+      end
     end
     context "group viewable by members" do
       before :each do
@@ -94,6 +99,26 @@ describe GroupsController do
       context "a group admin" do
         before :each do
           @group.add_admin!(@user)
+        end
+        it "can edit the group" do
+          post :update, id: @group.id, group: { name: "New name!" }
+          flash[:notice].should match("Group was successfully updated.")
+          response.should be_redirect
+        end
+        it "can add a user tag" do
+          post :add_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
+          post :add_user_tag, id: @group.id, tag: "testytag2", user_id: @user.id
+          post :add_user_tag, id: @group.id, tag: "testytag3", user_id: @user.id
+          #debugger
+          @user.group_tags.find_by_name("testytag").name.should include("testytag")
+          @user.group_tags.find_by_name("testytag2").name.should include("testytag2")
+          @user.group_tags.find_by_name("testytag3").name.should include("testytag3")
+        end
+        it "can delete a user tag" do
+          post :add_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
+          @user.group_tags.first.name.should include("testytag")
+          post :delete_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
+          @user.group_tags.first.should be_nil
         end
         it "can visit the invite a new member page" do
           get :invite_member, id: @group.id
