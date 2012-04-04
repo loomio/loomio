@@ -1,36 +1,44 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$token-input-line-height: 10px;
+$token-input-font-size: 10px;
+$token-input-width: 278px;
 
 .clear-both {
   clear: both;
   height: 15px;
 }
 
+div.token-input-dropdown-facebook {
+  width: $token-input-width !important;
+}
+
 ul.token-input-list-facebook {
-  width: 490px !important;
-  font-size: 11px;
-  line-height: 15px;
+  line-height: $token-input-line-height;
+  font-size: $token-input-font-size;
+  width: $token-input-width !important;
 }
 
 ul.token-input-list-facebook li {
-  line-height: 15px;
+  line-height: $token-input-line-height;
 }
 
 ul.token-input-list-facebook p {
-  line-height: 15px;
-  font-size: 11px;
+  line-height: $token-input-line-height;
+  font-size: $token-input-font-size;
 }
 
 div.token-input-dropdown-facebook p {
-  line-height: 15px;
-  font-size: 11px;
+  line-height: $token-input-line-height;
+  font-size: $token-input-font-size;
 }
 
 .token-input-input-token-facebook input {
+  line-height: $token-input-line-height;
+  font-size: $token-input-font-size;
   height: auto;
-  line-height: 15px;
-  font-size: 11px;
+  width: 50px !important;
 }
 #group {
   h1 { margin-bottom: 0px; }
@@ -76,3 +84,31 @@ div.token-input-dropdown-facebook p {
   #user-list{ padding-top: 4px;}
 }
 h1 { font-size: 24px; line-height: 36px; }
+
+ul.membership-row li {
+  display: inline;
+  font-size: 14px;
+  float: left;
+}
+
+ul.membership-row li.membership-admin-functions {
+  font-size: 12px;
+  float:right;
+}
+
+ul.membership-row li.name-label {
+  width: 180px;
+}
+
+ul.membership-row li.tags-label {
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+#users-list {
+  width: 319px;
+}
+
+.unstyled.membership-row.tags {
+  float: left;
+}

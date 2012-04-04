@@ -1,8 +1,8 @@
-- if @groups.present?
+- if groups.present?
   %h2 Open
   .row
     .motions-list.span13
-      - @motions.voting.each do |motion|
+      - motions.voting.each do |motion|
         - class_name = "bordered "
         - if motion.user_has_voted?(current_user)
           - class_name += "closed"
@@ -48,7 +48,7 @@
     %h2 Closed
     .row
       .motions-list.span13
-        - @motions.closed.each do |motion|
+        - motions.closed.each do |motion|
           - class_name = "bordered closed"
           .row
             .span13{class: class_name, :id =>"motion_#{motion.id}"}

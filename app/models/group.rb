@@ -24,6 +24,25 @@ class Group < ActiveRecord::Base
 
   acts_as_tagger
 
+
+  #
+  # ACCESSOR METHODS
+  #
+
+  def viewable_by
+    value = read_attribute(:viewable_by)
+    value.to_sym if value.present?
+  end
+
+  def viewable_by=(value)
+    write_attribute(:viewable_by, value.to_s)
+  end
+
+
+  #
+  # MEMBERSHIP METHODS
+  #
+
   def add_request!(user)
     unless requested_users_include?(user) || users.exists?(user)
       membership = memberships.build_for_user(user, access_level: 'request')
@@ -57,6 +76,11 @@ class Group < ActiveRecord::Base
     membership
   end
 
+
+  #
+  # PERMISSION-CHECKS
+  #
+
   def requested_users_include?(user)
     membership_requests.find_by_user_id(user)
   end
@@ -74,16 +98,26 @@ class Group < ActiveRecord::Base
     return true if (viewable_by == :members && users.include?(user))
   end
 
-  def viewable_by
-    value = read_attribute(:viewable_by)
-    value.to_sym if value.present?
+
+  #
+  # TAG-RELATED METHODS
+  #
+
+  def get_user_tags(user)
+    user.owner_tags_on(self, :group_tags)
   end
 
-  def viewable_by=(value)
-    write_attribute(:viewable_by, value.to_s)
+  def set_user_tags(user, tags)
+    tag user, with: tags, on: :group_tags
+  end
+
+  def delete_user_tag(user, tag)
+    new_tags = user.group_tags_from(self).join(",").gsub(tag, "")
+    set_user_tags user, new_tags
   end
 
   private
+
     def set_defaults
       self.viewable_by ||= :everyone
     end
