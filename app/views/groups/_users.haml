@@ -3,7 +3,7 @@
   - if membership_request.present?
     = link_to "Membership Requested", membership_request, method: :delete,
       confirm: "Are you sure you wish to withdraw your membership request from this group?",
-      class: "btn", id: "membership-requested"
+      class: "btn small", id: "membership-requested"
   - else
     =semantic_form_for(Membership.new) do |f|
       %input{name: "membership[group_id]", type: :hidden, value: group.id}
