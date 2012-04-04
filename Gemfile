@@ -37,6 +37,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'guard'
   gem 'guard-spork'
   gem 'guard-rspec'
@@ -48,6 +49,7 @@ group :development do
 end
 
 group :test do
+  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'cane', :git => 'git://github.com/square/cane.git'
   gem 'simplecov', :require => false
   gem 'flay', :require => false

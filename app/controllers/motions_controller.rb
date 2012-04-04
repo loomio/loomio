@@ -49,6 +49,25 @@ class MotionsController < GroupBaseController
     redirect_to motion_path(@motion)
   end
 
+  def edit
+    resource
+    if @motion.can_be_edited_by?(current_user)
+      edit!
+    else
+      flash[:error] = "Only the facilitator or author can edit a motion."
+      redirect_to motion_url(@motion)
+    end
+  end
+
+  def toggle_tag_filter 
+    @motion = Motion.find(params[:id])
+    @active_tags = params[:tags]
+    @clicked_tag = params[:tag]
+    
+    render :partial => "motions/votes_filters", :locals => { clicked_tag: @clicked_tag }, :layout => false, :status => :created
+    #render @motion
+  end
+
   private
 
     def group
