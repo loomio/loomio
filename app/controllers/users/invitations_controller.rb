@@ -3,7 +3,7 @@ class Users::InvitationsController < Devise::InvitationsController
     # TODO: Make this big method less ugly (maybe move some of the code
     # over to the User model?)
     group = Group.find params[:user].delete(:group_id)
-    if group.has_admin_user?(current_user)
+    if group.can_invite_members?(current_user)
       email = params[:user][:email]
       existing_user = User.find_by_email(email)
       if existing_user.nil?
@@ -25,7 +25,7 @@ class Users::InvitationsController < Devise::InvitationsController
         redirect_to after_invite_path_for(existing_user)
       end
     else
-      flash[:error] = "Only group admins can invite new members."
+      flash[:error] = "You do not have permission to invite new members."
       redirect_to group_url(group)
     end
   end

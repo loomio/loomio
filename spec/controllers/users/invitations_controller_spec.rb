@@ -18,18 +18,22 @@ describe Users::InvitationsController do
       request.env["devise.mapping"] = Devise.mappings[:user]
     end
 
-    context "non-admin user invites member" do
+    context "user without permission tries to invite member" do
+      before :each do
+        group.stub(:can_invite_members?).with(user).and_return(false)
+      end
+
       it "should display error and redirect" do
         post :create, user: {email: "test@example.com", group_id: group.id}
 
-        flash[:error].should match(/Only group admins can invite/)
+        flash[:error].should match(/You do not have permission/)
         response.should be_redirect
       end
     end
 
     context "admin user" do
       before :each do
-        group.stub(:has_admin_user?).with(user).and_return(true)
+        group.stub(:can_invite_members?).with(user).and_return(true)
       end
 
       context "invites member with blank email address" do
