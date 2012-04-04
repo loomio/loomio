@@ -39,6 +39,15 @@ class Group < ActiveRecord::Base
     write_attribute(:viewable_by, value.to_s)
   end
 
+  def members_invitable_by
+    value = read_attribute(:members_invitable_by)
+    value.to_sym if value.present?
+  end
+
+  def members_invitable_by=(value)
+    write_attribute(:members_invitable_by, value.to_s)
+  end
+
 
   #
   # MEMBERSHIP METHODS
@@ -123,15 +132,6 @@ class Group < ActiveRecord::Base
   def delete_user_tag(user, tag)
     new_tags = user.group_tags_from(self).join(",").gsub(tag, "")
     set_user_tags user, new_tags
-  end
-
-  def members_invitable_by
-    value = read_attribute(:members_invitable_by)
-    value.to_sym if value.present?
-  end
-
-  def members_invitable_by=(value)
-    write_attribute(:members_invitable_by, value.to_s)
   end
 
   private
