@@ -1,9 +1,26 @@
 #group
   .row
-    .span10
-      %h1=@group.name
-      #motions
-        =render partial: 'motions', locals: {group: @group}
+    .span11
+      .row
+        .span6
+          %h2=@group.name
+          %h3 Open
+        .span5#btn-create-motion
+          = link_to "Create a motion",
+            new_motion_path({group_id: @group.id}), :class => 'btn primary'
+      .motions-list
+        - @group.motions.voting.each do |motion|
+          - motion.open_close_motion
+          =render partial: "home/expandable_list", locals: {motion: motion}
+      %h3 Closed
+      .motions-list
+        - @group.motions.closed.each do |motion|
+          =render partial: "home/expandable_list", locals: {motion: motion}
+    .span5#right-panel
+      - if @group.can_be_edited_by? current_user
+        =link_to "Edit Group", edit_group_path(@group), class: "btn small"
+      #users
+        =render :partial => 'users', locals: {group: @group}
     .span6#right-panel
       - if @group.can_be_edited_by? current_user
         =link_to "Edit Group", edit_group_path(@group), class: "btn small"
