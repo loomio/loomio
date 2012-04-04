@@ -11,19 +11,6 @@
         %h3=link_to @motion.group.name, group_path(@motion.group), title: "group"
     .span7
       #admin-buttons
-<<<<<<< HEAD
-        =render "facilitator_options", motion: @motion
-  %h5
-    #discussion
-      - if @motion.discussion_url.present?
-        Discussion -
-        =link_to @motion.discussion_url, @motion.discussion_url, target: "_blank"
-    #other-info
-      Proposed by
-      =@motion.author_email
-      ="#{time_ago_in_words(@motion.created_at)} ago"
-      -if @motion.updated_at != @motion.created_at
-=======
         =render partial: "facilitator_options"
   %h5#discussion
     - if @motion.discussion_url.present?
@@ -32,7 +19,6 @@
     .span
       = "Proposed by #{@motion.author_email}#{time_ago_in_words(@motion.created_at)} ago"
       - if @motion.updated_at != @motion.created_at
->>>>>>> remove groups link from top-bar
         ="(edited: #{time_ago_in_words(@motion.updated_at)} ago)"
     .span
       - if @motion.has_closing_date?
@@ -45,13 +31,8 @@
           .relativetime= @motion.close_date
   .row
     .span9
-<<<<<<< HEAD
-      #votes-table
-        =render "votes_table", motion: @motion
-=======
       #description= simple_format(@motion.description)
       #votes-table= render partial: "votes_table"
->>>>>>> remove groups link from top-bar
     .span7
       #stats
         =render "votes_filters", clicked_tag: @clicked_tag, motion: @motion

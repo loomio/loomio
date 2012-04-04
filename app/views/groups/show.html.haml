@@ -6,8 +6,10 @@
           %h2=@group.name
           %h3 Open
         .span5#btn-create-motion
+          - if @group.can_be_edited_by? current_user
+            =link_to "Edit Group", edit_group_path(@group), class: "btn small"
           = link_to "Create a motion",
-            new_motion_path({group_id: @group.id}), :class => 'btn primary'
+            new_motion_path({group_id: @group.id}), :class => 'btn primary small'
       .motions-list
         - @group.motions.voting.each do |motion|
           - motion.open_close_motion
@@ -17,12 +19,5 @@
         - @group.motions.closed.each do |motion|
           =render partial: "home/expandable_list", locals: {motion: motion}
     .span5#right-panel
-      - if @group.can_be_edited_by? current_user
-        =link_to "Edit Group", edit_group_path(@group), class: "btn small"
-      #users
-        =render :partial => 'users', locals: {group: @group}
-    .span6#right-panel
-      - if @group.can_be_edited_by? current_user
-        =link_to "Edit Group", edit_group_path(@group), class: "btn small"
-      #users
-        =render :partial => 'users', locals: {group: @group}
+      %h2 Users
+      =render :partial => 'users', locals: {group: @group}
