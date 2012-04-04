@@ -1,6 +1,0 @@
-%ul.unstyled
-  - group.motions.each do |motion|
-    %li= link_to motion.name, motion
-- if group.users_include? current_user
-  = link_to "Create a motion",
-    new_motion_path({group_id: group.id}), :class => 'btn primary'
