@@ -1,31 +1,22 @@
 - if @groups.present?
   .row
     .span11
-      %h2 Open
+      %h2 All motions
+      %h3 Open
       .motions-list
         - @motions.voting.each do |motion|
-          - class_name = "bordered "
-          - if motion.user_has_voted?(current_user)
-            - class_name += "closed"
-          - else
-            - class_name += "voting"
           - motion.open_close_motion
-          =render partial: "expandable_list", locals: {class_name: class_name, motion: motion}
-      #closed-motion-list
-        .row
-          .span11
-            %h2 Closed
-            .motions-list.span11
-              - @motions.closed.each do |motion|
-                - class_name = "bordered closed"
-                =render partial: "expandable_list", locals: {class_name: class_name, motion: motion}
+          =render partial: "expandable_list", locals: {motion: motion}
+      %h3 Closed
+      .motions-list
+        - @motions.closed.each do |motion|
+          =render partial: "expandable_list", locals: {motion: motion}
     .span5
       .side-pannel
-        #motion-list
-          %h2 Groups
+        %h2 Groups
+        #group-list
           - current_user.groups.each do |group|
-            %h7
-              =link_to group.name, group_path(group)
+            %h7= link_to group.name, group_path(group)
         =link_to "Create new group", new_group_path, :class => 'btn primary'
 - else
   =link_to 'Create a group', new_group_path
