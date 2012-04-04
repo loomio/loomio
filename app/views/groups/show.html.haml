@@ -19,5 +19,5 @@
         - @group.motions.closed.each do |motion|
           =render partial: "home/expandable_list", locals: {motion: motion}
     .span5#right-panel
-      %h2 Users
+      %h2 Members
       =render :partial => 'users', locals: {group: @group}

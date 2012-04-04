@@ -69,8 +69,13 @@ div.token-input-dropdown-facebook p {
   }
   #user_email {
     width: 270px;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
   }
+}
+
+#btn-invite {
+  padding-top: 5px;
+  text-align: right;
 }
 
 #user-form{
@@ -85,12 +90,7 @@ ul.membership-row li {
 }
 
 ul.membership-row li.membership-admin-functions {
-  font-size: 12px;
   float:right;
-}
-
-ul.membership-row li.name-label {
-  width: 180px;
 }
 
 ul.membership-row li.tags-label {
@@ -98,13 +98,21 @@ ul.membership-row li.tags-label {
   font-size: 12px;
 }
 
+#request-list {
+  border-top: 1px solid lightgrey;
+  margin-top: 8px;
+}
+
 #users-list {
-  width: 319px;
+  padding-top: 5px;
+  width: 270px;
+  border-top: 1px solid lightgrey;
+  margin-top: 8px;
 }
 
 .unstyled.membership-row.tags {
   float: left;
 }
-
+#member-requests{ margin-top: 5px; display: inline; }
+.links{ display: inline; float: right; padding-top: 6px; }
 #btn-create-motion{ text-align: right; }
-h7 { font-size: 14px; line-height: 20px; }
