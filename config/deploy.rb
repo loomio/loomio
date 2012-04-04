@@ -20,6 +20,12 @@ task :staging do
 end
 
 namespace :deploy do
+  [:stop, :start, :restart].each do |task_name|
+    task task_name, :roles => [:app] do
+      run "cd #{current_path} && touch tmp/restart.txt"
+    end
+  end
+
   task :symlink_configs do
     run %( cd #{release_path} &&
       ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml &&
