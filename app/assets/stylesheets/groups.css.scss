@@ -18,15 +18,22 @@ ul.token-input-list-facebook {
   line-height: $token-input-line-height;
   font-size: $token-input-font-size;
   width: $token-input-width !important;
+  border-color: lightgrey;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  margin-top: -2px;
 }
 
 ul.token-input-list-facebook li {
-  line-height: $token-input-line-height;
+  line-height: 9px;
+  border-color: grey;
 }
 
 ul.token-input-list-facebook p {
   line-height: $token-input-line-height;
-  font-size: $token-input-font-size;
+  font-size: 9px;
+  color: grey;
 }
 
 div.token-input-dropdown-facebook p {
@@ -41,7 +48,6 @@ div.token-input-dropdown-facebook p {
   width: 50px !important;
 }
 #group {
-  h1 { margin-bottom: 0px; }
   .btn.small { font-size: 12px }
   #right-panel {
     #membership-requested { width: 200px; }
@@ -69,33 +75,32 @@ div.token-input-dropdown-facebook p {
   }
   #user_email {
     width: 270px;
-    /*margin-top: 10px;*/
   }
 }
 
 #btn-invite {
-  padding-top: 5px;
+  margin-top: -4px;
   text-align: right;
 }
 
 #user-form{
   #member-email-input { padding-top: 10px; }
-  #user-list{ padding-top: 4px;}
+  #user-list{
+    padding-top: 4px;
+  }
 }
 
 ul.membership-row li {
-  display: inline;
+  display: block;
   font-size: 14px;
   float: left;
 }
 
-ul.membership-row li.membership-admin-functions {
-  float:right;
+ul.membership-row li.name-label {
 }
 
-ul.membership-row li.tags-label {
-  margin-right: 10px;
-  font-size: 12px;
+ul.membership-row li.membership-admin-functions {
+  float:right;
 }
 
 #request-list {
@@ -104,15 +109,33 @@ ul.membership-row li.tags-label {
 }
 
 #users-list {
-  padding-top: 5px;
+  padding-top: 20px;
   width: 270px;
+  border-top: 1px solid lightgrey;
+  margin-top: 10px;
+}
+#user-row{ margin-top: -10px; }
+#group-list {
   border-top: 1px solid lightgrey;
   margin-top: 8px;
 }
-
+#uneditable-user { margin-top: 8px; }
+#uneditable-tag-list { margin-top: -5px; }
+.uneditable-tag {
+  border: 1px solid grey;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  font-size: 10px;
+  padding: 2px;
+  line-height: 9px;
+  background-color: whitesmoke;
+  display: inline;
+  margin-right: 3px;
+}
 .unstyled.membership-row.tags {
   float: left;
 }
-#member-requests{ margin-top: 5px; display: inline; }
 .links{ display: inline; float: right; padding-top: 6px; }
+#member-requests{ margin-top: 5px; display: inline; }
 #btn-create-motion{ text-align: right; }

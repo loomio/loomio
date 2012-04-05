@@ -1,7 +1,7 @@
 - if @groups.present?
   .row
     .span11
-      %h2 All motions
+      %h2 All groups
       %h3 Open
       .motions-list
         - @motions.voting.each do |motion|
@@ -14,6 +14,7 @@
     .span5
       .side-pannel
         %h2 Groups
+        %h3 Current
         #group-list
           - current_user.groups.each do |group|
             %h4= link_to group.name, group_path(group)
