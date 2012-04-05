@@ -13,7 +13,7 @@
         %h4 Details
       =f.input :description, label: false
       #commit
-        =f.commit_button
+        =f.commit_button "Create motion", button_html: { class: "btn primary" }
       =f.input :close_date, as: :hidden
       =f.input :phase, as: :hidden, label: false, value: "voting"
       =f.input :facilitator_id, as: :hidden, value: current_user.id, label: false

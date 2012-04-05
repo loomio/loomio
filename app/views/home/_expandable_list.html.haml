@@ -23,7 +23,7 @@
           .jqplot-table-legend{ :style => 'grey' }
       .row
         .span6
-          %h5#percentage-to-vote
+          %h7#percentage-to-vote
             - group_size = motion.group_count
             - still_to_vote = motion.no_vote_count
             - percent_voted = (100-(still_to_vote/group_size.to_f * 100)).to_i

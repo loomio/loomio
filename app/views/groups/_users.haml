@@ -8,18 +8,19 @@
     =semantic_form_for(Membership.new) do |f|
       %input{name: "membership[group_id]", type: :hidden, value: group.id}
       =f.commit_button "Request membership", button_html: { class: "btn primary" }
-<<<<<<< HEAD
-- if group.can_invite_members? current_user
-  %h3 Add member
-=======
 - if current_user.is_group_admin?(group)
->>>>>>> format users on group page
   = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
+    %h2.row
+      .span2
+        Members
+      .span3
+        #btn-invite= f.submit "Invite new", class: "btn primary small"
     = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id}
     = f.input :email, placeholder: "Email address", label: false
-    #btn-invite= f.submit "Invite New", class: "btn primary small"
-%input#group_id{ type: "hidden", value: group.id }
-- if group.membership_requests.present? && group.can_invite_members?(current_user)
+    %input#group_id{ type: "hidden", value: group.id }
+- else
+  %h2 Members
+- if group.membership_requests.present? && group.users_include?(current_user)
   #user-requests
     %h3 Requests
     %ul.unstyled{:id => "request-list"}
