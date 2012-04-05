@@ -109,18 +109,18 @@ ul.membership-row li.membership-admin-functions {
 }
 
 #users-list {
-  padding-top: 20px;
+  padding-top: 8px;
   width: 270px;
   border-top: 1px solid lightgrey;
   margin-top: 10px;
 }
-#user-row{ margin-top: -10px; }
+#user-row{ margin-top: 0px; }
 #group-list {
   border-top: 1px solid lightgrey;
   margin-top: 8px;
 }
-#uneditable-user { margin-top: 8px; }
-#uneditable-tag-list { margin-top: -5px; }
+#uneditable-user { display: inline; }
+#uneditable-tag-list { display: inline; }
 .uneditable-tag {
   border: 1px solid grey;
   border-radius: 5px;
@@ -131,8 +131,8 @@ ul.membership-row li.membership-admin-functions {
   line-height: 9px;
   background-color: whitesmoke;
   display: inline;
-  margin-right: 3px;
-}
+  margin-left: 3px;
+  }
 .unstyled.membership-row.tags {
   float: left;
 }
