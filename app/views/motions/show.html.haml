@@ -2,37 +2,35 @@
   .row
     .span9
       %h2
-        =@motion.name
+        = @motion.name
         - if @motion.voting?
           =image_tag("phase-voting.png", height:'20', width:'60', alt:'voting phase image')
         - if @motion.closed?
           =image_tag("phase-closed.png", height:'20', width:'60', alt:'voting phase image')
-      .span
-        %h3=link_to @motion.group.name, group_path(@motion.group), title: "group"
-    .span7
-      #admin-buttons
-        =render partial: "facilitator_options", locals: {motion: @motion}
-  %h5#discussion
-    - if @motion.discussion_url.present?
-      Discussion -
-      =link_to @motion.discussion_url, @motion.discussion_url, target: "_blank"
-    .span
-      = "Proposed by #{@motion.author_email}#{time_ago_in_words(@motion.created_at)} ago"
-      - if @motion.updated_at != @motion.created_at
-        ="(edited: #{time_ago_in_words(@motion.updated_at)} ago)"
-    .span
-      - if @motion.has_closing_date?
-        No close date
-      - else
-        - if @motion.voting?
-          = "Closing in #{distance_of_time_in_words(Time.now, @motion.close_date, false)}"
-        - else
-          Closed on
-          .relativetime= @motion.close_date
+      %h3= link_to @motion.group.name, group_path(@motion.group), title: "group"
+    .span7#admin-buttons
+      =render partial: "facilitator_options", locals: {motion: @motion}
   .row
     .span9
-      #description= simple_format(@motion.description)
-      #votes-table= render partial: "votes_table", locals: { motion: @motion }
+      %h5#discussion
+        - if @motion.discussion_url.present?
+          Discussion -
+          =link_to @motion.discussion_url, @motion.discussion_url, target: "_blank"
+        .span
+          = "Proposed by #{@motion.author_email}#{time_ago_in_words(@motion.created_at)} ago"
+          - if @motion.updated_at != @motion.created_at
+            ="(edited: #{time_ago_in_words(@motion.updated_at)} ago)"
+        .span
+          - if @motion.has_closing_date?
+            No close date
+          - else
+            - if @motion.voting?
+              = "Closing in #{distance_of_time_in_words(Time.now, @motion.close_date, false)}"
+            - else
+              Closed on
+              .relativetime= @motion.close_date
+          #description= simple_format(@motion.description)
+          #votes-table= render partial: "votes_table", locals: { motion: @motion }
     .span7
       #stats
         =render "votes_filters", clicked_tag: @clicked_tag, motion: @motion
