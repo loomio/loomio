@@ -7,6 +7,7 @@ development:
   adapter: mysql2
   database: tautoko_development
   username: root
+  password: root
   pool: 5
   timeout: 5000
 
@@ -16,11 +17,7 @@ development:
 test:
   adapter: mysql2
   database: tautoko_test
-  pool: 5
-  timeout: 5000
-
-production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  username: root
+  password: root
   pool: 5
   timeout: 5000
