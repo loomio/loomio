@@ -1,10 +1,11 @@
 #group
-  .row
+  .row.main-header
     .span11
       .row
         .span6
           %h2=@group.name
-          %h3 Open
+          %h3.sub-header
+            Open
         .span5#btn-create-motion
           - if @group.can_be_edited_by? current_user
             =link_to "Edit group", edit_group_path(@group), class: "btn small"
