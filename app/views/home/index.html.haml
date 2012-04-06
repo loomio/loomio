@@ -1,6 +1,4 @@
--if user_signed_in?
-  =render partial: 'home/logged_in_dash',
-    locals: { motions: @motions, groups: @groups }
--else
-  .container
-    %h1 The Public Homepage
+- if user_signed_in?
+  = render 'home/logged_in_dash', motions: @motions, groups: @groups
+- else
+  = render 'public_homepage'
