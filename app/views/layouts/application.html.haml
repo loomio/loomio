@@ -8,7 +8,9 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = render :partial => 'layouts/header'
+    = render 'header'
     .container
-      = render :partial => 'layouts/flash_messages', :locals => {:flash => flash}
+      = render 'layouts/flash_messages', :flash => flash
       = yield
+    -#- else
+      -#= render 'home/public_homepage'
