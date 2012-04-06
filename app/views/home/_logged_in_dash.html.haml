@@ -1,8 +1,9 @@
 - if @groups.present?
-  .row
+  .row.main-header
     .span11
       %h2 All groups
-      %h3 Open
+      %h3.sub-header
+        Open
       .motions-list
         - @motions.voting.each do |motion|
           - motion.open_close_motion
@@ -14,7 +15,8 @@
     .span5
       .side-pannel
         %h2 Groups
-        %h3 Current
+        %h3.sub-header
+          Current
         #group-list
           - current_user.groups.each do |group|
             %h4= link_to group.name, group_path(group)
