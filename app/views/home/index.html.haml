@@ -1,4 +1,4 @@
--if @user = current_user
+-if user_signed_in?
   =render partial: 'home/logged_in_dash',
     locals: { motions: @motions, groups: @groups }
 -else

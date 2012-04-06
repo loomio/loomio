@@ -8,7 +8,65 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = render :partial => 'layouts/header'
-    .container
-      = render :partial => 'layouts/flash_messages', :locals => {:flash => flash}
-      = yield
+    - if user_signed_in?
+      = render :partial => 'layouts/header'
+      .container
+        = render :partial => 'layouts/flash_messages', :locals => {:flash => flash}
+        = yield
+    - else
+      .container
+        .content
+          .row
+            = image_tag 'roughlogo.jpg'
+            %hr/
+            .span-two-thirds
+              %p
+                %strong What-io?
+              %p Loomio is a free open-source web application that helps groups make better decisions together.
+              %hr/
+              %p
+                %strong Why?
+              %p
+                Right now, the world is suffering because groups of humans are making bad decisions.
+                Decision making processes are failing globally and locally.
+                The right tool will help groups, big and small, achieve better outcomes.
+              %p
+                Most groups use one of two basic models to make decisions: top-down or bottom-up.
+                Top-down decision making gets things done quickly. There's a chain of command, so once a decision is made it can be implemented right away.
+                But this can lead to people feeling alienated from the decision-making process, and leave good ideas ignored.
+              %p
+                In bottom-up decision making, everyone has a say. People feel invested in the process, good ideas dont get ignored,
+                marginalised voices are heard, and everyone affected by a decision has input. But bottom-up decision making can be difficult to facilitate.
+                If a group decides everything through face to face discussions, only one person can speak at a time,
+                and people who attend the most meetings or have the loudest voice might end up having more sway.
+                It can be frustratingly time-consuming and inefficient.
+              %hr/
+              %p
+                %strong The best of both worlds.
+              %p
+                By using technology we can enable groups to make decisions in fundamentally new ways.
+                We can avoid the false tradeoff between speed and participation and say yes to both.
+              %p
+                In the age of the internet, we don't all have to be in the same place at the same time to work together.
+                Loomio turns a messy online discussion into a clear, visual picture of how the group feels
+                Everyone can talk at once and all voices are heard, while the group stays focused and concise.
+                Loomio will adapt to any group that needs to make decisions together. From households, to neighbourhoods, from businesses to community groups, and even government.
+                Loomio helps groups move together.
+            .span-one-third
+              %p
+                %strong Get involved
+              %p We want to nurture a vibrant community of passionate people to help us, using the tool itself to make decisions about how it is developed.
+              %p We'll be putting out a call for support very shortly.
+              %p
+                If you want to be kept in the loop, you
+                %a{:href => "mailto:contact@loom.io"} drop us a line
+                or
+              %p
+                %a.alert-message.info{:href => "http://blog.loom.io"} read the blog
+              %hr/
+              %p
+                %small
+                  pre-alpha users, you can
+                  %a{:href => "/users/sign_in"} sign in here
+            %p{:style => "clear:both"}  
+            %hr/
