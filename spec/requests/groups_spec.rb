@@ -115,7 +115,7 @@ describe "Groups" do
         visit group_path(@group)
 
         should have_content("Test Group")
-        should have_content("Users")
+        should have_content("Members")
       end
 
       it "can click on 'Create a motion'" do
