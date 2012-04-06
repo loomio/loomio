@@ -14,28 +14,32 @@ div.motion{
 
 .bordered{ border-top: 1px solid lightgrey; }
 .centered{ text-align: center; }
+.main-header{ margin-top: 15px; }
+.group-header{ margin-top: -10px }
+.sub-header{ margin-top: 10px; }
 
 /*** Show Motions Page ***/
 #motion{
   #admin-buttons{
     margin-top: 20px;
     margin-left: 20px;
-    .btn-mini{font-size: 8px;}
   }
-  #discussion{ padding-top: 10px; }
+  #discussion{ padding-top: 10px; color: grey; }
   #description{
     p{font-size: 1.0em;}
     margin-top: 30px;
+    color: black;
   }
   #votes-table table{
     font-size: 14px;
     .vote-statement{
       max-width: 300px;
+      color: black;
     }
     margin-top: 50px;
     #no-votes-msg{ font-size: 14px; }
   }
-  #graph{ height: 330px; }
+  #graph{ height: 300px; }
   #percentage-to-vote { margin-left: 20px }
   #vote-buttons{
     margin-left: 20px;
@@ -160,11 +164,12 @@ div.motion{
 }
 
 h2 { font-size: 24px; line-height: 30px; padding-bottom: 10px} /* Main Header */
-h3 { font-size: 20px; line-height: 24px; font-weight: normal; color: grey; } /* Group sub header */
+h3 { font-size: 18px; line-height: 24px; font-weight: normal; color: grey; } /* Group sub header */
 h4 { font-size: 16px; line-height: 20px; font-weight: normal; color: #AAA; } /* Item grey */
 h5 { font-size: 14px; line-height: 18px; font-weight: normal; color: #AAA; }
 h6 { font-size: 14px; line-height: 18px; font-weight: normal; color: grey; } /* other details CAPS */
 h7 { font-size: 12px; line-height: 16px; color: grey; }
+
 
 .group-tags .btn {
   font-size: 12px;
