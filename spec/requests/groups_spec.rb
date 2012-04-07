@@ -47,13 +47,12 @@ describe "Groups" do
 
           visit group_path(@group)
 
-          should have_content("User Requests")
+          should have_content("Requests")
         end
+        #it "can see add member section" do
+          #visit group_path(@group)
 
-        it "can see add member section" do
-          visit group_path(@group)
-
-          should have_content("Add member")
+          #should have_content("Add member")
         end
       end
     end
@@ -77,14 +76,14 @@ describe "Groups" do
 
           visit group_path(@group)
 
-          should_not have_content("User Requests")
+          should_not have_content("Requests")
         end
 
-        it "cannot see add member section" do
-          visit group_path(@group)
+        #it "cannot see add member section" do
+          #visit group_path(@group)
 
-          should_not have_content("Add member")
-        end
+          #should_not have_content("Add member")
+        #end
       end
 
       context "members invitable by members" do
@@ -100,14 +99,14 @@ describe "Groups" do
 
           visit group_path(@group)
 
-          should have_content("User Requests")
+          should have_content("Requests")
         end
 
-        it "can see add member section" do
-          visit group_path(@group)
+        #it "can see add member section" do
+          #visit group_path(@group)
 
-          should have_content("Add member")
-        end
+          #should have_content("Add member")
+        #end
 
       end
 
