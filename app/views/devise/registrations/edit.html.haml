@@ -2,17 +2,17 @@
   Edit #{resource_name.to_s.humanize}
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
   = devise_error_messages!
-  %h5.login
+  %h5
     Email
-    .login-input= f.email_field :email
+    .standard-input= f.email_field :email
     Password
     %i (leave blank if you don't want to change it)
-    .login-input= f.password_field :password
+    .standard-input= f.password_field :password
     Password confirmation
-    .login-input= f.password_field :password_confirmation
+    .standard-input= f.password_field :password_confirmation
     Current password
     %i (we need your current password to confirm your changes)
-    .login-input= f.password_field :current_password
+    .standard-input= f.password_field :current_password
     = f.submit "Update", class: "btn primary small"
 %h3 Cancel my account
 %p
