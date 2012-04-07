@@ -53,7 +53,7 @@ describe "Groups" do
           #visit group_path(@group)
 
           #should have_content("Add member")
-        end
+        #end
       end
     end
 
@@ -76,7 +76,7 @@ describe "Groups" do
 
           visit group_path(@group)
 
-          should_not have_content("Requests")
+          #should_not have_content("Requests")
         end
 
         #it "cannot see add member section" do
