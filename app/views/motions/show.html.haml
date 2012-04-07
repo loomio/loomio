@@ -1,17 +1,17 @@
 #motion
   .row.header-space
     %h2.group-title= link_to @motion.group.name, group_path(@motion.group), title: "group"
-    .span9
+    .span8
       %h2.sub-header
       = @motion.name
       - if @motion.voting?
         =image_tag("phase-voting.png", height:'20', width:'60', alt:'voting phase image')
       - if @motion.closed?
         =image_tag("phase-closed.png", height:'20', width:'60', alt:'voting phase image')
-    .span7#admin-buttons
-      =render partial: "facilitator_options", locals: {motion: @motion}
+    .span8#admin-buttons
+      =render "facilitator_options", motion: @motion
   .row
-    .span9
+    .span8
       %h5
         #discussion
           - if @motion.discussion_url.present?
@@ -31,43 +31,50 @@
               Closed on
               .relativetime= @motion.close_date
           %h4#description= simple_format(@motion.description)
-          #votes-table= render partial: "votes_table", locals: { motion: @motion }
-          #still-to-vote
-            - if @motion.group_count > 0
-              - if @motion.closed?
-                %h4 #{@motion.group_count} users did not vote
-              - else
-                %h4 #{@motion.group_count} users yet to vote
-              - @motion.group_members.each do |user|
-                .user-row
-                  - if !@motion.user_has_voted?(user)
-                    = user.name
-    .span7
-      #stats
-        =render "votes_filters", clicked_tag: @clicked_tag, motion: @motion
-        #graph.pie
-        %h5#percentage-to-vote
-          - group_size = @motion.group_count
-          - percent_voted = (100-(@motion.no_vote_count/group_size.to_f * 100)).to_i
-          - if @motion.closed?
-            = "#{percent_voted}% of memebers voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
-          - else
-            = "#{percent_voted}% of members have voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
-        #votes
-          - if @motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
-            #vote-buttons
-              =link_to image_tag("hand-yes.png", height:'40', width:'40', title:'yes', alt:'yes image'), '#',
-                class: 'btn vote', onclick: "$('#vote_position').val('yes'); $('#new_vote').submit();"
-              =link_to image_tag("hand-abstain.png", height:'40', width:'40', title:'abstain', alt:'abstain image'), '#',
-                class: 'btn vote', onclick: "$('#vote_position').val('abstain'); $('#new_vote').submit();"
-              =link_to image_tag("hand-no.png", height:'40', width:'40', title:'no', alt:'no image'), '#',
-                class: 'btn vote', onclick: "$('#vote_position').val('no'); $('#new_vote').submit();"
-              =link_to image_tag("hand-block.png", height:'40', width:'40',title:'block', alt:'block image'), '#',
-                class: 'btn vote', onclick: "$('#vote_position').val('block'); $('#new_vote').submit();"
-            #vote-form
-              =semantic_form_for([@motion, @vote], html:{class:'form-stacked'}) do |f|
-                =f.input :statement, label: false, placeholder: "Give a reason for your vote"
-                =f.hidden_field :position
+          %hr
+          .row
+            .span8
+              %h2 Discussion
+              %textarea#new-comment
+            .span8
+              %h2 Positions
+              #stats
+                =render "votes_filters", clicked_tag: @clicked_tag, motion: @motion
+                #graph.pie
+                %h5#percentage-to-vote
+                  - group_size = @motion.group_count
+                  - percent_voted = (100-(@motion.no_vote_count/group_size.to_f * 100)).to_i
+                  - if @motion.closed?
+                    = "#{percent_voted}% of memebers voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
+                  - else
+                    = "#{percent_voted}% of members have voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
+                #votes
+                  - if @motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
+                    #vote-buttons
+                      =link_to image_tag("hand-yes.png", height:'40', width:'40', title:'yes', alt:'yes image'), '#',
+                        class: 'btn vote', onclick: "$('#vote_position').val('yes'); $('#new_vote').submit();"
+                      =link_to image_tag("hand-abstain.png", height:'40', width:'40', title:'abstain', alt:'abstain image'), '#',
+                        class: 'btn vote', onclick: "$('#vote_position').val('abstain'); $('#new_vote').submit();"
+                      =link_to image_tag("hand-no.png", height:'40', width:'40', title:'no', alt:'no image'), '#',
+                        class: 'btn vote', onclick: "$('#vote_position').val('no'); $('#new_vote').submit();"
+                      =link_to image_tag("hand-block.png", height:'40', width:'40',title:'block', alt:'block image'), '#',
+                        class: 'btn vote', onclick: "$('#vote_position').val('block'); $('#new_vote').submit();"
+                    #vote-form
+                      =semantic_form_for([@motion, @vote], html:{class:'form-stacked'}) do |f|
+                        =f.input :statement, label: false, placeholder: "Give a reason for your vote"
+                        =f.hidden_field :position
+
+                  #votes-table= render "votes_table", motion: @motion
+                  #still-to-vote
+                    - if @motion.group_count > 0
+                      - if @motion.closed?
+                        %h4 #{@motion.group_count} users did not vote
+                      - else
+                        %h4 #{@motion.group_count} users yet to vote
+                      - @motion.group_members.each do |user|
+                        .user-row
+                          - if !@motion.user_has_voted?(user)
+                            = user.name
 
 :coffeescript
   $ ->

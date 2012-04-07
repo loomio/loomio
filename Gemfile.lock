@@ -56,8 +56,14 @@ GEM
       activesupport (= 3.1.1)
     activesupport (3.1.1)
       multi_json (~> 1.0)
+    acts_as_commentable_with_threading (1.1.2)
+      activerecord (>= 3.0)
+      activesupport (~> 3.0)
+      awesome_nested_set (>= 2.0)
     addressable (2.2.6)
     arel (2.2.1)
+    awesome_nested_set (2.1.2)
+      activerecord (>= 3.0.0)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
     cancan (1.6.7)
@@ -277,6 +283,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   acts-as-taggable-on (~> 2.2.2)!
+  acts_as_commentable_with_threading
   cancan
   cane!
   capistrano
