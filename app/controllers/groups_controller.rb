@@ -6,7 +6,7 @@ class GroupsController < GroupBaseController
   before_filter :check_group_read_permissions, only: :show
 
   def create
-    build_resource except: :index
+    build_resource
     @group.add_admin! current_user
     create!
   end
