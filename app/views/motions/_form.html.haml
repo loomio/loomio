@@ -1,19 +1,18 @@
 #motion-form
-  =semantic_form_for(*form_args) do |f|
-    =f.inputs do
-      =f.input :name, placeholder: "Enter a title for your motion",  label: false
-      =f.input :discussion_url, placeholder: "http://site.com/your-discussion",  label: false
-      #closing-date-label
-        %h4 Closing
-      .row
+  =form_for(*form_args) do |f|
+    %h5
+      Title
+      .standard-input= f.text_field :name
+      Discussion
+      .standard-input=f.text_field :discussion_url, placeholder: "http://site.com/your-discussion"
+      Closing
+      #closing-inputs
         - input_time = Time.now
         = text_field_tag :input_date, nil, class: "date-input"
         = select_hour(input_time, ampm: true)
-      #description
-        %h4 Details
-      =f.input :description, label: false
-      #commit
-        =f.commit_button "Create motion", button_html: { class: "btn primary" }
-      =f.input :close_date, as: :hidden
-      =f.input :phase, as: :hidden, label: false, value: "voting"
-      =f.input :facilitator_id, as: :hidden, value: current_user.id, label: false
+      Details
+      .standard-input= f.text_field :description
+    =f.submit "Create motion", class: "btn primary"
+    =f.hidden_field :close_date, as: :hidden
+    =f.hidden_field :phase, as: :hidden, value: "voting"
+    =f.hidden_field :facilitator_id, as: :hidden, value: current_user.id
