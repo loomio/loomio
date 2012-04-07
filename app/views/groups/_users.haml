@@ -10,9 +10,6 @@
       =f.commit_button "Request membership", button_html: { class: "btn primary" }
 - if current_user.is_group_admin?(group)
   = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
-    %h2 Members
-    -#.span2
-    -#.span3
     = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id}
     = f.input :email, placeholder: "Email address", label: false
     %input#group_id{ type: "hidden", value: group.id }

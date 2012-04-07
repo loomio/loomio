@@ -3,12 +3,12 @@
     .span11
       %h2 All groups
       %h3.sub-header
-        Open
+        Open motions
       .motions-list
         - @motions.voting.each do |motion|
           - motion.open_close_motion
           =render partial: "expandable_list", locals: {motion: motion}
-      %h3 Closed
+      %h3 Closed motions
       .motions-list
         - @motions.closed.each do |motion|
           =render partial: "expandable_list", locals: {motion: motion}
