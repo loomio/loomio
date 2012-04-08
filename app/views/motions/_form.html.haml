@@ -11,8 +11,8 @@
         = text_field_tag :input_date, nil, class: "date-input"
         = select_hour(input_time, ampm: true)
       Details
-      .standard-input= f.text_field :description
-    =f.submit "Create motion", class: "btn primary"
+      .standard-input= f.text_area :description
+    .standard-button= f.submit "Create motion", class: "btn primary"
     =f.hidden_field :close_date, as: :hidden
     =f.hidden_field :phase, as: :hidden, value: "voting"
     =f.hidden_field :facilitator_id, as: :hidden, value: current_user.id
