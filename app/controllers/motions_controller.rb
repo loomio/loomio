@@ -25,7 +25,7 @@ class MotionsController < GroupBaseController
     if @motion.save
       redirect_to @motion
     else
-      redirect_to edit_motion_path(@motion)
+      redirect_to :back
     end
   end
 

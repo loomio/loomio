@@ -26,6 +26,11 @@ describe "Motions" do
       it "can see motion contents" do
         should have_content('Test Motion')
       end
+
+      it "can see motion discussion" do
+        should have_content('Discussion')
+        should have_css('textarea#new-comment')
+      end
     end
 
     it "cannot view a motion if they don't belong to its (private) group" do

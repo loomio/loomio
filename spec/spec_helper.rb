@@ -77,3 +77,18 @@ def create_motion(*args)
   motion.save!
   motion
 end
+
+def create_discussion(*args)
+  unless args.empty?
+    discussion = Discussion.new(args[0])
+  else
+    discussion = Discussion.new
+  end
+  discussion.group = Group.make!
+  unless discussion.author
+    discussion.author = User.make!
+    discussion.group.add_member! discussion.author
+  end
+  discussion.save
+  discussion
+end
