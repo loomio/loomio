@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120407071132) do
+ActiveRecord::Schema.define(:version => 20120408015359) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -68,7 +68,10 @@ ActiveRecord::Schema.define(:version => 20120407071132) do
     t.string   "discussion_url", :default => "",       :null => false
     t.integer  "no_vote_count"
     t.datetime "close_date"
+    t.integer  "discussion_id"
   end
+
+  add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

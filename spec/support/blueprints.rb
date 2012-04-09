@@ -11,7 +11,7 @@ require 'machinist/active_record'
 User.blueprint do
   email { Faker::Internet.email }
   password { 'password'}
-  name {Faker::Name.name}
+  name { Faker::Name.name }
 end
 
 Group.blueprint do

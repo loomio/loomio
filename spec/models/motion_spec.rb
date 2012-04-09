@@ -43,14 +43,23 @@ describe Motion do
     @motion.should be_valid
   end
 
-  it "has a discussion link" do
+  it "can have a discussion link" do
     @motion = create_motion
     @motion.discussion_url = "http://our-discussion.com"
     @motion.should be_valid
   end
 
-  it "has group user tag" do
-    pending "To be completed"
+  it "can have a discussion" do
+    @motion = create_motion(create_discussion: true)
+    @motion.save
+    @motion.discussion.should_not be_nil
+  end
+
+  it "cannot have both a discussion link AND a discussion" do
+    expect {
+      @motion = create_motion(create_discussion: true,
+                              discussion_url: "http://blah.com")
+    }.should raise_exception
   end
 
   context "users have voted" do
