@@ -1,14 +1,14 @@
 - if @groups.present?
   .row.main-header
     .span11
-      %h2 All groups
+      %h2 All motions
       %h3.sub-header
-        Open motions
+        Open
       .motions-list
         - @motions.voting.each do |motion|
           - motion.open_close_motion
           =render partial: "expandable_list", locals: {motion: motion}
-      %h3 Closed motions
+      %h3 Closed
       .motions-list
         - @motions.closed.each do |motion|
           =render partial: "expandable_list", locals: {motion: motion}

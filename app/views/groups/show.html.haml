@@ -3,20 +3,20 @@
     .span11
       .row
         .span6
-          %h2=@group.name
+          %h2= "#{@group.name} motions"
           %h3.sub-header
-            Open motions
+            Open
         .span5#btn-create-motion
           - if @group.can_be_edited_by? current_user
             =link_to "Edit group", edit_group_path(@group), class: "btn small"
-          = link_to "All groups", "/", :class => 'btn small'
+          = link_to "All motions", "/", :class => 'btn small'
           = link_to "Create a motion",
             new_motion_path({group_id: @group.id}), :class => 'btn primary small'
       .motions-list
         - @group.motions.voting.each do |motion|
           - motion.open_close_motion
           =render partial: "home/expandable_list", locals: {motion: motion}
-      %h3 Closed motions
+      %h3 Closed
       .motions-list
         - @group.motions.closed.each do |motion|
           =render partial: "home/expandable_list", locals: {motion: motion}
