@@ -20,5 +20,4 @@ describe Discussion do
     comment = discussion.add_comment(User.make!, "this is a test comment")
     discussion.comment_threads.should_not include(comment)
   end
-
 end
