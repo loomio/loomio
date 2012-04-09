@@ -1,6 +1,6 @@
 %li{:id => membership.user_id}
-  #user-row
-    - if @group.can_be_edited_by?(current_user)
+  - if @group.can_be_edited_by?(current_user)
+    #editable-user-row
       %ul.unstyled.membership-row
         %li.name-label
           %h4
@@ -21,14 +21,13 @@
           %input.hidden{:id => "user-existing-tags-" + membership.user_id.to_s, :value => membership.user.group_tags_from(@group).join(",")}
           %input.hidden{:id => "user-tags-" + membership.user_id.to_s}
         .clear-both
-    - else
-      %h4#uneditable-user
-        - if membership.user_name
-          = membership.user_name
-        - else
-          = membership.user_email
-      %ul.unstyled#uneditable-tag-list
-        - membership.user.group_tags_from(@group).each do |t|
-          %li.uneditable-tag
-            = t
-
+  - else
+    %h4#uneditable-user
+      - if membership.user_name
+        = membership.user_name
+      - else
+        = membership.user_email
+    %ul.unstyled#uneditable-tag-list
+      - membership.user.group_tags_from(@group).each do |t|
+        %li.uneditable-tag
+          = t

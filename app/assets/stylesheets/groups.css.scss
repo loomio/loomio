@@ -10,43 +10,6 @@ $token-input-width: 278px;
   height: 15px;
 }
 
-div.token-input-dropdown-facebook {
-  width: $token-input-width !important;
-}
-
-ul.token-input-list-facebook {
-  line-height: $token-input-line-height;
-  font-size: $token-input-font-size;
-  width: $token-input-width !important;
-  border-color: lightgrey;
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  margin-top: -2px;
-}
-
-ul.token-input-list-facebook li {
-  line-height: 9px;
-  border-color: grey;
-}
-
-ul.token-input-list-facebook p {
-  line-height: $token-input-line-height;
-  font-size: 9px;
-  color: grey;
-}
-
-div.token-input-dropdown-facebook p {
-  line-height: $token-input-line-height;
-  font-size: $token-input-font-size;
-}
-
-.token-input-input-token-facebook input {
-  line-height: $token-input-line-height;
-  font-size: $token-input-font-size;
-  height: auto;
-  width: 50px !important;
-}
 #group {
   .btn.small { font-size: 12px }
   #right-panel {
@@ -66,76 +29,115 @@ div.token-input-dropdown-facebook p {
     }
   }
 }
+.group-title {
+  margin-left: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid grey;
+  .btn { float: right; margin-top: -4px; }
+}
 
-#user_email_input {
-  display: inline;
-  .input {
+#btn-create-motion{ float: right; margin-top: -8px;}
+
+#member-panel {
+  padding-top: 23px;
+  #user_email_input {
     display: inline;
-    margin-left: 0px;
+    .input {
+      display: inline;
+      margin-left: 0px;
+    }
+    #user_email {
+      width: 270px;
+      margin-top: 5px;
+    }
   }
-  #user_email {
+  #user-form{
+    #member-email-input { padding-top: 10px; }
+    #user-list{ padding-top: 4px; }
+  }
+  #request-list {
+    margin-top: 8px;
+  }
+  #button-invite {
+    margin-top: 5px;
+    text-align: right;
+  }
+  #member-requests{ margin-top: 5px; display: inline; }
+  #users-list {
+    padding-top: 5px;
     width: 270px;
+    margin-top: 15px;
+  }
+  #editable-user-row{ margin-top: -10px; }
+  #uneditable-user { display: inline; }
+  #uneditable-tag-list { display: inline; }
+  .uneditable-tag {
+    margin-top: -10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    font-size: 10px;
+    padding: 2px;
+    line-height: 9px;
+    background-color: whitesmoke;
+    display: inline;
+    margin-left: 3px;
+    }
+  div.token-input-dropdown-facebook {
+  }
+  ul.token-input-list-facebook {
+    line-height: $token-input-line-height;
+    font-size: $token-input-font-size;
+    width: $token-input-width !important;
+    border-color: lightgrey;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    margin-top: -2px;
+  }
+  ul.token-input-list-facebook li {
+    line-height: 9px;
+    border-color: lightgrey;
+  }
+  ul.token-input-list-facebook p {
+    line-height: $token-input-line-height;
+    font-size: 9px;
+    color: grey;
+  }
+  div.token-input-dropdown-facebook p {
+    line-height: $token-input-line-height;
+    font-size: $token-input-font-size;
+  }
+  .token-input-input-token-facebook input {
+    line-height: $token-input-line-height;
+    font-size: $token-input-font-size;
+    height: auto;
+    width: 50px !important;
+  }
+  ul.membership-row li {
+    display: block;
+    font-size: 14px;
+    float: left;
+  }
+  ul.membership-row li.name-label {
+  }
+  ul.membership-row li.membership-admin-functions {
+    float:right;
+  }
+  .unstyled.membership-row.tags {
+    float: left;
   }
 }
 
-#btn-invite {
-  margin-top: 4px;
-  text-align: right;
-}
-
-#user-form{
-  #member-email-input { padding-top: 10px; }
-  #user-list{
-    padding-top: 4px;
+.group-panel {
+  #group-list {
+    border-top: 1px solid lightgrey;
+    margin-top: 6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 }
 
-ul.membership-row li {
-  display: block;
-  font-size: 14px;
-  float: left;
-}
-
-ul.membership-row li.name-label {
-}
-
-ul.membership-row li.membership-admin-functions {
-  float:right;
-}
-
-#request-list {
-  border-top: 1px solid lightgrey;
-  margin-top: 8px;
-}
-
-#users-list {
-  padding-top: 8px;
-  width: 270px;
-  border-top: 1px solid lightgrey;
-  margin-top: 10px;
-}
-#user-row{ margin-top: 0px; }
-#group-list {
-  border-top: 1px solid lightgrey;
-  margin-top: 10px;
-}
-#uneditable-user { display: inline; }
-#uneditable-tag-list { display: inline; }
-.uneditable-tag {
-  border: 1px solid grey;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  font-size: 10px;
-  padding: 2px;
-  line-height: 9px;
-  background-color: whitesmoke;
-  display: inline;
-  margin-left: 3px;
-  }
-.unstyled.membership-row.tags {
-  float: left;
-}
 .links{ display: inline; float: right; padding-top: 6px; }
-#member-requests{ margin-top: 5px; display: inline; }
-#btn-create-motion{ text-align: right; }
+.title-row { background-color: #EEE; padding: 4px; color: #555; }
