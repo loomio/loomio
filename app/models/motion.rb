@@ -1,5 +1,4 @@
 class Motion < ActiveRecord::Base
-  #PHASES = %w[discussion voting closed]
   PHASES = %w[voting closed]
 
   belongs_to :group
@@ -59,11 +58,8 @@ class Motion < ActiveRecord::Base
     votes_breakdown.each do |k, v|
       votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|v| v.user.email}]]
     end
-    #yet_to_vote_count = calculate_no_vote_count
     if votes.size == 0
-      #yet_to_vote_count = no_vote_count
       votes_for_graph.push ["Yet to vote (#{no_vote_count})", no_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
-    #votes_for_graph.push [text + "(#{yet_to_vote_count})", yet_to_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
     end
     return votes_for_graph
   end
@@ -114,7 +110,7 @@ class Motion < ActiveRecord::Base
   def has_closing_date?
     close_date == nil
   end
-  
+
   def has_group_user_tag(tag_name)
     has_tag = false
     votes.each do |vote|
@@ -136,7 +132,11 @@ class Motion < ActiveRecord::Base
   end
 
   def group_count
-    group.memberships.count
+    group.users.count
+  end
+
+  def group_members
+    group.users
   end
 
   private
