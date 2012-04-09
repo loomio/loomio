@@ -39,5 +39,4 @@ describe DiscussionsController do
       response.should redirect_to(previous_url)
     end
   end
-
 end
