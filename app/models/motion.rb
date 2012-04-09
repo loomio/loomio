@@ -156,9 +156,9 @@ class Motion < ActiveRecord::Base
 
   private
     def initialize_discussion
-      debugger
       if create_discussion
         self.discussion = Discussion.create(author_id: author.id, group_id: group.id)
+        save
       end
     end
 

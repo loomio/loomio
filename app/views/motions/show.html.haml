@@ -35,8 +35,14 @@
   .row
     .span8
       %h2 Discussion
-      %form#new-comment
-      %textarea#new-comment
+      - if @motion.discussion
+        = form_tag add_comment_discussion_path(@motion.discussion) do
+          = text_area_tag 'comment', "", id: 'new-comment'
+          = submit_tag "Post comment"
+        - @motion.discussion.comment_threads.each do |comment|
+          %p= comment.body
+          %p= "Posted by - #{comment.user.name}"
+          %hr
     .span8
       %h2 Positions
       #stats

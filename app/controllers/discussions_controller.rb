@@ -3,6 +3,6 @@ class DiscussionsController < BaseController
 
   def add_comment
     comment = resource.add_comment(current_user, params[:comment])
-    redirect_to group_url(resource.group)
+    redirect_to motion_url(resource.motions.first)
   end
 end

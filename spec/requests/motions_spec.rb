@@ -29,7 +29,7 @@ describe "Motions" do
 
       it "can see motion discussion" do
         should have_content('Discussion')
-        should have_css('form#new-comment')
+        should have_css('textarea#new-comment')
       end
     end
 
