@@ -34,5 +34,13 @@ class Ability
       membership.can_be_deleted_by? user
     end
 
+    #
+    # DISCUSSIONS
+    #
+
+    can :add_comment, Discussion do |discussion|
+      discussion.can_add_comment? user
+    end
+
   end
 end
