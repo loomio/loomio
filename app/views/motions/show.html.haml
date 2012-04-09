@@ -7,8 +7,7 @@
           =image_tag("phase-voting.png", height:'20', width:'60', alt:'voting phase image')
         - if @motion.closed?
           =image_tag("phase-closed.png", height:'20', width:'60', alt:'voting phase image')
-      %h3.group-header
-        = link_to @motion.group.name, group_path(@motion.group), title: "group"
+      %h4= link_to @motion.group.name, group_path(@motion.group), title: "group"
     .span7#admin-buttons
       =render partial: "facilitator_options", locals: {motion: @motion}
   .row
@@ -36,9 +35,9 @@
           #still-to-vote
             - if @motion.group_count > 0
               - if @motion.closed?
-                %h3 Users who did not vote
+                %h4 Users who did not vote
               - else
-                %h3 Users still yet to vote
+                %h4 Users still yet to vote
               - @motion.group_members.each do |user|
                 .user-row
                   - if !@motion.user_has_voted?(user)

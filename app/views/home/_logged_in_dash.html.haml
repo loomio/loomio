@@ -2,25 +2,25 @@
   .row.main-header
     .span11
       %h2 All motions
-      %h3.sub-header
+      %h4.sub-header
         Open
       .motions-list
         - @motions.voting.each do |motion|
           - motion.open_close_motion
           =render partial: "expandable_list", locals: {motion: motion}
-      %h3 Closed
+      %h4 Closed
       .motions-list
         - @motions.closed.each do |motion|
           =render partial: "expandable_list", locals: {motion: motion}
     .span5
-      .side-pannel
+      .group-panel
         %h2 Groups
-        %h3.sub-header
+        %h4.sub-header
           Current
         #group-list
           - current_user.groups.each do |group|
             %h4= link_to group.name, group_path(group)
-        =link_to "Create new group", new_group_path, :class => 'btn primary'
+        =link_to "Create new group", new_group_path, :class => 'btn primary small'
 - else
   =link_to 'Create a group', new_group_path
   or wait until you are invited to one.
