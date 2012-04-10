@@ -32,7 +32,7 @@ Tautoko::Application.routes.draw do
   match "/settings", :to => "users#settings", :as => :user_settings
 
   namespace :admin do
-    resources :groups
+    resources :groups, only: [:index]
   end
   match "/admin", :to => redirect("/admin/groups")
 
