@@ -28,7 +28,6 @@ describe "Motions" do
       end
 
       it "can see motion discussion" do
-        should have_content('Discussion')
         should have_css('#new-comment')
       end
     end
