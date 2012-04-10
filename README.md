@@ -11,3 +11,5 @@ Loomio is software that aims to enable democratic decision making in all kinds o
   $ bundle exec rake db:setup
   $ bundle exec rake db:seed
 ```
+
+Currently under a GPLv2(?) License.
