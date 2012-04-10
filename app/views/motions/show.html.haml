@@ -18,7 +18,7 @@
             Discussion -
             =link_to @motion.discussion_url, @motion.discussion_url, target: "_blank"
         .span
-          = "Proposed by #{@motion.author_email}#{time_ago_in_words(@motion.created_at)} ago"
+          = "Proposed by #{@motion.author_email} #{time_ago_in_words(@motion.created_at)} ago"
           - if @motion.updated_at != @motion.created_at
             ="(edited: #{time_ago_in_words(@motion.updated_at)} ago)"
         .span
