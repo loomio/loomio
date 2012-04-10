@@ -1,14 +1,4 @@
 class Motion < ActiveRecord::Base
-  class OnlyOneDiscussionValidator < ActiveModel::Validator
-    def validate(record)
-      if record.discussion_url.present? && record.create_discussion
-        record.errors.add(:base,
-                   "Cannot have both a discussion and a discussion_url " +
-                   " (must contain only one or the other)")
-      end
-    end
-  end
-
   PHASES = %w[voting closed]
 
   belongs_to :group
@@ -18,13 +8,12 @@ class Motion < ActiveRecord::Base
   belongs_to :discussion
   validates_presence_of :name, :group, :author, :facilitator_id
   validates_inclusion_of :phase, in: PHASES
-  #validate :only_one_discussion
-  validates_with OnlyOneDiscussionValidator
 
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
 
-  after_create :email_motion_created, :initialize_discussion
+  before_create :initialize_discussion
+  after_create :email_motion_created
 
   attr_accessor :create_discussion
 
@@ -156,10 +145,7 @@ class Motion < ActiveRecord::Base
 
   private
     def initialize_discussion
-      if create_discussion
-        self.discussion = Discussion.create(author_id: author.id, group_id: group.id)
-        save
-      end
+      self.discussion = Discussion.create(author_id: author.id, group_id: group.id)
     end
 
     def email_motion_created

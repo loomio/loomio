@@ -70,7 +70,6 @@
             #vote-form
               =semantic_form_for([@motion, @vote], html:{class:'form-stacked'}) do |f|
                 =f.input :statement, label: false, placeholder: "Give a reason for your vote"
-<<<<<<< HEAD
                 =f.hidden_field :position
 
           #votes-table= render "votes_table", motion: @motion
@@ -84,10 +83,6 @@
                 .user-row
                   - if !@motion.user_has_voted?(user)
                     = user.name
-=======
-          #votes-table
-            =render "votes_table", motion: @motion
->>>>>>> Improve discussion css formatting.
 
 :coffeescript
   $ ->

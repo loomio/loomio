@@ -50,16 +50,9 @@ describe Motion do
   end
 
   it "can have a discussion" do
-    @motion = create_motion(create_discussion: true)
+    @motion = create_motion
     @motion.save
     @motion.discussion.should_not be_nil
-  end
-
-  it "cannot have both a discussion link AND a discussion" do
-    expect {
-      @motion = create_motion(create_discussion: true,
-                              discussion_url: "http://blah.com")
-    }.should raise_exception
   end
 
   context "users have voted" do
