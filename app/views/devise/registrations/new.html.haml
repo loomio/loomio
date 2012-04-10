@@ -1,7 +1,7 @@
 %h2 Sign up
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
   = devise_error_messages!
-  %h5
+  %h5.padding
     Name
     .standard-input= f.text_field :name
     Email
