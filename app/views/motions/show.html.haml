@@ -34,7 +34,9 @@
   %hr{style: "margin-bottom:0px"}
   .row
     .span8#discussion-panel
-      - if @motion.discussion
+      - if @motion.disable_discussion
+        %h4 Discussions have been disabled for this motion
+      - else
         = form_tag add_comment_discussion_path(@motion.discussion), id: "new-comment-form" do
           = text_area_tag 'comment', "", id: 'new-comment'
           #new-comment-submit
