@@ -19,7 +19,7 @@
   - else
     - if group.membership_requests.present? && group.users_include?(current_user)
       #user-requests
-        %h4.title-row Member requests
+        %h4.title-row Membership requests
         %ul.unstyled{:id => "request-list"}
           =render :partial => 'membership_request', :collection => group.membership_requests
   %h4.title-row Current members

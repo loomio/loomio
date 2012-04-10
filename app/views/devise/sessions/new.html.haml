@@ -1,6 +1,6 @@
 %h2 Sign in
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  %h5
+  %h5.padding
     Email
     .standard-input= f.email_field :email
     Password
