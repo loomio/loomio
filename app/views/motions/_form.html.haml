@@ -3,6 +3,7 @@
     %h5
       Title
       .standard-input= f.text_field :name
+      .standard-input= f.check_box :disable_discussion#, label: "Disable discussion for this motion"
       Discussion
       .standard-input=f.text_field :discussion_url, placeholder: "http://site.com/your-discussion"
       Closing

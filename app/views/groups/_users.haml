@@ -25,4 +25,5 @@
 
   %h4.title-row Current members
   %ul.unstyled{:id => "users-list"}
-    =render :partial => 'membership', :collection => group.memberships
+    =render :partial => 'membership', :collection => group.memberships,
+      :locals => { group: group }

@@ -13,10 +13,10 @@
       .motions-list
         - @group.motions.voting.each do |motion|
           - motion.open_close_motion
-          =render partial: "home/expandable_list", locals: {motion: motion}
+          =render "home/expandable_list", motion: motion
       %h4 Closed motions
       .motions-list
         - @group.motions.closed.each do |motion|
-          =render partial: "home/expandable_list", locals: {motion: motion}
+          =render "home/expandable_list", motion: motion
     .span5
-      =render :partial => 'users', locals: {group: @group}
+      =render 'users', group: @group
