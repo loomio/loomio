@@ -2,7 +2,7 @@
   Edit #{resource_name.to_s.humanize}
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
   = devise_error_messages!
-  %h5
+  %h5.padding
     Email
     .standard-input= f.email_field :email
     Password

@@ -10,6 +10,7 @@ $token-input-width: 278px;
   height: 15px;
 }
 
+/**** Group admin ****/
 #group {
   .btn.small { font-size: 12px }
   #right-panel {
@@ -29,11 +30,14 @@ $token-input-width: 278px;
     }
   }
 }
+
+/**** Group page ****/
 .group-title {
+  padding-top: 20px;
   margin-left: 20px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid grey;
-  .btn { float: right; margin-top: -4px; }
+  padding-bottom: 2px;
+  border-bottom: 1px solid #888;
+  .btn { float: right; margin-top: -12px; }
 }
 
 #btn-create-motion{ float: right; margin-top: -8px;}
@@ -64,7 +68,6 @@ $token-input-width: 278px;
   }
   #member-requests{ margin-top: 5px; display: inline; }
   #users-list {
-    padding-top: 5px;
     width: 270px;
     margin-top: 15px;
   }
@@ -72,15 +75,15 @@ $token-input-width: 278px;
   #uneditable-user { display: inline; }
   #uneditable-tag-list { display: inline; }
   .uneditable-tag {
-    margin-top: -10px;
-    border: 1px solid grey;
+    border: 0px;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     font-size: 10px;
     padding: 2px;
-    line-height: 9px;
-    background-color: whitesmoke;
+    padding-left: 3px;
+    line-height: 10px;
+    background-color: #EFF2F7;
     display: inline;
     margin-left: 3px;
     }
@@ -90,15 +93,16 @@ $token-input-width: 278px;
     line-height: $token-input-line-height;
     font-size: $token-input-font-size;
     width: $token-input-width !important;
-    border-color: lightgrey;
+    border-color: whitesmoke;
     border-radius: 2px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     margin-top: -2px;
   }
   ul.token-input-list-facebook li {
-    line-height: 9px;
-    border-color: lightgrey;
+    line-height: 10px;
+    border: 0px;
+    padding-bottom: 2px;
   }
   ul.token-input-list-facebook p {
     line-height: $token-input-line-height;
@@ -130,14 +134,16 @@ $token-input-width: 278px;
   }
 }
 
+/**** dashboard ****/
 .group-panel {
+  margin-top: 9px;
   #group-list {
-    border-top: 1px solid lightgrey;
-    margin-top: 6px;
+    margin-top: 4px;
     padding-top: 5px;
     padding-bottom: 5px;
   }
 }
 
+/**** general ****/
 .links{ display: inline; float: right; padding-top: 6px; }
 .title-row { background-color: #EEE; padding: 4px; color: #555; }

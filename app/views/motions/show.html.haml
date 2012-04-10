@@ -1,13 +1,13 @@
 #motion
-  .row
+  .row.header-space
+    %h2.group-title= link_to @motion.group.name, group_path(@motion.group), title: "group"
     .span9
-      %h2.main-header
-        = @motion.name
-        - if @motion.voting?
-          =image_tag("phase-voting.png", height:'20', width:'60', alt:'voting phase image')
-        - if @motion.closed?
-          =image_tag("phase-closed.png", height:'20', width:'60', alt:'voting phase image')
-      %h4= link_to @motion.group.name, group_path(@motion.group), title: "group"
+      %h2.sub-header
+      = @motion.name
+      - if @motion.voting?
+        =image_tag("phase-voting.png", height:'20', width:'60', alt:'voting phase image')
+      - if @motion.closed?
+        =image_tag("phase-closed.png", height:'20', width:'60', alt:'voting phase image')
     .span7#admin-buttons
       =render partial: "facilitator_options", locals: {motion: @motion}
   .row
@@ -35,9 +35,9 @@
           #still-to-vote
             - if @motion.group_count > 0
               - if @motion.closed?
-                %h4 Users who did not vote
+                %h4 #{@motion.group_count} users did not vote
               - else
-                %h4 Users still yet to vote
+                %h4 #{@motion.group_count} users yet to vote
               - @motion.group_members.each do |user|
                 .user-row
                   - if !@motion.user_has_voted?(user)
