@@ -2,16 +2,14 @@
   .topbar{:data => {:scrollspy =>'scrollspy', :dropdown =>'dropdown'}}
     .topbar-inner
       .container
-        =link_to image_tag("logo-trans-tiny.png"), "/", :class => 'brand'
-        -#%ul.nav
-          -#%li= link_to "Groups", groups_path
+        = link_to image_tag("logo-trans-tiny.png"), "/", :class => 'brand'
         %ul.nav.secondary-nav
-          -if @user = current_user
+          - if user_signed_in?
             %li.dropdown
-              =link_to @user.name ? @user.name : @user.email, "#", :class => 'dropdown-toggle'
+              = link_to current_user.name ? current_user.name : current_user.email, "#", :class => 'dropdown-toggle'
               %ul.dropdown-menu
-                %li=link_to "Settings", user_settings_path
+                %li= link_to "Settings", user_settings_path
                 %li.divider
-                %li=link_to('Sign out', destroy_user_session_path, method: :delete)
+                %li= link_to('Sign out', destroy_user_session_path, method: :delete)
           - else
             = link_to('Sign in', new_user_session_path)
