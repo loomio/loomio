@@ -26,6 +26,10 @@ describe "Motions" do
       it "can see motion contents" do
         should have_content('Test Motion')
       end
+
+      it "can see motion discussion" do
+        should have_css('#new-comment')
+      end
     end
 
     it "cannot view a motion if they don't belong to its (private) group" do
@@ -46,6 +50,15 @@ describe "Motions" do
       fill_in 'motion_name', with: 'This is a new motion'
       fill_in 'motion_description', with: 'Blahhhhhh'
       click_on 'Create motion'
+    end
+
+    it "can disable motion discussion" do
+      visit new_motion_path(group_id: @group.id)
+      fill_in 'motion_name', with: 'This is a new motion'
+      fill_in 'motion_description', with: 'Blahhhhhh'
+      check 'motion_disable_discussion'
+      click_on 'Create motion'
+      should have_content("Discussions have been disabled for this motion")
     end
   end
 end

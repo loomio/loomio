@@ -5,11 +5,11 @@ begin
   require 'support/best_practices_threshold'
 
   METRIC_THRESHOLDS = {
-    :coverage => 88.0,
+    :coverage => 90.0,
     :flay => 300,
     :complexity => 10,
     :line_length => 120,
-    :best_practices => 79
+    :best_practices => 72
   }
 
   namespace :metrics do

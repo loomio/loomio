@@ -5,13 +5,17 @@ class Motion < ActiveRecord::Base
   belongs_to :author, :class_name => 'User'
   belongs_to :facilitator, :class_name => 'User'
   has_many :votes
+  belongs_to :discussion
   validates_presence_of :name, :group, :author, :facilitator_id
   validates_inclusion_of :phase, in: PHASES
 
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
 
+  before_create :initialize_discussion
   after_create :email_motion_created
+
+  attr_accessor :create_discussion
 
   include AASM
   aasm :column => :phase do
@@ -140,6 +144,10 @@ class Motion < ActiveRecord::Base
   end
 
   private
+    def initialize_discussion
+      self.discussion = Discussion.create(author_id: author.id, group_id: group.id)
+    end
+
     def email_motion_created
       group.users.each do |user|
         unless author == user
@@ -158,5 +166,13 @@ class Motion < ActiveRecord::Base
 
     def clear_no_vote_count
       self.no_vote_count = nil
+    end
+
+    def only_one_discussion
+      if self["discussion_url"].present? && create_discussion
+        errors.add(:base,
+                   "Cannot have both a discussion and a discussion_url " +
+                   " (must contain only one or the other)")
+      end
     end
 end

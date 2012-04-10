@@ -1,16 +1,16 @@
-- if @groups.present?
+- if groups.present?
   .row.main-header
     .span11
       %h4.sub-header
         Open motions
       .motions-list
-        - @motions.voting.each do |motion|
+        - motions.voting.each do |motion|
           - motion.open_close_motion
-          =render partial: "expandable_list", locals: {motion: motion}
+          = render "expandable_list", motion: motion
       %h4 Closed motions
       .motions-list
-        - @motions.closed.each do |motion|
-          =render partial: "expandable_list", locals: {motion: motion}
+        - motions.closed.each do |motion|
+          = render "expandable_list", motion: motion
     .span5
       .group-panel
         %h4.title-row
@@ -18,7 +18,7 @@
         #group-list
           - current_user.groups.each do |group|
             %h4= link_to group.name, group_path(group)
-        =link_to "Create new group", new_group_path, :class => 'btn primary small'
+        = link_to "Create new group", new_group_path, :class => 'btn primary small'
 - else
-  =link_to 'Create a group', new_group_path
+  = link_to 'Create a group', new_group_path
   or wait until you are invited to one.

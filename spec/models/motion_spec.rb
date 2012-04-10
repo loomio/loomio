@@ -43,14 +43,16 @@ describe Motion do
     @motion.should be_valid
   end
 
-  it "has a discussion link" do
+  it "can have a discussion link" do
     @motion = create_motion
     @motion.discussion_url = "http://our-discussion.com"
     @motion.should be_valid
   end
 
-  it "has group user tag" do
-    pending "To be completed"
+  it "can have a discussion" do
+    @motion = create_motion
+    @motion.save
+    @motion.discussion.should_not be_nil
   end
 
   context "users have voted" do
