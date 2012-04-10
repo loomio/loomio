@@ -38,7 +38,7 @@
         %h4 Discussions have been disabled for this motion
       - else
         = form_tag add_comment_discussion_path(@motion.discussion), id: "new-comment-form" do
-          = text_area_tag 'comment', "", id: 'new-comment'
+          = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
           #new-comment-submit
             = submit_tag "Post comment", class: "btn primary submit"
         - @motion.discussion.comment_threads.each do |comment|
