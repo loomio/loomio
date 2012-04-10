@@ -7,7 +7,7 @@
       %h4.padding
         Open motions
         #btn-create-motion
-          - if @group.can_be_edited_by? current_user
+          - if @group.users_include? current_user
             = link_to "Create a motion",
             new_motion_path({group_id: @group.id}), :class => 'btn primary small'
       .motions-list
