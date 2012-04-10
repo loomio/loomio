@@ -1,12 +1,13 @@
-!!!
+!!!5
 %html
   %head
-    %link{href: 'http://fonts.googleapis.com/css?family=Cuprum', rel: 'stylesheet', type: 'text/css'}
-    %link{:href => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/flick/jquery-ui.css", :rel => "stylesheet", :type => "text/css"}
-    %title Loom.io
+    %title Loomio
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
+	%link{:href => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/flick/jquery-ui.css", :rel => "stylesheet", :type => "text/css"}
+	
+    %meta {'name' => 'description', :content => 'Loomio is software that aims to enable democratic decision making in all kinds of organisations.'}/
   %body
     = render 'header'
     .container
