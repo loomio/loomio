@@ -18,15 +18,15 @@
             Discussion -
             =link_to @motion.discussion_url, @motion.discussion_url, target: "_blank"
         .span
-          = "Proposed by #{@motion.author_email}#{time_ago_in_words(@motion.created_at)} ago"
+          = "Proposed by #{@motion.author_email}#{distance_of_time_in_words_to_now(@motion.created_at)} ago"
           - if @motion.updated_at != @motion.created_at
-            ="(edited: #{time_ago_in_words(@motion.updated_at)} ago)"
+            ="(edited: #{distance_of_time_in_words_to_now(@motion.updated_at)} ago)"
         .span
           - if @motion.has_closing_date?
             No close date
           - else
             - if @motion.voting?
-              = "Closing in #{distance_of_time_in_words(Time.now, @motion.close_date, false)}"
+              = "Closing in #{distance_of_time_in_words_to_now(@motion.close_date)}"
             - else
               Closed on
               .relativetime= @motion.close_date
