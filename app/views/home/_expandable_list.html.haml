@@ -28,7 +28,7 @@
             - still_to_vote = motion.no_vote_count
             - percent_voted = (100-(still_to_vote/group_size.to_f * 100)).to_i
             - if motion.closed?
-              = "#{percent_voted}% of memebers voted on this motion (#{group_size - still_to_vote}/#{group_size})"
+              = "#{percent_voted}% of members voted on this motion (#{group_size - still_to_vote}/#{group_size})"
             - else
               = "#{percent_voted}% of members have voted on this motion (#{group_size - still_to_vote}/#{group_size})"
       - unless motion.user_has_voted?(current_user) || motion.closed?
