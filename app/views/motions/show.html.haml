@@ -31,20 +31,19 @@
               Closed on
               .relativetime= @motion.close_date
           %h4#description= simple_format(@motion.description)
-          %hr
+  %hr{style: "margin-bottom:0px"}
   .row
-    .span8
-      %h2 Discussion
+    .span8#discussion-panel
       - if @motion.discussion
-        = form_tag add_comment_discussion_path(@motion.discussion) do
+        = form_tag add_comment_discussion_path(@motion.discussion), id: "new-comment-form" do
           = text_area_tag 'comment', "", id: 'new-comment'
-          = submit_tag "Post comment"
+          #new-comment-submit
+            = submit_tag "Post comment", class: "btn primary submit"
         - @motion.discussion.comment_threads.each do |comment|
-          %p= comment.body
-          %p= "Posted by - #{comment.user.name}"
-          %hr
-    .span8
-      %h2 Positions
+          %div.comment
+            %p.comment-body= link_to(comment.user.name, "#") + " " + comment.body
+            %p.comment-time= distance_of_time_in_words_to_now(comment.created_at) + " ago"
+    .span8#votes-panel
       #stats
         =render "votes_filters", clicked_tag: @clicked_tag, motion: @motion
         #graph.pie
@@ -69,6 +68,7 @@
             #vote-form
               =semantic_form_for([@motion, @vote], html:{class:'form-stacked'}) do |f|
                 =f.input :statement, label: false, placeholder: "Give a reason for your vote"
+<<<<<<< HEAD
                 =f.hidden_field :position
 
           #votes-table= render "votes_table", motion: @motion
@@ -82,6 +82,10 @@
                 .user-row
                   - if !@motion.user_has_voted?(user)
                     = user.name
+=======
+          #votes-table
+            =render "votes_table", motion: @motion
+>>>>>>> Improve discussion css formatting.
 
 :coffeescript
   $ ->
