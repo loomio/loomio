@@ -23,13 +23,16 @@ Tautoko::Application.routes.draw do
   match "/motions/:id/open", :to => "motions#open_voting", :as => :open_motion_voting,
     :via => :post
 
+  resources :discussions, only: [:add_comment] do
+    post :add_comment, :on => :member
+  end
   resources :votes
   resources :memberships
   resources :users
   match "/settings", :to => "users#settings", :as => :user_settings
 
   namespace :admin do
-    resources :groups
+    resources :groups, only: [:index]
   end
   match "/admin", :to => redirect("/admin/groups")
 
