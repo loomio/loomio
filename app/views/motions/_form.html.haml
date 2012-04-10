@@ -2,17 +2,19 @@
   =form_for(*form_args) do |f|
     %h5
       Title
-      .standard-input= f.text_field :name
-      .standard-input= f.check_box :disable_discussion#, label: "Disable discussion for this motion"
-      Discussion
-      .standard-input=f.text_field :discussion_url, placeholder: "http://site.com/your-discussion"
+      .left-format= f.text_field :name
+      Link to external discussion (optional)
+      .left-format=f.text_field :discussion_url, placeholder: "http://site.com/your-discussion"
+      .left-format
+        = f.check_box :disable_discussion
+        %span Disable comments on this motion
       Closing
       #closing-inputs
         - input_time = Time.now
         = text_field_tag :input_date, nil, class: "date-input"
         = select_hour(input_time, ampm: true)
       Details
-      .standard-input= f.text_area :description
+      .left-format= f.text_area :description
     .standard-button= f.submit "Create motion", class: "btn primary"
     =f.hidden_field :close_date, as: :hidden
     =f.hidden_field :phase, as: :hidden, value: "voting"
