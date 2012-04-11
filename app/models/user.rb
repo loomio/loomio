@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :motions_closed, through: :groups, :source => :motions, :conditions => {phase: 'closed'}
 
   acts_as_taggable_on :group_tags
+  after_create :ensure_name_entry
 
   def motion_vote(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).first
@@ -46,5 +47,13 @@ class User < ActiveRecord::Base
   UserMailer.invited_to_loomio(new_user, inviter, group).deliver
   new_user
   end
+
+  private
+    def ensure_name_entry
+      unless name
+        self.name = email
+        save
+      end
+    end
 end
 

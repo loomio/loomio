@@ -29,6 +29,11 @@ describe User do
     @group.users.should include(@user)
   end
 
+  it "invited user should have email as name" do
+    @user = User.invite_and_notify!({email: "foo@example.com"}, User.make!, Group.make!)
+    @user.name.should == @user.email
+  end
+
   it "can find user by email (case-insensitive)" do
     @user = User.make!(email: "foobar@example.com")
     User.find_by_email("foObAr@exaMPLE.coM").should == @user
