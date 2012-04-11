@@ -1,6 +1,6 @@
 #motion
   .row.header-space
-    %h2.group-title= link_to @motion.group.name, group_path(@motion.group), title: "group"
+    %h2.group-title= link_to @group.name, group_path(@group), title: "group"
     .span8
       %h2.sub-header
       = @motion.name
@@ -37,14 +37,17 @@
       - if @motion.disable_discussion
         %h4 Discussions have been disabled for this motion
       - else
-        = form_tag add_comment_discussion_path(@motion.discussion), id: "new-comment-form" do
-          = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
-          #new-comment-submit
-            = submit_tag "Post comment", class: "btn primary submit"
+        - if @group.users_include? current_user
+          = form_tag add_comment_discussion_path(@motion.discussion), id: "new-comment-form" do
+            = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
+            #new-comment-submit
+              = submit_tag "Post comment", class: "btn primary submit"
         - @motion.discussion.comment_threads.each do |comment|
           %div.comment
             %p.comment-body= link_to(comment.user.name, "#") + " " + comment.body
             %p.comment-time= time_ago_in_words(comment.created_at) + " ago"
+        - if @motion.discussion.comment_threads.count == 0
+          %h4 There are no comments yet on this motion
     .span8#votes-panel
       #stats
         =render "votes_filters", clicked_tag: @clicked_tag, motion: @motion
@@ -93,3 +96,4 @@
       data: #{@votes_for_graph.to_json.html_safe}
       type: 'pie'
       tooltip_selector: '#tooltip'
+
