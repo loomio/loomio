@@ -42,10 +42,15 @@
             = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
             #new-comment-submit
               = submit_tag "Post comment", class: "btn primary submit"
-        - @motion.discussion.comment_threads.each do |comment|
+        - @comments.each do |comment|
           %div.comment
             %p.comment-body= link_to(comment.user.name, "#") + " " + comment.body
-            %p.comment-time= time_ago_in_words(comment.created_at) + " ago"
+            %p.comment-time
+              = time_ago_in_words(comment.created_at) + " ago"
+              - if comment.user == current_user
+                = " · "
+                = link_to "Delete", comment_path(comment), method: :delete,
+                  :confirm => "Are you sure you want to delete this comment?"
         - if @motion.discussion.comment_threads.count == 0
           %h4 There are no comments yet on this motion
     .span8#votes-panel
