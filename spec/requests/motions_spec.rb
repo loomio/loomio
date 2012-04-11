@@ -65,7 +65,7 @@ describe "Motions" do
       visit new_motion_path(group_id: @group.id)
       fill_in 'motion_name', with: 'This is a new motion'
       fill_in 'motion_description', with: 'Blahhhhhh'
-      click_on 'Create motion'
+      click_on 'Create Motion'
     end
 
     it "can disable motion discussion" do
@@ -73,7 +73,7 @@ describe "Motions" do
       fill_in 'motion_name', with: 'This is a new motion'
       fill_in 'motion_description', with: 'Blahhhhhh'
       check 'motion_disable_discussion'
-      click_on 'Create motion'
+      click_on 'Create Motion'
       should have_content("Discussions have been disabled for this motion")
     end
   end
