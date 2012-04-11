@@ -22,9 +22,8 @@ $token-input-width: 278px;
   form {
     width: 550px;
     #group_name { width: 390px; }
-    label { text-align: left; }
     .privacy-settings {
-      label { width: 400px; }
+      .setting { padding-top: 20px; }
       select { width: 150px; }
       .input { text-align: right; }
     }
@@ -34,7 +33,6 @@ $token-input-width: 278px;
 /**** Group page ****/
 .group-title {
   padding-top: 20px;
-  margin-left: 20px;
   padding-bottom: 2px;
   border-bottom: 1px solid #888;
   .btn { float: right; margin-top: -12px; }
