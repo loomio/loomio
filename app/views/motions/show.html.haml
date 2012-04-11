@@ -4,10 +4,12 @@
     .span8
       %h2.sub-header
       = @motion.name
-      - if @motion.voting?
-        =image_tag("phase-voting.png", height:'20', width:'60', alt:'voting phase image')
+      - if @motion.voting?        
+      	%span.label.label-success
+          open
       - if @motion.closed?
-        =image_tag("phase-closed.png", height:'20', width:'60', alt:'voting phase image')
+      	%span.label.label-important
+          closed
     .span8#admin-buttons
       =render "facilitator_options", motion: @motion
   .row
