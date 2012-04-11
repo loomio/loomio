@@ -1,18 +1,17 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
+%h2.header-space Edit #{resource_name.to_s.humanize}
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
   = devise_error_messages!
   %h5.padding
     Email
-    .standard-input= f.email_field :email
+    .left-format= f.email_field :email
     Password
     %i (leave blank if you don't want to change it)
-    .standard-input= f.password_field :password
+    .left-format= f.password_field :password
     Password confirmation
-    .standard-input= f.password_field :password_confirmation
+    .left-format= f.password_field :password_confirmation
     Current password
     %i (we need your current password to confirm your changes)
-    .standard-input= f.password_field :current_password
+    .left-format= f.password_field :current_password
     .standard-button= f.submit "Update", class: "btn primary small"
 %h3 Cancel my account
 %p

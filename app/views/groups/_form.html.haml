@@ -1,14 +1,21 @@
-#group-form.row
+#group-form.row.padding
   .span10
-    =semantic_form_for(@group) do |f|
-      =f.input :name, label: "Group Name:"#, placeholder: "Group Name"
+    =form_for(@group) do |f|
+      %h5 Group Name
+      .left-format=f.text_field :name #, placeholder: "Group Name"
       %hr
       .privacy-settings
-        %h3 Privacy Settings
-        =f.input :viewable_by, as: :select, collection: [:everyone, :members],
-          member_label: Proc.new { |option| group_permissions_label(option) },
-          label: "Who can see this group?"
-        =f.input :members_invitable_by, as: :select, collection: [:members, :admins],
-          member_label: Proc.new { |option| group_permissions_label(option) },
-          label: "Who can invite members to this group?"
-      =f.commit_button
+        %h2 Privacy Settings
+        .setting.row
+          .span6
+            %h4 Who can see this group?
+          .span3
+            =f.select :viewable_by, [:everyone, :members],
+              member_label: Proc.new { |option| group_permissions_label(option) }
+        .setting.row
+          .span6
+            %h4 Who can invite members to this group?
+          .span3
+            =f.select :members_invitable_by, [:members, :admins],
+              member_label: Proc.new { |option| group_permissions_label(option) }
+      .standard-button=f.submit

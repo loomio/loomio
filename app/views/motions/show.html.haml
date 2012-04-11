@@ -1,13 +1,13 @@
 #motion
-  .row.header-space
-    %h2.group-title= link_to @group.name, group_path(@group), title: "group"
+  %h2.headerspace.group-title= link_to @motion.group.name, group_path(@motion.group), title: "group"
+  .row
     .span8
       %h2.sub-header
       = @motion.name
       - if @motion.voting?
-        =image_tag("phase-voting.png", height:'20', width:'60', alt:'voting phase image')
+        %span.label.success Voting
       - if @motion.closed?
-        =image_tag("phase-closed.png", height:'20', width:'60', alt:'voting phase image')
+        %span.label.important Closed
     .span8#admin-buttons
       =render "facilitator_options", motion: @motion
   .row
@@ -56,7 +56,7 @@
           - group_size = @motion.group_count
           - percent_voted = (100-(@motion.no_vote_count/group_size.to_f * 100)).to_i
           - if @motion.closed?
-            = "#{percent_voted}% of memebers voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
+            = "#{percent_voted}% of members voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
           - else
             = "#{percent_voted}% of members have voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
         #votes
@@ -79,9 +79,9 @@
           #still-to-vote
             - if @motion.group_count > 0
               - if @motion.closed?
-                %h4 #{@motion.group_count} users did not vote
+                %h4 #{@motion.no_vote_count} users did not vote
               - else
-                %h4 #{@motion.group_count} users yet to vote
+                %h4 #{@motion.no_vote_count} users yet to vote
               - @motion.group_members.each do |user|
                 .user-row
                   - if !@motion.user_has_voted?(user)

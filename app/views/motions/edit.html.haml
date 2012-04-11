@@ -1,4 +1,6 @@
 #edit-motion
-  %h2.main-header= @motion.name
-  %h4= link_to @motion.group.name, group_path(@motion.group), title: "group"
-=render 'form', form_args: [@motion]
+  .row
+    .span16
+      %h4.group-title= link_to @motion.group.name, group_path(@motion.group), title: "group"
+      %h2= @motion.name
+      =render 'form', form_args: [@motion]

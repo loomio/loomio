@@ -51,12 +51,13 @@ $ ->
     expandableRow.toggle()
     if expandableRow.is(":visible")
       $(this).find(".toggle-button").html('-')
+      graph_legend = $(this).find(".jqplot-table-legend")
       if $(this).hasClass('closed')
-        $(".jqplot-table-legend").addClass('closed')
-        $(".jqplot-table-legend").removeClass('voting')
+        graph_legend.addClass('closed')
+        graph_legend.removeClass('voting')
       else
-        $(".jqplot-table-legend").addClass('voting')
-        $(".jqplot-table-legend").removeClass('closed')
+        graph_legend.addClass('voting')
+        graph_legend.removeClass('closed')
     else
       $(this).find(".toggle-button").html('+')
   )

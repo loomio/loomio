@@ -1,10 +1,10 @@
-%h2 Sign in
+%h2.header-space Sign in
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   %h5.padding
     Email
-    .standard-input= f.email_field :email
+    .left-format= f.email_field :email
     Password
-    .standard-input= f.password_field :password
+    .left-format= f.password_field :password
     - if devise_mapping.rememberable?
       = f.check_box :remember_me
       Remember me
