@@ -15,7 +15,7 @@
         = select_hour(input_time, ampm: true)
       Details
       .left-format= f.text_area :description
-    .standard-button= f.submit "Create motion", class: "btn primary"
+    .standard-button= f.submit
     =f.hidden_field :close_date, as: :hidden
     =f.hidden_field :phase, as: :hidden, value: "voting"
     =f.hidden_field :facilitator_id, as: :hidden, value: current_user.id

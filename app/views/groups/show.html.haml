@@ -1,8 +1,8 @@
 #group
-  .row.header-space
-    %h2.group-title
-      = @group.name
-      = link_to "Edit group", edit_group_path(@group), class: "btn small"
+  %h2.headerspace.group-title
+    = @group.name
+    = link_to "Edit group", edit_group_path(@group), class: "btn small"
+  .row
     .span11
       %h4.padding
         Open motions
