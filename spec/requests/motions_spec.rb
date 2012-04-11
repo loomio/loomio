@@ -23,12 +23,28 @@ describe "Motions" do
         visit motion_path(id: @motion.id)
       end
 
-      it "can see motion contents" do
-        should have_content('Test Motion')
+      it "can see motion discussion" do
+        should have_css('#discussion-panel')
+      end
+
+      it "can comment on motions" do
+        should have_css('#new-comment')
+      end
+    end
+
+    context "viewing a public motion (of a group they don't belong to)" do
+      before :each do
+        membership = @group.memberships.find_by_user_id(@user.id)
+        membership.destroy
+        visit motion_path(id: @motion.id)
       end
 
       it "can see motion discussion" do
-        should have_css('#new-comment')
+        should have_css('#discussion-panel')
+      end
+
+      it "cannot comment on motions" do
+        should_not have_css('#new-comment')
       end
     end
 
