@@ -47,4 +47,12 @@ class Comment < ActiveRecord::Base
   def self.find_commentable(commentable_str, commentable_id)
     commentable_str.constantize.find(commentable_id)
   end
+
+  def can_be_deleted_by?(user)
+    self.user == user
+  end
+
+  def discussion
+    return commentable if commentable_type == "Discussion"
+  end
 end
