@@ -19,16 +19,30 @@ describe "Motions" do
     end
 
     context "viewing a motion in one of their groups" do
-      before :each do
-        visit motion_path(id: @motion.id)
-      end
-
       it "can see motion discussion" do
+        visit motion_path(id: @motion.id)
+
         should have_css('#discussion-panel')
       end
 
-      it "can comment on motions" do
+      it "can see 'add comment' form on motions" do
+        visit motion_path(id: @motion.id)
+
         should have_css('#new-comment')
+      end
+
+      it "can see link to delete their own comments" do
+        @motion.discussion.add_comment(@user, "hello!")
+
+        visit motion_path(id: @motion.id)
+        find('.comment').should have_content('Delete')
+      end
+
+      it "cannot see link to delete other people's comments" do
+        @motion.discussion.add_comment(@user2, "hello!")
+
+        visit motion_path(id: @motion.id)
+        find('.comment').should_not have_content('Delete')
       end
     end
 
@@ -43,7 +57,7 @@ describe "Motions" do
         should have_css('#discussion-panel')
       end
 
-      it "cannot comment on motions" do
+      it "cannot see 'add comment' form on motions" do
         should_not have_css('#new-comment')
       end
     end
