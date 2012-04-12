@@ -13,4 +13,8 @@ module ApplicationHelper
         type.to_s
     end
   end
+
+  def format_linebreaks(text)
+    h(text).gsub(/\n/, '<br/>').html_safe
+  end
 end
