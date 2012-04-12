@@ -133,6 +133,9 @@ $ ->
       vote_count = $("#votes-table img[alt='#{vote_type} image']").length
     return vote_count
 
-  $("#description").html(linkify_html($("#description").html()))
-  $(".comment-body").each(-> $(this).html(linkify_html($(this).html())))
+  # NOTE (Jon): We should implement a better method for scoping javascript to specific pages
+  # http://stackoverflow.com/questions/6167805/using-rails-3-1-where-do-you-put-your-page-specific-javascript-code
+  if $("#motion").length > 0
+    $("#description").html(linkify_html($("#description").html()))
+    $(".comment-body").each(-> $(this).html(linkify_html($(this).html())))
 

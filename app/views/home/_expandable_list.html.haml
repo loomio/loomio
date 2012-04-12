@@ -15,7 +15,7 @@
             |
             =link_to 'change vote', edit_motion_vote_path(motion, current_user.motion_vote(motion)), class: 'no-toggle'
       .dashboard-motion-description
-        =motion.description
+        = simple_format h(motion.description)
       .row
         .span4
           .pie{ :id => "vgraph_#{motion.id}" }
