@@ -44,6 +44,14 @@ describe "Motions" do
         visit motion_path(id: @motion.id)
         find('.comment').should_not have_content('Delete')
       end
+
+      it "can 'like' a comment" do
+        @motion.discussion.add_comment(@user2, "hello!")
+
+        visit motion_path(id: @motion.id)
+        find('.comment').find_link('Like').click
+        should have_content("Liked by #{@user.name}")
+      end
     end
 
     context "viewing a public motion (of a group they don't belong to)" do
