@@ -132,3 +132,7 @@ $ ->
     if ($("#votes-table img[alt='#{vote_type} image']").is(":visible"))
       vote_count = $("#votes-table img[alt='#{vote_type} image']").length
     return vote_count
+
+  $("#description").html(linkify_html($("#description").html()))
+  $(".comment-body").each(-> $(this).html(linkify_html($(this).html())))
+
