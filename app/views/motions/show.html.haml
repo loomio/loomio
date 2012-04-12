@@ -30,7 +30,7 @@
             - else
               Closed on
               .relativetime= @motion.close_date
-          %h4#description= simple_format(@motion.description)
+          %h4#description= simple_format h(@motion.description)
   %hr{style: "margin-bottom:0px"}
   .row
     .span8#discussion-panel
@@ -44,7 +44,9 @@
               = submit_tag "Post comment", class: "btn primary submit"
         - @comments.each do |comment|
           %div.comment
-            %p.comment-body= link_to(comment.user.name, "#") + " " + comment.body
+            %p
+              = link_to(comment.user.name, "#")
+              %span.comment-body= format_linebreaks(comment.body)
             %p.comment-time
               = time_ago_in_words(comment.created_at) + " ago"
               - if comment.user == current_user
@@ -95,6 +97,7 @@
 
 :coffeescript
   $ ->
+    # Display vote graph
     @pie_graph_view = new Tautoko.Views.Utils.GraphView
       el: '#graph.pie'
       id_string: 'graph'
