@@ -68,20 +68,21 @@
             = "#{percent_voted}% of members have voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
         #votes
           - if @motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
+            #vote-form
+              =form_for([@motion, @vote], html:{class:'form-stacked'}) do |f|
+                .clearfix
+                  =f.text_field :statement, placeholder: "Give a reason for your vote", id: 'limited', class: "input"
+                .char_count
+                =f.hidden_field :position
             #vote-buttons
               =link_to image_tag("hand-yes.png", height:'40', width:'40', title:'yes', alt:'yes image'), '#',
-                class: 'btn vote', onclick: "$('#vote_position').val('yes'); $('#new_vote').submit();"
+                class: 'btn vote', onclick: "$('#vote_position').val('yes');"
               =link_to image_tag("hand-abstain.png", height:'40', width:'40', title:'abstain', alt:'abstain image'), '#',
-                class: 'btn vote', onclick: "$('#vote_position').val('abstain'); $('#new_vote').submit();"
+                class: 'btn vote', onclick: "$('#vote_position').val('abstain');"
               =link_to image_tag("hand-no.png", height:'40', width:'40', title:'no', alt:'no image'), '#',
-                class: 'btn vote', onclick: "$('#vote_position').val('no'); $('#new_vote').submit();"
+                class: 'btn vote', onclick: "$('#vote_position').val('no');"
               =link_to image_tag("hand-block.png", height:'40', width:'40',title:'block', alt:'block image'), '#',
-                class: 'btn vote', onclick: "$('#vote_position').val('block'); $('#new_vote').submit();"
-            #vote-form
-              =semantic_form_for([@motion, @vote], html:{class:'form-stacked'}) do |f|
-                =f.input :statement, label: false, placeholder: "Give a reason for your vote"
-                =f.hidden_field :position
-
+                class: 'btn vote', onclick: "$('#vote_position').val('block');"
           #votes-table= render "votes_table", motion: @motion
           #still-to-vote
             - if @motion.group_count > 0

@@ -14,9 +14,6 @@ div.motion{
 
 .bordered{ border-top: 1px solid lightgrey; }
 .centered{ text-align: center; }
-.header-space{ margin-top: 15px; }
-.sub-header{ margin-top: 10px; }
-.padding{ padding-top: 30px }
 
 /*** Show Motion Page ***/
 #motion{
@@ -35,27 +32,32 @@ div.motion{
     margin-top: 30px;
     color: #555;
   }
-  #votes-table table{
-    font-size: 14px;
-    .vote-statement{
-      max-width: 300px;
-      color: black;
-    }
-    margin-top: 50px;
-    #no-votes-msg{ font-size: 14px; }
-  }
   #still-to-vote{
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 20px;
     #still-to-vote-list { margin-top: 5px; }
- }
+  }
   #graph{
     height: 300px;
     margin-left: -20px;
   }
-
   #new_vote{ padding-left: 0px; }
+
+  #vote-form{
+    margin-top: 10px;
+    #vote-statement{ margin-left: 0px; padding-left: 0px; }
+    .input { margin-left: 0px; }
+    .clearfix { padding-top: 0px; padding-bottom: 0px; }
+    .char_count {
+      float: right;
+      padding-right: 70px;
+      color: #999999;
+      font-size: 12px;
+      margin-top: -6px;
+    }
+  }
   #vote-buttons{
+    margin-top: -15px;
     .btn.vote{
       border-radius: 5px;
       webkit-border-radius: 5px;
@@ -67,87 +69,13 @@ div.motion{
       height: 40px;
       }
   }
-
-  /*Hidden vote form on show motions page*/
-  #vote-form{
-    margin-top: 10px;
-    #vote-statement{ margin-left: 0px; padding-left: 0px; }
-  }
-}
-
-/*** Dashboard Page ***/
-.motions-list{
-  padding-top: 6px;
-  margin-bottom: 40px;
-  border-bottom: 1px solid lightgrey;
-  .vote-icon {
-    padding-top: 10px;
-    padding-left: 8px;
-    width: 13px;
-    text-align: left;
-  }
-  #motion-header{
-    #motion-title{ font-size: 16px; }
-    line-height: 18px;
-    .group-name {
-      font-size: 14px;
-      a {color: grey;}
-    }
-  }
-  .close-info {
-    font-size: 13px;
-    text-align: right;
-    padding-top: 8px;
-    color: grey;
-  }
-  .toggle-button{
-    padding-top: 6px;
-    font-weight: bold;
-    color: #999999;
-    text-align: center;
-  }
-  .action-links{
-    a{color: grey}
-    margin-top: -5px;
-    font-size: 11px;
-  }
-  .expanded-area{ margin-left: 60px; }
-  .dashboard-motion-description{
+  #votes-table table{
     font-size: 14px;
-    line-height: 1.4em;
-    margin-top: 10px;
-  }
-  .pie {
-    height: 170px;
-    width: 400px;
-    float: left;
-  }
-  #vote-buttons{
-    padding-top: 5px;
-    width: 140px;
-    .sml-vote-btn{
-      border-radius: 1px;
-      webkit-border-radius: 5px;
-      moz-border-radius: 5px;
-      box-shadow: 1px 1px 4px #999999;
-      webkit-box-shadow: 1px 1px 4px #999999;
-      moz-box-shadow: 1px 1px 4px #999999;
-      padding: 5px;
-      padding-top: 10px;
-      padding-bottom: 3px;
+    .vote-statement{
+      max-width: 300px;
+      color: black;
     }
-  }
-  #vote-form{
-    margin-left: 0px;
-    input { font-size: 14px; width: 190px; }
-  }
-  .closed{
-    background-color: #F9F9F9;
-    #motion-title{ font-weight: normal; }
-  }
-  .voting{
-    background-color: #FFFFFF;
-    #motion-title{ font-weight: bold; }
+    margin-top: 20px;
   }
 }
 
@@ -216,13 +144,6 @@ div.motion{
   margin-top: 40px;
   padding-bottom: 50px;
 }
-
-h2 { font-size: 18px; line-height: 18px; font-weight: normal; color: #555; } /* Main Header */
-h4 { font-size: 16px; line-height: 20px; font-weight: normal; color: #888; } /* Item grey */
-h5 { font-size: 14px; line-height: 18px; font-weight: normal; color: #888; }
-h6 { font-size: 14px; line-height: 18px; font-weight: normal; color: #888; } /* other details CAPS */
-h7 { font-size: 12px; line-height: 16px; color: grey; }
-
 
 .group-tags .btn {
   font-size: 12px;
