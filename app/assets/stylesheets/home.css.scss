@@ -8,4 +8,59 @@
 }
 
 .dashboard-motion-description p { font-size: 14px; }
+.motions-list{
+  padding-top: 6px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid lightgrey;
+  .vote-icon {
+    padding-top: 10px;
+    padding-left: 8px;
+    width: 13px;
+    text-align: left;
+  }
+  #motion-header{
+    #motion-title{ font-size: 16px; }
+    line-height: 18px;
+    .group-name {
+      font-size: 14px;
+      a {color: grey;}
+    }
+  }
+  .close-info {
+    font-size: 13px;
+    text-align: right;
+    padding-top: 8px;
+    color: grey;
+  }
+  .toggle-button{
+    padding-top: 6px;
+    font-weight: bold;
+    color: #999999;
+    text-align: center;
+  }
+  .action-links{
+    a{color: grey}
+    margin-top: -5px;
+    font-size: 11px;
+  }
+  .expanded-area{ margin-left: 60px; }
+  .pie {
+    height: 170px;
+    width: 400px;
+    float: left;
+  }
+  #dash_percentage_to_vote {
+    margin-top: 10px;
+    padding-bottom: 10px;
+  }
+  .closed{
+    background-color: #F9F9F9;
+    #motion-title{ font-weight: normal; }
+  }
+  .voting{
+    background-color: #FFFFFF;
+    #motion-title{ font-weight: bold; }
+  }
+}
+>>>>>>> removed voting from dash
 
