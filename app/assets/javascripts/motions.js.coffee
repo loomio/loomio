@@ -93,32 +93,6 @@ $ ->
       $('#new_vote').submit()
   )
 
-  #** limit character count for statement**
-  pluralize_characters = (num) ->
-    if(num == 1)
-      return num + " character"
-    else
-      return num + " characters"
-
-  $("#limited").keyup(() ->
-    chars = $("#limited").val().length
-    left = 249 - chars
-    if(left >= 0)
-      $(".char_count").text(pluralize_characters(left) + " left")
-      $(".clearfix").removeClass("error")
-    else
-      left = left * (-1)
-      $(".char_count").text(pluralize_characters(left) + " too long")
-      $(".clearfix").addClass("error")
-  )
-
-  $(".vote").click((event) ->
-    if $(".clearfix").hasClass("error")
-      $('#new_vote').preventDefault()
-    else
-      $('#new_vote').submit()
-  )
-
   #** tagging stuff **
   if $("#motion").length > 0
     $(".group-tags button").not(".not-used").each (index, element) ->
