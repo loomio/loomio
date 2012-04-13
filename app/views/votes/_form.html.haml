@@ -1,4 +1,4 @@
-=semantic_form_for [motion, vote] do |f|
+=simple_form_for [motion, vote] do |f|
   =f.input :position, as: :select, collection: Vote::POSITIONS
   =f.input :statement, as: :text
   =f.commit_button

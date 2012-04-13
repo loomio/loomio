@@ -1,6 +1,6 @@
 %h2
   =@group.name
-=semantic_form_for(@membership) do |f|
+=simple_form_for(@membership) do |f|
   %input{name: "membership[group_id]", type: :hidden, value: @group.id}
   =f.buttons do
     =f.commit_button "request access to this group"

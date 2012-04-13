@@ -6,13 +6,13 @@
         confirm: "Are you sure you wish to withdraw your membership request from this group?",
         class: "btn small", id: "membership-requested"
     - else
-      =semantic_form_for(Membership.new) do |f|
+      =simple_form_for(Membership.new) do |f|
         %input{name: "membership[group_id]", type: :hidden, value: group.id}
         =f.commit_button "Request membership", button_html: { class: "btn primary" }
 
   - if group.can_invite_members?(current_user)
     %h4.title-row Add member
-    = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
+    = simple_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
       = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id}
       = f.input :email, placeholder: "Email address", label: false
       %input#group_id{ type: "hidden", value: group.id }
