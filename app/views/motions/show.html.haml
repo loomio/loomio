@@ -57,7 +57,8 @@
           %h4 There are no comments yet on this motion
     .span8#votes-panel
       #stats
-        =render "votes_filters", clicked_tag: @clicked_tag, motion: @motion
+        -# Vote tags aren't working... so let's hide them for now
+        -#=render "votes_filters", clicked_tag: @clicked_tag, motion: @motion
         #graph.pie
         %h5#percentage-to-vote
           - group_size = @motion.group_count
