@@ -5,6 +5,7 @@
 current_tags = ""
 current_tag_filter = "active"
 $ ->
+  $(".error-message").hide()
   if $("#motion-form").length > 0
     #** Edit Moition **
     date = new Date($("#motion_close_date").val())
@@ -24,6 +25,15 @@ $ ->
       $("#input_date").datepicker("setDate", datetime)
       $("#date_hour").val(hours)
       $("#motion_close_date").val(datetime)
+
+  #** presnece validations: use this function any where just assign the class .presence-required
+  #   to the text field in question and the .check-presence to the submit button **
+  $(".check-presence").click((event, ui) ->
+    if $(".presence-required").children().first().val() == ""
+      $(".clearfix").addClass("error")
+      $(".error-message").show()
+      false
+  )
 
   #** Reload hidden close_date field **
   $("#input_date").change((e) ->

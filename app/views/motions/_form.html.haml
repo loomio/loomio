@@ -2,7 +2,9 @@
   =form_for(*form_args) do |f|
     %h5
       Title
-      .left-format= f.text_field :name
+      .clearfix
+        .presence-required= f.text_field :name, class: "input"
+        .error-message Title can not be blank
       Link to external discussion (optional)
       .left-format=f.text_field :discussion_url, placeholder: "http://site.com/your-discussion"
       .left-format
@@ -15,7 +17,7 @@
         = select_hour(input_time, ampm: true)
       Details
       .left-format= f.text_area :description
-    .standard-button= f.submit
+      .standard-button.check-presence= f.submit
     =f.hidden_field :close_date, as: :hidden
     =f.hidden_field :phase, as: :hidden, value: "voting"
     =f.hidden_field :facilitator_id, as: :hidden, value: current_user.id
