@@ -2,7 +2,9 @@
   .span10
     =form_for(@group) do |f|
       %h5 Group Name
-      .left-format=f.text_field :name #, placeholder: "Group Name"
+      .clearfix
+        .presence-required= f.text_field :name, class: "input"
+        .error-message Group can not be blank
       %hr
       .privacy-settings
         %h2 Privacy Settings
@@ -18,4 +20,4 @@
           .span3
             =f.select :members_invitable_by, [:members, :admins],
               member_label: Proc.new { |option| group_permissions_label(option) }
-      .standard-button=f.submit
+      .standard-button.check-presence= f.submit
