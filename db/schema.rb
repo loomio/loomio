@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120411031907) do
+ActiveRecord::Schema.define(:version => 20120415204250) do
+
+  create_table "activity", :force => true do |t|
+    t.integer  "activity_count"
+    t.integer  "user_id"
+    t.integer  "motion_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activity", ["motion_id"], :name => "index_activity_on_motion_id"
+  add_index "activity", ["user_id"], :name => "index_activity_on_user_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
