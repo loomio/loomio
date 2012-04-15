@@ -12,7 +12,7 @@
       = link_to motion.name, motion, class: 'no-toggle'
     .group-name
       =link_to motion.group.name, motion.group, class: 'no-toggle'
-  .span3.close-info
+  .span4.close-info
     - if motion.close_date
       - if motion.closed?
         closed on
@@ -21,8 +21,8 @@
       = motion.close_date.strftime("%d/%m/%Y")
     - else
       no close date
-  .span1.toggle-button
-    +
+    #activity-count.span.label.default= 5
+    -#.toggle-button +
 
 :coffeescript
   jQuery ->
