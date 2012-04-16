@@ -81,8 +81,6 @@ class Group < ActiveRecord::Base
       membership = memberships.build_for_user(user)
     end
     membership.access_level = 'admin'
-    membership.valid?
-    puts membership.errors.inspect
     membership.save!
     reload
     membership
