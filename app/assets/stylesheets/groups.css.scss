@@ -124,8 +124,6 @@ $token-input-width: 278px;
     font-size: 14px;
     float: left;
   }
-  ul.membership-row li.name-label {
-  }
   ul.membership-row li.membership-admin-functions {
     float:right;
   }
@@ -141,6 +139,12 @@ $token-input-width: 278px;
     margin-top: 4px;
     padding-top: 5px;
     padding-bottom: 5px;
+    a.new_motion {
+      float: right;
+      margin-right: 5px;
+      font-weight: bold;
+      font-size: 18px
+    }
   }
 }
 

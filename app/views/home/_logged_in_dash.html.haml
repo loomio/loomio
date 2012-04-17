@@ -18,7 +18,15 @@
             Your groups
           #group-list
             - current_user.groups.each do |group|
-              %h4= link_to group.name, group_path(group)
+              %h4
+                = link_to group.name, group_path(group)
+                %span
+                  = link_to "+",
+                    new_motion_path({group_id: group.id}),
+                    :class => 'new_motion',
+                    :title => 'new motion for this group'
+
+
           = link_to "Create new group", new_group_path, :class => 'btn primary small'
   - else
     = link_to 'Create a group', new_group_path
