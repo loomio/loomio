@@ -23,6 +23,10 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  def default_motion
+    motions.first
+  end
+
   def can_add_comment?(user)
     group.users.include? user
   end

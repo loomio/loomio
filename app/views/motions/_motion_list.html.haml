@@ -21,7 +21,7 @@
       = motion.close_date.strftime("%d/%m/%Y")
     - else
       no close date
-    #activity-count.span.label.default= 5
+    #activity-count.span.label.default= motion.motion_activity(current_user)
     -#.toggle-button +
 
 :coffeescript

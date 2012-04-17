@@ -34,6 +34,7 @@ class Vote < ActiveRecord::Base
   delegate :name, :to => :user, :prefix => :user
 
   after_save :send_notifications
+  after_save :update_activity
 
   def position=(new_position)
     self.old_position = position
@@ -45,6 +46,11 @@ class Vote < ActiveRecord::Base
   end
 
   private
+
+    def update_activity
+      self.motion.update_activity_count
+    end
+
     def send_notifications
       if position == "block" && old_position != "block"
         MotionMailer.motion_blocked(self).deliver
