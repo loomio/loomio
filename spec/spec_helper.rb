@@ -85,12 +85,14 @@ def create_discussion(*args)
     discussion = Discussion.new
   end
   unless discussion.group
-    discussion.group = Group.make!
+    discussion.group = Group.make
+    discussion.group.save
   end
   unless discussion.author
-    discussion.author = User.make!
-    discussion.group.add_member! discussion.author
+    discussion.author = User.make
+    discussion.author.save
   end
+  discussion.group.add_member! discussion.author
   discussion.save
   discussion
 end
