@@ -84,7 +84,9 @@ def create_discussion(*args)
   else
     discussion = Discussion.new
   end
-  discussion.group = Group.make!
+  unless discussion.group
+    discussion.group = Group.make!
+  end
   unless discussion.author
     discussion.author = User.make!
     discussion.group.add_member! discussion.author

@@ -29,7 +29,6 @@ describe Comment do
   context "unliked by user" do
     before do
       comment.like user
-      #debugger
       comment.unlike user
     end
 
