@@ -10,7 +10,7 @@ class Users::InvitationsController < Devise::InvitationsController
         @user = User.invite_and_notify! params[:user], current_inviter, group
         if @user.errors.empty?
           set_flash_message :notice, :send_instructions, :email => email
-          respond_with @user, :location => after_invite_path_for(@user)
+          respond_with @user, :location => group_url(group)
         else
           respond_with_navigational(@user) { render :new }
         end
@@ -22,17 +22,12 @@ class Users::InvitationsController < Devise::InvitationsController
           group.add_member! existing_user
           UserMailer.added_to_group(existing_user, group).deliver
         end
-        redirect_to after_invite_path_for(existing_user)
+        redirect_to group_url(group)
       end
     else
       flash[:error] = "You do not have permission to invite new members."
       redirect_to group_url(group)
     end
-  end
-
-  def after_invite_path_for(user)
-    group = user.groups.first
-    group_path(group)
   end
 
   def after_accept_path_for(user)
