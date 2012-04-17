@@ -38,4 +38,24 @@ describe User do
     @user = User.make!(email: "foobar@example.com")
     User.find_by_email("foObAr@exaMPLE.coM").should == @user
   end
+
+  it "can create a new motion_activity_read_log" do
+    @user = User.make!
+    @group = Group.make!
+    @motion = create_motion(group: @group)
+    @user.update_motion_activity_read_log(@motion)
+    MotionActivityReadLog.count.should == 1
+  end
+
+  it "can update an existing motion_activity_read_log" do
+    @user = User.make!
+    @group = Group.make!
+    @motion = create_motion(group: @group)
+    @motion.activity_count = 2
+    @user.update_motion_activity_read_log(@motion)
+    @motion.activity_count = 7
+    @user.motion_activity_last_read_at(@motion).should == 2
+    @user.update_motion_activity_read_log(@motion)
+    @user.motion_activity_last_read_at(@motion).should == 7
+  end
 end

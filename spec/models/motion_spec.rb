@@ -55,6 +55,13 @@ describe Motion do
     @motion.discussion.should_not be_nil
   end
 
+  it "can update activity_count" do
+    @motion = create_motion
+    @motion.activity_count = 3
+    @motion.update_activity_count
+    @motion.activity_count.should == 4
+  end
+
   context "users have voted" do
     before :each do
       @motion = create_motion
@@ -72,6 +79,7 @@ describe Motion do
       Vote.create!(position: 'yes', motion: @motion, user: user3)
       @motion.close_voting
     end
+
 
     context "motion closed" do
       it "records and freezes no_vote_count" do

@@ -11,18 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120415204250) do
-
-  create_table "activity", :force => true do |t|
-    t.integer  "activity_count"
-    t.integer  "user_id"
-    t.integer  "motion_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "activity", ["motion_id"], :name => "index_activity_on_motion_id"
-  add_index "activity", ["user_id"], :name => "index_activity_on_user_id"
+ActiveRecord::Schema.define(:version => 20120416050031) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -67,6 +56,14 @@ ActiveRecord::Schema.define(:version => 20120415204250) do
     t.string   "access_level"
   end
 
+  create_table "motion_activity_read_logs", :force => true do |t|
+    t.integer  "last_read_at"
+    t.integer  "motion_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "motions", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -81,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20120415204250) do
     t.datetime "close_date"
     t.integer  "discussion_id"
     t.boolean  "disable_discussion", :default => false
+    t.integer  "activity_count",     :default => 0
   end
 
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"

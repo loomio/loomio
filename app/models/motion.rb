@@ -5,6 +5,7 @@ class Motion < ActiveRecord::Base
   belongs_to :author, :class_name => 'User'
   belongs_to :facilitator, :class_name => 'User'
   has_many :votes
+  has_many :motion_activity_read_logs
   belongs_to :discussion
   validates_presence_of :name, :group, :author, :facilitator_id
   validates_inclusion_of :phase, in: PHASES
@@ -143,6 +144,16 @@ class Motion < ActiveRecord::Base
 
   def group_members
     group.users
+  end
+
+  def update_activity_count
+    self.activity_count += 1
+    save
+  end
+
+  def motion_activity(user)
+    activity_count
+    #- user.motion_activity_last_read_at(self)
   end
 
   private

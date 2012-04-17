@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   has_many :motions_voting, through: :groups, :source => :motions, :conditions => {phase: 'voting'}
   has_many :motions_closed, through: :groups, :source => :motions, :conditions => {phase: 'closed'}
 
+  has_many :motion_activity_read_logs
+
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
 
@@ -48,6 +50,21 @@ class User < ActiveRecord::Base
   new_user
   end
 
+  def update_motion_activity_read_log(motion)
+    if MotionActivityReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
+      MotionActivityReadLog.create(last_read_at: motion.activity_count, user_id: id, motion_id: motion.id)
+    else
+      log = MotionActivityReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+      log.last_read_at = motion.activity_count
+      log.save
+    end
+  end
+
+  def motion_activity_last_read_at(motion)
+    log = MotionActivityReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+    log.last_read_at
+  end
+
   private
     def ensure_name_entry
       unless name
@@ -56,4 +73,3 @@ class User < ActiveRecord::Base
       end
     end
 end
-

@@ -13,6 +13,7 @@ class MotionsController < GroupBaseController
     @votes_for_graph = @motion.votes_graph_ready
     @vote = Vote.new
     @comments = @motion.discussion.comment_threads.order("created_at DESC")
+    current_user.update_motion_activity_read_log(@motion)
   end
 
   def new
