@@ -50,7 +50,21 @@ describe "Motions" do
 
         visit motion_path(id: @motion.id)
         find('.comment').find_link('Like').click
+        # TODO: should say "Liked by user2 and you."
         should have_content("Liked by #{@user.name}")
+        should_not have_link("Like")
+        should have_link("Unlike")
+      end
+
+      it "can 'unlike' a comment" do
+        @motion.discussion.add_comment(@user2, "hello!")
+        @motion.discussion.comments.first.like(@user)
+
+        visit motion_path(id: @motion.id)
+        find('.comment').find_link('Unlike').click
+        should_not have_content("Liked by #{@user.name}")
+        should have_link("Like")
+        should_not have_link("Unlike")
       end
     end
 
@@ -96,7 +110,7 @@ describe "Motions" do
       fill_in 'motion_description', with: 'Blahhhhhh'
       uncheck 'motion_enable_discussion'
       click_on 'Create Motion'
-      should have_content("Discussions have been disabled for this motion")
+      should have_content("Comments have been disabled for this motion")
     end
   end
 end

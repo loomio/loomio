@@ -26,4 +26,12 @@ class Discussion < ActiveRecord::Base
   def can_add_comment?(user)
     group.users.include? user
   end
+
+  def default_motion
+    motions.first
+  end
+
+  def comments
+    comment_threads.order("created_at DESC")
+  end
 end

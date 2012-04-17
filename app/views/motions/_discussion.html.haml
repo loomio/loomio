@@ -1,0 +1,34 @@
+- if motion.disable_discussion
+  - if motion.discussion_url.present?
+    %h4= "Discuss this motion here: <a href='#{motion.discussion_url}'>#{motion.discussion_url}</a>".html_safe
+  - else
+    %h4 Comments have been disabled for this motion
+- else
+  - if @group.users_include? current_user
+    = form_tag add_comment_discussion_path(discussion), id: "new-comment-form" do
+      = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
+      #new-comment-submit
+        = submit_tag "Post comment", class: "btn primary submit"
+  - @comments.each do |comment|
+    - likes = comment.likes
+    %div.comment
+      %p
+        %span.comment-username= link_to(comment.user.name, "#")
+        %span.comment-body= format_linebreaks(comment.body)
+      %p.comment-time
+        = time_ago_in_words(comment.created_at) + " ago"
+        = " · "
+        - if likes.find_by_user_id(current_user.id).nil?
+          = link_to "Like", like_comment_path(comment), method: :post
+        - else
+          = link_to "Unlike", unlike_comment_path(comment), method: :post
+        - if comment.user == current_user
+          = " · "
+          = link_to "Delete", comment_path(comment), method: :delete,
+            :confirm => "Are you sure you want to delete this comment?"
+      - if likes.count > 0
+        %p.comment-likes
+          - likers = likes.map { |like| link_to(like.user_name, "#") }
+          = "Liked by #{likers.join(', ')}".html_safe
+  - if discussion.comment_threads.count == 0
+    %h4 There are no comments yet on this motion
