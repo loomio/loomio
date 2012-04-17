@@ -13,6 +13,8 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
 
+  has_many :comment_votes
+
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
   # example in readme
@@ -52,7 +54,28 @@ class Comment < ActiveRecord::Base
     self.user == user
   end
 
+  #
+  # CUSTOM METHODS (not part of acts_as_commentable)
+  #
+
+  def like(user)
+    CommentVote.create(comment: self, user: user, value: true)
+  end
+
+  def unlike(user)
+    like = CommentVote.where("comment_id = ? AND user_id = ? AND value = 1", id, user.id).first
+    like.destroy if like
+  end
+
+  def likes
+    return comment_votes.where("value = 1")
+  end
+
   def discussion
     return commentable if commentable_type == "Discussion"
+  end
+
+  def default_motion
+    discussion.default_motion
   end
 end
