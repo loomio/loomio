@@ -16,6 +16,8 @@ class Motion < ActiveRecord::Base
   after_create :email_motion_created
 
   attr_accessor :create_discussion
+  attr_accessor :enable_discussion
+  before_save :set_disable_discussion
 
   include AASM
   aasm :column => :phase do
@@ -173,6 +175,12 @@ class Motion < ActiveRecord::Base
         errors.add(:base,
                    "Cannot have both a discussion and a discussion_url " +
                    " (must contain only one or the other)")
+      end
+    end
+
+    def set_disable_discussion
+      if @enable_discussion
+        self.disable_discussion = @enable_discussion == "1" ? "0" : "1"
       end
     end
 end
