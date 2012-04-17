@@ -63,12 +63,16 @@ class Comment < ActiveRecord::Base
   end
 
   def unlike(user)
-    like = CommentVote.where("comment_id = ? AND user_id = ? AND value = 1", id, user.id).first
+    like = likes.find_by_user_id(user.id)
     like.destroy if like
   end
 
   def likes
     return comment_votes.where("value = 1")
+  end
+
+  def can_like?(user)
+    user.groups.include? discussion.group
   end
 
   def discussion

@@ -29,6 +29,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'machinist', '>= 2.0.0.beta2'
   gem 'faker'
   gem 'rspec-rails', '~> 2.8.1'

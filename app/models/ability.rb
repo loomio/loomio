@@ -43,7 +43,9 @@ class Ability
     end
 
     can :destroy, Comment, user_id: user.id
-    can [:like, :unlike], Comment#, discussion: { group_id: user.groups }
+    can [:like, :unlike], Comment do |comment|
+      comment.can_like? user
+    end
 
   end
 end
