@@ -24,8 +24,6 @@ ActiveRecord::Schema.define(:version => 20120412035426) do
   add_index "comment_votes", ["comment_id"], :name => "index_comment_votes_on_comment_id"
   add_index "comment_votes", ["user_id"], :name => "index_comment_votes_on_user_id"
 
-ActiveRecord::Schema.define(:version => 20120416050031) do
-
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
