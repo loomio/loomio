@@ -21,6 +21,9 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :motions
 
+  belongs_to :parent, :class_name => "Group"
+  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
+
   delegate :include?, :to => :users, :prefix => :users
 
   acts_as_tagger
