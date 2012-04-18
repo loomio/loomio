@@ -68,7 +68,7 @@ class Comment < ActiveRecord::Base
   end
 
   def likes
-    return comment_votes.where("value = 1")
+    return comment_votes.where("value = true")
   end
 
   def can_be_liked_by?(user)
