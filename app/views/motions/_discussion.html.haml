@@ -30,6 +30,10 @@
       - if likes.count > 0
         %p.comment-likes
           - likers = likes.map { |like| link_to(like.user_name, "#") }
-          = "Liked by #{likers.join(', ')}".html_safe
+          - if likers.length > 1
+            - likers = likers.slice(0, likers.length - 1).join(", ").concat(" and " + likers.slice(-1))
+          - else
+            - likers = likers[0]
+          = "Liked by #{likers}".html_safe
   - if discussion.comment_threads.count == 0
     %h4 There are no comments yet on this motion
