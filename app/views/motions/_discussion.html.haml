@@ -4,7 +4,7 @@
   - else
     %h4 Comments have been disabled for this motion
 - else
-  - if @group.users_include? current_user
+  - if discussion.can_be_commented_on_by? current_user
     = form_tag add_comment_discussion_path(discussion), id: "new-comment-form" do
       = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
       #new-comment-submit
@@ -17,11 +17,12 @@
         %span.comment-body= format_linebreaks(comment.body)
       %p.comment-time
         = time_ago_in_words(comment.created_at) + " ago"
-        = " · "
-        - if likes.find_by_user_id(current_user.id).nil?
-          = link_to "Like", like_comment_path(comment), method: :post
-        - else
-          = link_to "Unlike", unlike_comment_path(comment), method: :post
+        - if comment.can_be_liked_by?(current_user)
+          = " · "
+          - if likes.find_by_user_id(current_user.id).nil?
+            = link_to "Like", like_comment_path(comment), method: :post
+          - else
+            = link_to "Unlike", unlike_comment_path(comment), method: :post
         - if comment.user == current_user
           = " · "
           = link_to "Delete", comment_path(comment), method: :delete,

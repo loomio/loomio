@@ -39,12 +39,12 @@ class Ability
     #
 
     can :add_comment, Discussion do |discussion|
-      discussion.can_add_comment? user
+      discussion.can_be_commented_on_by? user
     end
 
     can :destroy, Comment, user_id: user.id
     can [:like, :unlike], Comment do |comment|
-      comment.can_like? user
+      comment.can_be_liked_by? user
     end
 
   end

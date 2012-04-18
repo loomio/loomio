@@ -59,13 +59,18 @@ describe CommentsController do
         comment.stub(:unlike)
       end
 
+      it "checks permissions" do
+        app_controller.should_receive(:authorize!).and_return(true)
+        post :unlike, id: 23
+      end
+
       it "removes like from comment model" do
         comment.should_receive(:unlike).with(user)
-        post :unlike, id: comment.id
+        post :unlike, id: 23
       end
 
       it "redirects to motion page" do
-        post :unlike, id: comment.id
+        post :unlike, id: 23
         response.should redirect_to(motion_url(motion))
       end
     end
