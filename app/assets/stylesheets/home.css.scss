@@ -32,9 +32,18 @@
     padding-top: 8px;
     color: grey;
   }
+  .vote-alert-icon {
+    background: url("vote-icon.png");
+    background-size: 25px;
+    background-position-y: 8px;
+    background-position-x: 2px;
+    background-repeat: no-repeat;
+  }
+  .icon{ margin-top: -3px; height: 30px; }
   #activity-count {
+    font-size: 9px;
     display: inline;
-    margin-left: 10px;
+    margin-left: 20px;
   }
   .toggle-button{
     display: inline;

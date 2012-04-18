@@ -146,14 +146,14 @@ class Motion < ActiveRecord::Base
     group.users
   end
 
-  def update_activity_count
-    self.activity_count += 1
+  def update_vote_activity
+    self.vote_activity += 1
     save
   end
 
-  def motion_activity(user)
-    activity_count
-    #- user.motion_activity_last_read_at(self)
+  def update_dicussion_activity
+    self.discussion_activity += 1
+    save
   end
 
   private

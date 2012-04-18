@@ -12,17 +12,24 @@
       = link_to motion.name, motion, class: 'no-toggle'
     .group-name
       =link_to motion.group.name, motion.group, class: 'no-toggle'
-  .span4.close-info
+  .span3.close-info
     - if motion.close_date
       - if motion.closed?
         closed on
       - else
         closes on
-      = motion.close_date.strftime("%d/%m/%Y")
+        = motion.close_date.strftime("%d/%m/%Y")
     - else
       no close date
-    #activity-count.span.label.default= motion.motion_activity(current_user)
-    -#.toggle-button +
+  .span1
+    - vote_count = current_user.vote_activity_count(motion)
+    - if vote_count > 0
+      .icon.vote-alert-icon
+        #activity-count.span.label.important= vote_count
+    - discussion_count = current_user.discussion_activity_count(motion)
+    - if discussion_count > 0
+      .icon.vote-alert-icon
+        #activity-count.span.label.important= discussion_count
 
 :coffeescript
   jQuery ->

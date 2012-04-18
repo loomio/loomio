@@ -13,7 +13,7 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
 
-  after_create :update_activity
+  after_save :update_activity
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
@@ -64,6 +64,6 @@ class Comment < ActiveRecord::Base
 
 private
   def update_activity
-    #default_motion.update_activity_count
+    default_motion.update_discusion_activity
   end
 end

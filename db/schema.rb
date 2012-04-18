@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416050031) do
+ActiveRecord::Schema.define(:version => 20120418091148) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -56,8 +56,9 @@ ActiveRecord::Schema.define(:version => 20120416050031) do
     t.string   "access_level"
   end
 
-  create_table "motion_activity_read_logs", :force => true do |t|
-    t.integer  "last_read_at"
+  create_table "motion_read_logs", :force => true do |t|
+    t.integer  "vote_activity_when_last_read"
+    t.integer  "discussion_activity_when_last_read"
     t.integer  "motion_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -72,13 +73,14 @@ ActiveRecord::Schema.define(:version => 20120416050031) do
     t.integer  "facilitator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "phase",              :default => "voting", :null => false
-    t.string   "discussion_url",     :default => "",       :null => false
+    t.string   "phase",               :default => "voting", :null => false
+    t.string   "discussion_url",      :default => "",       :null => false
     t.integer  "no_vote_count"
     t.datetime "close_date"
     t.integer  "discussion_id"
-    t.boolean  "disable_discussion", :default => false
-    t.integer  "activity_count",     :default => 0
+    t.boolean  "disable_discussion",  :default => false
+    t.integer  "vote_activity",       :default => 0
+    t.integer  "discussion_activity", :default => 0
   end
 
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"

@@ -111,8 +111,8 @@ describe MotionsController do
 
         response.should be_success
       end
-      it "should update the motion_activity_read_log" do
-        user.should_receive(:update_motion_activity_read_log).with(motion)
+      it "should update the motion_read_log" do
+        user.should_receive(:update_motion_read_log).with(motion)
 
         motion.stub_chain(:discussion, :comment_threads, :order).and_return([])
         get :show, group_id: group.id, id: motion.id
