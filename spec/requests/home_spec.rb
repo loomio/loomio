@@ -29,13 +29,5 @@ describe "Home" do
         should have_content("Your groups")
       end
     end
-
-    context "with motions with activity can see activity count" do
-      it "sees dashboard" do
-        visit root_path
-
-        should have_css('#activity-count')
-      end
-    end
   end
 end

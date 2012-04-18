@@ -50,19 +50,41 @@ class User < ActiveRecord::Base
   new_user
   end
 
-  def update_motion_activity_read_log(motion)
-    if MotionActivityReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
-      MotionActivityReadLog.create(last_read_at: motion.activity_count, user_id: id, motion_id: motion.id)
+  def update_motion_read_log(motion)
+    if MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
+      MotionReadLog.create(vote_activity_when_last_read: motion.vote_activity, discussion_activity_when_last_read: motion.discussion_activity, user_id: id, motion_id: motion.id)
     else
-      log = MotionActivityReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-      log.last_read_at = motion.activity_count
+      log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+      log.vote_activity_when_last_read = motion.vote_activity
+      log.discussion_activity_when_last_read = motion.discussion_activity
       log.save
     end
   end
 
-  def motion_activity_last_read_at(motion)
-    log = MotionActivityReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-    log.last_read_at
+  def vote_activity_when_last_read(motion)
+    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+    if log
+      log.vote_activity_when_last_read
+    else
+      0
+    end
+  end
+
+  def discussion_activity_when_last_read(motion)
+    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+    if log
+      log.discussion_activity_when_last_read
+    else
+      0
+    end
+  end
+
+  def vote_activity_count(motion)
+    motion.vote_activity - vote_activity_when_last_read(motion)
+  end
+
+  def discussion_activity_count(motion)
+    motion.discussion_activity - discussion_activity_when_last_read(motion)
   end
 
   private

@@ -46,9 +46,8 @@ class Vote < ActiveRecord::Base
   end
 
   private
-
     def update_activity
-      self.motion.update_activity_count
+      self.motion.update_vote_activity
     end
 
     def send_notifications

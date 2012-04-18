@@ -55,12 +55,19 @@ describe Motion do
     @motion.discussion.should_not be_nil
   end
 
-  it "can update activity_count" do
+  it "can update vote_activity" do
     @motion = create_motion
-    @motion.activity_count = 3
-    @motion.update_activity_count
-    @motion.activity_count.should == 4
+    @motion.vote_activity = 3
+    @motion.update_vote_activity
+    @motion.vote_activity.should == 4
   end
+
+  #it "can update discussion_activity" do
+    #@motion = create_motion
+    #@motion.discussion_activity = 3
+    #@motion.update_discussion_activity
+    #@motion.discussion_activity.should == 4
+  #end
 
   context "users have voted" do
     before :each do
