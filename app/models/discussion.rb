@@ -16,14 +16,22 @@ class Discussion < ActiveRecord::Base
   validates_with AuthorValidator
 
   def add_comment(user, comment)
-    if can_add_comment? user
+    if can_be_commented_on_by? user
       comment = Comment.build_from self, user.id, comment
       comment.save
       comment
     end
   end
 
-  def can_add_comment?(user)
+  def can_be_commented_on_by?(user)
     group.users.include? user
+  end
+
+  def default_motion
+    motions.first
+  end
+
+  def comments
+    comment_threads.order("created_at DESC")
   end
 end

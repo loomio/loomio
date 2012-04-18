@@ -12,7 +12,6 @@ class MotionsController < GroupBaseController
     @user_already_voted = @motion.user_has_voted?(current_user)
     @votes_for_graph = @motion.votes_graph_ready
     @vote = Vote.new
-    @comments = @motion.discussion.comment_threads.order("created_at DESC")
   end
 
   def new
