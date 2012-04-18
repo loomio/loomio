@@ -3,6 +3,16 @@ class CommentsController < BaseController
 
   def destroy
     flash[:notice] = "Comment deleted."
-    destroy!{ motion_path(resource.discussion.motions.first) }
+    destroy!{ motion_path(resource.default_motion) }
+  end
+
+  def like
+    resource.like current_user
+    redirect_to motion_path(resource.default_motion)
+  end
+
+  def unlike
+    resource.unlike current_user
+    redirect_to motion_path(resource.default_motion)
   end
 end
