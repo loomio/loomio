@@ -8,8 +8,7 @@ describe DiscussionsController do
 
   context "authenticated user" do
     before do
-      app_controller.stub(:current_user).and_return(user)
-      app_controller.stub(:authenticate_user!).and_return(true)
+      sign_in user
       app_controller.stub(:authorize!).and_return(true)
       app_controller.stub(:resource).and_return(discussion)
     end
