@@ -11,18 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120412035426) do
-
-  create_table "comment_votes", :force => true do |t|
-    t.integer  "comment_id"
-    t.integer  "user_id"
-    t.boolean  "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comment_votes", ["comment_id"], :name => "index_comment_votes_on_comment_id"
-  add_index "comment_votes", ["user_id"], :name => "index_comment_votes_on_user_id"
+ActiveRecord::Schema.define(:version => 20120411221314) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -57,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20120412035426) do
     t.datetime "updated_at"
     t.string   "viewable_by"
     t.string   "members_invitable_by"
+    t.integer  "parent_id"
   end
 
   create_table "memberships", :force => true do |t|
@@ -103,19 +93,19 @@ ActiveRecord::Schema.define(:version => 20120412035426) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",    :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => ""
+    t.string   "email",                                :default => "",    :null => false
+    t.string   "encrypted_password",                   :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",                        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                                 :default => false
+    t.boolean  "admin",                                :default => false
     t.string   "name"
     t.string   "unconfirmed_email"
     t.string   "invitation_token",       :limit => 60
