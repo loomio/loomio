@@ -8,7 +8,7 @@ describe CommentsController do
 
   context "authenticated user" do
     before do
-      app_controller.stub(:authenticate_user!).and_return(true)
+      sign_in user
       app_controller.stub(:authorize!).and_return(true)
       app_controller.stub(:resource).and_return(comment)
     end
@@ -32,7 +32,6 @@ describe CommentsController do
 
     context "user likes a comment" do
       before do
-        sign_in user
         comment.stub(:like)
       end
 
@@ -54,7 +53,6 @@ describe CommentsController do
 
     context "user unlikes a comment" do
       before do
-        sign_in user
         comment.stub(:unlike)
       end
 
