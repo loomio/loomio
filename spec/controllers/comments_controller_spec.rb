@@ -5,7 +5,6 @@ describe CommentsController do
   let(:user) { stub_model(User) }
   let(:motion) { mock_model(Motion) }
   let(:comment) { mock_model(Comment, default_motion: motion) }
-  let(:previous_url) { motion_url(motion) }
 
   context "authenticated user" do
     before do
