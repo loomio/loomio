@@ -146,7 +146,7 @@ class Motion < ActiveRecord::Base
   end
 
   def comments
-    discussion.comment_threads.order("created_at DESC")
+    discussion.comments
   end
 
   private
