@@ -71,7 +71,7 @@ class Comment < ActiveRecord::Base
     return comment_votes.where("value = 1")
   end
 
-  def can_like?(user)
+  def can_be_liked_by?(user)
     user.groups.include? discussion.group
   end
 

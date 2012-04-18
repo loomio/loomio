@@ -72,6 +72,7 @@ describe "Motions" do
       before :each do
         membership = @group.memberships.find_by_user_id(@user.id)
         membership.destroy
+        @motion.discussion.add_comment(@user2, "hello!")
         visit motion_path(id: @motion.id)
       end
 
@@ -81,6 +82,11 @@ describe "Motions" do
 
       it "cannot see 'add comment' form on motions" do
         should_not have_css('#new-comment')
+      end
+
+      it "cannot see 'like/unlike' options on comment " do
+        find('.comment').should_not have_link('Like')
+        find('.comment').should_not have_link('Unlike')
       end
     end
 
