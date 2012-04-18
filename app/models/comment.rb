@@ -84,6 +84,7 @@ class Comment < ActiveRecord::Base
     discussion.default_motion
   end
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 private
   def update_activity
@@ -92,11 +93,16 @@ private
 =======
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> discussion activity half finished
 
 private
   def update_activity
-    #default_motion.update_activity_count
+    default_motion.update_discusion_activity
   end
+<<<<<<< HEAD
 >>>>>>> activity_count implemented
 >>>>>>> activity_count implemented
+=======
+>>>>>>> discussion activity half finished
 end
