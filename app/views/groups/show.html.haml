@@ -1,6 +1,7 @@
 #group
   %h2.headerspace.group-title
-    = @group.parent.name + " > "unless @group.parent.nil?
+    = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
+    = " > " unless @group.parent.nil?
     = @group.name
     = link_to "Edit group", edit_group_path(@group), class: "btn small"
     = link_to "Add subgroup", group_add_subgroup_path(@group), class: "btn small" if @group.parent.nil?
@@ -21,4 +22,6 @@
         - @group.motions.closed.each do |motion|
           =render "home/expandable_list", motion: motion
     .span5
-      =render 'users', group: @group
+      #sidebar
+        =render 'users', group: @group
+        =render 'subgroups', group: @group unless @group.subgroups.empty?
