@@ -3,7 +3,7 @@ class GroupsController < GroupBaseController
   # be moved into the model
 
   load_and_authorize_resource except: :show
-  before_filter :check_group_read_permissions, only: :show
+  before_filter :check_group_read_permissions, :only => :show
 
   def create
     build_resource
@@ -12,6 +12,12 @@ class GroupsController < GroupBaseController
   end
 
   # CUSTOM CONTROLLER ACTIONS
+
+  def add_subgroup 
+    @parent = Group.find(params[:group_id])
+    @subgroup = Group.new(:parent => @parent)
+    Rails.logger.info "=======================\n\n\n #{@subgroup.inspect}" 
+  end
 
   def invite_member
     @group = Group.find(params[:id])

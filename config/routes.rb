@@ -11,6 +11,7 @@ Tautoko::Application.routes.draw do
 
   resources :groups do
     get :invite_member, on: :member
+    get :add_subgroup
     resources :motions, name_prefix: "groups_"
     get :request_membership, on: :member
   end

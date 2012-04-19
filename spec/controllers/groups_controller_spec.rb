@@ -133,6 +133,10 @@ describe GroupsController do
           get :show, :id => @group.id
           response.should be_success
         end
+        it "shows a new subgroup form" do
+          get :add_subgroup, :group_id => @group.id
+          response.should be_success
+        end
       end
       context "a requested member" do
         before :each do
@@ -163,7 +167,6 @@ describe GroupsController do
           response.should redirect_to(@previous_url)
         end
       end
-
     end
 
     it "shows a new group form" do
@@ -174,6 +177,16 @@ describe GroupsController do
     it "creates a group" do
       @group = Group.make
       post :create, :group => @group.attributes
+      assigns(:group).users.should include(@user)
+      assigns(:group).admins.should include(@user)
+      response.should redirect_to(group_url(assigns(:group)))
+    end
+
+    it "creates a subgroup" do
+      @group = Group.make!
+      @subgroup = Group.make(:parent => @group)
+      post :create, :group => @subgroup.attributes
+      assigns(:group).parent.should eq(@group)
       assigns(:group).users.should include(@user)
       assigns(:group).admins.should include(@user)
       response.should redirect_to(group_url(assigns(:group)))
