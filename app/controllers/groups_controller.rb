@@ -16,7 +16,6 @@ class GroupsController < GroupBaseController
   def add_subgroup 
     @parent = Group.find(params[:group_id])
     @subgroup = Group.new(:parent => @parent)
-    Rails.logger.info "=======================\n\n\n #{@subgroup.inspect}" 
   end
 
   def invite_member
