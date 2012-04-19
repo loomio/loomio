@@ -1,7 +1,7 @@
 #motion
   %h2.headerspace.group-title
-    = link_to @motion.group.parent.name, group_path(@motion.group.parent), title: "group"
-    = " > " unless @group.parent.nil?
+    = link_to @motion.group.parent.name, group_path(@motion.group.parent), title: "group" unless @motion.group.parent.nil?
+    = " > " unless @motion.group.parent.nil?
     = link_to @motion.group.name, group_path(@motion.group), title: "group"
   .row
     .span8
