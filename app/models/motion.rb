@@ -155,6 +155,9 @@ class Motion < ActiveRecord::Base
     self.discussion_activity += 1
     save
   end
+  def comments
+    discussion.comments
+  end
 
   private
     def initialize_discussion
@@ -179,14 +182,6 @@ class Motion < ActiveRecord::Base
 
     def clear_no_vote_count
       self.no_vote_count = nil
-    end
-
-    def only_one_discussion
-      if self["discussion_url"].present? && create_discussion
-        errors.add(:base,
-                   "Cannot have both a discussion and a discussion_url " +
-                   " (must contain only one or the other)")
-      end
     end
 
     def set_disable_discussion

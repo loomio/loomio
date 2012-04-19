@@ -29,7 +29,10 @@ Tautoko::Application.routes.draw do
   resources :votes
   resources :memberships
   resources :users
-  resources :comments, only: :destroy
+  resources :comments, only: :destroy do
+    post :like, on: :member
+    post :unlike, on: :member
+  end
   match "/settings", :to => "users#settings", :as => :user_settings
 
   namespace :admin do

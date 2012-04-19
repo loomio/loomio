@@ -34,27 +34,7 @@
   %hr{style: "margin-bottom:0px"}
   .row
     .span8#discussion-panel
-      - if @motion.disable_discussion
-        %h4 Discussions have been disabled for this motion
-      - else
-        - if @group.users_include? current_user
-          = form_tag add_comment_discussion_path(@motion.discussion), id: "new-comment-form" do
-            = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
-            #new-comment-submit
-              = submit_tag "Post comment", class: "btn primary submit"
-        - @comments.each do |comment|
-          %div.comment
-            %p
-              = link_to(comment.user.name, "#")
-              %span.comment-body= format_linebreaks(comment.body)
-            %p.comment-time
-              = time_ago_in_words(comment.created_at) + " ago"
-              - if comment.user == current_user
-                = " · "
-                = link_to "Delete", comment_path(comment), method: :delete,
-                  :confirm => "Are you sure you want to delete this comment?"
-        - if @motion.discussion.comment_threads.count == 0
-          %h4 There are no comments yet on this motion
+      = render partial: 'discussion', locals: { motion: @motion, discussion: @motion.discussion }
     .span8#votes-panel
       #stats
         -# Vote tags aren't working... so let's hide them for now

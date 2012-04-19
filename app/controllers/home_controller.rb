@@ -10,5 +10,4 @@ class HomeController < ApplicationController
       @groups = @user.groups
     end
   end
-
 end
