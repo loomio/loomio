@@ -151,7 +151,7 @@ class Motion < ActiveRecord::Base
     save
   end
 
-  def update_dicussion_activity
+  def update_discussion_activity
     self.discussion_activity += 1
     save
   end
