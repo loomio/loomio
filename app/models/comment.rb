@@ -14,6 +14,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   after_save :update_activity
+  has_many :comment_votes
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
@@ -52,6 +53,27 @@ class Comment < ActiveRecord::Base
 
   def can_be_deleted_by?(user)
     self.user == user
+  end
+
+  #
+  # CUSTOM METHODS (not part of acts_as_commentable)
+  #
+
+  def like(user)
+    CommentVote.create(comment: self, user: user, value: true)
+  end
+
+  def unlike(user)
+    like = likes.find_by_user_id(user.id)
+    like.destroy if like
+  end
+
+  def likes
+    return comment_votes.where("value = true")
+  end
+
+  def can_be_liked_by?(user)
+    user.groups.include? discussion.group
   end
 
   def discussion
