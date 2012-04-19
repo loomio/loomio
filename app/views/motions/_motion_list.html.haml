@@ -28,12 +28,14 @@
         #activity-count.span.label.important= vote_count
     - else
       .vote-icon-container.vote-disabled-icon
+        #activity-count.span
     - discussion_count = current_user.discussion_activity_count(motion)
     - if discussion_count > 0
       .discussion-icon-container.discussion-alert-icon
         #activity-count.span.label.important= discussion_count
     - else
       .discussion-icon-container.discussion-disabled-icon
+        #activity-count.span
 
 :coffeescript
   jQuery ->
