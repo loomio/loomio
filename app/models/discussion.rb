@@ -23,15 +23,11 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-<<<<<<< HEAD
-  def can_be_commented_on_by?(user)
-=======
   def default_motion
     motions.first
   end
 
-  def can_add_comment?(user)
->>>>>>> activity_count implemented
+  def can_be_commented_on_by?(user)
     group.users.include? user
   end
 
