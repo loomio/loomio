@@ -34,6 +34,10 @@ describe Group do
       10.times {Group.make!(:parent => @group)}
       @group.subgroups.count.should eq(11)
     end
+    it "limits group inheritance to 1 level" do
+      invalid = Group.make(:parent => @subgroup)
+      invalid.should_not be_valid
+    end
   end
 
   context "an existing group viewiable by members" do
