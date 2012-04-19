@@ -1,7 +1,9 @@
 #group
   %h2.headerspace.group-title
+    = @group.parent.name + " > "unless @group.parent.nil?
     = @group.name
     = link_to "Edit group", edit_group_path(@group), class: "btn small"
+    = link_to "Add subgroup", group_add_subgroup_path(@group), class: "btn small"
   .row
     .span11
       %h4.padding

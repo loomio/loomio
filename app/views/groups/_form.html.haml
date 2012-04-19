@@ -20,4 +20,5 @@
           .span3
             =f.select :members_invitable_by, [:members, :admins],
               member_label: Proc.new { |option| group_permissions_label(option) }
+        =f.hidden_field :parent_id, :value => @parent.id
       .standard-button.check-presence= f.submit
