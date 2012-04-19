@@ -98,7 +98,7 @@ private
 
 private
   def update_activity
-    default_motion.update_discusion_activity
+    default_motion.update_discussion_activity
   end
 <<<<<<< HEAD
 >>>>>>> activity_count implemented
