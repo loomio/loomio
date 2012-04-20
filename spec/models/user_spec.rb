@@ -60,6 +60,6 @@ describe User do
     @user.discussion_activity_when_last_read(@motion).should == 4
     @user.update_motion_read_log(@motion)
     @user.vote_activity_when_last_read(@motion).should == 7
-    @user.discussion_activity_when_last_read.should == 5
+    @user.discussion_activity_when_last_read(@motion).should == 5
   end
 end
