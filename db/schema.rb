@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418091148) do
+ActiveRecord::Schema.define(:version => 20120418082423) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -67,14 +67,6 @@ ActiveRecord::Schema.define(:version => 20120418091148) do
     t.string   "access_level"
   end
 
-  create_table "motion_activity_read_logs", :force => true do |t|
-    t.integer  "last_read_at"
-    t.integer  "motion_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "motion_read_logs", :force => true do |t|
     t.integer  "vote_activity_when_last_read"
     t.integer  "discussion_activity_when_last_read"
@@ -100,7 +92,6 @@ ActiveRecord::Schema.define(:version => 20120418091148) do
     t.boolean  "disable_discussion",  :default => false
     t.integer  "vote_activity",       :default => 0
     t.integer  "discussion_activity", :default => 0
-    t.integer  "activity_count",      :default => 0
   end
 
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"

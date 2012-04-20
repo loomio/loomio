@@ -155,13 +155,14 @@ class Motion < ActiveRecord::Base
     self.discussion_activity += 1
     save
   end
+
   def comments
     discussion.comments
   end
 
   private
     def initialize_discussion
-      self.discussion = Discussion.create(author_id: author.id, group_id: group.id)
+      self.discussion ||= Discussion.create(author_id: author.id, group_id: group.id)
     end
 
     def email_motion_created
