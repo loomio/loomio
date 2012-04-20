@@ -22,8 +22,11 @@
       %p
         For more information and to support us, <br />
         check out our
-        %a{:href => "https://www.pledgeme.co.nz/Crowd/Details/166"} PledgeMe campaign
-        !
+        = "<a href='https://www.pledgeme.co.nz/Crowd/Details/166'>PledgeMe campaign</a>!".html_safe
+      %p
+        Also check out our
+        = "<a href='http://blog.loom.io'>blog</a>.".html_safe
+        -#where we write about what we've been up to (and links to pretty much anything that inspires us).
 
       %hr/
 
@@ -31,20 +34,17 @@
         %strong Get involved !
       %ul
         %li
+          Send us an
+          %a{:href => "mailto:contact@loom.io"} email
+        %li
+          Participate in our
+          %a{:href => "http://loomio.org"} open source project
+        %li
           Facebook:
           %a{:href => "http://facebook.com/loomioproject"} loomioproject
         %li
           Twitter:
           %a{:href => "https://twitter.com/#!/LoomioProject"} @loomioproject
-        %li
-          Send us an
-          %a{:href => "mailto:contact@loom.io"} email
-        %li
-          Visit the
-          %a{:href => "http://blog.loom.io"} blog
-        %li
-          Participate in our
-          %a{:href => "http://loomio.org"} open source project
 
 
     #controls
