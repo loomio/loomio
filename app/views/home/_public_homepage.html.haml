@@ -1,61 +1,69 @@
-#public-homepage.container{style: "margin-top: -30px;"}
+#public-homepage.container
+  %a{:href => "https://github.com/enspiral/loomio",
+     :id   => "fork_me"}
+    %img{:src => "/assets/fork_me.png",
+         :alt => "Fork me on GitHub"}
+  %h1
+    %span
+      Loomio
   .content
-    .row
-      = image_tag 'roughlogo.jpg'
-      %hr/
-      .span-two-thirds
-        %p
-          %iframe{width:"560", height:"315", src:"http://www.youtube.com/embed/soanS1588BA", frameborder:"0", allowfullscreen: true}
+    #presentation
+      %p
+        %strong What-io ?
+      %p#whatio
+        Loomio is a free and open-source web application that helps groups make better decisions together.
+
         %hr/
-        %p
-          %strong What-io?
-        %p Loomio is a free open-source web application that helps groups make better decisions together.
-        -#%hr/
-        -#%p
-          -#%strong Why?
-        -#%p
-          -#Right now, the world is suffering because groups of humans are making bad decisions.
-          -#Decision making processes are failing globally and locally.
-          -#The right tool will help groups, big and small, achieve better outcomes.
-        -#%p
-          -#Most groups use one of two basic models to make decisions: top-down or bottom-up.
-          -#Top-down decision making gets things done quickly. There's a chain of command, so once a decision is made it can be implemented right away.
-          -#But this can lead to people feeling alienated from the decision-making process, and leave good ideas ignored.
-        -#%p
-          -#In bottom-up decision making, everyone has a say. People feel invested in the process, good ideas dont get ignored,
-          -#marginalised voices are heard, and everyone affected by a decision has input. But bottom-up decision making can be difficult to facilitate.
-          -#If a group decides everything through face to face discussions, only one person can speak at a time,
-          -#and people who attend the most meetings or have the loudest voice might end up having more sway.
-          -#It can be frustratingly time-consuming and inefficient.
-        -#%hr/
-        -#%p
-          -#%strong The best of both worlds.
-        -#%p
-          -#By using technology we can enable groups to make decisions in fundamentally new ways.
-          -#We can avoid the false tradeoff between speed and participation and say yes to both.
-        -#%p
-          -#In the age of the internet, we don't all have to be in the same place at the same time to work together.
-          -#Loomio turns a messy online discussion into a clear, visual picture of how the group feels
-          -#Everyone can talk at once and all voices are heard, while the group stays focused and concise.
-          -#Loomio will adapt to any group that needs to make decisions together. From households, to neighbourhoods, from businesses to community groups, and even government.
-          -#Loomio helps groups move together.
-      .span-one-third
-        %p
-          %strong Get involved
-        %p We want to nurture a vibrant community of passionate people to help us, using the tool itself to make decisions about how it is developed.
-        %p
-          We'll be putting out a call for support very shortly. In the meantime you can check out the
-          = (link_to "open-source project", "http://loomio.org/") + "."
-        %p
-          If you want to be kept in the loop, you can
-          %a{:href => "mailto:contact@loom.io"} drop us a line
-          or
-        %p
-          %a.alert-message.info{:href => "http://blog.loom.io"} read the blog
-        %hr/
-        %p
-          %small
-            pre-alpha users, you can
-            %a{:href => "/users/sign_in"} sign in here
-      %p{:style => "clear:both"}  
+
+      %p
+        %strong Who are we ?
+      %p
+        <iframe width="560" height="315" src="http://www.youtube.com/embed/xctXFj-Oidk" frameborder="0" allowfullscreen></iframe>
+      %p
+        For more information and to support us, <br />
+        check out our
+        %a{:href => "https://www.pledgeme.co.nz/Crowd/Details/166"} PledgeMe campaign
+        !
+
       %hr/
+
+      %p
+        %strong Get involved !
+      %ul
+        %li
+          Facebook:
+          %a{:href => "http://facebook.com/loomioproject"} loomioproject
+        %li
+          Twitter:
+          %a{:href => "https://twitter.com/#!/LoomioProject"} @loomioproject
+        %li
+          Send us an
+          %a{:href => "mailto:contact@loom.io"} email
+        %li
+          Visit the
+          %a{:href => "http://blog.loom.io"} blog
+        %li
+          Participate in our
+          %a{:href => "http://loomio.org"} open source project
+
+
+    #controls
+      %p
+        %strong Alpha user sign in
+        = form_tag user_session_path do
+          = label_tag 'user[email]', "Email"
+          = text_field_tag 'user[email]'
+          = label_tag 'user[password]', "Password"
+          = password_field_tag 'user[password]'
+          = check_box_tag 'user[remember_me]'
+          = label_tag 'user[remember_me]', 'Remember me'
+
+          .sign-in-button
+            %button{:class => "btn primary small"} Sign in
+
+        = link_to "Forgot your password?", new_password_path('user')
+
+      %p.light
+        Don't have an account? We're currently in closed testing and not accepting public sign-ups (yet!).
+      %p.light
+        If you belong to a group that is using Loomio but you don't have your own Loomio account, please contact the person in your organization who set up Loomio and ask them to add you to the group.
