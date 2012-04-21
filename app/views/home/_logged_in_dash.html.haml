@@ -5,13 +5,10 @@
         %h4.sub-header
           Open motions
         .motions-list
-          - motions.voting_sorted.each do |motion|
-            - motion.open_close_motion
-            = render "expandable_list", motion: motion
+          = render "open_motions", motions: motions
         %h4 Closed motions
         .motions-list
-          - motions.closed_sorted.each do |motion|
-            = render "expandable_list", motion: motion
+          = render "closed_motions", motions: motions
       .span5
         .group-panel
           %h4.title-row
