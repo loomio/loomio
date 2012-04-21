@@ -34,6 +34,9 @@ class Motion < ActiveRecord::Base
     end
   end
 
+  scope :voting_sorted, voting.order('close_date ASC')
+  scope :closed_sorted, closed.order('close_date DESC')
+
   scope :that_user_has_voted_on, lambda {|user|
     joins(:votes)
     .where('votes.user_id = ?', user.id)
