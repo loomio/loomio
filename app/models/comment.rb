@@ -13,6 +13,7 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
 
+  after_save :update_activity
   has_many :comment_votes
 
   # Helper class method that allows you to build a comment
@@ -81,5 +82,10 @@ class Comment < ActiveRecord::Base
 
   def default_motion
     discussion.default_motion
+  end
+
+private
+  def update_activity
+    default_motion.update_discussion_activity
   end
 end

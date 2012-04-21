@@ -5,6 +5,7 @@ class Motion < ActiveRecord::Base
   belongs_to :author, :class_name => 'User'
   belongs_to :facilitator, :class_name => 'User'
   has_many :votes
+  has_many :motion_activity_read_logs
   belongs_to :discussion
   validates_presence_of :name, :group, :author, :facilitator_id
   validates_inclusion_of :phase, in: PHASES
@@ -145,13 +146,23 @@ class Motion < ActiveRecord::Base
     group.users
   end
 
+  def update_vote_activity
+    self.vote_activity += 1
+    save
+  end
+
+  def update_discussion_activity
+    self.discussion_activity += 1
+    save
+  end
+
   def comments
     discussion.comments
   end
 
   private
     def initialize_discussion
-      self.discussion = Discussion.create(author_id: author.id, group_id: group.id)
+      self.discussion ||= Discussion.create(author_id: author.id, group_id: group.id)
     end
 
     def email_motion_created

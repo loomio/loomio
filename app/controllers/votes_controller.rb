@@ -37,7 +37,6 @@ class VotesController < GroupBaseController
     if @motion.voting?
       @vote.update_attributes(params[:vote])
       flash[:notice] = "Vote updated."
-      @vote.save
     else
       flash[:error] = "Can only vote in voting phase"
     end
