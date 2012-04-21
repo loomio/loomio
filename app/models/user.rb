@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   has_many :motions_voting, through: :groups, :source => :motions, :conditions => {phase: 'voting'}
   has_many :motions_closed, through: :groups, :source => :motions, :conditions => {phase: 'closed'}
 
+  has_many :motion_activity_read_logs
+
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
 
@@ -48,6 +50,43 @@ class User < ActiveRecord::Base
   new_user
   end
 
+  def update_motion_read_log(motion)
+    if MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
+      MotionReadLog.create(vote_activity_when_last_read: motion.vote_activity, discussion_activity_when_last_read: motion.discussion_activity, user_id: id, motion_id: motion.id)
+    else
+      log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+      log.vote_activity_when_last_read = motion.vote_activity
+      log.discussion_activity_when_last_read = motion.discussion_activity
+      log.save
+    end
+  end
+
+  def vote_activity_when_last_read(motion)
+    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+    if log
+      log.vote_activity_when_last_read
+    else
+      0
+    end
+  end
+
+  def discussion_activity_when_last_read(motion)
+    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+    if log
+      log.discussion_activity_when_last_read
+    else
+      0
+    end
+  end
+
+  def vote_activity_count(motion)
+    motion.vote_activity - vote_activity_when_last_read(motion)
+  end
+
+  def discussion_activity_count(motion)
+    motion.discussion_activity - discussion_activity_when_last_read(motion)
+  end
+
   private
     def ensure_name_entry
       unless name
@@ -56,4 +95,3 @@ class User < ActiveRecord::Base
       end
     end
 end
-

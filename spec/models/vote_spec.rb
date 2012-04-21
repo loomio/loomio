@@ -67,4 +67,20 @@ describe Vote do
     vote1 = Vote.new(position: 'yes', motion: @motion, user: @user)
     vote1.should_not be_valid
   end
+
+  it 'sould update vote_activity when new vote is created' do
+    @motion.vote_activity = 2
+    vote = Vote.new(position: 'yes', motion: @motion, user: @user)
+    vote.save!
+    @motion.vote_activity.should == 3
+  end
+
+  it 'sould update vote_activity when new vote is changed' do
+    @motion.vote_activity = 2
+    vote = Vote.new(position: 'yes', motion: @motion, user: @user)
+    vote.save!
+    vote.position = 'no'
+    vote.save!
+    @motion.vote_activity.should == 4
+  end
 end

@@ -18,11 +18,24 @@
         closed on
       - else
         closes on
-      = motion.close_date.strftime("%d/%m/%Y")
+        = motion.close_date.strftime("%d/%m/%Y")
     - else
       no close date
-  .span1.toggle-button
-    +
+  .span1.alert-info
+    - vote_count = current_user.vote_activity_count(motion)
+    - if vote_count > 0
+      .vote-icon-container.vote-alert-icon
+        #activity-count.span.label.important= vote_count
+    - else
+      .vote-icon-container.vote-disabled-icon
+        #activity-count.span
+    - discussion_count = current_user.discussion_activity_count(motion)
+    - if discussion_count > 0
+      .discussion-icon-container.discussion-alert-icon
+        #activity-count.span.label.important= discussion_count
+    - else
+      .discussion-icon-container.discussion-disabled-icon
+        #activity-count.span
 
 :coffeescript
   jQuery ->
