@@ -15,10 +15,12 @@
   .span3.close-info
     - if motion.close_date
       - if motion.closed?
-        closed on
+        closed
+        = time_ago_in_words(motion.close_date)
+        ago
       - else
-        closes on
-        = motion.close_date.strftime("%d/%m/%Y")
+        closing in
+        = time_ago_in_words(motion.close_date)
     - else
       no close date
   .span1.alert-info
