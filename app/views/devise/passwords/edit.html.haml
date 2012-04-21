@@ -4,8 +4,8 @@
   = f.hidden_field :reset_password_token
   %h5
     New password
-    .standard-input= f.password_field :password
+    .left-format= f.password_field :password
     Confirm new password
-    .standard-input= f.password_field :password_confirmation
-  = f.submit "Change my password", class: "btn primary"
+    .left-format= f.password_field :password_confirmation
+  .standard-button= f.submit "Change my password", class: "btn primary"
 = render :partial => "devise/shared/links"

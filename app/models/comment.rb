@@ -84,8 +84,8 @@ class Comment < ActiveRecord::Base
     discussion.default_motion
   end
 
-private
-  def update_activity
-    default_motion.update_discussion_activity
-  end
+  private
+    def update_activity
+      default_motion.update_discussion_activity
+    end
 end
