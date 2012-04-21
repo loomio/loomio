@@ -1,4 +1,7 @@
-=semantic_form_for [motion, vote] do |f|
-  =f.input :position, as: :select, collection: Vote::POSITIONS
-  =f.input :statement, as: :text
-  =f.commit_button
+= form_for [motion, vote] do |f|
+  %h5.padding
+    Position
+    .left-format= f.select :position, Vote::POSITIONS
+    Statement
+    .left-format= f.text_field :statement
+  .standard-button= f.submit "Update vote", class: "btn primary"
