@@ -114,3 +114,79 @@
     #motion-title{ font-weight: bold; }
   }
 }
+
+#public-homepage.container {
+  position: relative;
+  margin-top: -58px;
+
+  h1 {
+    margin-bottom: 10px;
+    height: 180px;
+    background-color: #000;
+    background-image: url(logo_500.jpg);
+    background-position: 5px top;
+    background-repeat: no-repeat;
+
+    span {
+      display: none;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  #whatio {
+    width: 434px;
+    line-height: 25px;
+
+    em {
+      display: block;
+      margin-top: 5px;
+      font-size: 30px;
+      font-style: normal;
+    }
+  }
+
+  .content {
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+  }
+
+  #presentation {
+    width: 600px;
+    float: left;
+  }
+
+  #controls {
+    width: 300px;
+    float: right;
+
+    p.light {
+      color: #808080;
+    }
+  }
+
+  a#fork_me {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  form {
+    input {
+      width: 290px;
+    }
+    input[type="checkbox"] {
+      width: auto;
+    }
+    label {
+      width: 300px;
+      text-align: left;
+      float: none;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+}
