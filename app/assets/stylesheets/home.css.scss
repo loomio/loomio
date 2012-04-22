@@ -108,8 +108,9 @@
     padding-bottom: 10px;
   }
   .blocked{
+    border: 0px;
     border-style: solid;
-    box-shadow: inset 0px 0px 20px #F00;
+    box-shadow: inset 0px -3px 30px #F00;
     border-color: red;
   }
   .closed{
