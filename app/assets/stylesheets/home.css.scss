@@ -12,15 +12,24 @@
   padding-top: 6px;
   margin-bottom: 40px;
   border-bottom: 1px solid lightgrey;
-  .vote-icon {
-    padding-top: 10px;
-    padding-left: 8px;
-    width: 13px;
-    text-align: left;
+  .icon-container {
+    margin-top: 4px;
+    width: 30px;
+    height: 30px;
+    .vote-icon {
+      padding-top: 5px;
+      padding-left: 5px;
+      width: 20px;
+      height: 30px;
+      text-align: center;
+      display: inline-block;
+    }
   }
   #motion-header{
     #motion-title{ font-size: 16px; }
     line-height: 18px;
+    margin-left: 4px;
+    padding-top: 2px;
     .group-name {
       font-size: 14px;
       a {color: grey;}
@@ -39,7 +48,7 @@
       background: url("vote-icon.png");
       background-size: 25px;
       background-position-y: 8px;
-      background-position-x: -2px;
+      background-position-x: -6px;
       background-repeat: no-repeat;
     }
     .vote-disabled-icon {
@@ -83,13 +92,6 @@
     display: inline;
     margin-left: 16px;
   }
-  /*.toggle-button{*/
-    /*display: inline;*/
-    /*padding-top: 6px;*/
-    /*font-weight: bold;*/
-    /*color: #999999;*/
-    /*text-align: center;*/
-  /*}*/
   .action-links{
     a{color: grey}
     margin-top: -5px;
@@ -104,6 +106,11 @@
   #dash_percentage_to_vote {
     margin-top: 10px;
     padding-bottom: 10px;
+  }
+  .blocked{
+    border-style: solid;
+    box-shadow: inset 0px 0px 20px #F00;
+    border-color: red;
   }
   .closed{
     background-color: #F9F9F9;
