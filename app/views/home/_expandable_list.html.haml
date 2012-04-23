@@ -2,7 +2,7 @@
   - class_name = "bordered closed"
 - else
   - class_name = "bordered voting"
-- if motion.blocked?
+- if motion.blocked? && motion.voting?
   - class_name += " blocked"
 .span{class: class_name, :id =>"motion_#{motion.id}"}
   =render partial: "motions/motion_list", locals: {motion: motion}
