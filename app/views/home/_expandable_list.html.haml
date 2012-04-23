@@ -1,9 +1,13 @@
-- if motion.closed? || motion.user_has_voted?(current_user)
-  - class_name = "bordered closed"
-- else
-  - class_name = "bordered voting"
+- class_name = "bordered"
 - if motion.blocked? && motion.voting?
   - class_name += " blocked"
+- else
+  - if motion.closed? || motion.user_has_voted?(current_user)
+    - class_name += " closed"
+  - else
+    - class_name += " voting"
+- unless motion.closed? || motion.user_has_voted?(current_user)
+  -class_name += " strong"
 .span{class: class_name, :id =>"motion_#{motion.id}"}
   =render partial: "motions/motion_list", locals: {motion: motion}
   .row{id: "expand_#{motion.id}"}
