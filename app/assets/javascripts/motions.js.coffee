@@ -60,16 +60,13 @@ $ ->
     expandableRow = $(this).children().last()
     expandableRow.toggle()
     if expandableRow.is(":visible")
-      $(this).find(".toggle-button").html('-')
       graph_legend = $(this).find(".jqplot-table-legend")
-      if $(this).hasClass('closed')
-        graph_legend.addClass('closed')
-        graph_legend.removeClass('voting')
-      else
+      if $(this).hasClass('blocked')
+        graph_legend.addClass('blocked')
+      else if $(this).hasClass('voting')
         graph_legend.addClass('voting')
-        graph_legend.removeClass('closed')
-    else
-      $(this).find(".toggle-button").html('+')
+      else
+        graph_legend.addClass('closed')
   )
 
   #** prevent expansion of motion **
