@@ -12,15 +12,25 @@
   padding-top: 6px;
   margin-bottom: 40px;
   border-bottom: 1px solid lightgrey;
-  .vote-icon {
-    padding-top: 10px;
-    padding-left: 8px;
-    width: 13px;
-    text-align: left;
+  .icon-container {
+    margin-top: 4px;
+    width: 30px;
+    height: 30px;
+    .vote-icon {
+      padding-top: 5px;
+      padding-left: 5px;
+      width: 20px;
+      height: 30px;
+      text-align: center;
+      display: inline-block;
+    }
   }
+  .motion-row { cursor: hand; cursor: pointer; }
   #motion-header{
     #motion-title{ font-size: 16px; }
     line-height: 18px;
+    margin-left: 4px;
+    padding-top: 2px;
     .group-name {
       font-size: 14px;
       a {color: grey;}
@@ -39,14 +49,14 @@
       background: url("vote-icon.png");
       background-size: 25px;
       background-position-y: 8px;
-      background-position-x: -2px;
+      background-position-x: -4px;
       background-repeat: no-repeat;
     }
     .vote-disabled-icon {
       background: url("vote-icon-disabled.png");
       background-size: 25px;
       background-position-y: 8px;
-      background-position-x: -2px;
+      background-position-x: -4px;
       background-repeat: no-repeat;
     }
      .discussion-alert-icon {
@@ -83,13 +93,6 @@
     display: inline;
     margin-left: 16px;
   }
-  /*.toggle-button{*/
-    /*display: inline;*/
-    /*padding-top: 6px;*/
-    /*font-weight: bold;*/
-    /*color: #999999;*/
-    /*text-align: center;*/
-  /*}*/
   .action-links{
     a{color: grey}
     margin-top: -5px;
@@ -105,13 +108,14 @@
     margin-top: 10px;
     padding-bottom: 10px;
   }
+  .blocked{
+    background-color: #FFEFEF;
+  }
   .closed{
     background-color: #F9F9F9;
-    #motion-title{ font-weight: normal; }
   }
   .voting{
     background-color: #FFFFFF;
-    #motion-title{ font-weight: bold; }
   }
 }
 
