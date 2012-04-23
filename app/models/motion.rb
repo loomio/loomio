@@ -63,6 +63,15 @@ class Motion < ActiveRecord::Base
     }.to_hash
   end
 
+  def blocked?
+    votes.each do |v|
+      if v.position == "block"
+        return true
+      end
+    end
+    false
+  end
+
   def votes_graph_ready
     votes_for_graph = []
     votes_breakdown.each do |k, v|

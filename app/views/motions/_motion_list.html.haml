@@ -1,12 +1,13 @@
 .row
-  .span1{class: "centered vote-icon"}
-    - if motion.user_has_voted?(current_user)
-      - voted = true
-      - position = current_user.motion_vote(motion).position
-      =render partial: "motions/display_icons", locals: {position: position}
-    - else
-      #no-vote-dash
-        = " "
+  .span1.icon-container
+    .vote-icon
+      - if motion.user_has_voted?(current_user)
+        - voted = true
+        - position = current_user.motion_vote(motion).position
+        =render partial: "motions/display_icons", locals: {position: position}
+      - else
+        #no-vote-dash
+          = " "
   .span6#motion-header
     #motion-title
       = link_to motion.name, motion, class: 'no-toggle'

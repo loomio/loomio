@@ -36,6 +36,24 @@ describe Motion do
     @motion.should_not be_valid
   end
 
+  it "it can remain un-blocked" do
+    @motion = create_motion
+    user1 = User.make
+    user1.save
+    @motion.group.add_member!(user1)
+    Vote.create!(position: 'yes', motion: @motion, user: user1)
+    @motion.blocked?.should == false
+  end
+
+  it "it can be blocked" do
+    @motion = create_motion
+    user1 = User.make
+    user1.save
+    @motion.group.add_member!(user1)
+    Vote.create!(position: 'block', motion: @motion, user: user1)
+    @motion.blocked?.should == true
+  end
+
   it "can have a close date" do
     @motion = create_motion
     @motion.close_date = '2012-12-12'
@@ -86,7 +104,6 @@ describe Motion do
       Vote.create!(position: 'yes', motion: @motion, user: user3)
       @motion.close_voting
     end
-
 
     context "motion closed" do
       it "records and freezes no_vote_count" do
