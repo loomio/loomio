@@ -1,0 +1,5 @@
+%h4.title-row Subgroups
+%ul.unstyled
+  - @group.subgroups.each do |subgroup| 
+    = link_to subgroup.name, group_path(subgroup), title: "group"
+

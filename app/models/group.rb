@@ -4,22 +4,26 @@ class Group < ActiveRecord::Base
   validates_presence_of :name
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
+  validate :limit_inheritance
   after_initialize :set_defaults
 
   has_many :memberships,
-           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
-           :dependent => :destroy,
-           :extend => GroupMemberships
+    :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
+    :dependent => :destroy,
+    :extend => GroupMemberships
   has_many :membership_requests,
-           :conditions => {:access_level => 'request'},
-           :class_name => 'Membership'
+    :conditions => {:access_level => 'request'},
+    :class_name => 'Membership'
   has_many :admin_memberships,
-           :conditions => {:access_level => 'admin'},
-           :class_name => 'Membership'
+    :conditions => {:access_level => 'admin'},
+    :class_name => 'Membership'
   has_many :users, :through => :memberships # TODO: rename to members
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
   has_many :motions
+
+  belongs_to :parent, :class_name => "Group"
+  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
 
   delegate :include?, :to => :users, :prefix => :users
 
@@ -136,8 +140,18 @@ class Group < ActiveRecord::Base
 
   private
 
-    def set_defaults
-      self.viewable_by ||= :everyone
-      self.members_invitable_by ||= :members
+  def set_defaults
+    self.viewable_by ||= :everyone
+    self.members_invitable_by ||= :members
+  end
+
+  #
+  # VALIDATORS
+  #
+
+  def limit_inheritance 
+    unless parent.nil?
+      errors[:base] << "Can't set a subgroup as parent" unless parent.parent.nil?
     end
+  end
 end
