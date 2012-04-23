@@ -1,7 +1,10 @@
 #group
   %h2.headerspace.group-title
+    = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
+    = " > " unless @group.parent.nil?
     = @group.name
     = link_to "Edit group", edit_group_path(@group), class: "btn small"
+    = link_to "Add subgroup", group_add_subgroup_path(@group), class: "btn small" if @group.parent.nil?
   .row
     .span11
       %h4.padding
@@ -16,4 +19,6 @@
       .motions-list
         = render "home/closed_motions", motions: @group.motions
     .span5
-      =render 'users', group: @group
+      #sidebar
+        =render 'users', group: @group
+        =render 'subgroups', group: @group unless @group.subgroups.empty?
