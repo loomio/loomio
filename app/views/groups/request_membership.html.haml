@@ -1,7 +1,5 @@
-%h2
-  =@group.name
-=semantic_form_for(@membership) do |f|
+%h2.header-space
+  = @group.name
+=form_for(@membership) do |f|
   %input{name: "membership[group_id]", type: :hidden, value: @group.id}
-  =f.buttons do
-    =f.commit_button "request access to this group"
--# =link_to "request membership to this group", memberships_path, {action: :update}, group_id: @group_id #method: :post, membership: {group_id: @group.id}
+  =f.submit "request access to this group", class: "btn primary"
