@@ -149,7 +149,7 @@ class Group < ActiveRecord::Base
   # VALIDATORS
   #
 
-  def limit_inheritance 
+  def limit_inheritance
     unless parent.nil?
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent.nil?
     end

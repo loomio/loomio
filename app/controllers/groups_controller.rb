@@ -13,7 +13,7 @@ class GroupsController < GroupBaseController
 
   # CUSTOM CONTROLLER ACTIONS
 
-  def add_subgroup 
+  def add_subgroup
     @parent = Group.find(params[:group_id])
     @subgroup = Group.new(:parent => @parent)
   end
