@@ -1,0 +1,109 @@
+body {
+  background-color: #eff9f9;
+  margin-top: -58px;
+  /*background: url(http://static.tumblr.com/thpaaos/kT3kqnqrm/container-bg.png);*/
+  /*background-image: url(http://static.tumblr.com/thpaaos/YbJkqnqr6/bg.jpg);*/
+  #github-link {
+    position: absolute;
+    right: 0px;
+    float: right;
+  }
+
+  .header {
+    margin-top: 20px;
+    /*margin-left: 50px;*/
+    height: 150px;
+    background-image: url(loomio-fray-white-940.png);
+    background-position: 5px top;
+    background-repeat: no-repeat;
+
+    span {
+      display: none;
+    }
+  }
+
+  .content {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #FFF;
+    height: 680px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 4px #999999;
+    -webkit-box-shadow: 1px 1px 4px #999999;
+    -moz-box-shadow: 0px 0px 4px #999999;
+
+
+    h2 {
+      color: grey;
+      padding-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    #whatio {
+      width: 434px;
+      line-height: 25px;
+
+      em {
+        display: block;
+        margin-top: 5px;
+        font-size: 30px;
+        font-style: normal;
+      }
+    }
+
+    #presentation {
+      width: 560px;
+      float: left;
+    }
+
+    #controls {
+      width: 300px;
+      float: right;
+
+      p.light {
+        color: #808080;
+      }
+    }
+
+    #footer {
+      width: 100%;
+      float: left;
+    }
+
+    #icon-links {
+      /*margin-left: -10px;*/
+      float: right;
+      display: inline;
+    }
+
+    a#fork_me {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    form {
+      input {
+        width: 290px;
+        margin-bottom: 10px;
+      }
+      input[type="checkbox"] {
+        width: auto;
+        margin-right: 5px;
+      }
+      label {
+        width: 300px;
+        text-align: left;
+        float: none;
+        font-size: 14px;
+        line-height: 18px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
