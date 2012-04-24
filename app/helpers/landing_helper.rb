@@ -1,0 +1,2 @@
+module LandingHelper
+end
