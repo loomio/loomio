@@ -11,9 +11,9 @@
             = link_to "Create a motion",
             new_motion_path({group_id: @group.id}), :class => 'btn primary small'
       .motions-list
-        = render "home/open_motions", motions: @group.motions
+        = render "dashboard/open_motions", motions: @group.motions
       %h4 Closed motions
       .motions-list
-        = render "home/closed_motions", motions: @group.motions
+        = render "dashboard/closed_motions", motions: @group.motions
     .span5
       =render 'users', group: @group
