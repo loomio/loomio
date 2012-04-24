@@ -148,8 +148,17 @@ $token-input-width: 278px;
     li{
       font-size: 14px;
       line-height: 16px;
-      margin-top: 7px;
+      margin-top: 4px;
       list-style-type: none;
+      ul {
+        margin-left: 0px;
+        li {
+          margin-top: 2px;
+          font-size: 12px;
+          padding-left: 17px;
+          background: url('list-item-bullet-tree.png') no-repeat top left;
+        }
+      }
     }
     margin-left: 4px;
     a.new_motion {
