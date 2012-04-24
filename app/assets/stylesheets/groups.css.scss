@@ -136,14 +136,28 @@ $token-input-width: 278px;
 .group-panel {
   margin-top: 9px;
   #group-list {
-    margin-top: 4px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    .group-link{
+      width: 90%;
+      display: inline-block;
+    }
+    .group-link.disabled{
+      a{
+        color: grey;
+      }
+    }
+    li{
+      font-size: 14px;
+      line-height: 16px;
+      margin-top: 7px;
+      list-style-type: none;
+    }
+    margin-left: 4px;
     a.new_motion {
       float: right;
       margin-right: 5px;
+      margin-top: -2px;
       font-weight: bold;
-      font-size: 18px
+      font-size: 17px;
     }
   }
 }

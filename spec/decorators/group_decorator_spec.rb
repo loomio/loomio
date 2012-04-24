@@ -11,4 +11,10 @@ describe GroupDecorator, :draper_with_helpers do
       @subgroup.full_link.should match(/#{@group.name}.+#{@subgroup.name}/)
     end
   end
+
+  context "link" do
+    it "has group name in link" do
+      @group.link.should match(/#{@group.name}/)
+    end
+  end
 end

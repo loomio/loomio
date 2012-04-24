@@ -1,0 +1,9 @@
+- if current_user.groups.include? group
+  - group_link_class = "group-link"
+- else
+  - group_link_class = "group-link disabled"
+%div{class: group_link_class}= group.link
+= link_to "+",
+  new_motion_path({group_id: group.id}),
+  :class => 'new_motion',
+  :title => 'new motion for this group'
