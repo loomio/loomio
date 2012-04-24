@@ -14,7 +14,7 @@
           %h4.title-row
             Your groups
           #group-list
-            - groups.each do |group|
+            - @groups.each do |group|
               %h4
                 = group.full_link
                 %span
