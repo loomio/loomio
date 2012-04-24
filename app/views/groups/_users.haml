@@ -13,6 +13,7 @@
   - if group.can_invite_members?(current_user)
     %h4.title-row Add member
     = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
+      = devise_error_messages!
       = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id}
       = f.input :email, placeholder: "Email address", label: false
       %input#group_id{ type: "hidden", value: group.id }
