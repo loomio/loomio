@@ -20,7 +20,7 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
-  %body
+  %body{class: "#{controller_name} #{action_name}"}
     = render 'header'
     .container
       = render 'layouts/flash_messages', :flash => flash

@@ -1,14 +1,14 @@
 #dashboard-home
-  - if groups.present?
+  - if @groups.present?
     .row.main-header
       .span11
         %h4.sub-header
           Open motions
         .motions-list
-          = render "open_motions", motions: motions
+          = render "open_motions", motions: @motions
         %h4 Closed motions
         .motions-list
-          = render "closed_motions", motions: motions
+          = render "closed_motions", motions: @motions
       .span5
         .group-panel
           %h4.title-row
