@@ -3,11 +3,11 @@ require 'spec_helper'
 describe "Home" do
   subject { page }
 
-  context "logged out user views homepage" do
-    it "sees dashboard" do
+  context "logged out user visits home" do
+    it "sees landing page" do
       visit root_path
 
-      should have_css('#public-homepage')
+      should have_css('.landing')
     end
   end
 
@@ -22,11 +22,11 @@ describe "Home" do
                                           'user[password]' => 'password'
     end
 
-    context "can see dashboard" do
+    context "visits home" do
       it "sees dashboard" do
         visit root_path
 
-        should have_content("Your groups")
+        should have_css('.dashboard')
       end
     end
   end

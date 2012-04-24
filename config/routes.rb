@@ -41,5 +41,13 @@ Tautoko::Application.routes.draw do
   end
   match "/admin", :to => redirect("/admin/groups")
 
-  root :to => 'home#index'
+  # route logged in user to dashboard
+  resources :dashboard, only: :show
+  authenticated do
+    root :to => 'dashboard#show'
+  end
+
+  # route logged out user to landing page
+  resources :landing, only: :show
+  root :to => 'landing#show'
 end
