@@ -1,0 +1,65 @@
+#github-link
+  %a{:href => "https://github.com/enspiral/loomio",
+     :id   => "fork_me"}
+    %img{:src => "/assets/fork_me.png",
+         :alt => "Fork me on GitHub"}
+.header
+
+.content
+  #presentation
+    %h2 What-io ?
+    %p#whatio
+      Loomio is a free and open-source web application that helps groups make better decisions together.
+
+      %hr/
+
+    %p
+      <iframe width="560" height="315" src="http://www.youtube.com/embed/xctXFj-Oidk" frameborder="0" allowfullscreen></iframe>
+
+      %hr/
+
+    %p
+      For more information and to support us, <br />
+      check out our
+      = "<a href='https://www.pledgeme.co.nz/Crowd/Details/166'>PledgeMe campaign</a>!".html_safe
+    %p
+      Also check out our
+      = "<a href='http://blog.loom.io'>blog</a>.".html_safe
+      -#where we write about what we've been up to (and links to pretty much anything that inspires us).
+
+  #controls
+    %h2 Alpha user sign in
+    %p
+      = form_tag user_session_path do
+        = label_tag 'user[email]', "Email"
+        = text_field_tag 'user[email]'
+        = label_tag 'user[password]', "Password"
+        = password_field_tag 'user[password]'
+        = check_box_tag 'user[remember_me]'
+        = label_tag 'user[remember_me]', 'Remember me'
+
+        .sign-in-button
+          %button{:class => "btn primary small"} Sign in
+
+      = link_to "Forgot your password?", new_password_path('user')
+
+    %p.light
+      Don't have an account? We're currently in closed testing and not accepting public sign-ups (yet!).
+    %p.light
+      If you belong to a group that is using Loomio but you don't have your own Loomio account, please contact the person in your organization who set up Loomio and ask them to add you to the group.
+
+  #footer
+    %hr/
+    .row
+      .span13
+        %ul
+          %li
+            Send us an
+            %a{:href => "mailto:contact@loom.io"} email
+          %li
+            Participate in our
+            %a{:href => "http://loomio.org"} open source project
+      .span2
+        #icon-links
+          = link_to image_tag("facebook-icon.jpg", height:'40', width:'40', title:'Facebook', alt:'Facebook image'), 'http://facebook.com/loomioproject'
+          = link_to image_tag("twitter-icon.jpg", height:'40', width:'40', title:'Twitter', alt:'Twitter image'), 'http://twitter.com/loomioproject'
