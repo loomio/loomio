@@ -87,6 +87,28 @@ class User < ActiveRecord::Base
     motion.discussion_activity - discussion_activity_when_last_read(motion)
   end
 
+  # Get all root groups that the user belongs to
+  # This also includes parent groups of sub-groups
+  # that the user belongs to (even though the user
+  # might not necessarily belong to the parent)
+  def all_root_groups
+    results = root_groups
+    subgroups.each do |subgroup|
+      unless results.include? subgroup.parent
+        results << subgroup.parent
+      end
+    end
+    results
+  end
+
+  def subgroups
+    groups.where("parent_id IS NOT NULL")
+  end
+
+  def root_groups
+    groups.where("parent_id IS NULL")
+  end
+
   private
     def ensure_name_entry
       unless name
