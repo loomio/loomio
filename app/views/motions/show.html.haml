@@ -57,16 +57,16 @@
                 =f.hidden_field :position
             #vote-buttons
               =link_to image_tag("hand-yes.png", height:'40', width:'40', title:'yes', alt:'yes image'), '#',
-                class: 'btn vote',  rel: 'popover', 'data-content' => 'I agree with this and want it to go ahead',
+                class: 'btn vote',  rel: 'popover', 'data-content' => 'I agree with this and want it to go ahead.',
                 'data-original-title' => 'Yes', 'data-placement' => 'above', onclick: "$('#vote_position').val('yes');"
               =link_to image_tag("hand-abstain.png", height:'40', width:'40', title:'abstain', alt:'abstain image'), '#',
-                class: 'btn vote',  rel: 'popover', 'data-content' =>  'I am happy with what the group decides without me',
+                class: 'btn vote',  rel: 'popover', 'data-content' =>  'I am happy with what the group decides without me.',
                 'data-original-title' => 'Abstain', 'data-placement' => 'above', onclick: "$('#vote_position').val('abstain');"
               =link_to image_tag("hand-no.png", height:'40', width:'40', title:'no', alt:'no image'), '#',
-                class: 'btn vote',  rel: 'popover', 'data-content' => 'I think we can do better and would like to see something else happen, but if the group feels like it is the best way then I am ok with that',
+                class: 'btn vote',  rel: 'popover', 'data-content' => 'I think we can do better and would like to see something else happen, but if the group feels like it is the best way then I am ok with that.',
                 'data-original-title' => 'No', 'data-placement' => 'above', onclick: "$('#vote_position').val('no');"
               =link_to image_tag("hand-block.png", height:'40', width:'40',title:'block', alt:'block image'), '#',
-                {class: 'btn vote', rel: 'popover', 'data-content' => 'I have strong objections to this motion and am not ok with it going ahead',
+                {class: 'btn vote', rel: 'popover', 'data-content' => 'I have strong objections to this motion and am not ok with it going ahead.',
                 'data-original-title' => 'Block', 'data-placement' => 'above', onclick: "$('#vote_position').val('block');"}
           #votes-table= render "votes_table", motion: @motion
           #still-to-vote

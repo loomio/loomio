@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_many :motions_voting, through: :groups, :source => :motions, :conditions => {phase: 'voting'}
   has_many :motions_closed, through: :groups, :source => :motions, :conditions => {phase: 'closed'}
 
-  has_many :motion_activity_read_logs
+  has_many :motion_read_logs
 
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
