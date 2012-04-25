@@ -25,14 +25,16 @@
     - else
       no close date
   .span1.alert-info
-    - vote_count = current_user.vote_activity_count(motion)
+    - vote_count = 0
+    - vote_count = current_user.vote_activity_count(motion) if current_user
     - if vote_count > 0
       .vote-icon-container.vote-alert-icon
         #activity-count.span.label.important= vote_count
     - else
       .vote-icon-container.vote-disabled-icon
         #activity-count.span
-    - discussion_count = current_user.discussion_activity_count(motion)
+    - discussion_count = 0
+    - discussion_count = current_user.discussion_activity_count(motion) if current_user
     - if discussion_count > 0
       .discussion-icon-container.discussion-alert-icon
         #activity-count.span.label.important= discussion_count
