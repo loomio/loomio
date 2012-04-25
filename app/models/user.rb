@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_many :motions_voting, through: :groups, :source => :motions, :conditions => {phase: 'voting'}
   has_many :motions_closed, through: :groups, :source => :motions, :conditions => {phase: 'closed'}
 
-  has_many :motion_activity_read_logs
+  has_many :motion_read_logs
 
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
@@ -46,8 +46,8 @@ class User < ActiveRecord::Base
       u.skip_invitation = true
     end
     group.add_member! new_user
-  UserMailer.invited_to_loomio(new_user, inviter, group).deliver
-  new_user
+    UserMailer.invited_to_loomio(new_user, inviter, group).deliver
+    new_user
   end
 
   def update_motion_read_log(motion)
