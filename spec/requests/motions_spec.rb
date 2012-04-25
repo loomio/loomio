@@ -119,4 +119,20 @@ describe "Motions" do
       should have_content("Comments have been disabled for this motion")
     end
   end
+  context "a logged out user" do
+    it "can view a motion of a public group" do
+      @group = Group.make(name: 'Test Group')
+      @group.save
+      @user = User.make!
+      @group.add_member!(@user)
+      @motion = create_motion(name: 'Test Motion', group: @group,
+                              author: @user, facilitator: @user)
+      @motion.save!
+      @motion.discussion.add_comment(@user, "hello!")
+
+      visit motion_path(@motion)
+
+      should have_css('.motions.show')
+    end
+  end
 end
