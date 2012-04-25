@@ -1,7 +1,8 @@
 #group
   %h2.headerspace.group-title
     = @group.name
-    = link_to "Edit group", edit_group_path(@group), class: "btn small"
+    - if @group.can_be_edited_by? current_user
+      = link_to "Edit group", edit_group_path(@group), class: "btn small"
   .row
     .span11
       %h4.padding
