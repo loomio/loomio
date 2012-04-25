@@ -1,6 +1,7 @@
 class Membership < ActiveRecord::Base
   attr_accessible :group_id, :access_level
   after_initialize :set_defaults
+  before_destroy :remove_open_votes
 
   ACCESS_LEVELS = ['request', 'member', 'admin']
   MEMBER_ACCESS_LEVELS = ['member', 'admin']
@@ -33,6 +34,14 @@ class Membership < ActiveRecord::Base
   end
 
   private
+    def remove_open_votes
+      user.votes.each do |vote|
+        motion = Motion.find(vote.motion_id)
+        if motion.voting?
+          vote.destroy
+        end
+      end
+    end
     def set_defaults
       self.access_level ||= 'request'
     end

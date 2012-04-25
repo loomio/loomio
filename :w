@@ -113,17 +113,16 @@ class Motion < ActiveRecord::Base
 
   def open_close_motion
     if close_date && close_date <= Time.now
-      if voting?
-        close_voting
-      end
+      close_voting
     else
       open_voting
     end
     save
   end
 
-  def set_close_date(date)
+  def set_close_info(date, count)
     self.close_date = date
+    self.group_count_at_close = count
     save
     open_close_motion
   end
@@ -148,16 +147,13 @@ class Motion < ActiveRecord::Base
     if closed?
       read_attribute(:no_vote_count)
     else
-      calculate_no_vote_count
+      #calculate_no_vote_count
+      5
     end
   end
 
   def group_count
-    if voting?
-      group.users.count
-    else
-      calculate_group_count
-    end
+    group.users.count
   end
 
   def group_members
@@ -197,10 +193,6 @@ class Motion < ActiveRecord::Base
 
     def calculate_no_vote_count
       group.memberships.size - votes.size
-    end
-
-    def calculate_group_count
-      votes.count + no_vote_count
     end
 
     def clear_no_vote_count

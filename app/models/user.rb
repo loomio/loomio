@@ -46,8 +46,8 @@ class User < ActiveRecord::Base
       u.skip_invitation = true
     end
     group.add_member! new_user
-  UserMailer.invited_to_loomio(new_user, inviter, group).deliver
-  new_user
+    UserMailer.invited_to_loomio(new_user, inviter, group).deliver
+    new_user
   end
 
   def update_motion_read_log(motion)

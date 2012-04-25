@@ -41,12 +41,12 @@
         -#=render "votes_filters", clicked_tag: @clicked_tag, motion: @motion
         #graph.pie
         %h5#percentage-to-vote
-          - group_size = @motion.group_count
-          - percent_voted = (100-(@motion.no_vote_count/group_size.to_f * 100)).to_i
           - if @motion.closed?
-            = "#{percent_voted}% of members voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
+            - percent_voted = (100-(@motion.no_vote_count/@motion.group_count.to_f * 100)).to_i
+            = "#{percent_voted}% of members voted on this motion (#{@motion.group_count - @motion.no_vote_count}/#{@motion.group_count})"
           - else
-            = "#{percent_voted}% of members have voted on this motion (#{group_size - @motion.no_vote_count}/#{group_size})"
+            - percent_voted = (100-(@motion.no_vote_count/@motion.group_count.to_f * 100)).to_i
+            = "#{percent_voted}% of members have voted on this motion (#{@motion.group_count - @motion.no_vote_count}/#{@motion.group_count})"
         #votes
           - if @motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
             #vote-form
