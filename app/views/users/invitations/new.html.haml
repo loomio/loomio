@@ -3,8 +3,7 @@
   = devise_error_messages!
   %p
     = f.label :email
-    %br/
     = f.text_field :email
-  %p= f.submit "Send an invitation"
+    = f.submit "Send an invitation"
 = link_to "Home", after_sign_in_path_for(resource_name)
 %br/
