@@ -80,12 +80,12 @@ describe Motion do
     @motion.vote_activity.should == 4
   end
 
-  #it "can update discussion_activity" do
-    #@motion = create_motion
-    #@motion.discussion_activity = 3
-    #@motion.update_discussion_activity
-    #@motion.discussion_activity.should == 4
-  #end
+  it "can update discussion_activity" do
+    @motion = create_motion
+    @motion.discussion_activity = 3
+    @motion.update_discussion_activity
+    @motion.discussion_activity.should == 4
+  end
 
   context "users have voted" do
     before :each do
