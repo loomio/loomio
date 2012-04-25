@@ -1,7 +1,7 @@
 #group-form.row.padding
   .span10
     =form_for(@group) do |f|
-      %h5 Group Name
+      = f.label :name, "Group Name"
       .clearfix
         .presence-required= f.text_field :name, class: "input"
         .error-message Group can not be blank
@@ -20,4 +20,4 @@
           .span3
             =f.select :members_invitable_by, [:members, :admins],
               member_label: Proc.new { |option| group_permissions_label(option) }
-      .standard-button.check-presence= f.submit
+      .check-presence= f.submit

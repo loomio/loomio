@@ -3,11 +3,11 @@
 = form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f|
   = devise_error_messages!
   = f.hidden_field :invitation_token
-  %h5.padding
-    Name
-    .left-format= f.text_field :name
-    Password
-    .left-format= f.password_field :password
-    Password confirmation
-    .left-format= f.password_field :password_confirmation
+  .padding
+    = f.label :name, "Name"
+    = f.text_field :name
+    = f.label :password, "Password"
+    = f.password_field :password
+    = f.label :password_confirmation, "Password confirmation"
+    = f.password_field :password_confirmation
   .sign-in-button= f.submit "Create my account", class: "btn primary"
