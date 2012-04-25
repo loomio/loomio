@@ -11,7 +11,6 @@ body.landing {
 
   .header {
     margin-top: 20px;
-    /*margin-left: 50px;*/
     height: 150px;
     background-image: url(loomio-fray-white-940.png);
     background-position: 5px top;
@@ -95,6 +94,7 @@ body.landing {
       input[type="checkbox"] {
         width: auto;
         margin-right: 5px;
+        display: inline-block;
       }
       label {
         width: 300px;
@@ -104,6 +104,7 @@ body.landing {
         line-height: 18px;
         margin-bottom: 5px;
       }
+      .sign-in-button { margin-top: 15px }
     }
   }
 }

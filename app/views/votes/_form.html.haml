@@ -1,7 +1,7 @@
 = form_for [motion, vote] do |f|
-  %h5.padding
-    Position
-    .left-format= f.select :position, Vote::POSITIONS
-    Statement
-    .left-format= f.text_field :statement
-  .standard-button= f.submit "Update vote", class: "btn primary"
+  .padding
+    = f.label :position, "Position"
+    = f.select :position, Vote::POSITIONS
+    = f.label :statement, "Statement"
+    = f.text_field :statement
+  = f.submit "Update vote", class: "btn primary"
