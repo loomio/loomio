@@ -28,7 +28,7 @@ Tautoko::Application.routes.draw do
     post :add_comment, :on => :member
   end
   resources :votes
-  resources :memberships
+  resources :memberships, except: [:new, :show]
   resources :users
   resources :comments, only: :destroy do
     post :like, on: :member

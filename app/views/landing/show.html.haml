@@ -36,7 +36,7 @@
         = label_tag 'user[password]', "Password"
         = password_field_tag 'user[password]'
         = check_box_tag 'user[remember_me]'
-        = label_tag 'user[remember_me]', 'Remember me'
+        = label_tag 'user[remember_me]', 'Remember me', class: "checkbox-label"
 
         .sign-in-button
           %button{:class => "btn primary small"} Sign in
