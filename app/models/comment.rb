@@ -73,7 +73,9 @@ class Comment < ActiveRecord::Base
   end
 
   def can_be_liked_by?(user)
-    user.groups.include? discussion.group
+    if user
+      user.groups.include?(discussion.group)
+    end
   end
 
   def discussion

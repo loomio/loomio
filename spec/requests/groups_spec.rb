@@ -134,4 +134,17 @@ describe "Groups" do
       should have_no_content("Users")
     end
   end
+
+  context "logged-out user" do
+    it "can view a public group" do
+      @user = User.make!
+      @group = Group.make!(name: 'Test Group', viewable_by: :everyone)
+      @group.add_member!(@user)
+      @motion = create_motion(name: 'Test Motion', group: @group,
+                              author: @user, facilitator: @user)
+      visit group_path(@group)
+
+      should have_content("Test Group")
+    end
+  end
 end

@@ -1,3 +1,4 @@
 - motions.voting_sorted.each do |motion|
   - motion.open_close_motion
-  .motion-row= render "dashboard/expandable_list", motion: motion
+  - if motion.voting?
+    .motion-row= render "dashboard/expandable_list", motion: motion

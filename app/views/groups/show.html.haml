@@ -3,8 +3,10 @@
     = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
     = " > " unless @group.parent.nil?
     = @group.name
-    = link_to "Edit group", edit_group_path(@group), class: "btn small"
-    = link_to "Add subgroup", group_add_subgroup_path(@group), class: "btn small" if @group.parent.nil?
+    - if @group.users_include? current_user
+      = link_to "Add subgroup", group_add_subgroup_path(@group), class: "btn small" if @group.parent.nil?
+    - if @group.can_be_edited_by? current_user
+      = link_to "Edit group", edit_group_path(@group), class: "btn small"
   .row
     .span11
       %h4.padding
