@@ -1,4 +1,4 @@
-- unless group.users_include?(current_user)
+- unless group.users_include?(current_user) || current_user.nil?
   - membership_request = group.membership_requests.find_by_user_id(current_user)
   - if membership_request.present?
     = link_to "Membership Requested", membership_request, method: :delete,
