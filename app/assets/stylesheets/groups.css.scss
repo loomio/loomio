@@ -43,6 +43,9 @@ $token-input-width: 278px;
 
 #sidebar {
   padding-top: 23px;
+  #subgroups {
+    padding-bottom: 20px;
+  }
   #user_email_input {
     display: inline;
     .input {
