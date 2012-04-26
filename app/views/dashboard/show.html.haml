@@ -13,15 +13,15 @@
         .group-panel
           %h4.title-row
             Your groups
-          #group-list
-            - current_user.groups.each do |group|
-              %h4
-                = link_to group.name, group_path(group)
-                %span
-                  = link_to "+",
-                    new_motion_path({group_id: group.id}),
-                    :class => 'new_motion',
-                    :title => 'new motion for this group'
+          %ul#group-list
+            - @groups.each do |group|
+              %li
+                = render 'group_link', group: group
+                %ul
+                  - group.subgroups.each do |subgroup|
+                    - if current_user.groups.include? subgroup
+                      %li
+                        = render 'group_link', group: subgroup
 
 
           = link_to "Create new group", new_group_path, :class => 'btn primary small'
