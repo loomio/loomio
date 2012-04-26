@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def group_membership(group)
-    memberships.for_group(@group).first
+    memberships.for_group(group).first
   end
 
   def self.invite_and_notify!(user_params, inviter, group)
