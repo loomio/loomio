@@ -1,7 +1,7 @@
 - likes = comment.likes
 %div.comment
   %p
-    %span.comment-username= link_to(comment.user.name, "#")
+    %span.comment-username= link_to(comment.user_name, "#")
     %span.comment-body= format_linebreaks(comment.body)
   %p.comment-time
     = time_ago_in_words(comment.created_at) + " ago"
