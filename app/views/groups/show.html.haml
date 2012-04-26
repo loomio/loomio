@@ -20,5 +20,7 @@
         = render "dashboard/closed_motions", motions: @group.motions
     .span5
       #sidebar
+        - if @group.parent.nil?
+          #subgroups
+            =render 'subgroups', group: @group
         =render 'users', group: @group
-        =render 'subgroups', group: @group
