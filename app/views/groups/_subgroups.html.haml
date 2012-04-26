@@ -1,5 +1,9 @@
-%h4.title-row Subgroups
-%ul.unstyled
-  - @group.subgroups.each do |subgroup| 
-    = link_to subgroup.name, group_path(subgroup), title: "group"
+%h4.title-row Sub-groups
+%ul#group-list
+  - group.subgroups.each do |subgroup|
+    %li
+      = render "dashboard/group_link", group: subgroup
+- if group.parent.nil? && group.users.include?(current_user)
+  = link_to "Create a Sub-group", group_add_subgroup_path(group),
+    class: "btn primary small"
 
