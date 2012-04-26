@@ -12,7 +12,6 @@ $token-input-width: 278px;
 
 /**** Group admin ****/
 #group {
-  .btn.small { font-size: 12px }
   #right-panel {
     #membership-requested { width: 200px; }
   }
@@ -62,9 +61,16 @@ $token-input-width: 278px;
   #request-list {
     margin-top: 8px;
   }
+  input#user_email{
+    margin-bottom: 5px;
+  }
   #button-invite {
-    margin-top: 5px;
-    text-align: right;
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+    input {
+      margin: 0px;
+    }
   }
   #member-requests{ margin-top: 5px; display: inline; }
   #users-list {
@@ -132,42 +138,47 @@ $token-input-width: 278px;
   }
 }
 
-/**** dashboard ****/
+/**** group dashboard ****/
 .group-panel {
   margin-top: 9px;
-  #group-list {
-    .group-link{
-      width: 90%;
-      display: inline-block;
+}
+
+/* TODO: this is also being used by the home dashboard.
+ *       it should probably be moved to generic.css
+ */
+ul#group-list {
+  margin-bottom: 8px;
+  .group-link{
+    width: 90%;
+    display: inline-block;
+  }
+  .group-link.disabled{
+    a{
+      color: grey;
     }
-    .group-link.disabled{
-      a{
-        color: grey;
+  }
+  li{
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 4px;
+    list-style-type: none;
+    ul {
+      margin-left: 0px;
+      li {
+        margin-top: 2px;
+        font-size: 12px;
+        padding-left: 17px;
+        background: url('list-item-bullet-tree.png') no-repeat top left;
       }
     }
-    li{
-      font-size: 14px;
-      line-height: 16px;
-      margin-top: 4px;
-      list-style-type: none;
-      ul {
-        margin-left: 0px;
-        li {
-          margin-top: 2px;
-          font-size: 12px;
-          padding-left: 17px;
-          background: url('list-item-bullet-tree.png') no-repeat top left;
-        }
-      }
-    }
-    margin-left: 4px;
-    a.new_motion {
-      float: right;
-      margin-right: 5px;
-      margin-top: -2px;
-      font-weight: bold;
-      font-size: 17px;
-    }
+  }
+  margin-left: 4px;
+  a.new_motion {
+    float: right;
+    margin-right: 5px;
+    margin-top: -2px;
+    font-weight: bold;
+    font-size: 17px;
   }
 }
 

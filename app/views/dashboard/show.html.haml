@@ -21,7 +21,7 @@
                   - group.subgroups.each do |subgroup|
                     - if current_user.groups.include? subgroup
                       %li
-                        = render 'group_link', group: GroupDecorator.decorate(subgroup)
+                        = render 'group_link', group: subgroup
 
 
           = link_to "Create new group", new_group_path, :class => 'btn primary small'
