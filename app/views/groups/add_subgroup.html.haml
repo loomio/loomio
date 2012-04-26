@@ -1,2 +1,3 @@
-%h2.header-space Add a subgroup to #{@parent.name}
-=render :partial => 'form', :locals => {:@group => @subgroup}
+#new-subgroup
+  %h2.header-space Add a subgroup to #{@parent.name}
+  =render :partial => 'form', :locals => {:group => @subgroup, parent: @parent}
