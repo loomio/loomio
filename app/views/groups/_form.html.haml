@@ -1,6 +1,6 @@
 #group-form.row.padding
   .span10
-    =form_for(@group) do |f|
+    =form_for(group) do |f|
       = f.label :name, "Group Name"
       .clearfix
         .presence-required= f.text_field :name, class: "input"
@@ -20,5 +20,5 @@
           .span3
             =f.select :members_invitable_by, [:members, :admins],
               member_label: Proc.new { |option| group_permissions_label(option) }
-        =f.hidden_field :parent_id, :value => @parent.id if defined? @parent
+        =f.hidden_field :parent_id, :value => parent.id unless parent.nil?
       .check-presence= f.submit
