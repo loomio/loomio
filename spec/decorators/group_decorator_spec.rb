@@ -1,7 +1,11 @@
 require 'spec_helper'
 
-describe GroupDecorator, :draper_with_helpers do
-  before do
+describe GroupDecorator do
+  before :each do
+    c = ApplicationController.new
+    c.request = ActionDispatch::TestRequest.new
+    c.set_current_view_context
+
     @group = GroupDecorator.decorate(Group.make!)
     @subgroup = GroupDecorator.decorate(Group.make!(parent: @group))
   end
