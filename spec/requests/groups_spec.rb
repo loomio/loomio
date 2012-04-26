@@ -30,6 +30,12 @@ describe "Groups" do
         current_url.should == edit_group_url(@group)
       end
 
+      it "can visit add subgroup page" do
+        visit group_add_subgroup_path(@group)
+
+        have_css("#new-subgroup")
+      end
+
       it "can edit group" do
         visit edit_group_path(@group)
 
