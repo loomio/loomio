@@ -5,7 +5,7 @@ A new motion was created in a Loomio group that you belong to.
 :plain
 
 
-= "Motion: #{@motion.name}"
-= "Group: #{@motion.group.name}"
+!= "Motion: #{@motion.name}"
+!= "Group: #{@motion.group.name}"
 - if @motion.description.present?
-  = "Description: " + @motion.description
+  != "Description: " + @motion.description
