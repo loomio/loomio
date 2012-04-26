@@ -40,15 +40,6 @@ Spork.prefork do
     # automatically. This will be the default behavior in future versions of
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
-
-    ## Make helpers, including link helpers, work with Draper in specs.
-    ## https://github.com/jcasimir/draper/pull/49#issuecomment-4003191
-    #config.treat_symbols_as_metadata_keys_with_true_values = true
-    #config.before(:all, :draper_with_helpers) do
-      #c = ApplicationController.new
-      #c.request = ActionDispatch::TestRequest.new
-      #c.set_current_view_context
-    #end
   end
 
   require 'database_cleaner'
