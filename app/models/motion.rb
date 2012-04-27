@@ -4,21 +4,26 @@ class Motion < ActiveRecord::Base
   belongs_to :group
   belongs_to :author, :class_name => 'User'
   belongs_to :facilitator, :class_name => 'User'
+  belongs_to :discussion
   has_many :votes
   has_many :motion_activity_read_logs
-  belongs_to :discussion
+
   validates_presence_of :name, :group, :author, :facilitator_id
   validates_inclusion_of :phase, in: PHASES
+  validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
+    allow_blank: true
 
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
 
   before_create :initialize_discussion
   after_create :email_motion_created
+  before_save :set_disable_discussion
+  before_save :format_discussion_url
 
   attr_accessor :create_discussion
   attr_accessor :enable_discussion
-  before_save :set_disable_discussion
+
 
   include AASM
   aasm :column => :phase do
@@ -188,6 +193,12 @@ class Motion < ActiveRecord::Base
         unless author == user
           MotionMailer.new_motion_created(self, user.email).deliver
         end
+      end
+    end
+
+    def format_discussion_url
+      unless self.discussion_url.match(/^http/) || self.discussion_url.empty?
+        self.discussion_url = "http://" + self.discussion_url
       end
     end
 
