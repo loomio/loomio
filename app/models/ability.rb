@@ -4,6 +4,12 @@ class Ability
   def initialize(user, params)
 
     #
+    # USERS
+    #
+
+    cannot :sign_up, User
+
+    #
     # GROUPS
     #
 
