@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def group_membership(group)
-    memberships.for_group(@group).first
+    memberships.for_group(group).first
   end
 
   def self.invite_and_notify!(user_params, inviter, group)
