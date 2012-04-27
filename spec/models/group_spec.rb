@@ -22,6 +22,24 @@ describe Group do
     end
   end
 
+  context "has a parent" do
+    before :each do
+      @group = Group.make!
+      @subgroup = Group.make!(:parent => @group)
+    end
+    it "accesses its parent" do
+      @subgroup.parent.should == @group
+    end
+    it "accesses its children" do
+      10.times {Group.make!(:parent => @group)}
+      @group.subgroups.count.should eq(11)
+    end
+    it "limits group inheritance to 1 level" do
+      invalid = Group.make(:parent => @subgroup)
+      invalid.should_not be_valid
+    end
+  end
+
   context "an existing group viewiable by members" do
     before :each do
       @group = Group.make!(viewable_by: "members")

@@ -9,12 +9,12 @@ class Comment < ActiveRecord::Base
   #acts_as_voteable
 
   belongs_to :commentable, :polymorphic => true
-
-  # NOTE: Comments belong to a user
   belongs_to :user
+  has_many :comment_votes
 
   after_save :update_activity
-  has_many :comment_votes
+
+  delegate :name, :to => :user, :prefix => :user
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text

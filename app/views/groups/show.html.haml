@@ -1,5 +1,7 @@
 #group
   %h2.headerspace.group-title
+    = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
+    = " > " unless @group.parent.nil?
     = @group.name
     - if @group.can_be_edited_by? current_user
       = link_to "Edit group", edit_group_path(@group), class: "btn small"
@@ -17,4 +19,8 @@
       .motions-list
         = render "dashboard/closed_motions", motions: @group.motions
     .span5
-      =render 'users', group: @group
+      #sidebar
+        - if @group.parent.nil?
+          #subgroups
+            =render 'subgroups', group: @group
+        =render 'users', group: @group

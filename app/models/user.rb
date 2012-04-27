@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
   has_many :motions_voting, through: :groups, :source => :motions, :conditions => {phase: 'voting'}
   has_many :motions_closed, through: :groups, :source => :motions, :conditions => {phase: 'closed'}
 
-  has_many :motion_read_logs
+  has_many :motion_read_logs,
+           :dependent => :destroy
 
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
@@ -85,6 +86,28 @@ class User < ActiveRecord::Base
 
   def discussion_activity_count(motion)
     motion.discussion_activity - discussion_activity_when_last_read(motion)
+  end
+
+  # Get all root groups that the user belongs to
+  # This also includes parent groups of sub-groups
+  # that the user belongs to (even though the user
+  # might not necessarily belong to the parent)
+  def all_root_groups
+    results = root_groups
+    subgroups.each do |subgroup|
+      unless results.include? subgroup.parent
+        results << subgroup.parent
+      end
+    end
+    results
+  end
+
+  def subgroups
+    groups.where("parent_id IS NOT NULL")
+  end
+
+  def root_groups
+    groups.where("parent_id IS NULL")
   end
 
   private
