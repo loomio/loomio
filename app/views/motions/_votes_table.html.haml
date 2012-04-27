@@ -1,10 +1,11 @@
-- if motion.votes.size > 0
+-last_votes = Vote.unique_votes(motion)
+-if last_votes.size > 0
   %table.zebra-striped
     %th
     %th user
     %th statement
     %th
-    -motion.votes.each do |vote|
+    -last_votes.each do |vote|
       %tr{:class => "everyone #{vote.user.group_tags_from(@motion.group).join(" ")}" }
         %td=render partial: "display_icons", locals: {position: vote.position}
         %td=vote.user_name

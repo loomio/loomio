@@ -63,8 +63,9 @@ class Motion < ActiveRecord::Base
   end
 
   def votes_breakdown
+    last_votes = Vote.unique_votes(self)
     Vote::POSITIONS.map {|position|
-      [position, votes.where(:position => position)]
+      [position, last_votes.find_all{|vote| vote.position == position}]
     }.to_hash
   end
 
