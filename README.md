@@ -7,7 +7,7 @@ groups and organizations of any size.
 
 ### Set up the database
 
-``` bash
+```
   $ cd /dir/to/loomio/
   $ bundle install
   $ cp config/database.example.yml config/database.yml
@@ -20,13 +20,13 @@ groups and organizations of any size.
 
 First start MySql (if it's not already running):
 
-``` bash
+```
   $ mysql.server start
 ```
 
 Then start the Rails server:
 
-``` bash
+```
   $ cd /dir/to/loomio/
   $ rails server
 ```
@@ -39,7 +39,7 @@ You'll need to create a Loomio user account on your machine that you can
 use to interact with the site. Right now, the only way to do this is
 through the Rails console:
 
-``` bash
+```
   $ cd /dir/to/loomio/
   $ rails console
 ```
