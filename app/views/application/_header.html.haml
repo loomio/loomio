@@ -5,6 +5,7 @@
         = link_to image_tag("logo-trans-tiny.png"), "/", :class => 'brand'
         %ul.nav.secondary-nav
           - if user_signed_in?
+            %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
             %li.dropdown
               = link_to current_user.name ? current_user.name : current_user.email, "#", :class => 'dropdown-toggle'
               %ul.dropdown-menu
