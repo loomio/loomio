@@ -54,10 +54,8 @@ Now you should be able to visit `http:localhost:3000` and login as the user
 above and start playing with the site.
 
 You'll probably want to create several different users so that you can
-test the site out properly. If you create an "incognito window" in
-Google Chrome (Cmd + Shift + N) it opens up a new window where you can
-log in with a separate account. This way you can start testing the site
-simultaneously with two different users.
+test the site out properly. (Try using separate browsers if you want to
+login with two users at the same time)
 
 ## Contribute
 
