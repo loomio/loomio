@@ -33,10 +33,18 @@ class VotesController < GroupBaseController
   end
 
   def update
-    resource
+    @motion = Motion.find(params[:motion_id])
     if @motion.voting?
-      @vote.update_attributes(params[:vote])
-      flash[:notice] = "Vote updated."
+      params[:vote].delete(:id)
+      @vote = Vote.new(params[:vote])
+      ap params
+      @vote.motion = @motion
+      @vote.user = current_user
+      if @vote.save
+        flash[:notice] = "Vote updated."
+      else
+        flash[:error] = "Could not update vote."
+      end
     else
       flash[:error] = "Can only vote in voting phase"
     end
