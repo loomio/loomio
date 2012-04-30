@@ -36,11 +36,6 @@ Tautoko::Application.routes.draw do
   end
   match "/settings", :to => "users#settings", :as => :user_settings
 
-  namespace :admin do
-    resources :groups, only: :index
-  end
-  match "/admin", :to => redirect("/admin/groups")
-
   # route logged in user to dashboard
   resources :dashboard, only: :show
   authenticated do
