@@ -9,13 +9,13 @@ Tautoko::Application.routes.draw do
   match "/groups/:id/tag_user", :to => "groups#tag_user", :as => :group_tag_user
   get "/motions/:id/active_tags/:tags/clicked_tag/:tag" => "motions#toggle_tag_filter", :as => "toggle_tag_filter"
 
-  resources :groups do
+  resources :groups, except: :index do
     get :invite_member, on: :member
     get :add_subgroup
     resources :motions, name_prefix: "groups_"
     get :request_membership, on: :member
   end
-  resources :motions do
+  resources :motions, except: :index do
     resources :votes
   end
   match "/motions/:id/close", :to => "motions#close_voting", :as => :close_motion_voting,

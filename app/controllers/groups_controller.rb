@@ -26,8 +26,11 @@ class GroupsController < GroupBaseController
   end
 
   def request_membership
-    @group = Group.find(params[:id])
-    @membership = Membership.new
+    if resource.users.include? current_user
+      redirect_to group_url(resource)
+    else
+      @membership = Membership.new
+    end
   end
 
   def add_user_tag
