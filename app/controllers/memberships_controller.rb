@@ -20,7 +20,8 @@ class MembershipsController < BaseController
     if @group.can_be_viewed_by? current_user
       redirect_to group_url(@group)
     else
-      redirect_to groups_url
+      flash[:notice] = "Membership requested."
+      redirect_to root_url
     end
   end
 

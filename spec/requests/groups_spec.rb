@@ -14,11 +14,6 @@ describe "Groups" do
                                           'user[password]' => 'password'
     end
 
-    it "can view their groups" do
-      visit '/groups'
-      should have_selector('h3', text:'Groups')
-    end
-
     context "admin of a group" do
       before :each do
         @group.add_admin!(@user)
