@@ -141,12 +141,12 @@ describe GroupsController do
       context "a requested member" do
         before :each do
           @group.add_request!(@user)
-          @previous_url = groups_url
+          @previous_url = root_url
           request.env["HTTP_REFERER"] = @previous_url
         end
-        it "viewing a group should redirect to previous url" do
+        it "viewing a group should redirect to root url" do
           get :show, :id => @group.id
-          response.should redirect_to(@previous_url)
+          response.should redirect_to(root_url)
         end
         it "editing a group should redirect to previous url" do
           get :edit, :id => @group.id
