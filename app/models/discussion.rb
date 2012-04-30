@@ -35,6 +35,11 @@ class Discussion < ActiveRecord::Base
     motions.first
   end
 
+  def update_activity
+    self.activity += 1
+    save
+  end
+
   def comments
     comment_threads.order("created_at DESC")
   end
