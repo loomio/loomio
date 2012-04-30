@@ -116,6 +116,15 @@ class Motion < ActiveRecord::Base
     user && group.users.include?(user)
   end
 
+  def move_to_group(group)
+    if discussion.present?
+      discussion.group = group
+      discussion.save
+    end
+    self.group = group
+    save
+  end
+
   def open_close_motion
     if close_date && close_date <= Time.now
       if voting?

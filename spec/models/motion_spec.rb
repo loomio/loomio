@@ -87,6 +87,23 @@ describe Motion do
     @motion.discussion_activity.should == 4
   end
 
+  context "move motion to new group" do
+    before do
+      @new_group = Group.make!
+      @motion = create_motion
+      @motion.move_to_group @new_group
+      @motion.save
+    end
+
+    it "changes motion group_id to new group" do
+      @motion.group.should == @new_group
+    end
+
+    it "changes motion discussion_id to new group" do
+      @motion.discussion.group.should == @new_group
+    end
+  end
+
   context "users have voted" do
     before :each do
       @motion = create_motion
