@@ -20,4 +20,13 @@ describe Discussion do
     comment = discussion.add_comment(User.make!, "this is a test comment")
     discussion.comment_threads.should_not include(comment)
   end
+
+  it "can update discussion_activity" do
+    motion = create_motion
+    discussion = motion.discussion
+    discussion.activity = 3
+    discussion.update_activity
+    discussion.activity.should == 4
+  end
+
 end
