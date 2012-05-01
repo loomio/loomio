@@ -79,10 +79,9 @@
               - else
                 %h4 #{@motion.no_vote_count} users yet to vote
               #still-to-vote-list
-              - @motion.group_members.each do |user|
+              - @motion.users_who_did_not_vote.each do |user|
                 .user-row
-                  - if !@motion.user_has_voted?(user)
-                    %h5= user.name
+                  %h5= user.name
 
 :coffeescript
   $ ->

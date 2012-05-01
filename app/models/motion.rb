@@ -6,6 +6,7 @@ class Motion < ActiveRecord::Base
   belongs_to :facilitator, :class_name => 'User'
   belongs_to :discussion
   has_many :votes
+  has_many :did_not_votes
   has_many :motion_activity_read_logs
 
   validates_presence_of :name, :group, :author, :facilitator_id
@@ -30,11 +31,11 @@ class Motion < ActiveRecord::Base
     state :voting, :initial => true
     state :closed
 
-    event :open_voting do
+    event :open_voting, before: :before_open do
       transitions :to => :voting, :from => [:voting, :closed]
     end
 
-    event :close_voting do
+    event :close_voting, before: :before_close do
       transitions :to => :closed, :from => [:voting, :closed]
     end
   end
@@ -136,12 +137,6 @@ class Motion < ActiveRecord::Base
     save
   end
 
-  def set_close_date(date)
-    self.close_date = date
-    save
-    open_close_motion
-  end
-
   def has_closing_date?
     close_date == nil
   end
@@ -159,7 +154,23 @@ class Motion < ActiveRecord::Base
   end
 
   def no_vote_count
-    DidNotVote.where("motion_id = ?", id).count
+    if voting?
+      group_count - votes.count
+    else
+      did_not_votes.count
+    end
+  end
+
+  def users_who_did_not_vote
+    if voting?
+      users = []
+      group.users.each do |user|
+        users << user unless user_has_voted?(user)
+      end
+      users
+    else
+      did_not_votes.map{ |did_not_vote| did_not_vote.user }
+    end
   end
 
   def group_count
@@ -189,8 +200,24 @@ class Motion < ActiveRecord::Base
   end
 
   private
+    def before_open
+      self.close_date = Time.now + 1.week
+      did_not_votes.each do |did_not_vote|
+        did_not_vote.delete
+      end
+    end
+
     def before_close
-      @motion.set_close_date(Time.now)
+      store_users_that_didnt_vote
+      self.close_date = Time.now
+    end
+
+    def store_users_that_didnt_vote
+      group.users.each do |user|
+        unless user_has_voted?(user)
+          DidNotVote.create(user: user, motion: self)
+        end
+      end
     end
 
     def initialize_discussion
