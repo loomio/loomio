@@ -104,42 +104,55 @@ describe Motion do
     end
   end
 
-  context "users have voted" do
+  context "closed motion" do
     before :each do
-      @motion = create_motion
       user1 = User.make
       user1.save
       user2 = User.make
       user2.save
-      user3 = User.make
-      user3.save
+      @user3 = User.make
+      @user3.save
+      @motion = create_motion(author: user1, facilitator: user1)
       @motion.group.add_member!(user1)
       @motion.group.add_member!(user2)
-      @motion.group.add_member!(user3)
+      @motion.group.add_member!(@user3)
       Vote.create!(position: 'yes', motion: @motion, user: user1)
       Vote.create!(position: 'no', motion: @motion, user: user2)
-      Vote.create!(position: 'yes', motion: @motion, user: user3)
-      @motion.close_voting
+      @motion.close_voting!
     end
 
-    context "motion closed" do
-      it "records and freezes no_vote_count" do
-        @motion.no_vote_count.should == 2
-        @motion.group.add_member!(User.make!)
-        @motion.no_vote_count.should == 2
-      end
+    it "stores users who did not vote" do
+      DidNotVote.first.user.should == @user3
     end
 
-    context "motion re-opened" do
-      before :each do
-        @motion.open_voting
-      end
-
-      it "no_vote_count should not be frozen" do
-        @motion.no_vote_count.should == 2
-        @motion.group.add_member!(User.make!)
-        @motion.no_vote_count.should == 3
-      end
+    it "no_vote_count should return number of users who did not vote" do
+      @motion.no_vote_count.should == 1
     end
+
+    it "users_who_did_not_vote should return users who did not vote" do
+      @motion.users_who_did_not_vote.should include(@user3)
+    end
+
+    it "reopening motion deletes did_not_vote records" do
+      @motion.open_voting
+      DidNotVote.all.count.should == 0
+    end
+  end
+
+  context "open motion" do
+    before :each do
+      @user1 = User.make
+      @user1.save
+      @motion = create_motion(author: @user1, facilitator: @user1)
+    end
+
+    it "no_vote_count should return number of users who have not voted yet" do
+      @motion.no_vote_count.should == 1
+    end
+
+    it "users_who_did_not_vote should return users who did not vote" do
+      @motion.users_who_did_not_vote.should include(@user1)
+    end
+
   end
 end

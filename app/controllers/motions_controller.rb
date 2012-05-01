@@ -10,6 +10,7 @@ class MotionsController < GroupBaseController
     @motion.open_close_motion
     @group = @motion.group
     @votes_for_graph = @motion.votes_graph_ready
+    @unique_votes = Vote.unique_votes(@motion)
     @vote = Vote.new
     @comments = @motion.discussion.comment_threads.order("created_at DESC")
     @user_already_voted = @motion.user_has_voted?(current_user)
@@ -43,13 +44,13 @@ class MotionsController < GroupBaseController
 
   def close_voting
     resource
-    @motion.set_close_date(Time.now)
+    @motion.close_voting!
     redirect_to motion_path(@motion)
   end
 
   def open_voting
     resource
-    @motion.set_close_date(Time.now + 1.week)
+    @motion.open_voting!
     redirect_to motion_path(@motion)
   end
 
