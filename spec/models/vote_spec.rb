@@ -61,13 +61,6 @@ describe Vote do
     vote.should_not be_valid
   end
 
-  it 'should not accept multiple votes on the same motion by the same user' do
-    vote = Vote.new(position: 'yes', motion: @motion, user: @user)
-    vote.save!
-    vote1 = Vote.new(position: 'yes', motion: @motion, user: @user)
-    vote1.should_not be_valid
-  end
-
   it 'sould update vote_activity when new vote is created' do
     @motion.vote_activity = 2
     vote = Vote.new(position: 'yes', motion: @motion, user: @user)
