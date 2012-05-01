@@ -69,15 +69,6 @@ class Motion < ActiveRecord::Base
     }.to_hash
   end
 
-  def blocked?
-    votes.each do |v|
-      if v.position == "block"
-        return true
-      end
-    end
-    false
-  end
-
   def votes_graph_ready
     votes_for_graph = []
     votes_breakdown.each do |k, v|
@@ -87,6 +78,15 @@ class Motion < ActiveRecord::Base
       votes_for_graph.push ["Yet to vote (#{no_vote_count})", no_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
     end
     return votes_for_graph
+  end
+
+  def blocked?
+    votes.each do |v|
+      if v.position == "block"
+        return true
+      end
+    end
+    false
   end
 
   def has_admin_user?(user)
@@ -141,17 +141,17 @@ class Motion < ActiveRecord::Base
     close_date == nil
   end
 
-  def has_group_user_tag(tag_name)
-    has_tag = false
-    votes.each do |vote|
-      vote.user.group_tags_from(group).each do |tag|
-        if tag == tag_name
-          return has_tag = true
-        end
-      end
-    end
-    return has_tag
-  end
+  #def has_group_user_tag(tag_name)
+    #has_tag = false
+    #votes.each do |vote|
+      #vote.user.group_tags_from(group).each do |tag|
+        #if tag == tag_name
+          #return has_tag = true
+        #end
+      #end
+    #end
+    #return has_tag
+  #end
 
   def no_vote_count
     if voting?
@@ -177,7 +177,7 @@ class Motion < ActiveRecord::Base
     if voting?
       group.users.count
     else
-      calculate_group_count
+      votes.count + no_vote_count
     end
   end
 
@@ -236,10 +236,6 @@ class Motion < ActiveRecord::Base
       unless self.discussion_url.match(/^http/) || self.discussion_url.empty?
         self.discussion_url = "http://" + self.discussion_url
       end
-    end
-
-    def calculate_group_count
-      votes.count + no_vote_count
     end
 
     def set_disable_discussion
