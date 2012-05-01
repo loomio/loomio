@@ -43,7 +43,7 @@ class MotionsController < GroupBaseController
 
   def close_voting
     resource
-    @motion.set_close_date(Time.now)
+    @motion.close_voting
     redirect_to motion_path(@motion)
   end
 
