@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   after_create :ensure_name_entry
 
   def motion_vote(motion)
-    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).first
+    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
   end
 
   def is_group_admin?(group)

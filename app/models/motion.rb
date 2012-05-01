@@ -64,8 +64,11 @@ class Motion < ActiveRecord::Base
   end
 
   def votes_breakdown
-    Vote::POSITIONS.map {|position|
-      [position, votes.where(:position => position)]
+    last_votes = Vote.unique_votes(self)
+    positions = Array.new(Vote::POSITIONS)
+    positions.delete("did_not_vote")
+    positions.map {|position|
+      [position, last_votes.find_all{|vote| vote.position == position}]
     }.to_hash
   end
 
