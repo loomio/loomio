@@ -22,7 +22,6 @@ class Vote < ActiveRecord::Base
 
   validates_presence_of :motion, :user, :position
   validates_inclusion_of :position, in: POSITIONS
-  validates_uniqueness_of :user_id, scope: :motion_id
   validates_length_of :statement, maximum: 250
   validates :user_id, user_can_vote: true
   validates :position, :statement, closable: true
@@ -43,6 +42,10 @@ class Vote < ActiveRecord::Base
 
   def can_be_edited_by?(current_user)
     current_user && user == current_user
+  end
+
+  def self.unique_votes(motion)
+    Vote.find_by_sql("SELECT * FROM votes a WHERE position != 'did_not_vote' AND created_at = (SELECT MAX(created_at) as created_at FROM votes b WHERE a.user_id = b.user_id AND motion_id = #{motion.id} )")
   end
 
   private
