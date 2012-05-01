@@ -64,7 +64,7 @@ class Motion < ActiveRecord::Base
   end
 
   def votes_breakdown
-    last_votes = Vote.unique_votes(self)
+    last_votes = unique_votes()
     positions = Array.new(Vote::POSITIONS)
     positions.delete("did_not_vote")
     positions.map {|position|
@@ -156,9 +156,13 @@ class Motion < ActiveRecord::Base
     #return has_tag
   #end
 
+  def unique_votes
+    Vote.unique_votes(self)
+  end
+
   def no_vote_count
     if voting?
-      group_count - votes.count
+      group_count - unique_votes.count
     else
       did_not_votes.count
     end
@@ -180,7 +184,7 @@ class Motion < ActiveRecord::Base
     if voting?
       group.users.count
     else
-      votes.count + no_vote_count
+      unique_votes.count + no_vote_count
     end
   end
 
