@@ -25,6 +25,10 @@ describe "Motions" do
         click_on "Close Voting"
       end
 
+      it "should be closed" do
+        should have_link("Reopen Voting")
+      end
+
       it "should display users that have not voted" do
         find("#still-to-vote").should have_content(@user2.name)
       end

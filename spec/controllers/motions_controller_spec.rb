@@ -82,7 +82,7 @@ describe MotionsController do
     end
 
     it "cannot close a motion" do
-      motion.should_not_receive(:set_close_date)
+      motion.should_not_receive(:close_voting)
 
       post :close_voting, id: motion.id
     end
