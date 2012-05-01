@@ -30,11 +30,11 @@ class Motion < ActiveRecord::Base
     state :voting, :initial => true
     state :closed
 
-    event :open_voting, :after => :clear_no_vote_count do
+    event :open_voting do
       transitions :to => :voting, :from => [:voting, :closed]
     end
 
-    event :close_voting, :after => :store_no_vote_count do
+    event :close_voting do
       transitions :to => :closed, :from => [:voting, :closed]
     end
   end
@@ -159,11 +159,7 @@ class Motion < ActiveRecord::Base
   end
 
   def no_vote_count
-    if closed?
-      read_attribute(:no_vote_count)
-    else
-      calculate_no_vote_count
-    end
+    DidNotVote.where("motion_id = ?", id).count
   end
 
   def group_count
@@ -193,6 +189,10 @@ class Motion < ActiveRecord::Base
   end
 
   private
+    def before_close
+      @motion.set_close_date(Time.now)
+    end
+
     def initialize_discussion
       self.discussion ||= Discussion.create(author_id: author.id, group_id: group.id)
     end
@@ -211,20 +211,8 @@ class Motion < ActiveRecord::Base
       end
     end
 
-    def store_no_vote_count
-      self.no_vote_count = calculate_no_vote_count
-    end
-
-    def calculate_no_vote_count
-      group.memberships.size - votes.size
-    end
-
     def calculate_group_count
       votes.count + no_vote_count
-    end
-
-    def clear_no_vote_count
-      self.no_vote_count = nil
     end
 
     def set_disable_discussion
