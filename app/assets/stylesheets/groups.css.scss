@@ -41,6 +41,94 @@ $token-input-width: 278px;
 
 #btn-create-motion{ float: right; margin-top: -8px;}
 
+#discussions {
+  margin-top: 23px;
+  margin-left: 10px;
+  /*border-top: 1px solid lightgrey;*/
+  .discussion {
+    /*background-color: #EEE;*/
+    border: 1px solid lightgrey;
+    -moz-box-shadow:    1px 1px 3px #ccc;
+    -webkit-box-shadow: 1px 1px 3px #ccc;
+    box-shadow:         1px 1px 3px #ccc;
+    margin-bottom: 7px;
+    .discussion-title {
+      padding-left: 7px;
+      padding-top: 3px;
+      padding-bottom: 5px;
+      display: inline;
+    }
+    .proposal-container {
+      padding-left: 7px;
+      padding-bottom: 7px;
+      font-size: 13px;
+      line-height: 16px;
+      height: 30px;
+      color: grey;
+      /*background-color: #EEE;*/
+      .vote-icon {
+        display: inline-block;
+        height: 16px;
+        float: left;
+      }
+      .proposal-title-container {
+        margin-left: 12px;
+        display: inline-block;
+        width: 400px;
+        .proposal-label {
+          font-style: italic;
+          color: #BBB;
+        }
+        .proposal-title {
+          color: #777;
+        }
+      }
+      .proposal-stats {
+        display: inline;
+        float: right;
+        padding-right: 8px;
+        text-align: right;
+        .proposal-close-date {
+        }
+        .proposal-engagement {
+          color: #BBB;
+        }
+      }
+    }
+  }
+  .alert-info {
+    width: 48px;
+    display: inline-block;
+    float: right;
+    .discussion-alert-icon {
+      background: url("discussion.png");
+      background-size: 25px;
+      background-position-y: 4px;
+      background-position-x: -2px;
+      background-repeat: no-repeat;
+    }
+    .discussion-disabled-icon {
+      background: url("discussion-disabled.png");
+      background-size: 25px;
+      background-position-y: 4px;
+      background-position-x: -2px;
+      background-repeat: no-repeat;
+    }
+    .discussion-icon-container{
+      display: inline-block;
+      margin-left: 6px;
+      margin-top: -7px;
+      height: 30px;
+      width: 20px;
+    }
+  }
+  #activity-count {
+    font-size: 9px;
+    display: inline;
+    margin-left: 16px;
+  }
+}
+
 #sidebar {
   padding-top: 23px;
   #subgroups {
