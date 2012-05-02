@@ -8,6 +8,7 @@ class GroupsController < GroupBaseController
   def create
     build_resource
     @group.add_admin! current_user
+    @group.inherit_memberships!
     create!
   end
 
