@@ -8,7 +8,35 @@ body.landing {
     right: 0px;
     float: right;
   }
-
+  #demo{
+	background-color:white;
+  }
+  #demo-head{
+	padding: 40px 90px;
+	background-color: #EEE;
+  }
+  #demo-content{
+	padding: 0 90px 40px;
+  }
+  #demo-content h2{
+	margin: 20px 0 10px 0;
+  }
+  #demo-content p, #demo-content a{
+	font-size: 0.8em;
+	margin: 20px 0;
+  }
+  #demo-head h1{
+	font-size: 2.7em;
+	font-weight: normal;
+	margin-bottom: 3px;
+  }
+  #demo-head p{
+	font-size: 0.8em;
+  }
+  #demo-bottom{
+	padding-bottom: 20px;
+	border-bottom: 1px solid #eee;
+  }
   .header {
     margin-top: 20px;
     height: 150px;
