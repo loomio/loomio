@@ -8,7 +8,8 @@ class GroupsController < GroupBaseController
   def create
     @group = Group.new(params[:group])
     if @group.save
-      @group.add_admin! current_user
+      @group.add_admin! current_user	
+      @group.inherit_memberships!
       flash[:notice] = "Group created successfully."
       redirect_to @group
     else
