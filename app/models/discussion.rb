@@ -14,6 +14,7 @@ class Discussion < ActiveRecord::Base
   has_many :motions
 
   validates_presence_of :title, :group, :author
+  validates :title, :length => { :maximum => 150 }
   validates_with AuthorValidator
 
   def add_comment(user, comment)
