@@ -11,21 +11,62 @@
       = link_to "Leave group", membership, method: :delete, class: "btn small",
         confirm: "Are you sure you wish to leave #{@group.name}?"
   .row
-    .span11
-      %h4.padding
-        Open motions
-        #btn-create-motion
-          - if @group.users_include? current_user
-            = link_to "Create a motion",
-            new_motion_path({group_id: @group.id}), :class => 'btn primary small'
-      .motions-list
-        = render "dashboard/open_motions", motions: @group.motions
-      %h4 Closed motions
-      .motions-list
-        = render "dashboard/closed_motions", motions: @group.motions
     .span5
       #sidebar
         - if @group.parent.nil?
           #subgroups
             =render 'subgroups', group: @group
         =render 'users', group: @group
+
+    .span11
+      #discussions
+        - @group.discussions.each do |discussion|
+          %div.discussion
+            %h4.discussion-title
+              = link_to discussion.title, discussion_path(discussion)
+              - if discussion.default_motion.present?
+                - motion = discussion.default_motion
+                .alert-info
+                  - discussion_count = 0
+                  - discussion_count = current_user.discussion_activity_count(motion) if current_user
+                  - if discussion_count > 0
+                    .discussion-icon-container.discussion-alert-icon
+                      #activity-count.span.label.important= discussion_count
+                  - else
+                    .discussion-icon-container.discussion-disabled-icon
+                      #activity-count.span
+              - if discussion.default_motion.present?
+                .proposal-container
+                  .vote-icon
+                    - if motion.user_has_voted?(current_user)
+                      - position = current_user.motion_vote(motion).position
+                      =render partial: "motions/display_icons", locals: {position: position}
+                    - else
+                      #no-vote-dash
+                        = " "
+                  .proposal-info
+                    .proposal-title-container
+                      %span.proposal-label Proposal:
+                      %span.proposal-title= discussion.default_motion.name
+                    .proposal-stats
+                      .proposal-close-date
+                        - if motion.close_date.present?
+                          closing in
+                          = time_ago_in_words(motion.close_date)
+                      .proposal-engagement
+                        #percentage-to-vote
+                          - percent_voted = (100-(motion.no_vote_count/motion.group_count.to_f * 100)).to_i
+                          = "#{percent_voted}% engagement (#{motion.group_count - motion.no_vote_count}/#{motion.group_count})"
+
+
+        -#%h4.padding
+          -#Open motions
+          -##btn-create-motion
+            -#- if @group.users_include? current_user
+              -#= link_to "Create a motion",
+              -#new_motion_path({group_id: @group.id}), :class => 'btn primary small'
+        -#.motions-list
+          -#= render "dashboard/open_motions", motions: @group.motions
+        -#%h4 Closed motions
+        -#.motions-list
+          -#= render "dashboard/closed_motions", motions: @group.motions
