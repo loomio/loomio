@@ -93,6 +93,11 @@ class Group < ActiveRecord::Base
     membership
   end
 
+  def inherit_memberships!
+    unless parent.nil?
+      parent.admins.each {|admin| add_admin!(admin)}
+    end
+  end
 
   #
   # PERMISSION-CHECKS
