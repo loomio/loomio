@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Discussion do
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:group) }
+  it { should validate_presence_of(:author) }
+
   it "author must belong to group" do
     discussion = Discussion.new(group: Group.make!)
     discussion.author = User.make!

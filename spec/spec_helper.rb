@@ -92,6 +92,9 @@ def create_discussion(*args)
     discussion.author = User.make
     discussion.author.save
   end
+  unless discussion.title
+    discussion.title = "Title of discussion!"
+  end
   discussion.group.add_member! discussion.author
   discussion.save
   unless discussion.default_motion
