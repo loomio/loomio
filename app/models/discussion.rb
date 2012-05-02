@@ -1,7 +1,7 @@
 class Discussion < ActiveRecord::Base
   class AuthorValidator < ActiveModel::Validator
     def validate(record)
-      unless record.group.users.include? record.author
+      unless (record.group.nil? || record.group.users.include?(record.author))
         record.errors[:author] << 'must be a member of the discussion group'
       end
     end
@@ -13,6 +13,7 @@ class Discussion < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   has_many :motions
 
+  validates_presence_of :title, :group, :author
   validates_with AuthorValidator
 
   def add_comment(user, comment)
