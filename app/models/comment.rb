@@ -88,6 +88,6 @@ class Comment < ActiveRecord::Base
 
   private
     def update_activity
-      default_motion.update_discussion_activity
+      discussion.update_activity if discussion
     end
 end
