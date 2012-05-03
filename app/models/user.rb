@@ -53,7 +53,9 @@ class User < ActiveRecord::Base
 
   def update_motion_read_log(motion)
     if MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
-      MotionReadLog.create(vote_activity_when_last_read: motion.vote_activity, discussion_activity_when_last_read: motion.discussion_activity, user_id: id, motion_id: motion.id)
+      MotionReadLog.create(vote_activity_when_last_read: motion.vote_activity,
+                   discussion_activity_when_last_read: motion.discussion_activity,
+                   user_id: id, motion_id: motion.id)
     else
       log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
       log.vote_activity_when_last_read = motion.vote_activity
