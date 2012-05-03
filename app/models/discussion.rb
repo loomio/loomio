@@ -17,6 +17,8 @@ class Discussion < ActiveRecord::Base
   validates :title, :length => { :maximum => 150 }
   validates_with AuthorValidator
 
+  attr_accessor :comment
+
   def add_comment(user, comment)
     if can_be_commented_on_by? user
       comment = Comment.build_from self, user.id, comment
