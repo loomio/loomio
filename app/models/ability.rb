@@ -49,9 +49,8 @@ class Ability
     end
 
     can :create, Discussion do |discussion|
-      group = discussion.group
-      group ||= Group.find(params[:group_id])
-      group.users.include? user
+      group = Group.find(params[:discussion][:group_id])
+      group.users.include?(user)
     end
 
     can :destroy, Comment, user_id: user.id

@@ -19,7 +19,7 @@
         =render 'users', group: @group
 
     .span11
-      = link_to 'Start a new discussion', new_discussion_path(group_id: @group), class: "btn small"
+      = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn small"
       #discussions
         - @group.discussions.each do |discussion|
           %div.discussion
