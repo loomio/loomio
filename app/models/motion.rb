@@ -5,9 +5,9 @@ class Motion < ActiveRecord::Base
   belongs_to :author, :class_name => 'User'
   belongs_to :facilitator, :class_name => 'User'
   belongs_to :discussion
-  has_many :votes
+  has_many :votes, :dependent => :destroy
+  has_many :motion_read_logs, :dependent => :destroy
   has_many :did_not_votes
-  has_many :motion_activity_read_logs
 
   validates_presence_of :name, :group, :author, :facilitator_id
   validates_inclusion_of :phase, in: PHASES
@@ -160,6 +160,10 @@ class Motion < ActiveRecord::Base
     Vote.unique_votes(self)
   end
 
+  def discussion_activity
+    discussion.activity if discussion
+  end
+
   def no_vote_count
     if voting?
       group_count - unique_votes.count
@@ -198,8 +202,7 @@ class Motion < ActiveRecord::Base
   end
 
   def update_discussion_activity
-    self.discussion_activity += 1
-    save
+    discussion.update_activity if discussion
   end
 
   def comments

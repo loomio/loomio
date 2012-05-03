@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120502010636) do
+ActiveRecord::Schema.define(:version => 20120503000000) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20120502010636) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
+    t.integer  "activity",   :default => 0
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -96,13 +97,12 @@ ActiveRecord::Schema.define(:version => 20120502010636) do
     t.integer  "facilitator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "phase",               :default => "voting", :null => false
-    t.string   "discussion_url",      :default => "",       :null => false
+    t.string   "phase",              :default => "voting", :null => false
+    t.string   "discussion_url",     :default => "",       :null => false
     t.datetime "close_date"
     t.integer  "discussion_id"
-    t.boolean  "disable_discussion",  :default => false
-    t.integer  "vote_activity",       :default => 0
-    t.integer  "discussion_activity", :default => 0
+    t.boolean  "disable_discussion", :default => false
+    t.integer  "vote_activity",      :default => 0
   end
 
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"

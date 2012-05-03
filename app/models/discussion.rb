@@ -27,16 +27,17 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def default_motion
-    motions.first
-  end
-
   def can_be_commented_on_by?(user)
     group.users.include? user
   end
 
   def default_motion
     motions.first
+  end
+
+  def update_activity
+    self.activity += 1
+    save
   end
 
   def comments

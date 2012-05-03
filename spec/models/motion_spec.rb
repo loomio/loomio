@@ -82,12 +82,12 @@ describe Motion do
 
   it "can update discussion_activity" do
     @motion = create_motion
-    @motion.discussion_activity = 3
+    @motion.discussion.activity = 3
     @motion.update_discussion_activity
-    @motion.discussion_activity.should == 4
+    @motion.discussion.activity.should == 4
   end
 
-  context "move motion to new group" do
+  context "moving motion to new group" do
     before do
       @new_group = Group.make!
       @motion = create_motion
@@ -102,6 +102,25 @@ describe Motion do
     it "changes motion discussion_id to new group" do
       @motion.discussion.group.should == @new_group
     end
+  end
+
+  context "destroying a motion" do
+    before do
+      @motion = create_motion
+      @vote = Vote.create(position: "no", motion: @motion, user: @motion.author)
+      @comment = @motion.discussion.add_comment(@motion.author, "hello")
+      @motion.author.update_motion_read_log(@motion)
+      @motion.destroy
+    end
+
+    it "deletes associated votes" do
+      Vote.first.should == nil
+    end
+
+    it "deletes associated motion read logs" do
+      MotionReadLog.first.should == nil
+    end
+
   end
 
   context "closed motion" do
