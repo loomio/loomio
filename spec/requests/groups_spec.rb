@@ -58,6 +58,15 @@ describe "Groups" do
       end
     end
 
+    context "group member viewing a group" do
+      it "can add a discussion" do
+        visit group_path(@group)
+
+        click_on 'Start a new discussion'
+        should have_css(".discussions.new")
+      end
+    end
+
     context "group member viewing a group visible to members only" do
       before :each do
         @group.viewable_by = :members
@@ -116,13 +125,6 @@ describe "Groups" do
 
         should have_content("Test Group")
         should have_content("Current members")
-      end
-
-      it "can click on 'Create a motion'" do
-        visit group_path(@group)
-
-        click_link 'Create a motion'
-        should have_content("New motion")
       end
     end
 

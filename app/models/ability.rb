@@ -48,6 +48,12 @@ class Ability
       discussion.can_be_commented_on_by? user
     end
 
+    can :create, Discussion do |discussion|
+      group = discussion.group
+      group ||= Group.find(params[:group_id])
+      group.users.include? user
+    end
+
     can :destroy, Comment, user_id: user.id
     can [:like, :unlike], Comment do |comment|
       comment.can_be_liked_by? user
