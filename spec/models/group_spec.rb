@@ -38,6 +38,13 @@ describe Group do
       invalid = Group.make(:parent => @subgroup)
       invalid.should_not be_valid
     end
+    it "can set admin of parent group as admin of subgroups" do
+      @user = User.make!
+      @group.add_admin!(@user)
+      @subgroup.inherit_memberships!
+      @subgroup.users.should include(@user)
+      @subgroup.admins.should include(@user)
+    end
   end
 
   context "an existing group viewiable by members" do
