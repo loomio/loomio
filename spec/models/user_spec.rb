@@ -52,10 +52,10 @@ describe User do
     @group = Group.make!
     @motion = create_motion(group: @group)
     @motion.vote_activity = 2
-    @motion.discussion_activity = 4
+    @motion.discussion.activity = 4
     @user.update_motion_read_log(@motion)
     @motion.vote_activity = 7
-    @motion.discussion_activity = 5
+    @motion.discussion.activity = 5
     @user.vote_activity_when_last_read(@motion).should == 2
     @user.discussion_activity_when_last_read(@motion).should == 4
     @user.update_motion_read_log(@motion)
