@@ -7,6 +7,7 @@ class Motion < ActiveRecord::Base
   belongs_to :discussion
   has_many :votes, :dependent => :destroy
   has_many :motion_read_logs, :dependent => :destroy
+  has_many :did_not_votes
 
   validates_presence_of :name, :group, :author, :facilitator_id
   validates_inclusion_of :phase, in: PHASES
@@ -30,11 +31,11 @@ class Motion < ActiveRecord::Base
     state :voting, :initial => true
     state :closed
 
-    event :open_voting, :after => :clear_no_vote_count do
+    event :open_voting, before: :before_open do
       transitions :to => :voting, :from => [:voting, :closed]
     end
 
-    event :close_voting, :after => :store_no_vote_count do
+    event :close_voting, before: :before_close do
       transitions :to => :closed, :from => [:voting, :closed]
     end
   end
@@ -63,18 +64,12 @@ class Motion < ActiveRecord::Base
   end
 
   def votes_breakdown
-    Vote::POSITIONS.map {|position|
-      [position, votes.where(:position => position)]
+    last_votes = unique_votes()
+    positions = Array.new(Vote::POSITIONS)
+    positions.delete("did_not_vote")
+    positions.map {|position|
+      [position, last_votes.find_all{|vote| vote.position == position}]
     }.to_hash
-  end
-
-  def blocked?
-    votes.each do |v|
-      if v.position == "block"
-        return true
-      end
-    end
-    false
   end
 
   def votes_graph_ready
@@ -86,6 +81,15 @@ class Motion < ActiveRecord::Base
       votes_for_graph.push ["Yet to vote (#{no_vote_count})", no_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
     end
     return votes_for_graph
+  end
+
+  def blocked?
+    votes.each do |v|
+      if v.position == "block"
+        return true
+      end
+    end
+    false
   end
 
   def has_admin_user?(user)
@@ -136,26 +140,24 @@ class Motion < ActiveRecord::Base
     save
   end
 
-  def set_close_date(date)
-    self.close_date = date
-    save
-    open_close_motion
-  end
-
   def has_closing_date?
     close_date == nil
   end
 
-  def has_group_user_tag(tag_name)
-    has_tag = false
-    votes.each do |vote|
-      vote.user.group_tags_from(group).each do |tag|
-        if tag == tag_name
-          return has_tag = true
-        end
-      end
-    end
-    return has_tag
+  #def has_group_user_tag(tag_name)
+    #has_tag = false
+    #votes.each do |vote|
+      #vote.user.group_tags_from(group).each do |tag|
+        #if tag == tag_name
+          #return has_tag = true
+        #end
+      #end
+    #end
+    #return has_tag
+  #end
+
+  def unique_votes
+    Vote.unique_votes(self)
   end
 
   def discussion_activity
@@ -163,10 +165,22 @@ class Motion < ActiveRecord::Base
   end
 
   def no_vote_count
-    if closed?
-      read_attribute(:no_vote_count)
+    if voting?
+      group_count - unique_votes.count
     else
-      calculate_no_vote_count
+      did_not_votes.count
+    end
+  end
+
+  def users_who_did_not_vote
+    if voting?
+      users = []
+      group.users.each do |user|
+        users << user unless user_has_voted?(user)
+      end
+      users
+    else
+      did_not_votes.map{ |did_not_vote| did_not_vote.user }
     end
   end
 
@@ -174,7 +188,7 @@ class Motion < ActiveRecord::Base
     if voting?
       group.users.count
     else
-      calculate_group_count
+      unique_votes.count + no_vote_count
     end
   end
 
@@ -196,6 +210,26 @@ class Motion < ActiveRecord::Base
   end
 
   private
+    def before_open
+      self.close_date = Time.now + 1.week
+      did_not_votes.each do |did_not_vote|
+        did_not_vote.delete
+      end
+    end
+
+    def before_close
+      store_users_that_didnt_vote
+      self.close_date = Time.now
+    end
+
+    def store_users_that_didnt_vote
+      group.users.each do |user|
+        unless user_has_voted?(user)
+          DidNotVote.create(user: user, motion: self)
+        end
+      end
+    end
+
     def initialize_discussion
       self.discussion ||= Discussion.create(author_id: author.id, group_id: group.id)
     end
@@ -212,22 +246,6 @@ class Motion < ActiveRecord::Base
       unless self.discussion_url.match(/^http/) || self.discussion_url.empty?
         self.discussion_url = "http://" + self.discussion_url
       end
-    end
-
-    def store_no_vote_count
-      self.no_vote_count = calculate_no_vote_count
-    end
-
-    def calculate_no_vote_count
-      group.memberships.size - votes.size
-    end
-
-    def calculate_group_count
-      votes.count + no_vote_count
-    end
-
-    def clear_no_vote_count
-      self.no_vote_count = nil
     end
 
     def set_disable_discussion

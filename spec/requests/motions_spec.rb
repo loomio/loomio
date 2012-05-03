@@ -18,6 +18,30 @@ describe "Motions" do
                        'user[password]' => 'password'
     end
 
+    context "closes motion" do
+      before :each do
+        vote = Vote.create(user: @user, motion: @motion, position: "yes")
+        visit motion_path(id: @motion.id)
+        click_on "Close Voting"
+      end
+
+      it "should be closed" do
+        should have_link("Reopen Voting")
+      end
+
+      it "should display users that have not voted" do
+        find("#still-to-vote").should have_content(@user2.name)
+      end
+
+      it "should not display new users since motion closed" do
+        @user3 = User.make
+        @user3.save
+        @group.add_member!(@user3)
+        visit motion_path(id: @motion.id)
+        find("#still-to-vote").should_not have_content(@user3.name)
+      end
+    end
+
     context "viewing a motion in one of their groups" do
       it "can see motion discussion" do
         visit motion_path(id: @motion.id)
