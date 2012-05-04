@@ -235,9 +235,11 @@ class Motion < ActiveRecord::Base
     end
 
     def email_motion_created
-      group.users.each do |user|
-        unless author == user
-          MotionMailer.new_motion_created(self, user.email).deliver
+      if group.email_new_motion
+        group.users.each do |user|
+          unless author == user
+            MotionMailer.new_motion_created(self, user.email).deliver
+          end
         end
       end
     end
