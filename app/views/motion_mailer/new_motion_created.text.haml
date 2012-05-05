@@ -7,5 +7,10 @@ A new motion was created in a Loomio group that you belong to.
 
 != "Motion: #{@motion.name}"
 != "Group: #{@motion.group.name}"
+!= "Author: #{@motion.author.name}"
+:plain
+
+
 - if @motion.description.present?
-  != "Description: " + @motion.description
+  != "Description: \n#{@motion.description}"
+

@@ -19,15 +19,28 @@ describe Motion do
     @motion.user_has_voted?(@user).should == true
   end
 
-  it "sends notification email to group members on successful create" do
-    group = Group.make!
-    group.add_member!(User.make!)
-    group.add_member!(User.make!)
-    # Do not send email to author, so subtract one from total emails sent
-    MotionMailer.should_receive(:new_motion_created)
-      .exactly(group.users.count - 1).times
-      .with(kind_of(Motion), kind_of("")).and_return(stub(deliver: true))
-    @motion = create_motion
+  context "motion created" do
+    it "sends email to group members if email notifications are enabled (default)" do
+      group = Group.make!
+      group.add_member!(User.make!)
+      group.add_member!(User.make!)
+      # Do not send email to author, so subtract one from total emails sent
+      MotionMailer.should_receive(:new_motion_created)
+        .exactly(group.users.count - 1).times
+        .with(kind_of(Motion), kind_of("")).and_return(stub(deliver: true))
+      # NOTE (Jon): this should actually be create_motion(group: group), but that fails
+      @motion = create_motion
+    end
+
+    it "does not send email to group members if email notifications are disabled" do
+      group = Group.make
+      group.email_new_motion = false
+      group.save
+      group.add_member!(User.make!)
+      group.add_member!(User.make!)
+      MotionMailer.should_not_receive(:new_motion_created)
+      @motion = create_motion(group: group)
+    end
   end
 
   it "cannot have invalid phases" do

@@ -20,6 +20,7 @@ gem 'aasm'
 gem 'cancan'
 gem 'acts_as_commentable_with_threading'
 gem 'draper'
+gem 'exception_notification'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,7 +31,6 @@ group :assets do
 end
 
 group :development, :test do
-  #gem 'ruby-debug19', :require => 'ruby-debug' # Please don't delete this =)
   #gem 'debugger'
   gem 'machinist', '>= 2.0.0.beta2'
   gem 'faker'

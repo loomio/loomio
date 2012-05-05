@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120503000000) do
+ActiveRecord::Schema.define(:version => 20120503072748) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20120503000000) do
     t.string   "viewable_by"
     t.string   "members_invitable_by"
     t.integer  "parent_id"
+    t.boolean  "email_new_motion",     :default => true
   end
 
   create_table "memberships", :force => true do |t|
