@@ -41,7 +41,8 @@ Tautoko::Application.routes.draw do
   authenticated do
     root :to => 'dashboard#show'
   end
-
+  # route landing page to demo page
+  match '/demo' => 'landing#demo'
   # route logged out user to landing page
   resources :landing, only: :show
   root :to => 'landing#show'

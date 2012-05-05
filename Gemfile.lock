@@ -110,6 +110,8 @@ GEM
       activesupport (>= 2.3.10)
     ejs (1.0.0)
     erubis (2.7.0)
+    exception_notification (2.6.1)
+      actionmailer (>= 3.0.4)
     execjs (1.2.9)
       multi_json (~> 1.0)
     faker (1.0.1)
@@ -300,6 +302,7 @@ DEPENDENCIES
   devise (~> 2.0.0)
   devise_invitable (~> 1.0.0)
   draper
+  exception_notification
   faker
   flay
   formtastic
