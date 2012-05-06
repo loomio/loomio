@@ -23,14 +23,11 @@
         = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn small primary"
       #discussions
         - @group.discussions.each do |discussion|
-          - class_name = " closed"
+          - class_name = " voting"
           - if discussion.default_motion.present?
             - motion = discussion.default_motion
-            - if motion.voting?
-              - if motion.blocked?
-                - class_name = " blocked"
-              - else
-                - class_name = " voting"
+            - if motion.voting? && motion.blocked?
+              - class_name = " blocked"
           %div{ class: "discussion" + class_name }
             .discussion-title-container
               %h4.discussion-title
