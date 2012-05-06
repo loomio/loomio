@@ -1,0 +1,12 @@
+- if discussion.can_be_commented_on_by? current_user
+  = form_tag add_comment_discussion_path(discussion), id: "new-comment-form" do
+    = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
+    #new-comment-submit
+      = submit_tag "Post comment", class: "btn primary submit"
+
+- comments = discussion.comments
+- if comments.count == 0
+  %h4 There are no comments yet on this motion
+- else
+  - comments.each do |comment|
+    = render comment
