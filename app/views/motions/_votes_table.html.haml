@@ -1,20 +1,25 @@
 - if unique_votes.size > 0
-  %table.zebra-striped
-    %th
-    %th user
-    %th statement
-    %th
-    - unique_votes.each do |vote|
-      %tr{:class => "everyone #{vote.user.group_tags_from(@motion.group).join(" ")}" }
-        %td=render partial: "display_icons", locals: {position: vote.position}
-        %td=vote.user_name
-        %td.vote-statement=vote.statement
-        - if vote.can_be_edited_by?(current_user)
-          %td
+  .row
+    .span8.bordered
+      %h4.title-row Positions
+      - unique_votes.each do |vote|
+        .member-row.bordered
+          .icon-container= render partial: "display_icons", locals: { position: vote.position }
+          .member-name= vote.user_name
+          - if vote.can_be_edited_by?(current_user)
             -if motion.phase == 'voting'
-              =link_to "edit", edit_motion_vote_path(motion, vote)
-              |
-              =link_to "delete", motion_vote_path(motion, vote), method: :delete,
-                confirm: "Are you sure you want to delete your vote?"
+              .btn-edit-delete
+                =link_to "edit", edit_motion_vote_path(motion, vote), class: 'btn small'
+                =link_to "delete", motion_vote_path(motion, vote), class: 'btn small', method: :delete,
+                  confirm: "Are you sure you want to delete your vote?"
+          %h5.statement= vote.statement
+      - if @motion.group_count > 0
+        - if @motion.closed?
+          -no_position_title = "#{@motion.no_vote_count} users did not vote"
         - else
-          %td
+          -no_position_title = "#{@motion.no_vote_count} users yet to vote"
+      %h4.title-row.bordered= no_position_title
+      - motion.users_who_did_not_vote.each do |user|
+        .no-position-row.bordered
+          %h5.member-no-position= user.name
+      .padding

@@ -33,9 +33,10 @@ $token-input-width: 278px;
 
 /**** Group page ****/
 .group-title {
+  color: #888;
   padding-top: 20px;
   padding-bottom: 5px;
-  border-bottom: 1px solid #888;
+  border-bottom: 1px solid #BBB;
   .btn { float: right; margin: -12px 0 0 10px; }
 }
 
@@ -50,7 +51,7 @@ $token-input-width: 278px;
   padding-bottom: 30px;
   /*border-top: 1px solid lightgrey;*/
   .discussion {
-    background-color: white;
+    /*background-color: white;*/
     border: 1px solid lightgrey;
     -moz-box-shadow:    1px 1px 3px #ccc;
     -webkit-box-shadow: 1px 1px 3px #ccc;
@@ -69,7 +70,7 @@ $token-input-width: 278px;
       font-size: 13px;
       line-height: 16px;
       height: 30px;
-      color: grey;
+      color: #BBB;
       /*background-color: #EEE;*/
       .vote-icon {
         display: inline-block;
@@ -86,7 +87,7 @@ $token-input-width: 278px;
           color: #BBB;
         }
         .proposal-title {
-          color: #777;
+          color: #888;
         }
       }
       .proposal-stats {
@@ -213,7 +214,7 @@ $token-input-width: 278px;
   ul.token-input-list-facebook p {
     line-height: $token-input-line-height;
     font-size: 9px;
-    color: grey;
+    color: #888;
   }
   div.token-input-dropdown-facebook p {
     line-height: $token-input-line-height;
@@ -283,5 +284,3 @@ ul#group-list {
 }
 
 /**** general ****/
-.links{ display: inline; float: right; padding-top: 6px; }
-.title-row { background-color: #EEE; padding: 4px; color: #555; }

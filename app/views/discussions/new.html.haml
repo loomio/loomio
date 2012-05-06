@@ -1,3 +1,7 @@
+%h2.headerspace.group-title
+  = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
+  = " > " unless @group.parent.nil?
+  = @group.name
 = form_for @discussion do |f|
   .padding
     = f.label :title, "Title"
