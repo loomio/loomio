@@ -39,14 +39,18 @@ $token-input-width: 278px;
   .btn { float: right; margin: -12px 0 0 10px; }
 }
 
-#btn-create-motion{ float: right; margin-top: -8px;}
+#btn-create-discussion{
+  padding-top: 23px;
+  margin-left: 10px;
+  }
 
 #discussions {
-  margin-top: 23px;
+  margin-top: 8px;
   margin-left: 10px;
+  padding-bottom: 30px;
   /*border-top: 1px solid lightgrey;*/
   .discussion {
-    /*background-color: #EEE;*/
+    background-color: white;
     border: 1px solid lightgrey;
     -moz-box-shadow:    1px 1px 3px #ccc;
     -webkit-box-shadow: 1px 1px 3px #ccc;
