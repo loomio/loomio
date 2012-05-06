@@ -20,7 +20,7 @@
 
     .span11
       #btn-create-discussion
-        = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn small primary"
+        = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn small primary", id: "new-discussion"
       #discussions
         - @group.discussions.each do |discussion|
           - class_name = " voting"

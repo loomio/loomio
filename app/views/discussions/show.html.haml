@@ -4,10 +4,9 @@
   = @group.name
 
 Discussion Page
-
 .row
-  -#.span8#discussion-panel
-    -#= render partial: 'discussion', locals: { motion: @motion, discussion: @motion.discussion }
+  .span8#discussion-panel
+    = render 'comments', discussion: @discussion
   -#.span8#votes-panel
     -##stats
       -#-# Vote tags aren't working... so let's hide them for now
