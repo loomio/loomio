@@ -1,6 +1,4 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :body
-
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
   validates_presence_of :body
@@ -15,6 +13,8 @@ class Comment < ActiveRecord::Base
   has_many :comment_votes
 
   after_save :update_activity
+
+  attr_accessible :body
 
   delegate :name, :to => :user, :prefix => :user
 
