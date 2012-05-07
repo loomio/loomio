@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   database: loomio_development
-  username: root
+  username: postgres
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -9,7 +9,7 @@ development:
 test:
   adapter: postgresql
   database: loomio_test
-  username: root
+  username: postgres
 
 production:
   adapter: sqlite3
