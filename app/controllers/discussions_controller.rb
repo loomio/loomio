@@ -20,6 +20,18 @@ class DiscussionsController < GroupBaseController
     end
   end
 
+  def show
+    @discussion = Discussion.find(params[:id])
+    @current_motion = @discussion.current_motion
+    @vote = Vote.new
+    @comments = @discussion.comment_threads.order("created_at DESC")
+    if @current_motion
+      @unique_votes = Vote.unique_votes(@current_motion)
+      @votes_for_graph = @current_motion.votes_graph_ready
+      @user_already_voted = @current_motion.user_has_voted?(current_user)
+    end
+  end
+
   def add_comment
     comment = resource.add_comment(current_user, params[:comment])
     redirect_to motion_url(resource.current_motion)

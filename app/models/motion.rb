@@ -16,6 +16,8 @@ class Motion < ActiveRecord::Base
 
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
+  delegate :name, :to => :author, :prefix => :author
+  delegate :name, :to => :facilitator, :prefix => :facilitator
 
   before_create :initialize_discussion
   after_create :email_motion_created
