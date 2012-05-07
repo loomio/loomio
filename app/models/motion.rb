@@ -25,6 +25,8 @@ class Motion < ActiveRecord::Base
   attr_accessor :create_discussion
   attr_accessor :enable_discussion
 
+  attr_accessible :name, :description, :discussion_url, :enable_discussion
+  attr_accessible :close_date, :phase, :facilitator_id, :group
 
   include AASM
   aasm :column => :phase do
