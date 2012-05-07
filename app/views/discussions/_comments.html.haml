@@ -4,7 +4,6 @@
     #new-comment-submit
       = submit_tag "Post comment", class: "btn primary submit"
 
-- comments = discussion.comments
 - if comments.count == 0
   %h4 There are no comments yet on this motion
 - else

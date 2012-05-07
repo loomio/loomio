@@ -11,7 +11,7 @@
         %span.label.success Voting
       - if @motion.closed?
         %span.label.important Closed
-    .span8#admin-buttons
+    #admin-buttons
       =render "facilitator_options", motion: @motion
   .row
     .span16
