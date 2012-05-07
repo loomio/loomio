@@ -31,8 +31,8 @@ class Discussion < ActiveRecord::Base
     group.users.include? user
   end
 
-  def default_motion
-    motions.first
+  def current_motion
+    motions.last
   end
 
   def update_activity

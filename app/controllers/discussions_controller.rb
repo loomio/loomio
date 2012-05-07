@@ -22,7 +22,7 @@ class DiscussionsController < GroupBaseController
 
   def add_comment
     comment = resource.add_comment(current_user, params[:comment])
-    redirect_to motion_url(resource.default_motion)
+    redirect_to motion_url(resource.current_motion)
   end
 
   private

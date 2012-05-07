@@ -97,7 +97,7 @@ def create_discussion(*args)
   end
   discussion.group.add_member! discussion.author
   discussion.save
-  unless discussion.default_motion
+  unless discussion.current_motion
     motion = create_motion(group: discussion.group)
     motion.discussion = discussion
     motion.save!

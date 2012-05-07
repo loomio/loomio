@@ -1,7 +1,7 @@
 class FillInDiscussionTitles < ActiveRecord::Migration
   def up
     Discussion.all.each do |discussion|
-      motion = discussion.default_motion
+      motion = discussion.current_motion
       if motion.nil?
         title = "(no title)"
       else
