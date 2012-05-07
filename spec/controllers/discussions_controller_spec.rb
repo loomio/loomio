@@ -5,7 +5,7 @@ describe DiscussionsController do
   let(:user) { stub_model(User) }
   let(:motion) { mock_model(Motion) }
   let(:group) { mock_model(Group) }
-  let(:discussion) { stub_model(Discussion, author: user, default_motion: motion, group: group) }
+  let(:discussion) { stub_model(Discussion, author: user, current_motion: motion, group: group) }
 
   context "authenticated user" do
     before do
