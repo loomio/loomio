@@ -62,10 +62,8 @@
 
 #votes-table{
   margin-top: 20px;
-  border-bottom: 1px solid #ddd;
   font-size: 14px;
   .position-row {
-    /*min-height: 28px;*/
     padding-top: 2px;
     padding-bottom: 3px;
     line-height: 14px;
@@ -113,6 +111,18 @@
       padding-left: 8px;
       margin-left: 6px;
       color: #888;
+    }
+  }
+}
+#closed-motions {
+  font-size: 14px;
+  color: #888;
+  .motion-row {
+    border-bottom: 1px solid #bbb;
+    padding: 2px;
+    .closed-date {
+      display: inline;
+      float: right;
     }
   }
 }

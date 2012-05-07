@@ -1,8 +1,8 @@
 -if motion.can_be_edited_by?(current_user)
-  -if motion.closed?
-    =link_to "Reopen Voting", open_motion_voting_path, class: 'btn small', method: :post,
-      confirm: "Are you sure you want to re-open this motion?", method: :post
-  -elsif motion.voting?
+  -#-if motion.closed?
+    -#=link_to "Reopen Voting", open_motion_voting_path, class: 'btn small', method: :post,
+      -#confirm: "Are you sure you want to re-open this motion?", method: :post
+  -if motion.voting?
     =link_to "Close Voting", close_motion_voting_path, class: 'btn small',
       confirm: "Are you sure you want to close this motion?", method: :post
   =link_to "Edit", edit_motion_path(motion), class: 'btn small'

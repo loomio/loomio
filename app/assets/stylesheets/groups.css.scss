@@ -178,6 +178,12 @@ $token-input-width: 278px;
     width: 270px;
     margin-top: 15px;
   }
+  .btn-edit-delete {
+    .btn {
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+  }
   #editable-user-row{ margin-top: -10px; }
   #uneditable-user { display: inline; }
   #uneditable-tag-list { display: inline; }
@@ -283,4 +289,3 @@ ul#group-list {
   }
 }
 
-/**** general ****/
