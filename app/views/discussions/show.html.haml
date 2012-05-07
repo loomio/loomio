@@ -7,9 +7,17 @@
   .span8#discussion-panel
     = render 'comments', discussion: @discussion, comments: @comments
   .span8#motion-panel
-    - if @current_motion
+    - if @current_motion && @current_motion.voting?
       = render @current_motion, unique_votes: @unique_votes
-
+    - @discussion.motions.each do |motion|
+      - if motion.closed?
+        .row#closed-motions
+          .span8
+            %h4.title-row Closed proposals
+            .motion-row
+              = motion.name
+              .closed-date
+                = "Closed #{time_ago_in_words(motion.close_date)} ago"
 :coffeescript
   $ ->
     # Display vote graph
