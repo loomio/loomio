@@ -4,9 +4,6 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-
   validates :name, :presence => true
 
   has_many :membership_requests,
@@ -26,6 +23,9 @@ class User < ActiveRecord::Base
 
   has_many :motion_read_logs,
            :dependent => :destroy
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
@@ -53,9 +53,12 @@ class User < ActiveRecord::Base
 
   def update_motion_read_log(motion)
     if MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
-      MotionReadLog.create(vote_activity_when_last_read: motion.vote_activity,
-                   discussion_activity_when_last_read: motion.discussion_activity,
-                   user_id: id, motion_id: motion.id)
+      motion_read_log = MotionReadLog.new
+      motion_read_log.vote_activity_when_last_read = motion.vote_activity
+      motion_read_log.discussion_activity_when_last_read = motion.discussion_activity
+      motion_read_log.user_id = id
+      motion_read_log.motion_id = motion.id
+      motion_read_log.save
     else
       log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
       log.vote_activity_when_last_read = motion.vote_activity
@@ -88,6 +91,10 @@ class User < ActiveRecord::Base
 
   def discussion_activity_count(motion)
     motion.discussion_activity - discussion_activity_when_last_read(motion)
+  end
+  
+  def self.find_by_email(email)
+    User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
   end
 
   # Get all root groups that the user belongs to

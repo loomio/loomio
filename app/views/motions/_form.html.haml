@@ -2,7 +2,7 @@
   =form_for(*form_args) do |f|
     = f.label :name, "Title"
     .clearfix
-      .presence-required= f.text_field :name, class: "pesence-required input"
+      .presence-required= f.text_field :name, class: "presence-required input"
       .error-message Title can not be blank
     = f.label :discussion_url, "Link to external discussion (optional)"
     = f.text_field :discussion_url, placeholder: "http://site.com/your-discussion"
