@@ -9,7 +9,7 @@ class DiscussionsController < GroupBaseController
   def create
     group = Group.find(params[:discussion][:group_id])
     comment = params[:discussion][:comment]
-    @discussion = Discussion.create(params[:discussion])
+    @discussion = Discussion.new(params[:discussion])
     @discussion.author = current_user
     @discussion.group = group
     if @discussion.save
@@ -38,6 +38,12 @@ class DiscussionsController < GroupBaseController
   def add_comment
     comment = resource.add_comment(current_user, params[:comment])
     redirect_to motion_url(resource.current_motion)
+  end
+
+  def new_proposal
+    @motion = Motion.new
+    @motion.group = Discussion.find(params[:id]).group
+    render template: 'motions/new'
   end
 
   private

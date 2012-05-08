@@ -28,6 +28,17 @@ describe DiscussionsController do
       end
     end
 
+    context "creates a new proposal" do
+      it "is successful" do
+        get :new_proposal, id: discussion.id
+        response.should be_success
+      end
+      it "renders new motion template" do
+        get :new_proposal, id: discussion.id
+        response.should render_template("motions/new")
+      end
+    end
+
     context "adds comment" do
       before do
         discussion.stub(:add_comment)

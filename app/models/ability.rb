@@ -44,6 +44,10 @@ class Ability
     # DISCUSSIONS / COMMENTS
     #
 
+    can :new_proposal, Discussion do |discussion|
+      discussion.can_have_proposal_created_by? user
+    end
+
     can :add_comment, Discussion do |discussion|
       discussion.can_be_commented_on_by? user
     end

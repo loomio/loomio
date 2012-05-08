@@ -17,8 +17,8 @@ class Discussion < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   has_many :motions
 
-  # this should be removed if possible - kiesia 8.5.12
-  attr_accessible :group
+  # group should be removed if possible - kiesia 8.5.12
+  attr_accessible :group, :title
 
   attr_accessor :comment
 
@@ -31,6 +31,10 @@ class Discussion < ActiveRecord::Base
   end
 
   def can_be_commented_on_by?(user)
+    group.users.include? user
+  end
+
+  def can_have_proposal_created_by?(user)
     group.users.include? user
   end
 

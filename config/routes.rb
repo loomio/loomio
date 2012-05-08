@@ -26,8 +26,8 @@ Tautoko::Application.routes.draw do
 
   resources :discussions, only: [:add_comment, :show, :new, :create] do
     post :add_comment, :on => :member
+    get :new_proposal, :on => :member
   end
-  match "/discussions/:id/new_motion", :to => "motions#new", :as => :new_discussion_motion
 
   resources :votes
   resources :memberships, except: [:new, :show]

@@ -34,7 +34,7 @@ class MotionsController < GroupBaseController
     @motion.author = current_user
     @motion.group = Group.find(params[:group_id])
     if @motion.save
-      redirect_to @motion.discussion
+      redirect_to discussion_path(@motion.discussion)
     else
       redirect_to :back
     end

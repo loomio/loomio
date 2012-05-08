@@ -19,6 +19,8 @@ describe "User" do
         @another_user_comment = @discussion.add_comment(other_user, "hello")
       end
 
+      it { should be_able_to(:new_proposal, @discussion) }
+
       it { should be_able_to(:add_comment, @discussion) }
 
       it { should be_able_to(:destroy, @user_comment) }
@@ -34,6 +36,7 @@ describe "User" do
       let(:discussion) { create_discussion }
       let(:comment) { discussion.add_comment(discussion.author, "hello") }
 
+      it { should_not be_able_to(:new_proposal, discussion) }
       it { should_not be_able_to(:add_comment, discussion) }
       it { should_not be_able_to(:destroy, comment) }
       it { should_not be_able_to(:like, comment) }
