@@ -13,6 +13,9 @@ class Discussion < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   has_many :motions
 
+  # this should be removed if possible - kiesia 8.5.12
+  attr_accessible :group
+
   validates_with AuthorValidator
 
   def add_comment(user, comment)

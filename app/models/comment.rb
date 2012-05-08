@@ -62,7 +62,11 @@ class Comment < ActiveRecord::Base
   #
 
   def like(user)
-    CommentVote.create(comment: self, user: user, value: true)
+    comment_vote = CommentVote.new
+    comment_vote.comment = self
+    comment_vote.user = user
+    comment_vote.value = true
+    comment_vote.save
   end
 
   def unlike(user)

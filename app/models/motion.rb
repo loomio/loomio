@@ -17,8 +17,8 @@ class Motion < ActiveRecord::Base
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
 
-  before_create :initialize_discussion
   after_create :email_motion_created
+  before_save :initialize_discussion
   before_save :set_disable_discussion
   before_save :format_discussion_url
 
@@ -227,13 +227,20 @@ class Motion < ActiveRecord::Base
     def store_users_that_didnt_vote
       group.users.each do |user|
         unless user_has_voted?(user)
-          DidNotVote.create(user: user, motion: self)
+          did_not_vote = DidNotVote.new
+          did_not_vote.user = user
+          did_not_vote.motion = self
+          did_not_vote.save
         end
       end
     end
 
     def initialize_discussion
-      self.discussion ||= Discussion.create(author_id: author.id, group_id: group.id)
+      unless discussion
+        self.discussion = Discussion.new(group: group)
+        discussion.author = author
+        discussion.save
+      end
     end
 
     def email_motion_created

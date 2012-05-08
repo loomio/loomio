@@ -53,9 +53,12 @@ class User < ActiveRecord::Base
 
   def update_motion_read_log(motion)
     if MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
-      MotionReadLog.create(vote_activity_when_last_read: motion.vote_activity,
-                   discussion_activity_when_last_read: motion.discussion_activity,
-                   user_id: id, motion_id: motion.id)
+      motion_read_log = MotionReadLog.new
+      motion_read_log.vote_activity_when_last_read = motion.vote_activity
+      motion_read_log.discussion_activity_when_last_read = motion.discussion_activity
+      motion_read_log.user_id = id
+      motion_read_log.motion_id = motion.id
+      motion_read_log.save
     else
       log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
       log.vote_activity_when_last_read = motion.vote_activity
@@ -88,6 +91,10 @@ class User < ActiveRecord::Base
 
   def discussion_activity_count(motion)
     motion.discussion_activity - discussion_activity_when_last_read(motion)
+  end
+  
+  def self.find_by_email(email)
+    User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
   end
 
   # Get all root groups that the user belongs to
