@@ -57,7 +57,6 @@ describe Motion do
     user1 = User.make
     user1.save
     @motion.group.add_member!(user1)
-    # Vote.create!(position: 'yes', motion: @motion, user: user1)
     vote = Vote.new(position: 'yes')
     vote.motion = @motion
     vote.user = user1
@@ -70,7 +69,6 @@ describe Motion do
     user1 = User.make
     user1.save
     @motion.group.add_member!(user1)
-    # Vote.create!(position: 'block', motion: @motion, user: user1)
     vote = Vote.new(position: 'block')
     vote.motion = @motion
     vote.user = user1
@@ -159,12 +157,10 @@ describe Motion do
       @motion.group.add_member!(user1)
       @motion.group.add_member!(user2)
       @motion.group.add_member!(@user3)
-      # Vote.create!(position: 'yes', motion: @motion, user: user1)
       vote1 = Vote.new(position: 'yes')
       vote1.motion = @motion
       vote1.user = user1
       vote1.save
-      # Vote.create!(position: 'no', motion: @motion, user: user2)
       vote2 = Vote.new(position: 'no')
       vote2.motion = @motion
       vote2.user = user2
