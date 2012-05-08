@@ -55,5 +55,8 @@ module Tautoko
       :email_prefix => "[Loomio Exception] ",
       :sender_address => %{"Exception Notifier" <dudley@loom.io>},
       :exception_recipients => %w{jon.lemmon@enspiral.com}
+
+    # Whitelist attributes so we never have to spend 2 days securing this app ;-)
+    config.active_record.whitelist_attributes = true
   end
 end
