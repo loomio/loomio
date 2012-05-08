@@ -15,7 +15,7 @@ Tautoko::Application.routes.draw do
     resources :motions, name_prefix: "groups_"
     get :request_membership, on: :member
   end
-  resources :motions, except: :index do
+  resources :motions, except: [:index, :show] do
     resources :votes
   end
   match "/motions/:id/close", :to => "motions#close_voting", :as => :close_motion_voting,
@@ -27,6 +27,8 @@ Tautoko::Application.routes.draw do
   resources :discussions, only: [:add_comment, :show, :new, :create] do
     post :add_comment, :on => :member
   end
+  match "/discussions/:id/new_motion", :to => "motions#new", :as => :new_discussion_motion
+
   resources :votes
   resources :memberships, except: [:new, :show]
   resources :users

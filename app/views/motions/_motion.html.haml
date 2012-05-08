@@ -27,7 +27,6 @@
       - if motion.updated_at != motion.created_at
         %p= "(edited: #{time_ago_in_words(motion.updated_at)} ago)"
     %h4#description= simple_format h(motion.description)
-#stats
   #graph.pie
   %h5#percentage-to-vote
     - if motion.closed?

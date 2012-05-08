@@ -4,7 +4,7 @@
     .span8
       %h4.title-row Positions
       - unique_votes.each do |vote|
-        .position-row
+        .position-row.bordered
           .member-row
             .icon-container= render partial: "motions/display_icons", locals: { position: vote.position }
             .member-name= link_to vote.user_name, "#"
