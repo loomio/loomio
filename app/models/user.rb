@@ -4,9 +4,6 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-
   validates :name, :presence => true
 
   has_many :membership_requests,
@@ -26,6 +23,9 @@ class User < ActiveRecord::Base
 
   has_many :motion_read_logs,
            :dependent => :destroy
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
