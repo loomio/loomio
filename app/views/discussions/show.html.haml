@@ -18,7 +18,8 @@
         - if @current_motion && @current_motion.voting?
           = render @current_motion, unique_votes: @unique_votes
         - else
-          .btn-new-motion= link_to "Create a new proposal", new_discussion_motion_path(@discussion.id), class: 'btn small primary'
+          .btn-new-motion= link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn small primary',
+            id: 'new-proposal'
           .motion-placeholder
     #closed-motions
       - @discussion.motions.each do |closed_motion|

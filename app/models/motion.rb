@@ -250,6 +250,7 @@ class Motion < ActiveRecord::Base
       unless discussion
         self.discussion = Discussion.new(group: group)
         discussion.author = author
+        discussion.title = name
         discussion.save
         save
       end
