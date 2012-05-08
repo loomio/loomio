@@ -1,5 +1,4 @@
 class Membership < ActiveRecord::Base
-  attr_accessible :group_id, :access_level
   after_initialize :set_defaults
   before_destroy :remove_open_votes
 
@@ -11,6 +10,8 @@ class Membership < ActiveRecord::Base
   validates_inclusion_of :access_level, :in => ACCESS_LEVELS
   validates_uniqueness_of :user_id, :scope => :group_id
 
+  attr_accessible :group_id, :access_level
+  
   scope :for_group, lambda {|group| where(:group_id => group)}
   scope :with_access, lambda {|access| where(:access_level => access)}
 

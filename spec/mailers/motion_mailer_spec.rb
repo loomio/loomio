@@ -41,7 +41,10 @@ describe MotionMailer do
 
   describe 'sending email when motion is blocked' do
     before(:all) do
-      @vote = Vote.create(motion: motion, user: user, position: "block")
+      @vote = Vote.new(position: "block")
+      @vote.motion = motion
+      @vote.user = user
+      @vote.save
       @email = MotionMailer.motion_blocked(@vote)
     end
 
