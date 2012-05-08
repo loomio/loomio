@@ -25,6 +25,9 @@ class DiscussionsController < GroupBaseController
     @current_motion = @discussion.current_motion
     @vote = Vote.new
     @comments = @discussion.comment_threads.order("created_at DESC")
+    if params[:proposal]
+      @selected_closed_motion = @discussion.motions.find(params[:proposal])
+    end
     if @current_motion
       @unique_votes = Vote.unique_votes(@current_motion)
       @votes_for_graph = @current_motion.votes_graph_ready

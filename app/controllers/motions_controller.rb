@@ -19,8 +19,14 @@ class MotionsController < GroupBaseController
     end
   end
 
+  def update
+    resource
+    update! { discussion_url(@motion.discussion_id) }
+  end
+
   def new
     @motion = Motion.new(group: Group.find(params[:group_id]))
+    #@motion = Motion.new(discussion: Discussion.find(param[:id], group: Discussion.find(params[:id]))
   end
 
   def create
@@ -28,7 +34,7 @@ class MotionsController < GroupBaseController
     @motion.author = current_user
     @motion.group = Group.find(params[:group_id])
     if @motion.save
-      redirect_to @motion
+      redirect_to @motion.discussion_id
     else
       redirect_to :back
     end
@@ -45,13 +51,13 @@ class MotionsController < GroupBaseController
   def close_voting
     resource
     @motion.close_voting!
-    redirect_to motion_path(@motion)
+    redirect_to discussion_url(@motion.discussion_id)
   end
 
   def open_voting
     resource
     @motion.open_voting!
-    redirect_to motion_path(@motion)
+    redirect_to discussion_path(@motion.discussion_id)
   end
 
   def edit
@@ -60,7 +66,7 @@ class MotionsController < GroupBaseController
       edit!
     else
       flash[:error] = "Only the facilitator or author can edit a motion."
-      redirect_to motion_url(@motion)
+      redirect_to discussion_url(@motion.discussion_id)
     end
   end
 

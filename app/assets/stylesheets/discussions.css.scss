@@ -1,122 +1,155 @@
 // Place all the styles related to the Discussions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#motion-details {
-  .label{
-    text-transform: lowercase;
-    font-weight: normal;
-  }
-  h2 { display: inline }
-  #info {
-    #proposed-by {
-      margin-top: 8px;
-    }
-    p {
-      font-size: 12px;
-      line-height: 16px;
-      color: #888;
-      margin-bottom: 0px;
-    }
-    #closing-info {
-      line-height: 16px;
-      p {
-        display: inline;
-        /*font-size: 14px;*/
-      }
-      #admin-buttons{
-        text-align: right;
-        margin-top: 20px;
-        .btn {
-          font-size: 12px;
-          line-height: 12px;
-          padding-top: 3px;
-          padding-bottom: 3px;
-        }
-      }
-    }
-  }
-  #discussion{ padding-top: 10px; color: #555; }
-  #description{
-    p{font-size: 1.0em;}
-    margin-top: 30px;
-    color: #555;
-  }
-  #still-to-vote{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    #still-to-vote-list { margin-top: 5px; }
-  }
-  #graph{
-    height: 300px;
-    margin-left: -20px;
-  }
-  #new_vote{ padding-left: 0px; }
-}
 #motion-panel{
   padding-top: 20px;
   padding-left: 19px;
   border-left: 1px solid lightgrey;
   margin-left: 0px;
   width: 430px;
-}
+  #current-motion-container {
+    .btn-new-motion {
+      .btn {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+    }
+  }
 
-#votes-table{
-  margin-top: 20px;
-  font-size: 14px;
-  .position-row {
-    padding-top: 2px;
-    padding-bottom: 3px;
-    line-height: 14px;
-    .member-row {
-      min-height: 24px;
-      .icon-container {
-        float: left;
-        margin-top: 2px;
-        display: inline-block;
-        height: 20px;
+  .motion-placeholder { padding-top: 300px }
+
+  #motion-details {
+    .label{
+      text-transform: lowercase;
+      font-weight: normal;
+    }
+    h2 { display: inline }
+    #info {
+      #proposed-by {
+        margin-top: 8px;
       }
-      .member-name {
-        float: left;
-        display: inline-block;
-        padding-top: 4px;
-        margin-left: 10px;
+      p {
+        font-size: 12px;
+        line-height: 16px;
         color: #888;
+        margin-bottom: 0px;
       }
-      .btn-edit-delete .btn {
-        padding-top: 4px;
-        padding-bottom: 4px;
+      #closing-info {
+        line-height: 16px;
+        p {
+          display: inline;
+          /*font-size: 14px;*/
+        }
+        #admin-buttons{
+          text-align: right;
+          margin-top: 20px;
+          .btn {
+            font-size: 12px;
+            line-height: 12px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+          }
+        }
       }
     }
-    .statement {
-      display: block;
-      margin-left: 30px;
-      color: #000;
-      padding-bottom: 4px;
+    #discussion{ padding-top: 10px; color: #555; }
+    #description{
+      p{font-size: 1.0em;}
+      margin-top: 30px;
+      color: #555;
+    }
+    #still-to-vote{
+      padding-top: 20px;
+      padding-bottom: 20px;
+      #still-to-vote-list { margin-top: 5px; }
+    }
+    #graph{
+      height: 250px;
+      margin-left: -20px;
+    }
+    #new_vote{ padding-left: 0px; }
+    #vote-form{
+      margin-top: 10px;
+      #vote-statement{ margin-left: 0px; padding-left: 0px; }
+      .input { margin-left: 0px; }
+      .clearfix { padding-top: 0px; padding-bottom: 0px; }
+      .char_count {
+        float: right;
+        padding-right: 70px;
+        color: #999999;
+        font-size: 12px;
+        margin-top: -6px;
+      }
+    }
+    #vote-buttons{
+      margin-top: -15px;
+      .btn.vote {
+        border-radius: 5px;
+        webkit-border-radius: 5px;
+        moz-border-radius: 5px;
+        box-shadow: 1px 1px 4px #999999;
+        webkit-box-shadow: 1px 1px 4px #999999;
+        moz-box-shadow: 1px 1px 4px #999999;
+        padding: 3px;
+        height: 40px;
+      }
+    }
+    #votes-table {
+      margin-top: 20px;
+      font-size: 14px;
+      .position-row {
+        padding-top: 2px;
+        padding-bottom: 3px;
+        line-height: 14px;
+        .member-row {
+          min-height: 24px;
+          .icon-container {
+            float: left;
+            margin-top: 2px;
+            display: inline-block;
+            height: 20px;
+          }
+          .member-name {
+            float: left;
+            display: inline-block;
+            padding-top: 4px;
+            margin-left: 10px;
+            color: #888;
+          }
+          .btn-edit-delete .btn {
+            padding-top: 4px;
+            padding-bottom: 4px;
+          }
+        }
+        .statement {
+          display: block;
+          margin-left: 30px;
+          color: #000;
+          padding-bottom: 4px;
+        }
+      }
+      .no-position-row {
+        width: 100%;
+        min-height: 29px;
+        .icon-no-position {
+          padding-left: 4px;
+          float: left;
+          margin-top: 4px;
+          display: inline-block;
+          height: 20px;
+        }
+        .member-no-position {
+          float: left;
+          display: inline-block;
+          padding: 2px;
+          padding-left: 8px;
+          margin-left: 6px;
+          color: #888;
+        }
+      }
     }
   }
-  .no-position-row {
-    width: 100%;
-    min-height: 29px;
-    .icon-no-position {
-      padding-left: 4px;
-      float: left;
-      margin-top: 4px;
-      display: inline-block;
-      height: 20px;
-    }
-    .member-no-position {
-      float: left;
-      display: inline-block;
-      padding: 2px;
-      padding-left: 8px;
-      margin-left: 6px;
-      color: #888;
-    }
-  }
-}
-#closed-motions {
-  font-size: 14px;
-  color: #888;
+
   .motion-row {
     border-bottom: 1px solid #bbb;
     padding: 2px;
@@ -125,5 +158,57 @@
       float: right;
     }
   }
+
+  #closed-motions {
+    font-size: 14px;
+    color: #888;
+  }
 }
 
+#discussion-panel{
+  padding-top: 20px;
+  padding-right: 20px;
+
+  #new-comment-form{
+    margin-bottom: 8px;
+
+    #new-comment{
+      width: 450px;
+      height: 80px;
+      font-size: 13px;
+      line-height: 16px;
+      color: black;
+    }
+
+    #new-comment-submit{
+      text-align: right;
+      .submit{
+        font-size: 13px;
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .comment{
+    background-color: #EEE;
+    margin-bottom: 2px;
+    padding: 4px;
+
+    p{
+      font-size: 13px;
+      margin-bottom: 0px;
+      line-height: 16px;
+    }
+    .comment-username{
+      font-weight: bold;
+    }
+    .comment-time{
+      font-size: 11px;
+      color: grey;
+    }
+    .comment-likes{
+      font-size: 11px;
+      color: grey;
+    }
+  }
+}
