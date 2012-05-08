@@ -23,7 +23,9 @@ describe VotesController do
       end
 
       it 'update vote creates a new vote' do
-        vote = Vote.new(motion: @motion, position: 'yes', user: @user)
+        vote = Vote.new(position: 'yes')
+        vote.motion = @motion
+        vote.user = @user
         vote.save!
 
         post :update, motion_id: @motion.id, id: vote.id,
@@ -36,7 +38,9 @@ describe VotesController do
       end
 
       it 'can delete vote' do
-        vote = Vote.new(motion: @motion, position: 'yes', user: @user)
+        vote = Vote.new(position: 'yes')
+        vote.motion = @motion
+        vote.user = @user
         vote.save!
         delete :destroy, id: vote.id, motion_id: @motion.id
         response.should be_redirect
