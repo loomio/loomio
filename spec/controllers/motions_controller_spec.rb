@@ -93,7 +93,7 @@ describe MotionsController do
         motion_attrs = {'key' => 'value'}
 
         group.stub_chain(:users, :include?).with(user).and_return(true)
-        Motion.should_receive(:create).with(motion_attrs).and_return(motion)
+        Motion.should_receive(:new).with(motion_attrs).and_return(motion)
         motion.should_receive(:author=).with(user)
         motion.should_receive(:group=).with(group)
         motion.should_receive(:save)
