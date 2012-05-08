@@ -20,11 +20,12 @@ class MotionsController < GroupBaseController
   end
 
   def new
-    @motion = Motion.new(group: Group.find(params[:group_id]))
+    @motion = Motion.new
+    @motion.group_id = params[:group_id]
   end
 
   def create
-    @motion = Motion.create(params[:motion])
+    @motion = Motion.new(params[:motion])
     @motion.author = current_user
     @motion.group = Group.find(params[:group_id])
     if @motion.save
