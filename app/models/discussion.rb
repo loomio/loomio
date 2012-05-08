@@ -7,15 +7,18 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  validates_with AuthorValidator
+  validates_presence_of :title, :group, :author
+  validates :title, :length => { :maximum => 150 }
+
   acts_as_commentable
 
   belongs_to :group
   belongs_to :author, class_name: 'User'
   has_many :motions
 
-  validates_presence_of :title, :group, :author
-  validates :title, :length => { :maximum => 150 }
-  validates_with AuthorValidator
+  # this should be removed if possible - kiesia 8.5.12
+  attr_accessible :group
 
   attr_accessor :comment
 

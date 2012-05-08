@@ -25,16 +25,16 @@ class MotionsController < GroupBaseController
   end
 
   def new
-    @motion = Motion.new(group: Group.find(params[:group_id]))
-    #@motion = Motion.new(discussion: Discussion.find(param[:id], group: Discussion.find(params[:id]))
+    @motion = Motion.new
+    @motion.group_id = params[:group_id]
   end
 
   def create
-    @motion = Motion.create(params[:motion])
+    @motion = Motion.new(params[:motion])
     @motion.author = current_user
     @motion.group = Group.find(params[:group_id])
     if @motion.save
-      redirect_to @motion.discussion_id
+      redirect_to @motion.discussion
     else
       redirect_to :back
     end

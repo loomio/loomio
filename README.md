@@ -18,11 +18,8 @@ groups and organizations of any size.
 
 ### Start the server
 
-First start MySql (if it's not already running):
-
-```
-  $ mysql.server start
-```
+First start your postgres server (if it's not already running). Consult
+postgres documentation if you're not sure how to do this.
 
 Then start the Rails server:
 

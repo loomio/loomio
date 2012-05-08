@@ -19,7 +19,7 @@ class Motion < ActiveRecord::Base
   delegate :name, :to => :author, :prefix => :author
   delegate :name, :to => :facilitator, :prefix => :facilitator
 
-  before_create :initialize_discussion
+  after_create :initialize_discussion
   after_create :email_motion_created
   before_save :set_disable_discussion
   before_save :format_discussion_url
@@ -27,6 +27,8 @@ class Motion < ActiveRecord::Base
   attr_accessor :create_discussion
   attr_accessor :enable_discussion
 
+  attr_accessible :name, :description, :discussion_url, :enable_discussion
+  attr_accessible :close_date, :phase, :facilitator_id, :group
 
   include AASM
   aasm :column => :phase do
@@ -34,11 +36,11 @@ class Motion < ActiveRecord::Base
     state :closed
 
     event :open_voting, before: :before_open do
-      transitions :to => :voting, :from => [:voting, :closed]
+      transitions :to => :voting, :from => [:closed]
     end
 
     event :close_voting, before: :before_close do
-      transitions :to => :closed, :from => [:voting, :closed]
+      transitions :to => :closed, :from => [:voting]
     end
   end
 
@@ -132,14 +134,15 @@ class Motion < ActiveRecord::Base
   end
 
   def open_close_motion
-    if close_date && close_date <= Time.now
+    if (close_date && close_date <= Time.now)
       if voting?
         close_voting
+        save
       end
-    else
+    elsif closed?
       open_voting
+      save
     end
-    save
   end
 
   def has_closing_date?
@@ -163,7 +166,11 @@ class Motion < ActiveRecord::Base
   end
 
   def discussion_activity
-    discussion.activity if discussion
+    if discussion
+      discussion.activity
+    else
+      0
+    end
   end
 
   def no_vote_count
@@ -225,15 +232,27 @@ class Motion < ActiveRecord::Base
     end
 
     def store_users_that_didnt_vote
+      did_not_votes.each do |did_not_vote|
+        did_not_vote.delete
+      end
       group.users.each do |user|
         unless user_has_voted?(user)
-          DidNotVote.create(user: user, motion: self)
+          did_not_vote = DidNotVote.new
+          did_not_vote.user = user
+          did_not_vote.motion = self
+          did_not_vote.save
         end
       end
+      reload
     end
 
     def initialize_discussion
-      self.discussion ||= Discussion.create(author_id: author.id, group_id: group.id)
+      unless discussion
+        self.discussion = Discussion.new(group: group)
+        discussion.author = author
+        discussion.save
+        save
+      end
     end
 
     def email_motion_created
