@@ -82,24 +82,6 @@ describe Group do
       @group.users.should include(@user)
     end
 
-    it "can tag user" do
-      # TODO Jon: technically this is a 'coupled' (bad) test, and
-      # we should have separate tests for the tag_user and
-      # get_user_tags methods
-      @group.set_user_tags(@user, "new-tag")
-      user_tags = @group.get_user_tags(@user)
-      user_tags.first.name.should == "new-tag"
-    end
-
-    it "can delete user tag" do
-      @group.set_user_tags(@user, "first,second")
-      @group.get_user_tags(@user).first.name.should == "first"
-      @group.delete_user_tag(@user, "first")
-      @group.get_user_tags(@user).first.name.should == "second"
-
-
-    end
-
     context "receiving a member request" do
       it "should not add user to group" do
         @group.add_request!(@user)

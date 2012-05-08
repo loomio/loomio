@@ -30,6 +30,8 @@ class Vote < ActiveRecord::Base
 
   attr_accessor :old_position
 
+  attr_accessible :position, :statement
+
   delegate :name, :to => :user, :prefix => :user
 
   after_save :send_notifications

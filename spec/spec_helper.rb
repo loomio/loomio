@@ -62,7 +62,10 @@ end
 
 def create_motion(*args)
   unless args.empty?
-    motion = Motion.make(args[0])
+    motion = Motion.make
+    args[0].each_pair do |key, value|
+      motion.send("#{key}=", value)
+    end
   else
     motion = Motion.make
   end
@@ -72,15 +75,24 @@ def create_motion(*args)
   unless motion.facilitator
     motion.facilitator = User.make!
   end
+  unless motion.discussion
+    motion.discussion = Discussion.new(title: "A Discussion")
+    motion.discussion.group = motion.group
+    motion.discussion.author = motion.author
+    motion.discussion.save
+  end
   motion.group.add_member!(motion.author)
   motion.group.add_member!(motion.facilitator)
-  motion.save!
+  motion.save
   motion
 end
 
 def create_discussion(*args)
   unless args.empty?
-    discussion = Discussion.new(args[0])
+    discussion = Discussion.new
+    args[0].each_pair do |key, value|
+      discussion.send("#{key}=", value)
+    end
   else
     discussion = Discussion.new
   end
