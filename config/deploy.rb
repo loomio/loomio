@@ -22,7 +22,7 @@ end
 task :production do
   set :deploy_to, "/home/#{application}/production"
   set :rails_env, :staging
-  set :branch, 'staging'
+  set :branch, 'master'
 
   set :domain, "tautoko.enspiral.info"
   role :web, domain
