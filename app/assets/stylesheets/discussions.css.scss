@@ -8,16 +8,16 @@
   margin-left: 0px;
   width: 430px;
   #proposal-container {
-    .btn-new-motion {
+    .new-proposal {
       .btn {
+        margin-bottom: 10px;
         padding-top: 5px;
         padding-bottom: 5px;
       }
     }
   }
-  #current-proposal {
+  .current-proposal {
     font-size: 14px;
-    margin-bottom: 10px;
   }
 
   .motion-placeholder { padding-top: 300px }
@@ -154,7 +154,7 @@
   }
 
   .motion-row {
-    border-bottom: 1px solid #bbb;
+    border-top: 1px solid #bbb;
     padding: 2px;
     color: #888;
     .close-date {
@@ -166,7 +166,6 @@
   #previous-proposals {
     font-size: 14px;
     color: #888;
-    padding-bottom: 30px;
   }
 }
 
