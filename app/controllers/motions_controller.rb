@@ -32,7 +32,6 @@ class MotionsController < GroupBaseController
   def create
     @motion = Motion.new(params[:motion])
     @motion.author = current_user
-    @motion.group = Group.find(params[:group_id])
     if @motion.save
       redirect_to discussion_path(@motion.discussion)
     else
