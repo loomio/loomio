@@ -6,10 +6,10 @@ begin
 
   METRIC_THRESHOLDS = {
     :coverage => 90.0,
-    :flay => 300,
+    :flay => 40,
     :complexity => 10,
     :line_length => 120,
-    :best_practices => 72
+    :best_practices => 78
   }
 
   namespace :metrics do

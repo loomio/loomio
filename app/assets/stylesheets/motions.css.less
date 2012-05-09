@@ -81,13 +81,13 @@ div.motion{
 
 /*** New & Edit motion ***/
 #motion-form{
-  padding-top: 10px;
-  #input_date{ width: 140px; }
-  select{ width: 100px;}
-  #closing-inputs{ padding-bottom: 10px; }
+  .input { margin-left: 0px; display: inline-block; }
+  .clearfix { padding-top: 0px; margin-bottom: 0px; }
+  #input_date{ width: 140px; display: inline-block; }
+  select { width: 100px; display: inline-block; }
+  #closing-inputs { height: 40px; }
+  #description { margin-top: 10px; }
 }
-
-/*** Shared properties ***/
 
 #percentage-to-vote{ padding-bottom: 10px; }
 
@@ -125,8 +125,15 @@ div.motion{
       margin-bottom: 0px;
       line-height: 16px;
     }
+    .comment-username{
+      font-weight: bold;
+    }
     .comment-time{
-      font-size: 12px;
+      font-size: 11px;
+      color: grey;
+    }
+    .comment-likes{
+      font-size: 11px;
       color: grey;
     }
   }
@@ -172,3 +179,4 @@ div.motion{
 .tag-separator {
   color: #DDD;
 }
+

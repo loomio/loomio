@@ -1,12 +1,13 @@
 .row
-  .span1{class: "centered vote-icon"}
-    - if motion.user_has_voted?(current_user)
-      - voted = true
-      - position = current_user.motion_vote(motion).position
-      =render partial: "motions/display_icons", locals: {position: position}
-    - else
-      #no-vote-dash
-        = " "
+  .span1.icon-container
+    .vote-icon
+      - if motion.user_has_voted?(current_user)
+        - voted = true
+        - position = current_user.motion_vote(motion).position
+        =render partial: "motions/display_icons", locals: {position: position}
+      - else
+        #no-vote-dash
+          = " "
   .span6#motion-header
     #motion-title
       = link_to motion.name, motion, class: 'no-toggle'
@@ -15,14 +16,31 @@
   .span3.close-info
     - if motion.close_date
       - if motion.closed?
-        closed on
+        closed
+        = time_ago_in_words(motion.close_date)
+        ago
       - else
-        closes on
-      = motion.close_date.strftime("%d/%m/%Y")
+        closing in
+        = time_ago_in_words(motion.close_date)
     - else
       no close date
-  .span1.toggle-button
-    +
+  .span1.alert-info
+    - vote_count = 0
+    - vote_count = current_user.vote_activity_count(motion) if current_user
+    - if vote_count > 0
+      .vote-icon-container.vote-alert-icon
+        #activity-count.span.label.important= vote_count
+    - else
+      .vote-icon-container.vote-disabled-icon
+        #activity-count.span
+    - discussion_count = 0
+    - discussion_count = current_user.discussion_activity_count(motion) if current_user
+    - if discussion_count > 0
+      .discussion-icon-container.discussion-alert-icon
+        #activity-count.span.label.important= discussion_count
+    - else
+      .discussion-icon-container.discussion-disabled-icon
+        #activity-count.span
 
 :coffeescript
   jQuery ->

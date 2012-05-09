@@ -1,11 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
   validates :name, :presence => true
 
@@ -24,11 +21,17 @@ class User < ActiveRecord::Base
   has_many :motions_voting, through: :groups, :source => :motions, :conditions => {phase: 'voting'}
   has_many :motions_closed, through: :groups, :source => :motions, :conditions => {phase: 'closed'}
 
+  has_many :motion_read_logs,
+           :dependent => :destroy
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
 
   def motion_vote(motion)
-    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).first
+    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
   end
 
   def is_group_admin?(group)
@@ -36,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def group_membership(group)
-    memberships.for_group(@group).first
+    memberships.for_group(group).first
   end
 
   def self.invite_and_notify!(user_params, inviter, group)
@@ -44,8 +47,76 @@ class User < ActiveRecord::Base
       u.skip_invitation = true
     end
     group.add_member! new_user
-  UserMailer.invited_to_loomio(new_user, inviter, group).deliver
-  new_user
+    UserMailer.invited_to_loomio(new_user, inviter, group).deliver
+    new_user
+  end
+
+  def update_motion_read_log(motion)
+    if MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
+      motion_read_log = MotionReadLog.new
+      motion_read_log.vote_activity_when_last_read = motion.vote_activity
+      motion_read_log.discussion_activity_when_last_read = motion.discussion_activity
+      motion_read_log.user_id = id
+      motion_read_log.motion_id = motion.id
+      motion_read_log.save
+    else
+      log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+      log.vote_activity_when_last_read = motion.vote_activity
+      log.discussion_activity_when_last_read = motion.discussion_activity
+      log.save
+    end
+  end
+
+  def vote_activity_when_last_read(motion)
+    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+    if log
+      log.vote_activity_when_last_read
+    else
+      0
+    end
+  end
+
+  def discussion_activity_when_last_read(motion)
+    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+    if log
+      log.discussion_activity_when_last_read
+    else
+      0
+    end
+  end
+
+  def vote_activity_count(motion)
+    motion.vote_activity - vote_activity_when_last_read(motion)
+  end
+
+  def discussion_activity_count(motion)
+    motion.discussion_activity - discussion_activity_when_last_read(motion)
+  end
+  
+  def self.find_by_email(email)
+    User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
+  end
+
+  # Get all root groups that the user belongs to
+  # This also includes parent groups of sub-groups
+  # that the user belongs to (even though the user
+  # might not necessarily belong to the parent)
+  def all_root_groups
+    results = root_groups
+    subgroups.each do |subgroup|
+      unless results.include? subgroup.parent
+        results << subgroup.parent
+      end
+    end
+    results
+  end
+
+  def subgroups
+    groups.where("parent_id IS NOT NULL")
+  end
+
+  def root_groups
+    groups.where("parent_id IS NULL")
   end
 
   private
@@ -56,4 +127,3 @@ class User < ActiveRecord::Base
       end
     end
 end
-

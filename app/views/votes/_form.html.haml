@@ -1,4 +1,7 @@
-=simple_form_for [motion, vote] do |f|
-  =f.input :position, as: :select, collection: Vote::POSITIONS
-  =f.input :statement, as: :text
-  =f.commit_button
+= form_for [motion, vote] do |f|
+  .padding
+    = f.label :position, "Position"
+    = f.select :position, Vote::POSITIONS
+    = f.label :statement, "Statement"
+    = f.text_field :statement
+  = f.submit "Update vote", class: "btn primary"

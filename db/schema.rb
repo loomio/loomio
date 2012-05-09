@@ -11,13 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120411031907) do
+ActiveRecord::Schema.define(:version => 20120503072748) do
+
+  create_table "comment_votes", :force => true do |t|
+    t.integer  "comment_id"
+    t.integer  "user_id"
+    t.boolean  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comment_votes", ["comment_id"], :name => "index_comment_votes_on_comment_id"
+  add_index "comment_votes", ["user_id"], :name => "index_comment_votes_on_user_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body"
+    t.text     "body",             :default => ""
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -30,11 +41,22 @@ ActiveRecord::Schema.define(:version => 20120411031907) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "did_not_votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "motion_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "did_not_votes", ["motion_id"], :name => "index_did_not_votes_on_motion_id"
+  add_index "did_not_votes", ["user_id"], :name => "index_did_not_votes_on_user_id"
+
   create_table "discussions", :force => true do |t|
     t.integer  "group_id"
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "activity",   :default => 0
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -46,6 +68,8 @@ ActiveRecord::Schema.define(:version => 20120411031907) do
     t.datetime "updated_at"
     t.string   "viewable_by"
     t.string   "members_invitable_by"
+    t.integer  "parent_id"
+    t.boolean  "email_new_motion",     :default => true
   end
 
   create_table "memberships", :force => true do |t|
@@ -54,6 +78,15 @@ ActiveRecord::Schema.define(:version => 20120411031907) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "access_level"
+  end
+
+  create_table "motion_read_logs", :force => true do |t|
+    t.integer  "vote_activity_when_last_read"
+    t.integer  "discussion_activity_when_last_read"
+    t.integer  "motion_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "motions", :force => true do |t|
@@ -66,10 +99,10 @@ ActiveRecord::Schema.define(:version => 20120411031907) do
     t.datetime "updated_at"
     t.string   "phase",              :default => "voting", :null => false
     t.string   "discussion_url",     :default => "",       :null => false
-    t.integer  "no_vote_count"
     t.datetime "close_date"
     t.integer  "discussion_id"
     t.boolean  "disable_discussion", :default => false
+    t.integer  "vote_activity",      :default => 0
   end
 
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
@@ -92,19 +125,19 @@ ActiveRecord::Schema.define(:version => 20120411031907) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",    :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => ""
+    t.string   "email",                                :default => "",    :null => false
+    t.string   "encrypted_password",                   :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",                        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                                 :default => false
+    t.boolean  "admin",                                :default => false
     t.string   "name"
     t.string   "unconfirmed_email"
     t.string   "invitation_token",       :limit => 60

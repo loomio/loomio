@@ -1,13 +1,17 @@
 %h2.header-space Sign in
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  %h5.padding
-    Email
-    .left-format= f.email_field :email
-    Password
-    .left-format= f.password_field :password
+  .padding
+    = f.label :email, "Email"
+    = f.email_field :email
+    = f.label :password, "Password"
+    = f.password_field :password
     - if devise_mapping.rememberable?
       = f.check_box :remember_me
-      Remember me
+      = f.label :remeber_me, "Remember me", class: "checkbox-label"
   .sign-in-button
     = f.submit "Sign in", class: "btn primary small"
 = render :partial => "devise/shared/links"
+.row
+  .span11.sub-header.style-grey
+    %p Don't have an account?  We're currently in closed testing and not accepting public sign-ups (yet!).
+    %p.style-grey If you belong to a group that is using Loomio but you don't have your own Loomio account, please contact the person in your organization who set up Loomio and ask them to add you to the group.

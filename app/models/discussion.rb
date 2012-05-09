@@ -13,17 +13,37 @@ class Discussion < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   has_many :motions
 
+  # this should be removed if possible - kiesia 8.5.12
+  attr_accessible :group
+
   validates_with AuthorValidator
 
   def add_comment(user, comment)
-    if can_add_comment? user
+    if can_be_commented_on_by? user
       comment = Comment.build_from self, user.id, comment
       comment.save
       comment
     end
   end
 
-  def can_add_comment?(user)
+  def default_motion
+    motions.first
+  end
+
+  def can_be_commented_on_by?(user)
     group.users.include? user
+  end
+
+  def default_motion
+    motions.first
+  end
+
+  def update_activity
+    self.activity += 1
+    save
+  end
+
+  def comments
+    comment_threads.order("created_at DESC")
   end
 end

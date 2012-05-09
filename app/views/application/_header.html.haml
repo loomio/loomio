@@ -1,16 +1,11 @@
-.navbar.navbar-fixed-top
-  .navbar-inner
-    .container
-      .btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".nav-collapse"}
-        .icon-bar
-        .icon-bar
-        .icon-bar
-      
-      .brand
-        = link_to image_tag("logo-trans-tiny.png"), "/"
-      .nav-collapse
-        .nav
-          - if current_user
+.topbar-wrapper
+  .topbar{:data => {:scrollspy =>'scrollspy', :dropdown =>'dropdown'}}
+    .topbar-inner
+      .container
+        = link_to image_tag("logo-trans-tiny.png"), "/", :class => 'brand'
+        %ul.nav.secondary-nav
+          - if user_signed_in?
+            %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
             %li.dropdown
               = link_to current_user.name ? current_user.name : current_user.email, "#", :class => 'dropdown-toggle'
               %ul.dropdown-menu

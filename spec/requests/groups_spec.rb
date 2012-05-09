@@ -14,11 +14,6 @@ describe "Groups" do
                                           'user[password]' => 'password'
     end
 
-    it "can view their groups" do
-      visit '/groups'
-      should have_selector('h3', text:'Groups')
-    end
-
     context "admin of a group" do
       before :each do
         @group.add_admin!(@user)
@@ -28,6 +23,12 @@ describe "Groups" do
         visit edit_group_path(@group)
 
         current_url.should == edit_group_url(@group)
+      end
+
+      it "can visit add subgroup page" do
+        visit group_add_subgroup_path(@group)
+
+        have_css("#new-subgroup")
       end
 
       it "can edit group" do
@@ -132,6 +133,19 @@ describe "Groups" do
       visit group_path(@group2)
       should have_content("Test Group2")
       should have_no_content("Users")
+    end
+  end
+
+  context "logged-out user" do
+    it "can view a public group" do
+      @user = User.make!
+      @group = Group.make!(name: 'Test Group', viewable_by: :everyone)
+      @group.add_member!(@user)
+      @motion = create_motion(name: 'Test Motion', group: @group,
+                              author: @user, facilitator: @user)
+      visit group_path(@group)
+
+      should have_content("Test Group")
     end
   end
 end

@@ -3,15 +3,27 @@ class GroupsController < GroupBaseController
   # be moved into the model
 
   load_and_authorize_resource except: :show
-  before_filter :check_group_read_permissions, only: :show
+  before_filter :check_group_read_permissions, :only => :show
 
   def create
-    build_resource
-    @group.add_admin! current_user
-    create!
+    @group = Group.new(params[:group])
+    if @group.save
+      @group.add_admin! current_user
+      flash[:notice] = "Group created successfully."
+      redirect_to @group
+    else
+      redirect_to :back
+    end
   end
 
   # CUSTOM CONTROLLER ACTIONS
+
+  def add_subgroup
+    @parent = Group.find(params[:group_id])
+    @subgroup = Group.new(:parent => @parent)
+    @subgroup.viewable_by = @parent.viewable_by
+    @subgroup.members_invitable_by = @parent.members_invitable_by
+  end
 
   def invite_member
     @group = Group.find(params[:id])
@@ -19,8 +31,11 @@ class GroupsController < GroupBaseController
   end
 
   def request_membership
-    @group = Group.find(params[:id])
-    @membership = Membership.new
+    if resource.users.include? current_user
+      redirect_to group_url(resource)
+    else
+      @membership = Membership.new
+    end
   end
 
   def add_user_tag

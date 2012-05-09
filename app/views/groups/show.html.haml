@@ -1,7 +1,15 @@
 #group
   %h2.headerspace.group-title
+    = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
+    = " > " unless @group.parent.nil?
     = @group.name
-    = link_to "Edit group", edit_group_path(@group), class: "btn small"
+
+    - if @group.can_be_edited_by? current_user
+      = link_to "Edit group", edit_group_path(@group), class: "btn small"
+    - if @group.users_include? current_user
+      - membership = current_user.group_membership(@group)
+      = link_to "Leave group", membership, method: :delete, class: "btn small",
+        confirm: "Are you sure you wish to leave #{@group.name}?"
   .row
     .span11
       %h4.padding
@@ -11,12 +19,13 @@
             = link_to "Create a motion",
             new_motion_path({group_id: @group.id}), :class => 'btn primary small'
       .motions-list
-        - @group.motions.voting.each do |motion|
-          - motion.open_close_motion
-          =render "home/expandable_list", motion: motion
+        = render "dashboard/open_motions", motions: @group.motions
       %h4 Closed motions
       .motions-list
-        - @group.motions.closed.each do |motion|
-          =render "home/expandable_list", motion: motion
+        = render "dashboard/closed_motions", motions: @group.motions
     .span5
-      =render 'users', group: @group
+      #sidebar
+        - if @group.parent.nil?
+          #subgroups
+            =render 'subgroups', group: @group
+        =render 'users', group: @group

@@ -1,6 +1,6 @@
 -if motion.can_be_edited_by?(current_user)
   -if motion.closed?
-    =link_to "Open Voting", open_motion_voting_path, class: 'btn small', method: :post,
+    =link_to "Reopen Voting", open_motion_voting_path, class: 'btn small', method: :post,
       confirm: "Are you sure you want to re-open this motion?", method: :post
   -elsif motion.voting?
     =link_to "Close Voting", close_motion_voting_path, class: 'btn small',

@@ -9,18 +9,23 @@ class MotionsController < GroupBaseController
     resource
     @motion.open_close_motion
     @group = @motion.group
-    @user_already_voted = @motion.user_has_voted?(current_user)
     @votes_for_graph = @motion.votes_graph_ready
+    @unique_votes = Vote.unique_votes(@motion)
     @vote = Vote.new
     @comments = @motion.discussion.comment_threads.order("created_at DESC")
+    @user_already_voted = @motion.user_has_voted?(current_user)
+    if current_user
+      current_user.update_motion_read_log(@motion)
+    end
   end
 
   def new
-    @motion = Motion.new(group: Group.find(params[:group_id]))
+    @motion = Motion.new
+    @motion.group_id = params[:group_id]
   end
 
   def create
-    @motion = Motion.create(params[:motion])
+    @motion = Motion.new(params[:motion])
     @motion.author = current_user
     @motion.group = Group.find(params[:group_id])
     if @motion.save
@@ -40,13 +45,13 @@ class MotionsController < GroupBaseController
 
   def close_voting
     resource
-    @motion.set_close_date(Time.now)
+    @motion.close_voting!
     redirect_to motion_path(@motion)
   end
 
   def open_voting
     resource
-    @motion.set_close_date(Time.now + 1.week)
+    @motion.open_voting!
     redirect_to motion_path(@motion)
   end
 

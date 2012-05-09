@@ -1,8 +1,8 @@
-%h2 Forgot your password?
+%h2.header-space Forgot your password?
 = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
   = devise_error_messages!
-  %h5
-    Email
-    .standard-input= f.email_field :email
+  .padding
+    = f.label :email, "Email"
+    = f.email_field :email
   = f.submit "Send me reset password instructions", class: "btn primary"
 = render :partial => "devise/shared/links"

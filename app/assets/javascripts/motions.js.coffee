@@ -5,6 +5,7 @@
 current_tags = ""
 current_tag_filter = "active"
 $ ->
+  $(".error-message").hide()
   if $("#motion-form").length > 0
     #** Edit Moition **
     date = new Date($("#motion_close_date").val())
@@ -24,6 +25,15 @@ $ ->
       $("#input_date").datepicker("setDate", datetime)
       $("#date_hour").val(hours)
       $("#motion_close_date").val(datetime)
+
+  #** presnece validations: use this function any where just assign the class .presence-required
+  #   to the text field in question and the .check-presence to the submit button **
+  $(".check-presence").click((event, ui) ->
+    if $(".presence-required").children().first().val() == ""
+      $(".clearfix").addClass("error")
+      $(".error-message").show()
+      false
+  )
 
   #** Reload hidden close_date field **
   $("#input_date").change((e) ->
@@ -50,16 +60,13 @@ $ ->
     expandableRow = $(this).children().last()
     expandableRow.toggle()
     if expandableRow.is(":visible")
-      $(this).find(".toggle-button").html('-')
       graph_legend = $(this).find(".jqplot-table-legend")
-      if $(this).hasClass('closed')
-        graph_legend.addClass('closed')
-        graph_legend.removeClass('voting')
-      else
+      if $(this).hasClass('blocked')
+        graph_legend.addClass('blocked')
+      else if $(this).hasClass('voting')
         graph_legend.addClass('voting')
-        graph_legend.removeClass('closed')
-    else
-      $(this).find(".toggle-button").html('+')
+      else
+        graph_legend.addClass('closed')
   )
 
   #** prevent expansion of motion **

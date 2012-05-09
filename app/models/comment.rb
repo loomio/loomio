@@ -9,9 +9,14 @@ class Comment < ActiveRecord::Base
   #acts_as_voteable
 
   belongs_to :commentable, :polymorphic => true
-
-  # NOTE: Comments belong to a user
   belongs_to :user
+  has_many :comment_votes
+
+  after_save :update_activity
+
+  attr_accessible :body
+
+  delegate :name, :to => :user, :prefix => :user
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
@@ -52,7 +57,43 @@ class Comment < ActiveRecord::Base
     self.user == user
   end
 
+  #
+  # CUSTOM METHODS (not part of acts_as_commentable)
+  #
+
+  def like(user)
+    comment_vote = CommentVote.new
+    comment_vote.comment = self
+    comment_vote.user = user
+    comment_vote.value = true
+    comment_vote.save
+  end
+
+  def unlike(user)
+    like = likes.find_by_user_id(user.id)
+    like.destroy if like
+  end
+
+  def likes
+    return comment_votes.where("value = true")
+  end
+
+  def can_be_liked_by?(user)
+    if user
+      user.groups.include?(discussion.group)
+    end
+  end
+
   def discussion
     return commentable if commentable_type == "Discussion"
   end
+
+  def default_motion
+    discussion.default_motion
+  end
+
+  private
+    def update_activity
+      discussion.update_activity if discussion
+    end
 end

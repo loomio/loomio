@@ -22,18 +22,25 @@ describe VotesController do
         assigns(:vote).statement.should == 'blah'
       end
 
-      it 'can update vote' do
-        vote = Vote.new(motion: @motion, position: 'yes', user: @user)
+      it 'update vote creates a new vote' do
+        vote = Vote.new(position: 'yes')
+        vote.motion = @motion
+        vote.user = @user
         vote.save!
+
         post :update, motion_id: @motion.id, id: vote.id,
              vote: {position: 'no', statement: 'blah'}
+
         response.should be_redirect
         flash[:notice].should =~ /Vote updated/
-        Vote.first.position.should == 'no'
+        Vote.all.count.should == 2
+        @user.motion_vote(@motion).position.should == 'no'
       end
 
       it 'can delete vote' do
-        vote = Vote.new(motion: @motion, position: 'yes', user: @user)
+        vote = Vote.new(position: 'yes')
+        vote.motion = @motion
+        vote.user = @user
         vote.save!
         delete :destroy, id: vote.id, motion_id: @motion.id
         response.should be_redirect

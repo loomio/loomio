@@ -4,11 +4,17 @@ class Ability
   def initialize(user, params)
 
     #
+    # USERS
+    #
+
+    cannot :sign_up, User
+
+    #
     # GROUPS
     #
 
     can [:edit, :update, :add_user_tag, :delete_user_tag, :invite_member,
-         :user_group_tags, :group_tags], Group do |group|
+         :user_group_tags, :group_tags, :add_subgroup], Group do |group|
       group.can_be_edited_by? user
     end
 
@@ -39,10 +45,13 @@ class Ability
     #
 
     can :add_comment, Discussion do |discussion|
-      discussion.can_add_comment? user
+      discussion.can_be_commented_on_by? user
     end
 
     can :destroy, Comment, user_id: user.id
+    can [:like, :unlike], Comment do |comment|
+      comment.can_be_liked_by? user
+    end
 
   end
 end

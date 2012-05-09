@@ -1,40 +1,74 @@
 require 'spec_helper'
 
 describe CommentsController do
-  let(:comment) { stub_model(Comment) }
-  let(:motion) { stub_model(Motion) }
-  let(:user) { User.make! }
-  let(:user2) { User.make! }
-  let(:previous_url) { motion_url(motion) }
+  let(:app_controller) { controller }
+  let(:user) { stub_model(User) }
+  let(:motion) { mock_model(Motion) }
+  let(:comment) { mock_model(Comment, default_motion: motion) }
 
-  context "logged in user" do
-    before :each do
+  context "authenticated user" do
+    before do
       sign_in user
-      request.env["HTTP_REFERER"] = previous_url
-      Comment.stub(:find).with(comment.id.to_s).and_return(comment)
+      app_controller.stub(:authorize!).and_return(true)
+      app_controller.stub(:resource).and_return(comment)
     end
 
-    context "user deletes their own comment" do
-      it "succeeds and redirects to motion page" do
-        comment.stub(:user_id).and_return(user.id)
-        comment.stub_chain(:discussion, :motions, :first).and_return(motion)
-        comment.should_receive(:destroy)
+    context "deleting comment" do
+      it "checks permissions" do
+        app_controller.should_receive(:authorize!).and_return(true)
+        delete :destroy, id: 23
+      end
 
-        delete :destroy, id: comment.id
-
+      it "adds a message to the flash" do
+        delete :destroy, id: 23
         flash[:notice].should match(/Comment deleted/)
+      end
+
+      it "redirects to the comment's motion" do
+        delete :destroy, id: 23
         response.should redirect_to(motion_path(motion))
       end
     end
 
-    context "user deletes someone else's comment" do
-      it "displays error and redirects to motion page" do
-        comment.stub(:user_id).and_return(user2.id)
+    context "user likes a comment" do
+      before do
+        comment.stub(:like)
+      end
 
-        delete :destroy, id: comment.id
+      it "checks permissions" do
+        app_controller.should_receive(:authorize!).and_return(true)
+        post :like, id: 23
+      end
 
-        flash[:error].should match(/Access denied/)
-        response.should redirect_to(previous_url)
+      it "adds like to comment model" do
+        comment.should_receive(:like).with(user)
+        post :like, id: 23
+      end
+
+      it "redirects to motion page" do
+        post :like, id: 23
+        response.should redirect_to(motion_url(motion))
+      end
+    end
+
+    context "user unlikes a comment" do
+      before do
+        comment.stub(:unlike)
+      end
+
+      it "checks permissions" do
+        app_controller.should_receive(:authorize!).and_return(true)
+        post :unlike, id: 23
+      end
+
+      it "removes like from comment model" do
+        comment.should_receive(:unlike).with(user)
+        post :unlike, id: 23
+      end
+
+      it "redirects to motion page" do
+        post :unlike, id: 23
+        response.should redirect_to(motion_url(motion))
       end
     end
   end

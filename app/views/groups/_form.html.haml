@@ -1,8 +1,10 @@
 #group-form.row.padding
   .span10
-    =form_for(@group) do |f|
-      %h5 Group Name
-      .left-format=f.text_field :name #, placeholder: "Group Name"
+    =form_for(group) do |f|
+      = f.label :name, "Group Name"
+      .clearfix
+        .presence-required= f.text_field :name, class: "input"
+        .error-message Group can not be blank
       %hr
       .privacy-settings
         %h2 Privacy Settings
@@ -18,4 +20,11 @@
           .span3
             =f.select :members_invitable_by, [:members, :admins],
               member_label: Proc.new { |option| group_permissions_label(option) }
-      .standard-button=f.submit
+        =f.hidden_field :parent_id, :value => parent.id unless parent.nil?
+      %hr
+      %h2.notification-settings
+        = f.check_box :email_new_motion # TODO: check this by default
+        = f.label :email_new_motion,
+          "Email group members when a new motion is created in this group",
+          class: "checkbox-label"
+      .check-presence= f.submit

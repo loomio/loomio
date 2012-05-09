@@ -17,6 +17,8 @@ gem 'acts-as-taggable-on', '~> 2.2.2', :git => 'https://github.com/mbleigh/acts-
 gem 'aasm'
 gem 'cancan'
 gem 'acts_as_commentable_with_threading'
+gem 'draper'
+gem 'exception_notification'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -29,10 +31,11 @@ group :assets do
 end
 
 group :development, :test do
-  #gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'debugger'
   gem 'machinist', '>= 2.0.0.beta2'
   gem 'faker'
   gem 'rspec-rails', '~> 2.8.1'
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
 end
@@ -46,6 +49,7 @@ group :development do
   gem 'rb-fchange', :require => false
   gem 'launchy'
   gem 'spork'
+  gem 'awesome_print'
 end
 
 group :test do

@@ -22,6 +22,24 @@ describe Group do
     end
   end
 
+  context "has a parent" do
+    before :each do
+      @group = Group.make!
+      @subgroup = Group.make!(:parent => @group)
+    end
+    it "accesses its parent" do
+      @subgroup.parent.should == @group
+    end
+    it "accesses its children" do
+      10.times {Group.make!(:parent => @group)}
+      @group.subgroups.count.should eq(11)
+    end
+    it "limits group inheritance to 1 level" do
+      invalid = Group.make(:parent => @subgroup)
+      invalid.should_not be_valid
+    end
+  end
+
   context "an existing group viewiable by members" do
     before :each do
       @group = Group.make!(viewable_by: "members")
@@ -62,24 +80,6 @@ describe Group do
       @group.add_request!(@user)
       @group.add_member!(@user)
       @group.users.should include(@user)
-    end
-
-    it "can tag user" do
-      # TODO Jon: technically this is a 'coupled' (bad) test, and
-      # we should have separate tests for the tag_user and
-      # get_user_tags methods
-      @group.set_user_tags(@user, "new-tag")
-      user_tags = @group.get_user_tags(@user)
-      user_tags.first.name.should == "new-tag"
-    end
-
-    it "can delete user tag" do
-      @group.set_user_tags(@user, "first,second")
-      @group.get_user_tags(@user).first.name.should == "first"
-      @group.delete_user_tag(@user, "first")
-      @group.get_user_tags(@user).first.name.should == "second"
-
-
     end
 
     context "receiving a member request" do

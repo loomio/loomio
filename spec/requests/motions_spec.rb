@@ -18,6 +18,30 @@ describe "Motions" do
                        'user[password]' => 'password'
     end
 
+    context "closes motion" do
+      before :each do
+        vote = Vote.create(user: @user, motion: @motion, position: "yes")
+        visit motion_path(id: @motion.id)
+        click_on "Close Voting"
+      end
+
+      it "should be closed" do
+        should have_link("Reopen Voting")
+      end
+
+      it "should display users that have not voted" do
+        find("#still-to-vote").should have_content(@user2.name)
+      end
+
+      it "should not display new users since motion closed" do
+        @user3 = User.make
+        @user3.save
+        @group.add_member!(@user3)
+        visit motion_path(id: @motion.id)
+        find("#still-to-vote").should_not have_content(@user3.name)
+      end
+    end
+
     context "viewing a motion in one of their groups" do
       it "can see motion discussion" do
         visit motion_path(id: @motion.id)
@@ -44,12 +68,35 @@ describe "Motions" do
         visit motion_path(id: @motion.id)
         find('.comment').should_not have_content('Delete')
       end
+
+      it "can 'like' a comment" do
+        @motion.discussion.add_comment(@user2, "hello!")
+
+        visit motion_path(id: @motion.id)
+        find('.comment').find_link('Like').click
+        # TODO: should say "Liked by user2 and you."
+        should have_content("Liked by #{@user.name}")
+        should_not have_link("Like")
+        should have_link("Unlike")
+      end
+
+      it "can 'unlike' a comment" do
+        @motion.discussion.add_comment(@user2, "hello!")
+        @motion.discussion.comments.first.like(@user)
+
+        visit motion_path(id: @motion.id)
+        find('.comment').find_link('Unlike').click
+        should_not have_content("Liked by #{@user.name}")
+        should have_link("Like")
+        should_not have_link("Unlike")
+      end
     end
 
     context "viewing a public motion (of a group they don't belong to)" do
       before :each do
         membership = @group.memberships.find_by_user_id(@user.id)
         membership.destroy
+        @motion.discussion.add_comment(@user2, "hello!")
         visit motion_path(id: @motion.id)
       end
 
@@ -59,6 +106,11 @@ describe "Motions" do
 
       it "cannot see 'add comment' form on motions" do
         should_not have_css('#new-comment')
+      end
+
+      it "cannot see 'like/unlike' options on comment " do
+        find('.comment').should_not have_link('Like')
+        find('.comment').should_not have_link('Unlike')
       end
     end
 
@@ -86,9 +138,25 @@ describe "Motions" do
       visit new_motion_path(group_id: @group.id)
       fill_in 'motion_name', with: 'This is a new motion'
       fill_in 'motion_description', with: 'Blahhhhhh'
-      check 'motion_disable_discussion'
+      uncheck 'motion_enable_discussion'
       click_on 'Create Motion'
-      should have_content("Discussions have been disabled for this motion")
+      should have_content("Comments have been disabled for this motion")
+    end
+  end
+  context "a logged out user" do
+    it "can view a motion of a public group" do
+      @group = Group.make(name: 'Test Group')
+      @group.save
+      @user = User.make!
+      @group.add_member!(@user)
+      @motion = create_motion(name: 'Test Motion', group: @group,
+                              author: @user, facilitator: @user)
+      @motion.save!
+      @motion.discussion.add_comment(@user, "hello!")
+
+      visit motion_path(@motion)
+
+      should have_css('.motions.show')
     end
   end
 end

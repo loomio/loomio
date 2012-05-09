@@ -10,6 +10,7 @@ describe MotionsController do
     Motion.stub(:find).with(motion.id.to_s).and_return(motion)
     Group.stub(:find).with(group.id.to_s).and_return(group)
     group.stub(:can_be_edited_by?).with(user).and_return(true)
+    user.stub(:update_motion_read_log).with(motion)
     request.env["HTTP_REFERER"] = previous_url
   end
 
@@ -20,12 +21,12 @@ describe MotionsController do
     end
 
     it "can close a motion" do
-      motion.should_receive(:set_close_date)
+      motion.should_receive(:close_voting!)
       post :close_voting, id: motion.id
     end
 
     it "can open a motion" do
-      motion.should_receive(:set_close_date)
+      motion.should_receive(:open_voting!)
       post :open_voting, id: motion.id
     end
   end
@@ -82,7 +83,7 @@ describe MotionsController do
     end
 
     it "cannot close a motion" do
-      motion.should_not_receive(:set_close_date)
+      motion.should_not_receive(:close_voting)
 
       post :close_voting, id: motion.id
     end
@@ -92,7 +93,7 @@ describe MotionsController do
         motion_attrs = {'key' => 'value'}
 
         group.stub_chain(:users, :include?).with(user).and_return(true)
-        Motion.should_receive(:create).with(motion_attrs).and_return(motion)
+        Motion.should_receive(:new).with(motion_attrs).and_return(motion)
         motion.should_receive(:author=).with(user)
         motion.should_receive(:group=).with(group)
         motion.should_receive(:save)
@@ -106,8 +107,16 @@ describe MotionsController do
     context "showing a motion" do
       it "succeeds" do
         motion.stub_chain(:discussion, :comment_threads, :order).and_return([])
+
         get :show, group_id: group.id, id: motion.id
+
         response.should be_success
+      end
+      it "should update the motion_read_log" do
+        user.should_receive(:update_motion_read_log).with(motion)
+
+        motion.stub_chain(:discussion, :comment_threads, :order).and_return([])
+        get :show, group_id: group.id, id: motion.id
       end
     end
 

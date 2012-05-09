@@ -22,7 +22,6 @@ class Vote < ActiveRecord::Base
 
   validates_presence_of :motion, :user, :position
   validates_inclusion_of :position, in: POSITIONS
-  validates_uniqueness_of :user_id, scope: :motion_id
   validates_length_of :statement, maximum: 250
   validates :user_id, user_can_vote: true
   validates :position, :statement, closable: true
@@ -31,9 +30,12 @@ class Vote < ActiveRecord::Base
 
   attr_accessor :old_position
 
+  attr_accessible :position, :statement
+
   delegate :name, :to => :user, :prefix => :user
 
   after_save :send_notifications
+  after_save :update_activity
 
   def position=(new_position)
     self.old_position = position
@@ -44,7 +46,15 @@ class Vote < ActiveRecord::Base
     current_user && user == current_user
   end
 
+  def self.unique_votes(motion)
+    Vote.find_by_sql("SELECT * FROM votes a WHERE created_at = (SELECT MAX(created_at) as created_at FROM votes b WHERE a.user_id = b.user_id AND motion_id = #{motion.id} )")
+  end
+
   private
+    def update_activity
+      self.motion.update_vote_activity
+    end
+
     def send_notifications
       if position == "block" && old_position != "block"
         MotionMailer.motion_blocked(self).deliver
