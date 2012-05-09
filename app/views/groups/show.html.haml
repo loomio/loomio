@@ -28,7 +28,7 @@
             - motion = discussion.current_motion
             - if motion.voting? && motion.blocked?
               - class_name = " blocked"
-          %div{ class: "discussion" + class_name }
+          %div{ class: "discussion pannel" + class_name }
             .discussion-title-container
               %h4.discussion-title
                 - title = truncate(discussion.title, :length => 75, :separator => ' ')
