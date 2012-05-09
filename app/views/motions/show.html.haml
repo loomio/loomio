@@ -31,8 +31,9 @@
             - if @motion.voting?
               = "Closing in #{time_ago_in_words(@motion.close_date)}"
             - else
-              Closed on
-              .relativetime= @motion.close_date
+              Closed 
+              = time_ago_in_words(@motion.close_date)
+              ago
           %h4#description= simple_format h(@motion.description)
   %hr{style: "margin-bottom:0px"}
   .row
