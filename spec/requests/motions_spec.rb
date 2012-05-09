@@ -5,13 +5,15 @@ describe "Motions" do
 
   context "a logged in user" do
     before :each do
+      pending "delete this once we've migrated to discussion-centric"
       @user = User.make!
       @user2 = User.make!
       @group = Group.make(name: 'Test Group')
       @group.save
       @group.add_member!(@user)
       @group.add_member!(@user2)
-      @motion = create_motion(name: 'Test Motion', group: @group,
+      @discussion = create_discussion(group: @group)
+      @motion = create_motion(name: 'Test Motion', discussion: @discussion,
                               author: @user, facilitator: @user)
       @motion.save!
       page.driver.post user_session_path, 'user[email]' => @user.email,
@@ -145,6 +147,7 @@ describe "Motions" do
   end
   context "a logged out user" do
     it "can view a motion of a public group" do
+      pending "delete this once we've migrated to discussion-centric"
       @group = Group.make(name: 'Test Group')
       @group.save
       @user = User.make!

@@ -28,8 +28,7 @@ describe Discussion do
   end
 
   it "can update discussion_activity" do
-    motion = create_motion
-    discussion = motion.discussion
+    discussion = create_discussion
     discussion.activity = 3
     discussion.update_activity
     discussion.activity.should == 4

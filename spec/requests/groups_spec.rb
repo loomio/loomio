@@ -8,7 +8,9 @@ describe "Groups" do
       @user = User.make!
       @group = Group.make!(name: 'Test Group', viewable_by: :members)
       @group.add_member!(@user)
-      @motion = create_motion(name: 'Test Motion', group: @group,
+      @discussion = create_discussion(group: @group, author: @user)
+      @motion = create_motion(name: 'Test Motion',
+                              discussion: @discussion,
                               author: @user, facilitator: @user)
       page.driver.post user_session_path, 'user[email]' => @user.email,
                                           'user[password]' => 'password'
@@ -143,7 +145,9 @@ describe "Groups" do
       @user = User.make!
       @group = Group.make!(name: 'Test Group', viewable_by: :everyone)
       @group.add_member!(@user)
-      @motion = create_motion(name: 'Test Motion', group: @group,
+      @discussion = create_discussion(group: @group, author: @user)
+      @motion = create_motion(name: 'Test Motion',
+                              discussion: @discussion,
                               author: @user, facilitator: @user)
       visit group_path(@group)
 

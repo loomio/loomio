@@ -1,7 +1,6 @@
 class Motion < ActiveRecord::Base
   PHASES = %w[voting closed]
 
-  belongs_to :group
   belongs_to :author, :class_name => 'User'
   belongs_to :facilitator, :class_name => 'User'
   belongs_to :discussion
@@ -9,7 +8,7 @@ class Motion < ActiveRecord::Base
   has_many :motion_read_logs, :dependent => :destroy
   has_many :did_not_votes
 
-  validates_presence_of :name, :group, :author, :facilitator_id
+  validates_presence_of :name, :discussion, :author, :facilitator
   validates_inclusion_of :phase, in: PHASES
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
@@ -28,7 +27,7 @@ class Motion < ActiveRecord::Base
   attr_accessor :enable_discussion
 
   attr_accessible :name, :description, :discussion_url, :enable_discussion
-  attr_accessible :close_date, :phase, :facilitator_id, :group
+  attr_accessible :close_date, :phase, :facilitator_id
 
   include AASM
   aasm :column => :phase do
@@ -58,6 +57,10 @@ class Motion < ActiveRecord::Base
     .where('votes.user_id = ?', user.id)
     .having('count(votes.id) = 0')
   }
+
+  def group
+    discussion.group
+  end
 
   def user_has_voted?(user)
     votes.map{|v| v.user.id}.include? user.id
@@ -129,8 +132,6 @@ class Motion < ActiveRecord::Base
       discussion.group = group
       discussion.save
     end
-    self.group = group
-    save
   end
 
   def open_close_motion

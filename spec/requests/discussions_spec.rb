@@ -33,7 +33,7 @@ describe "Discussion" do
       visit discussion_path(discussion)
 
       find('#new-proposal').click
-      should have_css(".discussions.new")
+      should have_css(".discussions.new_proposal")
     end
   end
 end

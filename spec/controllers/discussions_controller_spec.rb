@@ -13,7 +13,7 @@ describe DiscussionsController do
       app_controller.stub(:authorize!).and_return(true)
       app_controller.stub(:resource).and_return(discussion)
       Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
-      Discussion.stub(:create).and_return(discussion)
+      Discussion.stub(:new).and_return(discussion)
       Group.stub(:find).with(group.id.to_s).and_return(group)
       group.stub(:can_be_viewed_by?).with(user).and_return(true)
       group.stub_chain(:users, :include?).with(user).and_return(true)
@@ -24,7 +24,7 @@ describe DiscussionsController do
         discussion.should_receive(:add_comment).with(user, "Bright light")
         discussion.should_receive(:save).and_return(true)
         get :create, discussion: { group_id: group.id, title: "Shinney", comment: "Bright light" }
-        response.should redirect_to(discussion_path(discussion))
+        response.should redirect_to(discussion_path(discussion.id))
       end
     end
 
