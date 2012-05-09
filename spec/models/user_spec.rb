@@ -42,7 +42,8 @@ describe User do
   it "can create a new motion_read_log" do
     @user = User.make!
     @group = Group.make!
-    @motion = create_motion(group: @group)
+    @discussion = create_discussion(group: @group)
+    @motion = create_motion(discussion: @discussion)
     @user.update_motion_read_log(@motion)
     MotionReadLog.count.should == 1
   end
@@ -50,7 +51,8 @@ describe User do
   it "can update an existing motion_read_log" do
     @user = User.make!
     @group = Group.make!
-    @motion = create_motion(group: @group)
+    @discussion = create_discussion(group: @group)
+    @motion = create_motion(discussion: @discussion)
     @motion.vote_activity = 2
     @motion.discussion.activity = 4
     @user.update_motion_read_log(@motion)

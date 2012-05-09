@@ -14,7 +14,7 @@ describe "User" do
         @group.add_member!(user)
         @group.add_member!(other_user)
         @discussion = create_discussion(group: @group)
-        @motion = create_motion(group: @group, discussion: @discussion)
+        @motion = create_motion(discussion: @discussion)
         @user_comment = @discussion.add_comment(user, "hello")
         @another_user_comment = @discussion.add_comment(other_user, "hello")
       end

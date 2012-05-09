@@ -3,7 +3,8 @@ require "spec_helper"
 describe MotionMailer do
   let(:user) { User.make! }
   let(:group) { Group.make! }
-  let(:motion) { create_motion(group: group) }
+  let(:discussion) { create_discussion(group: group) }
+  let(:motion) { create_motion(discussion: discussion) }
 
   describe 'sending email on new motion creation' do
     before(:all) do
@@ -35,7 +36,7 @@ describe MotionMailer do
 
     #ensure that the confirmation_url appears in the email body
     it 'assigns url_for motion' do
-      @email.body.encoded.should match(/\/motions\/#{motion.id}/)
+      @email.body.encoded.should match(discussion_url(discussion))
     end
   end
 

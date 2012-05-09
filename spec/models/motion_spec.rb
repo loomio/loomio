@@ -8,8 +8,7 @@ describe Motion do
   end
   it {should have(1).errors_on(:name)}
   it {should have(1).errors_on(:author)}
-  it {should have(1).errors_on(:group)}
-  it {should have(1).errors_on(:facilitator_id)}
+  it {should have(1).errors_on(:facilitator)}
 
   it "user_has_votes?(user) returns true if the given user has voted on motion" do
     @user = User.make!
@@ -31,7 +30,6 @@ describe Motion do
       MotionMailer.should_receive(:new_motion_created)
         .exactly(group.users.count - 1).times
         .with(kind_of(Motion), kind_of("")).and_return(stub(deliver: true))
-      # NOTE (Jon): this should actually be create_motion(group: group), but that fails
       @motion = create_motion
     end
 
@@ -42,7 +40,8 @@ describe Motion do
       group.add_member!(User.make!)
       group.add_member!(User.make!)
       MotionMailer.should_not_receive(:new_motion_created)
-      @motion = create_motion(group: group)
+      @discussion = create_discussion(group: group)
+      @motion = create_motion(discussion: @discussion)
     end
   end
 
@@ -114,7 +113,6 @@ describe Motion do
       @new_group = Group.make!
       @motion = create_motion
       @motion.move_to_group @new_group
-      @motion.save
     end
 
     it "changes motion group_id to new group" do
@@ -193,7 +191,11 @@ describe Motion do
       @group = Group.make
       @group.save
       @group.add_member! @user1
-      @motion1 = Motion.new(name: "hi", facilitator_id: @user1, group: @group, phase: "voting")
+      @discussion = create_discussion(group: @group, author: @user1)
+      @motion1 = create_motion(name: "hi",
+                               author: @user1,
+                               discussion: @discussion,
+                               phase: "voting")
       @motion1.author = @user1
       @motion1.save!
     end

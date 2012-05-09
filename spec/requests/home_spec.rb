@@ -16,7 +16,8 @@ describe "Home" do
       @user = User.make!
       @group = Group.make!(name: 'Test Group', viewable_by: :members)
       @group.add_member!(@user)
-      @motion = create_motion(name: 'Test Motion', group: @group,
+      @discussion = create_discussion(group: @group)
+      @motion = create_motion(name: 'Test Motion', discussion: @discussion,
                               author: @user, facilitator: @user)
       page.driver.post user_session_path, 'user[email]' => @user.email,
                                           'user[password]' => 'password'

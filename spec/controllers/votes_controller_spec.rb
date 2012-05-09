@@ -3,10 +3,14 @@ require 'spec_helper'
 describe VotesController do
   context 'a signed in user voting on a motion' do
     before :each do
-      sign_in @user = User.make!
-      @group = Group.make!
+      @user = User.make
+      @user.save
+      sign_in @user
+      @group = Group.make
+      @group.save
       @group.add_member!(@user)
-      @motion = create_motion(group: @group, phase: 'voting')
+      @discussion = create_discussion(group: @group)
+      @motion = create_motion(discussion: @discussion, phase: 'voting')
       @motion.save!
     end
     context 'during voting phase' do
@@ -51,7 +55,8 @@ describe VotesController do
 
     context 'during closed phase' do
       before :each do
-        @motion = create_motion(group: @group, phase: 'closed', author: @user)
+        @discussion = create_discussion(group: @group, author: @user)
+        @motion = create_motion(discussion: @discussion, phase: 'closed')
       end
 
       it 'cannot vote' do

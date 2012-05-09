@@ -42,7 +42,7 @@ class DiscussionsController < GroupBaseController
 
   def new_proposal
     @motion = Motion.new
-    @motion.group = Discussion.find(params[:id]).group
+    @motion.discussion = Discussion.find(params[:id])
     render template: 'motions/new'
   end
 
