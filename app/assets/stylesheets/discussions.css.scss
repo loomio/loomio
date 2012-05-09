@@ -7,13 +7,17 @@
   border-left: 1px solid lightgrey;
   margin-left: 0px;
   width: 430px;
-  #current-motion-container {
+  #proposal-container {
     .btn-new-motion {
       .btn {
         padding-top: 5px;
         padding-bottom: 5px;
       }
     }
+  }
+  #current-proposal {
+    font-size: 14px;
+    margin-bottom: 10px;
   }
 
   .motion-placeholder { padding-top: 300px }
@@ -38,7 +42,6 @@
         line-height: 16px;
         p {
           display: inline;
-          /*font-size: 14px;*/
         }
         #admin-buttons{
           text-align: right;
@@ -153,19 +156,26 @@
   .motion-row {
     border-bottom: 1px solid #bbb;
     padding: 2px;
-    .closed-date {
+    color: #888;
+    .close-date {
       display: inline;
       float: right;
     }
   }
 
-  #closed-motions {
+  #previous-proposals {
     font-size: 14px;
     color: #888;
+    padding-bottom: 30px;
   }
 }
 
-#discussion-panel{
+#discussion-title {
+  padding-top: 4px;
+  font-size: 20px;
+}
+
+#discussion-panel {
   padding-top: 20px;
   padding-right: 20px;
 
