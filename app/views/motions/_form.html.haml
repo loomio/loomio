@@ -4,10 +4,6 @@
     .clearfix
       .presence-required= f.text_field :name, class: "presence-required input"
       .error-message Title can not be blank
-    = f.label :discussion_url, "Link to external discussion (optional)"
-    = f.text_field :discussion_url, placeholder: "http://site.com/your-discussion"
-    = f.check_box :enable_discussion, :checked => get_discussion_state_for(@motion)
-    = f.label :enable_discussion, "Enable comments on this motion", class: "checkbox-label"
     = f.label :close_date, "Closing"
     #closing-inputs
       - input_time = Time.now
