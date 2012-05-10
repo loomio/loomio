@@ -14,9 +14,6 @@ class MotionsController < GroupBaseController
     @vote = Vote.new
     @comments = @motion.discussion.comment_threads.order("created_at DESC")
     @user_already_voted = @motion.user_has_voted?(current_user)
-    if current_user
-      current_user.update_motion_read_log(@motion)
-    end
   end
 
   def update
