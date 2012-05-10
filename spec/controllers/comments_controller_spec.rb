@@ -3,8 +3,8 @@ require 'spec_helper'
 describe CommentsController do
   let(:app_controller) { controller }
   let(:user) { stub_model(User) }
-  let(:motion) { mock_model(Motion) }
-  let(:comment) { mock_model(Comment, current_motion: motion) }
+  let(:discussion) { mock_model(Discussion) }
+  let(:comment) { mock_model(Comment, discussion: discussion) }
 
   context "authenticated user" do
     before do
@@ -24,9 +24,9 @@ describe CommentsController do
         flash[:notice].should match(/Comment deleted/)
       end
 
-      it "redirects to the comment's motion" do
+      it "redirects to the comment's discussion" do
         delete :destroy, id: 23
-        response.should redirect_to(motion_path(motion))
+        response.should redirect_to(discussion_url(discussion))
       end
     end
 
@@ -45,9 +45,9 @@ describe CommentsController do
         post :like, id: 23
       end
 
-      it "redirects to motion page" do
+      it "redirects to discussion page" do
         post :like, id: 23
-        response.should redirect_to(motion_url(motion))
+        response.should redirect_to(discussion_url(discussion))
       end
     end
 
@@ -66,9 +66,9 @@ describe CommentsController do
         post :unlike, id: 23
       end
 
-      it "redirects to motion page" do
+      it "redirects to discussion page" do
         post :unlike, id: 23
-        response.should redirect_to(motion_url(motion))
+        response.should redirect_to(discussion_url(discussion))
       end
     end
   end

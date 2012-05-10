@@ -47,7 +47,7 @@ class VotesController < GroupBaseController
     else
       flash[:error] = "Can only vote in voting phase"
     end
-    redirect_to @motion
+    redirect_to @motion.discussion
   end
 
   private

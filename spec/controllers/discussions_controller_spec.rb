@@ -5,7 +5,10 @@ describe DiscussionsController do
   let(:user) { stub_model(User) }
   let(:motion) { mock_model(Motion) }
   let(:group) { mock_model(Group) }
-  let(:discussion) { stub_model(Discussion, author: user, current_motion: motion, group: group) }
+  let(:discussion) { stub_model(Discussion,
+                                author: user,
+                                current_motion: motion,
+                                group: group) }
 
   context "authenticated user" do
     before do
@@ -17,6 +20,24 @@ describe DiscussionsController do
       Group.stub(:find).with(group.id.to_s).and_return(group)
       group.stub(:can_be_viewed_by?).with(user).and_return(true)
       group.stub_chain(:users, :include?).with(user).and_return(true)
+    end
+
+    context "views a discussion" do
+      before do
+        motion.stub(:votes_graph_ready).and_return([])
+        motion.stub(:user_has_voted?).and_return(true)
+        discussion.stub(:history)
+      end
+      it "responds with success" do
+        get :show, id: discussion.id
+        response.should be_success
+      end
+
+      it "assigns array with discussion history" do
+        discussion.should_receive(:history).and_return(['fake'])
+        get :show, id: discussion.id
+        assigns(:history).should eq(['fake'])
+      end
     end
 
     context "creates a discussion" do
@@ -54,9 +75,9 @@ describe DiscussionsController do
         post :add_comment, comment: "Hello!", id: discussion.id
       end
 
-      it "redirects to the discussion's default motion" do
+      it "redirects to the discussion" do
         post :add_comment, comment: "Hello!", id: discussion.id
-        response.should redirect_to(motion_path(motion))
+        response.should redirect_to(discussion_url(discussion))
       end
     end
   end

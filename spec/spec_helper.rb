@@ -113,9 +113,9 @@ def create_discussion(*args)
     discussion.title = "Title of discussion!"
   end
   discussion.group.add_member! discussion.author
-  discussion.save
   #unless discussion.current_motion
     #motion = create_motion(discussion: discussion)
   #end
+  discussion.save
   discussion
 end

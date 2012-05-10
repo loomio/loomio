@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :motions_voting, through: :groups, :source => :motions, :conditions => {phase: 'voting'}
   has_many :motions_closed, through: :groups, :source => :motions, :conditions => {phase: 'closed'}
 
-  has_many :motion_read_logs,
+  has_many :discussion_read_logs,
            :dependent => :destroy
 
   # Setup accessible (or protected) attributes for your model
@@ -52,21 +52,21 @@ class User < ActiveRecord::Base
   end
 
   def update_motion_read_log(discussion)
-    if MotionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
-      motion_read_log = MotionReadLog.new
+    if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
+      motion_read_log = DiscussionReadLog.new
       motion_read_log.discussion_activity_when_last_read = discussion.activity
       motion_read_log.user_id = id
       motion_read_log.discussion_id = discussion.id
       motion_read_log.save
     else
-      log = MotionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
+      log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
       log.discussion_activity_when_last_read = discussion.activity
       log.save
     end
   end
 
   def discussion_activity_when_last_read(discussion)
-    log = MotionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
+    log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
     if log
       log.discussion_activity_when_last_read
     else

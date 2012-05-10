@@ -44,7 +44,7 @@ describe User do
     @group = Group.make!
     @discussion = create_discussion(group: @group)
     @user.update_motion_read_log(@discussion)
-    MotionReadLog.count.should == 1
+    DiscussionReadLog.count.should == 1
   end
 
   it "can update an existing motion_read_log" do
