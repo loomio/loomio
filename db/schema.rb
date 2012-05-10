@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510021123) do
+ActiveRecord::Schema.define(:version => 20120510035625) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(:version => 20120510021123) do
     t.datetime "close_date"
     t.integer  "discussion_id"
     t.boolean  "disable_discussion", :default => false
-    t.integer  "vote_activity",      :default => 0
   end
 
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
