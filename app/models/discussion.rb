@@ -16,6 +16,7 @@ class Discussion < ActiveRecord::Base
   belongs_to :group
   belongs_to :author, class_name: 'User'
   has_many :motions
+  has_many :votes, through: :motions
 
   # group should be removed if possible - kiesia 8.5.12
   attr_accessible :group, :title
@@ -61,11 +62,6 @@ class Discussion < ActiveRecord::Base
   end
 
   def history
-    if current_motion
-      votes = current_motion.votes
-    else
-      votes = []
-    end
     (comments + votes).sort_by(&:created_at)
   end
 
