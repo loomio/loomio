@@ -15,6 +15,6 @@
         %span.position-icon= render partial: "motions/display_icons", locals: { position: message.position }
         %span.position-message
           = link_to "#{message.user_name}", "#"
-          = "said #{message.position} to the current proposal."
+          = "said #{message.position} to the current proposal"
         %p.comment-time.clear
           = time_ago_in_words(message.created_at) + " ago"
