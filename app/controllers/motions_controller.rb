@@ -5,17 +5,6 @@ class MotionsController < GroupBaseController
   before_filter :check_motion_destroy_permissions, only: :destroy
   before_filter :check_motion_close_permissions, only: [:open_voting, :close_voting]
 
-  def show
-    resource
-    @motion.open_close_motion
-    @group = @motion.group
-    @votes_for_graph = @motion.votes_graph_ready
-    @unique_votes = Vote.unique_votes(@motion)
-    @vote = Vote.new
-    @comments = @motion.discussion.comment_threads.order("created_at DESC")
-    @user_already_voted = @motion.user_has_voted?(current_user)
-  end
-
   def update
     resource
     update! { discussion_url(@motion.discussion_id) }
