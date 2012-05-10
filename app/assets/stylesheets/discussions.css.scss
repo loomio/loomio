@@ -55,26 +55,33 @@
 
   .position{
     /*background-color: #FFF;*/
-    /*height: 25px;*/
-    /*overflow: auto;*/
     /*width: 100%*/
-    color: #777;
+    /*color: #777;*/
     .clear { clear: both; }
     .position-icon{
       float: left;
+      /*margin-top: -1px;*/
     }
     .position-message{
       float: left;
-      margin-top: 4px;
-      margin-left: 5px;
+      margin-top: 2px;
+      /*margin-left: 5px;*/
       /*font-style: italic;*/
       font-size: 12px;
-      a {
-        /*font-style: italic;*/
-        color: #777;
-      }
+      /*a {*/
+        /*[>font-style: italic;<]*/
+        /*color: #777;*/
+      /*}*/
     }
   }
+
+  .proposal{
+    color: #777;
+    .proposal-author{ font-weight: bold; }
+    .proposal-label{ color: #777; }
+    .proposal-text{ font-style: italic; }
+  }
+  .proposal.current{ background: #EFEFDF; }
 
 
 }
@@ -241,6 +248,7 @@
       color: #888;
     }
   }
+
   .motion-row {
     color: #888;
     .close-date {

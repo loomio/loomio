@@ -43,16 +43,20 @@ describe Discussion do
     end
 
     it "should include comments" do
-      @comment = @discussion.add_comment(@user, "this is a test comment")
-      @discussion.history.should include(@comment)
+      comment = @discussion.add_comment(@user, "this is a test comment")
+      @discussion.history.should include(comment)
+    end
+
+    it "should include motions" do
+      @discussion.history.should include(@discussion.current_motion)
     end
 
     it "should include votes" do
-      @vote = Vote.new(position: 'yes')
-      @vote.user = @user
-      @vote.motion = @discussion.current_motion
-      @vote.save
-      @discussion.history.should include(@vote)
+      vote = Vote.new(position: 'yes')
+      vote.user = @user
+      vote.motion = @discussion.current_motion
+      vote.save
+      @discussion.history.should include(vote)
     end
   end
 

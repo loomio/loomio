@@ -12,9 +12,24 @@
       = render message
     - if message.is_a?(Vote)
       %div.comment.position
-        %span.position-icon= render partial: "motions/display_icons", locals: { position: message.position }
-        %span.position-message
-          = link_to "#{message.user_name}", "#"
-          = "said #{message.position} to the current proposal"
+        %p
+          %span.position-icon= render partial: "motions/display_icons", locals: { position: message.position }
+          %span.position-message
+            %span.comment-username= link_to(message.user_name, "#")
+            -#= link_to "#{message.user_name}", "#"
+            - if message.statement.present?
+              = "#{message.statement}"
+            -#- else
+              -#= "voted #{message.position}."# - (no statement)"#said #{message.position} to the current proposal"
         %p.comment-time.clear
+          = time_ago_in_words(message.created_at) + " ago"
+    - if message.is_a?(Motion)
+      - classes = "comment proposal"
+      - classes += " current" if (message == discussion.current_motion)
+      %div{class: classes}
+        %p
+          %span.comment-username= link_to(message.author_name, "#")
+          %span.proposal-label created a proposal
+          %p.proposal-text= message.name
+        %p.comment-time
           = time_ago_in_words(message.created_at) + " ago"
