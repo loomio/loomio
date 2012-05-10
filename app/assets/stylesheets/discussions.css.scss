@@ -154,8 +154,6 @@
   }
 
   .motion-row {
-    border-top: 1px solid #bbb;
-    padding: 2px;
     color: #888;
     .close-date {
       display: inline;
@@ -163,7 +161,7 @@
     }
   }
 
-  #previous-proposals {
+  #previous-proposals-container {
     font-size: 14px;
     color: #888;
   }

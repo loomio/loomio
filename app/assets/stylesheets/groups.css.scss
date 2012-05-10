@@ -40,14 +40,9 @@ $token-input-width: 278px;
   .btn { float: right; margin: -12px 0 0 10px; }
 }
 
-#btn-create-discussion{
-  padding-top: 23px;
-  margin-left: 10px;
-  }
-
 #discussions {
   margin-top: 8px;
-  margin-left: 10px;
+  /*margin-left: 10px;*/
   padding-bottom: 30px;
   .discussion {
     padding-right: 5px;
@@ -132,7 +127,6 @@ $token-input-width: 278px;
 }
 
 #sidebar {
-  padding-top: 23px;
   #subgroups {
     padding-bottom: 20px;
   }
@@ -158,8 +152,7 @@ $token-input-width: 278px;
     margin-bottom: 5px;
   }
   #button-invite {
-    margin: 0px;
-    padding: 0px;
+    padding-top: 8px;
     text-align: left;
     input {
       margin: 0px;
@@ -246,7 +239,7 @@ $token-input-width: 278px;
  *       it should probably be moved to generic.css
  */
 ul#group-list {
-  margin-bottom: 8px;
+  margin-bottom: 2px;
   .group-link{
     width: 90%;
     display: inline-block;
