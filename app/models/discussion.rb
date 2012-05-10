@@ -62,7 +62,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def history
-    (comments + votes).sort_by(&:created_at)
+    (comments + votes + motions).sort_by(&:created_at)
   end
 
   def update_activity
