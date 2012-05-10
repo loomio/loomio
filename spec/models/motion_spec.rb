@@ -94,13 +94,6 @@ describe Motion do
     @motion.discussion.should_not be_nil
   end
 
-  it "can update vote_activity" do
-    @motion = create_motion
-    @motion.vote_activity = 3
-    @motion.update_vote_activity
-    @motion.vote_activity.should == 4
-  end
-
   it "can update discussion_activity" do
     @motion = create_motion
     @motion.discussion.activity = 3
@@ -129,18 +122,12 @@ describe Motion do
       @motion = create_motion
       @vote = Vote.create(position: "no", motion: @motion, user: @motion.author)
       @comment = @motion.discussion.add_comment(@motion.author, "hello")
-      @motion.author.update_motion_read_log(@motion)
       @motion.destroy
     end
 
     it "deletes associated votes" do
       Vote.first.should == nil
     end
-
-    it "deletes associated motion read logs" do
-      DiscussionReadLog.first.should == nil
-    end
-
   end
 
   context "closed motion" do

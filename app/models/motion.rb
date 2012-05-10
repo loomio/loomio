@@ -206,11 +206,6 @@ class Motion < ActiveRecord::Base
     group.users
   end
 
-  def update_vote_activity
-    self.vote_activity += 1
-    save
-  end
-
   def update_discussion_activity
     discussion.update_activity if discussion
   end

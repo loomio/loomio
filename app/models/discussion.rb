@@ -37,7 +37,7 @@ class Discussion < ActiveRecord::Base
 
 
   #
-  # MISC METHODS
+  # COMMENT METHODS
   #
 
   def add_comment(user, comment)
@@ -51,6 +51,10 @@ class Discussion < ActiveRecord::Base
   def comments
     comment_threads.order("created_at DESC")
   end
+
+  #
+  # MISC METHODS
+  #
 
   def current_motion
     motions.last
