@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  PERMISSION_CATEGORIES = [:everyone, :members, :admins]
+  PERMISSION_CATEGORIES = [:everyone, :members, :admins, :parent_group_members]
 
   validates_presence_of :name
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
@@ -118,6 +118,9 @@ class Group < ActiveRecord::Base
   def can_be_viewed_by?(user)
     return true if viewable_by == :everyone
     return true if (viewable_by == :members && users.include?(user))
+    unless parent.nil?
+      return true if (viewable_by == :parent_group_members && parent.users.include?(user))
+    end
   end
 
   def can_invite_members?(user)
@@ -149,7 +152,8 @@ class Group < ActiveRecord::Base
   private
 
   def set_defaults
-    self.viewable_by ||= :everyone
+    self.viewable_by ||= :everyone if parent.nil?
+    self.viewable_by ||= :parent_group_members unless parent.nil?
     self.members_invitable_by ||= :members
   end
 
