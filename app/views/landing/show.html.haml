@@ -28,7 +28,13 @@
     -#%p
       -#And our sweet
       -#= "<a href='/demo'>Demo page</a>.".html_safe
-
+    %link{:href => "http://cdn-images.mailchimp.com/embedcode/slim-081711.css", :rel => "stylesheet", :type => "text/css"}
+    #mc_embed_signup
+      %form#mc-embedded-subscribe-form.validate{:action => "http://loom.us5.list-manage.com/subscribe/post?u=9902f85604978f8063e266051&id=d1e5b4067a", :method => "post", :name => "mc-embedded-subscribe-form", :target => "_blank"}
+        %label{:for => "mce-EMAIL"} Get on the waiting list to join Loomio!
+        %input#mce-EMAIL.email{:name => "EMAIL", :placeholder => "email address", :required => "", :type => "email", :value => ""}
+          .clear
+            %input#mc-embedded-subscribe.button{:name => "subscribe", :type => "submit", :value => "Subscribe"}/
   #controls
     %h2 Alpha user sign in
     %p
