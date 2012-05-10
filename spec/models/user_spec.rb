@@ -43,7 +43,7 @@ describe User do
     @user = User.make!
     @group = Group.make!
     @discussion = create_discussion(group: @group)
-    @user.update_motion_read_log(@discussion)
+    @user.update_discussion_read_log(@discussion)
     DiscussionReadLog.count.should == 1
   end
 
@@ -52,10 +52,10 @@ describe User do
     @group = Group.make!
     @discussion = create_discussion(group: @group)
     @discussion.activity = 4
-    @user.update_motion_read_log(@discussion)
+    @user.update_discussion_read_log(@discussion)
     @discussion.activity = 5
     @user.discussion_activity_when_last_read(@discussion).should == 4
-    @user.update_motion_read_log(@discussion)
+    @user.update_discussion_read_log(@discussion)
     @user.discussion_activity_when_last_read(@discussion).should == 5
   end
 end

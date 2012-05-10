@@ -51,13 +51,13 @@ class User < ActiveRecord::Base
     new_user
   end
 
-  def update_motion_read_log(discussion)
+  def update_discussion_read_log(discussion)
     if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
-      motion_read_log = DiscussionReadLog.new
-      motion_read_log.discussion_activity_when_last_read = discussion.activity
-      motion_read_log.user_id = id
-      motion_read_log.discussion_id = discussion.id
-      motion_read_log.save
+      discussion_read_log = DiscussionReadLog.new
+      discussion_read_log.discussion_activity_when_last_read = discussion.activity
+      discussion_read_log.user_id = id
+      discussion_read_log.discussion_id = discussion.id
+      discussion_read_log.save
     else
       log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
       log.discussion_activity_when_last_read = discussion.activity

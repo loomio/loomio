@@ -35,7 +35,7 @@ class DiscussionsController < GroupBaseController
       @user_already_voted = @current_motion.user_has_voted?(current_user)
     end
     if current_user
-      current_user.update_motion_read_log(@discussion)
+      current_user.update_discussion_read_log(@discussion)
     end
   end
 
