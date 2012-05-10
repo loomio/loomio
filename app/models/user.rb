@@ -16,9 +16,10 @@ class User < ActiveRecord::Base
   has_many :group_requests, through: :membership_requests, class_name: 'Group', source: :group
   has_many :votes
 
-  has_many :motions, through: :groups
-  has_many :motions_voting, through: :groups, :source => :motions, :conditions => {phase: 'voting'}
-  has_many :motions_closed, through: :groups, :source => :motions, :conditions => {phase: 'closed'}
+  has_many :discussions, through: :groups
+  has_many :motions, through: :discussions
+  has_many :motions_voting, through: :discussions, :source => :motions, :conditions => {phase: 'voting'}
+  has_many :motions_closed, through: :discussions, :source => :motions, :conditions => {phase: 'closed'}
 
   has_many :discussion_read_logs,
            :dependent => :destroy

@@ -26,7 +26,8 @@
       no close date
   .span1.alert-info
     - vote_count = 0
-    - vote_count = current_user.vote_activity_count(motion) if current_user
+    -# Jon: No longer applicable
+    -#- vote_count = current_user.vote_activity_count(motion) if current_user
     - if vote_count > 0
       .vote-icon-container.vote-alert-icon
         #activity-count.span.label.important= vote_count
