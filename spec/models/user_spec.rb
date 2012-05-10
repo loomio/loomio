@@ -43,8 +43,7 @@ describe User do
     @user = User.make!
     @group = Group.make!
     @discussion = create_discussion(group: @group)
-    @motion = create_motion(discussion: @discussion)
-    @user.update_motion_read_log(@motion)
+    @user.update_motion_read_log(@discussion)
     MotionReadLog.count.should == 1
   end
 
@@ -52,16 +51,11 @@ describe User do
     @user = User.make!
     @group = Group.make!
     @discussion = create_discussion(group: @group)
-    @motion = create_motion(discussion: @discussion)
-    @motion.vote_activity = 2
-    @motion.discussion.activity = 4
-    @user.update_motion_read_log(@motion)
-    @motion.vote_activity = 7
-    @motion.discussion.activity = 5
-    @user.vote_activity_when_last_read(@motion).should == 2
-    @user.discussion_activity_when_last_read(@motion).should == 4
-    @user.update_motion_read_log(@motion)
-    @user.vote_activity_when_last_read(@motion).should == 7
-    @user.discussion_activity_when_last_read(@motion).should == 5
+    @discussion.activity = 4
+    @user.update_motion_read_log(@discussion)
+    @discussion.activity = 5
+    @user.discussion_activity_when_last_read(@discussion).should == 4
+    @user.update_motion_read_log(@discussion)
+    @user.discussion_activity_when_last_read(@discussion).should == 5
   end
 end

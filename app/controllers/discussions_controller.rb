@@ -33,11 +33,14 @@ class DiscussionsController < GroupBaseController
       @votes_for_graph = @current_motion.votes_graph_ready
       @user_already_voted = @current_motion.user_has_voted?(current_user)
     end
+    if current_user
+      current_user.update_motion_read_log(@discussion)
+    end
   end
 
   def add_comment
     comment = resource.add_comment(current_user, params[:comment])
-    redirect_to motion_url(resource.current_motion)
+    redirect_to discussion_path(resource.id)
   end
 
   def new_proposal
