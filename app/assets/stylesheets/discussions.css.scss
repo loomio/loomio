@@ -236,17 +236,18 @@
       }
     }
 
-    .motion-row {
-      color: #888;
-      .close-date {
-        display: inline;
-        float: right;
-      }
-    }
-
     #previous-proposals-container {
       font-size: 14px;
       color: #888;
+    }
+  }
+  .motion-row {
+    color: #888;
+    .close-date {
+      /*display: inline;*/
+      /*float: right;*/
+      line-height: 14px;
+      font-size: 12px;
     }
   }
 }
