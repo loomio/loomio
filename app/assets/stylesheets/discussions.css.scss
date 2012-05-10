@@ -1,6 +1,90 @@
 // Place all the styles related to the Discussions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#discussion-title {
+  padding-top: 4px;
+  font-size: 20px;
+}
+
+#discussion-panel {
+  padding-top: 20px;
+  padding-right: 20px;
+
+  #new-comment-form{
+    margin-bottom: 8px;
+
+    #new-comment{
+      width: 450px;
+      height: 80px;
+      font-size: 13px;
+      line-height: 16px;
+      color: black;
+    }
+
+    #new-comment-submit{
+      text-align: right;
+      .submit{
+        font-size: 13px;
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .comment{
+    background-color: #EEE;
+    margin-bottom: 2px;
+    padding: 4px;
+
+    p, span {
+      font-size: 13px;
+      margin-bottom: 0px;
+      line-height: 16px;
+    }
+    .comment-username{
+      font-weight: bold;
+    }
+    .comment-time{
+      font-size: 11px;
+      color: grey;
+    }
+    .comment-likes{
+      font-size: 11px;
+      color: grey;
+    }
+  }
+
+  .position{
+    /*background-color: #FFF;*/
+    /*height: 25px;*/
+    /*overflow: auto;*/
+    /*width: 100%*/
+    color: #777;
+    .clear { clear: both; }
+    .position-icon{
+      float: left;
+    }
+    .position-message{
+      float: left;
+      margin-top: 4px;
+      margin-left: 5px;
+      /*font-style: italic;*/
+      font-size: 12px;
+      a {
+        /*font-style: italic;*/
+        color: #777;
+      }
+    }
+  }
+
+
+}
+
+
+/*              */
+/* MOTION PANEL */
+/*              */
+
+
 #motion-panel{
   padding-top: 20px;
   padding-left: 19px;
@@ -151,71 +235,20 @@
         }
       }
     }
-  }
 
-  .motion-row {
-    color: #888;
-    .close-date {
-      display: inline;
-      float: right;
-    }
-  }
-
-  #previous-proposals-container {
-    font-size: 14px;
-    color: #888;
-  }
-}
-
-#discussion-title {
-  padding-top: 4px;
-  font-size: 20px;
-}
-
-#discussion-panel {
-  padding-top: 20px;
-  padding-right: 20px;
-
-  #new-comment-form{
-    margin-bottom: 8px;
-
-    #new-comment{
-      width: 450px;
-      height: 80px;
-      font-size: 13px;
-      line-height: 16px;
-      color: black;
-    }
-
-    #new-comment-submit{
-      text-align: right;
-      .submit{
-        font-size: 13px;
-        margin-top: 8px;
+    .motion-row {
+      color: #888;
+      .close-date {
+        display: inline;
+        float: right;
       }
     }
-  }
 
-  .comment{
-    background-color: #EEE;
-    margin-bottom: 2px;
-    padding: 4px;
-
-    p{
-      font-size: 13px;
-      margin-bottom: 0px;
-      line-height: 16px;
-    }
-    .comment-username{
-      font-weight: bold;
-    }
-    .comment-time{
-      font-size: 11px;
-      color: grey;
-    }
-    .comment-likes{
-      font-size: 11px;
-      color: grey;
+    #previous-proposals-container {
+      font-size: 14px;
+      color: #888;
     }
   }
 }
+
+

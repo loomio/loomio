@@ -1,0 +1,20 @@
+- if discussion.can_be_commented_on_by? current_user
+  = form_tag add_comment_discussion_path(discussion), id: "new-comment-form" do
+    = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
+    #new-comment-submit
+      = submit_tag "Post comment", class: "btn primary submit"
+
+- if history.count == 0
+  %h4 There are no messages yet in this discussion.
+- else
+  - history.each do |message|
+    - if message.is_a?(Comment)
+      = render message
+    - if message.is_a?(Vote)
+      %div.comment.position
+        %span.position-icon= render partial: "motions/display_icons", locals: { position: message.position }
+        %span.position-message
+          = link_to "#{message.user_name}", "#"
+          = "said #{message.position} to the current proposal."
+        %p.comment-time.clear
+          = time_ago_in_words(message.created_at) + " ago"
