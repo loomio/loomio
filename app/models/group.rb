@@ -117,10 +117,8 @@ class Group < ActiveRecord::Base
 
   def can_be_viewed_by?(user)
     return true if viewable_by == :everyone
-    return true if (viewable_by == :members && users.include?(user))
-    unless parent.nil?
-      return true if (viewable_by == :parent_group_members && parent.users.include?(user))
-    end
+    return true if users.include?(user)
+    return true if viewable_by == :parent_group_members && (parent.users || []).include?(user)
   end
 
   def can_invite_members?(user)
