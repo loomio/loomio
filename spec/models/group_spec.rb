@@ -47,6 +47,9 @@ describe Group do
       @subgroup.users.should include(@user)
       @subgroup.admins.should include(@user)
     end
+    it "defaults to viewable by parent group members" do
+      Group.new(:parent => @group).viewable_by.should == :parent_group_members
+    end
   end
 
   context "an existing group viewiable by members" do
