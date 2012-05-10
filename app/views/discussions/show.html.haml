@@ -12,37 +12,36 @@
     #proposal-container
       - if @selected_closed_motion
         - if @current_motion.voting?
-          .current-proposal.pannel
+          .current-proposal
             %h4.title-row Current proposal
-            .body
+            .pannel
               .motion-row
                 = link_to @current_motion.name, discussion_path(@discussion)
                 .close-date
                   = "Closing in #{time_ago_in_words(@current_motion.close_date)}"
         - else
-          .body
-            .new-proposal= link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn small primary',
-            id: 'new-proposal'
+          .new-proposal= link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn small primary',
+          id: 'new-proposal'
       - else
         - if @current_motion && @current_motion.voting?
-          .current-proposal.pannel
+          .current-proposal
             %h4.title-row Current proposal
-            .body
+            .pannel
               = render @current_motion, unique_votes: @unique_votes
         - else
-          .body
-            .btn-new-motion= link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn small primary',
-            id: 'new-proposal'
-            .motion-placeholder
+          .btn-new-motion= link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn small primary',
+          id: 'new-proposal'
+          .motion-placeholder
     - if @discussion.motions.where("phase = 'closed'").count > 0
-      #previous-proposals.pannel
+      #previous-proposals-container
         %h4.title-row Previous proposals
-        .body
-          - @discussion.motions.each do |closed_motion|
-            - if closed_motion.closed?
-              - if @selected_closed_motion == closed_motion
-                .bordered= render @selected_closed_motion, unique_votes: @unique_votes
-              - else
+        - @discussion.motions.each do |closed_motion|
+          - if closed_motion.closed?
+            - if @selected_closed_motion == closed_motion
+              .pannel
+                = render @selected_closed_motion, unique_votes: @unique_votes
+            - else
+              .pannel
                 .motion-row
                   = link_to closed_motion.name, discussion_path(@discussion, proposal: closed_motion.id)
                   .close-date

@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
   def discussion_activity_count(motion)
     motion.discussion_activity - discussion_activity_when_last_read(motion)
   end
-  
+
   def self.find_by_email(email)
     User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
   end
