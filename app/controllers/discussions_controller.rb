@@ -24,7 +24,6 @@ class DiscussionsController < GroupBaseController
     @discussion = Discussion.find(params[:id])
     @current_motion = @discussion.current_motion
     @vote = Vote.new
-    #@comments = @discussion.comment_threads.order("created_at DESC")
     @history = @discussion.history
     if params[:proposal]
       @selected_closed_motion = @discussion.motions.find(params[:proposal])
