@@ -8,4 +8,7 @@
   %h4 There are no comments yet on this motion
 - else
   - comments.each do |comment|
-    = render comment
+    - if comment.is_a?(Comment)
+      = render comment
+    - if comment.is_a?(Vote)
+      %h3= comment.position

@@ -34,4 +34,26 @@ describe Discussion do
     discussion.activity.should == 4
   end
 
+  context "discussion.history" do
+    before do
+      @user = User.make
+      @user.save
+      @discussion = create_discussion(author: @user)
+      @motion = create_motion(discussion: @discussion)
+    end
+
+    it "should include comments" do
+      @comment = @discussion.add_comment(@user, "this is a test comment")
+      @discussion.history.should include(@comment)
+    end
+
+    it "should include votes" do
+      @vote = Vote.new(position: 'yes')
+      @vote.user = @user
+      @vote.motion = @discussion.current_motion
+      @vote.save
+      @discussion.history.should include(@vote)
+    end
+  end
+
 end

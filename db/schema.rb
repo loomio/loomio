@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510035625) do
+ActiveRecord::Schema.define(:version => 20120510041044) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(:version => 20120510035625) do
   add_index "did_not_votes", ["motion_id"], :name => "index_did_not_votes_on_motion_id"
   add_index "did_not_votes", ["user_id"], :name => "index_did_not_votes_on_user_id"
 
+  create_table "discussion_read_logs", :force => true do |t|
+    t.integer  "discussion_activity_when_last_read"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "discussion_id"
+  end
+
+  add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
+
   create_table "discussions", :force => true do |t|
     t.integer  "group_id"
     t.integer  "author_id"
@@ -80,16 +90,6 @@ ActiveRecord::Schema.define(:version => 20120510035625) do
     t.datetime "updated_at"
     t.string   "access_level"
   end
-
-  create_table "motion_read_logs", :force => true do |t|
-    t.integer  "discussion_activity_when_last_read"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "discussion_id"
-  end
-
-  add_index "motion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
 
   create_table "motions", :force => true do |t|
     t.string   "name"

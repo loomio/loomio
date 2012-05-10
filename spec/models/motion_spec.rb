@@ -138,7 +138,7 @@ describe Motion do
     end
 
     it "deletes associated motion read logs" do
-      MotionReadLog.first.should == nil
+      DiscussionReadLog.first.should == nil
     end
 
   end
