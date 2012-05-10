@@ -24,7 +24,7 @@
         %p.comment-time.clear
           = time_ago_in_words(message.created_at) + " ago"
     - if message.is_a?(Motion)
-      - classes = "comment proposal"
+      - classes = "comment proposal pannel"
       - classes += " current" if (message == discussion.current_motion)
       %div{class: classes}
         %p
