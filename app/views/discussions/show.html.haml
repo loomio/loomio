@@ -7,7 +7,7 @@
     = @discussion.title
 .row
   .span8#discussion-panel
-    = render 'comments', discussion: @discussion, comments: @discussion.history
+    = render 'history', discussion: @discussion, history: @discussion.history
   .span8#motion-panel
     #proposal-container
       - if @selected_closed_motion
