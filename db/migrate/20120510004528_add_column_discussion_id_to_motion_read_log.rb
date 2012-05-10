@@ -3,9 +3,13 @@ class AddColumnDiscussionIdToMotionReadLog < ActiveRecord::Migration
     add_column :motion_read_logs, :discussion_id, :integer
     MotionReadLog.reset_column_information
     MotionReadLog.all.each do |log|
-      motion = Motion.find(log.motion_id)
-      log.discussion_id = motion.discussion_id
-      log.save
+      motion = Motion.find_by_id(log.motion_id)
+      if motion
+        log.discussion_id = motion.discussion_id
+        log.save
+      else
+        log.delete
+      end
     end
     remove_column :motion_read_logs, :motion_id
     add_index :motion_read_logs, :discussion_id
