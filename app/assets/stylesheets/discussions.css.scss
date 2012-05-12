@@ -76,13 +76,14 @@
   }
 
   .proposal{
+    background: #EFEFDF;
     color: #777;
     margin-bottom: 6px;
     .proposal-author{ font-weight: bold; }
     .proposal-label{ color: #777; }
     .proposal-text{ font-style: italic; }
   }
-  .proposal.current{ background: #EFEFDF; }
+  .proposal.current{ background: #FFFFFF; }
 
 
 }

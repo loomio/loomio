@@ -79,6 +79,7 @@ class Motion < ActiveRecord::Base
   end
 
   def votes_graph_ready
+    #debugger
     votes_for_graph = []
     votes_breakdown.each do |k, v|
       votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|v| v.user.email}]]
