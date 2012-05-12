@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20120510131407) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body",             :default => ""
+    t.text     "body"
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(:version => 20120510131407) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "activity",   :default => 0
     t.string   "title"
+    t.integer  "activity",   :default => 0
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
