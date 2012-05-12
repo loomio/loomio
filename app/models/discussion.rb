@@ -69,4 +69,8 @@ class Discussion < ActiveRecord::Base
     self.activity += 1
     save
   end
+
+  def last_comment_updated_at?
+    comments.last.updated_at
+  end
 end

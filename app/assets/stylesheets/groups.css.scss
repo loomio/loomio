@@ -46,23 +46,28 @@ $token-input-width: 278px;
   padding-bottom: 30px;
   .discussion {
     padding-right: 5px;
-    .discussion-title {
-      padding-left: 7px;
-      padding-top: 3px;
+    .discussion-title-container {
       display: inline;
+      .discussion-title {
+        padding-left: 7px;
+        padding-top: 3px;
+        display: inline;
+      }
     }
     .proposal-container {
       padding-left: 7px;
       padding-bottom: 7px;
       font-size: 13px;
       line-height: 16px;
-      height: 30px;
+      min-height: 30px;
       color: #BBB;
       /*background-color: #EEE;*/
       .vote-icon {
         display: inline-block;
         height: 16px;
+        width: 20px;
         float: left;
+        #no-vote-space { width: 20px; }
       }
       .proposal-title-container {
         margin-left: 12px;
@@ -80,7 +85,7 @@ $token-input-width: 278px;
       .proposal-stats {
         display: inline;
         float: left;
-        width: 180px;
+        width: 170px;
         text-align: right;
         .proposal-close-date {
         }
@@ -91,6 +96,23 @@ $token-input-width: 278px;
       }
     }
   }
+  #last-comment {
+    font-size: 12px;
+    display: inline-block;
+    float: right;
+    padding-top: 4px;
+    padding-right: 4px;
+  }
+  #total-comments {
+    font-size: 10px;
+    display: inline-block;
+    float: right;
+    .label.default {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+    padding-top: 2px;
+  }
   .alert-info {
     width: 32px;
     height: 20px;
@@ -99,14 +121,14 @@ $token-input-width: 278px;
     .discussion-enabled-icon {
       background: url("discussion.png");
       background-size: 20px;
-      background-position-y: 13px;
+      background-position-y: 10px;
       background-position-x: -2px;
       background-repeat: no-repeat;
     }
     .discussion-disabled-icon {
       background: url("discussion-disabled.png");
       background-size: 20px;
-      background-position-y: 13px;
+      background-position-y: 10px;
       background-position-x: -2px;
       background-repeat: no-repeat;
     }
