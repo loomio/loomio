@@ -5,8 +5,10 @@
 = form_for @discussion do |f|
   .padding
     = f.label :title, "Title"
-    = f.text_field :title
+    .clearfix
+      .presence-required= f.text_field :title, class: "presence-required input"
+      .error-message Title can not be blank
     = f.label :comment, "Comment"
     = f.text_area :comment
-  = f.submit "Create discussion", class: "btn primary"
+    .check-presence= f.submit "Create discussion", class: "btn primary"
   = f.hidden_field :group_id
