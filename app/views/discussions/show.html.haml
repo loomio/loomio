@@ -1,0 +1,48 @@
+.group-title
+  %h2
+    = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
+    = " > " unless @group.parent.nil?
+    = link_to @group.name, group_path(@group)
+  #discussion-title
+    = @discussion.title
+.row
+  .span8#discussion-panel
+    = render 'history', discussion: @discussion, history: @discussion.history
+  .span8#motion-panel
+    #proposal-container
+      - if @selected_closed_motion
+        - if @current_motion.voting?
+          .current-proposal
+            %h4.title-row Current proposal
+            .pannel
+              .motion-row
+                = link_to @current_motion.name, discussion_path(@discussion)
+                .close-date
+                  = "Closing in #{time_ago_in_words(@current_motion.close_date)}"
+        - else
+          .new-proposal= link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn small primary',
+          id: 'new-proposal'
+      - else
+        - if @current_motion && @current_motion.voting?
+          .current-proposal
+            %h4.title-row Current proposal
+            .pannel
+              = render @current_motion, unique_votes: @unique_votes
+        - else
+          .btn-new-motion= link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn small primary',
+          id: 'new-proposal'
+          .motion-placeholder
+    - if @discussion.motions.where("phase = 'closed'").count > 0
+      #previous-proposals-container
+        %h4.title-row Previous proposals
+        - @discussion.motions.each do |closed_motion|
+          - if closed_motion.closed?
+            - if @selected_closed_motion == closed_motion
+              .pannel
+                = render @selected_closed_motion, unique_votes: @unique_votes
+            - else
+              .pannel
+                .motion-row
+                  = link_to closed_motion.name, discussion_path(@discussion, proposal: closed_motion.id)
+                  .close-date
+                    = "Closed #{time_ago_in_words(closed_motion.close_date)} ago"

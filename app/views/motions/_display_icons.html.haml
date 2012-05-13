@@ -1,5 +1,9 @@
-- icon_name = "hand-yes.png" if position == "yes"
-- icon_name = "hand-no.png" if position == "no"
-- icon_name = "hand-abstain.png" if position == "abstain"
-- icon_name = "hand-block.png" if position == "block"
-=image_tag(icon_name, height:'20', width:'20', alt:position + ' image')
+- if position
+  - icon_name = "hand-yes.png" if position == "yes"
+  - icon_name = "hand-no.png" if position == "no"
+  - icon_name = "hand-abstain.png" if position == "abstain"
+  - icon_name = "hand-block.png" if position == "block"
+  =image_tag(icon_name, height:'20', width:'20')
+- else
+  - icon_name = "questionmark.png"
+  =image_tag(icon_name, height:'12', width:'12')

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Group do
+  it { should have_many :discussions }
+
   context "a new group" do
     before :each do
       @group = Group.new

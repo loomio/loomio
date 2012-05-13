@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120503072748) do
+ActiveRecord::Schema.define(:version => 20120510131407) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20120503072748) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body",             :default => ""
+    t.text     "body"
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -51,11 +51,22 @@ ActiveRecord::Schema.define(:version => 20120503072748) do
   add_index "did_not_votes", ["motion_id"], :name => "index_did_not_votes_on_motion_id"
   add_index "did_not_votes", ["user_id"], :name => "index_did_not_votes_on_user_id"
 
+  create_table "discussion_read_logs", :force => true do |t|
+    t.integer  "discussion_activity_when_last_read"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "discussion_id"
+  end
+
+  add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
+
   create_table "discussions", :force => true do |t|
     t.integer  "group_id"
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
     t.integer  "activity",   :default => 0
   end
 
@@ -80,29 +91,17 @@ ActiveRecord::Schema.define(:version => 20120503072748) do
     t.string   "access_level"
   end
 
-  create_table "motion_read_logs", :force => true do |t|
-    t.integer  "vote_activity_when_last_read"
-    t.integer  "discussion_activity_when_last_read"
-    t.integer  "motion_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "motions", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "group_id"
     t.integer  "author_id"
     t.integer  "facilitator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "phase",              :default => "voting", :null => false
-    t.string   "discussion_url",     :default => "",       :null => false
+    t.string   "phase",          :default => "voting", :null => false
+    t.string   "discussion_url", :default => "",       :null => false
     t.datetime "close_date"
     t.integer  "discussion_id"
-    t.boolean  "disable_discussion", :default => false
-    t.integer  "vote_activity",      :default => 0
   end
 
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"

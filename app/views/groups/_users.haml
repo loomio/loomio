@@ -7,7 +7,7 @@
   - else
     =semantic_form_for(Membership.new) do |f|
       %input{name: "membership[group_id]", type: :hidden, value: group.id}
-      =f.commit_button "Request membership", button_html: { class: "btn primary" }
+      =f.commit_button "Request membership", button_html: { class: "btn primary general-button" }
 
 - if group.can_invite_members?(current_user)
   %h4.title-row Add member
@@ -16,7 +16,7 @@
     = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
     = f.input :email, placeholder: "Email address", label: false
     %input#group_id{ type: "hidden", value: group.id }
-    #button-invite= f.submit "Invite", class: "btn primary small"
+    #button-invite= f.submit "Invite", class: "btn primary small general-button"
   - if group.membership_requests.present?
     #user-requests
       %h4.title-row Membership requests

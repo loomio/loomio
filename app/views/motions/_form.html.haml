@@ -1,21 +1,20 @@
-#motion-form.padding
+#motion-form
+  .header-space
   =form_for(*form_args) do |f|
     = f.label :name, "Title"
     .clearfix
       .presence-required= f.text_field :name, class: "presence-required input"
       .error-message Title can not be blank
-    = f.label :discussion_url, "Link to external discussion (optional)"
-    = f.text_field :discussion_url, placeholder: "http://site.com/your-discussion"
-    = f.check_box :enable_discussion, :checked => get_discussion_state_for(@motion)
-    = f.label :enable_discussion, "Enable comments on this motion", class: "checkbox-label"
-    = f.label :close_date, "Closing"
     #closing-inputs
+      = f.label :close_date, "Closing"
       - input_time = Time.now
       = text_field_tag :input_date, nil, class: "date-input"
       = select_hour(input_time, ampm: true)
-    = f.label :description, "Details"
-    = f.text_area :description
-    .check-presence= f.submit
+    #description
+      = f.label :description, "Details"
+      = f.text_area :description
+    .check-presence.gereral-button= f.submit
     =f.hidden_field :close_date, as: :hidden
     =f.hidden_field :phase, as: :hidden, value: "voting"
     =f.hidden_field :facilitator_id, as: :hidden, value: current_user.id
+    =f.hidden_field :discussion_id, as: :hidden, value: @motion.discussion_id

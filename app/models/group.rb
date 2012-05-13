@@ -21,6 +21,7 @@ class Group < ActiveRecord::Base
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
   has_many :motions
+  has_many :discussions
 
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'

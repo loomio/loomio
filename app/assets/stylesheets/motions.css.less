@@ -1,182 +1,31 @@
-//Motion row
-div.motion{
-  &.voted_no{background: fadeout(#d49090, 80%); }
-  &.voted_yes{background: fadeout(#90d490, 80%); }
-  &.voted_abstain{background: fadeout(#F0BB67, 80%); }
-  &.voted_block{background: fadeout(#Ff0000, 80%); }
-  margin-bottom: 1.6em;
-  font-size: 0.7em;
-  line-height: 1.2em;
-  box-shadow: 1px 1px 4px #999999;
-  -webkit-box-shadow: 1px 1px 4px #999999;
-  -moz-box-shadow: 1px 1px 4px #999999;
-}
+/* Group tags (to be re-moved)
+/*
 
-.bordered{ border-top: 1px solid lightgrey; }
-.centered{ text-align: center; }
+/*.group-tags .btn {*/
+  /*font-size: 12px;*/
+  /*margin-bottom: 5px;*/
+/*}*/
 
-/*** Show Motion Page ***/
-#motion{
-  .label{
-    text-transform: lowercase;
-    font-weight: normal;
-  }
-  #admin-buttons{
-    text-align: right;
-    margin-top: 20px;
-    margin-left: 20px;
-  }
-  #discussion{ padding-top: 10px; color: #555; }
-  #description{
-    p{font-size: 1.0em;}
-    margin-top: 30px;
-    color: #555;
-  }
-  #still-to-vote{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    #still-to-vote-list { margin-top: 5px; }
-  }
-  #graph{
-    height: 300px;
-    margin-left: -20px;
-  }
-  #new_vote{ padding-left: 0px; }
+/*.group-tags .btn.not-used {*/
+  /*cursor: default;*/
+  /*background-image: none;*/
+  /*filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);*/
+  /*filter: alpha(opacity=65);*/
+  /*-khtml-opacity: 0.65;*/
+  /*-moz-opacity: 0.65;*/
+  /*opacity: 0.65;*/
+  /*-webkit-box-shadow: none;*/
+  /*-moz-box-shadow: none;*/
+  /*box-shadow: none;*/
+/*}*/
 
-  #vote-form{
-    margin-top: 10px;
-    #vote-statement{ margin-left: 0px; padding-left: 0px; }
-    .input { margin-left: 0px; }
-    .clearfix { padding-top: 0px; padding-bottom: 0px; }
-    .char_count {
-      float: right;
-      padding-right: 70px;
-      color: #999999;
-      font-size: 12px;
-      margin-top: -6px;
-    }
-  }
-  #vote-buttons{
-    margin-top: -15px;
-    .btn.vote{
-      border-radius: 5px;
-      webkit-border-radius: 5px;
-      moz-border-radius: 5px;
-      box-shadow: 1px 1px 4px #999999;
-      webkit-box-shadow: 1px 1px 4px #999999;
-      moz-box-shadow: 1px 1px 4px #999999;
-      padding: 3px;
-      height: 40px;
-      }
-  }
-  #votes-table table{
-    font-size: 14px;
-    .vote-statement{
-      max-width: 300px;
-      color: black;
-    }
-    margin-top: 20px;
-  }
-}
+/*.group-tags .btn.active, .group-tags .btn :active {*/
+  /*background: rgba(0, 0, 255, 0.7);*/
+  /*color: white;*/
+  /*text-shadow: none;*/
+/*}*/
 
-/*** New & Edit motion ***/
-#motion-form{
-  .input { margin-left: 0px; display: inline-block; }
-  .clearfix { padding-top: 0px; margin-bottom: 0px; }
-  #input_date{ width: 140px; display: inline-block; }
-  select { width: 100px; display: inline-block; }
-  #closing-inputs { height: 40px; }
-  #description { margin-top: 10px; }
-}
-
-#percentage-to-vote{ padding-bottom: 10px; }
-
-#discussion-panel{
-  padding-top: 20px;
-  padding-right: 20px;
-
-  #new-comment-form{
-    margin-bottom: 8px;
-
-    #new-comment{
-      width: 450px;
-      height: 80px;
-      font-size: 13px;
-      line-height: 16px;
-      color: black;
-    }
-
-    #new-comment-submit{
-      text-align: right;
-      .submit{
-        font-size: 13px;
-        margin-top: 8px;
-      }
-    }
-  }
-
-  .comment{
-    background-color: #EEE;
-    margin-bottom: 2px;
-    padding: 4px;
-
-    p{
-      font-size: 13px;
-      margin-bottom: 0px;
-      line-height: 16px;
-    }
-    .comment-username{
-      font-weight: bold;
-    }
-    .comment-time{
-      font-size: 11px;
-      color: grey;
-    }
-    .comment-likes{
-      font-size: 11px;
-      color: grey;
-    }
-  }
-}
-
-#votes-panel{
-  padding-top: 20px;
-  padding-left: 19px;
-  border-left: 1px solid lightgrey;
-  margin-left: 0px;
-  width: 430px;
-}
-
-#closed-motion-list{
-  margin-top: 40px;
-  padding-bottom: 50px;
-}
-
-.group-tags .btn {
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-
-.group-tags .btn.not-used {
-  cursor: default;
-  background-image: none;
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  filter: alpha(opacity=65);
-  -khtml-opacity: 0.65;
-  -moz-opacity: 0.65;
-  opacity: 0.65;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-
-.group-tags .btn.active, .group-tags .btn :active {
-  background: rgba(0, 0, 255, 0.7);
-  color: white;
-  text-shadow: none;
-}
-
-.tag-separator {
-  color: #DDD;
-}
+/*.tag-separator {*/
+  /*color: #DDD;*/
+/*}*/
 

@@ -20,7 +20,6 @@ end
 
 Motion.blueprint do
   name { Faker::Name.name }
-  group
   author { User.make }
   phase { 'voting' }
   description { "Fake description" }

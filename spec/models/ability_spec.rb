@@ -14,10 +14,12 @@ describe "User" do
         @group.add_member!(user)
         @group.add_member!(other_user)
         @discussion = create_discussion(group: @group)
-        @motion = create_motion(group: @group, discussion: @discussion)
+        @motion = create_motion(discussion: @discussion)
         @user_comment = @discussion.add_comment(user, "hello")
         @another_user_comment = @discussion.add_comment(other_user, "hello")
       end
+
+      it { should be_able_to(:new_proposal, @discussion) }
 
       it { should be_able_to(:add_comment, @discussion) }
 
@@ -34,6 +36,7 @@ describe "User" do
       let(:discussion) { create_discussion }
       let(:comment) { discussion.add_comment(discussion.author, "hello") }
 
+      it { should_not be_able_to(:new_proposal, discussion) }
       it { should_not be_able_to(:add_comment, discussion) }
       it { should_not be_able_to(:destroy, comment) }
       it { should_not be_able_to(:like, comment) }

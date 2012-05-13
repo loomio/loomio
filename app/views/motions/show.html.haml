@@ -1,5 +1,5 @@
 #motion
-  %h2.headerspace.group-title
+  %h2.group-title
     = link_to @motion.group.parent.name, group_path(@motion.group.parent), title: "group" unless @motion.group.parent.nil?
     = " > " unless @motion.group.parent.nil?
     = link_to @motion.group.name, group_path(@motion.group), title: "group"
@@ -11,7 +11,7 @@
         %span.label.success Voting
       - if @motion.closed?
         %span.label.important Closed
-    .span8#admin-buttons
+    #admin-buttons
       =render "facilitator_options", motion: @motion
   .row
     .span16
@@ -31,7 +31,7 @@
             - if @motion.voting?
               = "Closing in #{time_ago_in_words(@motion.close_date)}"
             - else
-              Closed 
+              Closed
               = time_ago_in_words(@motion.close_date)
               ago
           %h4#description= simple_format h(@motion.description)
@@ -73,16 +73,16 @@
                 {class: 'btn vote', rel: 'popover', 'data-content' => 'I have strong objections to this motion and am not ok with it going ahead.',
                 'data-original-title' => 'Block', 'data-placement' => 'above', onclick: "$('#vote_position').val('block');"}
           #votes-table= render "votes_table", motion: @motion, unique_votes: @unique_votes
-          #still-to-vote
-            - if @motion.group_count > 0
-              - if @motion.closed?
-                %h4 #{@motion.no_vote_count} users did not vote
-              - else
-                %h4 #{@motion.no_vote_count} users yet to vote
-              #still-to-vote-list
-              - @motion.users_who_did_not_vote.each do |user|
-                .user-row
-                  %h5= user.name
+          -##still-to-vote
+            -#- if @motion.group_count > 0
+              -#- if @motion.closed?
+                -#%h4 #{@motion.no_vote_count} users did not vote
+              -#- else
+                -#%h4 #{@motion.no_vote_count} users yet to vote
+              -##still-to-vote-list
+              -#- @motion.users_who_did_not_vote.each do |user|
+                -#.user-row
+                  -#%h5= user.name
 
 :coffeescript
   $ ->

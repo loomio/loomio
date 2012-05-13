@@ -40,13 +40,6 @@ describe MotionsController do
         group.stub(:can_be_viewed_by?).with(user).and_return(false)
       end
 
-      context "views a motion" do
-        it "should redirect to request url" do
-          get :show, group_id: group.id, id: motion.id
-          response.should redirect_to(request_membership_group_url(group))
-        end
-      end
-
       context "creates a motion" do
         it "should redirect to request url" do
           get :create, group_id: group.id, id: motion.id
@@ -58,14 +51,6 @@ describe MotionsController do
     context "viewable to everyone" do
       before :each do
         group.stub(:can_be_viewed_by?).with(user).and_return(true)
-      end
-
-      context "views a motion" do
-        it "succeeds" do
-          motion.stub_chain(:discussion, :comment_threads, :order).and_return([])
-          get :show, group_id: group.id, id: motion.id
-          response.should be_success
-        end
       end
 
       context "creates a motion" do
@@ -95,28 +80,11 @@ describe MotionsController do
         group.stub_chain(:users, :include?).with(user).and_return(true)
         Motion.should_receive(:new).with(motion_attrs).and_return(motion)
         motion.should_receive(:author=).with(user)
-        motion.should_receive(:group=).with(group)
         motion.should_receive(:save)
 
         post :create, :group_id => group.id, :motion => motion_attrs
 
         response.should be_redirect
-      end
-    end
-
-    context "showing a motion" do
-      it "succeeds" do
-        motion.stub_chain(:discussion, :comment_threads, :order).and_return([])
-
-        get :show, group_id: group.id, id: motion.id
-
-        response.should be_success
-      end
-      it "should update the motion_read_log" do
-        user.should_receive(:update_motion_read_log).with(motion)
-
-        motion.stub_chain(:discussion, :comment_threads, :order).and_return([])
-        get :show, group_id: group.id, id: motion.id
       end
     end
 
