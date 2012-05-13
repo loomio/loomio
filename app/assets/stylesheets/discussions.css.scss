@@ -1,9 +1,20 @@
-// Place all the styles related to the Discussions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 .presence-required.input { margin-left: 0px; display: inline; }
-.clearfix { padding-top: 0px; margin-bottom: 0px; }
+.clearfix { padding-top: 0px; padding-bottom: 0px; }
+
+/** new proposal form*/
+#new-proposal-title {
+  .input { margin-left: 0px; }
+  .clearfix { padding-top: 0px; padding-bottom: 0px; }
+  .character-counter {
+    color: #999999;
+    font-size: 12px;
+    margin-right: 200px;
+    text-align: right;
+    margin-top: -32px;
+    height: 12px;
+    width: 408px;
+  }
+}
 
 #discussion-title {
   padding-top: 4px;
@@ -58,24 +69,15 @@
   }
 
   .position{
-    /*background-color: #FFF;*/
-    /*width: 100%*/
-    /*color: #777;*/
     .clear { clear: both; }
     .position-icon{
       float: left;
-      /*margin-top: -1px;*/
     }
     .position-message{
       float: left;
       margin-top: 2px;
       margin-left: 2px;
-      /*font-style: italic;*/
       font-size: 12px;
-      /*a {*/
-        /*[>font-style: italic;<]*/
-        /*color: #777;*/
-      /*}*/
     }
   }
 
@@ -88,15 +90,10 @@
     .proposal-text{ font-style: italic; }
   }
   .proposal.current{ background: #FFFFFF; }
-
-
 }
 
 
-/*              */
-/* MOTION PANEL */
-/*              */
-
+/*** motion panel - discussion:show page ***/
 
 #motion-panel{
   padding-top: 20px;
@@ -171,18 +168,17 @@
     #vote-form{
       margin-top: 10px;
       #vote-statement{ margin-left: 0px; padding-left: 0px; }
-      .input { margin-left: 0px; }
+      .input { margin-left: 0px; height: 65px; }
       .clearfix { padding-top: 0px; padding-bottom: 0px; }
-      .char_count {
+      .character_counter {
         float: right;
-        padding-right: 70px;
         color: #999999;
         font-size: 12px;
-        margin-top: -6px;
+        margin-top: -20px;
       }
     }
     #vote-buttons{
-      margin-top: -15px;
+      margin-top: -25px;
       .btn.vote {
         border-radius: 5px;
         webkit-border-radius: 5px;
@@ -258,12 +254,22 @@
   .motion-row {
     color: #888;
     .close-date {
-      /*display: inline;*/
-      /*float: right;*/
       line-height: 14px;
       font-size: 12px;
     }
   }
 }
 
+/*  New & Edit motion form */
 
+#motion-form{
+  .input { margin-left: 0px; display: inline-block; }
+  .clearfix { padding-top: 0px; margin-bottom: 0px; }
+  #closing-inputs {
+    height: 40px;
+    /*margin-top: -px;*/
+    #input_date{ width: 140px; display: inline-block; }
+    select { width: 100px; display: inline-block; }
+  }
+  #description { margin-top: 45px; }
+}

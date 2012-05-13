@@ -1,13 +1,15 @@
-%h2.headerspace.group-title
-  = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
+%h2.group-title
+  = link_to @group.parent.name, group_path(@group), title: "group" unless @group.parent.nil?
   = " > " unless @group.parent.nil?
-  = @group.name
+  = link_to @group.name, group_path(@group)
 = form_for @discussion do |f|
   .padding
     = f.label :title, "Title"
-    .clearfix
-      .presence-required= f.text_field :title, class: "presence-required input"
-      .error-message Title can not be blank
+    #new-proposal-title
+      .clearfix
+        .presence-required= f.text_field :title, class: "presence-required input limit"
+        .error-message Title can not be blank
+      .character-counter
     = f.label :comment, "Comment"
     = f.text_area :comment
     .check-presence= f.submit "Create discussion", class: "btn primary"
