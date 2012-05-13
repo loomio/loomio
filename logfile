@@ -1,0 +1,2 @@
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 442) running in data directory "/usr/local/var/postgres"?
