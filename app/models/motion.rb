@@ -91,7 +91,7 @@ class Motion < ActiveRecord::Base
   end
 
   def blocked?
-    votes.each do |v|
+    unique_votes.each do |v|
       if v.position == "block"
         return true
       end

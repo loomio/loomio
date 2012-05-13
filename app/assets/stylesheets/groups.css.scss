@@ -34,8 +34,7 @@ $token-input-width: 278px;
 /**** Group page ****/
 
 #discussions {
-  margin-top: 8px;
-  /*margin-left: 10px;*/
+  margin-top: 20px;
   padding-bottom: 30px;
   .discussion {
     padding-right: 5px;
@@ -54,7 +53,6 @@ $token-input-width: 278px;
       line-height: 16px;
       min-height: 30px;
       color: #BBB;
-      /*background-color: #EEE;*/
       .vote-icon {
         display: inline-block;
         height: 16px;
