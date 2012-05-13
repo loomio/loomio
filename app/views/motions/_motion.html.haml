@@ -40,8 +40,8 @@
       #vote-form
         =form_for([motion, @vote], html:{class:'form-stacked'}) do |f|
           .clearfix
-            =f.text_field :statement, placeholder: "Give a reason for your vote", id: 'limited', class: "input"
-          .char_count
+            =f.text_area :statement, placeholder: "Give a reason for your vote", class: "input limited"
+          .character_counter
           =f.hidden_field :position
       #vote-buttons
         =link_to image_tag("hand-yes.png", height:'40', width:'40', title:'yes', alt:'yes image'), '#',

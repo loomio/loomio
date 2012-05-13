@@ -1,17 +1,19 @@
-#motion-form.padding
+#motion-form
+  .header-space
   =form_for(*form_args) do |f|
     = f.label :name, "Title"
     .clearfix
       .presence-required= f.text_field :name, class: "presence-required input"
       .error-message Title can not be blank
-    = f.label :close_date, "Closing"
     #closing-inputs
+      = f.label :close_date, "Closing"
       - input_time = Time.now
       = text_field_tag :input_date, nil, class: "date-input"
       = select_hour(input_time, ampm: true)
-    = f.label :description, "Details"
-    = f.text_area :description
-    .check-presence= f.submit
+    #description
+      = f.label :description, "Details"
+      = f.text_area :description
+    .check-presence.gereral-button= f.submit
     =f.hidden_field :close_date, as: :hidden
     =f.hidden_field :phase, as: :hidden, value: "voting"
     =f.hidden_field :facilitator_id, as: :hidden, value: current_user.id
