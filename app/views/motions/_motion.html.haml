@@ -57,3 +57,14 @@
           {class: 'btn vote', rel: 'popover', 'data-content' => 'I have strong objections to this motion and am not ok with it going ahead.',
           'data-original-title' => 'Block', 'data-placement' => 'above', onclick: "$('#vote_position').val('block');"}
     #votes-table= render "motions/votes_table", motion: motion, unique_votes: unique_votes
+
+:coffeescript
+  $ ->
+    # Display vote graph
+    @pie_graph_view = new Tautoko.Views.Utils.GraphView
+      el: '#graph.pie'
+      id_string: 'graph'
+      legend: true
+      data: #{@votes_for_graph.to_json.html_safe}
+      type: 'pie'
+      tooltip_selector: '#tooltip'
