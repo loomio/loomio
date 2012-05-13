@@ -35,8 +35,6 @@
               %h4.discussion-title
                 - title = truncate(discussion.title, :length => 75, :separator => ' ')
                 = link_to title, discussion_path(discussion)
-                #total-comments
-                  %span.label.default= discussion.comments.count
                 .alert-info
                   - discussion_count = 0
                   - discussion_count = current_user.discussion_activity_count(discussion) if current_user
@@ -46,8 +44,16 @@
                   - else
                     .discussion-icon-container.discussion-disabled-icon
                       #activity-count.span
+                #total-comments
+                  = pluralize(discussion.comments.count, 'msg')
                 #last-comment
-                  = "#{time_ago_in_words(discussion.last_comment_updated_at?)} ago..."
+                  -#- if discussion.comments.size > 0
+                    -#- last_updated = discussion.last_comment_updated_at?
+                    -#- if DAY(last_updated) != date.today
+                      -#DAY(birth_date) = ? AND MONTH(birth_date) = ?", Date.today.day, Date.today.month]
+                      -#= last_updated.strftime("%I:%M %p")
+                    -#- else
+                      -#= last_updated.strftime("%d %b")
             - if discussion.current_motion.present? && discussion.current_motion.voting?
               .proposal-container
                 .vote-icon
