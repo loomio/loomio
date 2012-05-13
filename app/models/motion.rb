@@ -69,6 +69,10 @@ class Motion < ActiveRecord::Base
     votes if votes.size > 0
   end
 
+  def unique_votes
+    Vote.unique_votes(self)
+  end
+
   def votes_breakdown
     last_votes = unique_votes()
     positions = Array.new(Vote::POSITIONS)
@@ -79,7 +83,6 @@ class Motion < ActiveRecord::Base
   end
 
   def votes_graph_ready
-    #debugger
     votes_for_graph = []
     votes_breakdown.each do |k, v|
       votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|v| v.user.email}]]
@@ -161,10 +164,6 @@ class Motion < ActiveRecord::Base
     #end
     #return has_tag
   #end
-
-  def unique_votes
-    Vote.unique_votes(self)
-  end
 
   def discussion_activity
     if discussion

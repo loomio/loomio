@@ -1,5 +1,5 @@
 #motion
-  %h2.headerspace.group-title
+  %h2.group-title
     = link_to @motion.group.parent.name, group_path(@motion.group.parent), title: "group" unless @motion.group.parent.nil?
     = " > " unless @motion.group.parent.nil?
     = link_to @motion.group.name, group_path(@motion.group), title: "group"
@@ -31,7 +31,7 @@
             - if @motion.voting?
               = "Closing in #{time_ago_in_words(@motion.close_date)}"
             - else
-              Closed 
+              Closed
               = time_ago_in_words(@motion.close_date)
               ago
           %h4#description= simple_format h(@motion.description)
