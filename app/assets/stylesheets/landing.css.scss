@@ -38,12 +38,19 @@ body.landing {
     background-image: url(loomio-orange.png);
     background-position: 5px top;
     background-repeat: no-repeat;
-
+		text-indent: -999em;
     span {
       display: none;
     }
   }
-
+	footer{
+		float: left;
+	}
+	#loomio-project-iframe{
+		border-top:1px solid #eee;
+		border-bottom:1px solid #eee;
+		padding: 20px 0px;
+	}
   .content {
     margin-top: 20px;
     margin-bottom: 30px;
@@ -109,7 +116,21 @@ body.landing {
       top: 0;
       right: 0;
     }
-
+		#mc_embed_signup{
+			width: 300px;
+		}
+		#mc_embed_signup form {
+		    margin: 0;
+				padding: 0;
+		}
+		#mc_embed_signup input.email{
+		    width: 100%;
+		}
+		#mc_embed_signup label {
+		    font-size: 18px;
+		    font-weight: normal;
+				color:#404040;
+		}
     form {
       input {
         width: 290px;
