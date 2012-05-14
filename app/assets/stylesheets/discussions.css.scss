@@ -83,7 +83,7 @@
   }
 
   .proposal{
-    background: #EFEFDF;
+    background: #EEE;
     color: #777;
     margin-bottom: 6px;
     .proposal-author{ font-weight: bold; }
@@ -219,6 +219,7 @@
           }
         }
         .statement {
+          font-size: 12px;
           display: block;
           margin-left: 30px;
           color: #000;
