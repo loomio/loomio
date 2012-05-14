@@ -3,7 +3,7 @@ class RemoveGroupColumnFromMotions < ActiveRecord::Migration
     Motion.all.each do |motion|
       if motion.discussion.blank?
         discussion = Discussion.new
-        discussion.group = motion.group
+        discussion.group_id = motion.group_id
         discussion.title = motion.name
         discussion.author = motion.author
         discussion.save

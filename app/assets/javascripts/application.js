@@ -16,4 +16,5 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/tautoko
+//= require modernizr
 //= require_tree .
