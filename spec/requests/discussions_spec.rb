@@ -35,6 +35,21 @@ describe "Discussion" do
       find('#new-proposal').click
       should have_css(".discussions.new_proposal")
     end
+
+    it "can comment on a discussion" do
+      discussion = Discussion.new
+      discussion.group = @group
+      discussion.title = "New discussion!"
+      discussion.author = @user
+      discussion.save
+
+      visit discussion_path(discussion)
+
+      fill_in 'new-comment', with: "Here's a little comment"
+      click_on 'post-new-comment'
+      should have_css(".discussions.show")
+      should have_content("Here's a little comment")
+    end
   end
 end
 
