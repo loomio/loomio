@@ -25,7 +25,7 @@
           - else
             - last_updated = discussion.created_at
           - last_updated_date = last_updated.to_date
-          - if last_updated_date != Date.today
+          - if last_updated_date == Date.today
             = last_updated.strftime("%I:%M %p")
           - else
             = last_updated.strftime("%d %b")
