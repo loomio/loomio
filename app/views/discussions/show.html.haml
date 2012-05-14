@@ -39,7 +39,7 @@
           id: 'new-proposal'
           .motion-placeholder
     - if @discussion.motions.where("phase = 'closed'").count > 0
-      #previous-proposals-container
+      #previous-proposals
         %h4.title-row Previous proposals
         - @discussion.motions.each do |closed_motion|
           - if closed_motion.closed?
