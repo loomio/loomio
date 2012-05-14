@@ -1,5 +1,5 @@
 - likes = comment.likes
-%div.comment
+%div.comment{id: "comment-#{comment.id}"}
   %p
     %span.comment-username= link_to(comment.user_name, "#")
     %span.comment-body= format_linebreaks(comment.body)

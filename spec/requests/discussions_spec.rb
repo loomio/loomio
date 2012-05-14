@@ -61,28 +61,43 @@ describe "Discussion" do
         find('#previous-proposals').should have_content(motion.name)
       end
 
-      it "can see link to delete their own comments" do
-        @discussion.add_comment(@user, "hello!")
+      it "can view a closed proposal" do
+        motion = Motion.new
+        motion.name = "A new proposal"
+        motion.discussion = @discussion
+        motion.author = @user
+        motion.facilitator = @user
+        motion.save
+        motion.close_voting!
         visit discussion_path(@discussion)
 
-        find('.comment').should have_content('Delete')
+        find('#previous-proposals').click_on motion.name
+
+        find("#motion-details").should have_content(motion.name)
+      end
+
+      it "can see link to delete their own comments" do
+        comment = @discussion.add_comment(@user, "hello!")
+        visit discussion_path(@discussion)
+
+        find("#comment-#{comment.id}").should have_content('Delete')
       end
 
       it "cannot see link to delete other people's comments" do
         @user2 = User.make!
         @discussion.group.add_member!(@user2)
-        @discussion.add_comment(@user2, "hello!")
+        comment = @discussion.add_comment(@user2, "hello!")
         visit discussion_path(@discussion)
 
-        find('.comment').should_not have_content('Delete')
+        find("#comment-#{comment.id}").should_not have_content('Delete')
       end
 
       it "can 'like' a comment" do
         @user2 = User.make!
         @discussion.group.add_member!(@user2)
-        @discussion.add_comment(@user2, "hello!")
+        comment = @discussion.add_comment(@user2, "hello!")
         visit discussion_path(@discussion)
-        find('.comment').find_link('Like').click
+        find("#comment-#{comment.id}").find_link('Like').click
 
         should have_content("Liked by #{@user.name}")
         should_not have_link("Like")
@@ -92,11 +107,11 @@ describe "Discussion" do
       it "can 'unlike' a comment" do
         @user2 = User.make!
         @discussion.group.add_member!(@user2)
-        @discussion.add_comment(@user2, "hello!")
+        comment = @discussion.add_comment(@user2, "hello!")
         @discussion.comments.first.like(@user)
 
         visit discussion_path(@discussion)
-        find('.comment').find_link('Unlike').click
+        find("#comment-#{comment.id}").find_link('Unlike').click
         should_not have_content("Liked by #{@user.name}")
         should have_link("Like")
         should_not have_link("Unlike")
