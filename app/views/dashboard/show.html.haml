@@ -19,10 +19,8 @@
       %section.span11
         %h4.title-row Discussions
         #discussions
-          - @groups.each do |group|
-            - group.discussions.each do |discussion|
-              =render 'discussions/discussions', :discussion => discussion, :group => group
-
+          - current_user.discussions.each do |discussion|
+            =render discussion
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.
