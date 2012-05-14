@@ -12,13 +12,13 @@ Tautoko::Application.configure do
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
-  # config.assets.compress = true
+  #config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  # config.assets.compile = false
+  #config.assets.compile = false
 
   # Generate digests for assets URLs
-  # config.assets.digest = true
+  #config.assets.digest = true
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
@@ -57,7 +57,7 @@ Tautoko::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  
+
   #config.action_mailer.delivery_method = :smtp
   #config.action_mailer.smtp_settings = {
         #:address => "127.0.0.1",
