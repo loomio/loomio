@@ -24,20 +24,16 @@
       -#= "<a href='/demo'>Demo page</a>.".html_safe
   #controls
     %h2 Alpha user sign in
-    %p
-      = form_tag user_session_path do
-        = label_tag 'user[email]', "Email"
-        = text_field_tag 'user[email]'
-        = label_tag 'user[password]', "Password"
-        = password_field_tag 'user[password]'
-        = check_box_tag 'user[remember_me]'
-        = label_tag 'user[remember_me]', 'Remember me', class: "checkbox-label"
-
-        .sign-in-button
-          %button{:class => "btn primary small"} Sign in
-
-      = link_to "Forgot your password?", new_password_path('user')
-
+    = form_tag user_session_path do
+      = label_tag 'user[email]', "Email"
+      = text_field_tag 'user[email]'
+      = label_tag 'user[password]', "Password"
+      = password_field_tag 'user[password]'
+      = check_box_tag 'user[remember_me]'
+      = label_tag 'user[remember_me]', 'Remember me', class: "checkbox-label"
+      .sign-in-button
+        %button{:class => "btn primary small"} Sign in
+    = link_to "Forgot your password?", new_password_path('user')
     %p.light
       Don't have an account? We're currently in closed testing and not accepting public sign-ups (yet!).
     %p.light
