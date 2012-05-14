@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails'
 gem "haml-rails"
 gem 'devise', '~> 2.0.0'
 gem 'devise_invitable', '~> 1.0.0'
@@ -9,9 +9,7 @@ gem 'pg'
 gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
-gem 'formtastic'
-gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
-gem 'formtastic-bootstrap'
+gem 'simple_form'
 gem 'jqplot-rails'
 gem "rails-backbone"
 gem 'coffee-filter'
@@ -25,6 +23,8 @@ gem 'exception_notification'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-sass'
   gem 'sass-rails',   '~> 3.1.4'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'

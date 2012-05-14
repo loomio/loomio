@@ -1,5 +1,6 @@
 %h2.header-space
   = @group.name
 =form_for(@membership) do |f|
+>>>>>>> upstream/master
   %input{name: "membership[group_id]", type: :hidden, value: @group.id}
   =f.submit "request access to this group", class: "btn primary"

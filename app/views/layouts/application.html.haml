@@ -2,7 +2,8 @@
 %html
   %head
     %title Loomio
-    = stylesheet_link_tag    "application"
+    = stylesheet_link_tag "application", :media => "all"
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     = javascript_include_tag "application"
     = csrf_meta_tags
     %link{:href => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/flick/jquery-ui.css", :rel => "stylesheet", :type => "text/css"}
@@ -22,6 +23,6 @@
 
   %body{class: "#{controller_name} #{action_name}"}
     = render 'header'
-    .container
-      = render 'flash_messages', :flash => flash
+    .container-fluid
+      = render 'layouts/flash_messages', :flash => flash
       = yield
