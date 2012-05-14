@@ -15,14 +15,13 @@
                       %li
                         = render 'group_link', group: subgroup
           = link_to "Create new group", new_group_path, :class => 'btn primary small'
-      
+
       %section.span11
-        %h1.sub-header Open motions
-        .motions-list
-          = render "open_motions", motions: @motions
-        %h1 Closed motions
-        .motions-list
-          = render "closed_motions", motions: @motions
+        %h4.title-row Discussions
+        #discussions
+          - @groups.each do |group|
+            - group.discussions.each do |discussion|
+              =render 'discussions/discussions', :discussion => discussion, :group => group
 
   - else
     = link_to 'Create a group', new_group_path
