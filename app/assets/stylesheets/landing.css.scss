@@ -109,7 +109,21 @@ body.landing {
       top: 0;
       right: 0;
     }
-
+		#mc_embed_signup{
+			width: 300px;
+		}
+		#mc_embed_signup form {
+		    margin: 0;
+				padding: 0;
+		}
+		#mc_embed_signup input.email{
+		    width: 100%;
+		}
+		#mc_embed_signup label {
+		    font-size: 18px;
+		    font-weight: normal;
+				color:#404040;
+		}
     form {
       input {
         width: 290px;
