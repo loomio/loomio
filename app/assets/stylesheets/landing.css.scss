@@ -38,12 +38,16 @@ body.landing {
     background-image: url(loomio-orange.png);
     background-position: 5px top;
     background-repeat: no-repeat;
-
+		text-indent: -999em;
     span {
       display: none;
     }
   }
-
+	#loomio-project-iframe{
+		border-top:1px solid #eee;
+		border-bottom:1px solid #eee;
+		padding: 20px 0px;
+	}
   .content {
     margin-top: 20px;
     margin-bottom: 30px;
