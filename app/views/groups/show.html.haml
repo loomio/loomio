@@ -25,4 +25,4 @@
         = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn small primary", id: "new-discussion"
       #discussions
         - @group.discussions.each do |discussion|
-          =render 'discussions/discussions', discussion: discussion
+          =render discussion
