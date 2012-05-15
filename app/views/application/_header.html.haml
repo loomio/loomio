@@ -3,7 +3,7 @@
     .topbar-inner
       .container
         %h1
-          = link_to image_tag("top-bar-loomio.png", :alt => "Loomio"), "/", :class => 'brand'
+          = link_to image_tag("top-bar-loomio.png", :alt => "Loomio"), "/"
         %ul.nav.secondary-nav
           - if user_signed_in?
             %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
