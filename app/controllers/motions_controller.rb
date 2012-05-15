@@ -19,8 +19,10 @@ class MotionsController < GroupBaseController
     @motion = Motion.new(params[:motion])
     @motion.author = current_user
     if @motion.save
+      flash[:notice] = "Motion sucessfully created."
       redirect_to discussion_path(@motion.discussion)
     else
+      flash[:notice] = "Motion sucessfully created."
       redirect_to :back
     end
   end
