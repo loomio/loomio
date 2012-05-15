@@ -28,13 +28,12 @@ h2 {
 h3 {
 }
   
-  /* Main Header */
 h4 { 
   font-size: 16px; 
   line-height: 20px; 
   font-weight: normal; 
   color: #888; 
-} /* Item grey */
+} 
 
 h5 { 
   font-size: 14px; 
@@ -194,7 +193,11 @@ form {
 }
 
 .topbar {
-  a { color: #FBA82C; text-shadow: none; }
+  a {
+    color: #FBA82C;
+    text-shadow: none;
+  }
+  
   .topbar-inner {
     background-image: -webkit-linear-gradient(top, #F7F7ED, #F7F7E2);
     background-image: -o-linear-gradient(top, #F7F7ED, #F7F7E2);
@@ -206,7 +209,7 @@ form {
     margin-top: -5px;
     margin-left: -20px;
     padding-bottom: 0px;
-   }
+  } 
   
   ul.dropdown-menu{
     li{
