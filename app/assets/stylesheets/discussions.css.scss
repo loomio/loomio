@@ -7,7 +7,6 @@
   .clearfix { padding-top: 0px; padding-bottom: 0px; }
   .character-counter {
     color: #999999;
-    font-size: 12px;
     margin-right: 200px;
     text-align: right;
     margin-top: -32px;
@@ -18,11 +17,9 @@
 
 #discussion-title {
   padding-top: 4px;
-  font-size: 20px;
 }
 
 #group-name {
-  font-size: 12px;
   margin-left: 7px;
   margin-top: -6px;
   a { color: #888 }
@@ -38,7 +35,6 @@
     #new-comment{
       width: 450px;
       height: 80px;
-      font-size: 13px;
       line-height: 16px;
       color: black;
     }
@@ -47,7 +43,6 @@
       margin-top: -2px;
       text-align: right;
       .submit{
-        font-size: 13px;
         margin-top: 8px;
       }
     }
@@ -59,19 +54,15 @@
     padding: 4px;
 
     p, span {
-      font-size: 13px;
       margin-bottom: 0px;
-      line-height: 16px;
     }
     .comment-username{
       font-weight: bold;
     }
     .comment-time{
-      font-size: 11px;
       color: grey;
     }
     .comment-likes{
-      font-size: 11px;
       color: grey;
     }
   }
@@ -85,7 +76,6 @@
       float: left;
       margin-top: 2px;
       margin-left: 2px;
-      font-size: 12px;
     }
   }
 
@@ -119,7 +109,6 @@
     }
   }
   .current-proposal {
-    font-size: 14px;
   }
 
   .motion-placeholder { padding-top: 300px }
@@ -135,8 +124,6 @@
         margin-top: 8px;
       }
       p {
-        font-size: 12px;
-        line-height: 16px;
         color: #888;
         margin-bottom: 0px;
       }
@@ -149,8 +136,6 @@
           text-align: right;
           margin-top: 20px;
           .btn {
-            font-size: 12px;
-            line-height: 12px;
             padding-top: 3px;
             padding-bottom: 3px;
           }
@@ -159,7 +144,7 @@
     }
     #discussion{ padding-top: 10px; color: #555; }
     #description{
-      p{font-size: 1.0em;}
+      p{}
       margin-top: 30px;
       color: #555;
     }
@@ -181,7 +166,6 @@
       .character_counter {
         float: right;
         color: #999999;
-        font-size: 12px;
         margin-top: -20px;
       }
     }
@@ -200,7 +184,6 @@
     }
     #votes-table {
       margin-top: 20px;
-      font-size: 14px;
       .position-row {
         padding-top: 2px;
         padding-bottom: 3px;
@@ -226,7 +209,6 @@
           }
         }
         .statement {
-          font-size: 12px;
           display: block;
           margin-left: 30px;
           color: #000;
@@ -255,7 +237,6 @@
     }
 
     #previous-proposals {
-      font-size: 14px;
       color: #888;
     }
   }
@@ -263,8 +244,6 @@
   .motion-row {
     color: #888;
     .close-date {
-      line-height: 14px;
-      font-size: 12px;
     }
   }
 }
