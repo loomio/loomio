@@ -1,13 +1,12 @@
 %h2.header-space Sign in
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  .padding
-    = f.label :email, "Email"
-    = f.email_field :email
-    = f.label :password, "Password"
-    = f.password_field :password
-    - if devise_mapping.rememberable?
-      = f.check_box :remember_me
-      = f.label :remeber_me, "Remember me", class: "checkbox-label"
+  = f.label :email, "Email"
+  = f.email_field :email
+  = f.label :password, "Password"
+  = f.password_field :password
+  - if devise_mapping.rememberable?
+    = f.check_box :remember_me
+    = f.label :remeber_me, "Remember me", class: "checkbox-label"
   .sign-in-button
     = f.submit "Sign in", class: "btn primary small"
 = render :partial => "devise/shared/links"
