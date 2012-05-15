@@ -49,6 +49,11 @@ h7 {
   color: grey; 
 }
 
+.navbar .nav > li > a {
+  font-size: 18px;
+  line-height: 35px;
+}
+
 .header-space {
   margin-top: 15px;
 }
@@ -113,18 +118,6 @@ h7 {
   margin-right: 3px;
   margin-top: 5px;
   padding: 8px;
-}
-
-.topbar-wrapper {
-  .secondary-nav {
-    margin-top: 3px;
-    .feedback {
-      font-size: 0.8em;
-      padding-top: 2px;
-      margin-right: 15px;
-      text-shadow: none;
-    }
-  }
 }
 
 .error-message {
