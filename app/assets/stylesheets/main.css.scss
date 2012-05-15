@@ -10,6 +10,10 @@
   }
 }
 
+@mixin debug {
+  border: 1px solid red;
+}
+
 body {
   padding-top: 58px;
   background-color: white;
@@ -197,7 +201,8 @@ form {
     color: #FBA82C;
     text-shadow: none;
   }
-  
+ 
+
   .topbar-inner {
     background-image: -moz-linear-gradient(top, #F7F7ED, #F7F7E2);
     background-image: -webkit-linear-gradient(top, #F7F7ED, #F7F7E2);
@@ -207,10 +212,19 @@ form {
   
   //font-family: 'Cuprum', sans-serif;
   h1 {
-    height: 35px;
+    height: 36px;
     margin: 5px 0px 0px 0px;
     padding: 0px;
     float: left;
+    font-size: 0px;
+    line-height: 0px;
+   
+    a img {
+      margin: 0 0 1px 0;
+    }
+    a:hover img { 
+      margin: 1px 0 0 0;
+    }
   } 
   
   ul.dropdown-menu{
