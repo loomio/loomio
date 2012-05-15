@@ -206,16 +206,11 @@ form {
   }
   
   //font-family: 'Cuprum', sans-serif;
-  .h1 {
-    float: left;
-    margin: 0px;
+  h1 {
+    height: 35px;
+    margin: 5px 0px 0px 0px;
     padding: 0px;
-  
-    img {
-      margin-top: -5px;
-      margin-left: -20px;
-      padding-bottom: 0px;
-    }
+    float: left;
   } 
   
   ul.dropdown-menu{
