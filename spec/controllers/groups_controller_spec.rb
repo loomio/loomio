@@ -128,16 +128,16 @@ describe GroupsController do
     end
 
     it "adds multiple members" do
-      pending "still getting this working"
-      @group = Group.make!
-      @group.add_member! @user
-      @user2 = User.make!
-      @user3 = User.make!
+      group = Group.make!
+      group.add_admin! @user
+      user2 = User.make!
+      user3 = User.make!
 
-      post :add_members, id: @group.id # Add members here
+      post :add_members, id: group.id,
+        "user_#{user2.id}"  => 1, "user_#{user3.id}" => 1
 
-      @group.users.should include(@user2)
-      @group.users.should include(@user3)
+      group.users.should include(user2)
+      group.users.should include(user3)
     end
   end
 end

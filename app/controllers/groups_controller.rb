@@ -23,8 +23,14 @@ class GroupsController < GroupBaseController
   end
 
   def add_members
-    require 'ap'
-    ap params
+    params.each_key do |key|
+      if key =~ /user_/
+        user = User.find(key[5..-1])
+        group.add_member!(user)
+      end
+    end
+    flash[:notice] = "Members added to group."
+    redirect_to group_url(group)
   end
 
   def request_membership
