@@ -138,6 +138,9 @@ GEM
       thor (~> 0.14.6)
     guard-rspec (0.5.8)
       guard (>= 0.8.4)
+    guard-sass (0.6.0)
+      guard (>= 0.4.0)
+      sass (>= 3.1)
     guard-spork (0.5.2)
       guard (>= 0.10.0)
       spork (>= 0.8.4)
@@ -319,6 +322,7 @@ DEPENDENCIES
   formtastic-bootstrap
   guard
   guard-rspec
+  guard-sass
   guard-spork
   haml-rails
   inherited_resources
