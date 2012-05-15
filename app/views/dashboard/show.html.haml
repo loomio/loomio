@@ -1,7 +1,7 @@
 #dashboard-home
   - if @groups.present?
     .row
-      %nav.span5
+      %nav.span4
         .group-panel
           %h1.title-row
             Your groups
@@ -16,7 +16,7 @@
                         = render 'group_link', group: subgroup
           = link_to "Create new group", new_group_path, :class => 'btn primary small'
 
-      %section.span11
+      %section.span8
         %h4.title-row Discussions
         #discussions
           - current_user.discussions.each do |discussion|
