@@ -1,3 +1,5 @@
+@import "bootstrap";
+
 @mixin box-shadow($h-offset, $v-offset, $blur-distance, $color) {
   @each $target in -moz-box-shadow -webkit-box-shadow box-shadow {
     #{$target}: $h-offset $v-offset $blur-distance $color;
@@ -11,7 +13,6 @@
 }
 
 body {
-  padding-top: 58px;
   background-color: white;
 }
 
