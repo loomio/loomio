@@ -10,8 +10,6 @@ gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
 gem 'formtastic'
-gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
-gem 'formtastic-bootstrap'
 gem 'jqplot-rails'
 gem "rails-backbone"
 gem 'coffee-filter'
