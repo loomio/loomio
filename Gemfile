@@ -30,7 +30,7 @@ group :assets do
 end
 
 group :development, :test do
-  #gem 'debugger'
+  gem 'debugger'
   gem 'machinist', '>= 2.0.0.beta2'
   gem 'faker'
   gem 'rspec-rails', '~> 2.8.1'
