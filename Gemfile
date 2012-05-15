@@ -46,6 +46,7 @@ group :development do
   gem 'guard-spork'
   gem 'guard-rspec'
   gem 'guard-sass'
+  gem 'guard-coffeescript'
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
