@@ -7,9 +7,8 @@
       .error-message Title can not be blank
     #closing-inputs
       = f.label :close_date, "Closing"
-      - input_time = Time.now
       = text_field_tag :input_date, nil, class: "date-input"
-      = select_hour(input_time, ampm: true)
+      = select_hour(@input_time, ampm: true)
     #description
       = f.label :description, "Details"
       = f.text_area :description

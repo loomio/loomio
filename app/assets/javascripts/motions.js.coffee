@@ -7,10 +7,17 @@ current_tag_filter = "active"
 $ ->
   $(".error-message").hide()
   if $("#motion-form").length > 0
+    #** pad out hour to two digits **
+    pad2 = ((number) ->
+      if number < 10
+        '0' + number
+      else
+        number
+    )
     #** Edit Moition **
     date = new Date($("#motion_close_date").val())
-    date_string = "#{date.getDate()}-#{date.getMonth() + 1}-#{date.getFullYear()}"
-    hours = date.getHours()
+    date_string = "#{date.getFullYear()}-#{date.getMonth() + 1}-#{date.getDate()}"
+    hours = pad2(date.getHours())
     datetime_format = new Date(date_string)
     $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
     $("#input_date").datepicker("setDate", date_string)

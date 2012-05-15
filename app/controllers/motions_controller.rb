@@ -18,6 +18,7 @@ class MotionsController < GroupBaseController
   def create
     @motion = Motion.new(params[:motion])
     @motion.author = current_user
+    #@input_date = Time.now
     if @motion.save
       flash[:notice] = "Motion sucessfully created."
       redirect_to discussion_path(@motion.discussion)
