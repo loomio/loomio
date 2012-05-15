@@ -1,5 +1,8 @@
 require 'spec_helper'
 
+# NOTE (Jon): Lots of these specs should be
+# refactored out of here and into ability_spec.rb
+# Basically, we shouldn't be testing permissions in here
 describe GroupsController do
 
   let(:group) { stub_model(Group) }
@@ -10,57 +13,6 @@ describe GroupsController do
       User.stub(:find).with(user.id.to_s).and_return(user)
       sign_in user
       Group.stub(:find).with(group.id.to_s).and_return(group)
-    end
-
-    context "admin of a group" do
-      before :each do
-        group.stub(:can_be_edited_by?).with(user).and_return(true)
-      end
-
-      it "can add a user tag" do
-        old_tags = ["testytag", "testy"]
-        new_tag = "newww"
-        new_tags = "testytag,testy,newww"
-
-        user.should_receive(:group_tags_from).with(group).and_return(old_tags)
-        group.should_receive(:tag).with user, with: new_tags, on: :group_tags
-
-        post :add_user_tag, id: group.id, user_id: user.id, tag: new_tag
-      end
-
-      it "can get all group tags" do
-        group.stub_chain(:owned_tags, :where)
-          .and_return([stub(id: 1, name: "testytag")])
-
-        get :group_tags, format: :json, id: group.id, q: "test"
-
-        response.body.should == [{ id: 1, name: "testytag" }].to_json
-      end
-
-      it "get user group tags" do
-        group.should_receive(:get_user_tags).with(user)
-          .and_return([stub(id: 1, name: "testy")])
-
-        get :user_group_tags, format: :json, id: group.id, user_id: user.id
-
-        response.body.should == [{ id: 1, name: "testy" }].to_json
-      end
-
-      it "can add a user tag and doesn't explode when being called 3 times" do
-        pending "refactor test to use stubs"
-        post :add_user_tag, id: group.id, user_id: user.id, tag: "testytag"
-        post :add_user_tag, id: group.id, user_id: user.id, tag: "testytag2"
-        post :add_user_tag, id: group.id, user_id: user.id, tag: "testytag3"
-        user.group_tags.find_by_name("testytag").name.should include("testytag")
-        user.group_tags.find_by_name("testytag2").name.should include("testytag2")
-        user.group_tags.find_by_name("testytag3").name.should include("testytag3")
-      end
-
-      it "can delete a user tag" do
-        group.should_receive(:delete_user_tag).with(user, "testytag")
-
-        post :delete_user_tag, id: group.id, tag: "testytag", user_id: user.id
-      end
     end
   end
 
@@ -104,21 +56,6 @@ describe GroupsController do
           post :update, id: @group.id, group: { name: "New name!" }
           flash[:notice].should match("Group was successfully updated.")
           response.should be_redirect
-        end
-        it "can add a user tag" do
-          post :add_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
-          post :add_user_tag, id: @group.id, tag: "testytag2", user_id: @user.id
-          post :add_user_tag, id: @group.id, tag: "testytag3", user_id: @user.id
-          #debugger
-          @user.group_tags.find_by_name("testytag").name.should include("testytag")
-          @user.group_tags.find_by_name("testytag2").name.should include("testytag2")
-          @user.group_tags.find_by_name("testytag3").name.should include("testytag3")
-        end
-        it "can delete a user tag" do
-          post :add_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
-          @user.group_tags.first.name.should include("testytag")
-          post :delete_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
-          @user.group_tags.first.should be_nil
         end
       end
       context "a group member" do
