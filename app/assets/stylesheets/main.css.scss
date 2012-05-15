@@ -199,16 +199,23 @@ form {
   }
   
   .topbar-inner {
+    background-image: -moz-linear-gradient(top, #F7F7ED, #F7F7E2);
     background-image: -webkit-linear-gradient(top, #F7F7ED, #F7F7E2);
     background-image: -o-linear-gradient(top, #F7F7ED, #F7F7E2);
     background-image: linear-gradient(top, #F7F7ED, #F7F7E2);
   }
   
   //font-family: 'Cuprum', sans-serif;
-  .brand{
-    margin-top: -5px;
-    margin-left: -20px;
-    padding-bottom: 0px;
+  .h1 {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+  
+    img {
+      margin-top: -5px;
+      margin-left: -20px;
+      padding-bottom: 0px;
+    }
   } 
   
   ul.dropdown-menu{
