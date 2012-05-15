@@ -25,9 +25,9 @@ class GroupsController < GroupBaseController
     @subgroup.members_invitable_by = @parent.members_invitable_by
   end
 
-  def invite_member
-    @group = Group.find(params[:id])
-    @user = User.new
+  def add_members
+    require 'ap'
+    ap params
   end
 
   def request_membership

@@ -10,11 +10,12 @@ Tautoko::Application.routes.draw do
   get "/motions/:id/active_tags/:tags/clicked_tag/:tag" => "motions#toggle_tag_filter", :as => "toggle_tag_filter"
 
   resources :groups, except: :index do
-    get :invite_member, on: :member
+    post :add_members, on: :member
     get :add_subgroup
     resources :motions, name_prefix: "groups_"
     get :request_membership, on: :member
   end
+
   resources :motions, except: :index do
     resources :votes
   end

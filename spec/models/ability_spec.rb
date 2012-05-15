@@ -19,11 +19,13 @@ describe "User" do
         @another_user_comment = @discussion.add_comment(other_user, "hello")
       end
 
-      it { should be_able_to(:add_comment, @discussion) }
+      # Groups
+      it { should be_able_to(:add_members, @group) }
 
+      # Discussions / Comments
+      it { should be_able_to(:add_comment, @discussion) }
       it { should be_able_to(:destroy, @user_comment) }
       it { should_not be_able_to(:destroy, @another_user_comment) }
-
       it { should be_able_to(:like, @user_comment) }
       it { should be_able_to(:like, @another_user_comment) }
       it { should be_able_to(:unlike, @user_comment) }
@@ -34,6 +36,10 @@ describe "User" do
       let(:discussion) { create_discussion }
       let(:comment) { discussion.add_comment(discussion.author, "hello") }
 
+      # Groups
+      it { should_not be_able_to(:add_members, @group) }
+
+      # Discussions / Comments
       it { should_not be_able_to(:add_comment, discussion) }
       it { should_not be_able_to(:destroy, comment) }
       it { should_not be_able_to(:like, comment) }
