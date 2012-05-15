@@ -32,9 +32,6 @@ h1 {
 }
 
 h2 { 
-  font-size: 18px; 
-  line-height: 18px; 
-  font-weight: normal; 
   color: #555;
 }
 
@@ -42,22 +39,14 @@ h3 {
 }
   
 h4 { 
-  font-size: 16px; 
-  line-height: 20px; 
-  font-weight: normal; 
   color: #888; 
 } 
 
 h5 { 
-  font-size: 14px; 
-  line-height: 18px; 
-  font-weight: normal; 
   color: #888; 
 }
 
 h7 { 
-  font-size: 12px; 
-  line-height: 16px; 
   color: grey; 
 }
 
@@ -91,6 +80,57 @@ section.main-content h1 {
 }
 
 // navigation
+
+
+// topbar
+
+.topbar-wrapper {
+  .secondary-nav {
+    margin-top: 3px;
+    .feedback {
+      font-size: 0.8em;
+      padding-top: 2px;
+      margin-right: 15px;
+      text-shadow: none;
+    }
+  }
+}
+
+.topbar {
+  a {
+    color: #FBA82C;
+    text-shadow: none;
+  }
+
+  .topbar-inner {
+    background-image: -moz-linear-gradient(top, #F7F7ED, #F7F7E2);
+    background-image: -webkit-linear-gradient(top, #F7F7ED, #F7F7E2);
+    background-image: -o-linear-gradient(top, #F7F7ED, #F7F7E2);
+    background-image: linear-gradient(top, #F7F7ED, #F7F7E2);
+  }
+  
+  h1 {
+    height: 36px;
+    margin: 5px 0 0 0;
+    padding: 0px;
+    float: left;
+    font-size: 0px;
+    line-height: 0px;
+   
+    a img {
+      margin: 0 0 1px 0;
+    }
+    a:hover img { 
+      margin: 1px 0 0 0;
+    }
+  } 
+  
+  ul.dropdown-menu{
+    li {
+      text-shadow: none;
+    }
+  }
+}
 
 
 // misc (move stuff out of here..)
@@ -139,35 +179,18 @@ section.main-content h1 {
 .general-button {
   margin-left: 3px;
   margin-top: 10px;
-  font-size: 14px;
   padding-top: 3px;
   padding-bottom: 3px;
-}
-
-
-
-.topbar-wrapper {
-  .secondary-nav {
-    margin-top: 3px;
-    .feedback {
-      font-size: 0.8em;
-      padding-top: 2px;
-      margin-right: 15px;
-      text-shadow: none;
-    }
-  }
 }
 
 .error-message {
   display: inline-block;
   margin-left: 5px;
   color: firebrick;
-  font-size: 12px;
   margin-top: -2px;
 }
 
 .btn.small { 
-  font-size: 12px
 }
 
 .group-title {
@@ -186,8 +209,6 @@ form {
     width: 400px;
     text-align: left;
     float: none;
-    font-size: 14px;
-    line-height: 18px;
     color: #888;
     margin-bottom: 4px;
     display: block;
@@ -224,43 +245,6 @@ form {
   display: none;
 }
 
-.topbar {
-  a {
-    color: #FBA82C;
-    text-shadow: none;
-  }
-
-  .topbar-inner {
-    background-image: -moz-linear-gradient(top, #F7F7ED, #F7F7E2);
-    background-image: -webkit-linear-gradient(top, #F7F7ED, #F7F7E2);
-    background-image: -o-linear-gradient(top, #F7F7ED, #F7F7E2);
-    background-image: linear-gradient(top, #F7F7ED, #F7F7E2);
-  }
-  
-  //font-family: 'Cuprum', sans-serif;
-  h1 {
-    height: 36px;
-    margin: 5px 0px 0px 20px;
-    padding: 0px;
-    float: left;
-    font-size: 0px;
-    line-height: 0px;
-   
-    a img {
-      margin: 0 0 1px 0;
-    }
-    a:hover img { 
-      margin: 1px 0 0 0;
-    }
-  } 
-  
-  ul.dropdown-menu{
-    li{
-      text-shadow: none;
-    }
-  }
-}
-
 .alert-message{
   a.close, a.close:hover{
     -khtml-opacity: 1;
@@ -285,7 +269,6 @@ table.jqplot-table-legend {
   color: #fff;
   display: none;
   opacity: 0.8;
-  font-size: 0.9em;
   width: 100px;
   text-align: center;
   @include box-shadow(1px, 1px, 4px, #999);
