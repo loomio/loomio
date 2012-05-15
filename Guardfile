@@ -32,3 +32,8 @@ guard 'sass',
   :input => 'app/assets/stylesheets',
   :noop => true,
   :hide_success => true
+
+guard 'coffeescript', 
+  :input => 'app/assets/javascripts',
+  :noop => true,
+  :hide_success => true
