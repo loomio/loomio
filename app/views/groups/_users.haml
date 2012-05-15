@@ -32,8 +32,8 @@
         .modal-body
           - group.parent.users.each do |member|
             .invite-member-checkbox-container
-              = check_box_tag "user-#{member.id}"
-              = label_tag "user-#{member.id}", member.name
+              = check_box_tag "user_#{member.id}"
+              = label_tag "user_#{member.id}", member.name
         .modal-footer
           -#%a.btn.primary{:href => "#"} Primary
           = submit_tag "Invite members", class: "btn primary"
