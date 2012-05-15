@@ -1,3 +1,10 @@
+// TODO:
+// * define site color variables 
+// * move px to em where possible
+// * mixin for gradient
+// * mixins should be refactored to their own file
+//     refactor application.css first (remove require-tree)
+
 @mixin box-shadow($h-offset, $v-offset, $blur-distance, $color) {
   @each $target in -moz-box-shadow -webkit-box-shadow box-shadow {
     #{$target}: $h-offset $v-offset $blur-distance $color;
@@ -10,44 +17,123 @@
   }
 }
 
+@mixin debug {
+  border: 1px solid red;
+}
+
 body {
   padding-top: 58px;
   background-color: white;
 }
 
+// typography
+
 h1 {
 }
 
 h2 { 
-  font-size: 18px; 
-  line-height: 18px; 
-  font-weight: normal; 
   color: #555;
 }
 
 h3 {
 }
   
-  /* Main Header */
 h4 { 
-  font-size: 16px; 
-  line-height: 20px; 
-  font-weight: normal; 
   color: #888; 
-} /* Item grey */
+} 
 
 h5 { 
-  font-size: 14px; 
-  line-height: 18px; 
-  font-weight: normal; 
   color: #888; 
 }
 
 h7 { 
-  font-size: 12px; 
-  line-height: 16px; 
   color: grey; 
 }
+
+section.main-content h1 {
+  font-size: 1.2em; 
+  line-height: 1em;
+  color: #888; 
+  border-bottom: 1px solid lightgrey;
+}
+
+// structural elements (containers etc.)
+
+.panel {
+  @include box-shadow(1px, 1px, 3px, #ccc);
+  @include border-radius(4px);
+  border: 1px solid lightgrey;
+  margin: 5px 3px 6px 3px;
+  padding: 8px;
+}
+
+.side-panel {
+  h1 {
+    font-size: 16px; 
+    line-height: 20px; 
+    font-weight: normal; 
+    color: #555; 
+    background-color: #eee;
+    padding: 0.25em;
+    margin-bottom: 0.25em;
+  }
+}
+
+// navigation
+
+
+// topbar
+
+.topbar-wrapper {
+  .secondary-nav {
+    margin-top: 3px;
+    .feedback {
+      font-size: 0.8em;
+      padding-top: 2px;
+      margin-right: 15px;
+      text-shadow: none;
+    }
+  }
+}
+
+.topbar {
+  a {
+    color: #FBA82C;
+    text-shadow: none;
+  }
+
+  .topbar-inner {
+    background-image: -moz-linear-gradient(top, #F7F7ED, #F7F7E2);
+    background-image: -webkit-linear-gradient(top, #F7F7ED, #F7F7E2);
+    background-image: -o-linear-gradient(top, #F7F7ED, #F7F7E2);
+    background-image: linear-gradient(top, #F7F7ED, #F7F7E2);
+  }
+  
+  h1 {
+    height: 36px;
+    margin: 5px 0 0 0;
+    padding: 0px;
+    float: left;
+    font-size: 0px;
+    line-height: 0px;
+   
+    a img {
+      margin: 0 0 1px 0;
+    }
+    a:hover img { 
+      margin: 1px 0 0 0;
+    }
+  } 
+  
+  ul.dropdown-menu{
+    li {
+      text-shadow: none;
+    }
+  }
+}
+
+
+// misc (move stuff out of here..)
 
 .header-space {
   margin-top: 15px;
@@ -93,50 +179,18 @@ h7 {
 .general-button {
   margin-left: 3px;
   margin-top: 10px;
-  font-size: 14px;
   padding-top: 3px;
   padding-bottom: 3px;
-}
-
-.title-row {
-  background-color: #F7F7ED;
-  padding: 4px;
-  color: #555;
-}
-
-.panel {
-  @include box-shadow(1px, 1px, 3px, #ccc);
-  @include border-radius(4px);
-  border: 1px solid lightgrey;
-  margin-bottom: 6px;
-  margin-left: 3px;
-  margin-right: 3px;
-  margin-top: 5px;
-  padding: 8px;
-}
-
-.topbar-wrapper {
-  .secondary-nav {
-    margin-top: 3px;
-    .feedback {
-      font-size: 0.8em;
-      padding-top: 2px;
-      margin-right: 15px;
-      text-shadow: none;
-    }
-  }
 }
 
 .error-message {
   display: inline-block;
   margin-left: 5px;
   color: firebrick;
-  font-size: 12px;
   margin-top: -2px;
 }
 
 .btn.small { 
-  font-size: 12px
 }
 
 .group-title {
@@ -155,8 +209,6 @@ form {
     width: 400px;
     text-align: left;
     float: none;
-    font-size: 14px;
-    line-height: 18px;
     color: #888;
     margin-bottom: 4px;
     display: block;
@@ -193,28 +245,6 @@ form {
   display: none;
 }
 
-.topbar {
-  a { color: #FBA82C; text-shadow: none; }
-  .topbar-inner {
-    background-image: -webkit-linear-gradient(top, #F7F7ED, #F7F7E2);
-    background-image: -o-linear-gradient(top, #F7F7ED, #F7F7E2);
-    background-image: linear-gradient(top, #F7F7ED, #F7F7E2);
-  }
-  
-  //font-family: 'Cuprum', sans-serif;
-  .brand{
-    margin-top: -5px;
-    margin-left: -20px;
-    padding-bottom: 0px;
-   }
-  
-  ul.dropdown-menu{
-    li{
-      text-shadow: none;
-    }
-  }
-}
-
 .alert-message{
   a.close, a.close:hover{
     -khtml-opacity: 1;
@@ -239,7 +269,6 @@ table.jqplot-table-legend {
   color: #fff;
   display: none;
   opacity: 0.8;
-  font-size: 0.9em;
   width: 100px;
   text-align: center;
   @include box-shadow(1px, 1px, 4px, #999);
