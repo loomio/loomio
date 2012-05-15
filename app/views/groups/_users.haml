@@ -32,11 +32,13 @@
     = form_tag add_members_group_path do
       .modal-body
         - group.parent.users.each do |member|
-          .invite-member-checkbox-container
-            = check_box_tag "user_#{member.id}"
-            = label_tag "user_#{member.id}", member.name
+          - unless member == current_user
+            .invite-member-checkbox-container
+              - is_member = false
+              - is_member = true if group.users_include?(member)
+              = check_box_tag "user_#{member.id}", 1, is_member, disabled: is_member
+              = label_tag "user_#{member.id}", member.name
       .modal-footer
-        -#%a.btn.primary{:href => "#"} Primary
         = submit_tag "Invite members", class: "btn primary"
 
   %button.btn.small.primary#add-member-popup-btn{"data-backdrop" => "true", "data-controls-modal" => "invite-group-members", "data-keyboard" => "true"} Add members
@@ -45,19 +47,4 @@
   =render :partial => 'membership',
     :collection => group.memberships.sort! { |a,b| a.user_name.downcase <=> b.user_name.downcase },
     :locals => { group: group }
-
-
-#invite-group-members.modal.hide.fade
-  .modal-header
-    %a.close{:href => "#"} ×
-    %h3= "Select members to add to #{group.name}"
-  .modal-body
-    = form_tag "/" do
-      - group.users.each do |member|
-        .invite-member-checkbox-container
-          = check_box_tag "member-#{member.id}"
-          = label_tag "member-#{member.id}", member.name
-  .modal-footer
-    %a.btn.primary{:href => "#"} Primary
-    %a.btn.secondary{:href => "#"} Secondary
 
