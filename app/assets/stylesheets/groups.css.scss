@@ -47,6 +47,7 @@ $token-input-width: 278px;
       }
     }
     .proposal-container {
+      margin-top: -4px;
       padding-left: 7px;
       padding-bottom: 7px;
       font-size: 13px;
@@ -54,6 +55,7 @@ $token-input-width: 278px;
       min-height: 30px;
       color: #BBB;
       .vote-icon {
+        padding-top: 4px;
         display: inline-block;
         height: 16px;
         width: 20px;
@@ -64,7 +66,6 @@ $token-input-width: 278px;
         margin-left: 12px;
         display: inline-block;
         width: 400px;
-        float: left;
         .proposal-label {
           font-style: italic;
           color: #BBB;
@@ -74,11 +75,12 @@ $token-input-width: 278px;
         }
       }
       .proposal-stats {
-        display: inline;
-        float: left;
-        width: 170px;
-        text-align: right;
         .proposal-close-date {
+          margin-left: 32px;
+          margin-top: -6px;
+          color: #BBB;
+          font-size: 11px;
+          padding-top: 5px;
         }
         .proposal-engagement {
           color: #BBB;
@@ -87,21 +89,20 @@ $token-input-width: 278px;
       }
     }
   }
-  #last-comment {
-    font-size: 12px;
+  .comment-info {
     display: inline-block;
     float: right;
-    padding-top: 4px;
-  }
-  #total-comments {
-    font-size: 10px;
-    display: inline-block;
-    float: right;
-    padding-top: 2px;
-    padding-right: 8px;
-    .label.default {
-      padding-top: 0px;
-      padding-bottom: 0px;
+    margin-top: -2px;
+    padding-right: 5px;
+    #last-comment {
+      font-size: 11px;
+      display: block;
+      /*margin-top: -4px;*/
+    }
+    #total-comments {
+      font-size: 11px;
+      display: block;
+      margin-top: -9px;
     }
   }
   .alert-info {

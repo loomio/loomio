@@ -7,6 +7,12 @@
     = @discussion.title
 .row
   .span8#discussion-panel
+    - if @discussion.can_be_commented_on_by? current_user
+      = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
+        = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
+        #new-comment-submit
+          = submit_tag "Post comment", class: "primary btn submit", id: 'post-new-comment'
+
     = render 'history', discussion: @discussion, history: @discussion.history
   .span8#motion-panel
     #proposal-container
@@ -33,7 +39,7 @@
           id: 'new-proposal'
           .motion-placeholder
     - if @discussion.motions.where("phase = 'closed'").count > 0
-      #previous-proposals-container
+      #previous-proposals
         %h4.title-row Previous proposals
         - @discussion.motions.each do |closed_motion|
           - if closed_motion.closed?

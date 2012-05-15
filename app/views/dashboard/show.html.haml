@@ -15,15 +15,12 @@
                       %li
                         = render 'group_link', group: subgroup
           = link_to "Create new group", new_group_path, :class => 'btn primary small'
-      
-      %section.span11
-        %h1.sub-header Open motions
-        .motions-list
-          = render "open_motions", motions: @motions
-        %h1 Closed motions
-        .motions-list
-          = render "closed_motions", motions: @motions
 
+      %section.span11
+        %h4.title-row Discussions
+        #discussions
+          - current_user.discussions.each do |discussion|
+            =render discussion
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.
