@@ -245,9 +245,6 @@ $token-input-width: 278px;
 }
 
 /**** group dashboard ****/
-.group-panel {
-  margin-top: 9px;
-}
 
 /* TODO: this is also being used by the home dashboard.
  *       it should probably be moved to generic.css
@@ -287,4 +284,3 @@ ul#group-list {
     font-size: 17px;
   }
 }
-
