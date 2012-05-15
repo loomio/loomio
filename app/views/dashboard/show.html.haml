@@ -3,7 +3,7 @@
     .row
       %nav.span5
         .group-panel
-          %h1.title-row
+          %h2.title-row
             Your groups
           %ul#group-list
             - @groups.each do |group|
@@ -17,7 +17,8 @@
           = link_to "Create new group", new_group_path, :class => 'btn primary small'
 
       %section.span11
-        %h4.title-row Discussions
+        %h2.title-row
+          Discussions
         #discussions
           - current_user.discussions.each do |discussion|
             =render discussion
