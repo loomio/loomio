@@ -1,4 +1,5 @@
 // TODO:
+// * define site color variables 
 // * move px to em where possible
 // * mixin for gradient
 // * mixins should be refactored to their own file
@@ -58,6 +59,13 @@ h7 {
   font-size: 12px; 
   line-height: 16px; 
   color: grey; 
+}
+
+section.main-content h1 {
+  font-size: 1.2em; 
+  line-height: 1em;
+  color: #888; 
+  border-bottom: 1px solid lightgrey;
 }
 
 // structural elements (containers etc.)
@@ -221,7 +229,6 @@ form {
     color: #FBA82C;
     text-shadow: none;
   }
- 
 
   .topbar-inner {
     background-image: -moz-linear-gradient(top, #F7F7ED, #F7F7E2);
