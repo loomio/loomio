@@ -28,3 +28,12 @@ guard 'rspec', :version => 2 do
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end
 
+guard 'sass',
+  :input => 'app/assets/stylesheets',
+  :noop => true,
+  :hide_success => true
+
+guard 'coffeescript', 
+  :input => 'app/assets/javascripts',
+  :noop => true,
+  :hide_success => true
