@@ -120,10 +120,6 @@ describe GroupsController do
           post :delete_user_tag, id: @group.id, tag: "testytag", user_id: @user.id
           @user.group_tags.first.should be_nil
         end
-        it "can visit the invite a new member page" do
-          get :invite_member, id: @group.id
-          response.should be_success
-        end
       end
       context "a group member" do
         before :each do
@@ -185,11 +181,26 @@ describe GroupsController do
     it "creates a subgroup" do
       @group = Group.make!
       @subgroup = Group.make(:parent => @group)
+
       post :create, :group => @subgroup.attributes
+
       assigns(:group).parent.should eq(@group)
       assigns(:group).users.should include(@user)
       assigns(:group).admins.should include(@user)
       response.should redirect_to(group_url(assigns(:group)))
+    end
+
+    it "adds multiple members" do
+      pending "still getting this working"
+      @group = Group.make!
+      @group.add_member! @user
+      @user2 = User.make!
+      @user3 = User.make!
+
+      post :add_members, id: @group.id # Add members here
+
+      @group.users.should include(@user2)
+      @group.users.should include(@user3)
     end
   end
 end

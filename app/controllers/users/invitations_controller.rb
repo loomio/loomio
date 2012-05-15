@@ -1,7 +1,8 @@
 class Users::InvitationsController < Devise::InvitationsController
   def create
-    # TODO: Make this big method less ugly (maybe move some of the code
-    # over to the User model?)
+    # TODO: Make this big method less ugly
+    #   - use cancan
+    #   - maybe move some of the code over to the User model?
     if params[:user][:group_id].present?
       group = Group.find params[:user].delete(:group_id)
       if group.can_invite_members?(current_user)

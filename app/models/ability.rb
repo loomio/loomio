@@ -13,9 +13,13 @@ class Ability
     # GROUPS
     #
 
-    can [:edit, :update, :add_user_tag, :delete_user_tag, :invite_member,
+    can [:edit, :update, :add_user_tag, :delete_user_tag,
          :user_group_tags, :group_tags, :add_subgroup], Group do |group|
       group.can_be_edited_by? user
+    end
+
+    can :add_members, Group do |group|
+      group.can_invite_members? user
     end
 
     can [:create, :index, :request_membership], Group
