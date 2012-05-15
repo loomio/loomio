@@ -4,7 +4,6 @@ gem 'rails', '3.1.1'
 gem "haml-rails"
 gem 'devise', '~> 2.0.0'
 gem 'devise_invitable', '~> 1.0.0'
-gem 'mysql2'
 gem 'pg'
 gem 'capistrano'
 gem 'jquery-rails'
