@@ -9,38 +9,38 @@
       %input{name: "membership[group_id]", type: :hidden, value: group.id}
       =f.commit_button "Request membership", button_html: { class: "btn primary" }
 
-- if group.can_invite_members?(current_user)
+- if group.can_invite_members?(current_user) && group.parent.blank?
   %h4.title-row Add member
-  - if group.parent.blank?
-    = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
-      = devise_error_messages!
-      = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
-      = f.input :email, placeholder: "Email address", label: false
-      %input#group_id{ type: "hidden", value: group.id }
-      #button-invite= f.submit "Invite", class: "btn primary small"
-    - if group.membership_requests.present?
-      #user-requests
-        %h4.title-row Membership requests
-        %ul.unstyled{:id => "request-list"}
-          =render :partial => 'membership_request', :collection => group.membership_requests
-  - else
-    #invite-group-members.modal.hide.fade
-      .modal-header
-        %a.close{:href => "#"} ×
-        %h3= "Select members to add to #{group.name}"
-      = form_tag add_members_group_path do
-        .modal-body
-          - group.parent.users.each do |member|
-            .invite-member-checkbox-container
-              = check_box_tag "user_#{member.id}"
-              = label_tag "user_#{member.id}", member.name
-        .modal-footer
-          -#%a.btn.primary{:href => "#"} Primary
-          = submit_tag "Invite members", class: "btn primary"
-
-    %button.btn.small.primary{"data-backdrop" => "true", "data-controls-modal" => "invite-group-members", "data-keyboard" => "true"} Add members
+  = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
+    = devise_error_messages!
+    = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
+    = f.input :email, placeholder: "Email address", label: false
+    %input#group_id{ type: "hidden", value: group.id }
+    #button-invite= f.submit "Invite", class: "btn primary small"
+  - if group.membership_requests.present?
+    #user-requests
+      %h4.title-row Membership requests
+      %ul.unstyled{:id => "request-list"}
+        =render :partial => 'membership_request', :collection => group.membership_requests
 
 %h4.title-row Current members
+- unless group.parent.blank?
+  #invite-group-members.modal.hide.fade
+    .modal-header
+      %a.close{:href => "#"} ×
+      %h3= "Select members to add to #{group.name}"
+    = form_tag add_members_group_path do
+      .modal-body
+        - group.parent.users.each do |member|
+          .invite-member-checkbox-container
+            = check_box_tag "user_#{member.id}"
+            = label_tag "user_#{member.id}", member.name
+      .modal-footer
+        -#%a.btn.primary{:href => "#"} Primary
+        = submit_tag "Invite members", class: "btn primary"
+
+  %button.btn.small.primary#add-member-popup-btn{"data-backdrop" => "true", "data-controls-modal" => "invite-group-members", "data-keyboard" => "true"} Add members
+
 %ul.unstyled{:id => "users-list"}
   =render :partial => 'membership',
     :collection => group.memberships.sort! { |a,b| a.user_name.downcase <=> b.user_name.downcase },
