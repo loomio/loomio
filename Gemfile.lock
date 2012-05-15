@@ -55,6 +55,7 @@ GEM
       activerecord (>= 3.0.0)
     awesome_print (1.0.2)
     bcrypt-ruby (3.0.1)
+    bootstrap-sass (2.0.3)
     builder (3.0.0)
     cancan (1.6.7)
     capistrano (2.9.0)
@@ -276,6 +277,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 2.2.2)!
   acts_as_commentable_with_threading
   awesome_print
+  bootstrap-sass (~> 2.0.3)
   cancan
   cane!
   capistrano
