@@ -28,4 +28,5 @@
         - if @group.parent.nil?
           #subgroups
             =render 'subgroups', group: @group
-        =render 'users', group: @group
+        #users
+          =render 'users', group: @group

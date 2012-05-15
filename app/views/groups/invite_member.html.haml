@@ -1,6 +1,0 @@
-%h2 Invite someone to the group
-
-= form_for(@user, url: user_invitation_path, html: { method: :post }) do |f|
-  = f.hidden :group_id, input_html: { value: @group.id}
-  = f.text_field :email
-  = f.submit "Send invitation"
