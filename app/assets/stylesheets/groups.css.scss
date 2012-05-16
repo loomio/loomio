@@ -140,6 +140,26 @@ $token-input-width: 278px;
   }
 }
 
+#add-member-popup-btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#invite-group-members {
+  .modal-body {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  form {
+    margin-bottom: 0px;
+    input.btn { margin: 0px; }
+  }
+}
+
+.invite-member-checkbox-container {
+  input, label { display: inline }
+}
+
 #sidebar {
   #subgroups {
     padding-bottom: 20px;
