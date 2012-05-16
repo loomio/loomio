@@ -2,7 +2,8 @@
   %h2.header-space.group-title
     = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
     = " > " unless @group.parent.nil?
-    = @group.name
+    %span.sub_group
+      = @group.name
 
     - if @group.can_be_edited_by? current_user
       = link_to "Edit group", edit_group_path(@group), class: "btn small"
@@ -20,7 +21,7 @@
         =render 'users', group: @group
 
     .span11
-      %h4.title-row Discussions
+      %h3.title-row Discussions
       .general-button
         = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn small primary", id: "new-discussion"
       #discussions
