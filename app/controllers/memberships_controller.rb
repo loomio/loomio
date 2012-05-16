@@ -15,6 +15,9 @@ class MembershipsController < BaseController
   end
 
   def create
+    # NOTE (Jon):
+    # I feel like this method/action should be renamed to
+    # request_membership
     @group = Group.find(params[:membership][:group_id])
     @group.add_request!(current_user)
     if @group.can_be_viewed_by? current_user
