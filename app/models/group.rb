@@ -26,7 +26,8 @@ class Group < ActiveRecord::Base
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
 
-  delegate :include?, :to => :users, :prefix => :users
+  delegate :include?, :to => :users, :prefix => true
+  delegate :users, :to => :parent, :prefix => true
 
   acts_as_tagger
 

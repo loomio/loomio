@@ -44,6 +44,7 @@ class Membership < ActiveRecord::Base
 
   after_initialize :set_defaults
   before_destroy :remove_open_votes
+  after_destroy :destroy_subgroup_memberships
 
   #
   # PUBLIC METHODS
@@ -71,6 +72,13 @@ class Membership < ActiveRecord::Base
   #
 
   private
+    def destroy_subgroup_memberships
+      group.subgroups.each do |subgroup|
+        membership = subgroup.memberships.find_by_user_id(user.id)
+        membership.destroy
+      end
+    end
+
     def remove_open_votes
       user.votes.each do |vote|
         motion = Motion.find(vote.motion_id)
@@ -79,6 +87,7 @@ class Membership < ActiveRecord::Base
         end
       end
     end
+
     def set_defaults
       self.access_level ||= 'request'
     end

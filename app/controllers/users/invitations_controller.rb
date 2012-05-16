@@ -21,6 +21,7 @@ class Users::InvitationsController < Devise::InvitationsController
             flash[:alert] = "#{email} is already in the group."
           else
             flash[:notice] = "#{email} has been added to the group."
+            # TODO: handle if mmember fails to be added
             group.add_member! existing_user
             UserMailer.added_to_group(existing_user, group).deliver
           end
