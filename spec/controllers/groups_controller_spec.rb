@@ -117,6 +117,7 @@ describe GroupsController do
 
     it "creates a subgroup" do
       @group = Group.make!
+      @group.add_member! @user
       @subgroup = Group.make(:parent => @group)
 
       post :create, :group => @subgroup.attributes

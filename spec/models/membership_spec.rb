@@ -24,10 +24,20 @@ describe Membership do
 
     it "cannot have duplicate memberships" do
       Membership.make!(:user => user, :group => group)
+      membership.user = user
+      membership.group = group
+      membership.valid?
+      membership.errors_on(:user_id).should include("has already been taken")
+    end
 
-      membership.user == user
-      membership.group == group
-      membership.should_not be_valid
+    it "user must be a member of parent group (if one exists)" do
+      group.parent = Group.make!
+      group.save
+      membership.group = group
+      membership.user = user
+      membership.valid?
+      membership.errors_on(:user).should include(
+        "must be a member of this group's parent")
     end
   end
 
