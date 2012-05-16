@@ -1,3 +1,8 @@
+$basefont: 1em;
+$baseline: 1.4;
+
+@import "bootstrap";
+
 // TODO:
 // * define site color variables 
 // * move px to em where possible
@@ -22,7 +27,6 @@
 }
 
 body {
-  padding-top: 58px;
   background-color: white;
 }
 
