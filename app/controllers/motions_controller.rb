@@ -18,7 +18,6 @@ class MotionsController < GroupBaseController
   def create
     @motion = Motion.new(params[:motion])
     @motion.author = current_user
-    #@input_date = Time.now
     if @motion.save
       flash[:notice] = "Motion sucessfully created."
       redirect_to discussion_path(@motion.discussion)
@@ -58,12 +57,12 @@ class MotionsController < GroupBaseController
     end
   end
 
-  def toggle_tag_filter
-    @motion = Motion.find(params[:id])
-    @active_tags = params[:tags]
-    @clicked_tag = params[:tag]
-    render :partial => "motions/votes_filters", :locals => { clicked_tag: @clicked_tag }, :layout => false, :status => :created
-  end
+  #def toggle_tag_filter
+    #@motion = Motion.find(params[:id])
+    #@active_tags = params[:tags]
+    #@clicked_tag = params[:tag]
+    #render :partial => "motions/votes_filters", :locals => { clicked_tag: @clicked_tag }, :layout => false, :status => :created
+  #end
 
   private
 
