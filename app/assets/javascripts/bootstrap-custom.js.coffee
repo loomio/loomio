@@ -1,9 +1,10 @@
 $ ->
-  $("body > .topbar").scrollSpy()
+  $(".topbar").scrollSpy()
 $ ->
   $(".tabs").tabs()
-$ ->
-  $("a[rel=twipsy]").twipsy live: true
+# kill this
+# $ ->
+  # $("a[rel=twipsy]").twipsy live: true
 $ ->
   $("a[rel=popover]").popover offset: 10
 $ ->
@@ -16,6 +17,6 @@ $ ->
     closeOnEscape: true
   )
   $(".open-modal").click ->
-    domModal.toggle()  
+    domModal.toggle()
 $ ->
 	$(".btn").button "complete"
