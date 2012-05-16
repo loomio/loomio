@@ -41,6 +41,38 @@ describe Membership do
     end
   end
 
+  context "destroy" do
+    it "removes subgroup memberships (if existing)" do
+      membership = group.add_member! user
+      subgroup = Group.make
+      subgroup.parent = group
+      subgroup.save
+      subgroup.add_member! user
+      subgroup2 = Group.make
+      subgroup2.parent = group
+      subgroup2.save
+      subgroup2.add_member! user
+      membership.destroy
+
+      subgroup.users.should_not include(user)
+      subgroup2.users.should_not include(user)
+    end
+
+    it "removes open votes from user" do
+      membership = group.add_member! user
+      discussion = create_discussion(group: group)
+      motion = create_motion(discussion: discussion)
+      vote = Vote.new
+      vote.user = user
+      vote.position = "yes"
+      vote.motion = motion
+      vote.save!
+      membership.destroy
+
+      motion.votes.count.should == 0
+    end
+  end
+
   context "member can_be_deleted_by? admin" do
     it "returns true" do
       group.add_admin!(user)
