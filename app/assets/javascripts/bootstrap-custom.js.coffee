@@ -1,10 +1,7 @@
 $ ->
-  $(".topbar").scrollSpy()
+  $(".topbar").scrollspy()
 $ ->
   $(".tabs").tabs()
-# kill this
-# $ ->
-  # $("a[rel=twipsy]").twipsy live: true
 $ ->
   $("a[rel=popover]").popover offset: 10
 $ ->
