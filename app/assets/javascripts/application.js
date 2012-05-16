@@ -17,4 +17,5 @@
 //= require backbone/tautoko
 //= require modernizr
 //= require bootstrap
+//= require bootstrap-custom
 //= require_tree .
