@@ -27,6 +27,7 @@ class DiscussionsController < GroupBaseController
     @current_motion = @discussion.current_motion
     @vote = Vote.new
     @history = @discussion.history
+    @current_motion.open_close_motion
     if params[:proposal]
       @selected_closed_motion = @discussion.motions.find(params[:proposal])
       @votes_for_graph = @selected_closed_motion.votes_graph_ready

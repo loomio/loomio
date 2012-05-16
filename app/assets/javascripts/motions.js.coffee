@@ -14,24 +14,27 @@ $ ->
       else
         number
     )
-    #** Edit Moition **
-    date = new Date($("#motion_close_date").val())
-    date_string = "#{date.getFullYear()}-#{date.getMonth() + 1}-#{date.getDate()}"
-    hours = pad2(date.getHours())
-    datetime_format = new Date(date_string)
-    $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
-    $("#input_date").datepicker("setDate", date_string)
-    $("#date_hour").val(hours)
-
-    #** New Motion **
     if $("#new-motion").length > 0
+      #** New Motion **
       datetime = new Date()
       datetime.setDate(datetime.getDate() + 7)
-      hours = datetime.getHours()
+      hours = pad2(datetime.getHours())
       $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
       $("#input_date").datepicker("setDate", datetime)
       $("#date_hour").val(hours)
       $("#motion_close_date").val(datetime)
+    else
+      #** Edit Moition **
+      date = $("#motion_close_date").val()
+      day = date.substring(8,10)
+      month = date.substring(5, 7)
+      year = date.substring(2,4)
+      hour = date.substring(11,13)
+      date_string = "#{day}-#{month}-#{year}"
+      $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
+      $("#input_date").datepicker("setDate", date_string)
+      $("#date_hour").val(hour)
+
 
   #** presnece validations: use this function any where just assign the class .presence-required
   #   to the text field in question and the .check-presence to the submit button **
@@ -51,19 +54,19 @@ $ ->
   $("#input_date").change((e) ->
     date = $(this).val()
     day = date.substring(0,2)
-    month = (parseInt(date.substring(3,5)) - 1).toString()
-    year = date.substring(6,10)
+    month = date.substring(3, 5)
+    year = date.substring(8,10)
     hour = $("#date_hour").val()
-    local_datetime = new Date(year, month, day, hour)
+    local_datetime = Date(year + ", " + month + ", " + day + ", " + hour + ", 00, 00")
     $("#motion_close_date").val(local_datetime)
   )
   $("#date_hour").change((e) ->
     date = $("#input_date").val()
     day = date.substring(0,2)
-    month = (parseInt(date.substring(3,5)) - 1).toString()
-    year = date.substring(6,10)
+    month = date.substring(3, 5)
+    year = date.substring(8,10)
     hour = $(this).val()
-    local_datetime = new Date(year, month, day, hour)
+    local_datetime = Date(year + ", " + month + ", " + day + ", " + hour + ", 00, 00")
     $("#motion_close_date").val(local_datetime)
   )
 
