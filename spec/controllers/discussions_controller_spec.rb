@@ -26,6 +26,7 @@ describe DiscussionsController do
       before do
         motion.stub(:votes_graph_ready).and_return([])
         motion.stub(:user_has_voted?).and_return(true)
+        motion.stub(:open_close_motion)
         discussion.stub(:history)
       end
       it "responds with success" do
