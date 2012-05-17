@@ -1,6 +1,9 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "settings";
+@import "mixins";
+
 $token-input-line-height: 10px;
 $token-input-font-size: 10px;
 $token-input-width: 278px;
