@@ -6,5 +6,3 @@ $ ->
   $(".topbar-wrapper").dropdown()
 $ ->
   $(".alert-message").alert()
-$ ->
-	$(".btn").button "complete"
