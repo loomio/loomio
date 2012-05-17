@@ -3,7 +3,32 @@
 @import "mixins";
 
 // TODO:
-// * define site color variables 
+// * define site color variables
+// * move px to em where possible
+// * mixin for gradient
+// * mixins should be refactored to their own file
+//     refactor application.css first (remove require-tree)
+
+@mixin box-shadow($h-offset, $v-offset, $blur-distance, $color) {
+  @each $target in -moz-box-shadow -webkit-box-shadow box-shadow {
+    #{$target}: $h-offset $v-offset $blur-distance $color;
+  }
+}
+
+@mixin border-radius($radius) {
+  @each $target in -moz-border-radius -webkit-border-radius border-radius {
+    #{$target}: $radius;
+  }
+}
+
+@mixin debug {
+  border: 1px solid red;
+}
+
+$font-tiny: 0.8em;
+$font-small: 0.9em;
+$font-medium: 1em;
+$font-large: 1.3em;
 
 body {
   background-color: white;
@@ -17,7 +42,7 @@ h1 {
 	font-weight:normal;
 }
 
-h2 { 
+h2 {
   color: #555;
 	font-size: $font-large;
 }
@@ -26,26 +51,26 @@ h3 {
 	color: #888;
 	font-size: $font-medium;
 }
-  
-h4 { 
+
+h4 {
    color: #888;
 	 font-size: $font-small;
-} 
-
-h5 { 
-  color: #888; 
 }
 
-h7 { 
-  color: grey; 
+h5 {
+  color: #888;
+}
+
+h7 {
+  color: grey;
 }
 .sub_group{
 	font-size: $font-tiny;
 }
 section.main-content h1 {
-  font-size: 1.2em; 
+  font-size: 1.2em;
   line-height: 1em;
-  color: #888; 
+  color: #888;
   border-bottom: 1px solid lightgrey;
 }
 
@@ -61,10 +86,10 @@ section.main-content h1 {
 
 .side-panel {
   h1 {
-    font-size: 1em; 
-    line-height: 20px; 
-    font-weight: normal; 
-    color: #555; 
+    font-size: 1em;
+    line-height: 20px;
+    font-weight: normal;
+    color: #555;
     background-color: #eee;
     padding: 0.25em;
     margin-bottom: 0.25em;
@@ -101,7 +126,7 @@ section.main-content h1 {
     background-image: -o-linear-gradient(top, #F7F7ED, #F7F7E2);
     background-image: linear-gradient(top, #F7F7ED, #F7F7E2);
   }
-  
+
   h1 {
     height: 36px;
     margin: 5px 0 0 0;
@@ -109,15 +134,15 @@ section.main-content h1 {
     float: left;
     font-size: 0px;
     line-height: 0px;
-   
+
     a img {
       margin: 0 0 1px 0;
     }
-    a:hover img { 
+    a:hover img {
       margin: 1px 0 0 0;
     }
-  } 
-  
+  }
+
   ul.dropdown-menu{
     li {
       text-shadow: none;
@@ -133,18 +158,18 @@ section.main-content h1 {
 }
 
 .sub-header-space {
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
-.padding { 
-  padding-top: 30px 
+.padding {
+  padding-top: 30px
 }
 
-.style-grey { 
+.style-grey {
   color: grey;
 }
 
-.previous { 
+.previous {
   background-color: #EFEFDF;
 }
 
@@ -157,16 +182,16 @@ section.main-content h1 {
   display: inline;
 }
 
-.blocked { 
+.blocked {
   background-color: #F3D8D4;
 }
 
-.closed { 
+.closed {
   background-color: #F7F7ED;
 }
 
-.voting{ 
-  background-color: white; 
+.voting{
+  background-color: white;
 }
 
 .general-button {
@@ -192,7 +217,7 @@ section.main-content h1 {
   padding-bottom: 5px;
   border-bottom: 1px solid #eee;
   .btn {
-    float: right; 
+    float: right;
     margin: 4px 0 0 10px;
   }
 }
@@ -208,7 +233,7 @@ form {
     display: block;
 		padding: 0px;
   }
-  
+
   input, select, textarea {
 		font-size: $font-small;
 		height: auto;
@@ -217,8 +242,8 @@ form {
     margin-bottom: 15px;
     display:block;
   }
-  
-  textarea { 
+
+  textarea {
     height: 200px;
   }
 
@@ -227,13 +252,13 @@ form {
     margin-bottom: 15px;
     display: inline;
   }
-  
+
   input[type="submit"] {
     margin-top: 10px;
   }
-  
-  .checkbox-label { 
-    margin-left: 5px; 
+
+  .checkbox-label {
+    margin-left: 5px;
     display: inline;
   }
 	.privacy-settings{
@@ -244,7 +269,7 @@ form {
 	}
 }
 
-.hidden {
+.hidden, .hide {
   display: none;
 }
 
