@@ -99,22 +99,26 @@ section.main-content h1 {
 // navigation
 
 // topbar
-.margin-top{
-	margin-top: 50px;
-}
 .navbar .nav.pull-right{
 	margin:20px 0px 0px 0px;
 }
 .navbar-wrapper{
 	position: fixed;
 	width: 100%;
+	background-color: #F7F7ED;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
 }
 .navbar-inner{
 	border-radius: 0px;
 	background-color: #F7F7ED;
 	background-image: none;
 }
-.navbar-inner .container{
+.container{
+	width: 940px;
+	margin: 0px auto;
+	padding-top: 50px;
+}
+header{
 	width: 940px;
 	margin: 0px auto;
 }
