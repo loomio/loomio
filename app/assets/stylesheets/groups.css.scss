@@ -169,17 +169,17 @@ $font-large: 1.3em;
 }
 
 #sidebar {
-  #subgroups {
-    padding-bottom: 20px;
-  }
+  /*#subgroups {*/
+    /*padding-bottom: 20px;*/
+  /*}*/
   #user_email_input {
     display: inline;
-    .input {
-      display: inline;
-      margin-left: 0px;
-    }
+    /*.input {*/
+      /*display: inline;*/
+      /*margin-left: 0px;*/
+    /*}*/
     #user_email {
-      width: 270px;
+      width: 290px;
       margin-top: 5px;
     }
   }
