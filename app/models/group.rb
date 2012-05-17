@@ -30,7 +30,7 @@ class Group < ActiveRecord::Base
 
   acts_as_tagger
 
-  attr_accessible :name, :viewable_by, :parent
+  attr_accessible :name, :viewable_by, :parent_id, :parent
   attr_accessible :members_invitable_by, :email_new_motion
 
   #
