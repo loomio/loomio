@@ -13,14 +13,14 @@
         confirm: "Are you sure you wish to leave #{@group.name}?"
   .row
     .header-space
-      %section.span4.side-panel
+      %section.span4#content-left
         #sidebar
           - if @group.parent.nil?
             #subgroups
               =render 'subgroups', group: @group
           =render 'users', group: @group
 
-      %section.span8.main-content
+      %section.span8#content-main
         %h1 Discussions
         .general-button
           = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn small primary", id: "new-discussion"
