@@ -1,28 +1,26 @@
-#group-form.row.padding
+#group-form.row
   .span10
     =form_for(group) do |f|
       = f.label :name, "Group Name"
       .clearfix
         .presence-required= f.text_field :name, class: "input"
         .error-message Group can not be blank
-      %hr
       .privacy-settings
         %h2 Privacy Settings
         .setting.row
           .span6
-            %h4 Who can see this group?
+            %h3 Who can see this group?
           .span3
             =f.select :viewable_by, [:everyone, :members],
               member_label: Proc.new { |option| group_permissions_label(option) }
         .setting.row
           .span6
-            %h4 Who can invite members to this group?
+            %h3 Who can invite members to this group?
           .span3
             =f.select :members_invitable_by, [:members, :admins],
               member_label: Proc.new { |option| group_permissions_label(option) }
         =f.hidden_field :parent_id, :value => parent.id unless parent.nil?
-      %hr
-      %h2.notification-settings
+      .notification-settings
         = f.check_box :email_new_motion # TODO: check this by default
         = f.label :email_new_motion,
           "Email group members when a new motion is created in this group",
