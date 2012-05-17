@@ -1,7 +1,6 @@
 # Welcome to Loomio!
 
-Loomio is software that aims to enable democratic decision-making in
-groups and organizations of any size.
+Loomio is a free and open-source web application that helps groups make better decisions together.
 
 ## Installation
 
