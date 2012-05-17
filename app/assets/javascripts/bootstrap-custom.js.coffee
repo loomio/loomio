@@ -9,11 +9,4 @@ $ ->
 $ ->
   $(".alert-message").alert()
 $ ->
-  domModal = $(".modal").modal(
-    backdrop: true
-    closeOnEscape: true
-  )
-  $(".open-modal").click ->
-    domModal.toggle()
-$ ->
 	$(".btn").button "complete"
