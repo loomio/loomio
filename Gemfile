@@ -10,8 +10,6 @@ gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
 gem 'formtastic'
-gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
-gem 'formtastic-bootstrap'
 gem 'jqplot-rails'
 gem "rails-backbone"
 gem 'coffee-filter'
@@ -26,6 +24,8 @@ gem 'exception_notification'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
+  gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-sass', '~>2.0.3'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'modernizr-rails', '~> 2.0.6'
