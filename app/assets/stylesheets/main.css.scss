@@ -26,24 +26,36 @@ $baseline: 1.4;
   border: 1px solid red;
 }
 
+$font-tiny: 0.8em;
+$font-small: 0.9em;
+$font-medium: 1em;
+$font-large: 1.3em;
+
 body {
   background-color: white;
 }
 
 // typography
-
+h3, h4, h5, h6{
+	line-height: 1.8;
+}
 h1 {
+	font-weight:normal;
 }
 
 h2 { 
   color: #555;
+	font-size: $font-large;
 }
 
 h3 {
+	color: #888;
+	font-size: $font-medium;
 }
   
 h4 { 
-  color: #888; 
+   color: #888;
+	 font-size: $font-small;
 } 
 
 h5 { 
@@ -53,7 +65,9 @@ h5 {
 h7 { 
   color: grey; 
 }
-
+.sub_group{
+	font-size: $font-tiny;
+}
 section.main-content h1 {
   font-size: 1.2em; 
   line-height: 1em;
@@ -73,7 +87,7 @@ section.main-content h1 {
 
 .side-panel {
   h1 {
-    font-size: 16px; 
+    font-size: 1em; 
     line-height: 20px; 
     font-weight: normal; 
     color: #555; 
@@ -92,7 +106,7 @@ section.main-content h1 {
   .secondary-nav {
     margin-top: 3px;
     .feedback {
-      font-size: 0.8em;
+      font-size: $font-tiny;
       padding-top: 2px;
       margin-right: 15px;
       text-shadow: none;
@@ -105,7 +119,9 @@ section.main-content h1 {
     color: #FBA82C;
     text-shadow: none;
   }
-
+	div > ul a, .nav a{
+		padding: 18px 10px 6px;
+	}
   .topbar-inner {
     background-image: -moz-linear-gradient(top, #F7F7ED, #F7F7E2);
     background-image: -webkit-linear-gradient(top, #F7F7ED, #F7F7E2);
@@ -181,8 +197,8 @@ section.main-content h1 {
 }
 
 .general-button {
-  margin-left: 3px;
-  margin-top: 10px;
+  //margin-left: 3px;
+  //margin-top: 10px;
   padding-top: 3px;
   padding-bottom: 3px;
 }
@@ -194,31 +210,35 @@ section.main-content h1 {
   margin-top: -2px;
 }
 
-.btn.small { 
+.btn.small {
 }
 
 .group-title {
   color: #888;
   padding-top: 20px;
   padding-bottom: 5px;
-  border-bottom: 1px solid #BBB;
+  border-bottom: 1px solid #eee;
   .btn {
     float: right; 
-    margin: -12px 0 0 10px; 
+    margin: 4px 0 0 10px;
   }
 }
 
 form {
   label {
+		font-size: $font-small;
     width: 400px;
     text-align: left;
     float: none;
     color: #888;
     margin-bottom: 4px;
     display: block;
+		padding: 0px;
   }
   
   input, select, textarea {
+		font-size: $font-small;
+		height: auto;
     width: 400px;
     margin-left: 0px;
     margin-bottom: 15px;
@@ -243,6 +263,12 @@ form {
     margin-left: 5px; 
     display: inline;
   }
+	.privacy-settings{
+		border-bottom: 1px solid #EEEEEE;
+    border-top: 1px solid #EEEEEE;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+	}
 }
 
 .hidden {

@@ -1,7 +1,8 @@
 %h2.group-title
   = link_to @group.parent.name, group_path(@group), title: "group" unless @group.parent.nil?
   = " > " unless @group.parent.nil?
-  = link_to @group.name, group_path(@group)
+  %span.sub_group
+    = link_to @group.name, group_path(@group)
 = form_for @discussion do |f|
   .padding
     = f.label :title, "Title"
