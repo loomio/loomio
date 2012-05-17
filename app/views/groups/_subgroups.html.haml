@@ -1,4 +1,4 @@
-%h3.title-row Sub-groups
+%h1 Sub-groups
 %ul#group-list
   - group.subgroups.each do |subgroup|
     %li
@@ -6,4 +6,3 @@
 - if group.users.include?(current_user)
   = link_to "Create a Sub-group", group_add_subgroup_path(group),
     class: "btn primary small general-button"
-
