@@ -10,7 +10,7 @@
       =f.commit_button "Request membership", button_html: { class: "btn primary general-button" }
 
 - if group.can_invite_members?(current_user) && group.parent.blank?
-  %h3.title-row Add member
+  %h1 Add member
   = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
     = devise_error_messages!
     = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
@@ -19,11 +19,11 @@
     #button-invite= f.submit "Invite", class: "btn primary small general-button"
   - if group.membership_requests.present?
     #user-requests
-      %h4.title-row Membership requests
+      %h1 Membership requests
       %ul.unstyled{:id => "request-list"}
         =render :partial => 'membership_request', :collection => group.membership_requests
 
-%h3.title-row Current members
+%h1 Current members
 - unless group.parent.blank?
   %a.btn#add-member-popup-btn{"data-toggle" => "modal", href: "#invite-group-members"} Add members
 

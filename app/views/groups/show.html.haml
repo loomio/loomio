@@ -1,5 +1,5 @@
 #group
-  %h2.header-space.group-title
+  %h1.header-space.group-title
     = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
     = " > " unless @group.parent.nil?
     %span.sub_group
@@ -13,17 +13,17 @@
         confirm: "Are you sure you wish to leave #{@group.name}?"
   .row
     .header-space
-    .span4
-      #sidebar
-        - if @group.parent.nil?
-          #subgroups
-            =render 'subgroups', group: @group
-        =render 'users', group: @group
+      %section.span4.side-panel
+        #sidebar
+          - if @group.parent.nil?
+            #subgroups
+              =render 'subgroups', group: @group
+          =render 'users', group: @group
 
-    .span8
-      %h3.title-row Discussions
-      .general-button
-        = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn small primary", id: "new-discussion"
-      #discussions
-        - @group.discussions.each do |discussion|
-          =render discussion
+      %section.span8.main-content
+        %h1 Discussions
+        .general-button
+          = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn small primary", id: "new-discussion"
+        #discussions
+          - @group.discussions.each do |discussion|
+            =render discussion
