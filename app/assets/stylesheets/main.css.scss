@@ -99,15 +99,15 @@ section.main-content h1 {
 // navigation
 
 // topbar
+.margin-top{
+	margin-top: 50px;
+}
 .navbar .nav.pull-right{
 	margin:20px 0px 0px 0px;
 }
-.navbar{
+.navbar-wrapper{
 	position: fixed;
 	width: 100%;
-}
-#dashboard-home{
-	margin-top: 80px;
 }
 .navbar-inner{
 	border-radius: 0px;
