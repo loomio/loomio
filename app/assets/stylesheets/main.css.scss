@@ -43,14 +43,15 @@ h7 {
 .sub_group{
 	font-size: $font-tiny;
 }
-section.main-content h1 {
-  font-size: 1.4em;
-  line-height: 1em;
-  color: #888;
-  background-color: #F7F7ED;
-  padding: 0.25em;
+#content-main {
+  h1 {
+    font-size: 1.4em;
+    line-height: 1em;
+    color: #888;
+    background-color: #F7F7ED;
+    padding: 0.25em;
+  }
 }
-
 // structural elements (containers etc.)
 
 .panel {
@@ -61,7 +62,7 @@ section.main-content h1 {
   padding: 8px;
 }
 
-.side-panel {
+#content-left {
   h1 {
     font-size: 1em;
     line-height: 20px;
