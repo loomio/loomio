@@ -4,31 +4,7 @@
 
 // TODO:
 // * define site color variables
-// * move px to em where possible
 // * mixin for gradient
-// * mixins should be refactored to their own file
-//     refactor application.css first (remove require-tree)
-
-@mixin box-shadow($h-offset, $v-offset, $blur-distance, $color) {
-  @each $target in -moz-box-shadow -webkit-box-shadow box-shadow {
-    #{$target}: $h-offset $v-offset $blur-distance $color;
-  }
-}
-
-@mixin border-radius($radius) {
-  @each $target in -moz-border-radius -webkit-border-radius border-radius {
-    #{$target}: $radius;
-  }
-}
-
-@mixin debug {
-  border: 1px solid red;
-}
-
-$font-tiny: 0.8em;
-$font-small: 0.9em;
-$font-medium: 1em;
-$font-large: 1.3em;
 
 body {
   background-color: white;
