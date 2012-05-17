@@ -23,6 +23,5 @@
   %body{class: "#{controller_name} #{action_name}"}
     = render 'header'
     .container
-      .margin-top
-        = render 'flash_messages', :flash => flash
-        = yield
+      = render 'flash_messages', :flash => flash
+      = yield
