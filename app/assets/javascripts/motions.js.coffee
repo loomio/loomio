@@ -26,10 +26,12 @@ $ ->
     else
       #** Edit Moition **
       date = $("#motion_close_date").val()
+      date_offset = new Date()
+      offset = date_offset.getTimezoneOffset()/-60
       day = date.substring(8,10)
       month = date.substring(5, 7)
       year = date.substring(2,4)
-      hour = date.substring(11,13)
+      hour = (parseInt(date.substring(11,13)) + offset).toString()
       date_string = "#{day}-#{month}-#{year}"
       $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
       $("#input_date").datepicker("setDate", date_string)
@@ -53,20 +55,20 @@ $ ->
   #** Reload hidden close_date field **
   $("#input_date").change((e) ->
     date = $(this).val()
-    day = date.substring(0,2)
-    month = date.substring(3, 5)
-    year = date.substring(8,10)
-    hour = $("#date_hour").val()
-    local_datetime = Date(year + ", " + month + ", " + day + ", " + hour + ", 00, 00")
+    local_datetime = new Date()
+    local_datetime.setYear(date.substring(6,10))
+    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1).toString())
+    local_datetime.setDate(date.substring(0,2))
+    local_datetime.setHours($("#date_hour").val())
     $("#motion_close_date").val(local_datetime)
   )
   $("#date_hour").change((e) ->
     date = $("#input_date").val()
-    day = date.substring(0,2)
-    month = date.substring(3, 5)
-    year = date.substring(8,10)
-    hour = $(this).val()
-    local_datetime = Date(year + ", " + month + ", " + day + ", " + hour + ", 00, 00")
+    local_datetime = new Date()
+    local_datetime.setYear(date.substring(6,10))
+    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1).toString())
+    local_datetime.setDate(date.substring(0,2))
+    local_datetime.setHours($(this).val())
     $("#motion_close_date").val(local_datetime)
   )
 
