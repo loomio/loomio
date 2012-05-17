@@ -10,7 +10,7 @@
       =f.commit_button "Request membership", button_html: { class: "btn primary general-button" }
 
 - if group.can_invite_members?(current_user) && group.parent.blank?
-  %h3.title-row Add member
+  %h1 Add member
   = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
     = devise_error_messages!
     = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
@@ -19,32 +19,33 @@
     #button-invite= f.submit "Invite", class: "btn primary small general-button"
   - if group.membership_requests.present?
     #user-requests
-      %h4.title-row Membership requests
+      %h1 Membership requests
       %ul.unstyled{:id => "request-list"}
         =render :partial => 'membership_request', :collection => group.membership_requests
 
-%h3.title-row Current members
-- unless group.parent.blank?
-  #invite-group-members.modal.hide.fade
-    .modal-header
-      %a.close{:href => "#"} ×
-      %h3= "Select members to add to #{group.name}"
-    = form_tag add_members_group_path do
-      .modal-body
-        - group.parent.users.each do |member|
-          - unless member == current_user
-            .invite-member-checkbox-container
-              - is_member = false
-              - is_member = true if group.users_include?(member)
-              = check_box_tag "user_#{member.id}", 1, is_member, disabled: is_member
-              = label_tag "user_#{member.id}", member.name
-      .modal-footer
-        = submit_tag "Invite members", class: "btn primary"
 
-  %button.btn.small.primary#add-member-popup-btn{"data-backdrop" => "true", "data-controls-modal" => "invite-group-members", "data-keyboard" => "true"} Add members
+  %h1 Current members
+  - unless group.parent.blank?
+    #invite-group-members.modal.hide.fade
+      .modal-header
+        %a.close{:href => "#"} ×
+        %h3= "Select members to add to #{group.name}"
+      = form_tag add_members_group_path do
+        .modal-body
+          - group.parent.users.each do |member|
+            - unless member == current_user
+              .invite-member-checkbox-container
+                - is_member = false
+                - is_member = true if group.users_include?(member)
+                = check_box_tag "user_#{member.id}", 1, is_member, disabled: is_member
+                = label_tag "user_#{member.id}", member.name
+        .modal-footer
+          = submit_tag "Invite members", class: "btn primary"
 
-%ul.unstyled{:id => "users-list"}
-  =render :partial => 'membership',
-    :collection => group.memberships.sort! { |a,b| a.user_name.downcase <=> b.user_name.downcase },
-    :locals => { group: group }
+    %button.btn.small.primary#add-member-popup-btn{"data-backdrop" => "true", "data-controls-modal" => "invite-group-members", "data-keyboard" => "true"} Add members
+
+  %ul.unstyled{:id => "users-list"}
+    =render :partial => 'membership',
+      :collection => group.memberships.sort! { |a,b| a.user_name.downcase <=> b.user_name.downcase },
+      :locals => { group: group }
 
