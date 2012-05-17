@@ -102,8 +102,30 @@ section.main-content h1 {
 .navbar .nav.pull-right{
 	margin:20px 0px 0px 0px;
 }
+.navbar{
+	position: fixed;
+	width: 100%;
+}
+#dashboard-home{
+	margin-top: 80px;
+}
+.navbar-inner{
+	border-radius: 0px;
+	background-color: #F7F7ED;
+	background-image: none;
+}
+.navbar-inner .container{
+	width: 940px;
+	margin: 0px auto;
+}
 .navbar .nav > li > a{
 	padding: 2px 10px;
+	color: #F8AA17;
+	text-shadow: none;
+}
+.navbar .nav > li > a:hover{
+	color: #005580;
+	text-decoration: underline;
 }
 .main-logo{
 	float:left;
