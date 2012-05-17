@@ -99,7 +99,42 @@ section.main-content h1 {
 // navigation
 
 // topbar
-
+.navbar .nav.pull-right{
+	margin:20px 0px 0px 0px;
+}
+.navbar-wrapper{
+	position: fixed;
+	width: 100%;
+	background-color: #F7F7ED;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+}
+.navbar-inner{
+	border-radius: 0px;
+	background-color: #F7F7ED;
+	background-image: none;
+}
+.container{
+	width: 940px;
+	margin: 0px auto;
+	padding-top: 50px;
+}
+header{
+	width: 940px;
+	margin: 0px auto;
+}
+.navbar .nav > li > a{
+	padding: 2px 10px;
+	color: #F8AA17;
+	text-shadow: none;
+}
+.navbar .nav > li > a:hover{
+	color: #005580;
+	text-decoration: underline;
+}
+.main-logo{
+	float:left;
+	padding: 0 0 10px;
+}
 .topbar-wrapper {
   .secondary-nav {
     margin-top: 3px;

@@ -1,6 +1,4 @@
 $ ->
-  $(".topbar").scrollspy()
-$ ->
   $(".tabs").tabs()
 $ ->
   $("a[rel=popover]").popover offset: 10
