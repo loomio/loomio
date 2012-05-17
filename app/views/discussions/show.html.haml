@@ -2,8 +2,9 @@
   %h2
     = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
     = " > " unless @group.parent.nil?
-    = link_to @group.name, group_path(@group)
-  #discussion-title
+    %span.sub_group
+      = link_to @group.name, group_path(@group)
+  %h3#discussion-title
     = @discussion.title
 .row
   .span6#discussion-panel
