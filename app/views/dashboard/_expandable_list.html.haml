@@ -26,7 +26,7 @@
         .span4
           .pie{ :id => "vgraph_#{motion.id}" }
           .graph_tooltip{ :id => "tooltip_#{motion.id}" }
-          .jqplot-table-legend{ :style => 'grey' }
+          -#.jqplot-table-legend{ :style => 'grey' }
       %h7
         #dash_percentage_to_vote
           - group_size = motion.group_count
