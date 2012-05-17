@@ -5,6 +5,11 @@ $token-input-line-height: 10px;
 $token-input-font-size: 10px;
 $token-input-width: 278px;
 
+$font-tiny: 0.8em;
+$font-small: 0.9em;
+$font-medium: 1em;
+$font-large: 1.3em;
+
 .clear-both {
   clear: both;
   height: 15px;
@@ -186,7 +191,7 @@ $token-input-width: 278px;
     margin-bottom: 5px;
   }
   #button-invite {
-    padding-top: 8px;
+    padding: 8px 0;
     text-align: left;
     input {
       margin: 0px;
@@ -253,7 +258,7 @@ $token-input-width: 278px;
   }
   ul.membership-row li {
     display: block;
-    font-size: 14px;
+    font-size: $font-small;
     float: left;
   }
   ul.membership-row li.membership-admin-functions {
@@ -274,6 +279,7 @@ ul#group-list {
   .group-link{
     width: 90%;
     display: inline-block;
+		margin-bottom: 10px;
   }
   .group-link.disabled{
     a{

@@ -3,11 +3,10 @@
     #editable-user-row
       %ul.unstyled.membership-row
         %li.name-label
-          %h4
-            - if membership.user_name
-              = membership.user_name
-            - else
-              = membership.user_email
+          - if membership.user_name
+            = membership.user_name
+          - else
+            = membership.user_email
         - if current_user.is_group_admin?(group)
           %li.membership-admin-functions
             .btn-edit-delete
