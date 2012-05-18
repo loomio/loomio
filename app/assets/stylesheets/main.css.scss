@@ -80,6 +80,11 @@ h7 {
   }
 }
 
+#content-history {
+}
+
+#content-proposal {
+}
 // navigation
 
 // topbar
@@ -173,41 +178,16 @@ header{
 
 // misc (move stuff out of here..)
 
-.header-space {
-  margin-top: 15px;
-}
-
-.sub-header-space {
-  margin-top: 10px;
-}
-
-.padding {
-  padding-top: 30px
-}
-
-.style-grey {
-  color: grey;
-}
-
-.previous {
-  background-color: #EFEFDF;
+.bordered {
+  border-bottom: 1px solid lightgrey;
 }
 
 .presence-required {
   display: inline;
 }
 
-.btn-edit-delete {
-  float: right;
-  display: inline;
-}
-
 .blocked {
   background-color: #F3D8D4;
-}
-
-.closed {
-  background-color: #F7F7ED;
 }
 
 .voting{
