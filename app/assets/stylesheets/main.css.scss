@@ -50,6 +50,7 @@ h7 {
     color: #888;
     background-color: #F7F7ED;
     padding: 0.25em;
+    margin-bottom: 0.25em;
   }
 }
 // structural elements (containers etc.)
@@ -74,7 +75,8 @@ h7 {
   }
   .block {
     margin-bottom: 20px;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
+    ul { margin-bottom: 0.5em; }
   }
 }
 
@@ -211,13 +213,6 @@ header{
   background-color: white;
 }
 
-.general-button {
-  //margin-left: 3px;
-  //margin-top: 10px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-
 .error-message {
   display: inline-block;
   margin-left: 5px;
@@ -230,6 +225,7 @@ header{
   padding-top: 20px;
   padding-bottom: 5px;
   border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
   .btn {
     float: right;
     margin: 4px 0 0 10px;

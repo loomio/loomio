@@ -8,16 +8,6 @@ $token-input-line-height: 10px;
 $token-input-font-size: 10px;
 $token-input-width: 278px;
 
-$font-tiny: 0.8em;
-$font-small: 0.9em;
-$font-medium: 1em;
-$font-large: 1.3em;
-
-.clear-both {
-  clear: both;
-  height: 15px;
-}
-
 /**** Group admin ****/
 #group {
   #right-panel {
@@ -165,26 +155,26 @@ $font-large: 1.3em;
   input, label { display: inline }
 }
 
-#sidebar {
-  #user_email_input {
-    display: inline;
-    #user_email {
-      width: 290px;
-    }
+#user_email_input {
+  display: inline;
+  #user_email {
+    width: 290px;
   }
-  input#user_email{
-    margin-bottom: 5px;
-  }
-  #users-list {
-    li {
-      font-size: $font-medium;
-      #editable-user-row{
-        #membership-admin-functions {
-          float: right;
-          .btn {
-            padding-top: 3px;
-            padding-bottom: 3px;
-          }
+}
+input#user_email{
+  margin-bottom: 5px;
+}
+#users-list {
+  li {
+    font-size: $font-medium;
+    padding-bottom: 5px;
+    #editable-user-row{
+      #membership-admin-functions {
+        float: right;
+        .btn {
+          font-size: $font-tiny;
+          padding-top: 1px;
+          padding-bottom: 1px;
         }
       }
     }
