@@ -2,8 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-current_tags = ""
-current_tag_filter = "active"
 $ ->
   $(".error-message").hide()
   if $("#motion-form").length > 0
@@ -24,7 +22,7 @@ $ ->
       $("#date_hour").val(hours)
       $("#motion_close_date").val(datetime)
     else
-      #** Edit Moition **
+      #** Edit Motion **
       date = $("#motion_close_date").val()
       date_offset = new Date()
       offset = date_offset.getTimezoneOffset()/-60
@@ -37,9 +35,9 @@ $ ->
       $("#input_date").datepicker("setDate", date_string)
       $("#date_hour").val(hour)
 
-
-  #** presnece validations: use this function any where just assign the class .presence-required
-  #   to the text field in question and the .check-presence to the submit button **
+#** presence validations: use this function any where just assign the class .presence-required
+#   to the text field in question and the .check-presence to the submit button **
+$ ->
   $(".check-presence").click((event, ui) ->
     if $(".presence-required").children().first().val() == ""
       $(".clearfix").addClass("error")
@@ -47,12 +45,14 @@ $ ->
       false
   )
 
+$ ->
   $(".presence-required").keyup(() ->
     $(".clearfix").removeClass("error")
     $(".error-message").hide()
   )
 
-  #** Reload hidden close_date field **
+#** Reload hidden close_date field **
+$ ->
   $("#input_date").change((e) ->
     date = $(this).val()
     local_datetime = new Date()
@@ -62,6 +62,8 @@ $ ->
     local_datetime.setHours($("#date_hour").val())
     $("#motion_close_date").val(local_datetime)
   )
+
+$ ->
   $("#date_hour").change((e) ->
     date = $("#input_date").val()
     local_datetime = new Date()
@@ -72,33 +74,15 @@ $ ->
     $("#motion_close_date").val(local_datetime)
   )
 
-  #** expand motion row on dashboard and match colour for legend **
-  $(".bordered").click((event, ui) ->
-    expandableRow = $(this).children().last()
-    expandableRow.toggle()
-    if expandableRow.is(":visible")
-      graph_legend = $(this).find(".jqplot-table-legend")
-      if $(this).hasClass('blocked')
-        graph_legend.addClass('blocked')
-      else if $(this).hasClass('voting')
-        graph_legend.addClass('voting')
-      else
-        graph_legend.addClass('closed')
-  )
+#** character count for statement on discussion:show page **
+pluralize_characters = ((num) ->
+  if(num == 1)
+    return num + " character"
+  else
+    return num + " characters"
+)
 
-  #** prevent expansion of motion **
-  $(".no-toggle").click((event) ->
-    event.stopPropagation()
-  )
-
-  #** character count for statement on discussion:show page **
-  pluralize_characters = ((num) ->
-    if(num == 1)
-      return num + " character"
-    else
-      return num + " characters"
-  )
-
+$ ->
   display_count = ((num) ->
     if(num >= 0)
       $(".character_counter").text(pluralize_characters(num) + " left")
@@ -109,12 +93,14 @@ $ ->
       $(".clearfix").addClass("error")
   )
 
+$ ->
   $(".limited").keyup(() ->
     chars = $(".limited").val().length
     left = 249 - chars
     display_count(left)
   )
 
+$ ->
   $(".vote").click((event) ->
     if $(".clearfix").hasClass("error")
       $('#new_vote').preventDefault()
@@ -122,8 +108,8 @@ $ ->
       $('#new_vote').submit()
   )
 
-  #** character count for title on discussion:new page **
-
+#** character count for title on discussion:new page **
+$ ->
   $(".limit").keyup(() ->
     $(".error-message").hide()
     chars = $(".limit").val().length
@@ -137,76 +123,13 @@ $ ->
       $(".clearfix").addClass("error")
   )
 
-  #** tagging stuff **
-  #if $("#motion").length > 0
-    #$(".group-tags button").not(".not-used").each (index, element) ->
-      #$(element).click (event, element)->
-        ##event.preventDefault()
-        #processTagSelection(this)
-
-  #processTagSelection = (current_element) ->
-    #current_tag = current_element.innerText
-
-    #if (current_tag == "everyone")
-      #current_tags = ""
-    #else if ( current_tags.indexOf(current_tag) == -1)
-      #current_tags += ".#{current_tag}"
-    #else
-      #current_tags = current_tags.replace(".#{current_tag}", "")
-
-    #showVotesBasedOnTag(current_tags)
-    #toggleTagClasses(current_element, current_tag, current_tags)
-    #refreshStatsGraph()
-
-  #showVotesBasedOnTag = (tag_names) ->
-    #if (tag_names == "")
-      #$("#votes-table tr").each (index, element) ->
-        #$(element).show()
-    #else
-      #$("#votes-table tr.everyone").each (index, element) ->
-        #$(element).hide()
-      #$(current_tags.split(".")).each (index, element) ->
-        #if (element != "")
-          #$("#votes-table .#{element}").fadeIn()
-
-  #toggleTagClasses = (current_element, current_tag, current_tags) ->
-    #if ( current_tag == "everyone" && current_element.className != current_tag_filter)
-      #$(".group-tags button").each (index, element) ->
-        #$(element).removeClass(current_tag_filter)
-    #else
-      ##set the everyone link to not active
-      #$(".group-tags #everyone").removeClass(current_tag_filter)
-    #$(current_element).toggleClass(current_tag_filter)
-    #if ( current_tags == "" && current_tag != "everyone" )
-      #$(".group-tags #everyone").addClass(current_tag_filter)
-
-  #refreshStatsGraph = ->
-    #yes_count = getVoteCount("yes")
-    #abstain_count = getVoteCount("abstain")
-    #no_count = getVoteCount("no")
-    #block_count = getVoteCount("block")
-
-    #filtered_stats_data = [["Yes (#{yes_count})", yes_count, "Yes"], ["Abstain (#{abstain_count})", abstain_count, "Abstain"], ["No (#{no_count})", no_count, "No"], ["Block (#{block_count})", block_count, "Block"]]
-
-    #$('#graph').empty()
-
-    #this.pie_graph_view = new Tautoko.Views.Utils.GraphView
-      #el: '#graph.pie'
-      #id_string: 'graph'
-      #legend: true
-      #data: filtered_stats_data
-      #type: 'pie'
-      #tooltip_selector: '#tooltip'
-
-  #getVoteCount = (vote_type) ->
-    #vote_count = 0
-    #if ($("#votes-table img[alt='#{vote_type} image']").is(":visible"))
-      #vote_count = $("#votes-table img[alt='#{vote_type} image']").length
-    #return vote_count
-
-  # NOTE (Jon): We should implement a better method for scoping javascript to specific pages
-  # http://stackoverflow.com/questions/6167805/using-rails-3-1-where-do-you-put-your-page-specific-javascript-code
+# NOTE (Jon): We should implement a better method for scoping javascript to specific pages
+# http://stackoverflow.com/questions/6167805/using-rails-3-1-where-do-you-put-your-page-specific-javascript-code
+$ ->
   if $("#motion").length > 0
     $("#description").html(linkify_html($("#description").html()))
     $(".comment-body").each(-> $(this).html(linkify_html($(this).html())))
 
+$ ->
+  $(".vote").popover
+    placement: "top"
