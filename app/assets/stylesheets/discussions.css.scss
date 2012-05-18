@@ -18,15 +18,7 @@
   }
 }
 
-#discussion-title {
-  padding-top: 4px;
-}
-
-#group-name {
-  margin-left: 7px;
-  margin-top: -6px;
-  a { color: #888 }
-}
+.content-discussion { margin-top: -20px; }
 
 #discussion-panel {
   padding-top: 20px;
@@ -64,9 +56,11 @@
       font-weight: bold;
     }
     .comment-time{
+      font-size: $font-tiny;
       color: grey;
     }
     .comment-likes{
+      font-size: $font-tiny;
       color: grey;
     }
   }
@@ -98,6 +92,15 @@
 /*** motion panel - discussion:show page ***/
 
 #motion-panel{
+  h1 {
+    font-size: 1em;
+    line-height: 20px;
+    font-weight: normal;
+    color: #888;
+    background-color: #F7F7ED;
+    padding: 0.25em;
+    margin-bottom: 0.25em;
+  }
   padding-top: 20px;
   padding-left: 19px;
   border-left: 1px solid lightgrey;
@@ -124,25 +127,22 @@
     }
     h2 { display: inline }
     #info {
+      color: #888;
       #proposed-by {
         margin-top: 8px;
-      }
-      p {
-        color: #888;
+        font-size: $font-tiny;
         margin-bottom: 0px;
       }
       #closing-info {
         line-height: 16px;
-        p {
-          display: inline;
-        }
-        #admin-buttons{
-          text-align: right;
-          margin-top: 20px;
-          .btn {
-            padding-top: 3px;
-            padding-bottom: 3px;
-          }
+        display: inline;
+      }
+      #admin-buttons{
+        text-align: right;
+        margin-top: 20px;
+        .btn {
+          padding-top: 3px;
+          padding-bottom: 3px;
         }
       }
     }
@@ -222,7 +222,7 @@
       .no-position-row {
         width: 100%;
         min-height: 29px;
-        .icon-no-position {
+        .no-position {
           padding-left: 4px;
           float: left;
           margin-top: 4px;
@@ -248,6 +248,7 @@
   .motion-row {
     color: #888;
     .close-date {
+      font-size: $font-tiny;
     }
   }
 }
