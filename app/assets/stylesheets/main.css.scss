@@ -16,6 +16,8 @@ h3, h4, h5, h6{
 }
 h1 {
 	font-weight:normal;
+	float:left;
+	padding: 0 0 10px;
 }
 
 h2 {
@@ -108,10 +110,6 @@ header{
 .navbar .nav > li > a:hover{
 	color: #005580;
 	text-decoration: underline;
-}
-.main-logo{
-	float:left;
-	padding: 0 0 10px;
 }
 .topbar-wrapper {
   .secondary-nav {
