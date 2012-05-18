@@ -80,6 +80,11 @@ h7 {
   }
 }
 
+#content-history {
+}
+
+#content-proposal {
+}
 // navigation
 
 // topbar
@@ -172,6 +177,10 @@ header{
 
 
 // misc (move stuff out of here..)
+
+.bordered {
+  border-bottom: 1px solid lightgrey;
+}
 
 .presence-required {
   display: inline;
