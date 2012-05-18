@@ -1,6 +1,6 @@
 .navbar-wrapper
   %header.navbar{:data => {:dropdown =>'dropdown'}}   
-    %h1.main-logo
+    %h1
       = link_to image_tag("top-bar-loomio.png", :alt => "Loomio"), "/"
     %ul.nav.secondary-nav.pull-right
       - if user_signed_in?
