@@ -34,21 +34,19 @@ $token-input-width: 278px;
 #discussions {
   padding-bottom: 30px;
   .discussion {
+    #group-name { font-size: $font-small; a { color: grey; } }
     padding-right: 5px;
     .discussion-title-container {
       display: inline;
       .discussion-title {
-        padding-left: 7px;
         padding-top: 3px;
         display: inline;
       }
     }
     .proposal-container {
-      margin-top: -4px;
       padding-left: 7px;
       padding-bottom: 7px;
-      font-size: 13px;
-      line-height: 16px;
+      font-size: $font-small;
       min-height: 30px;
       color: #BBB;
       .vote-icon {
