@@ -72,6 +72,10 @@ h7 {
     padding: 0.25em;
     margin-bottom: 0.25em;
   }
+  .block {
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
 }
 
 // navigation
@@ -219,9 +223,6 @@ header{
   margin-left: 5px;
   color: firebrick;
   margin-top: -2px;
-}
-
-.btn.small {
 }
 
 .group-title {
