@@ -6,7 +6,7 @@
     - class_name = " blocked"
 %div{ class: "discussion panel" + class_name }
   .discussion-title-container
-    %h4.discussion-title
+    .discussion-title
       - title = truncate(discussion.title, :length => 75, :separator => ' ')
       = link_to title, discussion_path(discussion)
       .alert-info
