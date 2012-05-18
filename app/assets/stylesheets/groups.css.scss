@@ -102,38 +102,29 @@ $token-input-width: 278px;
     }
   }
   .alert-info {
-    width: 32px;
-    height: 20px;
-    display: block;
     float: right;
     background-color: white;
-    .discussion-enabled-icon {
-      background: url("discussion.png");
-      background-size: 20px;
-      background-position-y: 10px;
-      background-position-x: -2px;
+
+    .discussion-icon-container {
+      background-size: 25px;
+      background-position: 0px 5px;
       background-repeat: no-repeat;
-    }
-    .discussion-disabled-icon {
-      background: url("discussion-disabled.png");
-      background-size: 20px;
-      background-position-y: 10px;
-      background-position-x: -2px;
-      background-repeat: no-repeat;
-    }
-    .discussion-icon-container{
-      display: block;
-      margin-left: 6px;
-      margin-top: -7px;
+      width: 32px;
       height: 30px;
-      width: 20px;
+    }
+
+    .discussion-enabled-icon {
+      background-image: url("discussion.png");
+    }
+
+    .discussion-disabled-icon {
+      background-image: url("discussion-disabled.png");
     }
   }
   #activity-count {
+    width: 5px;
     height: 12px;
-    font-size: 7px;
-    display: inline;
-    margin-left: 12px;
+    font-size: 8px;
   }
 }
 
