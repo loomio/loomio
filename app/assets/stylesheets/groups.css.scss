@@ -42,7 +42,6 @@ $font-large: 1.3em;
 /**** Group page ****/
 
 #discussions {
-  margin-top: 20px;
   padding-bottom: 30px;
   .discussion {
     padding-right: 5px;
@@ -149,7 +148,6 @@ $font-large: 1.3em;
 
 #add-member-popup-btn {
   margin-top: 5px;
-  margin-bottom: 5px;
 }
 
 #invite-group-members {
@@ -178,23 +176,24 @@ $font-large: 1.3em;
     #member-email-input { padding-top: 10px; }
     #user-list{ padding-top: 4px; }
   }
-  #request-list {
-    margin-top: 8px;
-  }
   input#user_email{
     margin-bottom: 5px;
   }
-  #member-requests{ margin-top: 5px; display: inline; }
   #users-list {
-    margin-top: 15px;
-  }
-  #membership-admin-functions {
-    .btn {
-      padding-top: 3px;
-      padding-bottom: 3px;
+    li {
+      font-size: $font-medium;
+      #editable-user-row{
+        margin-top: -10px;
+        #membership-admin-functions {
+          float: right;
+          .btn {
+            padding-top: 3px;
+            padding-bottom: 3px;
+          }
+        }
+      }
     }
   }
-  #editable-user-row{ margin-top: -10px; }
 }
 
 /**** group dashboard ****/
@@ -204,7 +203,7 @@ $font-large: 1.3em;
  */
 ul#group-list {
   margin-bottom: 2px;
-  .group-link{
+  .group -link{
     width: 90%;
     display: inline-block;
 		margin-bottom: 10px;
@@ -215,7 +214,7 @@ ul#group-list {
     }
   }
   li{
-    font-size: 14px;
+    font-size: $font-small;
     line-height: 16px;
     margin-top: 4px;
     list-style-type: none;
@@ -223,7 +222,7 @@ ul#group-list {
       margin-left: 0px;
       li {
         margin-top: 2px;
-        font-size: 12px;
+        font-size: $font-tiny;
         padding-left: 17px;
         background: url('list-item-bullet-tree.png') no-repeat top left;
       }
