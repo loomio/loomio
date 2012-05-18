@@ -172,10 +172,6 @@ $font-large: 1.3em;
       width: 290px;
     }
   }
-  #user-form{
-    #member-email-input { padding-top: 10px; }
-    #user-list{ padding-top: 4px; }
-  }
   input#user_email{
     margin-bottom: 5px;
   }
@@ -183,7 +179,6 @@ $font-large: 1.3em;
     li {
       font-size: $font-medium;
       #editable-user-row{
-        margin-top: -10px;
         #membership-admin-functions {
           float: right;
           .btn {
