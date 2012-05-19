@@ -11,49 +11,20 @@ body {
 }
 
 // typography
-h3, h4, h5, h6{
-	line-height: 1.8;
-}
 h1 {
-	font-weight:normal;
-	/*float:left;*/
-	padding: 0 0 10px;
+	font-weight: normal;
+  line-height: 1.2em;
 }
 
 h2 {
   color: #555;
+  font-weight: normal;
 	font-size: $font-large;
+  line-height: 1.2em;
 }
 
-h3 {
-	color: #888;
-	font-size: $font-medium;
-}
-
-h4 {
-   color: #888;
-	 font-size: $font-small;
-}
-
-h5 {
-  color: #888;
-}
-
-h7 {
-  color: grey;
-}
 .sub_group{
 	font-size: $font-tiny;
-}
-#content-main {
-  h1 {
-    font-size: 1.4em;
-    line-height: 1em;
-    color: #888;
-    background-color: #F7F7ED;
-    padding: 0.25em;
-    margin-bottom: 0.25em;
-  }
 }
 // structural elements (containers etc.)
 
@@ -65,20 +36,134 @@ h7 {
   padding: 8px;
 }
 
-#content-left {
+#content-main {
   h1 {
-    font-size: 1em;
-    line-height: 20px;
-    font-weight: normal;
+    font-size: $font-large;
     color: #888;
     background-color: #F7F7ED;
     padding: 0.25em;
-    margin-bottom: 0.25em;
+    margin-bottom: 0.5em;
   }
-  .block {
-    margin-bottom: 20px;
-    /*margin-top: 10px;*/
-    ul { margin-bottom: 0.5em; }
+  .btn { margin-bottom: 15px; }
+}
+
+#content-left {
+  color: #888;
+  font-size: $font-small;
+  h1 {
+    font-size: $font-medium;
+    background-color: #F7F7ED;
+    padding: 0.25em;
+    margin-bottom: 0.5em;
+  }
+  .block { margin-bottom: 20px; }
+  ul { margin-bottom: 0.6em; }
+  li { padding-bottom: 4px; }
+  #membership-admin-functions {
+    float: right;
+    .btn {
+      font-size: $font-tiny;
+    }
+  }
+}
+#content-proposal {
+  color: #888;
+  h1 {
+    font-size: $font-medium;
+    background-color: #F7F7ED;
+    padding: 0.25em;
+    margin-bottom: 0.5em;
+  }
+}
+
+// group title
+.group-title {
+  color: #888;
+  a { color: #888; }
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+  .btn {
+    font-size: $font-tiny;
+    float: right;
+    margin-left: 4px;
+  }
+}
+
+// discussion panel
+.discussion {
+  color: #888;
+  #group-name {
+    font-size: $font-small;
+    a { color: grey; }
+    margin-top: -0.3em;
+    padding-left: 5px;
+  }
+  #discussion-title {
+    padding-left: 5px;
+  }
+  #proposal-container {
+    padding-left: 7px;
+    padding-bottom: 7px;
+    font-size: $font-small;
+    min-height: 30px;
+    color: #BBB;
+  }
+  #vote-icon {
+    padding-top: 4px;
+    display: inline-block;
+    height: 16px;
+    width: 20px;
+    float: left;
+  }
+  #no-vote-space { width: 20px; }
+  #proposal-title-container {
+    margin-left: 12px;
+    display: inline-block;
+    width: 400px;
+  }
+  #proposal-label {
+    font-style: italic;
+  }
+  #proposal-title {
+    color: #888;
+  }
+  #proposal-close-date {
+    margin-top: -0.4em;
+    font-size: $font-tiny;
+  }
+  #comment-info {
+    display: inline-block;
+    margin-top: -4px;
+    float: right;
+    padding-right: 5px;
+    font-size: $font-tinywiny;
+  }
+  #total-comments {
+    margin-top: -9px;
+  }
+  #alert-info {
+    float: right;
+  }
+  #discussion-icon-container {
+    background-size: 25px;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 30px;
+  }
+  .discussion-enabled-icon {
+    background-image: url("discussion.png");
+  }
+  .discussion-disabled-icon {
+    background-image: url("discussion-disabled.png");
+  }
+  #activity-count {
+    margin-left: 18px;
+    width: 4px;
+    height: 10px;
+    font-size: 0.5em;
+    padding: 0.4em;
+    padding-top: 0.1em;
   }
 }
 
@@ -103,7 +188,7 @@ h7 {
 .container{
 	width: 940px;
 	margin: 0px auto;
-	padding-top: 70px;
+	padding-top: 90px;
 }
 header{
 	width: 940px;
@@ -148,7 +233,7 @@ header{
   h1 {
     height: 36px;
     margin: 5px 0 0 0;
-    padding: 0px;
+    padding-bottom: 10px;
     float: left;
     font-size: 0px;
     line-height: 0px;
@@ -164,6 +249,7 @@ header{
   ul.dropdown-menu{
     li {
       text-shadow: none;
+      padding-bottom: 10px;
     }
   }
 }
@@ -172,7 +258,7 @@ header{
 // misc (move stuff out of here..)
 
 .bordered {
-  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
 }
 
 .presence-required {
@@ -194,17 +280,6 @@ header{
   margin-top: -2px;
 }
 
-.group-title {
-  color: #888;
-  padding-top: 20px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
-  .btn {
-    float: right;
-    margin: 4px 0 0 10px;
-  }
-}
 
 form {
   label {
@@ -237,9 +312,9 @@ form {
     display: inline;
   }
 
-  input[type="submit"] {
-    margin-top: 10px;
-  }
+  /*input[type="submit"] {*/
+    /*margin-top: 10px;*/
+  /*}*/
 
   .checkbox-label {
     margin-left: 5px;
