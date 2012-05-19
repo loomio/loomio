@@ -2,7 +2,7 @@
 - group_link_class = "group-link"
 - if current_user && (!current_user.groups.include?(group))
   - group_link_class = "group-link disabled"
-%div{class: group_link_class}= group.link
+%span{class: group_link_class}= group.link
 - if current_user && current_user.groups.include?(group)
   = link_to "+",
     new_motion_path({group_id: group.id}),
