@@ -4,7 +4,9 @@
 .presence-required.input { margin-left: 0px; display: inline; }
 .clearfix { padding-top: 0px; padding-bottom: 0px; }
 
+
 /** new proposal form*/
+
 #new-proposal-title {
   .input { margin-left: 0px; }
   .clearfix { padding-top: 0px; padding-bottom: 0px; }
@@ -19,83 +21,97 @@
 }
 
 .content-discussion { margin-top: -20px; }
-.discussion-title { font-size: $font-medium; }
+.discussion-title {
+  font-size: $font-large;
+  color: #555;
+}
 
-#discussion-panel {
+
+/*** proposal ***/
+
+#content-comments {
   padding-top: 20px;
   padding-right: 20px;
 
   #new-comment-form{
     margin-bottom: 8px;
-
-    #new-comment{
-      width: 450px;
-			max-width: 450px;
-      height: 80px;
-      line-height: 16px;
-      color: black;
-    }
-
-    #new-comment-submit{
-      margin-top: -2px;
-      text-align: right;
-      .submit{
-        margin-top: 8px;
-      }
+  }
+  #new-comment{
+    width: 450px;
+    max-width: 450px;
+    height: 80px;
+    color: black;
+  }
+  #new-comment-submit{
+    margin-top: -2px;
+    text-align: right;
+    .submit{
+      margin-top: 8px;
     }
   }
-
   .comment{
     background-color: #EEE;
     margin-bottom: 2px;
     padding: 4px;
-
-    p, span {
-      margin-bottom: 0px;
-    }
+    font-size: $font-small;
     .comment-username{
       font-weight: bold;
+      float: left;
+    }
+    #comment-body{
+      margin-left: 0.4em;
+      display: inline-block;
     }
     .comment-time{
-      font-size: $font-tiny;
       color: grey;
+      font-size: 0.75em;
     }
     .comment-likes{
-      font-size: $font-tiny;
       color: grey;
+      font-size: 0.75em;
     }
   }
 
   .position{
-    .clear { clear: both; }
-    .position-icon{
+    #position{
       float: left;
+      padding-right: 0.4em;
+      display: block;
     }
-    .position-message{
-      float: left;
-      margin-top: 2px;
-      margin-left: 2px;
+    #position-message{
+      color: black;
+      padding-left: 0.4em;
+      display: inline-block;
     }
   }
 
   .proposal{
     background: #EEE;
-    color: #777;
+    color: #888;
     margin-bottom: 6px;
-    .proposal-author{ font-weight: bold; }
-    .proposal-label{ color: #777; }
-    .proposal-text{ font-style: italic; }
+    #proposal-author{
+      font-weight: bold;
+    }
+    #proposal-label{
+      color: #888;
+      margin-left: 0.4em;
+      display: inline-block;
+    }
+    #proposal-text{
+      color: #555;
+      margin-left: 0.4em;
+      font-style: italic;
+    }
   }
   .proposal.current{ background: #FFFFFF; }
 }
 
 
-/*** motion panel - discussion:show page ***/
+/*** proposal ***/
 
-#motion-panel{
+#content-proposal{
   h1 {
     font-size: 1em;
-    line-height: 20px;
     font-weight: normal;
     color: #888;
     background-color: #F7F7ED;
@@ -136,7 +152,6 @@
         margin-bottom: 0px;
       }
       #closing-info {
-        line-height: 16px;
         display: inline;
       }
       #admin-buttons{
