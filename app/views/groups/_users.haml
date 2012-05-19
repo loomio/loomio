@@ -4,11 +4,11 @@
   - if membership_request.present?
     = link_to "Membership Requested", membership_request, method: :delete,
       confirm: "Are you sure you wish to withdraw your membership request from this group?",
-      class: "btn small", id: "membership-requested"
+      class: "btn btn-small", id: "membership-requested"
   - else
     =semantic_form_for(Membership.new) do |f|
       %input{name: "membership[group_id]", type: :hidden, value: group.id}
-      =f.commit_button "Request membership", button_html: { class: "btn primary general-button" }
+      =f.commit_button "Request membership", button_html: { class: "btn btn-small" }
 
 - if group.can_invite_members?(current_user) && group.parent.blank?
   .block
@@ -17,7 +17,7 @@
       = devise_error_messages!
       = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
       = f.input :email, placeholder: "Email address", label: false
-      = f.submit "Invite", class: "btn primary small"
+      = f.submit "Invite", class: "btn btn-small"
       %input#group_id{ type: "hidden", value: group.id }
     - if group.membership_requests.present?
       .block#user-requests
@@ -44,7 +44,7 @@
                 = check_box_tag "user_#{member.id}", 1, is_member, disabled: is_member
                 = label_tag "user_#{member.id}", member.name
         .modal-footer
-          = submit_tag "Invite members", class: "btn primary"
+          = submit_tag "Invite members", class: "btn btn-small"
 
 
   %ul.unstyled{:id => "users-list"}

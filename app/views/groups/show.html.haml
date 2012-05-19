@@ -1,27 +1,25 @@
-#group
-  %h1.group-title
+.group-title
+  %h2
     = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
     = " > " unless @group.parent.nil?
-    %span.sub_group
-      = @group.name
+  %span
+    = @group.name
+  - if @group.can_be_edited_by? current_user
+    = link_to "Edit group", edit_group_path(@group), class: "btn btn-mini"
+  - if @group.users_include? current_user
+    - membership = current_user.group_membership(@group)
+    = link_to "Leave group", membership, method: :delete, class: "btn btn-mini",
+      confirm: "Are you sure you wish to leave #{@group.name}?"
+.row
+  %section.span4#content-left
+    - if @group.parent.nil?
+      .block
+        =render 'subgroups', group: @group
+    =render 'users', group: @group
 
-    - if @group.can_be_edited_by? current_user
-      = link_to "Edit group", edit_group_path(@group), class: "btn small"
-    - if @group.users_include? current_user
-      - membership = current_user.group_membership(@group)
-      = link_to "Leave group", membership, method: :delete, class: "btn small",
-        confirm: "Are you sure you wish to leave #{@group.name}?"
-  .row
-    %section.span4#content-left
-      - if @group.parent.nil?
-        .block
-          =render 'subgroups', group: @group
-      =render 'users', group: @group
-
-    %section.span8#content-main
-      %h1 Discussions
-      .general-button
-        = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn small primary", id: "new-discussion"
-      #discussions
-        - @group.discussions.each do |discussion|
-          =render discussion
+  %section.span8#content-main
+    %h1 Discussions
+    = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn btn-info", id: "new-discussion"
+    #discussions
+      - @group.discussions.each do |discussion|
+        =render discussion
