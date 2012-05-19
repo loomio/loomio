@@ -13,13 +13,14 @@ body {
 // typography
 h1 {
 	font-weight: normal;
-	padding: 0 0 10px;
+  line-height: 1.2em;
 }
 
 h2 {
   color: #555;
   font-weight: normal;
 	font-size: $font-large;
+  line-height: 1.2em;
 }
 
 .sub_group{
@@ -37,8 +38,7 @@ h2 {
 
 #content-main {
   h1 {
-    font-size: 1.2em;
-    line-height: 1em;
+    font-size: $font-large;
     color: #888;
     background-color: #F7F7ED;
     padding: 0.25em;
@@ -51,9 +51,7 @@ h2 {
   color: #888;
   font-size: $font-small;
   h1 {
-    font-size: 1em;
-    line-height: 20px;
-    font-weight: normal;
+    font-size: $font-medium;
     background-color: #F7F7ED;
     padding: 0.25em;
     margin-bottom: 0.5em;
@@ -68,10 +66,20 @@ h2 {
     }
   }
 }
+#content-proposal {
+  color: #888;
+  h1 {
+    font-size: $font-medium;
+    background-color: #F7F7ED;
+    padding: 0.25em;
+    margin-bottom: 0.5em;
+  }
+}
 
 // group title
 .group-title {
   color: #888;
+  a { color: #888; }
   padding-bottom: 0.5em;
   border-bottom: 1px solid #eee;
   margin-bottom: 20px;
@@ -250,7 +258,7 @@ header{
 // misc (move stuff out of here..)
 
 .bordered {
-  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
 }
 
 .presence-required {
