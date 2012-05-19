@@ -21,7 +21,6 @@ class GroupsController < GroupBaseController
   def add_subgroup
     @parent = Group.find(params[:group_id])
     @subgroup = Group.new(:parent => @parent)
-    @subgroup.viewable_by = @parent.viewable_by
     @subgroup.members_invitable_by = @parent.members_invitable_by
   end
 
