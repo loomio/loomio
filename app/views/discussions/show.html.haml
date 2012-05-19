@@ -1,11 +1,11 @@
+%h1#discussion-title
+  = @discussion.title
 .group-title
-  %h1
+  %h2
     = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
     = " > " unless @group.parent.nil?
     %span.sub_group
       = link_to @group.name, group_path(@group)
-  %h1#discussion-title
-    = @discussion.title
 .row.content-discussion
   .span6#discussion-panel
     - if @discussion.can_be_commented_on_by? current_user

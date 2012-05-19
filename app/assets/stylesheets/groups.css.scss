@@ -8,13 +8,6 @@ $token-input-line-height: 10px;
 $token-input-font-size: 10px;
 $token-input-width: 278px;
 
-/**** Group admin ****/
-#group {
-  #right-panel {
-    #membership-requested { width: 200px; }
-  }
-}
-
 #group-form {
   form {
     width: 550px;
@@ -33,97 +26,6 @@ $token-input-width: 278px;
 
 #discussions {
   padding-bottom: 30px;
-  .discussion {
-    #group-name { font-size: $font-small; a { color: grey; } }
-    padding-right: 5px;
-    .discussion-title-container {
-      display: inline;
-      .discussion-title {
-        padding-top: 3px;
-        display: inline;
-      }
-    }
-    .proposal-container {
-      padding-left: 7px;
-      padding-bottom: 7px;
-      font-size: $font-small;
-      min-height: 30px;
-      color: #BBB;
-      .vote-icon {
-        padding-top: 4px;
-        display: inline-block;
-        height: 16px;
-        width: 20px;
-        float: left;
-        #no-vote-space { width: 20px; }
-      }
-      .proposal-title-container {
-        margin-left: 12px;
-        display: inline-block;
-        width: 400px;
-        .proposal-label {
-          font-style: italic;
-          color: #BBB;
-        }
-        .proposal-title {
-          color: #888;
-        }
-      }
-      .proposal-stats {
-        .proposal-close-date {
-          margin-left: 32px;
-          margin-top: -6px;
-          color: #BBB;
-          font-size: 11px;
-          padding-top: 5px;
-        }
-        .proposal-engagement {
-          color: #BBB;
-          float: right;
-        }
-      }
-    }
-  }
-  .comment-info {
-    display: inline-block;
-    float: right;
-    margin-top: -2px;
-    padding-right: 5px;
-    #last-comment {
-      font-size: 11px;
-      display: block;
-    }
-    #total-comments {
-      font-size: 11px;
-      display: block;
-      margin-top: -9px;
-    }
-  }
-  .alert-info {
-    float: right;
-    background-color: white;
-
-    .discussion-icon-container {
-      background-size: 25px;
-      background-position: 0px 5px;
-      background-repeat: no-repeat;
-      width: 32px;
-      height: 30px;
-    }
-
-    .discussion-enabled-icon {
-      background-image: url("discussion.png");
-    }
-
-    .discussion-disabled-icon {
-      background-image: url("discussion-disabled.png");
-    }
-  }
-  #activity-count {
-    width: 5px;
-    height: 12px;
-    font-size: 8px;
-  }
 }
 
 #add-member-popup-btn {
@@ -153,22 +55,6 @@ $token-input-width: 278px;
 }
 input#user_email{
   margin-bottom: 5px;
-}
-#users-list {
-  li {
-    font-size: $font-medium;
-    padding-bottom: 5px;
-    #editable-user-row{
-      #membership-admin-functions {
-        float: right;
-        .btn {
-          font-size: $font-tiny;
-          padding-top: 1px;
-          padding-bottom: 1px;
-        }
-      }
-    }
-  }
 }
 
 /**** group dashboard ****/
