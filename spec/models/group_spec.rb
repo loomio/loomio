@@ -64,7 +64,7 @@ describe Group do
       @group.add_request!(@user)
       @group.add_admin!(@user)
     end
-    it "be administered by admin of parent" do
+    it "can be administered by admin of parent" do
       @subgroup = Group.make(:parent => @group)
       @subgroup.has_admin_user?(@user)
     end
