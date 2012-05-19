@@ -103,11 +103,12 @@ class Group < ActiveRecord::Base
   end
 
   def can_be_edited_by?(user)
-    has_admin_user? user
+    has_admin_user?(user)
   end
 
   def has_admin_user?(user)
-    admins.include?(user)
+    return true if admins.include?(user)
+    return true if (parent && parent.admins.include?(user))
   end
 
   def can_be_viewed_by?(user)
