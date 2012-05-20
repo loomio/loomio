@@ -24,7 +24,7 @@ class VotesController < GroupBaseController
       @vote.motion = @motion
       @vote.user = current_user
       @vote.save
-      flash[:notice] = "Your vote has been submitted"
+      flash[:success] = "Your vote has been submitted"
       redirect_to :back
     else
       flash[:error] = "Can only vote in voting phase"
@@ -40,7 +40,7 @@ class VotesController < GroupBaseController
       @vote.motion = @motion
       @vote.user = current_user
       if @vote.save
-        flash[:notice] = "Vote updated."
+        flash[:success] = "Vote updated."
       else
         flash[:error] = "Could not update vote."
       end

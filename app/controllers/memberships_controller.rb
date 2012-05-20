@@ -7,7 +7,7 @@ class MembershipsController < BaseController
       format.html { redirect_to @membership.group }
     end
     if params[:membership][:access_level] == 'member'
-      flash[:notice] = "Membership approved."
+      flash[:success] = "Membership approved."
       #Add default tag to user and group
       #@membership.group.tag @membership.user, with: "everyone", on: :group_tags
       UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
@@ -23,7 +23,7 @@ class MembershipsController < BaseController
     if @group.can_be_viewed_by? current_user
       redirect_to group_url(@group)
     else
-      flash[:notice] = "Membership requested."
+      flash[:success] = "Membership requested."
       redirect_to root_url
     end
   end
@@ -34,15 +34,15 @@ class MembershipsController < BaseController
       format.html do
         if @membership.access_level == "request"
           if current_user == @membership.user
-            flash[:notice] = "Membership request canceled."
+            flash[:success] = "Membership request canceled."
           else
-            flash[:notice] = "Membership request ignored."
+            flash[:success] = "Membership request ignored."
           end
         else
           if current_user == @membership.user
-            flash[:notice] = "You have left #{@membership.group.name}."
+            flash[:success] = "You have left #{@membership.group.name}."
           else
-            flash[:notice] = "Member removed."
+            flash[:success] = "Member removed."
           end
         end
         redirect_to @membership.group
