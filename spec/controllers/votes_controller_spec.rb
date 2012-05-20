@@ -19,7 +19,7 @@ describe VotesController do
         post :create, motion_id: @motion.id,
              vote: {position: 'yes', statement: 'blah'}
         response.should be_redirect
-        flash[:notice].should =~ /Your vote has been submitted/
+        flash[:success].should =~ /Your vote has been submitted/
         assigns(:vote).user.should == @user
         assigns(:vote).motion.should == @motion
         assigns(:vote).position.should == 'yes'
@@ -36,7 +36,7 @@ describe VotesController do
              vote: {position: 'no', statement: 'blah'}
 
         response.should be_redirect
-        flash[:notice].should =~ /Vote updated/
+        flash[:success].should =~ /Vote updated/
         Vote.all.count.should == 2
         @user.motion_vote(@motion).position.should == 'no'
       end
