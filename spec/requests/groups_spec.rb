@@ -37,7 +37,7 @@ describe "Groups" do
         visit edit_group_path(@group)
 
         fill_in 'group_name', with: 'New groupie'
-        click_on 'Update Group'
+        click_on 'Update group'
 
         should have_content("New groupie")
       end
