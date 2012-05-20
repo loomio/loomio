@@ -116,7 +116,7 @@ describe MotionsController do
         delete :destroy, id: motion.id
 
         response.should redirect_to(group)
-        flash[:notice].should =~ /Motion deleted/
+        flash[:success].should =~ /Motion deleted/
       end
 
       it "succeeds and redirects for group admin" do
@@ -127,7 +127,7 @@ describe MotionsController do
         delete :destroy, id: motion.id
 
         response.should redirect_to(group)
-        flash[:notice].should =~ /Motion deleted/
+        flash[:success].should =~ /Motion deleted/
       end
 
       it "displays error if not author or group admin" do
