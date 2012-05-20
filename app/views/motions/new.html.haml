@@ -1,10 +1,12 @@
 #new-motion
-  .row
-    .span16
-      %h2.group-title
+  .group-title
+    %span
+      %h2
         = link_to @motion.group.parent.name, group_path(@motion.group.parent), title: "group" unless @motion.group.parent.nil?
-        %span.sub_group
-          = " > " unless @motion.group.parent.nil?
-          = link_to @motion.group.name, group_path(@motion.group), title: "group"
-      %h2  New motion
-      =render 'motions/form', form_args: [@motion, {url: motions_path(group_id: @motion.group)}]
+        = " - " unless @motion.group.parent.nil?
+        = link_to @motion.group.name, group_path(@motion.group), title: "group"
+  #general-form
+    %h1
+      #new-proposal
+        New proposal
+    =render 'motions/form', form_args: [@motion, {url: motions_path(group_id: @motion.group)}]
