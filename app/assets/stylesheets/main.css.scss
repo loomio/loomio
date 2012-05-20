@@ -52,7 +52,6 @@ h3 {
 
 #content-left {
   color: $mid-grey;
-  font-size: $font-small;
   .btn { color: $mid-grey; }
   h1 {
     font-size: $font-medium;
@@ -102,83 +101,6 @@ h3 {
     float: right;
     font-size: $font-tinywiny;
     margin-left: 4px;
-  }
-}
-
-// discussion panel
-.discussion {
-  color: $mid-grey;
-  #group-name {
-    font-size: $font-small;
-    a { color: $mid-grey; }
-    margin-top: -0.3em;
-    padding-left: 5px;
-  }
-  #discussion-title {
-    padding-left: 5px;
-  }
-  #proposal-container {
-    padding-left: 7px;
-    padding-bottom: 7px;
-    font-size: $font-small;
-    min-height: 30px;
-    color: $light-grey;
-  }
-  #vote-icon {
-    padding-top: 4px;
-    display: inline-block;
-    height: 16px;
-    width: 20px;
-    float: left;
-  }
-  #no-vote-space { width: 20px; }
-  #proposal-title-container {
-    margin-left: 12px;
-    display: inline-block;
-    width: 400px;
-  }
-  #proposal-label {
-    font-style: italic;
-  }
-  #proposal-title {
-    color: $mid-grey;
-  }
-  #proposal-close-date {
-    margin-top: -0.4em;
-    font-size: $font-tiny;
-  }
-  #comment-info {
-    display: inline-block;
-    margin-top: -4px;
-    float: right;
-    padding-right: 5px;
-    font-size: $font-tinywiny;
-  }
-  #total-comments {
-    margin-top: -9px;
-  }
-  #alert-info {
-    float: right;
-  }
-  #discussion-icon-container {
-    background-size: 25px;
-    background-repeat: no-repeat;
-    width: 32px;
-    height: 30px;
-  }
-  .discussion-enabled-icon {
-    background-image: url("discussion.png");
-  }
-  .discussion-disabled-icon {
-    background-image: url("discussion-disabled.png");
-  }
-  #activity-count {
-    margin-left: 18px;
-    width: 4px;
-    height: 10px;
-    font-size: 0.5em;
-    padding: 0.4em;
-    padding-top: 0.1em;
   }
 }
 

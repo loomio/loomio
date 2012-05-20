@@ -32,12 +32,11 @@
       - percent_voted = (100-(motion.no_vote_count/motion.group_count.to_f * 100)).to_i
       = "#{percent_voted}% of members have voted on this motion (#{motion.group_count - motion.no_vote_count}/#{motion.group_count})"
   - if motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
-    #vote-form
-      =form_for([motion, @vote], html:{class:'form-stacked'}) do |f|
-        .clearfix
-          =f.text_area :statement, placeholder: "Give a reason for your vote", class: "input limited"
-        .character_counter
-        =f.hidden_field :position
+    =form_for([motion, @vote], html:{class:'form-stacked'}) do |f|
+      .clearfix
+        =f.text_area :statement, placeholder: "Give a reason for your vote", class: "input limited"
+      .character_counter
+      =f.hidden_field :position
     #vote-buttons
       =link_to image_tag("hand-yes.png", height:'40', width:'40', title:'yes', alt:'yes image'), '#',
         class: 'btn vote',  rel: 'popover', 'data-content' => 'I agree with this and want it to go ahead.',
