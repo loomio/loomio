@@ -19,10 +19,10 @@ class MotionsController < GroupBaseController
     @motion = Motion.new(params[:motion])
     @motion.author = current_user
     if @motion.save
-      flash[:notice] = "Motion sucessfully created."
+      flash[:success] = "Motion sucessfully created."
       redirect_to discussion_path(@motion.discussion)
     else
-      flash[:notice] = "Motion sucessfully created."
+      flash[:success] = "Motion sucessfully created."
       redirect_to :back
     end
   end
@@ -30,7 +30,7 @@ class MotionsController < GroupBaseController
   def destroy
     resource
     destroy! { @motion.group }
-    flash[:notice] = "Motion deleted."
+    flash[:success] = "Motion deleted."
   end
 
   # CUSTOM ACTIONS
