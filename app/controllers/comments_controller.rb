@@ -2,7 +2,7 @@ class CommentsController < BaseController
   load_and_authorize_resource
 
   def destroy
-    flash[:notice] = "Comment deleted."
+    flash[:success] = "Comment deleted."
     destroy!{ discussion_url(resource.discussion ) }
   end
 
