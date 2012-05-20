@@ -4,12 +4,15 @@
 .presence-required.input { margin-left: 0px; display: inline; }
 .clearfix { padding-top: 0px; padding-bottom: 0px; }
 
+
 /** new proposal form*/
+
 #new-proposal-title {
+  margin-bottom: 25px;
   .input { margin-left: 0px; }
   .clearfix { padding-top: 0px; padding-bottom: 0px; }
   .character-counter {
-    color: #999999;
+    color: $mid-grey;
     margin-right: 200px;
     text-align: right;
     margin-top: -32px;
@@ -18,242 +21,206 @@
   }
 }
 
-#discussion-title {
-  padding-top: 4px;
+.content-discussion { margin-top: -20px; }
+.discussion-title {
+  font-size: $font-large;
+  color: $dark-grey;
 }
 
-#group-name {
-  margin-left: 7px;
-  margin-top: -6px;
-  a { color: #888 }
-}
 
-#discussion-panel {
+/*** comments ***/
+
+#content-comments {
   padding-top: 20px;
   padding-right: 20px;
 
   #new-comment-form{
     margin-bottom: 8px;
-
-    #new-comment{
-      width: 450px;
-			max-width: 450px;
-      height: 80px;
-      line-height: 16px;
-      color: black;
-    }
-
-    #new-comment-submit{
-      margin-top: -2px;
-      text-align: right;
-      .submit{
-        margin-top: 8px;
-      }
+  }
+  #new-comment{
+    width: 450px;
+    max-width: 450px;
+    height: 80px;
+    color: black;
+  }
+  #new-comment-submit{
+    margin-top: -2px;
+    text-align: right;
+    .submit{
+      margin-top: 8px;
     }
   }
-
   .comment{
-    background-color: #EEE;
+    background-color: $comment-color;
     margin-bottom: 2px;
     padding: 4px;
-
-    p, span {
-      margin-bottom: 0px;
-    }
+    font-size: $font-small;
     .comment-username{
       font-weight: bold;
+      float: left;
+    }
+    #comment-body{
+      margin-left: 0.4em;
+      display: inline-block;
     }
     .comment-time{
-      color: grey;
+      color: $dark-grey;
+      font-size: 0.75em;
     }
     .comment-likes{
-      color: grey;
+      color: $dark-grey;
+      font-size: 0.75em;
     }
   }
 
   .position{
-    .clear { clear: both; }
-    .position-icon{
+    #position{
       float: left;
+      padding-right: 0.4em;
+      display: block;
     }
-    .position-message{
-      float: left;
-      margin-top: 2px;
-      margin-left: 2px;
+    #position-message{
+      color: black;
+      padding-left: 0.4em;
+      display: inline-block;
     }
   }
 
   .proposal{
-    background: #EEE;
-    color: #777;
+    background: $comment-color;
+    color: $mid-grey;
     margin-bottom: 6px;
-    .proposal-author{ font-weight: bold; }
-    .proposal-label{ color: #777; }
-    .proposal-text{ font-style: italic; }
+    #proposal-author{
+      font-weight: bold;
+    }
+    #proposal-label{
+      color: $mid-grey;
+      margin-left: 0.4em;
+      display: inline-block;
+    }
+    #proposal-text{
+      color: $dark-grey;
+      margin-left: 0.4em;
+      font-style: italic;
+    }
   }
-  .proposal.current{ background: #FFFFFF; }
+  .proposal.current{ background: #FFF; }
 }
 
 
-/*** motion panel - discussion:show page ***/
+/*** proposal ***/
 
-#motion-panel{
+#content-proposal{
   padding-top: 20px;
   padding-left: 19px;
-  border-left: 1px solid lightgrey;
+  border-left: 1px solid $light-grey;
   margin-left: 0px;
   width: 430px;
-  #proposal-container {
-    .new-proposal {
-      .btn {
-        margin-bottom: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-      }
+  #current-proposal {
+    margin-bottom: 20px;
+  }
+  #new-proposal {
+    .btn { margin-bottom: 10px; }
+  }
+  #no-current-proposal {
+    .btn { margin-bottom: 300px; }
+  }
+  .label{
+    text-transform: lowercase;
+    font-weight: normal;
+  }
+  #proposed-by {
+    font-size: $font-tiny;
+    margin-bottom: 30px;
+  }
+  #description {
+    p{}
+    color: $dark-grey;
+  }
+  #percentage-to-vote {
+    font-size: $font-tiny;
+    margin-bottom: 10px;
+  }
+  #graph{
+    height: 250px;
+    margin-left: -20px;
+  }
+  #new_vote{ padding-left: 0px; }
+  #vote-statement{ margin-left: 0px; padding-left: 0px; }
+  .input { margin-left: 0px; height: 65px; }
+  .clearfix { padding-top: 0px; padding-bottom: 0px; }
+  .character_counter {
+    float: right;
+    color: $mid-grey;
+    margin-top: -20px;
+  }
+  #vote-buttons{
+    margin-top: -25px;
+    margin-bottom: 15px;
+    .btn.vote {
+      @include box-shadow(1px, 1px, 4px, $mid-grey);
+      @include border-radius(5px);
+      padding: 3px;
     }
   }
-  .current-proposal {
-  }
-
-  .motion-placeholder { padding-top: 300px }
-
-  #motion-details {
-    .label{
-      text-transform: lowercase;
-      font-weight: normal;
+  #votes-table {
+    #statement {
+      font-size: $font-tiny;
+      display: block;
+      margin-left: 30px;
+      color: #000;
+      padding-bottom: 4px;
     }
-    h2 { display: inline }
-    #info {
-      #proposed-by {
-        margin-top: 8px;
-      }
-      p {
-        color: #888;
-        margin-bottom: 0px;
-      }
-      #closing-info {
-        line-height: 16px;
-        p {
-          display: inline;
-        }
-        #admin-buttons{
-          text-align: right;
-          margin-top: 20px;
-          .btn {
-            padding-top: 3px;
-            padding-bottom: 3px;
-          }
-        }
-      }
-    }
-    #discussion{ padding-top: 10px; color: #555; }
-    #description{
-      p{}
-      margin-top: 30px;
-      color: #555;
-    }
-    #still-to-vote{
-      padding-top: 20px;
-      padding-bottom: 20px;
-      #still-to-vote-list { margin-top: 5px; }
-    }
-    #graph{
-      height: 250px;
-      margin-left: -20px;
-    }
-    #new_vote{ padding-left: 0px; }
-    #vote-form{
-      margin-top: 10px;
-      #vote-statement{ margin-left: 0px; padding-left: 0px; }
-      .input { margin-left: 0px; height: 65px; }
-      .clearfix { padding-top: 0px; padding-bottom: 0px; }
-      .character_counter {
-        float: right;
-        color: #999999;
-        margin-top: -20px;
-      }
-    }
-    #vote-buttons{
-      margin-top: -25px;
-      .btn.vote {
-        border-radius: 5px;
-        webkit-border-radius: 5px;
-        moz-border-radius: 5px;
-        box-shadow: 1px 1px 4px #999999;
-        webkit-box-shadow: 1px 1px 4px #999999;
-        moz-box-shadow: 1px 1px 4px #999999;
-        padding: 3px;
-        height: 40px;
-      }
-    }
-    #votes-table {
-      margin-top: 20px;
-      .position-row {
-        padding-top: 2px;
-        padding-bottom: 3px;
-        line-height: 14px;
-        .member-row {
-          min-height: 24px;
-          .icon-container {
-            float: left;
-            margin-top: 2px;
-            display: inline-block;
-            height: 20px;
-          }
-          .member-name {
-            float: left;
-            display: inline-block;
-            padding-top: 4px;
-            margin-left: 10px;
-            color: #888;
-          }
-          .btn-edit-delete .btn {
-            padding-top: 4px;
-            padding-bottom: 4px;
-          }
-        }
-        .statement {
-          display: block;
-          margin-left: 30px;
-          color: #000;
-          padding-bottom: 4px;
-        }
-      }
-      .no-position-row {
-        width: 100%;
-        min-height: 29px;
-        .icon-no-position {
-          padding-left: 4px;
+    .position-row {
+      padding-bottom: 3px;
+      padding-top: 2px;
+      .member-row {
+        min-height: 24px;
+        #position {
           float: left;
-          margin-top: 4px;
+          margin-top: 2px;
           display: inline-block;
           height: 20px;
         }
-        .member-no-position {
+        .member-name {
           float: left;
           display: inline-block;
-          padding: 2px;
-          padding-left: 8px;
-          margin-left: 6px;
-          color: #888;
+          padding-top: 4px;
+          margin-left: 10px;
         }
       }
     }
-
-    #previous-proposals {
-      color: #888;
+    .no-position-row {
+      min-height: 29px;
+      #no-position {
+        padding-left: 4px;
+        float: left;
+        display: inline-block;
+        height: 20px;
+      }
+      .member-no-position {
+        float: left;
+        display: inline-block;
+        padding: 2px;
+        padding-left: 8px;
+        margin-left: 6px;
+      }
     }
   }
 
+  #previous-proposals {
+    color: $mid-grey;
+  }
+
   .motion-row {
-    color: #888;
+    color: $mid-grey;
     .close-date {
+      font-size: $font-tiny;
     }
   }
 }
 
 /*  New & Edit motion form */
-
 #motion-form{
   .input { margin-left: 0px; display: inline-block; }
   .clearfix { padding-top: 0px; margin-bottom: 0px; }
@@ -262,5 +229,5 @@
     #input_date{ width: 140px; display: inline-block; }
     select { width: 100px; display: inline-block; }
   }
-  #description { margin-top: 45px; }
+  #description { margin-top: 31px; }
 }

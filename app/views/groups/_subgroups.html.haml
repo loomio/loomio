@@ -5,4 +5,4 @@
       = render "dashboard/group_link", group: subgroup
 - if group.users.include?(current_user)
   = link_to "Create a Sub-group", group_add_subgroup_path(group),
-    class: "btn primary small general-button"
+    class: "btn btn-small"

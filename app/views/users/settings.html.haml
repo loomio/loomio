@@ -1,3 +1,4 @@
-=semantic_form_for @user do |f|
-  =f.input :name
-  =f.buttons
+=form_for @user do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.submit "Update name", class: "btn btn-info"
