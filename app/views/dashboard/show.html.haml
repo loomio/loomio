@@ -2,9 +2,8 @@
   - if @groups.present?
     .row
       %section.span4#content-left
-        %nav#content-left
-          %h1
-            Your groups
+        %nav
+          %h1 Your groups
           %ul#group-list
             - @groups.each do |group|
               %li
@@ -14,7 +13,7 @@
                     - if current_user.groups.include? subgroup
                       %li
                         = render 'group_link', group: subgroup
-          = link_to "Create new group", new_group_path, :class => 'btn primary small'
+          = link_to "Create new group", new_group_path, :class => 'btn btn-small'
       %section.span8#content-main
         %h1 Discussions
         #discussions

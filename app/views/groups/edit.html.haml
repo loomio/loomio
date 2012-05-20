@@ -1,2 +1,8 @@
-%h2.header-space Edit Group
-= render 'form', group: @group, parent: @parent
+#general-form
+  .group-title
+    %span
+      %h2
+        = link_to @group.parent.name, group_path(@group.parent), title: "group" unless @group.parent.nil?
+        = " - " unless @group.parent.nil?
+        = @group.name
+  = render 'form', group: @group, parent: @parent
