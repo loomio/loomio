@@ -116,6 +116,9 @@
   border-left: 1px solid $light-grey;
   margin-left: 0px;
   width: 430px;
+  #current-proposal {
+    margin-bottom: 20px;
+  }
   #new-proposal {
     .btn { margin-bottom: 10px; }
   }
