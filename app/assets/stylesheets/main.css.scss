@@ -10,6 +10,16 @@ body {
   background-color: white;
 }
 
+// colors
+$light-grey: #BBB;
+$mid-grey: #888;
+$dark-grey: #555;
+$header-color: #F7F7cf;
+$header-dark-color: #e7e7bf;
+$navbar-text-color: #FBA82C;
+$error-color: firebrick;
+$block-color: #F3D8D4;
+
 // typography
 h1 {
 	font-weight: normal;
@@ -17,7 +27,7 @@ h1 {
 }
 
 h2 {
-  color: #555;
+  /*color: $dark-grey;*/
   font-weight: normal;
 	font-size: $font-large;
   line-height: 1.2em;
@@ -26,21 +36,14 @@ h2 {
 .sub_group{
 	font-size: $font-tiny;
 }
-// structural elements (containers etc.)
 
-.panel {
-  @include box-shadow(1px, 1px, 3px, #ccc);
-  @include border-radius(4px);
-  border: 1px solid lightgrey;
-  margin: 5px 3px 6px 3px;
-  padding: 8px;
-}
+// structural elements (containers etc.)
 
 #content-main {
   h1 {
     font-size: $font-large;
-    color: #888;
-    background-color: #F7F7ED;
+    color: $mid-grey;
+    background-color: $header-color;
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
@@ -48,54 +51,65 @@ h2 {
 }
 
 #content-left {
-  color: #888;
+  color: $mid-grey;
   font-size: $font-small;
+  .btn { color: $mid-grey; }
   h1 {
     font-size: $font-medium;
-    background-color: #F7F7ED;
+    background-color: $header-color;
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
   .block { margin-bottom: 20px; }
   ul { margin-bottom: 0.6em; }
   li { padding-bottom: 4px; }
-  #membership-admin-functions {
-    float: right;
-    .btn {
-      font-size: $font-tiny;
-    }
-  }
 }
 #content-proposal {
-  color: #888;
+  color: $mid-grey;
   h1 {
     font-size: $font-medium;
-    background-color: #F7F7ED;
+    background-color: $header-color;
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
 }
 
-// group title
-.group-title {
-  color: #888;
-  a { color: #888; }
-  padding-bottom: 0.5em;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
+.panel {
+  @include box-shadow(1px, 1px, 3px, $light-grey);
+  @include border-radius(4px);
+  border: 1px solid $light-grey;
+  margin: 5px 3px 6px 3px;
+  padding: 8px;
+}
+
+.edit-delete-buttons {
+  float: right;
   .btn {
     font-size: $font-tiny;
+    margin-left: 4px;
+  }
+}
+
+// group title
+.group-title {
+  color: $mid-grey;
+  a { color: $mid-grey; }
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid $light-grey;
+  margin-bottom: 20px;
+  .btn {
     float: right;
+    font-size: $font-tinywiny;
     margin-left: 4px;
   }
 }
 
 // discussion panel
 .discussion {
-  color: #888;
+  color: $mid-grey;
   #group-name {
     font-size: $font-small;
-    a { color: grey; }
+    a { color: $mid-grey; }
     margin-top: -0.3em;
     padding-left: 5px;
   }
@@ -107,7 +121,7 @@ h2 {
     padding-bottom: 7px;
     font-size: $font-small;
     min-height: 30px;
-    color: #BBB;
+    color: $light-grey;
   }
   #vote-icon {
     padding-top: 4px;
@@ -126,7 +140,7 @@ h2 {
     font-style: italic;
   }
   #proposal-title {
-    color: #888;
+    color: $mid-grey;
   }
   #proposal-close-date {
     margin-top: -0.4em;
@@ -176,13 +190,13 @@ h2 {
 .navbar-wrapper{
 	position: fixed;
 	width: 100%;
-	background-color: #F7F7ED;
+	background-color: $header-color;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
 	z-index: 1;
 }
 .navbar-inner{
 	border-radius: 0px;
-	background-color: #F7F7ED;
+	background-color: $header-color;
 	background-image: none;
 }
 .container{
@@ -196,7 +210,7 @@ header{
 }
 .navbar .nav > li > a{
 	padding: 2px 10px;
-	color: #F8AA17;
+	color: $navbar-text-color;
 	text-shadow: none;
 }
 .navbar .nav > li > a:hover{
@@ -217,17 +231,17 @@ header{
 
 .navbar {
   a {
-    color: #FBA82C;
+    color: $navbar-text-color;
     text-shadow: none;
   }
 	div > ul a, .nav a{
 		padding: 18px 10px 6px;
 	}
   .topbar-inner {
-    background-image: -moz-linear-gradient(top, #F7F7ED, #F7F7E2);
-    background-image: -webkit-linear-gradient(top, #F7F7ED, #F7F7E2);
-    background-image: -o-linear-gradient(top, #F7F7ED, #F7F7E2);
-    background-image: linear-gradient(top, #F7F7ED, #F7F7E2);
+    background-image: -moz-linear-gradient(top, $header-color, $header-dark-color);
+    background-image: -webkit-linear-gradient(top, $header-color, $header-dark-color);
+    background-image: -o-linear-gradient(top, $header-color, $header-dark-color);
+    background-image: linear-gradient(top, $header-color, $header-dark-color);
   }
 
   h1 {
@@ -258,7 +272,7 @@ header{
 // misc (move stuff out of here..)
 
 .bordered {
-  border-top: 1px solid lightgrey;
+  border-top: 1px solid $light-grey;
 }
 
 .presence-required {
@@ -266,7 +280,7 @@ header{
 }
 
 .blocked {
-  background-color: #F3D8D4;
+  background-color: $block-color;
 }
 
 .voting{
@@ -276,7 +290,7 @@ header{
 .error-message {
   display: inline-block;
   margin-left: 5px;
-  color: firebrick;
+  color: $error-color;
   margin-top: -2px;
 }
 
@@ -287,7 +301,7 @@ form {
     width: 400px;
     text-align: left;
     float: none;
-    color: #888;
+    color: $mid-grey;
     margin-bottom: 4px;
     display: block;
 		padding: 0px;
@@ -321,8 +335,8 @@ form {
     display: inline;
   }
 	.privacy-settings{
-		border-bottom: 1px solid #EEEEEE;
-    border-top: 1px solid #EEEEEE;
+		border-bottom: 1px solid $light-grey;
+    border-top: 1px solid $light-grey;
     margin-bottom: 10px;
     padding-bottom: 20px;
 	}
@@ -352,13 +366,13 @@ table.jqplot-table-legend {
 
 #tooltip, .graph_tooltip{
   padding: 3px 10px;
-  background: #333;
+  background: $dark-grey;
   color: #fff;
   display: none;
   opacity: 0.8;
   width: 100px;
   text-align: center;
-  @include box-shadow(1px, 1px, 4px, #999);
+  @include box-shadow(1px, 1px, 4px, $mid-grey);
 }
 
 /* For modern browsers */
