@@ -17,7 +17,7 @@
   .span6#content-proposal
     - if @selected_closed_motion
       - if @current_motion.voting?
-        .current-proposal
+        #current-proposal
           %h1 Current proposal
           .panel
             .motion-row
@@ -30,7 +30,7 @@
             id: 'new-proposal'
     - else
       - if @current_motion && @current_motion.voting?
-        .current-proposal
+        #current-proposal
           %h1 Current proposal
           .panel
             = render @current_motion, unique_votes: @unique_votes
