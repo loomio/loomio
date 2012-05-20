@@ -6,7 +6,7 @@ class GroupsController < GroupBaseController
     @group = Group.new(params[:group])
     if @group.save
       @group.add_admin! current_user
-      flash[:notice] = "Group created successfully."
+      flash[:success] = "Group created successfully."
       redirect_to @group
     else
       redirect_to :back
@@ -29,7 +29,7 @@ class GroupsController < GroupBaseController
         group.add_member!(user)
       end
     end
-    flash[:notice] = "Members added to group."
+    flash[:success] = "Members added to group."
     redirect_to group_url(group)
   end
 
