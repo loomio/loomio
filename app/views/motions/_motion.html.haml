@@ -25,9 +25,9 @@
       "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
       - if motion.updated_at != motion.created_at
         = "(edited: #{time_ago_in_words(motion.updated_at)} ago)"
-    %h4#description= simple_format h(motion.description)
+    #description= simple_format h(motion.description)
   #graph.pie
-  %h5#percentage-to-vote
+  #percentage-to-vote
     - if motion.closed?
       - percent_voted = (100-(motion.no_vote_count/motion.group_count.to_f * 100)).to_i
       = "#{percent_voted}% of members voted on this motion (#{motion.group_count - motion.no_vote_count}/#{motion.group_count})"
