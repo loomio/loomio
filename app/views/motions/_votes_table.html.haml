@@ -1,6 +1,6 @@
 - unique_votes = motion.unique_votes
 - if unique_votes.size > 0
-  %h1 Positions
+  %h2 Positions
   - unique_votes.each do |vote|
     .position-row.bordered
       .member-row
@@ -8,8 +8,8 @@
         .member-name= link_to vote.user_name, "#"
         - if vote.can_be_edited_by?(current_user)
           -if motion.phase == 'voting'
-            .btn-edit-delete
-              =link_to "edit", edit_motion_vote_path(motion, vote), class: 'btn btn-small'
+            .edit-delete-buttons
+              =link_to "edit", edit_motion_vote_path(motion, vote), class: 'btn btn-mini'
       .statement
         = vote.statement
 - motion.users_who_did_not_vote.each do |user|

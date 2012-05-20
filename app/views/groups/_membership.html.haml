@@ -6,7 +6,7 @@
       - else
         = membership.user_email
       - if current_user.is_group_admin?(group)
-        %span#membership-admin-functions
+        %span.edit-delete-buttons
           =link_to "edit", edit_membership_path(membership), class: 'btn btn-mini'
           =link_to "remove", membership, method: :delete, class: 'btn btn-mini',
             confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
