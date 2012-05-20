@@ -146,15 +146,13 @@
     margin-left: -20px;
   }
   #new_vote{ padding-left: 0px; }
-  #vote-form{
-    #vote-statement{ margin-left: 0px; padding-left: 0px; }
-    .input { margin-left: 0px; height: 65px; }
-    .clearfix { padding-top: 0px; padding-bottom: 0px; }
-    .character_counter {
-      float: right;
-      color: $mid-grey;
-      margin-top: -20px;
-    }
+  #vote-statement{ margin-left: 0px; padding-left: 0px; }
+  .input { margin-left: 0px; height: 65px; }
+  .clearfix { padding-top: 0px; padding-bottom: 0px; }
+  .character_counter {
+    float: right;
+    color: $mid-grey;
+    margin-top: -20px;
   }
   #vote-buttons{
     margin-top: -25px;
