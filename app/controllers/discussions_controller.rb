@@ -14,11 +14,11 @@ class DiscussionsController < GroupBaseController
     @discussion.group = group
     if @discussion.save
       @discussion.add_comment(current_user, comment)
-      flash[:notice] = "Discussion sucessfully created."
+      flash[:success] = "Discussion sucessfully created."
       redirect_to @discussion
     else
       redirect_to :back
-      flash[:notice] = "Discussion could not be created."
+      flash[:success] = "Discussion could not be created."
     end
   end
 
