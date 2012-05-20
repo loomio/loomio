@@ -1,7 +1,6 @@
 = form_for [motion, vote] do |f|
-  .padding
-    = f.label :position, "Position"
-    = f.select :position, Vote::POSITIONS
-    = f.label :statement, "Statement"
-    = f.text_field :statement
-  = f.submit "Update vote", class: "btn primary"
+  = f.label :position, "Position"
+  = f.select :position, Vote::POSITIONS
+  = f.label :statement, "Statement"
+  = f.text_field :statement
+  = f.submit "Update vote", class: "btn btn-info"

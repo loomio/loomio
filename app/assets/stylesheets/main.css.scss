@@ -10,16 +10,6 @@ body {
   background-color: white;
 }
 
-// colors
-$light-grey: #BBB;
-$mid-grey: #888;
-$dark-grey: #555;
-$header-color: #F7F7cf;
-$header-dark-color: #e7e7bf;
-$navbar-text-color: #FBA82C;
-$error-color: firebrick;
-$block-color: #F3D8D4;
-
 // typography
 h1 {
 	font-weight: normal;
@@ -27,17 +17,27 @@ h1 {
 }
 
 h2 {
-  /*color: $dark-grey;*/
   font-weight: normal;
 	font-size: $font-large;
   line-height: 1.2em;
 }
 
+h3 {
+  font-weight: normal;
+	font-size: $font-medium;
+}
 .sub_group{
 	font-size: $font-tiny;
 }
 
 // structural elements (containers etc.)
+#general-form {
+  h1 {
+    font-size: $font-large;
+    color: $dark-grey;
+    margin-bottom: 0.5em;
+  }
+}
 
 #content-main {
   h1 {
@@ -72,6 +72,7 @@ h2 {
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
+  margin-bottom: 20px;
 }
 
 .panel {
@@ -298,22 +299,15 @@ header{
 form {
   label {
 		font-size: $font-small;
-    width: 400px;
-    text-align: left;
-    float: none;
-    color: $mid-grey;
     margin-bottom: 4px;
-    display: block;
-		padding: 0px;
   }
 
   input, select, textarea {
 		font-size: $font-small;
 		height: auto;
     width: 400px;
-    margin-left: 0px;
     margin-bottom: 15px;
-    display:block;
+    display: block;
   }
 
   textarea {
@@ -326,10 +320,6 @@ form {
     display: inline;
   }
 
-  /*input[type="submit"] {*/
-    /*margin-top: 10px;*/
-  /*}*/
-
   .checkbox-label {
     margin-left: 5px;
     display: inline;
@@ -337,7 +327,7 @@ form {
 	.privacy-settings{
 		border-bottom: 1px solid $light-grey;
     border-top: 1px solid $light-grey;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding-bottom: 20px;
 	}
 }
