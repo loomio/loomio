@@ -1,9 +1,10 @@
-#edit-membership
-  %h3 Membership
-  %li
-    %strong User:
-    =@membership.user.email
-  %li
-    %strong Group:
-    =link_to @membership.group.name, @membership.group
-  =render :partial => 'form'
+#general-form
+  #edit-membership
+    %h1 Membership
+    %p
+      User:
+      = @membership.user.email
+    %p
+      Group:
+      = link_to @membership.group.name, @membership.group
+    =render :partial => 'form'
