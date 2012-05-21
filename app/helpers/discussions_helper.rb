@@ -1,14 +1,7 @@
 module DiscussionsHelper
-
-  def last_update_date_for(discussion)
-    if discussion.comments.size > 0
-      last_updated = discussion.last_comment_updated_at?
-    else
-      last_updated = discussion.created_at
-    end
-
+  def latest_history_time_for(discussion)
+    last_updated = discussion.latest_history_time
     date_format = last_updated.to_date == Date.today ? "%I:%M %p" : "%d %b"
-
     last_updated.strftime(date_format)
   end
 
