@@ -1,10 +1,10 @@
 #group-form.row
   .span10
     =form_for(group) do |f|
-      = f.label :name, "Group Name"
-      .clearfix
-        .presence-required= f.text_field :name, class: "input"
-        .error-message Group can not be blank
+      .control-group
+        = f.label :name, "Group Name", {class: "control-label", for: "inputError"}
+        = f.text_field :name, id: "inputError"
+        %span.error-message Group can not be blank
       .privacy-settings
         %h1 Privacy Settings
         .row

@@ -41,14 +41,14 @@ $ ->
   #** presnece validations: use this function any where just assign the class .presence-required
   #   to the text field in question and the .check-presence to the submit button **
   $(".check-presence").click((event, ui) ->
-    if $(".presence-required").children().first().val() == ""
-      $(".clearfix").addClass("error")
+    if $("#inputError").val() == ""
+      $(".control-group").addClass("error")
       $(".error-message").show()
       false
   )
 
-  $(".presence-required").keyup(() ->
-    $(".clearfix").removeClass("error")
+  $("#inputError").keyup(() ->
+    $(".control-group").removeClass("error")
     $(".error-message").hide()
   )
 
@@ -83,11 +83,11 @@ $ ->
   display_count = ((num) ->
     if(num >= 0)
       $(".character_counter").text(pluralize_characters(num) + " left")
-      $(".clearfix").removeClass("error")
+      $(".control-group").removeClass("error")
     else
       num = num * (-1)
       $(".character_counter").text(pluralize_characters(num) + " too long")
-      $(".clearfix").addClass("error")
+      $(".control-group").addClass("error")
   )
 
   $(".limited").keyup(() ->
@@ -97,7 +97,7 @@ $ ->
   )
 
   $(".vote").click((event) ->
-    if $(".clearfix").hasClass("error")
+    if $("control-group").hasClass("error")
       $('#new_vote').preventDefault()
     else
       $('#new_vote').submit()
@@ -111,11 +111,11 @@ $ ->
     left = 150 - chars
     if(left >= 0)
       $(".character-counter").text(pluralize_characters(left) + " left")
-      $(".clearfix").removeClass("error")
+      $(".control-group").removeClass("error")
     else
       left = left * (-1)
       $(".character-counter").text(pluralize_characters(left) + " too long")
-      $(".clearfix").addClass("error")
+      $(".control-group").addClass("error")
   )
 
   # NOTE (Jon): We should implement a better method for scoping javascript to specific pages
