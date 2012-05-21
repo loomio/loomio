@@ -104,6 +104,12 @@ class User < ActiveRecord::Base
     groups.where("parent_id IS NULL")
   end
 
+  def position(motion)
+    if motion.user_has_voted?(self)
+      motion_vote(motion).position 
+    end
+  end
+  
   private
     def ensure_name_entry
       unless name

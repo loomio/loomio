@@ -1,4 +1,4 @@
-%div{ class: css_class_for(discussion.current_motion)}
+%div{ class: css_class_for(discussion.current_motion) }
   %span#discussion-title
     - title = truncate(discussion.title, :length => 75, :separator => ' ')
     = link_to title, discussion_path(discussion)
@@ -10,7 +10,7 @@
             = activity_count_for(discussion, current_user)
         
     #comment-info
-      = last_update_for(discussion)      
+      = last_update_date_for(discussion)      
       #total-comments
         = pluralize(discussion.comments.count, 'msg')
 
@@ -18,17 +18,17 @@
     #group-name
       = link_to discussion.group.name, group_path(discussion.group)
 
-  - if discussion.current_motion.present? && discussion.current_motion.voting?
+  - motion = discussion.current_motion
+  - if motion.present? && motion.voting?
     #proposal-container
       #vote-icon
-        - if discussion.current_motion.user_has_voted?(current_user)
-          - position = current_user.motion_vote(discussion.current_motion).position
-        =render partial: "motions/display_icons", locals: {position: position}
+        - if current_user
+          = render "motions/display_icons", position: current_user.position(motion)
 
       #proposal-title-container
         %span#proposal-label Proposal:
-        %span#proposal-title= discussion.current_motion.name
+        %span#proposal-title= motion.name
         #proposal-close-date
-          - if discussion.current_motion.close_date.present?
+          - if motion.close_date.present?
             closing in
-            = time_ago_in_words(discussion.current_motion.close_date)
+            = time_ago_in_words(motion.close_date)
