@@ -205,8 +205,12 @@ header{
   background-color: $block-color;
 }
 
-.voting{
+.unread{
   background-color: white;
+}
+
+.read{
+  background-color: $comment-color;
 }
 
 .inputError { display: inline-block; }
