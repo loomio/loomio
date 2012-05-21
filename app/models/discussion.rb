@@ -62,11 +62,15 @@ class Discussion < ActiveRecord::Base
   end
 
   def history
-    (comments + votes + motions).sort_by(&:created_at)
+    (comments + votes + motions).sort!{ |a,b| b.created_at <=> a.created_at }
   end
 
   def update_activity
     self.activity += 1
     save
+  end
+
+  def last_comment_updated_at?
+    comments.last.updated_at
   end
 end

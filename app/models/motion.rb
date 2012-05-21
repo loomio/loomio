@@ -69,6 +69,10 @@ class Motion < ActiveRecord::Base
     votes if votes.size > 0
   end
 
+  def unique_votes
+    Vote.unique_votes(self)
+  end
+
   def votes_breakdown
     last_votes = unique_votes()
     positions = Array.new(Vote::POSITIONS)
@@ -90,7 +94,7 @@ class Motion < ActiveRecord::Base
   end
 
   def blocked?
-    votes.each do |v|
+    unique_votes.each do |v|
       if v.position == "block"
         return true
       end
@@ -160,10 +164,6 @@ class Motion < ActiveRecord::Base
     #end
     #return has_tag
   #end
-
-  def unique_votes
-    Vote.unique_votes(self)
-  end
 
   def discussion_activity
     if discussion

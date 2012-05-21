@@ -9,3 +9,4 @@ tmp/
 *.tmproj
 *.DS_Store
 coverage
+public/assets

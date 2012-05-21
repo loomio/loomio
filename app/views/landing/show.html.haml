@@ -3,55 +3,44 @@
      :id   => "fork_me"}
     %img{:src => "/assets/fork_me.png",
          :alt => "Fork me on GitHub"}
-.header
-
+%h1.header
+  Loomio
 .content
   #presentation
     %h2 What-io ?
     %p#whatio
       Loomio is a free and open-source web application that helps groups make better decisions together.
-
-      %hr/
-
-    %p
+    %p#loomio-project-iframe
       <iframe width="560" height="315" src="http://www.youtube.com/embed/xctXFj-Oidk" frameborder="0" allowfullscreen></iframe>
-
-      %hr/
-
     %p
-      For more information and to support us, <br />
-      check out our
-      = "<a href='https://www.pledgeme.co.nz/Crowd/Details/166'>PledgeMe campaign</a>!".html_safe
-    %p
-      Also check out our
-      = "<a href='http://blog.loom.io'>blog</a>.".html_safe
+      For more information:
+    %ul
+      %li
+        Check out our
+        = "<a href='http://blog.loom.io'>blog</a>".html_safe
+      %li
+        Get on the Loomio
+        %a{:href =>"http://eepurl.com/lE3Uz"}waiting-list
     -#%p
       -#And our sweet
       -#= "<a href='/demo'>Demo page</a>.".html_safe
-
   #controls
     %h2 Alpha user sign in
-    %p
-      = form_tag user_session_path do
-        = label_tag 'user[email]', "Email"
-        = text_field_tag 'user[email]'
-        = label_tag 'user[password]', "Password"
-        = password_field_tag 'user[password]'
-        = check_box_tag 'user[remember_me]'
-        = label_tag 'user[remember_me]', 'Remember me', class: "checkbox-label"
-
-        .sign-in-button
-          %button{:class => "btn primary small"} Sign in
-
-      = link_to "Forgot your password?", new_password_path('user')
-
+    = form_tag user_session_path, :id => "sign-in-form" do
+      = label_tag 'user[email]', "Email"
+      = text_field_tag 'user[email]'
+      = label_tag 'user[password]', "Password"
+      = password_field_tag 'user[password]'
+      = check_box_tag 'user[remember_me]'
+      = label_tag 'user[remember_me]', 'Remember me', class: "checkbox-label"
+      .sign-in-button
+        %button{:class => "btn primary small"} Sign in
+    = link_to "Forgot your password?", new_password_path('user')
     %p.light
       Don't have an account? We're currently in closed testing and not accepting public sign-ups (yet!).
     %p.light
       If you belong to a group that is using Loomio but you don't have your own Loomio account, please contact the person in your organization who set up Loomio and ask them to add you to the group.
-
-  #footer
-    %hr/
+  %footer
     .row
       .span13
         %ul

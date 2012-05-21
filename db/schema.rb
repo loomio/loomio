@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510131407) do
+ActiveRecord::Schema.define(:version => 20120516044553) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20120510131407) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body"
+    t.text     "body",             :default => ""
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"

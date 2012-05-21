@@ -1,35 +1,29 @@
-- if discussion.can_be_commented_on_by? current_user
-  = form_tag add_comment_discussion_path(discussion), id: "new-comment-form" do
-    = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
-    #new-comment-submit
-      = submit_tag "Post comment", class: "btn primary submit"
-
 - if history.count == 0
-  %h4 There are no messages yet in this discussion.
+  %h2 There are no messages yet in this discussion.
 - else
   - history.each do |message|
     - if message.is_a?(Comment)
       = render message
     - if message.is_a?(Vote)
       %div.comment.position
-        %p
-          %span.position-icon= render partial: "motions/display_icons", locals: { position: message.position }
-          %span.position-message
-            %span.comment-username= link_to(message.user_name, "#")
-            -#= link_to "#{message.user_name}", "#"
+        #position
+          = render partial: "motions/display_icons", locals: { position: message.position }
+        %span
+          .comment-username= link_to(message.user_name, "#")
+          #position-message
             - if message.statement.present?
               = "#{message.statement}"
-            -#- else
-              -#= "voted #{message.position}."# - (no statement)"#said #{message.position} to the current proposal"
-        %p.comment-time.clear
+            - else
+              = " "
+        .comment-time
           = time_ago_in_words(message.created_at) + " ago"
     - if message.is_a?(Motion)
-      - classes = "comment proposal pannel"
+      - classes = "comment proposal panel"
       - classes += " current" if (message == discussion.current_motion)
       %div{class: classes}
-        %p
-          %span.comment-username= link_to(message.author_name, "#")
-          %span.proposal-label created a proposal
-          %p.proposal-text= message.name
-        %p.comment-time
+        %span
+          .comment-username= link_to(message.author_name, "#")
+          #proposal-label created a proposal
+          #proposal-text= message.name
+        .comment-time
           = time_ago_in_words(message.created_at) + " ago"

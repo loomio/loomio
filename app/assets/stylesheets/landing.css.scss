@@ -1,6 +1,9 @@
+@import "settings";
+@import "mixins";
+
 body.landing {
   background-color: #F7F7ED;
-  margin-top: -58px;
+  margin-top: -90px;
   /*background: url(http://static.tumblr.com/thpaaos/kT3kqnqrm/container-bg.png);*/
   /*background-image: url(http://static.tumblr.com/thpaaos/YbJkqnqr6/bg.jpg);*/
   #github-link {
@@ -9,28 +12,24 @@ body.landing {
     float: right;
   }
   #demo-container{
-		padding: 40px 90px;
+    padding: 40px 90px;
   }
   #demo{
-		background-color:white;
+    background-color:white;
   }
   #demo-content{
-		border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eee;
   }
   #demo-content h2{
-		margin: 20px 0 10px 0;
+    margin: 20px 0 10px 0;
   }
   #demo-content p, #demo-content a{
-		font-size: 0.8em;
-		margin: 20px 0;
+    margin: 20px 0;
   }
   #demo-head h1{
-		font-size: 1.5em;
-		font-weight: normal;
-		margin-bottom: 3px;
+    margin-bottom: 3px;
   }
   #demo-head p{
-		font-size: 0.8em;
   }
   .header {
     margin-top: 20px;
@@ -38,19 +37,26 @@ body.landing {
     background-image: url(loomio-orange.png);
     background-position: 5px top;
     background-repeat: no-repeat;
-
+		text-indent: -999em;
     span {
       display: none;
     }
   }
-
+	footer{
+		float: left;
+	}
+	#loomio-project-iframe{
+		border-top:1px solid #eee;
+		border-bottom:1px solid #eee;
+		padding: 20px 0px;
+	}
   .content {
     margin-top: 20px;
     margin-bottom: 30px;
     padding: 20px;
     background-color: #FFF;
     //height: 680px;
-	float:left;
+    float:left;
     border-radius: 8px;
     box-shadow: 1px 1px 4px #999999;
     -webkit-box-shadow: 1px 1px 4px #999999;
@@ -65,6 +71,7 @@ body.landing {
     ul {
       list-style: none;
       margin-left: 0;
+      margin-bottom: 5px;
     }
 
     #whatio {
@@ -74,8 +81,6 @@ body.landing {
       em {
         display: block;
         margin-top: 5px;
-        font-size: 30px;
-        font-style: normal;
       }
     }
 
@@ -109,7 +114,22 @@ body.landing {
       top: 0;
       right: 0;
     }
-
+    #mc_embed_signup{
+      width: 300px;
+    }
+    #mc_embed_signup form {
+        margin: 0;
+        padding: 0;
+    }
+    #mc_embed_signup input.email{
+        width: 100%;
+    }
+    #mc_embed_signup label {
+        color:#404040;
+    }
+		#sign-in-form{
+			margin: 20px 0px 40px;
+		}
     form {
       input {
         width: 290px;
@@ -124,11 +144,15 @@ body.landing {
         width: 300px;
         text-align: left;
         float: none;
-        font-size: 14px;
-        line-height: 18px;
         margin-bottom: 5px;
       }
-      .sign-in-button { margin-top: 15px }
+      .sign-in-button {
+				margin-top: 15px;
+				float: right;
+			}
+			#user_remember_me{
+				margin:0px;
+			}
     }
   }
 }
