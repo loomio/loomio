@@ -35,8 +35,8 @@
     - if motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
       #vote-form
         =form_for([motion, @vote], html:{class:'form-stacked'}) do |f|
-          .clearfix
-            =f.text_area :statement, placeholder: "Give a reason for your vote", class: "input limited"
+          .control-group
+            =f.text_field :statement, placeholder: "Give a reason for your vote", class: "inputError limited"
           .character_counter
           =f.hidden_field :position
       #vote-buttons
