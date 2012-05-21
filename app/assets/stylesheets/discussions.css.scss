@@ -15,9 +15,11 @@
     color: $mid-grey;
     margin-right: 200px;
     text-align: right;
-    margin-top: -32px;
-    height: 12px;
+    height: 0px;
     width: 408px;
+		position: relative;
+		bottom: 17px;
+		font-size: $font-tiny;
   }
 }
 
