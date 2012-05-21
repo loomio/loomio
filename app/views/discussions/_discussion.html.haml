@@ -10,9 +10,9 @@
             = activity_count_for(discussion, current_user)
 
     #comment-info
-      = last_update_date_for(discussion)
+      = latest_history_time_for(discussion)
       #total-comments
-        = pluralize(discussion.comments.count, 'msg')
+        = pluralize(discussion.comments.count + discussion.votes.count, 'msg')
 
   - if params[:controller] == 'dashboard'
     #group-name
