@@ -11,14 +11,17 @@ $token-input-width: 278px;
 #group-form {
   form {
     width: 550px;
-    #inputError { display: inline-block; }
+    .inputError { display: inline-block; }
     #group_name { width: 390px; }
     #setting-label {
       margin-bottom: 4px;
       color: $mid-grey;
     }
     .privacy-settings {
-      select { width: 150px; margin-bottom: 15px; }
+      select {
+        width: 182px;
+        margin-bottom: 15px;
+      }
       .input { text-align: right; }
     }
   }
