@@ -11,14 +11,13 @@
           .span6#setting-label
             Who can see this group?
           .span3
-            =f.select :viewable_by, [:everyone, :members],
-              member_label: Proc.new { |option| group_permissions_label(option) }
+            =f.select :viewable_by, [:everyone, :members].collect{|option| [group_permissions_label(option),option]} if group.parent.nil?
+            =f.select :viewable_by, [:everyone, :members, :parent_group_members].collect{|option| [group_permissions_label(option),option]} unless group.parent.nil?
         .row
           .span6#setting-label
             Who can invite members to this group?
           .span3
-            =f.select :members_invitable_by, [:members, :admins],
-              member_label: Proc.new { |option| group_permissions_label(option) }
+            =f.select :members_invitable_by, [:members, :admins].collect{|option| [group_permissions_label(option),option]}
         =f.hidden_field :parent_id, :value => parent.id unless parent.nil?
       .notification-settings
         = f.check_box :email_new_motion # TODO: check this by default
