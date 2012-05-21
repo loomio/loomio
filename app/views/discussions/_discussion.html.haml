@@ -8,9 +8,9 @@
         - if activity_count_for(discussion, current_user) > 0
           #activity-count.span.label.label-important
             = activity_count_for(discussion, current_user)
-        
+
     #comment-info
-      = last_update_date_for(discussion)      
+      = last_update_date_for(discussion)
       #total-comments
         = pluralize(discussion.comments.count, 'msg')
 
