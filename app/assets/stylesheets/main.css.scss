@@ -137,8 +137,7 @@ header{
 	text-shadow: none;
 }
 .navbar .nav > li > a:hover{
-	color: #005580;
-	text-decoration: underline;
+	color: white;
 }
 .topbar-wrapper {
   .secondary-nav {
@@ -213,7 +212,7 @@ header{
 .inputError { display: inline-block; }
 .error-message {
   font-size: $font-small;
-  display: inline-block;
+  display: inline;
   margin-left: 5px;
   color: $error-color;
 }
