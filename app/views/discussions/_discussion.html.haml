@@ -1,46 +1,34 @@
-- class_name = " voting"
-- group = discussion.group
-- if discussion.current_motion.present? && discussion.current_motion.voting?
-  - motion = discussion.current_motion
-  - if motion.voting? && motion.blocked?
-    - class_name = " blocked"
-%div{ class: "discussion panel" + class_name }
+%div{ class: css_class_for(discussion.current_motion)}
   %span#discussion-title
     - title = truncate(discussion.title, :length => 75, :separator => ' ')
     = link_to title, discussion_path(discussion)
+
     #alert-info
-      - discussion_count = 0
-      - discussion_count = current_user.discussion_activity_count(discussion) if current_user
-      - if discussion_count > 0
-        #discussion-icon-container.discussion-enabled-icon
-          #activity-count.span.label.label-important= discussion_count
-      - else
-        #discussion-icon-container.discussion-disabled-icon
+      #discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
+        - if activity_count_for(discussion, current_user) > 0
+          #activity-count.span.label.label-important
+            = activity_count_for(discussion, current_user)
+        
     #comment-info
-      - if discussion.comments.size > 0
-        - last_updated = discussion.last_comment_updated_at?
-      - else
-        - last_updated = discussion.created_at
-      - last_updated_date = last_updated.to_date
-      - if last_updated_date == Date.today
-        = last_updated.strftime("%I:%M %p")
-      - else
-        = last_updated.strftime("%d %b")
+      = last_update_for(discussion)      
       #total-comments
         = pluralize(discussion.comments.count, 'msg')
+
   - if params[:controller] == 'dashboard'
     #group-name
-      = link_to group.name, group_path(group)
+      = link_to discussion.group.name, group_path(discussion.group)
+
   - if discussion.current_motion.present? && discussion.current_motion.voting?
     #proposal-container
       #vote-icon
-        - if motion.user_has_voted?(current_user)
-          - position = current_user.motion_vote(motion).position
+        - if discussion.current_motion.user_has_voted?(current_user)
+          - position = current_user.motion_vote(discussion.current_motion).position
         =render partial: "motions/display_icons", locals: {position: position}
+
       #proposal-title-container
         %span#proposal-label Proposal:
         %span#proposal-title= discussion.current_motion.name
         #proposal-close-date
-          - if motion.close_date.present?
+          - if discussion.current_motion.close_date.present?
             closing in
-            = time_ago_in_words(motion.close_date)
+            = time_ago_in_words(discussion.current_motion.close_date)
