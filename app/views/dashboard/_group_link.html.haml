@@ -5,6 +5,6 @@
 %span{class: group_link_class}= group.link
 - if current_user && current_user.groups.include?(group)
   = link_to "+",
-    new_motion_path({group_id: group.id}),
+    new_discussion_path(discussion: { group_id: group }),
     :class => 'new_motion',
     :title => 'new motion for this group'

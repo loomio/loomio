@@ -4,6 +4,7 @@
       = link_to @group.parent.name, group_path(@group), title: "group" unless @group.parent.nil?
       = " - " unless @group.parent.nil?
       = link_to @group.name, group_path(@group)
+  %h3 New Discussion
 = form_for @discussion do |f|
   = f.label :title, "Title"
   #new-proposal-title
