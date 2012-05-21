@@ -12,9 +12,10 @@
           confirm: "Are you sure you wish to leave #{@group.name}?"
 .row
   %section.span4#content-left
-    - if @group.parent.nil?
+    - if display_subgroups_block?(@group)
       .block
         =render 'subgroups', group: @group
+
     =render 'users', group: @group
 
   %section.span8#content-main

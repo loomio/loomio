@@ -18,7 +18,10 @@ $token-input-width: 278px;
       color: $mid-grey;
     }
     .privacy-settings {
-      select { width: 150px; margin-bottom: 15px; }
+      select {
+        width: 182px;
+        margin-bottom: 15px;
+      }
       .input { text-align: right; }
     }
   }
