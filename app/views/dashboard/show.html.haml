@@ -8,11 +8,12 @@
             - @groups.each do |group|
               %li
                 = render 'group_link', group: group
-                %ul
-                  - group.subgroups.each do |subgroup|
-                    - if current_user.groups.include? subgroup
-                      %li
-                        = render 'group_link', group: subgroup
+                - if group.subgroups.count > 0
+                  %ul
+                    - group.subgroups.each do |subgroup|
+                      - if current_user.groups.include? subgroup
+                        %li
+                          = render 'group_link', group: subgroup
           = link_to "Create new group", new_group_path, :class => 'btn btn-small'
       %section.span8#content-main
         %h1 Discussions
