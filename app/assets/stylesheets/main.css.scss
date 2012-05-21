@@ -167,20 +167,18 @@ header{
   }
 
   h1 {
-    height: 36px;
-    margin: 5px 0 0 0;
     float: left;
     font-size: 0px;
     line-height: 0px;
-
-    a img {
-      margin: 0 0 1px 0;
-    }
-    a:hover img {
-      margin: 1px 0 0 0;
-    }
+		a{
+			display: block;
+			height: 36px;
+			padding: 5px 5px 0;
+		}
+		a:hover{
+			background-color: #383737;
+		}
   }
-
   ul.dropdown-menu{
     li {
       text-shadow: none;
