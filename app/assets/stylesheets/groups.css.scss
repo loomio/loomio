@@ -140,11 +140,9 @@ input#user_email{
 /**** group dashboard ****/
 
 ul#group-list {
-  margin-bottom: 2px;
   .group-link{
     width: 90%;
     display: inline-block;
-		margin-bottom: 10px;
   }
   .group-link.disabled{
     a{
@@ -152,16 +150,18 @@ ul#group-list {
     }
   }
   li{
+    padding-bottom: 4px;
     font-size: $font-small;
     line-height: 16px;
-    margin-top: 4px;
     list-style-type: none;
     ul {
       margin-left: 0px;
+      margin-bottom: 0px;
       li {
         margin-top: 2px;
         font-size: $font-tiny;
         padding-left: 17px;
+        padding-bottom: 0px;
         background: url('list-item-bullet-tree.png') no-repeat top left;
       }
     }
