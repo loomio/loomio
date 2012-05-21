@@ -1,0 +1,299 @@
+@import "settings";
+@import "bootstrap";
+@import "mixins";
+
+// TODO:
+// * define site color variables
+// * mixin for gradient
+
+body {
+  background-color: white;
+}
+
+// typography
+h1 {
+	font-weight: normal;
+  line-height: 1.2em;
+}
+
+h2 {
+  font-weight: normal;
+	font-size: $font-large;
+  line-height: 1.2em;
+}
+
+h3 {
+  font-weight: normal;
+	font-size: $font-medium;
+}
+.sub_group{
+	font-size: $font-tiny;
+}
+
+// structural elements (containers etc.)
+#general-form {
+  h1 {
+    font-size: $font-large;
+    color: $dark-grey;
+    margin-bottom: 0.5em;
+  }
+}
+
+#content-main {
+  h1 {
+    font-size: $font-large;
+    color: $header-titles-color;
+    background-color: $header-color;
+    padding: 0.25em;
+    margin-bottom: 0.5em;
+  }
+  .btn { margin-bottom: 15px; }
+}
+
+#content-left {
+  color: $header-titles-color;
+  .btn { color: $mid-grey; }
+  h1 {
+    font-size: $font-medium;
+    background-color: $header-color;
+    padding: 0.25em;
+    margin-bottom: 0.5em;
+  }
+  .block { margin-bottom: 20px; }
+  ul { margin-bottom: 0.6em; }
+  li { padding-bottom: 4px; }
+}
+#content-proposal {
+  color: $mid-grey;
+  h1 {
+    font-size: $font-medium;
+    background-color: $header-color;
+    padding: 0.25em;
+    margin-bottom: 0.5em;
+  }
+  margin-bottom: 20px;
+}
+
+.panel {
+  @include box-shadow(1px, 1px, 3px, $light-grey);
+  @include border-radius(4px);
+  border: 1px solid $light-grey;
+  margin: 5px 3px 6px 3px;
+  padding: 8px;
+}
+
+.edit-delete-buttons {
+  float: right;
+  .btn {
+    font-size: $font-tiny;
+    margin-left: 4px;
+  }
+}
+
+// group title
+.group-title {
+  color: $mid-grey;
+  a { color: $mid-grey; }
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid $light-grey;
+  margin-bottom: 20px;
+  .btn {
+    float: right;
+    font-size: $font-tinywiny;
+    margin-left: 4px;
+  }
+}
+
+// navigation
+
+// topbar
+.navbar .nav.pull-right{
+	margin:9px 0px 0px 0px;
+}
+.navbar-wrapper{
+	position: fixed;
+	width: 100%;
+	background-color: $header-dark-color;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+	z-index: 1;
+}
+.navbar-inner{
+	border-radius: 0px;
+	background-color: $header-color;
+	background-image: none;
+}
+.container{
+	width: 940px;
+	margin: 0px auto;
+	padding-top: 90px;
+}
+header{
+	width: 940px;
+	margin: 0px auto;
+}
+.navbar .nav > li > a{
+	padding: 2px 10px;
+	color: $navbar-text-color;
+	text-shadow: none;
+}
+.navbar .nav > li > a:hover{
+	color: white;
+}
+.topbar-wrapper {
+  .secondary-nav {
+    margin-top: 3px;
+    .feedback {
+      font-size: $font-tiny;
+      padding-top: 2px;
+      margin-right: 15px;
+      text-shadow: none;
+    }
+  }
+}
+
+.navbar {
+  a {
+    color: $navbar-text-color;
+    text-shadow: none;
+  }
+	div > ul a, .nav a{
+		font-size: $font-tiny;
+	}
+  .topbar-inner {
+    background-image: -moz-linear-gradient(top, $header-color, $header-dark-color);
+    background-image: -webkit-linear-gradient(top, $header-color, $header-dark-color);
+    background-image: -o-linear-gradient(top, $header-color, $header-dark-color);
+    background-image: linear-gradient(top, $header-color, $header-dark-color);
+  }
+
+  h1 {
+    float: left;
+    font-size: 0px;
+    line-height: 0px;
+		a{
+			display: block;
+			height: 36px;
+			padding: 5px 5px 0;
+		}
+		a:hover{
+			background-color: #383737;
+		}
+  }
+  ul.dropdown-menu{
+    li {
+      text-shadow: none;
+    }
+		.divider{
+			margin: 4px 1px;
+		}
+  }
+}
+
+
+// misc (move stuff out of here..)
+.bordered {
+  border-top: 1px solid $light-grey;
+}
+
+.presence-required {
+  display: inline;
+}
+
+.blocked {
+  background-color: $block-color;
+}
+
+.unread{
+  background-color: white;
+}
+
+.read{
+  background-color: $comment-color;
+}
+
+.inputError { display: inline-block; }
+.error-message {
+  font-size: $font-small;
+  display: inline;
+  margin-left: 5px;
+  color: $error-color;
+}
+
+
+form {
+  label {
+		font-size: $font-small;
+    margin-bottom: 4px;
+  }
+
+  input, select, textarea {
+		font-size: $font-small;
+		height: auto;
+    width: 400px;
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  textarea {
+    height: 200px;
+  }
+
+  input[type="checkbox"] {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: inline;
+  }
+
+  .checkbox-label {
+    margin-left: 5px;
+    display: inline;
+  }
+	.privacy-settings{
+		border-bottom: 1px solid $light-grey;
+    border-top: 1px solid $light-grey;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+	}
+}
+
+.hidden {
+  display: none;
+}
+
+table.jqplot-table-legend {
+  background-color: white;
+  width: auto;
+  border: none;
+  td {
+    border: none;
+    line-height: 16px;
+    padding: 0 5px 0 5px;
+  }
+}
+
+#tooltip, .graph_tooltip{
+  padding: 3px 10px;
+  background: $dark-grey;
+  color: #fff;
+  display: none;
+  opacity: 0.8;
+  width: 100px;
+  text-align: center;
+  @include box-shadow(1px, 1px, 4px, $mid-grey);
+}
+
+/* For modern browsers */
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+
+.cf:after {
+    clear:both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+    zoom:1;
+}

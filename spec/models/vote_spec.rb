@@ -4,8 +4,8 @@ describe Vote do
   before :each do
     @user = User.make
     @user.save
-    @motion = create_motion
-    @motion.group.add_member!(@user)
+    @discussion = create_discussion(author: @user)
+    @motion = create_motion(discussion: @discussion)
   end
 
   context 'a new vote' do
@@ -69,22 +69,22 @@ describe Vote do
   end
 
   it 'should update vote_activity when new vote is created' do
-    @motion.vote_activity = 2
+    @motion.discussion.activity = 2
     vote = Vote.new(position: 'yes')
     vote.motion = @motion
     vote.user = @user
     vote.save!
-    @motion.vote_activity.should == 3
+    @motion.discussion.activity.should == 3
   end
 
-  it 'should update vote_activity when new vote is changed' do
-    @motion.vote_activity = 2
+  it 'should update comment_activity when vote is changed' do
+    @motion.discussion.activity = 2
     vote = Vote.new(position: 'yes')
     vote.motion = @motion
     vote.user = @user
     vote.save!
     vote.position = 'no'
     vote.save!
-    @motion.vote_activity.should == 4
+    @motion.discussion.activity.should == 4
   end
 end

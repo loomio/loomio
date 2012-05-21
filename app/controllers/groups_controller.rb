@@ -6,7 +6,7 @@ class GroupsController < GroupBaseController
     @group = Group.new(params[:group])
     if @group.save
       @group.add_admin! current_user
-      flash[:notice] = "Group created successfully."
+      flash[:success] = "Group created successfully."
       redirect_to @group
     else
       redirect_to :back
@@ -18,7 +18,6 @@ class GroupsController < GroupBaseController
   def add_subgroup
     @parent = Group.find(params[:group_id])
     @subgroup = Group.new(:parent => @parent)
-    @subgroup.viewable_by = @parent.viewable_by
     @subgroup.members_invitable_by = @parent.members_invitable_by
   end
 
@@ -29,7 +28,7 @@ class GroupsController < GroupBaseController
         group.add_member!(user)
       end
     end
-    flash[:notice] = "Members added to group."
+    flash[:success] = "Members added to group."
     redirect_to group_url(group)
   end
 

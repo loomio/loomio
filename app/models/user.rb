@@ -16,12 +16,12 @@ class User < ActiveRecord::Base
   has_many :group_requests, through: :membership_requests, class_name: 'Group', source: :group
   has_many :votes
 
-  has_many :motions, through: :groups
-  has_many :motions_discussing, through: :groups, :source => :motions, :conditions => {phase: 'discussion'}
-  has_many :motions_voting, through: :groups, :source => :motions, :conditions => {phase: 'voting'}
-  has_many :motions_closed, through: :groups, :source => :motions, :conditions => {phase: 'closed'}
+  has_many :discussions, through: :groups
+  has_many :motions, through: :discussions
+  has_many :motions_voting, through: :discussions, :source => :motions, :conditions => {phase: 'voting'}
+  has_many :motions_closed, through: :discussions, :source => :motions, :conditions => {phase: 'closed'}
 
-  has_many :motion_read_logs,
+  has_many :discussion_read_logs,
            :dependent => :destroy
 
   # Setup accessible (or protected) attributes for your model
@@ -51,33 +51,26 @@ class User < ActiveRecord::Base
     new_user
   end
 
-  def update_motion_read_log(motion)
-    if MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
-      motion_read_log = MotionReadLog.new
-      motion_read_log.vote_activity_when_last_read = motion.vote_activity
-      motion_read_log.discussion_activity_when_last_read = motion.discussion_activity
-      motion_read_log.user_id = id
-      motion_read_log.motion_id = motion.id
-      motion_read_log.save
+  def discussions_sorted
+    discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+  end
+
+  def update_discussion_read_log(discussion)
+    if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
+      discussion_read_log = DiscussionReadLog.new
+      discussion_read_log.discussion_activity_when_last_read = discussion.activity
+      discussion_read_log.user_id = id
+      discussion_read_log.discussion_id = discussion.id
+      discussion_read_log.save
     else
-      log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-      log.vote_activity_when_last_read = motion.vote_activity
-      log.discussion_activity_when_last_read = motion.discussion_activity
+      log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
+      log.discussion_activity_when_last_read = discussion.activity
       log.save
     end
   end
 
-  def vote_activity_when_last_read(motion)
-    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-    if log
-      log.vote_activity_when_last_read
-    else
-      0
-    end
-  end
-
-  def discussion_activity_when_last_read(motion)
-    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+  def discussion_activity_when_last_read(discussion)
+    log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
     if log
       log.discussion_activity_when_last_read
     else
@@ -85,14 +78,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  def vote_activity_count(motion)
-    motion.vote_activity - vote_activity_when_last_read(motion)
+  def discussion_activity_count(discussion)
+    discussion.activity - discussion_activity_when_last_read(discussion)
   end
 
-  def discussion_activity_count(motion)
-    motion.discussion_activity - discussion_activity_when_last_read(motion)
-  end
-  
   def self.find_by_email(email)
     User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
   end
@@ -117,6 +106,12 @@ class User < ActiveRecord::Base
 
   def root_groups
     groups.where("parent_id IS NULL")
+  end
+
+  def position(motion)
+    if motion.user_has_voted?(self)
+      motion_vote(motion).position
+    end
   end
 
   private

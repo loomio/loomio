@@ -3,10 +3,14 @@ require 'spec_helper'
 describe VotesController do
   context 'a signed in user voting on a motion' do
     before :each do
-      sign_in @user = User.make!
-      @group = Group.make!
+      @user = User.make
+      @user.save
+      sign_in @user
+      @group = Group.make
+      @group.save
       @group.add_member!(@user)
-      @motion = create_motion(group: @group, phase: 'voting')
+      @discussion = create_discussion(group: @group)
+      @motion = create_motion(discussion: @discussion, phase: 'voting')
       @motion.save!
     end
     context 'during voting phase' do
@@ -15,7 +19,7 @@ describe VotesController do
         post :create, motion_id: @motion.id,
              vote: {position: 'yes', statement: 'blah'}
         response.should be_redirect
-        flash[:notice].should =~ /Your vote has been submitted/
+        flash[:success].should =~ /Your vote has been submitted/
         assigns(:vote).user.should == @user
         assigns(:vote).motion.should == @motion
         assigns(:vote).position.should == 'yes'
@@ -32,7 +36,7 @@ describe VotesController do
              vote: {position: 'no', statement: 'blah'}
 
         response.should be_redirect
-        flash[:notice].should =~ /Vote updated/
+        flash[:success].should =~ /Vote updated/
         Vote.all.count.should == 2
         @user.motion_vote(@motion).position.should == 'no'
       end
@@ -51,7 +55,8 @@ describe VotesController do
 
     context 'during closed phase' do
       before :each do
-        @motion = create_motion(group: @group, phase: 'closed', author: @user)
+        @discussion = create_discussion(group: @group, author: @user)
+        @motion = create_motion(discussion: @discussion, phase: 'closed')
       end
 
       it 'cannot vote' do

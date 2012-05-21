@@ -42,24 +42,20 @@ describe User do
   it "can create a new motion_read_log" do
     @user = User.make!
     @group = Group.make!
-    @motion = create_motion(group: @group)
-    @user.update_motion_read_log(@motion)
-    MotionReadLog.count.should == 1
+    @discussion = create_discussion(group: @group)
+    @user.update_discussion_read_log(@discussion)
+    DiscussionReadLog.count.should == 1
   end
 
   it "can update an existing motion_read_log" do
     @user = User.make!
     @group = Group.make!
-    @motion = create_motion(group: @group)
-    @motion.vote_activity = 2
-    @motion.discussion.activity = 4
-    @user.update_motion_read_log(@motion)
-    @motion.vote_activity = 7
-    @motion.discussion.activity = 5
-    @user.vote_activity_when_last_read(@motion).should == 2
-    @user.discussion_activity_when_last_read(@motion).should == 4
-    @user.update_motion_read_log(@motion)
-    @user.vote_activity_when_last_read(@motion).should == 7
-    @user.discussion_activity_when_last_read(@motion).should == 5
+    @discussion = create_discussion(group: @group)
+    @discussion.activity = 4
+    @user.update_discussion_read_log(@discussion)
+    @discussion.activity = 5
+    @user.discussion_activity_when_last_read(@discussion).should == 4
+    @user.update_discussion_read_log(@discussion)
+    @user.discussion_activity_when_last_read(@discussion).should == 5
   end
 end

@@ -5,18 +5,9 @@ class MotionsController < GroupBaseController
   before_filter :check_motion_destroy_permissions, only: :destroy
   before_filter :check_motion_close_permissions, only: [:open_voting, :close_voting]
 
-  def show
+  def update
     resource
-    @motion.open_close_motion
-    @group = @motion.group
-    @votes_for_graph = @motion.votes_graph_ready
-    @unique_votes = Vote.unique_votes(@motion)
-    @vote = Vote.new
-    @comments = @motion.discussion.comment_threads.order("created_at DESC")
-    @user_already_voted = @motion.user_has_voted?(current_user)
-    if current_user
-      current_user.update_motion_read_log(@motion)
-    end
+    update! { discussion_url(@motion.discussion_id) }
   end
 
   def new
@@ -27,10 +18,11 @@ class MotionsController < GroupBaseController
   def create
     @motion = Motion.new(params[:motion])
     @motion.author = current_user
-    @motion.group = Group.find(params[:group_id])
     if @motion.save
-      redirect_to @motion
+      flash[:success] = "Motion sucessfully created."
+      redirect_to discussion_path(@motion.discussion)
     else
+      flash[:success] = "Motion sucessfully created."
       redirect_to :back
     end
   end
@@ -38,7 +30,7 @@ class MotionsController < GroupBaseController
   def destroy
     resource
     destroy! { @motion.group }
-    flash[:notice] = "Motion deleted."
+    flash[:success] = "Motion deleted."
   end
 
   # CUSTOM ACTIONS
@@ -46,13 +38,13 @@ class MotionsController < GroupBaseController
   def close_voting
     resource
     @motion.close_voting!
-    redirect_to motion_path(@motion)
+    redirect_to discussion_url(@motion.discussion_id)
   end
 
   def open_voting
     resource
     @motion.open_voting!
-    redirect_to motion_path(@motion)
+    redirect_to discussion_path(@motion.discussion_id)
   end
 
   def edit
@@ -61,16 +53,16 @@ class MotionsController < GroupBaseController
       edit!
     else
       flash[:error] = "Only the facilitator or author can edit a motion."
-      redirect_to motion_url(@motion)
+      redirect_to discussion_url(@motion.discussion_id)
     end
   end
 
-  def toggle_tag_filter
-    @motion = Motion.find(params[:id])
-    @active_tags = params[:tags]
-    @clicked_tag = params[:tag]
-    render :partial => "motions/votes_filters", :locals => { clicked_tag: @clicked_tag }, :layout => false, :status => :created
-  end
+  #def toggle_tag_filter
+    #@motion = Motion.find(params[:id])
+    #@active_tags = params[:tags]
+    #@clicked_tag = params[:tag]
+    #render :partial => "motions/votes_filters", :locals => { clicked_tag: @clicked_tag }, :layout => false, :status => :created
+  #end
 
   private
 

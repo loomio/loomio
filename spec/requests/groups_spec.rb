@@ -8,7 +8,9 @@ describe "Groups" do
       @user = User.make!
       @group = Group.make!(name: 'Test Group', viewable_by: :members)
       @group.add_member!(@user)
-      @motion = create_motion(name: 'Test Motion', group: @group,
+      @discussion = create_discussion(group: @group, author: @user)
+      @motion = create_motion(name: 'Test Motion',
+                              discussion: @discussion,
                               author: @user, facilitator: @user)
       page.driver.post user_session_path, 'user[email]' => @user.email,
                                           'user[password]' => 'password'
@@ -35,7 +37,7 @@ describe "Groups" do
         visit edit_group_path(@group)
 
         fill_in 'group_name', with: 'New groupie'
-        click_on 'Update Group'
+        find("#update-group").click
 
         should have_content("New groupie")
       end
@@ -55,6 +57,15 @@ describe "Groups" do
 
           should have_content("Add member")
         end
+      end
+    end
+
+    context "group member viewing a group" do
+      it "can add a discussion" do
+        visit group_path(@group)
+
+        click_on 'Start a new discussion'
+        should have_css(".discussions.new")
       end
     end
 
@@ -117,13 +128,6 @@ describe "Groups" do
         should have_content("Test Group")
         should have_content("Current members")
       end
-
-      it "can click on 'Create a motion'" do
-        visit group_path(@group)
-
-        click_link 'Create a motion'
-        should have_content("New motion")
-      end
     end
 
     it "doesn't let us view a group the user does not belongs to" do
@@ -141,7 +145,9 @@ describe "Groups" do
       @user = User.make!
       @group = Group.make!(name: 'Test Group', viewable_by: :everyone)
       @group.add_member!(@user)
-      @motion = create_motion(name: 'Test Motion', group: @group,
+      @discussion = create_discussion(group: @group, author: @user)
+      @motion = create_motion(name: 'Test Motion',
+                              discussion: @discussion,
                               author: @user, facilitator: @user)
       visit group_path(@group)
 

@@ -8,7 +8,9 @@ describe "Votes" do
       @user = User.make!
       @group = Group.make!(name: 'Test Group')
       @group.add_member!(@user)
-      @motion = create_motion(name: 'Test Motion', group: @group,
+      @discussion = create_discussion(group: @group, author: @user)
+      @motion = create_motion(name: 'Test Motion',
+                              discussion: @discussion,
                               author: @user, facilitator: @user)
     end
 

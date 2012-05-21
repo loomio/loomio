@@ -52,7 +52,7 @@ class Vote < ActiveRecord::Base
 
   private
     def update_activity
-      self.motion.update_vote_activity
+      self.motion.discussion.update_activity
     end
 
     def send_notifications

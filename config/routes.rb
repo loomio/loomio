@@ -25,9 +25,11 @@ Tautoko::Application.routes.draw do
   match "/motions/:id/open", :to => "motions#open_voting", :as => :open_motion_voting,
     :via => :post
 
-  resources :discussions, only: :add_comment do
+  resources :discussions, only: [:add_comment, :show, :new, :create] do
     post :add_comment, :on => :member
+    get :new_proposal, :on => :member
   end
+
   resources :votes
   resources :memberships, except: [:new, :show]
   resources :users

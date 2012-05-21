@@ -1,3 +1,233 @@
-// Place all the styles related to the Discussions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "settings";
+@import "mixins";
+
+/** new proposal form*/
+
+#new-proposal-title {
+  .character-counter {
+    color: $mid-grey;
+    text-align: right;
+    position: relative;
+    bottom: 18px;
+    height: 12px;
+    width: 408px;
+		position: relative;
+		bottom: 17px;
+		font-size: $font-tiny;
+  }
+}
+
+.content-discussion { margin-top: -20px; }
+.discussion-title {
+  font-size: $font-large;
+  color: $dark-grey;
+}
+
+
+/*** comments ***/
+
+#content-comments {
+  padding-top: 20px;
+  padding-right: 20px;
+
+  #new-comment-form{
+    margin-bottom: 8px;
+  }
+  #new-comment{
+    width: 450px;
+    max-width: 450px;
+    height: 80px;
+    color: black;
+  }
+  #new-comment-submit{
+    margin-top: -2px;
+    text-align: right;
+    .submit{
+      margin-top: 8px;
+    }
+  }
+  .comment{
+    background-color: $comment-color;
+    margin-bottom: 2px;
+    padding: 4px;
+    font-size: $font-small;
+    .comment-username{
+      font-weight: bold;
+      float: left;
+    }
+    #comment-body{
+      margin-left: 0.4em;
+      display: inline-block;
+    }
+    .comment-time{
+      color: $dark-grey;
+      font-size: 0.75em;
+    }
+    .comment-likes{
+      color: $dark-grey;
+      font-size: 0.75em;
+    }
+  }
+
+  .position{
+    #position{
+      float: left;
+      padding-right: 0.4em;
+      display: block;
+    }
+    #position-message{
+      color: black;
+      padding-left: 0.4em;
+      display: inline-block;
+    }
+  }
+
+  .proposal{
+    background: $comment-color;
+    color: $mid-grey;
+    margin-bottom: 6px;
+    #proposal-author{
+      font-weight: bold;
+    }
+    #proposal-label{
+      color: $mid-grey;
+      margin-left: 0.4em;
+      display: inline-block;
+    }
+    #proposal-text{
+      color: $dark-grey;
+      margin-left: 0.4em;
+      font-style: italic;
+    }
+  }
+  .proposal.current{ background: #FFF; }
+}
+
+
+/*** proposal ***/
+
+#content-proposal{
+  padding-top: 20px;
+  padding-left: 19px;
+  border-left: 1px solid $light-grey;
+  margin-left: 0px;
+  width: 430px;
+  #current-proposal {
+    margin-bottom: 20px;
+  }
+  #new-proposal {
+    .btn { margin-bottom: 10px; }
+  }
+  #no-current-proposal {
+    .btn { margin-bottom: 58px; }
+  }
+  .label{
+    text-transform: lowercase;
+    font-weight: normal;
+  }
+  #proposed-by {
+    font-size: $font-tiny;
+    margin-bottom: 30px;
+  }
+  #description {
+    p{}
+    color: $dark-grey;
+  }
+  #percentage-to-vote {
+    font-size: $font-tiny;
+    margin-bottom: 10px;
+  }
+  #graph{
+    height: 250px;
+    margin-left: -20px;
+  }
+  #new_vote{ padding-left: 0px; }
+  #vote-form{ height: 100px; }
+  #vote-statement{ margin-left: 0px; padding-left: 0px; }
+  .inputError { margin-left: 0px; height: 65px; }
+  .control-group { padding-top: 0px; padding-bottom: 0px; }
+  .character-counter {
+    font-size: $font-small;
+    color: $mid-grey;
+    text-align: right;
+    position: relative;
+    bottom: 15px;
+  }
+  #vote-buttons{
+    position: relative;
+    bottom: 15px;
+    margin-bottom: 15px;
+    .btn.vote {
+      @include box-shadow(1px, 1px, 4px, $mid-grey);
+      @include border-radius(5px);
+      padding: 3px;
+    }
+  }
+  #votes-table {
+    #statement {
+      font-size: $font-tiny;
+      display: block;
+      margin-left: 30px;
+      color: #000;
+      padding-bottom: 4px;
+    }
+    .position-row {
+      padding-bottom: 3px;
+      padding-top: 2px;
+      .member-row {
+        min-height: 24px;
+        #position {
+          float: left;
+          margin-top: 2px;
+          display: inline-block;
+          height: 20px;
+        }
+        .member-name {
+          float: left;
+          display: inline-block;
+          padding-top: 4px;
+          margin-left: 10px;
+        }
+      }
+    }
+    .no-position-row {
+      min-height: 29px;
+      #no-position {
+        padding-left: 4px;
+        float: left;
+        display: inline-block;
+        height: 20px;
+      }
+      .member-no-position {
+        float: left;
+        display: inline-block;
+        padding: 2px;
+        padding-left: 8px;
+        margin-left: 6px;
+      }
+    }
+  }
+
+  #previous-proposals {
+    color: $mid-grey;
+  }
+
+  .motion-row {
+    color: $mid-grey;
+    .close-date {
+      font-size: $font-tiny;
+    }
+  }
+}
+
+/*  New & Edit motion form */
+#motion-form{
+  .input { margin-left: 0px; display: inline-block; }
+  .clearfix { padding-top: 0px; margin-bottom: 0px; }
+  #closing-inputs {
+    height: 40px;
+    #input_date{ width: 140px; display: inline-block; }
+    select { width: 100px; display: inline-block; }
+  }
+  #description { margin-top: 31px; }
+}

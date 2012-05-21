@@ -1,0 +1,34 @@
+%div{ class: css_class_for(discussion) }
+  %span#discussion-title
+    - title = truncate(discussion.title, :length => 75, :separator => ' ')
+    = link_to title, discussion_path(discussion)
+
+    #alert-info
+      #discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
+        - if activity_count_for(discussion, current_user) > 0
+          #activity-count.span.label.label-important
+            = activity_count_for(discussion, current_user)
+
+    #comment-info
+      = latest_history_time_for(discussion)
+      #total-comments
+        = pluralize(discussion.comments.count + discussion.votes.count, 'msg')
+
+  - if params[:controller] == 'dashboard'
+    #group-name
+      = link_to discussion.group.name, group_path(discussion.group)
+
+  - motion = discussion.current_motion
+  - if motion.present? && motion.voting?
+    #proposal-container
+      #vote-icon
+        - if current_user
+          = render "motions/display_icons", position: current_user.position(motion)
+
+      #proposal-title-container
+        %span#proposal-label Proposal:
+        %span#proposal-title= motion.name
+        #proposal-close-date
+          - if motion.close_date.present?
+            closing in
+            = time_ago_in_words(motion.close_date)
