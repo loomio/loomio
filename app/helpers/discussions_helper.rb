@@ -1,6 +1,6 @@
 module DiscussionsHelper
  
-  def last_update_for(discussion)
+  def last_update_date_for(discussion)
     if discussion.comments.size > 0
       last_updated = discussion.last_comment_updated_at?
     else
