@@ -1,10 +1,6 @@
 @import "settings";
 @import "mixins";
 
-.presence-required.input { margin-left: 0px; display: inline; }
-.clearfix { padding-top: 0px; padding-bottom: 0px; }
-
-
 /** new proposal form*/
 
 #new-proposal-title {
@@ -148,14 +144,15 @@
   #new_vote{ padding-left: 0px; }
   #vote-statement{ margin-left: 0px; padding-left: 0px; }
   .input { margin-left: 0px; height: 65px; }
-  .clearfix { padding-top: 0px; padding-bottom: 0px; }
+  .control-group { padding-top: 0px; padding-bottom: 0px; }
   .character_counter {
     float: right;
     color: $mid-grey;
-    margin-top: -20px;
+    height: 15px;
+    margin-top: -10px;
   }
   #vote-buttons{
-    margin-top: -25px;
+    margin-top: -15px;
     margin-bottom: 15px;
     .btn.vote {
       @include box-shadow(1px, 1px, 4px, $mid-grey);

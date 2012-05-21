@@ -1,9 +1,9 @@
 #motion-form
   =form_for(*form_args) do |f|
-    = f.label :name, "Title"
-    .clearfix
-      .presence-required= f.text_field :name, class: "presence-required input"
-      .error-message Title can not be blank
+    .control-group
+      = f.label :name, "Title", {class: "control-label", for: "inputError"}
+      = f.text_field :name, class: "inputError"
+      %span.error-message Title can not be blank
     #closing-inputs
       = f.label :close_date, "Closing"
       = text_field_tag :input_date, nil, class: "date-input"
