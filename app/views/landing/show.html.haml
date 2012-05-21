@@ -17,9 +17,6 @@
     %ul
       %li
         Check out our
-        = "<a href='https://www.pledgeme.co.nz/Crowd/Details/166'>PledgeMe campaign</a>".html_safe
-      %li
-        Check out our
         = "<a href='http://blog.loom.io'>blog</a>".html_safe
       %li
         Get on the Loomio
@@ -29,7 +26,7 @@
       -#= "<a href='/demo'>Demo page</a>.".html_safe
   #controls
     %h2 Alpha user sign in
-    = form_tag user_session_path do
+    = form_tag user_session_path, :id => "sign-in-form" do
       = label_tag 'user[email]', "Email"
       = text_field_tag 'user[email]'
       = label_tag 'user[password]', "Password"
