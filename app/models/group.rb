@@ -126,23 +126,13 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def discussions_sorted
+    discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+  end
 
   #
-  # TAG-RELATED METHODS
+  # PRIVATE METHODS
   #
-
-  def get_user_tags(user)
-    user.owner_tags_on(self, :group_tags)
-  end
-
-  def set_user_tags(user, tags)
-    tag user, with: tags, on: :group_tags
-  end
-
-  def delete_user_tag(user, tag)
-    new_tags = user.group_tags_from(self).join(",").gsub(tag, "")
-    set_user_tags user, new_tags
-  end
 
   private
 
@@ -152,10 +142,7 @@ class Group < ActiveRecord::Base
     self.members_invitable_by ||= :members
   end
 
-  #
-  # VALIDATORS
-  #
-
+  # Validators
   def limit_inheritance
     unless parent.nil?
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent.nil?

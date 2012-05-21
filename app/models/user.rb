@@ -51,6 +51,10 @@ class User < ActiveRecord::Base
     new_user
   end
 
+  def discussions_sorted
+    discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+  end
+
   def update_discussion_read_log(discussion)
     if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
       discussion_read_log = DiscussionReadLog.new
@@ -106,10 +110,10 @@ class User < ActiveRecord::Base
 
   def position(motion)
     if motion.user_has_voted?(self)
-      motion_vote(motion).position 
+      motion_vote(motion).position
     end
   end
-  
+
   private
     def ensure_name_entry
       unless name
