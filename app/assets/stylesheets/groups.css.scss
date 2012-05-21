@@ -12,14 +12,20 @@ $token-input-width: 278px;
   form {
     width: 550px;
     .input { margin-left: 0px; display: inline; }
-    .clearfix { padding-top: 0px; margin-bottom: 10px; display: block; }
+    .clearfix { padding-top: 0px;
+                margin-bottom: 10px; 
+                display: block;
+              }
     #group_name { width: 390px; }
     #setting-label {
       margin-bottom: 4px;
       color: $mid-grey;
     }
     .privacy-settings {
-      select { width: 150px; margin-bottom: 15px; }
+      select { 
+        width: 182px; 
+        margin-bottom: 15px; 
+      }
       .input { text-align: right; }
     }
   }
