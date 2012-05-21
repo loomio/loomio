@@ -11,7 +11,7 @@ $token-input-width: 278px;
 #group-form {
   form {
     width: 550px;
-    #inputError { display: inline-block; }
+    .inputError { display: inline-block; }
     #group_name { width: 390px; }
     #setting-label {
       margin-bottom: 4px;
