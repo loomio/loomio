@@ -67,7 +67,7 @@ input#user_email{
 .discussion {
   color: $mid-grey;
   #group-name {
-    font-size: $font-small;
+    font-size: $font-tiny;
     a { color: $mid-grey; }
     margin-top: -0.3em;
     padding-left: 5px;
@@ -78,7 +78,6 @@ input#user_email{
   #proposal-container {
     padding-left: 7px;
     padding-bottom: 7px;
-    font-size: $font-small;
     min-height: 30px;
     color: $light-grey;
   }
@@ -96,14 +95,16 @@ input#user_email{
     width: 400px;
   }
   #proposal-label {
+    font-size: $font-tiny;
     font-style: italic;
   }
   #proposal-title {
+    font-size: $font-tiny;
     color: $mid-grey;
   }
   #proposal-close-date {
     margin-top: -0.4em;
-    font-size: $font-tiny;
+    font-size: 0.7em;
   }
   #comment-info {
     display: inline-block;
