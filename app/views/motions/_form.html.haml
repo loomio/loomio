@@ -2,7 +2,7 @@
   =form_for(*form_args) do |f|
     .control-group
       = f.label :name, "Title", {class: "control-label", for: "inputError"}
-      = f.text_field :name, id: "inputError"
+      = f.text_field :name, class: "inputError"
       %span.error-message Title can not be blank
     #closing-inputs
       = f.label :close_date, "Closing"

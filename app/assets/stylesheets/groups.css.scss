@@ -11,8 +11,7 @@ $token-input-width: 278px;
 #group-form {
   form {
     width: 550px;
-    .input { margin-left: 0px; display: inline; }
-    .clearfix { padding-top: 0px; margin-bottom: 10px; display: block; }
+    #inputError { display: inline-block; }
     #group_name { width: 390px; }
     #setting-label {
       margin-bottom: 4px;
@@ -142,7 +141,7 @@ input#user_email{
 
 ul#group-list {
   margin-bottom: 2px;
-  .group -link{
+  .group-link{
     width: 90%;
     display: inline-block;
 		margin-bottom: 10px;

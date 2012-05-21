@@ -2,8 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-current_tags = ""
-current_tag_filter = "active"
 $ ->
   $(".error-message").hide()
   if $("#motion-form").length > 0
@@ -24,7 +22,7 @@ $ ->
       $("#date_hour").val(hours)
       $("#motion_close_date").val(datetime)
     else
-      #** Edit Moition **
+      #** Edit Motion **
       date = $("#motion_close_date").val()
       date_offset = new Date()
       offset = date_offset.getTimezoneOffset()/-60
@@ -37,22 +35,24 @@ $ ->
       $("#input_date").datepicker("setDate", date_string)
       $("#date_hour").val(hour)
 
-
-  #** presnece validations: use this function any where just assign the class .presence-required
-  #   to the text field in question and the .check-presence to the submit button **
+#** presence validations: use this function any where just assign the class .presence-required
+#   to the text field in question and the .check-presence to the submit button **
+$ ->
   $(".check-presence").click((event, ui) ->
-    if $("#inputError").val() == ""
+    if $(".inputError").val() == ""
       $(".control-group").addClass("error")
       $(".error-message").show()
       false
   )
 
-  $("#inputError").keyup(() ->
+$ ->
+  $(".inputError").keyup(() ->
     $(".control-group").removeClass("error")
     $(".error-message").hide()
   )
 
-  #** Reload hidden close_date field **
+#** Reload hidden close_date field **
+$ ->
   $("#input_date").change((e) ->
     date = $(this).val()
     local_datetime = new Date()
@@ -62,6 +62,8 @@ $ ->
     local_datetime.setHours($("#date_hour").val())
     $("#motion_close_date").val(local_datetime)
   )
+
+$ ->
   $("#date_hour").change((e) ->
     date = $("#input_date").val()
     local_datetime = new Date()
@@ -72,14 +74,15 @@ $ ->
     $("#motion_close_date").val(local_datetime)
   )
 
-  #** character count for statement on discussion:show page **
-  pluralize_characters = ((num) ->
-    if(num == 1)
-      return num + " character"
-    else
-      return num + " characters"
-  )
+#** character count for statement on discussion:show page **
+pluralize_characters = ((num) ->
+  if(num == 1)
+    return num + " character"
+  else
+    return num + " characters"
+)
 
+$ ->
   display_count = ((num) ->
     if(num >= 0)
       $(".character_counter").text(pluralize_characters(num) + " left")
@@ -90,12 +93,14 @@ $ ->
       $(".control-group").addClass("error")
   )
 
+$ ->
   $(".limited").keyup(() ->
     chars = $(".limited").val().length
     left = 249 - chars
     display_count(left)
   )
 
+$ ->
   $(".vote").click((event) ->
     if $("control-group").hasClass("error")
       $('#new_vote').preventDefault()
@@ -103,8 +108,8 @@ $ ->
       $('#new_vote').submit()
   )
 
-  #** character count for title on discussion:new page **
-
+#** character count for title on discussion:new page **
+$ ->
   $(".limit").keyup(() ->
     $(".error-message").hide()
     chars = $(".limit").val().length
@@ -118,9 +123,13 @@ $ ->
       $(".control-group").addClass("error")
   )
 
-  # NOTE (Jon): We should implement a better method for scoping javascript to specific pages
-  # http://stackoverflow.com/questions/6167805/using-rails-3-1-where-do-you-put-your-page-specific-javascript-code
+# NOTE (Jon): We should implement a better method for scoping javascript to specific pages
+# http://stackoverflow.com/questions/6167805/using-rails-3-1-where-do-you-put-your-page-specific-javascript-code
+$ ->
   if $("#motion").length > 0
     $("#description").html(linkify_html($("#description").html()))
     $(".comment-body").each(-> $(this).html(linkify_html($(this).html())))
 
+$ ->
+  $(".vote").popover
+    placement: "top"
