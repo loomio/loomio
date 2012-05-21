@@ -125,7 +125,7 @@ h3 {
 .container{
 	width: 940px;
 	margin: 0px auto;
-	padding-top: 58px;
+	padding-top: 90px;
 }
 header{
 	width: 940px;
@@ -158,7 +158,7 @@ header{
     text-shadow: none;
   }
 	div > ul a, .nav a{
-		padding: 18px 10px 6px;
+		font-size: $font-tiny;
 	}
   .topbar-inner {
     background-image: -moz-linear-gradient(top, $header-color, $header-dark-color);
@@ -186,8 +186,10 @@ header{
   ul.dropdown-menu{
     li {
       text-shadow: none;
-      padding-bottom: 10px;
     }
+		.divider{
+			margin: 4px 1px;
+		}
   }
 }
 
