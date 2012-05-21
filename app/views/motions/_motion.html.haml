@@ -36,8 +36,8 @@
       #vote-form
         =form_for([motion, @vote], html:{class:'form-stacked'}) do |f|
           .control-group
-            =f.text_field :statement, placeholder: "Give a reason for your vote", class: "inputError limited"
-          .character_counter
+            =f.text_area :statement, placeholder: "Give a reason for your vote", class: "inputError limit"
+            .character-counter
           =f.hidden_field :position
       #vote-buttons
         =link_to image_tag("hand-yes.png", height:"40", width:"40", title:"I agree", alt:"I agree"), "#",
