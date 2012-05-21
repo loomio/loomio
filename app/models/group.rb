@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  PERMISSION_CATEGORIES = [:everyone, :members, :admins]
+  PERMISSION_CATEGORIES = [:everyone, :members, :admins, :parent_group_members]
 
   validates_presence_of :name
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
@@ -31,7 +31,7 @@ class Group < ActiveRecord::Base
 
   acts_as_tagger
 
-  attr_accessible :name, :viewable_by, :parent_id
+  attr_accessible :name, :viewable_by, :parent_id, :parent
   attr_accessible :members_invitable_by, :email_new_motion
 
   #
@@ -104,16 +104,18 @@ class Group < ActiveRecord::Base
   end
 
   def can_be_edited_by?(user)
-    has_admin_user? user
+    has_admin_user?(user)
   end
 
   def has_admin_user?(user)
-    admins.include?(user)
+    return true if admins.include?(user)
+    return true if (parent && parent.admins.include?(user))
   end
 
   def can_be_viewed_by?(user)
     return true if viewable_by == :everyone
-    return true if (viewable_by == :members && users.include?(user))
+    return true if users.include?(user)
+    return true if viewable_by == :parent_group_members && (parent.users || []).include?(user)
   end
 
   def can_invite_members?(user)
@@ -145,7 +147,8 @@ class Group < ActiveRecord::Base
   private
 
   def set_defaults
-    self.viewable_by ||= :everyone
+    self.viewable_by ||= :everyone if parent.nil?
+    self.viewable_by ||= :parent_group_members unless parent.nil?
     self.members_invitable_by ||= :members
   end
 
