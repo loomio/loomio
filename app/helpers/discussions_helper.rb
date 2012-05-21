@@ -31,9 +31,8 @@ module DiscussionsHelper
     if motion.present? && motion.voting? && motion.blocked?
       suffix = "blocked"
     else
-      if current_user.discussion_activity_count(discussion) > 0
-        suffix = "unread"
-      else
+      suffix = "unread"
+      if (current_user && (current_user.discussion_activity_count(discussion) == 0))
         suffix = "read"
       end
     end
