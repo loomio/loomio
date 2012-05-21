@@ -3,7 +3,7 @@
     .control-group
       = f.label :name, "Title", {class: "control-label", for: "inputError"}
       = f.text_field :name, class: "inputError"
-      %span.error-message Title can not be blank
+      %span.error-message Please fill in a proposal title
     #closing-inputs
       = f.label :close_date, "Closing"
       = text_field_tag :input_date, nil, class: "date-input"
