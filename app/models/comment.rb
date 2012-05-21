@@ -88,8 +88,8 @@ class Comment < ActiveRecord::Base
     return commentable if commentable_type == "Discussion"
   end
 
-  def default_motion
-    discussion.default_motion
+  def current_motion
+    discussion.current_motion
   end
 
   private

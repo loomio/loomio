@@ -1,21 +1,21 @@
 class Motion < ActiveRecord::Base
   PHASES = %w[voting closed]
 
-  belongs_to :group
   belongs_to :author, :class_name => 'User'
   belongs_to :facilitator, :class_name => 'User'
   belongs_to :discussion
   has_many :votes, :dependent => :destroy
-  has_many :motion_read_logs, :dependent => :destroy
   has_many :did_not_votes
 
-  validates_presence_of :name, :group, :author, :facilitator_id
+  validates_presence_of :name, :discussion, :author, :facilitator
   validates_inclusion_of :phase, in: PHASES
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
 
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
+  delegate :name, :to => :author, :prefix => :author
+  delegate :name, :to => :facilitator, :prefix => :facilitator
 
   after_create :initialize_discussion
   after_create :email_motion_created
@@ -26,7 +26,7 @@ class Motion < ActiveRecord::Base
   attr_accessor :enable_discussion
 
   attr_accessible :name, :description, :discussion_url, :enable_discussion
-  attr_accessible :close_date, :phase, :facilitator_id, :group
+  attr_accessible :close_date, :phase, :facilitator_id, :discussion_id
 
   include AASM
   aasm :column => :phase do
@@ -57,12 +57,20 @@ class Motion < ActiveRecord::Base
     .having('count(votes.id) = 0')
   }
 
+  def group
+    discussion.group
+  end
+
   def user_has_voted?(user)
     votes.map{|v| v.user.id}.include? user.id
   end
 
   def with_votes
     votes if votes.size > 0
+  end
+
+  def unique_votes
+    Vote.unique_votes(self)
   end
 
   def votes_breakdown
@@ -86,7 +94,7 @@ class Motion < ActiveRecord::Base
   end
 
   def blocked?
-    votes.each do |v|
+    unique_votes.each do |v|
       if v.position == "block"
         return true
       end
@@ -127,8 +135,6 @@ class Motion < ActiveRecord::Base
       discussion.group = group
       discussion.save
     end
-    self.group = group
-    save
   end
 
   def open_close_motion
@@ -158,10 +164,6 @@ class Motion < ActiveRecord::Base
     #end
     #return has_tag
   #end
-
-  def unique_votes
-    Vote.unique_votes(self)
-  end
 
   def discussion_activity
     if discussion
@@ -201,11 +203,6 @@ class Motion < ActiveRecord::Base
 
   def group_members
     group.users
-  end
-
-  def update_vote_activity
-    self.vote_activity += 1
-    save
   end
 
   def update_discussion_activity
@@ -248,6 +245,7 @@ class Motion < ActiveRecord::Base
       unless discussion
         self.discussion = Discussion.new(group: group)
         discussion.author = author
+        discussion.title = name
         discussion.save
         save
       end

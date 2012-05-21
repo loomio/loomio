@@ -1,0 +1,70 @@
+#motion
+  %h2
+    = motion.name
+    - if motion.voting?
+      %span.label.label-success Voting
+    - if motion.closed?
+      %span.label.label-important Closed
+  #closing-info
+    - if motion.has_closing_date?
+      No close date
+    - else
+      - if motion.voting?
+        = "Closing in #{time_ago_in_words(motion.close_date)}"
+      - else
+        Closed on
+        %span.relativetime= motion.close_date
+    - if motion.can_be_edited_by? current_user
+      %span#admin-buttons
+        =render "motions/facilitator_options", motion: motion
+  #proposed-by
+    "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
+    - if motion.updated_at != motion.created_at
+      = "(edited: #{time_ago_in_words(motion.updated_at)} ago)"
+  #description
+    = simple_format h(motion.description)
+  #graph.pie
+  #percentage-to-vote
+    - if motion.closed?
+      - percent_voted = (100-(motion.no_vote_count/motion.group_count.to_f * 100)).to_i
+      = "#{percent_voted}% of members voted on this motion (#{motion.group_count - motion.no_vote_count}/#{motion.group_count})"
+    - else
+      - percent_voted = (100-(motion.no_vote_count/motion.group_count.to_f * 100)).to_i
+      = "#{percent_voted}% of members have voted on this motion (#{motion.group_count - motion.no_vote_count}/#{motion.group_count})"
+  #votes
+    - if motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
+      #vote-form
+        =form_for([motion, @vote], html:{class:'form-stacked'}) do |f|
+          .control-group
+            =f.text_area :statement, placeholder: "Give a reason for your vote", class: "inputError limit"
+            .character-counter
+          =f.hidden_field :position
+      #vote-buttons
+        =link_to image_tag("hand-yes.png", height:"40", width:"40", title:"I agree", alt:"I agree"), "#",
+          "title" => "I agree",
+          "data-content" => "I agree with this and want it to go ahead.",
+          class: "btn vote vote-yes", onclick: "$('#vote_position').val('yes');"
+        =link_to image_tag("hand-abstain.png", height:"40", width:"40", title:"I abstain", alt:"I abstain"), "#",
+          "title" => "I abstain",
+          "data-content" =>  "I am happy with what the group decides without me.",
+          class: "btn vote vote-abstain", onclick: "$('#vote_position').val('abstain');"
+        =link_to image_tag("hand-no.png", height:"40", width:"40", title:"I disagree", alt:"I disagree"), "#",
+          "title" => "I disagree", "data-content" => "I think we can do better and would like to see something else happen, but if the group feels like it is the best way then I am ok with that.",
+          class: "btn vote vote-disagree", onclick: "$('#vote_position').val('no');"
+        =link_to image_tag("hand-block.png", height:"40", width:"40",title:"I block", alt:"I block"), "#",
+          "title" => "I block",
+          "data-content" => "I have strong objections to this motion and am not ok with it going ahead.",
+          class: "btn vote vote-block", onclick: "$('#vote_position').val('block');"
+
+    #votes-table= render "motions/votes_table", motion: motion, unique_votes: unique_votes
+
+  :coffeescript
+    $ ->
+      # Display vote graph
+      @pie_graph_view = new Tautoko.Views.Utils.GraphView
+        el: '#graph.pie'
+        id_string: 'graph'
+        legend: true
+        data: #{@votes_for_graph.to_json.html_safe}
+        type: 'pie'
+        tooltip_selector: '#tooltip'

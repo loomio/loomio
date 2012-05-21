@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Group do
+  it { should have_many :discussions }
+
   context "a new group" do
     before :each do
       @group = Group.new
@@ -38,6 +40,9 @@ describe Group do
       invalid = Group.make(:parent => @subgroup)
       invalid.should_not be_valid
     end
+    it "defaults to viewable by parent group members" do
+      Group.new(:parent => @group).viewable_by.should == :parent_group_members
+    end
   end
 
   context "an existing group viewiable by members" do
@@ -58,6 +63,10 @@ describe Group do
     it "can promote requested member to admin" do
       @group.add_request!(@user)
       @group.add_admin!(@user)
+    end
+    it "can be administered by admin of parent" do
+      @subgroup = Group.make(:parent => @group)
+      @subgroup.has_admin_user?(@user)
     end
     it "can add a member" do
       @group.add_member!(@user)

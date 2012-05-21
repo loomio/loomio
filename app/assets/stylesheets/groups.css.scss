@@ -1,49 +1,41 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "settings";
+@import "mixins";
+
 $token-input-line-height: 10px;
 $token-input-font-size: 10px;
 $token-input-width: 278px;
 
-.clear-both {
-  clear: both;
-  height: 15px;
-}
-
-/**** Group admin ****/
-#group {
-  #right-panel {
-    #membership-requested { width: 200px; }
-  }
-}
-
 #group-form {
   form {
     width: 550px;
-    .input { margin-left: 0px; display: inline; }
-    .clearfix { padding-top: 0px; margin-bottom: 10px; display: block; }
+    .inputError { display: inline-block; }
     #group_name { width: 390px; }
+    #setting-label {
+      margin-bottom: 4px;
+      color: $mid-grey;
+    }
     .privacy-settings {
-      .setting { padding-top: 20px; }
-      select { width: 150px; }
+      select {
+        width: 182px;
+        margin-bottom: 15px;
+      }
       .input { text-align: right; }
     }
   }
 }
 
 /**** Group page ****/
-.group-title {
-  padding-top: 20px;
-  padding-bottom: 2px;
-  border-bottom: 1px solid #888;
-  .btn { float: right; margin: -12px 0 0 10px; }
+
+#discussions {
+  padding-bottom: 30px;
 }
 
-#btn-create-motion{ float: right; margin-top: -8px;}
-
 #add-member-popup-btn {
-  margin-top: 5px;
   margin-bottom: 5px;
+
 }
 
 #invite-group-members {
@@ -61,116 +53,97 @@ $token-input-width: 278px;
   input, label { display: inline }
 }
 
-#sidebar {
-  padding-top: 23px;
-  #subgroups {
-    padding-bottom: 20px;
+#user_email_input {
+  display: inline;
+  #user_email {
+    width: 290px;
   }
-  #user_email_input {
-    display: inline;
-    .input {
-      display: inline;
-      margin-left: 0px;
-    }
-    #user_email {
-      width: 270px;
-      margin-top: 5px;
-    }
+}
+input#user_email{
+  margin-bottom: 5px;
+}
+
+// discussion panel
+.discussion {
+  color: $mid-grey;
+  #group-name {
+    font-size: $font-tiny;
+    a { color: $mid-grey; }
+    margin-top: -0.3em;
+    padding-left: 5px;
   }
-  #user-form{
-    #member-email-input { padding-top: 10px; }
-    #user-list{ padding-top: 4px; }
+  #discussion-title {
+    padding-left: 5px;
   }
-  #request-list {
-    margin-top: 8px;
+  #proposal-container {
+    padding-left: 7px;
+    padding-bottom: 7px;
+    min-height: 30px;
+    color: $light-grey;
   }
-  input#user_email{
-    margin-bottom: 5px;
-  }
-  #button-invite {
-    margin: 0px;
-    padding: 0px;
-    text-align: left;
-    input {
-      margin: 0px;
-    }
-  }
-  #member-requests{ margin-top: 5px; display: inline; }
-  #users-list {
-    width: 270px;
-    margin-top: 15px;
-  }
-  #editable-user-row{ margin-top: -10px; }
-  #uneditable-user { display: inline; }
-  #uneditable-tag-list { display: inline; }
-  .uneditable-tag {
-    border: 0px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    font-size: 10px;
-    padding: 2px;
-    padding-left: 3px;
-    line-height: 10px;
-    background-color: #EFF2F7;
-    display: inline;
-    margin-left: 3px;
-    }
-  div.token-input-dropdown-facebook {
-  }
-  ul.token-input-list-facebook {
-    line-height: $token-input-line-height;
-    font-size: $token-input-font-size;
-    width: $token-input-width !important;
-    border-color: whitesmoke;
-    border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    margin-top: -2px;
-  }
-  ul.token-input-list-facebook li {
-    line-height: 10px;
-    border: 0px;
-    padding-bottom: 2px;
-  }
-  ul.token-input-list-facebook p {
-    line-height: $token-input-line-height;
-    font-size: 9px;
-    color: grey;
-  }
-  div.token-input-dropdown-facebook p {
-    line-height: $token-input-line-height;
-    font-size: $token-input-font-size;
-  }
-  .token-input-input-token-facebook input {
-    line-height: $token-input-line-height;
-    font-size: $token-input-font-size;
-    height: auto;
-    width: 50px !important;
-  }
-  ul.membership-row li {
-    display: block;
-    font-size: 14px;
+  #vote-icon {
+    padding-top: 4px;
+    display: inline-block;
+    height: 16px;
+    width: 20px;
     float: left;
   }
-  ul.membership-row li.membership-admin-functions {
-    float:right;
+  #no-vote-space { width: 20px; }
+  #proposal-title-container {
+    margin-left: 12px;
+    display: inline-block;
+    width: 400px;
   }
-  .unstyled.membership-row.tags {
-    float: left;
+  #proposal-label {
+    font-size: $font-tiny;
+    font-style: italic;
+  }
+  #proposal-title {
+    font-size: $font-tiny;
+    color: $mid-grey;
+  }
+  #proposal-close-date {
+    margin-top: -0.4em;
+    font-size: 0.7em;
+  }
+  #comment-info {
+    display: inline-block;
+    margin-top: -4px;
+    float: right;
+    padding-right: 5px;
+    font-size: $font-tinywiny;
+  }
+  #total-comments {
+    margin-top: -9px;
+  }
+  #alert-info {
+    float: right;
+  }
+  #discussion-icon-container {
+    background-size: 25px;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 30px;
+  }
+  .discussion-enabled-icon {
+    background-image: url("discussion.png");
+  }
+  .discussion-disabled-icon {
+    background-image: url("discussion-disabled.png");
+  }
+  #activity-count {
+    margin-left: 18px;
+    width: 4px;
+    height: 10px;
+    font-size: 0.5em;
+    padding: 0.4em;
+    padding-top: 0.1em;
   }
 }
 
 /**** group dashboard ****/
-.group-panel {
-  margin-top: 9px;
-}
 
-/* TODO: this is also being used by the home dashboard.
- *       it should probably be moved to generic.css
- */
 ul#group-list {
-  margin-bottom: 8px;
   .group-link{
     width: 90%;
     display: inline-block;
@@ -181,16 +154,18 @@ ul#group-list {
     }
   }
   li{
-    font-size: 14px;
+    padding-bottom: 4px;
+    font-size: $font-small;
     line-height: 16px;
-    margin-top: 4px;
     list-style-type: none;
     ul {
       margin-left: 0px;
+      margin-bottom: 0px;
       li {
         margin-top: 2px;
-        font-size: 12px;
+        font-size: $font-tiny;
         padding-left: 17px;
+        padding-bottom: 0px;
         background: url('list-item-bullet-tree.png') no-repeat top left;
       }
     }
@@ -204,7 +179,3 @@ ul#group-list {
     font-size: 17px;
   }
 }
-
-/**** general ****/
-.links{ display: inline; float: right; padding-top: 6px; }
-.title-row { background-color: #EEE; padding: 4px; color: #555; }

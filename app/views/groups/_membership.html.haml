@@ -1,35 +1,18 @@
 %li{:id => membership.user_id}
   - if group.can_be_edited_by?(current_user)
     #editable-user-row
-      %ul.unstyled.membership-row
-        %li.name-label
-          %h4
-            - if membership.user_name
-              = membership.user_name
-            - else
-              = membership.user_email
-        - if current_user.is_group_admin?(group)
-          %li.membership-admin-functions
-            %h7.links
-              =link_to "edit", edit_membership_path(membership)
-              |
-              =link_to "remove", membership, method: :delete,
-                confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
-        -# NOTE Jon: Tags are broken... so I'm hiding all tagging functionality for now
-        -#%ul.unstyled.membership-row.tags
-          -#-#%li
-          -#-#%li
-          -#%input.hidden{:id => "user-existing-tags-" + membership.user_id.to_s, :value => membership.user.group_tags_from(group).join(",")}
-          -#%input.hidden{:id => "user-tags-" + membership.user_id.to_s}
-        .clear-both
-  - else
-    %h4#uneditable-user
       - if membership.user_name
         = membership.user_name
       - else
         = membership.user_email
-    -# NOTE Jon: Tags are broken... so I'm hiding all tagging functionality for now
-    -#%ul.unstyled#uneditable-tag-list
-      -#- membership.user.group_tags_from(group).each do |t|
-        -#%li.uneditable-tag
-          -#= t
+      - if current_user.is_group_admin?(group)
+        %span.edit-delete-buttons
+          =link_to "edit", edit_membership_path(membership), class: 'btn btn-mini'
+          =link_to "remove", membership, method: :delete, class: 'btn btn-mini',
+            confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
+  - else
+    #uneditable-user
+      - if membership.user_name
+        = membership.user_name
+      - else
+        = membership.user_email

@@ -70,20 +70,25 @@ def create_motion(*args)
     motion = Motion.make
   end
   unless motion.author
-    motion.author = User.make!
+    motion.author = User.make
+    motion.author.save
   end
   unless motion.facilitator
-    motion.facilitator = User.make!
+    motion.facilitator = motion.author
   end
   unless motion.discussion
-    motion.discussion = Discussion.new(title: "A Discussion")
-    motion.discussion.group = motion.group
-    motion.discussion.author = motion.author
-    motion.discussion.save
+    discussion = Discussion.new(title: "A Discussion")
+    discussion.author = motion.author
+    discussion.group = Group.make
+    discussion.group.add_member!(discussion.author)
+    discussion.group.save
+    discussion.save
+    motion.discussion = discussion
   end
   motion.group.add_member!(motion.author)
   motion.group.add_member!(motion.facilitator)
   motion.save
+  motion.reload
   motion
 end
 
@@ -104,12 +109,13 @@ def create_discussion(*args)
     discussion.author = User.make
     discussion.author.save
   end
-  discussion.group.add_member! discussion.author
-  discussion.save
-  unless discussion.default_motion
-    motion = create_motion(group: discussion.group)
-    motion.discussion = discussion
-    motion.save!
+  unless discussion.title
+    discussion.title = "Title of discussion!"
   end
+  discussion.group.add_member! discussion.author
+  #unless discussion.current_motion
+    #motion = create_motion(discussion: discussion)
+  #end
+  discussion.save
   discussion
 end
