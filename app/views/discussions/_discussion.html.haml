@@ -1,7 +1,7 @@
-%div{ class: css_class_for(discussion) }
+%div{ class: css_class_for(discussion), onclick: "window.location='#{discussion_path(discussion)}'" }
   %span#discussion-title
     - title = truncate(discussion.title, :length => 75, :separator => ' ')
-    = link_to title, discussion_path(discussion)
+    = link_to title, discussion_path(discussion), onclick: "window.location=#{discussion_path(discussion)}"
 
     #alert-info
       #discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
