@@ -65,6 +65,7 @@ input#user_email{
 
 // discussion panel
 .discussion {
+  cursor: pointer;
   color: $mid-grey;
   #group-name {
     font-size: $font-tiny;
