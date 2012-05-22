@@ -65,7 +65,7 @@ class Discussion < ActiveRecord::Base
     if motion
       motions.find(motion)
     else
-      motions.order("close_date desc").first
+      motions.where("phase = 'closed'").order("close_date desc").first
     end
   end
 
