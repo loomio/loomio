@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "settings";
 @import "mixins";
+@import "bootstrap/mixins";
 
 $token-input-line-height: 10px;
 $token-input-font-size: 10px;
@@ -63,7 +64,11 @@ input#user_email{
   margin-bottom: 5px;
 }
 
-// discussion panel
+// Discussion list panel
+//
+// NOTE: this code is shared with the group show page and
+//       the dashboard page.
+//
 .discussion {
   cursor: pointer;
   color: $mid-grey;
@@ -75,6 +80,11 @@ input#user_email{
   }
   #discussion-title {
     padding-left: 5px;
+    a {
+      display: inline-block;
+      @include ie7-inline-block();
+      width: 500px;
+    }
   }
   #proposal-container {
     padding-left: 7px;
