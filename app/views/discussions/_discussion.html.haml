@@ -1,6 +1,6 @@
 %div{ class: css_class_for(discussion.current_motion) }
   %span#discussion-title
-    - title = truncate(discussion.title, :length => 75, :separator => ' ')
+    - title = truncate(discussion.title, :length => 63, :separator => ' ')
     = link_to title, discussion_path(discussion)
 
     #alert-info
