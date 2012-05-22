@@ -28,16 +28,15 @@ class DiscussionsController < GroupBaseController
     @vote = Vote.new
     @history = @discussion.history
     @current_motion.open_close_motion if @current_motion
-    if params[:proposal]
-      @selected_closed_motion = @discussion.motions.find(params[:proposal])
-      @votes_for_graph = @selected_closed_motion.votes_graph_ready
+    if (not params[:proposal]) && @current_motion && @current_motion.voting?
+      @unique_votes = Vote.unique_votes(@current_motion)
+      @votes_for_graph = @current_motion.votes_graph_ready
+      @user_already_voted = @current_motion.user_has_voted?(current_user)
     else
-      if @current_motion
-        @unique_votes = Vote.unique_votes(@current_motion)
-        @votes_for_graph = @current_motion.votes_graph_ready
-        @user_already_voted = @current_motion.user_has_voted?(current_user)
-      end
+      @selected_closed_motion = @discussion.closed_motion(params[:proposal])
+      @votes_for_graph = @selected_closed_motion.votes_graph_ready if @selected_closed_motion
     end
+
     if current_user
       current_user.update_discussion_read_log(@discussion)
     end

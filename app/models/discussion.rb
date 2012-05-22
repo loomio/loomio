@@ -61,6 +61,14 @@ class Discussion < ActiveRecord::Base
     motions.last
   end
 
+  def closed_motion(motion)
+    if motion
+      motions.find(motion)
+    else
+      motions.where("phase = 'closed'").order("close_date desc").first
+    end
+  end
+
   def history
     (comments + votes + motions).sort!{ |a,b| b.created_at <=> a.created_at }
   end
