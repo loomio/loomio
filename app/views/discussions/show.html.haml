@@ -41,7 +41,7 @@
     - if @discussion.motions.where("phase = 'closed'").count > 0
       #previous-proposals
         %h1 Previous proposals
-        - @discussion.motions.each do |closed_motion|
+        - @discussion.motions.order("close_date desc").each do |closed_motion|
           - if closed_motion.closed?
             - if @selected_closed_motion == closed_motion
               .panel
