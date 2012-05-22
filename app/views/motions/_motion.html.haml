@@ -13,7 +13,7 @@
         = "Closing in #{time_ago_in_words(motion.close_date)}"
       - else
         Closed on
-        %span.relativetime= motion.close_date
+        %span.relative-time= motion.close_date
     - if motion.can_be_edited_by? current_user
       %span#admin-buttons
         =render "motions/facilitator_options", motion: motion
