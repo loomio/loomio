@@ -41,14 +41,14 @@ $ ->
   if $(".relative-time").length > 0
     date_offset = new Date()
     offset = date_offset.getTimezoneOffset()/-60
-    $(".relative-time").each((index, element) ->
+    $(".relative-time").each((index, element)->
       date = $(element).html()
       local_datetime = new Date()
-      local_datetime.setYear(date.substring(6,10))
-      local_datetime.setMonth((parseInt(date.substring(3,5)) - 1).toString())
-      local_datetime.setDate(date.substring(0,2))
+      local_datetime.setYear(date.substring(0,4))
+      local_datetime.setMonth((parseInt(date.substring(5,7)) - 1).toString())
+      local_datetime.setDate(date.substring(8,10))
       local_datetime.setHours((parseInt(date.substring(11,13)) + offset).toString())
-      $(element).html(local_datetime)
+      $(element).html(String(local_datetime))
     )
 #** presence validations: use this function any where just assign the class .presence-required
 #   to the text field in question and the .check-presence to the submit button **
