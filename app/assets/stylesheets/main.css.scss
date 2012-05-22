@@ -203,14 +203,18 @@ header{
   background-color: $block-color;
 }
 
-.voting{
+.unread{
   background-color: white;
+}
+
+.read{
+  background-color: $comment-color;
 }
 
 .inputError { display: inline-block; }
 .error-message {
   font-size: $font-small;
-  display: inline-block;
+  display: inline;
   margin-left: 5px;
   color: $error-color;
 }

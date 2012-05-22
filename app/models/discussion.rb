@@ -70,7 +70,11 @@ class Discussion < ActiveRecord::Base
     save
   end
 
-  def last_comment_updated_at?
-    comments.last.updated_at
+  def latest_history_time
+    if history.count > 0
+      history.first.created_at
+    else
+      created_at
+    end
   end
 end

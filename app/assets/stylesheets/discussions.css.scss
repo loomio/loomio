@@ -4,14 +4,12 @@
 /** new proposal form*/
 
 #new-proposal-title {
-  margin-bottom: 25px;
-  .input { margin-left: 0px; }
-  .clearfix { padding-top: 0px; padding-bottom: 0px; }
   .character-counter {
     color: $mid-grey;
-    margin-right: 200px;
     text-align: right;
-    height: 0px;
+    position: relative;
+    bottom: 18px;
+    height: 12px;
     width: 408px;
 		position: relative;
 		bottom: 17px;
@@ -122,7 +120,7 @@
     .btn { margin-bottom: 10px; }
   }
   #no-current-proposal {
-    .btn { margin-bottom: 300px; }
+    .btn { margin-bottom: 58px; }
   }
   .label{
     text-transform: lowercase;
@@ -145,17 +143,20 @@
     margin-left: -20px;
   }
   #new_vote{ padding-left: 0px; }
+  #vote-form{ height: 100px; }
   #vote-statement{ margin-left: 0px; padding-left: 0px; }
-  .input { margin-left: 0px; height: 65px; }
+  .inputError { margin-left: 0px; height: 65px; }
   .control-group { padding-top: 0px; padding-bottom: 0px; }
-  .character_counter {
-    float: right;
+  .character-counter {
+    font-size: $font-small;
     color: $mid-grey;
-    height: 15px;
-    margin-top: -10px;
+    text-align: right;
+    position: relative;
+    bottom: 15px;
   }
   #vote-buttons{
-    margin-top: -15px;
+    position: relative;
+    bottom: 15px;
     margin-bottom: 15px;
     .btn.vote {
       @include box-shadow(1px, 1px, 4px, $mid-grey);

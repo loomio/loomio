@@ -4,15 +4,15 @@
       = link_to @group.parent.name, group_path(@group), title: "group" unless @group.parent.nil?
       = " - " unless @group.parent.nil?
       = link_to @group.name, group_path(@group)
+  %h3 New Discussion
 = form_for @discussion do |f|
-  .padding
-    = f.label :title, "Title"
-    #new-proposal-title
-      .clearfix
-        .presence-required= f.text_field :title, class: "presence-required input limit"
-        .error-message Title can not be blank
-      .character-counter
-    = f.label :comment, "Comment"
-    = f.text_area :comment
-    .check-presence= f.submit "Create discussion", class: "btn btn-info"
+  = f.label :title, "Title"
+  #new-proposal-title
+    .control-group
+      .presence-required= f.text_field :title, class: "presence-required inputError limit"
+      .error-message Please fill in a discussion title
+    .character-counter
+  = f.label :comment, "Comment"
+  = f.text_area :comment
+  .check-presence= f.submit "Create discussion", class: "btn btn-info"
   = f.hidden_field :group_id
