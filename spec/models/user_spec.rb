@@ -8,6 +8,13 @@ describe User do
   end
   it {should have(1).errors_on(:name)}
 
+  it "must have a valid email" do
+    @user = User.new
+    @user.email = '"Joe Gumby" <joe@gumby.com>'
+    @user.valid?
+    @user.should have(1).errors_on(:email)
+  end
+
   it "has many groups" do
     @user = User.make!
     @group = Group.make!
