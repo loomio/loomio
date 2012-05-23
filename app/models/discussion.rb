@@ -58,7 +58,15 @@ class Discussion < ActiveRecord::Base
   #
 
   def current_motion
-    motions.last
+    motions.where("phase = 'voting'").last if motions
+  end
+
+  def closed_motion(motion)
+    if motion
+      motions.find(motion)
+    else
+      motions.where("phase = 'closed'").order("close_date desc").first
+    end
   end
 
   def history
