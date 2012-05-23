@@ -29,7 +29,7 @@
           = link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-info',
             id: 'new-proposal'
     - else
-      - if @current_motion && @current_motion.voting?
+      - if @current_motion
         #current-proposal
           %h1 Current proposal
           .panel

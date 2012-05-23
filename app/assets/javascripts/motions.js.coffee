@@ -39,6 +39,9 @@ $ ->
 #generic code to be moved out of motions.js
 $ ->
   if $(".relative-time").length > 0
+    today = new Date()
+    month = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+               "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
     date_offset = new Date()
     offset = date_offset.getTimezoneOffset()/-60
     $(".relative-time").each((index, element)->
@@ -48,7 +51,15 @@ $ ->
       local_datetime.setMonth((parseInt(date.substring(5,7)) - 1).toString())
       local_datetime.setDate(date.substring(8,10))
       local_datetime.setHours((parseInt(date.substring(11,13)) + offset).toString())
-      $(element).html(String(local_datetime))
+      if local_datetime.getDate() == today.getDate()
+        hours_difference = today.getHours() - local_datetime.getHours()
+        if hours_difference == '1'
+          date_string = "#{hours_difference} hr ago"
+        else
+          date_string = "#{hours_difference} hrs ago"
+      else
+        date_string = "#{local_datetime.getDate()} #{month[local_datetime.getMonth()]}"
+      $(element).html(String(date_string))
     )
 #** presence validations: use this function any where just assign the class .presence-required
 #   to the text field in question and the .check-presence to the submit button **
