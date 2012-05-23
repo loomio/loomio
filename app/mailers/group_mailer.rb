@@ -1,5 +1,5 @@
 class GroupMailer < ActionMailer::Base
-  default :from => "\"loomio\" <noreply@loom.io>"
+  default :from => "\"Loomio\" <noreply@loom.io>"
 
   def new_membership_request(membership)
     @user = membership.user
