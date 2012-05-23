@@ -35,6 +35,31 @@ $ ->
       $("#input_date").datepicker("setDate", date_string)
       $("#date_hour").val(hour)
 
+#generic code to be moved out of motions.js
+$ ->
+  if $(".relative-time").length > 0
+    today = new Date()
+    month = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+               "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
+    date_offset = new Date()
+    offset = date_offset.getTimezoneOffset()/-60
+    $(".relative-time").each((index, element)->
+      date = $(element).html()
+      local_datetime = new Date()
+      local_datetime.setYear(date.substring(0,4))
+      local_datetime.setMonth((parseInt(date.substring(5,7)) - 1).toString())
+      local_datetime.setDate(date.substring(8,10))
+      local_datetime.setHours((parseInt(date.substring(11,13)) + offset).toString())
+      if local_datetime.getDate() == today.getDate()
+        hours_difference = today.getHours() - local_datetime.getHours()
+        if hours_difference == '1'
+          date_string = "#{hours_difference} hr ago"
+        else
+          date_string = "#{hours_difference} hrs ago"
+      else
+        date_string = "#{local_datetime.getDate()} #{month[local_datetime.getMonth()]}"
+      $(element).html(String(date_string))
+    )
 #** presence validations: use this function any where just assign the class .presence-required
 #   to the text field in question and the .check-presence to the submit button **
 $ ->
@@ -51,7 +76,7 @@ $ ->
     $(".error-message").hide()
   )
 
-#** Reload hidden close_date field **
+# Reload hidden close_date field
 $ ->
   $("#input_date").change((e) ->
     date = $(this).val()
@@ -74,7 +99,7 @@ $ ->
     $("#motion_close_date").val(local_datetime)
   )
 
-#** character count for statement on discussion:show page **
+# character count for statement on discussion:show page
 pluralize_characters = ((num) ->
   if(num == 1)
     return num + " character"
@@ -106,9 +131,10 @@ $ ->
       $('#new_vote').preventDefault()
     else
       $('#new_vote').submit()
+      event.preventDefault()
   )
 
-#** character count for title on discussion:new page **
+# character count for title on discussion:new page
 $ ->
   $(".limit").keyup(() ->
     $(".error-message").hide()
@@ -130,6 +156,13 @@ $ ->
     $("#description").html(linkify_html($("#description").html()))
     $(".comment-body").each(-> $(this).html(linkify_html($(this).html())))
 
+# adds bootstrap popovers to vote buttons
 $ ->
   $(".vote").popover
     placement: "top"
+
+# disable links on usernames
+$ ->
+  $('.comment-username a, .member-name a').click((event) ->
+    event.preventDefault()
+  )
