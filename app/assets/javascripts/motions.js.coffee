@@ -106,6 +106,7 @@ $ ->
       $('#new_vote').preventDefault()
     else
       $('#new_vote').submit()
+      event.preventDefault()
   )
 
 #** character count for title on discussion:new page **
