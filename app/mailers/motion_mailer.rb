@@ -1,5 +1,5 @@
 class MotionMailer < ActionMailer::Base
-  default from: "noreply@loom.io"
+  default :from => "\"loomio\" <noreply@loom.io>"
 
   def new_motion_created(motion, email)
     @motion = motion
