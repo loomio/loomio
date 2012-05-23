@@ -69,11 +69,20 @@ describe "Discussion" do
         motion.facilitator = @user
         motion.save
         motion.close_voting!
+
+        motion2 = Motion.new
+        motion2.name = "A new proposal"
+        motion2.discussion = @discussion
+        motion2.author = @user
+        motion2.facilitator = @user
+        motion2.save
+        motion2.close_voting!
+
         visit discussion_path(@discussion)
 
-        find('#previous-proposals').click_on motion.name
+        find('#previous-proposals').click_on motion2.name
 
-        find("#motion").should have_content(motion.name)
+        find("#motion").should have_content(motion2.name)
       end
 
       it "can see link to delete their own comments" do

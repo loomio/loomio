@@ -16,7 +16,7 @@
     = render 'history', discussion: @discussion, history: @discussion.history
   .span6#content-proposal
     - if @selected_closed_motion
-      - if @current_motion.voting?
+      - if @current_motion
         #current-proposal
           %h1 Current proposal
           .panel
@@ -29,7 +29,7 @@
           = link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-info',
             id: 'new-proposal'
     - else
-      - if @current_motion && @current_motion.voting?
+      - if @current_motion
         #current-proposal
           %h1 Current proposal
           .panel
@@ -41,7 +41,7 @@
     - if @discussion.motions.where("phase = 'closed'").count > 0
       #previous-proposals
         %h1 Previous proposals
-        - @discussion.motions.each do |closed_motion|
+        - @discussion.motions.order("close_date desc").each do |closed_motion|
           - if closed_motion.closed?
             - if @selected_closed_motion == closed_motion
               .panel
