@@ -35,7 +35,6 @@ $ ->
       $("#input_date").datepicker("setDate", date_string)
       $("#date_hour").val(hour)
 
-
 #generic code to be moved out of motions.js
 $ ->
   if $(".relative-time").length > 0
@@ -77,7 +76,7 @@ $ ->
     $(".error-message").hide()
   )
 
-#** Reload hidden close_date field **
+# Reload hidden close_date field
 $ ->
   $("#input_date").change((e) ->
     date = $(this).val()
@@ -100,7 +99,7 @@ $ ->
     $("#motion_close_date").val(local_datetime)
   )
 
-#** character count for statement on discussion:show page **
+# character count for statement on discussion:show page
 pluralize_characters = ((num) ->
   if(num == 1)
     return num + " character"
@@ -135,7 +134,7 @@ $ ->
       event.preventDefault()
   )
 
-#** character count for title on discussion:new page **
+# character count for title on discussion:new page
 $ ->
   $(".limit").keyup(() ->
     $(".error-message").hide()
@@ -157,6 +156,13 @@ $ ->
     $("#description").html(linkify_html($("#description").html()))
     $(".comment-body").each(-> $(this).html(linkify_html($(this).html())))
 
+# adds bootstrap popovers to vote buttons
 $ ->
   $(".vote").popover
     placement: "top"
+
+# disable links on usernames
+$ ->
+  $('.comment-username a, .member-name a').click((event) ->
+    event.preventDefault()
+  )
