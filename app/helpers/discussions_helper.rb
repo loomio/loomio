@@ -1,10 +1,4 @@
 module DiscussionsHelper
-  #def latest_history_time_for(discussion)
-    #last_updated = discussion.latest_history_time
-    #date_format = last_updated.to_date == Date.today ? "%I:%M %p" : "%d %b"
-    #last_updated.strftime(date_format)
-  #end
-
   def activity_count_for(discussion, user)
     user ? user.discussion_activity_count(discussion) : 0
   end
