@@ -36,7 +36,7 @@ describe "Groups" do
       it "can edit group" do
         visit edit_group_path(@group)
 
-        fill_in 'group_name', with: 'New groupie'
+        fill_in 'group-name', with: 'New groupie'
         find("#update-group").click
 
         should have_content("New groupie")
