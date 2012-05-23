@@ -7,7 +7,6 @@ class MembershipsController < BaseController
       format.html { redirect_to @membership.group }
     end
     if params[:membership][:access_level] == 'member'
-      flash[:success] = "Membership approved."
       #Add default tag to user and group
       #@membership.group.tag @membership.user, with: "everyone", on: :group_tags
       UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
@@ -40,9 +39,9 @@ class MembershipsController < BaseController
           end
         else
           if current_user == @membership.user
-            flash[:success] = "You have left #{@membership.group.name}."
+            #flash[:success] = "You have left #{@membership.group.name}."
           else
-            flash[:success] = "Member removed."
+            #flash[:success] = "Member removed."
           end
         end
         redirect_to @membership.group
