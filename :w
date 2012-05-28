@@ -2,14 +2,13 @@ class MembershipsController < BaseController
   load_and_authorize_resource
 
   def update
-    @membership = Membership.find(params[:id])
-    if @membership.update_attributes(params[:membership])
-      flash[:notice] = "Membership approved."
-      redirect_to @membership.group
-    else
-      render :action => 'edit'
+    resource
+    update! do |format|
+      format.html { redirect_to @membership.group }
     end
     if params[:membership][:access_level] == 'member'
+      #Add default tag to user and group
+      #@membership.group.tag @membership.user, with: "everyone", on: :group_tags
       UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
     end
   end
