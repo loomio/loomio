@@ -1,14 +1,19 @@
 %li{:id => membership.user_id}
   - if group.can_be_edited_by?(current_user)
     #editable-user-row
-      - if membership.user_name
-        = membership.user_name
-      - else
-        = membership.user_email
+      .user-name
+        - if membership.user_name
+          = membership.user_name
+        - else
+          = membership.user_email
       - if current_user.is_group_admin?(group)
-        %span.edit-delete-buttons
-          =link_to "edit", edit_membership_path(membership), class: 'btn btn-mini'
-          =link_to "remove", membership, method: :delete, class: 'btn btn-mini',
+        - member = User.find(membership.user_id)
+        .admin_controls
+          - if member.is_group_admin?(group)
+            =link_to "remove admin", edit_membership_path(membership)
+          - else
+            =link_to "make admin", edit_membership_path(membership)
+          =link_to "x", membership, method: :delete, class: 'close',
             confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
   - else
     #uneditable-user
