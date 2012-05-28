@@ -15,6 +15,7 @@ class MotionMailer < ActionMailer::Base
     @vote = vote
     @user = vote.user
     @motion = vote.motion
+    @discussion = @motion.discussion
     @group = @motion.group
     mail(to: @motion.author.email,
          subject: "[Loomio: #{@group.name}] Proposal blocked - #{@motion.name}")
