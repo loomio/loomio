@@ -28,9 +28,13 @@ class MotionsController < GroupBaseController
   end
 
   def show
-    proposal = Motion.find(params[:id])
-    discussion = proposal.discussion_id
-    redirect_to "/discussions/#{discussion}?proposal=#{proposal.id}"
+    motion = Motion.find(params[:id])
+    discussion = motion.discussion
+    if motion == discussion.current_motion
+      redirect_to discussion_url(discussion)
+    else
+      redirect_to discussion_url(discussion, proposal: motion)
+    end
   end
 
   def destroy
