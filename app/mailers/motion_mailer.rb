@@ -8,15 +8,16 @@ class MotionMailer < ActionMailer::Base
     #@group.users.each do |user|
       #email_addresses << user.email unless motion.author == user
     #end
-    mail(to: email, subject: "[Loomio: #{@group.name}] New motion - #{@motion.name}")
+    mail(to: email, subject: "[Loomio: #{@group.name}] New proposal - #{@motion.name}")
   end
 
   def motion_blocked(vote)
     @vote = vote
     @user = vote.user
     @motion = vote.motion
+    @discussion = @motion.discussion
     @group = @motion.group
     mail(to: @motion.author.email,
-         subject: "[Loomio: #{@group.name}] Motion blocked - #{@motion.name}")
+         subject: "[Loomio: #{@group.name}] Proposal blocked - #{@motion.name}")
   end
 end
