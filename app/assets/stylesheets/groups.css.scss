@@ -5,9 +5,9 @@
 @import "mixins";
 @import "bootstrap/mixins";
 
-$token-input-line-height: 10px;
-$token-input-font-size: 10px;
-$token-input-width: 278px;
+/*$token-input-line-height: 10px;*/
+/*$token-input-font-size: 10px;*/
+/*$token-input-width: 278px;*/
 
 #group-form {
   form {
@@ -62,6 +62,31 @@ $token-input-width: 278px;
 }
 input#user_email{
   margin-bottom: 5px;
+}
+
+#editable-user-row {
+  margin-top: -22px;
+}
+
+.user-name {
+  font-size: $font-small;
+  white-space: pre;           /* CSS 2.0 */
+	white-space: pre-wrap;      /* CSS 2.1 */
+	white-space: pre-line;      /* CSS 3.0 */
+	white-space: -pre-wrap;     /* Opera 4-6 */
+	white-space: -o-pre-wrap;   /* Opera 7 */
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap;  /* HP Printers */
+	word-wrap: break-word;      /* IE 5+ */
+  width: 178px;
+  display: inline-block;
+}
+.admin_controls {
+  text-align: right;
+  font-size: $font-tiny;
+  width: 115px;
+  display: inline-block;
+  .close { padding-left: 6px; position: relative; bottom: 3px; }
 }
 
 // Discussion list panel
@@ -123,6 +148,7 @@ input#user_email{
     float: right;
     padding-right: 5px;
     font-size: $font-tinywiny;
+    text-align: right;
   }
   #total-comments {
     margin-top: -9px;
