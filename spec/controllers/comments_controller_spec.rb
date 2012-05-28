@@ -21,7 +21,7 @@ describe CommentsController do
 
       it "adds a message to the flash" do
         delete :destroy, id: 23
-        flash[:success].should match(/Comment deleted/)
+        flash[:notice].should match("Comment was successfully destroyed")
       end
 
       it "redirects to the comment's discussion" do
