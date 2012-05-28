@@ -33,7 +33,7 @@ describe MembershipsController do
       membership = @group.add_request!(@user)
       delete :destroy, :id => membership.id
       @group.requested_users.should_not include(@user)
-      flash[:success].should =~ /Membership request canceled/
+      flash[:notice].should =~ /Membership request canceled/
     end
 
     it "sends an email to admins with new membership request" do
@@ -53,7 +53,7 @@ describe MembershipsController do
         @membership = @group.membership_requests.first
         post :update, :id => @membership.id,
              :membership => {:access_level => 'member'}
-        flash[:success].should =~ /Membership approved/
+        flash[:notice].should =~ /Membership approved/
         response.should redirect_to(@group)
         assigns(:membership).access_level.should == 'member'
         assigns(:membership).id.should == @membership.id
@@ -65,7 +65,7 @@ describe MembershipsController do
         UserMailer.should_receive(:group_membership_approved).and_return(stub(deliver: true))
         post :update, :id => @membership.id,
              :membership => {:access_level => 'member'}
-        flash[:success].should =~ /Membership approved/
+        flash[:notice].should =~ /Membership approved/
       end
 
       it "can edit a user" do
@@ -78,7 +78,7 @@ describe MembershipsController do
         @membership = @group.memberships.find_by_user_id(@new_user)
         post :update, :id => @membership.id,
              :membership => {:access_level => 'admin'}
-        flash[:notice].should =~ /Membership was successfully updated/
+        flash[:notice].should =~ /Membership approved./
         response.should redirect_to(@group)
         assigns(:membership).access_level.should == 'admin'
         @group.admins.should include(@new_user)
@@ -88,7 +88,7 @@ describe MembershipsController do
         @group.add_member!(@new_user)
         @membership = @group.memberships.find_by_user_id(@new_user.id)
         delete :destroy, :id => @membership.id
-        flash[:success].should =~ /Member removed/
+        flash[:notice].should =~ /Member removed/
         response.should redirect_to(@group)
         @group.users.should_not include(@new_user)
       end
@@ -113,7 +113,7 @@ describe MembershipsController do
         @membership = @group.membership_requests.first
         post :update, :id => @membership.id,
              :membership => {:access_level => 'member'}
-        flash[:success].should =~ /Membership approved/
+        flash[:notice].should =~ /Membership approved/
         response.should redirect_to(@group)
         assigns(:membership).access_level.should == 'member'
         assigns(:membership).id.should == @membership.id
@@ -134,7 +134,7 @@ describe MembershipsController do
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
         delete :destroy, :id => @membership.id
-        flash[:success].should =~ /Membership request ignored/
+        flash[:notice].should =~ /Membership request ignored/
         response.should redirect_to(@group)
         Membership.exists?(@membership).should be_false
       end
