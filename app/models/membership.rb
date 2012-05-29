@@ -54,8 +54,12 @@ class Membership < ActiveRecord::Base
     group.admins.include? user
   end
 
-  def can_be_made_member_by?(user)
-    group.users.include? user
+  def can_have_admin_rights_revoked_by?(user)
+    group.admins.include? user
+  end
+
+  def can_be_approved_by?(user)
+    group.can_invite_members? user
   end
 
   def can_be_deleted_by?(user)

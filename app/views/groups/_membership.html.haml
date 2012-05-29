@@ -10,9 +10,9 @@
         - member = User.find(membership.user_id)
         .admin_controls
           - if member.is_group_admin?(group)
-            =link_to "remove admin", edit_membership_path(membership)
+            =link_to "Remove admin", remove_admin_membership_path(membership), method: :post
           - else
-            =link_to "make admin", edit_membership_path(membership)
+            =link_to "Make admin", make_admin_membership_path(membership), method: :post
           =link_to "x", membership, method: :delete, class: 'close',
             confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
   - else
