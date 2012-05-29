@@ -89,6 +89,10 @@ input#user_email{
   .close { padding-left: 6px; position: relative; bottom: 3px; }
 }
 
+form#new_membership, #membership-requested {
+  margin-bottom: 5px;
+}
+
 // Discussion list panel
 //
 // NOTE: this code is shared with the group show page and

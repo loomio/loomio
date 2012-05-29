@@ -20,7 +20,8 @@
 
   %section.span8#content-main
     %h1 Discussions
-    = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn btn-info", id: "new-discussion"
+    - if current_user && @group.users_include?(current_user)
+      = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn btn-info", id: "new-discussion"
     #discussions
       - @group.discussions_sorted.each do |discussion|
         =render discussion
