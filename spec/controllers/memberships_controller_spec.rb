@@ -48,23 +48,10 @@ describe MembershipsController do
         @group.add_admin!(@user)
       end
 
-      it "can authorize a membership request" do
-        @group.add_request!(@new_user)
-        @membership = @group.membership_requests.first
-        post :update, :id => @membership.id,
-             :membership => {:access_level => 'member'}
-        flash[:notice].should =~ /Membership approved/
-        response.should redirect_to(@group)
-        assigns(:membership).access_level.should == 'member'
-        assigns(:membership).id.should == @membership.id
-      end
-
       it "sends an email to notify the user of their membership approval" do
-        @group.add_request!(@new_user)
-        @membership = @group.membership_requests.first
+        @membership = @group.add_request!(@new_user)
         UserMailer.should_receive(:group_membership_approved).and_return(stub(deliver: true))
-        post :update, :id => @membership.id,
-             :membership => {:access_level => 'member'}
+        post :approve, :id => @membership.id
         flash[:notice].should =~ /Membership approved/
       end
 
@@ -74,11 +61,9 @@ describe MembershipsController do
       end
 
       it 'can add an admin' do
-        @group.add_member!(@new_user)
-        @membership = @group.memberships.find_by_user_id(@new_user)
-        post :update, :id => @membership.id,
-             :membership => {:access_level => 'admin'}
-        flash[:notice].should =~ /Membership approved./
+        @membership = @group.add_member!(@new_user)
+        post :make_admin, :id => @membership.id
+        flash[:notice].should =~ /#{@new_user.name} has been made an admin./
         response.should redirect_to(@group)
         assigns(:membership).access_level.should == 'admin'
         @group.admins.should include(@new_user)
@@ -94,12 +79,12 @@ describe MembershipsController do
       end
 
       it 'cannot remove an admin' do
-        @group.add_admin!(@new_user)
-        @membership = @group.memberships.find_by_user_id(@new_user.id)
-        delete :destroy, :id => @membership.id
-        flash[:error].should =~ /Access denied/
+        @membership = @group.add_admin!(@new_user)
+        post :remove_admin, :id => @membership.id
+        flash[:notice].should =~ /#{@membership.user_name}'s admin rights have been removed./
         response.should redirect_to(group_url(@group))
-        @group.admins.should include(@new_user)
+        assigns(:membership).access_level.should == 'member'
+        @group.admins.should_not include(@new_user)
       end
     end
 
@@ -108,26 +93,22 @@ describe MembershipsController do
         @group.add_member!(@user)
       end
 
-      it "can authorize a membership request" do
-        @group.add_request!(@new_user)
-        @membership = @group.membership_requests.first
-        post :update, :id => @membership.id,
-             :membership => {:access_level => 'member'}
+      it "can approve a membership request" do
+        @membership = @group.add_request!(@new_user)
+        post :approve, :id => @membership.id
         flash[:notice].should =~ /Membership approved/
         response.should redirect_to(@group)
         assigns(:membership).access_level.should == 'member'
-        assigns(:membership).id.should == @membership.id
+        @group.users.should include(@new_user)
       end
 
-      it "cannot change a membership request to an admin" do
-        @group.add_request!(@new_user)
-        @membership = @group.membership_requests.first
-        post :update, :id => @membership.id,
-             :membership => {:access_level => 'admin'}
-        flash[:error].should =~ /Access denied/
-        response.should redirect_to(group_url(@group))
-        assigns(:membership).access_level.should == 'request'
-        assigns(:membership).id.should == @membership.id
+      it 'cannot add an admin' do
+        @membership = @group.add_member!(@new_user)
+        post :make_admin, :id => @membership.id
+        flash[:error].should =~ /Access denied./
+        response.should redirect_to(@group)
+        assigns(:membership).access_level.should == 'member'
+        @group.admins.should_not include(@new_user)
       end
 
       it "can ignore a membership request" do
@@ -148,32 +129,19 @@ describe MembershipsController do
         @group.users.should include(@new_user)
       end
 
-      it "cannot delete an admin" do
-        @group.add_admin!(@new_user)
-        @membership = @group.memberships.find_by_user_id(@new_user.id)
-        delete :destroy, :id => @membership.id
+      it "cannot remove an admin" do
+        @membership = @group.add_admin!(@new_user)
+        post :remove_admin, :id => @membership.id
         flash[:error].should =~ /Access denied/
         response.should redirect_to(group_url(@group))
         @group.admins.should include(@new_user)
-      end
-
-      it "cannot change a member's access level" do
-        @group.add_member!(@new_user)
-        @membership = @group.memberships.find_by_user_id(@new_user.id)
-        post :update, :id => @membership.id,
-             :membership => {:access_level => 'admin'}
-        flash[:error].should =~ /Access denied/
-        response.should redirect_to(group_url(@group))
-        @group.admins.should_not include(@new_user)
       end
     end
 
     context 'non group member' do
       it "cannot authorize a membership request for another user" do
-        @group.add_request!(@new_user)
-        @membership = @group.membership_requests.first
-        post :update, :id => @membership.id,
-             :membership => {:access_level => 'member'}
+        @membership = @group.add_request!(@new_user)
+        post :approve, :id => @membership.id
         flash[:error].should =~ /Access denied/
         response.should redirect_to(group_url(@group))
         assigns(:membership).access_level.should == 'request'
@@ -181,8 +149,7 @@ describe MembershipsController do
       end
 
       it "cannot remove a member" do
-        @group.add_member!(@new_user)
-        @membership = @group.memberships.find_by_user_id(@new_user.id)
+        @membership = @group.add_member!(@new_user)
         delete :destroy, :id => @membership.id
         flash[:error].should =~ /Access denied/
         response.should redirect_to(group_url(@group))

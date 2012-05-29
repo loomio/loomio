@@ -13,8 +13,7 @@ class Ability
     # GROUPS
     #
 
-    can [:edit, :update, :add_user_tag, :delete_user_tag,
-         :user_group_tags, :group_tags, :add_subgroup], Group do |group|
+    can [:edit, :update, :add_subgroup], Group do |group|
       group.can_be_edited_by? user
     end
 
@@ -28,16 +27,18 @@ class Ability
     # MEMBERSHIPS
     #
 
-    can [:create, :edit], Membership
+    can :create, Membership
 
-    can :update, Membership do |membership|
-      if params[:membership]
-        if params[:membership][:access_level] == 'member'
-          membership.can_be_made_member_by? user
-        elsif params[:membership][:access_level] == 'admin'
-          membership.can_be_made_admin_by? user
-        end
-      end
+    can :approve, Membership do |membership|
+      membership.can_be_approved_by? user
+    end
+
+    can :make_admin, Membership do |membership|
+      membership.can_be_made_admin_by? user
+    end
+
+    can :remove_admin, Membership do |membership|
+      membership.can_have_admin_rights_revoked_by? user
     end
 
     can :destroy, Membership do |membership|
