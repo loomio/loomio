@@ -3,7 +3,7 @@ class MembershipsController < BaseController
 
   def make_admin
     @membership = Membership.find(params[:id])
-    if not @membership.admin?
+    if @membership.member?
       @membership.make_admin!
       flash[:notice] = "#{@membership.user_name} has been made an admin."
     else
