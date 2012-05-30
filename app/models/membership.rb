@@ -74,6 +74,10 @@ class Membership < ActiveRecord::Base
   # PUBLIC METHODS
   #
 
+  def multiple_admins?
+    group.admins.count > 1
+  end
+
   def can_be_made_admin_by?(user)
     group.admins.include? user
   end
@@ -100,6 +104,7 @@ class Membership < ActiveRecord::Base
   #
 
   private
+
     def destroy_subgroup_memberships
       group.subgroups.each do |subgroup|
         membership = subgroup.memberships.find_by_user_id(user.id)
