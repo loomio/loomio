@@ -33,12 +33,16 @@ describe "User abilities" do
     # Groups
     #
 
+    it { should_not be_able_to(:make_admin, @membership) }
+
     context "group members invitable_by: members" do
       before do
         @group.members_invitable_by = "members"
         @group.save
+        @membership = @group.add_request!(User.make!)
       end
       it { should be_able_to(:add_members, @group) }
+      it { should be_able_to(:approve, @membership) }
     end
 
     context "group members invitable_by: admins" do
@@ -47,6 +51,7 @@ describe "User abilities" do
         @group.save
       end
       it { should_not be_able_to(:add_members, @group) }
+      it { should_not be_able_to(:approve, @membership) }
     end
   end
 
@@ -54,13 +59,19 @@ describe "User abilities" do
     before do
       @group = Group.make!
       @group.add_admin! user
+      @membership = @group.add_request!(User.make!)
     end
+
+    it { should be_able_to(:make_admin, @membership) }
+    it { should be_able_to(:remove_admin, @membership) }
+
     context "group members invitable_by: admins" do
       before do
         @group.members_invitable_by = "admins"
         @group.save
       end
       it { should be_able_to(:add_members, @group) }
+      it { should be_able_to(:approve, @membership) }
     end
   end
 
