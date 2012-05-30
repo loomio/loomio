@@ -19,6 +19,6 @@
   - else
     #uneditable-user
       - if membership.user_name
-        = membership.user_name
+        = truncate(membership.user_name, :length => 39, :omission => '...')
       - else
-        = membership.user_email
+        = truncate(membership.user_email, :length => 39, :omission => '...')

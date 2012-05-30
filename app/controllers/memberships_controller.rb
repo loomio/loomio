@@ -3,22 +3,38 @@ class MembershipsController < BaseController
 
   def make_admin
     @membership = Membership.find(params[:id])
-    @membership.make_admin!
-    flash[:notice] = "#{@membership.user_name} has been made an admin."
+    if not @membership.admin?
+      @membership.make_admin!
+      flash[:notice] = "#{@membership.user_name} has been made an admin."
+    else
+      flash[:warning] = "#{@membership.user_name} is already an admin."
+    end
     redirect_to @membership.group
   end
 
   def remove_admin
     @membership = Membership.find(params[:id])
-    @membership.remove_admin!
-    flash[:notice] = "#{@membership.user_name}'s admin rights have been removed."
+    if @membership.admin?
+      if @membership.multiple_admins?
+        @membership.remove_admin!
+        flash[:notice] = "#{@membership.user_name}'s admin rights have been removed."
+      else
+        flash[:warning] = "You are the last admin and cannot be removed"
+      end
+    else
+      flash[:warning] = "#{@membership.user_name} is not an admin"
+    end
     redirect_to @membership.group
   end
 
   def approve
     @membership = Membership.find(params[:id])
-    @membership.approve!
-    flash[:notice] = "Membership approved"
+    if @membership.request?
+      @membership.approve!
+      flash[:notice] = "Membership approved"
+    else
+      flash[:warning] = "User is already a member of this group"
+    end
     UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
     redirect_to @membership.group
   end

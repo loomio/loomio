@@ -2,9 +2,9 @@
   #member-requests
     =membership_request.user_name
   .links
-    =link_to 'approve', membership_path(membership_request,
+    =link_to 'approve', approve_membership_path(membership_request,
       {:membership => {:access_level => 'member'}}),
-      :method => :put,
+      :method => :post,
       :confirm => "Are you sure you want to add #{membership_request.user_email} to the group?"
     |
     -confirm = "Are you sure you want to ignore the member "
