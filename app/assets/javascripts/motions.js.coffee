@@ -46,13 +46,13 @@ $ ->
     $(".relative-time").each((index, element)->
       date = $(element).html()
       local_datetime = new Date()
-      hours = (parseInt(date.substring(11,13)) + offset).toString()
-      mins = date.substring(14,16)
       local_datetime.setYear(date.substring(0,4))
       local_datetime.setMonth((parseInt(date.substring(5,7)) - 1).toString())
       local_datetime.setDate(date.substring(8,10))
-      local_datetime.setHours(hours)
-      local_datetime.setMinutes(mins)
+      local_datetime.setHours((parseInt(date.substring(11,13)) + offset).toString())
+      local_datetime.setMinutes(date.substring(14,16))
+      hours = local_datetime.getHours()
+      mins = local_datetime.getMinutes()
       if local_datetime.getDate() == today.getDate()
         if hours < 12
           hours = 12 if hours == 0
