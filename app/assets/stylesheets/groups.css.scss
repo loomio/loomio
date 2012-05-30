@@ -62,17 +62,19 @@ input#user_email{
 
 .user-name {
   font-size: $font-small;
-  width: 188px;
+  width: 180px;
   display: inline-block;
 }
-.admin_controls {
+.admin-controls {
   float: right;
-  width: 108px;
+  width: 112px;
   text-align: right;
   font-size: $font-tiny;
   display: inline;
   .close {
-    padding-left: 6px;
+    padding-left: 8px;
+    position: relative;
+    bottom: 2px;
   }
   a { color: $light-grey; }
 }
