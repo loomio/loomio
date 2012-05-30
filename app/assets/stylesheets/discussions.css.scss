@@ -70,12 +70,12 @@
   }
 
   .position{
-    #position{
+    .position{
       float: left;
       padding-right: 0.4em;
       display: block;
     }
-    #position-message{
+    .position-message{
       color: black;
       padding-left: 0.4em;
       display: inline-block;
@@ -176,7 +176,7 @@
       padding-top: 2px;
       .member-row {
         min-height: 24px;
-        #position {
+        .position {
           float: left;
           margin-top: 2px;
           display: inline-block;
