@@ -153,12 +153,24 @@ $ ->
       $(".control-group").addClass("error")
   )
 
-# NOTE (Jon): We should implement a better method for scoping javascript to specific pages
-# http://stackoverflow.com/questions/6167805/using-rails-3-1-where-do-you-put-your-page-specific-javascript-code
+# linkify links: this should be placed in a framework asap
 $ ->
-  if $("#motion").length > 0
-    $("#description").html(linkify_html($("#description").html()))
-    $(".comment-body").each(-> $(this).html(linkify_html($(this).html())))
+  selectors = [
+    "#motion h2",
+    "#motion #description",
+    "#votes .statement",
+    ".comment-body",
+    ".proposal-text",
+    ".position-message"
+  ]
+
+  selectors = for selector in selectors
+    string = "body.discussions " + selector
+
+  selector = selectors.join ", "
+
+  $(selector).each ->
+    $(this).html(linkify_html($(this).html()))
 
 # adds bootstrap popovers to vote buttons
 $ ->
