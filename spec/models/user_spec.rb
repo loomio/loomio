@@ -65,4 +65,38 @@ describe User do
     @user.update_discussion_read_log(@discussion)
     @user.discussion_activity_when_last_read(@discussion).should == 5
   end
+  
+  describe "destroy and delete" do
+    before(:each) do
+      @user = User.make!
+      @user_id = @user.id
+    end
+    
+    it "does not delete the user" do
+      @user.destroy
+      deleted_user = User.find(@user_id)
+      @user.should be_true
+    end
+    
+    it "anonymises the user personal details" do
+      email = @user.email
+      name = @user.name
+      @user.destroy
+      deleted_user = User.find(@user_id)
+      deleted_user.email.should_not == email
+      deleted_user.name.should_not == name
+    end
+    
+    it "makes sure that the hidden user is not an admin (security!)" do
+      @user.destroy
+      deleted_user = User.find(@user_id)
+      deleted_user.should_not be_admin
+    end
+    
+    it "ovverrides delete too" do
+      @user.delete
+      deleted_user = User.find(@user_id)
+      @user.should be_true
+    end
+  end
 end

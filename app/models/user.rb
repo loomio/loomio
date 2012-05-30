@@ -10,8 +10,7 @@ class User < ActiveRecord::Base
            :conditions => {:access_level => 'request'},
            :class_name => 'Membership'
   has_many :memberships,
-           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
-           :dependent => :destroy
+           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS}
   has_many :groups, through: :memberships
   has_many :group_requests, through: :membership_requests, class_name: 'Group', source: :group
   has_many :votes
@@ -21,11 +20,21 @@ class User < ActiveRecord::Base
   has_many :motions_voting, through: :discussions, :source => :motions, :conditions => {phase: 'voting'}
   has_many :motions_closed, through: :discussions, :source => :motions, :conditions => {phase: 'closed'}
 
-  has_many :discussion_read_logs,
-           :dependent => :destroy
+  has_many :discussion_read_logs
+  
+  def destroy
+    update_attributes(name: "Deleted user",
+                      email: "deleted_#{id}@example.org",
+                      admin: false,
+                      deleted_at: Time.now)
+  end
+  
+  def delete
+    destroy
+  end
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :deleted_at, :admin
 
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry

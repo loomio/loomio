@@ -7,6 +7,7 @@ namespace :data do
                  :name => 'Administrator')
     user1 = User.create(name: "User 1", email: "user1@loom.io", password: "password")
     user2 = User.create(name: "User 2", email: "user2@loom.io", password: "password")
+    user3 = User.create(name: "User 3", email: "user3@loom.io", password: "password")
     
     # create a group
     group = Group.create!(name: "Devs")
@@ -18,6 +19,10 @@ namespace :data do
     membership.save!
     membership = Membership.new(access_level: 'member')
     membership.user = user2
+    membership.group = group
+    membership.save!
+    membership = Membership.new(access_level: 'member')
+    membership.user = user3
     membership.group = group
     membership.save!
     
