@@ -5,7 +5,7 @@
     - if message.is_a?(Comment)
       = render message
     - if message.is_a?(Vote)
-      %div.comment.position
+      .comment.position
         #position
           = render partial: "motions/display_icons", locals: { position: message.position }
         %span
@@ -23,7 +23,7 @@
       %div{class: classes}
         %span
           .comment-username= link_to(message.author_name, "#")
-          #proposal-label created a proposal
-          #proposal-text= message.name
+          .proposal-label created a proposal
+          .proposal-text= message.name
         .comment-time
           = time_ago_in_words(message.created_at) + " ago"
