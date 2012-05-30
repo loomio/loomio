@@ -89,12 +89,12 @@
     #proposal-author{
       font-weight: bold;
     }
-    #proposal-label{
+    .proposal-label{
       color: $mid-grey;
       margin-left: 0.4em;
       display: inline-block;
     }
-    #proposal-text{
+    .proposal-text{
       color: $dark-grey;
       margin-left: 0.4em;
       font-style: italic;
