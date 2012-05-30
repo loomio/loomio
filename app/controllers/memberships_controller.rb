@@ -1,43 +1,25 @@
 class MembershipsController < BaseController
   load_and_authorize_resource
 
-  #def update
-    #@membership = Membership.find(params[:id])
-    #if @membership.update_attributes(params[:membership])
-      #flash[:notice] = "Membership approved."
-      #redirect_to @membership.group
-    #else
-      #render :action => 'edit'
-    #end
-    #if params[:membership][:access_level] == 'member'
-      #UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
-    #end
-  #end
-
   def make_admin
     @membership = Membership.find(params[:id])
-    @membership.access_level = "admin"
-    @membership.save
+    @membership.make_admin!
     flash[:notice] = "#{@membership.user_name} has been made an admin."
     redirect_to @membership.group
   end
 
   def remove_admin
     @membership = Membership.find(params[:id])
-    @membership.access_level = "member"
-    @membership.save
+    @membership.remove_admin!
     flash[:notice] = "#{@membership.user_name}'s admin rights have been removed."
     redirect_to @membership.group
   end
 
   def approve
     @membership = Membership.find(params[:id])
+    @membership.approve!
     flash[:notice] = "Membership approved"
     UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
-    # TODO: this logic should be moved out of the controller
-    # and into the membership model (acts as state machine)
-    @membership.access_level = "member"
-    @membership.save
     redirect_to @membership.group
   end
 

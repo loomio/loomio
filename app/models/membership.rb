@@ -47,6 +47,30 @@ class Membership < ActiveRecord::Base
   after_destroy :destroy_subgroup_memberships
 
   #
+  # STATE MACHINE
+  #
+  #
+
+  include AASM
+  aasm :column => :access_level do
+    state :request, :initial => true
+    state :member
+    state :admin
+
+    event :approve do
+      transitions :to => :member, :from => [:request]
+    end
+
+    event :make_admin do
+      transitions :to => :admin, :from => [:member]
+    end
+
+    event :remove_admin do
+      transitions :to => :member, :from => [:admin]
+    end
+  end
+
+  #
   # PUBLIC METHODS
   #
 
