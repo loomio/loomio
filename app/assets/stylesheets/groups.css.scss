@@ -5,10 +5,6 @@
 @import "mixins";
 @import "bootstrap/mixins";
 
-/*$token-input-line-height: 10px;*/
-/*$token-input-font-size: 10px;*/
-/*$token-input-width: 278px;*/
-
 #group-form {
   form {
     width: 550px;
@@ -64,29 +60,25 @@ input#user_email{
   margin-bottom: 5px;
 }
 
-#editable-user-row {
-  margin-top: -22px;
-}
-
 .user-name {
   font-size: $font-small;
-  white-space: pre;           /* CSS 2.0 */
-	white-space: pre-wrap;      /* CSS 2.1 */
-	white-space: pre-line;      /* CSS 3.0 */
-	white-space: -pre-wrap;     /* Opera 4-6 */
-	white-space: -o-pre-wrap;   /* Opera 7 */
-	white-space: -moz-pre-wrap; /* Mozilla */
-	white-space: -hp-pre-wrap;  /* HP Printers */
-	word-wrap: break-word;      /* IE 5+ */
-  width: 178px;
+  width: 188px;
   display: inline-block;
 }
 .admin_controls {
+  float: right;
+  width: 108px;
   text-align: right;
   font-size: $font-tiny;
-  width: 115px;
-  display: inline-block;
-  .close { padding-left: 6px; position: relative; bottom: 3px; }
+  display: inline;
+  #admin-link {
+    /*float: right;*/
+    /*text-align: right;*/
+  }
+  .close {
+    padding-left: 6px;
+    /*float: right;*/
+  }
 }
 
 form#new_membership, #membership-requested {
@@ -174,7 +166,6 @@ form#new_membership, #membership-requested {
   }
   #activity-count {
     margin-left: 18px;
-    width: 4px;
     height: 10px;
     font-size: 0.5em;
     padding: 0.4em;
