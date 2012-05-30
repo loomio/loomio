@@ -2,7 +2,7 @@
 %div.comment{id: "comment-#{comment.id}"}
   %span
     .comment-username= link_to(comment.user_name, "#")
-    #comment-body= format_linebreaks(comment.body)
+    .comment-body= format_linebreaks(comment.body)
   .comment-time
     = time_ago_in_words(comment.created_at) + " ago"
     - if comment.can_be_liked_by?(current_user)
