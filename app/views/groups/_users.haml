@@ -24,7 +24,7 @@
     - else
       =form_for(Membership.new) do |f|
         %input{name: "membership[group_id]", type: :hidden, value: group.id}
-        =submit_tag "Request membership", class: "btn btn-small"
+          =submit_tag "Request membership", class: "btn btn-small request"
 
   - unless group.parent.blank?
     %a.btn#add-member-popup-btn{"data-toggle" => "modal", href: "#invite-group-members"} Add members

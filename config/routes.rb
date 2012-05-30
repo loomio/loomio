@@ -31,7 +31,11 @@ Tautoko::Application.routes.draw do
   end
 
   resources :votes
-  resources :memberships, except: [:new, :show]
+  resources :memberships, except: [:new, :update, :show] do
+    post :make_admin, on: :member
+    post :remove_admin, on: :member
+    post :approve, on: :member
+  end
   resources :users
   resources :comments, only: :destroy do
     post :like, on: :member
