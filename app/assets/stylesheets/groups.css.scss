@@ -71,14 +71,10 @@ input#user_email{
   text-align: right;
   font-size: $font-tiny;
   display: inline;
-  #admin-link {
-    /*float: right;*/
-    /*text-align: right;*/
-  }
   .close {
     padding-left: 6px;
-    /*float: right;*/
   }
+  a { color: $light-grey; }
 }
 
 form#new_membership, #membership-requested {
