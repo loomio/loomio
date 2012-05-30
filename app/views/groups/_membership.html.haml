@@ -3,21 +3,21 @@
     #editable-user-row
       .user-name
         - if membership.user_name
-          = membership.user_name
+          = truncate(membership.user_name, :length => 29, :omission => '...')
         - else
-          = membership.user_email
+          = truncate(membership.user_email, :length => 29, :omission => '...')
       - if current_user.is_group_admin?(group)
         - member = User.find(membership.user_id)
-        .admin_controls
+        .admin-controls
           - if member.is_group_admin?(group)
             =link_to "Remove admin", remove_admin_membership_path(membership), method: :post
           - else
             =link_to "Make admin", make_admin_membership_path(membership), method: :post
-          =link_to "x", membership, method: :delete, class: 'close',
+          =link_to "×", membership, method: :delete, class: 'close',
             confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
   - else
     #uneditable-user
       - if membership.user_name
-        = membership.user_name
+        = truncate(membership.user_name, :length => 38, :omission => '...')
       - else
-        = membership.user_email
+        = truncate(membership.user_email, :length => 38, :omission => '...')
