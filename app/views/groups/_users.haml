@@ -1,15 +1,3 @@
--#*** request membership has been removed as a feature at present 18/5/2012 ***
-- unless group.users_include?(current_user) || current_user.nil?
-  - membership_request = group.membership_requests.find_by_user_id(current_user)
-  - if membership_request.present?
-    = link_to "Membership Requested", membership_request, method: :delete,
-      confirm: "Are you sure you wish to withdraw your membership request from this group?",
-      class: "btn btn-small", id: "membership-requested"
-  - else
-    =semantic_form_for(Membership.new) do |f|
-      %input{name: "membership[group_id]", type: :hidden, value: group.id}
-      =f.commit_button "Request membership", button_html: { class: "btn btn-small" }
-
 - if group.can_invite_members?(current_user) && group.parent.blank?
   .block
     %h1 Add member
@@ -27,6 +15,17 @@
 
 .block
   %h1 Current members
+  - unless group.users_include?(current_user) || current_user.nil?
+    - membership_request = group.membership_requests.find_by_user_id(current_user)
+    - if membership_request.present?
+      = link_to "Membership Requested", membership_request, method: :delete,
+        confirm: "Are you sure you wish to withdraw your membership request from this group?",
+        class: "btn btn-small", id: "membership-requested"
+    - else
+      =form_for(Membership.new) do |f|
+        %input{name: "membership[group_id]", type: :hidden, value: group.id}
+          =submit_tag "Request membership", class: "btn btn-small request"
+
   - unless group.parent.blank?
     %a.btn#add-member-popup-btn{"data-toggle" => "modal", href: "#invite-group-members"} Add members
 
