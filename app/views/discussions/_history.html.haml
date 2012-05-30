@@ -6,11 +6,11 @@
       = render message
     - if message.is_a?(Vote)
       .comment.position
-        #position
+        .position
           = render partial: "motions/display_icons", locals: { position: message.position }
         %span
           .comment-username= link_to(message.user_name, "#")
-          #position-message
+          .position-message
             - if message.statement.present?
               = "#{message.statement}"
             - else
