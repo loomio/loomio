@@ -31,9 +31,13 @@ end
 guard 'sass',
   :input => 'app/assets/stylesheets',
   :noop => true,
-  :hide_success => true
+  :hide_success => true,
+  :load_paths => [
+    'app/assets/stylesheets',
+    Gem.loaded_specs['bootstrap-sass'].full_gem_path + '/vendor/assets/stylesheets'
+  ]
 
-guard 'coffeescript', 
+guard 'coffeescript',
   :input => 'app/assets/javascripts',
   :noop => true,
   :hide_success => true
