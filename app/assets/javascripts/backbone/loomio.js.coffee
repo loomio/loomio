@@ -4,7 +4,7 @@
 #= require_tree ./views
 #= require_tree ./routers
 
-window.Tautoko =
+window.Loomio =
   Models: {}
   Collections: {}
   Routers: {}
