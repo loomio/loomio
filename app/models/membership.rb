@@ -91,8 +91,6 @@ class Membership < ActiveRecord::Base
   end
 
   def can_be_deleted_by?(user)
-    # Admins can delete everyone except admins
-    return false if group.admins.include?(self.user)
     return true if group.admins.include?(user)
 
     return true if self.user == user

@@ -85,12 +85,11 @@ form#new_membership, #membership-requested {
 
 /**** Private group form ****/
 
-.private-message {
+#private-message {
   color: $mid-grey;
   text-align: center;
-  width: 400px;
-  left: 20%;
-  position: relative;
+  width: 50%;
+  margin: 0px auto;
 }
 
 // Discussion list panel
