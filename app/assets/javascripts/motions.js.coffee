@@ -153,25 +153,6 @@ $ ->
       $(".control-group").addClass("error")
   )
 
-# linkify links: this should be placed in a framework asap
-$ ->
-  selectors = [
-    "#motion h2",
-    "#motion #description",
-    "#votes .statement",
-    ".comment-body",
-    ".proposal-text",
-    ".position-message"
-  ]
-
-  selectors = for selector in selectors
-    string = "body.discussions " + selector
-
-  selector = selectors.join ", "
-
-  $(selector).each ->
-    $(this).html(linkify_html($(this).html()))
-
 # adds bootstrap popovers to vote buttons
 $ ->
   $(".vote").popover
