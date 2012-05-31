@@ -15,7 +15,26 @@
 
 .block
   %h1 Current members
-  - unless group.users_include?(current_user) || current_user.nil?
+  - if group.users_include?(current_user) || current_user.nil?
+    - unless group.parent.blank?
+      %a.btn#add-member-popup-btn{"data-toggle" => "modal", href: "#invite-group-members"} Add members
+
+      #invite-group-members.modal.hidden
+        .modal-header
+          %button.close{"data-dismiss" => "modal"}×
+          %h3= "Select members to add to #{group.name}"
+        = form_tag add_members_group_path do
+          .modal-body
+            - group.parent.users.each do |member|
+              - unless member == current_user
+                .invite-member-checkbox-container
+                  - is_member = false
+                  - is_member = true if group.users_include?(member)
+                  = check_box_tag "user_#{member.id}", 1, is_member, disabled: is_member
+                  = label_tag "user_#{member.id}", member.name
+          .modal-footer
+            = submit_tag "Invite members", class: "btn btn-small"
+  - else
     - membership_request = group.membership_requests.find_by_user_id(current_user)
     - if membership_request.present?
       = link_to "Membership Requested", membership_request, method: :delete,
@@ -25,26 +44,6 @@
       =form_for(Membership.new) do |f|
         %input{name: "membership[group_id]", type: :hidden, value: group.id}
           =submit_tag "Request membership", class: "btn btn-small"
-
-  - unless group.parent.blank?
-    %a.btn#add-member-popup-btn{"data-toggle" => "modal", href: "#invite-group-members"} Add members
-
-    #invite-group-members.modal.hidden
-      .modal-header
-        %button.close{"data-dismiss" => "modal"}×
-        %h3= "Select members to add to #{group.name}"
-      = form_tag add_members_group_path do
-        .modal-body
-          - group.parent.users.each do |member|
-            - unless member == current_user
-              .invite-member-checkbox-container
-                - is_member = false
-                - is_member = true if group.users_include?(member)
-                = check_box_tag "user_#{member.id}", 1, is_member, disabled: is_member
-                = label_tag "user_#{member.id}", member.name
-        .modal-footer
-          = submit_tag "Invite members", class: "btn btn-small"
-
 
   %ul.unstyled{:id => "users-list"}
     =render :partial => 'membership',
