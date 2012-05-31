@@ -40,6 +40,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'jasmine'
   gem 'guard-jasmine'
+  gem 'jasminerice'
 end
 
 group :development do
