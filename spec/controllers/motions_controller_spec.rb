@@ -41,9 +41,9 @@ describe MotionsController do
       end
 
       context "creates a motion" do
-        it "should redirect to request url" do
+        it "should redirect to private group page" do
           get :create, group_id: group.id, id: motion.id
-          response.should redirect_to(request_membership_group_url(group))
+          response.should render_template('groups/private_or_not_found')
         end
       end
     end
