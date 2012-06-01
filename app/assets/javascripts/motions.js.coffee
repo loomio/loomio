@@ -47,8 +47,7 @@ $ ->
       date = $(element).html()
       local_datetime = new Date()
       local_datetime.setYear(date.substring(0,4))
-      local_datetime.setMonth((parseInt(date.substring(5,7)) - 1).toString())
-      local_datetime.setDate(date.substring(8,10))
+      local_datetime.setMonth((parseInt(date.substring(5,7)) - 1).toString(), date.substring(8,10))
       local_datetime.setHours((parseInt(date.substring(11,13)) + offset).toString())
       local_datetime.setMinutes(date.substring(14,16))
       hours = local_datetime.getHours()
@@ -85,10 +84,9 @@ $ ->
   $("#input_date").change((e) ->
     date = $(this).val()
     local_datetime = new Date()
-    local_datetime.setYear(date.substring(6,10))
-    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1).toString())
-    local_datetime.setDate(date.substring(0,2))
-    local_datetime.setHours($("#date_hour").val())
+    local_datetime.setYear(parseInt(date.substring(6,10)))
+    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1), parseInt(date.substring(0,2)))
+    local_datetime.setHours(parseInt($("#date_hour").val()))
     $("#motion_close_date").val(local_datetime)
   )
 
@@ -96,10 +94,9 @@ $ ->
   $("#date_hour").change((e) ->
     date = $("#input_date").val()
     local_datetime = new Date()
-    local_datetime.setYear(date.substring(6,10))
-    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1).toString())
-    local_datetime.setDate(date.substring(0,2))
-    local_datetime.setHours($(this).val())
+    local_datetime.setYear(parseInt(date.substring(6,10)))
+    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1), parseInt(date.substring(0,2)))
+    local_datetime.setHours(parseInt($(this).val()))
     $("#motion_close_date").val(local_datetime)
   )
 
