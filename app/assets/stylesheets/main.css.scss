@@ -32,6 +32,7 @@ h3 {
 
 // structural elements (containers etc.)
 .general-form {
+  width: 100%;
   h1 {
     font-size: $font-large;
     color: $dark-grey;
@@ -125,7 +126,7 @@ h3 {
 .container{
 	width: 940px;
 	margin: 0px auto;
-	padding-top: 90px;
+	padding-top: 70px;
 }
 header{
 	width: 940px;
@@ -187,6 +188,10 @@ header{
 			margin: 4px 1px;
 		}
   }
+}
+.alert {
+  position: relative;
+  bottom: 20px;
 }
 
 

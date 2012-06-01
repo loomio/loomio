@@ -9,10 +9,6 @@ describe MotionMailer do
   describe 'sending email on new motion creation' do
     before(:all) do
       @email = MotionMailer.new_motion_created(motion, user.email)
-      #@email_addresses = []
-      #group.users.each do |user|
-        #@email_addresses << user.email unless motion.author == user
-      #end
     end
 
     #ensure that the subject is correct
