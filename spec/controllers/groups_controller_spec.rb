@@ -77,9 +77,9 @@ describe GroupsController do
           @previous_url = root_url
           request.env["HTTP_REFERER"] = @previous_url
         end
-        it "viewing a group should redirect to root url" do
+        it "viewing a group should redirect to private message page" do
           get :show, :id => @group.id
-          response.should redirect_to(root_url)
+          response.should render_template('private_or_not_found')
         end
         it "editing a group should redirect to previous url" do
           get :edit, :id => @group.id
@@ -91,9 +91,9 @@ describe GroupsController do
           @previous_url = groups_url
           request.env["HTTP_REFERER"] = @previous_url
         end
-        it "viewing a group should redirect to request page" do
+        it "viewing a group should redirect to private message page" do
           get :show, :id => @group.id
-          response.should redirect_to(request_membership_group_url)
+          response.should render_template('private_or_not_found')
         end
         it "editing a group should redirect to previous url" do
           get :edit, :id => @group.id

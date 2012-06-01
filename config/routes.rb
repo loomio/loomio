@@ -1,14 +1,6 @@
 Loomio::Application.routes.draw do
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
 
-  # Routes for jQuery TokenInput API calls and tag specific calls
-  get "/groups/:id/user/:user_id/user_group_tags" => "groups#user_group_tags", :as => "user_group_tags"
-  get "/groups/:id/group_tags" => "groups#group_tags", :as => "group_tags"
-  match "/groups/:id/user/:user_id/add_user_tag/:tag", :to => "groups#add_user_tag", :as => :add_user_tag
-  match "/groups/:id/user/:user_id/delete_user_tag/:tag", :to => "groups#delete_user_tag", :as => :delete_user_tag
-  match "/groups/:id/tag_user", :to => "groups#tag_user", :as => :group_tag_user
-  get "/motions/:id/active_tags/:tags/clicked_tag/:tag" => "motions#toggle_tag_filter", :as => "toggle_tag_filter"
-
   resources :groups, except: :index do
     post :add_members, on: :member
     get :add_subgroup
