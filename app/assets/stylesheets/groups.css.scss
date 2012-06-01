@@ -83,6 +83,15 @@ form#new_membership, #membership-requested {
   margin-bottom: 5px;
 }
 
+/**** Private group form ****/
+
+#private-message {
+  color: $mid-grey;
+  text-align: center;
+  width: 50%;
+  margin: 0px auto;
+}
+
 // Discussion list panel
 //
 // NOTE: this code is shared with the group show page and

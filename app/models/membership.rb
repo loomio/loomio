@@ -74,7 +74,7 @@ class Membership < ActiveRecord::Base
   # PUBLIC METHODS
   #
 
-  def multiple_admins?
+  def group_has_multiple_admins?
     group.admins.count > 1
   end
 
@@ -91,8 +91,7 @@ class Membership < ActiveRecord::Base
   end
 
   def can_be_deleted_by?(user)
-    # Admins can delete everyone except admins
-    return false if group.admins.include?(self.user)
+    return false if (self.user == user) && (group.admins.include?(user)) && (not group_has_multiple_admins?)
     return true if group.admins.include?(user)
 
     return true if self.user == user
