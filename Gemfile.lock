@@ -151,12 +151,6 @@ GEM
     inherited_resources (1.3.0)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
-    jasmine (1.2.0)
-      jasmine-core (>= 1.2.0)
-      rack (~> 1.0)
-      rspec (>= 1.3.1)
-      selenium-webdriver (>= 0.1.3)
-    jasmine-core (1.2.0)
     jasminerice (0.0.8)
       haml
     jqplot-rails (0.1)
@@ -333,7 +327,6 @@ DEPENDENCIES
   guard-spork
   haml-rails
   inherited_resources
-  jasmine
   jasminerice
   jqplot-rails
   jquery-rails
