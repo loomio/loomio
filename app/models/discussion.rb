@@ -21,7 +21,7 @@ class Discussion < ActiveRecord::Base
   # group should be removed if possible - kiesia 8.5.12
   attr_accessible :group, :title
 
-  attr_accessor :comment
+  attr_accessor :comment, :notify_group_upon_creation
 
 
   #

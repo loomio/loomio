@@ -15,7 +15,7 @@ class MembershipsController < BaseController
   def remove_admin
     @membership = Membership.find(params[:id])
     if @membership.admin?
-      if @membership.multiple_admins?
+      if @membership.group_has_multiple_admins?
         @membership.remove_admin!
         flash[:notice] = "#{@membership.user_name}'s admin rights have been removed."
       else
