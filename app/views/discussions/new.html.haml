@@ -14,5 +14,9 @@
     .character-counter
   = f.label :comment, "Comment"
   = f.text_area :comment
+  = f.check_box :notify_group_upon_creation
+  = f.label :notify_group_upon_creation,
+    "Notify group members that this discussion has been created",
+    class: "checkbox-label"
   .check-presence= f.submit "Create discussion", class: "btn btn-info"
   = f.hidden_field :group_id
