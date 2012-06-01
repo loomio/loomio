@@ -52,6 +52,7 @@ $ ->
       local_datetime.setMinutes(date.substring(14,16))
       hours = local_datetime.getHours()
       mins = local_datetime.getMinutes()
+      mins = "0#{mins}" if mins.toString().length == 1
       if local_datetime.getDate() == today.getDate()
         if hours < 12
           hours = 12 if hours == 0
