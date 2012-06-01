@@ -1,4 +1,4 @@
-Tautoko::Application.routes.draw do
+Loomio::Application.routes.draw do
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
 
   resources :groups, except: :index do
