@@ -4,10 +4,6 @@ class MotionMailer < ActionMailer::Base
   def new_motion_created(motion, email)
     @motion = motion
     @group = motion.group
-    #email_addresses = []
-    #@group.users.each do |user|
-      #email_addresses << user.email unless motion.author == user
-    #end
     mail(to: email, subject: "[Loomio: #{@group.name}] New proposal - #{@motion.name}")
   end
 
