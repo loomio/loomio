@@ -7,4 +7,4 @@ class Loomio.Views.Utils.Linkify extends Backbone.View
 
   linkify: ->
     $(@el).each ->
-      $(this).html(linkify_html($(this).html()))
+      $(this).linkify()
