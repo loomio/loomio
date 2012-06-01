@@ -4,7 +4,7 @@ class GroupBaseController < BaseController
   private
     def check_group_read_permissions
       unless group.can_be_viewed_by? current_user
-        render 'private_or_not_found'
+        render 'groups/private_or_not_found'
       end
     end
 end
