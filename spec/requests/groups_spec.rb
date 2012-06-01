@@ -135,7 +135,7 @@ describe "Groups" do
       @group2.save
       @group2.add_member!(User.make!)
       visit group_path(@group2)
-      should have_content("Test Group2")
+      should have_content("This group may be private")
       should have_no_content("Users")
     end
   end

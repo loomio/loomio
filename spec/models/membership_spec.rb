@@ -82,10 +82,8 @@ describe Membership do
     end
   end
 
-  context "admin can_be_deleted_by? admin" do
-    it "returns false" do
-      # [Jon] Machinist is lame... (causing bugs which requires
-      # the code below to workaround)
+  context "admin tries to delete admin" do
+    it "succeeds if muliple admins exist" do
       group = Group.make
       group.save
       user = User.make
@@ -95,9 +93,19 @@ describe Membership do
 
       group.add_admin!(user)
       membership = group.add_admin!(user2)
-      group.admins.should include(user2)
+      membership.can_be_deleted_by?(user).should == true
+    end
+    it "fails if no other admins exist" do
+      group = Group.make
+      group.save
+      user = User.make
+      user.save
+      user2 = User.make
+      user2.save
 
-      membership.can_be_deleted_by?(user).should == false
+      group.add_member!(user)
+      membership = group.add_admin!(user2)
+      membership.can_be_deleted_by?(user2).should == false
     end
   end
 
