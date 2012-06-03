@@ -11,10 +11,8 @@ module GroupsHelper
   end
 
   def discussion_display_type(discussion)
-    if current_user
-      return "motion" if discussion.current_motion && (not discussion.current_motion.user_has_voted?(current_user))
-      return "active" if current_user.discussion_activity_count(discussion) > 0
-    end
+    return "motion" if current_user && discussion.current_motion && (not discussion.current_motion.user_has_voted?(current_user))
+    return "active" if current_user && current_user.discussion_activity_count(discussion) > 0
     return "inactive"
   end
 end

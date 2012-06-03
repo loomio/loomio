@@ -1,0 +1,11 @@
+- title_exists = false
+- group.discussions_sorted.each do |discussion|
+  - if discussion_display_type(discussion) == type
+    - unless title_exists
+      %h4
+        ="PROPOSALS INVITING YOUR VOTE" if type == 'motion'
+        ="ACTIVE DISCUSSIONS" if type == 'active'
+        ="INACTIVE DISCUSSIONS" if type == 'inactive'
+      - title_exists = true
+    =render discussion
+- title_exists = false
