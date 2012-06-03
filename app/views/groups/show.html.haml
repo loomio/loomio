@@ -23,5 +23,24 @@
     - if current_user && @group.users_include?(current_user)
       = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn btn-info", id: "new-discussion"
     #discussions
+      - title_exists = false
       - @group.discussions_sorted.each do |discussion|
-        =render discussion
+        - if discussion_display_type(discussion) == "motion"
+          - unless title_exists
+            %h4 PROPOSALS INVITING YOUR VOTE
+            - title_exists = true
+          =render discussion
+      - title_exists = false
+      - @group.discussions_sorted.each do |discussion|
+        - if discussion_display_type(discussion) == "active"
+          - unless title_exists
+            %h4 ACTIVE DISCUSSIOINS
+            - title_exists = true
+          =render discussion
+      - title_exists = false
+      - @group.discussions_sorted.each do |discussion|
+        - if discussion_display_type(discussion) == "inactive"
+          - unless title_exists
+            %h4 INACTIVE DISCUSSIONS
+            - title_exists = true
+          =render discussion

@@ -28,6 +28,12 @@
 
 #discussions {
   padding-bottom: 30px;
+  h4 {
+    color: $mid-grey;
+    font-size: $font_tiny;
+    padding-left: 5px;
+    padding-top: 15px;
+  }
 }
 
 #add-member-popup-btn {
