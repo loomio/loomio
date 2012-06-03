@@ -9,4 +9,12 @@ module GroupsHelper
   def display_subgroups_block?(group)
     group.parent.nil? && (group.subgroups.present? || (current_user && group.users_include?(current_user)))
   end
+
+  def discussion_display_type(discussion)
+    if current_user
+      return "motion" if discussion.current_motion && (not discussion.current_motion.user_has_voted?(current_user))
+      return "active" if current_user.discussion_activity_count(discussion) > 0
+    end
+    return "inactive"
+  end
 end

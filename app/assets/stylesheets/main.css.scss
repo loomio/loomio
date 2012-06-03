@@ -26,6 +26,12 @@ h3 {
   font-weight: normal;
 	font-size: $font-medium;
 }
+
+h4 {
+  font-weight: normal;
+  font-size: $font-small;
+}
+
 .sub_group{
 	font-size: $font-tiny;
 }
@@ -48,7 +54,7 @@ h3 {
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
-  .btn { margin-bottom: 15px; }
+  /*.btn { margin-bottom: 15px; }*/
 }
 
 #content-left {
