@@ -4,8 +4,9 @@
     - unless title_exists
       %h4
         ="PROPOSALS INVITING YOUR VOTE" if type == 'motion'
-        ="ACTIVE DISCUSSIONS" if type == 'active'
+        ="CURRENT DISCUSSIONS" if type == 'active'
         ="INACTIVE DISCUSSIONS" if type == 'inactive'
+        .info= link_to image_tag("info.png"), "#"
       - title_exists = true
     =render discussion
 - title_exists = false
