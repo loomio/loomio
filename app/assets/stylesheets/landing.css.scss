@@ -1,5 +1,5 @@
 @import "settings";
-@import "mixins";
+@import "bootstrap/mixins";
 
 body.landing {
   background-color: #F7F7ED;
@@ -57,7 +57,7 @@ body.landing {
     background-color: #FFF;
     //height: 680px;
     float:left;
-    border-radius: 8px;
+    @include border-radius(8px);
     box-shadow: 1px 1px 4px #999999;
     -webkit-box-shadow: 1px 1px 4px #999999;
     -moz-box-shadow: 0px 0px 4px #999999;
