@@ -5,7 +5,7 @@ class GroupMailer < ActionMailer::Base
     @user = membership.user
     @group = membership.group
     @admins = @group.admins.map(&:email)
-    mail(:to => @admins, :subject => "[Loomio: #{@group.name}] New membership" +
+    mail(:to => @admins, :subject => "[Loomio: #{@group.full_name}] New membership" +
       " request from #{@user.name}")
   end
 end
