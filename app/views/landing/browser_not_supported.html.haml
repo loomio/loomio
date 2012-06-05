@@ -1,54 +1,55 @@
-#github-link
-  %a{:href => "https://github.com/enspiral/loomio",
-     :id   => "fork_me"}
-    %img{:src => "/assets/fork_me.png",
-         :alt => "Fork me on GitHub"}
-%h1.header
-  Loomio
+%a{href: "/"}
+  .header
 .content
-  #presentation
-    %h2 What-io ?
-    %p#whatio
-      Loomio is a free and open-source web application that helps groups make better decisions together.
-    %p#loomio-project-iframe
-      <iframe width="560" height="315" src="http://www.youtube.com/embed/soanS1588BA" frameborder="0" allowfullscreen></iframe>
-    %p
-      For more information:
-    %ul
+  %p
+    Opps! It seems the browser you are running is too old and unable to run our service properly.
+  %p
+    Any new version of the browsers listed below should work fine, they are free and easy to download/install.
+  %p
+    We are sorry for this inconvenience.
+  %ul#browser-icons
+    %a{href: "http://www.mozilla.org/en-US/firefox/new/"}
       %li
-        Check out our
-        = "<a href='http://blog.loom.io'>blog</a>".html_safe
+        =image_tag '/assets/firefox.png'
+        %p.browser-title
+          Firefox
+        %p.browser-description
+          “Your online security is Firefox's top priority. Firefox is free, and made to help you get the most out of the web.”
+        %p.visit-site
+          Visit website for more info
+    %a{href: "https://www.google.com/chrome"}
       %li
-        Get on the Loomio
-        %a{:href =>"http://eepurl.com/lE3Uz"}waiting-list
-  #controls
-    %h2 Alpha user sign in
-    = form_tag user_session_path, :id => "sign-in-form" do
-      = label_tag 'user[email]', "Email"
-      = text_field_tag 'user[email]'
-      = label_tag 'user[password]', "Password"
-      = password_field_tag 'user[password]'
-      = check_box_tag 'user[remember_me]'
-      = label_tag 'user[remember_me]', 'Remember me', class: "checkbox-label"
-      .sign-in-button
-        %button{:class => "btn primary small"} Sign in
-    = link_to "Forgot your password?", new_password_path('user')
-    %p.light
-      Don't have an account? We're currently in closed testing and not accepting public sign-ups (yet!).
-    %p.light
-      If you belong to a group that is using Loomio but you don't have your own Loomio account, please contact the person in your organization who set up Loomio and ask them to add you to the group.
-  %footer
-    .row
-      .span9
-        %ul
-          %li
-            Send us an
-            %a{:href => "mailto:contact@loom.io"} email
-          %li
-            Participate in our
-            %a{:href => "http://loomio.org"} open source project
-      .span2
-        #icon-links
-          = link_to image_tag("facebook-icon.jpg", height:'40', width:'40', title:'Facebook', alt:'Facebook image'), 'http://facebook.com/loomioproject'
-          = link_to image_tag("twitter-icon.jpg", height:'40', width:'40', title:'Twitter', alt:'Twitter image'), 'http://twitter.com/loomioproject'
-
+        =image_tag '/assets/chrome.png'
+        %p.browser-title
+          Google Chrome
+        %p.browser-description
+          “A fast new browser from Google. Try it now!”
+        %p.visit-site
+          Visit website for more info
+    %a{href: "http://www.apple.com/safari/"}
+      %li
+        =image_tag '/assets/safari.png'
+        %p.browser-title
+          Safari
+        %p.browser-description
+          “Safari for Mac and Windows from Apple, the world’s most innovative browser.”
+        %p.visit-site
+          Visit website for more info
+    %a{href: "http://www.opera.com/"}
+      %li
+        =image_tag '/assets/opera.png'
+        %p.browser-title
+          Opera
+        %p.browser-description
+          “The fastest browser on Earth—secure, powerful and easy to use, with excellent privacy protection. And it is free.”
+        %p.visit-site
+          Visit website for more info
+    %a{href: "http://windows.microsoft.com/en-US/internet-explorer/products/ie/home"}
+      %li
+        =image_tag '/assets/ie.png'
+        %p.browser-title
+          Internet Explorer
+        %p.browser-description
+          “Designed to help you take control of your privacy and browse with confidence. Free from Microsoft.”
+        %p.visit-site
+          Visit website for more info
