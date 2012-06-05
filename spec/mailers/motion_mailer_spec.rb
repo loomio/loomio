@@ -13,7 +13,7 @@ describe MotionMailer do
 
     #ensure that the subject is correct
     it 'renders the subject' do
-      @email.subject.should == "[Loomio: #{group.name}] New proposal - #{motion.name}"
+      @email.subject.should == "[Loomio: #{group.full_name}] New proposal - #{motion.name}"
     end
 
     #ensure that the sender is correct
@@ -27,7 +27,7 @@ describe MotionMailer do
 
     #ensure that the group name variable appears in the email body
     it 'assigns group.name' do
-      @email.body.encoded.should match(group.name)
+      @email.body.encoded.should match(group.full_name)
     end
 
     #ensure that the confirmation_url appears in the email body
@@ -60,12 +60,12 @@ describe MotionMailer do
     end
 
     #ensure that the group name variable appears in the email body
-    it 'assigns group.name' do
-      @email.body.encoded.should match(group.name)
+    it 'assigns group.full_name' do
+      @email.body.encoded.should match(group.full_name)
     end
 
     #ensure that the blocking user name appears in the email body
-    it 'assigns group.name' do
+    it 'assigns user.name' do
       @email.body.encoded.should match(@vote.user.name)
     end
 

@@ -12,7 +12,7 @@ describe GroupMailer do
     #ensure that the subject is correct
     it 'renders the subject' do
       @mail.subject.should ==
-        "[Loomio: #{@group.name}] New membership request from #{@membership.user.name}"
+        "[Loomio: #{@group.full_name}] New membership request from #{@membership.user.name}"
     end
 
     it "sends email to group admins" do
