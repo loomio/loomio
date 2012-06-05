@@ -14,7 +14,10 @@
           =render :partial => 'membership_request', :collection => group.membership_requests
 
 .block
-  %h1 Current members
+  %h1
+    Current members
+    #membership-count
+      = group.memberships.count
   - if group.users_include?(current_user) || current_user.nil?
     - unless group.parent.blank?
       %a.btn#add-member-popup-btn{"data-toggle" => "modal", href: "#invite-group-members"} Add members

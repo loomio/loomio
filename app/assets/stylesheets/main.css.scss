@@ -112,6 +112,19 @@ h4 {
     font-size: $font-tinywiny;
     margin-left: 4px;
   }
+  .dropdown {
+    float: right;
+  }
+  ul.dropdown-menu{
+    li {
+      text-shadow: none;
+      font-size: $font-tiny;
+      color: $navbar-text-color;
+    }
+    .divider{
+      margin: 4px 1px;
+    }
+  }
 }
 
 // navigation
