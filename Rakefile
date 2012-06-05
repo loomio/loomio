@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Tautoko::Application.load_tasks
+Loomio::Application.load_tasks

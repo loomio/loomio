@@ -3,10 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "settings";
 @import "mixins";
-
-$token-input-line-height: 10px;
-$token-input-font-size: 10px;
-$token-input-width: 278px;
+@import "bootstrap/mixins";
 
 #group-form {
   form {
@@ -63,7 +60,51 @@ input#user_email{
   margin-bottom: 5px;
 }
 
-// discussion panel
+.user-name {
+  font-size: $font-small;
+  width: 180px;
+  display: inline-block;
+}
+.admin-controls {
+  float: right;
+  width: 112px;
+  text-align: right;
+  font-size: $font-tiny;
+  display: inline;
+  .close {
+    padding-left: 8px;
+    position: relative;
+    bottom: 2px;
+  }
+  a { color: $light-grey; }
+}
+
+form#new_membership, #membership-requested {
+  margin-bottom: 5px;
+}
+
+#membership-count {
+  display: inline;
+  float: right;
+  font-size: $font-small;
+  color: #999;
+  padding-right: 8px
+}
+
+/**** Private group form ****/
+
+#private-message {
+  color: $mid-grey;
+  text-align: center;
+  width: 50%;
+  margin: 0px auto;
+}
+
+// Discussion list panel
+//
+// NOTE: this code is shared with the group show page and
+//       the dashboard page.
+//
 .discussion {
   cursor: pointer;
   color: $mid-grey;
@@ -75,6 +116,11 @@ input#user_email{
   }
   #discussion-title {
     padding-left: 5px;
+    a {
+      display: inline-block;
+      @include ie7-inline-block();
+      width: 500px;
+    }
   }
   #proposal-container {
     padding-left: 7px;
@@ -113,6 +159,7 @@ input#user_email{
     float: right;
     padding-right: 5px;
     font-size: $font-tinywiny;
+    text-align: right;
   }
   #total-comments {
     margin-top: -9px;
@@ -134,7 +181,6 @@ input#user_email{
   }
   #activity-count {
     margin-left: 18px;
-    width: 4px;
     height: 10px;
     font-size: 0.5em;
     padding: 0.4em;

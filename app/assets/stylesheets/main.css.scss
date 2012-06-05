@@ -31,7 +31,8 @@ h3 {
 }
 
 // structural elements (containers etc.)
-#general-form {
+.general-form {
+  width: 100%;
   h1 {
     font-size: $font-large;
     color: $dark-grey;
@@ -102,6 +103,19 @@ h3 {
     font-size: $font-tinywiny;
     margin-left: 4px;
   }
+  .dropdown {
+    float: right;
+  }
+  ul.dropdown-menu{
+    li {
+      text-shadow: none;
+      font-size: $font-tiny;
+      color: $navbar-text-color;
+    }
+    .divider{
+      margin: 4px 1px;
+    }
+  }
 }
 
 // navigation
@@ -125,7 +139,7 @@ h3 {
 .container{
 	width: 940px;
 	margin: 0px auto;
-	padding-top: 90px;
+	padding-top: 70px;
 }
 header{
 	width: 940px;
@@ -187,6 +201,10 @@ header{
 			margin: 4px 1px;
 		}
   }
+}
+.alert {
+  position: relative;
+  bottom: 20px;
 }
 
 

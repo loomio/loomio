@@ -4,7 +4,7 @@
 
 $ ->
   # Only execute on group page
-  if $("#group").length > 0
+  if $("body.groups").length > 0
     $("#membership-requested").hover(
       (e) ->
         $(this).text("Cancel Request")

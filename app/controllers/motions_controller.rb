@@ -27,6 +27,16 @@ class MotionsController < GroupBaseController
     end
   end
 
+  def show
+    motion = Motion.find(params[:id])
+    discussion = motion.discussion
+    if motion == discussion.current_motion
+      redirect_to discussion_url(discussion)
+    else
+      redirect_to discussion_url(discussion, proposal: motion)
+    end
+  end
+
   def destroy
     resource
     destroy! { @motion.group }
@@ -56,13 +66,6 @@ class MotionsController < GroupBaseController
       redirect_to discussion_url(@motion.discussion_id)
     end
   end
-
-  #def toggle_tag_filter
-    #@motion = Motion.find(params[:id])
-    #@active_tags = params[:tags]
-    #@clicked_tag = params[:tag]
-    #render :partial => "motions/votes_filters", :locals => { clicked_tag: @clicked_tag }, :layout => false, :status => :created
-  #end
 
   private
 

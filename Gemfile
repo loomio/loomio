@@ -38,6 +38,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'jasminerice'
+  gem 'guard-jasmine'
 end
 
 group :development do

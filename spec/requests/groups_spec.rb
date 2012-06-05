@@ -36,7 +36,7 @@ describe "Groups" do
       it "can edit group" do
         visit edit_group_path(@group)
 
-        fill_in 'group_name', with: 'New groupie'
+        fill_in 'group-name', with: 'New groupie'
         find("#update-group").click
 
         should have_content("New groupie")
@@ -135,7 +135,7 @@ describe "Groups" do
       @group2.save
       @group2.add_member!(User.make!)
       visit group_path(@group2)
-      should have_content("Test Group2")
+      should have_content("This group may be private")
       should have_no_content("Users")
     end
   end

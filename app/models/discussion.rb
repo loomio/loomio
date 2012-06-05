@@ -21,7 +21,7 @@ class Discussion < ActiveRecord::Base
   # group should be removed if possible - kiesia 8.5.12
   attr_accessible :group, :title
 
-  attr_accessor :comment
+  attr_accessor :comment, :notify_group_upon_creation
 
 
   #
@@ -58,7 +58,19 @@ class Discussion < ActiveRecord::Base
   #
 
   def current_motion
-    motions.last
+    motion = motions.where("phase = 'voting'").last if motions
+    if motion
+      motion.open_close_motion
+      motion if motion.voting?
+    end
+  end
+
+  def closed_motion(motion)
+    if motion
+      motions.find(motion)
+    else
+      motions.where("phase = 'closed'").order("close_date desc").first
+    end
   end
 
   def history
