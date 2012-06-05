@@ -35,6 +35,35 @@ $ ->
       $("#input_date").datepicker("setDate", date_string)
       $("#date_hour").val(hour)
 
+#generic code to be moved out of motions.js
+$ ->
+  if $(".relative-time").length > 0
+    today = new Date()
+    month = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+               "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
+    date_offset = new Date()
+    offset = date_offset.getTimezoneOffset()/-60
+    $(".relative-time").each((index, element)->
+      date = $(element).html()
+      local_datetime = new Date()
+      local_datetime.setYear(date.substring(0,4))
+      local_datetime.setMonth((parseInt(date.substring(5,7)) - 1).toString(), date.substring(8,10))
+      local_datetime.setHours((parseInt(date.substring(11,13)) + offset).toString())
+      local_datetime.setMinutes(date.substring(14,16))
+      hours = local_datetime.getHours()
+      mins = local_datetime.getMinutes()
+      mins = "0#{mins}" if mins.toString().length == 1
+      if local_datetime.getDate() == today.getDate()
+        if hours < 12
+          hours = 12 if hours == 0
+          date_string = "#{hours}:#{mins} AM"
+        else
+          hours = 24 if hours == 12
+          date_string = "#{hours-12}:#{mins} PM"
+      else
+        date_string = "#{local_datetime.getDate()} #{month[local_datetime.getMonth()]}"
+      $(element).html(String(date_string))
+    )
 #** presence validations: use this function any where just assign the class .presence-required
 #   to the text field in question and the .check-presence to the submit button **
 $ ->
@@ -51,15 +80,14 @@ $ ->
     $(".error-message").hide()
   )
 
-#** Reload hidden close_date field **
+# Reload hidden close_date field
 $ ->
   $("#input_date").change((e) ->
     date = $(this).val()
     local_datetime = new Date()
-    local_datetime.setYear(date.substring(6,10))
-    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1).toString())
-    local_datetime.setDate(date.substring(0,2))
-    local_datetime.setHours($("#date_hour").val())
+    local_datetime.setYear(parseInt(date.substring(6,10)))
+    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1), parseInt(date.substring(0,2)))
+    local_datetime.setHours(parseInt($("#date_hour").val()))
     $("#motion_close_date").val(local_datetime)
   )
 
@@ -67,14 +95,13 @@ $ ->
   $("#date_hour").change((e) ->
     date = $("#input_date").val()
     local_datetime = new Date()
-    local_datetime.setYear(date.substring(6,10))
-    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1).toString())
-    local_datetime.setDate(date.substring(0,2))
-    local_datetime.setHours($(this).val())
+    local_datetime.setYear(parseInt(date.substring(6,10)))
+    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1), parseInt(date.substring(0,2)))
+    local_datetime.setHours(parseInt($(this).val()))
     $("#motion_close_date").val(local_datetime)
   )
 
-#** character count for statement on discussion:show page **
+# character count for statement on discussion:show page
 pluralize_characters = ((num) ->
   if(num == 1)
     return num + " character"
@@ -106,9 +133,10 @@ $ ->
       $('#new_vote').preventDefault()
     else
       $('#new_vote').submit()
+      event.preventDefault()
   )
 
-#** character count for title on discussion:new page **
+# character count for title on discussion:new page
 $ ->
   $(".limit").keyup(() ->
     $(".error-message").hide()
@@ -123,13 +151,13 @@ $ ->
       $(".control-group").addClass("error")
   )
 
-# NOTE (Jon): We should implement a better method for scoping javascript to specific pages
-# http://stackoverflow.com/questions/6167805/using-rails-3-1-where-do-you-put-your-page-specific-javascript-code
-$ ->
-  if $("#motion").length > 0
-    $("#description").html(linkify_html($("#description").html()))
-    $(".comment-body").each(-> $(this).html(linkify_html($(this).html())))
-
+# adds bootstrap popovers to vote buttons
 $ ->
   $(".vote").popover
     placement: "top"
+
+# disable links on usernames
+$ ->
+  $('.comment-username a, .member-name a').click((event) ->
+    event.preventDefault()
+  )

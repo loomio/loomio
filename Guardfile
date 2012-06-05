@@ -31,9 +31,19 @@ end
 guard 'sass',
   :input => 'app/assets/stylesheets',
   :noop => true,
-  :hide_success => true
+  :hide_success => true,
+  :load_paths => [
+    'app/assets/stylesheets',
+    Gem.loaded_specs['bootstrap-sass'].full_gem_path + '/vendor/assets/stylesheets'
+  ]
 
-guard 'coffeescript', 
+guard 'coffeescript',
   :input => 'app/assets/javascripts',
   :noop => true,
   :hide_success => true
+
+guard 'jasmine' do
+  watch(%r{spec/javascripts/spec\.(js\.coffee|js|coffee)$})         { "spec/javascripts" }
+  watch(%r{spec/javascripts/.+_spec\.(js\.coffee|js|coffee)$})
+  watch(%r{app/assets/javascripts/(.+?)\.(js\.coffee|js|coffee)$})  { |m| "spec/javascripts/#{m[1]}_spec.#{m[2]}" }
+end

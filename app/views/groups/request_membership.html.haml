@@ -1,5 +1,0 @@
-%h1
-  = @group.name
-=form_for(@membership) do |f|
-  %input{name: "membership[group_id]", type: :hidden, value: @group.id}
-  =f.submit "request access to this group", class: "btn btn-small"

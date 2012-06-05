@@ -12,8 +12,7 @@
       - if motion.voting?
         = "Closing in #{time_ago_in_words(motion.close_date)}"
       - else
-        Closed on
-        %span.relativetime= motion.close_date
+        %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
     - if motion.can_be_edited_by? current_user
       %span#admin-buttons
         =render "motions/facilitator_options", motion: motion
@@ -61,10 +60,13 @@
   :coffeescript
     $ ->
       # Display vote graph
-      @pie_graph_view = new Tautoko.Views.Utils.GraphView
+      @pie_graph_view = new Loomio.Views.Utils.GraphView
         el: '#graph.pie'
         id_string: 'graph'
         legend: true
         data: #{@votes_for_graph.to_json.html_safe}
         type: 'pie'
         tooltip_selector: '#tooltip'
+
+      @linkify = new Loomio.Views.Utils.Linkify
+        el: $('#motion h2, #motion #description, #votes .statement')

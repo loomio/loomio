@@ -1,8 +1,0 @@
-%p#motions
-  Motions
-  %ul
-    -@motions.each do |motion|
-      %li.motion
-        =motion.name
-        =link_to "edit", edit_motion_path(motion)
-  =link_to "Add new motion", new_group_motion_path

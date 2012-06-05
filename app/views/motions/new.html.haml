@@ -5,7 +5,7 @@
         = link_to @motion.group.parent.name, group_path(@motion.group.parent), title: "group" unless @motion.group.parent.nil?
         = " - " unless @motion.group.parent.nil?
         = link_to @motion.group.name, group_path(@motion.group), title: "group"
-  #general-form
+  .general-form
     %h1
       #new-proposal
         New proposal

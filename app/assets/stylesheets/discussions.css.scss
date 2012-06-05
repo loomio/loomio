@@ -41,10 +41,10 @@
     color: black;
   }
   #new-comment-submit{
-    margin-top: -2px;
+    margin-top: -4px;
     text-align: right;
     .submit{
-      margin-top: 8px;
+      margin-bottom: 15px;
     }
   }
   .comment{
@@ -56,7 +56,7 @@
       font-weight: bold;
       float: left;
     }
-    #comment-body{
+    .comment-body{
       margin-left: 0.4em;
       display: inline-block;
     }
@@ -71,12 +71,12 @@
   }
 
   .position{
-    #position{
+    .position{
       float: left;
       padding-right: 0.4em;
       display: block;
     }
-    #position-message{
+    .position-message{
       color: black;
       padding-left: 0.4em;
       display: inline-block;
@@ -90,12 +90,12 @@
     #proposal-author{
       font-weight: bold;
     }
-    #proposal-label{
+    .proposal-label{
       color: $mid-grey;
       margin-left: 0.4em;
       display: inline-block;
     }
-    #proposal-text{
+    .proposal-text{
       color: $dark-grey;
       margin-left: 0.4em;
       font-style: italic;
@@ -117,7 +117,7 @@
     margin-bottom: 20px;
   }
   #new-proposal {
-    .btn { margin-bottom: 10px; }
+    .btn { margin-bottom: 20px; }
   }
   #no-current-proposal {
     .btn { margin-bottom: 58px; }
@@ -177,7 +177,7 @@
       padding-top: 2px;
       .member-row {
         min-height: 24px;
-        #position {
+        .position {
           float: left;
           margin-top: 2px;
           display: inline-block;

@@ -1,8 +1,8 @@
 #group-form
   =form_for(group) do |f|
     .control-group
-      = f.label :name, "Group Name", {class: "control-label", for: "inputError"}
-      = f.text_field :name, class: "inputError"
+      = f.label :name, "Group Name", {class: "control-label", for: "group-name"}
+      = f.text_field :name, class: "inputError", id: "group-name"
       %span.error-message Please fill in a title
     .privacy-settings
       %h1 Privacy Settings

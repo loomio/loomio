@@ -9,7 +9,7 @@
             = activity_count_for(discussion, current_user)
 
     #comment-info
-      = latest_history_time_for(discussion)
+      .relative-time= discussion.latest_history_time
       #total-comments
         = pluralize(discussion.comments.count + discussion.votes.count, 'msg')
 
@@ -18,7 +18,7 @@
       = link_to discussion.group.name, group_path(discussion.group)
 
   - motion = discussion.current_motion
-  - if motion.present? && motion.voting?
+  - if motion.present?
     #proposal-container
       #vote-icon
         - if current_user
