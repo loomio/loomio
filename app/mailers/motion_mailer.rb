@@ -4,7 +4,7 @@ class MotionMailer < ActionMailer::Base
   def new_motion_created(motion, email)
     @motion = motion
     @group = motion.group
-    mail(to: email, subject: "[Loomio: #{@group.name}] New proposal - #{@motion.name}")
+    mail(to: email, subject: "[Loomio: #{@group.full_name}] New proposal - #{@motion.name}")
   end
 
   def motion_blocked(vote)
@@ -14,6 +14,6 @@ class MotionMailer < ActionMailer::Base
     @discussion = @motion.discussion
     @group = @motion.group
     mail(to: @motion.author.email,
-         subject: "[Loomio: #{@group.name}] Proposal blocked - #{@motion.name}")
+         subject: "[Loomio: #{@group.full_name}] Proposal blocked - #{@motion.name}")
   end
 end
