@@ -65,6 +65,10 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def users_sorted
+    users.sort { |a,b| a.name.downcase <=> b.name.downcase }
+  end
+
 
   #
   # MEMBERSHIP METHODS
