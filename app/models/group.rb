@@ -28,6 +28,7 @@ class Group < ActiveRecord::Base
 
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
+  delegate :name, :to => :parent, :prefix => true
 
   acts_as_tagger
 
@@ -54,6 +55,14 @@ class Group < ActiveRecord::Base
 
   def members_invitable_by=(value)
     write_attribute(:members_invitable_by, value.to_s)
+  end
+
+  def full_name(separator= " - ")
+    if parent
+      parent_name + separator + name
+    else
+      name
+    end
   end
 
 
