@@ -51,14 +51,15 @@ describe DiscussionsController do
       it "does not send email by default" do
         DiscussionMailer.should_not_receive(:spam_new_discussion_created)
         get :create, discussion: { group_id: group.id, title: "Shinney",
-                                   comment: "Bright light" }
+                                   comment: "Bright light",
+                                   notify_group_upon_creation: "0" }
       end
       it "sends email if notify_group_upon_creation is passed in params" do
         DiscussionMailer.should_receive(:spam_new_discussion_created).
           with(discussion)
         get :create, discussion: { group_id: group.id, title: "Shinney",
                                    comment: "Bright light",
-                                   notify_group_upon_creation: 1 }
+                                   notify_group_upon_creation: "1" }
       end
       it "adds comment" do
         discussion.should_receive(:add_comment).with(user, "Bright light")

@@ -4,7 +4,7 @@ class DiscussionMailer < ActionMailer::Base
   def new_discussion_created(discussion, user)
     @discussion = discussion
     @group = discussion.group
-    mail(to: user.email, subject: "[Loomio: #{@group.name}] New discussion - #{@discussion.title}")
+    mail(to: user.email, subject: "[Loomio: #{@group.full_name}] New discussion - #{@discussion.title}")
   end
 
   def spam_new_discussion_created(discussion)

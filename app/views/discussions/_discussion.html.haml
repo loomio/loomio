@@ -15,7 +15,7 @@
 
   - if params[:controller] == 'dashboard'
     #group-name
-      = link_to discussion.group.name, group_path(discussion.group)
+      = link_to discussion.group.full_name, group_path(discussion.group)
 
   - motion = discussion.current_motion
   - if motion.present?
