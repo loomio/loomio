@@ -3,10 +3,21 @@
   - if discussion_display_type(discussion) == type
     - unless title_exists
       %h4
-        ="PROPOSALS INVITING YOUR VOTE" if type == 'motion'
-        ="CURRENT DISCUSSIONS" if type == 'active'
-        ="INACTIVE DISCUSSIONS" if type == 'inactive'
-        .info= link_to image_tag("info.png"), "#"
+        - if type == 'motion'
+          ="PROPOSALS INVITING YOUR VOTE"
+          - info_message = "These discussions contain proposals needing your decision"
+        - if type == 'active'
+          ="CURRENT DISCUSSIONS"
+          - info_message = "The group is actively enguaged in these discussions"
+        - if type == 'inactive'
+          "INACTIVE DISCUSSIONS"
+          - info_message = "The group are not active enguaged in these discussions"
+        .info-help{title: info_message}
       - title_exists = true
     =render discussion
 - title_exists = false
+
+:coffeescript
+  $ ->
+    @linkify = new Loomio.Views.Utils.InfoHelp
+      el: $("#discussions h4")

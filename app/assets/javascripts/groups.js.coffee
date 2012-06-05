@@ -12,3 +12,19 @@ $ ->
         $(this).text("Membership Requested")
     )
 
+
+# Info-tips
+$ ->
+  $(".info-help").tooltip(placement: 'top', trigger: 'manual')
+  $(".info-help").hover(
+    (e) ->
+      $(this).css('background-image', 'url("/assets/dark-info.png")')
+    (e) ->
+      $(this).css('background-image', 'url("/assets/info.png")')
+      $(this).tooltip('hide')
+  )
+
+$ ->
+  $(".info-help").click((event) ->
+    $(this).tooltip('show')
+  )
