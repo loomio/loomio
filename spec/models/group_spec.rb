@@ -22,6 +22,9 @@ describe Group do
     it "defaults to members invitable by members" do
       @group.members_invitable_by.should == :members
     end
+    it "has a full_name" do
+      @group.full_name.should == @group.name
+    end
   end
 
   context "has a parent" do
@@ -29,10 +32,10 @@ describe Group do
       @group = Group.make!
       @subgroup = Group.make!(:parent => @group)
     end
-    it "accesses its parent" do
+    it "can access it's parent" do
       @subgroup.parent.should == @group
     end
-    it "accesses its children" do
+    it "can access it's children" do
       10.times {Group.make!(:parent => @group)}
       @group.subgroups.count.should eq(11)
     end
@@ -42,6 +45,17 @@ describe Group do
     end
     it "defaults to viewable by parent group members" do
       Group.new(:parent => @group).viewable_by.should == :parent_group_members
+    end
+    context "subgroup.full_name" do
+      it "contains parent name" do
+        @subgroup.full_name.should == "#{@subgroup.parent_name} - #{@subgroup.name}"
+        @subgroup.full_name(": ").should ==
+          "#{@subgroup.parent_name}: #{@subgroup.name}"
+      end
+      it "can have an optionally defined separator between names" do
+        @subgroup.full_name(": ").should ==
+          "#{@subgroup.parent_name}: #{@subgroup.name}"
+      end
     end
   end
 
