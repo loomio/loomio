@@ -107,7 +107,7 @@ class Membership < ActiveRecord::Base
     def destroy_subgroup_memberships
       group.subgroups.each do |subgroup|
         membership = subgroup.memberships.find_by_user_id(user.id)
-        membership.destroy
+        membership.destroy if membership
       end
     end
 
