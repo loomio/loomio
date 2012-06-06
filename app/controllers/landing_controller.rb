@@ -3,4 +3,6 @@ class LandingController < ApplicationController
   end
   def demo
   end
+  def browser_not_supported
+  end
 end

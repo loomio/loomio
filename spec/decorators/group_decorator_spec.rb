@@ -13,6 +13,8 @@ describe GroupDecorator do
   context "full_link" do
     it "includes parent group in link" do
       @subgroup.full_link.should match(/#{@group.name}.+#{@subgroup.name}/)
+      @subgroup.full_link.should match(/groups\/#{@group.id}/)
+      @subgroup.full_link.should match(/groups\/#{@subgroup.id}/)
     end
   end
 
