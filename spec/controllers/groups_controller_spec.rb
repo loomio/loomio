@@ -77,7 +77,7 @@ describe GroupsController do
           @previous_url = root_url
           request.env["HTTP_REFERER"] = @previous_url
         end
-        it "viewing a group should redirect to private message page" do
+        it "viewing a group should redirect to 'group not found' page" do
           get :show, :id => @group.id
           response.should render_template('private_or_not_found')
         end
@@ -139,6 +139,18 @@ describe GroupsController do
 
       group.users.should include(user2)
       group.users.should include(user3)
+    end
+  end
+
+  context "logged out user" do
+    context "viewing a private group" do
+      before :each do
+        @group = Group.make!(viewable_by: :members)
+      end
+      it "should redirect to log-in page" do
+        get :show, :id => @group.id
+        response.should redirect_to(new_user_session_url)
+      end
     end
   end
 end
