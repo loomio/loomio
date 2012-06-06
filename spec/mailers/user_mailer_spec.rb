@@ -10,7 +10,7 @@ describe UserMailer do
 
     #ensure that the subject is correct
     it 'renders the subject' do
-      @mail.subject.should == "[Loomio: #{@group.name}] Membership approved"
+      @mail.subject.should == "[Loomio: #{@group.full_name}] Membership approved"
     end
 
     #ensure that the receiver is correct
@@ -25,7 +25,7 @@ describe UserMailer do
 
     #ensure that the @name variable appears in the email body
     it 'assigns group.name' do
-      @mail.body.encoded.should match(@group.name)
+      @mail.body.encoded.should match(@group.full_name)
     end
 
     #ensure that the @confirmation_url variable appears in the email body
@@ -58,7 +58,7 @@ describe UserMailer do
 
     #ensure that the @name variable appears in the email body
     it 'assigns group.name' do
-      @mail.body.encoded.should match(@group.name)
+      @mail.body.encoded.should match(@group.full_name)
     end
 
     #ensure that the @confirmation_url variable appears in the email body
@@ -78,7 +78,7 @@ describe UserMailer do
     #ensure that the subject is correct
     it 'renders the subject' do
       @mail.subject.should match(
-        /#{@inviter.name} has invited you to #{@group.name} on Loomio/)
+        /#{@inviter.name} has invited you to #{@group.full_name} on Loomio/)
     end
 
     #ensure that the receiver is correct
@@ -93,7 +93,7 @@ describe UserMailer do
 
     #ensure that the group's name appears in the email body
     it 'assigns group.name' do
-      @mail.body.encoded.should match(@group.name)
+      @mail.body.encoded.should match(@group.full_name)
     end
 
     #ensure that the inviter's name appears in the email body
