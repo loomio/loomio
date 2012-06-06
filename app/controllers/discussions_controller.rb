@@ -28,6 +28,7 @@ class DiscussionsController < GroupBaseController
 
   def show
     @discussion = Discussion.find(params[:id])
+    @group = GroupDecorator.new(@discussion.group)
     @current_motion = @discussion.current_motion
     @vote = Vote.new
     @history = @discussion.history
