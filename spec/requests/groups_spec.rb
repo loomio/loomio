@@ -130,13 +130,15 @@ describe "Groups" do
       end
     end
 
-    it "doesn't let us view a group the user does not belongs to" do
-      @group2 = Group.make(name: 'Test Group2', viewable_by: :members)
-      @group2.save
-      @group2.add_member!(User.make!)
-      visit group_path(@group2)
-      should have_content("This group may be private")
-      should have_no_content("Users")
+    context "group non-member viewing a private group" do
+      it "displays 'group not found' page" do
+        @group2 = Group.make(name: 'Test Group2', viewable_by: :members)
+        @group2.save
+        @group2.add_member!(User.make!)
+        visit group_path(@group2)
+        should have_content("Group not found")
+        should have_no_content("Users")
+      end
     end
   end
 
@@ -152,6 +154,19 @@ describe "Groups" do
       visit group_path(@group)
 
       should have_content("Test Group")
+    end
+
+    it "viewing a private group redirects to log-in" do
+      @user = User.make!
+      @group = Group.make!(name: 'Test Group', viewable_by: :members)
+      @group.add_member!(@user)
+      @discussion = create_discussion(group: @group, author: @user)
+      @motion = create_motion(name: 'Test Motion',
+                              discussion: @discussion,
+                              author: @user, facilitator: @user)
+      visit group_path(@group)
+
+      should have_css("body.sessions.new")
     end
   end
 end
