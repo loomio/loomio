@@ -10,7 +10,6 @@ class Loomio.Views.Utils.InfoHelp extends Backbone.View
     that = this
     $(@el).each ->
       $(this).popover(html: true, trigger: 'manual', placement: 'top').click((e) ->
-        console.log $(this)
         $(this).popover('show')
         isVisible = true
         e.preventDefault()
