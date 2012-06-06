@@ -156,3 +156,47 @@ body.landing {
     }
   }
 }
+
+body.landing.browser_not_supported {
+  .notice { padding-bottom: 25px; }
+
+  ul#browser-icons{
+    li {
+      float: left;
+      height: 120px;
+      margin: 5px;
+      padding: 5px;
+      width: 160px;
+    }
+    li:hover{
+      background-color: #F7F7ED;
+      @include border-radius(4px);
+    }
+    li:hover{
+      p.browser-title, p.visit-site{
+        background-color: $light-grey;
+        color: white;
+      }
+    }
+    a{
+      color: $mid-grey;
+    }
+    img {
+      display: block;
+      height: 80px;
+      margin: 0 auto 10px;
+    }
+    p{
+      font-size:$font-tiny;
+    }
+    p.browser-title, p.visit-site{
+      text-align: center;
+      color: $dark-grey;
+      background-color: $lighter-grey;
+      @include border-radius(4px);
+    }
+    p.browser-description{
+      height: 100px;
+    }
+  }
+}
