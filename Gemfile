@@ -18,6 +18,7 @@ gem 'cancan'
 gem 'acts_as_commentable_with_threading'
 gem 'draper'
 gem 'exception_notification'
+gem 'browser'
 
 # Gems used only for assets and not required
 # in production environments by default.

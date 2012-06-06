@@ -40,9 +40,10 @@ Loomio::Application.routes.draw do
   authenticated do
     root :to => 'dashboard#show'
   end
-  # route landing page to demo page
-  match '/demo' => 'landing#demo'
   # route logged out user to landing page
   resources :landing, only: :show
   root :to => 'landing#show'
+  match '/demo' => 'landing#demo'
+  match '/browser_not_supported' => 'landing#browser_not_supported',
+    :as => :browser_not_supported
 end
