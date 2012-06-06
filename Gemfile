@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.1.5'
 gem "haml-rails"
 gem 'devise', '~> 2.0.0'
 gem 'devise_invitable', '~> 1.0.0'
@@ -18,6 +18,7 @@ gem 'cancan'
 gem 'acts_as_commentable_with_threading'
 gem 'draper'
 gem 'exception_notification'
+gem 'browser'
 
 # Gems used only for assets and not required
 # in production environments by default.

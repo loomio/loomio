@@ -2,9 +2,13 @@ class GroupDecorator < ApplicationDecorator
   decorates :group
 
   def full_link
-    link_text = model.name
-    link_text = "#{model.parent.name} > #{model.name}" if model.parent
-    link = h.link_to link_text, model
+    link = ""
+    if model.parent
+      link += h.link_to model.parent.name, h.group_path(model.parent)
+      link += " > "
+    end
+    link += h.link_to model.name, h.group_path(model)
+    link.html_safe
   end
 
   def link

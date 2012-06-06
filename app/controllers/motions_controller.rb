@@ -48,13 +48,13 @@ class MotionsController < GroupBaseController
   def close_voting
     resource
     @motion.close_voting!
-    redirect_to discussion_url(@motion.discussion_id)
+    redirect_to discussion_url(@motion.discussion)
   end
 
   def open_voting
     resource
     @motion.open_voting!
-    redirect_to discussion_path(@motion.discussion_id)
+    redirect_to discussion_url(@motion.discussion)
   end
 
   def edit
