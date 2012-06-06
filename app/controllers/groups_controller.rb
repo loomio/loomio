@@ -13,6 +13,12 @@ class GroupsController < GroupBaseController
     end
   end
 
+  def show
+    @discussions_motion = @group.discussions_with_motions(current_user) if current_user
+    @discussions_active = @group.active_discussions
+    @discussions_inactive = @group.inactive_discussions
+  end
+
   # CUSTOM CONTROLLER ACTIONS
 
   def add_subgroup

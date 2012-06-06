@@ -27,22 +27,27 @@
 /**** Group page ****/
 
 #discussions {
+  padding: 4px;
   padding-bottom: 30px;
+  .btn { margin-bottom: 15px; }
   h4 {
     color: $mid-grey;
     font-size: $font_tiny;
-    padding-left: 5px;
-    padding-top: 15px;
+    float: left;
   }
+  .proposal-block { margin-bottom: 20px }
   .info-help {
-    margin-left: 5px;
+    margin-left: 8px;
     height: 19px;
     width: 16px;
     background-image:url("/assets/info.png");
     background-repeat: no-repeat;
-    background-position-y: 3px;
+    background-position-y: 1px;
     display: inline-block;
     cursor: pointer;
+  }
+  .info-help:hover {
+    background-image:url("/assets/dark-info.png");
   }
 }
 

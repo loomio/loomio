@@ -26,13 +26,14 @@
     =render 'users', group: @group
 
   %section.span8#content-main
+    %h1 Discussions
     #discussions
-      %h1 Discussions
       - if current_user && @group.users_include?(current_user)
-        = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn btn-info", id: "new-discussion"
-        =render 'discussions', group: @group, type: 'motion'
-        =render 'discussions', group: @group, type: 'active'
-        =render 'discussions', group: @group, type: 'inactive'
+        = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }),
+            class: "btn btn-info", id: "new-discussion"
+        =render 'discussions',  discussions_motion: @discussions_motion,
+                                discussions_active: @discussions_active,
+                                discussions_inactive: @discussions_inactive
       - else
         - @group.discussions_sorted.each do |discussion|
           =render discussion

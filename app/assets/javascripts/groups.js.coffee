@@ -12,19 +12,20 @@ $ ->
         $(this).text("Membership Requested")
     )
 
+#$ ->
+  #isVisible = false
+  #clickedAway = false
 
-# Info-tips
-$ ->
-  $(".info-help").tooltip(placement: 'top', trigger: 'manual')
-  $(".info-help").hover(
-    (e) ->
-      $(this).css('background-image', 'url("/assets/dark-info.png")')
-    (e) ->
-      $(this).css('background-image', 'url("/assets/info.png")')
-      $(this).tooltip('hide')
-  )
+  #$('.info-help').popover(html: true, trigger: 'manual', placement: 'top').click((e) ->
+    #$(this).popover('show')
+    #isVisible = true
+    #e.preventDefault()
+  #)
 
-$ ->
-  $(".info-help").click((event) ->
-    $(this).tooltip('show')
-  )
+  #$(document).click((e) ->
+    #if(isVisible & clickedAway)
+      #$('.info-help').popover('hide')
+      #isVisible = clickedAway = false
+    #else
+      #clickedAway = true
+  #)
