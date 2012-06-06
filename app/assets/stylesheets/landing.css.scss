@@ -1,5 +1,5 @@
 @import "settings";
-@import "mixins";
+@import "bootstrap/mixins";
 
 body.landing {
   background-color: #F7F7ED;
@@ -57,7 +57,7 @@ body.landing {
     background-color: #FFF;
     //height: 680px;
     float:left;
-    border-radius: 8px;
+    @include border-radius(8px);
     box-shadow: 1px 1px 4px #999999;
     -webkit-box-shadow: 1px 1px 4px #999999;
     -moz-box-shadow: 0px 0px 4px #999999;
@@ -153,6 +153,50 @@ body.landing {
 			#user_remember_me{
 				margin:0px;
 			}
+    }
+  }
+}
+
+body.landing.browser_not_supported {
+  .notice { padding-bottom: 25px; }
+
+  ul#browser-icons{
+    li {
+      float: left;
+      height: 120px;
+      margin: 5px;
+      padding: 5px;
+      width: 160px;
+    }
+    li:hover{
+      background-color: #F7F7ED;
+      @include border-radius(4px);
+    }
+    li:hover{
+      p.browser-title, p.visit-site{
+        background-color: $light-grey;
+        color: white;
+      }
+    }
+    a{
+      color: $mid-grey;
+    }
+    img {
+      display: block;
+      height: 80px;
+      margin: 0 auto 10px;
+    }
+    p{
+      font-size:$font-tiny;
+    }
+    p.browser-title, p.visit-site{
+      text-align: center;
+      color: $dark-grey;
+      background-color: $lighter-grey;
+      @include border-radius(4px);
+    }
+    p.browser-description{
+      height: 100px;
     }
   }
 }

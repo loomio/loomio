@@ -83,6 +83,14 @@ form#new_membership, #membership-requested {
   margin-bottom: 5px;
 }
 
+#membership-count {
+  display: inline;
+  float: right;
+  font-size: $font-small;
+  color: #999;
+  padding-right: 8px
+}
+
 /**** Private group form ****/
 
 #private-message {

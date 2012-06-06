@@ -10,7 +10,7 @@ describe DiscussionMailer do
     end
 
     it 'renders the subject' do
-      @email.subject.should == "[Loomio: #{group.name}] New discussion - #{discussion.title}"
+      @email.subject.should == "[Loomio: #{group.full_name}] New discussion - #{discussion.title}"
     end
 
     it 'renders the sender email' do

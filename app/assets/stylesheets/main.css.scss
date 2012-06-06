@@ -103,6 +103,19 @@ h3 {
     font-size: $font-tinywiny;
     margin-left: 4px;
   }
+  .dropdown {
+    float: right;
+  }
+  ul.dropdown-menu{
+    li {
+      text-shadow: none;
+      font-size: $font-tiny;
+      color: $navbar-text-color;
+    }
+    .divider{
+      margin: 4px 1px;
+    }
+  }
 }
 
 // navigation
@@ -199,49 +212,7 @@ header{
 .bordered {
   border-top: 1px solid $light-grey;
 }
-ul#browser-icons{
-	li {
-		float: left;
-		height: 260px;
-		margin: 5px;
-		padding: 5px;
-		width: 160px;
-	}
-	li:hover{
-		background-color: #F7F7ED;
-		@include border-radius(4px);
-	}
-	li:hover{
-		img{
-			position: relative;
-			bottom: 5px;
-		}
-		p.browser-title, p.visit-site{
-			background-color: $light-grey;
-			color: white;
-		}
-	}
-	a{
-		color: $mid-grey;
-	}
-	img {
-    display: block;
-    height: 80px;
-    margin: 0 auto 10px;
-	}
-	p{
-		font-size:$font-tiny;
-	}
-	p.browser-title, p.visit-site{
-		text-align: center;
-		color: $dark-grey;
-		background-color: $lighter-grey;
-		@include border-radius(4px);
-	}
-	p.browser-description{
-		height: 100px;
-	}
-}
+
 .presence-required {
   display: inline;
 }

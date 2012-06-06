@@ -9,13 +9,13 @@ class DiscussionsController < GroupBaseController
   def create
     group = Group.find(params[:discussion][:group_id])
     comment = params[:discussion][:comment]
-    notify_group = params[:discussion][:notify_group_upon_creation]
+    notify_group = params[:discussion][:notify_group_upon_creation].to_i
     @discussion = Discussion.new(params[:discussion])
     @discussion.author = current_user
     @discussion.group = group
     if @discussion.save
       @discussion.add_comment(current_user, comment)
-      unless notify_group.blank?
+      if notify_group > 0
         DiscussionMailer.spam_new_discussion_created(@discussion)
       end
       flash[:success] = "Discussion sucessfully created."

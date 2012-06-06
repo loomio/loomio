@@ -3,7 +3,8 @@ require 'spec_helper'
 describe MotionsController do
   let(:group) { stub_model(Group) }
   let(:user)  { stub_model(User) }
-  let(:motion) { stub_model(Motion, :group => group) }
+  let(:discussion)  { stub_model(Discussion) }
+  let(:motion) { stub_model(Motion, :group => group, :discussion => discussion) }
   let(:previous_url) { groups_url }
 
   before :each do
