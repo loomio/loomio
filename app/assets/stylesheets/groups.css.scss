@@ -75,8 +75,13 @@ input#user_email{
     padding-left: 8px;
     position: relative;
     bottom: 2px;
+    color: $mid-grey;
+    opacity: 0.6;
   }
-  a { color: $light-grey; }
+  .close:hover {
+    color: black;
+  }
+  a { color: $mid-grey; }
 }
 
 form#new_membership, #membership-requested {

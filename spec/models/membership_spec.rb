@@ -44,6 +44,7 @@ describe Membership do
   context "destroy" do
     it "removes subgroup memberships (if existing)" do
       membership = group.add_member! user
+      # Removes user from multiple subgroups
       subgroup = Group.make
       subgroup.parent = group
       subgroup.save
@@ -52,6 +53,10 @@ describe Membership do
       subgroup2.parent = group
       subgroup2.save
       subgroup2.add_member! user
+      # Does not try to remove user from subgroup if user is not a member
+      subgroup3 = Group.make
+      subgroup3.parent = group
+      subgroup3.save
       membership.destroy
 
       subgroup.users.should_not include(user)

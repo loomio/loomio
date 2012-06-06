@@ -13,6 +13,10 @@ class GroupsController < GroupBaseController
     end
   end
 
+  def show
+    @group = GroupDecorator.new(Group.find(params[:id]))
+  end
+
   # CUSTOM CONTROLLER ACTIONS
 
   def add_subgroup
