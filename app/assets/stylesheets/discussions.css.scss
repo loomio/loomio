@@ -125,13 +125,31 @@
     text-transform: lowercase;
     font-weight: normal;
   }
+  #closing-info{
+    font-size: $font-tiny;
+  }
   #proposed-by {
     font-size: $font-tiny;
     margin-bottom: 30px;
   }
   #description {
-    p{}
-    color: $dark-grey;
+    p{
+      font-size: $font-small;
+      color: $dark-grey;
+      display: inline;
+    }
+  }
+  #short-description {
+    a{
+      font-size: $font-tinywiny;
+      display: inline;
+    }
+  }
+  #long-description {
+    a{
+      font-size: $font-tinywiny;
+      display: block;
+    }
   }
   #percentage-to-vote {
     font-size: $font-tiny;
