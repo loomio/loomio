@@ -2,23 +2,33 @@ Loomio.Views.Utils ||= {}
 
 class Loomio.Views.Utils.InfoHelp extends Backbone.View
   initialize: ->
-    @popoverShow()
+    @visible = false
+    @clickedAway = false
+    @selector = []
+    @getElClasses()
+    @bindShowHandler()
+    @bindHideHandler()
 
-  popoverShow: ->
-    isVisible = false
-    clickedAway = false
-    that = this
+  # get all @el classes so we can hide everything on click
+  getElClasses: ->
+    classes = []
     $(@el).each ->
-      $(this).popover(html: true, trigger: 'manual', placement: 'top').click((e) ->
+      classes.push "." + $(this).attr('class')
+    @selector = classes.join ", "
+
+  bindShowHandler: ->
+    self = this
+    $(@el).each ->
+      $(this).popover(html: true, trigger: 'manual', placement: 'top').click (e) ->
         $(this).popover('show')
-        isVisible = true
+        self.visible = true
         e.preventDefault()
-        that = this
-      )
-    $(document).click((e) ->
-      if(isVisible & clickedAway)
-        $(that).popover('hide')
-        isVisible = clickedAway = false
+
+  bindHideHandler: ->
+    self = this
+    $(document).click (e) ->
+      if(self.visible && self.clickedAway)
+        $(self.selector).popover('hide')
+        self.visible = self.clickedAway = false
       else
-        clickedAway = true
-    )
+        self.clickedAway = true
