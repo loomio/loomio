@@ -113,6 +113,14 @@ class User < ActiveRecord::Base
       motion_vote(motion).position
     end
   end
+  
+  def name
+    if deleted_at
+      'Deleted User'
+    else
+      name
+    end
+  end
 
   private
     def ensure_name_entry
