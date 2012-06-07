@@ -111,8 +111,8 @@ form#new_membership, #membership-requested {
 //       the dashboard page.
 //
 .discussion {
-  cursor: pointer;
   color: $mid-grey;
+  position: relative;
   #group-name {
     font-size: $font-tiny;
     a { color: $mid-grey; }
@@ -190,6 +190,10 @@ form#new_membership, #membership-requested {
     font-size: 0.5em;
     padding: 0.4em;
     padding-top: 0.1em;
+  }
+  .discussion-link {
+    position: relative;
+    z-index: 2;
   }
 }
 
