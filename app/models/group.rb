@@ -76,11 +76,13 @@ class Group < ActiveRecord::Base
 
   def add_request!(user)
     unless requested_users_include?(user) || users.exists?(user)
-      membership = memberships.build_for_user(user, access_level: 'request')
-      membership.save!
-      GroupMailer.new_membership_request(membership).deliver
-      reload
-      membership
+      if parent.nil? || user.group_membership(parent)
+        membership = memberships.build_for_user(user, access_level: 'request')
+        membership.save!
+        GroupMailer.new_membership_request(membership).deliver
+        reload
+        membership
+      end
     end
   end
 

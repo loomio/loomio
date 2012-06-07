@@ -161,3 +161,12 @@ $ ->
   $('.comment-username a, .member-name a').click((event) ->
     event.preventDefault()
   )
+
+#expand description text on proposal
+$ ->
+  if $("#motion").length > 0
+    $(".see-more").click((event) ->
+      $("#short-description").toggle()
+      $("#long-description").toggle()
+    )
+
