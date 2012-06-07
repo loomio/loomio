@@ -25,7 +25,7 @@
 
   %section.span8#content-main
     %h1 Discussions
-    - if current_user && @group.users_include?(current_user)
+    - if current_user && @group.users_include?(current_user) && @group.beta_features?
       = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn btn-info", id: "new-discussion"
     #discussions
       - @group.discussions_sorted.each do |discussion|
