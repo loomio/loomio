@@ -65,4 +65,11 @@ describe User do
     @user.update_discussion_read_log(@discussion)
     @user.discussion_activity_when_last_read(@discussion).should == 5
   end
+  
+  describe "destroy" do
+    it "returns Deleted User if deleted_at is not empty" do
+      @user = User.make! deleted_at: 1.month.ago
+      @user.name.should == 'Deleted User'
+    end
+  end
 end

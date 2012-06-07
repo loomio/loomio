@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120601035604) do
+ActiveRecord::Schema.define(:version => 20120607190000) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20120601035604) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body",             :default => ""
+    t.text     "body"
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(:version => 20120601035604) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "activity",   :default => 0, :null => false
     t.string   "title"
+    t.integer  "activity",   :default => 0, :null => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -106,6 +106,16 @@ ActiveRecord::Schema.define(:version => 20120601035604) do
   end
 
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -146,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20120601035604) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
+    t.datetime "deleted_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
