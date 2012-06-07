@@ -44,12 +44,17 @@ class MembershipsController < BaseController
     # I feel like this method/action should be renamed to
     # request_membership
     @group = Group.find(params[:membership][:group_id])
-    @group.add_request!(current_user)
-    if @group.can_be_viewed_by? current_user
-      redirect_to group_url(@group)
+    if @group.parent.nil? || current_user.group_membership(@group.parent)
+      @group.add_request!(current_user)
+      if @group.can_be_viewed_by? current_user
+        redirect_to group_url(@group)
+      else
+        flash[:notice] = "Membership requested."
+        redirect_to root_url
+      end
     else
-      flash[:notice] = "Membership requested."
-      redirect_to root_url
+      flash[:error] = "You cannot join a sub-group if you are not a member of the parent group"
+      redirect_to :back
     end
   end
 
