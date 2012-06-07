@@ -71,5 +71,10 @@ describe User do
       @user = User.make! deleted_at: 1.month.ago
       @user.name.should == 'Deleted User'
     end
+    
+    it "returns the real name if deleted_at is empty" do
+      @user = User.make! deleted_at: nil
+      @user.name.should_not == 'Deleted User'
+    end
   end
 end
