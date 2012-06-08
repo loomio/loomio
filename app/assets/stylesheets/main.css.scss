@@ -136,8 +136,9 @@ h4 {
 .navbar-wrapper{
 	position: fixed;
 	width: 100%;
-	background-color: $header-dark-color;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+  background-image: url("title-bar-gradient.jpg");
+   /*background-color: $header-dark-color;*/
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
 	z-index: 1;
 }
 .navbar-inner{
@@ -182,12 +183,6 @@ header{
 	div > ul a, .nav a{
 		font-size: $font-tiny;
 	}
-  .topbar-inner {
-    background-image: -moz-linear-gradient(top, $header-color, $header-dark-color);
-    background-image: -webkit-linear-gradient(top, $header-color, $header-dark-color);
-    background-image: -o-linear-gradient(top, $header-color, $header-dark-color);
-    background-image: linear-gradient(top, $header-color, $header-dark-color);
-  }
 
   h1 {
     float: left;
@@ -196,7 +191,7 @@ header{
 		a{
 			display: block;
 			height: 36px;
-			padding: 5px 5px 0;
+			padding: 4px 6px 0;
 		}
 		a:hover{
 			background-color: #383737;
