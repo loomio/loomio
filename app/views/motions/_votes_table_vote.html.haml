@@ -1,0 +1,10 @@
+.position-row.bordered
+  .member-row
+    .position= render partial: "motions/display_icons", locals: { position: vote.position }
+    .member-name= link_to vote.user_name, "#"
+    - if vote.can_be_edited_by?(current_user)
+      -if motion.phase == 'voting'
+        .edit-delete-buttons
+          =link_to "edit", edit_motion_vote_path(motion, vote), class: 'btn btn-mini'
+  .statement
+    = vote.statement
