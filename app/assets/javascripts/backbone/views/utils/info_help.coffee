@@ -14,6 +14,7 @@ class Loomio.Views.Utils.InfoHelp extends Backbone.View
     classes = []
     $(@el).each ->
       classes.push "." + $(this).attr('class')
+    classes = _.uniq classes
     @selector = classes.join ", "
 
   bindShowHandler: ->
