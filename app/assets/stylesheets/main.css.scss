@@ -26,6 +26,12 @@ h3 {
   font-weight: normal;
 	font-size: $font-medium;
 }
+
+h4 {
+  font-weight: normal;
+  font-size: $font-small;
+}
+
 .sub_group{
 	font-size: $font-tiny;
 }
@@ -48,7 +54,7 @@ h3 {
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
-  .btn { margin-bottom: 15px; }
+  /*.btn { margin-bottom: 15px; }*/
 }
 
 #content-left {
@@ -79,7 +85,7 @@ h3 {
   @include box-shadow(1px, 1px, 3px, $light-grey);
   @include border-radius(4px);
   border: 1px solid $light-grey;
-  margin: 5px 3px 6px 3px;
+  margin: 5px 0px 6px 0px;
   padding: 8px;
 }
 
@@ -90,6 +96,9 @@ h3 {
     margin-left: 4px;
   }
 }
+/*.app-icon.small-icon {*/
+  /*display: inline;*/
+/*}*/
 
 // group title
 .group-title {
