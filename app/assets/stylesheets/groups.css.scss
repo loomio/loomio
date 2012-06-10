@@ -134,13 +134,13 @@ form#new_membership, #membership-requested {
 .discussion {
   cursor: pointer;
   color: $mid-grey;
-  #group-name {
+  .group-name {
     font-size: $font-tiny;
     a { color: $mid-grey; }
     margin-top: -0.3em;
     padding-left: 5px;
   }
-  #discussion-title {
+  .discussion-title {
     padding-left: 5px;
     a {
       display: inline-block;
@@ -148,38 +148,37 @@ form#new_membership, #membership-requested {
       width: 500px;
     }
   }
-  #proposal-container {
+  .proposal-container {
     padding-left: 7px;
     padding-bottom: 7px;
     min-height: 30px;
     color: $light-grey;
   }
-  #vote-icon {
+  .vote-icon {
     padding-top: 4px;
     display: inline-block;
     height: 16px;
     width: 20px;
     float: left;
   }
-  #no-vote-space { width: 20px; }
-  #proposal-title-container {
+  .proposal-title-container {
     margin-left: 12px;
     display: inline-block;
     width: 400px;
   }
-  #proposal-label {
+  .proposal-label {
     font-size: $font-tiny;
     font-style: italic;
   }
-  #proposal-title {
+  .proposal-title {
     font-size: $font-tiny;
     color: $mid-grey;
   }
-  #proposal-close-date {
+  .proposal-close-date {
     margin-top: -0.4em;
     font-size: 0.7em;
   }
-  #comment-info {
+  .comment-info {
     display: inline-block;
     margin-top: -4px;
     float: right;
@@ -187,13 +186,13 @@ form#new_membership, #membership-requested {
     font-size: $font-tinywiny;
     text-align: right;
   }
-  #total-comments {
+  .total-comments {
     margin-top: -9px;
   }
-  #alert-info {
+  .alert-info {
     float: right;
   }
-  #discussion-icon-container {
+  .discussion-icon-container {
     background-size: 25px;
     background-repeat: no-repeat;
     width: 32px;
@@ -205,7 +204,7 @@ form#new_membership, #membership-requested {
   .discussion-disabled-icon {
     background-image: url("discussion-disabled.png");
   }
-  #activity-count {
+  .activity-count {
     margin-left: 18px;
     height: 10px;
     font-size: 0.5em;
