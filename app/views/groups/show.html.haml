@@ -25,8 +25,14 @@
 
   %section.span8#content-main
     %h1 Discussions
-    - if current_user && @group.users_include?(current_user)
-      = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }), class: "btn btn-info", id: "new-discussion"
     #discussions
-      - @group.discussions_sorted.each do |discussion|
-        =render discussion
+      - if current_user && @group.users_include?(current_user)
+        = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }),
+          class: "btn btn-info", id: "new-discussion"
+      - if @group.beta_features? && current_user && @group.users_include?(current_user)
+        =render 'discussions',  discussions_motion: @discussions_motion,
+                                discussions_active: @discussions_active,
+                                discussions_inactive: @discussions_inactive
+      - else
+        - @group.discussions_sorted.each do |discussion|
+          =render discussion
