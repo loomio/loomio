@@ -1,9 +1,8 @@
 %div{ class: css_class_for(discussion) }
   %a{ href: discussion_path(discussion) }
     %span.expanded
-  %span#discussion-title
-    - title = truncate(discussion.title, :length => 75, :separator => ' ')
-    = link_to title, discussion_path(discussion), class: "discussion-link"
+  %span.full-discussion-title
+    .discussion-title= fancy_discussion_name(discussion)
     #alert-info
       #discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
         - if activity_count_for(discussion, current_user) > 0
@@ -17,7 +16,7 @@
 
   - if params[:controller] == 'dashboard'
     #group-name
-      = link_to discussion.group.full_name, group_path(discussion.group)
+      = link_to discussion.group.root_name, group_path(discussion.group)
 
   - motion = discussion.current_motion
   - if motion.present?

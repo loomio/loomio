@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "settings";
-@import "mixins";
 @import "bootstrap/mixins";
+@import "mixins";
 
 #group-form {
   form {
@@ -110,18 +110,28 @@ form#new_membership, #membership-requested {
 // NOTE: this code is shared with the group show page and
 //       the dashboard page.
 //
+.discussion:hover {
+  /*border: 1px solid #1F6993;*/
+  /*@include box-shadow(0px, 0px, 6px, $light-grey);*/
+  background-color: rgba(237, 239, 245, 0.98);
+}
 .discussion {
   color: $mid-grey;
   position: relative;
   #group-name {
     font-size: $font-tiny;
-    a { color: $mid-grey; }
+    a {
+      color: $mid-grey;
+      position: relative;
+      z-index: 2;
+    }
     margin-top: -0.3em;
     padding-left: 5px;
   }
-  #discussion-title {
+  .full-discussion-title {
     padding-left: 5px;
-    a {
+    font-size: 0.8em;
+    .discussion-title {
       display: inline-block;
       @include ie7-inline-block();
       width: 500px;
@@ -194,6 +204,15 @@ form#new_membership, #membership-requested {
   .discussion-link {
     position: relative;
     z-index: 2;
+  }
+  .name-separator {
+    display: inline-block;
+    @include ie7-inline-block();
+    width: 15px;
+    position: relative;
+    bottom: 1px;
+    font-size: 0.6em;
+    text-align: center;
   }
 }
 
