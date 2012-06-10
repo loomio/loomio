@@ -149,6 +149,10 @@ class Group < ActiveRecord::Base
     end
   end
 
+  #
+  # DISCUSSION LISTS
+  #
+
   def discussions_sorted
     if subgroups.present?
       family_discussions = discussions
@@ -159,6 +163,20 @@ class Group < ActiveRecord::Base
     else
       discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
     end
+  end
+
+  def discussions_with_motions(user)
+    discussions.select do |discussion|
+      discussion.current_motion.present? && (not discussion.current_motion.user_has_voted?(user))
+    end
+  end
+
+  def active_discussions
+    discussions.where('updated_at > ?', Time.now() - 2.weeks)
+  end
+
+  def inactive_discussions
+    discussions.where('updated_at <= ?', Time.now() - 2.weeks)
   end
 
   #
