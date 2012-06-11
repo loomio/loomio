@@ -18,8 +18,8 @@ class GroupsController < GroupBaseController
     @discussions_active = @group.active_discussions(current_user)
     @discussions_inactive = @group.inactive_discussions(current_user)
     @group = GroupDecorator.new(Group.find(params[:id]))
-    @subgroups = @group.subgroups.reject do |group|
-      not group.can_be_viewed_by?(current_user)
+    @subgroups = @group.subgroups.select do |group|
+      group.can_be_viewed_by?(current_user)
     end
   end
 
