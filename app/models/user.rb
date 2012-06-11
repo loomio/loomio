@@ -113,6 +113,23 @@ class User < ActiveRecord::Base
       motion_vote(motion).position
     end
   end
+  
+  def name
+    deleted_at ? "Deleted user" : read_attribute(:name)
+  end
+  
+  def deactivate!
+    update_attribute(:deleted_at, 1.month.ago)
+  end
+  
+  def activate!
+    update_attribute(:deleted_at, nil)
+  end
+  
+  # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
+  def active_for_authentication?
+    super && !deleted_at
+  end
 
   private
     def ensure_name_entry
