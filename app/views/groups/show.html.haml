@@ -1,7 +1,7 @@
 .group-title
   %h2
     %span
-      = @group.full_link
+      = @group.fancy_link
       .dropdown
         - can_edit = @group.can_be_edited_by? current_user
         - can_leave = @group.users_include? current_user
@@ -32,7 +32,8 @@
       - if @group.beta_features? && current_user && @group.users_include?(current_user)
         =render 'discussions',  discussions_motion: @discussions_motion,
                                 discussions_active: @discussions_active,
-                                discussions_inactive: @discussions_inactive
+                                discussions_inactive: @discussions_inactive,
+                                this_group: @group
       - else
         - @group.discussions_sorted.each do |discussion|
-          =render discussion
+          =render discussion, this_group: @group

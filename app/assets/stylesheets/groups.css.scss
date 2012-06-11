@@ -132,8 +132,7 @@ form#new_membership, #membership-requested {
 //       the dashboard page.
 //
 .discussion:hover {
-  /*border: 1px solid #1F6993;*/
-  /*@include box-shadow(0px, 0px, 6px, $light-grey);*/
+  background-color: rgb(237, 239, 245);
   background-color: rgba(237, 239, 245, 0.98);
 }
 .discussion {
@@ -225,15 +224,6 @@ form#new_membership, #membership-requested {
   .discussion-link {
     position: relative;
     z-index: 2;
-  }
-  .name-separator {
-    display: inline-block;
-    @include ie7-inline-block();
-    width: 15px;
-    position: relative;
-    bottom: 1px;
-    font-size: 0.6em;
-    text-align: center;
   }
 }
 
