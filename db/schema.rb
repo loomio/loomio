@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120601035604) do
+ActiveRecord::Schema.define(:version => 20120607190000) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20120601035604) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body",             :default => ""
+    t.text     "body"
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20120601035604) do
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+  add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
 
   create_table "did_not_votes", :force => true do |t|
     t.integer  "user_id"
@@ -60,14 +61,15 @@ ActiveRecord::Schema.define(:version => 20120601035604) do
   end
 
   add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
+  add_index "discussion_read_logs", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
   create_table "discussions", :force => true do |t|
     t.integer  "group_id"
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "activity",   :default => 0, :null => false
     t.string   "title"
+    t.integer  "activity",   :default => 0, :null => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -82,7 +84,10 @@ ActiveRecord::Schema.define(:version => 20120601035604) do
     t.integer  "parent_id"
     t.boolean  "email_new_motion",     :default => true
     t.boolean  "hide_members",         :default => false
+    t.boolean  "beta_features",        :default => false
   end
+
+  add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
 
   create_table "memberships", :force => true do |t|
     t.integer  "group_id"
@@ -91,6 +96,9 @@ ActiveRecord::Schema.define(:version => 20120601035604) do
     t.datetime "updated_at"
     t.string   "access_level"
   end
+
+  add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
+  add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "motions", :force => true do |t|
     t.string   "name"
@@ -106,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20120601035604) do
   end
 
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
+  add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -146,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20120601035604) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
+    t.datetime "deleted_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

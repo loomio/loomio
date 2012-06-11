@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "settings";
-@import "mixins";
 @import "bootstrap/mixins";
+@import "mixins";
 
 #group-form {
   form {
@@ -131,18 +131,27 @@ form#new_membership, #membership-requested {
 // NOTE: this code is shared with the group show page and
 //       the dashboard page.
 //
+.discussion:hover {
+  background-color: rgb(237, 239, 245);
+  background-color: rgba(237, 239, 245, 0.98);
+}
 .discussion {
-  cursor: pointer;
   color: $mid-grey;
+  position: relative;
   .group-name {
     font-size: $font-tiny;
-    a { color: $mid-grey; }
+    a {
+      color: $mid-grey;
+      position: relative;
+      z-index: 2;
+    }
     margin-top: -0.3em;
     padding-left: 5px;
   }
-  .discussion-title {
+  .full-discussion-title {
     padding-left: 5px;
-    a {
+    font-size: 0.8em;
+    .discussion-title {
       display: inline-block;
       @include ie7-inline-block();
       width: 500px;
@@ -197,19 +206,22 @@ form#new_membership, #membership-requested {
     background-repeat: no-repeat;
     width: 32px;
     height: 30px;
-  }
-  .discussion-enabled-icon {
     background-image: url("discussion.png");
   }
-  .discussion-disabled-icon {
-    background-image: url("discussion-disabled.png");
-  }
+
+  .enabled-icon { opacity: 1.0 }
+  .disabled-icon { opacity: 0.4 }
+
   .activity-count {
     margin-left: 18px;
     height: 10px;
-    font-size: 0.5em;
+    font-size: 0.6em;
     padding: 0.4em;
     padding-top: 0.1em;
+  }
+  .discussion-link {
+    position: relative;
+    z-index: 2;
   }
 }
 

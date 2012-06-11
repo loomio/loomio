@@ -65,6 +65,14 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def root_name
+    if parent
+      parent_name
+    else
+      name
+    end
+  end
+
   def users_sorted
     users.sort { |a,b| a.name.downcase <=> b.name.downcase }
   end
@@ -145,22 +153,36 @@ class Group < ActiveRecord::Base
   # DISCUSSION LISTS
   #
 
-  def discussions_sorted
-    discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+  def all_discussions(user)
+    if subgroups.present?
+      result = discussions
+      subgroups.each do |subgroup|
+        if subgroup.users_include? user
+          result += subgroup.discussions
+        end
+      end
+      result.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+    else
+      discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+    end
   end
 
-  def discussions_with_motions(user)
-    discussions.select do |discussion|
+  def discussions_with_motions(user=nil)
+    all_discussions(user).select do |discussion|
       discussion.current_motion.present? && (not discussion.current_motion.user_has_voted?(user))
     end
   end
 
-  def active_discussions
-    discussions.where('updated_at > ?', Time.now() - 2.weeks)
+  def active_discussions(user=nil)
+    all_discussions(user).select do |discussion|
+      discussion.updated_at > (Time.now() - 2.weeks)
+    end
   end
 
-  def inactive_discussions
-    discussions.where('updated_at <= ?', Time.now() - 2.weeks)
+  def inactive_discussions(user=nil)
+    all_discussions(user).select do |discussion|
+      discussion.updated_at <= (Time.now() - 2.weeks)
+    end
   end
 
   #

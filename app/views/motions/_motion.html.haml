@@ -21,7 +21,7 @@
     - if motion.updated_at != motion.created_at
       = "(edited: #{time_ago_in_words(motion.updated_at)} ago)"
   #description
-    - too_long = true if motion.description.length > 200
+    - too_long = true if motion.description && motion.description.length > 200
     #short-description
       = simple_format h(truncate(motion.description, length: 200, seperator: " ", omission: '...'))
       = link_to "Show More >>", "#", title: "see the full description", class: 'see-more' if too_long
