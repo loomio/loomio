@@ -163,7 +163,7 @@ describe Motion do
     end
 
     it "should not update :updated_at" do
-      @motion.updated_at.should_not == @update_at
+      @motion.updated_at.should == @updated_at
     end
 
     it "users_who_did_not_vote should return users who did not vote" do
