@@ -2,7 +2,7 @@
   %a{ href: discussion_path(discussion) }
     %span.expanded
   %span.full-discussion-title
-    .discussion-title= fancy_discussion_name(discussion)
+    .discussion-title= truncate(discussion.title, :length => 70, :separator => ' ')
     #alert-info
       #discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
         - if activity_count_for(discussion, current_user) > 0
@@ -14,9 +14,7 @@
       #total-comments
         = pluralize(discussion.comments.count + discussion.votes.count, 'msg')
 
-  - if params[:controller] == 'dashboard'
-    #group-name
-      = link_to discussion.group.root_name, group_path(discussion.group)
+  = DiscussionDecorator.new(discussion).display_group_name(this_group)
 
   - motion = discussion.current_motion
   - if motion.present?

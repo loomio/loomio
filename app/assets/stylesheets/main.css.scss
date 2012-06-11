@@ -320,6 +320,16 @@ table.jqplot-table-legend {
   background-image: url('empty.gif');
 }
 
+.name-separator {
+  display: inline-block;
+  @include ie7-inline-block();
+  width: 15px;
+  position: relative;
+  bottom: 1px;
+  font-size: 0.6em;
+  text-align: center;
+}
+
 /* For modern browsers */
 .cf:before,
 .cf:after {
