@@ -202,18 +202,16 @@ form#new_membership, #membership-requested {
   #alert-info {
     float: right;
   }
-  #discussion-icon-container {
+  .discussion-icon-container {
     background-size: 25px;
     background-repeat: no-repeat;
     width: 32px;
     height: 30px;
-  }
-  .discussion-enabled-icon {
     background-image: url("discussion.png");
   }
-  .discussion-disabled-icon {
-    background-image: url("discussion-disabled.png");
-  }
+  .enabled-icon { opacity: 1.0 }
+  .disabled-icon { opacity: 0.4 }
+
   #activity-count {
     margin-left: 18px;
     height: 10px;

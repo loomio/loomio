@@ -68,7 +68,6 @@ class MotionsController < GroupBaseController
   end
 
   private
-
     def group
       @group ||= find_group
     end
