@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120607190000) do
+ActiveRecord::Schema.define(:version => 20120611233010) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20120607190000) do
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "did_not_votes", :force => true do |t|
@@ -106,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20120607190000) do
     t.integer  "discussion_id"
   end
 
+  add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
 
   create_table "taggings", :force => true do |t|
