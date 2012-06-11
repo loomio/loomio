@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "settings";
-@import "mixins";
 @import "bootstrap/mixins";
+@import "mixins";
 
 #group-form {
   form {
@@ -27,7 +27,28 @@
 /**** Group page ****/
 
 #discussions {
+  padding: 4px;
   padding-bottom: 30px;
+  .btn { margin-bottom: 15px; }
+  h4 {
+    color: $mid-grey;
+    font-size: $font_tiny;
+    float: left;
+  }
+  .proposal-block { margin-bottom: 20px }
+  .info-help {
+    margin-left: 8px;
+    height: 19px;
+    width: 16px;
+    background-image:url("/assets/info.png");
+    background-repeat: no-repeat;
+    background-position-y: 1px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .info-help:hover {
+    background-image:url("/assets/dark-info.png");
+  }
 }
 
 #add-member-popup-btn {
@@ -110,18 +131,27 @@ form#new_membership, #membership-requested {
 // NOTE: this code is shared with the group show page and
 //       the dashboard page.
 //
+.discussion:hover {
+  background-color: rgb(237, 239, 245);
+  background-color: rgba(237, 239, 245, 0.98);
+}
 .discussion {
-  cursor: pointer;
   color: $mid-grey;
+  position: relative;
   #group-name {
     font-size: $font-tiny;
-    a { color: $mid-grey; }
+    a {
+      color: $mid-grey;
+      position: relative;
+      z-index: 2;
+    }
     margin-top: -0.3em;
     padding-left: 5px;
   }
-  #discussion-title {
+  .full-discussion-title {
     padding-left: 5px;
-    a {
+    font-size: 0.8em;
+    .discussion-title {
       display: inline-block;
       @include ie7-inline-block();
       width: 500px;
@@ -190,6 +220,10 @@ form#new_membership, #membership-requested {
     font-size: 0.5em;
     padding: 0.4em;
     padding-top: 0.1em;
+  }
+  .discussion-link {
+    position: relative;
+    z-index: 2;
   }
 }
 

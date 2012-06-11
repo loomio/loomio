@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20120607190000) do
     t.integer  "parent_id"
     t.boolean  "email_new_motion",     :default => true
     t.boolean  "hide_members",         :default => false
+    t.boolean  "beta_features",        :default => false
   end
 
   create_table "memberships", :force => true do |t|
