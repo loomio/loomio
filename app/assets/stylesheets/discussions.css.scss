@@ -29,6 +29,8 @@
 #content-comments {
   padding-top: 20px;
   padding-right: 20px;
+  margin-bottom: 30px;
+  border-right: 1px solid $light-grey;
 
   #new-comment-form{
     margin-bottom: 8px;
@@ -123,7 +125,6 @@
 #content-proposal{
   padding-top: 20px;
   padding-left: 19px;
-  border-left: 1px solid $light-grey;
   margin-left: 0px;
   width: 430px;
   #current-proposal {
