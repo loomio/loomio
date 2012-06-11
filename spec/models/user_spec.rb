@@ -65,4 +65,44 @@ describe User do
     @user.update_discussion_read_log(@discussion)
     @user.discussion_activity_when_last_read(@discussion).should == 5
   end
+  
+  describe "name" do
+    it "returns 'Deleted User' if deleted_at is true (a date is present)" do
+      @user = User.make!
+      @user.update_attribute(:deleted_at, 1.month.ago)
+      @user.name.should == 'Deleted user'
+    end
+  
+    it "returns the stored name if deleted_at is nil" do
+      @user = User.make!
+      @user.name.should_not == 'Deleted user'
+    end
+  end
+      
+  it "sets deleted_at (Time.current) when deactivate! is called" do
+    @user = User.make!
+    @user.deactivate!
+    @user.deleted_at.should be_true
+  end
+  
+  it "unsets deleted_at (nil) when activate! is called" do
+    @user = User.make!
+    @user.update_attribute(:deleted_at, 1.month.ago)
+    @user.activate!
+    @user.deleted_at.should be_nil
+  end
+  
+  describe "active_for_authentication?" do
+    it "returns false if deleted_at is present" do
+      @user = User.make!
+      @user.update_attribute(:deleted_at, 1.month.ago)
+      @user.should_not be_active_for_authentication
+    end
+    
+    it "returns true if deleted_at is nil" do
+      @user = User.make!
+      @user.update_attribute(:deleted_at, nil)
+      @user.should be_active_for_authentication
+    end
+  end
 end
