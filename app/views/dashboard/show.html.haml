@@ -19,7 +19,7 @@
         %h1 Discussions
         #discussions
           - current_user.discussions_sorted.each do |discussion|
-            =render discussion
+            =render discussion, this_group: nil
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.
