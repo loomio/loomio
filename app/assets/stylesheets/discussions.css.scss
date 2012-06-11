@@ -29,6 +29,8 @@
 #content-comments {
   padding-top: 20px;
   padding-right: 20px;
+  margin-bottom: 30px;
+  border-right: 1px solid $light-grey;
 
   #new-comment-form{
     margin-bottom: 8px;
@@ -67,6 +69,20 @@
       color: $dark-grey;
       font-size: 0.75em;
     }
+  }
+
+  .word-break {
+    /* The following styles prevent unbroken strings from breaking the layout */
+    width: 300px; /* set to whatever width you need */
+    overflow: auto;
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -hp-pre-wrap; /* HP printers */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word; /* IE */
+    -moz-binding: url('xbl.xml#wordwrap'); /* Firefox (using XBL) */
   }
 
   .position{
@@ -109,7 +125,6 @@
 #content-proposal{
   padding-top: 20px;
   padding-left: 19px;
-  border-left: 1px solid $light-grey;
   margin-left: 0px;
   width: 430px;
   #current-proposal {

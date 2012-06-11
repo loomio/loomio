@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(:version => 20120611233010) do
   end
 
   add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
-  add_index "discussion_read_logs", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
   create_table "discussions", :force => true do |t|
     t.integer  "group_id"
@@ -87,8 +86,6 @@ ActiveRecord::Schema.define(:version => 20120611233010) do
     t.boolean  "beta_features",        :default => false
   end
 
-  add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
-
   create_table "memberships", :force => true do |t|
     t.integer  "group_id"
     t.integer  "user_id"
@@ -96,9 +93,6 @@ ActiveRecord::Schema.define(:version => 20120611233010) do
     t.datetime "updated_at"
     t.string   "access_level"
   end
-
-  add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
-  add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "motions", :force => true do |t|
     t.string   "name"
