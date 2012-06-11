@@ -1,6 +1,5 @@
 @import "settings";
-/*@import "mixins";*/
-@import "bootstrap/mixins";
+@import "mixins";
 
 /** new proposal form*/
 
@@ -191,7 +190,7 @@
     bottom: 15px;
     margin-bottom: 15px;
     .btn.vote {
-      /*@include box-shadow(1px, 1px, 4px, $mid-grey);*/
+      @include box-shadow(1px, 1px, 4px, $mid-grey);
       @include border-radius(5px);
       padding: 3px;
     }
