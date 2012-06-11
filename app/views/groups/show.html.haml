@@ -19,7 +19,7 @@
   %section.span4#content-left
     - if display_subgroups_block?(@group)
       .block
-        =render 'subgroups', group: @group
+        =render 'subgroups', subgroups: @subgroups, group: @group
 
     =render 'users', group: @group
 
