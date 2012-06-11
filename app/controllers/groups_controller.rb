@@ -15,8 +15,8 @@ class GroupsController < GroupBaseController
 
   def show
     @discussions_motion = @group.discussions_with_motions(current_user) if current_user
-    @discussions_active = @group.active_discussions
-    @discussions_inactive = @group.inactive_discussions
+    @discussions_active = @group.active_discussions(current_user)
+    @discussions_inactive = @group.inactive_discussions(current_user)
     @group = GroupDecorator.new(Group.find(params[:id]))
   end
 
