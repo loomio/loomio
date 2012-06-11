@@ -150,6 +150,7 @@ describe Motion do
       vote2.motion = @motion
       vote2.user = user2
       vote2.save
+      @updated_at = @motion.updated_at
       @motion.close_voting!
     end
 
@@ -159,6 +160,10 @@ describe Motion do
 
     it "no_vote_count should return number of users who did not vote" do
       @motion.no_vote_count.should == 1
+    end
+
+    it "should not update :updated_at" do
+      @motion.updated_at.should_not == @update_at
     end
 
     it "users_who_did_not_vote should return users who did not vote" do
