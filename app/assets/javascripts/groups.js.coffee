@@ -11,4 +11,3 @@ $ ->
       (e) ->
         $(this).text("Membership Requested")
     )
-

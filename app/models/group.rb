@@ -65,6 +65,14 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def root_name
+    if parent
+      parent_name
+    else
+      name
+    end
+  end
+
   def users_sorted
     users.sort { |a,b| a.name.downcase <=> b.name.downcase }
   end
@@ -141,8 +149,34 @@ class Group < ActiveRecord::Base
     end
   end
 
+  #
+  # DISCUSSION LISTS
+  #
+
   def discussions_sorted
-    discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+    if subgroups.present?
+      family_discussions = discussions
+      subgroups.each do |subgroup|
+        family_discussions += subgroup.discussions
+      end
+      family_discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+    else
+      discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+    end
+  end
+
+  def discussions_with_motions(user)
+    discussions.select do |discussion|
+      discussion.current_motion.present? && (not discussion.current_motion.user_has_voted?(user))
+    end
+  end
+
+  def active_discussions
+    discussions.where('updated_at > ?', Time.now() - 2.weeks)
+  end
+
+  def inactive_discussions
+    discussions.where('updated_at <= ?', Time.now() - 2.weeks)
   end
 
   #

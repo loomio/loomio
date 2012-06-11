@@ -26,6 +26,12 @@ h3 {
   font-weight: normal;
 	font-size: $font-medium;
 }
+
+h4 {
+  font-weight: normal;
+  font-size: $font-small;
+}
+
 .sub_group{
 	font-size: $font-tiny;
 }
@@ -48,7 +54,7 @@ h3 {
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
-  .btn { margin-bottom: 15px; }
+  /*.btn { margin-bottom: 15px; }*/
 }
 
 #content-left {
@@ -76,10 +82,9 @@ h3 {
 }
 
 .panel {
-  @include box-shadow(1px, 1px, 3px, $light-grey);
   @include border-radius(4px);
   border: 1px solid $light-grey;
-  margin: 5px 3px 6px 3px;
+  margin: 5px 0px 6px 0px;
   padding: 8px;
 }
 
@@ -127,8 +132,9 @@ h3 {
 .navbar-wrapper{
 	position: fixed;
 	width: 100%;
-	background-color: $header-dark-color;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+  background-image: url("title-bar-gradient.jpg");
+   /*background-color: $header-dark-color;*/
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
 	z-index: 1;
 }
 .navbar-inner{
@@ -173,12 +179,6 @@ header{
 	div > ul a, .nav a{
 		font-size: $font-tiny;
 	}
-  .topbar-inner {
-    background-image: -moz-linear-gradient(top, $header-color, $header-dark-color);
-    background-image: -webkit-linear-gradient(top, $header-color, $header-dark-color);
-    background-image: -o-linear-gradient(top, $header-color, $header-dark-color);
-    background-image: linear-gradient(top, $header-color, $header-dark-color);
-  }
 
   h1 {
     float: left;
@@ -187,7 +187,7 @@ header{
 		a{
 			display: block;
 			height: 36px;
-			padding: 5px 5px 0;
+			padding: 4px 6px 0;
 		}
 		a:hover{
 			background-color: #383737;
@@ -298,6 +298,32 @@ table.jqplot-table-legend {
   width: 100px;
   text-align: center;
   @include box-shadow(1px, 1px, 4px, $mid-grey);
+}
+
+.expanded {
+  /* This class is used to make a div clickable.
+   * Usage:
+   *  <div><a><span class="expanded"></span><a></div>
+   * NOTE: the parent div must have position: relative;
+   */
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+  /* fixes overlap error in IE7/8 */
+  background-image: url('empty.gif');
+}
+
+.name-separator {
+  display: inline-block;
+  @include ie7-inline-block();
+  width: 15px;
+  position: relative;
+  bottom: 1px;
+  font-size: 0.6em;
+  text-align: center;
 }
 
 /* For modern browsers */
