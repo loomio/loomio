@@ -1,6 +1,6 @@
 %h1 Sub-groups
 %ul#group-list
-  - group.subgroups.each do |subgroup|
+  - subgroups.each do |subgroup|
     %li
       = render "dashboard/group_link", group: subgroup
 - if group.users.include?(current_user)
