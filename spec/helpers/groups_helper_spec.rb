@@ -18,4 +18,5 @@ describe GroupsHelper do
       end
     end
   end
+
 end
