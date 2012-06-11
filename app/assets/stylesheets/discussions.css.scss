@@ -1,5 +1,6 @@
 @import "settings";
-@import "mixins";
+/*@import "mixins";*/
+@import "bootstrap/mixins";
 
 /** new proposal form*/
 
@@ -57,7 +58,7 @@
     }
     .comment-body{
       margin-left: 0.4em;
-      display: inline-block;
+      display: inline;
     }
     .comment-time{
       color: $dark-grey;
@@ -67,6 +68,20 @@
       color: $dark-grey;
       font-size: 0.75em;
     }
+  }
+
+  .word-break {
+    /* The following styles prevent unbroken strings from breaking the layout */
+    width: 300px; /* set to whatever width you need */
+    overflow: auto;
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -hp-pre-wrap; /* HP printers */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word; /* IE */
+    -moz-binding: url('xbl.xml#wordwrap'); /* Firefox (using XBL) */
   }
 
   .position{
@@ -176,7 +191,7 @@
     bottom: 15px;
     margin-bottom: 15px;
     .btn.vote {
-      @include box-shadow(1px, 1px, 4px, $mid-grey);
+      /*@include box-shadow(1px, 1px, 4px, $mid-grey);*/
       @include border-radius(5px);
       padding: 3px;
     }
