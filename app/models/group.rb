@@ -146,7 +146,15 @@ class Group < ActiveRecord::Base
   #
 
   def discussions_sorted
-    discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+    if subgroups.present?
+      family_discussions = discussions
+      subgroups.each do |subgroup|
+        family_discussions += subgroup.discussions
+      end
+      family_discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+    else
+      discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+    end
   end
 
   def discussions_with_motions(user)
