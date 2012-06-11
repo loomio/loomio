@@ -138,7 +138,7 @@ form#new_membership, #membership-requested {
 .discussion {
   color: $mid-grey;
   position: relative;
-  #group-name {
+  .group-name {
     font-size: $font-tiny;
     a {
       color: $mid-grey;
@@ -157,38 +157,37 @@ form#new_membership, #membership-requested {
       width: 500px;
     }
   }
-  #proposal-container {
+  .proposal-container {
     padding-left: 7px;
     padding-bottom: 7px;
     min-height: 30px;
     color: $light-grey;
   }
-  #vote-icon {
+  .vote-icon {
     padding-top: 4px;
     display: inline-block;
     height: 16px;
     width: 20px;
     float: left;
   }
-  #no-vote-space { width: 20px; }
-  #proposal-title-container {
+  .proposal-title-container {
     margin-left: 12px;
     display: inline-block;
     width: 400px;
   }
-  #proposal-label {
+  .proposal-label {
     font-size: $font-tiny;
     font-style: italic;
   }
-  #proposal-title {
+  .proposal-title {
     font-size: $font-tiny;
     color: $mid-grey;
   }
-  #proposal-close-date {
+  .proposal-close-date {
     margin-top: -0.4em;
     font-size: 0.7em;
   }
-  #comment-info {
+  .comment-info {
     display: inline-block;
     margin-top: -4px;
     float: right;
@@ -196,10 +195,10 @@ form#new_membership, #membership-requested {
     font-size: $font-tinywiny;
     text-align: right;
   }
-  #total-comments {
+  .total-comments {
     margin-top: -9px;
   }
-  #alert-info {
+  .notification-container {
     float: right;
   }
   .discussion-icon-container {
@@ -209,10 +208,11 @@ form#new_membership, #membership-requested {
     height: 30px;
     background-image: url("discussion.png");
   }
+
   .enabled-icon { opacity: 1.0 }
   .disabled-icon { opacity: 0.4 }
 
-  #activity-count {
+  .activity-count {
     margin-left: 18px;
     height: 10px;
     font-size: 0.6em;
