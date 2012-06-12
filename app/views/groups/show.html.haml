@@ -30,7 +30,7 @@
         = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }),
           class: "btn btn-info", id: "new-discussion"
       - if @group.beta_features? && current_user && @group.users_include?(current_user)
-        =render 'discussions',  discussions_motion: @discussions_motion,
+        =render 'discussions',  discussions_awaiting_vote: @discussions_awaiting_vote,
                                 discussions_active: @discussions_active,
                                 discussions_inactive: @discussions_inactive,
                                 group: @group
