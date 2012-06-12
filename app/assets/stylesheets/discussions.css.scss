@@ -152,15 +152,10 @@
       font-size: $font-small;
       color: $dark-grey;
     }
-  }
-  #short-description {
-    a{
+    .see-more{
       font-size: $font-tinywiny;
-    }
-  }
-  #long-description {
-    a{
-      font-size: $font-tinywiny;
+      position: relative;
+      bottom: 10px;
     }
   }
   #percentage-to-vote {
