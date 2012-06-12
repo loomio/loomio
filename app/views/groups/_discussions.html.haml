@@ -7,13 +7,13 @@
 - if discussions_active.present?
   .proposal-block
     %h4 CURRENT DISCUSSIONS
-    .info-help{title: "Current discussions", "data-content"=> "Discussions with recent activity (comments/decisions within the last 2 weeks)"}
+    .info-help{title: "Current discussions", "data-content"=> "Discussions with recent activity (comments/decisions within the last week)"}
     - discussions_active.each do |discussion|
       =render discussion, this_group: group
 - if discussions_inactive.present?
   .proposal-block
     %h4 INACTIVE DISCUSSIONS
-    .info-help{title: "Inactive discussions", "data-content"=> "Discussions without any recent activity (no comments/decisions within the last 2 weeks)"}
+    .info-help{title: "Inactive discussions", "data-content"=> "Discussions without any recent activity (no comments/decisions within the last week)"}
     - discussions_inactive.each do |discussion|
       =render discussion, this_group: group
 
