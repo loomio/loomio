@@ -27,6 +27,43 @@ describe Group do
     end
   end
 
+  context "group with several discussions" do
+    before do
+      @group = Group.make!
+      @user = User.make!
+      @group.add_member!(@user)
+      @discussion = create_discussion(group: @group)
+      @active_discussion_with_motion = create_discussion(group: @group)
+      @motion = create_motion(discussion: @active_discussion_with_motion)
+    end
+    context "group.discussions_awaiting_user_vote" do
+      it "returns discussions that are awaing user's vote" do
+        discussions = @group.discussions_awaiting_user_vote(@user)
+        discussions.should include(@active_discussion_with_motion)
+      end
+    end
+    context "group.active_discussions" do
+      it "result contains recent discussions" do
+        discussions = @group.active_discussions(@user)
+        discussions.should include(@discussion)
+      end
+      it "result does not contain discussions awaiting user vote" do
+        discussions = @group.active_discussions(@user)
+        discussions.should_not include(@active_discussion_with_motion)
+      end
+    end
+    context "group.active_discussions" do
+      it "result contains inactive discussions" do
+        pending "Jon was too tired to write this test"
+      end
+      it "result does not contain discussions awaiting user vote" do
+        pending "Jon was too tired to write this test"
+      end
+    end
+  end
+
+  # NOTE (Jon): these descriptions seem ridiculous,
+  # why did i name the tests this way? mehh.....
   describe "beta_features" do
     context "group.beta_features = true" do
       before do
