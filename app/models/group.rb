@@ -39,6 +39,18 @@ class Group < ActiveRecord::Base
   # ACCESSOR METHODS
   #
 
+  def beta_features
+    if parent && (parent.beta_features == true)
+      true
+    else
+      self[:beta_features]
+    end
+  end
+
+  def beta_features?
+    beta_features
+  end
+
   def viewable_by
     value = read_attribute(:viewable_by)
     value.to_sym if value.present?
@@ -175,13 +187,13 @@ class Group < ActiveRecord::Base
 
   def active_discussions(user=nil)
     all_discussions(user).select do |discussion|
-      discussion.updated_at > (Time.now() - 2.weeks)
+      discussion.updated_at > (Time.now() - 1.week)
     end
   end
 
   def inactive_discussions(user=nil)
     all_discussions(user).select do |discussion|
-      discussion.updated_at <= (Time.now() - 2.weeks)
+      discussion.updated_at <= (Time.now() - 1.week)
     end
   end
 
