@@ -27,6 +27,53 @@ describe Group do
     end
   end
 
+  describe "beta_features" do
+    context "group.beta_features = true" do
+      before do
+        @group = Group.make!
+        @group.beta_features = true
+        @group.save
+      end
+      it "group.beta_features? returns true" do
+        @group.beta_features?.should be_true
+      end
+      it "group.beta_features returns true" do
+        @group.beta_features.should be_true
+      end
+      context "subgroup.beta_features = false" do
+        before do
+          @subgroup = Group.make!(:parent => @group)
+          @subgroup.beta_features = false
+          @subgroup.save
+        end
+        it "subgroup.beta_features? returns true" do
+          @subgroup.beta_features?.should be_true
+        end
+        it "subgroup.beta_features returns true" do
+          @subgroup.beta_features.should be_true
+        end
+      end
+    end
+    context "group.beta_features = false" do
+      context "subgroup.beta_features = true" do
+        before do
+          @group = Group.make!
+          @group.beta_features = false
+          @group.save
+          @subgroup = Group.make!(:parent => @group)
+          @subgroup.beta_features = true
+          @subgroup.save
+        end
+        it "subgroup.beta_features? returns true" do
+          @subgroup.beta_features?.should be_true
+        end
+        it "subgroup.beta_features returns true" do
+          @subgroup.beta_features.should be_true
+        end
+      end
+    end
+  end
+
   context "has a parent" do
     before :each do
       @group = Group.make!

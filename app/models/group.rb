@@ -39,6 +39,18 @@ class Group < ActiveRecord::Base
   # ACCESSOR METHODS
   #
 
+  def beta_features
+    if parent && (parent.beta_features == true)
+      true
+    else
+      self[:beta_features]
+    end
+  end
+
+  def beta_features?
+    beta_features
+  end
+
   def viewable_by
     value = read_attribute(:viewable_by)
     value.to_sym if value.present?
