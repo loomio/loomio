@@ -151,18 +151,15 @@
     p{
       font-size: $font-small;
       color: $dark-grey;
-      display: inline;
     }
-  }
-  #short-description {
-    a{
+    .see-more{
       font-size: $font-tinywiny;
-      display: inline;
+      position: relative;
+      bottom: 10px;
     }
   }
   #long-description {
-    a{
-      font-size: $font-tinywiny;
+    .see-more{
       display: block;
     }
   }
