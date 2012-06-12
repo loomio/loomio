@@ -1,6 +1,5 @@
 class GroupDecorator < ApplicationDecorator
   decorates :group
-  decorates_association :parent
 
   def link
     link = h.link_to model.name, model
@@ -20,7 +19,7 @@ class GroupDecorator < ApplicationDecorator
 
   def fancy_link(show_parent_name=true)
     if model.parent && show_parent_name
-      parent_link = parent.link
+      parent_link = GroupDecorator.new(parent).link
       separator = h.content_tag :span, "\u25B6", class: 'name-separator'
       group_link = link
       result = "#{parent_link} #{separator} #{group_link}".html_safe
