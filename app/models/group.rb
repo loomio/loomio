@@ -187,13 +187,13 @@ class Group < ActiveRecord::Base
 
   def active_discussions(user=nil)
     all_discussions(user).select do |discussion|
-      discussion.updated_at > (Time.now() - 2.weeks)
+      discussion.updated_at > (Time.now() - 1.week)
     end
   end
 
   def inactive_discussions(user=nil)
     all_discussions(user).select do |discussion|
-      discussion.updated_at <= (Time.now() - 2.weeks)
+      discussion.updated_at <= (Time.now() - 1.week)
     end
   end
 
