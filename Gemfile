@@ -16,7 +16,7 @@ gem 'acts-as-taggable-on', '~> 2.2.2', :git => 'https://github.com/mbleigh/acts-
 gem 'aasm'
 gem 'cancan'
 gem 'acts_as_commentable_with_threading'
-gem 'draper'
+gem 'draper', '~> 0.11.1'
 gem 'exception_notification'
 gem 'browser'
 
