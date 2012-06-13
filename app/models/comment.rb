@@ -78,12 +78,6 @@ class Comment < ActiveRecord::Base
     return comment_votes.where("value = true")
   end
 
-  def can_be_liked_by?(user)
-    if user
-      user.groups.include?(discussion.group)
-    end
-  end
-
   def discussion
     return commentable if commentable_type == "Discussion"
   end
