@@ -3,7 +3,7 @@
     %span
       = @group.fancy_link
       .dropdown
-        - can_edit = @group.can_be_edited_by? current_user
+        - can_edit = can? :edit, @group
         - can_leave = @group.users_include? current_user
         - if can_edit || can_leave
           = link_to image_tag("settings.png", title:'settings', alt:'settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'

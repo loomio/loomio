@@ -15,9 +15,7 @@ class Ability
     # GROUPS
     #
 
-    can [:edit, :update, :add_subgroup], Group do |group|
-      group.can_be_edited_by? user
-    end
+    can [:update, :add_subgroup], Group, :id => user.adminable_group_ids
 
     can :add_members, Group do |group|
       group.can_invite_members? user
