@@ -8,12 +8,20 @@ class User < ActiveRecord::Base
 
   has_many :membership_requests,
            :conditions => {:access_level => 'request'},
-           :class_name => 'Membership'
+           :class_name => 'Membership',
+           :dependent => :destroy
+  has_many :admin_memberships,
+           :conditions => {:access_level => 'admin'},
+           :class_name => 'Membership',
+           :dependent => :destroy
   has_many :memberships,
            :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
            :dependent => :destroy
   has_many :groups, through: :memberships
-  has_many :group_requests, through: :membership_requests, class_name: 'Group', source: :group
+  has_many :adminable_groups, :through => :admin_memberships, class_name: 'Group',
+    :source => :group
+  has_many :group_requests, :through => :membership_requests, class_name: 'Group',
+    :source => :group
   has_many :votes
 
   has_many :discussions, through: :groups
@@ -113,19 +121,19 @@ class User < ActiveRecord::Base
       motion_vote(motion).position
     end
   end
-  
+
   def name
     deleted_at ? "Deleted user" : read_attribute(:name)
   end
-  
+
   def deactivate!
     update_attribute(:deleted_at, 1.month.ago)
   end
-  
+
   def activate!
     update_attribute(:deleted_at, nil)
   end
-  
+
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?
     super && !deleted_at
