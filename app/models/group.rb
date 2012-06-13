@@ -204,7 +204,7 @@ class Group < ActiveRecord::Base
   def total_activity(user)
     total = 0
     discussions.each do |discussion|
-      total = total + user.discussion_activity_count(discussion)
+      total += user.discussion_activity_count(discussion)
     end
     total
   end

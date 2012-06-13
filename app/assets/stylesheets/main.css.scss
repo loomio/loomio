@@ -177,13 +177,31 @@ header{
     font-size: $font-tiny;
 	}
   .group-container{
-    .group-icon {
-      opacity: 0.4;
-      display: inline;
-      padding-left: 10px;
+    #title {
+      display: inline-block;
+      position: relative;
+      bottom: 6px;
+    }
+    #group-icon {
+      height: 20px;
+      background-position-y: 3px;
+      background-size: 30px;
+      background-repeat: no-repeat;
+      background-image:url("/assets/group.png");
+      opacity: 0.8;
+      display: inline-block;
+      margin-left: 10px;
+    }
+    #activity-count {
+      margin-left: 18px;
+      height: 10px;
+      font-size: 0.7em;
+      padding: 0.4em;
+      padding-top: 0.1em;
+      opacity: 1;
     }
     a.dropdown-toggle {
-      display: inline;
+      display: inline-block;
       padding-left: 0px;
     }
   }
@@ -196,13 +214,14 @@ header{
   .group-nav{
     li.dropdown.group-container:hover{
       a.dropdown-toggle { color: white; }
-      .group-icon{ opacity: 0.9; }
+      #group-icon{ opacity: 1; }
     }
     li.group-item{
       .link-container{
         display: inline-block;
         width: 70%;
         padding-right: 20px;
+        padding-left: 5px;
         a { padding-left: 5px; }
       }
       .notification-container{
