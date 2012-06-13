@@ -7,12 +7,13 @@
         %li.dropdown.group-container
           %a{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
             #group-icon
-              - total_activity = total_activity_count(current_user)
-              - if total_activity > 1
-                #activity-count.span.label.label-important
-                  = total_activity
-            #title= "My groups"
-            %b.caret
+            - total_activity = total_activity_count(current_user)
+            - if total_activity > 1
+              #activity-count.span.label.label-important
+                = total_activity
+            #title
+              = "My groups"
+              %b.caret
           %ul.dropdown-menu
             - if current_user
               - current_user.root_groups.each do |group|
