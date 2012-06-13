@@ -94,6 +94,8 @@ class Group < ActiveRecord::Base
   # MEMBERSHIP METHODS
   #
 
+
+
   def add_request!(user)
     unless requested_users_include?(user) || users.exists?(user)
       if parent.nil? || user.group_membership(parent)
@@ -197,6 +199,14 @@ class Group < ActiveRecord::Base
     all_discussions(user).select do |discussion|
       discussion.updated_at <= (Time.now() - 1.week)
     end
+  end
+
+  def total_activity(user)
+    total = 0
+    discussions.each do |discussion|
+      total = total + user.discussion_activity_count(discussion)
+    end
+    total
   end
 
   #

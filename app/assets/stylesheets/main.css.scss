@@ -126,14 +126,10 @@ h4 {
 // navigation
 
 // topbar
-.navbar .nav.pull-right{
-	margin:9px 0px 0px 0px;
-}
 .navbar-wrapper{
 	position: fixed;
 	width: 100%;
   background-image: url("title-bar-gradient.jpg");
-   /*background-color: $header-dark-color;*/
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
 	z-index: 1;
 }
@@ -152,13 +148,12 @@ header{
 	margin: 0px auto;
 }
 .navbar .nav > li > a{
-	padding: 2px 10px;
-	color: $navbar-text-color;
+  padding: 2px 10px;
 	text-shadow: none;
 }
-.navbar .nav > li > a:hover{
-	color: white;
-}
+/*v.navbar .nav > li > a:hover{*/
+	/*color: white;*/
+/*}*/
 .topbar-wrapper {
   .secondary-nav {
     margin-top: 3px;
@@ -171,15 +166,64 @@ header{
   }
 }
 
+/*topbar navigation*/
 .navbar {
-  a {
-    color: $navbar-text-color;
+  .nav{
+    margin:9px 0px 0px 0px;
+    color: $dark-grey;
     text-shadow: none;
   }
 	div > ul a, .nav a{
-		font-size: $font-tiny;
+    font-size: $font-tiny;
 	}
-
+  .group-container{
+    .group-icon {
+      opacity: 0.4;
+      display: inline;
+      padding-left: 10px;
+    }
+    a.dropdown-toggle {
+      display: inline;
+      padding-left: 0px;
+    }
+  }
+  ul.dropdown-menu{
+    .divider{
+      margin: 4px 1px;
+    }
+  }
+  /* group dropdown nav */
+  .group-nav{
+    li.dropdown.group-container:hover{
+      a.dropdown-toggle { color: white; }
+      .group-icon{ opacity: 0.9; }
+    }
+    li.group-item{
+      .link-container{
+        display: inline-block;
+        width: 70%;
+        padding-right: 20px;
+        a { padding-left: 5px; }
+      }
+      .notification-container{
+        display: inline-block;
+        float: right;
+        padding-top: 5px;
+        padding-right: 8px;
+        .span { margin-left: 0px; }
+      }
+    }
+    li.group-item {
+        background-color: white;
+    }
+    li.group-item:hover {
+        background-color: #08C;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+  /* loomio link */
   h1 {
     float: left;
     font-size: 0px;
@@ -193,15 +237,8 @@ header{
 			background-color: #383737;
 		}
   }
-  ul.dropdown-menu{
-    li {
-      text-shadow: none;
-    }
-		.divider{
-			margin: 4px 1px;
-		}
-  }
 }
+
 .alert {
   position: relative;
   bottom: 20px;
