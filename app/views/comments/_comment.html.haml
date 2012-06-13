@@ -4,7 +4,7 @@
   .comment-body.word-break= comment.body
   .comment-time
     = time_ago_in_words(comment.created_at) + " ago"
-    - if comment.can_be_liked_by?(current_user)
+    - if can? :like, comment
       = " · "
       - if likes.find_by_user_id(current_user.id).nil?
         = link_to "Like", like_comment_path(comment), method: :post
