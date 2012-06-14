@@ -18,8 +18,7 @@ class Discussion < ActiveRecord::Base
   has_many :motions
   has_many :votes, through: :motions
 
-  # group should be removed if possible - kiesia 8.5.12
-  attr_accessible :group, :title
+  attr_accessible :group_id, :title
 
   attr_accessor :comment, :notify_group_upon_creation
 
