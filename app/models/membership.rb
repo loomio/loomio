@@ -78,10 +78,6 @@ class Membership < ActiveRecord::Base
     group.admins.count > 1
   end
 
-  def can_have_admin_rights_revoked_by?(user)
-    group.admins.include? user
-  end
-
   def can_be_deleted_by?(user)
     return false if (self.user == user) && (group.admins.include?(user)) && (not group_has_multiple_admins?)
     return true if group.admins.include?(user)
