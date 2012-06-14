@@ -37,9 +37,7 @@ class Ability
       can? :add_members, membership.group
     end
 
-    can :make_admin, Membership do |membership|
-      membership.can_be_made_admin_by? user
-    end
+    can :make_admin, Membership, :group => { :id => user.adminable_group_ids }
 
     can :remove_admin, Membership do |membership|
       membership.can_have_admin_rights_revoked_by? user
