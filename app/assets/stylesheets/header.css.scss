@@ -21,19 +21,18 @@ header{
 	width: 940px;
 	margin: 0px auto;
 }
-/*.dropdown-menu .divider { margin: 0px, 1px; }*/
+.dropdown-menu .divider { margin: 0px }
+.dropdown.open .dropdown-toggle { padding-bottom: 10px; }
 
 /* navigation*/
-
 .navbar {
 	/* dropdown font-size */
   div > ul a, .nav a{
     font-size: $font-tiny;
     text-decoration: none;
 	}
-  .nav > li > a { padding: 9px, 10px, 6px; }
   .dropdown-menu {
-    padding-top: 10px;
+    padding-top: 8px, 0px;
   }
   /* loomio link */
   h1 {
@@ -53,8 +52,9 @@ header{
   .group-container{
     #title {
       display: inline-block;
-      position: relative;
-      right: 30px;
+      /*this code is needed for positioning when the notification badge is enabled do NOT delete (AARON 14/6/2012)*/
+      /*position: relative;*/
+      /*right: 30px;*/
     }
     #group-icon {
       float: left;
@@ -74,7 +74,7 @@ header{
       padding: 0.4em;
       padding-top: 0.1em;
       position: relative;
-      right: 32px;
+      right: 34px;
     }
     a.dropdown-toggle {
       display: inline-block;
@@ -113,6 +113,5 @@ header{
         background-color: #08C;
     }
   }
-
   ul.nav.secondary-nav { margin-top: 5px; }
 }

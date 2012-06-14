@@ -1,3 +1,5 @@
+-# This code has the notifiction badge commented out until the new notification class has been implemented  (AARON 14/6/2012)
+-# Dont delete this code!!
 .navbar-wrapper
   - if user_signed_in?
     %header.navbar{:data => {:dropdown =>'dropdown'}}
@@ -7,10 +9,10 @@
         %li.dropdown.group-container
           %a{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
             #group-icon
-            - total_activity = total_activity_count(current_user)
-            - if total_activity > 1
-              #activity-count.span.label.label-important
-                = total_activity
+            -#- total_activity = total_activity_count(current_user)
+            -#- if total_activity > 1
+              -##activity-count.span.label.label-important
+                -#= total_activity
             #title
               = "My groups"
               %b.caret
@@ -22,10 +24,10 @@
                 %li.group-item
                   .link-container
                     = link_to group.name, group
-                  - activity =  group.total_activity(current_user)
-                  - if activity > 0
-                    .notification-container
-                      .span.label.label-important= group.total_activity(current_user)
+                  -#- activity =  group.total_activity(current_user)
+                  -#- if activity > 0
+                    -#.notification-container
+                      -#.span.label.label-important= group.total_activity(current_user)
       %ul.nav.secondary-nav.pull-right
         %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
         %li.dropdown
