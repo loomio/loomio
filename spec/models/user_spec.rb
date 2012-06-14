@@ -43,6 +43,16 @@ describe User do
     user.group_requests.should include(group)
   end
 
+  it "has authored discussions" do
+    user = User.make!
+    group = Group.make!
+    group.add_member!(user)
+    discussion = Discussion.new(:group => group, :title => "Hello world")
+    discussion.author = user
+    discussion.save!
+    user.authored_discussions.should include(discussion)
+  end
+
   it "can be invited" do
     inviter = User.make!
     group = Group.make!
