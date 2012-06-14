@@ -3,6 +3,8 @@ class Ability
 
   def initialize(user, params)
 
+    user ||= User.new
+
     #
     # USERS
     #
@@ -13,9 +15,7 @@ class Ability
     # GROUPS
     #
 
-    can [:edit, :update, :add_subgroup], Group do |group|
-      group.can_be_edited_by? user
-    end
+    can [:update, :add_subgroup], Group, :id => user.adminable_group_ids
 
     can :add_members, Group do |group|
       group.can_invite_members? user
@@ -59,13 +59,11 @@ class Ability
 
     can :create, Discussion do |discussion|
       group = Group.find(params[:discussion][:group_id])
-      group.users.include?(user)
+      user.group_ids.include? group.id
     end
 
     can :destroy, Comment, user_id: user.id
-    can [:like, :unlike], Comment do |comment|
-      comment.can_be_liked_by? user
-    end
+    can [:like, :unlike], Comment, :discussion => { :id => user.discussion_ids }
 
   end
 end

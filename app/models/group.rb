@@ -140,10 +140,6 @@ class Group < ActiveRecord::Base
     membership_requests.find_by_user_id(user)
   end
 
-  def can_be_edited_by?(user)
-    has_admin_user?(user)
-  end
-
   def has_admin_user?(user)
     return true if admins.include?(user)
     return true if (parent && parent.admins.include?(user))

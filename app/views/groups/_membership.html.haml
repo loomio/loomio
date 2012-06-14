@@ -1,5 +1,5 @@
 %li{:id => membership.user_id}
-  - if group.can_be_edited_by?(current_user)
+  - if can? :edit, group
     #editable-user-row
       .user-name
         - if membership.user_name

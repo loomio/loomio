@@ -10,7 +10,6 @@ describe MotionsController do
   before :each do
     Motion.stub(:find).with(motion.id.to_s).and_return(motion)
     Group.stub(:find).with(group.id.to_s).and_return(group)
-    group.stub(:can_be_edited_by?).with(user).and_return(true)
     user.stub(:update_motion_read_log).with(motion)
     request.env["HTTP_REFERER"] = previous_url
   end

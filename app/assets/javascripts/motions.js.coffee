@@ -168,5 +168,6 @@ $ ->
     $(".see-more").click((event) ->
       $("#short-description").toggle()
       $("#long-description").toggle()
+      event.preventDefault()
     )
 
