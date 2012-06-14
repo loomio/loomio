@@ -26,6 +26,15 @@
 
 /**** Group page ****/
 
+.group-description {
+  font-size: $font-tiny;
+  color: $dark-grey;
+  position: relative;
+  bottom: 3px;
+  padding-bottom: 15px;
+  padding-left: 4px;
+  .add-link { font-size: $font-small; }
+}
 #discussions {
   padding: 4px;
   padding-bottom: 30px;
@@ -226,6 +235,7 @@ form#new_membership, #membership-requested {
 }
 
 /**** group dashboard ****/
+
 
 ul#group-list {
   .group-link{

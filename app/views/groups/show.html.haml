@@ -17,6 +17,11 @@
               %li= link_to "Leave group", membership, method: :delete, confirm: "Are you sure you wish to leave #{@group.name}?"
 .row
   %section.span4#content-left
+    - if @group.description
+      .group-description= @group.description
+    - else
+      - if can? :edit, @group
+        .group-description= link_to "Add a group description", "#"
     - if display_subgroups_block?(@group)
       .block
         =render 'subgroups', subgroups: @subgroups, group: @group
