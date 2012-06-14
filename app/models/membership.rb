@@ -86,10 +86,6 @@ class Membership < ActiveRecord::Base
     group.admins.include? user
   end
 
-  def can_be_approved_by?(user)
-    group.can_invite_members? user
-  end
-
   def can_be_deleted_by?(user)
     return false if (self.user == user) && (group.admins.include?(user)) && (not group_has_multiple_admins?)
     return true if group.admins.include?(user)
