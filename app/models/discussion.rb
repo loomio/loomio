@@ -18,7 +18,7 @@ class Discussion < ActiveRecord::Base
   has_many :motions
   has_many :votes, through: :motions
 
-  attr_accessible :group_id, :title
+  attr_accessible :group_id, :group, :title
 
   attr_accessor :comment, :notify_group_upon_creation
 
