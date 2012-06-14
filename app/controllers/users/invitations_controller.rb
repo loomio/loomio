@@ -5,7 +5,7 @@ class Users::InvitationsController < Devise::InvitationsController
     #   - maybe move some of the code over to the User model?
     if params[:user][:group_id].present?
       group = Group.find params[:user].delete(:group_id)
-      if group.can_invite_members?(current_user)
+      if can? :add_members, group
         email = params[:user][:email]
         existing_user = User.find_by_email(email)
         if existing_user.nil?
