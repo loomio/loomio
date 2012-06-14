@@ -78,10 +78,6 @@ class Membership < ActiveRecord::Base
     group.admins.count > 1
   end
 
-  def can_be_made_admin_by?(user)
-    group.admins.include? user
-  end
-
   def can_have_admin_rights_revoked_by?(user)
     group.admins.include? user
   end
