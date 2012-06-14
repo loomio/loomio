@@ -12,6 +12,8 @@ describe "User abilities" do
       @group.add_member!(user)
       @group.add_member!(@other_user)
       @discussion = create_discussion(group: @group)
+      @new_discussion = user.authored_discussions.new(
+        group: @group, title: "new discussion")
       @user_comment = @discussion.add_comment(user, "hello")
       @another_user_comment = @discussion.add_comment(@other_user, "hello")
     end
@@ -29,6 +31,7 @@ describe "User abilities" do
     it { should be_able_to(:like, @another_user_comment) }
     it { should be_able_to(:unlike, @user_comment) }
     it { should be_able_to(:unlike, @another_user_comment) }
+    it { should be_able_to(:create, @new_discussion) }
 
     #
     # Groups
@@ -78,9 +81,13 @@ describe "User abilities" do
   end
 
   context "non-member of a group" do
+    before do
+    end
     let(:discussion) { create_discussion }
     let(:comment) { discussion.add_comment(discussion.author, "hello") }
     let(:group) { Group.make! }
+    let (:new_discussion) { user.authored_discussions.new(
+                            group: @group, title: "new discussion") }
 
     # Groups
     it { should_not be_able_to(:add_members, @group) }
@@ -91,5 +98,6 @@ describe "User abilities" do
     it { should_not be_able_to(:destroy, comment) }
     it { should_not be_able_to(:like, comment) }
     it { should_not be_able_to(:unlike, comment) }
+    it { should_not be_able_to(:create, new_discussion) }
   end
 end
