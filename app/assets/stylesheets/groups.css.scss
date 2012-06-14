@@ -30,19 +30,20 @@
   padding: 4px;
   padding-bottom: 30px;
   .btn { margin-bottom: 15px; }
-  h4 {
-    color: $mid-grey;
-    font-size: $font_tiny;
-    float: left;
-  }
   .proposal-block { margin-bottom: 20px }
+  .proposal-block h3 {
+    color: $mid-grey;
+    float: left;
+    position: relative;
+    bottom: 3px;
+  }
   .info-help {
-    margin-left: 8px;
+    margin-left: 6px;
     height: 19px;
     width: 16px;
     background-image:url("/assets/info.png");
     background-repeat: no-repeat;
-    background-position-y: 1px;
+    background-position-y: 3px;
     display: inline-block;
     cursor: pointer;
   }
@@ -177,23 +178,23 @@ form#new_membership, #membership-requested {
     width: 400px;
   }
   #proposal-label {
-    font-size: $font-tiny;
+    font-size: $font-small;
     font-style: italic;
   }
   #proposal-title {
-    font-size: $font-tiny;
+    font-size: $font-small;
     color: $mid-grey;
   }
   #proposal-close-date {
-    margin-top: -0.4em;
-    font-size: 0.7em;
+    margin-top: -0.2em;
+    font-size: $font-small;
   }
   #comment-info {
     display: inline-block;
     margin-top: -4px;
     float: right;
     padding-right: 5px;
-    font-size: $font-tiny;
+    font-size: $font-small;
     text-align: right;
   }
   #total-comments {
@@ -215,7 +216,7 @@ form#new_membership, #membership-requested {
   #activity-count {
     margin-left: 18px;
     height: 10px;
-    font-size: 0.6em;
+    font-size: $font-tinywiny;
     padding: 0.4em;
     padding-top: 0.1em;
   }
