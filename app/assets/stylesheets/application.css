@@ -5,6 +5,7 @@
  *= require_self
  *= require jqplot.1.0.0b2_r792
  *= require main
+ *= require header
  *= require groups
  *= require discussions
  *= require landing

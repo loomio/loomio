@@ -139,6 +139,22 @@ class User < ActiveRecord::Base
     super && !deleted_at
   end
 
+  def activity_total
+    total = 0;
+    groups.each do |group|
+      total += activity_total_in(group)
+    end
+    total
+  end
+
+  def activity_total_in(group)
+    total = 0
+    group.discussions.each do |discussion|
+      total += discussion_activity_count(discussion)
+    end
+    total
+  end
+
   private
     def ensure_name_entry
       unless name
