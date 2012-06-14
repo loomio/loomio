@@ -57,10 +57,7 @@ class Ability
       discussion.can_be_commented_on_by? user
     end
 
-    can :create, Discussion do |discussion|
-      group = Group.find(params[:discussion][:group_id])
-      user.group_ids.include? group.id
-    end
+    can :create, Discussion, :group => { :id => user.group_ids }
 
     can :destroy, Comment, user_id: user.id
     can [:like, :unlike], Comment, :discussion => { :id => user.discussion_ids }
