@@ -27,15 +27,28 @@ class MembershipsController < BaseController
     redirect_to @membership.group
   end
 
-  def approve
+  def approve_request
     @membership = Membership.find(params[:id])
     if @membership.request?
       @membership.approve!
       flash[:notice] = "Membership approved"
+      UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
     else
       flash[:warning] = "User is already a member of this group"
     end
-    UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
+    redirect_to @membership.group
+  end
+
+  def ignore_request
+    @membership = Membership.find(params[:id])
+    @membership.destroy
+    flash[:notice] = "Membership request ignored."
+  end
+
+  def cancel_request
+    @membership = Membership.find(params[:id])
+    @membership.destroy
+    flash[:notice] = "Membership request canceled."
     redirect_to @membership.group
   end
 
@@ -62,18 +75,10 @@ class MembershipsController < BaseController
     resource
     destroy! do |format|
       format.html do
-        if @membership.access_level == "request"
-          if current_user == @membership.user
-            flash[:notice] = "Membership request canceled."
-          else
-            flash[:notice] = "Membership request ignored."
-          end
+        if current_user == @membership.user
+          flash[:notice] = "You have left #{@membership.group.name}."
         else
-          if current_user == @membership.user
-            flash[:notice] = "You have left #{@membership.group.name}."
-          else
-            flash[:notice] = "Member removed."
-          end
+          flash[:notice] = "Member removed."
         end
         redirect_to @membership.group
       end

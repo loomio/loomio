@@ -3,7 +3,7 @@
     .user-name
       = truncate(membership_request.user_name, :length => 29, :omission => '...')
     .admin-controls
-      =link_to 'Approve', approve_membership_path(membership_request,
+      =link_to 'Approve', approve_membership_request_path(membership_request,
         {:membership => {:access_level => 'member'}}),
         :method => :post,
         :confirm => "Are you sure you want to add #{membership_request.user_email} to the group?"
