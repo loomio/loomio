@@ -2,7 +2,7 @@ require "cancan/matchers"
 
 describe "User abilities" do
   let(:user) { User.make! }
-  let(:ability) { Ability.new(user, {}) }
+  let(:ability) { Ability.new(user) }
   subject { ability }
 
   context "member of a group" do

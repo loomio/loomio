@@ -1,7 +1,7 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user, params)
+  def initialize(user)
 
     user ||= User.new
 
@@ -34,7 +34,7 @@ class Ability
     can :create, Membership
 
     can :approve, Membership do |membership|
-      membership.can_be_approved_by? user
+      can? :add_members, membership.group
     end
 
     can :make_admin, Membership do |membership|
