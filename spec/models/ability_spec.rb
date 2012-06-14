@@ -24,6 +24,7 @@ describe "User abilities" do
     it { should be_able_to(:add_comment, @discussion) }
     it { should be_able_to(:destroy, @user_comment) }
     it { should_not be_able_to(:destroy, @another_user_comment) }
+    it { should_not be_able_to(:update, @group) }
     it { should be_able_to(:like, @user_comment) }
     it { should be_able_to(:like, @another_user_comment) }
     it { should be_able_to(:unlike, @user_comment) }
@@ -64,6 +65,7 @@ describe "User abilities" do
 
     it { should be_able_to(:make_admin, @membership) }
     it { should be_able_to(:remove_admin, @membership) }
+    it { should be_able_to(:update, @group) }
 
     context "group members invitable_by: admins" do
       before do
