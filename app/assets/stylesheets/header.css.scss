@@ -28,7 +28,7 @@ header{
 .navbar {
 	/* dropdown font-size */
   div > ul a, .nav a{
-    font-size: $font-tiny;
+    font-size: $font-small;
     text-decoration: none;
 	}
   .dropdown-menu {
@@ -54,15 +54,15 @@ header{
       display: inline-block;
       /*this code is needed for positioning when the notification badge is enabled do NOT delete (AARON 14/6/2012)*/
       /*position: relative;*/
-      /*right: 30px;*/
+      /*right: 35px;*/
     }
     #group-icon {
       float: left;
       height: 20px;
       width: 30px;
       margin-left: 10px;
-      background-position-y: 2px;
-      background-size: 30px;
+      background-position-y: 4px;
+      background-size: 28px;
       background-repeat: no-repeat;
       background-image:url("/assets/group.png");
       opacity: 0.8;
@@ -74,7 +74,7 @@ header{
       padding: 0.4em;
       padding-top: 0.1em;
       position: relative;
-      right: 34px;
+      right: 36px;
     }
     a.dropdown-toggle {
       display: inline-block;

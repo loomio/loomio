@@ -139,6 +139,14 @@ class User < ActiveRecord::Base
     super && !deleted_at
   end
 
+  def total_activity_count
+    total = 0;
+    groups.each do |group|
+      total += group.total_activity(self)
+    end
+    total
+  end
+
   private
     def ensure_name_entry
       unless name
