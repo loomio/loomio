@@ -9,7 +9,7 @@
         %li.dropdown.group-container
           %a{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
             #group-icon
-            -#- total_activity = total_activity_count(current_user)
+            -#- total_activity = current_user.total_activity_count
             -#- if total_activity > 1
               -##activity-count.span.label.label-important
                 -#= total_activity
