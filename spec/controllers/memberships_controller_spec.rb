@@ -29,11 +29,20 @@ describe MembershipsController do
       end
     end
 
-    it "cancels their membership request" do
-      membership = @group.add_request!(@user)
-      delete :destroy, :id => membership.id
-      @group.requested_users.should_not include(@user)
-      flash[:notice].should =~ /Membership request canceled/
+    context "cancels their own membership request" do
+      before do
+        membership = @group.add_request!(@user)
+        delete :cancel_request, :id => membership.id
+      end
+      it "removes membership request from group" do
+        @group.requested_users.should_not include(@user)
+      end
+      it "gives flash success notice" do
+        flash[:notice].should =~ /Membership request canceled/
+      end
+      it "redirects to group page" do
+        response.should redirect_to(@group)
+      end
     end
 
     it "sends an email to admins with new membership request" do
@@ -46,13 +55,6 @@ describe MembershipsController do
     context 'group admin' do
       before :each do
         @group.add_admin!(@user)
-      end
-
-      it "sends an email to notify the user of their membership approval" do
-        @membership = @group.add_request!(@new_user)
-        UserMailer.should_receive(:group_membership_approved).and_return(stub(deliver: true))
-        post :approve, :id => @membership.id
-        flash[:notice].should =~ /Membership approved/
       end
 
       it "can edit a user" do
@@ -93,13 +95,31 @@ describe MembershipsController do
         @group.add_member!(@user)
       end
 
-      it "can approve a membership request" do
-        @membership = @group.add_request!(@new_user)
-        post :approve, :id => @membership.id
-        flash[:notice].should =~ /Membership approved/
-        response.should redirect_to(@group)
-        assigns(:membership).access_level.should == 'member'
-        @group.users.should include(@new_user)
+      context "approves a membership request" do
+        before do
+          @membership = @group.add_request!(@new_user)
+        end
+        it "adds membership to group" do
+          post :approve_request, :id => @membership.id
+          @group.users.should include(@new_user)
+        end
+        it "gives flash success notice" do
+          post :approve_request, :id => @membership.id
+          flash[:notice].should =~ /Membership approved/
+        end
+        it "redirects to group" do
+          post :approve_request, :id => @membership.id
+          response.should redirect_to(@group)
+        end
+        it "sends an email to notify the user of their membership approval" do
+          UserMailer.should_receive(:group_membership_approved).and_return(stub(deliver: true))
+          post :approve_request, :id => @membership.id
+        end
+        it "does not send a notification email if member is already approved" do
+          @membership = @group.add_member!(@new_user)
+          UserMailer.should_not_receive(:group_membership_approved).and_return(stub(deliver: true))
+          post :approve_request, :id => @membership.id
+        end
       end
 
       it 'cannot add an admin' do
@@ -114,7 +134,7 @@ describe MembershipsController do
       it "can ignore a membership request" do
         @group.add_request!(@new_user)
         @membership = @group.membership_requests.first
-        delete :destroy, :id => @membership.id
+        delete :ignore_request, :id => @membership.id
         flash[:notice].should =~ /Membership request ignored/
         response.should redirect_to(@group)
         Membership.exists?(@membership).should be_false
@@ -141,7 +161,7 @@ describe MembershipsController do
     context 'non group member' do
       it "cannot authorize a membership request for another user" do
         @membership = @group.add_request!(@new_user)
-        post :approve, :id => @membership.id
+        post :approve_request, :id => @membership.id
         flash[:error].should =~ /Access denied/
         response.should redirect_to(group_url(@group))
         assigns(:membership).access_level.should == 'request'

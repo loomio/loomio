@@ -31,6 +31,8 @@ describe "User abilities" do
     it { should be_able_to(:create, new_discussion) }
     it { should_not be_able_to(:make_admin, @user_membership) }
     it { should_not be_able_to(:make_admin, @other_user_membership) }
+    it { should_not be_able_to(:destroy, @other_user_membership) }
+    it { should be_able_to(:destroy, @user_membership) }
 
     context "group members invitable_by: members" do
       before do
@@ -38,7 +40,10 @@ describe "User abilities" do
         group.save
       end
       it { should be_able_to(:add_members, group) }
-      it { should be_able_to(:approve, membership_request) }
+      it { should be_able_to(:destroy, membership_request) }
+      it { should be_able_to(:approve_request, membership_request) }
+      it { should be_able_to(:ignore_request, membership_request) }
+      it { should_not be_able_to(:destroy, @other_user_membership) }
     end
 
     context "group members invitable_by: admins" do
@@ -47,7 +52,8 @@ describe "User abilities" do
         group.save
       end
       it { should_not be_able_to(:add_members, group) }
-      it { should_not be_able_to(:approve, membership_request) }
+      it { should_not be_able_to(:approve_request, membership_request) }
+      it { should_not be_able_to(:ignore_request, membership_request) }
     end
   end
 
@@ -66,7 +72,7 @@ describe "User abilities" do
         group.save
       end
       it { should be_able_to(:add_members, group) }
-      it { should be_able_to(:approve, membership_request) }
+      it { should be_able_to(:approve_request, membership_request) }
     end
   end
 
