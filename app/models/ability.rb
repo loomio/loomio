@@ -18,7 +18,11 @@ class Ability
     can [:update, :add_subgroup], Group, :id => user.adminable_group_ids
 
     can :add_members, Group do |group|
-      group.can_invite_members? user
+      if group.members_invitable_by == :members
+        true if user.groups.include?(group)
+      elsif group.members_invitable_by == :admins
+        true if user.adminable_groups.include?(group)
+      end
     end
 
     can [:create, :index, :request_membership], Group
