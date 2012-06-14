@@ -139,10 +139,18 @@ class User < ActiveRecord::Base
     super && !deleted_at
   end
 
-  def total_activity_count
+  def activity_total
     total = 0;
     groups.each do |group|
-      total += group.total_activity(self)
+      total += activity_total_in(group)
+    end
+    total
+  end
+
+  def activity_total_in(group)
+    total = 0
+    group.discussions.each do |discussion|
+      total += discussion_activity_count(discussion)
     end
     total
   end
