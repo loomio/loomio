@@ -1,5 +1,5 @@
 class MembershipsController < BaseController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :ignore_request
 
   def make_admin
     @membership = Membership.find(params[:id])
@@ -40,9 +40,15 @@ class MembershipsController < BaseController
   end
 
   def ignore_request
-    @membership = Membership.find(params[:id])
-    @membership.destroy
-    flash[:notice] = "Membership request ignored."
+    if @membership = Membership.find_by_id(params[:id])
+      authorize! :ignore_request, @membership
+      @membership.destroy
+      flash[:notice] = "Membership request ignored."
+      redirect_to @membership.group
+    else
+      flash[:warning] = "Membership request has already been ignored."
+      redirect_to :back
+    end
   end
 
   def cancel_request

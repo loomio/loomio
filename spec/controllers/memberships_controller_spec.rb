@@ -122,6 +122,34 @@ describe MembershipsController do
         end
       end
 
+      context "ignores a membership request" do
+        before { @membership = @group.add_request!(@new_user) }
+
+        it "gives flash success notice" do
+          delete :ignore_request, :id => @membership.id
+          flash[:notice].should =~ /Membership request ignored/
+        end
+        it "redirects to group page" do
+          delete :ignore_request, :id => @membership.id
+          response.should redirect_to(@group)
+        end
+        it "destroys membership" do
+          delete :ignore_request, :id => @membership.id
+          Membership.exists?(@membership).should be_false
+        end
+        context "request was already ignored" do
+          before { @membership.destroy }
+          it "redirects to previous url" do
+            delete :ignore_request, :id => @membership.id
+            response.should redirect_to(@group)
+          end
+          it "gives flash notice that request was already ignored" do
+            delete :ignore_request, :id => @membership.id
+            flash[:warning].should =~ /Membership request has already been ignored/
+          end
+        end
+      end
+
       it 'cannot add an admin' do
         @membership = @group.add_member!(@new_user)
         post :make_admin, :id => @membership.id
@@ -129,15 +157,6 @@ describe MembershipsController do
         response.should redirect_to(@group)
         assigns(:membership).access_level.should == 'member'
         @group.admins.should_not include(@new_user)
-      end
-
-      it "can ignore a membership request" do
-        @group.add_request!(@new_user)
-        @membership = @group.membership_requests.first
-        delete :ignore_request, :id => @membership.id
-        flash[:notice].should =~ /Membership request ignored/
-        response.should redirect_to(@group)
-        Membership.exists?(@membership).should be_false
       end
 
       it "cannot remove a member" do

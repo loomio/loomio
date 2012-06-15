@@ -35,7 +35,7 @@ class Ability
 
     can :cancel_request, Membership, :user => user
 
-    can :approve_request, Membership do |membership|
+    can [:approve_request, :ignore_request], Membership do |membership|
       can? :add_members, membership.group
     end
 
