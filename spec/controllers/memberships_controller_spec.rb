@@ -31,17 +31,22 @@ describe MembershipsController do
 
     context "cancels their own membership request" do
       before do
-        membership = @group.add_request!(@user)
-        delete :cancel_request, :id => membership.id
+        @membership = @group.add_request!(@user)
+        delete :cancel_request, :id => @membership.id
       end
-      it "removes membership request from group" do
-        @group.requested_users.should_not include(@user)
-      end
-      it "gives flash success notice" do
-        flash[:notice].should =~ /Membership request canceled/
-      end
-      it "redirects to group page" do
-        response.should redirect_to(@group)
+
+      it { @group.requested_users.should_not include(@user) }
+
+      it { flash[:notice].should =~ /Membership request canceled/ }
+
+      it { response.should redirect_to(@group) }
+
+      context "request was already canceled" do
+        before { delete :cancel_request, :id => @membership.id }
+
+        it { response.should redirect_to(@group) }
+
+        it { flash[:warning].should =~ /Membership request has already been canceled/ }
       end
     end
 
@@ -123,30 +128,23 @@ describe MembershipsController do
       end
 
       context "ignores a membership request" do
-        before { @membership = @group.add_request!(@new_user) }
+        before do
+          @membership = @group.add_request!(@new_user)
+          delete :ignore_request, :id => @membership.id
+        end
 
-        it "gives flash success notice" do
-          delete :ignore_request, :id => @membership.id
-          flash[:notice].should =~ /Membership request ignored/
-        end
-        it "redirects to group page" do
-          delete :ignore_request, :id => @membership.id
-          response.should redirect_to(@group)
-        end
-        it "destroys membership" do
-          delete :ignore_request, :id => @membership.id
-          Membership.exists?(@membership).should be_false
-        end
+        it { flash[:notice].should =~ /Membership request ignored/ }
+
+        it { response.should redirect_to(@group) }
+
+        it { Membership.exists?(@membership).should be_false }
+
         context "request was already ignored" do
-          before { @membership.destroy }
-          it "redirects to previous url" do
-            delete :ignore_request, :id => @membership.id
-            response.should redirect_to(@group)
-          end
-          it "gives flash notice that request was already ignored" do
-            delete :ignore_request, :id => @membership.id
-            flash[:warning].should =~ /Membership request has already been ignored/
-          end
+          before { delete :ignore_request, :id => @membership.id }
+
+          it { response.should redirect_to(@group) }
+
+          it { flash[:warning].should =~ /Membership request has already been ignored/ }
         end
       end
 
