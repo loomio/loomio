@@ -1,5 +1,5 @@
 class MembershipsController < BaseController
-  load_and_authorize_resource :except => :ignore_request
+  load_and_authorize_resource :except => [:ignore_request, :cancel_request]
 
   def make_admin
     @membership = Membership.find(params[:id])
@@ -52,10 +52,15 @@ class MembershipsController < BaseController
   end
 
   def cancel_request
-    @membership = Membership.find(params[:id])
-    @membership.destroy
-    flash[:notice] = "Membership request canceled."
-    redirect_to @membership.group
+    if @membership = Membership.find_by_id(params[:id])
+      authorize! :cancel_request, @membership
+      @membership.destroy
+      flash[:notice] = "Membership request canceled."
+      redirect_to @membership.group
+    else
+      flash[:warning] = "Membership request has already been canceled."
+      redirect_to :back
+    end
   end
 
   def create
