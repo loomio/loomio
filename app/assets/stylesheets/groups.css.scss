@@ -33,6 +33,12 @@
   color: $dark-grey;
   font-size: $font-tiny;
 }
+#add-group-description {
+  #description-input {
+    width: 290px;
+    margin-bottom: 5px;
+  }
+}
 .empty-placeholder {
   border: 1px dashed $light-grey;
   @include border-radius(4px);
