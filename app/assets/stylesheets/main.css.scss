@@ -54,7 +54,6 @@ h4 {
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
-  /*.btn { margin-bottom: 15px; }*/
 }
 
 #content-left {
@@ -66,7 +65,6 @@ h4 {
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
-  .block { margin-bottom: 20px; }
   ul { margin-bottom: 0.6em; }
   li { padding-bottom: 4px; }
 }
@@ -79,6 +77,12 @@ h4 {
     margin-bottom: 0.5em;
   }
   margin-bottom: 20px;
+}
+.content-block {
+  margin-bottom: 20px;
+  .content {
+    padding-left: 2px;
+  }
 }
 
 .panel {
@@ -151,7 +155,10 @@ h4 {
   background-color: $comment-color;
 }
 
-.inputError { display: inline-block; }
+.inputError {
+  display: inline-block;
+  @include ie7-inline-block();
+}
 .error-message {
   font-size: $font-small;
   display: inline;

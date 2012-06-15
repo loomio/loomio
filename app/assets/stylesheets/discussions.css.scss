@@ -1,4 +1,5 @@
 @import "settings";
+/*@import "bootstrap";*/
 @import "mixins";
 
 /** new proposal form*/
@@ -17,7 +18,10 @@
   }
 }
 
-.content-discussion { margin-top: -20px; }
+.content-discussion {
+  position: relative;
+  bottom: 20px;
+}
 .discussion-title {
   font-size: $font-large;
   color: $dark-grey;
@@ -51,7 +55,7 @@
   .comment{
     background-color: $comment-color;
     margin-bottom: 2px;
-    padding: 4px;
+    padding: 8px;
     font-size: $font-small;
     .comment-username{
       font-weight: bold;
@@ -95,6 +99,7 @@
       color: black;
       padding-left: 0.4em;
       display: inline-block;
+      /*@include ie7-inline-block();*/
     }
   }
 
@@ -109,6 +114,7 @@
       color: $mid-grey;
       margin-left: 0.4em;
       display: inline-block;
+      /*@include ie7-inline-block();*/
     }
     .proposal-text{
       color: $dark-grey;
@@ -127,9 +133,6 @@
   padding-left: 19px;
   margin-left: 0px;
   width: 430px;
-  #current-proposal {
-    margin-bottom: 20px;
-  }
   #new-proposal {
     .btn { margin-bottom: 20px; }
   }
@@ -205,11 +208,13 @@
           float: left;
           margin-top: 2px;
           display: inline-block;
+          /*@include ie7-inline-block();*/
           height: 20px;
         }
         .member-name {
           float: left;
           display: inline-block;
+          /*@include ie7-inline-block();*/
           padding-top: 4px;
           margin-left: 10px;
         }
@@ -221,11 +226,13 @@
         padding-left: 4px;
         float: left;
         display: inline-block;
+        /*@include ie7-inline-block();*/
         height: 20px;
       }
       .member-no-position {
         float: left;
         display: inline-block;
+        /*@include ie7-inline-block();*/
         padding: 2px;
         padding-left: 8px;
         margin-left: 6px;
@@ -247,12 +254,24 @@
 
 /*  New & Edit motion form */
 #motion-form{
-  .input { margin-left: 0px; display: inline-block; }
+  .input {
+    margin-left: 0px;
+    display: inline-block;
+    /*@include ie7-inline-block();*/
+  }
   .clearfix { padding-top: 0px; margin-bottom: 0px; }
   #closing-inputs {
     height: 40px;
-    #input_date{ width: 140px; display: inline-block; }
-    select { width: 100px; display: inline-block; }
+    #input_date{
+      width: 140px;
+      display: inline-block;
+      /*@include ie7-inline-block();*/
+    }
+    select {
+      width: 100px;
+      display: inline-block;
+      /*@include ie7-inline-block();*/
+    }
   }
   #description { margin-top: 31px; }
 }

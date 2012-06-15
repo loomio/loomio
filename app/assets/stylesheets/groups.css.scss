@@ -8,7 +8,10 @@
 #group-form {
   form {
     width: 550px;
-    .inputError { display: inline-block; }
+    .inputError {
+      display: inline-block;
+      @include ie7-inline-block();
+    }
     #group_name { width: 390px; }
     #setting-label {
       margin-bottom: 4px;
@@ -27,24 +30,23 @@
 /**** Group page ****/
 
 .group-description {
-  font-size: $font-tiny;
   color: $dark-grey;
-  position: relative;
-  bottom: 3px;
-  padding-bottom: 15px;
-  padding-left: 4px;
-  .add-link { font-size: $font-small; }
+  font-size: $font-tiny;
+}
+.empty-placeholder {
+  border: 1px dashed $light-grey;
+  @include border-radius(4px);
+  padding: 6px;
+  font-size: $font-small;
 }
 #discussions {
   padding: 4px;
-  padding-bottom: 30px;
   .btn { margin-bottom: 15px; }
   h4 {
     color: $mid-grey;
     font-size: $font_tiny;
     float: left;
   }
-  .proposal-block { margin-bottom: 20px }
   .info-help {
     margin-left: 8px;
     height: 19px;
@@ -53,6 +55,7 @@
     background-repeat: no-repeat;
     background-position-y: 1px;
     display: inline-block;
+    @include ie7-inline-block();
     cursor: pointer;
   }
   .info-help:hover {
@@ -94,6 +97,7 @@ input#user_email{
   font-size: $font-small;
   width: 180px;
   display: inline-block;
+  @include ie7-inline-block();
 }
 .admin-controls {
   float: right;
@@ -162,7 +166,7 @@ form#new_membership, #membership-requested {
     font-size: 0.8em;
     .discussion-title {
       display: inline-block;
-      @include ie7-inline-block();
+      /*@include ie7-inline-block();*/
       width: 500px;
     }
   }
@@ -175,6 +179,7 @@ form#new_membership, #membership-requested {
   #vote-icon {
     padding-top: 4px;
     display: inline-block;
+    /*@include ie7-inline-block();*/
     height: 16px;
     width: 20px;
     float: left;
@@ -183,6 +188,7 @@ form#new_membership, #membership-requested {
   #proposal-title-container {
     margin-left: 12px;
     display: inline-block;
+    /*@include ie7-inline-block();*/
     width: 400px;
   }
   #proposal-label {
@@ -199,6 +205,7 @@ form#new_membership, #membership-requested {
   }
   #comment-info {
     display: inline-block;
+    /*@include ie7-inline-block();*/
     margin-top: -4px;
     float: right;
     padding-right: 5px;
@@ -241,6 +248,7 @@ ul#group-list {
   .group-link{
     width: 90%;
     display: inline-block;
+    @include ie7-inline-block();
   }
   .group-link.disabled{
     a{

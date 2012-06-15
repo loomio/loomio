@@ -1,57 +1,61 @@
 - if group.can_invite_members?(current_user)
   - if group.parent.blank?
-    .block
+    .content-block
       %h1 Add member
-      = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
-        = devise_error_messages!
-        = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
-        = f.input :email, placeholder: "Email address", label: false
-        = f.submit "Invite", class: "btn btn-small"
-        %input#group_id{ type: "hidden", value: group.id }
+      .content
+        = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
+          = devise_error_messages!
+          = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
+          = f.input :email, placeholder: "Email address", label: false
+          = f.submit "Invite", class: "btn btn-small"
+          %input#group_id{ type: "hidden", value: group.id }
   - if group.membership_requests.present?
-    .block#user-requests
-      %h1 Membership requests
-      %ul.unstyled{:id => "request-list"}
-        =render :partial => 'membership_request', :collection => group.membership_requests
+    .content-block
+      #user-requests
+        %h1 Membership requests
+        .content
+          %ul.unstyled{:id => "request-list"}
+            =render :partial => 'membership_request', :collection => group.membership_requests
 
 - unless group.hide_members && (cannot? :edit, group)
-  .block
+  .content-block
     %h1
       Current members
       #membership-count
         = group.memberships.count
-    - if group.users_include?(current_user) || current_user.nil?
-      - unless group.parent.blank?
-        %a.btn#add-member-popup-btn{"data-toggle" => "modal", href: "#invite-group-members"} Add members
+    .content
+      - if group.users_include?(current_user) || current_user.nil?
+        - unless group.parent.blank?
+          %a.btn#add-member-popup-btn{"data-toggle" => "modal", href: "#invite-group-members"} Add members
 
-        #invite-group-members.modal.hidden
-          .modal-header
-            %button.close{"data-dismiss" => "modal"}×
-            %h3= "Select members to add to #{group.name}"
-          = form_tag add_members_group_path do
-            .modal-body
-              - group.parent.users_sorted.each do |member|
-                - unless member == current_user
-                  .invite-member-checkbox-container
-                    - is_member = false
-                    - is_member = true if group.users_include?(member)
-                    = check_box_tag "user_#{member.id}", 1, is_member, disabled: is_member
-                    = label_tag "user_#{member.id}", member.name
-            .modal-footer
-              = submit_tag "Invite members", class: "btn btn-small"
-    - else
-      - membership_request = group.membership_requests.find_by_user_id(current_user)
-      - if membership_request.present?
-        = link_to "Membership Requested", membership_request, method: :delete,
-          confirm: "Are you sure you wish to withdraw your membership request from this group?",
-          class: "btn btn-small", id: "membership-requested"
+          #invite-group-members.modal.hidden
+            .modal-header
+              %button.close{"data-dismiss" => "modal"}×
+              %h3= "Select members to add to #{group.name}"
+            = form_tag add_members_group_path do
+              .modal-body
+                - group.parent.users_sorted.each do |member|
+                  - unless member == current_user
+                    .invite-member-checkbox-container
+                      - is_member = false
+                      - is_member = true if group.users_include?(member)
+                      = check_box_tag "user_#{member.id}", 1, is_member, disabled: is_member
+                      = label_tag "user_#{member.id}", member.name
+              .modal-footer
+                = submit_tag "Invite members", class: "btn btn-small"
       - else
-        - if group.parent.nil? || current_user.group_membership(group.parent)
-          =form_for(Membership.new) do |f|
-            %input{name: "membership[group_id]", type: :hidden, value: group.id}
-              =submit_tag "Request membership", class: "btn btn-small"
+        - membership_request = group.membership_requests.find_by_user_id(current_user)
+        - if membership_request.present?
+          = link_to "Membership Requested", membership_request, method: :delete,
+            confirm: "Are you sure you wish to withdraw your membership request from this group?",
+            class: "btn btn-small", id: "membership-requested"
+        - else
+          - if group.parent.nil? || current_user.group_membership(group.parent)
+            =form_for(Membership.new) do |f|
+              %input{name: "membership[group_id]", type: :hidden, value: group.id}
+                =submit_tag "Request membership", class: "btn btn-small"
 
-    %ul.unstyled{:id => "users-list"}
-      =render :partial => 'membership',
-        :collection => group.memberships.sort { |a,b| a.user_name.downcase <=> b.user_name.downcase },
-        :locals => { group: group }
+      %ul.unstyled{:id => "users-list"}
+        =render :partial => 'membership',
+          :collection => group.memberships.sort { |a,b| a.user_name.downcase <=> b.user_name.downcase },
+          :locals => { group: group }
