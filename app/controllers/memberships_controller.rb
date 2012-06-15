@@ -1,5 +1,5 @@
 class MembershipsController < BaseController
-  load_and_authorize_resource :except => [:ignore_request, :cancel_request]
+  load_and_authorize_resource :except => [:ignore_request, :cancel_request, :destroy]
 
   def make_admin
     @membership = Membership.find(params[:id])
@@ -77,22 +77,24 @@ class MembershipsController < BaseController
         redirect_to root_url
       end
     else
-      flash[:error] = "You cannot join a sub-group if you are not a member of the parent group"
+      flash[:error] = "You cannot join a sub-group if you are not a member of the parent group."
       redirect_to :back
     end
   end
 
   def destroy
-    resource
-    destroy! do |format|
-      format.html do
-        if current_user == @membership.user
-          flash[:notice] = "You have left #{@membership.group.name}."
-        else
-          flash[:notice] = "Member removed."
-        end
-        redirect_to @membership.group
+    if @membership = Membership.find_by_id(params[:id])
+      authorize! :destroy, @membership
+      @membership.destroy
+      if current_user == @membership.user
+        flash[:notice] = "You have left #{@membership.group.name}."
+      else
+        flash[:notice] = "Member removed."
       end
+      redirect_to @membership.group
+    else
+      flash[:warning] = "User is not a member of the group."
+      redirect_to :back
     end
   end
 end

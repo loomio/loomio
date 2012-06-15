@@ -36,16 +36,13 @@ describe MembershipsController do
       end
 
       it { @group.requested_users.should_not include(@user) }
-
       it { flash[:notice].should =~ /Membership request canceled/ }
-
       it { response.should redirect_to(@group) }
 
       context "request was already canceled" do
         before { delete :cancel_request, :id => @membership.id }
 
         it { response.should redirect_to(@group) }
-
         it { flash[:warning].should =~ /Membership request has already been canceled/ }
       end
     end
@@ -76,13 +73,22 @@ describe MembershipsController do
         @group.admins.should include(@new_user)
       end
 
-      it 'can remove a member' do
-        @group.add_member!(@new_user)
-        @membership = @group.memberships.find_by_user_id(@new_user.id)
-        delete :destroy, :id => @membership.id
-        flash[:notice].should =~ /Member removed/
-        response.should redirect_to(@group)
-        @group.users.should_not include(@new_user)
+      context "removes a member" do
+        before do
+          @group.add_member!(@new_user)
+          @membership = @group.memberships.find_by_user_id(@new_user.id)
+          delete :destroy, :id => @membership.id
+        end
+        it { flash[:notice].should =~ /Member removed/ }
+        it { response.should redirect_to(@group) }
+        it { @group.users.should_not include(@new_user) }
+
+        context "that was already removed" do
+          before { delete :destroy, :id => @membership.id }
+
+          it { response.should redirect_to(@group) }
+          it { flash[:warning].should =~ /User is not a member of the group/ }
+        end
       end
 
       it 'cannot remove an admin' do

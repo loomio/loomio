@@ -43,7 +43,12 @@ class Ability
       :group => { :id => user.adminable_group_ids }
 
     can :destroy, Membership do |membership|
-      membership.can_be_deleted_by? user
+      if membership.group.users.size == 1 or
+        (membership.admin? and membership.group.admins.size == 1)
+        false
+      else
+        membership.user == user or membership.group.admins.include? user
+      end
     end
 
     #
