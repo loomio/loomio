@@ -34,13 +34,17 @@ describe "User abilities" do
     it { should_not be_able_to(:destroy, @other_user_membership) }
     it { should be_able_to(:destroy, @user_membership) }
 
+    it "should not be able to delete the only member of a group" do
+      @other_user_membership.destroy
+      should_not be_able_to(:destroy, @user_membership)
+    end
+
     context "group members invitable_by: members" do
       before do
         group.members_invitable_by = "members"
         group.save
       end
       it { should be_able_to(:add_members, group) }
-      it { should be_able_to(:destroy, membership_request) }
       it { should be_able_to(:approve_request, membership_request) }
       it { should be_able_to(:ignore_request, membership_request) }
       it { should_not be_able_to(:destroy, @other_user_membership) }
@@ -59,12 +63,18 @@ describe "User abilities" do
 
   context "admin of a group" do
     before do
-      group.add_admin! user
-      @membership_request = group.add_request!(User.make!)
+      @user_membership = group.add_admin! user
+      @other_user_membership = group.add_member! User.make!
+      @membership_request = group.add_request! User.make!
     end
+
     it { should be_able_to(:make_admin, @membership_request) }
     it { should be_able_to(:remove_admin, @membership_request) }
     it { should be_able_to(:update, group) }
+
+    it "should not be able to delete the only admin of a group" do
+      should_not be_able_to(:destroy, @user_membership)
+    end
 
     context "group members invitable_by: admins" do
       before do

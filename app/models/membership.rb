@@ -78,14 +78,6 @@ class Membership < ActiveRecord::Base
     group.admins.count > 1
   end
 
-  def can_be_deleted_by?(user)
-    return false if (self.user == user) && (group.admins.include?(user)) && (not group_has_multiple_admins?)
-    return true if group.admins.include?(user)
-
-    return true if self.user == user
-    return true if (access_level == 'request' && group.users.include?(user))
-  end
-
   #
   # PRIVATE METHODS
   #
