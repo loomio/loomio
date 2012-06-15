@@ -1,25 +1,10 @@
 #dashboard-home
   - if @groups.present?
-    .row
-      %section.span4#content-left
-        %nav
-          %h1 Your groups
-          %ul#group-list
-            - @groups.each do |group|
-              %li
-                = render 'group_link', group: group
-                - if group.subgroups.count > 0
-                  %ul
-                    - group.subgroups.each do |subgroup|
-                      - if current_user.groups.include? subgroup
-                        %li
-                          = render 'group_link', group: subgroup
-          = link_to "Create new group", new_group_path, :class => 'btn btn-small'
-      %section.span8#content-main
-        %h1 Discussions
-        #discussions
-          - current_user.discussions_sorted.each do |discussion|
-            =render discussion, this_group: nil
+    %section#content-main
+      %h1 Discussions
+      #discussions
+        - current_user.discussions_sorted.each do |discussion|
+          =render discussion, this_group: nil
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.

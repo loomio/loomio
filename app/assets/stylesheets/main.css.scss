@@ -47,6 +47,9 @@ h4 {
 }
 
 #content-main {
+  margin-left: auto;
+  margin-right: auto;
+  width: 65%;
   h1 {
     font-size: $font-large;
     color: $header-titles-color;
