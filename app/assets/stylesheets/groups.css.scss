@@ -34,10 +34,15 @@
   font-size: $font-tiny;
 }
 #add-group-description {
+  font-size: $font-tiny;
   #description-input {
     width: 290px;
     margin-bottom: 5px;
   }
+}
+#cancel-add-description {
+  padding-left: 5px;
+  margin-top: 5px;
 }
 .empty-placeholder {
   border: 1px dashed $light-grey;

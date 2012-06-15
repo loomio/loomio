@@ -1,6 +1,6 @@
 #dashboard-home
   - if @groups.present?
-    %section#content-main
+    %section#content-main.center-content
       %h1 Discussions
       #discussions
         - current_user.discussions_sorted.each do |discussion|
