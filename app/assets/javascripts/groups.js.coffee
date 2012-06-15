@@ -20,3 +20,8 @@ $ ->
         $("#add-group-description").toggle()
         event.preventDefault()
       )
+      $("#cancel-add-description").click((event) ->
+        $(".empty-placeholder").toggle()
+        $("#add-group-description").toggle()
+        event.preventDefault()
+      )

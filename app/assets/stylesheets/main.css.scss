@@ -45,11 +45,13 @@ h4 {
     margin-bottom: 0.5em;
   }
 }
-
-#content-main {
+.center-content {
   margin-left: auto;
   margin-right: auto;
   width: 65%;
+}
+
+#content-main {
   h1 {
     font-size: $font-large;
     color: $header-titles-color;
