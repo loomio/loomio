@@ -94,6 +94,8 @@ class Group < ActiveRecord::Base
   # MEMBERSHIP METHODS
   #
 
+
+
   def add_request!(user)
     unless requested_users_include?(user) || users.exists?(user)
       if parent.nil? || user.group_membership(parent)
