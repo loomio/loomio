@@ -26,6 +26,7 @@ header{
 
 /* navigation*/
 .navbar {
+  .nav{ padding-top: 2px; }
 	/* dropdown font-size */
   div > ul a, .nav a{
     font-size: $font-small;
@@ -83,7 +84,7 @@ header{
     }
   }
 
-  ul.nav.group-nav { margin-top: 5px; }
+  /*ul.nav.group-nav { margin-top: 5px; }*/
 
   .group-nav{
     li.dropdown.group-container:hover{
@@ -113,5 +114,5 @@ header{
         background-color: #08C;
     }
   }
-  ul.nav.secondary-nav { margin-top: 5px; }
+  /*ul.nav.secondary-nav { margin-top: 5px; }*/
 }
