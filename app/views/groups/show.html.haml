@@ -26,16 +26,17 @@
                 = link_to "Add a group description", "#", id: 'add-description'
           #group-description
             - if !@group.description.empty?
-              = @group.description
+              .word-break= @group.description
               = link_to "edit", "#", id: 'edit-description'
         #add-group-description
           = form_for @group do |f|
             = f.hidden_field :id
             .control-group
-            = f.text_field :description, id: 'description-input', class: 'inputError limit-250';
+              = f.text_field :description, id: 'description-input', class: 'inputError limit-250';
             .character-counter
-            = f.submit "Save", class: 'btn btn-small btn-info check-character-count', id: 'add-description-submit'
-            = link_to "Cancel", "#", id: 'cancel-add-description'
+            #save-buttons
+              = f.submit "Save", class: 'btn btn-small btn-info check-character-count', id: 'add-description-submit'
+              = link_to "Cancel", "#", id: 'cancel-add-description'
     - if display_subgroups_block?(@group)
       =render 'subgroups', subgroups: @subgroups, group: @group
 

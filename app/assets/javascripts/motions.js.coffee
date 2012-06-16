@@ -143,19 +143,11 @@ $ ->
 # prevent default if control-group has error
 $ ->
   $(".check-character-count").click((event) ->
-    if $("control-group").hasClass("error")
-      $('.check-character-count').preventDefault()
+    if $(".control-group").hasClass("error")
+      event.preventDefault()
     else
       $('.check-character-count').submit()
   )
-#$ ->
-  #$(".vote").click((event) ->
-    #if $("control-group").hasClass("error")
-      #$('#new-vote').preventDefault()
-    #else
-      #$('#new-vote').submit()
-      #event.preventDefault()
-  #)
 
 
 

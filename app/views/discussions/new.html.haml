@@ -9,7 +9,7 @@
   = f.label :title, "Title"
   #new-proposal-title
     .control-group
-      .presence-required= f.text_field :title, class: "presence-required inputError limit"
+      = f.text_field :title, class: "presence-required inputError limit-150"
       .error-message Please fill in a discussion title
     .character-counter
   = f.label :comment, "Comment"
@@ -18,5 +18,5 @@
   = f.label :notify_group_upon_creation,
     "Notify group members that this discussion has been created",
     class: "checkbox-label"
-  .check-presence= f.submit "Create discussion", class: "btn btn-info"
+  = f.submit "Create discussion", class: "btn btn-info check-character-count check-presence"
   = f.hidden_field :group_id

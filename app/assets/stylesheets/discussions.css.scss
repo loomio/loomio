@@ -9,13 +9,16 @@
     color: $mid-grey;
     text-align: right;
     position: relative;
-    bottom: 18px;
+    bottom: 20px;
     height: 12px;
     width: 408px;
-		position: relative;
-		bottom: 17px;
 		font-size: $font-tiny;
   }
+  .field_with_errors { display: inline; }
+}
+body.discussions.new {
+  #discussion_notify_group_upon_creation { margin-bottom: 30px; }
+  .btn { display: block; }
 }
 
 .content-discussion {
@@ -73,20 +76,6 @@
       color: $dark-grey;
       font-size: 0.75em;
     }
-  }
-
-  .word-break {
-    /* The following styles prevent unbroken strings from breaking the layout */
-    width: 300px; /* set to whatever width you need */
-    overflow: auto;
-    white-space: -moz-pre-wrap; /* Mozilla */
-    white-space: -hp-pre-wrap; /* HP printers */
-    white-space: -o-pre-wrap; /* Opera 7 */
-    white-space: -pre-wrap; /* Opera 4-6 */
-    white-space: pre-wrap; /* CSS 2.1 */
-    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
-    word-wrap: break-word; /* IE */
-    -moz-binding: url('xbl.xml#wordwrap'); /* Firefox (using XBL) */
   }
 
   .position{
