@@ -17,22 +17,25 @@
               %li= link_to "Leave group", membership, method: :delete, confirm: "Are you sure you wish to leave #{@group.name}?"
 .row
   %section.span4#content-left
-    - if @group.description
+    - if can? :edit, @group || @group.decription
       .content-block
         .content
-          .group-description
-            = @group.description
-    - else
-      - if can? :edit, @group
-        .content-block
-          .empty-placeholder
-            = link_to "Add a group description", "#", id: 'add-description'
-          #add-group-description
-            = form_for @group do |f|
-              = f.hidden_field :id
-              = f.text_field :description, id: 'description-input';
-              = f.submit "Save", class: 'btn btn-small btn-info', id: 'add-description-submit'
-              = link_to "Cancel", "#", id: 'cancel-add-description'
+          #description-placeholder
+            - if @group.description.empty? && ( can? :edit, @group )
+              .empty-placeholder
+                = link_to "Add a group description", "#", id: 'add-description'
+          #group-description
+            - if !@group.description.empty?
+              = @group.description
+              = link_to "edit", "#", id: 'edit-description'
+        #add-group-description
+          = form_for @group do |f|
+            = f.hidden_field :id
+            .control-group
+            = f.text_field :description, id: 'description-input', class: 'inputError limit-250';
+            .character-counter
+            = f.submit "Save", class: 'btn btn-small btn-info check-character-count', id: 'add-description-submit'
+            = link_to "Cancel", "#", id: 'cancel-add-description'
     - if display_subgroups_block?(@group)
       =render 'subgroups', subgroups: @subgroups, group: @group
 

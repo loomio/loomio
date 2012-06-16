@@ -16,12 +16,20 @@ $ ->
   $ ->
     if $("body.groups").length > 0
       $("#add-description").click((event) ->
-        $(".empty-placeholder").toggle()
+        $("#description-placeholder").toggle()
+        $("#add-group-description").toggle()
+        event.preventDefault()
+      )
+      $("#edit-description").click((event) ->
+        $("#group-description").toggle()
         $("#add-group-description").toggle()
         event.preventDefault()
       )
       $("#cancel-add-description").click((event) ->
-        $(".empty-placeholder").toggle()
         $("#add-group-description").toggle()
+        if $("#group-description").text().match(/\S/)
+          $("#group-description").toggle()
+        else
+          $("#description-placeholder").toggle()
         event.preventDefault()
       )

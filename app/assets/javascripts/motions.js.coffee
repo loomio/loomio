@@ -101,7 +101,9 @@ $ ->
     $("#motion_close_date").val(local_datetime)
   )
 
-# character count for statement on discussion:show page
+
+# The following methods are used in the character count validation on text input fields
+# pluralise the word character
 pluralize_characters = ((num) ->
   if(num == 1)
     return num + " character"
@@ -109,49 +111,55 @@ pluralize_characters = ((num) ->
     return num + " characters"
 )
 
-$ ->
-  display_count = ((num) ->
-    if(num >= 0)
-      $(".character_counter").text(pluralize_characters(num) + " left")
-      $(".control-group").removeClass("error")
-    else
-      num = num * (-1)
-      $(".character_counter").text(pluralize_characters(num) + " too long")
-      $(".control-group").addClass("error")
-  )
+# display charcaters left
+display_count = ((num) ->
+  if(num >= 0)
+    $(".character-counter").text(pluralize_characters(num) + " left")
+    $(".control-group").removeClass("error")
+  else
+    num = num * (-1)
+    $(".character-counter").text(pluralize_characters(num) + " too long")
+    $(".control-group").addClass("error")
+)
 
+# character count for 250 characters max
 $ ->
-  $(".limited").keyup(() ->
-    chars = $(".limited").val().length
-    left = 249 - chars
+  $(".limit-250").keyup(() ->
+    $(".error-message").hide()
+    chars = $(".limit-250").val().length
+    left = 250 - chars
     display_count(left)
   )
 
+ #character count for 150 characters max
 $ ->
-  $(".vote").click((event) ->
-    if $("control-group").hasClass("error")
-      $('#new_vote').preventDefault()
-    else
-      $('#new_vote').submit()
-      event.preventDefault()
-  )
-
-# character count for title on discussion:new page
-$ ->
-  $(".limit").keyup(() ->
+  $(".limit-150").keyup(() ->
     $(".error-message").hide()
-    chars = $(".limit").val().length
+    chars = $(".limit-150").val().length
     left = 150 - chars
-    if(left >= 0)
-      $(".character-counter").text(pluralize_characters(left) + " left")
-      $(".control-group").removeClass("error")
-    else
-      left = left * (-1)
-      $(".character-counter").text(pluralize_characters(left) + " too long")
-      $(".control-group").addClass("error")
+    display_count(left)
   )
 
-# adds bootstrap popovers to vote buttons
+# prevent default if control-group has error
+$ ->
+  $(".check-character-count").click((event) ->
+    if $("control-group").hasClass("error")
+      $('.check-character-count').preventDefault()
+    else
+      $('.check-character-count').submit()
+  )
+#$ ->
+  #$(".vote").click((event) ->
+    #if $("control-group").hasClass("error")
+      #$('#new-vote').preventDefault()
+    #else
+      #$('#new-vote').submit()
+      #event.preventDefault()
+  #)
+
+
+
+  # adds bootstrap popovers to vote buttons
 $ ->
   $(".vote").popover
     placement: "top"
