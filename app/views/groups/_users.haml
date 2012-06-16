@@ -21,7 +21,7 @@
   .content-block
     %h1
       Current members
-      #membership-count
+      #membership-count.label
         = group.memberships.count
     .content
       - if group.users_include?(current_user) || current_user.nil?

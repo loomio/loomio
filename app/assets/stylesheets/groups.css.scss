@@ -29,20 +29,31 @@
 
 /**** Group page ****/
 
-.group-description {
+#group-description {
   color: $dark-grey;
   font-size: $font-tiny;
 }
 #add-group-description {
   font-size: $font-tiny;
+  position: relative;
+  bottom: 10px;
   #description-input {
     width: 290px;
     margin-bottom: 5px;
   }
+  .character-counter {
+    float: right;
+    padding-right: 3px;
+    position: relative;
+    bottom: 2px;
+    font-size: $font-small;
+  }
 }
 #cancel-add-description {
+  color: $mid-grey;
   padding-left: 5px;
-  margin-top: 5px;
+  position: relative;
+  top: 4px;
 }
 .empty-placeholder {
   border: 1px dashed $light-grey;
@@ -137,8 +148,11 @@ form#new_membership, #membership-requested {
   display: inline;
   float: right;
   font-size: $font-small;
-  color: #999;
-  padding-right: 8px
+  color: #fff;
+  /*padding-right: 8px;*/
+  background-color: #ccc;
+  position: relative;
+  top: 2px;
 }
 
 /**** Private group form ****/
