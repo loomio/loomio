@@ -41,14 +41,15 @@
     margin-left: 6px;
     height: 19px;
     width: 16px;
-    background-image:url("/assets/info.png");
+    opacity: 0.6;
+    background-image:url("/assets/dark-info.png");
     background-repeat: no-repeat;
     background-position-y: 3px;
     display: inline-block;
     cursor: pointer;
   }
   .info-help:hover {
-    background-image:url("/assets/dark-info.png");
+    opacity: 1;
   }
 }
 
