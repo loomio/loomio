@@ -31,10 +31,10 @@
 
 #group-description {
   color: $dark-grey;
-  font-size: $font-tiny;
+  font-size: $font-small;
 }
 #add-group-description {
-  font-size: $font-tiny;
+  /*font-size: $font-small;*/
   #description-input {
     width: 290px;
     margin-bottom: 5px;
@@ -67,21 +67,22 @@
 #discussions {
   padding: 4px;
   .btn { margin-bottom: 15px; }
-  h4 {
+  .content-block h4 {
     color: $mid-grey;
-    font-size: $font_tiny;
     float: left;
   }
   .info-help {
-    margin-left: 8px;
+    margin-left: 6px;
     height: 19px;
     width: 16px;
     background-image:url("/assets/info.png");
     background-repeat: no-repeat;
-    background-position-y: 1px;
+    background-position-y: 3px;
     display: inline-block;
     @include ie7-inline-block();
     cursor: pointer;
+    position: relative;
+    bottom: 3px;
   }
   .info-help:hover {
     background-image:url("/assets/dark-info.png");
@@ -221,16 +222,16 @@ form#new_membership, #membership-requested {
     width: 400px;
   }
   #proposal-label {
-    font-size: $font-tiny;
+    font-size: $font-small;
     font-style: italic;
   }
   #proposal-title {
-    font-size: $font-tiny;
+    font-size: $font-small;
     color: $mid-grey;
   }
   #proposal-close-date {
-    margin-top: -0.4em;
-    font-size: 0.7em;
+    margin-top: -0.2em;
+    font-size: $font-small;
   }
   #comment-info {
     display: inline-block;
@@ -238,7 +239,7 @@ form#new_membership, #membership-requested {
     margin-top: -4px;
     float: right;
     padding-right: 5px;
-    font-size: $font-tiny;
+    font-size: $font-small;
     text-align: right;
   }
   #total-comments {
@@ -260,7 +261,7 @@ form#new_membership, #membership-requested {
   #activity-count {
     margin-left: 18px;
     height: 10px;
-    font-size: 0.6em;
+    font-size: $font-tinywiny;
     padding: 0.4em;
     padding-top: 0.1em;
   }
