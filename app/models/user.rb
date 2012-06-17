@@ -105,7 +105,7 @@ class User < ActiveRecord::Base
         results << subgroup.parent
       end
     end
-    results
+    results.sort
   end
 
   def subgroups

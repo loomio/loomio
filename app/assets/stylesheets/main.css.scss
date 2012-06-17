@@ -48,7 +48,7 @@ h4 {
 .center-content {
   margin-left: auto;
   margin-right: auto;
-  width: 65%;
+  width: 68%;
 }
 
 #content-main {
@@ -71,8 +71,14 @@ h4 {
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
-  ul { margin-bottom: 0.6em; }
-  li { padding-bottom: 4px; }
+  ul {
+    margin-bottom: 0.6em;
+    list-style: none;
+    margin-left: 0px;
+  }
+  li {
+    padding-bottom: 4px;
+  }
 }
 #content-proposal {
   color: $mid-grey;

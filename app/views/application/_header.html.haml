@@ -17,10 +17,11 @@
               = "My groups"
               %b.caret
           %ul.dropdown-menu
+            %li.new-group
+              =link_to "Add New Group", new_group_path
             - if current_user
-              - current_user.root_groups.each do |group|
-                - unless group == current_user.root_groups.first
-                  %li.divider
+              - current_user.all_root_groups.each_with_index do |group|
+                %li.divider
                 %li.group-item
                   .link-container
                     = link_to group.name, group
