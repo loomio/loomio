@@ -18,7 +18,7 @@
               %b.caret
           %ul.dropdown-menu
             %li.new-group
-              =link_to "Add New Group", new_group_path
+              =link_to "+ Add New Group", new_group_path
             - if current_user
               - current_user.all_root_groups.each_with_index do |group|
                 %li.divider
