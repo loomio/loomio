@@ -1,7 +1,7 @@
 class MotionsController < GroupBaseController
   before_filter :check_motion_destroy_permissions, only: :destroy
   # TODO: Change to "except" (whitelisting) instead of "only" (blacklisting)
-  load_and_authorize_resource :only => [:close_voting, :open_voting]
+  load_and_authorize_resource :except => [:new, :create]
 
   def update
     resource
@@ -56,13 +56,7 @@ class MotionsController < GroupBaseController
   end
 
   def edit
-    resource
-    if @motion.can_be_edited_by?(current_user)
-      edit!
-    else
-      flash[:error] = "Only the author can edit a motion."
-      redirect_to discussion_url(@motion.discussion_id)
-    end
+    @motion = Motion.find(params[:id])
   end
 
   private
