@@ -42,8 +42,8 @@
     - else
       - membership_request = group.membership_requests.find_by_user_id(current_user)
       - if membership_request.present?
-        = link_to "Membership Requested", cancel_request_for_membership(membership_request),
-          method: :delete, class: "btn btn-small", id: "membership-requested",
+        = link_to "Membership Requested", cancel_request_for_membership_path(membership_request),
+          method: :post, class: "btn btn-small", id: "membership-requested",
           confirm: "Are you sure you wish to cancel your membership request from this group?"
       - else
         - if group.parent.nil? || current_user.group_membership(group.parent)
