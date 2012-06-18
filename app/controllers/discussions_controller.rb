@@ -1,8 +1,9 @@
 class DiscussionsController < GroupBaseController
-  before_filter :check_group_read_permissions
   load_and_authorize_resource :except => [:show, :create]
+  before_filter :check_group_read_permissions, :only => :show
 
   def new
+    @group = Group.find(params[:discussion][:group_id])
     @discussion = Discussion.new(group: Group.find(params[:discussion][:group_id]))
   end
 

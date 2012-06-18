@@ -33,10 +33,16 @@ describe MotionsController do
         post :create, :motion => { :discussion_id => discussion.id },
           :group_id => group.id
       end
-
       it { response.should redirect_to(discussion_url(discussion)) }
-
       it { flash[:success].should =~ /Proposal successfully created./ }
+    end
+
+    context "viewing a motion" do
+      it "redirects to discussion" do
+        discussion.stub(:current_motion).and_return(motion)
+        get :show, :id => motion.id
+        response.should redirect_to(discussion_url(discussion))
+      end
     end
 
     context "deleting a motion" do

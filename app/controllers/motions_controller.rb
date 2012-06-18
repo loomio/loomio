@@ -1,14 +1,10 @@
 class MotionsController < GroupBaseController
-  load_and_authorize_resource :except => [:new, :create]
+  load_and_authorize_resource :except => [:create, :show]
+  before_filter :check_group_read_permissions, :only => :show
 
   def update
     resource
     update! { discussion_url(@motion.discussion_id) }
-  end
-
-  def new
-    @motion = Motion.new
-    @motion.group_id = params[:group_id]
   end
 
   def create
@@ -57,4 +53,19 @@ class MotionsController < GroupBaseController
   def edit
     @motion = Motion.find(params[:id])
   end
+
+  private
+
+    def group
+      @group ||= find_group
+    end
+
+    def find_group
+      if (params[:id] && (params[:id] != "new"))
+        Motion.find(params[:id]).group
+      elsif params[:motion][:discussion_id]
+        Discussion.find(params[:motion][:discussion_id]).group
+      end
+    end
+
 end
