@@ -24,6 +24,19 @@ header{
 .dropdown-menu .divider { margin: 0px }
 .dropdown.open .dropdown-toggle { padding-bottom: 10px; }
 
+ /*sign in link (user not logged in) */
+.navbar-wrapper .sign-in {
+  float: right;
+  a {color: $light-grey; }
+  margin-top: 10px;
+}
+.sign-in:hover {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 /* navigation*/
 .navbar {
   .nav{ padding-top: 2px; }
@@ -49,6 +62,7 @@ header{
 			background-color: #383737;
 		}
   }
+
   /* group dropdown nav */
   .group-container{
     #title {
