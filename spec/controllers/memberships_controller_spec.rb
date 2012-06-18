@@ -152,60 +152,6 @@ describe MembershipsController do
           it { flash[:warning].should =~ /Membership request has already been ignored/ }
         end
       end
-
-      it 'cannot add an admin' do
-        @membership = @group.add_member!(@new_user)
-        post :make_admin, :id => @membership.id
-        flash[:error].should =~ /Access denied./
-        response.should redirect_to(@group)
-        assigns(:membership).access_level.should == 'member'
-        @group.admins.should_not include(@new_user)
-      end
-
-      it "cannot remove a member" do
-        @group.add_member!(@new_user)
-        @membership = @group.memberships.find_by_user_id(@new_user.id)
-        delete :destroy, :id => @membership.id
-        flash[:error].should =~ /Access denied/
-        response.should redirect_to(group_url(@group))
-        @group.users.should include(@new_user)
-      end
-
-      it "cannot remove an admin" do
-        @membership = @group.add_admin!(@new_user)
-        post :remove_admin, :id => @membership.id
-        flash[:error].should =~ /Access denied/
-        response.should redirect_to(group_url(@group))
-        @group.admins.should include(@new_user)
-      end
-    end
-
-    context 'non group member' do
-      it "cannot authorize a membership request for another user" do
-        @membership = @group.add_request!(@new_user)
-        post :approve_request, :id => @membership.id
-        flash[:error].should =~ /Access denied/
-        response.should redirect_to(group_url(@group))
-        assigns(:membership).access_level.should == 'request'
-        assigns(:membership).id.should == @membership.id
-      end
-
-      it "cannot remove a member" do
-        @membership = @group.add_member!(@new_user)
-        delete :destroy, :id => @membership.id
-        flash[:error].should =~ /Access denied/
-        response.should redirect_to(group_url(@group))
-        @group.users.should include(@new_user)
-      end
-
-      it "cannot remove an admin" do
-        @group.add_admin!(@new_user)
-        @membership = @group.memberships.find_by_user_id(@new_user.id)
-        delete :destroy, :id => @membership.id
-        flash[:error].should =~ /Access denied/
-        response.should redirect_to(group_url(@group))
-        @group.admins.should include(@new_user)
-      end
     end
   end
 end
