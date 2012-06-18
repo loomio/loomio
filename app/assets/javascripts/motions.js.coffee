@@ -91,7 +91,7 @@ $ ->
 #** specific close date future validation
 $ ->
   $(".date-error-message").hide()
-  $(".check-future-date").click((event, ui) ->
+  $(".validate-future-date").click((event, ui) ->
     time_now = new Date()
     selected_date = new Date($("#motion_close_date").val())
     if selected_date <= time_now
@@ -107,7 +107,7 @@ remove_date_error = () ->
 #** general presence validations: use this function any where just assign the class .presence-required
 #   to the text field in question and the .check-presence to the submit button **
 $ ->
-  $(".check-presence").click((event, ui) ->
+  $(".validate-presence").click((event, ui) ->
     if $(".inputError").val() == ""
       $(".text-present").addClass("error")
       $(".error-message").show()

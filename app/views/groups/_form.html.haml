@@ -23,4 +23,4 @@
       = f.label :email_new_motion,
         "Email group members when a new motion is created in this group",
         class: "checkbox-label"
-    .check-presence= f.submit class: "btn btn-info", id: "update-group"
+    = f.submit class: "btn btn-info validate-presence", id: "update-group"
