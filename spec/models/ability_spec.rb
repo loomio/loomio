@@ -45,6 +45,7 @@ describe "User abilities" do
     it { should be_able_to(:update, user_motion) }
     it { should be_able_to(:close_voting, user_motion) }
     it { should be_able_to(:open_voting, user_motion) }
+    it { should be_able_to(:destroy, user_motion) }
     it { should_not be_able_to(:update, other_users_motion) }
     it { should_not be_able_to(:destroy, other_users_motion) }
     it { should_not be_able_to(:close_voting, other_users_motion) }
