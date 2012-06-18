@@ -17,7 +17,9 @@ class Ability
         (group.parent.users || []).include?(user))
     end
 
-    can [:update, :add_subgroup], Group, :id => user.adminable_group_ids
+    can :update, Group, :id => user.adminable_group_ids
+
+    can :add_subgroup, Group, :id => user.group_ids
 
     can :add_members, Group do |group|
       if group.members_invitable_by == :members
