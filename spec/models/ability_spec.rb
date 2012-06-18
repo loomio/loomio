@@ -3,22 +3,28 @@ require "cancan/matchers"
 describe "User abilities" do
   let(:user) { User.make! }
   let(:other_user) { User.make! }
-  let(:group) { Group.make! }
-  let(:membership_request) { group.add_request!(User.make!) }
-  let(:discussion) { create_discussion(group: group) }
-  let(:new_discussion) { user.authored_discussions.new(
-                         group: group, title: "new discussion") }
-  let(:user_comment) { discussion.add_comment(user, "hello") }
-  let(:another_user_comment) { discussion.add_comment(other_user, "hello") }
 
   let(:ability) { Ability.new(user) }
   subject { ability }
 
+
   context "member of a group" do
+    let(:group) { Group.make! }
+    let(:membership_request) { group.add_request!(User.make!) }
+    let(:discussion) { create_discussion(group: group) }
+    let(:new_discussion) { user.authored_discussions.new(
+                           group: group, title: "new discussion") }
+    let(:user_comment) { discussion.add_comment(user, "hello") }
+    let(:another_user_comment) { discussion.add_comment(other_user, "hello") }
+    let(:user_motion) { create_motion(author: user, discussion: discussion) }
+    let(:other_users_motion) { create_motion(author: other_user, discussion: discussion) }
+    let(:new_motion) { Motion.new(discussion_id: discussion.id) }
+
     before do
       @user_membership = group.add_member!(user)
       @other_user_membership = group.add_member!(other_user)
     end
+
     it { should_not be_able_to(:update, group) }
     it { should be_able_to(:new_proposal, discussion) }
     it { should be_able_to(:add_comment, discussion) }
@@ -33,6 +39,13 @@ describe "User abilities" do
     it { should_not be_able_to(:make_admin, @other_user_membership) }
     it { should_not be_able_to(:destroy, @other_user_membership) }
     it { should be_able_to(:destroy, @user_membership) }
+    it { should be_able_to(:create, new_motion) }
+    it { should be_able_to(:update, user_motion) }
+    it { should be_able_to(:close_voting, user_motion) }
+    it { should be_able_to(:open_voting, user_motion) }
+    it { should_not be_able_to(:update, other_users_motion) }
+    it { should_not be_able_to(:close_voting, other_users_motion) }
+    it { should_not be_able_to(:open_voting, other_users_motion) }
 
     it "should not be able to delete the only member of a group" do
       @other_user_membership.destroy
@@ -61,16 +74,24 @@ describe "User abilities" do
     end
   end
 
+
   context "admin of a group" do
+    let(:group) { Group.make! }
+    let(:discussion) { create_discussion(group: group) }
+    let(:other_users_motion) { create_motion(author: other_user, discussion: discussion) }
+
     before do
       @user_membership = group.add_admin! user
-      @other_user_membership = group.add_member! User.make!
+      @other_user_membership = group.add_member! other_user
       @membership_request = group.add_request! User.make!
     end
 
     it { should be_able_to(:make_admin, @membership_request) }
     it { should be_able_to(:remove_admin, @membership_request) }
     it { should be_able_to(:update, group) }
+    it { should_not be_able_to(:update, other_users_motion) }
+    it { should be_able_to(:close_voting, other_users_motion) }
+    it { should be_able_to(:open_voting, other_users_motion) }
 
     it "should not be able to delete the only admin of a group" do
       should_not be_able_to(:destroy, @user_membership)
@@ -82,13 +103,16 @@ describe "User abilities" do
         group.save
       end
       it { should be_able_to(:add_members, group) }
-      it { should be_able_to(:approve_request, membership_request) }
+      it { should be_able_to(:approve_request, @membership_request) }
     end
   end
+
 
   context "non-member of a group" do
     let(:group) { Group.make! }
     let(:discussion) { create_discussion(group: group) }
+    let(:new_motion) { Motion.new(discussion_id: discussion.id) }
+    let(:motion) { create_motion(discussion: discussion) }
     let(:new_discussion) { user.authored_discussions.new(
                            group: group, title: "new discussion") }
     let(:another_user_comment) { discussion.add_comment(discussion.author, "hello") }
@@ -100,5 +124,9 @@ describe "User abilities" do
     it { should_not be_able_to(:like, another_user_comment) }
     it { should_not be_able_to(:unlike, another_user_comment) }
     it { should_not be_able_to(:create, new_discussion) }
+    it { should_not be_able_to(:create, new_motion) }
+    it { should_not be_able_to(:close_voting, motion) }
+    it { should_not be_able_to(:open_voting, motion) }
+    it { should_not be_able_to(:update, motion) }
   end
 end

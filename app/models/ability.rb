@@ -4,11 +4,6 @@ class Ability
   def initialize(user)
 
     user ||= User.new
-
-    #
-    # USERS
-    #
-
     cannot :sign_up, User
 
     #
@@ -66,7 +61,19 @@ class Ability
     can :create, Discussion, :group => { :id => user.group_ids }
 
     can :destroy, Comment, user_id: user.id
+
     can [:like, :unlike], Comment, :discussion => { :id => user.discussion_ids }
 
+    #
+    # MOTIONS
+    #
+
+    can :create, Motion, :discussion => { :id => user.discussion_ids }
+
+    can :update, Motion, :author => { :id => user.id }
+
+    can [:close_voting, :open_voting], Motion do |motion|
+      (user == motion.author) || motion.group.admins.include?(user)
+    end
   end
 end

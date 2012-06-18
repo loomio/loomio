@@ -37,6 +37,9 @@ class User < ActiveRecord::Base
 
   has_many :motions,
            :through => :discussions
+  has_many :authored_motions,
+           :class_name => 'Motion',
+           :foreign_key => 'author_id'
   has_many :motions_voting,
            :through => :discussions,
            :source => :motions,
