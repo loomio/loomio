@@ -25,6 +25,7 @@ describe "User abilities" do
       @other_user_membership = group.add_member!(other_user)
     end
 
+    it { should be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
     it { should be_able_to(:new_proposal, discussion) }
     it { should be_able_to(:add_comment, discussion) }
@@ -48,9 +49,21 @@ describe "User abilities" do
     it { should_not be_able_to(:close_voting, other_users_motion) }
     it { should_not be_able_to(:open_voting, other_users_motion) }
 
-    it "should not be able to delete the only member of a group" do
+    it "cannot delete the only member of a group" do
       @other_user_membership.destroy
       should_not be_able_to(:destroy, @user_membership)
+    end
+
+    context "viewing a subgroup they do not belong to" do
+      let(:subgroup) { Group.make!(parent: group) }
+      context "subgroup viewable by members" do
+        before { subgroup.update_attributes(:viewable_by => :members) }
+        it { should_not be_able_to(:show, subgroup) }
+      end
+      context "subgroup viewable by parent group members" do
+        before { subgroup.update_attributes(:viewable_by => :parent_group_members) }
+        it { should be_able_to(:show, subgroup) }
+      end
     end
 
     context "group members invitable_by: members" do
@@ -131,5 +144,14 @@ describe "User abilities" do
     it { should_not be_able_to(:open_voting, motion) }
     it { should_not be_able_to(:update, motion) }
     it { should_not be_able_to(:destroy, motion) }
+
+    context "group viewable_by: everyone" do
+      before { group.update_attributes(:viewable_by => :everyone) }
+      it { should be_able_to(:show, group) }
+    end
+    context "group viewable_by: members" do
+      before { group.update_attributes(:viewable_by => :members) }
+      it { should_not be_able_to(:show, group) }
+    end
   end
 end

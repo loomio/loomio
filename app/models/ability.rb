@@ -10,6 +10,13 @@ class Ability
     # GROUPS
     #
 
+    can :show, Group do |group|
+      (group.viewable_by == :everyone) ||
+      (group.users.include? user)      ||
+      (group.viewable_by == :parent_group_members &&
+        (group.parent.users || []).include?(user))
+    end
+
     can [:update, :add_subgroup], Group, :id => user.adminable_group_ids
 
     can :add_members, Group do |group|
