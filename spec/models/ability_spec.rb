@@ -44,6 +44,7 @@ describe "User abilities" do
     it { should be_able_to(:close_voting, user_motion) }
     it { should be_able_to(:open_voting, user_motion) }
     it { should_not be_able_to(:update, other_users_motion) }
+    it { should_not be_able_to(:destroy, other_users_motion) }
     it { should_not be_able_to(:close_voting, other_users_motion) }
     it { should_not be_able_to(:open_voting, other_users_motion) }
 
@@ -90,6 +91,7 @@ describe "User abilities" do
     it { should be_able_to(:remove_admin, @membership_request) }
     it { should be_able_to(:update, group) }
     it { should_not be_able_to(:update, other_users_motion) }
+    it { should be_able_to(:destroy, other_users_motion) }
     it { should be_able_to(:close_voting, other_users_motion) }
     it { should be_able_to(:open_voting, other_users_motion) }
 
@@ -128,5 +130,6 @@ describe "User abilities" do
     it { should_not be_able_to(:close_voting, motion) }
     it { should_not be_able_to(:open_voting, motion) }
     it { should_not be_able_to(:update, motion) }
+    it { should_not be_able_to(:destroy, motion) }
   end
 end

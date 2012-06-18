@@ -34,24 +34,26 @@ describe MotionsController do
           :group_id => group.id
       end
 
-      it "redirects to discussion url" do
-        response.should redirect_to(discussion_url(discussion))
-      end
+      it { response.should redirect_to(discussion_url(discussion)) }
 
-      it "gives flash success message" do
-        flash[:success].should =~ /Proposal successfully created./
-      end
+      it { flash[:success].should =~ /Proposal successfully created./ }
     end
 
     context "deleting a motion" do
-      it "succeeds and redirects for author" do
+      before do
+        motion.stub(:destroy)
+        controller.stub(:authorize!).with(:destroy, motion).and_return(true)
+      end
+      it "destroys motion" do
         motion.should_receive(:destroy)
-        motion.stub(:has_admin_user?).with(user).and_return(false)
-        motion.stub(:author).and_return(user)
-
         delete :destroy, id: motion.id
-
+      end
+      it "redirects to group" do
+        delete :destroy, id: motion.id
         response.should redirect_to(group)
+      end
+      it "gives flash success message" do
+        delete :destroy, id: motion.id
         flash[:success].should =~ /Proposal deleted/
       end
     end
