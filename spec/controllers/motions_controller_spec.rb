@@ -20,6 +20,11 @@ describe MotionsController do
       sign_in user
     end
 
+    context "editing a motion" do
+      before { get :edit, id: motion.id }
+      it { assigns(:motion).id.should == motion.id }
+    end
+
     context "creating a motion" do
       before do
         Motion.stub(:new).and_return(motion)
@@ -38,25 +43,6 @@ describe MotionsController do
       end
     end
 
-    context "editing a motion" do
-      it "redirects with error if they aren't the author" do
-        motion.should_receive(:can_be_edited_by?).with(user).and_return(false)
-
-        get :edit, id: motion.id
-
-        flash[:error].should =~ /Only the author/
-        response.should be_redirect
-      end
-
-      it "succeeds if they are the author" do
-        motion.should_receive(:can_be_edited_by?).with(user).at_least(:once).and_return(true)
-
-        get :edit, id: motion.id
-
-        response.should be_success
-      end
-    end
-
     context "deleting a motion" do
       it "succeeds and redirects for author" do
         motion.should_receive(:destroy)
@@ -67,28 +53,6 @@ describe MotionsController do
 
         response.should redirect_to(group)
         flash[:success].should =~ /Proposal deleted/
-      end
-
-      it "succeeds and redirects for group admin" do
-        motion.should_receive(:destroy)
-        motion.stub(:has_admin_user?).with(user).and_return(true)
-        motion.stub(:author).and_return(double("user"))
-
-        delete :destroy, id: motion.id
-
-        response.should redirect_to(group)
-        flash[:success].should =~ /Proposal deleted/
-      end
-
-      it "displays error if not author or group admin" do
-        motion.should_not_receive(:destroy)
-        motion.stub(:has_admin_user?).with(user).and_return(false)
-        motion.stub(:author).and_return(double("user"))
-
-        delete :destroy, id: motion.id
-
-        response.should redirect_to(previous_url)
-        flash[:error].should =~ /You do not have permission to delete this motion./
       end
     end
   end
