@@ -1,6 +1,4 @@
 class MotionsController < GroupBaseController
-  before_filter :check_motion_destroy_permissions, only: :destroy
-  # TODO: Change to "except" (whitelisting) instead of "only" (blacklisting)
   load_and_authorize_resource :except => [:new, :create]
 
   def update
@@ -37,7 +35,8 @@ class MotionsController < GroupBaseController
 
   def destroy
     resource
-    destroy! { @motion.group }
+    @motion.destroy
+    redirect_to group_url(@motion.group)
     flash[:success] = "Proposal deleted."
   end
 
@@ -58,45 +57,4 @@ class MotionsController < GroupBaseController
   def edit
     @motion = Motion.find(params[:id])
   end
-
-  private
-    def group
-      @group ||= find_group
-    end
-
-    def find_group
-      if (params[:id] && (params[:id] != "new"))
-        Motion.find(params[:id]).group
-      elsif params[:group_id]
-        Group.find(params[:group_id])
-      end
-    end
-
-    def check_motion_destroy_permissions
-      unless resource.can_be_deleted_by?(current_user)
-        flash[:error] = "You do not have permission to delete this motion."
-        redirect_to :back
-      end
-    end
-
-    def check_motion_close_permissions
-      unless resource.can_be_closed_by?(current_user)
-        flash[:error] = "You do not have permission to close this motion."
-        redirect_to :back
-      end
-    end
-
-    def check_motion_update_permissions
-      unless resource.can_be_edited_by?(current_user)
-        flash[:error] = "Only the author can edit a motion."
-        redirect_to :back
-      end
-    end
-
-    def check_motion_create_permissions
-      unless group.users.include?(current_user)
-        flash[:error] = "You don't have permission to create a motion for this group."
-        redirect_to :back
-      end
-    end
 end

@@ -72,7 +72,7 @@ class Ability
 
     can :update, Motion, :author => { :id => user.id }
 
-    can [:close_voting, :open_voting], Motion do |motion|
+    can [:close_voting, :open_voting, :destroy], Motion do |motion|
       (user == motion.author) || motion.group.admins.include?(user)
     end
   end
