@@ -8,7 +8,7 @@
 = form_for @discussion do |f|
   = f.label :title, "Title"
   #new-proposal-title
-    .control-group
+    .control-group.text-present
       .presence-required= f.text_field :title, class: "presence-required inputError limit"
       .error-message Please fill in a discussion title
     .character-counter
