@@ -53,6 +53,15 @@ describe User do
     user.authored_discussions.should include(discussion)
   end
 
+  it "has authored motions" do
+    user = User.make!
+    group = Group.make!
+    group.add_member!(user)
+    discussion = create_discussion(group: group)
+    motion = create_motion(discussion: discussion, author: user)
+    user.authored_motions.should include(motion)
+  end
+
   it "can be invited" do
     inviter = User.make!
     group = Group.make!

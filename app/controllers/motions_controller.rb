@@ -1,9 +1,7 @@
 class MotionsController < GroupBaseController
-  before_filter :check_group_read_permissions
-  before_filter :check_motion_create_permissions, only: [:create, :new]
-  before_filter :check_motion_update_permissions, only: [:update, :edit]
   before_filter :check_motion_destroy_permissions, only: :destroy
-  before_filter :check_motion_close_permissions, only: [:open_voting, :close_voting]
+  # TODO: Change to "except" (whitelisting) instead of "only" (blacklisting)
+  load_and_authorize_resource :only => [:close_voting, :open_voting]
 
   def update
     resource
@@ -16,13 +14,13 @@ class MotionsController < GroupBaseController
   end
 
   def create
-    @motion = Motion.new(params[:motion])
-    @motion.author = current_user
+    @motion = current_user.authored_motions.new(params[:motion])
+    authorize! :create, @motion
     if @motion.save
-      flash[:success] = "Motion sucessfully created."
+      flash[:success] = "Proposal successfully created."
       redirect_to discussion_path(@motion.discussion)
     else
-      flash[:success] = "Motion sucessfully created."
+      flash[:warning] = "Proposal could not be created"
       redirect_to :back
     end
   end
@@ -40,7 +38,7 @@ class MotionsController < GroupBaseController
   def destroy
     resource
     destroy! { @motion.group }
-    flash[:success] = "Motion deleted."
+    flash[:success] = "Proposal deleted."
   end
 
   # CUSTOM ACTIONS
@@ -62,7 +60,7 @@ class MotionsController < GroupBaseController
     if @motion.can_be_edited_by?(current_user)
       edit!
     else
-      flash[:error] = "Only the facilitator or author can edit a motion."
+      flash[:error] = "Only the author can edit a motion."
       redirect_to discussion_url(@motion.discussion_id)
     end
   end
