@@ -145,12 +145,6 @@ class Group < ActiveRecord::Base
     return true if (parent && parent.admins.include?(user))
   end
 
-  def can_be_viewed_by?(user)
-    return true if viewable_by == :everyone
-    return true if users.include?(user)
-    return true if viewable_by == :parent_group_members && (parent.users || []).include?(user)
-  end
-
   #
   # DISCUSSION LISTS
   #

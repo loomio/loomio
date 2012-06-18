@@ -3,7 +3,7 @@ class GroupBaseController < BaseController
 
   private
     def check_group_read_permissions
-      unless group.can_be_viewed_by? current_user
+      unless can? :show, group
         if current_user
           render 'groups/private_or_not_found'
         else
