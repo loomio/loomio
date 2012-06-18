@@ -93,7 +93,6 @@ class MembershipsController < BaseController
       end
       redirect_to @membership.group
     else
-      flash[:warning] = "User is not a member of the group."
       redirect_to :back
     end
   end

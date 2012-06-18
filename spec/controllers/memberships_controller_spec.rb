@@ -87,7 +87,6 @@ describe MembershipsController do
           before { delete :destroy, :id => @membership.id }
 
           it { response.should redirect_to(@group) }
-          it { flash[:warning].should =~ /User is not a member of the group/ }
         end
       end
 
