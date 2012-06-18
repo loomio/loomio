@@ -26,9 +26,9 @@ Loomio::Application.routes.draw do
   resources :memberships, except: [:new, :update, :show] do
     post :make_admin, on: :member
     post :remove_admin, on: :member
-    post :approve_request, on: :member, as: :approve_membership_request
-    post :ignore_request, on: :member, as: :ignore_membership_request
-    post :cancel_request, on: :member, as: :cancel_membership_request
+    post :approve_request, on: :member, as: :approve_request_for
+    post :ignore_request, on: :member, as: :ignore_request_for
+    post :cancel_request, on: :member, as: :cancel_request_for
   end
   resources :users
   resources :comments, only: :destroy do

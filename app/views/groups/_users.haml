@@ -42,9 +42,9 @@
     - else
       - membership_request = group.membership_requests.find_by_user_id(current_user)
       - if membership_request.present?
-        = link_to "Membership Requested", membership_request, method: :delete,
-          confirm: "Are you sure you wish to withdraw your membership request from this group?",
-          class: "btn btn-small", id: "membership-requested"
+        = link_to "Membership Requested", cancel_request_for_membership(membership_request),
+          method: :delete, class: "btn btn-small", id: "membership-requested",
+          confirm: "Are you sure you wish to cancel your membership request from this group?"
       - else
         - if group.parent.nil? || current_user.group_membership(group.parent)
           =form_for(Membership.new) do |f|
