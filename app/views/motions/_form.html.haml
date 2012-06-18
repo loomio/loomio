@@ -1,17 +1,20 @@
 #motion-form
   =form_for(*form_args) do |f|
-    .control-group
+    .control-group.text-present
       = f.label :name, "Title", {class: "control-label", for: "inputError"}
       = f.text_field :name, class: "inputError"
       %span.error-message Please fill in a proposal title
     #closing-inputs
-      = f.label :close_date, "Closing"
-      = text_field_tag :input_date, nil, class: "date-input"
-      = select_hour(@input_time, ampm: true)
+      .control-group.future-date
+        = f.label :close_date, "Closing", {class: "control-label", for: "inputError"}
+        = text_field_tag :input_date, nil, class: "date-input inputError"
+        = select_hour(@input_time, ampm: true)
+        %span.date-error-message
+          ='Please give a future close date (The date you gave has past)'
     #description
       = f.label :description, "Details"
       = f.text_area :description
-    .check-presence
+    .check-presence.check-future-date
       =f.submit class: "btn submit btn-info"
     =f.hidden_field :close_date, as: :hidden
     =f.hidden_field :phase, as: :hidden, value: "voting"

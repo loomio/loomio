@@ -1,0 +1,10 @@
+@import "settings";
+
+.date-error-message {
+  font-size: $font-small;
+  line-height: 1em;
+  display: inline-block;
+  width: 200px;
+  margin-left: 5px;
+  color: $error-color;
+}

@@ -1,6 +1,6 @@
 #group-form
   =form_for(group) do |f|
-    .control-group
+    .control-group.text-present
       = f.label :name, "Group Name", {class: "control-label", for: "group-name"}
       = f.text_field :name, class: "inputError", id: "group-name"
       %span.error-message Please fill in a title
