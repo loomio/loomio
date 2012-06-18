@@ -75,5 +75,9 @@ class Ability
     can [:close_voting, :open_voting, :destroy], Motion do |motion|
       (user == motion.author) || motion.group.admins.include?(user)
     end
+
+    can :show, Motion do |motion|
+      can? :show, motion.group
+    end
   end
 end
