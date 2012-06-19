@@ -64,25 +64,11 @@ $ ->
         date_string = "#{local_datetime.getDate()} #{month[local_datetime.getMonth()]}"
       $(element).html(String(date_string))
     )
-#** presence validations: use this function any where just assign the class .presence-required
-#   to the text field in question and the .check-presence to the submit button **
-$ ->
-  $(".check-presence").click((event, ui) ->
-    if $(".inputError").val() == ""
-      $(".control-group").addClass("error")
-      $(".error-message").show()
-      false
-  )
-
-$ ->
-  $(".inputError").keyup(() ->
-    $(".control-group").removeClass("error")
-    $(".error-message").hide()
-  )
 
 # Reload hidden close_date field
 $ ->
   $("#input_date").change((e) ->
+    remove_date_error()
     date = $(this).val()
     local_datetime = new Date()
     local_datetime.setYear(parseInt(date.substring(6,10)))
@@ -93,6 +79,7 @@ $ ->
 
 $ ->
   $("#date_hour").change((e) ->
+    remove_date_error()
     date = $("#input_date").val()
     local_datetime = new Date()
     local_datetime.setYear(parseInt(date.substring(6,10)))
@@ -104,6 +91,39 @@ $ ->
 
 # The following methods are used in the character count validation on text input fields
 # pluralise the word character
+#** specific close date future validation
+$ ->
+  $(".date-error-message").hide()
+  $(".validate-future-date").click((event, ui) ->
+    time_now = new Date()
+    selected_date = new Date($("#motion_close_date").val())
+    if selected_date <= time_now
+      $(".future-date").addClass("error")
+      $(".date-error-message").show()
+      false
+  )
+
+remove_date_error = () ->
+  $(".future-date").removeClass("error")
+  $(".date-error-message").hide()
+
+#** general presence validations: use this function any where just assign the class .presence-required
+#   to the text field in question and the .check-presence to the submit button **
+$ ->
+  $(".validate-presence").click((event, ui) ->
+    if $(".inputError").val() == ""
+      $(".text-present").addClass("error")
+      $(".error-message").show()
+      false
+  )
+
+$ ->
+  $(".inputError").keyup(() ->
+    $(".text-present").removeClass("error")
+    $(".error-message").hide()
+  )
+
+# character count for statement on discussion:show page
 pluralize_characters = ((num) ->
   if(num == 1)
     return num + " character"

@@ -2,6 +2,11 @@
 /*@import "bootstrap";*/
 @import "mixins";
 
+/** new discussion **/
+body.discussions.new {
+  .btn { display: block; }
+}
+
 /** new proposal form*/
 
 #new-proposal-title {
@@ -239,28 +244,4 @@ body.discussions.new {
       font-size: $font-tiny;
     }
   }
-}
-
-/*  New & Edit motion form */
-#motion-form{
-  .input {
-    margin-left: 0px;
-    display: inline-block;
-    /*@include ie7-inline-block();*/
-  }
-  .clearfix { padding-top: 0px; margin-bottom: 0px; }
-  #closing-inputs {
-    height: 40px;
-    #input_date{
-      width: 140px;
-      display: inline-block;
-      /*@include ie7-inline-block();*/
-    }
-    select {
-      width: 100px;
-      display: inline-block;
-      /*@include ie7-inline-block();*/
-    }
-  }
-  #description { margin-top: 31px; }
 }
