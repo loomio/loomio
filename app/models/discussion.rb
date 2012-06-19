@@ -31,11 +31,6 @@ class Discussion < ActiveRecord::Base
     group.users.include? user
   end
 
-  def can_have_proposal_created_by?(user)
-    group.users.include? user
-  end
-
-
   #
   # COMMENT METHODS
   #

@@ -11,18 +11,18 @@ class Ability
     #
 
     can :show, Group, :viewable_by => :everyone
-    can :show, Group, :viewable_by => :members, :users => { :id => user.id }
+    can :show, Group, :viewable_by => :members, :id => user.group_ids
     can :show, Group, :viewable_by => :parent_group_members,
-                      :parent => { :users => { :id => user.id } }
+                      :parent_id => user.group_ids
 
     can :update, Group, :id => user.adminable_group_ids
 
     can :add_subgroup, Group, :id => user.group_ids
 
     can :add_members, Group, :members_invitable_by => :members,
-                             :users => { :id => user.id }
+                             :id => user.group_ids
     can :add_members, Group, :members_invitable_by => :admins,
-                             :admins => { :id => user.id }
+                             :id => user.adminable_group_ids
 
     can [:create, :index, :request_membership], Group
 
@@ -39,10 +39,10 @@ class Ability
     end
 
     can [:make_admin, :remove_admin], Membership,
-      :group => { :id => user.adminable_group_ids }
+      :group_id => user.adminable_group_ids
 
     can :destroy, Membership, :user_id => user.id
-    can :destroy, Membership, :group => { :admins => { :id => user.id } }
+    can :destroy, Membership, :group_id => user.adminable_group_ids
     cannot :destroy, Membership do |membership|
       (membership.group.users.size == 1) ||
       (membership.admin? and membership.group.admins.size == 1)
@@ -52,15 +52,11 @@ class Ability
     # DISCUSSIONS / COMMENTS
     #
 
-    can :new_proposal, Discussion do |discussion|
-      discussion.can_have_proposal_created_by? user
-    end
+    can :new_proposal, Discussion, :group_id => user.group_ids
 
-    can :add_comment, Discussion do |discussion|
-      discussion.can_be_commented_on_by? user
-    end
+    can :add_comment, Discussion, :group_id => user.group_ids
 
-    can :create, Discussion, :group => { :id => user.group_ids }
+    can :create, Discussion, :group_id => user.group_ids
 
     can :destroy, Comment, user_id: user.id
 
@@ -70,16 +66,12 @@ class Ability
     # MOTIONS
     #
 
-    can :create, Motion, :discussion => { :id => user.discussion_ids }
+    can :create, Motion, :discussion_id => user.discussion_ids
 
-    can :update, Motion, :author => { :id => user.id }
+    can :update, Motion, :author_id => user.id
 
     can [:destroy, :close_voting, :open_voting], Motion, :author_id => user.id
     can [:destroy, :close_voting, :open_voting], Motion,
-      :discussion => { :group => { :admins => { :id => user.id } } }
-
-    can :show, Motion do |motion|
-      can? :show, motion.group
-    end
+      :discussion => { :group_id => user.adminable_group_ids }
   end
 end
