@@ -1,6 +1,6 @@
 #group-form
   =form_for(group) do |f|
-    .control-group
+    .control-group.text-present
       = f.label :name, "Group Name", {class: "control-label", for: "group-name"}
       = f.text_field :name, class: "inputError", id: "group-name"
       %span.error-message Please fill in a title
@@ -23,4 +23,4 @@
       = f.label :email_new_motion,
         "Email group members when a new motion is created in this group",
         class: "checkbox-label"
-    .check-presence= f.submit class: "btn btn-info", id: "update-group"
+    = f.submit class: "btn btn-info validate-presence", id: "update-group"
