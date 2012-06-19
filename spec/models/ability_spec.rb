@@ -56,6 +56,26 @@ describe "User abilities" do
       should_not be_able_to(:destroy, @user_membership)
     end
 
+    context "group members invitable by members" do
+      before { group.update_attributes(:members_invitable_by => :members) }
+      it { should be_able_to(:add_members, group) }
+      it { should be_able_to(:approve_request, membership_request) }
+      it { should be_able_to(:ignore_request, membership_request) }
+      it { should_not be_able_to(:destroy, @other_user_membership) }
+    end
+
+    context "group members invitable by admins" do
+      before { group.update_attributes(:members_invitable_by => :admins) }
+      it { should_not be_able_to(:add_members, group) }
+      it { should_not be_able_to(:approve_request, membership_request) }
+      it { should_not be_able_to(:ignore_request, membership_request) }
+    end
+
+    context "group viewable by members" do
+      before { group.update_attributes(:viewable_by => :members) }
+      it { should be_able_to(:show, group) }
+    end
+
     context "viewing a subgroup they do not belong to" do
       let(:subgroup) { Group.make!(parent: group) }
       context "subgroup viewable by members" do
@@ -66,27 +86,6 @@ describe "User abilities" do
         before { subgroup.update_attributes(:viewable_by => :parent_group_members) }
         it { should be_able_to(:show, subgroup) }
       end
-    end
-
-    context "group members invitable_by: members" do
-      before do
-        group.members_invitable_by = "members"
-        group.save
-      end
-      it { should be_able_to(:add_members, group) }
-      it { should be_able_to(:approve_request, membership_request) }
-      it { should be_able_to(:ignore_request, membership_request) }
-      it { should_not be_able_to(:destroy, @other_user_membership) }
-    end
-
-    context "group members invitable_by: admins" do
-      before do
-        group.members_invitable_by = "admins"
-        group.save
-      end
-      it { should_not be_able_to(:add_members, group) }
-      it { should_not be_able_to(:approve_request, membership_request) }
-      it { should_not be_able_to(:ignore_request, membership_request) }
     end
   end
 
