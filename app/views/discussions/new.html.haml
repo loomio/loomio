@@ -8,8 +8,8 @@
 = form_for @discussion do |f|
   = f.label :title, "Title"
   #new-proposal-title
-    .control-group
-      = f.text_field :title, class: "presence-required inputError limit-150"
+    .control-group.text-present
+      .presence-required= f.text_field :title, class: "presence-required inputError limit"
       .error-message Please fill in a discussion title
     .character-counter
   = f.label :comment, "Comment"
@@ -18,5 +18,5 @@
   = f.label :notify_group_upon_creation,
     "Notify group members that this discussion has been created",
     class: "checkbox-label"
-  = f.submit "Create discussion", class: "btn btn-info check-character-count check-presence"
+  = f.submit "Create discussion", class: "btn btn-info check-character-count validate-presence"
   = f.hidden_field :group_id
