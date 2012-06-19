@@ -113,11 +113,8 @@ describe "User abilities" do
       should_not be_able_to(:destroy, @user_membership)
     end
 
-    context "group members invitable_by: admins" do
-      before do
-        group.members_invitable_by = "admins"
-        group.save
-      end
+    context "group members invitable by admins" do
+      before { group.update_attributes(:members_invitable_by => :admins) }
       it { should be_able_to(:add_members, group) }
       it { should be_able_to(:approve_request, @membership_request) }
     end
