@@ -19,13 +19,10 @@ class Ability
 
     can :add_subgroup, Group, :id => user.group_ids
 
-    can :add_members, Group do |group|
-      if group.members_invitable_by == :members
-        true if user.groups.include?(group)
-      elsif group.members_invitable_by == :admins
-        true if user.adminable_groups.include?(group)
-      end
-    end
+    can :add_members, Group, :members_invitable_by => :members,
+                             :users => { :id => user.id }
+    can :add_members, Group, :members_invitable_by => :admins,
+                             :admins => { :id => user.id }
 
     can [:create, :index, :request_membership], Group
 
