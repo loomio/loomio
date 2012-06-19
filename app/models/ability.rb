@@ -41,13 +41,11 @@ class Ability
     can [:make_admin, :remove_admin], Membership,
       :group => { :id => user.adminable_group_ids }
 
-    can :destroy, Membership do |membership|
-      if membership.group.users.size == 1 or
-        (membership.admin? and membership.group.admins.size == 1)
-        false
-      else
-        membership.user == user or membership.group.admins.include? user
-      end
+    can :destroy, Membership, :user_id => user.id
+    can :destroy, Membership, :group => { :admins => { :id => user.id } }
+    cannot :destroy, Membership do |membership|
+      (membership.group.users.size == 1) ||
+      (membership.admin? and membership.group.admins.size == 1)
     end
 
     #

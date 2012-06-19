@@ -101,9 +101,10 @@ describe "User abilities" do
       @membership_request = group.add_request! User.make!
     end
 
+    it { should be_able_to(:update, group) }
     it { should be_able_to(:make_admin, @membership_request) }
     it { should be_able_to(:remove_admin, @membership_request) }
-    it { should be_able_to(:update, group) }
+    it { should be_able_to(:destroy, @other_user_membership) }
     it { should_not be_able_to(:update, other_users_motion) }
     it { should be_able_to(:destroy, other_users_motion) }
     it { should be_able_to(:close_voting, other_users_motion) }
