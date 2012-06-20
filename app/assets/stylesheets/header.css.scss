@@ -24,8 +24,22 @@ header{
 .dropdown-menu .divider { margin: 0px }
 .dropdown.open .dropdown-toggle { padding-bottom: 10px; }
 
+ /*sign in link (user not logged in) */
+.navbar-wrapper .sign-in {
+  float: right;
+  a {color: $light-grey; }
+  margin-top: 10px;
+}
+.sign-in:hover {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 /* navigation*/
 .navbar {
+  .nav{ padding-top: 2px; }
 	/* dropdown font-size */
   div > ul a, .nav a{
     font-size: $font-small;
@@ -44,10 +58,8 @@ header{
 			height: 36px;
 			padding: 4px 6px 0px;
 		}
-		a:hover{
-			background-color: #383737;
-		}
   }
+
   /* group dropdown nav */
   .group-container{
     #title {
@@ -83,19 +95,20 @@ header{
     }
   }
 
-  ul.nav.group-nav { margin-top: 5px; }
-
   .group-nav{
     li.dropdown.group-container:hover{
       a.dropdown-toggle { color: white; }
       #group-icon{ opacity: 1; }
     }
+    li.new-group a { color: #08C; }
+    li.new-group:hover { a { color: white; } }
     li.group-item{
       .link-container{
         display: inline-block;
         width: 70%;
         padding-right: 20px;
         padding-left: 8px;
+        background-color: white;
         a { padding-left: 5px; }
       }
       .notification-container{
@@ -106,12 +119,12 @@ header{
         .span { margin-left: 0px; }
       }
     }
-    li.group-item {
-        background-color: white;
-    }
     li.group-item:hover {
-        background-color: #08C;
+      background-color: #08C;
+      .link-container{
+        background-color: #08c;
+        a { color: white; }
+      }
     }
   }
-  ul.nav.secondary-nav { margin-top: 5px; }
 }

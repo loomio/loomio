@@ -8,7 +8,10 @@
 #group-form {
   form {
     width: 550px;
-    .inputError { display: inline-block; }
+    .inputError {
+      display: inline-block;
+      @include ie7-inline-block();
+    }
     #group_name { width: 390px; }
     #setting-label {
       margin-bottom: 4px;
@@ -26,16 +29,42 @@
 
 /**** Group page ****/
 
+#group-description {
+  color: $dark-grey;
+  font-size: $font-small;
+}
+#add-group-description {
+  #description-input {
+    width: 290px;
+    margin-bottom: 5px;
+  }
+  .character-counter {
+    width: 300px;
+    bottom: 10px;
+  }
+  #save-buttons {
+    position: relative;
+    bottom: 8px;
+  }
+}
+#cancel-add-description {
+  color: $mid-grey;
+  padding-left: 5px;
+  position: relative;
+  top: 4px;
+}
+.empty-placeholder {
+  border: 1px dashed $light-grey;
+  @include border-radius(4px);
+  padding: 6px;
+  font-size: $font-small;
+}
 #discussions {
   padding: 4px;
-  padding-bottom: 30px;
   .btn { margin-bottom: 15px; }
-  .proposal-block { margin-bottom: 20px }
-  .proposal-block h3 {
+  .content-block h4 {
     color: $mid-grey;
     float: left;
-    position: relative;
-    bottom: 3px;
   }
   .info-help {
     margin-left: 6px;
@@ -45,12 +74,16 @@
     background-repeat: no-repeat;
     background-position-y: 3px;
     display: inline-block;
+    @include ie7-inline-block();
     cursor: pointer;
+    position: relative;
+    bottom: 3px;
   }
   .info-help:hover {
     background-image:url("/assets/dark-info.png");
   }
 }
+.new_motion_link { float: right; }
 
 #add-member-popup-btn {
   margin-bottom: 5px;
@@ -86,6 +119,7 @@ input#user_email{
   font-size: $font-small;
   width: 180px;
   display: inline-block;
+  @include ie7-inline-block();
 }
 .admin-controls {
   float: right;
@@ -114,8 +148,8 @@ form#new_membership, #membership-requested {
   display: inline;
   float: right;
   font-size: $font-small;
-  color: #999;
-  padding-right: 8px
+  color: #fff;
+  background-color: #ccc;
 }
 
 /**** Private group form ****/
@@ -154,7 +188,7 @@ form#new_membership, #membership-requested {
     font-size: 0.8em;
     .discussion-title {
       display: inline-block;
-      @include ie7-inline-block();
+      /*@include ie7-inline-block();*/
       width: 500px;
     }
   }
@@ -167,6 +201,7 @@ form#new_membership, #membership-requested {
   .vote-icon {
     padding-top: 4px;
     display: inline-block;
+    /*@include ie7-inline-block();*/
     height: 16px;
     width: 20px;
     float: left;
@@ -175,6 +210,7 @@ form#new_membership, #membership-requested {
   .proposal-title-container {
     margin-left: 12px;
     display: inline-block;
+    /*@include ie7-inline-block();*/
     width: 400px;
   }
   .proposal-label {
@@ -191,6 +227,7 @@ form#new_membership, #membership-requested {
   }
   .comment-info {
     display: inline-block;
+    /*@include ie7-inline-block();*/
     margin-top: -4px;
     float: right;
     padding-right: 5px;
@@ -223,44 +260,5 @@ form#new_membership, #membership-requested {
   .discussion-link {
     position: relative;
     z-index: 2;
-  }
-}
-
-/**** group dashboard ****/
-
-ul#group-list {
-  .group-link{
-    width: 90%;
-    display: inline-block;
-  }
-  .group-link.disabled{
-    a{
-      color: grey;
-    }
-  }
-  li{
-    padding-bottom: 4px;
-    font-size: $font-small;
-    line-height: 16px;
-    list-style-type: none;
-    ul {
-      margin-left: 0px;
-      margin-bottom: 0px;
-      li {
-        margin-top: 2px;
-        font-size: $font-tiny;
-        padding-left: 17px;
-        padding-bottom: 0px;
-        background: url('list-item-bullet-tree.png') no-repeat top left;
-      }
-    }
-  }
-  margin-left: 4px;
-  a.new_motion {
-    float: right;
-    margin-right: 5px;
-    margin-top: -2px;
-    font-weight: bold;
-    font-size: 17px;
   }
 }

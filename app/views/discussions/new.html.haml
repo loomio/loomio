@@ -1,22 +1,22 @@
-.group-title
-  %span
-    %h2
-      = link_to @group.parent.name, group_path(@group), title: "group" unless @group.parent.nil?
-      = " - " unless @group.parent.nil?
-      = link_to @group.name, group_path(@group)
-  %h3 New Discussion
-= form_for @discussion do |f|
-  = f.label :title, "Title"
-  #new-proposal-title
-    .control-group.text-present
-      .presence-required= f.text_field :title, class: "presence-required inputError limit"
-      .error-message Please fill in a discussion title
+.general-form
+  .group-title
+    %span
+      %h2
+        = link_to @group.parent.name, group_path(@group), title: "group" unless @group.parent.nil?
+        = " - " unless @group.parent.nil?
+        = link_to @group.name, group_path(@group)
+    %h1 New Discussion
+  = form_for @discussion do |f|
+    .control-group
+      = f.label :title, "Title", {class: "control-label", for: "validate-presence"}
+      = f.text_field :title, class: "validate-presence inputError limit-150"
+      .presence-error-message Please fill in a discussion title
     .character-counter
-  = f.label :comment, "Comment"
-  = f.text_area :comment
-  = f.check_box :notify_group_upon_creation
-  = f.label :notify_group_upon_creation,
-    "Notify group members that this discussion has been created",
-    class: "checkbox-label"
-  = f.submit "Create discussion", class: "btn btn-info validate-presence"
-  = f.hidden_field :group_id
+    = f.label :comment, "Comment"
+    = f.text_area :comment
+    = f.check_box :notify_group_upon_creation
+    = f.label :notify_group_upon_creation,
+      "Notify group members that this discussion has been created",
+      class: "checkbox-label"
+    = f.submit "Create discussion", class: "btn btn-info run-validations"
+    = f.hidden_field :group_id
