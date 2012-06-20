@@ -5,7 +5,7 @@
     = @discussion.title
 .row.content-discussion
   .span6#content-comments
-    - if @discussion.can_be_commented_on_by? current_user
+    - if can? :add_comment, @discussion
       = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
         = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
         #new-comment-submit
