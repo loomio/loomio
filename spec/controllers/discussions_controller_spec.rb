@@ -14,11 +14,10 @@ describe DiscussionsController do
     before do
       sign_in user
       app_controller.stub(:authorize!).and_return(true)
-      app_controller.stub(:resource).and_return(discussion)
+      app_controller.stub(:can?).with(:show, group).and_return(true)
       Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
       Discussion.stub(:new).and_return(discussion)
       Group.stub(:find).with(group.id.to_s).and_return(group)
-      group.stub_chain(:users, :include?).with(user).and_return(true)
     end
 
     context "views a discussion" do
