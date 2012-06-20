@@ -52,7 +52,7 @@ describe GroupsController do
           response.should be_success
         end
         it "gets a new subgroup form" do
-          get :add_subgroup, :group_id => @group.id
+          get :add_subgroup, :id => @group.id
           response.should be_success
         end
       end
