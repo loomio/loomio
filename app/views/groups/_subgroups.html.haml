@@ -1,8 +1,10 @@
-%h1 Sub-groups
-%ul#group-list
-  - subgroups.each do |subgroup|
-    %li
-      = render "dashboard/group_link", group: subgroup
-- if group.users.include?(current_user)
-  = link_to "Create a Sub-group", add_subgroup_group_path(group),
-    class: "btn btn-small"
+.content-block
+  %h1 Sub-groups
+  .content
+    %ul#group-list
+      - subgroups.each do |subgroup|
+        %li
+          = render "dashboard/group_link", group: subgroup
+    - if group.users.include?(current_user)
+      = link_to "Create a Sub-group", add_subgroup_group_path(group),
+        class: "btn btn-small"

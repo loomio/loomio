@@ -12,6 +12,8 @@ class Motion < ActiveRecord::Base
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
 
+  validates_length_of :name, :maximum=>250
+
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
   delegate :name, :to => :author, :prefix => :author
