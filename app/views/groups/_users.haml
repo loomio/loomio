@@ -1,4 +1,4 @@
-- if group.can_invite_members?(current_user)
+- if can? :add_members, group
   - if group.parent.blank?
     .content-block
       %h1 Add member

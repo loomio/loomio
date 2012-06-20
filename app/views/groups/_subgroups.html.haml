@@ -6,5 +6,5 @@
         %li
           = render "dashboard/group_link", group: subgroup
     - if group.users.include?(current_user)
-      = link_to "Create a Sub-group", group_add_subgroup_path(group),
+      = link_to "Create a Sub-group", add_subgroup_group_path(group),
         class: "btn btn-small"

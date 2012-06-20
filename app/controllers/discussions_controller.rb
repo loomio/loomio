@@ -1,21 +1,18 @@
 class DiscussionsController < GroupBaseController
-  before_filter :check_group_read_permissions
-  load_and_authorize_resource except: :show
+  load_and_authorize_resource :except => [:show, :create]
+  before_filter :check_group_read_permissions, :only => :show
 
   def new
+    @group = Group.find(params[:discussion][:group_id])
     @discussion = Discussion.new(group: Group.find(params[:discussion][:group_id]))
   end
 
   def create
-    group = Group.find(params[:discussion][:group_id])
-    comment = params[:discussion][:comment]
-    notify_group = params[:discussion][:notify_group_upon_creation].to_i
-    @discussion = Discussion.new(params[:discussion])
-    @discussion.author = current_user
-    @discussion.group = group
+    @discussion = current_user.authored_discussions.new(params[:discussion])
+    authorize! :create, @discussion
     if @discussion.save
-      @discussion.add_comment(current_user, comment)
-      if notify_group > 0
+      @discussion.add_comment(current_user, params[:discussion][:comment])
+      if params[:discussion][:notify_group_upon_creation].to_i > 0
         DiscussionMailer.spam_new_discussion_created(@discussion)
       end
       flash[:success] = "Discussion sucessfully created."
