@@ -29,11 +29,22 @@ describe MembershipsController do
       end
     end
 
-    it "cancels their membership request" do
-      membership = @group.add_request!(@user)
-      delete :destroy, :id => membership.id
-      @group.requested_users.should_not include(@user)
-      flash[:notice].should =~ /Membership request canceled/
+    context "cancels their own membership request" do
+      before do
+        @membership = @group.add_request!(@user)
+        delete :cancel_request, :id => @membership.id
+      end
+
+      it { @group.requested_users.should_not include(@user) }
+      it { flash[:notice].should =~ /Membership request canceled/ }
+      it { response.should redirect_to(@group) }
+
+      context "request was already canceled" do
+        before { delete :cancel_request, :id => @membership.id }
+
+        it { response.should redirect_to(@group) }
+        it { flash[:warning].should =~ /Membership request has already been canceled/ }
+      end
     end
 
     it "sends an email to admins with new membership request" do
@@ -46,13 +57,6 @@ describe MembershipsController do
     context 'group admin' do
       before :each do
         @group.add_admin!(@user)
-      end
-
-      it "sends an email to notify the user of their membership approval" do
-        @membership = @group.add_request!(@new_user)
-        UserMailer.should_receive(:group_membership_approved).and_return(stub(deliver: true))
-        post :approve, :id => @membership.id
-        flash[:notice].should =~ /Membership approved/
       end
 
       it "can edit a user" do
@@ -69,13 +73,21 @@ describe MembershipsController do
         @group.admins.should include(@new_user)
       end
 
-      it 'can remove a member' do
-        @group.add_member!(@new_user)
-        @membership = @group.memberships.find_by_user_id(@new_user.id)
-        delete :destroy, :id => @membership.id
-        flash[:notice].should =~ /Member removed/
-        response.should redirect_to(@group)
-        @group.users.should_not include(@new_user)
+      context "removes a member" do
+        before do
+          @group.add_member!(@new_user)
+          @membership = @group.memberships.find_by_user_id(@new_user.id)
+          delete :destroy, :id => @membership.id
+        end
+        it { flash[:notice].should =~ /Member removed/ }
+        it { response.should redirect_to(@group) }
+        it { @group.users.should_not include(@new_user) }
+
+        context "that was already removed" do
+          before { delete :destroy, :id => @membership.id }
+
+          it { response.should redirect_to(@group) }
+        end
       end
 
       it 'cannot remove an admin' do
@@ -93,76 +105,52 @@ describe MembershipsController do
         @group.add_member!(@user)
       end
 
-      it "can approve a membership request" do
-        @membership = @group.add_request!(@new_user)
-        post :approve, :id => @membership.id
-        flash[:notice].should =~ /Membership approved/
-        response.should redirect_to(@group)
-        assigns(:membership).access_level.should == 'member'
-        @group.users.should include(@new_user)
+      context "approves a membership request" do
+        before do
+          @membership = @group.add_request!(@new_user)
+        end
+        it "adds membership to group" do
+          post :approve_request, :id => @membership.id
+          @group.users.should include(@new_user)
+        end
+        it "gives flash success notice" do
+          post :approve_request, :id => @membership.id
+          flash[:notice].should =~ /Membership approved/
+        end
+        it "redirects to group" do
+          post :approve_request, :id => @membership.id
+          response.should redirect_to(@group)
+        end
+        it "sends an email to notify the user of their membership approval" do
+          UserMailer.should_receive(:group_membership_approved).and_return(stub(deliver: true))
+          post :approve_request, :id => @membership.id
+        end
+        it "does not send a notification email if member is already approved" do
+          @membership = @group.add_member!(@new_user)
+          UserMailer.should_not_receive(:group_membership_approved).and_return(stub(deliver: true))
+          post :approve_request, :id => @membership.id
+        end
       end
 
-      it 'cannot add an admin' do
-        @membership = @group.add_member!(@new_user)
-        post :make_admin, :id => @membership.id
-        flash[:error].should =~ /Access denied./
-        response.should redirect_to(@group)
-        assigns(:membership).access_level.should == 'member'
-        @group.admins.should_not include(@new_user)
-      end
+      context "ignores a membership request" do
+        before do
+          @membership = @group.add_request!(@new_user)
+          delete :ignore_request, :id => @membership.id
+        end
 
-      it "can ignore a membership request" do
-        @group.add_request!(@new_user)
-        @membership = @group.membership_requests.first
-        delete :destroy, :id => @membership.id
-        flash[:notice].should =~ /Membership request ignored/
-        response.should redirect_to(@group)
-        Membership.exists?(@membership).should be_false
-      end
+        it { flash[:notice].should =~ /Membership request ignored/ }
 
-      it "cannot remove a member" do
-        @group.add_member!(@new_user)
-        @membership = @group.memberships.find_by_user_id(@new_user.id)
-        delete :destroy, :id => @membership.id
-        flash[:error].should =~ /Access denied/
-        response.should redirect_to(group_url(@group))
-        @group.users.should include(@new_user)
-      end
+        it { response.should redirect_to(@group) }
 
-      it "cannot remove an admin" do
-        @membership = @group.add_admin!(@new_user)
-        post :remove_admin, :id => @membership.id
-        flash[:error].should =~ /Access denied/
-        response.should redirect_to(group_url(@group))
-        @group.admins.should include(@new_user)
-      end
-    end
+        it { Membership.exists?(@membership).should be_false }
 
-    context 'non group member' do
-      it "cannot authorize a membership request for another user" do
-        @membership = @group.add_request!(@new_user)
-        post :approve, :id => @membership.id
-        flash[:error].should =~ /Access denied/
-        response.should redirect_to(group_url(@group))
-        assigns(:membership).access_level.should == 'request'
-        assigns(:membership).id.should == @membership.id
-      end
+        context "request was already ignored" do
+          before { delete :ignore_request, :id => @membership.id }
 
-      it "cannot remove a member" do
-        @membership = @group.add_member!(@new_user)
-        delete :destroy, :id => @membership.id
-        flash[:error].should =~ /Access denied/
-        response.should redirect_to(group_url(@group))
-        @group.users.should include(@new_user)
-      end
+          it { response.should redirect_to(@group) }
 
-      it "cannot remove an admin" do
-        @group.add_admin!(@new_user)
-        @membership = @group.memberships.find_by_user_id(@new_user.id)
-        delete :destroy, :id => @membership.id
-        flash[:error].should =~ /Access denied/
-        response.should redirect_to(group_url(@group))
-        @group.admins.should include(@new_user)
+          it { flash[:warning].should =~ /Membership request has already been ignored/ }
+        end
       end
     end
   end

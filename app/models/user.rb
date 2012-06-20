@@ -7,27 +7,49 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
 
   has_many :membership_requests,
-           :conditions => {:access_level => 'request'},
+           :conditions => { :access_level => 'request' },
            :class_name => 'Membership',
            :dependent => :destroy
   has_many :admin_memberships,
-           :conditions => {:access_level => 'admin'},
+           :conditions => { :access_level => 'admin' },
            :class_name => 'Membership',
            :dependent => :destroy
   has_many :memberships,
-           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
+           :conditions => { :access_level => Membership::MEMBER_ACCESS_LEVELS },
            :dependent => :destroy
-  has_many :groups, through: :memberships
-  has_many :adminable_groups, :through => :admin_memberships, class_name: 'Group',
-    :source => :group
-  has_many :group_requests, :through => :membership_requests, class_name: 'Group',
-    :source => :group
-  has_many :votes
 
-  has_many :discussions, through: :groups
-  has_many :motions, through: :discussions
-  has_many :motions_voting, through: :discussions, :source => :motions, :conditions => {phase: 'voting'}
-  has_many :motions_closed, through: :discussions, :source => :motions, :conditions => {phase: 'closed'}
+  has_many :groups,
+           :through => :memberships
+  has_many :adminable_groups,
+           :through => :admin_memberships,
+           :class_name => 'Group',
+           :source => :group
+  has_many :group_requests,
+           :through => :membership_requests,
+           :class_name => 'Group',
+           :source => :group
+
+  has_many :discussions,
+           :through => :groups
+  has_many :authored_discussions,
+           :class_name => 'Discussion',
+           :foreign_key => 'author_id'
+
+  has_many :motions,
+           :through => :discussions
+  has_many :authored_motions,
+           :class_name => 'Motion',
+           :foreign_key => 'author_id'
+  has_many :motions_voting,
+           :through => :discussions,
+           :source => :motions,
+           :conditions => { phase: 'voting' }
+  has_many :motions_closed,
+           :through => :discussions,
+           :source => :motions,
+           :conditions => { phase: 'closed' }
+
+  has_many :votes
 
   has_many :discussion_read_logs,
            :dependent => :destroy
