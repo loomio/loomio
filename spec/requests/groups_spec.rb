@@ -28,7 +28,7 @@ describe "Groups" do
       end
 
       it "can visit add subgroup page" do
-        visit group_add_subgroup_path(@group)
+        visit add_subgroup_group_path(@group)
 
         have_css("#new-subgroup")
       end
