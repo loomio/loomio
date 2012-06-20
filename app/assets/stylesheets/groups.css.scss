@@ -34,18 +34,13 @@
   font-size: $font-small;
 }
 #add-group-description {
-  /*font-size: $font-small;*/
   #description-input {
     width: 290px;
     margin-bottom: 5px;
   }
   .character-counter {
-    float: right;
-    padding-right: 3px;
-    color: $mid-grey;
-    position: relative;
-    bottom: 14px;
-    font-size: $font-small;
+    width: 300px;
+    bottom: 10px;
   }
   #save-buttons {
     position: relative;
@@ -88,7 +83,7 @@
     background-image:url("/assets/dark-info.png");
   }
 }
-.new_motion { float: right; }
+.new_motion_link { float: right; }
 
 #add-member-popup-btn {
   margin-bottom: 5px;

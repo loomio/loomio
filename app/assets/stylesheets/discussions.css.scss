@@ -7,20 +7,8 @@ body.discussions.new {
   .btn { display: block; }
 }
 
-/** new proposal form*/
+/** new discussion form*/
 
-#new-proposal-title {
-  .character-counter {
-    color: $mid-grey;
-    text-align: right;
-    position: relative;
-    bottom: 20px;
-    height: 12px;
-    width: 408px;
-		font-size: $font-tiny;
-  }
-  .field_with_errors { display: inline; }
-}
 body.discussions.new {
   #discussion_notify_group_upon_creation { margin-bottom: 30px; }
   .btn { display: block; }
@@ -168,13 +156,6 @@ body.discussions.new {
   #vote-statement{ margin-left: 0px; padding-left: 0px; }
   .inputError { margin-left: 0px; height: 65px; }
   .control-group { padding-top: 0px; padding-bottom: 0px; }
-  .character-counter {
-    font-size: $font-small;
-    color: $mid-grey;
-    text-align: right;
-    position: relative;
-    bottom: 15px;
-  }
   #vote-buttons{
     position: relative;
     bottom: 15px;
