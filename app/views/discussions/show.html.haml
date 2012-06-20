@@ -5,7 +5,7 @@
     = @discussion.title
 .row.content-discussion
   .span6#content-comments
-    - if @discussion.can_be_commented_on_by? current_user
+    - if can? :add_comment, @discussion
       = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
         = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
         #new-comment-submit
@@ -23,8 +23,9 @@
                 = "Closing in #{time_ago_in_words(@current_motion.close_date)}"
       - else
         #new-proposal
-          = link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-info',
-            id: 'new-proposal'
+          - if can? :new_proposal, @discussion
+            = link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-info',
+              id: 'new-proposal'
     - else
       - if @current_motion
         #current-proposal
@@ -33,8 +34,9 @@
             = render @current_motion, unique_votes: @unique_votes
       - else
         #no-current-proposal
-          = link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-info',
-            id: 'new-proposal'
+          - if can? :new_proposal, @discussion
+            = link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-info',
+              id: 'new-proposal'
     - if @discussion.motions.where("phase = 'closed'").count > 0
       #previous-proposals
         %h1 Previous proposals

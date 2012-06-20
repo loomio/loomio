@@ -19,14 +19,14 @@ class GroupsController < GroupBaseController
     @discussions_inactive = @group.inactive_discussions(current_user)
     @group = GroupDecorator.new(Group.find(params[:id]))
     @subgroups = @group.subgroups.select do |group|
-      group.can_be_viewed_by?(current_user)
+      can? :show, group
     end
   end
 
   # CUSTOM CONTROLLER ACTIONS
 
   def add_subgroup
-    @parent = Group.find(params[:group_id])
+    @parent = Group.find(params[:id])
     @subgroup = Group.new(:parent => @parent)
     @subgroup.members_invitable_by = @parent.members_invitable_by
   end
