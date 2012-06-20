@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  #$(".presence-error-message").hide()
   if $("#motion-form").length > 0
     #** pad out hour to two digits **
     pad2 = ((number) ->
