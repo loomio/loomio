@@ -7,6 +7,7 @@ class Group < ActiveRecord::Base
   validate :limit_inheritance
 
   validates_length_of :name, :maximum=>250
+  validates :description, :length => { :maximum => 250 }
 
   after_initialize :set_defaults
 

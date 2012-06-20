@@ -10,7 +10,6 @@ class Discussion < ActiveRecord::Base
   validates_with AuthorValidator
   validates_presence_of :title, :group, :author
   validates :title, :length => { :maximum => 150 }
-  validates :description, :length => { :maximum => 250 }
 
   acts_as_commentable
 
