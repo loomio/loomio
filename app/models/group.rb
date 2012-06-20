@@ -5,6 +5,9 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   validate :limit_inheritance
+
+  validates_length_of :name, :maximum=>250
+
   after_initialize :set_defaults
 
   has_many :memberships,

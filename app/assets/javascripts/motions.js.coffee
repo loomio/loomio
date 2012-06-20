@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $(".error-message").hide()
+  #$(".presence-error-message").hide()
   if $("#motion-form").length > 0
     #** pad out hour to two digits **
     pad2 = ((number) ->
@@ -89,58 +89,67 @@ $ ->
   )
 
 
-# The following methods are used in the character count validation on text input fields
-# pluralise the word character
-#** specific close date future validation
-$ ->
-  $(".date-error-message").hide()
-  $(".validate-future-date").click((event, ui) ->
-    time_now = new Date()
-    selected_date = new Date($("#motion_close_date").val())
-    if selected_date <= time_now
-      $(".future-date").addClass("error")
-      $(".date-error-message").show()
-      false
-  )
-
+# The following methods are used to provide client side validation for
+# - character count
+# - presence required
+# - date validation specific for motion-form
 remove_date_error = () ->
-  $(".future-date").removeClass("error")
+  $(".validate-motion-close-date").parent().removeClass("error")
   $(".date-error-message").hide()
 
-#** general presence validations: use this function any where just assign the class .presence-required
-#   to the text field in question and the .check-presence to the submit button **
 $ ->
-  $(".validate-presence").click((event, ui) ->
-    if $(".inputError").val() == ""
-      $(".text-present").addClass("error")
-      $(".error-message").show()
-      false
+  $(".validate-presence").keyup(() ->
+    $(".validate-presence").parent().removeClass("error")
+    $(".presence-error-message").hide()
   )
 
 $ ->
-  $(".inputError").keyup(() ->
-    $(".text-present").removeClass("error")
-    $(".error-message").hide()
+  $(".presence-error-message").hide()
+  $(".date-error-message").hide()
+
+  $(".run-validations").click((event, ui) ->
+    $(".validate-presence").each((index, element) ->
+      if $(element).val() == ""
+        $(element).parent().addClass("error")
+        $(".presence-error-message").show()
+    )
+
+    runCustomValidations()
+
+    $(".control-group").each((index, group) ->
+      if $(group).hasClass("error")
+        event.preventDefault()
+    )
   )
+
+  runCustomValidations = ->
+    motionCloseDateValidation()
+
+  motionCloseDateValidation = ->
+    if $("#motion-form").length > 0
+      time_now = new Date()
+      selected_date = new Date($("#motion_close_date").val())
+      if selected_date <= time_now
+        $(".validate-motion-close-date").parent().addClass("error")
+        $(".date-error-message").show()
+
 
 # character count for statement on discussion:show page
-pluralize_characters = ((num) ->
+pluralize_characters = (num) ->
   if(num == 1)
     return num + " character"
   else
     return num + " characters"
-)
 
 # display charcaters left
-display_count = ((num) ->
+display_count = (num, object) ->
   if(num >= 0)
     $(".character-counter").text(pluralize_characters(num) + " left")
-    $(".control-group").removeClass("error")
+    object.parent().removeClass("error")
   else
     num = num * (-1)
     $(".character-counter").text(pluralize_characters(num) + " too long")
-    $(".control-group").addClass("error")
-)
+    object.parent().addClass("error")
 
 # character count for 250 characters max
 $ ->
@@ -148,7 +157,7 @@ $ ->
     $(".error-message").hide()
     chars = $(".limit-250").val().length
     left = 250 - chars
-    display_count(left)
+    display_count(left, $(".limit-250"))
   )
 
  #character count for 150 characters max
@@ -157,19 +166,8 @@ $ ->
     $(".error-message").hide()
     chars = $(".limit-150").val().length
     left = 150 - chars
-    display_count(left)
+    display_count(left, $(".limit-150"))
   )
-
-# prevent default if control-group has error
-$ ->
-  $(".check-character-count").click((event) ->
-    if $(".control-group").hasClass("error")
-      event.preventDefault()
-    else
-      $('.check-character-count').submit()
-  )
-
-
 
   # adds bootstrap popovers to vote buttons
 $ ->

@@ -180,17 +180,26 @@ h4 {
   background-color: $comment-color;
 }
 
+.field_with_errors { display: inline; }
 .inputError {
   display: inline-block;
   @include ie7-inline-block();
 }
-.error-message {
+.presence-error-message {
   font-size: $font-small;
   display: inline;
   margin-left: 5px;
   color: $error-color;
 }
-
+.character-counter {
+  color: $mid-grey;
+  text-align: right;
+  position: relative;
+  bottom: 20px;
+  width: 410px;
+  height: 12px;
+  font-size: $font-small;
+}
 
 form {
   label {
