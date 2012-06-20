@@ -127,7 +127,7 @@ class User < ActiveRecord::Base
         results << subgroup.parent
       end
     end
-    results.sort
+    results.sort_by { |group| group.name }
   end
 
   def subgroups
