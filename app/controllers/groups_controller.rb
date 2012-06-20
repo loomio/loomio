@@ -26,7 +26,7 @@ class GroupsController < GroupBaseController
   # CUSTOM CONTROLLER ACTIONS
 
   def add_subgroup
-    @parent = Group.find(params[:group_id])
+    @parent = Group.find(params[:id])
     @subgroup = Group.new(:parent => @parent)
     @subgroup.members_invitable_by = @parent.members_invitable_by
   end
