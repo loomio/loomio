@@ -5,6 +5,9 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   validate :limit_inheritance
+
+  validates_length_of :name, :maximum=>250
+
   after_initialize :set_defaults
 
   has_many :memberships,
@@ -33,7 +36,7 @@ class Group < ActiveRecord::Base
   acts_as_tagger
 
   attr_accessible :name, :viewable_by, :parent_id, :parent
-  attr_accessible :members_invitable_by, :email_new_motion
+  attr_accessible :members_invitable_by, :email_new_motion, :description
 
   #
   # ACCESSOR METHODS
