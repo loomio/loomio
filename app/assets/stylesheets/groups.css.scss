@@ -173,13 +173,17 @@ form#new_membership, #membership-requested {
 .discussion {
   color: $mid-grey;
   position: relative;
+  a {
+    color: $mid-grey;
+    display: block;
+    margin: -9px;
+    padding: 9px;
+  }
+  a:hover {
+    text-decoration: none;
+  }
   #group-name {
     font-size: $font-tiny;
-    a {
-      color: $mid-grey;
-      position: relative;
-      z-index: 2;
-    }
     margin-top: -0.3em;
     padding-left: 5px;
   }

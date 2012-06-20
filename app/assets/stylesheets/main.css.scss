@@ -263,22 +263,6 @@ table.jqplot-table-legend {
   @include box-shadow(1px, 1px, 4px, $mid-grey);
 }
 
-.expanded {
-  /* This class is used to make a div clickable.
-   * Usage:
-   *  <div><a><span class="expanded"></span><a></div>
-   * NOTE: the parent div must have position: relative;
-   */
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0;
-  left: 0;
-  z-index: 1;
-  /* fixes overlap error in IE7/8 */
-  background-image: url('empty.gif');
-}
-
 .name-separator {
   display: inline-block;
   @include ie7-inline-block();
