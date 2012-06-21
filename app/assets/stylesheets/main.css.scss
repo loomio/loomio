@@ -45,6 +45,11 @@ h4 {
     margin-bottom: 0.5em;
   }
 }
+.center-content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 68%;
+}
 
 #content-main {
   h1 {
@@ -54,21 +59,26 @@ h4 {
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
-  /*.btn { margin-bottom: 15px; }*/
 }
 
 #content-left {
   color: $header-titles-color;
   .btn { color: $mid-grey; }
+  .btn-info { color: white; }
   h1 {
     font-size: $font-medium;
     background-color: $header-color;
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
-  .block { margin-bottom: 20px; }
-  ul { margin-bottom: 0.6em; }
-  li { padding-bottom: 4px; }
+  ul {
+    margin-bottom: 0.6em;
+    list-style: none;
+    margin-left: 0px;
+  }
+  li {
+    padding-bottom: 4px;
+  }
 }
 #content-proposal {
   color: $mid-grey;
@@ -79,6 +89,12 @@ h4 {
     margin-bottom: 0.5em;
   }
   margin-bottom: 20px;
+}
+.content-block {
+  margin-bottom: 20px;
+  .content {
+    padding-left: 2px;
+  }
 }
 
 .panel {
@@ -129,6 +145,19 @@ h4 {
   bottom: 20px;
 }
 
+.word-break {
+  /* The following styles prevent unbroken strings from breaking the layout */
+  width: 290px; /* set to whatever width you need */
+  overflow: auto;
+  white-space: -moz-pre-wrap; /* Mozilla */
+  white-space: -hp-pre-wrap; /* HP printers */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
+  -moz-binding: url('xbl.xml#wordwrap'); /* Firefox (using XBL) */
+}
 
 // misc (move stuff out of here..)
 .bordered {
@@ -151,14 +180,26 @@ h4 {
   background-color: $comment-color;
 }
 
-.inputError { display: inline-block; }
-.error-message {
+.field_with_errors { display: inline; }
+.inputError {
+  display: inline-block;
+  @include ie7-inline-block();
+}
+.presence-error-message {
   font-size: $font-small;
   display: inline;
   margin-left: 5px;
   color: $error-color;
 }
-
+.character-counter {
+  color: $mid-grey;
+  text-align: right;
+  position: relative;
+  bottom: 20px;
+  width: 410px;
+  height: 12px;
+  font-size: $font-small;
+}
 
 form {
   label {

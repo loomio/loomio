@@ -20,7 +20,7 @@ describe Users::InvitationsController do
 
     context "user without permission tries to invite member" do
       before :each do
-        group.stub(:can_invite_members?).with(user).and_return(false)
+        controller.stub(:can?).with(:add_members, group).and_return(false)
       end
 
       it "should display error and redirect" do
@@ -33,7 +33,7 @@ describe Users::InvitationsController do
 
     context "admin user" do
       before :each do
-        group.stub(:can_invite_members?).with(user).and_return(true)
+        controller.stub(:can?).with(:add_members, group).and_return(true)
       end
 
       context "invites member with blank email address" do

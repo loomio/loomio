@@ -17,23 +17,26 @@
               %li= link_to "Leave group", membership, method: :delete, confirm: "Are you sure you wish to leave #{@group.name}?"
 .row
   %section.span4#content-left
+    - if can? :edit, @group || @group.decription
+      =render 'description', group: @group
     - if display_subgroups_block?(@group)
-      .block
-        =render 'subgroups', subgroups: @subgroups, group: @group
+      =render 'subgroups', subgroups: @subgroups, group: @group
 
     =render 'users', group: @group
 
   %section.span8#content-main
-    %h1 Discussions
-    #discussions
-      - if current_user && @group.users_include?(current_user)
-        = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }),
-          class: "btn btn-info", id: "new-discussion"
-      - if @group.beta_features? && current_user && @group.users_include?(current_user)
-        =render 'discussions',  discussions_awaiting_vote: @discussions_awaiting_vote,
-                                discussions_active: @discussions_active,
-                                discussions_inactive: @discussions_inactive,
-                                group: @group
-      - else
-        - @group.all_discussions(current_user).each do |discussion|
-          =render discussion, this_group: @group
+    .content-block
+      %h1 Discussions
+      .content
+        #discussions
+          - if current_user && @group.users_include?(current_user)
+            = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }),
+              class: "btn btn-info", id: "new-discussion"
+          - if @group.beta_features? && current_user && @group.users_include?(current_user)
+            =render 'discussions',  discussions_awaiting_vote: @discussions_awaiting_vote,
+                                    discussions_active: @discussions_active,
+                                    discussions_inactive: @discussions_inactive,
+                                    group: @group
+          - else
+            - @group.all_discussions(current_user).each do |discussion|
+              =render discussion, this_group: @group
