@@ -5,6 +5,10 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   validate :limit_inheritance
+
+  validates_length_of :name, :maximum=>250
+  validates :description, :length => { :maximum => 250 }
+
   after_initialize :set_defaults
 
   has_many :memberships,
@@ -33,7 +37,7 @@ class Group < ActiveRecord::Base
   acts_as_tagger
 
   attr_accessible :name, :viewable_by, :parent_id, :parent
-  attr_accessible :members_invitable_by, :email_new_motion
+  attr_accessible :members_invitable_by, :email_new_motion, :description
 
   #
   # ACCESSOR METHODS
@@ -143,20 +147,6 @@ class Group < ActiveRecord::Base
   def has_admin_user?(user)
     return true if admins.include?(user)
     return true if (parent && parent.admins.include?(user))
-  end
-
-  def can_be_viewed_by?(user)
-    return true if viewable_by == :everyone
-    return true if users.include?(user)
-    return true if viewable_by == :parent_group_members && (parent.users || []).include?(user)
-  end
-
-  def can_invite_members?(user)
-    if members_invitable_by == :members
-      return true if users.include?(user)
-    elsif members_invitable_by == :admins
-      return true if has_admin_user?(user)
-    end
   end
 
   #

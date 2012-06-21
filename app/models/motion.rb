@@ -12,6 +12,8 @@ class Motion < ActiveRecord::Base
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
 
+  validates_length_of :name, :maximum=>250
+
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
   delegate :name, :to => :author, :prefix => :author
@@ -102,28 +104,8 @@ class Motion < ActiveRecord::Base
     false
   end
 
-  def has_admin_user?(user)
-    group.has_admin_user?(user)
-  end
-
   def user_has_voted?(user)
     votes.for_user(user).exists?
-  end
-
-  def can_be_viewed_by?(user)
-    user && group.can_be_viewed_by?(user)
-  end
-
-  def can_be_edited_by?(user)
-    user && (author == user || facilitator == user)
-  end
-
-  def can_be_closed_by?(user)
-    user && ((author == user || facilitator == user) || has_admin_user?(user))
-  end
-
-  def can_be_deleted_by?(user)
-    user && (author == user || has_admin_user?(user))
   end
 
   def can_be_voted_on_by?(user)

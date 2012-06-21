@@ -1,8 +1,5 @@
 require 'spec_helper'
 
-# NOTE (Jon): Lots of these specs should be
-# refactored out of here and into ability_spec.rb
-# Basically, we shouldn't be testing permissions in here
 describe GroupsController do
 
   let(:group) { stub_model(Group) }
@@ -31,18 +28,6 @@ describe GroupsController do
           response.should be_success
         end
       end
-      context "member views group" do
-        it "should show group page" do
-          @group.add_member!(@user)
-          get :show, :id => @group.id
-          response.should be_success
-        end
-      end
-      context "members invitable by members" do
-        context "member invites user" do
-          it "succeeds"
-        end
-      end
     end
     context "group viewable by members" do
       before :each do
@@ -52,7 +37,7 @@ describe GroupsController do
         before :each do
           @group.add_admin!(@user)
         end
-        it "can edit the group" do
+        it "can update the group" do
           post :update, id: @group.id, group: { name: "New name!" }
           flash[:notice].should match("Group was successfully updated.")
           response.should be_redirect
@@ -66,24 +51,9 @@ describe GroupsController do
           get :show, :id => @group.id
           response.should be_success
         end
-        it "shows a new subgroup form" do
-          get :add_subgroup, :group_id => @group.id
+        it "gets a new subgroup form" do
+          get :add_subgroup, :id => @group.id
           response.should be_success
-        end
-      end
-      context "a requested member" do
-        before :each do
-          @group.add_request!(@user)
-          @previous_url = root_url
-          request.env["HTTP_REFERER"] = @previous_url
-        end
-        it "viewing a group should redirect to 'group not found' page" do
-          get :show, :id => @group.id
-          response.should render_template('private_or_not_found')
-        end
-        it "editing a group should redirect to previous url" do
-          get :edit, :id => @group.id
-          response.should redirect_to(@previous_url)
         end
       end
       context "a non-member" do
@@ -94,10 +64,6 @@ describe GroupsController do
         it "viewing a group should redirect to private message page" do
           get :show, :id => @group.id
           response.should render_template('private_or_not_found')
-        end
-        it "editing a group should redirect to previous url" do
-          get :edit, :id => @group.id
-          response.should redirect_to(@previous_url)
         end
       end
     end
@@ -139,18 +105,6 @@ describe GroupsController do
 
       group.users.should include(user2)
       group.users.should include(user3)
-    end
-  end
-
-  context "logged out user" do
-    context "viewing a private group" do
-      before :each do
-        @group = Group.make!(viewable_by: :members)
-      end
-      it "should redirect to log-in page" do
-        get :show, :id => @group.id
-        response.should redirect_to(new_user_session_url)
-      end
     end
   end
 end

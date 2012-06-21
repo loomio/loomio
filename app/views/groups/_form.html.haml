@@ -2,8 +2,9 @@
   =form_for(group) do |f|
     .control-group
       = f.label :name, "Group Name", {class: "control-label", for: "group-name"}
-      = f.text_field :name, class: "inputError", id: "group-name"
-      %span.error-message Please fill in a title
+      = f.text_field :name, class: "validate-presence inputError limit-250", id: "group-name"
+      %span.presence-error-message Please fill in a title
+    .character-counter
     .privacy-settings
       %h1 Privacy Settings
       .row
@@ -23,4 +24,4 @@
       = f.label :email_new_motion,
         "Email group members when a new motion is created in this group",
         class: "checkbox-label"
-    .check-presence= f.submit class: "btn btn-info", id: "update-group"
+    = f.submit class: "btn btn-info run-validations", id: "update-group"

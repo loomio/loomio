@@ -1,23 +1,23 @@
 @import "settings";
+/*@import "bootstrap";*/
 @import "mixins";
 
-/** new proposal form*/
-
-#new-proposal-title {
-  .character-counter {
-    color: $mid-grey;
-    text-align: right;
-    position: relative;
-    bottom: 18px;
-    height: 12px;
-    width: 408px;
-		position: relative;
-		bottom: 17px;
-		font-size: $font-tiny;
-  }
+/** new discussion **/
+body.discussions.new {
+  .btn { display: block; }
 }
 
-.content-discussion { margin-top: -20px; }
+/** new discussion form*/
+
+body.discussions.new {
+  #discussion_notify_group_upon_creation { margin-bottom: 30px; }
+  .btn { display: block; }
+}
+
+.content-discussion {
+  position: relative;
+  bottom: 20px;
+}
 .discussion-title {
   font-size: $font-large;
   color: $dark-grey;
@@ -51,7 +51,7 @@
   .comment{
     background-color: $comment-color;
     margin-bottom: 2px;
-    padding: 4px;
+    padding: 8px;
     font-size: $font-small;
     .comment-username{
       font-weight: bold;
@@ -71,20 +71,6 @@
     }
   }
 
-  .word-break {
-    /* The following styles prevent unbroken strings from breaking the layout */
-    width: 300px; /* set to whatever width you need */
-    overflow: auto;
-    white-space: -moz-pre-wrap; /* Mozilla */
-    white-space: -hp-pre-wrap; /* HP printers */
-    white-space: -o-pre-wrap; /* Opera 7 */
-    white-space: -pre-wrap; /* Opera 4-6 */
-    white-space: pre-wrap; /* CSS 2.1 */
-    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
-    word-wrap: break-word; /* IE */
-    -moz-binding: url('xbl.xml#wordwrap'); /* Firefox (using XBL) */
-  }
-
   .position{
     .position{
       float: left;
@@ -95,6 +81,7 @@
       color: black;
       padding-left: 0.4em;
       display: inline-block;
+      /*@include ie7-inline-block();*/
     }
   }
 
@@ -109,6 +96,7 @@
       color: $mid-grey;
       margin-left: 0.4em;
       display: inline-block;
+      /*@include ie7-inline-block();*/
     }
     .proposal-text{
       color: $dark-grey;
@@ -127,9 +115,6 @@
   padding-left: 19px;
   margin-left: 0px;
   width: 430px;
-  #current-proposal {
-    margin-bottom: 20px;
-  }
   #new-proposal {
     .btn { margin-bottom: 20px; }
   }
@@ -171,13 +156,6 @@
   #vote-statement{ margin-left: 0px; padding-left: 0px; }
   .inputError { margin-left: 0px; height: 65px; }
   .control-group { padding-top: 0px; padding-bottom: 0px; }
-  .character-counter {
-    font-size: $font-small;
-    color: $mid-grey;
-    text-align: right;
-    position: relative;
-    bottom: 15px;
-  }
   #vote-buttons{
     position: relative;
     bottom: 15px;
@@ -205,11 +183,13 @@
           float: left;
           margin-top: 2px;
           display: inline-block;
+          /*@include ie7-inline-block();*/
           height: 20px;
         }
         .member-name {
           float: left;
           display: inline-block;
+          /*@include ie7-inline-block();*/
           padding-top: 4px;
           margin-left: 10px;
         }
@@ -221,11 +201,13 @@
         padding-left: 4px;
         float: left;
         display: inline-block;
+        /*@include ie7-inline-block();*/
         height: 20px;
       }
       .member-no-position {
         float: left;
         display: inline-block;
+        /*@include ie7-inline-block();*/
         padding: 2px;
         padding-left: 8px;
         margin-left: 6px;
@@ -243,16 +225,4 @@
       font-size: $font-tiny;
     }
   }
-}
-
-/*  New & Edit motion form */
-#motion-form{
-  .input { margin-left: 0px; display: inline-block; }
-  .clearfix { padding-top: 0px; margin-bottom: 0px; }
-  #closing-inputs {
-    height: 40px;
-    #input_date{ width: 140px; display: inline-block; }
-    select { width: 100px; display: inline-block; }
-  }
-  #description { margin-top: 31px; }
 }
