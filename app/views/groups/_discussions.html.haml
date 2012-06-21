@@ -1,7 +1,7 @@
 - if discussions_awaiting_vote.present?
   .content-block
-    %h4 PROPOSALS AWAITING YOUR DECISION
-    .info-help{title: "Proposals awaiting your decision", "data-content"=> "Current discussions containing proposals that you have not yet decided on"}
+    %h4 AWAITING YOUR DECISION
+    .info-help{title: "Awaiting your decision", "data-content"=> "Current discussions containing proposals that you have not yet decided on"}
     - discussions_awaiting_vote.each do |discussion|
       =render discussion, this_group: group
 - if discussions_active.present?
