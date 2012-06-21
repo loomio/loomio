@@ -70,7 +70,10 @@
     margin-left: 6px;
     height: 19px;
     width: 16px;
-    background-image:url("/assets/info.png");
+    -moz-opacity: .5;
+    filter:alpha(opacity=50);
+    opacity: 0.5;
+    background-image:url("/assets/dark-info.png");
     background-repeat: no-repeat;
     background-position-y: 3px;
     display: inline-block;
@@ -80,7 +83,7 @@
     bottom: 3px;
   }
   .info-help:hover {
-    background-image:url("/assets/dark-info.png");
+    opacity: 1;
   }
 }
 .new_motion_link { float: right; }
@@ -247,8 +250,16 @@ form#new_membership, #membership-requested {
     height: 30px;
     background-image: url("discussion.png");
   }
-  .enabled-icon { opacity: 1.0 }
-  .disabled-icon { opacity: 0.4 }
+  .enabled-icon {
+    -moz-opacity: 1.0;
+    filter:alpha(opacity=100);
+    opacity: 1.0;
+   }
+  .disabled-icon {
+    -moz-opacity: 0.5;
+    filter:alpha(opacity=50);
+    opacity: 0.5
+  }
 
   .activity-count {
     margin-left: 18px;
