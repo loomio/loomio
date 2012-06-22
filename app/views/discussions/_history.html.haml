@@ -12,7 +12,7 @@
           .comment-username= link_to(message.user_name, "#")
           .position-message
             - if message.statement.present?
-              = "#{message.statement}"
+              .statement-word-break= "#{message.statement}"
             - else
               = " "
         .comment-time
