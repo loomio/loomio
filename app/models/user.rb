@@ -51,6 +51,8 @@ class User < ActiveRecord::Base
 
   has_many :votes
 
+  has_many :notifications
+
   has_many :discussion_read_logs,
            :dependent => :destroy
 

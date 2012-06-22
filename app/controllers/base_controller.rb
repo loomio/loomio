@@ -9,6 +9,8 @@ class BaseController < InheritedResources::Base
   end
 
   def get_notifications
-    @notifications = Notification.where("user_id = ?", current_user.id)
+    if user_signed_in?
+      @notifications = Notification.where("user_id = ?", current_user.id)
+    end
   end
 end

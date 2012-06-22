@@ -8,4 +8,8 @@ class Notification < ActiveRecord::Base
   validates_inclusion_of :kind, :in => Event::KINDS
 
   attr_accessible :user, :kind, :discussion, :comment, :motion
+
+  def self.new_discussion!(discussion, user)
+    Notification.create!(kind: "new_discussion", user: user, discussion: discussion)
+  end
 end

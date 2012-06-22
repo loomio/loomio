@@ -11,7 +11,7 @@ describe Event do
     subject { event }
 
     specify { subject.kind.should == "new_discussion" }
-    specify { subject.discussion.should == Discussion.first }
+    specify { subject.discussion.should == discussion }
 
     it "creates notification for every group member except discussion author" do
       group = discussion.group
