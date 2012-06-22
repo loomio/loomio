@@ -28,7 +28,6 @@
 }
 
 /**** Group page ****/
-
 #group-description {
   color: $dark-grey;
   font-size: $font-small;
@@ -173,13 +172,11 @@ form#new_membership, #membership-requested {
   background-color: rgb(237, 239, 245);
   background-color: rgba(237, 239, 245, 0.98);
 }
+
 .discussion {
-  color: $mid-grey;
-  position: relative;
   a {
     color: $mid-grey;
     display: block;
-    margin: -9px;
     padding: 9px;
   }
   a:hover {
@@ -189,21 +186,15 @@ form#new_membership, #membership-requested {
     font-size: $font-tiny;
     margin-top: -0.3em;
     padding-left: 5px;
+    width: 480px;
   }
   .full-discussion-title {
     padding-left: 5px;
-    font-size: 0.8em;
     .discussion-title {
       display: inline-block;
       /*@include ie7-inline-block();*/
-      width: 500px;
+      width: 480px;
     }
-  }
-  .proposal-container {
-    padding-left: 7px;
-    padding-bottom: 7px;
-    min-height: 30px;
-    color: $light-grey;
   }
   .vote-icon {
     padding-top: 4px;
@@ -213,41 +204,26 @@ form#new_membership, #membership-requested {
     width: 20px;
     float: left;
   }
-  /*#no-vote-space { width: 20px; }*/
-  .proposal-title-container {
-    margin-left: 12px;
-    display: inline-block;
-    /*@include ie7-inline-block();*/
-    width: 400px;
-  }
   .proposal-label {
     font-size: $font-small;
     font-style: italic;
   }
-  .proposal-title {
-    font-size: $font-small;
-    color: $mid-grey;
+  .notification-info {
+    display: inline-block;
+    float: right;
+  }
+  .relative-time {
+    display: inline-block;
+    position: relative;
+    bottom: 16px;
+    padding-right: 10px;
   }
   .proposal-close-date {
-    margin-top: -0.2em;
-    font-size: $font-small;
-  }
-  .comment-info {
-    display: inline-block;
-    /*@include ie7-inline-block();*/
-    margin-top: -4px;
-    float: right;
-    padding-right: 5px;
-    font-size: $font-small;
-    text-align: right;
-  }
-  .total-comments {
-    margin-top: -9px;
-  }
-  .notification-info {
-    float: right;
+    font-size: $font-medium;
+    display: inline;
   }
   .discussion-icon-container {
+    display: inline-block;
     background-size: 25px;
     background-repeat: no-repeat;
     width: 32px;
@@ -260,9 +236,9 @@ form#new_membership, #membership-requested {
     opacity: 1.0;
    }
   .disabled-icon {
-    -moz-opacity: 0.5;
-    filter:alpha(opacity=50);
-    opacity: 0.5
+    -moz-opacity: 0.2;
+    filter:alpha(opacity=20);
+    opacity: 0.2
   }
 
   .activity-count {

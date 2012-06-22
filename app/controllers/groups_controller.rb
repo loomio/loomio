@@ -14,9 +14,6 @@ class GroupsController < GroupBaseController
   end
 
   def show
-    @discussions_awaiting_vote = @group.discussions_awaiting_user_vote(current_user) if current_user
-    @discussions_active = @group.active_discussions(current_user)
-    @discussions_inactive = @group.inactive_discussions(current_user)
     @group = GroupDecorator.new(Group.find(params[:id]))
     @subgroups = @group.subgroups.select do |group|
       can? :show, group

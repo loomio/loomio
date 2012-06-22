@@ -18,10 +18,10 @@ body.discussions.new {
   position: relative;
   bottom: 20px;
 }
-.discussion-title {
-  font-size: $font-large;
-  color: $dark-grey;
-}
+/*.discussion-title {*/
+  /*font-size: $font-large;*/
+  /*color: $dark-grey;*/
+/*}*/
 
 
 /*** comments ***/
@@ -107,122 +107,13 @@ body.discussions.new {
   .proposal.current{ background: #FFF; }
 }
 
+#previous-proposals {
+  color: $mid-grey;
+}
 
-/*** proposal ***/
-
-#content-proposal{
-  padding-top: 20px;
-  padding-left: 19px;
-  margin-left: 0px;
-  width: 430px;
-  #new-proposal {
-    .btn { margin-bottom: 20px; }
-  }
-  #no-current-proposal {
-    .btn { margin-bottom: 58px; }
-  }
-  .label{
-    text-transform: lowercase;
-    font-weight: normal;
-  }
-  #closing-info{
+.motion-row {
+  color: $mid-grey;
+  .close-date {
     font-size: $font-tiny;
-  }
-  #proposed-by {
-    font-size: $font-tiny;
-    margin-bottom: 30px;
-  }
-  #description {
-    p{
-      font-size: $font-small;
-      color: $dark-grey;
-    }
-    .see-more{
-      font-size: $font-tinywiny;
-      position: relative;
-      bottom: 10px;
-    }
-  }
-  #percentage-to-vote {
-    font-size: $font-tiny;
-    margin-bottom: 10px;
-  }
-  #graph{
-    height: 250px;
-    margin-left: -20px;
-  }
-  #new_vote{ padding-left: 0px; }
-  #vote-form{ height: 100px; }
-  #vote-statement{ margin-left: 0px; padding-left: 0px; }
-  .inputError { margin-left: 0px; height: 65px; }
-  .control-group { padding-top: 0px; padding-bottom: 0px; }
-  #vote-buttons{
-    position: relative;
-    bottom: 15px;
-    margin-bottom: 15px;
-    .btn.vote {
-      @include box-shadow(1px, 1px, 4px, $mid-grey);
-      @include border-radius(5px);
-      padding: 3px;
-    }
-  }
-  #votes-table {
-    #statement {
-      font-size: $font-tiny;
-      display: block;
-      margin-left: 30px;
-      color: #000;
-      padding-bottom: 4px;
-    }
-    .position-row {
-      padding-bottom: 3px;
-      padding-top: 2px;
-      .member-row {
-        min-height: 24px;
-        .position {
-          float: left;
-          margin-top: 2px;
-          display: inline-block;
-          /*@include ie7-inline-block();*/
-          height: 20px;
-        }
-        .member-name {
-          float: left;
-          display: inline-block;
-          /*@include ie7-inline-block();*/
-          padding-top: 4px;
-          margin-left: 10px;
-        }
-      }
-    }
-    .no-position-row {
-      min-height: 29px;
-      #no-position {
-        padding-left: 4px;
-        float: left;
-        display: inline-block;
-        /*@include ie7-inline-block();*/
-        height: 20px;
-      }
-      .member-no-position {
-        float: left;
-        display: inline-block;
-        /*@include ie7-inline-block();*/
-        padding: 2px;
-        padding-left: 8px;
-        margin-left: 6px;
-      }
-    }
-  }
-
-  #previous-proposals {
-    color: $mid-grey;
-  }
-
-  .motion-row {
-    color: $mid-grey;
-    .close-date {
-      font-size: $font-tiny;
-    }
   }
 }
