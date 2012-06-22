@@ -6,7 +6,8 @@ describe User do
     @user.valid?
     @user
   end
-  it {should have(1).errors_on(:name)}
+  it { should have_many(:notifications) }
+  it { should have(1).errors_on(:name) }
 
   it "must have a valid email" do
     user = User.new

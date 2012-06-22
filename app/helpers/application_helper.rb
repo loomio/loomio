@@ -13,4 +13,10 @@ module ApplicationHelper
         type.to_s
     end
   end
+
+  def display_title(notification_size)
+    result = ""
+    result += "(#{notification_size}) " if notification_size > 0
+    result += "Loomio"
+  end
 end

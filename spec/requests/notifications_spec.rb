@@ -3,18 +3,6 @@ require 'spec_helper'
 describe "Notifications" do
   subject { page }
 
-  # TODO (spec):
-  #
-  # Given that I am a member of a group
-  # And given that someone else has created a new discussion in the group
-  # When I visit the dashboard
-  # Then I should see a new notification on the notifications icon
-  #
-  # Given that I am a member of a group
-  # And given that someone else has created a new discussion in the group
-  # When I click on the notification icon
-  # Then I should see a notice that a new discussion has been created in the group
-
   context "a logged in user, member of a group" do
     before :each do
       @user = User.make!
@@ -24,8 +12,15 @@ describe "Notifications" do
                                           'user[password]' => 'password'
     end
 
+    # Spec:
+    #
+    # Given that I am a member of a group
+    # And given that someone else has created a new discussion in the group
+    # When I visit the dashboard
+    # Then I should see a new notification on the notifications icon
+    #
     context "new discussion is created" do
-      before { create_discussion(group: @group, author: @user) }
+      before { create_discussion(group: @group) }
 
       it "should have a notification count of 1" do
         visit root_url
@@ -35,8 +30,8 @@ describe "Notifications" do
 
     context "two new discussions are created" do
       before do
-        create_discussion(group: @group, author: @user)
-        create_discussion(group: @group, author: @user)
+        create_discussion(group: @group)
+        create_discussion(group: @group)
       end
 
       it "should have a notification count of 2" do
@@ -45,4 +40,14 @@ describe "Notifications" do
       end
     end
   end
+
+  # Spec (TODO):
+  #
+  # Given that I am a member of a group
+  # And given that someone else has created a new discussion in the group
+  # When I click on the notification icon
+  # Then I should see a notice that a new discussion has been created in the group
+  # And I should see my notification count should drop to zero
+  #
+
 end
