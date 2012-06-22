@@ -18,22 +18,20 @@ class Discussion < ActiveRecord::Base
   has_many :motions
   has_many :votes, through: :motions
 
+  after_create :create_event
+
   attr_accessible :group_id, :group, :title
 
   attr_accessor :comment, :notify_group_upon_creation
 
 
   #
-  # PERMISSION CHECKS
+  # COMMENT METHODS
   #
 
   def can_be_commented_on_by?(user)
     group.users.include? user
   end
-
-  #
-  # COMMENT METHODS
-  #
 
   def add_comment(user, comment)
     if can_be_commented_on_by? user
@@ -83,4 +81,11 @@ class Discussion < ActiveRecord::Base
       created_at
     end
   end
+
+  private
+
+    def create_event
+      #Event.new_discussion!(self)
+      Notification.create!(kind: "new_discussion", user: group.users.first, discussion: self)
+    end
 end

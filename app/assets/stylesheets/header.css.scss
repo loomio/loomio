@@ -95,11 +95,11 @@ header{
     }
   }
 
-  .group-nav{
-    li.dropdown.group-container:hover{
-      a.dropdown-toggle { color: white; }
-      #group-icon{ opacity: 1; }
-    }
+  li.group-container:hover{
+    a.dropdown-toggle { color: white; }
+    #group-icon{ opacity: 1; }
+  }
+  li.group-container{
     li.new-group a { color: #08C; }
     li.new-group:hover { a { color: white; } }
     li.group-item{
