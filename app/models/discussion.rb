@@ -85,7 +85,7 @@ class Discussion < ActiveRecord::Base
   private
 
     def create_event
-      #Event.new_discussion!(self)
-      Notification.create!(kind: "new_discussion", user: group.users.first, discussion: self)
+      Event.new_discussion!(self)
+      #Notification.create!(kind: "new_discussion", user: group.users.first, discussion: self)
     end
 end

@@ -34,10 +34,9 @@ describe Discussion do
     discussion.activity.should == 4
   end
 
-  it "creates notification upon discussion creation" do
-    discussion = create_discussion
-    notification = Notification.find_by_discussion_id(discussion.id)
-    notification.should_not be_nil
+  it "fires new_discussion! event" do
+    Event.should_receive(:new_discussion!)
+    create_discussion
   end
 
   context "discussion.history" do
