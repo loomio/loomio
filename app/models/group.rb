@@ -167,26 +167,6 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def discussions_awaiting_user_vote(user=nil)
-    all_discussions(user).select do |discussion|
-      discussion.current_motion.present? && (not discussion.current_motion.user_has_voted?(user))
-    end
-  end
-
-  def active_discussions(user=nil)
-    discussions_awaiting = discussions_awaiting_user_vote(user)
-    all_discussions(user).select do |discussion|
-      (discussion.updated_at > (Time.now() - 1.week)) &&
-        (not discussions_awaiting.include? discussion)
-    end
-  end
-
-  def inactive_discussions(user=nil)
-    all_discussions(user).select do |discussion|
-      discussion.updated_at <= (Time.now() - 1.week)
-    end
-  end
-
   #
   # PRIVATE METHODS
   #

@@ -1,0 +1,12 @@
+.proposal.clearfix
+  .vote-icon
+    - if current_user
+      = render "motions/display_icons", position: current_user.position(motion)
+
+  .proposal-title-container
+    %span.proposal-label Proposal:
+    %span.proposal-title= motion.name
+    .proposal-close-date
+      - if motion.close_date.present?
+        closing in
+        = time_ago_in_words(motion.close_date)

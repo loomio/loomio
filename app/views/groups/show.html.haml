@@ -24,19 +24,19 @@
 
     =render 'users', group: @group
 
-  %section.span8#content-main
-    .content-block
+  %section.span8
+    .selector-panel
+      %h1 Proposals
+      %ul
+        - current_user.motions_awaiting_dicission(@group).each do |motion|
+          %li.undecided= render '/motions/motion_preview', motion: motion
+        - current_user.motions_dicided(@group).each do |motion|
+          %li= render '/motions/motion_preview', motion: motion
+    .selector-panel
       %h1 Discussions
-      .content
-        #discussions
-          - if current_user && @group.users_include?(current_user)
-            = link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group }),
-              class: "btn btn-info", id: "new-discussion"
-          - if @group.beta_features? && current_user && @group.users_include?(current_user)
-            =render 'discussions',  discussions_awaiting_vote: @discussions_awaiting_vote,
-                                    discussions_active: @discussions_active,
-                                    discussions_inactive: @discussions_inactive,
-                                    group: @group
-          - else
-            - @group.all_discussions(current_user).each do |discussion|
-              =render discussion, this_group: @group
+      - if current_user && @group.users_include?(current_user)
+        = link_to 'Start a new discussion +', new_discussion_path(discussion: { group_id: @group }),
+          class: "label btn", id: "new-discussion"
+      %ul
+        - @group.all_discussions(current_user).each do |discussion|
+          %li= render discussion, this_group: @group

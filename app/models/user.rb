@@ -64,6 +64,24 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
   end
 
+  def motions_awaiting_dicission(group)
+    motions = []
+    group.discussions.each do |discussion|
+      motion = discussion.current_motion
+      motions << motion if motion && !motion_vote(motion)
+    end
+    motions
+  end
+
+  def motions_dicided(group)
+    motions = []
+    group.discussions.each do |discussion|
+      motion = discussion.current_motion
+      motions << motion if motion && motion_vote(motion)
+    end
+    motions
+  end
+
   def is_group_admin?(group)
     memberships.for_group(group).with_access('admin').exists?
   end

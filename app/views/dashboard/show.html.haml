@@ -1,10 +1,11 @@
 #dashboard-home
   - if @groups.present?
-    %section#content-main.center-content
-      %h1 Discussions
-      #discussions
-        - current_user.discussions_sorted.each do |discussion|
-          =render discussion, this_group: nil
+    %section.center-content
+      .selector-panel
+        %h1 Discussions
+        %ul
+          - current_user.discussions_sorted.each do |discussion|
+            %li= render discussion, this_group: nil
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.

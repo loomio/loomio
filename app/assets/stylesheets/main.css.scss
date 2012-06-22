@@ -51,16 +51,6 @@ h4 {
   width: 68%;
 }
 
-#content-main {
-  h1 {
-    font-size: $font-large;
-    color: $header-titles-color;
-    background-color: $header-color;
-    padding: 0.25em;
-    margin-bottom: 0.5em;
-  }
-}
-
 #content-left {
   color: $header-titles-color;
   .btn { color: $mid-grey; }
@@ -94,6 +84,48 @@ h4 {
   margin-bottom: 20px;
   .content {
     padding-left: 2px;
+  }
+}
+
+.selector-panel {
+  background-color: $header-color;
+  @include border-radius(8px);
+  border: 1px solid $light-grey;
+  margin-bottom: 20px;
+  padding-top: 2px;
+  .content {
+    padding: 8px;
+  }
+  h1 {
+    font-size: $font-large;
+    color: $header-titles-color;
+    margin-left: 5px;
+    padding-left: 8px;
+    display: inline;
+    line-height: 2em;
+  }
+  .btn {
+    margin-right: 10px;
+    margin-top: 3px;
+    padding-top: 4px;
+    padding-bottom: 7px;
+    float: right;
+    width: 150px;
+    border-color: $light-grey;
+    color: $mid-grey;
+    text-shadow: none;
+  }
+  ul {
+    border-top: 1px solid $light-grey;
+    list-style: none;
+    margin-top: 3px;
+    margin-left: 0px;
+    margin-bottom: 8px;
+  }
+  li {
+    background-color: #fbfbfb;
+    color: $dark-grey;
+    border-bottom: 1px solid $light-grey;
   }
 }
 
@@ -172,12 +204,9 @@ h4 {
   background-color: $block-color;
 }
 
-.unread{
+.undecided, .unread{
   background-color: white;
-}
-
-.read{
-  background-color: $comment-color;
+  color: black;
 }
 
 .field_with_errors { display: inline; }
