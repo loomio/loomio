@@ -5,7 +5,7 @@
     %h1
       = link_to image_tag("top-bar-loomio.png", :alt => "Loomio"), "/"
     - if user_signed_in?
-      %ul.nav.group-nav
+      %ul.nav
         %li.dropdown.group-container
           %a{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
             #group-icon
@@ -28,6 +28,10 @@
                     -#.span.label.label-important= activity
             %li.new-group
               =link_to "+ Add New Group", new_group_path
+        %li
+          %a{href: "#"}
+            %span#notification-count= notifications.size
+            Notifications
       %ul.nav.secondary-nav.pull-right
         %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
         %li.dropdown

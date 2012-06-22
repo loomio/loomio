@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614054726) do
+ActiveRecord::Schema.define(:version => 20120622014537) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20120614054726) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body"
+    t.text     "body",             :default => ""
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -68,12 +68,21 @@ ActiveRecord::Schema.define(:version => 20120614054726) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title"
     t.integer  "activity",   :default => 0, :null => false
+    t.string   "title"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
   add_index "discussions", ["group_id"], :name => "index_discussions_on_group_id"
+
+  create_table "events", :force => true do |t|
+    t.string   "kind"
+    t.integer  "discussion_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["discussion_id"], :name => "index_events_on_discussion_id"
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -116,6 +125,21 @@ ActiveRecord::Schema.define(:version => 20120614054726) do
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "kind"
+    t.integer  "discussion_id"
+    t.integer  "comment_id"
+    t.integer  "motion_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["comment_id"], :name => "index_notifications_on_comment_id"
+  add_index "notifications", ["discussion_id"], :name => "index_notifications_on_discussion_id"
+  add_index "notifications", ["motion_id"], :name => "index_notifications_on_motion_id"
+  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "",    :null => false
