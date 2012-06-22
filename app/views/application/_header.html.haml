@@ -36,7 +36,11 @@
             - notifications.each do |notification|
               - author_name = notification.discussion.author.name
               - group_name = notification.discussion.group.name
-              %li= link_to "#{author_name} created a new discussion in #{group_name}.", discussion_path(notification.discussion)
+              %li
+                %a{:href => discussion_path(notification.discussion) }
+                  %span.bold-name= author_name
+                  created a new discussion
+                  %span.bold-name= group_name
       %ul.nav.secondary-nav.pull-right
         %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
         %li.dropdown
