@@ -132,7 +132,6 @@ $ ->
         $(".validate-motion-close-date").parent().addClass("error")
         $(".date-error-message").show()
 
-
 # character count for statement on discussion:show page
 pluralize_characters = (num) ->
   if(num == 1)
@@ -188,3 +187,12 @@ $ ->
       event.preventDefault()
     )
 
+# check for error and submit vote
+$ ->
+  $(".vote").click((event) ->
+    if $(".control-group").hasClass("error")
+      event.preventDefault()
+    else
+      $('#new_vote').submit()
+      event.preventDefault()
+  )
