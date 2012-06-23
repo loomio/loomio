@@ -4,12 +4,13 @@
   %h1.discussion-title
     = @discussion.title
 .row.content-discussion
-  .span6#content-comments
+  .span6#content-history
     - if can? :add_comment, @discussion
-      = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
-        = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
-        #new-comment-submit
-          = submit_tag "Post comment", class: "btn btn-info submit", id: 'post-new-comment'
+      #new-comment-area
+        = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
+          = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
+          #new-comment-submit
+            = submit_tag "Post comment", class: "btn btn-info submit", id: 'post-new-comment'
     = render 'history', discussion: @discussion, history: @discussion.history
   .span6#content-proposal
     .content-block
