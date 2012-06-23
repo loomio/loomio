@@ -1,7 +1,7 @@
 - likes = comment.likes
 %div.comment{id: "comment-#{comment.id}"}
   .comment-username= link_to(comment.user_name, "#")
-  .comment-body.word-break= comment.body
+  .comment-body.comment-word-break= comment.body
   .comment-time
     = time_ago_in_words(comment.created_at) + " ago"
     - if can? :like, comment
