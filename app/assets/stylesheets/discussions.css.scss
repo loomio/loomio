@@ -24,22 +24,22 @@ body.discussions.new {
 /*}*/
 
 
-/*** comments ***/
-
-#content-comments {
+/*** comments, positions & proposals in History ***/
+#content-history {
   padding-top: 20px;
-  padding-right: 20px;
+  width: 480px;
   margin-bottom: 30px;
   border-right: 1px solid $light-grey;
 
   #new-comment-form{
     margin-bottom: 8px;
+    margin-right: 20px;
   }
   #new-comment{
     width: 450px;
     max-width: 450px;
     height: 80px;
-    color: black;
+    color: $dark-grey;
   }
   #new-comment-submit{
     margin-top: -4px;
@@ -48,63 +48,71 @@ body.discussions.new {
       margin-bottom: 15px;
     }
   }
+  ul {
+    list-style: none;
+    margin-left: 0px;
+  }
+  li { padding: 1px; }
+
+  /* comment */
   .comment{
-    background-color: $comment-color;
-    margin-bottom: 2px;
+    margin-right: 20px;
     padding: 8px;
     font-size: $font-small;
-    .comment-username{
-      font-weight: bold;
-      float: left;
-    }
-    .comment-body{
-      margin-left: 0.4em;
-      display: inline;
-    }
-    .comment-time{
-      color: $dark-grey;
-      font-size: 0.75em;
-    }
-    .comment-likes{
-      color: $dark-grey;
-      font-size: 0.75em;
-    }
+    color: $dark-grey;
+    background-color: $comment-color;
+  }
+  .comment .comment-username{
+    font-weight: bold;
+    float: left;
+  }
+  .comment .comment-body{
+    margin-left: 0.4em;
+    display: inline;
+  }
+  .comment .comment-time{
+    color: $dark-grey;
+    font-size: 0.75em;
+  }
+  .comment .comment-likes{
+    color: $dark-grey;
+    font-size: 0.75em;
   }
 
-  .position{
-    .position{
-      float: left;
-      padding-right: 0.4em;
-      display: block;
-    }
-    .position-message{
-      color: black;
-      padding-left: 0.4em;
-      display: inline-block;
-      /*@include ie7-inline-block();*/
-    }
+  /* position */
+  .position .position-icon{
+    float: left;
+    padding-right: 0.4em;
+    display: block;
+    height: 18px;
+  }
+  .position .position-message{
+    padding-left: 0.4em;
+    display: inline;
   }
 
+  /* proposal */
   .proposal{
     background: $comment-color;
     color: $mid-grey;
-    margin-bottom: 6px;
-    #proposal-author{
-      font-weight: bold;
-    }
-    .proposal-label{
+  }
+  .proposal .proposal-label{
       color: $mid-grey;
       margin-left: 0.4em;
-      display: inline-block;
-      /*@include ie7-inline-block();*/
-    }
-    .proposal-text{
-      color: $dark-grey;
-      margin-left: 0.4em;
-      font-style: italic;
-    }
+      display: inline;
   }
-  .proposal.current{ background: #FFF; }
+  .proposal .proposal-text{
+    color: $dark-grey;
+    margin-left: 0.4em;
+    font-style: italic;
+  }
+  .proposal.current{
+    background: #FFF;
+  }
+  .panel {
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
 }
 
 #previous-proposals {
@@ -116,4 +124,18 @@ body.discussions.new {
   .close-date {
     font-size: $font-tiny;
   }
+}
+
+.comment-word-break {
+  /* The following styles prevent unbroken strings from breaking the layout */
+  display: inline;
+  overflow: auto;
+  white-space: -moz-pre-wrap; /* Mozilla */
+  white-space: -hp-pre-wrap; /* HP printers */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
+  -moz-binding: url('xbl.xml#wordwrap'); /* Firefox (using XBL) */
 }
