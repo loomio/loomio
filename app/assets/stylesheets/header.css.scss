@@ -2,24 +2,24 @@
 
 // topbar
 .navbar-wrapper{
-	position: fixed;
-	width: 100%;
+  position: fixed;
+  width: 100%;
   background-image: url("title-bar-gradient.jpg");
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
-	z-index: 1;
+  z-index: 1;
 }
 .navbar-inner{
-	border-radius: 0px;
-	background-color: $header-color;
-	background-image: none;
+  border-radius: 0px;
+  background-color: $header-color;
+  background-image: none;
 }
 .container{
   margin: 0px auto;
-	padding-top: 70px;
+  padding-top: 70px;
 }
 header{
-	width: 940px;
-	margin: 0px auto;
+  width: 940px;
+  margin: 0px auto;
 }
 .dropdown-menu .divider { margin: 0px }
 .dropdown.open .dropdown-toggle { padding-bottom: 10px; }
@@ -40,11 +40,11 @@ header{
 /* navigation*/
 .navbar {
   .nav{ padding-top: 2px; }
-	/* dropdown font-size */
+  /* dropdown font-size */
   div > ul a, .nav a{
     font-size: $font-small;
     text-decoration: none;
-	}
+  }
   .dropdown-menu {
     padding-top: 8px, 0px;
   }
@@ -53,15 +53,21 @@ header{
     float: left;
     font-size: 0px;
     line-height: 0px;
-		a{
-			display: block;
-			height: 36px;
-			padding: 4px 6px 0px;
-		}
+    a{
+      display: block;
+      height: 36px;
+      padding: 4px 6px 0px;
+    }
   }
 
   /* notifications */
-  .bold-name { text-decoration: bold; }
+  .bold-name {
+    font-weight: bold;
+    color: $mid-grey;
+  }
+  .dropdown-menu li:hover span {
+    color: #FFF;
+  }
 
   /* group dropdown nav */
   #my-groups-container{
