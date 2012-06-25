@@ -8,5 +8,5 @@
       = render "motions/votes_table_vote", vote: vote, motion: motion
 - motion.users_who_did_not_vote.each do |user|
   .no-position-row.bordered
-    #no-position= image_tag "questionmark.png"
+    .no-position= image_tag "questionmark.png"
     .member-no-position= link_to user.name, "#"

@@ -16,7 +16,7 @@
     .content-block
       - if @selected_closed_motion
         - if @current_motion
-          #current-proposal
+          .current-proposal
             %h1 Current proposal
             .content
               .panel
@@ -25,24 +25,24 @@
                   .close-date
                     = "Closing in #{time_ago_in_words(@current_motion.close_date)}"
         - else
-          #new-proposal
+          .new-proposal
             .content
               = link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-info',
                 id: 'new-proposal'
       - else
         - if @current_motion
-          #current-proposal
+          .current-proposal
             %h1 Current proposal
             .content
               .panel
                 = render @current_motion, unique_votes: @unique_votes
         - else
-          #no-current-proposal
+          .no-current-proposal
             .content
               = link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-info',
                 id: 'new-proposal'
     - if @discussion.motions.where("phase = 'closed'").count > 0
-      #previous-proposals
+      .previous-proposals
         .content-block
           %h1 Previous proposals
           .content

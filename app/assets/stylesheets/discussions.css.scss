@@ -18,10 +18,10 @@ body.discussions.new {
   position: relative;
   bottom: 20px;
 }
-/*.discussion-title {*/
-  /*font-size: $font-large;*/
-  /*color: $dark-grey;*/
-/*}*/
+h1.discussion-title {
+  font-size: $font-large;
+  color: $dark-grey;
+}
 
 
 /*** comments, positions & proposals in History ***/
