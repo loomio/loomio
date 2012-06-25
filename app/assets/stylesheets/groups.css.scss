@@ -34,6 +34,8 @@
   padding: 4px;
   padding-left: 10px;
 }
+
+/* group description panel */
 #add-group-description {
   #description-input {
     width: 290px;
@@ -61,52 +63,45 @@
   padding: 6px;
   font-size: $font-small;
 }
-/*#discussions {*/
-  /*padding: 4px;*/
-  /*.btn { margin-bottom: 15px; }*/
-  /*.content-block h4 {*/
-    /*color: $mid-grey;*/
-    /*float: left;*/
-  /*}*/
-  /*.info-help {*/
-    /*margin-left: 6px;*/
-    /*height: 19px;*/
-    /*width: 16px;*/
-    /*-moz-opacity: .5;*/
-    /*filter:alpha(opacity=50);*/
-    /*opacity: 0.5;*/
-    /*background-image:url("/assets/dark-info.png");*/
-    /*background-repeat: no-repeat;*/
-    /*background-position-y: 3px;*/
-    /*display: inline-block;*/
-    /*@include ie7-inline-block();*/
-    /*cursor: pointer;*/
-    /*position: relative;*/
-    /*bottom: 3px;*/
-  /*}*/
-  /*.info-help:hover {*/
-    /*opacity: 1;*/
-  /*}*/
-/*}*/
-.new_motion_link { float: right; }
+#group-description {
+  .group-description {
+    padding: 2px;
+    width: 260px;
+    float: left;
+    display: inline;
+  }
+  .dropdown {
+    float: right;
+    padding-right: 5px;
+  }
+}
+
 
 #add-member-popup-btn {
   margin-bottom: 5px;
 }
-#group-description {
-  .padding: 2px;
-}
+
+/* sub groups panel */
 #sub-groups {
+  a { color: $mid-grey; }
   .dropdown {
     float: right;
     margin-top: 2px;
     margin-right: 10px;
   }
+  .new_motion_link {
+    float: right;
+    padding-right: 10px;
+  }
 }
 
+/* add member panel */
 #add-member {
   li { padding: 0px; }
-  .btn { margin-top: 0px; }
+  .btn {
+    margin-top: 0px;
+    width: 60px;
+  }
   .selector-panel { padding-bottom: 20px; }
 }
 #invite-group-members {
@@ -135,8 +130,9 @@ input#user_email{
   margin-bottom: 5px;
 }
 
+/* membership panel */
 .user-name {
-  font-size: $font-small;
+  color: $mid-grey;
   width: 180px;
   display: inline-block;
   @include ie7-inline-block();
@@ -184,3 +180,22 @@ form#new_membership, #membership-requested {
   margin: 0px auto;
 }
 
+/*.info-help {*/
+  /*margin-left: 6px;*/
+  /*height: 19px;*/
+  /*width: 16px;*/
+  /*-moz-opacity: .5;*/
+  /*filter:alpha(opacity=50);*/
+  /*opacity: 0.5;*/
+  /*background-image:url("/assets/dark-info.png");*/
+  /*background-repeat: no-repeat;*/
+  /*background-position-y: 3px;*/
+  /*display: inline-block;*/
+  /*@include ie7-inline-block();*/
+  /*cursor: pointer;*/
+  /*position: relative;*/
+  /*bottom: 3px;*/
+/*}*/
+/*.info-help:hover {*/
+  /*opacity: 1;*/
+/*}*/
