@@ -32,7 +32,6 @@
   a {
     color: $mid-grey;
     display: block;
-    /*padding: 9px;*/
   }
   a:hover {
     text-decoration: none;
@@ -44,20 +43,15 @@
   }
   .proposal-title-container {
     color: $mid-grey;
-    font-size: $font-small;
     float: left;
     padding: 5px;
     width: 480px;
-  }
-  .proposal-label {
-    float: left;
-    display: inline;
-    margin-right: 5px;
   }
   .proposal-title {
     color: $dark-grey;
     display: inline;
   }
+  .proposal.close-date { font-size: $font-small; }
   .engagement {
     font-size: $font-small;
     float: right;
@@ -81,8 +75,14 @@
     text-transform: lowercase;
     font-weight: normal;
   }
-  .closing-info{
+  .admin-buttons .btn {
+    float: right;
     font-size: $font-tiny;
+    width: 65px;
+    padding: 2px 5px;
+  }
+  .closing-info{
+    font-size: $font-small;
   }
   .proposed-by {
     font-size: $font-tiny;
@@ -98,7 +98,7 @@
     bottom: 10px;
   }
   .percentage-to-vote {
-    font-size: $font-tiny;
+    font-size: $font-small;
     margin-bottom: 10px;
   }
   .graph{
@@ -116,54 +116,35 @@
     margin-bottom: 15px;
   }
   .vote-buttons .btn.vote {
-      @include box-shadow(1px, 1px, 4px, $mid-grey);
-      @include border-radius(5px);
-      padding: 3px;
+    float: left;
+    height: 40px;
+    width: 40px;
+    @include box-shadow(1px, 1px, 4px, $mid-grey);
+    @include border-radius(5px);
+    padding: 3px;
   }
-  .votes-table .statement {
-    font-size: $font-tiny;
-    display: block;
-    margin-left: 30px;
-    color: #000;
-    padding-bottom: 4px;
-  }
+  .votes-table { padding-bottom: 10px; }
   .votes-table .position-row {
     padding-bottom: 3px;
     padding-top: 2px;
   }
-  .votes-table .member-row {
-    min-height: 24px;
+  .votes-table .statement {
+    font-size: $font-tiny;
+    float: left;
+    color: #000;
+    display: inline;
   }
   .votes-table .position {
     float: left;
-    margin-top: 2px;
-    display: inline-block;
-    /*@include ie7-inline-block();*/
     height: 20px;
+    width: 30px;
+    text-align: center;
   }
-  .votes-table .member-name {
-    float: left;
-    display: inline-block;
-    /*@include ie7-inline-block();*/
-    padding-top: 4px;
-    margin-left: 10px;
-  }
-  .votes-table .no-position-row {
-    min-height: 29px;
-  }
-  .votes-table .no-position {
-    padding-left: 4px;
-    float: left;
-    display: inline-block;
-    /*@include ie7-inline-block();*/
-    height: 20px;
-  }
-  .votes-table .member-no-position {
-    float: left;
-    display: inline-block;
-    /*@include ie7-inline-block();*/
-    padding: 2px;
-    padding-left: 8px;
-    margin-left: 6px;
+  .votes-table .btn {
+    float: right;
+    font-size: $font-tiny;
+    margin-left: 4px;
+    width: 20px;
+    padding: 2px 5px;
   }
 }

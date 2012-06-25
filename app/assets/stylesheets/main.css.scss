@@ -58,7 +58,8 @@ h4 {
     font-size: $font-medium;
   }
   ul {
-    border-top: 1px solid $light-grey;
+    /*border-top: 1px solid $light-grey;*/
+    border-top: none;
     list-style: none;
     margin-top: 3px;
     margin-left: 0px;
@@ -71,22 +72,6 @@ h4 {
     border-bottom: none;
   }
   a { font-color: $mid-grey; }
-}
-#content-proposal {
-  color: $mid-grey;
-  h1 {
-    font-size: $font-medium;
-    background-color: $header-color;
-    padding: 0.25em;
-    margin-bottom: 0.5em;
-  }
-  margin-bottom: 20px;
-}
-.content-block {
-  margin-bottom: 20px;
-  .content {
-    padding-left: 2px;
-  }
 }
 
 .selector-panel {
@@ -138,13 +123,13 @@ h4 {
   padding: 8px;
 }
 
-.edit-delete-buttons {
-  float: right;
-  .btn {
-    font-size: $font-tiny;
-    margin-left: 4px;
-  }
-}
+/*.edit-delete-buttons {*/
+  /*float: right;*/
+  /*.btn {*/
+    /*font-size: $font-tiny;*/
+    /*margin-left: 4px;*/
+  /*}*/
+/*}*/
 
 // group title
 .group-title {
