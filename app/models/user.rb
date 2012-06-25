@@ -74,6 +74,14 @@ class User < ActiveRecord::Base
     memberships.for_group(group).first
   end
 
+  def unviewed_notifications
+    notifications.where('viewed_at IS NULL')
+  end
+
+  def mark_notifications_as_viewed!
+    unviewed_notifications.update_all(:viewed_at => Time.now)
+  end
+
   def self.invite_and_notify!(user_params, inviter, group)
     new_user = User.invite!(user_params, inviter) do |u|
       u.skip_invitation = true

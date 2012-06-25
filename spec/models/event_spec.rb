@@ -18,8 +18,7 @@ describe Event do
       group.add_member! User.make!
       group.add_member! User.make!
       group_size = group.users.size
-      Notification.should_receive(:create!).exactly(group_size - 1).times
-      event
+      Notification.where("event_id = ?", event).size.should == group_size - 1
     end
   end
 end

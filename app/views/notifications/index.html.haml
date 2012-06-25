@@ -1,0 +1,9 @@
+%ul
+  - current_user.notifications.each do |notification|
+    - author_name = notification.discussion.author.name
+    - group_name = notification.discussion.group.name
+    %li
+      %a{:href => discussion_path(notification.discussion) }
+        %span.bold-name= author_name
+        created a new discussion
+        %span.bold-name= group_name

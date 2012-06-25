@@ -1,15 +1,12 @@
 class Notification < ActiveRecord::Base
   belongs_to :user
-  belongs_to :discussion
-  belongs_to :comment
-  belongs_to :motion
+  belongs_to :event
 
-  validates_presence_of :kind
-  validates_inclusion_of :kind, :in => Event::KINDS
+  validates_presence_of :user, :event
 
-  attr_accessible :user, :kind, :discussion, :comment, :motion
+  attr_accessible :user
 
-  def self.new_discussion!(discussion, user)
-    Notification.create!(kind: "new_discussion", user: user, discussion: discussion)
+  def discussion
+    event.discussion
   end
 end
