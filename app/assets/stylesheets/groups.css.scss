@@ -61,13 +61,13 @@
   padding: 6px;
   font-size: $font-small;
 }
-#discussions {
-  padding: 4px;
-  .btn { margin-bottom: 15px; }
-  .content-block h4 {
-    color: $mid-grey;
-    float: left;
-  }
+/*#discussions {*/
+  /*padding: 4px;*/
+  /*.btn { margin-bottom: 15px; }*/
+  /*.content-block h4 {*/
+    /*color: $mid-grey;*/
+    /*float: left;*/
+  /*}*/
   /*.info-help {*/
     /*margin-left: 6px;*/
     /*height: 19px;*/
@@ -87,7 +87,7 @@
   /*.info-help:hover {*/
     /*opacity: 1;*/
   /*}*/
-}
+/*}*/
 .new_motion_link { float: right; }
 
 #add-member-popup-btn {
@@ -97,15 +97,15 @@
   .padding: 2px;
 }
 #sub-groups {
-  .selector-panel { padding-bottom: 36px; }
+  .dropdown {
+    float: right;
+    margin-top: 2px;
+    margin-right: 10px;
+  }
 }
 
 #add-member {
   li { padding: 0px; }
-  input {
-    position: relative;
-    right: 1px;
-  }
   .btn { margin-top: 0px; }
   .selector-panel { padding-bottom: 20px; }
 }
@@ -127,7 +127,8 @@
 #user_email_input {
   display: inline;
   #user_email {
-    width: 290px;
+    width: 270px;
+    margin-left: 8px;
   }
 }
 input#user_email{
@@ -183,93 +184,3 @@ form#new_membership, #membership-requested {
   margin: 0px auto;
 }
 
-// Discussion list panel
-//
-// NOTE: this code is shared with the group show page and
-//       the dashboard page.
-//
-.discussion:hover {
-  background-color: rgb(237, 239, 245);
-  background-color: rgba(237, 239, 245, 0.98);
-}
-
-.discussion {
-  a {
-    color: $mid-grey;
-    display: block;
-    padding: 9px;
-  }
-  a:hover {
-    text-decoration: none;
-  }
-  #group-name {
-    font-size: $font-tiny;
-    margin-top: -0.3em;
-    padding-left: 5px;
-    width: 480px;
-  }
-  .full-discussion-title {
-    padding-left: 5px;
-  }
-  .full-discussion-title .discussion-title {
-    display: inline-block;
-    /*@include ie7-inline-block();*/
-    width: 480px;
-  }
-  .vote-icon {
-    padding-top: 4px;
-    display: inline-block;
-    /*@include ie7-inline-block();*/
-    height: 16px;
-    width: 20px;
-    float: left;
-  }
-  .proposal-label {
-    font-size: $font-small;
-    font-style: italic;
-  }
-  .notification-info {
-    display: inline-block;
-    float: right;
-  }
-  .relative-time {
-    display: inline-block;
-    position: relative;
-    bottom: 16px;
-    padding-right: 10px;
-  }
-  .proposal-close-date {
-    font-size: $font-medium;
-    display: inline;
-  }
-  .discussion-icon-container {
-    display: inline-block;
-    background-size: 25px;
-    background-repeat: no-repeat;
-    width: 32px;
-    height: 30px;
-    background-image: url("discussion.png");
-  }
-  .enabled-icon {
-    -moz-opacity: 1.0;
-    filter:alpha(opacity=100);
-    opacity: 1.0;
-   }
-  .disabled-icon {
-    -moz-opacity: 0.2;
-    filter:alpha(opacity=20);
-    opacity: 0.2
-  }
-
-  .activity-count {
-    margin-left: 18px;
-    height: 10px;
-    font-size: $font-tinywiny;
-    padding: 0.4em;
-    padding-top: 0.1em;
-  }
-  .discussion-link {
-    position: relative;
-    z-index: 2;
-  }
-}

@@ -1,8 +1,7 @@
-.edit-delete-buttons
-  - if motion.voting?
-    - if can? :close_voting, motion
-      =link_to "Close Voting", close_motion_voting_path(motion), class: 'btn btn-mini',
-        id: "close-voting", confirm: "Are you sure you want to close this motion?",
-        method: :post
-    - if can? :edit, motion
-      =link_to "Edit", edit_motion_path(motion), class: 'btn btn-mini'
+- if motion.voting?
+  - if can? :close_voting, motion
+    =link_to "Close Voting", close_motion_voting_path(motion), class: 'btn btn-mini',
+      id: "close-voting", confirm: "Are you sure you want to close this motion?",
+      method: :post
+  - if can? :edit, motion
+    =link_to "Edit", edit_motion_path(motion), class: 'btn btn-mini'
