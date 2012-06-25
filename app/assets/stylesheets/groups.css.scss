@@ -31,30 +31,33 @@
 #group-description {
   color: $dark-grey;
   font-size: $font-small;
+  padding: 4px;
+  padding-left: 10px;
 }
 #add-group-description {
   #description-input {
     width: 290px;
     margin-bottom: 5px;
+    position: relative;
+    right: 1px;
   }
   .character-counter {
     width: 300px;
-    bottom: 10px;
-  }
-  #save-buttons {
     position: relative;
-    bottom: 8px;
+    bottom: 2px;
+    right: 12px;
   }
+  .control-group { margin-bottom: 0px; }
 }
 #cancel-add-description {
   color: $mid-grey;
-  padding-left: 5px;
+  padding-left: 80px;
   position: relative;
-  top: 4px;
+  top: 10px;
 }
 .empty-placeholder {
-  border: 1px dashed $light-grey;
-  @include border-radius(4px);
+  /*border: 1px dashed $light-grey;*/
+  /*@include border-radius(4px);*/
   padding: 6px;
   font-size: $font-small;
 }
@@ -65,33 +68,47 @@
     color: $mid-grey;
     float: left;
   }
-  .info-help {
-    margin-left: 6px;
-    height: 19px;
-    width: 16px;
-    -moz-opacity: .5;
-    filter:alpha(opacity=50);
-    opacity: 0.5;
-    background-image:url("/assets/dark-info.png");
-    background-repeat: no-repeat;
-    background-position-y: 3px;
-    display: inline-block;
-    @include ie7-inline-block();
-    cursor: pointer;
-    position: relative;
-    bottom: 3px;
-  }
-  .info-help:hover {
-    opacity: 1;
-  }
+  /*.info-help {*/
+    /*margin-left: 6px;*/
+    /*height: 19px;*/
+    /*width: 16px;*/
+    /*-moz-opacity: .5;*/
+    /*filter:alpha(opacity=50);*/
+    /*opacity: 0.5;*/
+    /*background-image:url("/assets/dark-info.png");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position-y: 3px;*/
+    /*display: inline-block;*/
+    /*@include ie7-inline-block();*/
+    /*cursor: pointer;*/
+    /*position: relative;*/
+    /*bottom: 3px;*/
+  /*}*/
+  /*.info-help:hover {*/
+    /*opacity: 1;*/
+  /*}*/
 }
 .new_motion_link { float: right; }
 
 #add-member-popup-btn {
   margin-bottom: 5px;
-
+}
+#group-description {
+  .padding: 2px;
+}
+#sub-groups {
+  .selector-panel { padding-bottom: 36px; }
 }
 
+#add-member {
+  li { padding: 0px; }
+  input {
+    position: relative;
+    right: 1px;
+  }
+  .btn { margin-top: 0px; }
+  .selector-panel { padding-bottom: 20px; }
+}
 #invite-group-members {
   .modal-body {
     max-height: 300px;
@@ -125,10 +142,11 @@ input#user_email{
 }
 .admin-controls {
   float: right;
-  width: 112px;
+  width: 98px;
   text-align: right;
   font-size: $font-tiny;
   display: inline;
+  padding-right: 5px;
   .close {
     padding-left: 8px;
     position: relative;
@@ -152,6 +170,8 @@ form#new_membership, #membership-requested {
   font-size: $font-small;
   color: #fff;
   background-color: #ccc;
+  margin-right: 10px;
+  margin-top: 8px;
 }
 
 /**** Private group form ****/
@@ -190,11 +210,11 @@ form#new_membership, #membership-requested {
   }
   .full-discussion-title {
     padding-left: 5px;
-    .discussion-title {
-      display: inline-block;
-      /*@include ie7-inline-block();*/
-      width: 480px;
-    }
+  }
+  .full-discussion-title .discussion-title {
+    display: inline-block;
+    /*@include ie7-inline-block();*/
+    width: 480px;
   }
   .vote-icon {
     padding-top: 4px;

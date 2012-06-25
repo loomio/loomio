@@ -50,25 +50,27 @@ h4 {
   margin-right: auto;
   width: 68%;
 }
-
 #content-left {
-  color: $header-titles-color;
-  .btn { color: $mid-grey; }
-  .btn-info { color: white; }
-  h1 {
+  .selector-panel {
+    background-color: #FCFCFC;
+  }
+  .selector-panel h1 {
     font-size: $font-medium;
-    background-color: $header-color;
-    padding: 0.25em;
-    margin-bottom: 0.5em;
   }
   ul {
-    margin-bottom: 0.6em;
+    border-top: 1px solid $light-grey;
     list-style: none;
+    margin-top: 3px;
     margin-left: 0px;
+    margin-bottom: 8px;
   }
   li {
-    padding-bottom: 4px;
+    padding-left: 10px;
+    line-height: 1.6em;
+    background-color: white;
+    border-bottom: none;
   }
+  a { font-color: $mid-grey; }
 }
 #content-proposal {
   color: $mid-grey;
@@ -179,7 +181,6 @@ h4 {
 
 .word-break {
   /* The following styles prevent unbroken strings from breaking the layout */
-  width: 290px; /* set to whatever width you need */
   overflow: auto;
   white-space: -moz-pre-wrap; /* Mozilla */
   white-space: -hp-pre-wrap; /* HP printers */
@@ -204,7 +205,7 @@ h4 {
   background-color: $block-color;
 }
 
-.undecided, .unread{
+li.undecided, .unread{
   background-color: white;
   color: black;
 }

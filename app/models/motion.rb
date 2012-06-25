@@ -151,6 +151,10 @@ class Motion < ActiveRecord::Base
     end
   end
 
+  def percent_voted
+    (100-(no_vote_count/group_count.to_f * 100)).to_i
+  end
+
   def users_who_did_not_vote
     if voting?
       users = []
