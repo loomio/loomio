@@ -14,7 +14,8 @@ module ApplicationHelper
     end
   end
 
-  def display_title(notification_size)
+  def display_title(notifications)
+    notification_size = notifications ? notifications.size : 0
     result = ""
     result += "(#{notification_size}) " if notification_size > 0
     result += "Loomio"

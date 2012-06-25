@@ -100,6 +100,17 @@ describe User do
     @user.discussion_activity_when_last_read(@discussion).should == 5
   end
 
+  it "can mark notifications as viewed" do
+    @user = User.make!
+    @group = Group.make!
+    @group.add_member!(@user)
+    create_discussion(group: @group)
+    create_discussion(group: @group)
+    @user.unviewed_notifications.count.should == 2
+    @user.mark_notifications_as_viewed!
+    @user.unviewed_notifications.count.should == 0
+  end
+
   describe "name" do
     it "returns 'Deleted User' if deleted_at is true (a date is present)" do
       @user = User.make!

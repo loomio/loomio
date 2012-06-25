@@ -21,3 +21,4 @@
 //= require bootstrap-custom
 //= require groups
 //= require motions
+//= require notifications

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120622014537) do
+ActiveRecord::Schema.define(:version => 20120625024753) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -128,17 +128,13 @@ ActiveRecord::Schema.define(:version => 20120622014537) do
 
   create_table "notifications", :force => true do |t|
     t.integer  "user_id"
-    t.string   "kind"
-    t.integer  "discussion_id"
-    t.integer  "comment_id"
-    t.integer  "motion_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_id"
+    t.datetime "viewed_at"
   end
 
-  add_index "notifications", ["comment_id"], :name => "index_notifications_on_comment_id"
-  add_index "notifications", ["discussion_id"], :name => "index_notifications_on_discussion_id"
-  add_index "notifications", ["motion_id"], :name => "index_notifications_on_motion_id"
+  add_index "notifications", ["event_id"], :name => "index_notifications_on_event_id"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "users", :force => true do |t|

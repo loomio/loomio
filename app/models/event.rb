@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   KINDS = ["new_discussion"]
 
+  has_many :notifications
   belongs_to :discussion
 
   validates_inclusion_of :kind, :in => KINDS
@@ -8,12 +9,12 @@ class Event < ActiveRecord::Base
   attr_accessible :kind, :discussion
 
   def self.new_discussion!(discussion)
+    event = create!(:kind => "new_discussion", :discussion => discussion)
     discussion.group.users.each do |user|
       unless user == discussion.author
-        Notification.create!(kind: "new_discussion", user: user,
-                             discussion: discussion)
+        event.notifications.create! :user => user
       end
     end
-    create!(kind: "new_discussion", discussion: discussion)
+    event
   end
 end
