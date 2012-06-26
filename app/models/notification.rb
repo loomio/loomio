@@ -6,6 +6,8 @@ class Notification < ActiveRecord::Base
 
   attr_accessible :user
 
+  default_scope order("id DESC")
+
   def discussion
     event.discussion
   end
