@@ -28,26 +28,30 @@
                     -#.span.label.label-important= activity
             %li.new-group
               =link_to "+ Add New Group", new_group_path
-        %li.dropdown
-          -#- notifications_hash = { :href => notifications_path,
-            -#:id => 'notification-toggle',
-            -#'data-toggle' => 'dropdown', :class => 'drowndown-toggle',
-            -#'data-remote' => 'true', 'data-target' => '#' }
+        %li.dropdown#notifications-container
           - notifications_hash = { :href => notifications_path,
-            :id => 'notification-toggle',
-            'data-remote' => 'true', 'data-target' => '#' }
+            :id => 'notifications-toggle', 'data-target' => '#', 'data-toggle' => 'dropdown' }
           %a{ notifications_hash }
-            %span#notification-count= pluralize(unviewed_notifications.size, "Notification")
+            %span#notifications-count= pluralize(unviewed_notifications.size, "Notification")
             %b.caret
           %ul.dropdown-menu
-            - notifications.each do |notification|
-              - author_name = notification.discussion.author.name
-              - group_name = notification.discussion.group.name
-              %li
-                %a{:href => discussion_path(notification.discussion) }
-                  %span.bold-name= author_name
-                  created a new discussion
-                  %span.bold-name= group_name
+            %h3 Notifications
+            %li.divider
+            #notification-items
+              - notifications.each do |notification|
+                - author_name = notification.discussion.author.name
+                - group_name = notification.discussion.group.name
+                - discussion_title = notification.discussion.title
+                %li.notification-item
+                  %a{:href => discussion_path(notification.discussion) }
+                    %span.bold-name= author_name
+                    created a new discussion
+                    %span.bold-name= discussion_title
+                    in
+                    %span.bold-name= group_name
+                %li.divider
+            #notifications-see-more= link_to "See more notifications", notifications_path
+
       %ul.nav.secondary-nav.pull-right
         %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
         %li.dropdown
