@@ -1,22 +1,19 @@
-.group-title
-  %h2
-    %span
-      = @group.fancy_link
-      .dropdown
-        - can_edit = can? :edit, @group
-        - can_leave = @group.users_include? current_user
-        - if can_edit || can_leave
-          = link_to image_tag("settings.png", title:'settings', alt:'settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
-          %ul.dropdown-menu.pull-right
-            - if can_edit
-              %li= link_to "Edit group", edit_group_path(@group)
-            - if can_leave
-              - membership = current_user.group_membership(@group)
-              - if can_edit
-                %li.divider
-              %li= link_to "Leave group", membership, method: :delete, confirm: "Are you sure you wish to leave #{@group.name}?"
+.group-title.clearfix
+  %h2= @group.fancy_link
+  .dropdown
+    - can_edit = can? :edit, @group
+    - can_leave = @group.users_include? current_user
+    - if can_edit || can_leave
+      = link_to image_tag("settings.png", title:'settings', alt:'settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
+      %ul.dropdown-menu.pull-right
+        - if can_edit
+          %li= link_to "Edit group", edit_group_path(@group)
+        - if can_leave
+          - membership = current_user.group_membership(@group)
+          - if can_edit
+            %li= link_to "Leave group", membership, method: :delete, confirm: "Are you sure you wish to leave #{@group.name}?"
 .row
-  %section.span4#content-left
+  %section.span4
     - if can? :edit, @group || @group.description
       =render 'description', group: @group
     - if display_subgroups_block?(@group)
@@ -25,18 +22,23 @@
     =render 'users', group: @group
 
   %section.span8
-    .selector-panel
-      %h1 Proposals
-      %ul
-        - current_user.motions_awaiting_dicission(@group).each do |motion|
-          %li.undecided= render '/motions/motion_preview', motion: motion
-        - current_user.motions_dicided(@group).each do |motion|
-          %li= render '/motions/motion_preview', motion: motion
+    - if current_user.motions?(@group)
+      .selector-panel
+        %h1 Proposals
+        %ul
+          - current_user.motions_awaiting_dicission(@group).each do |motion|
+            %li.undecided= render '/motions/motion_preview', motion: motion
+          - current_user.motions_dicided(@group).each do |motion|
+            %li= render '/motions/motion_preview', motion: motion
     .selector-panel
       %h1 Discussions
       - if current_user && @group.users_include?(current_user)
         = link_to 'Start a new discussion +', new_discussion_path(discussion: { group_id: @group }),
-          class: "label btn", id: "new-discussion"
+          class: "btn btn-small", id: "new-discussion"
       %ul
-        - @group.all_discussions(current_user).each do |discussion|
-          %li= render discussion, this_group: @group
+        - group_discussions = @group.all_discussions(current_user)
+        - if group_discussions.count > 0
+          - group_discussions.each do |discussion|
+            %li= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
+        - else
+          %li.no-discussions= "There are no discussions for this group"

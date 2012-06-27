@@ -15,7 +15,9 @@
 }
 .container{
   margin: 0px auto;
-	padding-top: 70px;
+	padding: 60px 20px 20px 20px;
+  background-color: $container;
+  box-shadow: 0px 3px 7px #555;
 }
 header{
 	width: 940px;

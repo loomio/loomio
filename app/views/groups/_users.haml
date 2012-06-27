@@ -1,7 +1,7 @@
 - if can? :add_members, group
   - if group.parent.blank?
     #add-member
-      .selector-panel
+      .sub-selector-panel
         %h1 Add member
         = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
           = devise_error_messages!
@@ -10,14 +10,14 @@
           = f.submit "Invite", class: "btn btn-small"
           %input#group_id{ type: "hidden", value: group.id }
   - if group.membership_requests.present?
-    .selector-panel
+    .sub-selector-panel
       #user-requests
         %h1 Membership requests
-        %ul.unstyled{:id => "request-list"}
+        %ul.main-list#request-list
           =render :partial => 'membership_request', :collection => group.membership_requests
 
 - unless group.hide_members && (cannot? :edit, group)
-  .selector-panel
+  .sub-selector-panel
     %h1
       Current members
       #membership-count.label
@@ -53,7 +53,7 @@
             %input{name: "membership[group_id]", type: :hidden, value: group.id}
               =submit_tag "Request membership", class: "btn btn-small"
 
-    %ul.unstyled{:id => "users-list"}
+    %ul.main-list#users-list
       = render :partial => 'membership',
         :collection => group.memberships.sort { |a,b| a.user_name.downcase <=> b.user_name.downcase },
         :locals => { group: group }

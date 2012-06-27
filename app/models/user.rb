@@ -64,6 +64,13 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
   end
 
+  def motions?(group)
+    group.discussions.each do |discussion|
+      return true if discussion.current_motion
+    end
+    false
+  end
+
   def motions_awaiting_dicission(group)
     motions = []
     group.discussions.each do |discussion|

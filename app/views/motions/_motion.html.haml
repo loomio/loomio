@@ -1,6 +1,6 @@
 .motion
-  %h2
-    .word-break= motion.name
+  #motion-title.clearfix
+    %h2.word-break= motion.name
     - if motion.voting?
       %span.label.label-success Voting
     - if motion.closed?
