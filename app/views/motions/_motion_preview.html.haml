@@ -4,7 +4,7 @@
       - if current_user
         = render "motions/display_icons", position: current_user.position(motion)
     .proposal-title-container
-      .proposal-title.word-break= truncate(motion.name, :length => 65, :separator => ' ')
+      .proposal-title.word-break= truncate(motion.name, :length => 60, :separator => ' ')
       .proposal-close-date
         - if motion.close_date.present?
           closing in

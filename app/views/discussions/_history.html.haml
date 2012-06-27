@@ -20,7 +20,7 @@
               = time_ago_in_words(message.created_at) + " ago"
       - if message.is_a?(Motion)
         %li
-          - classes = "comment proposal panel clearfix"
+          - classes = "comment proposal clearfix"
           - classes += " current" if (message == discussion.current_motion)
           %div{class: classes}
             .comment-username= link_to(message.author_name, "#")

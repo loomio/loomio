@@ -28,14 +28,21 @@
 }
 
 /**** Group page ****/
-#group-description {
-  color: $dark-grey;
-  font-size: $font-small;
-  padding: 4px;
-  padding-left: 10px;
+.no-discussions {
+  padding: 5px 10px;
 }
 
 /* group description panel */
+#group-description {
+  color: $dark-grey;
+  .group-description {
+    font-size: $font-small;
+    padding: 4px 10px 6px 10px;
+    width: 260px;
+    float: left;
+    display: inline;
+  }
+}
 #add-group-description {
   #description-input {
     width: 290px;
@@ -58,24 +65,9 @@
   top: 10px;
 }
 .empty-placeholder {
-  /*border: 1px dashed $light-grey;*/
-  /*@include border-radius(4px);*/
-  padding: 6px;
+  padding: 6px 10px;
   font-size: $font-small;
 }
-#group-description {
-  .group-description {
-    padding: 2px;
-    width: 260px;
-    float: left;
-    display: inline;
-  }
-  .dropdown {
-    float: right;
-    padding-right: 5px;
-  }
-}
-
 
 #add-member-popup-btn {
   margin-bottom: 5px;
@@ -83,12 +75,6 @@
 
 /* sub groups panel */
 #sub-groups {
-  a { color: $mid-grey; }
-  .dropdown {
-    float: right;
-    margin-top: 2px;
-    margin-right: 10px;
-  }
   .new_motion_link {
     float: right;
     padding-right: 10px;
@@ -129,6 +115,7 @@
 input#user_email{
   margin-bottom: 5px;
 }
+#new_user { padding-bottom: 14px; }
 
 /* membership panel */
 .user-name {
@@ -165,10 +152,9 @@ form#new_membership, #membership-requested {
   display: inline;
   float: right;
   font-size: $font-small;
-  color: #fff;
-  background-color: #ccc;
-  margin-right: 10px;
-  margin-top: 8px;
+  color: white;
+  background-color: $mid-grey;
+  margin: 2px 10px;
 }
 
 /**** Private group form ****/

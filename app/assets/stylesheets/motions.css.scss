@@ -21,16 +21,15 @@
   }
 }
 
+
 /*** proposal preview (group page) ***/
 
 .proposal:hover {
-  background-color: rgb(237, 239, 245);
-  background-color: rgba(237, 239, 245, 0.98);
+  background-color: $selector;
 }
 
 .proposal {
   a {
-    color: $mid-grey;
     display: block;
   }
   a:hover {
@@ -45,7 +44,7 @@
     color: $mid-grey;
     float: left;
     padding: 5px;
-    width: 480px;
+    width: 470px;
   }
   .proposal-title {
     color: $dark-grey;
@@ -64,11 +63,15 @@
 
 /*** proposal (discussion page)***/
 
+#motion-title {
+  h2 {
+    float: left;
+    padding-right: 10px;
+  }
+}
 #content-proposal{
-  padding-top: 20px;
   padding-left: 19px;
   margin-left: 0px;
-  width: 430px;
   #new-proposal .btn { margin-bottom: 20px; }
   .no-current-proposal .btn { margin-bottom: 58px; }
   .label{

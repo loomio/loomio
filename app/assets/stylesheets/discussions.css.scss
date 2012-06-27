@@ -2,11 +2,6 @@
 /*@import "bootstrap";*/
 @import "mixins";
 
-/** new discussion **/
-body.discussions.new {
-  .btn { display: block; }
-}
-
 /** new discussion form*/
 
 body.discussions.new {
@@ -14,50 +9,41 @@ body.discussions.new {
   .btn { display: block; }
 }
 
-.content-discussion {
-  position: relative;
-  bottom: 20px;
+body.discussions {
+  h2 { float: none; }
+  .discussion-title {
+    width: 438px;
+    color: $dark-grey;
+    padding: 5px 10px 10px 10px;
+    h1 {
+      padding: 0px;
+      line-height: 1.2em;
+    }
+  }
 }
-h1.discussion-title {
-  font-size: $font-large;
-  color: $dark-grey;
-}
-
 
 /*** comments, positions & proposals in History ***/
 #content-history {
-  padding-top: 20px;
-  width: 480px;
-  margin-bottom: 30px;
-  border-right: 1px solid $light-grey;
-
   #new-comment-form{
-    margin-bottom: 8px;
-    margin-right: 20px;
+    margin-bottom: 45px;
+    padding-left: 10px;
   }
   #new-comment{
-    width: 450px;
-    max-width: 450px;
+    margin: 0 0 5px 0px;
+    width: 428px;
+    max-width: 428px;
     height: 80px;
     color: $dark-grey;
-  }
-  #new-comment-submit{
-    margin-top: -4px;
-    text-align: right;
-    .submit{
-      margin-bottom: 15px;
-    }
   }
   ul {
     list-style: none;
     margin-left: 0px;
   }
-  li { padding: 1px; }
+  /*li { padding: 1px; }*/
 
   /* comment */
   .comment{
-    margin-right: 20px;
-    padding: 8px;
+    padding: 8px 10px;
     font-size: $font-small;
     color: $dark-grey;
     background-color: $comment-color;
@@ -107,11 +93,7 @@ h1.discussion-title {
     font-style: italic;
   }
   .proposal.current{
-    background: #FFF;
-  }
-  .panel {
-    margin-top: 2px;
-    margin-bottom: 2px;
+    background: $current-proposal-comment;
   }
 }
 
@@ -156,13 +138,12 @@ h1.discussion-title {
 //       the dashboard page.
 //
 .discussion:hover {
-  background-color: rgb(237, 239, 245);
-  background-color: rgba(237, 239, 245, 0.98);
+  background-color: $selector;
 }
 
 .discussion {
   a {
-    color: $mid-grey;
+    color: $dark-grey;
     display: block;
     padding: 9px;
   }
@@ -200,6 +181,7 @@ h1.discussion-title {
     float: right;
   }
   .relative-time {
+    color: $mid-grey;
     display: inline-block;
     position: relative;
     bottom: 16px;
