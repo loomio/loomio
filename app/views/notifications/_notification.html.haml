@@ -1,10 +1,13 @@
 - author_name = notification.discussion.author.name
 - group_name = notification.discussion.group.name
 - discussion_title = notification.discussion.title
-%li.notification-item
+- class_name = notification.viewed_at.nil? ? " unread" : ""
+- date = time_ago_in_words(notification.created_at)
+%li{:class => "notification-item#{class_name}" }
   %a{:href => discussion_path(notification.discussion) }
     %span.bold-name= author_name
     created a new discussion
     %span.bold-name= discussion_title
     in
     %span.bold-name= group_name
+    %span.notification-item-time= "#{date} ago"
