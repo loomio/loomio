@@ -1,0 +1,60 @@
+@import "settings";
+
+.notification-item.unread {
+  background-color: #EEF;
+}
+.notification-item a {
+  white-space: normal;
+  line-height: 16px;
+  color: $dark-grey
+}
+.notification-item .notification-item-time {
+  display: block;
+  color: $mid-grey;
+}
+.bold-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.navbar {
+  #notifications-container .dropdown-menu {
+    width: 350px;
+    height: 450px;
+  }
+  #notifications-container .dropdown-menu h3 {
+    padding-left: 15px;
+    color: #333;
+  }
+  #notification-items {
+    overflow-y: auto;
+    height: 390px;
+  }
+  #notifications-see-more {
+    border-top: 1px solid $light-grey;
+  }
+  #notifications-see-more a {
+    padding: 0px;
+    padding-top: 8px;
+    text-align: center;
+    color: $dark-grey;
+    font-weight: bold;
+  }
+  #notifications-see-more a:hover {
+    text-decoration: underline;
+  }
+}
+
+body.notifications.index .container {
+  h1 {
+    font-size: 22px;
+    border-bottom: 1px solid $light-grey;
+    margin-bottom: 15px;
+  }
+  li {
+    list-style: none;
+    border-bottom: 1px solid $light-grey;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+}

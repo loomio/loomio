@@ -60,38 +60,12 @@ header{
     }
   }
 
-  /* notifications */
-  .bold-name {
-    font-weight: bold;
-    color: #333;
-  }
   .dropdown-menu li:hover span {
     color: #FFF;
   }
-  .notification-item a {
-    white-space: normal;
-    line-height: 16px;
-  }
-  #notifications-container .dropdown-menu {
-    width: 350px;
-    height: 450px;
-  }
-  #notifications-container .dropdown-menu h3 {
-    padding-left: 15px;
-    color: #333;
-  }
-  #notification-items {
-    overflow-y: auto;
-    height: 390px;
-  }
-  #notifications-see-more {
-    border-top: 1px solid $light-grey;
-    a {
-      padding: 0px;
-      padding-top: 10px;
-      text-align: center;
-    }
-  }
+
+  /* notifications */
+  /* styling in notifications.css.scss */
 
   /* group dropdown nav */
   #my-groups-container{

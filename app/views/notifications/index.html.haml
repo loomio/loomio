@@ -1,3 +1,6 @@
-%ul
-  - current_user.notifications.each do |notification|
-    = render notification
+.row
+  .span8.offset2
+    %h1 Notifications
+    %ul
+      - current_user.notifications.each do |notification|
+        = render notification
