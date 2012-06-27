@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120625024753) do
+ActiveRecord::Schema.define(:version => 20120627063734) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -80,8 +80,10 @@ ActiveRecord::Schema.define(:version => 20120625024753) do
     t.integer  "discussion_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comment_id"
   end
 
+  add_index "events", ["comment_id"], :name => "index_events_on_comment_id"
   add_index "events", ["discussion_id"], :name => "index_events_on_discussion_id"
 
   create_table "groups", :force => true do |t|

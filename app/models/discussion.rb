@@ -17,6 +17,9 @@ class Discussion < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   has_many :motions
   has_many :votes, through: :motions
+  has_many :comments,  :as => :commentable
+  has_many :participants, :through => :comments,
+    :source => :user, :uniq => true
 
   after_create :create_event
 
@@ -39,10 +42,6 @@ class Discussion < ActiveRecord::Base
       comment.save
       comment
     end
-  end
-
-  def comments
-    comment_threads.order("created_at DESC")
   end
 
   #
@@ -79,6 +78,16 @@ class Discussion < ActiveRecord::Base
       history.first.created_at
     else
       created_at
+    end
+  end
+
+  # TODO: I'm guessing there's a nice way to do this with a query
+  # but I don't know how
+  def author_and_participants
+    if participants.find_by_id(author.id)
+      participants
+    else
+      participants.all << author
     end
   end
 

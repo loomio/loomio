@@ -39,7 +39,7 @@ describe Discussion do
     create_discussion
   end
 
-  context "discussion.history" do
+  describe "discussion.history" do
     before do
       @user = User.make
       @user.save
@@ -62,6 +62,28 @@ describe Discussion do
       vote.motion = @discussion.current_motion
       vote.save
       @discussion.history.should include(vote)
+    end
+  end
+
+  describe "discussion.author_and_participants" do
+    before do
+      @user1, @user2, @user3, @user4 = User.make!, User.make!, User.make!, User.make!
+      @discussion = create_discussion(author: @user1)
+      @group = @discussion.group
+      @group.add_member! @user2
+      @group.add_member! @user3
+      @discussion.add_comment(@user2, "givin a shout out to user3!")
+      @discussion.add_comment(@user3, "thanks 4 thah love usah two!")
+    end
+    it "should include users who have commented on discussion" do
+      @discussion.author_and_participants.should include(@user2)
+      @discussion.author_and_participants.should include(@user3)
+    end
+    it "should include the author of the discussion" do
+      @discussion.author_and_participants.should include(@user1)
+    end
+    it "should not include users who have not commented on discussion" do
+      @discussion.author_and_participants.should_not include(@user4)
     end
   end
 

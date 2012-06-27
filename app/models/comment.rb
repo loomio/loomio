@@ -16,6 +16,8 @@ class Comment < ActiveRecord::Base
 
   attr_accessible :body
 
+  default_scope order("id DESC")
+
   delegate :name, :to => :user, :prefix => :user
 
   # Helper class method that allows you to build a comment
