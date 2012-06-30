@@ -1,15 +1,14 @@
-.general-form
-  %h1 Sign up
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = devise_error_messages!
-    .padding
-      = f.label :name, "Name"
-      = f.text_field :name
-      = f.label :email, "Email"
-      = f.email_field :email
-      = f.label :password, "Password"
-      = f.password_field :password
-      = f.label :password_confirmation, "Password confirmation"
-      = f.password_field :password_confirmation
-      = f.submit "Sign up", class: "btn primary small"
-  = render :partial => "devise/shared/links"
+%h1 Sign up
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  .padding
+    = f.label :name, "Name"
+    = f.text_field :name
+    = f.label :email, "Email"
+    = f.email_field :email
+    = f.label :password, "Password"
+    = f.password_field :password
+    = f.label :password_confirmation, "Password confirmation"
+    = f.password_field :password_confirmation
+    = f.submit "Sign up", class: "btn primary small"
+= render :partial => "devise/shared/links"

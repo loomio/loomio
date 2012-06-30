@@ -1,6 +1,3 @@
 #edit-motion
-  .group-title
-    %span
-      %h2= link_to @motion.group.name, group_path(@motion.group), title: "group"
-      %h1.discussion-title= @motion.name
+  =render '/groups/title', group: @group
   =render 'motions/form', form_args: [@motion]

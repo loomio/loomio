@@ -9,12 +9,11 @@ body.discussions.new {
   .btn { display: block; }
 }
 
-body.discussions {
-  h2 { float: none; }
+body.discussions.show {
   .discussion-title {
     width: 438px;
     color: $dark-grey;
-    padding: 5px 10px 10px 10px;
+    padding: 5px 10px 5px 10px;
     h1 {
       padding: 0px;
       line-height: 1.2em;
@@ -25,8 +24,10 @@ body.discussions {
 /*** comments, positions & proposals in History ***/
 #content-history {
   #new-comment-form{
-    margin-bottom: 45px;
-    padding-left: 10px;
+    border-top: 1px solid $light-grey;
+    margin-bottom: 0px;
+    padding: 10px 0 42px 10px;
+    background-color: $comment-color;
   }
   #new-comment{
     margin: 0 0 5px 0px;
@@ -39,7 +40,9 @@ body.discussions {
     list-style: none;
     margin-left: 0px;
   }
-  /*li { padding: 1px; }*/
+  #no-messages {
+    padding: 5px 10px;
+  }
 
   /* comment */
   .comment{
@@ -51,6 +54,11 @@ body.discussions {
   .comment .comment-username{
     font-weight: bold;
     float: left;
+  }
+  .comment .comment-label{
+    color: $mid-grey;
+    margin-left: 0.4em;
+    display: inline;
   }
   .comment .comment-body{
     margin-left: 0.4em;
@@ -82,11 +90,6 @@ body.discussions {
     background: $comment-color;
     color: $mid-grey;
   }
-  .proposal .proposal-label{
-      color: $mid-grey;
-      margin-left: 0.4em;
-      display: inline;
-  }
   .proposal .proposal-text{
     color: $dark-grey;
     margin-left: 0.4em;
@@ -97,51 +100,33 @@ body.discussions {
   }
 }
 
+/*  proposal panel  */
 #content-proposal {
-  margin-left: 0px;
-}
-
-.current-proposal {
-  li {
-    background-color: white;
-    padding: 8px;
+  a { color: $dark-grey; }
+  li { padding: 10px 15px; }
+  .close-date {
+    font-size: $font-tiny;
+    color: $mid-grey;
   }
-  .close-date { font-size: $font-tiny; }
 }
 
-#previous-proposals {
-  li {
-    padding: 4px;
-    padding-left: 10px;
-  }
-  color: $mid-grey;
-  .close-date { font-size: $font-tiny; }
+li.current-proposal { background-color: $highlighted; }
+li.preview { padding: 0px; }
+li.preview a {
+  padding: 10px 15px;
+  text-decoration: none;
 }
 
-.comment-word-break {
-  /* The following styles prevent unbroken strings from breaking the layout */
-  display: inline;
-  overflow: auto;
-  white-space: -moz-pre-wrap; /* Mozilla */
-  white-space: -hp-pre-wrap; /* HP printers */
-  white-space: -o-pre-wrap; /* Opera 7 */
-  white-space: -pre-wrap; /* Opera 4-6 */
-  white-space: pre-wrap; /* CSS 2.1 */
-  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
-  word-wrap: break-word; /* IE */
-  -moz-binding: url('xbl.xml#wordwrap'); /* Firefox (using XBL) */
-}
-
-// Discussion list panel
+// Discussion preview list panel
 //
 // NOTE: this code is shared with the group show page and
 //       the dashboard page.
 //
-.discussion:hover {
+.discussion-preview:hover {
   background-color: $selector;
 }
 
-.discussion {
+.discussion-preview {
   a {
     color: $dark-grey;
     display: block;
@@ -171,10 +156,6 @@ body.discussions {
     height: 16px;
     width: 20px;
     float: left;
-  }
-  .proposal-label {
-    font-size: $font-small;
-    font-style: italic;
   }
   .notification-info {
     display: inline-block;

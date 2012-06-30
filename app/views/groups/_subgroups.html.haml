@@ -1,11 +1,12 @@
 #sub-groups
-  .sub-selector-panel
-    %h1 Sub-groups
-    .dropdown
-      = link_to image_tag("dropdown.png", title:'sub-group settings', alt:'sub-group settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
-      %ul.dropdown-menu.pull-right
-        - if group.users.include?(current_user)
-          %li= link_to "Create a Sub-group +", add_subgroup_group_path(group)
+  .sub-panel
+    %h3 Sub-groups
+    - if can? :add_members, group
+      .dropdown
+        = link_to image_tag("dropdown.png", title:'sub-group settings', alt:'sub-group settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
+        %ul.dropdown-menu.pull-right
+          - if group.users.include?(current_user)
+            %li= link_to "Create a Sub-group +", add_subgroup_group_path(group)
     %ul.main-list
       - subgroups.each do |subgroup|
         %li= render "dashboard/group_link", group: subgroup

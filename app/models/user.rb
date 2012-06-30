@@ -71,6 +71,15 @@ class User < ActiveRecord::Base
     false
   end
 
+  def motions_all_groups?
+    groups.each do |group|
+      group.discussions.each do |discussion|
+        return true if discussion.current_motion
+      end
+    end
+    false
+  end
+
   def motions_awaiting_dicission(group)
     motions = []
     group.discussions.each do |discussion|
@@ -80,11 +89,33 @@ class User < ActiveRecord::Base
     motions
   end
 
+  def motions_awaiting_dicission_all_groups
+    motions = []
+    groups.each do |group|
+      group.discussions.each do |discussion|
+        motion = discussion.current_motion
+        motions << motion if motion && !motion_vote(motion)
+      end
+    end
+    motions
+  end
+
   def motions_dicided(group)
     motions = []
     group.discussions.each do |discussion|
       motion = discussion.current_motion
       motions << motion if motion && motion_vote(motion)
+    end
+    motions
+  end
+
+  def motions_dicided_all_groups
+    motions = []
+    groups.each do |group|
+      group.discussions.each do |discussion|
+        motion = discussion.current_motion
+        motions << motion if motion && motion_vote(motion)
+      end
     end
     motions
   end

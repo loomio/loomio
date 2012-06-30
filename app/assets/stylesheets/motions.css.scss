@@ -22,13 +22,13 @@
 }
 
 
-/*** proposal preview (group page) ***/
+/*** motion preview ***/
 
-.proposal:hover {
+.motion-preview:hover {
   background-color: $selector;
 }
 
-.proposal {
+.motion-preview {
   a {
     display: block;
   }
@@ -50,14 +50,14 @@
     color: $dark-grey;
     display: inline;
   }
-  .proposal.close-date { font-size: $font-small; }
+  .proposal-close-date { font-size: $font-small; }
   .engagement {
     font-size: $font-small;
+    color: $mid-grey;
     float: right;
     width: 30px;
     text-align: center;
-    margin-top: 15px;
-    margin-right: 55px;
+    margin: 15px 55px 0 0;
   }
 }
 
@@ -72,8 +72,6 @@
 #content-proposal{
   padding-left: 19px;
   margin-left: 0px;
-  #new-proposal .btn { margin-bottom: 20px; }
-  .no-current-proposal .btn { margin-bottom: 58px; }
   .label{
     text-transform: lowercase;
     font-weight: normal;
@@ -109,8 +107,10 @@
     margin-left: -20px;
   }
   .new_vote{ padding-left: 0px; }
-  .vote-form{ height: 100px; }
-  .vote-statement{ margin-left: 0px; padding-left: 0px; }
+  .vote-form{
+    height: 100px;
+  }
+  .vote-form .statement { width: 418px; }
   .inputError { margin-left: 0px; height: 65px; }
   .control-group { padding-top: 0px; padding-bottom: 0px; }
   .vote-buttons{

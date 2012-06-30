@@ -17,16 +17,25 @@
               = "My groups"
               %b.caret
           %ul.dropdown-menu
-            - current_user.all_root_groups.each do |group|
+            - current_user.root_groups.order('name').each do |group|
               %li.group-item
                 .link-container
-                  = link_to group.name, group
+                  = link_to group.name, group_path(group)
                 -#- activity =  current_user.activity_total_in(group)
                 -#- if activity > 0
                   -#.notification-container
                     -#.span.label.label-important= activity
+              - if group.subgroups.size > 0
+                - group.subgroups.each do |sub_group|
+                  %li.group-item.sub-group
+                    .link-container
+                      = link_to sub_group.name, group_path(sub_group)
+                    -#- activity =  current_user.activity_total_in(sub_group)
+                    -#- if activity > 0
+                      -#.notification-container
+                        -#.span.label.label-important= activity
             %li.new-group
-              =link_to "+ Add New Group", new_group_path
+              =link_to "Add New Group +", new_group_path
       %ul.nav.secondary-nav.pull-right
         %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
         %li.dropdown
