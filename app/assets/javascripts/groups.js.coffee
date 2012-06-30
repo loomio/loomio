@@ -33,3 +33,18 @@ $ ->
           $("#description-placeholder").toggle()
         event.preventDefault()
       )
+
+$ ->
+  $("#closed").hide()
+  # Only execute on group page
+  if $("body.groups").length > 0
+    $(".btn-close").click((event) ->
+      $("#open").hide()
+      $("#closed").show()
+      event.preventDefault()
+    )
+    $(".btn-open").click((event) ->
+      $("#open").show()
+      $("#closed").hide()
+      event.preventDefault()
+    )

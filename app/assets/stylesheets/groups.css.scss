@@ -33,7 +33,10 @@
 .no-discussions {
   padding: 5px 10px;
 }
-
+.btn-group#open-close {
+  float: left;
+  margin: 4px 0 3px 20px;
+}
 /* group description panel */
 #group-description {
   color: $dark-grey;
