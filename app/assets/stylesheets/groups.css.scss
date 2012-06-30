@@ -18,9 +18,10 @@
       color: $mid-grey;
     }
     .privacy-settings {
+      padding-bottom: 10px;
       select {
         width: 182px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
       }
       .input { text-align: right; }
     }
@@ -28,6 +29,7 @@
 }
 
 /**** Group page ****/
+
 .no-discussions {
   padding: 5px 10px;
 }
@@ -37,36 +39,36 @@
   color: $dark-grey;
   .group-description {
     font-size: $font-small;
-    padding: 4px 10px 6px 10px;
     width: 260px;
     float: left;
     display: inline;
+    padding: 2px 0 2px 2px;
   }
 }
 #add-group-description {
+  form { margin-bottom: 0px }
   #description-input {
-    width: 290px;
-    margin-bottom: 5px;
-    position: relative;
-    right: 1px;
+    width: 270px;
+    height: 90px;
+    margin-bottom: 2px;
   }
   .character-counter {
-    width: 300px;
+    width: 278px;
     position: relative;
-    bottom: 2px;
-    right: 12px;
+    bottom: 0px;
+    margin-bottom: 8px;
   }
   .control-group { margin-bottom: 0px; }
 }
 #cancel-add-description {
   color: $mid-grey;
-  padding-left: 80px;
+  padding-right: 10px;
+  float: right;
   position: relative;
-  top: 10px;
+  top: 5px;
 }
-.empty-placeholder {
-  padding: 6px 10px;
-  font-size: $font-small;
+#add-description {
+  color: $mid-grey;
 }
 
 #add-member-popup-btn {
@@ -109,7 +111,6 @@
   display: inline;
   #user_email {
     width: 270px;
-    margin-left: 8px;
   }
 }
 input#user_email{
@@ -118,9 +119,26 @@ input#user_email{
 #new_user { padding-bottom: 14px; }
 
 /* membership panel */
+.dropdown#members { padding-left: 5px; }
+#request-membership {
+  form { display: inline; }
+  .btn {
+    position: relative;
+    bottom: 2px;
+  }
+}
+
+#membership-count {
+  display: inline;
+  float: right;
+  font-size: $font-small;
+  color: white;
+  background-color: $mid-grey;
+  margin: 2px;
+}
 .user-name {
   color: $mid-grey;
-  width: 180px;
+  width: 178px;
   display: inline-block;
   @include ie7-inline-block();
 }
@@ -130,7 +148,6 @@ input#user_email{
   text-align: right;
   font-size: $font-tiny;
   display: inline;
-  padding-right: 5px;
   .close {
     padding-left: 8px;
     position: relative;
@@ -144,27 +161,22 @@ input#user_email{
   a { color: $mid-grey; }
 }
 
-form#new_membership, #membership-requested {
-  margin-bottom: 5px;
-}
-
-#membership-count {
-  display: inline;
-  float: right;
-  font-size: $font-small;
-  color: white;
-  background-color: $mid-grey;
-  margin: 2px 10px;
-}
 
 /**** Private group form ****/
-
 #private-message {
   color: $mid-grey;
   text-align: center;
   width: 50%;
   margin: 0px auto;
 }
+
+/* dashboard */
+.sub-panel a { color: $mid-grey; }
+.sub-group {
+  font-size: $font-small;
+  padding-left: 10px;
+}
+
 
 /*.info-help {*/
   /*margin-left: 6px;*/

@@ -37,7 +37,7 @@
       .vote-form
         =form_for([motion, @vote], html:{class:'form-stacked'}) do |f|
           .control-group
-            = f.text_area :statement, placeholder: "Give a reason for your vote", class: "inputError limit-250"
+            = f.text_area :statement, placeholder: "Give a reason for your vote", class: "statement inputError limit-250"
           .character-counter
           =f.hidden_field :position
       .vote-buttons.clearfix

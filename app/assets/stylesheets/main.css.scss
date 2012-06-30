@@ -4,22 +4,34 @@
 // TODO: // * define site color variables
 // * mixin for gradient
 
+html { height: 100%; }
+
 body {
   background-color: $main-background;
+  height: 100%;
 }
 
 // typography
+
+/*selector panel header*/
 h1 {
-	font-weight: normal;
-  line-height: 1.2em;
+    font-size: $font-large;
+    color: $header-titles-color;
+    font-weight: normal;
+    line-height: 1.8em;
+    display: inline;
 }
-
+/*group title panel*/
 h2 {
-  font-weight: normal;
 	font-size: $font-large;
+  color: $mid-grey;
+  a { color: $mid-grey; }
+  a:hover { color: $mid-grey; }
+  font-weight: normal;
   line-height: 1.2em;
+  display: inline;
 }
-
+/*sub panel header*/
 h3 {
   font-weight: normal;
 	font-size: $font-medium;
@@ -35,18 +47,11 @@ h4 {
 }
 
 // structural elements (containers etc.)
-.general-form {
-  width: 100%;
-  h1 {
-    font-size: $font-large;
-    color: $dark-grey;
-    margin-bottom: 0.5em;
-  }
-}
+
 .center-content {
   margin-left: auto;
   margin-right: auto;
-  width: 68%;
+  width: 80%;
 }
 
 .selector-panel {
@@ -56,18 +61,12 @@ h4 {
   border: 1px solid $light-grey;
   margin-bottom: 20px;
   padding-top: 2px;
+  h1 { padding-left: 10px }
   .content {
     padding: 8px;
   }
-  h1 {
-    font-size: $font-large;
-    color: $header-titles-color;
-    padding-left: 10px;
-    display: inline;
-    line-height: 1.8em;
-  }
   .btn {
-    margin: 1px 10px;
+    margin: 1px 5px 1px 0;
     padding: 4px 0 5px 0;
     float: right;
     width: 150px;
@@ -81,28 +80,26 @@ h4 {
     margin: 0 0 3px 0;
   }
   li {
-    background-color: white;
+    background-color: $un-highlighted;
     color: $dark-grey;
     border-bottom: 1px solid $light-grey;
+    font-weight: normal;
   }
-  a { color: $mid-grey; }
 }
 
-.sub-selector-panel {
+.sub-panel {
   background-color: $sub-selector-panel;
   @include border-radius(8px);
   border: 1px solid $light-grey;
   margin-bottom: 20px;
-  padding-top: 5px;
-  h1 {
+  padding: 6px 9px;
+  h3 {
     font-size: $font-medium;
     color: $header-titles-color;
-    padding-left: 10px;
     display: inline;
     line-height: 1.8em;
   }
   .btn {
-    margin-right: 10px;
     float: right;
     color: $mid-grey;
   }
@@ -112,43 +109,30 @@ h4 {
     margin: 3px 0 8px 0;
   }
   .main-list li {
-    padding-left: 10px;
     line-height: 1.6em;
     background-color: $sub-selector-panel;
-    border-bottom: none;
+    a { color: $mid-grey; }
   }
-  a { color: $mid-grey; }
   .dropdown {
-    padding-right: 5px;
     float: right;
     li a {
       text-shadow: none;
       font-size: $font-small;
-      color: $mid-grey;
     }
   }
 }
 
 // group title
 .group-title {
-  color: $mid-grey;
-  a {
-    float: left;
-    color: $mid-grey;
-  }
-  padding-bottom: 0.3em;
-  margin-bottom: 10px;
-  margin-left: 5px;
+  margin-bottom: 12px;
   .dropdown {
-    float: left;
-    margin-left: 10px;
-  }
-  .btn {
-    float: right;
-    font-size: $font-tinywiny;
-    margin-left: 4px;
+    margin-left: 8px;
+    display: inline;
+    position: relative;
+    bottom: 3px;
   }
 }
+
 
 .alert {
   position: relative;
@@ -181,8 +165,10 @@ h4 {
   background-color: $error-color;
 }
 
-li.undecided, .unread{
+li.undecided, li .unread{
   background-color: $highlighted;
+  a { color: black; }
+  a .proposal-title { color: black; }
 }
 
 .field_with_errors { display: inline; }
@@ -209,6 +195,7 @@ li.undecided, .unread{
 form {
   label {
 		font-size: $font-small;
+    color: $dark-grey;
     margin-bottom: 4px;
   }
 
@@ -234,12 +221,6 @@ form {
     margin-left: 5px;
     display: inline;
   }
-	.privacy-settings{
-		border-bottom: 1px solid $light-grey;
-    border-top: 1px solid $light-grey;
-    margin-bottom: 15px;
-    padding-bottom: 20px;
-	}
 }
 
 .hidden {

@@ -1,45 +1,36 @@
-.group-title.clearfix
-  %h2= @group.fancy_link
+=render '/groups/title', group: @group
 .row
   .span6#content-history
     .selector-panel
       .discussion-title
-        %h1.word-break= "Discussion: #{@discussion.title}"
+        %h1.word-break= @discussion.title
       - if can? :add_comment, @discussion
-        #new-comment-area
-          = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
-            = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
-            = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment'
+        = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
+          = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
+          = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment'
       = render 'history', discussion: @discussion, history: @discussion.history
+
   .span6#content-proposal
     .selector-panel
-      - if @selected_closed_motion
-        - if @current_motion
-          .current-proposal
-            %h1 Current proposal
-            %ul
-              %li
-                .proposal
-                  %a{ href: discussion_path(@discussion) }
-                    = link_to @current_motion.name, discussion_path(@discussion)
-                    .close-date
-                      = "Closing in #{time_ago_in_words(@current_motion.close_date)}"
-        - else
-          .new-proposal
-            .content
-              = link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-info',
-                id: 'new-proposal'
+      %h1 Current proposal
+      - if not @current_motion
+        - if current_user && @group.users_include?(current_user)
+          = link_to "Create a new proposal +", new_proposal_discussion_path(@discussion.id), class: 'btn btn-small'
+        %ul
+          %li.current-proposal
+            There is no current proposal for this discussion
       - else
-        - if @current_motion
-          .current-proposal
-            %h1 Current proposal
-            %ul
-              %li= render @current_motion, unique_votes: @unique_votes
-        - else
-          .no-current-proposal
-            .content
-              = link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-info',
-                id: 'new-proposal'
+        %ul
+          - if @selected_closed_motion
+            %li.preview.current-proposal
+              %a{ href: discussion_path(@discussion) }
+                %span
+                  .word-break= truncate(@current_motion.name, :length => 60, :separator => ' ')
+                  .close-date= "Closing in #{time_ago_in_words(@current_motion.close_date)}"
+            - else
+              %li.current-proposal
+                = render @current_motion, unique_votes: @unique_votes
+
     - if @discussion.motions.where("phase = 'closed'").count > 0
       #previous-proposals
         .selector-panel
@@ -50,8 +41,8 @@
                 - if @selected_closed_motion == closed_motion
                   %li= render @selected_closed_motion, unique_votes: @unique_votes
                 - else
-                  %li.proposal.clearfix
+                  %li.preview
                     %a{ href: discussion_path(@discussion, proposal: closed_motion.id) }
-                      = link_to closed_motion.name, discussion_path(@discussion, proposal: closed_motion.id)
-                      .close-date
-                        = "Closed #{time_ago_in_words(closed_motion.close_date)} ago"
+                      %span
+                        .word-break= truncate(closed_motion.name, :length => 60, :separator => ' ')
+                        .close-date= "Closed #{time_ago_in_words(closed_motion.close_date)} ago"

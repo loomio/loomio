@@ -12,7 +12,7 @@ module DiscussionsHelper
   end
 
   def css_class_for(discussion)
-    css_class = "discussion "
+    css_class = "discussion-preview "
 
     motion = discussion.current_motion
     if motion.present? && motion.voting? && motion.blocked?
