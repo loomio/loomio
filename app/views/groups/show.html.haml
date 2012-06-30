@@ -8,17 +8,27 @@
   %section.span8
     - if current_user && current_user.motions?(@group)
       .selector-panel
-        %h1 Proposals
+        .clearfix
+          %h1 Proposals
+          .btn-group#open-close
+            %a{href: '#', class: "btn btn-open btn-mini"} open
+            %a{href: '#', class: "btn btn-close btn-mini"} close
         %ul
-          - current_user.motions_awaiting_dicission(@group).each do |motion|
-            %li.undecided= render '/motions/motion_preview', motion: motion
-          - current_user.motions_dicided(@group).each do |motion|
-            %li= render '/motions/motion_preview', motion: motion
+          #open
+            - current_user.motions_awaiting_dicission(@group).each do |motion|
+              %li.undecided= render '/motions/motion_preview', motion: motion
+            - current_user.motions_dicided(@group).each do |motion|
+              %li= render '/motions/motion_preview', motion: motion
+          #closed
+            - @group.motions_closed.each do |motion|
+              %li= render '/motions/motion_preview', motion: motion
+
     .selector-panel
-      %h1 Discussions
-      - if current_user && @group.users_include?(current_user)
-        = link_to 'Start a new discussion +', new_discussion_path(discussion: { group_id: @group }),
-          class: "btn btn-small", id: "new-discussion"
+      .clearfix
+        %h1 Discussions
+        - if current_user && @group.users_include?(current_user)
+          = link_to 'Start a new discussion +', new_discussion_path(discussion: { group_id: @group }),
+            class: "btn add btn-small", id: "new-discussion"
       %ul
         - group_discussions = @group.all_discussions(current_user)
         - if group_discussions.count > 0

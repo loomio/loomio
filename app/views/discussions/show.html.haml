@@ -15,7 +15,7 @@
       %h1 Current proposal
       - if not @current_motion
         - if current_user && @group.users_include?(current_user)
-          = link_to "Create a new proposal +", new_proposal_discussion_path(@discussion.id), class: 'btn btn-small'
+          = link_to "Create a new proposal +", new_proposal_discussion_path(@discussion.id), class: 'btn add btn-small', id: "new-proposal"
         %ul
           %li.current-proposal
             There is no current proposal for this discussion

@@ -8,7 +8,9 @@
         .proposal-title.word-break= truncate(motion.name, :length => 60, :separator => ' ')
         .proposal-close-date
           - if motion.close_date.present?
-            closing in
-            = time_ago_in_words(motion.close_date)
+            - if motion.voting?
+              = "closing in #{time_ago_in_words(motion.close_date)}"
+            - else
+              = "closed #{time_ago_in_words(motion.close_date)} ago"
       .engagement
         = "#{motion.percent_voted}%"

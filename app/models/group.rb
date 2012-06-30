@@ -24,8 +24,12 @@ class Group < ActiveRecord::Base
   has_many :users, :through => :memberships # TODO: rename to members
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
-  has_many :motions
   has_many :discussions
+  has_many :motions
+  has_many :motions_closed,
+           :through => :discussions,
+           :source => :motions,
+           :conditions => { phase: 'closed' }
 
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'

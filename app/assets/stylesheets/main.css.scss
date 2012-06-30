@@ -61,11 +61,11 @@ h4 {
   border: 1px solid $light-grey;
   margin-bottom: 20px;
   padding-top: 2px;
-  h1 { padding-left: 10px }
-  .content {
-    padding: 8px;
+  h1 {
+    padding-left: 10px;
+    float: left;
   }
-  .btn {
+  .btn.add {
     margin: 1px 5px 1px 0;
     padding: 4px 0 5px 0;
     float: right;
