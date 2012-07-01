@@ -63,6 +63,7 @@
 
 /*** proposal (discussion page)***/
 
+
 #motion-title {
   h2 {
     float: left;
@@ -72,6 +73,9 @@
 #content-proposal{
   padding-left: 19px;
   margin-left: 0px;
+  .proposal-title-container {
+    width: 320px;
+  }
   .label{
     text-transform: lowercase;
     font-weight: normal;

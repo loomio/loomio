@@ -46,31 +46,33 @@ body.discussions.show {
 
   /* comment */
   .comment{
-    padding: 8px 10px;
-    font-size: $font-small;
+    padding: 5px 10px;
     color: $dark-grey;
     background-color: $comment-color;
   }
   .comment .comment-username{
     font-weight: bold;
     float: left;
+    font-size: $font-small;
   }
   .comment .comment-label{
     color: $mid-grey;
     margin-left: 0.4em;
     display: inline;
+    font-size: $font-small;
   }
   .comment .comment-body{
     margin-left: 0.4em;
     display: inline;
+    font-size: $font-small;
   }
   .comment .comment-time{
     color: $dark-grey;
-    font-size: 0.75em;
+    font-size: $font-tiny;
   }
   .comment .comment-likes{
     color: $dark-grey;
-    font-size: 0.75em;
+    font-size: $font-tiny;
   }
 
   /* position */
@@ -96,21 +98,25 @@ body.discussions.show {
     font-style: italic;
   }
   .proposal.current{
-    background: $current-proposal-comment;
+    background: $current-proposal;
   }
 }
 
 /*  proposal panel  */
 #content-proposal {
   a { color: $dark-grey; }
-  li { padding: 10px 15px; }
+  li { padding: 0px; }
+  li.current-proposal, li .motion { padding: 5px 15px; }
   .close-date {
     font-size: $font-tiny;
     color: $mid-grey;
   }
 }
 
-li.current-proposal { background-color: $highlighted; }
+li.current-proposal {
+  background-color: $current-proposal;
+  table.jqplot-table-legend { background-color: $current-proposal; }
+}
 li.preview { padding: 0px; }
 li.preview a {
   padding: 10px 15px;

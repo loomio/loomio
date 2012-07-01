@@ -171,6 +171,12 @@ li.undecided, li .unread{
   a .proposal-title { color: black; }
 }
 
+.btn-selected {
+  background-image: -webkit-linear-gradient(top, #f6f6f6, #d6d6d6);
+  background-image: -o-linear-gradient(top, #f6f6f6, #d6d6d6);
+  background-imageackground-image: linear-gradient(top, #f6f6f6, #d6d6d6);
+}
+
 .field_with_errors { display: inline; }
 .inputError {
   display: inline-block;
@@ -228,7 +234,7 @@ form {
 }
 
 table.jqplot-table-legend {
-  background-color: white;
+  background-color: $un-highlighted;
   width: auto;
   border: none;
   td {

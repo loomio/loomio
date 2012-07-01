@@ -2,7 +2,7 @@
 .row
   .span6#content-history
     .selector-panel
-      .discussion-title
+      .clearfix.discussion-title
         %h1.word-break= @discussion.title
       - if can? :add_comment, @discussion
         = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
@@ -12,37 +12,32 @@
 
   .span6#content-proposal
     .selector-panel
-      %h1 Current proposal
-      - if not @current_motion
-        - if current_user && @group.users_include?(current_user)
+      .clearfix
+        %h1 Current proposal
+        - if !@current_motion && current_user && @group.users_include?(current_user)
           = link_to "Create a new proposal +", new_proposal_discussion_path(@discussion.id), class: 'btn add btn-small', id: "new-proposal"
+      - if not @current_motion
         %ul
           %li.current-proposal
             There is no current proposal for this discussion
       - else
         %ul
           - if @selected_closed_motion
-            %li.preview.current-proposal
-              %a{ href: discussion_path(@discussion) }
-                %span
-                  .word-break= truncate(@current_motion.name, :length => 60, :separator => ' ')
-                  .close-date= "Closing in #{time_ago_in_words(@current_motion.close_date)}"
-            - else
-              %li.current-proposal
-                = render @current_motion, unique_votes: @unique_votes
+            %li.current-proposal
+              = render '/motions/motion_preview', motion: @current_motion
+          - else
+            %li.current-proposal
+              = render @current_motion, unique_votes: @unique_votes
 
     - if @discussion.motions.where("phase = 'closed'").count > 0
       #previous-proposals
         .selector-panel
-          %h1 Previous proposals
+          .clearfix
+            %h1 Previous proposals
           %ul
             - @discussion.motions.order("close_date desc").each do |closed_motion|
               - if closed_motion.closed?
                 - if @selected_closed_motion == closed_motion
                   %li= render @selected_closed_motion, unique_votes: @unique_votes
                 - else
-                  %li.preview
-                    %a{ href: discussion_path(@discussion, proposal: closed_motion.id) }
-                      %span
-                        .word-break= truncate(closed_motion.name, :length => 60, :separator => ' ')
-                        .close-date= "Closed #{time_ago_in_words(closed_motion.close_date)} ago"
+                  %li= render '/motions/motion_preview', motion: closed_motion

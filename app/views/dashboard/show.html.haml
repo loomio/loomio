@@ -17,14 +17,16 @@
       %section.span8
         - if current_user.motions_all_groups?
           .selector-panel
-            %h1 Proposals
+            .clearfix
+              %h1 Proposals
             %ul
               - current_user.motions_awaiting_dicission_all_groups.each do |motion|
                 %li.undecided= render '/motions/motion_preview', motion: motion
               - current_user.motions_dicided_all_groups.each do |motion|
                 %li= render '/motions/motion_preview', motion: motion
         .selector-panel
-          %h1 Discussions
+          .clearfix
+            %h1 Discussions
           %ul
             - current_user.discussions_sorted.each do |discussion|
               %li= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
