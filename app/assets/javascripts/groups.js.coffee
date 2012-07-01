@@ -41,10 +41,14 @@ $ ->
     $(".btn-close").click((event) ->
       $("#open").hide()
       $("#closed").show()
+      $(".btn-close").addClass("btn-selected")
+      $(".btn-open").removeClass("btn-selected")
       event.preventDefault()
     )
     $(".btn-open").click((event) ->
       $("#open").show()
       $("#closed").hide()
+      $(".btn-open").addClass("btn-selected")
+      $(".btn-close").removeClass("btn-selected")
       event.preventDefault()
     )
