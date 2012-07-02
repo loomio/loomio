@@ -5,15 +5,49 @@ describe Notification do
   it { should belong_to(:user) }
   it { should validate_presence_of(:event) }
   it { should validate_presence_of(:user) }
+  #it { should validate_uniqueness_of(:event).scoped_to(:user) }
 
-  describe "new_discussion!" do
-    let(:discussion) { create_discussion }
-    let(:user) { User.make! }
-    let(:event) { Event.new_discussion!(discussion) }
-    let(:notification) { event.notifications.create!(:user => user) }
-    subject { notification }
+  before do
+    @notification = Notification.new(:user => stub_model(User))
+    @event = stub_model(Event)
+    @notification.event = @event
+    @notification.save!
+  end
 
-    specify { subject.event.should == event }
-    specify { subject.discussion.should == discussion }
+  subject { @notification }
+
+  its(:event) { should eq(@event) }
+
+  describe "for a new discussion" do
+    before do
+      @discussion =  stub_model(Discussion)
+      @event = stub_model(Event, :discussion => @discussion)
+      @notification.event = @event
+      @notification.save!
+    end
+
+    its(:discussion) { should eq(@discussion) }
+  end
+
+  describe "for new comment" do
+    before do
+      @comment = stub_model(Comment)
+      @event = stub_model(Event, :comment => @comment)
+      @notification.event = @event
+      @notification.save!
+    end
+
+    its(:comment) { should eq(@comment) }
+  end
+
+  describe "for new motion" do
+    before do
+      @motion = stub_model(Motion)
+      @event = stub_model(Event, :motion => @motion)
+      @notification.event = @event
+      @notification.save!
+    end
+
+    its(:motion) { should eq(@motion) }
   end
 end

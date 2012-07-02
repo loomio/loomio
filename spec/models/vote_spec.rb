@@ -87,4 +87,15 @@ describe Vote do
     vote.save!
     @motion.discussion.activity.should == 4
   end
+
+  it 'should fire event upon creation' do
+    motion = create_motion
+    vote = Vote.new(position: 'yes')
+    vote.motion = motion
+    vote.user = motion.author
+
+    Event.should_receive(:new_vote!).with(vote)
+
+    vote.save!
+  end
 end

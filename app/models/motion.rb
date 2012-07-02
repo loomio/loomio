@@ -12,7 +12,7 @@ class Motion < ActiveRecord::Base
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
 
-  validates_length_of :name, :maximum=>250
+  validates_length_of :name, :maximum => 250
 
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
@@ -21,6 +21,7 @@ class Motion < ActiveRecord::Base
 
   after_create :initialize_discussion
   after_create :email_motion_created
+  after_create :create_event
   before_save :set_disable_discussion
   before_save :format_discussion_url
 
@@ -183,7 +184,9 @@ class Motion < ActiveRecord::Base
     discussion.comments
   end
 
+
   private
+
     def before_open
       self.close_date = Time.now + 1.week
       did_not_votes.each do |did_not_vote|
@@ -246,5 +249,9 @@ class Motion < ActiveRecord::Base
       if @enable_discussion
         self.disable_discussion = @enable_discussion == "1" ? "0" : "1"
       end
+    end
+
+    def create_event
+      Event.new_motion! self
     end
 end
