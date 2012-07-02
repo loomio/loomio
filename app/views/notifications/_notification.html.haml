@@ -1,13 +1,32 @@
-- author_name = notification.discussion.author.name
-- group_name = notification.discussion.group.name
-- discussion_title = notification.discussion.title
-- class_name = notification.viewed_at.nil? ? " unread" : ""
+- if discussion = notification.discussion
+  - person = discussion.author.name
+  - action_text = " started a new discussion "
+  - title_text = discussion.title
+  - group_name = discussion.group.name
+  - href = discussion_path(discussion)
+
+- elsif comment = notification.comment
+  - person = comment.user.name
+  - action_text = " posted a comment in the discussion "
+  - title_text = comment.discussion.title
+  - group_name = comment.discussion.group.name
+  - href = discussion_path(comment.discussion)
+
+- elsif motion = notification.motion
+  - person = motion.author.name
+  - action_text = " created a new proposal "
+  - title_text = motion.name
+  - group_name = motion.group.name
+  - href = discussion_path(motion.discussion)
+
 - date = time_ago_in_words(notification.created_at)
+- class_name = notification.viewed_at.nil? ? " unread" : ""
+
 %li{:class => "notification-item#{class_name}" }
-  %a{:href => discussion_path(notification.discussion) }
-    %span.bold-name= author_name
-    created a new discussion
-    %span.bold-name= discussion_title
-    in
-    %span.bold-name= group_name
-    %span.notification-item-time= "#{date} ago"
+  %a{:href => href }
+    %span.bold-name= person
+    = action_text
+    - if title_text
+      %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
+    %span.notification-item-footer
+      = "#{date} ago · #{group_name}"

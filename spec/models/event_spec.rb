@@ -4,6 +4,7 @@ describe Event do
   it { should belong_to(:discussion) }
   it { should allow_value("new_discussion").for(:kind) }
   it { should allow_value("new_comment").for(:kind) }
+  it { should allow_value("new_vote").for(:kind) }
   it { should_not allow_value("blah").for(:kind) }
 
   let(:discussion) { create_discussion }
@@ -41,10 +42,59 @@ describe Event do
       comment2 = discussion.add_comment(user3, "hi there user2!")
       comment3 = discussion.add_comment(user2, "fancy pantsy")
       event = Event.new_comment!(comment3)
-      # Notifications should only be created for discussion.author, user2, and user3
+
+      # Notifications should only be created for discussion.author and user3
+      #
       # NOTE: this test is a bit brittle, should test WHO the notifications were
       # created for. I couldn't think of a concise way to test this though.
-      Notification.where("event_id = ?", event).size.should eq(3)
+      Notification.where("event_id = ?", event).size.should eq(2)
+    end
+  end
+
+  describe "new_motion!" do
+    let(:motion) { create_motion }
+    subject { Event.new_motion!(motion) }
+
+    its(:kind) { should eq("new_motion") }
+    its(:motion) { should eq(motion) }
+
+    it "notifies every group member except motion author" do
+      group = motion.group
+      group.add_member! User.make!
+      group.add_member! User.make!
+      group_size = group.users.size
+      event = Event.new_motion!(motion)
+      Notification.where("event_id = ?", event).size.should eq(group_size - 1)
+    end
+  end
+
+  describe "new_vote!" do
+    let(:motion) { create_motion }
+    subject { Event.new_vote!(motion) }
+
+    its(:kind) { should eq("new_vote") }
+    its(:motion) { should eq(motion) }
+
+    it "notifies motion author" do
+      group = motion.group
+      event = Event.new_vote!(motion)
+      notification = Notification.where("event_id = ? AND user_id = ?",
+                                        event, motion.author)
+      notification.should exist
+
+      #notifications.map { |notification| notification.user }.
+        #should include motion.author
+    end
+
+    it "notifies discussion author" do
+      pending "still working on this"
+      discussion = create_discussion(author: User.make!)
+      motion = create_motion(author: User.make!, discussion: discussion)
+      event = Event.new_vote!(motion)
+      notifications = Notification.where("event_id = ?", event)
+
+      notifications.map { |notification| notification.user }.
+        should include motion.author
     end
   end
 end

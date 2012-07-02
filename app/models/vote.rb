@@ -34,6 +34,7 @@ class Vote < ActiveRecord::Base
 
   delegate :name, :to => :user, :prefix => :user
 
+  after_create :create_event
   after_save :send_notifications
   after_save :update_activity
 
@@ -59,5 +60,9 @@ class Vote < ActiveRecord::Base
       if position == "block" && old_position != "block"
         MotionMailer.motion_blocked(self).deliver
       end
+    end
+
+    def create_event
+      Event.new_vote!(self)
     end
 end

@@ -1,17 +1,18 @@
 @import "settings";
 
 .notification-item.unread {
-  background-color: #EEF;
+  background-color: rgb(237, 239, 245);
 }
 .notification-item a {
   white-space: normal;
   line-height: 16px;
   color: $dark-grey
 }
-.notification-item .notification-item-time {
+.notification-item-footer {
   display: block;
   color: $mid-grey;
 }
+
 .bold-name {
   font-weight: bold;
   color: #333;
