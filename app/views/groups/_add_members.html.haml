@@ -1,25 +1,17 @@
-- if can? :add_members, group
-  - if group.parent.blank?
-    .sub-panel
-      %h3 Add member
-      = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
-        = devise_error_messages!
-        = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
-        = f.input :email, placeholder: "Email address", label: false
-        = f.submit "Invite", class: "btn btn-small"
+#add-members
+  - if can? :add_members, group
+    .clearfix
+      - if group.parent.blank?
+        = link_to "Add members +", "#", class: 'group-add-members btn btn-small'
+        #invite-group-members.hidden
+          = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
+            = devise_error_messages!
+            = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
+            = f.input :email, placeholder: "Email address", label: false
+            = f.submit "Invite", class: "btn btn-small", id: 'invite'
+            = link_to "Cancel", "#", id: 'cancel-add-members'
         %input#group_id{ type: "hidden", value: group.id }
-
-- else
-  - if not group.users_include?(current_user) || current_user.nil?
-    .sub-panel#request-membership
-      %h3 Membership
-      - membership_request = group.membership_requests.find_by_user_id(current_user)
-      - if membership_request.present?
-        = link_to "Membership Requested", membership_request, method: :delete,
-          confirm: "Are you sure you wish to withdraw your membership request from this group?",
-          class: "btn btn-small", id: "membership-requested"
       - else
-        - if group.parent.nil? || current_user.group_membership(group.parent)
-          =form_for(Membership.new) do |f|
-            %input{name: "membership[group_id]", type: :hidden, value: group.id}
-              =submit_tag "Request membership", class: "btn btn-small"
+        = link_to "Add members +", "#", {"data-toggle" => "modal", href: "#invite-subgroup-members", class: 'subgroup-add-members btn btn-small'}
+        #invite-subgroup-members.modal.hidden
+          = render 'subgroup_add_members', group: group

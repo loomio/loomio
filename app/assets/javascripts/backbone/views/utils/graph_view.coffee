@@ -24,4 +24,4 @@ class Loomio.Views.Utils.GraphView extends Backbone.View
 
       }
      )
-     $("#" + "expand_" + @options.motion_id).hide()
+     #$("#" + "expand_" + @options.motion_id).hide()

@@ -3,7 +3,7 @@
     .vote-icon
       - if motion.user_has_voted?(current_user)
         - voted = true
-        - position = current_user.motion_vote(motion).position
+        - position = current_user.get_vote_for(motion).position
         =render partial: "motions/display_icons", locals: {position: position}
       - else
         #no-vote-dash

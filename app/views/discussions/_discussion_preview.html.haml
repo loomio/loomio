@@ -1,6 +1,6 @@
 %div{ class: css_class_for(discussion) }
   %a{ href: discussion_path(discussion) }
-    %span.full-discussion-title
+    %span
       .discussion-title= truncate(discussion.title, :length => 70, :separator => ' ')
       .notification-info
         .relative-time= discussion.latest_history_time
@@ -9,4 +9,4 @@
             .activity-count.span.label.label-important
               = activity_count_for(discussion, current_user)
 
-    = DiscussionDecorator.new(discussion).display_group_name(this_group)
+      .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)

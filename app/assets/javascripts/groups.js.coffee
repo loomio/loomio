@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $("#add-group-description").hide()
   # Only execute on group page
   if $("body.groups").length > 0
     $("#membership-requested").hover(
@@ -34,21 +33,38 @@ $ ->
         event.preventDefault()
       )
 
+#*** tick on proposal dropdown ***
 $ ->
-  $("#closed").hide()
   # Only execute on group page
   if $("body.groups").length > 0
-    $(".btn-close").click((event) ->
+    $("#display-closed").click((event) ->
       $("#open").hide()
       $("#closed").show()
-      $(".btn-close").addClass("btn-selected")
-      $(".btn-open").removeClass("btn-selected")
+      $("#tick-closed").show()
+      $("#tick-current").hide()
+      $("#proposal-phase").text("Closed proposals")
       event.preventDefault()
     )
-    $(".btn-open").click((event) ->
+    $("#display-current").click((event) ->
       $("#open").show()
       $("#closed").hide()
-      $(".btn-open").addClass("btn-selected")
-      $(".btn-close").removeClass("btn-selected")
+      $("#tick-current").show()
+      $("#tick-closed").hide()
+      $("#proposal-phase").text("Current proposals")
+      event.preventDefault()
+    )
+
+#*** add member form ***
+$ ->
+  # Only execute on group page
+  if $("body.groups").length > 0
+    $(".group-add-members").click((event) ->
+      $(".group-add-members").hide()
+      $("#invite-group-members").show()
+      event.preventDefault()
+    )
+    $("#cancel-add-members").click((event) ->
+      $(".group-add-members").show()
+      $("#invite-group-members").hide()
       event.preventDefault()
     )

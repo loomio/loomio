@@ -65,14 +65,15 @@ h4 {
     padding-left: 10px;
     float: left;
   }
-  .btn.add {
-    margin: 1px 5px 1px 0;
+  .btn {
+    margin: 5px 5px 5px 10px;
     padding: 4px 0 5px 0;
-    float: right;
+    float: left;
     width: 150px;
     border-color: $light-grey;
     color: $mid-grey;
     text-shadow: none;
+    /*border-bottom: 1px solid $light-grey;*/
   }
   ul {
     border-top: 1px solid $light-grey;
@@ -84,6 +85,39 @@ h4 {
     color: $dark-grey;
     border-bottom: 1px solid $light-grey;
     font-weight: normal;
+  }
+  li.tool-bar.clearfix {
+    background-color: white-smoke;
+    background-image: -webkit-linear-gradient(top, white, #E6E6E6);
+    height: 25px;
+  }
+  .tool-bar-item {
+    padding: 5px 15px;
+    color: $mid-grey;
+    font-size: $font-small;
+    position: relative;
+    top: 3px;
+    border-right: 1px solid $light-grey
+
+  }
+  .tool-bar-item:hover {
+    color: $white;
+    font-size: $font-small;
+    text-decoration: none;
+    background-color: #ccc;
+  }
+  .dropdown {
+    float: right;
+    padding: 2px 10px;
+    li {
+      background-color: white;
+      border: none;
+      a {
+        /*color: $dark-grey;*/
+        text-shadow: none;
+        font-size: $font-small;
+      }
+    }
   }
 }
 
@@ -108,18 +142,22 @@ h4 {
     list-style: none;
     margin: 3px 0 8px 0;
   }
-  .main-list li {
+  li {
     line-height: 1.6em;
     background-color: $sub-selector-panel;
     a { color: $mid-grey; }
   }
-  .dropdown {
-    float: right;
-    li a {
-      text-shadow: none;
-      font-size: $font-small;
-    }
+  .dropdown { float: right; }
+  .dropdown li {
+    background-color: white;
+    line-height: 1em;
   }
+  .dropdown li a {
+    color: $dark-grey;
+    text-shadow: none;
+    font-size: $font-small;
+  }
+  .dropdown li a:hover { color: $white; }
 }
 
 // group title
@@ -153,29 +191,12 @@ h4 {
 }
 
 // misc (move stuff out of here..)
-.bordered {
-  border-top: 1px solid $light-grey;
-}
-
-.presence-required {
-  display: inline;
-}
-
-.blocked {
-  background-color: $error-color;
-}
-
 li.undecided, li .unread{
   background-color: $highlighted;
   a { color: black; }
   a .proposal-title { color: black; }
 }
 
-.btn-selected {
-  background-image: -webkit-linear-gradient(top, #f6f6f6, #d6d6d6);
-  background-image: -o-linear-gradient(top, #f6f6f6, #d6d6d6);
-  background-imageackground-image: linear-gradient(top, #f6f6f6, #d6d6d6);
-}
 
 .field_with_errors { display: inline; }
 .inputError {

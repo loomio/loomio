@@ -104,9 +104,12 @@ body.discussions.show {
 
 /*  proposal panel  */
 #content-proposal {
-  a { color: $dark-grey; }
+  .no-proposals {
+    padding: 5px 10px;
+  }
+  /*a { color: $dark-grey; }*/
   li { padding: 0px; }
-  li.current-proposal, li .motion { padding: 5px 15px; }
+  li .motion { padding: 5px 15px; }
   .close-date {
     font-size: $font-tiny;
     color: $mid-grey;
@@ -141,27 +144,15 @@ li.preview a {
   a:hover {
     text-decoration: none;
   }
-  #group-name {
-    font-size: $font-tiny;
-    margin-top: -0.3em;
-    padding-left: 5px;
-    width: 480px;
-  }
-  .full-discussion-title {
-    padding-left: 5px;
-  }
-  .full-discussion-title .discussion-title {
+  .discussion-title {
     display: inline-block;
     /*@include ie7-inline-block();*/
     width: 480px;
   }
-  .vote-icon {
-    padding-top: 4px;
-    display: inline-block;
-    /*@include ie7-inline-block();*/
-    height: 16px;
-    width: 20px;
-    float: left;
+  .group-name {
+    font-size: $font-small;
+    color: $mid-grey;
+    width: 480px;
   }
   .notification-info {
     display: inline-block;
