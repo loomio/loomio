@@ -1,8 +1,6 @@
 .motion
   #motion-title.clearfix
     %h2.word-break= motion.name
-    - if motion.voting?
-      %span.label.label-success Voting
     - if motion.closed?
       %span.label.label-important Closed
   .closing-info
@@ -13,8 +11,6 @@
         = "Closing in #{time_ago_in_words(motion.close_date)}"
       - else
         %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
-    %span.admin-buttons
-      =render "motions/facilitator_options", motion: motion
   .proposed-by
     = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
     - if motion.updated_at != motion.created_at

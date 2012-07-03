@@ -26,6 +26,10 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions
   has_many :motions
+  has_many :motions_voting,
+           :through => :discussions,
+           :source => :motions,
+           :conditions => { phase: 'voting' }
   has_many :motions_closed,
            :through => :discussions,
            :source => :motions,

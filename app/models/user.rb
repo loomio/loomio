@@ -60,8 +60,12 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
 
-  def motion_vote(motion)
+  def get_vote_for(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
+  end
+
+  def voted?(motion)
+    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
   end
 
   def motions?(group)
@@ -69,55 +73,6 @@ class User < ActiveRecord::Base
       return true if discussion.current_motion
     end
     false
-  end
-
-  def motions_all_groups?
-    groups.each do |group|
-      group.discussions.each do |discussion|
-        return true if discussion.current_motion
-      end
-    end
-    false
-  end
-
-  def motions_awaiting_dicission(group)
-    motions = []
-    group.discussions.each do |discussion|
-      motion = discussion.current_motion
-      motions << motion if motion && !motion_vote(motion)
-    end
-    motions
-  end
-
-  def motions_awaiting_dicission_all_groups
-    motions = []
-    groups.each do |group|
-      group.discussions.each do |discussion|
-        motion = discussion.current_motion
-        motions << motion if motion && !motion_vote(motion)
-      end
-    end
-    motions
-  end
-
-  def motions_dicided(group)
-    motions = []
-    group.discussions.each do |discussion|
-      motion = discussion.current_motion
-      motions << motion if motion && motion_vote(motion)
-    end
-    motions
-  end
-
-  def motions_dicided_all_groups
-    motions = []
-    groups.each do |group|
-      group.discussions.each do |discussion|
-        motion = discussion.current_motion
-        motions << motion if motion && motion_vote(motion)
-      end
-    end
-    motions
   end
 
   def is_group_admin?(group)
@@ -196,7 +151,7 @@ class User < ActiveRecord::Base
 
   def position(motion)
     if motion.user_has_voted?(self)
-      motion_vote(motion).position
+      get_vote_for(motion).position
     end
   end
 

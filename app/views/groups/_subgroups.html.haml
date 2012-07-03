@@ -7,6 +7,6 @@
         %ul.dropdown-menu.pull-right
           - if group.users.include?(current_user)
             %li= link_to "Create a Sub-group +", add_subgroup_group_path(group)
-    %ul.main-list
+    %ul
       - subgroups.each do |subgroup|
         %li= render "dashboard/group_link", group: subgroup

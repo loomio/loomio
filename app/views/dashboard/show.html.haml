@@ -13,17 +13,19 @@
               %li= link_to group.name, group_path(group)
               - if group.subgroups.size > 0
                 - group.subgroups.each do |sub_group|
-                  %li.sub-group= link_to sub_group.name, group_path(group)
+                  %li.sub-group= link_to sub_group.name, group_path(sub_group)
       %section.span8
-        - if current_user.motions_all_groups?
+        - current_motions = current_user.motions_voting
+        - if current_motions.size > 0
           .selector-panel
             .clearfix
               %h1 Proposals
             %ul
-              - current_user.motions_awaiting_dicission_all_groups.each do |motion|
-                %li.undecided= render '/motions/motion_preview', motion: motion
-              - current_user.motions_dicided_all_groups.each do |motion|
-                %li= render '/motions/motion_preview', motion: motion
+              - current_motions.each do |motion|
+                - if not current_user.voted?(motion)
+                  %li.undecided= render '/motions/motion_preview', motion: motion, this_group: nil
+                - else
+                  %li= render '/motions/motion_preview', motion: motion, this_group: nil
         .selector-panel
           .clearfix
             %h1 Discussions

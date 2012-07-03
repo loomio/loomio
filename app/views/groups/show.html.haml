@@ -1,35 +1,51 @@
 =render '/groups/title', group: @group
 .row
   %section.span4
+    =render 'request_membership', group: @group
     =render 'description', group: @group
     =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
+    =render 'membership_requests', group: @group
     =render 'members', group: @group
 
   %section.span8
     - if current_user && current_user.motions?(@group)
       .selector-panel
         .clearfix
-          %h1 Proposals
-          .btn-group#open-close
-            %a{href: '#', class: "btn btn-open btn-selected btn-mini"} open
-            %a{href: '#', class: "btn btn-close btn-mini"} close
+          %h1#proposal-phase Current Proposals
+          .dropdown#proposals
+            = link_to image_tag("dropdown.png", title:'proposal settings', alt:'proposal settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
+            %ul.dropdown-menu.pull-right
+              %li
+                %a{ href: '#', id: 'display-current' }
+                  = "Current proposals"
+                  = image_tag "tick.png", class: 'tick', id: 'tick-current'
+              %li
+                %a{ href: '#', id: 'display-closed' }
+                  = "Closed proposals"
+                  = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
         %ul
           #open
-            - current_user.motions_awaiting_dicission(@group).each do |motion|
-              %li.undecided= render '/motions/motion_preview', motion: motion
-            - current_user.motions_dicided(@group).each do |motion|
-              %li= render '/motions/motion_preview', motion: motion
-          #closed
+            - @group.motions_voting.each do |motion|
+              - if not current_user.voted?(motion)
+                %li.undecided= render '/motions/motion_preview', motion: motion, this_group: @group
+              - else
+                %li= render '/motions/motion_preview', motion: motion, this_group: @group
+          #closed.hidden
             - @group.motions_closed.each do |motion|
-              %li= render '/motions/motion_preview', motion: motion
+              %li= render '/motions/motion_preview', motion: motion, this_group: @group
 
     .selector-panel
       .clearfix
         %h1 Discussions
-        - if current_user && @group.users_include?(current_user)
-          = link_to 'Start a new discussion +', new_discussion_path(discussion: { group_id: @group }),
-            class: "btn add btn-small", id: "new-discussion"
+        .dropdown#proposals
+          = link_to image_tag("dropdown.png", title:'Discussion settings', alt:'discussion settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
+          %ul.dropdown-menu.pull-right
+            %li= link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group })
       %ul
+        - if can? :create, Discussion.new(group_id: @group.id)
+          %li.tool-bar.clearfix
+            %a{ href: new_discussion_path(discussion: { group_id: @group }), class: 'tool-bar-item', id: 'tool-bar-item-discussion' }
+              Start new discussion
         - group_discussions = @group.all_discussions(current_user)
         - if group_discussions.count > 0
           - group_discussions.each do |discussion|

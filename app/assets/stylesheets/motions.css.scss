@@ -47,10 +47,19 @@
     width: 470px;
   }
   .proposal-title {
+    font-size: $font-medium;
     color: $dark-grey;
-    display: inline;
   }
-  .proposal-close-date { font-size: $font-small; }
+  .proposal-close-date {
+    font-size: $font-small;
+    display: inline;
+    float: left;
+  }
+  .proposal-group-name {
+    font-size: $font-small;
+    position: relative;
+    left: 4px;
+  }
   .engagement {
     font-size: $font-small;
     color: $mid-grey;
@@ -79,12 +88,6 @@
   .label{
     text-transform: lowercase;
     font-weight: normal;
-  }
-  .admin-buttons .btn {
-    float: right;
-    font-size: $font-tiny;
-    width: 65px;
-    padding: 2px 5px;
   }
   .closing-info{
     font-size: $font-small;

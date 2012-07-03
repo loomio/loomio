@@ -2,9 +2,9 @@
 - unique_votes = motion.unique_votes
 - if unique_votes.size > 0
   - if current_user && motion.user_has_voted?(current_user)
-    = render "motions/votes_table_vote", vote: current_user.motion_vote(motion), motion: motion
+    = render "motions/votes_table_vote", vote: current_user.get_vote_for(motion), motion: motion
   - unique_votes.each do |vote|
-    - unless current_user && vote == current_user.motion_vote(motion)
+    - unless current_user && vote == current_user.get_vote_for(motion)
       = render "motions/votes_table_vote", vote: vote, motion: motion
 - motion.users_who_did_not_vote.each do |user|
   .position-row.clearfix

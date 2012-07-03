@@ -27,6 +27,20 @@ describe Group do
     end
   end
 
+  describe "motions_voting" do
+    it "should return motions that belong to the group and are in phase 'voting'" do
+      @motion = create_motion
+      @group = @motion.group
+      @group.motions_voting.should include(@motion)
+    end
+    it "should not return motions that belong to the group but are in phase 'closed'" do
+      @motion = create_motion
+      @group = @motion.group
+      @motion.close_voting!
+      @group.motions_voting.should_not include(@motion)
+    end
+  end
+
   # NOTE (Jon): these descriptions seem ridiculous,
   # why did i name the tests this way? mehh.....
   describe "beta_features" do
