@@ -13,10 +13,20 @@ class GroupsController < GroupBaseController
     end
   end
 
+  def show
+    @discussions_awaiting_vote = @group.discussions_awaiting_user_vote(current_user) if current_user
+    @discussions_active = @group.active_discussions(current_user)
+    @discussions_inactive = @group.inactive_discussions(current_user)
+    @group = GroupDecorator.new(Group.find(params[:id]))
+    @subgroups = @group.subgroups.select do |group|
+      can? :show, group
+    end
+  end
+
   # CUSTOM CONTROLLER ACTIONS
 
   def add_subgroup
-    @parent = Group.find(params[:group_id])
+    @parent = Group.find(params[:id])
     @subgroup = Group.new(:parent => @parent)
     @subgroup.members_invitable_by = @parent.members_invitable_by
   end

@@ -1,13 +1,31 @@
 class GroupDecorator < ApplicationDecorator
   decorates :group
 
-  def full_link
-    link_text = model.name
-    link_text = "#{model.parent.name} > #{model.name}" if model.parent
-    link = h.link_to link_text, model
-  end
-
   def link
     link = h.link_to model.name, model
+  end
+
+  def fancy_name(show_parent_name=true)
+    if model.parent && show_parent_name
+      parent_name = h.sanitize(model.parent.name)
+      separator = h.content_tag :span, "\u25B6", class: 'name-separator'
+      group_name = h.sanitize(model.name)
+      name = "#{parent_name} #{separator} #{group_name}".html_safe
+    else
+      name = model.name
+    end
+    name
+  end
+
+  def fancy_link(show_parent_name=true)
+    if model.parent && show_parent_name
+      parent_link = GroupDecorator.new(parent).link
+      separator = h.content_tag :span, "\u25B6", class: 'name-separator'
+      group_link = link
+      result = "#{parent_link} #{separator} #{group_link}".html_safe
+    else
+      result = link
+    end
+    result
   end
 end

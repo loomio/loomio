@@ -5,12 +5,12 @@
     - if message.is_a?(Comment)
       = render message
     - if message.is_a?(Vote)
-      %div.comment.position
-        #position
+      .comment.position
+        .position
           = render partial: "motions/display_icons", locals: { position: message.position }
         %span
           .comment-username= link_to(message.user_name, "#")
-          #position-message
+          .position-message
             - if message.statement.present?
               = "#{message.statement}"
             - else
@@ -23,7 +23,11 @@
       %div{class: classes}
         %span
           .comment-username= link_to(message.author_name, "#")
-          #proposal-label created a proposal
-          #proposal-text= message.name
+          .proposal-label created a proposal
+          .proposal-text= message.name
         .comment-time
           = time_ago_in_words(message.created_at) + " ago"
+  :coffeescript
+    $ ->
+      @linkify = new Loomio.Views.Utils.Linkify
+        el: $(".comment-body, .proposal-text, .position-message")

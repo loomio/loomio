@@ -7,19 +7,49 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
 
   has_many :membership_requests,
-           :conditions => {:access_level => 'request'},
-           :class_name => 'Membership'
-  has_many :memberships,
-           :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
+           :conditions => { :access_level => 'request' },
+           :class_name => 'Membership',
            :dependent => :destroy
-  has_many :groups, through: :memberships
-  has_many :group_requests, through: :membership_requests, class_name: 'Group', source: :group
-  has_many :votes
+  has_many :admin_memberships,
+           :conditions => { :access_level => 'admin' },
+           :class_name => 'Membership',
+           :dependent => :destroy
+  has_many :memberships,
+           :conditions => { :access_level => Membership::MEMBER_ACCESS_LEVELS },
+           :dependent => :destroy
 
-  has_many :discussions, through: :groups
-  has_many :motions, through: :discussions
-  has_many :motions_voting, through: :discussions, :source => :motions, :conditions => {phase: 'voting'}
-  has_many :motions_closed, through: :discussions, :source => :motions, :conditions => {phase: 'closed'}
+  has_many :groups,
+           :through => :memberships
+  has_many :adminable_groups,
+           :through => :admin_memberships,
+           :class_name => 'Group',
+           :source => :group
+  has_many :group_requests,
+           :through => :membership_requests,
+           :class_name => 'Group',
+           :source => :group
+
+  has_many :discussions,
+           :through => :groups
+  has_many :authored_discussions,
+           :class_name => 'Discussion',
+           :foreign_key => 'author_id'
+
+  has_many :motions,
+           :through => :discussions
+  has_many :authored_motions,
+           :class_name => 'Motion',
+           :foreign_key => 'author_id'
+  has_many :motions_voting,
+           :through => :discussions,
+           :source => :motions,
+           :conditions => { phase: 'voting' }
+  has_many :motions_closed,
+           :through => :discussions,
+           :source => :motions,
+           :conditions => { phase: 'closed' }
+
+  has_many :votes
 
   has_many :discussion_read_logs,
            :dependent => :destroy
@@ -97,7 +127,7 @@ class User < ActiveRecord::Base
         results << subgroup.parent
       end
     end
-    results
+    results.sort_by { |group| group.name }
   end
 
   def subgroups
@@ -112,6 +142,39 @@ class User < ActiveRecord::Base
     if motion.user_has_voted?(self)
       motion_vote(motion).position
     end
+  end
+
+  def name
+    deleted_at ? "Deleted user" : read_attribute(:name)
+  end
+
+  def deactivate!
+    update_attribute(:deleted_at, 1.month.ago)
+  end
+
+  def activate!
+    update_attribute(:deleted_at, nil)
+  end
+
+  # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
+  def active_for_authentication?
+    super && !deleted_at
+  end
+
+  def activity_total
+    total = 0;
+    groups.each do |group|
+      total += activity_total_in(group)
+    end
+    total
+  end
+
+  def activity_total_in(group)
+    total = 0
+    group.discussions.each do |discussion|
+      total += discussion_activity_count(discussion)
+    end
+    total
   end
 
   private

@@ -6,8 +6,4 @@ class ApplicationController < ActionController::Base
     flash[:error] = "Access denied."
     redirect_to :back
   end
-
-  def current_ability
-    @current_ability ||= Ability.new(current_user, params)
-  end
 end

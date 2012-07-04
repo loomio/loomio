@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.1.5'
 gem "haml-rails"
 gem 'devise', '~> 2.0.0'
 gem 'devise_invitable', '~> 1.0.0'
@@ -16,8 +16,9 @@ gem 'acts-as-taggable-on', '~> 2.2.2', :git => 'https://github.com/mbleigh/acts-
 gem 'aasm'
 gem 'cancan'
 gem 'acts_as_commentable_with_threading'
-gem 'draper'
+gem 'draper', '~> 0.11.1'
 gem 'exception_notification'
+gem 'browser'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -38,6 +39,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'jasminerice'
+  gem 'guard-jasmine'
 end
 
 group :development do

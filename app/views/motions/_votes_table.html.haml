@@ -1,17 +1,11 @@
 %h3 Positions
 - unique_votes = motion.unique_votes
 - if unique_votes.size > 0
+  - if current_user && motion.user_has_voted?(current_user)
+    = render "motions/votes_table_vote", vote: current_user.motion_vote(motion), motion: motion
   - unique_votes.each do |vote|
-    .position-row.bordered
-      .member-row
-        #position= render partial: "motions/display_icons", locals: { position: vote.position }
-        .member-name= link_to vote.user_name, "#"
-        - if vote.can_be_edited_by?(current_user)
-          -if motion.phase == 'voting'
-            .edit-delete-buttons
-              =link_to "edit", edit_motion_vote_path(motion, vote), class: 'btn btn-mini'
-      #statement
-        = vote.statement
+    - unless current_user && vote == current_user.motion_vote(motion)
+      = render "motions/votes_table_vote", vote: vote, motion: motion
 - motion.users_who_did_not_vote.each do |user|
   .no-position-row.bordered
     #no-position= image_tag "questionmark.png"

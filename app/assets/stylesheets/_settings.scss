@@ -1,6 +1,6 @@
 // twitter-bootstrap
-$baseFontSize: 16px;
-$baseLineHeight: 20px;
+$baseFontSize: 14px;
+$baseLineHeight: 18px;
 
 // application
 $font-tinywiny: 0.7em;
@@ -10,11 +10,12 @@ $font-medium: 1em;
 $font-large: 1.2em;
 
 // colors
+$lighter-grey: #EAEAEA;
 $light-grey: #BBB;
 $mid-grey: #888;
 $dark-grey: #555;
 $header-color: #F2F2F2;
-$header-dark-color: #292929;
+$header-dark-color: #555;
 $header-titles-color: #555;
 $navbar-text-color: #BFBFBF;
 $error-color: firebrick;

@@ -44,6 +44,7 @@ describe Membership do
   context "destroy" do
     it "removes subgroup memberships (if existing)" do
       membership = group.add_member! user
+      # Removes user from multiple subgroups
       subgroup = Group.make
       subgroup.parent = group
       subgroup.save
@@ -52,6 +53,10 @@ describe Membership do
       subgroup2.parent = group
       subgroup2.save
       subgroup2.add_member! user
+      # Does not try to remove user from subgroup if user is not a member
+      subgroup3 = Group.make
+      subgroup3.parent = group
+      subgroup3.save
       membership.destroy
 
       subgroup.users.should_not include(user)
@@ -70,51 +75,6 @@ describe Membership do
       membership.destroy
 
       motion.votes.count.should == 0
-    end
-  end
-
-  context "member can_be_deleted_by? admin" do
-    it "returns true" do
-      group.add_admin!(user)
-      membership = group.add_member!(user2)
-
-      membership.can_be_deleted_by?(user).should == true
-    end
-  end
-
-  context "admin can_be_deleted_by? admin" do
-    it "returns false" do
-      # [Jon] Machinist is lame... (causing bugs which requires
-      # the code below to workaround)
-      group = Group.make
-      group.save
-      user = User.make
-      user.save
-      user2 = User.make
-      user2.save
-
-      group.add_admin!(user)
-      membership = group.add_admin!(user2)
-      group.admins.should include(user2)
-
-      membership.can_be_deleted_by?(user).should == false
-    end
-  end
-
-  context "request can_be_deleted member" do
-    it "returns true" do
-      group.add_member!(user)
-      membership = group.add_request!(user2)
-
-      membership.can_be_deleted_by?(user).should == true
-    end
-  end
-
-  context "request can_be_deleted requester" do
-    it "returns true" do
-      membership = group.add_request!(user)
-
-      membership.can_be_deleted_by?(user).should == true
     end
   end
 end

@@ -1,13 +1,9 @@
 %li
   #member-requests
-    =membership_request.user_name
-  .links
-    =link_to 'approve', membership_path(membership_request,
-      {:membership => {:access_level => 'member'}}),
-      :method => :put,
-      :confirm => "Are you sure you want to add #{membership_request.user_email} to the group?"
-    |
-    -confirm = "Are you sure you want to ignore the member "
-    -confirm << "request from #{membership_request.user_email}?"
-    =link_to "ignore", membership_path(membership_request), method: :delete,
-      :confirm => "Are you sure you want to ignore the member request from #{membership_request.user_email}?"
+    .user-name
+      = truncate(membership_request.user_name, :length => 29, :omission => '...')
+    .admin-controls
+      =link_to 'Approve', approve_request_for_membership_path(membership_request), :method => :post,
+        :confirm => "Are you sure you want to add #{membership_request.user_email} to the group?"
+      =link_to "×", ignore_request_for_membership_path(membership_request), :method => :post, class: 'close',
+        :confirm => "Are you sure you want to ignore the member request from #{membership_request.user_email}?"

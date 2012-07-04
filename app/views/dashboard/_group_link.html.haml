@@ -6,5 +6,5 @@
 - if current_user && current_user.groups.include?(group)
   = link_to "+",
     new_discussion_path(discussion: { group_id: group }),
-    :class => 'new_motion',
+    :class => 'new_motion_link',
     :title => 'new motion for this group'

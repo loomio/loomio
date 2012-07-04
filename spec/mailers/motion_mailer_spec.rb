@@ -9,15 +9,11 @@ describe MotionMailer do
   describe 'sending email on new motion creation' do
     before(:all) do
       @email = MotionMailer.new_motion_created(motion, user.email)
-      #@email_addresses = []
-      #group.users.each do |user|
-        #@email_addresses << user.email unless motion.author == user
-      #end
     end
 
     #ensure that the subject is correct
     it 'renders the subject' do
-      @email.subject.should == "[Loomio: #{group.name}] New motion - #{motion.name}"
+      @email.subject.should == "[Loomio: #{group.full_name}] New proposal - #{motion.name}"
     end
 
     #ensure that the sender is correct
@@ -31,7 +27,7 @@ describe MotionMailer do
 
     #ensure that the group name variable appears in the email body
     it 'assigns group.name' do
-      @email.body.encoded.should match(group.name)
+      @email.body.encoded.should match(group.full_name)
     end
 
     #ensure that the confirmation_url appears in the email body
@@ -51,7 +47,7 @@ describe MotionMailer do
 
     #ensure that the subject is correct
     it 'renders the subject' do
-      @email.subject.should match(/Motion blocked - #{motion.name}/)
+      @email.subject.should match(/Proposal blocked - #{motion.name}/)
     end
 
     #ensure that the sender is correct
@@ -64,18 +60,18 @@ describe MotionMailer do
     end
 
     #ensure that the group name variable appears in the email body
-    it 'assigns group.name' do
-      @email.body.encoded.should match(group.name)
+    it 'assigns group.full_name' do
+      @email.body.encoded.should match(group.full_name)
     end
 
     #ensure that the blocking user name appears in the email body
-    it 'assigns group.name' do
+    it 'assigns user.name' do
       @email.body.encoded.should match(@vote.user.name)
     end
 
-    #ensure that the motion_url appears in the email body
+    #ensure that the discussion_url appears in the email body
     it 'assigns url_for motion' do
-      @email.body.encoded.should match(/\/motions\/#{motion.id}/)
+      @email.body.encoded.should match(/\/discussions\/#{motion.discussion.id}/)
     end
   end
 end

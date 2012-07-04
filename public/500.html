@@ -3,24 +3,58 @@
 <head>
   <title>We're sorry, but something went wrong (500)</title>
   <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
+    body {
+      background-color: #F7F7ED;
+      color: #666;
+      font-family: arial, sans-serif;
     }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+    h1 {
+      font-size: 100%;
+      line-height: 1.5em;
+    }
+    #error-head{
+    	background-color: #292929;
+    }
+    .content {
+      margin-top: 20px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: #FFF;
+      border-radius: 8px;
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+      -o-border-radius: 8px;
+      -ms-border-radius: 8px;
+      box-shadow: 1px 1px 4px #999999;
+      -webkit-box-shadow: 1px 1px 4px #999999;
+      -moz-box-shadow: 0px 0px 4px #999999;
+    }
+    #header {
+        background-image: url("/assets/loomio-orange.png");
+        background-repeat: no-repeat;
+        height: 150px;
+        text-indent: -999em;
+    }
+    #error-container{
+      width: 960px;
+      margin:0px auto;
+    }
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
-    <p>We've been notified about this issue and we'll take a look at it shortly.</p>
+  <div id="error-container">
+    <a href="/" title="Return Home">
+      <h1 id="header">Loomio</h1>
+    </a>
+    <div class="content">
+      <h1>We're sorry, but something went wrong.</h1>
+      <p>We've been notified about this issue and we'll take a look at it shortly.</p>
+      <a href="/">
+        Return to your dashboard
+      </a>
+    </div>
   </div>
 </body>
 </html>
