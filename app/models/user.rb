@@ -75,6 +75,22 @@ class User < ActiveRecord::Base
     false
   end
 
+  def motions_voted
+    motions_voting.that_user_has_voted_on(self)
+  end
+
+  def motions_not_voted
+    motions_voting.that_user_has_not_voted_on(self)
+  end
+
+  def group_motions_voted(group)
+    group.motions_voting.that_user_has_voted_on(self)
+  end
+
+  def group_motions_not_voted(group)
+    group.motions_voting.that_user_has_not_voted_on(self)
+  end
+
   def is_group_admin?(group)
     memberships.for_group(group).with_access('admin').exists?
   end

@@ -8,31 +8,37 @@
     =render 'members', group: @group
 
   %section.span8
-    - if current_user && current_user.motions?(@group)
-      .selector-panel
-        .clearfix
-          %h1#proposal-phase Current Proposals
-          .dropdown#proposals
-            = link_to image_tag("dropdown.png", title:'proposal settings', alt:'proposal settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
-            %ul.dropdown-menu.pull-right
-              %li
-                %a{ href: '#', id: 'display-current' }
-                  = "Current proposals"
-                  = image_tag "tick.png", class: 'tick', id: 'tick-current'
-              %li
-                %a{ href: '#', id: 'display-closed' }
-                  = "Closed proposals"
-                  = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
-        %ul
-          #open
-            - @group.motions_voting.each do |motion|
-              - if not current_user.voted?(motion)
+    .selector-panel
+      .clearfix
+        %h1#proposal-phase Current Proposals
+        .dropdown#proposals
+          = link_to image_tag("dropdown.png", title:'proposal settings', alt:'proposal settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
+          %ul.dropdown-menu.pull-right
+            %li
+              %a{ href: '#', id: 'display-current' }
+                = "Current proposals"
+                = image_tag "tick.png", class: 'tick', id: 'tick-current'
+            %li
+              %a{ href: '#', id: 'display-closed' }
+                = "Closed proposals"
+                = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
+      %ul
+        #open
+          - if not (@motions_not_voted.nil? && @motions_voted.nil?)
+            - unless @motions_not_voted.nil?
+              - @motions_not_voted.each do |motion|
                 %li.undecided= render '/motions/motion_preview', motion: motion, this_group: @group
-              - else
+            - unless @motions_voted.nil?
+              - @motions_voted.each do |motion|
                 %li= render '/motions/motion_preview', motion: motion, this_group: @group
-          #closed.hidden
-            - @group.motions_closed.each do |motion|
+          - else
+            %li.no-proposals= "There are no current proposals for this group"
+        #closed.hidden
+          - if not @motions_closed.nil?
+            - @motions_closed.each do |motion|
               %li= render '/motions/motion_preview', motion: motion, this_group: @group
+          - else
+            %li.no-proposals= "There are no closed proposals for this group"
 
     .selector-panel
       .clearfix

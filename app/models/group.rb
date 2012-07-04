@@ -101,7 +101,6 @@ class Group < ActiveRecord::Base
     users.sort { |a,b| a.name.downcase <=> b.name.downcase }
   end
 
-
   #
   # MEMBERSHIP METHODS
   #
