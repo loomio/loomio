@@ -65,25 +65,45 @@ describe Discussion do
     end
   end
 
-  describe "discussion.author_and_participants" do
+  describe "discussion.participants" do
     before do
-      @user1, @user2, @user3, @user4 = User.make!, User.make!, User.make!, User.make!
+      @user1, @user2, @user3, @user4 =
+        User.make!, User.make!, User.make!, User.make!
       @discussion = create_discussion(author: @user1)
       @group = @discussion.group
       @group.add_member! @user2
       @group.add_member! @user3
+      @group.add_member! @user4
       @discussion.add_comment(@user2, "givin a shout out to user3!")
       @discussion.add_comment(@user3, "thanks 4 thah love usah two!")
     end
+
     it "should include users who have commented on discussion" do
-      @discussion.author_and_participants.should include(@user2)
-      @discussion.author_and_participants.should include(@user3)
+      @discussion.participants.should include(@user2)
+      @discussion.participants.should include(@user3)
     end
+
     it "should include the author of the discussion" do
-      @discussion.author_and_participants.should include(@user1)
+      @discussion.participants.should include(@user1)
     end
+
+    it "should include discussion motion authors (if any)" do
+      previous_motion_author = User.make!
+      current_motion_author = User.make!
+      @group.add_member! previous_motion_author
+      @group.add_member! current_motion_author
+      previous_motion = create_motion(:discussion => @discussion,
+                             :author => previous_motion_author)
+      previous_motion.close_voting!
+      current_motion = create_motion(:discussion => @discussion,
+                             :author => current_motion_author)
+
+      @discussion.participants.should include(previous_motion_author)
+      @discussion.participants.should include(current_motion_author)
+    end
+
     it "should not include users who have not commented on discussion" do
-      @discussion.author_and_participants.should_not include(@user4)
+      @discussion.participants.should_not include(@user4)
     end
   end
 

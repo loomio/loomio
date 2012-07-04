@@ -5,10 +5,11 @@ class Event < ActiveRecord::Base
   belongs_to :discussion
   belongs_to :comment
   belongs_to :motion
+  belongs_to :vote
 
   validates_inclusion_of :kind, :in => KINDS
 
-  attr_accessible :kind, :discussion, :comment, :motion
+  attr_accessible :kind, :discussion, :comment, :motion, :vote
 
   def self.new_discussion!(discussion)
     event = create!(:kind => "new_discussion", :discussion => discussion)
@@ -22,7 +23,7 @@ class Event < ActiveRecord::Base
 
   def self.new_comment!(comment)
     event = create!(:kind => "new_comment", :comment => comment)
-    comment.discussion.author_and_participants.each do |user|
+    comment.discussion.participants.each do |user|
       unless user == comment.user
         notification = event.notifications.create! :user => user
       end
@@ -41,12 +42,21 @@ class Event < ActiveRecord::Base
   end
 
   def self.new_vote!(vote)
-    #event = create!(:kind => "new_vote", :vote => vote)
-    #unless user == vote.motion.author
-      #event.notifications.create! :user => vote.motion.author
-    #end
-    #unless user == vote.discussion.author
-    #vote.motion.author.each do |user|
-    #event
+    event = create!(:kind => "new_vote", :vote => vote)
+    begin
+      # Notify motion author
+      unless vote.user == vote.motion.author
+        event.notifications.create! :user => vote.motion.author
+      end
+      # Notify discussion author
+      unless vote.user == vote.motion.discussion.author
+        event.notifications.create! :user => vote.motion.discussion.author
+      end
+    rescue ActiveRecord::RecordInvalid => error
+      # Catches error if we are trying to create duplicate notifications for
+      # the same user (i.e. if motion author and discussion author are same person)
+      raise unless error.message =~ /User has already been taken/
+    end
+    event
   end
 end

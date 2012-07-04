@@ -18,7 +18,7 @@ class Discussion < ActiveRecord::Base
   has_many :motions
   has_many :votes, through: :motions
   has_many :comments,  :as => :commentable
-  has_many :participants, :through => :comments,
+  has_many :users_with_comments, :through => :comments,
     :source => :user, :uniq => true
 
   after_create :create_event
@@ -81,14 +81,19 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  # TODO: I'm guessing there's a nice way to do this with a query
-  # but I don't know how
-  def author_and_participants
-    if participants.find_by_id(author.id)
-      participants
-    else
-      participants.all << author
+  def participants
+    other_participants = []
+    # Include discussion author
+    unless users_with_comments.find_by_id(author.id)
+      other_participants << author
     end
+    # Include motion authors
+    motions.each do |motion|
+      unless users_with_comments.find_by_id(motion.author.id)
+        other_participants << motion.author
+      end
+    end
+    users_with_comments.all + other_participants.uniq
   end
 
   private
