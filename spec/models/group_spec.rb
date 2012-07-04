@@ -22,6 +22,93 @@ describe Group do
     it "defaults to members invitable by members" do
       @group.members_invitable_by.should == :members
     end
+    it "has a full_name" do
+      @group.full_name.should == @group.name
+    end
+  end
+
+  context "group with several discussions" do
+    before do
+      @group = Group.make!
+      @user = User.make!
+      @group.add_member!(@user)
+      @discussion = create_discussion(group: @group)
+      @active_discussion_with_motion = create_discussion(group: @group)
+      @motion = create_motion(discussion: @active_discussion_with_motion)
+    end
+    context "group.discussions_awaiting_user_vote" do
+      it "returns discussions that are awaing user's vote" do
+        discussions = @group.discussions_awaiting_user_vote(@user)
+        discussions.should include(@active_discussion_with_motion)
+      end
+    end
+    context "group.active_discussions" do
+      it "result contains recent discussions" do
+        discussions = @group.active_discussions(@user)
+        discussions.should include(@discussion)
+      end
+      it "result does not contain discussions awaiting user vote" do
+        discussions = @group.active_discussions(@user)
+        discussions.should_not include(@active_discussion_with_motion)
+      end
+    end
+    context "group.active_discussions" do
+      it "result contains inactive discussions" do
+        pending "Jon was too tired to write this test"
+      end
+      it "result does not contain discussions awaiting user vote" do
+        pending "Jon was too tired to write this test"
+      end
+    end
+  end
+
+  # NOTE (Jon): these descriptions seem ridiculous,
+  # why did i name the tests this way? mehh.....
+  describe "beta_features" do
+    context "group.beta_features = true" do
+      before do
+        @group = Group.make!
+        @group.beta_features = true
+        @group.save
+      end
+      it "group.beta_features? returns true" do
+        @group.beta_features?.should be_true
+      end
+      it "group.beta_features returns true" do
+        @group.beta_features.should be_true
+      end
+      context "subgroup.beta_features = false" do
+        before do
+          @subgroup = Group.make!(:parent => @group)
+          @subgroup.beta_features = false
+          @subgroup.save
+        end
+        it "subgroup.beta_features? returns true" do
+          @subgroup.beta_features?.should be_true
+        end
+        it "subgroup.beta_features returns true" do
+          @subgroup.beta_features.should be_true
+        end
+      end
+    end
+    context "group.beta_features = false" do
+      context "subgroup.beta_features = true" do
+        before do
+          @group = Group.make!
+          @group.beta_features = false
+          @group.save
+          @subgroup = Group.make!(:parent => @group)
+          @subgroup.beta_features = true
+          @subgroup.save
+        end
+        it "subgroup.beta_features? returns true" do
+          @subgroup.beta_features?.should be_true
+        end
+        it "subgroup.beta_features returns true" do
+          @subgroup.beta_features.should be_true
+        end
+      end
+    end
   end
 
   context "has a parent" do
@@ -29,10 +116,10 @@ describe Group do
       @group = Group.make!
       @subgroup = Group.make!(:parent => @group)
     end
-    it "accesses its parent" do
+    it "can access it's parent" do
       @subgroup.parent.should == @group
     end
-    it "accesses its children" do
+    it "can access it's children" do
       10.times {Group.make!(:parent => @group)}
       @group.subgroups.count.should eq(11)
     end
@@ -42,6 +129,17 @@ describe Group do
     end
     it "defaults to viewable by parent group members" do
       Group.new(:parent => @group).viewable_by.should == :parent_group_members
+    end
+    context "subgroup.full_name" do
+      it "contains parent name" do
+        @subgroup.full_name.should == "#{@subgroup.parent_name} - #{@subgroup.name}"
+        @subgroup.full_name(": ").should ==
+          "#{@subgroup.parent_name}: #{@subgroup.name}"
+      end
+      it "can have an optionally defined separator between names" do
+        @subgroup.full_name(": ").should ==
+          "#{@subgroup.parent_name}: #{@subgroup.name}"
+      end
     end
   end
 

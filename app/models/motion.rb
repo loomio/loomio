@@ -12,6 +12,8 @@ class Motion < ActiveRecord::Base
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
 
+  validates_length_of :name, :maximum=>250
+
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
   delegate :name, :to => :author, :prefix => :author
@@ -37,7 +39,7 @@ class Motion < ActiveRecord::Base
       transitions :to => :voting, :from => [:closed]
     end
 
-    event :close_voting, before: :before_close do
+    event :close_voting, before: :before_close, after: :after_close do
       transitions :to => :closed, :from => [:voting]
     end
   end
@@ -102,28 +104,8 @@ class Motion < ActiveRecord::Base
     false
   end
 
-  def has_admin_user?(user)
-    group.has_admin_user?(user)
-  end
-
   def user_has_voted?(user)
     votes.for_user(user).exists?
-  end
-
-  def can_be_viewed_by?(user)
-    user && group.can_be_viewed_by?(user)
-  end
-
-  def can_be_edited_by?(user)
-    user && (author == user || facilitator == user)
-  end
-
-  def can_be_closed_by?(user)
-    user && ((author == user || facilitator == user) || has_admin_user?(user))
-  end
-
-  def can_be_deleted_by?(user)
-    user && (author == user || has_admin_user?(user))
   end
 
   def can_be_voted_on_by?(user)
@@ -152,18 +134,6 @@ class Motion < ActiveRecord::Base
   def has_closing_date?
     close_date == nil
   end
-
-  #def has_group_user_tag(tag_name)
-    #has_tag = false
-    #votes.each do |vote|
-      #vote.user.group_tags_from(group).each do |tag|
-        #if tag == tag_name
-          #return has_tag = true
-        #end
-      #end
-    #end
-    #return has_tag
-  #end
 
   def discussion_activity
     if discussion
@@ -222,8 +192,13 @@ class Motion < ActiveRecord::Base
     end
 
     def before_close
+      Motion.record_timestamps = false
       store_users_that_didnt_vote
       self.close_date = Time.now
+    end
+
+    def after_close
+      Motion.record_timestamps = true
     end
 
     def store_users_that_didnt_vote

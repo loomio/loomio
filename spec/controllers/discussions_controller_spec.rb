@@ -14,12 +14,10 @@ describe DiscussionsController do
     before do
       sign_in user
       app_controller.stub(:authorize!).and_return(true)
-      app_controller.stub(:resource).and_return(discussion)
+      app_controller.stub(:can?).with(:show, group).and_return(true)
       Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
       Discussion.stub(:new).and_return(discussion)
       Group.stub(:find).with(group.id.to_s).and_return(group)
-      group.stub(:can_be_viewed_by?).with(user).and_return(true)
-      group.stub_chain(:users, :include?).with(user).and_return(true)
     end
 
     context "views a discussion" do
@@ -27,6 +25,7 @@ describe DiscussionsController do
         motion.stub(:votes_graph_ready).and_return([])
         motion.stub(:user_has_voted?).and_return(true)
         motion.stub(:open_close_motion)
+        motion.stub(:voting?).and_return(true)
         discussion.stub(:history)
       end
       it "responds with success" do
@@ -42,10 +41,37 @@ describe DiscussionsController do
     end
 
     context "creates a discussion" do
-      it "adds a comment" do
+      before do
+        discussion.stub(:add_comment)
+        discussion.stub(:save).and_return(true)
+        DiscussionMailer.stub(:spam_new_discussion_created)
+      end
+      it "does not send email by default" do
+        DiscussionMailer.should_not_receive(:spam_new_discussion_created)
+        get :create, discussion: { group_id: group.id, title: "Shinney",
+                                   comment: "Bright light",
+                                   notify_group_upon_creation: "0" }
+      end
+      it "sends email if notify_group_upon_creation is passed in params" do
+        DiscussionMailer.should_receive(:spam_new_discussion_created).
+          with(discussion)
+        get :create, discussion: { group_id: group.id, title: "Shinney",
+                                   comment: "Bright light",
+                                   notify_group_upon_creation: "1" }
+      end
+      it "adds comment" do
         discussion.should_receive(:add_comment).with(user, "Bright light")
-        discussion.should_receive(:save).and_return(true)
-        get :create, discussion: { group_id: group.id, title: "Shinney", comment: "Bright light" }
+        get :create, discussion: { group_id: group.id, title: "Shinney",
+                                   comment: "Bright light" }
+      end
+      it "displays flash success message" do
+        get :create, discussion: { group_id: group.id, title: "Shinney",
+                                   comment: "Bright light" }
+        flash[:success].should match("Discussion sucessfully created.")
+      end
+      it "redirects to discussion" do
+        get :create, discussion: { group_id: group.id, title: "Shinney",
+                                   comment: "Bright light" }
         response.should redirect_to(discussion_path(discussion.id))
       end
     end

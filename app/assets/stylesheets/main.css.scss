@@ -26,17 +26,29 @@ h3 {
   font-weight: normal;
 	font-size: $font-medium;
 }
+
+h4 {
+  font-weight: normal;
+  font-size: $font-small;
+}
+
 .sub_group{
 	font-size: $font-tiny;
 }
 
 // structural elements (containers etc.)
-#general-form {
+.general-form {
+  width: 100%;
   h1 {
     font-size: $font-large;
     color: $dark-grey;
     margin-bottom: 0.5em;
   }
+}
+.center-content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 68%;
 }
 
 #content-main {
@@ -47,21 +59,26 @@ h3 {
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
-  .btn { margin-bottom: 15px; }
 }
 
 #content-left {
   color: $header-titles-color;
   .btn { color: $mid-grey; }
+  .btn-info { color: white; }
   h1 {
     font-size: $font-medium;
     background-color: $header-color;
     padding: 0.25em;
     margin-bottom: 0.5em;
   }
-  .block { margin-bottom: 20px; }
-  ul { margin-bottom: 0.6em; }
-  li { padding-bottom: 4px; }
+  ul {
+    margin-bottom: 0.6em;
+    list-style: none;
+    margin-left: 0px;
+  }
+  li {
+    padding-bottom: 4px;
+  }
 }
 #content-proposal {
   color: $mid-grey;
@@ -73,12 +90,17 @@ h3 {
   }
   margin-bottom: 20px;
 }
+.content-block {
+  margin-bottom: 20px;
+  .content {
+    padding-left: 2px;
+  }
+}
 
 .panel {
-  @include box-shadow(1px, 1px, 3px, $light-grey);
   @include border-radius(4px);
   border: 1px solid $light-grey;
-  margin: 5px 3px 6px 3px;
+  margin: 5px 0px 6px 0px;
   padding: 8px;
 }
 
@@ -102,93 +124,40 @@ h3 {
     font-size: $font-tinywiny;
     margin-left: 4px;
   }
-}
-
-// navigation
-
-// topbar
-.navbar .nav.pull-right{
-	margin:9px 0px 0px 0px;
-}
-.navbar-wrapper{
-	position: fixed;
-	width: 100%;
-	background-color: $header-dark-color;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
-	z-index: 1;
-}
-.navbar-inner{
-	border-radius: 0px;
-	background-color: $header-color;
-	background-image: none;
-}
-.container{
-	width: 940px;
-	margin: 0px auto;
-	padding-top: 90px;
-}
-header{
-	width: 940px;
-	margin: 0px auto;
-}
-.navbar .nav > li > a{
-	padding: 2px 10px;
-	color: $navbar-text-color;
-	text-shadow: none;
-}
-.navbar .nav > li > a:hover{
-	color: white;
-}
-.topbar-wrapper {
-  .secondary-nav {
-    margin-top: 3px;
-    .feedback {
-      font-size: $font-tiny;
-      padding-top: 2px;
-      margin-right: 15px;
-      text-shadow: none;
-    }
-  }
-}
-
-.navbar {
-  a {
-    color: $navbar-text-color;
-    text-shadow: none;
-  }
-	div > ul a, .nav a{
-		font-size: $font-tiny;
-	}
-  .topbar-inner {
-    background-image: -moz-linear-gradient(top, $header-color, $header-dark-color);
-    background-image: -webkit-linear-gradient(top, $header-color, $header-dark-color);
-    background-image: -o-linear-gradient(top, $header-color, $header-dark-color);
-    background-image: linear-gradient(top, $header-color, $header-dark-color);
-  }
-
-  h1 {
-    float: left;
-    font-size: 0px;
-    line-height: 0px;
-		a{
-			display: block;
-			height: 36px;
-			padding: 5px 5px 0;
-		}
-		a:hover{
-			background-color: #383737;
-		}
+  .dropdown {
+    float: right;
   }
   ul.dropdown-menu{
     li {
       text-shadow: none;
+      font-size: $font-tiny;
+      color: $navbar-text-color;
     }
-		.divider{
-			margin: 4px 1px;
-		}
+    .divider{
+      margin: 4px 1px;
+    }
   }
 }
 
+
+.alert {
+  position: relative;
+  bottom: 20px;
+}
+
+.word-break {
+  /* The following styles prevent unbroken strings from breaking the layout */
+  width: 290px; /* set to whatever width you need */
+  overflow: auto;
+  white-space: -moz-pre-wrap; /* Mozilla */
+  white-space: -hp-pre-wrap; /* HP printers */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
+  -moz-binding: url('xbl.xml#wordwrap'); /* Firefox (using XBL) */
+}
 
 // misc (move stuff out of here..)
 .bordered {
@@ -211,14 +180,26 @@ header{
   background-color: $comment-color;
 }
 
-.inputError { display: inline-block; }
-.error-message {
+.field_with_errors { display: inline; }
+.inputError {
+  display: inline-block;
+  @include ie7-inline-block();
+}
+.presence-error-message {
   font-size: $font-small;
   display: inline;
   margin-left: 5px;
   color: $error-color;
 }
-
+.character-counter {
+  color: $mid-grey;
+  text-align: right;
+  position: relative;
+  bottom: 20px;
+  width: 410px;
+  height: 12px;
+  font-size: $font-small;
+}
 
 form {
   label {
@@ -280,6 +261,16 @@ table.jqplot-table-legend {
   width: 100px;
   text-align: center;
   @include box-shadow(1px, 1px, 4px, $mid-grey);
+}
+
+.name-separator {
+  display: inline-block;
+  @include ie7-inline-block();
+  width: 15px;
+  position: relative;
+  bottom: 1px;
+  font-size: 0.6em;
+  text-align: center;
 }
 
 /* For modern browsers */

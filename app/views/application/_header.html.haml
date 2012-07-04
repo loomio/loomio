@@ -1,15 +1,42 @@
+-# This code has the notifiction badge commented out until the new notification class has been implemented  (AARON 14/6/2012)
+-# Dont delete this code!!
 .navbar-wrapper
-  %header.navbar{:data => {:dropdown =>'dropdown'}}   
+  %header.navbar{:data => {:dropdown =>'dropdown'}}
     %h1
       = link_to image_tag("top-bar-loomio.png", :alt => "Loomio"), "/"
-    %ul.nav.secondary-nav.pull-right
-      - if user_signed_in?
+    - if user_signed_in?
+      %ul.nav.group-nav
+        %li.dropdown.group-container
+          %a{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
+            #group-icon
+            -#- total_activity = current_user.activity_total
+            -#- if total_activity > 1
+              -##activity-count.span.label.label-important
+                -#= total_activity
+            #title
+              = "My groups"
+              %b.caret
+          %ul.dropdown-menu
+            - current_user.all_root_groups.each do |group|
+              %li.group-item
+                .link-container
+                  = link_to group.name, group
+              %li.divider
+                -#- activity =  current_user.activity_total_in(group)
+                -#- if activity > 0
+                  -#.notification-container
+                    -#.span.label.label-important= activity
+            %li.new-group
+              =link_to "+ Add New Group", new_group_path
+      %ul.nav.secondary-nav.pull-right
         %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
         %li.dropdown
-          = link_to current_user.name ? current_user.name : current_user.email, "#", 'data-toggle' => 'dropdown'
+          %a{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
+            = current_user.name
+            %b.caret
           %ul.dropdown-menu
             %li= link_to "Settings", user_settings_path
             %li.divider
             %li= link_to('Sign out', destroy_user_session_path, method: :delete)
-      - else
-        = link_to('Sign in', new_user_session_path)
+    - else
+      .sign-in= link_to('Sign in', new_user_session_path)

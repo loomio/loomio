@@ -1,26 +1,28 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user, params)
+  def initialize(user)
 
-    #
-    # USERS
-    #
-
+    user ||= User.new
     cannot :sign_up, User
 
     #
     # GROUPS
     #
 
-    can [:edit, :update, :add_user_tag, :delete_user_tag,
-         :user_group_tags, :group_tags, :add_subgroup], Group do |group|
-      group.can_be_edited_by? user
-    end
+    can :show, Group, :viewable_by => :everyone
+    can :show, Group, :viewable_by => :members, :id => user.group_ids
+    can :show, Group, :viewable_by => :parent_group_members,
+                      :parent_id => user.group_ids
 
-    can :add_members, Group do |group|
-      group.can_invite_members? user
-    end
+    can :update, Group, :id => user.adminable_group_ids
+
+    can :add_subgroup, Group, :id => user.group_ids
+
+    can :add_members, Group, :members_invitable_by => :members,
+                             :id => user.group_ids
+    can :add_members, Group, :members_invitable_by => :admins,
+                             :id => user.adminable_group_ids
 
     can [:create, :index, :request_membership], Group
 
@@ -28,43 +30,48 @@ class Ability
     # MEMBERSHIPS
     #
 
-    can [:create, :edit], Membership
+    can :create, Membership
 
-    can :update, Membership do |membership|
-      if params[:membership]
-        if params[:membership][:access_level] == 'member'
-          membership.can_be_made_member_by? user
-        elsif params[:membership][:access_level] == 'admin'
-          membership.can_be_made_admin_by? user
-        end
-      end
+    can :cancel_request, Membership, :user => user
+
+    can [:approve_request, :ignore_request], Membership do |membership|
+      can? :add_members, membership.group
     end
 
-    can :destroy, Membership do |membership|
-      membership.can_be_deleted_by? user
+    can [:make_admin, :remove_admin], Membership,
+      :group_id => user.adminable_group_ids
+
+    can :destroy, Membership, :user_id => user.id
+    can :destroy, Membership, :group_id => user.adminable_group_ids
+    cannot :destroy, Membership do |membership|
+      (membership.group.users.size == 1) ||
+      (membership.admin? and membership.group.admins.size == 1)
     end
 
     #
     # DISCUSSIONS / COMMENTS
     #
 
-    can :new_proposal, Discussion do |discussion|
-      discussion.can_have_proposal_created_by? user
-    end
+    can :new_proposal, Discussion, :group_id => user.group_ids
 
-    can :add_comment, Discussion do |discussion|
-      discussion.can_be_commented_on_by? user
-    end
+    can :add_comment, Discussion, :group_id => user.group_ids
 
-    can :create, Discussion do |discussion|
-      group = Group.find(params[:discussion][:group_id])
-      group.users.include?(user)
-    end
+    can :create, Discussion, :group_id => user.group_ids
 
     can :destroy, Comment, user_id: user.id
-    can [:like, :unlike], Comment do |comment|
-      comment.can_be_liked_by? user
-    end
 
+    can [:like, :unlike], Comment, :discussion => { :id => user.discussion_ids }
+
+    #
+    # MOTIONS
+    #
+
+    can :create, Motion, :discussion_id => user.discussion_ids
+
+    can :update, Motion, :author_id => user.id
+
+    can [:destroy, :close_voting, :open_voting], Motion, :author_id => user.id
+    can [:destroy, :close_voting, :open_voting], Motion,
+      :discussion => { :group_id => user.adminable_group_ids }
   end
 end

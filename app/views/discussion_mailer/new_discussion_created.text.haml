@@ -1,0 +1,15 @@
+A new discussion was created in a Loomio group that you belong to.
+:plain
+
+= "View discussion: #{discussion_url(@discussion)}"
+:plain
+
+
+!= "Discussion: #{@discussion.title}"
+!= "Group: #{@discussion.group.full_name}"
+!= "Started by: #{@discussion.author.name}"
+:plain
+
+- if @discussion.comments.present?
+  != "Comment: \n#{@discussion.comments.first.body}"
+

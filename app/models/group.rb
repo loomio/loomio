@@ -5,6 +5,10 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   validate :limit_inheritance
+
+  validates_length_of :name, :maximum=>250
+  validates :description, :length => { :maximum => 250 }
+
   after_initialize :set_defaults
 
   has_many :memberships,
@@ -28,15 +32,28 @@ class Group < ActiveRecord::Base
 
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
+  delegate :name, :to => :parent, :prefix => true
 
   acts_as_tagger
 
   attr_accessible :name, :viewable_by, :parent_id, :parent
-  attr_accessible :members_invitable_by, :email_new_motion
+  attr_accessible :members_invitable_by, :email_new_motion, :description
 
   #
   # ACCESSOR METHODS
   #
+
+  def beta_features
+    if parent && (parent.beta_features == true)
+      true
+    else
+      self[:beta_features]
+    end
+  end
+
+  def beta_features?
+    beta_features
+  end
 
   def viewable_by
     value = read_attribute(:viewable_by)
@@ -56,18 +73,42 @@ class Group < ActiveRecord::Base
     write_attribute(:members_invitable_by, value.to_s)
   end
 
+  def full_name(separator= " - ")
+    if parent
+      parent_name + separator + name
+    else
+      name
+    end
+  end
+
+  def root_name
+    if parent
+      parent_name
+    else
+      name
+    end
+  end
+
+  def users_sorted
+    users.sort { |a,b| a.name.downcase <=> b.name.downcase }
+  end
+
 
   #
   # MEMBERSHIP METHODS
   #
 
+
+
   def add_request!(user)
     unless requested_users_include?(user) || users.exists?(user)
-      membership = memberships.build_for_user(user, access_level: 'request')
-      membership.save!
-      GroupMailer.new_membership_request(membership).deliver
-      reload
-      membership
+      if parent.nil? || user.group_membership(parent)
+        membership = memberships.build_for_user(user, access_level: 'request')
+        membership.save!
+        GroupMailer.new_membership_request(membership).deliver
+        reload
+        membership
+      end
     end
   end
 
@@ -103,31 +144,47 @@ class Group < ActiveRecord::Base
     membership_requests.find_by_user_id(user)
   end
 
-  def can_be_edited_by?(user)
-    has_admin_user?(user)
-  end
-
   def has_admin_user?(user)
     return true if admins.include?(user)
     return true if (parent && parent.admins.include?(user))
   end
 
-  def can_be_viewed_by?(user)
-    return true if viewable_by == :everyone
-    return true if users.include?(user)
-    return true if viewable_by == :parent_group_members && (parent.users || []).include?(user)
-  end
+  #
+  # DISCUSSION LISTS
+  #
 
-  def can_invite_members?(user)
-    if members_invitable_by == :members
-      return true if users.include?(user)
-    elsif members_invitable_by == :admins
-      return true if has_admin_user?(user)
+  def all_discussions(user)
+    if subgroups.present?
+      result = discussions
+      subgroups.each do |subgroup|
+        if subgroup.users_include? user
+          result += subgroup.discussions
+        end
+      end
+      result.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+    else
+      discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
     end
   end
 
-  def discussions_sorted
-    discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+  def discussions_awaiting_user_vote(user=nil)
+    all_discussions(user).select do |discussion|
+      discussion.current_motion.present? && (not discussion.current_motion.user_has_voted?(user))
+    end
+  end
+
+  def active_discussions(user=nil)
+    discussions_awaiting = discussions_awaiting_user_vote(user)
+    all_discussions(user).select do |discussion|
+      (discussion.updated_at > (Time.now() - 1.week)) &&
+        (not discussions_awaiting.include? discussion)
+    end
+  end
+
+  def inactive_discussions(user=nil)
+    all_discussions(user).select do |discussion|
+      discussion.updated_at <= (Time.now() - 1.week)
+    end
   end
 
   #

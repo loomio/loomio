@@ -1,4 +1,4 @@
-#general-form
+.general-form
   %h1 Set your name and password
   - resource.name = ""
   = form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f|
