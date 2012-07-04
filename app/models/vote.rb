@@ -16,8 +16,9 @@ class Vote < ActiveRecord::Base
   end
 
   POSITIONS = %w[yes abstain no block]
-  # TODO get counter_cache working
-  belongs_to :motion#, :counter_cache => :votes_counter
+  POSITION_VERBS = { 'yes' => 'agreed', 'abstain' => 'abstained',
+                     'no' => 'disagreed', 'block' => 'blocked' }
+  belongs_to :motion
   belongs_to :user
 
   validates_presence_of :motion, :user, :position
@@ -28,19 +29,24 @@ class Vote < ActiveRecord::Base
 
   scope :for_user, lambda {|user| where(:user_id => user)}
 
-  attr_accessor :old_position
-
   attr_accessible :position, :statement
 
   delegate :name, :to => :user, :prefix => :user
+  delegate :group, :to => :motion
+  delegate :users, :to => :group, :prefix => :group
+  delegate :discussion, :to => :motion
+  delegate :author, :to => :motion, :prefix => :motion
+  delegate :author, :to => :discussion, :prefix => :discussion
+  delegate :name, :to => :motion, :prefix => :motion
+  delegate :name, :to => :group, :prefix => :group
 
-  after_create :create_event
+  after_save :create_event
   after_save :send_notifications
   after_save :update_activity
 
-  def position=(new_position)
-    self.old_position = position
-    super(new_position)
+  def previous_position
+    previous_vote = Vote.order("id DESC").offset(1).limit(1).first
+    previous_vote.position if previous_vote
   end
 
   def can_be_edited_by?(current_user)
@@ -53,16 +59,22 @@ class Vote < ActiveRecord::Base
 
   private
     def update_activity
-      self.motion.discussion.update_activity
+      motion.discussion.update_activity
     end
 
     def send_notifications
-      if position == "block" && old_position != "block"
+      if position == "block" && previous_position != "block"
         MotionMailer.motion_blocked(self).deliver
       end
     end
 
     def create_event
-      Event.new_vote!(self)
+      if position != previous_position
+        if position == "block"
+          Event.motion_blocked!(self)
+        else
+          Event.new_vote!(self)
+        end
+      end
     end
 end

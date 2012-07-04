@@ -5,6 +5,7 @@ describe Event do
   it { should allow_value("new_discussion").for(:kind) }
   it { should allow_value("new_comment").for(:kind) }
   it { should allow_value("new_vote").for(:kind) }
+  it { should allow_value("motion_blocked").for(:kind) }
   it { should_not allow_value("blah").for(:kind) }
 
   let(:discussion) { create_discussion }
@@ -88,6 +89,7 @@ describe Event do
         event = Event.new_motion!(motion)
         event.notifications.where(:user_id => @user1.id).should exist
       end
+
       it "does not notify motion author" do
         event = Event.new_motion!(motion)
 
@@ -99,7 +101,8 @@ describe Event do
 
   describe "new_vote!" do
     let(:user) { mock_model(User) }
-    let(:vote) { mock_model(Vote, :motion => create_motion, :user => user) }
+    let(:vote) { mock_model(Vote, :motion_author => user,
+                            :discussion_author => user, :user => user) }
     subject { Event.new_vote!(vote) }
 
     its(:kind) { should eq("new_vote") }
@@ -118,12 +121,12 @@ describe Event do
       end
 
       it "notifies motion author" do
-        @event.notifications.where('user_id = ?', @motion.author.id).
+        @event.notifications.where(:user_id => @motion.author.id).
           should exist
       end
 
       it "notifies discussion author" do
-        @event.notifications.where('user_id = ?', discussion.author.id).
+        @event.notifications.where(:user_id => discussion.author.id).
           should exist
       end
 
@@ -133,7 +136,7 @@ describe Event do
         @vote.save!
         @event = Event.new_vote!(@vote)
 
-        @event.notifications.where('user_id = ?', @motion.author.id).
+        @event.notifications.where(:user_id => @motion.author.id).
           should_not exist
       end
 
@@ -143,7 +146,37 @@ describe Event do
         @vote.save!
         @event = Event.new_vote!(@vote)
 
-        @event.notifications.where('user_id = ?', discussion.author.id).
+        @event.notifications.where(:user_id => discussion.author.id).
+          should_not exist
+      end
+    end
+  end
+
+  describe "motion_blocked!" do
+    let(:vote) { mock_model(Vote, :group_users => []) }
+    subject { Event.motion_blocked!(vote) }
+
+    its(:kind) { should eq("motion_blocked") }
+    its(:vote) { should eq(vote) }
+
+    context "sending notifications" do
+      before do
+        @user = User.make!
+        @motion = create_motion
+        @motion.group.add_member!(@user)
+        @vote = @motion.author.votes.new(:position => "block")
+        @vote.motion = @motion
+        @vote.save!
+        @event = Event.motion_blocked!(@vote)
+      end
+
+      it "notifies group members" do
+        @event.notifications.where(:user_id => @user.id).
+          should exist
+      end
+
+      it "does not notify blocker" do
+        @event.notifications.where(:user_id => @motion.author.id).
           should_not exist
       end
     end

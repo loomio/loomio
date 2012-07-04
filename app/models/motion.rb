@@ -18,6 +18,8 @@ class Motion < ActiveRecord::Base
   delegate :email, :to => :facilitator, :prefix => :facilitator
   delegate :name, :to => :author, :prefix => :author
   delegate :name, :to => :facilitator, :prefix => :facilitator
+  delegate :group, :to => :discussion
+  delegate :users, :to => :group, :prefix => :group
 
   after_create :initialize_discussion
   after_create :email_motion_created
@@ -59,10 +61,6 @@ class Motion < ActiveRecord::Base
     .where('votes.user_id = ?', user.id)
     .having('count(votes.id) = 0')
   }
-
-  def group
-    discussion.group
-  end
 
   def user_has_voted?(user)
     votes.map{|v| v.user.id}.include? user.id
