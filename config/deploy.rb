@@ -13,7 +13,7 @@ task :staging do
   set :rails_env, :staging
   set :branch, 'staging'
 
-  set :domain, "tautoko.enspiral.info"
+  set :domain, "loom.io"
   role :web, domain
   role :app, domain
   role :db,  domain, :primary => true
@@ -22,9 +22,9 @@ end
 task :production do
   set :deploy_to, "/home/#{application}/production"
   set :rails_env, :production
-  set :branch, 'master'
+  set :branch, "production"
 
-  set :domain, "tautoko.enspiral.info"
+  set :domain, "loom.io"
   role :web, domain
   role :app, domain
   role :db,  domain, :primary => true
