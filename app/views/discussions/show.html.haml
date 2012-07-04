@@ -31,7 +31,7 @@
         %li.tool-bar.clearfix
           - if not @current_motion
             - if can? :create, Motion.new(discussion_id: @discussion.id)
-              =link_to "Start new proposal", new_proposal_discussion_path(@discussion.id), class: 'tool-bar-item'
+              =link_to "Start new proposal", new_proposal_discussion_path(@discussion.id), class: 'tool-bar-item', id: 'new-proposal'
             %li.current-proposal.no-proposals
               There is no current proposal for this discussion
           - else
