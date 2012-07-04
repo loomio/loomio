@@ -11,16 +11,16 @@ module DiscussionsHelper
     end
   end
 
-  def css_class_for(discussion)
-    css_class = "discussion panel "
+  def css_class_for(discussion, user)
+    css_class = "discussion-preview "
 
     motion = discussion.current_motion
     if motion.present? && motion.voting? && motion.blocked?
       suffix = "blocked"
     else
-      suffix = "unread"
-      if (current_user && (current_user.discussion_activity_count(discussion) == 0))
-        suffix = "read"
+      suffix = ""
+      if discussion.has_activity_unread_by(user)
+        suffix = "unread"
       end
     end
 

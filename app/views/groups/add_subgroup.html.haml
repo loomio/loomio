@@ -1,7 +1,6 @@
-.general-form
-  .group-title
-    %h2
-      = link_to @parent.name, group_path(@parent), title: "group" unless @parent.nil?
-  #new-subgroup
-    %h1 Add a subgroup to #{@parent.name}
-    =render :partial => 'form', :locals => {:group => @subgroup, parent: @parent}
+.group-title
+  %h2
+    = link_to @parent.name, group_path(@parent), title: "group" unless @parent.nil?
+#new-subgroup
+  %h1 Add a subgroup to #{@parent.name}
+  =render :partial => 'form', :locals => {:group => @subgroup, parent: @parent}

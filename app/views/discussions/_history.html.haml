@@ -1,32 +1,34 @@
-- if history.count == 0
-  %h2 There are no messages yet in this discussion.
-- else
-  - history.each do |message|
-    - if message.is_a?(Comment)
-      = render message
-    - if message.is_a?(Vote)
-      .comment.position
-        .position
-          = render partial: "motions/display_icons", locals: { position: message.position }
-        %span
-          .comment-username= link_to(message.user_name, "#")
-          .position-message
-            - if message.statement.present?
-              .statement-word-break= "#{message.statement}"
-            - else
-              = " "
-        .comment-time
-          = time_ago_in_words(message.created_at) + " ago"
-    - if message.is_a?(Motion)
-      - classes = "comment proposal panel"
-      - classes += " current" if (message == discussion.current_motion)
-      %div{class: classes}
-        %span
-          .comment-username= link_to(message.author_name, "#")
-          .proposal-label created a proposal
-          .proposal-text= message.name
-        .comment-time
-          = time_ago_in_words(message.created_at) + " ago"
+%ul
+  - if history.count == 0
+    %li#no-messages
+      There are no messages yet in this discussion.
+  - else
+    - history.each do |message|
+      - if message.is_a?(Comment)
+        %li= render message
+      - if message.is_a?(Vote)
+        %li
+          .comment.position.clearfix
+            .position-icon
+              = render partial: "motions/display_icons", locals: { position: message.position }
+            .comment-username= link_to(message.user_name, "#")
+            .comment-label= " has made a decission. "
+            .position-message
+              - if message.statement.present?
+                .word-break= "#{message.statement}"
+              - else
+            .comment-time
+              = time_ago_in_words(message.created_at) + " ago"
+      - if message.is_a?(Motion)
+        %li
+          - classes = "comment proposal clearfix"
+          - classes += " current" if (message == discussion.current_motion)
+          %div{class: classes}
+            .comment-username= link_to(message.author_name, "#")
+            .comment-label created a proposal
+            .proposal-text.word-break= message.name
+            .comment-time
+              = time_ago_in_words(message.created_at) + " ago"
   :coffeescript
     $ ->
       @linkify = new Loomio.Views.Utils.Linkify

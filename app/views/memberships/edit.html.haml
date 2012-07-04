@@ -1,10 +1,9 @@
-.general-form
-  #edit-membership
-    %h1 Membership
-    %p
-      User:
-      = @membership.user.email
-    %p
-      Group:
-      = link_to @membership.group.name, @membership.group
-    =render :partial => 'form'
+#edit-membership
+  %h1 Membership
+  %p
+    User:
+    = @membership.user_email
+  %p
+    Group:
+    = link_to @membership.group_name, @membership.group
+  =render :partial => 'form'

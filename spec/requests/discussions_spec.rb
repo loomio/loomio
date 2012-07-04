@@ -82,7 +82,7 @@ describe "Discussion" do
 
         find('#previous-proposals').click_on motion2.name
 
-        find("#motion").should have_content(motion2.name)
+        find(".motion").should have_content(motion2.name)
       end
 
       it "can see link to delete their own comments" do
