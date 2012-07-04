@@ -3,7 +3,7 @@ class DiscussionsController < GroupBaseController
   before_filter :check_group_read_permissions, :only => :show
 
   def new
-    @group = Group.find(params[:discussion][:group_id])
+    @group = GroupDecorator.new(Group.find(params[:discussion][:group_id]))
     @discussion = Discussion.new(group: @group)
   end
 
