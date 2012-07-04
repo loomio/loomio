@@ -2,8 +2,8 @@
   %h1 Membership
   %p
     User:
-    = @membership.user.email
+    = @membership.user_email
   %p
     Group:
-    = link_to @membership.group.name, @membership.group
+    = link_to @membership.group_name, @membership.group
   =render :partial => 'form'
