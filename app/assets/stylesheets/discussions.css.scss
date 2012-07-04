@@ -2,11 +2,6 @@
 /*@import "bootstrap";*/
 @import "mixins";
 
-/** new discussion **/
-body.discussions.new {
-  .btn { display: block; }
-}
-
 /** new discussion form*/
 
 body.discussions.new {
@@ -14,229 +9,194 @@ body.discussions.new {
   .btn { display: block; }
 }
 
-.content-discussion {
-  position: relative;
-  bottom: 20px;
+body.discussions.show {
+  .discussion-title {
+    width: 438px;
+    color: $dark-grey;
+    padding: 5px 10px 5px 10px;
+    h1 {
+      padding: 0px;
+      line-height: 1.2em;
+    }
+  }
 }
-.discussion-title {
-  font-size: $font-large;
-  color: $dark-grey;
-}
 
-
-/*** comments ***/
-
-#content-comments {
-  padding-top: 20px;
-  padding-right: 20px;
-  margin-bottom: 30px;
-  border-right: 1px solid $light-grey;
-
+/*** comments, positions & proposals in History ***/
+#content-history {
   #new-comment-form{
-    margin-bottom: 8px;
+    border-top: 1px solid $light-grey;
+    margin-bottom: 0px;
+    padding: 10px 0 42px 10px;
+    background-color: $comment-color;
   }
   #new-comment{
-    width: 450px;
-    max-width: 450px;
+    margin: 0 0 5px 0px;
+    width: 428px;
+    max-width: 428px;
     height: 80px;
-    color: black;
+    color: $dark-grey;
   }
-  #new-comment-submit{
-    margin-top: -4px;
-    text-align: right;
-    .submit{
-      margin-bottom: 15px;
-    }
+  ul {
+    list-style: none;
+    margin-left: 0px;
   }
+  #no-messages {
+    padding: 5px 10px;
+  }
+
+  /* comment */
   .comment{
+    padding: 5px 10px;
+    color: $dark-grey;
     background-color: $comment-color;
-    margin-bottom: 2px;
-    padding: 8px;
+  }
+  .comment .comment-username{
+    font-weight: bold;
+    float: left;
     font-size: $font-small;
-    .comment-username{
-      font-weight: bold;
-      float: left;
-    }
-    .comment-body{
-      margin-left: 0.4em;
-      display: inline;
-    }
-    .comment-time{
-      color: $dark-grey;
-      font-size: 0.75em;
-    }
-    .comment-likes{
-      color: $dark-grey;
-      font-size: 0.75em;
-    }
+  }
+  .comment .comment-label{
+    color: $mid-grey;
+    margin-left: 0.4em;
+    display: inline;
+    font-size: $font-small;
+  }
+  .comment .comment-body{
+    margin-left: 0.4em;
+    display: inline;
+    font-size: $font-small;
+  }
+  .comment .comment-time{
+    color: $dark-grey;
+    font-size: $font-tiny;
+  }
+  .comment .comment-likes{
+    color: $dark-grey;
+    font-size: $font-tiny;
   }
 
-  .position{
-    .position{
-      float: left;
-      padding-right: 0.4em;
-      display: block;
-    }
-    .position-message{
-      color: black;
-      padding-left: 0.4em;
-      display: inline-block;
-      /*@include ie7-inline-block();*/
-    }
+  /* position */
+  .position .position-icon{
+    float: left;
+    padding-right: 0.4em;
+    display: block;
+    height: 18px;
+  }
+  .position .position-message{
+    padding-left: 0.4em;
+    display: inline;
   }
 
+  /* proposal */
   .proposal{
     background: $comment-color;
     color: $mid-grey;
-    margin-bottom: 6px;
-    #proposal-author{
-      font-weight: bold;
-    }
-    .proposal-label{
-      color: $mid-grey;
-      margin-left: 0.4em;
-      display: inline-block;
-      /*@include ie7-inline-block();*/
-    }
-    .proposal-text{
-      color: $dark-grey;
-      margin-left: 0.4em;
-      font-style: italic;
-    }
   }
-  .proposal.current{ background: #FFF; }
+  .proposal .proposal-text{
+    color: $dark-grey;
+    margin-left: 0.4em;
+    font-style: italic;
+  }
+  .proposal.current{
+    background: $current-proposal;
+  }
 }
 
+/*  proposal panel  */
+#content-proposal {
+  .no-proposals {
+    padding: 5px 10px;
+  }
+  /*a { color: $dark-grey; }*/
+  li { padding: 0px; }
+  li .motion { padding: 5px 15px; }
+  .close-date {
+    font-size: $font-tiny;
+    color: $mid-grey;
+  }
+}
 
-/*** proposal ***/
+li.current-proposal {
+  background-color: $current-proposal;
+  table.jqplot-table-legend { background-color: $current-proposal; }
+}
+li.preview { padding: 0px; }
+li.preview a {
+  padding: 10px 15px;
+  text-decoration: none;
+}
 
-#content-proposal{
-  padding-top: 20px;
-  padding-left: 19px;
-  margin-left: 0px;
-  width: 430px;
-  #new-proposal {
-    .btn { margin-bottom: 20px; }
+// Discussion preview list panel
+//
+// NOTE: this code is shared with the group show page and
+//       the dashboard page.
+//
+.discussion-preview:hover {
+  background-color: $selector;
+}
+
+.discussion-preview {
+  a {
+    color: $dark-grey;
+    display: block;
+    padding: 9px;
   }
-  #no-current-proposal {
-    .btn { margin-bottom: 58px; }
+  a:hover {
+    text-decoration: none;
   }
-  .label{
-    text-transform: lowercase;
-    font-weight: normal;
+  .discussion-title {
+    display: inline-block;
+    /*@include ie7-inline-block();*/
+    width: 480px;
   }
-  #closing-info{
-    font-size: $font-tiny;
+  .group-name {
+    font-size: $font-small;
+    color: $mid-grey;
+    width: 480px;
   }
-  #proposed-by {
-    font-size: $font-tiny;
-    margin-bottom: 30px;
+  .notification-info {
+    display: inline-block;
+    float: right;
   }
-  #description {
-    p{
-      font-size: $font-small;
-      color: $dark-grey;
-    }
-    .see-more{
-      font-size: $font-tinywiny;
-      position: relative;
-      bottom: 10px;
-    }
-  }
-  #percentage-to-vote {
-    font-size: $font-tiny;
-    margin-bottom: 10px;
-  }
-  #graph{
-    height: 250px;
-    margin-left: -20px;
-  }
-  #new_vote{ padding-left: 0px; }
-  #vote-form{ height: 100px; }
-  #vote-statement{ margin-left: 0px; padding-left: 0px; }
-  .inputError { margin-left: 0px; height: 65px; }
-  .control-group { padding-top: 0px; padding-bottom: 0px; }
-  #vote-buttons{
+  .relative-time {
+    color: $mid-grey;
+    display: inline-block;
     position: relative;
-    bottom: 15px;
-    margin-bottom: 15px;
-    .btn.vote {
-      @include box-shadow(1px, 1px, 4px, $mid-grey);
-      @include border-radius(5px);
-      padding: 3px;
-    }
+    bottom: 16px;
+    padding-right: 10px;
   }
-  #votes-table {
-    #statement {
-      font-size: $font-tiny;
-      display: block;
-      margin-left: 30px;
-      color: #000;
-      padding-bottom: 4px;
-    }
-    .position-row {
-      padding-bottom: 3px;
-      padding-top: 2px;
-      .member-row {
-        min-height: 24px;
-        .position {
-          float: left;
-          margin-top: 2px;
-          display: inline-block;
-          /*@include ie7-inline-block();*/
-          height: 20px;
-        }
-        .member-name {
-          float: left;
-          display: inline-block;
-          /*@include ie7-inline-block();*/
-          padding-top: 4px;
-          margin-left: 10px;
-        }
-      }
-    }
-    .no-position-row {
-      min-height: 29px;
-      #no-position {
-        padding-left: 4px;
-        float: left;
-        display: inline-block;
-        /*@include ie7-inline-block();*/
-        height: 20px;
-      }
-      .member-no-position {
-        float: left;
-        display: inline-block;
-        /*@include ie7-inline-block();*/
-        padding: 2px;
-        padding-left: 8px;
-        margin-left: 6px;
-      }
-    }
+  .proposal-close-date {
+    font-size: $font-medium;
+    display: inline;
+  }
+  .discussion-icon-container {
+    display: inline-block;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 30px;
+    background-image: url("discussion.png");
+  }
+  .enabled-icon {
+    -moz-opacity: 1.0;
+    filter:alpha(opacity=100);
+    opacity: 1.0;
+   }
+  .disabled-icon {
+    -moz-opacity: 0.2;
+    filter:alpha(opacity=20);
+    opacity: 0.2
   }
 
-  #previous-proposals {
-    color: $mid-grey;
+  .activity-count {
+    margin-left: 18px;
+    height: 10px;
+    font-size: $font-tinywiny;
+    padding: 0.4em;
+    padding-top: 0.1em;
   }
-
-  .motion-row {
-    color: $mid-grey;
-    .close-date {
-      font-size: $font-tiny;
-    }
+  .discussion-link {
+    position: relative;
+    z-index: 2;
   }
-}
-
-.statement-word-break {
-  /* The following styles prevent unbroken strings from breaking the layout */
-  width: 320px; /* set to whatever width you need */
-  overflow: auto;
-  white-space: -moz-pre-wrap; /* Mozilla */
-  white-space: -hp-pre-wrap; /* HP printers */
-  white-space: -o-pre-wrap; /* Opera 7 */
-  white-space: -pre-wrap; /* Opera 4-6 */
-  white-space: pre-wrap; /* CSS 2.1 */
-  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
-  word-wrap: break-word; /* IE */
-  -moz-binding: url('xbl.xml#wordwrap'); /* Firefox (using XBL) */
 }

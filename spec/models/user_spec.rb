@@ -62,6 +62,25 @@ describe User do
     user.authored_motions.should include(motion)
   end
 
+  describe "user.voted?(motion)" do
+    before do
+      @user1 = User.make!
+      group = Group.make!
+      group.add_member!(@user1)
+      discussion = create_discussion(group: group)
+      @motion = create_motion(discussion: discussion, author: @user1)
+    end
+    it "it returns true if user has voted on motion" do
+      vote = @user1.votes.new(position: "abstain")
+      vote.motion = @motion
+      vote.save!
+      @user1.voted?(@motion).should == true
+    end
+    it "it returns false if user has not voted on motion" do
+      @user1.voted?(@motion).should == false
+    end
+  end
+
   it "can be invited" do
     inviter = User.make!
     group = Group.make!
