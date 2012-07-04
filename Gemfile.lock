@@ -161,6 +161,10 @@ GEM
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.7.3)
+    kaminari (0.13.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
     less (2.2.1)
@@ -332,6 +336,7 @@ DEPENDENCIES
   jasminerice
   jqplot-rails
   jquery-rails
+  kaminari
   launchy
   machinist (>= 2.0.0.beta2)
   modernizr-rails (~> 2.0.6)
