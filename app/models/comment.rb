@@ -20,6 +20,7 @@ class Comment < ActiveRecord::Base
   default_scope order("id DESC")
 
   delegate :name, :to => :user, :prefix => :user
+  delegate :participants, :to => :discussion, :prefix => :discussion
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text

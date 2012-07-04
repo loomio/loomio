@@ -1,23 +1,42 @@
-- if discussion = notification.discussion
+- if notification.event_kind == "new_discussion"
+  - discussion = notification.discussion
   - person = discussion.author.name
-  - action_text = " started a new discussion "
+  - action_text = "started a new discussion"
   - title_text = discussion.title
   - group_name = discussion.group.name
   - href = discussion_path(discussion)
 
-- elsif comment = notification.comment
+- elsif notification.event_kind == "new_comment"
+  - comment = notification.comment
   - person = comment.user.name
-  - action_text = " posted a comment in the discussion "
+  - action_text = "posted a comment in the discussion"
   - title_text = comment.discussion.title
   - group_name = comment.discussion.group.name
   - href = discussion_path(comment.discussion)
 
-- elsif motion = notification.motion
+- elsif notification.event_kind == "new_motion"
+  - motion = notification.motion
   - person = motion.author.name
-  - action_text = " created a new proposal "
+  - action_text = "created a new proposal"
   - title_text = motion.name
   - group_name = motion.group.name
   - href = discussion_path(motion.discussion)
+
+- elsif notification.event_kind == "new_vote"
+  - vote = notification.vote
+  - person = vote.user_name
+  - action_text = "#{Vote::POSITION_VERBS[vote.position]} on the proposal"
+  - title_text = vote.motion_name
+  - group_name = vote.group_name
+  - href = discussion_path(vote.discussion, :proposal => vote.motion.id)
+
+- elsif notification.event_kind == "motion_blocked"
+  - vote = notification.vote
+  - person = vote.user_name
+  - action_text = "blocked the proposal"
+  - title_text = vote.motion_name
+  - group_name = vote.group_name
+  - href = discussion_path(vote.discussion, :proposal => vote.motion.id)
 
 - date = time_ago_in_words(notification.created_at)
 - class_name = notification.viewed_at.nil? ? " unread" : ""
@@ -25,7 +44,7 @@
 %li{:class => "notification-item#{class_name}" }
   %a{:href => href }
     %span.bold-name= person
-    = action_text
+    = " #{action_text} "
     - if title_text
       %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
     %span.notification-item-footer

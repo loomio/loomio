@@ -21,6 +21,8 @@ class Discussion < ActiveRecord::Base
   has_many :users_with_comments, :through => :comments,
     :source => :user, :uniq => true
 
+  delegate :users, :to => :group, :prefix => :group
+
   after_create :create_event
 
   attr_accessible :group_id, :group, :title
