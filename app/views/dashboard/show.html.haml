@@ -52,6 +52,7 @@
           %ul
             - @discussions.each do |discussion|
               %li= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
+          = paginate @discussions
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.
