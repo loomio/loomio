@@ -16,13 +16,22 @@ describe Event do
     its(:kind) { should eq("new_discussion") }
     its(:discussion) { should eq(discussion) }
 
-    it "creates notification for every group member except discussion author" do
-      group = discussion.group
-      group.add_member! User.make!
-      group.add_member! User.make!
-      group_size = group.users.size
-      event = Event.new_discussion!(discussion)
-      Notification.where("event_id = ?", event).size.should eq(group_size - 1)
+    context "sending notifications" do
+      it "notifies group members" do
+        user = User.make!
+        group = discussion.group
+        group.add_member! user
+        event = Event.new_discussion!(discussion)
+
+        event.notifications.where(:user_id => user.id).should exist
+      end
+
+      it "does not notify discussion author" do
+        event = Event.new_discussion!(discussion)
+
+        event.notifications.where(:user_id => discussion.author.id).
+          should_not exist
+      end
     end
   end
 
@@ -33,21 +42,33 @@ describe Event do
     its(:kind) { should eq("new_comment") }
     its(:comment) { should eq(comment) }
 
-    it "notifies discussion participants (people who've already commented in the discussion)" do
-      user2, user3, user4 = User.make!, User.make!, User.make!
-      group.add_member! user2
-      group.add_member! user3
-      group.add_member! user4
-      comment1 = discussion.add_comment(user2, "hello user3!")
-      comment2 = discussion.add_comment(user3, "hi there user2!")
-      comment3 = discussion.add_comment(user2, "fancy pantsy")
-      event = Event.new_comment!(comment3)
+    context "sending notifications" do
+      before do
+        @commentor, @participant, @non_participant =
+          User.make!, User.make!, User.make!
+        group.add_member! @commentor
+        group.add_member! @participant
+        group.add_member! @non_participant
+        discussion.add_comment(@commentor, "hello!")
+        discussion.add_comment(@participant, "hi there commentor!")
+        comment = discussion.add_comment(@commentor, "fancy pantsy")
+        @event = Event.new_comment!(comment)
+      end
 
-      # Notifications should only be created for discussion.author and user3
-      #
-      # NOTE: this test is a bit brittle, should test WHO the notifications were
-      # created for. I couldn't think of a concise way to test this though.
-      Notification.where("event_id = ?", event).size.should eq(2)
+      it "notifies participants" do
+        @event.notifications.where(:user_id => @participant.id).
+          should exist
+      end
+
+      it "does not notify comment author" do
+        @event.notifications.where(:user_id => @commentor.id).
+          should_not exist
+      end
+
+      it "does not notify users who have not participated in the discussion" do
+        @event.notifications.where(:user_id => @non_participant.id).
+          should_not exist
+      end
     end
   end
 
@@ -58,43 +79,73 @@ describe Event do
     its(:kind) { should eq("new_motion") }
     its(:motion) { should eq(motion) }
 
-    it "notifies every group member except motion author" do
-      group = motion.group
-      group.add_member! User.make!
-      group.add_member! User.make!
-      group_size = group.users.size
-      event = Event.new_motion!(motion)
-      Notification.where("event_id = ?", event).size.should eq(group_size - 1)
+    context "sending notifications" do
+      it "notifies group members" do
+        group = motion.group
+        @user1 = User.make!
+        group.add_member! @user1
+        group_size = group.users.size
+        event = Event.new_motion!(motion)
+        event.notifications.where(:user_id => @user1.id).should exist
+      end
+      it "does not notify motion author" do
+        event = Event.new_motion!(motion)
+
+        event.notifications.where(:user_id => motion.author.id).
+          should_not exist
+      end
     end
   end
 
   describe "new_vote!" do
-    let(:motion) { create_motion }
-    subject { Event.new_vote!(motion) }
+    let(:user) { mock_model(User) }
+    let(:vote) { mock_model(Vote, :motion => create_motion, :user => user) }
+    subject { Event.new_vote!(vote) }
 
     its(:kind) { should eq("new_vote") }
-    its(:motion) { should eq(motion) }
+    its(:vote) { should eq(vote) }
 
-    it "notifies motion author" do
-      group = motion.group
-      event = Event.new_vote!(motion)
-      notification = Notification.where("event_id = ? AND user_id = ?",
-                                        event, motion.author)
-      notification.should exist
+    context "sending notifications" do
+      before do
+        @motion = create_motion(:discussion => discussion,
+                                :author => User.make!)
+        @user = User.make!
+        @motion.group.add_member!(@user)
+        @vote = @user.votes.new(:position => "yes")
+        @vote.motion = @motion
+        @vote.save!
+        @event = Event.new_vote!(@vote)
+      end
 
-      #notifications.map { |notification| notification.user }.
-        #should include motion.author
-    end
+      it "notifies motion author" do
+        @event.notifications.where('user_id = ?', @motion.author.id).
+          should exist
+      end
 
-    it "notifies discussion author" do
-      pending "still working on this"
-      discussion = create_discussion(author: User.make!)
-      motion = create_motion(author: User.make!, discussion: discussion)
-      event = Event.new_vote!(motion)
-      notifications = Notification.where("event_id = ?", event)
+      it "notifies discussion author" do
+        @event.notifications.where('user_id = ?', discussion.author.id).
+          should exist
+      end
 
-      notifications.map { |notification| notification.user }.
-        should include motion.author
+      it "does not notify motion author if they are the member who voted" do
+        @vote = @motion.author.votes.new(:position => "yes")
+        @vote.motion = @motion
+        @vote.save!
+        @event = Event.new_vote!(@vote)
+
+        @event.notifications.where('user_id = ?', @motion.author.id).
+          should_not exist
+      end
+
+      it "does not notify discussion author if they are the member who voted" do
+        @vote = discussion.author.votes.new(:position => "yes")
+        @vote.motion = @motion
+        @vote.save!
+        @event = Event.new_vote!(@vote)
+
+        @event.notifications.where('user_id = ?', discussion.author.id).
+          should_not exist
+      end
     end
   end
 end

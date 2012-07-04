@@ -3,7 +3,7 @@ class Notification < ActiveRecord::Base
   belongs_to :event
 
   validates_presence_of :user, :event
-  #validates_uniqueness_of :user_id, :scope => :event_id
+  validates_uniqueness_of :user_id, :scope => :event_id
 
   attr_accessible :user, :event
 
@@ -19,5 +19,9 @@ class Notification < ActiveRecord::Base
 
   def motion
     event.motion
+  end
+
+  def vote
+    event.vote
   end
 end
