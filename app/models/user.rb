@@ -68,13 +68,6 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
   end
 
-  def motions?(group)
-    group.discussions.each do |discussion|
-      return true if discussion.current_motion
-    end
-    false
-  end
-
   def motions_voted
     motions_voting.that_user_has_voted_on(self)
   end
