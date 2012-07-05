@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Group do
+  let(:motion) { create_motion }
+
   it { should have_many :discussions }
 
   context "a new group" do
@@ -29,15 +31,27 @@ describe Group do
 
   describe "motions_voting" do
     it "should return motions that belong to the group and are in phase 'voting'" do
-      @motion = create_motion
-      @group = @motion.group
-      @group.motions_voting.should include(@motion)
+      @group = motion.group
+      @group.motions_voting.should include(motion)
     end
+
     it "should not return motions that belong to the group but are in phase 'closed'" do
-      @motion = create_motion
-      @group = @motion.group
-      @motion.close_voting!
-      @group.motions_voting.should_not include(@motion)
+      @group = motion.group
+      motion.close_voting!
+      @group.motions_voting.should_not include(motion)
+    end
+  end
+
+  describe "motions_closed" do
+    it "should return motions that belong to the group and are in phase 'voting'" do
+      motion.close_voting!
+      @group = motion.group
+      @group.motions_closed.should include(motion)
+    end
+
+    it "should not return motions that belong to the group but are in phase 'closed'" do
+      @group = motion.group
+      @group.motions_closed.should_not include(motion)
     end
   end
 

@@ -185,6 +185,13 @@ class Motion < ActiveRecord::Base
     discussion.comments
   end
 
+  def vote!(user, position, statement=nil)
+    vote = user.votes.new(:position => position, :statement => statement)
+    vote.motion = self
+    vote.save!
+    vote
+  end
+
   private
     def before_open
       self.close_date = Time.now + 1.week
