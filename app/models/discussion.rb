@@ -23,8 +23,6 @@ class Discussion < ActiveRecord::Base
 
   delegate :users, :to => :group, :prefix => :group
 
-  after_create :create_event
-
   attr_accessible :group_id, :group, :title
 
   attr_accessor :comment, :notify_group_upon_creation
