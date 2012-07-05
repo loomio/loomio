@@ -51,7 +51,7 @@ class Discussion < ActiveRecord::Base
   # MISC METHODS
   #
 
-  def has_activity_unread_by(user)
+  def has_activity_unread_by?(user)
     user && user.discussion_activity_count(self) > 0
   end
 

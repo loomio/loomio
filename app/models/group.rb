@@ -14,7 +14,9 @@ class Group < ActiveRecord::Base
   has_many :memberships,
     :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
     :dependent => :destroy,
-    :extend => GroupMemberships
+    :extend => GroupMemberships,
+    :include => :user,
+    :order => "LOWER(users.name)"
   has_many :membership_requests,
     :conditions => {:access_level => 'request'},
     :class_name => 'Membership'

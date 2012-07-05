@@ -37,6 +37,7 @@ class Membership < ActiveRecord::Base
 
   delegate :name, :email, :to => :user, :prefix => true
   delegate :parent, :to => :group, :prefix => true, :allow_nil => true
+  delegate :name, :to => :group, :prefix => true
 
   #
   # CALLBACKS
@@ -73,14 +74,6 @@ class Membership < ActiveRecord::Base
   #
   # PUBLIC METHODS
   #
-
-  def group_name
-    group.name
-  end
-
-  def user_email
-    user.email
-  end
 
   def group_has_multiple_admins?
     group.admins.count > 1
