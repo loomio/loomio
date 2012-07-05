@@ -30,15 +30,6 @@ describe Comment do
     end
   end
 
-  it "fires new_discussion! event" do
-    user = User.make!
-    discussion = create_discussion
-    discussion.group.add_member! user
-    Event.should_receive(:new_comment!)
-    discussion.add_comment(user, "hello")
-  end
-
-
   context "unliked by user" do
     before do
       comment.like user

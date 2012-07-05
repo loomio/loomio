@@ -9,7 +9,7 @@
 - elsif notification.event_kind == "new_comment"
   - comment = notification.comment
   - person = comment.user.name
-  - action_text = "posted a comment in the discussion"
+  - action_text = "commented on the discussion"
   - title_text = comment.discussion.title
   - group_name = comment.discussion.group.name
   - href = discussion_path(comment.discussion)

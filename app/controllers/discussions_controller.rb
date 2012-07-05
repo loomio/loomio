@@ -15,6 +15,7 @@ class DiscussionsController < GroupBaseController
       if params[:discussion][:notify_group_upon_creation].to_i > 0
         DiscussionMailer.spam_new_discussion_created(@discussion)
       end
+      Event.new_discussion!(@discussion)
       flash[:success] = "Discussion sucessfully created."
       redirect_to @discussion
     else
@@ -47,6 +48,7 @@ class DiscussionsController < GroupBaseController
 
   def add_comment
     comment = resource.add_comment(current_user, params[:comment])
+    Event.new_comment!(comment)
     redirect_to discussion_path(resource.id)
   end
 

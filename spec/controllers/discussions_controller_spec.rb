@@ -20,7 +20,7 @@ describe DiscussionsController do
       Group.stub(:find).with(group.id.to_s).and_return(group)
     end
 
-    context "views a discussion" do
+    describe "viewing a discussion" do
       before do
         motion.stub(:votes_graph_ready).and_return([])
         motion.stub(:user_has_voted?).and_return(true)
@@ -40,43 +40,44 @@ describe DiscussionsController do
       end
     end
 
-    context "creates a discussion" do
+    describe "creating a discussion" do
       before do
         discussion.stub(:add_comment)
         discussion.stub(:save).and_return(true)
         DiscussionMailer.stub(:spam_new_discussion_created)
+        @discussion_hash = { group_id: group.id, title: "Shinney",
+                            comment: "Bright light" }
       end
       it "does not send email by default" do
         DiscussionMailer.should_not_receive(:spam_new_discussion_created)
-        get :create, discussion: { group_id: group.id, title: "Shinney",
-                                   comment: "Bright light",
-                                   notify_group_upon_creation: "0" }
+        get :create, discussion:
+          @discussion_hash.merge({ notify_group_upon_creation: "0" })
       end
       it "sends email if notify_group_upon_creation is passed in params" do
         DiscussionMailer.should_receive(:spam_new_discussion_created).
           with(discussion)
-        get :create, discussion: { group_id: group.id, title: "Shinney",
-                                   comment: "Bright light",
-                                   notify_group_upon_creation: "1" }
+        get :create, discussion:
+          @discussion_hash.merge({ notify_group_upon_creation: "1" })
       end
       it "adds comment" do
         discussion.should_receive(:add_comment).with(user, "Bright light")
-        get :create, discussion: { group_id: group.id, title: "Shinney",
-                                   comment: "Bright light" }
+        get :create, discussion: @discussion_hash
+      end
+      it "fires new_discussion event" do
+        Event.should_receive(:new_discussion!).with(discussion)
+        get :create, discussion: @discussion_hash
       end
       it "displays flash success message" do
-        get :create, discussion: { group_id: group.id, title: "Shinney",
-                                   comment: "Bright light" }
+        get :create, discussion: @discussion_hash
         flash[:success].should match("Discussion sucessfully created.")
       end
       it "redirects to discussion" do
-        get :create, discussion: { group_id: group.id, title: "Shinney",
-                                   comment: "Bright light" }
+        get :create, discussion: @discussion_hash
         response.should redirect_to(discussion_path(discussion.id))
       end
     end
 
-    context "creates a new proposal" do
+    describe "creating a new proposal" do
       it "is successful" do
         get :new_proposal, id: discussion.id
         response.should be_success
@@ -87,13 +88,20 @@ describe DiscussionsController do
       end
     end
 
-    context "adds comment" do
+    describe "adding a comment" do
       before do
-        discussion.stub(:add_comment)
+        @comment = mock('comment')
+        discussion.stub(:add_comment).and_return(@comment)
+        Event.stub(:new_comment!)
       end
 
       it "checks permissions" do
         app_controller.should_receive(:authorize!).and_return(true)
+        post :add_comment, comment: "Hello!", id: discussion.id
+      end
+
+      it "fires new_comment event" do
+        Event.should_receive(:new_comment!).with(@comment)
         post :add_comment, comment: "Hello!", id: discussion.id
       end
 

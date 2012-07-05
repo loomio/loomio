@@ -34,11 +34,6 @@ describe Discussion do
     discussion.activity.should == 4
   end
 
-  it "fires new_discussion! event" do
-    Event.should_receive(:new_discussion!)
-    create_discussion
-  end
-
   describe "discussion.history" do
     before do
       @user = User.make
