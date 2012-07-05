@@ -14,8 +14,11 @@
   background-image: none;
 }
 .container{
-  margin: 0px auto;
-  padding-top: 70px;
+  margin: auto;
+  padding: 70px 20px 20px 20px;
+  background-color: $container;
+  box-shadow: 0px 3px 7px #555;
+  min-height: 100%
 }
 header{
   width: 940px;
@@ -40,9 +43,7 @@ header{
 /* navigation*/
 .navbar {
   .nav{ padding-top: 2px; }
-  /* dropdown font-size */
   div > ul a, .nav a{
-    font-size: $font-small;
     text-decoration: none;
   }
   .dropdown-menu {

@@ -62,8 +62,28 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
 
-  def motion_vote(motion)
+  def get_vote_for(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
+  end
+
+  def voted?(motion)
+    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
+  end
+
+  def motions_voted
+    motions_voting.that_user_has_voted_on(self)
+  end
+
+  def motions_not_voted
+    motions_voting.that_user_has_not_voted_on(self)
+  end
+
+  def group_motions_voted(group)
+    group.motions_voting.that_user_has_voted_on(self)
+  end
+
+  def group_motions_not_voted(group)
+    group.motions_voting.that_user_has_not_voted_on(self)
   end
 
   def is_group_admin?(group)
@@ -150,7 +170,7 @@ class User < ActiveRecord::Base
 
   def position(motion)
     if motion.user_has_voted?(self)
-      motion_vote(motion).position
+      get_vote_for(motion).position
     end
   end
 

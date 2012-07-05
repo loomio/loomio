@@ -102,4 +102,25 @@ describe Discussion do
     end
   end
 
+  describe "has_activity_unread_by?(user)" do
+    before do
+      @user = User.make!
+      @discussion = create_discussion(author: @user)
+    end
+    it "returns nil if user is nil" do
+      user1 = nil
+      @discussion.has_activity_unread_by?(user1).should == nil
+    end
+    it "calls discussion_activity_count(self)" do
+      @user.should_receive(:discussion_activity_count).with(@discussion).
+        and_return(0)
+
+      @discussion.has_activity_unread_by?(@user)
+    end
+    it "returns true if user.discussion_activity_count(self) > 0" do
+      @user.stub(:discussion_activity_count).with(@discussion).
+        and_return(2)
+      @discussion.has_activity_unread_by?(@user).should == true
+    end
+  end
 end

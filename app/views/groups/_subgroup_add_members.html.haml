@@ -1,0 +1,14 @@
+.modal-header
+  %button.close{"data-dismiss" => "modal"}×
+  %h3= "Select members to add to #{group.name}"
+= form_tag add_members_group_path do
+  .modal-body
+    - group.parent.users_sorted.each do |member|
+      - unless member == current_user
+        .invite-member-checkbox-container
+          - is_member = false
+          - is_member = true if group.users_include?(member)
+          = check_box_tag "user_#{member.id}", 1, is_member, disabled: is_member
+          = label_tag "user_#{member.id}", member.name
+  .modal-footer
+    = submit_tag "Invite members", class: "btn btn-small"

@@ -1,58 +1,61 @@
-.group-title
-  %span
-    %h2= @group.fancy_link
-  %h1.discussion-title
-    = @discussion.title
-.row.content-discussion
-  .span6#content-comments
-    - if can? :add_comment, @discussion
-      = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
-        = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
-        #new-comment-submit
-          = submit_tag "Post comment", class: "btn btn-info submit", id: 'post-new-comment'
-    = render 'history', discussion: @discussion, history: @discussion.history
+=render '/groups/title', group: @group
+.row
+  .span6#content-history
+    .selector-panel
+      .clearfix.discussion-title
+        %h1.word-break= @discussion.title
+      - if can? :add_comment, @discussion
+        = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
+          = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
+          = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment'
+      = render 'history', discussion: @discussion, history: @discussion.history
+
   .span6#content-proposal
-    .content-block
-      - if @selected_closed_motion
+    .selector-panel
+      .clearfix
+        %h1 Current proposal
+        - if @current_user
+          .dropdown
+            = link_to image_tag("dropdown.png", title:'description settings', alt:'description settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
+            %ul.dropdown-menu.pull-right
+              - if @current_motion
+                - if @current_motion.voting? && ((can? :edit, @current_motion) || (can? :close_voting, @current_motion))
+                  - if can? :edit, @current_motion
+                    %li= link_to "Edit proposal", edit_motion_path(@current_motion)
+                  - if can? :close_voting, @current_motion
+                    %li= link_to "Close proposal", close_motion_voting_path(@current_motion), confirm: "Are you sure you want to close this motion?", method: :post, id: 'close-voting'
+              - else
+                - if can? :create, Motion.new(discussion_id: @discussion.id)
+                  %li= link_to "Start new proposal", new_proposal_discussion_path(@discussion.id)
+      %ul
+        %li.tool-bar.clearfix
+          - if not @current_motion
+            - if can? :create, Motion.new(discussion_id: @discussion.id)
+              =link_to "Start new proposal", new_proposal_discussion_path(@discussion.id), class: 'tool-bar-item', id: 'new-proposal'
+            %li.current-proposal.no-proposals
+              There is no current proposal for this discussion
+          - else
+            - if can? :edit, @current_motion
+              =link_to "Edit proposal", edit_motion_path(@current_motion), class: 'tool-bar-item'
+            - if can? :close_voting, @current_motion
+              = link_to "Close proposal", close_motion_voting_path(@current_motion), confirm: "Are you sure you want to close this motion?", method: :post, class: 'tool-bar-item'
         - if @current_motion
-          #current-proposal
-            %h1 Current proposal
-            .content
-              .panel
-                .motion-row
-                  = link_to @current_motion.name, discussion_path(@discussion)
-                  .close-date
-                    = "Closing in #{time_ago_in_words(@current_motion.close_date)}"
-        - else
-          #new-proposal
-            .content
-              = link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-info',
-                id: 'new-proposal'
-      - else
-        - if @current_motion
-          #current-proposal
-            %h1 Current proposal
-            .content
-              .panel
-                = render @current_motion, unique_votes: @unique_votes
-        - else
-          #no-current-proposal
-            .content
-              = link_to "Create a new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-info',
-                id: 'new-proposal'
+          - if @selected_closed_motion
+            %li.current-proposal
+              = render '/motions/motion_preview', motion: @current_motion, this_group: @group
+          - else
+            %li.current-proposal
+              = render @current_motion, unique_votes: @unique_votes
+
     - if @discussion.motions.where("phase = 'closed'").count > 0
       #previous-proposals
-        .content-block
-          %h1 Previous proposals
-          .content
+        .selector-panel
+          .clearfix
+            %h1 Previous proposals
+          %ul
             - @discussion.motions.order("close_date desc").each do |closed_motion|
               - if closed_motion.closed?
                 - if @selected_closed_motion == closed_motion
-                  .panel
-                    = render @selected_closed_motion, unique_votes: @unique_votes
+                  %li= render @selected_closed_motion, unique_votes: @unique_votes
                 - else
-                  .panel
-                    .motion-row
-                      = link_to closed_motion.name, discussion_path(@discussion, proposal: closed_motion.id)
-                      .close-date
-                        = "Closed #{time_ago_in_words(closed_motion.close_date)} ago"
+                  %li= render '/motions/motion_preview', motion: closed_motion, this_group: @group
