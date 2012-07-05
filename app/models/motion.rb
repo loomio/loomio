@@ -48,15 +48,13 @@ class Motion < ActiveRecord::Base
   scope :closed_sorted, closed.order('close_date DESC')
 
   scope :that_user_has_voted_on, lambda {|user|
-    joins(:votes)
-    .where('votes.user_id = ?', user.id)
-    .having('count(votes.id) > 0')
+    includes(:votes)
+    .where('votes.id is not null')
   }
 
   scope :that_user_has_not_voted_on, lambda {|user|
-    joins(:votes)
-    .where('votes.user_id = ?', user.id)
-    .having('count(votes.id) = 0')
+    includes(:votes)
+    .where('votes.id is null')
   }
 
   def group
@@ -151,6 +149,10 @@ class Motion < ActiveRecord::Base
     end
   end
 
+  def percent_voted
+    (100-(no_vote_count/group_count.to_f * 100)).to_i
+  end
+
   def users_who_did_not_vote
     if voting?
       users = []
@@ -181,6 +183,13 @@ class Motion < ActiveRecord::Base
 
   def comments
     discussion.comments
+  end
+
+  def vote!(user, position, statement=nil)
+    vote = user.votes.new(:position => position, :statement => statement)
+    vote.motion = self
+    vote.save!
+    vote
   end
 
   private

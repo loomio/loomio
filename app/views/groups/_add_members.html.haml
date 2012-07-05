@@ -1,0 +1,17 @@
+#add-members
+  - if can? :add_members, group
+    .clearfix
+      - if group.parent.blank?
+        = link_to "Add members +", "#", class: 'group-add-members btn btn-small'
+        #invite-group-members.hidden
+          = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
+            = devise_error_messages!
+            = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
+            = f.input :email, placeholder: "Email address", label: false
+            = f.submit "Invite", class: "btn btn-small", id: 'invite'
+            = link_to "Cancel", "#", id: 'cancel-add-members'
+        %input#group_id{ type: "hidden", value: group.id }
+      - else
+        = link_to "Add members +", "#", {"data-toggle" => "modal", href: "#invite-subgroup-members", class: 'subgroup-add-members btn btn-small'}
+        #invite-subgroup-members.modal.hidden
+          = render 'subgroup_add_members', group: group

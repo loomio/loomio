@@ -126,7 +126,7 @@ describe "Groups" do
         visit group_path(@group)
 
         should have_content("Test Group")
-        should have_content("Current members")
+        should have_content("Members")
       end
     end
 

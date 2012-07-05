@@ -38,7 +38,7 @@ describe VotesController do
         response.should be_redirect
         flash[:success].should =~ /Vote updated/
         Vote.all.count.should == 2
-        @user.motion_vote(@motion).position.should == 'no'
+        @user.get_vote_for(@motion).position.should == 'no'
       end
 
       it 'can delete vote' do
