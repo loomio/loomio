@@ -3,8 +3,8 @@ class DiscussionsController < GroupBaseController
   before_filter :check_group_read_permissions, :only => :show
 
   def new
-    @group = Group.find(params[:discussion][:group_id])
-    @discussion = Discussion.new(group: Group.find(params[:discussion][:group_id]))
+    @group = GroupDecorator.new(Group.find(params[:discussion][:group_id]))
+    @discussion = Discussion.new(group: @group)
   end
 
   def create
@@ -52,8 +52,10 @@ class DiscussionsController < GroupBaseController
 
   def new_proposal
     @motion = Motion.new
-    @motion.discussion = Discussion.find(params[:id])
-    render template: 'motions/new'
+    discussion = Discussion.find(params[:id])
+    @motion.discussion = discussion
+    @group = GroupDecorator.new(discussion.group)
+    render 'motions/new'
   end
 
   private

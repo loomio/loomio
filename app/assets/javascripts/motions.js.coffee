@@ -34,6 +34,29 @@ $ ->
       $("#input_date").datepicker("setDate", date_string)
       $("#date_hour").val(hour)
 
+# Reload hidden close_date field
+$ ->
+  $("#input_date").change((e) ->
+    remove_date_error()
+    date = $(this).val()
+    local_datetime = new Date()
+    local_datetime.setYear(parseInt(date.substring(6,10)))
+    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1), parseInt(date.substring(0,2)))
+    local_datetime.setHours(parseInt($("#date_hour").val()))
+    $("#motion_close_date").val(local_datetime)
+  )
+
+$ ->
+  $("#date_hour").change((e) ->
+    remove_date_error()
+    date = $("#input_date").val()
+    local_datetime = new Date()
+    local_datetime.setYear(parseInt(date.substring(6,10)))
+    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1), parseInt(date.substring(0,2)))
+    local_datetime.setHours(parseInt($(this).val()))
+    $("#motion_close_date").val(local_datetime)
+  )
+
 #generic code to be moved out of motions.js
 $ ->
   if $(".relative-time").length > 0
@@ -64,28 +87,6 @@ $ ->
       $(element).html(String(date_string))
     )
 
-# Reload hidden close_date field
-$ ->
-  $("#input_date").change((e) ->
-    remove_date_error()
-    date = $(this).val()
-    local_datetime = new Date()
-    local_datetime.setYear(parseInt(date.substring(6,10)))
-    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1), parseInt(date.substring(0,2)))
-    local_datetime.setHours(parseInt($("#date_hour").val()))
-    $("#motion_close_date").val(local_datetime)
-  )
-
-$ ->
-  $("#date_hour").change((e) ->
-    remove_date_error()
-    date = $("#input_date").val()
-    local_datetime = new Date()
-    local_datetime.setYear(parseInt(date.substring(6,10)))
-    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1), parseInt(date.substring(0,2)))
-    local_datetime.setHours(parseInt($(this).val()))
-    $("#motion_close_date").val(local_datetime)
-  )
 
 
 # The following methods are used to provide client side validation for
@@ -180,10 +181,10 @@ $ ->
 
 #expand description text on proposal
 $ ->
-  if $("#motion").length > 0
+  if $(".motion").length > 0
     $(".see-more").click((event) ->
-      $("#short-description").toggle()
-      $("#long-description").toggle()
+      $(".short-description").toggle()
+      $(".long-description").toggle()
       event.preventDefault()
     )
 

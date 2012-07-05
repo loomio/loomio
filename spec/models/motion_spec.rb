@@ -215,4 +215,62 @@ describe Motion do
     end
 
   end
+
+  describe "percent_voted" do
+    before do
+      @motion = create_motion
+    end
+    it "should return the pecentage of users that have voted" do
+      @motion.stub(:no_vote_count).and_return(10)
+      @motion.stub(:group_count).and_return(20)
+      @motion.percent_voted.should == 50
+    end
+  end
+
+  describe "that_user_has_voted_on" do
+    it "returns motions that the user has voted" do
+      user = User.make!
+      motion = create_motion(author: user)
+      motion.vote!(user, 'yes', 'i agree!')
+      Motion.that_user_has_voted_on(user).should include(motion)
+    end
+  end
+
+  describe "that_user_has_not_voted_on" do
+    before :each do
+      @user = User.make!
+      @motion = create_motion(author: @user)
+      @motion.vote!(@user, 'yes', 'i agree!')
+      @motion1 = create_motion(author: @user)
+    end
+    it "returns motions that the user has not voted" do
+      Motion.that_user_has_not_voted_on(@user).should include(@motion1)
+    end
+    it "does not returm motions that the user has voted" do
+      Motion.that_user_has_not_voted_on(@user).should_not include(@motion)
+    end
+  end
+
+  describe "vote!" do
+    before do
+      @motion = create_motion
+      @vote = @motion.vote!(@motion.author, 'yes', 'i agree!')
+    end
+    it "returns a vote object" do
+      @vote.is_a?(Vote).should be_true
+    end
+    it "assigns vote to the motion" do
+      @motion.votes.should include(@vote)
+    end
+    it "assigns given position to vote" do
+      @vote.position.should == 'yes'
+    end
+    it "assigns given statement to vote" do
+      @vote.statement.should == "i agree!"
+    end
+    it "works if no statement given" do
+      @vote = @motion.vote!(@motion.author, 'yes')
+      @vote.should_not be_nil
+    end
+  end
 end

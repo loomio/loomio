@@ -18,9 +18,10 @@
       color: $mid-grey;
     }
     .privacy-settings {
+      padding-bottom: 10px;
       select {
         width: 182px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
       }
       .input { text-align: right; }
     }
@@ -29,68 +30,107 @@
 
 /**** Group page ****/
 
+li.no-discussions, li.no-proposals {
+  padding: 5px 10px;
+  background-color: $highlighted
+}
+.tick {
+  padding-left: 5px;
+  position: relative;
+  bottom: 4px;
+}
+#tool-bar-item-discussion {
+  padding-left: 30px;
+  background-image:url('/assets/discussion.png');
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position-x: 10px;
+  background-position-y: 5px;
+}
+
+#tool-bar-item-discussion:hover {
+  background-image:url('/assets/discussion-white.png');
+  /*background-repeat: no-repeat;*/
+  /*background-size: 15px;*/
+}
+/*request membership panel*/
+#request-membership {
+  form { display: inline; }
+  .btn {
+    width: 150px;
+    color: $mid-grey;
+  }
+  margin-bottom: 10px;
+}
+/* group description panel */
 #group-description {
   color: $dark-grey;
-  font-size: $font-small;
+  .group-description {
+    font-size: $font-small;
+    width: 260px;
+    float: left;
+    display: inline;
+    padding: 2px 0 2px 2px;
+  }
 }
 #add-group-description {
+  form { margin-bottom: 0px }
   #description-input {
-    width: 290px;
-    margin-bottom: 5px;
+    width: 270px;
+    height: 90px;
+    margin-bottom: 2px;
   }
   .character-counter {
-    width: 300px;
-    bottom: 10px;
-  }
-  #save-buttons {
+    width: 278px;
     position: relative;
-    bottom: 8px;
+    bottom: 0px;
+    margin-bottom: 8px;
   }
+  .control-group { margin-bottom: 0px; }
 }
 #cancel-add-description {
   color: $mid-grey;
-  padding-left: 5px;
+  padding-right: 10px;
+  float: right;
   position: relative;
-  top: 4px;
+  top: 5px;
 }
-.empty-placeholder {
-  border: 1px dashed $light-grey;
-  @include border-radius(4px);
-  padding: 6px;
-  font-size: $font-small;
+#add-description {
+  color: $mid-grey;
 }
-#discussions {
-  padding: 4px;
-  .btn { margin-bottom: 15px; }
-  .content-block h4 {
-    color: $mid-grey;
-    float: left;
-  }
-  .info-help {
-    margin-left: 6px;
-    height: 19px;
-    width: 16px;
-    -moz-opacity: .5;
-    filter:alpha(opacity=50);
-    opacity: 0.5;
-    background-image:url("/assets/dark-info.png");
-    background-repeat: no-repeat;
-    background-position-y: 3px;
-    display: inline-block;
-    @include ie7-inline-block();
-    cursor: pointer;
-    position: relative;
-    bottom: 3px;
-  }
-  .info-help:hover {
-    opacity: 1;
-  }
-}
-.new_motion_link { float: right; }
 
 #add-member-popup-btn {
   margin-bottom: 5px;
+}
 
+/* sub groups panel */
+#sub-groups {
+  .new_motion_link {
+    float: right;
+    padding-right: 10px;
+  }
+}
+
+/* add member panel */
+#add-members {
+  .btn {
+    float: left;
+    width: 150px;
+    text-align: left;
+  }
+  .btn#invite {
+    margin-top: 0px;
+    width: 60px;
+    float: right;
+  }
+  #cancel-add-members {
+    color: $mid-grey;
+    padding-right: 10px;
+    float: right;
+    position: relative;
+    top: 6px;
+  }
+  li { padding: 0px; }
 }
 
 #invite-group-members {
@@ -111,22 +151,34 @@
 #user_email_input {
   display: inline;
   #user_email {
-    width: 290px;
+    width: 270px;
   }
 }
 input#user_email{
   margin-bottom: 5px;
 }
+#new_user { padding-bottom: 14px; }
 
-.user-name {
+/* membership panel */
+.dropdown#members { padding-left: 5px; }
+
+#membership-count {
+  display: inline;
+  float: right;
   font-size: $font-small;
-  width: 180px;
+  color: white;
+  background-color: $light-grey;
+  margin: 2px;
+}
+.user-name {
+  color: $mid-grey;
+  width: 178px;
   display: inline-block;
   @include ie7-inline-block();
 }
 .admin-controls {
   float: right;
-  width: 112px;
+  width: 98px;
   text-align: right;
   font-size: $font-tiny;
   display: inline;
@@ -143,20 +195,8 @@ input#user_email{
   a { color: $mid-grey; }
 }
 
-form#new_membership, #membership-requested {
-  margin-bottom: 5px;
-}
-
-#membership-count {
-  display: inline;
-  float: right;
-  font-size: $font-small;
-  color: #fff;
-  background-color: #ccc;
-}
 
 /**** Private group form ****/
-
 #private-message {
   color: $mid-grey;
   text-align: center;
@@ -164,116 +204,30 @@ form#new_membership, #membership-requested {
   margin: 0px auto;
 }
 
-// Discussion list panel
-//
-// NOTE: this code is shared with the group show page and
-//       the dashboard page.
-//
-.discussion:hover {
-  background-color: rgb(237, 239, 245);
-  background-color: rgba(237, 239, 245, 0.98);
+/* dashboard */
+.sub-panel a { color: $mid-grey; }
+.sub-group {
+  font-size: $font-small;
+  padding-left: 20px;
 }
-.discussion {
-  color: $mid-grey;
-  position: relative;
-  a {
-    color: $mid-grey;
-    display: block;
-    margin: -9px;
-    padding: 9px;
-  }
-  a:hover {
-    text-decoration: none;
-  }
-  #group-name {
-    font-size: $font-tiny;
-    margin-top: -0.3em;
-    padding-left: 5px;
-  }
-  .full-discussion-title {
-    padding-left: 5px;
-    font-size: 0.8em;
-    .discussion-title {
-      display: inline-block;
-      /*@include ie7-inline-block();*/
-      width: 500px;
-    }
-  }
-  .proposal-container {
-    padding-left: 7px;
-    padding-bottom: 7px;
-    min-height: 30px;
-    color: $light-grey;
-  }
-  .vote-icon {
-    padding-top: 4px;
-    display: inline-block;
-    /*@include ie7-inline-block();*/
-    height: 16px;
-    width: 20px;
-    float: left;
-  }
-  /*#no-vote-space { width: 20px; }*/
-  .proposal-title-container {
-    margin-left: 12px;
-    display: inline-block;
-    /*@include ie7-inline-block();*/
-    width: 400px;
-  }
-  .proposal-label {
-    font-size: $font-small;
-    font-style: italic;
-  }
-  .proposal-title {
-    font-size: $font-small;
-    color: $mid-grey;
-  }
-  .proposal-close-date {
-    margin-top: -0.2em;
-    font-size: $font-small;
-  }
-  .comment-info {
-    display: inline-block;
-    /*@include ie7-inline-block();*/
-    margin-top: -4px;
-    float: right;
-    padding-right: 5px;
-    font-size: $font-small;
-    text-align: right;
-  }
-  .total-comments {
-    margin-top: -9px;
-  }
-  .notification-info {
-    float: right;
-  }
-  .discussion-icon-container {
-    background-size: 25px;
-    background-repeat: no-repeat;
-    width: 32px;
-    height: 30px;
-    background-image: url("discussion.png");
-  }
-  .enabled-icon {
-    -moz-opacity: 1.0;
-    filter:alpha(opacity=100);
-    opacity: 1.0;
-   }
-  .disabled-icon {
-    -moz-opacity: 0.5;
-    filter:alpha(opacity=50);
-    opacity: 0.5
-  }
 
-  .activity-count {
-    margin-left: 18px;
-    height: 10px;
-    font-size: $font-tinywiny;
-    padding: 0.4em;
-    padding-top: 0.1em;
-  }
-  .discussion-link {
-    position: relative;
-    z-index: 2;
-  }
-}
+
+/*.info-help {*/
+  /*margin-left: 6px;*/
+  /*height: 19px;*/
+  /*width: 16px;*/
+  /*-moz-opacity: .5;*/
+  /*filter:alpha(opacity=50);*/
+  /*opacity: 0.5;*/
+  /*background-image:url("/assets/dark-info.png");*/
+  /*background-repeat: no-repeat;*/
+  /*background-position-y: 3px;*/
+  /*display: inline-block;*/
+  /*@include ie7-inline-block();*/
+  /*cursor: pointer;*/
+  /*position: relative;*/
+  /*bottom: 3px;*/
+/*}*/
+/*.info-help:hover {*/
+  /*opacity: 1;*/
+/*}*/

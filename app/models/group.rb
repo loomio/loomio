@@ -14,7 +14,9 @@ class Group < ActiveRecord::Base
   has_many :memberships,
     :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
     :dependent => :destroy,
-    :extend => GroupMemberships
+    :extend => GroupMemberships,
+    :include => :user,
+    :order => "LOWER(users.name)"
   has_many :membership_requests,
     :conditions => {:access_level => 'request'},
     :class_name => 'Membership'
@@ -24,8 +26,16 @@ class Group < ActiveRecord::Base
   has_many :users, :through => :memberships # TODO: rename to members
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
-  has_many :motions
   has_many :discussions
+  has_many :motions
+  has_many :motions_voting,
+           :through => :discussions,
+           :source => :motions,
+           :conditions => { phase: 'voting' }
+  has_many :motions_closed,
+           :through => :discussions,
+           :source => :motions,
+           :conditions => { phase: 'closed' }
 
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
@@ -92,7 +102,6 @@ class Group < ActiveRecord::Base
   def users_sorted
     users.sort { |a,b| a.name.downcase <=> b.name.downcase }
   end
-
 
   #
   # MEMBERSHIP METHODS
@@ -164,26 +173,6 @@ class Group < ActiveRecord::Base
       result.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
     else
       discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
-    end
-  end
-
-  def discussions_awaiting_user_vote(user=nil)
-    all_discussions(user).select do |discussion|
-      discussion.current_motion.present? && (not discussion.current_motion.user_has_voted?(user))
-    end
-  end
-
-  def active_discussions(user=nil)
-    discussions_awaiting = discussions_awaiting_user_vote(user)
-    all_discussions(user).select do |discussion|
-      (discussion.updated_at > (Time.now() - 1.week)) &&
-        (not discussions_awaiting.include? discussion)
-    end
-  end
-
-  def inactive_discussions(user=nil)
-    all_discussions(user).select do |discussion|
-      discussion.updated_at <= (Time.now() - 1.week)
     end
   end
 

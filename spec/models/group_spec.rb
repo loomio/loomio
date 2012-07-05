@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Group do
+  let(:motion) { create_motion }
+
   it { should have_many :discussions }
 
   context "a new group" do
@@ -27,38 +29,29 @@ describe Group do
     end
   end
 
-  context "group with several discussions" do
-    before do
-      @group = Group.make!
-      @user = User.make!
-      @group.add_member!(@user)
-      @discussion = create_discussion(group: @group)
-      @active_discussion_with_motion = create_discussion(group: @group)
-      @motion = create_motion(discussion: @active_discussion_with_motion)
+  describe "motions_voting" do
+    it "should return motions that belong to the group and are in phase 'voting'" do
+      @group = motion.group
+      @group.motions_voting.should include(motion)
     end
-    context "group.discussions_awaiting_user_vote" do
-      it "returns discussions that are awaing user's vote" do
-        discussions = @group.discussions_awaiting_user_vote(@user)
-        discussions.should include(@active_discussion_with_motion)
-      end
+
+    it "should not return motions that belong to the group but are in phase 'closed'" do
+      @group = motion.group
+      motion.close_voting!
+      @group.motions_voting.should_not include(motion)
     end
-    context "group.active_discussions" do
-      it "result contains recent discussions" do
-        discussions = @group.active_discussions(@user)
-        discussions.should include(@discussion)
-      end
-      it "result does not contain discussions awaiting user vote" do
-        discussions = @group.active_discussions(@user)
-        discussions.should_not include(@active_discussion_with_motion)
-      end
+  end
+
+  describe "motions_closed" do
+    it "should return motions that belong to the group and are in phase 'voting'" do
+      motion.close_voting!
+      @group = motion.group
+      @group.motions_closed.should include(motion)
     end
-    context "group.active_discussions" do
-      it "result contains inactive discussions" do
-        pending "Jon was too tired to write this test"
-      end
-      it "result does not contain discussions awaiting user vote" do
-        pending "Jon was too tired to write this test"
-      end
+
+    it "should not return motions that belong to the group but are in phase 'closed'" do
+      @group = motion.group
+      @group.motions_closed.should_not include(motion)
     end
   end
 
