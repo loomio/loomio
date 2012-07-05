@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $("#add-group-description").hide()
   # Only execute on group page
   if $("body.groups").length > 0
     $("#membership-requested").hover(
@@ -33,3 +32,38 @@ $ ->
           $("#description-placeholder").toggle()
         event.preventDefault()
       )
+
+#*** tick on proposal dropdown ***
+$ ->
+  # Only execute on group page
+  $("#display-closed").click((event) ->
+    $("#open").hide()
+    $("#closed").show()
+    $("#tick-closed").show()
+    $("#tick-current").hide()
+    $("#proposal-phase").text("Closed proposals")
+    event.preventDefault()
+  )
+  $("#display-current").click((event) ->
+    $("#open").show()
+    $("#closed").hide()
+    $("#tick-current").show()
+    $("#tick-closed").hide()
+    $("#proposal-phase").text("Current proposals")
+    event.preventDefault()
+  )
+
+#*** add member form ***
+$ ->
+  # Only execute on group page
+  if $("body.groups").length > 0
+    $(".group-add-members").click((event) ->
+      $(".group-add-members").hide()
+      $("#invite-group-members").show()
+      event.preventDefault()
+    )
+    $("#cancel-add-members").click((event) ->
+      $(".group-add-members").show()
+      $("#invite-group-members").hide()
+      event.preventDefault()
+    )

@@ -1,0 +1,13 @@
+- unless can? :add_members, group
+  - if not group.users_include?(current_user) || current_user.nil?
+    #request-membership
+      - membership_request = group.membership_requests.find_by_user_id(current_user)
+      - if membership_request.present?
+        = link_to "Membership Requested", membership_request, method: :delete,
+          confirm: "Are you sure you wish to withdraw your membership request from this group?",
+          class: "btn btn-small", id: "membership-requested"
+      - else
+        - if group.parent.nil? || current_user.group_membership(group.parent)
+          =form_for(Membership.new) do |f|
+            %input{name: "membership[group_id]", type: :hidden, value: group.id}
+              =submit_tag "Request membership", class: "btn btn-small"
