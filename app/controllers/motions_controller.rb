@@ -9,6 +9,7 @@ class MotionsController < GroupBaseController
 
   def create
     @motion = current_user.authored_motions.new(params[:motion])
+    @group = GroupDecorator.new(@motion.group)
     authorize! :create, @motion
     if @motion.save
       flash[:success] = "Proposal successfully created."
@@ -27,6 +28,11 @@ class MotionsController < GroupBaseController
     else
       redirect_to discussion_url(discussion, proposal: motion)
     end
+  end
+
+  def edit
+    motion = Motion.find(params[:id])
+    @group = GroupDecorator.new(motion.group)
   end
 
   def destroy
@@ -48,10 +54,6 @@ class MotionsController < GroupBaseController
     resource
     @motion.open_voting!
     redirect_to discussion_url(@motion.discussion)
-  end
-
-  def edit
-    @motion = Motion.find(params[:id])
   end
 
   private

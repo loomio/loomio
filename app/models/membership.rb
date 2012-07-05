@@ -37,6 +37,7 @@ class Membership < ActiveRecord::Base
 
   delegate :name, :email, :to => :user, :prefix => true
   delegate :parent, :to => :group, :prefix => true, :allow_nil => true
+  delegate :name, :to => :group, :prefix => true
 
   #
   # CALLBACKS

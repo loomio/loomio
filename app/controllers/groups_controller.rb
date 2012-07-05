@@ -14,13 +14,19 @@ class GroupsController < GroupBaseController
   end
 
   def show
-    @discussions_awaiting_vote = @group.discussions_awaiting_user_vote(current_user) if current_user
-    @discussions_active = @group.active_discussions(current_user)
-    @discussions_inactive = @group.inactive_discussions(current_user)
     @group = GroupDecorator.new(Group.find(params[:id]))
-    @subgroups = @group.subgroups.select do |group|
-      can? :show, group
+    @subgroups = @group.subgroups.accessible_by(current_ability, :show)
+    if current_user
+      @motions_voted = current_user.group_motions_not_voted(@group)
+      @motions_not_voted = current_user.group_motions_not_voted(@group)
+    else
+      @motions_voted = @group.motions_voting
     end
+    @motions_closed = @group.motions_closed
+  end
+
+  def edit
+    @group = GroupDecorator.new(Group.find(params[:id]))
   end
 
   # CUSTOM CONTROLLER ACTIONS
