@@ -14,5 +14,5 @@
     = render 'add_members', group: group
     %ul#users-list
       = render :partial => 'membership',
-        :collection => group.memberships.sort { |a,b| a.user_name.downcase <=> b.user_name.downcase },
+        :collection => group.memberships,
         :locals => { group: group }

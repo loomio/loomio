@@ -19,7 +19,7 @@ module DiscussionsHelper
       suffix = "blocked"
     else
       suffix = ""
-      if discussion.has_activity_unread_by(user)
+      if discussion.has_activity_unread_by?(user)
         suffix = "unread"
       end
     end
