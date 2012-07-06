@@ -119,6 +119,48 @@ h4 {
       }
     }
   }
+  .pagination {
+    a { color: $mid-grey; }
+    margin: 2px 0 5px 0;
+    max-width: 600px;
+    border-left: 1px solid #DDD;
+    margin-left: auto;
+  }
+  .page {
+    text-decoration: none;
+    line-height: 34px;
+    float: left;
+    padding: 0;
+    width: 34px;
+  }
+  .current {
+    color: white;
+    text-align: center;
+    background: $light-grey;
+    height: 36px;
+  }
+  .next, .prev , .first, .last{
+    a {
+      text-indent: -100em;
+      overflow: hidden;
+      height: 34px;
+      width: 36px;
+      padding: 0px;
+    }
+  }
+  .prev a {
+    /*background: url(prev.png) no-repeat;*/
+  }
+  .next a {
+    /*background: url(next.png) no-repeat;*/
+  }
+  .gap {
+    border: 1px solid #DDD;
+    text-align: center;
+    border-left: 0px;
+    height: 34px;
+    width: 36px;
+  }
 }
 
 .sub-panel {

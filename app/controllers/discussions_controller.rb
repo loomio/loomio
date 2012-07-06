@@ -23,6 +23,11 @@ class DiscussionsController < GroupBaseController
     end
   end
 
+  def index
+    @discussions= current_user.discussions.page(params[:page]).per(10)
+    render :layout => false if request.xhr?
+  end
+
   def show
     @discussion = Discussion.find(params[:id])
     @group = GroupDecorator.new(@discussion.group)

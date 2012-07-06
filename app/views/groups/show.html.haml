@@ -24,7 +24,7 @@
                 = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
       %ul
         #open
-          - if @motions_not_voted || @motions_voted
+          - if (not @motions_not_voted.nil?) || (not @motions_voted.nil?)
             - unless @motions_not_voted.nil?
               - @motions_not_voted.each do |motion|
                 %li.undecided= render '/motions/motion_preview', motion: motion, this_group: @group
