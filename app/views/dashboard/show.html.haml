@@ -46,13 +46,11 @@
                   %li= render '/motions/motion_preview', motion: motion, this_group: @group
               - else
                 %li.no-proposals= "There are no closed proposals"
-        .selector-panel
+        .selector-panel#discussions-panel
           .clearfix
             %h1 Discussions
-          %ul
-            - @discussions.each do |discussion|
-              %li= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
-          = paginate @discussions
+          #discussions
+            Loading...
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.

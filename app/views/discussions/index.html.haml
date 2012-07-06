@@ -1,0 +1,5 @@
+%ul
+  - @discussions.each do |discussion|
+    %li= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
+#pagination
+  = paginate @discussions, :remote => :true

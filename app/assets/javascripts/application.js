@@ -19,5 +19,7 @@
 //= require modernizr
 //= require bootstrap
 //= require bootstrap-custom
+//= require main
 //= require groups
 //= require motions
+//= require dashboard

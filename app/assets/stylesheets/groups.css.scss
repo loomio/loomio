@@ -45,13 +45,11 @@ li.no-discussions, li.no-proposals {
   background-repeat: no-repeat;
   background-size: 15px;
   background-position-x: 10px;
-  background-position-y: 5px;
+  background-position-y: 6px;
 }
 
 #tool-bar-item-discussion:hover {
-  background-image:url('/assets/discussion-white.png');
-  /*background-repeat: no-repeat;*/
-  /*background-size: 15px;*/
+  background-position-y: -17px;
 }
 /*request membership panel*/
 #request-membership {
