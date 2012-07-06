@@ -99,9 +99,4 @@ class Discussion < ActiveRecord::Base
     end
     users_with_comments.all + other_participants.uniq
   end
-
-  private
-    def create_event
-      Event.new_discussion!(self)
-    end
 end
