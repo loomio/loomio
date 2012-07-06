@@ -24,7 +24,7 @@ class DiscussionsController < GroupBaseController
   end
 
   def index
-    @discussions= current_user.discussions.page(params[:page]).per(10)
+    @discussions= current_user.discussions.page(params[:page]).per(8)
     render :layout => false if request.xhr?
   end
 
