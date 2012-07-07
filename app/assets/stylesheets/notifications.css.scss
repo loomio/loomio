@@ -6,9 +6,11 @@
 .notification-item a {
   white-space: normal;
   /*line-height: 16px;*/
+  font-size: 0.9em;
   color: $dark-grey
 }
 .notification-item-footer {
+  font-size: 0.85em;
   display: block;
   color: $mid-grey;
 }
