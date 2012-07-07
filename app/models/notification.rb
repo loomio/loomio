@@ -6,25 +6,9 @@ class Notification < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :event_id
 
   delegate :kind, :to => :event, :prefix => :event
-  delegate :vote, :to => :event
+  delegate :vote, :discussion, :comment, :motion, :membership, :to => :event
 
   attr_accessible :user, :event
 
   default_scope order("id DESC")
-
-  def discussion
-    event.discussion
-  end
-
-  def comment
-    event.comment
-  end
-
-  def motion
-    event.motion
-  end
-
-  def vote
-    event.vote
-  end
 end

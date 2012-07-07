@@ -38,6 +38,14 @@
   - group_name = vote.group_name
   - href = discussion_path(vote.discussion, :proposal => vote.motion.id)
 
+- elsif notification.event_kind == "membership_requested"
+  - membership = notification.membership
+  - person = membership.user_name
+  - action_text = "requested membership to"
+  - title_text = membership.group_name
+  - group_name = membership.group_name
+  - href = group_path(membership.group)
+
 - date = time_ago_in_words(notification.created_at)
 - class_name = notification.viewed_at.nil? ? " unread" : ""
 

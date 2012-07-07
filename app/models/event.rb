@@ -1,15 +1,17 @@
 class Event < ActiveRecord::Base
-  KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked]
+  KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
+             membership_requested]
 
   has_many :notifications
   belongs_to :discussion
   belongs_to :comment
   belongs_to :motion
   belongs_to :vote
+  belongs_to :membership
 
   validates_inclusion_of :kind, :in => KINDS
 
-  attr_accessible :kind, :discussion, :comment, :motion, :vote
+  attr_accessible :kind, :discussion, :comment, :motion, :vote, :membership
 
   def self.new_discussion!(discussion)
     event = create!(:kind => "new_discussion", :discussion => discussion)
@@ -64,6 +66,14 @@ class Event < ActiveRecord::Base
       unless user == vote.user
         event.notifications.create! :user => user
       end
+    end
+    event
+  end
+
+  def self.membership_requested!(membership)
+    event = create!(:kind => "membership_requested", :membership => membership)
+    membership.group_admins.each do |admin|
+      event.notifications.create! :user => admin
     end
     event
   end
