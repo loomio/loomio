@@ -17,7 +17,7 @@ class GroupsController < GroupBaseController
     @group = GroupDecorator.new(Group.find(params[:id]))
     @subgroups = @group.subgroups.accessible_by(current_ability, :show)
     if current_user
-      @motions_voted = current_user.group_motions_not_voted(@group)
+      @motions_voted = current_user.group_motions_voted(@group)
       @motions_not_voted = current_user.group_motions_not_voted(@group)
     else
       @motions_voted = @group.motions_voting

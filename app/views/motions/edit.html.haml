@@ -1,3 +1,4 @@
 #edit-motion
   =render '/groups/title', group: @group
+  %h1= @motion.discussion.title
   =render 'motions/form', form_args: [@motion]
