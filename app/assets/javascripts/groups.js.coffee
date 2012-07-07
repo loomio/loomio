@@ -67,3 +67,15 @@ $ ->
       $("#invite-group-members").hide()
       event.preventDefault()
     )
+
+#*** ajax for discussions on group page ***
+$ ->
+  $('#group-discussions').load("/discussions", 'group=get_group_from_page',
+    Application.convertUtcToRelativeTime)
+
+$ ->
+  $(document).on('click', '.pagination a', (e)->
+    $('#group-discussions').load($(this).attr('href'),
+      Application.convertUtcToRelativeTime)
+    e.preventDefault()
+  )

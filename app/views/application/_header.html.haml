@@ -5,8 +5,17 @@
     %h1
       = link_to image_tag("top-bar-loomio.png", :alt => "Loomio"), "/"
     - if user_signed_in?
-      %ul.nav.group-nav
-        %li.dropdown.group-container
+      %ul.nav
+        %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
+      %ul.nav.secondary-nav.pull-right
+        %li.dropdown#user
+          %a{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
+            = current_user.name
+            %b.caret
+          %ul.dropdown-menu
+            %li= link_to "Settings", user_settings_path
+            %li= link_to('Sign out', destroy_user_session_path, method: :delete)
+        %li.dropdown#group
           %a{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
             #group-icon
             -#- total_activity = current_user.activity_total
@@ -36,14 +45,5 @@
                         -#.span.label.label-important= activity
             %li.new-group
               =link_to "Add New Group +", new_group_path
-      %ul.nav.secondary-nav.pull-right
-        %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
-        %li.dropdown
-          %a{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
-            = current_user.name
-            %b.caret
-          %ul.dropdown-menu
-            %li= link_to "Settings", user_settings_path
-            %li= link_to('Sign out', destroy_user_session_path, method: :delete)
     - else
       .sign-in= link_to('Sign in', new_user_session_path)
