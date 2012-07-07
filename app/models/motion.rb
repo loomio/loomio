@@ -23,7 +23,6 @@ class Motion < ActiveRecord::Base
 
   after_create :initialize_discussion
   after_create :email_motion_created
-  after_create :create_event
   before_save :set_disable_discussion
   before_save :format_discussion_url
 
@@ -255,9 +254,5 @@ class Motion < ActiveRecord::Base
       if @enable_discussion
         self.disable_discussion = @enable_discussion == "1" ? "0" : "1"
       end
-    end
-
-    def create_event
-      Event.new_motion! self
     end
 end

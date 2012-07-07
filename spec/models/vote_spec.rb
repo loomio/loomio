@@ -90,54 +90,6 @@ describe Vote do
     motion.discussion.activity.should == 4
   end
 
-  it 'should fire "new vote" event upon creation' do
-    vote = Vote.new(position: 'yes')
-    vote.motion = motion
-    vote.user = user
-
-    Event.should_receive(:new_vote!).with(vote)
-
-    vote.save!
-  end
-
-  it 'should fire "new vote" event upon saving with new position' do
-    vote = Vote.new(position: 'yes')
-    vote.motion = motion
-    vote.user = user
-    vote.save!
-
-    Event.should_receive(:new_vote!).with(vote)
-
-    vote.position = 'no'
-    vote.save!
-  end
-
-  it 'should not fire "new vote" event upon saving with same position' do
-    vote = Vote.new(position: 'yes')
-    vote.motion = motion
-    vote.user = user
-    vote.save!
-
-    Event.should_not_receive(:new_vote!).with(vote)
-
-    vote = Vote.new(position: 'yes')
-    vote.motion = motion
-    vote.user = user
-    vote.statement = 'i really like this idea'
-    vote.save!
-  end
-
-
-  it 'should fire "motion blocked" event upon creation if position is block' do
-    vote = Vote.new(position: 'block')
-    vote.motion = motion
-    vote.user = user
-
-    Event.should_receive(:motion_blocked!).with(vote)
-
-    vote.save!
-  end
-
   describe "previous_position" do
     it "gets position from previous vote on same motion by same user
         (if any)" do

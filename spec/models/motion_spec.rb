@@ -43,11 +43,6 @@ describe Motion do
       @discussion = create_discussion(group: group)
       @motion = create_motion(discussion: @discussion)
     end
-
-    it "creates 'new motion' event" do
-      Event.should_receive(:new_motion!)
-      create_motion
-    end
   end
 
   it "cannot have invalid phases" do
