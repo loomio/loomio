@@ -35,9 +35,10 @@ class Membership < ActiveRecord::Base
   scope :for_group, lambda {|group| where(:group_id => group)}
   scope :with_access, lambda {|access| where(:access_level => access)}
 
-  delegate :name, :email, :to => :user, :prefix => true
-  delegate :parent, :to => :group, :prefix => true, :allow_nil => true
-  delegate :name, :to => :group, :prefix => true
+  delegate :name, :email, :to => :user, :prefix => :user
+  delegate :parent, :to => :group, :prefix => :group, :allow_nil => true
+  delegate :name, :to => :group, :prefix => :group
+  delegate :admins, :to => :group, :prefix => :group
 
   #
   # CALLBACKS

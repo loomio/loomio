@@ -40,7 +40,7 @@
             - if can? :close_voting, @current_motion
               = link_to "Close proposal", close_motion_voting_path(@current_motion), confirm: "Are you sure you want to close this motion?", method: :post, class: 'tool-bar-item'
         - if @current_motion
-          - if @selected_closed_motion
+          - if @selected_motion && (@selected_motion != @current_motion)
             %li.current-proposal
               = render '/motions/motion_preview', motion: @current_motion, this_group: @group
           - else
@@ -55,7 +55,7 @@
           %ul
             - @discussion.motions.order("close_date desc").each do |closed_motion|
               - if closed_motion.closed?
-                - if @selected_closed_motion == closed_motion
-                  %li= render @selected_closed_motion, unique_votes: @unique_votes
+                - if @selected_motion == closed_motion
+                  %li= render @selected_motion, unique_votes: @unique_votes
                 - else
                   %li= render '/motions/motion_preview', motion: closed_motion, this_group: @group

@@ -11,13 +11,27 @@ describe MembershipsController do
     end
 
     context "requests membership to a group visible to members" do
-      it "should succeed and redirect to groups index page" do
+      before do
         @group.update_attributes({viewable_by: :members})
         # note trying to sneek member level access.. should be ignored
-        post :create,
-             :membership => {:group_id => @group.id, :access_level => 'member'}
+        @membership_args = { :membership => {:group_id => @group.id,
+                                             :access_level => 'member'} }
+      end
+      it "redirects to dashboard" do
+        post :create, @membership_args
         response.should redirect_to(root_url)
+      end
+      it "assigns group variable" do
+        post :create, @membership_args
         assigns(:group).requested_users.should include(@user)
+      end
+      it "shows flash notice" do
+        post :create, @membership_args
+        flash[:notice].should =~ /Membership requested/
+      end
+      it "fires membership_requested event" do
+        Event.should_receive(:membership_requested!)
+        post :create, @membership_args
       end
     end
 

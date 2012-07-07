@@ -6,6 +6,7 @@ describe Event do
   it { should allow_value("new_comment").for(:kind) }
   it { should allow_value("new_vote").for(:kind) }
   it { should allow_value("motion_blocked").for(:kind) }
+  it { should allow_value("membership_requested").for(:kind) }
   it { should_not allow_value("blah").for(:kind) }
 
   let(:discussion) { create_discussion }
@@ -178,6 +179,32 @@ describe Event do
       it "does not notify blocker" do
         @event.notifications.where(:user_id => @motion.author.id).
           should_not exist
+      end
+    end
+  end
+
+  describe "membership_requested!" do
+    let(:membership) { mock_model(Membership, :group_admins => []) }
+    subject { Event.membership_requested!(membership) }
+
+    its(:kind) { should eq("membership_requested") }
+    its(:membership) { should eq(membership) }
+
+    context "sending notifications" do
+      before do
+        @user, @admin1, @admin2 = User.make!, User.make!, User.make!
+        @group = Group.make!
+        @group.add_admin!(@admin1)
+        @group.add_admin!(@admin2)
+        @membership = @group.add_request!(@user)
+        @event = Event.membership_requested!(@membership)
+      end
+
+      it "notifies admins" do
+        @event.notifications.where(:user_id => @admin1.id).
+          should exist
+        @event.notifications.where(:user_id => @admin2.id).
+          should exist
       end
     end
   end
