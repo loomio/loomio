@@ -170,7 +170,7 @@ $ ->
 
   # adds bootstrap popovers to vote buttons
 $ ->
-  $(".vote").popover
+  $(".position").popover
     placement: "top"
 
 # disable links on usernames
