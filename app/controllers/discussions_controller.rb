@@ -24,7 +24,7 @@ class DiscussionsController < GroupBaseController
   end
 
   def index
-    if params[:group] == 'nil'
+    if params[:group] == 'false'
       @discussions= current_user.discussions.page(params[:page]).per(8)
     else
       #@discussions = group.all_discussions(current_user).page(params[:page]).per(8)
