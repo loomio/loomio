@@ -149,10 +149,16 @@ h4 {
     }
   }
   .prev a {
-    /*background: url(prev.png) no-repeat;*/
+    size: 5px;
+    background: url(previous.png) no-repeat;
+    background-position-x: 15px;
+    background-position-y: 10px;
   }
   .next a {
-    /*background: url(next.png) no-repeat;*/
+    size: 5px;
+    background: url(Next.png) no-repeat;
+    background-position-x: 15px;
+    background-position-y: 10px;
   }
   .gap {
     border: 1px solid #DDD;

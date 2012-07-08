@@ -58,6 +58,7 @@
           - group_discussions.each do |discussion|
             %li= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
       #group-discussions
+        %div{ class: "group_#{@group.id}" }
         Loading...
         -#- else
           -#%li.no-discussions= "There are no discussions for this group"
