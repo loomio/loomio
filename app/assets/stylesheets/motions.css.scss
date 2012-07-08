@@ -122,10 +122,10 @@
   .control-group { padding-top: 0px; padding-bottom: 0px; }
   .vote-buttons{
     position: relative;
-    bottom: 15px;
-    margin-bottom: 15px;
+    bottom: 5px;
+    margin-bottom: 0 3px 15px 0;
   }
-  .vote-buttons .btn.vote {
+  .vote-buttons .btn {
     float: left;
     height: 40px;
     width: 40px;
