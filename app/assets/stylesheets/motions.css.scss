@@ -123,7 +123,6 @@
   .vote-buttons{
     position: relative;
     bottom: 5px;
-    margin-bottom: 0 3px 15px 0;
   }
   .vote-buttons .btn {
     float: left;
@@ -132,6 +131,7 @@
     @include box-shadow(1px, 1px, 4px, $mid-grey);
     @include border-radius(5px);
     padding: 3px;
+    margin: 0 10px 15px 0;
   }
   .votes-table { padding-bottom: 10px; }
   .votes-table .position-row {
