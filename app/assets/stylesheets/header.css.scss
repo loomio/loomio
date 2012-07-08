@@ -118,23 +118,23 @@ header{
 /* group dropdown items */
 li.new-group a { color: #08C; }
 li.new-group:hover { a { color: white; } }
-li.group-item{
-  .link-container{
-    display: inline-block;
-    width: 70%;
-    padding-right: 20px;
-    padding-left: 8px;
-    background-color: white;
-    a { padding-left: 5px; }
-  }
-  .notification-container{
-    display: inline-block;
-    float: right;
-    padding-top: 5px;
-    padding-right: 8px;
-    .span { margin-left: 0px; }
-  }
-}
+/*li.group-item{*/
+  /*.link-container{*/
+    /*display: inline-block;*/
+    /*width: 70%;*/
+    /*padding-right: 20px;*/
+    /*padding-left: 8px;*/
+    /*background-color: white;*/
+    /*a { padding-left: 5px; }*/
+  /*}*/
+  /*.notification-container{*/
+    /*display: inline-block;*/
+    /*float: right;*/
+    /*padding-top: 5px;*/
+    /*padding-right: 8px;*/
+    /*.span { margin-left: 0px; }*/
+  /*}*/
+/*}*/
 li.group-item:hover {
   background-color: #08C;
   .link-container{

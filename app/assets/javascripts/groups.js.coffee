@@ -70,7 +70,7 @@ $ ->
 
 #*** ajax for discussions on group page ***
 $ ->
-  $('#group-discussions').load("/discussions", 'group=get_group_from_page',
+  $('#group-discussions').load("/discussions", 'group=true',
     Application.convertUtcToRelativeTime)
 
 $ ->
