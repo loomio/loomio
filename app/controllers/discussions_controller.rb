@@ -24,11 +24,13 @@ class DiscussionsController < GroupBaseController
   end
 
   def index
-    if params[:group] == 'false'
-      @discussions= current_user.discussions.page(params[:page]).per(8)
-    else
+    if params[:group_id].present?
+      group = Group.find(params[:group_id])
       #@discussions = group.all_discussions(current_user).page(params[:page]).per(8)
-      @discussions= current_user.discussions.page(params[:page]).per(8)
+      @discussions = group.discussions.page(params[:page]).per(8)
+    else
+      debugger
+      @discussions= current_user.discussions_sorted.page(params[:page]).per(8)
     end
     render :layout => false if request.xhr?
   end
