@@ -46,6 +46,14 @@
   - group_name = membership.group_name
   - href = group_path(membership.group)
 
+- elsif notification.event_kind == "user_added_to_group"
+  - membership = notification.membership
+  - person = membership.inviter_name ? membership.inviter_name : "Someone"
+  - action_text = "added you to the group"
+  - title_text = membership.group_name
+  - group_name = membership.group_name
+  - href = group_path(membership.group)
+
 - date = time_ago_in_words(notification.created_at)
 - class_name = notification.viewed_at.nil? ? " unread" : ""
 

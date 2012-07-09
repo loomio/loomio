@@ -25,6 +25,7 @@ class Membership < ActiveRecord::Base
 
   belongs_to :group
   belongs_to :user
+  belongs_to :inviter
 
   #
   # ATTRIBUTES / SCOPES / DELEGATES
@@ -39,6 +40,7 @@ class Membership < ActiveRecord::Base
   delegate :parent, :to => :group, :prefix => :group, :allow_nil => true
   delegate :name, :to => :group, :prefix => :group
   delegate :admins, :to => :group, :prefix => :group
+  delegate :name, :to => :inviter, :prefix => :inviter, :allow_nil => true
 
   #
   # CALLBACKS
@@ -50,7 +52,6 @@ class Membership < ActiveRecord::Base
 
   #
   # STATE MACHINE
-  #
   #
 
   include AASM
