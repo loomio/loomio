@@ -12,6 +12,7 @@ class Users::InvitationsController < Devise::InvitationsController
           @user = User.invite_and_notify! params[:user], current_inviter, group
           if @user.errors.empty?
             set_flash_message :notice, :send_instructions, :email => email
+            Event.user_added_to_group!(@user.memberships.first)
             respond_with @user, :location => group_url(group)
           else
             # Jon: Sorry I know this is bad code. The validations should
@@ -28,8 +29,8 @@ class Users::InvitationsController < Devise::InvitationsController
           else
             flash[:notice] = "#{email} has been added to the group."
             # TODO: handle if mmember fails to be added
-            group.add_member! existing_user
-            UserMailer.added_to_group(existing_user, group).deliver
+            membership = group.add_member! existing_user
+            Event.user_added_to_group!(membership)
           end
           redirect_to group_url(group)
         end

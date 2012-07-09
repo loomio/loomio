@@ -8,7 +8,6 @@ describe Notification do
 
   # This test isn't working for some reason
   #it { should validate_uniqueness_of(:event).scoped_to(:user) }
-
   it "should validate uniqueness on event scoped to user" do
     user = mock_model(User)
     event = mock_model(Event)

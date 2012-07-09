@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120707012532) do
+ActiveRecord::Schema.define(:version => 20120709031235) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -113,9 +113,11 @@ ActiveRecord::Schema.define(:version => 20120707012532) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "access_level"
+    t.integer  "inviter_id"
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
+  add_index "memberships", ["inviter_id"], :name => "index_memberships_on_inviter_id"
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "motions", :force => true do |t|

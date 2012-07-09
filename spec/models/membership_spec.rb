@@ -41,7 +41,14 @@ describe Membership do
     end
   end
 
-  context "destroy" do
+  it "can have an inviter" do
+    membership = user.memberships.new(:group_id => group.id)
+    membership.inviter = user2
+    membership.save!
+    membership.inviter.should == user2
+  end
+
+  context "destroying a membership" do
     it "removes subgroup memberships (if existing)" do
       membership = group.add_member! user
       # Removes user from multiple subgroups
@@ -63,18 +70,54 @@ describe Membership do
       subgroup2.users.should_not include(user)
     end
 
-    it "removes open votes from user" do
-      membership = group.add_member! user
-      discussion = create_discussion(group: group)
-      motion = create_motion(discussion: discussion)
-      vote = Vote.new
-      vote.user = user
-      vote.position = "yes"
-      vote.motion = motion
-      vote.save!
-      membership.destroy
+    context do
+      it "removes the user's votes on motions that are in the group and are in the
+      'voting' phase" do
+        membership = group.add_member! user
+        discussion = create_discussion(group: group)
+        motion = create_motion(discussion: discussion)
+        vote = Vote.new
+        vote.user = user
+        vote.position = "yes"
+        vote.motion = motion
+        vote.save!
+        membership.destroy
 
-      motion.votes.count.should == 0
+        Vote.all.should_not include(vote)
+      end
+
+      it "does not fail if the motion no longer exists" do
+        membership = group.add_member! user
+        discussion = create_discussion(group: group)
+        motion = create_motion(discussion: discussion)
+        vote = Vote.new
+        vote.user = user
+        vote.position = "yes"
+        vote.motion = motion
+        vote.save!
+        motion.destroy
+        lambda {
+          membership.destroy
+        }.should_not raise_error
+      end
+
+      it "does not remove user's votes from other motions" do
+        membership = group.add_member! user
+        discussion = create_discussion(group: group)
+        motion = create_motion(discussion: discussion)
+        motion2 = create_motion
+        motion2.group.add_member! user
+        vote = user.votes.new(:position => "yes")
+        vote.motion = motion
+        vote.save!
+        vote2 = user.votes.new(:position => "yes")
+        vote2.motion = motion
+        vote2.save!
+        membership.destroy
+
+        vote2.should_not be_destroyed
+
+      end
     end
   end
 end

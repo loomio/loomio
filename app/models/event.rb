@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
-             membership_requested]
+             membership_requested user_added_to_group]
 
   has_many :notifications
   belongs_to :discussion
@@ -75,6 +75,13 @@ class Event < ActiveRecord::Base
     membership.group_admins.each do |admin|
       event.notifications.create! :user => admin
     end
+    event
+  end
+
+  def self.user_added_to_group!(membership)
+    event = create!(:kind => "user_added_to_group", :membership => membership)
+    event.notifications.create! :user => membership.user
+    UserMailer.added_to_group(membership.user, membership.group).deliver
     event
   end
 end
