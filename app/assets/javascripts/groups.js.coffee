@@ -70,8 +70,11 @@ $ ->
 
 #*** ajax for discussions on group page ***
 $ ->
-  $('#group-discussions').load("/discussions", 'group=true',
-    Application.convertUtcToRelativeTime)
+  if $("body.groups").length > 0
+    idStr = new Array
+    idStr = $('#group-discussions').children().attr('class').split('_')
+    $('#group-discussions').load("/groups/#{idStr[1]}/discussions",
+      Application.convertUtcToRelativeTime)
 
 $ ->
   $(document).on('click', '.pagination a', (e)->

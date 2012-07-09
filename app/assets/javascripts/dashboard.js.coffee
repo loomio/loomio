@@ -4,7 +4,7 @@
 
 #*** ajax for discussions ***
 $ ->
-  $('#user-discussions').load("/discussions", 'group=false',
+  $('#user-discussions').load("/discussions",
     Application.convertUtcToRelativeTime)
 
 $ ->

@@ -101,9 +101,14 @@ class User < ActiveRecord::Base
     new_user
   end
 
+
   def discussions_sorted
-    discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+    discussions.joins('INNER JOIN comments ON discussions.id = comments.commentable_id').order('title').uniq
   end
+
+  #def discussions_sorted
+    #discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+  #end
 
   def update_discussion_read_log(discussion)
     if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
