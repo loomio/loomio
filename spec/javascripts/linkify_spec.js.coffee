@@ -6,7 +6,7 @@ describe 'linkify', ->
     linkify = new Loomio.Views.Utils.Linkify
       el: $textWithUrl
     expect($textWithUrl.html())
-      .toBe('I like <a href="http://loom.io">http://loom.io</a>')
+      .toBe('I like <a href="http://loom.io" target="_blank">http://loom.io</a>')
 
   it 'will not apply an anchor tag to a jQuery object with no URL', ->
     linkify = new Loomio.Views.Utils.Linkify
