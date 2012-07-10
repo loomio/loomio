@@ -177,6 +177,7 @@ GEM
     mime-types (1.18)
     modernizr-rails (2.0.6)
     multi_json (1.0.4)
+    mysql2 (0.3.11)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -335,6 +336,7 @@ DEPENDENCIES
   launchy
   machinist (>= 2.0.0.beta2)
   modernizr-rails (~> 2.0.6)
+  mysql2
   pg
   rails (= 3.1.5)
   rails-backbone
