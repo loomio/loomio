@@ -43,14 +43,18 @@ describe Membership do
 
   it "can have an inviter" do
     membership = user.memberships.new(:group_id => group.id)
+    membership.access_level = "member"
     membership.inviter = user2
     membership.save!
     membership.inviter.should == user2
   end
 
   context "destroying a membership" do
+    before do
+      @membership = group.add_member! user
+    end
+
     it "removes subgroup memberships (if existing)" do
-      membership = group.add_member! user
       # Removes user from multiple subgroups
       subgroup = Group.make
       subgroup.parent = group
@@ -64,59 +68,46 @@ describe Membership do
       subgroup3 = Group.make
       subgroup3.parent = group
       subgroup3.save
-      membership.destroy
+      @membership.destroy
 
       subgroup.users.should_not include(user)
       subgroup2.users.should_not include(user)
     end
 
     context do
-      it "removes the user's votes on motions that are in the group and are in the
-      'voting' phase" do
-        membership = group.add_member! user
-        discussion = create_discussion(group: group)
-        motion = create_motion(discussion: discussion)
-        vote = Vote.new
-        vote.user = user
-        vote.position = "yes"
-        vote.motion = motion
-        vote.save!
-        membership.destroy
-
-        Vote.all.should_not include(vote)
+      before do
+        @discussion = create_discussion(group: group)
+        @motion = create_motion(discussion: @discussion)
+        @vote = Vote.new
+        @vote.user = user
+        @vote.position = "yes"
+        @vote.motion = @motion
+        @vote.save!
       end
 
-      it "does not fail if the motion no longer exists" do
-        membership = group.add_member! user
-        discussion = create_discussion(group: group)
-        motion = create_motion(discussion: discussion)
-        vote = Vote.new
-        vote.user = user
-        vote.position = "yes"
-        vote.motion = motion
-        vote.save!
-        motion.destroy
-        lambda {
-          membership.destroy
-        }.should_not raise_error
+      it "removes the user's votes on motions that are in the group and are in the
+      'voting' phase" do
+        @membership.destroy
+
+        Vote.all.should_not include(@vote)
       end
 
       it "does not remove user's votes from other motions" do
-        membership = group.add_member! user
-        discussion = create_discussion(group: group)
-        motion = create_motion(discussion: discussion)
         motion2 = create_motion
         motion2.group.add_member! user
-        vote = user.votes.new(:position => "yes")
-        vote.motion = motion
-        vote.save!
         vote2 = user.votes.new(:position => "yes")
-        vote2.motion = motion
+        vote2.motion = motion2
         vote2.save!
-        membership.destroy
+        @membership.destroy
 
         vote2.should_not be_destroyed
+      end
 
+      it "does not fail if a motion the user voted on no longer exists" do
+        @motion.destroy
+        lambda {
+          @membership.destroy
+        }.should_not raise_error
       end
     end
   end
