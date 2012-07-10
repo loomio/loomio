@@ -25,7 +25,7 @@ class Membership < ActiveRecord::Base
 
   belongs_to :group
   belongs_to :user
-  belongs_to :inviter
+  belongs_to :inviter, :class_name => "User"
 
   #
   # ATTRIBUTES / SCOPES / DELEGATES
@@ -95,11 +95,8 @@ class Membership < ActiveRecord::Base
     end
 
     def remove_open_votes
-      user.votes.each do |vote|
-        motion = Motion.find(vote.motion_id)
-        if motion.voting?
-          vote.destroy
-        end
+      user.open_votes.each do |vote|
+        vote.destroy
       end
     end
 

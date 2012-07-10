@@ -43,6 +43,25 @@ describe User do
     user.group_requests.should include(group)
   end
 
+  describe "open_votes" do
+    before do
+      @motion = create_motion
+      @motion.group.add_member! user
+      @vote = user.votes.new(:position => "yes")
+      @vote.motion = @motion
+      @vote.save
+    end
+
+    it "returns the user's votes on motions that are open" do
+      user.open_votes.should include(@vote)
+    end
+
+    it "does not return the user's votes on motions that are closed" do
+      @motion.close_voting!
+      user.open_votes.should_not include(@vote)
+    end
+  end
+
   it "has authored discussions" do
     group = Group.make!
     group.add_member!(user)

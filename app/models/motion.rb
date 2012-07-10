@@ -5,7 +5,7 @@ class Motion < ActiveRecord::Base
   belongs_to :facilitator, :class_name => 'User'
   belongs_to :discussion
   has_many :votes, :dependent => :destroy
-  has_many :did_not_votes
+  has_many :did_not_votes, :dependent => :destroy
 
   validates_presence_of :name, :discussion, :author, :facilitator
   validates_inclusion_of :phase, in: PHASES

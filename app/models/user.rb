@@ -50,6 +50,10 @@ class User < ActiveRecord::Base
            :conditions => { phase: 'closed' }
 
   has_many :votes
+  has_many :open_votes,
+           :class_name => 'Vote',
+           :source => :votes,
+           :through => :motions_voting
 
   has_many :notifications
 
