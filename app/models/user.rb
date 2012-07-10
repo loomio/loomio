@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
            :class_name => 'Group',
            :source => :group
 
+  has_many :created_groups,
+           :class_name => 'Group',
+           :foreign_key => 'creator_id'
+
   has_many :discussions,
            :through => :groups
   has_many :authored_discussions,
