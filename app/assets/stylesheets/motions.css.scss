@@ -117,7 +117,8 @@
   .vote-form{
     height: 100px;
   }
-  .vote-form .statement { width: 418px; }
+  #vote-statement .statement { width: 520px; }
+  #vote-statement .character-counter { width: 528px; }
   .inputError { margin-left: 0px; height: 65px; }
   .control-group { padding-top: 0px; padding-bottom: 0px; }
   .vote-buttons{

@@ -17,7 +17,7 @@ class Ability
 
     can :update, Group, :id => user.adminable_group_ids
 
-    can :add_subgroup, Group, :id => user.group_ids
+    can [:add_subgroup, :new_motion, :create_motion], Group, :id => user.group_ids
 
     can :add_members, Group, :members_invitable_by => :members,
                              :id => user.group_ids
