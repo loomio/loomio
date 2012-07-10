@@ -1,4 +1,20 @@
 =form_for @user do |f|
   = f.label :name
   = f.text_field :name
-  = f.submit "Update name", class: "btn btn-info"
+  .user-image-initial-wrapper
+    %span.user-image-initials= @user.initials
+  -#TODO f.file_field :avatar
+  .change-avatar-wrapper
+    %span.change-avatar-label Select Avatar
+    .user-image-option.option-initials
+      %span.change-user-image-initials= @user.initials
+      %a Use Initials
+    .user-image-option.option-gravatar
+      = image_tag @user.gravatar_url(:size => 40)
+      %a Use Gravatar
+    .user-image-option.option-uploaded
+      %a Upload Image
+  .clear-both
+  = f.submit "Update Settings", class: "btn btn-info"
+
+  -#TODO form_for @user, :url => user_path, :html => { :multipart => true } do |form| %>

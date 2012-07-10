@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, :presence => true
-
+  
+  include Gravtastic
+  gravtastic :rating => 'pg'
+  
   has_many :membership_requests,
            :conditions => { :access_level => 'request' },
            :class_name => 'Membership',
@@ -56,6 +59,10 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  
+  # Settings for paperclip
+  #attr_accessible :avatar
+  #  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
@@ -166,6 +173,14 @@ class User < ActiveRecord::Base
 
   def name
     deleted_at ? "Deleted user" : read_attribute(:name)
+  end
+  
+  def initials
+    initials = ""
+    read_attribute(:name) == read_attribute(:email) ? initials = read_attribute(:email)[0..1] : 
+        read_attribute(:name).gsub(/(?:^|\s|-|')[A-Z,a-z]/) { |first_character| initials += first_character }
+    
+    deleted_at ? "DU" : initials.upcase.gsub(/ /, '')
   end
 
   def deactivate!

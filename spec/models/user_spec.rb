@@ -185,6 +185,15 @@ describe User do
     end
   end
 
+  describe "initials" do
+    it "returns 'DU' if deleted_at is true (a date is present)" 
+
+    it "returns the stored name initials in all caps if deleted_at is nil" 
+    
+    it "returns the first two characters in all caps of the email if the user's name is email and if deleted_at is nil" 
+    
+  end
+
   it "sets deleted_at (Time.current) when deactivate! is called" do
     user.deactivate!
     user.deleted_at.should be_true
