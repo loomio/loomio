@@ -67,6 +67,12 @@ describe "Groups" do
         click_on 'Start a new discussion'
         should have_css(".discussions.new")
       end
+      it "can start a new proposal" do
+        visit group_path(@group)
+
+        click_on 'Start new proposal'
+        should have_css(".motions.new")
+      end
     end
 
     context "group member viewing a group visible to members only" do

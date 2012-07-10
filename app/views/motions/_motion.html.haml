@@ -33,26 +33,31 @@
       .vote-buttons.clearfix
         =link_to image_tag("hand-yes.png", title:"I agree", alt:"I agree"), "#", "title" => "I agree",
           "data-content" => "I agree with this and want it to go ahead.",
-          "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-yes", onclick: "$('#vote_position').val('yes');"
+          "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-yes",
+          onclick: "$('#vote_position').val('yes'); $('#position-title').text('You have decided to agree');"
         =link_to image_tag("hand-abstain.png", title:"I abstain", alt:"I abstain"), "#", "title" => "I abstain",
           "data-content" =>  "I am happy with what the group decides without me.",
-          "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-abstain", onclick: "$('#vote_position').val('abstain');"
+          "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-abstain",
+          onclick: "$('#vote_position').val('abstain'); $('#position-title').text('You have decided to abstain');"
         =link_to image_tag("hand-no.png", title:"I disagree", alt:"I disagree"), "#", "title" => "I disagree",
           "data-content" => "I think we can do better and would like to see something else happen, but if the group feels like it is the best way then I am ok with that.",
-          "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-disagree", onclick: "$('#vote_position').val('no');"
+          "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-disagree",
+          onclick: "$('#vote_position').val('no'); $('#position-title').text('You have decided to disagree');"
         =link_to image_tag("hand-block.png",title:"I block", alt:"I block"), "#", "title" => "I block",
           "data-content" => "I have strong objections to this motion and am not ok with it going ahead.",
-          "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-block", onclick: "$('#vote_position').val('block');"
+          "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-block",
+          onclick: "$('#vote_position').val('block'); $('#position-title').text('You have decided to block');"
 
     .votes-table= render "motions/votes_table", motion: motion, unique_votes: unique_votes
     #vote-statement.modal.hidden
       .modal-header
         %button.close{"data-dismiss" => "modal"}×
-        %h3= "Give a reason for your decission"
+        - position = :vote_position
+        %h2#position-title
       = form_for([motion, @vote], html:{class:'form-stacked'}) do |f|
         .modal-body
           .control-group
-            = f.text_area :statement, class: "statement inputError limit-250"
+            = f.text_area :statement, placeholder: "Give a reason for your decision", class: "statement inputError limit-250"
           .character-counter
           =f.hidden_field :position
         .modal-footer
