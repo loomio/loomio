@@ -40,7 +40,7 @@ class Group < ActiveRecord::Base
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
 
-  belongs_to :creator,  :class_name => "User", :foreign_key => 'id'
+  belongs_to :creator,  :class_name => "User"
 
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
@@ -48,7 +48,7 @@ class Group < ActiveRecord::Base
 
   acts_as_tagger
 
-  attr_accessible :name, :viewable_by, :parent_id, :parent, :creator_id
+  attr_accessible :name, :viewable_by, :parent_id, :parent
   attr_accessible :members_invitable_by, :email_new_motion, :description
 
   #
