@@ -29,7 +29,7 @@ class DiscussionsController < GroupBaseController
       #@discussions = group.all_discussions(current_user).page(params[:page]).per(8)
       @discussions = group.discussions.page(params[:page]).per(8)
     else
-      debugger
+      #debugger
       @discussions= current_user.discussions_sorted.page(params[:page]).per(8)
     end
     render :layout => false if request.xhr?
