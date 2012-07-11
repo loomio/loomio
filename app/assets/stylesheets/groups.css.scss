@@ -119,6 +119,7 @@ li.no-discussions, li.no-proposals {
   float: right;
   position: relative;
   top: 5px;
+  font-size: $font-tiny;
 }
 #add-description {
   color: $mid-grey;
@@ -138,7 +139,7 @@ li.no-discussions, li.no-proposals {
 
 /* add member panel */
 #add-members {
-  .btn {
+  #add-members-btn {
     float: left;
     width: 150px;
     text-align: left;
@@ -154,6 +155,7 @@ li.no-discussions, li.no-proposals {
     float: right;
     position: relative;
     top: 6px;
+    font-size: $font-tiny;
   }
   li { padding: 0px; }
 }
