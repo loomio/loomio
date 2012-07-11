@@ -74,10 +74,12 @@ describe GroupsController do
     end
 
     it "creates a group" do
-      @group = Group.make
+      @group = Group.make(:creator => @user)
       post :create, :group => @group.attributes
       assigns(:group).users.should include(@user)
       assigns(:group).admins.should include(@user)
+
+      assert_equal(@group.creator_id, @user.id, 'group creator_id should be user_id')
       response.should redirect_to(group_url(assigns(:group)))
     end
 
