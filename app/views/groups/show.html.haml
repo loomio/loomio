@@ -26,7 +26,7 @@
         - new_discussion = Discussion.new(group_id: @group.id)
         - if (can? :create, new_discussion)# && (can? :create, Motion.new(discussion_id: new_discussion.id))
           %li.tool-bar.clearfix
-            %a{ href: new_motion_group_path(@group), class: 'tool-bar-item', id: 'tool-bar-item-proposal' }
+            %a{ href: new_motion_group_path(@group), class: 'tool-bar-item tool-bar-item-proposal' }
               Start new proposal
         #open
           - if @motions_not_voted && @motions_not_voted.size > 0

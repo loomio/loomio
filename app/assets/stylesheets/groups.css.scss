@@ -5,6 +5,12 @@
 @import "bootstrap/mixins";
 @import "mixins";
 
+
+.form-horizontal {
+  /*label { padding-right: 10px; }*/
+  /*input { width: 390px;}*/
+}
+
 #group-form {
   form {
     width: 550px;
@@ -12,9 +18,11 @@
       display: inline-block;
       @include ie7-inline-block();
     }
+    .control-group { margin-bottom: 0px; }
+    .character-counter { bottom: 11px; }
   }
   #group_name { width: 390px; }
-  #settings-header { margin-bottom: 8px; }
+  #settings-header { margin-bottom: 10px; }
   .setting-label {
     margin-bottom: 4px;
     color: $mid-grey;
@@ -22,10 +30,18 @@
   .settings {
     margin-bottom: 20px;
   }
-    margin-right: 10px;
   .privacy-settings input {
     display: inline;
     float: left;
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+  .explanation {
+    font-size: $font-tiny;
+    color: $mid-grey;
+    position: relative;
+    right: 40px;
+    top: 1px;
   }
 }
 
@@ -40,15 +56,14 @@ li.no-discussions, li.no-proposals {
   position: relative;
   bottom: 4px;
 }
-#tool-bar-item-proposal {
-  padding-left: 30px;
+.tool-bar-item-proposal {
   background-image:url('/assets/proposal.png');
   background-repeat: no-repeat;
   background-size: 16px;
   background-position-x: 10px;
   background-position-y: 5px;
 }
-#tool-bar-item-proposal:hover {
+.tool-bar-item-proposal:hover {
   background-position-y: -46px;
 }
 #tool-bar-item-discussion {
@@ -57,7 +72,7 @@ li.no-discussions, li.no-proposals {
   background-repeat: no-repeat;
   background-size: 17px;
   background-position-x: 10px;
-  background-position-y: -38px;
+  background-position-y: -59px;
 }
 
 #tool-bar-item-discussion:hover {

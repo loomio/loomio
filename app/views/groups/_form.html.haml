@@ -10,20 +10,31 @@
         %h2 Settings
       .setting-label Who can see this group?
       .settings
-        - if group.parent.nil?
-          =f.radio_button :viewable_by, "everyone"
-          =f.label :viewable_by_everyone, "Everyone"
-          =f.radio_button :viewable_by, "members"
-          =f.label :viewable_by_members, "Members"
-        - else
+        - suffix = "group"
+        - suffix = "sub-group" unless group.parent.nil?
+        .row
+          .span2
+            =f.radio_button :viewable_by, "everyone"
+            =f.label :viewable_by_everyone, "Public"
+          .span4
+            .explanation= "- Anyone with a link can see this group"
+        .row
+          .span2
+            =f.radio_button :viewable_by, "members"
+            =f.label :viewable_by_members, "Members"
+          .span4
+            .explanation= "- Only members of this #{suffix} can see this group"
+        - unless group.parent.nil?
+        = "sub-group" if not group.parent.nil?
           =f.radio_button :viewable_by, "parent_group_members"
           =f.label :viewable_by_parent_group_members, "Parent group members"
+          .explanation= "Only members of this sub-group and the parent group can see this sub-group"
       .setting-label Who can invite members to this group?
       .settings
         =f.radio_button :members_invitable_by, "members"
-        =f.label :members_invitable_by_everyone, "Everyone"
+        =f.label :members_invitable_by_everyone, "All group members"
         =f.radio_button :members_invitable_by, "admins"
-        =f.label :members_invitable_by_admins, "Admins"
+        =f.label :members_invitable_by_admins, "Admins only"
     =f.hidden_field :parent_id, :value => parent.id unless parent.nil?
     .notification-settings
       = f.check_box :email_new_motion # TODO: check this by default
