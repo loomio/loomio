@@ -103,7 +103,7 @@ class User < ActiveRecord::Base
 
 
   def discussions_sorted
-    discussions.joins('INNER JOIN comments ON discussions.id = comments.commentable_id').order('title').uniq
+    discussions.joins('LEFT OUTER JOIN comments ON discussions.id = comments.commentable_id').where('discussions.id is not null').order('comments.created_at')
   end
 
   #def discussions_sorted
