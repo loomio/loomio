@@ -4,7 +4,7 @@ class GroupsController < GroupBaseController
 
   def create
     @group = Group.new(params[:group])
-    @group.creator_id = current_user.id
+    @group.creator = current_user
     if @group.save
       @group.add_admin! current_user
       flash[:success] = "Group created successfully."
