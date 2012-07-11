@@ -48,7 +48,7 @@
         - else
           - if can? :create, Motion.new(discussion_id: @discussion.id)
             %li.tool-bar.clearfix
-            =link_to "Start new proposal", new_proposal_discussion_path(@discussion.id), class: 'tool-bar-item', id: 'new-proposal'
+              =link_to "Start new proposal", new_proposal_discussion_path(@discussion.id), class: 'tool-bar-item tool-bar-item-proposal'
           %li.current-proposal.no-proposals= "There is no current proposal for this discussion"
 
     - if @discussion.motions.where("phase = 'closed'").count > 0

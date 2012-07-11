@@ -82,9 +82,8 @@ body.discussions.show {
     display: block;
     height: 18px;
   }
-  .position .position-message{
+  .position .position-message .word-break{
     padding-left: 0.4em;
-    display: inline;
   }
 
   /* proposal */
@@ -92,10 +91,20 @@ body.discussions.show {
     background: $comment-color;
     color: $mid-grey;
   }
+  .proposal .tool-bar-item-proposal {
+    float: left;
+    display: inline;
+    height: 19px;
+    width: 22px;
+    background-position-x: 2px;
+    background-position-y: 1px;
+
+  }
+  .proposal-info {
+    margin-left: 0.4em;
+  }
   .proposal .proposal-text{
     color: $dark-grey;
-    margin-left: 0.4em;
-    font-style: italic;
   }
   .proposal.current{
     background: $current-proposal;
