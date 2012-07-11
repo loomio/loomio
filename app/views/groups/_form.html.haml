@@ -7,7 +7,8 @@
     .character-counter
     .privacy-settings
       #settings-header
-        %h2 Settings
+        %h3 Settings
+      .long-divider
       .setting-label Who can see this group?
       .settings
         - suffix = "group"
@@ -29,12 +30,14 @@
           =f.radio_button :viewable_by, "parent_group_members"
           =f.label :viewable_by_parent_group_members, "Parent group members"
           .explanation= "Only members of this sub-group and the parent group can see this sub-group"
+      .long-divider
       .setting-label Who can invite members to this group?
       .settings
         =f.radio_button :members_invitable_by, "members"
         =f.label :members_invitable_by_everyone, "All group members"
         =f.radio_button :members_invitable_by, "admins"
         =f.label :members_invitable_by_admins, "Admins only"
+      .long-divider
     =f.hidden_field :parent_id, :value => parent.id unless parent.nil?
     .notification-settings
       = f.check_box :email_new_motion # TODO: check this by default
