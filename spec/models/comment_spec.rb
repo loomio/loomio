@@ -6,9 +6,7 @@ describe Comment do
   let(:comment) { Comment.create(commentable_id: discussion.id,
                    commentable_type: 'Discussion', user_id: user.id) }
 
-  context "destroying discussion" do
-    it "destroys associated comments"
-  end
+  it { should have_many(:events).dependent(:destroy) }
 
   context "liked by user" do
     before do

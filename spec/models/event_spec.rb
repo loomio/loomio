@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe Event do
   it { should belong_to(:discussion) }
+  it { should belong_to(:comment) }
+  it { should belong_to(:motion) }
+  it { should belong_to(:vote) }
+  it { should belong_to(:membership) }
+  it { should have_many(:notifications).dependent(:destroy) }
   it { should allow_value("new_discussion").for(:kind) }
   it { should allow_value("new_comment").for(:kind) }
   it { should allow_value("new_vote").for(:kind) }
