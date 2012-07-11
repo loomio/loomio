@@ -123,4 +123,9 @@ describe Discussion do
       @discussion.has_activity_unread_by?(@user).should == true
     end
   end
+
+  describe "destroying discussion" do
+    it "destroys associated comments"
+  end
+
 end

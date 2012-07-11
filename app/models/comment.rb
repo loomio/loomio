@@ -11,6 +11,7 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true
   belongs_to :user
   has_many :comment_votes
+  #has_many :events, :dependent => :destroy
 
   after_save :update_activity
 

@@ -27,6 +27,8 @@ class Membership < ActiveRecord::Base
   belongs_to :user
   belongs_to :inviter, :class_name => "User"
 
+  has_many :events, :dependent => :destroy
+
   #
   # ATTRIBUTES / SCOPES / DELEGATES
   #

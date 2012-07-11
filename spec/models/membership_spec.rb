@@ -6,6 +6,8 @@ describe Membership do
   let(:user2) { User.make! }
   let(:group) { Group.make! }
 
+  it { should have_many(:events).dependent(:destroy) }
+
   describe "validation" do
     it "must have a group" do
       membership.valid?

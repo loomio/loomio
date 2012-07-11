@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
              membership_requested user_added_to_group]
 
-  has_many :notifications
+  has_many :notifications, :dependent => :destroy
   belongs_to :discussion
   belongs_to :comment
   belongs_to :motion
