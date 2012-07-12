@@ -48,12 +48,6 @@ h4 {
 
 // structural elements (containers etc.)
 
-.center-content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-}
-
 .selector-panel {
   /*background-color: $header-color;*/
   background-color: $selector-panel;
@@ -92,11 +86,12 @@ h4 {
     height: 25px;
   }
   .tool-bar-item {
-    padding: 5px 15px;
+    padding: 6px 15px 6px 30px;
     color: $mid-grey;
     font-size: $font-small;
     position: relative;
     top: 3px;
+    margin-right: 0px;
     border-right: 1px solid $light-grey
 
   }
@@ -247,6 +242,16 @@ form {
   .checkbox-label {
     margin-left: 5px;
     display: inline;
+  }
+  .divider {
+    width: 300px;
+    border: 1px solid $lighter-grey;
+    margin-bottom: 5px;
+  }
+  .long-divider {
+    width: 400px;
+    border: 1px solid $lighter-grey;
+    margin-bottom: 5px;
   }
 }
 

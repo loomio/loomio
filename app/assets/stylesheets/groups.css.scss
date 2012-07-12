@@ -5,6 +5,12 @@
 @import "bootstrap/mixins";
 @import "mixins";
 
+
+.form-horizontal {
+  /*label { padding-right: 10px; }*/
+  /*input { width: 390px;}*/
+}
+
 #group-form {
   form {
     width: 550px;
@@ -12,19 +18,30 @@
       display: inline-block;
       @include ie7-inline-block();
     }
-    #group_name { width: 390px; }
-    #setting-label {
-      margin-bottom: 4px;
-      color: $mid-grey;
-    }
-    .privacy-settings {
-      padding-bottom: 10px;
-      select {
-        width: 182px;
-        margin-bottom: 10px;
-      }
-      .input { text-align: right; }
-    }
+    .control-group { margin-bottom: 0px; }
+    .character-counter { bottom: 11px; }
+  }
+  #group_name { width: 390px; }
+  /*#settings-header { margin-bottom: 10px; }*/
+  .setting-label {
+    margin-bottom: 4px;
+    color: $mid-grey;
+  }
+  .settings {
+    margin-bottom: 20px;
+  }
+  .privacy-settings input {
+    display: inline;
+    float: left;
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+  .explanation {
+    font-size: $font-tiny;
+    color: $mid-grey;
+    position: relative;
+    right: 40px;
+    top: 1px;
   }
 }
 
@@ -39,19 +56,27 @@ li.no-discussions, li.no-proposals {
   position: relative;
   bottom: 4px;
 }
-#tool-bar-item-discussion {
-  padding-left: 30px;
-  background-image:url('/assets/discussion.png');
+.tool-bar-item-proposal {
+  background-image:url('/assets/proposal.png');
   background-repeat: no-repeat;
-  background-size: 15px;
+  background-size: 16px;
   background-position-x: 10px;
   background-position-y: 5px;
 }
+.tool-bar-item-proposal:hover {
+  background-position-y: -46px;
+}
+#tool-bar-item-discussion {
+  padding-left: 30px;
+  background-image:url('/assets/discussion-white.png');
+  background-repeat: no-repeat;
+  background-size: 17px;
+  background-position-x: 10px;
+  background-position-y: -59px;
+}
 
 #tool-bar-item-discussion:hover {
-  background-image:url('/assets/discussion-white.png');
-  /*background-repeat: no-repeat;*/
-  /*background-size: 15px;*/
+  background-position-y: 5px;
 }
 /*request membership panel*/
 #request-membership {
@@ -94,6 +119,7 @@ li.no-discussions, li.no-proposals {
   float: right;
   position: relative;
   top: 5px;
+  font-size: $font-tiny;
 }
 #add-description {
   color: $mid-grey;
@@ -113,7 +139,7 @@ li.no-discussions, li.no-proposals {
 
 /* add member panel */
 #add-members {
-  .btn {
+  #add-members-btn {
     float: left;
     width: 150px;
     text-align: left;
@@ -129,6 +155,7 @@ li.no-discussions, li.no-proposals {
     float: right;
     position: relative;
     top: 6px;
+    font-size: $font-tiny;
   }
   li { padding: 0px; }
 }

@@ -6,6 +6,8 @@ Loomio::Application.routes.draw do
     get :add_subgroup, on: :member
     resources :motions, name_prefix: "groups_"
     get :request_membership, on: :member
+    get :new_motion, :on => :member
+    post :create_motion, :on => :member
   end
 
   resources :motions, except: :index do
