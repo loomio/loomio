@@ -58,12 +58,20 @@ class User < ActiveRecord::Base
            :dependent => :destroy
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me
   
   # Settings for paperclip
-  #attr_accessible :avatar
-  #  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-
+  attr_accessible :uploaded_avatar
+  has_attached_file :uploaded_avatar, 
+    :styles => { :medium => "170x170>", :thumb => "40x40>" }
+    #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
+    #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
+    
+  validates_attachment :uploaded_avatar, 
+    :size => { :in => 0..1000.kilobytes }
+  # File types can be restricted
+  # :content_type => { :content_type => "image/jpg" },
+    
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
 
@@ -210,6 +218,23 @@ class User < ActiveRecord::Base
       total += discussion_activity_count(discussion)
     end
     total
+  end
+  
+  def avatar_url(size = "thumb")
+    case size
+    when "thumb"
+      pixels = "40"
+    when "medium"
+      pixels = "170"
+    else 
+      pixels = "40"
+    end
+    
+    if avatar_kind == "gravatar"
+      self.gravatar_url(:size => pixels)
+    elsif avatar_kind == "uploaded"
+      self.uploaded_avatar.url(size)
+    end
   end
 
   private

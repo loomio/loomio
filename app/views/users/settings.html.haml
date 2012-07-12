@@ -1,20 +1,25 @@
-=form_for @user do |f|
+= form_for [@user], :html => { :multipart => true } do |f|
   = f.label :name
   = f.text_field :name
-  .user-image-initial-wrapper
-    %span.user-image-initials= @user.initials
-  -#TODO f.file_field :avatar
+  - if @user.avatar_url.nil?
+    .large-user-image-initial-wrapper
+      %span.large-user-image-initials= @user.initials
+  - else
+    .user-image
+      = image_tag @user.avatar_url("medium")
   .change-avatar-wrapper
     %span.change-avatar-label Select Avatar
-    .user-image-option.option-initials
-      %span.change-user-image-initials= @user.initials
-      %a Use Initials
+    .user-image-option.option-uploaded
+      = image_tag @user.uploaded_avatar.url(:thumb) if @user.uploaded_avatar
+      %a{ id: 'use_uploaded' } Use Uploaded Image
     .user-image-option.option-gravatar
       = image_tag @user.gravatar_url(:size => 40)
-      %a Use Gravatar
-    .user-image-option.option-uploaded
-      %a Upload Image
+      %a{ id: 'use_gravatar' } Use Gravatar
+    .user-image-option.option-initials
+      %span.change-user-image-initials= @user.initials
+      %a{ id: 'use_initials' } Use Initials
+    .user-image-option.option-upload
+      = f.file_field :uploaded_avatar
+    = hidden_field_tag("user[avatar_kind]", "", :id => "user_avatar_kind")
   .clear-both
   = f.submit "Update Settings", class: "btn btn-info"
-
-  -#TODO form_for @user, :url => user_path, :html => { :multipart => true } do |form| %>
