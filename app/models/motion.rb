@@ -6,6 +6,7 @@ class Motion < ActiveRecord::Base
   belongs_to :discussion
   has_many :votes, :dependent => :destroy
   has_many :did_not_votes, :dependent => :destroy
+  has_many :events, :dependent => :destroy
 
   validates_presence_of :name, :discussion, :author, :facilitator
   validates_inclusion_of :phase, in: PHASES
@@ -19,7 +20,7 @@ class Motion < ActiveRecord::Base
   delegate :name, :to => :author, :prefix => :author
   delegate :name, :to => :facilitator, :prefix => :facilitator
   delegate :group, :to => :discussion
-  delegate :users, :to => :group, :prefix => :group
+  delegate :users, :full_name, :to => :group, :prefix => :group
 
   after_create :initialize_discussion
   after_create :email_motion_created

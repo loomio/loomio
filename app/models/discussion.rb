@@ -20,8 +20,10 @@ class Discussion < ActiveRecord::Base
   has_many :comments,  :as => :commentable
   has_many :users_with_comments, :through => :comments,
     :source => :user, :uniq => true
+  has_many :events, :dependent => :destroy
 
   delegate :users, :to => :group, :prefix => :group
+  delegate :full_name, :to => :group, :prefix => :group
 
   attr_accessible :group_id, :group, :title
 

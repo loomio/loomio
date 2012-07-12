@@ -85,7 +85,9 @@ class Event < ActiveRecord::Base
     #if membership.user.accepting_or_not_invited?
       #UserMailer.added_to_group(membership.user, membership.group).deliver
     #end
-    UserMailer.added_to_group(membership.user, membership.group).deliver
+    if membership.user.accepting_or_not_invited?
+      UserMailer.added_to_group(membership.user, membership.group).deliver
+    end
     event
   end
 end

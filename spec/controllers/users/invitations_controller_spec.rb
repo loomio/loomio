@@ -43,11 +43,8 @@ describe Users::InvitationsController do
       context "invites member (with no existing loomio account)" do
         it "should succeed and redirect" do
           User.should_receive(:find_by_email).and_return(nil)
-          User.should_receive(:invite!).and_return(invited_user)
-          group.should_receive(:add_member!).with(invited_user)
+          User.should_receive(:invite_and_notify!).and_return(invited_user)
           invited_user.should_receive(:errors).twice.and_return([])
-          UserMailer.should_receive(:invited_to_loomio)
-            .and_return(stub(deliver: true))
           Event.should_receive(:user_added_to_group!)
 
           post :create, user: {email: "test@example.com", group_id: group.id}
@@ -64,8 +61,7 @@ describe Users::InvitationsController do
 
         it "should succeed and redirect if member is not in group" do
           invited_user.should_receive(:groups).and_return([])
-          group.should_receive(:add_member!).with(invited_user)
-          UserMailer.should_receive(:added_to_group).and_return(stub(deliver: true))
+          group.should_receive(:add_member!).with(invited_user, user)
           Event.should_receive(:user_added_to_group!)
 
           post :create, user: {email: email, group_id: group.id}

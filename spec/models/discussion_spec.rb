@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Discussion do
+  it { should have_many(:events).dependent(:destroy) }
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:group) }
   it { should validate_presence_of(:author) }

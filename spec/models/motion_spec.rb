@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Motion do
+  it { should have_many(:events).dependent(:destroy) }
+
   subject do
     @motion = Motion.new
     @motion.valid?

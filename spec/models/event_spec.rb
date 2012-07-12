@@ -240,6 +240,16 @@ describe Event do
           and_return(stub(deliver: true))
         @event = Event.user_added_to_group! @membership
       end
+
+      it "does not send email to user if user has not yet acctepted invitation
+          to loomio" do
+        @user = User.invite_and_notify!({ :email => "example@blah.com" },
+                                        User.make!, @group)
+        @membership = @user.memberships.first
+        UserMailer.should_not_receive(:added_to_group)
+
+        @event = Event.user_added_to_group! @membership
+      end
     end
   end
 end
