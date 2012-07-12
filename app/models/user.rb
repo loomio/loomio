@@ -68,10 +68,10 @@ class User < ActiveRecord::Base
   # Settings for paperclip
   attr_accessible :uploaded_avatar
   has_attached_file :uploaded_avatar, 
-    :styles => { 
-      :large => "#{User::LARGE_PIXEL_CONST}x#{User::LARGE_PIXEL_CONST}#", 
+    :styles => {
+      :large => "#{User::LARGE_PIXEL_CONST}x#{User::LARGE_PIXEL_CONST}#",
       :medium => "#{User::MEDIUM_PIXEL_CONST}x#{User::MEDIUM_PIXEL_CONST}#",
-      :small => "#{User::SMALL_PIXEL_CONST}x#{User::SMALL_PIXEL_CONST}#" 
+      :small => "#{User::SMALL_PIXEL_CONST}x#{User::SMALL_PIXEL_CONST}#"
     }
     # Use these to change image storage location
     #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
