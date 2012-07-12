@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   LARGE_PIXEL_CONST = 170
   MEDIUM_PIXEL_CONST = 35
   SMALL_PIXEL_CONST = 25
+  MAX_AVATAR_IMAGE_SIZE_CONST = 1000
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, #:registerable,
@@ -77,7 +78,7 @@ class User < ActiveRecord::Base
     #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
     
   validates_attachment :uploaded_avatar, 
-    :size => { :in => 0..1000.kilobytes }
+    :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes }
   # File types can be restricted
   # :content_type => { :content_type => "image/jpg" },
     
