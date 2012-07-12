@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Event do
   it { should belong_to(:discussion) }
   it { should belong_to(:comment) }
+  it { should belong_to(:comment_vote) }
   it { should belong_to(:motion) }
   it { should belong_to(:vote) }
   it { should belong_to(:membership) }
@@ -13,6 +14,7 @@ describe Event do
   it { should allow_value("motion_blocked").for(:kind) }
   it { should allow_value("membership_requested").for(:kind) }
   it { should allow_value("user_added_to_group").for(:kind) }
+  it { should allow_value("comment_liked").for(:kind) }
   it { should_not allow_value("blah").for(:kind) }
 
   let(:discussion) { create_discussion }
@@ -251,5 +253,13 @@ describe Event do
         @event = Event.user_added_to_group! @membership
       end
     end
+  end
+
+  describe "comment_liked!" do
+    let(:comment_vote) { stub_model(CommentVote) }
+    subject { Event.comment_liked!(CommentVote) }
+
+    its(:kind) { should eq("comment_liked") }
+    its(:comment_vote) { should eq(comment_vote) }
   end
 end

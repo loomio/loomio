@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
-             membership_requested user_added_to_group]
+             membership_requested user_added_to_group comment_vote]
 
   has_many :notifications, :dependent => :destroy
   belongs_to :discussion
@@ -8,10 +8,12 @@ class Event < ActiveRecord::Base
   belongs_to :motion
   belongs_to :vote
   belongs_to :membership
+  belongs_to :comment_vote
 
   validates_inclusion_of :kind, :in => KINDS
 
-  attr_accessible :kind, :discussion, :comment, :motion, :vote, :membership
+  attr_accessible :kind, :discussion, :comment, :motion, :vote, :membership,
+    :comment_vote
 
   def self.new_discussion!(discussion)
     event = create!(:kind => "new_discussion", :discussion => discussion)
@@ -88,6 +90,11 @@ class Event < ActiveRecord::Base
     if membership.user.accepting_or_not_invited?
       UserMailer.added_to_group(membership.user, membership.group).deliver
     end
+    event
+  end
+
+  def self.comment_liked!(comment_vote)
+    event = create!(:kind => "comment_liked", :comment_vote => comment_vote)
     event
   end
 end
