@@ -43,7 +43,7 @@
             .medium-user-image-initial-wrapper
               %span.medium-user-image-initials= current_user.initials
           - else
-            = image_tag current_user.avatar_url
+            = image_tag current_user.avatar_url("medium")
         %li.dropdown
           %a{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
             = current_user.name
