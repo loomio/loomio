@@ -12,7 +12,7 @@
             .position-icon
               = render partial: "motions/display_icons", locals: { position: message.position }
             .comment-username= link_to(message.user_name, "#")
-            .comment-label= " has made a decission. "
+            .comment-label= " has made a decision. "
             .position-message
               - if message.statement.present?
                 .word-break= "#{message.statement}"
@@ -30,7 +30,7 @@
             .proposal-info
               %span.proposal-text.word-break= "#{message.name}"
               %span.proposal-description.word-break= '- "' + h(truncate(message.description,
-              length: 120, omission: '...', separator: ' ')) + '"' if message.description
+              length: 120, omission: '...', separator: ' ')) + '"' if message.description.nil?
             .comment-time
               = time_ago_in_words(message.created_at) + " ago"
   :coffeescript

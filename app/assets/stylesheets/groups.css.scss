@@ -60,23 +60,21 @@ li.no-discussions, li.no-proposals {
   background-image:url('/assets/proposal.png');
   background-repeat: no-repeat;
   background-size: 16px;
-  background-position-x: 10px;
-  background-position-y: 5px;
+  background-position: 10px 5px;
 }
 .tool-bar-item-proposal:hover {
-  background-position-y: -46px;
+  background-position: 10px -46px;
 }
 #tool-bar-item-discussion {
   padding-left: 30px;
   background-image:url('/assets/discussion-white.png');
   background-repeat: no-repeat;
   background-size: 17px;
-  background-position-x: 10px;
-  background-position-y: -59px;
+  background-position: 10px -59px;
 }
 
 #tool-bar-item-discussion:hover {
-  background-position-y: 5px;
+  background-position: 10px 5px;
 }
 /*request membership panel*/
 #request-membership {
