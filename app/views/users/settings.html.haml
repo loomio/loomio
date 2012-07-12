@@ -10,7 +10,7 @@
   .change-avatar-wrapper
     %span.change-avatar-label Select Avatar
     .user-image-option.option-uploaded
-      = image_tag @user.uploaded_avatar.url(:thumb) if @user.uploaded_avatar
+      = image_tag @user.uploaded_avatar.url(:medium) if @user.uploaded_avatar
       %a{ id: 'use_uploaded' } Use Uploaded Image
     .user-image-option.option-gravatar
       = image_tag @user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)
