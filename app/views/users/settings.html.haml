@@ -6,14 +6,14 @@
       %span.large-user-image-initials= @user.initials
   - else
     .user-image
-      = image_tag @user.avatar_url("medium")
+      = image_tag @user.avatar_url("large")
   .change-avatar-wrapper
     %span.change-avatar-label Select Avatar
     .user-image-option.option-uploaded
       = image_tag @user.uploaded_avatar.url(:thumb) if @user.uploaded_avatar
       %a{ id: 'use_uploaded' } Use Uploaded Image
     .user-image-option.option-gravatar
-      = image_tag @user.gravatar_url(:size => 35)
+      = image_tag @user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)
       %a{ id: 'use_gravatar' } Use Gravatar
     .user-image-option.option-initials
       .medium-user-image-initial-wrapper

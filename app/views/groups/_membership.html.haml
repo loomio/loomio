@@ -2,15 +2,15 @@
   - if can? :edit, group
     .member-list-avatar
       - if membership.user.avatar_url.nil?
-        .medium-user-image-initial-wrapper
-          %span.medium-user-image-initials= membership.initials
+        .small-user-image-initial-wrapper
+          %span.small-user-image-initials= membership.initials
       - else
-        = image_tag membership.avatar_url
+        = image_tag membership.avatar_url("small")
     .user-name
       - if membership.user_name
-        = truncate(membership.user_name, :length => 29, :omission => '...')
+        %span= truncate(membership.user_name, :length => 29, :omission => '...')
       - else
-        = truncate(membership.user_email, :length => 29, :omission => '...')
+        %span= truncate(membership.user_email, :length => 29, :omission => '...')
     - if current_user.is_group_admin?(group)
       - member = User.find(membership.user_id)
       .admin-controls
@@ -23,11 +23,11 @@
   - else
     .member-list-avatar
       - if membership.user.avatar_url.nil?
-        .medium-user-image-initial-wrapper
-          %span.medium-user-image-initials= membership.user.initials
+        .small-user-image-initial-wrapper
+          %span.small-user-image-initials= membership.user.initials
       - else
         = image_tag membership.user.avatar_url
     - if membership.user_name
-      = truncate(membership.user_name, :length => 38, :omission => '...')
+      %span= truncate(membership.user_name, :length => 38, :omission => '...')
     - else
-      = truncate(membership.user_email, :length => 38, :omission => '...')
+      %span= truncate(membership.user_email, :length => 38, :omission => '...')

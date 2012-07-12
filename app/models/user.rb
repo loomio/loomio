@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  
+  LARGE_PIXEL_CONST = 170
+  MEDIUM_PIXEL_CONST = 35
+  SMALL_PIXEL_CONST = 25
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, #:registerable,
@@ -64,9 +68,11 @@ class User < ActiveRecord::Base
   attr_accessible :uploaded_avatar
   has_attached_file :uploaded_avatar, 
     :styles => { 
-      :medium => "170x170#", 
-      :thumb => "35x35#"
+      :large => "#{User::LARGE_PIXEL_CONST}#{User::LARGE_PIXEL_CONST}#", 
+      :medium => "#{User::MEDIUM_PIXEL_CONST}x#{User::MEDIUM_PIXEL_CONST}#",
+      :small => "#{User::SMALL_PIXEL_CONST}x#{User::SMALL_PIXEL_CONST}#" 
     }
+    # Use these to change image storage location
     #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
     #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
     
@@ -223,14 +229,16 @@ class User < ActiveRecord::Base
     total
   end
   
-  def avatar_url(size = "thumb")
+  def avatar_url(size = "medium")
     case size
-    when "thumb"
-      pixels = "35"
+    when "small"
+      pixels = User::SMALL_PIXEL_CONST
     when "medium"
-      pixels = "170"
+      pixels = User::MEDIUM_PIXEL_CONST
+    when "large"
+      pixels = User::LARGE_PIXEL_CONST
     else 
-      pixels = "35"
+      pixels = User::SMALL_PIXEL_CONST
     end
     
     if avatar_kind == "gravatar"
