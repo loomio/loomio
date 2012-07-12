@@ -9,6 +9,7 @@ Loomio is a free and open-source web application that helps groups make better d
 ```
   $ cd /dir/to/loomio/
   $ bundle install
+  $ sudo port install ImageMagick [Other installation options for ImageMagick](http://www.imagemagick.org/script/binary-releases.php#macosx)
   $ cp config/database.example.yml config/database.yml
   $ bundle exec rake db:create
   $ bundle exec rake db:schema:load
