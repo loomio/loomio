@@ -87,4 +87,8 @@ class Discussion < ActiveRecord::Base
       created_at
     end
   end
+
+  def latest_comment
+    comments.order('created_at DESC').first
+  end
 end

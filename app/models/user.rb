@@ -103,7 +103,11 @@ class User < ActiveRecord::Base
 
 
   def discussions_sorted
-    discussions.joins('LEFT OUTER JOIN comments ON discussions.id = comments.commentable_id').where('discussions.id is not null').order('comments.created_at')
+    #latest_comments = Comment.select('commentable_id, MAX(created_at) AS latest_created_at').group('commentable_id')
+    #discussions.joins
+      #Comment.select('commentable_id AS id, MAX(created_at) AS latest_created_at').group('commentable_id')).
+      #order('latest_created_at')
+    #discussions.joins('LEFT OUTER JOIN comments ON discussions.id = comments.commentable_id').group('max(comments.created_at)').order('comments.created_at')
   end
 
   #def discussions_sorted
