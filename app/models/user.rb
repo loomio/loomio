@@ -63,7 +63,10 @@ class User < ActiveRecord::Base
   # Settings for paperclip
   attr_accessible :uploaded_avatar
   has_attached_file :uploaded_avatar, 
-    :styles => { :medium => "170x170#", :thumb => "40x40#" }
+    :styles => { 
+      :medium => "170x170#", 
+      :thumb => "40x40#"
+    }
     #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
     #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
     

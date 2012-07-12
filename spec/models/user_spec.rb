@@ -17,6 +17,8 @@ describe User do
     user.valid?
     user.should have(1).errors_on(:email)
   end
+  
+  it "has uploaded avatar less than 1000kb "
 
   it "has many groups" do
     group = Group.make!
@@ -186,12 +188,18 @@ describe User do
   end
 
   describe "initials" do
-    it "returns 'DU' if deleted_at is true (a date is present)" 
-
-    it "returns the stored name initials in all caps if deleted_at is nil" 
+    it "returns 'DU' if deleted_at is true (a date is present)"
+    it "returns the stored name initials in all caps if deleted_at is nil"
+    it "returns the first two characters in all caps of the email if the user's name is email and if deleted_at is nil"
     
-    it "returns the first two characters in all caps of the email if the user's name is email and if deleted_at is nil" 
-    
+  end
+  
+  describe "avatar_url" do
+    it "returns gravatar url if avatar_kind is 'gravatar'"
+    it "returns uploaded url if avatar_kind is 'uploaded'"
+    it "returns nil url if avatar_kind is nil"
+    it "returns medium sized image if medium parameter is supplied"
+    it "returns thumb sized image if medium parameter is thumb"
   end
 
   it "sets deleted_at (Time.current) when deactivate! is called" do
