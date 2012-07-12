@@ -198,8 +198,9 @@ describe User do
     it "returns gravatar url if avatar_kind is 'gravatar'"
     it "returns uploaded url if avatar_kind is 'uploaded'"
     it "returns nil url if avatar_kind is nil"
+    it "returns large sized image if large parameter is supplied"
     it "returns medium sized image if medium parameter is supplied"
-    it "returns thumb sized image if medium parameter is thumb"
+    it "returns small sized image if small parameter is thumb"
   end
 
   it "sets deleted_at (Time.current) when deactivate! is called" do
