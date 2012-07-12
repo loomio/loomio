@@ -34,7 +34,7 @@ describe UserMailer do
     end
   end
 
-  context 'sending email when user is added to a group' do
+  context 'added_to_group' do
     before :all do
       @user = User.make!
       @group = Group.make!

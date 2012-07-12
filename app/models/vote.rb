@@ -20,6 +20,7 @@ class Vote < ActiveRecord::Base
                      'no' => 'disagreed', 'block' => 'blocked' }
   belongs_to :motion
   belongs_to :user
+  has_many :events, :dependent => :destroy
 
   validates_presence_of :motion, :user, :position
   validates_inclusion_of :position, in: POSITIONS
@@ -38,7 +39,7 @@ class Vote < ActiveRecord::Base
   delegate :author, :to => :motion, :prefix => :motion
   delegate :author, :to => :discussion, :prefix => :discussion
   delegate :name, :to => :motion, :prefix => :motion
-  delegate :name, :to => :group, :prefix => :group
+  delegate :name, :full_name, :to => :group, :prefix => :group
 
   after_save :send_notifications
   after_save :update_activity

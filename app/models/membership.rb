@@ -40,7 +40,7 @@ class Membership < ActiveRecord::Base
 
   delegate :name, :email, :to => :user, :prefix => :user
   delegate :parent, :to => :group, :prefix => :group, :allow_nil => true
-  delegate :name, :to => :group, :prefix => :group
+  delegate :name, :full_name, :to => :group, :prefix => :group
   delegate :admins, :to => :group, :prefix => :group
   delegate :name, :to => :inviter, :prefix => :inviter, :allow_nil => true
 

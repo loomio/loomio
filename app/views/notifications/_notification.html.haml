@@ -3,7 +3,7 @@
   - person = discussion.author.name
   - action_text = "started a new discussion"
   - title_text = discussion.title
-  - group_name = discussion.group.name
+  - group_name = discussion.group_full_name
   - href = discussion_path(discussion)
 
 - elsif notification.event_kind == "new_comment"
@@ -11,7 +11,7 @@
   - person = comment.user.name
   - action_text = "commented on the discussion"
   - title_text = comment.discussion.title
-  - group_name = comment.discussion.group.name
+  - group_name = comment.group_full_name
   - href = discussion_path(comment.discussion)
 
 - elsif notification.event_kind == "new_motion"
@@ -19,7 +19,7 @@
   - person = motion.author.name
   - action_text = "created a new proposal"
   - title_text = motion.name
-  - group_name = motion.group.name
+  - group_name = motion.group_full_name
   - href = discussion_path(motion.discussion)
 
 - elsif notification.event_kind == "new_vote"
@@ -27,7 +27,7 @@
   - person = vote.user_name
   - action_text = "#{Vote::POSITION_VERBS[vote.position]} on the proposal"
   - title_text = vote.motion_name
-  - group_name = vote.group_name
+  - group_name = vote.group_full_name
   - href = discussion_path(vote.discussion, :proposal => vote.motion.id)
 
 - elsif notification.event_kind == "motion_blocked"
@@ -35,23 +35,23 @@
   - person = vote.user_name
   - action_text = "blocked the proposal"
   - title_text = vote.motion_name
-  - group_name = vote.group_name
+  - group_name = vote.group_full_name
   - href = discussion_path(vote.discussion, :proposal => vote.motion.id)
 
 - elsif notification.event_kind == "membership_requested"
   - membership = notification.membership
   - person = membership.user_name
   - action_text = "requested membership to"
-  - title_text = membership.group_name
-  - group_name = membership.group_name
+  - title_text = membership.group_full_name
+  - group_name = membership.group_full_name
   - href = group_path(membership.group)
 
 - elsif notification.event_kind == "user_added_to_group"
   - membership = notification.membership
   - person = membership.inviter_name ? membership.inviter_name : "Someone"
   - action_text = "added you to the group"
-  - title_text = membership.group_name
-  - group_name = membership.group_name
+  - title_text = membership.group_full_name
+  - group_name = membership.group_full_name
   - href = group_path(membership.group)
 
 - date = time_ago_in_words(notification.created_at)

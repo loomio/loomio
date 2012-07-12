@@ -159,11 +159,20 @@ describe User do
     end
   end
 
-  it "can be invited" do
-    inviter = User.make!
-    group = Group.make!
-    user = User.invite_and_notify!({email: "foo@example.com"}, inviter, group)
-    group.users.should include(user)
+  describe "inviting user to Loomio and to group" do
+    before do
+      @inviter = User.make!
+      @group = Group.make!
+      @user = User.invite_and_notify!({email: "foo@example.com"}, @inviter, @group)
+    end
+
+    it "adds user to group" do
+      @group.users.should include(@user)
+    end
+
+    it "adds inviter to membership" do
+      @user.memberships.first.inviter.should == @inviter
+    end
   end
 
   it "invited user should have email as name" do
@@ -198,8 +207,8 @@ describe User do
     @user = User.make!
     @group = Group.make!
     @group.add_member!(@user)
-    create_discussion(group: @group)
-    create_discussion(group: @group)
+    Notification.create!(:event => mock_model(Event), :user => @user)
+    Notification.create!(:event => mock_model(Event), :user => @user)
     @user.unviewed_notifications.count.should == 2
     @user.mark_notifications_as_viewed!
     @user.unviewed_notifications.count.should == 0

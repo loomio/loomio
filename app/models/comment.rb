@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true
   belongs_to :user
   has_many :comment_votes
-  #has_many :events, :dependent => :destroy
+  has_many :events, :dependent => :destroy
 
   after_save :update_activity
 
@@ -21,6 +21,8 @@ class Comment < ActiveRecord::Base
 
   delegate :name, :to => :user, :prefix => :user
   delegate :participants, :to => :discussion, :prefix => :discussion
+  delegate :group, :to => :discussion
+  delegate :full_name, :to => :group, :prefix => :group
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text

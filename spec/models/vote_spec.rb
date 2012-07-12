@@ -10,6 +10,8 @@ describe Vote do
   it { Vote::POSITION_VERBS['no'].should == 'disagreed' }
   it { Vote::POSITION_VERBS['block'].should == 'blocked' }
 
+  it { should have_many(:events).dependent(:destroy) }
+
   context 'a new vote' do
     subject do
       @vote = Vote.new

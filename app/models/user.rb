@@ -110,7 +110,7 @@ class User < ActiveRecord::Base
     new_user = User.invite!(user_params, inviter) do |u|
       u.skip_invitation = true
     end
-    group.add_member! new_user
+    membership = group.add_member! new_user, inviter
     UserMailer.invited_to_loomio(new_user, inviter, group).deliver
     new_user
   end

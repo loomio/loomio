@@ -29,7 +29,7 @@ class Users::InvitationsController < Devise::InvitationsController
           else
             flash[:notice] = "#{email} has been added to the group."
             # TODO: handle if mmember fails to be added
-            membership = group.add_member! existing_user
+            membership = group.add_member! existing_user, current_user
             Event.user_added_to_group!(membership)
           end
           redirect_to group_url(group)

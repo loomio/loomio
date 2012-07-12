@@ -121,12 +121,13 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def add_member!(user)
+  def add_member!(user, inviter=nil)
     unless users.exists?(user)
       unless membership = requested_users_include?(user)
         membership = memberships.build_for_user(user)
       end
       membership.access_level = 'member'
+      membership.inviter = inviter
       membership.save!
       reload
       membership
