@@ -25,6 +25,12 @@
           - classes += " current" if (message == discussion.current_motion)
           %div{class: classes}
             .tool-bar-item-proposal
+            .comment-avatar
+              - if message.author.avatar_url.nil?
+                .medium-user-image-initial-wrapper
+                  %span.medium-user-image-initials= message.author.initials
+              - else
+                = image_tag message.author.avatar_url
             .comment-username= link_to(message.author_name, "#")
             .comment-label created a proposal
             .proposal-info

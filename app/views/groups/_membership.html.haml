@@ -1,5 +1,11 @@
 %li{:id => membership.user_id}
   - if can? :edit, group
+    .member-list-avatar
+      - if membership.user.avatar_url.nil?
+        .medium-user-image-initial-wrapper
+          %span.medium-user-image-initials= membership.initials
+      - else
+        = image_tag membership.avatar_url
     .user-name
       - if membership.user_name
         = truncate(membership.user_name, :length => 29, :omission => '...')
@@ -15,6 +21,12 @@
         =link_to "×", membership, method: :delete, class: 'close',
           confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
   - else
+    .member-list-avatar
+      - if membership.user.avatar_url.nil?
+        .medium-user-image-initial-wrapper
+          %span.medium-user-image-initials= membership.user.initials
+      - else
+        = image_tag membership.user.avatar_url
     - if membership.user_name
       = truncate(membership.user_name, :length => 38, :omission => '...')
     - else

@@ -20,6 +20,7 @@ gem 'draper', '~> 0.11.1'
 gem 'exception_notification'
 gem 'browser'
 gem 'gravtastic'
+gem 'paperclip'
 
 # Gems used only for assets and not required
 # in production environments by default.
