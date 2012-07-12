@@ -73,6 +73,7 @@ class Comment < ActiveRecord::Base
     comment_vote.user = user
     comment_vote.value = true
     comment_vote.save
+    comment_vote
   end
 
   def unlike(user)

@@ -6,7 +6,8 @@ class CommentsController < BaseController
   end
 
   def like
-    resource.like current_user
+    comment_vote = resource.like current_user
+    Event.comment_liked!(comment_vote)
     redirect_to discussion_url(resource.discussion )
   end
 

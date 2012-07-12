@@ -10,11 +10,15 @@ describe Comment do
 
   context "liked by user" do
     before do
-      comment.like user
+      @like = comment.like user
     end
 
     it "increases like count" do
       comment.likes.count.should == 1
+    end
+
+    it "returns a CommentVote object" do
+      @like.class.name.should == "CommentVote"
     end
 
     context "liked again by the same user" do
