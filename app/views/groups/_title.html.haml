@@ -12,3 +12,5 @@
           - if can_leave
             - membership = current_user.group_membership(group)
             %li= link_to "Leave group", membership, method: :delete, confirm: "Are you sure you wish to leave #{group.name}?"
+    #privacy{:class => group.viewable_by.to_s} 
+      =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
