@@ -30,7 +30,7 @@
             .dropdown
               = link_to image_tag("dropdown.png", title:'description settings', alt:'description settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
               %ul.dropdown-menu.pull-right
-                %li= link_to "Start new proposal", new_proposal_discussion_path(@discussion.id)
+                %li= link_to "Create new proposal", new_proposal_discussion_path(@discussion.id)
       %ul
         - if @current_motion
           - unless (cannot? :edit, @current_motion) && (cannot? :close_voting, @current_motion)
@@ -49,7 +49,7 @@
         - else
           - if can? :create, Motion.new(discussion_id: @discussion.id)
             %li.tool-bar.clearfix
-              =link_to "Start new proposal", new_proposal_discussion_path(@discussion.id), class: 'tool-bar-item tool-bar-item-proposal', id: 'new-proposal'
+              =link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), class: 'tool-bar-item tool-bar-item-proposal', id: 'new-proposal'
           %li.current-proposal.no-proposals= "There is no current proposal for this discussion"
 
     - if @discussion.motions.where("phase = 'closed'").count > 0

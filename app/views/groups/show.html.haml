@@ -27,20 +27,20 @@
         - if (can? :create, new_discussion)# && (can? :create, Motion.new(discussion_id: new_discussion.id))
           %li.tool-bar.clearfix
             %a{ href: new_motion_group_path(@group), class: 'tool-bar-item tool-bar-item-proposal', id: 'new-proposal' }
-              Start new proposal
+              Create new proposal
         #open
-          - if @motions_not_voted && @motions_not_voted.size > 0
+          - if @motions_not_voted && @motions_not_voted.exists?
             - @motions_not_voted.each do |motion|
               %li.undecided= render '/motions/motion_preview', motion: motion, this_group: @group
             - motions_exist = true
-          - if @motions_voted && @motions_voted.size > 0
+          - if @motions_voted && @motions_voted.exists?
             - @motions_voted.each do |motion|
               %li= render '/motions/motion_preview', motion: motion, this_group: @group
             - motions_exist = true
           - unless motions_exist
             %li.no-proposals= "There are no current proposals for this group"
         #closed.hidden
-          - if @motions_closed && @motions_closed.size > 0
+          - if @motions_closed && @motions_closed.exists?
             - @motions_closed.each do |motion|
               %li= render '/motions/motion_preview', motion: motion, this_group: @group
           - else
