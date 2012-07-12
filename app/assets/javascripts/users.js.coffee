@@ -22,3 +22,7 @@ $ ->
     $("#user_avatar_kind").val("uploaded")
     $(".edit_user").submit()
   )
+  
+  $("#fake_upload_image_button").click((event, ui) ->
+    $("#user_uploaded_avatar").click()
+  )

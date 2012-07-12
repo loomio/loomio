@@ -16,10 +16,12 @@
       = image_tag @user.gravatar_url(:size => 40)
       %a{ id: 'use_gravatar' } Use Gravatar
     .user-image-option.option-initials
-      %span.change-user-image-initials= @user.initials
+      .medium-user-image-initial-wrapper
+        %span.change-user-image-initials= @user.initials
       %a{ id: 'use_initials' } Use Initials
     .user-image-option.option-upload
       = f.file_field :uploaded_avatar
+      = link_to "Upload a new image", "#", :id => "fake_upload_image_button"
     = hidden_field_tag("user[avatar_kind]", "", :id => "user_avatar_kind")
   .clear-both
   = f.submit "Update Settings", class: "btn btn-info"
