@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   attr_accessible :uploaded_avatar
   has_attached_file :uploaded_avatar, 
     :styles => { 
-      :large => "#{User::LARGE_PIXEL_CONST}#{User::LARGE_PIXEL_CONST}#", 
+      :large => "#{User::LARGE_PIXEL_CONST}x#{User::LARGE_PIXEL_CONST}#", 
       :medium => "#{User::MEDIUM_PIXEL_CONST}x#{User::MEDIUM_PIXEL_CONST}#",
       :small => "#{User::SMALL_PIXEL_CONST}x#{User::SMALL_PIXEL_CONST}#" 
     }
