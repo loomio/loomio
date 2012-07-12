@@ -32,8 +32,8 @@
 .medium-user-image-initial-wrapper {
   background: lightgrey;
   border: 1px solid #B9B9B9;
-  width: 35px;
-  height: 35px;
+  width: 33px;
+  height: 33px;
   text-decoration: none;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -41,6 +41,10 @@
   color: black;
   text-align: center;
   float: left;
+}
+
+.user-image-option .medium-user-image-initial-wrapper {
+  margin: 5px 4px 0px 0px;
 }
 
 .large-user-image-initials {
@@ -51,10 +55,10 @@
 }
 
 .medium-user-image-initials {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   text-align: center;
-  line-height: 35px;
+  line-height: 33px;
 }
 
 .change-avatar-wrapper {
@@ -94,15 +98,27 @@
   width: 193px;
 }
 
+.user-image-option.option-upload {
+  text-align: center;
+}
+
 .user-image-option a {
-  line-height: 45px;
+  line-height: 40px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
 }
 
 .change-user-image-initials {
-  width: 40px;
+  width: 33px;
   line-height: 35px;
 }
 
 #user_uploaded_avatar {
   display: none;
+}
+
+.user-image-option a#fake_upload_image_button {
+  margin-top: 5px;
+  line-height: 25px;
 }

@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   has_attached_file :uploaded_avatar, 
     :styles => { 
       :medium => "170x170#", 
-      :thumb => "40x40#"
+      :thumb => "35x35#"
     }
     #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
     #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
@@ -226,11 +226,11 @@ class User < ActiveRecord::Base
   def avatar_url(size = "thumb")
     case size
     when "thumb"
-      pixels = "40"
+      pixels = "35"
     when "medium"
       pixels = "170"
     else 
-      pixels = "40"
+      pixels = "35"
     end
     
     if avatar_kind == "gravatar"
