@@ -46,7 +46,7 @@ Once inside the console, run the following command to generate a user:
   > User.create(name: "Furry", email: "furry@example.com", password: "password")
 ```
 
-Now you should be able to visit `http:localhost:3000` and login as the user
+Now you should be able to visit http://localhost:3000 and login as the user
 above and start playing with the site.
 
 You'll probably want to create several different users so that you can
