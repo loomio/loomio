@@ -1,16 +1,15 @@
 %li{:id => membership.user_id}
   - if can? :edit, group
-    .member-list-avatar
-      - if membership.user.avatar_url.nil?
-        .small-user-image-initial-wrapper
-          %span.small-user-image-initials= membership.initials
-      - else
-        = image_tag membership.avatar_url("small")
+    - if membership.user.avatar_url.nil?
+      .small-user-image-initial-wrapper
+        %span.small-user-image-initials= membership.user.initials
+    - else
+      = image_tag membership.user.avatar_url("small")
     .user-name
       - if membership.user_name
-        %span= truncate(membership.user_name, :length => 29, :omission => '...')
+        %span.membership-user-name= truncate(membership.user_name, :length => 29, :omission => '...')
       - else
-        %span= truncate(membership.user_email, :length => 29, :omission => '...')
+        %span.membership-user-name= truncate(membership.user_email, :length => 29, :omission => '...')
     - if current_user.is_group_admin?(group)
       - member = User.find(membership.user_id)
       .admin-controls
@@ -21,13 +20,12 @@
         =link_to "×", membership, method: :delete, class: 'close',
           confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
   - else
-    .member-list-avatar
-      - if membership.user.avatar_url.nil?
-        .small-user-image-initial-wrapper
-          %span.small-user-image-initials= membership.user.initials
-      - else
-        = image_tag membership.user.avatar_url
-    - if membership.user_name
-      %span= truncate(membership.user_name, :length => 38, :omission => '...')
+    - if membership.user.avatar_url.nil?
+      .small-user-image-initial-wrapper
+        %span.small-user-image-initials= membership.user.initials
     - else
-      %span= truncate(membership.user_email, :length => 38, :omission => '...')
+      = image_tag membership.user.avatar_url("small")
+    - if membership.user_name
+      %span.membership-user-name= truncate(membership.user_name, :length => 38, :omission => '...')
+    - else
+      %span.membership-user-name= truncate(membership.user_email, :length => 38, :omission => '...')
