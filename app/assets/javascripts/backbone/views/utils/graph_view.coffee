@@ -13,15 +13,16 @@ class Loomio.Views.Utils.GraphView extends Backbone.View
         seriesDefaults: {
           renderer: jQuery.jqplot.PieRenderer,
           rendererOptions: {
-            sliceMargin:8
-            padding: 10
+            sliceMargin: @options.gap
+            padding: @options.padding
+            diameter: @options.diameter
+            shadowOffset: @options.shadow
           }
         },
-        legend: { show: @options.legend, location: 'e' }
+        legend: { show: @options.legend , location: 'e'}
         grid: { background:'rgba(0,0,0,0)', shadow: false, borderWidth: 0 }
 
         seriesColors: [ "#90D490", "#F0BB67", "#D49090", "#dd0000", '#ccc']
 
       }
      )
-     #$("#" + "expand_" + @options.motion_id).hide()
