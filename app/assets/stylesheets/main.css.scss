@@ -290,6 +290,14 @@ table.jqplot-table-legend {
   font-size: 0.6em;
   text-align: center;
 }
+/* Privacy Icon */
+
+div#privacy{
+  display: inline;
+  position: relative;
+  margin-left: 8px;
+  bottom: 3px;
+}
 
 /* For modern browsers */
 .cf:before,
