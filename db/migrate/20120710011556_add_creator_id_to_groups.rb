@@ -9,5 +9,6 @@ class AddCreatorIdToGroups < ActiveRecord::Migration
     	group.creator_id = mship.user_id
     	group.save!
     end
+    change_column :groups, :creator_id, :int, :null => false
   end
 end
