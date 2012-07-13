@@ -7,8 +7,8 @@
   - else
     .user-image
       = image_tag @user.avatar_url("large")
-  .change-avatar-wrapper
-    %span.change-avatar-label Select Avatar
+  .selector-panel.change-avatar-wrapper
+    %h1 Select Avatar
     - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
       .user-image-option.option-uploaded
         = image_tag @user.uploaded_avatar.url(:medium)
@@ -23,6 +23,6 @@
     .user-image-option.option-upload
       = f.file_field :uploaded_avatar
       = link_to "Upload a new image", "#", :id => "fake_upload_image_button", :class => "btn"
-    = hidden_field_tag("user[avatar_kind]", "", :id => "user_avatar_kind")
+      = hidden_field_tag("user[avatar_kind]", "", :id => "user_avatar_kind")
   .clear-both
   = f.submit "Update Settings", class: "btn btn-info"
