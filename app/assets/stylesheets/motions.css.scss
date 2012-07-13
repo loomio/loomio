@@ -68,6 +68,12 @@
     text-align: center;
     margin: 15px 55px 0 0;
   }
+  .pie {
+    float: right;
+    width: 44px;
+    height: 44px;
+    margin-right: 10px;
+  }
 }
 
 /*** proposal (discussion page)***/
@@ -108,10 +114,6 @@
   .percentage-to-vote {
     font-size: $font-small;
     margin-bottom: 10px;
-  }
-  .graph{
-    height: 250px;
-    margin-left: -20px;
   }
   .new_vote{ padding-left: 0px; }
   .vote-form{
