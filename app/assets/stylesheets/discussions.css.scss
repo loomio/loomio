@@ -23,23 +23,43 @@ body.discussions.show {
 
 /*** comments, positions & proposals in History ***/
 #content-history {
-  #new-comment-form{
+  #new-comment-form {
     border-top: 1px solid $light-grey;
     margin-bottom: 0px;
     padding: 10px 0 42px 10px;
     background-color: $comment-color;
   }
-  #new-comment{
+  
+  #comment-list li {
+    overflow: hidden;
+  }
+  
+  #new-comment-form img {
+    float:left;
+    margin-right: 5px;
+  }
+  
+  #new-comment {
     margin: 0 0 5px 0px;
-    width: 428px;
-    max-width: 428px;
+    width: 388px;
+    max-width: 388px;
     height: 80px;
     color: $dark-grey;
   }
+  
+  #post-new-comment {
+    margin: 5px 5px 5px 40px;
+  }
+  
+  #new-comment-form .medium-user-image-initial-wrapper {
+    margin-right: 5px;
+  }
+  
   ul {
     list-style: none;
     margin-left: 0px;
   }
+  
   #no-messages {
     padding: 5px 10px;
   }
@@ -50,6 +70,22 @@ body.discussions.show {
     color: $dark-grey;
     background-color: $comment-color;
   }
+  
+  .comment-avatar {
+    float: left;
+    margin-right: 5px;
+    width: 8%;
+  }
+  
+  .comment img {
+    float: left;
+  }
+  
+  .comment-right {
+    width: 90%;
+    float: left;
+  }
+  
   .comment .comment-username{
     font-weight: bold;
     float: left;
