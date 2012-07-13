@@ -31,11 +31,11 @@
                     = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
           %ul
             #open
-              - if @motions_not_voted && @motions_not_voted.exists?
+              - if @motions_not_voted && @motions_not_voted.size > 0
                 - @motions_not_voted.each do |motion|
                   %li.undecided= render '/motions/motion_preview', motion: motion, this_group: nil
                 - motions_exist = true
-              - if @motions_voted && @motions_voted.exists?
+              - if @motions_voted && @motions_voted.size > 0
                 - @motions_voted.each do |motion|
                   %li= render '/motions/motion_preview', motion: motion, this_group: nil
                 - motions_exist = true
