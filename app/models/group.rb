@@ -28,7 +28,7 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions
   has_many :motions
-  has_many :motions_voting,
+  has_many :motions_in_voting_phase,
            :through => :discussions,
            :source => :motions,
            :conditions => { phase: 'voting' }
@@ -52,6 +52,14 @@ class Group < ActiveRecord::Base
   #
   # ACCESSOR METHODS
   #
+
+  def motions_in_voting_phase_that_user_has_voted_on(user)
+    motions_in_voting_phase.that_user_has_voted_on(user).uniq
+  end
+
+  def motions_in_voting_phase_that_user_has_not_voted_on(user)
+    motions_in_voting_phase - motions_in_voting_phase_that_user_has_voted_on(user)
+  end
 
   def beta_features
     if parent && (parent.beta_features == true)
