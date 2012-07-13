@@ -98,10 +98,9 @@
   bottom: 0;
   text-align: center;
   line-height: 25px;
-  margin-bottom: 4px;
-  background: grey;
   display: block;
   height: 25px;
+  border-bottom: 1px solid $light-grey;
 }
 
 .clear-both {
@@ -114,10 +113,10 @@
   display: block;
   height: 45px;
   padding: 0px 5px;
-  margin-bottom: 4px;
-  background: #F5F0F0;
   float: left;
   width: 193px;
+  border-bottom: 1px solid $light-grey;
+  background: white;
 }
 
 .user-image-option.option-upload {
