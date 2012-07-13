@@ -29,16 +29,39 @@ describe Group do
     end
   end
 
-  describe "motions_voting" do
+  describe "motions_in_voting_phase_that_user_has_voted_on(user)" do
+    it "calls scope on motions_in_voting_phase" do
+      user = User.make!
+      group = Group.make!
+      group.add_member!(user)
+      group.motions_in_voting_phase.should_receive(:that_user_has_voted_on).
+        with(user).and_return(stub(:uniq => true))
+
+      group.motions_in_voting_phase_that_user_has_voted_on(user)
+    end
+  end
+
+  describe "motions_in_voting_phase_that_user_has_not_voted_on(user)" do
+    it "does stuff" do
+      user = User.make!
+      group = Group.make!
+      group.add_member!(user)
+      group.should_receive(:motions_in_voting_phase_that_user_has_not_voted_on)
+
+      group.motions_in_voting_phase_that_user_has_not_voted_on(user)
+    end
+  end
+
+  describe "motions_in_voting_phase" do
     it "should return motions that belong to the group and are in phase 'voting'" do
       @group = motion.group
-      @group.motions_voting.should include(motion)
+      @group.motions_in_voting_phase.should include(motion)
     end
 
     it "should not return motions that belong to the group but are in phase 'closed'" do
       @group = motion.group
       motion.close_voting!
-      @group.motions_voting.should_not include(motion)
+      @group.motions_in_voting_phase.should_not include(motion)
     end
   end
 
