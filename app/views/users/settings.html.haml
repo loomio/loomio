@@ -9,9 +9,10 @@
       = image_tag @user.avatar_url("large")
   .change-avatar-wrapper
     %span.change-avatar-label Select Avatar
-    .user-image-option.option-uploaded
-      = image_tag @user.uploaded_avatar.url(:medium) if @user.uploaded_avatar
-      %a{ id: 'use_uploaded' } Use Uploaded Image
+    - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
+      .user-image-option.option-uploaded
+        = image_tag @user.uploaded_avatar.url(:medium)
+        %a{ id: 'use_uploaded' } Use Uploaded Image
     .user-image-option.option-gravatar
       = image_tag @user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)
       %a{ id: 'use_gravatar' } Use Gravatar
