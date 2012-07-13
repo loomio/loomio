@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(:version => 20120710011556) do
     t.boolean  "hide_members",         :default => false
     t.boolean  "beta_features",        :default => false
     t.string   "description"
-    t.integer  "creator_id"
+    t.integer  "creator_id",                              :null => false
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
