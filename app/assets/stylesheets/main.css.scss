@@ -270,16 +270,16 @@ table.jqplot-table-legend {
   }
 }
 
-#tooltip, .graph_tooltip{
-  padding: 3px 10px;
-  background: $dark-grey;
-  color: #fff;
-  display: none;
-  opacity: 0.8;
-  width: 100px;
-  text-align: center;
-  @include box-shadow(1px, 1px, 4px, $mid-grey);
-}
+/*#tooltip, .graph_tooltip{*/
+  /*padding: 3px 10px;*/
+  /*background: $dark-grey;*/
+  /*color: #fff;*/
+  /*display: none;*/
+  /*opacity: 0.8;*/
+  /*width: 100px;*/
+  /*text-align: center;*/
+  /*@include box-shadow(1px, 1px, 4px, $mid-grey);*/
+/*}*/
 
 .name-separator {
   display: inline-block;

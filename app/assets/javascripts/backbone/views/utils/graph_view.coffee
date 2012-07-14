@@ -10,6 +10,10 @@ class Loomio.Views.Utils.GraphView extends Backbone.View
     data = @options.data
     pie = jQuery.jqplot(@options.id_string, [data],
       {
+        title: {
+          show: false,
+        },
+        gridPadding: {top:0, right:2, bottom:2, left:2}
         seriesDefaults: {
           renderer: jQuery.jqplot.PieRenderer,
           rendererOptions: {
