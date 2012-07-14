@@ -19,14 +19,16 @@ class Group < ActiveRecord::Base
     :order => "LOWER(users.name)"
   has_many :membership_requests,
     :conditions => {:access_level => 'request'},
-    :class_name => 'Membership'
+    :class_name => 'Membership',
+    :dependent => :destroy
   has_many :admin_memberships,
     :conditions => {:access_level => 'admin'},
-    :class_name => 'Membership'
+    :class_name => 'Membership',
+    :dependent => :destroy
   has_many :users, :through => :memberships # TODO: rename to members
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
-  has_many :discussions
+  has_many :discussions, :dependent => :destroy
   has_many :motions
   has_many :motions_in_voting_phase,
            :through => :discussions,
@@ -45,8 +47,6 @@ class Group < ActiveRecord::Base
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
   delegate :name, :to => :parent, :prefix => true
-
-  acts_as_tagger
 
   attr_accessible :name, :viewable_by, :parent_id, :parent
   attr_accessible :members_invitable_by, :email_new_motion, :description
