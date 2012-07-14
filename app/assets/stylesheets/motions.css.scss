@@ -64,23 +64,20 @@
     font-size: $font-small;
     color: $mid-grey;
     float: right;
-    width: 30px;
+    width: 37px;
     text-align: center;
-    margin: 15px 55px 0 0;
+    margin-top: 9px;
+  }
+  .enguagement-label {
+    font-size: $font-tinywiny;
+    position: relative;
+    bottom: 4px;
   }
   .pie {
     float: right;
     width: 44px;
     height: 44px;
     margin-right: 10px;
-    .jqplot-target { height: 44px; width: 44px; }
-    .jqplot-title { padding: 0px; }
-    .jqplot-base-canvas { height: 44px; }
-    .jqplot-grid-canvas { height: 44px; }
-    .jqplot-pieRenderer-highlight-canvas{ height: 44px; }
-    .jqplot-event-canvas { height: 44px; }
-    .jqplot-series-canvas { height: 44px; }
-    .jqplot-series-shadowCanvas { height: 44px; }
   }
 }
 
