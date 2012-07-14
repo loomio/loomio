@@ -120,7 +120,6 @@ GEM
       sexp_processor (~> 3.0)
     formtastic (2.0.2)
       rails (~> 3.0)
-    gchartrb (0.8)
     guard (1.0.0)
       ffi (>= 0.5.0)
       thor (~> 0.14.6)
@@ -322,7 +321,6 @@ DEPENDENCIES
   faker
   flay
   formtastic
-  gchartrb
   guard
   guard-coffeescript
   guard-jasmine

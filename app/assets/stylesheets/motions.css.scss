@@ -73,6 +73,14 @@
     width: 44px;
     height: 44px;
     margin-right: 10px;
+    .jqplot-target { height: 44px; width: 44px; }
+    .jqplot-title { padding: 0px; }
+    .jqplot-base-canvas { height: 44px; }
+    .jqplot-grid-canvas { height: 44px; }
+    .jqplot-pieRenderer-highlight-canvas{ height: 44px; }
+    .jqplot-event-canvas { height: 44px; }
+    .jqplot-series-canvas { height: 44px; }
+    .jqplot-series-shadowCanvas { height: 44px; }
   }
 }
 
