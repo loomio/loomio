@@ -157,12 +157,27 @@ h4 {
 
 // group title
 .group-title {
-  margin-bottom: 12px;
-  .dropdown {
-    margin-left: 8px;
+  margin-bottom: 10px;
+  .group-options {
     display: inline;
     position: relative;
-    bottom: 3px;
+    bottom: 4px;
+    float: right;
+  }
+  .group-options a {
+    color: #777;
+    font-size: 0.9em;
+  }
+  .group-options .icon-cog {
+    opacity: 0.65;
+    position: relative;
+    top: 1px;
+  }
+  .group-options .options-dropdown-icon {
+    position: relative;
+    bottom: 1px;
+    padding-right: 2px;
+    padding-left: 10px;
   }
 }
 
@@ -295,7 +310,7 @@ table.jqplot-table-legend {
 div#privacy{
   display: inline;
   position: relative;
-  margin-left: 8px;
+  margin-left: 5px;
   bottom: 3px;
 }
 
