@@ -51,13 +51,8 @@ class Motion < ActiveRecord::Base
   scope :closed_sorted, closed.order('close_date DESC')
 
   scope :that_user_has_voted_on, lambda {|user|
-    includes(:votes)
-    .where('votes.id is not null')
-  }
-
-  scope :that_user_has_not_voted_on, lambda {|user|
-    includes(:votes)
-    .where('votes.id is null')
+    joins(:votes)
+    .where("votes.user_id = ?", user.id)
   }
 
   def user_has_voted?(user)

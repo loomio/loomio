@@ -20,7 +20,7 @@
             - current_user.root_groups.order('name').each do |group|
               %li.group-item
                 .link-container
-                  = link_to group.name, group_path(group)
+                  = link_to group.name.length < 40 ? group.name : group.name[0..37]+'...', group_path(group), :class => 'view_'+group.viewable_by.to_s
                 -#- activity =  current_user.activity_total_in(group)
                 -#- if activity > 0
                   -#.notification-container
@@ -29,7 +29,7 @@
                 - group.subgroups.each do |sub_group|
                   %li.group-item.sub-group
                     .link-container
-                      = link_to sub_group.name, group_path(sub_group)
+                      = link_to sub_group.name.length < 40 ? sub_group.name : sub_group.name[0..37]+'...', group_path(sub_group), :class => 'view_'+sub_group.viewable_by.to_s
                     -#- activity =  current_user.activity_total_in(sub_group)
                     -#- if activity > 0
                       -#.notification-container

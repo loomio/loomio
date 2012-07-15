@@ -64,8 +64,14 @@ describe "Groups" do
       it "can add a discussion" do
         visit group_path(@group)
 
-        click_on 'Start a new discussion'
+        click_on 'Start new discussion'
         should have_css(".discussions.new")
+      end
+      it "can create a new proposal" do
+        visit group_path(@group)
+
+        click_on 'Create new proposal'
+        should have_css(".groups.new_motion")
       end
     end
 
@@ -88,7 +94,7 @@ describe "Groups" do
 
           visit group_path(@group)
 
-          should_not have_content("Membership requests")
+          #should_not have_content("Membership requests")
         end
 
         it "cannot see add member section" do

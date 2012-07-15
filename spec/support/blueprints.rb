@@ -16,6 +16,7 @@ end
 
 Group.blueprint do
   name { Faker::Name.name }
+  creator_id { 9999 }
 end
 
 Motion.blueprint do
