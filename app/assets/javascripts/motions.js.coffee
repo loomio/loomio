@@ -14,7 +14,7 @@ $ ->
     if $("#new-motion").length > 0
       #** New Motion **
       datetime = new Date()
-      datetime.setDate(datetime.getDate() + 7)
+      datetime.setDate(datetime.getDate() + 3)
       hours = pad2(datetime.getHours())
       $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
       $("#input_date").datepicker("setDate", datetime)
@@ -138,7 +138,7 @@ $ ->
 
   # adds bootstrap popovers to vote buttons
 $ ->
-  $(".vote").popover
+  $(".position").popover
     placement: "top"
 
 # disable links on usernames

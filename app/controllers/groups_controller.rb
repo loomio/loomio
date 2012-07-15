@@ -4,6 +4,7 @@ class GroupsController < GroupBaseController
 
   def create
     @group = Group.new(params[:group])
+    @group.creator = current_user
     if @group.save
       @group.add_admin! current_user
       flash[:success] = "Group created successfully."
@@ -17,10 +18,10 @@ class GroupsController < GroupBaseController
     @group = GroupDecorator.new(Group.find(params[:id]))
     @subgroups = @group.subgroups.accessible_by(current_ability, :show)
     if current_user
-      @motions_voted = current_user.group_motions_voted(@group)
-      @motions_not_voted = current_user.group_motions_not_voted(@group)
+      @motions_voted = @group.motions_in_voting_phase_that_user_has_voted_on(current_user)
+      @motions_not_voted = @group.motions_in_voting_phase_that_user_has_not_voted_on(current_user)
     else
-      @motions_voted = @group.motions_voting
+      @motions_voted = @group.motions_in_voting_phase
     end
     @motions_closed = @group.motions_closed
   end
@@ -53,6 +54,26 @@ class GroupsController < GroupBaseController
       redirect_to group_url(resource)
     else
       @membership = Membership.new
+    end
+  end
+
+  def new_motion
+    @group = GroupDecorator.new Group.find(params[:id])
+    @motion = Motion.new
+  end
+
+  def create_motion
+    @group = Group.find(params[:id])
+    @discussion = current_user.authored_discussions.create!(group_id: @group.id,
+                  title: params[:motion][:name])
+    @motion = @discussion.motions.new(params[:motion])
+    @motion.author = current_user
+    if @motion.save
+      flash[:success] = "Proposal has been created."
+      redirect_to @discussion
+    else
+      flash[:error] = "Proposal could not be created."
+      redirect_to :back
     end
   end
 

@@ -1,11 +1,17 @@
 - if group
   .group-title.clearfix
+    #privacy{:class => group.viewable_by.to_s}
+      =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
     %h2= group.fancy_link
     - can_edit = can? :edit, group
     - can_leave = group.users_include? current_user
     - if can_edit || can_leave
-      .dropdown
-        = link_to image_tag("settings.png", title:'settings', alt:'settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
+      .dropdown.btn-group.group-options
+        %a.btn.dropdown-toggle{ :href => "#", 'data-toggle' => 'dropdown' }
+          %i.icon-cog
+          Options
+          = image_tag("dropdown.png", title:'Options', alt:'Options', class: "options-dropdown-icon")
+
         %ul.dropdown-menu.pull-right
           - if can_edit
             %li= link_to "Edit group", edit_group_path(group)

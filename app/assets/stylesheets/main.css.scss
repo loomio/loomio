@@ -48,12 +48,6 @@ h4 {
 
 // structural elements (containers etc.)
 
-.center-content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-}
-
 .selector-panel {
   /*background-color: $header-color;*/
   background-color: $selector-panel;
@@ -92,11 +86,12 @@ h4 {
     height: 25px;
   }
   .tool-bar-item {
-    padding: 5px 15px;
+    padding: 6px 15px 6px 30px;
     color: $mid-grey;
     font-size: $font-small;
     position: relative;
     top: 3px;
+    margin-right: 0px;
     border-right: 1px solid $light-grey
 
   }
@@ -182,8 +177,10 @@ h4 {
     line-height: 1.8em;
   }
   .btn {
-    float: right;
     color: $mid-grey;
+  }
+  .edit_group .btn {
+    float: right;
   }
   ul {
     border-top: none;
@@ -210,12 +207,27 @@ h4 {
 
 // group title
 .group-title {
-  margin-bottom: 12px;
-  .dropdown {
-    margin-left: 8px;
+  margin-bottom: 10px;
+  .group-options {
     display: inline;
     position: relative;
-    bottom: 3px;
+    bottom: 4px;
+    float: right;
+  }
+  .group-options a {
+    color: #777;
+    font-size: 0.9em;
+  }
+  .group-options .icon-cog {
+    opacity: 0.65;
+    position: relative;
+    top: 1px;
+  }
+  .group-options .options-dropdown-icon {
+    position: relative;
+    bottom: 1px;
+    padding-right: 2px;
+    padding-left: 10px;
   }
 }
 
@@ -296,6 +308,16 @@ form {
     margin-left: 5px;
     display: inline;
   }
+  .divider {
+    width: 300px;
+    border: 1px solid $lighter-grey;
+    margin-bottom: 5px;
+  }
+  .long-divider {
+    width: 400px;
+    border: 1px solid $lighter-grey;
+    margin-bottom: 5px;
+  }
 }
 
 .hidden {
@@ -332,6 +354,14 @@ table.jqplot-table-legend {
   bottom: 1px;
   font-size: 0.6em;
   text-align: center;
+}
+/* Privacy Icon */
+
+div#privacy{
+  display: inline;
+  position: relative;
+  margin-left: 5px;
+  bottom: 3px;
 }
 
 /* For modern browsers */
