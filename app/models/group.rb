@@ -112,7 +112,7 @@ class Group < ActiveRecord::Base
   end
 
   def users_sorted
-    users.sort { |a,b| a.name.downcase <=> b.name.downcase }
+    users.order('lower(name)').all
   end
 
   #
@@ -183,10 +183,8 @@ class Group < ActiveRecord::Base
         end
       end
       result.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
-      #result.order 'latest_history_time DESC'
     else
-      #discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
-      discussions.order 'latest_history_time DESC'
+      discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
     end
   end
 
