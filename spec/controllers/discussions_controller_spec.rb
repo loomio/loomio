@@ -45,6 +45,7 @@ describe DiscussionsController do
         discussion.stub(:add_comment)
         discussion.stub(:save).and_return(true)
         DiscussionMailer.stub(:spam_new_discussion_created)
+        Event.stub(:new_discussion!)
         @discussion_hash = { group_id: group.id, title: "Shinney",
                             comment: "Bright light" }
       end
