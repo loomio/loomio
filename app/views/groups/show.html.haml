@@ -23,18 +23,24 @@
                 = "Closed proposals"
                 = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
       %ul
+        - new_discussion = Discussion.new(group_id: @group.id)
+        - if (can? :create, new_discussion)# && (can? :create, Motion.new(discussion_id: new_discussion.id))
+          %li.tool-bar.clearfix
+            %a{ href: new_motion_group_path(@group), class: 'tool-bar-item tool-bar-item-proposal', id: 'new-proposal' }
+              Create new proposal
         #open
-          - if @motions_not_voted || @motions_voted
-            - unless @motions_not_voted.nil?
-              - @motions_not_voted.each do |motion|
-                %li.undecided= render '/motions/motion_preview', motion: motion, this_group: @group
-            - unless @motions_voted.nil?
-              - @motions_voted.each do |motion|
-                %li= render '/motions/motion_preview', motion: motion, this_group: @group
-          - else
+          - if @motions_not_voted
+            - @motions_not_voted.each do |motion|
+              %li.undecided= render '/motions/motion_preview', motion: motion, this_group: @group
+            - motions_exist = true
+          - if @motions_voted
+            - @motions_voted.each do |motion|
+              %li= render '/motions/motion_preview', motion: motion, this_group: @group
+            - motions_exist = true
+          - unless motions_exist
             %li.no-proposals= "There are no current proposals for this group"
         #closed.hidden
-          - if not @motions_closed.nil?
+          - if @motions_closed
             - @motions_closed.each do |motion|
               %li= render '/motions/motion_preview', motion: motion, this_group: @group
           - else
@@ -43,10 +49,6 @@
     .selector-panel
       .clearfix
         %h1 Discussions
-        .dropdown#proposals
-          = link_to image_tag("dropdown.png", title:'Discussion settings', alt:'discussion settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
-          %ul.dropdown-menu.pull-right
-            %li= link_to 'Start a new discussion', new_discussion_path(discussion: { group_id: @group })
       %ul
         - if can? :create, Discussion.new(group_id: @group.id)
           %li.tool-bar.clearfix

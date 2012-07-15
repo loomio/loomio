@@ -46,7 +46,7 @@ Once inside the console, run the following command to generate a user:
   > User.create(name: "Furry", email: "furry@example.com", password: "password")
 ```
 
-Now you should be able to visit `http:localhost:3000` and login as the user
+Now you should be able to visit http://localhost:3000 and login as the user
 above and start playing with the site.
 
 You'll probably want to create several different users so that you can
@@ -55,19 +55,10 @@ login with two users at the same time)
 
 ## Contribute
 
-If you'd like to contribute to Loomio, get in touch with us! Just send
-an email to contact@loom.io and let us know who you are and how you're
-interested in helping. We are always looking for more people to hop on
-board and start contributing.
+Loomio is being developed by a team of dedicated volunteers. We operate with a “flat” structure, meaning at the end of the day there’s no single person calling the shots. We all work together and decide collectively what the best decisions are. And we make these decisions using Loomio itself.
+
+If you'd like to contribute to the project, check out [Contributing to Loomio](https://github.com/enspiral/loomio/wiki/Contributing-to-Loomio).
 
 ## License
 
-MIT License (MIT)
-
-Copyright (c) 2012 Enspiral Foundation Limited
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+MIT License. Copyright (c) 2012 Enspiral Foundation Limited

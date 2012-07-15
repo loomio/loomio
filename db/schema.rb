@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120709031235) do
+ActiveRecord::Schema.define(:version => 20120713210802) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20120709031235) do
     t.boolean  "hide_members",         :default => false
     t.boolean  "beta_features",        :default => false
     t.string   "description"
+    t.integer  "creator_id",                              :null => false
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -170,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20120709031235) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.datetime "deleted_at"
+    t.boolean  "has_read_system_notice",               :default => false, :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

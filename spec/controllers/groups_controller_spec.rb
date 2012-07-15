@@ -47,7 +47,70 @@ describe GroupsController do
           get :add_subgroup, :id => @group.id
           response.should be_success
         end
+        context "viewing new proposal form" do
+          it "renders a new motion page" do
+            get :new_motion, :id => @group.id
+            response.should render_template("groups/new_motion")
+          end
+        end
+
+        context "creating a new proposal" do
+          before do
+            @discussion = Discussion.new
+            @user.authored_discussions.stub(:create!).and_return(@discussion)
+            @motion = stub_model(Motion)
+            @discussion.motions.stub(:new).and_return(@motion)
+            @motion.stub(:save).and_return(true)
+            @motion_args = { :id => @group.id,
+                             :motion => { "name" => "Motion title" } }
+          end
+
+          it "creates a discussion with the new motion name" do
+            @user.authored_discussions.should_receive(:create!).
+              with(:group_id => @group.id, :title =>  "Motion title")
+            post :create_motion, @motion_args
+          end
+
+          it "creates a new motion" do
+            @motion = stub_model(Motion)
+            @discussion.motions.should_receive(:new).with(@motion_args[:motion]).
+              and_return(@motion)
+            @motion.should_receive(:author=).with(@user)
+            @motion.should_receive(:save).and_return(true)
+            post :create_motion, @motion_args
+          end
+
+          it "populates flash success message" do
+            post :create_motion, @motion_args
+            flash[:success].should == "Proposal has been created."
+          end
+
+          it "redirects user to discussion page" do
+            post :create_motion, @motion_args
+            response.should redirect_to(@discussion)
+          end
+
+          context "fails to create a new motion" do
+            before do
+              @motion.stub(:save).and_return(false)
+              @previous_url = new_motion_group_path(@group)
+              request.env["HTTP_REFERER"] = @previous_url
+            end
+
+            it "redirects to previous url" do
+              post :create_motion, @motion_args
+
+              response.should redirect_to(@previous_url)
+            end
+
+            it "populates flash error message" do
+              post :create_motion, @motion_args
+              flash[:error].should == "Proposal could not be created."
+            end
+          end
+        end
       end
+
       context "a non-member" do
         before :each do
           @previous_url = groups_url
@@ -70,6 +133,8 @@ describe GroupsController do
       post :create, :group => @group.attributes
       assigns(:group).users.should include(@user)
       assigns(:group).admins.should include(@user)
+
+      assigns(:group).creator.should == @user
       response.should redirect_to(group_url(assigns(:group)))
     end
 

@@ -2,7 +2,7 @@
   - if can? :add_members, group
     .clearfix
       - if group.parent.blank?
-        = link_to "Add members +", "#", class: 'group-add-members btn btn-small'
+        = link_to "Add members +", "#", class: 'group-add-members btn btn-small', id: 'add-members-btn'
         #invite-group-members.hidden
           = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
             = devise_error_messages!
