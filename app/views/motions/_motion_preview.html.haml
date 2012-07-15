@@ -15,5 +15,5 @@
                 = "closed #{time_ago_in_words(motion.close_date)} ago"
               =" · " unless this_group
           .proposal-group-name= DiscussionDecorator.new(motion.discussion).display_group_name(this_group)
-      .engagement
-        = "#{motion.percent_voted}%"
+      -#.engagement
+        -#= "#{motion.percent_voted}%"

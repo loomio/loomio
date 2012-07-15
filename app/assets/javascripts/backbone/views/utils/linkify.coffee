@@ -7,4 +7,8 @@ class Loomio.Views.Utils.Linkify extends Backbone.View
 
   linkify: ->
     $(@el).each ->
-      $(this).linkify()
+      $(this).linkify({ 
+        use: '*',
+        handleLinks: (links)->
+        	links.attr('target','_blank')
+      })
