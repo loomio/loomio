@@ -12,18 +12,18 @@ module DiscussionsHelper
   end
 
   def css_class_for(discussion, user)
-    css_class = "discussion-preview "
+    css_class = "discussion-preview"
 
     motion = discussion.current_motion
     if motion.present? && motion.voting? && motion.blocked?
-      suffix = "blocked"
+      suffix = " blocked"
     else
       suffix = ""
       if discussion.has_activity_unread_by?(user)
-        suffix = "unread"
+        suffix = " unread"
       end
     end
 
-    css_class + suffix
+    css_class + suffix + " clearfix"
   end
 end
