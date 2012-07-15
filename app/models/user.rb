@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   has_many :open_votes,
            :class_name => 'Vote',
            :source => :votes,
-           :through => :motions_voting
+           :through => :motions_in_voting_phase
 
   has_many :notifications
 
