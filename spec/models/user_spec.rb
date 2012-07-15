@@ -18,6 +18,13 @@ describe User do
     user.should have(1).errors_on(:email)
   end
 
+  it "email can have an apostrophe" do
+    user = User.new
+    user.email = "mr.d'arcy@gumby.com"
+    user.valid?
+    user.should have(0).errors_on(:email)
+  end
+
   it "has many groups" do
     group = Group.make!
     group.add_member!(user)
