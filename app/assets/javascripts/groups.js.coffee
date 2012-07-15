@@ -35,7 +35,6 @@ $ ->
 
 #*** tick on proposal dropdown ***
 $ ->
-  # Only execute on group page
   $("#display-closed").click((event) ->
     $("#open").hide()
     $("#closed").show()

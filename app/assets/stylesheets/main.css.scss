@@ -129,10 +129,8 @@ h4 {
     line-height: 1.8em;
   }
   .btn {
-    color: $mid-grey;
-  }
-  .edit_group .btn {
     float: right;
+    color: $mid-grey;
   }
   ul {
     border-top: none;
@@ -159,27 +157,15 @@ h4 {
 
 // group title
 .group-title {
-  margin-bottom: 10px;
-  .group-options {
+  margin-bottom: 12px;
+  .dropdown {
     display: inline;
-    position: relative;
-    bottom: 4px;
     float: right;
   }
-  .group-options a {
-    color: #777;
-    font-size: 0.9em;
-  }
-  .group-options .icon-cog {
-    opacity: 0.65;
+  .members#privacy {
+    display: inline;
     position: relative;
-    top: 1px;
-  }
-  .group-options .options-dropdown-icon {
-    position: relative;
-    bottom: 1px;
-    padding-right: 2px;
-    padding-left: 10px;
+    bottom: 5px;
   }
 }
 
@@ -283,20 +269,9 @@ table.jqplot-table-legend {
   td {
     border: none;
     line-height: 16px;
-    padding: 0 5px 0 5px;
+    padding: 0 5px;
   }
 }
-
-/*#tooltip, .graph_tooltip{*/
-  /*padding: 3px 10px;*/
-  /*background: $dark-grey;*/
-  /*color: #fff;*/
-  /*display: none;*/
-  /*opacity: 0.8;*/
-  /*width: 100px;*/
-  /*text-align: center;*/
-  /*@include box-shadow(1px, 1px, 4px, $mid-grey);*/
-/*}*/
 
 .name-separator {
   display: inline-block;
@@ -306,14 +281,6 @@ table.jqplot-table-legend {
   bottom: 1px;
   font-size: 0.6em;
   text-align: center;
-}
-/* Privacy Icon */
-
-div#privacy{
-  display: inline;
-  position: relative;
-  margin-left: 5px;
-  bottom: 3px;
 }
 
 /* For modern browsers */

@@ -158,8 +158,8 @@ li.preview a {
     text-decoration: none;
   }
   .discussion-title {
-    display: inline-block;
-    /*@include ie7-inline-block();*/
+    display: inline;
+    float: left;
     width: 480px;
   }
   .group-name {
@@ -168,27 +168,23 @@ li.preview a {
     width: 480px;
   }
   .notification-info {
-    display: inline-block;
+    display: inline;
     float: right;
   }
   .relative-time {
     color: $mid-grey;
-    display: inline-block;
-    position: relative;
-    bottom: 16px;
+    display: inline;
+    float: right;
     padding-right: 10px;
   }
-  .proposal-close-date {
-    font-size: $font-medium;
-    display: inline;
-  }
   .discussion-icon-container {
-    display: inline-block;
-    background-size: 25px;
+    display: inline;
+    float: right;
+    background-image: url("discussion.png");
     background-repeat: no-repeat;
+    background-size: 25px;
     width: 32px;
     height: 30px;
-    background-image: url("discussion.png");
   }
   .enabled-icon {
     -moz-opacity: 1.0;
@@ -200,7 +196,6 @@ li.preview a {
     filter:alpha(opacity=20);
     opacity: 0.2
   }
-
   .activity-count {
     margin-left: 18px;
     height: 10px;

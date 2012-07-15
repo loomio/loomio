@@ -33,11 +33,13 @@ class Group < ActiveRecord::Base
   has_many :motions_in_voting_phase,
            :through => :discussions,
            :source => :motions,
-           :conditions => { phase: 'voting' }
+           :conditions => { phase: 'voting' },
+           :order => 'close_date'
   has_many :motions_closed,
            :through => :discussions,
            :source => :motions,
-           :conditions => { phase: 'closed' }
+           :conditions => { phase: 'closed' },
+           :order => 'close_date DESC'
 
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
@@ -181,8 +183,10 @@ class Group < ActiveRecord::Base
         end
       end
       result.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+      #result.order 'latest_history_time DESC'
     else
-      discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+      #discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+      discussions.order 'latest_history_time DESC'
     end
   end
 
