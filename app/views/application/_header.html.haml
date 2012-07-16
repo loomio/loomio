@@ -37,9 +37,8 @@
             %li.new-group
               =link_to "+ Add New Group", new_group_path
         %li.dropdown#notifications-container
-          - notifications_hash = { :href => notifications_path,
-            :id => 'notifications-toggle', 'data-target' => '#', 'data-toggle' => 'dropdown' }
-          %a{ notifications_hash }
+          = link_to mark_as_viewed_notifications_path(:latest_viewed => notifications.first.id),
+                    :id => 'notifications-toggle', 'data-target' => '#', 'data-toggle' => 'dropdown' do
             %span#notifications-count= pluralize(unviewed_notifications.size, "Notification")
             %b.caret
           %ul.dropdown-menu
