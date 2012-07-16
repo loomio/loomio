@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe User do
   let(:user) { User.make! }
+  let(:group) { Group.make! }
 
   subject do
     user = User.new
@@ -27,25 +28,21 @@ describe User do
   end
 
   it "has many groups" do
-    group = Group.make!
     group.add_member!(user)
     user.groups.should include(group)
   end
 
   it "has many adminable_groups" do
-    group = Group.make!
     group.add_admin!(user)
     user.adminable_groups.should include(group)
   end
 
   it "has many admin memberships" do
-    group = Group.make!
     membership = group.add_admin!(user)
     user.admin_memberships.should include(membership)
   end
 
   it "has correct group request" do
-    group = Group.make!
     Membership.make!(:group => group, :user => user)
     user.group_requests.should include(group)
   end
@@ -70,7 +67,6 @@ describe User do
   end
 
   it "has authored discussions" do
-    group = Group.make!
     group.add_member!(user)
     discussion = Discussion.new(:group => group, :title => "Hello world")
     discussion.author = user
@@ -79,7 +75,6 @@ describe User do
   end
 
   it "has authored motions" do
-    group = Group.make!
     group.add_member!(user)
     discussion = create_discussion(group: group)
     motion = create_motion(discussion: discussion, author: user)
@@ -131,7 +126,6 @@ describe User do
 
   describe "user.voted?(motion)" do
     before do
-      group = Group.make!
       group.add_member!(user)
       discussion = create_discussion(group: group)
       @motion = create_motion(discussion: discussion, author: user)
@@ -191,15 +185,24 @@ describe User do
     user.discussion_activity_when_last_read(@discussion).should == 5
   end
 
-  it "can mark notifications as viewed" do
-    @user = User.make!
-    @group = Group.make!
-    @group.add_member!(@user)
-    Notification.create!(:event => mock_model(Event), :user => @user)
-    Notification.create!(:event => mock_model(Event), :user => @user)
-    @user.unviewed_notifications.count.should == 2
-    @user.mark_notifications_as_viewed!
-    @user.unviewed_notifications.count.should == 0
+  describe "mark_notifications_as_viewed" do
+    before do
+      @notif1 = Notification.create!(:event => mock_model(Event), :user => user)
+      @notif2 = Notification.create!(:event => mock_model(Event), :user => user)
+      @notif3 = Notification.create!(:event => mock_model(Event), :user => user)
+      user.mark_notifications_as_viewed! @notif2.id
+    end
+
+    it "marks all notifications before given notification id as viewed" do
+      user.unviewed_notifications.count.should == 1
+      @notif1.reload
+      @notif1.viewed_at.should_not be_nil
+    end
+
+    it "does not mark notifications after given notification id as viewed" do
+      @notif3.reload
+      @notif3.viewed_at.should be_nil
+    end
   end
 
   describe "name" do
