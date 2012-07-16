@@ -49,15 +49,8 @@
 }
 
 body.notifications.index .container {
-  h1 {
-    font-size: 22px;
-    border-bottom: 1px solid $light-grey;
-    margin-bottom: 15px;
-  }
   li {
-    list-style: none;
-    border-bottom: 1px solid $light-grey;
-    padding-bottom: 5px;
-    margin-bottom: 5px;
+    background-color: white;
+    padding: 5px 10px;
   }
 }
