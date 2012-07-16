@@ -20,7 +20,7 @@ describe "Notifications" do
     # Then I should see a new notification on the notifications icon
     #
     context "new discussion is created" do
-      before { create_discussion(group: @group) }
+      before { Event.new_discussion! create_discussion(group: @group) }
 
       it "should have a notification count of 1" do
         visit root_url
@@ -30,8 +30,8 @@ describe "Notifications" do
 
     context "two new discussions are created" do
       before do
-        create_discussion(group: @group)
-        create_discussion(group: @group)
+        Event.new_discussion! create_discussion(group: @group)
+        Event.new_discussion! create_discussion(group: @group)
       end
 
       it "should have a notification count of 2" do

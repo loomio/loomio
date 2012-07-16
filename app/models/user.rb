@@ -94,8 +94,9 @@ class User < ActiveRecord::Base
     notifications.where('viewed_at IS NULL')
   end
 
-  def mark_notifications_as_viewed!
-    unviewed_notifications.update_all(:viewed_at => Time.now)
+  def mark_notifications_as_viewed!(latest_viewed_id)
+    unviewed_notifications.where("id <= ?", latest_viewed_id).
+      update_all(:viewed_at => Time.now)
   end
 
   def self.invite_and_notify!(user_params, inviter, group)
