@@ -1,7 +1,7 @@
 $ ->
   $("#notifications-toggle").click( (event)->
     if (!$(this).parent().hasClass("open"))
-      $.ajax(url: $(this).attr("href"), dataType: "script")
+      $.post($(this).attr("href"), dataType: "script")
   )
 
 $ ->
