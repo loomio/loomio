@@ -37,7 +37,8 @@
             %li.new-group
               =link_to "+ Add New Group", new_group_path
         %li.dropdown#notifications-container
-          = link_to mark_as_viewed_notifications_path(:latest_viewed => notifications.first.id),
+          - latest_seen_notification = notifications.first.id if notifications.exists?
+          = link_to mark_as_viewed_notifications_path(:latest_viewed => latest_seen_notification),
                     :id => 'notifications-toggle', 'data-target' => '#', 'data-toggle' => 'dropdown' do
             %span#notifications-count= pluralize(unviewed_notifications.size, "Notification")
             %b.caret

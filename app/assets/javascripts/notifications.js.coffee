@@ -1,7 +1,13 @@
 $ ->
-  $("#notifications-toggle").click( (event)->
+  $("#notifications-toggle").click((event)->
     if (!$(this).parent().hasClass("open"))
-      $.post($(this).attr("href"), dataType: "script")
+      $.post(
+        $(this).attr("href")
+        dataType: "script"
+        success: ->
+          $("#notifications-count").html("0 Notifications")
+          document.title = "Loomio"
+      )
   )
 
 $ ->

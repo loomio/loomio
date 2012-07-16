@@ -39,15 +39,24 @@ describe "Notifications" do
         find("#notifications-count").should have_content("2")
       end
     end
-  end
 
-  # Spec (TODO):
-  #
-  # Given that I am a member of a group
-  # And given that someone else has created a new discussion in the group
-  # When I click on the notification icon
-  # Then I should see a notice that a new discussion has been created in the group
-  # And I should see my notification count should drop to zero
-  #
+    # Spec (TODO):
+    #
+    # Given that I am a member of a group
+    # And given that someone else has created a new discussion in the group
+    # When I click on the notification icon
+    # Then I should see a notification that a new discussion has been created in the group
+    # And I should see my notification count should drop to zero
+    #
+    describe "clicking on notifications dropdown" do
+      it "shows and clears notifications" do
+        Event.new_discussion! create_discussion(group: @group)
+        visit root_url
+        find("#notifications-toggle").click
+
+        find("#notifications-container").should have_content("new discussion")
+      end
+    end
+  end
 
 end
