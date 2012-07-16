@@ -84,9 +84,6 @@ class Event < ActiveRecord::Base
     event = create!(:kind => "user_added_to_group", :membership => membership)
     event.notifications.create! :user => membership.user
     # Send email only if the user has already accepted invitation to Loomio
-    #if membership.user.accepting_or_not_invited?
-      #UserMailer.added_to_group(membership.user, membership.group).deliver
-    #end
     if membership.user.accepting_or_not_invited?
       UserMailer.added_to_group(membership.user, membership.group).deliver
     end
