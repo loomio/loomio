@@ -89,4 +89,15 @@ describe Notification do
 
     its(:membership) { should eq(@membership) }
   end
+
+  describe "for comment vote" do
+    before do
+      @comment_vote = stub_model(CommentVote)
+      @event = stub_model(Event, :comment_vote => @comment_vote)
+      @notification.event = @event
+      @notification.save!
+    end
+
+    its(:comment_vote) { should eq(@comment_vote) }
+  end
 end

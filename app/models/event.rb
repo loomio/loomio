@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
-             membership_requested user_added_to_group comment_vote]
+             membership_requested user_added_to_group comment_liked]
 
   has_many :notifications, :dependent => :destroy
   belongs_to :discussion
@@ -95,6 +95,7 @@ class Event < ActiveRecord::Base
 
   def self.comment_liked!(comment_vote)
     event = create!(:kind => "comment_liked", :comment_vote => comment_vote)
+    event.notifications.create! :user => comment_vote.comment_user
     event
   end
 end

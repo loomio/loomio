@@ -54,6 +54,14 @@
   - group_name = membership.group_full_name
   - href = group_path(membership.group)
 
+- elsif notification.event_kind == "comment_liked"
+  - comment_vote = notification.comment_vote
+  - person = comment_vote.user_name
+  - action_text = "liked your comment in"
+  - title_text = comment_vote.discussion_title
+  - group_name = comment_vote.group_full_name
+  - href = discussion_path(comment_vote.discussion)
+
 - date = time_ago_in_words(notification.created_at)
 - class_name = notification.viewed_at.nil? ? " unread" : ""
 
