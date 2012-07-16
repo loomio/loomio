@@ -91,9 +91,9 @@ describe DiscussionsController do
 
     describe "adding a comment" do
       before do
-        @comment = mock('comment')
-        discussion.stub(:add_comment).and_return(@comment)
         Event.stub(:new_comment!)
+        @comment = mock_model(Comment, :valid? => true)
+        discussion.stub(:add_comment).and_return(@comment)
       end
 
       it "checks permissions" do
@@ -101,12 +101,7 @@ describe DiscussionsController do
         post :add_comment, comment: "Hello!", id: discussion.id
       end
 
-      it "fires new_comment event" do
-        Event.should_receive(:new_comment!).with(@comment)
-        post :add_comment, comment: "Hello!", id: discussion.id
-      end
-
-      it "adds comment" do
+      it "calls adds_comment on discussion" do
         discussion.should_receive(:add_comment).with(user, "Hello!")
         post :add_comment, comment: "Hello!", id: discussion.id
       end
@@ -114,6 +109,28 @@ describe DiscussionsController do
       it "redirects to the discussion" do
         post :add_comment, comment: "Hello!", id: discussion.id
         response.should redirect_to(discussion_url(discussion))
+      end
+
+      it "fires new_comment event if comment was created successfully" do
+        Event.should_receive(:new_comment!).with(@comment)
+        post :add_comment, comment: "Hello!", id: discussion.id
+      end
+
+      context "unsuccessfully" do
+        before do
+          discussion.stub(:add_comment).
+            and_return(mock_model(Comment, :valid? => false))
+        end
+
+        it "does not fire new_comment event" do
+          Event.should_not_receive(:new_comment!)
+          post :add_comment, comment: "Hello!", id: discussion.id
+        end
+
+        it "populates flash with error message" do
+          post :add_comment, comment: "Hello!", id: discussion.id
+          flash[:error].should == "Comment could not be created."
+        end
       end
     end
   end

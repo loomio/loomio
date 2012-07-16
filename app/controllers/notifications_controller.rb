@@ -8,6 +8,6 @@ class NotificationsController < BaseController
 
   def mark_as_viewed
     current_user.mark_notifications_as_viewed! params[:latest_viewed]
-    redirect_to root_url
+    head :ok
   end
 end
