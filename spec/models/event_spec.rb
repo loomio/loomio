@@ -257,7 +257,7 @@ describe Event do
 
   describe "comment_liked!" do
     let(:comment_vote) { mock_model(CommentVote,
-                                    :comment_user => mock_model(User)) }
+      :user => mock_model(User), :comment_user => mock_model(User)) }
     subject { Event.comment_liked!(comment_vote) }
 
     its(:kind) { should eq("comment_liked") }
@@ -270,13 +270,20 @@ describe Event do
         discussion = create_discussion(author: @user)
         @group.add_member! @user2
         @comment = discussion.add_comment @user, "hello"
-        @comment_vote = @comment.like @user2
-        @event = Event.comment_liked! @comment_vote
       end
 
       it "notifies user" do
+        @comment_vote = @comment.like @user2
+        @event = Event.comment_liked! @comment_vote
         @event.notifications.where(:user_id => @user.id).
           should exist
+      end
+
+      it "does not notify user when they like their own comment" do
+        @comment_vote = @comment.like @user
+        @event = Event.comment_liked! @comment_vote
+        @event.notifications.where(:user_id => @user.id).
+          should_not exist
       end
     end
   end
