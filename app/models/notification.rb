@@ -6,7 +6,8 @@ class Notification < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :event_id
 
   delegate :kind, :to => :event, :prefix => :event
-  delegate :vote, :discussion, :comment, :motion, :membership, :to => :event
+  delegate :vote, :discussion, :comment, :motion, :membership, :comment_vote,
+    :to => :event
 
   attr_accessible :user, :event
 

@@ -256,10 +256,28 @@ describe Event do
   end
 
   describe "comment_liked!" do
-    let(:comment_vote) { stub_model(CommentVote) }
-    subject { Event.comment_liked!(CommentVote) }
+    let(:comment_vote) { mock_model(CommentVote,
+                                    :comment_user => mock_model(User)) }
+    subject { Event.comment_liked!(comment_vote) }
 
     its(:kind) { should eq("comment_liked") }
     its(:comment_vote) { should eq(comment_vote) }
+
+    context "sending notifications" do
+      before do
+        @group = Group.make!
+        @user, @user2 = User.make!, User.make!
+        discussion = create_discussion(author: @user)
+        @group.add_member! @user2
+        @comment = discussion.add_comment @user, "hello"
+        @comment_vote = @comment.like @user2
+        @event = Event.comment_liked! @comment_vote
+      end
+
+      it "notifies user" do
+        @event.notifications.where(:user_id => @user.id).
+          should exist
+      end
+    end
   end
 end
