@@ -6,8 +6,8 @@
         %h1.word-break= @discussion.title
       - if can? :add_comment, @discussion
         = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
-          = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
-          = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment'
+          = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something...", tabindex: 1
+          = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment', tabindex: 2
       = render 'history', discussion: @discussion, history: @discussion.history
 
   .span6#content-proposal
@@ -49,7 +49,7 @@
         - else
           - if can? :create, Motion.new(discussion_id: @discussion.id)
             %li.tool-bar.clearfix
-              =link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), class: 'tool-bar-item tool-bar-item-proposal', id: 'new-proposal'
+              =link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), class: 'tool-bar-item tool-bar-item-proposal', id: 'new-proposal', tabindex: 3
           %li.current-proposal.no-proposals= "There is no current proposal for this discussion"
 
     - if @discussion.motions.where("phase = 'closed'").count > 0

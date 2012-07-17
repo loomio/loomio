@@ -7,7 +7,7 @@
     - can_leave = group.users_include? current_user
     - if can_edit || can_leave
       .dropdown.btn-group.group-options
-        %a.btn.dropdown-toggle{ :href => "#", 'data-toggle' => 'dropdown' }
+        %a.btn.dropdown-toggle{ :href => "#", 'data-toggle' => 'dropdown' , 'tabindex' => 4}
           %i.icon-cog
           Options
           = image_tag("dropdown.png", title:'Options', alt:'Options', class: "options-dropdown-icon")
