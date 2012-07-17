@@ -7,6 +7,9 @@ require 'spork'
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
+# Workaround for Spork issue #109 until pull-req #140 gets merged
+#AbstractController::Helpers::ClassMethods.module_eval do def helper(*args, &block); modules_for_helpers(args).each {|mod| add_template_helper(mod)}; _helpers.module_eval(&block) if block_given?; end end
+
 Spork.prefork do
   # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
@@ -34,16 +37,27 @@ Spork.prefork do
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.
-    config.use_transactional_fixtures = true
+    config.use_transactional_fixtures = false
 
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
+
+    config.before :suite do
+      DatabaseCleaner.strategy = :truncation
+    end
+
+    config.before :each do
+      DatabaseCleaner.start
+    end
+
+    config.after :each do
+      DatabaseCleaner.clean
+    end
   end
 
-  require 'database_cleaner'
-  DatabaseCleaner.strategy = :truncation
+  #require 'database_cleaner'
 
 end
 
@@ -53,10 +67,6 @@ Spork.each_run do
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
-
-  # This code will be run each time you run your specs.
-  DatabaseCleaner.clean
-
 end
 
 
