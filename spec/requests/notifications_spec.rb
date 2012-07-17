@@ -39,24 +39,40 @@ describe "Notifications" do
         find("#notifications-count").should have_content("2")
       end
     end
+  end
 
-    # Spec (TODO):
-    #
-    # Given that I am a member of a group
-    # And given that someone else has created a new discussion in the group
-    # When I click on the notification icon
-    # Then I should see a notification that a new discussion has been created in the group
-    # And I should see my notification count should drop to zero
-    #
+  # Spec (TODO):
+  #
+  # Given that I am a member of a group
+  # And given that someone else has created a new discussion in the group
+  # When I click on the notification icon
+  # Then I should see a notification that a new discussion has been created in the group
+  # And I should see my notification count should drop to zero
+  #
+  context "a logged in user, member of a group" do
+    before :each do
+    end
+
     describe "clicking on notifications dropdown" do
-      it "shows and clears notifications" do
-        Event.new_discussion! create_discussion(group: @group)
-        visit root_url
-        find("#notifications-toggle").click
+      before do
+        @user = User.make!
+        @group = Group.make!(name: 'Test Group', viewable_by: :members)
+        @group.add_member!(@user)
 
+        visit("/users/sign_in")
+
+        fill_in("user_email", :with => @user.email)
+        fill_in("user_password", :with => @user.password)
+      end
+
+      it "shows and clears notifications", :js => true do
+        Event.new_discussion! create_discussion(group: @group)
+
+        click_button("sign-in-btn")
+
+        find("#notifications-toggle").click
         find("#notifications-container").should have_content("new discussion")
       end
     end
   end
-
 end
