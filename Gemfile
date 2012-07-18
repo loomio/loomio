@@ -21,10 +21,15 @@ gem 'exception_notification'
 gem 'browser'
 gem 'activeadmin'
 
+# NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
+#       which does not allow us to do this
+#
+#       https://github.com/rails/sass-rails/issues/38#issuecomment-2046678
+gem 'sass-rails',   '~> 3.1.4'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
   gem 'twitter-bootstrap-rails'
   gem 'bootstrap-sass', '~>2.0.3'
   gem 'coffee-rails', '~> 3.1.1'
