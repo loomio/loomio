@@ -29,7 +29,7 @@ class Group < ActiveRecord::Base
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, :dependent => :destroy
-  has_many :motions
+  has_many :motions, :through => :discussions
   has_many :motions_in_voting_phase,
            :through => :discussions,
            :source => :motions,
