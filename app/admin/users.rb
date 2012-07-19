@@ -1,5 +1,7 @@
 ActiveAdmin.register User do
   actions :index, :edit, :update
+  filter :name
+  filter :email
 
   index do
     column :name

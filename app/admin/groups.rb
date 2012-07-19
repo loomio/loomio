@@ -1,5 +1,8 @@
 ActiveAdmin.register Group do
   actions :index, :show
+  filter :name
+  filter :creator
+  filter :parent
 
   scope :all, :default => true do |group|
     group.includes [:creator]
