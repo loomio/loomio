@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
 $ ->
   # Only execute on group page
   if $("body.groups").length > 0
@@ -35,7 +31,6 @@ $ ->
 
 #*** tick on proposal dropdown ***
 $ ->
-  # Only execute on group page
   $("#display-closed").click((event) ->
     $("#open").hide()
     $("#closed").show()
@@ -69,15 +64,27 @@ $ ->
     )
 
 #*** ajax for discussions on group page ***
+
+# closed proposals
+$ ->
+  if $("body.groups").length > 0
+    idStr = new Array
+    idStr = $('#group-closed-motions').children().attr('class').split('_')
+    $('#group-closed-motions').load("/groups/#{idStr[1]}/motions")
+$ ->
+  $(document).on('click', '#group-closed-motions .pagination a', (e)->
+    $('#group-closed-motions').load($(this).attr('href'))
+    e.preventDefault()
+  )
+# discussions
 $ ->
   if $("body.groups").length > 0
     idStr = new Array
     idStr = $('#group-discussions').children().attr('class').split('_')
     $('#group-discussions').load("/groups/#{idStr[1]}/discussions",
       Application.convertUtcToRelativeTime)
-
 $ ->
-  $(document).on('click', '.pagination a', (e)->
+  $(document).on('click', '#group-discussions .pagination a', (e)->
     $('#group-discussions').load($(this).attr('href'),
       Application.convertUtcToRelativeTime)
     e.preventDefault()

@@ -172,6 +172,15 @@ class Group < ActiveRecord::Base
   # DISCUSSION LISTS
   #
 
+  def discussions_sorted(page=nil)
+    #Discussion.where("group_id = ? OR parent_id = ?", [params[:group_id], params[:group_id]]).order("last_message_at")
+    if page
+      discussions.order("last_comment_at DESC").page(params[:page]).per(page)
+    else
+      discussions.order("last_comment_at DESC")
+    end
+  end
+
   def all_discussions(user)
     if subgroups.present?
       result = discussions
@@ -182,11 +191,12 @@ class Group < ActiveRecord::Base
       end
       result.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
     else
-      discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+      #discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+      discussions.select('max(comments.created_at) AS "latest_comment"').joins('LEFT JOIN Comments ON discussions.id = commentable_id').group('discussions.id')
     end
   end
 
-  #
+  #/
   # PRIVATE METHODS
   #
 

@@ -93,18 +93,9 @@ class User < ActiveRecord::Base
     new_user
   end
 
-
-  def discussions_sorted
-    #latest_comments = Comment.select('commentable_id, MAX(created_at) AS latest_created_at').group('commentable_id')
-    #discussions.joins
-      #Comment.select('commentable_id AS id, MAX(created_at) AS latest_created_at').group('commentable_id')).
-      #order('latest_created_at')
-    #discussions.joins('LEFT OUTER JOIN comments ON discussions.id = comments.commentable_id').group('max(comments.created_at)').order('comments.created_at')
+  def discussions_sorted()
+    discussions.order("last_comment_at DESC")
   end
-
-  #def discussions_sorted
-    #discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
-  #end
 
   def update_discussion_read_log(discussion)
     if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil

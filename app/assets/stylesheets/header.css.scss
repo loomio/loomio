@@ -51,7 +51,6 @@ header{
   ul.secondary-nav {
     margin: 0px;
     position: relative;
-    left: 20px;
   }
 }
 
@@ -69,6 +68,10 @@ header{
   }
 }
 
+/* feedback an user link group */
+.nav.pull-right {
+  left: 20px;
+}
 /* user dropdown */
 .dropdown#user {
   float: right;
@@ -76,7 +79,8 @@ header{
 
 /* group dropdown */
 .dropdown#group{
-  float: right;
+  float: left;
+  right: 20px;
   #title {
     display: inline-block;
     /*this code is needed for positioning when the notification badge is enabled do NOT delete (AARON 14/6/2012)*/

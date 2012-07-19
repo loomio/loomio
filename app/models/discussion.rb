@@ -22,6 +22,8 @@ class Discussion < ActiveRecord::Base
 
   attr_accessor :comment, :notify_group_upon_creation
 
+  after_create :populate_last_comment_at
+
 
   #
   # PERMISSION CHECKS
@@ -88,7 +90,18 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def latest_comment
-    comments.order('created_at DESC').first
+  def latest_comment_time
+    if comments.count > 0
+      comments.order('created_at DESC').first.created_at
+    else
+      created_at
+    end
+  end
+
+  private
+
+  def populate_last_comment_at
+    self.last_comment_at = created_at
+    save
   end
 end

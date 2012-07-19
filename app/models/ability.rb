@@ -67,6 +67,7 @@ class Ability
     #
     # MOTIONS
     #
+    can :index, Motion
 
     can :create, Motion, :discussion_id => user.discussion_ids
 

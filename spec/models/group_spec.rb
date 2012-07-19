@@ -78,6 +78,24 @@ describe Group do
     end
   end
 
+  describe "group.discussions_sorted_paged(page)" do
+    it "returns a list of discussions sorted by last_comment_at" do
+      user = User.make!
+      group = Group.make!
+      group.add_member!(user)
+      discussion1 = create_discussion :group => group, :author => user
+      discussion2 = create_discussion :group => group, :author => user
+      discussion2.add_comment user, "hi"
+      discussion3 = create_discussion :group => group, :author => user
+      discussion4 = create_discussion :group => group, :author => user
+      discussion1.add_comment user, "hi"
+      group.discussions_sorted[0].should == discussion1
+      group.discussions_sorted[1].should == discussion4
+      group.discussions_sorted[2].should == discussion3
+      group.discussions_sorted[3].should == discussion2
+    end
+  end
+
   # NOTE (Jon): these descriptions seem ridiculous,
   # why did i name the tests this way? mehh.....
   describe "beta_features" do
