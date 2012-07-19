@@ -116,51 +116,27 @@ h4 {
   }
   .pagination {
     a { color: $mid-grey; }
+    ul { border-top: 0px; }
     margin: 2px 0 5px 0;
-    max-width: 600px;
-    border-left: 1px solid #DDD;
-    margin-left: auto;
   }
-  .page {
-    text-decoration: none;
-    line-height: 34px;
-    float: left;
-    padding: 0;
-    width: 34px;
-  }
-  .page.current {
+  .page.active {
     color: white;
-    text-align: center;
     background: $light-grey;
-    height: 36px;
   }
-  .next, .prev , .first, .last{
+  .next_page, .prev {
     a {
       text-indent: -100em;
       overflow: hidden;
-      height: 34px;
-      width: 36px;
-      padding: 0px;
+      padding: 0 5px;
     }
   }
   .prev a {
-    size: 5px;
     background: url(previous.png) no-repeat;
-    background-position-x: 15px;
-    background-position-y: 10px;
+    background-position: 16px 10px;
   }
-  .next a {
-    size: 5px;
+  .next_page a {
     background: url(Next.png) no-repeat;
-    background-position-x: 15px;
-    background-position-y: 10px;
-  }
-  .gap {
-    border: 1px solid #DDD;
-    text-align: center;
-    border-left: 0px;
-    height: 34px;
-    width: 36px;
+    background-position: 16px 10px;
   }
 }
 

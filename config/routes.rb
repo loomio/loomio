@@ -13,7 +13,7 @@ Loomio::Application.routes.draw do
     post :create_motion, :on => :member
   end
 
-  resources :motions, except: :index do
+  resources :motions do
     resources :votes
   end
   match "/motions/:id/close", :to => "motions#close_voting", :as => :close_motion_voting,
