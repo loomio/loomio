@@ -38,7 +38,8 @@ describe Notification do
     before do
       @user = stub_model(User)
       @discussion =  stub_model(Discussion, :author => @user)
-      @event = stub_model(Event, :discussion => @discussion)
+      @event = stub_model(Event, :eventable => @discussion,
+                          :eventable_type => "Discussion")
       @notification.event = @event
       @notification.save!
     end
@@ -49,7 +50,8 @@ describe Notification do
   describe "for new comment" do
     before do
       @comment = stub_model(Comment)
-      @event = stub_model(Event, :comment => @comment)
+      @event = stub_model(Event, :eventable => @comment,
+                          :eventable_type => "Comment")
       @notification.event = @event
       @notification.save!
     end
@@ -60,7 +62,8 @@ describe Notification do
   describe "for new motion" do
     before do
       @motion = stub_model(Motion)
-      @event = stub_model(Event, :motion => @motion)
+      @event = stub_model(Event, :eventable => @motion,
+                          :eventable_type => "Motion")
       @notification.event = @event
       @notification.save!
     end
@@ -71,7 +74,8 @@ describe Notification do
   describe "for new vote" do
     before do
       @vote = stub_model(Vote)
-      @event = stub_model(Event, :vote => @vote)
+      @event = stub_model(Event, :eventable => @vote,
+                          :eventable_type => "Vote")
       @notification.event = @event
       @notification.save!
     end
@@ -82,7 +86,8 @@ describe Notification do
   describe "for membership request" do
     before do
       @membership = stub_model(Membership)
-      @event = stub_model(Event, :membership => @membership)
+      @event = stub_model(Event, :eventable => @membership,
+                          :eventable_type => "Membership")
       @notification.event = @event
       @notification.save!
     end
@@ -93,7 +98,8 @@ describe Notification do
   describe "for comment vote" do
     before do
       @comment_vote = stub_model(CommentVote)
-      @event = stub_model(Event, :comment_vote => @comment_vote)
+      @event = stub_model(Event, :eventable => @comment_vote,
+                          :eventable_type => "CommentVote")
       @notification.event = @event
       @notification.save!
     end

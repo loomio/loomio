@@ -6,11 +6,19 @@ class Notification < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :event_id
 
   delegate :kind, :to => :event, :prefix => :event
-  delegate :vote, :discussion, :comment, :motion, :membership, :comment_vote,
-    :to => :event
+  delegate :eventable, :to => :event
 
   attr_accessible :user, :event
 
   default_scope order("id DESC")
+
+  def method_missing method_name, *args
+    name = method_name.to_s
+    if name =~ /^(discussion|comment|motion|vote|membership|comment_vote)$/
+      event.eventable if event.eventable_type == name.camelize
+    else
+      super
+    end
+  end
 end
 

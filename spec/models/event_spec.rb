@@ -1,12 +1,7 @@
 require 'spec_helper'
 
 describe Event do
-  it { should belong_to(:discussion) }
-  it { should belong_to(:comment) }
-  it { should belong_to(:comment_vote) }
-  it { should belong_to(:motion) }
-  it { should belong_to(:vote) }
-  it { should belong_to(:membership) }
+  it { should belong_to(:eventable) }
   it { should have_many(:notifications).dependent(:destroy) }
   it { should allow_value("new_discussion").for(:kind) }
   it { should allow_value("new_comment").for(:kind) }
@@ -24,7 +19,7 @@ describe Event do
     subject { Event.new_discussion!(discussion) }
 
     its(:kind) { should eq("new_discussion") }
-    its(:discussion) { should eq(discussion) }
+    its(:eventable) { should eq(discussion) }
 
     context "sending notifications" do
       it "notifies group members" do
@@ -50,7 +45,7 @@ describe Event do
     subject { Event.new_comment!(comment) }
 
     its(:kind) { should eq("new_comment") }
-    its(:comment) { should eq(comment) }
+    its(:eventable) { should eq(comment) }
 
     context "sending notifications" do
       before do
@@ -87,7 +82,7 @@ describe Event do
     subject { Event.new_motion!(motion) }
 
     its(:kind) { should eq("new_motion") }
-    its(:motion) { should eq(motion) }
+    its(:eventable) { should eq(motion) }
 
     context "sending notifications" do
       it "notifies group members" do
@@ -115,7 +110,7 @@ describe Event do
     subject { Event.new_vote!(vote) }
 
     its(:kind) { should eq("new_vote") }
-    its(:vote) { should eq(vote) }
+    its(:eventable) { should eq(vote) }
 
     context "sending notifications" do
       before do
@@ -166,7 +161,7 @@ describe Event do
     subject { Event.motion_blocked!(vote) }
 
     its(:kind) { should eq("motion_blocked") }
-    its(:vote) { should eq(vote) }
+    its(:eventable) { should eq(vote) }
 
     context "sending notifications" do
       before do
@@ -196,7 +191,7 @@ describe Event do
     subject { Event.membership_requested!(membership) }
 
     its(:kind) { should eq("membership_requested") }
-    its(:membership) { should eq(membership) }
+    its(:eventable) { should eq(membership) }
 
     context "sending notifications" do
       before do
@@ -222,7 +217,7 @@ describe Event do
     subject { Event.user_added_to_group!(membership) }
 
     its(:kind) { should eq("user_added_to_group") }
-    its(:membership) { should eq(membership) }
+    its(:eventable) { should eq(membership) }
 
     context "sending notifications" do
       before do
@@ -261,7 +256,7 @@ describe Event do
     subject { Event.comment_liked!(comment_vote) }
 
     its(:kind) { should eq("comment_liked") }
-    its(:comment_vote) { should eq(comment_vote) }
+    its(:eventable) { should eq(comment_vote) }
 
     context "sending notifications" do
       before do

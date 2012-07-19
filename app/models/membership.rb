@@ -27,7 +27,7 @@ class Membership < ActiveRecord::Base
   belongs_to :user
   belongs_to :inviter, :class_name => "User"
 
-  has_many :events, :dependent => :destroy
+  has_many :events, :as => :eventable, :dependent => :destroy
 
   #
   # ATTRIBUTES / SCOPES / DELEGATES
@@ -51,6 +51,9 @@ class Membership < ActiveRecord::Base
   after_initialize :set_defaults
   before_destroy :remove_open_votes
   after_destroy :destroy_subgroup_memberships
+
+  after_save :update_counter_cache
+  after_destroy :update_counter_cache
 
   #
   # STATE MACHINE
@@ -104,5 +107,10 @@ class Membership < ActiveRecord::Base
 
     def set_defaults
       self.access_level ||= 'request'
+    end
+
+    def update_counter_cache
+      self.group.memberships_count = group.memberships.count
+      group.save
     end
 end

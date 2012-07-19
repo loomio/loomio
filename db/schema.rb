@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120715235737) do
+ActiveRecord::Schema.define(:version => 20120719062306) do
+
+  create_table "active_admin_comments", :force => true do |t|
+    t.string   "resource_id",   :null => false
+    t.string   "resource_type", :null => false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "namespace"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -77,22 +92,11 @@ ActiveRecord::Schema.define(:version => 20120715235737) do
 
   create_table "events", :force => true do |t|
     t.string   "kind"
-    t.integer  "discussion_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comment_id"
-    t.integer  "motion_id"
-    t.integer  "vote_id"
-    t.integer  "membership_id"
-    t.integer  "comment_vote_id"
+    t.integer  "eventable_id"
+    t.string   "eventable_type"
   end
-
-  add_index "events", ["comment_id"], :name => "index_events_on_comment_id"
-  add_index "events", ["comment_vote_id"], :name => "index_events_on_comment_vote_id"
-  add_index "events", ["discussion_id"], :name => "index_events_on_discussion_id"
-  add_index "events", ["membership_id"], :name => "index_events_on_membership_id"
-  add_index "events", ["motion_id"], :name => "index_events_on_motion_id"
-  add_index "events", ["vote_id"], :name => "index_events_on_vote_id"
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -106,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20120715235737) do
     t.boolean  "beta_features",        :default => false
     t.string   "description"
     t.integer  "creator_id",                              :null => false
+    t.integer  "memberships_count",    :default => 0,     :null => false
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -174,6 +179,7 @@ ActiveRecord::Schema.define(:version => 20120715235737) do
     t.string   "invited_by_type"
     t.datetime "deleted_at"
     t.boolean  "has_read_system_notice",               :default => false, :null => false
+    t.boolean  "is_admin",                             :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

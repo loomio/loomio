@@ -3,20 +3,14 @@ class Event < ActiveRecord::Base
              membership_requested user_added_to_group comment_liked]
 
   has_many :notifications, :dependent => :destroy
-  belongs_to :discussion
-  belongs_to :comment
-  belongs_to :motion
-  belongs_to :vote
-  belongs_to :membership
-  belongs_to :comment_vote
+  belongs_to :eventable, :polymorphic => true
 
   validates_inclusion_of :kind, :in => KINDS
 
-  attr_accessible :kind, :discussion, :comment, :motion, :vote, :membership,
-    :comment_vote
+  attr_accessible :kind, :eventable
 
   def self.new_discussion!(discussion)
-    event = create!(:kind => "new_discussion", :discussion => discussion)
+    event = create!(:kind => "new_discussion", :eventable => discussion)
     discussion.group_users.each do |user|
       unless user == discussion.author
         event.notifications.create! :user => user
@@ -26,7 +20,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.new_comment!(comment)
-    event = create!(:kind => "new_comment", :comment => comment)
+    event = create!(:kind => "new_comment", :eventable => comment)
     comment.discussion_participants.each do |user|
       unless user == comment.user
         event.notifications.create! :user => user
@@ -36,7 +30,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.new_motion!(motion)
-    event = create!(:kind => "new_motion", :motion => motion)
+    event = create!(:kind => "new_motion", :eventable => motion)
     motion.group_users.each do |user|
       unless user == motion.author
         event.notifications.create! :user => user
@@ -46,7 +40,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.new_vote!(vote)
-    event = create!(:kind => "new_vote", :vote => vote)
+    event = create!(:kind => "new_vote", :eventable => vote)
     begin
       unless vote.user == vote.motion_author
         event.notifications.create! :user => vote.motion_author
@@ -63,7 +57,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.motion_blocked!(vote)
-    event = create!(:kind => "motion_blocked", :vote => vote)
+    event = create!(:kind => "motion_blocked", :eventable => vote)
     vote.group_users.each do |user|
       unless user == vote.user
         event.notifications.create! :user => user
@@ -73,7 +67,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.membership_requested!(membership)
-    event = create!(:kind => "membership_requested", :membership => membership)
+    event = create!(:kind => "membership_requested", :eventable => membership)
     membership.group_admins.each do |admin|
       event.notifications.create! :user => admin
     end
@@ -81,7 +75,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.user_added_to_group!(membership)
-    event = create!(:kind => "user_added_to_group", :membership => membership)
+    event = create!(:kind => "user_added_to_group", :eventable => membership)
     event.notifications.create! :user => membership.user
     # Send email only if the user has already accepted invitation to Loomio
     if membership.user.accepting_or_not_invited?
@@ -91,7 +85,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.comment_liked!(comment_vote)
-    event = create!(:kind => "comment_liked", :comment_vote => comment_vote)
+    event = create!(:kind => "comment_liked", :eventable => comment_vote)
     unless comment_vote.user == comment_vote.comment_user
       event.notifications.create! :user => comment_vote.comment_user
     end

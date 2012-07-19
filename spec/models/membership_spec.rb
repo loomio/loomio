@@ -51,6 +51,32 @@ describe Membership do
     membership.inviter.should == user2
   end
 
+  describe "update_counter_cache" do
+    it "decrements group.memberships_count" do
+      group.should_receive(:memberships).and_return([1,2])
+      group.should_receive(:memberships_count=).with(2)
+      group.should_receive :save
+
+      membership = Membership.new
+      membership.group = group
+
+      membership.send(:update_counter_cache)
+    end
+  end
+
+  describe "save" do
+    it "updates memberships_count" do
+      membership = Membership.new
+      membership.group = group
+      membership.user = user
+      membership.access_level = "member"
+
+      membership.should_receive(:update_counter_cache)
+
+      membership.save!
+    end
+  end
+
   context "destroying a membership" do
     before do
       @membership = group.add_member! user
@@ -112,5 +138,12 @@ describe Membership do
         }.should_not raise_error
       end
     end
+
+    it "updates memberships_count" do
+      @membership.should_receive(:update_counter_cache)
+
+      @membership.destroy
+    end
   end
+
 end
