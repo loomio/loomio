@@ -20,7 +20,7 @@ class Vote < ActiveRecord::Base
                      'no' => 'disagreed', 'block' => 'blocked' }
   belongs_to :motion
   belongs_to :user
-  has_many :events, :dependent => :destroy
+  has_many :events, :as => :eventable, :dependent => :destroy
 
   validates_presence_of :motion, :user, :position
   validates_inclusion_of :position, in: POSITIONS

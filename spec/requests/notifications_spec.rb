@@ -70,8 +70,24 @@ describe "Notifications" do
 
         click_button("sign-in-btn")
 
+        page.should have_xpath("//title", :text => "(1) Loomio")
+        find("#notifications-count").should have_content("1 Notification")
+
         find("#notifications-toggle").click
+
+        page.should have_xpath("//title", :text => "Loomio")
+        find("#notifications-count").should have_content("0 Notifications")
         find("#notifications-container").should have_content("new discussion")
+      end
+
+      it "does not break site if notification item no longer exists" do
+        discussion = create_discussion(group: @group)
+        Event.new_discussion! discussion
+        discussion.delete
+
+        click_button("sign-in-btn")
+
+        page.should have_css("body.dashboard.show")
       end
     end
   end
