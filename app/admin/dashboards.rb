@@ -19,11 +19,11 @@ ActiveAdmin::Dashboards.build do
   end
 
   section "Discussion Per Group (Average)", :priority => 5 do
-    sum = 0
+    sum = 0.0
     Group.all.each do |group|
       sum += group.discussions.count
     end
-    h1 { "#{sum / Group.count}" }
+    h1 { "#{(sum / Group.count).round}" }
   end
 
   section "Comments Per Discussion (Average)", :priority => 6 do
