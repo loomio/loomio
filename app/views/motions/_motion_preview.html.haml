@@ -16,9 +16,9 @@
               =" · " unless this_group
           .proposal-group-name= DiscussionDecorator.new(motion.discussion).display_group_name(this_group)
       .pie{id: "graph_#{motion.id}"}
-      .engagement
-        = "#{motion.percent_voted}%"
-        .enguagement-label Engaged
+      -#.engagement
+        -#= "#{motion.percent_voted}%"
+        -#.enguagement-label Engaged
 
   :coffeescript
     $ ->
