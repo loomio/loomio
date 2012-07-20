@@ -125,6 +125,9 @@ describe "Discussion" do
         should have_link("Like")
         should_not have_link("Unlike")
       end
+      
+      it "can view the previous unread discussion"
+      it "can view the next unread discussion"
     end
   end
 end

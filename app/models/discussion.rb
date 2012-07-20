@@ -79,6 +79,23 @@ class Discussion < ActiveRecord::Base
     self.activity += 1
     save
   end
+  
+  def next_unread(user)
+    next_discussion = Discussion.find(:first, 
+      self.group.all_discussions(user).map(&:id).uniq,
+      conditions: ["updated_at > ?", self.updated_at])
+    next_discussion.nil? ? self : next_discussion
+  end
+
+  # method for prev discussion - take current discussion id, find previous discussion with unread comments based on created time
+  # get previous discussion based on last comment?
+  # determine if discussion has unread items has_activity_unread_by?(user)
+  def previous_unread(user)
+    previous_discussion = Discussion.find(:last, 
+      self.group.all_discussions(user).map(&:id).uniq,
+      conditions: ["updated_at < ?", self.updated_at])
+    previous_discussion.nil? ? self : previous_discussion
+  end
 
   def latest_history_time
     if history.count > 0

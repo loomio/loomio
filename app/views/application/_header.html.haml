@@ -7,7 +7,7 @@
     - if user_signed_in?
       %ul.nav.group-nav
         %li.dropdown.group-container
-          %a{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
+          %a{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown', 'id' => 'my_groups_header'}
             #group-icon
             -#- total_activity = current_user.activity_total
             -#- if total_activity > 1

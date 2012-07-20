@@ -22,3 +22,4 @@
 //= require main
 //= require groups
 //= require motions
+//= require discussions

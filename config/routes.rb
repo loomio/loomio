@@ -25,6 +25,9 @@ Loomio::Application.routes.draw do
     post :add_comment, :on => :member
     get :new_proposal, :on => :member
   end
+  
+  match "/discussions/:id/previous_unread_discussion", :to => "discussions#previous_unread_discussion", :as => :previous_unread_discussion
+  match "/discussions/:id/next_unread_discussion", :to => "discussions#next_unread_discussion", :as => :next_unread_discussion
 
   resources :votes
   resources :memberships, except: [:new, :update, :show] do
