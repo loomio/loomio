@@ -21,7 +21,9 @@ gem 'exception_notification'
 gem 'browser'
 gem 'gravtastic'
 gem 'paperclip'
+gem 'kaminari'
 gem 'activeadmin'
+
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this

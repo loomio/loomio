@@ -111,6 +111,21 @@ describe User do
     end
   end
 
+  describe "user.discussions_sorted_paged" do
+    it "returns a list of discussions sorted by last_comment_at" do
+      discussion1 = create_discussion :author => user
+      discussion2 = create_discussion :author => user
+      discussion2.add_comment user, "hi"
+      discussion3 = create_discussion :author => user
+      discussion4 = create_discussion :author => user
+      discussion1.add_comment user, "hi"
+      user.discussions_sorted[0].should == discussion1
+      user.discussions_sorted[1].should == discussion4
+      user.discussions_sorted[2].should == discussion3
+      user.discussions_sorted[3].should == discussion2
+    end
+  end
+
   describe "user.voted?(motion)" do
     before do
       group = Group.make!
