@@ -216,7 +216,7 @@ describe Motion do
 
   end
 
-   describe "percent_voted" do
+  describe "percent_voted" do
     before do
       @motion = create_motion
     end
