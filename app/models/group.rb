@@ -19,16 +19,18 @@ class Group < ActiveRecord::Base
     :order => "LOWER(users.name)"
   has_many :membership_requests,
     :conditions => {:access_level => 'request'},
-    :class_name => 'Membership'
+    :class_name => 'Membership',
+    :dependent => :destroy
   has_many :admin_memberships,
     :conditions => {:access_level => 'admin'},
-    :class_name => 'Membership'
+    :class_name => 'Membership',
+    :dependent => :destroy
   has_many :users, :through => :memberships # TODO: rename to members
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
-  has_many :discussions
-  has_many :motions
-  has_many :motions_voting,
+  has_many :discussions, :dependent => :destroy
+  has_many :motions, :through => :discussions
+  has_many :motions_in_voting_phase,
            :through => :discussions,
            :source => :motions,
            :conditions => { phase: 'voting' }
@@ -40,11 +42,11 @@ class Group < ActiveRecord::Base
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
 
+  belongs_to :creator,  :class_name => "User"
+
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
   delegate :name, :to => :parent, :prefix => true
-
-  acts_as_tagger
 
   attr_accessible :name, :viewable_by, :parent_id, :parent
   attr_accessible :members_invitable_by, :email_new_motion, :description
@@ -52,6 +54,14 @@ class Group < ActiveRecord::Base
   #
   # ACCESSOR METHODS
   #
+
+  def motions_in_voting_phase_that_user_has_voted_on(user)
+    motions_in_voting_phase.that_user_has_voted_on(user).uniq
+  end
+
+  def motions_in_voting_phase_that_user_has_not_voted_on(user)
+    motions_in_voting_phase - motions_in_voting_phase_that_user_has_voted_on(user)
+  end
 
   def beta_features
     if parent && (parent.beta_features == true)

@@ -141,6 +141,8 @@ describe GroupsController do
       post :create, :group => @group.attributes
       assigns(:group).users.should include(@user)
       assigns(:group).admins.should include(@user)
+
+      assigns(:group).creator.should == @user
       response.should redirect_to(group_url(assigns(:group)))
     end
 
