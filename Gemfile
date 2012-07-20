@@ -19,7 +19,9 @@ gem 'acts_as_commentable_with_threading'
 gem 'draper', '~> 0.11.1'
 gem 'exception_notification'
 gem 'browser'
+gem 'kaminari'
 gem 'activeadmin'
+
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
