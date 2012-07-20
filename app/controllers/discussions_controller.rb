@@ -26,7 +26,7 @@ class DiscussionsController < GroupBaseController
   def index
     if params[:group_id].present?
       @group = Group.find(params[:group_id])
-      @discussions= @group.discussions_sorted.page(params[:page]).per(10)
+      @discussions= @group.discussions_sorted(current_user).page(params[:page]).per(10)
     else
       @discussions= current_user.discussions_sorted.page(params[:page]).per(10)
     end
