@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   has_many :authored_motions,
            :class_name => 'Motion',
            :foreign_key => 'author_id'
-  has_many :motions_voting,
+  has_many :motions_in_voting_phase,
            :through => :discussions,
            :source => :motions,
            :conditions => { phase: 'voting' }
@@ -93,20 +93,12 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
   end
 
-  def motions_voted
-    motions_voting.that_user_has_voted_on(self)
+  def motions_in_voting_phase_that_user_has_voted_on
+    motions_in_voting_phase.that_user_has_voted_on(self).uniq
   end
 
-  def motions_not_voted
-    motions_voting.that_user_has_not_voted_on(self)
-  end
-
-  def group_motions_voted(group)
-    group.motions_voting.that_user_has_voted_on(self)
-  end
-
-  def group_motions_not_voted(group)
-    group.motions_voting.that_user_has_not_voted_on(self)
+  def motions_in_voting_phase_that_user_has_not_voted_on
+    motions_in_voting_phase - motions_in_voting_phase_that_user_has_voted_on
   end
 
   def is_group_admin?(group)

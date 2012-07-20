@@ -20,6 +20,13 @@ describe User do
   
   it "has uploaded avatar less than 1000kb "
 
+  it "email can have an apostrophe" do
+    user = User.new
+    user.email = "mr.d'arcy@gumby.com"
+    user.valid?
+    user.should have(0).errors_on(:email)
+  end
+
   it "has many groups" do
     group = Group.make!
     group.add_member!(user)
@@ -61,16 +68,16 @@ describe User do
     user.authored_motions.should include(motion)
   end
 
-  describe "motions_voting" do
+  describe "motions_in_voting_phase" do
     it "should return motions that belong to user and are in phase 'voting'" do
       motion = create_motion(author: user)
-      user.motions_voting.should include(motion)
+      user.motions_in_voting_phase.should include(motion)
     end
 
     it "should not return motions that belong to the group but are in phase 'closed'" do
       motion = create_motion(author: user)
       motion.close_voting!
-      user.motions_voting.should_not include(motion)
+      user.motions_in_voting_phase.should_not include(motion)
     end
   end
 
@@ -87,39 +94,20 @@ describe User do
     end
   end
 
-  describe "motions_voted" do
-    it "calls scope on motions_voting" do
-      user.motions_voting.should_receive(:that_user_has_voted_on).with(user)
+  describe "motions_in_voting_phase_that_user_has_voted_on" do
+    it "calls scope on motions_in_voting_phase" do
+      user.motions_in_voting_phase.should_receive(:that_user_has_voted_on).
+        with(user).and_return(stub(:uniq => true))
 
-      user.motions_voted
+      user.motions_in_voting_phase_that_user_has_voted_on
     end
   end
 
-  describe "motions_not_voted" do
-    it "calls scope on motions_not_voting" do
-      user.motions_voting.should_receive(:that_user_has_not_voted_on).with(user)
+  describe "motions_in_voting_phase_that_user_has_not_voted_on" do
+    it "does stuff " do
+      user.should_receive(:motions_in_voting_phase_that_user_has_not_voted_on)
 
-      user.motions_not_voted
-    end
-  end
-
-  describe "group_motions_voted(group)" do
-    it "calls scope on motions_voting" do
-      group = Group.make!
-      group.add_member!(user)
-      group.motions_voting.should_receive(:that_user_has_voted_on).with(user)
-
-      user.group_motions_voted(group)
-    end
-  end
-
-  describe "group_motions_not_voted(group)" do
-    it "calls scope on motions_not_voting" do
-      group = Group.make!
-      group.add_member!(user)
-      group.motions_voting.should_receive(:that_user_has_not_voted_on).with(user)
-
-      user.group_motions_not_voted(group)
+      user.motions_in_voting_phase_that_user_has_not_voted_on
     end
   end
 

@@ -1,5 +1,9 @@
 Loomio::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
+  match "/users/dismiss_system_notice", :to => "users#dismiss_system_notice",
+    :as => :dismiss_system_notice_for_user, :via => :post
 
   resources :groups, except: :index do
     post :add_members, on: :member

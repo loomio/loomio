@@ -227,27 +227,25 @@ describe Motion do
     end
   end
 
-  describe "that_user_has_voted_on" do
-    it "returns motions that the user has voted" do
-      user = User.make!
-      motion = create_motion(author: user)
-      motion.vote!(user, 'yes', 'i agree!')
-      Motion.that_user_has_voted_on(user).should include(motion)
-    end
-  end
+  context do
+    let(:user1) { User.make! }
+    let(:user2) { User.make! }
 
-  describe "that_user_has_not_voted_on" do
-    before :each do
-      @user = User.make!
-      @motion = create_motion(author: @user)
-      @motion.vote!(@user, 'yes', 'i agree!')
-      @motion1 = create_motion(author: @user)
+    before do
+      @motion = create_motion(author: user1)
+      @motion1 = create_motion(author: user1)
     end
-    it "returns motions that the user has not voted" do
-      Motion.that_user_has_not_voted_on(@user).should include(@motion1)
-    end
-    it "does not returm motions that the user has voted" do
-      Motion.that_user_has_not_voted_on(@user).should_not include(@motion)
+
+    describe "that_user_has_voted_on" do
+      it "returns motions that the user has voted" do
+        @motion.vote!(user1, 'yes', 'i agree!')
+        Motion.that_user_has_voted_on(user1).should include(@motion)
+      end
+      it "does not return motions that the user has not voted on (even if another user has)" do
+        @motion.group.add_member! user2
+        @motion.vote!(user2, 'yes', 'i agree!')
+        Motion.that_user_has_voted_on(user1).should_not include(@motion)
+      end
     end
   end
 
