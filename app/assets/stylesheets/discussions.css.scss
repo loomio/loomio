@@ -190,7 +190,7 @@ li.preview a {
   a {
     color: $dark-grey;
     display: block;
-    padding: 9px;
+    padding: 5px 5px 5px 10px;
   }
   a:hover {
     text-decoration: none;
@@ -209,11 +209,11 @@ li.preview a {
     display: inline-block;
     float: right;
   }
-  .relative-time {
+  .latest-comment-time {
     color: $mid-grey;
     display: inline-block;
     position: relative;
-    bottom: 16px;
+    bottom: 7px;
     padding-right: 10px;
   }
   .proposal-close-date {
@@ -225,7 +225,7 @@ li.preview a {
     background-size: 25px;
     background-repeat: no-repeat;
     width: 32px;
-    height: 30px;
+    height: 20px;
     background-image: url("discussion.png");
   }
   .enabled-icon {
