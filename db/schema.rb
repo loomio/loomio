@@ -90,14 +90,6 @@ ActiveRecord::Schema.define(:version => 20120719062306) do
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
   add_index "discussions", ["group_id"], :name => "index_discussions_on_group_id"
 
-  create_table "events", :force => true do |t|
-    t.string   "kind"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "eventable_id"
-    t.string   "eventable_type"
-  end
-
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
