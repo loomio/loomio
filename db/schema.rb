@@ -84,30 +84,12 @@ ActiveRecord::Schema.define(:version => 20120718141211) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
-    t.integer  "activity",   :default => 0, :null => false
+    t.integer  "activity",        :default => 0, :null => false
+    t.datetime "last_comment_at"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
   add_index "discussions", ["group_id"], :name => "index_discussions_on_group_id"
-
-  create_table "events", :force => true do |t|
-    t.string   "kind"
-    t.integer  "discussion_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "comment_id"
-    t.integer  "motion_id"
-    t.integer  "vote_id"
-    t.integer  "membership_id"
-    t.integer  "comment_vote_id"
-  end
-
-  add_index "events", ["comment_id"], :name => "index_events_on_comment_id"
-  add_index "events", ["comment_vote_id"], :name => "index_events_on_comment_vote_id"
-  add_index "events", ["discussion_id"], :name => "index_events_on_discussion_id"
-  add_index "events", ["membership_id"], :name => "index_events_on_membership_id"
-  add_index "events", ["motion_id"], :name => "index_events_on_motion_id"
-  add_index "events", ["vote_id"], :name => "index_events_on_vote_id"
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -132,11 +114,9 @@ ActiveRecord::Schema.define(:version => 20120718141211) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "access_level"
-    t.integer  "inviter_id"
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
-  add_index "memberships", ["inviter_id"], :name => "index_memberships_on_inviter_id"
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "motions", :force => true do |t|
@@ -154,17 +134,6 @@ ActiveRecord::Schema.define(:version => 20120718141211) do
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
-
-  create_table "notifications", :force => true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "event_id"
-    t.datetime "viewed_at"
-  end
-
-  add_index "notifications", ["event_id"], :name => "index_notifications_on_event_id"
-  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "",    :null => false
