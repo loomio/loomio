@@ -172,13 +172,8 @@ class Group < ActiveRecord::Base
   # DISCUSSION LISTS
   #
 
-  def discussions_sorted(page=nil)
-    #Discussion.where("group_id = ? OR parent_id = ?", [params[:group_id], params[:group_id]]).order("last_message_at")
-    if page
-      discussions.order("last_comment_at DESC").page(params[:page]).per(page)
-    else
-      discussions.order("last_comment_at DESC")
-    end
+  def discussions_sorted
+    discussions.order("last_comment_at DESC")
   end
 
   def all_discussions(user)
