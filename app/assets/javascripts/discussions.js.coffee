@@ -3,6 +3,9 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+  $('a[disabled]').click ->
+    event.preventDefault()
+  
   $(document.body).keypress ->
     keyCode = event.which || event.keyCode
     keyChar = String.fromCharCode(keyCode)

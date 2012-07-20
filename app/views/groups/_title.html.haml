@@ -3,8 +3,17 @@
     #privacy{:class => group.viewable_by.to_s}
       =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
     %h2= group.fancy_link
-    = link_to "<", previous_unread_discussion_path(@discussion.previous_unread_discussion(current_user)), id: "previous_button", class: "btn" if @discussion && @discussion.id
-    = link_to ">", next_unread_discussion_path(@discussion.next_unread_discussion(current_user)), id: "next_button", class: "btn" if @discussion && @discussion.id
+    - if @discussion && @discussion.id
+      - previous_discussion = @discussion.previous_unread_discussion(current_user)
+      - if previous_discussion.id != @discussion.id
+        = link_to "<", previous_unread_discussion_path(previous_discussion), id: "previous_button", class: "btn" 
+      - else 
+        = link_to "<", "#", id: "previous_button", class: "btn", disabled: "disabled"
+      - next_discussion = @discussion.next_unread_discussion(current_user)
+      - if next_discussion.id != @discussion.id
+        = link_to ">", next_unread_discussion_path(next_discussion), id: "next_button", class: "btn" 
+      - else 
+        = link_to ">", "#", id: "next_button", class: "btn", disabled: "disabled"
     - can_edit = can? :edit, group
     - can_leave = group.users_include? current_user
     - if can_edit || can_leave

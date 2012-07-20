@@ -113,9 +113,6 @@ class Discussion < ActiveRecord::Base
     unread_discussion_found ? next_unread_discussion : next_discussion
   end
 
-  # method for prev discussion - take current discussion id, find previous discussion with unread comments based on created time
-  # get previous discussion based on last comment?
-  # determine if discussion has unread items has_activity_unread_by?(user)
   def previous_unread_discussion(user)
     unread_discussion_found = false
     previous_discussion = previous_discussion(self, user)
