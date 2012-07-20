@@ -3,8 +3,8 @@
     #privacy{:class => group.viewable_by.to_s}
       =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
     %h2= group.fancy_link
-    = link_to "<", previous_unread_discussion_path(@discussion.previous_unread(current_user)), id: "previous_button", class: "btn" if @discussion && @discussion.id
-    = link_to ">", next_unread_discussion_path(@discussion.next_unread(current_user)), id: "next_button", class: "btn" if @discussion && @discussion.id
+    = link_to "<", previous_unread_discussion_path(@discussion.previous_unread_discussion(current_user)), id: "previous_button", class: "btn" if @discussion && @discussion.id
+    = link_to ">", next_unread_discussion_path(@discussion.next_unread_discussion(current_user)), id: "next_button", class: "btn" if @discussion && @discussion.id
     - can_edit = can? :edit, group
     - can_leave = group.users_include? current_user
     - if can_edit || can_leave

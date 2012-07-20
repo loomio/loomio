@@ -80,21 +80,59 @@ class Discussion < ActiveRecord::Base
     save
   end
   
-  def next_unread(user)
+  def next_discussion(starting_discussion, user)
     next_discussion = Discussion.find(:first, 
-      self.group.all_discussions(user).map(&:id).uniq,
-      conditions: ["updated_at > ?", self.updated_at])
-    next_discussion.nil? ? self : next_discussion
+      starting_discussion.group.all_discussions(user).map(&:id).uniq,
+      conditions: ["updated_at > ?", starting_discussion.updated_at])
+    next_discussion.nil? ? starting_discussion : next_discussion
+  end
+  
+  def previous_discussion(starting_discussion, user)
+    previous_discussion = Discussion.find(:last, 
+      starting_discussion.group.all_discussions(user).map(&:id).uniq,
+      conditions: ["updated_at < ?", starting_discussion.updated_at])
+    previous_discussion.nil? ? starting_discussion : previous_discussion
+  end
+  
+  def next_unread_discussion(user)
+    unread_discussion_found = false
+    next_discussion = next_discussion(self, user)
+    next_unread_discussion = next_discussion
+    last_discussion = self.group.all_discussions(user).first
+    
+    until (unread_discussion_found)
+      if (next_unread_discussion.has_activity_unread_by?(user))
+        unread_discussion_found = true
+      elsif (next_unread_discussion.id == last_discussion.id)
+        break
+      else 
+        next_unread_discussion = next_discussion(next_unread_discussion, user)
+      end
+    end
+    
+    unread_discussion_found ? next_unread_discussion : next_discussion
   end
 
   # method for prev discussion - take current discussion id, find previous discussion with unread comments based on created time
   # get previous discussion based on last comment?
   # determine if discussion has unread items has_activity_unread_by?(user)
-  def previous_unread(user)
-    previous_discussion = Discussion.find(:last, 
-      self.group.all_discussions(user).map(&:id).uniq,
-      conditions: ["updated_at < ?", self.updated_at])
-    previous_discussion.nil? ? self : previous_discussion
+  def previous_unread_discussion(user)
+    unread_discussion_found = false
+    previous_discussion = previous_discussion(self, user)
+    previous_unread_discussion = previous_discussion
+    first_discussion = self.group.all_discussions(user).last
+    
+    until (unread_discussion_found)
+      if (previous_unread_discussion.has_activity_unread_by?(user))
+        unread_discussion_found = true
+      elsif (previous_unread_discussion.id == first_discussion.id)
+        break
+      else 
+        previous_unread_discussion = previous_discussion(previous_unread_discussion, user)
+      end
+    end
+    
+    unread_discussion_found ? previous_unread_discussion : previous_discussion
   end
 
   def latest_history_time
