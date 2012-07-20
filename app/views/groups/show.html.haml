@@ -40,9 +40,11 @@
           - unless motions_exist
             %li.no-proposals= "There are no current proposals for this group"
         #closed.hidden
-          #group-closed-motions
+          #group-closed-motions.hidden
             %div{ class: "group_#{@group.id}" }
-            Loading...
+          #group-closed-motions-loading
+            %ul
+              %li.loading Loading...
     .selector-panel
       .clearfix
         %h1 Discussions
@@ -51,6 +53,8 @@
           %li.tool-bar.clearfix
             %a{ href: new_discussion_path(discussion: { group_id: @group }), class: 'tool-bar-item', id: 'tool-bar-item-discussion' }
               Start new discussion
-      #group-discussions
-        %div{ class: "group_#{@group.id}" }
-        Loading...
+        #group-discussions.hidden
+          %div{ class: "group_#{@group.id}" }
+        #group-discussions-loading
+          %ul
+            %li.loading Loading...

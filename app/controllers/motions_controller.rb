@@ -23,9 +23,9 @@ class MotionsController < GroupBaseController
   def index
     if params[:group_id].present?
       @group = Group.find(params[:group_id])
-      @closed_motions = @group.motions_closed.page(params[:page]).per(8)
+      @closed_motions = @group.motions_closed.page(params[:page]).per(10)
     else
-      @closed_motions= current_user.motions_closed.page(params[:page]).per(8)
+      @closed_motions= current_user.motions_closed.page(params[:page]).per(10)
     end
     render :layout => false if request.xhr?
   end
