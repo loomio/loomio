@@ -52,6 +52,8 @@ class Ability
     # DISCUSSIONS / COMMENTS
     #
 
+    can :index, Discussion
+
     can :new_proposal, Discussion, :group_id => user.group_ids
 
     can :add_comment, Discussion, :group_id => user.group_ids
@@ -65,6 +67,7 @@ class Ability
     #
     # MOTIONS
     #
+    can :index, Motion
 
     can :create, Motion, :discussion_id => user.discussion_ids
 
