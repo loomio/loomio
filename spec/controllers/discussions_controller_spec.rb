@@ -20,6 +20,24 @@ describe DiscussionsController do
       Group.stub(:find).with(group.id.to_s).and_return(group)
     end
 
+    context "views discussions" do
+      it "does not render layout if ajax request"
+
+      context "within a group" do
+        it "gets sorted discussions for group" do
+          pending "couldnt figure out how to easily stub out kaminari"
+          group.should_receive(:discussions_sorted)
+          get :index, :group_id => group.id
+        end
+      end
+      context "without specifying a group" do
+        it "gets sorted discussions for user with paging" do
+          pending "couldnt figure out how to easily stub out kaminari"
+          user.should_receive(:discussions_sorted)
+          get :index
+        end
+      end
+    end
     context "views a discussion" do
       before do
         motion.stub(:votes_graph_ready).and_return([])

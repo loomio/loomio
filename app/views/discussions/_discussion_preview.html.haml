@@ -6,6 +6,6 @@
         - if activity_count_for(discussion, current_user) > 0
           .activity-count.span.label.label-important
             = activity_count_for(discussion, current_user)
-      .relative-time= discussion.latest_history_time
+      .relative-time= discussion.last_comment_at
 
       .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
