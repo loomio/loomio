@@ -108,8 +108,8 @@ class User < ActiveRecord::Base
     new_user
   end
 
-  def discussions_sorted
-    discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+  def discussions_sorted()
+    discussions.order("last_comment_at DESC")
   end
 
   def update_discussion_read_log(discussion)

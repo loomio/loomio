@@ -21,22 +21,41 @@ describe DiscussionsController do
     end
 
     describe "viewing a discussion" do
-      before do
-        motion.stub(:votes_graph_ready).and_return([])
-        motion.stub(:user_has_voted?).and_return(true)
-        motion.stub(:open_close_motion)
-        motion.stub(:voting?).and_return(true)
-        discussion.stub(:history)
+      it "does not render layout if ajax request"
+
+      context "within a group" do
+        it "gets sorted discussions for group" do
+          pending "couldnt figure out how to easily stub out kaminari"
+          group.should_receive(:discussions_sorted)
+          get :index, :group_id => group.id
+        end
       end
-      it "responds with success" do
-        get :show, id: discussion.id
-        response.should be_success
+      context "without specifying a group" do
+        it "gets sorted discussions for user with paging" do
+          pending "couldnt figure out how to easily stub out kaminari"
+          user.should_receive(:discussions_sorted)
+          get :index
+        end
       end
 
-      it "assigns array with discussion history" do
-        discussion.should_receive(:history).and_return(['fake'])
-        get :show, id: discussion.id
-        assigns(:history).should eq(['fake'])
+      context do
+        before do
+          motion.stub(:votes_graph_ready).and_return([])
+          motion.stub(:user_has_voted?).and_return(true)
+          motion.stub(:open_close_motion)
+          motion.stub(:voting?).and_return(true)
+          discussion.stub(:history)
+        end
+        it "responds with success" do
+          get :show, id: discussion.id
+          response.should be_success
+        end
+
+        it "assigns array with discussion history" do
+          discussion.should_receive(:history).and_return(['fake'])
+          get :show, id: discussion.id
+          assigns(:history).should eq(['fake'])
+        end
       end
     end
 

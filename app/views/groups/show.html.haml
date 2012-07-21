@@ -40,12 +40,11 @@
           - unless motions_exist
             %li.no-proposals= "There are no current proposals for this group"
         #closed.hidden
-          - if @motions_closed
-            - @motions_closed.each do |motion|
-              %li= render '/motions/motion_preview', motion: motion, this_group: @group
-          - else
-            %li.no-proposals= "There are no closed proposals for this group"
-
+          #group-closed-motions.hidden
+            %div{ class: "group_#{@group.id}" }
+          #group-closed-motions-loading
+            %ul
+              %li.loading Loading...
     .selector-panel
       .clearfix
         %h1 Discussions
@@ -54,9 +53,8 @@
           %li.tool-bar.clearfix
             %a{ href: new_discussion_path(discussion: { group_id: @group }), class: 'tool-bar-item', id: 'tool-bar-item-discussion' }
               Start new discussion
-        - group_discussions = @group.all_discussions(current_user)
-        - if group_discussions.count > 0
-          - group_discussions.each do |discussion|
-            %li= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
-        - else
-          %li.no-discussions= "There are no discussions for this group"
+        #group-discussions.hidden
+          %div{ class: "group_#{@group.id}" }
+        #group-discussions-loading
+          %ul
+            %li.loading Loading...

@@ -8,6 +8,36 @@ describe Comment do
 
   it { should have_many(:events).dependent(:destroy) }
 
+  describe "creating a comment on a discussion" do
+    it "updates discussion.last_comment_at" do
+      discussion = create_discussion
+      comment = discussion.add_comment discussion.author, "hi"
+      discussion.reload
+      discussion.last_comment_at.should == comment.created_at
+    end
+  end
+
+  describe "destroying a comment" do
+    let(:discussion) { create_discussion }
+
+    context "which is the only comment on a discussion" do
+      it "updates discussion.last_comment_at to discussion.created_at" do
+        comment = discussion.add_comment discussion.author, "hi"
+        discussion.last_comment_at.should == discussion.created_at
+      end
+    end
+
+    context "which is the most recent comment on a discussion" do
+      it "updates discussion.last_comment_at to the previous comment" do
+        comment1 = discussion.add_comment discussion.author, "hi"
+        comment2 = discussion.add_comment discussion.author, "hi"
+        comment2.destroy
+        discussion.reload
+        discussion.last_comment_at.should == comment1.created_at
+      end
+    end
+  end
+
   context "liked by user" do
     before do
       @like = comment.like user

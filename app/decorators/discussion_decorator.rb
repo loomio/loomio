@@ -4,7 +4,7 @@ class DiscussionDecorator < ApplicationDecorator
   # Display the discussion group name
   # this_group = the page this method is called from
   def display_group_name(this_group)
-    if h.params[:controller] == 'dashboard'
+    if not this_group
       h.content_tag :div, id: "group-name" do
         GroupDecorator.new(discussion.group).fancy_name
       end
