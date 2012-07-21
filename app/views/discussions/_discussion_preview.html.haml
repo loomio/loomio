@@ -3,7 +3,7 @@
     %span
       .discussion-title= truncate(discussion.title, :length => 70, :separator => ' ')
       .notification-info
-        .relative-time= discussion.latest_history_time
+        .latest-comment-time.utc-time= discussion.latest_comment_time
         .discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
           - if activity_count_for(discussion, current_user) > 0
             .activity-count.span.label.label-important

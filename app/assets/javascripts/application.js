@@ -24,3 +24,4 @@
 //= require groups
 //= require motions
 //= require notifications
+//= require dashboard

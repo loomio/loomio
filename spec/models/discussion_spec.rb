@@ -35,6 +35,11 @@ describe Discussion do
     discussion.activity.should == 4
   end
 
+  it "automatically populates last_comment_at with discussion.created at" do
+    discussion = create_discussion
+    discussion.last_comment_at.should == discussion.created_at
+  end
+
   describe "discussion.history" do
     before do
       @user = User.make

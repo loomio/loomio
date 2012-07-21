@@ -8,13 +8,14 @@ Loomio::Application.routes.draw do
   resources :groups, except: :index do
     post :add_members, on: :member
     get :add_subgroup, on: :member
-    resources :motions, name_prefix: "groups_"
+    resources :motions#, name_prefix: "groups_"
+    resources :discussions, only: :index
     get :request_membership, on: :member
     get :new_motion, :on => :member
     post :create_motion, :on => :member
   end
 
-  resources :motions, except: :index do
+  resources :motions do
     resources :votes
   end
   match "/motions/:id/close", :to => "motions#close_voting", :as => :close_motion_voting,
@@ -23,7 +24,7 @@ Loomio::Application.routes.draw do
   match "/motions/:id/open", :to => "motions#open_voting", :as => :open_motion_voting,
     :via => :post
 
-  resources :discussions, only: [:add_comment, :show, :new, :create] do
+  resources :discussions, only: [:index, :show, :new, :create] do
     post :add_comment, :on => :member
     get :new_proposal, :on => :member
   end
