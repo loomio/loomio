@@ -78,6 +78,46 @@ describe Group do
     end
   end
 
+  describe "group.discussions_sorted_for_user(user)" do
+    before do
+      @user = User.make!
+      @group = Group.make!
+      @group.add_member!(@user)
+    end
+    it "returns a list of discussions sorted by last_comment_at" do
+      discussion1 = create_discussion :group => @group, :author => @user
+      discussion2 = create_discussion :group => @group, :author => @user
+      discussion2.add_comment @user, "hi"
+      discussion3 = create_discussion :group => @group, :author => @user
+      discussion4 = create_discussion :group => @group, :author => @user
+      discussion1.add_comment @user, "hi"
+      @group.discussions_sorted(@user)[0].should == discussion1
+      @group.discussions_sorted(@user)[1].should == discussion4
+      @group.discussions_sorted(@user)[2].should == discussion3
+      @group.discussions_sorted(@user)[3].should == discussion2
+    end
+    context "for a group that has subgroups" do
+      before do
+        subgroup1 = Group.make!(:parent => @group)
+        subgroup2 = Group.make!(:parent => @group)
+        user2 = User.make!
+        @group.add_member! user2
+        subgroup1.add_member!(@user)
+        @discussion1 = create_discussion :group => subgroup1, :author => @user
+        @discussion2 = create_discussion :group => subgroup2, :author => user2
+      end
+      it "returns discussions for subgroups that the user belongs to" do
+        @group.discussions_sorted(@user).should include(@discussion1)
+      end
+      it "does not return discussions for subgroups the user does not belong to" do
+        @group.discussions_sorted(@user).should_not include(@discussion2)
+      end
+      it "does not return subgroup discussions if user is not specified" do
+        @group.discussions_sorted.should_not include(@discussion1)
+      end
+    end
+  end
+
   # NOTE (Jon): these descriptions seem ridiculous,
   # why did i name the tests this way? mehh.....
   describe "beta_features" do

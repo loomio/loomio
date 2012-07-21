@@ -31,8 +31,8 @@
                   %a{ href: '#', id: 'display-closed' }
                     = "Closed proposals"
                     = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
-          %ul
-            #open
+          #open-motions-list
+            %ul
               - if @motions_not_voted
                 - @motions_not_voted.each do |motion|
                   %li.undecided= render '/motions/motion_preview', motion: motion, this_group: nil
@@ -43,18 +43,19 @@
                 - motions_exist = true
               - unless motions_exist
                 %li.no-proposals= "There are no current proposals"
-            #closed.hidden
-              - if @motions_closed
-                - @motions_closed.each do |motion|
-                  %li= render '/motions/motion_preview', motion: motion, this_group: @group
-              - else
-                %li.no-proposals= "There are no closed proposals"
+          #closed-motions-list
+            #user-closed-motions Loading...
+            #closed-motions-loading
+              %ul
+                %li.loading Loading...
         .selector-panel
           .clearfix
             %h1 Discussions
-          %ul
-            - @discussions.each do |discussion|
-              %li= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
+          #user-discussions.hidden Loading...
+          #discussions-loading
+            %ul
+              %li.loading Loading...
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.
+

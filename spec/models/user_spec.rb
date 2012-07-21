@@ -18,6 +18,13 @@ describe User do
     user.should have(1).errors_on(:email)
   end
 
+  it "email can have an apostrophe" do
+    user = User.new
+    user.email = "mr.d'arcy@gumby.com"
+    user.valid?
+    user.should have(0).errors_on(:email)
+  end
+
   it "has many groups" do
     group = Group.make!
     group.add_member!(user)
@@ -99,6 +106,21 @@ describe User do
       user.should_receive(:motions_in_voting_phase_that_user_has_not_voted_on)
 
       user.motions_in_voting_phase_that_user_has_not_voted_on
+    end
+  end
+
+  describe "user.discussions_sorted_paged" do
+    it "returns a list of discussions sorted by last_comment_at" do
+      discussion1 = create_discussion :author => user
+      discussion2 = create_discussion :author => user
+      discussion2.add_comment user, "hi"
+      discussion3 = create_discussion :author => user
+      discussion4 = create_discussion :author => user
+      discussion1.add_comment user, "hi"
+      user.discussions_sorted[0].should == discussion1
+      user.discussions_sorted[1].should == discussion4
+      user.discussions_sorted[2].should == discussion3
+      user.discussions_sorted[3].should == discussion2
     end
   end
 

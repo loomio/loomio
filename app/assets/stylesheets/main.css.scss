@@ -92,8 +92,7 @@ h4 {
     position: relative;
     top: 3px;
     margin-right: 0px;
-    border-right: 1px solid $light-grey
-
+    border-right: 1px solid $light-grey;
   }
   .tool-bar-item:hover {
     color: $white;
@@ -113,6 +112,30 @@ h4 {
         font-size: $font-small;
       }
     }
+  }
+  .pagination {
+    a { color: $mid-grey; }
+    ul { border-top: 0px; }
+    margin: 2px 0 5px 0;
+  }
+  .page.active {
+    color: white;
+    background: $light-grey;
+  }
+  .next_page, .prev {
+    a {
+      text-indent: -100em;
+      overflow: hidden;
+      padding: 0 5px;
+    }
+  }
+  .prev a {
+    background: url(previous.png) no-repeat;
+    background-position: 16px 10px;
+  }
+  .next_page a {
+    background: url(Next.png) no-repeat;
+    background-position: 16px 10px;
   }
 }
 
@@ -194,8 +217,12 @@ li.undecided, li .unread{
   a { color: black; }
   a .proposal-title { color: black; }
 }
-
-
+.loading {
+  background: url(ajax-loader.gif) no-repeat;
+  background-position: 280px 180px;
+  line-height: 35em;
+  text-indent: -9999px;
+}
 .field_with_errors { display: inline; }
 .inputError {
   display: inline-block;

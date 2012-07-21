@@ -41,7 +41,33 @@ describe Membership do
     end
   end
 
-  context "destroy" do
+  describe "update_counter_cache" do
+    it "decrements group.memberships_count" do
+      group.should_receive(:memberships).and_return([1,2])
+      group.should_receive(:memberships_count=).with(2)
+      group.should_receive :save
+
+      membership = Membership.new
+      membership.group = group
+
+      membership.send(:update_counter_cache)
+    end
+  end
+
+  describe "save" do
+    it "updates memberships_count" do
+      membership = Membership.new
+      membership.group = group
+      membership.user = user
+      membership.access_level = "member"
+
+      membership.should_receive(:update_counter_cache)
+
+      membership.save!
+    end
+  end
+
+  describe "destroy" do
     it "removes subgroup memberships (if existing)" do
       membership = group.add_member! user
       # Removes user from multiple subgroups
@@ -76,5 +102,14 @@ describe Membership do
 
       motion.votes.count.should == 0
     end
+
+    it "updates memberships_count" do
+      membership = group.add_member! user
+
+      membership.should_receive(:update_counter_cache)
+
+      membership.destroy
+    end
   end
+
 end
