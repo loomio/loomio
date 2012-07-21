@@ -5,6 +5,7 @@
     %h2= group.fancy_link
     - can_edit = can? :edit, group
     - can_leave = group.users_include? current_user
+    - can_archive = can? :edit, group
     - if can_edit || can_leave
       .dropdown.btn-group.group-options
         %a.btn.dropdown-toggle{ :href => "#", 'data-toggle' => 'dropdown' }
@@ -18,3 +19,5 @@
           - if can_leave
             - membership = current_user.group_membership(group)
             %li= link_to "Leave group", membership, method: :delete, confirm: "Are you sure you wish to leave #{group.name}?"
+          - if can_archive
+            %li= link_to "Archive group", archive_group_path(group), method: :post, confirm: "Are you sure you wish to archive #{group.name}?"
