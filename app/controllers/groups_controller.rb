@@ -29,8 +29,27 @@ class GroupsController < GroupBaseController
   def edit
     @group = GroupDecorator.new(Group.find(params[:id]))
   end
-
+  
   # CUSTOM CONTROLLER ACTIONS
+  
+  def archive
+    @group = Group.find(params[:id])
+    @group.archived_at = Time.current
+
+    @group.subgroups.each do |subgroup|
+      subgroup.archived_at = Time.current
+      subgroup.save
+    end
+
+    if @group.save
+      flash[:success] = "Group archived successfully."
+      redirect_to :dashboard
+    else
+      flash[:error] = "Group could not be archived."
+      redirect_to :back
+
+    end
+  end
 
   def add_subgroup
     @parent = Group.find(params[:id])

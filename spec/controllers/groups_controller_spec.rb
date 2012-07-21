@@ -171,5 +171,28 @@ describe GroupsController do
       group.users.should include(user2)
       group.users.should include(user3)
     end
+
+    context "creates a group with subgroups" do
+      before :each do
+        @group = Group.make!
+        @subgroup = Group.make!(:parent => @group)
+      end
+        it "can archive the group" do
+          post :archive, :id => @group.id
+          assigns(:group).archived_at.should_not == nil
+          flash[:notice].should =~ /Group was archived successfully/
+          response.should redirect_to(:dashboard)
+        end
+        it "cant view archived group" do
+          post :archive, :id => @group.id 
+          get :show, :id => @group.id
+          response.should render_template('private_or_not_found')
+        end
+        it "cant view the subgroups of an archived group" do
+          post :archive, id: @group.id
+          get :show, id: @subgroup.id
+          response.should render_template('private_or_not_found')
+        end
+    end
   end
 end
