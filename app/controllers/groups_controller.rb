@@ -29,9 +29,9 @@ class GroupsController < GroupBaseController
   def edit
     @group = GroupDecorator.new(Group.find(params[:id]))
   end
-  
+
   # CUSTOM CONTROLLER ACTIONS
-  
+
   def archive
     @group = Group.find(params[:id])
     @group.archived_at = Time.current
@@ -47,7 +47,6 @@ class GroupsController < GroupBaseController
     else
       flash[:error] = "Group could not be archived."
       redirect_to :back
-
     end
   end
 
