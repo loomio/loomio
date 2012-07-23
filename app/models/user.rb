@@ -79,8 +79,8 @@ class User < ActiveRecord::Base
     #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
     
   validates_attachment :uploaded_avatar, 
-    :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes }
-    #:content_type => { :content_type => "image/jpg" }
+    :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
+    :content_type => { :content_type => ['image/jpeg', 'image/png', 'image/gif'] }
     
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
