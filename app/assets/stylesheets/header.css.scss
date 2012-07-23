@@ -105,11 +105,17 @@ header{
     li.group-item{
       .link-container{
         display: inline-block;
+        float:left;
         width: 70%;
-        padding-right: 20px;
         padding-left: 8px;
         background-color: white;
         a { padding-left: 5px; }
+      }
+      .group-count{
+        float:right;
+      }
+      .group-count .activity-count{
+        margin: 2px 5px 0px 0px;
       }
       .notification-container{
         display: inline-block;

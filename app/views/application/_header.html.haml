@@ -21,7 +21,8 @@
               %li.group-item
                 .link-container
                   = link_to group.name.length < 40 ? group.name : group.name[0..37]+'...', group_path(group), :class => 'view_'+group.viewable_by.to_s
-                  - if activity_count_for_group(group, current_user) > 0
+                - if activity_count_for_group(group, current_user) > 0
+                  .group-count
                     .activity-count.span.label.label-important
                       = activity_count_for_group(group, current_user)
                 -#- activity =  current_user.activity_total_in(group)
