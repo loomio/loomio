@@ -57,6 +57,23 @@ class Vote < ActiveRecord::Base
     Vote.find_by_sql("SELECT * FROM votes a WHERE created_at = (SELECT MAX(created_at) as created_at FROM votes b WHERE a.user_id = b.user_id AND motion_id = #{motion.id} )")
   end
 
+  def position_to_s
+    readable_position = {'yes' => 'agreed with', 'abstain' => 'abstained from', 'no' => 'disagreed with', 'block' => 'blocked'}
+    return readable_position[self.position]
+  end
+
+  def previous_position
+    prev_position = Vote.find(:first, 
+      :conditions => [
+        'motion_id = ? AND user_id = ? AND created_at < ?', 
+          motion.id, self.user_id, self.created_at
+      ]
+    )
+    self.old_position = prev_position
+    return prev_position
+  end
+
+
   private
     def update_activity
       motion.discussion.update_activity
