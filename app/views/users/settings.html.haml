@@ -13,9 +13,10 @@
       .user-image-option.option-uploaded
         = image_tag @user.uploaded_avatar.url(:medium)
         %a{ id: 'use_uploaded' } Use Uploaded Image
-    .user-image-option.option-gravatar
-      = image_tag @user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)
-      %a{ id: 'use_gravatar' } Use Gravatar
+    - if image_alt(@user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)) != '810bec5b37cf73fa053a2b5ef11605b7'
+      .user-image-option.option-gravatar
+        = image_tag @user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)
+        %a{ id: 'use_gravatar' } Use Gravatar
     .user-image-option.option-initials
       .medium-user-image-initial-wrapper
         %span.change-user-image-initials= @user.initials
