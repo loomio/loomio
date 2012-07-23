@@ -126,8 +126,11 @@ describe "Discussion" do
         should_not have_link("Unlike")
       end
       
-      it "can view the previous unread discussion"
-      it "can view the next unread discussion"
+      it "can view the newer unread discussion"
+      it "can view the older unread discussion"
+      it "can view the newer discussion"
+      it "can view the older discussion"
+      it "can get latest history time"
     end
   end
 end

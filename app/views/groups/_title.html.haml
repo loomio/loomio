@@ -4,16 +4,16 @@
       =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
     %h2= group.fancy_link
     - if @discussion && @discussion.id
-      - previous_discussion = @discussion.previous_unread_discussion(current_user)
-      - if previous_discussion.id != @discussion.id
-        = link_to "<", previous_unread_discussion_path(previous_discussion), id: "previous_button", class: "btn" 
+      - newer_discussion = @discussion.newer_unread_discussion(current_user)
+      - if newer_discussion.id != @discussion.id
+        = link_to "<", newer_unread_discussion_path(newer_discussion), id: "newer_button", class: "btn" 
       - else 
-        = link_to "<", "#", id: "previous_button", class: "btn", disabled: "disabled"
-      - next_discussion = @discussion.next_unread_discussion(current_user)
-      - if next_discussion.id != @discussion.id
-        = link_to ">", next_unread_discussion_path(next_discussion), id: "next_button", class: "btn" 
+        = link_to "<", "#", id: "newer_button", class: "btn", disabled: "disabled"
+      - older_discussion = @discussion.older_unread_discussion(current_user)
+      - if older_discussion.id != @discussion.id
+        = link_to ">", older_unread_discussion_path(older_discussion), id: "older_button", class: "btn" 
       - else 
-        = link_to ">", "#", id: "next_button", class: "btn", disabled: "disabled"
+        = link_to ">", "#", id: "older_button", class: "btn", disabled: "disabled"
     - can_edit = can? :edit, group
     - can_leave = group.users_include? current_user
     - if can_edit || can_leave

@@ -14,8 +14,8 @@ $ ->
       if check_page_focus_non_textarea()
         switch keyChar
           when "i" then show_group_homepage()
-          when "j" then show_previous_discussion()
-          when "k" then show_next_discussion()
+          when "j" then show_newer_discussion()
+          when "k" then show_older_discussion()
           
 check_page_focus_non_textarea = ->
   non_textarea = true
@@ -25,11 +25,11 @@ check_page_focus_non_textarea = ->
     non_textarea = false
   return non_textarea
 
-show_previous_discussion = ->
-  $('#previous_button')[0].click()
+show_newer_discussion = ->
+  $('#newer_button')[0].click()
 
-show_next_discussion = ->
-  $('#next_button')[0].click()
+show_older_discussion = ->
+  $('#older_button')[0].click()
 
 show_group_homepage = ->
   $('.group-title h2 a')[0].click()
