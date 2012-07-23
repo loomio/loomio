@@ -172,27 +172,38 @@ describe GroupsController do
       group.users.should include(user3)
     end
 
-    context "creates a group with subgroups" do
-      before :each do
+    describe "archiving a group" do
+      before do
         @group = Group.make!
+        @group.add_admin! @user
         @subgroup = Group.make!(:parent => @group)
+        @subgroup.add_member! @user
+        post :archive, :id => @group.id
       end
-        it "can archive the group" do
-          post :archive, :id => @group.id
-          assigns(:group).archived_at.should_not == nil
-          flash[:notice].should =~ /Group was archived successfully/
-          response.should redirect_to(:dashboard)
-        end
-        it "cant view archived group" do
-          post :archive, :id => @group.id 
-          get :show, :id => @group.id
-          response.should render_template('private_or_not_found')
-        end
-        it "cant view the subgroups of an archived group" do
-          post :archive, id: @group.id
-          get :show, id: @subgroup.id
-          response.should render_template('private_or_not_found')
-        end
+      it "sets archived_at field on the group" do
+        assigns(:group).archived_at.should_not == nil
+      end
+      it "sets archived_at on the group's subgroups" do
+        @subgroup.reload
+        @subgroup.archived_at.should_not == nil
+      end
+      it "sets flash response" do
+        flash[:success].should =~ /Group archived successfully/
+      end
+      it "redirects to the dashboard" do
+        response.should redirect_to(:dashboard)
+      end
+    end
+
+    describe "viewing an archived group" do
+      before do
+        @group = Group.make!
+        @group.archived_at = Time.now
+        @group.save
+      end
+      it "throws an error" do
+        lambda { get :show, :id => @group.id }.should raise_error
+      end
     end
   end
 end
