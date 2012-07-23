@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
   
   include Gravtastic
-  gravtastic :rating => 'pg'
+  gravtastic :rating => 'pg',
+                :default => "monsterid"
   
   has_many :membership_requests,
            :conditions => { :access_level => 'request' },
