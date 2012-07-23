@@ -5,8 +5,8 @@
     %h1
       = link_to image_tag("top-bar-loomio.png", :alt => "Loomio"), "/"
     - if user_signed_in?
-      %ul.nav.secondary-nav
-        %li.dropdown#group
+      %ul.nav
+        %li.dropdown#my-groups
           %a{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
             #group-icon
             -#- total_activity = current_user.activity_total
