@@ -2,17 +2,6 @@ require 'spec_helper'
 
 describe GroupsController do
 
-  let(:group) { stub_model(Group) }
-  let(:user)  { stub_model(User) }
-
-  context "signed in user" do
-    before :each do
-      User.stub(:find).with(user.id.to_s).and_return(user)
-      sign_in user
-      Group.stub(:find).with(group.id.to_s).and_return(group)
-    end
-  end
-
   context "logged in user" do
     before :each do
       @user = User.make!
