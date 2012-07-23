@@ -80,8 +80,7 @@ class User < ActiveRecord::Base
     
   validates_attachment :uploaded_avatar, 
     :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes }
-  # File types can be restricted
-  # :content_type => { :content_type => "image/jpg" },
+    #:content_type => { :content_type => "image/jpg" }
     
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry

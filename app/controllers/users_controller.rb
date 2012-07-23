@@ -1,7 +1,9 @@
 class UsersController < BaseController
   def update
-    update! { user_settings_url }
-    flash[:notice] = "Your settings have been updated."
+    if update!
+      flash[:notice] = "Your settings have been updated."
+      redirect_to user_settings_url 
+    end
   end
 
   def settings
