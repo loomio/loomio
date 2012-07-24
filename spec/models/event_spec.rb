@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Event do
   it { should belong_to(:eventable) }
   it { should have_many(:notifications).dependent(:destroy) }
+  it { should validate_presence_of(:eventable) }
   it { should allow_value("new_discussion").for(:kind) }
   it { should allow_value("new_comment").for(:kind) }
   it { should allow_value("new_vote").for(:kind) }
