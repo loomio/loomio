@@ -23,3 +23,4 @@
 //= require groups
 //= require motions
 //= require discussions
+//= require dashboard

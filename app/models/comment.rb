@@ -13,6 +13,8 @@ class Comment < ActiveRecord::Base
   has_many :comment_votes
 
   after_save :update_activity
+  after_create :update_discussion_last_comment_at
+  after_destroy :update_discussion_last_comment_at
 
   attr_accessible :body
 
@@ -89,5 +91,10 @@ class Comment < ActiveRecord::Base
   private
     def update_activity
       discussion.update_activity if discussion
+    end
+
+    def update_discussion_last_comment_at
+      discussion.last_comment_at = discussion.latest_comment_time
+      discussion.save
     end
 end

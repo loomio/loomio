@@ -31,6 +31,17 @@ GEM
       rack-mount (~> 0.8.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.0.4)
+    activeadmin (0.4.3)
+      bourbon (>= 1.0.0)
+      devise (>= 1.1.2)
+      fastercsv
+      formtastic (>= 2.0.0)
+      inherited_resources (> 0)
+      jquery-rails (>= 1.0.0)
+      kaminari (>= 0.13.0)
+      meta_search (>= 0.9.2)
+      rails (>= 3.0.0)
+      sass (>= 3.1.0)
     activemodel (3.1.5)
       activesupport (= 3.1.5)
       builder (~> 3.0.0)
@@ -56,6 +67,8 @@ GEM
     awesome_print (1.0.2)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.3)
+    bourbon (2.1.1)
+      sass (>= 3.1)
     browser (0.1.3)
     builder (3.0.0)
     cancan (1.6.7)
@@ -114,6 +127,7 @@ GEM
       multi_json (~> 1.0)
     faker (1.0.1)
       i18n (~> 0.4)
+    fastercsv (1.5.5)
     ffi (1.0.11)
     flay (1.4.3)
       ruby_parser (~> 2.0)
@@ -161,6 +175,10 @@ GEM
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.7.3)
+    kaminari (0.13.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
     less (2.2.1)
@@ -174,6 +192,11 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_search (1.1.3)
+      actionpack (~> 3.1)
+      activerecord (~> 3.1)
+      activesupport (~> 3.1)
+      polyamorous (~> 0.5.0)
     mime-types (1.18)
     modernizr-rails (2.0.6)
     multi_json (1.0.4)
@@ -187,6 +210,8 @@ GEM
     nokogiri (1.5.0)
     orm_adapter (0.0.6)
     pg (0.11.0)
+    polyamorous (0.5.0)
+      activerecord (~> 3.0)
     polyglot (0.3.3)
     progressbar (0.10.0)
     rack (1.3.6)
@@ -301,6 +326,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  activeadmin
   acts-as-taggable-on (~> 2.2.2)!
   acts_as_commentable_with_threading
   awesome_print
@@ -332,6 +358,7 @@ DEPENDENCIES
   jasminerice
   jqplot-rails
   jquery-rails
+  kaminari
   launchy
   machinist (>= 2.0.0.beta2)
   modernizr-rails (~> 2.0.6)

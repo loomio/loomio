@@ -47,6 +47,7 @@
 
 /**** Group page ****/
 
+body.groups.show .discussion-preview a { padding: 13px 5px 14px 10px; }
 li.no-discussions, li.no-proposals {
   padding: 5px 10px;
   background-color: $highlighted

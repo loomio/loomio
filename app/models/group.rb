@@ -29,7 +29,7 @@ class Group < ActiveRecord::Base
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, :dependent => :destroy
-  has_many :motions
+  has_many :motions, :through => :discussions
   has_many :motions_in_voting_phase,
            :through => :discussions,
            :source => :motions,
@@ -172,21 +172,17 @@ class Group < ActiveRecord::Base
   # DISCUSSION LISTS
   #
 
-  def all_discussions(user)
-    if subgroups.present?
-      result = discussions
-      subgroups.each do |subgroup|
-        if subgroup.users_include? user
-          result += subgroup.discussions
-        end
-      end
-      result.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+  def discussions_sorted(user= nil)
+    if user
+      user.discussions.includes(:group).
+      where("discussions.group_id = ? OR groups.parent_id = ?", id, id).
+      order("last_comment_at DESC")
     else
-      discussions.sort{ |a,b| b.latest_history_time <=> a.latest_history_time }
+      discussions.order("last_comment_at DESC")
     end
   end
 
-  #
+  #/
   # PRIVATE METHODS
   #
 
