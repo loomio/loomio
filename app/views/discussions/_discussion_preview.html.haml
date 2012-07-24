@@ -8,5 +8,4 @@
           - if activity_count_for_discussion(discussion, current_user) > 0
             .activity-count.span.label.label-important
               = activity_count_for_discussion(discussion, current_user)
-
       .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
