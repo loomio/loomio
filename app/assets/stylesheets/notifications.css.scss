@@ -1,5 +1,10 @@
 @import "settings";
 
+.bold-name {
+  font-weight: bold;
+  color: #333;
+}
+
 .notification-item.unread {
   background-color: rgb(237, 239, 245);
 }
@@ -14,10 +19,10 @@
   display: block;
   color: $mid-grey;
 }
-
-.bold-name {
-  font-weight: bold;
-  color: #333;
+.notification-item:hover {
+  a, .bold-name, .notification-item-footer {
+    color: white;
+  }
 }
 
 .navbar {
