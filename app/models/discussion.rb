@@ -81,16 +81,18 @@ class Discussion < ActiveRecord::Base
   end
   
   def newer_discussion(starting_discussion, user)
-    newer_discussion = Discussion.find(:last, 
-      starting_discussion.group.all_discussions(user).map(&:id).uniq,
-      conditions: ["updated_at < ?", starting_discussion.updated_at])
+    # greater than finds newer
+    newer_discussion = Discussion.where("id IN (?) AND updated_at > ?", 
+      starting_discussion.group.all_discussions(user).map(&:id).uniq,  
+      starting_discussion.updated_at).order("created_at ASC").first
     newer_discussion.nil? ? starting_discussion : newer_discussion
   end
   
   def older_discussion(starting_discussion, user)
-    older_discussion = Discussion.find(:first, 
-      starting_discussion.group.all_discussions(user).map(&:id).uniq,
-      conditions: ["updated_at > ?", starting_discussion.updated_at])
+    # less than finds older
+    older_discussion = Discussion.where("id IN (?) AND updated_at < ?", 
+      starting_discussion.group.all_discussions(user).map(&:id).uniq,  
+      starting_discussion.updated_at).order("created_at ASC").first
     older_discussion.nil? ? starting_discussion : older_discussion
   end
   
@@ -98,7 +100,7 @@ class Discussion < ActiveRecord::Base
     unread_discussion_found = false
     newer_discussion = newer_discussion(self, user)
     newer_unread_discussion = newer_discussion
-    first_discussion = self.group.all_discussions(user).last
+    first_discussion = self.group.all_discussions(user).first
     
     until (unread_discussion_found)
       if (newer_unread_discussion.has_activity_unread_by?(user))
@@ -114,21 +116,31 @@ class Discussion < ActiveRecord::Base
   end
 
   def older_unread_discussion(user)
+    logger.info "self: #{self.id}"
     unread_discussion_found = false
-    older_discussion = older_discussion(self, user)
+    older_discussion = older_discussion(self, user) # showing last: 4
+    logger.info "older_discussion first: #{older_discussion.id}"
     older_unread_discussion = older_discussion
-    last_discussion = self.group.all_discussions(user).first
+    last_discussion = self.group.all_discussions(user).last # CORRECT: 3
+    logger.info "last_discussion: #{last_discussion.id}"
     
     until (unread_discussion_found)
-      if (older_unread_discussion.has_activity_unread_by?(user))
-        unread_discussion_found = true
-      elsif (older_unread_discussion.id == last_discussion.id)
-        break
-      else 
-        older_unread_discussion = older_discussion(older_unread_discussion, user)
-      end
-    end
+     logger.info "enter loop"
+     if (older_unread_discussion.has_activity_unread_by?(user))
+       logger.info "unread found"
+       unread_discussion_found = true
+     elsif (older_unread_discussion.id == last_discussion.id)
+       logger.info "last discussion hit"
+       break
+     else 
+       #BUG older discussion from diff group
+       older_unread_discussion = older_discussion(older_unread_discussion, user)
+       logger.info "older_discussion loop: #{older_discussion.id}"
+     end
+   end
     
+    logger.info "final result of discussion found: #{unread_discussion_found} : current: #{self.id} : 
+      older_unread : #{older_unread_discussion.id} older_discussion : #{older_discussion.id}"
     unread_discussion_found ? older_unread_discussion : older_discussion
   end
 
