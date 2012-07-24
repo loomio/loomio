@@ -145,9 +145,12 @@ li.group-item:hover {
     a { color: white; }
   }
 }
+.link-container{
+  float:left;
+}
 .group-count{
   float:right;
 }
 .group-count .activity-count{
-  margin: 2px 5px 0px 0px;
+  margin: 4px 5px 0px 0px;
 }

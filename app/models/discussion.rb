@@ -84,6 +84,7 @@ class Discussion < ActiveRecord::Base
   
   def newer_discussion(starting_discussion, user)
     # greater than finds newer
+    #TODO test without all_dicussions
     newer_discussion = Discussion.where("id IN (?) AND updated_at > ?", 
       starting_discussion.group.all_discussions(user).map(&:id).uniq,  
       starting_discussion.updated_at).order("created_at ASC").first
@@ -92,6 +93,7 @@ class Discussion < ActiveRecord::Base
   
   def older_discussion(starting_discussion, user)
     # less than finds older
+    #TODO test without all_dicussions
     older_discussion = Discussion.where("id IN (?) AND updated_at < ?", 
       starting_discussion.group.all_discussions(user).map(&:id).uniq,  
       starting_discussion.updated_at).order("created_at ASC").first
@@ -102,6 +104,7 @@ class Discussion < ActiveRecord::Base
     unread_discussion_found = false
     newer_discussion = newer_discussion(self, user)
     newer_unread_discussion = newer_discussion
+    #TODO test without all_dicussions
     first_discussion = self.group.all_discussions(user).first
     
     until (unread_discussion_found)
@@ -121,6 +124,7 @@ class Discussion < ActiveRecord::Base
     unread_discussion_found = false
     older_discussion = older_discussion(self, user) 
     older_unread_discussion = older_discussion
+    #TODO test without all_dicussions
     last_discussion = self.group.all_discussions(user).last 
     
     until (unread_discussion_found)
