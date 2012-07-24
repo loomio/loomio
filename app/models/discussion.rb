@@ -116,31 +116,21 @@ class Discussion < ActiveRecord::Base
   end
 
   def older_unread_discussion(user)
-    logger.info "self: #{self.id}"
     unread_discussion_found = false
-    older_discussion = older_discussion(self, user) # showing last: 4
-    logger.info "older_discussion first: #{older_discussion.id}"
+    older_discussion = older_discussion(self, user) 
     older_unread_discussion = older_discussion
-    last_discussion = self.group.all_discussions(user).last # CORRECT: 3
-    logger.info "last_discussion: #{last_discussion.id}"
+    last_discussion = self.group.all_discussions(user).last 
     
     until (unread_discussion_found)
-     logger.info "enter loop"
-     if (older_unread_discussion.has_activity_unread_by?(user))
-       logger.info "unread found"
-       unread_discussion_found = true
-     elsif (older_unread_discussion.id == last_discussion.id)
-       logger.info "last discussion hit"
-       break
-     else 
-       #BUG older discussion from diff group
-       older_unread_discussion = older_discussion(older_unread_discussion, user)
-       logger.info "older_discussion loop: #{older_discussion.id}"
-     end
-   end
+      if (older_unread_discussion.has_activity_unread_by?(user))
+        unread_discussion_found = true
+      elsif (older_unread_discussion.id == last_discussion.id)
+        break
+      else 
+        older_unread_discussion = older_discussion(older_unread_discussion, user)
+      end
+    end
     
-    logger.info "final result of discussion found: #{unread_discussion_found} : current: #{self.id} : 
-      older_unread : #{older_unread_discussion.id} older_discussion : #{older_discussion.id}"
     unread_discussion_found ? older_unread_discussion : older_discussion
   end
 
