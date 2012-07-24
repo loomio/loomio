@@ -56,42 +56,6 @@ header{
 
 /* notifications styling in notifications.css.scss */
 
-.navbar #my-groups-container {
-  #my-groups-container{
-    #my-groups-title {
-      display: inline-block;
-      /*this code is needed for positioning when the notification badge is enabled do NOT delete (AARON 14/6/2012)*/
-      /*position: relative;*/
-      /*right: 35px;*/
-    }
-    #group-icon {
-      float: left;
-      height: 20px;
-      width: 30px;
-      margin-left: 10px;
-      background-position-y: 3px;
-      background-size: 28px;
-      background-repeat: no-repeat;
-      background-image:url("/assets/group.png");
-      opacity: 0.8;
-      display: inline-block;
-    }
-    #activity-count {
-      height: 10px;
-      font-size: 0.7em;
-      padding: 0.4em;
-      padding-top: 0.1em;
-      position: relative;
-      right: 36px;
-    }
-    a.dropdown-toggle {
-      display: inline-block;
-      padding-left: 0px;
-      padding-bottom: 3px;
-    }
-  }
-}
-
 /* loomio dashboard link */
 .navbar h1 {
   float: left;
@@ -122,10 +86,8 @@ header{
   .group-icon {
     float: left;
     height: 20px;
-    width: 30px;
+    width: 40px;
     margin-left: 10px;
-    background-position-y: 3px;
-    background-size: 28px;
     background-repeat: no-repeat;
     background-image:url("/assets/group.png");
     opacity: 0.8;
