@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   belongs_to :eventable, :polymorphic => true
 
   validates_inclusion_of :kind, :in => KINDS
+  validates_presence_of :eventable
 
   attr_accessible :kind, :eventable
 
