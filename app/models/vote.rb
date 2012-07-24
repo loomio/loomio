@@ -44,11 +44,6 @@ class Vote < ActiveRecord::Base
   after_save :send_notifications
   after_save :update_activity
 
-  def previous_position
-    previous_vote = Vote.order("id DESC").offset(1).limit(1).first
-    previous_vote.position if previous_vote
-  end
-
   def can_be_edited_by?(current_user)
     current_user && user == current_user
   end
@@ -63,13 +58,12 @@ class Vote < ActiveRecord::Base
   end
 
   def previous_position
-    prev_position = Vote.find(:first, 
+    prev_position = Vote.find(:first,
       :conditions => [
-        'motion_id = ? AND user_id = ? AND created_at < ?', 
+        'motion_id = ? AND user_id = ? AND created_at < ?',
           motion.id, self.user_id, self.created_at
       ]
     )
-    self.old_position = prev_position
     return prev_position
   end
 
