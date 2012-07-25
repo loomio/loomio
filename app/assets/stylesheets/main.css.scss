@@ -49,7 +49,6 @@ h4 {
 // structural elements (containers etc.)
 
 .selector-panel {
-  /*background-color: $header-color;*/
   background-color: $selector-panel;
   @include border-radius(8px);
   border: 1px solid $light-grey;
@@ -67,8 +66,8 @@ h4 {
     border-color: $light-grey;
     color: $mid-grey;
     text-shadow: none;
-    /*border-bottom: 1px solid $light-grey;*/
   }
+  .btn-info { color: white }
   ul {
     border-top: 1px solid $light-grey;
     list-style: none;
@@ -107,7 +106,6 @@ h4 {
       background-color: white;
       border: none;
       a {
-        /*color: $dark-grey;*/
         text-shadow: none;
         font-size: $font-small;
       }
@@ -233,8 +231,8 @@ li.undecided, li .unread{
 }
 .loading {
   background: url(ajax-loader.gif) no-repeat;
-  background-position: 280px 180px;
-  line-height: 35em;
+  background-position: 300px 200px;
+  line-height: 33.5em;
   text-indent: -9999px;
 }
 .field_with_errors { display: inline; }
