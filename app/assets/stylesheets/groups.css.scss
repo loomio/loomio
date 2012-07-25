@@ -5,12 +5,6 @@
 @import "bootstrap/mixins";
 @import "mixins";
 
-
-.form-horizontal {
-  /*label { padding-right: 10px; }*/
-  /*input { width: 390px;}*/
-}
-
 #group-form {
   form {
     width: 550px;
@@ -77,6 +71,7 @@ li.no-discussions, li.no-proposals {
 #tool-bar-item-discussion:hover {
   background-position: 10px 5px;
 }
+
 /*request membership panel*/
 #request-membership {
   form { display: inline; }

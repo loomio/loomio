@@ -45,16 +45,10 @@
                 %li.no-proposals= "There are no current proposals"
           #closed.hidden
             #user-closed-motions.hidden Loading...
-            #closed-motions-loading
-              %ul
-                %li.loading Loading...
         .selector-panel
           .clearfix
             %h1 Discussions
           #user-discussions.hidden Loading...
-          #discussions-loading
-            %ul
-              %li.loading Loading...
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.
