@@ -19,7 +19,7 @@
       %section.span8
         .selector-panel
           .clearfix
-            %h1#proposal-phase Current proposals
+            %h1.panel-header#proposal-phase Current proposals
             .dropdown#proposals
               = link_to image_tag("dropdown.png", title:'proposal settings', alt:'proposal settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
               %ul.dropdown-menu.pull-right
@@ -32,29 +32,23 @@
                     = "Closed proposals"
                     = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
           #open
-            %ul
-              - if @motions_not_voted
+            %ul.selector-list
+              - unless @motions_not_voted.empty?
                 - @motions_not_voted.each do |motion|
-                  %li.undecided= render '/motions/motion_preview', motion: motion, this_group: nil
+                  %li.selector-item.undecided= render '/motions/motion_preview', motion: motion, this_group: nil
                 - motions_exist = true
-              - if @motions_voted
+              - unless @motions_voted.empty?
                 - @motions_voted.each do |motion|
-                  %li= render '/motions/motion_preview', motion: motion, this_group: nil
+                  %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil
                 - motions_exist = true
               - unless motions_exist
-                %li.no-proposals= "There are no current proposals"
+                %li.selector-item.no-proposals= "There are no current proposals"
           #closed.hidden
             #user-closed-motions.hidden Loading...
-            #closed-motions-loading
-              %ul
-                %li.loading Loading...
         .selector-panel
           .clearfix
-            %h1 Discussions
+            %h1.panel-header Discussions
           #user-discussions.hidden Loading...
-          #discussions-loading
-            %ul
-              %li.loading Loading...
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.

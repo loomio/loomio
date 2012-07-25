@@ -1,7 +1,7 @@
-%ul
-  - if @closed_motions
-    - @closed_motions.each do |motion|
-      %li= render '/motions/motion_preview', motion: motion, this_group: @group
+%ul.selector-list
+  - if @closed_motions.empty?
+    %li.selector-item.no-proposals= "There are no closed proposals"
   - else
-    %li.no-proposals= "There are no closed proposals"
+    - @closed_motions.each do |motion|
+      %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
 = paginate @closed_motions, :window => 3, :remote => :true
