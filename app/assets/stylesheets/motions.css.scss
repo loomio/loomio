@@ -121,18 +121,13 @@
   #vote-statement .character-counter { width: 528px; }
   .inputError { margin-left: 0px; height: 65px; }
   .control-group { padding-top: 0px; padding-bottom: 0px; }
-  .vote-buttons{
-    position: relative;
-    bottom: 5px;
-  }
   .vote-buttons .btn {
     float: left;
-    height: 40px;
     width: 40px;
     @include box-shadow(1px, 1px, 4px, $mid-grey);
     @include border-radius(5px);
     padding: 3px;
-    margin: 0 10px 15px 0;
+    margin: 10px 10px 15px 0;
   }
   .votes-table { padding-bottom: 10px; }
   .votes-table .position-row {
