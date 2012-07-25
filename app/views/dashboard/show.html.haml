@@ -33,15 +33,14 @@
                     = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
           #open
             %ul.selector-list
-              - unless @motions_not_voted.empty?
-                - @motions_not_voted.each do |motion|
-                  %li.selector-item.undecided= render '/motions/motion_preview', motion: motion, this_group: nil
-                - motions_exist = true
-              - unless @motions_voted.empty?
-                - @motions_voted.each do |motion|
-                  %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil
-                - motions_exist = true
-              - unless motions_exist
+              - current_motions_exist = false
+              - @motions_not_voted.each do |motion|
+                %li.selector-item.undecided= render '/motions/motion_preview', motion: motion, this_group: nil
+                - current_motions_exist = true
+              - @motions_voted.each do |motion|
+                %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil
+                - current_motions_exist = true
+              - unless current_motions_exist
                 %li.selector-item.no-proposals= "There are no current proposals"
           #closed.hidden
             #user-closed-motions.hidden Loading...
