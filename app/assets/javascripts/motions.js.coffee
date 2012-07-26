@@ -52,10 +52,8 @@ set_close_date = ->
   local_datetime = new Date()
   local_datetime.setYear(parseInt(date.substring(6,10)))
   month = date.substring(3,5)
-  month = month[1] if month[0] == "0"
   day = date.substring(0,2)
-  day = day[1] if day[0] == "0"
-  local_datetime.setMonth(parseInt(month) - 1, parseInt(day))
+  local_datetime.setMonth(parseInt(month, 10) - 1, parseInt(day, 10))
   local_datetime.setHours(parseInt($("#date_hour").val()))
   $("#motion_close_date").val(local_datetime)
 
