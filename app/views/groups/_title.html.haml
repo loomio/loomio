@@ -14,9 +14,9 @@
           = image_tag("dropdown.png", title:'Options', alt:'Options', class: "options-dropdown-icon")
 
         %ul.dropdown-menu.pull-right
-          - if can_email
-            %li= link_to "Email group members", "#email-members-modal", "data-toggle" => "modal"
-            %hr
+          -#- if can_email
+            -#%li= link_to "Email group members", "#email-members-modal", "data-toggle" => "modal"
+            -#%hr
           - if can_edit
             %li= link_to "Edit group", edit_group_path(group)
           - if can_leave
