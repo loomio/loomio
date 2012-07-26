@@ -15,7 +15,7 @@ class Ability
     can :show, Group, :viewable_by => :parent_group_members,
                       :parent_id => user.group_ids
 
-    can :update, Group, :id => user.adminable_group_ids
+    can [:update, :email_members], Group, :id => user.adminable_group_ids
 
     can [:add_subgroup, :new_motion, :create_motion], Group, :id => user.group_ids
 

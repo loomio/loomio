@@ -8,4 +8,21 @@ class GroupMailer < ActionMailer::Base
     mail(:to => @admins, :subject => "[Loomio: #{@group.full_name}] New membership" +
       " request from #{@user.name}")
   end
+
+  def group_email(group, sender, subject, message, recipient)
+    @group = group
+    @sender = sender
+    @message = message
+    @recipient = recipient
+    mail :to => @recipient.email,
+         :subject => "[Loomio: #{@group.full_name}] #{subject}"
+  end
+
+  def deliver_group_email(group, sender, subject, message)
+    group.users.each do |user|
+      unless user == sender
+        GroupMailer.group_email(group, sender, subject, message, user).deliver
+      end
+    end
+  end
 end

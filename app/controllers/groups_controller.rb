@@ -77,6 +77,15 @@ class GroupsController < GroupBaseController
     end
   end
 
+  def email_members
+    @group = Group.find(params[:id])
+    subject = params[:group_email_subject]
+    body = params[:group_email_body]
+    GroupMailer.deliver_group_email(@group, current_user, subject, body)
+    flash[:success] = "Email sent."
+    redirect_to :back
+  end
+
   private
 
     def group
