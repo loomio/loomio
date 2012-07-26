@@ -2,17 +2,6 @@ require 'spec_helper'
 
 describe GroupsController do
 
-  let(:group) { stub_model(Group) }
-  let(:user)  { stub_model(User) }
-
-  context "signed in user" do
-    before :each do
-      User.stub(:find).with(user.id.to_s).and_return(user)
-      sign_in user
-      Group.stub(:find).with(group.id.to_s).and_return(group)
-    end
-  end
-
   context "logged in user" do
     before :each do
       @user = User.make!
@@ -170,6 +159,40 @@ describe GroupsController do
 
       group.users.should include(user2)
       group.users.should include(user3)
+    end
+
+    describe "archiving a group" do
+      before do
+        @group = Group.make!
+        @group.add_admin! @user
+        @subgroup = Group.make!(:parent => @group)
+        @subgroup.add_member! @user
+        post :archive, :id => @group.id
+      end
+      it "sets archived_at field on the group" do
+        assigns(:group).archived_at.should_not == nil
+      end
+      it "sets archived_at on the group's subgroups" do
+        @subgroup.reload
+        @subgroup.archived_at.should_not == nil
+      end
+      it "sets flash response" do
+        flash[:success].should =~ /Group archived successfully/
+      end
+      it "redirects to the dashboard" do
+        response.should redirect_to(:dashboard)
+      end
+    end
+
+    describe "viewing an archived group" do
+      before do
+        @group = Group.make!
+        @group.archived_at = Time.now
+        @group.save
+      end
+      it "throws an error" do
+        lambda { get :show, :id => @group.id }.should raise_error
+      end
     end
   end
 end
