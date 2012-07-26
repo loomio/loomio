@@ -1,5 +1,6 @@
 class GroupsController < GroupBaseController
   load_and_authorize_resource except: :show
+  before_filter :authenticate_user!, except: :show
   before_filter :check_group_read_permissions, :only => :show
 
   def create

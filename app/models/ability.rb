@@ -24,7 +24,7 @@ class Ability
     can :add_members, Group, :members_invitable_by => :admins,
                              :id => user.adminable_group_ids
 
-    can [:create, :index, :request_membership], Group
+    can [:create, :request_membership], Group
 
     #
     # MEMBERSHIPS
@@ -67,8 +67,6 @@ class Ability
     #
     # MOTIONS
     #
-    can :index, Motion
-
     can :create, Motion, :discussion_id => user.discussion_ids
 
     can :update, Motion, :author_id => user.id
