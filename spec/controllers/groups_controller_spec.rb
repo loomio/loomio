@@ -1,23 +1,14 @@
 require 'spec_helper'
 
 describe GroupsController do
-
   let(:group) { stub_model(Group) }
-  let(:user)  { stub_model(User) }
-
-  context "signed in user" do
-    before :each do
-      User.stub(:find).with(user.id.to_s).and_return(user)
-      sign_in user
-      Group.stub(:find).with(group.id.to_s).and_return(group)
-    end
-  end
 
   context "logged in user" do
     before :each do
       @user = User.make!
       sign_in @user
     end
+
     context "group viewable by everyone" do
       before :each do
         @group = Group.make!(viewable_by: :everyone)
@@ -170,6 +161,37 @@ describe GroupsController do
 
       group.users.should include(user2)
       group.users.should include(user3)
+    end
+
+    describe "#email_members" do
+      before do
+        @previous_url = group_url group
+        request.env["HTTP_REFERER"] = @previous_url
+        Group.stub(:find).with(group.id.to_s).and_return(group)
+        controller.stub(:authorize!).and_return(true)
+        controller.stub(:can?).with(:email_members, group).and_return(true)
+        @email_subject = "i have something really important to say!"
+        @email_body = "goobly"
+        GroupMailer.stub(:deliver_group_email)
+        @mailer_args = { :id => group.id, :group_email_body => @email_body,
+                         :group_email_subject => @email_subject }
+      end
+
+      it "sends email to group" do
+        GroupMailer.should_receive(:deliver_group_email).
+          with(group, @user, @email_subject, @email_body)
+        post :email_members, @mailer_args
+      end
+
+      it "populates flash notice" do
+        post :email_members, @mailer_args
+        flash[:success].should == "Email sent."
+      end
+
+      it "redirects to previous page" do
+        post :email_members, @mailer_args
+        response.should redirect_to(@previous_url)
+      end
     end
   end
 end
