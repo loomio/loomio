@@ -55,7 +55,7 @@ $ ->
 
   $(".run-validations").click((event, ui) ->
     $(".validate-presence").each((index, element) ->
-      if $(element).val() == ""
+      if $(element).is(":visible") && $(element).val() == ""
         parent = $(element).parent()
         parent.addClass("error")
         parent.find(".presence-error-message").show()
