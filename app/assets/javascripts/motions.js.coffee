@@ -34,34 +34,38 @@ $ ->
       $("#input_date").datepicker("setDate", date_string)
       $("#date_hour").val(hour)
 
+
 # Reload hidden close_date field
 $ ->
   $("#input_date").change((e) ->
-    remove_date_error()
-    date = $(this).val()
-    local_datetime = new Date()
-    local_datetime.setYear(parseInt(date.substring(6,10)))
-    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1), parseInt(date.substring(0,2)))
-    local_datetime.setHours(parseInt($("#date_hour").val()))
-    $("#motion_close_date").val(local_datetime)
+    set_close_date()
   )
 
 $ ->
   $("#date_hour").change((e) ->
-    remove_date_error()
-    date = $("#input_date").val()
-    local_datetime = new Date()
-    local_datetime.setYear(parseInt(date.substring(6,10)))
-    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1), parseInt(date.substring(0,2)))
-    local_datetime.setHours(parseInt($(this).val()))
-    $("#motion_close_date").val(local_datetime)
+    set_close_date()
   )
+
+set_close_date = ->
+  remove_date_error()
+  date = $("#input_date").val()
+  local_datetime = new Date()
+  local_datetime.setYear(parseInt(date.substring(6,10)))
+  month = date.substring(3,5)
+  month = month[1] if month[0] == "0"
+  day = date.substring(0,2)
+  day = day[1] if day[0] == "0"
+  local_datetime.setMonth(parseInt(month) - 1, parseInt(day))
+  local_datetime.setHours(parseInt($("#date_hour").val()))
+  $("#motion_close_date").val(local_datetime)
+
 
 # The following methods are used to provide client side validation for
 # - character count
 # - presence required
 # - date validation specific for motion-form
-remove_date_error = () ->
+
+remove_date_error = ->
   $(".validate-motion-close-date").parent().removeClass("error")
   $(".date-error-message").hide()
 

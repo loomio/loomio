@@ -34,6 +34,8 @@
                     -#- if activity > 0
                       -#.notification-container
                         -#.span.label.label-important= activity
+            %li.new-group
+              =link_to "Add New Group +", new_group_path
       %ul.nav.pull-right
         %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
         %li
@@ -49,7 +51,5 @@
           %ul.dropdown-menu
             %li= link_to "Settings", user_settings_path
             %li= link_to('Sign out', destroy_user_session_path, method: :delete)
-            %li.new-group
-              =link_to "Add New Group +", new_group_path
     - else
       .sign-in= link_to('Sign in', new_user_session_path)

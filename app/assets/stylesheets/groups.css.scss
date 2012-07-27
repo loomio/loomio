@@ -5,12 +5,6 @@
 @import "bootstrap/mixins";
 @import "mixins";
 
-
-.form-horizontal {
-  /*label { padding-right: 10px; }*/
-  /*input { width: 390px;}*/
-}
-
 #group-form {
   form {
     width: 550px;
@@ -48,7 +42,7 @@
 /**** Group page ****/
 
 body.groups.show .discussion-preview a { padding: 13px 5px 14px 10px; }
-li.no-discussions, li.no-proposals {
+li.selector-item.no-discussions, li.selector-item.no-proposals {
   padding: 5px 10px;
   background-color: $highlighted
 }
@@ -57,26 +51,28 @@ li.no-discussions, li.no-proposals {
   position: relative;
   bottom: 4px;
 }
-.tool-bar-item-proposal {
+li.tool-bar-item.no-image a {
+  padding: 5px 10px 6px 10px;
+}
+li.tool-bar-item.no-image:hover  {
+  background-color: #ccc;
+}
+li.tool-bar-item#proposal {
   background-image:url('/assets/proposal.png');
-  background-repeat: no-repeat;
-  background-size: 16px;
-  background-position: 10px 5px;
+  background-position: 10px 4px;
 }
-.tool-bar-item-proposal:hover {
-  background-position: 10px -46px;
+li.tool-bar-item#proposal:hover {
+  background-position: 10px -49px;
 }
-#tool-bar-item-discussion {
-  padding-left: 30px;
+li.tool-bar-item#discussion {
   background-image:url('/assets/discussion-white.png');
-  background-repeat: no-repeat;
-  background-size: 17px;
   background-position: 10px -59px;
 }
 
-#tool-bar-item-discussion:hover {
-  background-position: 10px 5px;
+li.tool-bar-item#discussion:hover {
+  background-position: 10px 4px;
 }
+
 /*request membership panel*/
 #request-membership {
   form { display: inline; }
