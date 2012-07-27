@@ -1,6 +1,7 @@
 class DiscussionsController < GroupBaseController
-  load_and_authorize_resource :except => [:show, :create, :newer_unread_discussion, :older_unread_discussion]
-  before_filter :check_group_read_permissions, :except => [:show, :newer_unread_discussion, :older_unread_discussion]
+  load_and_authorize_resource :except => [:show, :create, :index, :newer_unread_discussion, :older_unread_discussion]
+  before_filter :authenticate_user!, :except => [:show, :index, :newer_unread_discussion, :older_unread_discussion]
+  before_filter :check_group_read_permissions, :only => [:show, :newer_unread_discussion, :older_unread_discussion]
 
   def new
     @group = GroupDecorator.new(Group.find(params[:discussion][:group_id]))
@@ -26,11 +27,17 @@ class DiscussionsController < GroupBaseController
   def index
     if params[:group_id].present?
       @group = Group.find(params[:group_id])
-      @discussions= @group.discussions_sorted(current_user).page(params[:page]).per(10)
+      if cannot? :show, @group
+        head 401
+      else
+        @discussions = @group.discussions_sorted(current_user).page(params[:page]).per(10)
+        render :layout => false if request.xhr?
+      end
     else
-      @discussions= current_user.discussions_sorted.page(params[:page]).per(10)
+      authenticate_user!
+      @discussions = current_user.discussions_sorted.page(params[:page]).per(10)
+      render :layout => false if request.xhr?
     end
-    render :layout => false if request.xhr?
   end
 
   def show

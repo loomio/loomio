@@ -30,14 +30,15 @@
                   -#.notification-container
                     -#.span.label.label-important= activity
               - if group.subgroups.size > 0
-                - group.subgroups.each do |sub_group|
-                  %li.group-item.sub-group
-                    .link-container
-                      = link_to sub_group.name.length < 40 ? sub_group.name : sub_group.name[0..37]+'...', group_path(sub_group), :class => 'view_'+sub_group.viewable_by.to_s
-                    -#- activity =  current_user.activity_total_in(sub_group)
-                    -#- if activity > 0
-                      -#.notification-container
-                        -#.span.label.label-important= activity
+                - group.subgroups.each do |subgroup|
+                  - if current_user && current_user.groups.include?(subgroup)
+                    %li.group-item.sub-group
+                      .link-container
+                        = link_to subgroup.name.length < 40 ? subgroup.name : subgroup.name[0..37]+'...', group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
+                      -#- activity =  current_user.activity_total_in(subgroup)
+                      -#- if activity > 0
+                        -#.notification-container
+                          -#.span.label.label-important= activity
             %li.new-group
               =link_to "Add New Group +", new_group_path
       %ul.nav.pull-right

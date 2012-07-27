@@ -27,6 +27,7 @@ describe "User abilities" do
 
     it { should be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
+    it { should_not be_able_to(:email_members, group) }
     it { should be_able_to(:add_subgroup, group) }
     it { should be_able_to(:new_motion, group) }
     it { should be_able_to(:new_proposal, discussion) }
@@ -104,6 +105,7 @@ describe "User abilities" do
     end
 
     it { should be_able_to(:update, group) }
+    it { should be_able_to(:email_members, group) }
     it { should be_able_to(:make_admin, @membership_request) }
     it { should be_able_to(:remove_admin, @membership_request) }
     it { should be_able_to(:destroy, @other_user_membership) }
@@ -134,6 +136,7 @@ describe "User abilities" do
     let(:another_user_comment) { discussion.add_comment(discussion.author, "hello") }
 
     it { should_not be_able_to(:update, group) }
+    it { should_not be_able_to(:email_members, group) }
     it { should_not be_able_to(:add_subgroup, group) }
     it { should_not be_able_to(:add_members, group) }
     it { should_not be_able_to(:new_proposal, discussion) }

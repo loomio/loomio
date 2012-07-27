@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20120718141211) do
     t.string   "description"
     t.integer  "creator_id",                              :null => false
     t.integer  "memberships_count",    :default => 0,     :null => false
+    t.datetime "archived_at"
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"

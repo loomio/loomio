@@ -1,7 +1,5 @@
 - if group
   .group-title.clearfix
-    #privacy{:class => group.viewable_by.to_s}
-      =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
     %h2= group.fancy_link
     - if @discussion && @discussion.id
       - newer_discussion = @discussion.newer_unread_discussion(current_user)
@@ -14,8 +12,12 @@
         = link_to ">", older_unread_discussion_path(older_discussion), id: "older_button", class: "btn" 
       - else 
         = link_to ">", "#", id: "older_button", class: "btn", disabled: "disabled"
+    #privacy{:class => group.viewable_by.to_s}
+      =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
     - can_edit = can? :edit, group
     - can_leave = group.users_include? current_user
+    - can_archive = can? :edit, group
+    -#- can_email = can? :email_members, group
     - if can_edit || can_leave
       .dropdown.btn-group.group-options
         %a.btn.dropdown-toggle{ :href => "#", 'data-toggle' => 'dropdown' , 'tabindex' => 4}
@@ -24,8 +26,16 @@
           = image_tag("dropdown.png", title:'Options', alt:'Options', class: "options-dropdown-icon")
 
         %ul.dropdown-menu.pull-right
+          -#- if can_email
+            -#%li= link_to "Email group members", "#email-members-modal", "data-toggle" => "modal"
+            -#%hr
           - if can_edit
             %li= link_to "Edit group", edit_group_path(group)
           - if can_leave
             - membership = current_user.group_membership(group)
             %li= link_to "Leave group", membership, method: :delete, confirm: "Are you sure you wish to leave #{group.name}?"
+          - if can_archive
+            %li= link_to "De-activate group", archive_group_path(group), method: :post, confirm: "Wait!!! Are you sure you want to de-activate #{group.name}? \n\n You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@loom.io."
+    -#- if can_email
+      -##email-members-modal.modal.hidden
+        -#= render "groups/email_members", :group => group

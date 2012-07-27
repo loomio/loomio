@@ -11,6 +11,8 @@ class Group < ActiveRecord::Base
 
   after_initialize :set_defaults
 
+  default_scope where(:archived_at => nil)
+
   has_many :memberships,
     :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
     :dependent => :destroy,
