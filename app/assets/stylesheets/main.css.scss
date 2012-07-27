@@ -181,33 +181,6 @@ h4 {
   .dropdown li a:hover { color: $white; }
 }
 
-// group title
-.group-title {
-  margin-bottom: 10px;
-  .group-options {
-    display: inline;
-    position: relative;
-    bottom: 4px;
-    float: right;
-  }
-  .group-options a {
-    color: #777;
-    font-size: 0.9em;
-  }
-  .group-options .icon-cog {
-    opacity: 0.65;
-    position: relative;
-    top: 1px;
-  }
-  .group-options .options-dropdown-icon {
-    position: relative;
-    bottom: 1px;
-    padding-right: 2px;
-    padding-left: 10px;
-  }
-}
-
-
 .alert {
   position: relative;
   bottom: 20px;

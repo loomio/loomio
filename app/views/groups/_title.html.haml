@@ -6,6 +6,7 @@
     - can_edit = can? :edit, group
     - can_leave = group.users_include? current_user
     - can_archive = can? :edit, group
+    -#- can_email = can? :email_members, group
     - if can_edit || can_leave
       .dropdown.btn-group.group-options
         %a.btn.dropdown-toggle{ :href => "#", 'data-toggle' => 'dropdown' }
@@ -14,6 +15,9 @@
           = image_tag("dropdown.png", title:'Options', alt:'Options', class: "options-dropdown-icon")
 
         %ul.dropdown-menu.pull-right
+          -#- if can_email
+            -#%li= link_to "Email group members", "#email-members-modal", "data-toggle" => "modal"
+            -#%hr
           - if can_edit
             %li= link_to "Edit group", edit_group_path(group)
           - if can_leave
@@ -21,3 +25,6 @@
             %li= link_to "Leave group", membership, method: :delete, confirm: "Are you sure you wish to leave #{group.name}?"
           - if can_archive
             %li= link_to "Archive group", archive_group_path(group), method: :post, confirm: "Are you sure you wish to archive #{group.name}?"
+    -#- if can_email
+      -##email-members-modal.modal.hidden
+        -#= render "groups/email_members", :group => group

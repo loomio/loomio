@@ -1,5 +1,6 @@
 class GroupsController < GroupBaseController
   load_and_authorize_resource except: :show
+  before_filter :authenticate_user!, except: :show
   before_filter :check_group_read_permissions, :only => :show
 
   def create
@@ -93,6 +94,15 @@ class GroupsController < GroupBaseController
       flash[:error] = "Proposal could not be created."
       redirect_to :back
     end
+  end
+
+  def email_members
+    @group = Group.find(params[:id])
+    subject = params[:group_email_subject]
+    body = params[:group_email_body]
+    GroupMailer.deliver_group_email(@group, current_user, subject, body)
+    flash[:success] = "Email sent."
+    redirect_to :back
   end
 
   private

@@ -14,9 +14,6 @@ Loomio::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
-
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
@@ -29,11 +26,10 @@ Loomio::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-
-  ActionMailer::Base.delivery_method = :test
-  ActionMailer::Base.delivery_method = :file
-  ActionMailer::Base.file_settings = {
+  config.action_mailer.delivery_method = :file
+  config.action_mailer.file_settings = {
     :location => Rails.root.join('tmp/mail')
   }
 end

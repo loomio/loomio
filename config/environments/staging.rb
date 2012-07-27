@@ -46,9 +46,6 @@ Loomio::Application.configure do
   # config.assets.precompile += %w( search.js )
   config.assets.precompile += %w(active_admin.css.scss active_admin.js)
 
-  # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
-
   # Enable threaded mode
   # config.threadsafe!
 
@@ -59,19 +56,14 @@ Loomio::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  #config.action_mailer.delivery_method = :smtp
-  #config.action_mailer.smtp_settings = {
-        #:address => "127.0.0.1",
-        #:enable_starttls_auto => false
-    #}
-  #config.action_mailer.perform_deliveries = true
-  #config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :file
+  config.action_mailer.file_settings = {
+    :location => Rails.root.join('tmp/mail')
+  }
 
   config.action_mailer.default_url_options = {
-    :host => 'loom.io',
+    :host => 'dev.loom.io',
   }
 
   # Send deprecation notices to registered listeners
