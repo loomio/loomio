@@ -1,7 +1,10 @@
-%ul
-  - if @discussions
-    - @discussions.each do |discussion|
-      %li= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
-  - else
-    %li.no-discussions= "There are no discussions for this group"
+%ul.selector-list
+  #discussion-list
+    - if @discussions
+      - @discussions.each do |discussion|
+        %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
+    - else
+      %li.selector-item.no-discussions= "There are no discussions for this group"
+  #discussions-loading
+    %li.selector-item.loading Loading...
 = paginate @discussions, :window => 3, :remote => :true

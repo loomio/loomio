@@ -2,13 +2,13 @@
 /*@import "bootstrap";*/
 @import "mixins";
 
-/** new discussion form*/
-
+/** discussion new form*/
 body.discussions.new {
   #discussion_notify_group_upon_creation { margin-bottom: 30px; }
   .btn { display: block; }
 }
 
+/** discussion show form*/
 body.discussions.show {
   .discussion-title {
     width: 438px;
@@ -20,6 +20,22 @@ body.discussions.show {
     }
   }
 }
+/*  proposal panel  */
+li .motion { padding: 5px 15px; }
+.close-date {
+  font-size: $font-tiny;
+  color: $mid-grey;
+}
+li.selector-item.current-proposal {
+  background-color: $current-proposal;
+  table.jqplot-table-legend { background-color: $current-proposal; }
+}
+li.preview a {
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
+
 
 /*** comments, positions & proposals in History ***/
 #content-history {
@@ -29,16 +45,16 @@ body.discussions.show {
     padding: 10px 0 42px 10px;
     background-color: $comment-color;
   }
-  
+
   #comment-list li {
     overflow: hidden;
   }
-  
+
   #new-comment-form img {
     float:left;
     margin-right: 5px;
   }
-  
+
   #new-comment {
     margin: 0 0 5px 0px;
     width: 388px;
@@ -46,20 +62,24 @@ body.discussions.show {
     height: 80px;
     color: $dark-grey;
   }
-  
+
   #post-new-comment {
     margin: 5px 5px 5px 40px;
   }
-  
+
   #new-comment-form .medium-user-image-initial-wrapper {
     margin-right: 5px;
   }
-  
-  ul {
+
+  ul.history-list {
     list-style: none;
-    margin-left: 0px;
+    border-bottom: 1px solid $light-grey;
+    margin: 0 0 3px 0;
   }
-  
+  li.history-item {
+    border-top: 1px solid $light-grey;
+  }
+
   #no-messages {
     padding: 5px 10px;
   }
@@ -70,22 +90,22 @@ body.discussions.show {
     color: $dark-grey;
     background-color: $comment-color;
   }
-  
+
   .comment-avatar {
     float: left;
     margin-right: 5px;
     width: 8%;
   }
-  
+
   .comment img {
     float: left;
   }
-  
+
   .comment-right {
     width: 90%;
     float: left;
   }
-  
+
   .comment .comment-username{
     font-weight: bold;
     float: left;
@@ -127,15 +147,6 @@ body.discussions.show {
     background: $comment-color;
     color: $mid-grey;
   }
-  .proposal .tool-bar-item-proposal {
-    float: left;
-    display: inline;
-    height: 19px;
-    width: 22px;
-    background-position-x: 2px;
-    background-position-y: 1px;
-
-  }
   .proposal-info {
     margin-left: 0.4em;
   }
@@ -145,36 +156,6 @@ body.discussions.show {
   .proposal.current{
     background: $current-proposal;
   }
-}
-
-/*  proposal panel  */
-#content-proposal {
-  .tool-bar-item#tool-bar-item-edit { padding-left: 15px; }
-  .tool-bar-item#tool-bar-item-close {
-    padding-left: 15px;
-    position: relative;
-    right: 4px
-  }
-  .no-proposals {
-    padding: 5px 10px;
-  }
-  /*a { color: $dark-grey; }*/
-  li { padding: 0px; }
-  li .motion { padding: 5px 15px; }
-  .close-date {
-    font-size: $font-tiny;
-    color: $mid-grey;
-  }
-}
-
-li.current-proposal {
-  background-color: $current-proposal;
-  table.jqplot-table-legend { background-color: $current-proposal; }
-}
-li.preview { padding: 0px; }
-li.preview a {
-  padding: 10px 15px;
-  text-decoration: none;
 }
 
 // Discussion preview list panel
