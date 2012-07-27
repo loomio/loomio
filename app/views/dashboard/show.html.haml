@@ -13,9 +13,10 @@
               %li
                 = link_to group.name, group_path(group), :class => 'view_'+group.viewable_by.to_s
                 - if group.subgroups.size > 0
-                  - group.subgroups.each do |sub_group|
-                    %li.sub-group
-                      = link_to sub_group.name, group_path(sub_group), :class => 'view_'+sub_group.viewable_by.to_s
+                  - group.subgroups.each do |subgroup|
+                    - if can? :show, subgroup
+                      %li.sub-group
+                        = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
       %section.span8
         .selector-panel
           .clearfix

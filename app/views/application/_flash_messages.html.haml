@@ -3,17 +3,22 @@
     <a class="close" data-dismiss="alert" href="#">×</a>
     = message
 
-- if current_user && (not current_user.has_read_system_notice?)
-  #system-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
-    = link_to "×", dismiss_system_notice_for_user_path,
-      :class => "close dismiss-system-notice", "data-dismiss" => "alert"
-    NOTICE: We are in the process of improving the interface on Loomio. However, we are still in early
-    testing phase, so you may notice a few bugs and/or annoyances.
-    %br
-    %br
-    If you notice any issues or have any feedback send us an email at contact@loom.io.
-    Thanks for all your help and patience so far!
-    %br
-    %br
-    = link_to "Click here to dismiss this message", dismiss_system_notice_for_user_path,
-      :class => "dismiss-system-notice", "data-dismiss" => "alert"
+
+-#
+-# UNCOMMENT BELOW TO ENABLE SYSTEM MESSAGE
+-#
+
+-#- if current_user && (not current_user.has_read_system_notice?)
+  -##system-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
+    -#= link_to "×", dismiss_system_notice_for_user_path,
+      -#:class => "close dismiss-system-notice", "data-dismiss" => "alert"
+    -#NOTICE: We are in the process of improving the interface on Loomio. However, we are still in early
+    -#testing phase, so you may notice a few bugs and/or annoyances.
+    -#%br
+    -#%br
+    -#If you notice any issues or have any feedback send us an email at contact@loom.io.
+    -#Thanks for all your help and patience so far!
+    -#%br
+    -#%br
+    -#= link_to "Click here to dismiss this message", dismiss_system_notice_for_user_path,
+      -#:class => "dismiss-system-notice", "data-dismiss" => "alert"

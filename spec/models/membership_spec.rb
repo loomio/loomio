@@ -89,18 +89,38 @@ describe Membership do
       subgroup2.users.should_not include(user)
     end
 
-    it "removes open votes from user" do
-      membership = group.add_member! user
-      discussion = create_discussion(group: group)
-      motion = create_motion(discussion: discussion)
-      vote = Vote.new
-      vote.user = user
-      vote.position = "yes"
-      vote.motion = motion
-      vote.save!
-      membership.destroy
+    context do
+      before do
+        @membership = group.add_member! user
+        discussion = create_discussion(group: group)
+        @motion = create_motion(discussion: discussion)
+        vote = Vote.new
+        vote.user = user
+        vote.position = "yes"
+        vote.motion = @motion
+        vote.save!
+      end
 
-      motion.votes.count.should == 0
+      it "removes user's open votes for the group" do
+        @membership.destroy
+        @motion.votes.count.should == 0
+      end
+
+      it "does not remove user's open votes for other groups" do
+        motion2 = create_motion(author: user)
+        vote = Vote.new
+        vote.user = user
+        vote.position = "yes"
+        vote.motion = motion2
+        vote.save!
+        @membership.destroy
+        motion2.votes.count.should == 1
+      end
+
+      it "does not fail if motion no longer exists" do
+        @motion.delete
+        lambda { @membership.destroy }.should_not raise_error
+      end
     end
 
     it "updates memberships_count" do

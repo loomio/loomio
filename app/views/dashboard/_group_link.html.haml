@@ -2,9 +2,10 @@
 - group_link_class = "group-link"
 - if current_user && (!current_user.groups.include?(group))
   - group_link_class = "group-link disabled"
-%span{class: group_link_class}= group.link
-- if current_user && current_user.groups.include?(group)
-  = link_to "+",
-    new_discussion_path(discussion: { group_id: group }),
-    :class => 'new_motion_link',
-    :title => 'new motion for this group'
+- if can? :show, group
+  %span{class: group_link_class}= group.link
+  - if can? :create_motion, group
+    = link_to "+",
+      new_discussion_path(discussion: { group_id: group }),
+      :class => 'new_motion_link',
+      :title => 'new motion for this group'
