@@ -163,7 +163,6 @@ describe GroupsController do
       group.users.should include(user3)
     end
 
-<<<<<<< HEAD
     describe "archiving a group" do
       before do
         @group = Group.make!
@@ -195,7 +194,9 @@ describe GroupsController do
       end
       it "throws an error" do
         lambda { get :show, :id => @group.id }.should raise_error
-=======
+      end
+    end
+
     describe "#email_members" do
       before do
         @previous_url = group_url group
@@ -224,7 +225,6 @@ describe GroupsController do
       it "redirects to previous page" do
         post :email_members, @mailer_args
         response.should redirect_to(@previous_url)
->>>>>>> 13d7f58e4b7da862b413843a35fe5c97b1eb5743
       end
     end
   end
