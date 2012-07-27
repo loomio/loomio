@@ -15,6 +15,8 @@ Loomio::Application.routes.draw do
     post :create_motion, :on => :member
   end
 
+  match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
+
   resources :motions do
     resources :votes
   end
