@@ -11,7 +11,7 @@ describe Comment do
       discussion = create_discussion
       comment = discussion.add_comment discussion.author, "hi"
       discussion.reload
-      discussion.last_comment_at.should == comment.created_at
+      discussion.last_comment_at.to_s.should == comment.created_at.to_s
     end
   end
 
@@ -31,7 +31,7 @@ describe Comment do
         comment2 = discussion.add_comment discussion.author, "hi"
         comment2.destroy
         discussion.reload
-        discussion.last_comment_at.should == comment1.created_at
+        discussion.last_comment_at.to_s.should == comment1.created_at.to_s
       end
     end
   end
