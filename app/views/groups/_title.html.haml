@@ -6,12 +6,12 @@
     - if @discussion && @discussion.id
       - newer_discussion = @discussion.newer_unread_discussion(current_user)
       - if newer_discussion.id != @discussion.id
-        = link_to "<", newer_unread_discussion_path(newer_discussion), id: "newer_button", class: "btn" 
+        = link_to "<", newer_unread_discussion_path(newer_discussion), id: "newer_button", class: "btn", title: "Newer Discussion - k"
       - else 
         = link_to "<", "#", id: "newer_button", class: "btn", disabled: "disabled"
       - older_discussion = @discussion.older_unread_discussion(current_user)
       - if older_discussion.id != @discussion.id
-        = link_to ">", older_unread_discussion_path(older_discussion), id: "older_button", class: "btn" 
+        = link_to ">", older_unread_discussion_path(older_discussion), id: "older_button", class: "btn", title: 'Older Discussion - j'
       - else 
         = link_to ">", "#", id: "older_button", class: "btn", disabled: "disabled"
     - can_edit = can? :edit, group

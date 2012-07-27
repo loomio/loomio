@@ -14,8 +14,8 @@ $ ->
       if check_page_focus_non_textarea()
         switch keyChar
           when "i" then show_group_homepage()
-          when "j" then show_newer_discussion()
-          when "k" then show_older_discussion()
+          when "k" then show_newer_discussion()
+          when "j" then show_older_discussion()
           
 check_page_focus_non_textarea = ->
   non_textarea = true
