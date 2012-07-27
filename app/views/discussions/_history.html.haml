@@ -26,11 +26,11 @@
           - classes += " current" if (message == discussion.current_motion)
           %div{class: classes}
             .comment-avatar
-              - if message.author.avatar_url.nil?
-                .medium-user-image-initial-wrapper
-                  %span.medium-user-image-initials= message.author.initials
-              - else
-                = image_tag message.author.avatar_url("medium")
+              .medium-image-size.image-wrapper
+                - if message.author.avatar_url.nil?
+                  %span.medium-initial-size.initials= message.author.initials
+                - else
+                  = image_tag message.author.avatar_url("medium")
             .comment-right
               .tool-bar-item-proposal
               .comment-username= link_to(message.author_name, "#")

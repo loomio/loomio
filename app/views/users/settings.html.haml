@@ -1,29 +1,37 @@
 = form_for [@user], :html => { :multipart => true } do |f|
   = f.label :name
   = f.text_field :name
-  - if @user.avatar_url.nil?
-    .large-user-image-initial-wrapper
-      %span.large-user-image-initials= @user.initials
-  - else
-    .user-image
-      = image_tag @user.avatar_url("large")
-  .selector-panel.change-avatar-wrapper
-    %h1 Select Avatar
-    - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
-      .user-image-option.option-uploaded
-        = image_tag @user.uploaded_avatar.url(:medium)
-        %a{ id: 'use_uploaded' } Use Uploaded Image
-    - if image_alt(@user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)) != '810bec5b37cf73fa053a2b5ef11605b7'
-      .user-image-option.option-gravatar
-        = image_tag @user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)
-        %a{ id: 'use_gravatar' } Use Gravatar
-    .user-image-option.option-initials
-      .medium-user-image-initial-wrapper
-        %span.change-user-image-initials= @user.initials
-      %a{ id: 'use_initials' } Use Initials
-    .user-image-option.option-upload
-      = f.file_field :uploaded_avatar
-      = link_to "Upload a new image", "#", :id => "fake_upload_image_button", :class => "btn"
-      = hidden_field_tag("user[avatar_kind]", "", :id => "user_avatar_kind")
+  -#%h3 User picture
+  .row#preview-user-image
+    .span2
+      - if @user.avatar_url.nil?
+        .large-image-size.image-wrapper
+          %span.large-initial-size.initials= @user.initials
+      - else
+        .user-image
+          = image_tag @user.avatar_url("large")
+    .span3
+      .user-image-options
+        %h3 Change user picture
+        %ul
+          - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
+            %li.user-image-option.option-uploaded
+              .medium-image-size.image-wrapper
+                = image_tag @user.uploaded_avatar.url(:medium)
+              %a{ id: 'use_uploaded' } Use Uploaded Image
+          - if image_alt(@user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)) != '810bec5b37cf73fa053a2b5ef11605b7'
+            %li.user-image-option.option-gravatar
+              .medium-image-size.image-wrapper
+                = image_tag @user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)
+              %a{ id: 'use_gravatar' } Use Gravatar
+          %li.user-image-option.option-initials
+            .medium-image-size.image-wrapper
+              %span.change-user-image-initials.initials= @user.initials
+            %a{ id: 'use_initials' } Use Initials
+          %li.user-image-option.option-upload
+            = f.file_field :uploaded_avatar
+            .medium-image-size.image-wrapper#upload-image
+            = link_to "Upload a new image", "#", :id => "fake_upload_image_button"
+            = hidden_field_tag("user[avatar_kind]", "", :id => "user_avatar_kind")
   .clear-both
   = f.submit "Update Settings", class: "btn btn-info"

@@ -1,10 +1,10 @@
 %li{:id => membership.user_id}
   - if can? :edit, group
     - if membership.user.avatar_url.nil?
-      .small-user-image-initial-wrapper
-        %span.small-user-image-initials= membership.user.initials
+      .small-image-size.image-wrapper
+        %span.small-initial-size.initials= membership.user.initials
     - else
-      = image_tag membership.user.avatar_url("small")
+      .small-image-size.image-wrapper= image_tag membership.user.avatar_url("small")
     .user-name
       - if membership.user_name
         %span.membership-user-name= truncate(membership.user_name, :length => 29, :omission => '...')
@@ -21,10 +21,10 @@
           confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
   - else
     - if membership.user.avatar_url.nil?
-      .small-user-image-initial-wrapper
-        %span.small-user-image-initials= membership.user.initials
+      .small-image-size.image-wrapper
+        %span.small-initial-size.initials= membership.user.initials
     - else
-      = image_tag membership.user.avatar_url("small")
+      .small-image-size.image-wrapper= image_tag membership.user.avatar_url("small")
     - if membership.user_name
       %span.membership-user-name= truncate(membership.user_name, :length => 38, :omission => '...')
     - else
