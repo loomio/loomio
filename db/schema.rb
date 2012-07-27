@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20120718141211) do
     t.string   "description"
     t.integer  "creator_id",                              :null => false
     t.integer  "memberships_count",    :default => 0,     :null => false
+    t.datetime "archived_at"
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -136,22 +137,22 @@ ActiveRecord::Schema.define(:version => 20120718141211) do
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                      :default => "",    :null => false
-    t.string   "encrypted_password",                         :default => ""
+    t.string   "email",                                :default => "",    :null => false
+    t.string   "encrypted_password",                   :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                              :default => 0
+    t.integer  "sign_in_count",                        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                                      :default => false
+    t.boolean  "admin",                                :default => false
     t.string   "name"
     t.string   "unconfirmed_email"
-    t.string   "invitation_token",             :limit => 60
+    t.string   "invitation_token",       :limit => 60
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer  "invitation_limit"
@@ -169,6 +170,8 @@ ActiveRecord::Schema.define(:version => 20120718141211) do
     t.datetime "uploaded_avatar_updated_at"
     t.boolean  "has_read_system_notice",                     :default => false, :null => false
     t.boolean  "is_admin",                                   :default => false
+    t.boolean  "has_read_system_notice",               :default => false, :null => false
+    t.boolean  "is_admin",                             :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
