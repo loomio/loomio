@@ -75,6 +75,13 @@ header{
 /* user dropdown */
 .dropdown#user {
   float: right;
+  .user-image {
+    height: 28px;
+    width: 28px;
+    position: relative;
+    bottom: 7px;
+    right: 8px;
+  }
 }
 
 /* group dropdown */
