@@ -1,6 +1,8 @@
 - if group
   .group-title.clearfix
     %h2= group.fancy_link
+    #privacy{:class => group.viewable_by.to_s}
+      =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
     - if @discussion && @discussion.id
       - newer_discussion = @discussion.newer_unread_discussion(current_user)
       - if newer_discussion.id != @discussion.id
@@ -12,8 +14,6 @@
         = link_to ">", older_unread_discussion_path(older_discussion), id: "older_button", class: "btn" 
       - else 
         = link_to ">", "#", id: "older_button", class: "btn", disabled: "disabled"
-    #privacy{:class => group.viewable_by.to_s}
-      =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
     - can_edit = can? :edit, group
     - can_leave = group.users_include? current_user
     - can_archive = can? :edit, group
