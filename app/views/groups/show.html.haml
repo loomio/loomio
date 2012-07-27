@@ -31,12 +31,14 @@
       %ul.selector-list
         #open
           - current_motions_exist = false
-          - @motions_not_voted.each do |motion|
-            %li.selector-item.undecided= render '/motions/motion_preview', motion: motion, this_group: @group
+          - if @motions_not_voted
             - current_motions_exist = true
-          - @motions_voted.each do |motion|
-            %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
+            - @motions_not_voted.each do |motion|
+              %li.selector-item.undecided= render '/motions/motion_preview', motion: motion, this_group: @group
+          - if @motions_voted
             - current_motions_exist = true
+            - @motions_voted.each do |motion|
+              %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
           - unless current_motions_exist
             %li.selector-item.no-proposals= "There are no current proposals for this group"
         #closed.hidden
@@ -50,5 +52,5 @@
           %li.tool-bar-item#discussion
             %a{ href: new_discussion_path(discussion: { group_id: @group }) }
               Start new discussion
-        #group-discussions.hidden
-          %div{ class: "group_#{@group.id}" }
+      #group-discussions.hidden
+        %div{ class: "group_#{@group.id}" }
