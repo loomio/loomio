@@ -1,8 +1,8 @@
 .motion-preview.clearfix
   %a{ href: motion_path(motion) }
     %span
-      .vote-icon
-        - if current_user
+      - if current_user
+        .vote-icon
           = render "motions/display_icons", position: current_user.position(motion)
       .proposal-title-container
         .proposal-title.word-break= truncate(motion.name, :length => 60, :separator => ' ')

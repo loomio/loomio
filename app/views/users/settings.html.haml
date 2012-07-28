@@ -2,36 +2,35 @@
   = f.label :name
   = f.text_field :name
   -#%h3 User picture
-  .row#preview-user-image
+  .row#user-image-area
     .span2
       - if @user.avatar_url.nil?
-        .large-image-size.image-wrapper
-          %span.large-initial-size.initials= @user.initials
+        .large-user-image.image-canvas
+          %span.large-user-initials.initials-decoration= @user.initials
       - else
-        .user-image
+        #user-image-preview
           = image_tag @user.avatar_url("large")
     .span3
-      .user-image-options
+      #user-image-options
         %h3 Change user picture
         %ul
           - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
             %li.user-image-option.option-uploaded
-              .medium-image-size.image-wrapper
+              .medium-user-image.image-canvas
                 = image_tag @user.uploaded_avatar.url(:medium)
               %a{ id: 'use_uploaded' } Use Uploaded Image
           - if image_alt(@user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)) != '810bec5b37cf73fa053a2b5ef11605b7'
             %li.user-image-option.option-gravatar
-              .medium-image-size.image-wrapper
+              .medium-user-image.image-canvas
                 = image_tag @user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)
               %a{ id: 'use_gravatar' } Use Gravatar
           %li.user-image-option.option-initials
-            .medium-image-size.image-wrapper
-              %span.change-user-image-initials.initials= @user.initials
+            .medium-user-image.image-canvas
+              %span.medium-user-initials.initials-decoration= @user.initials
             %a{ id: 'use_initials' } Use Initials
           %li.user-image-option.option-upload
             = f.file_field :uploaded_avatar
-            .medium-image-size.image-wrapper#upload-image
-            = link_to "Upload a new image", "#", :id => "fake_upload_image_button"
-            = hidden_field_tag("user[avatar_kind]", "", :id => "user_avatar_kind")
-  .clear-both
+            .medium-user-image.image-canvas#upload-image
+            = link_to "Upload a new image", "#", :id => "upload_image"
+  = hidden_field_tag("user[avatar_kind]", "", :id => "user_avatar_kind")
   = f.submit "Update Settings", class: "btn btn-info"

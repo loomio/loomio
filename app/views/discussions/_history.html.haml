@@ -26,9 +26,9 @@
           - classes += " current" if (message == discussion.current_motion)
           %div{class: classes}
             .comment-avatar
-              .medium-image-size.image-wrapper
+              .medium-user-image.image-canvas
                 - if message.author.avatar_url.nil?
-                  %span.medium-initial-size.initials= message.author.initials
+                  %span.medium-user-initials.initials-decoration= message.author.initials
                 - else
                   = image_tag message.author.avatar_url("medium")
             .comment-right

@@ -1,9 +1,9 @@
 - likes = comment.likes
 %div.comment{id: "comment-#{comment.id}"}
   .comment-avatar
-    .medium-image-size.image-wrapper
+    .medium-user-image.image-canvas
       - if comment.user.avatar_url.nil?
-        %span.medium-initial-size.initials= comment.user.initials
+        %span.medium-user-initials.initials-decoration= comment.user.initials
       - else
         = image_tag comment.user.avatar_url("medium")
   .comment-username= link_to(comment.user_name, "#")
