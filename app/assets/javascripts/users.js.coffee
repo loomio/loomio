@@ -5,22 +5,22 @@
 $ ->
   $("#use_uploaded").click((event, ui) ->
     $("#user_avatar_kind").val("uploaded")
-    $(".edit_user").submit()
+    e.preventDefault()
   )
 
   $("#use_gravatar").click((event, ui) ->
     $("#user_avatar_kind").val("gravatar")
-    $(".edit_user").submit()
+    e.preventDefault()
   )
 
   $("#use_initials").click((event, ui) ->
     $("#user_avatar_kind").val("")
-    $(".edit_user").submit()
+    e.preventDefault()
   )
 
   $("#user_uploaded_avatar").change((event, ui) ->
     $("#user_avatar_kind").val("uploaded")
-    $(".edit_user").submit()
+    e.preventDefault()
   )
 
   $("#upload_image").click((event, ui) ->

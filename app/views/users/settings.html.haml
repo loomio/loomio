@@ -4,11 +4,10 @@
   -#%h3 User picture
   .row#user-image-area
     .span2
-      - if @user.avatar_url.nil?
-        .large-user-image.image-canvas
+      .large-user-image.image-canvas#user-image-preview
+        - if @user.avatar_url.nil?
           %span.large-user-initials.initials-decoration= @user.initials
-      - else
-        #user-image-preview
+        - else
           = image_tag @user.avatar_url("large")
     .span3
       #user-image-options
@@ -21,13 +20,13 @@
               %a{ id: 'use_uploaded' } Use Uploaded Image
           - if image_alt(@user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)) != '810bec5b37cf73fa053a2b5ef11605b7'
             %li.user-image-option.option-gravatar
-              .medium-user-image.image-canvas
+              .medium-user-image.image-canvas#user-gravatar
                 = image_tag @user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)
-              %a{ id: 'use_gravatar' } Use Gravatar
+              =link_to('Use Gravatar', '#', id: 'use_gravatar')
           %li.user-image-option.option-initials
             .medium-user-image.image-canvas
               %span.medium-user-initials.initials-decoration= @user.initials
-            %a{ id: 'use_initials' } Use Initials
+            =link_to('Use Initials', "#", id: 'use_initials')
           %li.user-image-option.option-upload
             = f.file_field :uploaded_avatar
             .medium-user-image.image-canvas#upload-image
