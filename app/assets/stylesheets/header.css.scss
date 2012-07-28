@@ -75,12 +75,10 @@ header{
 /* user dropdown */
 .dropdown#user {
   float: right;
-  .user-image {
-    height: 28px;
-    width: 28px;
+  #header-user-image {
     position: relative;
-    bottom: 7px;
-    right: 8px;
+    bottom: 6px;
+    margin-right: 5px;
   }
 }
 

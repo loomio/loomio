@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  
+
   LARGE_PIXEL_CONST = 170
   MEDIUM_PIXEL_CONST = 35
   SMALL_PIXEL_CONST = 25
@@ -10,11 +10,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, :presence => true
-  
+
   include Gravtastic
   gravtastic :rating => 'pg',
                 :default => "monsterid"
-  
+
   has_many :membership_requests,
            :conditions => { :access_level => 'request' },
            :class_name => 'Membership',
@@ -65,10 +65,10 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me
-  
+
   # Settings for paperclip
   attr_accessible :uploaded_avatar
-  has_attached_file :uploaded_avatar, 
+  has_attached_file :uploaded_avatar,
     :styles => {
       :large => "#{User::LARGE_PIXEL_CONST}x#{User::LARGE_PIXEL_CONST}#",
       :medium => "#{User::MEDIUM_PIXEL_CONST}x#{User::MEDIUM_PIXEL_CONST}#",
@@ -77,11 +77,11 @@ class User < ActiveRecord::Base
     # Use these to change image storage location
     #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
     #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
-    
-  validates_attachment :uploaded_avatar, 
+
+  validates_attachment :uploaded_avatar,
     :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
     :content_type => { :content_type => ['image/jpeg', 'image/png', 'image/gif'] }
-    
+
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
 
@@ -184,12 +184,12 @@ class User < ActiveRecord::Base
   def name
     deleted_at ? "Deleted user" : read_attribute(:name)
   end
-  
+
   def initials
     initials = ""
-    read_attribute(:name) == read_attribute(:email) ? initials = read_attribute(:email)[0..1] : 
+    read_attribute(:name) == read_attribute(:email) ? initials = read_attribute(:email)[0..1] :
         read_attribute(:name).gsub(/(?:^|\s|-|')[A-Z,a-z]/) { |first_character| initials += first_character }
-    
+
     deleted_at ? "DU" : initials.upcase.gsub(/ /, '')
   end
 
@@ -221,7 +221,7 @@ class User < ActiveRecord::Base
     end
     total
   end
-  
+
   def avatar_url(size = "medium")
     case size
     when "small"
@@ -230,10 +230,10 @@ class User < ActiveRecord::Base
       pixels = User::MEDIUM_PIXEL_CONST
     when "large"
       pixels = User::LARGE_PIXEL_CONST
-    else 
+    else
       pixels = User::SMALL_PIXEL_CONST
     end
-    
+
     if avatar_kind == "gravatar"
       self.gravatar_url(:size => pixels)
     elsif avatar_kind == "uploaded"

@@ -4,20 +4,20 @@ class UsersController < BaseController
     current_user.name = params[:user][:name]
     current_user.avatar_kind = params[:user][:avatar_kind]
     new_uploaded_avatar = params[:user][:uploaded_avatar]
-    
+
     if new_uploaded_avatar
       current_user.uploaded_avatar = new_uploaded_avatar
     end
-    
+
     if current_user.save
       flash[:notice] = "Your settings have been updated."
     else
       flash[:error] = "Unable to update user. Supported file types are jpeg, png, and gif."
     end
-    
+
     redirect_to user_settings_url
   end
-  
+
   def settings
     @user = current_user
   end

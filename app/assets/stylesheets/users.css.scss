@@ -5,7 +5,12 @@
 @import "settings";
 @import "mixins";
 
-.user-image {
+
+#user-image-area {
+  margin: 30px 0 20px -20px;
+}
+
+#user-image-preview {
   float: left;
   display: block;
   width: 170px;
@@ -14,7 +19,13 @@
   border: 1px solid $mid-grey;
 }
 
-.image-wrapper {
+#user-image-options {
+  margin-left: 20px;
+  h3 { margin: 0 0 10px 20px; }
+  ul { list-style: none }
+}
+
+.image-canvas {
   background: $selector;
   border: 1px solid #B9B9B9;
   text-decoration: none;
@@ -26,37 +37,37 @@
   margin-right: 3px;
 }
 
-.large-image-size {
+.large-user-image {
   width: 170px;
   height: 170px;
 }
 
-.medium-image-size {
+.medium-user-image {
   width: 28px;
   height: 28px;
 }
 
-.small-image-size {
+.small-user-image {
   width: 23px;
   height: 23px;
 }
 
-.initials {
+.initials-decoration {
   font-weight: bold;
   text-align: center;
 }
 
-.large-initial-size {
+.large-user-initials {
   font-size: 80px;
   line-height: 160px;
 }
 
-.medium-initial-size {
+.medium-user-initials {
   font-size: 14px;
-  line-height: 30px;
+  line-height: 28px;
 }
 
-.small-initial-size {
+.small-user-initials {
   font-size: 10px;
   line-height: 20px;
 }
@@ -70,32 +81,15 @@
   border-bottom: 1px solid $light-grey;
 }
 
-.clear-both {
-  clear: both;
-  display: block;
-  height: 10px;
-}
-
-#preview-user-image {
-  margin: 30px 0 20px -20px;
-}
-
-.user-image-options {
-  margin-left: 20px;
-  h3 { margin: 0 0 10px 20px; }
-  ul { list-style: none }
-}
 li.user-image-option {
   height: 45px;
   float: left;
-  a {line-height: 28px; }
+  a {
+    line-height: 28px;
+    color: $mid-grey
+  }
 }
-
-li.user-image-option .image-wrapper { margin-right: 10px; }
-
-.change-user-image-initials {
-  line-height: 26px;
-}
+li.user-image-option .image-canvas { margin-right: 10px; }
 
 #upload-image {
   background-repeat: no-repeat;
