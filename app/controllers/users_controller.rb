@@ -11,11 +11,11 @@ class UsersController < BaseController
 
     if current_user.save
       flash[:notice] = "Your settings have been updated."
+      redirect_to :root
     else
       flash[:error] = "Unable to update user. Supported file types are jpeg, png, and gif."
+      redirect_to :back
     end
-
-    redirect_to user_settings_url
   end
 
   def settings
