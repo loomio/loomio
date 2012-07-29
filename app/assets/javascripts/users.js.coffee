@@ -28,8 +28,8 @@ $ ->
   )
 
   $("#user_uploaded_avatar").change((event, ui) ->
-    window.location.reload()
-    event.preventDefault()
+    $("#user_avatar_kind").val("gravatar")
+    $(".edit_user").submit()
   )
 
   $("#upload_image").click((event, ui) ->
