@@ -48,6 +48,55 @@ describe "Discussion" do
         should have_content("Here's a little comment")
       end
 
+      context "has markdown support md" do
+        before :each do
+          visit discussion_path(@discussion)
+        end
+        it "will autolink a link" do
+          fill_in 'new-comment', with: "http://loom.io"
+          click_on 'post-new-comment'
+
+          should have_link('http://loom.io', {:href => 'http://loom.io', :target => '_blank'})
+        end
+        it "will correctly format a complex link" do
+          fill_in 'new-comment', with: "[stuff] (http://loom.io/someone's gross url \"Someone's Gross Url\")"
+          click_on 'post-new-comment'
+
+          should have_link('stuff', {:href => 'http://loom.io/someone\'s%20gross%20url', :target => '_blank'})
+        end
+        it "will not allow user inputted html" do
+          fill_in 'new-comment', with: "<p id='should_not_be_here'>should_be_here</p>"
+          click_on 'post-new-comment'
+
+          should_not have_selector('p#should_not_be_here')
+          should have_content('should_be_here')
+        end
+        it "will underscore with _underscore_italic_ and *bold_italic*" do
+          fill_in 'new-comment', with: "_underscore_italic_ and *star_italic*"
+          click_on 'post-new-comment'
+
+          should have_selector('em', :text => 'underscore_italic')
+          should have_selector('em', :text => 'star_italic')
+        end
+        it "will bold with __underscore_bold__ and **star_bold**" do
+          fill_in 'new-comment', with: "__underscore_bold__ and **star_bold**"
+          click_on 'post-new-comment'
+
+          should have_selector('strong', :text => 'underscore_bold')
+          should have_selector('strong', :text => 'star_bold')
+        end
+        it "will ruby code block with ```ruby code_block ```" do
+          fill_in 'new-comment', with: "```ruby 
+          code_block 
+          ```
+          "
+          click_on 'post-new-comment'
+
+          should have_selector('pre > code.ruby', :text => 'code_block')
+        end
+      end
+
+
       it "can close a proposal (if they have permission)" do
         motion = Motion.new
         motion.name = "A new proposal"
