@@ -9,11 +9,12 @@ class UsersController < BaseController
       current_user.uploaded_avatar = new_uploaded_avatar
     end
 
-    if current_user.save
+    success = current_user.save
+    if success && new_uploaded_avatar.nil?
       flash[:notice] = "Your settings have been updated."
       redirect_to :root
     else
-      flash[:error] = "Unable to update user. Supported file types are jpeg, png, and gif."
+      flash[:error] = "Unable to update user. Supported file types are jpeg, png, and gif." unless success
       redirect_to :back
     end
   end
