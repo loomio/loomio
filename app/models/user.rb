@@ -78,9 +78,9 @@ class User < ActiveRecord::Base
     #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
     #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
 
-  validates_attachment :uploaded_avatar,
-    :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
-    :content_type => { :content_type => ['image/jpeg', 'image/png', 'image/gif'] }
+  #validates_attachment :uploaded_avatar,
+    #:size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
+    #:content_type => { :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
@@ -233,7 +233,6 @@ class User < ActiveRecord::Base
     else
       pixels = User::SMALL_PIXEL_CONST
     end
-
     if avatar_kind == "gravatar"
       self.gravatar_url(:size => pixels)
     elsif avatar_kind == "uploaded"

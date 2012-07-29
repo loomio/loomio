@@ -2,34 +2,49 @@
   = f.label :name
   = f.text_field :name
   -#%h3 User picture
-  .row#user-image-area
-    .span2
-      .large-user-image.image-canvas#user-image-preview
-        - if @user.avatar_url.nil?
-          %span.large-user-initials.initials-decoration= @user.initials
-        - else
-          = image_tag @user.avatar_url("large")
+  .row
+    .span2#user-image-area
+      .large-user-image.image-canvas
+        - initials_visible_class = ""
+        - initials_visible_class = ' hidden' unless @user.avatar_url.nil?
+        %span{class: 'large-user-initials initials-decoration' + initials_visible_class, id: 'user-initials-preview'}
+          = @user.initials
+        - image_visible_class = ""
+        - image_visible_class = 'hidden' unless @user.avatar_kind == 'gravatar'
+        %span{class: image_visible_class, id: 'user-gravatar-preview'}
+          = image_tag @user.gravatar_url(:size => User::LARGE_PIXEL_CONST)
+        - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
+          - image_visible_class = ""
+          - image_visible_class = 'hidden' unless @user.avatar_kind == 'uploaded'
+          %span{class: image_visible_class, id: 'user-uploaded-preview'}
+            = image_tag @user.uploaded_avatar.url(:large)
+
     .span3
       #user-image-options
         %h3 Change user picture
         %ul
           - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
-            %li.user-image-option.option-uploaded
-              .medium-user-image.image-canvas
-                = image_tag @user.uploaded_avatar.url(:medium)
-              %a{ id: 'use_uploaded' } Use Uploaded Image
+            %li.user-image-option.option-uploaded.clearfix
+              %a{ id: 'use_uploaded'}
+                %span
+                  .medium-user-image.image-canvas#user-uploaded-image
+                    = image_tag @user.uploaded_avatar.url(:medium)
+                  .image-option-label= "Use uploaded image"
           - if image_alt(@user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)) != '810bec5b37cf73fa053a2b5ef11605b7'
-            %li.user-image-option.option-gravatar
-              .medium-user-image.image-canvas#user-gravatar
-                = image_tag @user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)
-              =link_to('Use Gravatar', '#', id: 'use_gravatar')
+            %li.user-image-option.option-gravatar.clearfix
+              %a{ id: 'use_gravatar'}
+                %span
+                  .medium-user-image.image-canvas
+                    = image_tag @user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)
+                  .image-option-label= "Use gravatar"
           %li.user-image-option.option-initials
-            .medium-user-image.image-canvas
-              %span.medium-user-initials.initials-decoration= @user.initials
-            =link_to('Use Initials', "#", id: 'use_initials')
+            %a{ id: 'use_initials'}
+              %span
+                .medium-user-image.image-canvas
+                  .medium-user-initials.initials-decoration= @user.initials
+                .image-option-label= "Use initials"
           %li.user-image-option.option-upload
+            = link_to "Upload a new image", '#', :class => 'btn', :id => "upload_image"
             = f.file_field :uploaded_avatar
-            .medium-user-image.image-canvas#upload-image
-            = link_to "Upload a new image", "#", :id => "upload_image"
   = hidden_field_tag("user[avatar_kind]", "", :id => "user_avatar_kind")
   = f.submit "Update Settings", class: "btn btn-info"

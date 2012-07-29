@@ -7,7 +7,7 @@
 
 
 #user-image-area {
-  margin: 30px 0 20px -20px;
+  margin: 10px 0 20px 20px;
 }
 
 #user-image-options {
@@ -73,19 +73,25 @@
 }
 
 li.user-image-option {
-  height: 45px;
-  float: left;
+  width: 300px;
+  height: 40px;
+  /*float: left;*/
   a {
+    /*color: $mid-grey*/
+  }
+  .medium-user-image.image-canvas {
+    float: left;
+    width: 28px;
+  }
+  .image-option-label {
+    padding-left: 10px;
     line-height: 28px;
-    color: $mid-grey
+    float: left;
+    width: 200px;
   }
 }
-li.user-image-option .image-canvas { margin-right: 10px; }
+/*li.user-image-option .image-canvas { margin-right: 10px; }*/
 
-#upload-image {
-  background-repeat: no-repeat;
-  background-image:url("/assets/upload.png");
-}
 #user_uploaded_avatar {
   display: none;
 }
