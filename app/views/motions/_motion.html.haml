@@ -18,10 +18,10 @@
   .description
     - too_long = true if motion.description && motion.description.length > 200
     .short-description
-      = simple_format h(truncate(motion.description, length: 200, omission: '...', separator: ' '))
+      .word-break= simple_format h(truncate(motion.description, length: 200, omission: '...', separator: ' '))
       = link_to "Show More >>", "#", title: "see the full description", class: 'see-more' if too_long
     .long-description{style: "display: none"}
-      = simple_format h(motion.description)
+      .word-break= simple_format h(motion.description)
       = link_to "Show Less", "#", title: "see the full description", class: 'see-more' if too_long
   #graph.pie
   .percentage-to-vote
