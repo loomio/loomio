@@ -5,18 +5,12 @@
   .row
     .span2#user-image-area
       .large-user-image.image-canvas
-        - initials_visible_class = ""
-        - initials_visible_class = ' hidden' unless @user.avatar_url.nil?
-        %span{class: 'large-user-initials initials-decoration' + initials_visible_class, id: 'user-initials-preview'}
+        %span{class: 'large-user-initials initials-decoration ' + get_hidden_class_for("", @user.avatar_kind), id: 'user-initials-preview'}
           = @user.initials
-        - image_visible_class = ""
-        - image_visible_class = 'hidden' unless @user.avatar_kind == 'gravatar'
-        %span{class: image_visible_class, id: 'user-gravatar-preview'}
+        %span{class: get_hidden_class_for('gravatar', @user.avatar_kind), id: 'user-gravatar-preview'}
           = image_tag @user.gravatar_url(:size => User::LARGE_PIXEL_CONST)
         - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
-          - image_visible_class = ""
-          - image_visible_class = 'hidden' unless @user.avatar_kind == 'uploaded'
-          %span{class: image_visible_class, id: 'user-uploaded-preview'}
+          %span{class: get_hidden_class_for('uploaded', @user.avatar_kind), id: 'user-uploaded-preview'}
             = image_tag @user.uploaded_avatar.url(:large)
 
     .span3
