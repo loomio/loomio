@@ -218,6 +218,10 @@ describe Group do
       @group.add_request!(@user)
       @group.add_admin!(@user)
     end
+    it "has an admin email" do
+      @group.add_admin!(@user)
+      @group.admin_email.should == @user.email
+    end
     it "can be administered by admin of parent" do
       @subgroup = Group.make(:parent => @group)
       @subgroup.has_admin_user?(@user)

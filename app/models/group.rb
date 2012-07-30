@@ -114,6 +114,16 @@ class Group < ActiveRecord::Base
   def users_sorted
     users.sort { |a,b| a.name.downcase <=> b.name.downcase }
   end
+  
+  def admin_email
+    if (self.admins && self.admins.first)
+      self.admins.first.email 
+    elsif (self.creator)
+      self.creator.email
+    else 
+      "noreply@loom.io"
+    end
+  end
 
   #
   # MEMBERSHIP METHODS
