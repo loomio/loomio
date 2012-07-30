@@ -116,10 +116,10 @@ class Group < ActiveRecord::Base
   end
   
   def admin_email
-    if (self.admins && self.admins.first)
-      self.admins.first.email 
-    elsif (self.creator)
-      self.creator.email
+    if (admins && admins.first)
+      admins.first.email 
+    elsif (creator)
+      creator.email
     else 
       "noreply@loom.io"
     end
