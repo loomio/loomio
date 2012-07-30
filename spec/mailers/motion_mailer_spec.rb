@@ -20,6 +20,11 @@ describe MotionMailer do
     it 'renders the sender email' do
       @email.from.should == ['noreply@loom.io']
     end
+    
+    #ensure that reply to is correct
+    it 'assigns reply to' do
+      @email.reply_to.should == [group.admin_email]
+    end
 
     it 'sends email to group members but not author' do
       @email.to.should == [user.email]
@@ -57,6 +62,11 @@ describe MotionMailer do
 
     it 'sends to the motion author' do
       @email.to.should == [motion.author.email]
+    end
+    
+    #ensure that reply to is correct
+    it 'assigns reply to' do
+      @email.reply_to.should == [group.admin_email]
     end
 
     #ensure that the group name variable appears in the email body

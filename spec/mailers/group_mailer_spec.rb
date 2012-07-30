@@ -23,6 +23,11 @@ describe GroupMailer do
     it 'renders the sender email' do
       @mail.from.should == ['noreply@loom.io']
     end
+    
+    #ensure that reply to is correct
+    it 'assigns reply to' do
+      @mail.reply_to.should == [@group.admin_email]
+    end
 
     #ensure that the confirmation_url appears in the email body
     it 'assigns url_for group' do

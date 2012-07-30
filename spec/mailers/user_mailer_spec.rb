@@ -17,6 +17,11 @@ describe UserMailer do
     it 'renders the receiver email' do
       @mail.to.should == [@user.email]
     end
+    
+    #ensure that reply to is correct
+    it 'assigns reply to' do
+      @mail.reply_to.should == [@group.admin_email]
+    end
 
     #ensure that the sender is correct
     it 'renders the sender email' do
@@ -49,6 +54,11 @@ describe UserMailer do
     #ensure that the receiver is correct
     it 'renders the receiver email' do
       @mail.to.should == [@user.email]
+    end
+    
+    #ensure that reply to is correct
+    it 'assigns reply to' do
+      @mail.reply_to.should == [@group.admin_email]
     end
 
     #ensure that the sender is correct
@@ -89,6 +99,11 @@ describe UserMailer do
     #ensure that the sender is correct
     it 'renders the sender email' do
       @mail.from.should == ['noreply@loom.io']
+    end
+    
+    #ensure that reply to is correct
+    it 'assigns reply to' do
+      @mail.reply_to.should == [@group.admin_email]
     end
 
     #ensure that the group's name appears in the email body
