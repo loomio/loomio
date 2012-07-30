@@ -24,8 +24,7 @@ describe GroupMailer do
       @mail.from.should == ['noreply@loom.io']
     end
     
-    #ensure that reply to is correct
-    it 'assigns reply to' do
+    it 'assigns correct reply_to' do
       @mail.reply_to.should == [@group.admin_email]
     end
 
