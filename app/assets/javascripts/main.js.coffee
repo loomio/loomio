@@ -54,26 +54,27 @@ $ ->
   $(".date-error-message").hide()
 
   $(".run-validations").click((event, ui) ->
-    $(".validate-presence").each((index, element) ->
+    form = $(this).parents("form")
+    form.find(".validate-presence").each((index, element) ->
       if $(element).is(":visible") && $(element).val() == ""
         parent = $(element).parent()
         parent.addClass("error")
         parent.find(".presence-error-message").show()
     )
 
-    runCustomValidations()
+    runCustomValidations(form)
 
-    $(".control-group").each((index, group) ->
+    form.find(".control-group").each((index, group) ->
       if $(group).hasClass("error")
         event.preventDefault()
     )
   )
 
-  runCustomValidations = ->
-    motionCloseDateValidation()
+  runCustomValidations = (form)->
+    motionCloseDateValidation(form)
 
-  motionCloseDateValidation = ->
-    if $("#motion-form").length > 0
+  motionCloseDateValidation = (form)->
+    if form.parents("#motion-form").length > 0
       time_now = new Date()
       selected_date = new Date($("#motion_close_date").val())
       if selected_date <= time_now
