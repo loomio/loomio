@@ -24,6 +24,10 @@ describe DiscussionMailer do
     it 'assigns url_for discussion' do
       @email.body.encoded.should match(discussion_url(discussion))
     end
+    
+    it 'assigns reply to' do
+      @email.reply_to.should == [group.admin_email]
+    end
   end
 
   context "sending all emails upon new discussion creation" do

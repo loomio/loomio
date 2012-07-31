@@ -8,8 +8,7 @@ describe GroupMailer do
       @membership = @group.add_request!(User.make!)
       @mail = GroupMailer.new_membership_request(@membership)
     end
-
-    #ensure that the subject is correct
+    
     it 'renders the subject' do
       @mail.subject.should ==
         "[Loomio: #{@group.full_name}] New membership request from #{@membership.user.name}"
@@ -19,13 +18,15 @@ describe GroupMailer do
       @mail.to.should == @group.admins.map(&:email)
     end
 
-    #ensure that the sender is correct
     it 'renders the sender email' do
       @mail.from.should == ['noreply@loom.io']
     end
-
-    #ensure that the confirmation_url appears in the email body
-    it 'assigns url_for group' do
+    
+    it 'assigns correct reply_to' do
+      @mail.reply_to.should == [@group.admin_email]
+    end
+    
+    it 'assigns confirmation_url for email body' do
       @mail.body.encoded.should match(/\/groups\/#{@group.id}/)
     end
   end

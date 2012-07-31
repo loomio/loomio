@@ -13,4 +13,8 @@ module ApplicationHelper
         type.to_s
     end
   end
+  
+  def email_subject_prefix(group_name)
+    "[Loomio: #{group_name}]"
+  end
 end
