@@ -1,4 +1,5 @@
 class UserMailer < ActionMailer::Base
+  include ApplicationHelper
   default :from => "\"Loomio\" <noreply@loom.io>"
 
   def group_membership_approved(user, group)
@@ -6,7 +7,7 @@ class UserMailer < ActionMailer::Base
     @group = group
     mail( :to => user.email, 
           :reply_to => @group.admin_email,
-          :subject => "[Loomio: #{group.full_name}] Membership approved")
+          :subject => "#{email_subject_prefix(@group.full_name)} Membership approved")
   end
 
   def added_to_group(user, group)
@@ -26,4 +27,5 @@ class UserMailer < ActionMailer::Base
           :reply_to => @group.admin_email,
           :subject => "#{inviter.name} has invited you to #{group.full_name} on Loomio")
   end
+  
 end
