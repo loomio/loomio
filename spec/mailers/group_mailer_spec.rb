@@ -34,9 +34,9 @@ describe GroupMailer do
     let(:group) { stub_model Group }
 
     it "sends email to every group member except the sender" do
-      sender = stub_model User, :accepting_or_not_invited? => true
-      member = stub_model User, :accepting_or_not_invited? => true
-      invitee = stub_model User, :accepting_or_not_invited? => false
+      sender = stub_model User, :accepted_or_not_invited? => true
+      member = stub_model User, :accepted_or_not_invited? => true
+      invitee = stub_model User, :accepted_or_not_invited? => false
       group.stub(:users).and_return([sender, member, invitee])
       email_subject = "i have something really important to say!"
       email_body = "goobly"
