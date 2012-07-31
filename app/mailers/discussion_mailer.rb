@@ -11,10 +11,10 @@ class DiscussionMailer < ActionMailer::Base
       subject: "#{email_subject_prefix(@group.full_name)} New discussion - #{@discussion.title}")
   end
 
-  def spam_new_discussion_created(discussion)
+  def spam_new_discussion_created(discussion, user)
     group = discussion.group
-    group.users.each do |user|
-      DiscussionMailer.new_discussion_created(discussion, user).deliver
+    group.users.each do |group_user|
+      DiscussionMailer.new_discussion_created(discussion, group_user).deliver if user != group_user
     end
   end
 
