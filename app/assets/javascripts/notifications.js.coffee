@@ -5,7 +5,7 @@ $ ->
         $(this).attr("href")
         dataType: "script"
         success: ->
-          $("#notifications-count").html("0 Notifications")
+          $("#notifications-count").hide()
           document.title = "Loomio"
       )
   )

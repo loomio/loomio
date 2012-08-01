@@ -48,6 +48,13 @@
     padding-left: 15px;
     color: #333;
   }
+  #notifications-count {
+    position: absolute;
+    left: 22px;
+    bottom: 19px;
+    padding: 0px 3px;
+    font-size: $font-tinywiny;
+  }
   #notification-items {
     overflow-y: auto;
     height: 390px;
