@@ -127,9 +127,29 @@ describe "Discussion" do
       end
       
       it "can view the newer unread discussion"
-      it "can view the older unread discussion"
-      it "can view the newer discussion"
-      it "can view the older discussion"
+      
+      it "can view the older unread discussion" 
+      
+      it "can view the newer discussion" do 
+        @new_discussion = Discussion.new
+        @new_discussion.group = @group
+        @new_discussion.title = "New discussion!"
+        @new_discussion.author = @user
+        @new_discussion.save
+        
+        @discussion.newer_discussion(@discussion, @user).should == @new_discussion
+      end
+      
+      it "can view the older discussion" do
+        @old_discussion = Discussion.new
+        @old_discussion.group = @group
+        @old_discussion.title = "Old discussion!"
+        @old_discussion.author = @user
+        @old_discussion.save
+        
+        @discussion.older_discussion(@old_discussion, @user).should == @discussion
+      end
+      
       it "can get latest history time"
     end
   end
