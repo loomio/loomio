@@ -24,13 +24,18 @@ describe DiscussionMailer do
     it 'assigns url_for discussion' do
       @email.body.encoded.should match(discussion_url(discussion))
     end
+    
+    it 'assigns reply to' do
+      @email.reply_to.should == [group.admin_email]
+    end
   end
 
   context "sending all emails upon new discussion creation" do
     it "sends message to each group user" do
+      # minus one for count as we don't want to send an email to the author
       DiscussionMailer.should_receive(:new_discussion_created).
-        exactly(group.users.count).times.and_return(stub(deliver: true))
-      DiscussionMailer.spam_new_discussion_created(discussion)
+        exactly(group.users.count - 1).times.and_return(stub(deliver: true))
+      DiscussionMailer.spam_new_discussion_created(discussion, discussion.author)
     end
   end
 
