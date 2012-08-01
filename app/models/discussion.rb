@@ -82,58 +82,59 @@ class Discussion < ActiveRecord::Base
     save
   end
   
-  def newer_discussion(starting_discussion, user)
+  def newer_discussions(starting_discussion, user)
     # greater than finds newer
-    newer_discussion = Discussion.where("id IN (?) AND last_comment_at > ?", 
+    Discussion.where("id IN (?) AND last_comment_at > ?", 
       starting_discussion.group.discussions_sorted(user).map(&:id).uniq,  
-      starting_discussion.last_comment_at).order("last_comment_at ASC").first
-    newer_discussion.nil? ? starting_discussion : newer_discussion
+      starting_discussion.last_comment_at).order("last_comment_at ASC")
   end
   
-  def older_discussion(starting_discussion, user)
+  def older_discussions(starting_discussion, user)
     # less than finds older
-    older_discussion = Discussion.where("id IN (?) AND last_comment_at < ?", 
+    Discussion.where("id IN (?) AND last_comment_at < ?", 
       starting_discussion.group.discussions_sorted(user).map(&:id).uniq,  
-      starting_discussion.last_comment_at).order("last_comment_at ASC").last
-    older_discussion.nil? ? starting_discussion : older_discussion
+      starting_discussion.last_comment_at).order("last_comment_at DESC")
+      #last ASC
   end
   
   def newer_unread_discussion(user)
-    unread_discussion_found = false
-    newer_discussion = newer_discussion(self, user)
-    newer_unread_discussion = newer_discussion
-    first_discussion = self.group.discussions_sorted(user).first
+    newer_discussions = newer_discussions(self, user)
+    newer_unread_discussion = nil
     
-    until (unread_discussion_found)
-      if (newer_unread_discussion.has_activity_unread_by?(user))
-        unread_discussion_found = true
-      elsif (newer_unread_discussion.id == first_discussion.id)
+    newer_discussions.each do |new_discussion|
+      if (new_discussion.has_activity_unread_by?(user))
+        newer_unread_discussion = new_discussion
         break
-      else 
-        newer_unread_discussion = newer_discussion(newer_unread_discussion, user)
       end
     end
     
-    unread_discussion_found ? newer_unread_discussion : newer_discussion
+    if ( newer_discussions.empty?) 
+      return self
+    elsif ( newer_unread_discussion )
+      return newer_unread_discussion
+    else 
+      return newer_discussions[0]
+    end
   end
 
   def older_unread_discussion(user)
-    unread_discussion_found = false
-    older_discussion = older_discussion(self, user) 
-    older_unread_discussion = older_discussion
-    last_discussion = self.group.discussions_sorted(user).last 
+    older_discussions = older_discussions(self, user)
+    older_unread_discussion = nil
     
-    until (unread_discussion_found)
-      if (older_unread_discussion.has_activity_unread_by?(user))
-        unread_discussion_found = true
-      elsif (older_unread_discussion.id == last_discussion.id)
+    older_discussions.each do |old_discussion|
+      if (old_discussion.has_activity_unread_by?(user))
+        older_unread_discussion = old_discussion
         break
-      else 
-        older_unread_discussion = older_discussion(older_unread_discussion, user)
       end
     end
     
-    unread_discussion_found ? older_unread_discussion : older_discussion
+    if ( older_discussions.empty?) 
+      return self
+    elsif ( older_unread_discussion )
+      return older_unread_discussion
+    else 
+      return older_discussions[0]
+    end
   end
 
   def latest_history_time

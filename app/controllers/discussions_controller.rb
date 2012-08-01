@@ -76,13 +76,11 @@ class DiscussionsController < GroupBaseController
   end
   
   def newer_unread_discussion
-    @newer_discussion = Discussion.find(params[:id])
-    redirect_to @newer_discussion
+    redirect_to Discussion.find(params[:id])
   end
   
   def older_unread_discussion
-    @older_discussion = Discussion.find(params[:id])
-    redirect_to @older_discussion
+    redirect_to Discussion.find(params[:id])
   end
 
   private

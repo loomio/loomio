@@ -174,7 +174,7 @@ describe "Discussion" do
         @new_discussion.author = @user
         @new_discussion.save
         
-        @discussion.newer_discussion(@discussion, @user).should == @new_discussion
+        @discussion.newer_discussions(@discussion, @user)[0].should == @new_discussion
       end
       
       it "can view the older discussion" do
@@ -184,7 +184,7 @@ describe "Discussion" do
         @old_discussion.author = @user
         @old_discussion.save
         
-        @discussion.older_discussion(@old_discussion, @user).should == @discussion
+        @discussion.older_discussions(@old_discussion, @user)[0].should == @discussion
       end
       
       it "can get latest history time"
