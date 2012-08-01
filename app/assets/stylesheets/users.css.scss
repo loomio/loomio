@@ -7,16 +7,15 @@
 
 
 #user-image-area {
-  margin: 10px 0 20px 20px;
+  margin: 0 0 20px 20px;
 }
 
 #user-image-options {
-  margin-left: 20px;
-  h3 { margin: 0 0 10px 20px; }
+  h3 { margin: 0 0 0 30px; }
   ul { list-style: none }
 }
 
-.image-canvas {
+.avatar-canvas {
   background: $selector;
   border: 1px solid #B9B9B9;
   text-decoration: none;
@@ -28,17 +27,17 @@
   margin-right: 3px;
 }
 
-.large-user-image {
+.large-user-avatar {
   width: 170px;
   height: 170px;
 }
 
-.medium-user-image {
-  width: 28px;
-  height: 28px;
+.medium-user-avatar {
+  width: 35px;
+  height: 35px;
 }
 
-.small-user-image {
+.small-user-avatar {
   width: 23px;
   height: 23px;
 }
@@ -50,17 +49,17 @@
 
 .large-user-initials {
   font-size: 80px;
-  line-height: 160px;
+  line-height: 149px;
 }
 
 .medium-user-initials {
   font-size: 14px;
-  line-height: 28px;
+  line-height: 32px;
 }
 
 .small-user-initials {
   font-size: 10px;
-  line-height: 20px;
+  line-height: 22px;
 }
 
 .change-avatar-label {
@@ -73,11 +72,11 @@
 }
 
 li.user-image-option {
-  width: 300px;
-  height: 40px;
-  /*float: left;*/
+  padding: 8px 8px;
+  width: 200px;
   a {
-    /*color: $mid-grey*/
+    cursor: pointer;
+    color: $mid-grey;
   }
   .medium-user-image.image-canvas {
     float: left;
@@ -85,12 +84,15 @@ li.user-image-option {
   }
   .image-option-label {
     padding-left: 10px;
-    line-height: 28px;
+    text-decoration: underline;
+    line-height: 32px;
     float: left;
-    width: 200px;
+    width: 140px;
   }
 }
-/*li.user-image-option .image-canvas { margin-right: 10px; }*/
+li.user-image-option.clearfix:hover {
+  background-color: $selector
+}
 
 #user_uploaded_avatar {
   display: none;

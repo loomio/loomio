@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
 
-  LARGE_PIXEL_CONST = 170
-  MEDIUM_PIXEL_CONST = 35
-  SMALL_PIXEL_CONST = 25
+  require 'net/http'
+  require 'digest/md5'
+
+  LARGE_IMAGE = 170
+  MEDIUM_IMAGE = 35
+  SMALL_IMAGE = 25
   MAX_AVATAR_IMAGE_SIZE_CONST = 1000
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -12,8 +15,8 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
 
   include Gravtastic
-  gravtastic :rating => 'pg',
-                :default => "monsterid"
+  gravtastic  :rating => 'pg',
+              :default => 'none'
 
   has_many :membership_requests,
            :conditions => { :access_level => 'request' },
@@ -70,9 +73,9 @@ class User < ActiveRecord::Base
   attr_accessible :uploaded_avatar
   has_attached_file :uploaded_avatar,
     :styles => {
-      :large => "#{User::LARGE_PIXEL_CONST}x#{User::LARGE_PIXEL_CONST}#",
-      :medium => "#{User::MEDIUM_PIXEL_CONST}x#{User::MEDIUM_PIXEL_CONST}#",
-      :small => "#{User::SMALL_PIXEL_CONST}x#{User::SMALL_PIXEL_CONST}#"
+      :large => "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
+      :medium => "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
+      :small => "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
     }
     # Use these to change image storage location
     #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
@@ -222,16 +225,27 @@ class User < ActiveRecord::Base
     total
   end
 
+  def gravatar?(email, options = {})
+    hash = Digest::MD5.hexdigest(email.to_s.downcase)
+    options = { :rating => 'x', :timeout => 2 }.merge(options)
+    http = Net::HTTP.new('www.gravatar.com', 80)
+    http.read_timeout = options[:timeout]
+    response = http.request_head("/avatar/#{hash}?rating=#{options[:rating]}&default=http://gravatar.com/avatar")
+    response.code != '302'
+  rescue StandardError, Timeout::Error
+    true  # Don't show "no gravatar" if the service is down or slow
+  end
+
   def avatar_url(size = "medium")
     case size
     when "small"
-      pixels = User::SMALL_PIXEL_CONST
+      pixels = User::SMALL_IMAGE
     when "medium"
-      pixels = User::MEDIUM_PIXEL_CONST
+      pixels = User::MEDIUM_IMAGE
     when "large"
-      pixels = User::LARGE_PIXEL_CONST
+      pixels = User::LARGE_IMAGE
     else
-      pixels = User::SMALL_PIXEL_CONST
+      pixels = User::SMALL_IMAGE
     end
     if avatar_kind == "gravatar"
       self.gravatar_url(:size => pixels)

@@ -9,24 +9,23 @@ describe UsersController do
     request.env["HTTP_REFERER"] = previous_url
   end
 
-  describe 'updating a user' do
-    context 'there is a new_uploaded_avatar' do
-      post :update, :user => {:name => 'the don', :avatar_kind => 'uploaded', :uploaded_avartar => 'www.great-picture.jpg'}
-      #context 'save fails' do
-        #it 'displays a unsupprted file type message if save is unsucessful'
-      #end
-      it 'routes back to user setting page' do
-        response.should be_redirect(:root)
-      end
-    end
-    #context 'there is not a new_uploaded_avatar' do
-      #it 'displays a success message and routes to the root if it saved sucessfully'
-        #flash[:success].should =~ /Your settings have been updated./
-        #response.should be_redirect
-      #it 'displays a failure message and routes back to user setting if save fails'
-        #flash[:error].should  =~ /Unable to update user. Supported file types are jpeg, png, and gif./
-        #response.should be_redirect
+  describe "#update"
+    #it "updates user.name" do
+      #user.should_receive(:name=).with("Peter Chilltooth")
+      #user.should_receive(:save).and_return(true)
+
+      #post :update, :id => 998, :name => "Peter Chilltooth"
     #end
+  #end
+
+  describe "#set_avatar_kind" do
+    it "updates user.avatar_kind" do
+      user.should_receive(:avatar_kind=).with("uploaded")
+      user.should_receive(:save).and_return(true)
+
+      xhr :post, :set_avatar_kind, :format => :json, :id => 999,
+        :avatar_kind => "uploaded"
+    end
   end
 
   describe "#dismiss_system_notice" do

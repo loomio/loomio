@@ -52,23 +52,23 @@ li.preview a {
 
   #new-comment-form img {
     float:left;
-    margin-right: 5px;
+    margin-right: 10px;
   }
 
   #new-comment {
     margin: 0 0 5px 0px;
-    width: 388px;
-    max-width: 388px;
+    width: 385px;
+    max-width: 385px;
     height: 80px;
     color: $dark-grey;
   }
 
   #post-new-comment {
-    margin: 5px 5px 5px 40px;
+    margin: 5px 5px 5px 45px;
   }
 
-  #new-comment-form .medium-user-image-initial-wrapper {
-    margin-right: 5px;
+  #new-comment-form .medium-user-avatar.avatar-canvas {
+    margin-right: 10px;
   }
 
   ul.history-list {
@@ -92,8 +92,8 @@ li.preview a {
   }
 
   .comment-avatar {
+    margin: 5px 10px 0 0;
     float: left;
-    margin-right: 5px;
     width: 8%;
   }
 
