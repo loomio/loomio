@@ -26,7 +26,7 @@
           - classes += " current" if (message == discussion.current_motion)
           %div{class: classes}
             .comment-avatar
-              .medium-user-image.image-canvas
+              .medium-user-avatar.avatar-canvas
                 - if message.author.avatar_url.nil?
                   %span.medium-user-initials.initials-decoration= message.author.initials
                 - else

@@ -1,6 +1,6 @@
 %li{:id => membership.user_id}
   - if can? :edit, group
-    .small-user-image.image-canvas
+    .small-user-avatar.avatar-canvas
       - if membership.user.avatar_url.nil?
         %span.small-user-initials.initials-decoration= membership.user.initials
       - else
@@ -20,7 +20,7 @@
         =link_to "×", membership, method: :delete, class: 'close',
           confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
   - else
-    .small-user-image.image-canvas
+    .small-user-avatar.avatar-canvas
       - if membership.user.avatar_url.nil?
         %span.small-user-initials.initials-decoration= membership.user.initials
       - else

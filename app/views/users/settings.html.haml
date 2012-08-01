@@ -1,40 +1,36 @@
 = form_for [@user], :html => { :multipart => true } do |f|
   = f.label :name
   = f.text_field :name
-  -#%h3 User picture
+  %h3 Picture
   .row
     .span2#user-image-area
-      .large-user-image.image-canvas
-        %span{class: 'large-user-initials initials-decoration ' + get_hidden_class_for("", @user.avatar_kind), id: 'user-initials-preview'}
+      .large-user-avatar.avatar-canvas.large-user-initials.initials-decoration#avatar-preview
+        - if @user.avatar_kind == ""
           = @user.initials
-        %span{class: get_hidden_class_for('gravatar', @user.avatar_kind), id: 'user-gravatar-preview'}
-          = image_tag @user.gravatar_url(:size => User::LARGE_PIXEL_CONST)
-        - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
-          %span{class: get_hidden_class_for('uploaded', @user.avatar_kind), id: 'user-uploaded-preview'}
-            = image_tag @user.uploaded_avatar.url(:large)
+        - else
+          = image_tag @user.avatar_url("large")
 
     .span3
       #user-image-options
-        %h3 Change user picture
         %ul
           - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
             %li.user-image-option.option-uploaded.clearfix
-              %a{ id: 'use_uploaded'}
+              = link_to set_avatar_kind_user_path(@user, :avatar_kind => 'uploaded'), :method => :post, id: 'use_uploaded', :remote => true do
                 %span
-                  .medium-user-image.image-canvas#user-uploaded-image
+                  .medium-user-avatar.avatar-canvas#user-uploaded-image
                     = image_tag @user.uploaded_avatar.url(:medium)
                   .image-option-label= "Use uploaded image"
-          - if image_alt(@user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)) != '810bec5b37cf73fa053a2b5ef11605b7'
+          - if @user.gravatar?(@user.email)
             %li.user-image-option.option-gravatar.clearfix
-              %a{ id: 'use_gravatar'}
+              = link_to set_avatar_kind_user_path(@user, :avatar_kind => 'gravatar'), :method => :post, id: 'use_gravatar', :remote => true do
                 %span
-                  .medium-user-image.image-canvas
-                    = image_tag @user.gravatar_url(:size => User::MEDIUM_PIXEL_CONST)
+                  .medium-user-avatar.avatar-canvas
+                    = image_tag @user.gravatar_url(:size => User::MEDIUM_IMAGE)
                   .image-option-label= "Use gravatar"
-          %li.user-image-option.option-initials
-            %a{ id: 'use_initials'}
+          %li.user-image-option.option-initials.clearfix
+            = link_to set_avatar_kind_user_path(@user, :avatar_kind => ''), :method => :post, id: 'use_initials', :remote => true do
               %span
-                .medium-user-image.image-canvas
+                .medium-user-avatar.avatar-canvas
                   .medium-user-initials.initials-decoration= @user.initials
                 .image-option-label= "Use initials"
           %li.user-image-option.option-upload
