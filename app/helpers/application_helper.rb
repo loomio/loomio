@@ -20,4 +20,8 @@ module ApplicationHelper
     result += "(#{notification_size}) " if notification_size > 0
     result += "Loomio"
   end
+
+  def email_subject_prefix(group_name)
+    "[Loomio: #{group_name}]"
+  end
 end

@@ -11,6 +11,8 @@ class Group < ActiveRecord::Base
 
   after_initialize :set_defaults
 
+  default_scope where(:archived_at => nil)
+
   has_many :memberships,
     :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
     :dependent => :destroy,
@@ -111,6 +113,16 @@ class Group < ActiveRecord::Base
 
   def users_sorted
     users.sort { |a,b| a.name.downcase <=> b.name.downcase }
+  end
+  
+  def admin_email
+    if (admins && admins.first)
+      admins.first.email 
+    elsif (creator)
+      creator.email
+    else 
+      "noreply@loom.io"
+    end
   end
 
   #

@@ -5,6 +5,44 @@
 @import "bootstrap/mixins";
 @import "mixins";
 
+// group title (on almost all pages)
+.group-title {
+  margin-bottom: 10px;
+  hr {
+    margin: 5px 13px;
+    border-top: 1px solid #CCC
+  }
+  .group-options {
+    display: inline;
+    position: relative;
+    bottom: 4px;
+    float: right;
+  }
+  .group-options a {
+    color: #777;
+    font-size: 0.9em;
+  }
+  .group-options .icon-cog {
+    opacity: 0.65;
+    position: relative;
+    top: 1px;
+  }
+  .group-options .options-dropdown-icon {
+    position: relative;
+    bottom: 1px;
+    padding-right: 2px;
+    padding-left: 10px;
+  }
+}
+
+#group_email_subject {
+  width: 510px;
+}
+#group_email_body {
+  width: 510px;
+}
+
+
 #group-form {
   form {
     width: 550px;
@@ -42,7 +80,7 @@
 /**** Group page ****/
 
 body.groups.show .discussion-preview a { padding: 13px 5px 14px 10px; }
-li.no-discussions, li.no-proposals {
+li.selector-item.no-discussions, li.selector-item.no-proposals {
   padding: 5px 10px;
   background-color: $highlighted
 }
@@ -51,25 +89,26 @@ li.no-discussions, li.no-proposals {
   position: relative;
   bottom: 4px;
 }
-.tool-bar-item-proposal {
+li.tool-bar-item.no-image a {
+  padding: 5px 10px 6px 10px;
+}
+li.tool-bar-item.no-image:hover  {
+  background-color: #ccc;
+}
+li.tool-bar-item#proposal {
   background-image:url('/assets/proposal.png');
-  background-repeat: no-repeat;
-  background-size: 16px;
-  background-position: 10px 5px;
+  background-position: 10px 4px;
 }
-.tool-bar-item-proposal:hover {
-  background-position: 10px -46px;
+li.tool-bar-item#proposal:hover {
+  background-position: 10px -49px;
 }
-#tool-bar-item-discussion {
-  padding-left: 30px;
+li.tool-bar-item#discussion {
   background-image:url('/assets/discussion-white.png');
-  background-repeat: no-repeat;
-  background-size: 17px;
   background-position: 10px -59px;
 }
 
-#tool-bar-item-discussion:hover {
-  background-position: 10px 5px;
+li.tool-bar-item#discussion:hover {
+  background-position: 10px 4px;
 }
 
 /*request membership panel*/

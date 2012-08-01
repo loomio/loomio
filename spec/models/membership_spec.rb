@@ -104,38 +104,35 @@ describe Membership do
 
     context do
       before do
-        @discussion = create_discussion(group: group)
-        @motion = create_motion(discussion: @discussion)
-        @vote = Vote.new
-        @vote.user = user
-        @vote.position = "yes"
-        @vote.motion = @motion
-        @vote.save!
+        @membership = group.add_member! user
+        discussion = create_discussion(group: group)
+        @motion = create_motion(discussion: discussion)
+        vote = Vote.new
+        vote.user = user
+        vote.position = "yes"
+        vote.motion = @motion
+        vote.save!
       end
 
-      it "removes the user's votes on motions that are in the group and are in the
-      'voting' phase" do
+      it "removes user's open votes for the group" do
         @membership.destroy
-
-        Vote.all.should_not include(@vote)
+        @motion.votes.count.should == 0
       end
 
-      it "does not remove user's votes from other motions" do
-        motion2 = create_motion
-        motion2.group.add_member! user
-        vote2 = user.votes.new(:position => "yes")
-        vote2.motion = motion2
-        vote2.save!
+      it "does not remove user's open votes for other groups" do
+        motion2 = create_motion(author: user)
+        vote = Vote.new
+        vote.user = user
+        vote.position = "yes"
+        vote.motion = motion2
+        vote.save!
         @membership.destroy
-
-        vote2.should_not be_destroyed
+        motion2.votes.count.should == 1
       end
 
-      it "does not fail if a motion the user voted on no longer exists" do
-        @motion.destroy
-        lambda {
-          @membership.destroy
-        }.should_not raise_error
+      it "does not fail if motion no longer exists" do
+        @motion.delete
+        lambda { @membership.destroy }.should_not raise_error
       end
     end
 
