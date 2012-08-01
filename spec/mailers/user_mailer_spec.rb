@@ -1,6 +1,23 @@
 require "spec_helper"
 
 describe UserMailer do
+  shared_examples_for 'email_meta' do
+    it 'renders the receiver email' do
+      @mail.to.should == [@user.email]
+    end
+
+    it 'assigns correct reply_to' do
+      @mail.reply_to.should == [@group.admin_email]
+    end
+
+    it 'renders the sender email' do
+      @mail.from.should == ['noreply@loom.io']
+    end
+
+    it 'assigns the @name variable which appears in the email body' do
+      @mail.body.encoded.should match(@group.full_name)
+    end
+  end
   context 'sending email on membership approval' do
     before :all do
       @user = User.make!
@@ -8,28 +25,13 @@ describe UserMailer do
       @mail = UserMailer.group_membership_approved(@user, @group)
     end
 
-    #ensure that the subject is correct
+    it_behaves_like 'email_meta'
+
     it 'renders the subject' do
       @mail.subject.should == "[Loomio: #{@group.full_name}] Membership approved"
     end
 
-    #ensure that the receiver is correct
-    it 'renders the receiver email' do
-      @mail.to.should == [@user.email]
-    end
-
-    #ensure that the sender is correct
-    it 'renders the sender email' do
-      @mail.from.should == ['noreply@loom.io']
-    end
-
-    #ensure that the @name variable appears in the email body
-    it 'assigns group.name' do
-      @mail.body.encoded.should match(@group.full_name)
-    end
-
-    #ensure that the @confirmation_url variable appears in the email body
-    it 'assigns url_for group' do
+    it 'assigns confirmation_url for email body' do
       @mail.body.encoded.should match("http://localhost:3000/groups/#{@group.id}")
     end
   end
@@ -41,28 +43,13 @@ describe UserMailer do
       @mail = UserMailer.added_to_group(@user, @group)
     end
 
-    #ensure that the subject is correct
+    it_behaves_like 'email_meta'
+
     it 'renders the subject' do
       @mail.subject.should match(/been added to a group/)
     end
 
-    #ensure that the receiver is correct
-    it 'renders the receiver email' do
-      @mail.to.should == [@user.email]
-    end
-
-    #ensure that the sender is correct
-    it 'renders the sender email' do
-      @mail.from.should == ['noreply@loom.io']
-    end
-
-    #ensure that the @name variable appears in the email body
-    it 'assigns group.name' do
-      @mail.body.encoded.should match(@group.full_name)
-    end
-
-    #ensure that the @confirmation_url variable appears in the email body
-    it 'assigns url_for group' do
+    it 'assigns confirmation_url for email body' do
       @mail.body.encoded.should match("http://localhost:3000/groups/#{@group.id}")
     end
   end
@@ -75,34 +62,18 @@ describe UserMailer do
       @mail = UserMailer.invited_to_loomio(@user, @inviter, @group)
     end
 
-    #ensure that the subject is correct
+    it_behaves_like 'email_meta'
+
     it 'renders the subject' do
       @mail.subject.should match(
         /#{@inviter.name} has invited you to #{@group.full_name} on Loomio/)
     end
 
-    #ensure that the receiver is correct
-    it 'renders the receiver email' do
-      @mail.to.should == [@user.email]
-    end
-
-    #ensure that the sender is correct
-    it 'renders the sender email' do
-      @mail.from.should == ['noreply@loom.io']
-    end
-
-    #ensure that the group's name appears in the email body
-    it 'assigns group.name' do
-      @mail.body.encoded.should match(@group.full_name)
-    end
-
-    #ensure that the inviter's name appears in the email body
-    it 'assigns group.name' do
+    it 'assigns inviters name which appears in the email body' do
       @mail.body.encoded.should match(@inviter.name)
     end
 
-    #ensure that the invite url appears in the email body
-    it 'assigns url_for group' do
+    it 'assigns invite_url for email body' do
       @mail.body.encoded.should match(@user.invitation_token)
     end
   end

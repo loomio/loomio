@@ -34,72 +34,33 @@ $ ->
       $("#input_date").datepicker("setDate", date_string)
       $("#date_hour").val(hour)
 
+
 # Reload hidden close_date field
 $ ->
   $("#input_date").change((e) ->
-    remove_date_error()
-    date = $(this).val()
-    local_datetime = new Date()
-    local_datetime.setYear(parseInt(date.substring(6,10)))
-    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1), parseInt(date.substring(0,2)))
-    local_datetime.setHours(parseInt($("#date_hour").val()))
-    $("#motion_close_date").val(local_datetime)
+    set_close_date()
   )
 
 $ ->
   $("#date_hour").change((e) ->
-    remove_date_error()
-    date = $("#input_date").val()
-    local_datetime = new Date()
-    local_datetime.setYear(parseInt(date.substring(6,10)))
-    local_datetime.setMonth((parseInt(date.substring(3,5)) - 1), parseInt(date.substring(0,2)))
-    local_datetime.setHours(parseInt($(this).val()))
-    $("#motion_close_date").val(local_datetime)
+    set_close_date()
   )
 
-# The following methods are used to provide client side validation for
-# - character count
-# - presence required
-# - date validation specific for motion-form
-remove_date_error = () ->
+set_close_date = ->
+  remove_date_error()
+  date = $("#input_date").val()
+  local_datetime = new Date()
+  local_datetime.setYear(parseInt(date.substring(6,10)))
+  month = date.substring(3,5)
+  day = date.substring(0,2)
+  local_datetime.setMonth(parseInt(month, 10) - 1, parseInt(day, 10))
+  local_datetime.setHours(parseInt($("#date_hour").val()))
+  $("#motion_close_date").val(local_datetime)
+
+remove_date_error = ->
   $(".validate-motion-close-date").parent().removeClass("error")
   $(".date-error-message").hide()
 
-$ ->
-  $(".validate-presence").keyup(() ->
-    $(".validate-presence").parent().removeClass("error")
-    $(".presence-error-message").hide()
-  )
-
-$ ->
-  $(".presence-error-message").hide()
-  $(".date-error-message").hide()
-
-  $(".run-validations").click((event, ui) ->
-    $(".validate-presence").each((index, element) ->
-      if $(element).val() == ""
-        $(element).parent().addClass("error")
-        $(".presence-error-message").show()
-    )
-
-    runCustomValidations()
-
-    $(".control-group").each((index, group) ->
-      if $(group).hasClass("error")
-        event.preventDefault()
-    )
-  )
-
-  runCustomValidations = ->
-    motionCloseDateValidation()
-
-  motionCloseDateValidation = ->
-    if $("#motion-form").length > 0
-      time_now = new Date()
-      selected_date = new Date($("#motion_close_date").val())
-      if selected_date <= time_now
-        $(".validate-motion-close-date").parent().addClass("error")
-        $(".date-error-message").show()
 
 # character count for statement on discussion:show page
 pluralize_characters = (num) ->

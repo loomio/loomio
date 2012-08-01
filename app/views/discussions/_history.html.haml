@@ -1,13 +1,13 @@
-%ul
+%ul.history-list
   - if history.count == 0
-    %li#no-messages
+    %li.history-item#no-messages
       There are no messages yet in this discussion.
   - else
     - history.each do |message|
       - if message.is_a?(Comment)
-        %li= render message
+        %li.history-item= render message
       - if message.is_a?(Vote)
-        %li
+        %li.history-item
           .comment.position.clearfix
             .position-icon
               = render partial: "motions/display_icons", locals: { position: message.position }
@@ -20,7 +20,7 @@
             .comment-time
               = time_ago_in_words(message.created_at) + " ago"
       - if message.is_a?(Motion)
-        %li
+        %li.history-item
           - classes = "comment proposal clearfix"
           - classes += " current" if (message == discussion.current_motion)
           %div{class: classes}

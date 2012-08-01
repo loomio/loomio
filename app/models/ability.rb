@@ -15,7 +15,7 @@ class Ability
     can :show, Group, :viewable_by => :parent_group_members,
                       :parent_id => user.group_ids
 
-    can :update, Group, :id => user.adminable_group_ids
+    can [:update, :email_members], Group, :id => user.adminable_group_ids
 
     can [:add_subgroup, :new_motion, :create_motion], Group, :id => user.group_ids
 
@@ -23,8 +23,10 @@ class Ability
                              :id => user.group_ids
     can :add_members, Group, :members_invitable_by => :admins,
                              :id => user.adminable_group_ids
+                             
+    can :archive, Group, :id => user.adminable_group_ids
 
-    can [:create, :index, :request_membership], Group
+    can [:create, :request_membership], Group
 
     #
     # MEMBERSHIPS
@@ -67,8 +69,6 @@ class Ability
     #
     # MOTIONS
     #
-    can :index, Motion
-
     can :create, Motion, :discussion_id => user.discussion_ids
 
     can :update, Motion, :author_id => user.id

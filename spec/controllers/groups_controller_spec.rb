@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe GroupsController do
-
   let(:group) { stub_model(Group) }
   let(:user)  { stub_model(User) }
 
@@ -10,6 +9,7 @@ describe GroupsController do
       @user = User.make!
       sign_in @user
     end
+
     context "group viewable by everyone" do
       before :each do
         @group = Group.make!(viewable_by: :everyone)
@@ -175,6 +175,71 @@ describe GroupsController do
 
         post :add_members, id: @group.id,
           "user_#{@user2.id}" => 1, "user_#{@user3.id}" => 1
+      end
+    end
+
+    describe "archiving a group" do
+      before do
+        @group = Group.make!
+        @group.add_admin! @user
+        @subgroup = Group.make!(:parent => @group)
+        @subgroup.add_member! @user
+        post :archive, :id => @group.id
+      end
+      it "sets archived_at field on the group" do
+        assigns(:group).archived_at.should_not == nil
+      end
+      it "sets archived_at on the group's subgroups" do
+        @subgroup.reload
+        @subgroup.archived_at.should_not == nil
+      end
+      it "sets flash response" do
+        flash[:success].should =~ /Group archived successfully/
+      end
+      it "redirects to the dashboard" do
+        response.should redirect_to(:dashboard)
+      end
+    end
+
+    describe "viewing an archived group" do
+      before do
+        @group = Group.make!
+        @group.archived_at = Time.now
+        @group.save
+      end
+      it "throws an error" do
+        lambda { get :show, :id => @group.id }.should raise_error
+      end
+    end
+
+    describe "#email_members" do
+      before do
+        @previous_url = group_url group
+        request.env["HTTP_REFERER"] = @previous_url
+        Group.stub(:find).with(group.id.to_s).and_return(group)
+        controller.stub(:authorize!).and_return(true)
+        controller.stub(:can?).with(:email_members, group).and_return(true)
+        @email_subject = "i have something really important to say!"
+        @email_body = "goobly"
+        GroupMailer.stub(:deliver_group_email)
+        @mailer_args = { :id => group.id, :group_email_body => @email_body,
+                         :group_email_subject => @email_subject }
+      end
+
+      it "sends email to group" do
+        GroupMailer.should_receive(:deliver_group_email).
+          with(group, @user, @email_subject, @email_body)
+        post :email_members, @mailer_args
+      end
+
+      it "populates flash notice" do
+        post :email_members, @mailer_args
+        flash[:success].should == "Email sent."
+      end
+
+      it "redirects to previous page" do
+        post :email_members, @mailer_args
+        response.should redirect_to(@previous_url)
       end
     end
   end

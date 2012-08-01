@@ -14,7 +14,7 @@ describe DiscussionsController do
     before do
       sign_in user
       app_controller.stub(:authorize!).and_return(true)
-      app_controller.stub(:can?).with(:show, group).and_return(true)
+      app_controller.stub(:cannot?).with(:show, group).and_return(false)
       Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
       Discussion.stub(:new).and_return(discussion)
       Group.stub(:find).with(group.id.to_s).and_return(group)

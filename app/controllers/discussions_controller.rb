@@ -1,5 +1,6 @@
 class DiscussionsController < GroupBaseController
-  load_and_authorize_resource :except => [:show, :create]
+  load_and_authorize_resource :except => [:show, :create, :index]
+  before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :check_group_read_permissions, :only => :show
 
   def new
@@ -27,11 +28,17 @@ class DiscussionsController < GroupBaseController
   def index
     if params[:group_id].present?
       @group = Group.find(params[:group_id])
-      @discussions= @group.discussions_sorted(current_user).page(params[:page]).per(10)
+      if cannot? :show, @group
+        head 401
+      else
+        @discussions = @group.discussions_sorted(current_user).page(params[:page]).per(10)
+        render :layout => false if request.xhr?
+      end
     else
-      @discussions= current_user.discussions_sorted.page(params[:page]).per(10)
+      authenticate_user!
+      @discussions = current_user.discussions_sorted.page(params[:page]).per(10)
+      render :layout => false if request.xhr?
     end
-    render :layout => false if request.xhr?
   end
 
   def show

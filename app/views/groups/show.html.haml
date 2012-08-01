@@ -10,7 +10,7 @@
   %section.span8
     .selector-panel
       .clearfix
-        %h1#proposal-phase Current Proposals
+        %h1.panel-header#proposal-phase Current Proposals
         .dropdown#proposals
           = link_to image_tag("dropdown.png", title:'proposal settings', alt:'proposal settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
           %ul.dropdown-menu.pull-right
@@ -22,33 +22,35 @@
               %a{ href: '#', id: 'display-closed' }
                 = "Closed proposals"
                 = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
-      %ul
-        - new_discussion = Discussion.new(group_id: @group.id)
-        - if (can? :create, new_discussion)# && (can? :create, Motion.new(discussion_id: new_discussion.id))
-          %li.tool-bar.clearfix
-            %a{ href: new_motion_group_path(@group), class: 'tool-bar-item tool-bar-item-proposal', id: 'new-proposal' }
+      - new_discussion = Discussion.new(group_id: @group.id)
+      - if (can? :create, new_discussion)# && (can? :create, Motion.new(discussion_id: new_discussion.id))
+        %ul.tool-bar-list.clearfix
+          %li.tool-bar-item#proposal
+            %a{ href: new_motion_group_path(@group) }
               Create new proposal
+      %ul.selector-list
         #open
+          - current_motions_exist = false
           - if @motions_not_voted
+            - current_motions_exist = true
             - @motions_not_voted.each do |motion|
-              %li.undecided= render '/motions/motion_preview', motion: motion, this_group: @group
-            - motions_exist = true
+              %li.selector-item.undecided= render '/motions/motion_preview', motion: motion, this_group: @group
           - if @motions_voted
+            - current_motions_exist = true
             - @motions_voted.each do |motion|
-              %li= render '/motions/motion_preview', motion: motion, this_group: @group
-            - motions_exist = true
-          - unless motions_exist
-            %li.no-proposals= "There are no current proposals for this group"
+              %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
+          - unless current_motions_exist
+            %li.selector-item.no-proposals= "There are no current proposals for this group"
         #closed.hidden
           #group-closed-motions.hidden
             %div{ class: "group_#{@group.id}" }
     .selector-panel
       .clearfix
-        %h1 Discussions
-      %ul
-        - if can? :create, Discussion.new(group_id: @group.id)
-          %li.tool-bar.clearfix
-            %a{ href: new_discussion_path(discussion: { group_id: @group }), class: 'tool-bar-item', id: 'tool-bar-item-discussion' }
+        %h1.panel-header Discussions
+      - if can? :create, Discussion.new(group_id: @group.id)
+        %ul.tool-bar-list.clearfix
+          %li.tool-bar-item#discussion
+            %a{ href: new_discussion_path(discussion: { group_id: @group }) }
               Start new discussion
-        #group-discussions.hidden
-          %div{ class: "group_#{@group.id}" }
+      #group-discussions.hidden
+        %div{ class: "group_#{@group.id}" }
