@@ -22,13 +22,15 @@ $ ->
       $("#motion_close_date").val(datetime)
     else
       #** Edit Motion **
+      # TODO: this should be using the Application.timestampToDateObject
+      #       function (main.js)
       date = $("#motion_close_date").val()
       date_offset = new Date()
       offset = date_offset.getTimezoneOffset()/-60
       day = date.substring(8,10)
       month = date.substring(5, 7)
       year = date.substring(2,4)
-      hour = (parseInt(date.substring(11,13)) + offset).toString()
+      hour = (parseInt(date.substring(11,13), 10) + offset).toString()
       date_string = "#{day}-#{month}-#{year}"
       $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
       $("#input_date").datepicker("setDate", date_string)
@@ -50,11 +52,11 @@ set_close_date = ->
   remove_date_error()
   date = $("#input_date").val()
   local_datetime = new Date()
-  local_datetime.setYear(parseInt(date.substring(6,10)))
+  local_datetime.setYear(parseInt(date.substring(6,10), 10))
   month = date.substring(3,5)
   day = date.substring(0,2)
   local_datetime.setMonth(parseInt(month, 10) - 1, parseInt(day, 10))
-  local_datetime.setHours(parseInt($("#date_hour").val()))
+  local_datetime.setHours(parseInt($("#date_hour").val(), 10))
   $("#motion_close_date").val(local_datetime)
 
 remove_date_error = ->
