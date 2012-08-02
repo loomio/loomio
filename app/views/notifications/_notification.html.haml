@@ -77,8 +77,10 @@
   %li.divider
 
 - rescue => exception
-  - puts "ERROR: it looks like something got deleted without it's corresponding events/notifications being deleted as well"
+  - logger.error("NOTIFICATION ERROR: It looks like something got deleted without it's corresponding events/notifications being deleted as well. notification_id: #{notification.id}")
+  -# TODO: Once we sort out a better deleting system for groups (https://trello.com/c/ll1na7KL) we should change this to a proper exception notification
+  -#       so we know if there are any lingering notifications hanging around that shouldn't exist
   -#- ExceptionNotifier::Notifier.exception_notification(request.env, exception,
-    -#:data => {:notification_id => notification.id, :message => "This error most likely means that something got deleted without it's corresponding events/notifications being deleted as well"}).deliver
+    -#:data => {:notification_id => notification.id, :message => "This error most likely means that something got deleted without it's corresponding events/notifications being deleted as well notification_id: #{notification.id}").deliver
 
 
