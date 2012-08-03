@@ -233,7 +233,7 @@ class User < ActiveRecord::Base
     response = http.request_head("/avatar/#{hash}?rating=#{options[:rating]}&default=http://gravatar.com/avatar")
     response.code != '302'
   rescue StandardError, Timeout::Error
-    true  # Don't show "no gravatar" if the service is down or slow
+    false  # Don't show "gravatar" if the service is down or slow
   end
 
   def avatar_url(size = "medium")

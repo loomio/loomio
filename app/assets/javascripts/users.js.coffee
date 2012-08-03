@@ -3,12 +3,12 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $("#user_uploaded_avatar").change((event, ui) ->
-    $("#user_avatar_kind").val("uploaded")
+  $("#uploaded-avatar").change((event, ui) ->
+    $("#user-avatar-kind").val("uploaded")
     $(".edit_user").submit()
   )
 
-  $("#upload_image").click((event, ui) ->
-    $("#user_uploaded_avatar").click()
+  $("#fake-upload").click((event, ui) ->
+    $("#uploaded-avatar").click()
     event.preventDefault()
   )
