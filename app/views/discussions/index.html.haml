@@ -1,6 +1,6 @@
 %ul.selector-list
   #discussion-list
-    - if @discussions
+    - if @discussions.exists?
       - @discussions.each do |discussion|
         %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
     - else
