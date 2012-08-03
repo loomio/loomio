@@ -9,15 +9,11 @@ Application.convertUtcToRelativeTime = ->
     offset = date_offset.getTimezoneOffset()/-60
     $(".utc-time").each((index, element)->
       date = $(element).html()
-      local_datetime = new Date()
-      local_datetime.setYear(date.substring(0,4))
-      local_datetime.setMonth((parseInt(date.substring(5,7)) - 1).toString(), date.substring(8,10))
-      local_datetime.setHours((parseInt(date.substring(11,13)) + offset).toString())
-      local_datetime.setMinutes(date.substring(14,16))
-      hours = local_datetime.getHours()
-      mins = local_datetime.getMinutes()
+      localDatetime = Application.timestampToDateObject(date)
+      hours = localDatetime.getHours()
+      mins = localDatetime.getMinutes()
       mins = "0#{mins}" if mins.toString().length == 1
-      if local_datetime.getDate() == today.getDate()
+      if localDatetime.getDate() == today.getDate()
         if hours < 12
           hours = 12 if hours == 0
           date_string = "#{hours}:#{mins} AM"
@@ -25,11 +21,21 @@ Application.convertUtcToRelativeTime = ->
           hours = 24 if hours == 12
           date_string = "#{hours-12}:#{mins} PM"
       else
-        date_string = "#{local_datetime.getDate()} #{month[local_datetime.getMonth()]}"
+        date_string = "#{localDatetime.getDate()} #{month[localDatetime.getMonth()]}"
       $(element).html(String(date_string))
       $(element).removeClass('utc-time')
       $(element).addClass('relative-time')
     )
+
+Application.timestampToDateObject = (timestamp)->
+  date = new Date()
+  offset = date.getTimezoneOffset()/-60
+  date.setYear(timestamp.substring(0,4))
+  date.setMonth((parseInt(timestamp.substring(5,7), 10) - 1).toString(), timestamp.substring(8,10))
+  date.setHours((parseInt(timestamp.substring(11,13), 10) + offset).toString())
+  date.setMinutes(timestamp.substring(14,16))
+  return date
+
 
 $ ->
   $(".dismiss-system-notice").click( (event)->
@@ -54,26 +60,27 @@ $ ->
   $(".date-error-message").hide()
 
   $(".run-validations").click((event, ui) ->
-    $(".validate-presence").each((index, element) ->
+    form = $(this).parents("form")
+    form.find(".validate-presence").each((index, element) ->
       if $(element).is(":visible") && $(element).val() == ""
         parent = $(element).parent()
         parent.addClass("error")
         parent.find(".presence-error-message").show()
     )
 
-    runCustomValidations()
+    runCustomValidations(form)
 
-    $(".control-group").each((index, group) ->
+    form.find(".control-group").each((index, group) ->
       if $(group).hasClass("error")
         event.preventDefault()
     )
   )
 
-  runCustomValidations = ->
-    motionCloseDateValidation()
+  runCustomValidations = (form)->
+    motionCloseDateValidation(form)
 
-  motionCloseDateValidation = ->
-    if $("#motion-form").length > 0
+  motionCloseDateValidation = (form)->
+    if form.parents("#motion-form").length > 0
       time_now = new Date()
       selected_date = new Date($("#motion_close_date").val())
       if selected_date <= time_now

@@ -9,10 +9,10 @@
       #settings-header
         %h3 Settings
       .long-divider
-      .setting-label Who can see this group?
-      .settings
         - suffix = "group"
         - suffix = "sub-group" unless group.parent.nil?
+      .setting-label= "Who can see this #{suffix}?"
+      .settings
         .row
           .span2
             =f.radio_button :viewable_by, "everyone"
@@ -26,12 +26,14 @@
           .span4
             .explanation= "- Only members of this #{suffix} can see this group"
         - unless group.parent.nil?
-        = "sub-group" if not group.parent.nil?
-          =f.radio_button :viewable_by, "parent_group_members"
-          =f.label :viewable_by_parent_group_members, "Parent group members"
-          .explanation= "Only members of this sub-group and the parent group can see this sub-group"
+          .row
+            .span2
+              =f.radio_button :viewable_by, "parent_group_members"
+              =f.label :viewable_by_parent_group_members, "Parent group members"
+            .span4
+              .explanation= "Only members of this sub-group and the parent group can see this sub-group"
       .long-divider
-      .setting-label Who can invite members to this group?
+      .setting-label= "Who can invite members to this #{suffix}?"
       .settings
         =f.radio_button :members_invitable_by, "members"
         =f.label :members_invitable_by_everyone, "All group members"
