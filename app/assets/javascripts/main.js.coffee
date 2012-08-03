@@ -9,11 +9,13 @@ Application.convertUtcToRelativeTime = ->
     offset = date_offset.getTimezoneOffset()/-60
     $(".utc-time").each((index, element)->
       date = $(element).html()
-      localDatetime = Application.timestampToDateObject(date)
-      hours = localDatetime.getHours()
-      mins = localDatetime.getMinutes()
+      localDate = Application.timestampToDateObject(date)
+      hours = localDate.getHours()
+      mins = localDate.getMinutes()
       mins = "0#{mins}" if mins.toString().length == 1
-      if localDatetime.getDate() == today.getDate()
+      localDay = new Date(localDate.getFullYear(), localDate.getMonth(), localDate.getDate())
+      todayDay = new Date(today.getFullYear(), today.getMonth(), today.getDate())
+      if localDay.getTime() == todayDay.getTime()
         if hours < 12
           hours = 12 if hours == 0
           date_string = "#{hours}:#{mins} AM"
@@ -21,7 +23,7 @@ Application.convertUtcToRelativeTime = ->
           hours = 24 if hours == 12
           date_string = "#{hours-12}:#{mins} PM"
       else
-        date_string = "#{localDatetime.getDate()} #{month[localDatetime.getMonth()]}"
+        date_string = "#{localDate.getDate()} #{month[localDate.getMonth()]}"
       $(element).html(String(date_string))
       $(element).removeClass('utc-time')
       $(element).addClass('relative-time')
