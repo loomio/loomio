@@ -212,14 +212,15 @@ describe User do
       user.avatar_kind = nil
       user.avatar_url.should == nil
     end
-    it "returns large sized image if large parameter is supplied" do
-      user.stub(:gravatar_url).with(:size => User::LARGE_PIXEL_CONST).
-        and_return("/app/assets/images/large-gravatar.jpg")
-      user.avatar_kind = "gravatar"
-      user.avatar_url("large").should == "/app/assets/images/large-gravatar.jpg"
-    end
+    it "returns large sized image if large parameter is supplied"
     it "returns medium sized image if medium parameter is supplied"
     it "returns small sized image if small parameter is thumb"
+  end
+
+  describe "gravatar?(email, options = {})" do
+    it "should receive email"
+    it "should return true if gravatar exists"
+    it "should return false if gravater does not exist"
   end
 
   it "sets deleted_at (Time.current) when deactivate! is called" do
