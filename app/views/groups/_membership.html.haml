@@ -1,10 +1,10 @@
 %li{:id => membership.user_id}
   - if can? :edit, group
     .small-user-avatar.avatar-canvas
-      - if membership.user.avatar_url.nil?
-        %span.small-user-initials.initials-decoration= membership.user.initials
+      - if membership.user.avatar_url
+        = image_tag membership.user.avatar_url(:small)
       - else
-        = image_tag membership.user.avatar_url("small")
+        %span.small-user-initials.initials-decoration= membership.user.initials
     .user-name
       - if membership.user_name
         %span.membership-user-name= truncate(membership.user_name, :length => 29, :omission => '...')

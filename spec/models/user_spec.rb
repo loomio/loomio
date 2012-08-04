@@ -199,26 +199,45 @@ describe User do
 
   describe "avatar_url" do
     it "returns gravatar url if avatar_kind is 'gravatar'" do
-      user.stub(:gravatar_url).and_return('www.gravatar/spike')
+      user.should_receive(:gravatar_url).and_return('www.gravatar/spike')
       user.avatar_kind = 'gravatar'
       user.avatar_url.should == 'www.gravatar/spike'
     end
-    it "returns uploaded url if avatar_kind is 'uploaded'" do
-      user.stub_chain(:uploaded_avatar, :url).and_return('www.gravatar/uploaded/mike')
-      user.avatar_kind = 'uploaded'
-      user.avatar_url.should == 'www.gravatar/uploaded/mike'
+
+    context "where avatar_kind is 'uploaded'" do
+      before do
+        @uploaded_avatar = double "paperclip_image"
+        user.should_receive(:uploaded_avatar).and_return(@uploaded_avatar)
+      end
+      it "returns medium url if no size is specified" do
+        @uploaded_avatar.should_receive(:url).with(:medium).and_return('www.gravatar/uploaded/mike')
+        user.avatar_kind = 'uploaded'
+        user.avatar_url.should == 'www.gravatar/uploaded/mike'
+      end
+      it "returns large url if large size is specified" do
+        @uploaded_avatar.should_receive(:url).with(:large).and_return('www.gravatar/uploaded/mike')
+        user.avatar_kind = 'uploaded'
+        user.avatar_url(:large).should == 'www.gravatar/uploaded/mike'
+      end
+      it "returns medium url if medium size is specified" do
+        @uploaded_avatar.should_receive(:url).with(:medium).and_return('www.gravatar/uploaded/mike')
+        user.avatar_kind = 'uploaded'
+        user.avatar_url(:medium).should == 'www.gravatar/uploaded/mike'
+      end
+      it "returns small url if small size is specified" do
+        @uploaded_avatar.should_receive(:url).with(:small).and_return('www.gravatar/uploaded/mike')
+        user.avatar_kind = 'uploaded'
+        user.avatar_url(:small).should == 'www.gravatar/uploaded/mike'
+      end
     end
+
     it "returns nil url if avatar_kind is nil" do
       user.avatar_kind = nil
       user.avatar_url.should == nil
     end
-    it "returns large sized image if large parameter is supplied"
-    it "returns medium sized image if medium parameter is supplied"
-    it "returns small sized image if small parameter is thumb"
   end
 
   describe "gravatar?(email, options = {})" do
-    it "should receive email"
     it "should return true if gravatar exists"
     it "should return false if gravater does not exist"
   end

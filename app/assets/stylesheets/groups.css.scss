@@ -174,8 +174,12 @@ li.tool-bar-item#discussion:hover {
 #add-members {
   #add-members-btn {
     float: left;
-    width: 150px;
+    width: 135px;
     text-align: left;
+  }
+  #add-members-btn .btn-text {
+    padding-left: 5px;
+    display: inline;
   }
   .btn#invite {
     margin-top: 0px;

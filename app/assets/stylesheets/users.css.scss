@@ -72,9 +72,11 @@
 }
 
 li.user-image-option {
-  padding: 8px 8px;
+  padding: 0px 0px;
+  margin: 0 0 10px 0;
   width: 200px;
   a {
+    padding: 8px 8px;
     cursor: pointer;
     color: $mid-grey;
   }

@@ -7,6 +7,7 @@ class UsersController < BaseController
       flash[:notice] = "Your settings have been updated."
       redirect_to :root
     else
+      flash[:error] = "Your settings did not get updated."
       redirect_to :back
     end
   end

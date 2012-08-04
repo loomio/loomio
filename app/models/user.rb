@@ -236,21 +236,22 @@ class User < ActiveRecord::Base
     false  # Don't show "gravatar" if the service is down or slow
   end
 
-  def avatar_url(size = "medium")
+  def avatar_url(size = :medium)
+    size = size.to_sym
     case size
-    when "small"
+    when :small
       pixels = User::SMALL_IMAGE
-    when "medium"
+    when :medium
       pixels = User::MEDIUM_IMAGE
-    when "large"
+    when :large
       pixels = User::LARGE_IMAGE
     else
       pixels = User::SMALL_IMAGE
     end
     if avatar_kind == "gravatar"
-      self.gravatar_url(:size => pixels)
+      gravatar_url(:size => pixels)
     elsif avatar_kind == "uploaded"
-      self.uploaded_avatar.url(size)
+      uploaded_avatar.url(size)
     end
   end
 

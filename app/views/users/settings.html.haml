@@ -34,8 +34,8 @@
                   .medium-user-initials.initials-decoration= @user.initials
                 .image-option-label= "Use initials"
           %li.user-image-option.option-upload
-            = link_to 'Upload a new image', '#', class: 'btn', id: 'fake-upload'
+            = link_to 'Upload a new image', '#', class: 'btn', id: 'upload-new-image'
   = hidden_field_tag("user[avatar_kind]", "", :id => "user-avatar-kind")
   = f.submit "Update Settings", class: "btn btn-info"
-= form_for [@user], :html => { :multipart => true }, :url => upload_new_avatar_user_path(@user), :method => 'post' do
+= form_for [@user], :html => { :multipart => true, :id => 'upload-form' }, :url => upload_new_avatar_user_path(@user), :method => 'post' do
   = file_field_tag :uploaded_avatar, id: 'uploaded-avatar', class: 'hidden'
