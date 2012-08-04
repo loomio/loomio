@@ -42,7 +42,7 @@ li.preview a {
   #new-comment-form {
     border-top: 1px solid $light-grey;
     margin-bottom: 0px;
-    padding: 10px 0 42px 10px;
+    padding: 10px 0 10px 5px;
     background-color: $comment-color;
   }
 
@@ -86,13 +86,13 @@ li.preview a {
 
   /* comment */
   .comment{
-    padding: 5px 10px;
+    padding: 5px 10px 5px 5px;
     color: $dark-grey;
     background-color: $comment-color;
   }
 
   .comment-avatar {
-    margin: 5px 10px 0 0;
+    margin: 0 10px 0 0;
     float: left;
     width: 8%;
   }
@@ -102,7 +102,7 @@ li.preview a {
   }
 
   .comment-right {
-    width: 90%;
+    width: 395px;
     float: left;
   }
 

@@ -5,10 +5,10 @@
 $ ->
   $("#uploaded-avatar").change((event, ui) ->
     $("#user-avatar-kind").val("uploaded")
-    $(".edit_user").submit()
+    $("#upload-form").submit()
   )
 
-  $("#fake-upload").click((event, ui) ->
+  $("#upload-new-image").click((event, ui) ->
     $("#uploaded-avatar").click()
     event.preventDefault()
   )

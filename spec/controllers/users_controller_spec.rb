@@ -20,6 +20,11 @@ describe UsersController do
       post :update, :id => 999, :user => {:name => "Peter Chilltooth"}
       flash[:notice].should =~ /Your settings have been updated./
     end
+    it "displays an error message" do
+      user.stub(:save).and_return(false)
+      post :update, :id => 999, :user => {:name => "Peter Chilltooth"}
+      flash[:error].should =~ /Your settings did not get updated./
+    end
     it "redirects to root on success" do
       user.stub(:save).and_return(true)
       post :update, :id => 999, :user => {:name => "Peter Chilltooth"}
@@ -50,7 +55,6 @@ describe UsersController do
     end
     it "redirects to back" do
       @user.stub(:save).and_return(true)
-      post :upload_new_avatar, :id => 999, :uploaded_avatar => "www.peter_chilltooth.jpg"
       post :upload_new_avatar, :id => 999, :uploaded_avatar => "www.peter_chilltooth.jpg"
       response.should redirect_to(:back)
     end
