@@ -109,10 +109,18 @@ h4 {
     border-bottom: 1px solid $light-grey;
     font-weight: normal;
   }
-  li.selector-item.undecided, li.selector-item .unread{
+  li.selector-item .undecided, li.selector-item .unread{
     background-color: $highlighted;
     a { color: black; }
     a .proposal-title { color: black; }
+  }
+  li.selector-item:hover, li.selector-item .unread:hover,
+                          li.selector-item .undecided:hover {
+    background-color: $selector;
+    cursor: pointer;
+    a {
+      text-decoration: none;
+    }
   }
   .pagination {
     a { color: $mid-grey; }

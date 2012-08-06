@@ -39,7 +39,7 @@
 
         %li.dropdown#notifications-container
           - latest_seen_notification = notifications.first.id if notifications.exists?
-          = link_to mark_as_viewed_notifications_path(:latest_viewed => latest_seen_notification),
+          = link_to "#", 'ajax-path' => mark_as_viewed_notifications_path(:latest_viewed => latest_seen_notification),
                    :id => 'notifications-toggle', 'data-target' => '#',
                    'data-toggle' => 'dropdown' do
             %span.notification-icon

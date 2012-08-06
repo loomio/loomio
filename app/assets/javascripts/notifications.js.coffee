@@ -2,7 +2,7 @@ $ ->
   $("#notifications-toggle").click((event)->
     if (!$(this).parent().hasClass("open"))
       $.post(
-        $(this).attr("href")
+        $(this).attr("ajax-path")
         dataType: "script"
         success: ->
           $("#notifications-count").hide()
