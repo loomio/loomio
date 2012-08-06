@@ -2,7 +2,7 @@ class NotificationsController < BaseController
   def index
     @notifications = []
     if user_signed_in?
-      @notifications = current_user.notifications
+      @notifications = current_user.notifications.page(params[:page]).per(15)
     end
   end
 

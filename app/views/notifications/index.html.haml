@@ -4,5 +4,6 @@
       .clearfix
         %h1.panel-header Notifications
       %ul.selector-list
-        - current_user.notifications.each do |notification|
+        - @notifications.each do |notification|
           = render notification
+      = paginate @notifications, :window => 3
