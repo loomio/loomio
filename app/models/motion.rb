@@ -56,7 +56,7 @@ class Motion < ActiveRecord::Base
   }
 
   def user_has_voted?(user)
-    votes.map{|v| v.user.id}.include? user.id
+    votes.map{|v| v.user.id}.include?(user.id)
   end
 
   def with_votes

@@ -12,7 +12,7 @@ describe Motion do
   it {should have(1).errors_on(:author)}
   it {should have(1).errors_on(:facilitator)}
 
-  it "user_has_votes?(user) returns true if the given user has voted on motion" do
+  it "user_has_voted?(user) returns true if the given user has voted on motion" do
     @user = User.make!
     @motion = create_motion(:author => @user)
     @vote = Vote.make(:position => "yes")
@@ -20,6 +20,11 @@ describe Motion do
     @vote.motion = @motion
     @vote.save!
     @motion.user_has_voted?(@user).should == true
+  end
+
+  it "user_has_voted?(user) returns false if given nil" do
+    @motion = create_motion
+    @motion.user_has_voted?(nil).should == false
   end
 
   context "motion created" do

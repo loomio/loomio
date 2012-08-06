@@ -2,7 +2,7 @@
   .span8.offset2
     .selector-panel
       .clearfix
-        %h1 Notifications
-      %ul
+        %h1.panel-header Notifications
+      %ul.selector-list
         - current_user.notifications.each do |notification|
           = render notification

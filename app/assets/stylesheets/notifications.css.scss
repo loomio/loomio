@@ -19,11 +19,6 @@
   display: block;
   color: $mid-grey;
 }
-.notification-item:hover {
-  a, .bold-name, .notification-item-footer {
-    color: white;
-  }
-}
 
 .navbar {
   #notifications-container .a {
@@ -72,11 +67,19 @@
   #notifications-see-more a:hover {
     text-decoration: underline;
   }
+  #notifications-container .notification-item:hover {
+    a, .bold-name, .notification-item-footer {
+      color: white;
+    }
+  }
 }
 
 body.notifications.index .container {
   li {
     background-color: white;
     padding: 5px 10px;
+  }
+  li.divider {
+    padding: 0px;
   }
 }

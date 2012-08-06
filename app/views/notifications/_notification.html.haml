@@ -66,7 +66,7 @@
   - date = time_ago_in_words(notification.created_at)
   - class_name = notification.viewed_at.nil? ? " unread" : ""
 
-  %li{:class => "notification-item#{class_name}" }
+  %li.selector-item{:class => "notification-item#{class_name}" }
     %a{:href => href }
       %span.bold-name= person
       = " #{action_text} "
