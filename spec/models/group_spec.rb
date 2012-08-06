@@ -278,4 +278,22 @@ describe Group do
       group.requested_users_include?(user2).should be_true
     end
   end
+
+  describe "#create_welcome_loomio(user)" do
+    before do
+      user = User.make!
+      @group = Group.make!
+      @group.add_member!(user)
+      @group.create_welcome_loomio(user)
+    end
+    it "creates a new discussion" do
+      @group.discussions.count.should == 1
+    end
+    it "creates a new initial comment" do
+      @group.discussions.first.comments.count.should == 1
+    end
+    it "creates a new motion with title" do
+      @group.discussions.first.motions.count.should == 1
+    end
+  end
 end

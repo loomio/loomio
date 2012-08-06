@@ -1,3 +1,20 @@
+- if current_user && (not current_user.has_read_dashboard_notice?)
+  #system-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
+    = link_to "×", dismiss_dashboard_notice_for_user_path,
+      :class => "close dismiss-system-notice", "data-dismiss" => "alert"
+    Welcome to Loomio! This is the dashboard, where you can see a list of proposals and discussions that you can participate in. On the left hand side is a list of all the groups you are a member of.
+    %br
+    %br
+    Clicking on the Loomio logo in the toolbar above brings you back to this page.
+    %br
+    %br
+    If you have any questions or feedback we’d love to hear from you:
+    <a href='mailto:contact@loom.io' target='_blank'>contact@loom.io</a>
+    %br
+    %br
+    = link_to "Click here to dismiss this message", dismiss_dashboard_notice_for_user_path,
+      :class => "dismiss-system-notice", "data-dismiss" => "alert"
+
 #dashboard-home
   - if @groups.present?
     .row
@@ -42,7 +59,7 @@
                 %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil
                 - current_motions_exist = true
               - unless current_motions_exist
-                %li.selector-item.no-proposals= "There are no current proposals"
+                %li.selector-item.empty-list-message= "There are no current proposals"
           #closed.hidden
             #user-closed-motions.hidden Loading...
         .selector-panel
