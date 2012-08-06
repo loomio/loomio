@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe NotificationsController do
   let(:user) { User.make! }
-  let(:notifications) { [stub_model(Notification)] }
+  let(:paginator) { double "paginator", :per => notification_results }
+  let(:notification_results) { [1,2,3] }
+  let(:notifications) { double "notifications", :page => paginator }
 
   before do
     sign_in user
@@ -11,19 +13,23 @@ describe NotificationsController do
   end
 
   describe "#index" do
-    before { get :index }
+    it "responds successfully" do
+      get :index
+      response.should be_success
+    end
 
-    it { response.should be_success }
-
-    it { assigns(:notifications).should == notifications }
-
+    it "assigns and paginates notifications" do
+      notifications.should_receive(:page).and_return(paginator)
+      paginator.should_receive(:per).with(15).and_return(notification_results)
+      get :index
+    end
   end
 
   describe "#mark_as_read" do
     it "marks user's notifications as read" do
       user.should_receive(:mark_notifications_as_viewed!).
-        with(notifications[0].id.to_s)
-      post :mark_as_viewed, :latest_viewed => notifications[0].id
+        with("999")
+      post :mark_as_viewed, :latest_viewed => 999
     end
   end
 end

@@ -75,11 +75,14 @@
 }
 
 body.notifications.index .container {
-  li {
+  li.notification-item {
     background-color: white;
     padding: 5px 10px;
   }
-  li.divider {
+  li.notification-item:hover {
+    background-color: $selector;
+  }
+  li.notification-item.divider {
     padding: 0px;
   }
 }
