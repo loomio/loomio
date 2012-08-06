@@ -10,3 +10,4 @@ tmp/
 *.DS_Store
 coverage
 public/assets
+public/system
