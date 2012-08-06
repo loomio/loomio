@@ -8,9 +8,7 @@ class GroupsController < GroupBaseController
     @group.creator = current_user
     if @group.save
       @group.add_admin! current_user
-      if params[:create_default_loomio]
-        @group.create_welcome_loomio(current_user)
-      end
+      @group.create_welcome_loomio(current_user)
       flash[:success] = "Group created successfully."
       redirect_to @group
     else
