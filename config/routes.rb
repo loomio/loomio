@@ -4,6 +4,12 @@ Loomio::Application.routes.draw do
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
   match "/users/dismiss_system_notice", :to => "users#dismiss_system_notice",
     :as => :dismiss_system_notice_for_user, :via => :post
+  match "/users/dismiss_dashboard_notice", :to => "users#dismiss_dashboard_notice",
+    :as => :dismiss_dashboard_notice_for_user, :via => :post
+  match "/users/dismiss_group_notice", :to => "users#dismiss_group_notice",
+    :as => :dismiss_group_notice_for_user, :via => :post
+  match "/users/dismiss_discussion_notice", :to => "users#dismiss_discussion_notice",
+    :as => :dismiss_discussion_notice_for_user, :via => :post
 
   resources :groups, except: :index do
     post :add_members, on: :member

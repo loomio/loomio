@@ -8,6 +8,9 @@ class GroupsController < GroupBaseController
     @group.creator = current_user
     if @group.save
       @group.add_admin! current_user
+      if params[:create_default_loomio]
+        @group.create_welcome_loomio(current_user)
+      end
       flash[:success] = "Group created successfully."
       redirect_to @group
     else
@@ -18,6 +21,7 @@ class GroupsController < GroupBaseController
   def show
     @group = GroupDecorator.new(Group.find(params[:id]))
     @subgroups = @group.subgroups.accessible_by(current_ability, :show)
+    @motions_not_voted = []
     if current_user
       @motions_voted = @group.motions_in_voting_phase_that_user_has_voted_on(current_user)
       @motions_not_voted = @group.motions_in_voting_phase_that_user_has_not_voted_on(current_user)

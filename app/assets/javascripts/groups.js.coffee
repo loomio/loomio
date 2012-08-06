@@ -71,7 +71,7 @@ $ ->
     idStr = new Array
     idStr = $('#group-closed-motions').children().attr('class').split('_')
     $('#group-closed-motions').load("/groups/#{idStr[1]}/motions", ->
-      $("#group-closed-motions").show()
+      $("#group-closed-motions").removeClass('hidden')
       $("#closed-motions-loading").hide()
     )
 $ ->
@@ -93,7 +93,7 @@ $ ->
     idStr = $('#group-discussions').children().attr('class').split('_')
     $('#group-discussions').load("/groups/#{idStr[1]}/discussions", ->
       Application.convertUtcToRelativeTime()
-      $("#group-discussions").show()
+      $("#group-discussions").removeClass('hidden')
       $("#discussions-loading").hide()
     )
 $ ->

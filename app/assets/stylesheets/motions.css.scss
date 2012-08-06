@@ -3,14 +3,25 @@
 
 /*  New & Edit motion form */
 #motion-form{
-  .input { margin-left: 0px; display: inline-block; }
+  #title-label {
+    display: inline;
+  }
+  .presence-error-message {
+    float: right;
+    position: relative;
+    right: 50px;
+  }
+  .input { margin-left: 0px; }
   .clearfix { padding-top: 0px; margin-bottom: 0px; }
+  .control-group { margin-bottom: 0 }
+  .character-counter { bottom: 16px; }
+  #motion-name { display: block }
   #closing-inputs {
     height: 40px;
     #input_date{ width: 140px; display: inline-block; }
     select { width: 100px; display: inline-block; }
   }
-  #description { margin-top: 31px; }
+  #description { margin-top: 15px; }
   .date-error-message {
     font-size: $font-small;
     line-height: 1em;
@@ -18,6 +29,14 @@
     width: 200px;
     margin-left: 5px;
     color: $error-color;
+  }
+  .helper-text {
+    margin-top: 15px;
+    position: relative;
+    /*right: 40px;*/
+  }
+  .helper-text#details {
+    margin-top: 120px;
   }
 }
 

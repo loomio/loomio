@@ -114,13 +114,13 @@ class Group < ActiveRecord::Base
   def users_sorted
     users.sort { |a,b| a.name.downcase <=> b.name.downcase }
   end
-  
+
   def admin_email
     if (admins && admins.first)
-      admins.first.email 
+      admins.first.email
     elsif (creator)
       creator.email
-    else 
+    else
       "noreply@loom.io"
     end
   end
@@ -194,6 +194,24 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def create_welcome_loomio(user)
+    comment_str = "By engaging on a topic and incorporating various opinions and facts, and addressing any concerns that arise, the group can hone in on the best solutions.\n\n" +
+      "You can use this topic to post any questions about how to use Loomio, or test out the features.\n\n" +
+      "Once you are finished in this particular discussion, you can click the Loomio logo at the top of the screen to go back to your dashboard and see all your current discussions and proposals.\n\n" +
+      "Click into a group to view or start discussions and proposals in that group, or view a list of the group members."
+    motion_str = "Weigh in here on the decision to use Loomio as a tool in this group.\n\n" +
+      "If you need more information or want to discuss the topic further before stating your position, post a comment in the discussion to the left.\n\n" +
+      "If you are clear about your position, click one of the icons below (hover over with your mouse for a detailed description of what each one means)\n\n" +
+      "You will be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
+
+    discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")
+    discussion.add_comment(user, comment_str)
+    motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We use Loomio to make decisions together",
+      :description => motion_str)
+    motion.facilitator = user
+    motion.save
+  end
+
   #/
   # PRIVATE METHODS
   #
@@ -212,4 +230,5 @@ class Group < ActiveRecord::Base
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent.nil?
     end
   end
+
 end
