@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 contact_user = User.find_or_initialize_by_email("contact@loom.io")
-contact_user.name = "Loomio"
+contact_user.name = "Loomio helper bot"
 if contact_user.new_record?
   contact_user.password = "password"
 end
