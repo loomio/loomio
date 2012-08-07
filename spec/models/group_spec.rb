@@ -281,10 +281,10 @@ describe Group do
 
   describe "#create_welcome_loomio(user)" do
     before do
-      user = User.make!
+      User.stub(:get_loomio_user).and_return(User.make!)
+      Membership.stub(:destroy)
       @group = Group.make!
-      @group.add_member!(user)
-      @group.create_welcome_loomio(user)
+      @group.create_welcome_loomio
     end
     it "creates a new discussion" do
       @group.discussions.count.should == 1
