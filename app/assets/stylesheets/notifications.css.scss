@@ -5,9 +5,6 @@
   color: #333;
 }
 
-.notification-item.unread {
-  background-color: rgb(237, 239, 245);
-}
 .notification-item a {
   white-space: normal;
   /*line-height: 16px;*/
@@ -38,10 +35,14 @@
   #notifications-container .dropdown-menu {
     width: 350px;
     height: 450px;
+    background-color: $selector-panel;
   }
   #notifications-container .dropdown-menu h3 {
     padding-left: 15px;
     color: #333;
+  }
+  #notifications-container .divider {
+    border-color: $light-grey;
   }
   #notifications-count {
     position: absolute;
@@ -68,9 +69,17 @@
     text-decoration: underline;
   }
   #notifications-container .notification-item:hover {
+    background-color: $selector;
     a, .bold-name, .notification-item-footer {
-      color: white;
+      color: $dark-grey;
+      background-color: $selector;
     }
+  }
+  #notification-items .notification-item {
+    background-color: $unhighlighted;
+  }
+  #notification-items .notification-item.unread {
+    background-color: $highlighted;
   }
 }
 
