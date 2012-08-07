@@ -84,6 +84,10 @@ class User < ActiveRecord::Base
     memberships.for_group(group).first
   end
 
+  def self.get_loomio_user
+    User.where(email: "contact@loom.io").first
+  end
+
   def self.invite_and_notify!(user_params, inviter, group)
     new_user = User.invite!(user_params, inviter) do |u|
       u.skip_invitation = true
