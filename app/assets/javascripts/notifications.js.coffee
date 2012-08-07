@@ -1,6 +1,7 @@
 $ ->
   $("#notifications-toggle").click((event)->
     if (!$(this).parent().hasClass("open"))
+      # Mark notifications as read
       $.post(
         $(this).attr("ajax-path")
         dataType: "script"
@@ -18,4 +19,10 @@ $ ->
     scrollHeight = notifications.get(0).scrollHeight
     if ((this.scrollTop == (scrollHeight - height) && d < 0) || (this.scrollTop == 0 && d > 0))
       e.preventDefault()
+  )
+
+$ ->
+  # Prevent close of dropdown on click
+  $(".notification-item").click((event)->
+    event.stopPropagation()# if (event.metaKey || event.ctrlKey)
   )
