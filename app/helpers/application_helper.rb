@@ -24,4 +24,8 @@ module ApplicationHelper
   def email_subject_prefix(group_name)
     "[Loomio: #{group_name}]"
   end
+
+  def signed_out?
+    not signed_in?
+  end
 end
