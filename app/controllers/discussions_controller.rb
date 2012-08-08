@@ -1,5 +1,6 @@
 class DiscussionsController < GroupBaseController
-  load_and_authorize_resource :except => [:show, :create]
+  load_and_authorize_resource :except => [:show, :create, :index]
+  before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :check_group_read_permissions, :only => :show
 
   def new
@@ -15,6 +16,7 @@ class DiscussionsController < GroupBaseController
       if params[:discussion][:notify_group_upon_creation].to_i > 0
         DiscussionMailer.spam_new_discussion_created(@discussion)
       end
+      Event.new_discussion!(@discussion)
       flash[:success] = "Discussion sucessfully created."
       redirect_to @discussion
     else
@@ -26,11 +28,17 @@ class DiscussionsController < GroupBaseController
   def index
     if params[:group_id].present?
       @group = Group.find(params[:group_id])
-      @discussions= @group.discussions_sorted(current_user).page(params[:page]).per(10)
+      if cannot? :show, @group
+        head 401
+      else
+        @discussions = @group.discussions_sorted(current_user).page(params[:page]).per(10)
+        render :layout => false if request.xhr?
+      end
     else
-      @discussions= current_user.discussions_sorted.page(params[:page]).per(10)
+      authenticate_user!
+      @discussions = current_user.discussions_sorted.page(params[:page]).per(10)
+      render :layout => false if request.xhr?
     end
-    render :layout => false if request.xhr?
   end
 
   def show
@@ -44,9 +52,9 @@ class DiscussionsController < GroupBaseController
       @votes_for_graph = @current_motion.votes_graph_ready
       @user_already_voted = @current_motion.user_has_voted?(current_user)
     else
-      @selected_closed_motion = @discussion.closed_motion(params[:proposal])
-      if @selected_closed_motion
-        @votes_for_graph = @selected_closed_motion.votes_graph_ready
+      @selected_motion = @discussion.closed_motion(params[:proposal])
+      if @selected_motion
+        @votes_for_graph = @selected_motion.votes_graph_ready
       end
     end
 
@@ -57,6 +65,11 @@ class DiscussionsController < GroupBaseController
 
   def add_comment
     comment = resource.add_comment(current_user, params[:comment])
+    if comment.valid?
+      Event.new_comment!(comment)
+    else
+      flash[:error] = "Comment could not be created."
+    end
     redirect_to discussion_path(resource.id)
   end
 

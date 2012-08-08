@@ -48,41 +48,45 @@ $ ->
 
 # closed proposals
 $ ->
-  if $("body.groups").length > 0
+  if $("body.groups.show").length > 0
     idStr = new Array
     idStr = $('#group-closed-motions').children().attr('class').split('_')
     $('#group-closed-motions').load("/groups/#{idStr[1]}/motions", ->
       $("#group-closed-motions").show()
-      $("#group-closed-motions-loading").hide()
+      $("#closed-motions-loading").hide()
     )
 $ ->
-  $(document).on('click', '#group-closed-motions .pagination a', (e)->
-    $("#group-closed-motions").hide()
-    $("#group-closed-motions-loading").show()
-    $('#group-closed-motions').load($(this).attr('href'), ->
-      $("#group-closed-motions").show()
-      $("#group-closed-motions-loading").hide()
+  if $("body.groups.show").length > 0
+    $(document).on('click', '#group-closed-motions .pagination a', (e)->
+      unless $(this).parent().hasClass("gap")
+        $("#closed-motion-list").hide()
+        $("#closed-motions-loading").show()
+        $('#group-closed-motions').load($(this).attr('href'), ->
+          $("#closed-motion-list").show()
+          $("#closed-motions-loading").hide()
+        )
+        e.preventDefault()
     )
-    e.preventDefault()
-  )
 # discussions
 $ ->
-  if $("body.groups").length > 0
+  if $("body.groups.show").length > 0
     idStr = new Array
     idStr = $('#group-discussions').children().attr('class').split('_')
     $('#group-discussions').load("/groups/#{idStr[1]}/discussions", ->
       Application.convertUtcToRelativeTime()
       $("#group-discussions").show()
-      $("#group-discussions-loading").hide()
+      $("#discussions-loading").hide()
     )
 $ ->
-  $(document).on('click', '#group-discussions .pagination a', (e)->
-    $("#group-discussions").hide()
-    $("#group-discussions-loading").show()
-    $('#group-discussions').load($(this).attr('href'), ->
-      Application.convertUtcToRelativeTime()
-      $("#group-discussions").show()
-      $("#group-discussions-loading").hide()
+  if $("body.groups.show").length > 0
+    $(document).on('click', '#group-discussions .pagination a', (e)->
+      unless $(this).parent().hasClass("gap")
+        $("#discussion-list").hide()
+        $("#discussions-loading").show()
+        $('#group-discussions').load($(this).attr('href'), ->
+          Application.convertUtcToRelativeTime()
+          $("#discussion-list").show()
+          $("#discussions-loading").hide()
+        )
+        e.preventDefault()
     )
-    e.preventDefault()
-  )

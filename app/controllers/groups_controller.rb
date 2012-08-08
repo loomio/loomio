@@ -1,5 +1,6 @@
 class GroupsController < GroupBaseController
   load_and_authorize_resource except: :show
+  before_filter :authenticate_user!, except: :show
   before_filter :check_group_read_permissions, :only => :show
 
   def create
@@ -32,6 +33,24 @@ class GroupsController < GroupBaseController
 
   # CUSTOM CONTROLLER ACTIONS
 
+  def archive
+    @group = Group.find(params[:id])
+    @group.archived_at = Time.current
+
+    @group.subgroups.each do |subgroup|
+      subgroup.archived_at = Time.current
+      subgroup.save
+    end
+
+    if @group.save
+      flash[:success] = "Group archived successfully."
+      redirect_to dashboard_url
+    else
+      flash[:error] = "Group could not be archived."
+      redirect_to :back
+    end
+  end
+
   def add_subgroup
     @parent = Group.find(params[:id])
     @subgroup = Group.new(:parent => @parent)
@@ -42,7 +61,8 @@ class GroupsController < GroupBaseController
     params.each_key do |key|
       if key =~ /user_/
         user = User.find(key[5..-1])
-        group.add_member!(user)
+        membership = group.add_member!(user, current_user)
+        Event.user_added_to_group!(membership)
       end
     end
     flash[:success] = "Members added to group."
@@ -75,6 +95,15 @@ class GroupsController < GroupBaseController
       flash[:error] = "Proposal could not be created."
       redirect_to :back
     end
+  end
+
+  def email_members
+    @group = Group.find(params[:id])
+    subject = params[:group_email_subject]
+    body = params[:group_email_body]
+    GroupMailer.deliver_group_email(@group, current_user, subject, body)
+    flash[:success] = "Email sent."
+    redirect_to :back
   end
 
   private

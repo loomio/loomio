@@ -3,16 +3,26 @@
     <a class="close" data-dismiss="alert" href="#">×</a>
     = message
 
+
+-#
+-# SYSTEM MESSAGE
+-#
+
 - if current_user && (not current_user.has_read_system_notice?)
   #system-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
     = link_to "×", dismiss_system_notice_for_user_path,
       :class => "close dismiss-system-notice", "data-dismiss" => "alert"
-    NOTICE: We are in the process of improving the interface on Loomio. However, we are still in early
-    testing phase, so you may notice a few bugs and/or annoyances.
+    Hi there! We've just added a "notifications system" to Loomio (have a look at the top of this page).
+    That's where you'll be notified when things happen on Loomio that are relevant to you.
     %br
     %br
-    If you notice any issues or have any feedback send us an email at contact@loom.io.
-    Thanks for all your help and patience so far!
+    It's going to take some experimenting and tweaking to get this sytem just right, so if you
+    have any feedback please don't hesitate to send us an email at contact@loom.io.
+    %br
+    %br
+    This is just the beginning of our effort to improve notifications on Loomio. Our next task will be
+    making it easy for you to customise how/when Loomio sends you emails. Thanks for all your help and
+    patience so far!
     %br
     %br
     = link_to "Click here to dismiss this message", dismiss_system_notice_for_user_path,

@@ -7,13 +7,14 @@ $ ->
   )
 $ ->
   $(document).on('click', '#user-closed-motions .pagination a', (e)->
-    $("#user-closed-motions").hide()
-    $("#closed-motions-loading").show()
-    $('#user-closed-motions').load($(this).attr('href'), ->
-      $("#user-closed-motions").show()
-      $("#closed-motions-loading").hide()
-    )
-    e.preventDefault()
+    unless $(this).parent().hasClass("gap")
+      $("#closed-motion-list").hide()
+      $("#closed-motions-loading").show()
+      $('#user-closed-motions').load($(this).attr('href'), ->
+        $("#closed-motion-list").show()
+        $("#closed-motions-loading").hide()
+      )
+      e.preventDefault()
   )
 
 # discussions
@@ -25,12 +26,13 @@ $ ->
   )
 $ ->
   $(document).on('click', '#user-discussions .pagination a', (e)->
-    $("#user-discussions").hide()
-    $("#discussions-loading").show()
-    $('#user-discussions').load($(this).attr('href'), ->
-      Application.convertUtcToRelativeTime()
-      $("#user-discussions").show()
-      $("#discussions-loading").hide()
-    )
-    e.preventDefault()
+    unless $(this).parent().hasClass("gap")
+      $("#discussion-list").hide()
+      $("#discussions-loading").show()
+      $('#user-discussions').load($(this).attr('href'), ->
+        Application.convertUtcToRelativeTime()
+        $("#discussion-list").show()
+        $("#discussions-loading").hide()
+      )
+      e.preventDefault()
   )
