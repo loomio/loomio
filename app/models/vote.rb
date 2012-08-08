@@ -33,9 +33,8 @@ class Vote < ActiveRecord::Base
   attr_accessible :position, :statement
 
   delegate :name, :to => :user, :prefix => :user
-  delegate :group, :to => :motion
+  delegate :group, :discussion, :to => :motion
   delegate :users, :to => :group, :prefix => :group
-  delegate :discussion, :to => :motion
   delegate :author, :to => :motion, :prefix => :motion
   delegate :author, :to => :discussion, :prefix => :discussion
   delegate :name, :to => :motion, :prefix => :motion
