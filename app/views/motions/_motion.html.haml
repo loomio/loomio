@@ -30,6 +30,7 @@
     = "stated their position on this proposal (#{motion.group_count - motion.no_vote_count}/#{motion.group_count})"
   .votes
     - if motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
+      %h2 State your position
       .vote-buttons.clearfix
         =link_to image_tag("hand-yes.png", title:"I agree", alt:"I agree"), "#", "title" => "I agree",
           "data-content" => "I agree with this and want it to go ahead.",
@@ -57,11 +58,12 @@
       = form_for([motion, @vote], html:{class:'form-stacked'}) do |f|
         .modal-body
           .control-group
-            = f.text_area :statement, placeholder: "Give a reason for your decision", class: "statement inputError limit-250"
+            = f.text_area :statement, placeholder: "Give a reason for your decision (optional)", class: "statement inputError limit-250"
           .character-counter
           =f.hidden_field :position
         .modal-footer
-          = submit_tag "Confirm position", class: "vote btn btn-small"
+          = submit_tag "Confirm position", class: "vote btn btn-info"
+          = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
 
   :coffeescript
     $ ->
@@ -78,4 +80,4 @@
         gap: 5
         shadow: 2
       @linkify = new Loomio.Views.Utils.Linkify
-        el: $('#motion h2, #motion #description, #votes .statement')
+        el: $('#motion-title h2, .motion .description, .votes')

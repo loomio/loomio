@@ -5,7 +5,7 @@ class AddLastCommentAtToDiscussions < ActiveRecord::Migration
     Discussion.reset_column_information
     Discussion.all.each do |discussion|
       discussion.last_comment_at = discussion.latest_comment_time
-      discussion.save!
+      discussion.save(:validate => false)
     end
   end
 

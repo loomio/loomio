@@ -13,13 +13,14 @@
               %li
                 = link_to group.name, group_path(group), :class => 'view_'+group.viewable_by.to_s
                 - if group.subgroups.size > 0
-                  - group.subgroups.each do |sub_group|
-                    %li.sub-group
-                      = link_to sub_group.name, group_path(sub_group), :class => 'view_'+sub_group.viewable_by.to_s
+                  - group.subgroups.each do |subgroup|
+                    - if can? :show, subgroup
+                      %li.sub-group
+                        = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
       %section.span8
         .selector-panel
           .clearfix
-            %h1#proposal-phase Current proposals
+            %h1.panel-header#proposal-phase Current proposals
             .dropdown#proposals
               = link_to image_tag("dropdown.png", title:'proposal settings', alt:'proposal settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
               %ul.dropdown-menu.pull-right
@@ -31,30 +32,23 @@
                   %a{ href: '#', id: 'display-closed' }
                     = "Closed proposals"
                     = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
-          #open-motions-list
-            %ul
-              - if @motions_not_voted
-                - @motions_not_voted.each do |motion|
-                  %li.undecided= render '/motions/motion_preview', motion: motion, this_group: nil
-                - motions_exist = true
-              - if @motions_voted
-                - @motions_voted.each do |motion|
-                  %li= render '/motions/motion_preview', motion: motion, this_group: nil
-                - motions_exist = true
-              - unless motions_exist
-                %li.no-proposals= "There are no current proposals"
-          #closed-motions-list
-            #user-closed-motions Loading...
-            #closed-motions-loading
-              %ul
-                %li.loading Loading...
+          #open
+            %ul.selector-list
+              - current_motions_exist = false
+              - @motions_not_voted.each do |motion|
+                %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil
+                - current_motions_exist = true
+              - @motions_voted.each do |motion|
+                %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil
+                - current_motions_exist = true
+              - unless current_motions_exist
+                %li.selector-item.no-proposals= "There are no current proposals"
+          #closed.hidden
+            #user-closed-motions.hidden Loading...
         .selector-panel
           .clearfix
-            %h1 Discussions
+            %h1.panel-header Discussions
           #user-discussions.hidden Loading...
-          #discussions-loading
-            %ul
-              %li.loading Loading...
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.

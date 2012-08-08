@@ -2,13 +2,13 @@
 /*@import "bootstrap";*/
 @import "mixins";
 
-/** new discussion form*/
-
+/** discussion new form*/
 body.discussions.new {
   #discussion_notify_group_upon_creation { margin-bottom: 30px; }
   .btn { display: block; }
 }
 
+/** discussion show form*/
 body.discussions.show {
   .discussion-title {
     width: 438px;
@@ -20,6 +20,22 @@ body.discussions.show {
     }
   }
 }
+/*  proposal panel  */
+li .motion { padding: 5px 15px; }
+.close-date {
+  font-size: $font-tiny;
+  color: $mid-grey;
+}
+li.selector-item.current-proposal {
+  background-color: $current-proposal;
+  table.jqplot-table-legend { background-color: $current-proposal; }
+}
+li.preview a {
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
+
 
 /*** comments, positions & proposals in History ***/
 #content-history {
@@ -29,6 +45,15 @@ body.discussions.show {
     padding: 10px 0 42px 10px;
     background-color: $comment-color;
   }
+  #new-comment-form .btn {
+    margin: 5px 5px 5px 0px;
+    padding: 4px 0 5px 0;
+    float: left;
+    width: 150px;
+    border-color: $light-grey;
+    color: $mid-grey;
+    text-shadow: none;
+  }
   #new-comment{
     margin: 0 0 5px 0px;
     width: 428px;
@@ -36,9 +61,13 @@ body.discussions.show {
     height: 80px;
     color: $dark-grey;
   }
-  ul {
+  ul.history-list {
     list-style: none;
-    margin-left: 0px;
+    border-bottom: 1px solid $light-grey;
+    margin: 0 0 3px 0;
+  }
+  li.history-item {
+    border-top: 1px solid $light-grey;
   }
   #no-messages {
     padding: 5px 10px;
@@ -109,44 +138,11 @@ body.discussions.show {
   }
 }
 
-/*  proposal panel  */
-#content-proposal {
-  .tool-bar-item#tool-bar-item-edit { padding-left: 15px; }
-  .tool-bar-item#tool-bar-item-close {
-    padding-left: 15px;
-    position: relative;
-    right: 4px
-  }
-  .no-proposals {
-    padding: 5px 10px;
-  }
-  /*a { color: $dark-grey; }*/
-  li { padding: 0px; }
-  li .motion { padding: 5px 15px; }
-  .close-date {
-    font-size: $font-tiny;
-    color: $mid-grey;
-  }
-}
-
-li.current-proposal {
-  background-color: $current-proposal;
-  table.jqplot-table-legend { background-color: $current-proposal; }
-}
-li.preview { padding: 0px; }
-li.preview a {
-  padding: 10px 15px;
-  text-decoration: none;
-}
-
 // Discussion preview list panel
 //
 // NOTE: this code is shared with the group show page and
 //       the dashboard page.
 //
-.discussion-preview:hover {
-  background-color: $selector;
-}
 
 .discussion-preview {
   a {

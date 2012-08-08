@@ -49,56 +49,15 @@ h4 {
 // structural elements (containers etc.)
 
 .selector-panel {
-  /*background-color: $header-color;*/
   background-color: $selector-panel;
   @include border-radius(8px);
   border: 1px solid $light-grey;
   margin-bottom: 20px;
+  min-height: 59px;
   padding-top: 2px;
-  h1 {
+  h1.panel-header {
     padding-left: 10px;
     float: left;
-  }
-  .btn {
-    margin: 5px 5px 5px 10px;
-    padding: 4px 0 5px 0;
-    float: left;
-    width: 150px;
-    border-color: $light-grey;
-    color: $mid-grey;
-    text-shadow: none;
-    /*border-bottom: 1px solid $light-grey;*/
-  }
-  ul {
-    border-top: 1px solid $light-grey;
-    list-style: none;
-    margin: 0 0 3px 0;
-  }
-  li {
-    background-color: $un-highlighted;
-    color: $dark-grey;
-    border-bottom: 1px solid $light-grey;
-    font-weight: normal;
-  }
-  li.tool-bar.clearfix {
-    background-color: white-smoke;
-    background-image: -webkit-linear-gradient(top, white, #E6E6E6);
-    height: 25px;
-  }
-  .tool-bar-item {
-    padding: 6px 15px 6px 30px;
-    color: $mid-grey;
-    font-size: $font-small;
-    position: relative;
-    top: 3px;
-    margin-right: 0px;
-    border-right: 1px solid $light-grey;
-  }
-  .tool-bar-item:hover {
-    color: $white;
-    font-size: $font-small;
-    text-decoration: none;
-    background-color: #ccc;
   }
   .dropdown {
     float: right;
@@ -107,11 +66,62 @@ h4 {
       background-color: white;
       border: none;
       a {
-        /*color: $dark-grey;*/
         text-shadow: none;
         font-size: $font-small;
       }
     }
+  }
+  ul.tool-bar-list {
+    border-top: 1px solid $light-grey;
+    list-style: none;
+    background-color: white-smoke;
+    background-image: -webkit-linear-gradient(top, white, #E6E6E6);
+    height: 25px;
+    margin: 0;
+  }
+  li.tool-bar-item {
+    background-image: -webkit-linear-gradient(top, white, #E6E6E6);
+    background-repeat: no-repeat;
+    height: 25px;
+    border-right: 1px solid $light-grey;
+    float: left;
+  }
+  li.tool-bar-item a {
+    padding: 5px 10px 6px 30px;
+    position: relative;
+    top: 3px;
+    color: $mid-grey;
+    text-decoration: none;
+    font-size: $font-small;
+  }
+  li.tool-bar-item:hover {
+    a { color: $white; }
+    background-color: #ccc;
+  }
+  ul.selector-list {
+    border-top: 1px solid $light-grey;
+    list-style: none;
+    margin: 0 0 3px 0;
+  }
+  li.selector-item {
+    background-color: $unhighlighted;
+    color: $dark-grey;
+    border-bottom: 1px solid $light-grey;
+    font-weight: normal;
+  }
+  .undecided, .unread {
+    background-color: $highlighted;
+    a { color: black; }
+    a .proposal-title { color: black; }
+  }
+  /*li.selector-item:hover, li.selector-item .unread:hover,*/
+                          /*li.selector-item .undecided:hover {*/
+  li.selector-item a.selector-link:hover {
+    background-color: $selector;
+    text-decoration: none;
+    /*cursor: pointer;*/
+    /*a {*/
+    /*}*/
   }
   .pagination {
     a { color: $mid-grey; }
@@ -192,7 +202,6 @@ h4 {
   }
 }
 
-
 .alert {
   position: relative;
   bottom: 20px;
@@ -212,15 +221,10 @@ h4 {
 }
 
 // misc (move stuff out of here..)
-li.undecided, li .unread{
-  background-color: $highlighted;
-  a { color: black; }
-  a .proposal-title { color: black; }
-}
 .loading {
   background: url(ajax-loader.gif) no-repeat;
-  background-position: 280px 180px;
-  line-height: 35em;
+  background-position: 300px 200px;
+  line-height: 33.5em;
   text-indent: -9999px;
 }
 .field_with_errors { display: inline; }
@@ -290,7 +294,7 @@ form {
 }
 
 table.jqplot-table-legend {
-  background-color: $un-highlighted;
+  background-color: $unhighlighted;
   width: auto;
   border: none;
   td {

@@ -11,6 +11,8 @@ class Group < ActiveRecord::Base
 
   after_initialize :set_defaults
 
+  default_scope where(:archived_at => nil)
+
   has_many :memberships,
     :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
     :dependent => :destroy,
@@ -114,6 +116,16 @@ class Group < ActiveRecord::Base
   def users_sorted
     users.order('lower(name)').all
   end
+  
+  def admin_email
+    if (admins && admins.first)
+      admins.first.email 
+    elsif (creator)
+      creator.email
+    else 
+      "noreply@loom.io"
+    end
+  end
 
   #
   # MEMBERSHIP METHODS
@@ -133,12 +145,13 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def add_member!(user)
+  def add_member!(user, inviter=nil)
     unless users.exists?(user)
       unless membership = requested_users_include?(user)
         membership = memberships.build_for_user(user)
       end
       membership.access_level = 'member'
+      membership.inviter = inviter
       membership.save!
       reload
       membership

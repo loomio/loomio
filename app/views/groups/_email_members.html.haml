@@ -1,0 +1,16 @@
+.modal-header
+  %button.close{"data-dismiss" => "modal"}×
+  %h3= "Email the members in #{group.full_name}"
+= form_tag email_members_group_path(group) do
+  .modal-body
+    .control-group
+      = label_tag "group_email_subject", "Subject"
+      %span.presence-error-message Please fill in a subject
+      = text_field_tag "group_email_subject", nil, :placeholder => "Write a subject", :class => "validate-presence"
+    .control-group
+      = label_tag "group_email_body", "Message"
+      %span.presence-error-message Please fill in a message
+      = text_area_tag "group_email_body", nil, :placeholder => "Write a message to the members of #{group.full_name}.", :class => "validate-presence"
+  .modal-footer
+    = submit_tag "Send email", class: "btn btn-primary run-validations"
+

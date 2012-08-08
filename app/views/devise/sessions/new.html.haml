@@ -8,7 +8,7 @@
     = f.check_box :remember_me
     = f.label :remeber_me, "Remember me", class: "checkbox-label"
   .sign-in-button
-    = f.submit "Sign in", class: "btn primary small"
+    = f.submit "Sign in", class: "btn primary small", :id => "sign-in-btn"
 = render :partial => "devise/shared/links"
 .row
   .span11.sub-header.style-grey

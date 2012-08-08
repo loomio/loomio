@@ -13,7 +13,10 @@ Loomio::Application.routes.draw do
     get :request_membership, on: :member
     get :new_motion, :on => :member
     post :create_motion, :on => :member
+    post :email_members, on: :member
   end
+
+  match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
 
   resources :motions do
     resources :votes
@@ -27,6 +30,10 @@ Loomio::Application.routes.draw do
   resources :discussions, only: [:index, :show, :new, :create] do
     post :add_comment, :on => :member
     get :new_proposal, :on => :member
+  end
+
+  resources :notifications, :only => :index do
+    post :mark_as_viewed, :on => :collection, :via => :post
   end
 
   resources :votes

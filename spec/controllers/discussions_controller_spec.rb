@@ -14,13 +14,13 @@ describe DiscussionsController do
     before do
       sign_in user
       app_controller.stub(:authorize!).and_return(true)
-      app_controller.stub(:can?).with(:show, group).and_return(true)
+      app_controller.stub(:cannot?).with(:show, group).and_return(false)
       Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
       Discussion.stub(:new).and_return(discussion)
       Group.stub(:find).with(group.id.to_s).and_return(group)
     end
 
-    context "views discussions" do
+    describe "viewing a discussion" do
       it "does not render layout if ajax request"
 
       context "within a group" do
@@ -37,64 +37,67 @@ describe DiscussionsController do
           get :index
         end
       end
-    end
-    context "views a discussion" do
-      before do
-        motion.stub(:votes_graph_ready).and_return([])
-        motion.stub(:user_has_voted?).and_return(true)
-        motion.stub(:open_close_motion)
-        motion.stub(:voting?).and_return(true)
-        discussion.stub(:history)
-      end
-      it "responds with success" do
-        get :show, id: discussion.id
-        response.should be_success
-      end
 
-      it "assigns array with discussion history" do
-        discussion.should_receive(:history).and_return(['fake'])
-        get :show, id: discussion.id
-        assigns(:history).should eq(['fake'])
+      context do
+        before do
+          motion.stub(:votes_graph_ready).and_return([])
+          motion.stub(:user_has_voted?).and_return(true)
+          motion.stub(:open_close_motion)
+          motion.stub(:voting?).and_return(true)
+          discussion.stub(:history)
+        end
+        it "responds with success" do
+          get :show, id: discussion.id
+          response.should be_success
+        end
+
+        it "assigns array with discussion history" do
+          discussion.should_receive(:history).and_return(['fake'])
+          get :show, id: discussion.id
+          assigns(:history).should eq(['fake'])
+        end
       end
     end
 
-    context "creates a discussion" do
+    describe "creating a discussion" do
       before do
         discussion.stub(:add_comment)
         discussion.stub(:save).and_return(true)
         DiscussionMailer.stub(:spam_new_discussion_created)
+        Event.stub(:new_discussion!)
+        @discussion_hash = { group_id: group.id, title: "Shinney",
+                            comment: "Bright light" }
       end
       it "does not send email by default" do
         DiscussionMailer.should_not_receive(:spam_new_discussion_created)
-        get :create, discussion: { group_id: group.id, title: "Shinney",
-                                   comment: "Bright light",
-                                   notify_group_upon_creation: "0" }
+        get :create, discussion:
+          @discussion_hash.merge({ notify_group_upon_creation: "0" })
       end
       it "sends email if notify_group_upon_creation is passed in params" do
         DiscussionMailer.should_receive(:spam_new_discussion_created).
           with(discussion)
-        get :create, discussion: { group_id: group.id, title: "Shinney",
-                                   comment: "Bright light",
-                                   notify_group_upon_creation: "1" }
+        get :create, discussion:
+          @discussion_hash.merge({ notify_group_upon_creation: "1" })
       end
       it "adds comment" do
         discussion.should_receive(:add_comment).with(user, "Bright light")
-        get :create, discussion: { group_id: group.id, title: "Shinney",
-                                   comment: "Bright light" }
+        get :create, discussion: @discussion_hash
+      end
+      it "fires new_discussion event" do
+        Event.should_receive(:new_discussion!).with(discussion)
+        get :create, discussion: @discussion_hash
       end
       it "displays flash success message" do
-        get :create, discussion: { group_id: group.id, title: "Shinney",
-                                   comment: "Bright light" }
+        get :create, discussion: @discussion_hash
         flash[:success].should match("Discussion sucessfully created.")
       end
       it "redirects to discussion" do
-        get :create, discussion: { group_id: group.id, title: "Shinney",
-                                   comment: "Bright light" }
+        get :create, discussion: @discussion_hash
         response.should redirect_to(discussion_path(discussion.id))
       end
     end
 
-    context "creates a new proposal" do
+    describe "creating a new proposal" do
       it "is successful" do
         get :new_proposal, id: discussion.id
         response.should be_success
@@ -105,9 +108,11 @@ describe DiscussionsController do
       end
     end
 
-    context "adds comment" do
+    describe "adding a comment" do
       before do
-        discussion.stub(:add_comment)
+        Event.stub(:new_comment!)
+        @comment = mock_model(Comment, :valid? => true)
+        discussion.stub(:add_comment).and_return(@comment)
       end
 
       it "checks permissions" do
@@ -115,7 +120,7 @@ describe DiscussionsController do
         post :add_comment, comment: "Hello!", id: discussion.id
       end
 
-      it "adds comment" do
+      it "calls adds_comment on discussion" do
         discussion.should_receive(:add_comment).with(user, "Hello!")
         post :add_comment, comment: "Hello!", id: discussion.id
       end
@@ -123,6 +128,28 @@ describe DiscussionsController do
       it "redirects to the discussion" do
         post :add_comment, comment: "Hello!", id: discussion.id
         response.should redirect_to(discussion_url(discussion))
+      end
+
+      it "fires new_comment event if comment was created successfully" do
+        Event.should_receive(:new_comment!).with(@comment)
+        post :add_comment, comment: "Hello!", id: discussion.id
+      end
+
+      context "unsuccessfully" do
+        before do
+          discussion.stub(:add_comment).
+            and_return(mock_model(Comment, :valid? => false))
+        end
+
+        it "does not fire new_comment event" do
+          Event.should_not_receive(:new_comment!)
+          post :add_comment, comment: "Hello!", id: discussion.id
+        end
+
+        it "populates flash with error message" do
+          post :add_comment, comment: "Hello!", id: discussion.id
+          flash[:error].should == "Comment could not be created."
+        end
       end
     end
   end

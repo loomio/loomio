@@ -5,19 +5,22 @@ class Motion < ActiveRecord::Base
   belongs_to :facilitator, :class_name => 'User'
   belongs_to :discussion
   has_many :votes, :dependent => :destroy
-  has_many :did_not_votes
+  has_many :did_not_votes, :dependent => :destroy
+  has_many :events, :as => :eventable, :dependent => :destroy
 
   validates_presence_of :name, :discussion, :author, :facilitator
   validates_inclusion_of :phase, in: PHASES
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
 
-  validates_length_of :name, :maximum=>250
+  validates_length_of :name, :maximum => 250
 
   delegate :email, :to => :author, :prefix => :author
   delegate :email, :to => :facilitator, :prefix => :facilitator
   delegate :name, :to => :author, :prefix => :author
   delegate :name, :to => :facilitator, :prefix => :facilitator
+  delegate :group, :to => :discussion
+  delegate :users, :full_name, :to => :group, :prefix => :group
 
   after_create :initialize_discussion
   after_create :email_motion_created
@@ -52,12 +55,8 @@ class Motion < ActiveRecord::Base
     .where("votes.user_id = ?", user.id)
   }
 
-  def group
-    discussion.group
-  end
-
   def user_has_voted?(user)
-    votes.map{|v| v.user.id}.include? user.id
+    votes.map{|v| v.user.id}.include?(user.id)
   end
 
   def with_votes
@@ -188,6 +187,7 @@ class Motion < ActiveRecord::Base
   end
 
   private
+
     def before_open
       self.close_date = Time.now + 1.week
       did_not_votes.each do |did_not_vote|
