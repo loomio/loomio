@@ -90,6 +90,7 @@ class GroupsController < GroupBaseController
     @motion.author = current_user
     if @motion.save
       flash[:success] = "Proposal has been created."
+      Event.new_motion!(@motion)
       redirect_to @discussion
     else
       flash[:error] = "Proposal could not be created."
