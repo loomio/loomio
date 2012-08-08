@@ -66,6 +66,8 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
 
+  #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
+
   def get_vote_for(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
   end
@@ -91,7 +93,18 @@ class User < ActiveRecord::Base
   end
 
   def unviewed_notifications
-    notifications.where('viewed_at IS NULL')
+    notifications.unviewed
+  end
+
+  # Returns most recent notifications
+  #   lower_limit - (minimum # of notifications returned)
+  #   upper_limit - (maximum # of notifications returned)
+  def recent_notifications(lower_limit=10, upper_limit=20)
+    if unviewed_notifications.count < lower_limit
+      notifications.limit(lower_limit - unviewed_notifications.size)
+    else
+      unviewed_notifications.limit(upper_limit)
+    end
   end
 
   def mark_notifications_as_viewed!(latest_viewed_id)

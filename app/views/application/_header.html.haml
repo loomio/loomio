@@ -52,6 +52,8 @@
             %h3 Notifications
             %li.divider
             #notification-items
+              - if notifications.count == 0
+                .notifications-placeholder You do not have any notifications yet.
               - notifications.each do |notification|
                 = render notification
             #notifications-see-more= link_to "See all notifications", notifications_path

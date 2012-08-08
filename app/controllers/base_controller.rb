@@ -11,12 +11,7 @@ class BaseController < InheritedResources::Base
   def get_notifications
     if user_signed_in?
       @unviewed_notifications = current_user.unviewed_notifications
-      # Do not show more than 10 notifications (unless they are unread)
-      if @unviewed_notifications.size < 10
-        @notifications = current_user.notifications.limit(10 - @unviewed_notifications.size)
-      else
-        @notifications = @unviewed_notifications
-      end
+      @notifications = current_user.recent_notifications
     end
   end
 end

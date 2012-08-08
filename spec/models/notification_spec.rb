@@ -34,6 +34,14 @@ describe Notification do
 
   its(:event) { should eq(@event) }
 
+  describe "#unviewed" do
+    it "returns a scope of unviewed notifications" do
+      Notification.unviewed.should include(@notification)
+      @notification.viewed_at = Time.now
+      @notification.save
+      Notification.unviewed.should_not include(@notification)
+    end
+  end
   describe "for a new discussion" do
     before do
       @user = stub_model(User)

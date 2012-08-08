@@ -44,6 +44,17 @@
   #notifications-container .divider {
     border-color: $light-grey;
   }
+  #notifications-container .notification-item:hover {
+    background-color: $selector;
+    a, .bold-name, .notification-item-footer {
+      color: $dark-grey;
+      background-color: $selector;
+    }
+  }
+  #notifications-container .notifications-placeholder {
+    padding: 10px 15px;
+    color: $dark-grey;
+  }
   #notifications-count {
     position: absolute;
     left: 22px;
@@ -67,13 +78,6 @@
   }
   #notifications-see-more a:hover {
     text-decoration: underline;
-  }
-  #notifications-container .notification-item:hover {
-    background-color: $selector;
-    a, .bold-name, .notification-item-footer {
-      color: $dark-grey;
-      background-color: $selector;
-    }
   }
   #notification-items .notification-item {
     background-color: $unhighlighted;

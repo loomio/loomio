@@ -253,4 +253,37 @@ describe User do
       user.should be_active_for_authentication
     end
   end
+
+  describe "unviewed_notifications" do
+    it "returns notifications that the user has not viewed yet" do
+      notification = Notification.create!(:event => mock_model(Event),
+                                          :user => user)
+      user.unviewed_notifications.first.id.should == notification.id
+    end
+    it "does not return notifications that the user has viewed" do
+      notification = Notification.new(:event => mock_model(Event),
+                                      :user => user)
+      notification.viewed_at = Time.now
+      notification.save
+      user.unviewed_notifications.count.should == 0
+    end
+  end
+
+  describe "recent_notifications" do
+    it "returns 10 notifications if there are less than 10 _unread_ notifications" do
+      (0..15).each do |i|
+        notification = Notification.new(:event => stub_model(Event),
+                                        :user => user)
+        notification.viewed_at = Time.now
+        notification.save!
+      end
+      user.recent_notifications.count.should == 10
+    end
+    it "returns 20 notifications if there are 20 or more _unread_ notifications" do
+      (0..25).each do |i|
+        Notification.create!(:event => stub_model(Event), :user => user)
+      end
+      user.recent_notifications.count.should == 20
+    end
+  end
 end
