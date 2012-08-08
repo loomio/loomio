@@ -67,7 +67,7 @@
           %ul.selector-list
             - @discussion.motions.order("close_date desc").each do |closed_motion|
               - if closed_motion.closed?
-                - if @selected_closed_motion == closed_motion
-                  %li.selector-item= render @selected_closed_motion, unique_votes: @unique_votes
+                - if closed_motion == @selected_motion
+                  %li.selector-item= render @selected_motion, unique_votes: @unique_votes
                 - else
                   %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group

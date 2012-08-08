@@ -92,7 +92,7 @@ describe Vote do
     motion.discussion.activity.should == 4
   end
 
-  describe "previous_position" do
+  describe "previous_vote" do
     it "gets position from previous vote on same motion by same user
         (if any)" do
       vote = Vote.new(position: 'abstain')
@@ -100,12 +100,12 @@ describe Vote do
       vote.user = user
       vote.save!
 
-      vote = Vote.new(position: 'yes')
-      vote.motion = motion
-      vote.user = user
-      vote.save!
+      vote2 = Vote.new(position: 'yes')
+      vote2.motion = motion
+      vote2.user = user
+      vote2.save!
 
-      vote.previous_position.should == 'abstain'
+      vote2.previous_vote.id.should == vote.id
     end
   end
 end

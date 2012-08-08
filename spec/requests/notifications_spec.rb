@@ -71,12 +71,12 @@ describe "Notifications" do
         click_button("sign-in-btn")
 
         page.should have_xpath("//title", :text => "(1) Loomio")
-        find("#notifications-count").should have_content("1 Notification")
+        find("#notifications-count").should have_content("1")
 
         find("#notifications-toggle").click
 
         page.should have_xpath("//title", :text => "Loomio")
-        find("#notifications-count").should have_content("0 Notifications")
+        find("#notifications-count").should have_content("0")
         find("#notifications-container").should have_content("new discussion")
       end
 

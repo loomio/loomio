@@ -56,7 +56,7 @@ class Vote < ActiveRecord::Base
     return readable_position[self.position]
   end
 
-  def previous_position
+  def previous_vote
     prev_position = Vote.find(:first,
       :conditions => [
         'motion_id = ? AND user_id = ? AND created_at < ?',
@@ -66,6 +66,9 @@ class Vote < ActiveRecord::Base
     return prev_position
   end
 
+  def previous_position
+    previous_vote.position if previous_vote
+  end
 
   private
     def update_activity
@@ -73,7 +76,7 @@ class Vote < ActiveRecord::Base
     end
 
     def send_notifications
-      if position == "block" && previous_position != "block"
+      if position == "block" && previous_vote != "block"
         MotionMailer.motion_blocked(self).deliver
       end
     end
