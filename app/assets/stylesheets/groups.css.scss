@@ -234,11 +234,11 @@ input#user_email{
   background-color: $light-grey;
   margin: 2px;
 }
-.user-name {
+.membership-user-name {
   color: $mid-grey;
-  width: 149px;
-  display: inline-block;
-  @include ie7-inline-block();
+  /*width: 149px;*/
+  float: left;
+  display: inline;
 }
 .admin-controls {
   float: right;
