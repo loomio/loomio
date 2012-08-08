@@ -104,7 +104,6 @@ describe Membership do
 
     context do
       before do
-        @membership = group.add_member! user
         discussion = create_discussion(group: group)
         @motion = create_motion(discussion: discussion)
         vote = Vote.new

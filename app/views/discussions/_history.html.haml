@@ -12,7 +12,7 @@
             .position-icon
               = render partial: "motions/display_icons", locals: { position: message.position }
             .comment-username= link_to(message.user_name, "#")
-            .comment-label= message.position_to_s + " the proposal. " + ( message.previous_position != nil ? " (Previously: " + message.previous_position.position_to_s + " the proposal.)" : "" )
+            .comment-label= message.position_to_s + " the proposal. " + ( message.previous_vote != nil ? " (Previously: " + message.previous_vote.position_to_s + " the proposal.)" : "" )
             .position-message
               - if message.statement.present?
                 .word-break= "#{message.statement}"
