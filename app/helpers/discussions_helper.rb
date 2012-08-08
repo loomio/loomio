@@ -15,7 +15,7 @@ module DiscussionsHelper
     motion = discussion.current_motion
     css_class = ["discussion-preview"]
     css_class << "blocked" if motion.present? && motion.voting? && motion.blocked?
-    css_class << "unread" if discussion.has_activity_unread_by?(user)
+    css_class << "unread" if discussion.has_activity_unread_by?(user) || signed_out?
     css_class.join(" ")
   end
 end
