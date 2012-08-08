@@ -28,7 +28,7 @@
             .comment-avatar
               .medium-user-avatar.avatar-canvas
                 - if message.author.avatar_url.nil?
-                  %span.medium-user-initials.initials-decoration= message.author.initials
+                  %span.medium-user-initials.initials-decoration= message.author.avatar_initials
                 - else
                   = image_tag message.author.avatar_url("medium")
             .comment-right

@@ -190,11 +190,28 @@ describe User do
     end
   end
 
-  describe "initials" do
-    it "returns 'DU' if deleted_at is true (a date is present)"
-    it "returns the stored name initials in all caps if deleted_at is nil"
-    it "returns the first two characters in all caps of the email if the user's name is email and if deleted_at is nil"
+  it "sets the avatar initials after it saves" do
+    user.should_receive(:set_avatar_initials)
+    user.save!
+  end
 
+  describe "#set_avatar_initials" do
+    it "sets avatar_initials to 'DU' if deleted_at is true (a date is present)" do
+      user.deleted_at = "20/12/2002"
+      user.set_avatar_initials
+      user.avatar_initials.should == "DU"
+    end
+    it "sets avatar_initials to the first two characters in all caps of the email if the user's name is email" do
+      user.name = "bobbysin@tvhosts.com"
+      user.email = "bobbysin@tvhosts.com"
+      user.set_avatar_initials
+      user.avatar_initials.should == "BO"
+    end
+    it "returns the first two initials of the stored name" do
+      user.name = "Bob bobby sinclair"
+      user.set_avatar_initials
+      user.avatar_initials.should == "BB"
+    end
   end
 
   describe "avatar_url" do

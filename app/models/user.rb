@@ -87,6 +87,7 @@ class User < ActiveRecord::Base
 
   acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
+  before_save :set_avatar_initials
 
   def get_vote_for(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
@@ -188,14 +189,6 @@ class User < ActiveRecord::Base
     deleted_at ? "Deleted user" : read_attribute(:name)
   end
 
-  def initials
-    initials = ""
-    read_attribute(:name) == read_attribute(:email) ? initials = read_attribute(:email)[0..1] :
-        read_attribute(:name).gsub(/(?:^|\s|-|')[A-Z,a-z]/) { |first_character| initials += first_character }
-
-    deleted_at ? "DU" : initials.upcase.gsub(/ /, '')
-  end
-
   def deactivate!
     update_attribute(:deleted_at, 1.month.ago)
   end
@@ -253,6 +246,18 @@ class User < ActiveRecord::Base
     elsif avatar_kind == "uploaded"
       uploaded_avatar.url(size)
     end
+  end
+
+  def set_avatar_initials
+    initials = ""
+    if  name.blank? || name == email
+      initials = email[0..1]
+    else
+      name.gsub(/(?:^|\s|-|')[A-Z,a-z]/) { |first_character| initials += first_character }
+    end
+    initials = initials.upcase.gsub(/ /, '')
+    initials = "DU" if deleted_at
+    self.avatar_initials = initials[0..1]
   end
 
   private

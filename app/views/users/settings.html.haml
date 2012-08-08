@@ -5,8 +5,8 @@
   .row
     .span2#user-image-area
       .large-user-avatar.avatar-canvas.large-user-initials.initials-decoration#avatar-preview
-        - if @user.avatar_kind == ""
-          = @user.initials
+        - if @user.avatar_kind.blank?
+          = @user.avatar_initials
         - else
           = image_tag @user.avatar_url("large")
 
@@ -31,7 +31,7 @@
             = link_to set_avatar_kind_user_path(@user, :avatar_kind => ''), :method => :post, id: 'use_initials', :remote => true do
               %span
                 .medium-user-avatar.avatar-canvas
-                  .medium-user-initials.initials-decoration= @user.initials
+                  .medium-user-initials.initials-decoration= @user.avatar_initials
                 .image-option-label= "Use initials"
           %li.user-image-option.option-upload
             = link_to 'Upload a new image', '#', class: 'btn', id: 'upload-new-image'
