@@ -17,6 +17,13 @@ class Discussion < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   has_many :motions
   has_many :votes, through: :motions
+  has_many :comments,  :as => :commentable
+  has_many :users_with_comments, :through => :comments,
+    :source => :user, :uniq => true
+  has_many :events, :as => :eventable, :dependent => :destroy
+
+  delegate :users, :to => :group, :prefix => :group
+  delegate :full_name, :to => :group, :prefix => :group
 
   attr_accessible :group_id, :group, :title
 
@@ -26,16 +33,12 @@ class Discussion < ActiveRecord::Base
 
 
   #
-  # PERMISSION CHECKS
+  # COMMENT METHODS
   #
 
   def can_be_commented_on_by?(user)
     group.users.include? user
   end
-
-  #
-  # COMMENT METHODS
-  #
 
   def add_comment(user, comment)
     if can_be_commented_on_by? user
@@ -43,10 +46,6 @@ class Discussion < ActiveRecord::Base
       comment.save
       comment
     end
-  end
-
-  def comments
-    comment_threads.order("created_at DESC")
   end
 
   #
@@ -88,6 +87,21 @@ class Discussion < ActiveRecord::Base
     else
       created_at
     end
+  end
+
+  def participants
+    other_participants = []
+    # Include discussion author
+    unless users_with_comments.find_by_id(author.id)
+      other_participants << author
+    end
+    # Include motion authors
+    motions.each do |motion|
+      unless users_with_comments.find_by_id(motion.author.id)
+        other_participants << motion.author
+      end
+    end
+    users_with_comments.all + other_participants.uniq
   end
 
   def latest_comment_time

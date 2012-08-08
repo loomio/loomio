@@ -1,5 +1,5 @@
 %div{ class: css_class_for(discussion, current_user) }
-  %a{ href: discussion_path(discussion) }
+  %a.selector-link{ href: discussion_path(discussion) }
     %span
       .discussion-title= truncate(discussion.title, :length => 70, :separator => ' ')
       .notification-info
