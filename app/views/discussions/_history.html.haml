@@ -12,7 +12,6 @@
             .position-icon
               = render partial: "motions/display_icons", locals: { position: message.position }
             .comment-username= link_to(message.user_name, "#")
-            = pp message.old_position
             .comment-label= message.position_to_s + " the proposal. " + ( message.previous_position != nil ? " (Previously: " + message.previous_position.position_to_s + " the proposal.)" : "" )
             .position-message
               - if message.statement.present?

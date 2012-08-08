@@ -16,9 +16,11 @@ class Vote < ActiveRecord::Base
   end
 
   POSITIONS = %w[yes abstain no block]
-  # TODO get counter_cache working
-  belongs_to :motion#, :counter_cache => :votes_counter
+  POSITION_VERBS = { 'yes' => 'agreed', 'abstain' => 'abstained',
+                     'no' => 'disagreed', 'block' => 'blocked' }
+  belongs_to :motion
   belongs_to :user
+  has_many :events, :as => :eventable, :dependent => :destroy
 
   validates_presence_of :motion, :user, :position
   validates_inclusion_of :position, in: POSITIONS
@@ -28,19 +30,18 @@ class Vote < ActiveRecord::Base
 
   scope :for_user, lambda {|user| where(:user_id => user)}
 
-  attr_accessor :old_position
-
   attr_accessible :position, :statement
 
   delegate :name, :to => :user, :prefix => :user
+  delegate :group, :discussion, :to => :motion
+  delegate :users, :to => :group, :prefix => :group
+  delegate :author, :to => :motion, :prefix => :motion
+  delegate :author, :to => :discussion, :prefix => :discussion
+  delegate :name, :to => :motion, :prefix => :motion
+  delegate :name, :full_name, :to => :group, :prefix => :group
 
   after_save :send_notifications
   after_save :update_activity
-
-  def position=(new_position)
-    self.old_position = position
-    super(new_position)
-  end
 
   def can_be_edited_by?(current_user)
     current_user && user == current_user
@@ -56,24 +57,23 @@ class Vote < ActiveRecord::Base
   end
 
   def previous_position
-    prev_position = Vote.find(:first, 
+    prev_position = Vote.find(:first,
       :conditions => [
-        'motion_id = ? AND user_id = ? AND created_at < ?', 
+        'motion_id = ? AND user_id = ? AND created_at < ?',
           motion.id, self.user_id, self.created_at
       ]
     )
-    self.old_position = prev_position
     return prev_position
   end
 
 
   private
     def update_activity
-      self.motion.discussion.update_activity
+      motion.discussion.update_activity
     end
 
     def send_notifications
-      if position == "block" && old_position != "block"
+      if position == "block" && previous_position != "block"
         MotionMailer.motion_blocked(self).deliver
       end
     end

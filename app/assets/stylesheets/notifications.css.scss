@@ -1,0 +1,101 @@
+@import "settings";
+
+.bold-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.notification-item a {
+  white-space: normal;
+  /*line-height: 16px;*/
+  font-size: 0.9em;
+  color: $dark-grey
+}
+.notification-item-footer {
+  font-size: 0.85em;
+  display: block;
+  color: $mid-grey;
+}
+
+.navbar {
+  #notifications-container .a {
+    padding-left: 0px;
+  }
+  #notifications-container .notification-icon {
+    float: left;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    right: 5px;
+    bottom: 5px;
+    background-repeat: no-repeat;
+    background-image:url("/assets/notification-icon.png");
+    opacity: 0.8;
+  }
+  #notifications-container .dropdown-menu {
+    width: 350px;
+    height: 450px;
+    background-color: $selector-panel;
+  }
+  #notifications-container .dropdown-menu h3 {
+    padding-left: 15px;
+    color: #333;
+  }
+  #notifications-container .divider {
+    border-color: $light-grey;
+  }
+  #notifications-container .notification-item:hover {
+    background-color: $selector;
+    a, .bold-name, .notification-item-footer {
+      color: $dark-grey;
+      background-color: $selector;
+    }
+  }
+  #notifications-container .notifications-placeholder {
+    padding: 10px 15px;
+    color: $dark-grey;
+  }
+  #notifications-count {
+    position: absolute;
+    left: 22px;
+    bottom: 19px;
+    padding: 0px 3px;
+    font-size: $font-tinywiny;
+  }
+  #notification-items {
+    overflow-y: auto;
+    height: 390px;
+  }
+  #notifications-see-more {
+    border-top: 1px solid $light-grey;
+  }
+  #notifications-see-more a {
+    padding: 0px;
+    padding-top: 8px;
+    text-align: center;
+    color: $dark-grey;
+    font-weight: bold;
+  }
+  #notifications-see-more a:hover {
+    text-decoration: underline;
+  }
+  #notification-items .notification-item {
+    background-color: $unhighlighted;
+  }
+  #notification-items .notification-item.unread {
+    background-color: $highlighted;
+  }
+}
+
+body.notifications.index .container {
+  li.notification-item {
+    background-color: white;
+    padding: 5px 10px;
+  }
+  li.notification-item:hover {
+    background-color: $selector;
+  }
+  li.notification-item.divider {
+    padding: 0px;
+  }
+}

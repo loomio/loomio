@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe GroupsController do
   let(:group) { stub_model(Group) }
+  let(:user)  { stub_model(User) }
 
   context "logged in user" do
     before :each do
@@ -150,17 +151,31 @@ describe GroupsController do
       response.should redirect_to(group_url(assigns(:group)))
     end
 
-    it "adds multiple members" do
-      group = Group.make!
-      group.add_admin! @user
-      user2 = User.make!
-      user3 = User.make!
+    describe "add_members" do
+      before do
+        @user2 = User.make!
+        @user3 = User.make!
+        @group = Group.make!
+        @group.add_admin! @user
+        @group.stub(:add_member!)
+        Group.stub(:find).with(@group.id.to_s).and_return(@group)
+        Event.stub(:user_added_to_group!)
+      end
 
-      post :add_members, id: group.id,
-        "user_#{user2.id}"  => 1, "user_#{user3.id}" => 1
+      it "adds members to group" do
+        @group.should_receive(:add_member!).with(@user2, @user)
+        @group.should_receive(:add_member!).with(@user3, @user)
 
-      group.users.should include(user2)
-      group.users.should include(user3)
+        post :add_members, id: @group.id,
+          "user_#{@user2.id}" => 1, "user_#{@user3.id}" => 1
+      end
+
+      it "fires user_added_to_group event" do
+        Event.should_receive(:user_added_to_group!).exactly(2).times
+
+        post :add_members, id: @group.id,
+          "user_#{@user2.id}" => 1, "user_#{@user3.id}" => 1
+      end
     end
 
     describe "archiving a group" do

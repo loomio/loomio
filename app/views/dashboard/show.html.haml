@@ -36,7 +36,7 @@
             %ul.selector-list
               - current_motions_exist = false
               - @motions_not_voted.each do |motion|
-                %li.selector-item.undecided= render '/motions/motion_preview', motion: motion, this_group: nil
+                %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil
                 - current_motions_exist = true
               - @motions_voted.each do |motion|
                 %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil

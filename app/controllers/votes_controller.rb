@@ -10,10 +10,10 @@ class VotesController < GroupBaseController
   def destroy
     resource
     if @motion.voting?
-      destroy! { @motion }
+      destroy! { @motion.discussion }
     else
-      flash[:error] = "You can only delete your vote during the 'voting' phase"
-      redirect_to @motion
+      flash[:error] = "The proposal has closed. You can no longer modify your posiiton."
+      redirect_to @motion.discussion
     end
   end
 
@@ -23,11 +23,15 @@ class VotesController < GroupBaseController
       @vote = Vote.new(params[:vote])
       @vote.motion = @motion
       @vote.user = current_user
-      @vote.save
-      flash[:success] = "Your vote has been submitted"
+      if @vote.save
+        fire_event(@vote)
+        flash[:success] = "Position submitted"
+      else
+        flash[:warning] = "Your position could not be submitted"
+      end
       redirect_to :back
     else
-      flash[:error] = "Can only vote in voting phase"
+      flash[:error] = "This proposal has closed. You can no longer decide on it."
       redirect_to @motion
     end
   end
@@ -40,6 +44,7 @@ class VotesController < GroupBaseController
       @vote.motion = @motion
       @vote.user = current_user
       if @vote.save
+        fire_event(@vote)
         flash[:success] = "Vote updated."
       else
         flash[:error] = "Could not update vote."
@@ -54,5 +59,15 @@ class VotesController < GroupBaseController
 
     def group
       group = Motion.find(params[:motion_id]).group
+    end
+
+    def fire_event(vote)
+      if vote.position != vote.previous_position
+        if vote.position == "block"
+          Event.motion_blocked!(vote)
+        else
+          Event.new_vote!(vote)
+        end
+      end
     end
 end

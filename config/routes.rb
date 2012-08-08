@@ -32,6 +32,10 @@ Loomio::Application.routes.draw do
     get :new_proposal, :on => :member
   end
 
+  resources :notifications, :only => :index do
+    post :mark_as_viewed, :on => :collection, :via => :post
+  end
+
   resources :votes
   resources :memberships, except: [:new, :update, :show] do
     post :make_admin, on: :member
