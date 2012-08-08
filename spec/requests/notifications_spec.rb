@@ -76,7 +76,7 @@ describe "Notifications" do
         find("#notifications-toggle").click
 
         page.should have_xpath("//title", :text => "Loomio")
-        find("#notifications-count").should have_content("0")
+        page.should have_css("#notifications-count.hidden")
         find("#notifications-container").should have_content("new discussion")
       end
 
