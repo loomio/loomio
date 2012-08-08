@@ -13,6 +13,7 @@ $ ->
       $('#user-closed-motions').load($(this).attr('href'), ->
         $("#closed-motion-list").show()
         $("#closed-motions-loading").hide()
+        #$(".graph-preview").load(
       )
       e.preventDefault()
   )

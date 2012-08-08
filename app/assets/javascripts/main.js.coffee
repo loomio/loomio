@@ -65,10 +65,10 @@ $ ->
     event.preventDefault()
   )
 
-# The following methods are used to provide client side validation for
-# - character count
-# - presence required
-# - date validation specific for motion-form
+ #The following methods are used to provide client side validation for
+ #- character count
+ #- presence required
+ #- date validation specific for motion-form
 remove_date_error = () ->
   $(".validate-motion-close-date").parent().removeClass("error")
   $(".date-error-message").hide()
