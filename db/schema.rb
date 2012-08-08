@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120724025144) do
+ActiveRecord::Schema.define(:version => 20120808042420) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -125,9 +125,11 @@ ActiveRecord::Schema.define(:version => 20120724025144) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "access_level"
+    t.integer  "inviter_id"
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
+  add_index "memberships", ["inviter_id"], :name => "index_memberships_on_inviter_id"
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "motions", :force => true do |t|
@@ -145,6 +147,17 @@ ActiveRecord::Schema.define(:version => 20120724025144) do
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "event_id"
+    t.datetime "viewed_at"
+  end
+
+  add_index "notifications", ["event_id"], :name => "index_notifications_on_event_id"
+  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                      :default => "",    :null => false
@@ -169,17 +182,13 @@ ActiveRecord::Schema.define(:version => 20120724025144) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.datetime "deleted_at"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.boolean  "has_read_system_notice",                     :default => false, :null => false
+    t.boolean  "is_admin",                                   :default => false
     t.string   "avatar_kind"
     t.string   "uploaded_avatar_file_name"
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
-    t.boolean  "has_read_system_notice",                     :default => false, :null => false
-    t.boolean  "is_admin",                                   :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
