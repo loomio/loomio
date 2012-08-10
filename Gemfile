@@ -46,7 +46,7 @@ group :development, :test do
   gem 'debugger'
   gem 'machinist', '>= 2.0.0.beta2'
   gem 'faker'
-  gem 'rspec-rails', '~> 2.8.1'
+  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'

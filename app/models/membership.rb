@@ -25,6 +25,9 @@ class Membership < ActiveRecord::Base
 
   belongs_to :group
   belongs_to :user
+  belongs_to :inviter, :class_name => "User"
+
+  has_many :events, :as => :eventable, :dependent => :destroy
 
   #
   # ATTRIBUTES / SCOPES / DELEGATES
@@ -35,9 +38,11 @@ class Membership < ActiveRecord::Base
   scope :for_group, lambda {|group| where(:group_id => group)}
   scope :with_access, lambda {|access| where(:access_level => access)}
 
-  delegate :name, :email, :to => :user, :prefix => true
-  delegate :parent, :to => :group, :prefix => true, :allow_nil => true
-  delegate :name, :to => :group, :prefix => true
+  delegate :name, :email, :to => :user, :prefix => :user
+  delegate :parent, :to => :group, :prefix => :group, :allow_nil => true
+  delegate :name, :full_name, :to => :group, :prefix => :group
+  delegate :admins, :to => :group, :prefix => :group
+  delegate :name, :to => :inviter, :prefix => :inviter, :allow_nil => true
 
   #
   # CALLBACKS
@@ -52,7 +57,6 @@ class Membership < ActiveRecord::Base
 
   #
   # STATE MACHINE
-  #
   #
 
   include AASM

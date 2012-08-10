@@ -5,15 +5,15 @@
     %h1
       = link_to image_tag("top-bar-loomio.png", :alt => "Loomio"), "/"
     - if user_signed_in?
-      %ul.nav.secondary-nav
-        %li.dropdown#group
+      %ul.nav
+        %li.dropdown#my-groups
           %a{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
-            #group-icon
+            %span.group-icon
             -#- total_activity = current_user.activity_total
             -#- if total_activity > 1
               -##activity-count.span.label.label-important
                 -#= total_activity
-            #title
+            #my-groups-title
               = "My groups"
               %b.caret
           %ul.dropdown-menu
@@ -26,18 +26,39 @@
                   -#.notification-container
                     -#.span.label.label-important= activity
               - if group.subgroups.size > 0
-                - group.subgroups.each do |subgroup|
-                  - if current_user && current_user.groups.include?(subgroup)
-                    %li.group-item.sub-group
-                      .link-container
-                        = link_to subgroup.name.length < 40 ? subgroup.name : subgroup.name[0..37]+'...', group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
-                      -#- activity =  current_user.activity_total_in(subgroup)
-                      -#- if activity > 0
-                        -#.notification-container
-                          -#.span.label.label-important= activity
+                - group.subgroups.each do |sub_group|
+                  %li.group-item.sub-group
+                    .link-container
+                      = link_to sub_group.name.length < 40 ? sub_group.name : sub_group.name[0..37]+'...', group_path(sub_group), :class => 'view_'+sub_group.viewable_by.to_s
+                    -#- activity =  current_user.activity_total_in(sub_group)
+                    -#- if activity > 0
+                      -#.notification-container
+                        -#.span.label.label-important= activity
             %li.new-group
-              =link_to "Add New Group +", new_group_path
-      %ul.nav.pull-right
+              =link_to "+ Add New Group", new_group_path
+
+        %li.dropdown#notifications-container
+          - latest_seen_notification = notifications.first.id if notifications.exists?
+          = link_to "#", 'ajax-path' => mark_as_viewed_notifications_path(:latest_viewed => latest_seen_notification),
+                   :id => 'notifications-toggle', :class => 'dropdown-toggle', 'data-target' => '#',
+                   'data-toggle' => 'dropdown' do
+            %span.notification-icon
+            - if unviewed_notifications.size > 0
+              %span#notifications-count.label.label-important
+                = unviewed_notifications.size
+            %span= "Notifications"
+            %b.caret
+          %ul.dropdown-menu
+            %h3 Notifications
+            %li.divider
+            #notification-items
+              - if notifications.count == 0
+                .notifications-placeholder You do not have any notifications yet.
+              - notifications.each do |notification|
+                = render notification
+            #notifications-see-more= link_to "See all notifications", notifications_path
+
+      %ul.nav.secondary-nav.pull-right
         %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
         %li.dropdown#user
           %a{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}

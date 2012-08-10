@@ -62,6 +62,12 @@ class User < ActiveRecord::Base
            :conditions => { phase: 'closed' }
 
   has_many :votes
+  has_many :open_votes,
+           :class_name => 'Vote',
+           :source => :votes,
+           :through => :motions_in_voting_phase
+
+  has_many :notifications
 
   has_many :discussion_read_logs,
            :dependent => :destroy
@@ -89,6 +95,8 @@ class User < ActiveRecord::Base
   after_create :ensure_name_entry
   before_save :set_avatar_initials
 
+  #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
+
   def get_vote_for(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
   end
@@ -113,11 +121,31 @@ class User < ActiveRecord::Base
     memberships.for_group(group).first
   end
 
+  def unviewed_notifications
+    notifications.unviewed
+  end
+
+  # Returns most recent notifications
+  #   lower_limit - (minimum # of notifications returned)
+  #   upper_limit - (maximum # of notifications returned)
+  def recent_notifications(lower_limit=10, upper_limit=20)
+    if unviewed_notifications.count < lower_limit
+      notifications.limit(lower_limit - unviewed_notifications.size)
+    else
+      unviewed_notifications.limit(upper_limit)
+    end
+  end
+
+  def mark_notifications_as_viewed!(latest_viewed_id)
+    unviewed_notifications.where("id <= ?", latest_viewed_id).
+      update_all(:viewed_at => Time.now)
+  end
+
   def self.invite_and_notify!(user_params, inviter, group)
     new_user = User.invite!(user_params, inviter) do |u|
       u.skip_invitation = true
     end
-    group.add_member! new_user
+    membership = group.add_member! new_user, inviter
     UserMailer.invited_to_loomio(new_user, inviter, group).deliver
     new_user
   end

@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120808011822) do
-
+ActiveRecord::Schema.define(:version => 20120808042420) do
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
     t.string   "resource_type", :null => false
@@ -91,6 +90,16 @@ ActiveRecord::Schema.define(:version => 20120808011822) do
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
   add_index "discussions", ["group_id"], :name => "index_discussions_on_group_id"
 
+  create_table "events", :force => true do |t|
+    t.string   "kind"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "eventable_id"
+    t.string   "eventable_type"
+  end
+
+  add_index "events", ["eventable_id"], :name => "index_events_on_eventable_id"
+
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -115,9 +124,11 @@ ActiveRecord::Schema.define(:version => 20120808011822) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "access_level"
+    t.integer  "inviter_id"
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
+  add_index "memberships", ["inviter_id"], :name => "index_memberships_on_inviter_id"
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "motions", :force => true do |t|
@@ -135,6 +146,17 @@ ActiveRecord::Schema.define(:version => 20120808011822) do
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "event_id"
+    t.datetime "viewed_at"
+  end
+
+  add_index "notifications", ["event_id"], :name => "index_notifications_on_event_id"
+  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                      :default => "",    :null => false
@@ -166,9 +188,6 @@ ActiveRecord::Schema.define(:version => 20120808011822) do
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
-    t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
-    t.boolean  "has_read_group_notice",                      :default => false, :null => false
-    t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
     t.string   "avatar_initials"
   end
 

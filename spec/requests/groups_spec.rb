@@ -163,13 +163,7 @@ describe "Groups" do
     end
 
     it "viewing a private group redirects to log-in" do
-      @user = User.make!
       @group = Group.make!(name: 'Test Group', viewable_by: :members)
-      @group.add_member!(@user)
-      @discussion = create_discussion(group: @group, author: @user)
-      @motion = create_motion(name: 'Test Motion',
-                              discussion: @discussion,
-                              author: @user, facilitator: @user)
       visit group_path(@group)
 
       should have_css("body.sessions.new")

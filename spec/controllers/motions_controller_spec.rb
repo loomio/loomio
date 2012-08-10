@@ -28,13 +28,24 @@ describe MotionsController do
     context "creating a motion" do
       before do
         Motion.stub(:new).and_return(motion)
+        Event.stub(:new_motion!)
         motion.stub(:save).and_return(true)
         controller.stub(:authorize!).with(:create, motion).and_return(true)
-        post :create, :motion => { :discussion_id => discussion.id },
-          :group_id => group.id
+        @motion_args = { :motion => { :discussion_id => discussion.id },
+          :group_id => group.id }
       end
-      it { response.should redirect_to(discussion_url(discussion)) }
-      it { flash[:success].should =~ /Proposal successfully created./ }
+      it "redirects to discussion page" do
+        post :create, @motion_args
+        response.should redirect_to(discussion_url(discussion))
+      end
+      it "sets the flash success message" do
+        post :create, @motion_args
+        flash[:success].should =~ /Proposal successfully created./
+      end
+      it "fires the new_motion event" do
+        Event.should_receive(:new_motion!)
+        post :create, @motion_args
+      end
     end
 
     context "viewing a motion" do
