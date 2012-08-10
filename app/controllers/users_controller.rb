@@ -21,7 +21,7 @@ class UsersController < BaseController
     end
 
     unless current_user.save
-      flash[:error] = "Unable to update user. Supported file types are jpeg, png, and gif."
+      flash[:error] = "Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file."
     end
     redirect_to :back
   end
