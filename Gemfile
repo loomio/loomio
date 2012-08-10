@@ -24,6 +24,7 @@ gem 'gravtastic'
 gem 'paperclip'
 gem 'kaminari'
 gem 'activeadmin'
+gem 'nokogiri'
 
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
