@@ -281,11 +281,11 @@ class User < ActiveRecord::Base
     if  name.blank? || name == email
       initials = email[0..1]
     else
-      name.gsub(/(?:^|\s|-|')[A-Z,a-z]/) { |first_character| initials += first_character }
+      name.split.each { |name| initials += name[0] }
     end
     initials = initials.upcase.gsub(/ /, '')
     initials = "DU" if deleted_at
-    self.avatar_initials = initials[0..1]
+    self.avatar_initials = initials[0..2]
   end
 
   private

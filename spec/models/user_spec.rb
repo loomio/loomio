@@ -250,10 +250,15 @@ describe User do
       user.set_avatar_initials
       user.avatar_initials.should == "BO"
     end
-    it "returns the first two initials of the stored name" do
-      user.name = "Bob bobby sinclair"
+    it "returns the first three initials of the stored name" do
+      user.name = "Bob bobby sinclair deebop"
       user.set_avatar_initials
-      user.avatar_initials.should == "BB"
+      user.avatar_initials.should == "BBS"
+    end
+    it "works for strange characters" do
+      user.name = "D'Angelo (Loco)"
+      user.set_avatar_initials
+      user.avatar_initials.should == "D("
     end
   end
 
