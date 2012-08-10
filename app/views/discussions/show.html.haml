@@ -21,6 +21,11 @@
         %h1.word-break= @discussion.title
       - if can? :add_comment, @discussion
         = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
+          .medium-user-avatar.avatar-canvas
+            - if current_user.avatar_url
+              = image_tag current_user.avatar_url(:medium)
+            - else
+              %span.medium-user-initials.initials-decoration= current_user.avatar_initials
           = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
           = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment'
       = render 'history', discussion: @discussion, history: @discussion.history
@@ -60,7 +65,7 @@
                 = link_to "Close proposal", close_motion_voting_path(@current_motion),
                   confirm: "Are you sure you want to close this motion?", method: :post
         %ul.selector-list
-          - if @selected_closed_motion
+          - if @selected_motion && (@selected_motion != @current_motion)
             %li.selector-item.current-proposal
               = render '/motions/motion_preview', motion: @current_motion, this_group: @group
           - else
@@ -82,7 +87,7 @@
           %ul.selector-list
             - @discussion.motions.order("close_date desc").each do |closed_motion|
               - if closed_motion.closed?
-                - if @selected_closed_motion == closed_motion
-                  %li.selector-item= render @selected_closed_motion, unique_votes: @unique_votes
+                - if closed_motion == @selected_motion
+                  %li.selector-item= render @selected_motion, unique_votes: @unique_votes
                 - else
                   %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
