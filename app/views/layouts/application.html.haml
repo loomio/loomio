@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Loomio
+    %title= display_title @unviewed_notifications
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -21,7 +21,8 @@
       })();
 
   %body{class: "#{controller_name} #{action_name}"}
-    = render 'header'
+    = render 'header', :notifications => @notifications,
+      :unviewed_notifications => @unviewed_notifications
     .container
       = render 'flash_messages', :flash => flash
       = yield

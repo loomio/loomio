@@ -35,6 +35,10 @@ Loomio::Application.routes.draw do
   match "/discussions/:id/newer_unread_discussion", :to => "discussions#newer_unread_discussion", :as => :newer_unread_discussion
   match "/discussions/:id/older_unread_discussion", :to => "discussions#older_unread_discussion", :as => :older_unread_discussion
 
+  resources :notifications, :only => :index do
+    post :mark_as_viewed, :on => :collection, :via => :post
+  end
+
   resources :votes
   resources :memberships, except: [:new, :update, :show] do
     post :make_admin, on: :member
@@ -43,7 +47,10 @@ Loomio::Application.routes.draw do
     post :ignore_request, on: :member, as: :ignore_request_for
     post :cancel_request, on: :member, as: :cancel_request_for
   end
-  resources :users
+  resources :users do
+    post :set_avatar_kind, on: :member
+    post :upload_new_avatar, on: :member
+  end
   resources :comments, only: :destroy do
     post :like, on: :member
     post :unlike, on: :member

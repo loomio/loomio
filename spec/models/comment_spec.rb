@@ -6,6 +6,8 @@ describe Comment do
   let(:comment) { Comment.create(commentable_id: discussion.id,
                    commentable_type: 'Discussion', user_id: user.id) }
 
+  it { should have_many(:events).dependent(:destroy) }
+
   describe "creating a comment on a discussion" do
     it "updates discussion.last_comment_at" do
       discussion = create_discussion
@@ -38,11 +40,15 @@ describe Comment do
 
   context "liked by user" do
     before do
-      comment.like user
+      @like = comment.like user
     end
 
     it "increases like count" do
       comment.likes.count.should == 1
+    end
+
+    it "returns a CommentVote object" do
+      @like.class.name.should == "CommentVote"
     end
 
     context "liked again by the same user" do
