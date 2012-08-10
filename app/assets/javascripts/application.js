@@ -23,5 +23,6 @@
 //= require main
 //= require groups
 //= require motions
+//= require users
 //= require notifications
 //= require dashboard

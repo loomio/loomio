@@ -189,6 +189,7 @@ ActiveRecord::Schema.define(:version => 20120808042420) do
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
+    t.string   "avatar_initials"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

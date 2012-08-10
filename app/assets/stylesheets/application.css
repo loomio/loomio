@@ -12,4 +12,6 @@
  *= require dashboard
  *= require notifications
  *= require motions
+ *= require users
+ *= require memberships
 */

@@ -1,4 +1,41 @@
-=form_for @user do |f|
+= form_for [@user], :html => { :multipart => true } do |f|
   = f.label :name
   = f.text_field :name
-  = f.submit "Update name", class: "btn btn-info"
+  %h3 Picture
+  .row
+    .span2#user-image-area
+      .large-user-avatar.avatar-canvas.large-user-initials.initials-decoration#avatar-preview
+        - if @user.avatar_kind.blank?
+          = @user.avatar_initials
+        - else
+          = image_tag @user.avatar_url("large")
+
+    .span3
+      #user-image-options
+        %ul
+          - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
+            %li.user-image-option.option-uploaded.clearfix
+              = link_to set_avatar_kind_user_path(@user, :avatar_kind => 'uploaded'), :method => :post, id: 'use_uploaded', :remote => true do
+                %span
+                  .medium-user-avatar.avatar-canvas#user-uploaded-image
+                    = image_tag @user.uploaded_avatar.url(:medium)
+                  .image-option-label= "Use uploaded image"
+          - if @user.gravatar?(@user.email)
+            %li.user-image-option.option-gravatar.clearfix
+              = link_to set_avatar_kind_user_path(@user, :avatar_kind => 'gravatar'), :method => :post, id: 'use_gravatar', :remote => true do
+                %span
+                  .medium-user-avatar.avatar-canvas
+                    = image_tag @user.gravatar_url(:size => User::MEDIUM_IMAGE)
+                  .image-option-label= "Use gravatar"
+          %li.user-image-option.option-initials.clearfix
+            = link_to set_avatar_kind_user_path(@user, :avatar_kind => ''), :method => :post, id: 'use_initials', :remote => true do
+              %span
+                .medium-user-avatar.avatar-canvas
+                  .medium-user-initials.initials-decoration= @user.avatar_initials
+                .image-option-label= "Use initials"
+          %li.user-image-option.option-upload
+            = link_to 'Upload a new image', '#', class: 'btn', id: 'upload-new-image'
+  = hidden_field_tag("user[avatar_kind]", "", :id => "user-avatar-kind")
+  = f.submit "Update Settings", class: "btn btn-info"
+= form_for [@user], :html => { :multipart => true, :id => 'upload-form' }, :url => upload_new_avatar_user_path(@user), :method => 'post' do
+  = file_field_tag :uploaded_avatar, id: 'uploaded-avatar', class: 'hidden'
