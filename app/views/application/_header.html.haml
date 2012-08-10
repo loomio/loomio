@@ -62,6 +62,11 @@
         %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
         %li.dropdown#user
           %a{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
+            .small-user-avatar.avatar-canvas#header-user-image
+              - if current_user.avatar_url.nil?
+                %span.small-user-initials.initials-decoration= current_user.avatar_initials
+              - else
+                = image_tag current_user.avatar_url("small")
             = current_user.name
             %b.caret
           %ul.dropdown-menu

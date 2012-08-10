@@ -44,7 +44,10 @@ Loomio::Application.routes.draw do
     post :ignore_request, on: :member, as: :ignore_request_for
     post :cancel_request, on: :member, as: :cancel_request_for
   end
-  resources :users
+  resources :users do
+    post :set_avatar_kind, on: :member
+    post :upload_new_avatar, on: :member
+  end
   resources :comments, only: :destroy do
     post :like, on: :member
     post :unlike, on: :member

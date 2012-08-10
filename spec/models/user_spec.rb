@@ -20,6 +20,8 @@ describe User do
     user.should have(1).errors_on(:email)
   end
 
+  it "has uploaded avatar less than 1000kb "
+
   it "email can have an apostrophe" do
     user = User.new
     user.email = "mr.d'arcy@gumby.com"
@@ -229,6 +231,80 @@ describe User do
     it "returns the stored name if deleted_at is nil" do
       user.name.should_not == 'Deleted user'
     end
+  end
+
+  it "sets the avatar initials after it saves" do
+    user.should_receive(:set_avatar_initials)
+    user.save!
+  end
+
+  describe "#set_avatar_initials" do
+    it "sets avatar_initials to 'DU' if deleted_at is true (a date is present)" do
+      user.deleted_at = "20/12/2002"
+      user.set_avatar_initials
+      user.avatar_initials.should == "DU"
+    end
+    it "sets avatar_initials to the first two characters in all caps of the email if the user's name is email" do
+      user.name = "bobbysin@tvhosts.com"
+      user.email = "bobbysin@tvhosts.com"
+      user.set_avatar_initials
+      user.avatar_initials.should == "BO"
+    end
+    it "returns the first three initials of the stored name" do
+      user.name = "Bob bobby sinclair deebop"
+      user.set_avatar_initials
+      user.avatar_initials.should == "BBS"
+    end
+    it "works for strange characters" do
+      user.name = "D'Angelo (Loco)"
+      user.set_avatar_initials
+      user.avatar_initials.should == "D("
+    end
+  end
+
+  describe "avatar_url" do
+    it "returns gravatar url if avatar_kind is 'gravatar'" do
+      user.should_receive(:gravatar_url).and_return('www.gravatar/spike')
+      user.avatar_kind = 'gravatar'
+      user.avatar_url.should == 'www.gravatar/spike'
+    end
+
+    context "where avatar_kind is 'uploaded'" do
+      before do
+        @uploaded_avatar = double "paperclip_image"
+        user.should_receive(:uploaded_avatar).and_return(@uploaded_avatar)
+      end
+      it "returns medium url if no size is specified" do
+        @uploaded_avatar.should_receive(:url).with(:medium).and_return('www.gravatar/uploaded/mike')
+        user.avatar_kind = 'uploaded'
+        user.avatar_url.should == 'www.gravatar/uploaded/mike'
+      end
+      it "returns large url if large size is specified" do
+        @uploaded_avatar.should_receive(:url).with(:large).and_return('www.gravatar/uploaded/mike')
+        user.avatar_kind = 'uploaded'
+        user.avatar_url(:large).should == 'www.gravatar/uploaded/mike'
+      end
+      it "returns medium url if medium size is specified" do
+        @uploaded_avatar.should_receive(:url).with(:medium).and_return('www.gravatar/uploaded/mike')
+        user.avatar_kind = 'uploaded'
+        user.avatar_url(:medium).should == 'www.gravatar/uploaded/mike'
+      end
+      it "returns small url if small size is specified" do
+        @uploaded_avatar.should_receive(:url).with(:small).and_return('www.gravatar/uploaded/mike')
+        user.avatar_kind = 'uploaded'
+        user.avatar_url(:small).should == 'www.gravatar/uploaded/mike'
+      end
+    end
+
+    it "returns nil url if avatar_kind is nil" do
+      user.avatar_kind = nil
+      user.avatar_url.should == nil
+    end
+  end
+
+  describe "gravatar?(email, options = {})" do
+    it "should return true if gravatar exists"
+    it "should return false if gravater does not exist"
   end
 
   it "sets deleted_at (Time.current) when deactivate! is called" do
