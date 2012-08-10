@@ -39,7 +39,7 @@ describe UsersController do
 
   describe "#upload_new_avatar" do
     before do
-      @user = mock_model User
+      @user = User.make!
       controller.stub(:current_user).and_return(@user)
       @user.stub(:avatar_kind=).with("uploaded")
       @user.stub(:uploaded_avatar=).with("www.peter_chilltooth.jpg")
@@ -51,7 +51,7 @@ describe UsersController do
     it "displays an unsupported file-type message on failure" do
       @user.stub(:save).and_return(false)
       post :upload_new_avatar, :id => 999, :uploaded_avatar => "www.peter_chilltooth.jpg"
-      flash[:error].should =~ /Unable to update user. Supported file types are./
+      flash[:error].should =~ /Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file./
     end
     it "redirects to back" do
       @user.stub(:save).and_return(true)

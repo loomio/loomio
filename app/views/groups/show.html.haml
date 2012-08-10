@@ -2,13 +2,10 @@
   #system-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
     = link_to "×", dismiss_group_notice_for_user_path,
       :class => "close dismiss-system-notice", "data-dismiss" => "alert"
-    This is the Group page.
+    This is the Group page for #{@group.full_name}.
     %br
     %br
-    Here you can see the discussions and proposals for that group, a list of the group members, and the option to start a new discussion or proposal in your group.
-    %br
-    %br
-    Clicking on the Loomio logo in the toolbar above brings you back to this page.
+    Here you can see the discussions and proposals for this group, a list of the group members, and the option to start a new discussion or proposal in this group.
     %br
     %br
     = link_to "Click here to dismiss this message", dismiss_group_notice_for_user_path,
