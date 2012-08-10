@@ -7,16 +7,30 @@ class User < ActiveRecord::Base
   MEDIUM_IMAGE = 35
   SMALL_IMAGE = 25
   MAX_AVATAR_IMAGE_SIZE_CONST = 1000
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, :presence => true
+  validates_attachment :uploaded_avatar,
+    :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
+    :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/png", "image/gif"] }
 
   include Gravtastic
   gravtastic  :rating => 'pg',
               :default => 'none'
+
+  has_attached_file :uploaded_avatar,
+    :styles => {
+      :large => "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
+      :medium => "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
+      :small => "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
+    }
+    # Use these to change image storage location
+    #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
+    #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
 
   has_many :membership_requests,
            :conditions => { :access_level => 'request' },
@@ -73,25 +87,9 @@ class User < ActiveRecord::Base
            :dependent => :destroy
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
+                  :uploaded_avatar
 
-  # Settings for paperclip
-  attr_accessible :uploaded_avatar
-  has_attached_file :uploaded_avatar,
-    :styles => {
-      :large => "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
-      :medium => "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
-      :small => "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
-    }
-    # Use these to change image storage location
-    #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
-    #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
-
-  validates_attachment :uploaded_avatar,
-    :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
-    :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] }
-
-  acts_as_taggable_on :group_tags
   after_create :ensure_name_entry
   before_save :set_avatar_initials
 
