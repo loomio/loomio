@@ -1,3 +1,101 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "settings";
+@import "mixins";
+
+
+#user-image-area {
+  margin: 0 0 20px 20px;
+}
+
+#user-image-options {
+  h3 { margin: 0 0 0 30px; }
+  ul { list-style: none }
+}
+
+.avatar-canvas {
+  background: $selector;
+  border: 1px solid #B9B9B9;
+  text-decoration: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  color: $mid-grey;
+  text-align: center;
+  float: left;
+  margin-right: 3px;
+}
+
+.large-user-avatar {
+  width: 170px;
+  height: 170px;
+}
+
+.medium-user-avatar {
+  width: 35px;
+  height: 35px;
+}
+
+.small-user-avatar {
+  width: 23px;
+  height: 23px;
+}
+
+.initials-decoration {
+  font-weight: bold;
+  text-align: center;
+}
+
+.large-user-initials {
+  font-size: 80px;
+  line-height: 149px;
+}
+
+.medium-user-initials {
+  font-size: 14px;
+  line-height: 32px;
+}
+
+.small-user-initials {
+  font-size: 10px;
+  line-height: 22px;
+}
+
+.change-avatar-label {
+  bottom: 0;
+  text-align: center;
+  line-height: 25px;
+  display: block;
+  height: 25px;
+  border-bottom: 1px solid $light-grey;
+}
+
+li.user-image-option {
+  padding: 0px 0px;
+  margin: 0 0 10px 0;
+  width: 200px;
+  a {
+    padding: 8px 8px;
+    cursor: pointer;
+    color: $mid-grey;
+  }
+  .medium-user-image.image-canvas {
+    float: left;
+    width: 28px;
+  }
+  .image-option-label {
+    padding-left: 10px;
+    text-decoration: underline;
+    line-height: 32px;
+    float: left;
+    width: 140px;
+  }
+}
+li.user-image-option.clearfix:hover {
+  background-color: $selector
+}
+
+#user_uploaded_avatar {
+  display: none;
+}

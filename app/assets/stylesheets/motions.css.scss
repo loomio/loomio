@@ -29,6 +29,7 @@
 }
 
 .motion-preview {
+  padding: 0px 10px;
   a {
     display: block;
   }
@@ -94,8 +95,9 @@
   }
   .proposed-by {
     font-size: $font-tiny;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
+  .description { width: 430px; }
   .description p{
     font-size: $font-small;
     color: $dark-grey;
