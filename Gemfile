@@ -19,8 +19,12 @@ gem 'acts_as_commentable_with_threading'
 gem 'draper', '~> 0.11.1'
 gem 'exception_notification'
 gem 'browser'
+gem 'rmagick'
+gem 'gravtastic'
+gem 'paperclip'
 gem 'kaminari'
 gem 'activeadmin'
+gem 'nokogiri'
 
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
@@ -43,7 +47,7 @@ group :development, :test do
   gem 'debugger'
   gem 'machinist', '>= 2.0.0.beta2'
   gem 'faker'
-  gem 'rspec-rails', '~> 2.8.1'
+  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'

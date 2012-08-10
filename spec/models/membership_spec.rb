@@ -6,6 +6,8 @@ describe Membership do
   let(:user2) { User.make! }
   let(:group) { Group.make! }
 
+  it { should have_many(:events).dependent(:destroy) }
+
   describe "validation" do
     it "must have a group" do
       membership.valid?
@@ -41,6 +43,14 @@ describe Membership do
     end
   end
 
+  it "can have an inviter" do
+    membership = user.memberships.new(:group_id => group.id)
+    membership.access_level = "member"
+    membership.inviter = user2
+    membership.save!
+    membership.inviter.should == user2
+  end
+
   describe "update_counter_cache" do
     it "decrements group.memberships_count" do
       group.should_receive(:memberships).and_return([1,2])
@@ -67,9 +77,12 @@ describe Membership do
     end
   end
 
-  describe "destroy" do
+  context "destroying a membership" do
+    before do
+      @membership = group.add_member! user
+    end
+
     it "removes subgroup memberships (if existing)" do
-      membership = group.add_member! user
       # Removes user from multiple subgroups
       subgroup = Group.make
       subgroup.parent = group
@@ -83,7 +96,7 @@ describe Membership do
       subgroup3 = Group.make
       subgroup3.parent = group
       subgroup3.save
-      membership.destroy
+      @membership.destroy
 
       subgroup.users.should_not include(user)
       subgroup2.users.should_not include(user)
@@ -91,7 +104,6 @@ describe Membership do
 
     context do
       before do
-        @membership = group.add_member! user
         discussion = create_discussion(group: group)
         @motion = create_motion(discussion: discussion)
         vote = Vote.new
@@ -124,11 +136,9 @@ describe Membership do
     end
 
     it "updates memberships_count" do
-      membership = group.add_member! user
+      @membership.should_receive(:update_counter_cache)
 
-      membership.should_receive(:update_counter_cache)
-
-      membership.destroy
+      @membership.destroy
     end
   end
 

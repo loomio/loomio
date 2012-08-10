@@ -69,7 +69,8 @@ class MembershipsController < BaseController
     # request_membership
     @group = Group.find(params[:membership][:group_id])
     if @group.parent.nil? || current_user.group_membership(@group.parent)
-      @group.add_request!(current_user)
+      membership = @group.add_request!(current_user)
+      Event.membership_requested!(membership)
       flash[:notice] = "Membership requested."
       if can? :show, @group
         redirect_to group_url(@group)

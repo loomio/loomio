@@ -37,28 +37,38 @@ li.preview a {
 
 /*** comments, positions & proposals in History ***/
 #content-history {
-  #new-comment-form{
+  #new-comment-form {
     border-top: 1px solid $light-grey;
     margin-bottom: 0px;
-    padding: 10px 0 42px 10px;
+    padding: 10px 0 10px 5px;
     background-color: $comment-color;
   }
-  #new-comment-form .btn {
-    margin: 5px 5px 5px 0px;
-    padding: 4px 0 5px 0;
-    float: left;
-    width: 150px;
-    border-color: $light-grey;
-    color: $mid-grey;
-    text-shadow: none;
+
+  #comment-list li {
+    overflow: hidden;
   }
-  #new-comment{
+
+  #new-comment-form img {
+    float:left;
+    margin-right: 10px;
+  }
+
+  #new-comment {
     margin: 0 0 5px 0px;
-    width: 428px;
-    max-width: 428px;
+    width: 385px;
+    max-width: 385px;
     height: 80px;
     color: $dark-grey;
   }
+
+  #post-new-comment {
+    margin: 5px 5px 5px 45px;
+  }
+
+  #new-comment-form .medium-user-avatar.avatar-canvas {
+    margin-right: 10px;
+  }
+
   ul.history-list {
     list-style: none;
     border-bottom: 1px solid $light-grey;
@@ -70,10 +80,26 @@ li.preview a {
 
   /* comment */
   .comment{
-    padding: 5px 10px;
+    padding: 5px 10px 5px 5px;
     color: $dark-grey;
     background-color: $comment-color;
   }
+
+  .comment-avatar {
+    margin: 0 10px 0 0;
+    float: left;
+    width: 8%;
+  }
+
+  .comment img {
+    float: left;
+  }
+
+  .comment-right {
+    width: 395px;
+    float: left;
+  }
+
   .comment .comment-username{
     font-weight: bold;
     float: left;
@@ -116,7 +142,6 @@ li.preview a {
     color: $mid-grey;
   }
   .proposal-info {
-    margin-left: 0.4em;
   }
   .proposal .proposal-text{
     color: $dark-grey;
@@ -131,15 +156,12 @@ li.preview a {
 // NOTE: this code is shared with the group show page and
 //       the dashboard page.
 //
-.discussion-preview:hover {
-  background-color: $selector;
-}
 
 .discussion-preview {
   a {
     color: $dark-grey;
     display: block;
-    padding: 5px 5px 5px 10px;
+    padding: 5px 5px 5px 15px;
   }
   a:hover {
     text-decoration: none;

@@ -14,6 +14,7 @@ class MotionsController < GroupBaseController
     authorize! :create, @motion
     if @motion.save
       flash[:success] = "Proposal successfully created."
+      Event.new_motion!(@motion)
       redirect_to discussion_path(@motion.discussion)
     else
       flash[:warning] = "Proposal could not be created"
