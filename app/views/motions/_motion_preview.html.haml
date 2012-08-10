@@ -1,5 +1,5 @@
-.motion-preview.clearfix
-  %a{ href: motion_path(motion) }
+%div{ :class => get_motion_preview_class(motion) }
+  %a.selector-link{ href: motion_path(motion) }
     %span
       - if current_user
         .vote-icon

@@ -10,6 +10,7 @@
  *= require discussions
  *= require landing
  *= require dashboard
+ *= require notifications
  *= require motions
  *= require users
  *= require memberships

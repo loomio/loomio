@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe User do
   let(:user) { User.make! }
+  let(:group) { Group.make! }
 
   subject do
     user = User.new
@@ -9,6 +10,7 @@ describe User do
     user
   end
 
+  it { should have_many(:notifications) }
   it { should have(1).errors_on(:name) }
 
   it "must have a valid email" do
@@ -28,31 +30,45 @@ describe User do
   end
 
   it "has many groups" do
-    group = Group.make!
     group.add_member!(user)
     user.groups.should include(group)
   end
 
   it "has many adminable_groups" do
-    group = Group.make!
     group.add_admin!(user)
     user.adminable_groups.should include(group)
   end
 
   it "has many admin memberships" do
-    group = Group.make!
     membership = group.add_admin!(user)
     user.admin_memberships.should include(membership)
   end
 
   it "has correct group request" do
-    group = Group.make!
     Membership.make!(:group => group, :user => user)
     user.group_requests.should include(group)
   end
 
+  describe "open_votes" do
+    before do
+      @motion = create_motion
+      @motion.group.add_member! user
+      @vote = user.votes.new(:position => "yes")
+      @vote.motion = @motion
+      @vote.save
+    end
+
+    it "returns the user's votes on motions that are open" do
+      user.open_votes.should include(@vote)
+    end
+
+    it "does not return the user's votes on motions that are closed" do
+      @motion.close_voting!
+      user.open_votes.should_not include(@vote)
+    end
+  end
+
   it "has authored discussions" do
-    group = Group.make!
     group.add_member!(user)
     discussion = Discussion.new(:group => group, :title => "Hello world")
     discussion.author = user
@@ -61,7 +77,6 @@ describe User do
   end
 
   it "has authored motions" do
-    group = Group.make!
     group.add_member!(user)
     discussion = create_discussion(group: group)
     motion = create_motion(discussion: discussion, author: user)
@@ -128,7 +143,6 @@ describe User do
 
   describe "user.voted?(motion)" do
     before do
-      group = Group.make!
       group.add_member!(user)
       discussion = create_discussion(group: group)
       @motion = create_motion(discussion: discussion, author: user)
@@ -144,11 +158,20 @@ describe User do
     end
   end
 
-  it "can be invited" do
-    inviter = User.make!
-    group = Group.make!
-    user = User.invite_and_notify!({email: "foo@example.com"}, inviter, group)
-    group.users.should include(user)
+  describe "inviting user to Loomio and to group" do
+    before do
+      @inviter = User.make!
+      @group = Group.make!
+      @user = User.invite_and_notify!({email: "foo@example.com"}, @inviter, @group)
+    end
+
+    it "adds user to group" do
+      @group.users.should include(@user)
+    end
+
+    it "adds inviter to membership" do
+      @user.memberships.first.inviter.should == @inviter
+    end
   end
 
   it "invited user should have email as name" do
@@ -177,6 +200,26 @@ describe User do
     user.discussion_activity_when_last_read(@discussion).should == 4
     user.update_discussion_read_log(@discussion)
     user.discussion_activity_when_last_read(@discussion).should == 5
+  end
+
+  describe "mark_notifications_as_viewed" do
+    before do
+      @notif1 = Notification.create!(:event => mock_model(Event), :user => user)
+      @notif2 = Notification.create!(:event => mock_model(Event), :user => user)
+      @notif3 = Notification.create!(:event => mock_model(Event), :user => user)
+      user.mark_notifications_as_viewed! @notif2.id
+    end
+
+    it "marks all notifications before given notification id as viewed" do
+      user.unviewed_notifications.count.should == 1
+      @notif1.reload
+      @notif1.viewed_at.should_not be_nil
+    end
+
+    it "does not mark notifications after given notification id as viewed" do
+      @notif3.reload
+      @notif3.viewed_at.should be_nil
+    end
   end
 
   describe "name" do
@@ -279,6 +322,39 @@ describe User do
     it "returns true if deleted_at is nil" do
       user.update_attribute(:deleted_at, nil)
       user.should be_active_for_authentication
+    end
+  end
+
+  describe "unviewed_notifications" do
+    it "returns notifications that the user has not viewed yet" do
+      notification = Notification.create!(:event => mock_model(Event),
+                                          :user => user)
+      user.unviewed_notifications.first.id.should == notification.id
+    end
+    it "does not return notifications that the user has viewed" do
+      notification = Notification.new(:event => mock_model(Event),
+                                      :user => user)
+      notification.viewed_at = Time.now
+      notification.save
+      user.unviewed_notifications.count.should == 0
+    end
+  end
+
+  describe "recent_notifications" do
+    it "returns 10 notifications if there are less than 10 _unread_ notifications" do
+      (0..15).each do |i|
+        notification = Notification.new(:event => stub_model(Event),
+                                        :user => user)
+        notification.viewed_at = Time.now
+        notification.save!
+      end
+      user.recent_notifications.count.should == 10
+    end
+    it "returns 20 notifications if there are 20 or more _unread_ notifications" do
+      (0..25).each do |i|
+        Notification.create!(:event => stub_model(Event), :user => user)
+      end
+      user.recent_notifications.count.should == 20
     end
   end
 end

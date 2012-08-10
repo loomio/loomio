@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Discussion do
+  it { should have_many(:events).dependent(:destroy) }
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:group) }
   it { should validate_presence_of(:author) }
@@ -39,7 +40,7 @@ describe Discussion do
     discussion.last_comment_at.should == discussion.created_at
   end
 
-  context "discussion.history" do
+  describe "discussion.history" do
     before do
       @user = User.make
       @user.save
@@ -65,6 +66,48 @@ describe Discussion do
     end
   end
 
+  describe "discussion.participants" do
+    before do
+      @user1, @user2, @user3, @user4 =
+        User.make!, User.make!, User.make!, User.make!
+      @discussion = create_discussion(author: @user1)
+      @group = @discussion.group
+      @group.add_member! @user2
+      @group.add_member! @user3
+      @group.add_member! @user4
+      @discussion.add_comment(@user2, "givin a shout out to user3!")
+      @discussion.add_comment(@user3, "thanks 4 thah love usah two!")
+    end
+
+    it "should include users who have commented on discussion" do
+      @discussion.participants.should include(@user2)
+      @discussion.participants.should include(@user3)
+    end
+
+    it "should include the author of the discussion" do
+      @discussion.participants.should include(@user1)
+    end
+
+    it "should include discussion motion authors (if any)" do
+      previous_motion_author = User.make!
+      current_motion_author = User.make!
+      @group.add_member! previous_motion_author
+      @group.add_member! current_motion_author
+      previous_motion = create_motion(:discussion => @discussion,
+                             :author => previous_motion_author)
+      previous_motion.close_voting!
+      current_motion = create_motion(:discussion => @discussion,
+                             :author => current_motion_author)
+
+      @discussion.participants.should include(previous_motion_author)
+      @discussion.participants.should include(current_motion_author)
+    end
+
+    it "should not include users who have not commented on discussion" do
+      @discussion.participants.should_not include(@user4)
+    end
+  end
+
   describe "has_activity_unread_by?(user)" do
     before do
       @user = User.make!
@@ -86,4 +129,9 @@ describe Discussion do
       @discussion.has_activity_unread_by?(@user).should == true
     end
   end
+
+  describe "destroying discussion" do
+    it "destroys associated comments"
+  end
+
 end
