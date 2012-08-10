@@ -41,7 +41,7 @@
               %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
           - unless current_motions_exist
             %li.selector-item.no-proposals= "There are no current proposals for this group"
-        #closed-motions-list.hidden
+        #previous-motions-list.hidden
           #group-closed-motions.hidden
             %div{ class: "group_#{@group.id}" }
     .selector-panel

@@ -15,22 +15,4 @@
                 = "closed #{time_ago_in_words(motion.close_date)} ago"
               =" · " unless this_group
           .proposal-group-name= DiscussionDecorator.new(motion.discussion).display_group_name(this_group)
-      .pie{id: "graph_#{motion.id}"}
-      -#.engagement
-        -#= "#{motion.percent_voted}%"
-        -#.enguagement-label Engaged
-
-  :coffeescript
-    $ ->
-      # Display vote graph
-      @pie_graph_view = new Loomio.Views.Utils.GraphView
-        el: '.pie'
-        id_string: 'graph_#{motion.id}'
-        legend: false
-        data: #{motion.votes_graph_ready.to_json.html_safe}
-        type: 'pie'
-        tooltip_selector: '#tooltip'
-        diameter: 25
-        padding: 1
-        gap: 1
-        shadow: 0.75
+      .pie{id: "graph_#{motion.id}", 'data-votes' => motion.votes_graph_ready.to_json}
