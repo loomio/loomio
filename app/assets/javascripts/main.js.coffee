@@ -46,25 +46,6 @@ $ ->
     event.preventDefault()
   )
 
-#*** open-close motions dropdown (dashborad + groups pages)***
-$ ->
-  $("#display-closed").click((event) ->
-    $("#open-motions-list").hide()
-    $("#closed-motions-list").show()
-    $("#tick-closed").show()
-    $("#tick-current").hide()
-    $("#proposal-phase").text("Closed proposals")
-    event.preventDefault()
-  )
-  $("#display-current").click((event) ->
-    $("#open-motions-list").show()
-    $("#closed-motions-list").hide()
-    $("#tick-current").show()
-    $("#tick-closed").hide()
-    $("#proposal-phase").text("Current proposals")
-    event.preventDefault()
-  )
-
  #The following methods are used to provide client side validation for
  #- character count
  #- presence required

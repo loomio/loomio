@@ -32,7 +32,7 @@
                   %a{ href: '#', id: 'display-closed' }
                     = "Closed proposals"
                     = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
-          #open-motion-list
+          #open-motions-list
             %ul.selector-list
               - current_motions_exist = false
               - @motions_not_voted.each do |motion|
@@ -43,7 +43,7 @@
                 - current_motions_exist = true
               - unless current_motions_exist
                 %li.selector-item.no-proposals= "There are no current proposals"
-          #closed-motion-list.hidden
+          #previous-motions-list.hidden
             #user-closed-motions.hidden Loading...
         .selector-panel
           .clearfix
