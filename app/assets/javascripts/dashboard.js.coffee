@@ -47,9 +47,9 @@ $ ->
         $("#closed-motions-loading").addClass('hidden')
         $(".pie").each(->
           displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
+          )
         )
       e.preventDefault()
-      )
     )
 
 # discussions
