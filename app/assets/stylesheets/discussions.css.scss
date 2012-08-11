@@ -194,10 +194,10 @@ li.preview a {
   }
   .activity-count {
     margin-left: 18px;
-    height: 10px;
+    height: 14px;
     font-size: $font-tinywiny;
-    padding: 0.4em;
-    padding-top: 0.1em;
+    position: relative;
+    bottom: 9px;
   }
   .discussion-link {
     position: relative;

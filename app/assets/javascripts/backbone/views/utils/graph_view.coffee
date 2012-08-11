@@ -13,7 +13,7 @@ class Loomio.Views.Utils.GraphView extends Backbone.View
         title: {
           show: false,
         },
-        gridPadding: {top:0, right:2, bottom:2, left:2}
+        gridPadding: {top:0, right:1, bottom:1, left:1}
         seriesDefaults: {
           renderer: jQuery.jqplot.PieRenderer,
           rendererOptions: {
