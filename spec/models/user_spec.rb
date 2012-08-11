@@ -347,19 +347,26 @@ describe User do
 
   describe "recent_notifications" do
     it "returns 10 notifications if there are less than 10 _unread_ notifications" do
+      # Generate read notifications
       (0..15).each do |i|
         notification = Notification.new(:event => stub_model(Event),
                                         :user => user)
         notification.viewed_at = Time.now
         notification.save!
       end
+      # Generate unread notifications
+      (0..7).each do |i|
+        notification = Notification.new(:event => stub_model(Event),
+                                        :user => user)
+        notification.save!
+      end
       user.recent_notifications.count.should == 10
     end
-    it "returns 20 notifications if there are 20 or more _unread_ notifications" do
-      (0..25).each do |i|
+    it "returns 25 notifications if there are 25 or more _unread_ notifications" do
+      (0..30).each do |i|
         Notification.create!(:event => stub_model(Event), :user => user)
       end
-      user.recent_notifications.count.should == 20
+      user.recent_notifications.count.should == 25
     end
   end
 end
