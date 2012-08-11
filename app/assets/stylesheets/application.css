@@ -11,4 +11,6 @@
  *= require landing
  *= require notifications
  *= require motions
+ *= require users
+ *= require memberships
 */

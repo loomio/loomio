@@ -4,6 +4,22 @@ Loomio is a free and open-source web application that helps groups make better d
 
 ## Installation
 
+### Install ImageMagick
+
+You can install [ImageMagick](http://www.imagemagick.org/script/binary-releases.php)  with the following commands for Mac or Linux.
+
+#### Mac
+
+```
+  $ sudo port install ImageMagick
+```
+
+#### Linux
+
+```
+  $ sudo apt-get install imagemagick libmagick9-dev
+```
+
 ### Set up the database
 
 ```
@@ -62,3 +78,4 @@ If you'd like to contribute to the project, check out [Contributing to Loomio](h
 ## License
 
 MIT License. Copyright (c) 2012 Enspiral Foundation Limited
+

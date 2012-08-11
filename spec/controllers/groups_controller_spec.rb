@@ -59,6 +59,7 @@ describe GroupsController do
             @discussion = Discussion.new
             @user.authored_discussions.stub(:create!).and_return(@discussion)
             @motion = stub_model(Motion)
+            Event.stub(:new_motion!)
             @discussion.motions.stub(:new).and_return(@motion)
             @motion.stub(:save).and_return(true)
             @motion_args = { :id => @group.id,
@@ -88,6 +89,11 @@ describe GroupsController do
           it "redirects user to discussion page" do
             post :create_motion, @motion_args
             response.should redirect_to(@discussion)
+          end
+
+          it "fires event" do
+            Event.should_receive(:new_motion!)
+            post :create_motion, @motion_args
           end
 
           context "fails to create a new motion" do
