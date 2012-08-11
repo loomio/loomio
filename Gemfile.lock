@@ -87,6 +87,7 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.3)
       ffi (~> 1.0.6)
+    cocaine (0.2.1)
     coffee-filter (0.1.1)
       coffee-script (>= 2.2.0)
       haml (>= 3.0.18)
@@ -135,6 +136,7 @@ GEM
       sexp_processor (~> 3.0)
     formtastic (2.0.2)
       rails (~> 3.0)
+    gravtastic (3.2.6)
     guard (1.0.0)
       ffi (>= 0.5.0)
       thor (~> 0.14.6)
@@ -212,6 +214,12 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.5.5)
     orm_adapter (0.0.7)
+    paperclip (3.1.2)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
     pg (0.11.0)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
@@ -261,6 +269,7 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     responders (0.6.4)
+    rmagick (2.13.1)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)
@@ -350,6 +359,7 @@ DEPENDENCIES
   faker
   flay
   formtastic
+  gravtastic
   guard
   guard-coffeescript
   guard-jasmine
@@ -365,6 +375,8 @@ DEPENDENCIES
   launchy
   machinist (>= 2.0.0.beta2)
   modernizr-rails (~> 2.0.6)
+  nokogiri
+  paperclip
   pg
   rails (= 3.1.5)
   rails-backbone
@@ -372,6 +384,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
+  rmagick
   rspec-rails
   sass-rails (~> 3.1.4)
   shoulda-matchers

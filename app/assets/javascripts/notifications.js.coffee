@@ -6,7 +6,7 @@ $ ->
         $(this).attr("ajax-path")
         dataType: "script"
         success: ->
-          $("#notifications-count").hide()
+          $("#notifications-count").addClass("hidden")
           document.title = "Loomio"
       )
   )
