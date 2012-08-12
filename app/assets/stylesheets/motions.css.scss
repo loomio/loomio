@@ -78,7 +78,7 @@
     float: right;
     width: 44px;
     height: 44px;
-    margin-right: 8px;
+    left: 8px;
     z-index: 1;
   }
   .activity-count {
@@ -86,7 +86,7 @@
     font-size: $font-tinywiny;
     z-index: 2;
     position: relative;
-    left: 56px;
+    left: 50px;
     top: 3px;
   }
 }
