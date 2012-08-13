@@ -41,6 +41,7 @@ describe UsersController do
     before do
       @user = User.make!
       controller.stub(:current_user).and_return(@user)
+      controller.stub(:get_notifications)
       @user.stub(:avatar_kind=).with("uploaded")
       @user.stub(:uploaded_avatar=).with("www.peter_chilltooth.jpg")
     end
