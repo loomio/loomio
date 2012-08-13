@@ -114,6 +114,15 @@ $ ->
       event.preventDefault()
     )
 
+$ ->
+  if $(".motion").length > 0
+    #$("#yet-to-vote").hide()
+    $(".toggle-yet-to-vote").click((event) ->
+      $("#see-yet-to-vote").toggle()
+      $("#yet-to-vote").toggle()
+      event.preventDefault()
+    )
+
 # check for error and submit vote
 $ ->
   $(".vote").click((event) ->
