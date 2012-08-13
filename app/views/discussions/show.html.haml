@@ -1,7 +1,7 @@
 - if current_user && (not current_user.has_read_discussion_notice?)
-  #system-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
+  .help-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
     = link_to "×", dismiss_discussion_notice_for_user_path,
-      :class => "close dismiss-system-notice", "data-dismiss" => "alert"
+      :class => "close dismiss-help-notice", "data-dismiss" => "alert"
     This is the Discussion page for "#{@discussion.title}".
     %br
     %br
@@ -15,7 +15,7 @@
     %br
     %br
     = link_to "Click here to dismiss this message", dismiss_discussion_notice_for_user_path,
-      :class => "dismiss-discussion-notice", "data-dismiss" => "alert"
+      :class => "dismiss-help-notice", "data-dismiss" => "alert"
 =render '/groups/title', group: @group
 .row
   .span6#content-history
