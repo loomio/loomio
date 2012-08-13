@@ -1,7 +1,7 @@
 - if current_user && (not current_user.has_read_dashboard_notice?)
-  #system-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
+  .help-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
     = link_to "×", dismiss_dashboard_notice_for_user_path,
-      :class => "close dismiss-system-notice", "data-dismiss" => "alert"
+      :class => "close dismiss-help-notice", "data-dismiss" => "alert"
     Welcome to Loomio! This is the dashboard, where you can see a list of proposals and discussions that you can participate in. On the left hand side is a list of all the groups you are a member of.
     %br
     %br
@@ -13,7 +13,7 @@
     %br
     %br
     = link_to "Click here to dismiss this message", dismiss_dashboard_notice_for_user_path,
-      :class => "dismiss-system-notice", "data-dismiss" => "alert"
+      :class => "dismiss-help-notice", "data-dismiss" => "alert"
 
 #dashboard-home
   - if @groups.present?

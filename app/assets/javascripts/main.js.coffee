@@ -40,9 +40,9 @@ Application.timestampToDateObject = (timestamp)->
 
 
 $ ->
-  $(".dismiss-system-notice").click( (event)->
+  $(".dismiss-help-notice").click( (event)->
     $.post($(this).attr("href"))
-    $("#system-notice").remove()
+    $(this).parent(".help-notice").remove()
     event.preventDefault()
   )
 
