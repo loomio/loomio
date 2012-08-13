@@ -2,13 +2,16 @@
   #system-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
     = link_to "×", dismiss_discussion_notice_for_user_path,
       :class => "close dismiss-system-notice", "data-dismiss" => "alert"
-    This left-hand panel is the place to post comments, share information, and have a discussion. To add a comment, write in the text box and click “Post comment”.
+    This is the Discussion page for "#{@discussion.title}".
     %br
     %br
-    This right-hand panel is the place to see the current proposal, and how the group feels about it.
+    The left-hand panel below is the place to post comments, share information, and have a discussion. To add a comment, write in the text box and click “Post comment”.
     %br
     %br
-    Once a discussion has progressed to the point where a possible proposal for an action or decision is clear, a group member can create a proposal and it will appear in this panel. If there is not yet a proposal, the right hand panel will be blank.
+    The right-hand panel is the place to see the current proposal, and how the group feels about it.
+    Once a discussion has progressed to the point where a possible proposal for an action or decision is clear,
+    a group member can create a proposal and it will appear in this panel.
+    If there is not yet a proposal, the right hand panel will be blank.
     %br
     %br
     = link_to "Click here to dismiss this message", dismiss_discussion_notice_for_user_path,
