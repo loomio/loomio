@@ -143,6 +143,16 @@ li.preview a {
   }
 
   /* proposal */
+  .proposal-icon {
+    float: left;
+    padding-right: 0.4em;
+    display: block;
+    height: 18px;
+    width: 18px;
+    background-image:url('/assets/proposal.png');
+    background-repeat: no-repeat;
+    background-position: 2px 1px;
+  }
   .proposal{
     background: $comment-color;
     color: $mid-grey;
