@@ -113,8 +113,8 @@ ActiveRecord::Schema.define(:version => 20120808042420) do
     t.boolean  "beta_features",        :default => false
     t.string   "description"
     t.integer  "creator_id",                              :null => false
-    t.integer  "memberships_count",    :default => 0,     :null => false
     t.datetime "archived_at"
+    t.integer  "memberships_count",    :default => 0,     :null => false
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
