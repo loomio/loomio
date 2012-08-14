@@ -70,6 +70,7 @@ group :development do
 end
 
 group :test do
+  gem 'cucumber-rails', :require => false
   gem 'cane', :git => 'git://github.com/square/cane.git'
   gem 'simplecov', :require => false
   gem 'flay', :require => false
