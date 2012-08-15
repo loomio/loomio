@@ -19,6 +19,15 @@ module ApplicationHelper
     result = ""
     result += "(#{notification_size}) " if notification_size > 0
     result += "Loomio"
+    result += " - " + content_for(:title) if content_for?(:title)
+    result
+  end
+
+  def set_title(group_name, page_title)
+    title = group_name.blank? ? group_name.to_s : ""
+    title += " - " unless title.blank? || page_title.blank? 
+    title += page_title.to_s unless page_title.blank?
+    content_for :title, title 
   end
 
   def email_subject_prefix(group_name)
