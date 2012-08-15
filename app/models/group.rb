@@ -208,7 +208,7 @@ class Group < ActiveRecord::Base
     membership = add_member!(user)
     discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")
     discussion.add_comment(user, comment_str)
-    motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We use Loomio to make decisions together",
+    motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We should use Loomio to make decisions together",
       :description => motion_str)
     motion.facilitator = user
     motion.save

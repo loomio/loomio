@@ -44,6 +44,7 @@ $ ->
     $.post($(this).attr("href"))
     $(this).parent(".help-notice").remove()
     event.preventDefault()
+    event.stopPropagation()
   )
 
 # The following methods are used to provide client side validation for
