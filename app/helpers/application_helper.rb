@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def set_title(group_name, page_title)
-    title = group_name.blank? ? group_name.to_s : ""
+    title = group_name.blank? ? "" : group_name.to_s
     title += " - " unless title.blank? || page_title.blank? 
     title += page_title.to_s unless page_title.blank?
     content_for :title, title 
