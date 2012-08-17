@@ -1,12 +1,5 @@
 =render '/groups/title', group: @group
 .row
-  %section.span4
-    =render 'request_membership', group: @group
-    =render 'description', group: @group
-    =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
-    =render 'membership_requests', group: @group
-    =render 'members', group: @group
-
   %section.span8
     .selector-panel
       .clearfix
@@ -54,3 +47,9 @@
               Start new discussion
       #group-discussions.hidden
         %div{ class: "group_#{@group.id}" }
+  %section.span4
+    =render 'request_membership', group: @group
+    =render 'description', group: @group
+    =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
+    =render 'membership_requests', group: @group
+    =render 'members', group: @group
