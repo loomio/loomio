@@ -40,7 +40,3 @@
                 length: 120, omission: '...', separator: ' ')) + '"' if message.description.nil?
               .comment-time
                 = time_ago_in_words(message.created_at) + " ago"
-  :coffeescript
-    $ ->
-      @linkify = new Loomio.Views.Utils.Linkify
-        el: $(".comment-body, .proposal-text, .position-message")
