@@ -114,13 +114,13 @@ class Group < ActiveRecord::Base
   def users_sorted
     users.sort { |a,b| a.name.downcase <=> b.name.downcase }
   end
-  
+
   def admin_email
     if (admins && admins.first)
-      admins.first.email 
+      admins.first.email
     elsif (creator)
       creator.email
-    else 
+    else
       "noreply@loom.io"
     end
   end
@@ -186,7 +186,7 @@ class Group < ActiveRecord::Base
   #
 
   def discussions_sorted(user= nil)
-    if user
+    if user && user.group_membership(self)
       user.discussions.includes(:group).
       where("discussions.group_id = ? OR groups.parent_id = ?", id, id).
       order("last_comment_at DESC")
