@@ -15,7 +15,7 @@
   .group-options {
     display: inline;
     position: relative;
-    bottom: 4px;
+    top: 4px;
     float: right;
   }
   .group-options a {
@@ -109,6 +109,47 @@ li.tool-bar-item#discussion {
 
 li.tool-bar-item#discussion:hover {
   background-position: 10px 4px;
+}
+
+.sub-panel {
+  background-color: $sub-selector-panel;
+  @include border-radius(8px);
+  border: 1px solid $light-grey;
+  margin-bottom: 20px;
+  padding: 6px 9px;
+  h3 {
+    font-size: $font-medium;
+    color: $header-titles-color;
+    display: inline;
+    line-height: 1.8em;
+  }
+  .btn {
+    color: $mid-grey;
+  }
+  .edit_group .btn {
+    float: right;
+  }
+  ul {
+    border-top: none;
+    list-style: none;
+    margin: 6px 0 8px 0;
+  }
+  li {
+    line-height: 1.6em;
+    background-color: $sub-selector-panel;
+    a { color: $mid-grey; }
+  }
+  .dropdown { float: right; }
+  .dropdown li {
+    background-color: white;
+    line-height: 1em;
+  }
+  .dropdown li a {
+    color: $dark-grey;
+    text-shadow: none;
+    font-size: $font-small;
+  }
+  .dropdown li a:hover { color: $white; }
 }
 
 /*request membership panel*/
