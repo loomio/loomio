@@ -13,23 +13,23 @@ body {
 
 // typography
 
-/*selector panel header*/
+/*group title panel*/
 h1 {
+	font-size: $font-xlarge;
+  color: $mid-grey;
+  a { color: $mid-grey; }
+  a:hover { color: $mid-grey; }
+  font-weight: normal;
+  line-height: 1.8em;
+  display: inline;
+}
+/*selector panel header*/
+h2 {
     font-size: $font-large;
     color: $header-titles-color;
     font-weight: normal;
     line-height: 1.8em;
     display: inline;
-}
-/*group title panel*/
-h2 {
-	font-size: $font-large;
-  color: $mid-grey;
-  a { color: $mid-grey; }
-  a:hover { color: $mid-grey; }
-  font-weight: normal;
-  line-height: 1.2em;
-  display: inline;
 }
 /*sub panel header*/
 h3 {
@@ -48,6 +48,10 @@ h4 {
 
 // structural elements (containers etc.)
 
+.process-flow {
+  margin-bottom: 20px;
+  text-align: center;
+  }
 .selector-panel {
   background-color: $selector-panel;
   @include border-radius(8px);
@@ -55,7 +59,7 @@ h4 {
   margin-bottom: 20px;
   min-height: 59px;
   padding-top: 2px;
-  h1.panel-header {
+  h2.panel-header {
     padding-left: 10px;
     float: left;
   }
