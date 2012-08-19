@@ -10,14 +10,14 @@ body.discussions.new {
 
 /** discussion show form*/
 body.discussions.show {
-  .discussion-title {
-    width: 438px;
+  .group-title {
+    font-size: $font-tinywiny;
+    line-height: 1em;
+    margin-bottom: 0px;
+  }
+  #discussion-title {
     color: $dark-grey;
-    padding: 5px 10px 5px 10px;
-    h1 {
-      padding: 0px;
-      line-height: 1.2em;
-    }
+    margin-bottom: 30px;
   }
 }
 /*  proposal panel  */

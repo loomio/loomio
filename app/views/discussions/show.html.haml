@@ -1,9 +1,11 @@
 =render '/groups/title', group: @group
+#discussion-title
+  %h1= @discussion.title
 .row
   .span6#content-history
     .selector-panel
-      .clearfix.discussion-title
-        %h1.word-break= @discussion.title
+      .clearfix
+        %h2.panel-header Discussion
       - if can? :add_comment, @discussion
         = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
           .medium-user-avatar.avatar-canvas
@@ -18,7 +20,7 @@
   .span6#content-proposal
     .selector-panel
       .clearfix
-        %h1.panel-header Current proposal
+        %h2.panel-header Current decision
         - if @current_motion
           - unless (cannot? :edit, @current_motion) && (cannot? :close_voting, @current_motion)
             - edit_msg ="Before you go in and edit this proposal, be aware... editing a proposal after people have already stated their position can be problematic and is generally discouraged (unless you're just fixing small mistakes). Are you sure you wish to continue?"
@@ -68,7 +70,7 @@
       #previous-proposals
         .selector-panel
           .clearfix
-            %h1.panel-header Previous proposals
+            %h2.panel-header Previous decisions
           %ul.selector-list
             - @discussion.motions.order("close_date desc").each do |closed_motion|
               - if closed_motion.closed?
