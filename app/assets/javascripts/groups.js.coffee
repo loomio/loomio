@@ -67,26 +67,26 @@ $ ->
 #*** ajax for discussions on group page ***
 
 # closed proposals
-$ ->
-  if $("body.groups.show").length > 0
-    idStr = new Array
-    idStr = $('#group-closed-motions').children().attr('class').split('_')
-    $('#group-closed-motions').load("/groups/#{idStr[1]}/motions", ->
-      $("#group-closed-motions").show()
-      $("#closed-motions-loading").hide()
-    )
-$ ->
-  if $("body.groups.show").length > 0
-    $(document).on('click', '#group-closed-motions .pagination a', (e)->
-      unless $(this).parent().hasClass("gap")
-        $("#closed-motion-list").hide()
-        $("#closed-motions-loading").show()
-        $('#group-closed-motions').load($(this).attr('href'), ->
-          $("#closed-motion-list").show()
-          $("#closed-motions-loading").hide()
-        )
-        e.preventDefault()
-    )
+#$ ->
+  #if $("body.groups.show").length > 0
+    #idStr = new Array
+    #idStr = $('#group-closed-motions').children().attr('class').split('_')
+    #$('#group-closed-motions').load("/groups/#{idStr[1]}/motions", ->
+      #$("#group-closed-motions").show()
+      #$("#closed-motions-loading").hide()
+    #)
+#$ ->
+  #if $("body.groups.show").length > 0
+    #$(document).on('click', '#group-closed-motions .pagination a', (e)->
+      #unless $(this).parent().hasClass("gap")
+        #$("#closed-motion-list").hide()
+        #$("#closed-motions-loading").show()
+        #$('#group-closed-motions').load($(this).attr('href'), ->
+          #$("#closed-motion-list").show()
+          #$("#closed-motions-loading").hide()
+        #)
+        #e.preventDefault()
+    #)
 # discussions
 $ ->
   if $("body.groups.show").length > 0

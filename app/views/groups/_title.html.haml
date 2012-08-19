@@ -1,6 +1,6 @@
 - if group
   .group-title.clearfix
-    %h2= group.fancy_link
+    %h1= group.fancy_link
     #privacy{:class => group.viewable_by.to_s}
       =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
     - can_edit = can? :edit, group

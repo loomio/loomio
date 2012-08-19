@@ -1,54 +1,47 @@
 #dashboard-home
   - if @groups.present?
+    .process-flow= link_to image_tag("process-flow.png", title:'start a loomio', alt:'start a loomio'), "#",  "data-toggle" => "modal"
     .row
-      %section.span4
-        .sub-panel
-          %h3 Groups
-          .dropdown
-            = link_to image_tag("dropdown.png", title:'group settings', alt:'group settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
-            %ul.dropdown-menu.pull-right
-              %li= link_to "Create a group +", new_group_path
-          %ul
-            - current_user.root_groups.order('name').each do |group|
-              %li
-                = link_to group.name, group_path(group), :class => 'view_'+group.viewable_by.to_s
-                - if group.subgroups.size > 0
-                  - group.subgroups.each do |subgroup|
-                    - if can? :show, subgroup
-                      %li.sub-group
-                        = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
-      %section.span8
+      %section.span9#dashboard-main-section
+        -#.selector-panel
+          -#.clearfix
+            -#%h1.panel-header#proposal-phase Current proposals
+            -#.dropdown#proposals
+              -#= link_to image_tag("dropdown.png", title:'proposal settings', alt:'proposal settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
+              -#%ul.dropdown-menu.pull-right
+                -#%li
+                  -#%a{ href: '#', id: 'display-current' }
+                    -#= "Current proposals"
+                    -#= image_tag "tick.png", class: 'tick', id: 'tick-current'
+                -#%li
+                  -#%a{ href: '#', id: 'display-closed' }
+                    -#= "Closed proposals"
+                    -#= image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
+          -##open
+            -#%ul.selector-list
+              -#- current_motions_exist = false
+              -#- @motions_not_voted.each do |motion|
+                -#%li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil
+                -#- current_motions_exist = true
+              -#- @motions_voted.each do |motion|
+                -#%li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil
+                -#- current_motions_exist = true
+              -#- unless current_motions_exist
+                -#%li.selector-item.no-proposals= "There are no current proposals"
+          -##closed.hidden
+            -##user-closed-motions.hidden Loading...
+        .group-title.clearfix
+          %h1 All your groups
         .selector-panel
           .clearfix
-            %h1.panel-header#proposal-phase Current proposals
-            .dropdown#proposals
-              = link_to image_tag("dropdown.png", title:'proposal settings', alt:'proposal settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
-              %ul.dropdown-menu.pull-right
-                %li
-                  %a{ href: '#', id: 'display-current' }
-                    = "Current proposals"
-                    = image_tag "tick.png", class: 'tick', id: 'tick-current'
-                %li
-                  %a{ href: '#', id: 'display-closed' }
-                    = "Closed proposals"
-                    = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
-          #open
-            %ul.selector-list
-              - current_motions_exist = false
-              - @motions_not_voted.each do |motion|
-                %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil
-                - current_motions_exist = true
-              - @motions_voted.each do |motion|
-                %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil
-                - current_motions_exist = true
-              - unless current_motions_exist
-                %li.selector-item.no-proposals= "There are no current proposals"
-          #closed.hidden
-            #user-closed-motions.hidden Loading...
-        .selector-panel
-          .clearfix
-            %h1.panel-header Discussions
+            %h2.panel-header Loomios
+          %ul.tool-bar-list.clearfix
+            %li.tool-bar-item#proposal
+              -#%a{ href: new_discussion_path(discussion: { group_id: @group }) }
+              -#%a{ href: '#',  "data-toggle" => "modal" }
+              = link_to 'Start a new loomio', '#', "data-toggle" => "modal"
           #user-discussions.hidden Loading...
+    = render '/discussions/new_loomio'
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.
