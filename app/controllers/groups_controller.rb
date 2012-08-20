@@ -19,12 +19,11 @@ class GroupsController < GroupBaseController
     @group = GroupDecorator.new(Group.find(params[:id]))
     @subgroups = @group.subgroups.accessible_by(current_ability, :show)
     if current_user
-      @motions_voted = @group.motions_in_voting_phase_that_user_has_voted_on(current_user)
-      @motions_not_voted = @group.motions_in_voting_phase_that_user_has_not_voted_on(current_user)
+      @discussions_with_current_motion_voted_on = @group.discussions_with_current_motion_voted_on(current_user)
+      @discussions_with_current_motion_not_voted_on = @group.discussions_with_current_motion_not_voted_on(current_user)
     else
-      @motions_voted = @group.motions_in_voting_phase
+      @discussions_with_current_motion_voted_on = @group.discussions_with_current_motion
     end
-    @motions_closed = @group.motions_closed
   end
 
   def edit

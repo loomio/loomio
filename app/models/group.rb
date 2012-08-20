@@ -57,12 +57,28 @@ class Group < ActiveRecord::Base
   # ACCESSOR METHODS
   #
 
-  def motions_in_voting_phase_that_user_has_voted_on(user)
-    motions_in_voting_phase.that_user_has_voted_on(user).uniq
+  def discussions_with_current_motion
+    if discussions
+      discussions.where('discussions.has_current_motion' => true)
+    else
+      []
+    end
   end
 
-  def motions_in_voting_phase_that_user_has_not_voted_on(user)
-    motions_in_voting_phase - motions_in_voting_phase_that_user_has_voted_on(user)
+  def discussions_with_current_motion_voted_on(user)
+    if discussions
+      discussions.where('discussions.has_current_motion' => true).joins(:votes).where('votes.user_id' => 'user')
+    else
+      []
+    end
+  end
+
+  def discussions_with_current_motion_not_voted_on(user)
+    if discussions
+      discussions.where('discussions.has_current_motion' => true).joins(:votes) - discussions_with_current_motion_voted_on(user)
+    else
+      []
+    end
   end
 
   def beta_features
@@ -114,13 +130,13 @@ class Group < ActiveRecord::Base
   def users_sorted
     users.sort { |a,b| a.name.downcase <=> b.name.downcase }
   end
-  
+
   def admin_email
     if (admins && admins.first)
-      admins.first.email 
+      admins.first.email
     elsif (creator)
       creator.email
-    else 
+    else
       "noreply@loom.io"
     end
   end

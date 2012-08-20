@@ -29,25 +29,6 @@ $ ->
         event.preventDefault()
       )
 
-#*** tick on proposal dropdown ***
-$ ->
-  $("#display-closed").click((event) ->
-    $("#open").hide()
-    $("#closed").show()
-    $("#tick-closed").show()
-    $("#tick-current").hide()
-    $("#proposal-phase").text("Closed proposals")
-    event.preventDefault()
-  )
-  $("#display-current").click((event) ->
-    $("#open").show()
-    $("#closed").hide()
-    $("#tick-current").show()
-    $("#tick-closed").hide()
-    $("#proposal-phase").text("Current proposals")
-    event.preventDefault()
-  )
-
 #*** add member form ***
 $ ->
   # Only execute on group page
@@ -66,27 +47,6 @@ $ ->
 
 #*** ajax for discussions on group page ***
 
-# closed proposals
-#$ ->
-  #if $("body.groups.show").length > 0
-    #idStr = new Array
-    #idStr = $('#group-closed-motions').children().attr('class').split('_')
-    #$('#group-closed-motions').load("/groups/#{idStr[1]}/motions", ->
-      #$("#group-closed-motions").show()
-      #$("#closed-motions-loading").hide()
-    #)
-#$ ->
-  #if $("body.groups.show").length > 0
-    #$(document).on('click', '#group-closed-motions .pagination a', (e)->
-      #unless $(this).parent().hasClass("gap")
-        #$("#closed-motion-list").hide()
-        #$("#closed-motions-loading").show()
-        #$('#group-closed-motions').load($(this).attr('href'), ->
-          #$("#closed-motion-list").show()
-          #$("#closed-motions-loading").hide()
-        #)
-        #e.preventDefault()
-    #)
 # discussions
 $ ->
   if $("body.groups.show").length > 0

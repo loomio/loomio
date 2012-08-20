@@ -106,15 +106,6 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
   end
 
-  def motions_in_voting_phase_that_user_has_voted_on
-    motions_in_voting_phase.that_user_has_voted_on(self).uniq
-  end
-
-  def motions_in_voting_phase_that_user_has_not_voted_on
-    motions_in_voting_phase - motions_in_voting_phase_that_user_has_voted_on
-  end
-
-
   def is_group_admin?(group)
     memberships.for_group(group).with_access('admin').exists?
   end
@@ -150,6 +141,22 @@ class User < ActiveRecord::Base
     membership = group.add_member! new_user, inviter
     UserMailer.invited_to_loomio(new_user, inviter, group).deliver
     new_user
+  end
+
+  def discussions_with_current_motion_not_voted_on
+    if discussions
+      discussions.where('discussions.has_current_motion' => true).joins(:votes) - discussions_with_current_motion_voted_on
+    else
+      []
+    end
+  end
+
+  def discussions_with_current_motion_voted_on
+    if discussions
+      discussions.where('discussions.has_current_motion' => true).joins(:votes).where('votes.user_id' => 'current_user')
+    else
+      []
+    end
   end
 
   def discussions_sorted()
