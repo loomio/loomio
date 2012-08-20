@@ -202,6 +202,9 @@ ActiveRecord::Schema.define(:version => 20120811064555) do
     t.boolean  "has_read_group_notice",                      :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
     t.string   "avatar_initials"
+    t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
+    t.boolean  "has_read_group_notice",                      :default => false, :null => false
+    t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

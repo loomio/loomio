@@ -41,6 +41,9 @@ h4 {
   font-weight: normal;
   font-size: $font-small;
 }
+h5 {
+  font-size: $font-tiny;
+}
 
 .sub_group{
 	font-size: $font-tiny;
@@ -114,8 +117,10 @@ h4 {
     a { color: black; }
     a .proposal-title { color: black; }
   }
-  /*li.selector-item:hover, li.selector-item .unread:hover,*/
-                          /*li.selector-item .undecided:hover {*/
+  li.empty-list-message {
+    padding: 5px 10px;
+    background-color: $highlighted;
+  }
   li.selector-item a.selector-link:hover {
     background-color: $selector;
     text-decoration: none;
@@ -124,26 +129,31 @@ h4 {
     /*}*/
   }
   .pagination {
-    a { color: $mid-grey; }
-    ul { border-top: 0px; }
+    a {
+      color: $mid-grey;
+      border: 1px solid $light-grey;
+      border-left-width: 0;
+    }
     margin: 2px 0 5px 0;
   }
-  .page.active {
-    color: white;
-    background: $light-grey;
+  .pagination li.page a {
+    background-position: 16px 10px;
   }
-  .next_page, .prev {
+  .pagination ul{
+    border-top: 0px;
+  }
+  .pagination li.next_page, li.prev {
     a {
       text-indent: -100em;
       overflow: hidden;
       padding: 0 5px;
     }
   }
-  .prev a {
+  .pagination li.prev a {
     background: url(previous.png) no-repeat;
     background-position: 16px 10px;
   }
-  .next_page a {
+  .pagination li.next_page a {
     background: url(Next.png) no-repeat;
     background-position: 16px 10px;
   }
@@ -221,6 +231,12 @@ h4 {
 }
 
 // misc (move stuff out of here..)
+.helper-text {
+  h5 { font-size: $font-small;}
+  color: $mid-grey;
+  font-size: $font-tiny;
+  margin-bottom: 5px;
+}
 .loading {
   background: url(ajax-loader.gif) no-repeat;
   background-position: 300px 200px;
@@ -258,7 +274,7 @@ form {
   input, select, textarea {
 		font-size: $font-small;
 		height: auto;
-    width: 400px;
+    width: 370px;
     margin-bottom: 15px;
     display: block;
   }
@@ -268,8 +284,8 @@ form {
   }
 
   input[type="checkbox"] {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: inline;
   }
 

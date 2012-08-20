@@ -34,8 +34,9 @@ $ ->
   # Only execute on group page
   if $("body.groups").length > 0
     $(".group-add-members").click((event) ->
-      $(".group-add-members").addClass('hidden')
-      $("#invite-group-members").removeClass('hidden')
+      $(".group-add-members").hide()
+      $("#invite-group-members").show()
+      $("#user_email").focus()
       event.preventDefault()
     )
     $("#cancel-add-members").click((event) ->
@@ -110,7 +111,11 @@ $ ->
     $('#group-discussions').load("/groups/#{idStr[1]}/discussions", ->
       Application.convertUtcToRelativeTime()
       $("#group-discussions").removeClass('hidden')
+<<<<<<< HEAD
       $("#discussions-loading").addClass('hidden')
+=======
+      $("#discussions-loading").hide()
+>>>>>>> 25d697692fbf66e72146add314c0444a7172e93e
     )
 $ ->
   if $("body.groups.show").length > 0
