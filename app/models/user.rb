@@ -75,6 +75,9 @@ class User < ActiveRecord::Base
            :source => :motions,
            :conditions => { phase: 'closed' }
 
+  has_many :discussions_unvoted,
+           :source => :discussions
+
   has_many :votes
   has_many :open_votes,
            :class_name => 'Vote',
@@ -110,6 +113,7 @@ class User < ActiveRecord::Base
   def motions_in_voting_phase_that_user_has_not_voted_on
     motions_in_voting_phase - motions_in_voting_phase_that_user_has_voted_on
   end
+
 
   def is_group_admin?(group)
     memberships.for_group(group).with_access('admin').exists?
@@ -149,7 +153,7 @@ class User < ActiveRecord::Base
   end
 
   def discussions_sorted()
-    discussions.order("last_comment_at DESC")
+    discussions.where('discussions.has_current_motion' => false).order("last_comment_at DESC")
   end
 
   def update_discussion_read_log(discussion)
