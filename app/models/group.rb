@@ -186,7 +186,7 @@ class Group < ActiveRecord::Base
   #
 
   def discussions_sorted(user= nil)
-    if user
+    if user && user.group_membership(self)
       user.discussions.includes(:group).
       where("discussions.group_id = ? OR groups.parent_id = ?", id, id).
       order("last_comment_at DESC")

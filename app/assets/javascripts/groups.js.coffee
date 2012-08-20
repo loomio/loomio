@@ -55,6 +55,7 @@ $ ->
     $(".group-add-members").click((event) ->
       $(".group-add-members").hide()
       $("#invite-group-members").show()
+      $("#user_email").focus()
       event.preventDefault()
     )
     $("#cancel-add-members").click((event) ->
