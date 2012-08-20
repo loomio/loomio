@@ -39,7 +39,7 @@ describe UsersController do
 
   describe "#upload_new_avatar" do
     before do
-      @user = mock_model User
+      @user = User.make!
       controller.stub(:current_user).and_return(@user)
       controller.stub(:get_notifications)
       @user.stub(:avatar_kind=).with("uploaded")
