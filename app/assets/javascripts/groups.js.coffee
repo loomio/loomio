@@ -111,11 +111,7 @@ $ ->
     $('#group-discussions').load("/groups/#{idStr[1]}/discussions", ->
       Application.convertUtcToRelativeTime()
       $("#group-discussions").removeClass('hidden')
-<<<<<<< HEAD
       $("#discussions-loading").addClass('hidden')
-=======
-      $("#discussions-loading").hide()
->>>>>>> 25d697692fbf66e72146add314c0444a7172e93e
     )
 $ ->
   if $("body.groups.show").length > 0
