@@ -2,8 +2,6 @@ Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
-  match "/users/dismiss_system_notice", :to => "users#dismiss_system_notice",
-    :as => :dismiss_system_notice_for_user, :via => :post
 
   resources :groups, except: :index do
     post :add_members, on: :member
@@ -22,10 +20,9 @@ Loomio::Application.routes.draw do
     resources :votes
   end
   match "/motions/:id/close", :to => "motions#close_voting", :as => :close_motion_voting,
-    :via => :post
-
+        :via => :post
   match "/motions/:id/open", :to => "motions#open_voting", :as => :open_motion_voting,
-    :via => :post
+        :via => :post
 
   resources :discussions, only: [:index, :show, :new, :create] do
     post :add_comment, :on => :member
@@ -37,6 +34,7 @@ Loomio::Application.routes.draw do
   end
 
   resources :votes
+
   resources :memberships, except: [:new, :update, :show] do
     post :make_admin, on: :member
     post :remove_admin, on: :member
@@ -44,10 +42,20 @@ Loomio::Application.routes.draw do
     post :ignore_request, on: :member, as: :ignore_request_for
     post :cancel_request, on: :member, as: :cancel_request_for
   end
+
   resources :users do
     post :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
   end
+  match "/users/dismiss_system_notice", :to => "users#dismiss_system_notice",
+        :as => :dismiss_system_notice_for_user, :via => :post
+  match "/users/dismiss_dashboard_notice", :to => "users#dismiss_dashboard_notice",
+        :as => :dismiss_dashboard_notice_for_user, :via => :post
+  match "/users/dismiss_group_notice", :to => "users#dismiss_group_notice",
+        :as => :dismiss_group_notice_for_user, :via => :post
+  match "/users/dismiss_discussion_notice", :to => "users#dismiss_discussion_notice",
+        :as => :dismiss_discussion_notice_for_user, :via => :post
+
   resources :comments, only: :destroy do
     post :like, on: :member
     post :unlike, on: :member
