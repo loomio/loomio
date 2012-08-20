@@ -8,7 +8,7 @@
         %span.medium-user-initials.initials-decoration
           = comment.user.avatar_initials
   .comment-username= link_to(comment.user_name, "#")
-  .comment-body.word-break= markdown(comment.body)
+  .comment-body.word-break~ markdown(comment.body)
   .comment-time
     = time_ago_in_words(comment.created_at) + " ago"
     - if can? :like, comment

@@ -5,7 +5,7 @@
   - else
     - history.each do |message|
       - if message.is_a?(Comment)
-        %li.history-item= render message
+        %li.history-item~ render message
       - if message.is_a?(Vote)
         %li.history-item
           .comment.position.clearfix
@@ -15,7 +15,7 @@
             .comment-label= message.position_to_s + " the proposal. " + ( message.previous_vote != nil ? " (Previously: " + message.previous_vote.position_to_s + " the proposal.)" : "" )
             .position-message
               - if message.statement.present?
-                .word-break= "#{message.statement}"
+                .word-break~ markdown(message.statement)
               - else
             .comment-time
               = time_ago_in_words(message.created_at) + " ago"
