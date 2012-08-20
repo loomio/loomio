@@ -1,23 +1,5 @@
 #*** ajax for discussions ***
 
-#closed proposals
-#$ ->
-  #$('#user-closed-motions').load("/motions", ->
-    #$("#user-closed-motions").show()
-    #$("#closed-motions-loading").hide()
-  #)
-#$ ->
-  #$(document).on('click', '#user-closed-motions .pagination a', (e)->
-    #unless $(this).parent().hasClass("gap")
-      #$("#closed-motion-list").hide()
-      #$("#closed-motions-loading").show()
-      #$('#user-closed-motions').load($(this).attr('href'), ->
-        #$("#closed-motion-list").show()
-        #$("#closed-motions-loading").hide()
-      #)
-      #e.preventDefault()
-  #)
-
 # discussions
 $ ->
   $('#user-discussions').load("/discussions", ->

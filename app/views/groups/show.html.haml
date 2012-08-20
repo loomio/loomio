@@ -2,53 +2,25 @@
 =render '/groups/title', group: @group
 .row
   %section.span8
-    -#.selector-panel
-      -#.clearfix
-        -#%h2.panel-header#proposal-phase Current Proposals
-        -#.dropdown#proposals
-          -#= link_to image_tag("dropdown.png", title:'proposal settings', alt:'proposal settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
-          -#%ul.dropdown-menu.pull-right
-            -#%li
-              -#%a{ href: '#', id: 'display-current' }
-                -#= "Current proposals"
-                -#= image_tag "tick.png", class: 'tick', id: 'tick-current'
-            -#%li
-              -#%a{ href: '#', id: 'display-closed' }
-                -#= "Closed proposals"
-                -#= image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
-      -#- new_discussion = Discussion.new(group_id: @group.id)
-      -#- if (can? :create, new_discussion)# && (can? :create, Motion.new(discussion_id: new_discussion.id))
-        -#%ul.tool-bar-list.clearfix
-          -#%li.tool-bar-item#proposal
-            -#%a{ href: new_motion_group_path(@group) }
-              -#Create new proposal
-      -#%ul.selector-list
-        -##open
-          -#- current_motions_exist = false
-          -#- if @motions_not_voted
-            -#- current_motions_exist = true
-            -#- @motions_not_voted.each do |motion|
-              -#%li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
-          -#- if @motions_voted
-            -#- current_motions_exist = true
-            -#- @motions_voted.each do |motion|
-              -#%li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
-          -#- unless current_motions_exist
-            -#%li.selector-item.no-proposals= "There are no current proposals for this group"
-        -##closed.hidden
-          -##group-closed-motions.hidden
-            -#%div{ class: "group_#{@group.id}" }
     .selector-panel
       .clearfix
-        %h2.panel-header Loomios
-      - if can? :create, Discussion.new(group_id: @group.id)
-        %ul.tool-bar-list.clearfix
-          %li.tool-bar-item#proposal
-            = link_to 'Start a new loomio', '#', "data-toggle" => "modal"
-            -#%a{ href: new_discussion_path(discussion: { group_id: @group }) }
-              -#Start new loomio
+        %h2.panel-header Loomios with decisions that need your attention
+      %ul.selector-list
+        - current_motions_exist = false
+        - @discussions_with_current_motion_not_voted_on.each do |discussion|
+          %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
+          - current_motions_exist = true
+        - @discussions_with_current_motion_voted_on.each do |discussion|
+          %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
+          - current_motions_exist = true
+        - unless current_motions_exist
+          %li.selector-item.no-proposals= "There are no loomios with current decisions "
+    .selector-panel
+      .clearfix
+        %h2.panel-header Latest loomios
       #group-discussions.hidden
         %div{ class: "group_#{@group.id}" }
+
   %section.span4
     =render 'request_membership', group: @group
     =render 'description', group: @group
