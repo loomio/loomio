@@ -75,9 +75,6 @@ class User < ActiveRecord::Base
            :source => :motions,
            :conditions => { phase: 'closed' }
 
-  has_many :discussions_unvoted,
-           :source => :discussions
-
   has_many :votes
   has_many :open_votes,
            :class_name => 'Vote',
