@@ -2,12 +2,12 @@
   %a.selector-link{ href: discussion_path(discussion) }
     %span
       .clearfix
-        .discussion-title= truncate(discussion.title, :length => 70, :separator => ' ')
+        .discussion-title
+          = truncate(discussion.title, :length => 70, :separator => ' ')
+          .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
         .notification-info
           .discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
             - if activity_count_for(discussion, current_user) > 0
               .activity-count.span.label.label-important
                 = activity_count_for(discussion, current_user)
           .latest-comment-time.utc-time= discussion.latest_comment_time
-
-      .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
