@@ -278,4 +278,41 @@ describe Group do
       group.requested_users_include?(user2).should be_true
     end
   end
+
+  describe "#create_welcome_loomio(user)" do
+    before do
+      User.stub(:get_loomio_user).and_return(User.make!)
+      @group = Group.make!
+      @group.create_welcome_loomio
+    end
+
+    it "creates a new discussion" do
+      @group.discussions.count.should == 1
+    end
+    it "creates a new initial comment" do
+      @group.discussions.first.comments.count.should == 1
+    end
+    it "creates a new motion with title" do
+      @group.discussions.first.motions.count.should == 1
+    end
+
+    context "in a subgroup" do
+      before do
+        @subgroup = Group.make!
+        @subgroup.parent = @group
+        @subgroup.save
+        @subgroup.create_welcome_loomio
+      end
+
+      it "creates a new discussion" do
+        @subgroup.discussions.count.should == 1
+      end
+      it "creates a new initial comment" do
+        @subgroup.discussions.first.comments.count.should == 1
+      end
+      it "creates a new motion with title" do
+        @subgroup.discussions.first.motions.count.should == 1
+      end
+    end
+  end
 end
