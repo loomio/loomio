@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+DAY = 1000 * 60 * 60 * 24
+
 $ ->
   if $("#motion-form").length > 0
     pad2 = ((number) ->
@@ -47,17 +49,29 @@ set_close_date = ->
   remove_date_error()
   date = $("#input_date").val()
   local_datetime = new Date()
+  current_datetime = new Date()
   local_datetime.setYear(parseInt(date.substring(6,10), 10))
   month = date.substring(3,5)
   day = date.substring(0,2)
   local_datetime.setMonth(parseInt(month, 10) - 1, parseInt(day, 10))
   local_datetime.setHours(parseInt($("#date_hour").val(), 10))
   $("#motion_close_date").val(local_datetime)
+  if (local_datetime >= current_datetime)
+    $(".date-description").text("Closing " + days_between(local_datetime, current_datetime))
+  else 
+    $(".date-description").text("")
 
 remove_date_error = ->
   $(".validate-motion-close-date").parent().removeClass("error")
   $(".date-error-message").hide()
 
+days_between = (local, current) ->
+  days_passed = Math.round((local.getTime() - current.getTime()) / DAY)
+  if (days_passed == 0)
+    return "today"
+  if (days_passed == 1)
+    return days_passed + " day from now"
+  return days_passed + " days from now"
 
 # character count for statement on discussion:show page
 pluralize_characters = (num) ->
@@ -135,3 +149,4 @@ $ ->
       $('#new_vote').submit()
       event.preventDefault()
   )
+  

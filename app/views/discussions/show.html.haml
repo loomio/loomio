@@ -1,3 +1,4 @@
+- set_title @group.name, @discussion.title
 - if current_user && (not current_user.has_read_discussion_notice?)
   - message = "This is a Discussion page.\n\n The left-hand panel below is the place to post comments, "
   - message += "share information, and have a discussion. To add a comment, write in the text box and click “Post comment”.\n\n"
