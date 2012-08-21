@@ -26,3 +26,4 @@
 //= require users
 //= require notifications
 //= require dashboard
+//= require votes
