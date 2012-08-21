@@ -111,6 +111,10 @@ class User < ActiveRecord::Base
     memberships.for_group(group).first
   end
 
+  def self.get_loomio_user
+    User.where(email: "contact@loom.io").first
+  end
+
   def unviewed_notifications
     notifications.unviewed
   end

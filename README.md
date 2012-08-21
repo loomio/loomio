@@ -29,6 +29,7 @@ You can install [ImageMagick](http://www.imagemagick.org/script/binary-releases.
   $ bundle exec rake db:create
   $ bundle exec rake db:schema:load
   $ bundle exec rake db:schema:load RAILS_ENV=test
+  $ bundle exec rake db:seed
 ```
 
 ### Start the server

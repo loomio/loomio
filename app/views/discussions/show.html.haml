@@ -1,3 +1,11 @@
+- if current_user && (not current_user.has_read_discussion_notice?)
+  - message = "This is a Discussion page.\n\n The left-hand panel below is the place to post comments, "
+  - message += "share information, and have a discussion. To add a comment, write in the text box and click “Post comment”.\n\n"
+  - message += "The right-hand panel is the place to see the current proposal, and how the group feels about it. "
+  - message += "Once a discussion has progressed to the point where a possible proposal for an action or decision is clear, "
+  - message += "a group member can create a proposal and it will appear in this panel. "
+  - message += "If there is not yet a proposal, the right-hand panel will be blank.\n\n"
+  =render '/application/helper_info', message: message, path: dismiss_discussion_notice_for_user_path
 =render '/groups/title', group: @group
 #discussion-title
   %h1= @discussion.title
@@ -23,7 +31,7 @@
         %h2.panel-header Current decision
         - if @current_motion
           - unless (cannot? :edit, @current_motion) && (cannot? :close_voting, @current_motion)
-            - edit_msg ="Before you go in and edit this proposal, be aware... editing a proposal after people have already stated their position can be problematic and is generally discouraged (unless you're just fixing small mistakes). Are you sure you wish to continue?"
+            - edit_msg ="Editing a proposal after people have already stated their position can be confusing (unless you're just fixing spelling mistakes or clarifying something). If you want to change the content of the proposal, it's usually best to close it and create a new revised one. Are you sure you want to continue?"
             .dropdown
               = link_to image_tag("dropdown.png", title:'description settings', alt:'description settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
               %ul.dropdown-menu.pull-right
@@ -64,7 +72,7 @@
             %li.tool-bar-item#proposal
               =link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), id: 'new-proposal'
         %ul.selector-list
-          %li.selector-item.current-proposal.no-proposals= "There is no current proposal for this discussion"
+          %li.selector-item.empty-list-message= "There is no current proposal for this discussion"
 
     - if @discussion.motions.where("phase = 'closed'").count > 0
       #previous-proposals

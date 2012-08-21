@@ -3,7 +3,8 @@
     %span
       - if current_user
         .vote-icon
-          = render "motions/display_icons", position: current_user.position(motion)
+          - if current_user.group_membership(this_group) || this_group.nil?
+            = render "motions/display_icons", position: current_user.position(motion)
       .proposal-title-container
         .proposal-title.word-break= truncate(motion.name, :length => 60, :separator => ' ')
         .clearfix
@@ -13,5 +14,7 @@
                 = "closing in #{time_ago_in_words(motion.close_date)}"
               - else
                 = "closed #{time_ago_in_words(motion.close_date)} ago"
-              =" · " unless this_group
+            - else
+              = "no close date"
+            =" · " unless this_group
           .proposal-group-name= DiscussionDecorator.new(motion.discussion).display_group_name(this_group)
