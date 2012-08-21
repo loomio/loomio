@@ -1,6 +1,6 @@
 %ul.history-list
   - if history.count == 0
-    %li.history-item#no-messages
+    %li.selector-item.empty-list-message.history-item
       There are no messages yet in this discussion.
   - else
     - history.each do |message|
