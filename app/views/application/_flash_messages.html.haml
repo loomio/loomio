@@ -9,9 +9,9 @@
 -#
 
 - if current_user && (not current_user.has_read_system_notice?)
-  #system-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
+  .help-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
     = link_to "×", dismiss_system_notice_for_user_path,
-      :class => "close dismiss-system-notice", "data-dismiss" => "alert"
+      :class => "close dismiss-help-notice", "data-dismiss" => "alert"
     Hi there! We've just added a "notifications system" to Loomio.
     Have a look at the top of this page - that's where you'll be notified when things happen on Loomio that are relevant to you.
     %br
@@ -26,4 +26,4 @@
     %br
     %br
     = link_to "Click here to dismiss this message", dismiss_system_notice_for_user_path,
-      :class => "dismiss-system-notice", "data-dismiss" => "alert"
+      :class => "dismiss-help-notice", "data-dismiss" => "alert"
