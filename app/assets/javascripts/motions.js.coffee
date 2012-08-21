@@ -116,10 +116,13 @@ $ ->
 
 $ ->
   if $(".motion").length > 0
-    #$("#yet-to-vote").hide()
     $(".toggle-yet-to-vote").click((event) ->
-      $("#see-yet-to-vote").toggle()
-      $("#yet-to-vote").toggle()
+      if $(this).text() == "See users yet to decide"
+        $(this).text("Hide users yet to decide")
+        $("#yet-to-vote").removeClass('hidden')
+      else
+        $(".toggle-yet-to-vote").text("See users yet to decide")
+        $("#yet-to-vote").addClass('hidden')
       event.preventDefault()
     )
 
