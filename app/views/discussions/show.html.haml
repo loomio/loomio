@@ -19,8 +19,8 @@
               = image_tag current_user.avatar_url(:medium)
             - else
               %span.medium-user-initials.initials-decoration= current_user.avatar_initials
-          = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
-          = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment'
+          = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something...", tabindex: 1
+          = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment', tabindex: 2
       = render 'history', discussion: @discussion, history: @discussion.history
 
   .span6#content-proposal
@@ -68,7 +68,7 @@
         - if can? :create, Motion.new(discussion_id: @discussion.id)
           %ul.tool-bar-list.clearfix
             %li.tool-bar-item#proposal
-              =link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), id: 'new-proposal'
+              =link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), id: 'new-proposal', tabindex: 3
         %ul.selector-list
           %li.selector-item.empty-list-message= "There is no current proposal for this discussion"
 

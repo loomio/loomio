@@ -182,13 +182,17 @@ ActiveRecord::Schema.define(:version => 20120808042420) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.datetime "deleted_at"
-    t.boolean  "has_read_system_notice",                     :default => false, :null => false
-    t.boolean  "is_admin",                                   :default => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string   "avatar_kind"
     t.string   "uploaded_avatar_file_name"
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
+    t.boolean  "has_read_system_notice",                     :default => false, :null => false
+    t.boolean  "is_admin",                                   :default => false
     t.string   "avatar_initials"
     t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
     t.boolean  "has_read_group_notice",                      :default => false, :null => false

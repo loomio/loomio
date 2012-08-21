@@ -1,7 +1,7 @@
 class DiscussionsController < GroupBaseController
-  load_and_authorize_resource :except => [:show, :create, :index]
-  before_filter :authenticate_user!, :except => [:show, :index]
-  before_filter :check_group_read_permissions, :only => :show
+  load_and_authorize_resource :except => [:show, :create, :index, :newer_unread_discussion, :older_unread_discussion]
+  before_filter :authenticate_user!, :except => [:show, :index, :newer_unread_discussion, :older_unread_discussion]
+  before_filter :check_group_read_permissions, :only => [:show, :newer_unread_discussion, :older_unread_discussion]
 
   def new
     @group = GroupDecorator.new(Group.find(params[:discussion][:group_id]))
@@ -80,6 +80,14 @@ class DiscussionsController < GroupBaseController
     @motion.discussion = discussion
     @group = GroupDecorator.new(discussion.group)
     render 'motions/new'
+  end
+  
+  def newer_unread_discussion
+    redirect_to Discussion.find(params[:id])
+  end
+  
+  def older_unread_discussion
+    redirect_to Discussion.find(params[:id])
   end
 
   private

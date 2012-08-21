@@ -1,10 +1,10 @@
 module DiscussionsHelper
-  def activity_count_for(discussion, user)
+  def activity_count_for_discussion(discussion, user)
     user ? user.discussion_activity_count(discussion) : 0
   end
 
-  def enabled_icon_class_for(discussion, user)
-    if activity_count_for(discussion, user) > 0
+  def enabled_icon_class_for_discussion(discussion, user)
+    if activity_count_for_discussion(discussion, user) > 0
       "enabled-icon"
     else
       "disabled-icon"

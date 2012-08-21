@@ -182,6 +182,14 @@ class User < ActiveRecord::Base
   def discussion_activity_count(discussion)
     discussion.activity - discussion_activity_when_last_read(discussion)
   end
+  
+  def group_activity_count(group)
+    total_group_count = 0
+    group.discussions.each do |discussion|
+      total_group_count += discussion_activity_count(discussion)
+    end
+    total_group_count
+  end
 
   def self.find_by_email(email)
     User.find(:first, :conditions => ["lower(email) = ?", email.downcase])

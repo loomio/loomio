@@ -23,7 +23,11 @@
 //= require main
 //= require groups
 //= require motions
+<<<<<<< HEAD
+//= require discussions
+=======
 //= require users
 //= require notifications
+>>>>>>> d12c8f47529a919067f8c94833078de203afd857
 //= require dashboard
 //= require votes

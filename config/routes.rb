@@ -28,6 +28,9 @@ Loomio::Application.routes.draw do
     post :add_comment, :on => :member
     get :new_proposal, :on => :member
   end
+  
+  match "/discussions/:id/newer_unread_discussion", :to => "discussions#newer_unread_discussion", :as => :newer_unread_discussion
+  match "/discussions/:id/older_unread_discussion", :to => "discussions#older_unread_discussion", :as => :older_unread_discussion
 
   resources :notifications, :only => :index do
     post :mark_as_viewed, :on => :collection, :via => :post

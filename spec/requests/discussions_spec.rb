@@ -125,6 +125,70 @@ describe "Discussion" do
         should have_link("Like")
         should_not have_link("Unlike")
       end
+      
+      it "can view the newer unread discussion" do
+        @new_discussion = Discussion.new
+        @new_discussion.group = @group
+        @new_discussion.title = "New discussion!"
+        @new_discussion.author = @user
+        @new_discussion.save
+        
+        @alternate_user = User.make!
+        @group.add_member!(@alternate_user)
+        
+        @new_unread_discussion = Discussion.new
+        @new_unread_discussion.group = @group
+        @new_unread_discussion.title = "New unread discussion!"
+        @new_unread_discussion.author = @alternate_user
+        @new_unread_discussion.save
+        @new_unread_discussion.add_comment(@alternate_user, "Test comment.")
+        
+        @discussion.newer_unread_discussion(@user).should == @new_unread_discussion
+      end
+        
+      it "can view the older unread discussion" do
+        @alternate_user = User.make!
+        @group.add_member!(@alternate_user)
+        @discussion.add_comment(@alternate_user, "Test comment.")
+        
+        @new_discussion = Discussion.new
+        @new_discussion.group = @group
+        @new_discussion.title = "New discussion!"
+        @new_discussion.author = @user
+        @new_discussion.save
+        
+        @new_unread_discussion = Discussion.new
+        @new_unread_discussion.group = @group
+        @new_unread_discussion.title = "New unread discussion!"
+        @new_unread_discussion.author = @alternate_user
+        @new_unread_discussion.save
+        
+        
+        @new_unread_discussion.older_unread_discussion(@user).should == @discussion
+      end
+      
+      it "can view the newer discussion" do 
+        @new_discussion = Discussion.new
+        @new_discussion.group = @group
+        @new_discussion.title = "New discussion!"
+        @new_discussion.author = @user
+        @new_discussion.save
+        
+        @discussion.newer_discussions(@discussion, @user)[0].should == @new_discussion
+      end
+      
+      it "can view the older discussion" do
+        @old_discussion = Discussion.new
+        @old_discussion.group = @group
+        @old_discussion.title = "Old discussion!"
+        @old_discussion.author = @user
+        @old_discussion.save
+        
+        @discussion.older_discussions(@old_discussion, @user)[0].should == @discussion
+      end
+      
+      it "can get latest history time"
+      
     end
   end
 end
