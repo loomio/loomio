@@ -56,6 +56,10 @@ class Discussion < ActiveRecord::Base
     user && user.discussion_activity_count(self) > 0
   end
 
+  def current_motion_close_date
+    current_motion.close_date
+  end
+
   def current_motion
     motion = motions.where("phase = 'voting'").last if motions
     if motion

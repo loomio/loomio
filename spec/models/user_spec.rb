@@ -109,20 +109,41 @@ describe User do
     end
   end
 
-  describe "motions_in_voting_phase_that_user_has_voted_on" do
-    it "calls scope on motions_in_voting_phase" do
-      user.motions_in_voting_phase.should_receive(:that_user_has_voted_on).
-        with(user).and_return(stub(:uniq => true))
+  #describe "discussions_with_current_motion_not_voted_on" do
+    #it "should return all discussions with a current motion that a user has not voted on" do
+      #group.add_member!(user)
+      #discussion1 = create_discussion(group: group)
+      #motion1 = create_motion(discussion: discussion1, author: user)
+      #discussion2 = create_discussion(group: group)
+      #motion2 = create_motion(discussion: discussion2, author: user)
+      #vote = Vote.new(position: "yes")
+      #vote.motion = motion2
+      #vote.user = user
+      #vote.save
 
-      user.motions_in_voting_phase_that_user_has_voted_on
-    end
-  end
+      #user.discussions_with_current_motion_not_voted_on.should_receive(:discussions_with_current_motion_voted_on)
 
-  describe "motions_in_voting_phase_that_user_has_not_voted_on" do
-    it "does stuff " do
-      user.should_receive(:motions_in_voting_phase_that_user_has_not_voted_on)
+      #user.discussions_with_current_motion_not_voted_on
 
-      user.motions_in_voting_phase_that_user_has_not_voted_on
+      #user.discussions_with_current_motion_not_voted_on.should include(discussion1)
+      #user.discussions_with_current_motion_not_voted_on.should.not include(discussion2)
+    #end
+  #end
+
+  describe "discussions_with_current_motion_voted_on" do
+    it "should return all discussions with a current motion that a user has voted on" do
+      group.add_member!(user)
+      discussion1 = create_discussion(group: group)
+      motion1 = create_motion(discussion: discussion1, author: user)
+      discussion2 = create_discussion(group: group)
+      motion2 = create_motion(discussion: discussion2, author: user)
+      vote = Vote.new(position: "yes")
+      vote.motion = motion2
+      vote.user = user
+      vote.save
+
+      user.discussions_with_current_motion_voted_on.should include(discussion2)
+      user.discussions_with_current_motion_voted_on.should.not include(discussion1)
     end
   end
 

@@ -24,6 +24,8 @@ class Motion < ActiveRecord::Base
 
   after_create :initialize_discussion
   after_create :email_motion_created
+  after_create :set_discussion_has_current_motion
+  after_destroy :unset_discussion_has_current_motion
   before_save :set_disable_discussion
   before_save :format_discussion_url
 
@@ -187,6 +189,15 @@ class Motion < ActiveRecord::Base
   end
 
   private
+    def set_discussion_has_current_motion
+      discussion.has_current_motion = true
+      discussion.save
+    end
+
+    def unset_discussion_has_current_motion
+      discussion.has_current_motion = false
+      discussion.save
+    end
 
     def before_open
       self.close_date = Time.now + 1.week
@@ -203,6 +214,7 @@ class Motion < ActiveRecord::Base
 
     def after_close
       Motion.record_timestamps = true
+      unset_discussion_has_current_motion
     end
 
     def store_users_that_didnt_vote

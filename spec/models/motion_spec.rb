@@ -50,7 +50,21 @@ describe Motion do
       @discussion = create_discussion(group: group)
       @motion = create_motion(discussion: @discussion)
     end
+
+    it "sets the discussion's has_current_motion flag to true" do
+      @user = User.make!
+      @discussion = create_discussion(group: Group.make!)
+      @motion = Motion.new()
+      @motion.name = "Test motion"
+      @motion.author = @user
+      @motion.facilitator = @user
+      @motion.discussion = @discussion
+      @motion.save
+      @discussion.reload
+      @discussion.has_current_motion.should == true
+    end
   end
+
 
   it "cannot have invalid phases" do
     @motion = create_motion
@@ -126,7 +140,16 @@ describe Motion do
 
   context "destroying a motion" do
     before do
-      @motion = create_motion
+      @discussion = create_discussion(group: Group.make!)
+      @discussion.has_current_motion = true
+      @user = User.make!
+      @motion = Motion.new()
+      @motion.name = "Test motion"
+      @motion.author = @user
+      @motion.facilitator = @user
+      @motion.discussion = @discussion
+      @motion.save
+      @discussion.reload
       @vote = Vote.create(position: "no", motion: @motion, user: @motion.author)
       @comment = @motion.discussion.add_comment(@motion.author, "hello")
       @motion.destroy
@@ -134,6 +157,9 @@ describe Motion do
 
     it "deletes associated votes" do
       Vote.first.should == nil
+    end
+    it "sets the discussion's has_current_motion flag to false" do
+      @discussion.has_current_motion.should == false
     end
   end
 
@@ -145,7 +171,10 @@ describe Motion do
       user2.save
       @user3 = User.make
       @user3.save
-      @motion = create_motion(author: user1, facilitator: user1)
+      group = Group.make!
+      @discussion = create_discussion(group: group)
+      @discussion.has_current_motion = true
+      @motion = create_motion(discussion: @discussion)
       @motion.group.add_member!(user1)
       @motion.group.add_member!(user2)
       @motion.group.add_member!(@user3)
@@ -159,6 +188,11 @@ describe Motion do
       vote2.save
       @updated_at = @motion.updated_at
       @motion.close_voting!
+    end
+
+    it "sets the discussion's has_current_motion flag to false" do
+      @discussion.reload
+      @discussion.has_current_motion.should == false
     end
 
     it "stores users who did not vote" do
