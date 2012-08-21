@@ -18,7 +18,7 @@ describe "Home" do
       @group.add_member!(@user)
       @discussion = create_discussion(group: @group)
       @motion = create_motion(name: 'Test Motion', discussion: @discussion,
-                              author: @user, facilitator: @user)
+                              author: @user)
       page.driver.post user_session_path, 'user[email]' => @user.email,
                                           'user[password]' => 'password'
     end

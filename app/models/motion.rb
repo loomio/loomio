@@ -2,13 +2,12 @@ class Motion < ActiveRecord::Base
   PHASES = %w[voting closed]
 
   belongs_to :author, :class_name => 'User'
-  belongs_to :facilitator, :class_name => 'User'
   belongs_to :discussion
   has_many :votes, :dependent => :destroy
   has_many :did_not_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
 
-  validates_presence_of :name, :discussion, :author, :facilitator
+  validates_presence_of :name, :discussion, :author
   validates_inclusion_of :phase, in: PHASES
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
@@ -16,9 +15,7 @@ class Motion < ActiveRecord::Base
   validates_length_of :name, :maximum => 250
 
   delegate :email, :to => :author, :prefix => :author
-  delegate :email, :to => :facilitator, :prefix => :facilitator
   delegate :name, :to => :author, :prefix => :author
-  delegate :name, :to => :facilitator, :prefix => :facilitator
   delegate :group, :to => :discussion
   delegate :users, :full_name, :to => :group, :prefix => :group
 
@@ -31,7 +28,7 @@ class Motion < ActiveRecord::Base
   attr_accessor :enable_discussion
 
   attr_accessible :name, :description, :discussion_url, :enable_discussion
-  attr_accessible :close_date, :phase, :facilitator_id, :discussion_id
+  attr_accessible :close_date, :phase, :discussion_id
 
   include AASM
   aasm :column => :phase do

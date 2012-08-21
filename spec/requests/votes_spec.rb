@@ -11,7 +11,7 @@ describe "Votes" do
       @discussion = create_discussion(group: @group, author: @user)
       @motion = create_motion(name: 'Test Motion',
                               discussion: @discussion,
-                              author: @user, facilitator: @user)
+                              author: @user)
     end
 
     before :each do
