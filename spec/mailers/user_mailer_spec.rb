@@ -13,10 +13,6 @@ describe UserMailer do
     it 'renders the sender email' do
       @mail.from.should == ['noreply@loom.io']
     end
-
-    it 'assigns the @name variable which appears in the email body' do
-      @mail.body.encoded.should match(@group.full_name)
-    end
   end
   context 'sending email on membership approval' do
     before :all do

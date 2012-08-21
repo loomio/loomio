@@ -202,13 +202,34 @@ class Group < ActiveRecord::Base
   #
 
   def discussions_sorted(user= nil)
-    if user
+    if user && user.group_membership(self)
       user.discussions.includes(:group).
       where("discussions.group_id = ? OR groups.parent_id = ?", id, id).
       order("last_comment_at DESC")
     else
       discussions.order("last_comment_at DESC")
     end
+  end
+
+  def create_welcome_loomio
+    comment_str = "By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, the group can put their heads together to find the best way forward.\n\n" +
+      "This 'Welcome' discussion can be used to raise any questions about how to use Loomio, and to test out the features. \n\n" +
+      "Once you are finished in this particular discussion, you can click the Loomio logo at the top of the screen to go back to your dashboard and see all your current discussions and proposals.\n\n" +
+      "Click into a group to view or start discussions and proposals in that group, or view a list of the group members."
+    motion_str = "To get a feel for how Loomio works, you can participate in the decision to use Loomio in your group.\n\n" +
+      "If you're clear about your position, click one of the icons below (hover over with your mouse for a description of what each one means)\n\n" +
+      "You\'ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
+    user = User.get_loomio_user
+    parent_membership = parent.add_member!(user) if parent
+    membership = add_member!(user)
+    discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")
+    discussion.add_comment(user, comment_str)
+    motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We should use Loomio to make decisions together",
+      :description => motion_str)
+    motion.facilitator = user
+    motion.save
+    membership.destroy
+    parent_membership.destroy if parent
   end
 
   #/
@@ -229,4 +250,5 @@ class Group < ActiveRecord::Base
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent.nil?
     end
   end
+
 end

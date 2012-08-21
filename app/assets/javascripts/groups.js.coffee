@@ -54,7 +54,7 @@ $ ->
     idStr = $('#group-discussions').children().attr('class').split('_')
     $('#group-discussions').load("/groups/#{idStr[1]}/discussions", ->
       Application.convertUtcToRelativeTime()
-      $("#group-discussions").show()
+      $("#group-discussions").removeClass('hidden')
       $("#discussions-loading").hide()
     )
 $ ->

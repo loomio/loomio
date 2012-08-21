@@ -114,6 +114,18 @@ $ ->
       event.preventDefault()
     )
 
+$ ->
+  if $(".motion").length > 0
+    $(".toggle-yet-to-vote").click((event) ->
+      if $("#yet-to-vote").hasClass("hidden")
+        $(this).text("[Hide users who have not yet decided]")
+        $("#yet-to-vote").removeClass('hidden')
+      else
+        $(".toggle-yet-to-vote").text("[Show users who have not yet decided]")
+        $("#yet-to-vote").addClass('hidden')
+      event.preventDefault()
+    )
+
 # check for error and submit vote
 $ ->
   $(".vote").click((event) ->
