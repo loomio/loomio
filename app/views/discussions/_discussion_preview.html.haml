@@ -3,7 +3,11 @@
     %span
       .discussion-title= truncate(discussion.title, :length => 70, :separator => ' ')
       .notification-info
-        .latest-comment-time.utc-time= discussion.latest_comment_time
+        - if discussion.has_current_motion
+          .date-text until decision closes
+          .current-motion-close-date.utc-time= discussion.current_motion_close_date
+        - else
+          .latest-comment-time.utc-time= discussion.latest_comment_time
         .discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
           - if activity_count_for(discussion, current_user) > 0
             .activity-count.span.label.label-important

@@ -142,7 +142,7 @@ class User < ActiveRecord::Base
 
   def discussions_with_current_motion_not_voted_on
     if discussions
-      discussions.where('discussions.has_current_motion' => true).joins(:votes) - discussions_with_current_motion_voted_on
+      (discussions.where('discussions.has_current_motion' => true).uniq - discussions_with_current_motion_voted_on)
     else
       []
     end
@@ -150,7 +150,7 @@ class User < ActiveRecord::Base
 
   def discussions_with_current_motion_voted_on
     if discussions
-      discussions.where('discussions.has_current_motion' => true).joins(:votes).where('votes.user_id' => 'current_user')
+      discussions.where('discussions.has_current_motion' => true).joins(:motions => :votes).where('votes.user_id' => 'current_user').uniq
     else
       []
     end
