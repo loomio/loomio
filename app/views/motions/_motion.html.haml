@@ -35,7 +35,7 @@
         =link_to image_tag("hand-yes.png", title:"I agree", alt:"I agree"), "#", "title" => "I agree",
           "data-content" => "I agree with this and want it to go ahead.",
           "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-yes",
-          onclick: "$('#vote_position').val('yes'); $('#position-title').text('You have decided to agree');"
+          onclick: "$('#vote_position').val('yes'); $('#position-title').text('You have decided to agree'); " 
         =link_to image_tag("hand-abstain.png", title:"I abstain", alt:"I abstain"), "#", "title" => "I abstain",
           "data-content" =>  "I am happy with what the group decides without me.",
           "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-abstain",
@@ -62,7 +62,7 @@
           .character-counter
           =f.hidden_field :position
         .modal-footer
-          = submit_tag "Confirm position", class: "vote btn btn-info"
+          = submit_tag "Confirm position", class: "vote btn btn-info", :disable_with => "Proccesing"
           = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
 
   :coffeescript

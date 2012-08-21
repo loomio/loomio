@@ -3,4 +3,4 @@
   = f.select :position, Vote::POSITIONS
   = f.label :statement, "Statement"
   = f.text_field :statement
-  = f.submit "Update your position", class: "btn btn-info"
+  = f.submit "Update your position", class: "btn btn-info", :disable_with => "Proccesing"
