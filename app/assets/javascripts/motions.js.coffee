@@ -11,7 +11,6 @@ $ ->
         number.toString()
     )
     if $("#new-motion").length > 0
-      $("#new-motion").setAttribute("disabled",true)
       #** New Motion **
       datetime = new Date()
       datetime.setDate(datetime.getDate() + 3)
