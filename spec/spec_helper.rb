@@ -88,9 +88,6 @@ def create_motion(*args)
     motion.author = User.make
     motion.author.save
   end
-  unless motion.facilitator
-    motion.facilitator = motion.author
-  end
   unless motion.discussion
     discussion = Discussion.new(title: "A Discussion")
     discussion.author = motion.author
@@ -101,7 +98,6 @@ def create_motion(*args)
     motion.discussion = discussion
   end
   motion.group.add_member!(motion.author)
-  motion.group.add_member!(motion.facilitator)
   motion.save
   motion.reload
   motion
