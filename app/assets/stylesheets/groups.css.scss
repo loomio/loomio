@@ -69,8 +69,6 @@
     margin-left: 15px;
   }
   .explanation {
-    font-size: $font-tiny;
-    color: $mid-grey;
     position: relative;
     right: 40px;
     top: 1px;
@@ -81,8 +79,8 @@
 
 body.groups.show .discussion-preview a { padding: 13px 5px 14px 10px; }
 li.selector-item.no-discussions, li.selector-item.no-proposals {
-  padding: 5px 10px;
-  background-color: $highlighted
+  /*padding: 5px 10px;*/
+  /*background-color: $highlighted*/
 }
 .tick {
   padding-left: 5px;

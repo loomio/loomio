@@ -1,11 +1,12 @@
-= "Hello #{@new_user.email}!"
+= "Hello"
 :plain
 
-= "#{@inviter.name} has invited you to join their group on Loomio called '#{@group.name}'. Click the link below to create an account and accept their invitation."
+= "#{@inviter.name} has invited you to participate in group discussion and decision making using a new tool called Loomio."
 :plain
 
-= "Invite link: " + accept_invitation_url(@new_user, :invitation_token => @new_user.invitation_token)
+= "Click the link below to accept their invitation."
+= "#{accept_invitation_url(@new_user, :invitation_token => @new_user.invitation_token)}"
 :plain
 
-If you don't want to accept the invitation, please ignore this email.
-Your account won't be created until you click the link above.
+= "If you have any questions contact #{@inviter.email} or find out more about Loomio at http://loomio.org"
+:plain

@@ -6,7 +6,9 @@
   - unique_votes.each do |vote|
     - unless current_user && vote == current_user.get_vote_for(motion)
       = render "motions/votes_table_vote", vote: vote, motion: motion
-- motion.users_who_did_not_vote.each do |user|
-  .position-row.clearfix
-    .position= image_tag "questionmark.png"
-    = link_to user.name, "#"
+#yet-to-vote.hidden
+  - motion.users_who_did_not_vote.each do |user|
+    .position-row.clearfix
+      .position= image_tag "questionmark.png"
+      = link_to user.name, "#"
+= link_to '[Show users who have not yet decided]', '#', class: 'toggle-yet-to-vote'
