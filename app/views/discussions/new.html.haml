@@ -12,5 +12,5 @@
   = f.label :notify_group_upon_creation,
     "Send email notification to group members that this discussion has been created",
     class: "checkbox-label"
-  = f.submit "Create discussion", class: "btn btn-info run-validations"
+  = f.submit "Create discussion", class: "btn btn-info run-validations", :disable_with => "Creating discussion"
   = f.hidden_field :group_id
