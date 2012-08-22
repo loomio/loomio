@@ -47,10 +47,13 @@ $ ->
     event.stopPropagation()
   )
 
-# The following methods are used to provide client side validation for
-# - character count
-# - presence required
-# - date validation specific for motion-form
+ #The following methods are used to provide client side validation for
+ #- character count
+ #- presence required
+ #- date validation specific for motion-form
+remove_date_error = () ->
+  $(".validate-motion-close-date").parent().removeClass("error")
+  $(".date-error-message").hide()
 
 $ ->
   $(".validate-presence").keyup(() ->
@@ -90,3 +93,37 @@ $ ->
         $(".validate-motion-close-date").parent().addClass("error")
         $(".date-error-message").show()
 
+# character count for statement on discussion:show page
+pluralize_characters = (num) ->
+  if(num == 1)
+    return num + " character"
+  else
+    return num + " characters"
+
+# display charcaters left
+display_count = (num, object) ->
+  if(num >= 0)
+    $(".character-counter").text(pluralize_characters(num) + " left")
+    object.parent().removeClass("error")
+  else
+    num = num * (-1)
+    $(".character-counter").text(pluralize_characters(num) + " too long")
+    object.parent().addClass("error")
+
+# character count for 250 characters max
+$ ->
+  $(".limit-250").keyup(() ->
+    $(".error-message").hide()
+    chars = $(".limit-250").val().length
+    left = 250 - chars
+    display_count(left, $(".limit-250"))
+  )
+
+ #character count for 150 characters max
+$ ->
+  $(".limit-150").keyup(() ->
+    $(".error-message").hide()
+    chars = $(".limit-150").val().length
+    left = 150 - chars
+    display_count(left, $(".limit-150"))
+  )

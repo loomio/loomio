@@ -50,6 +50,8 @@ describe DiscussionsController do
           get :show, id: discussion.id
           response.should be_success
         end
+        it "creates a motion_read_log if there is a current motion"
+        it "creates a discussion_read_log"
 
         it "assigns array with discussion history" do
           discussion.should_receive(:history).and_return(['fake'])

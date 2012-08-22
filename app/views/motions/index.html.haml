@@ -1,5 +1,5 @@
 %ul.selector-list
-  #closed-motion-list
+  #closed-motions-list
     - if @closed_motions.exists?
       - @closed_motions.each do |motion|
         %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
