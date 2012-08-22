@@ -49,6 +49,11 @@ namespace :deploy do
     run "cd #{release_path} && RAILS_ENV=#{rails_env} && bundle install #{shared_path}/gems/cache --deployment"
   end
 
+  desc "reload the database with seed data"
+  task :seed do
+    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
+  end
+
 # If you are using Passenger mod_rails uncomment this:
 #   task :start do ; end
 #   task :stop do ; end

@@ -135,6 +135,8 @@ describe GroupsController do
     end
 
     it "creates a group" do
+      user = User.make(:email => "contact@loom.io")
+      user.save
       @group = Group.make
       post :create, :group => @group.attributes
       assigns(:group).users.should include(@user)
@@ -145,6 +147,8 @@ describe GroupsController do
     end
 
     it "creates a subgroup" do
+      user = User.make(:email => "contact@loom.io")
+      user.save
       @group = Group.make!
       @group.add_member! @user
       @subgroup = Group.make(:parent => @group)
