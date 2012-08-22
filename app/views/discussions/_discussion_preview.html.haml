@@ -3,7 +3,7 @@
     %span
       .clearfix
         .discussion-title
-          = truncate(discussion.title, :length => 70, :separator => ' ')
+          = truncate(discussion.title, :length => 60, :separator => ' ')
           .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
         .discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
           - if activity_count_for(discussion, current_user) > 0
@@ -11,9 +11,6 @@
               = activity_count_for(discussion, current_user)
         .discussion-date-info
           - if discussion.has_current_motion
-            .date-text decision closes
-            .proposal-close-date.utc-time= discussion.current_motion_close_date
+            .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_close_date)} until close"
           - else
-            .date-text latest comment
-            .latest-comment-time.utc-time= discussion.latest_comment_time
-
+            .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"

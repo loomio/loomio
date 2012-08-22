@@ -121,6 +121,10 @@ header{
 li.new-group a { color: #08C; }
 li.new-group:hover { a { color: white; } }
 
+li.group-item { padding-left: 20px }
+li.group-item.all-groups { padding-left: 0px }
+li.group-item.sub-group { padding-left: 40px }
+
 li.group-item:hover {
   background-color: #08C;
   .link-container{

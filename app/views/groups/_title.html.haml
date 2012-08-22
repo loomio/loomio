@@ -1,6 +1,6 @@
 - if group
   .group-title.clearfix
-    - if params[controller] == 'Groups'
+    - if params[:controller] == 'groups'
       %h1
         = "Dashboard - "
         = group.fancy_link

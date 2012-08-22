@@ -162,7 +162,7 @@ li.preview a {
     text-decoration: none;
   }
   .discussion-title {
-    width: 480px;
+    width: 400px;
     display: inline;
     float: left;
   }
@@ -173,19 +173,13 @@ li.preview a {
   }
   .discussion-date-info {
     float: right;
-    text-align: center;
-    padding-right: 10px;
+    font-size: $font-small;
+    padding: 10px 10px 0 0;
   }
   .discussion-date-info .latest-comment-time {
     display: inline;
-    position: relative;
-  }
-  .discussion-date-info .date-text {
-    font-size: $font-tiny;
-    color: $mid-grey;
   }
   .discussion-date-info .proposal-close-date {
-    font-size: $font-medium;
     display: inline;
   }
   .discussion-icon-container {

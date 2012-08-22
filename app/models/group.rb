@@ -67,7 +67,7 @@ class Group < ActiveRecord::Base
 
   def discussions_with_current_motion_voted_on(user)
     if discussions
-      discussions.where('discussions.has_current_motion' => true).joins(:votes).where('votes.user_id' => 'user').uniq
+      discussions.where('discussions.has_current_motion' => true).joins(:motions => :votes).where('votes.user_id' => 'user').uniq
     else
       []
     end
@@ -75,7 +75,7 @@ class Group < ActiveRecord::Base
 
   def discussions_with_current_motion_not_voted_on(user)
     if discussions
-      discussions.where('discussions.has_current_motion' => true).joins(:votes).uniq - discussions_with_current_motion_voted_on(user)
+      discussions.where('discussions.has_current_motion' => true).uniq - discussions_with_current_motion_voted_on(user)
     else
       []
     end
@@ -204,10 +204,10 @@ class Group < ActiveRecord::Base
   def discussions_sorted(user= nil)
     if user && user.group_membership(self)
       user.discussions.includes(:group).
-      where("discussions.group_id = ? OR groups.parent_id = ?", id, id).
+      where("discussions.has_current_motion = ? AND discussions.group_id = ? OR groups.parent_id = ?", false, id, id).
       order("last_comment_at DESC")
     else
-      discussions.order("last_comment_at DESC")
+      discussions.where('discussions.has_current_motion' => false).order("last_comment_at DESC")
     end
   end
 
