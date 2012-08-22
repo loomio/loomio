@@ -188,6 +188,11 @@ class Motion < ActiveRecord::Base
     vote
   end
 
+  def update_activity
+    self.activity += 1
+    save
+  end
+
   private
     def set_discussion_has_current_motion
       discussion.has_current_motion = true

@@ -135,6 +135,15 @@ li.preview a {
     background: $comment-color;
     color: $mid-grey;
   }
+  .proposal .tool-bar-item-proposal {
+    float: left;
+    display: inline;
+    height: 19px;
+    width: 22px;
+    background-position: 2px 1px;
+  }
+  .proposal-info {
+  }
   .proposal .proposal-text{
     color: $dark-grey;
   }
@@ -171,7 +180,8 @@ li.preview a {
     color: $mid-grey;
     width: 480px;
   }
-  .discussion-date-info {
+  .notification-info {
+    display: inline;
     float: right;
     font-size: $font-small;
     padding: 10px 10px 0 0;
@@ -181,6 +191,8 @@ li.preview a {
   }
   .discussion-date-info .proposal-close-date {
     display: inline;
+    float: right;
+    padding-right: 10px;
   }
   .discussion-icon-container {
     margin-top: 8px;
@@ -188,9 +200,9 @@ li.preview a {
     float: right;
     background-size: 25px;
     background-repeat: no-repeat;
+    background-size: 25px;
     width: 32px;
     height: 20px;
-    background-image: url("discussion.png");
   }
   .enabled-icon {
     -moz-opacity: 1.0;
@@ -202,13 +214,12 @@ li.preview a {
     filter:alpha(opacity=20);
     opacity: 0.2
   }
-
   .activity-count {
     margin-left: 18px;
-    height: 10px;
+    height: 14px;
     font-size: $font-tinywiny;
-    padding: 0.4em;
-    padding-top: 0.1em;
+    position: relative;
+    bottom: 9px;
   }
   .discussion-link {
     position: relative;

@@ -5,7 +5,6 @@
 
 #focus decision statement when making vote
 $ ->
-  # Only execute on group page 
+  # Only execute on group page
   $('#vote-statement').bind 'shown', (event) =>
     $('#vote-statement .statement').focus()
-    

@@ -208,11 +208,24 @@ describe User do
   it "can create a new motion_read_log" do
     @group = Group.make!
     @discussion = create_discussion(group: @group)
-    user.update_discussion_read_log(@discussion)
-    DiscussionReadLog.count.should == 1
+    @motion = create_motion(discussion: @discussion)
+    user.update_motion_read_log(@motion)
+    MotionReadLog.count.should == 1
   end
 
   it "can update an existing motion_read_log" do
+    @group = Group.make!
+    @discussion = create_discussion(group: @group)
+    @motion = create_motion(discussion: @discussion)
+    @motion.activity = 4
+    user.update_motion_read_log(@motion)
+    @motion.activity = 5
+    user.motion_activity_when_last_read(@motion).should == 4
+    user.update_motion_read_log(@motion)
+    user.motion_activity_when_last_read(@motion).should == 5
+  end
+
+  it "can update an existing discussion_read_log" do
     @group = Group.make!
     @discussion = create_discussion(group: @group)
     @discussion.activity = 4
@@ -221,6 +234,13 @@ describe User do
     user.discussion_activity_when_last_read(@discussion).should == 4
     user.update_discussion_read_log(@discussion)
     user.discussion_activity_when_last_read(@discussion).should == 5
+  end
+
+  it "can create a new discussion_read_log" do
+    @group = Group.make!
+    @discussion = create_discussion(group: @group)
+    user.update_discussion_read_log(@discussion)
+    DiscussionReadLog.count.should == 1
   end
 
   describe "mark_notifications_as_viewed" do

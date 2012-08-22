@@ -60,6 +60,7 @@ class DiscussionsController < GroupBaseController
     end
 
     if current_user
+      current_user.update_motion_read_log(@current_motion) if @current_motion
       current_user.update_discussion_read_log(@discussion)
     end
   end

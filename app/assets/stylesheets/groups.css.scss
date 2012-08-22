@@ -203,6 +203,8 @@ li.tool-bar-item#discussion:hover {
     padding-right: 10px;
   }
 }
+/* membership request panel */
+#member-requests { display: inline; }
 
 /* add member panel */
 #add-members {
@@ -260,6 +262,7 @@ input#user_email{
 /* membership panel */
 .dropdown#members { padding-left: 5px; }
 
+.user-name { float: left; }
 #membership-count {
   display: inline;
   float: right;
@@ -270,7 +273,6 @@ input#user_email{
 }
 .membership-user-name {
   color: $mid-grey;
-  /*width: 149px;*/
   float: left;
   display: inline;
 }
