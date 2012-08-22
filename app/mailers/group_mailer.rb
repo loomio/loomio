@@ -6,7 +6,7 @@ class GroupMailer < ActionMailer::Base
     @user = membership.user
     @group = membership.group
     @admins = @group.admins.map(&:email)
-    mail( :to => @admins, 
+    mail( :to => @admins,
           :reply_to => @group.admin_email,
           :subject => "#{email_subject_prefix(@group.full_name)} New membership" +
       " request from #{@user.name}")
@@ -29,5 +29,5 @@ class GroupMailer < ActionMailer::Base
       end
     end
   end
-  
+
 end
