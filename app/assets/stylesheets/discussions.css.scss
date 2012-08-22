@@ -82,7 +82,9 @@ li.preview a {
   .comment{
     padding: 5px 10px 5px 5px;
     color: $dark-grey;
+    font-size: $font-small;
     background-color: $comment-color;
+    width: 443px;
   }
 
   .comment-avatar {
@@ -95,34 +97,19 @@ li.preview a {
     float: left;
   }
 
-  .comment-right {
-    width: 395px;
-    float: left;
-  }
-
   .comment .comment-username{
     font-weight: bold;
-    float: left;
-    font-size: $font-small;
   }
   .comment .comment-label{
     color: $mid-grey;
-    margin-left: 0.4em;
-    display: inline;
-    font-size: $font-small;
-  }
-  .comment .comment-body{
-    margin-left: 0.4em;
-    display: inline;
-    font-size: $font-small;
   }
   .comment .comment-time{
     color: $dark-grey;
-    font-size: $font-tiny;
+    font-size: $font-small;
   }
   .comment .comment-likes{
     color: $dark-grey;
-    font-size: $font-tiny;
+    font-size: $font-small;
   }
 
   /* position */
@@ -132,11 +119,18 @@ li.preview a {
     display: block;
     height: 18px;
   }
-  .position .position-message .word-break{
-    padding-left: 0.4em;
-  }
 
   /* proposal */
+  .proposal-icon {
+    float: left;
+    padding-right: 0.4em;
+    display: block;
+    height: 18px;
+    width: 18px;
+    background-image:url('/assets/proposal.png');
+    background-repeat: no-repeat;
+    background-position: 2px 1px;
+  }
   .proposal{
     background: $comment-color;
     color: $mid-grey;
@@ -152,6 +146,9 @@ li.preview a {
   }
   .proposal .proposal-text{
     color: $dark-grey;
+  }
+  .proposal .proposal-description{
+    color: $mid-grey;
   }
   .proposal.current{
     background: $current-proposal;
