@@ -35,11 +35,13 @@ class Group < ActiveRecord::Base
   has_many :motions_in_voting_phase,
            :through => :discussions,
            :source => :motions,
-           :conditions => { phase: 'voting' }
+           :conditions => { phase: 'voting' },
+           :order => 'close_date'
   has_many :motions_closed,
            :through => :discussions,
            :source => :motions,
-           :conditions => { phase: 'closed' }
+           :conditions => { phase: 'closed' },
+           :order => 'close_date DESC'
 
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
@@ -112,7 +114,7 @@ class Group < ActiveRecord::Base
   end
 
   def users_sorted
-    users.sort { |a,b| a.name.downcase <=> b.name.downcase }
+    users.order('lower(name)').all
   end
 
   def admin_email
@@ -209,7 +211,7 @@ class Group < ActiveRecord::Base
     discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")
     discussion.add_comment(user, comment_str)
     motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We should use Loomio to make decisions together",
-      :description => motion_str)
+      :description => motion_str, :close_date => Time.now + 3.days)
     motion.facilitator = user
     motion.save
     membership.destroy

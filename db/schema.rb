@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120808042420) do
+ActiveRecord::Schema.define(:version => 20120811064555) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -132,6 +132,14 @@ ActiveRecord::Schema.define(:version => 20120808042420) do
   add_index "memberships", ["inviter_id"], :name => "index_memberships_on_inviter_id"
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
+  create_table "motion_read_logs", :force => true do |t|
+    t.integer  "motion_activity_when_last_read"
+    t.integer  "motion_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "motions", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -143,6 +151,7 @@ ActiveRecord::Schema.define(:version => 20120808042420) do
     t.string   "discussion_url", :default => "",       :null => false
     t.datetime "close_date"
     t.integer  "discussion_id"
+    t.integer  "activity",       :default => 0
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
@@ -189,6 +198,9 @@ ActiveRecord::Schema.define(:version => 20120808042420) do
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
+    t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
+    t.boolean  "has_read_group_notice",                      :default => false, :null => false
+    t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
     t.string   "avatar_initials"
     t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
     t.boolean  "has_read_group_notice",                      :default => false, :null => false
