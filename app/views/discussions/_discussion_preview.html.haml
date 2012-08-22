@@ -5,12 +5,37 @@
         .discussion-title
           = truncate(discussion.title, :length => 60, :separator => ' ')
           .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
+        - if discussion.has_current_motion
+          - motion = discussion.current_motion
+          .pie{id: "graph_#{discussion.current_motion.id}"}
+          - if discussion.current_motion.voting? && activity_count_for(discussion.current_motion, current_user) > 0
+            .activity-count.span.label.label-important
+              = activity_count_for(discussion.current_motion, current_user)
+        - else
+          .disabled-pie
         .discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
           - if activity_count_for(discussion, current_user) > 0
             .activity-count.span.label.label-important
               = activity_count_for(discussion, current_user)
         .discussion-date-info
           - if discussion.has_current_motion
-            .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_close_date)} until close"
+            - if discussion.current_motion_close_date
+              .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_close_date)} until close"
           - else
             .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"
+
+- if discussion.has_current_motion
+  :coffeescript
+    $ ->
+      # Display vote graph
+      @pie_graph_view = new Loomio.Views.Utils.GraphView
+        el: '.pie'
+        id_string: "graph_#{discussion.current_motion.id}"
+        legend: false
+        data: #{discussion.current_motion.votes_graph_ready.to_json.html_safe}
+        type: 'pie'
+        tooltip_selector: '#tooltip'
+        diameter: 25
+        padding: 1
+        gap: 1
+        shadow: 0.75

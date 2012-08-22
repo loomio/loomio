@@ -171,7 +171,7 @@ li.preview a {
     text-decoration: none;
   }
   .discussion-title {
-    width: 400px;
+    width: 355px;
     display: inline;
     float: left;
   }
@@ -180,7 +180,7 @@ li.preview a {
     color: $mid-grey;
     width: 480px;
   }
-  .notification-info {
+  .discussion-date-info {
     display: inline;
     float: right;
     font-size: $font-small;
@@ -191,18 +191,28 @@ li.preview a {
   }
   .discussion-date-info .proposal-close-date {
     display: inline;
-    float: right;
-    padding-right: 10px;
   }
   .discussion-icon-container {
     margin-top: 8px;
     display: inline;
     float: right;
-    background-size: 25px;
+    background-image: url("discussion.png");
     background-repeat: no-repeat;
     background-size: 25px;
     width: 32px;
     height: 20px;
+  }
+  .pie {
+    float: right;
+    width: 36px;
+    height: 36px;
+    z-index: 1;
+  }
+  .disabled-pie {
+    float: right;
+    width: 36px;
+    height: 36px;
+    background-image: url("disabled-pie.png");
   }
   .enabled-icon {
     -moz-opacity: 1.0;
