@@ -77,7 +77,7 @@
 
 /**** Group page ****/
 
-body.groups.show .discussion-preview .discussion-title { margin-top: 8px; }
+body.groups.show .discussion-preview .discussion-title { margin: 8px 0 8px 0; }
 li.selector-item.no-discussions, li.selector-item.no-proposals {
   /*padding: 5px 10px;*/
   /*background-color: $highlighted*/
@@ -303,6 +303,9 @@ input#user_email{
 }
 
 /* dashboard */
+#dashboard-groups-list {
+  margin: 0 0 0 20px;
+}
 .sub-panel a { color: $mid-grey; }
 .sub-group {
   font-size: $font-small;

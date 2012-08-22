@@ -9,22 +9,14 @@
   %section.span8
     .selector-panel
       .clearfix
-        %h2.panel-header Loomios with decisions that need your attention
+        %h2.panel-header Your loomios
       %ul.selector-list
-        - current_motions_exist = false
         - @discussions_with_current_motion_not_voted_on.each do |discussion|
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
-          - current_motions_exist = true
         - @discussions_with_current_motion_voted_on.each do |discussion|
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
-          - current_motions_exist = true
-        - unless current_motions_exist
-          %li.selector-item.no-proposals= "There are no loomios with current decisions "
-    .selector-panel
-      .clearfix
-        %h2.panel-header Latest loomios
-      #group-discussions.hidden
-        %div{ class: "group_#{@group.id}" }
+        #group-discussions.hidden
+          %div{ class: "group_#{@group.id}" }
 
   %section.span4
     =render 'request_membership', group: @group

@@ -17,6 +17,9 @@
               = "My groups"
               %b.caret
           %ul.dropdown-menu
+            %li.group-item.all-groups
+              .link-container
+                = link_to "All your groups", '/'
             - current_user.root_groups.order('name').each do |group|
               %li.group-item
                 .link-container
