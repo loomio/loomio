@@ -86,6 +86,9 @@ class User < ActiveRecord::Base
   has_many :discussion_read_logs,
            :dependent => :destroy
 
+  has_many :motion_read_logs,
+           :dependent => :destroy
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
                   :uploaded_avatar
@@ -158,6 +161,33 @@ class User < ActiveRecord::Base
 
   def discussions_sorted()
     discussions.where('discussions.has_current_motion' => false).order("last_comment_at DESC")
+  end
+
+  def update_motion_read_log(motion)
+    if MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
+      motion_read_log = MotionReadLog.new
+      motion_read_log.motion_activity_when_last_read = motion.activity
+      motion_read_log.user_id = id
+      motion_read_log.motion_id = motion.id
+      motion_read_log.save
+    else
+      log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+      log.motion_activity_when_last_read = motion.activity
+      log.save
+    end
+  end
+
+  def motion_activity_when_last_read(motion)
+    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+    if log
+      log.motion_activity_when_last_read
+    else
+      0
+    end
+  end
+
+  def motion_activity_count(motion)
+    motion.activity - motion_activity_when_last_read(motion)
   end
 
   def update_discussion_read_log(discussion)
