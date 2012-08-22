@@ -162,32 +162,36 @@ li.preview a {
     text-decoration: none;
   }
   .discussion-title {
-    display: inline-block;
-    /*@include ie7-inline-block();*/
     width: 480px;
+    display: inline;
+    float: left;
   }
   .group-name {
     font-size: $font-small;
     color: $mid-grey;
     width: 480px;
   }
-  .notification-info {
-    display: inline-block;
+  .discussion-date-info {
     float: right;
-  }
-  .latest-comment-time {
-    color: $mid-grey;
-    display: inline-block;
-    position: relative;
-    bottom: 7px;
+    text-align: center;
     padding-right: 10px;
   }
-  .proposal-close-date {
+  .discussion-date-info .latest-comment-time {
+    display: inline;
+    position: relative;
+  }
+  .discussion-date-info .date-text {
+    font-size: $font-tiny;
+    color: $mid-grey;
+  }
+  .discussion-date-info .proposal-close-date {
     font-size: $font-medium;
     display: inline;
   }
   .discussion-icon-container {
-    display: inline-block;
+    margin-top: 8px;
+    display: inline;
+    float: right;
     background-size: 25px;
     background-repeat: no-repeat;
     width: 32px;
