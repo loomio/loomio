@@ -26,7 +26,7 @@
             %a{ href: new_motion_group_path(@group) }
               Create new proposal
       %ul.selector-list
-        #open
+        #open-motions-list
           - current_motions_exist = false
           - unless @motions_not_voted.empty?
             - current_motions_exist = true
@@ -37,8 +37,8 @@
             - @motions_voted.each do |motion|
               %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
           - unless current_motions_exist
-            %li.selector-item.empty-list-message= "There are no current proposals for this group"
-        #closed.hidden
+            %li.selector-item.no-proposals= "There are no current proposals for this group"
+        #previous-motions-list.hidden
           #group-closed-motions.hidden
             %div{ class: "group_#{@group.id}" }
     .selector-panel
