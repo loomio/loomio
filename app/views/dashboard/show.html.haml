@@ -10,12 +10,12 @@
   - if @groups.present?
     .process-flow= link_to image_tag("process-flow.png", title:'start a loomio', alt:'start a loomio'), "#",  "data-toggle" => "modal"
     .row
-      %section.span10#dashboard-main-section
+      %section.span8#dashboard-main-section
         .group-title.clearfix
-          %h1 All your groups
+          %h1 Dashboard - all your groups
         .selector-panel
           .clearfix
-            %h2.panel-header Loomios with decisions that need your attention
+            %h2.panel-header Loomios
           %ul.selector-list
             - current_motions_exist = false
             - @discussions_with_current_motion_not_voted_on.each do |discussion|
