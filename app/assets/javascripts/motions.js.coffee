@@ -51,6 +51,10 @@ set_close_date = ->
   $("#motion_close_date").val(local_datetime)
 
 
+remove_date_error = ->
+  $(".validate-motion-close-date").parent().removeClass("error")
+  $(".date-error-message").hide()
+
   # adds bootstrap popovers to vote buttons
 $ ->
   $(".position").popover
