@@ -5,12 +5,13 @@
 #group-description
   - if !group.description.blank?
     .sub-panel.clearfix
-      .group-description.word-break= @group.description
+      %h3 Group description
       - if group.users_include?(current_user)
         .dropdown
           = link_to image_tag("dropdown.png", title:'description settings', alt:'description settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
           %ul.dropdown-menu.pull-right
             %li= link_to "Edit group description", "#", id: 'edit-description'
+      .group-description.word-break= @group.description
 #add-group-description.hidden
   .sub-panel
     %h3 Add a group description

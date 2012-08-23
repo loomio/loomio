@@ -25,30 +25,4 @@
     =render 'membership_requests', group: @group
     =render 'members', group: @group
 
--#= render '/discussions/new_loomio'
-#new-loomio.modal.hidden
-  .modal-header
-    %button.close{"data-dismiss" => "modal"}×
-    %h2 Start a new loomio
-    - @discussion = Discussion.new
-  = form_for @discussion do |f|
-    .modal-body
-      - if params[:controller] == 'dashboard'
-        = f.label :group_id, "Group"
-        = f.text_field :group_id
-      - else
-        = f.hidden_field :group_id
-      .control-group
-        = f.label :title, "Title", {class: "control-label", for: "validate-presence"}
-        = f.text_field :title, class: "validate-presence inputError limit-150"
-        .presence-error-message Please fill in a title for this loomio
-      .character-counter
-      = f.label :description, "Description"
-      = f.text_area :description
-      = f.check_box :notify_group_upon_creation
-      = f.label :notify_group_upon_creation,
-        "Send email notification to group members that this loomio has been created",
-        class: "checkbox-label"
-    .modal-footer
-      = f.submit "Start loomio", class: "btn btn-info run-validations"
-      = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
+= render '/discussions/new_loomio'
