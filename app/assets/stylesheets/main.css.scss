@@ -77,7 +77,7 @@ h5 {
       }
     }
   }
-  #discussion-list{ border-top: 2px solid $selector-panel }
+  #discussion-list{ border-top: 2px solid $light-grey }
   ul.tool-bar-list {
     border-top: 1px solid $light-grey;
     list-style: none;
@@ -128,9 +128,6 @@ h5 {
   li.selector-item a.selector-link:hover {
     background-color: $selector;
     text-decoration: none;
-    /*cursor: pointer;*/
-    /*a {*/
-    /*}*/
   }
   .pagination {
     a {

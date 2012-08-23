@@ -230,6 +230,11 @@ li.preview a {
     font-size: $font-tinywiny;
     position: relative;
     bottom: 9px;
+    z-index: 2;
+  }
+  .pie .activity-count {
+    bottom: 1px;
+    margin-left: 24px;
   }
   .discussion-link {
     position: relative;
