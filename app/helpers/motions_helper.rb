@@ -1,5 +1,5 @@
 module MotionsHelper
-  def activity_count_for(motion, user)
+  def motion_activity_count_for(motion, user)
     user ? user.motion_activity_count(motion) : 0
   end
 

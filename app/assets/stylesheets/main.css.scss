@@ -179,10 +179,13 @@ h5 {
 }
 
 // misc (move stuff out of here..)
-.helper-text {
-  h5 { font-size: $font-small;}
+.helper-text p {
   color: $mid-grey;
-  font-size: $font-tiny;
+  font-size: $font-small;
+}
+.helper-text h4 {
+  color: $mid-grey;
+  font-weight: bold;
   margin-bottom: 5px;
 }
 .loading {
@@ -207,7 +210,7 @@ h5 {
   text-align: right;
   position: relative;
   bottom: 20px;
-  width: 410px;
+  right: 0px;
   height: 12px;
   font-size: $font-small;
 }

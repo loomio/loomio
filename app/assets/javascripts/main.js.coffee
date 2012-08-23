@@ -51,9 +51,6 @@ $ ->
  #- character count
  #- presence required
  #- date validation specific for motion-form
-remove_date_error = () ->
-  $(".validate-motion-close-date").parent().removeClass("error")
-  $(".date-error-message").hide()
 
 $ ->
   $(".validate-presence").keyup(() ->

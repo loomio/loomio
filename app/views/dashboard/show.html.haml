@@ -8,7 +8,7 @@
 
 #dashboard-home
   - if @groups.present?
-    .process-flow= link_to image_tag("process-flow.png", title:'start a loomio', alt:'start a loomio'), "#",  "data-toggle" => "modal"
+    .process-flow= link_to image_tag("process-flow.png", title:'start a loomio', alt:'start a loomio'), "#",  "data-toggle" => "modal",  href: "#new-loomio"
     .group-title.clearfix
       %h1 Dashboard - All your groups
     .row
