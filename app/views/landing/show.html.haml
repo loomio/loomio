@@ -31,7 +31,7 @@
       = check_box_tag 'user[remember_me]'
       = label_tag 'user[remember_me]', 'Remember me', class: "checkbox-label"
       .sign-in-button
-        %button{:class => "btn primary small"} Sign in
+        %input{:class => "btn primary small", :type => "submit", :value => "Sign in"}
     = link_to "Forgot your password?", new_password_path('user')
     %p.light
       Don't have an account? We're currently in closed testing and not accepting public sign-ups (yet!).
