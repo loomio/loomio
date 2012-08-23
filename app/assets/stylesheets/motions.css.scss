@@ -9,7 +9,6 @@
   .presence-error-message {
     float: right;
     position: relative;
-    right: 50px;
   }
   .input { margin-left: 0px; }
   .clearfix { padding-top: 0px; margin-bottom: 0px; }
@@ -17,7 +16,6 @@
   .character-counter { bottom: 16px; }
   #motion-name { display: block }
   #closing-inputs {
-    height: 40px;
     #input_date{ width: 140px; display: inline-block; }
     select { width: 100px; display: inline-block; }
   }
@@ -31,12 +29,7 @@
     color: $error-color;
   }
   .helper-text {
-    margin-top: 15px;
-    position: relative;
-    /*right: 40px;*/
-  }
-  .helper-text#details {
-    margin-top: 120px;
+    margin-top: 17px;
   }
 }
 
