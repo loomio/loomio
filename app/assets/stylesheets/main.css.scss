@@ -159,6 +159,11 @@ h5 {
     background-position: 16px 10px;
   }
 }
+#new-loomio {
+   width: 740px;
+   margin-left: -370px;
+   .modal-footer { text-align: left; }
+}
 
 .alert {
   position: relative;
@@ -199,11 +204,13 @@ h5 {
   display: inline-block;
   @include ie7-inline-block();
 }
-.presence-error-message {
-  font-size: $font-small;
+.title-label {
   display: inline;
-  margin-left: 5px;
-  color: $error-color;
+}
+.presence-error-message {
+  float: right;
+  position: relative;
+  color: $error-color
 }
 .character-counter {
   color: $mid-grey;

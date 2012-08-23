@@ -38,7 +38,7 @@
                     - if can? :show, subgroup
                       %li.sub-group
                         = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
-    = render '/discussions/new_loomio'
+    = render '/discussions/new_loomio', discussion: @discussion, user_groups: @groups
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.
