@@ -8,9 +8,9 @@
         - if discussion.has_current_motion
           - motion = discussion.current_motion
           .pie{id: "graph_#{discussion.current_motion.id}"}
-          - if discussion.current_motion.voting? && activity_count_for(discussion.current_motion, current_user) > 0
-            .activity-count.span.label.label-important
-              = activity_count_for(discussion.current_motion, current_user)
+            - if discussion.current_motion.voting? && activity_count_for(discussion.current_motion, current_user) > 0
+              .activity-count.span.label.label-important
+                = activity_count_for(discussion.current_motion, current_user)
         - else
           .disabled-pie
         .discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
