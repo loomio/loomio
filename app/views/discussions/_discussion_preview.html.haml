@@ -7,7 +7,7 @@
           .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
         .notification-info
           .discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
-            - if activity_count_for(discussion, current_user) > 0
+            - if discussion_activity_count_for(discussion, current_user) > 0
               .activity-count.span.label.label-important
-                = activity_count_for(discussion, current_user)
+                = discussion_activity_count_for(discussion, current_user)
           .latest-comment-time.utc-time= discussion.latest_comment_time
