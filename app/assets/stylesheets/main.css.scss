@@ -207,10 +207,17 @@ h5 {
 .title-label {
   display: inline;
 }
+
+.group-presence-error-message {
+  float: right;
+  position: relative;
+  color: $error-color;
+}
+
 .presence-error-message {
   float: right;
   position: relative;
-  color: $error-color
+  color: $error-color;
 }
 .character-counter {
   color: $mid-grey;
