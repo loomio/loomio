@@ -1,10 +1,12 @@
 #group-form
   =form_for(group) do |f|
-    .control-group
-      = f.label :name, "Group Name", {class: "control-label", for: "group-name"}
-      = f.text_field :name, class: "validate-presence inputError limit-250", id: "group-name"
-      %span.presence-error-message Please fill in a title
-    .character-counter
+    .row
+      .span5
+        .control-group
+          = f.label :name, "Group Name", {class: "control-label", for: "validate-presence"}
+          .presence-error-message Please fill in a title
+          = f.text_field :name, class: "validate-presence inputError limit-250", id: "group-name"
+          .character-counter
     .privacy-settings
       #settings-header
         %h3 Settings

@@ -10,7 +10,7 @@
             .row
               .span5
                 .control-group
-                  = f.label :group_id, "Group", {class: "control-label title-label", for: "validate-presence"}
+                  = f.label :group_id, "Group", {class: "control-label", for: "validate-presence"}
                   .presence-error-message.hidden Please select a group for this loomio
                   = f.collection_select :group_id, user_groups, :id, :name, {:prompt => "Select group"}, {:class => 'validate-presence'}
               .span5
@@ -21,7 +21,7 @@
           .row
             .span5
               .control-group
-                = f.label :title, "Title", {class: "control-label title-label", for: "validate-presence"}
+                = f.label :title, "Title", {class: "control-label", for: "validate-presence"}
                 .presence-error-message Please fill in a title for this loomio
                 = f.text_field :title, class: "validate-presence inputError limit-150"
                 .character-counter

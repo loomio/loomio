@@ -204,7 +204,7 @@ h5 {
   display: inline-block;
   @include ie7-inline-block();
 }
-.title-label {
+.control-label {
   display: inline;
 }
 
@@ -223,7 +223,7 @@ h5 {
   color: $mid-grey;
   text-align: right;
   position: relative;
-  bottom: 20px;
+  bottom: 18px;
   right: 0px;
   height: 12px;
   font-size: $font-small;
