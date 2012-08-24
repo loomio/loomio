@@ -40,7 +40,7 @@ Application.timestampToDateObject = (timestamp)->
 
 
 $ ->
-  $(".dismiss-help-notice").click( (event)->
+  $(".dismiss-help-notice").click((event)->
     $.post($(this).attr("href"))
     $(this).parent(".help-notice").remove()
     event.preventDefault()
@@ -53,9 +53,15 @@ $ ->
  #- date validation specific for motion-form
 
 $ ->
+  $(".validate-presence").change(() ->
+    if $(this).val() != ""
+        $(this).parent().removeClass("error")
+        $(this).parent().find(".presence-error-message").hide()
+  )
+$ ->
   $(".validate-presence").keyup(() ->
-    $(".validate-presence").parent().removeClass("error")
-    $(".presence-error-message").hide()
+    $(this).parent().removeClass("error")
+    $(this).parent().find(".presence-error-message").hide()
   )
 
 $ ->

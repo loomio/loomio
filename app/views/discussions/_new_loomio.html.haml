@@ -7,25 +7,27 @@
       .row
         .span10
           - if params[:controller] == 'dashboard'
-            = f.label :group_id, "Group"
             .row
               .span5
-                = f.collection_select :group_id, user_groups, :id, :name, :prompt => "Select group"
+                .control-group
+                  = f.label :group_id, "Group", {class: "control-label title-label", for: "validate-presence"}
+                  .presence-error-message.hidden Please select a group for this loomio
+                  = f.collection_select :group_id, user_groups, :id, :name, {:prompt => "Select group"}, {:class => 'validate-presence'}
               .span5
                 .helper-text
                   %p Select the group you want to start this Loomio in
           - else
             = f.hidden_field :group_id
-          .control-group
-            = f.label :title, "Title", {class: "control-label title-label", for: "validate-presence"}
-            .presence-error-message Please fill in a title for this loomio
-            .row
-              .span5
+          .row
+            .span5
+              .control-group
+                = f.label :title, "Title", {class: "control-label title-label", for: "validate-presence"}
+                .presence-error-message Please fill in a title for this loomio
                 = f.text_field :title, class: "validate-presence inputError limit-150"
                 .character-counter
-              .span5
-                .helper-text
-                  %p The topic you wish to discuss, e.g. “...”
+            .span5
+              .helper-text
+                %p The topic you wish to discuss, e.g. “...”
           = f.label :description, "Description"
           .row
             .span5
