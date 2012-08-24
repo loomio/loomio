@@ -5,7 +5,7 @@
         .row
           .span5
             .control-group
-              = f.label :name, "Title", {class: "control-label title-label", for: "inputError"}
+              = f.label :name, "Title", {class: "control-label", for: "inputError"}
               .presence-error-message Please fill in a proposal title
               = f.text_field :name, class: "validate-presence inputError limit-250", id: "motion-name"
             .character-counter
