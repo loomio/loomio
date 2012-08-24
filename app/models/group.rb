@@ -210,7 +210,7 @@ class Group < ActiveRecord::Base
     membership = add_member!(user)
     discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")
     discussion.add_comment(user, comment_str)
-    motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We have a holiday on the moon",
+    motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We should have a holiday on the moon",
       :description => motion_str, :close_date => Time.now + 7.days)
     motion.facilitator = user
     motion.save
