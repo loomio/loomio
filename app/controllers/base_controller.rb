@@ -3,7 +3,7 @@ class BaseController < InheritedResources::Base
   # inherit_resources
 
   def check_browser
-    if browser.ie6? || browser.ie7?
+    if browser.ie6? # || browser.ie7?
       redirect_to browser_not_supported_url
     end
   end
