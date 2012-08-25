@@ -4,6 +4,12 @@
 // TODO: // * define site color variables
 // * mixin for gradient
 
+// CSS reset - does this exist elsewhere?
+ul, ol, li {
+  margin: 0;
+  padding: 0;
+}
+
 html { height: 100%; }
 
 body {
@@ -120,6 +126,10 @@ h5 {
   li.empty-list-message {
     padding: 5px 10px;
     background-color: $highlighted;
+  }
+  li.selector-item a.selector-link {
+    display: block;
+    padding: 5px 5px 5px 15px;
   }
   li.selector-item a.selector-link:hover {
     background-color: $selector;
