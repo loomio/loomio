@@ -164,8 +164,8 @@ li.preview a {
 .discussion-preview {
   a {
     color: $dark-grey;
-    display: block;
-    padding: 5px 5px 5px 15px;
+    // display: block;
+    // padding: 5px 5px 5px 15px;
   }
   a:hover {
     text-decoration: none;
@@ -193,9 +193,8 @@ li.preview a {
   .discussion-icon-container {
     display: inline;
     float: right;
-    background-image: url("discussion.png");
+    background-image: url("discussion-25.png");
     background-repeat: no-repeat;
-    background-size: 25px;
     width: 32px;
     height: 20px;
   }
