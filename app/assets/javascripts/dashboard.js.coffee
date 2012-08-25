@@ -1,11 +1,11 @@
 #*** ajax for discussions ***
 
 #closed proposals
-$ ->
-  if $("body.dashboard.show").length > 0
-    $(".pie").each(->
-      displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
-    )
+# $ ->
+#   if $("body.dashboard.show").length > 0
+#     $(".pie").each(->
+#       displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
+#     )
 
 #*** open-close motions dropdown (dashboard)***
 #Switch between open & closed motions and load initial page
@@ -19,9 +19,9 @@ $ ->
       $("#user-closed-motions").removeClass('hidden')
       $("#closed-motions-list").removeClass('hidden')
       $("#closed-motions-loading").addClass('hidden')
-      $(".pie").each(->
-        displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
-      )
+      # $(".pie").each(->
+      #   displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
+      # )
     )
     $("#tick-closed").removeClass('hidden')
     $("#tick-current").addClass('hidden')
@@ -45,9 +45,9 @@ $ ->
       $('#user-closed-motions').load($(this).attr('href'), ->
         $("#closed-motions-list").removeClass('hidden')
         $("#closed-motions-loading").addClass('hidden')
-        $(".pie").each(->
-          displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
-          )
+        # $(".pie").each(->
+        #   displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
+        #   )
         )
       e.preventDefault()
     )
