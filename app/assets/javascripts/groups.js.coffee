@@ -48,11 +48,11 @@ $ ->
 #*** ajax for discussions on group page ***
 
 # closed proposals
-$ ->
-  if $("body.groups.show").length > 0
-    $(".pie").each(->
-      displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
-    )
+# $ ->
+#   if $("body.groups.show").length > 0
+#     $(".pie").each(->
+#       displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
+#     )
 
 #*** open-close motions dropdown (group.show)***
 #Switch between open & closed motions and load initial page
@@ -69,9 +69,9 @@ $ ->
         $("#group-closed-motions").removeClass('hidden')
         $("#closed-motions-list").removeClass('hidden')
         $("#closed-motions-loading").addClass('hidden')
-        $(".pie").each(->
-          displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
-        )
+        # $(".pie").each(->
+        #   displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
+        # )
       )
       $("#tick-closed").removeClass('hidden')
       $("#tick-current").addClass('hidden')
@@ -97,9 +97,9 @@ $ ->
         $('#group-closed-motions').load($(this).attr('href'), ->
           $("#closed-motion-list").removeClass('hidden')
           $("#closed-motions-loading").addClass('hidden')
-          $(".pie").each(->
-            displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
-            )
+          # $(".pie").each(->
+          #   displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
+          #   )
           )
         e.preventDefault()
       )
