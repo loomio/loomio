@@ -2,10 +2,9 @@
 /*@import "bootstrap";*/
 @import "mixins";
 
-/** discussion new form*/
-body.discussions.new {
-  #discussion_notify_group_upon_creation { margin-bottom: 30px; }
-  .btn { display: block; }
+/** discussion new (new loomio) modal*/
+form.new_discussion {
+  .helper-text.align-with-input { margin-top: 20px }
 }
 
 /** discussion show form*/
