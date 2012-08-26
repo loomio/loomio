@@ -28,7 +28,7 @@
                 - group.subgroups.each do |sub_group|
                   - if can? :show, sub_group
                     = render 'group_dropdown_item', group: sub_group, subgroup: true
-            %li.new-group
+            %li.group-item.new-group
               =link_to "+ Add New Group", new_group_path
 
         %li.dropdown#notifications-container
