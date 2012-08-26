@@ -153,14 +153,18 @@ class User < ActiveRecord::Base
 
   def discussions_with_current_motion_voted_on
     if discussions
-      discussions.where('discussions.has_current_motion' => true).joins(:motions => :votes).where('votes.user_id' => 'current_user').uniq
+      discussions.where('discussions.has_current_motion' => true).joins(:motions => :votes).where('votes.user_id = ?', self).uniq
     else
       []
     end
   end
 
-  def discussions_sorted()
+  def discussions_sorted
     discussions.where('discussions.has_current_motion' => false).order("last_comment_at DESC")
+  end
+
+  def self.get_loomio_user
+    User.where(:email => 'info@loom.io').first
   end
 
   def update_motion_read_log(motion)
@@ -217,6 +221,14 @@ class User < ActiveRecord::Base
     discussion.activity - discussion_activity_when_last_read(discussion)
   end
 
+  def discussions_with_activity_count(group)
+    count = 0
+    group.discussions.each do |discussion|
+      count += 1 if discussion_activity_count(discussion) > 0
+    end
+    count
+  end
+
   def self.find_by_email(email)
     User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
   end
@@ -269,15 +281,7 @@ class User < ActiveRecord::Base
   def activity_total
     total = 0;
     groups.each do |group|
-      total += activity_total_in(group)
-    end
-    total
-  end
-
-  def activity_total_in(group)
-    total = 0
-    group.discussions.each do |discussion|
-      total += discussion_activity_count(discussion)
+      total += discussions_with_activity_count(group)
     end
     total
   end

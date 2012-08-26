@@ -165,19 +165,19 @@ describe Motion do
 
   context "closed motion" do
     before :each do
-      user1 = User.make
-      user1.save
-      user2 = User.make
-      user2.save
-      @user3 = User.make
-      @user3.save
-      group = Group.make!
-      @discussion = create_discussion(group: group)
+      user1 = User.make!
+      user2 = User.make!
+      @user3 = User.make!
+      @group = Group.make!
+      @group.add_member!(user1)
+      @group.add_member!(user2)
+      @group.add_member!(@user3)
+      @discussion = Discussion.new(group: @group)
+      @discussion.author = user1
+      @discussion.title = "JammieZ"
       @discussion.has_current_motion = true
+      @discussion.save!
       @motion = create_motion(discussion: @discussion)
-      @motion.group.add_member!(user1)
-      @motion.group.add_member!(user2)
-      @motion.group.add_member!(@user3)
       vote1 = Vote.new(position: 'yes')
       vote1.motion = @motion
       vote1.user = user1
@@ -188,11 +188,6 @@ describe Motion do
       vote2.save
       @updated_at = @motion.updated_at
       @motion.close_voting!
-    end
-
-    it "sets the discussion's has_current_motion flag to false" do
-      @discussion.reload
-      @discussion.has_current_motion.should == false
     end
 
     it "stores users who did not vote" do
@@ -215,6 +210,12 @@ describe Motion do
       @motion.open_voting
       DidNotVote.all.count.should == 0
     end
+
+    it "sets the discussion's has_current_motion flag to false" do
+      @discussion.reload
+      @discussion.has_current_motion.should == false
+    end
+
   end
 
   context "open motion" do
