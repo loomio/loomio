@@ -368,3 +368,14 @@ table.jqplot-table-legend {
     background-color: #f6f6f6;
   }
 }
+.modal-backdrop {
+  top: 0;
+}
+.modal {
+  opacity: 100%;
+  filter:alpha(opacity=100);
+}
+.modal-header h3 {
+  display: inline;
+  width: 80%;
+}
