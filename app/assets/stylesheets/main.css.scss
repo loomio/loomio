@@ -358,3 +358,13 @@ table.jqplot-table-legend {
 .cf {
     zoom:1;
 }
+
+/* bootstrap UI CSS overrides - better IE7 compatibility */
+.popover-inner {
+  background: black;
+}
+.selector-panel {
+  ul.tool-bar-list {
+    background-color: #f6f6f6;
+  }
+}
