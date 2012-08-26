@@ -67,17 +67,17 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def discussions_with_current_motion_voted_on(user)
+  def discussions_with_current_motion_not_voted_on(user)
     if discussions
-      discussions.where('discussions.has_current_motion' => true).joins(:motions => :votes).where('votes.user_id' => 'user').uniq
+      (discussions.where('discussions.has_current_motion' => true).uniq - discussions_with_current_motion_voted_on(user))
     else
       []
     end
   end
 
-  def discussions_with_current_motion_not_voted_on(user)
+  def discussions_with_current_motion_voted_on(user)
     if discussions
-      discussions.where('discussions.has_current_motion' => true).uniq - discussions_with_current_motion_voted_on(user)
+      discussions.where('discussions.has_current_motion' => true).joins(:motions => :votes).where('votes.user_id = ?', user).uniq
     else
       []
     end

@@ -29,28 +29,45 @@ describe Group do
     end
   end
 
-  describe "motions_in_voting_phase_that_user_has_voted_on(user)" do
-    it "calls scope on motions_in_voting_phase" do
-      user = User.make!
-      group = Group.make!
-      group.add_member!(user)
-      group.motions_in_voting_phase.should_receive(:that_user_has_voted_on).
-        with(user).and_return(stub(:uniq => true))
 
-      group.motions_in_voting_phase_that_user_has_voted_on(user)
+  describe "methods for filtering discussions on weather a user has voted: " do
+    before do
+      @user = User.make!
+      @group = Group.make!
+      group1 = Group.make!
+      @group.add_member!(@user)
+      group1.add_member!(@user)
+      @discussion1 = create_discussion(group: @group)
+      motion1 = create_motion(discussion: @discussion1, author: @user)
+      @discussion2 = create_discussion(group: @group)
+      motion2 = create_motion(discussion: @discussion2, author: @user)
+      @discussion3 = create_discussion(group: group1, author:@user)
+      motion3 = create_motion(discussion: @discussion3, author: @user)
+      vote = Vote.new(position: "yes")
+      vote.motion = motion2
+      vote.user = @user
+      vote.save
+      vote = Vote.new(position: "yes")
+      vote.motion = motion3
+      vote.user = @user
+      vote.save
+    end
+    describe "discussions_with_current_motion_voted_on(user)" do
+      it "should return all discussion in the group with a current motion that a user has voted on" do
+        @group.discussions_with_current_motion_voted_on(@user).should include(@discussion2)
+        @group.discussions_with_current_motion_voted_on(@user).should_not include(@discussion1)
+        @group.discussions_with_current_motion_voted_on(@user).should_not include(@discussion3)
+      end
+    end
+    describe "discussions_with_current_motion_not_voted_on(user)" do
+      it "should return all discussion in the group with a current motion that a user has not voted on" do
+        @group.discussions_with_current_motion_not_voted_on(@user).should include(@discussion1)
+        @group.discussions_with_current_motion_not_voted_on(@user).should_not include(@discussion2)
+        @group.discussions_with_current_motion_not_voted_on(@user).should_not include(@discussion3)
+      end
     end
   end
 
-  describe "motions_in_voting_phase_that_user_has_not_voted_on(user)" do
-    it "does stuff" do
-      user = User.make!
-      group = Group.make!
-      group.add_member!(user)
-      group.should_receive(:motions_in_voting_phase_that_user_has_not_voted_on)
-
-      group.motions_in_voting_phase_that_user_has_not_voted_on(user)
-    end
-  end
 
   describe "motions_in_voting_phase" do
     it "should return motions that belong to the group and are in phase 'voting'" do
@@ -279,11 +296,16 @@ describe Group do
     end
   end
 
-  describe "#create_welcome_loomio(user)" do
+  describe "#create_welcome_loomio" do
     before do
-      User.stub(:get_loomio_user).and_return(User.make!)
+      @loomio_helper_bot = User.make!
+      User.stub(:get_loomio_user).and_return(@loomio_helper_bot)
       @group = Group.make!
       @group.create_welcome_loomio
+    end
+
+    it "assigns the loomio helper bot as the author" do
+      @group.discussions.first.author_id.should == @loomio_helper_bot.id
     end
 
     it "creates a new discussion" do
