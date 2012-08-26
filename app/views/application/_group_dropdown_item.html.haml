@@ -3,8 +3,10 @@
 %li{class: li_class}
   %a.selector-link{ href: group_path(group) }
     .clearfix
-      .group-name= group.name.length < 40 ? group.name : group.name[0..37]+'...'
-      - activity =  current_user.discussions_with_activity_count(group)
-      - if activity > 0
-        .discussion-activity-count.label.label-important
-          = activity
+      %span
+        .group-name= group.name.length < 35 ? group.name : group.name[0..32]+'...'
+        - if current_user.group_membership(group)
+          - activity =  current_user.discussions_with_activity_count(group)
+          - if activity > 0
+            .discussion-activity-count.label.label-important
+              = activity
