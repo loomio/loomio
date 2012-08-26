@@ -1,12 +1,12 @@
 %div{ class: css_class_for(discussion, current_user) }
   %a.selector-link{ href: discussion_path(discussion) }
-    %span
-      .discussion-title= truncate(discussion.title, :length => 70, :separator => ' ')
+    .clearfix
+      .discussion-title
+        = truncate(discussion.title, :length => 70, :separator => ' ')
+        .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
       .notification-info
-        .latest-comment-time.utc-time= discussion.latest_comment_time
         .discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
-          - if activity_count_for(discussion, current_user) > 0
+          - if discussion_activity_count_for(discussion, current_user) > 0
             .activity-count.span.label.label-important
-              = activity_count_for(discussion, current_user)
-
-      .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
+              = discussion_activity_count_for(discussion, current_user)
+        .latest-comment-time.utc-time= discussion.latest_comment_time

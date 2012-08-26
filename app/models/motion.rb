@@ -186,6 +186,11 @@ class Motion < ActiveRecord::Base
     vote
   end
 
+  def update_activity
+    self.activity += 1
+    save
+  end
+
   private
 
     def before_open

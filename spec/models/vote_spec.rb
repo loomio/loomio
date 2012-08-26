@@ -72,24 +72,24 @@ describe Vote do
     vote.should_not be_valid
   end
 
-  it 'should update vote_activity when new vote is created' do
-    motion.discussion.activity = 2
+  it 'should update motion_activity when new vote is created' do
+    motion.activity = 2
     vote = Vote.new(position: 'yes')
     vote.motion = motion
     vote.user = user
     vote.save!
-    motion.discussion.activity.should == 3
+    motion.activity.should == 3
   end
 
-  it 'should update comment_activity when vote is changed' do
-    motion.discussion.activity = 2
+  it 'should update motion_activity when vote is changed' do
+    motion.activity = 2
     vote = Vote.new(position: 'yes')
     vote.motion = motion
     vote.user = user
     vote.save!
     vote.position = 'no'
     vote.save!
-    motion.discussion.activity.should == 4
+    motion.activity.should == 4
   end
 
   describe "previous_vote" do
