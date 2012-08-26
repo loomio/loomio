@@ -23,6 +23,14 @@
     - group_name = motion.group_full_name
     - href = discussion_path(motion.discussion)
 
+  - elsif notification.event_kind == "close_motion"
+    - motion = notification.motion
+    - person = motion.author.name
+    - action_text = "closed a proposal"
+    - title_text = motion.name
+    - group_name = motion.group_full_name
+    - href = discussion_path(motion.discussion)
+
   - elsif notification.event_kind == "new_vote"
     - vote = notification.vote
     - person = vote.user_name
@@ -61,7 +69,7 @@
     - action_text = "liked your comment in the discussion"
     - title_text = comment_vote.discussion_title
     - group_name = comment_vote.group_full_name
-    - href = discussion_path(comment_vote.discussion)
+    - href = (discussion_path(comment_vote.discussion))+"#comment-#{comment_vote.comment_id}"
 
   - date = time_ago_in_words(notification.created_at)
   - class_name = notification.viewed_at.nil? ? " unread" : ""

@@ -56,6 +56,22 @@ describe MotionsController do
       end
     end
 
+    context "closing a motion" do
+      before do
+        Motion.stub(:new).and_return(motion)
+        motion.stub(:save).and_return(true)
+        controller.stub(:authorize!).with(:close_motion, motion).and_return(true)
+        @motion_args = { :motion => { :discussion_id => discussion.id },
+          :group_id => group.id }
+      end
+
+      it "fires the close_motion event" do
+        pending
+        Event.should_receive(:close_motion)
+        post :close_motion_voting, @motion_args
+      end
+    end
+
     context "deleting a motion" do
       before do
         motion.stub(:destroy)
