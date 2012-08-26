@@ -84,54 +84,57 @@ header {
 }
 
 /* group dropdown */
-.dropdown#my-groups{
+li#my-groups {
   float: left;
-  #my-groups-title {
-    display: inline-block;
-    /*this code is needed for positioning when the notification badge is enabled do NOT delete (AARON 14/6/2012)*/
-    /*position: relative;*/
-    /*right: 35px;*/
-  }
   .group-icon {
     float: left;
     height: 20px;
-    width: 40px;
-    margin-left: 10px;
+    width: 32px;
     background-repeat: no-repeat;
     background-image:url("/assets/group.png");
     opacity: 0.8;
+    position: relative;
+    left: 7px;
   }
+  a.dropdown-toggle { padding: 7px; }
   #activity-count {
     height: 10px;
     font-size: 0.7em;
     padding: 0.4em;
     padding-top: 0.1em;
+    margin-left: 0px;
     position: relative;
-    right: 36px;
+    right: 3px;
+    bottom: 3px;
   }
-  a.dropdown-toggle {
-    display: inline-block;
-    padding-left: 0px;
-    padding-bottom: 3px;
+  #activity-count.span {margin-left: 0px;}
+  .link-container a { display: inline; }
+  .discussion-activity-count {
+    display: inline;
+    float: right;
+    position: relative;
   }
 }
-.dropdown#my-groups:hover{
-  a.dropdown-toggle { color: white; }
-  #group-icon{ opacity: 1; }
+
+li#my-groups a.dropdown-toggle:hover{
+  color: white;
+  .group-icon{ opacity: 1; }
 }
 
 /* group dropdown items */
+li.group-item .group-name {
+  float: left;
+  display: inline;
+}
 li.new-group a { color: #08C; }
 li.new-group:hover { a { color: white; } }
 
-li.group-item { padding-left: 20px }
+/*li.group-item { padding-left: 20px }*/
 li.group-item.all-groups { padding-left: 0px }
-li.group-item.sub-group { padding-left: 40px }
+li.group-item.sub-group { padding-left: 20px }
 
 li.group-item:hover {
   background-color: #08C;
-  .link-container{
-    background-color: #08c;
-    a { color: white; }
-  }
+  background-color: #08c;
+  a { color: white; }
 }
