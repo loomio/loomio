@@ -75,6 +75,9 @@
         data: #{@votes_for_graph.to_json.html_safe}
         type: 'pie'
         tooltip_selector: '#tooltip'
-
+        diameter: 200
+        padding: 0
+        gap: 5
+        shadow: 2
       @linkify = new Loomio.Views.Utils.Linkify
         el: $('#motion-title h2, .motion .description, .votes')
