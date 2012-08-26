@@ -1,6 +1,6 @@
 %div{ :class => get_motion_preview_class(motion) }
   %a.selector-link{ href: motion_path(motion) }
-    %span
+    .clearfix
       - if current_user
         .vote-icon
           - if current_user.group_membership(this_group) || this_group.nil?

@@ -41,7 +41,7 @@
 }
 
 .motion-preview {
-  padding: 0px 10px;
+  padding: 0px;
   a {
     display: block;
   }
@@ -50,7 +50,7 @@
   }
   .vote-icon {
     float: left;
-    padding: 10px;
+    padding: 10px 2px 10px 2px;
     width: 20px;
   }
   .proposal-title-container {
@@ -90,7 +90,6 @@
     float: right;
     width: 44px;
     height: 44px;
-    left: 8px;
     z-index: 1;
   }
   .activity-count {
