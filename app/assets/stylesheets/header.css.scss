@@ -126,19 +126,21 @@ li.group-item .group-name {
   float: left;
   display: inline;
 }
-li.new-group a { color: #08C; }
-li.new-group:hover { a { color: white; } }
-
-/*li.group-item { padding-left: 20px }*/
+li#my-groups ul.dropdown-menu { background-color: #eee; }
+li.group-item { background-color: white; }
 li.group-item.all-groups {
   padding: 0 0 2px 0px;
   border-bottom: 1px solid $light-grey;
   a { color: $mid-grey; }
+  background-color: #eee;
 }
 li.group-item.sub-group { padding-left: 20px }
-
+li.group-item.new-group {
+  border-top: 1px solid $light-grey;
+  a { color: $mid-grey; }
+  background-color: #eee;
+}
 li.group-item:hover {
-  background-color: #08C;
   background-color: #08c;
   a { color: white; }
 }
