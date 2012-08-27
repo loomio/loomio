@@ -18,4 +18,15 @@ module DiscussionsHelper
     css_class << "unread" if discussion.has_activity_unread_by?(user) || signed_out?
     css_class.join(" ")
   end
+
+  def render_position_message(vote)
+    message = vote.position_to_s
+    if vote.previous_vote
+      message += " (previously " + vote.previous_vote.position_to_s + ")"
+    end
+    if vote.position
+      message += ":"
+    end
+    message
+  end
 end
