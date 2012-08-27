@@ -7,7 +7,6 @@
 
 .notification-item a {
   white-space: normal;
-  /*line-height: 16px;*/
   font-size: 0.9em;
   color: $dark-grey
 }
@@ -21,16 +20,15 @@
   #notifications-container .a {
     padding-left: 0px;
   }
-  #notifications-container .notification-icon {
+  #notifications-container #notification-icon {
     float: left;
     height: 30px;
-    width: 30px;
+    width: 26px;
     position: relative;
     right: 5px;
     bottom: 5px;
     background-repeat: no-repeat;
     background-image:url("/assets/notification-icon.png");
-    opacity: 0.8;
   }
   #notifications-container .dropdown-menu {
     width: 350px;
