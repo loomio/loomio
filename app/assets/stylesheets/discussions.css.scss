@@ -18,6 +18,10 @@ body.discussions.show {
     color: $dark-grey;
     margin-bottom: 30px;
   }
+  #discussion-title h1#loomio-page-title {
+    color: $dark-grey;
+    display: inline;
+  }
 }
 /*  proposal panel  */
 li .motion { padding: 5px 15px; }
@@ -170,7 +174,6 @@ li.preview a {
     text-decoration: none;
   }
   .discussion-title {
-    width: 355px;
     display: inline;
     float: left;
   }
@@ -198,7 +201,7 @@ li.preview a {
     background-image: url("discussion-25.png");
     background-repeat: no-repeat;
     width: 32px;
-    height: 20px;
+    height: 25px;
   }
   .pie {
     float: right;

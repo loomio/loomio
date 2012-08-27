@@ -2,7 +2,7 @@
   .group-title.clearfix
     - if params[:controller] == 'groups'
       %h1
-        = "Dashboard - "
+        #page-title= "Dashboard - "
         = group.fancy_link
       #privacy{:class => group.viewable_by.to_s}
         =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
