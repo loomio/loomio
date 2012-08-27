@@ -9,7 +9,7 @@ A new motion was created in a Loomio group that you belong to.
 != "Group: #{@motion.group.name}"
 != "Author: #{@motion.author.name}"
 - if @motion.has_close_date?
-  != "Closes: #{@motion.close_date.localtime.strftime("%d-%m-%Y, %I:%M%p")}"
+  != "Closes in: #{time_ago_in_words @motion.close_date} (#{@motion.close_date.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z')})"
 :plain
 
 - if @motion.description.present?
