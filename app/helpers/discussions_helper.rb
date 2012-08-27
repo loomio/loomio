@@ -24,9 +24,7 @@ module DiscussionsHelper
     if vote.previous_vote
       message += " (previously " + vote.previous_vote.position_to_s + ")"
     end
-    if vote.position
-      message += ":"
-    end
+    message += vote.statement.blank? ? "." : ":"
     message
   end
 end
