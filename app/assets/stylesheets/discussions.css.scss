@@ -104,7 +104,7 @@ li.preview a {
     font-weight: bold;
   }
   .comment .comment-label{
-    color: $mid-grey;
+    color: $dark-grey;
   }
   .comment .comment-time{
     color: $dark-grey;
@@ -122,6 +122,12 @@ li.preview a {
     display: block;
     height: 18px;
   }
+
+  .position .position-message{
+    color: $mid-grey;
+    font-style: italic;
+  }
+
 
   /* proposal */
   .proposal-icon {
@@ -148,10 +154,8 @@ li.preview a {
   .proposal-info {
   }
   .proposal .proposal-text{
-    color: $dark-grey;
-  }
-  .proposal .proposal-description{
     color: $mid-grey;
+    font-style: italic;
   }
   .proposal.current{
     background: $current-proposal;

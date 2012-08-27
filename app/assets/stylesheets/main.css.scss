@@ -218,8 +218,7 @@ ul.loomio-process-flow {
    width: 740px;
    margin-left: -370px;
    .modal-footer { text-align: left; }
-}
-
+ }
 .alert {
   position: relative;
   bottom: 20px;
@@ -315,11 +314,6 @@ form {
   }
   .divider {
     width: 300px;
-    border: 1px solid $lighter-grey;
-    margin-bottom: 5px;
-  }
-  .long-divider {
-    width: 400px;
     border: 1px solid $lighter-grey;
     margin-bottom: 5px;
   }

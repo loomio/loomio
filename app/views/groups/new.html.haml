@@ -1,2 +1,3 @@
 %h1 New Group
-= render 'form', group: @group, parent: @parent
+= render 'form', group: @group, parent: @parent,
+  submit_text: "Create group", disable_with: "Creating group"

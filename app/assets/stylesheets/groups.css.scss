@@ -58,13 +58,18 @@
 
 #group-form {
   form {
-    width: 550px;
     .inputError {
       display: inline-block;
       @include ie7-inline-block();
     }
+    #group-name-error { float: right; }
+    #group-name-label { display: inline; }
+    #group-name { display: block; }
     .control-group { margin-bottom: 0px; }
     .character-counter { bottom: 11px; }
+    hr {
+      margin: 5px 0px 10px 0px;
+    }
   }
   #group_name { width: 390px; }
   .setting-label {

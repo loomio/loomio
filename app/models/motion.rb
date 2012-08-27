@@ -125,8 +125,8 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  def has_closing_date?
-    close_date == nil
+  def has_close_date?
+    close_date != nil
   end
 
   def discussion_activity
