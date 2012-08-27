@@ -1,2 +1,3 @@
 = render '/groups/title', group: @group
-= render 'form', group: @group, parent: @parent
+= render 'form', group: @group, parent: @parent,
+  submit_text: "Update group", disable_with: "Updating group"
