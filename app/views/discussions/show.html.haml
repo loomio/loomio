@@ -23,7 +23,7 @@
             - else
               %span.medium-user-initials.initials-decoration= current_user.avatar_initials
           = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
-          = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment'
+          = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment', :disable_with => "Post comment"
       = render 'history', discussion: @discussion, history: @discussion.history
 
   .span6#content-proposal

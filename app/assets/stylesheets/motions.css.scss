@@ -34,7 +34,7 @@
 }
 
 .motion-preview {
-  padding: 0px 10px;
+  padding: 0px;
   a {
     display: block;
   }
@@ -43,13 +43,14 @@
   }
   .vote-icon {
     float: left;
-    padding: 10px;
     width: 20px;
+    position: relative;
+    top: 6px;
+    padding-right: 7px;
   }
   .proposal-title-container {
     color: $mid-grey;
     float: left;
-    padding: 5px;
     width: 470px;
   }
   .proposal-title {
@@ -82,17 +83,16 @@
   .pie {
     float: right;
     width: 44px;
-    height: 44px;
-    left: 8px;
+    height: 36px;
     z-index: 1;
   }
   .activity-count {
+    float: right;
     height: 14px;
     font-size: $font-tinywiny;
     z-index: 2;
     position: relative;
-    left: 48px;
-    top: 3px;
+    left: 40px;
   }
 }
 

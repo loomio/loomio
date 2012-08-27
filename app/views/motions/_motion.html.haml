@@ -4,13 +4,13 @@
     - if motion.closed?
       %span.label.label-important Closed
   .closing-info
-    - if motion.has_closing_date?
-      No close date
-    - else
+    - if motion.has_close_date?
       - if motion.voting?
         = "Closing in #{time_ago_in_words(motion.close_date)}"
       - else
         %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
+    - else
+      No close date
   .proposed-by
     = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
     - if motion.updated_at != motion.created_at
@@ -62,7 +62,7 @@
           .character-counter
           =f.hidden_field :position
         .modal-footer
-          = submit_tag "Confirm position", class: "vote btn btn-info"
+          = submit_tag "Confirm position", class: "vote btn btn-info", :disable_with => "Confirming position"
           = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
 
   :coffeescript
