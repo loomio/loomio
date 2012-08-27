@@ -56,10 +56,55 @@ h5 {
 
 // structural elements (containers etc.)
 
-.process-flow {
-  margin-bottom: 20px;
+ul.loomio-process-flow {
+  height: 100px;
+  width: 95%;
+  margin: 0 auto 20px auto;
+  border: 1px solid $light-grey;
+  @include border-radius(8px);
+  box-shadow: 2px 2px 2px $light-grey;
+  background-color: white;
+  list-style: none;
   text-align: center;
+  padding: 0;
+  li.process-flow-item {
+    float: left;
+    padding: 0 65px;
   }
+  li.process-flow-item .process-flow-icon {
+    background-repeat: no-repeat;
+    margin: 20px auto 0 auto;
+    height: 40px;
+    width: 40px;
+  }
+  li.process-flow-item#start { padding: 0 48px; }
+  li.process-flow-item#start .process-flow-icon {
+    background-image:url('/assets/loomio-40.png');
+    width: 107px;
+  }
+  li.process-flow-item#enguage .process-flow-icon {
+    background-image:url('/assets/discussion-big.png');
+  }
+  li.process-flow-item#decide .process-flow-icon {
+    background-image:url('/assets/pie-big.png');
+  }
+  li.process-flow-item#act .process-flow-icon {
+    background-image:url('/assets/action.png');
+  }
+  li.process-flow-item h1 {
+    line-height: 1em;
+    font-size: 1.6em;
+    color: $mid-grey;
+  }
+  li.process-flow-arrow {
+    display: inline-block;
+    float: left;
+    background-image:url('/assets/process-flow-arrow.png');
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 32px;
+  }
+}
 .selector-panel {
   background-color: $selector-panel;
   @include border-radius(8px);

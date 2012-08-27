@@ -16,6 +16,10 @@
     float: left;
     line-height: 1.2em;
   }
+  #page-title {
+    display: inline;
+    color: $dark-grey;
+  }
   #privacy {
     display: inline;
     margin: 10px;
