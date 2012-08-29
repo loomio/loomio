@@ -33,6 +33,33 @@ li.preview a {
   padding: 10px 15px;
   text-decoration: none;
 }
+.selector-panel ul.tool-bar-list {
+  border-top: 1px solid $light-grey;
+  list-style: none;
+  background-color: white-smoke;
+  background-image: -webkit-linear-gradient(top, white, #E6E6E6);
+  height: 25px;
+  margin: 0;
+}
+.selector-panel li.tool-bar-item {
+  background-image: -webkit-linear-gradient(top, white, #E6E6E6);
+  background-repeat: no-repeat;
+  height: 25px;
+  border-right: 1px solid $light-grey;
+  float: left;
+}
+.selector-panel li.tool-bar-item a {
+  padding: 5px 10px 6px 30px;
+  position: relative;
+  top: 3px;
+  color: $mid-grey;
+  text-decoration: none;
+  font-size: $font-small;
+}
+.selector-panel li.tool-bar-item:hover {
+  a { color: white; }
+  background-color: #ccc;
+}
 
 /*** comments, positions & proposals in History ***/
 #content-history {

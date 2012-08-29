@@ -28,7 +28,6 @@ h1 {
   line-height: 1.8em;
   display: inline;
 }
-/*selector panel header*/
 h2 {
     font-size: $font-large;
     color: $header-titles-color;
@@ -36,7 +35,6 @@ h2 {
     line-height: 1.8em;
     display: inline;
 }
-/*sub panel header*/
 h3 {
   font-weight: normal;
 	font-size: $font-medium;
@@ -130,33 +128,6 @@ ul.loomio-process-flow {
     }
   }
   #discussion-with-motions{ border-bottom: 2px solid $light-grey }
-  ul.tool-bar-list {
-    border-top: 1px solid $light-grey;
-    list-style: none;
-    background-color: white-smoke;
-    background-image: -webkit-linear-gradient(top, white, #E6E6E6);
-    height: 25px;
-    margin: 0;
-  }
-  li.tool-bar-item {
-    background-image: -webkit-linear-gradient(top, white, #E6E6E6);
-    background-repeat: no-repeat;
-    height: 25px;
-    border-right: 1px solid $light-grey;
-    float: left;
-  }
-  li.tool-bar-item a {
-    padding: 5px 10px 6px 30px;
-    position: relative;
-    top: 3px;
-    color: $mid-grey;
-    text-decoration: none;
-    font-size: $font-small;
-  }
-  li.tool-bar-item:hover {
-    a { color: $white; }
-    background-color: #ccc;
-  }
   ul.selector-list {
     border-top: 1px solid $light-grey;
     list-style: none;
