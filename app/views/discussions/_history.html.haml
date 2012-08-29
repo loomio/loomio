@@ -5,7 +5,7 @@
   - else
     - history.each do |message|
       - if message.is_a?(Comment)
-        %li.history-item= render message
+        %li.history-item~ render message
       - if message.is_a?(Vote)
         %li.history-item
           .comment.position
