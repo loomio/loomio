@@ -60,7 +60,7 @@
                 -#=link_to "Edit proposal", edit_motion_path(@current_motion),
                   -#confirm: edit_msg
             - if can? :close_voting, @current_motion
-              %li.tool-bar-item.no-image
+              %li.tool-bar-item#proposal
                 = link_to "Close proposal", close_motion_voting_path(@current_motion),
                   confirm: "Are you sure you want to close this motion?", method: :post
         %ul.selector-list

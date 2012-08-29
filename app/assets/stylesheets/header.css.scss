@@ -32,21 +32,28 @@ header {
 ul.nav-bar-list { list-style: none; }
 
 li.nav-item {
-  padding: 10px 8px 0 8px;
   .caret {
     border-top: 4px solid $light-grey;
     opacity: 1;
   }
 }
-
-li.nav-item a { color: $light-grey; }
-li.nav-item a:hover{
+li.nav-item a.nav-logo-link {
+  padding: 3px 8px;
+  display: block;
+}
+li.nav-item a.nav-link {
+  color: $light-grey;
+  display: block;
+  padding: 10px 8px;
+}
+li.nav-item a.nav-link:hover{
   color: white;
   text-decoration: none;
   .caret { border-top: 4px solid white; }
   span.nav-item-icon{ opacity: 1; }
 }
 
+li.nav-item
 span.nav-item-icon {
   float: left;
   background-repeat: no-repeat;
@@ -58,7 +65,7 @@ li.nav-item ul.dropdown-menu a:hover { color: white; }
 
 li.nav-item#logo-home {
   float: left;
-  padding-top: 3px;
+  /*padding-top: 3px;*/
 }
 
 li.nav-item#notifications-container {
@@ -97,7 +104,7 @@ li.nav-item.dropdown#groups {
     padding: 0px 3px;
     position: absolute;
     left: 31px;
-    bottom: 9px;
+    bottom: 17px;
   }
   /*#activity-count.span {margin-left: 0px;}*/
   .link-container a { display: inline; }
