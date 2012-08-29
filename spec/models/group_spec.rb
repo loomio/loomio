@@ -298,9 +298,15 @@ describe Group do
 
   describe "#create_welcome_loomio" do
     before do
-      @loomio_helper_bot = User.make!
-      User.stub(:get_loomio_user).and_return(@loomio_helper_bot)
+      #@loomio_helper_bot = User.make!
+      #User.stub(:get_loomio_user).and_return(@loomio_helper_bot)
+      @user = User.new
+      @user.email = "info@loom.io"
+      @user.name = "loomio helper bot"
+      @user.password = "password"
+      @user.save!
       @group = Group.make!
+      @group.add_admin!(user)
       @group.create_welcome_loomio
     end
 

@@ -1,11 +1,13 @@
 - if group
   .group-title.clearfix
-    - if params[:controller] == 'groups'
-      %h1
-        #page-title= "Dashboard - "
-        = group.fancy_link
-      #privacy{:class => group.viewable_by.to_s}
-        =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
+    %h1
+      -#- separator = h.content_tag :span, "\u25B6", class: 'name-separator'
+      #page-title= link_to "Dashboard", "/"
+      = content_tag :span, "\u25B6", class: 'name-separator'
+      = group.fancy_link
+    #privacy{:class => group.viewable_by.to_s}
+      =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
+    - if params[:controller] == 'groups' && params[:action] == 'show'
       - can_edit = can? :edit, group
       - can_leave = group.users_include? current_user
       - can_archive = can? :edit, group
@@ -31,7 +33,3 @@
       - if can_email
         #email-members-modal.modal.hidden
           = render "groups/email_members", :group => group
-    - else
-      %h1= group.fancy_link
-      #privacy{:class => group.viewable_by.to_s}
-        =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)

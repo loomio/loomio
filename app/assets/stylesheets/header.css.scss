@@ -90,20 +90,16 @@ li.nav-item.dropdown#groups {
     height: 20px;
     width: 32px;
     background-image:url("/assets/group.png");
-    position: relative;
-    left: 7px;
+    padding-right: 5px;
   }
   #activity-count {
-    height: 10px;
-    font-size: 0.7em;
-    padding: 0.4em;
-    padding-top: 0.1em;
-    margin-left: 0px;
-    position: relative;
-    right: 3px;
-    bottom: 5px;
+    font-size: $font-tinywiny;
+    padding: 0px 3px;
+    position: absolute;
+    left: 31px;
+    bottom: 9px;
   }
-  #activity-count.span {margin-left: 0px;}
+  /*#activity-count.span {margin-left: 0px;}*/
   .link-container a { display: inline; }
   .discussion-activity-count {
     display: inline;

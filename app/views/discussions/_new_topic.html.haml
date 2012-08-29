@@ -1,7 +1,7 @@
-#new-loomio.modal.hidden
+#new-topic.modal.hidden
   .modal-header
     %button.close{"data-dismiss" => "modal"}×
-    %h2 Start a new loomio
+    %h2 What topic do you want your group to engage with?
   = form_for discussion do |f|
     .modal-body
       .row
@@ -11,18 +11,18 @@
               .span5
                 .control-group
                   = f.label :group_id, "Group", {class: "control-label", for: "validate-presence"}
-                  .presence-error-message.hidden Please select a group for this loomio
+                  .presence-error-message.hidden Please select a group
                   = f.collection_select :group_id, user_groups, :id, :name, {:prompt => "Select group"}, {:class => 'validate-presence'}
               .span5
                 .helper-text.align-with-input
-                  %p Select the group you want to start this Loomio in
+                  %p Select the group you want to engage
           - else
             = f.hidden_field :group_id
           .row
             .span5
               .control-group
                 = f.label :title, "Title", {class: "control-label", for: "validate-presence"}
-                .presence-error-message Please fill in a title for this loomio
+                .presence-error-message Please fill in a title
                 = f.text_field :title, class: "validate-presence inputError limit-150"
                 .character-counter
             .span5
@@ -37,8 +37,7 @@
                 %p Give some background, etc...
           = f.check_box :notify_group_upon_creation
           = f.label :notify_group_upon_creation,
-            "Send email notification to group members that this loomio has been created",
-            class: "checkbox-label"
+            "Send email notification to group members", class: "checkbox-label"
     .modal-footer
-      = f.submit "Start loomio", class: "btn btn-info run-validations"
+      = f.submit "Start", class: "btn btn-info run-validations"
       = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"

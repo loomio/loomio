@@ -1,7 +1,6 @@
 - if current_user && (not current_user.has_read_dashboard_notice?)
-  - message = "Welcome to Loomio! This page is the Dashboard, where you can see a list of proposals and discussions "
-  - message += "that you can participate in. On the right-hand side is a list of all the groups you are a member of.\n\n"
-  - message += "Clicking on the Loomio logo in the toolbar above brings you back to this page.\n\n"
+  - message = "Welcome to Loomio! This page is the Dashboard, where you can see a list of topics "
+  - message += "that you can participate in.  You can start a new topic by clicking on the big start button.\n\n"
   - message += "If you have any questions or feedback we’d love to hear from you: "
   - message += "#{link_to "contact@loom.io", 'mailto:contact@loom.io', :target =>'_blank'}\n\n"
   =render '/application/helper_info', message: message, path: dismiss_dashboard_notice_for_user_path
@@ -11,18 +10,19 @@
     =render '/application/loomio-process-flow'
     .group-title.clearfix
       %h1
-        #page-title= "Dashboard - "
-        All your groups
+        #page-title= "Dashboard "
+        (all your groups)
     .row
-      %section.span8
+      %section.span8#dasboard-topic-list
         .selector-panel
           .clearfix
-            %h2.panel-header Loomios
+            %h2.panel-header
           %ul.selector-list
-            - @discussions_with_current_motion_not_voted_on.each do |discussion|
-              %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
-            - @discussions_with_current_motion_voted_on.each do |discussion|
-              %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
+            #discussions-with-motions
+              - @discussions_with_current_motion_not_voted_on.each do |discussion|
+                %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
+              - @discussions_with_current_motion_voted_on.each do |discussion|
+                %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
             #user-discussions.hidden Loading...
       %section.span4
         .sub-panel
@@ -40,7 +40,7 @@
                     - if can? :show, subgroup
                       %li.sub-group
                         = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
-    = render '/discussions/new_loomio', discussion: @discussion, user_groups: @groups
+    = render '/discussions/new_topic', discussion: @discussion, user_groups: @groups
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.
