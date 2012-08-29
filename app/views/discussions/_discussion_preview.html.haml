@@ -2,31 +2,34 @@
   %a.selector-link{ href: discussion_path(discussion) }
     %span
       .clearfix
+        - if current_user && discussion.current_motion
+          .vote-icon
+            - if current_user.group_membership(this_group) || this_group.nil?
+              = render "motions/display_icons", position: current_user.position(discussion.current_motion)
         .discussion-title
           = truncate(discussion.title, :length => 60, :separator => ' ')
           .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
-        - if discussion.has_current_motion
-          - motion = discussion.current_motion
-          - motion_activity = motion_activity_count_for(discussion.current_motion, current_user)
+        - if discussion.current_motion
           .pie{id: "graph_#{discussion.current_motion.id}"}
+            - motion_activity = motion_activity_count_for(discussion.current_motion, current_user)
             - if discussion.current_motion.voting? && motion_activity > 0
-              .activity-count.span.label.label-important
+              %span.activity-count.label.label-important
                 = motion_activity
         - else
           .disabled-pie
         .discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
           - discussion_activity = discussion_activity_count_for(discussion, current_user)
           - if discussion_activity > 0
-            .activity-count.span.label.label-important
+            %span.activity-count.label.label-important
               = discussion_activity
         .discussion-date-info
-          - if discussion.has_current_motion
+          - if discussion.current_motion
             - if discussion.current_motion_close_date
               .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_close_date)} until close"
           - else
             .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"
 
-- if discussion.has_current_motion
+- if discussion.current_motion
   :coffeescript
     $ ->
       # Display vote graph

@@ -16,6 +16,9 @@
     float: left;
     line-height: 1.2em;
   }
+  h1 #page-title a {
+    color: $dark-grey;
+  }
   #page-title {
     display: inline;
     color: $dark-grey;
@@ -320,13 +323,16 @@ input#user_email{
 }
 
 /* dashboard */
+#dashboard-topic-list {
+  margin: 0 auto 0 auto;
+}
 #dashboard-groups-list {
   margin: 0 0 0 10px;
 }
 .sub-panel a { color: $mid-grey; }
 .sub-group {
   font-size: $font-small;
-  padding-left: 20px;
+  a { padding-left: 30px; }
 }
 
 

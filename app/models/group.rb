@@ -222,6 +222,7 @@ class Group < ActiveRecord::Base
       "If you're clear about your position, click one of the icons below (hover over with your mouse for a description of what each one means)\n\n" +
       "You\'ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
     user = User.get_loomio_user
+    debugger
     parent_membership = parent.add_member!(user) if parent
     membership = add_member!(user)
     discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")

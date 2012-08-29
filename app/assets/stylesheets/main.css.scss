@@ -115,6 +115,7 @@ ul.loomio-process-flow {
   h2.panel-header {
     padding-left: 10px;
     float: left;
+    min-height: 3px;
   }
   .dropdown {
     float: right;
@@ -128,7 +129,7 @@ ul.loomio-process-flow {
       }
     }
   }
-  #discussion-list{ border-top: 2px solid $light-grey }
+  #discussion-with-motions{ border-bottom: 2px solid $light-grey }
   ul.tool-bar-list {
     border-top: 1px solid $light-grey;
     list-style: none;
@@ -157,7 +158,7 @@ ul.loomio-process-flow {
     background-color: #ccc;
   }
   ul.selector-list {
-    /*border-top: 1px solid $light-grey;*/
+    border-top: 1px solid $light-grey;
     list-style: none;
     margin: 0 0 3px 0;
   }
@@ -214,7 +215,7 @@ ul.loomio-process-flow {
     background-position: 16px 10px;
   }
 }
-#new-loomio {
+#new-topic {
    width: 740px;
    margin-left: -370px;
    .modal-footer { text-align: left; }

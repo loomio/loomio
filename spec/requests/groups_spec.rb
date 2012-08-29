@@ -64,14 +64,8 @@ describe "Groups" do
       it "can add a discussion" do
         visit group_path(@group)
 
-        click_on 'Start new discussion'
-        should have_css(".discussions.new")
-      end
-      it "can create a new proposal" do
-        visit group_path(@group)
-
-        click_on 'Create new proposal'
-        should have_css(".groups.new_motion")
+        find('#start-new-loomio').click
+        should have_css(".new_discussion")
       end
     end
 

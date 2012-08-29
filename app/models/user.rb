@@ -225,8 +225,19 @@ class User < ActiveRecord::Base
     count = 0
     group.discussions.each do |discussion|
       count += 1 if discussion_activity_count(discussion) > 0
+      if discussion.current_motion
+        count += 1 if motion_activity_count(discussion.current_motion) > 0
+      end
     end
     count
+  end
+
+  def activity_total
+    total = 0;
+    groups.each do |group|
+      total += discussions_with_activity_count(group)
+    end
+    total
   end
 
   def self.find_by_email(email)
@@ -276,14 +287,6 @@ class User < ActiveRecord::Base
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?
     super && !deleted_at
-  end
-
-  def activity_total
-    total = 0;
-    groups.each do |group|
-      total += discussions_with_activity_count(group)
-    end
-    total
   end
 
   def gravatar?(email, options = {})

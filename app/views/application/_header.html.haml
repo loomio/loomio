@@ -8,19 +8,17 @@
         %li.nav-item.dropdown#groups
           %a{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
             %span.nav-item-icon#groups-icon
-            - total_activity = current_user.activity_total
-            - if total_activity > 0
-              %span#activity-count.span.label.label-important
-                = total_activity
-              %span= "Groups"
-              %b.caret
+            - if current_user
+              - total_activity = current_user.activity_total
+              - if total_activity > 0
+                %span#activity-count.label.label-important
+                  = total_activity
+            %span= "Groups"
+            %b.caret
           %ul.dropdown-menu
             %li.group-item.all-groups
               %a.selector-link{href: '/'}
-                = "All your groups"
-                - if total_activity > 0
-                  %span.discussion-activity-count.label.label-important
-                    = total_activity
+                = "Dashboard"
 
             - current_user.root_groups.order('name').each do |group|
               = render 'group_dropdown_item', group: group, subgroup: false

@@ -195,8 +195,10 @@ class Motion < ActiveRecord::Base
 
   private
     def set_discussion_has_current_motion
-      discussion.has_current_motion = true
-      discussion.save
+      if voting?
+        discussion.has_current_motion = true
+        discussion.save
+      end
     end
 
     def unset_discussion_has_current_motion

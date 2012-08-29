@@ -109,6 +109,34 @@ describe User do
     end
   end
 
+  describe "user discussion activity methods: " do
+    before do
+      group1 = Group.make!
+      group.add_member!(user)
+      group1.add_member!(user)
+      discussion1 = create_discussion :author => user, :group => group
+      discussion2 = create_discussion :author => user, :group => group
+      discussion3 = create_discussion :author => user, :group => group1
+      discussion1.add_comment user, "hi"
+      discussion1.add_comment user, "bye"
+      discussion2.add_comment user, "bye"
+      motion = create_motion(discussion: discussion2)
+      vote = user.votes.new(:position => "yes")
+      vote.motion = motion
+      vote.save
+    end
+    describe "discusssions_with_activity_count(group)" do
+      it "should return the number of discussions with comment and/or vote activity in the givin group" do
+        user.discussions_with_activity_count(group).should == 3
+      end
+    end
+    describe "activity_total" do
+      it "should return the total number of dicussions with activity over all the users groups" do
+        user.activity_total.should == 3
+      end
+    end
+  end
+
   describe "methods for filtering discussions on weather a user has voted" do
     before do
       group.add_member!(user)
