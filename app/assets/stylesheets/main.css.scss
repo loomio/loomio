@@ -56,7 +56,6 @@ h5 {
 
 ul.loomio-process-flow {
   height: 100px;
-  width: 95%;
   margin: 0 auto 20px auto;
   border: 1px solid $light-grey;
   @include border-radius(8px);
@@ -67,7 +66,7 @@ ul.loomio-process-flow {
   padding: 0;
   li.process-flow-item {
     float: left;
-    padding: 0 65px;
+    padding: 0 72px;
   }
   li.process-flow-item .process-flow-icon {
     background-repeat: no-repeat;

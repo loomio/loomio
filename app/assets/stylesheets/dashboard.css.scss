@@ -1,0 +1,36 @@
+@import "settings";
+@import "bootstrap/mixins";
+@import "mixins";
+
+#dashboard-topic-list {
+  margin: 0 auto 0 auto;
+}
+#dashboard-groups-list {
+  margin: 0 0 0 10px;
+}
+.sub-panel a { color: $mid-grey; }
+.sub-group {
+  font-size: $font-small;
+  a { padding-left: 30px; }
+}
+
+
+/*.info-help {*/
+  /*margin-left: 6px;*/
+  /*height: 19px;*/
+  /*width: 16px;*/
+  /*-moz-opacity: .5;*/
+  /*filter:alpha(opacity=50);*/
+  /*opacity: 0.5;*/
+  /*background-image:url("/assets/dark-info.png");*/
+  /*background-repeat: no-repeat;*/
+  /*background-position-y: 3px;*/
+  /*display: inline-block;*/
+  /*@include ie7-inline-block();*/
+  /*cursor: pointer;*/
+  /*position: relative;*/
+  /*bottom: 3px;*/
+/*}*/
+/*.info-help:hover {*/
+  /*opacity: 1;*/
+/*}*/

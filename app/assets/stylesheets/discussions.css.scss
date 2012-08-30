@@ -10,13 +10,12 @@ form.new_discussion {
 /** discussion show form*/
 body.discussions.show {
   .group-title {
-    font-size: $font-tinywiny;
-    line-height: 1em;
-    margin-bottom: 0px;
+    /*font-size: $font-tinywiny;*/
+    /*line-height: 1em;*/
+    margin-bottom: 10px;
   }
-  #discussion-title {
-    color: $dark-grey;
-    margin-bottom: 30px;
+  h2.panel-header#discription-title {
+    font-size: 1.6em;
   }
 }
 /*  proposal panel  */
