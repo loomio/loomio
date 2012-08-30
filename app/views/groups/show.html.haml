@@ -9,7 +9,7 @@
   %section.span8
     .selector-panel
       .clearfix
-        %h2.panel-header
+        %h2.panel-header Topics
       %ul.selector-list
         - @discussions_with_current_motion_not_voted_on.each do |discussion|
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group

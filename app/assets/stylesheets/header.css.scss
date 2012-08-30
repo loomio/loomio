@@ -38,7 +38,7 @@ li.nav-item {
   }
 }
 li.nav-item a.nav-logo-link {
-  padding: 3px 8px;
+  padding: 3px 8px 1px 8px;
   display: block;
 }
 li.nav-item a.nav-link {
@@ -65,7 +65,6 @@ li.nav-item ul.dropdown-menu a:hover { color: white; }
 
 li.nav-item#logo-home {
   float: left;
-  /*padding-top: 3px;*/
 }
 
 li.nav-item#notifications-container {
@@ -74,7 +73,6 @@ li.nav-item#notifications-container {
 
 li.nav-item#sign-in {
   float: right;
-  padding: 10px 0;
 }
 
 li.nav-item#feedback {
@@ -127,7 +125,7 @@ li.group-item.all-groups {
   a { color: $mid-grey; }
   background-color: #eee;
 }
-li.group-item.sub-group a { padding-left: 20px }
+li.group-item.sub-group a { padding-left: 30px }
 li.group-item.new-group {
   border-top: 1px solid $light-grey;
   a { color: $mid-grey; }

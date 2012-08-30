@@ -9,23 +9,21 @@
         %li.nav-item.dropdown#groups
           %a.nav-link{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
             %span.nav-item-icon#groups-icon
-            - if current_user
-              - total_activity = current_user.activity_total
-              - if total_activity > 0
-                %span#activity-count.label.label-important
-                  = total_activity
+            -#- total_activity = current_user.activity_total
+            -#- if total_activity > 0
+              -#%span#activity-count.label.label-important
+                -#= total_activity
             %span= "Groups"
             %b.caret
           %ul.dropdown-menu
             %li.group-item.all-groups
               %a.selector-link{href: '/'}
                 = "Dashboard"
-
             - current_user.root_groups.order('name').each do |group|
               = render 'group_dropdown_item', group: group, subgroup: false
               - if group.subgroups.size > 0
                 - group.subgroups.each do |sub_group|
-                  - if can? :show, sub_group
+                  - if (current_user.group_membership(sub_group)) || (can? :show, sub_group)
                     = render 'group_dropdown_item', group: sub_group, subgroup: true
             %li.group-item.new-group
               =link_to "+ Add New Group", new_group_path
@@ -65,7 +63,6 @@
             %li= link_to('Sign out', destroy_user_session_path, method: :delete)
 
         %li.nav-item#feedback
-          -#= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
           %a.nav-link{:href => 'mailto:contact@loom.io', :target => '_blank'}
             Give us feedback
 

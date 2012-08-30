@@ -1,7 +1,6 @@
 - if group
   .group-title.clearfix
     %h1
-      -#- separator = h.content_tag :span, "\u25B6", class: 'name-separator'
       #page-title= link_to "Dashboard", "/"
       = content_tag :span, "\u25B6", class: 'name-separator'
       = group.fancy_link
