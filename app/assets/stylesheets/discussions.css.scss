@@ -26,7 +26,7 @@ li .motion { padding: 5px 15px; }
   font-size: $font-tiny;
   color: $mid-grey;
 }
-li.selector-item.current-proposal {
+.selector-panel li.selector-item.current-proposal {
   background-color: $current-proposal;
   table.jqplot-table-legend { background-color: $current-proposal; }
 }
@@ -84,7 +84,6 @@ li.preview a {
     color: $dark-grey;
     font-size: $font-small;
     background-color: $comment-color;
-    width: 443px;
   }
 
   .comment-avatar {

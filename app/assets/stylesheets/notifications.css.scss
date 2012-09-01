@@ -34,8 +34,8 @@
   }
   #notifications-container .dropdown-menu {
     width: 350px;
-    height: 450px;
     background-color: $selector-panel;
+    padding-bottom: 0;
   }
   #notifications-container .dropdown-menu h3 {
     padding-left: 15px;
@@ -65,25 +65,26 @@
   #notification-items {
     overflow-y: auto;
     height: 390px;
+    .notification-item {
+      background-color: $unhighlighted;
+    }
+    .notification-item.unread {
+      background-color: $highlighted;
+    }
   }
   #notifications-see-more {
     border-top: 1px solid $light-grey;
-  }
-  #notifications-see-more a {
-    padding: 0px;
-    padding-top: 8px;
-    text-align: center;
-    color: $dark-grey;
-    font-weight: bold;
-  }
-  #notifications-see-more a:hover {
-    text-decoration: underline;
-  }
-  #notification-items .notification-item {
-    background-color: $unhighlighted;
-  }
-  #notification-items .notification-item.unread {
-    background-color: $highlighted;
+    a {
+      display: block;
+      padding: 8px;
+      text-align: center;
+      color: $dark-grey;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: white;
+    }
   }
 }
 

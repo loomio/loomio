@@ -129,14 +129,14 @@ $ ->
 
 displayGraph = (this_pie, graph_id, data)->
   # Display vote graph
-  @pie_graph_view = new Loomio.Views.Utils.GraphView
-    el: this_pie
-    id_string: graph_id
-    legend: false
-    data: data
-    type: 'pie'
-    tooltip_selector: '#tooltip'
-    diameter: 25
-    padding: 1
-    gap: 1
-    shadow: 0.75
+  # @pie_graph_view = new Loomio.Views.Utils.GraphView
+  #   el: this_pie
+  #   id_string: graph_id
+  #   legend: false
+  #   data: data
+  #   type: 'pie'
+  #   tooltip_selector: '#tooltip'
+  #   diameter: 25
+  #   padding: 1
+  #   gap: 1
+  #   shadow: 0.75
