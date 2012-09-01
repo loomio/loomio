@@ -7,8 +7,9 @@ $font-tinywiny: 0.7em;
 $font-tiny: 0.8em;
 $font-small: 0.9em;
 $font-medium: 1em;
-$font-large: 1.2em;
-$font-xlarge: 1.6em;
+$font-medium-large: 1.2em;
+$font-large: 1.3em;
+$font-xlarge: 1.5em;
 
 // colors
 $lighter-grey: #EAEAEA;
@@ -26,10 +27,11 @@ $comment-color: white;
 $current-proposal: white;
 
 $main-background: #F7F7ED;
-$container: #FdFdFd;
+/*$container: #FdFdFd;*/
+$container: white;
 $sub-selector-panel: #efefef;
 $selector-panel: #ebebeb;
-$selector: #edeff5;
-$highlighted: white;
-$unhighlighted: #f9f9f9;
+$selector: #eef0f6;
+$highlighted: #edeff5;
+$unhighlighted: white;
 $tool-bar: #dddddd;

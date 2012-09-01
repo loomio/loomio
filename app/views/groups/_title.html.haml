@@ -1,7 +1,7 @@
-- if group
-  .group-title.clearfix
+.group-title.clearfix
+  - if group
     %h1
-      #page-title= link_to "Dashboard", "/"
+      #page-title= link_to "Home", "/"
       = content_tag :span, "\u25B6", class: 'name-separator'
       = group.fancy_link
     #privacy{:class => group.viewable_by.to_s}
@@ -32,3 +32,7 @@
       - if can_email
         #email-members-modal.modal.hidden
           = render "groups/email_members", :group => group
+  - else
+    %h1
+      #page-title= "Home "
+      (all your groups)

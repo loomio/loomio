@@ -107,7 +107,6 @@
   }
 }
 #content-proposal{
-  padding-left: 19px;
   margin-left: 0px;
   .proposal-title-container {
     width: 320px;
@@ -183,3 +182,14 @@
     margin: 10px 0 0 5px;
   }
 }
+
+table.jqplot-table-legend {
+  width: auto;
+  border: none;
+  td {
+    border: none;
+    line-height: 16px;
+    padding: 0 5px;
+  }
+}
+

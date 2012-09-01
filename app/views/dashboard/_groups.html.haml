@@ -10,6 +10,6 @@
         = link_to group.name, group_path(group), :class => 'view_'+group.viewable_by.to_s
         - if group.subgroups.size > 0
           - group.subgroups.each do |subgroup|
-            - if (current_user && current_user.group_membership(subgroup)) || (can? :show, subgroup)
+            - if (current_user && current_user.group_membership(subgroup))
               %li.sub-group
                 = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
