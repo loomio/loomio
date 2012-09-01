@@ -25,7 +25,7 @@ class Discussion < ActiveRecord::Base
   delegate :users, :to => :group, :prefix => :group
   delegate :full_name, :to => :group, :prefix => :group
 
-  attr_accessible :group_id, :group, :title
+  attr_accessible :group_id, :group, :title, :description
 
   attr_accessor :comment, :notify_group_upon_creation
 

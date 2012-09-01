@@ -18,12 +18,12 @@
           %ul.dropdown-menu
             %li.group-item.all-groups
               %a.selector-link{href: '/'}
-                = "Dashboard"
+                = "Home"
             - current_user.root_groups.order('name').each do |group|
               = render 'group_dropdown_item', group: group, subgroup: false
               - if group.subgroups.size > 0
                 - group.subgroups.each do |sub_group|
-                  - if (current_user.group_membership(sub_group)) || (can? :show, sub_group)
+                  - if current_user.group_membership(sub_group)
                     = render 'group_dropdown_item', group: sub_group, subgroup: true
             %li.group-item.new-group
               =link_to "+ Add New Group", new_group_path

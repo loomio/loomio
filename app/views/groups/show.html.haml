@@ -3,20 +3,21 @@
   - message += "a list of the group members. You can start a new topic by clicking on the big start button.\n\n"
   =render '/application/helper_info', message: message, path: dismiss_group_notice_for_user_path
 
-=render '/application/loomio-process-flow'
-=render '/groups/title', group: @group
+%header
+  =render '/application/loomio-process-flow'
+  =render '/groups/title', group: @group
+  = link_to "Start a new topic", "#", href: "#new-topic",  "data-toggle" => "modal", :class => 'btn btn-small btn-grey', :id => 'start-new-topic'
 .row
-  %section.span8
-    .selector-panel
-      .clearfix
-        %h2.panel-header Topics
-      %ul.selector-list
+  %section.span8#topic-list
+    %ul.selector-list
+      #discussions-with-motions
         - @discussions_with_current_motion_not_voted_on.each do |discussion|
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
         - @discussions_with_current_motion_voted_on.each do |discussion|
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
-        #group-discussions.hidden
-          %div{ class: "group_#{@group.id}" }
+      %li.empty-list-message.hidden There are no topics for this group
+    #group-discussions.hidden
+      %div{ class: "group_#{@group.id}" }
 
   %section.span4
     =render 'request_membership', group: @group

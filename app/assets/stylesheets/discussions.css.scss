@@ -10,60 +10,103 @@ form.new_discussion {
 /** discussion show form*/
 body.discussions.show {
   .group-title {
-    /*font-size: $font-tinywiny;*/
-    /*line-height: 1em;*/
     margin-bottom: 10px;
   }
-  h2.panel-header#discription-title {
-    font-size: 1.6em;
+  h1#discussion-title {
+    color: $dark-grey;
+
+  }
+  .selector-panel {
+    background-color: $selector-panel;
+    @include border-radius(8px);
+    border: 1px solid $light-grey;
+    margin-bottom: 20px;
+    min-height: 59px;
+    padding-top: 2px;
+    h2.panel-header {
+      padding-left: 10px;
+      float: left;
+      min-height: 3px;
+    }
+    .dropdown {
+      float: right;
+      padding: 2px 10px;
+      li {
+        background-color: white;
+        border: none;
+        a {
+          text-shadow: none;
+          font-size: $font-small;
+        }
+      }
+    }
+  }
+  #discussion-panel-content {
+    background-color: white;
+    border-top: 1px solid $light-grey;
+    border-bottom: 1px solid $light-grey;
+    padding-bottom: 20px;
+    margin-bottom: 5px;
+  }
+  #discussion-context {
+    min-height: 40px;
+    border-bottom: 1px solid $light-grey;
+    padding: 10px 20px 10px 20px;
+    margin: 0px 20px;
+  }
+  .header-icon {
+    background-repeat: no-repeat;
+    background-size: 24px;
+    height: 24px;
+    width: 24px;
+    margin: 6px 6px 0 10px;
+    float: left;
+  }
+  .header-text {
+    color: $mid-grey;
+    line-height: 2.0em;
+  }
+  .header-icon#topic {
+    background-image:url('/assets/discussion-big.png');
+  }
+  .header-icon#discussion {
+    background-image:url('/assets/discussion-big.png');
+  }
+  .header-icon#decision {
+    background-image:url('/assets/pie-big.png');
   }
 }
-/*  proposal panel  */
-li .motion { padding: 5px 15px; }
+
+#content-proposal {
+  width: 478px;
+  .proposal-btn {
+    float: right;
+    margin-top: 8px;
+  }
+}
+#content-proposal-body {
+  padding: 0px 20px 10px 40px;
+}
+li .motion { padding: 0 5px 20px 10px; }
 .close-date {
   font-size: $font-tiny;
   color: $mid-grey;
-}
-li.selector-item.current-proposal {
-  background-color: $current-proposal;
-  table.jqplot-table-legend { background-color: $current-proposal; }
 }
 li.preview a {
   padding: 10px 15px;
   text-decoration: none;
 }
-.selector-panel ul.tool-bar-list {
-  border-top: 1px solid $light-grey;
-  list-style: none;
-  background-color: white-smoke;
-  background-image: -webkit-linear-gradient(top, white, #E6E6E6);
-  height: 25px;
-  margin: 0;
-}
-.selector-panel li.tool-bar-item {
-  background-image: -webkit-linear-gradient(top, white, #E6E6E6);
-  background-repeat: no-repeat;
-  height: 25px;
-  border-right: 1px solid $light-grey;
-  float: left;
-}
-.selector-panel li.tool-bar-item a {
-  padding: 5px 10px 6px 30px;
-  position: relative;
-  top: 3px;
-  color: $mid-grey;
-  text-decoration: none;
-  font-size: $font-small;
-}
-.selector-panel li.tool-bar-item:hover {
-  a { color: white; }
-  background-color: #ccc;
-}
 
 /*** comments, positions & proposals in History ***/
 #content-history {
+  width: 459px;
+  border-right: 1px solid $light-grey;
+
+  #content-history-body {
+    padding: 0px 20px 10px 40px;
+  }
+
   #new-comment-form {
-    border-top: 1px solid $light-grey;
     margin-bottom: 0px;
     padding: 10px 0 10px 5px;
     background-color: $comment-color;
@@ -80,8 +123,8 @@ li.preview a {
 
   #new-comment {
     margin: 0 0 5px 0px;
-    width: 385px;
-    max-width: 385px;
+    width: 335px;
+    max-width: 335px;
     height: 80px;
     color: $dark-grey;
   }
@@ -109,7 +152,7 @@ li.preview a {
     color: $dark-grey;
     font-size: $font-small;
     background-color: $comment-color;
-    width: 443px;
+    width: 393px;
   }
 
   .comment-avatar {
@@ -213,7 +256,7 @@ li.preview a {
   .group-name {
     font-size: $font-small;
     color: $mid-grey;
-    width: 370px;
+    width: 340px;
   }
   .discussion-date-info {
     display: inline;

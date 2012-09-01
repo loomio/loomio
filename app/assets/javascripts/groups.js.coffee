@@ -1,6 +1,6 @@
 $ ->
   # Only execute on group page
-  if $("body.groups").length > 0
+  if $("body.groups.show").length > 0
     $("#membership-requested").hover(
       (e) ->
         $(this).text("Cancel Request")
@@ -9,7 +9,7 @@ $ ->
     )
   # Add a group description
   $ ->
-    if $("body.groups").length > 0
+    if $("body.groups.show").length > 0
       $("#add-description").click((event) ->
         $("#description-placeholder").toggle()
         $("#add-group-description").toggle()
@@ -32,7 +32,7 @@ $ ->
 #*** add member form ***
 $ ->
   # Only execute on group page
-  if $("body.groups").length > 0
+  if $("body.groups.show").length > 0
     $(".group-add-members").click((event) ->
       $(".group-add-members").hide()
       $("#invite-group-members").show()
@@ -126,6 +126,12 @@ $ ->
         )
         e.preventDefault()
     )
+
+#*** check if lists are empty ***
+$ ->
+  if $("body.groups.show").length > 0
+    if $("#discussions-with-motions").children().html() == null &&  $("#user-discussions").children().html() == null
+      $(".empty-list-message").removeClass('hidden')
 
 #displayGraph = (this_pie, graph_id, data)->
   ## Display vote graph

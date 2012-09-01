@@ -19,3 +19,9 @@ $ ->
       )
       e.preventDefault()
   )
+
+#*** check if lists are empty ***
+$ ->
+  if $("body.dashboard.show").length > 0
+    if $("#discussions-with-motions").children().html() == null &&  $("#user-discussions").children().html() == null
+      $(".empty-list-message").removeClass('hidden')

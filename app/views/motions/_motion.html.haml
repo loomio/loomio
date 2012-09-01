@@ -1,6 +1,6 @@
 .motion
   #motion-title.clearfix
-    %h2.word-break= motion.name
+    %h3.word-break= motion.name
     - if motion.closed?
       %span.label.label-important Closed
   .closing-info
@@ -30,7 +30,7 @@
     = "stated their position on this proposal (#{motion.group_count - motion.no_vote_count}/#{motion.group_count})"
   .votes
     - if motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
-      %h2 State your position
+      %h3 State your position
       .vote-buttons.clearfix
         =link_to image_tag("hand-yes.png", title:"I agree", alt:"I agree"), "#", "title" => "I agree",
           "data-content" => "I agree with this and want it to go ahead.",
@@ -54,7 +54,7 @@
       .modal-header
         %button.close{"data-dismiss" => "modal"}×
         - position = :vote_position
-        %h2#position-title
+        %h3#position-title
       = form_for([motion, @vote], html:{class:'form-stacked'}) do |f|
         .modal-body
           .control-group

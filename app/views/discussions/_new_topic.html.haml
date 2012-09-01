@@ -2,7 +2,7 @@
   .modal-header
     %button.close{"data-dismiss" => "modal"}×
     %h2 What topic do you want your group to engage with?
-  = form_for discussion do |f|
+  = form_for(discussion) do |f|
     .modal-body
       .row
         .span10
