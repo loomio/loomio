@@ -20,11 +20,6 @@ describe MotionsController do
       sign_in user
     end
 
-    context "editing a motion" do
-      before { get :edit, id: motion.id }
-      it { assigns(:motion).id.should == motion.id }
-    end
-
     context "creating a motion" do
       before do
         Motion.stub(:new).and_return(motion)
