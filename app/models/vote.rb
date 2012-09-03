@@ -52,8 +52,7 @@ class Vote < ActiveRecord::Base
   end
 
   def position_to_s
-    readable_position = {'yes' => 'agreed with', 'abstain' => 'abstained from', 'no' => 'disagreed with', 'block' => 'blocked'}
-    return readable_position[self.position]
+    return POSITION_VERBS[self.position]
   end
 
   def previous_vote

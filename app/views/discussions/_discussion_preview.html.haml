@@ -1,11 +1,11 @@
 %div{ class: css_class_for(discussion, current_user) }
   %a.selector-link{ href: discussion_path(discussion) }
-    %span
-      .clearfix
-        .discussion-title
-          = truncate(discussion.title, :length => 70, :separator => ' ')
-          .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
-        .notification-info
+    .clearfix
+      .discussion-title
+        = truncate(discussion.title, :length => 70, :separator => ' ')
+        .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
+      .notification-info
+        .clearfix
           .discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
             - if discussion_activity_count_for(discussion, current_user) > 0
               .activity-count.span.label.label-important

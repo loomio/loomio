@@ -4,6 +4,12 @@
 // TODO: // * define site color variables
 // * mixin for gradient
 
+// CSS reset - does this exist elsewhere?
+ul, ol, li {
+  margin: 0;
+  padding: 0;
+}
+
 html { height: 100%; }
 
 body {
@@ -121,6 +127,10 @@ h5 {
     padding: 5px 10px;
     background-color: $highlighted;
   }
+  li.selector-item a.selector-link {
+    display: block;
+    padding: 5px 5px 5px 15px;
+  }
   li.selector-item a.selector-link:hover {
     background-color: $selector;
     text-decoration: none;
@@ -208,7 +218,8 @@ h5 {
   #privacy {
     display: inline;
     position: relative;
-    bottom: 5px;
+    bottom: 2px;
+    left: 2px;
   }
 }
 
@@ -298,11 +309,6 @@ form {
   }
   .divider {
     width: 300px;
-    border: 1px solid $lighter-grey;
-    margin-bottom: 5px;
-  }
-  .long-divider {
-    width: 400px;
     border: 1px solid $lighter-grey;
     margin-bottom: 5px;
   }

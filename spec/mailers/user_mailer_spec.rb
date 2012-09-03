@@ -6,10 +6,6 @@ describe UserMailer do
       @mail.to.should == [@user.email]
     end
 
-    it 'assigns correct reply_to' do
-      @mail.reply_to.should == [@group.admin_email]
-    end
-
     it 'renders the sender email' do
       @mail.from.should == ['noreply@loom.io']
     end
@@ -22,6 +18,10 @@ describe UserMailer do
     end
 
     it_behaves_like 'email_meta'
+
+    it 'assigns correct reply_to' do
+      @mail.reply_to.should == [@group.admin_email]
+    end
 
     it 'renders the subject' do
       @mail.subject.should == "[Loomio: #{@group.full_name}] Membership approved"
@@ -45,6 +45,10 @@ describe UserMailer do
       @mail.subject.should match(/been added to a group/)
     end
 
+    it 'assigns correct reply_to' do
+      @mail.reply_to.should == [@group.admin_email]
+    end
+
     it 'assigns confirmation_url for email body' do
       @mail.body.encoded.should match("http://localhost:3000/groups/#{@group.id}")
     end
@@ -63,6 +67,10 @@ describe UserMailer do
     it 'renders the subject' do
       @mail.subject.should match(
         /#{@inviter.name} has invited you to #{@group.full_name} on Loomio/)
+    end
+
+    it 'assigns correct reply_to' do
+      @mail.reply_to.should == [@inviter.email]
     end
 
     it 'assigns inviters name which appears in the email body' do
