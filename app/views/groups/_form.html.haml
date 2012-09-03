@@ -1,49 +1,59 @@
-#group-form
-  =form_for(group) do |f|
-    .control-group
-      = f.label :name, "Group Name", {class: "control-label", for: "group-name"}
-      = f.text_field :name, class: "validate-presence inputError limit-250", id: "group-name"
-      %span.presence-error-message Please fill in a title
-    .character-counter
-    .privacy-settings
-      #settings-header
-        %h3 Settings
-      .long-divider
-        - suffix = "group"
-        - suffix = "sub-group" unless group.parent.nil?
-      .setting-label= "Who can see this #{suffix}?"
-      .settings
+.row
+  .span6
+    #group-form
+      =form_for(group) do |f|
         .row
-          .span2
-            =f.radio_button :viewable_by, "everyone"
-            =f.label :viewable_by_everyone, "Public"
-          .span4
-            .explanation.helper-text= "- Anyone with a link can see this group"
-        .row
-          .span2
-            =f.radio_button :viewable_by, "members"
-            =f.label :viewable_by_members, "Members"
-          .span4
-            .explanation.helper-text= "- Only members of this #{suffix} can see this group"
-        - unless group.parent.nil?
-          .row
-            .span2
-              =f.radio_button :viewable_by, "parent_group_members"
-              =f.label :viewable_by_parent_group_members, "Parent group members"
-            .span4
-              .explanation.helper-text= "- Only members of this sub-group and the parent group can see this sub-group"
-      .long-divider
-      .setting-label= "Who can invite members to this #{suffix}?"
-      .settings
-        =f.radio_button :members_invitable_by, "members"
-        =f.label :members_invitable_by_everyone, "All group members"
-        =f.radio_button :members_invitable_by, "admins"
-        =f.label :members_invitable_by_admins, "Admins only"
-      .long-divider
-    =f.hidden_field :parent_id, :value => parent.id unless parent.nil?
-    .settings
-      .notification-settings
-        = f.check_box :email_new_motion # TODO: check this by default
-        = f.label :email_new_motion,
-          "Email group members when a new motion is created in this group", class: "checkbox-label"
-    = f.submit class: "btn btn-info run-validations", id: "update-group"
+          .span5
+            .control-group
+              = f.label :name, "Group Name",
+                {id: "group-name-label", class: "control-label", for: "group-name"}
+              #group-name-error.presence-error-message Please fill in a title
+              = f.text_field :name, class: "validate-presence inputError limit-250", id: "group-name"
+              .character-counter
+        .privacy-settings
+          #settings-header
+            %h3 Settings
+          %hr
+            - suffix = "group"
+            - suffix = "sub-group" unless group.parent.nil?
+          .setting-label= "Who can see this #{suffix}?"
+          .settings
+            .row
+              .span2
+                =f.radio_button :viewable_by, "everyone"
+                =f.label :viewable_by_everyone, "Public"
+              .span4
+                .explanation.helper-text
+                  %p= "- Anyone with a link can see this group"
+            .row
+              .span2
+                =f.radio_button :viewable_by, "members"
+                =f.label :viewable_by_members, "Members"
+              .span4
+                .explanation.helper-text
+                  %p= "- Only members of this #{suffix} can see this group"
+            - unless group.parent.nil?
+              .row
+                .span2
+                  =f.radio_button :viewable_by, "parent_group_members"
+                  =f.label :viewable_by_parent_group_members, "Parent group members"
+                .span4
+                  .explanation.helper-text
+                    %p= "- Only members of this sub-group and the parent group can see this sub-group"
+          %hr
+          .setting-label= "Who can invite members to this #{suffix}?"
+          .settings
+            =f.radio_button :members_invitable_by, "members"
+            =f.label :members_invitable_by_everyone, "All group members"
+            =f.radio_button :members_invitable_by, "admins"
+            =f.label :members_invitable_by_admins, "Admins only"
+          %hr
+        =f.hidden_field :parent_id, :value => parent.id unless parent.nil?
+
+        .settings
+          .notification-settings
+            = f.check_box :email_new_motion # TODO: check this by default
+            = f.label :email_new_motion,
+              "Email group members when a new motion is created in this group", class: "checkbox-label"
+        = f.submit submit_text, class: "btn btn-info run-validations", id: "update-group", :disable_with => disable_with
+
