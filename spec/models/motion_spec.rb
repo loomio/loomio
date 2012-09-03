@@ -10,7 +10,6 @@ describe Motion do
   end
   it {should have(1).errors_on(:name)}
   it {should have(1).errors_on(:author)}
-  it {should have(1).errors_on(:facilitator)}
 
   it "user_has_voted?(user) returns true if the given user has voted on motion" do
     @user = User.make!
@@ -145,7 +144,7 @@ describe Motion do
       user2.save
       @user3 = User.make
       @user3.save
-      @motion = create_motion(author: user1, facilitator: user1)
+      @motion = create_motion(author: user1)
       @motion.group.add_member!(user1)
       @motion.group.add_member!(user2)
       @motion.group.add_member!(@user3)
