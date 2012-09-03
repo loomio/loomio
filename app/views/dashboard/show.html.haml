@@ -1,6 +1,6 @@
 - if current_user && (not current_user.has_read_dashboard_notice?)
-  - message = "Welcome to Loomio! This is the dashboard, where you can see a list of proposals and discussions "
-  - message += "that you can participate in. On the left hand side is a list of all the groups you are a member of.\n\n"
+  - message = "Welcome to Loomio! This page is the Dashboard, where you can see a list of proposals and discussions "
+  - message += "that you can participate in. On the right-hand side is a list of all the groups you are a member of.\n\n"
   - message += "Clicking on the Loomio logo in the toolbar above brings you back to this page.\n\n"
   - message += "If you have any questions or feedback we’d love to hear from you: "
   - message += "#{link_to "contact@loom.io", 'mailto:contact@loom.io', :target =>'_blank'}\n\n"
@@ -24,7 +24,7 @@
                   %a{ href: '#', id: 'display-closed' }
                     = "Closed proposals"
                     = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
-          #open
+          #open-motions-list
             %ul.selector-list
               - current_motions_exist = false
               - @motions_not_voted.each do |motion|
@@ -34,8 +34,8 @@
                 %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: nil
                 - current_motions_exist = true
               - unless current_motions_exist
-                %li.selector-item.empty-list-message= "There are no current proposals"
-          #closed.hidden
+                %li.selector-item.no-proposals= "There are no current proposals"
+          #previous-motions-list.hidden
             #user-closed-motions.hidden Loading...
         .selector-panel
           .clearfix
@@ -43,11 +43,11 @@
           #user-discussions.hidden Loading...
       %section.span4
         .sub-panel
-          %h3 Groups
           .dropdown
             = link_to image_tag("dropdown.png", title:'group settings', alt:'group settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
             %ul.dropdown-menu.pull-right
               %li= link_to "Create a group +", new_group_path
+          %h3 Groups
           %ul
             - current_user.root_groups.order('name').each do |group|
               %li
@@ -60,3 +60,4 @@
   - else
     = link_to 'Create a group', new_group_path
     or wait until you are invited to one.
+

@@ -85,7 +85,9 @@ li.preview a {
   .comment{
     padding: 5px 10px 5px 5px;
     color: $dark-grey;
+    font-size: $font-small;
     background-color: $comment-color;
+    width: 443px;
   }
 
   .comment-avatar {
@@ -98,34 +100,19 @@ li.preview a {
     float: left;
   }
 
-  .comment-right {
-    width: 395px;
-    float: left;
-  }
-
   .comment .comment-username{
     font-weight: bold;
-    float: left;
-    font-size: $font-small;
   }
   .comment .comment-label{
-    color: $mid-grey;
-    margin-left: 0.4em;
-    display: inline;
-    font-size: $font-small;
-  }
-  .comment .comment-body{
-    margin-left: 0.4em;
-    display: inline;
-    font-size: $font-small;
+    color: $dark-grey;
   }
   .comment .comment-time{
     color: $dark-grey;
-    font-size: $font-tiny;
+    font-size: $font-small;
   }
   .comment .comment-likes{
     color: $dark-grey;
-    font-size: $font-tiny;
+    font-size: $font-small;
   }
 
   /* position */
@@ -135,19 +122,40 @@ li.preview a {
     display: block;
     height: 18px;
   }
-  .position .position-message .word-break{
-    padding-left: 0.4em;
+
+  .position .position-message{
+    color: $mid-grey;
+    font-style: italic;
   }
 
+
   /* proposal */
+  .proposal-icon {
+    float: left;
+    padding-right: 0.4em;
+    display: block;
+    height: 18px;
+    width: 18px;
+    background-image:url('/assets/proposal.png');
+    background-repeat: no-repeat;
+    background-position: 2px 1px;
+  }
   .proposal{
     background: $comment-color;
     color: $mid-grey;
   }
+  .proposal .tool-bar-item-proposal {
+    float: left;
+    display: inline;
+    height: 19px;
+    width: 22px;
+    background-position: 2px 1px;
+  }
   .proposal-info {
   }
   .proposal .proposal-text{
-    color: $dark-grey;
+    color: $mid-grey;
+    font-style: italic;
   }
   .proposal.current{
     background: $current-proposal;
@@ -163,15 +171,15 @@ li.preview a {
 .discussion-preview {
   a {
     color: $dark-grey;
-    display: block;
-    padding: 5px 5px 5px 15px;
+    // display: block;
+    // padding: 5px 5px 5px 15px;
   }
   a:hover {
     text-decoration: none;
   }
   .discussion-title {
-    display: inline-block;
-    /*@include ie7-inline-block();*/
+    display: inline;
+    float: left;
     width: 480px;
   }
   .group-name {
@@ -180,27 +188,21 @@ li.preview a {
     width: 480px;
   }
   .notification-info {
-    display: inline-block;
     float: right;
   }
   .latest-comment-time {
     color: $mid-grey;
-    display: inline-block;
-    position: relative;
-    bottom: 7px;
+    display: inline;
+    float: right;
     padding-right: 10px;
   }
-  .proposal-close-date {
-    font-size: $font-medium;
-    display: inline;
-  }
   .discussion-icon-container {
-    display: inline-block;
-    background-size: 25px;
+    display: inline;
+    float: right;
+    background-image: url("discussion-25.png");
     background-repeat: no-repeat;
     width: 32px;
     height: 20px;
-    background-image: url("discussion.png");
   }
   .enabled-icon {
     -moz-opacity: 1.0;
@@ -212,13 +214,12 @@ li.preview a {
     filter:alpha(opacity=20);
     opacity: 0.2
   }
-
   .activity-count {
     margin-left: 18px;
-    height: 10px;
+    height: 14px;
     font-size: $font-tinywiny;
-    padding: 0.4em;
-    padding-top: 0.1em;
+    position: relative;
+    bottom: 9px;
   }
   .discussion-link {
     position: relative;

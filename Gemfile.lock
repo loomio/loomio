@@ -280,7 +280,7 @@ GEM
     rake (0.9.2.2)
     rb-fchange (0.0.5)
       ffi
-    rb-fsevent (0.4.3.1)
+    rb-fsevent (0.9.1)
     rb-inotify (0.8.8)
       ffi (>= 0.5.0)
     rdoc (3.12)

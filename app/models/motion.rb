@@ -123,8 +123,8 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  def has_closing_date?
-    close_date == nil
+  def has_close_date?
+    close_date != nil
   end
 
   def discussion_activity
@@ -184,6 +184,11 @@ class Motion < ActiveRecord::Base
     vote.motion = self
     vote.save!
     vote
+  end
+
+  def update_activity
+    self.activity += 1
+    save
   end
 
   private

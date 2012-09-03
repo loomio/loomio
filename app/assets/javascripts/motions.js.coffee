@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
 $ ->
   if $("#motion-form").length > 0
     pad2 = ((number) ->
@@ -54,45 +50,10 @@ set_close_date = ->
   local_datetime.setHours(parseInt($("#date_hour").val(), 10))
   $("#motion_close_date").val(local_datetime)
 
+
 remove_date_error = ->
   $(".validate-motion-close-date").parent().removeClass("error")
   $(".date-error-message").hide()
-
-
-# character count for statement on discussion:show page
-pluralize_characters = (num) ->
-  if(num == 1)
-    return num + " character"
-  else
-    return num + " characters"
-
-# display charcaters left
-display_count = (num, object) ->
-  if(num >= 0)
-    $(".character-counter").text(pluralize_characters(num) + " left")
-    object.parent().removeClass("error")
-  else
-    num = num * (-1)
-    $(".character-counter").text(pluralize_characters(num) + " too long")
-    object.parent().addClass("error")
-
-# character count for 250 characters max
-$ ->
-  $(".limit-250").keyup(() ->
-    $(".error-message").hide()
-    chars = $(".limit-250").val().length
-    left = 250 - chars
-    display_count(left, $(".limit-250"))
-  )
-
- #character count for 150 characters max
-$ ->
-  $(".limit-150").keyup(() ->
-    $(".error-message").hide()
-    chars = $(".limit-150").val().length
-    left = 150 - chars
-    display_count(left, $(".limit-150"))
-  )
 
   # adds bootstrap popovers to vote buttons
 $ ->
@@ -111,6 +72,18 @@ $ ->
     $(".see-more").click((event) ->
       $(".short-description").toggle()
       $(".long-description").toggle()
+      event.preventDefault()
+    )
+
+$ ->
+  if $(".motion").length > 0
+    $(".toggle-yet-to-vote").click((event) ->
+      if $("#yet-to-vote").hasClass("hidden")
+        $(this).text("[Hide users who have not yet decided]")
+        $("#yet-to-vote").removeClass('hidden')
+      else
+        $(".toggle-yet-to-vote").text("[Show users who have not yet decided]")
+        $("#yet-to-vote").addClass('hidden')
       event.preventDefault()
     )
 
