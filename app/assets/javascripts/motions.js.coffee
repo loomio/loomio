@@ -17,6 +17,7 @@ $ ->
       $("#input_date").datepicker("setDate", datetime)
       $("#date_hour").val(hours)
       $("#motion_close_date").val(datetime)
+      set_close_date()
     else
       #** Edit Motion **
       date = Application.timestampToDateObject($("#motion_close_date").val())
@@ -28,6 +29,7 @@ $ ->
       $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
       $("#input_date").datepicker("setDate", date_string)
       $("#date_hour").val(hour)
+      set_close_date()
 
 
 # Reload hidden close_date field
@@ -53,9 +55,9 @@ set_close_date = ->
   local_datetime.setHours(parseInt($("#date_hour").val(), 10))
   $("#motion_close_date").val(local_datetime)
   if (local_datetime >= current_datetime)
-    $(".date-description").text("Closing " + days_between(local_datetime, current_datetime))
+    $(".date-description").text("Closing date (" + days_between(local_datetime, current_datetime) + "):")
   else 
-    $(".date-description").text("")
+    $(".date-description").text("Closing date:")
 
 remove_date_error = ->
   $(".validate-motion-close-date").parent().removeClass("error")
