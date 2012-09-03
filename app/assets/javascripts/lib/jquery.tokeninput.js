@@ -51,7 +51,7 @@ var DEFAULT_SETTINGS = {
 
 	// Allow New Value
 	allowNewItems : true ,
-	allowNewItemsPrefix : 'custom-',
+	allowNewItemsPrefix : 'custom-'
 
 };
 
