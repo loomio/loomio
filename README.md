@@ -1,4 +1,4 @@
-# Welcome to Loomio! [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/enspiral/loomio)
+# Welcome to Loomio! [![build status](https://secure.travis-ci.org/enspiral/loomio.png?branch=master)](https://secure.travis-ci.org/enspiral/loomio) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/enspiral/loomio)
 
 Loomio is a free and open-source web application that helps groups make better decisions together.
 
@@ -72,7 +72,7 @@ login with two users at the same time)
 
 ## Contribute
 
-Loomio is being developed by a team of dedicated volunteers. We operate with a “flat” structure, meaning at the end of the day there’s no single person calling the shots. We all work together and decide collectively what the best decisions are. And we make these decisions using Loomio itself.
+Loomio is being developed by a team of dedicated volunteers. We operate with a “flat” structure, meaning at the end of the day there’s no single person calling the shots. We all work together and decide collectively what the best decisions are, and we make these decisions using Loomio itself.
 
 If you'd like to contribute to the project, check out [Contributing to Loomio](https://github.com/enspiral/loomio/wiki/Contributing-to-Loomio).
 
