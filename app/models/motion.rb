@@ -39,7 +39,7 @@ class Motion < ActiveRecord::Base
       transitions :to => :voting, :from => [:closed]
     end
 
-    event :close_voting, before: :before_close, after: :after_close do
+    event :close_voting, before: :before_close do
       transitions :to => :closed, :from => [:voting]
     end
   end
@@ -198,13 +198,8 @@ class Motion < ActiveRecord::Base
     end
 
     def before_close
-      Motion.record_timestamps = false
       store_users_that_didnt_vote
       self.close_date = Time.now
-    end
-
-    def after_close
-      Motion.record_timestamps = true
     end
 
     def store_users_that_didnt_vote
