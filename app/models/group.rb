@@ -212,7 +212,6 @@ class Group < ActiveRecord::Base
     discussion.add_comment(user, comment_str)
     motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We should have a holiday on the moon",
       :description => motion_str, :close_date => Time.now + 7.days)
-    motion.author = user
     motion.save
     membership.destroy
     parent_membership.destroy if parent
