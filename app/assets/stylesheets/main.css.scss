@@ -58,7 +58,7 @@ a.btn-grey { color: $mid-grey; }
 #start-new-topic { margin: 0 0 10px 2px; }
 #topic-list { border-top: 1px solid $light-grey; }
 #discussion-list { margin-bottom: 10px; }
-#discussion-with-motions{ border-bottom: 2px solid $light-grey }
+#discussions-with-motions{ border-bottom: 2px solid $light-grey }
 
 #new-topic {
    width: 740px;
@@ -81,7 +81,7 @@ li.selector-item {
   a .proposal-title { color: black; }
 }
 li.empty-list-message {
-  padding: 5px 10px;
+  padding: 5px 0px;
 }
 li.selector-item a.selector-link {
   display: block;
@@ -277,10 +277,11 @@ ul.loomio-process-flow {
     width: 107px;
   }
   li.process-flow-item#enguage .process-flow-icon {
-    background-image:url('/assets/discussion-big.png');
+    background-image:url('/assets/discussion-40.png');
+    opacity: 0.6;
   }
   li.process-flow-item#decide .process-flow-icon {
-    background-image:url('/assets/pie-big.png');
+    background-image:url('/assets/pie-40.png');
   }
   li.process-flow-item#act .process-flow-icon {
     background-image:url('/assets/action.png');

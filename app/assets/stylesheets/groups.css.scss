@@ -172,44 +172,46 @@ li.tool-bar-item#discussion:hover {
   }
   margin-bottom: 10px;
 }
-/* group description panel */
-#group-description {
-  color: $dark-grey;
-  .group-description {
+/* description panel */
+.sub-panel#group-description-panel {
+  a#add-description, a#edit-description {
+    color: $mid-grey;
+    text-decoration: underline;
     font-size: $font-small;
-    width: 260px;
-    float: left;
-    display: inline;
-    padding: 2px 0 2px 2px;
   }
-}
-#add-group-description {
-  form { margin-bottom: 0px }
-  #description-input {
-    width: 270px;
-    height: 90px;
-    margin-bottom: 2px;
+  a#add-description:hover, a#edit-description:hover {
+    color: $dark-grey;
   }
-  .character-counter {
-    width: 278px;
+  #show-description {
+    color: $dark-grey;
+    .model-description {
+      font-size: $font-small;
+    }
+  }
+  #add-edit-description {
+    form { margin-bottom: 0px }
+    #description-input {
+      width: 270px;
+      height: 90px;
+      margin-bottom: 2px;
+    }
+    .character-counter {
+      width: 278px;
+      position: relative;
+      bottom: 0px;
+      margin-bottom: 8px;
+    }
+    .control-group { margin-bottom: 0px; }
+  }
+  #cancel-add-description {
+    color: $mid-grey;
+    padding-right: 10px;
+    float: right;
     position: relative;
-    bottom: 0px;
-    margin-bottom: 8px;
+    top: 5px;
+    font-size: $font-tiny;
   }
-  .control-group { margin-bottom: 0px; }
 }
-#cancel-add-description {
-  color: $mid-grey;
-  padding-right: 10px;
-  float: right;
-  position: relative;
-  top: 5px;
-  font-size: $font-tiny;
-}
-#add-description {
-  color: $mid-grey;
-}
-
 #add-member-popup-btn {
   margin-bottom: 5px;
 }

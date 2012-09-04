@@ -14,11 +14,11 @@ describe "Discussion" do
     end
 
     it "can create a new discussion" do
-      visit new_discussion_path(discussion: { group_id: @group.id })
-
+      visit group_path(id: @group.id)
+      find('#start-new-topic').click
       fill_in 'discussion_title', with: 'This is a new discussion'
-      fill_in 'discussion_comment', with: 'Blahhhhhh'
-      click_on 'Create discussion'
+      fill_in 'discussion_description', with: 'Blahhhhhh'
+      click_on 'Start'
       should have_css(".discussions.show")
       should have_content('Blahh')
     end

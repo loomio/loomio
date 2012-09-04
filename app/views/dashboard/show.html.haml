@@ -18,8 +18,9 @@
               %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
             - @discussions_with_current_motion_voted_on.each do |discussion|
               %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
-          %li.empty-list-message.hidden There are no topics in any of your groups
-          #user-discussions.hidden Loading...
+          - if current_user && current_user.discussions.count == 0
+            %li.empty-list-message.hidden There are no topics in any of your groups
+        #user-discussions.hidden Loading...
       %section.span4
         = render 'groups'
       = render '/discussions/new_topic', discussion: @discussion, user_groups: @groups

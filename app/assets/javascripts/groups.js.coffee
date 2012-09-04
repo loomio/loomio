@@ -9,21 +9,21 @@ $ ->
     )
   # Add a group description
   $ ->
-    if $("body.groups.show").length > 0
+    if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
       $("#add-description").click((event) ->
         $("#description-placeholder").toggle()
-        $("#add-group-description").toggle()
+        $("#add-edit-description").toggle()
         event.preventDefault()
       )
       $("#edit-description").click((event) ->
-        $("#group-description").toggle()
-        $("#add-group-description").toggle()
+        $("#show-description").toggle()
+        $("#add-edit-description").toggle()
         event.preventDefault()
       )
       $("#cancel-add-description").click((event) ->
-        $("#add-group-description").toggle()
-        if $("#group-description").text().match(/\S/)
-          $("#group-description").toggle()
+        $("#add-edit-description").toggle()
+        if $("#show-description").text().match(/\S/)
+          $("#show-description").toggle()
         else
           $("#description-placeholder").toggle()
         event.preventDefault()

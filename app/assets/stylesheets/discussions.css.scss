@@ -51,9 +51,43 @@ body.discussions.show {
   #discussion-context {
     min-height: 40px;
     border-bottom: 1px solid $light-grey;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 0px 10px 20px;
     margin: 0px 20px;
   }
+  #discussion-context a#add-description, a#edit-description {
+    color: $mid-grey;
+    text-decoration: underline;
+    font-size: $font-small;
+  }
+  #discussion-context a#add-description:hover, a#edit-description:hover {
+    color: $dark-grey;
+  }
+  #discussion-context #show-description {
+    color: $dark-grey;
+  }
+  #discussion-context #add-edit-description {
+    form { margin-bottom: 0px }
+    #description-input {
+      width: 600px;
+      height: 90px;
+      margin-bottom: 2px;
+    }
+    .control-group { margin-bottom: 0px; }
+    .save-buttons {
+      position: relative;
+      bottom: 5px;
+    }
+    #add-description-submit { float: left; }
+    #cancel-add-description {
+      float: left;
+      margin-left: 10px;
+      color: $mid-grey;
+      position: relative;
+      top: 5px;
+      font-size: $font-tiny;
+    }
+  }
+
   .header-icon {
     background-repeat: no-repeat;
     background-size: 24px;
@@ -67,27 +101,28 @@ body.discussions.show {
     line-height: 2.0em;
   }
   .header-icon#topic {
-    background-image:url('/assets/discussion-big.png');
+    background-image:url('/assets/discussion-30.png');
   }
   .header-icon#discussion {
-    background-image:url('/assets/discussion-big.png');
+    background-image:url('/assets/discussion-30.png');
+    /*opacity: 0.6;*/
   }
   .header-icon#decision {
-    background-image:url('/assets/pie-big.png');
+    background-image:url('/assets/pie-30.png');
   }
 }
 
 #content-proposal {
-  width: 478px;
+  width: 468px;
   .proposal-btn {
     float: right;
     margin-top: 8px;
   }
 }
-#content-proposal-body {
-  padding: 0px 20px 10px 40px;
+.content-proposal-body {
+  padding: 0px 20px 30px 40px;
 }
-li .motion { padding: 0 5px 20px 10px; }
+li .motion { padding: 0 5px 20px 0px; }
 .close-date {
   font-size: $font-tiny;
   color: $mid-grey;
@@ -99,7 +134,7 @@ li.preview a {
 
 /*** comments, positions & proposals in History ***/
 #content-history {
-  width: 459px;
+  width: 469px;
   border-right: 1px solid $light-grey;
 
   #content-history-body {
@@ -123,8 +158,8 @@ li.preview a {
 
   #new-comment {
     margin: 0 0 5px 0px;
-    width: 335px;
-    max-width: 335px;
+    width: 345px;
+    max-width: 345px;
     height: 80px;
     color: $dark-grey;
   }
@@ -286,10 +321,13 @@ li.preview a {
     z-index: 1;
   }
   .disabled-pie {
+    margin: 6px 5px 0 5px;
     float: right;
-    width: 36px;
-    height: 36px;
-    background-image: url("disabled-pie.png");
+    width: 25px;
+    height: 25px;
+    background-image: url("pie-25.png");
+    background-repeat: no-repeat;
+    opacity: 0.2;
   }
   .enabled-icon {
     -moz-opacity: 1.0;

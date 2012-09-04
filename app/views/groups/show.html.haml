@@ -15,13 +15,16 @@
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
         - @discussions_with_current_motion_voted_on.each do |discussion|
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
-      %li.empty-list-message.hidden There are no topics for this group
+      - if @group.discussions.count == 0
+        %li.empty-list-message.hidden There are no topics for this group
     #group-discussions.hidden
       %div{ class: "group_#{@group.id}" }
 
   %section.span4
     =render 'request_membership', group: @group
-    =render 'description', group: @group
+    .sub-panel#group-description-panel
+      %h3= "Group description"
+      =render '/application/description', model: @group, model_name: "group"
     =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
     =render 'membership_requests', group: @group
     =render 'members', group: @group
