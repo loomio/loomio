@@ -1,4 +1,5 @@
 #new-motion
+  - set_title @group.name, "New Proposal"
   =render '/groups/title', group: @group
   =render 'motions/form', form_args: [@motion, {url: create_motion_group_path(@group)}],
     submit_text: "Create proposal", disable_with: "Creating proposal"
