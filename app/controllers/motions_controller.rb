@@ -3,11 +3,6 @@ class MotionsController < GroupBaseController
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :check_group_read_permissions, :only => :show
 
-  def update
-    resource
-    update! { discussion_url(@motion.discussion_id) }
-  end
-
   def create
     @motion = current_user.authored_motions.new(params[:motion])
     @group = GroupDecorator.new(@motion.group)
@@ -48,11 +43,6 @@ class MotionsController < GroupBaseController
     else
       redirect_to discussion_url(discussion, proposal: motion)
     end
-  end
-
-  def edit
-    motion = Motion.find(params[:id])
-    @group = GroupDecorator.new(motion.group)
   end
 
   def destroy

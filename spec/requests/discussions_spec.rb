@@ -102,7 +102,6 @@ describe "Discussion" do
         motion.name = "A new proposal"
         motion.discussion = @discussion
         motion.author = @user
-        motion.facilitator = @user
         motion.save
         visit discussion_path(@discussion)
         find('#close-voting').click
@@ -115,7 +114,6 @@ describe "Discussion" do
         motion.name = "A new proposal"
         motion.discussion = @discussion
         motion.author = @user
-        motion.facilitator = @user
         motion.save
         motion.close_voting!
 
@@ -123,7 +121,6 @@ describe "Discussion" do
         motion2.name = "A new proposal"
         motion2.discussion = @discussion
         motion2.author = @user
-        motion2.facilitator = @user
         motion2.save
         motion2.close_voting!
 
