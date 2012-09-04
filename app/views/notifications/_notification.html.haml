@@ -94,15 +94,15 @@
 
   %li.selector-item{:class => "notification-item#{class_name}" }
     %a{:href => href }
-      - if avatar_url
-        .medium-user-avater.avatar-canvas
+      .medium-user-avatar.avatar-canvas
+        - if !avatar_url.blank?
           = image_tag avatar_url
-      - elsif avatar_initials
-        %span.medium-user-initials.initials-decoration
-          = avatar_initals
+        - elsif !avatar_initials.blank?
+          %span.medium-user-initials.initials-decoration
+            = avatar_initials
       %span.bold-name= person
       = " #{action_text} "
-      - if title_text
+      - if false #title_text
         %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
       %span.notification-item-footer
         = "#{date} ago · #{group_name}"
