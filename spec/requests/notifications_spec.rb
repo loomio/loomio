@@ -5,8 +5,8 @@ describe "Notifications" do
 
   context "a logged in user, member of a group" do
     before :each do
-      @user = User.make!
-      @group = Group.make!(name: 'Test Group', viewable_by: :members)
+      @user = create(:user)
+      @group = create(:group, name: 'Test Group', viewable_by: :members)
       @group.add_member!(@user)
       page.driver.post user_session_path, 'user[email]' => @user.email,
                                           'user[password]' => 'password'
@@ -20,7 +20,7 @@ describe "Notifications" do
     # Then I should see a new notification on the notifications icon
     #
     context "new discussion is created" do
-      before { Event.new_discussion! create_discussion(group: @group) }
+      before { Event.new_discussion! create(:discussion, group: @group) }
 
       it "should have a notification count of 1" do
         visit root_url
@@ -30,8 +30,8 @@ describe "Notifications" do
 
     context "two new discussions are created" do
       before do
-        Event.new_discussion! create_discussion(group: @group)
-        Event.new_discussion! create_discussion(group: @group)
+        Event.new_discussion! create(:discussion, group: @group)
+        Event.new_discussion! create(:discussion, group: @group)
       end
 
       it "should have a notification count of 2" do
@@ -55,8 +55,8 @@ describe "Notifications" do
 
     describe "clicking on notifications dropdown" do
       before do
-        @user = User.make!
-        @group = Group.make!(name: 'Test Group', viewable_by: :members)
+        @user = create(:user)
+        @group = create(:group, name: 'Test Group', viewable_by: :members)
         @group.add_member!(@user)
 
         visit("/users/sign_in")
@@ -66,7 +66,7 @@ describe "Notifications" do
       end
 
       it "shows and clears notifications", :js => true do
-        Event.new_discussion! create_discussion(group: @group)
+        Event.new_discussion! create(:discussion, group: @group)
 
         click_button("sign-in-btn")
 
@@ -81,7 +81,7 @@ describe "Notifications" do
       end
 
       it "does not break site if notification item no longer exists" do
-        discussion = create_discussion(group: @group)
+        discussion = create(:discussion, group: @group)
         Event.new_discussion! discussion
         discussion.delete
 

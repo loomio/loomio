@@ -3,10 +3,10 @@ require 'spec_helper'
 describe MembershipsController do
   context 'signed in user' do
     before :each do
-      @user = User.make!
+      @user = create(:user)
       sign_in @user
-      @new_user = User.make!
-      @group = Group.make!
+      @new_user = create(:user)
+      @group = create(:group)
       request.env["HTTP_REFERER"] = group_url(@group)
     end
 
@@ -63,7 +63,7 @@ describe MembershipsController do
 
     it "sends an email to admins with new membership request" do
       GroupMailer.should_receive(:new_membership_request).and_return(stub(deliver: true))
-      @group.add_admin!(User.make!)
+      @group.add_admin!(create(:user))
       post :create,
            :membership => {:group_id => @group.id}
     end
