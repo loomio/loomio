@@ -2,6 +2,8 @@
   - if notification.event_kind == "new_discussion"
     - discussion = notification.discussion
     - person = discussion.author.name
+    - avatar_url = discussion.author.avatar_url(:medium)
+    - avatar_initials = discussion.author.avatar_initials
     - action_text = "started a new discussion"
     - title_text = discussion.title
     - group_name = discussion.group_full_name
@@ -10,6 +12,8 @@
   - elsif notification.event_kind == "new_comment"
     - comment = notification.comment
     - person = comment.user.name
+    - avatar_url = comment.user.avatar_url(:medium)
+    - avatar_initials = comment.user.avatar_initials
     - action_text = "commented on the discussion"
     - title_text = comment.discussion.title
     - group_name = comment.group_full_name
@@ -18,6 +22,8 @@
   - elsif notification.event_kind == "new_motion"
     - motion = notification.motion
     - person = motion.author.name
+    - avatar_url = motion.author.avatar_url(:medium)
+    - avatar_initials = motion.author.avatar_initials
     - action_text = "created a new proposal"
     - title_text = motion.name
     - group_name = motion.group_full_name
@@ -26,6 +32,8 @@
   - elsif notification.event_kind == "close_motion"
     - motion = notification.motion
     - person = motion.author.name
+    - avatar_url = motion.author.avatar_url(:medium)
+    - avatar_initials = motion.author.avatar_initials
     - action_text = "closed the proposal"
     - title_text = motion.name
     - group_name = motion.group_full_name
@@ -34,6 +42,8 @@
   - elsif notification.event_kind == "new_vote"
     - vote = notification.vote
     - person = vote.user_name
+    - avatar_url = vote.user.avatar_url(:medium)
+    - avatar_initials = vote.user.avatar_initials 
     - action_text = "#{Vote::POSITION_VERBS[vote.position]} on the proposal"
     - title_text = vote.motion_name
     - group_name = vote.group_full_name
@@ -42,6 +52,8 @@
   - elsif notification.event_kind == "motion_blocked"
     - vote = notification.vote
     - person = vote.user_name
+    - avatar_url = vote.user.avatar_url
+    - avatar_initials = vote.user.avatar_initials
     - action_text = "blocked the proposal"
     - title_text = vote.motion_name
     - group_name = vote.group_full_name
@@ -50,6 +62,8 @@
   - elsif notification.event_kind == "membership_requested"
     - membership = notification.membership
     - person = membership.user_name
+    - avatar_url = membership.user.avatar_url
+    - avatar_initials = membership.user.avatar_initials
     - action_text = "requested membership to"
     - title_text = membership.group_full_name
     - group_name = membership.group_full_name
@@ -58,6 +72,8 @@
   - elsif notification.event_kind == "user_added_to_group"
     - membership = notification.membership
     - person = membership.inviter_name ? membership.inviter_name : "Someone"
+    - avatar_url = membership.inviter.avatar_url
+    - avatar_initials = membership.inviter.avatar_initials
     - action_text = "added you to the group"
     - title_text = membership.group_full_name
     - group_name = membership.group_full_name
@@ -66,6 +82,8 @@
   - elsif notification.event_kind == "comment_liked"
     - comment_vote = notification.comment_vote
     - person = comment_vote.user_name
+    - avatar_url = comment_vote.user.avatar_url
+    - avatar_initials = comment_vote.user.avatar_initials
     - action_text = "liked your comment in the discussion"
     - title_text = comment_vote.discussion_title
     - group_name = comment_vote.group_full_name
@@ -76,6 +94,13 @@
 
   %li.selector-item{:class => "notification-item#{class_name}" }
     %a{:href => href }
+      - if !avatar_url.blank? or !avatar_initials.blank?
+        .medium-user-avatar.avatar-canvas
+          - if !avatar_url.blank?
+            = image_tag avatar_url
+          - elsif !avatar_initials.blank?
+            %span.medium-user-initials.initials-decoration
+              = avatar_initials
       %span.bold-name= person
       = " #{action_text} "
       - if title_text
