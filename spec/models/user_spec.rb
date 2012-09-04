@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) { User.make! }
-  let(:group) { Group.make! }
+  let(:user) { create(:user) }
+  let(:group) { create(:group) }
 
   subject do
     user = User.new
@@ -45,13 +45,13 @@ describe User do
   end
 
   it "has correct group request" do
-    Membership.make!(:group => group, :user => user)
+    create(:membership,:group => group, :user => user)
     user.group_requests.should include(group)
   end
 
   describe "open_votes" do
     before do
-      @motion = create_motion
+      @motion = create(:motion)
       @motion.group.add_member! user
       @vote = user.votes.new(:position => "yes")
       @vote.motion = @motion
@@ -78,19 +78,19 @@ describe User do
 
   it "has authored motions" do
     group.add_member!(user)
-    discussion = create_discussion(group: group)
-    motion = create_motion(discussion: discussion, author: user)
+    discussion = create :discussion, group: group
+    motion = create(:motion, discussion: discussion, author: user)
     user.authored_motions.should include(motion)
   end
 
   describe "motions_in_voting_phase" do
     it "should return motions that belong to user and are in phase 'voting'" do
-      motion = create_motion(author: user)
+      motion = create(:motion, author: user)
       user.motions_in_voting_phase.should include(motion)
     end
 
     it "should not return motions that belong to the group but are in phase 'closed'" do
-      motion = create_motion(author: user)
+      motion = create(:motion, author: user)
       motion.close_voting!
       user.motions_in_voting_phase.should_not include(motion)
     end
@@ -98,13 +98,13 @@ describe User do
 
   describe "motions_closed" do
     it "should return motions that belong to the group and are in phase 'voting'" do
-      motion = create_motion(author: user)
+      motion = create(:motion, author: user)
       motion.close_voting!
       user.motions_closed.should include(motion)
     end
 
     it "should not return motions that belong to the group but are in phase 'closed'" do
-      motion = create_motion(author: user)
+      motion = create(:motion, author: user)
       user.motions_closed.should_not include(motion)
     end
   end
@@ -128,11 +128,11 @@ describe User do
 
   describe "user.discussions_sorted_paged" do
     it "returns a list of discussions sorted by last_comment_at" do
-      discussion1 = create_discussion :author => user
-      discussion2 = create_discussion :author => user
+      discussion1 = create :discussion, :author => user
+      discussion2 = create :discussion, :author => user
       discussion2.add_comment user, "hi"
-      discussion3 = create_discussion :author => user
-      discussion4 = create_discussion :author => user
+      discussion3 = create :discussion, :author => user
+      discussion4 = create :discussion, :author => user
       discussion1.add_comment user, "hi"
       user.discussions_sorted[0].should == discussion1
       user.discussions_sorted[1].should == discussion4
@@ -144,8 +144,8 @@ describe User do
   describe "user.voted?(motion)" do
     before do
       group.add_member!(user)
-      discussion = create_discussion(group: group)
-      @motion = create_motion(discussion: discussion, author: user)
+      discussion = create :discussion, group: group
+      @motion = create :motion, discussion: discussion, author: user
     end
     it "it returns true if user has voted on motion" do
       vote = user.votes.new(position: "abstain")
@@ -160,8 +160,8 @@ describe User do
 
   describe "inviting user to Loomio and to group" do
     before do
-      @inviter = User.make!
-      @group = Group.make!
+      @inviter = create :user
+      @group = create :group
       @user = User.invite_and_notify!({email: "foo@example.com"}, @inviter, @group)
     end
 
@@ -175,27 +175,27 @@ describe User do
   end
 
   it "invited user should have email as name" do
-    user = User.invite_and_notify!({email: "foo@example.com"}, User.make!, Group.make!)
+    user = User.invite_and_notify!({email: "foo@example.com"}, create(:user), create(:group))
     user.name.should == user.email
   end
 
   it "can find user by email (case-insensitive)" do
-    user = User.make!(email: "foobar@example.com")
+    user = create(:user, email: "foobar@example.com")
     User.find_by_email("foObAr@exaMPLE.coM").should == user
   end
 
   it "can create a new motion_read_log" do
-    @group = Group.make!
-    @discussion = create_discussion(group: @group)
-    @motion = create_motion(discussion: @discussion)
+    @group = create :group
+    @discussion = create :discussion, group: @group
+    @motion = create :motion, discussion: @discussion
     user.update_motion_read_log(@motion)
     MotionReadLog.count.should == 1
   end
 
   it "can update an existing motion_read_log" do
-    @group = Group.make!
-    @discussion = create_discussion(group: @group)
-    @motion = create_motion(discussion: @discussion)
+    @group = create(:group)
+    @discussion = create :discussion, group: @group
+    @motion = create(:motion,discussion: @discussion)
     @motion.activity = 4
     user.update_motion_read_log(@motion)
     @motion.activity = 5
@@ -205,8 +205,8 @@ describe User do
   end
 
   it "can update an existing discussion_read_log" do
-    @group = Group.make!
-    @discussion = create_discussion(group: @group)
+    @group = create(:group)
+    @discussion = create(:discussion, group: @group)
     @discussion.activity = 4
     user.update_discussion_read_log(@discussion)
     @discussion.activity = 5
@@ -216,8 +216,8 @@ describe User do
   end
 
   it "can create a new discussion_read_log" do
-    @group = Group.make!
-    @discussion = create_discussion(group: @group)
+    @group = create(:group)
+    @discussion = create(:discussion, group: @group)
     user.update_discussion_read_log(@discussion)
     DiscussionReadLog.count.should == 1
   end
