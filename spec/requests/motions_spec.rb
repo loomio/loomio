@@ -14,7 +14,7 @@ describe "Motions" do
       @group.add_member!(@user2)
       @discussion = create_discussion(group: @group)
       @motion = create_motion(name: 'Test Motion', discussion: @discussion,
-                              author: @user, facilitator: @user)
+                              author: @user)
       @motion.save!
       page.driver.post user_session_path, 'user[email]' => @user.email,
                        'user[password]' => 'password'
@@ -153,7 +153,7 @@ describe "Motions" do
       @user = User.make!
       @group.add_member!(@user)
       @motion = create_motion(name: 'Test Motion', group: @group,
-                              author: @user, facilitator: @user)
+                              author: @user)
       @motion.save!
       @motion.discussion.add_comment(@user, "hello!")
 
