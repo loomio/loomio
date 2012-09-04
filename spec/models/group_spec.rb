@@ -298,15 +298,13 @@ describe Group do
 
   describe "#create_welcome_loomio" do
     before do
-      #@loomio_helper_bot = User.make!
-      #User.stub(:get_loomio_user).and_return(@loomio_helper_bot)
-      @user = User.new
-      @user.email = "info@loom.io"
-      @user.name = "loomio helper bot"
-      @user.password = "password"
-      @user.save!
+      @loomio_helper_bot = User.new
+      @loomio_helper_bot.email = "info@loom.io"
+      @loomio_helper_bot.name = "loomio helper bot"
+      @loomio_helper_bot.password = "password"
+      @loomio_helper_bot.save!
       @group = Group.make!
-      @group.add_admin!(user)
+      @group.add_admin!(@loomio_helper_bot)
       @group.create_welcome_loomio
     end
 
@@ -340,6 +338,24 @@ describe Group do
       end
       it "creates a new motion with title" do
         @subgroup.discussions.first.motions.count.should == 1
+      end
+    end
+
+    describe "edit description" do
+      before do
+        group.stub(:save)
+      end
+      it "assigns description to the model" do
+        group.should_receive(:description=).with "blah"
+        xhr :post, :edit_description,
+          :id => group.id,
+          :description => "blah"
+      end
+      it "saves the model" do
+        group.should_receive :save
+        xhr :post, :edit_description,
+          :id => group.id,
+          :description => "blah"
       end
     end
   end
