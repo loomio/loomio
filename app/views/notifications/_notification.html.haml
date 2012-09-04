@@ -42,8 +42,8 @@
   - elsif notification.event_kind == "new_vote"
     - vote = notification.vote
     - person = vote.user_name
-    - avatar_url = vote.avatar_url(:medium)
-    - avatar_initials = vote.avatar_initials 
+    - avatar_url = vote.user.avatar_url(:medium)
+    - avatar_initials = vote.user.avatar_initials 
     - action_text = "#{Vote::POSITION_VERBS[vote.position]} on the proposal"
     - title_text = vote.motion_name
     - group_name = vote.group_full_name
@@ -52,8 +52,8 @@
   - elsif notification.event_kind == "motion_blocked"
     - vote = notification.vote
     - person = vote.user_name
-    - avatar_url = vote.avatar_url
-    - avatar_initials = vote.avatar_initials
+    - avatar_url = vote.user.avatar_url
+    - avatar_initials = vote.user.avatar_initials
     - action_text = "blocked the proposal"
     - title_text = vote.motion_name
     - group_name = vote.group_full_name
@@ -82,8 +82,8 @@
   - elsif notification.event_kind == "comment_liked"
     - comment_vote = notification.comment_vote
     - person = comment_vote.user_name
-    - avatar_url = comment_vote.avatar_url
-    - avatar_initials = comment_vote.avatar_initials
+    - avatar_url = comment_vote.user.avatar_url
+    - avatar_initials = comment_vote.user.avatar_initials
     - action_text = "liked your comment in the discussion"
     - title_text = comment_vote.discussion_title
     - group_name = comment_vote.group_full_name
@@ -94,15 +94,16 @@
 
   %li.selector-item{:class => "notification-item#{class_name}" }
     %a{:href => href }
-      .medium-user-avatar.avatar-canvas
-        - if !avatar_url.blank?
-          = image_tag avatar_url
-        - elsif !avatar_initials.blank?
-          %span.medium-user-initials.initials-decoration
-            = avatar_initials
+      - if !avatar_url.blank? or !avatar_initials.blank?
+        .medium-user-avatar.avatar-canvas
+          - if !avatar_url.blank?
+            = image_tag avatar_url
+          - elsif !avatar_initials.blank?
+            %span.medium-user-initials.initials-decoration
+              = avatar_initials
       %span.bold-name= person
       = " #{action_text} "
-      - if false #title_text
+      - if title_text
         %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
       %span.notification-item-footer
         = "#{date} ago · #{group_name}"
