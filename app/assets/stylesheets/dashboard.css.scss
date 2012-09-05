@@ -2,12 +2,10 @@
 @import "bootstrap/mixins";
 @import "mixins";
 
-#dashboard-topic-list {
-  margin: 0 auto 0 auto;
-}
 #dashboard-groups-list {
   margin: 0 0 0 10px;
 }
+#dashboard-groups-list a:hover { color: $dark-grey }
 .sub-panel a { color: $mid-grey; }
 .sub-group {
   font-size: $font-small;

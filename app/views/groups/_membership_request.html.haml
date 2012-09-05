@@ -1,6 +1,6 @@
 %li
   .clearfix
-    .user-name= truncate(membership_request.user_name, :length => 29, :omission => '...')
+    .membership-user-name= truncate(membership_request.user_name, :length => 29, :omission => '...')
     .admin-controls
       =link_to 'Approve', approve_request_for_membership_path(membership_request), :method => :post,
         :confirm => "Are you sure you want to add #{membership_request.user_email} to the group?"

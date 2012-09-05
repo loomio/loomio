@@ -148,7 +148,10 @@ li.tool-bar-item#discussion:hover {
   li {
     line-height: 1.6em;
     background-color: $sub-selector-panel;
-    a { color: $mid-grey; }
+    a {
+      color: $mid-grey;
+      text-decoration: underline;
+    }
   }
   .dropdown { float: right; }
   .dropdown li {
@@ -158,7 +161,7 @@ li.tool-bar-item#discussion:hover {
   .dropdown li a {
     color: $dark-grey;
     text-shadow: none;
-    font-size: $font-small;
+    text-decoration: none;
   }
   .dropdown li a:hover { color: white; }
 }
@@ -174,20 +177,6 @@ li.tool-bar-item#discussion:hover {
 }
 /* description panel */
 .sub-panel#group-description-panel {
-  a#add-description, a#edit-description {
-    color: $mid-grey;
-    text-decoration: underline;
-    font-size: $font-small;
-  }
-  a#add-description:hover, a#edit-description:hover {
-    color: $dark-grey;
-  }
-  #show-description {
-    color: $dark-grey;
-    .model-description {
-      font-size: $font-small;
-    }
-  }
   #add-edit-description {
     form { margin-bottom: 0px }
     #description-input {
@@ -203,14 +192,6 @@ li.tool-bar-item#discussion:hover {
     }
     .control-group { margin-bottom: 0px; }
   }
-  #cancel-add-description {
-    color: $mid-grey;
-    padding-right: 10px;
-    float: right;
-    position: relative;
-    top: 5px;
-    font-size: $font-tiny;
-  }
 }
 #add-member-popup-btn {
   margin-bottom: 5px;
@@ -221,6 +202,9 @@ li.tool-bar-item#discussion:hover {
   .new_motion_link {
     float: right;
     padding-right: 10px;
+  }
+  .group-link a:hover {
+    color: $dark-grey;
   }
 }
 /* membership request panel */
@@ -308,13 +292,15 @@ input#user_email{
     bottom: 2px;
     color: $mid-grey;
     opacity: 0.6;
+    text-decoration: none;
   }
   .close:hover {
     color: black;
   }
-  a { color: $mid-grey; }
 }
-
+.admin-controls a:hover {
+  color: $dark-grey;
+}
 
 /**** Private group form ****/
 #private-message {

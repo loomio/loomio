@@ -8,26 +8,28 @@
         %li.history-item= render message
       - if message.is_a?(Vote)
         %li.history-item
-          .comment.position
-            .position-icon
-              = render partial: "motions/display_icons", locals: { position: message.position }
-            %span.comment-username= link_to(message.user_name, "#")
-            %span.comment-label= render_position_message message
-            - if message.statement.present?
-              %span.position-message.word-break= "\"#{message.statement}\""
-            .comment-time
-              = time_ago_in_words(message.created_at) + " ago"
+          .comment-container
+            .comment.position
+              .position-icon
+                = render partial: "motions/display_icons", locals: { position: message.position }
+              %span.comment-username= link_to(message.user_name, "#")
+              %span.comment-label= render_position_message message
+              - if message.statement.present?
+                %span.position-message.word-break= "\"#{message.statement}\""
+              .comment-time
+                = time_ago_in_words(message.created_at) + " ago"
       - if message.is_a?(Motion)
         %li.history-item
           - classes = "comment proposal"
           - classes += " current" if (message == discussion.current_motion)
           %div{class: classes}
-            .proposal-icon
-            %span.comment-username= link_to(message.author_name, "#")
-            %span.comment-label created a proposal:
-            %span.proposal-text.word-break= " \"#{message.name}\""
-            .comment-time
-              = time_ago_in_words(message.created_at) + " ago"
+            .comment-container
+              .proposal-icon
+              %span.comment-username= link_to(message.author_name, "#")
+              %span.comment-label created a proposal:
+              %span.proposal-text.word-break= " \"#{message.name}\""
+              .comment-time
+                = time_ago_in_words(message.created_at) + " ago"
   :coffeescript
     $ ->
       @linkify = new Loomio.Views.Utils.Linkify

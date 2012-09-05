@@ -41,6 +41,7 @@ body.discussions.show {
       }
     }
   }
+
   #discussion-panel-content {
     background-color: white;
     border-top: 1px solid $light-grey;
@@ -48,67 +49,16 @@ body.discussions.show {
     padding-bottom: 20px;
     margin-bottom: 5px;
   }
+
   #discussion-context {
     min-height: 40px;
     border-bottom: 1px solid $light-grey;
-    padding: 10px 0px 10px 20px;
-    margin: 0px 20px;
-  }
-  #discussion-context a#add-description, a#edit-description {
-    color: $mid-grey;
-    text-decoration: underline;
-    font-size: $font-small;
-  }
-  #discussion-context a#add-description:hover, a#edit-description:hover {
-    color: $dark-grey;
-  }
-  #discussion-context #show-description {
-    color: $dark-grey;
-  }
-  #discussion-context #add-edit-description {
-    form { margin-bottom: 0px }
-    #description-input {
-      width: 600px;
-      height: 90px;
-      margin-bottom: 2px;
-    }
-    .control-group { margin-bottom: 0px; }
-    .save-buttons {
-      position: relative;
-      bottom: 5px;
-    }
-    #add-description-submit { float: left; }
-    #cancel-add-description {
-      float: left;
-      margin-left: 10px;
-      color: $mid-grey;
-      position: relative;
-      top: 5px;
-      font-size: $font-tiny;
-    }
+    padding: 10px 0px 10px 50px;
   }
 
-  .header-icon {
-    background-repeat: no-repeat;
-    background-size: 24px;
-    height: 24px;
-    width: 24px;
-    margin: 6px 6px 0 10px;
-    float: left;
-  }
   .header-text {
     color: $mid-grey;
     line-height: 2.0em;
-  }
-  .header-icon#topic {
-    background-image:url('/assets/discussion-30.png');
-  }
-  .header-icon#discussion {
-    background-image:url('/assets/discussion-30.png');
-    /*opacity: 0.6;*/
-  }
-  .header-icon#decision {
-    background-image:url('/assets/pie-30.png');
   }
 }
 
@@ -120,7 +70,7 @@ body.discussions.show {
   }
 }
 .content-proposal-body {
-  padding: 0px 20px 30px 40px;
+  padding: 0px 20px 10px 50px;
 }
 li .motion { padding: 0 5px 20px 0px; }
 .close-date {
@@ -138,12 +88,12 @@ li.preview a {
   border-right: 1px solid $light-grey;
 
   #content-history-body {
-    padding: 0px 20px 10px 40px;
+    padding: 0px 20px 10px 8px;
   }
 
   #new-comment-form {
     margin-bottom: 0px;
-    padding: 10px 0 10px 5px;
+    padding: 10px 0 10px 0;
     background-color: $comment-color;
   }
 
@@ -158,8 +108,7 @@ li.preview a {
 
   #new-comment {
     margin: 0 0 5px 0px;
-    width: 345px;
-    max-width: 345px;
+    width: 385px;
     height: 80px;
     color: $dark-grey;
   }
@@ -168,34 +117,38 @@ li.preview a {
     margin: 5px 5px 5px 45px;
   }
 
-  #new-comment-form .medium-user-avatar.avatar-canvas {
-    margin-right: 10px;
-  }
-
   ul.history-list {
     list-style: none;
-    border-bottom: 1px solid $light-grey;
     margin: 0 0 3px 0;
-  }
-  li.history-item {
-    border-top: 1px solid $light-grey;
   }
 
   /* comment */
   .comment{
-    padding: 5px 10px 5px 5px;
+    padding: 0 10px 0 0px;
     color: $dark-grey;
     font-size: $font-small;
     background-color: $comment-color;
-    width: 393px;
+    width: 450px;
   }
 
   .comment-avatar {
-    margin: 0 10px 0 0;
-    float: left;
-    width: 8%;
+    position: relative;
+    top: 8px;
   }
 
+  .comment-container {
+    display: inline-block;
+    width: 400px;
+    padding: 5px 0;
+    margin-left: 40px;
+    border-bottom: 1px solid $light-grey;
+  }
+  .comment-container.with-avatar {
+    margin-left: 0;
+  }
+  .comment.position {
+    width: 400px;
+  }
   .comment img {
     float: left;
   }
@@ -243,15 +196,6 @@ li.preview a {
   .proposal{
     background: $comment-color;
     color: $mid-grey;
-  }
-  .proposal .tool-bar-item-proposal {
-    float: left;
-    display: inline;
-    height: 19px;
-    width: 22px;
-    background-position: 2px 1px;
-  }
-  .proposal-info {
   }
   .proposal .proposal-text{
     color: $mid-grey;
@@ -305,29 +249,11 @@ li.preview a {
   .discussion-date-info .proposal-close-date {
     display: inline;
   }
-  .discussion-icon-container {
-    margin-top: 8px;
-    display: inline;
-    float: right;
-    background-image: url("discussion-25.png");
-    background-repeat: no-repeat;
-    width: 32px;
-    height: 25px;
-  }
   .pie {
     float: right;
     width: 36px;
     height: 36px;
     z-index: 1;
-  }
-  .disabled-pie {
-    margin: 6px 5px 0 5px;
-    float: right;
-    width: 25px;
-    height: 25px;
-    background-image: url("pie-25.png");
-    background-repeat: no-repeat;
-    opacity: 0.2;
   }
   .enabled-icon {
     -moz-opacity: 1.0;

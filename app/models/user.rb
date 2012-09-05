@@ -164,7 +164,7 @@ class User < ActiveRecord::Base
   end
 
   def self.get_loomio_user
-    User.where(:email => 'info@loom.io').first
+    User.where(:email => 'contact@loom.io').first
   end
 
   def update_motion_read_log(motion)
