@@ -1,14 +1,15 @@
 class Event < ActiveRecord::Base
-  KINDS = %w[new_discussion new_comment new_motion close_motion new_vote motion_blocked
-             membership_requested user_added_to_group comment_liked]
+  KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
+             motion_closed membership_requested user_added_to_group comment_liked]
 
   has_many :notifications, :dependent => :destroy
   belongs_to :eventable, :polymorphic => true
+  belongs_to :user
 
   validates_inclusion_of :kind, :in => KINDS
   validates_presence_of :eventable
 
-  attr_accessible :kind, :eventable
+  attr_accessible :kind, :eventable, :user
 
   def self.new_discussion!(discussion)
     event = create!(:kind => "new_discussion", :eventable => discussion)
@@ -40,10 +41,10 @@ class Event < ActiveRecord::Base
     event
   end
 
-  def self.close_motion!(motion)
-    event = create!(:kind => "close_motion", :eventable => motion)
+  def self.motion_closed!(motion, closer)
+    event = create!(:kind => "motion_closed", :eventable => motion, :user => closer)
     motion.group_users.each do |user|
-      unless user == motion.author
+      unless user == closer
         event.notifications.create! :user => user
       end
     end

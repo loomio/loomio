@@ -73,7 +73,8 @@ class User < ActiveRecord::Base
   has_many :motions_closed,
            :through => :discussions,
            :source => :motions,
-           :conditions => { phase: 'closed' }
+           :conditions => { phase: 'closed' },
+           :order => 'close_date DESC'
 
   has_many :votes
   has_many :open_votes,
