@@ -4,7 +4,9 @@
 
 /** discussion new form*/
 body.discussions.new {
-  #discussion_notify_group_upon_creation { margin-bottom: 30px; }
+  .notify-group-checkbox {
+    margin-bottom: 15px;
+  }
   .btn { display: block; }
 }
 /** Code block padding (Maybe change this) */
