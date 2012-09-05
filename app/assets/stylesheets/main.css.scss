@@ -49,48 +49,89 @@ h5 {
 
 // structural elements (containers etc.)
 
-a.btn-grey { color: $mid-grey; }
-
 .sub_group{
 	font-size: $font-tiny;
 }
 
 #start-new-topic { margin: 0 0 10px 2px; }
-#topic-list { border-top: 1px solid $light-grey; }
+#discussion-list { border-top: 1px solid $light-grey; }
 #discussion-list { margin-bottom: 10px; }
-#discussions-with-motions{ border-bottom: 2px solid $light-grey }
 
-#new-topic {
+#new-discussion {
    width: 740px;
    margin-left: -370px;
    .modal-footer { text-align: left; }
  }
+#discussion-list, .content-proposal-body {
+  ul.selector-list {
+    list-style: none;
+  }
+  li.selector-item {
+    background-color: $unhighlighted;
+    color: $dark-grey;
+    font-weight: normal;
+    border-bottom: 1px solid $light-grey;
+  }
+  .undecided, .unread {
+    background-color: $highlighted;
+    a { color: black; }
+    a .proposal-title { color: black; }
+  }
+  li.selector-item a.selector-link {
+    display: block;
+    padding: 5px 5px 5px 15px;
+  }
+  li.selector-item a.selector-link:hover {
+    background-color: $selector;
+    text-decoration: none;
+  }
+}
 
-ul.selector-list {
-  list-style: none;
+.model-description { padding-bottom: 10px; }
+a#edit-description {
+  color: $mid-grey;
+  text-decoration: underline;
+  font-size: $font-small;
 }
-li.selector-item {
-  background-color: $unhighlighted;
+a#edit-description:hover {
   color: $dark-grey;
-  font-weight: normal;
-  border-bottom: 1px solid $light-grey;
 }
-.undecided, .unread {
-  background-color: $highlighted;
-  a { color: black; }
-  a .proposal-title { color: black; }
+#show-description {
+  color: $dark-grey;
+  margin-bottom: 10px;
 }
+#add-edit-description {
+  form { margin-bottom: 0px }
+  #description-input {
+    width: 600px;
+    height: 90px;
+    margin-bottom: 2px;
+  }
+  .control-group { margin-bottom: 0px; }
+  .save-buttons {
+    position: relative;
+    bottom: 5px;
+  }
+  #add-description-submit { float: left; }
+  #cancel-add-description {
+    float: left;
+    margin-left: 10px;
+    color: $mid-grey;
+    text-decoration: underline;
+    position: relative;
+    top: 5px;
+    font-size: $font-tiny;
+  }
+  #cancel-add-description:hover {
+    color: $dark-grey;
+  }
+}
+
 li.empty-list-message {
   padding: 5px 0px;
 }
-li.selector-item a.selector-link {
-  display: block;
-  padding: 5px 5px 5px 15px;
-}
-li.selector-item a.selector-link:hover {
-  background-color: $selector;
-  text-decoration: none;
-}
+.discussion-with-motion-divider { border-bottom: 2px solid $light-grey; }
+
 .pagination {
   a {
     color: $mid-grey;
@@ -202,11 +243,11 @@ form {
     margin-left: 5px;
     display: inline;
   }
-  .divider {
-    width: 300px;
-    border: 1px solid $lighter-grey;
-    margin-bottom: 5px;
-  }
+  /*.divider {*/
+    /*width: 300px;*/
+    /*border: 1px solid $lighter-grey;*/
+    /*margin-bottom: 5px;*/
+  /*}*/
 }
 
 .hidden {
@@ -299,4 +340,60 @@ ul.loomio-process-flow {
     height: 100px;
     width: 32px;
   }
+}
+
+a.btn-grey {
+  color: $mid-grey;
+  padding: 7px;
+}
+
+/**** icons ****/
+.small-icon{
+  background-repeat: no-repeat;
+  height: 18px;
+  width: 18px;
+  padding-right: 5px;
+  float: left;
+}
+.small-icon.topic-icon {
+  background-image:url('/assets/topic-18.png');
+  opacity: 0.5;
+}
+
+.large-icon{
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+  margin: 6px 13px 0 13px;
+  float: left;
+}
+.large-icon.topic-icon {
+    background-image:url('/assets/topic-24.png');
+    opacity: 0.5;
+    margin-top: 3px;
+}
+.large-icon.discussion-icon {
+    background-image:url('/assets/discussion-24.png');
+}
+.large-icon.decision-icon {
+    background-image:url('/assets/pie-24.png');
+}
+
+.discussion-icon-container {
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 24px;
+  float: right;
+  margin-top: 8px;
+  display: inline;
+  background-image: url("discussion-24.png");
+}
+.disabled-pie {
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+  margin: 6px 5px 0 5px;
+  float: right;
+  background-image: url("pie-24.png");
+  opacity: 0.2;
 }

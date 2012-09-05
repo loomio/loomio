@@ -404,7 +404,7 @@ describe User do
   end
 
   describe "get_loomio_user" do
-    it "returns the loomio helper bot user (email: info@loom.io)" do
+    it "returns the loomio helper bot user (email: contact@loom.io)" do
       user = User.new
       user.name = "loomio evil bot"
       user.email = "darkness@loom.io"
@@ -412,7 +412,7 @@ describe User do
       user.save!
       user1 = User.new
       user1.name = "loomio helper bot"
-      user1.email = "info@loom.io"
+      user1.email = "contact@loom.io"
       user1.password = "password"
       user1.save!
       user2 = User.new

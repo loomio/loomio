@@ -130,3 +130,26 @@ $ ->
     left = 150 - chars
     display_count(left, $(".limit-150"))
   )
+
+#*** check if discussion with motions list is empty ***
+$ ->
+  if $("body.groups.show").length > 0 ||  $("body.dashboard.show").length > 0
+    if $("#discussions-with-motions").children().html() != ""
+      $(".discussion-with-motion-divider").removeClass('hidden')
+
+# Edit description
+$ ->
+  if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
+    $("#edit-description").click((event) ->
+      description_height = $(this).parent().find(".model-description").height()
+      $("#show-description").toggle()
+      $("#add-edit-description").toggle()
+      if description_height > 90
+        $('#description-input').height(description_height)
+      event.preventDefault()
+    )
+    $("#cancel-add-description").click((event) ->
+      $("#add-edit-description").toggle()
+      $("#show-description").toggle()
+      event.preventDefault()
+    )

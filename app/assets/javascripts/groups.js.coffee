@@ -7,27 +7,6 @@ $ ->
       (e) ->
         $(this).text("Membership Requested")
     )
-  # Add a group description
-  $ ->
-    if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
-      $("#add-description").click((event) ->
-        $("#description-placeholder").toggle()
-        $("#add-edit-description").toggle()
-        event.preventDefault()
-      )
-      $("#edit-description").click((event) ->
-        $("#show-description").toggle()
-        $("#add-edit-description").toggle()
-        event.preventDefault()
-      )
-      $("#cancel-add-description").click((event) ->
-        $("#add-edit-description").toggle()
-        if $("#show-description").text().match(/\S/)
-          $("#show-description").toggle()
-        else
-          $("#description-placeholder").toggle()
-        event.preventDefault()
-      )
 
 #*** add member form ***
 $ ->
@@ -126,12 +105,6 @@ $ ->
         )
         e.preventDefault()
     )
-
-#*** check if lists are empty ***
-$ ->
-  if $("body.groups.show").length > 0
-    if $("#discussions-with-motions").children().html() == null &&  $("#user-discussions").children().html() == null
-      $(".empty-list-message").removeClass('hidden')
 
 #displayGraph = (this_pie, graph_id, data)->
   ## Display vote graph

@@ -1,11 +1,7 @@
-#description-placeholder
-  - if model.description.blank? && (can? :edit_description, model)
-    = link_to "Add a #{model_name} description", "#", id: 'add-description'
 #show-description
-  - if !model.description.blank?
-    .model-description.word-break= model.description
-    - if can? :edit_description, model
-      = link_to "Edit #{model_name} description", "#", id: 'edit-description'
+  .model-description.word-break= model.description
+  - if can? :edit_description, model
+    = link_to "Edit #{model_name} description", "#", id: 'edit-description'
 #add-edit-description.hidden
   = form_tag send("edit_description_#{model_name}_path"), :remote => true do |f|
     = hidden_field_tag 'id'

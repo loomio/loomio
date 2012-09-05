@@ -59,30 +59,6 @@ class Group < ActiveRecord::Base
   # ACCESSOR METHODS
   #
 
-  def discussions_with_current_motion
-    if discussions
-      discussions.where('discussions.has_current_motion' => true)
-    else
-      []
-    end
-  end
-
-  def discussions_with_current_motion_not_voted_on(user)
-    if discussions
-      (discussions.where('discussions.has_current_motion' => true).uniq - discussions_with_current_motion_voted_on(user))
-    else
-      []
-    end
-  end
-
-  def discussions_with_current_motion_voted_on(user)
-    if discussions
-      discussions.where('discussions.has_current_motion' => true).joins(:motions => :votes).where('votes.user_id = ?', user).uniq
-    else
-      []
-    end
-  end
-
   def beta_features
     if parent && (parent.beta_features == true)
       true
@@ -203,16 +179,48 @@ class Group < ActiveRecord::Base
   # DISCUSSION LISTS
   #
 
+  def all_discussions
+    Discussion.includes(:group).where("group_id = ? OR groups.parent_id = ?", id, id)
+  end
+
+  def discussions_with_current_motion
+    if all_discussions
+      all_discussions.where('discussions.has_current_motion' => true)
+    else
+      []
+    end
+  end
+
+  def discussions_with_current_motion_not_voted_on(user)
+    if all_discussions
+      (all_discussions.where('discussions.has_current_motion' => true).uniq - discussions_with_current_motion_voted_on(user))
+    else
+      []
+    end
+  end
+
+  def discussions_with_current_motion_voted_on(user)
+    if all_discussions
+      all_discussions.where('discussions.has_current_motion' => true).joins(:motions => :votes).where('votes.user_id = ?', user).uniq
+    else
+      []
+    end
+  end
+
   def discussions_sorted(user= nil)
     if user && user.group_membership(self)
       user.discussions.includes(:group).
-      where("discussions.has_current_motion = ? AND discussions.group_id = ? OR groups.parent_id = ?", false, id, id).
+      where("discussions.has_current_motion = ? AND (discussions.group_id = ? OR groups.parent_id = ?)", false, id, id).
       order("last_comment_at DESC")
     else
       discussions.where('discussions.has_current_motion' => false).order("last_comment_at DESC")
     end
   end
 
+  #
+  # DISCUSSION LISTS
+  #
+  #
   def create_welcome_loomio
     comment_str = "By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, the group can put their heads together to find the best way forward.\n\n" +
       "This 'Welcome' discussion can be used to raise any questions about how to use Loomio, and to test out the features. \n\n" +

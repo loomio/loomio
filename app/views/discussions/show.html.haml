@@ -14,7 +14,7 @@
   .span12
     .selector-panel
       .clearfix
-        .header-icon#discussion
+        .large-icon.topic-icon
         %h1#discussion-title= @discussion.title
       #discussion-panel-content
         #discussion-context
@@ -22,8 +22,8 @@
         .row
           .span6#content-history
             .clearfix
-              .header-icon#discussion
-              %h2.header-text Discussion
+              .large-icon.discussion-icon
+              %h2.header-text Engage
             #content-history-body
               - if can? :add_comment, @discussion
                 = form_tag add_comment_discussion_path(@discussion), id: "new-comment-form" do
@@ -38,8 +38,8 @@
 
           .span6#content-proposal
             .clearfix
-              .header-icon#decision
-              %h2.header-text Decision
+              .large-icon.decision-icon
+              %h2.header-text Decide
 
             .content-proposal-body
               %ul.selector-list
@@ -61,7 +61,7 @@
             - if @discussion.motions.where("phase = 'closed'").count > 0
               #previous-proposals
                 .clearfix
-                  .header-icon#decision
+                  .large-icon.decision-icon
                   %h2.header-text Previous decisions
 
                 .content-proposal-body
