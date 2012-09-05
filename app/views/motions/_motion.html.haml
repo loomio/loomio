@@ -13,8 +13,6 @@
       No close date
   .proposed-by
     = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
-    - if motion.updated_at != motion.created_at
-      = "(edited: #{time_ago_in_words(motion.updated_at)} ago)"
   .description
     - too_long = true if motion.description && motion.description.length > 200
     .short-description

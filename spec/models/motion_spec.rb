@@ -10,7 +10,6 @@ describe Motion do
   end
   it {should have(1).errors_on(:name)}
   it {should have(1).errors_on(:author)}
-  it {should have(1).errors_on(:facilitator)}
 
   it "user_has_voted?(user) returns true if the given user has voted on motion" do
     @user = User.make!
@@ -165,7 +164,6 @@ describe Motion do
 
   context "closed motion" do
     before :each do
-      user1 = User.make!
       user2 = User.make!
       @user3 = User.make!
       @group = Group.make!
@@ -196,10 +194,6 @@ describe Motion do
 
     it "no_vote_count should return number of users who did not vote" do
       @motion.no_vote_count.should == 1
-    end
-
-    it "should not update :updated_at" do
-      @motion.updated_at.should == @updated_at
     end
 
     it "users_who_did_not_vote should return users who did not vote" do
