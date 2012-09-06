@@ -127,7 +127,7 @@ li.tool-bar-item#discussion:hover {
   @include border-radius(8px);
   border: 1px solid $light-grey;
   margin-bottom: 20px;
-  padding: 6px 9px;
+  padding: 6px 6px;
   h3 {
     font-size: $font-medium;
     color: $header-titles-color;
@@ -164,6 +164,11 @@ li.tool-bar-item#discussion:hover {
     text-decoration: none;
   }
   .dropdown li a:hover { color: white; }
+}
+.sub-panel#groups ul {
+  margin-left: 23px;
+  .sub-group a{ padding-left: 20px;
+  }
 }
 
 /*request membership panel*/

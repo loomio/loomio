@@ -8,8 +8,8 @@
 
         %li.nav-item.dropdown#groups
           %a.nav-link{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
-            %span.nav-item-icon#groups-icon
-            -#- total_activity = current_user.activity_total
+            %span.nav-item-icon.large-icon.group-icon
+              -#- total_activity = current_user.activity_total
             -#- if total_activity > 0
               -#%span#activity-count.label.label-important
                 -#= total_activity
@@ -33,7 +33,7 @@
           = link_to "#", 'ajax-path' => mark_as_viewed_notifications_path(:latest_viewed => latest_seen_notification),
                    :id => 'notifications-toggle', :class => 'dropdown-toggle nav-link', 'data-target' => '#',
                    'data-toggle' => 'dropdown' do
-            %span.nav-item-icon#notification-icon
+            %span.nav-item-icon.large-icon.notification-icon
             - if unviewed_notifications.size > 0
               %span#notifications-count.label.label-important
                 = unviewed_notifications.size

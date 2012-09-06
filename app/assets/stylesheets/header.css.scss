@@ -28,6 +28,10 @@ header {
   width: 940px;
   margin: 0px auto;
 }
+.nav-item-icon {
+  padding-right: 5px;
+  opacity: 0.8;
+}
 
 ul.nav-bar-list { list-style: none; }
 
@@ -35,6 +39,7 @@ li.nav-item {
   .caret {
     border-top: 4px solid $light-grey;
     opacity: 1;
+    margin-top: 11px;
   }
 }
 li.nav-item a.nav-logo-link {
@@ -44,20 +49,14 @@ li.nav-item a.nav-logo-link {
 li.nav-item a.nav-link {
   color: $light-grey;
   display: block;
-  padding: 10px 8px;
+  padding: 8px 8px;
+  line-height: 24px;
 }
 li.nav-item a.nav-link:hover{
   color: white;
   text-decoration: none;
   .caret { border-top: 4px solid white; }
   span.nav-item-icon{ opacity: 1; }
-}
-
-li.nav-item
-span.nav-item-icon {
-  float: left;
-  background-repeat: no-repeat;
-  opacity: 0.8;
 }
 
 li.nav-item ul.dropdown-menu a { color: $dark-grey; }
@@ -84,19 +83,13 @@ li.nav-item.dropdown#user {
   #header-user-image {
     border: 1px solid #555;
     position: relative;
-    bottom: 4px;
+    bottom: 1px;
     margin-right: 5px;
   }
 }
 
 li.nav-item.dropdown#groups {
   float: left;
-  .nav-item-icon#groups-icon {
-    height: 20px;
-    width: 32px;
-    background-image:url("/assets/group.png");
-    padding-right: 5px;
-  }
   #activity-count {
     font-size: $font-tinywiny;
     padding: 0px 3px;
