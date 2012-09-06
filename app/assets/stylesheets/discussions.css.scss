@@ -254,16 +254,16 @@ li.preview a {
     width: 36px;
     height: 36px;
     z-index: 1;
+    /*margin-left: 4px;*/
   }
   .enabled-icon {
     -moz-opacity: 1.0;
     filter:alpha(opacity=100);
     opacity: 1.0;
    }
-  .activity-icon {
-    margin: 8px 8px 0 0;
-    float: right;
-  }
+  .activity-icon { float: right; }
+  .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
+  .pie-icon.activity-icon { margin: 8px 4px 0 8px; }
   .disabled-icon {
     -moz-opacity: 0.2;
     filter:alpha(opacity=20);
