@@ -56,7 +56,6 @@ describe Motion do
       @motion = Motion.new()
       @motion.name = "Test motion"
       @motion.author = @user
-      @motion.facilitator = @user
       @motion.discussion = @discussion
       @motion.save
       @discussion.reload
@@ -145,7 +144,6 @@ describe Motion do
       @motion = Motion.new()
       @motion.name = "Test motion"
       @motion.author = @user
-      @motion.facilitator = @user
       @motion.discussion = @discussion
       @motion.save
       @discussion.reload
@@ -164,6 +162,7 @@ describe Motion do
 
   context "closed motion" do
     before :each do
+      user1 = User.make!
       user2 = User.make!
       @user3 = User.make!
       @group = Group.make!
