@@ -151,7 +151,7 @@ describe Motion do
     end
 
     it "stores users who did not vote" do
-      #DidNotVote.first.user.should == @user3
+      DidNotVote.first.user.should == @user3
     end
 
     it "users_who_did_not_vote should return users who did not vote" do
@@ -164,8 +164,7 @@ describe Motion do
     end
 
     it "no_vote_count should return number of users who did not vote" do
-      #pending
-      #@motion.no_vote_count.should == 1
+      @motion.no_vote_count.should == @motion.group.users.count - @motion.votes.count
     end
 
     it "reopening motion deletes did_not_vote records" do
