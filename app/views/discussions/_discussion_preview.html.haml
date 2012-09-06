@@ -16,8 +16,8 @@
               %span.activity-count.label.label-important
                 = motion_activity
         - else
-          .disabled-pie
-        .discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
+          .large-icon.pie-icon.activity-icon
+        .large-icon.discussion-icon.activity-icon{ class: enabled_icon_class_for(discussion, current_user) }
           - discussion_activity = discussion_activity_count_for(discussion, current_user)
           - if discussion_activity > 0
             %span.activity-count.label.label-important
