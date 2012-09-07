@@ -23,9 +23,9 @@
     - group_name = motion.group_full_name
     - href = discussion_path(motion.discussion)
 
-  - elsif notification.event_kind == "close_motion"
+  - elsif notification.event_kind == "motion_closed"
     - motion = notification.motion
-    - user = motion.author
+    - user = notification.event.user
     - action_text = "closed the proposal"
     - title_text = motion.name
     - group_name = motion.group_full_name
