@@ -151,7 +151,8 @@ describe Motion do
     end
 
     it "stores users who did not vote" do
-      DidNotVote.first.user.should == @user3
+      not_voted_ids = DidNotVote.all.collect {|u| u.user.id} 
+      not_voted_ids.should include(@user3.id)
     end
 
     it "users_who_did_not_vote should return users who did not vote" do
