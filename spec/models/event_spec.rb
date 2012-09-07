@@ -14,7 +14,7 @@ describe Event do
   it { should allow_value("comment_liked").for(:kind) }
   it { should_not allow_value("blah").for(:kind) }
 
-  let(:discussion) { create_discussion }
+  let(:discussion) { create(:discussion) }
   let(:group) { discussion.group }
 
   describe "new_discussion!" do
@@ -25,7 +25,7 @@ describe Event do
 
     context "sending notifications" do
       it "notifies group members" do
-        user = User.make!
+        user = create(:user)
         group = discussion.group
         group.add_member! user
         event = Event.new_discussion!(discussion)
@@ -52,7 +52,7 @@ describe Event do
     context "sending notifications" do
       before do
         @commentor, @participant, @non_participant =
-          User.make!, User.make!, User.make!
+          create(:user), create(:user), create(:user)
         group.add_member! @commentor
         group.add_member! @participant
         group.add_member! @non_participant
@@ -80,7 +80,7 @@ describe Event do
   end
 
   describe "new_motion!" do
-    let(:motion) { create_motion }
+    let(:motion) { create(:motion) }
     subject { Event.new_motion!(motion) }
 
     its(:kind) { should eq("new_motion") }
@@ -89,7 +89,7 @@ describe Event do
     context "sending notifications" do
       it "notifies group members" do
         group = motion.group
-        @user1 = User.make!
+        @user1 = create(:user)
         group.add_member! @user1
         group_size = group.users.size
         event = Event.new_motion!(motion)
@@ -116,13 +116,10 @@ describe Event do
 
     context "sending notifications" do
       before do
-        @motion = create_motion(:discussion => discussion,
-                                :author => User.make!)
-        @user = User.make!
+        @user = create(:user)
+        @motion = create(:motion, :discussion => discussion, :author => create(:user))
         @motion.group.add_member!(@user)
-        @vote = @user.votes.new(:position => "yes")
-        @vote.motion = @motion
-        @vote.save!
+        @vote = create(:vote, :user => @user, :motion => @motion, :position => "yes")
         @event = Event.new_vote!(@vote)
       end
 
@@ -167,8 +164,8 @@ describe Event do
 
     context "sending notifications" do
       before do
-        @user = User.make!
-        @motion = create_motion
+        @user = create(:user)
+        @motion = create(:motion)
         @motion.group.add_member!(@user)
         @vote = @motion.author.votes.new(:position => "block")
         @vote.motion = @motion
@@ -197,8 +194,8 @@ describe Event do
 
     context "sending notifications" do
       before do
-        @user, @admin1, @admin2 = User.make!, User.make!, User.make!
-        @group = Group.make!
+        @user, @admin1, @admin2 = create(:user), create(:user), create(:user)
+        @group = create(:group)
         @group.add_admin! @admin1
         @group.add_admin! @admin2
         @membership = @group.add_request! @user
@@ -215,7 +212,7 @@ describe Event do
   end
 
   describe "user_added_to_group!" do
-    let(:membership) { Group.make!.add_member! User.make! }
+    let(:membership) { create(:group).add_member! create(:user) }
     subject { Event.user_added_to_group!(membership) }
 
     its(:kind) { should eq("user_added_to_group") }
@@ -223,8 +220,8 @@ describe Event do
 
     context "sending notifications" do
       before do
-        @group = Group.make!
-        @user = User.make!
+        @group = create(:group)
+        @user = create(:user)
         @membership = @group.add_member! @user
         @event = Event.user_added_to_group! @membership
       end
@@ -243,7 +240,7 @@ describe Event do
       it "does not send email to user if user has not yet acctepted invitation
           to loomio" do
         @user = User.invite_and_notify!({ :email => "example@blah.com" },
-                                        User.make!, @group)
+                                        create(:user), @group)
         @membership = @user.memberships.first
         UserMailer.should_not_receive(:added_to_group)
 
@@ -262,9 +259,9 @@ describe Event do
 
     context "sending notifications" do
       before do
-        @group = Group.make!
-        @user, @user2 = User.make!, User.make!
-        discussion = create_discussion(author: @user)
+        @group = create(:group)
+        @user, @user2 = create(:user), create(:user)
+        discussion = create(:discussion, author: @user)
         @group.add_member! @user2
         @comment = discussion.add_comment @user, "hello"
       end

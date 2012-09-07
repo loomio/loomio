@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe NotificationsController do
-  let(:user) { User.make! }
+  let(:user) { create(:user) }
   let(:paginator) { double "paginator", :per => notification_results }
   let(:notification_results) { [1,2,3] }
   let(:notifications) { double "notifications", :page => paginator }
