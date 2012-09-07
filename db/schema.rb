@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120811064555) do
+ActiveRecord::Schema.define(:version => 20120905023144) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -97,9 +97,11 @@ ActiveRecord::Schema.define(:version => 20120811064555) do
     t.datetime "updated_at"
     t.integer  "eventable_id"
     t.string   "eventable_type"
+    t.integer  "user_id"
   end
 
   add_index "events", ["eventable_id"], :name => "index_events_on_eventable_id"
+  add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -113,8 +115,8 @@ ActiveRecord::Schema.define(:version => 20120811064555) do
     t.boolean  "beta_features",        :default => false
     t.string   "description"
     t.integer  "creator_id",                              :null => false
-    t.datetime "archived_at"
     t.integer  "memberships_count",    :default => 0,     :null => false
+    t.datetime "archived_at"
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -144,7 +146,6 @@ ActiveRecord::Schema.define(:version => 20120811064555) do
     t.string   "name"
     t.text     "description"
     t.integer  "author_id"
-    t.integer  "facilitator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "phase",          :default => "voting", :null => false
@@ -198,9 +199,6 @@ ActiveRecord::Schema.define(:version => 20120811064555) do
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
-    t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
-    t.boolean  "has_read_group_notice",                      :default => false, :null => false
-    t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
     t.string   "avatar_initials"
     t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
     t.boolean  "has_read_group_notice",                      :default => false, :null => false

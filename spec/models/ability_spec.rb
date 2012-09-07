@@ -1,23 +1,23 @@
 require "cancan/matchers"
 
 describe "User abilities" do
-  let(:user) { User.make! }
-  let(:other_user) { User.make! }
+  let(:user) { create(:user) }
+  let(:other_user) { create(:user) }
 
   let(:ability) { Ability.new(user) }
   subject { ability }
 
 
   context "member of a group" do
-    let(:group) { Group.make! }
-    let(:membership_request) { group.add_request!(User.make!) }
-    let(:discussion) { create_discussion(group: group) }
+    let(:group) { create(:group) }
+    let(:membership_request) { group.add_request!(create(:user)) }
+    let(:discussion) { create(:discussion, group: group) }
     let(:new_discussion) { user.authored_discussions.new(
                            group: group, title: "new discussion") }
     let(:user_comment) { discussion.add_comment(user, "hello") }
     let(:another_user_comment) { discussion.add_comment(other_user, "hello") }
-    let(:user_motion) { create_motion(author: user, discussion: discussion) }
-    let(:other_users_motion) { create_motion(author: other_user, discussion: discussion) }
+    let(:user_motion) { create(:motion, author: user, discussion: discussion) }
+    let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
 
     before do
@@ -45,11 +45,9 @@ describe "User abilities" do
     it { should_not be_able_to(:destroy, @other_user_membership) }
     it { should be_able_to(:destroy, @user_membership) }
     it { should be_able_to(:create, new_motion) }
-    it { should be_able_to(:update, user_motion) }
     it { should be_able_to(:close_voting, user_motion) }
     it { should be_able_to(:open_voting, user_motion) }
     it { should be_able_to(:destroy, user_motion) }
-    it { should_not be_able_to(:update, other_users_motion) }
     it { should_not be_able_to(:destroy, other_users_motion) }
     it { should_not be_able_to(:close_voting, other_users_motion) }
     it { should_not be_able_to(:open_voting, other_users_motion) }
@@ -80,7 +78,7 @@ describe "User abilities" do
     end
 
     context "viewing a subgroup they do not belong to" do
-      let(:subgroup) { Group.make!(parent: group) }
+      let(:subgroup) { create(:group, parent: group) }
       context "subgroup viewable by members" do
         before { subgroup.update_attributes(:viewable_by => :members) }
         it { should_not be_able_to(:show, subgroup) }
@@ -94,14 +92,14 @@ describe "User abilities" do
 
 
   context "admin of a group" do
-    let(:group) { Group.make! }
-    let(:discussion) { create_discussion(group: group) }
-    let(:other_users_motion) { create_motion(author: other_user, discussion: discussion) }
+    let(:group) { create(:group) }
+    let(:discussion) { create(:discussion, group: group) }
+    let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
 
     before do
       @user_membership = group.add_admin! user
       @other_user_membership = group.add_member! other_user
-      @membership_request = group.add_request! User.make!
+      @membership_request = group.add_request! create(:user)
     end
 
     it { should be_able_to(:update, group) }
@@ -109,7 +107,6 @@ describe "User abilities" do
     it { should be_able_to(:make_admin, @membership_request) }
     it { should be_able_to(:remove_admin, @membership_request) }
     it { should be_able_to(:destroy, @other_user_membership) }
-    it { should_not be_able_to(:update, other_users_motion) }
     it { should be_able_to(:destroy, other_users_motion) }
     it { should be_able_to(:close_voting, other_users_motion) }
     it { should be_able_to(:open_voting, other_users_motion) }
@@ -127,10 +124,10 @@ describe "User abilities" do
 
 
   context "non-member of a group" do
-    let(:group) { Group.make! }
-    let(:discussion) { create_discussion(group: group) }
+    let(:group) { create(:group) }
+    let(:discussion) { create(:discussion, group: group) }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
-    let(:motion) { create_motion(discussion: discussion) }
+    let(:motion) { create(:motion, discussion: discussion) }
     let(:new_discussion) { user.authored_discussions.new(
                            group: group, title: "new discussion") }
     let(:another_user_comment) { discussion.add_comment(discussion.author, "hello") }

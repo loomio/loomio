@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UsersController do
   let(:previous_url) { root_url }
-  let(:user) { User.make! }
+  let(:user) { create(:user) }
 
   before do
     sign_in user
@@ -39,7 +39,7 @@ describe UsersController do
 
   describe "#upload_new_avatar" do
     before do
-      @user = User.make!
+      @user = create(:user)
       controller.stub(:current_user).and_return(@user)
       controller.stub(:get_notifications)
       @user.stub(:avatar_kind=).with("uploaded")

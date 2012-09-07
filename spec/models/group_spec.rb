@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Group do
-  let(:motion) { create_motion }
+  let(:motion) { create(:motion) }
 
   it { should have_many :discussions }
 
@@ -31,8 +31,8 @@ describe Group do
 
   describe "motions_in_voting_phase_that_user_has_voted_on(user)" do
     it "calls scope on motions_in_voting_phase" do
-      user = User.make!
-      group = Group.make!
+      user = create(:user)
+      group = create(:group)
       group.add_member!(user)
       group.motions_in_voting_phase.should_receive(:that_user_has_voted_on).
         with(user).and_return(stub(:uniq => true))
@@ -43,8 +43,8 @@ describe Group do
 
   describe "motions_in_voting_phase_that_user_has_not_voted_on(user)" do
     it "does stuff" do
-      user = User.make!
-      group = Group.make!
+      user = create(:user)
+      group = create(:group)
       group.add_member!(user)
       group.should_receive(:motions_in_voting_phase_that_user_has_not_voted_on)
 
@@ -80,16 +80,16 @@ describe Group do
 
   describe "group.discussions_sorted_for_user(user)" do
     before do
-      @user = User.make!
-      @group = Group.make!
+      @user = create(:user)
+      @group = create(:group)
       @group.add_member!(@user)
     end
     it "returns a list of discussions sorted by last_comment_at" do
-      discussion1 = create_discussion :group => @group, :author => @user
-      discussion2 = create_discussion :group => @group, :author => @user
+      discussion1 = create :discussion, :group => @group, :author => @user
+      discussion2 = create :discussion, :group => @group, :author => @user
       discussion2.add_comment @user, "hi"
-      discussion3 = create_discussion :group => @group, :author => @user
-      discussion4 = create_discussion :group => @group, :author => @user
+      discussion3 = create :discussion, :group => @group, :author => @user
+      discussion4 = create :discussion, :group => @group, :author => @user
       discussion1.add_comment @user, "hi"
       @group.discussions_sorted(@user)[0].should == discussion1
       @group.discussions_sorted(@user)[1].should == discussion4
@@ -98,13 +98,13 @@ describe Group do
     end
     context "for a group that has subgroups" do
       before do
-        subgroup1 = Group.make!(:parent => @group)
-        subgroup2 = Group.make!(:parent => @group)
-        user2 = User.make!
+        subgroup1 = create(:group, :parent => @group)
+        subgroup2 = create(:group, :parent => @group)
+        user2 = create(:user)
         @group.add_member! user2
         subgroup1.add_member!(@user)
-        @discussion1 = create_discussion :group => subgroup1, :author => @user
-        @discussion2 = create_discussion :group => subgroup2, :author => user2
+        @discussion1 = create :discussion, :group => subgroup1, :author => @user
+        @discussion2 = create :discussion, :group => subgroup2, :author => user2
       end
       it "returns discussions for subgroups that the user belongs to" do
         @group.discussions_sorted(@user).should include(@discussion1)
@@ -123,7 +123,7 @@ describe Group do
   describe "beta_features" do
     context "group.beta_features = true" do
       before do
-        @group = Group.make!
+        @group = create(:group)
         @group.beta_features = true
         @group.save
       end
@@ -135,7 +135,7 @@ describe Group do
       end
       context "subgroup.beta_features = false" do
         before do
-          @subgroup = Group.make!(:parent => @group)
+          @subgroup = create(:group, :parent => @group)
           @subgroup.beta_features = false
           @subgroup.save
         end
@@ -150,10 +150,10 @@ describe Group do
     context "group.beta_features = false" do
       context "subgroup.beta_features = true" do
         before do
-          @group = Group.make!
+          @group = create(:group)
           @group.beta_features = false
           @group.save
-          @subgroup = Group.make!(:parent => @group)
+          @subgroup = create(:group, :parent => @group)
           @subgroup.beta_features = true
           @subgroup.save
         end
@@ -169,18 +169,18 @@ describe Group do
 
   context "has a parent" do
     before :each do
-      @group = Group.make!
-      @subgroup = Group.make!(:parent => @group)
+      @group = create(:group)
+      @subgroup = create(:group, :parent => @group)
     end
     it "can access it's parent" do
       @subgroup.parent.should == @group
     end
     it "can access it's children" do
-      10.times {Group.make!(:parent => @group)}
+      10.times {create(:group, :parent => @group)}
       @group.subgroups.count.should eq(11)
     end
     it "limits group inheritance to 1 level" do
-      invalid = Group.make(:parent => @subgroup)
+      invalid = build(:group, :parent => @subgroup)
       invalid.should_not be_valid
     end
     it "defaults to viewable by parent group members" do
@@ -201,8 +201,8 @@ describe Group do
 
   context "an existing group viewiable by members" do
     before :each do
-      @group = Group.make!(viewable_by: "members")
-      @user = User.make!
+      @group = create(:group, viewable_by: "members")
+      @user = create(:user)
     end
 
     it "can add an admin" do
@@ -223,7 +223,7 @@ describe Group do
       @group.admin_email.should == @user.email
     end
     it "can be administered by admin of parent" do
-      @subgroup = Group.make(:parent => @group)
+      @subgroup = build(:group, :parent => @group)
       @subgroup.has_admin_user?(@user)
     end
     it "can add a member" do
@@ -269,9 +269,9 @@ describe Group do
 
   context "checking requested users" do
     it "should return true if user has requested access to group" do
-      group = Group.make!
-      user = User.make!
-      user2 = User.make!
+      group = create(:group)
+      user = create(:user)
+      user2 = create(:user)
       group.add_request!(user)
       group.add_request!(user2)
       group.requested_users_include?(user).should be_true
@@ -281,8 +281,8 @@ describe Group do
 
   describe "#create_welcome_loomio(user)" do
     before do
-      User.stub(:get_loomio_user).and_return(User.make!)
-      @group = Group.make!
+      User.stub(:get_loomio_user).and_return(create(:user))
+      @group = create(:group)
       @group.create_welcome_loomio
     end
 
@@ -298,7 +298,7 @@ describe Group do
 
     context "in a subgroup" do
       before do
-        @subgroup = Group.make!
+        @subgroup = create(:group)
         @subgroup.parent = @group
         @subgroup.save
         @subgroup.create_welcome_loomio
