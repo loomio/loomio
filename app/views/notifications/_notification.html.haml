@@ -78,19 +78,20 @@
 
   %li.selector-item{:class => "notification-item#{class_name}" }
     %a{:href => href }
-      - if !avatar_url.blank? or !avatar_initials.blank?
+      .clearfix
         .medium-user-avatar.avatar-canvas
-          - if !avatar_url.blank?
+          - if avatar_url.present?
             = image_tag avatar_url
-          - elsif !avatar_initials.blank?
+          - else
             %span.medium-user-initials.initials-decoration
               = avatar_initials
-      %span.bold-name= user.name 
-      = " #{action_text} "
-      - if title_text
-        %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
-      %span.notification-item-footer
-        = "#{date} ago · #{group_name}"
+        .notification-content
+          %span.bold-name= user.name 
+          = " #{action_text} "
+          - if title_text
+            %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
+          %span.notification-item-footer
+            = "#{date} ago · #{group_name}"
   %li.divider
 
 - rescue => exception
