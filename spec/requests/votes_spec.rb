@@ -5,11 +5,11 @@ describe "Votes" do
 
   context "a logged in user" do
     before :each do
-      @user = User.make!
-      @group = Group.make!(name: 'Test Group')
+      @user = create(:user)
+      @group = create(:group, name: 'Test Group')
       @group.add_member!(@user)
-      @discussion = create_discussion(group: @group, author: @user)
-      @motion = create_motion(name: 'Test Motion',
+      @discussion = create(:discussion, group: @group, author: @user)
+      @motion = create(:motion, name: 'Test Motion',
                               discussion: @discussion,
                               author: @user)
     end

@@ -3,14 +3,12 @@ require 'spec_helper'
 describe VotesController do
   context 'a signed in user voting on a motion' do
     before :each do
-      @user = User.make
-      @user.save
+      @user = create(:user)
       sign_in @user
-      @group = Group.make
-      @group.save
+      @group = create(:group)
       @group.add_member!(@user)
-      @discussion = create_discussion(group: @group)
-      @motion = create_motion(discussion: @discussion, phase: 'voting')
+      @discussion = create(:discussion, group: @group)
+      @motion = create(:motion,discussion: @discussion, phase: 'voting')
       @motion.save!
       @previous_url = motion_url(@motion)
       @vote_args = { motion_id: @motion.id,
@@ -101,8 +99,8 @@ describe VotesController do
 
     context 'during closed phase' do
       before :each do
-        @discussion = create_discussion(group: @group, author: @user)
-        @motion = create_motion(discussion: @discussion, phase: 'closed')
+        @discussion = create(:discussion, group: @group, author: @user)
+        @motion = create(:motion, discussion: @discussion, phase: 'closed')
       end
 
       it 'cannot vote' do
