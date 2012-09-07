@@ -9,43 +9,43 @@ describe Discussion do
                is_at_most(150) }
 
   it "author must belong to group" do
-    discussion = Discussion.new(group: Group.make!)
-    discussion.author = User.make!
+    discussion = Discussion.new(group: create(:group))
+    discussion.author = create(:user)
     discussion.should_not be_valid
   end
 
   it "group member can add comment" do
-    user = User.make!
-    discussion = create_discussion
+    user = create(:user)
+    discussion = create(:discussion)
     discussion.group.add_member! user
     comment = discussion.add_comment(user, "this is a test comment")
     discussion.comment_threads.should include(comment)
   end
 
   it "group non-member cannot add comment" do
-    discussion = create_discussion
-    comment = discussion.add_comment(User.make!, "this is a test comment")
+    discussion = create(:discussion)
+    comment = discussion.add_comment(create(:user), "this is a test comment")
     discussion.comment_threads.should_not include(comment)
   end
 
   it "can update discussion_activity" do
-    discussion = create_discussion
+    discussion = create(:discussion)
     discussion.activity = 3
     discussion.update_activity
     discussion.activity.should == 4
   end
 
   it "automatically populates last_comment_at with discussion.created at" do
-    discussion = create_discussion
+    discussion = create(:discussion)
     discussion.last_comment_at.should == discussion.created_at
   end
 
   describe "discussion.history" do
     before do
-      @user = User.make
+      @user = build(:user)
       @user.save
-      @discussion = create_discussion(author: @user)
-      @motion = create_motion(discussion: @discussion)
+      @discussion = create(:discussion, author: @user)
+      @motion = create(:motion, discussion: @discussion)
     end
 
     it "should include comments" do
@@ -69,8 +69,8 @@ describe Discussion do
   describe "discussion.participants" do
     before do
       @user1, @user2, @user3, @user4 =
-        User.make!, User.make!, User.make!, User.make!
-      @discussion = create_discussion(author: @user1)
+        create(:user), create(:user), create(:user), create(:user)
+      @discussion = create(:discussion, author: @user1)
       @group = @discussion.group
       @group.add_member! @user2
       @group.add_member! @user3
@@ -89,14 +89,14 @@ describe Discussion do
     end
 
     it "should include discussion motion authors (if any)" do
-      previous_motion_author = User.make!
-      current_motion_author = User.make!
+      previous_motion_author = create(:user)
+      current_motion_author = create(:user)
       @group.add_member! previous_motion_author
       @group.add_member! current_motion_author
-      previous_motion = create_motion(:discussion => @discussion,
+      previous_motion = create(:motion, :discussion => @discussion,
                              :author => previous_motion_author)
       previous_motion.close_voting!
-      current_motion = create_motion(:discussion => @discussion,
+      current_motion = create(:motion, :discussion => @discussion,
                              :author => current_motion_author)
 
       @discussion.participants.should include(previous_motion_author)
@@ -110,8 +110,8 @@ describe Discussion do
 
   describe "has_activity_unread_by?(user)" do
     before do
-      @user = User.make!
-      @discussion = create_discussion(author: @user)
+      @user = create(:user)
+      @discussion = create(:discussion, author: @user)
     end
     it "returns nil if user is nil" do
       user1 = nil

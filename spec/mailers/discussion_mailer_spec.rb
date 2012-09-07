@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe DiscussionMailer do
-  let(:discussion) { create_discussion }
+  let(:discussion) { create(:discussion) }
   let(:group) { discussion.group }
 
   context 'sending individual email upon new discussion creation' do
@@ -33,7 +33,7 @@ describe DiscussionMailer do
   context "sending all emails upon new discussion creation" do
     it "sends message to each group user" do
       # minus one for count as we don't want to send an email to the author
-      group.add_member! User.make!
+      group.add_member! create(:user)
       DiscussionMailer.should_receive(:new_discussion_created).
         exactly(group.users.count - 1).times.and_return(stub(deliver: true))
       DiscussionMailer.spam_new_discussion_created(discussion)
