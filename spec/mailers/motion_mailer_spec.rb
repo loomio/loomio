@@ -23,7 +23,7 @@ describe MotionMailer do
     
     #ensure that reply to is correct
     it 'assigns reply to' do
-      @email.reply_to.should == [group.admin_email]
+      @email.reply_to.should == [motion.author.email]
     end
 
     it 'sends email to group members but not author' do
