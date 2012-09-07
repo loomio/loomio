@@ -26,7 +26,7 @@ describe DiscussionMailer do
     end
 
     it 'assigns reply to' do
-      @email.reply_to.should == [group.admin_email]
+      @email.reply_to.should == [discussion.author.email]
     end
   end
 
