@@ -6,8 +6,8 @@ describe GroupDecorator do
     c.request = ActionDispatch::TestRequest.new
     c.set_current_view_context
 
-    @group = GroupDecorator.decorate(Group.make!)
-    @subgroup = GroupDecorator.decorate(Group.make!(parent: @group))
+    @group = GroupDecorator.decorate(create(:group))
+    @subgroup = GroupDecorator.decorate(create(:group, parent: @group))
   end
 
   describe "link" do

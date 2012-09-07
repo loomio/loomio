@@ -5,8 +5,8 @@ describe "Discussion" do
 
   context "a logged in user" do
     before do
-      @user = User.make!
-      @group = Group.make
+      @user = create(:user)
+      @group = build(:group)
       @group.save
       @group.add_member!(@user)
       page.driver.post user_session_path, 'user[email]' => @user.email,
@@ -53,7 +53,6 @@ describe "Discussion" do
         motion.name = "A new proposal"
         motion.discussion = @discussion
         motion.author = @user
-        motion.facilitator = @user
         motion.save
         visit discussion_path(@discussion)
         find('#close-voting').click
@@ -66,7 +65,6 @@ describe "Discussion" do
         motion.name = "A new proposal"
         motion.discussion = @discussion
         motion.author = @user
-        motion.facilitator = @user
         motion.save
         motion.close_voting!
 
@@ -74,7 +72,6 @@ describe "Discussion" do
         motion2.name = "A new proposal"
         motion2.discussion = @discussion
         motion2.author = @user
-        motion2.facilitator = @user
         motion2.save
         motion2.close_voting!
 
@@ -93,7 +90,7 @@ describe "Discussion" do
       end
 
       it "cannot see link to delete other people's comments" do
-        @user2 = User.make!
+        @user2 = create(:user)
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
         visit discussion_path(@discussion)
@@ -102,7 +99,7 @@ describe "Discussion" do
       end
 
       it "can 'like' a comment" do
-        @user2 = User.make!
+        @user2 = create(:user)
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
         visit discussion_path(@discussion)
@@ -114,7 +111,7 @@ describe "Discussion" do
       end
 
       it "can 'unlike' a comment" do
-        @user2 = User.make!
+        @user2 = create(:user)
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
         @discussion.comments.first.like(@user)

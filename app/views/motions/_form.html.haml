@@ -7,11 +7,11 @@
             .control-group
               = f.label :name, "Title", {class: "control-label", for: "inputError", id: 'title-label'}
               .presence-error-message Please fill in a proposal title
-              = f.text_field :name, class: "validate-presence inputError limit-250", id: "motion-name"
+              = f.text_field :name, class: "validate-presence inputError limit-150", id: "motion-name"
             .character-counter
           .span5
             .helper-text
-              %p Proposals titles best when they are clear and specific, so people know exactly what it means if they click ‘agree’ or ‘disagree’.
+              %p Proposal titles should be clear and specific, so people know exactly what it means if they click ‘agree’ or ‘disagree’.
         #closing-inputs
           .control-group
             = f.label :close_date, "Closing", {class: "control-label date-description", for: "date-input"}

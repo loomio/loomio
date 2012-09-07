@@ -1,10 +1,10 @@
 require "spec_helper"
 
 describe MotionMailer do
-  let(:user) { User.make! }
-  let(:group) { Group.make! }
-  let(:discussion) { create_discussion(group: group) }
-  let(:motion) { create_motion(discussion: discussion) }
+  let(:user) { create(:user) }
+  let(:group) { create(:group) }
+  let(:discussion) { create(:discussion, group: group) }
+  let(:motion) { create(:motion, discussion: discussion) }
 
   describe 'sending email on new motion creation' do
     before(:all) do

@@ -12,8 +12,8 @@ describe UserMailer do
   end
   context 'sending email on membership approval' do
     before :all do
-      @user = User.make!
-      @group = Group.make!
+      @user = create(:user)
+      @group = create(:group)
       @mail = UserMailer.group_membership_approved(@user, @group)
     end
 
@@ -34,8 +34,8 @@ describe UserMailer do
 
   context 'added_to_group' do
     before :all do
-      @user = User.make!
-      @group = Group.make!
+      @user = create(:user)
+      @group = create(:group)
       @mail = UserMailer.added_to_group(@user, @group)
     end
 
@@ -56,8 +56,8 @@ describe UserMailer do
 
   context 'sending email when user is invited to loomio' do
     before :all do
-      @inviter = User.make
-      @group = Group.make!
+      @inviter = build(:user)
+      @group = create(:group)
       @user = User.invite_and_notify!({email: "test@example.com"}, @inviter, @group)
       @mail = UserMailer.invited_to_loomio(@user, @inviter, @group)
     end

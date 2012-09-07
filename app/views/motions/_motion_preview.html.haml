@@ -31,7 +31,7 @@
         el: '.pie'
         id_string: "graph_#{motion.id}"
         legend: false
-        data: #{@votes_for_graph.to_json.html_safe}
+        data: #{motion.votes_graph_ready.to_json}
         type: 'pie'
         tooltip_selector: '#tooltip'
         diameter: 25
