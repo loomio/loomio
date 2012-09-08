@@ -37,4 +37,31 @@ module ApplicationHelper
   def signed_out?
     not signed_in?
   end
+
+  def markdown(text, options=nil)
+
+    if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
+      text = " "
+    end
+    
+    options = [
+      :no_intra_emphasis => true,
+      :tables => true,
+      :fenced_code_blocks => true,
+      :autolink => true,
+      :strikethrough => true,
+      :space_after_headers => true,
+      :superscript => true
+    ]
+
+    renderer = MarkdownRenderer.new(
+      :filter_html => true,
+      :hard_wrap => false
+    )
+    
+    markdown = Redcarpet::Markdown.new(renderer, *options)
+    markdown.render(text).html_safe
+  end
 end
+
+

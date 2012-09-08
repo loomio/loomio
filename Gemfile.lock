@@ -12,6 +12,12 @@ GIT
     acts-as-taggable-on (2.2.2)
       rails (~> 3.0)
 
+GIT
+  remote: https://github.com/vmg/redcarpet.git
+  revision: e7f328cd38985da7e7441aff17813132ff0e479a
+  specs:
+    redcarpet (2.1.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -400,6 +406,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
+  redcarpet!
   rmagick
   rspec-rails
   sass-rails (~> 3.1.4)

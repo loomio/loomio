@@ -4,4 +4,4 @@
   - if vote.can_be_edited_by?(current_user) && motion.phase == 'voting'
     =link_to "edit", edit_motion_vote_path(motion, vote), class: 'btn btn-mini'
   .statement
-  .word-break= vote.statement
+  .word-break~ markdown(vote.statement)
