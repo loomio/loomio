@@ -12,10 +12,6 @@ body.discussions.show {
   .group-title {
     margin-bottom: 10px;
   }
-  h1#discussion-title {
-    color: $dark-grey;
-
-  }
   .selector-panel {
     background-color: $selector-panel;
     @include border-radius(8px);
@@ -36,9 +32,42 @@ body.discussions.show {
         border: none;
         a {
           text-shadow: none;
-          font-size: $font-small;
         }
       }
+    }
+  }
+  #discussion-title {
+    float: left;
+  }
+  h1#discussion-title {
+    color: $dark-grey;
+  }
+  #edit-discussion-title {
+    float: left;
+    form {
+      margin-bottom: 0px;
+      width: 830px;
+    }
+    form .control-group #discussion-input {
+      width: 820px;
+      font-size: $font-xlarge;
+      margin-bottom: 2px;
+    }
+    .control-group { margin-bottom: 0px; }
+    .character-counter { bottom: 0; }
+    .save-buttons {
+      position: relative;
+      bottom: 5px;
+    }
+    #cancel-edit-title {
+      margin-left: 10px;
+      color: $mid-grey;
+      text-decoration: underline;
+      position: relative;
+      font-size: $font-tiny;
+    }
+    #cancel-edit-title:hover {
+      color: $dark-grey;
     }
   }
 

@@ -89,6 +89,12 @@ class DiscussionsController < GroupBaseController
     discussion.save
   end
 
+  def edit_title
+    discussion = Discussion.find(params[:id])
+    discussion.title = params[:title]
+    discussion.save
+  end
+
   private
 
     def group

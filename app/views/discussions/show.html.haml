@@ -14,9 +14,7 @@
 .row
   .span12
     .selector-panel
-      .clearfix
-        .large-icon.topic-icon
-        %h1#discussion-title= @discussion.title
+      = render 'title', discussion: @discussion
       #discussion-panel-content
         #discussion-context
           =render '/application/description', model: @discussion, model_name: "discussion"
