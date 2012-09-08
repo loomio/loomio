@@ -1,0 +1,18 @@
+#closed-motions.modal.hidden
+  .modal-header
+    %button.close{"data-dismiss" => "modal"}×
+    %h2 Closed proposals
+  .modal-body
+    %ul.selector-list
+      - if user
+        - if user.motions_closed.count > 0
+          - user.motions_closed.each do |closed_motion|
+            %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: nil
+        - else
+          %li.empty-list-message There are no closed proposals in any of your groups
+      - else
+        - if group.motions_closed.count > 0
+          - group.motions_closed.each do |closed_motion|
+            %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: group
+        - else
+          %li.empty-list-message There are no closed proposals in this group
