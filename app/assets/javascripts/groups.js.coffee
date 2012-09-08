@@ -103,13 +103,19 @@ $ ->
 #closed proposals
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $("#see-closed-proposal-link").click((event) ->
+    $("#show-closed-motions").click((event) ->
+      $("#closed-motions.modal").removeClass('hidden')
       $(".pie").each(->
         displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
       )
+    event.preventDefault()
     )
+    $("#closed-motions .close").click((event) ->
+      $("#closed-motions.modal").addClass('hidden')
+    event.preventDefault()
+    )
+
 displayGraph = (this_pie, graph_id, data)->
-  # Display vote graph
   @pie_graph_view = new Loomio.Views.Utils.GraphView
     el: this_pie
     id_string: graph_id
