@@ -34,7 +34,7 @@
     =render '/application/see_closed_motions'
     =render 'membership_requests', group: @group
     =render 'members', group: @group
+  =render '/application/closed_motions', user: nil, group: @group
 
 - if current_user
-  =render '/application/closed_motions', user: nil, group: @group
   =render '/discussions/new_discussion', discussion: @discussion
