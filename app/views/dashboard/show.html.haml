@@ -10,7 +10,7 @@
   %header
     =render '/application/loomio-process-flow'
     =render '/groups/title', group: nil
-    = render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
+    =render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
       :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-grey', :id => 'start-new-topic'}
     .row
       %section.span8#discussion-list
@@ -25,8 +25,10 @@
             %li.empty-list-message.hidden There are no topics in any of your groups
         #user-discussions.hidden Loading...
       %section.span4
-        = render 'groups'
-      = render '/discussions/new_discussion', discussion: @discussion, user_groups: @groups
+        =render 'groups'
+        =render '/application/see_closed_motions'
+      =render '/application/closed_motions', user: current_user, group: nil
+      =render '/discussions/new_discussion', discussion: @discussion, user_groups: @groups
 - else
   = link_to 'Create a group', new_group_path
   or wait until you are invited to one.

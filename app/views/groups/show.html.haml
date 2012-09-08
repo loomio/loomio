@@ -31,8 +31,10 @@
       %h3= "Group description"
       =render '/application/description', model: @group, model_name: "group"
     =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
+    =render '/application/see_closed_motions'
     =render 'membership_requests', group: @group
     =render 'members', group: @group
 
 - if current_user
-  = render '/discussions/new_discussion', discussion: @discussion
+  =render '/application/closed_motions', user: nil, group: @group
+  =render '/discussions/new_discussion', discussion: @discussion
