@@ -5,8 +5,8 @@ describe "Discussion" do
 
   context "a logged in user" do
     before do
-      @user = User.make!
-      @group = Group.make
+      @user = create(:user)
+      @group = build(:group)
       @group.save
       @group.add_member!(@user)
       page.driver.post user_session_path, 'user[email]' => @user.email,
@@ -139,7 +139,7 @@ describe "Discussion" do
       end
 
       it "cannot see link to delete other people's comments" do
-        @user2 = User.make!
+        @user2 = create(:user)
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
         visit discussion_path(@discussion)
@@ -148,7 +148,7 @@ describe "Discussion" do
       end
 
       it "can 'like' a comment" do
-        @user2 = User.make!
+        @user2 = create(:user)
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
         visit discussion_path(@discussion)
@@ -160,7 +160,7 @@ describe "Discussion" do
       end
 
       it "can 'unlike' a comment" do
-        @user2 = User.make!
+        @user2 = create(:user)
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
         @discussion.comments.first.like(@user)

@@ -8,7 +8,7 @@ describe "Deactivated user logs in"do
       And I click the Sign In button
       Then I should stay in the same page
     } do
-    @user = User.make!
+    @user = create(:user)
     @user.deactivate!
     visit new_user_session_path
     fill_in 'user_email', :with => @user.email
