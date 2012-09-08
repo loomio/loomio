@@ -56,7 +56,7 @@ module ApplicationHelper
 
     renderer = MarkdownRenderer.new(
       :filter_html => true,
-      :hard_wrap => true
+      :hard_wrap => false
     )
     
     markdown = Redcarpet::Markdown.new(renderer, *options)
