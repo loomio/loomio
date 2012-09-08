@@ -9,10 +9,7 @@ body.discussions.new {
   }
   .btn { display: block; }
 }
-/** Code block padding (Maybe change this) */
-pre{
-  margin-left: 40px;
-}
+
 /** discussion show form*/
 body.discussions.show {
   .discussion-title {
@@ -108,8 +105,41 @@ li.preview a {
 
   /* Indentation for markdown lists */
 
-  .comment-body ul, .comment-body ol, .comment-body li{
+  .comment-body ul, .comment-body ol, .comment-body li {
     margin-left: 10px;
+    font-size: 15px;
+    word-wrap: break-word;
+  }
+  .comment-body ul, .comment-body li{
+    padding: 3px 0px;
+  }
+
+  .comment-body{
+    h1, h2, h3, h4, h5, h6, h7{
+      display: block;
+      padding: 4px 0px;
+    }
+    h1{
+      font-size: 1.4em;
+    }
+    h2{
+      font-size: 1.3em;
+    }
+    h3{
+      font-size: 1.2em;
+    }
+    h4{
+      font-size: 1.1em;
+    }
+  }
+
+  /** Code block padding (Stops avatars destroying indentation) */
+  pre{
+    display: block;
+    margin: 10px 0px;
+    code{
+      
+    }
   }
 
   .comment-avatar {
