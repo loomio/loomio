@@ -26,13 +26,6 @@ $ ->
 
 #*** ajax for discussions on group page ***
 
-# closed proposals
-#$ ->
-  #if $("body.groups.show").length > 0
-    #$(".pie").each(->
-      #displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
-    #)
-
 #*** open-close motions dropdown (group.show)***
 #Switch between open & closed motions and load initial page
 #$ ->
@@ -106,16 +99,25 @@ $ ->
         e.preventDefault()
     )
 
-#displayGraph = (this_pie, graph_id, data)->
-  ## Display vote graph
-  #@pie_graph_view = new Loomio.Views.Utils.GraphView
-    #el: this_pie
-    #id_string: graph_id
-    #legend: false
-    #data: data
-    #type: 'pie'
-    #tooltip_selector: '#tooltip'
-    #diameter: 25
-    #padding: 1
-    #gap: 1
-    #shadow: 0.75
+
+#closed proposals
+$ ->
+  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
+    $("#see-closed-proposal-link").click((event) ->
+      $(".pie").each(->
+        displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
+      )
+    )
+displayGraph = (this_pie, graph_id, data)->
+  # Display vote graph
+  @pie_graph_view = new Loomio.Views.Utils.GraphView
+    el: this_pie
+    id_string: graph_id
+    legend: false
+    data: data
+    type: 'pie'
+    tooltip_selector: '#tooltip'
+    diameter: 25
+    padding: 1
+    gap: 1
+    shadow: 0.75
