@@ -54,8 +54,10 @@ h5 {
 }
 
 #start-new-topic { margin: 0 0 10px 2px; }
-#discussion-list { border-top: 1px solid $light-grey; }
-#discussion-list { margin-bottom: 10px; }
+#discussion-list {
+  border-top: 1px solid $light-grey;
+  margin-bottom: 10px;
+}
 
 #new-discussion {
    width: 740px;
@@ -63,12 +65,12 @@ h5 {
    .modal-footer { text-align: left; }
  }
 .model-description { padding-bottom: 10px; }
-a#edit-description {
+a#edit-description, a#show-closed-motions {
   color: $mid-grey;
   text-decoration: underline;
   font-size: $font-small;
 }
-a#edit-description:hover {
+a#edit-description:hover, a#show-closed-motions:hover {
   color: $dark-grey;
 }
 #show-description {
@@ -107,12 +109,18 @@ li.empty-list-message {
 }
 .discussion-with-motion-divider { border-bottom: 1px solid $light-grey; }
 
-li#see-closed-motions { padding-left: 23px; }
+#show-closed-motions {
+  padding-left: 23px;
+  display: block;
+}
+#closed-motions-page .selector-list { padding-bottom: 20px; }
+#closed-motions-page li.selector-item.loading { background-position: 270px 160px; }
 #closed-motions {
   width: 600px;
   margin-left: -300px;
 }
 
+/**** Structural elements ****/
 ul.selector-list {
   list-style: none;
 }

@@ -1,6 +1,5 @@
 .sub-panel
-  .small-icon.pie-icon
+  - unless @group
+    .small-icon.pie-icon
   %h3 Previous decisions
-  %ul
-    %li#see-closed-motions
-      = link_to "see closed proposals", "#", :id => "show-closed-motions"
+  = link_to "see closed proposals", "#", :id => "show-closed-motions"
