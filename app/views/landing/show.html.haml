@@ -10,6 +10,7 @@
     %h2 What-io ?
     %p#whatio
       Loomio is an open-source web application that helps groups make better decisions together.
+      For more info check out <a href="http://www.loomio.org">www.loomio.org</a>.
     %p#loomio-project-iframe
     %p
       For more information:
@@ -31,7 +32,8 @@
       = label_tag 'user[remember_me]', 'Remember me', class: "checkbox-label"
       .sign-in-button
         %input{:class => "btn primary small", :type => "submit", :value => "Sign in"}
-    = link_to "Forgot your password?", new_password_path('user')
+    .forgot-password
+      = link_to "Forgot your password?", new_password_path('user')
     %p.light
       Don't have an account? We're currently in closed testing and not accepting public sign-ups (yet!).
     %p.light

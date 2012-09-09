@@ -24,6 +24,7 @@ class Discussion < ActiveRecord::Base
 
   delegate :users, :to => :group, :prefix => :group
   delegate :full_name, :to => :group, :prefix => :group
+  delegate :email, :to => :author, :prefix => :author
 
   attr_accessible :group_id, :group, :title
 

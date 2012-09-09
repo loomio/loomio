@@ -218,7 +218,8 @@ h5 {
   #privacy {
     display: inline;
     position: relative;
-    bottom: 5px;
+    bottom: 2px;
+    left: 2px;
   }
 }
 
@@ -311,11 +312,6 @@ form {
     border: 1px solid $lighter-grey;
     margin-bottom: 5px;
   }
-  .long-divider {
-    width: 400px;
-    border: 1px solid $lighter-grey;
-    margin-bottom: 5px;
-  }
 }
 
 .hidden {
@@ -341,6 +337,14 @@ table.jqplot-table-legend {
   bottom: 1px;
   font-size: 0.6em;
   text-align: center;
+}
+
+/* Markdown (Global so it's not specific to just Comments etc) */
+code{
+  padding: 1px 4px;
+  overflow: auto;
+  word-break: normal;
+  word-wrap: normal;
 }
 
 /* For modern browsers */

@@ -71,8 +71,6 @@ class Ability
     #
     can :create, Motion, :discussion_id => user.discussion_ids
 
-    can :update, Motion, :author_id => user.id
-
     can [:destroy, :close_voting, :open_voting], Motion, :author_id => user.id
     can [:destroy, :close_voting, :open_voting], Motion,
       :discussion => { :group_id => user.adminable_group_ids }

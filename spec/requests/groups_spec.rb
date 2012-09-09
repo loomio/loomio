@@ -5,13 +5,13 @@ describe "Groups" do
 
   context "a logged in user" do
     before :each do
-      @user = User.make!
-      @group = Group.make!(name: 'Test Group', viewable_by: :members)
+      @user = create(:user)
+      @group = create(:group, name: 'Test Group', viewable_by: :members)
       @group.add_member!(@user)
-      @discussion = create_discussion(group: @group, author: @user)
-      @motion = create_motion(name: 'Test Motion',
+      @discussion = create(:discussion, group: @group, author: @user)
+      @motion = create(:motion, name: 'Test Motion',
                               discussion: @discussion,
-                              author: @user, facilitator: @user)
+                              author: @user)
       page.driver.post user_session_path, 'user[email]' => @user.email,
                                           'user[password]' => 'password'
     end
@@ -44,7 +44,7 @@ describe "Groups" do
 
       context "viewing a group" do
         it "can see membership request section" do
-          requested_user = User.make
+          requested_user = build(:user)
           requested_user.save
           @group.add_request!(requested_user)
 
@@ -88,7 +88,7 @@ describe "Groups" do
         end
 
         it "cannot see membership request section" do
-          requested_user = User.make
+          requested_user = build(:user)
           requested_user.save
           @group.add_request!(requested_user)
 
@@ -111,7 +111,7 @@ describe "Groups" do
         end
 
         it "can see membership request section" do
-          requested_user = User.make
+          requested_user = build(:user)
           requested_user.save
           @group.add_request!(requested_user)
 
@@ -138,9 +138,9 @@ describe "Groups" do
 
     context "group non-member viewing a private group" do
       it "displays 'group not found' page" do
-        @group2 = Group.make(name: 'Test Group2', viewable_by: :members)
+        @group2 = build(:group, name: 'Test Group2', viewable_by: :members)
         @group2.save
-        @group2.add_member!(User.make!)
+        @group2.add_member!(create(:user))
         visit group_path(@group2)
         should have_content("Group not found")
         should have_no_content("Users")
@@ -150,20 +150,20 @@ describe "Groups" do
 
   context "logged-out user" do
     it "can view a public group" do
-      @user = User.make!
-      @group = Group.make!(name: 'Test Group', viewable_by: :everyone)
+      @user = create(:user)
+      @group = create(:group, name: 'Test Group', viewable_by: :everyone)
       @group.add_member!(@user)
-      @discussion = create_discussion(group: @group, author: @user)
-      @motion = create_motion(name: 'Test Motion',
+      @discussion = create(:discussion, group: @group, author: @user)
+      @motion = create(:motion, name: 'Test Motion',
                               discussion: @discussion,
-                              author: @user, facilitator: @user)
+                              author: @user) 
       visit group_path(@group)
 
       should have_content("Test Group")
     end
 
     it "viewing a private group redirects to log-in" do
-      @group = Group.make!(name: 'Test Group', viewable_by: :members)
+      @group = create(:group, name: 'Test Group', viewable_by: :members)
       visit group_path(@group)
 
       should have_css("body.sessions.new")
