@@ -1,10 +1,10 @@
 require "spec_helper"
 
 describe MotionMailer do
-  let(:user) { User.make! }
-  let(:group) { Group.make! }
-  let(:discussion) { create_discussion(group: group) }
-  let(:motion) { create_motion(discussion: discussion) }
+  let(:user) { create(:user) }
+  let(:group) { create(:group) }
+  let(:discussion) { create(:discussion, group: group) }
+  let(:motion) { create(:motion, discussion: discussion) }
 
   describe 'sending email on new motion creation' do
     before(:all) do
@@ -23,7 +23,7 @@ describe MotionMailer do
     
     #ensure that reply to is correct
     it 'assigns reply to' do
-      @email.reply_to.should == [group.admin_email]
+      @email.reply_to.should == [motion.author_email]
     end
 
     it 'sends email to group members but not author' do
@@ -61,7 +61,7 @@ describe MotionMailer do
     end
 
     it 'sends to the motion author' do
-      @email.to.should == [motion.author.email]
+      @email.to.should == [motion.author_email]
     end
     
     #ensure that reply to is correct

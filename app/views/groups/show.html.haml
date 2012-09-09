@@ -1,3 +1,4 @@
+- set_title @group.name, ""
 - if current_user && @group.parent.nil? && (not current_user.has_read_group_notice?)
   - message = "This is the Group page for \"#{@group.full_name}\". \n\n Here you can see the discussions and proposals for this group, "
   - message += "a list of the group members, and the option to start a new discussion or proposal in this group. \n\n"

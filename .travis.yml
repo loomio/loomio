@@ -1,0 +1,17 @@
+env:
+  - DB=postgresql
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install imagemagick libmagickwand-dev -qq -y
+branches:
+  only:
+    - 'master'
+rvm:
+  - 1.9.3
+before_script:
+  - "cp config/database.yml.$DB config/database.yml"
+  - "bundle exec rake db:create RAILS_ENV=test"
+  - "bundle exec rake db:schema:load RAILS_ENV=test"
+  - "bundle exec rake db:seed RAILS_ENV=test"
+  - "sh -e /etc/init.d/xvfb start"
+script: "bundle exec rake travis"

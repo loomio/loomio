@@ -18,7 +18,16 @@ module ApplicationHelper
     notification_size = notifications ? notifications.size : 0
     result = ""
     result += "(#{notification_size}) " if notification_size > 0
+    result += content_for(:title) + " | " if content_for?(:title)
     result += "Loomio"
+    result
+  end
+
+  def set_title(group_name, page_title)
+    title = page_title.blank? ? "" : page_title.to_s
+    title += " - " unless title.blank? || group_name.blank? 
+    title += group_name.to_s unless group_name.blank?
+    content_for :title, title 
   end
 
   def email_subject_prefix(group_name)
@@ -28,4 +37,31 @@ module ApplicationHelper
   def signed_out?
     not signed_in?
   end
+
+  def markdown(text, options=nil)
+
+    if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
+      text = " "
+    end
+    
+    options = [
+      :no_intra_emphasis => true,
+      :tables => true,
+      :fenced_code_blocks => true,
+      :autolink => true,
+      :strikethrough => true,
+      :space_after_headers => true,
+      :superscript => true
+    ]
+
+    renderer = MarkdownRenderer.new(
+      :filter_html => true,
+      :hard_wrap => true
+    )
+    
+    markdown = Redcarpet::Markdown.new(renderer, *options)
+    markdown.render(text).html_safe
+  end
 end
+
+

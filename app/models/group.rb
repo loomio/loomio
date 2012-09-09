@@ -202,7 +202,7 @@ class Group < ActiveRecord::Base
       "This 'Welcome' discussion can be used to raise any questions about how to use Loomio, and to test out the features. \n\n" +
       "Once you are finished in this particular discussion, you can click the Loomio logo at the top of the screen to go back to your dashboard and see all your current discussions and proposals.\n\n" +
       "Click into a group to view or start discussions and proposals in that group, or view a list of the group members."
-    motion_str = "To get a feel for how Loomio works, you can participate in the decision to use Loomio in your group.\n\n" +
+    motion_str = "To get a feel for how Loomio works, you can participate in the decision in your group.\n\n" +
       "If you're clear about your position, click one of the icons below (hover over with your mouse for a description of what each one means)\n\n" +
       "You\'ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
     user = User.get_loomio_user
@@ -210,9 +210,8 @@ class Group < ActiveRecord::Base
     membership = add_member!(user)
     discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")
     discussion.add_comment(user, comment_str)
-    motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We should use Loomio to make decisions together",
-      :description => motion_str, :close_date => Time.now + 3.days)
-    motion.facilitator = user
+    motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We should have a holiday on the moon",
+      :description => motion_str, :close_date => Time.now + 7.days)
     motion.save
     membership.destroy
     parent_membership.destroy if parent

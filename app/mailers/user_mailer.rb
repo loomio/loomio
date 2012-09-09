@@ -24,7 +24,7 @@ class UserMailer < ActionMailer::Base
     @inviter = inviter
     @group = group
     mail( :to => new_user.email,
-          :reply_to => @group.admin_email,
+          :reply_to => inviter.email,
           :subject => "#{inviter.name} has invited you to #{group.full_name} on Loomio")
   end
 end
