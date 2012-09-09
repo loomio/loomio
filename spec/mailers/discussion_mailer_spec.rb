@@ -18,7 +18,7 @@ describe DiscussionMailer do
     end
 
     it 'sends email to group members but not author' do
-      @email.to.should == [discussion.author.email]
+      @email.to.should == [discussion.author_email]
     end
 
     it 'assigns url_for discussion' do
@@ -26,7 +26,7 @@ describe DiscussionMailer do
     end
 
     it 'assigns reply to' do
-      @email.reply_to.should == [group.admin_email]
+      @email.reply_to.should == [discussion.author_email]
     end
   end
 
