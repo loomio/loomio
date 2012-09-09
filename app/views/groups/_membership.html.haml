@@ -7,7 +7,7 @@
         %span.small-user-initials.initials-decoration= membership.user.avatar_initials
     - member = User.find(membership.user_id)
     .user-name
-      - name_length = (member.is_group_admin?(group) or (can? :edit, group and current_user.is_group_admin?) ? 18 : 35
+      - name_length = (member.is_group_admin?(group) or (can? :edit, group and current_user.is_group_admin?)) ? 18 : 35
       %span.membership-user-name.word-break= truncate(membership.user_name_or_email, :length => name_length, :omission => '...')
     .admin-controls
       - if (can? :edit, group and current_user.is_group_admin?(group))
