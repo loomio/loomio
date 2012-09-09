@@ -97,25 +97,11 @@
 
 /**** Group page ****/
 
-body.groups.show .discussion-preview .discussion-title { margin: 8px 0 8px 0; }
+body.groups.show {
+  .discussion-preview .discussion-title { margin: 8px 0 8px 0; }
+  #show-closed-motions { padding-left: 0px; }
+}
 li.selector-item.no-discussions, li.selector-item.no-proposals {
-}
-li.tool-bar-item.no-image a {
-  padding: 5px 10px 6px 10px;
-}
-li.tool-bar-item.no-image:hover  {
-  background-color: #ccc;
-}
-li.tool-bar-item#proposal {
-  background-image:url('/assets/proposal.png');
-  background-position: 10px 4px;
-}
-li.tool-bar-item#proposal:hover {
-  background-position: 10px -49px;
-}
-li.tool-bar-item#discussion {
-  background-image:url('/assets/discussion-white.png');
-  background-position: 10px -59px;
 }
 
 li.tool-bar-item#discussion:hover {

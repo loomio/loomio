@@ -20,10 +20,10 @@
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
         .discussion-with-motion-divider.hidden
       - if @group.discussions.count == 0
-        %li.empty-list-message.hidden There are no topics for this group
+        %li.empty-list-message There are no topics for this group
       - else
-    #group-discussions.hidden
-      %div{ class: "group_#{@group.id}" }
+        #group-discussions.hidden
+          %div{ class: "group_#{@group.id}" }
 
   %section.span4
     =render 'request_membership', group: @group
