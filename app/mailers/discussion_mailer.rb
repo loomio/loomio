@@ -7,7 +7,7 @@ class DiscussionMailer < ActionMailer::Base
     @group = discussion.group
     mail(
       to: user.email,
-      reply_to: @group.admin_email,
+      reply_to: discussion.author_email,
       subject: "#{email_subject_prefix(@group.full_name)} New discussion - #{@discussion.title}")
   end
 
