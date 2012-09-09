@@ -23,7 +23,7 @@ describe MotionMailer do
     
     #ensure that reply to is correct
     it 'assigns reply to' do
-      @email.reply_to.should == [motion.author.email]
+      @email.reply_to.should == [motion.author_email]
     end
 
     it 'sends email to group members but not author' do
@@ -61,7 +61,7 @@ describe MotionMailer do
     end
 
     it 'sends to the motion author' do
-      @email.to.should == [motion.author.email]
+      @email.to.should == [motion.author_email]
     end
     
     #ensure that reply to is correct

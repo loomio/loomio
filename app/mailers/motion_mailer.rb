@@ -6,7 +6,7 @@ class MotionMailer < ActionMailer::Base
     @motion = motion
     @group = motion.group
     mail( to: email, 
-          reply_to: motion.author.email,
+          reply_to: motion.author_email,
           subject: "#{email_subject_prefix(@group.full_name)} New proposal - #{@motion.name}")
   end
 
@@ -16,7 +16,7 @@ class MotionMailer < ActionMailer::Base
     @motion = vote.motion
     @discussion = @motion.discussion
     @group = @motion.group
-    mail( to: @motion.author.email,
+    mail( to: @motion.author_email,
           reply_to: @group.admin_email,
           subject: "#{email_subject_prefix(@group.full_name)} Proposal blocked - #{@motion.name}")
   end
