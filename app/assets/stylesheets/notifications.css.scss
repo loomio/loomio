@@ -11,6 +11,19 @@
   font-size: 0.9em;
   color: $dark-grey
 }
+
+.notification-item .avatar-canvas {
+  margin-right: 5px;
+  margin-bottom: 3px;
+  position: relative;
+  top: 2px;
+  left: 0px;
+}
+
+.notification-item .notification-content {
+  margin-left: 45px;
+}
+
 .notification-item-footer {
   font-size: 0.85em;
   display: block;
@@ -37,8 +50,11 @@
     height: 450px;
     background-color: $selector-panel;
   }
+  #notifications-container .dropdown-menu a {
+    padding-left: 5px;
+  }
   #notifications-container .dropdown-menu h3 {
-    padding-left: 15px;
+    padding-left: 5px;
     color: #333;
   }
   #notifications-container .divider {
