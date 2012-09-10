@@ -6,14 +6,14 @@ describe "Motions" do
   context "a logged in user" do
     before :each do
       pending "delete this once we've migrated to discussion-centric"
-      @user = User.make!
-      @user2 = User.make!
-      @group = Group.make(name: 'Test Group')
+      @user = create(:user)
+      @user2 = create(:user)
+      @group = build(:group, name: 'Test Group')
       @group.save
       @group.add_member!(@user)
       @group.add_member!(@user2)
-      @discussion = create_discussion(group: @group)
-      @motion = create_motion(name: 'Test Motion', discussion: @discussion,
+      @discussion = create(:discussion, group: @group)
+      @motion = create(:motion, name: 'Test Motion', discussion: @discussion,
                               author: @user)
       @motion.save!
       page.driver.post user_session_path, 'user[email]' => @user.email,
@@ -36,7 +36,7 @@ describe "Motions" do
       end
 
       it "should not display new users since motion closed" do
-        @user3 = User.make
+        @user3 = build(:user)
         @user3.save
         @group.add_member!(@user3)
         visit motion_path(id: @motion.id)
@@ -117,13 +117,11 @@ describe "Motions" do
     end
 
     it "cannot view a motion if they don't belong to its (private) group" do
-      # Machinist seems to cause problems when we call .make! in here
-      # So we have to call .make and then .save
-      g = Group.make(viewable_by: :members)
+      g = build(:group, viewable_by: :members)
       g.save
-      u = User.make
+      u = build(:user)
       u.save
-      m = create_motion(name: 'Test Motion', group: g)
+      m = create(:motion, name: 'Test Motion', group: g)
       m.save
       visit group_motion_path(group_id: g.id, id: m.id)
       should have_no_content('Test Motion')
@@ -148,11 +146,11 @@ describe "Motions" do
   context "a logged out user" do
     it "can view a motion of a public group" do
       pending "delete this once we've migrated to discussion-centric"
-      @group = Group.make(name: 'Test Group')
+      @group = build(:group, name: 'Test Group')
       @group.save
-      @user = User.make!
+      @user = create(:user)
       @group.add_member!(@user)
-      @motion = create_motion(name: 'Test Motion', group: @group,
+      @motion = create(:motion, name: 'Test Motion', group: @group,
                               author: @user)
       @motion.save!
       @motion.discussion.add_comment(@user, "hello!")

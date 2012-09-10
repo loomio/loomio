@@ -4,8 +4,8 @@ describe GroupMailer do
 
   describe 'sends email on membership request' do
     before :all do
-      @group = Group.make!
-      @membership = @group.add_request!(User.make!)
+      @group = create(:group)
+      @membership = @group.add_request!(create(:user))
       @mail = GroupMailer.new_membership_request(@membership)
     end
     
