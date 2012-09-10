@@ -65,14 +65,14 @@ h5 {
    .modal-footer { text-align: left; }
  }
 .model-description { padding-bottom: 10px; }
-a#edit-description, a#show-closed-motions {
-  color: $mid-grey;
-  text-decoration: underline;
-  font-size: $font-small;
-}
-a#edit-description:hover, a#show-closed-motions:hover {
-  color: $dark-grey;
-}
+/*a#edit-description, a#show-closed-motions {*/
+  /*color: $mid-grey;*/
+  /*text-decoration: underline;*/
+  /*font-size: $font-small;*/
+/*}*/
+/*a#edit-description:hover, a#show-closed-motions:hover {*/
+  /*color: $dark-grey;*/
+/*}*/
 #show-description {
   color: $dark-grey;
   margin-bottom: 10px;
@@ -82,13 +82,9 @@ a#edit-description:hover, a#show-closed-motions:hover {
   #description-input {
     width: 600px;
     height: 90px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
   }
   .control-group { margin-bottom: 0px; }
-  .save-buttons {
-    position: relative;
-    bottom: 5px;
-  }
   #add-description-submit { float: left; }
   #cancel-add-description {
     float: left;
@@ -110,8 +106,9 @@ li.empty-list-message {
 .discussion-with-motion-divider { border-bottom: 1px solid $light-grey; }
 
 #show-closed-motions {
-  padding-left: 23px;
-  display: block;
+  /*padding-left: 23px;*/
+  /*display: block;*/
+  margin-bottom: 10px;
 }
 #closed-motions-page .selector-list { padding-bottom: 20px; }
 #closed-motions-page li.selector-item.loading { background-position: 270px 160px; }
@@ -379,13 +376,17 @@ a.btn-grey {
   background-image:url('/assets/topic-18.png');
   opacity: 0.5;
 }
+.small-icon.member-icon {
+  background-image:url('/assets/member.png');
+  opacity: 0.8;
+}
 .small-icon.group-icon {
   background-image:url('/assets/group-18.png');
   opacity: 0.5;
 }
 .small-icon.pie-icon {
   background-image:url('/assets/pie-18.png');
-  margin-top: 2px;
+  /*margin-top: 2px;*/
 }
 .large-icon.topic-icon {
     background-image:url('/assets/topic-24.png');

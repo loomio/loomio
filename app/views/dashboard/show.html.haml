@@ -8,7 +8,7 @@
 
 - if @groups.present?
   %header
-    =render '/application/loomio-process-flow'
+    -#=render '/application/loomio-process-flow'
     =render '/groups/title', group: nil
     =render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
       :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-grey', :id => 'start-new-topic'}
@@ -22,7 +22,7 @@
               %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
             .discussion-with-motion-divider.hidden
           - if current_user && current_user.discussions.count == 0
-            %li.empty-list-message.hidden There are no topics in any of your groups
+            %li.empty-list-message.hidden There are no discussions in any of your groups
         #user-discussions.hidden Loading...
       %section.span4
         =render 'groups'
