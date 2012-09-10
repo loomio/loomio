@@ -1,7 +1,9 @@
 #description-placeholder
   - if group.description.blank? && group.users_include?(current_user)
     .sub-panel
-      = link_to "Add a group description", "#", id: 'add-description'
+      %a{ :href => "#", :id => 'add-description'}
+        .small-icon.edit-icon
+        .btn-text Add a group description
 #group-description
   - if !group.description.blank?
     .sub-panel.clearfix

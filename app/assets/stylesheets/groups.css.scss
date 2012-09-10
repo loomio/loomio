@@ -99,15 +99,7 @@
 
 body.groups.show {
   .discussion-preview .discussion-title { margin: 8px 0 8px 0; }
-  #show-closed-motions { padding-left: 0px; }
 }
-li.selector-item.no-discussions, li.selector-item.no-proposals {
-}
-
-li.tool-bar-item#discussion:hover {
-  background-position: 10px 4px;
-}
-
 .sub-panel {
   background-color: $sub-selector-panel;
   @include border-radius(8px);
@@ -118,10 +110,19 @@ li.tool-bar-item#discussion:hover {
     font-size: $font-medium;
     color: $header-titles-color;
     display: inline;
-    line-height: 1.6em;
+    line-height: 1.8em;
+    margin-bottom: 5px;
   }
   .btn {
     color: $mid-grey;
+  }
+  .btn-panel {
+    width: 150px;
+    text-align: left;
+    line-height: 18px;
+    padding: 7px;
+    a { padding-left: 5px }
+    margin-bottom: 5px;
   }
   .edit_group .btn {
     float: right;
@@ -129,7 +130,7 @@ li.tool-bar-item#discussion:hover {
   ul {
     border-top: none;
     list-style: none;
-    margin: 6px 0 8px 0;
+    margin: 0 0 8px 0;
   }
   li {
     line-height: 1.6em;
@@ -151,9 +152,12 @@ li.tool-bar-item#discussion:hover {
   }
   .dropdown li a:hover { color: white; }
 }
-.sub-panel#groups ul {
-  margin-left: 23px;
-  .sub-group a{ padding-left: 20px;
+
+/*group panel*/
+.sub-panel#groups{
+  h3 { display: block; }
+  ul {
+    .sub-group a{ padding-left: 20px; }
   }
 }
 
@@ -178,11 +182,16 @@ li.tool-bar-item#discussion:hover {
     .character-counter {
       width: 278px;
       position: relative;
-      bottom: 0px;
-      margin-bottom: 8px;
+      bottom: 27px;
     }
     .control-group { margin-bottom: 0px; }
   }
+}
+#edit-description {
+  text-decoration: underline;
+}
+#edit-description:hover {
+  color: $dark-grey;
 }
 #add-member-popup-btn {
   margin-bottom: 5px;
@@ -190,10 +199,7 @@ li.tool-bar-item#discussion:hover {
 
 /* sub groups panel */
 #sub-groups {
-  .new_motion_link {
-    float: right;
-    padding-right: 10px;
-  }
+  h3 { display: block; }
   .group-link a:hover {
     color: $dark-grey;
   }
@@ -203,15 +209,6 @@ li.tool-bar-item#discussion:hover {
 
 /* add member panel */
 #add-members {
-  #add-members-btn {
-    float: left;
-    width: 135px;
-    text-align: left;
-  }
-  #add-members-btn .btn-text {
-    padding-left: 5px;
-    display: inline;
-  }
   .btn#invite {
     margin-top: 0px;
     width: 60px;

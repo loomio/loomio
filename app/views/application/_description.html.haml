@@ -7,7 +7,8 @@
     = hidden_field_tag 'id'
     .control-group
       = text_area_tag 'description', model.description, {id: 'description-input', class: inputError_class(model_name)}
-    .character-counter
     .save-buttons.clearfix
       = submit_tag "Save", class: 'btn btn-small run-validations', id: 'add-description-submit', :disable_with => "Saving"
       = link_to "Cancel", "#", id: 'cancel-add-description'
+    - unless model_name == "discussion"
+      .character-counter
