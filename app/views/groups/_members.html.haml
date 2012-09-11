@@ -10,8 +10,8 @@
             %li= link_to "Add members", "#", {"data-toggle" => "modal", href: "#invite-group-members"}
     #membership-count.label
       = group.memberships.count
-    = render 'add_members', group: group
     %h3 Members
+    = render 'add_members', group: group
     %ul#users-list
       = render :partial => 'membership',
         :collection => group.memberships,
