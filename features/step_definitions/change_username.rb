@@ -11,11 +11,11 @@ When /^the username is not taken$/ do
 end
 
 Then /^my username is changed$/ do
-  page.should have_content "Your settings have been updated" # express the regexp above with the code you wish you had
+  User.where(:name => "new_username")
 end
 
 When /^I enter my current username$/ do
-  fill_in "user_name", with: current_user.name
+  fill_in "user_name", with: "furry"
 end
 
 Then /^my username stays the same$/ do
@@ -27,8 +27,5 @@ When /^the username is taken$/ do
 end
 
 Then /^my username is not changed$/ do
- page.should have_content "Your settings did not get updated"
+  not User.where(:name => "new_username")
 end
-
-
-
