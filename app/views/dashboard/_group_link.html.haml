@@ -4,8 +4,3 @@
   - group_link_class = "group-link disabled"
 - if can? :show, group
   %span{class: group_link_class}= group.link
-  - if can? :create_motion, group
-    = link_to "+",
-      new_discussion_path(discussion: { group_id: group }),
-      :class => 'new_motion_link',
-      :title => 'new motion for this group'
