@@ -126,15 +126,29 @@
     font-size: $font-small;
   }
   #outcome-statement {
-    margin: 10px 0px;
-    padding: 5px;
-    background-color: $lighter-grey;
-    font-size: 1em;
     color: $dark-grey;
+    margin: 10px 0px;
+    textarea {
+      width: 420px;
+      max-width: 420px;
+      height: 40px;
+      max-height: 80px;
+    }  
+    .control-group { margin-bottom: 0px; }
+    .character-counter {
+      bottom: 10px; 
+      width: 250px;
+      float: right;
+      margin-bottom: 0px;
+    }
+    .statement-display {
+      padding: 5px;
+      background-color: $lighter-grey;
+      font-size: 1em;
+    }
     .outcome-label {
       font-size: 1em;
       font-weight: bold;
-      color: $dark-grey;
       margin-bottom: 7px;
     }
     .no-outcome { font-style: italic; }
