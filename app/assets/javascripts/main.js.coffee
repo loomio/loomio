@@ -174,7 +174,7 @@ $ ->
       idStr = new Array
       idStr = $('#closed-motions-page').children().attr('class').split('_')
     $("#show-closed-motions").click((event) ->
-      $("#closed-motions.modal").removeClass('hidden')
+      $("#closed-motions").modal('toggle')
       $("#closed-motions-page").removeClass('hidden')
       $("#closed-motions-loading").removeClass('hidden')
       $("#closed-motions-list").addClass('hidden')
@@ -185,15 +185,15 @@ $ ->
       $('#closed-motions-page').load(pathStr, ->
         $("#closed-motions-list").removeClass('hidden')
         $("#closed-motions-loading").addClass('hidden')
-        $(".pie").each(->
+        $("#closed-motions").find('.pie').each(->
           displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
         )
       )
       event.preventDefault()
     )
     $("#closed-motions .close").click((event) ->
-      $("#closed-motions.modal").addClass('hidden')
-    event.preventDefault()
+      $("#closed-motions").modal('toggle')
+      event.preventDefault()
     )
 
 #pagination load on closed motions
@@ -206,7 +206,7 @@ $ ->
         $('#closed-motions-page').load($(this).attr('href'), ->
           $("#closed-motion-list").removeClass('hidden')
           $("#closed-motions-loading").addClass('hidden')
-          $(".pie").each(->
+          $("#closed-motions").find('.pie').each(->
             displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
             )
           )

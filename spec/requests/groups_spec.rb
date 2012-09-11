@@ -55,7 +55,7 @@ describe "Groups" do
         it "can see add member section" do
           visit group_path(@group)
 
-          should have_content("Add member")
+          should have_content("Add new member")
         end
       end
     end
@@ -94,7 +94,7 @@ describe "Groups" do
         it "cannot see add member section" do
           visit group_path(@group)
 
-          should_not have_content("Add member")
+          should_not have_content("Add new member")
         end
       end
 
@@ -117,7 +117,7 @@ describe "Groups" do
         it "can see add member section" do
           visit group_path(@group)
 
-          should have_content("Add member")
+          should have_content("Add new member")
         end
 
       end
@@ -150,7 +150,7 @@ describe "Groups" do
       @discussion = create_discussion(group: @group, author: @user)
       @motion = create_motion(name: 'Test Motion',
                               discussion: @discussion,
-                              author: @user) 
+                              author: @user)
       visit group_path(@group)
 
       should have_content("Test Group")

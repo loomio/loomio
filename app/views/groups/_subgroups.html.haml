@@ -2,9 +2,9 @@
   .sub-panel
     %h3 Sub-groups
     - if (can? :add_members, group) && group.users.include?(current_user)
-      %a.group-add-members.btn.btn-small.btn-panel{href: add_subgroup_group_path(group)}
+      %a.group-add-members.btn.btn-small.btn-icon{href: add_subgroup_group_path(group)}
         .small-icon.group-icon
-        .btn-text Create a Sub-group
+        .btn-text Create a sub-group
     %ul
       - subgroups.each do |subgroup|
         %li= render "dashboard/group_link", group: subgroup

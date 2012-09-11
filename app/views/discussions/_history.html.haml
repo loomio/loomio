@@ -1,7 +1,7 @@
 %ul.history-list
   - if history.count == 0
     %li.selector-item.empty-list-message.history-item
-      There are no messages yet in this discussion.
+      There aren't any messages in this discussion yet.
   - else
     - history.each do |message|
       - if message.is_a?(Comment)

@@ -22,7 +22,7 @@
           .span6#content-history
             .clearfix
               .large-icon.discussion-icon
-              %h2.header-text Engage
+              %h2.header-text Discussion
             #content-history-body
               = render 'add_comment', discussion: @discussion
               = render 'history', discussion: @discussion, history: @discussion.history
@@ -30,7 +30,7 @@
           .span6#content-proposal
             .clearfix
               .large-icon.decision-icon
-              %h2.header-text Decide
+              %h2.header-text Current decision
             .content-proposal-body
               %ul.selector-list
                 - if @current_motion
@@ -46,7 +46,7 @@
                 - else
                   - if can? :create, Motion.new(discussion_id: @discussion.id)
                     = link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-small proposal-btn', id: 'new-proposal'
-                  %li.selector-item.empty-list-message= "There is no current proposal for this discussion"
+                  %li.selector-item.empty-list-message= "There is not currently an open proposal under discussion"
 
             - if @discussion.motions.where("phase = 'closed'").count > 0
               #previous-proposals
