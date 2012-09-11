@@ -15,13 +15,18 @@
     #outcome-statement
       - if current_user == motion.author || current_user.is_group_admin?(this_group) 
         - if edit_outcome || motion.outcome.blank?
-          = form_tag '#', id: "edit-outcome-form" do
-            = text_area_tag 'outcome', "", id: 'edit-outcome', placeholder: "What was the outcome of this proposal?"
-            = submit_tag "Post outcome", class: "btn btn-small submit", id: 'post-new-outcome', :disable_with => "Post outcome"
+          = form_for motion do |f|
+            = f.hidden_field :id
+            .control-group
+              = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', placeholder: "What was the outcome of this proposal?"
+            .character-counter
+            .save-button.clearfix
+              = f.submit "Save", class: 'btn btn-small run-validations', id: 'add-outcome-submit'
       - else
-        .outcome-label Outcome
-        - if motion.outcome.blank?
-          .no-outcome= "No outcome has been specified for this proposal"
+        .outcome-display
+          .outcome-label Outcome
+          - if motion.outcome.blank?
+            .no-outcome= "No outcome has been specified for this proposal"
   .proposed-by
     = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
   .description
