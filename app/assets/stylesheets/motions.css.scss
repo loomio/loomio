@@ -190,3 +190,7 @@
     margin: 10px 0 0 5px;
   }
 }
+
+.motion .pie {
+  height: 300px; // Necessary for IE7
+}

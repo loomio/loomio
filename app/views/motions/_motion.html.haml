@@ -63,17 +63,17 @@
           = submit_tag "Confirm position", class: "vote btn btn-info", :disable_with => "Confirming position"
           = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
 
-  -#:coffeescript
-    -#$ ->
-      -## Display vote graph
-      -#@pie_graph_view = new Loomio.Views.Utils.GraphView
-        -#el: '#graph.pie'
-        -#id_string: 'graph'
-        -#legend: true
-        -#data: #{@votes_for_graph.to_json.html_safe}
-        -#type: 'pie'
-        -#tooltip_selector: '#tooltip'
-        -#diameter: 200
-        -#padding: 0
-        -#gap: 5
-        -#shadow: 2
+  :coffeescript
+    $ ->
+      # Display vote graph
+      @pie_graph_view = new Loomio.Views.Utils.GraphView
+        el: '#graph.pie'
+        id_string: 'graph'
+        legend: true
+        data: #{@votes_for_graph.to_json.html_safe}
+        type: 'pie'
+        tooltip_selector: '#tooltip'
+        diameter: 200
+        padding: 0
+        gap: 5
+        shadow: 2
