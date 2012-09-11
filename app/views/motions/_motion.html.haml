@@ -13,18 +13,21 @@
       No close date
   - if motion.closed?
     #outcome-statement
-      - if current_user == motion.author || current_user.is_group_admin?(this_group) 
-        - if edit_outcome || motion.outcome.blank?
-          = form_for motion do |f|
-            = f.hidden_field :id
-            .control-group
-              = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', placeholder: "What was the outcome of this proposal?"
-            .character-counter
-            .save-button.clearfix
-              = f.submit "Save", class: 'btn btn-small run-validations', id: 'add-outcome-submit'
-      - else
-        .outcome-display
+      #outcome-input.hidden
+        - if current_user == motion.author || current_user.is_group_admin?(this_group) 
+          - if edit_outcome || motion.outcome.blank?
+            = form_for motion do |f|
+              = f.hidden_field :id
+              .control-group
+                = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', placeholder: "What was the outcome of this proposal?"
+              .character-counter
+              .save-button.clearfix
+                = f.submit "Save", class: 'btn btn-small run-validations', id: 'add-outcome-submit'
+      #outcome-display
+        .statement-display
           .outcome-label Outcome
+          - if current_user == motion.author || current_user.is_group_admin?(this_group) 
+            = link_to "Edit", "#", class: 'outcome-edit-button', id: 'edit-outcome'
           - if motion.outcome.blank?
             .no-outcome= "No outcome has been specified for this proposal"
   .proposed-by
