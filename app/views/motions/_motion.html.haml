@@ -13,9 +13,15 @@
       No close date
   - if motion.closed?
     #outcome-statement
-      .outcome-label Outcome
-      - if motion.outcome.blank?
-        .no-outcome= "No outcome has been specified for this proposal"
+      - if current_user == motion.author || current_user.is_group_admin?(this_group) 
+        - if edit_outcome || motion.outcome.blank?
+          = form_tag '#', id: "edit-outcome-form" do
+            = text_area_tag 'outcome', "", id: 'edit-outcome', placeholder: "What was the outcome of this proposal?"
+            = submit_tag "Post outcome", class: "btn btn-small submit", id: 'post-new-outcome', :disable_with => "Post outcome"
+      - else
+        .outcome-label Outcome
+        - if motion.outcome.blank?
+          .no-outcome= "No outcome has been specified for this proposal"
   .proposed-by
     = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
   .description
