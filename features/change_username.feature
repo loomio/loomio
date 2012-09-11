@@ -2,7 +2,6 @@ Feature: Change Username
 In order to allow users to feel at home
 we allow them to change their usernames.
 
-
 Scenario: Successful Change
 Given I am logged in
 When I am on the settings page

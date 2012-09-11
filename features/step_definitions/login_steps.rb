@@ -3,11 +3,11 @@ Given /^I am a registered User$/ do
 end
 
 When /^enter my login details$/ do
-   visit "/"
-   page.should have_content "sign in"
-    fill_in 'user_email', with: "furry@example.com"
-    fill_in 'user_password', with: "password"
-    click_on "Sign in"
+  visit "/"
+  page.should have_content "sign in"
+  fill_in 'user_email', with: "furry@example.com"
+  fill_in 'user_password', with: "password"
+  click_on "Sign in"
 end
 
 Then /^I should be logged in$/ do
@@ -16,8 +16,7 @@ end
 
 Given /^I am logged in$/ do
   user = User.create(:email => "furry@example.com", :password =>"password", :name => "Fluffy")
-  page.driver.post user_session_path, 'user[email]' => user.email,
-                   'user[password]' => 'password'
+  page.driver.post user_session_path, 'user[email]' => user.email, 'user[password]' => 'password'
 end
 
 Given /^I am not a registered User$/ do
@@ -26,10 +25,10 @@ end
 
 When /^I enter my incorrect login details$/ do
   visit "/"
-   page.should have_content "sign in"
-    fill_in 'user_email', with: "fake@email.com"
-    fill_in 'user_password', with: "password"
-    click_on "Sign in"
+  page.should have_content "sign in"
+  fill_in 'user_email', with: "fake@email.com"
+  fill_in 'user_password', with: "password"
+  click_on "Sign in"
 end
 
 
@@ -38,18 +37,18 @@ Then /^I should not be logged in$/ do
 end
 
 When /^I enter my email incorrectly$/ do
-   visit "/"
-   page.should have_content "sign in"
-    fill_in 'user_email', with: "furry@oops_a_mistake.com"
-    fill_in 'user_password', with: "password"
-    click_on "Sign in"
+  visit "/"
+  page.should have_content "sign in"
+  fill_in 'user_email', with: "furry@oops_a_mistake.com"
+  fill_in 'user_password', with: "password"
+  click_on "Sign in"
 end
 
 When /^I enter my password incorrectly$/ do
-   visit "/"
-   page.should have_content "sign in"
-    fill_in 'user_email', with: "furry@example.com"
-    fill_in 'user_password', with: "wrong_password"
-    click_on "Sign in"
+  visit "/"
+  page.should have_content "sign in"
+  fill_in 'user_email', with: "furry@example.com"
+  fill_in 'user_password', with: "wrong_password"
+  click_on "Sign in"
 end
 
