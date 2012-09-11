@@ -13,6 +13,7 @@ class Motion < ActiveRecord::Base
     allow_blank: true
 
   validates_length_of :name, :maximum => 250
+  validates_length_of :outcome, :maximum => 250
 
   delegate :email, :to => :author, :prefix => :author
   delegate :name, :to => :author, :prefix => :author

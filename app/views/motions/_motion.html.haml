@@ -11,6 +11,11 @@
         %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
     - else
       No close date
+  - if motion.closed?
+    #outcome-statement
+      .outcome-label Outcome
+      - if motion.outcome.blank?
+        .no-outcome= "No outcome has been specified for this proposal"
   .proposed-by
     = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
   .description

@@ -67,6 +67,10 @@ class MotionsController < GroupBaseController
     redirect_to discussion_url(@motion.discussion)
   end
 
+  def edit_outcome 
+    @motion.edit_outcome!(params[:outcome])
+  end
+
   private
 
     def group

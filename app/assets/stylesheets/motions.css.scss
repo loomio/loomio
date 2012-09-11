@@ -125,6 +125,20 @@
   .closing-info{
     font-size: $font-small;
   }
+  #outcome-statement {
+    margin: 10px 0px;
+    padding: 5px;
+    background-color: $lighter-grey;
+    font-size: 1em;
+    color: $dark-grey;
+    .outcome-label {
+      font-size: 1em;
+      font-weight: bold;
+      color: $dark-grey;
+      margin-bottom: 7px;
+    }
+    .no-outcome { font-style: italic; }
+  }
   .proposed-by {
     font-size: $font-tiny;
     margin-bottom: 20px;
