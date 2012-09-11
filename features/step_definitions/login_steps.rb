@@ -10,8 +10,14 @@ When /^enter my login details$/ do
     click_on "Sign in"
 end
 
-Then /^I am logged in$/ do
-page.should have_content "successfully"
+Then /^I should be logged in$/ do
+  page.should have_content "This page is the Dashboard"
+end
+
+Given /^I am logged in$/ do
+  user = User.create(:email => "furry@example.com", :password =>"password", :name => "Fluffy")
+  page.driver.post user_session_path, 'user[email]' => user.email,
+                   'user[password]' => 'password'
 end
 
 Given /^I am not a registered User$/ do
@@ -27,7 +33,7 @@ When /^I enter my incorrect login details$/ do
 end
 
 
-Then /^I am not logged in$/ do
+Then /^I should not be logged in$/ do
   page.should have_content "Invalid email or password"
 end
 
