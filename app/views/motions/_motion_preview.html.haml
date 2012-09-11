@@ -24,17 +24,17 @@
           = motion_activity_count_for(motion, current_user)
 
 - if params[:controller] == 'discussions'
-  -#:coffeescript
-    -#$ ->
-      -## Display vote graph
-      -#@pie_graph_view = new Loomio.Views.Utils.GraphView
-        -#el: '.pie'
-        -#id_string: "graph_#{motion.id}"
-        -#legend: false
-        -#data: #{motion.votes_graph_ready.to_json}
-        -#type: 'pie'
-        -#tooltip_selector: '#tooltip'
-        -#diameter: 25
-        -#padding: 1
-        -#gap: 1
-        -#shadow: 0.75
+  :coffeescript
+    $ ->
+      # Display vote graph
+      @pie_graph_view = new Loomio.Views.Utils.GraphView
+        el: '.pie'
+        id_string: "graph_#{motion.id}"
+        legend: false
+        data: #{motion.votes_graph_ready.to_json}
+        type: 'pie'
+        tooltip_selector: '#tooltip'
+        diameter: 25
+        padding: 1
+        gap: 1
+        shadow: 0.75
