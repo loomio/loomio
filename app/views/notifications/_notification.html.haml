@@ -1,7 +1,7 @@
 - begin
   - if notification.event_kind == "new_discussion"
     - discussion = notification.discussion
-    - person = discussion.author.name
+    - user = discussion.author
     - action_text = "started a new discussion"
     - title_text = discussion.title
     - group_name = discussion.group_full_name
@@ -9,7 +9,7 @@
 
   - elsif notification.event_kind == "new_comment"
     - comment = notification.comment
-    - person = comment.user.name
+    - user = comment.user
     - action_text = "commented on the discussion"
     - title_text = comment.discussion.title
     - group_name = comment.group_full_name
@@ -17,15 +17,23 @@
 
   - elsif notification.event_kind == "new_motion"
     - motion = notification.motion
-    - person = motion.author.name
+    - user = motion.author
     - action_text = "created a new proposal"
+    - title_text = motion.name
+    - group_name = motion.group_full_name
+    - href = discussion_path(motion.discussion)
+
+  - elsif notification.event_kind == "motion_closed"
+    - motion = notification.motion
+    - user = notification.event.user
+    - action_text = "closed the proposal"
     - title_text = motion.name
     - group_name = motion.group_full_name
     - href = discussion_path(motion.discussion)
 
   - elsif notification.event_kind == "new_vote"
     - vote = notification.vote
-    - person = vote.user_name
+    - user = vote.user
     - action_text = "#{Vote::POSITION_VERBS[vote.position]} on the proposal"
     - title_text = vote.motion_name
     - group_name = vote.group_full_name
@@ -33,7 +41,7 @@
 
   - elsif notification.event_kind == "motion_blocked"
     - vote = notification.vote
-    - person = vote.user_name
+    - user = vote.user
     - action_text = "blocked the proposal"
     - title_text = vote.motion_name
     - group_name = vote.group_full_name
@@ -41,7 +49,7 @@
 
   - elsif notification.event_kind == "membership_requested"
     - membership = notification.membership
-    - person = membership.user_name
+    - user = membership.user
     - action_text = "requested membership to"
     - title_text = membership.group_full_name
     - group_name = membership.group_full_name
@@ -49,7 +57,7 @@
 
   - elsif notification.event_kind == "user_added_to_group"
     - membership = notification.membership
-    - person = membership.inviter_name ? membership.inviter_name : "Someone"
+    - user = membership.inviter
     - action_text = "added you to the group"
     - title_text = membership.group_full_name
     - group_name = membership.group_full_name
@@ -57,23 +65,33 @@
 
   - elsif notification.event_kind == "comment_liked"
     - comment_vote = notification.comment_vote
-    - person = comment_vote.user_name
+    - user = comment_vote.user
     - action_text = "liked your comment in the discussion"
     - title_text = comment_vote.discussion_title
     - group_name = comment_vote.group_full_name
-    - href = discussion_path(comment_vote.discussion)
+    - href = (discussion_path(comment_vote.discussion))+"#comment-#{comment_vote.comment_id}"
 
   - date = time_ago_in_words(notification.created_at)
   - class_name = notification.viewed_at.nil? ? " unread" : ""
+  - avatar_url = user.avatar_url(:medium)
+  - avatar_initials = user.avatar_initials
 
   %li.selector-item{:class => "notification-item#{class_name}" }
     %a{:href => href }
-      %span.bold-name= person
-      = " #{action_text} "
-      - if title_text
-        %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
-      %span.notification-item-footer
-        = "#{date} ago · #{group_name}"
+      .clearfix
+        .medium-user-avatar.avatar-canvas
+          - if avatar_url.present?
+            = image_tag avatar_url
+          - else
+            %span.medium-user-initials.initials-decoration
+              = avatar_initials
+        .notification-content
+          %span.bold-name= user.name 
+          = " #{action_text} "
+          - if title_text
+            %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
+          %span.notification-item-footer
+            = "#{date} ago · #{group_name}"
   %li.divider
 
 - rescue => exception

@@ -1,34 +1,37 @@
 #motion-form
   .row
-    .span5
+    .span10
       =form_for(*form_args) do |f|
-        .control-group
-          = f.label :name, "Title", {class: "control-label", for: "inputError", id: 'title-label'}
-          .presence-error-message Please fill in a proposal title
-          = f.text_field :name, class: "validate-presence inputError limit-250", id: "motion-name"
-        .character-counter
+        .row
+          .span5
+            .control-group
+              = f.label :name, "Title", {class: "control-label", for: "inputError", id: 'title-label'}
+              .presence-error-message Please fill in a proposal title
+              = f.text_field :name, class: "validate-presence inputError limit-150", id: "motion-name"
+            .character-counter
+          .span5
+            .helper-text
+              %p Proposal titles should be clear and specific, so people know exactly what it means if they click ‘agree’ or ‘disagree’.
         #closing-inputs
           .control-group
-            = f.label :close_date, "Closing", {class: "control-label", for: "date-input"}
+            = f.label :close_date, "Closing", {class: "control-label date-description", for: "date-input"}
             = text_field_tag :input_date, nil, class: "date-input validate-motion-close-date inputError"
             = select_hour(@input_time, ampm: true)
             %span.date-error-message
               ='Please give a future close date (The date you gave has past)'
-            #description
+        #description
+          .row
+            .span5
               = f.label :description, "Details"
               = f.text_area :description
-            =f.submit class: "btn submit btn-info run-validations", :disable_with => "Creating proposal"
-            =f.hidden_field :close_date, as: :hidden
-            =f.hidden_field :phase, as: :hidden, value: "voting"
-            =f.hidden_field :facilitator_id, as: :hidden, value: current_user.id
-            =f.hidden_field :discussion_id, as: :hidden, value: @motion.discussion_id
-    .span5
-      .helper-text
-        Proposals titles best when they are clear and specific, so people know exactly what it means if they click ‘agree’ or ‘disagree’.
-      .helper-text#details
-        %h5 What happens if people don’t agree?
-        %br
-        If someone says no on a proposal that you support, pay attention to their concerns, and see if you can help address them by posting in the discussion (or contacting them by other means).
-        %br
-        %br
-        Loomio makes it easy for people to change their mind so groups can come to a shared understanding through discussion. Loomio also makes it easy to start a new proposal in light of new information or to address concerns that have been raised.
+            .span5
+              .helper-text
+                %h4 What happens if people don’t agree?
+                %p If someone says no on a proposal that you support, pay attention to their concerns, and see if you can help address them by posting in the discussion (or contacting them by other means).
+                %p Loomio makes it easy for people to change their mind so groups can come to a shared understanding through discussion. Loomio also makes it easy to start a new proposal in light of new information or to address concerns that have been raised.
+        =f.submit submit_text, class: "btn submit btn-info run-validations",
+          :disable_with => disable_with
+        =f.hidden_field :close_date, as: :hidden
+        =f.hidden_field :phase, as: :hidden, value: "voting"
+        =f.hidden_field :facilitator_id, as: :hidden, value: current_user.id
+        =f.hidden_field :discussion_id, as: :hidden, value: @motion.discussion_id

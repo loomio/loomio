@@ -31,6 +31,8 @@ Spork.prefork do
     # config.mock_with :rr
     config.mock_with :rspec
 
+    config.include FactoryGirl::Syntax::Methods
+
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -72,65 +74,4 @@ Spork.each_run do
 
   #DatabaseCleaner.clean
 
-end
-
-
-def create_motion(*args)
-  unless args.empty?
-    motion = Motion.make
-    args[0].each_pair do |key, value|
-      motion.send("#{key}=", value)
-    end
-  else
-    motion = Motion.make
-  end
-  unless motion.author
-    motion.author = User.make
-    motion.author.save
-  end
-  unless motion.facilitator
-    motion.facilitator = motion.author
-  end
-  unless motion.discussion
-    discussion = Discussion.new(title: "A Discussion")
-    discussion.author = motion.author
-    discussion.group = Group.make
-    discussion.group.add_member!(discussion.author)
-    discussion.group.save
-    discussion.save
-    motion.discussion = discussion
-  end
-  motion.group.add_member!(motion.author)
-  motion.group.add_member!(motion.facilitator)
-  motion.save
-  motion.reload
-  motion
-end
-
-def create_discussion(*args)
-  unless args.empty?
-    discussion = Discussion.new
-    args[0].each_pair do |key, value|
-      discussion.send("#{key}=", value)
-    end
-  else
-    discussion = Discussion.new
-  end
-  unless discussion.group
-    discussion.group = Group.make
-    discussion.group.save
-  end
-  unless discussion.author
-    discussion.author = User.make
-    discussion.author.save
-  end
-  unless discussion.title
-    discussion.title = "Title of discussion!"
-  end
-  discussion.group.add_member! discussion.author
-  #unless discussion.current_motion
-    #motion = create_motion(discussion: discussion)
-  #end
-  discussion.save
-  discussion
 end

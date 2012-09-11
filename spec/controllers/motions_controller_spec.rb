@@ -20,11 +20,6 @@ describe MotionsController do
       sign_in user
     end
 
-    context "editing a motion" do
-      before { get :edit, id: motion.id }
-      it { assigns(:motion).id.should == motion.id }
-    end
-
     context "creating a motion" do
       before do
         Motion.stub(:new).and_return(motion)
@@ -53,6 +48,24 @@ describe MotionsController do
         discussion.stub(:current_motion).and_return(motion)
         get :show, :id => motion.id
         response.should redirect_to(discussion_url(discussion))
+      end
+    end
+
+    context "closing a motion" do
+      before do
+        controller.stub(:authorize!).with(:close_voting, motion).and_return(true)
+        motion.stub(:close_voting!)
+        Event.stub(:motion_closed!)
+      end
+
+      it "closes the motion" do
+        motion.should_receive(:close_voting!)
+        post :close_voting, :id => motion.id
+      end
+
+      it "fires the close_motion event" do
+        Event.should_receive(:motion_closed!)
+        post :close_voting, :id => motion.id
       end
     end
 

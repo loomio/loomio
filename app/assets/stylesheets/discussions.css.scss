@@ -4,7 +4,9 @@
 
 /** discussion new form*/
 body.discussions.new {
-  #discussion_notify_group_upon_creation { margin-bottom: 30px; }
+  .notify-group-checkbox {
+    margin-bottom: 15px;
+  }
   .btn { display: block; }
 }
 
@@ -87,6 +89,51 @@ li.preview a {
     width: 443px;
   }
 
+  /* Apply word break only to paragraphs in comment-body */
+  .comment-body p{
+    /* The following styles prevent unbroken strings from breaking the layout */
+    word-wrap: break-word;
+  }
+
+  /* Indentation for markdown lists */
+
+  .comment-body ul, .comment-body ol, .comment-body li {
+    margin-left: 10px;
+    font-size: 14px;
+    word-wrap: break-word;
+  }
+  .comment-body ul, .comment-body li{
+    padding: 3px 0px;
+  }
+
+  .comment-body{
+    h1, h2, h3, h4, h5, h6, h7{
+      display: block;
+      padding: 4px 0px;
+    }
+    h1{
+      font-size: 1.4em;
+    }
+    h2{
+      font-size: 1.3em;
+    }
+    h3{
+      font-size: 1.2em;
+    }
+    h4{
+      font-size: 1.1em;
+    }
+  }
+
+  /** Code block padding (Stops avatars destroying indentation) */
+  pre{
+    display: block;
+    margin: 10px 0px;
+    overflow: auto;
+    word-wrap: normal;
+    white-space: pre;
+  }
+
   .comment-avatar {
     margin: 0 10px 0 0;
     float: left;
@@ -101,7 +148,7 @@ li.preview a {
     font-weight: bold;
   }
   .comment .comment-label{
-    color: $mid-grey;
+    color: $dark-grey;
   }
   .comment .comment-time{
     color: $dark-grey;
@@ -120,6 +167,12 @@ li.preview a {
     height: 18px;
   }
 
+  .position .position-message{
+    color: $mid-grey;
+    font-style: italic;
+  }
+
+
   /* proposal */
   .proposal-icon {
     float: left;
@@ -135,11 +188,18 @@ li.preview a {
     background: $comment-color;
     color: $mid-grey;
   }
-  .proposal .proposal-text{
-    color: $dark-grey;
+  .proposal .tool-bar-item-proposal {
+    float: left;
+    display: inline;
+    height: 19px;
+    width: 22px;
+    background-position: 2px 1px;
   }
-  .proposal .proposal-description{
+  .proposal-info {
+  }
+  .proposal .proposal-text{
     color: $mid-grey;
+    font-style: italic;
   }
   .proposal.current{
     background: $current-proposal;
@@ -155,15 +215,15 @@ li.preview a {
 .discussion-preview {
   a {
     color: $dark-grey;
-    display: block;
-    padding: 5px 5px 5px 15px;
+    // display: block;
+    // padding: 5px 5px 5px 15px;
   }
   a:hover {
     text-decoration: none;
   }
   .discussion-title {
-    display: inline-block;
-    /*@include ie7-inline-block();*/
+    display: inline;
+    float: left;
     width: 480px;
   }
   .group-name {
@@ -172,27 +232,21 @@ li.preview a {
     width: 480px;
   }
   .notification-info {
-    display: inline-block;
     float: right;
   }
   .latest-comment-time {
     color: $mid-grey;
-    display: inline-block;
-    position: relative;
-    bottom: 7px;
+    display: inline;
+    float: right;
     padding-right: 10px;
   }
-  .proposal-close-date {
-    font-size: $font-medium;
-    display: inline;
-  }
   .discussion-icon-container {
-    display: inline-block;
-    background-size: 25px;
+    display: inline;
+    float: right;
+    background-image: url("discussion-25.png");
     background-repeat: no-repeat;
     width: 32px;
     height: 20px;
-    background-image: url("discussion.png");
   }
   .enabled-icon {
     -moz-opacity: 1.0;
@@ -204,13 +258,12 @@ li.preview a {
     filter:alpha(opacity=20);
     opacity: 0.2
   }
-
   .activity-count {
     margin-left: 18px;
-    height: 10px;
+    height: 14px;
     font-size: $font-tinywiny;
-    padding: 0.4em;
-    padding-top: 0.1em;
+    position: relative;
+    bottom: 9px;
   }
   .discussion-link {
     position: relative;
