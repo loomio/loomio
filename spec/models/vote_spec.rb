@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Vote do
-  let(:user) { User.make! }
-  let(:discussion) { create_discussion(author: user) }
-  let(:motion) { create_motion(discussion: discussion) }
+  let(:user) { create(:user) }
+  let(:discussion) { create(:discussion, author: user) }
+  let(:motion) { create(:motion, discussion: discussion) }
 
   it { Vote::POSITION_VERBS['yes'].should == 'agreed' }
   it { Vote::POSITION_VERBS['abstain'].should == 'abstained' }
@@ -25,13 +25,13 @@ describe Vote do
   end
 
   it 'should only accept valid position values' do
-    vote = Vote.make(position: 'bad')
+    vote = build(:vote, position: 'bad')
     vote.valid?
     vote.should have(1).errors_on(:position)
   end
 
   it 'motion should only accept votes from users who belong to motion.group' do
-    user2 = User.make
+    user2 = build(:user)
     user2.save
     vote = Vote.new(position: 'block')
     vote.motion = motion
@@ -66,7 +66,7 @@ describe Vote do
 
   it 'cannot have a statement over 250 chars' do
     vote = Vote.new(position: 'yes')
-    vote.motion = create_motion
+    vote.motion = create(:motion)
     vote.user = user
     vote.statement = "a"*251
     vote.should_not be_valid

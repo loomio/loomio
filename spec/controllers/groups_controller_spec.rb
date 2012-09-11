@@ -6,13 +6,13 @@ describe GroupsController do
 
   context "logged in user" do
     before :each do
-      @user = User.make!
+      @user = create(:user)
       sign_in @user
     end
 
     context "group viewable by everyone" do
       before :each do
-        @group = Group.make!(viewable_by: :everyone)
+        @group = create(:group, viewable_by: :everyone)
       end
       context "non-member views group" do
         it "should show group page" do
@@ -23,7 +23,7 @@ describe GroupsController do
     end
     context "group viewable by members" do
       before :each do
-        @group = Group.make!(viewable_by: :members)
+        @group = create(:group, viewable_by: :members)
       end
       context "a group admin" do
         before :each do
@@ -67,9 +67,9 @@ describe GroupsController do
     end
 
     it "creates a group" do
-      user = User.make(:email => "contact@loom.io")
+      user = build(:user, :email => "contact@loom.io")
       user.save
-      @group = Group.make
+      @group = build(:group)
       post :create, :group => @group.attributes
       assigns(:group).users.should include(@user)
       assigns(:group).admins.should include(@user)
@@ -79,11 +79,11 @@ describe GroupsController do
     end
 
     it "creates a subgroup" do
-      user = User.make(:email => "contact@loom.io")
+      user = build(:user, :email => "contact@loom.io")
       user.save
-      @group = Group.make!
+      @group = create(:group)
       @group.add_member! @user
-      @subgroup = Group.make(:parent => @group)
+      @subgroup = build(:group, :parent => @group)
 
       post :create, :group => @subgroup.attributes
 
@@ -115,9 +115,9 @@ describe GroupsController do
 
     describe "add_members" do
       before do
-        @user2 = User.make!
-        @user3 = User.make!
-        @group = Group.make!
+        @user2 = create(:user)
+        @user3 = create(:user)
+        @group = create(:group)
         @group.add_admin! @user
         @group.stub(:add_member!)
         Group.stub(:find).with(@group.id.to_s).and_return(@group)
@@ -142,9 +142,9 @@ describe GroupsController do
 
     describe "archiving a group" do
       before do
-        @group = Group.make!
+        @group = create(:group)
         @group.add_admin! @user
-        @subgroup = Group.make!(:parent => @group)
+        @subgroup = create(:group, :parent => @group)
         @subgroup.add_member! @user
         post :archive, :id => @group.id
       end
@@ -165,7 +165,7 @@ describe GroupsController do
 
     describe "viewing an archived group" do
       before do
-        @group = Group.make!
+        @group = create(:group)
         @group.archived_at = Time.now
         @group.save
       end

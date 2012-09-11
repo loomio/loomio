@@ -10,7 +10,7 @@ describe Comment do
 
   describe "creating a comment on a discussion" do
     it "updates discussion.last_comment_at" do
-      discussion = create_discussion
+      discussion = create(:discussion)
       comment = discussion.add_comment discussion.author, "hi"
       discussion.reload
       discussion.last_comment_at.to_s.should == comment.created_at.to_s
@@ -18,7 +18,7 @@ describe Comment do
   end
 
   describe "destroying a comment" do
-    let(:discussion) { create_discussion }
+    let(:discussion) { create(:discussion) }
 
     context "which is the only comment on a discussion" do
       it "updates discussion.last_comment_at to discussion.created_at" do

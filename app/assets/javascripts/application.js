@@ -10,7 +10,6 @@
 //= require jqplot.1.0.0b2_r792
 //= require lib/jqplot.pieRenderer.min
 //= require lib/jquery.tokeninput
-//= require lib/jquery.linkify-1.0
 //= require lib/jquery.mousewheel
 //= require underscore
 //= require backbone
