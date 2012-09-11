@@ -12,9 +12,9 @@ describe Motion do
   it {should have(1).errors_on(:author)}
 
   it "user_has_voted?(user) returns true if the given user has voted on motion" do
-    @user = User.make!
-    @motion = create_motion(:author => @user)
-    @vote = Vote.make(:position => "yes")
+    @user = create(:user)
+    @motion = create(:motion, :author => @user)
+    @vote = build(:vote,:position => "yes")
     @vote.user = @user
     @vote.motion = @motion
     @vote.save!
@@ -22,32 +22,32 @@ describe Motion do
   end
 
   it "user_has_voted?(user) returns false if given nil" do
-    @motion = create_motion
+    @motion = create(:motion)
     @motion.user_has_voted?(nil).should == false
   end
 
   context "motion created" do
     it "sends email to group members if email notifications are enabled (default)" do
       pending "this test is weird"
-      group = Group.make!
-      group.add_member!(User.make!)
-      group.add_member!(User.make!)
+      group = create(:group)
+      group.add_member!(create(:user))
+      group.add_member!(create(:user))
       # Do not send email to author, so subtract one from total emails sent
       MotionMailer.should_receive(:new_motion_created)
         .exactly(group.users.count - 1).times
         .with(kind_of(Motion), kind_of("")).and_return(stub(deliver: true))
-      @motion = create_motion
+      @motion = create(:motion)
     end
 
     it "does not send email to group members if email notifications are disabled" do
-      group = Group.make
+      group = build(:group)
       group.email_new_motion = false
       group.save
-      group.add_member!(User.make!)
-      group.add_member!(User.make!)
+      group.add_member!(create(:user))
+      group.add_member!(create(:user))
       MotionMailer.should_not_receive(:new_motion_created)
-      @discussion = create_discussion(group: group)
-      @motion = create_motion(discussion: @discussion)
+      @discussion = create(:discussion, group: group)
+      @motion = create(:motion, discussion: @discussion)
     end
 
     it "sets the discussion's has_current_motion flag to true" do
@@ -65,14 +65,14 @@ describe Motion do
 
 
   it "cannot have invalid phases" do
-    @motion = create_motion
+    @motion = create(:motion)
     @motion.phase = 'bad'
     @motion.should_not be_valid
   end
 
   it "it can remain un-blocked" do
-    @motion = create_motion
-    user1 = User.make
+    @motion = create(:motion)
+    user1 = build(:user)
     user1.save
     @motion.group.add_member!(user1)
     vote = Vote.new(position: 'yes')
@@ -83,8 +83,8 @@ describe Motion do
   end
 
   it "it can be blocked" do
-    @motion = create_motion
-    user1 = User.make
+    @motion = create(:motion)
+    user1 = build(:user)
     user1.save
     @motion.group.add_member!(user1)
     vote = Vote.new(position: 'block')
@@ -95,26 +95,26 @@ describe Motion do
   end
 
   it "can have a close date" do
-    @motion = create_motion
+    @motion = create(:motion)
     @motion.close_date = '2012-12-12'
     @motion.close_date.should == Date.parse('2012-12-12')
     @motion.should be_valid
   end
 
   it "can have a discussion link" do
-    @motion = create_motion
+    @motion = create(:motion)
     @motion.discussion_url = "http://our-discussion.com"
     @motion.should be_valid
   end
 
   it "can have a discussion" do
-    @motion = create_motion
+    @motion = create(:motion)
     @motion.save
     @motion.discussion.should_not be_nil
   end
 
   it "can update discussion_activity" do
-    @motion = create_motion
+    @motion = create(:motion)
     @motion.discussion.activity = 3
     @motion.update_discussion_activity
     @motion.discussion.activity.should == 4
@@ -122,8 +122,8 @@ describe Motion do
 
   context "moving motion to new group" do
     before do
-      @new_group = Group.make!
-      @motion = create_motion
+      @new_group = create(:group)
+      @motion = create(:motion)
       @motion.move_to_group @new_group
     end
 
@@ -138,15 +138,7 @@ describe Motion do
 
   context "destroying a motion" do
     before do
-      @discussion = create_discussion(group: Group.make!)
-      @discussion.has_current_motion = true
-      @user = User.make!
-      @motion = Motion.new()
-      @motion.name = "Test motion"
-      @motion.author = @user
-      @motion.discussion = @discussion
-      @motion.save
-      @discussion.reload
+      @motion = create(:motion)
       @vote = Vote.create(position: "no", motion: @motion, user: @motion.author)
       @comment = @motion.discussion.add_comment(@motion.author, "hello")
       @motion.destroy
@@ -162,41 +154,34 @@ describe Motion do
 
   context "closed motion" do
     before :each do
-      user1 = User.make!
-      user2 = User.make!
-      @user3 = User.make!
-      @group = Group.make!
-      @group.add_member!(user1)
-      @group.add_member!(user2)
-      @group.add_member!(@user3)
-      @discussion = Discussion.new(group: @group)
-      @discussion.author = user1
-      @discussion.title = "JammieZ"
-      @discussion.has_current_motion = true
-      @discussion.save!
-      @motion = create_motion(discussion: @discussion)
-      vote1 = Vote.new(position: 'yes')
-      vote1.motion = @motion
-      vote1.user = user1
-      vote1.save
-      vote2 = Vote.new(position: 'no')
-      vote2.motion = @motion
-      vote2.user = user2
-      vote2.save
+      @user1 = create(:user)
+      @user2 = create(:user)
+      @user3 = create(:user)
+      @motion = create(:motion, author: @user1)
+      @motion.group.add_member!(@user2)
+      @motion.group.add_member!(@user3)
+      vote1 = create(:vote, :position => 'yes', :user => @user1, :motion => @motion)
+      vote2 = create(:vote, :position => 'no', :user => @user2, :motion => @motion)
       @updated_at = @motion.updated_at
       @motion.close_voting!
     end
 
     it "stores users who did not vote" do
-      DidNotVote.first.user.should == @user3
-    end
-
-    it "no_vote_count should return number of users who did not vote" do
-      @motion.no_vote_count.should == 1
+      not_voted_ids = DidNotVote.all.collect {|u| u.user.id}
+      not_voted_ids.should include(@user3.id)
     end
 
     it "users_who_did_not_vote should return users who did not vote" do
       @motion.users_who_did_not_vote.should include(@user3)
+    end
+
+    it "users_who_did_not_vote should not return users who did  vote" do
+      @motion.users_who_did_not_vote.should_not include(@user1)
+      @motion.users_who_did_not_vote.should_not include(@user2)
+    end
+
+    it "no_vote_count should return number of users who did not vote" do
+      @motion.no_vote_count.should == @motion.group.users.count - @motion.votes.count
     end
 
     it "reopening motion deletes did_not_vote records" do
@@ -213,16 +198,16 @@ describe Motion do
 
   context "open motion" do
     before :each do
-      @user1 = User.make
+      @user1 = build(:user)
       @user1.save
-      @group = Group.make
+      @group = build(:group)
       @group.save
       @group.add_member! @user1
-      @discussion = create_discussion(group: @group, author: @user1)
-      @motion1 = create_motion(name: "hi",
-                               author: @user1,
-                               discussion: @discussion,
-                               phase: "voting")
+      @discussion = create(:discussion, group: @group, author: @user1)
+      @motion1 = create(:motion, name: "hi",
+                                author: @user1,
+                                discussion: @discussion,
+                                phase: "voting")
       @motion1.author = @user1
       @motion1.save!
     end
@@ -234,7 +219,7 @@ describe Motion do
 
       it "should not change if users vote multiple times" do
         pending "this test is failing for some reason, but the functionality works everywhere else"
-        user2 = User.make
+        user2 = build(:user)
         user2.save
         @group.add_member! user2
         Vote.create!(motion: @motion1, position: "yes", user: @user1)
@@ -253,7 +238,7 @@ describe Motion do
 
   describe "percent_voted" do
     before do
-      @motion = create_motion
+      @motion = create(:motion)
     end
     it "should return the pecentage of users that have voted" do
       @motion.stub(:no_vote_count).and_return(10)
@@ -263,12 +248,12 @@ describe Motion do
   end
 
   context do
-    let(:user1) { User.make! }
-    let(:user2) { User.make! }
+    let(:user1) { create(:user) }
+    let(:user2) { create(:user) }
 
     before do
-      @motion = create_motion(author: user1)
-      @motion1 = create_motion(author: user1)
+      @motion = create(:motion, author: user1)
+      @motion1 = create(:motion, author: user1)
     end
 
     describe "that_user_has_voted_on" do
@@ -286,7 +271,7 @@ describe Motion do
 
   describe "vote!" do
     before do
-      @motion = create_motion
+      @motion = create(:motion)
       @vote = @motion.vote!(@motion.author, 'yes', 'i agree!')
     end
     it "returns a vote object" do

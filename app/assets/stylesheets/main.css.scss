@@ -258,6 +258,14 @@ form {
   text-align: center;
 }
 
+/* Markdown (Global so it's not specific to just Comments etc) */
+code{
+  padding: 1px 4px;
+  overflow: auto;
+  word-break: normal;
+  word-wrap: normal;
+}
+
 /* For modern browsers */
 .cf:before,
 .cf:after {

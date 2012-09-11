@@ -5,8 +5,8 @@ describe "Discussion" do
 
   context "a logged in user" do
     before do
-      @user = User.make!
-      @group = Group.make
+      @user = create(:user)
+      @group = build(:group)
       @group.save
       @group.add_member!(@user)
       page.driver.post user_session_path, 'user[email]' => @user.email,
@@ -47,6 +47,55 @@ describe "Discussion" do
         should have_css(".discussions.show")
         should have_content("Here's a little comment")
       end
+
+      context "the markdown engine" do
+        before :each do
+          visit discussion_path(@discussion)
+        end
+        it "should autolink a link" do
+          fill_in 'new-comment', with: "http://loom.io"
+          click_on 'post-new-comment'
+
+          should have_link('http://loom.io', {:href => 'http://loom.io', :target => '_blank'})
+        end
+        it "shoulc correctly format a complex link" do
+          fill_in 'new-comment', with: "[stuff] (http://loom.io/someone's gross url \"Someone's Gross Url\")"
+          click_on 'post-new-comment'
+
+          should have_link('stuff', {:href => 'http://loom.io/someone\'s%20gross%20url', :target => '_blank'})
+        end
+        it "shoulc not allow user inputted html" do
+          fill_in 'new-comment', with: "<p id='should_not_be_here'>should_be_here</p>"
+          click_on 'post-new-comment'
+
+          should_not have_selector('p#should_not_be_here')
+          should have_content('should_be_here')
+        end
+        it "shoulc underscore with _underscore_italic_ and *bold_italic*" do
+          fill_in 'new-comment', with: "_underscore_italic_ and *star_italic*"
+          click_on 'post-new-comment'
+
+          should have_selector('em', :text => 'underscore_italic')
+          should have_selector('em', :text => 'star_italic')
+        end
+        it "shoulc bold with __underscore_bold__ and **star_bold**" do
+          fill_in 'new-comment', with: "__underscore_bold__ and **star_bold**"
+          click_on 'post-new-comment'
+
+          should have_selector('strong', :text => 'underscore_bold')
+          should have_selector('strong', :text => 'star_bold')
+        end
+        it "shoulc ruby code block with ```ruby code_block ```" do
+          fill_in 'new-comment', with: "```ruby 
+          code_block 
+          ```
+          "
+          click_on 'post-new-comment'
+
+          should have_selector('pre > code.ruby', :text => 'code_block')
+        end
+      end
+
 
       it "can close a proposal (if they have permission)" do
         motion = Motion.new
@@ -90,7 +139,7 @@ describe "Discussion" do
       end
 
       it "cannot see link to delete other people's comments" do
-        @user2 = User.make!
+        @user2 = create(:user)
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
         visit discussion_path(@discussion)
@@ -99,7 +148,7 @@ describe "Discussion" do
       end
 
       it "can 'like' a comment" do
-        @user2 = User.make!
+        @user2 = create(:user)
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
         visit discussion_path(@discussion)
@@ -111,7 +160,7 @@ describe "Discussion" do
       end
 
       it "can 'unlike' a comment" do
-        @user2 = User.make!
+        @user2 = create(:user)
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
         @discussion.comments.first.like(@user)

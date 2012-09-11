@@ -164,6 +164,51 @@ li .motion-preview {
     width: 450px;
   }
 
+  /* Apply word break only to paragraphs in comment-body */
+  .comment-body p{
+    /* The following styles prevent unbroken strings from breaking the layout */
+    word-wrap: break-word;
+  }
+
+  /* Indentation for markdown lists */
+
+  .comment-body ul, .comment-body ol, .comment-body li {
+    margin-left: 10px;
+    font-size: 14px;
+    word-wrap: break-word;
+  }
+  .comment-body ul, .comment-body li{
+    padding: 3px 0px;
+  }
+
+  .comment-body{
+    h1, h2, h3, h4, h5, h6, h7{
+      display: block;
+      padding: 4px 0px;
+    }
+    h1{
+      font-size: 1.4em;
+    }
+    h2{
+      font-size: 1.3em;
+    }
+    h3{
+      font-size: 1.2em;
+    }
+    h4{
+      font-size: 1.1em;
+    }
+  }
+
+  /** Code block padding (Stops avatars destroying indentation) */
+  pre{
+    display: block;
+    margin: 10px 0px;
+    overflow: auto;
+    word-wrap: normal;
+    white-space: pre;
+  }
+
   .comment-avatar {
     position: relative;
     top: 8px;
