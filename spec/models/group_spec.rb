@@ -31,17 +31,17 @@ describe Group do
 
   describe "methods for filtering discussions on weather a user has voted: " do
     before do
-      @user = User.make!
-      @group = Group.make!
-      group1 = Group.make!
+      @user = create(:user)
+      @group = create(:group)
+      group1 = create(:group)
       @group.add_member!(@user)
       group1.add_member!(@user)
-      @discussion1 = create_discussion(group: @group)
-      motion1 = create_motion(discussion: @discussion1, author: @user)
-      @discussion2 = create_discussion(group: @group)
-      motion2 = create_motion(discussion: @discussion2, author: @user)
-      @discussion3 = create_discussion(group: group1, author:@user)
-      motion3 = create_motion(discussion: @discussion3, author: @user)
+      @discussion1 = create :discussion, :group => @group, :author => @user
+      motion1 = create(:motion, discussion: @discussion1, author: @user)
+      @discussion2 = create :discussion, :group => @group, :author => @user
+      motion2 = create(:motion, discussion: @discussion2, author: @user)
+      @discussion3 = create :discussion, :group => group1, :author => @user
+      motion3 = create(:motion, discussion: @discussion3, author: @user)
       vote = Vote.new(position: "yes")
       vote.motion = motion2
       vote.user = @user
@@ -297,9 +297,9 @@ describe Group do
 
   describe "#create_welcome_loomio" do
     before do
-      @loomio_helper_bot = User.make!
+      @loomio_helper_bot = create(:user)
       User.stub(:get_loomio_user).and_return(@loomio_helper_bot)
-      @group = Group.make!
+      @group = create(:group)
       @group.create_welcome_loomio
     end
 
