@@ -1,43 +1,30 @@
 #new-discussion.modal.hidden
   .modal-header
     %button.close{"data-dismiss" => "modal"}×
-    %h2 What topic do you want your group to engage with?
+    %h2 Start new discussion
   = form_for(discussion) do |f|
     .modal-body
       .row
-        .span10
+        .span5
           - if params[:controller] == 'dashboard'
-            .row
-              .span5
-                .control-group
-                  = f.label :group_id, "Group", {class: "control-label", for: "validate-presence"}
-                  .presence-error-message.hidden Please select a group
-                  = f.collection_select :group_id, user_groups, :id, :name, {:prompt => "Select group"}, {:class => 'validate-presence'}
-              .span5
-                .helper-text.align-with-input
-                  %p Select the group you want to engage
+            .control-group
+              = f.label :group_id, "Group", {class: "control-label", for: "validate-presence"}
+              .presence-error-message.hidden Please select a group
+              = f.collection_select :group_id, user_groups, :id, :name, {:prompt => "Who would you like to engage in this discussion?"}, {:class => 'validate-presence'}
           - else
             = f.hidden_field :group_id
-          .row
-            .span5
-              .control-group
-                = f.label :title, "Title", {class: "control-label", for: "validate-presence"}
-                .presence-error-message Please fill in a title
-                = f.text_field :title, class: "validate-presence inputError limit-150"
-                .character-counter
-            .span5
-              .helper-text.align-with-input
-                %p The topic you wish to discuss, e.g. “...”
-          = f.label :description, "Description"
-          .row
-            .span5
-              = f.text_area :description
-            .span5
-              .helper-text
-                %p Give some background, etc...
+          .control-group
+            = f.label :title, "Title", { class: "control-label", for: "validate-presence"}
+            .presence-error-message Please fill in a title
+            = f.text_field :title, :placeholder => "What is the topic you'd like to discuss?", class: "validate-presence inputError limit-150"
+            .character-counter
+          .control-group
+            = f.label :description, "Discussion info", { class: "control-label", for: "validate-presence"}
+            .presence-error-message Please fill in some info on the discussion
+            = f.text_area :description, :placeholder => "Give enough context for your group to have a well-informed discussion", class: "validate-presence"
           = f.check_box :notify_group_upon_creation
           = f.label :notify_group_upon_creation,
             "Send email notification to group members", class: "checkbox-label"
     .modal-footer
-      = f.submit "Start", class: "btn btn-info run-validations"
       = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
+      = f.submit "Start", class: "btn btn-info run-validations"

@@ -99,16 +99,20 @@ body.discussions.show {
   }
 }
 .content-proposal-body {
-  padding: 0px 20px 10px 50px;
+  padding: 10px 20px 10px 50px;
 }
-li .motion { padding: 0 5px 20px 0px; }
-.close-date {
-  font-size: $font-tiny;
-  color: $mid-grey;
+li .motion {
+  padding: 0 5px 0px 0px;
+  .close-date {
+    font-size: $font-tiny;
+    color: $mid-grey;
+  }
 }
-li.preview a {
-  padding: 10px 15px;
-  text-decoration: none;
+li .motion-preview {
+  a {
+    padding: 10px 15px;
+    text-decoration: none;
+  }
 }
 
 /*** comments, positions & proposals in History ***/
@@ -117,12 +121,12 @@ li.preview a {
   border-right: 1px solid $light-grey;
 
   #content-history-body {
-    padding: 0px 20px 10px 8px;
+    padding: 10px 20px 10px 8px;
   }
 
   #new-comment-form {
     margin-bottom: 0px;
-    padding: 10px 0 10px 0;
+    padding: 0 0 10px 0;
     background-color: $comment-color;
   }
 

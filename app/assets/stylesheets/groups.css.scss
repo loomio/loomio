@@ -116,14 +116,6 @@ body.groups.show {
   .btn {
     color: $mid-grey;
   }
-  .btn-panel {
-    width: 150px;
-    text-align: left;
-    line-height: 18px;
-    padding: 7px;
-    a { padding-left: 5px }
-    margin-bottom: 5px;
-  }
   .edit_group .btn {
     float: right;
   }
@@ -188,6 +180,7 @@ body.groups.show {
   }
 }
 #edit-description {
+  color: $mid-grey;
   text-decoration: underline;
 }
 #edit-description:hover {

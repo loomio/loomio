@@ -2,7 +2,7 @@
   - if can? :add_members, group
     .clearfix
       - if group.parent.blank?
-        %a.btn.btn-small.btn-panel#group-add-members{href: "#"}
+        %a.btn.btn-small.btn-icon#group-add-members{href: "#"}
           .small-icon.member-icon
           .btn-text Add new member
         #invite-group-members.hidden
