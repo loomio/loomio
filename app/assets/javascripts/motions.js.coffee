@@ -112,4 +112,12 @@ $ ->
       $('#new_vote').submit()
       event.preventDefault()
   )
+
+# show form for editing outcome
+  $ ->
+    $("#edit-outcome").click((event) ->
+      $("#outcome-input").toggle()
+      $("#outcome-display").toggle()
+      event.preventDefault()
+    )
   
