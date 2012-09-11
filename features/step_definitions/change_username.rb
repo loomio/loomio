@@ -19,7 +19,7 @@ When /^I enter my current username$/ do
 end
 
 Then /^my username stays the same$/ do
-  current_user.name == "new_username"
+  User.where(:name=> "new_username").size ==1
 end
 
 When /^the username is taken$/ do
