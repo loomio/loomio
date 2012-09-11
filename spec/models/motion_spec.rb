@@ -51,8 +51,9 @@ describe Motion do
     end
 
     it "sets the discussion's has_current_motion flag to true" do
-      @user = User.make!
-      @discussion = create_discussion(group: Group.make!)
+      @user = create(:user)
+      group = create(:group)
+      @discussion = create(:discussion, group: group)
       @motion = Motion.new()
       @motion.name = "Test motion"
       @motion.author = @user

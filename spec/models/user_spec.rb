@@ -111,16 +111,16 @@ describe User do
 
   describe "user discussion activity methods: " do
     before do
-      group1 = Group.make!
+      group1 = create(:group)
       group.add_member!(user)
       group1.add_member!(user)
-      discussion1 = create_discussion :author => user, :group => group
-      discussion2 = create_discussion :author => user, :group => group
-      discussion3 = create_discussion :author => user, :group => group1
+      discussion1 = create :discussion, :group => group, :author => user
+      discussion2 = create :discussion, :group => group, :author => user
+      discussion3 = create :discussion, :group => group1, :author => user
       discussion1.add_comment user, "hi"
       discussion1.add_comment user, "bye"
       discussion2.add_comment user, "bye"
-      motion = create_motion(discussion: discussion2)
+      motion = create(:motion, discussion: discussion2)
       vote = user.votes.new(:position => "yes")
       vote.motion = motion
       vote.save
@@ -140,10 +140,10 @@ describe User do
   describe "methods for filtering discussions on weather a user has voted" do
     before do
       group.add_member!(user)
-      @discussion1 = create_discussion(group: group)
-      motion1 = create_motion(discussion: @discussion1, author: user)
-      @discussion2 = create_discussion(group: group)
-      motion2 = create_motion(discussion: @discussion2, author: user)
+      @discussion1 = create :discussion, :group => group
+      motion1 = create(:motion, discussion: @discussion1, author: user)
+      @discussion2 = create :discussion, :group => group
+      motion2 = create(:motion, discussion: @discussion2, author: user)
       vote = Vote.new(position: "yes")
       vote.motion = motion2
       vote.user = user
