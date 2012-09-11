@@ -48,24 +48,15 @@ class Vote < ActiveRecord::Base
   end
 
   def self.unique_votes(motion)
-    Vote.find_by_sql("SELECT  *
-,   Case    a.position
+    Vote.find_by_sql(
+      "SELECT * FROM votes a WHERE created_at = (SELECT  MAX(created_at) as  created_at FROM votes b WHERE a.user_id = b.user_id AND motion_id = #{motion.id})
+      ORDER   BY  Case    a.position
         When    'block'     Then    0
         When    'no'        Then    1
         When    'abstain'   Then    2
         When    'yes'       Then    3
         Else    -1
-    End                     As  Position_Value
-    FROM    votes   a
-    WHERE   created_at =    (
-        SELECT  MAX(created_at) as  created_at
-            FROM    votes   b
-            WHERE   a.user_id   =   b.user_id
-            AND motion_id   =   #{motion.id}
-    )
-    ORDER   BY  Position_Value
-
-")
+      End")
   end
 
   def position_to_s
