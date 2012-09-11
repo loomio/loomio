@@ -21,4 +21,3 @@ When I am on the settings page
 And I enter my desired username
 And the username is taken
 Then my username is not changed
-

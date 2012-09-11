@@ -1,27 +1,19 @@
 When /^I click create proposal$/ do
-  pending # express the regexp above with the code you wish you had
+  click_link 'Create new proposal'
 end
 
 When /^fill in the proposal details$/ do
-  pending # express the regexp above with the code you wish you had
+  fill_in 'motion-name', with: "Best Proposal"
+  fill_in 'motion_description', with: "This is the description of the best proposal ever"
 end
 
 Then /^a new proposal is created$/ do
-  pending # express the regexp above with the code you wish you had
+  Discussion.where(:name =>"Best Proposal")
 end
 
-Given /^group admin$/ do
-  pending # express the regexp above with the code you wish you had
-end
 
 When /^I am on a group page$/ do
-
-  pending # express the regexp above with the code you wish you had
+  group = Group.all.first
+  visit "/groups/" + group.id.to_s 
 end
-
-Given /^on group page$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-
 

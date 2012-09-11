@@ -20,7 +20,7 @@ Given /^I am logged in$/ do
 end
 
 Given /^I am not a registered User$/ do
-  User.where(:email=>"fake@email.com").size ==0
+  User.where(:email=>"fake@email.com").size == 0
 end
 
 When /^I enter my incorrect login details$/ do
@@ -51,4 +51,3 @@ When /^I enter my password incorrectly$/ do
   fill_in 'user_password', with: "wrong_password"
   click_on "Sign in"
 end
-
