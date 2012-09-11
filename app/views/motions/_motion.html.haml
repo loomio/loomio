@@ -4,24 +4,22 @@
     - if motion.closed?
       %span.label.label-important Closed
   .closing-info
-    - if motion.has_closing_date?
-      No close date
-    - else
+    - if motion.has_close_date?
       - if motion.voting?
         = "Closing in #{time_ago_in_words(motion.close_date)}"
       - else
         %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
+    - else
+      No close date
   .proposed-by
     = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
-    - if motion.updated_at != motion.created_at
-      = "(edited: #{time_ago_in_words(motion.updated_at)} ago)"
   .description
     - too_long = true if motion.description && motion.description.length > 200
     .short-description
-      .word-break= simple_format h(truncate(motion.description, length: 200, omission: '...', separator: ' '))
+      ~ markdown(truncate(motion.description, length: 200, omission: '...', separator: ' '))
       = link_to "Show More >>", "#", title: "see the full description", class: 'see-more' if too_long
     .long-description{style: "display: none"}
-      .word-break= simple_format h(motion.description)
+      ~ markdown(motion.description)
       = link_to "Show Less", "#", title: "see the full description", class: 'see-more' if too_long
   #graph.pie
   .percentage-to-vote
@@ -35,7 +33,7 @@
         =link_to image_tag("hand-yes.png", title:"I agree", alt:"I agree"), "#", "title" => "I agree",
           "data-content" => "I agree with this and want it to go ahead.",
           "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-yes",
-          onclick: "$('#vote_position').val('yes'); $('#position-title').text('You have decided to agree');" 
+          onclick: "$('#vote_position').val('yes'); $('#position-title').text('You have decided to agree');"
         =link_to image_tag("hand-abstain.png", title:"I abstain", alt:"I abstain"), "#", "title" => "I abstain",
           "data-content" =>  "I am happy with what the group decides without me.",
           "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-abstain",
@@ -75,6 +73,7 @@
         data: #{@votes_for_graph.to_json.html_safe}
         type: 'pie'
         tooltip_selector: '#tooltip'
-
-      @linkify = new Loomio.Views.Utils.Linkify
-        el: $('#motion-title h2, .motion .description, .votes')
+        diameter: 200
+        padding: 0
+        gap: 5
+        shadow: 2

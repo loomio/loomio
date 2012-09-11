@@ -25,7 +25,7 @@ gem 'paperclip'
 gem 'kaminari'
 gem 'activeadmin'
 gem 'nokogiri'
-
+gem 'redcarpet', :git => 'https://github.com/vmg/redcarpet.git'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
@@ -45,7 +45,7 @@ end
 
 group :development, :test do
   gem 'debugger'
-  gem 'machinist', '>= 2.0.0.beta2'
+  gem "factory_girl_rails", "~> 4.0"
   gem 'faker'
   gem 'rspec-rails'
   gem 'shoulda-matchers'

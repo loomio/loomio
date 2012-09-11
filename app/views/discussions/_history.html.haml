@@ -5,16 +5,16 @@
   - else
     - history.each do |message|
       - if message.is_a?(Comment)
-        %li.history-item= render message
+        %li.history-item~ render message
       - if message.is_a?(Vote)
         %li.history-item
           .comment.position
             .position-icon
               = render partial: "motions/display_icons", locals: { position: message.position }
             %span.comment-username= link_to(message.user_name, "#")
-            %span.comment-label= message.position_to_s + " the proposal. " + ( message.previous_vote != nil ? " (Previously: " + message.previous_vote.position_to_s + " the proposal.)" : "" )
+            %span.comment-label= render_position_message message
             - if message.statement.present?
-              %span.position-message.word-break= " - '#{message.statement}'"
+              %span.position-message.word-break= "\"#{message.statement}\""
             .comment-time
               = time_ago_in_words(message.created_at) + " ago"
       - if message.is_a?(Motion)
@@ -24,11 +24,7 @@
           %div{class: classes}
             .proposal-icon
             %span.comment-username= link_to(message.author_name, "#")
-            %span.comment-label created a proposal -
-            %span.proposal-text.word-break= " '#{message.name}'"
+            %span.comment-label created a proposal:
+            %span.proposal-text.word-break= " \"#{message.name}\""
             .comment-time
               = time_ago_in_words(message.created_at) + " ago"
-  :coffeescript
-    $ ->
-      @linkify = new Loomio.Views.Utils.Linkify
-        el: $(".comment-body, .proposal-text, .position-message")

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120808042420) do
+ActiveRecord::Schema.define(:version => 20120905023144) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -97,9 +97,11 @@ ActiveRecord::Schema.define(:version => 20120808042420) do
     t.datetime "updated_at"
     t.integer  "eventable_id"
     t.string   "eventable_type"
+    t.integer  "user_id"
   end
 
   add_index "events", ["eventable_id"], :name => "index_events_on_eventable_id"
+  add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -132,17 +134,25 @@ ActiveRecord::Schema.define(:version => 20120808042420) do
   add_index "memberships", ["inviter_id"], :name => "index_memberships_on_inviter_id"
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
+  create_table "motion_read_logs", :force => true do |t|
+    t.integer  "motion_activity_when_last_read"
+    t.integer  "motion_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "motions", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "author_id"
-    t.integer  "facilitator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "phase",          :default => "voting", :null => false
     t.string   "discussion_url", :default => "",       :null => false
     t.datetime "close_date"
     t.integer  "discussion_id"
+    t.integer  "activity",       :default => 0
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"

@@ -1,6 +1,4 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+DAY = 1000 * 60 * 60 * 24
 
 $ ->
   if $("#motion-form").length > 0
@@ -19,6 +17,7 @@ $ ->
       $("#input_date").datepicker("setDate", datetime)
       $("#date_hour").val(hours)
       $("#motion_close_date").val(datetime)
+      set_close_date()
     else
       #** Edit Motion **
       date = Application.timestampToDateObject($("#motion_close_date").val())
@@ -30,6 +29,7 @@ $ ->
       $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
       $("#input_date").datepicker("setDate", date_string)
       $("#date_hour").val(hour)
+      set_close_date()
 
 
 # Reload hidden close_date field
@@ -47,54 +47,31 @@ set_close_date = ->
   remove_date_error()
   date = $("#input_date").val()
   local_datetime = new Date()
+  current_datetime = new Date()
   local_datetime.setYear(parseInt(date.substring(6,10), 10))
   month = date.substring(3,5)
   day = date.substring(0,2)
   local_datetime.setMonth(parseInt(month, 10) - 1, parseInt(day, 10))
   local_datetime.setHours(parseInt($("#date_hour").val(), 10))
   $("#motion_close_date").val(local_datetime)
+  if (local_datetime >= current_datetime)
+    $(".date-description").text("Closing date (" + days_between(local_datetime, current_datetime) + "):")
+  else 
+    $(".date-description").text("Closing date:")
 
 remove_date_error = ->
   $(".validate-motion-close-date").parent().removeClass("error")
   $(".date-error-message").hide()
 
+days_between = (local, current) ->
+  days_passed = Math.round((local.getTime() - current.getTime()) / DAY)
+  if (days_passed == 0)
+    return "today"
+  if (days_passed == 1)
+    return days_passed + " day from now"
+  return days_passed + " days from now"
 
-# character count for statement on discussion:show page
-pluralize_characters = (num) ->
-  if(num == 1)
-    return num + " character"
-  else
-    return num + " characters"
-
-# display charcaters left
-display_count = (num, object) ->
-  if(num >= 0)
-    $(".character-counter").text(pluralize_characters(num) + " left")
-    object.parent().removeClass("error")
-  else
-    num = num * (-1)
-    $(".character-counter").text(pluralize_characters(num) + " too long")
-    object.parent().addClass("error")
-
-# character count for 250 characters max
-$ ->
-  $(".limit-250").keyup(() ->
-    $(".error-message").hide()
-    chars = $(".limit-250").val().length
-    left = 250 - chars
-    display_count(left, $(".limit-250"))
-  )
-
- #character count for 150 characters max
-$ ->
-  $(".limit-150").keyup(() ->
-    $(".error-message").hide()
-    chars = $(".limit-150").val().length
-    left = 150 - chars
-    display_count(left, $(".limit-150"))
-  )
-
-  # adds bootstrap popovers to vote buttons
+# adds bootstrap popovers to vote buttons
 $ ->
   $(".position").popover
     placement: "top"
@@ -135,3 +112,4 @@ $ ->
       $('#new_vote').submit()
       event.preventDefault()
   )
+  

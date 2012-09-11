@@ -129,10 +129,16 @@ body.landing {
         color:#404040;
     }
 		#sign-in-form{
-			margin: 20px 0px 40px;
+			margin: 20px 0px 10px;
 		}
+    .forgot-password {
+      margin-bottom: 10px;
+    }
+    .sign-in-button {
+      margin-top: 5px;
+    }
     form {
-      input {
+      input[type="text"], input[type="password"] {
         width: 290px;
         margin-bottom: 10px;
       }
@@ -147,10 +153,6 @@ body.landing {
         float: none;
         margin-bottom: 5px;
       }
-      .sign-in-button {
-				margin-top: 15px;
-				float: right;
-			}
 			#user_remember_me{
 				margin:0px;
 			}
