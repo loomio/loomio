@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.5'
+gem 'rails', '3.2.6'
 gem "haml-rails"
 gem 'devise', '~> 2.0.0'
 gem 'devise_invitable', '~> 1.0.0'
@@ -31,14 +31,14 @@ gem 'redcarpet', :git => 'https://github.com/vmg/redcarpet.git'
 #       which does not allow us to do this
 #
 #       https://github.com/rails/sass-rails/issues/38#issuecomment-2046678
-gem 'sass-rails',   '~> 3.1.4'
+gem 'sass-rails',   '~> 3.2.5'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'twitter-bootstrap-rails'
   gem 'bootstrap-sass', '~>2.0.3'
-  gem 'coffee-rails', '~> 3.1.1'
+  gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.0.3'
   gem 'modernizr-rails', '~> 2.0.6'
 end
