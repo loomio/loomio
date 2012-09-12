@@ -26,10 +26,18 @@
   - elsif notification.event_kind == "motion_closed"
     - motion = notification.motion
     - user = notification.event.user
-    - action_text = "closed the proposal"
-    - title_text = motion.name
-    - group_name = motion.group_full_name
-    - href = discussion_path(motion.discussion)
+    - if user.nil? 
+      - user = motion.author
+      - action_text = "your proposal"
+      - title_text = motion.name
+      - action_text_after = "has closed. Please specify an outcome."
+      - group_name = motion.group_full_name
+      - href = discussion_url(motion.discussion, proposal: motion)
+    - else
+      - action_text = "closed the proposal"
+      - title_text = motion.name
+      - group_name = motion.group_full_name
+      - href = discussion_path(motion.discussion)
 
   - elsif notification.event_kind == "new_vote"
     - vote = notification.vote
@@ -90,6 +98,8 @@
           = " #{action_text} "
           - if title_text
             %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
+          - if action_text_after
+            = " #{action_text_after}"
           %span.notification-item-footer
             = "#{date} ago · #{group_name}"
   %li.divider
