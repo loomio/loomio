@@ -1,5 +1,6 @@
 When /^I complete an invitation$/ do
   fill_in 'user_email', with: 'new_group_member@example.com'
+  click_on 'invite'
 end
 
 When /^no such member already exists$/ do
