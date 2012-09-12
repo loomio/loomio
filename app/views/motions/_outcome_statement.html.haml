@@ -1,0 +1,28 @@
+#outcome-statement
+  - if current_user == motion.author || current_user.is_group_admin?(this_group) 
+    - if edit_outcome || motion.outcome.blank?
+      #outcome-input
+        = form_for motion, :url => edit_outcome_motion_path do |f|
+          .control-group
+            = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', placeholder: "What was the outcome of this proposal?"
+          .character-counter
+          .save-button.clearfix
+            = f.submit "Save", class: 'btn btn-small run-validations', id: 'add-outcome-submit'
+    - else
+      #outcome-input.hidden
+        = form_for motion :url => edit_outcome_motion_path do |f|
+          = f.hidden_field :id
+          .control-group
+            = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', placeholder: "What was the outcome of this proposal?"
+          .character-counter
+          .save-button.clearfix
+            = f.submit "Save", class: 'btn btn-small run-validations', id: 'add-outcome-submit'
+  #outcome-display
+    .statement-display
+      .outcome-label Outcome
+      - if current_user == motion.author || current_user.is_group_admin?(this_group) 
+        = link_to "Edit", "#", class: 'outcome-edit-button', id: 'edit-outcome'
+      - if motion.outcome.blank?
+        %p.no-outcome= "No outcome has been specified for this proposal"
+      - else
+        %p= motion.outcome

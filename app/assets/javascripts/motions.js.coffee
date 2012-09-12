@@ -122,9 +122,13 @@ $ ->
   )
 
 $ ->
-  if $("#outcome-input").hasClass("hidden")
-    $("#outcome-display").removeClass("hidden")
-  else
-    $("#outcome-display").addClass("hidden")
+  if $("#outcome-input").length > 0
+    if $("#outcome-input").hasClass("hidden")
+      $("#outcome-display").removeClass("hidden")
+    else
+      $("#outcome-display").addClass("hidden")
+  else 
+      $("#outcome-display").removeClass("hidden")
+
     
   
