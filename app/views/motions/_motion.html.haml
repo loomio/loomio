@@ -16,7 +16,7 @@
       #outcome-input.hidden
         - if current_user == motion.author || current_user.is_group_admin?(this_group) 
           - if edit_outcome || motion.outcome.blank?
-            = form_for motion do |f|
+            = form_for motion, :url => edit_outcome_motion_path do |f|
               = f.hidden_field :id
               .control-group
                 = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', placeholder: "What was the outcome of this proposal?"
