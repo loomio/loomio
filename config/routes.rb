@@ -46,6 +46,8 @@ Loomio::Application.routes.draw do
   resources :users do
     post :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
+    post :set_receive_emails, on: :member
+    post :set_noise, on: :member
   end
   match "/users/dismiss_system_notice", :to => "users#dismiss_system_notice",
         :as => :dismiss_system_notice_for_user, :via => :post

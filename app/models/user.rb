@@ -81,8 +81,10 @@ class User < ActiveRecord::Base
            :class_name => 'Vote',
            :source => :votes,
            :through => :motions_in_voting_phase
-
+           
+  has_many :subscriptions
   has_many :notifications
+
 
   has_many :discussion_read_logs,
            :dependent => :destroy
@@ -92,7 +94,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
-                  :uploaded_avatar
+                  :uploaded_avatar, :receive_emails
 
   after_create :ensure_name_entry
   before_save :set_avatar_initials
@@ -263,6 +265,10 @@ class User < ActiveRecord::Base
     super && !deleted_at
   end
 
+  def send_email?(context= 'group')
+    return self.receive_emails
+  end
+
   def activity_total
     total = 0;
     groups.each do |group|
@@ -278,6 +284,19 @@ class User < ActiveRecord::Base
     end
     total
   end
+
+  def get_group_sub_level(group_id)
+    mship = memberships.find_by_user_id_and_group_id(self, group_id)
+    mship.sub_level
+  end
+
+  def group_sub_level(group_id, sub_level)
+    @group = Group.find(group_id)
+    membership = memberships.find_by_user_id_and_group_id(self, @group)
+    membership.sub_level = sub_level
+    membership.save!
+  end
+
 
   def gravatar?(email, options = {})
     hash = Digest::MD5.hexdigest(email.to_s.downcase)

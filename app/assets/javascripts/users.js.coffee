@@ -12,3 +12,5 @@ $ ->
     $("#uploaded-avatar").click()
     event.preventDefault()
   )
+
+

@@ -3,6 +3,7 @@ require "spec_helper"
 describe DiscussionMailer do
   let(:discussion) { create(:discussion) }
   let(:group) { discussion.group }
+  let(:user) { create(:user) }
 
   context 'sending individual email upon new discussion creation' do
     before(:all) do
@@ -28,6 +29,19 @@ describe DiscussionMailer do
     it 'assigns reply to' do
       @email.reply_to.should == [discussion.author_email]
     end
+  end
+
+  context "notifications disabled" do
+    it "sends message to each group user less one" do
+      user.receive_emails = false
+      group.add_member! user
+
+      #feel like there could be a more elegant way to test this? - PS
+      DiscussionMailer.should_receive(:new_discussion_created).
+        exactly(group.users.count - 2).times.and_return(stub(deliver: true))
+      DiscussionMailer.spam_new_discussion_created(discussion)
+    end
+
   end
 
   context "sending all emails upon new discussion creation" do

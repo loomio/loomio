@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905023144) do
+ActiveRecord::Schema.define(:version => 20120915222554) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20120905023144) do
     t.string   "title"
     t.integer  "activity",        :default => 0, :null => false
     t.datetime "last_comment_at"
+    t.text     "description"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -98,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20120905023144) do
     t.integer  "eventable_id"
     t.string   "eventable_type"
     t.integer  "user_id"
+    t.integer  "event_level",    :default => 1, :null => false
   end
 
   add_index "events", ["eventable_id"], :name => "index_events_on_eventable_id"
@@ -115,8 +117,8 @@ ActiveRecord::Schema.define(:version => 20120905023144) do
     t.boolean  "beta_features",        :default => false
     t.string   "description"
     t.integer  "creator_id",                              :null => false
-    t.integer  "memberships_count",    :default => 0,     :null => false
     t.datetime "archived_at"
+    t.integer  "memberships_count",    :default => 0,     :null => false
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -128,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20120905023144) do
     t.datetime "updated_at"
     t.string   "access_level"
     t.integer  "inviter_id"
+    t.integer  "sub_level",    :default => 1, :null => false
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
@@ -203,6 +206,7 @@ ActiveRecord::Schema.define(:version => 20120905023144) do
     t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
     t.boolean  "has_read_group_notice",                      :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
+    t.boolean  "receive_emails",                             :default => true,  :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -14,7 +14,7 @@ class DiscussionMailer < ActionMailer::Base
   def spam_new_discussion_created(discussion)
     group = discussion.group
     group.users.each do |group_user|
-      unless group_user == discussion.author
+      unless group_user == discussion.author || !group_user.send_email?
         DiscussionMailer.new_discussion_created(discussion, group_user).deliver
       end
     end

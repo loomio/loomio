@@ -64,7 +64,7 @@ class GroupsController < GroupBaseController
       if key =~ /user_/
         user = User.find(key[5..-1])
         membership = group.add_member!(user, current_user)
-        Event.user_added_to_group!(membership)
+        Event.user_added_to_group!(membership, membership.group)
       end
     end
     flash[:success] = "Members added to group."
@@ -92,7 +92,7 @@ class GroupsController < GroupBaseController
     @motion.author = current_user
     if @motion.save
       flash[:success] = "Proposal has been created."
-      Event.new_motion!(@motion)
+      Event.new_motion!(@motion, @group)
       redirect_to @discussion
     else
       flash[:error] = "Proposal could not be created."

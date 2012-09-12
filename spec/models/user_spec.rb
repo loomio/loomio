@@ -49,6 +49,24 @@ describe User do
     user.group_requests.should include(group)
   end
 
+  describe 'customized notifications' do
+    before do
+
+    end
+
+    it 'will enable emails' do
+      user.receive_emails = true
+      user.send_email?.should be_true
+    end
+
+    it 'will turn all emails off' do
+      user.receive_emails = false
+      user.send_email?.should be_false
+    end
+    
+
+  end
+
   describe "open_votes" do
     before do
       @motion = create(:motion)

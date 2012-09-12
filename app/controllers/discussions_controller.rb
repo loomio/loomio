@@ -67,8 +67,9 @@ class DiscussionsController < GroupBaseController
 
   def add_comment
     comment = resource.add_comment(current_user, params[:comment])
+    @group = GroupDecorator.new(@discussion.group)
     if comment.valid?
-      Event.new_comment!(comment)
+      Event.new_comment!(comment, @group)
     else
       flash[:error] = "Comment could not be created."
     end
