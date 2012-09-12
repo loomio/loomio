@@ -114,10 +114,17 @@ $ ->
   )
 
 # show form for editing outcome
-  $ ->
-    $("#edit-outcome").click((event) ->
-      $("#outcome-input").toggle()
-      $("#outcome-display").toggle()
-      event.preventDefault()
-    )
+$ ->
+  $("#edit-outcome").click((event) ->
+    $("#outcome-input").toggle()
+    $("#outcome-display").toggle()
+    event.preventDefault()
+  )
+
+$ ->
+  if $("#outcome-input").hasClass("hidden")
+    $("#outcome-display").removeClass("hidden")
+  else
+    $("#outcome-display").addClass("hidden")
+    
   
