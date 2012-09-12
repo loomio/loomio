@@ -72,7 +72,7 @@ class MotionsController < GroupBaseController
     motion = Motion.find(params[:motion][:id])
     motion.outcome = params[:motion][:outcome]
     motion.save!
-    redirect_to discussion_url(motion.discussion)
+    redirect_to discussion_url(motion.discussion, proposal: motion)
   end
 
   private
