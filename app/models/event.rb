@@ -44,10 +44,12 @@ class Event < ActiveRecord::Base
   def self.motion_closed!(motion, closer)
     event = create!(:kind => "motion_closed", :eventable => motion, :user => closer)
     motion.group_users.each do |user|
-      unless user == closer
+      unless user == motion.author
         event.notifications.create! :user => user
       end
     end
+    event.user = nil 
+    event.notifications.create! :user => motion.author
   end
 
   def self.new_vote!(vote)

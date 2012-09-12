@@ -29,7 +29,7 @@ class Motion < ActiveRecord::Base
   attr_accessor :enable_discussion
 
   attr_accessible :name, :description, :discussion_url, :enable_discussion
-  attr_accessible :close_date, :phase, :discussion_id
+  attr_accessible :close_date, :phase, :discussion_id, :outcome
 
   include AASM
   aasm :column => :phase do
@@ -189,6 +189,14 @@ class Motion < ActiveRecord::Base
     save
   end
 
+  def set_outcome(str)
+    if closed? 
+      outcome = str
+      save
+    end
+    puts(outcome)
+  end
+
   private
 
     def before_open
@@ -236,6 +244,10 @@ class Motion < ActiveRecord::Base
           end
         end
       end
+    end
+
+    def email_motion_closed
+      MotionMailer.motion_closed(self, author.email).deliver
     end
 
     def format_discussion_url
