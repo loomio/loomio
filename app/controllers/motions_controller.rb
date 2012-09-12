@@ -68,10 +68,8 @@ class MotionsController < GroupBaseController
   end
 
   def edit_outcome
-    raise
-      params.inspect
-    @motion = Motion.find(params[:id]) 
-    @motion.outcome = params[:outcome]
+    resource
+    @motion.outcome = params[:motion][:outcome]
     @motion.save!
     redirect_to discussion_url(@motion.discussion)
   end
