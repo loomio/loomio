@@ -64,6 +64,9 @@
     font-size: $font-medium;
     color: $dark-grey;
   }
+  .proposal-outcome {
+    font-size: $font-small;
+  }
   .proposal-close-date {
     font-size: $font-small;
     display: inline;
@@ -145,6 +148,15 @@
       padding: 5px;
       background-color: $lighter-grey;
       font-size: 1em;
+    }
+    .button_to { margin: 0px; }
+    .outcome-edit-button {
+      margin: 0px;
+      float: right;
+      display: inline;
+      position: relative;
+      top: 0px;
+      right: 0px; 
     }
     .outcome-label {
       font-size: 1em;
