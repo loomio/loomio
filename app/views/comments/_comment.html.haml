@@ -9,7 +9,7 @@
           = comment.user.avatar_initials
   .comment-container.with-avatar
     %span.comment-username= link_to(comment.user_name, "#")
-    %span.comment-body.word-break= comment.body
+    %span.comment-body~ markdown(comment.body)
     .comment-time
       = time_ago_in_words(comment.created_at) + " ago"
       - if can? :like, comment
