@@ -3,10 +3,14 @@ When /^I complete an invitation$/ do
   click_on 'invite'
 end
 
-When /^no such member already exists$/ do
-  User.where(:email => 'new_group_member@example.com') == 0
-end
-
 Then /^a member is added to the group$/ do
   Membership.where(:group_id => Group.last.id, :user_id => User.last.id).size > 0
+end
+
+Given /^there exists a user to add to the group$/ do
+  User.create(:email => "new_group_member@example.com", :password =>"password", :name => "New Member")
+end
+
+When /^no such user is already in the group$/ do
+  Membership.where(:group_id => Group.last.id, :user_id => User.last.id).size == 0
 end
