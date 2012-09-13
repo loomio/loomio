@@ -113,7 +113,7 @@ class GroupsController < GroupBaseController
   def edit_description
     @group = Group.find(params[:id])
     @group.description = params[:description]
-    @group.save
+    @group.save!
   end
 
   private
