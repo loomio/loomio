@@ -1,3 +1,7 @@
+canvasSupported = !!window.HTMLCanvasElement
+html5 = exports ? this
+html5.supported = true if canvasSupported
+
 $ ->
   # Only execute on group page
   if $("body.groups").length > 0
@@ -88,6 +92,29 @@ $ ->
         e.preventDefault()
     )
 # discussions
+
+getNextURL = (button_url) -> 
+  console.log("0" + button_url)
+  current = document.URL
+  lastBackslash = current.lastIndexOf("/")
+  
+  #checks if main url has backslash in the way
+  if lastBackslash == current.length-1
+    current = current.substr(0, lastBackslash)
+    
+  #if current is already on a page number remove current page number
+  if current.lastIndexOf("?") > -1
+    newURL = current.split("?")[0]
+    console.log("1" + newURL)
+
+  if button_url.lastIndexOf("?") > -1
+  	console.log("2" + button_url)
+  	page_number = button_url.split("?")
+  	newURL = current + "?" + page_number[1]
+    
+  console.log("3 changing:" + button_url + " to:" + newURL)
+  newURL
+
 $ ->
   if $("body.groups.show").length > 0
     idStr = new Array
@@ -98,15 +125,21 @@ $ ->
       $("#discussions-loading").hide()
     )
 $ ->
-  if $("body.groups.show").length > 0
-    $(document).on('click', '#group-discussions .pagination a', (e)->
-      unless $(this).parent().hasClass("gap")
-        $("#discussion-list").hide()
-        $("#discussions-loading").show()
-        $('#group-discussions').load($(this).attr('href'), ->
-          Application.convertUtcToRelativeTime()
-          $("#discussion-list").show()
-          $("#discussions-loading").hide()
-        )
-        e.preventDefault()
-    )
+  if html5.supported
+    console.log("html5 supported")
+    if $("body.groups.show").length > 0
+      $(document).on('click', '#group-discussions .pagination a', (e)->
+        unless $(this).parent().hasClass("gap")
+          window.history.pushState("stateObj", "title_ignored", getNextURL($(this).attr("href")))
+          $("#discussion-list").hide()
+          $("#discussions-loading").show()
+          $('#group-discussions').load($(this).attr('href'), ->
+            Application.convertUtcToRelativeTime()
+            $("#discussion-list").show()
+            $("#discussions-loading").hide()
+          )
+          e.preventDefault()
+      )
+  else
+    console.log("no html5 sorry")
+    #switch embedded url with groups url and do NOT prevent default action in cs
