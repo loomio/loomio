@@ -8,7 +8,7 @@
 
 - if @groups.present?
   %header
-    -#=render '/application/loomio-process-flow'
+    -#=render '/application/loomio_process_flow'
     =render '/groups/title', group: nil
     =render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
       :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-topic'}
