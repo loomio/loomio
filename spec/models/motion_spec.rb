@@ -187,6 +187,18 @@ describe Motion do
       @motion.save
       @motion.outcome.should == outcome
     end
+    
+    it "sends a set outcome email notification to the motion author only" do
+      group = build(:group)
+      group.add_member!(create(:user))
+      group.add_member!(create(:user))
+      MotionMailer.should_receive(:motion_closed)
+        .exactly(1).times
+        .with(kind_of(Motion), kind_of("")).and_return(stub(deliver: true))
+      @discussion = create(:discussion, group: group)
+      @motion = create(:motion, discussion: @discussion)
+      @motion.close_voting!
+    end
   end
 
   context "open motion" do
