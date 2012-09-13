@@ -40,7 +40,7 @@ class Motion < ActiveRecord::Base
       transitions :to => :voting, :from => [:closed]
     end
 
-    event :close_voting, before: :before_close do
+    event :close_voting, before: :before_close, after: :after_close do
       transitions :to => :closed, :from => [:voting]
     end
   end
@@ -211,6 +211,10 @@ class Motion < ActiveRecord::Base
       self.close_date = Time.now
     end
 
+    def after_close
+      email_motion_closed
+    end
+
     def store_users_that_didnt_vote
       did_not_votes.each do |did_not_vote|
         did_not_vote.delete
@@ -247,7 +251,7 @@ class Motion < ActiveRecord::Base
     end
 
     def email_motion_closed
-      MotionMailer.motion_closed(self, author.email).deliver
+      MotionMailer.motion_closed(self, author_email).deliver
     end
 
     def format_discussion_url
