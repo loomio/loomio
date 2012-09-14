@@ -93,7 +93,7 @@ describe GroupsController do
       response.should redirect_to(group_url(assigns(:group)))
     end
 
-    describe "edit description" do
+    describe "#edit description" do
       before do
         controller.stub(:authorize!).and_return(true)
         controller.stub(:can?).with(:edit_description, group).and_return(true)
