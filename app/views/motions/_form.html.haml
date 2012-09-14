@@ -30,7 +30,7 @@
                 %p If someone says no on a proposal that you support, pay attention to their concerns, and see if you can help address them by posting in the discussion (or contacting them by other means).
                 %p Loomio makes it easy for people to change their mind so groups can come to a shared understanding through discussion. Loomio also makes it easy to start a new proposal in light of new information or to address concerns that have been raised.
         =f.submit submit_text, class: "btn submit btn-info run-validations",
-          :disable_with => disable_with
+          :data => { :disable_with => "Creating proposal" }
         =f.hidden_field :close_date, as: :hidden
         =f.hidden_field :phase, as: :hidden, value: "voting"
         =f.hidden_field :facilitator_id, as: :hidden, value: current_user.id

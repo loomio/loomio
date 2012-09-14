@@ -1,4 +1,4 @@
 - set_title @group.name, "Edit Group"
 = render '/groups/title', group: @group
 = render 'form', group: @group, parent: @parent,
-  submit_text: "Update group", disable_with: "Updating group"
+  submit_text: "Update group", :data => { :disable_with => "Updating group" }
