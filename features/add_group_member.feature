@@ -1,6 +1,6 @@
 Feature: Add member to group
-To allow multiple pleople to make decisions as a collective
-Users must be able to be added to groups
+To allow multiple people to make decisions as a collective
+Users must be able to add other users to groups
 
 Scenario: Add group member
 Given I am logged in
