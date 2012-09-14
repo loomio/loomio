@@ -16,7 +16,7 @@
         - else
           =link_to "Make admin", make_admin_membership_path(membership), method: :post
         =link_to "×", membership, method: :delete, class: 'close',
-        confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
+        :data => { :confirm => "Are you sure you wish to remove #{membership.user_email} from the group?" }
       - else 
         - if member.is_group_admin?(group)
           = "Group Admin"
