@@ -10,7 +10,7 @@ class AddHasCurrentMotionToDiscussion < ActiveRecord::Migration
     end
   end
 
-  def change
+  def up
     add_column :discussions, :has_current_motion, :boolean, :default => false
 
     Discussion.reset_column_information
@@ -20,5 +20,9 @@ class AddHasCurrentMotionToDiscussion < ActiveRecord::Migration
         discussion.save!
       end
     end
+  end
+
+  def down
+    remove_column :discussions, :has_current_motion
   end
 end
