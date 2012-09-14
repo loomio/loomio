@@ -109,7 +109,7 @@ describe User do
     end
   end
 
-  describe "user discussion activity methods: " do
+  context do
     before do
       group1 = create(:group)
       group.add_member!(user)
@@ -137,7 +137,7 @@ describe User do
     end
   end
 
-  describe "methods for filtering discussions on weather a user has voted" do
+  context do
     before do
       group.add_member!(user)
       @discussion1 = create :discussion, :group => group

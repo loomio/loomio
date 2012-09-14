@@ -29,7 +29,7 @@ describe Group do
     end
   end
 
-  describe "methods for filtering discussions on weather a user has voted: " do
+  context do
     before do
       @user = create(:user)
       @group = create(:group)
