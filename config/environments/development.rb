@@ -32,4 +32,7 @@ Loomio::Application.configure do
   config.action_mailer.file_settings = {
     :location => Rails.root.join('tmp/mail')
   }
+
+  config.middleware.use Rails::Rack::LogTailer
+
 end
