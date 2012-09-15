@@ -19,6 +19,11 @@ You can install [ImageMagick](http://www.imagemagick.org/script/binary-releases.
 ```
   $ sudo apt-get install imagemagick libmagick9-dev
 ```
+#### Ubuntu 12.04
+
+```
+  $ sudo apt-get install libmagickwand-dev
+```
 
 ### Set up the database
 
