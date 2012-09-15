@@ -62,7 +62,7 @@
           .character-counter
           =f.hidden_field :position
         .modal-footer
-          = submit_tag "Confirm position", class: "vote btn btn-info", :disable_with => "Confirming position"
+          = submit_tag "Confirm position", class: "vote btn btn-info", :data => { :disable_with => "Confirming position" }
           = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
 
   :coffeescript

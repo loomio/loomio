@@ -49,14 +49,16 @@
             %span= "Notifications"
             %b.caret
           %ul.dropdown-menu
-            %h3 Notifications
+            %li
+              %h3 Notifications
             %li.divider
-            #notification-items
-              - if notifications.count == 0
-                .notifications-placeholder You do not have any notifications yet.
-              - notifications.each do |notification|
-                = render notification
-            #notifications-see-more= link_to "See all notifications", notifications_path
+            %li#notification-items
+              %ul
+                - if notifications.count == 0
+                  %li.notifications-placeholder You do not have any notifications yet.
+                - notifications.each do |notification|
+                  = render notification
+            %li#notifications-see-more= link_to "See all notifications", notifications_path
 
       %ul.nav.secondary-nav.pull-right
         %li.feedback= "<a href='mailto:contact@loom.io' target='_blank'>Give us feedback!</a>".html_safe
