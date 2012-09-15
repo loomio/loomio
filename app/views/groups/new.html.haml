@@ -1,4 +1,4 @@
 - set_title "", "New Group"
 %h1 New Group
 = render 'form', group: @group, parent: @parent,
-  submit_text: "Create group", disable_with: "Creating group"
+  submit_text: "Create group", :data => { :disable_with => "Creating group" }
