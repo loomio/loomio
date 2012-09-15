@@ -11,6 +11,8 @@
         %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
     - else
       No close date
+  - if motion.closed?    
+    =render "motions/outcome_statement", motion: motion, edit_outcome: edit_outcome, this_group: this_group
   .proposed-by
     = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
   .description

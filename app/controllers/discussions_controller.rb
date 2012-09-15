@@ -56,6 +56,10 @@ class DiscussionsController < GroupBaseController
       if @selected_motion
         @user_already_voted = @selected_motion.user_has_voted?(current_user)
         @votes_for_graph = @selected_motion.votes_graph_ready
+        @edit_outcome_statement = (params[:action] == 'edit-outcome')
+        if @selected_motion.outcome.blank? && current_user == @selected_motion.author
+          flash[:warning] = "This proposal has closed, but no outcome has been specified. Please specify an outcome."
+        end
       end
     end
 
