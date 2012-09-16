@@ -13,15 +13,13 @@
 }
 
 .notification-item .avatar-canvas {
-  margin-right: 5px;
-  margin-bottom: 3px;
-  position: relative;
-  top: 2px;
-  left: 0px;
+  margin-right: 7px;
+  margin-top: 2px;
 }
 
 .notification-item .notification-content {
-  margin-left: 45px;
+  overflow: hidden;
+  display: block;
 }
 
 .notification-item-footer {
