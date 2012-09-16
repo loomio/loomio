@@ -1,6 +1,5 @@
 - unless group.hide_members && (cannot? :edit, group)
   .sub-panel
-    %h3 Members
     - if can? :add_members, group
       .dropdown#members
         = link_to image_tag("dropdown.png", title:'member settings', alt:'member settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
@@ -11,6 +10,7 @@
             %li= link_to "Add members", "#", {"data-toggle" => "modal", href: "#invite-group-members"}
     #membership-count.label
       = group.memberships.count
+    %h3 Members
     = render 'add_members', group: group
     %ul#users-list
       = render :partial => 'membership',
