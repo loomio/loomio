@@ -5,7 +5,4 @@
     .clearfix
       %span
         .group-name= group.name.length < 35 ? group.name : group.name[0..32]+'...'
-        -#- activity =  current_user.discussions_with_activity_count(group)
-        -#- if activity > 0
-          -#.discussion-activity-count.label.label-important
-            -#= activity
+        = render '/application/group_activity', user: current_user, group: group
