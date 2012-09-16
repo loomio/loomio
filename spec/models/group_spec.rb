@@ -29,6 +29,33 @@ describe Group do
     end
   end
 
+  describe "membership(user)" do
+    it "returns the group membership of the user" do
+      user = create(:user)
+      group = create(:group)
+      membership = create :membership, group: group, user: user
+      group.memberships.stub_chain(:where, :first).and_return(membership)
+      group.membership(user).should == membership
+    end
+  end
+
+  describe "number_of_discussions_with_activity_since_last_viewed(group)" do
+    before do
+      @user = create(:user)
+      @group = create(:group)
+      @membership = create :membership, group: @group, user: @user
+    end
+    it "returns 0 if user is not a member of the group" do
+      @group.stub(:membership).with(@user)
+      @group.number_of_discussions_with_activity_since_last_viewed(@user).should == 0
+    end
+    it "returns the number of discussions with activity since user last viewed their group" do
+      @group.stub(:membership).with(@user).and_return(@membership)
+      @group.discussions.stub_chain(:where, :count).and_return(5)
+      @group.number_of_discussions_with_activity_since_last_viewed(@user).should == 5
+    end
+  end
+
   describe "methods for filtering discussions on weather a user has voted: " do
     before do
       @user = create(:user)

@@ -13,7 +13,7 @@ class Comment < ActiveRecord::Base
   has_many :comment_votes
   has_many :events, :as => :eventable, :dependent => :destroy
 
-  after_save :update_activity
+  #after_save :update_activity
   after_create :update_discussion_last_comment_at
   after_destroy :update_discussion_last_comment_at
 
@@ -96,9 +96,9 @@ class Comment < ActiveRecord::Base
   end
 
   private
-    def update_activity
-      discussion.update_activity if discussion
-    end
+    #def update_activity
+      #discussion.update_activity if discussion
+    #end
 
     def update_discussion_last_comment_at
       discussion.last_comment_at = discussion.latest_comment_time

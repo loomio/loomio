@@ -28,13 +28,6 @@ describe Discussion do
     discussion.comment_threads.should_not include(comment)
   end
 
-  it "can update discussion_activity" do
-    discussion = create(:discussion)
-    discussion.activity = 3
-    discussion.update_activity
-    discussion.activity.should == 4
-  end
-
   it "automatically populates last_comment_at with discussion.created at" do
     discussion = create(:discussion)
     discussion.last_comment_at.should == discussion.created_at
@@ -108,27 +101,44 @@ describe Discussion do
     end
   end
 
-  describe "has_activity_unread_by?(user)" do
+  describe "number_of_comments_since_last_looked(user)" do
     before do
       @user = create(:user)
       @discussion = create(:discussion, author: @user)
+      @discussion_read_log = mock_model(DiscussionReadLog)
+      DiscussionReadLog.stub_chain(:where, :first).and_return(@discussion_read_log)
     end
-    it "returns nil if user is nil" do
-      user1 = nil
-      @discussion.has_activity_unread_by?(user1).should == nil
+    it "should return 0 if no log exists" do
+      @discussion_read_log.stub(:nil?).and_return(true)
+      @discussion.number_of_comments_since_last_looked(@user).should == 0
     end
-    it "calls discussion_activity_count(self)" do
-      @user.should_receive(:discussion_activity_count).with(@discussion).
-        and_return(0)
-
-      @discussion.has_activity_unread_by?(@user)
-    end
-    it "returns true if user.discussion_activity_count(self) > 0" do
-      @user.stub(:discussion_activity_count).with(@discussion).
-        and_return(2)
-      @discussion.has_activity_unread_by?(@user).should == true
+    it "should return the number of comments since the discussion was last viewed" do
+      @discussion_read_log.stub(:nil?).and_return(false)
+      @discussion.comments.stub_chain(:where, :count).and_return(5)
+      @discussion.number_of_comments_since_last_looked(@user).should == 5
     end
   end
+  #describe "has_activity_unread_by?(user)" do
+    #before do
+      #@user = create(:user)
+      #@discussion = create(:discussion, author: @user)
+    #end
+    #it "returns nil if user is nil" do
+      #user1 = nil
+      #@discussion.has_activity_unread_by?(user1).should == nil
+    #end
+    #it "calls discussion_activity_count(self)" do
+      #@user.should_receive(:discussion_activity_count).with(@discussion).
+        #and_return(0)
+
+      #@discussion.has_activity_unread_by?(@user)
+    #end
+    #it "returns true if user.discussion_activity_count(self) > 0" do
+      #@user.stub(:discussion_activity_count).with(@discussion).
+        #and_return(2)
+      #@discussion.has_activity_unread_by?(@user).should == true
+    #end
+  #end
 
   describe "destroying discussion" do
     it "destroys associated comments"

@@ -7,8 +7,16 @@
     - current_user.root_groups.order('name').each do |group|
       %li
         = link_to group.name, group_path(group), :class => 'view_'+group.viewable_by.to_s
+        - discussions_with_activity_count = group.number_of_discussions_with_activity_since_last_viewed(current_user)
+        - if discussions_with_activity_count  > 0
+          %span.label.label-info.label-right
+            = discussions_with_activity_count
         - if group.subgroups.size > 0
           - group.subgroups.each do |subgroup|
             - if (current_user && current_user.group_membership(subgroup))
               %li.sub-group
                 = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
+                - discussions_with_activity_count = subgroup.number_of_discussions_with_activity_since_last_viewed(current_user)
+                - if discussions_with_activity_count  > 0
+                  %span.label.label-info.label-right
+                    = discussions_with_activity_count
