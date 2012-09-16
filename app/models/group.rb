@@ -120,10 +120,26 @@ class Group < ActiveRecord::Base
   end
 
   #
+  # ACTIVITY METHODS
+  #
+  #
+
+  def number_of_discussions_with_activity_since_last_viewed(user)
+    membership = membership(user)
+    if membership
+      discussions.includes(:comments).where('comments.user_id <> ? AND comments.created_at > ?', user.id, membership.last_viewed_at).count
+    else
+      0
+    end
+  end
+
+  #
   # MEMBERSHIP METHODS
   #
 
-
+  def membership(user)
+    memberships.where("group_id = ? AND user_id = ?", id, user.id).first
+  end
 
   def add_request!(user)
     unless requested_users_include?(user) || users.exists?(user)

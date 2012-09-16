@@ -53,8 +53,13 @@ class Discussion < ActiveRecord::Base
   # MISC METHODS
   #
 
-  def has_activity_unread_by?(user)
-    user && user.discussion_activity_count(self) > 0
+  def number_of_comments_since_last_looked(user)
+    discussion_read_log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', id, user.id).first
+    if discussion_read_log.nil?
+      0
+    else
+      comments.where('comments.created_at > ?', discussion_read_log.discussion_last_viewed_at).count
+    end
   end
 
   def current_motion_close_date
@@ -79,11 +84,6 @@ class Discussion < ActiveRecord::Base
 
   def history
     (comments + votes + motions).sort!{ |a,b| b.created_at <=> a.created_at }
-  end
-
-  def update_activity
-    self.activity += 1
-    save
   end
 
   def latest_history_time
