@@ -161,7 +161,7 @@ class User < ActiveRecord::Base
   end
 
   def discussions_sorted
-    discussions.where('discussions.has_current_motion' => false).order("last_comment_at DESC")
+    discussions.includes(:motions).where('phase = ?', "voting").order("last_comment_at DESC")
   end
 
   def self.get_loomio_user

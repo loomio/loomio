@@ -209,11 +209,11 @@ class Group < ActiveRecord::Base
 
   def discussions_sorted(user= nil)
     if user && user.group_membership(self)
-      user.discussions.includes(:group).
-      where("discussions.has_current_motion = ? AND (discussions.group_id = ? OR groups.parent_id = ?)", false, id, id).
-      order("last_comment_at DESC")
+      user.discussions.includes(:motion).includes(:group)
+        .where("phase = ? AND (discussions.group_id = ? OR groups.parent_id = ?)", "voting", id, id)
+        .order("last_comment_at DESC")
     else
-      discussions.where('discussions.has_current_motion' => false).order("last_comment_at DESC")
+      discussions.includes(:motion).where('phase = ?', "voting").order("last_comment_at DESC")
     end
   end
 
