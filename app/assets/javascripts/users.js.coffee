@@ -17,3 +17,4 @@ $ ->
 $ ->
   $(".comment-user-name").popover
     placement: "top"
+    html: true
