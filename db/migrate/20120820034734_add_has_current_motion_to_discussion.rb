@@ -1,4 +1,6 @@
 class AddHasCurrentMotionToDiscussion < ActiveRecord::Migration
+  class Motion < ActiveRecord::Base
+  end
   class Discussion < ActiveRecord::Base
     has_many :motions
     def current_motion

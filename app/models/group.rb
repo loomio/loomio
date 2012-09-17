@@ -180,7 +180,7 @@ class Group < ActiveRecord::Base
   #
 
   def all_discussions
-    Discussion.includes(:group).where("group_id = ? OR groups.parent_id = ?", id, id)
+    Discussion.includes(:group).where("group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL)", id, id)
   end
 
   def discussions_with_current_motion
@@ -210,7 +210,7 @@ class Group < ActiveRecord::Base
   def discussions_sorted(user= nil)
     if user && user.group_membership(self)
       user.discussions.includes(:group).
-      where("discussions.has_current_motion = ? AND (discussions.group_id = ? OR groups.parent_id = ?)", false, id, id).
+      where("discussions.has_current_motion = ? AND (discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL))", false, id, id).
       order("last_comment_at DESC")
     else
       discussions.where('discussions.has_current_motion' => false).order("last_comment_at DESC")
