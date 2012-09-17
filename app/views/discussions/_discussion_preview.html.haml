@@ -1,7 +1,8 @@
-%div{ class: css_class_for(discussion, current_user) }
+%div{ class: css_class_unread_discussion_activity_for(discussion, current_user) }
   %a.selector-link{ href: discussion_path(discussion) }
+    %span{ class: css_class_unread_group_activity_for(discussion, current_user) }
     %span
-      .clearfix
+      .discussion-container.clearfix
         - if current_user && discussion.current_motion
           .vote-icon
             - if current_user.group_membership(this_group) || this_group.nil?

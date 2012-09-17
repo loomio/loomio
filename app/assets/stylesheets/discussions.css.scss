@@ -290,11 +290,24 @@ li .motion-preview {
 //       the dashboard page.
 //
 
+li.selector-item .discussion-preview a.selector-link {
+  padding: 0 5px 0 0;
+}
 .discussion-preview {
+  .group-activity-indicator {
+    width: 5px;
+    height: 52px;
+    float: left;
+    background-color: $unhighlighted;
+    margin-right: 5px;
+  }
+  .unread-group-activity { background-color: $group-activity; }
+  .discussion-container {
+    position: relative;
+    top: 6px;
+  }
   a {
     color: $dark-grey;
-    // display: block;
-    // padding: 5px 5px 5px 15px;
   }
   a:hover {
     text-decoration: none;
@@ -302,9 +315,9 @@ li .motion-preview {
   .vote-icon {
     float: left;
     width: 20px;
+    padding-right: 7px;
     position: relative;
     top: 6px;
-    padding-right: 7px;
   }
   .discussion-title {
     display: inline;
