@@ -1,7 +1,7 @@
 %li{:id => membership.user_id}
   .clearfix
     .small-user-avatar.avatar-canvas
-      - if membership.user.avatar?
+      - if membership.user.avatar_url
         = image_tag membership.user.avatar_url(:small)
       - else
         %span.small-user-initials.initials-decoration= membership.user.avatar_initials
