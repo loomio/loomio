@@ -49,21 +49,7 @@ describe Motion do
       @discussion = create(:discussion, group: group)
       @motion = create(:motion, discussion: @discussion)
     end
-
-    it "sets the discussion's has_current_motion flag to true" do
-      @user = create(:user)
-      group = create(:group)
-      @discussion = create(:discussion, group: group)
-      @motion = Motion.new()
-      @motion.name = "Test motion"
-      @motion.author = @user
-      @motion.discussion = @discussion
-      @motion.save
-      @discussion.reload
-      @discussion.has_current_motion.should == true
-    end
   end
-
 
   it "cannot have invalid phases" do
     @motion = create(:motion)
@@ -149,9 +135,6 @@ describe Motion do
     it "deletes associated votes" do
       Vote.first.should == nil
     end
-    it "sets the discussion's has_current_motion flag to false" do
-      @discussion.has_current_motion.should == false
-    end
   end
 
   context "closed motion" do
@@ -191,12 +174,6 @@ describe Motion do
       @motion.open_voting
       DidNotVote.all.count.should == 0
     end
-
-    it "sets the discussion's has_current_motion flag to false" do
-      @discussion.reload
-      @discussion.has_current_motion.should == false
-    end
-
   end
 
   context "open motion" do
