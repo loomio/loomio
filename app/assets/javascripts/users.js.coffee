@@ -16,5 +16,8 @@ $ ->
 # adds bootstrap popovers to user names
 $ ->
   $(".comment-user-name").popover
+    trigger: "manual"
     placement: "top"
-    delay: { show: 50, hide: 1500 }
+  $(".comment-user-name").click((event, ui) ->
+    $(".comment-user-name").popover('toggle')
+  )
