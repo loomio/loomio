@@ -2,11 +2,7 @@ class AddHasCurrentMotionToDiscussion < ActiveRecord::Migration
   class Discussion < ActiveRecord::Base
     has_many :motions
     def current_motion
-      motion = motions.where("phase = 'voting'").last if motions
-      if motion
-        motion.open_close_motion
-        motion if motion.voting?
-      end
+      motions.where("phase = 'voting'").last
     end
   end
 
