@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913002847) do
+ActiveRecord::Schema.define(:version => 20120916215743) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20120913002847) do
     t.datetime "updated_at"
     t.string   "access_level"
     t.integer  "inviter_id"
-    t.date     "last_viewed_at"
+    t.datetime "last_viewed_at", :default => '2012-09-16 22:52:06'
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
