@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
 
   def discussions_with_current_motion_not_voted_on
     if discussions
-      (discussions.includes(:motions).where('phase = ?', "voting") -  discussions_with_current_motion_voted_on)
+      (discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on)
     else
       []
     end
@@ -154,14 +154,14 @@ class User < ActiveRecord::Base
 
   def discussions_with_current_motion_voted_on
     if discussions
-      (discussions.includes(:motions => :votes).where('phase = ? AND votes.user_id = ?', "voting", id))
+      (discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", id))
     else
       []
     end
   end
 
   def discussions_sorted
-    discussions.includes(:motions).where('phase = ?', "voting").order("last_comment_at DESC")
+    discussions.includes(:motions).where('motions.phase = ?', "voting").order("last_comment_at DESC")
   end
 
   def self.get_loomio_user
