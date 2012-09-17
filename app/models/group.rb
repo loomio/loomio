@@ -180,7 +180,7 @@ class Group < ActiveRecord::Base
   #
 
   def all_discussions
-    Discussion.includes(:group).where("group_id = ? OR groups.parent_id = ?", id, id)
+    Discussion.includes(:group).where("group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL)", id, id)
   end
 
   def discussions_with_current_motion
@@ -209,11 +209,11 @@ class Group < ActiveRecord::Base
 
   def discussions_sorted(user= nil)
     if user && user.group_membership(self)
-      user.discussions.includes(:motion).includes(:group)
-        .where("phase = ? AND (discussions.group_id = ? OR groups.parent_id = ?)", "voting", id, id)
+      user.discussions.includes(:motions).includes(:group)
+        .where("motions.phase = ? AND (discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL))", "voting", id, id)
         .order("last_comment_at DESC")
     else
-      discussions.includes(:motion).where('phase = ?', "voting").order("last_comment_at DESC")
+      discussions.includes(:motions).where('motions.phase = ?', "voting").order("last_comment_at DESC")
     end
   end
 

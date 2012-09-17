@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20120913002847) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body"
+    t.text     "body",             :default => ""
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(:version => 20120913002847) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "activity",        :default => 0, :null => false
     t.string   "title"
-    t.integer  "activity",           :default => 0,     :null => false
     t.datetime "last_comment_at"
     t.text     "description"
     t.boolean  "has_current_motion", :default => false
