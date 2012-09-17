@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(:version => 20120905023144) do
     t.integer  "activity",           :default => 0,     :null => false
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "has_current_motion", :default => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
