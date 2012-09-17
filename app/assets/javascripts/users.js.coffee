@@ -12,3 +12,9 @@ $ ->
     $("#uploaded-avatar").click()
     event.preventDefault()
   )
+
+# adds bootstrap popovers to user names
+$ ->
+  $(".comment-user-name").popover
+    placement: "top"
+    delay: { show: 50, hide: 1500 }
