@@ -1,33 +1,22 @@
 %li{:id => membership.user_id}
-  - if can? :edit, group
-    .clearfix
-      .small-user-avatar.avatar-canvas
-        - if membership.user.avatar_url
-          = image_tag membership.user.avatar_url(:small)
-        - else
-          %span.small-user-initials.initials-decoration= membership.user.avatar_initials
-      .user-name
-        - if membership.user_name
-          %span.membership-user-name.word-break= truncate(membership.user_name, :length => 18, :omission => '...')
-        - else
-          %span.membership-user-name.word-break= truncate(membership.user_email, :length => 18, :omission => '...')
-      - if current_user.is_group_admin?(group)
-        - member = User.find(membership.user_id)
-        .admin-controls
-          - if member.is_group_admin?(group)
-            =link_to "Remove admin", remove_admin_membership_path(membership), method: :post
-          - else
-            =link_to "Make admin", make_admin_membership_path(membership), method: :post
-          =link_to "×", membership, method: :delete, class: 'close',
-            confirm: "Are you sure you wish to remove #{membership.user_email} from the group?"
-  - else
-    .cleaarfix
-      .small-user-avatar.avatar-canvas
-        - if membership.user.avatar_url.nil?
-          %span.small-user-initials.initials-decoration= membership.user.avatar_initials
-        - else
-          = image_tag membership.user.avatar_url("small")
-      - if membership.user_name
-        %span.membership-user-name= truncate(membership.user_name, :length => 35, :omission => '...')
+  .clearfix
+    .small-user-avatar.avatar-canvas
+      - if membership.user.avatar_url
+        = image_tag membership.user.avatar_url(:small)
       - else
-        %span.membership-user-name= truncate(membership.user_email, :length => 35, :omission => '...')
+        %span.small-user-initials.initials-decoration= membership.user.avatar_initials
+    - member = User.find(membership.user_id)
+    .user-name
+      - name_length = (member.is_group_admin?(group) or (can? :edit, group and current_user.is_group_admin?(group))) ? 18 : 35
+      %span.membership-user-name.word-break= truncate(membership.user_name_or_email, :length => name_length, :omission => '...')
+    .admin-controls
+      - if (can? :edit, group and current_user.is_group_admin?(group))
+        - if member.is_group_admin?(group)
+          =link_to "Remove admin", remove_admin_membership_path(membership), method: :post
+        - else
+          =link_to "Make admin", make_admin_membership_path(membership), method: :post
+        =link_to "×", membership, method: :delete, class: 'close',
+        :data => { :confirm => "Are you sure you wish to remove #{membership.user_email} from the group?" }
+      - else
+        - if member.is_group_admin?(group)
+          = "Group Admin"

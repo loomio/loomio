@@ -2,6 +2,7 @@
 %html
   %head
     %title= display_title @unviewed_notifications
+    <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
