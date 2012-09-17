@@ -17,3 +17,4 @@ $ ->
 $ ->
   $(".comment-user-name").popover
     placement: "top"
+    delay: { show: 50, hide: 1500 }
