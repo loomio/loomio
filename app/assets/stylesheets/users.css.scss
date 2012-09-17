@@ -100,3 +100,10 @@ li.user-image-option.clearfix:hover {
 #user_uploaded_avatar {
   display: none;
 }
+
+#user-email-popover {
+  .user-details {
+    display: block;
+    margin-left: 15px;
+  } 
+}

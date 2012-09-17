@@ -76,12 +76,6 @@ $ ->
   $(".position").popover
     placement: "top"
 
-# disable links on usernames
-$ ->
-  $('.comment-username a, .member-name a').click((event) ->
-    event.preventDefault()
-  )
-
 #expand description text on proposal
 $ ->
   if $(".motion").length > 0
