@@ -116,6 +116,7 @@ li.selector-item {
   background-color: $highlighted;
   a { color: black; }
   a .proposal-title { color: black; }
+  a .group-activity-indicator { background-color: $highlighted; }
 }
 li.selector-item a.selector-link {
   display: block;
@@ -124,6 +125,8 @@ li.selector-item a.selector-link {
 li.selector-item a.selector-link:hover {
   background-color: $selector;
   text-decoration: none;
+  .group-activity-indicator { background-color: $selector; }
+  .group-activity-indicator.unread-group-activity { background-color: $group-activity; }
 }
 
 .pagination {
@@ -189,7 +192,10 @@ li.selector-item a.selector-link:hover {
 .label-right{
   float: right;
 }
-
+.label-group-activity {
+  background-color: $group-activity;
+  color: #3B5998;
+}
 .group-presence-error-message {
   float: right;
   position: relative;

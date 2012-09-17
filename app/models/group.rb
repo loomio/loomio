@@ -126,12 +126,10 @@ class Group < ActiveRecord::Base
 
   def number_of_discussions_with_activity_since_last_viewed(user)
     membership = membership(user)
-
     if membership
-      #discussions.joins('discussion_read_logs').includes(:comments).where('comments.user_id <> ? AND comments.created_at > ?', user.id, membership.last_viewed_at).count
       discussions.includes(:comments)
-                  .joins('INNER JOIN discussion_read_logs ON discussion_read_logs.discussion_id = discussions.id AND discussion_read_logs.user_id = discussions.author_id')
-                  .where('comments.user_id <> ? AND comments.created_at > ? AND comments.created_at > discussion_read_logs.discussion_last_viewed_at', user.id, membership.last_viewed_at).count
+        .joins('INNER JOIN discussion_read_logs ON discussion_read_logs.discussion_id = discussions.id AND discussion_read_logs.user_id = discussions.author_id')
+        .where('comments.user_id <> ? AND comments.created_at > ? AND comments.created_at > discussion_read_logs.discussion_last_viewed_at', user.id, membership.last_viewed_at).count
     else
       0
     end

@@ -118,27 +118,29 @@ describe Discussion do
       @discussion.number_of_comments_since_last_looked(@user).should == 5
     end
   end
-  #describe "has_activity_unread_by?(user)" do
-    #before do
-      #@user = create(:user)
-      #@discussion = create(:discussion, author: @user)
-    #end
-    #it "returns nil if user is nil" do
-      #user1 = nil
-      #@discussion.has_activity_unread_by?(user1).should == nil
-    #end
-    #it "calls discussion_activity_count(self)" do
-      #@user.should_receive(:discussion_activity_count).with(@discussion).
-        #and_return(0)
 
-      #@discussion.has_activity_unread_by?(@user)
-    #end
-    #it "returns true if user.discussion_activity_count(self) > 0" do
-      #@user.stub(:discussion_activity_count).with(@discussion).
-        #and_return(2)
-      #@discussion.has_activity_unread_by?(@user).should == true
-    #end
-  #end
+  describe "has_activity_since_group_last_viewed?(user)" do
+    before do
+      @user = create(:user)
+      @group = create(:group)
+      @membership = create :membership, group: @group, user: @user
+      @discussion = create :discussion, group: @group
+    end
+    it "returns false if user is not a member of the group" do
+      @group.stub(:membership).with(@user)
+      @discussion.has_activity_since_group_last_viewed?(@user).should == false
+    end
+    it "returns true if the discussioin had activity since user last viewed their group" do
+      @group.stub(:membership).with(@user).and_return(@membership)
+      @group.discussions.stub_chain(:includes, :joins, :where).and_return(true)
+      @discussion.has_activity_since_group_last_viewed?(@user).should == true
+    end
+    it "returns false if the discussion had no activity since user last viewed their group" do
+      @group.stub(:membership).with(@user).and_return(@membership)
+      @group.discussions.stub_chain(:includes, :joins, :where).and_return(false)
+      @discussion.has_activity_since_group_last_viewed?(@user).should == false
+    end
+  end
 
   describe "destroying discussion" do
     it "destroys associated comments"

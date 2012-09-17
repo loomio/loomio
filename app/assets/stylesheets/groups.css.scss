@@ -99,6 +99,10 @@
 
 body.groups.show {
   .discussion-preview .discussion-title { margin: 8px 0 8px 0; }
+  .discussion-preview.sub-group-discussion .discussion-title {
+    position: relative;
+    bottom: 6px
+  }
 }
 .sub-panel {
   background-color: $sub-selector-panel;
