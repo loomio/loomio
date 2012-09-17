@@ -55,5 +55,5 @@
             = f.check_box :email_new_motion # TODO: check this by default
             = f.label :email_new_motion,
               "Email group members when a new motion is created in this group", class: "checkbox-label"
-        = f.submit submit_text, class: "btn btn-info run-validations", id: "update-group", :disable_with => disable_with
+        = f.submit submit_text, class: "btn btn-info run-validations", id: "update-group", :data => {:disable_with => "Updating group"}
 

@@ -148,7 +148,8 @@
   .vote-buttons .btn {
     float: left;
     width: 40px;
-    @include box-shadow(1px, 1px, 4px, $mid-grey);
+    @include box-shadow(1px, 1px, 3px, $mid-grey);
+    border: 1px solid $light-grey;
     @include border-radius(5px);
     padding: 3px;
     margin: 10px 10px 15px 0;
@@ -193,4 +194,3 @@ table.jqplot-table-legend {
     padding: 0 5px;
   }
 }
-
