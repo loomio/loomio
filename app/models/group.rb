@@ -185,7 +185,7 @@ class Group < ActiveRecord::Base
 
   def discussions_with_current_motion
     if all_discussions
-      all_discussions.where('discussions.has_current_motion' => true)
+      all_discussions.includes(:motions).where('phase = ?', "voting")
     else
       []
     end
@@ -193,7 +193,7 @@ class Group < ActiveRecord::Base
 
   def discussions_with_current_motion_not_voted_on(user)
     if all_discussions
-      (all_discussions.where('discussions.has_current_motion' => true).uniq - discussions_with_current_motion_voted_on(user))
+      (all_discussions.includes(:motions).where('phase = ?', "voting") -  discussions_with_current_motion_voted_on(user))
     else
       []
     end
@@ -201,7 +201,7 @@ class Group < ActiveRecord::Base
 
   def discussions_with_current_motion_voted_on(user)
     if all_discussions
-      all_discussions.where('discussions.has_current_motion' => true).joins(:motions => :votes).where('votes.user_id = ?', user).uniq
+      (all_discussions.includes(:motions => :votes).where('phase = ? AND votes.user_id = ?', "voting", user.id))
     else
       []
     end
