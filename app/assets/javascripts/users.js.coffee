@@ -16,9 +16,4 @@ $ ->
 # adds bootstrap popovers to user names
 $ ->
   $(".comment-user-name").popover
-    placement: 'top'
-    html: true
-    trigger: 'click'
-
-$ -> 
-
+    placement: "top"
