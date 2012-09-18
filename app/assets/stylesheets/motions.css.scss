@@ -64,6 +64,9 @@
     font-size: $font-medium;
     color: $dark-grey;
   }
+  .proposal-outcome {
+    font-size: $font-small;
+  }
   .proposal-close-date {
     font-size: $font-small;
     display: inline;
@@ -124,6 +127,43 @@
   }
   .closing-info{
     font-size: $font-small;
+  }
+  #outcome-statement {
+    color: $dark-grey;
+    margin: 10px 0px;
+    textarea {
+      width: 420px;
+      max-width: 420px;
+      height: 40px;
+      max-height: 80px;
+    }  
+    .control-group { margin-bottom: 0px; }
+    .character-counter {
+      bottom: 10px; 
+      width: 250px;
+      float: right;
+      margin-bottom: 0px;
+    }
+    .statement-display {
+      padding: 5px;
+      background-color: $lighter-grey;
+      font-size: 1em;
+    }
+    .button_to { margin: 0px; }
+    .outcome-edit-button {
+      margin: 0px;
+      float: right;
+      display: inline;
+      position: relative;
+      top: 0px;
+      right: 0px; 
+    }
+    .outcome-label {
+      font-size: 1em;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+    .no-outcome { font-style: italic; }
   }
   .proposed-by {
     font-size: $font-tiny;
