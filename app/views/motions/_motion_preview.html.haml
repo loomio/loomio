@@ -8,6 +8,9 @@
       .proposal-title-container
         .proposal-title.word-break= truncate(motion.name, :length => 60, :separator => ' ')
         .clearfix
+          .proposal-outcome
+            - if !motion.outcome.blank?
+              = "Outcome: #{motion.outcome}"
           .proposal-close-date
             - if motion.close_date.present?
               - if motion.voting?
