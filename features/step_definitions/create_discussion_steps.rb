@@ -8,6 +8,12 @@ When /^fill in discussion details$/ do
   click_on 'Create discussion'
 end
 
-Then /^a discussion is created$/ do
-  Discussion.where(:title => 'New Discussion Test').size > 0
+Then /^a discussion should be created$/ do
+  Discussion.all.size.should eq(1)
+end
+
+Given /^I am viewing a discussion titled "(.*?)" in "(.*?)"$/ do |disc_title, group_name|
+  discussion = FactoryGirl.create :discussion,
+               :title => disc_title, :group => Group.find_by_name(group_name)
+  visit discussion_path(discussion)
 end

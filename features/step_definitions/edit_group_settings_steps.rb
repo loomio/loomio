@@ -40,7 +40,7 @@ end
 
 Then /^I should not have access to group settings$/ do
   visit "/groups/" + Group.first.id.to_s + "/edit"
-  current_path.should == "/groups/" + Group.first.id.to_s
+  current_path.should == "/"
 end
 
 When /^I update the invitations to allow all members$/ do
