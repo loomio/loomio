@@ -114,32 +114,38 @@ getNextURL = (button_url) ->
     
   console.log("3 changing:" + button_url + " to:" + newURL)
   newURL
+  
+getPageParam = () ->
+  url = $(location).attr("href")
+  if url.lastIndexOf("?") > -1
+    page = "?" + url.split("?")[1]
+    page
+  else
+    ""
 
 $ ->
   if $("body.groups.show").length > 0
     idStr = new Array
     idStr = $('#group-discussions').children().attr('class').split('_')
-    $('#group-discussions').load("/groups/#{idStr[1]}/discussions", ->
+    params = getPageParam()
+    $('#group-discussions').load("/groups/#{idStr[1]}/discussions" + params, ->
       Application.convertUtcToRelativeTime()
       $("#group-discussions").removeClass('hidden')
       $("#discussions-loading").hide()
     )
 $ ->
-  if html5.supported
-    console.log("html5 supported")
-    if $("body.groups.show").length > 0
-      $(document).on('click', '#group-discussions .pagination a', (e)->
-        unless $(this).parent().hasClass("gap")
+  if $("body.groups.show").length > 0
+    $(document).on('click', '#group-discussions .pagination a', (e)->
+      unless $(this).parent().hasClass("gap")
+        if html5.supported
           window.history.pushState("stateObj", "title_ignored", getNextURL($(this).attr("href")))
-          $("#discussion-list").hide()
-          $("#discussions-loading").show()
-          $('#group-discussions').load($(this).attr('href'), ->
-            Application.convertUtcToRelativeTime()
-            $("#discussion-list").show()
-            $("#discussions-loading").hide()
-          )
-          e.preventDefault()
-      )
-  else
-    console.log("no html5 sorry")
-    #switch embedded url with groups url and do NOT prevent default action in cs
+          console.log("html5 supported")
+        $("#discussion-list").hide()
+        $("#discussions-loading").show()
+        $('#group-discussions').load($(this).attr('href'), ->
+          Application.convertUtcToRelativeTime()
+          $("#discussion-list").show()
+          $("#discussions-loading").hide()
+        )
+        e.preventDefault()
+    )
