@@ -74,3 +74,7 @@ When /^I fill details for members and parent members admin only invite ubgroup$/
   choose "group_viewable_by_members"
   choose "group_members_invitable_by_admins"
 end
+
+When /^I visit the group page for "(.*?)"$/ do |group_name|
+  visit group_path(Group.find_by_name(group_name))
+end
