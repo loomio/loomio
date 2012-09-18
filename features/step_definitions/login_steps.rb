@@ -1,7 +1,3 @@
-Given /^I am a registered User$/ do
-  User.create(:email => "furry@example.com", :password =>"password", :name => "Fluffy")
-end
-
 When /^enter my login details$/ do
   visit "/"
   page.should have_content "sign in"
