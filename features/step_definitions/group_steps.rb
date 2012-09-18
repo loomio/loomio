@@ -1,11 +1,19 @@
-Given /^I am logged in as "(.*?)"$/ do |arg1|
-  login(arg1,'password')
-end
-
 Given /^a group "(.*?)" with "(.*?)" as admin$/ do |arg1, arg2|
   @user = FactoryGirl.create(:user, :email => arg2)
   @group = FactoryGirl.create(:group, :name => arg1)
   @group.add_admin!(@user)
+end
+
+Given /^there is a group called "(.*?)"$/ do |group_name|
+  FactoryGirl.create(:group, :name => group_name)
+end
+
+Given /^"(.*?)" is a non-admin of group "(.*?)"$/ do |email, group_name|
+  group = Group.find_by_name group_name
+  user = User.find_by_email email
+  membership = group.memberships.find_by_user_id user.id
+  membership.destroy if membership
+  group.add_member! user
 end
 
 Given /^I visit create subgroup page for group named "(.*?)"$/ do |arg1|
@@ -15,13 +23,8 @@ Given /^I visit create subgroup page for group named "(.*?)"$/ do |arg1|
   find("#sub-groups").click_link("Create a Sub-group +")
 end
 
-
-Given /^I am admin of group "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
-Given /^I visit create subgroup page for "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Given /^"(.*?)" is a member of "(.*?)"$/ do |email, group|
+  Group.find_by_name(group).add_member!(User.find_or_create_by_email(email))
 end
 
 When /^I fill details for the subgroup$/ do
