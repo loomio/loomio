@@ -1,9 +1,10 @@
 #user-email-popover
   .clearfix
-    .medium-user-avatar.avatar-canvas
-      - if user.avatar_url
-        = image_tag user.avatar_url(:medium)
-      - else
+    - if user.avatar_url
+      .medlarge-user-avatar.avatar-canvas
+        = image_tag user.avatar_url(:medlarge)
+    - else
+      .medium-user-avatar.avatar-canvas
         %span.medium-user-initials.initials-decoration
           = user.avatar_initials
     .user-details
