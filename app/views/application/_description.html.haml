@@ -2,19 +2,22 @@
   .model-description.word-break= model.description
   - if can? :edit_description, model
     = link_to "Edit #{model_name} info", "#", id: 'edit-description'
-#add-edit-description.hidden
-  .row
-    .span8
-      = form_tag send("edit_description_#{model_name}_path"), :remote => true do |f|
-        = hidden_field_tag 'id'
-        .control-group
-          = text_area_tag 'description', model.description, {id: 'description-input', class: inputError_class(model_name)}
-        .save-buttons.clearfix
-          = submit_tag "Save", class: 'btn btn-small run-validations', id: 'add-description-submit', :disable_with => "Saving"
-          = link_to "Cancel", "#", id: 'cancel-add-description'
-        - unless model_name == "discussion"
-          .character-counter
-    - if model_name == "discussion"
-      .span3
-        .helper-text
-          %p This is a place for information relevant to the discussion
+
+- if can? :edit_description, model
+  #add-edit-description.hidden
+    .row
+      .span8
+        = form_tag send("edit_description_#{model_name}_path"), :remote => true do |f|
+          = hidden_field_tag 'id'
+          .control-group
+            - class_str = 'inputError limit-250' if model_name == "group"
+            = text_area_tag 'description', model.description, {id: 'description-input', class: class_str}
+          .save-buttons.clearfix
+            = submit_tag "Save", class: 'btn btn-small run-validations', id: 'add-description-submit', :data => {:disable_with => "Saving"}
+            = link_to "Cancel", "#", id: 'cancel-add-description'
+          - unless model_name == "discussion"
+            .character-counter
+      - if model_name == "discussion"
+        .span3
+          .helper-text
+            %p This is a place for information relevant to the discussion

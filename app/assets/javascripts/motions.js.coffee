@@ -112,4 +112,23 @@ $ ->
       $('#new_vote').submit()
       event.preventDefault()
   )
+
+# show form for editing outcome
+$ ->
+  $("#edit-outcome").click((event) ->
+    $("#outcome-input").toggle()
+    $("#outcome-display").toggle()
+    event.preventDefault()
+  )
+
+$ ->
+  if $("#outcome-input").length > 0
+    if $("#outcome-input").hasClass("hidden")
+      $("#outcome-display").removeClass("hidden")
+    else
+      $("#outcome-display").addClass("hidden")
+  else 
+      $("#outcome-display").removeClass("hidden")
+
+    
   

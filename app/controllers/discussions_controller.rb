@@ -86,13 +86,13 @@ class DiscussionsController < GroupBaseController
   def edit_description
     discussion = Discussion.find(params[:id])
     discussion.description = params[:description]
-    discussion.save
+    discussion.save!
   end
 
   def edit_title
     discussion = Discussion.find(params[:id])
     discussion.title = params[:title]
-    discussion.save
+    discussion.save!
   end
 
   private

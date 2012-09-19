@@ -25,11 +25,18 @@
 
   - elsif notification.event_kind == "motion_closed"
     - motion = notification.motion
-    - user = notification.event.user
-    - action_text = "closed the proposal"
-    - title_text = motion.name
-    - group_name = motion.group_full_name
-    - href = discussion_path(motion.discussion)
+    - if current_user == motion.author
+      - action_text = "Your proposal"
+      - title_text = motion.name
+      - action_text_after = "has closed. Please specify an outcome."
+      - group_name = motion.group_full_name
+      - href = discussion_url(motion.discussion, proposal: motion)
+    - else
+      - user = notification.event.user
+      - action_text = "closed the proposal"
+      - title_text = motion.name
+      - group_name = motion.group_full_name
+      - href = discussion_path(motion.discussion, proposal: motion)
 
   - elsif notification.event_kind == "new_vote"
     - vote = notification.vote
@@ -73,26 +80,25 @@
 
   - date = time_ago_in_words(notification.created_at)
   - class_name = notification.viewed_at.nil? ? " unread" : ""
-  - avatar_url = user.avatar_url(:medium)
-  - avatar_initials = user.avatar_initials
+  - if user
+    - avatar_url = user.avatar_url(:medium)
+    - avatar_initials = user.avatar_initials
 
   %li.selector-item{:class => "notification-item#{class_name}" }
     %a{:href => href }
-      .clearfix
-        .medium-user-avatar.avatar-canvas
-          - if avatar_url.present?
-            = image_tag avatar_url
-          - else
-            %span.medium-user-initials.initials-decoration
-              = avatar_initials
-        .notification-content
-          %span.bold-name= user.name
-          = " #{action_text} "
-          - if title_text
-            %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
-          %span.notification-item-footer
-            = "#{date} ago · #{group_name}"
-  %li.divider
+      %span.medium-user-avatar.avatar-canvas
+        - if avatar_url.present?
+          = image_tag avatar_url
+        - else
+          %span.medium-user-initials.initials-decoration
+            = avatar_initials
+      %span.notification-content
+        %span.bold-name= user.name
+        = " #{action_text} "
+        - if title_text
+          %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
+        %span.notification-item-footer
+          = "#{date} ago · #{group_name}"
 
 - rescue => exception
   - logger.error("NOTIFICATION ERROR: It looks like something got deleted without it's corresponding events/notifications being deleted as well. notification_id: #{notification.id}")

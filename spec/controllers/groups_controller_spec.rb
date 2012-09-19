@@ -93,11 +93,12 @@ describe GroupsController do
       response.should redirect_to(group_url(assigns(:group)))
     end
 
-    describe "edit description" do
+    describe "#edit description" do
       before do
         controller.stub(:authorize!).and_return(true)
         controller.stub(:can?).with(:edit_description, group).and_return(true)
         Group.stub(:find).and_return(group)
+        group.stub(:save!).and_return(true)
       end
       it "assigns description to the model" do
         group.should_receive(:description=).with "blah"
@@ -106,7 +107,7 @@ describe GroupsController do
           :description => "blah"
       end
       it "saves the model" do
-        group.should_receive :save
+        group.should_receive :save!
         xhr :post, :edit_description,
           :id => group.id,
           :description => "blah"

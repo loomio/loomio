@@ -86,6 +86,10 @@ class Membership < ActiveRecord::Base
     group.admins.count > 1
   end
 
+  def user_name_or_email
+    return user_name ? user_name : user_email
+  end
+
   #
   # PRIVATE METHODS
   #

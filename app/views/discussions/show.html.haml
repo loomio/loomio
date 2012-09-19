@@ -36,7 +36,7 @@
                 - if @current_motion
                   - if (not @selected_motion) && (can? :close_voting, @current_motion)
                     %li= link_to "Close proposal", close_motion_voting_path(@current_motion),
-                      confirm: "Are you sure you want to close this motion?", method: :post, class: 'btn btn-small proposal-btn', id: 'close-voting'
+                      :data => {confirm: "Are you sure you want to close this motion?"}, method: :post, class: 'btn btn-small proposal-btn', id: 'close-voting'
                   - if @selected_motion && (@selected_motion != @current_motion)
                     %li.selector-item.current-proposal
                       = render '/motions/motion_preview', motion: @current_motion, this_group: @group
@@ -59,6 +59,6 @@
                     - @discussion.motions.order("close_date desc").each do |closed_motion|
                       - if closed_motion.closed?
                         - if closed_motion == @selected_motion
-                          %li.selector-item= render @selected_motion, unique_votes: @unique_votes
+                          %li.selector-item= render @selected_motion, unique_votes: @unique_votes, this_group: @group
                         - else
                           %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group

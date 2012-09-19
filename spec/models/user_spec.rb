@@ -109,7 +109,35 @@ describe User do
     end
   end
 
-  describe "methods for filtering discussions on weather a user has voted" do
+  context do
+    before do
+      group1 = create(:group)
+      group.add_member!(user)
+      group1.add_member!(user)
+      discussion1 = create :discussion, :group => group, :author => user
+      discussion2 = create :discussion, :group => group, :author => user
+      discussion3 = create :discussion, :group => group1, :author => user
+      discussion1.add_comment user, "hi"
+      discussion1.add_comment user, "bye"
+      discussion2.add_comment user, "bye"
+      motion = create(:motion, discussion: discussion2)
+      vote = user.votes.new(:position => "yes")
+      vote.motion = motion
+      vote.save
+    end
+    describe "discusssions_with_activity_count(group)" do
+      it "should return the number of discussions with comment and/or vote activity in the givin group" do
+        user.discussions_with_activity_count(group).should == 3
+      end
+    end
+    describe "activity_total" do
+      it "should return the total number of dicussions with activity over all the users groups" do
+        user.activity_total.should == 3
+      end
+    end
+  end
+
+  context do
     before do
       group.add_member!(user)
       @discussion1 = create :discussion, :group => group
@@ -136,18 +164,29 @@ describe User do
     end
   end
 
-  describe "user.discussions_sorted_paged" do
+  describe "user.discussions_sorted" do
+    before do
+      @user = create(:user)
+      @group = create(:group)
+      @group.add_member!(@user)
+      @discussion1 = create :discussion, group: @group, :author => @user
+    end
     it "returns a list of discussions sorted by last_comment_at" do
-      discussion1 = create :discussion, :author => user
-      discussion2 = create :discussion, :author => user
-      discussion2.add_comment user, "hi"
-      discussion3 = create :discussion, :author => user
-      discussion4 = create :discussion, :author => user
-      discussion1.add_comment user, "hi"
-      user.discussions_sorted[0].should == discussion1
-      user.discussions_sorted[1].should == discussion4
-      user.discussions_sorted[2].should == discussion3
-      user.discussions_sorted[3].should == discussion2
+      @discussion2 = create :discussion, :author => @user
+      @discussion2.add_comment @user, "hi"
+      @discussion3 = create :discussion, :author => @user
+      @discussion4 = create :discussion, :author => @user
+      @discussion1.add_comment @user, "hi"
+      @user.discussions_sorted[0].should == @discussion1
+      @user.discussions_sorted[1].should == @discussion4
+      @user.discussions_sorted[2].should == @discussion3
+      @user.discussions_sorted[3].should == @discussion2
+    end
+    it "should not include discussions with a current motion" do
+      motion = create :motion, :discussion => @discussion1, author: @user
+      motion.close_voting!
+      motion1 = create :motion, :discussion => @discussion1, author: @user
+      @user.discussions_sorted.should_not include(@discussion1)
     end
   end
 

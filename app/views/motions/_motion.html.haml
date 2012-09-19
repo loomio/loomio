@@ -11,6 +11,8 @@
         %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
     - else
       No close date
+  - if motion.closed?
+    =render "motions/outcome_statement", motion: motion, this_group: this_group
   .proposed-by
     = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
   .description
@@ -60,7 +62,7 @@
           .character-counter
           =f.hidden_field :position
         .modal-footer
-          = submit_tag "Confirm position", class: "vote btn btn-info", :disable_with => "Confirming position"
+          = submit_tag "Confirm position", class: "vote btn btn-info", :data => { :disable_with => "Confirming position" }
           = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
 
   :coffeescript
