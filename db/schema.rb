@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916215743) do
+ActiveRecord::Schema.define(:version => 20120919050300) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20120916215743) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.datetime "discussion_last_viewed_at", :default => '2012-09-14 03:16:38'
+    t.datetime "discussion_last_viewed_at", :default => '2012-09-19 04:55:08'
   end
 
   add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20120916215743) do
     t.datetime "updated_at"
     t.string   "access_level"
     t.integer  "inviter_id"
-    t.datetime "last_viewed_at", :default => '2012-09-16 22:52:06'
+    t.datetime "last_viewed_at", :default => '2012-09-19 05:07:16'
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20120916215743) do
     t.datetime "close_date"
     t.integer  "discussion_id"
     t.integer  "activity",       :default => 0
+    t.string   "outcome"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
