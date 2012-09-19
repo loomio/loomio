@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20120913002847) do
     t.datetime "close_date"
     t.integer  "discussion_id"
     t.integer  "activity",       :default => 0
+    t.string   "outcome"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"

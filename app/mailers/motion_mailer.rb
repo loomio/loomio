@@ -10,6 +10,14 @@ class MotionMailer < ActionMailer::Base
           subject: "#{email_subject_prefix(@group.full_name)} New proposal - #{@motion.name}")
   end
 
+  def motion_closed(motion, email)
+    @motion = motion
+    @group = motion.group
+    mail( to: email, 
+          reply_to: "noreply@loom.io",
+          subject: "#{email_subject_prefix(@group.full_name)} Proposal closed - #{@motion.name}")
+  end
+
   def motion_blocked(vote)
     @vote = vote
     @user = vote.user
