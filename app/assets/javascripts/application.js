@@ -26,3 +26,4 @@
 //= require notifications
 //= require dashboard
 //= require votes
+//= require ajax-like
