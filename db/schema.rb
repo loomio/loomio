@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913002847) do
+ActiveRecord::Schema.define(:version => 20120912015115) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20120913002847) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body",             :default => ""
+    t.text     "body"
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20120913002847) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.datetime "discussion_last_viewed_at", :default => '2012-09-14 03:16:38'
+    t.integer  "discussion_activity_when_last_read", :default => 0
   end
 
   add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(:version => 20120913002847) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "activity",        :default => 0, :null => false
     t.string   "title"
+    t.integer  "activity",           :default => 0,     :null => false
     t.datetime "last_comment_at"
     t.text     "description"
     t.boolean  "has_current_motion", :default => false
