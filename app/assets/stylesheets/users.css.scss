@@ -33,6 +33,11 @@
   height: 170px;
 }
 
+.med-large-user-avatar {
+  width: 70px;
+  height: 70px;
+}
+
 .medium-user-avatar {
   width: 35px;
   height: 35px;
@@ -99,4 +104,15 @@ li.user-image-option.clearfix:hover {
 
 #user_uploaded_avatar {
   display: none;
+}
+
+#user-email-popover {
+  .avatar-canvas {
+    margin: 0 10px 0 0;
+    float: left;
+  }
+  .user-details {
+    display: block;
+    margin-left: 15px;
+  } 
 }
