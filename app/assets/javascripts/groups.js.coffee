@@ -34,6 +34,7 @@ $ ->
       $("#group-discussions").removeClass('hidden')
       $("#discussions-loading").addClass('hidden')
     )
+    $("#all-discussions-loading").addClass('hidden')
 $ ->
   if $("body.groups.show").length > 0
     $(document).on('click', '#group-discussions .pagination a', (e)->
