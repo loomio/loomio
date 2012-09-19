@@ -164,18 +164,29 @@ describe User do
     end
   end
 
-  describe "user.discussions_sorted_paged" do
+  describe "user.discussions_sorted" do
+    before do
+      @user = create(:user)
+      @group = create(:group)
+      @group.add_member!(@user)
+      @discussion1 = create :discussion, group: @group, :author => @user
+    end
     it "returns a list of discussions sorted by last_comment_at" do
-      discussion1 = create :discussion, :author => user
-      discussion2 = create :discussion, :author => user
-      discussion2.add_comment user, "hi"
-      discussion3 = create :discussion, :author => user
-      discussion4 = create :discussion, :author => user
-      discussion1.add_comment user, "hi"
-      user.discussions_sorted[0].should == discussion1
-      user.discussions_sorted[1].should == discussion4
-      user.discussions_sorted[2].should == discussion3
-      user.discussions_sorted[3].should == discussion2
+      @discussion2 = create :discussion, :author => @user
+      @discussion2.add_comment @user, "hi"
+      @discussion3 = create :discussion, :author => @user
+      @discussion4 = create :discussion, :author => @user
+      @discussion1.add_comment @user, "hi"
+      @user.discussions_sorted[0].should == @discussion1
+      @user.discussions_sorted[1].should == @discussion4
+      @user.discussions_sorted[2].should == @discussion3
+      @user.discussions_sorted[3].should == @discussion2
+    end
+    it "should not include discussions with a current motion" do
+      motion = create :motion, :discussion => @discussion1, author: @user
+      motion.close_voting!
+      motion1 = create :motion, :discussion => @discussion1, author: @user
+      @user.discussions_sorted.should_not include(@discussion1)
     end
   end
 

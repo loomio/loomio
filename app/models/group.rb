@@ -185,7 +185,7 @@ class Group < ActiveRecord::Base
 
   def discussions_with_current_motion
     if all_discussions
-      all_discussions.includes(:motions).where('phase = ?', "voting")
+      all_discussions.includes(:motions).where('motions.phase = ?', "voting")
     else
       []
     end
@@ -193,7 +193,7 @@ class Group < ActiveRecord::Base
 
   def discussions_with_current_motion_not_voted_on(user)
     if all_discussions
-      (all_discussions.includes(:motions).where('phase = ?', "voting") -  discussions_with_current_motion_voted_on(user))
+      (all_discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on(user))
     else
       []
     end
@@ -201,7 +201,7 @@ class Group < ActiveRecord::Base
 
   def discussions_with_current_motion_voted_on(user)
     if all_discussions
-      (all_discussions.includes(:motions => :votes).where('phase = ? AND votes.user_id = ?', "voting", user.id))
+      all_discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", user.id).order("last_comment_at DESC")
     else
       []
     end
@@ -209,11 +209,15 @@ class Group < ActiveRecord::Base
 
   def discussions_sorted(user= nil)
     if user && user.group_membership(self)
-      user.discussions.includes(:motions).includes(:group)
-        .where("motions.phase = ? AND (discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL))", "voting", id, id)
+      user.discussions
+        .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+        .includes(:group)
+        .where('discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL)', id, id)
         .order("last_comment_at DESC")
     else
-      discussions.includes(:motions).where('motions.phase = ?', "voting").order("last_comment_at DESC")
+      discussions
+        .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+        .order("last_comment_at DESC")
     end
   end
 

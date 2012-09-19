@@ -161,7 +161,9 @@ class User < ActiveRecord::Base
   end
 
   def discussions_sorted
-    discussions.includes(:motions).where('motions.phase = ?', "voting").order("last_comment_at DESC")
+    discussions
+      .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+      .order("last_comment_at DESC")
   end
 
   def self.get_loomio_user
