@@ -201,6 +201,7 @@ body.groups.show {
     color: $dark-grey;
   }
 }
+
 /* membership request panel */
 #member-requests { display: inline; }
 
@@ -271,6 +272,7 @@ input#user_email{
   text-align: right;
   font-size: $font-tiny;
   display: inline;
+  color: $mid-grey;
   .close {
     padding-left: 8px;
     position: relative;

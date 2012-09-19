@@ -7,6 +7,7 @@ $ ->
     $("#user-discussions").removeClass('hidden')
     $("#discussions-loading").addClass('hidden')
   )
+  $("#all-discussions-loading").addClass('hidden')
 $ ->
   $(document).on('click', '#user-discussions .pagination a', (e)->
     unless $(this).parent().hasClass("gap")

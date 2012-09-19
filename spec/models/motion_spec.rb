@@ -49,21 +49,7 @@ describe Motion do
       @discussion = create(:discussion, group: group)
       @motion = create(:motion, discussion: @discussion)
     end
-
-    it "sets the discussion's has_current_motion flag to true" do
-      @user = create(:user)
-      group = create(:group)
-      @discussion = create(:discussion, group: group)
-      @motion = Motion.new()
-      @motion.name = "Test motion"
-      @motion.author = @user
-      @motion.discussion = @discussion
-      @motion.save
-      @discussion.reload
-      @discussion.has_current_motion.should == true
-    end
   end
-
 
   it "cannot have invalid phases" do
     @motion = create(:motion)
@@ -121,6 +107,14 @@ describe Motion do
     @motion.discussion.activity.should == 4
   end
 
+  it "cannot have an outcome if voting open" do
+    @motion = create(:motion)
+    @motion.outcome.blank?.should == true
+    @motion.set_outcome("blah blah")
+    @motion.save
+    @motion.outcome.blank?.should == true
+  end
+
   context "moving motion to new group" do
     before do
       @new_group = create(:group)
@@ -148,9 +142,6 @@ describe Motion do
 
     it "deletes associated votes" do
       Vote.first.should == nil
-    end
-    it "sets the discussion's has_current_motion flag to false" do
-      @discussion.has_current_motion.should == false
     end
   end
 
@@ -192,11 +183,24 @@ describe Motion do
       DidNotVote.all.count.should == 0
     end
 
-    it "sets the discussion's has_current_motion flag to false" do
-      @discussion.reload
-      @discussion.has_current_motion.should == false
+    it "can have an outcome" do
+      outcome = "Test Outcome"
+      @motion.set_outcome(outcome)
+      @motion.save
+      @motion.outcome.should == outcome
     end
 
+    it "sends a set outcome email notification to the motion author only" do
+      group = build(:group)
+      group.add_member!(create(:user))
+      group.add_member!(create(:user))
+      @discussion = create(:discussion, group: group)
+      @motion = create(:motion, discussion: @discussion)
+      MotionMailer.should_receive(:motion_closed)
+        .exactly(1).times
+        .with(@motion, @motion.author_email).and_return(stub(deliver: true))
+      @motion.close_voting!
+    end
   end
 
   context "open motion" do

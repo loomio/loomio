@@ -55,7 +55,6 @@ h5 {
 
 #start-new-topic { margin: 0 0 10px 2px; }
 #discussion-list {
-  border-top: 1px solid $light-grey;
   margin-bottom: 10px;
 }
 
@@ -103,6 +102,7 @@ li.empty-list-message {
 }
 
 /**** Structural elements ****/
+ul.selector-list.bordered { border-top: 1px solid $light-grey }
 ul.selector-list {
   list-style: none;
 }
@@ -128,7 +128,6 @@ li.selector-item a.selector-link:hover {
   .group-activity-indicator { background-color: $selector; }
   .group-activity-indicator.unread-group-activity { background-color: $group-activity; }
 }
-
 .pagination {
   a {
     color: $mid-grey;
@@ -421,4 +420,28 @@ a.btn-icon:hover { color: $dark-grey; }
 .large-icon.pie-icon {
   background-image: url("pie-24.png");
   opacity: 0.2;
+}
+
+/* bootstrap UI CSS overrides - better IE7 compatibility */
+.popover-inner {
+  background: black;
+}
+.selector-panel {
+  ul.tool-bar-list {
+    background-color: #f6f6f6;
+  }
+}
+.modal-backdrop {
+  top: 0;
+}
+.modal {
+  opacity: 100%;
+  filter:alpha(opacity=100);
+  form {
+    margin: 0;
+  }
+}
+.modal-header h3 {
+  display: inline;
+  width: 80%;
 }
