@@ -12,3 +12,12 @@ $ ->
     $("#uploaded-avatar").click()
     event.preventDefault()
   )
+
+# adds bootstrap popovers to user names
+$ ->
+  $(".comment-user-name").popover
+    trigger: "manual"
+    placement: "top"
+  $(".comment-user-name").click((event, ui) ->
+    $(".comment-user-name").popover('toggle')
+  )
