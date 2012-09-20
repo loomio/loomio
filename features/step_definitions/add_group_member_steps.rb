@@ -1,5 +1,5 @@
 When /^I invite "(.*?)" to the group$/ do |email|
-  click_on "add-members-btn"
+  click_on "group-add-members"
   fill_in 'user_email', with: email
   click_on 'invite'
 end
