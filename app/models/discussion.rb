@@ -55,7 +55,7 @@ class Discussion < ActiveRecord::Base
 
   def number_of_comments_since_last_looked(user)
     discussion_read_log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', id, user.id).first
-    if discussion_read_log.nil?
+    if discussion_read_log.blank?
       0
     else
       comments.where('comments.created_at > ?', discussion_read_log.discussion_last_viewed_at).count
@@ -68,7 +68,7 @@ class Discussion < ActiveRecord::Base
       group_activity = group.discussions.includes(:comments).joins('INNER JOIN discussion_read_logs ON discussion_read_logs.discussion_id = discussions.id AND discussion_read_logs.user_id = discussions.author_id')
         .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ? AND comments.created_at > discussion_read_logs.discussion_last_viewed_at', id, user.id, membership.last_viewed_at)
     end
-    if group_activity.empty?
+    if group_activity.blank?
       return false
     else
       return true

@@ -49,9 +49,8 @@ h5 {
 
 // structural elements (containers etc.)
 
-.sub_group{
-	font-size: $font-tiny;
-}
+.sub-panel li .group-link a { text-decoration: none; }
+.sub_group {font-size: $font-tiny;}
 
 #start-new-topic { margin: 0 0 10px 2px; }
 #discussion-list {
@@ -116,16 +115,14 @@ li.selector-item {
   background-color: $highlighted;
   a { color: black; }
   a .proposal-title { color: black; }
-  a .group-activity-indicator { background-color: $highlighted; }
 }
 li.selector-item a.selector-link {
   display: block;
-  padding: 5px 5px 5px 15px;
+  padding: 7px 5px 8px 15px;
 }
 li.selector-item a.selector-link:hover {
   background-color: $selector;
   text-decoration: none;
-  .group-activity-indicator { background-color: $selector; }
   .group-activity-indicator.unread-group-activity { background-color: $group-activity; }
 }
 .pagination {
@@ -193,7 +190,9 @@ li.selector-item a.selector-link:hover {
 }
 .label-group-activity {
   background-color: $group-activity;
-  color: #3B5998;
+  color: $group-activity-label;
+  font-weight: normal;
+  font-size: $font-tiny;
 }
 .group-presence-error-message {
   float: right;

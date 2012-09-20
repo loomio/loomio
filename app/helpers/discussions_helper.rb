@@ -14,13 +14,13 @@ module DiscussionsHelper
   def css_class_unread_discussion_activity_for(discussion, user)
     css_class = "discussion-preview"
     css_class += " sub-group-discussion" unless discussion.group.parent.nil?
-    css_class += " unread" if discussion.number_of_comments_since_last_looked(user) > 0 || signed_out?
+    css_class += " unread" if signed_out? || discussion.number_of_comments_since_last_looked(user) > 0
     css_class
   end
 
   def css_class_unread_group_activity_for(discussion, user)
     css_class = "group-activity-indicator"
-    css_class += " unread-group-activity" if discussion.has_activity_since_group_last_viewed?(user)
+    css_class += " unread-group-activity" if (not signed_out?) && params[:group_id] && discussion.has_activity_since_group_last_viewed?(user)
     css_class
   end
 
