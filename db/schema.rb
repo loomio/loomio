@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20120919050300) do
     t.datetime "updated_at"
     t.string   "access_level"
     t.integer  "inviter_id"
-    t.datetime "last_viewed_at", :default => '2012-09-19 05:07:16'
+    t.datetime "last_viewed_at", :default => '2012-09-20 06:00:33'
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
