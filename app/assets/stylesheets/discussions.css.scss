@@ -290,21 +290,18 @@ li .motion-preview {
 //       the dashboard page.
 //
 
-li.selector-item .discussion-preview a.selector-link {
-  padding: 0 5px 0 0;
+.group-activity-indicator {
+  margin: 0 0 0 -6px;
+  width: 4px;
+  height: 47px;
+  float: left;
+  background-color: $container;
 }
+  .unread-group-activity {background-color: $group-activity;}
 .discussion-preview {
-  .group-activity-indicator {
-    width: 5px;
-    height: 52px;
-    float: left;
-    background-color: $unhighlighted;
-    margin-right: 5px;
-  }
-  .unread-group-activity { background-color: $group-activity; }
+  float: left;
+  width: 620px;
   .discussion-container {
-    position: relative;
-    top: 6px;
   }
   a {
     color: $dark-grey;

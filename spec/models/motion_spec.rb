@@ -100,12 +100,12 @@ describe Motion do
     @motion.discussion.should_not be_nil
   end
 
-  it "can update discussion_activity" do
-    @motion = create(:motion)
-    @motion.discussion.activity = 3
-    @motion.update_discussion_activity
-    @motion.discussion.activity.should == 4
-  end
+  #it "can update discussion_activity" do
+    #@motion = create(:motion)
+    #@motion.discussion.activity = 3
+    #@motion.update_discussion_activity
+    #@motion.discussion.activity.should == 4
+  #end
 
   it "cannot have an outcome if voting open" do
     @motion = create(:motion)
