@@ -30,7 +30,7 @@
         =render 'groups'
         =render '/application/see_closed_motions'
       =render '/application/closed_motions', user: current_user, group: nil
-      =render '/discussions/new_discussion', discussion: @discussion, user_groups: @groups
+      =render '/discussions/new', discussion: @discussion, user_groups: @groups
 - else
   = link_to 'Create a group', new_group_path
   or wait until you are invited to one.

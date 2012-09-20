@@ -17,10 +17,9 @@ Given /^"(.*?)" is a non-admin of group "(.*?)"$/ do |email, group_name|
 end
 
 Given /^I visit create subgroup page for group named "(.*?)"$/ do |arg1|
-  find("#my-groups").click_on("My groups")
-  find("#my-groups").click_on(arg1)
-  find("#sub-groups .sub-panel .dropdown a").click
-  find("#sub-groups").click_link("Create a Sub-group +")
+  find("#groups").click_on("Groups")
+  find("#groups").click_on(arg1)
+  click_link("subgroup-new")
 end
 
 Given /^"(.*?)" is a member of "(.*?)"$/ do |email, group|
