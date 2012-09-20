@@ -6,6 +6,6 @@ class AddLastViewedAtToMembership < ActiveRecord::Migration
   end
 
   def down
-    remove_column :memberships
+    remove_column :memberships, :last_viewed_at
   end
 end
