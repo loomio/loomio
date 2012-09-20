@@ -107,24 +107,12 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
   end
 
-  def motions_in_voting_phase_that_user_has_voted_on
-    motions_in_voting_phase.that_user_has_voted_on(self).uniq
-  end
-
-  def motions_in_voting_phase_that_user_has_not_voted_on
-    motions_in_voting_phase - motions_in_voting_phase_that_user_has_voted_on
-  end
-
   def is_group_admin?(group)
     memberships.for_group(group).with_access('admin').exists?
   end
 
   def group_membership(group)
     memberships.for_group(group).first
-  end
-
-  def self.get_loomio_user
-    User.where(email: "contact@loom.io").first
   end
 
   def unviewed_notifications
@@ -156,8 +144,30 @@ class User < ActiveRecord::Base
     new_user
   end
 
-  def discussions_sorted()
-    discussions.order("last_comment_at DESC")
+  def discussions_with_current_motion_not_voted_on
+    if discussions
+      (discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on)
+    else
+      []
+    end
+  end
+
+  def discussions_with_current_motion_voted_on
+    if discussions
+      (discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", id))
+    else
+      []
+    end
+  end
+
+  def discussions_sorted
+    discussions
+      .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+      .order("last_comment_at DESC")
+  end
+
+  def self.get_loomio_user
+    User.where(:email => 'contact@loom.io').first
   end
 
   def update_motion_read_log(motion)
@@ -214,6 +224,25 @@ class User < ActiveRecord::Base
     discussion.activity - discussion_activity_when_last_read(discussion)
   end
 
+  def discussions_with_activity_count(group)
+    count = 0
+    group.discussions.each do |discussion|
+      count += 1 if discussion_activity_count(discussion) > 0
+      if discussion.current_motion
+        count += 1 if motion_activity_count(discussion.current_motion) > 0
+      end
+    end
+    count
+  end
+
+  def activity_total
+    total = 0;
+    groups.each do |group|
+      total += discussions_with_activity_count(group)
+    end
+    total
+  end
+
   def self.find_by_email(email)
     User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
   end
@@ -261,22 +290,6 @@ class User < ActiveRecord::Base
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?
     super && !deleted_at
-  end
-
-  def activity_total
-    total = 0;
-    groups.each do |group|
-      total += activity_total_in(group)
-    end
-    total
-  end
-
-  def activity_total_in(group)
-    total = 0
-    group.discussions.each do |discussion|
-      total += discussion_activity_count(discussion)
-    end
-    total
   end
 
   def gravatar?(email, options = {})

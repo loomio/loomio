@@ -22,9 +22,6 @@
             =" · " unless this_group
           .proposal-group-name= DiscussionDecorator.new(motion.discussion).display_group_name(this_group)
       .pie{id: "graph_#{motion.id}", 'data-votes' => motion.votes_graph_ready.to_json}
-      - if motion.voting? && motion_activity_count_for(motion, current_user) > 0
-        .activity-count.span.label.label-important
-          = motion_activity_count_for(motion, current_user)
 
 - if params[:controller] == 'discussions'
   :coffeescript

@@ -133,7 +133,8 @@ describe Motion do
 
   context "destroying a motion" do
     before do
-      @motion = create(:motion)
+      @discussion = create(:discussion)
+      @motion = create(:motion, discussion: @discussion)
       @vote = Vote.create(position: "no", motion: @motion, user: @motion.author)
       @comment = @motion.discussion.add_comment(@motion.author, "hello")
       @motion.destroy
@@ -149,7 +150,8 @@ describe Motion do
       @user1 = create(:user)
       @user2 = create(:user)
       @user3 = create(:user)
-      @motion = create(:motion, author: @user1)
+      @discussion = create(:discussion)
+      @motion = create(:motion, discussion: @discussion)
       @motion.group.add_member!(@user2)
       @motion.group.add_member!(@user3)
       vote1 = create(:vote, :position => 'yes', :user => @user1, :motion => @motion)

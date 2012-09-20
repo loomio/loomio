@@ -7,6 +7,11 @@ Feature: Login
     When I login as "hello@world.com"
     Then I should be logged in
 
+  Scenario: Login to an empty group
+    Given a group "demo-group" with "hello@world.com" as admin
+    When I login as "hello@world.com"
+    Then I should be logged in
+
   Scenario: Not A Registered User
     When I login as "hello@world.com"
     Then I should not be logged in

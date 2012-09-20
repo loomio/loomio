@@ -104,8 +104,8 @@ class Membership < ActiveRecord::Base
     end
 
     def remove_open_votes
-      group.motions_in_voting_phase_that_user_has_voted_on(user).each do |motion|
-        votes = motion.votes.where(:user_id => user.id)
+      group.discussions_with_current_motion_voted_on(user).each do |discussion|
+        votes = discussion.current_motion.votes.where(:user_id => user.id)
         votes.destroy_all
       end
     end
