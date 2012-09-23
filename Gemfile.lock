@@ -235,6 +235,7 @@ GEM
     net-ssh (2.2.1)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
+    newrelic_rpm (3.4.2.1)
     nokogiri (1.5.5)
     orm_adapter (0.0.7)
     paperclip (3.1.2)
@@ -400,6 +401,7 @@ DEPENDENCIES
   kaminari
   launchy
   modernizr-rails (~> 2.0.6)
+  newrelic_rpm
   nokogiri
   paperclip
   pg
