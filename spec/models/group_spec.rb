@@ -301,6 +301,23 @@ describe Group do
     end
   end
 
+  describe "activity_since_last_viewed?(user)" do
+    before do
+      @group = create(:group)
+      @user = create(:user)
+      @membership = create :membership, group: @group, user: @user
+    end
+    it "should return true if there is a membership and if there is new activity since this group was last viewed" do
+      @group.stub(:membership).with(@user).and_return(@membership)
+      @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
+      @group.activity_since_last_viewed?(@user).should == true
+    end
+    it "should return the 0 there is no membership" do
+      @group.stub(:membership).with(@user)
+      @group.activity_since_last_viewed?(@user).should == false
+    end
+  end
+
   describe "#create_welcome_loomio" do
     before do
       @loomio_helper_bot = create(:user)

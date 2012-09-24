@@ -378,7 +378,10 @@ a.btn-icon:hover { color: $dark-grey; }
   margin: 6px 13px 0 13px;
   float: left;
 }
-
+.small-icon.dot-icon {
+  background-image:url('/assets/dot-18.png');
+  float: right;
+}
 .small-icon.topic-icon {
   background-image:url('/assets/topic-18.png');
   opacity: 0.5;
