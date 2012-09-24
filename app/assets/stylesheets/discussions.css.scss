@@ -2,47 +2,131 @@
 /*@import "bootstrap";*/
 @import "mixins";
 
-/** discussion new form*/
-body.discussions.new {
-  .notify-group-checkbox {
-    margin-bottom: 15px;
-  }
-  .btn { display: block; }
+/** discussion new (new loomio) modal*/
+form.new_discussion {
+  .helper-text.align-with-input { margin-top: 20px }
 }
 
 /** discussion show form*/
 body.discussions.show {
-  .discussion-title {
-    width: 438px;
-    color: $dark-grey;
-    padding: 5px 10px 5px 10px;
-    h1 {
-      padding: 0px;
-      line-height: 1.2em;
+  .group-title {
+    margin-bottom: 10px;
+  }
+  .selector-panel {
+    background-color: $selector-panel;
+    @include border-radius(8px);
+    border: 1px solid $light-grey;
+    margin-bottom: 20px;
+    min-height: 59px;
+    padding-top: 2px;
+    h2.panel-header {
+      padding-left: 10px;
+      float: left;
+      min-height: 3px;
+    }
+    .dropdown {
+      float: right;
+      padding: 2px 10px;
+      li {
+        background-color: white;
+        border: none;
+        a {
+          text-shadow: none;
+        }
+      }
     }
   }
+  #discussion-title {
+    float: left;
+  }
+  h1#discussion-title {
+    color: $dark-grey;
+  }
+  #edit-discussion-title {
+    float: left;
+    form {
+      margin-bottom: 0px;
+      width: 830px;
+    }
+    form .control-group #discussion-input {
+      width: 820px;
+      font-size: $font-xlarge;
+      margin-bottom: 2px;
+    }
+    .control-group { margin-bottom: 0px; }
+    .character-counter { bottom: 0; }
+    .save-buttons {
+      position: relative;
+      bottom: 5px;
+    }
+    #cancel-edit-title {
+      margin-left: 10px;
+      color: $mid-grey;
+      text-decoration: underline;
+      position: relative;
+      font-size: $font-tiny;
+    }
+    #cancel-edit-title:hover {
+      color: $dark-grey;
+    }
+  }
+
+  #discussion-panel-content {
+    background-color: white;
+    border-top: 1px solid $light-grey;
+    border-bottom: 1px solid $light-grey;
+    padding-bottom: 20px;
+    margin-bottom: 5px;
+  }
+
+  #discussion-context {
+    min-height: 40px;
+    border-bottom: 1px solid $light-grey;
+    padding: 10px 0px 10px 50px;
+  }
+
+  .header-text {
+    color: $mid-grey;
+    line-height: 2.0em;
+  }
 }
-/*  proposal panel  */
-li .motion { padding: 5px 15px; }
-.close-date {
-  font-size: $font-tiny;
-  color: $mid-grey;
+
+#content-proposal {
+  width: 468px;
+  .proposal-btn {
+    float: right;
+    margin-top: 8px;
+  }
 }
-li.selector-item.current-proposal {
-  background-color: $current-proposal;
-  table.jqplot-table-legend { background-color: $current-proposal; }
+.content-proposal-body {
+  padding: 10px 20px 10px 50px;
 }
-li.preview a {
-  padding: 10px 15px;
-  text-decoration: none;
+li .motion {
+  padding: 0 5px 0px 0px;
+  .close-date {
+    font-size: $font-tiny;
+    color: $mid-grey;
+  }
+}
+li .motion-preview {
+  a {
+    padding: 10px 15px;
+    text-decoration: none;
+  }
 }
 
 /*** comments, positions & proposals in History ***/
 #content-history {
+  width: 469px;
+  border-right: 1px solid $light-grey;
+
+  #content-history-body {
+    padding: 10px 20px 10px 8px;
+  }
+
   #new-comment-form {
-    border-top: 1px solid $light-grey;
     margin-bottom: 0px;
-    padding: 10px 0 10px 5px;
+    padding: 0 0 10px 0;
     background-color: $comment-color;
   }
 
@@ -58,7 +142,6 @@ li.preview a {
   #new-comment {
     margin: 0 0 5px 0px;
     width: 385px;
-    max-width: 385px;
     height: 80px;
     color: $dark-grey;
   }
@@ -67,26 +150,18 @@ li.preview a {
     margin: 5px 5px 5px 45px;
   }
 
-  #new-comment-form .medium-user-avatar.avatar-canvas {
-    margin-right: 10px;
-  }
-
   ul.history-list {
     list-style: none;
-    border-bottom: 1px solid $light-grey;
     margin: 0 0 3px 0;
-  }
-  li.history-item {
-    border-top: 1px solid $light-grey;
   }
 
   /* comment */
   .comment{
-    padding: 5px 10px 5px 5px;
+    padding: 0 10px 0 0px;
     color: $dark-grey;
     font-size: $font-small;
     background-color: $comment-color;
-    width: 443px;
+    width: 450px;
   }
 
   /* Apply word break only to paragraphs in comment-body */
@@ -135,11 +210,23 @@ li.preview a {
   }
 
   .comment-avatar {
-    margin: 0 10px 0 0;
-    float: left;
-    width: 8%;
+    position: relative;
+    top: 8px;
   }
 
+  .comment-container {
+    display: inline-block;
+    width: 400px;
+    padding: 5px 0;
+    margin-left: 40px;
+    border-bottom: 1px solid $light-grey;
+  }
+  .comment-container.with-avatar {
+    margin-left: 0;
+  }
+  .comment.position {
+    width: 400px;
+  }
   .comment img {
     float: left;
   }
@@ -188,15 +275,6 @@ li.preview a {
     background: $comment-color;
     color: $mid-grey;
   }
-  .proposal .tool-bar-item-proposal {
-    float: left;
-    display: inline;
-    height: 19px;
-    width: 22px;
-    background-position: 2px 1px;
-  }
-  .proposal-info {
-  }
   .proposal .proposal-text{
     color: $mid-grey;
     font-style: italic;
@@ -221,38 +299,49 @@ li.preview a {
   a:hover {
     text-decoration: none;
   }
+  .vote-icon {
+    float: left;
+    width: 20px;
+    position: relative;
+    top: 6px;
+    padding-right: 7px;
+  }
   .discussion-title {
     display: inline;
     float: left;
-    width: 480px;
   }
   .group-name {
     font-size: $font-small;
     color: $mid-grey;
-    width: 480px;
+    width: 340px;
   }
-  .notification-info {
-    float: right;
-  }
-  .latest-comment-time {
-    color: $mid-grey;
+  .discussion-date-info {
     display: inline;
     float: right;
-    padding-right: 10px;
+    font-size: $font-small;
+    padding: 10px 10px 0 0;
   }
-  .discussion-icon-container {
+  .discussion-date-info .latest-comment-time {
     display: inline;
+  }
+  .discussion-date-info .proposal-close-date {
+    display: inline;
+  }
+  .pie {
     float: right;
-    background-image: url("discussion-25.png");
-    background-repeat: no-repeat;
-    width: 32px;
-    height: 20px;
+    width: 36px;
+    height: 36px;
+    z-index: 1;
+    /*margin-left: 4px;*/
   }
   .enabled-icon {
     -moz-opacity: 1.0;
     filter:alpha(opacity=100);
     opacity: 1.0;
    }
+  .activity-icon { float: right; }
+  .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
+  .pie-icon.activity-icon { margin: 8px 4px 0 8px; }
   .disabled-icon {
     -moz-opacity: 0.2;
     filter:alpha(opacity=20);
@@ -264,6 +353,11 @@ li.preview a {
     font-size: $font-tinywiny;
     position: relative;
     bottom: 9px;
+    z-index: 2;
+  }
+  .pie .activity-count {
+    bottom: 1px;
+    margin-left: 24px;
   }
   .discussion-link {
     position: relative;

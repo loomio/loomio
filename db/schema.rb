@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120915222554) do
+ActiveRecord::Schema.define(:version => 20120915004406) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(:version => 20120915222554) do
     t.integer  "eventable_id"
     t.string   "eventable_type"
     t.integer  "user_id"
-    t.integer  "event_level",    :default => 1, :null => false
   end
 
   add_index "events", ["eventable_id"], :name => "index_events_on_eventable_id"
@@ -130,7 +129,7 @@ ActiveRecord::Schema.define(:version => 20120915222554) do
     t.datetime "updated_at"
     t.string   "access_level"
     t.integer  "inviter_id"
-    t.integer  "sub_level",    :default => 1, :null => false
+    t.integer  "noise_level",  :default => 1, :null => false
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"

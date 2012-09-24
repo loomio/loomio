@@ -15,53 +15,58 @@ class Event < ActiveRecord::Base
   # but for now it's the easiest readability wise 
   # because we're creating a relationship between events and groups
 
-  def self.new_discussion!(discussion, group)
+  def self.new_discussion!(discussion)
+    group = discussion.group
     event = create!(:kind => "new_discussion", :eventable => discussion)
     discussion.group_users.each do |user|
-      if user != discussion.author && user.get_group_sub_level(group) >= 2
+      if user != discussion.author && user.get_group_noise_level(group) >= 2
         event.notifications.create! :user => user
       end
     end
     event
   end
 
-  def self.new_comment!(comment, group)
+  def self.new_comment!(comment)
+    group = comment.discussion.group
     event = create!(:kind => "new_comment", :eventable => comment)
     event_level = 0
     comment.discussion_participants.each do |user|
-      if user != comment.user && user.get_group_sub_level(group) >= 1 # check
+      if user != comment.user && user.get_group_noise_level(group) >= 1 # check
         event.notifications.create! :user => user
       end
     end
     event
   end
 
-  def self.new_motion!(motion, group)
+  def self.new_motion!(motion)
+    group = motion.group
     event = create!(:kind => "new_motion", :eventable => motion)
     motion.group_users.each do |user|
-      if user != motion.author && user.get_group_sub_level(group) >= 1
+      if user != motion.author && user.get_group_noise_level(group) >= 1
         event.notifications.create! :user => user
       end
     end
     event
   end
 
-  def self.motion_closed!(motion, closer, group)
+  def self.motion_closed!(motion, closer)
+    group = motion.group
     event = create!(:kind => "motion_closed", :eventable => motion, :user => closer)
     motion.group_users.each do |user| 
-      if user != closer && user.get_group_sub_level(group) >= 2 # or facilitator
+      if user != closer && user.get_group_noise_level(group) >= 2 # or facilitator
         event.notifications.create! :user => user
       end
     end
   end
 
-  def self.new_vote!(vote, group)
+  def self.new_vote!(vote)
+    group = vote.motion.group
     event = create!(:kind => "new_vote", :eventable => vote)
     begin
-      if vote.user != vote.motion_author && vote.user.get_group_sub_level(group) >= 2
+      if vote.user != vote.motion_author && vote.user.get_group_noise_level(group) >= 2
         event.notifications.create! :user => vote.motion_author
       end
-      if vote.user != vote.discussion_author && vote.user.get_group_sub_level(group) >= 2
+      if vote.user != vote.discussion_author && vote.user.get_group_noise_level(group) >= 2
         event.notifications.create! :user => vote.discussion_author
       end
     rescue ActiveRecord::RecordInvalid => error
@@ -72,27 +77,30 @@ class Event < ActiveRecord::Base
     event
   end
 
-  def self.motion_blocked!(vote, group)
+  def self.motion_blocked!(vote)
+    group = vote.group
     event = create!(:kind => "motion_blocked", :eventable => vote)
     vote.group_users.each do |user| 
-      if user != vote.user && user.get_group_sub_level(group) >= 1 # or facilitator
+      if user != vote.user && user.get_group_noise_level(group) >= 1 # or facilitator
         event.notifications.create! :user => user
       end
     end
     event
   end
 
-  def self.membership_requested!(membership, group)
+  def self.membership_requested!(membership)
+    group = membership.group
     event = create!(:kind => "membership_requested", :eventable => membership)
     membership.group_admins.each do |admin|
-      if user.get_group_sub_level(group) >= 1
+      if user.get_group_noise_level(group) >= 1
         event.notifications.create! :user => admin
       end
     end
     event
   end
 
-  def self.user_added_to_group!(membership, group)
+  def self.user_added_to_group!(membership)
+    group = membership.group
     event = create!(:kind => "user_added_to_group", :eventable => membership)
     event.notifications.create! :user => membership.user
     # Send email only if the user has already accepted invitation to Loomio
@@ -103,6 +111,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.comment_liked!(comment_vote)
+    group = comment_vote.comment.discussion.group
     event = create!(:kind => "comment_liked", :eventable => comment_vote)
     unless comment_vote.user == comment_vote.comment_user
       event.notifications.create! :user => comment_vote.comment_user

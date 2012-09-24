@@ -109,24 +109,12 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
   end
 
-  def motions_in_voting_phase_that_user_has_voted_on
-    motions_in_voting_phase.that_user_has_voted_on(self).uniq
-  end
-
-  def motions_in_voting_phase_that_user_has_not_voted_on
-    motions_in_voting_phase - motions_in_voting_phase_that_user_has_voted_on
-  end
-
   def is_group_admin?(group)
     memberships.for_group(group).with_access('admin').exists?
   end
 
   def group_membership(group)
     memberships.for_group(group).first
-  end
-
-  def self.get_loomio_user
-    User.where(email: "contact@loom.io").first
   end
 
   def unviewed_notifications
@@ -153,13 +141,37 @@ class User < ActiveRecord::Base
     new_user = User.invite!(user_params, inviter) do |u|
       u.skip_invitation = true
     end
-    membership = group.add_member! new_user, inviter
-    UserMailer.invited_to_loomio(new_user, inviter, group).deliver
+    if new_user.errors.empty?
+      membership = group.add_member! new_user, inviter
+      UserMailer.invited_to_loomio(new_user, inviter, group).deliver
+    end
     new_user
   end
 
-  def discussions_sorted()
-    discussions.order("last_comment_at DESC")
+  def discussions_with_current_motion_not_voted_on
+    if discussions
+      (discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on)
+    else
+      []
+    end
+  end
+
+  def discussions_with_current_motion_voted_on
+    if discussions
+      (discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", id))
+    else
+      []
+    end
+  end
+
+  def discussions_sorted
+    discussions
+      .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+      .order("last_comment_at DESC")
+  end
+
+  def self.get_loomio_user
+    User.where(:email => 'contact@loom.io').first
   end
 
   def update_motion_read_log(motion)
@@ -214,6 +226,25 @@ class User < ActiveRecord::Base
 
   def discussion_activity_count(discussion)
     discussion.activity - discussion_activity_when_last_read(discussion)
+  end
+
+  def discussions_with_activity_count(group)
+    count = 0
+    group.discussions.each do |discussion|
+      count += 1 if discussion_activity_count(discussion) > 0
+      if discussion.current_motion
+        count += 1 if motion_activity_count(discussion.current_motion) > 0
+      end
+    end
+    count
+  end
+
+  def activity_total
+    total = 0;
+    groups.each do |group|
+      total += discussions_with_activity_count(group)
+    end
+    total
   end
 
   def self.find_by_email(email)
@@ -285,18 +316,17 @@ class User < ActiveRecord::Base
     total
   end
 
-  def get_group_sub_level(group_id)
-    mship = memberships.find_by_user_id_and_group_id(self, group_id)
-    mship.sub_level
+  def get_group_noise_level(group_id)
+    mship = memberships.find_by_user_id_and_group_id(self, group)
+    mship.noise_level
   end
 
-  def group_sub_level(group_id, sub_level)
+  def group_noise_level(group_id, noise_level)
     @group = Group.find(group_id)
     membership = memberships.find_by_user_id_and_group_id(self, @group)
-    membership.sub_level = sub_level
+    membership.noise_level = noise_level
     membership.save!
   end
-
 
   def gravatar?(email, options = {})
     hash = Digest::MD5.hexdigest(email.to_s.downcase)

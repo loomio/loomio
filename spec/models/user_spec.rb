@@ -127,35 +127,84 @@ describe User do
     end
   end
 
-  describe "motions_in_voting_phase_that_user_has_voted_on" do
-    it "calls scope on motions_in_voting_phase" do
-      user.motions_in_voting_phase.should_receive(:that_user_has_voted_on).
-        with(user).and_return(stub(:uniq => true))
-
-      user.motions_in_voting_phase_that_user_has_voted_on
-    end
-  end
-
-  describe "motions_in_voting_phase_that_user_has_not_voted_on" do
-    it "does stuff " do
-      user.should_receive(:motions_in_voting_phase_that_user_has_not_voted_on)
-
-      user.motions_in_voting_phase_that_user_has_not_voted_on
-    end
-  end
-
-  describe "user.discussions_sorted_paged" do
-    it "returns a list of discussions sorted by last_comment_at" do
-      discussion1 = create :discussion, :author => user
-      discussion2 = create :discussion, :author => user
-      discussion2.add_comment user, "hi"
-      discussion3 = create :discussion, :author => user
-      discussion4 = create :discussion, :author => user
+  context do
+    before do
+      group1 = create(:group)
+      group.add_member!(user)
+      group1.add_member!(user)
+      discussion1 = create :discussion, :group => group, :author => user
+      discussion2 = create :discussion, :group => group, :author => user
+      discussion3 = create :discussion, :group => group1, :author => user
       discussion1.add_comment user, "hi"
-      user.discussions_sorted[0].should == discussion1
-      user.discussions_sorted[1].should == discussion4
-      user.discussions_sorted[2].should == discussion3
-      user.discussions_sorted[3].should == discussion2
+      discussion1.add_comment user, "bye"
+      discussion2.add_comment user, "bye"
+      motion = create(:motion, discussion: discussion2)
+      vote = user.votes.new(:position => "yes")
+      vote.motion = motion
+      vote.save
+    end
+    describe "discusssions_with_activity_count(group)" do
+      it "should return the number of discussions with comment and/or vote activity in the givin group" do
+        user.discussions_with_activity_count(group).should == 3
+      end
+    end
+    describe "activity_total" do
+      it "should return the total number of dicussions with activity over all the users groups" do
+        user.activity_total.should == 3
+      end
+    end
+  end
+
+  context do
+    before do
+      group.add_member!(user)
+      @discussion1 = create :discussion, :group => group
+      motion1 = create(:motion, discussion: @discussion1, author: user)
+      @discussion2 = create :discussion, :group => group
+      motion2 = create(:motion, discussion: @discussion2, author: user)
+      vote = Vote.new(position: "yes")
+      vote.motion = motion2
+      vote.user = user
+      vote.save
+    end
+    describe "discussions_with_current_motion_not_voted_on" do
+      it "should return all discussions with a current motion that a user has not voted on" do
+        user.discussions_with_current_motion_not_voted_on.should include(@discussion1)
+        user.discussions_with_current_motion_not_voted_on.should_not include(@discussion2)
+      end
+    end
+
+    describe "discussions_with_current_motion_voted_on" do
+      it "should return all discussions with a current motion that a user has voted on" do
+        user.discussions_with_current_motion_voted_on.should include(@discussion2)
+        user.discussions_with_current_motion_voted_on.should_not include(@discussion1)
+      end
+    end
+  end
+
+  describe "user.discussions_sorted" do
+    before do
+      @user = create(:user)
+      @group = create(:group)
+      @group.add_member!(@user)
+      @discussion1 = create :discussion, group: @group, :author => @user
+    end
+    it "returns a list of discussions sorted by last_comment_at" do
+      @discussion2 = create :discussion, :author => @user
+      @discussion2.add_comment @user, "hi"
+      @discussion3 = create :discussion, :author => @user
+      @discussion4 = create :discussion, :author => @user
+      @discussion1.add_comment @user, "hi"
+      @user.discussions_sorted[0].should == @discussion1
+      @user.discussions_sorted[1].should == @discussion4
+      @user.discussions_sorted[2].should == @discussion3
+      @user.discussions_sorted[3].should == @discussion2
+    end
+    it "should not include discussions with a current motion" do
+      motion = create :motion, :discussion => @discussion1, author: @user
+      motion.close_voting!
+      motion1 = create :motion, :discussion => @discussion1, author: @user
+      @user.discussions_sorted.should_not include(@discussion1)
     end
   end
 
@@ -380,6 +429,27 @@ describe User do
       notification.viewed_at = Time.now
       notification.save
       user.unviewed_notifications.count.should == 0
+    end
+  end
+
+  describe "get_loomio_user" do
+    it "returns the loomio helper bot user (email: contact@loom.io)" do
+      user = User.new
+      user.name = "loomio evil bot"
+      user.email = "darkness@loom.io"
+      user.password = "password"
+      user.save!
+      user1 = User.new
+      user1.name = "loomio helper bot"
+      user1.email = "contact@loom.io"
+      user1.password = "password"
+      user1.save!
+      user2 = User.new
+      user2.name = "George Washingtonne"
+      user2.email = "georgie_porgie@usa.com"
+      user2.password = "password"
+      user2.save!
+      User.get_loomio_user.should == user1
     end
   end
 

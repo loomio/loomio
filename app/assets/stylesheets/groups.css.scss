@@ -12,10 +12,26 @@
     margin: 5px 13px;
     border-top: 1px solid #CCC
   }
+  h1 {
+    float: left;
+    line-height: 1.2em;
+  }
+  h1 #page-title a {
+    color: $dark-grey;
+  }
+  #page-title {
+    display: inline;
+    color: $dark-grey;
+  }
+  #privacy {
+    display: inline;
+    margin: 10px;
+    position: relative;
+    top: 2px;
+  }
   .group-options {
     display: inline;
     position: relative;
-    bottom: 4px;
     float: right;
   }
   .group-options a {
@@ -59,7 +75,6 @@
     }
   }
   #group_name { width: 390px; }
-  /*#settings-header { margin-bottom: 10px; }*/
   .setting-label {
     margin-bottom: 4px;
     color: $mid-grey;
@@ -82,36 +97,60 @@
 
 /**** Group page ****/
 
-body.groups.show .discussion-preview a { padding: 13px 5px 14px 10px; }
-li.selector-item.no-discussions, li.selector-item.no-proposals {
-  /*padding: 5px 10px;*/
-  /*background-color: $highlighted*/
+body.groups.show {
+  .discussion-preview .discussion-title { margin: 8px 0 8px 0; }
 }
-.tick {
-  padding-left: 5px;
-  position: relative;
-  bottom: 4px;
-}
-li.tool-bar-item.no-image a {
-  padding: 5px 10px 6px 10px;
-}
-li.tool-bar-item.no-image:hover  {
-  background-color: #ccc;
-}
-li.tool-bar-item#proposal {
-  background-image:url('/assets/proposal.png');
-  background-position: 10px 4px;
-}
-li.tool-bar-item#proposal:hover {
-  background-position: 10px -49px;
-}
-li.tool-bar-item#discussion {
-  background-image:url('/assets/discussion-white.png');
-  background-position: 10px -59px;
+.sub-panel {
+  background-color: $sub-selector-panel;
+  @include border-radius(8px);
+  border: 1px solid $light-grey;
+  margin-bottom: 20px;
+  padding: 6px 6px;
+  h3 {
+    font-size: $font-medium;
+    color: $header-titles-color;
+    display: inline;
+    line-height: 1.8em;
+    margin-bottom: 5px;
+  }
+  .btn {
+    color: $mid-grey;
+  }
+  .edit_group .btn {
+    float: right;
+  }
+  ul {
+    border-top: none;
+    list-style: none;
+    margin: 0 0 8px 0;
+  }
+  li {
+    line-height: 1.6em;
+    background-color: $sub-selector-panel;
+    a {
+      color: $mid-grey;
+      text-decoration: underline;
+    }
+  }
+  .dropdown { float: right; }
+  .dropdown li {
+    background-color: white;
+    line-height: 1em;
+  }
+  .dropdown li a {
+    color: $dark-grey;
+    text-shadow: none;
+    text-decoration: none;
+  }
+  .dropdown li a:hover { color: white; }
 }
 
-li.tool-bar-item#discussion:hover {
-  background-position: 10px 4px;
+/*group panel*/
+.sub-panel#groups{
+  h3 { display: block; }
+  ul {
+    .sub-group a{ padding-left: 20px; }
+  }
 }
 
 /*request membership panel*/
@@ -123,69 +162,47 @@ li.tool-bar-item#discussion:hover {
   }
   margin-bottom: 10px;
 }
-/* group description panel */
-#group-description {
+/* description panel */
+.sub-panel#group-description-panel {
+  #add-edit-description {
+    form { margin-bottom: 0px }
+    #description-input {
+      width: 270px;
+      height: 90px;
+      margin-bottom: 2px;
+    }
+    .character-counter {
+      width: 278px;
+      position: relative;
+      bottom: 27px;
+    }
+    .control-group { margin-bottom: 0px; }
+  }
+}
+#edit-description {
+  color: $mid-grey;
+  text-decoration: underline;
+}
+#edit-description:hover {
   color: $dark-grey;
-  .group-description {
-    font-size: $font-small;
-    width: 260px;
-    float: left;
-    display: inline;
-    padding: 2px 0 2px 2px;
-  }
 }
-#add-group-description {
-  form { margin-bottom: 0px }
-  #description-input {
-    width: 270px;
-    height: 90px;
-    margin-bottom: 2px;
-  }
-  .character-counter {
-    width: 278px;
-    position: relative;
-    bottom: 0px;
-    margin-bottom: 8px;
-  }
-  .control-group { margin-bottom: 0px; }
-}
-#cancel-add-description {
-  color: $mid-grey;
-  padding-right: 10px;
-  float: right;
-  position: relative;
-  top: 5px;
-  font-size: $font-tiny;
-}
-#add-description {
-  color: $mid-grey;
-}
-
 #add-member-popup-btn {
   margin-bottom: 5px;
 }
 
 /* sub groups panel */
 #sub-groups {
-  .new_motion_link {
-    float: right;
-    padding-right: 10px;
+  h3 { display: block; }
+  .group-link a:hover {
+    color: $dark-grey;
   }
 }
+
 /* membership request panel */
 #member-requests { display: inline; }
 
 /* add member panel */
 #add-members {
-  #add-members-btn {
-    float: left;
-    width: 135px;
-    text-align: left;
-  }
-  #add-members-btn .btn-text {
-    padding-left: 5px;
-    display: inline;
-  }
   .btn#invite {
     margin-top: 0px;
     width: 60px;
@@ -258,13 +275,15 @@ input#user_email{
     bottom: 2px;
     color: $mid-grey;
     opacity: 0.6;
+    text-decoration: none;
   }
   .close:hover {
     color: black;
   }
-  a { color: $mid-grey; }
 }
-
+.admin-controls a:hover {
+  color: $dark-grey;
+}
 
 /**** Private group form ****/
 #private-message {
@@ -274,30 +293,3 @@ input#user_email{
   margin: 0px auto;
 }
 
-/* dashboard */
-.sub-panel a { color: $mid-grey; }
-.sub-group {
-  font-size: $font-small;
-  padding-left: 20px;
-}
-
-
-/*.info-help {*/
-  /*margin-left: 6px;*/
-  /*height: 19px;*/
-  /*width: 16px;*/
-  /*-moz-opacity: .5;*/
-  /*filter:alpha(opacity=50);*/
-  /*opacity: 0.5;*/
-  /*background-image:url("/assets/dark-info.png");*/
-  /*background-repeat: no-repeat;*/
-  /*background-position-y: 3px;*/
-  /*display: inline-block;*/
-  /*@include ie7-inline-block();*/
-  /*cursor: pointer;*/
-  /*position: relative;*/
-  /*bottom: 3px;*/
-/*}*/
-/*.info-help:hover {*/
-  /*opacity: 1;*/
-/*}*/

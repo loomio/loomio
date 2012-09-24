@@ -82,7 +82,7 @@ describe Event do
 
   describe "new_motion!" do
     let(:motion) { create(:motion) }
-    subject { Event.new_motion!(motion, motion.group) }
+    subject { Event.new_motion!(motion) }
 
     its(:kind) { should eq("new_motion") }
     its(:eventable) { should eq(motion) }
@@ -121,7 +121,7 @@ describe Event do
         @motion = create(:motion, :discussion => discussion, :author => create(:user))
         @motion.group.add_member!(@user)
         @vote = create(:vote, :user => @user, :motion => @motion, :position => "yes")
-        @event = Event.new_vote!(@vote, group)
+        @event = Event.new_vote!(@vote)
       end
 
       it "notifies motion author" do
@@ -158,7 +158,7 @@ describe Event do
 
   describe "motion_blocked!" do
     let(:vote) { mock_model(Vote, :group_users => []) }
-    subject { Event.motion_blocked!(vote, group) }
+    subject { Event.motion_blocked!(vote) }
 
     its(:kind) { should eq("motion_blocked") }
     its(:eventable) { should eq(vote) }
@@ -171,7 +171,7 @@ describe Event do
         @vote = @motion.author.votes.new(:position => "block")
         @vote.motion = @motion
         @vote.save!
-        @event = Event.motion_blocked!(@vote, :group)
+        @event = Event.motion_blocked!(@vote)
       end
 
       it "notifies group members" do
@@ -200,7 +200,7 @@ describe Event do
         @group.add_admin! @admin1
         @group.add_admin! @admin2
         @membership = @group.add_request! @user
-        @event = Event.membership_requested!(@membership, @membership.group)
+        @event = Event.membership_requested!(@membership)
       end
 
       it "notifies admins" do
@@ -214,7 +214,7 @@ describe Event do
 
   describe "user_added_to_group!" do
     let(:membership) { create(:group).add_member! create(:user) }
-    subject { Event.user_added_to_group!(membership, membership.group) }
+    subject { Event.user_added_to_group!(membership) }
 
     its(:kind) { should eq("user_added_to_group") }
     its(:eventable) { should eq(membership) }
@@ -224,7 +224,7 @@ describe Event do
         @group = create(:group)
         @user = create(:user)
         @membership = @group.add_member! @user
-        @event = Event.user_added_to_group!(@membership, @membership.group)
+        @event = Event.user_added_to_group!(@membership)
       end
 
       it "notifies user" do
@@ -235,7 +235,7 @@ describe Event do
       it "sends email to user" do
         UserMailer.should_receive(:added_to_group).with(@user, @group).
           and_return(stub(deliver: true))
-        @event = Event.user_added_to_group!(@membership, @membership.group)
+        @event = Event.user_added_to_group!(@membership)
       end
 
       it "does not send email to user if user has not yet acctepted invitation
@@ -245,7 +245,7 @@ describe Event do
         @membership = @user.memberships.first
         UserMailer.should_not_receive(:added_to_group)
 
-        @event = Event.user_added_to_group!(@membership, @membership.group)
+        @event = Event.user_added_to_group!(@membership)
       end
     end
   end

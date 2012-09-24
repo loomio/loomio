@@ -1,0 +1,30 @@
+#outcome-statement
+  - if can? :edit_outcome, motion
+    - if motion.outcome.blank?
+      #outcome-input
+        = form_for motion, :url => edit_outcome_motion_path(motion.id) do |f|
+          = f.hidden_field :id
+          .control-group
+            = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', placeholder: "What was the outcome of this proposal?"
+          .character-counter
+          .save-button.clearfix
+            = f.submit "Save", class: 'btn btn-mini run-validations', id: 'add-outcome-submit'
+    - else
+      #outcome-input.hidden
+        = form_for motion, :url => edit_outcome_motion_path(motion.id) do |f|
+          = f.hidden_field :id
+          .control-group
+            = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', placeholder: "What was the outcome of this proposal?"
+          .character-counter
+          .save-button.clearfix
+            = f.submit "Save", class: 'btn btn-mini run-validations', id: 'add-outcome-submit'
+  #outcome-display
+    .statement-display.well
+      .clearfix
+        - if can? :edit_outcome, motion
+          = button_to "Edit", "#", class: 'btn btn-mini outcome-edit-button', id: 'edit-outcome', :method => "get"
+        .outcome-label Outcome
+        - if motion.outcome.blank?
+          %p.no-outcome= "No outcome has been specified for this proposal"
+        - else
+          %p= motion.outcome
