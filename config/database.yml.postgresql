@@ -1,4 +1,0 @@
-test:
-  adapter: postgresql
-  database: loomio_test
-  username: postgres
