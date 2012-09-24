@@ -21,6 +21,7 @@
 //= require bootstrap-custom
 //= require main
 //= require groups
+//= require discussions
 //= require motions
 //= require users
 //= require notifications

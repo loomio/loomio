@@ -3,8 +3,6 @@
     - if @discussions.exists?
       - @discussions.each do |discussion|
         %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
-    - else
-      %li.selector-item.empty-list-message= "There are no discussions for this group"
   #discussions-loading
     %li.selector-item.loading Loading...
 = paginate @discussions, :window => 3, :remote => :true

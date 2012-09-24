@@ -7,6 +7,7 @@
   left: 0;
   width: 100%;
   background-image: url("title-bar-gradient.jpg");
+  background-repeat: repeat-x;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
   z-index: 3;
 }
@@ -15,6 +16,7 @@
   background-color: $header-color;
   background-image: none;
 }
+.navbar { margin-bottom: 0 }
 .container {
   margin: auto;
   padding: 70px 20px 20px 20px;
@@ -26,108 +28,101 @@ header {
   width: 940px;
   margin: 0px auto;
 }
-.dropdown-menu .divider { margin: 0px }
-
- /*sign in link (user not logged in) */
-.navbar-wrapper .sign-in {
-  float: right;
-  a {color: $light-grey; }
-  margin-top: 10px;
-}
-.sign-in:hover {
-  a {
-    color: white;
-    text-decoration: none;
-  }
+.nav-item-icon {
+  padding-right: 5px;
+  opacity: 0.8;
 }
 
-/* navigation*/
-.navbar {
-  .nav{ padding-top: 2px; }
-  div > ul a, .nav a{
-    text-decoration: none;
+ul.nav-bar-list { list-style: none; }
+
+li.nav-item {
+  .caret {
+    border-top: 4px solid $light-grey;
+    opacity: 1;
+    margin-top: 11px;
   }
-  .dropdown-menu {
-    padding-top: 8px, 0px;
-  }
-  ul.secondary-nav {
-    margin: 0px;
-    position: relative;
-  }
-  margin-bottom: 0;
+}
+li.nav-item a.nav-logo-link {
+  padding: 3px 8px 1px 8px;
+  display: block;
+}
+li.nav-item a.nav-link {
+  color: $light-grey;
+  display: block;
+  padding: 8px 8px;
+  line-height: 24px;
+}
+li.nav-item a.nav-link:hover{
+  color: white;
+  text-decoration: none;
+  .caret { border-top: 4px solid white; }
+  span.nav-item-icon{ opacity: 1; }
 }
 
-/* notifications styling in notifications.css.scss */
+li.nav-item ul.dropdown-menu a { color: $dark-grey; }
+li.nav-item ul.dropdown-menu a:hover { color: white; }
 
-/* loomio dashboard link */
-.navbar h1 {
+li.nav-item#logo-home {
   float: left;
-  font-size: 0px;
-  line-height: 0px;
-  position: relative;
-  a {
-    display: block;
-    height: 36px;
-    padding: 4px 6px 0px;
-  }
 }
 
-/* user dropdown */
-.dropdown#user {
+li.nav-item#notifications-container {
+  float: left;
+}
+
+li.nav-item#sign-in {
+  float: right;
+}
+
+li.nav-item#feedback {
+  float: right;
+}
+
+li.nav-item.dropdown#user {
   float: right;
   #header-user-image {
     border: 1px solid #555;
     position: relative;
-    bottom: 4px;
+    bottom: 1px;
     margin-right: 5px;
   }
 }
 
-/* group dropdown */
-.dropdown#my-groups{
+li.nav-item.dropdown#groups {
   float: left;
-  #my-groups-title {
-    display: inline-block;
-    /*this code is needed for positioning when the notification badge is enabled do NOT delete (AARON 14/6/2012)*/
-    /*position: relative;*/
-    /*right: 35px;*/
-  }
-  .group-icon {
-    float: left;
-    height: 20px;
-    width: 40px;
-    margin-left: 10px;
-    background-repeat: no-repeat;
-    background-image:url("/assets/group.png");
-    opacity: 0.8;
-  }
   #activity-count {
-    height: 10px;
-    font-size: 0.7em;
-    padding: 0.4em;
-    padding-top: 0.1em;
-    position: relative;
-    right: 36px;
+    font-size: $font-tinywiny;
+    padding: 0px 3px;
+    position: absolute;
+    left: 31px;
+    bottom: 17px;
   }
-  a.dropdown-toggle {
-    display: inline-block;
-    padding-left: 0px;
-    padding-bottom: 3px;
+  /*#activity-count.span {margin-left: 0px;}*/
+  .link-container a { display: inline; }
+  .discussion-activity-count {
+    display: inline;
+    float: right;
+    margin-left: 10px;
   }
 }
-.dropdown#my-groups:hover{
-  a.dropdown-toggle { color: white; }
-  #group-icon{ opacity: 1; }
-}
-
 /* group dropdown items */
-li.new-group a { color: #08C; }
-li.new-group:hover { a { color: white; } }
-
-li.group-item:hover {
-  background-color: #08C;
-  .link-container{
-    background-color: #08c;
-    a { color: white; }
-  }
+li.group-item .group-name {
+  float: left;
+  display: inline;
 }
+li#groups ul.dropdown-menu { background-color: #eee; }
+li.group-item { background-color: white; }
+li.group-item.all-groups {
+  padding: 0 0 2px 0px;
+  border-bottom: 1px solid $light-grey;
+  a { color: $mid-grey; }
+  background-color: #eee;
+}
+li.group-item.sub-group a { padding-left: 30px }
+li.group-item.new-group {
+  border-top: 1px solid $light-grey;
+  a { color: $mid-grey; }
+  background-color: #eee;
+}
+
+.dropdown-menu .divider { margin: 0px }

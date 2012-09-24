@@ -40,6 +40,7 @@ namespace :deploy do
   task :symlink_configs do
     run %( cd #{release_path} &&
       ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml &&
+      ln -nfs #{shared_path}/config/newrelic.yml #{release_path}/config/newrelic.yml &&
       ln -nfs #{shared_path}/public/robots.txt #{release_path}/public/robots.txt
     )
   end

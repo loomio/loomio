@@ -40,7 +40,7 @@ describe Discussion do
     discussion.last_comment_at.should == discussion.created_at
   end
 
-  describe "discussion.history" do
+  describe "#history" do
     before do
       @user = build(:user)
       @user.save
@@ -66,7 +66,28 @@ describe Discussion do
     end
   end
 
-  describe "discussion.participants" do
+  describe "#current_motion" do
+    before do
+      @discussion = create :discussion
+      @motion = create :motion, discussion: @discussion
+    end
+    context "where motion is in 'voting' phase" do
+      it "returns motion" do
+        @discussion.current_motion.should eq(@motion)
+      end
+    end
+    context "where motion close date has past" do
+      before do
+        @motion.close_date = Time.now
+        @motion.save
+      end
+      it "does not return motion" do
+        @discussion.current_motion.should be_nil
+      end
+    end
+  end
+
+  describe "#participants" do
     before do
       @user1, @user2, @user3, @user4 =
         create(:user), create(:user), create(:user), create(:user)
@@ -108,7 +129,7 @@ describe Discussion do
     end
   end
 
-  describe "has_activity_unread_by?(user)" do
+  describe "#has_activity_unread_by?(user)" do
     before do
       @user = create(:user)
       @discussion = create(:discussion, author: @user)

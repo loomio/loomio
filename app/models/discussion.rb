@@ -26,7 +26,7 @@ class Discussion < ActiveRecord::Base
   delegate :full_name, :to => :group, :prefix => :group
   delegate :email, :to => :author, :prefix => :author
 
-  attr_accessible :group_id, :group, :title
+  attr_accessible :group_id, :group, :title, :description
 
   attr_accessor :comment, :notify_group_upon_creation
 
@@ -55,6 +55,10 @@ class Discussion < ActiveRecord::Base
 
   def has_activity_unread_by?(user)
     user && user.discussion_activity_count(self) > 0
+  end
+
+  def current_motion_close_date
+    current_motion.close_date
   end
 
   def current_motion
