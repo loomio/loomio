@@ -7,5 +7,6 @@
       .med-large-user-avatar.avatar-canvas
         %span.med-large-user-initials.initials-decoration
           = user.avatar_initials
-    .user-details
-      = mail_to user.email
+    - if current_user && current_user.is_group_member?(group)
+      .user-details
+        = mail_to user.email

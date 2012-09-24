@@ -20,6 +20,7 @@ $ ->
 
   $('.comment-user-name').popover(
     html: true,
+    placement: 'top',
     trigger: 'manual'
   ).click((e)->
     if isVisible

@@ -113,6 +113,10 @@ class User < ActiveRecord::Base
     memberships.for_group(group).with_access('admin').exists?
   end
 
+  def is_group_member?(group)
+    memberships.for_group(group).exists?
+  end
+
   def group_membership(group)
     memberships.for_group(group).first
   end
