@@ -65,14 +65,12 @@ class Discussion < ActiveRecord::Base
   def has_activity_since_group_last_viewed?(user)
     membership = group.membership(user)
     if membership
-      group_activity = group.discussions.includes(:comments).joins('INNER JOIN discussion_read_logs ON discussion_read_logs.discussion_id = discussions.id AND discussion_read_logs.user_id = discussions.author_id')
-        .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ? AND comments.created_at > discussion_read_logs.discussion_last_viewed_at', id, user.id, membership.last_viewed_at)
+      return true if group.discussions
+        .includes(:comments)
+        .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ?', id, user.id, membership.last_viewed_at)
+        .count > 0
     end
-    if group_activity.blank?
-      return false
-    else
-      return true
-    end
+    false
   end
 
   def current_motion_close_date

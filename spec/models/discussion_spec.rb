@@ -151,14 +151,14 @@ describe Discussion do
       @group.stub(:membership).with(@user)
       @discussion.has_activity_since_group_last_viewed?(@user).should == false
     end
-    it "returns true if the discussioin had activity since user last viewed their group" do
+    it "returns true if the discussion had activity since user last viewed their group" do
       @group.stub(:membership).with(@user).and_return(@membership)
-      @group.discussions.stub_chain(:includes, :joins, :where).and_return(true)
+      @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
       @discussion.has_activity_since_group_last_viewed?(@user).should == true
     end
     it "returns false if the discussion had no activity since user last viewed their group" do
       @group.stub(:membership).with(@user).and_return(@membership)
-      @group.discussions.stub_chain(:includes, :joins, :where).and_return(false)
+      @group.discussions.stub_chain(:includes, :where, :count).and_return(0)
       @discussion.has_activity_since_group_last_viewed?(@user).should == false
     end
   end
