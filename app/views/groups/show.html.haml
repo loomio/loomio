@@ -1,60 +1,42 @@
 - set_title @group.name, ""
 - if current_user && @group.parent.nil? && (not current_user.has_read_group_notice?)
-  - message = "This is the Group page for \"#{@group.full_name}\". \n\n Here you can see the discussions and proposals for this group, "
-  - message += "a list of the group members, and the option to start a new discussion or proposal in this group. \n\n"
+  - message = "This is the Group page for \"#{@group.full_name}\". \n\n Here you can see the discussions for this group, "
+  - message += "a description and a list of the group members. "
+  - message += "You can start a new topic by clicking on the 'Start a discussion' button.\n\n"
   =render '/application/helper_info', message: message, path: dismiss_group_notice_for_user_path
-=render '/groups/title', group: @group
+
+%header
+  -#= render '/application/loomio_process_flow'
+  = render '/groups/title', group: @group
+  = render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
+    :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-topic'}
 .row
   %section.span8
-    .selector-panel
-      .clearfix
-        %h1.panel-header#proposal-phase Current Proposals
-        .dropdown#proposals
-          = link_to image_tag("dropdown.png", title:'proposal settings', alt:'proposal settings'), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
-          %ul.dropdown-menu.pull-right
-            %li
-              %a{ href: '#', id: 'display-current' }
-                = "Current proposals"
-                = image_tag "tick.png", class: 'tick', id: 'tick-current'
-            %li
-              %a{ href: '#', id: 'display-closed' }
-                = "Closed proposals"
-                = image_tag "tick.png", class: 'tick hidden', id: 'tick-closed'
-      - new_discussion = Discussion.new(group_id: @group.id)
-      - if (can? :create, new_discussion)# && (can? :create, Motion.new(discussion_id: new_discussion.id))
-        %ul.tool-bar-list.clearfix
-          %li.tool-bar-item#proposal
-            %a{ href: new_motion_group_path(@group) }
-              Create new proposal
-      %ul.selector-list
-        #open-motions-list
-          - current_motions_exist = false
-          - unless @motions_not_voted.empty?
-            - current_motions_exist = true
-            - @motions_not_voted.each do |motion|
-              %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
-          - unless @motions_voted.empty?
-            - current_motions_exist = true
-            - @motions_voted.each do |motion|
-              %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
-          - unless current_motions_exist
-            %li.selector-item.no-proposals= "There are no current proposals for this group"
-        #previous-motions-list.hidden
-          #group-closed-motions.hidden
-            %div{ class: "group_#{@group.id}" }
-    .selector-panel
-      .clearfix
-        %h1.panel-header Discussions
-      - if can? :create, Discussion.new(group_id: @group.id)
-        %ul.tool-bar-list.clearfix
-          %li.tool-bar-item#discussion
-            %a{ href: new_discussion_path(discussion: { group_id: @group }) }
-              Start new discussion
-      #group-discussions.hidden
-        %div{ class: "group_#{@group.id}" }
+    %ul.selector-list.bordered
+      #all-discussions-loading
+        %li.selector-item.loading Loading...
+      #discussions-with-motions
+        - @discussions_with_current_motion_not_voted_on.each do |discussion|
+          %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
+        - @discussions_with_current_motion_voted_on.each do |discussion|
+          %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
+        .discussion-with-motion-divider.hidden
+      - if @group.discussions.count == 0
+        %li.empty-list-message There are no discussions for this group
+      - else
+        #group-discussions.hidden
+          %div{ class: "group_#{@group.id}" }
+
   %section.span4
     =render 'request_membership', group: @group
-    =render 'description', group: @group
+    .sub-panel#group-description-panel
+      %h3= "Group description"
+      =render '/application/description', model: @group, model_name: "group"
     =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
+    =render '/application/see_closed_motions'
     =render 'membership_requests', group: @group
     =render 'members', group: @group
+  =render '/application/closed_motions', user: nil, group: @group
+
+- if current_user
+  =render '/discussions/new', discussion: @discussion, user_groups: nil

@@ -107,6 +107,14 @@ describe Motion do
     @motion.discussion.activity.should == 4
   end
 
+  it "cannot have an outcome if voting open" do
+    @motion = create(:motion)
+    @motion.outcome.blank?.should == true
+    @motion.set_outcome("blah blah")
+    @motion.save
+    @motion.outcome.blank?.should == true
+  end
+
   context "moving motion to new group" do
     before do
       @new_group = create(:group)
@@ -125,7 +133,8 @@ describe Motion do
 
   context "destroying a motion" do
     before do
-      @motion = create(:motion)
+      @discussion = create(:discussion)
+      @motion = create(:motion, discussion: @discussion)
       @vote = Vote.create(position: "no", motion: @motion, user: @motion.author)
       @comment = @motion.discussion.add_comment(@motion.author, "hello")
       @motion.destroy
@@ -141,7 +150,8 @@ describe Motion do
       @user1 = create(:user)
       @user2 = create(:user)
       @user3 = create(:user)
-      @motion = create(:motion, author: @user1)
+      @discussion = create(:discussion)
+      @motion = create(:motion, discussion: @discussion)
       @motion.group.add_member!(@user2)
       @motion.group.add_member!(@user3)
       vote1 = create(:vote, :position => 'yes', :user => @user1, :motion => @motion)
@@ -151,7 +161,7 @@ describe Motion do
     end
 
     it "stores users who did not vote" do
-      not_voted_ids = DidNotVote.all.collect {|u| u.user.id} 
+      not_voted_ids = DidNotVote.all.collect {|u| u.user.id}
       not_voted_ids.should include(@user3.id)
     end
 
@@ -171,6 +181,25 @@ describe Motion do
     it "reopening motion deletes did_not_vote records" do
       @motion.open_voting
       DidNotVote.all.count.should == 0
+    end
+
+    it "can have an outcome" do
+      outcome = "Test Outcome"
+      @motion.set_outcome(outcome)
+      @motion.save
+      @motion.outcome.should == outcome
+    end
+
+    it "sends a set outcome email notification to the motion author only" do
+      group = build(:group)
+      group.add_member!(create(:user))
+      group.add_member!(create(:user))
+      @discussion = create(:discussion, group: group)
+      @motion = create(:motion, discussion: @discussion)
+      MotionMailer.should_receive(:motion_closed)
+        .exactly(1).times
+        .with(@motion, @motion.author_email).and_return(stub(deliver: true))
+      @motion.close_voting!
     end
   end
 

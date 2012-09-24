@@ -29,9 +29,10 @@ describe "User abilities" do
     it { should_not be_able_to(:update, group) }
     it { should_not be_able_to(:email_members, group) }
     it { should be_able_to(:add_subgroup, group) }
-    it { should be_able_to(:new_motion, group) }
     it { should be_able_to(:new_proposal, discussion) }
     it { should be_able_to(:add_comment, discussion) }
+    it { should be_able_to(:edit_description, discussion) }
+    it { should be_able_to(:edit_title, discussion) }
     it { should be_able_to(:index, Discussion) }
     it { should be_able_to(:destroy, user_comment) }
     it { should_not be_able_to(:destroy, another_user_comment) }
@@ -107,6 +108,8 @@ describe "User abilities" do
     it { should be_able_to(:make_admin, @membership_request) }
     it { should be_able_to(:remove_admin, @membership_request) }
     it { should be_able_to(:destroy, @other_user_membership) }
+    it { should be_able_to(:edit_description, group) }
+    it { should_not be_able_to(:update, other_users_motion) }
     it { should be_able_to(:destroy, other_users_motion) }
     it { should be_able_to(:close_voting, other_users_motion) }
     it { should be_able_to(:open_voting, other_users_motion) }

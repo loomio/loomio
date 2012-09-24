@@ -1,13 +1,46 @@
 %div{ class: css_class_for(discussion, current_user) }
   %a.selector-link{ href: discussion_path(discussion) }
-    .clearfix
-      .discussion-title
-        = truncate(discussion.title, :length => 70, :separator => ' ')
-        .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
-      .notification-info
-        .clearfix
-          .discussion-icon-container{ class: enabled_icon_class_for(discussion, current_user) }
-            - if discussion_activity_count_for(discussion, current_user) > 0
-              .activity-count.span.label.label-important
-                = discussion_activity_count_for(discussion, current_user)
-          .latest-comment-time.utc-time= discussion.latest_comment_time
+    %span
+      .clearfix
+        - if current_user && discussion.current_motion
+          .vote-icon
+            - if current_user.group_membership(this_group) || this_group.nil?
+              = render "motions/display_icons", position: current_user.position(discussion.current_motion)
+        .discussion-title
+          = truncate(discussion.title, :length => 60, :separator => ' ')
+          .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
+        - if discussion.current_motion
+          .pie{id: "graph_#{discussion.current_motion.id}"}
+            - motion_activity = motion_activity_count_for(discussion.current_motion, current_user)
+            - if discussion.current_motion.voting? && motion_activity > 0
+              %span.activity-count.label.label-important
+                = motion_activity
+        - else
+          .large-icon.pie-icon.activity-icon
+        .large-icon.discussion-icon.activity-icon{ class: enabled_icon_class_for(discussion, current_user) }
+          - discussion_activity = discussion_activity_count_for(discussion, current_user)
+          - if discussion_activity > 0
+            %span.activity-count.label.label-important
+              = discussion_activity
+        .discussion-date-info
+          - if discussion.current_motion
+            - if discussion.current_motion_close_date
+              .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_close_date)} until close"
+          - else
+            .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"
+
+- if discussion.current_motion
+  :coffeescript
+    $ ->
+      # Display vote graph
+      @pie_graph_view = new Loomio.Views.Utils.GraphView
+        el: '.pie'
+        id_string: "graph_#{discussion.current_motion.id}"
+        legend: false
+        data: #{discussion.current_motion.votes_graph_ready.to_json.html_safe}
+        type: 'pie'
+        tooltip_selector: '#tooltip'
+        diameter: 25
+        padding: 1
+        gap: 1
+        shadow: 0.75

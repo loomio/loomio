@@ -44,9 +44,7 @@ class Event < ActiveRecord::Base
   def self.motion_closed!(motion, closer)
     event = create!(:kind => "motion_closed", :eventable => motion, :user => closer)
     motion.group_users.each do |user|
-      unless user == closer
-        event.notifications.create! :user => user
-      end
+      event.notifications.create! :user => user
     end
   end
 

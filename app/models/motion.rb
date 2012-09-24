@@ -13,6 +13,7 @@ class Motion < ActiveRecord::Base
     allow_blank: true
 
   validates_length_of :name, :maximum => 250
+  validates_length_of :outcome, :maximum => 250
 
   delegate :email, :to => :author, :prefix => :author
   delegate :name, :to => :author, :prefix => :author
@@ -28,7 +29,7 @@ class Motion < ActiveRecord::Base
   attr_accessor :enable_discussion
 
   attr_accessible :name, :description, :discussion_url, :enable_discussion
-  attr_accessible :close_date, :phase, :discussion_id
+  attr_accessible :close_date, :phase, :discussion_id, :outcome
 
   include AASM
   aasm :column => :phase do
@@ -39,7 +40,7 @@ class Motion < ActiveRecord::Base
       transitions :to => :voting, :from => [:closed]
     end
 
-    event :close_voting, before: :before_close do
+    event :close_voting, before: :before_close, after: :after_close do
       transitions :to => :closed, :from => [:voting]
     end
   end
@@ -188,8 +189,14 @@ class Motion < ActiveRecord::Base
     save
   end
 
-  private
+  def set_outcome(str)
+    if closed?
+      self.outcome = str
+      save
+    end
+  end
 
+  private
     def before_open
       self.close_date = Time.now + 1.week
       did_not_votes.each do |did_not_vote|
@@ -200,6 +207,10 @@ class Motion < ActiveRecord::Base
     def before_close
       store_users_that_didnt_vote
       self.close_date = Time.now
+    end
+
+    def after_close
+      email_motion_closed
     end
 
     def store_users_that_didnt_vote
@@ -235,6 +246,10 @@ class Motion < ActiveRecord::Base
           end
         end
       end
+    end
+
+    def email_motion_closed
+      MotionMailer.motion_closed(self, author_email).deliver
     end
 
     def format_discussion_url
