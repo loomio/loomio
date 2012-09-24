@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   require 'digest/md5'
 
   LARGE_IMAGE = 170
+  MED_LARGE_IMAGE = 70
   MEDIUM_IMAGE = 35
   SMALL_IMAGE = 25
   MAX_AVATAR_IMAGE_SIZE_CONST = 1000
@@ -25,6 +26,7 @@ class User < ActiveRecord::Base
   has_attached_file :uploaded_avatar,
     :styles => {
       :large => "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
+      :medlarge => "#{User::MED_LARGE_IMAGE}x#{User::MED_LARGE_IMAGE}#",
       :medium => "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
       :small => "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
     }
@@ -109,6 +111,10 @@ class User < ActiveRecord::Base
 
   def is_group_admin?(group)
     memberships.for_group(group).with_access('admin').exists?
+  end
+
+  def is_group_member?(group)
+    memberships.for_group(group).exists?
   end
 
   def group_membership(group)
@@ -307,11 +313,15 @@ class User < ActiveRecord::Base
 
   def avatar_url(size = :medium)
     size = size.to_sym
+    puts('SIZE')
+    puts(size)
     case size
     when :small
       pixels = User::SMALL_IMAGE
     when :medium
       pixels = User::MEDIUM_IMAGE
+    when :medlarge
+      pixels = User::MED_LARGE_IMAGE
     when :large
       pixels = User::LARGE_IMAGE
     else
