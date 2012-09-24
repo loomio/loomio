@@ -56,7 +56,7 @@ set_close_date = ->
   $("#motion_close_date").val(local_datetime)
   if (local_datetime >= current_datetime)
     $(".date-description").text("Closing date (" + days_between(local_datetime, current_datetime) + "):")
-  else 
+  else
     $(".date-description").text("Closing date:")
 
 remove_date_error = ->
@@ -74,7 +74,7 @@ days_between = (local, current) ->
 # adds bootstrap popovers to vote buttons
 $ ->
   $(".position").popover
-    placement: "top"
+    placement: "right"
 
 # disable links on usernames
 $ ->
@@ -127,8 +127,8 @@ $ ->
       $("#outcome-display").removeClass("hidden")
     else
       $("#outcome-display").addClass("hidden")
-  else 
+  else
       $("#outcome-display").removeClass("hidden")
 
-    
-  
+
+
