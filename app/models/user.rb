@@ -313,8 +313,6 @@ class User < ActiveRecord::Base
 
   def avatar_url(size = :medium)
     size = size.to_sym
-    puts('SIZE')
-    puts(size)
     case size
     when :small
       pixels = User::SMALL_IMAGE
