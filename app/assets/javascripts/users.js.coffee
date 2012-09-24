@@ -15,9 +15,28 @@ $ ->
 
 # adds bootstrap popovers to user names
 $ ->
-  $(".comment-user-name").popover(placement: 'top', trigger: 'click').click (e) ->
-    ( e.preventDefault() )
-  .toggle(
-      -> $(this).popover('show')
-      -> $(this).popover('hide')
-    )
+  isVisible = false
+  clickedAway = false
+
+  $('.comment-user-name').popover(
+    html: true,
+    trigger: 'manual'
+  ).click((e)->
+    if isVisible
+      $(this).popover('hide')
+      isVisible = false
+      clickedAway = false
+    else
+      $(this).popover('show')
+      clickedAway = false
+      isVisible = true
+    e.preventDefault()
+  )
+
+  $(document).click((e)->
+    if(isVisible & clickedAway)
+      $('.comment-user-name').popover('hide')
+      isVisible = clickedAway = false
+    else
+      clickedAway = true
+  )
