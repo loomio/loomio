@@ -62,13 +62,26 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  def last_read_at(user)
+    log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', id, user.id).first
+    log.discussion_last_viewed_at unless log.blank?
+  end
+
   def has_activity_since_group_last_viewed?(user)
     membership = group.membership(user)
+    last_read_at = last_read_at(user)
     if membership
-      return true if group.discussions
-        .includes(:comments)
-        .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ?', id, user.id, membership.last_viewed_at)
-        .count > 0
+      if last_read_at.blank?
+        return true if group.discussions
+          .includes(:comments)
+          .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ?', id, user.id, membership.last_viewed_at)
+          .count > 0
+      else
+        return true if group.discussions
+          .includes(:comments)
+          .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ? AND comments.created_at > ?', id, user.id, membership.last_viewed_at, last_read_at)
+          .count > 0
+      end
     end
     false
   end
