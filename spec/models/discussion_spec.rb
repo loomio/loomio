@@ -140,6 +140,27 @@ describe Discussion do
     end
   end
 
+  describe "last_read_at(user)" do
+    before do
+      @user = create(:user)
+      @discussion = create(:discussion, author: @user)
+      @discussion_read_log = mock_model(DiscussionReadLog)
+      DiscussionReadLog.stub_chain(:where, :first).and_return(@discussion_read_log)
+
+    end
+    it "should return nil if no log exists" do
+      @discussion_read_log.stub(:nil?).and_return(true)
+      @discussion.last_read_at(@user).should == nil
+    end
+    it "should return when user last looked at the discussion if log exists" do
+      last_viewed = Time.now()
+      @discussion_read_log.stub(:nil?).and_return(false)
+      @discussion_read_log.stub(:discussion_last_viewed_at).and_return(last_viewed)
+      @discussion.last_read_at(@user).should == last_viewed
+
+    end
+  end
+
   describe "has_activity_since_group_last_viewed?(user)" do
     before do
       @user = create(:user)
