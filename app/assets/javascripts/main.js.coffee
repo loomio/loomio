@@ -102,12 +102,6 @@ $ ->
     placement: "top"
     title: 'There have been new comments since you last visited the group.'
 
-# adds bootstrap popovers to group activity indicators
-$ ->
-  $(".unread-group-activity").tooltip
-    placement: "top"
-    title: 'There have been new comments on this discussion since you last visited the group.'
-
 # character count for statement on discussion:show page
 pluralize_characters = (num) ->
   if(num == 1)
