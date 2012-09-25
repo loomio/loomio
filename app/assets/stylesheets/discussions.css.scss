@@ -154,6 +154,13 @@ li .motion-preview {
     list-style: none;
     margin: 0 0 3px 0;
   }
+  ul.history-list .divider {
+    margin-left: 45px;
+    border-bottom: 1px solid $light-grey;
+  }
+  li.empty-list-message {
+    margin-left: 45px;
+  }
 
   /* comment */
   .comment{
@@ -216,7 +223,7 @@ li .motion-preview {
 
   .comment-container {
     display: inline-block;
-    width: 400px;
+    width: 396px;
     padding: 5px 0;
     margin-left: 40px;
     border-bottom: 1px solid $light-grey;
