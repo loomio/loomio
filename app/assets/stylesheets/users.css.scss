@@ -5,13 +5,8 @@
 @import "settings";
 @import "mixins";
 
-
-#user-image-area {
-  width: 170px;
-  margin: 0 0 20px 20px;
-}
-
-#user-image-options {
+.user-image-options {
+  margin-left: -30px;
   h3 { margin: 0 0 0 30px; }
   ul { list-style: none }
 }
@@ -31,6 +26,7 @@
 .large-user-avatar {
   width: 170px;
   height: 170px;
+  margin-bottom: 20px;
 }
 
 .medium-user-avatar {
@@ -40,8 +36,8 @@
 }
 
 .small-user-avatar {
-  width: 23px;
-  height: 23px;
+  width: 24px;
+  height: 24px;
 }
 
 .initials-decoration {
