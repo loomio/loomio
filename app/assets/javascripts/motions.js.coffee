@@ -74,7 +74,7 @@ days_between = (local, current) ->
 # adds bootstrap popovers to vote buttons
 $ ->
   $(".position").popover
-    placement: "right"
+    placement: "top"
 
 # disable links on usernames
 $ ->
