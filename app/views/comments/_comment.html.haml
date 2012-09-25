@@ -8,7 +8,10 @@
         %span.medium-user-initials.initials-decoration
           = comment.user.avatar_initials
   .comment-container.with-avatar
-    %span.comment-username= link_to(comment.user_name, "#")
+    %span.comment-username
+      =link_to comment.user_name, "#", "title" => comment.user_name,
+        "data-content" => "#{render 'users/name_popover', user: comment.user, group: comment.group}",
+        class: "comment-user-name"
     %span.comment-body~ markdown(comment.body)
     .comment-time
       = time_ago_in_words(comment.created_at) + " ago"
