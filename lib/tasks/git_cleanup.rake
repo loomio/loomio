@@ -1,4 +1,5 @@
 task :git_cleanup do
+  exclude_branches = ["production","staging"]
 	shell=`git branch --no-color 2> /dev/null`
 	regexed = shell[/^\* (.*)/,1]
 	
@@ -13,9 +14,9 @@ task :git_cleanup do
 	`git remote prune origin`
 
 	remote_branches=`git branch -r --merged`
-
   if(!remote_branches.nil?)
-	  remote_branches.gsub!(/.*master$|.*production$|.*staging$/,"").gsub!(/^$\n/,'')
+    #.*production$|.*staging$
+	  remote_branches.gsub!(/.*master.*$\n#{exclude_branches.reduce("") do |result,e| result+"|.*"+e+".*$\\n" end}/,"")
 	  remote_branches = remote_branches.each_line.reduce("") do |result,b|
       result +  (b.include?("origin")?b+"\n":"")
     end
@@ -51,7 +52,7 @@ task :git_cleanup do
     end
     if(!remove_command.strip.empty?)
     	puts "git push origin " + remove_command
-	    `git push origin #{remove_command}`
+	    #`git push origin #{remove_command}`
     end
   end
 
@@ -61,7 +62,7 @@ task :git_cleanup do
 		    puts "deleting local branch "+ branch
 		    branch.gsub!(/origin\//,":")
 		    puts "git branch -d "+branch
-		    `git branch -d #{branch}`
+		    #`git branch -d #{branch}`
 	    end
     end
   end
