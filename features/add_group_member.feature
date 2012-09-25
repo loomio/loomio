@@ -24,20 +24,16 @@ Feature: Add member to group
     And I invite "hello@world.com" to the group
     Then "hello@world.com" should be added to the group
 
-  #
-  # This feature is currently broken
-  #
-  #Scenario: Attempt to invite invalid email to group
-    #When I visit the group page for "demo-group"
-    #And I invite ""hey man" <hey@man.com>" to the group
-    #Then I should be notified that ""hey man" <hey@man.com>" is an invalid email
-    #And ""hey man" <hey@man.com>" should not be a member of "demo-group"
 
-  #
-  # This feature is currently broken
-  #
-  #Scenario: Attempt to invite member without email to group
-    #When I visit the group page for "demo-group"
-    #And I invite "hey man" to the group
-    #Then I should be notified that "hey man" is an invalid email
-    #And "hey man" should not be a member of "demo-group"
+  Scenario: Attempt to invite invalid email to group
+    When I visit the group page for "demo-group"
+    And I invite ""hey man" <hey@man.com>" to the group
+    Then I should be notified that ""hey man" <hey@man.com>" is an invalid email
+    And ""hey man" <hey@man.com>" should not be a member of "demo-group"
+
+
+  Scenario: Attempt to invite member without email to group
+    When I visit the group page for "demo-group"
+    And I invite "hey man" to the group
+    Then I should be notified that "hey man" is an invalid email
+    And "hey man" should not be a member of "demo-group"

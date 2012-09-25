@@ -1,11 +1,11 @@
 When /^I visit the create discussion page$/ do
-  click_link 'Start new discussion'
+  click_link 'Start a discussion'
 end
 
 When /^fill in discussion details$/ do
   fill_in 'discussion_title', with: 'New discussion Test'
-  fill_in 'discussion_comment', with: 'Description of test discussion'
-  click_on 'Create discussion'
+  fill_in 'discussion_description', with: 'Description of test discussion'
+  click_on 'discussion-submit'
 end
 
 Then /^a discussion should be created$/ do

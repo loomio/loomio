@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   require 'digest/md5'
 
   LARGE_IMAGE = 170
+  MED_LARGE_IMAGE = 70
   MEDIUM_IMAGE = 35
   SMALL_IMAGE = 25
   MAX_AVATAR_IMAGE_SIZE_CONST = 1000
@@ -25,6 +26,7 @@ class User < ActiveRecord::Base
   has_attached_file :uploaded_avatar,
     :styles => {
       :large => "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
+      :medlarge => "#{User::MED_LARGE_IMAGE}x#{User::MED_LARGE_IMAGE}#",
       :medium => "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
       :small => "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
     }
@@ -111,6 +113,10 @@ class User < ActiveRecord::Base
     memberships.for_group(group).with_access('admin').exists?
   end
 
+  def is_group_member?(group)
+    memberships.for_group(group).exists?
+  end
+
   def group_membership(group)
     memberships.for_group(group).first
   end
@@ -139,8 +145,10 @@ class User < ActiveRecord::Base
     new_user = User.invite!(user_params, inviter) do |u|
       u.skip_invitation = true
     end
-    membership = group.add_member! new_user, inviter
-    UserMailer.invited_to_loomio(new_user, inviter, group).deliver
+    if new_user.errors.empty?
+      membership = group.add_member! new_user, inviter
+      UserMailer.invited_to_loomio(new_user, inviter, group).deliver
+    end
     new_user
   end
 
@@ -286,6 +294,8 @@ class User < ActiveRecord::Base
       pixels = User::SMALL_IMAGE
     when :medium
       pixels = User::MEDIUM_IMAGE
+    when :medlarge
+      pixels = User::MED_LARGE_IMAGE
     when :large
       pixels = User::LARGE_IMAGE
     else
