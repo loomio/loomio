@@ -9,13 +9,15 @@ class CommentsController < BaseController
     comment_vote = resource.like current_user
     Event.comment_liked!(comment_vote)
     #redirect_to discussion_url(resource.discussion )
-    render :nothing => true
+    render :toggle
+    #render :nothing => true
   end
 
   def unlike
     resource.unlike current_user
     #redirect_to discussion_url(resource.discussion)
-    render :nothing => true
+    render :toggle
+    #render :nothing => true
   end
 
 end
