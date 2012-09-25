@@ -14,7 +14,7 @@ module DiscussionsHelper
   def css_class_unread_discussion_activity_for(discussion, user)
     css_class = "discussion-preview"
     css_class += " sub-group-discussion" unless discussion.group.parent.nil?
-    css_class += " unread" if signed_out? || discussion.number_of_comments_since_last_looked(user) > 0
+    css_class += " unread" if user && discussion.number_of_comments_since_last_looked(user) > 0
     css_class
   end
 
