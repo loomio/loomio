@@ -18,7 +18,7 @@ task :git_cleanup do
     #.*production$|.*staging$
 	  remote_branches.gsub!(/.*master.*$\n#{exclude_branches.reduce("") do |result,e| result+"|.*"+e+".*$\\n" end}/,"")
 	  remote_branches = remote_branches.each_line.reduce("") do |result,b|
-      result +  (b.include?("origin")?b+"\n":"")
+      result +  (b.include?("origin")?b.strip+"\n":"")
     end
 
 	  puts "Remote merged branches to be removed:"
@@ -48,11 +48,11 @@ task :git_cleanup do
 
   if(!remote_branches.nil?)
     remove_command = remote_branches.each_line.reduce("") do |result,l|
-      result + " " + l
+      l.strip.empty? ? result : result + " :" + l.strip[/.*origin\/(.*)/,1]
     end
     if(!remove_command.strip.empty?)
     	puts "git push origin " + remove_command
-	    #`git push origin #{remove_command}`
+	`git push origin #{remove_command}`
     end
   end
 
@@ -62,7 +62,7 @@ task :git_cleanup do
 		    puts "deleting local branch "+ branch
 		    branch.gsub!(/origin\//,":")
 		    puts "git branch -d "+branch
-		    #`git branch -d #{branch}`
+		    `git branch -d #{branch}`
 	    end
     end
   end
