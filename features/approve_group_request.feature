@@ -3,15 +3,16 @@ Feature: Admin approves group request to join Loomio
   So that I can moderate the growth of the Loomio userbase
   I want to be able to approve group applications
 
-  Scenario: Admin views group requests
+  Background:
     Given I am a Loomio super-admin
+    And I am logged in
     And there is a request to join Loomio
+
+  Scenario: Admin views group requests
     When I visit the Group Requests page on the admin panel
     Then I should see the request
 
   Scenario: Admin approves a group request
-    Given I am a Loomio super-admin
-    And there is a request to join Loomio
     When I visit the Group Requests page on the admin panel
     And I approve approve the request
     Then the group should be created

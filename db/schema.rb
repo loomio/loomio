@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120911042744) do
+ActiveRecord::Schema.define(:version => 20120925023410) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -104,6 +104,16 @@ ActiveRecord::Schema.define(:version => 20120911042744) do
 
   add_index "events", ["eventable_id"], :name => "index_events_on_eventable_id"
   add_index "events", ["user_id"], :name => "index_events_on_user_id"
+
+  create_table "group_requests", :force => true do |t|
+    t.string   "name"
+    t.integer  "expected_size"
+    t.text     "description"
+    t.string   "admin_email"
+    t.text     "member_emails"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "groups", :force => true do |t|
     t.string   "name"
