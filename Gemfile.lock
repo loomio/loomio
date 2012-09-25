@@ -324,6 +324,9 @@ GEM
     sexp_processor (3.1.0)
     shoulda-matchers (1.2.0)
       activesupport (>= 3.0.0)
+    simple_form (2.0.2)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     simplecov (0.6.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.5.3)
@@ -427,6 +430,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.5)
   shoulda-matchers
+  simple_form
   simplecov
   spork
   sqlite3

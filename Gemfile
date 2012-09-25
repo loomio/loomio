@@ -8,7 +8,8 @@ gem 'pg'
 gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
-gem 'formtastic'
+gem 'formtastic' # Deprecated. Use simple_form instead.
+gem 'simple_form'
 gem 'jqplot-rails'
 gem "rails-backbone"
 gem 'coffee-filter'
