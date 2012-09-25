@@ -64,9 +64,9 @@ class VotesController < GroupBaseController
     def fire_event(vote)
       if vote.position != vote.previous_position
         if vote.position == "block"
-          Event.motion_blocked!(vote, vote.motion.group)
+          Event.motion_blocked!(vote)
         else
-          Event.new_vote!(vote, vote.motion.group)
+          Event.new_vote!(vote)
         end
       end
     end

@@ -30,13 +30,22 @@
       - title_text = motion.name
       - action_text_after = "has closed. Please specify an outcome."
       - group_name = motion.group_full_name
-      - href = discussion_url(motion.discussion, proposal: motion)
+      - href = discussion_path(motion.discussion, proposal: motion)
     - else
       - user = notification.event.user
       - action_text = "closed the proposal"
+      - action_text_after = "Please specify an outcome."
       - title_text = motion.name
       - group_name = motion.group_full_name
       - href = discussion_path(motion.discussion, proposal: motion)
+
+  - elsif notification.event_kind == "motion_outcome"
+    - motion = notification.motion
+    - user = notification.event.user
+    - action_text = "set an outcome for the proposal"
+    - title_text = motion.name
+    - group_name = motion.group_full_name
+    - href = discussion_path(motion.discussion, proposal: motion)
 
   - elsif notification.event_kind == "new_vote"
     - vote = notification.vote

@@ -12,13 +12,14 @@ describe Event do
   it { should allow_value("membership_requested").for(:kind) }
   it { should allow_value("user_added_to_group").for(:kind) }
   it { should allow_value("comment_liked").for(:kind) }
+  it { should allow_value("motion_outcome").for(:kind) }
   it { should_not allow_value("blah").for(:kind) }
 
   let(:discussion) { create(:discussion) }
   let(:group) { discussion.group }
 
   describe "new_discussion!" do
-    subject { Event.new_discussion!(discussion, :group) }
+    subject { Event.new_discussion!(discussion) }
 
     its(:kind) { should eq("new_discussion") }
     its(:eventable) { should eq(discussion) }
@@ -28,13 +29,14 @@ describe Event do
         user = create(:user)
         group = discussion.group
         group.add_member! user
-        event = Event.new_discussion!(discussion, group)
+        user.group_noise_level(group, 2)
+        event = Event.new_discussion!(discussion)
 
         event.notifications.where(:user_id => user.id).should exist
       end
 
       it "does not notify discussion author" do
-        event = Event.new_discussion!(discussion, group)
+        event = Event.new_discussion!(discussion)
 
         event.notifications.where(:user_id => discussion.author.id).
           should_not exist
@@ -44,7 +46,7 @@ describe Event do
 
   describe "new_comment!" do
     let(:comment) { stub_model(Comment, :discussion => discussion) }
-    subject { Event.new_comment!(comment, group) }
+    subject { Event.new_comment!(comment) }
 
     its(:kind) { should eq("new_comment") }
     its(:eventable) { should eq(comment) }
@@ -60,7 +62,7 @@ describe Event do
         discussion.add_comment(@commentor, "hello!")
         discussion.add_comment(@participant, "hi there commentor!")
         comment = discussion.add_comment(@commentor, "fancy pantsy")
-        @event = Event.new_comment!(comment, group)
+        @event = Event.new_comment!(comment)
       end
 
       it "notifies participants" do
@@ -93,12 +95,12 @@ describe Event do
         @user1 = create(:user)
         group.add_member! @user1
         group_size = group.users.size
-        event = Event.new_motion!(motion, group)
+        event = Event.new_motion!(motion)
         event.notifications.where(:user_id => @user1.id).should exist
       end
 
       it "does not notify motion author" do
-        event = Event.new_motion!(motion, motion.group)
+        event = Event.new_motion!(motion)
 
         event.notifications.where(:user_id => motion.author.id).
           should_not exist
@@ -110,7 +112,7 @@ describe Event do
     let(:user) { mock_model(User) }
     let(:vote) { mock_model(Vote, :motion_author => user,
                             :discussion_author => user, :user => user) }
-    subject { Event.new_vote!(vote, :group) }
+    subject { Event.new_vote!(vote) }
 
     its(:kind) { should eq("new_vote") }
     its(:eventable) { should eq(vote) }
@@ -120,6 +122,7 @@ describe Event do
         @user = create(:user)
         @motion = create(:motion, :discussion => discussion, :author => create(:user))
         @motion.group.add_member!(@user)
+        @user.group_noise_level(group, 2)
         @vote = create(:vote, :user => @user, :motion => @motion, :position => "yes")
         @event = Event.new_vote!(@vote)
       end

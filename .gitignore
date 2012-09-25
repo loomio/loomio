@@ -1,6 +1,5 @@
 .bundle
 db/*.sqlite3
-db/seeds.rb
 config/database.yml
 config/newrelic.yml
 log/*.log

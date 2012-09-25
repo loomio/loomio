@@ -13,7 +13,7 @@ class DiscussionsController < GroupBaseController
     authorize! :create, @discussion
     if @discussion.save
       @discussion.add_comment(current_user, params[:discussion][:comment])
-      if params[:discussion][:notify_group_upon_creation].to_i > 0
+      if params[:discussion][:notify_group_upon_creation].to_i > 0 #this should be removed along with the form element
         DiscussionMailer.spam_new_discussion_created(@discussion)
       end
       Event.new_discussion!(@discussion)
@@ -69,7 +69,7 @@ class DiscussionsController < GroupBaseController
     comment = resource.add_comment(current_user, params[:comment])
     @group = GroupDecorator.new(@discussion.group)
     if comment.valid?
-      Event.new_comment!(comment, @group)
+      Event.new_comment!(comment)
     else
       flash[:error] = "Comment could not be created."
     end

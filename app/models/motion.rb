@@ -241,7 +241,7 @@ class Motion < ActiveRecord::Base
     def email_motion_created
       if group.email_new_motion
         group.users.each do |user|
-          unless author == user
+          if author != user && user.get_group_noise_level(group) >= 1
             MotionMailer.new_motion_created(self, user.email).deliver
           end
         end

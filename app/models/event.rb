@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
-             motion_closed membership_requested user_added_to_group comment_liked]
+             motion_closed motion_outcome membership_requested user_added_to_group comment_liked]
 
   has_many :notifications, :dependent => :destroy
   belongs_to :eventable, :polymorphic => true
@@ -11,15 +11,11 @@ class Event < ActiveRecord::Base
 
   attr_accessible :kind, :eventable, :user
 
-  # Probably don't need to pass group to everything
-  # but for now it's the easiest readability wise 
-  # because we're creating a relationship between events and groups
-
   def self.new_discussion!(discussion)
     group = discussion.group
     event = create!(:kind => "new_discussion", :eventable => discussion)
     discussion.group_users.each do |user|
-      if user != discussion.author && user.get_group_noise_level(group) >= 2
+      if user != discussion.author && user.get_group_noise_level(group) >= 2 #pending event refactor
         event.notifications.create! :user => user
       end
     end
@@ -31,7 +27,7 @@ class Event < ActiveRecord::Base
     event = create!(:kind => "new_comment", :eventable => comment)
     event_level = 0
     comment.discussion_participants.each do |user|
-      if user != comment.user && user.get_group_noise_level(group) >= 1 # check
+      if user != comment.user && user.get_group_noise_level(group) >= 1
         event.notifications.create! :user => user
       end
     end
@@ -49,11 +45,22 @@ class Event < ActiveRecord::Base
     event
   end
 
+  def self.motion_outcome!(motion, out_user)
+    group = motion.group
+    event = create!(:kind => "motion_outcome", :eventable => motion, :user => out_user)
+    debugger
+    motion.group_users.each do |user|
+      if user != out_user && user.get_group_noise_level(group) >= 1
+        event.notifications.create! :user => user
+      end
+    end
+  end
+
   def self.motion_closed!(motion, closer)
     group = motion.group
     event = create!(:kind => "motion_closed", :eventable => motion, :user => closer)
     motion.group_users.each do |user| 
-      if user != closer && user.get_group_noise_level(group) >= 2 # or facilitator
+      if user != closer && (user.get_group_noise_level(group) >= 2 || user == motion.author)
         event.notifications.create! :user => user
       end
     end
@@ -62,6 +69,7 @@ class Event < ActiveRecord::Base
   def self.new_vote!(vote)
     group = vote.motion.group
     event = create!(:kind => "new_vote", :eventable => vote)
+    #haven't accounted for a group.each here, possibly TOO noisy if we did
     begin
       if vote.user != vote.motion_author && vote.user.get_group_noise_level(group) >= 2
         event.notifications.create! :user => vote.motion_author
@@ -81,7 +89,7 @@ class Event < ActiveRecord::Base
     group = vote.group
     event = create!(:kind => "motion_blocked", :eventable => vote)
     vote.group_users.each do |user| 
-      if user != vote.user && user.get_group_noise_level(group) >= 1 # or facilitator
+      if user != vote.user && (user.get_group_noise_level(group) >= 1 || user == motion.author)
         event.notifications.create! :user => user
       end
     end
@@ -92,7 +100,7 @@ class Event < ActiveRecord::Base
     group = membership.group
     event = create!(:kind => "membership_requested", :eventable => membership)
     membership.group_admins.each do |admin|
-      if user.get_group_noise_level(group) >= 1
+      if admin.get_group_noise_level(group) >= 1
         event.notifications.create! :user => admin
       end
     end
