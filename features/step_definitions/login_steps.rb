@@ -1,13 +1,9 @@
-Given /^I am logged in as "(.*?)"$/ do |arg1|
-  login(arg1,'password')
+Given /^I am logged in as "(.*?)"$/ do |email|
+  login(email, 'password')
 end
 
 When /^I login as "(.*?)"$/ do |email|
-  visit "/"
-  page.should have_content "sign in"
-  fill_in 'user_email', with: email
-  fill_in 'user_password', with: "password"
-  click_on "Sign in"
+  login(email, 'password')
 end
 
 Then /^I should be logged in$/ do
