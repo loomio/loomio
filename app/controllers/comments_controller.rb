@@ -6,21 +6,18 @@ class CommentsController < BaseController
   end
 
   def like
-    @comment = Comment.find(params[:id])
-    comment_vote = resource.like current_user
-    Event.comment_liked!(comment_vote)
+  	@comment = Comment.find(params[:id])
+    like = (params[:like]=='true')
+    if like 
+      comment_vote = resource.like current_user
+      Event.comment_liked!(comment_vote)
+    else
+      resource.unlike current_user
+    end
     respond_to do |format|
     	format.html { redirect_to discussion_url(resource.discussion) }
     	format.js { render :template => "comments/comment_likes" }
     end
   end
 
-  def unlike
-  @comment = Comment.find(params[:id])
-    resource.unlike current_user
-    respond_to do |format|
-    	format.html { redirect_to discussion_url(resource.discussion) }
-    	format.js { render :template => "comments/comment_likes" }
-    end
-  end
 end
