@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   validates_attachment :uploaded_avatar,
     :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
     :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/png", "image/gif"] }
+  validates_presence_of :username
+  validates_uniqueness_of :username
 
   include Gravtastic
   gravtastic  :rating => 'pg',
@@ -94,7 +96,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
-                  :uploaded_avatar
+                  :uploaded_avatar, :username
 
   after_create :ensure_name_entry
   before_save :set_avatar_initials
@@ -344,6 +346,24 @@ class User < ActiveRecord::Base
     self.avatar_initials = initials[0..2]
   end
 
+  def generate_username
+    if name.include? '@'
+      #email used in place of name
+      new_username = email.split("@").first 
+    end
+    new_username = name.gsub(/\s+/, "").downcase
+    username_tmp = new_username.dup
+    num = 1
+    while(User.where("username = ?", username_tmp).count > 0)
+      username_tmp = "#{new_username}#{num}"
+      num+=1
+    end
+    self.username = username_tmp
+    puts("actual username")
+    puts(self.username)
+    save
+  end
+
   private
     def ensure_name_entry
       unless name
@@ -351,4 +371,5 @@ class User < ActiveRecord::Base
         save
       end
     end
+
 end

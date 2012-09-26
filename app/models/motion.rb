@@ -7,7 +7,7 @@ class Motion < ActiveRecord::Base
   has_many :did_not_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
 
-  validates_presence_of :name, :discussion, :author
+  validates_presence_of :name, :discussion, :author 
   validates_inclusion_of :phase, in: PHASES
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
@@ -28,7 +28,7 @@ class Motion < ActiveRecord::Base
   attr_accessor :create_discussion
   attr_accessor :enable_discussion
 
-  attr_accessible :name, :description, :discussion_url, :enable_discussion
+  attr_accessible :name, :description, :discussion_url, :enable_discussion 
   attr_accessible :close_date, :phase, :discussion_id, :outcome
 
   include AASM
@@ -194,7 +194,7 @@ class Motion < ActiveRecord::Base
       self.outcome = str
       save
     end
-  end
+  end 
 
   private
     def before_open
