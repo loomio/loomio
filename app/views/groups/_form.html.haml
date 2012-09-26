@@ -43,10 +43,14 @@
           %hr
           .setting-label= "Who can invite members to this #{suffix}?"
           .settings
-            =f.radio_button :members_invitable_by, "members"
-            =f.label :members_invitable_by_everyone, "All group members"
-            =f.radio_button :members_invitable_by, "admins"
-            =f.label :members_invitable_by_admins, "Admins only"
+            .row
+              .span3
+                =f.radio_button :members_invitable_by, "members"
+                =f.label :members_invitable_by_everyone, "All group members"
+            .row
+              .span3
+                =f.radio_button :members_invitable_by, "admins"
+                =f.label :members_invitable_by_admins, "Admins only"
           %hr
         =f.hidden_field :parent_id, :value => parent.id unless parent.nil?
 

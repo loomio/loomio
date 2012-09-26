@@ -106,7 +106,7 @@ li .motion {
     color: $mid-grey;
   }
 }
-li .motion-preview {
+li s hard.motion-preview {
   a {
     padding: 10px 15px;
     text-decoration: none;
@@ -156,10 +156,10 @@ li .motion-preview {
 
   /* comment */
   .comment{
-    padding: 0;
     color: $dark-grey;
     font-size: $font-small;
     background-color: $comment-color;
+    margin-top: 5px;
   }
 
   /* Apply word break only to paragraphs in comment-body */
@@ -207,20 +207,12 @@ li .motion-preview {
     white-space: pre;
   }
 
-  .comment-avatar {
-    position: relative;
-    top: 8px;
-  }
-
   .comment-container {
-    display: inline-block;
+    display: block;
     width: 390px;
-    padding: 5px 0;
-    margin-left: 40px;
+    margin-left: 45px;
+    padding-bottom: 5px;
     border-bottom: 1px solid $light-grey;
-  }
-  .comment-container.with-avatar {
-    margin-left: 0;
   }
   .comment.position {
     width: 400px;
