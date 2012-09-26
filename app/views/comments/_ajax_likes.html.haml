@@ -1,6 +1,0 @@
-- if can? :like, comment
-  = " · "
-  - if likes.find_by_user_id(current_user.id).nil?
-    = link_to "Like", like_comment_path(comment), method: :post, remote:true
-  - else
-    = link_to "Unlike", unlike_comment_path(comment), method: :post, remote:true

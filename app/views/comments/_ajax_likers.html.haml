@@ -1,8 +1,0 @@
-- if likes.count > 0
-  .comment-likes
-    - likers = likes.map { |like| link_to(like.user_name, "#") }
-    - if likers.length > 1
-      - likers = likers.slice(0, likers.length - 1).join(", ").concat(" and " + likers.slice(-1))
-    - else
-      - likers = likers[0]
-    = "Liked by #{likers}".html_safe
