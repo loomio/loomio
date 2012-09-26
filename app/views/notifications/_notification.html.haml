@@ -99,7 +99,6 @@
           %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
         %span.notification-item-footer
           = "#{date} ago · #{group_name}"
-  %li.divider
 
 - rescue => exception
   - logger.error("NOTIFICATION ERROR: It looks like something got deleted without it's corresponding events/notifications being deleted as well. notification_id: #{notification.id}")

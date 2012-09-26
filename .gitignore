@@ -1,6 +1,7 @@
 .bundle
 db/*.sqlite3
 config/database.yml
+config/newrelic.yml
 log/*.log
 tmp/
 .sass-cache/

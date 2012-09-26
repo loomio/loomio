@@ -1,5 +1,5 @@
 #outcome-statement
-  - if current_user == motion.author || current_user.is_group_admin?(this_group) 
+  - if can? :edit_outcome, motion
     - if motion.outcome.blank?
       #outcome-input
         = form_for motion, :url => edit_outcome_motion_path(motion.id) do |f|
@@ -21,7 +21,7 @@
   #outcome-display
     .statement-display.well
       .clearfix
-        - if current_user == motion.author || current_user.is_group_admin?(this_group)
+        - if can? :edit_outcome, motion
           = button_to "Edit", "#", class: 'btn btn-mini outcome-edit-button', id: 'edit-outcome', :method => "get"
         .outcome-label Outcome
         - if motion.outcome.blank?

@@ -154,5 +154,40 @@ describe DiscussionsController do
         end
       end
     end
+
+    describe "edit description" do
+      before do
+        discussion.stub(:save!)
+      end
+      it "assigns description to the model" do
+        discussion.should_receive(:description=).with "blah"
+        xhr :post, :edit_description,
+          :id => discussion.id,
+          :description => "blah"
+      end
+      it "saves the model" do
+        discussion.should_receive :save!
+        xhr :post, :edit_description,
+          :id => discussion.id,
+          :description => "blah"
+      end
+    end
+    describe "edit title" do
+      before do
+        discussion.stub(:save!)
+      end
+      it "assigns title to the model" do
+        discussion.should_receive(:title=).with "The Butterflys"
+        xhr :post, :edit_title,
+          :id => discussion.id,
+          :title => "The Butterflys"
+      end
+      it "saves the model" do
+        discussion.should_receive :save!
+        xhr :post, :edit_title,
+          :id => discussion.id,
+          :title => "The Butterflys"
+      end
+    end
   end
 end

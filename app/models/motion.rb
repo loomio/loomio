@@ -197,7 +197,6 @@ class Motion < ActiveRecord::Base
   end
 
   private
-
     def before_open
       self.close_date = Time.now + 1.week
       did_not_votes.each do |did_not_vote|

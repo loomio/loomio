@@ -2,8 +2,8 @@
   - if can? :add_members, group
     .clearfix
       - if group.parent.blank?
-        = link_to "#", class: 'group-add-members btn btn-small', id: 'add-members-btn' do
-          = image_tag("member.png")
+        %a.btn.btn-small.btn-icon#group-add-members{href: "#"}
+          .small-icon.member-icon
           .btn-text Add new member
         #invite-group-members.hidden
           = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
