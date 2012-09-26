@@ -11,7 +11,7 @@ class CommentsController < BaseController
     Event.comment_liked!(comment_vote)
     respond_to do |format|
     	format.html { redirect_to discussion_url(resource.discussion) }
-    	format.js
+    	format.js { render :template => "comments/comment_likes" }
     end
   end
 
@@ -20,7 +20,7 @@ class CommentsController < BaseController
     resource.unlike current_user
     respond_to do |format|
     	format.html { redirect_to discussion_url(resource.discussion) }
-    	format.js
+    	format.js { render :template => "comments/comment_likes" }
     end
   end
 end
