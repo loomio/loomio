@@ -73,6 +73,7 @@
     .notification-item.unread {
       background-color: $highlighted;
     }
+    border-top: 1px solid $light-grey;
   }
   #notifications-see-more {
     border-top: 1px solid $light-grey;
@@ -90,6 +91,10 @@
   }
 }
 
+li.notification-item.selector-item {
+  border-bottom: 1px solid $light-grey;
+}
+
 body.notifications.index .container {
   li.notification-item {
     background-color: white;
@@ -97,8 +102,5 @@ body.notifications.index .container {
   }
   li.notification-item:hover {
     background-color: $selector;
-  }
-  li.notification-item.divider {
-    padding: 0px;
   }
 }
