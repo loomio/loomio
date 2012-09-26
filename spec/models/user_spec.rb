@@ -127,12 +127,12 @@ describe User do
     end
     describe "discusssions_with_activity_count(group)" do
       it "should return the number of discussions with comment and/or vote activity in the givin group" do
-        user.discussions_with_activity_count(group).should == 3
+        user.discussions_with_activity_count(group).should == 4
       end
     end
     describe "activity_total" do
       it "should return the total number of dicussions with activity over all the users groups" do
-        user.activity_total.should == 3
+        user.activity_total.should == 5
       end
     end
   end
@@ -421,9 +421,8 @@ describe User do
       user.email = "darkness@loom.io"
       user.password = "password"
       user.save!
-      user1 = User.new
+      user1 = User.find_or_create_by_email("contact@loom.io")
       user1.name = "loomio helper bot"
-      user1.email = "contact@loom.io"
       user1.password = "password"
       user1.save!
       user2 = User.new
@@ -432,6 +431,10 @@ describe User do
       user2.password = "password"
       user2.save!
       User.get_loomio_user.should == user1
+    end
+
+    it "creates loomio helper bot if none exists" do
+      User.get_loomio_user.email.should == "contact@loom.io"
     end
   end
 
