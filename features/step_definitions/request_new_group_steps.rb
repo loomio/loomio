@@ -14,12 +14,10 @@ When /^I fill in and submit the Request New Group Form$/ do
   @group_size = 90
   @group_description = "Everyone in the entire world"
   @group_admin_email = "supreme_ruler@world.com"
-  @group_member_emails = "female@world.com\nmale@world.com\nbluebird@world.com"
   fill_in "group_request_name", with: @group_name
   fill_in "group_request_expected_size", with: @group_size
   fill_in "group_request_description", with: @group_description
   fill_in "group_request_admin_email", with: @group_admin_email
-  fill_in "group_request_member_emails", with: @group_member_emails
   find("#submit-group-request").click
 end
 

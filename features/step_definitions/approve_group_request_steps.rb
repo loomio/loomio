@@ -15,11 +15,11 @@ Then /^I should see the request$/ do
 end
 
 When /^I approve approve the request$/ do
-  find("#group_request_#{@group.id}").click_link("approve")
+  click_link("approve_group_request_#{@group_request.id}")
 end
 
 Then /^the group should be created$/ do
-  pending # express the regexp above with the code you wish you had
+  Group.where(:name => @group_request.name).should exist
 end
 
 Then /^invitation links should be sent to every email address$/ do
