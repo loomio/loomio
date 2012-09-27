@@ -301,6 +301,38 @@ describe Group do
     end
   end
 
+  describe "activity_since_last_viewed?(user)" do
+    before do
+      @group = create(:group)
+      @user = create(:user)
+      @membership = create :membership, group: @group, user: @user
+    end
+    context "where user is a member" do
+      before do
+        @group.stub(:membership).with(@user).and_return(@membership)
+      end
+      it "should return false if there is new activity since this group was last viewed but does not have any discussions with unread activity" do
+        @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
+        @group.discussions.stub_chain(:joins, :where, :count).and_return(0)
+        @group.activity_since_last_viewed?(@user).should == false
+      end
+      it "should return false if there is no new activity since this group was last viewed but does have discussions with unread activity" do
+        @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
+        @group.discussions.stub_chain(:joins, :where, :count).and_return(0)
+        @group.activity_since_last_viewed?(@user).should == false
+      end
+      it "should return true if there is no new activity since this group was last viewed but does have discussions with unread activity" do
+        @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
+        @group.discussions.stub_chain(:joins, :where, :count).and_return(2)
+        @group.activity_since_last_viewed?(@user).should == true
+      end
+    end
+    it "should return false there is no membership" do
+      @group.stub(:membership).with(@user)
+      @group.activity_since_last_viewed?(@user).should == false
+    end
+  end
+
   describe "#create_welcome_loomio" do
     before do
       @loomio_helper_bot = create(:user)
