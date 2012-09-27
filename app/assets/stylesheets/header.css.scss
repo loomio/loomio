@@ -39,7 +39,7 @@ li.nav-item {
   .caret {
     border-top: 4px solid $light-grey;
     opacity: 1;
-    margin-top: 11px;
+    /*margin-top: 11px;*/
   }
 }
 li.nav-item a.nav-logo-link {
@@ -50,7 +50,7 @@ li.nav-item a.nav-link {
   color: $light-grey;
   display: block;
   padding: 8px 8px;
-  line-height: 24px;
+  line-height: 18px;
 }
 li.nav-item a.nav-link:hover{
   color: white;
@@ -127,5 +127,3 @@ li.group-item.new-group {
   a { color: $mid-grey; }
   background-color: #eee;
 }
-
-.dropdown-menu .divider { margin: 0px }

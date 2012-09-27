@@ -8,7 +8,7 @@
       - if user_signed_in?
         %li.nav-item.dropdown#groups
           %a.nav-link{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
-            %span.nav-item-icon.large-icon.group-icon
+            %span.header-bar-icon.nav-item-icon.large-icon.group-icon
             %span= "Groups"
             %b.caret
           %ul.dropdown-menu
@@ -29,7 +29,7 @@
           = link_to "#", 'ajax-path' => mark_as_viewed_notifications_path(:latest_viewed => latest_seen_notification),
                    :id => 'notifications-toggle', :class => 'dropdown-toggle nav-link', 'data-target' => '#',
                    'data-toggle' => 'dropdown' do
-            %span.nav-item-icon.large-icon.notification-icon
+            %span.header-bar-icon.nav-item-icon.large-icon.notification-icon
             - if unviewed_notifications.size > 0
               %span#notifications-count.label.label-important
                 = unviewed_notifications.size
@@ -38,7 +38,6 @@
           %ul.dropdown-menu
             %li
               %h3 Notifications
-            %li.divider
             %li#notification-items
               %ul
                 - if notifications.count == 0
