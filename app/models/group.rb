@@ -127,10 +127,15 @@ class Group < ActiveRecord::Base
   def activity_since_last_viewed?(user)
     membership = membership(user)
     if membership
-      return true if discussions
+      return false unless discussions
         .includes(:comments)
         .where('comments.user_id <> ? AND comments.created_at > ?' , user.id, membership.last_viewed_at)
         .count > 0
+      return false unless discussions
+        .joins('INNER JOIN discussion_read_logs ON discussions.id = discussion_read_logs.discussion_id')
+        .where('discussion_read_logs.user_id = ? AND discussions.last_comment_at > discussion_read_logs.discussion_last_viewed_at',  user.id)
+        .count > 0
+      return true
     end
     false
   end
