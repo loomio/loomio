@@ -3,9 +3,5 @@
 %li{class: li_class}
   %a.selector-link{ href: group_path(group) }
     .clearfix
-      %span
-        .group-name= group.name.length < 35 ? group.name : group.name[0..32]+'...'
-        -#- activity =  current_user.discussions_with_activity_count(group)
-        -#- if activity > 0
-          -#.discussion-activity-count.label.label-important
-            -#= activity
+      .group-name= group.name.length < 35 ? group.name : group.name[0..32]+'...'
+      = render '/application/group_activity', user: current_user, group: group

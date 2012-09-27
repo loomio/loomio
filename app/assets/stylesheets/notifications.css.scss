@@ -31,16 +31,6 @@
   #notifications-container .a {
     padding-left: 0px;
   }
-  /*#notifications-container #notification-icon {*/
-    /*float: left;*/
-    /*height: 30px;*/
-    /*width: 26px;*/
-    /*position: relative;*/
-    /*right: 5px;*/
-    /*bottom: 5px;*/
-    /*background-repeat: no-repeat;*/
-    /*background-image:url("/assets/notification-icon.png");*/
-  /*}*/
   #notifications-container .dropdown-menu {
     width: 350px;
     background-color: $selector-panel;
@@ -70,7 +60,7 @@
   #notifications-count {
     position: absolute;
     left: 22px;
-    bottom: 19px;
+    bottom: 14px;
     padding: 0px 3px;
     font-size: $font-tinywiny;
   }
@@ -83,6 +73,7 @@
     .notification-item.unread {
       background-color: $highlighted;
     }
+    border-top: 1px solid $light-grey;
   }
   #notifications-see-more {
     border-top: 1px solid $light-grey;
@@ -100,6 +91,10 @@
   }
 }
 
+li.notification-item.selector-item {
+  border-bottom: 1px solid $light-grey;
+}
+
 body.notifications.index .container {
   li.notification-item {
     background-color: white;
@@ -107,8 +102,5 @@ body.notifications.index .container {
   }
   li.notification-item:hover {
     background-color: $selector;
-  }
-  li.notification-item.divider {
-    padding: 0px;
   }
 }
