@@ -18,9 +18,6 @@
           = f.label :description, "Discussion info", { class: "control-label", for: "validate-presence"}
           .presence-error-message Please fill in some info on the discussion
           = f.text_area :description, :placeholder => "Give enough context for your group to have a well-informed discussion", class: "validate-presence"
-        = f.check_box :notify_group_upon_creation
-        = f.label :notify_group_upon_creation,
-          "Send email notification to group members", class: "checkbox-label"
   .modal-footer
     = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
     = f.submit "Start", class: "btn btn-info run-validations", id: "discussion-submit", :data => { :disable_with => "Starting" }

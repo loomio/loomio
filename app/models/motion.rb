@@ -252,6 +252,14 @@ class Motion < ActiveRecord::Base
       MotionMailer.motion_closed(self, author_email).deliver
     end
 
+    def email_outcome
+      group.users.each do |user|
+        if user.get_group_noise_level(group) >= 2 #and not outcome setter
+          MotionMailer.motion_outcome(self, user.email).deliver
+        end
+      end
+    end
+
     def format_discussion_url
       unless self.discussion_url.match(/^http/) || self.discussion_url.empty?
         self.discussion_url = "http://" + self.discussion_url

@@ -36,7 +36,10 @@ describe DiscussionMailer do
       user.receive_emails = false
       group.add_member! user
 
-      #feel like there could be a more elegant way to test this? - PS
+      num_noise_levels = []
+      group.users.each do |group_user|
+        num_noise_levels[ group_user.get_group_noise_level(group) ] += 1 #this doesn't work
+      end
       DiscussionMailer.should_receive(:new_discussion_created).
         exactly(group.users.count - 2).times.and_return(stub(deliver: true))
       DiscussionMailer.spam_new_discussion_created(discussion)

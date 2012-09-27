@@ -45,12 +45,11 @@ class Event < ActiveRecord::Base
     event
   end
 
-  def self.motion_outcome!(motion, out_user)
+  def self.motion_outcome!(motion, outcome_stater)
     group = motion.group
-    event = create!(:kind => "motion_outcome", :eventable => motion, :user => out_user)
-    debugger
+    event = create!(:kind => "motion_outcome", :eventable => motion, :user => outcome_stater)
     motion.group_users.each do |user|
-      if user != out_user && user.get_group_noise_level(group) >= 1
+      if user != outcome_stater && user.get_group_noise_level(group) >= 1
         event.notifications.create! :user => user
       end
     end

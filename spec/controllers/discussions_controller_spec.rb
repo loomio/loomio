@@ -70,14 +70,8 @@ describe DiscussionsController do
         @discussion_hash = { group_id: group.id, title: "Shinney",
                             comment: "Bright light" }
       end
-      it "does not send email by default" do
-        DiscussionMailer.should_not_receive(:spam_new_discussion_created)
-        get :create, discussion:
-          @discussion_hash.merge({ notify_group_upon_creation: "0" })
-      end
-      it "sends email if notify_group_upon_creation is passed in params" do
-        DiscussionMailer.should_receive(:spam_new_discussion_created).
-          with(discussion)
+      it "does send email by default" do
+        DiscussionMailer.should_receive(:spam_new_discussion_created)
         get :create, discussion:
           @discussion_hash.merge({ notify_group_upon_creation: "1" })
       end
@@ -107,6 +101,22 @@ describe DiscussionsController do
       it "renders new motion template" do
         get :new_proposal, id: discussion.id
         response.should render_template("motions/new")
+      end
+      context "noise level default or less" do
+        it "does not add a notification" do
+          pending
+        end
+        it "does not send mail" do
+          pending
+        end
+      end
+      context "noise level All" do
+        it "does add a notification" do
+          pending
+        end
+        it "does send an e-mail" do
+          pending
+        end
       end
     end
 

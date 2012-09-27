@@ -23,7 +23,7 @@ class MotionMailer < ActionMailer::Base
     @group = motion.group
     mail( to: email,
           reply_to: @motion.author_email,
-          subject: "#{email_subject_prefix(@group.full_name)} Outcome set - #{@motion.name}")
+          subject: "#{email_subject_prefix(@group.full_name)} Outcome set for proposal - #{@motion.name}")
   end
 
   def motion_blocked(vote)
