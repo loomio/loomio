@@ -1,6 +1,6 @@
 module DiscussionsHelper
   def discussion_activity_count_for(discussion, user)
-    user ? user.discussion_activity_count(discussion) : 0
+    user ? discussion.number_of_comments_since_last_looked(user) : 0
   end
 
   def enabled_icon_class_for(discussion, user)
@@ -11,12 +11,17 @@ module DiscussionsHelper
     end
   end
 
-  def css_class_for(discussion, user)
-    motion = discussion.current_motion
-    css_class = ["discussion-preview"]
-    css_class << "blocked" if motion.present? && motion.voting? && motion.blocked?
-    css_class << "unread" if discussion.has_activity_unread_by?(user) || signed_out?
-    css_class.join(" ")
+  def css_class_unread_discussion_activity_for(discussion, user)
+    css_class = "discussion-preview"
+    css_class += " sub-group-discussion" unless discussion.group.parent.nil?
+    css_class += " unread" if user && discussion.number_of_comments_since_last_looked(user) > 0
+    css_class
+  end
+
+  def css_class_unread_group_activity_for(discussion, user)
+    css_class = "group-activity-indicator"
+    css_class += " unread-group-activity" if (not signed_out?) && params[:group_id] && discussion.has_activity_since_group_last_viewed?(user)
+    css_class
   end
 
   def render_position_message(vote)
