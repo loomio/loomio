@@ -153,6 +153,13 @@ li s hard.motion-preview {
     list-style: none;
     margin: 0 0 3px 0;
   }
+  ul.history-list .divider {
+    margin-left: 45px;
+    border-bottom: 1px solid $light-grey;
+  }
+  li.empty-list-message {
+    margin-left: 45px;
+  }
 
   /* comment */
   .comment{
@@ -280,7 +287,19 @@ li s hard.motion-preview {
 //       the dashboard page.
 //
 
+.group-activity-indicator {
+  margin: 0 0 0 -6px;
+  width: 4px;
+  height: 47px;
+  float: left;
+  background-color: $container;
+}
+  .unread-group-activity {background-color: $group-activity;}
 .discussion-preview {
+  float: left;
+  width: 620px;
+  .discussion-container {
+  }
   a {
     color: $dark-grey;
   }
@@ -290,9 +309,9 @@ li s hard.motion-preview {
   .vote-icon {
     float: left;
     width: 20px;
+    padding-right: 7px;
     position: relative;
     top: 6px;
-    padding-right: 7px;
   }
   .discussion-title {
     display: inline;

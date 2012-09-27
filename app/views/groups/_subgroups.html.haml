@@ -7,4 +7,8 @@
         .btn-text Create a sub-group
     %ul
       - subgroups.each do |subgroup|
-        %li= render "dashboard/group_link", group: subgroup
+        %li
+          .group-link
+            = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
+            - if user_signed_in?
+              = render '/application/group_activity', user: current_user, group: subgroup
