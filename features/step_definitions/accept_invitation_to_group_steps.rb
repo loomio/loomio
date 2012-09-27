@@ -1,7 +1,13 @@
-Given /^I have been sent an invite email to join a Loomio group$/ do
-  email = @user ? @user.email : "little@email.com"
+Given /^I have been invited to join a loomio group and I am a new user$/ do
   @group = FactoryGirl.create :group
-  GroupMailer.invite_to_group(email, @group).deliver
+  @inviter = FactoryGirl.create :user
+  InvitesUsersToGroup.invite!(:recipient_emails => ['little@email.com'], 
+                              :group => @group,
+                              :inviter => @inviter)
+end
+
+Given /^I have been invited to join a loomio group and I am an existing user$/ do
+  pending # express the regexp above with the code you wish you had
 end
 
 When /^I click the invitation link$/ do
