@@ -92,23 +92,21 @@ body.discussions.show {
 }
 
 #content-proposal {
-  width: 468px;
   .proposal-btn {
     float: right;
     margin-top: 8px;
   }
 }
 .content-proposal-body {
-  padding: 10px 20px 10px 50px;
+  padding: 10px 10px 10px 50px;
 }
 li .motion {
-  padding: 0 5px 0px 0px;
   .close-date {
     font-size: $font-tiny;
     color: $mid-grey;
   }
 }
-li .motion-preview {
+li s hard.motion-preview {
   a {
     padding: 10px 15px;
     text-decoration: none;
@@ -117,11 +115,12 @@ li .motion-preview {
 
 /*** comments, positions & proposals in History ***/
 #content-history {
-  width: 469px;
   border-right: 1px solid $light-grey;
+  min-height: 660px;
+  padding-right: 10px;
 
   #content-history-body {
-    padding: 10px 20px 10px 8px;
+    padding: 10px 0px 10px 8px;
   }
 
   #new-comment-form {
@@ -141,9 +140,9 @@ li .motion-preview {
 
   #new-comment {
     margin: 0 0 5px 0px;
-    width: 385px;
     height: 80px;
     color: $dark-grey;
+    width: 380px;
   }
 
   #post-new-comment {
@@ -164,11 +163,10 @@ li .motion-preview {
 
   /* comment */
   .comment{
-    padding: 0 10px 0 0px;
     color: $dark-grey;
     font-size: $font-small;
     background-color: $comment-color;
-    width: 450px;
+    margin-top: 5px;
   }
 
   /* Apply word break only to paragraphs in comment-body */
@@ -216,20 +214,12 @@ li .motion-preview {
     white-space: pre;
   }
 
-  .comment-avatar {
-    position: relative;
-    top: 8px;
-  }
-
   .comment-container {
-    display: inline-block;
-    width: 396px;
-    padding: 5px 0;
-    margin-left: 40px;
+    display: block;
+    width: 390px;
+    margin-left: 45px;
+    padding-bottom: 5px;
     border-bottom: 1px solid $light-grey;
-  }
-  .comment-container.with-avatar {
-    margin-left: 0;
   }
   .comment.position {
     width: 400px;
@@ -349,28 +339,15 @@ li .motion-preview {
     width: 36px;
     height: 36px;
     z-index: 1;
-    /*margin-left: 4px;*/
   }
-  .enabled-icon {
-    -moz-opacity: 1.0;
-    filter:alpha(opacity=100);
-    opacity: 1.0;
-   }
   .activity-icon { float: right; }
   .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
   .pie-icon.activity-icon { margin: 8px 4px 0 8px; }
-  .disabled-icon {
-    -moz-opacity: 0.2;
-    filter:alpha(opacity=20);
-    opacity: 0.2
-  }
   .activity-count {
-    margin-left: 18px;
-    height: 14px;
     font-size: $font-tinywiny;
     position: relative;
-    bottom: 9px;
-    z-index: 2;
+    bottom: 8px;
+    left: 16px;
   }
   .pie .activity-count {
     bottom: 1px;
