@@ -106,17 +106,20 @@ li.nav-item.dropdown#groups {
   }
 }
 /* group dropdown items */
-li.group-item .group-name {
-  float: left;
-  display: inline;
-}
 li#groups ul.dropdown-menu { background-color: #eee; }
-li.group-item { background-color: white; }
+li.group-item {
+  background-color: white;
+  a { padding-right: 8px; }
+}
 li.group-item.all-groups {
   padding: 0 0 2px 0px;
   border-bottom: 1px solid $light-grey;
   a { color: $mid-grey; }
   background-color: #eee;
+}
+li.group-item .group-name {
+  float: left;
+  display: inline;
 }
 li.group-item.sub-group a { padding-left: 30px }
 li.group-item.new-group {

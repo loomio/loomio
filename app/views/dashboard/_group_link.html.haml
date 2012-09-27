@@ -1,6 +1,3 @@
 - group = GroupDecorator.decorate(group)
-- group_link_class = "group-link"
-- if current_user && (!current_user.groups.include?(group))
-  - group_link_class = "group-link disabled"
 - if can? :show, group
-  %span{class: group_link_class}= group.link
+  .group-link= group.link

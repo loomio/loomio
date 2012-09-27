@@ -49,9 +49,8 @@ h5 {
 
 // structural elements (containers etc.)
 
-.sub_group{
-	font-size: $font-tiny;
-}
+.sub-panel li .group-link a { text-decoration: none; }
+.sub_group {font-size: $font-tiny;}
 
 #start-new-topic { margin: 0 0 10px 2px; }
 #discussion-list {
@@ -125,6 +124,7 @@ li.selector-item a.selector-link {
 li.selector-item a.selector-link:hover {
   background-color: $selector;
   text-decoration: none;
+  .group-activity-indicator.unread-group-activity { background-color: $group-activity; }
 }
 .pagination {
   a {
@@ -187,7 +187,14 @@ li.selector-item a.selector-link:hover {
 .control-label {
   display: inline;
 }
-
+.label-right{
+  float: right;
+}
+.label-group-activity {
+  background-color: $group-activity;
+  font-weight: normal;
+  font-size: $font-tiny;
+}
 .group-presence-error-message {
   float: right;
   position: relative;
@@ -396,6 +403,10 @@ a.btn-icon:hover { color: $dark-grey; }
   bottom: 2px;
 }
 
+.small-icon.dot-icon {
+  background-image:url('/assets/dot-18.png');
+  float: right;
+}
 .small-icon.topic-icon {
   background-image:url('/assets/topic-18.png');
 }
