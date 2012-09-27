@@ -16,5 +16,5 @@ Feature: Admin approves group request to join Loomio
     When I visit the Group Requests page on the admin panel
     And I approve approve the request
     Then the group should be created
-    And invitation links should be sent to every email address
+    And an invitation email should be sent to the admin
     And I should be redirected to the Group Requests page

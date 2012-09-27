@@ -22,11 +22,12 @@ Then /^the group should be created$/ do
   Group.where(:name => @group_request.name).should exist
 end
 
-Then /^invitation links should be sent to every email address$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^an invitation email should be sent to the admin$/ do
+  open_email(@group_request.admin_email,
+     :with_subject => "Invitation to join Loomio: #{@group_request.name}")
 end
 
 Then /^I should be redirected to the Group Requests page$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_css "body.admin_group_requests"
 end
 

@@ -137,6 +137,9 @@ GEM
     draper (0.11.1)
       activesupport (>= 2.3.10)
     ejs (1.0.0)
+    email_spec (1.2.1)
+      mail (~> 2.2)
+      rspec (~> 2.0)
     erubis (2.7.0)
     eventmachine (0.12.10)
     exception_notification (2.6.1)
@@ -395,6 +398,7 @@ DEPENDENCIES
   devise (~> 2.0.0)
   devise_invitable (~> 1.0.0)
   draper (~> 0.11.1)
+  email_spec
   exception_notification
   factory_girl_rails (~> 4.0)
   faker

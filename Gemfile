@@ -80,5 +80,6 @@ group :test do
   gem 'simplecov', :require => false
   gem 'flay', :require => false
   gem "rails_best_practices", :require => false
+  gem 'email_spec'
 end
 

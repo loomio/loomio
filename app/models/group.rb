@@ -1,6 +1,9 @@
 class Group < ActiveRecord::Base
   PERMISSION_CATEGORIES = [:everyone, :members, :admins, :parent_group_members]
 
+  attr_accessible :name, :viewable_by, :parent_id, :parent
+  attr_accessible :members_invitable_by, :email_new_motion, :description
+
   validates_presence_of :name
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
@@ -54,9 +57,6 @@ class Group < ActiveRecord::Base
   delegate :users, :to => :parent, :prefix => true
   delegate :name, :to => :parent, :prefix => true
   delegate :email, :to => :creator, :prefix => true
-
-  attr_accessible :name, :viewable_by, :parent_id, :parent
-  attr_accessible :members_invitable_by, :email_new_motion, :description
 
   #
   # ACCESSOR METHODS
