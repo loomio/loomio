@@ -6,7 +6,7 @@ class CommentsController < BaseController
   end
 
   def like
-  	@comment = Comment.find(params[:id])
+  	@comment = resource 
     like = (params[:like]=='true')
     if like 
       comment_vote = resource.like current_user
