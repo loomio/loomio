@@ -18,8 +18,7 @@ class User < ActiveRecord::Base
   validates_attachment :uploaded_avatar,
     :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
     :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/png", "image/gif"] }
-  validates_presence_of :username
-  validates_uniqueness_of :username
+  validates_uniqueness_of :username, :allow_nil => true, :allow_blank => true
 
   include Gravtastic
   gravtastic  :rating => 'pg',
@@ -359,8 +358,6 @@ class User < ActiveRecord::Base
       num+=1
     end
     self.username = username_tmp
-    puts("actual username")
-    puts(self.username)
     save
   end
 
