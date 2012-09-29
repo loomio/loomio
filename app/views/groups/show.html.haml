@@ -1,5 +1,5 @@
 - set_title @group.name, ""
-- if current_user && @group.parent.nil? && (not current_user.has_read_group_notice?)
+- if user_signed_in? && @group.parent.nil? && (not current_user.has_read_group_notice?)
   - message = "This is the Group page for \"#{@group.full_name}\". \n\n Here you can see the discussions for this group, "
   - message += "a description and a list of the group members. "
   - message += "You can start a new topic by clicking on the 'Start a discussion' button.\n\n"
@@ -38,5 +38,5 @@
     =render 'members', group: @group
   =render '/application/closed_motions', user: nil, group: @group
 
-- if current_user
+- if user_signed_in?
   =render '/discussions/new', discussion: @discussion, user_groups: nil

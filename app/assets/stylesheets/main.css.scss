@@ -49,7 +49,10 @@ h5 {
 
 // structural elements (containers etc.)
 
-.sub-panel li .group-link a { text-decoration: none; }
+.sub-panel li .group-link a {
+  display:inline-block;
+  text-decoration: none;
+}
 .sub_group {font-size: $font-tiny;}
 
 #start-new-topic { margin: 0 0 10px 2px; }
@@ -109,6 +112,7 @@ li.selector-item {
   background-color: $unhighlighted;
   color: $dark-grey;
   font-weight: normal;
+  border-bottom: 1px solid $light-grey;
 }
 .undecided, .unread {
   background-color: $highlighted;
@@ -119,7 +123,6 @@ li.selector-item {
 li.selector-item a.selector-link {
   display: block;
   padding: 5px 5px 5px 15px;
-  border-bottom: 1px solid $light-grey;
 }
 li.selector-item a.selector-link:hover {
   background-color: $selector;

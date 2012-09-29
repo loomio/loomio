@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20120924032713) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.datetime "discussion_last_viewed_at", :default => '2012-09-26 11:06:02'
+    t.datetime "discussion_last_viewed_at", :default => '2012-09-27 01:55:08'
   end
 
   add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(:version => 20120924032713) do
     t.datetime "updated_at"
     t.string   "access_level"
     t.integer  "inviter_id"
-    t.datetime "last_viewed_at", :default => '2012-09-26 11:06:02'
+    t.datetime "last_viewed_at", :default => '2012-09-27 01:55:08'
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
