@@ -10,7 +10,7 @@
   margin-bottom: 10px;
   hr {
     margin: 5px 13px;
-    border-top: 1px solid #CCC
+    /*border-top: 1px solid #CCC*/
   }
   h1 {
     float: left;
@@ -98,8 +98,8 @@
 /**** Group page ****/
 
 body.groups.show {
-  .discussion-preview .discussion-title { margin-top: 7px;}
-  .discussion-preview.sub-group-discussion .discussion-title {margin-top: 0}
+  .discussion-preview .discussion-title {margin-top: 7px;}
+  .discussion-preview.showing-group .discussion-title {margin-top: 0}
 }
 .sub-panel {
   background-color: $sub-selector-panel;
