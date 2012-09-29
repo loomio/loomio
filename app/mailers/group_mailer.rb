@@ -25,7 +25,6 @@ class GroupMailer < ActionMailer::Base
   def deliver_group_email(group, sender, subject, message)
     group.users.each do |user|
       if user != sender && user.accepted_or_not_invited? && user.send_email?
-
         GroupMailer.group_email(group, sender, subject, message, user).deliver
       end
     end
