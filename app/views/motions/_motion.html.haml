@@ -59,7 +59,7 @@
         .modal-body
           .control-group
             = f.text_area :statement, placeholder: "Give a reason for your decision (optional)", class: "statement inputError limit-250"
-          .character-counter
+            .character-counter
           =f.hidden_field :position
         .modal-footer
           = submit_tag "Confirm position", class: "vote btn btn-info", :data => { :disable_with => "Confirming position" }

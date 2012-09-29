@@ -112,29 +112,29 @@ pluralize_characters = (num) ->
 # display charcaters left
 display_count = (num, object) ->
   if(num >= 0)
-    $(".character-counter").text(pluralize_characters(num) + " left")
+    object.parent().find(".character-counter").text(pluralize_characters(num) + " left")
     object.parent().removeClass("error")
   else
     num = num * (-1)
-    $(".character-counter").text(pluralize_characters(num) + " too long")
+    object.parent().find(".character-counter").text(pluralize_characters(num) + " too long")
     object.parent().addClass("error")
 
 # character count for 250 characters max
 $ ->
-  $(".limit-250").keyup(() ->
+  $(".limit-250").on("keyup",() ->
     $(".error-message").hide()
-    chars = $(".limit-250").val().length
+    chars = $(this).val().length
     left = 250 - chars
-    display_count(left, $(".limit-250"))
+    display_count(left, $(this))
   )
 
  #character count for 150 characters max
 $ ->
   $(".limit-150").keyup(() ->
     $(".error-message").hide()
-    chars = $(".limit-150").val().length
+    chars = $(this).val().length
     left = 150 - chars
-    display_count(left, $(".limit-150"))
+    display_count(left, $(this))
   )
 
 #*** check if discussion with motions list is empty ***

@@ -6,7 +6,7 @@
           = f.hidden_field :id
           .control-group
             = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', placeholder: "What was the outcome of this proposal?"
-          .character-counter
+            .character-counter
           .save-button.clearfix
             = f.submit "Save", class: 'btn btn-mini run-validations', id: 'add-outcome-submit'
     - else
@@ -15,7 +15,7 @@
           = f.hidden_field :id
           .control-group
             = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', placeholder: "What was the outcome of this proposal?"
-          .character-counter
+            .character-counter
           .save-button.clearfix
             = f.submit "Save", class: 'btn btn-mini run-validations', id: 'add-outcome-submit'
   #outcome-display
