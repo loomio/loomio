@@ -53,14 +53,14 @@
       / Notification settings end
       %h3 Picture
       .row
-        .span2#user-image-area
+        .span3
           .large-user-avatar.avatar-canvas.large-user-initials.initials-decoration#avatar-preview
             - if @user.avatar_kind.blank?
               = @user.avatar_initials
             - else
               = image_tag @user.avatar_url("large")
         .span3
-          #user-image-options
+          .user-image-options
             %ul
               - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
                 %li.user-image-option.option-uploaded.clearfix

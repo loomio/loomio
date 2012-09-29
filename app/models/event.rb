@@ -58,6 +58,7 @@ class Event < ActiveRecord::Base
   def self.motion_closed!(motion, closer)
     group = motion.group
     event = create!(:kind => "motion_closed", :eventable => motion, :user => closer)
+
     motion.group_users.each do |user| 
       if user != closer && (user.get_group_noise_level(group) >= 2 || user == motion.author)
         event.notifications.create! :user => user

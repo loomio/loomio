@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   require 'digest/md5'
 
   LARGE_IMAGE = 170
+  MED_LARGE_IMAGE = 70
   MEDIUM_IMAGE = 35
   SMALL_IMAGE = 25
   MAX_AVATAR_IMAGE_SIZE_CONST = 1000
@@ -25,6 +26,7 @@ class User < ActiveRecord::Base
   has_attached_file :uploaded_avatar,
     :styles => {
       :large => "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
+      :medlarge => "#{User::MED_LARGE_IMAGE}x#{User::MED_LARGE_IMAGE}#",
       :medium => "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
       :small => "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
     }
@@ -111,6 +113,10 @@ class User < ActiveRecord::Base
 
   def is_group_admin?(group)
     memberships.for_group(group).with_access('admin').exists?
+  end
+
+  def is_group_member?(group)
+    memberships.for_group(group).exists?
   end
 
   def group_membership(group)
@@ -204,47 +210,23 @@ class User < ActiveRecord::Base
   def update_discussion_read_log(discussion)
     if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
       discussion_read_log = DiscussionReadLog.new
-      discussion_read_log.discussion_activity_when_last_read = discussion.activity
+      discussion_read_log.discussion_last_viewed_at = Time.now()
       discussion_read_log.user_id = id
       discussion_read_log.discussion_id = discussion.id
-      discussion_read_log.save
+      discussion_read_log.save!
     else
       log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
-      log.discussion_activity_when_last_read = discussion.activity
-      log.save
+      log.discussion_last_viewed_at = Time.now()
+      log.save!
     end
   end
 
-  def discussion_activity_when_last_read(discussion)
-    log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
-    if log
-      log.discussion_activity_when_last_read
-    else
-      0
+  def update_group_last_viewed_at(group)
+    membership = group_membership(group)
+    if membership
+      membership.last_viewed_at = Time.now()
+      membership.save!
     end
-  end
-
-  def discussion_activity_count(discussion)
-    discussion.activity - discussion_activity_when_last_read(discussion)
-  end
-
-  def discussions_with_activity_count(group)
-    count = 0
-    group.discussions.each do |discussion|
-      count += 1 if discussion_activity_count(discussion) > 0
-      if discussion.current_motion
-        count += 1 if motion_activity_count(discussion.current_motion) > 0
-      end
-    end
-    count
-  end
-
-  def activity_total
-    total = 0;
-    groups.each do |group|
-      total += discussions_with_activity_count(group)
-    end
-    total
   end
 
   def self.find_by_email(email)
@@ -346,6 +328,8 @@ class User < ActiveRecord::Base
       pixels = User::SMALL_IMAGE
     when :medium
       pixels = User::MEDIUM_IMAGE
+    when :medlarge
+      pixels = User::MED_LARGE_IMAGE
     when :large
       pixels = User::LARGE_IMAGE
     else
