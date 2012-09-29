@@ -12,3 +12,4 @@ if contact_user.new_record?
   contact_user.password = "password"
 end
 contact_user.save!
+

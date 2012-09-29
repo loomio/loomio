@@ -41,3 +41,10 @@ $ ->
     else
       clickedAway = true
   )
+
+  $('.buttonset > a > .btn').click((e) -> 
+    $(this).parent().parent().find('a > .btn').each( (i) ->
+      $(this).removeClass('active')
+    )
+    $(this).addClass('active')
+  )

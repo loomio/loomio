@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20120924032713) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.datetime "discussion_last_viewed_at", :default => '2012-09-27 04:36:04'
+    t.datetime "discussion_last_viewed_at", :default => '2012-09-29 02:53:40'
   end
 
   add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(:version => 20120924032713) do
     t.string   "access_level"
     t.integer  "inviter_id"
     t.integer  "noise_level",    :default => 1,                     :null => false
-    t.datetime "last_viewed_at", :default => '2012-09-27 04:36:05'
+    t.datetime "last_viewed_at", :default => '2012-09-29 02:53:40'
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
@@ -205,10 +205,10 @@ ActiveRecord::Schema.define(:version => 20120924032713) do
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
-    t.string   "avatar_initials"
     t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
     t.boolean  "has_read_group_notice",                      :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
+    t.string   "avatar_initials"
     t.boolean  "receive_emails",                             :default => true,  :null => false
   end
 

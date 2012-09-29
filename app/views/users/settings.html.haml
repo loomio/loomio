@@ -11,20 +11,20 @@
           #noise-groups
             .span6
               #ng-heading
-                .span3 
+                .span2
                   %h4 Groups
-                .span2 
+                .span3 
                   %h4 Notifications
               #ng-values
                 - current_user.root_groups.order('name').each do |group|
-                  .span3= group.name
-                  .span2.buttonset
+                  .span2= group.name
+                  .span3.buttonset
                     =link_to set_noise_user_path(@user, :noise => '0', :group => group), :method => :post, :remote => true do
-                      %span.button Off
+                      %span.btn{:class => ('active' if @user.get_group_noise_level(group) == 0)} Off
                     =link_to set_noise_user_path(@user, :noise => '1', :group => group), :method => :post, :remote => true do
-                      %span.button Default
+                      %span.btn{:class => ('active' if @user.get_group_noise_level(group) == 1)} Default
                     =link_to set_noise_user_path(@user, :noise => '2', :group => group), :method => :post, :remote => true do
-                      %span.button All
+                      %span.btn{:class => ('active' if @user.get_group_noise_level(group) == 2)} All
 
             .span4
               .helper-text
@@ -35,16 +35,16 @@
         #noise-email
           .span6
             #ne-heading
-              .span3 &nbsp;
-              .span2 
+              .span2 &nbsp;
+              .span3 
                 %h4 E-mails
             #ne-values
-              .span3 All Groups
-              #noise_email.span2.buttonset
+              .span2 All Groups
+              #noise_email.span3.buttonset
                 =link_to set_receive_emails_user_path(@user, :email => false), :method => :post, id: 'email_off', :remote => true do
-                  %span.button Off
+                  %span.btn{:class => ('active' if !@user.receive_emails)} Off
                 =link_to set_receive_emails_user_path(@user, :email => true), :method => :post, id: 'email_on', :remote => true do
-                  %span.button On
+                  %span.btn{:class => ('active' if @user.receive_emails)} On
           .span4
             .helper-text
               %p Set this to off if you never want Loomio to send you e-mails.
