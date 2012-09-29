@@ -40,3 +40,4 @@ $ ->
       isVisible = clickedAway = false
     else
       clickedAway = true
+  )
