@@ -16,17 +16,19 @@
             %span= "Groups"
             %b.caret
           %ul.dropdown-menu
-            %li.group-item.all-groups
-              %a.selector-link{href: '/'}
-                = "Home"
+            -#%li.group-item.all-groups
+            -#  %a.selector-link{href: '/'}
+            -#    = "Home"
             - current_user.root_groups.order('name').each do |group|
               = render 'group_dropdown_item', group: group, subgroup: false
               - if group.subgroups.size > 0
                 - group.subgroups.each do |sub_group|
                   - if current_user.group_membership(sub_group)
                     = render 'group_dropdown_item', group: sub_group, subgroup: true
+            -#%li.group-item.new-group
+            -#  =link_to "+ Add New Group", new_group_path
             %li.group-item.new-group
-              =link_to "+ Add New Group", new_group_path
+              =link_to "+ Request New Group", request_new_group_path
 
         %li.nav-item.dropdown#notifications-container
           - latest_seen_notification = notifications.first.id if notifications.exists?
