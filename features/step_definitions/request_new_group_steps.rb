@@ -6,10 +6,11 @@ When /^I visit the Request New Group page$/ do
 end
 
 Then /^I should see the Request New Group Form$/ do
-  page.should have_css("#new_group_request")
+  page.should have_css("#request-new-group")
 end
 
 When /^I fill in and submit the Request New Group Form$/ do
+  click_on "request-new-group"
   @group_name = "The whole world"
   @group_size = 90
   @group_description = "Everyone in the entire world"
