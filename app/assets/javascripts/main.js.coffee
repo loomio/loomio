@@ -167,6 +167,17 @@ displayGraph = (this_pie, graph_id, data)->
     gap: 1
     shadow: 0.75
 
+$ ->
+  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
+    $(".pie").click((event) ->
+      $(this).parent().find(".activity-count").hide()
+      #set the discussion read log to now()
+      $(this).popover('hide')
+      $(this).parent().parent().parent().click((event) ->
+        event.preventDefault()
+        event.stopImmediatePropagation()
+      )
+    )
 #*** open-close motions dropdown***
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
