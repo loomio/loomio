@@ -254,7 +254,7 @@ describe User do
     Time.stub(:now).and_return(time_now)
     membership.stub(:save!).and_return(true)
 
-    membership.should_receive(:last_viewed_at=).with(time_now)
+    membership.should_receive(:group_last_viewed_at=).with(time_now)
 
     user.update_group_last_viewed_at(group)
   end
