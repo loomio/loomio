@@ -112,9 +112,9 @@ ActiveRecord::Schema.define(:version => 20120930022453) do
     t.string   "admin_email"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
-    t.boolean  "cannot_contribute", :default => false
     t.string   "status"
     t.integer  "group_id"
+    t.boolean  "cannot_contribute", :default => false
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"

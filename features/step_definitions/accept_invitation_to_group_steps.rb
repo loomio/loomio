@@ -1,4 +1,5 @@
 Given /^I have been invited to join a loomio group and I am a new user$/ do
+  pending
   @group = FactoryGirl.create :group
   @inviter = FactoryGirl.create :user
   InvitesUsersToGroup.invite!(:recipient_emails => ['little@email.com'], 
