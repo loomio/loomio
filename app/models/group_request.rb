@@ -1,5 +1,5 @@
 class GroupRequest < ActiveRecord::Base
-  attr_accessible :admin_email, :description, :expected_size, :name
+  attr_accessible :admin_email, :description, :expected_size, :name, :cannot_contribute
 
   def approve!
     @group = Group.new(:name => name)

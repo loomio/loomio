@@ -226,10 +226,15 @@ form {
     height: 200px;
   }
 
+  /* this is a little mess that needs to be resolved*/
   input[type="checkbox"] {
     margin-top: 10px;
     margin-bottom: 10px;
     display: inline;
+  }
+
+  .checkbox input{
+    margin-top: 0px;
   }
 
   .checkbox-label {
@@ -436,3 +441,4 @@ a.btn-icon:hover { color: $dark-grey; }
   display: inline;
   width: 80%;
 }
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926024558) do
+ActiveRecord::Schema.define(:version => 20120930010534) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20120926024558) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body"
+    t.text     "body",             :default => ""
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -83,11 +83,10 @@ ActiveRecord::Schema.define(:version => 20120926024558) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "activity",        :default => 0, :null => false
     t.string   "title"
-    t.integer  "activity",           :default => 0,     :null => false
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "has_current_motion", :default => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -110,8 +109,9 @@ ActiveRecord::Schema.define(:version => 20120926024558) do
     t.integer  "expected_size"
     t.text     "description"
     t.string   "admin_email"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "cannot_contribute", :default => false
   end
 
   create_table "groups", :force => true do |t|
