@@ -205,6 +205,11 @@ class User < ActiveRecord::Base
     motion.activity - motion_activity_when_last_read(motion)
   end
 
+  def votes_since_last_read(discussion)
+    last_read_at = discussion.last_read_at(self)
+    discussion.current_motion.votes.where('created_at > ?', last_read_at)
+  end
+
   def update_discussion_read_log(discussion)
     if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
       discussion_read_log = DiscussionReadLog.new
