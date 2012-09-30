@@ -14,8 +14,12 @@ $ ->
 
 $ ->
   $("textarea").atWho "@", (query, callback) ->
-    url = "data.json"
+    url = "/users/mentions.json"
+    dataType = "json"
+    contentType = "application/json"
     param = q: query
     $.ajax url, param, (data) ->
+      console.log "in callback"
+      console.log data
       names = $.parseJSON(data)
       callback names

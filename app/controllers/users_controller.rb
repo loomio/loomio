@@ -63,7 +63,10 @@ class UsersController < BaseController
     redirect_to :back
   end
 
-  def mentions_search
-    puts("called mentions_search")
+  def mentions
+    puts(params)
+    respond_to do |format|
+      format.json { render :json => ["james", "sam"].to_json }
+    end
   end
 end
