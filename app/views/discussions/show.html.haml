@@ -20,17 +20,15 @@
           =render '/application/description', model: @discussion, model_name: "discussion"
         .row
           .span6#content-history
-            .clearfix
-              .large-icon.discussion-icon
-              %h2.header-text Discussion
+            .large-icon.discussion-icon.enabled-icon
+            %h2.header-text Discussion
             #content-history-body
               = render 'add_comment', discussion: @discussion
               = render 'history', discussion: @discussion, history: @discussion.history
 
           .span6#content-proposal
-            .clearfix
-              .large-icon.decision-icon
-              %h2.header-text Current decision
+            .large-icon.decision-icon
+            %h2.header-text Current decision
             .content-proposal-body
               %ul.selector-list
                 - if @current_motion

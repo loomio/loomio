@@ -38,9 +38,9 @@ Given /^I am a member of the group$/ do
   m.save
 end
 
-Then /^I should not have access to group settings$/ do
-  visit "/groups/" + Group.first.id.to_s + "/edit"
-  current_path.should == "/"
+Then /^I should not have access to group settings of "(.*?)"$/ do |group|
+  visit "/groups/" + Group.find_by_name(group).id.to_s + "/edit"
+  page.should have_content('Access denied')
 end
 
 When /^I update the invitations to allow all members$/ do

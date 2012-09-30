@@ -3,14 +3,15 @@
   = f.text_field :name
   %h3 Picture
   .row
-    .span2#user-image-area
+    .span3
       .large-user-avatar.avatar-canvas.large-user-initials.initials-decoration#avatar-preview
         - if @user.avatar_kind.blank?
           = @user.avatar_initials
         - else
           = image_tag @user.avatar_url("large")
+      = f.submit "Update Settings", class: "btn btn-info"
     .span3
-      #user-image-options
+      .user-image-options
         %ul
           - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
             %li.user-image-option.option-uploaded.clearfix
@@ -35,6 +36,5 @@
           %li.user-image-option.option-upload
             = link_to 'Upload a new image', '#', class: 'btn', id: 'upload-new-image'
   = hidden_field_tag("user[avatar_kind]", "", :id => "user-avatar-kind")
-  = f.submit "Update Settings", class: "btn btn-info"
 = form_for [@user], :html => { :multipart => true, :id => 'upload-form' }, :url => upload_new_avatar_user_path(@user), :method => 'post' do
   = file_field_tag :uploaded_avatar, id: 'uploaded-avatar', class: 'hidden'

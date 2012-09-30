@@ -3,7 +3,6 @@
     %h3 Members
     #membership-count.label
       = group.memberships.count
-    %h3 Members
     = render 'add_members', group: group
     %ul#users-list
       = render :partial => 'membership',
