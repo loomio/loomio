@@ -62,4 +62,8 @@ class UsersController < BaseController
     current_user.save!
     redirect_to :back
   end
+
+  def mentions_search
+    puts("called mentions_search")
+  end
 end
