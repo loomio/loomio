@@ -31,7 +31,7 @@ describe GroupMailer do
     end
   end
 
-  describe "deliver_group_email" do
+  describe "#deliver_group_email" do
     let(:group) { stub_model Group }
 
     it "sends email to every group member except the sender" do
@@ -59,7 +59,7 @@ describe GroupMailer do
     end
   end
 
-  describe "group_email" do
+  describe "#group_email" do
     before :all do
       @group = stub_model Group, :name => "Blue"
       @sender = stub_model User, :name => "Marvin"
@@ -73,9 +73,42 @@ describe GroupMailer do
     subject { @mail }
 
     its(:subject) { should == "[Loomio: #{@group.full_name}] #{@subject}" }
-
     its(:to) { should == [@recipient.email] }
-
     its(:from) { should == ['noreply@loom.io'] }
+  end
+
+  describe "#new_group_invited_to_loomio" do
+    before :all do
+      @group_name = "Test Groupy"
+      @recipient = "admin@testgroupy.com"
+      @mail = GroupMailer.new_group_invited_to_loomio(@recipient, @group_name)
+    end
+
+    subject { @mail }
+
+    its(:subject) { should eq("Invitation to join Loomio (#{@group_name})") }
+    its(:to) { should eq([@recipient]) }
+    its(:from) { should eq(["contact@loom.io"]) }
+    its(:body) { should match(/#{@group_name}/) }
+  end
+
+  describe "#invite_to_group" do
+    before :each do
+      @recipient_email = "newperson@testgroupy.com"
+      @invite = double(:inviter_name => "Bloop",
+                       :inviter_email => "goobly@goog.com",
+                       :group_full_name => "Newww group",
+                       :token => "asbglkh")
+      @mail = GroupMailer.invite_to_group(@recipient_email, @invite)
+    end
+
+    subject { @mail }
+
+    its(:subject) { should eq("#{@invite.inviter_name} has invited you to join " +
+                              "#{@invite.group_full_name} on Loomio") }
+    its(:to) { should eq([@recipient_email]) }
+    its(:from) { should eq(["contact@loom.io"]) }
+    its(:reply_to) { should eq([@invite.inviter_email]) }
+    its(:body) { should match(/#{@invite.token}/) }
   end
 end
