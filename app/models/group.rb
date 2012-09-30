@@ -129,7 +129,7 @@ class Group < ActiveRecord::Base
     if membership
       return false unless discussions
         .includes(:comments)
-        .where('comments.user_id <> ? AND comments.created_at > ?' , user.id, membership.last_viewed_at)
+        .where('comments.user_id <> ? AND comments.created_at > ?' , user.id, membership.group_last_viewed_at)
         .count > 0
       return false unless discussions
         .joins('INNER JOIN discussion_read_logs ON discussions.id = discussion_read_logs.discussion_id')
