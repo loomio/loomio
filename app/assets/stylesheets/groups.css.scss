@@ -98,7 +98,8 @@
 /**** Group page ****/
 
 body.groups.show {
-  .discussion-preview .discussion-title { margin: 8px 0 8px 0; }
+  .discussion-preview .discussion-title { margin-top: 7px;}
+  .discussion-preview.sub-group-discussion .discussion-title {margin-top: 0}
 }
 .sub-panel {
   background-color: $sub-selector-panel;

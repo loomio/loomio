@@ -37,12 +37,11 @@ class GroupMailer < ActionMailer::Base
          :subject => "Invitation to join Loomio (#{group_name})"
   end
 
-  def invite_to_group(recipient, invite)
-    @invite = invite
-    mail :to => recipient,
-         :reply_to => invite.inviter_email,
-         :subject => ("#{invite.inviter_name} has invited you to join " +
-                      "#{invite.group_full_name} on Loomio")
-  end
-
+  # def invite_to_group(recipient, invite)
+  #   @invite = invite
+  #   mail :to => recipient,
+  #        :reply_to => invite.inviter_email,
+  #        :subject => ("#{invite.inviter_name} has invited you to join " +
+  #                     "#{invite.group_full_name} on Loomio")
+  # end
 end

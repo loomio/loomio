@@ -92,23 +92,23 @@ describe GroupMailer do
     its(:body) { should match(/#{@group_name}/) }
   end
 
-  describe "#invite_to_group" do
-    before :each do
-      @recipient_email = "newperson@testgroupy.com"
-      @invite = double(:inviter_name => "Bloop",
-                       :inviter_email => "goobly@goog.com",
-                       :group_full_name => "Newww group",
-                       :token => "asbglkh")
-      @mail = GroupMailer.invite_to_group(@recipient_email, @invite)
-    end
+  # describe "#invite_to_group" do
+  #   before :each do
+  #     @recipient_email = "newperson@testgroupy.com"
+  #     @invite = double(:inviter_name => "Bloop",
+  #                      :inviter_email => "goobly@goog.com",
+  #                      :group_full_name => "Newww group",
+  #                      :token => "asbglkh")
+  #     @mail = GroupMailer.invite_to_group(@recipient_email, @invite)
+  #   end
 
-    subject { @mail }
+  #   subject { @mail }
 
-    its(:subject) { should eq("#{@invite.inviter_name} has invited you to join " +
-                              "#{@invite.group_full_name} on Loomio") }
-    its(:to) { should eq([@recipient_email]) }
-    its(:from) { should eq(["contact@loom.io"]) }
-    its(:reply_to) { should eq([@invite.inviter_email]) }
-    its(:body) { should match(/#{@invite.token}/) }
-  end
+  #   its(:subject) { should eq("#{@invite.inviter_name} has invited you to join " +
+  #                             "#{@invite.group_full_name} on Loomio") }
+  #   its(:to) { should eq([@recipient_email]) }
+  #   its(:from) { should eq(["contact@loom.io"]) }
+  #   its(:reply_to) { should eq([@invite.inviter_email]) }
+  #   its(:body) { should match(/#{@invite.token}/) }
+  # end
 end
