@@ -278,8 +278,17 @@ class User < ActiveRecord::Base
     super && !deleted_at
   end
 
-  def send_email?(context= 'group')
-    return self.receive_emails
+  def send_email?(priority= 1)
+    #if we need to override a user's email settings, just pass priority > 1
+    if priority > 1
+      return true
+    else
+      return self.receive_emails
+    end
+  end
+
+  def send_notification?(group, priority= 1)
+    return priority >= self.get_group_noise_level(group)
   end
 
   def activity_total

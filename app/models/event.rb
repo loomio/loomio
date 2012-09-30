@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
     group = discussion.group
     event = create!(:kind => "new_discussion", :eventable => discussion)
     discussion.group_users.each do |user|
-      if user != discussion.author && user.get_group_noise_level(group) >= 2 #pending event refactor
+      if user != discussion.author && user.send_notification?(group, 2) #pending event refactor
         event.notifications.create! :user => user
       end
     end
@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
     event = create!(:kind => "new_comment", :eventable => comment)
     event_level = 0
     comment.discussion_participants.each do |user|
-      if user != comment.user && user.get_group_noise_level(group) >= 1
+      if user != comment.user && user.send_notification?(group, 1)
         event.notifications.create! :user => user
       end
     end
@@ -38,7 +38,7 @@ class Event < ActiveRecord::Base
     group = motion.group
     event = create!(:kind => "new_motion", :eventable => motion)
     motion.group_users.each do |user|
-      if user != motion.author && user.get_group_noise_level(group) >= 1
+      if user != motion.author && user.send_notification?(group, 1)
         event.notifications.create! :user => user
       end
     end
@@ -49,7 +49,7 @@ class Event < ActiveRecord::Base
     group = motion.group
     event = create!(:kind => "motion_outcome", :eventable => motion, :user => outcome_stater)
     motion.group_users.each do |user|
-      if user != outcome_stater && user.get_group_noise_level(group) >= 1
+      if user != outcome_stater && user.send_notification?(group, 1)
         event.notifications.create! :user => user
       end
     end
@@ -60,7 +60,7 @@ class Event < ActiveRecord::Base
     event = create!(:kind => "motion_closed", :eventable => motion, :user => closer)
 
     motion.group_users.each do |user| 
-      if user != closer && (user.get_group_noise_level(group) >= 2 || user == motion.author)
+      if user != closer && (user.send_notification?(group, 2) || user == motion.author)
         event.notifications.create! :user => user
       end
     end
@@ -71,10 +71,10 @@ class Event < ActiveRecord::Base
     event = create!(:kind => "new_vote", :eventable => vote)
     #haven't accounted for a group.each here, possibly TOO noisy if we did
     begin
-      if vote.user != vote.motion_author && vote.user.get_group_noise_level(group) >= 2
+      if vote.user != vote.motion_author && vote.user.send_notification?(group, 2)
         event.notifications.create! :user => vote.motion_author
       end
-      if vote.user != vote.discussion_author && vote.user.get_group_noise_level(group) >= 2
+      if vote.user != vote.discussion_author && vote.user.send_notification?(group, 2)
         event.notifications.create! :user => vote.discussion_author
       end
     rescue ActiveRecord::RecordInvalid => error
@@ -89,7 +89,7 @@ class Event < ActiveRecord::Base
     group = vote.group
     event = create!(:kind => "motion_blocked", :eventable => vote)
     vote.group_users.each do |user| 
-      if user != vote.user && (user.get_group_noise_level(group) >= 1 || user == motion.author)
+      if user != vote.user && (user.send_notification?(group, 1) || user == motion.author)
         event.notifications.create! :user => user
       end
     end
@@ -100,7 +100,7 @@ class Event < ActiveRecord::Base
     group = membership.group
     event = create!(:kind => "membership_requested", :eventable => membership)
     membership.group_admins.each do |admin|
-      if admin.get_group_noise_level(group) >= 1
+      if admin.send_notification?(group, 1)
         event.notifications.create! :user => admin
       end
     end

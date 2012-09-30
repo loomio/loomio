@@ -25,6 +25,7 @@ describe Event do
     its(:eventable) { should eq(discussion) }
 
     context "sending notifications" do
+
       it "notifies group members" do
         user = create(:user)
         group = discussion.group
@@ -37,7 +38,6 @@ describe Event do
 
       it "does not notify discussion author" do
         event = Event.new_discussion!(discussion)
-
         event.notifications.where(:user_id => discussion.author.id).
           should_not exist
       end
@@ -53,12 +53,11 @@ describe Event do
 
     context "sending notifications" do
       before do
-        @commentor, @participant, @non_participant, @muted_participant =
-          create(:user), create(:user), create(:user), create(:user)
+        @commentor, @participant, @non_participant=
+          create(:user), create(:user), create(:user)
         group.add_member! @commentor
         group.add_member! @participant
         group.add_member! @non_participant
-        group.add_member! @muted_participant
         discussion.add_comment(@commentor, "hello!")
         discussion.add_comment(@participant, "hi there commentor!")
         comment = discussion.add_comment(@commentor, "fancy pantsy")
@@ -79,6 +78,7 @@ describe Event do
         @event.notifications.where(:user_id => @non_participant.id).
           should_not exist
       end
+
     end
   end
 
@@ -90,20 +90,38 @@ describe Event do
     its(:eventable) { should eq(motion) }
 
     context "sending notifications" do
-      it "notifies group members" do
-        group = motion.group
-        @user1 = create(:user)
-        group.add_member! @user1
-        group_size = group.users.size
-        event = Event.new_motion!(motion)
-        event.notifications.where(:user_id => @user1.id).should exist
+      before do
+        @group = stub_model(Group)
+        @user = stub_model(User)
+        @motion = stub_model(Motion, :group => @group, 
+          :group_users => [@user])
+        @notifications = double 'notifications'
+        @event = stub_model(Event)
+        @event.stub(:notifications => @notifications)
+        Event.stub(:create!).and_return(@event)
       end
 
-      it "does not notify motion author" do
-        event = Event.new_motion!(motion)
+      context "user is subscribed to this type of event" do
+        before { @user.stub(:send_notification? => true) }
 
-        event.notifications.where(:user_id => motion.author.id).
-          should_not exist
+        it "sends notification to user" do
+          @notifications.should_receive(:create!).with(:user => @user)
+          Event.new_motion!(@motion)
+        end
+
+        it "does not send notification to user if user is author" do
+          @motion.stub(:author => @user)
+          @notifications.should_not_receive(:create!).with(:user => @user)
+          Event.new_motion!(@motion)
+        end
+      end
+
+      context "user has muted this type of event" do
+        it "does not send notification to user" do
+          @user.stub(:send_notification? => false)
+          @notifications.should_not_receive(:create!).with(:user => @user)
+          Event.new_motion!(@motion)
+        end
       end
     end
   end
@@ -190,7 +208,8 @@ describe Event do
   end
 
   describe "membership_requested!" do
-    let(:membership) { mock_model(Membership, :group_admins => []) }
+    let(:group) { mock_model(Group)}
+    let(:membership) { mock_model(Membership, :group_admins => [], :group => group) }
     subject { Event.membership_requested!(membership) }
 
     its(:kind) { should eq("membership_requested") }

@@ -28,6 +28,14 @@
               %li= link_to "Leave group", membership, method: :delete, :data => { confirm: "Are you sure you wish to leave #{group.name}?" }
             - if can_archive
               %li= link_to "De-activate group", archive_group_path(group), method: :post, :data => { confirm: "Wait!!! Are you sure you want to de-activate #{group.name}? \n\n You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@loom.io." }
+            %hr
+            %h3.dropdown-heading Notification settings
+            %li{:class => ('selected' if current_user.get_group_noise_level(group) == 0)}
+              =link_to "Off", set_noise_user_path(current_user, :noise => '0', :group => group), :method => :post, :remote => true
+            %li{:class => ('selected' if current_user.get_group_noise_level(group) == 1)}
+              =link_to "Default", set_noise_user_path(current_user, :noise => '1', :group => group), :method => :post, :remote => true 
+            %li{:class => ('selected' if current_user.get_group_noise_level(group) == 2)}
+              =link_to "All", set_noise_user_path(current_user, :noise => '2', :group => group), :method => :post, :remote => true
       - if can_email
         #email-members-modal.modal.hidden
           = render "groups/email_members", :group => group
