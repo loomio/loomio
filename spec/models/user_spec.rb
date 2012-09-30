@@ -387,6 +387,18 @@ describe User do
     end
   end
 
+  describe "votes_since_last_read(discussion)" do
+    it "returns the votes since the discussion was last viewed" do
+      discussion = create(:discussion)
+      motion = create(:motion, discussion: discussion)
+      vote = create(:vote, motion: motion)
+      discussion.stub(:last_read_at).with(user).and_return(Time.now)
+      discussion.stub_chain(:current_motion, :votes, :where).and_return(motion.votes)
+
+      user.votes_since_last_read(discussion).should == motion.votes
+    end
+  end
+
   describe "unviewed_notifications" do
     it "returns notifications that the user has not viewed yet" do
       notification = Notification.create!(:event => mock_model(Event),

@@ -1,5 +1,5 @@
+@import "bootstrap/mixins";
 @import "settings";
-/*@import "bootstrap";*/
 @import "mixins";
 
 /** discussion new (new loomio) modal*/
@@ -150,7 +150,6 @@ li s hard.motion-preview {
   }
 
   ul.history-list {
-    list-style: none;
     margin: 0 0 3px 0;
   }
   ul.history-list .divider {
@@ -351,10 +350,30 @@ li s hard.motion-preview {
   }
   .pie .activity-count {
     bottom: 1px;
-    margin-left: 24px;
+    margin-left: 8px;
+    z-index: 2;
   }
   .discussion-link {
     position: relative;
     z-index: 2;
   }
 }
+.popover-motion-name {
+  font-weight: normal;
+  margin-top: 10px;
+  padding-top: 5px;
+  border-top: 1px solid white;
+}
+.popover-header {
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $light-grey;
+}
+.popover-item {
+  padding: 5px 0 5px 0;
+  border-bottom: 1px solid $light-grey;
+  min-height: 40px;
+}
+/*.popover-vote-position {*/
+  /*display: inline-block;*/
+/*}*/

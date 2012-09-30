@@ -9,6 +9,7 @@ ul, ol, li {
   margin: 0;
   padding: 0;
 }
+ul { list-style: none; }
 
 html { height: 100%; }
 
@@ -48,7 +49,6 @@ h5 {
 }
 
 // structural elements (containers etc.)
-
 .sub-panel li .group-link a { text-decoration: none; }
 .sub_group {font-size: $font-tiny;}
 
@@ -102,9 +102,6 @@ li.empty-list-message {
 
 /**** Structural elements ****/
 ul.selector-list.bordered { border-top: 1px solid $light-grey }
-ul.selector-list {
-  list-style: none;
-}
 li.selector-item {
   background-color: $unhighlighted;
   color: $dark-grey;
@@ -215,6 +212,7 @@ li.selector-item a.selector-link:hover {
   height: 12px;
   font-size: $font-small;
 }
+
 
 form {
   label {
@@ -328,7 +326,6 @@ ul.loomio-process-flow {
   @include border-radius(8px);
   /*box-shadow: 2px 2px 2px $light-grey;*/
   background-color: white;
-  list-style: none;
   text-align: center;
   padding: 0;
   li.process-flow-item {

@@ -1,0 +1,18 @@
+- if user_signed_in?
+  - if motion_activity > 0
+    .popover-header
+      Latest activity
+    %ul
+      - vote_activity = user.votes_since_last_read(discussion)
+      - vote_activity.each do |vote|
+        %li.popover-item
+          .medium-user-avatar.avatar-canvas#header-user-image
+            - if vote.user.avatar_url.nil?
+              %span.medium-user-initials.initials-decoration= vote.user.avatar_initials
+            - else
+              = image_tag vote.user.avatar_url("medium")
+          -#.popover-vote-position
+          = render "motions/display_icons", position: vote.user.position(discussion.current_motion)
+          = vote.statement
+  - else
+    No new activity
