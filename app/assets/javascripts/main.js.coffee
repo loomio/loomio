@@ -121,7 +121,7 @@ display_count = (num, object) ->
 
 # character count for 250 characters max
 $ ->
-  $(".limit-250").on("keyup",() ->
+  $(".limit-250").keyup(() ->
     $(".error-message").hide()
     chars = $(this).val().length
     left = 250 - chars
