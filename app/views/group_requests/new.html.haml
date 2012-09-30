@@ -3,10 +3,10 @@
     %h1 Get started with Loomio
     %p Exciting news! Loomio is now in private beta! 
     %p This means we’re still in development and have limited resources for user support, but we love bringing on nice groups that are keen to get on board early.
-    %p There’s some basic info at loomio.org to make it easy to explain to your group why you’d like to use Loomio to make decisions together online. 
+    %p There’s some basic info at <a href ='http://loomio.org'>loomio.org</a> to make it easy to explain to your group why you’d like to use Loomio to make decisions together online. 
     %p If your group is keen, you can request access here: 
     
-    =render '/application/button', :button_text => 'I’ve talked to my group, and we’d like to use Loomio!', :button_icon => 'request-new', :args => {:href => "#request-new",  "data-toggle" => "modal", :class => 'btn btn-large btn-primary', :id => 'request-new-group'}
+    =render '/application/button', :button_text => 'I’ve talked to my group, and we’d like to use Loomio!', :button_icon => 'none', :args => {:href => "#request-new",  "data-toggle" => "modal", :class => 'btn btn-large btn-primary', :id => 'request-new-group'}
 
 
 =render '/group_requests/request_new'
