@@ -14,7 +14,16 @@ Feature: Admin approves group request to join Loomio
 
   Scenario: Admin approves a group request
     When I visit the Group Requests page on the admin panel
-    And I approve approve the request
-    Then the group should be created
+    And I approve the request
+    Then the group request should be marked as approved
+    And the group should be created
     And an invitation email should be sent to the admin
     And I should be redirected to the Group Requests page
+    And I should no longer see the request
+
+  Scenario: Admin ignore a group request
+    When I visit the Group Requests page on the admin panel
+    And I ignore the request
+    Then the group request should be marked as ignored
+    And I should be redirected to the Group Requests page
+    And I should no longer see the request
