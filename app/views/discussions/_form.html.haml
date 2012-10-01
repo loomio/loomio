@@ -1,12 +1,12 @@
 = form_for(discussion) do |f|
   .modal-body
     .row
-      .span5
+      .span6
         - if params[:controller] == 'dashboard'
           .control-group
             = f.label :group_id, "Group", {class: "control-label", for: "validate-presence"}
             .presence-error-message.hidden Please select a group
-            = f.collection_select :group_id, user_groups, :id, :name, {:prompt => "Who would you like to engage in this discussion?"}, {:class => 'validate-presence'}
+            = f.collection_select :group_id, user_groups, :id, :full_name, {:prompt => "Who would you like to engage in this discussion?"}, {:class => 'validate-presence'}
         - else
           = f.hidden_field :group_id
         .control-group
@@ -18,9 +18,10 @@
           = f.label :description, "Discussion info", { class: "control-label", for: "validate-presence"}
           .presence-error-message Please fill in some info on the discussion
           = f.text_area :description, :placeholder => "Give enough context for your group to have a well-informed discussion", class: "validate-presence"
-        = f.check_box :notify_group_upon_creation
-        = f.label :notify_group_upon_creation,
-          "Send email notification to group members", class: "checkbox-label"
+        .control-group
+          = f.check_box :notify_group_upon_creation
+          = f.label :notify_group_upon_creation,
+            "Send email notification to group members", class: "checkbox-label"
   .modal-footer
     = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
-    = f.submit "Start", class: "btn btn-info run-validations", id: "discussion-submit", :data => { :disable_with => "Starting" }
+    = f.submit "Start", class: "btn btn-primary run-validations", id: "discussion-submit", :data => { :disable_with => "Starting" }

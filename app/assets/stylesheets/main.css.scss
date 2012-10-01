@@ -49,12 +49,24 @@ h5 {
 }
 
 // structural elements (containers etc.)
-.sub-panel li .group-link a { text-decoration: none; }
+.group-link.clearfix {
+  .group-link-name { float: left; }
+  .group-link-activity { float: right; }
+  .small-icon { padding: 0 }
+}
+
+.sub-panel li .group-link a {
+  text-decoration: none;
+}
 .sub_group {font-size: $font-tiny;}
 
 #start-new-topic { margin: 0 0 10px 2px; }
 #discussion-list {
   margin-bottom: 10px;
+}
+
+#new_discussion .control-label {
+  display: block;
 }
 
 .model-description { padding-bottom: 10px; }
@@ -106,6 +118,7 @@ li.selector-item {
   background-color: $unhighlighted;
   color: $dark-grey;
   font-weight: normal;
+  border-bottom: 1px solid $light-grey;
 }
 .undecided, .unread {
   background-color: $highlighted;
@@ -116,7 +129,6 @@ li.selector-item {
 li.selector-item a.selector-link {
   display: block;
   padding: 5px 5px 5px 15px;
-  border-bottom: 1px solid $light-grey;
 }
 li.selector-item a.selector-link:hover {
   background-color: $selector;
@@ -224,7 +236,7 @@ form {
   input, select, textarea {
 		font-size: $font-small;
 		height: auto;
-    width: 360px;
+    width: 370px;
     margin-bottom: 15px;
     display: block;
   }
@@ -233,10 +245,15 @@ form {
     height: 200px;
   }
 
+  /* this is a little mess that needs to be resolved*/
   input[type="checkbox"] {
     margin-top: 10px;
     margin-bottom: 10px;
     display: inline;
+  }
+
+  .checkbox input{
+    margin-top: 0px;
   }
 
   .checkbox-label {
@@ -318,6 +335,7 @@ code{
   display: inline;
   width: 80%;
 }
+
 
 ul.loomio-process-flow {
   height: 100px;
@@ -439,4 +457,3 @@ a.btn-icon:hover { color: $dark-grey; }
 .large-icon.pie-icon {
   background-image: url("pie-light-24.png");
 }
-
