@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   require 'digest/md5'
 
   LARGE_IMAGE = 170
+  MED_LARGE_IMAGE = 70
   MEDIUM_IMAGE = 35
   SMALL_IMAGE = 25
   MAX_AVATAR_IMAGE_SIZE_CONST = 1000
@@ -25,6 +26,7 @@ class User < ActiveRecord::Base
   has_attached_file :uploaded_avatar,
     :styles => {
       :large => "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
+      :medlarge => "#{User::MED_LARGE_IMAGE}x#{User::MED_LARGE_IMAGE}#",
       :medium => "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
       :small => "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#"
     }
@@ -107,24 +109,16 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
   end
 
-  def motions_in_voting_phase_that_user_has_voted_on
-    motions_in_voting_phase.that_user_has_voted_on(self).uniq
-  end
-
-  def motions_in_voting_phase_that_user_has_not_voted_on
-    motions_in_voting_phase - motions_in_voting_phase_that_user_has_voted_on
-  end
-
   def is_group_admin?(group)
     memberships.for_group(group).with_access('admin').exists?
   end
 
-  def group_membership(group)
-    memberships.for_group(group).first
+  def is_group_member?(group)
+    memberships.for_group(group).exists?
   end
 
-  def self.get_loomio_user
-    User.where(email: "contact@loom.io").first
+  def group_membership(group)
+    memberships.for_group(group).first
   end
 
   def unviewed_notifications
@@ -158,8 +152,36 @@ class User < ActiveRecord::Base
     new_user
   end
 
-  def discussions_sorted()
-    discussions.order("last_comment_at DESC")
+  def discussions_with_current_motion_not_voted_on
+    if discussions
+      (discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on)
+    else
+      []
+    end
+  end
+
+  def discussions_with_current_motion_voted_on
+    if discussions
+      (discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", id))
+    else
+      []
+    end
+  end
+
+  def discussions_sorted
+    discussions
+      .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+      .order("last_comment_at DESC")
+  end
+
+  def self.get_loomio_user
+    helper_bot = User.find_or_create_by_email('contact@loom.io')
+    unless helper_bot.persisted?
+      helper_bot.name = "Loomio Helper Bot"
+      helper_bot.password = SecureRandom.hex(16)
+      helper_bot.save
+    end
+    helper_bot
   end
 
   def update_motion_read_log(motion)
@@ -192,46 +214,27 @@ class User < ActiveRecord::Base
   def update_discussion_read_log(discussion)
     if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
       discussion_read_log = DiscussionReadLog.new
-      discussion_read_log.discussion_activity_when_last_read = discussion.activity
+      discussion_read_log.discussion_last_viewed_at = Time.now()
       discussion_read_log.user_id = id
       discussion_read_log.discussion_id = discussion.id
-      discussion_read_log.save
+      discussion_read_log.save!
     else
       log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
-      log.discussion_activity_when_last_read = discussion.activity
-      log.save
+      log.discussion_last_viewed_at = Time.now()
+      log.save!
     end
   end
 
-  def discussion_activity_when_last_read(discussion)
-    log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
-    if log
-      log.discussion_activity_when_last_read
-    else
-      0
+  def update_group_last_viewed_at(group)
+    membership = group_membership(group)
+    if membership
+      membership.group_last_viewed_at = Time.now()
+      membership.save!
     end
-  end
-
-  def discussion_activity_count(discussion)
-    discussion.activity - discussion_activity_when_last_read(discussion)
   end
 
   def self.find_by_email(email)
     User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
-  end
-
-  # Get all root groups that the user belongs to
-  # This also includes parent groups of sub-groups
-  # that the user belongs to (even though the user
-  # might not necessarily belong to the parent)
-  def all_root_groups
-    results = root_groups
-    subgroups.each do |subgroup|
-      unless results.include? subgroup.parent
-        results << subgroup.parent
-      end
-    end
-    results.sort_by { |group| group.name }
   end
 
   def subgroups
@@ -239,7 +242,7 @@ class User < ActiveRecord::Base
   end
 
   def root_groups
-    groups.where("parent_id IS NULL")
+    groups.where("parent_id IS NULL").find(:all, :order => "LOWER(name)")
   end
 
   def position(motion)
@@ -265,22 +268,6 @@ class User < ActiveRecord::Base
     super && !deleted_at
   end
 
-  def activity_total
-    total = 0;
-    groups.each do |group|
-      total += activity_total_in(group)
-    end
-    total
-  end
-
-  def activity_total_in(group)
-    total = 0
-    group.discussions.each do |discussion|
-      total += discussion_activity_count(discussion)
-    end
-    total
-  end
-
   def gravatar?(email, options = {})
     hash = Digest::MD5.hexdigest(email.to_s.downcase)
     options = { :rating => 'x', :timeout => 2 }.merge(options)
@@ -299,6 +286,8 @@ class User < ActiveRecord::Base
       pixels = User::SMALL_IMAGE
     when :medium
       pixels = User::MEDIUM_IMAGE
+    when :medlarge
+      pixels = User::MED_LARGE_IMAGE
     when :large
       pixels = User::LARGE_IMAGE
     else

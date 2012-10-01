@@ -13,7 +13,6 @@ class Comment < ActiveRecord::Base
   has_many :comment_votes
   has_many :events, :as => :eventable, :dependent => :destroy
 
-  after_save :update_activity
   after_create :update_discussion_last_comment_at
   after_destroy :update_discussion_last_comment_at
 
@@ -22,6 +21,7 @@ class Comment < ActiveRecord::Base
   default_scope order("id DESC")
 
   delegate :name, :to => :user, :prefix => :user
+  delegate :email, :to => :user, :prefix => :user
   delegate :participants, :to => :discussion, :prefix => :discussion
   delegate :group, :to => :discussion
   delegate :full_name, :to => :group, :prefix => :group
@@ -96,10 +96,6 @@ class Comment < ActiveRecord::Base
   end
 
   private
-    def update_activity
-      discussion.update_activity if discussion
-    end
-
     def update_discussion_last_comment_at
       discussion.last_comment_at = discussion.latest_comment_time
       discussion.save

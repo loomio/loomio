@@ -3,6 +3,10 @@ Loomio::Application.routes.draw do
 
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
 
+  resources :group_requests, :only => :create
+  match "/request_new_group", :to => "group_requests#new", :as => :request_new_group
+  match "/group_request_confirmation", :to => "group_requests#confirmation", :as => :group_request_confirmation
+
   resources :groups, except: :index do
     post :add_members, on: :member
     get :add_subgroup, on: :member
@@ -12,6 +16,7 @@ Loomio::Application.routes.draw do
     get :new_motion, :on => :member
     post :create_motion, :on => :member
     post :email_members, on: :member
+    post :edit_description, :on => :member
   end
 
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
@@ -25,9 +30,11 @@ Loomio::Application.routes.draw do
   match "/motions/:id/open", :to => "motions#open_voting", :as => :open_motion_voting,
         :via => :post
 
-  resources :discussions, only: [:index, :show, :new, :create] do
+  resources :discussions, only: [:index, :show, :create, :update] do
+    post :edit_description, :on => :member
     post :add_comment, :on => :member
     get :new_proposal, :on => :member
+    post :edit_title, :on => :member
   end
 
   resources :notifications, :only => :index do

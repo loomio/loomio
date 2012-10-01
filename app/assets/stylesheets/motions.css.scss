@@ -3,13 +3,6 @@
 
 /*  New & Edit motion form */
 #motion-form{
-  #title-label {
-    display: inline;
-  }
-  .presence-error-message {
-    float: right;
-    position: relative;
-  }
   .input { margin-left: 0px; }
   .clearfix { padding-top: 0px; margin-bottom: 0px; }
   .control-group { margin-bottom: 0 }
@@ -20,6 +13,7 @@
     select { width: 100px; display: inline-block; }
   }
   #description { margin-top: 15px; }
+  #close-date-label { display: block; }
   .date-error-message {
     font-size: $font-small;
     line-height: 1em;
@@ -41,7 +35,6 @@
 }
 
 .motion-preview {
-  padding: 0px;
   a {
     display: block;
   }
@@ -92,7 +85,7 @@
   }
   .pie {
     float: right;
-    width: 44px;
+    width: 36px;
     height: 36px;
     z-index: 1;
   }
@@ -116,10 +109,10 @@
   }
 }
 #content-proposal{
-  padding-left: 19px;
+  h3 { font-weight: normal; }
   margin-left: 0px;
   .proposal-title-container {
-    width: 320px;
+    width: 305px;
   }
   .label{
     text-transform: lowercase;
@@ -132,14 +125,14 @@
     color: $dark-grey;
     margin: 10px 0px;
     textarea {
-      width: 420px;
-      max-width: 420px;
+      width: 390px;
+      max-width: 390px;
       height: 40px;
       max-height: 80px;
-    }  
+    }
     .control-group { margin-bottom: 0px; }
     .character-counter {
-      bottom: 10px; 
+      bottom: 10px;
       width: 250px;
       float: right;
       margin-bottom: 0px;
@@ -156,7 +149,7 @@
       display: inline;
       position: relative;
       top: 0px;
-      right: 0px; 
+      right: 0px;
     }
     .outcome-label {
       font-size: 1em;
@@ -169,7 +162,7 @@
     font-size: $font-tiny;
     margin-bottom: 20px;
   }
-  .description { width: 430px; }
+  .description { width: 403px; }
   .description p{
     font-size: $font-small;
     color: $dark-grey;
@@ -232,5 +225,14 @@
 }
 
 .motion .pie {
-  height: 300px; // Necessary for IE7
+    height: 250px;
+}
+table.jqplot-table-legend {
+  width: auto;
+  border: none;
+  td {
+    border: none;
+    line-height: 16px;
+    padding: 0 5px;
+  }
 }

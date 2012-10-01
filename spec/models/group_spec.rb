@@ -29,28 +29,80 @@ describe Group do
     end
   end
 
-  describe "motions_in_voting_phase_that_user_has_voted_on(user)" do
-    it "calls scope on motions_in_voting_phase" do
-      user = create(:user)
-      group = create(:group)
-      group.add_member!(user)
-      group.motions_in_voting_phase.should_receive(:that_user_has_voted_on).
-        with(user).and_return(stub(:uniq => true))
+  describe "#create" do
+    context "creates a 'welcome to loomio' discussion and" do
+      before do
+        @group = create :group
+        @discussion = @group.discussions.first
+      end
 
-      group.motions_in_voting_phase_that_user_has_voted_on(user)
+      it "gives it a proper title" do
+        @discussion.title.should == "Welcome and Introduction to Loomio!"
+      end
+
+      it "assigns Loomio Helper Bot as the author" do
+        @discussion.author_id.should == User.get_loomio_user.id
+      end
+
+      it "creates an initial comment" do
+        @discussion.comments.count.should == 1
+      end
+
+      it "creates a new motion" do
+        @discussion.motions.count.should == 1
+      end
+    end
+
+    it "does not create a 'welcome to loomio' discussion for subgroups" do
+      parent = create :group
+      group = create :group, :parent => parent
+      group.discussions.should be_empty
+    end
+
+    it "adds the creator as an admin" do
+      @group = create :group
+      @group.admins.should include(@group.creator)
     end
   end
 
-  describe "motions_in_voting_phase_that_user_has_not_voted_on(user)" do
-    it "does stuff" do
-      user = create(:user)
-      group = create(:group)
-      group.add_member!(user)
-      group.should_receive(:motions_in_voting_phase_that_user_has_not_voted_on)
-
-      group.motions_in_voting_phase_that_user_has_not_voted_on(user)
+  context do
+    before do
+      @user = create(:user)
+      @group = create(:group)
+      group1 = create(:group)
+      @group.add_member!(@user)
+      group1.add_member!(@user)
+      @discussion1 = create :discussion, :group => @group, :author => @user
+      motion1 = create(:motion, discussion: @discussion1, author: @user)
+      @discussion2 = create :discussion, :group => @group, :author => @user
+      motion2 = create(:motion, discussion: @discussion2, author: @user)
+      @discussion3 = create :discussion, :group => group1, :author => @user
+      motion3 = create(:motion, discussion: @discussion3, author: @user)
+      vote = Vote.new(position: "yes")
+      vote.motion = motion2
+      vote.user = @user
+      vote.save
+      vote = Vote.new(position: "yes")
+      vote.motion = motion3
+      vote.user = @user
+      vote.save
+    end
+    describe "discussions_with_current_motion_voted_on(user)" do
+      it "should return all discussion in the group with a current motion that a user has voted on" do
+        @group.discussions_with_current_motion_voted_on(@user).should include(@discussion2)
+        @group.discussions_with_current_motion_voted_on(@user).should_not include(@discussion1)
+        @group.discussions_with_current_motion_voted_on(@user).should_not include(@discussion3)
+      end
+    end
+    describe "discussions_with_current_motion_not_voted_on(user)" do
+      it "should return all discussion in the group with a current motion that a user has not voted on" do
+        @group.discussions_with_current_motion_not_voted_on(@user).should include(@discussion1)
+        @group.discussions_with_current_motion_not_voted_on(@user).should_not include(@discussion2)
+        @group.discussions_with_current_motion_not_voted_on(@user).should_not include(@discussion3)
+      end
     end
   end
+
 
   describe "motions_in_voting_phase" do
     it "should return motions that belong to the group and are in phase 'voting'" do
@@ -83,18 +135,24 @@ describe Group do
       @user = create(:user)
       @group = create(:group)
       @group.add_member!(@user)
+      @discussion1 = create :discussion, :group => @group, :author => @user
     end
     it "returns a list of discussions sorted by last_comment_at" do
-      discussion1 = create :discussion, :group => @group, :author => @user
-      discussion2 = create :discussion, :group => @group, :author => @user
-      discussion2.add_comment @user, "hi"
-      discussion3 = create :discussion, :group => @group, :author => @user
-      discussion4 = create :discussion, :group => @group, :author => @user
-      discussion1.add_comment @user, "hi"
-      @group.discussions_sorted(@user)[0].should == discussion1
-      @group.discussions_sorted(@user)[1].should == discussion4
-      @group.discussions_sorted(@user)[2].should == discussion3
-      @group.discussions_sorted(@user)[3].should == discussion2
+      @discussion2 = create :discussion, :group => @group, :author => @user
+      @discussion2.add_comment @user, "hi"
+      @discussion3 = create :discussion, :group => @group, :author => @user
+      @discussion4 = create :discussion, :group => @group, :author => @user
+      @discussion1.add_comment @user, "hi"
+      @group.discussions_sorted(@user)[0].should == @discussion1
+      @group.discussions_sorted(@user)[1].should == @discussion4
+      @group.discussions_sorted(@user)[2].should == @discussion3
+      @group.discussions_sorted(@user)[3].should == @discussion2
+    end
+    it "should not include discussions with a current motion" do
+      motion = create :motion, :discussion => @discussion1, author: @user
+      motion.close_voting!
+      motion1 = create :motion, :discussion => @discussion1, author: @user
+      @user.discussions_sorted.should_not include(@discussion1)
     end
     context "for a group that has subgroups" do
       before do
@@ -103,17 +161,17 @@ describe Group do
         user2 = create(:user)
         @group.add_member! user2
         subgroup1.add_member!(@user)
-        @discussion1 = create :discussion, :group => subgroup1, :author => @user
-        @discussion2 = create :discussion, :group => subgroup2, :author => user2
+        @discussion5 = create :discussion, :group => subgroup1, :author => @user
+        @discussion6 = create :discussion, :group => subgroup2, :author => user2
       end
       it "returns discussions for subgroups that the user belongs to" do
-        @group.discussions_sorted(@user).should include(@discussion1)
+        @group.discussions_sorted(@user).should include(@discussion5)
       end
       it "does not return discussions for subgroups the user does not belong to" do
-        @group.discussions_sorted(@user).should_not include(@discussion2)
+        @group.discussions_sorted(@user).should_not include(@discussion6)
       end
       it "does not return subgroup discussions if user is not specified" do
-        @group.discussions_sorted.should_not include(@discussion1)
+        @group.discussions_sorted.should_not include(@discussion5)
       end
     end
   end
@@ -219,8 +277,7 @@ describe Group do
       @group.add_admin!(@user)
     end
     it "has an admin email" do
-      @group.add_admin!(@user)
-      @group.admin_email.should == @user.email
+      @group.admin_email.should == @group.creator_email
     end
     it "can be administered by admin of parent" do
       @subgroup = build(:group, :parent => @group)
@@ -279,40 +336,35 @@ describe Group do
     end
   end
 
-  describe "#create_welcome_loomio(user)" do
+  describe "activity_since_last_viewed?(user)" do
     before do
-      User.stub(:get_loomio_user).and_return(create(:user))
       @group = create(:group)
-      @group.create_welcome_loomio
+      @user = create(:user)
+      @membership = create :membership, group: @group, user: @user
     end
-
-    it "creates a new discussion" do
-      @group.discussions.count.should == 1
-    end
-    it "creates a new initial comment" do
-      @group.discussions.first.comments.count.should == 1
-    end
-    it "creates a new motion with title" do
-      @group.discussions.first.motions.count.should == 1
-    end
-
-    context "in a subgroup" do
+    context "where user is a member" do
       before do
-        @subgroup = create(:group)
-        @subgroup.parent = @group
-        @subgroup.save
-        @subgroup.create_welcome_loomio
+        @group.stub(:membership).with(@user).and_return(@membership)
       end
-
-      it "creates a new discussion" do
-        @subgroup.discussions.count.should == 1
+      it "should return false if there is new activity since this group was last viewed but does not have any discussions with unread activity" do
+        @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
+        @group.discussions.stub_chain(:joins, :where, :count).and_return(0)
+        @group.activity_since_last_viewed?(@user).should == false
       end
-      it "creates a new initial comment" do
-        @subgroup.discussions.first.comments.count.should == 1
+      it "should return false if there is no new activity since this group was last viewed but does have discussions with unread activity" do
+        @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
+        @group.discussions.stub_chain(:joins, :where, :count).and_return(0)
+        @group.activity_since_last_viewed?(@user).should == false
       end
-      it "creates a new motion with title" do
-        @subgroup.discussions.first.motions.count.should == 1
+      it "should return true if there is no new activity since this group was last viewed but does have discussions with unread activity" do
+        @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
+        @group.discussions.stub_chain(:joins, :where, :count).and_return(2)
+        @group.activity_since_last_viewed?(@user).should == true
       end
+    end
+    it "should return false there is no membership" do
+      @group.stub(:membership).with(@user)
+      @group.activity_since_last_viewed?(@user).should == false
     end
   end
 end

@@ -109,35 +109,56 @@ describe User do
     end
   end
 
-  describe "motions_in_voting_phase_that_user_has_voted_on" do
-    it "calls scope on motions_in_voting_phase" do
-      user.motions_in_voting_phase.should_receive(:that_user_has_voted_on).
-        with(user).and_return(stub(:uniq => true))
+  context do
+    before do
+      group.add_member! user
+      @discussion1 = create :discussion, :group => group
+      motion1 = create :motion, discussion: @discussion1, author: user
+      @discussion2 = create :discussion, :group => group
+      motion2 = create :motion, discussion: @discussion2, author: user
+      vote = Vote.new position: "yes"
+      vote.motion = motion2
+      vote.user = user
+      vote.save
+    end
+    describe "discussions_with_current_motion_not_voted_on" do
+      it "should return all discussions with a current motion that a user has not voted on" do
+        user.discussions_with_current_motion_not_voted_on.should include(@discussion1)
+        user.discussions_with_current_motion_not_voted_on.should_not include(@discussion2)
+      end
+    end
 
-      user.motions_in_voting_phase_that_user_has_voted_on
+    describe "discussions_with_current_motion_voted_on" do
+      it "should return all discussions with a current motion that a user has voted on" do
+        user.discussions_with_current_motion_voted_on.should include(@discussion2)
+        user.discussions_with_current_motion_voted_on.should_not include(@discussion1)
+      end
     end
   end
 
-  describe "motions_in_voting_phase_that_user_has_not_voted_on" do
-    it "does stuff " do
-      user.should_receive(:motions_in_voting_phase_that_user_has_not_voted_on)
-
-      user.motions_in_voting_phase_that_user_has_not_voted_on
+  describe "user.discussions_sorted" do
+    before do
+      @user = create :user
+      @group = create :group
+      @group.add_member! @user
+      @discussion1 = create :discussion, group: @group, :author => @user
     end
-  end
-
-  describe "user.discussions_sorted_paged" do
     it "returns a list of discussions sorted by last_comment_at" do
-      discussion1 = create :discussion, :author => user
-      discussion2 = create :discussion, :author => user
-      discussion2.add_comment user, "hi"
-      discussion3 = create :discussion, :author => user
-      discussion4 = create :discussion, :author => user
-      discussion1.add_comment user, "hi"
-      user.discussions_sorted[0].should == discussion1
-      user.discussions_sorted[1].should == discussion4
-      user.discussions_sorted[2].should == discussion3
-      user.discussions_sorted[3].should == discussion2
+      @discussion2 = create :discussion, :author => @user
+      @discussion2.add_comment @user, "hi"
+      @discussion3 = create :discussion, :author => @user
+      @discussion4 = create :discussion, :author => @user
+      @discussion1.add_comment @user, "hi"
+      @user.discussions_sorted[0].should == @discussion1
+      @user.discussions_sorted[1].should == @discussion4
+      @user.discussions_sorted[2].should == @discussion3
+      @user.discussions_sorted[3].should == @discussion2
+    end
+    it "should not include discussions with a current motion" do
+      motion = create :motion, :discussion => @discussion1, author: @user
+      motion.close_voting!
+      motion1 = create :motion, :discussion => @discussion1, author: @user
+      @user.discussions_sorted.should_not include(@discussion1)
     end
   end
 
@@ -193,8 +214,7 @@ describe User do
   end
 
   it "can update an existing motion_read_log" do
-    @group = create(:group)
-    @discussion = create :discussion, group: @group
+    @discussion = create :discussion, group: group
     @motion = create(:motion,discussion: @discussion)
     @motion.activity = 4
     user.update_motion_read_log(@motion)
@@ -205,21 +225,38 @@ describe User do
   end
 
   it "can update an existing discussion_read_log" do
-    @group = create(:group)
-    @discussion = create(:discussion, group: @group)
-    @discussion.activity = 4
+    @discussion = create :discussion, group: group
+    DiscussionReadLog.stub_chain(:where, :first)
+    @discussion_read_log = mock_model(DiscussionReadLog)
+    DiscussionReadLog.stub(:new).and_return(@discussion_read_log)
+
+    time_now = Time.now()
+    Time.stub(:now).and_return(time_now)
+
+    @discussion_read_log.stub(:save!).and_return(true)
+    @discussion_read_log.should_receive(:discussion_last_viewed_at=).with(time_now)
+    @discussion_read_log.should_receive(:user_id=).with(user.id)
+    @discussion_read_log.should_receive(:discussion_id=).with(@discussion.id)
+
     user.update_discussion_read_log(@discussion)
-    @discussion.activity = 5
-    user.discussion_activity_when_last_read(@discussion).should == 4
-    user.update_discussion_read_log(@discussion)
-    user.discussion_activity_when_last_read(@discussion).should == 5
   end
 
   it "can create a new discussion_read_log" do
-    @group = create(:group)
-    @discussion = create(:discussion, group: @group)
+    @discussion = create(:discussion, group: group)
     user.update_discussion_read_log(@discussion)
     DiscussionReadLog.count.should == 1
+  end
+
+  it "can update group last_viewed_at" do
+    membership = create :membership, group: group, user: user
+    user.stub(:group_membership).with(group).and_return(membership)
+    time_now = Time.now()
+    Time.stub(:now).and_return(time_now)
+    membership.stub(:save!).and_return(true)
+
+    membership.should_receive(:group_last_viewed_at=).with(time_now)
+
+    user.update_group_last_viewed_at(group)
   end
 
   describe "mark_notifications_as_viewed" do
@@ -362,6 +399,30 @@ describe User do
       notification.viewed_at = Time.now
       notification.save
       user.unviewed_notifications.count.should == 0
+    end
+  end
+
+  describe "get_loomio_user" do
+    it "returns the loomio helper bot user (email: contact@loom.io)" do
+      user = User.new
+      user.name = "loomio evil bot"
+      user.email = "darkness@loom.io"
+      user.password = "password"
+      user.save!
+      user1 = User.find_or_create_by_email("contact@loom.io")
+      user1.name = "loomio helper bot"
+      user1.password = "password"
+      user1.save!
+      user2 = User.new
+      user2.name = "George Washingtonne"
+      user2.email = "georgie_porgie@usa.com"
+      user2.password = "password"
+      user2.save!
+      User.get_loomio_user.should == user1
+    end
+
+    it "creates loomio helper bot if none exists" do
+      User.get_loomio_user.email.should == "contact@loom.io"
     end
   end
 
