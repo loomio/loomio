@@ -1,5 +1,5 @@
 @import "settings";
-/*@import "bootstrap";*/
+@import "bootstrap/mixins";
 @import "mixins";
 
 /** discussion new (new loomio) modal*/
@@ -294,18 +294,15 @@ li s hard.motion-preview {
   float: left;
   background-color: $container;
 }
-  .unread-group-activity {background-color: $group-activity;}
+.unread-group-activity {background-color: $group-activity;}
 .discussion-preview {
-  float: left;
-  width: 620px;
-  .discussion-container {
-  }
   a {
     color: $dark-grey;
   }
   a:hover {
     text-decoration: none;
   }
+  a.selector-link {height: 37px;}
   .vote-icon {
     float: left;
     width: 20px;
@@ -347,7 +344,7 @@ li s hard.motion-preview {
     font-size: $font-tinywiny;
     position: relative;
     bottom: 8px;
-    left: 16px;
+    z-index: 2;
   }
   .pie .activity-count {
     bottom: 1px;
@@ -356,6 +353,5 @@ li s hard.motion-preview {
   }
   .discussion-link {
     position: relative;
-    z-index: 2;
   }
 }
