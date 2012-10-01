@@ -351,7 +351,8 @@ li s hard.motion-preview {
   }
   .pie .activity-count {
     bottom: 1px;
-    margin-left: 24px;
+    left: 24px;
+    z-index: 2;
   }
   .discussion-link {
     position: relative;
