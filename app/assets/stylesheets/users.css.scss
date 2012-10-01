@@ -5,13 +5,8 @@
 @import "settings";
 @import "mixins";
 
-
-#user-image-area {
-  width: 170px;
-  margin: 0 0 20px 20px;
-}
-
-#user-image-options {
+.user-image-options {
+  margin-left: -30px;
   h3 { margin: 0 0 0 30px; }
   ul { list-style: none }
 }
@@ -31,16 +26,23 @@
 .large-user-avatar {
   width: 170px;
   height: 170px;
+  margin-bottom: 20px;
+}
+
+.med-large-user-avatar {
+  width: 70px;
+  height: 70px;
 }
 
 .medium-user-avatar {
   width: 35px;
   height: 35px;
+  margin-right: 7px;
 }
 
 .small-user-avatar {
-  width: 23px;
-  height: 23px;
+  width: 24px;
+  height: 24px;
 }
 
 .initials-decoration {
@@ -51,6 +53,11 @@
 .large-user-initials {
   font-size: 70px;
   line-height: 149px;
+}
+
+.med-large-user-initials {
+  font-size: 22px;
+  line-height: 64px;
 }
 
 .medium-user-initials {
@@ -99,4 +106,15 @@ li.user-image-option.clearfix:hover {
 
 #user_uploaded_avatar {
   display: none;
+}
+
+#user-email-popover {
+  .avatar-canvas {
+    margin: 0 10px 0 0;
+    float: left;
+  }
+  .user-details {
+    display: block;
+    margin-left: 15px;
+  } 
 }

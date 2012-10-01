@@ -5,7 +5,7 @@ describe Membership do
   let(:user) { create(:user) }
   let(:user2) { create(:user) }
   let(:group) { create(:group) }
-  
+
   it { should have_many(:events).dependent(:destroy) }
 
   describe "validation" do
@@ -84,16 +84,16 @@ describe Membership do
 
     it "removes subgroup memberships (if existing)" do
       # Removes user from multiple subgroups
-      subgroup = build(:group)
+      subgroup = build(:group, :creator => group.creator)
       subgroup.parent = group
-      subgroup.save
+      subgroup.save!
       subgroup.add_member! user
-      subgroup2 = build(:group)
+      subgroup2 = build(:group, :creator => group.creator)
       subgroup2.parent = group
       subgroup2.save
       subgroup2.add_member! user
       # Does not try to remove user from subgroup if user is not a member
-      subgroup3 = build(:group)
+      subgroup3 = build(:group, :creator => group.creator)
       subgroup3.parent = group
       subgroup3.save
       @membership.destroy

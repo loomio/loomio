@@ -8,7 +8,6 @@ class GroupsController < GroupBaseController
     @group.creator = current_user
     if @group.save
       @group.add_admin! current_user
-      @group.create_welcome_loomio unless @group.parent
       flash[:success] = "Group created successfully."
       redirect_to @group
     else
@@ -21,12 +20,13 @@ class GroupsController < GroupBaseController
     @subgroups = @group.subgroups.accessible_by(current_ability, :show)
     @motions_not_voted = []
     if current_user
-      @motions_voted = @group.motions_in_voting_phase_that_user_has_voted_on(current_user)
-      @motions_not_voted = @group.motions_in_voting_phase_that_user_has_not_voted_on(current_user)
+      @discussions_with_current_motion_voted_on = @group.discussions_with_current_motion_voted_on(current_user)
+      @discussions_with_current_motion_not_voted_on = @group.discussions_with_current_motion_not_voted_on(current_user)
+      @discussion = Discussion.new(group_id: @group.id)
     else
-      @motions_voted = @group.motions_in_voting_phase
+      @discussions_with_current_motion_voted_on = @group.discussions_with_current_motion
+      @discussions_with_current_motion_not_voted_on = []
     end
-    @motions_closed = @group.motions_closed
   end
 
   def edit
@@ -107,6 +107,12 @@ class GroupsController < GroupBaseController
     GroupMailer.deliver_group_email(@group, current_user, subject, body)
     flash[:success] = "Email sent."
     redirect_to :back
+  end
+
+  def edit_description
+    @group = Group.find(params[:id])
+    @group.description = params[:description]
+    @group.save!
   end
 
   private

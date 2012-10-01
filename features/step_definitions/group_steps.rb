@@ -1,30 +1,33 @@
 Given /^a group "(.*?)" with "(.*?)" as admin$/ do |arg1, arg2|
-  @user = FactoryGirl.create(:user, :email => arg2)
-  @group = FactoryGirl.create(:group, :name => arg1)
-  @group.add_admin!(@user)
+  user = FactoryGirl.create(:user, :email => arg2)
+  group = FactoryGirl.create(:group, :name => arg1)
+  group.add_admin!(user)
 end
 
-Given /^there is a group called "(.*?)"$/ do |group_name|
+Given /^a group(?: named)? "(.*?)"(?: exists)?$/ do |group_name|
   FactoryGirl.create(:group, :name => group_name)
 end
 
-Given /^"(.*?)" is a non-admin of group "(.*?)"$/ do |email, group_name|
-  group = Group.find_by_name group_name
-  user = User.find_by_email email
-  membership = group.memberships.find_by_user_id user.id
-  membership.destroy if membership
-  group.add_member! user
-end
-
 Given /^I visit create subgroup page for group named "(.*?)"$/ do |arg1|
-  find("#my-groups").click_on("My groups")
-  find("#my-groups").click_on(arg1)
-  find("#sub-groups .sub-panel .dropdown a").click
-  find("#sub-groups").click_link("Create a Sub-group +")
+  find("#groups").click_on("Groups")
+  find("#groups").click_on(arg1)
+  click_link("subgroup-new")
 end
 
-Given /^"(.*?)" is a member of "(.*?)"$/ do |email, group|
-  Group.find_by_name(group).add_member!(User.find_or_create_by_email(email))
+Given /^"(.*?)" is a(?: non-admin)?(?: member)? of(?: group)? "(.*?)"$/ do |email, group|
+  user = User.find_by_email(email)
+  if !user 
+    user = FactoryGirl.create(:user, :email => email)
+  end 
+  Group.find_by_name(group).add_member!(user)
+end
+
+Given /^"(.*?)" is a[n]? admin(?: member)? of(?: group)? "(.*?)"$/ do |email, group|
+  user = User.find_by_email(email)
+  if !user 
+    user = FactoryGirl.create(:user, :email => email)
+  end 
+  Group.find_by_name(group).add_admin!(user)
 end
 
 When /^I fill details for the subgroup$/ do
@@ -32,14 +35,6 @@ When /^I fill details for the subgroup$/ do
   choose "group_viewable_by_everyone"
   choose "group_members_invitable_by_members"
   uncheck "group_email_new_motion"
-end
-
-When /^I click "(.*?)"$/ do |arg1|
-  click_on arg1
-end
-
-Then /^I should see "(.*?)"$/ do |arg1|
-  page.should have_content(arg1)
 end
 
 When /^I fill details for  public all members invite subgroup$/ do

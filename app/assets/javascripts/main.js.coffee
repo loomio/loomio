@@ -40,7 +40,7 @@ Application.timestampToDateObject = (timestamp)->
 
 
 $ ->
-  $(".dismiss-help-notice").click( (event)->
+  $(".dismiss-help-notice").click((event)->
     $.post($(this).attr("href"))
     $(this).parent(".help-notice").remove()
     event.preventDefault()
@@ -53,9 +53,15 @@ $ ->
  #- date validation specific for motion-form
 
 $ ->
+  $(".validate-presence").change(() ->
+    if $(this).val() != ""
+        $(this).parent().removeClass("error")
+        $(this).parent().find(".presence-error-message").hide()
+  )
+$ ->
   $(".validate-presence").keyup(() ->
-    $(".validate-presence").parent().removeClass("error")
-    $(".presence-error-message").hide()
+    $(this).parent().removeClass("error")
+    $(this).parent().find(".presence-error-message").hide()
   )
 
 $ ->
@@ -89,6 +95,12 @@ $ ->
       if selected_date <= time_now
         $(".validate-motion-close-date").parent().addClass("error")
         $(".date-error-message").show()
+
+# adds bootstrap popovers to group activity indicators
+$ ->
+  $(".group-activity").tooltip
+    placement: "top"
+    title: 'There have been new comments since you last visited the group.'
 
 # character count for statement on discussion:show page
 pluralize_characters = (num) ->
@@ -124,3 +136,85 @@ $ ->
     left = 150 - chars
     display_count(left, $(".limit-150"))
   )
+
+#*** check if discussion with motions list is empty ***
+$ ->
+  if $("body.groups.show").length > 0 ||  $("body.dashboard.show").length > 0
+    if $("#discussions-with-motions").children().html() != ""
+      $(".discussion-with-motion-divider").removeClass('hidden')
+
+# Edit description
+$ ->
+  if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
+    $("#edit-description").click((event) ->
+      description_height = $(this).parent().find(".model-description").height()
+      $("#show-description").toggle()
+      $("#add-edit-description").toggle()
+      if description_height > 90
+        $('#description-input').height(description_height)
+      event.preventDefault()
+    )
+    $("#cancel-add-description").click((event) ->
+      $("#add-edit-description").toggle()
+      $("#show-description").toggle()
+      event.preventDefault()
+    )
+
+displayGraph = (this_pie, graph_id, data)->
+  @pie_graph_view = new Loomio.Views.Utils.GraphView
+    el: this_pie
+    id_string: graph_id
+    legend: false
+    data: data
+    type: 'pie'
+    tooltip_selector: '#tooltip'
+    diameter: 25
+    padding: 1
+    gap: 1
+    shadow: 0.75
+
+#*** open-close motions dropdown***
+$ ->
+  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
+    if $("body.groups.show").length > 0
+      idStr = new Array
+      idStr = $('#closed-motions-page').children().attr('class').split('_')
+    $("#show-closed-motions").click((event) ->
+      $("#closed-motions").modal('toggle')
+      $("#closed-motions-page").removeClass('hidden')
+      $("#closed-motions-loading").removeClass('hidden')
+      $("#closed-motions-list").addClass('hidden')
+      if $("body.groups.show").length > 0
+        pathStr = "/groups/#{idStr[1]}/motions"
+      else
+        pathStr = "/motions"
+      $('#closed-motions-page').load(pathStr, ->
+        $("#closed-motions-list").removeClass('hidden')
+        $("#closed-motions-loading").addClass('hidden')
+        $("#closed-motions").find('.pie').each(->
+          displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
+        )
+      )
+      event.preventDefault()
+    )
+    $("#closed-motions .close").click((event) ->
+      $("#closed-motions").modal('toggle')
+      event.preventDefault()
+    )
+
+#pagination load on closed motions
+$ ->
+  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
+    $(document).on('click', '#closed-motions-page .pagination a', (e)->
+      unless $(this).parent().hasClass("gap")
+        $("#closed-motions-list").addClass('hidden')
+        $("#closed-motions-loading").removeClass('hidden')
+        $('#closed-motions-page').load($(this).attr('href'), ->
+          $("#closed-motion-list").removeClass('hidden')
+          $("#closed-motions-loading").addClass('hidden')
+          $("#closed-motions").find('.pie').each(->
+            displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
+            )
+          )
+        e.preventDefault()
+      )

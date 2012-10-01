@@ -47,16 +47,16 @@ class DiscussionsController < GroupBaseController
     @current_motion = @discussion.current_motion
     @vote = Vote.new
     @history = @discussion.history
-    if (not params[:proposal]) && @current_motion
-      @unique_votes = Vote.unique_votes(@current_motion)
-      @votes_for_graph = @current_motion.votes_graph_ready
-      @user_already_voted = @current_motion.user_has_voted?(current_user)
+    if (not params[:proposal])
+      if @current_motion
+        @unique_votes = Vote.unique_votes(@current_motion)
+        @votes_for_graph = @current_motion.votes_graph_ready
+        @user_already_voted = @current_motion.user_has_voted?(current_user)
+      end
     else
       @selected_motion = @discussion.closed_motion(params[:proposal])
-      if @selected_motion
-        @user_already_voted = @selected_motion.user_has_voted?(current_user)
-        @votes_for_graph = @selected_motion.votes_graph_ready
-      end
+      @user_already_voted = @selected_motion.user_has_voted?(current_user)
+      @votes_for_graph = @selected_motion.votes_graph_ready
     end
 
     if current_user
@@ -81,6 +81,18 @@ class DiscussionsController < GroupBaseController
     @motion.discussion = discussion
     @group = GroupDecorator.new(discussion.group)
     render 'motions/new'
+  end
+
+  def edit_description
+    discussion = Discussion.find(params[:id])
+    discussion.description = params[:description]
+    discussion.save!
+  end
+
+  def edit_title
+    discussion = Discussion.find(params[:id])
+    discussion.title = params[:title]
+    discussion.save!
   end
 
   private

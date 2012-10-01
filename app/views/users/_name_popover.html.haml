@@ -1,0 +1,12 @@
+#user-email-popover
+  .clearfix
+    - if user.avatar_url
+      .med-large-user-avatar.avatar-canvas
+        = image_tag user.avatar_url(:medlarge)
+    - else
+      .med-large-user-avatar.avatar-canvas
+        %span.med-large-user-initials.initials-decoration
+          = user.avatar_initials
+    - if current_user && current_user.is_group_member?(group)
+      .user-details
+        = mail_to user.email

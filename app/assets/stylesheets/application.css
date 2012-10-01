@@ -6,6 +6,7 @@
  *= require jqplot.1.0.0b2_r792
  *= require main
  *= require header
+ *= require dashboard
  *= require groups
  *= require discussions
  *= require landing

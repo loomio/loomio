@@ -1,6 +1,9 @@
 class Group < ActiveRecord::Base
   PERMISSION_CATEGORIES = [:everyone, :members, :admins, :parent_group_members]
 
+  attr_accessible :name, :viewable_by, :parent_id, :parent
+  attr_accessible :members_invitable_by, :email_new_motion, :description
+
   validates_presence_of :name
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
@@ -10,6 +13,8 @@ class Group < ActiveRecord::Base
   validates :description, :length => { :maximum => 250 }
 
   after_initialize :set_defaults
+  after_create :create_welcome_loomio
+  after_create :add_creator_as_admin
 
   default_scope where(:archived_at => nil)
 
@@ -51,21 +56,11 @@ class Group < ActiveRecord::Base
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
   delegate :name, :to => :parent, :prefix => true
-
-  attr_accessible :name, :viewable_by, :parent_id, :parent
-  attr_accessible :members_invitable_by, :email_new_motion, :description
+  delegate :email, :to => :creator, :prefix => true
 
   #
   # ACCESSOR METHODS
   #
-
-  def motions_in_voting_phase_that_user_has_voted_on(user)
-    motions_in_voting_phase.that_user_has_voted_on(user).uniq
-  end
-
-  def motions_in_voting_phase_that_user_has_not_voted_on(user)
-    motions_in_voting_phase - motions_in_voting_phase_that_user_has_voted_on(user)
-  end
 
   def beta_features
     if parent && (parent.beta_features == true)
@@ -118,9 +113,9 @@ class Group < ActiveRecord::Base
   end
 
   def admin_email
-    if (admins && admins.first)
+    if admins.exists?
       admins.first.email
-    elsif (creator)
+    elsif creator
       creator.email
     else
       "noreply@loom.io"
@@ -128,10 +123,33 @@ class Group < ActiveRecord::Base
   end
 
   #
+  # ACTIVITY METHODS
+  #
+  #
+
+  def activity_since_last_viewed?(user)
+    membership = membership(user)
+    if membership
+      return false unless discussions
+        .includes(:comments)
+        .where('comments.user_id <> ? AND comments.created_at > ?' , user.id, membership.group_last_viewed_at)
+        .count > 0
+      return false unless discussions
+        .joins('INNER JOIN discussion_read_logs ON discussions.id = discussion_read_logs.discussion_id')
+        .where('discussion_read_logs.user_id = ? AND discussions.last_comment_at > discussion_read_logs.discussion_last_viewed_at',  user.id)
+        .count > 0
+      return true
+    end
+    false
+  end
+
+  #
   # MEMBERSHIP METHODS
   #
 
-
+  def membership(user)
+    memberships.where("group_id = ? AND user_id = ?", id, user.id).first
+  end
 
   def add_request!(user)
     unless requested_users_include?(user) || users.exists?(user)
@@ -187,37 +205,50 @@ class Group < ActiveRecord::Base
   # DISCUSSION LISTS
   #
 
-  def discussions_sorted(user= nil)
-    if user && user.group_membership(self)
-      user.discussions.includes(:group).
-      where("discussions.group_id = ? OR groups.parent_id = ?", id, id).
-      order("last_comment_at DESC")
+  def all_discussions
+    Discussion.includes(:group).where("group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL)", id, id)
+  end
+
+  def discussions_with_current_motion
+    if all_discussions
+      all_discussions.includes(:motions).where('motions.phase = ?', "voting")
     else
-      discussions.order("last_comment_at DESC")
+      []
     end
   end
 
-  def create_welcome_loomio
-    comment_str = "By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, the group can put their heads together to find the best way forward.\n\n" +
-      "This 'Welcome' discussion can be used to raise any questions about how to use Loomio, and to test out the features. \n\n" +
-      "Once you are finished in this particular discussion, you can click the Loomio logo at the top of the screen to go back to your dashboard and see all your current discussions and proposals.\n\n" +
-      "Click into a group to view or start discussions and proposals in that group, or view a list of the group members."
-    motion_str = "To get a feel for how Loomio works, you can participate in the decision in your group.\n\n" +
-      "If you're clear about your position, click one of the icons below (hover over with your mouse for a description of what each one means)\n\n" +
-      "You\'ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
-    user = User.get_loomio_user
-    parent_membership = parent.add_member!(user) if parent
-    membership = add_member!(user)
-    discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")
-    discussion.add_comment(user, comment_str)
-    motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We should have a holiday on the moon",
-      :description => motion_str, :close_date => Time.now + 7.days)
-    motion.save
-    membership.destroy
-    parent_membership.destroy if parent
+  def discussions_with_current_motion_not_voted_on(user)
+    if all_discussions
+      (all_discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on(user))
+    else
+      []
+    end
   end
 
-  #/
+  def discussions_with_current_motion_voted_on(user)
+    if all_discussions
+      all_discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", user.id).order("last_comment_at DESC")
+    else
+      []
+    end
+  end
+
+  def discussions_sorted(user= nil)
+    if user && user.group_membership(self)
+      user.discussions
+        .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+        .includes(:group)
+        .where('discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL)', id, id)
+        .order("last_comment_at DESC")
+    else
+      discussions
+        .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+        .order("last_comment_at DESC")
+    end
+  end
+
+
+  #
   # PRIVATE METHODS
   #
 
@@ -227,6 +258,30 @@ class Group < ActiveRecord::Base
     self.viewable_by ||= :everyone if parent.nil?
     self.viewable_by ||= :parent_group_members unless parent.nil?
     self.members_invitable_by ||= :members
+  end
+
+  def add_creator_as_admin
+    add_admin! creator
+  end
+
+  def create_welcome_loomio
+    unless parent
+      comment_str = "By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, the group can put their heads together to find the best way forward.\n\n" +
+        "This 'Welcome' discussion can be used to raise any questions about how to use Loomio, and to test out the features. \n\n" +
+        "Once you are finished in this particular discussion, you can click the Loomio logo at the top of the screen to go back to your dashboard and see all your current discussions and proposals.\n\n" +
+        "Click into a group to view or start discussions and proposals in that group, or view a list of the group members."
+      motion_str = "To get a feel for how Loomio works, you can participate in the decision in your group.\n\n" +
+        "If you're clear about your position, click one of the icons below (hover over with your mouse for a description of what each one means)\n\n" +
+        "You\'ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
+      user = User.get_loomio_user
+      membership = add_member!(user)
+      discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")
+      discussion.add_comment(user, comment_str)
+      motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "Example proposal - We should have a holiday on the moon",
+        :description => motion_str, :close_date => Time.now + 7.days)
+      motion.save
+      membership.destroy
+    end
   end
 
   # Validators
