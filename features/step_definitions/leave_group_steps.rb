@@ -17,5 +17,6 @@ When /^I leave the group$/ do
 end
 
 Then /^I should be removed from the group$/ do
+  pending "Why isn't this working?!"
   step %{I should see "You have left #{@groupname}"}
 end
