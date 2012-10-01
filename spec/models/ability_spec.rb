@@ -53,8 +53,8 @@ describe "User abilities" do
     it { should_not be_able_to(:close_voting, other_users_motion) }
     it { should_not be_able_to(:open_voting, other_users_motion) }
 
-    it "cannot delete the only member of a group" do
-      @other_user_membership.destroy
+    it "cannot remove themselves if they are the only member of the group" do
+      group.memberships.where("memberships.id != ?", @user_membership.id).destroy_all
       should_not be_able_to(:destroy, @user_membership)
     end
 
@@ -115,6 +115,7 @@ describe "User abilities" do
     it { should be_able_to(:open_voting, other_users_motion) }
 
     it "should not be able to delete the only admin of a group" do
+      group.admin_memberships.where("memberships.id != ?", @user_membership.id).destroy_all
       should_not be_able_to(:destroy, @user_membership)
     end
 

@@ -1,6 +1,9 @@
 class Group < ActiveRecord::Base
   PERMISSION_CATEGORIES = [:everyone, :members, :admins, :parent_group_members]
 
+  attr_accessible :name, :viewable_by, :parent_id, :parent
+  attr_accessible :members_invitable_by, :email_new_motion, :description
+
   validates_presence_of :name
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
@@ -10,6 +13,8 @@ class Group < ActiveRecord::Base
   validates :description, :length => { :maximum => 250 }
 
   after_initialize :set_defaults
+  after_create :create_welcome_loomio
+  after_create :add_creator_as_admin
 
   default_scope where(:archived_at => nil)
 
@@ -51,9 +56,7 @@ class Group < ActiveRecord::Base
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
   delegate :name, :to => :parent, :prefix => true
-
-  attr_accessible :name, :viewable_by, :parent_id, :parent
-  attr_accessible :members_invitable_by, :email_new_motion, :description
+  delegate :email, :to => :creator, :prefix => true
 
   #
   # ACCESSOR METHODS
@@ -110,9 +113,9 @@ class Group < ActiveRecord::Base
   end
 
   def admin_email
-    if (admins && admins.first)
+    if admins.exists?
       admins.first.email
-    elsif (creator)
+    elsif creator
       creator.email
     else
       "noreply@loom.io"
@@ -129,7 +132,7 @@ class Group < ActiveRecord::Base
     if membership
       return false unless discussions
         .includes(:comments)
-        .where('comments.user_id <> ? AND comments.created_at > ?' , user.id, membership.last_viewed_at)
+        .where('comments.user_id <> ? AND comments.created_at > ?' , user.id, membership.group_last_viewed_at)
         .count > 0
       return false unless discussions
         .joins('INNER JOIN discussion_read_logs ON discussions.id = discussion_read_logs.discussion_id')
@@ -244,31 +247,8 @@ class Group < ActiveRecord::Base
     end
   end
 
-  #
-  # DISCUSSION LISTS
-  #
-  #
-  def create_welcome_loomio
-    comment_str = "By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, the group can put their heads together to find the best way forward.\n\n" +
-      "This 'Welcome' discussion can be used to raise any questions about how to use Loomio, and to test out the features. \n\n" +
-      "Once you are finished in this particular discussion, you can click the Loomio logo at the top of the screen to go back to your dashboard and see all your current discussions and proposals.\n\n" +
-      "Click into a group to view or start discussions and proposals in that group, or view a list of the group members."
-    motion_str = "To get a feel for how Loomio works, you can participate in the decision in your group.\n\n" +
-      "If you're clear about your position, click one of the icons below (hover over with your mouse for a description of what each one means)\n\n" +
-      "You\'ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
-    user = User.get_loomio_user
-    parent_membership = parent.add_member!(user) if parent
-    membership = add_member!(user)
-    discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")
-    discussion.add_comment(user, comment_str)
-    motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "Example proposal - We should have a holiday on the moon",
-      :description => motion_str, :close_date => Time.now + 7.days)
-    motion.save
-    membership.destroy
-    parent_membership.destroy if parent
-  end
 
-  #/
+  #
   # PRIVATE METHODS
   #
 
@@ -278,6 +258,30 @@ class Group < ActiveRecord::Base
     self.viewable_by ||= :everyone if parent.nil?
     self.viewable_by ||= :parent_group_members unless parent.nil?
     self.members_invitable_by ||= :members
+  end
+
+  def add_creator_as_admin
+    add_admin! creator
+  end
+
+  def create_welcome_loomio
+    unless parent
+      comment_str = "By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, the group can put their heads together to find the best way forward.\n\n" +
+        "This 'Welcome' discussion can be used to raise any questions about how to use Loomio, and to test out the features. \n\n" +
+        "Once you are finished in this particular discussion, you can click the Loomio logo at the top of the screen to go back to your dashboard and see all your current discussions and proposals.\n\n" +
+        "Click into a group to view or start discussions and proposals in that group, or view a list of the group members."
+      motion_str = "To get a feel for how Loomio works, you can participate in the decision in your group.\n\n" +
+        "If you're clear about your position, click one of the icons below (hover over with your mouse for a description of what each one means)\n\n" +
+        "You\'ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
+      user = User.get_loomio_user
+      membership = add_member!(user)
+      discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")
+      discussion.add_comment(user, comment_str)
+      motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "Example proposal - We should have a holiday on the moon",
+        :description => motion_str, :close_date => Time.now + 7.days)
+      motion.save
+      membership.destroy
+    end
   end
 
   # Validators
