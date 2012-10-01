@@ -140,7 +140,8 @@ class Group < ActiveRecord::Base
         .count > 0
       unread_comments = new_comments_since_last_looked_at_group &&
                         new_comments_since_last_looked_at_discussions
-      # TODO: Refactor this to an active record query
+
+      # TODO: Refactor this to an active record query and write tests for it
       unread_new_discussions = Discussion.find_by_sql(["
         (SELECT discussions.id FROM discussions WHERE group_id = ? AND discussions.created_at > ?)
         EXCEPT
@@ -148,10 +149,7 @@ class Group < ActiveRecord::Base
          INNER JOIN discussion_read_logs ON discussions.id = discussion_read_logs.discussion_id
          WHERE discussions.group_id = ? AND discussion_read_logs.user_id = ?);",
         id, membership.group_last_viewed_at, id, user.id])
-      # unread_new_discussions = discussions
-      #   .joins('LEFT OUTER JOIN discussion_read_logs ON discussions.id = discussion_read_logs.discussion_id')
-      #   .where('discussions.created_at > ?', membership.group_last_viewed_at)
-      #   .where('discussion_read_logs.user_id != ? AND discussions.created_at > ?', user.id, membership.group_last_viewed_at)
+
       return true if unread_comments || unread_new_discussions.present?
     end
     false
