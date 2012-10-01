@@ -1,10 +1,10 @@
 .sub-panel#groups
   %h3 Groups
-  %a.group-add-members.btn.btn-small.btn-icon{href: new_group_path}
+  %a.group-add-members.btn.btn-small.btn-icon{href: request_new_group_path}
     .small-icon.group-icon
-    .btn-text Create a group +
+    .btn-text Request new group
   %ul#dashboard-groups-list
-    - current_user.root_groups.order('name').each do |group|
+    - current_user.root_groups.each do |group|
       %li
         .group-link.clearfix
           .group-link-name= link_to group.name, group_path(group), :class => 'view_'+group.viewable_by.to_s

@@ -8,8 +8,9 @@
 %header
   -#= render '/application/loomio_process_flow'
   = render '/groups/title', group: @group
-  = render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
-    :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-topic'}
+  - if can? :create, @discussion
+    = render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
+      :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-topic'}
 .row
   %section.span8
     %ul.selector-list.bordered
@@ -22,7 +23,7 @@
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
         .discussion-with-motion-divider.hidden
       - if @group.discussions.count == 0
-        %li.empty-list-message There are no discussions for this group
+        %li.empty-list-message This group does not have any discussions yet.
       - else
         #group-discussions.hidden
           %div{ class: "group_#{@group.id}" }
@@ -38,5 +39,5 @@
     =render 'members', group: @group
   =render '/application/closed_motions', user: nil, group: @group
 
-- if user_signed_in?
+- if can? :create, @discussion
   =render '/discussions/new', discussion: @discussion, user_groups: nil
