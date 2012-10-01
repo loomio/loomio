@@ -23,5 +23,5 @@
           = f.label :notify_group_upon_creation,
             "Send email notification to group members", class: "checkbox-label"
   .modal-footer
-    = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
-    = f.submit "Start", class: "btn btn-primary run-validations", id: "discussion-submit", :data => { :disable_with => "Starting" }
+    = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
+    = f.submit "Start", class: "btn btn-info run-validations", id: "discussion-submit", :data => { :disable_with => "Starting" }
