@@ -129,12 +129,12 @@ describe User do
 
   context do
     before do
-      group.add_member!(user)
+      group.add_member! user
       @discussion1 = create :discussion, :group => group
-      motion1 = create(:motion, discussion: @discussion1, author: user)
+      motion1 = create :motion, discussion: @discussion1, author: user
       @discussion2 = create :discussion, :group => group
-      motion2 = create(:motion, discussion: @discussion2, author: user)
-      vote = Vote.new(position: "yes")
+      motion2 = create :motion, discussion: @discussion2, author: user
+      vote = Vote.new position: "yes"
       vote.motion = motion2
       vote.user = user
       vote.save
@@ -156,9 +156,9 @@ describe User do
 
   describe "user.discussions_sorted" do
     before do
-      @user = create(:user)
-      @group = create(:group)
-      @group.add_member!(@user)
+      @user = create :user
+      @group = create :group
+      @group.add_member! @user
       @discussion1 = create :discussion, group: @group, :author => @user
     end
     it "returns a list of discussions sorted by last_comment_at" do
@@ -427,9 +427,8 @@ describe User do
       user.email = "darkness@loom.io"
       user.password = "password"
       user.save!
-      user1 = User.new
+      user1 = User.find_or_create_by_email("contact@loom.io")
       user1.name = "loomio helper bot"
-      user1.email = "contact@loom.io"
       user1.password = "password"
       user1.save!
       user2 = User.new
@@ -438,6 +437,10 @@ describe User do
       user2.password = "password"
       user2.save!
       User.get_loomio_user.should == user1
+    end
+
+    it "creates loomio helper bot if none exists" do
+      User.get_loomio_user.email.should == "contact@loom.io"
     end
   end
 
