@@ -44,7 +44,7 @@ class UsersController < BaseController
   def set_noise
     group_id = params[:group]
     noise_level = params[:noise]
-    current_user.group_noise_level(group_id, noise_level)
+    current_user.set_group_noise_level(group_id, noise_level)
     respond_to do |format|
       format.html { redirect_to(root_url) }
       # format.js {} template error

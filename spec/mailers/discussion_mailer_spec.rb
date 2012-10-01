@@ -35,7 +35,7 @@ describe DiscussionMailer do
     it "sends message to number of users subscribed to all notifications" do
       user.receive_emails = false
       group.add_member! user
-      user.group_noise_level(group, 0)
+      user.set_group_noise_level(group, 0)
 
       DiscussionMailer.should_not_receive(:new_discussion_created)
     end
@@ -46,7 +46,7 @@ describe DiscussionMailer do
     it "sends message to each group user" do
       user =  create(:user)
       group.add_member! user
-      user.group_noise_level(group, 2)
+      user.set_group_noise_level(group, 2)
 
       num_noise_levels = { 0 => 0, 1 => 0, 2 => 0}
       group.users.each do |group_user|

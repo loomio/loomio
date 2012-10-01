@@ -308,13 +308,13 @@ class User < ActiveRecord::Base
   end
 
   def get_group_noise_level(group_id)
-    mship = memberships.find_by_user_id_and_group_id(self, group_id)
-    mship.noise_level
+    membership = Membership.find_by_user_id_and_group_id(self, group_id)
+    membership.noise_level
   end
 
-  def group_noise_level(group_id, noise_level)
+  def set_group_noise_level(group_id, noise_level)
     @group = Group.find(group_id)
-    membership = memberships.find_by_user_id_and_group_id(self, @group)
+    membership = Membership.find_by_user_id_and_group_id(self, @group)
     membership.noise_level = noise_level
     membership.save!
   end
