@@ -8,7 +8,7 @@
               = f.label :name, "Title", {class: "control-label", for: "inputError"}
               .presence-error-message Please fill in a proposal title
               = f.text_field :name, class: "validate-presence inputError limit-150", id: "motion-name"
-            .character-counter
+              .character-counter
             #closing-inputs
               .control-group
                 = f.label :close_date, "Closing", {class: "control-label", for: "date-input", id: "close-date-label"}

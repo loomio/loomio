@@ -2,6 +2,6 @@
 - li_class += " sub-group" if subgroup
 %li{class: li_class}
   %a.selector-link{ href: group_path(group) }
-    .clearfix
-      .group-name= group.name.length < 35 ? group.name : group.name[0..32]+'...'
-      = render '/application/group_activity', user: current_user, group: group
+    .group-link.clearfix
+      .group-link-name= group.name.length < 35 ? group.name : group.name[0..32]+'...'
+      .group-link-activity= render '/application/group_activity', user: current_user, group: group

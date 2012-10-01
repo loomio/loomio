@@ -12,25 +12,25 @@
     =render '/groups/title', group: nil
     =render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
       :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-topic'}
-    .row
-      %section.span8
-        %ul.selector-list.bordered
-          #all-discussions-loading
-            %li.selector-item.loading Loading...
-          #discussions-with-motions
-            - @discussions_with_current_motion_not_voted_on.each do |discussion|
-              %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
-            - @discussions_with_current_motion_voted_on.each do |discussion|
-              %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
-            .discussion-with-motion-divider.hidden
-          - if current_user && current_user.discussions.count == 0
-            %li.empty-list-message.hidden There are no discussions in any of your groups
-        #user-discussions.hidden Loading...
-      %section.span4
-        =render 'groups'
-        =render '/application/see_closed_motions'
-      =render '/application/closed_motions', user: current_user, group: nil
-      =render '/discussions/new', discussion: @discussion, user_groups: @groups
+  .row
+    %section.span8
+      %ul.selector-list.bordered
+        #all-discussions-loading
+          %li.selector-item.loading Loading...
+        #discussions-with-motions
+          - @discussions_with_current_motion_not_voted_on.each do |discussion|
+            %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
+          - @discussions_with_current_motion_voted_on.each do |discussion|
+            %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
+          .discussion-with-motion-divider.hidden
+        - if current_user && current_user.discussions.count == 0
+          %li.empty-list-message.hidden There are no discussions in any of your groups
+      #user-discussions.hidden Loading...
+    %section.span4
+      =render 'groups'
+      =render '/application/see_closed_motions'
+    =render '/application/closed_motions', user: current_user, group: nil
+    =render '/discussions/new', discussion: @discussion, user_groups: @groups
 - else
   = link_to 'Create a group', new_group_path
   or wait until you are invited to one.
