@@ -37,8 +37,6 @@ class UsersController < BaseController
 
   def settings
     @user = current_user
-    @groups = GroupDecorator.decorate(current_user.all_root_groups)
-
   end
 
   def set_noise

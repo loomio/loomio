@@ -5,7 +5,7 @@
       = f.text_field :name
       / Notification settings
       %h1 Noise Level
-      - if @groups.present?
+      - if current_user.groups.present?
         %hr
         .row
           #noise-groups
@@ -16,7 +16,7 @@
                 .span3 
                   %h4 Notifications
               #ng-values
-                - current_user.root_groups.order('name').each do |group|
+                - current_user.groups.each do |group|
                   .span2= group.name
                   .span3.buttonset
                     =link_to set_noise_user_path(@user, :noise => '0', :group => group), :method => :post, :remote => true do
