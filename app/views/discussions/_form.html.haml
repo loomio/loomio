@@ -1,7 +1,7 @@
 = form_for(discussion) do |f|
   .modal-body
     .row
-      .span6
+      .span5
         - if params[:controller] == 'dashboard'
           .control-group
             = f.label :group_id, "Group", {class: "control-label", for: "validate-presence"}
