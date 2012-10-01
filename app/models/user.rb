@@ -175,7 +175,13 @@ class User < ActiveRecord::Base
   end
 
   def self.get_loomio_user
-    User.where(:email => 'contact@loom.io').first
+    helper_bot = User.find_or_create_by_email('contact@loom.io')
+    unless helper_bot.persisted?
+      helper_bot.name = "Loomio Helper Bot"
+      helper_bot.password = SecureRandom.hex(16)
+      helper_bot.save
+    end
+    helper_bot
   end
 
   def update_motion_read_log(motion)
@@ -231,26 +237,12 @@ class User < ActiveRecord::Base
     User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
   end
 
-  # Get all root groups that the user belongs to
-  # This also includes parent groups of sub-groups
-  # that the user belongs to (even though the user
-  # might not necessarily belong to the parent)
-  def all_root_groups
-    results = root_groups
-    subgroups.each do |subgroup|
-      unless results.include? subgroup.parent
-        results << subgroup.parent
-      end
-    end
-    results.sort_by { |group| group.name }
-  end
-
   def subgroups
     groups.where("parent_id IS NOT NULL")
   end
 
   def root_groups
-    groups.where("parent_id IS NULL")
+    groups.where("parent_id IS NULL").find(:all, :order => "LOWER(name)")
   end
 
   def position(motion)
