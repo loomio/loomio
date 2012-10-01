@@ -189,14 +189,23 @@ describe Discussion do
       @group.stub(:membership).with(@user)
       @discussion.has_activity_since_group_last_viewed?(@user).should == false
     end
-    it "returns true if the discussion had activity since user last viewed their group" do
+    it "returns true if the discussion had comments since user last viewed their group" do
       @group.stub(:membership).with(@user).and_return(@membership)
       @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
+      @discussion.has_activity_since_group_last_viewed?(@user).should == true
+    end
+    it "returns true if the discussion is new since user last viewed their group" do
+      @group.stub(:membership).with(@user).and_return(@membership)
+      @group.discussions.stub_chain(:includes, :where, :count).and_return(0)
+      @discussion.stub(:never_read_by).and_return(true)
+      @discussion.stub(:membership, :group_last_viewed_at).and_return(1)
+      @discussion.stub(:created_at).and_return(2)
       @discussion.has_activity_since_group_last_viewed?(@user).should == true
     end
     it "returns false if the discussion had no activity since user last viewed their group" do
       @group.stub(:membership).with(@user).and_return(@membership)
       @group.discussions.stub_chain(:includes, :where, :count).and_return(0)
+      @discussion.stub(:never_read_by).and_return(false)
       @discussion.has_activity_since_group_last_viewed?(@user).should == false
     end
   end

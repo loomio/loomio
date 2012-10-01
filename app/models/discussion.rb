@@ -58,6 +58,17 @@ class Discussion < ActiveRecord::Base
       id, user.id).first
   end
 
+  def unread_by(user)
+    has_unread_comments = number_of_comments_since_last_looked(user) > 0
+    created_after_user_joined_group = (created_at > user.group_membership(group).created_at)
+    has_unread_comments ||
+      (created_after_user_joined_group && never_read_by(user))
+  end
+
+  def never_read_by(user)
+    read_log_for(user).nil?
+  end
+
   def number_of_comments_since_last_looked(user)
     last_viewed_at = last_looked_at_by(user)
     number_of_comments_since(last_viewed_at)
@@ -86,6 +97,7 @@ class Discussion < ActiveRecord::Base
         .includes(:comments)
         .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ? AND comments.created_at > ?', id, user.id, membership.group_last_viewed_at, last_viewed_at)
         .count > 0
+      return true if never_read_by(user) && (created_at > membership.group_last_viewed_at)
     end
     false
   end
