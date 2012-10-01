@@ -112,7 +112,10 @@ li#groups ul.dropdown-menu {
 li.group-item {
   background-color: white;
 }
-
+li.group-item.sub-group a {
+  margin-left: 20px;
+  font-size: $font-small;
+}
 li.group-item.all-groups {
   padding: 0 0 2px 0px;
   border-bottom: 1px solid $light-grey;
