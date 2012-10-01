@@ -25,12 +25,16 @@ class Event < ActiveRecord::Base
   def self.new_comment!(comment)
     group = comment.discussion.group
     event = create!(:kind => "new_comment", :eventable => comment)
-    event_level = 0
-    comment.discussion_participants.each do |user|
-      if user != comment.user && user.send_notification?(group, 1)
+    comment.discussion.group_users.each do |user|
+      if user != comment.user && ((comment.discussion.is_participant?(user) && user.send_notification?(group, 1)) || user.send_notification?(group, 2))
         event.notifications.create! :user => user
       end
     end
+    # comment.discussion_participants.each do |user|
+    #   if user != comment.user && user.send_notification?(group, 1)
+    #     event.notifications.create! :user => user
+    #   end
+    # end
     event
   end
 
@@ -69,18 +73,11 @@ class Event < ActiveRecord::Base
   def self.new_vote!(vote)
     group = vote.motion.group
     event = create!(:kind => "new_vote", :eventable => vote)
-    #haven't accounted for a group.each here, possibly TOO noisy if we did
-    begin
-      if vote.user != vote.motion_author && vote.user.send_notification?(group, 2)
-        event.notifications.create! :user => vote.motion_author
+    #pending Craig's notification rewrite - PS
+    vote.group_users.each do |user|
+      if user != vote.user && user.send_notification?(group, 2) && (user == vote.motion_author || user == vote.discussion_author)
+        event.notifications.create! :user => user
       end
-      if vote.user != vote.discussion_author && vote.user.send_notification?(group, 2)
-        event.notifications.create! :user => vote.discussion_author
-      end
-    rescue ActiveRecord::RecordInvalid => error
-      # Catches error if we are trying to create duplicate notifications for
-      # the same user (i.e. if motion author and discussion author are same person)
-      raise unless error.message =~ /User has already been taken/
     end
     event
   end
@@ -89,7 +86,7 @@ class Event < ActiveRecord::Base
     group = vote.group
     event = create!(:kind => "motion_blocked", :eventable => vote)
     vote.group_users.each do |user| 
-      if user != vote.user && (user.send_notification?(group, 1) || user == motion.author)
+      if user != vote.user && (user.send_notification?(group, 1) || user == vote.motion.author)
         event.notifications.create! :user => user
       end
     end

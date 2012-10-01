@@ -120,6 +120,15 @@ describe Discussion do
     it "should not include users who have not commented on discussion" do
       @discussion.participants.should_not include(@user4)
     end
+
+    context "is participant check" do
+      it "is true for particpant" do
+        @discussion.is_participant?(@user2).should be(true)
+      end
+      it "is false for non participant" do
+        @discussion.is_participant?(@user4).should be(false)
+      end
+    end
   end
 
   describe "number_of_comments_since_last_looked(user)" do

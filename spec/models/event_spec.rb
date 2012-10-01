@@ -25,60 +25,82 @@ describe Event do
     its(:eventable) { should eq(discussion) }
 
     context "sending notifications" do
-
-      it "notifies group members" do
-        user = create(:user)
-        group = discussion.group
-        group.add_member! user
-        user.group_noise_level(group, 2)
-        event = Event.new_discussion!(discussion)
-
-        event.notifications.where(:user_id => user.id).should exist
+      before do
+        @user = stub_model(User)
+        @actor = stub_model(User, :send_notification? => true)
+        @group = stub_model(Group)
+        @discussion = stub_model(Discussion, :group => @group, 
+          :group_users => [@user, @actor], :author => @actor)
+        @notifications = double 'notifications'
+        @event = stub_model(Event)
+        @event.stub(:notifications => @notifications)
+        Event.stub(:create!).and_return(@event)
       end
-
-      it "does not notify discussion author" do
-        event = Event.new_discussion!(discussion)
-        event.notifications.where(:user_id => discussion.author.id).
-          should_not exist
+      context "user is subscribed to this type of event" do
+        before { @user.stub(:send_notification? => true) }
+        it "sends notification to user" do
+          @notifications.should_receive(:create!).with(:user => @user)
+          Event.new_discussion!(@discussion)
+        end
+        it "does not send notification to user if user is event actor" do
+          @discussion.stub(:author => @user)
+          @notifications.should_not_receive(:create!).with(:user => @user)
+          Event.new_discussion!(@discussion)
+        end
+      end
+      context "user has muted this type of event" do
+        it "does not send notification to user" do
+          @user.stub(:send_notification? => false)
+          @notifications.should_not_receive(:create!).with(:user => @user)
+          Event.new_discussion!(@discussion)
+        end
       end
     end
   end
 
   describe "new_comment!" do
-    let(:comment) { stub_model(Comment, :discussion => discussion) }
-    subject { Event.new_comment!(comment) }
-
-    its(:kind) { should eq("new_comment") }
-    its(:eventable) { should eq(comment) }
-
     context "sending notifications" do
       before do
-        @commentor, @participant, @non_participant=
-          create(:user), create(:user), create(:user)
-        group.add_member! @commentor
-        group.add_member! @participant
-        group.add_member! @non_participant
-        discussion.add_comment(@commentor, "hello!")
-        discussion.add_comment(@participant, "hi there commentor!")
-        comment = discussion.add_comment(@commentor, "fancy pantsy")
-        @event = Event.new_comment!(comment)
+        @user = stub_model(User)
+        @actor = stub_model(User)
+        @group = stub_model(Group)
+        @discussion = stub_model(Discussion, :group => @group, 
+          :group_users => [@user, @actor])
+        @comment = stub_model(Comment, :discussion => @discussion, 
+          :user => @actor)
+        @notifications = double 'notifications'
+        @event = stub_model(Event)
+        @event.stub(:notifications => @notifications)
+        Event.stub(:create!).and_return(@event)
       end
+      context "user is subscribed to this type of event" do
+        before { @user.stub(:send_notification? => true) }
+          context "and is discussion participant" do
+            before { @discussion.stub(:is_participant? => true) }
+              it "sends notification to user who is a participant" do
+                @notifications.should_receive(:create!).with(:user => @user)
+                Event.new_comment!(@comment)
+              end
+              it "does not send notification to user if user is event actor" do
+                @comment.user.stub(:user => @user)
+                @notifications.should_not_receive(:create!).with(:user => @user)
+              end
+          end
+        it "sends notification to user who is not a participant" do
+          @discussion.stub(:is_participant? => false)
+          @notifications.should_receive(:create!).with(:user => @user)
+          Event.new_comment!(@comment)
+        end
 
-      it "notifies participants" do
-        @event.notifications.where(:user_id => @participant.id).
-          should exist
       end
-
-      it "does not notify comment author" do
-        @event.notifications.where(:user_id => @commentor.id).
-          should_not exist
+      context "user has muted this type of event" do
+        it "does not send notification to user" do
+          @user.stub(:send_notification? => false)
+          @discussion.stub(:is_participant? => true)
+          @notifications.should_not_receive(:create!).with(:user => @user)
+          Event.new_comment!(@comment)
+        end
       end
-
-      it "does not notify users who have not participated in the discussion" do
-        @event.notifications.where(:user_id => @non_participant.id).
-          should_not exist
-      end
-
     end
   end
 
@@ -126,83 +148,176 @@ describe Event do
     end
   end
 
-  describe "new_vote!" do
-    let(:user) { mock_model(User) }
-    let(:vote) { mock_model(Vote, :motion_author => user,
-                            :discussion_author => user, :user => user) }
-    subject { Event.new_vote!(vote) }
-
-    its(:kind) { should eq("new_vote") }
-    its(:eventable) { should eq(vote) }
-
+  describe "motion_outcome!" do
     context "sending notifications" do
       before do
-        @user = create(:user)
-        @motion = create(:motion, :discussion => discussion, :author => create(:user))
-        @motion.group.add_member!(@user)
-        @user.group_noise_level(group, 2)
-        @vote = create(:vote, :user => @user, :motion => @motion, :position => "yes")
-        @event = Event.new_vote!(@vote)
+        @group = stub_model(Group)
+        @user = stub_model(User)
+        @actor = stub_model(User, :send_notification? => true)
+        @motion = stub_model(Motion, :group => @group, 
+          :group_users => [@user, @actor], :outcome_stater => @actor)
+        @notifications = double 'notifications'
+        @event = stub_model(Event)
+        @event.stub(:notifications => @notifications)
+        Event.stub(:create!).and_return(@event)
       end
-
-      it "notifies motion author" do
-        @event.notifications.where(:user_id => @motion.author.id).
-          should exist
+      context "user is subscribed to this type of event" do
+        before { @user.stub(:send_notification? => true) }
+        it "sends notification to user" do
+          @notifications.should_receive(:create!).with(:user => @user)
+          Event.motion_outcome!(@motion, @actor)
+        end
+        it "does not send notification to user if user is event actor" do
+          @notifications.should_not_receive(:create!).with(:user => @user)
+          Event.motion_outcome!(@motion, @user)
+        end
       end
-
-      it "notifies discussion author" do
-        @event.notifications.where(:user_id => discussion.author.id).
-          should exist
+      context "user has muted this type of event" do
+        it "does not send notification to user" do
+          @user.stub(:send_notification? => false)
+          @notifications.should_not_receive(:create!).with(:user => @user)
+          Event.motion_outcome!(@motion, @actor)
+        end
       end
+    end
+  end
 
-      it "does not notify motion author if they are the member who voted" do
-        @vote = @motion.author.votes.new(:position => "yes")
-        @vote.motion = @motion
-        @vote.save!
-        @event = Event.new_vote!(@vote)
-
-        @event.notifications.where(:user_id => @motion.author.id).
-          should_not exist
+  describe "motion_closed!" do
+    context "sending notifications" do
+      before do
+        @group = stub_model(Group)
+        @user = stub_model(User)
+        @actor = stub_model(User, :send_notification? => true)
+        @motion = stub_model(Motion, :group => @group, :author => @actor,
+          :group_users => [@user, @actor], :closer => @actor)
+        @notifications = double 'notifications'
+        @event = stub_model(Event)
+        @event.stub(:notifications => @notifications)
+        Event.stub(:create!).and_return(@event)
       end
+      context "user is subscribed to this type of event" do
+        before { @user.stub(:send_notification? => true) }
+        it "sends notification to user" do
+          @notifications.should_receive(:create!).with(:user => @user)
+          Event.motion_closed!(@motion, @actor)
+        end
+        it "does not send notification to user if user is event actor" do
+          @notifications.should_not_receive(:create!).with(:user => @user)
+          Event.motion_closed!(@motion, @user)
+        end
+      end
+      context "user has muted this type of event" do
+        before { @user.stub(:send_notification? => false) }
+        it "does not send notification to user" do
+          @notifications.should_not_receive(:create!).with(:user => @user)
+          Event.motion_closed!(@motion, @actor)
+        end
+        it "does send notification if user is facilitator" do
+          @notifications.should_receive(:create!).with(:user => @user)
+          @motion.stub(:author => @user)
+          Event.motion_closed!(@motion, @actor)
+        end
+      end
+    end
+  end
 
-      it "does not notify discussion author if they are the member who voted" do
-        @vote = discussion.author.votes.new(:position => "yes")
-        @vote.motion = @motion
-        @vote.save!
-        @event = Event.new_vote!(@vote)
-
-        @event.notifications.where(:user_id => discussion.author.id).
-          should_not exist
+  describe "new_vote!" do
+    context "sending notifications" do
+      before do
+        @actor = stub_model(User, :send_notification? => true)
+        @user = stub_model(User)
+        @m_author = stub_model(User, :send_notification? => true)
+        @d_author = stub_model(User, :send_notification? => true)
+        @group = stub_model(Group)
+        @discussion = stub_model(Discussion, :group => @group)
+        @motion = stub_model(Motion, :discussion => @discussion)
+        @vote = stub_model(Vote, :user => @actor, :motion => @motion,
+          :motion_author => @m_author, :discussion_author => @d_author,
+          :group_users => [@user])
+        @notifications = double 'notifications'
+        @event = stub_model(Event)
+        @event.stub(:notifications => @notifications)
+        Event.stub(:create!).and_return(@event)
+      end
+      context "user is subscribed to this type of event" do
+        before { @user.stub(:send_notification? => true) }
+        it "sends notification to user if user is motion author" do
+          @vote.stub(:motion_author => @user)
+          @notifications.should_receive(:create!).with(:user => @user)
+          Event.new_vote!(@vote)
+        end
+        it "sends notification to user if user is discussion author" do
+          @vote.stub(:discussion_author => @user)
+          @notifications.should_receive(:create!).with(:user => @user)
+          Event.new_vote!(@vote)
+        end
+        context "user is motion author and discussion author" do
+          before do
+            @vote.stub(:motion_author => @user)
+            @vote.stub(:discussion_author => @user)
+          end
+          it "only sends one notification" do
+            @notifications.should_receive(:create!).with(:user => @user).exactly(:once)
+            Event.new_vote!(@vote)
+          end
+          it "does not send notification to user if user is event actor" do
+            @vote.stub(:user => @user)
+            @notifications.should_not_receive(:create!).with(:user => @user)
+            Event.new_vote!(@vote)
+          end
+        end
+      end
+      context "user has muted this type of event" do
+        it "does not send notification to user" do
+          @vote.stub(:motion_author => @user)
+          @vote.stub(:discussion_author => @user)
+          @user.stub(:send_notification? => false)
+          @notifications.should_not_receive(:create!).with(:user => @user)
+          Event.new_vote!(@vote)
+        end
       end
     end
   end
 
   describe "motion_blocked!" do
-    let(:vote) { mock_model(Vote, :group_users => []) }
-    subject { Event.motion_blocked!(vote) }
-
-    its(:kind) { should eq("motion_blocked") }
-    its(:eventable) { should eq(vote) }
-
     context "sending notifications" do
       before do
-        @user = create(:user)
-        @motion = create(:motion)
-        @motion.group.add_member!(@user)
-        @vote = @motion.author.votes.new(:position => "block")
-        @vote.motion = @motion
-        @vote.save!
-        @event = Event.motion_blocked!(@vote)
-      end
+        @group = stub_model(Group)
+        @user = stub_model(User)
+        @m_author = stub_model(User, :send_notification? => true)
+        @actor = stub_model(User, :send_notification? => true)
+        @motion = stub_model(Motion, :group => @group)
+        @vote = stub_model(Vote, :user => @actor,
+          :group => @group,
+          :motion => @motion,
+          :group_users => [@user, @m_author, @actor], 
+          :motion_author => @m_author,
+          :discussion_author => @m_author)
 
-      it "notifies group members" do
-        @event.notifications.where(:user_id => @user.id).
-          should exist
+        @notifications = double 'notifications'
+        @event = stub_model(Event)
+        @event.stub(:notifications => @notifications)
+        Event.stub(:create!).and_return(@event)
       end
-
-      it "does not notify blocker" do
-        @event.notifications.where(:user_id => @motion.author.id).
-          should_not exist
+      context "user is subscribed to this type of event" do
+        before { @user.stub(:send_notification? => true)}
+        it "sends notification to user and author" do
+          @notifications.should_receive(:create!).with(:user => @user)
+          @notifications.should_receive(:create!).with(:user => @m_author)
+          Event.motion_blocked!(@vote)
+        end
+        it "does not send notification to user if user is event actor" do
+          @vote.stub(:user => @user)
+          @notifications.should_not_receive(:create!).with(:user => @user)
+          Event.motion_blocked!(@vote)
+        end
+      end
+      context "user has muted this type of event" do
+        it "does not send notification to user" do
+          @user.stub(:send_notification? => false)
+          @notifications.should_not_receive(:create!).with(:user => @user)
+          Event.motion_blocked!(@vote)
+        end
       end
     end
   end
@@ -272,35 +387,33 @@ describe Event do
     end
   end
 
+
   describe "comment_liked!" do
-    let(:comment_vote) { mock_model(CommentVote,
-      :user => mock_model(User), :comment_user => mock_model(User)) }
-    subject { Event.comment_liked!(comment_vote) }
-
-    its(:kind) { should eq("comment_liked") }
-    its(:eventable) { should eq(comment_vote) }
-
     context "sending notifications" do
       before do
-        @group = create(:group)
-        @user, @user2 = create(:user), create(:user)
-        discussion = create(:discussion, author: @user)
-        @group.add_member! @user2
-        @comment = discussion.add_comment @user, "hello"
+        @user = stub_model(User)
+        @actor = stub_model(User)
+        @group = stub_model(Group)
+        @discussion = stub_model(Discussion, :group => @group)
+        @comment = stub_model(Comment, :discussion => @discussion)
+        @comment_vote = stub_model(CommentVote, :comment => @comment)
+
+        @notifications = double 'notifications'
+        @event = stub_model(Event)
+        @event.stub(:notifications => @notifications)
+        Event.stub(:create!).and_return(@event)
       end
 
       it "notifies user" do
-        @comment_vote = @comment.like @user2
-        @event = Event.comment_liked! @comment_vote
-        @event.notifications.where(:user_id => @user.id).
-          should exist
+        @comment_vote.stub(:user => @actor, :comment_user => @user)
+        @notifications.should_receive(:create!).with(:user => @user)
+        Event.comment_liked!(@comment_vote)
       end
 
-      it "does not notify user when they like their own comment" do
-        @comment_vote = @comment.like @user
-        @event = Event.comment_liked! @comment_vote
-        @event.notifications.where(:user_id => @user.id).
-          should_not exist
+      it "does not notify user if user is event actor" do
+        @comment_vote.stub(:user => @user, :comment_user => @user)
+        @notifications.should_not_receive(:create!).with(:user => @user)
+        Event.comment_liked!(@comment_vote)
       end
     end
   end
