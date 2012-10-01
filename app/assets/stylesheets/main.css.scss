@@ -57,6 +57,10 @@ h5 {
   margin-bottom: 10px;
 }
 
+#new_discussion .control-label {
+  display: block;
+}
+
 .model-description { padding-bottom: 10px; }
 #show-description {
   color: $dark-grey;

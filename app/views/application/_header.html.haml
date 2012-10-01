@@ -15,7 +15,7 @@
             -#%li.group-item.all-groups
             -#  %a.selector-link{href: '/'}
             -#    = "Home"
-            - current_user.root_groups.order('name').each do |group|
+            - current_user.root_groups.each do |group|
               = render 'group_dropdown_item', user: current_user, group: group, subgroup: false
               - if group.subgroups.size > 0
                 - group.subgroups.each do |subgroup|
