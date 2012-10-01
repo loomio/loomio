@@ -113,9 +113,9 @@ class Group < ActiveRecord::Base
   end
 
   def admin_email
-    if (admins && admins.first)
+    if admins.exists?
       admins.first.email
-    elsif (creator)
+    elsif creator
       creator.email
     else
       "noreply@loom.io"
