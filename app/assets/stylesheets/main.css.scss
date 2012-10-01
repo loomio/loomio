@@ -235,10 +235,15 @@ form {
     height: 200px;
   }
 
+  /* this is a little mess that needs to be resolved*/
   input[type="checkbox"] {
     margin-top: 10px;
     margin-bottom: 10px;
     display: inline;
+  }
+
+  .checkbox input{
+    margin-top: 0px;
   }
 
   .checkbox-label {
@@ -320,6 +325,7 @@ code{
   display: inline;
   width: 80%;
 }
+
 
 ul.loomio-process-flow {
   height: 100px;
@@ -442,4 +448,3 @@ a.btn-icon:hover { color: $dark-grey; }
 .large-icon.pie-icon {
   background-image: url("pie-light-24.png");
 }
-

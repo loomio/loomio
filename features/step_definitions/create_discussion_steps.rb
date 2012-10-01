@@ -9,7 +9,7 @@ When /^fill in discussion details$/ do
 end
 
 Then /^a discussion should be created$/ do
-  Discussion.all.size.should eq(1)
+  Discussion.where(:title => "New discussion Test").should exist
 end
 
 Given /^I am viewing a discussion titled "(.*?)" in "(.*?)"$/ do |disc_title, group_name|

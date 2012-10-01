@@ -175,7 +175,13 @@ class User < ActiveRecord::Base
   end
 
   def self.get_loomio_user
-    User.where(:email => 'contact@loom.io').first
+    helper_bot = User.find_or_create_by_email('contact@loom.io')
+    unless helper_bot.persisted?
+      helper_bot.name = "Loomio Helper Bot"
+      helper_bot.password = SecureRandom.hex(16)
+      helper_bot.save
+    end
+    helper_bot
   end
 
   def update_motion_read_log(motion)
