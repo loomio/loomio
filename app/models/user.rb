@@ -224,7 +224,7 @@ class User < ActiveRecord::Base
   def update_group_last_viewed_at(group)
     membership = group_membership(group)
     if membership
-      membership.last_viewed_at = Time.now()
+      membership.group_last_viewed_at = Time.now()
       membership.save!
     end
   end

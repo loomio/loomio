@@ -58,7 +58,7 @@ class MotionsController < GroupBaseController
     resource
     @motion.close_voting!
     Event.motion_closed!(@motion, current_user)
-    redirect_to discussion_url(@motion.discussion)
+    redirect_to discussion_url(@motion.discussion, proposal: @motion)
   end
 
   def open_voting

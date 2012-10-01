@@ -74,12 +74,12 @@ class Discussion < ActiveRecord::Base
       if last_read_at.blank?
         return true if group.discussions
           .includes(:comments)
-          .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ?', id, user.id, membership.last_viewed_at)
+          .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ?', id, user.id, membership.group_last_viewed_at)
           .count > 0
       else
         return true if group.discussions
           .includes(:comments)
-          .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ? AND comments.created_at > ?', id, user.id, membership.last_viewed_at, last_read_at)
+          .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ? AND comments.created_at > ?', id, user.id, membership.group_last_viewed_at, last_read_at)
           .count > 0
       end
     end
