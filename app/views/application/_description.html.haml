@@ -12,11 +12,11 @@
           .control-group
             - class_str = 'inputError limit-250' if model_name == "group"
             = text_area_tag 'description', model.description, {id: 'description-input', class: class_str}
+            - unless model_name == "discussion"
+              .character-counter
           .save-buttons.clearfix
             = submit_tag "Save", class: 'btn btn-small run-validations', id: 'add-description-submit', :data => {:disable_with => "Saving"}
             = link_to "Cancel", "#", id: 'cancel-add-description'
-          - unless model_name == "discussion"
-            .character-counter
       - if model_name == "discussion"
         .span3
           .helper-text
