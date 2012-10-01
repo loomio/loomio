@@ -198,7 +198,7 @@ describe Discussion do
       @group.stub(:membership).with(@user).and_return(@membership)
       @group.discussions.stub_chain(:includes, :where, :count).and_return(0)
       @discussion.stub(:never_read_by).and_return(true)
-      @discussion.stub(:membership, :group_last_viewed_at).and_return(1)
+      @membership.stub(:group_last_viewed_at).and_return(1)
       @discussion.stub(:created_at).and_return(2)
       @discussion.has_activity_since_group_last_viewed?(@user).should == true
     end
