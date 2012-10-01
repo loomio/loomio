@@ -344,7 +344,7 @@ li s hard.motion-preview {
     font-size: $font-tinywiny;
     position: relative;
     bottom: 8px;
-    left: 16px;
+    z-index: 2;
   }
   .pie .activity-count {
     bottom: 1px;
@@ -352,6 +352,5 @@ li s hard.motion-preview {
   }
   .discussion-link {
     position: relative;
-    z-index: 2;
   }
 }
