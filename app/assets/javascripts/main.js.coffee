@@ -100,7 +100,7 @@ $ ->
 $ ->
   $(".group-activity").tooltip
     placement: "top"
-    title: 'There have been new comments since you last visited the group.'
+    title: 'There have been new comments since you last visited this group.'
 
 # character count for statement on discussion:show page
 pluralize_characters = (num) ->
