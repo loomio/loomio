@@ -29,6 +29,42 @@ describe Group do
     end
   end
 
+  describe "#create" do
+    context "creates a 'welcome to loomio' discussion and" do
+      before do
+        @group = create :group
+        @discussion = @group.discussions.first
+      end
+
+      it "gives it a proper title" do
+        @discussion.title.should == "Welcome and Introduction to Loomio!"
+      end
+
+      it "assigns Loomio Helper Bot as the author" do
+        @discussion.author_id.should == User.get_loomio_user.id
+      end
+
+      it "creates an initial comment" do
+        @discussion.comments.count.should == 1
+      end
+
+      it "creates a new motion" do
+        @discussion.motions.count.should == 1
+      end
+    end
+
+    it "does not create a 'welcome to loomio' discussion for subgroups" do
+      parent = create :group
+      group = create :group, :parent => parent
+      group.discussions.should be_empty
+    end
+
+    it "adds the creator as an admin" do
+      @group = create :group
+      @group.admins.should include(@group.creator)
+    end
+  end
+
   context do
     before do
       @user = create(:user)
@@ -241,8 +277,7 @@ describe Group do
       @group.add_admin!(@user)
     end
     it "has an admin email" do
-      @group.add_admin!(@user)
-      @group.admin_email.should == @user.email
+      @group.admin_email.should == @group.creator_email
     end
     it "can be administered by admin of parent" do
       @subgroup = build(:group, :parent => @group)
@@ -330,48 +365,6 @@ describe Group do
     it "should return false there is no membership" do
       @group.stub(:membership).with(@user)
       @group.activity_since_last_viewed?(@user).should == false
-    end
-  end
-
-  describe "#create_welcome_loomio" do
-    before do
-      @loomio_helper_bot = create(:user)
-      User.stub(:get_loomio_user).and_return(@loomio_helper_bot)
-      @group = create(:group)
-      @group.create_welcome_loomio
-    end
-
-    it "assigns the loomio helper bot as the author" do
-      @group.discussions.first.author_id.should == @loomio_helper_bot.id
-    end
-
-    it "creates a new discussion" do
-      @group.discussions.count.should == 1
-    end
-    it "creates a new initial comment" do
-      @group.discussions.first.comments.count.should == 1
-    end
-    it "creates a new motion with title" do
-      @group.discussions.first.motions.count.should == 1
-    end
-
-    context "in a subgroup" do
-      before do
-        @subgroup = create(:group)
-        @subgroup.parent = @group
-        @subgroup.save
-        @subgroup.create_welcome_loomio
-      end
-
-      it "creates a new discussion" do
-        @subgroup.discussions.count.should == 1
-      end
-      it "creates a new initial comment" do
-        @subgroup.discussions.first.comments.count.should == 1
-      end
-      it "creates a new motion with title" do
-        @subgroup.discussions.first.motions.count.should == 1
-      end
     end
   end
 end

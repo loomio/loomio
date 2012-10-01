@@ -200,9 +200,8 @@ describe Motion do
     before :each do
       @user1 = build(:user)
       @user1.save
-      @group = build(:group)
+      @group = build(:group, :creator => @user1)
       @group.save
-      @group.add_member! @user1
       @discussion = create(:discussion, group: @group, author: @user1)
       @motion1 = create(:motion, name: "hi",
                                 author: @user1,
