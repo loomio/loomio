@@ -22,10 +22,23 @@ When /^I fill in and submit the Request New Group Form$/ do
   find("#submit-group-request").click
 end
 
+
+When /^I fill in and submit the Request New Group Form incorrectly$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
 Then /^a new Loomio group request should be created$/ do
   GroupRequest.where(:name => "The whole world").size.should == 1
 end
 
 Then /^I should be told that my request will be reviewed shortly$/ do
   page.should have_css("body.group_requests.confirmation")
+end
+
+Then /^a new Loomio group request should not be created$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should be told what to change in the form$/ do
+  pending # express the regexp above with the code you wish you had
 end
