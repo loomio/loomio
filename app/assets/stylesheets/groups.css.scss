@@ -25,7 +25,7 @@
   }
   #privacy {
     display: inline;
-    margin: 10px;
+    margin: 0 10px;
     position: relative;
     top: 2px;
   }
@@ -35,7 +35,6 @@
     float: right;
   }
   .group-options a {
-    color: #777;
     font-size: 0.9em;
   }
   .group-options .icon-cog {
@@ -48,6 +47,13 @@
     bottom: 1px;
     padding-right: 2px;
     padding-left: 10px;
+  }
+  .privacy-dropdown {
+    display: inline;
+    width: 100px;
+  }
+  .privacy-dropdown .dropdown-menu {
+    margin-top: 8px;
   }
 }
 
@@ -113,9 +119,6 @@ body.groups.show {
     display: inline;
     line-height: 1.8em;
     margin-bottom: 5px;
-  }
-  .btn {
-    color: $mid-grey;
   }
   .edit_group .btn {
     float: right;
