@@ -7,7 +7,7 @@
       = hidden_field_tag 'id'
       .control-group
         = text_field_tag 'title', discussion.title, {id: 'discussion-input', class: 'inputError limit-150'}
-      .character-counter
+        .character-counter
       .save-buttons.clearfix
         = submit_tag "Save", class: 'btn btn-small run-validations', id: 'edit-title-submit', :data => {:disable_with => "Saving"}
         = link_to "Cancel", "#", id: 'cancel-edit-title'
