@@ -22,7 +22,7 @@
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
         .discussion-with-motion-divider.hidden
       - if @group.discussions.count == 0
-        %li.empty-list-message There are no discussions for this group
+        %li.empty-list-message This group does not have any discussions yet.
       - else
         #group-discussions.hidden
           %div{ class: "group_#{@group.id}" }
