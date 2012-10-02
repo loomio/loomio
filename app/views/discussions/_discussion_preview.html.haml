@@ -28,8 +28,8 @@
         -if discussion.current_motion
           - if discussion.current_motion_close_date
             .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_close_date)} until close"
-        - else
-          .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"
+          - else
+            .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"
 
 - if discussion.current_motion
   :coffeescript
