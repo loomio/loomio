@@ -70,12 +70,12 @@ h5 {
 }
 
 .model-description { padding-bottom: 10px; }
-#show-description {
+.description-body {
   color: $dark-grey;
   margin-bottom: 10px;
 }
-#add-edit-description {
-  form { margin-bottom: 0px }
+#description-edit-form {
+  margin-bottom: 0px;
   #description-input {
     width: 600px;
     height: 90px;
