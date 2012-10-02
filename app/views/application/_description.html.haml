@@ -1,23 +1,17 @@
-#show-description
-  .model-description.word-break= model.description
-  - if can? :edit_description, model
-    = link_to "Edit #{model_name} info", "#", id: 'edit-description'
+.description-container
+  .description-body
+    .model-description~ markdown(model.description)
+    - if can? :edit_description, model
+      = link_to "Edit #{model_name} info", "#", class: "edit-description edit-#{model_name}-description"
 
-- if can? :edit_description, model
-  #add-edit-description.hidden
-    .row
-      .span8
-        = form_tag send("edit_description_#{model_name}_path"), :remote => true do |f|
-          = hidden_field_tag 'id'
-          .control-group
-            - class_str = 'inputError limit-250' if model_name == "group"
-            = text_area_tag 'description', model.description, {id: 'description-input', class: class_str}
-            - unless model_name == "discussion"
-              .character-counter
-          .save-buttons.clearfix
-            = submit_tag "Save", class: 'btn btn-small btn-grey run-validations', id: 'add-description-submit', :data => {:disable_with => "Saving"}
-            = link_to "Cancel", "#", id: 'cancel-add-description'
-      - if model_name == "discussion"
-        .span3
-          .helper-text
-            %p This is a place for information relevant to the discussion
+  - if can? :edit_description, model
+    = form_tag send("edit_description_#{model_name}_path"), :id => "description-edit-form", :class => "hidden", :remote => true do |f|
+      = hidden_field_tag 'id'
+      .control-group
+        - class_str = 'inputError limit-250' if model_name == "group"
+        = text_area_tag 'description', model.description, {id: 'description-input', class: class_str}
+        - unless model_name == "discussion"
+          .character-counter
+      .save-buttons.clearfix
+        = submit_tag "Save", class: 'btn btn-small btn-grey run-validations', id: 'add-description-submit', :data => {:disable_with => "Saving"}
+        = link_to "Cancel", "#", id: 'cancel-add-description'
