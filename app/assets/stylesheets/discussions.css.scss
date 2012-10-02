@@ -113,6 +113,47 @@ li s hard.motion-preview {
   }
 }
 
+  /* Markdown styling */
+.comment-body, .model-description {
+  p {
+    word-wrap: break-word;
+  }
+  ul, ol, li {
+    margin-left: 10px;
+    font-size: 14px;
+    word-wrap: break-word;
+  }
+  ul, li {
+    padding: 3px 0px;
+  }
+  h1, h2, h3, h4, h5, h6, h7{
+    display: block;
+    padding: 4px 0px;
+  }
+  h1{
+    font-size: 1.4em;
+  }
+  h2{
+    font-size: 1.3em;
+  }
+  h3{
+    font-size: 1.2em;
+  }
+  h4{
+    font-size: 1.1em;
+  }
+}
+
+/** Code block padding (Stops avatars destroying indentation) */
+pre{
+  display: block;
+  margin: 10px 0px;
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+
 /*** comments, positions & proposals in History ***/
 #content-history {
   border-right: 1px solid $light-grey;
@@ -172,45 +213,6 @@ li s hard.motion-preview {
   .comment-body p{
     /* The following styles prevent unbroken strings from breaking the layout */
     word-wrap: break-word;
-  }
-
-  /* Indentation for markdown lists */
-
-  .comment-body ul, .comment-body ol, .comment-body li {
-    margin-left: 10px;
-    font-size: 14px;
-    word-wrap: break-word;
-  }
-  .comment-body ul, .comment-body li{
-    padding: 3px 0px;
-  }
-
-  .comment-body{
-    h1, h2, h3, h4, h5, h6, h7{
-      display: block;
-      padding: 4px 0px;
-    }
-    h1{
-      font-size: 1.4em;
-    }
-    h2{
-      font-size: 1.3em;
-    }
-    h3{
-      font-size: 1.2em;
-    }
-    h4{
-      font-size: 1.1em;
-    }
-  }
-
-  /** Code block padding (Stops avatars destroying indentation) */
-  pre{
-    display: block;
-    margin: 10px 0px;
-    overflow: auto;
-    word-wrap: normal;
-    white-space: pre;
   }
 
   .comment-container {
@@ -303,6 +305,7 @@ li s hard.motion-preview {
   a:hover {
     text-decoration: none;
   }
+  a.selector-link { height: 37px; }
   .vote-icon {
     float: left;
     width: 20px;

@@ -53,35 +53,56 @@ class Discussion < ActiveRecord::Base
   # MISC METHODS
   #
 
-  def number_of_comments_since_last_looked(user)
-    discussion_read_log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', id, user.id).first
-    if discussion_read_log.blank?
-      0
+  def read_log_for(user)
+    DiscussionReadLog.where('discussion_id = ? AND user_id = ?',
+      id, user.id).first
+  end
+
+  def unread_by(user)
+    membership = user.group_membership(group)
+    if membership
+      has_unread_comments = number_of_comments_since_last_looked(user) > 0
+      created_after_user_joined_group = (created_at > membership.created_at)
+      has_unread_comments ||
+        (created_after_user_joined_group && never_read_by(user))
     else
-      comments.where('comments.created_at > ?', discussion_read_log.discussion_last_viewed_at).count
+      false
     end
   end
 
-  def last_read_at(user)
-    log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', id, user.id).first
-    log.discussion_last_viewed_at unless log.blank?
+  def never_read_by(user)
+    read_log_for(user).nil?
+  end
+
+  def number_of_comments_since_last_looked(user)
+    last_viewed_at = last_looked_at_by(user)
+    number_of_comments_since(last_viewed_at)
+  end
+
+  def last_looked_at_by(user)
+    discussion_read_log = read_log_for(user)
+    if discussion_read_log.blank?
+      membership = Membership.where(:group_id => group_id,
+                                    :user_id => user.id)
+      membership.exists? ? membership.first.created_at : nil
+    else
+      discussion_read_log.discussion_last_viewed_at
+    end
+  end
+
+  def number_of_comments_since(time)
+    comments.where('comments.created_at > ?', time).count
   end
 
   def has_activity_since_group_last_viewed?(user)
     membership = group.membership(user)
-    last_read_at = last_read_at(user)
+    last_viewed_at = last_looked_at_by(user)
     if membership
-      if last_read_at.blank?
-        return true if group.discussions
-          .includes(:comments)
-          .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ?', id, user.id, membership.group_last_viewed_at)
-          .count > 0
-      else
-        return true if group.discussions
-          .includes(:comments)
-          .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ? AND comments.created_at > ?', id, user.id, membership.group_last_viewed_at, last_read_at)
-          .count > 0
-      end
+      return true if group.discussions
+        .includes(:comments)
+        .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ? AND comments.created_at > ?', id, user.id, membership.group_last_viewed_at, last_viewed_at)
+        .count > 0
+      return true if never_read_by(user) && (created_at > membership.group_last_viewed_at)
     end
     false
   end
