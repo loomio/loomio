@@ -23,6 +23,7 @@ FactoryGirl.define do
     association :author, :factory => :user
     group
     title 'Title of discussion'
+    description 'A description for this discussion'
     after(:build) do |discussion|
       discussion.group.add_member!(discussion.author)
     end

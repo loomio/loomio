@@ -113,7 +113,6 @@ class GroupsController < GroupBaseController
     @group = Group.find(params[:id])
     @description = params[:description]
     @group.description = @description
-    @markdown = false
     @group.save!
   end
 
