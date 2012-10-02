@@ -168,8 +168,8 @@ body.groups.show {
 }
 /* description panel */
 .sub-panel#group-description-panel {
-  #add-edit-description {
-    form { margin-bottom: 0px }
+  #description-edit-form {
+    margin-bottom: 0px;
     #description-input {
       width: 270px;
       height: 90px;
@@ -182,11 +182,11 @@ body.groups.show {
     .control-group { margin-bottom: 0px; }
   }
 }
-#edit-description {
+.edit-description {
   color: $mid-grey;
   text-decoration: underline;
 }
-#edit-description:hover {
+.edit-description:hover {
   color: $dark-grey;
 }
 #add-member-popup-btn {

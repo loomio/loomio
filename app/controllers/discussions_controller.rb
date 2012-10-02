@@ -85,7 +85,9 @@ class DiscussionsController < GroupBaseController
 
   def edit_description
     discussion = Discussion.find(params[:id])
-    discussion.description = params[:description]
+    @description = params[:description]
+    @markdown = true
+    discussion.description = @description
     discussion.save!
   end
 

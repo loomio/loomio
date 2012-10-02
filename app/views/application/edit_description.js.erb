@@ -1,4 +1,6 @@
 var description = $("#description-input").val()
-$(".model-description").html(description)
-$("#show-description").show()
-$("#add-edit-description").hide()
+$(".model-description").html("<%= j(@markdown ? markdown(@description) : @description) %>")
+$(".description-body").show()
+$("#description-edit-form").hide()
+// There must be a better way to do this
+$(".discussion-description-helper-text").toggle()
