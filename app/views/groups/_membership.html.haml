@@ -11,12 +11,12 @@
       %span.membership-user-name.word-break= truncate(membership.user_name_or_email, :length => name_length, :omission => '...')
     .admin-controls
       - if (can? :edit, group and current_user.is_group_admin?(group))
+        =link_to "×", membership, method: :delete, class: 'close',
+          :data => { :confirm => "Are you sure you wish to remove #{membership.user_email} from the group?" }
         - if member.is_group_admin?(group)
           =link_to "Remove admin", remove_admin_membership_path(membership), method: :post
         - else
           =link_to "Make admin", make_admin_membership_path(membership), method: :post
-        =link_to "×", membership, method: :delete, class: 'close',
-        :data => { :confirm => "Are you sure you wish to remove #{membership.user_email} from the group?" }
       - else
         - if member.is_group_admin?(group)
           = "Group Admin"

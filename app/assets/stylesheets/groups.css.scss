@@ -249,8 +249,7 @@ input#user_email{
 .dropdown#members { padding-left: 5px; }
 
 .user-name { float: left; }
-#membership-count {
-  display: inline;
+.membership-count {
   float: right;
   font-size: $font-small;
   color: white;
@@ -260,16 +259,15 @@ input#user_email{
 .membership-user-name {
   color: $mid-grey;
   float: left;
-  display: inline;
 }
 .admin-controls {
   float: right;
   width: 98px;
   text-align: right;
   font-size: $font-tiny;
-  display: inline;
   color: $mid-grey;
   .close {
+    float: right;
     padding-left: 8px;
     position: relative;
     bottom: 2px;
