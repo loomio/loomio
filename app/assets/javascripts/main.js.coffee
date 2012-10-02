@@ -96,6 +96,12 @@ $ ->
         $(".validate-motion-close-date").parent().addClass("error")
         $(".date-error-message").show()
 
+# adds bootstrap popovers to group activity indicators
+$ ->
+  $(".group-activity").tooltip
+    placement: "top"
+    title: 'There have been new comments since you last visited this group.'
+
 # character count for statement on discussion:show page
 pluralize_characters = (num) ->
   if(num == 1)
@@ -140,17 +146,18 @@ $ ->
 # Edit description
 $ ->
   if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
-    $("#edit-description").click((event) ->
-      description_height = $(this).parent().find(".model-description").height()
-      $("#show-description").toggle()
-      $("#add-edit-description").toggle()
+    $(".edit-description").click((event) ->
+      container = $(this).parents(".description-container")
+      description_height = container.find(".model-description").height()
+      container.find(".description-body").toggle()
+      container.find("#description-edit-form").toggle()
       if description_height > 90
-        $('#description-input').height(description_height)
+        container.find('#description-input').height(description_height)
       event.preventDefault()
     )
     $("#cancel-add-description").click((event) ->
-      $("#add-edit-description").toggle()
-      $("#show-description").toggle()
+      $("#description-edit-form").toggle()
+      $(".description-body").toggle()
       event.preventDefault()
     )
 

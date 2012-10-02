@@ -123,41 +123,58 @@ describe Discussion do
   end
 
   describe "number_of_comments_since_last_looked(user)" do
-    before do
-      @user = create(:user)
-      @discussion = create(:discussion, author: @user)
-      @discussion_read_log = mock_model(DiscussionReadLog)
-      DiscussionReadLog.stub_chain(:where, :first).and_return(@discussion_read_log)
-    end
-    it "should return 0 if no log exists" do
-      @discussion_read_log.stub(:nil?).and_return(true)
-      @discussion.number_of_comments_since_last_looked(@user).should == 0
-    end
-    it "should return the number of comments since the discussion was last viewed" do
-      @discussion_read_log.stub(:nil?).and_return(false)
-      @discussion.comments.stub_chain(:where, :count).and_return(5)
-      @discussion.number_of_comments_since_last_looked(@user).should == 5
+    it "should return the number of comments since user last read the discussion" do
+      user = stub_model(User)
+      discussion = build :discussion
+
+      discussion.should_receive(:last_looked_at_by).
+                 with(user).
+                 and_return("12-34-56")
+      discussion.should_receive(:number_of_comments_since).
+          with("12-34-56").and_return(5)
+
+      discussion.number_of_comments_since_last_looked(user).should == 5
     end
   end
 
-  describe "last_read_at(user)" do
+  describe "last_looked_at_by(user)" do
     before do
-      @user = create(:user)
-      @discussion = create(:discussion, author: @user)
+      @user = stub_model(User)
+      @discussion = build :discussion
       @discussion_read_log = mock_model(DiscussionReadLog)
-      DiscussionReadLog.stub_chain(:where, :first).and_return(@discussion_read_log)
-
+      @discussion.stub(:read_log_for).with(@user).
+                  and_return(@discussion_read_log)
     end
-    it "should return nil if no log exists" do
-      @discussion_read_log.stub(:nil?).and_return(true)
-      @discussion.last_read_at(@user).should == nil
-    end
-    it "should return when user last looked at the discussion if log exists" do
-      last_viewed = Time.now()
-      @discussion_read_log.stub(:nil?).and_return(false)
-      @discussion_read_log.stub(:discussion_last_viewed_at).and_return(last_viewed)
-      @discussion.last_read_at(@user).should == last_viewed
+    context "when user is a member" do
+      context "and has not read the discussion" do
+        it "should return the date the user joined the group" do
+          @discussion_read_log.stub(:blank?).and_return(true)
+          query_results = stub(:exists? => true)
 
+          Membership.stub(:where => query_results)
+          query_results.stub_chain(:first, :created_at).
+              and_return("12-34-56")
+          @discussion.last_looked_at_by(@user).should == "12-34-56"
+        end
+      end
+      context "and has read the discussion" do
+        it "should return the date the discussion was last viewed" do
+          @discussion_read_log.stub(:blank?).and_return(false)
+
+          @discussion_read_log.should_receive(:discussion_last_viewed_at).
+                               and_return("54-32-10")
+          @discussion.last_looked_at_by(@user).should == "54-32-10"
+        end
+      end
+    end
+    context "when user is not a member" do
+      it "should return nil" do
+        @discussion_read_log.stub(:blank?).and_return(true)
+
+        Membership.stub(:where, :first).
+                   and_return(stub(:exists? => false))
+        @discussion.last_looked_at_by(@user).should == nil
+      end
     end
   end
 
@@ -172,14 +189,23 @@ describe Discussion do
       @group.stub(:membership).with(@user)
       @discussion.has_activity_since_group_last_viewed?(@user).should == false
     end
-    it "returns true if the discussion had activity since user last viewed their group" do
+    it "returns true if the discussion had comments since user last viewed their group" do
       @group.stub(:membership).with(@user).and_return(@membership)
       @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
+      @discussion.has_activity_since_group_last_viewed?(@user).should == true
+    end
+    it "returns true if the discussion is new since user last viewed their group" do
+      @group.stub(:membership).with(@user).and_return(@membership)
+      @group.discussions.stub_chain(:includes, :where, :count).and_return(0)
+      @discussion.stub(:never_read_by).and_return(true)
+      @membership.stub(:group_last_viewed_at).and_return(1)
+      @discussion.stub(:created_at).and_return(2)
       @discussion.has_activity_since_group_last_viewed?(@user).should == true
     end
     it "returns false if the discussion had no activity since user last viewed their group" do
       @group.stub(:membership).with(@user).and_return(@membership)
       @group.discussions.stub_chain(:includes, :where, :count).and_return(0)
+      @discussion.stub(:never_read_by).and_return(false)
       @discussion.has_activity_since_group_last_viewed?(@user).should == false
     end
   end

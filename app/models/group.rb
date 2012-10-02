@@ -130,15 +130,27 @@ class Group < ActiveRecord::Base
   def activity_since_last_viewed?(user)
     membership = membership(user)
     if membership
-      return false unless discussions
+      new_comments_since_last_looked_at_group = discussions
         .includes(:comments)
         .where('comments.user_id <> ? AND comments.created_at > ?' , user.id, membership.group_last_viewed_at)
         .count > 0
-      return false unless discussions
+      new_comments_since_last_looked_at_discussions = discussions
         .joins('INNER JOIN discussion_read_logs ON discussions.id = discussion_read_logs.discussion_id')
         .where('discussion_read_logs.user_id = ? AND discussions.last_comment_at > discussion_read_logs.discussion_last_viewed_at',  user.id)
         .count > 0
-      return true
+      unread_comments = new_comments_since_last_looked_at_group &&
+                        new_comments_since_last_looked_at_discussions
+
+      # TODO: Refactor this to an active record query and write tests for it
+      unread_new_discussions = Discussion.find_by_sql(["
+        (SELECT discussions.id FROM discussions WHERE group_id = ? AND discussions.created_at > ?)
+        EXCEPT
+        (SELECT discussions.id FROM discussions
+         INNER JOIN discussion_read_logs ON discussions.id = discussion_read_logs.discussion_id
+         WHERE discussions.group_id = ? AND discussion_read_logs.user_id = ?);",
+        id, membership.group_last_viewed_at, id, user.id])
+
+      return true if unread_comments || unread_new_discussions.present?
     end
     false
   end
