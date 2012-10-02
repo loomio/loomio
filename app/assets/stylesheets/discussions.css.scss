@@ -215,7 +215,8 @@ li s hard.motion-preview {
   }
 
   .comment-container {
-    width: 385px;
+    width: 388px;
+    float: left;
     margin-left: 45px;
     padding-bottom: 5px;
     border-bottom: 1px solid $light-grey;
@@ -223,7 +224,7 @@ li s hard.motion-preview {
 
   .comment-container.with-avatar {
     margin-left: 10px;
-    float: right;
+    float: left;
     /*padding-right: 10px;*/
   }
 
@@ -235,7 +236,7 @@ li s hard.motion-preview {
   }
 
   .comment.position {
-    width: 380px;
+    width: 388px;
   }
   .comment img {
     float: left;
