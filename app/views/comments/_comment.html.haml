@@ -1,11 +1,5 @@
 - likes = comment.likes
-%div.comment{id: "comment-#{comment.id}"}
-  .medium-user-avatar.avatar-canvas
-    - if comment.user.avatar_url
-      = image_tag comment.user.avatar_url(:medium)
-    - else
-      %span.medium-user-initials.initials-decoration
-        = comment.user.avatar_initials
+.comment{id: "comment-#{comment.id}"}
   .comment-container.with-avatar
     .comment-username
       =link_to comment.user_name, "#", "title" => comment.user_name,
@@ -32,3 +26,9 @@
         - else
           - likers = likers[0]
         = "Liked by #{likers}".html_safe
+  .comment-avatar.medium-user-avatar.avatar-canvas
+    - if comment.user.avatar_url
+      = image_tag comment.user.avatar_url(:medium)
+    - else
+      %span.medium-user-initials.initials-decoration
+        = comment.user.avatar_initials

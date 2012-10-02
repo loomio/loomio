@@ -151,7 +151,7 @@ li s hard.motion-preview {
 
   ul.history-list {
     list-style: none;
-    margin: 0 0 3px 0;
+    margin: 0 15px 3px 0;
   }
   ul.history-list .divider {
     margin-left: 45px;
@@ -215,14 +215,27 @@ li s hard.motion-preview {
   }
 
   .comment-container {
-    display: block;
-    width: 390px;
+    width: 385px;
     margin-left: 45px;
     padding-bottom: 5px;
     border-bottom: 1px solid $light-grey;
   }
+
+  .comment-container.with-avatar {
+    margin-left: 10px;
+    float: right;
+    /*padding-right: 10px;*/
+  }
+
+  .comment-avatar {
+    height: 35px;
+    margin-right: 0px;
+    /*position: relative;*/
+    /*bottom: 20px;*/
+  }
+
   .comment.position {
-    width: 400px;
+    width: 380px;
   }
   .comment img {
     float: left;
