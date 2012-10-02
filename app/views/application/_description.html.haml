@@ -15,7 +15,7 @@
             - unless model_name == "discussion"
               .character-counter
           .save-buttons.clearfix
-            = submit_tag "Save", class: 'btn btn-small run-validations', id: 'add-description-submit', :data => {:disable_with => "Saving"}
+            = submit_tag "Save", class: 'btn btn-small btn-grey run-validations', id: 'add-description-submit', :data => {:disable_with => "Saving"}
             = link_to "Cancel", "#", id: 'cancel-add-description'
       - if model_name == "discussion"
         .span3
