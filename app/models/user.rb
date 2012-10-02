@@ -212,7 +212,7 @@ class User < ActiveRecord::Base
   end
 
   def votes_since_last_read(discussion)
-    last_read_at = discussion.last_read_at(self)
+    last_read_at = discussion.last_looked_at_by(self)
     discussion.current_motion.votes.where('created_at > ?', last_read_at)
   end
 
