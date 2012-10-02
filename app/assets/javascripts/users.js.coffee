@@ -46,9 +46,11 @@ $ ->
 
   $(document).click((e)->
     if(isVisible & clickedAway)
-      toggle_popover(false, $('.comment-user-name'))
-      isVisible = false
-      clickedAway = false
+      target = e.target
+      if !$(target).closest(".popover").length
+        toggle_popover(false, $('.comment-user-name'))
+        isVisible = false
+        clickedAway = false
     else
       clickedAway = true
   )
