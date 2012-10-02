@@ -9,6 +9,7 @@ ul, ol, li {
   margin: 0;
   padding: 0;
 }
+.dropdown-menu a { color: #555; }
 
 html { height: 100%; }
 
@@ -387,7 +388,7 @@ ul.loomio-process-flow {
     width: 32px;
   }
 }
-
+.btn-grey { color: $mid-grey; }
 .btn-icon {
   width: 170px;
   text-align: left;
