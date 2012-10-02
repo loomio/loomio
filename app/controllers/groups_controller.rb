@@ -111,7 +111,9 @@ class GroupsController < GroupBaseController
 
   def edit_description
     @group = Group.find(params[:id])
-    @group.description = params[:description]
+    @description = params[:description]
+    @group.description = @description
+    @markdown = false
     @group.save!
   end
 
