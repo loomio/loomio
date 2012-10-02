@@ -24,28 +24,29 @@ $ ->
   )
   $('.comment-user-name').click((e)->
     if isVisible
-      console.log("isVisible")
-      if not $(this).hasClass('popover-visible')
-        console.log("there is a popup visible and but not this one")
-        $('.comment-user-name').popover('hide')
-        $('.comment-user-name').removeClass('popover-visible')
-        console.log("remove all popups1")
-        $(this).popover('toggle')
-        console.log("show this popup and add class visible")
-        $(this).addClass('popover-visible')
-        isVisible = true
-        clickedAway = false
-      else
-        console.log("clicked popup was visible")
-        $('.comment-user-name').popover('hide')
-        $('.comment-user-name').removeClass('popover-visible')
-        console.log("remove all popups2")
-        isVisible = false
-        clickedAway = false 
+      $(this).addClass("selected")
+      $('.comment-user-name').each ->
+        if $(this).hasClass("selected")
+          if $(this).hasClass("popover-visible")
+            toggle_popover(false, $(this))
+            #$(this).popover('hide')
+            #$(this).removeClass('popover-visible')
+            isVisible = false
+          else
+            toggle_popover(true, $(this))
+            #$(this).popover('show')
+            #$(this).addClass('popover-visible')
+            isVisible = true
+        else
+          toggle_popover(false, $(this))
+          #$(this).popover('hide')
+          #$(this).removeClass('popover-visible')
+      $(this).removeClass("selected")
+      clickedAway = false
     else
-      console.log("non-visible, showing popover")
-      $(this).popover('show')
-      $(this).addClass('popover-visible')
+      #$(this).popover('show')
+      #$(this).addClass('popover-visible')
+      toggle_popover(true, $(this))
       clickedAway = false
       isVisible = true
     e.preventDefault()
@@ -53,13 +54,21 @@ $ ->
 
   $(document).click((e)->
     if(isVisible & clickedAway)
-      console.log("visible and clickedAway - hiding popover")
+      toggle_popover(false, $('.comment-user-name'))
       #$('.comment-user-name').popover('hide')
       #$('.comment-user-name').removeClass('popover-visible')
       isVisible = false
       clickedAway = false
     else
-      console.log("clickedAway = true")
-      console.log("-------------------")
       clickedAway = true
   )
+
+  toggle_popover = (show, elem) ->
+    #elem.each ->
+    if show
+      elem.popover('show')
+      elem.addClass('popover-visible')
+    else
+      elem.popover('hide')
+      elem.removeClass('popover-visible')
+
