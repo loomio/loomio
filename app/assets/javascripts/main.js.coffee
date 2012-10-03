@@ -1,5 +1,11 @@
 window.Application ||= {}
 
+#*** CHECK HTML5 SUPPORT ***
+canvasSupported = !!window.HTMLCanvasElement
+Application.html5 = exports ? this
+Application.html5.supported = true if canvasSupported
+
+
 Application.convertUtcToRelativeTime = ->
   if $(".utc-time").length > 0
     today = new Date()
@@ -38,6 +44,28 @@ Application.timestampToDateObject = (timestamp)->
   date.setMinutes(timestamp.substring(14,16))
   return date
 
+Application.getNextURL = (button_url) ->
+  current = document.URL
+  newURL = current
+  lastBackslash = current.lastIndexOf("/")
+  #checks if main url has backslash in the way
+  if lastBackslash == current.length-1
+    current = current.substr(0, lastBackslash)
+  #if current is already on a page number remove current page number
+  if current.lastIndexOf("?") > -1
+    newURL = current.split("?")[0]
+  if button_url.lastIndexOf("?") > -1
+    page_number = button_url.split("?")
+    newURL = newURL + "?" + page_number[1]
+  newURL
+
+Application.getPageParam = () ->
+  url = $(location).attr("href")
+  if url.lastIndexOf("?") > -1
+    page = "?" + url.split("?")[1]
+    page
+  else
+    ""
 
 $ ->
   $(".dismiss-help-notice").click((event)->
