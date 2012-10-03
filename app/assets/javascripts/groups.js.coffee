@@ -26,20 +26,6 @@ $ ->
 
 #*** ajax for discussions on group page ***
 $ ->
-  if $("body.groups.show").length > 0 && $('#group-discussions').html() != null
-    $(document).on('click', '#group-closed-motions .pagination a', (e)->
-      unless $(this).parent().hasClass("gap")
-        $("#closed-motion-list").hide()
-        $("#closed-motions-loading").show()
-        $('#group-closed-motions').load($(this).attr('href'), ->
-          $("#closed-motion-list").show()
-          $("#closed-motions-loading").hide()
-        )
-        e.preventDefault()
-    )
-# discussions
-
-$ ->
   if $("body.groups.show").length > 0
     idStr = new Array
     idStr = $('#group-discussions').children().attr('class').split('_')
@@ -53,7 +39,7 @@ $ ->
     $("#all-discussions-loading").addClass('hidden')
 
 $ ->
-  if $("body.groups.show").length > 0
+  if $("body.groups.show").length > 0 && $('#group-discussions').html() != null
     $(document).on('click', '#group-discussions .pagination a', (e)->
       unless $(this).parent().hasClass("gap")
         if Application.html5.supported
