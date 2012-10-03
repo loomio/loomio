@@ -18,13 +18,11 @@
             .character-counter
           .save-button.clearfix
             = f.submit "Save", class: 'btn btn-mini run-validations', id: 'add-outcome-submit'
-  #outcome-display
-    .statement-display.well
-      .clearfix
-        - if can? :edit_outcome, motion
-          = button_to "Edit", "#", class: 'btn btn-mini outcome-edit-button', id: 'edit-outcome', :method => "get"
-        .outcome-label Outcome
-        - if motion.outcome.blank?
-          %p.no-outcome= "No outcome has been specified for this proposal"
-        - else
+  - if !motion.outcome.blank?
+    #outcome-display
+      .statement-display.well
+        .clearfix
+          - if can? :edit_outcome, motion
+            = button_to "Edit", "#", class: 'btn btn-mini outcome-edit-button', id: 'edit-outcome', :method => "get"
+          .outcome-label Outcome
           %p= motion.outcome
