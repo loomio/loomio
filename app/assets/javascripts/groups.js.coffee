@@ -26,7 +26,7 @@ $ ->
 
 #*** ajax for discussions on group page ***
 $ ->
-  if $("body.groups.show").length > 0
+  if $("body.groups.show").length > 0 && $('#group-discussions').html() != null
     idStr = new Array
     idStr = $('#group-discussions').children().attr('class').split('_')
     params = Application.getPageParam()
@@ -39,7 +39,7 @@ $ ->
     $("#all-discussions-loading").addClass('hidden')
 
 $ ->
-  if $("body.groups.show").length > 0 && $('#group-discussions').html() != null
+  if $("body.groups.show").length > 0
     $(document).on('click', '#group-discussions .pagination a', (e)->
       unless $(this).parent().hasClass("gap")
         if Application.html5.supported
