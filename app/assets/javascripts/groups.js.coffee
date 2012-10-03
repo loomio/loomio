@@ -64,7 +64,17 @@ $ ->
           Application.convertUtcToRelativeTime()
           $("#discussion-list").removeClass('hidden')
           $("#discussions-loading").addClass('hidden')
-          activate_tool_tips()
+          activate_discussions_tooltips()
         )
         e.preventDefault()
     )
+
+# adds bootstrap popovers to group activity indicators
+activate_discussions_tooltips = () ->
+  $(".unread-group-activity").tooltip
+    placement: "top"
+    title: 'There have been new comments on this discussion since you last visited the group.'
+
+$ ->
+  $("#privacy").tooltip
+    placement: "top"
