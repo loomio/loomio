@@ -66,7 +66,7 @@ class UsersController < BaseController
   def mentions
     puts(params)
     respond_to do |format|
-      format.json { render :json => ["james", "sam"].to_json }
+      format.json { render :json => "james".to_json }
     end
   end
 end

@@ -100,13 +100,6 @@ describe Motion do
     @motion.discussion.should_not be_nil
   end
 
-  it "can update discussion_activity" do
-    @motion = create(:motion)
-    @motion.discussion.activity = 3
-    @motion.update_discussion_activity
-    @motion.discussion.activity.should == 4
-  end
-
   it "cannot have an outcome if voting open" do
     @motion = create(:motion)
     @motion.outcome.blank?.should == true
@@ -207,9 +200,8 @@ describe Motion do
     before :each do
       @user1 = build(:user)
       @user1.save
-      @group = build(:group)
+      @group = build(:group, :creator => @user1)
       @group.save
-      @group.add_member! @user1
       @discussion = create(:discussion, group: @group, author: @user1)
       @motion1 = create(:motion, name: "hi",
                                 author: @user1,

@@ -96,6 +96,12 @@ $ ->
         $(".validate-motion-close-date").parent().addClass("error")
         $(".date-error-message").show()
 
+# adds bootstrap popovers to group activity indicators
+$ ->
+  $(".group-activity").tooltip
+    placement: "top"
+    title: 'There have been new comments since you last visited this group.'
+
 # character count for statement on discussion:show page
 pluralize_characters = (num) ->
   if(num == 1)
@@ -106,29 +112,29 @@ pluralize_characters = (num) ->
 # display charcaters left
 display_count = (num, object) ->
   if(num >= 0)
-    $(".character-counter").text(pluralize_characters(num) + " left")
+    object.parent().find(".character-counter").text(pluralize_characters(num) + " left")
     object.parent().removeClass("error")
   else
     num = num * (-1)
-    $(".character-counter").text(pluralize_characters(num) + " too long")
+    object.parent().find(".character-counter").text(pluralize_characters(num) + " too long")
     object.parent().addClass("error")
 
 # character count for 250 characters max
 $ ->
   $(".limit-250").keyup(() ->
     $(".error-message").hide()
-    chars = $(".limit-250").val().length
+    chars = $(this).val().length
     left = 250 - chars
-    display_count(left, $(".limit-250"))
+    display_count(left, $(this))
   )
 
  #character count for 150 characters max
 $ ->
   $(".limit-150").keyup(() ->
     $(".error-message").hide()
-    chars = $(".limit-150").val().length
+    chars = $(this).val().length
     left = 150 - chars
-    display_count(left, $(".limit-150"))
+    display_count(left, $(this))
   )
 
 #*** check if discussion with motions list is empty ***
@@ -140,17 +146,18 @@ $ ->
 # Edit description
 $ ->
   if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
-    $("#edit-description").click((event) ->
-      description_height = $(this).parent().find(".model-description").height()
-      $("#show-description").toggle()
-      $("#add-edit-description").toggle()
+    $(".edit-description").click((event) ->
+      container = $(this).parents(".description-container")
+      description_height = container.find(".model-description").height()
+      container.find(".description-body").toggle()
+      container.find("#description-edit-form").toggle()
       if description_height > 90
-        $('#description-input').height(description_height)
+        container.find('#description-input').height(description_height)
       event.preventDefault()
     )
     $("#cancel-add-description").click((event) ->
-      $("#add-edit-description").toggle()
-      $("#show-description").toggle()
+      $("#description-edit-form").toggle()
+      $(".description-body").toggle()
       event.preventDefault()
     )
 
