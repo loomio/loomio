@@ -27,4 +27,3 @@
 //= require notifications
 //= require dashboard
 //= require votes
-//= require tool-tips

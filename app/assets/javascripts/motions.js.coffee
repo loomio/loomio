@@ -71,6 +71,11 @@ days_between = (local, current) ->
     return days_passed + " day from now"
   return days_passed + " days from now"
 
+# adds bootstrap popovers to vote buttons
+$ ->
+  $(".position").popover
+    placement: "top"
+
 # disable links on usernames
 $ ->
   $('.comment-username a, .member-name a').click((event) ->

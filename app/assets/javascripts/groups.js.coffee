@@ -50,9 +50,14 @@ $ ->
         )
         e.preventDefault()
     )
-    
+
 # adds bootstrap popovers to group activity indicators
 activate_tool_tips = () ->
   $(".unread-group-activity").tooltip
     placement: "top"
     title: 'There have been new comments on this discussion since you last visited the group.'
+
+# adds bootstrap popovers to group privacy indicators
+activate_tool_tips = () ->
+  $("#privacy").tooltip
+    placement: "top"
