@@ -25,7 +25,7 @@
   }
   #privacy {
     display: inline;
-    margin: 10px;
+    margin: 0 10px;
     position: relative;
     top: 2px;
   }
@@ -35,7 +35,6 @@
     float: right;
   }
   .group-options a {
-    color: #777;
     font-size: 0.9em;
   }
   .group-options .icon-cog {
@@ -48,6 +47,13 @@
     bottom: 1px;
     padding-right: 2px;
     padding-left: 10px;
+  }
+  .privacy-dropdown {
+    display: inline;
+    width: 100px;
+  }
+  .privacy-dropdown .dropdown-menu {
+    margin-top: 8px;
   }
 }
 
@@ -114,23 +120,20 @@ body.groups.show {
     line-height: 1.8em;
     margin-bottom: 5px;
   }
-  .btn {
-    color: $mid-grey;
-  }
   .edit_group .btn {
     float: right;
   }
-  ul {
+  ul.group-links, ul#users-list, ul#dashboard-groups-list {
     border-top: none;
     list-style: none;
     margin: 0 0 8px 0;
-  }
-  li {
-    line-height: 1.6em;
-    background-color: $sub-selector-panel;
-    a {
-      color: $mid-grey;
-      text-decoration: underline;
+    li {
+      line-height: 1.6em;
+      background-color: $sub-selector-panel;
+      a {
+        color: $mid-grey;
+        text-decoration: underline;
+      }
     }
   }
   .dropdown { float: right; }
@@ -165,8 +168,8 @@ body.groups.show {
 }
 /* description panel */
 .sub-panel#group-description-panel {
-  #add-edit-description {
-    form { margin-bottom: 0px }
+  #description-edit-form {
+    margin-bottom: 0px;
     #description-input {
       width: 270px;
       height: 90px;
@@ -179,11 +182,11 @@ body.groups.show {
     .control-group { margin-bottom: 0px; }
   }
 }
-#edit-description {
+.edit-description {
   color: $mid-grey;
   text-decoration: underline;
 }
-#edit-description:hover {
+.edit-description:hover {
   color: $dark-grey;
 }
 #add-member-popup-btn {
@@ -260,7 +263,7 @@ input#user_email{
   color: $mid-grey;
   float: left;
 }
-.admin-controls {
+#users-list .admin-controls {
   float: right;
   width: 98px;
   text-align: right;
@@ -275,12 +278,12 @@ input#user_email{
     opacity: 0.6;
     text-decoration: none;
   }
+  a:hover {
+    color: $dark-grey;
+  }
   .close:hover {
     color: black;
   }
-}
-.admin-controls a:hover {
-  color: $dark-grey;
 }
 
 /**** Private group form ****/

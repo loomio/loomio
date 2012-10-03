@@ -4,11 +4,11 @@
     = f.input :name, :label => "What is the name of your group?"
     = f.input :description, :placeholder => "Tell us a bit about your group, and why you'd like to use Loomio"
     = f.input :admin_email, :label => "Your email"
-    = f.input :expected_size, :label => "Approximate number of people involved"    
+    = f.input :expected_size, :label => "Approximate number of people involved"
     %hr
-    %p Loomio needs to be financially self-sufficient, so most learning partner groups are making a regular contribution in return for use of the tool. On the other hand, we don't want money to be a barrier to entry for groups without a budget who are doing great stuff in their communities. Let us know if this sounds like you: 
+    %p Loomio needs to be financially self-sufficient, so most learning partner groups are making a regular contribution in return for use of the tool. On the other hand, we don't want money to be a barrier to entry for groups without a budget who are doing great stuff in their communities. Let us know if this sounds like you:
     = f.input :cannot_contribute, :label => "&nbsp;", :inline_label => "Our group is not in a position to contribute financially"
 
   .modal-footer
     .controls
-      = f.button :submit, :value => "Request new group", :class => "btn-primary", id: "submit-group-request"
+      = f.button :submit, :value => "Request new group", :class => "btn-info", id: "submit-group-request"
