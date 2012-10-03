@@ -7,6 +7,7 @@ Given /^I am an existing Loomio user$/ do
 end
 
 Given /^I am logged in$/ do
+  @user ||= FactoryGirl.create :user
   login @user.email, "password"
 end
 

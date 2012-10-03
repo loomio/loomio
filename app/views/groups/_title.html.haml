@@ -4,8 +4,13 @@
       #page-title= link_to "Home", "/"
       = content_tag :span, "\u25B6", class: 'name-separator'
       = group.fancy_link
-    #privacy{:class => group.viewable_by.to_s}
-      =image_tag("privicon_"+group.viewable_by.to_s+".png", title: "Privacy: '"+group.viewable_by.to_s+"' can see this group.", alt: group.viewable_by.to_s)
+    .dropdown.privacy-dropdown
+      %a.dropdown-toggle{ :href => "#", :id => 'privacy', 'data-toggle' => 'dropdown',  "data-title" => "Privacy: '"+group.viewable_by.to_s+"' can see this group." }
+        = image_tag("privicon_"+group.viewable_by.to_s+".png", alt: group.viewable_by.to_s)
+      - if can? :edit, group
+        %ul.dropdown-menu.pull-left
+          %li= link_to "Edit group settings", edit_group_path(group)
+
     - if params[:controller] == 'groups' && params[:action] == 'show'
       - can_edit = can? :edit, group
       - can_leave = group.users_include? current_user
@@ -13,7 +18,7 @@
       - can_email = can? :email_members, group
       - if can_edit || can_leave
         .dropdown.btn-group.group-options
-          %a.btn.dropdown-toggle{ :href => "#", 'data-toggle' => 'dropdown' }
+          %a.btn.btn-grey.dropdown-toggle{ :href => "#", 'data-toggle' => 'dropdown' }
             %i.icon-cog
             Options
             = image_tag("dropdown.png", title:'Options', alt:'Options', class: "options-dropdown-icon")

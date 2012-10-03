@@ -17,7 +17,11 @@
       = render 'title', discussion: @discussion
       #discussion-panel-content
         #discussion-context
-          =render '/application/description', model: @discussion, model_name: "discussion"
+          .row
+            .span8
+              =render '/application/description', model: @discussion, model_name: "discussion"
+            .span3.helper-text.discussion-description-helper-text.hidden
+              %p This is a place for information relevant to the discussion
         .row
           .span6#content-history
             .large-icon.discussion-icon.enabled-icon

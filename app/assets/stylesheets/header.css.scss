@@ -39,7 +39,6 @@ li.nav-item {
   .caret {
     border-top: 4px solid $light-grey;
     opacity: 1;
-    /*margin-top: 11px;*/
   }
 }
 li.nav-item a.nav-logo-link {
@@ -112,7 +111,10 @@ li#groups ul.dropdown-menu {
 li.group-item {
   background-color: white;
 }
-
+li.group-item.sub-group a {
+  margin-left: 20px;
+  font-size: $font-small;
+}
 li.group-item.all-groups {
   padding: 0 0 2px 0px;
   border-bottom: 1px solid $light-grey;

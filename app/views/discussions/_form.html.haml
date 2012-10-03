@@ -1,7 +1,7 @@
 = form_for(discussion) do |f|
   .modal-body
     .row
-      .span6
+      .span5
         - if params[:controller] == 'dashboard'
           .control-group
             = f.label :group_id, "Group", {class: "control-label", for: "validate-presence"}
@@ -19,5 +19,5 @@
           .presence-error-message Please fill in some info on the discussion
           = f.text_area :description, :placeholder => "Give enough context for your group to have a well-informed discussion", class: "validate-presence"
   .modal-footer
-    = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
-    = f.submit "Start", class: "btn btn-primary run-validations", id: "discussion-submit", :data => { :disable_with => "Starting" }
+    = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
+    = f.submit "Start", class: "btn btn-info run-validations", id: "discussion-submit", :data => { :disable_with => "Starting" }

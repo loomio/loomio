@@ -11,16 +11,16 @@ module DiscussionsHelper
     end
   end
 
-  def css_class_unread_discussion_activity_for(discussion, user)
+  def css_class_unread_discussion_activity_for(page_group, discussion, user)
     css_class = "discussion-preview"
-    css_class += " showing-group" unless discussion.group.parent.nil?
-    css_class += " unread" if user && discussion.number_of_comments_since_last_looked(user) > 0
+    css_class += " showing-group" if (not discussion.group.parent.nil?) && (page_group && (page_group.parent.nil?))
+    css_class += " unread" if user_signed_in? && discussion.unread_by(user)
     css_class
   end
 
   def css_class_unread_group_activity_for(discussion, user)
     css_class = "group-activity-indicator"
-    css_class += " unread-group-activity" if (not signed_out?) && params[:group_id] && discussion.has_activity_since_group_last_viewed?(user)
+    css_class += " unread-group-activity" if user_signed_in? && params[:group_id] && discussion.has_activity_since_group_last_viewed?(user)
     css_class
   end
 

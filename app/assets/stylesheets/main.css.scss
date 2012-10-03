@@ -9,6 +9,7 @@ ul, ol, li {
   margin: 0;
   padding: 0;
 }
+.dropdown-menu a { color: #555; }
 
 html { height: 100%; }
 
@@ -69,12 +70,12 @@ h5 {
 }
 
 .model-description { padding-bottom: 10px; }
-#show-description {
+.description-body {
   color: $dark-grey;
   margin-bottom: 10px;
 }
-#add-edit-description {
-  form { margin-bottom: 0px }
+#description-edit-form {
+  margin-bottom: 0px;
   #description-input {
     width: 600px;
     height: 90px;
@@ -387,7 +388,7 @@ ul.loomio-process-flow {
     width: 32px;
   }
 }
-
+.btn-grey { color: $mid-grey; }
 .btn-icon {
   width: 170px;
   text-align: left;
