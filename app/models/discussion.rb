@@ -102,7 +102,7 @@ class Discussion < ActiveRecord::Base
         .includes(:comments)
         .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ? AND comments.created_at > ?', id, user.id, membership.group_last_viewed_at, last_viewed_at)
         .count > 0
-        return true if never_read_by(user) && (created_at > membership.group_last_viewed_at)
+      return true if never_read_by(user) && (created_at > membership.group_last_viewed_at)
     end
     false
   end
