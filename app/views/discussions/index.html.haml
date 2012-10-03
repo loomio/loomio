@@ -6,3 +6,4 @@
   #discussions-loading
     %li.selector-item.loading Loading...
 = paginate @discussions, :window => 3, :remote => :true
+- current_user.update_group_last_viewed_at(@group) if current_user && params[:group_id]

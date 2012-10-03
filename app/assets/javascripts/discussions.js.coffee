@@ -11,6 +11,8 @@ $ ->
       $("#discussion-title").removeClass('hidden')
       event.preventDefault()
     )
+    $(".edit-discussion-description").click (e)->
+      $(".discussion-description-helper-text").toggle()
 
 $ ->
   $("textarea").atWho "@", (query, callback) ->

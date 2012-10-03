@@ -111,40 +111,12 @@ describe User do
 
   context do
     before do
-      group1 = create(:group)
-      group.add_member!(user)
-      group1.add_member!(user)
-      discussion1 = create :discussion, :group => group, :author => user
-      discussion2 = create :discussion, :group => group, :author => user
-      discussion3 = create :discussion, :group => group1, :author => user
-      discussion1.add_comment user, "hi"
-      discussion1.add_comment user, "bye"
-      discussion2.add_comment user, "bye"
-      motion = create(:motion, discussion: discussion2)
-      vote = user.votes.new(:position => "yes")
-      vote.motion = motion
-      vote.save
-    end
-    describe "discusssions_with_activity_count(group)" do
-      it "should return the number of discussions with comment and/or vote activity in the givin group" do
-        user.discussions_with_activity_count(group).should == 3
-      end
-    end
-    describe "activity_total" do
-      it "should return the total number of dicussions with activity over all the users groups" do
-        user.activity_total.should == 3
-      end
-    end
-  end
-
-  context do
-    before do
-      group.add_member!(user)
+      group.add_member! user
       @discussion1 = create :discussion, :group => group
-      motion1 = create(:motion, discussion: @discussion1, author: user)
+      motion1 = create :motion, discussion: @discussion1, author: user
       @discussion2 = create :discussion, :group => group
-      motion2 = create(:motion, discussion: @discussion2, author: user)
-      vote = Vote.new(position: "yes")
+      motion2 = create :motion, discussion: @discussion2, author: user
+      vote = Vote.new position: "yes"
       vote.motion = motion2
       vote.user = user
       vote.save
@@ -166,9 +138,9 @@ describe User do
 
   describe "user.discussions_sorted" do
     before do
-      @user = create(:user)
-      @group = create(:group)
-      @group.add_member!(@user)
+      @user = create :user
+      @group = create :group
+      @group.add_member! @user
       @discussion1 = create :discussion, group: @group, :author => @user
     end
     it "returns a list of discussions sorted by last_comment_at" do
@@ -242,8 +214,7 @@ describe User do
   end
 
   it "can update an existing motion_read_log" do
-    @group = create(:group)
-    @discussion = create :discussion, group: @group
+    @discussion = create :discussion, group: group
     @motion = create(:motion,discussion: @discussion)
     @motion.activity = 4
     user.update_motion_read_log(@motion)
@@ -254,21 +225,38 @@ describe User do
   end
 
   it "can update an existing discussion_read_log" do
-    @group = create(:group)
-    @discussion = create(:discussion, group: @group)
-    @discussion.activity = 4
+    @discussion = create :discussion, group: group
+    DiscussionReadLog.stub_chain(:where, :first)
+    @discussion_read_log = mock_model(DiscussionReadLog)
+    DiscussionReadLog.stub(:new).and_return(@discussion_read_log)
+
+    time_now = Time.now()
+    Time.stub(:now).and_return(time_now)
+
+    @discussion_read_log.stub(:save!).and_return(true)
+    @discussion_read_log.should_receive(:discussion_last_viewed_at=).with(time_now)
+    @discussion_read_log.should_receive(:user_id=).with(user.id)
+    @discussion_read_log.should_receive(:discussion_id=).with(@discussion.id)
+
     user.update_discussion_read_log(@discussion)
-    @discussion.activity = 5
-    user.discussion_activity_when_last_read(@discussion).should == 4
-    user.update_discussion_read_log(@discussion)
-    user.discussion_activity_when_last_read(@discussion).should == 5
   end
 
   it "can create a new discussion_read_log" do
-    @group = create(:group)
-    @discussion = create(:discussion, group: @group)
+    @discussion = create(:discussion, group: group)
     user.update_discussion_read_log(@discussion)
     DiscussionReadLog.count.should == 1
+  end
+
+  it "can update group last_viewed_at" do
+    membership = create :membership, group: group, user: user
+    user.stub(:group_membership).with(group).and_return(membership)
+    time_now = Time.now()
+    Time.stub(:now).and_return(time_now)
+    membership.stub(:save!).and_return(true)
+
+    membership.should_receive(:group_last_viewed_at=).with(time_now)
+
+    user.update_group_last_viewed_at(group)
   end
 
   describe "mark_notifications_as_viewed" do
@@ -421,9 +409,8 @@ describe User do
       user.email = "darkness@loom.io"
       user.password = "password"
       user.save!
-      user1 = User.new
+      user1 = User.find_or_create_by_email("contact@loom.io")
       user1.name = "loomio helper bot"
-      user1.email = "contact@loom.io"
       user1.password = "password"
       user1.save!
       user2 = User.new
@@ -432,6 +419,10 @@ describe User do
       user2.password = "password"
       user2.save!
       User.get_loomio_user.should == user1
+    end
+
+    it "creates loomio helper bot if none exists" do
+      User.get_loomio_user.email.should == "contact@loom.io"
     end
   end
 

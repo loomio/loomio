@@ -8,7 +8,7 @@
               = f.label :name, "Title", {class: "control-label", for: "inputError"}
               .presence-error-message Please fill in a proposal title
               = f.text_field :name, class: "validate-presence inputError limit-150", id: "motion-name"
-            .character-counter
+              .character-counter
             #closing-inputs
               .control-group
                 = f.label :close_date, "Closing", {class: "control-label", for: "date-input", id: "close-date-label"}
@@ -17,11 +17,9 @@
                 %span.date-error-message
                   ='Please give a future close date (The date you gave has past)'
             #description
-              .row
-                .span5
-                  = f.label :description, "Details"
-                  = f.text_area :description,
-                    placeholder: "What is your proposed course of action?"
+              = f.label :description, "Details"
+              = f.text_area :description,
+                placeholder: "What is your proposed course of action?"
         =f.submit submit_text, class: "btn submit btn-info run-validations",
           :data => { :disable_with => "Creating proposal" }
         =f.hidden_field :close_date, as: :hidden

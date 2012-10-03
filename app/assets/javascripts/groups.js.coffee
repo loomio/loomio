@@ -33,6 +33,7 @@ $ ->
       Application.convertUtcToRelativeTime()
       $("#group-discussions").removeClass('hidden')
       $("#discussions-loading").addClass('hidden')
+      activate_tool_tips()
     )
     $("#all-discussions-loading").addClass('hidden')
 $ ->
@@ -45,6 +46,18 @@ $ ->
           Application.convertUtcToRelativeTime()
           $("#discussion-list").removeClass('hidden')
           $("#discussions-loading").addClass('hidden')
+          activate_tool_tips()
         )
         e.preventDefault()
     )
+
+# adds bootstrap popovers to group activity indicators
+activate_tool_tips = () ->
+  $(".unread-group-activity").tooltip
+    placement: "top"
+    title: 'There have been new comments on this discussion since you last visited the group.'
+
+# adds bootstrap popovers to group privacy indicators
+activate_tool_tips = () ->
+  $("#privacy").tooltip
+    placement: "top"
