@@ -59,10 +59,15 @@ class Discussion < ActiveRecord::Base
   end
 
   def unread_by(user)
-    has_unread_comments = number_of_comments_since_last_looked(user) > 0
-    created_after_user_joined_group = (created_at > user.group_membership(group).created_at)
-    has_unread_comments ||
-      (created_after_user_joined_group && never_read_by(user))
+    membership = user.group_membership(group)
+    if membership
+      has_unread_comments = number_of_comments_since_last_looked(user) > 0
+      created_after_user_joined_group = (created_at > membership.created_at)
+      has_unread_comments ||
+        (created_after_user_joined_group && never_read_by(user))
+    else
+      false
+    end
   end
 
   def never_read_by(user)
