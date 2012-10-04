@@ -36,13 +36,14 @@ header {
 ul.nav-bar-list { list-style: none; }
 
 li.nav-item {
+  margin-top: 2px;
   .caret {
     border-top: 4px solid $light-grey;
     opacity: 1;
   }
 }
 li.nav-item a.nav-logo-link {
-  padding: 3px 8px 1px 8px;
+  padding: 0px 8px 1px 8px;
   display: block;
 }
 li.nav-item a.nav-link {
@@ -82,7 +83,7 @@ li.nav-item.dropdown#user {
   #header-user-image {
     border: 1px solid #555;
     position: relative;
-    bottom: 1px;
+    bottom: 5px;
     margin-right: 5px;
   }
 }
