@@ -1,6 +1,6 @@
 - likes = comment.likes
 %div.comment{id: "comment-#{comment.id}"}
-  .medium-user-avatar.avatar-canvas
+  .comment-avatar.medium-user-avatar.avatar-canvas
     - if comment.user.avatar_url
       = image_tag comment.user.avatar_url(:medium)
     - else
