@@ -16,10 +16,10 @@
     float: left;
     line-height: 1.2em;
   }
-  h1 #page-title a {
+  h1 page-title a {
     color: $dark-grey;
   }
-  #page-title {
+  .home-title {
     display: inline;
     color: $dark-grey;
   }
