@@ -1,14 +1,18 @@
 .sub-panel#groups
   %h3 Groups
-  %a.group-add-members.btn.btn-small.btn-icon{href: new_group_path}
+  %a.group-add-members.btn.btn-small.btn-icon{href: request_new_group_path}
     .small-icon.group-icon
-    .btn-text Create a group +
+    .btn-text Request new group
   %ul#dashboard-groups-list
-    - current_user.root_groups.order('name').each do |group|
+    - current_user.root_groups.each do |group|
       %li
-        = link_to group.name, group_path(group), :class => 'view_'+group.viewable_by.to_s
+        .group-link.clearfix
+          .group-link-name= link_to group.name, group_path(group), :class => 'view_'+group.viewable_by.to_s
+          .group-link-activity= render '/application/group_activity', user: current_user, group: group
         - if group.subgroups.size > 0
           - group.subgroups.each do |subgroup|
             - if (current_user && current_user.group_membership(subgroup))
               %li.sub-group
-                = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
+                .group-link.clearfix
+                  .group-link-name= link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
+                  .group-link-activity= render '/application/group_activity', user: current_user, group: subgroup

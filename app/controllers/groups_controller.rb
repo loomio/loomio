@@ -8,7 +8,6 @@ class GroupsController < GroupBaseController
     @group.creator = current_user
     if @group.save
       @group.add_admin! current_user
-      @group.create_welcome_loomio unless @group.parent
       flash[:success] = "Group created successfully."
       redirect_to @group
     else
@@ -112,7 +111,8 @@ class GroupsController < GroupBaseController
 
   def edit_description
     @group = Group.find(params[:id])
-    @group.description = params[:description]
+    @description = params[:description]
+    @group.description = @description
     @group.save!
   end
 

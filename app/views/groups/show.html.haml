@@ -1,5 +1,5 @@
 - set_title @group.name, ""
-- if current_user && @group.parent.nil? && (not current_user.has_read_group_notice?)
+- if user_signed_in? && @group.parent.nil? && (not current_user.has_read_group_notice?)
   - message = "This is the Group page for \"#{@group.full_name}\". \n\n Here you can see the discussions for this group, "
   - message += "a description and a list of the group members. "
   - message += "You can start a new topic by clicking on the 'Start a discussion' button.\n\n"
@@ -8,8 +8,9 @@
 %header
   -#= render '/application/loomio_process_flow'
   = render '/groups/title', group: @group
-  = render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
-    :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-topic'}
+  - if can? :create, @discussion
+    = render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
+      :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-topic'}
 .row
   %section.span8
     %ul.selector-list.bordered
@@ -22,7 +23,7 @@
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
         .discussion-with-motion-divider.hidden
       - if @group.discussions.count == 0
-        %li.empty-list-message There are no discussions for this group
+        %li.empty-list-message This group does not have any discussions yet.
       - else
         #group-discussions.hidden
           %div{ class: "group_#{@group.id}" }
@@ -38,5 +39,5 @@
     =render 'members', group: @group
   =render '/application/closed_motions', user: nil, group: @group
 
-- if current_user
+- if can? :create, @discussion
   =render '/discussions/new', discussion: @discussion, user_groups: nil

@@ -17,20 +17,29 @@
       = render 'title', discussion: @discussion
       #discussion-panel-content
         #discussion-context
-          =render '/application/description', model: @discussion, model_name: "discussion"
+          .row
+            .span8
+              =render '/application/description', model: @discussion, model_name: "discussion"
+            .span3.right-context
+              .helper-text.discussion-description-helper-text.hidden
+                %p This is a place for information relevant to the discussion
+              .discussion-author-info
+                = "Started #{time_ago_in_words(@discussion.created_at)} ago"
+                = "By "
+                =link_to @discussion.author.name, "#", "title" => @discussion.author.name,
+                  "data-content" => "#{render 'users/name_popover', user: @discussion.author, group: @discussion.group}",
+                  class: "user-name-link"
         .row
           .span6#content-history
-            .clearfix
-              .large-icon.discussion-icon
-              %h2.header-text Discussion
+            .large-icon.discussion-icon.enabled-icon
+            %h2.header-text Discussion
             #content-history-body
               = render 'add_comment', discussion: @discussion
               = render 'history', discussion: @discussion, history: @discussion.history
 
           .span6#content-proposal
-            .clearfix
-              .large-icon.decision-icon
-              %h2.header-text Current decision
+            .large-icon.decision-icon
+            %h2.header-text Current decision
             .content-proposal-body
               %ul.selector-list
                 - if @current_motion
