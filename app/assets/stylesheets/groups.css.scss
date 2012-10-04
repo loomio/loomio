@@ -124,16 +124,10 @@ body.groups.show {
     float: right;
   }
   ul.group-links, ul#users-list, ul#dashboard-groups-list {
-    border-top: none;
-    list-style: none;
-    margin: 0 0 8px 0;
+    margin: 0 0 8px 5px;
     li {
       line-height: 1.6em;
       background-color: $sub-selector-panel;
-      a {
-        color: $mid-grey;
-        text-decoration: underline;
-      }
     }
   }
   .dropdown { float: right; }
