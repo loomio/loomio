@@ -1,4 +1,4 @@
-# Edit title
+t# Edit title
 $ ->
   if $("body.discussions.show").length > 0
     $("#edit-title").click((event) ->
