@@ -10,8 +10,9 @@
     .comment-username
       =link_to comment.user_name, "#", "title" => comment.user_name,
         "data-content" => "#{render 'users/name_popover', user: comment.user, group: comment.group}",
-        class: "comment-user-name"
+        class: "user-name-link"
     .comment-body~ markdown(comment.body.to_s.force_encoding("UTF-8"))
+
     .comment-time
       = time_ago_in_words(comment.created_at) + " ago"
       - if can? :like, comment

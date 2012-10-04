@@ -20,8 +20,15 @@
           .row
             .span8
               =render '/application/description', model: @discussion, model_name: "discussion"
-            .span3.helper-text.discussion-description-helper-text.hidden
-              %p This is a place for information relevant to the discussion
+            .span3.right-context
+              .helper-text.discussion-description-helper-text.hidden
+                %p This is a place for information relevant to the discussion
+              .discussion-author-info
+                = "Started #{time_ago_in_words(@discussion.created_at)} ago"
+                = "By "
+                =link_to @discussion.author.name, "#", "title" => @discussion.author.name,
+                  "data-content" => "#{render 'users/name_popover', user: @discussion.author, group: @discussion.group}",
+                  class: "user-name-link"
         .row
           .span6#content-history
             .large-icon.discussion-icon.enabled-icon
