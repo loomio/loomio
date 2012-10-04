@@ -51,6 +51,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'faker'
   gem 'rspec-rails'
+  gem 'ruby-prof', :git => 'https://github.com/wycats/ruby-prof.git'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
