@@ -6,9 +6,9 @@ class CommentsController < BaseController
   end
 
   def like
-  	@comment = resource 
+    @comment = resource
     like = (params[:like]=='true')
-    if like 
+    if like
       comment_vote = resource.like current_user
       Event.comment_liked!(comment_vote)
     else
