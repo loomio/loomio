@@ -18,6 +18,12 @@ GIT
   specs:
     redcarpet (2.1.1)
 
+GIT
+  remote: https://github.com/wycats/ruby-prof.git
+  revision: ffae61a895531f9601dd302a3eb0abc58c2a5473
+  specs:
+    ruby-prof (0.11.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -421,6 +427,7 @@ DEPENDENCIES
   redcarpet!
   rmagick
   rspec-rails
+  ruby-prof!
   sass-rails (~> 3.2.5)
   shoulda-matchers
   simple_form
