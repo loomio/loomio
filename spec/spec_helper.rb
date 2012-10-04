@@ -21,6 +21,23 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
 
+  require 'capybara/poltergeist'
+
+  polterops = {
+    :js_errors => true, 
+    :inspector => true,
+    :debug => false
+  }
+
+  gui_switch = false
+
+  unless gui_switch
+    Capybara.javascript_driver = :poltergeist
+    Capybara.register_driver :poltergeist do |app|
+      Capybara::Poltergeist::Driver.new(app, polterops)
+    end
+  end
+
   RSpec.configure do |config|
     # == Mock Framework
     #
