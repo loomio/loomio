@@ -154,8 +154,7 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
     t.datetime "updated_at"
     t.string   "access_level"
     t.integer  "inviter_id"
-    t.integer  "noise_level",          :default => 1, :null => false
-    t.datetime "group_last_viewed_at",                :null => false
+    t.datetime "group_last_viewed_at", :null => false
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
@@ -232,7 +231,6 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
     t.boolean  "has_read_group_notice",                      :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
     t.string   "avatar_initials"
-    t.boolean  "receive_emails",                             :default => true,  :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
