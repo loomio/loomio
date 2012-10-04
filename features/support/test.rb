@@ -1,6 +1,19 @@
 require 'capybara/poltergeist'
 
-polterops = {:js_errors => true}
+
+# In test blocks
+#
+# To launch chrome with remote debugging:
+# page.driver.debug
+#
+# To render a printscreen of the page:
+# page.driver.render('./screenshots/file.png', :full => true)
+
+polterops = {
+	:js_errors => true, 
+	:inspector => true,
+	:debug => false
+}
 
 gui_switch = false
 
