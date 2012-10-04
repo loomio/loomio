@@ -85,6 +85,19 @@ body.discussions.show {
     padding: 10px 0px 10px 50px;
   }
 
+  .right-context {
+    width: 230px;
+  }
+
+  .discussion-author-info {
+    font-size: $font-small;
+    color: $mid-grey;
+    width: 128px;
+    background-color: #EEE;
+    padding: 5px;
+    float: right;
+  }
+
   .header-text {
     color: $mid-grey;
     line-height: 2.0em;

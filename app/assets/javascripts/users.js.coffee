@@ -18,7 +18,7 @@ $ ->
   isVisible = false
   clickedAway = false
 
-  $('.comment-user-name').popover(
+  $('.user-name-link').popover(
     html: true,
     placement: 'top',
     trigger: 'manual'
@@ -36,7 +36,7 @@ $ ->
 
   $(document).click((e)->
     if(isVisible & clickedAway)
-      $('.comment-user-name').popover('hide')
+      $('.user-name-link').popover('hide')
       isVisible = clickedAway = false
     else
       clickedAway = true
