@@ -85,6 +85,19 @@ body.discussions.show {
     padding: 10px 0px 10px 50px;
   }
 
+  .right-context {
+    width: 230px;
+  }
+
+  .discussion-author-info {
+    font-size: $font-small;
+    color: $mid-grey;
+    width: 128px;
+    background-color: #EEE;
+    padding: 5px;
+    float: right;
+  }
+
   .header-text {
     color: $mid-grey;
     line-height: 2.0em;
@@ -192,7 +205,7 @@ pre{
 
   ul.history-list {
     list-style: none;
-    margin: 0 0 3px 0;
+    margin: 0 15px 3px 0;
   }
   ul.history-list .divider {
     margin-left: 45px;
@@ -217,14 +230,25 @@ pre{
   }
 
   .comment-container {
-    display: block;
-    width: 390px;
+    width: 388px;
+    float: left;
     margin-left: 45px;
     padding-bottom: 5px;
     border-bottom: 1px solid $light-grey;
   }
+
+  .comment-container.with-avatar {
+    margin-left: 10px;
+    float: left;
+  }
+
+  .comment-avatar {
+    height: 35px;
+    margin-right: 0px;
+  }
+
   .comment.position {
-    width: 400px;
+    width: 388px;
   }
   .comment img {
     float: left;
