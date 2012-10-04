@@ -8,7 +8,8 @@ gem 'pg'
 gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
-gem 'formtastic'
+gem 'formtastic' # Deprecated. Use simple_form instead.
+gem 'simple_form'
 gem 'jqplot-rails'
 gem "rails-backbone"
 gem 'coffee-filter'
@@ -45,8 +46,6 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'sqlite3'
-  gem 'taps'
   gem 'thin'
   gem 'debugger'
   gem "factory_girl_rails", "~> 4.0"
@@ -79,5 +78,6 @@ group :test do
   gem 'simplecov', :require => false
   gem 'flay', :require => false
   gem "rails_best_practices", :require => false
+  gem 'email_spec'
 end
 

@@ -1,5 +1,5 @@
 @import "settings";
-/*@import "bootstrap";*/
+@import "bootstrap/mixins";
 @import "mixins";
 
 /** discussion new (new loomio) modal*/
@@ -85,6 +85,19 @@ body.discussions.show {
     padding: 10px 0px 10px 50px;
   }
 
+  .right-context {
+    width: 230px;
+  }
+
+  .discussion-author-info {
+    font-size: $font-small;
+    color: $mid-grey;
+    width: 128px;
+    background-color: #EEE;
+    padding: 5px;
+    float: right;
+  }
+
   .header-text {
     color: $mid-grey;
     line-height: 2.0em;
@@ -92,36 +105,76 @@ body.discussions.show {
 }
 
 #content-proposal {
-  width: 468px;
   .proposal-btn {
     float: right;
     margin-top: 8px;
   }
 }
 .content-proposal-body {
-  padding: 10px 20px 10px 50px;
+  padding: 10px 10px 10px 50px;
 }
 li .motion {
-  padding: 0 5px 0px 0px;
   .close-date {
     font-size: $font-tiny;
     color: $mid-grey;
   }
 }
-li .motion-preview {
+li s hard.motion-preview {
   a {
     padding: 10px 15px;
     text-decoration: none;
   }
 }
 
+  /* Markdown styling */
+.comment-body, .model-description {
+  p {
+    word-wrap: break-word;
+  }
+  ul, ol, li {
+    margin-left: 10px;
+    font-size: 14px;
+    word-wrap: break-word;
+  }
+  ul, li {
+    padding: 3px 0px;
+  }
+  h1, h2, h3, h4, h5, h6, h7{
+    display: block;
+    padding: 4px 0px;
+  }
+  h1{
+    font-size: 1.4em;
+  }
+  h2{
+    font-size: 1.3em;
+  }
+  h3{
+    font-size: 1.2em;
+  }
+  h4{
+    font-size: 1.1em;
+  }
+}
+
+/** Code block padding (Stops avatars destroying indentation) */
+pre{
+  display: block;
+  margin: 10px 0px;
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+
 /*** comments, positions & proposals in History ***/
 #content-history {
-  width: 469px;
   border-right: 1px solid $light-grey;
+  min-height: 660px;
+  padding-right: 10px;
 
   #content-history-body {
-    padding: 10px 20px 10px 8px;
+    padding: 10px 0px 10px 8px;
   }
 
   #new-comment-form {
@@ -141,9 +194,9 @@ li .motion-preview {
 
   #new-comment {
     margin: 0 0 5px 0px;
-    width: 385px;
     height: 80px;
     color: $dark-grey;
+    width: 380px;
   }
 
   #post-new-comment {
@@ -152,16 +205,22 @@ li .motion-preview {
 
   ul.history-list {
     list-style: none;
-    margin: 0 0 3px 0;
+    margin: 0 15px 3px 0;
+  }
+  ul.history-list .divider {
+    margin-left: 45px;
+    border-bottom: 1px solid $light-grey;
+  }
+  li.empty-list-message {
+    margin-left: 45px;
   }
 
   /* comment */
   .comment{
-    padding: 0 10px 0 0px;
     color: $dark-grey;
     font-size: $font-small;
     background-color: $comment-color;
-    width: 450px;
+    margin-top: 5px;
   }
 
   /* Apply word break only to paragraphs in comment-body */
@@ -170,62 +229,26 @@ li .motion-preview {
     word-wrap: break-word;
   }
 
-  /* Indentation for markdown lists */
+  .comment-container {
+    width: 388px;
+    float: left;
+    margin-left: 45px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $light-grey;
+  }
 
-  .comment-body ul, .comment-body ol, .comment-body li {
+  .comment-container.with-avatar {
     margin-left: 10px;
-    font-size: 14px;
-    word-wrap: break-word;
-  }
-  .comment-body ul, .comment-body li{
-    padding: 3px 0px;
-  }
-
-  .comment-body{
-    h1, h2, h3, h4, h5, h6, h7{
-      display: block;
-      padding: 4px 0px;
-    }
-    h1{
-      font-size: 1.4em;
-    }
-    h2{
-      font-size: 1.3em;
-    }
-    h3{
-      font-size: 1.2em;
-    }
-    h4{
-      font-size: 1.1em;
-    }
-  }
-
-  /** Code block padding (Stops avatars destroying indentation) */
-  pre{
-    display: block;
-    margin: 10px 0px;
-    overflow: auto;
-    word-wrap: normal;
-    white-space: pre;
+    float: left;
   }
 
   .comment-avatar {
-    position: relative;
-    top: 8px;
+    height: 35px;
+    margin-right: 0px;
   }
 
-  .comment-container {
-    display: inline-block;
-    width: 400px;
-    padding: 5px 0;
-    margin-left: 40px;
-    border-bottom: 1px solid $light-grey;
-  }
-  .comment-container.with-avatar {
-    margin-left: 0;
-  }
   .comment.position {
-    width: 400px;
+    width: 388px;
   }
   .comment img {
     float: left;
@@ -290,21 +313,28 @@ li .motion-preview {
 //       the dashboard page.
 //
 
+.group-activity-indicator {
+  margin: 0 0 0 -6px;
+  width: 4px;
+  height: 47px;
+  float: left;
+  background-color: $container;
+}
+.unread-group-activity {background-color: $group-activity;}
 .discussion-preview {
   a {
     color: $dark-grey;
-    // display: block;
-    // padding: 5px 5px 5px 15px;
   }
   a:hover {
     text-decoration: none;
   }
+  a.selector-link {height: 37px;}
   .vote-icon {
     float: left;
     width: 20px;
+    padding-right: 7px;
     position: relative;
     top: 6px;
-    padding-right: 7px;
   }
   .discussion-title {
     display: inline;
@@ -332,35 +362,22 @@ li .motion-preview {
     width: 36px;
     height: 36px;
     z-index: 1;
-    /*margin-left: 4px;*/
   }
-  .enabled-icon {
-    -moz-opacity: 1.0;
-    filter:alpha(opacity=100);
-    opacity: 1.0;
-   }
   .activity-icon { float: right; }
   .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
   .pie-icon.activity-icon { margin: 8px 4px 0 8px; }
-  .disabled-icon {
-    -moz-opacity: 0.2;
-    filter:alpha(opacity=20);
-    opacity: 0.2
-  }
   .activity-count {
-    margin-left: 18px;
-    height: 14px;
     font-size: $font-tinywiny;
     position: relative;
-    bottom: 9px;
+    bottom: 8px;
     z-index: 2;
+    left: 18px;
   }
   .pie .activity-count {
     bottom: 1px;
-    margin-left: 24px;
+    left: 24px;
   }
   .discussion-link {
     position: relative;
-    z-index: 2;
   }
 }

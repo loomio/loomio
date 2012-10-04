@@ -9,6 +9,7 @@ ul, ol, li {
   margin: 0;
   padding: 0;
 }
+.dropdown-menu a { color: #555; }
 
 html { height: 100%; }
 
@@ -48,23 +49,33 @@ h5 {
 }
 
 // structural elements (containers etc.)
-
-.sub_group{
-	font-size: $font-tiny;
+.group-link.clearfix {
+  .group-link-name { float: left; }
+  .group-link-activity { float: right; }
+  .small-icon { padding: 0 }
 }
+
+.sub-panel li .group-link a {
+  text-decoration: none;
+}
+.sub_group {font-size: $font-tiny;}
 
 #start-new-topic { margin: 0 0 10px 2px; }
 #discussion-list {
   margin-bottom: 10px;
 }
 
+#new_discussion .control-label {
+  display: block;
+}
+
 .model-description { padding-bottom: 10px; }
-#show-description {
+.description-body {
   color: $dark-grey;
   margin-bottom: 10px;
 }
-#add-edit-description {
-  form { margin-bottom: 0px }
+#description-edit-form {
+  margin-bottom: 0px;
   #description-input {
     width: 600px;
     height: 90px;
@@ -89,7 +100,7 @@ h5 {
 li.empty-list-message {
   padding: 5px 0px;
 }
-.discussion-with-motion-divider { border-bottom: 1px solid $light-grey; }
+.discussion-with-motion-divider { border-bottom: 2px solid $light-grey; }
 
 #show-closed-motions {
   margin-bottom: 10px;
@@ -116,6 +127,7 @@ li.selector-item {
   background-color: $highlighted;
   a { color: black; }
   a .proposal-title { color: black; }
+
 }
 li.selector-item a.selector-link {
   display: block;
@@ -124,6 +136,7 @@ li.selector-item a.selector-link {
 li.selector-item a.selector-link:hover {
   background-color: $selector;
   text-decoration: none;
+  .group-activity-indicator.unread-group-activity { background-color: $group-activity; }
 }
 .pagination {
   a {
@@ -144,6 +157,7 @@ li.selector-item a.selector-link:hover {
     text-indent: -100em;
     overflow: hidden;
     padding: 0 5px;
+    width: 29px;
   }
 }
 .pagination li.prev a {
@@ -185,7 +199,14 @@ li.selector-item a.selector-link:hover {
 .control-label {
   display: inline;
 }
-
+.label-right{
+  float: right;
+}
+.label-group-activity {
+  background-color: $group-activity;
+  font-weight: normal;
+  font-size: $font-tiny;
+}
 .group-presence-error-message {
   float: right;
   position: relative;
@@ -226,21 +247,21 @@ form {
     height: 200px;
   }
 
+  /* this is a little mess that needs to be resolved*/
   input[type="checkbox"] {
     margin-top: 10px;
     margin-bottom: 10px;
     display: inline;
   }
 
+  .checkbox input{
+    margin-top: 0px;
+  }
+
   .checkbox-label {
     margin-left: 5px;
     display: inline;
   }
-  /*.divider {*/
-    /*width: 300px;*/
-    /*border: 1px solid $lighter-grey;*/
-    /*margin-bottom: 5px;*/
-  /*}*/
 }
 
 .hidden {
@@ -293,6 +314,31 @@ code{
     zoom:1;
 }
 
+/* bootstrap UI CSS overrides - better IE7 compatibility */
+.popover-inner {
+  background: black;
+}
+.selector-panel {
+  ul.tool-bar-list {
+    background-color: #f6f6f6;
+  }
+}
+.modal-backdrop {
+  top: 0;
+}
+.modal {
+  opacity: 100%;
+  filter:alpha(opacity=100);
+  form {
+    margin: 0;
+  }
+}
+.modal-header h3 {
+  display: inline;
+  width: 80%;
+}
+
+
 ul.loomio-process-flow {
   height: 100px;
   margin: 0 auto 20px auto;
@@ -342,7 +388,7 @@ ul.loomio-process-flow {
     width: 32px;
   }
 }
-
+.btn-grey { color: $mid-grey; }
 .btn-icon {
   width: 170px;
   text-align: left;
@@ -370,30 +416,35 @@ a.btn-icon:hover { color: $dark-grey; }
   margin: 6px 13px 0 13px;
   float: left;
 }
+.header-bar-icon{
+  position: relative;
+  bottom: 2px;
+}
 
+.small-icon.dot-icon {
+  background-image:url('/assets/dot-18.png');
+  float: right;
+}
 .small-icon.topic-icon {
   background-image:url('/assets/topic-18.png');
-  opacity: 0.5;
 }
 .small-icon.member-icon {
-  background-image:url('/assets/member.png');
-  opacity: 0.8;
+  background-image:url('/assets/member-18.png');
 }
 .small-icon.group-icon {
   background-image:url('/assets/group-18.png');
-  opacity: 0.5;
 }
 .small-icon.pie-icon {
   background-image:url('/assets/pie-18.png');
-  /*margin-top: 2px;*/
 }
 .large-icon.topic-icon {
     background-image:url('/assets/topic-24.png');
-    opacity: 0.5;
-    margin-top: 3px;
 }
-.large-icon.discussion-icon {
+.large-icon.discussion-icon.enabled-icon  {
     background-image:url('/assets/discussion-24.png');
+}
+.large-icon.discussion-icon.disabled-icon  {
+    background-image:url('/assets/discussion-light-24.png');
 }
 .large-icon.decision-icon {
     background-image:url('/assets/pie-24.png');
@@ -403,36 +454,9 @@ a.btn-icon:hover { color: $dark-grey; }
   margin: 0px;
 }
 .large-icon.notification-icon {
-  background-image:url('/assets/notification-icon.png');
+  background-image:url('/assets/notification-24.png');
   margin: 0;
-  position: relative;
-  bottom: 3px;
 }
 .large-icon.pie-icon {
-  background-image: url("pie-24.png");
-  opacity: 0.2;
-}
-
-/* bootstrap UI CSS overrides - better IE7 compatibility */
-.popover-inner {
-  background: black;
-}
-.selector-panel {
-  ul.tool-bar-list {
-    background-color: #f6f6f6;
-  }
-}
-.modal-backdrop {
-  top: 0;
-}
-.modal {
-  opacity: 100%;
-  filter:alpha(opacity=100);
-  form {
-    margin: 0;
-  }
-}
-.modal-header h3 {
-  display: inline;
-  width: 80%;
+  background-image: url("pie-light-24.png");
 }

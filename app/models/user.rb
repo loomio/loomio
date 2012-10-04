@@ -175,7 +175,13 @@ class User < ActiveRecord::Base
   end
 
   def self.get_loomio_user
-    User.where(:email => 'contact@loom.io').first
+    helper_bot = User.find_or_create_by_email('contact@loom.io')
+    unless helper_bot.persisted?
+      helper_bot.name = "Loomio Helper Bot"
+      helper_bot.password = SecureRandom.hex(16)
+      helper_bot.save
+    end
+    helper_bot
   end
 
   def update_motion_read_log(motion)
@@ -208,65 +214,27 @@ class User < ActiveRecord::Base
   def update_discussion_read_log(discussion)
     if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
       discussion_read_log = DiscussionReadLog.new
-      discussion_read_log.discussion_activity_when_last_read = discussion.activity
+      discussion_read_log.discussion_last_viewed_at = Time.now()
       discussion_read_log.user_id = id
       discussion_read_log.discussion_id = discussion.id
-      discussion_read_log.save
+      discussion_read_log.save!
     else
       log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
-      log.discussion_activity_when_last_read = discussion.activity
-      log.save
+      log.discussion_last_viewed_at = Time.now()
+      log.save!
     end
   end
 
-  def discussion_activity_when_last_read(discussion)
-    log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
-    if log
-      log.discussion_activity_when_last_read
-    else
-      0
+  def update_group_last_viewed_at(group)
+    membership = group_membership(group)
+    if membership
+      membership.group_last_viewed_at = Time.now()
+      membership.save!
     end
-  end
-
-  def discussion_activity_count(discussion)
-    discussion.activity - discussion_activity_when_last_read(discussion)
-  end
-
-  def discussions_with_activity_count(group)
-    count = 0
-    group.discussions.each do |discussion|
-      count += 1 if discussion_activity_count(discussion) > 0
-      if discussion.current_motion
-        count += 1 if motion_activity_count(discussion.current_motion) > 0
-      end
-    end
-    count
-  end
-
-  def activity_total
-    total = 0;
-    groups.each do |group|
-      total += discussions_with_activity_count(group)
-    end
-    total
   end
 
   def self.find_by_email(email)
     User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
-  end
-
-  # Get all root groups that the user belongs to
-  # This also includes parent groups of sub-groups
-  # that the user belongs to (even though the user
-  # might not necessarily belong to the parent)
-  def all_root_groups
-    results = root_groups
-    subgroups.each do |subgroup|
-      unless results.include? subgroup.parent
-        results << subgroup.parent
-      end
-    end
-    results.sort_by { |group| group.name }
   end
 
   def subgroups
@@ -274,7 +242,7 @@ class User < ActiveRecord::Base
   end
 
   def root_groups
-    groups.where("parent_id IS NULL")
+    groups.where("parent_id IS NULL").find(:all, :order => "LOWER(name)")
   end
 
   def position(motion)

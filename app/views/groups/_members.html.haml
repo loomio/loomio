@@ -1,7 +1,6 @@
 - unless group.hide_members && (cannot? :edit, group)
   .sub-panel
-    %h3 Members
-    #membership-count.label
+    .membership-count.label
       = group.memberships.count
     %h3 Members
     = render 'add_members', group: group
