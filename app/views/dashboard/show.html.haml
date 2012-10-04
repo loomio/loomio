@@ -1,7 +1,7 @@
 - if current_user && (not current_user.has_read_dashboard_notice?)
-  - message = "Welcome to Loomio! This page is the Home page, where you can see a list of discussions "
-  - message += "that you can participate in.  To the right is a list of the groups you have joined."
-  - message += "You can start a new discussion by clicking on the 'Start a discussion' button.\n\n"
+  - message = "Welcome to Loomio!n\n This is the Home page, where you can see a list of the discussions "
+  - message += "going on in all of your groups. To the right is a list of the groups you are a member of. "
+  - message += "You can start a discussion on a new topic by clicking on the “Start a discussion” button.\n\n"
   - message += "If you have any questions or feedback we’d love to hear from you: "
   - message += "#{link_to "contact@loom.io", 'mailto:contact@loom.io', :target =>'_blank'}\n\n"
   =render '/application/helper_info', message: message, path: dismiss_dashboard_notice_for_user_path
@@ -11,7 +11,7 @@
     -#=render '/application/loomio_process_flow'
     =render '/groups/title', group: nil
     =render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
-      :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-topic'}
+      :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-discussion'}
   .row
     %section.span8
       %ul.selector-list.bordered

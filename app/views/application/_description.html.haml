@@ -9,7 +9,7 @@
       = hidden_field_tag 'id'
       .control-group
         - class_str = 'inputError limit-250' if model_name == "group"
-        = text_area_tag 'description', model.description, {id: 'description-input', class: class_str}
+        = text_area_tag 'description', model.description, {id: 'description-input', class: class_str, :autofocus => true }
         - unless model_name == "discussion"
           .character-counter
       .save-buttons.clearfix
