@@ -1,8 +1,8 @@
 - set_title @group.name, ""
 - if user_signed_in? && @group.parent.nil? && (not current_user.has_read_group_notice?)
-  - message = "This is the Group page for \"#{@group.full_name}\". \n\n Here you can see the discussions for this group, "
-  - message += "a description and a list of the group members. "
-  - message += "You can start a new topic by clicking on the 'Start a discussion' button.\n\n"
+  - message = "This is the Group page for \"#{@group.full_name}\". \n\n Here you can see this group’s discussions, "
+  - message += "a description of what the group is for, "
+  - message += "You can start a discussion on a new topic by clicking on the ‘Start a discussion’ button.\n\n"
   =render '/application/helper_info', message: message, path: dismiss_group_notice_for_user_path
 
 %header
@@ -10,7 +10,7 @@
   = render '/groups/title', group: @group
   - if can? :create, @discussion
     = render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
-      :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-topic'}
+      :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-discussion'}
 .row
   %section.span8
     %ul.selector-list.bordered

@@ -15,7 +15,7 @@ describe "Discussion" do
 
     it "can create a new discussion" do
       visit group_path(id: @group.id)
-      find('#start-new-topic').click
+      find('#start-new-discussion').click
       fill_in 'discussion_title', with: 'This is a new discussion'
       fill_in 'discussion_description', with: 'Blahhhhhh'
       click_on 'Start'

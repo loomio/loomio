@@ -34,7 +34,7 @@ $ ->
       Application.convertUtcToRelativeTime()
       $("#group-discussions").removeClass('hidden')
       $("#discussions-loading").addClass('hidden')
-      activate_tool_tips()
+      activate_discussions_tooltips()
     )
     $("#all-discussions-loading").addClass('hidden')
 
