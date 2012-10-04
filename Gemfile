@@ -54,6 +54,7 @@ group :development, :test do
   gem 'ruby-prof', :git => 'https://github.com/wycats/ruby-prof.git'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
   gem 'database_cleaner'
   gem 'jasminerice'
   gem 'guard-jasmine'
