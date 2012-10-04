@@ -92,7 +92,7 @@ body.discussions.show {
   .discussion-author-info {
     font-size: $font-small;
     color: $mid-grey;
-    width: 128px;
+    width: 170px;
     background-color: #EEE;
     padding: 5px;
     float: right;
@@ -113,6 +113,7 @@ body.discussions.show {
 .content-proposal-body {
   padding: 10px 10px 10px 50px;
 }
+.content-proposal-body ul.selector-list { border-top: 1px solid $light-grey; }
 li .motion {
   .close-date {
     font-size: $font-tiny;

@@ -5,6 +5,14 @@
 @import "settings";
 @import "mixins";
 
+// new user log in
+.welcome-text {
+  h1, h2 { display: block; }
+  h1 { font-size: $font-xxlarge; }
+  padding-bottom: 20px;
+}
+
+
 .user-image-options {
   margin-left: -30px;
   h3 { margin: 0 0 0 30px; }

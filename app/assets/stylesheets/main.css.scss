@@ -9,6 +9,7 @@ ul, ol, li {
   margin: 0;
   padding: 0;
 }
+ul { list-style: none; }
 .dropdown-menu a { color: #555; }
 
 html { height: 100%; }
@@ -60,7 +61,7 @@ h5 {
 }
 .sub_group {font-size: $font-tiny;}
 
-#start-new-topic { margin: 0 0 10px 2px; }
+#start-new-discussion { margin: 0 0 10px 2px; }
 #discussion-list {
   margin-bottom: 10px;
 }

@@ -186,6 +186,7 @@ $ ->
     $("#cancel-add-description").click((event) ->
       $("#description-edit-form").toggle()
       $(".description-body").toggle()
+      $(".discussion-description-helper-text").toggle()
       event.preventDefault()
     )
 
