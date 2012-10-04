@@ -48,6 +48,7 @@ class Membership < ActiveRecord::Base
   # CALLBACKS
   #
 
+  before_create :set_group_last_viewed_at_to_now
   after_initialize :set_defaults
   before_destroy :remove_open_votes
   after_destroy :destroy_subgroup_memberships
@@ -95,6 +96,9 @@ class Membership < ActiveRecord::Base
   #
 
   private
+    def set_group_last_viewed_at_to_now
+      self.group_last_viewed_at = Time.now
+    end
 
     def destroy_subgroup_memberships
       group.subgroups.each do |subgroup|
