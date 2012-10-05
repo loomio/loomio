@@ -66,7 +66,7 @@ class UsersController < BaseController
   def mentions
     @user = User.last
     respond_to do |format|
-      format.json {}
+      format.json
     end
   end
 end
