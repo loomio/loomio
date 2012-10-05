@@ -17,15 +17,15 @@ $ ->
 $ ->
   isVisible = false
   clickedAway = false
-  $('.comment-user-name').popover(
+  $('.user-name-with-popover').popover(
     html: true,
     placement: 'top',
     trigger: 'manual'
   )
-  $('.comment-user-name').click((e)->
+  $('.user-name-with-popover').click((e)->
     if isVisible
       $(this).addClass("selected")
-      $('.comment-user-name').each ->
+      $('.user-name-with-popover').each ->
         if $(this).hasClass("selected")
           if $(this).hasClass("popover-visible")
             toggle_popover(false, $(this))
@@ -48,7 +48,7 @@ $ ->
     if(isVisible & clickedAway)
       target = e.target
       if !$(target).closest(".popover").length
-        toggle_popover(false, $('.comment-user-name'))
+        toggle_popover(false, $('.user-name-with-popover'))
         isVisible = false
         clickedAway = false
     else
