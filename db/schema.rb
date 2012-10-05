@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121003033500) do
+ActiveRecord::Schema.define(:version => 20121005060102) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body"
+    t.text     "body",             :default => ""
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -84,11 +84,10 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "activity",        :default => 0, :null => false
     t.string   "title"
-    t.integer  "activity",           :default => 0,     :null => false
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "has_current_motion", :default => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -145,6 +144,7 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
     t.integer  "group_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "token",           :null => false
   end
 
   create_table "memberships", :force => true do |t|
@@ -227,10 +227,10 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
+    t.string   "avatar_initials"
     t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
     t.boolean  "has_read_group_notice",                      :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
-    t.string   "avatar_initials"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

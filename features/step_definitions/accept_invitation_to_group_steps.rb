@@ -8,7 +8,7 @@ Given /^I have been invited to join a loomio group and I am a new user$/ do
 end
 
 Given /^I have been invited to join a loomio group and I am an existing user$/ do
-  pending # express the regexp above with the code you wish you had
+  step 'I have been invited to join a loomio group and I am a new user'
 end
 
 When /^I click the invitation link$/ do

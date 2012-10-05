@@ -174,7 +174,7 @@ class User < ActiveRecord::Base
       .order("last_comment_at DESC")
   end
 
-  def self.get_loomio_user
+  def self.loomio_helper_bot
     helper_bot = User.find_or_create_by_email('contact@loom.io')
     unless helper_bot.persisted?
       helper_bot.name = "Loomio Helper Bot"

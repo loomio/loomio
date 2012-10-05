@@ -78,21 +78,6 @@ describe GroupMailer do
     its(:from) { should == ['noreply@loom.io'] }
   end
 
-  describe "#new_group_invited_to_loomio" do
-    before :all do
-      @group_name = "Test Groupy"
-      @recipient = "admin@testgroupy.com"
-      @mail = GroupMailer.new_group_invited_to_loomio(@recipient, @group_name)
-    end
-
-    subject { @mail }
-
-    its(:subject) { should eq("Invitation to join Loomio (#{@group_name})") }
-    its(:to) { should eq([@recipient]) }
-    its(:from) { should eq(["contact@loom.io"]) }
-    its(:body) { should match(/#{@group_name}/) }
-  end
-
   # describe "#invite_to_group" do
   #   before :each do
   #     @recipient_email = "newperson@testgroupy.com"
