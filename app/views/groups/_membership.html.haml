@@ -9,7 +9,7 @@
     .user-name
       - name_length = (member.is_group_admin?(group) or (can? :edit, group and current_user.is_group_admin?(group))) ? 18 : 35
       %span.membership-user-name
-        = link_to truncate(membership.user_name_or_email, :length => name_length, :omission => '...'), "#", "title" => membership.user_name_or_email, "data-content" => "#{render 'users/name_popover', user: membership.user, group: group }", class: 'user-name-with-popover membership-user-name'
+        = link_to truncate(membership.user_name_or_email, :length => name_length, :omission => '...'), "#", "title" => membership.user_name_or_email, "data-content" => "#{render 'users/name_popover', user: membership.user, group: group }", class: 'user-name-with-popover'
     .admin-controls
       - if (can? :edit, group and current_user.is_group_admin?(group))
         - if member.is_group_admin?(group)
