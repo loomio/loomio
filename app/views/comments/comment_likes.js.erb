@@ -1,0 +1,2 @@
+comment_id = <%= @comment.id.to_s %>
+$("#comment-" + comment_id).find(".comment-time-and-likes").html("<%= escape_javascript render 'comments/comment_likes', comment: @comment, likes: @comment.likes %>");

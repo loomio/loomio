@@ -1,6 +1,6 @@
 - likes = comment.likes
 %div.comment{id: "comment-#{comment.id}"}
-  .medium-user-avatar.avatar-canvas
+  .comment-avatar.medium-user-avatar.avatar-canvas
     - if comment.user.avatar_url
       = image_tag comment.user.avatar_url(:medium)
     - else
@@ -10,25 +10,7 @@
     .comment-username
       =link_to comment.user_name, "#", "title" => comment.user_name,
         "data-content" => "#{render 'users/name_popover', user: comment.user, group: comment.group}",
-        class: "comment-user-name"
-    .comment-body~ markdown(comment.body)
-    .comment-time
-      = time_ago_in_words(comment.created_at) + " ago"
-      - if can? :like, comment
-        = " · "
-        - if likes.find_by_user_id(current_user.id).nil?
-          = link_to "Like", like_comment_path(comment), method: :post
-        - else
-          = link_to "Unlike", unlike_comment_path(comment), method: :post
-      - if comment.user == current_user
-        = " · "
-        = link_to "Delete", comment_path(comment), method: :delete,
-          :data => { :confirm => "Are you sure you want to delete this comment?" }
-    - if likes.count > 0
-      .comment-likes
-        - likers = likes.map { |like| link_to(like.user_name, "#") }
-        - if likers.length > 1
-          - likers = likers.slice(0, likers.length - 1).join(", ").concat(" and " + likers.slice(-1))
-        - else
-          - likers = likers[0]
-        = "Liked by #{likers}".html_safe
+        class: "user-name-link"
+    .comment-body~ markdown(comment.body.to_s.force_encoding("UTF-8"))
+    .comment-time-and-likes
+      =render 'comments/comment_likes', comment: comment, likes: likes

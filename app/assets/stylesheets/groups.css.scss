@@ -16,10 +16,10 @@
     float: left;
     line-height: 1.2em;
   }
-  h1 #page-title a {
+  h1 page-title a {
     color: $dark-grey;
   }
-  #page-title {
+  .home-title {
     display: inline;
     color: $dark-grey;
   }
@@ -125,14 +125,10 @@ body.groups.show {
   }
   ul.group-links, ul#users-list, ul#dashboard-groups-list {
     border-top: none;
-    margin: 0 0 8px 0;
+    margin: 0 0 8px 5px;
     li {
       line-height: 1.6em;
       background-color: $sub-selector-panel;
-      a {
-        color: $mid-grey;
-        text-decoration: underline;
-      }
     }
   }
   .dropdown { float: right; }
@@ -251,8 +247,7 @@ input#user_email{
 .dropdown#members { padding-left: 5px; }
 
 .user-name { float: left; }
-#membership-count {
-  display: inline;
+.membership-count {
   float: right;
   font-size: $font-small;
   color: white;
@@ -262,16 +257,15 @@ input#user_email{
 .membership-user-name {
   color: $mid-grey;
   float: left;
-  display: inline;
 }
 #users-list .admin-controls {
   float: right;
   width: 98px;
   text-align: right;
   font-size: $font-tiny;
-  display: inline;
   color: $mid-grey;
-  a.close {
+  .close {
+    float: right;
     padding-left: 8px;
     position: relative;
     bottom: 2px;
