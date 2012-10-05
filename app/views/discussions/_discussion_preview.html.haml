@@ -15,14 +15,14 @@
         - pop_over_body = render "discussions/graph_preview_pop_over", discussion: discussion, user: current_user, motion_activity: motion_activity
         .pie{"id" => "graph_#{discussion.current_motion.id}", "title" => pop_over_title, "data-content" => pop_over_body}
           - if discussion.current_motion.voting? && motion_activity > 0
-            %span.activity-count.label.label-important
+            %span.activity-count.label.label-info
               = motion_activity
       - else
         .large-icon.pie-icon.activity-icon
       .large-icon.discussion-icon.activity-icon{ class: enabled_icon_class_for(discussion, current_user) }
         - discussion_activity = discussion_activity_count_for(discussion, current_user)
         - if discussion_activity > 0
-          %span.activity-count.label.label-important
+          %span.activity-count.label.label-info
             = discussion_activity
       .discussion-date-info
         -if discussion.current_motion
