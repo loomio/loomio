@@ -273,7 +273,7 @@ class Group < ActiveRecord::Base
   end
 
   def add_creator_as_admin
-    add_admin! creator
+    add_admin! creator if creator
   end
 
   def create_welcome_loomio
@@ -285,7 +285,7 @@ class Group < ActiveRecord::Base
       motion_str = "To get a feel for how Loomio works, you can participate in the decision in your group.\n\n" +
         "If you're clear about your position, click one of the icons below (hover over with your mouse for a description of what each one means)\n\n" +
         "You\'ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
-      user = User.get_loomio_user
+      user = User.loomio_helper_bot
       membership = add_member!(user)
       discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")
       discussion.add_comment(user, comment_str)

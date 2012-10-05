@@ -64,4 +64,11 @@ FactoryGirl.define do
     description "MyText"
     admin_email Faker::Internet.email
   end
+
+  factory :invitation do
+    recipient_email Faker::Internet.email
+    access_level "member"
+    association :inviter, :factory => :user
+    group
+  end
 end

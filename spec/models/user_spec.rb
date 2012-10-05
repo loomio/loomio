@@ -402,7 +402,7 @@ describe User do
     end
   end
 
-  describe "get_loomio_user" do
+  describe "loomio_helper_bot" do
     it "returns the loomio helper bot user (email: contact@loom.io)" do
       user = User.new
       user.name = "loomio evil bot"
@@ -418,11 +418,11 @@ describe User do
       user2.email = "georgie_porgie@usa.com"
       user2.password = "password"
       user2.save!
-      User.get_loomio_user.should == user1
+      User.loomio_helper_bot.should == user1
     end
 
     it "creates loomio helper bot if none exists" do
-      User.get_loomio_user.email.should == "contact@loom.io"
+      User.loomio_helper_bot.email.should == "contact@loom.io"
     end
   end
 

@@ -1,3 +1,11 @@
-GroupInvitationMailer#invite_member
-
-= @greeting + ", find me in app/views/group_invitation_mailer/invite_member.text.haml"
+= "Hello"
+\
+= "#{@inviter.name} has invited you to participate in group discussion and decision making using a new tool called Loomio."
+\
+\
+= "Click the following link to accept their invitation:"
+= group_invitation_url @group, @token
+\
+\
+= "If you have any questions contact #{@inviter.email} or find out more about Loomio at http://loomio.org"
+\
