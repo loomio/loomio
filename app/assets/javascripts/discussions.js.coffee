@@ -16,13 +16,13 @@ $ ->
 
 $ ->
   $("textarea").atWho "@", (query, callback) ->
-      console.log("@who") 
-      $.ajax 
-        url: "/users/mentions.json"
-        data: q: query 
-        done: (data) ->
-          console.log("in callback")
-          console.log(data)
-          names = $.parseJSON(data)
-          console.log(names)
-          callback names
+    console.log("@who") 
+    $.get "/users/mentions.json", q: query, ((result) ->
+        console.log("in callback")
+        console.log("result: ")
+        console.log(result)
+        #names = $.parseJSON(result)
+        names = result.name 
+        callback names
+    ), "json"
+
