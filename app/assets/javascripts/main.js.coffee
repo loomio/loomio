@@ -5,7 +5,6 @@ canvasSupported = !!window.HTMLCanvasElement
 Application.html5 = exports ? this
 Application.html5.supported = true if canvasSupported
 
-
 Application.convertUtcToRelativeTime = ->
   if $(".utc-time").length > 0
     today = new Date()
@@ -202,18 +201,27 @@ displayGraph = (this_pie, graph_id, data)->
     padding: 1
     gap: 1
     shadow: 0.75
+    
+#*** hide/show mini-graph popovers
+$ ->
+  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
+    $(".selector-pie-link").click((event) ->
+      currentPie = this
+      $('.selector-pie-link').each(() ->
+        unless this == currentPie
+          $(this).popover('hide')
+      )
+      $(currentPie).parent().find(".activity-count").hide()
+      event.stopPropagation()
+      $(currentPie).popover('show')
+      )
 
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(".pie").click((event) ->
-      $(this).parent().find(".activity-count").hide()
-      #set the discussion read log to now()
-      $(this).popover('hide')
-      $(this).parent().parent().parent().click((event) ->
-        event.preventDefault()
-        event.stopImmediatePropagation()
-      )
+    $(document).click((event) ->
+      $('.selector-pie-link').popover('hide')
     )
+
 #*** open-close motions dropdown***
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0

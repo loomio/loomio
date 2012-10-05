@@ -321,17 +321,32 @@ pre{
   float: left;
   background-color: $container;
 }
-  .unread-group-activity {background-color: $group-activity;}
+.unread-group-activity {background-color: $group-activity;}
+
+li.selector-item .discussion-preview:hover {
+  background-color: $selector;
+}
 .discussion-preview {
   float: left;
   width: 620px;
+  height: 47px;
+  background-color: $unhighlighted;
   a {
     color: $dark-grey;
   }
   a:hover {
     text-decoration: none;
   }
-  a.selector-link { height: 37px; }
+  a.selector-discussion-link {
+    width: 573px;
+    float: left;
+    padding: 5px 0 5px 5px;
+  }
+  a.selector-pie-link {
+    width: 32px;
+    padding: 5px;
+    float: right;
+  }
   .vote-icon {
     float: left;
     width: 20px;
