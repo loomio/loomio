@@ -1,3 +1,8 @@
+.welcome-text
+  %h1 Welcome to Loomio!
+  %h2 Loomio is an online platform for collaborative decision-making being developed in Wellington, New Zealand. Great to have you on board!  We are currently in closed beta, so new features will be added all the time and things might occasionally break. Thanks a lot for your patience and support as a pioneering early user!
+
+
 %h1 Set your name and password
 - resource.name = ""
 = form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f|
