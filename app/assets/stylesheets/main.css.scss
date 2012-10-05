@@ -122,7 +122,7 @@ li.selector-item {
   font-weight: normal;
   border-bottom: 1px solid $light-grey;
 }
-.undecided, .unread {
+.discussion-preview.unread {
   background-color: $highlighted;
   a { color: black; }
   a .proposal-title { color: black; }
