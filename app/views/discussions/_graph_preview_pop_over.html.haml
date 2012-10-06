@@ -1,18 +1,29 @@
 - if user_signed_in?
+  .popover-current-position
+    = "Your position"
+    .popover-current-position-icon= render "motions/display_icons", position: user.get_position_for(motion)
+
+.popover-engagement
+  = "Engagement #{motion.percent_voted}%"
+
+
+- if user_signed_in?
+  - new_vote_count = 0
   - if motion_activity > 0
     .popover-header
-      Latest activity
-    %ul
-      - vote_activity = user.votes_since_last_read(discussion)
-      - vote_activity.each do |vote|
+      New activity
+    %ul.popover-activity-list
+      - new_vote_count = user.motion_activity_count(motion)
+      - motion.votes.order('created_at')[(0..new_vote_count)].each do |vote|
         %li.popover-item
-          .medium-user-avatar.avatar-canvas#header-user-image
-            - if vote.user.avatar_url.nil?
-              %span.medium-user-initials.initials-decoration= vote.user.avatar_initials
-            - else
-              = image_tag vote.user.avatar_url("medium")
-          -#.popover-vote-position
-          = render "motions/display_icons", position: vote.user.position(discussion.current_motion)
-          = vote.statement
+          = render "discussions/graph_preview_pop_over_votes", vote: vote, motion: motion
+    / - motion.votes.order('created_at')[(new_vote_count..4 - new_vote_count)].each do |vote|
+    /   %li.popover-item
+    /     = render "discussions/graph_preview_pop_over_votes", vote: vote, motion: motion
   - else
-    No new activity
+    .popover-header
+      New activity
+    %ul.popover-activity-list
+      - motion.votes.order('created_at').each do |vote|
+        %li.popover-item
+          = render "discussions/graph_preview_pop_over_votes", vote: vote, motion: motion

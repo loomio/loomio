@@ -206,15 +206,17 @@ displayGraph = (this_pie, graph_id, data)->
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
     $(".selector-pie-link").click((event) ->
-      currentPie = this
-      $('.selector-pie-link').each(() ->
-        unless this == currentPie
-          $(this).popover('hide')
-      )
-      $(currentPie).parent().find(".activity-count").hide()
-      event.stopPropagation()
-      $(currentPie).popover('show')
-      )
+      if $(this).find(".popover").html() == null
+        currentPie = this
+        $('.selector-pie-link').each(() ->
+          unless this == currentPie
+            $(this).popover('hide')
+        )
+        $(this).find('.button_to').submit()
+        $(this).find(".activity-count").hide()
+        event.stopPropagation()
+        $(currentPie).popover('toggle')
+        )
 
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0

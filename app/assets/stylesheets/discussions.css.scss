@@ -323,6 +323,25 @@ pre{
 }
 .unread-group-activity {background-color: $group-activity;}
 
+.popover-close-date { 
+  // font-weight: bold;
+  display: inline;
+  font-size: $font-small;
+}
+.popover-engagement { margin-bottom: 5px; }
+.popover-current-position-icon {
+  position: relative;
+  bottom: 3px;
+  display: inline;
+}
+ul.popover-activity-list {
+  height: 100px;
+  overflow-y: auto;
+}
+li.popover-item {
+  padding-left: 5px;
+  .vote-time { font-size: $font-tiny; }
+}
 li.selector-item .discussion-preview:hover {
   background-color: $selector;
 }
@@ -342,10 +361,18 @@ li.selector-item .discussion-preview:hover {
     float: left;
     padding: 5px 0 5px 5px;
   }
-  a.selector-pie-link {
-    width: 32px;
-    padding: 5px;
+  .selector-pie-link {
+    width: 42px;
+    height: 47px;
+    cursor: pointer;
     float: right;
+    .pie {
+      margin: 6px 3px;
+    }
+    .preview-pie-button {
+      border: none;
+      padding: 0;
+    }
   }
   .vote-icon {
     float: left;
@@ -383,7 +410,7 @@ li.selector-item .discussion-preview:hover {
   }
   .activity-icon { float: right; }
   .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
-  .pie-icon.activity-icon { margin: 8px 4px 0 8px; }
+  .pie-icon.activity-icon { margin: 10px 10px 0 0; }
   .activity-count {
     font-size: $font-tinywiny;
     position: relative;
