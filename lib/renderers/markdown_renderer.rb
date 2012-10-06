@@ -7,7 +7,6 @@ class MarkdownRenderer < Redcarpet::Render::HTML
   end
 
   def autolink(link, link_type)
-  	debugger
     safelink = URI.escape(link).gsub(/%23/, '#')
     if link_type == :email
 "<a target=\"_blank\" href=\"mailto:#{link}\">#{link}</a>"

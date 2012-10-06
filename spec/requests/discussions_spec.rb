@@ -52,40 +52,40 @@ describe "Discussion" do
         before :each do
           visit discussion_path(@discussion)
         end
-        it "should autolink a link" do
+        it "will autolink a link" do
           fill_in 'new-comment', with: "http://loom.io"
           click_on 'post-new-comment'
 
           should have_link('http://loom.io', {:href => 'http://loom.io', :target => '_blank'})
         end
-        it "shoulc correctly format a complex link" do
-          fill_in 'new-comment', with: "[stuff] (http://loom.io/someone's gross url \"Someone's Gross Url\")"
+        it "will correctly format a complex link" do
+          fill_in 'new-comment', with: "[stuff] (http://loom.io/someone's gross url#ew \"Someone's Gross Url\")"
           click_on 'post-new-comment'
 
-          should have_link('stuff', {:href => 'http://loom.io/someone\'s%20gross%20url', :target => '_blank'})
+          should have_link('stuff', {:href => 'http://loom.io/someone\'s%20gross%20url#ew', :target => '_blank'})
         end
-        it "shoulc not allow user inputted html" do
+        it "will not allow user inputted html" do
           fill_in 'new-comment', with: "<p id='should_not_be_here'>should_be_here</p>"
           click_on 'post-new-comment'
 
           should_not have_selector('p#should_not_be_here')
           should have_content('should_be_here')
         end
-        it "shoulc underscore with _underscore_italic_ and *bold_italic*" do
+        it "will underscore with _underscore_italic_ and *bold_italic*" do
           fill_in 'new-comment', with: "_underscore_italic_ and *star_italic*"
           click_on 'post-new-comment'
 
           should have_selector('em', :text => 'underscore_italic')
           should have_selector('em', :text => 'star_italic')
         end
-        it "shoulc bold with __underscore_bold__ and **star_bold**" do
+        it "will bold with __underscore_bold__ and **star_bold**" do
           fill_in 'new-comment', with: "__underscore_bold__ and **star_bold**"
           click_on 'post-new-comment'
 
           should have_selector('strong', :text => 'underscore_bold')
           should have_selector('strong', :text => 'star_bold')
         end
-        it "shoulc ruby code block with ```ruby code_block ```" do
+        it "will ruby code block with ```ruby code_block ```" do
           fill_in 'new-comment', with: "```ruby 
           code_block 
           ```
