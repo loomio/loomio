@@ -105,6 +105,11 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
   end
 
+  def get_position_for(motion)
+    vote = Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
+    vote.position if vote
+  end
+  
   def voted?(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
   end
@@ -211,10 +216,10 @@ class User < ActiveRecord::Base
     motion.activity - motion_activity_when_last_read(motion)
   end
 
-  def votes_since_last_read(discussion)
-    last_read_at = discussion.last_looked_at_by(self)
-    discussion.current_motion.votes.where('created_at > ?', last_read_at)
-  end
+  # def votes_since_last_read(motion)
+  #   unread_vote_count = motion_activity_count(motion)
+  #   motion.votes[(0..unread_vote_count)]
+  # end
 
   def update_discussion_read_log(discussion)
     if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil

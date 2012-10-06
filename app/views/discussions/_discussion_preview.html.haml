@@ -23,14 +23,14 @@
             .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"
     - if discussion.current_motion
       - motion_activity = motion_activity_count_for(discussion.current_motion, current_user)
-      - pop_over_title = render "discussions/graph_preview_pop_over_title", discussion: discussion
-      - pop_over_body = render "discussions/graph_preview_pop_over", discussion: discussion, user: current_user, motion_activity: motion_activity
-
-      %a.selector-pie-link{ href: "#", "title" => pop_over_title, "data-content" => pop_over_body}
-        .pie{"id" => "graph_#{discussion.current_motion.id}"}
+      - pop_over_title = render "discussions/graph_preview_pop_over_title", motion: discussion.current_motion
+      - pop_over_body = render "discussions/graph_preview_pop_over", motion: discussion.current_motion, user: current_user, motion_activity: motion_activity
+      .selector-pie-link{ "data-title" => pop_over_title, "data-content" => pop_over_body }
+        .pie{:id => "graph_#{discussion.current_motion.id}"}
           - if discussion.current_motion.voting? && motion_activity > 0
             %span.activity-count.label.label-info
               = motion_activity
+          = button_to '', reset_motion_read_log_user_path(current_user, :motion => discussion.current_motion), :remote => true, :class =>  "preview-pie-button"
     - else
       .large-icon.pie-icon.activity-icon
 
