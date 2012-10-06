@@ -22,7 +22,13 @@ $ ->
         console.log("result: ")
         console.log(result)
         #names = $.parseJSON(result)
-        names = result.name 
+        names = Array::slice.call(result)
+        names = $.map(result, (value, key) -> 
+          id: key
+          name: value
+          email: value + "@email.com"
+        )
+        console.log(names)
         callback names
     ), "json"
 
