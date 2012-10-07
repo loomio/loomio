@@ -19,8 +19,8 @@
         -if discussion.current_motion
           - if discussion.current_motion_close_date
             .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_close_date)} until close"
-          - else
-            .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"
+        - else
+          .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"
     - if discussion.current_motion
       - motion_activity = motion_activity_count_for(discussion.current_motion, current_user)
       - pop_over_title = render "discussions/graph_preview_pop_over_title", motion: discussion.current_motion
