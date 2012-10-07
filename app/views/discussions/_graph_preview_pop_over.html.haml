@@ -13,17 +13,10 @@
     .popover-header
       New activity
     %ul.popover-activity-list
-      - new_vote_count = user.motion_activity_count(motion)
-      - motion.votes.order('created_at')[(0..new_vote_count)].each do |vote|
+      - new_vote_count = user.motion_activity_count(motion) - 1
+      - motion.votes.order('created_at DESC')[(0..new_vote_count)].each do |vote|
         %li.popover-item
           = render "discussions/graph_preview_pop_over_votes", vote: vote, motion: motion
     / - motion.votes.order('created_at')[(new_vote_count..4 - new_vote_count)].each do |vote|
     /   %li.popover-item
     /     = render "discussions/graph_preview_pop_over_votes", vote: vote, motion: motion
-  - else
-    .popover-header
-      New activity
-    %ul.popover-activity-list
-      - motion.votes.order('created_at').each do |vote|
-        %li.popover-item
-          = render "discussions/graph_preview_pop_over_votes", vote: vote, motion: motion

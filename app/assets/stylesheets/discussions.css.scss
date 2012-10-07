@@ -323,19 +323,20 @@ pre{
 }
 .unread-group-activity {background-color: $group-activity;}
 
+.popover-content { padding-top: 8px; }
 .popover-close-date { 
-  // font-weight: bold;
+  font-weight: normal;
   display: inline;
   font-size: $font-small;
 }
-.popover-engagement { margin-bottom: 5px; }
+.popover-engagement { margin-bottom: 8px; }
 .popover-current-position-icon {
   position: relative;
   bottom: 3px;
   display: inline;
 }
 ul.popover-activity-list {
-  height: 100px;
+  max-height: 180px;
   overflow-y: auto;
 }
 li.popover-item {

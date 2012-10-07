@@ -16,7 +16,3 @@ $ ->
       placement: "right",
       trigger: "manual"
       })
-
-
-
-
