@@ -1,5 +1,6 @@
 = "Proposal" 
 .popover-close-date
-  = " (#{time_ago_in_words(motion.close_date)} until close)"
+  - if motion.close_date
+    = " (#{time_ago_in_words(motion.close_date)} until close)"
 .popover-motion-name
   = motion.name

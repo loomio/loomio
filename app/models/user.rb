@@ -216,11 +216,6 @@ class User < ActiveRecord::Base
     motion.activity - motion_activity_when_last_read(motion)
   end
 
-  # def votes_since_last_read(motion)
-  #   unread_vote_count = motion_activity_count(motion)
-  #   motion.votes[(0..unread_vote_count)]
-  # end
-
   def update_discussion_read_log(discussion)
     if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
       discussion_read_log = DiscussionReadLog.new
