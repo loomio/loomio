@@ -227,6 +227,10 @@ li.selector-item a.selector-link:hover {
   font-size: $font-small;
 }
 
+//*** color coded urgency labels ***
+.color-urgent { background-color: #CA3232; }
+.color-warning { background-color: #F89406; }
+.color-ok { background: #016B01; }
 
 form {
   label {

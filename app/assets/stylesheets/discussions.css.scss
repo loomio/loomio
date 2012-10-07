@@ -236,6 +236,7 @@ pre{
     margin-left: 45px;
     padding-bottom: 5px;
     border-bottom: 1px solid $light-grey;
+    margin-bottom: 5px;
   }
 
   .comment-container.with-avatar {
@@ -323,11 +324,15 @@ pre{
 }
 .unread-group-activity {background-color: $group-activity;}
 
+.popover-motion-name { color: black; }
 .popover-content { padding-top: 8px; }
 .popover-close-date { 
   font-weight: normal;
   display: inline;
-  font-size: $font-small;
+  font-size: $font-tiny;
+  position: relative;
+  left: 5px;
+  bottom: 2px;
 }
 .popover-engagement { margin-bottom: 8px; }
 .popover-current-position-icon {
