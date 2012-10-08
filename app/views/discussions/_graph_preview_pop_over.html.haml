@@ -6,7 +6,6 @@
 .popover-engagement
   = "Engagement #{motion.percent_voted}%"
 
-
 - if user_signed_in?
   - new_vote_count = 0
   - if motion_activity > 0
@@ -17,6 +16,3 @@
       - motion.votes.order('created_at DESC')[(0..new_vote_count)].each do |vote|
         %li.popover-item
           = render "discussions/graph_preview_pop_over_votes", vote: vote, motion: motion
-    / - motion.votes.order('created_at')[(new_vote_count..4 - new_vote_count)].each do |vote|
-    /   %li.popover-item
-    /     = render "discussions/graph_preview_pop_over_votes", vote: vote, motion: motion
