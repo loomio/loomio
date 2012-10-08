@@ -278,18 +278,30 @@ class Group < ActiveRecord::Base
 
   def create_welcome_loomio
     unless parent
-      comment_str = "By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, the group can put their heads together to find the best way forward.\n\n" +
-        "This 'Welcome' discussion can be used to raise any questions about how to use Loomio, and to test out the features. \n\n" +
-        "Once you are finished in this particular discussion, you can click the Loomio logo at the top of the screen to go back to your dashboard and see all your current discussions and proposals.\n\n" +
-        "Click into a group to view or start discussions and proposals in that group, or view a list of the group members."
-      motion_str = "To get a feel for how Loomio works, you can participate in the decision in your group.\n\n" +
-        "If you're clear about your position, click one of the icons below (hover over with your mouse for a description of what each one means)\n\n" +
-        "You\'ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
+      comment_str = "Hey folks, I've been thinking it's time for a holiday. I know some people might be worried about our carbon footprint, but I have a serious craving for space-cheese!
+
+What does everyone think?"
+      description_str = "Welcome to Loomio, a new tool for group decision-making.
+
+By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, your group can put their heads together to find the best way forward.
+
+You can use this example discussion to play around with the features of the tool.
+
+To get the ball rolling, Loomio Helper Bot thinks it would be a great idea for your group to take a holiday together. The pie graph on the right shows how your group feels about the proposal. You can have your say by clicking on one of the decision buttons underneath. "
+      motion_str = "Loomio Helper Bot is really keen for your group to invest in a trip to the moon. Apparently the space-cheese is delicious. But the implications for your carbon footprint are worrying.
+
+Is it a good idea? Loomio Helper Bot wants to know what you think!
+
+If you're clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).
+
+You'll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
       user = User.get_loomio_user
       membership = add_member!(user)
-      discussion = user.authored_discussions.create!(:group_id => id, :title => "Welcome and Introduction to Loomio!")
+      discussion = user.authored_discussions.create!(:group_id => id,
+        :title => "Example Discussion: Welcome and introduction to Loomio!",
+        :description => description_str)
       discussion.add_comment(user, comment_str)
-      motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "Example proposal - We should have a holiday on the moon",
+      motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We should have a holiday on the moon!",
         :description => motion_str, :close_date => Time.now + 7.days)
       motion.save
       membership.destroy
