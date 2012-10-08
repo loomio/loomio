@@ -46,6 +46,11 @@ FactoryGirl.define do
     end
   end
 
+  factory :motion_read_log do
+    user
+    motion
+  end
+
   factory :vote do
     user
     motion

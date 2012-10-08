@@ -1,7 +1,7 @@
 .clearfix
   %span{ class: css_class_unread_group_activity_for(discussion, current_user)}
   %div{ class: css_class_unread_discussion_activity_for(this_group, discussion, current_user), id: "discussion-preview-#{discussion.id}" }
-    %a.selector-link{ href: discussion_path(discussion) }
+    %a.selector-discussion-link{ href: discussion_path(discussion) }
       - if user_signed_in? && discussion.current_motion
         .vote-icon
           - if current_user.group_membership(this_group) || this_group.nil?
@@ -9,25 +9,31 @@
       .discussion-title
         = truncate(discussion.title, :length => 60, :separator => ' ')
         .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
-      - if discussion.current_motion
-        .pie{id: "graph_#{discussion.current_motion.id}"}
-          - motion_activity = motion_activity_count_for(discussion.current_motion, current_user)
-          - if discussion.current_motion.voting? && motion_activity > 0
-            %span.activity-count.label.label-important
-              = motion_activity
-      - else
-        .large-icon.pie-icon.activity-icon
+ 
       .large-icon.discussion-icon.activity-icon{ class: enabled_icon_class_for(discussion, current_user) }
         - discussion_activity = discussion_activity_count_for(discussion, current_user)
         - if discussion_activity > 0
-          %span.activity-count.label.label-important
+          %span.activity-count.label.label-info
             = discussion_activity
       .discussion-date-info
-        - if discussion.current_motion
+        -if discussion.current_motion
           - if discussion.current_motion_close_date
             .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_close_date)} until close"
         - else
           .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"
+    - if discussion.current_motion
+      - motion_activity = motion_activity_count_for(discussion.current_motion, current_user)
+      - pop_over_title = render "discussions/graph_preview_pop_over_title", motion: discussion.current_motion
+      - pop_over_body = render "discussions/graph_preview_pop_over", motion: discussion.current_motion, user: current_user, motion_activity: motion_activity
+      .selector-pie-link{ "data-title" => pop_over_title, "data-content" => pop_over_body }
+        .pie{:id => "graph_#{discussion.current_motion.id}"}
+          - if discussion.current_motion.voting? && motion_activity > 0
+            %span.activity-count.label.label-info
+              = motion_activity
+          - if user_signed_in?
+            = button_to '', reset_motion_read_log_user_path(current_user, :motion => discussion.current_motion), :remote => true, :class =>  "preview-pie-button"
+    - else
+      .large-icon.pie-icon.activity-icon
 
 - if discussion.current_motion
   :coffeescript
