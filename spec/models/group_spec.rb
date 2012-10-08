@@ -36,8 +36,12 @@ describe Group do
         @discussion = @group.discussions.first
       end
 
-      it "gives it a proper title" do
-        @discussion.title.should == "Welcome and Introduction to Loomio!"
+      it "sets the title" do
+        @discussion.title.should == "Example Discussion: Welcome and introduction to Loomio!"
+      end
+
+      it "sets the description" do
+        @discussion.description.should_not be_nil
       end
 
       it "assigns Loomio Helper Bot as the author" do
