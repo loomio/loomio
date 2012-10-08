@@ -3,7 +3,7 @@ class InvitesUsersToGroup
     recipient_emails = args[:recipient_emails]
     group = args[:group]
     inviter = args[:inviter]
-    access_level = args[:access_level]
+    access_level = args[:access_level] ? args[:access_level] : 'member'
     recipient_emails.each do |recipient_email|
       invitation = Invitation.create!(:recipient_email => recipient_email,
                          :inviter => inviter,

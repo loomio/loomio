@@ -51,6 +51,15 @@ describe InvitesUsersToGroup do
                                 :group => group)
   end
 
+  it 'sets access level to "member" by default' do
+    Invitation.should_receive(:create!).
+               with(hash_including(:access_level => 'member'))
+
+    InvitesUsersToGroup.invite!(:recipient_emails => ['rob@guthrie.com'],
+                                :inviter => inviter,
+                                :group => group)
+  end
+
   it 'sends a separate email for admins' do
     email.should_receive(:deliver)
     GroupInvitationMailer.should_receive(:invite_admin).
