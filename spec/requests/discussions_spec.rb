@@ -64,7 +64,7 @@ describe "Discussion" do
 
           should have_link('stuff', {:href => 'http://loom.io/someone\'s%20gross%20url#ew', :target => '_blank'})
         end
-        it "should not allow user inputted html" do
+        it "does not allow user inputted html" do
           fill_in 'new-comment', with: "<p id='should_not_be_here'>should_be_here</p>"
           click_on 'post-new-comment'
 
