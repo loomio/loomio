@@ -28,7 +28,7 @@
                   = "By "
                   =link_to @discussion.author.name, "#", "title" => @discussion.author.name,
                     "data-content" => "#{render 'users/name_popover', user: @discussion.author, group: @discussion.group}",
-                    class: "user-name-link"
+                    class: "user-name-with-popover"
         .row
           .span6#content-history
             .large-icon.discussion-icon.enabled-icon
