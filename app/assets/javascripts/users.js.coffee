@@ -17,18 +17,28 @@ $ ->
 $ ->
   isVisible = false
   clickedAway = false
-
-  $('.user-name-link').popover(
+  $('.user-name-with-popover').popover(
     html: true,
     placement: 'top',
     trigger: 'manual'
-  ).click((e)->
+  )
+  $('.user-name-with-popover').click((e)->
     if isVisible
-      $(this).popover('hide')
-      isVisible = false
+      $(this).addClass("selected")
+      $('.user-name-with-popover').each ->
+        if $(this).hasClass("selected")
+          if $(this).hasClass("popover-visible")
+            toggle_popover(false, $(this))
+            isVisible = false
+          else
+            toggle_popover(true, $(this))
+            isVisible = true
+        else
+          toggle_popover(false, $(this))
+      $(this).removeClass("selected")
       clickedAway = false
     else
-      $(this).popover('show')
+      toggle_popover(true, $(this))
       clickedAway = false
       isVisible = true
     e.preventDefault()
@@ -36,8 +46,11 @@ $ ->
 
   $(document).click((e)->
     if(isVisible & clickedAway)
-      $('.user-name-link').popover('hide')
-      isVisible = clickedAway = false
+      target = e.target
+      if !$(target).closest(".popover").length
+        toggle_popover(false, $('.user-name-with-popover'))
+        isVisible = false
+        clickedAway = false
     else
       clickedAway = true
   )
@@ -48,3 +61,11 @@ $ ->
     )
     $(this).addClass('active')
   )
+
+  toggle_popover = (show, elem) ->
+    if show
+      elem.popover('show')
+      elem.addClass('popover-visible')
+    else
+      elem.popover('hide')
+      elem.removeClass('popover-visible')

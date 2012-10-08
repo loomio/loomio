@@ -8,9 +8,8 @@
         = comment.user.avatar_initials
   .comment-container.with-avatar
     .comment-username
-      =link_to comment.user_name, "#", "title" => comment.user_name,
-        "data-content" => "#{render 'users/name_popover', user: comment.user, group: comment.group}",
-        class: "user-name-link"
+      = link_to comment.user_name, "#", "title" => comment.user_name,
+        "data-content" => "#{render 'users/name_popover', user: comment.user, group: comment.group}", :class => "user-name-with-popover"
     .comment-body~ markdown(comment.body.to_s.force_encoding("UTF-8"))
     .comment-time-and-likes
       =render 'comments/comment_likes', comment: comment, likes: likes
