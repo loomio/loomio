@@ -206,6 +206,7 @@ displayGraph = (this_pie, graph_id, data)->
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
     $(".selector-pie-link").click((event) ->
+      $(this).find('.pie').tooltip('hide')
       if $(this).find(".popover").html() == null
         currentPie = this
         $('.selector-pie-link').each(() ->
