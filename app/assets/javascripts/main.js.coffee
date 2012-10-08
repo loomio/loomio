@@ -213,7 +213,6 @@ $ ->
             $(this).popover('hide')
         )
         $(this).find('.button_to').submit()
-        $(this).find(".activity-count").hide()
         event.stopPropagation()
         $(currentPie).popover('toggle')
         )
