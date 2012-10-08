@@ -211,20 +211,20 @@ describe User do
     MotionReadLog.count.should == 1
   end
 
-  it "can update an existing motion_read_log" do
-    @motion = create :motion
-    MotionReadLog.stub_chain(:where, :first)
-    @motion_read_log = mock_model(MotionReadLog)
-    MotionReadLog.stub(:new).and_return(@motion_read_log)
-    
-    time_now = Time.now()
-    Time.stub(:now).and_return(time_now)
+  context "updating an existing motion_read_log" do
+    it "updates to the current time if there is no new activity since the page was loaded" do
+      @motion = create :motion
+      MotionReadLog.stub_chain(:where, :first)
+      @motion_read_log = mock_model(MotionReadLog)
 
-    @motion_read_log.stub(:save!).and_return(true)
-    @motion_read_log.should_receive(:user_id=).with(user.id)
-    @motion_read_log.should_receive(:motion_id=).with(@motion.id)
+      time_last_viewed = Time.now
+      Time.stub(:now).and_return(time_last_viewed)
+      @motion_read_log.should_receive(:motion_last_viewed_at=).with(time_last_viewed)
+      @motion_read_log.stub(:save!).and_return(true)
 
-    user.update_motion_read_log(@motion)
+      user.update_motion_read_log(@motion)
+    end
+    it "updates to the time of the vote last displayed as activity, if there is new activity since the page was loaded"
   end
 
   it "can update an existing discussion_read_log" do
