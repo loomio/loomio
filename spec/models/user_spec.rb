@@ -206,28 +206,31 @@ describe User do
   end
 
   it "can create a new motion_read_log" do
-    @group = create :group
-    @discussion = create :discussion, group: @group
-    @motion = create :motion, discussion: @discussion
+    @motion = create(:motion)
     user.update_motion_read_log(@motion)
     MotionReadLog.count.should == 1
   end
 
   it "can update an existing motion_read_log" do
-    @discussion = create :discussion, group: group
-    @motion = create(:motion,discussion: @discussion)
-    @motion.activity = 4
+    @motion = create :motion
+    MotionReadLog.stub_chain(:where, :first)
+    @motion_read_log = mock_model(MotionReadLog)
+    MotionReadLog.stub(:new).and_return(@motion_read_log)
+    
+    time_now = Time.now()
+    Time.stub(:now).and_return(time_now)
+
+    @motion_read_log.stub(:save!).and_return(true)
+    @motion_read_log.should_receive(:user_id=).with(user.id)
+    @motion_read_log.should_receive(:motion_id=).with(@motion.id)
+
     user.update_motion_read_log(@motion)
-    @motion.activity = 5
-    user.motion_activity_when_last_read(@motion).should == 4
-    user.update_motion_read_log(@motion)
-    user.motion_activity_when_last_read(@motion).should == 5
   end
 
   it "can update an existing discussion_read_log" do
     @discussion = create :discussion, group: group
     DiscussionReadLog.stub_chain(:where, :first)
-    @discussion_read_log = mock_model(DiscussionReadLog)
+    @motion_read_log = mock_model(DiscussionReadLog)
     DiscussionReadLog.stub(:new).and_return(@discussion_read_log)
 
     time_now = Time.now()

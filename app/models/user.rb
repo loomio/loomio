@@ -192,34 +192,20 @@ class User < ActiveRecord::Base
   def update_motion_read_log(motion)
     if MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
       motion_read_log = MotionReadLog.new
-      motion_read_log.motion_activity_when_last_read = motion.activity
       motion_read_log.user_id = id
       motion_read_log.motion_id = motion.id
-      motion_read_log.save
+      motion_read_log.save!
     else
       log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-      log.motion_activity_when_last_read = motion.activity
-      log.save
+      log.motion_last_viewed_at = Time.now
+      log.save!
     end
-  end
-
-  def motion_activity_when_last_read(motion)
-    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-    if log
-      log.motion_activity_when_last_read
-    else
-      0
-    end
-  end
-
-  def motion_activity_count(motion)
-    motion.activity - motion_activity_when_last_read(motion)
   end
 
   def update_discussion_read_log(discussion)
     if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
       discussion_read_log = DiscussionReadLog.new
-      discussion_read_log.discussion_last_viewed_at = Time.now()
+      discussion_read_log.discussion_last_viewed_at = Time.now
       discussion_read_log.user_id = id
       discussion_read_log.discussion_id = discussion.id
       discussion_read_log.save!

@@ -16,3 +16,8 @@ $ ->
       placement: "right",
       trigger: "manual"
       })
+#adds bootstrap popovers to preview pies  
+$ ->
+  $(".pie").tooltip
+    placement: "top",
+    title: "Proposal activity.Click to see summary."
