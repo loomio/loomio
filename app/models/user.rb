@@ -191,7 +191,7 @@ class User < ActiveRecord::Base
 
   def update_motion_read_log(motion, motion_activity = nil)
     log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-    if log == nil
+    if log.nil?
       motion_read_log = MotionReadLog.new
       motion_read_log.user_id = id
       motion_read_log.motion_id = motion.id
@@ -201,7 +201,7 @@ class User < ActiveRecord::Base
         last_viewed = Time.now
       else
         votes_since_page_load = motion.number_of_votes_since_last_looked(self) - motion_activity
-        last viewed = motion.votes[(motion.votes.count - vote_since_page_load) - 1].created_at
+        last_viewed = motion.votes[(motion.votes.count - votes_since_page_load) - 1].created_at
       end
       log.motion_last_viewed_at = last_viewed
       log.save!
