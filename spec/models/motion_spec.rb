@@ -247,18 +247,18 @@ describe Motion do
     end
   end
 
-  # describe "last_looked_at_by(user)" do
-  #   it "returns the date when the user last looked at the motion" do
-  #     user = build(:user)
-  #     motion = create(:motion)
-  #     last_viewed_at = Time.now
-  #     log = create(:motion_read_log)
-  #     MotionReadLog.stub_chain(:where, :first).and_return(log)
-  #     log.stub(:motion_last_viewed_at).and_return(last_viewed_at)
+  describe "last_looked_at_by(user)" do
+    it "returns the date when the user last looked at the motion" do
+      user = build(:user)
+      motion = create(:motion)
+      last_viewed_at = Time.now
+      log = create(:motion_read_log)
+      MotionReadLog.stub_chain(:where, :first).and_return(log)
+      log.stub(:motion_last_viewed_at).and_return(last_viewed_at)
 
-  #     motion.last_looked_at_by(user).should == last_viewed_at
-  #   end
-  # end
+      motion.last_looked_at_by(user).should == last_viewed_at
+    end
+  end
 
   describe "number_of_votes_since(time)" do
     it "returns the number of votes since time" do
