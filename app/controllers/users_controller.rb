@@ -37,7 +37,7 @@ class UsersController < BaseController
 
   def reset_motion_read_log
     @motion = Motion.find(params[:motion])
-    @motion_activity = Motion.find(params[:motion_activity])
+    @motion_activity = Integer(params[:motion_activity])
     current_user.update_motion_read_log(@motion, @motion_activity)
     respond_to do |format|
       format.html {}
