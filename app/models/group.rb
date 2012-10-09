@@ -217,10 +217,10 @@ class Group < ActiveRecord::Base
   # DISCUSSION LISTS
   #
 
-  def all_discussions
+  def all_discussions(user)
+    user.discussions.includes(:group).where("group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL)", id, id)
     # This commented out line has a security hole in it.
     # Discussion.includes(:group).where("group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL)", id, id)
-    discussions
   end
 
   def discussions_with_current_motion
