@@ -20,4 +20,4 @@ $ ->
 $ ->
   $(".pie").tooltip
     placement: "top",
-    title: "Proposal activity. Click to see summary."
+    title: "Click to see more."
