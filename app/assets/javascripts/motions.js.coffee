@@ -82,15 +82,6 @@ $ ->
     event.preventDefault()
   )
 
-#expand description text on proposal
-$ ->
-  if $(".motion").length > 0
-    $(".see-more").click((event) ->
-      $(".short-description").toggle()
-      $(".long-description").toggle()
-      event.preventDefault()
-    )
-
 $ ->
   if $(".motion").length > 0
     $(".toggle-yet-to-vote").click((event) ->
