@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
+  has_paper_trail
 
   validates_presence_of :body
   validates_presence_of :user
