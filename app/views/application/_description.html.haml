@@ -7,7 +7,7 @@
       ~ markdown(model.description)
     = link_to "Show More", "#", class: 'see-more' if too_long
     - if can? :edit_description, model
-      = link_to "Edit", "#", class: "edit-description edit-#{model_name}-description"
+      = link_to "Edit #{model_name} info", "#", class: "edit-description edit-#{model_name}-description"
 
   - if can? :edit_description, model
     = form_tag send("edit_description_#{model_name}_path"), :id => "description-edit-form", :class => "hidden", :remote => true do |f|
