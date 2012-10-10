@@ -69,7 +69,12 @@ h5 {
 #new_discussion .control-label {
   display: block;
 }
-
+.see-more {
+  font-size: $font-tinywiny;
+  position: relative;
+  bottom: 10px;
+  display: block;
+}
 .model-description { padding-bottom: 10px; }
 .description-body {
   color: $dark-grey;
