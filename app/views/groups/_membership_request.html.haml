@@ -2,8 +2,8 @@
   .clearfix
     .membership-user-name= truncate(membership_request.user_name, :length => 29, :omission => '...')
     .admin-controls
-      =link_to 'Approve', approve_request_for_membership_path(membership_request), :method => :post,
-        :data => { :confirm => "Are you sure you want to add #{membership_request.user_email} to the group?" }
       =link_to "×", ignore_request_for_membership_path(membership_request), :method => :post, class: 'close',
           :data => {:confirm => "Are you sure you want to ignore the member request from #{membership_request.user_email}?" }
+      =link_to 'Approve', approve_request_for_membership_path(membership_request), :method => :post,
+        :data => { :confirm => "Are you sure you want to add #{membership_request.user_email} to the group?" }
 
