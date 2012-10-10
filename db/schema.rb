@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20121030014815) do
+=======
+<<<<<<< HEAD
+ActiveRecord::Schema.define(:version => 20121008010612) do
+=======
+ActiveRecord::Schema.define(:version => 20121010214955) do
+>>>>>>> added paper_trail
+>>>>>>> added paper_trail
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -85,7 +93,14 @@ ActiveRecord::Schema.define(:version => 20121030014815) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
+<<<<<<< HEAD
     t.integer  "activity",           :default => 0,     :null => false
+=======
+<<<<<<< HEAD
+=======
+    t.integer  "activity",        :default => 0, :null => false
+>>>>>>> added paper_trail
+>>>>>>> added paper_trail
     t.datetime "last_comment_at"
     t.text     "description"
     t.boolean  "has_current_motion", :default => false
@@ -241,6 +256,17 @@ ActiveRecord::Schema.define(:version => 20121030014815) do
   add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"
   add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
   create_table "votes", :force => true do |t|
     t.integer  "motion_id"

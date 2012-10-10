@@ -27,6 +27,7 @@ gem 'kaminari'
 gem 'activeadmin'
 gem 'nokogiri'
 gem 'redcarpet', :git => 'https://github.com/vmg/redcarpet.git'
+gem 'paper_trail', '~> 2'
 gem "high_voltage"
 gem 'thin'
 
@@ -47,6 +48,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'thin'
   gem 'debugger'
   gem "factory_girl_rails", "~> 4.0"
   gem 'faker'
