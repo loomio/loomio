@@ -257,7 +257,7 @@ input#user_email{
   color: $mid-grey;
   float: left;
 }
-#users-list .admin-controls {
+#users-list .admin-controls, #request-list .admin-controls {
   float: right;
   width: 98px;
   text-align: right;
