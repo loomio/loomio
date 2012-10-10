@@ -46,8 +46,11 @@ $ ->
           window.history.pushState("stateObj", "title_ignored", Application.getNextURL($(this).attr("href")))
         $("#discussion-list").addClass('hidden')
         $("#discussions-loading").removeClass('hidden')
+        $("#discussions-with-motions").hide()
         $('#group-discussions').load($(this).attr('href'), ->
           Application.convertUtcToRelativeTime()
+          if document.URL.indexOf("page") == -1
+            $("#discussions-with-motions").show()
           $("#discussion-list").removeClass('hidden')
           $("#discussions-loading").addClass('hidden')
           activate_discussions_tooltips()

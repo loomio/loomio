@@ -15,9 +15,12 @@ $ ->
       if Application.html5.supported
         window.history.pushState("stateObj", "title_ignored", Application.getNextURL($(this).attr("href")))
       $("#discussion-list").addClass('hidden')
+      $("#discussions-with-motions").hide()
       $("#discussions-loading").removeClass('hidden')
       $('#user-discussions').load($(this).attr('href'), ->
         Application.convertUtcToRelativeTime()
+        if document.URL.indexOf("page") == -1
+          $("#discussions-with-motions").show()
         $("#discussion-list").removeClass('hidden')
         $("#discussions-loading").addClass('hidden')
       )
