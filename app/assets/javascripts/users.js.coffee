@@ -55,8 +55,8 @@ $ ->
       clickedAway = true
   )
 
-  $('.buttonset > a > .btn').click((e) -> 
-    $(this).parent().parent().find('a > .btn').each( (i) ->
+  $('#ng-values .btn-group > .btn, #noise_email.btn-group > .btn').click((e) -> 
+    $(this).parent().find('a.btn').each( (i) ->
       $(this).removeClass('active')
     )
     $(this).addClass('active')

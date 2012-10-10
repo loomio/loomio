@@ -3,54 +3,6 @@
     = form_for [@user], :html => { :multipart => true } do |f|
       = f.label :name
       = f.text_field :name
-      / Notification settings
-      %h1 Noise Level
-      - if current_user.groups.present?
-        %hr
-        .row
-          #noise-groups
-            .span6
-              #ng-heading
-                .span2
-                  %h4 Groups
-                .span3 
-                  %h4 Notifications
-              #ng-values
-                - current_user.groups.each do |group|
-                  .span2= group.name
-                  .span3.buttonset{:id => "ng-"+group.name }
-                    =link_to set_noise_user_path(@user, :noise => '0', :group => group), :method => :post, :remote => true, :id => "ng-#{group.name}-0" do
-                      %span.btn{ :class => ('active' if @user.get_group_noise_level(group) == 0)} Off
-                    =link_to set_noise_user_path(@user, :noise => '1', :group => group), :method => :post, :remote => true, :id => "ng-#{group.name}-1" do
-                      %span.btn{:class => ('active' if @user.get_group_noise_level(group) == 1)} Default
-                    =link_to set_noise_user_path(@user, :id => "ng-#{group.name}-2", :noise => '2', :group => group), :method => :post, :remote => true, :id => "ng-#{group.name}-all" do
-                      %span.btn{ :class => ('active' if @user.get_group_noise_level(group) == 2)} All
-
-            .span4
-              .helper-text
-                %p Customise your notification settings for each group. Select 'All' if you'd like to be notified of everything that goes on in the group, or 'Off' to mute it entirely.
-      / All Groups
-      %hr
-      .row
-        #noise-email
-          .span6
-            #ne-heading
-              .span2 &nbsp;
-              .span3 
-                %h4 E-mails
-            #ne-values
-              .span2 All Groups
-              #noise_email.span3.buttonset
-                =link_to set_receive_emails_user_path(@user, :email => false), :method => :post, id: 'email_off', :remote => true do
-                  %span.btn{:class => ('active' if !@user.receive_emails)} Off
-                =link_to set_receive_emails_user_path(@user, :email => true), :method => :post, id: 'email_on', :remote => true do
-                  %span.btn{:class => ('active' if @user.receive_emails)} On
-          .span4
-            .helper-text
-              %p Set this to off if you never want Loomio to send you e-mails.
-      %hr
-
-      / Notification settings end
       %h3 Picture
       .row
         .span3
@@ -85,6 +37,48 @@
               %li.user-image-option.option-upload
                 = link_to 'Upload a new image', '#', class: 'btn btn-grey', id: 'upload-new-image'
       = hidden_field_tag("user[avatar_kind]", "", :id => "user-avatar-kind")
+      / Notification settings
+      %h3 Notifications
+      - if current_user.groups.present?
+        %hr
+        .row
+          #noise-groups
+            .span6
+              #ng-heading
+                .span2
+                  %h4 Groups
+                .span3 
+                  %h4 Notifications
+              #ng-values
+                - current_user.root_groups.each do |group|
+                  = render 'users/group_noise_setting', user: current_user, group: group
+                  - if group.subgroups.size > 0
+                    .sub-group
+                      - group.subgroups.each do |subgroup|
+                        = render 'users/group_noise_setting', user: current_user, group: subgroup
+            .span4
+              .helper-text
+                %p Customise your notification settings for each group. Select 'All' if you'd like to be notified of everything that goes on in the group, or 'Off' to mute it entirely.
+      / All Groups
+      %hr
+      .row
+        #noise-email
+          .span6
+            #ne-heading
+              .span2 &nbsp;
+              .span3 &nbsp;
+            #ne-values
+              .span2 E-mail Notifications
+              #noise_email.span3.btn-group
+                =link_to "On", set_receive_emails_user_path(@user, :email => true), :method => :post, id: 'email_on', :remote => true, :class => (@user.receive_emails ? 'btn active' : 'btn')
+                =link_to "Off", set_receive_emails_user_path(@user, :email => false), :method => :post, id: 'email_off', :remote => true, :class => (@user.receive_emails ? 'btn' : 'btn active')
+
+          .span4
+            .helper-text
+              %p Set this to off if you never want Loomio to send you e-mails.
+      %hr
+
+      / Notification settings end
       = f.submit "Update Settings", class: "btn btn-info"
     = form_for [@user], :html => { :multipart => true, :id => 'upload-form' }, :url => upload_new_avatar_user_path(@user), :method => 'post' do
       = file_field_tag :uploaded_avatar, id: 'uploaded-avatar', class: 'hidden'

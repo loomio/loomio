@@ -11,11 +11,16 @@ class Event < ActiveRecord::Base
 
   attr_accessible :kind, :eventable, :user
 
+  # Event Priorities    |  Noise Levels
+  # High = 2            |  Mute = 2
+  # Medium/Default = 1  |  Default = 1
+  # Low = 0             |  All = 0
+
   def self.new_discussion!(discussion)
     group = discussion.group
     event = create!(:kind => "new_discussion", :eventable => discussion)
     discussion.group_users.each do |user|
-      if user != discussion.author && user.send_notification?(group, 2) #pending event refactor
+      if user != discussion.author && user.send_notification?(group, 0) #pending event refactor
         event.notifications.create! :user => user
       end
     end
@@ -26,15 +31,10 @@ class Event < ActiveRecord::Base
     group = comment.discussion.group
     event = create!(:kind => "new_comment", :eventable => comment)
     comment.discussion.group_users.each do |user|
-      if user != comment.user && ((comment.discussion.is_participant?(user) && user.send_notification?(group, 1)) || user.send_notification?(group, 2))
+      if user != comment.user && ((comment.discussion.is_participant?(user) && user.send_notification?(group, 1)) || user.send_notification?(group, 0))
         event.notifications.create! :user => user
       end
     end
-    # comment.discussion_participants.each do |user|
-    #   if user != comment.user && user.send_notification?(group, 1)
-    #     event.notifications.create! :user => user
-    #   end
-    # end
     event
   end
 
@@ -64,7 +64,7 @@ class Event < ActiveRecord::Base
     event = create!(:kind => "motion_closed", :eventable => motion, :user => closer)
 
     motion.group_users.each do |user| 
-      if user != closer && (user.send_notification?(group, 2) || user == motion.author)
+      if user != closer && (user.send_notification?(group, 0) || user == motion.author)
         event.notifications.create! :user => user
       end
     end
@@ -75,7 +75,7 @@ class Event < ActiveRecord::Base
     event = create!(:kind => "new_vote", :eventable => vote)
     #pending Craig's notification rewrite - PS
     vote.group_users.each do |user|
-      if user != vote.user && user.send_notification?(group, 2) && (user == vote.motion_author || user == vote.discussion_author)
+      if user != vote.user && user.send_notification?(group, 0) && (user == vote.motion_author || user == vote.discussion_author)
         event.notifications.create! :user => user
       end
     end
