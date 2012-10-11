@@ -242,7 +242,7 @@ input#user_email{
 }
 .member-request-message{
   color: $dark-grey;
-  a{ color: #08C }
+  a{ text-decoration: underline; }
 }
 // #new_user { padding-bottom: 14px; }
 
