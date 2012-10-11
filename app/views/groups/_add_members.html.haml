@@ -2,31 +2,16 @@
   - if can? :add_members, group
     .clearfix
       - if group.parent.blank?
-        %a.btn.btn-small.btn-icon#group-add-members{href: "#invite-group-members", 'data-toggle' => "modal" }
+        %a.btn.btn-small.btn-icon#group-add-members{href: "#"}
           .small-icon.member-icon
           .btn-text Add new member
-        #invite-group-members.modal.hidden
-          .modal-header
-            %button.close{"data-dismiss" => "modal"}×
-            %h2= "Invite members to #{group.name}"
+        #invite-group-members.hidden
           = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
-            .modal-body
-              = devise_error_messages!
-              = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
-              = f.input :email, placeholder: "Email address", label: false, autofocus: true
-              .member-request-message
-                %span.label
-                  = "23" #group.max_size
-                = "remaining invites"
-                %p
-                %p
-                  = "Need more? Loomio is in closed beta, which means we're still in development and still have limited resources for user support."
-                  = "If you would like to increase the size of your group"
-                  = link_to "get in touch", 'mailto:contact@loom.io', :target =>'_blank'
-                  = " and we will see what we can do."
-            .modal-footer
-              = link_to "Close", "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
-              = f.submit "Send invite", class: "btn btn-info", id: "user-submit", :data => { :disable_with => "Sending" }
+            = devise_error_messages!
+            = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
+            = f.input :email, placeholder: "Email address", label: false
+            = f.submit "Invite", class: "btn btn-small", id: 'invite'
+            = link_to "Cancel", "#", id: 'cancel-add-members'
         %input#group_id{ type: "hidden", value: group.id }
       - else
         %a.btn.btn-small.btn-icon.subgroup-add-members{href: "#invite-subgroup-members", 'data-toggle' => "modal" }
