@@ -8,22 +8,6 @@ $ ->
         $(this).text("Membership Requested")
     )
 
-#*** add member form ***
-$ ->
-  # Only execute on group page
-  if $("body.groups.show").length > 0
-    $("#group-add-members").click((event) ->
-      $("#group-add-members").addClass('hidden')
-      $("#invite-group-members").removeClass('hidden')
-      $("#user_email").focus()
-      event.preventDefault()
-    )
-    $("#cancel-add-members").click((event) ->
-      $("#group-add-members").removeClass('hidden')
-      $("#invite-group-members").addClass('hidden')
-      event.preventDefault()
-    )
-
 #*** ajax for discussions on group page ***
 $ ->
   if $("body.groups.show").length > 0 && $('#group-discussions').html() != null
@@ -46,11 +30,8 @@ $ ->
           window.history.pushState("stateObj", "title_ignored", Application.getNextURL($(this).attr("href")))
         $("#discussion-list").addClass('hidden')
         $("#discussions-loading").removeClass('hidden')
-        $("#discussions-with-motions").hide()
         $('#group-discussions').load($(this).attr('href'), ->
           Application.convertUtcToRelativeTime()
-          if document.URL.indexOf("page") == -1
-            $("#discussions-with-motions").show()
           $("#discussion-list").removeClass('hidden')
           $("#discussions-loading").addClass('hidden')
           activate_discussions_tooltips()
