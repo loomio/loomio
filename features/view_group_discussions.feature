@@ -85,13 +85,43 @@ Scenario: Parent-group non-member tries to view discussions for a sub-group view
 
 
 Scenario: Public sub-group member views discussions for its parent-group, and sees the sub-group's discussions
+  Given I am logged in
+  And I am a member of a public sub-group
+  And the sub-group has discussions
+  When I visit the parent-group page
+  Then I should see the sub-group's discussions
 
 Scenario: Public sub-group non-member views discussions for its parent-group, and sees the sub-group's discussions
+  Given I am logged in
+  And I am not a member of a public sub-group
+  And the sub-group has discussions
+  When I visit the parent-group page
+  Then I should see the sub-group's discussions
 
 Scenario: Private sub-group member views discussions for its parent-group, and sees the sub-group's discussions
+  Given I am logged in
+  And I am a member of a private sub-group
+  And the sub-group has discussions
+  When I visit the parent-group page
+  Then I should see the sub-group's discussions
 
 Scenario: Private sub-group non-member views discussions for its parent-group, and does not see the sub-group's discussions
+  Given I am logged in
+  And I am not a member of a private sub-group
+  And the sub-group has discussions
+  When I visit the parent-group page
+  Then I should not see the sub-group's discussions
 
 Scenario: Parent-group member views discussions for parent-group with a sub-group viewable to parent-group members, and does not see the sub-group's discussions
+  Given I am logged in
+  And I am a member of a parent-group that has a sub-group viewable by parent-group members
+  And the sub-group has discussions
+  When I visit the parent-group page
+  Then I should not see the sub-group's discussions
 
 Scenario: Parent-group non-member views discussions for parent-group with a sub-group viewable to parent-group members, and does not see the sub-group's discussions
+  Given I am logged in
+  And I am not a member of a parent-group that has a sub-group viewable by parent-group members
+  And the sub-group has discussions
+  When I visit the parent-group page
+  Then I should not see the sub-group's discussions
