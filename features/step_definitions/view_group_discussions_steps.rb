@@ -97,8 +97,12 @@ Then /^I should not see the sub\-group's discussions$/ do
   page.should_not have_content(@sub_group_discussion.title)
 end
 
+When /^I visit the parent\-group page$/ do
+  visit group_path(@parent_group)
+end
+
 Given /^I am a member of a sub\-group viewable by parent\-group members$/ do
-  step "a sub-group viewable by parent group members exists"
+  step "a sub-group viewable by parent-group members exists"
   @parent_group.add_member! @user
   @sub_group.add_member! @user
 end
@@ -107,4 +111,8 @@ Given /^I am a member of a parent\-group that has a sub\-group viewable by paren
   @parent_group = FactoryGirl.create :group
   @sub_group = FactoryGirl.create :group, :parent => @parent_group, :viewable_by => :parent_group_members
   @parent_group.add_member! @user
+end
+
+Given /^I am not a member of a parent\-group that has a sub\-group viewable by parent\-group members$/ do
+  step "a sub-group viewable by parent-group members exists"
 end
