@@ -168,11 +168,11 @@ pre{
 }
 
 
-/*** comments, positions & proposals in History ***/
 #content-history {
   border-right: 1px solid $light-grey;
   min-height: 660px;
   padding-right: 10px;
+
 
   #content-history-body {
     padding: 10px 0px 10px 8px;
@@ -188,11 +188,6 @@ pre{
     overflow: hidden;
   }
 
-  #new-comment-form img {
-    float:left;
-    margin-right: 10px;
-  }
-
   #new-comment {
     margin: 0 0 5px 0px;
     height: 80px;
@@ -204,16 +199,25 @@ pre{
     margin: 5px 5px 5px 45px;
   }
 
-  ul.history-list {
-    list-style: none;
-    margin: 0 15px 3px 0;
-  }
   ul.history-list .divider {
     margin-left: 45px;
     border-bottom: 1px solid $light-grey;
+    width: 388px;
   }
+
   li.empty-list-message {
     margin-left: 45px;
+  }
+
+  .history-item{
+    width: 437px;
+    float: left;
+  }
+
+  .comment-container {
+    margin-left: 45px;
+    padding: 5px 0;
+    border-bottom: 1px solid $light-grey;
   }
 
   /* comment */
@@ -221,7 +225,7 @@ pre{
     color: $dark-grey;
     font-size: $font-small;
     background-color: $comment-color;
-    margin-top: 5px;
+    
   }
 
   /* Apply word break only to paragraphs in comment-body */
@@ -229,33 +233,6 @@ pre{
     /* The following styles prevent unbroken strings from breaking the layout */
     word-wrap: break-word;
   }
-
-  .comment-container {
-    width: 388px;
-    float: left;
-    margin-left: 45px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid $light-grey;
-    margin-bottom: 5px;
-  }
-
-  .comment-container.with-avatar {
-    margin-left: 10px;
-    float: left;
-  }
-
-  .comment-avatar {
-    height: 35px;
-    margin-right: 0px;
-  }
-
-  .comment.position {
-    width: 388px;
-  }
-  .comment img {
-    float: left;
-  }
-
   .comment .comment-username{
     font-weight: bold;
   }
@@ -271,11 +248,18 @@ pre{
     font-size: $font-small;
   }
 
+  .comment-avatar {
+    width: 35px;
+    height: 35px;
+    margin-top: 5px;
+  }
+
+
   /* position */
   .position .position-icon{
     float: left;
     padding-right: 0.4em;
-    display: block;
+    width: 18px;
     height: 18px;
   }
 
@@ -283,7 +267,6 @@ pre{
     color: $mid-grey;
     font-style: italic;
   }
-
 
   /* proposal */
   .proposal-icon {
@@ -296,17 +279,23 @@ pre{
     background-repeat: no-repeat;
     background-position: 2px 1px;
   }
+
   .proposal{
-    background: $comment-color;
-    color: $mid-grey;
+    margin-bottom: 1.5em;
   }
+  
   .proposal .proposal-text{
     color: $mid-grey;
     font-style: italic;
   }
-  .proposal.current{
-    background: $current-proposal;
+  
+  .proposal .comment-container{
+    background: #f2f2f2;
+    padding: 5px;
   }
+
+
+
 }
 
 // Discussion preview list panel
