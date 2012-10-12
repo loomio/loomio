@@ -1,4 +1,4 @@
-Feature: User views group discussions
+  Feature: User views group discussions
   As a Loomio user
   So that I can see what groups are discussing
   I want to see all the public discussions belonging to a group
