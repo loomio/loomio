@@ -3,7 +3,7 @@
   %h1#discussion-title
     = discussion.title
   #edit-discussion-title.hidden
-    = form_tag send("edit_title_discussion_path"), :remote => true do |f|
+    = form_tag send("edit_title_discussion_path"), :remote => true do
       = hidden_field_tag 'id'
       .control-group
         = text_field_tag 'title', discussion.title, {id: 'discussion-input', class: 'inputError limit-150'}

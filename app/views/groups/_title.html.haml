@@ -9,8 +9,12 @@
         = image_tag("privicon_"+group.viewable_by.to_s+".png", alt: group.viewable_by.to_s)
       - if can? :edit, group
         %ul.dropdown-menu.pull-left
-          %li= link_to "Edit group settings", edit_group_path(group)
-
+          %li#privacy-public
+            = button_to 'Everyone', :action => 'set_privacy_everyone_group_path', :remote => true
+          %li#privacy-member
+            = button_to 'Members', :action => 'set_privacy_members_group_path', :remote => true
+          %li#privacy-parent-member
+            = button_to 'parent_group_members', :action => 'set_privacy_parent_group_path', :remote => true
     - if params[:controller] == 'groups' && params[:action] == 'show'
       - can_edit = can? :edit, group
       - can_leave = group.users_include? current_user
