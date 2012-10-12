@@ -217,31 +217,35 @@ class Group < ActiveRecord::Base
   # DISCUSSION LISTS
   #
 
-  def all_discussions
-    discussions
+  def all_discussions(user)
+    # discussions
     # This commented out line has a security hole in it.
-    # Discussion.includes(:group).where("group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL)", id, id)
+      # user.discussions.where("discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL )", id, id)
+    parent_member = user ? user.is_group_member?(self) : false
+    Discussion.includes(:group)
+      .where("(discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL 
+        AND (groups.viewable_by = 'everyone' OR (groups.viewable_by = 'parent_group_members' AND ?))))", id, id, parent_member)
   end
 
   def discussions_with_current_motion
-    if all_discussions
-      all_discussions.includes(:motions).where('motions.phase = ?', "voting")
+    if all_discussions(user)
+      all_discussions(user).includes(:motions).where('motions.phase = ?', "voting")
     else
       []
     end
   end
 
   def discussions_with_current_motion_not_voted_on(user)
-    if all_discussions
-      (all_discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on(user))
+    if all_discussions(user)
+      (all_discussions(user).includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on(user))
     else
       []
     end
   end
 
   def discussions_with_current_motion_voted_on(user)
-    if all_discussions
-      all_discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", user.id).order("last_comment_at DESC")
+    if all_discussions(user)
+      all_discussions(user).includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", user.id).order("last_comment_at DESC")
     else
       []
     end
