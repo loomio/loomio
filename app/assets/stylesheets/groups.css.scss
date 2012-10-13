@@ -35,7 +35,7 @@
     float: right;
   }
   .group-options a {
-    font-size: 0.9em;
+    // font-size: 0.9em;
   }
   .group-options .icon-cog {
     opacity: 0.65;
@@ -54,6 +54,30 @@
   }
   .privacy-dropdown .dropdown-menu {
     margin-top: 8px;
+  }
+  .privacy-tick{
+    display: inline-block;
+    width: 15px;
+  }
+  li.privacy-item a{
+    padding-left: 5px;
+  }
+  li.privacy-item form {
+    margin: 0px;
+  }
+  li.privacy-item button {
+    border: none;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    margin-bottom: 0px;
+    box-shadow: none;
+    width: 180px;
+    padding-left: 25px;
+    text-align: left;
+  }
+  li.privacy-item button:hover {
+    color: white;
+    background-color: #08c;
   }
 }
 
