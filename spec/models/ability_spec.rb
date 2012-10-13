@@ -41,6 +41,7 @@ describe "User abilities" do
     it { should be_able_to(:unlike, user_comment) }
     it { should be_able_to(:unlike, another_user_comment) }
     it { should be_able_to(:create, new_discussion) }
+    it { should_not be_able_to(:edit_privacy, group) }
     it { should_not be_able_to(:make_admin, @user_membership) }
     it { should_not be_able_to(:make_admin, @other_user_membership) }
     it { should_not be_able_to(:destroy, @other_user_membership) }
@@ -109,6 +110,7 @@ describe "User abilities" do
     it { should be_able_to(:remove_admin, @membership_request) }
     it { should be_able_to(:destroy, @other_user_membership) }
     it { should be_able_to(:edit_description, group) }
+    it { should be_able_to(:edit_privacy, group) }
     it { should_not be_able_to(:update, other_users_motion) }
     it { should be_able_to(:destroy, other_users_motion) }
     it { should be_able_to(:close_voting, other_users_motion) }

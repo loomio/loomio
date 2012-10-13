@@ -1,5 +1,4 @@
 $ ->
-  # Only execute on group page
   if $("body.groups.show").length > 0
     $("#membership-requested").hover(
       (e) ->
@@ -8,9 +7,36 @@ $ ->
         $(this).text("Membership Requested")
     )
 
+#*** edit privacy settings from dropdown ***
+$ ->
+  if $("#privacy-settings-form").length > 0
+    $("#privacy-everyone").click((event) ->
+        $('#viewable_by').val("everyone")
+        $("#privacy-everyone").find('.icon-ok').removeClass('hidden')
+        $("#privacy-members").find('.icon-ok').addClass('hidden')
+        $("#privacy-parent").find('.icon-ok').addClass('hidden')
+        $("#privacy-settings-form").submit()
+        event.preventDefault()
+    )
+    $("#privacy-members").click((event) ->
+        $('#viewable_by').val("members")
+        $("#privacy-everyone").find('.icon-ok').addClass('hidden')
+        $("#privacy-members").find('.icon-ok').removeClass('hidden')
+        $("#privacy-parent").find('.icon-ok').addClass('hidden')
+        $("#privacy-settings-form").submit()
+        event.preventDefault()
+    )
+    $("#privacy-parent").click((event) ->
+        $('#viewable_by').val("parent_group_members")
+        $("#privacy-everyone").find('.icon-ok').addClass('hidden')
+        $("#privacy-members").find('.icon-ok').addClass('hidden')
+        $("#privacy-parent").find('.icon-ok').removeClass('hidden')
+        $("#privacy-settings-form").submit()
+        event.preventDefault()
+    )
+
 #*** add member form ***
 $ ->
-  # Only execute on group page
   if $("body.groups.show").length > 0
     $("#group-add-members").click((event) ->
       $("#group-add-members").addClass('hidden')
