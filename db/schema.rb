@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20121010214955) do
     t.datetime "updated_at"
     t.string   "title"
 <<<<<<< HEAD
+<<<<<<< HEAD
     t.integer  "activity",           :default => 0,     :null => false
 =======
 <<<<<<< HEAD
@@ -101,6 +102,9 @@ ActiveRecord::Schema.define(:version => 20121010214955) do
     t.integer  "activity",        :default => 0, :null => false
 >>>>>>> added paper_trail
 >>>>>>> added paper_trail
+=======
+    t.integer  "activity",        :default => 0, :null => false
+>>>>>>> model specs for the descripition history
     t.datetime "last_comment_at"
     t.text     "description"
     t.boolean  "has_current_motion", :default => false
@@ -130,7 +134,10 @@ ActiveRecord::Schema.define(:version => 20121010214955) do
     t.string   "status"
     t.integer  "group_id"
     t.boolean  "cannot_contribute", :default => false
+<<<<<<< HEAD
     t.string   "expected_size"
+=======
+>>>>>>> model specs for the descripition history
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
