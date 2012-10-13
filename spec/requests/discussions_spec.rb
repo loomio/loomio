@@ -29,6 +29,7 @@ describe "Discussion" do
         @discussion.group = @group
         @discussion.title = "New discussion!"
         @discussion.author = @user
+        @discussion.description = "Some basic description" 
         @discussion.save
       end
 
@@ -170,6 +171,19 @@ describe "Discussion" do
         should_not have_content("Liked by #{@user.name}")
         should have_link("Like")
         should_not have_link("Unlike")
+      end
+
+      it "can change description to a previous version" do
+        @user2 = create(:user)
+        @discussion.group.add_member!(@user2)
+        comment = @discussion.update_attribute(:description, @discussion.description + " Some additional info."); 
+
+        visit discussion_path(@discussion)
+        find("#discussion-context").find_link('See revision history').click
+        find("#descrition-revision-history").find_link('Prev').click
+        find_button("Go back to this version").click
+        should_not have_content(" Some additional info.")
+        should have_content(@discussion.description)
       end
     end
   end
