@@ -62,8 +62,9 @@
   li.privacy-item a{
     padding-left: 5px;
   }
-  li.privacy-item form {
+  .privacy-dropdown form {
     margin: 0px;
+    display: inline;
   }
   li.privacy-item button {
     border: none;
