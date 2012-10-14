@@ -8,7 +8,7 @@
       %a.dropdown-toggle{ :href => "#", :id => 'privacy', 'data-toggle' => 'dropdown',  "data-title" => "Privacy: '"+group.viewable_by.to_s+"' can see this group." }
         = image_tag("privicon_"+group.viewable_by.to_s+".png", alt: group.viewable_by.to_s, :id => 'privacy-image')
       - if can? :edit, group
-        = render 'privacy_settings', :group => group
+        = render 'groups/privacy_settings', :group => group
     - if params[:controller] == 'groups' && params[:action] == 'show'
       - can_edit = can? :edit, group
       - can_leave = group.users_include? current_user

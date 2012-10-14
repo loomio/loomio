@@ -15,6 +15,6 @@
         .privacy-tick
           %div{:class => css_for_privacy_link(group, 'parent_group_members')}
         = "Parent group members"
-= form_tag send("edit_privacy_group_path"), :remote => true, id: 'privacy-settings-form' do
+= form_tag send("edit_privacy_group_path", group.id), :remote => true, id: 'privacy-settings-form' do
   = hidden_field_tag 'id'
   = hidden_field_tag 'viewable_by', {id: 'viewable_by'}
