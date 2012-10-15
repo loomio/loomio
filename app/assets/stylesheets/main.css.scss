@@ -111,6 +111,7 @@ li.empty-list-message {
 #show-closed-motions {
   margin-bottom: 10px;
 }
+
 #closed-motions-page .selector-list { padding-bottom: 20px; }
 #closed-motions-page li.selector-item.loading { background-position: 270px 160px; }
 #closed-motions {
@@ -395,8 +396,9 @@ ul.loomio-process-flow {
   }
 }
 .btn-grey { color: $mid-grey; }
+.btn-text { float: left; }
 .btn-icon {
-  width: 180px;
+  width: 200px;
   text-align: left;
   line-height: 18px;
   padding: 6px;
