@@ -1,9 +1,9 @@
 window.Application ||= {}
 
 #*** CHECK HTML5 SUPPORT ***
-canvasSupported = !!window.HTMLCanvasElement
-Application.html5 = exports ? this
-Application.html5.supported = true if canvasSupported
+# canvasSupported = !!window.HTMLCanvasElement
+# Application.html5 = exports ? this
+# Application.html5.supported = true if canvasSupported
 
 
 Application.convertUtcToRelativeTime = ->
