@@ -56,7 +56,7 @@ class Ability
 
     can :index, Discussion
 
-    can [:add_comment, :new_proposal, :create, :edit_description, :edit_title], Discussion, :group_id => user.group_ids
+    can [:add_comment, :new_proposal, :create, :edit_description, :edit_title, :show_description_history, :get_previous_description, :get_next_description, :update_description], Discussion, :group_id => user.group_ids
 
     can :destroy, Comment, user_id: user.id
 
