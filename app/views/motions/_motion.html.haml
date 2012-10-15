@@ -79,5 +79,9 @@
           padding: 0
           gap: 5
           shadow: 2
-      # window.setTimeout(make_the_graph, 1000)
+
+      # IE8 FIX - for some reason we have to load the graph after everything else.
+      # Otherwise, the graph doesn't display in IE8.
+      #
+      # Ideally, we'd like to be able to delete this line:
       $(window).load(make_the_graph)
