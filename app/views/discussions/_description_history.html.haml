@@ -1,0 +1,18 @@
+.modal-header
+  %button.close{"data-dismiss" => "modal"}×
+  %h2 Revision history
+.modal-header
+  .user-profile-fields
+    %h4 User Profile Fields
+    %p= "Edited about #{time_ago_in_words(@discussion.created_at)} ago"
+  .revision-version
+    %h4 Version
+    %p
+      =link_to "Prev", get_previous_description_discussion_path(@discussion), :method => :post, :remote => true
+      =" | "
+      =link_to "Next", get_next_description_discussion_path(@discussion), :method => :post, :remote => true
+.modal-body
+  %p= @discussion.description
+.modal-footer
+  = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
+  =button_to "Go back to this version", update_description_discussion_path(@discussion), "data-dismiss" => "modal", :method => :post, :class => "btn btn-info", :data => { :disable_with => "Applying changes..." }

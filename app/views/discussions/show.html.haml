@@ -21,13 +21,18 @@
             .span3.right-context
               .helper-text.discussion-description-helper-text.hidden
                 %p Use this panel to give enough context for your group to have a well-informed discussion. As the discussion progresses, anyone can add information to make it easy for new people to get up to speed.
-              .discussion-author-info
+              .discussion-additional-info
                 = "Started #{time_ago_in_words(@discussion.created_at)} ago"
                 .started-by
                   = "By "
                   =link_to @discussion.author.name, "#", "title" => @discussion.author.name,
                     "data-content" => "#{render 'users/name_popover', user: @discussion.author, group: @discussion.group}",
                     class: "user-name-with-popover"
+                .last-edited-by
+                  = "By "
+                .see-revision-history
+                  =link_to "See revision history", show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
+                  #descrition-revision-history.modal.hidden
         .row
           .span6#content-history
             .large-icon.discussion-icon.enabled-icon
