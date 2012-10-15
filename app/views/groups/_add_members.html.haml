@@ -2,8 +2,8 @@
   - if can? :add_members, group
     .clearfix
       - if group.parent.blank?
-        %a.btn.btn-small.btn-icon#group-add-members{href: "#"}
-          .small-icon.member-icon
+        %button.btn.btn-small.btn-icon#group-add-members{href: "#"}
+          %i.small-icon.member-icon
           .btn-text Add new member
         #invite-group-members.hidden
           = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
@@ -14,8 +14,8 @@
             = link_to "Cancel", "#", id: 'cancel-add-members'
         %input#group_id{ type: "hidden", value: group.id }
       - else
-        %a.btn.btn-small.btn-icon.subgroup-add-members{href: "#invite-subgroup-members", 'data-toggle' => "modal" }
-          .small-icon.member-icon
+        %button.btn.btn-small.btn-icon.subgroup-add-members{href: "#invite-subgroup-members", 'data-toggle' => "modal" }
+          %i.small-icon.member-icon
           .btn-text Add members +
         #invite-subgroup-members.modal.hidden
           = render 'subgroup_add_members', group: group

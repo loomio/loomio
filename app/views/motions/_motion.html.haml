@@ -67,14 +67,17 @@
   :coffeescript
     $ ->
       # Display vote graph
-      @pie_graph_view = new Loomio.Views.Utils.GraphView
-        el: '#graph.pie'
-        id_string: 'graph'
-        legend: true
-        data: #{@votes_for_graph.to_json.html_safe}
-        type: 'pie'
-        tooltip_selector: '#tooltip'
-        diameter: 200
-        padding: 0
-        gap: 5
-        shadow: 2
+      make_the_graph = ->
+        @pie_graph_view = new Loomio.Views.Utils.GraphView
+          el: '#graph.pie'
+          id_string: 'graph'
+          legend: true
+          data: #{@votes_for_graph.to_json.html_safe}
+          type: 'pie'
+          tooltip_selector: '#tooltip'
+          diameter: 200
+          padding: 0
+          gap: 5
+          shadow: 2
+      # window.setTimeout(make_the_graph, 1000)
+      $(window).load(make_the_graph)
