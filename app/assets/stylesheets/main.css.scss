@@ -435,6 +435,7 @@ a.btn-icon:hover { color: $dark-grey; }
 }
 .small-icon.topic-icon {
   background-image:url('/assets/topic-18.png');
+  // background:transparent url('/assets/topic-18.png');
 }
 .small-icon.member-icon {
   background-image:url('/assets/member-18.png');

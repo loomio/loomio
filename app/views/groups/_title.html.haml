@@ -18,7 +18,7 @@
       - can_email = can? :email_members, group
       - if can_edit || can_leave
         .dropdown.btn-group.group-options
-          %a.btn.btn-grey.dropdown-toggle{ :href => "#", 'data-toggle' => 'dropdown' }
+          %button.btn.btn-grey.dropdown-toggle{ :href => "#", 'data-toggle' => 'dropdown' }
             %i.icon-cog
             Options
             = image_tag("dropdown.png", title:'Options', alt:'Options', class: "options-dropdown-icon")
