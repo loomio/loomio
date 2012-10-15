@@ -7,11 +7,7 @@
 
 // group title (on almost all pages)
 .group-title {
-  margin: 70px 0 10px 0;
-  hr {
-    margin: 5px 13px;
-    /*border-top: 1px solid #CCC*/
-  }
+  margin: 0 0 10px 0;
   h1 {
     float: left;
     line-height: 1.2em;
@@ -34,6 +30,11 @@
     position: relative;
     float: right;
   }
+  .group-options .dropdown-toggle{
+    padding: 5px 0;
+    width: 120px;
+  }
+
   .group-options a {
     font-size: 0.9em;
   }
