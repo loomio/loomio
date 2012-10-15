@@ -50,6 +50,7 @@ h5 {
 }
 
 // structural elements (containers etc.)
+.page-container { margin-top: 70px; }
 .group-link.clearfix {
   .group-link-name { float: left; }
   .group-link-activity { float: right; }
@@ -401,7 +402,7 @@ ul.loomio-process-flow {
   width: 200px;
   text-align: left;
   line-height: 18px;
-  padding: 6px;
+  height: 30px;
   margin-bottom: 5px;
   font-size: 14px;
   color: $mid-grey;
