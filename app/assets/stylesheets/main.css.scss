@@ -50,6 +50,7 @@ h5 {
 }
 
 // structural elements (containers etc.)
+.page-container { margin-top: 70px; }
 .group-link.clearfix {
   .group-link-name { float: left; }
   .group-link-activity { float: right; }
@@ -111,6 +112,7 @@ li.empty-list-message {
 #show-closed-motions {
   margin-bottom: 10px;
 }
+
 #closed-motions-page .selector-list { padding-bottom: 20px; }
 #closed-motions-page li.selector-item.loading { background-position: 270px 160px; }
 #closed-motions {
@@ -395,11 +397,12 @@ ul.loomio-process-flow {
   }
 }
 .btn-grey { color: $mid-grey; }
+.btn-text { float: left; }
 .btn-icon {
-  width: 180px;
+  width: 200px;
   text-align: left;
   line-height: 18px;
-  padding: 6px;
+  height: 30px;
   margin-bottom: 5px;
   font-size: 14px;
   color: $mid-grey;
@@ -433,6 +436,7 @@ a.btn-icon:hover { color: $dark-grey; }
 }
 .small-icon.topic-icon {
   background-image:url('/assets/topic-18.png');
+  // background:transparent url('/assets/topic-18.png');
 }
 .small-icon.member-icon {
   background-image:url('/assets/member-18.png');
