@@ -96,18 +96,46 @@ class DiscussionsController < GroupBaseController
     discussion.save!
   end
 
+  def show_description_history
+    @discussion = Discussion.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def get_previous_description
+    @discussion = Discussion.find(params[:id])
+    respond_to do |format|
+      format.js
+    end    
+  end
+
+  def get_next_description
+    @discussion = Discussion.find(params[:id])
+    respond_to do |format|
+      format.js
+    end    
+  end
+
+  def update_description
+    discussion = Discussion.find(params[:id])
+    respond_to do |format|
+      format.js
+    end     
+  end
+
   private
 
-    def group
-      @group ||= find_group
-    end
+  def group
+    @group ||= find_group
+  end
 
-    def find_group
-      if (params[:id] && (params[:id] != "new"))
-        Discussion.find(params[:id]).group
-      elsif params[:discussion][:group_id]
-        Group.find(params[:discussion][:group_id])
-      end
+  def find_group
+    if (params[:id] && (params[:id] != "new"))
+      Discussion.find(params[:id]).group
+    elsif params[:discussion][:group_id]
+      Group.find(params[:discussion][:group_id])
     end
+  end
 
 end
