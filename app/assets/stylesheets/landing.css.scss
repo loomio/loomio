@@ -5,12 +5,47 @@ body.landing {
   background-color: #F7F7ED;
   margin-top: -70px;
   h1 { display: block; }
+  h2 {
+    color: $dark-grey;
+    font-size: 28px;
+    margin: 0 0 10px;
+  }
+  h3 {
+    color: $mid-grey;
+    font-size: 21px;
+    font-weight: normal;
+    margin-bottom: 15px;
+  }
+  p {
+    margin-bottom: 15px;
+    line-height: 24px;
+  }
+  
   /*background: url(http://static.tumblr.com/thpaaos/kT3kqnqrm/container-bg.png);*/
   /*background-image: url(http://static.tumblr.com/thpaaos/YbJkqnqr6/bg.jpg);*/
   #github-link {
     position: absolute;
     right: 0px;
     float: right;
+  }
+  .main-navigation{
+    .navbar .nav li a:hover { color: $dark-grey; }
+    .navbar .nav .active a{ background-color: $loomio-orange; }
+    .navbar-inner {
+      min-height: 39px;
+      background-color: white;
+      background-image: none;
+      border: 1px solid #DDD;
+      @include border-radius(5px);
+      box-shadow: none;
+    }
+
+    // .container { padding: 5px; }
+    // position: relative;
+    // margin: 15px, 0;
+    // padding: 39px, 19px, 14px;
+    // border: 1px solid #DDD;
+    // @include border-radius(4px);
   }
   #demo-container{
     padding: 40px 90px;
@@ -33,7 +68,7 @@ body.landing {
   #demo-head p{
   }
   .header {
-    margin-top: 20px;
+    margin-bottom: 20px;
     height: 150px;
     background-image: url(loomio-orange.png);
     background-position: 5px top;
@@ -54,20 +89,14 @@ body.landing {
   .content {
     margin-top: 20px;
     margin-bottom: 30px;
-    padding: 20px;
-    background-color: #FFF;
+    padding: 10px;
+    // background-color: #FFF;
     //height: 680px;
-    float:left;
-    @include border-radius(8px);
-    box-shadow: 1px 1px 4px #999999;
-    -webkit-box-shadow: 1px 1px 4px #999999;
-    -moz-box-shadow: 0px 0px 4px #999999;
-
-
-    h2 {
-      color: grey;
-      padding-bottom: 10px;
-    }
+    // float:left;
+    // @include border-radius(8px);
+    // box-shadow: 1px 1px 4px #999999;
+    // -webkit-box-shadow: 1px 1px 4px #999999;
+    // -moz-box-shadow: 0px 0px 4px #999999;
 
     ul {
       list-style: none;
