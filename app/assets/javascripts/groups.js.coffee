@@ -64,3 +64,10 @@ activate_discussions_tooltips = () ->
 $ ->
   $("#privacy").tooltip
     placement: "top"
+
+#notification level select list
+$ -> 
+  $('li.noise-select').click( (e) ->
+    $('#noise-options').find('i.icon-ok').removeClass('icon-ok')
+    $(this).find('i.icon').addClass('icon-ok')
+  )
