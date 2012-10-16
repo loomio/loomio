@@ -25,5 +25,6 @@
     = render 'header', :notifications => @notifications,
       :unviewed_notifications => @unviewed_notifications
     .container
-      = render 'flash_messages', :flash => flash
-      = yield
+      .inner-container
+        = render 'flash_messages', :flash => flash
+        = yield
