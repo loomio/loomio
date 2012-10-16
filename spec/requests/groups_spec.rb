@@ -64,8 +64,7 @@ describe "Groups" do
       it "can add a discussion" do
         visit group_path(@group)
 
-        # find('#start-new-discussion').click
-        click_button('start-new-discussion')
+        find('#start-new-discussion').click
         should have_css(".new_discussion")
       end
     end
