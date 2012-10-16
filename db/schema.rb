@@ -100,13 +100,11 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
     t.datetime "updated_at"
     t.integer  "eventable_id"
     t.string   "eventable_type"
-    t.integer  "actor_id"
-    t.string   "actor_type"
-    t.string   "type"
+    t.integer  "user_id"
   end
 
-  add_index "events", ["actor_id"], :name => "index_events_on_user_id"
   add_index "events", ["eventable_id"], :name => "index_events_on_eventable_id"
+  add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
   create_table "group_requests", :force => true do |t|
     t.string   "name"
