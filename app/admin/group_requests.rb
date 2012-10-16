@@ -9,7 +9,9 @@ ActiveAdmin.register GroupRequest do
     column :expected_size
     column :description
     column :admin_email
-    column :cannot_contribute
+    column "Can Contribute", :sortable => :cannot_contribute do |group_request|
+      !group_request.cannot_contribute
+    end
     column "Approve" do |group_request|
       link = ""
       if group_request.awaiting_approval? or group_request.ignored?
