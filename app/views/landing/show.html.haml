@@ -23,68 +23,30 @@
               %a{:href => "#"} Blog
             %li
               %a{:href => "#"} Contact
+          %ul.nav.pull-right
+            %li
+              %a{:href => "#"} Sign in
 .content
-  .entry.entry-content
-    %h2 An online tool for collaborative decision-making.
+  .row
+    .span12
+      %h2 An online tool for collaborative decision-making.
+      %p
+        "Groups of all sizes make better decisions when all voices are heard, so we’re building a system that makes it easy and efficient for anyone to participate in decisions that affect them."
+      %br
+  .row
+    .span6
+      %h3 Exciting News!
+      %p
+        After nine months of hard work developing Loomio, we’re excited to move into a new phase where we can start bringing new groups on board.
+      %p
+        We’ve learned a lot from our first 1000 users and we’re really proud of what we’ve built so far – a user-friendly tool that makes it easy and efficient for groups to make good decisions together online.
+        %a{ :href => "http://loomio.org/blog/were-opening-the-door-wider/" } Read more...
+      %p
+        If you’re part of a group that wants to get in the door and start making good decisions together online,
+        %a{ :href => "http://loom.io/request_new_group", :onclick => "javascript:_gaq.push(['_trackEvent','outbound-article','http://loom.io/request_new_group']);" } click here
+        !
+    .span6
+      %p
+      %p#loomio-project-iframe
+        <iframe width="460" height="315" src="http://www.youtube.com/embed/soanS1588BA" frameborder="0" allowfullscreen></iframe>
     %p
-      "Groups of all sizes make better decisions when all voices are heard, so we’re building a system that makes it easy and efficient for anyone to participate in decisions that affect them."
-    .row
-      .span6
-        %h3 Exciting News!
-        %p
-          After nine months of hard work developing Loomio, we’re excited to move into a new phase where we can start bringing new groups on board.
-        %p
-          We’ve learned a lot from our first 1000 users and we’re really proud of what we’ve built so far – a user-friendly tool that makes it easy and efficient for groups to make good decisions together online.
-        %a { :href => "http://loomio.org/blog/were-opening-the-door-wider/" } Read more...
-        %p
-          If you’re part of a group that wants to get in the door and start making good decisions together online,
-          %a { :href => "http://loom.io/request_new_group" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://loom.io/request_new_group']);" } click here
-          !
-      .span6
-  #presentation
-    %h2 What-io ?
-    %p#whatio
-      Loomio is an open-source web application that helps groups make better decisions together.
-      For more info check out <a href="http://www.loomio.org">www.loomio.org</a>.
-    %p#loomio-project-iframe
-      <iframe width="560" height="315" src="http://www.youtube.com/embed/soanS1588BA" frameborder="0" allowfullscreen></iframe>
-    %p
-      For more information:
-    %ul
-      %li
-        Check out our
-        = "<a href='http://loomio.org/blog'>blog</a>".html_safe
-      %li
-        Get on the Loomio
-        %a{:href =>"http://eepurl.com/lE3Uz"}waiting-list
-  #controls
-    %h2 Alpha user sign in
-    = form_tag user_session_path, :id => "sign-in-form" do
-      = label_tag 'user[email]', "Email"
-      = text_field_tag 'user[email]'
-      = label_tag 'user[password]', "Password"
-      = password_field_tag 'user[password]'
-      = check_box_tag 'user[remember_me]'
-      = label_tag 'user[remember_me]', 'Remember me', class: "checkbox-label"
-      .sign-in-button
-        %input{:class => "btn primary small", :type => "submit", :value => "Sign in"}
-    .forgot-password
-      = link_to "Forgot your password?", new_password_path('user')
-    %p.light
-      Don't have an account? We're currently in closed testing and not accepting public sign-ups (yet!).
-    %p.light
-      If you belong to a group that is using Loomio but you don't have your own Loomio account, please contact the person in your organization who set up Loomio and ask them to add you to the group.
-  %footer
-    .row
-      .span9
-        %ul
-          %li
-            Send us an
-            %a{:href => "mailto:contact@loom.io"} email
-          %li
-            Participate in our
-            %a{:href => "http://loomio.org"} open source project
-      .span2
-        #icon-links
-          = link_to image_tag("facebook-icon.jpg", height:'40', width:'40', title:'Facebook', alt:'Facebook image'), 'http://facebook.com/loomioproject'
-          = link_to image_tag("twitter-icon.jpg", height:'40', width:'40', title:'Twitter', alt:'Twitter image'), 'http://twitter.com/loomioproject'
