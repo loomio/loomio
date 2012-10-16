@@ -22,7 +22,7 @@
     .long-description{style: "display: none"}
       ~ markdown(motion.description)
     = link_to "Show More", "#", class: 'see-more' if too_long
-  #graph.pie
+  .pie{id: "graph_#{motion.id}"}
   .percentage-to-vote
     = "#{motion.percent_voted}% of members "
     = "have " unless motion.closed?
@@ -69,10 +69,10 @@
       # Display vote graph
       make_the_graph = ->
         @pie_graph_view = new Loomio.Views.Utils.GraphView
-          el: '#graph.pie'
-          id_string: 'graph'
+          el: '.pie'
+          id_string: "graph_#{motion.id}"
           legend: true
-          data: #{@votes_for_graph.to_json.html_safe}
+          data: #{@votes_for_graph.to_json}
           type: 'pie'
           tooltip_selector: '#tooltip'
           diameter: 200
