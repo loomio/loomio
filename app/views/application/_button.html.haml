@@ -1,3 +1,4 @@
-%a{args}
+- all_args = {:class => "btn btn-grey btn-app"}.merge(args)
+%a{all_args}
   %i{class: "button-icon #{button_icon}-icon"}
   = button_text
