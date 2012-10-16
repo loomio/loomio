@@ -203,7 +203,7 @@ displayGraph = (this_pie, graph_id, data)->
     gap: 1
     shadow: 0.75
 
-#*** open-close motions dropdown***
+#*** closed motions modal***
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
     if $("body.groups.show").length > 0
