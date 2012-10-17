@@ -31,7 +31,6 @@
     float: right;
   }
   .group-options .dropdown-toggle{
-    padding: 5px 0;
     width: 120px;
   }
 
@@ -136,7 +135,7 @@ body.groups.show {
     float: right;
   }
   ul.group-links, ul#users-list, ul#dashboard-groups-list {
-    margin: 0 0 8px 5px;
+    margin: 5px 0 8px 5px;
     li {
       line-height: 1.6em;
       background-color: $sub-selector-panel;

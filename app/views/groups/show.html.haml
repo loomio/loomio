@@ -9,7 +9,7 @@
 = render '/groups/title', group: @group
 - if can? :create, @discussion
   = render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
-    :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-discussion'}
+    :args => {:href => "#new-discussion",  "data-toggle" => "modal", :id => 'start-new-discussion'}
 .row
   %section.span8
     %ul.selector-list.bordered

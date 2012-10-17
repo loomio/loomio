@@ -54,7 +54,7 @@ h5 {
 .group-link.clearfix {
   .group-link-name { float: left; }
   .group-link-activity { float: right; }
-  .small-icon { padding: 0 }
+  .button-icon { padding: 0 }
 }
 
 .sub-panel li .group-link a {
@@ -62,7 +62,7 @@ h5 {
 }
 .sub_group {font-size: $font-tiny;}
 
-#start-new-discussion { margin: 0 0 10px 2px; }
+#start-new-discussion { margin: 0 0 20px 2px; }
 #discussion-list {
   margin-bottom: 10px;
 }
@@ -71,7 +71,7 @@ h5 {
   display: block;
 }
 .see-more {
-  font-size: $font-tinywiny;
+  font-size: $font-small;
   position: relative;
   bottom: 10px;
   display: block;
@@ -396,28 +396,27 @@ ul.loomio-process-flow {
     width: 32px;
   }
 }
-.btn-grey { color: $mid-grey; }
-.btn-text { float: left; }
-.btn-icon {
-  width: 200px;
+
+/**** buttons ****/
+.btn-app {
+  line-height: 24px;
+  padding: 3px 0px 0px 8px;
+  width: 190px;
   text-align: left;
-  line-height: 18px;
-  height: 30px;
-  margin-bottom: 5px;
-  font-size: 14px;
-  color: $mid-grey;
-  a { padding-left: 5px; }
 }
+.btn-grey { color: $mid-grey; }
 a.btn-icon:hover { color: $dark-grey; }
 
 /**** icons ****/
-.small-icon{
+.button-icon{
+  display: inline-block;
   background-repeat: no-repeat;
   height: 18px;
   width: 18px;
-  padding-right: 5px;
-  float: left;
+  padding: 2px 5px 2px 0;
+  vertical-align: text-top;
 }
+
 .large-icon{
   background-repeat: no-repeat;
   height: 24px;
@@ -430,21 +429,21 @@ a.btn-icon:hover { color: $dark-grey; }
   bottom: 2px;
 }
 
-.small-icon.dot-icon {
+.button-icon.dot-icon {
   background-image:url('/assets/dot-18.png');
   float: right;
 }
-.small-icon.topic-icon {
+.button-icon.topic-icon {
   background-image:url('/assets/topic-18.png');
-  // background:transparent url('/assets/topic-18.png');
 }
-.small-icon.member-icon {
+.button-icon.member-icon {
   background-image:url('/assets/member-18.png');
+  // background:transparent url('/assets/member-18.png');
 }
-.small-icon.group-icon {
+.button-icon.group-icon {
   background-image:url('/assets/group-18.png');
 }
-.small-icon.pie-icon {
+.button-icon.pie-icon {
   background-image:url('/assets/pie-18.png');
 }
 .large-icon.topic-icon {
