@@ -1,0 +1,36 @@
+%a{href: "/"}
+  .header
+.content
+  .notice
+    %p
+      Oops! It seems the browser you are using is too old and unable to run on this website.
+    %p
+      Any new version of the browsers listed below should work fine, they are free and easy to download/install.
+    %p
+      Sorry for any inconvenience!
+  %ul#browser-icons
+    %a{href: "http://www.mozilla.org/en-US/firefox/new/"}
+      %li
+        =image_tag '/assets/firefox.png'
+        %p.browser-title
+          Firefox
+    %a{href: "https://www.google.com/chrome"}
+      %li
+        =image_tag '/assets/chrome.png'
+        %p.browser-title
+          Google Chrome
+    %a{href: "http://www.apple.com/safari/"}
+      %li
+        =image_tag '/assets/safari.png'
+        %p.browser-title
+          Safari
+    %a{href: "http://www.opera.com/"}
+      %li
+        =image_tag '/assets/opera.png'
+        %p.browser-title
+          Opera
+    %a{href: "http://windows.microsoft.com/en-US/internet-explorer/products/ie/home"}
+      %li
+        =image_tag '/assets/ie.png'
+        %p.browser-title
+          Internet Explorer
