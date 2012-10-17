@@ -228,10 +228,10 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
+    t.string   "avatar_initials"
     t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
     t.boolean  "has_read_group_notice",                      :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
-    t.string   "avatar_initials"
     t.boolean  "receive_emails",                             :default => true,  :null => false
   end
 
