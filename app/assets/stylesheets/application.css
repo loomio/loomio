@@ -10,7 +10,6 @@
  *= require groups
  *= require discussions
  *= require pages
- *= require landing
  *= require notifications
  *= require motions
  *= require users
