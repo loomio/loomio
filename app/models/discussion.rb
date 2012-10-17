@@ -141,6 +141,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def participants
+    #performance warning? - PS
     other_participants = []
     # Include discussion author
     unless users_with_comments.find_by_id(author.id)
@@ -153,6 +154,10 @@ class Discussion < ActiveRecord::Base
       end
     end
     users_with_comments.all + other_participants.uniq
+  end
+
+  def is_participant?(user)
+    return participants.include? user
   end
 
   def latest_comment_time

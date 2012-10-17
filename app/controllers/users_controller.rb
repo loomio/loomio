@@ -31,12 +31,31 @@ class UsersController < BaseController
     current_user.save
     respond_to do |format|
       format.html { redirect_to(root_url) }
-      format.js {}
+      # format.js {}  template error
     end
   end
 
   def settings
     @user = current_user
+  end
+
+  def set_noise
+    group_id = params[:group]
+    noise_level = params[:noise]
+    current_user.set_group_noise_level(group_id, noise_level)
+    respond_to do |format|
+      format.html { redirect_to(root_url) }
+      # format.js {} template error
+    end
+  end
+
+  def set_receive_emails
+    current_user.receive_emails = params[:email]
+    current_user.save!
+    respond_to do |format|
+      format.html { redirect_to(root_url) }
+      # format.js {}
+    end
   end
 
   def dismiss_system_notice

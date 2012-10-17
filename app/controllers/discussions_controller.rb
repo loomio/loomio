@@ -13,9 +13,7 @@ class DiscussionsController < GroupBaseController
     authorize! :create, @discussion
     if @discussion.save
       @discussion.add_comment(current_user, params[:discussion][:comment])
-      if params[:discussion][:notify_group_upon_creation].to_i > 0
-        DiscussionMailer.spam_new_discussion_created(@discussion)
-      end
+      DiscussionMailer.spam_new_discussion_created(@discussion)
       Event.new_discussion!(@discussion)
       flash[:success] = "Discussion sucessfully created."
       redirect_to @discussion
@@ -67,6 +65,7 @@ class DiscussionsController < GroupBaseController
 
   def add_comment
     comment = resource.add_comment(current_user, params[:comment])
+    @group = GroupDecorator.new(@discussion.group)
     if comment.valid?
       Event.new_comment!(comment)
     else

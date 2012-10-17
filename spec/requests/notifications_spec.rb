@@ -8,6 +8,7 @@ describe "Notifications" do
       @user = create(:user)
       @group = create(:group, name: 'Test Group', viewable_by: :members)
       @group.add_member!(@user)
+      @user.set_group_noise_level(@group, 0)
       page.driver.post user_session_path, 'user[email]' => @user.email,
                                           'user[password]' => 'password'
     end
@@ -58,6 +59,8 @@ describe "Notifications" do
         @user = create(:user)
         @group = create(:group, name: 'Test Group', viewable_by: :members)
         @group.add_member!(@user)
+
+        @user.set_group_noise_level(@group, 0)
 
         visit("/users/sign_in")
 

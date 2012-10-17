@@ -241,7 +241,7 @@ class Motion < ActiveRecord::Base
     def email_motion_created
       if group.email_new_motion
         group.users.each do |user|
-          unless author == user
+          if author != user && user.get_group_noise_level(group) >= 1
             MotionMailer.new_motion_created(self, user.email).deliver
           end
         end
@@ -250,6 +250,14 @@ class Motion < ActiveRecord::Base
 
     def email_motion_closed
       MotionMailer.motion_closed(self, author_email).deliver
+    end
+
+    def email_outcome
+      group.users.each do |user|
+        if user.get_group_noise_level(group) >= 2 #and not outcome setter
+          MotionMailer.motion_outcome(self, user.email).deliver
+        end
+      end
     end
 
     def format_discussion_url

@@ -33,7 +33,7 @@ class Membership < ActiveRecord::Base
   # ATTRIBUTES / SCOPES / DELEGATES
   #
 
-  attr_accessible :group_id, :access_level
+  attr_accessible :group_id, :access_level, :noise_level
 
   scope :for_group, lambda {|group| where(:group_id => group)}
   scope :with_access, lambda {|access| where(:access_level => access)}
