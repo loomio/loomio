@@ -1,0 +1,3 @@
+$('#description-revision-history').modal
+$('#description-revision-history').modal('show')
+$("#description-revision-history").html("<%= escape_javascript(render 'description_history', model: @discussion, model_name: 'discussion')%>")
