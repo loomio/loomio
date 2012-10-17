@@ -1,16 +1,14 @@
 require 'spec_helper'
 
 describe "Discussion" do
+  let(:user) { create_logged_in_user }
   subject { page }
 
   context "a logged in user" do
     before do
-      @user = create(:user)
       @group = build(:group)
       @group.save
-      @group.add_member!(@user)
-      page.driver.post user_session_path, 'user[email]' => @user.email,
-                       'user[password]' => 'password'
+      @group.add_member!(user)
     end
 
     it "can create a new discussion" do
@@ -28,7 +26,7 @@ describe "Discussion" do
         @discussion = Discussion.new
         @discussion.group = @group
         @discussion.title = "New discussion!"
-        @discussion.author = @user
+        @discussion.author = user
         @discussion.description = "Some basic description" 
         @discussion.save
       end
@@ -102,7 +100,7 @@ describe "Discussion" do
         motion = Motion.new
         motion.name = "A new proposal"
         motion.discussion = @discussion
-        motion.author = @user
+        motion.author = user
         motion.save
         visit discussion_path(@discussion)
         find('#close-voting').click
@@ -114,14 +112,14 @@ describe "Discussion" do
         motion = Motion.new
         motion.name = "A new proposal"
         motion.discussion = @discussion
-        motion.author = @user
+        motion.author = user
         motion.save
         motion.close_voting!
 
         motion2 = Motion.new
         motion2.name = "A new proposal"
         motion2.discussion = @discussion
-        motion2.author = @user
+        motion2.author = user
         motion2.save
         motion2.close_voting!
 
@@ -133,7 +131,7 @@ describe "Discussion" do
       end
 
       it "can see link to delete their own comments" do
-        comment = @discussion.add_comment(@user, "hello!")
+        comment = @discussion.add_comment(user, "hello!")
         visit discussion_path(@discussion)
 
         find("#comment-#{comment.id}").should have_content('Delete')
@@ -155,7 +153,7 @@ describe "Discussion" do
         visit discussion_path(@discussion)
         find("#comment-#{comment.id}").find_link('Like').click
 
-        should have_content("Liked by #{@user.name}")
+        should have_content("Liked by #{user.name}")
         should_not have_link("Like")
         should have_link("Unlike")
       end
@@ -164,26 +162,34 @@ describe "Discussion" do
         @user2 = create(:user)
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
-        @discussion.comments.first.like(@user)
+        @discussion.comments.first.like(user)
 
         visit discussion_path(@discussion)
         find("#comment-#{comment.id}").find_link('Unlike').click
-        should_not have_content("Liked by #{@user.name}")
+        should_not have_content("Liked by #{user.name}")
         should have_link("Like")
         should_not have_link("Unlike")
       end
 
-      it "can change description to a previous version" do
+      it "can change description to a previous version", :js => true do
         @user2 = create(:user)
         @discussion.group.add_member!(@user2)
-        comment = @discussion.update_attribute(:description, @discussion.description + " Some additional info."); 
+        comment = @discussion.update_attribute(:description, @discussion.description + " Some additional info.")
 
         visit discussion_path(@discussion)
         find("#discussion-context").find_link('See revision history').click
-        find("#descrition-revision-history").find_link('Prev').click
+        assert_modal_visible
+        find("#description-revision-history").find_link('Prev').click
         find_button("Go back to this version").click
         should_not have_content(" Some additional info.")
         should have_content(@discussion.description)
+      end
+
+      # HELPERS
+      def assert_modal_visible
+        wait_until { find("#description-revision-history").visible? }
+      rescue Capybara::TimeoutError
+        flunk 'Expected modal to be visible.'
       end
     end
   end
