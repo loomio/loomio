@@ -1,0 +1,29 @@
+#github-link
+  %a{:href => "https://github.com/enspiral/loomio",
+     :id   => "fork_me"}
+    %img{:src => "/assets/fork_me.png",
+         :alt => "Fork me on GitHub"}
+%h1.header
+  Loomio
+.main-navigation
+  .navbar
+    .navbar-inner
+      / .container
+      %a.btn.btn-navbar{ 'data-toggle' => "collapse", 'data-target' => ".nav-collapse" }
+        - page_id = params[:id]
+        %ul.nav
+          %li{ class: css_class_active(page_id, 'home') }
+            %a{:href => "/"} Home
+          %li{ class: css_class_active(page_id, 'how_it_works') }
+            %a{:href => page_path('how_it_works')} How it works
+          %li{ class: css_class_active(page_id, 'get_involved') }
+            %a{:href => page_path('get_involved')} Get involved
+          %li{ class: css_class_active(page_id, 'about') }
+            %a{:href => page_path('about')} About
+          %li{ class: css_class_active(page_id, 'blog') }
+            %a{:href => "http://loomio.org/blog"} Blog
+          %li{ class: css_class_active(page_id, 'contact') }
+            %a{:href => page_path('contact')} Contact
+        %ul.nav.pull-right
+          %li{ class: css_class_active(params[:controller], 'devise/sessions') }
+            %a{ :href => user_session_path } Sign in
