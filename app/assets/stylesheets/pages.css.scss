@@ -1,0 +1,64 @@
+@import "settings";
+@import "bootstrap/mixins";
+
+body.pages {
+  background-color: #F7F7ED;
+  margin-top: -70px;
+  h1 { display: block; }
+  h2 {
+    color: $dark-grey;
+    font-size: 28px;
+    margin: 0 0 10px;
+  }
+  h3 {
+    color: $mid-grey;
+    font-size: 21px;
+    font-weight: normal;
+    margin-bottom: 15px;
+  }
+  p {
+    margin-bottom: 15px;
+    line-height: 24px;
+  }
+  ul.about {
+    list-style: circle;
+    padding-left: 20px;
+  }
+  ul.about li { margin-bottom: 10px; }
+
+  .inner-container { padding: 0 10px 0 10px; }
+
+  #github-link {
+    position: absolute;
+    right: 0px;
+    float: right;
+  }
+  .main-navigation{
+    .navbar .nav li a:hover { color: $dark-grey; }
+    .navbar .nav .active a{ background-color: $loomio-orange; }
+    .navbar-inner {
+      min-height: 39px;
+      background-color: #FAFAFA;
+      background-image: -moz-linear-gradient(top, white, #F2F2F2);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#F2F2F2));
+      background-image: -webkit-linear-gradient(top, white, #F2F2F2);
+      background-image: linear-gradient(to bottom, white, #F2F2F2);
+      background-repeat: repeat-x;
+      border: 1px solid #DDD;
+      @include border-radius(5px);
+      box-shadow: none;
+    }
+  }
+  .header {
+    margin-bottom: 20px;
+    height: 150px;
+    background-image: url(loomio-orange.png);
+    background-position: 5px top;
+    background-repeat: no-repeat;
+    text-indent: -999em;
+    span {
+      display: none;
+    }
+    }
+  }
+  #loomio-project-iframe { margin-left: -10px; }

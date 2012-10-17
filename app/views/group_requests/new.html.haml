@@ -10,8 +10,8 @@
     %p There’s some basic info at <a href ='http://loomio.org'>loomio.org</a> to make it easy to explain to your group why you’d like to use Loomio to make decisions together online.
     %p If your group is keen, you can request access here:
     %br
-    =render '/application/button', :button_text => 'I’ve talked to my group, and we’d like to use Loomio!', :button_icon => 'none', :args => {:href => "#request-new",  "data-toggle" => "modal", :class => 'btn btn-large btn-info', :id => 'request-new-group'}
-
+    %a.btn.btn-large.btn-block.btn-info{ :href => "#request-new", :id => 'request-new-group', 'data-toggle' => "modal" }
+      I’ve talked to my group, and we’d like to use Loomio!
 
 =render '/group_requests/request_new'
 

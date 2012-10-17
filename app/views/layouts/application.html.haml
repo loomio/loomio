@@ -22,9 +22,10 @@
       })();
 
   %body{class: "#{controller_name} #{action_name}"}
-    .logged-in-navigation
-      = render 'header', :notifications => @notifications,
-        :unviewed_notifications => @unviewed_notifications
+    - unless controller_name == 'pages'
+      .logged-in-navigation
+        = render 'header', :notifications => @notifications,
+          :unviewed_notifications => @unviewed_notifications
     .main-container.container
       = render 'flash_messages', :flash => flash
       = yield
