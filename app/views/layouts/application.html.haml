@@ -29,6 +29,8 @@
       = render 'header', :notifications => @notifications,
         :unviewed_notifications => @unviewed_notifications
     .main-container.container
-      = render 'flash_messages', :flash => flash
+      = render 'flash_messages', :flash => flash unless logged_out
       = render "header_logged_out" if logged_out && supported
       = yield
+
+

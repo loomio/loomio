@@ -3,7 +3,7 @@
 
 body.pages, body.sessions.new {
   background-color: #F7F7ED;
-  // margin-top: -70px;
+
   h1 { display: block; }
   h2 {
     color: $dark-grey;
@@ -26,6 +26,7 @@ body.pages, body.sessions.new {
   }
   ul.about li { margin-bottom: 10px; }
 
+  .main-container.container { padding-top: 0px; }
   .inner-container { padding: 0 10px 0 10px; }
 
   #github-link {
