@@ -83,3 +83,6 @@ group :test do
   gem 'email_spec'
 end
 
+group :production do
+  gem 'newrelic_rpm'
+end
