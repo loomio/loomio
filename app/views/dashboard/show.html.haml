@@ -9,8 +9,10 @@
 - if @groups.present?
   -#=render '/application/loomio_process_flow'
   =render '/groups/title', group: nil
-  =render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
-    :args => {:href => "#new-discussion",  "data-toggle" => "modal", :id => 'start-new-discussion'}
+
+  = app_icon_button('#new-discussion', 'Start a discussion', 'topic', 'start-new-discussion', "modal")
+  / =render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
+  /   :args => {:href => "#new-discussion",  "data-toggle" => "modal", :id => 'start-new-discussion'}
   .row
     %section.span8
       %ul.selector-list.bordered
