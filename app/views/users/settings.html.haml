@@ -54,7 +54,7 @@
                   = render 'users/group_noise_setting', user: current_user, group: group
                   - if group.subgroups.size > 0
                     .sub-group
-                      - group.subgroups.each do |subgroup|
+                      - current_user.subgroups(group).each do |subgroup|
                         = render 'users/group_noise_setting', user: current_user, group: subgroup
             .span4
               .helper-text

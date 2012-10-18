@@ -239,8 +239,12 @@ class User < ActiveRecord::Base
     User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
   end
 
-  def subgroups
-    groups.where("parent_id IS NOT NULL")
+  def subgroups(group=nil)
+    if group
+      groups.where(:parent_id => group.id)
+    else
+      groups.where("parent_id IS NOT NULL")
+    end
   end
 
   def root_groups
