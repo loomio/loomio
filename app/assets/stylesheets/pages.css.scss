@@ -61,9 +61,8 @@ body.pages, body.sessions.new {
     }
   }
   #loomio-project-iframe { margin-left: -10px; }
-}
 
-body.landing.browser_not_supported {
+  // *** browser not supported ***
   .notice { padding-bottom: 25px; }
 
   ul#browser-icons{
