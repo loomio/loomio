@@ -400,8 +400,10 @@ ul.loomio-process-flow {
 /**** buttons ****/
 .btn-app {
   line-height: 24px;
-  padding: 3px 0px 0px 8px;
+  padding: 4px 0px 0px 8px;
   width: 190px;
+  height: 27px;
+  font-size: $font-medium-large;
   text-align: left;
 }
 .btn-grey { color: $mid-grey; }
@@ -413,7 +415,7 @@ a.btn-icon:hover { color: $dark-grey; }
   background-repeat: no-repeat;
   height: 18px;
   width: 18px;
-  padding: 2px 5px 2px 0;
+  padding: 0px 5px 0px 0;
   vertical-align: text-top;
 }
 
