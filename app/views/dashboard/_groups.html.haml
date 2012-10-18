@@ -1,8 +1,6 @@
 .sub-panel#groups
   %h3 Groups
-  %a.btn.btn-app{href: request_new_group_path}
-    %i.button-icon.group-icon
-    Request new group
+  = icon_button(request_new_group_path, 'Request new group', '/assets/group-18.png', 'request-new-group')
   %ul#dashboard-groups-list
     - current_user.root_groups.each do |group|
       %li
