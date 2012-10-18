@@ -40,13 +40,9 @@ class UsersController < BaseController
   end
 
   def set_noise
-    group_id = params[:group]
-    noise_level = params[:noise]
-    current_user.set_group_noise_level(group_id, noise_level)
-    respond_to do |format|
-      format.html { redirect_to(root_url) }
-      # format.js {} template error
-    end
+    @group = Group.find(params[:group])
+    @noise_level = params[:noise]
+    current_user.set_group_noise_level(@group.id, @noise_level)
   end
 
   def set_receive_emails

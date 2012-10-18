@@ -37,45 +37,45 @@
               %li.user-image-option.option-upload
                 = link_to 'Upload a new image', '#', class: 'btn btn-grey', id: 'upload-new-image'
       = hidden_field_tag("user[avatar_kind]", "", :id => "user-avatar-kind")
-      / Notification settings
-      %h3 Notifications
-      - if current_user.groups.present?
-        %hr
-        .row
-          #noise-groups
-            .span6
-              #ng-heading
-                .span2
-                  %h4 Groups
-                .span3 
-                  %h4 Notifications
-              #ng-values
-                - current_user.root_groups.each do |group|
-                  = render 'users/group_noise_setting', user: current_user, group: group
-                  - if group.subgroups.size > 0
-                    .sub-group
-                      - current_user.subgroups(group).each do |subgroup|
-                        = render 'users/group_noise_setting', user: current_user, group: subgroup
-            .span4
-              .helper-text
-                %p Customise your notification settings for each group. Select 'All' if you'd like to be notified of everything that goes on in the group, or 'Off' to mute it entirely.
-      / All Groups
-      %hr
-      .row
-        #noise-email
-          .span6
-            #ne-values
-              .span2 E-mail Notifications
-              #noise_email.span3.btn-group
-                =link_to "On", set_receive_emails_user_path(@user, :email => true), :method => :post, id: 'email_on', :remote => true, :class => (@user.receive_emails ? 'btn active' : 'btn')
-                =link_to "Off", set_receive_emails_user_path(@user, :email => false), :method => :post, id: 'email_off', :remote => true, :class => (@user.receive_emails ? 'btn' : 'btn active')
 
+      /
+      / Notification settings
+      /
+      %hr
+      %h3 Email Notifications
+      .row
+        .span6
+          %table#email-notifications-settings
+            %tr
+              %td.email-notifications-title E-mail Notifications
+              %td.email-notifications-val
+                .btn-group
+                  =link_to "On", set_receive_emails_user_path(@user, :email => true), :method => :post, id: 'turn-emails-on', :remote => true, :class => (@user.receive_emails ? 'btn active' : 'btn')
+                  =link_to "Off", set_receive_emails_user_path(@user, :email => false), :method => :post, id: 'turn-emails-off', :remote => true, :class => (@user.receive_emails ? 'btn' : 'btn active')
+        .span4
+          .helper-text
+            %p Set this to off if you never want Loomio to send you e-mails.
+
+      / Group settings
+      %hr
+      %h3 Group Notification Settings
+      - if current_user.groups.present?
+        .row
+          .span6
+            %table.table.table-striped.table-disable-hover#groups-notifications-settings
+              %tr
+                %th Group
+                %th Notifications
+              - current_user.root_groups.each do |group|
+                = render 'users/group_noise_setting', user: current_user, group: group, subgroup: false
+                - if group.subgroups.size > 0
+                  - current_user.subgroups(group).each do |subgroup|
+                    = render 'users/group_noise_setting', user: current_user, group: subgroup, subgroup: true
           .span4
             .helper-text
-              %p Set this to off if you never want Loomio to send you e-mails.
+              %p Customise your notification settings for each group. Select 'All' if you'd like to be notified of everything that goes on in the group, or 'Off' to mute it entirely.
       %hr
 
-      / Notification settings end
       = f.submit "Update Settings", class: "btn btn-info"
     = form_for [@user], :html => { :multipart => true, :id => 'upload-form' }, :url => upload_new_avatar_user_path(@user), :method => 'post' do
       = file_field_tag :uploaded_avatar, id: 'uploaded-avatar', class: 'hidden'

@@ -55,13 +55,6 @@ $ ->
       clickedAway = true
   )
 
-  $('#ng-values .btn-group > .btn, #noise_email.btn-group > .btn').click((e) -> 
-    $(this).parent().find('a.btn').each( (i) ->
-      $(this).removeClass('active')
-    )
-    $(this).addClass('active')
-  )
-
   toggle_popover = (show, elem) ->
     if show
       elem.popover('show')
