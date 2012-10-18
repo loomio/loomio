@@ -30,11 +30,9 @@ module ApplicationHelper
     content_for :title, title 
   end
 
-  def app_icon_button(link, text, icon, id, modal_string)
-    # content_tag :div do
-    content_tag(:a, :href => link, :class => 'btn btn-grey', :id => id, 'data-toggle' => modal_string) do
-      image_tag(:class => "button-icon #{icon}-icon")
-      text
+  def app_icon_button(link, text, icon, id, modal_string = "")
+    content_tag(:a, :href => link, :class => 'btn btn-grey btn-app', :id => id, 'data-toggle' => modal_string) do
+      image_tag(icon, :class => 'button-icon') + text
     end
   end
 
