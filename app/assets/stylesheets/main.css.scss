@@ -18,6 +18,9 @@ body {
   background-color: $main-background;
   height: 100%;
 }
+hr {
+  margin: 1px;
+}
 
 // typography
 h1 {
@@ -399,13 +402,13 @@ ul.loomio-process-flow {
 
 /**** buttons ****/
 .btn-app {
-  line-height: 24px;
-  padding: 4px 0px 0px 8px;
+  line-height: 18px;
+  padding: 6px 0px 6px 8px;
   width: 190px;
-  height: 27px;
-  font-size: $font-medium-large;
+  font-size: $font-medium;
   text-align: left;
 }
+.group-options .btn-app.dropdown-toggle{ width: 110px }
 .btn-grey { color: $mid-grey; }
 a.btn-icon:hover { color: $dark-grey; }
 
@@ -416,7 +419,7 @@ a.btn-icon:hover { color: $dark-grey; }
   height: 18px;
   width: 18px;
   padding: 0px 5px 0px 0;
-  vertical-align: text-top;
+  vertical-align: text-bottom;
 }
 
 .large-icon{
@@ -435,19 +438,18 @@ a.btn-icon:hover { color: $dark-grey; }
   background-image:url('/assets/dot-18.png');
   float: right;
 }
-.button-icon.topic-icon {
-  background-image:url('/assets/topic-18.png');
-}
-.button-icon.member-icon {
-  background-image:url('/assets/member-18.png');
-  // background:transparent url('/assets/member-18.png');
-}
-.button-icon.group-icon {
-  background-image:url('/assets/group-18.png');
-}
-.button-icon.pie-icon {
-  background-image:url('/assets/pie-18.png');
-}
+// .button-icon.topic-icon {
+//   background-image:url('/assets/topic-18.png');
+// }
+// .button-icon.member-icon {
+//   background-image:url('/assets/member-18.png');
+// }
+// .button-icon.group-icon {
+//   background-image:url('/assets/group-18.png');
+// }
+// .button-icon.pie-icon {
+//   background-image:url('/assets/pie-18.png');
+// }
 .large-icon.topic-icon {
     background-image:url('/assets/topic-24.png');
 }
