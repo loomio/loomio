@@ -120,7 +120,7 @@ body.groups.show {
     float: right;
   }
   ul.group-links, ul#users-list, ul#dashboard-groups-list {
-    margin: 5px 0 8px 5px;
+    margin-top: 8px;
     li {
       line-height: 1.6em;
       background-color: $sub-selector-panel;
