@@ -1,9 +1,9 @@
 window.Application ||= {}
 
 #*** CHECK HTML5 SUPPORT ***
-canvasSupported = !!window.HTMLCanvasElement
-Application.html5 = exports ? this
-Application.html5.supported = true if canvasSupported
+# canvasSupported = !!window.HTMLCanvasElement
+# Application.html5 = exports ? this
+# Application.html5.supported = true if canvasSupported
 
 Application.convertUtcToRelativeTime = ->
   if $(".utc-time").length > 0
@@ -224,7 +224,7 @@ $ ->
       $('.selector-pie-link').popover('hide')
     )
 
-#*** open-close motions dropdown***
+#*** closed motions modal***
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
     if $("body.groups.show").length > 0
