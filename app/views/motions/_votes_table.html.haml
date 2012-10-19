@@ -10,5 +10,5 @@
   - motion.users_who_did_not_vote.each do |user|
     .position-row.clearfix
       .position= image_tag "questionmark.png"
-      = link_to user.name, "#"
+      = link_to user.name, "#", "title" => user.name, "data-content" => "#{render 'users/name_popover', user: user, group: motion.group}", :class => "user-name-with-popover"
 = link_to '[Show users who have not yet decided]', '#', class: 'toggle-yet-to-vote'

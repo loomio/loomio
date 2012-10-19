@@ -126,19 +126,30 @@ li s hard.motion-preview {
     text-decoration: none;
   }
 }
-
   /* Markdown styling */
-.comment-body, .model-description {
+
+.comment-body li{
+  font-size: 14px; /* should prob use a $var here eh? */
+}
+
+.comment-body, .model-description, .motion {
   p {
     word-wrap: break-word;
   }
   ul, ol, li {
     margin-left: 10px;
-    font-size: 14px;
-    word-wrap: break-word;
+    word-wrap: break-word;    
+    line-height: 18px;
   }
-  ul, li {
-    padding: 3px 0px;
+  ul{
+    list-style: disc;
+    padding: 0 0 9px 0;
+  }
+  ol{
+    padding: 0 0 9px 0;
+  }
+  ul ul, ol ul, ul ol, ol ol{
+    padding: 2px 0 6px 0;
   }
   h1, h2, h3, h4, h5, h6, h7{
     display: block;

@@ -1,8 +1,8 @@
 .sub-panel#groups
   %h3 Groups
-  %a.group-add-members.btn.btn-small.btn-icon{href: request_new_group_path}
-    .small-icon.group-icon
-    .btn-text Request new group
+  %a.btn.btn-app{href: request_new_group_path}
+    %i.button-icon.group-icon
+    Request new group
   %ul#dashboard-groups-list
     - current_user.root_groups.each do |group|
       %li
