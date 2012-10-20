@@ -29,6 +29,7 @@
       = render 'header', :notifications => @notifications,
         :unviewed_notifications => @unviewed_notifications
     .main-container.container
+      = render "fork_us_github" if logged_out && supported
       = render 'flash_messages', :flash => flash
       = render "header_logged_out" if logged_out && supported
       = yield
