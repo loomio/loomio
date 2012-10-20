@@ -16,12 +16,21 @@
   .proposed-by
     = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
   .description
+  
+    <!--[if IE 7]>
+    .long-description{style: "display: none"}
+      ~ markdown(motion.description)
+    <![endif]-->
+
+    <!--[if !IE 7]><!-->
     - too_long = true if motion.description && motion.description.length > 200
     .short-description
       ~ markdown(truncate(motion.description, length: 200, omission: '...', separator: ' '))
     .long-description{style: "display: none"}
       ~ markdown(motion.description)
     = link_to "Show More", "#", class: 'see-more' if too_long
+    <!--<![endif]-->
+
   .pie{id: "graph_#{motion.id}"}
   .percentage-to-vote
     = "#{motion.percent_voted}% of members "
