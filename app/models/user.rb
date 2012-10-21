@@ -284,7 +284,7 @@ class User < ActiveRecord::Base
   end
 
   def send_notification?(group, priority= 1)
-    return priority >= self.get_group_noise_level(group)
+    return priority >= get_group_noise_level(group)
   end
 
   def activity_total

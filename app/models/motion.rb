@@ -241,7 +241,7 @@ class Motion < ActiveRecord::Base
     def email_motion_created
       if group.email_new_motion
         group.users.each do |user|
-          if author != user && user.get_group_noise_level(group) >= 1
+          if author != user && user.send_notification?(group, 1)
             MotionMailer.new_motion_created(self, user.email).deliver
           end
         end
@@ -254,7 +254,7 @@ class Motion < ActiveRecord::Base
 
     def email_outcome
       group.users.each do |user|
-        if user.get_group_noise_level(group) >= 2 #and not outcome setter
+        if user.send_notification?(group, 0) #and not outcome setter
           MotionMailer.motion_outcome(self, user.email).deliver
         end
       end
