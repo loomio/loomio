@@ -268,7 +268,7 @@ class Group < ActiveRecord::Base
         .where('discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL)', id, id)
         .order("last_comment_at DESC")
     else
-      discussions
+      all_discussions(user= nil)
         .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
         .order("last_comment_at DESC")
     end
