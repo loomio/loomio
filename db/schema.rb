@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121011022853) do
+ActiveRecord::Schema.define(:version => 20121008010612) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20121011022853) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body"
+    t.text     "body",             :default => ""
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -84,11 +84,10 @@ ActiveRecord::Schema.define(:version => 20121011022853) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "activity",        :default => 0, :null => false
     t.string   "title"
-    t.integer  "activity",           :default => 0,     :null => false
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "has_current_motion", :default => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -134,7 +133,6 @@ ActiveRecord::Schema.define(:version => 20121011022853) do
     t.integer  "creator_id",                              :null => false
     t.integer  "memberships_count",    :default => 0,     :null => false
     t.datetime "archived_at"
-    t.integer  "max_size"
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -229,10 +227,10 @@ ActiveRecord::Schema.define(:version => 20121011022853) do
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
+    t.string   "avatar_initials"
     t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
     t.boolean  "has_read_group_notice",                      :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
-    t.string   "avatar_initials"
     t.boolean  "receive_emails",                             :default => true,  :null => false
   end
 
