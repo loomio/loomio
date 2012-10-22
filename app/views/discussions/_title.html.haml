@@ -1,5 +1,6 @@
 .clearfix
   .large-icon.topic-icon
+<<<<<<< HEAD
   %h1#discussion-title
     = discussion.title
   #edit-discussion-title.hidden
@@ -11,6 +12,21 @@
       .save-buttons.clearfix
         = submit_tag "Save", class: 'btn btn-small run-validations', id: 'edit-title-submit', :data => {:disable_with => "Saving"}
         = link_to "Cancel", "#", id: 'cancel-edit-title'
+=======
+  .discussion-title-container
+    %h1#discussion-title
+      = discussion.title
+
+    #edit-discussion-title.hidden
+      = form_tag send("edit_title_discussion_path"), :remote => true do |f|
+        = hidden_field_tag 'id'
+        .control-group
+          = text_field_tag 'title', discussion.title, {id: 'discussion-input', class: 'inputError limit-150'}
+          .character-counter
+        .save-buttons.clearfix
+          = submit_tag "Save", class: 'btn btn-small run-validations', id: 'edit-title-submit', :data => {:disable_with => "Saving"}
+          = link_to "Cancel", "#", id: 'cancel-edit-title'
+>>>>>>> 2550b29d4a2bad9aa59c3efb7f34fcfb1c074fe6
   .dropdown
     = link_to image_tag("dropdown.png"), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
     %ul.dropdown-menu.pull-right

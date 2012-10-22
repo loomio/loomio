@@ -18,8 +18,7 @@
 }
 .navbar { margin-bottom: 0 }
 .container {
-  margin: auto;
-  padding: 70px 20px 20px 20px;
+  padding: 0px 20px 20px 20px;
   background-color: $container;
   box-shadow: 0px 3px 7px #555;
   min-height: 100%
@@ -113,7 +112,7 @@ li.group-item {
   background-color: white;
 }
 li.group-item.sub-group a {
-  margin-left: 20px;
+  padding-left: 35px;
   font-size: $font-small;
 }
 li.group-item.all-groups {

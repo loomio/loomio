@@ -7,12 +7,11 @@
   =render '/application/helper_info', message: message, path: dismiss_dashboard_notice_for_user_path
 
 - if @groups.present?
-  %header
-    -#=render '/application/loomio_process_flow'
-    =render '/groups/title', group: nil
-    =render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
-      :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-discussion'}
-  .row
+  -#=render '/application/loomio_process_flow'
+  =render '/groups/title', group: nil
+
+  = icon_button('#new-discussion', 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion', true)
+  .row.main-content
     %section.span8
       %ul.selector-list.bordered
         #all-discussions-loading
