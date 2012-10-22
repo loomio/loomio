@@ -5,13 +5,11 @@
   - message += "You can start a discussion on a new topic by clicking on the ‘Start a discussion’ button.\n\n"
   =render '/application/helper_info', message: message, path: dismiss_group_notice_for_user_path
 
-%header
-  -#= render '/application/loomio_process_flow'
-  = render '/groups/title', group: @group
-  - if can? :create, @discussion
-    = render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
-      :args => {:href => "#new-discussion",  "data-toggle" => "modal", :class => 'btn btn-icon', :id => 'start-new-discussion'}
-.row
+-#= render '/application/loomio_process_flow'
+= render '/groups/title', group: @group
+- if can? :create, @discussion
+  = icon_button('#new-discussion', 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion', true)
+.row.main-content
   %section.span8
     %ul.selector-list.bordered
       #all-discussions-loading

@@ -24,7 +24,7 @@ class GroupsController < GroupBaseController
       @discussions_with_current_motion_not_voted_on = @group.discussions_with_current_motion_not_voted_on(current_user)
       @discussion = Discussion.new(group_id: @group.id)
     else
-      @discussions_with_current_motion_voted_on = @group.discussions_with_current_motion
+      @discussions_with_current_motion_voted_on = @group.discussions_with_current_motion(current_user)
       @discussions_with_current_motion_not_voted_on = []
     end
   end

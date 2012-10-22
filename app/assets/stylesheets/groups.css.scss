@@ -7,11 +7,7 @@
 
 // group title (on almost all pages)
 .group-title {
-  margin-bottom: 10px;
-  hr {
-    margin: 5px 13px;
-    /*border-top: 1px solid #CCC*/
-  }
+  margin: 0 0 10px 0;
   h1 {
     float: left;
     line-height: 1.2em;
@@ -34,13 +30,19 @@
     position: relative;
     float: right;
   }
+<<<<<<< HEAD
   .group-options a {
     // font-size: 0.9em;
   }
+=======
+
+  // .group-options a {
+  //   font-size: 0.9em;
+  // }
+>>>>>>> 2550b29d4a2bad9aa59c3efb7f34fcfb1c074fe6
   .group-options .icon-cog {
     opacity: 0.65;
-    position: relative;
-    top: 1px;
+    margin-top: 2px;
   }
   .group-options .options-dropdown-icon {
     position: relative;
@@ -149,7 +151,7 @@ body.groups.show {
     float: right;
   }
   ul.group-links, ul#users-list, ul#dashboard-groups-list {
-    margin: 0 0 8px 5px;
+    margin-top: 8px;
     li {
       line-height: 1.6em;
       background-color: $sub-selector-panel;
@@ -218,6 +220,11 @@ body.groups.show {
   .group-link a:hover {
     color: $dark-grey;
   }
+}
+
+/* previous-discussions panel */
+.previous-discussions-panel {
+  h3 { display: block; }
 }
 
 /* membership request panel */
