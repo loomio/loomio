@@ -3,3 +3,38 @@
 
 en:
   hello: "Hello world"
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one:   "seconds"
+        other: "%{count} seconds"
+      x_seconds:
+        one:   "1 second"
+        other: "%{count} seconds"
+      less_than_x_minutes:
+        one:   "1 minute"
+        other: "%{count} minutes"
+      x_minutes:
+        one:   "1 minute"
+        other: "%{count} minutes"
+      about_x_hours:
+        one:   "1 hour"
+        other: "%{count} hours"
+      x_days:
+        one:   "1 day"
+        other: "%{count} days"
+      about_x_months:
+        one:   "1 month"
+        other: "%{count} months"
+      x_months:
+        one:   "1 month"
+        other: "%{count} months"
+      about_x_years:
+        one:   "1 year"
+        other: "%{count} years"
+      over_x_years:
+        one:   "1 year"
+        other: "%{count} years"
+      almost_x_years:
+        one:   "1 year"
+        other: "%{count} years"
