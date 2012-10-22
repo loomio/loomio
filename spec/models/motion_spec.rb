@@ -28,7 +28,7 @@ describe Motion do
 
   context "motion created" do
     it "sends email to group members if email notifications are enabled (default)" do
-      pending "this test is weird"
+      pending "this test is weird" #and I have no idea how to fix it - PS
       MotionMailer.stub(:new_motion_created)
       group = create(:group)
       group.add_member!(create(:user))
