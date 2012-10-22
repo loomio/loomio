@@ -8,9 +8,8 @@
 -#= render '/application/loomio_process_flow'
 = render '/groups/title', group: @group
 - if can? :create, @discussion
-  = render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
-    :args => {:href => "#new-discussion",  "data-toggle" => "modal", :id => 'start-new-discussion'}
-.row
+  = icon_button('#new-discussion', 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion', true)
+.row.main-content
   %section.span8
     %ul.selector-list.bordered
       #all-discussions-loading
