@@ -7,11 +7,9 @@
         = group.fancy_link
       .dropdown.privacy-dropdown
         %a.dropdown-toggle{ :href => "#", :id => 'privacy', 'data-toggle' => 'dropdown',  "data-title" => "Privacy: '"+group.viewable_by.to_s+"' can see this group." }
-          = image_tag("privicon_"+group.viewable_by.to_s+".png", alt: group.viewable_by.to_s)
+          = image_tag("privicon_"+group.viewable_by.to_s+".png", alt: group.viewable_by.to_s, :id => 'privacy-image')
         - if can? :edit, group
-          %ul.dropdown-menu.pull-left
-            %li= link_to "Edit group settings", edit_group_path(group)
-
+          = render 'groups/privacy_settings', :group => group
       - if params[:controller] == 'groups' && params[:action] == 'show'
         - can_edit = can? :edit, group
         - can_leave = group.users_include? current_user
