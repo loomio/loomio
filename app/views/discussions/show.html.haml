@@ -24,7 +24,7 @@
               .discussion-additional-info
                 = "Started #{time_ago_in_words(@discussion.created_at)} ago"
                 .started-by
-                  = "By "
+                  = "By #{@discussion.originator}"
                   =link_to @discussion.author.name, "#", "title" => @discussion.author.name,
                     "data-content" => "#{render 'users/name_popover', user: @discussion.author, group: @discussion.group}",
                     class: "user-name-with-popover"

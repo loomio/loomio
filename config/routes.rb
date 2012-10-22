@@ -35,12 +35,11 @@ Loomio::Application.routes.draw do
     post :edit_description, :on => :member
     post :add_comment, :on => :member
     post :show_description_history, :on => :member
-    post :get_previous_description, :on => :member
-    post :get_next_description, :on => :member
-    post :update_description, :on => :member
     get :new_proposal, :on => :member
     post :edit_title, :on => :member
   end
+  post "/discussion/preview_version/:version_id", :to => "discussions#preview_version", :as => "preview_version_discussion"
+  post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"
 
   resources :notifications, :only => :index do
     post :mark_as_viewed, :on => :collection, :via => :post

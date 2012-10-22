@@ -4,13 +4,19 @@
 .modal-header
   .user-profile-fields
     %h4 User Profile Fields
-    %p= "Edited about #{time_ago_in_words(@discussion.created_at)} ago"
+    %p= "Edited about #{time_ago_in_words(@discussion.updated_at)} ago by #{@discussion.originator}"
   .revision-version
     %h4 Version
     %p
-      =link_to "Prev", get_previous_description_discussion_path(@discussion), :method => :post, :remote => true
+      -if @discussion.previous_version.nil?
+        =link_to "Prev", "#", :method => :post, :class => "disabled",  :remote => true
+      -else
+        =link_to "Prev", preview_version_discussion_path(@discussion.previous_version.version), :method => :post, :remote => true
       =" | "
-      =link_to "Next", get_next_description_discussion_path(@discussion), :method => :post, :remote => true
+      -if @discussion.next_version.nil?
+        =link_to "Next", "#", :method => :post, :class => "disabled", :remote => true
+      -else
+        =link_to "Next", preview_version_discussion_path(@discussion.next_version.version), :method => :post, :remote => true
 .modal-body
   %p= @discussion.description
 .modal-footer

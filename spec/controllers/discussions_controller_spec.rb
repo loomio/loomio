@@ -172,6 +172,7 @@ describe DiscussionsController do
           :description => "blah"
       end
     end
+
     describe "edit title" do
       before do
         discussion.stub(:save!)
@@ -187,6 +188,21 @@ describe DiscussionsController do
         xhr :post, :edit_title,
           :id => discussion.id,
           :title => "The Butterflys"
+      end
+    end
+
+    describe "change version" do
+      before do
+        discussion.stub(:save!)
+        version_item = mock_model(Discussion, :description => "new version", :save! => true)
+        @version = mock_model(Version, :item => version_item, :reify => version_item, :save! => true)
+        Version.stub(:find).and_return(@version)
+
+      end
+      it "assigns description to the model" do
+        discussion.should_receive(:description=).with "new version"
+        xhr :post, :update_version,
+          :version_id => @version.id
       end
     end
   end
