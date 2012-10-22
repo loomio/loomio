@@ -33,9 +33,8 @@ describe "User abilities" do
     it { should be_able_to(:add_comment, discussion) }
     it { should be_able_to(:edit_description, discussion) }
     it { should be_able_to(:show_description_history, discussion) }
-    it { should be_able_to(:get_previous_description, discussion) }
-    it { should be_able_to(:get_next_description, discussion) }
-    it { should be_able_to(:update_description, discussion) }
+    it { should be_able_to(:preview_version, discussion) }
+    it { should be_able_to(:update_version, discussion) }
     it { should be_able_to(:index, Discussion) }
     it { should be_able_to(:destroy, user_comment) }
     it { should_not be_able_to(:destroy, another_user_comment) }

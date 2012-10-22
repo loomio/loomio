@@ -103,24 +103,20 @@ class DiscussionsController < GroupBaseController
     end
   end
 
-  def get_previous_description
-    @discussion = Discussion.find(params[:id])
+  def preview_version
+    version = Version.find(params[:version_id])
+    @discussion = version.reify
     respond_to do |format|
-      format.js
+      format.js { render :action => 'show_description_history' }
     end    
   end
 
-  def get_next_description
-    @discussion = Discussion.find(params[:id])
+  def update_version
+    @version = Version.find(params[:version_id])
+    @version.reify.save!
+    @discussion = @version.item
     respond_to do |format|
-      format.js
-    end    
-  end
-
-  def update_description
-    discussion = Discussion.find(params[:id])
-    respond_to do |format|
-      format.js
+      format.js { render :nothing => true}
     end     
   end
 
@@ -136,6 +132,10 @@ class DiscussionsController < GroupBaseController
     elsif params[:discussion][:group_id]
       Group.find(params[:discussion][:group_id])
     end
+  end
+
+  def mock_discussion
+
   end
 
 end
