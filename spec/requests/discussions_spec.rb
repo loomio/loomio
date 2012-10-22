@@ -1,4 +1,5 @@
 require 'spec_helper'
+include ActionView::Helpers::DateHelper
 
 describe "Discussion" do
   let(:user) { create_logged_in_user }
@@ -171,26 +172,49 @@ describe "Discussion" do
         should_not have_link("Unlike")
       end
 
-      it "can change description to a previous version", :js => true do
-        @user2 = create(:user)
-        @discussion.group.add_member!(@user2)
-        comment = @discussion.update_attribute(:description, @discussion.description + " Some additional info.")
+      context "revision history", :js => true do
 
-        visit discussion_path(@discussion)
-        find("#discussion-context").find_link('See revision history').click
-        assert_modal_visible
-        find("#description-revision-history").find_link('Prev').click
-        find_button("Go back to this version").click
-        should_not have_content(" Some additional info.")
-        should have_content(@discussion.description)
+        before do
+          @user2 = create(:user)
+          @discussion.group.add_member!(@user2)
+          PaperTrail.whodunnit = @user2.name
+          @discussion.update_attribute(:description, @discussion.description + " Some additional info.")
+          @modal_window_selector = "#description-revision-history"
+        end
+
+        it "can change description to a previous version" do
+          open_modal
+
+          find("#description-revision-history").find_link('Prev').click
+          assert_modal_flushed
+          find_button("Go back to this version").click
+          should_not have_content(" Some additional info.")
+          should have_content(@discussion.description)
+        end
+
+        it "refreshes the modal window with appropriate version details" do
+          open_modal
+
+          find(@modal_window_selector).find_link('Prev').click
+          assert_modal_flushed
+          find(@modal_window_selector).find(".user-profile-fields p").should have_content("Edited about #{time_ago_in_words(@discussion.previous_version.updated_at)} ago by #{@discussion.previous_version.originator}")
+        end
+        
+        # LOCAL HELPERS
+        def open_modal
+          visit discussion_path(@discussion)
+          find("#discussion-context").find_link('See revision history').click
+         assert_modal_flushed
+        end
+
+        def assert_modal_flushed
+          page.execute_script("$('#{@modal_window_selector}').empty()")
+          wait_until { page.has_css?("#{@modal_window_selector} div") }
+        rescue Capybara::TimeoutError
+          flunk 'Expected modal to receive html content.'
+        end
       end
 
-      # HELPERS
-      def assert_modal_visible
-        wait_until { find("#description-revision-history").visible? }
-      rescue Capybara::TimeoutError
-        flunk 'Expected modal to be visible.'
-      end
     end
   end
 end
