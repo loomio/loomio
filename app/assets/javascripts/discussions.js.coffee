@@ -15,20 +15,15 @@ $ ->
       $(".discussion-description-helper-text").toggle()
 
 $ ->
-  $("textarea").atWho "@", (query, callback) ->
-    console.log("@who") 
-    $.get "/users/mentions.json", q: query, ((result) ->
-        console.log("in callback")
-        console.log("result: ")
-        console.log(result)
-        #names = $.parseJSON(result)
-        names = Array::slice.call(result)
-        names = $.map(result, (value, key) -> 
-          id: key
-          name: value
-          email: value + "@email.com"
-        )
-        console.log(names)
-        callback names
-    ), "json"
+  $("textarea").atWho "@", 
+    tpl: "<li id='${id}' data-value='${username}' data-insert='${username}'>${name} <small>${username}</small></li>"
+    choose: "data-insert"
+    callback: (query, callback) ->
+      $.get "/users/mentions.json", q: query, ((result) ->
+          console.log(result)
+          names = _.toArray(result)
+          names = _.map names, (name) ->
+            _.toArray(name)
+          callback _.toArray(names)
+      ), "json"
 
