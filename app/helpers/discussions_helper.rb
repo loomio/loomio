@@ -1,4 +1,6 @@
 module DiscussionsHelper
+  include Twitter::Extractor
+  include Twitter::Autolink
   def discussion_activity_count_for(discussion, user)
     user ? discussion.number_of_comments_since_last_looked(user) : 0
   end
@@ -31,5 +33,9 @@ module DiscussionsHelper
     end
     message += vote.statement.blank? ? "." : ":"
     message
+  end
+
+  def add_mention_links(comment)
+    auto_link(comment, :username_url_base => "#", :username_include_symbol => true)
   end
 end

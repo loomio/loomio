@@ -102,4 +102,9 @@ class Event < ActiveRecord::Base
     end
     event
   end
+
+  def self.new_mention!(mention_user)
+    #event = create!(:kind => "mention", :eventable => mention_user)
+    #event.notifications.create! :user => mention_user
+  end
 end

@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def twitterized_type(type)
     case type
       when :alert
@@ -55,7 +56,7 @@ module ApplicationHelper
     ]
 
     renderer = MarkdownRenderer.new(
-      :filter_html => true,
+      :filter_html => false,
       :hard_wrap => true
     )
     
