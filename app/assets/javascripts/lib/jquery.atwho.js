@@ -328,15 +328,13 @@
         return jqo = _isNil(jqo) ? (this._jqo = $(this.id)) : jqo;
       },
       init: function() {
-        var $menu, tpl, output,
+        var $menu, tpl,
           _this = this;
         if (!_isNil(this.jqo())) {
           return;
         }
         tpl = "<div id='" + this.id.slice(1) + "' class='at-view'><ul id='" + this.id.slice(1) + "-ul'></ul></div>";
-        output = "<div id='at-output' style='display:none;'>";
         $("body").append(tpl);
-        $("body").append(output);
         $menu = this.jqo().find('ul');
         return $menu.on('mouseenter.view', 'li', function(e) {
           $menu.find('.cur').removeClass('cur');
@@ -513,7 +511,7 @@
       return !target || ($.isPlainObject(target) && $.isEmptyObject(target)) || ($.isArray(target) && target.length === 0) || (target instanceof $ && target.length === 0) || target === void 0;
     };
     _DEFAULT_TPL = "<li id='${id}' data-value='${name}'>${name}</li>";
-    log = function() {};
+    log = function(str, str2) { console.log(str); console.log(str2); };
     $.fn.atWho = function(flag, options) {
       AtView.init();
       return this.filter('textarea, input').each(function() {
