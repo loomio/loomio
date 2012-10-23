@@ -66,10 +66,12 @@ class DiscussionsController < GroupBaseController
   end
 
   def add_comment
-    comment = resource.add_comment(current_user, params[:comment], mentions)
+    comment, mentions = resource.add_comment(current_user, params[:comment])
     if comment.valid?
-      puts(mentions)
       Event.new_comment!(comment)
+      mentions.each do |mention|
+        Event.new_mention!(mention)
+      end
     else
       flash[:error] = "Comment could not be created."
     end

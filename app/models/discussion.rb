@@ -41,12 +41,12 @@ class Discussion < ActiveRecord::Base
     group.users.include? user
   end
 
-  def add_comment(user, comment, mentions)
+  def add_comment(user, comment)
     if can_be_commented_on_by? user
       comment = Comment.build_from self, user.id, comment
       mentions = comment.parse_mentions
       comment.save
-      comment
+      return comment, mentions
     end
   end
 
