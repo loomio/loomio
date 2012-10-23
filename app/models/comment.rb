@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  include Twitter::Extractor
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
   validates_presence_of :body
@@ -100,4 +101,15 @@ class Comment < ActiveRecord::Base
       discussion.last_comment_at = discussion.latest_comment_time
       discussion.save
     end
+
+    def parse_mentions
+      users = []
+      usernames = extract_mentioned_screen_names(self.body)
+      usernames.each do |mention|
+        users.push(User.find_by_username(mention))
+      end      
+      puts(users)
+      users
+    end
+
 end

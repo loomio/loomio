@@ -13,6 +13,13 @@ GIT
       rails (~> 3.0)
 
 GIT
+  remote: https://github.com/twitter/twitter-text-rb.git
+  revision: f0458ba4eee710140f04c059d70b0faf368e3b10
+  specs:
+    twitter-text (1.5.0)
+      activesupport
+
+GIT
   remote: https://github.com/vmg/redcarpet.git
   revision: e7f328cd38985da7e7441aff17813132ff0e479a
   specs:
@@ -432,4 +439,5 @@ DEPENDENCIES
   spork
   thin
   twitter-bootstrap-rails
+  twitter-text!
   uglifier (>= 1.0.3)
