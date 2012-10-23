@@ -22,9 +22,10 @@ FactoryGirl.define do
   factory :discussion do
     association :author, :factory => :user
     group
-    title 'Title of discussion'
+    title Faker::Lorem.sentence(2)
     description 'A description for this discussion'
     after(:build) do |discussion|
+      discussion.group.parent.add_member!(discussion.author) if discussion.group.parent
       discussion.group.add_member!(discussion.author)
     end
     after(:create) do |discussion|

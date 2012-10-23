@@ -16,14 +16,22 @@
   .proposed-by
     = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
   .description
+  
+    <!--[if IE 7]>
+    .long-description{style: "display: none"}
+      ~ markdown(motion.description)
+    <![endif]-->
+
+    <!--[if !IE 7]><!-->
     - too_long = true if motion.description && motion.description.length > 200
     .short-description
       ~ markdown(truncate(motion.description, length: 200, omission: '...', separator: ' '))
-      = link_to "Show More >>", "#", title: "see the full description", class: 'see-more' if too_long
     .long-description{style: "display: none"}
       ~ markdown(motion.description)
-      = link_to "Show Less", "#", title: "see the full description", class: 'see-more' if too_long
-  #graph.pie
+    = link_to "Show More", "#", class: 'see-more' if too_long
+    <!--<![endif]-->
+
+  .pie{id: "graph_#{motion.id}"}
   .percentage-to-vote
     = "#{motion.percent_voted}% of members "
     = "have " unless motion.closed?
@@ -68,14 +76,21 @@
   :coffeescript
     $ ->
       # Display vote graph
-      @pie_graph_view = new Loomio.Views.Utils.GraphView
-        el: '#graph.pie'
-        id_string: 'graph'
-        legend: true
-        data: #{@votes_for_graph.to_json.html_safe}
-        type: 'pie'
-        tooltip_selector: '#tooltip'
-        diameter: 200
-        padding: 0
-        gap: 5
-        shadow: 2
+      make_the_graph = ->
+        @pie_graph_view = new Loomio.Views.Utils.GraphView
+          el: '.pie'
+          id_string: "graph_#{motion.id}"
+          legend: true
+          data: #{@votes_for_graph.to_json}
+          type: 'pie'
+          tooltip_selector: '#tooltip'
+          diameter: 200
+          padding: 0
+          gap: 5
+          shadow: 2
+
+      # IE8 FIX - for some reason we have to load the graph after everything else.
+      # Otherwise, the graph doesn't display in IE8.
+      #
+      # Ideally, we'd like to be able to delete this line:
+      $(window).load(make_the_graph)
