@@ -201,7 +201,6 @@ GEM
     jqplot-rails (0.1)
       railties (~> 3.0)
       thor (~> 0.14)
-    jquery-atwho-rails (0.1.6)
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
@@ -408,7 +407,6 @@ DEPENDENCIES
   inherited_resources
   jasminerice
   jqplot-rails
-  jquery-atwho-rails
   jquery-rails
   kaminari
   launchy

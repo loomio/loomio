@@ -27,4 +27,5 @@
 //= require notifications
 //= require dashboard
 //= require votes
-//= require jquery.atwho
+//= require lib/jquery.atwho
+//= require lib/jquery.caret

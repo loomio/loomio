@@ -28,7 +28,6 @@ gem 'activeadmin'
 gem 'nokogiri'
 gem 'redcarpet', :git => 'https://github.com/vmg/redcarpet.git'
 gem 'newrelic_rpm'
-gem 'jquery-atwho-rails'
 gem 'rabl'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
