@@ -16,8 +16,7 @@ $ ->
 
 $ ->
   $("textarea").atWho "@", 
-    tpl: "<li id='${id}' data-value='${username}' data-insert='${username}'>${name} <small>${username}</small></li>"
-    choose: "data-insert"
+    tpl: "<li id='${id}' data-value='${username}'> ${name} <small>${username}</small></li>"
     callback: (query, callback) ->
       $.get "/users/mentions.json", q: query, ((result) ->
           console.log(result)
