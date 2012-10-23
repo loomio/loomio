@@ -7,11 +7,7 @@
 
 // group title (on almost all pages)
 .group-title {
-  margin-bottom: 10px;
-  hr {
-    margin: 5px 13px;
-    /*border-top: 1px solid #CCC*/
-  }
+  margin: 0 0 10px 0;
   h1 {
     float: left;
     line-height: 1.2em;
@@ -34,13 +30,13 @@
     position: relative;
     float: right;
   }
-  .group-options a {
-    font-size: 0.9em;
-  }
+
+  // .group-options a {
+  //   font-size: 0.9em;
+  // }
   .group-options .icon-cog {
     opacity: 0.65;
-    position: relative;
-    top: 1px;
+    margin-top: 2px;
   }
   .group-options .options-dropdown-icon {
     position: relative;
@@ -124,7 +120,7 @@ body.groups.show {
     float: right;
   }
   ul.group-links, ul#users-list, ul#dashboard-groups-list {
-    margin: 0 0 8px 5px;
+    margin-top: 8px;
     li {
       line-height: 1.6em;
       background-color: $sub-selector-panel;
@@ -195,6 +191,11 @@ body.groups.show {
   }
 }
 
+/* previous-discussions panel */
+.previous-discussions-panel {
+  h3 { display: block; }
+}
+
 /* membership request panel */
 #member-requests { display: inline; }
 
@@ -257,7 +258,7 @@ input#user_email{
   color: $mid-grey;
   float: left;
 }
-#users-list .admin-controls {
+#users-list .admin-controls, #request-list .admin-controls {
   float: right;
   width: 98px;
   text-align: right;

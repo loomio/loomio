@@ -174,9 +174,6 @@ describe Group do
       it "does not return discussions for subgroups the user does not belong to" do
         @group.discussions_sorted(@user).should_not include(@discussion6)
       end
-      it "does not return subgroup discussions if user is not specified" do
-        @group.discussions_sorted.should_not include(@discussion5)
-      end
     end
   end
 
