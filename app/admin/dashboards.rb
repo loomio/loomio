@@ -41,18 +41,14 @@ ActiveAdmin::Dashboards.build do
   section "Proposal Engagement (Average)", :priority => 8 do
     sum = 0
     Motion.all.each do |motion|
-      if motion.group == nil #include archived motions
-        motion.discussion.group = Group.unscoped.find(motion.discussion.group_id)
-      end
-      sum += motion.percent_voted
-      
-      #if we don't want to include archived groups in the statistics
-      # then it would be better to:
-
-      # unless motion.group == nil
-      #   sum += motion.percent_voted
+      # This block will include archived motions in stats
+      # if motion.group == nil # include archived motions
+      #   motion.discussion.group = Group.unscoped.find(motion.discussion.group_id)
       # end
-
+      # sum += motion.percent_voted
+      unless motion.group == nil
+        sum += motion.percent_voted
+      end
     end
     h1 { "#{sum / Motion.count}%" }
   end
