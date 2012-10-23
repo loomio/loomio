@@ -133,9 +133,4 @@ class DiscussionsController < GroupBaseController
       Group.find(params[:discussion][:group_id])
     end
   end
-
-  def mock_discussion
-
-  end
-
 end
