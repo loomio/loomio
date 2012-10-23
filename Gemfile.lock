@@ -253,6 +253,9 @@ GEM
       activerecord (~> 3.0)
     polyglot (0.3.3)
     progressbar (0.10.0)
+    rabl (0.7.3)
+      activesupport (>= 2.3.14)
+      multi_json (~> 1.0)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -414,6 +417,7 @@ DEPENDENCIES
   nokogiri
   paperclip
   pg
+  rabl
   rails (= 3.2.6)
   rails-backbone
   rails_best_practices

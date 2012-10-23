@@ -64,9 +64,9 @@ class UsersController < BaseController
   end
 
   def mentions
-    @user = User.last
+    @users = User.all
     respond_to do |format|
-      format.json
+      format.json { render 'users/mentions' }
     end
   end
 end
