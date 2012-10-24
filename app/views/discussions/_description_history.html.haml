@@ -21,4 +21,7 @@
   %p= @discussion.description
 .modal-footer
   = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
-  =button_to "Go back to this version", update_description_discussion_path(@discussion), "data-dismiss" => "modal", :method => :post, :class => "btn btn-info", :data => { :disable_with => "Applying changes..." }
+  -if @discussion.live?
+    =link_to "Go back to this version", "#","data-dismiss" => "modal", :method => :post, :class => "btn btn-info", :disabled => true
+  -else
+    =link_to "Go back to this version", update_version_discussion_path(@discussion.version), :method => :post, :class => "btn btn-info", :remote => true, :data => { :disable_with => "Applying changes..." }

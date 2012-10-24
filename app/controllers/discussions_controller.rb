@@ -116,7 +116,7 @@ class DiscussionsController < GroupBaseController
     @version.reify.save!
     @discussion = @version.item
     respond_to do |format|
-      format.js { render :nothing => true}
+      format.js
     end     
   end
 
