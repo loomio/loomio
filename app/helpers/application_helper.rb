@@ -31,6 +31,13 @@ module ApplicationHelper
     content_for :title, title 
   end
 
+  def icon_button(link, text, icon, id, is_modal = false)
+    modal_string = "modal" if is_modal
+    content_tag(:a, :href => link, :class => 'btn btn-grey btn-app', :id => id, 'data-toggle' => modal_string) do
+      image_tag(icon, :class => 'button-icon') + text
+    end
+  end
+
   def email_subject_prefix(group_name)
     "[Loomio: #{group_name}]"
   end

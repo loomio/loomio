@@ -36,8 +36,12 @@ describe Group do
         @discussion = @group.discussions.first
       end
 
-      it "gives it a proper title" do
-        @discussion.title.should == "Welcome and Introduction to Loomio!"
+      it "sets the title" do
+        @discussion.title.should == "Example Discussion: Welcome and introduction to Loomio!"
+      end
+
+      it "sets the description" do
+        @discussion.description.should_not be_nil
       end
 
       it "assigns Loomio Helper Bot as the author" do
@@ -169,9 +173,6 @@ describe Group do
       end
       it "does not return discussions for subgroups the user does not belong to" do
         @group.discussions_sorted(@user).should_not include(@discussion6)
-      end
-      it "does not return subgroup discussions if user is not specified" do
-        @group.discussions_sorted.should_not include(@discussion5)
       end
     end
   end

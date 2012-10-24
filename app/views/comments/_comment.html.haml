@@ -1,6 +1,6 @@
 - likes = comment.likes
 %div.comment{id: "comment-#{comment.id}"}
-  .medium-user-avatar.avatar-canvas
+  .comment-avatar.medium-user-avatar.avatar-canvas
     - if comment.user.avatar_url
       = image_tag comment.user.avatar_url(:medium)
     - else
@@ -8,6 +8,7 @@
         = comment.user.avatar_initials
   .comment-container.with-avatar
     .comment-username
+<<<<<<< HEAD
       =link_to comment.user_name, "#", "title" => comment.user_name,
         "data-content" => "#{render 'users/name_popover', user: comment.user, group: comment.group}",
         class: "comment-user-name"
@@ -32,3 +33,10 @@
         - else
           - likers = likers[0]
         = "Liked by #{likers}".html_safe
+=======
+      = link_to comment.user_name, "#", "title" => comment.user_name,
+        "data-content" => "#{render 'users/name_popover', user: comment.user, group: comment.group}", :class => "user-name-with-popover"
+    .comment-body~ markdown(comment.body.to_s.force_encoding("UTF-8"))
+    .comment-time-and-likes
+      =render 'comments/comment_likes', comment: comment, likes: likes
+>>>>>>> 2550b29d4a2bad9aa59c3efb7f34fcfb1c074fe6

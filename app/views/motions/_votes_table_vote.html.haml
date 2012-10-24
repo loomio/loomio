@@ -1,6 +1,6 @@
 .position-row.clearfix
   .position= render partial: "motions/display_icons", locals: { position: vote.position }
-  = link_to vote.user_name, "#"
+  = link_to vote.user_name, "#", "title" => vote.user_name, "data-content" => "#{render 'users/name_popover', user: vote.user, group: motion.group}", :class => "user-name-with-popover"
   - if vote.can_be_edited_by?(current_user) && motion.phase == 'voting'
     =link_to "edit", edit_motion_vote_path(motion, vote), class: 'btn btn-mini'
   .statement

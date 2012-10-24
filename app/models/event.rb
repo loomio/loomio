@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
-             motion_closed membership_requested user_added_to_group comment_liked]
+             motion_closed membership_requested user_added_to_group comment_liked mention]
 
   has_many :notifications, :dependent => :destroy
   belongs_to :eventable, :polymorphic => true
@@ -103,8 +103,8 @@ class Event < ActiveRecord::Base
     event
   end
 
-  def self.new_mention!(mention_user)
-    #event = create!(:kind => "mention", :eventable => mention_user)
-    #event.notifications.create! :user => mention_user
+  def self.new_mention!(comment, mentioned_user)
+    event = create!(:kind => "mention", :eventable => comment, :user => comment.user)
+    event.notifications.create! :user => mentioned_user
   end
 end
