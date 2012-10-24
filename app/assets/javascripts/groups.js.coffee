@@ -10,27 +10,10 @@ $ ->
 #*** edit privacy settings from dropdown ***
 $ ->
   if $("#privacy-settings-form").length > 0
-    $("#privacy-everyone").click((event) ->
-        $('#viewable_by').val("everyone")
-        $("#privacy-everyone").find('.icon-ok').removeClass('hidden')
-        $("#privacy-members").find('.icon-ok').addClass('hidden')
-        $("#privacy-parent").find('.icon-ok').addClass('hidden')
-        $("#privacy-settings-form").submit()
-        event.preventDefault()
-    )
-    $("#privacy-members").click((event) ->
-        $('#viewable_by').val("members")
-        $("#privacy-everyone").find('.icon-ok').addClass('hidden')
-        $("#privacy-members").find('.icon-ok').removeClass('hidden')
-        $("#privacy-parent").find('.icon-ok').addClass('hidden')
-        $("#privacy-settings-form").submit()
-        event.preventDefault()
-    )
-    $("#privacy-parent").click((event) ->
-        $('#viewable_by').val("parent_group_members")
-        $("#privacy-everyone").find('.icon-ok').addClass('hidden')
-        $("#privacy-members").find('.icon-ok').addClass('hidden')
-        $("#privacy-parent").find('.icon-ok').removeClass('hidden')
+    $(".privacy-item").click((event) ->
+        $('#viewable_by').val($(this).children().attr('class'))
+        $(".privacy-item").find('.icon-ok').removeClass('icon-ok')
+        $(this).find('.privacy-tick').children().addClass('icon-ok')
         $("#privacy-settings-form").submit()
         event.preventDefault()
     )

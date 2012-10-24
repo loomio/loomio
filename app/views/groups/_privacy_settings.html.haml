@@ -1,17 +1,17 @@
 %ul.dropdown-menu.pull-left
   %li.privacy-item
-    %a{ :href => "#", id: 'privacy-everyone'}
+    %a.everyone{:href => "#"}
       .privacy-tick
         %div{:class => css_for_privacy_link(group, 'everyone')}
       = "Everyone"
   %li.privacy-item
-    %a{ :href => "#", id: 'privacy-members'}
+    %a.members{:href => "#"}
       .privacy-tick
         %div{:class => css_for_privacy_link(group, 'members')}
       = "Members"
   - if group.parent
     %li.privacy-item
-      %a{ :href => "#", id: 'privacy-parent'}
+      %a.members{:href => "#"}
         .privacy-tick
           %div{:class => css_for_privacy_link(group, 'parent_group_members')}
         = "Parent group members"
