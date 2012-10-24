@@ -8,15 +8,16 @@
     - member = User.find(membership.user_id)
     .user-name
       - name_length = (member.is_group_admin?(group) or (can? :edit, group and current_user.is_group_admin?(group))) ? 18 : 35
-      %span.membership-user-name.word-break= truncate(membership.user_name_or_email, :length => name_length, :omission => '...')
+      %span.membership-user-name
+        = link_to truncate(membership.user_name_or_email, :length => name_length, :omission => '...'), "#", "title" => membership.user_name_or_email, "data-content" => "#{render 'users/name_popover', user: membership.user, group: group }", class: 'user-name-with-popover'
     .admin-controls
       - if (can? :edit, group and current_user.is_group_admin?(group))
+        =link_to "×", membership, method: :delete, class: 'close',
+          :data => { :confirm => "Are you sure you wish to remove #{membership.user_email} from the group?" }
         - if member.is_group_admin?(group)
           =link_to "Remove admin", remove_admin_membership_path(membership), method: :post
         - else
           =link_to "Make admin", make_admin_membership_path(membership), method: :post
-        =link_to "×", membership, method: :delete, class: 'close',
-        :data => { :confirm => "Are you sure you wish to remove #{membership.user_email} from the group?" }
       - else
         - if member.is_group_admin?(group)
           = "Group Admin"

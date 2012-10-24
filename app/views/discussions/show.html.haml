@@ -1,11 +1,10 @@
 - set_title @group.name, @discussion.title
 - if current_user && (not current_user.has_read_discussion_notice?)
-  - message = "The left-hand panel below is the place to post comments, "
-  - message += "share information, and have a discussion. To add a comment, write in the text box and click “Post comment”.\n\n"
-  - message += "The right-hand panel is the place to see the current proposal, and how the group feels about it. "
-  - message += "Once a discussion has progressed to the point where a possible proposal for an action or decision is clear, "
-  - message += "a group member can create a proposal and it will appear in this panel. "
-  - message += "If there is not yet a proposal, the right-hand panel will be blank.\n\n"
+  - message = "The discussion topic is at the top of the page, followed by background information and context.\n\n"
+  - message += "Discussion is on the left: to add a comment, write in the text box and click ‘Post comment’.\n\n"
+  - message += "Decisions are on the right. If you think the group is ready to make a decision, "
+  - message += "you can make a proposal for the group to consider. If someone has already made a proposal, "
+  - message += "you can see how the group feels on the pie graph, and state your position underneath.\n\n"
   =render '/application/helper_info', message: message, path: dismiss_discussion_notice_for_user_path
 
 -#=render '/application/loomio-process-flow'
@@ -20,8 +19,16 @@
           .row
             .span8
               =render '/application/description', model: @discussion, model_name: "discussion"
-            .span3.helper-text.discussion-description-helper-text.hidden
-              %p This is a place for information relevant to the discussion
+            .span3.right-context
+              .helper-text.discussion-description-helper-text.hidden
+                %p Use this panel to give enough context for your group to have a well-informed discussion. As the discussion progresses, anyone can add information to make it easy for new people to get up to speed.
+              .discussion-author-info
+                = "Started #{time_ago_in_words(@discussion.created_at)} ago"
+                .started-by
+                  = "By "
+                  =link_to @discussion.author.name, "#", "title" => @discussion.author.name,
+                    "data-content" => "#{render 'users/name_popover', user: @discussion.author, group: @discussion.group}",
+                    class: "user-name-with-popover"
         .row
           .span6#content-history
             .large-icon.discussion-icon.enabled-icon

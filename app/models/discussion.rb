@@ -7,7 +7,8 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  validates_with AuthorValidator
+  # Do we even need this?
+  # validates_with AuthorValidator
   validates_presence_of :title, :group, :author
   validates :title, :length => { :maximum => 150 }
 

@@ -1,6 +1,20 @@
 .description-container
   .description-body
-    .model-description~ markdown(model.description)
+    - too_long = true if model.description && model.description.length > 500
+
+    <!--[if IE 7]>
+    .long-description.model-description
+      ~ markdown(model.description)
+    <![endif]-->
+    
+    <!--[if !IE 7]><!-->
+    .short-description.model-description
+      ~ markdown(truncate(model.description, length: 500, omission: '...', separator: ' '))
+    .long-description.model-description{style: "display: none"}
+      ~ markdown(model.description)
+    = link_to "Show More", "#", class: 'see-more' if too_long
+    <!--<![endif]-->
+    
     - if can? :edit_description, model
       = link_to "Edit #{model_name} info", "#", class: "edit-description edit-#{model_name}-description"
 
@@ -9,7 +23,7 @@
       = hidden_field_tag 'id'
       .control-group
         - class_str = 'inputError limit-250' if model_name == "group"
-        = text_area_tag 'description', model.description, {id: 'description-input', class: class_str}
+        = text_area_tag 'description', model.description, {id: 'description-input', class: class_str, :autofocus => true }
         - unless model_name == "discussion"
           .character-counter
       .save-buttons.clearfix

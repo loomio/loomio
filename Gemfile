@@ -27,7 +27,6 @@ gem 'kaminari'
 gem 'activeadmin'
 gem 'nokogiri'
 gem 'redcarpet', :git => 'https://github.com/vmg/redcarpet.git'
-gem 'newrelic_rpm'
 gem 'rabl'
 gem 'twitter-text', :git => 'https://github.com/twitter/twitter-text-rb.git'
 
@@ -53,6 +52,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'faker'
   gem 'rspec-rails'
+  gem 'ruby-prof', :git => 'https://github.com/wycats/ruby-prof.git'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
@@ -83,3 +83,6 @@ group :test do
   gem 'email_spec'
 end
 
+group :production do
+  gem 'newrelic_rpm'
+end
