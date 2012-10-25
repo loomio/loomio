@@ -2,6 +2,15 @@ class UserMailer < ActionMailer::Base
   include ApplicationHelper
   default :from => "\"Loomio\" <noreply@loom.io>"
 
+  def daily_activity(user, activity, since_time)
+    @user = user
+    @activity = activity
+    @since_time = since_time
+    @groups = user.groups
+    mail to: @user,
+         subject: 'Loomio daily activity'
+
+  end
   def group_membership_approved(user, group)
     @user = user
     @group = group

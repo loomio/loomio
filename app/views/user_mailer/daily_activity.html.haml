@@ -1,0 +1,17 @@
+%h1 Your Loomio Activity
+%p Showing you activity since #{l @since_time}
+
+%h2 Proposals
+-@groups.each do |group|
+  %h3=group.name
+  -@activity[group.name][:motions].each do |motion|
+    %p #{link_to(motion.name, motion)} - closes in #{time_ago_in_words(discussion.current_motion_close_date)}
+
+%h2 Discussions
+-@groups.each do |group|
+  %h3=group.name
+  -@activity[group.name][:discussions].each do |discussion|
+    %p #{link_to(discussion.title, discussion)} - #{discussion.number_of_comments_since(@since_time)}
+  %p=link_to('Start a discussion', [:new, group, :discussion])
+
+%p=link_to 'Modify your email preferences', user_settings_path

@@ -33,6 +33,21 @@ FactoryGirl.define do
     end
   end
 
+  factory :comment do
+    user
+    association :commentable, factory: :discussion
+    title Faker::Lorem.sentence(2)
+    body 'body of the comment'
+
+    after(:build) do |comment|
+      comment.discussion.group.parent.add_member!(comment.user) if comment.discussion.group.parent
+      comment.discussion.group.add_member!(comment.user)
+    end
+    after(:create) do |comment|
+      comment.discussion.group.save
+    end
+  end
+
   factory :motion do
     sequence(:name) { Faker::Name.name }
     association :author, :factory => :user
