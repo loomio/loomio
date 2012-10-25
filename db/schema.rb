@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005060102) do
+ActiveRecord::Schema.define(:version => 20121008010612) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -112,9 +112,9 @@ ActiveRecord::Schema.define(:version => 20121005060102) do
     t.string   "admin_email"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
+    t.boolean  "cannot_contribute", :default => false
     t.string   "status"
     t.integer  "group_id"
-    t.boolean  "cannot_contribute", :default => false
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
@@ -144,7 +144,6 @@ ActiveRecord::Schema.define(:version => 20121005060102) do
     t.integer  "group_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.string   "token",           :null => false
   end
 
   create_table "memberships", :force => true do |t|
@@ -163,11 +162,11 @@ ActiveRecord::Schema.define(:version => 20121005060102) do
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "motion_read_logs", :force => true do |t|
-    t.integer  "motion_activity_when_last_read"
     t.integer  "motion_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "motion_last_viewed_at"
   end
 
   create_table "motions", :force => true do |t|
@@ -180,8 +179,8 @@ ActiveRecord::Schema.define(:version => 20121005060102) do
     t.string   "discussion_url", :default => "",       :null => false
     t.datetime "close_date"
     t.integer  "discussion_id"
-    t.integer  "activity",       :default => 0
     t.string   "outcome"
+    t.datetime "last_vote_at"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"

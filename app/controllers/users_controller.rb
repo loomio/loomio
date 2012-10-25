@@ -46,12 +46,9 @@ class UsersController < BaseController
   end
 
   def set_receive_emails
-    current_user.receive_emails = params[:email]
+    @receive_emails = params[:email]
+    current_user.receive_emails = @receive_emails
     current_user.save!
-    respond_to do |format|
-      format.html { redirect_to(root_url) }
-      # format.js {}
-    end
   end
 
   def dismiss_system_notice
