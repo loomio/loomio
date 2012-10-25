@@ -7,10 +7,10 @@ class UserMailer < ActionMailer::Base
     @activity = activity
     @since_time = since_time
     @groups = user.groups
-    mail to: @user,
-         subject: 'Loomio daily activity'
-
+    mail to: @user.email,
+         subject: 'Loomio - Daily activity summary'
   end
+
   def group_membership_approved(user, group)
     @user = user
     @group = group
