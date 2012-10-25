@@ -5,7 +5,10 @@
 -@groups.each do |group|
   %h3=group.name
   -@activity[group.name][:motions].each do |motion|
-    %p #{link_to(motion.name, motion)} - closes in #{time_ago_in_words(discussion.current_motion_close_date)}
+    %p 
+      #{link_to(motion.name, motion)}
+      -if motion.close_date.present?
+        \- closes in #{time_ago_in_words(motion.close_date)}
 
 %h2 Discussions
 -@groups.each do |group|

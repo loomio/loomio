@@ -31,14 +31,18 @@ When /^we send the daily activity email$/ do
   UserMailer.daily_activity(@user, @recent_activity, since_time).deliver!
 end
 
-Then /^"(.*?)" should get emailed$/ do
-  last_email.to.should include User.find_by_name(arg1).email
+Then /^"(.*?)" should get emailed$/ do |arg1|
+  last_email = ActionMailer::Base.deliveries.last
+  user = User.find_by_name(arg1)
+  last_email.to.should include user.email
 end
 
 Then /^that email should have the discussion "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  last_email = ActionMailer::Base.deliveries.last
+  last_email.body.should have_content arg1
 end
 
 Then /^that email should have the proposal "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  last_email = ActionMailer::Base.deliveries.last
+  last_email.body.should have_content arg1
 end
