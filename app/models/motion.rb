@@ -241,7 +241,7 @@ class Motion < ActiveRecord::Base
     def email_motion_created
       if group.email_new_motion
         group.users.each do |user|
-          unless author == user
+          if author != user && user.send_notification?(group, 1) && user.send_email?
             MotionMailer.new_motion_created(self, user.email).deliver
           end
         end
@@ -249,7 +249,18 @@ class Motion < ActiveRecord::Base
     end
 
     def email_motion_closed
-      MotionMailer.motion_closed(self, author_email).deliver
+      user = User.find_by_email(author_email)
+      if user.send_email? && user.send_notification?(group, 1)
+        MotionMailer.motion_closed(self, author_email).deliver
+      end
+    end
+
+    def email_outcome
+      group.users.each do |user|
+        if user.send_notification?(group, 0) && user.send_email?
+          MotionMailer.motion_outcome(self, user.email).deliver
+        end
+      end
     end
 
     def format_discussion_url

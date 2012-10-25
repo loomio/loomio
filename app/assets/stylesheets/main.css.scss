@@ -240,6 +240,15 @@ li.selector-item a.selector-link:hover {
   font-size: $font-small;
 }
 
+.table-disable-hover.table tbody tr:hover td,
+.table-disable-hover.table tbody tr:hover th {
+    background-color: inherit;
+}
+.table-disable-hover.table-striped tbody tr:nth-child(odd):hover td,
+.table-disable-hover.table-striped tbody tr:nth-child(odd):hover th {
+  background-color: #f9f9f9;
+}
+
 form {
   label {
 		font-size: $font-small;

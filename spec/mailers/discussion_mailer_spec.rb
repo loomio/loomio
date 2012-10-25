@@ -3,6 +3,7 @@ require "spec_helper"
 describe DiscussionMailer do
   let(:discussion) { create(:discussion) }
   let(:group) { discussion.group }
+  let(:user) { create(:user) }
 
   context 'sending individual email upon new discussion creation' do
     before(:all) do
@@ -30,12 +31,30 @@ describe DiscussionMailer do
     end
   end
 
+  context "notifications disabled" do
+    it "sends message to number of users subscribed to all notifications" do
+      user.receive_emails = false
+      group.add_member! user
+      user.set_group_noise_level(group, 0)
+
+      DiscussionMailer.should_not_receive(:new_discussion_created)
+    end
+
+  end
+
   context "sending all emails upon new discussion creation" do
     it "sends message to each group user" do
-      # minus one for count as we don't want to send an email to the author
-      group.add_member! create(:user)
+      user =  create(:user)
+      group.add_member! user
+      user.set_group_noise_level(group, 2)
+
+      num_noise_levels = { 0 => 0, 1 => 0, 2 => 0}
+      group.users.each do |group_user|
+        num_noise_levels[group_user.get_group_noise_level(group)] += 1
+      end
+
       DiscussionMailer.should_receive(:new_discussion_created).
-        exactly(group.users.count - 1).times.and_return(stub(deliver: true))
+        exactly(num_noise_levels[2]).times.and_return(stub(deliver: true))
       DiscussionMailer.spam_new_discussion_created(discussion)
     end
   end

@@ -1,40 +1,81 @@
-= form_for [@user], :html => { :multipart => true } do |f|
-  = f.label :name
-  = f.text_field :name
-  %h3 Picture
-  .row
-    .span3
-      .large-user-avatar.avatar-canvas.large-user-initials.initials-decoration#avatar-preview
-        - if @user.avatar_kind.blank?
-          = @user.avatar_initials
-        - else
-          = image_tag @user.avatar_url("large")
+.row
+  .span10
+    = form_for [@user], :html => { :multipart => true } do |f|
+      = f.label :name
+      = f.text_field :name
+      %h3 Picture
+      .row
+        .span3
+          .large-user-avatar.avatar-canvas.large-user-initials.initials-decoration#avatar-preview
+            - if @user.avatar_kind.blank?
+              = @user.avatar_initials
+            - else
+              = image_tag @user.avatar_url("large")
+        .span3
+          .user-image-options
+            %ul
+              - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
+                %li.user-image-option.option-uploaded.clearfix
+                  = link_to set_avatar_kind_user_path(@user, :avatar_kind => 'uploaded'), :method => :post, id: 'use_uploaded', :remote => true do
+                    %span
+                      .medium-user-avatar.avatar-canvas#user-uploaded-image
+                        = image_tag @user.uploaded_avatar.url(:medium)
+                      .image-option-label= "Use uploaded image"
+              - if @user.gravatar?(@user.email)
+                %li.user-image-option.option-gravatar.clearfix
+                  = link_to set_avatar_kind_user_path(@user, :avatar_kind => 'gravatar'), :method => :post, id: 'use_gravatar', :remote => true do
+                    %span
+                      .medium-user-avatar.avatar-canvas
+                        = image_tag @user.gravatar_url(:size => User::MEDIUM_IMAGE)
+                      .image-option-label= "Use gravatar"
+              %li.user-image-option.option-initials.clearfix
+                = link_to set_avatar_kind_user_path(@user, :avatar_kind => ''), :method => :post, id: 'use_initials', :remote => true do
+                  %span
+                    .medium-user-avatar.avatar-canvas
+                      .medium-user-initials.initials-decoration= @user.avatar_initials
+                    .image-option-label= "Use initials"
+              %li.user-image-option.option-upload
+                = link_to 'Upload a new image', '#', class: 'btn btn-grey', id: 'upload-new-image'
+      = hidden_field_tag("user[avatar_kind]", "", :id => "user-avatar-kind")
+
+      /
+      / Notification settings
+      /
+      %hr
+      %h3 Email Notifications
+      .row
+        .span6
+          %table#email-notifications-settings
+            %tr
+              %td.email-notifications-title E-mail Notifications
+              %td.email-notifications-val
+                .btn-group
+                  =link_to "On", set_receive_emails_user_path(@user, :email => true), :method => :post, id: 'turn-emails-on', :remote => true, :class => (@user.receive_emails ? 'btn active' : 'btn')
+                  =link_to "Off", set_receive_emails_user_path(@user, :email => false), :method => :post, id: 'turn-emails-off', :remote => true, :class => (@user.receive_emails ? 'btn' : 'btn active')
+        .span4
+          .helper-text
+            %p Set this to off if you never want Loomio to send you e-mails.
+
+      / Group settings
+      %hr
+      %h3 Group Notification Settings
+      - if current_user.groups.present?
+        .row
+          .span6
+            %table.table.table-striped.table-disable-hover#groups-notifications-settings
+              %tr
+                %th Group
+                %th Notifications
+              - current_user.root_groups.each do |group|
+                = render 'users/group_noise_setting', user: current_user, group: group, subgroup: false
+                - if group.subgroups.size > 0
+                  - current_user.subgroups(group).each do |subgroup|
+                    = render 'users/group_noise_setting', user: current_user, group: subgroup, subgroup: true
+          .span4
+            .helper-text
+              %p Customise your notification settings for each group. Select 'All' if you'd like to be notified of everything that goes on in the group, or 'Off' to mute it entirely.
+      %hr
+
       = f.submit "Update Settings", class: "btn btn-info"
-    .span3
-      .user-image-options
-        %ul
-          - if @user.uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
-            %li.user-image-option.option-uploaded.clearfix
-              = link_to set_avatar_kind_user_path(@user, :avatar_kind => 'uploaded'), :method => :post, id: 'use_uploaded', :remote => true do
-                %span
-                  .medium-user-avatar.avatar-canvas#user-uploaded-image
-                    = image_tag @user.uploaded_avatar.url(:medium)
-                  .image-option-label= "Use uploaded image"
-          - if @user.gravatar?(@user.email)
-            %li.user-image-option.option-gravatar.clearfix
-              = link_to set_avatar_kind_user_path(@user, :avatar_kind => 'gravatar'), :method => :post, id: 'use_gravatar', :remote => true do
-                %span
-                  .medium-user-avatar.avatar-canvas
-                    = image_tag @user.gravatar_url(:size => User::MEDIUM_IMAGE)
-                  .image-option-label= "Use gravatar"
-          %li.user-image-option.option-initials.clearfix
-            = link_to set_avatar_kind_user_path(@user, :avatar_kind => ''), :method => :post, id: 'use_initials', :remote => true do
-              %span
-                .medium-user-avatar.avatar-canvas
-                  .medium-user-initials.initials-decoration= @user.avatar_initials
-                .image-option-label= "Use initials"
-          %li.user-image-option.option-upload
-            = link_to 'Upload a new image', '#', class: 'btn btn-grey', id: 'upload-new-image'
-  = hidden_field_tag("user[avatar_kind]", "", :id => "user-avatar-kind")
-= form_for [@user], :html => { :multipart => true, :id => 'upload-form' }, :url => upload_new_avatar_user_path(@user), :method => 'post' do
-  = file_field_tag :uploaded_avatar, id: 'uploaded-avatar', class: 'hidden'
+    = form_for [@user], :html => { :multipart => true, :id => 'upload-form' }, :url => upload_new_avatar_user_path(@user), :method => 'post' do
+      = file_field_tag :uploaded_avatar, id: 'uploaded-avatar', class: 'hidden'

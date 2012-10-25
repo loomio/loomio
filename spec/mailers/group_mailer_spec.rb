@@ -35,7 +35,7 @@ describe GroupMailer do
   describe "#deliver_group_email" do
     let(:group) { stub_model Group }
 
-    it "sends email to every group member except the sender" do
+    it "sends email to every group member except the sender and those with notifications disabled" do
       sender = stub_model User, :accepted_or_not_invited? => true
       member = stub_model User, :accepted_or_not_invited? => true
       invitee = stub_model User, :accepted_or_not_invited? => false
@@ -57,6 +57,31 @@ describe GroupMailer do
 
       GroupMailer.deliver_group_email(group, sender,
                                       email_subject, email_body)
+    end
+
+    context "notifications disabled" do
+      before do
+
+      end
+
+      it "does not send email" do
+        sender = stub_model User, :accepted_or_not_invited? => true
+        member = stub_model User, :accepted_or_not_invited? => true
+        muted_user = stub_model User, :accepted_or_not_invited? => true, :receive_emails => false
+        group.stub(:users).and_return([sender, member, muted_user])
+        mailer = double "mailer"
+
+        mailer.should_receive(:deliver)
+        GroupMailer.should_receive(:group_email).
+        with(group, sender, 'abc', 'def', member).
+        and_return(mailer)
+        GroupMailer.should_not_receive(:group_email).
+          with(group, sender, 'abc', 'def', muted_user).
+          and_return(mailer)
+        GroupMailer.deliver_group_email(group, sender, 'abc', 'def')
+
+      end
+
     end
   end
 

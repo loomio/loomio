@@ -42,12 +42,11 @@ describe Notification do
       Notification.unviewed.should_not include(@notification)
     end
   end
-  describe "for a new discussion" do
+  context "for a new discussion" do
     before do
       @user = stub_model(User)
-      @discussion =  stub_model(Discussion, :author => @user)
-      @event = stub_model(Event, :eventable => @discussion,
-                          :eventable_type => "Discussion")
+      @discussion = stub_model(Discussion, :author => @user)
+      @event = stub_model(Event, :eventable => @discussion, :eventable_type => "Discussion")
       @notification.event = @event
       @notification.save!
     end

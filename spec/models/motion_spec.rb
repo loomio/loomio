@@ -28,7 +28,8 @@ describe Motion do
 
   context "motion created" do
     it "sends email to group members if email notifications are enabled (default)" do
-      pending "this test is weird"
+      pending "this test is weird" #and I have no idea how to fix it - PS
+      MotionMailer.stub(:new_motion_created)
       group = create(:group)
       group.add_member!(create(:user))
       group.add_member!(create(:user))
@@ -239,6 +240,7 @@ describe Motion do
     before do
       @motion = create(:motion)
     end
+    
     it "should return the pecentage of users that have voted" do
       @motion.stub(:no_vote_count).and_return(10)
       @motion.stub(:group_count).and_return(20)

@@ -83,8 +83,10 @@ class User < ActiveRecord::Base
            :class_name => 'Vote',
            :source => :votes,
            :through => :motions_in_voting_phase
-
+           
+  has_many :subscriptions
   has_many :notifications
+
 
   has_many :discussion_read_logs,
            :dependent => :destroy
@@ -94,7 +96,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
-                  :uploaded_avatar
+                  :uploaded_avatar, :receive_emails
 
   after_create :ensure_name_entry
   before_save :set_avatar_initials
@@ -237,8 +239,12 @@ class User < ActiveRecord::Base
     User.find(:first, :conditions => ["lower(email) = ?", email.downcase])
   end
 
-  def subgroups
-    groups.where("parent_id IS NOT NULL")
+  def subgroups(group=nil)
+    if group
+      groups.where(:parent_id => group.id)
+    else
+      groups.where("parent_id IS NOT NULL")
+    end
   end
 
   def root_groups
@@ -266,6 +272,47 @@ class User < ActiveRecord::Base
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?
     super && !deleted_at
+  end
+
+  def send_email?(priority= 1)
+    #if we need to override a user's email settings, just pass priority > 1
+    if priority > 1
+      return true
+    else
+      return self.receive_emails
+    end
+  end
+
+  def send_notification?(group, priority= 1)
+    return priority >= get_group_noise_level(group)
+  end
+
+  def activity_total
+    total = 0;
+    groups.each do |group|
+      total += activity_total_in(group)
+    end
+    total
+  end
+
+  def activity_total_in(group)
+    total = 0
+    group.discussions.each do |discussion|
+      total += discussion_activity_count(discussion)
+    end
+    total
+  end
+
+  def get_group_noise_level(group_id)
+    membership = Membership.find_by_user_id_and_group_id(self, group_id)
+    membership.noise_level
+  end
+
+  def set_group_noise_level(group_id, noise_level)
+    @group = Group.find(group_id)
+    membership = Membership.find_by_user_id_and_group_id(self, @group)
+    membership.noise_level = noise_level
+    membership.save!
   end
 
   def gravatar?(email, options = {})

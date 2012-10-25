@@ -1,0 +1,9 @@
+- class_str = ""
+- class_str += "subgroup" if subgroup
+%tr{:class => class_str}
+  %td.group-name= group.name
+  %td.group-val
+    .btn-group{:id => "noise-level-setting-group-" + group.id.to_s}
+      =link_to "All", set_noise_user_path(user, {:noise => '0', :group => group}), :method => :post, :remote => true, :class => ((user.get_group_noise_level(group) == 0) ? 'btn active' : 'btn') + ' set-noise-level-0'
+      =link_to "Default", set_noise_user_path(user, {:noise => '1', :group => group}), :method => :post, :remote => true, :class => ((user.get_group_noise_level(group) == 1) ? 'btn active' : 'btn') + ' set-noise-level-1'
+      =link_to "Off", set_noise_user_path(user, {:noise => '2', :group => group}), :method => :post, :remote => true, :class => ((user.get_group_noise_level(group) == 2) ? 'btn active' : 'btn') + ' set-noise-level-2'

@@ -48,8 +48,21 @@
     display: inline;
     width: 100px;
   }
+
   .privacy-dropdown .dropdown-menu {
     margin-top: 8px;
+  }
+
+  h3.dropdown-heading{
+    font-size: 13px;
+    color: #777;
+    padding-left: 10px;
+    font-weight: normal;
+  }
+  #noise-options i{
+    float:right;
+    margin-top: -17px;
+    margin-right: 40px;
   }
 }
 

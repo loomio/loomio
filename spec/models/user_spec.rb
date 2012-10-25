@@ -49,6 +49,24 @@ describe User do
     user.group_requests.should include(group)
   end
 
+  describe 'customized notifications' do
+    before do
+
+    end
+
+    it 'will enable emails' do
+      user.receive_emails = true
+      user.send_email?.should be_true
+    end
+
+    it 'will turn all emails off' do
+      user.receive_emails = false
+      user.send_email?.should be_false
+    end
+    
+
+  end
+
   describe "open_votes" do
     before do
       @motion = create(:motion)
@@ -450,4 +468,42 @@ describe User do
       user.recent_notifications.count.should == 25
     end
   end
+
+  context "noise level" do
+    before do
+      @user = stub_model(User)
+      @group = stub_model(Group)
+      @membership = stub_model(Membership)
+      @group.stub(:membership => @membership)
+      Group.stub(:find => @group)
+      Membership.stub(:find_by_user_id_and_group_id => @membership)
+      @membership.stub(:save!).and_return(@membership)
+    end
+
+    it "saves setting in membership" do
+      @membership.should_receive(:save!)
+      @user.set_group_noise_level(@group, 0)
+    end
+
+    it "returns new noise level" do
+      @user.set_group_noise_level(@group, 0)
+      @user.get_group_noise_level(@group).should eq(0)
+    end
+
+    context "controls send notificiation" do
+      it "returns true if priority is higher than setting" do
+        @user.stub(:get_group_noise_level => 1)
+        @user.send_notification?(@group, 2).should be_true
+      end
+      it "returns true if priority is equal to setting" do
+        @user.stub(:get_group_noise_level => 1)
+        @user.send_notification?(@group, 1).should be_true
+      end
+      it "returns false if priority is less than setting" do
+        @user.stub(:get_group_noise_level => 1)
+        @user.send_notification?(@group, 0).should be_false
+      end
+    end
+  end
+
 end

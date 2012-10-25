@@ -71,6 +71,7 @@ class MotionsController < GroupBaseController
     resource
     motion = Motion.find(params[:motion][:id])
     motion.set_outcome(params[:motion][:outcome])
+    Event.motion_outcome!(@motion, current_user)
     redirect_to discussion_url(motion.discussion, proposal: motion)
   end
 

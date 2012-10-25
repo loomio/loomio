@@ -62,4 +62,3 @@ $ ->
     else
       elem.popover('hide')
       elem.removeClass('popover-visible')
-

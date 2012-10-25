@@ -126,3 +126,26 @@ li.user-image-option.clearfix:hover {
     margin-left: 15px;
   }
 }
+
+table#email-notifications-settings {
+  td.email-notifications-title {
+    width: 300px;
+  }
+  td.email-notifications-val {
+    width: 150px;
+  }
+}
+
+table#groups-notifications-settings {
+  margin-top: 15px;
+  td.group-name {
+    width:270px;
+  }
+  td.group-val {
+    width: 150px;
+  }
+  tr.subgroup td.group-name {
+    padding-left: 35px;
+    font-style: italic;
+  }
+}
