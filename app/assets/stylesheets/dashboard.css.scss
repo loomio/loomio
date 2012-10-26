@@ -2,13 +2,10 @@
 @import "bootstrap/mixins";
 @import "mixins";
 
-#dashboard-groups-list {
-  margin: 0 0 0 10px;
+ul.button-list {
+  float: right;
+  li {margin-bottom: 8px; }
 }
-#dashboard-groups-list a:hover { color: $dark-grey }
-.sub-panel a { color: $mid-grey; }
-
-
 /*.info-help {*/
   /*margin-left: 6px;*/
   /*height: 19px;*/
