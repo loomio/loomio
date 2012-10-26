@@ -6,10 +6,11 @@
   - message += "#{link_to "contact@loom.io", 'mailto:contact@loom.io', :target =>'_blank'}\n\n"
   =render '/application/helper_info', message: message, path: dismiss_dashboard_notice_for_user_path
 
+
 - if @groups.present?
   -#=render '/application/loomio_process_flow'
   =render '/groups/title', group: nil
-
+  =render 'application/helper_bot'
   = icon_button('#new-discussion', 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion', true)
   .row.main-content
     %section.span8

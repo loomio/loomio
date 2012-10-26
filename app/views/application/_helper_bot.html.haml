@@ -1,0 +1,10 @@
+#helper_bot
+  %a{ :href => "#helper_bot_video" , "data-toggle" => "modal", "data-backdrop" => true}
+    %img{:src => "/assets/helper-bot.gif",
+     :alt => "Click for tutorial video"}
+
+#helper_bot_video.modal.hidden
+  .modal-header
+    %button.close{"data-dismiss" => "modal"}×
+    %h2 Tutorial video:
+  .video-iframe
