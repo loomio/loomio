@@ -20,7 +20,7 @@ ActiveAdmin::Dashboards.build do
 
   section "Discussion Per Group (Average)", :priority => 5 do
     sum = 0.0
-    Group.all.each do |group|
+    Group.unscoped.all.each do |group|
       sum += group.discussions.count
     end
     h1 { "#{(sum / Group.count).round}" }
@@ -41,7 +41,14 @@ ActiveAdmin::Dashboards.build do
   section "Proposal Engagement (Average)", :priority => 8 do
     sum = 0
     Motion.all.each do |motion|
-      sum += motion.percent_voted
+      # This block will include archived motions in stats
+      # if motion.group == nil # include archived motions
+      #   motion.discussion.group = Group.unscoped.find(motion.discussion.group_id)
+      # end
+      # sum += motion.percent_voted
+      unless motion.group == nil
+        sum += motion.percent_voted
+      end
     end
     h1 { "#{sum / Motion.count}%" }
   end
