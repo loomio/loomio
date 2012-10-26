@@ -7,7 +7,14 @@ Background:
   And I am logged in as "furry@example.com"
 
 Scenario: Mention user in comment
-  Given I am viewing a discussion titled "hello" in "demo-group"
-  When I mention "Test_User" in my comment
-  Then I should Should see a pop up for mentioning "Test_User"
-  And I should be able to mention "Test_User"
+  Given "harry@example.com" is a member of "demo-group"
+  And I am viewing a discussion titled "hello" in "demo-group"
+  When I am adding a comment and type in "@h"
+  And I click on "@harry" in the menu that pops up
+  Then I should see "@harry" added to the "new-comment" field
+  
+Scenario: View comment with mentions
+  Given "harry@example.com" is a member of "demo-group"
+  And I am viewing a discussion titled "hello" in "demo-group"
+  And a comment exists mentioning "@harry"
+  Then I should see a link to "harry"'s user

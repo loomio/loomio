@@ -15,11 +15,11 @@ Given /^I visit create subgroup page for group named "(.*?)"$/ do |arg1|
 end
 
 Given /^"(.*?)" is a(?: non-admin)?(?: member)? of(?: group)? "(.*?)"$/ do |email, group|
-  user = User.find_by_email(email)
+  @user = User.find_by_email(email)
   if !user 
-    user = FactoryGirl.create(:user, :email => email)
+    @user = FactoryGirl.create(:user, :name => email.split("@").first, :email => email)
   end 
-  Group.find_by_name(group).add_member!(user)
+  Group.find_by_name(group).add_member!(@user)
 end
 
 Given /^"(.*?)" is a[n]? admin(?: member)? of(?: group)? "(.*?)"$/ do |email, group|

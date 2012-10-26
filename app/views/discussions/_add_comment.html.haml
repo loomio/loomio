@@ -5,5 +5,6 @@
         = image_tag current_user.avatar_url(:medium)
       - else
         %span.medium-user-initials.initials-decoration= current_user.avatar_initials
-    = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something...", class: '.at-mentions'
-    = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment', :data => {:disable_with => "Post comment"}
+    = content_tag "div", id: "comment-input", data: {group: @group.id} do  
+      = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something...", class: '.at-mentions'
+      = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment', :data => {:disable_with => "Post comment"}
