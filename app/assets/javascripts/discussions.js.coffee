@@ -17,7 +17,7 @@ $ ->
 $ ->
   if $("body.discussions.show").length > 0
     $("textarea").atWho "@", 
-      tpl: "<li id='${id}' data-value='${username}'> ${name}  <small>@${username}</small></li>"
+      tpl: "<li id='${id}' data-value='${username}'> ${name} <small> @${username}</small></li>"
       callback: (query, callback) ->
         group = $("#comment-input").data("group")
         $.get "/users/mentions.json", q: query, group: group, ((result) ->
