@@ -171,7 +171,7 @@ $ ->
       $(".discussion-with-motion-divider").removeClass('hidden')
 
 # Edit description
-$ ->
+enableInlineEdition = ()->
   if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
     $(".edit-description").click((event) ->
       container = $(this).parents(".description-container")
@@ -182,12 +182,32 @@ $ ->
         container.find('#description-input').height(description_height)
       event.preventDefault()
     )
+    $(".edit-discussion-description").click (e)->
+      $(".discussion-description-helper-text").toggle()
     $("#cancel-add-description").click((event) ->
       $("#description-edit-form").toggle()
       $(".description-body").toggle()
       $(".discussion-description-helper-text").toggle()
       event.preventDefault()
     )
+  #expand/srink description text
+  if $("body.discussions.show").length > 0
+    $(".see-more").click((event) ->
+      $(this).parent().children(".short-description").toggle()
+      $(this).parent().children(".long-description").toggle()
+      if $(this).html() == "Show More"
+        $(this).html("Show Less")
+      else
+        $(this).html("Show More")
+      event.preventDefault()
+    )
+
+$ ->
+  enableInlineEdition()
+  # The function has to be called everytime the context div is updated
+  $(document).on("ajax:complete","#revert-to-version" , () ->
+    enableInlineEdition()
+  )
 
 displayGraph = (this_pie, graph_id, data)->
   @pie_graph_view = new Loomio.Views.Utils.GraphView

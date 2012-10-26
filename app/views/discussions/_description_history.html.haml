@@ -11,17 +11,17 @@
       -if @discussion.previous_version.nil?
         =link_to "Prev", "#", :method => :post, :class => "disabled",  :remote => true
       -else
-        =link_to "Prev", preview_version_discussion_path(@discussion.previous_version.version), :method => :post, :remote => true
+        =link_to "Prev", preview_version_discussion_path(@discussion.previous_version.version), :method => :post, :id => "discussion-previous-version", :remote => true
       =" | "
       -if @discussion.next_version.nil?
         =link_to "Next", "#", :method => :post, :class => "disabled", :remote => true
       -else
-        =link_to "Next", preview_version_discussion_path(@discussion.next_version.version), :method => :post, :remote => true
+        =link_to "Next", preview_version_discussion_path(@discussion.next_version.version), :method => :post, :id => "discussion-next-version", :remote => true
 .modal-body
   %p= @discussion.description
 .modal-footer
   = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
   -if @discussion.live?
-    =link_to "Go back to this version", "#","data-dismiss" => "modal", :method => :post, :class => "btn btn-info", :disabled => true
+    =link_to "Go back to this version", "#","data-dismiss" => "modal", :method => :post, :class => "btn btn-info disabled", :id => "revert-to-version", :disabled => true
   -else
-    =link_to "Go back to this version", update_version_discussion_path(@discussion.version), :method => :post, :class => "btn btn-info", :remote => true, :data => { :disable_with => "Applying changes..." }
+    =link_to "Go back to this version", update_version_discussion_path(@discussion.version), :method => :post, :class => "btn btn-info", :remote => true, :id => "revert-to-version", :data => { :disable_with => "Applying changes..." }
