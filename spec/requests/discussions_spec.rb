@@ -178,8 +178,8 @@ describe "Discussion" do
           @user2 = create(:user)
           @discussion.group.add_member!(@user2)
           PaperTrail.whodunnit = @user2.name
+          @original_description = @discussion.description
           @discussion.update_attribute(:description, @discussion.description + " Some additional info.")
-          @modal_window_selector = "#description-revision-history"
         end
 
         it "can change description to a previous version" do
@@ -187,17 +187,18 @@ describe "Discussion" do
 
           find("#description-revision-history").find_link('Prev').click
           assert_modal_flushed
-          find_button("Go back to this version").click
-          should_not have_content(" Some additional info.")
-          should have_content(@discussion.description)
+          find("#revert-to-version").click
+          assert_description_updated
+          find(".description-body div:first").should_not have_content(@discussion.description)
+          find(".description-body div:first").should have_content(@original_description)
         end
 
         it "refreshes the modal window with appropriate version details" do
           open_modal
 
-          find(@modal_window_selector).find_link('Prev').click
+          find("#description-revision-history").find_link('Prev').click
           assert_modal_flushed
-          find(@modal_window_selector).find(".user-profile-fields p").should have_content("Edited about #{time_ago_in_words(@discussion.previous_version.updated_at)} ago by #{@discussion.previous_version.originator}")
+          find("#description-revision-history").find(".user-profile-fields p").should have_content("Edited about #{time_ago_in_words(@discussion.previous_version.updated_at)} ago by #{@discussion.previous_version.originator}")
         end
         
         # LOCAL HELPERS
@@ -208,10 +209,17 @@ describe "Discussion" do
         end
 
         def assert_modal_flushed
-          page.execute_script("$('#{@modal_window_selector}').empty()")
-          wait_until { page.has_css?("#{@modal_window_selector} div") }
+          page.execute_script("$('#description-revision-history').empty()")
+          wait_until { page.has_css?("#description-revision-history div") }
         rescue Capybara::TimeoutError
           flunk 'Expected modal to receive html content.'
+        end
+
+        def assert_description_updated
+          page.execute_script("$('#discussion-context').empty()")
+          wait_until { page.has_css?("#discussion-context div") }
+        rescue Capybara::TimeoutError
+          flunk 'Expected discussion context to receive html content.'
         end
       end
 
