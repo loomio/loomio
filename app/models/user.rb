@@ -105,6 +105,11 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
   end
 
+  def get_position_for(motion)
+    vote = Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
+    vote.position if vote
+  end
+  
   def voted?(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
   end
@@ -184,37 +189,29 @@ class User < ActiveRecord::Base
     helper_bot
   end
 
-  def update_motion_read_log(motion)
-    if MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
+  def update_motion_read_log(motion, motion_activity = nil)
+    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+    if log.nil?
       motion_read_log = MotionReadLog.new
-      motion_read_log.motion_activity_when_last_read = motion.activity
       motion_read_log.user_id = id
       motion_read_log.motion_id = motion.id
-      motion_read_log.save
+      motion_read_log.save!
     else
-      log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-      log.motion_activity_when_last_read = motion.activity
-      log.save
+      if motion_activity.nil?
+        last_viewed = Time.now
+      else
+        votes_since_page_load = motion.number_of_votes_since_last_looked(self) - motion_activity
+        last_viewed = motion.votes[(motion.votes.count - votes_since_page_load) - 1].created_at
+      end
+      log.motion_last_viewed_at = last_viewed
+      log.save!
     end
-  end
-
-  def motion_activity_when_last_read(motion)
-    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-    if log
-      log.motion_activity_when_last_read
-    else
-      0
-    end
-  end
-
-  def motion_activity_count(motion)
-    motion.activity - motion_activity_when_last_read(motion)
   end
 
   def update_discussion_read_log(discussion)
     if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
       discussion_read_log = DiscussionReadLog.new
-      discussion_read_log.discussion_last_viewed_at = Time.now()
+      discussion_read_log.discussion_last_viewed_at = Time.now
       discussion_read_log.user_id = id
       discussion_read_log.discussion_id = discussion.id
       discussion_read_log.save!
