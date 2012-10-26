@@ -24,6 +24,18 @@ module DiscussionsHelper
     css_class
   end
 
+  def css_class_for_close_date(motion)
+    css_class = "popover-close-date label"
+
+    if motion.close_date
+      hours_left = (((Time.now - motion.close_date) / 60) / 60) * -1
+      css_class += " color-urgent" if hours_left < 30
+      css_class += " color-warning" if (hours_left >= 3) && (hours_left <= 24)
+      css_class += " color-ok" if hours_left > 24
+    end
+    css_class
+  end
+ 
   def render_position_message(vote)
     message = vote.position_to_s
     if vote.previous_vote
