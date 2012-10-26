@@ -14,5 +14,5 @@
  *= require motions
  *= require users
  *= require memberships
- *= require jquery.atwho
+ *= require lib/jquery.atwho
 */
