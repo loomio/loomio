@@ -16,7 +16,7 @@ class Notification < ActiveRecord::Base
 
   def method_missing method_name, *args
     name = method_name.to_s
-    if name =~ /^(discussion|comment|motion|vote|membership|comment_vote|mention)$/
+    if name =~ /^(discussion|comment|motion|vote|membership|comment_vote|user_mentioned)$/
       event.eventable if event.eventable_type == name.camelize
     else
       super
