@@ -476,3 +476,23 @@ a.btn-icon:hover { color: $dark-grey; }
 .large-icon.pie-icon {
   background-image: url("pie-light-24.png");
 }
+
+
+body.groups.show #helper_bot{
+  text-align: right;
+  position: relative;
+  bottom: 50px;
+  right: 10px;
+  margin-bottom: -50px;
+}
+
+body.discussions #helper_bot{
+    float:right;
+}
+
+body.discussions.show .inner-container { margin-top: 50px; }
+
+body.dashboard.show #helper_bot{
+  margin-top: -20px;
+  float: right;
+}
