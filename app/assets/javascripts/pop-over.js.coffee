@@ -16,8 +16,9 @@ $ ->
       placement: "right",
       trigger: "manual"
       })
-#adds bootstrap popovers to preview pies  
+#adds bootstrap tooltip to preview pies  
 $ ->
-  $(".pie").tooltip
-    placement: "top",
-    title: "Click to see more."
+  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
+    $(".pie").tooltip
+      placement: "top",
+      title: "Click to see more."
