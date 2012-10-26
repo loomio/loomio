@@ -4,6 +4,9 @@ Given /^there is a user "(.*?)"$/ do |arg1|
                             password: 'password'
 end
 
+Given /^"(.*?)" is subscribed to daily activity emails$/ do |arg1|
+  User.find_by_name('Ben').update_attribute(:subscribed_to_daily_activity_email, true)
+end
 Given /^there is a group "(.*?)"$/ do |arg1|
   FactoryGirl.create :group, name: arg1
 end
@@ -27,8 +30,10 @@ end
 
 When /^we send the daily activity email$/ do
   since_time = Date.yesterday
-  @recent_activity = CollectsRecentActivityByGroup.for(@user, since: since_time)
-  UserMailer.daily_activity(@user, @recent_activity, since_time).deliver!
+  User.daily_activity_email_recipients.each do |user|
+    recent_activity = CollectsRecentActivityByGroup.for(user, since: since_time)
+    UserMailer.daily_activity(user, recent_activity, since_time).deliver!
+  end
 end
 
 Then /^"(.*?)" should get emailed$/ do |arg1|

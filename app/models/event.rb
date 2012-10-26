@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
-             motion_closed membership_requested user_added_to_group comment_liked]
+             motion_closing_soon motion_closed membership_requested user_added_to_group comment_liked]
 
   has_many :notifications, :dependent => :destroy
   belongs_to :eventable, :polymorphic => true
@@ -47,6 +47,13 @@ class Event < ActiveRecord::Base
       unless user == closer
         event.notifications.create! :user => user
       end
+    end
+  end
+
+  def self.motion_closing_soon!(motion)
+    event = create!(:kind => "motion_closing_soon", :eventable => motion)
+    motion.group_users.each do |user|
+      event.notifications.create! :user => user
     end
   end
 

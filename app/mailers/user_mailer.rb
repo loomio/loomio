@@ -19,6 +19,13 @@ class UserMailer < ActionMailer::Base
           :subject => "#{email_subject_prefix(@group.full_name)} Membership approved")
   end
 
+  def motion_closing_soon(user, motion)
+    @user = user
+    @motion = motion
+    mail to: user.email,
+         subject: "[Loomio - #{@motion.group.name}] Proposal closing soon: #{@motion.name}"
+  end
+
   def added_to_group(user, group)
     @user = user
     @group = group

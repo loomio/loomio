@@ -45,6 +45,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'letter_opener'
   gem 'thin'
   gem 'debugger'
   gem "factory_girl_rails", "~> 4.0"
