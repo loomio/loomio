@@ -1,13 +1,17 @@
 class UsersController < BaseController
 
-  def update
-    current_user.name = params[:user][:name]
+  def email_preferences
+    @user = current_user
+  end
 
-    if current_user.save
+  def update
+    if current_user.update_attributes(params[:user])
+      puts current_user.inspect
       flash[:notice] = "Your settings have been updated."
       redirect_to :root
     else
       flash[:error] = "Your settings did not get updated."
+      raise current_user.errors.messages.inspect
       redirect_to :back
     end
   end

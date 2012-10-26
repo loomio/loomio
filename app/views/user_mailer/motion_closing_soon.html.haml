@@ -1,0 +1,41 @@
+%p
+  Proposal: 
+  =link_to(@motion.name, motion_url(@motion))
+  %br
+  Group: 
+  =@motion.discussion.group.name
+  %br
+  Author: 
+  =@motion.author.name
+  %br
+  Closes at: 
+  =l @motion.close_date
+  %br
+  Description:
+  =@motion.description
+
+%p 
+  %b Summary
+  %br
+  -#-if @motion.user_has_voted?(@user)
+    -#- vote = @user.get_vote_for(@motion)
+    -#Your position
+    -#=vote.position
+  -#-else
+    -#Please state your position
+  -#%br
+  -@motion.votes_graph_ready.each do |results|
+    =results[0]
+  %br
+  #{@motion.percent_voted}% of members have stated their position (#{@motion.group_count - @motion.no_vote_count}/#{@motion.group_count})
+
+%p 
+  %b Positions
+  %br
+  -@motion.unique_votes.each do |vote|
+    #{vote.user_name} #{vote.position_to_s} 
+    -if vote.statement.present?
+      \- #{vote.statement}
+    %br
+
+%p=link_to 'Modify your email preferences', user_settings_url

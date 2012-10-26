@@ -70,6 +70,7 @@ Loomio::Application.routes.draw do
     post :unlike, on: :member
   end
   match "/settings", :to => "users#settings", :as => :user_settings
+  match 'email_preferences', :to => "users#email_preferences", :as => :email_preferences
 
   # route logged in user to dashboard
   resources :dashboard, only: :show

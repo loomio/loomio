@@ -4,17 +4,25 @@
 %h2 Proposals
 -@groups.each do |group|
   %h3=group.name
-  -@activity[group.name][:motions].each do |motion|
-    %p 
-      #{link_to(motion.name, motion)}
+  %p 
+    -@activity[group.name][:motions].each do |motion|
+      =link_to(motion.name, motion_url(motion))
       -if motion.close_date.present?
         \- closes in #{time_ago_in_words(motion.close_date)}
+      %br
 
 %h2 Discussions
 -@groups.each do |group|
   %h3=group.name
-  -@activity[group.name][:discussions].each do |discussion|
-    %p #{link_to(discussion.title, discussion)} - #{discussion.number_of_comments_since(@since_time)}
-  %p=link_to('Start a discussion', [:new, group, :discussion])
+  %p
+    -@activity[group.name][:discussions].each do |discussion|
+      =link_to(discussion.title, discussion_url(discussion))
+      - num_new_comments = discussion.number_of_comments_since(@since_time)
+      - if num_new_comments > 0
+        \- #{num_new_comments} new comments
+      - else
+        \- new discussion
+      %br
+    =link_to('Start a discussion', new_group_discussion_url(group))
 
-%p=link_to 'Modify your email preferences', user_settings_path
+%p=link_to 'Modify your email preferences', user_settings_url

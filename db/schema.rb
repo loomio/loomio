@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005060102) do
+ActiveRecord::Schema.define(:version => 20121025235642) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -153,7 +153,8 @@ ActiveRecord::Schema.define(:version => 20121005060102) do
     t.datetime "updated_at"
     t.string   "access_level"
     t.integer  "inviter_id"
-    t.datetime "group_last_viewed_at", :null => false
+    t.datetime "group_last_viewed_at",              :null => false
+    t.boolean  "subscribed_to_notification_emails"
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
@@ -197,39 +198,42 @@ ActiveRecord::Schema.define(:version => 20121005060102) do
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                       :default => "",    :null => false
-    t.string   "encrypted_password",           :limit => 128, :default => ""
+    t.string   "email",                                                       :default => "",    :null => false
+    t.string   "encrypted_password",                           :limit => 128, :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                               :default => 0
+    t.integer  "sign_in_count",                                               :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                                       :default => false
+    t.boolean  "admin",                                                       :default => false
     t.string   "name"
     t.string   "unconfirmed_email"
-    t.string   "invitation_token",             :limit => 60
+    t.string   "invitation_token",                             :limit => 60
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.datetime "deleted_at"
-    t.boolean  "has_read_system_notice",                      :default => false, :null => false
-    t.boolean  "is_admin",                                    :default => false
+    t.boolean  "has_read_system_notice",                                      :default => false, :null => false
+    t.boolean  "is_admin",                                                    :default => false
     t.string   "avatar_kind"
     t.string   "uploaded_avatar_file_name"
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
-    t.boolean  "has_read_dashboard_notice",                   :default => false, :null => false
-    t.boolean  "has_read_group_notice",                       :default => false, :null => false
-    t.boolean  "has_read_discussion_notice",                  :default => false, :null => false
+    t.boolean  "has_read_dashboard_notice",                                   :default => false, :null => false
+    t.boolean  "has_read_group_notice",                                       :default => false, :null => false
+    t.boolean  "has_read_discussion_notice",                                  :default => false, :null => false
+    t.boolean  "subscribed_to_daily_activity_email"
+    t.boolean  "subscribed_to_mention_notifications"
+    t.boolean  "subscribed_to_proposal_closure_notifications"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -76,4 +76,10 @@ Loomio::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.action_mailer.raise_delivery_errors = true
+
+  # Email admin when server gets exceptions!
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Loomio Exception] ",
+    :sender_address => %{"Exception Notifier" <dudley@loom.io>},
+    :exception_recipients => %w{jon.lemmon@enspiral.com}
 end
