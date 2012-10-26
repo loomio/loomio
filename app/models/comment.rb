@@ -26,6 +26,7 @@ class Comment < ActiveRecord::Base
   delegate :participants, :to => :discussion, :prefix => :discussion
   delegate :group, :to => :discussion
   delegate :full_name, :to => :group, :prefix => :group
+  delegate :title, :to => :discussion, :prefix => :discussion
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text

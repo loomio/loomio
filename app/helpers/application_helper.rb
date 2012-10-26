@@ -63,7 +63,7 @@ module ApplicationHelper
     ]
 
     renderer = MarkdownRenderer.new(
-      :filter_html => false,
+      :filter_html => true,
       :hard_wrap => true
     )
     

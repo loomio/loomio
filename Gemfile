@@ -29,6 +29,7 @@ gem 'nokogiri'
 gem 'redcarpet', :git => 'https://github.com/vmg/redcarpet.git'
 gem 'rabl'
 gem 'twitter-text', :git => 'https://github.com/twitter/twitter-text-rb.git'
+gem 'jquery-atwho-rails'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this

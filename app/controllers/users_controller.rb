@@ -64,7 +64,8 @@ class UsersController < BaseController
   end
 
   def mentions
-    @users = User.all
+    group = Group.find(params[:group])
+    @users = group.users
     respond_to do |format|
       format.json { render 'users/mentions' }
     end
