@@ -12,6 +12,7 @@
 # It's strongly recommended to check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20121030014815) do
 =======
 <<<<<<< HEAD
@@ -20,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20121008010612) do
 ActiveRecord::Schema.define(:version => 20121010214955) do
 >>>>>>> added paper_trail
 >>>>>>> added paper_trail
+=======
+ActiveRecord::Schema.define(:version => 20121010214955) do
+>>>>>>> fixed failing spec
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
