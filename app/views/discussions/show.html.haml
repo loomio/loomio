@@ -1,4 +1,4 @@
-- set_title @group.name, @discussion.title
+- set_title @group.name, @discussion.title, @group.parent
 - if current_user && (not current_user.has_read_discussion_notice?)
   - message = "The discussion topic is at the top of the page, followed by background information and context.\n\n"
   - message += "Discussion is on the left: to add a comment, write in the text box and click ‘Post comment’.\n\n"
