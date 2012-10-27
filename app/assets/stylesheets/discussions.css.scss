@@ -103,6 +103,10 @@ body.discussions.show {
     color: $mid-grey;
     line-height: 2.0em;
   }
+
+  .last-edited-by, .started-by {
+    margin-bottom: 10px;
+  }
 }
 
 #description-revision-history {
