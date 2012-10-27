@@ -157,6 +157,9 @@ class Discussion < ActiveRecord::Base
     previous_version.nil? ? false : previous_version.id.present?
   end
 
+  def last_versioned_at
+    previous_version.version.created_at
+  end
 
 
   private

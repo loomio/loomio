@@ -59,7 +59,7 @@ describe "Discussion" do
         it "doesn't display revision history information if description not edited" do
           visit discussion_path(@discussion)
 
-          should_not have_css(".edited-by .user-name-with-popover")
+          should_not have_css(".last-edited-by")
           should_not have_css(".see-description-history")
         end
 
@@ -72,7 +72,7 @@ describe "Discussion" do
 
           assert_description_updated
 
-          should have_css(".last-edited-by .user-name-with-popover")
+          find(".last-edited-by").should have_content("Last edited about #{time_ago_in_words(@discussion.last_versioned_at)} ago by #{user.name}")
           should have_css(".see-description-history")
         end
       end
@@ -237,7 +237,7 @@ describe "Discussion" do
 
           find("#description-revision-history").find_link('Prev').click
           assert_modal_flushed
-          find("#description-revision-history").find(".user-profile-fields p").should have_content("Edited about #{time_ago_in_words(@discussion.previous_version.version.created_at)} ago by #{@user2.name}")
+          find("#description-revision-history").find(".user-profile-fields p").should have_content("Edited about #{time_ago_in_words(@discussion.last_versioned_at)} ago by #{@user2.name}")
         end
         
       end
