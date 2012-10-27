@@ -4,3 +4,9 @@ if(modal.is(":visible")){
   modal.modal('hide')
 }
 $("#discussion-context").html("<%= escape_javascript(render 'discussion_context', model: @discussion, model_name: 'discussion')%>")
+
+// calling all the JS needed to have a fully functional interface after DOM replacement
+enableInlineEdition()
+seeMoreDescription()
+setupPopovers()
+
