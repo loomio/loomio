@@ -1,2 +1,6 @@
-$('#description-revision-history').modal('hide')
+var modal = $("#description-revision-history")
+
+if(modal.is(":visible")){
+  modal.modal('hide')
+}
 $("#discussion-context").html("<%= escape_javascript(render 'discussion_context', model: @discussion, model_name: 'discussion')%>")
