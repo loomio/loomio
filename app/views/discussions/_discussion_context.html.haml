@@ -19,4 +19,5 @@
             "data-content" => "#{render 'users/name_popover', user: @last_collaborator, group: @discussion.group}",
             class: "user-name-with-popover"
         .see-revision-history
+          %i.icon-time
           =link_to "See revision history", show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
