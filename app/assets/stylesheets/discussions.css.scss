@@ -105,6 +105,30 @@ body.discussions.show {
   }
 }
 
+#description-revision-history {
+  h2 {
+  }
+  a.disabled {
+    color: $mid-grey;
+    cursor: default;
+  }
+  a.disabled:hover {
+    text-decoration: none;
+  }
+  .user-profile-fields {
+    width: 450px;
+    float: left;
+  }
+  .revision_version {
+    float: left;
+  }
+  .revision_version:after {
+    content: ".";
+    visibility: hidden;
+    clear: both;
+  }
+}
+
 #content-proposal {
   .proposal-btn {
     float: right;
