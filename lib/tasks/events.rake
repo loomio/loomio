@@ -9,18 +9,25 @@ namespace :events do
         created_at = event.created_at
         eventable = event.eventable
         case event.kind
-        when "new_discussion"
+        when "new_discussion", "new_motion"
+          user = eventable.author
+          group = eventable.group
+        when "new_comment", "new_vote", "motion_blocked", "membership_requested", "comment_liked"
           user = eventable.user
           group = eventable.group
-        when "new_comment"
-          user = eventable.user
-          group = eventable.group
-        when "new_motion"
         when "motion_closed"
-        when "new_vote"
-        when "motion_blocked"
+          user = event.user
+          group = eventable.group
+        when "user_added_to_group"
+          user = eventable.inviter
+          group = eventable.group
+        else
+          user = nil
+          group = nil
         end
-        csv << ["another", "row"]
+        user_id = user ? user.id : ""
+        group_id = group ? group.id : ""
+        csv << [id, user_id, group_id, kind, created_at]
       end
     end
   end
