@@ -24,7 +24,6 @@ hr {
 
 // typography
 h1 {
-	font-size: $font-xlarge;
   color: $mid-grey;
   a { color: $mid-grey; }
   a:hover { color: $mid-grey; }
@@ -33,23 +32,25 @@ h1 {
   display: inline;
 }
 h2 {
-    font-size: $font-large;
-    color: $header-titles-color;
+    color: $mid-grey;
+    a { color: $mid-grey; }
+    a:hover { color: $mid-grey; }
     font-weight: normal;
     line-height: 1.6em;
     display: inline;
 }
 h3 {
-  font-weight: bold;
-	font-size: $font-medium-large;
+  color: $mid-grey;
+  font-weight: normal;
+	// font-size: $font-medium-large;
 }
 
 h4 {
   font-weight: normal;
-  font-size: $font-small;
+  // font-size: $font-small;
 }
 h5 {
-  font-size: $font-tiny;
+  // font-size: $font-tiny;
 }
 
 // structural elements (containers etc.)
@@ -140,7 +141,7 @@ li.selector-item {
   a .proposal-title { color: black; }
 }
  .discussion-preview .discussion-title {margin-top: 7px;}
- 
+
 li.selector-item a.selector-link {
   display: block;
   padding: 5px 5px 5px 15px;

@@ -17,7 +17,7 @@
           %li.selector-item.loading Loading...
         - @groups.each do |group|
           %li
-            %h2= group.name
+            %h3= group.name
             %ul.selector-list.bordered
               #discussions-with-motions
                 - group.discussions_with_current_motion_not_voted_on(current_user).each do |discussion|

@@ -6,4 +6,4 @@
       - else
         %span.medium-user-initials.initials-decoration= current_user.avatar_initials
     = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
-    = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment', :data => {:disable_with => "Post comment"}
+    = submit_tag "Post comment", class: "btn btn-small btn-grey submit", id: 'post-new-comment', :data => {:disable_with => "Post comment"}

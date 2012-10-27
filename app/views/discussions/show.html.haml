@@ -32,20 +32,20 @@
         .row
           .span6#content-history
             .large-icon.discussion-icon.enabled-icon
-            %h2.header-text Discussion
+            %h3.header-text Discussion
             #content-history-body
               = render 'add_comment', discussion: @discussion
               = render 'history', discussion: @discussion, history: @discussion.history
 
           .span6#content-proposal
             .large-icon.decision-icon
-            %h2.header-text Current decision
+            %h3.header-text Current decision
             .content-proposal-body
               %ul.selector-list
                 - if @current_motion
                   - if (not @selected_motion) && (can? :close_voting, @current_motion)
                     %li= link_to "Close proposal", close_motion_voting_path(@current_motion),
-                      :data => {confirm: "Are you sure you want to close this motion?"}, method: :post, class: 'btn btn-small proposal-btn', id: 'close-voting'
+                      :data => {confirm: "Are you sure you want to close this motion?"}, method: :post, class: 'btn btn-small btn-grey proposal-btn', id: 'close-voting'
                   - if @selected_motion && (@selected_motion != @current_motion)
                     %li.selector-item.current-proposal
                       = render '/motions/motion_preview', motion: @current_motion, this_group: @group
@@ -54,14 +54,14 @@
                       = render @current_motion, unique_votes: @unique_votes
                 - else
                   - if can? :create, Motion.new(discussion_id: @discussion.id)
-                    = link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-small proposal-btn', id: 'new-proposal'
+                    = link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-small btn-grey proposal-btn', id: 'new-proposal'
                   %li.selector-item.empty-list-message= "There is not currently an open proposal under discussion"
 
             - if @discussion.motions.where("phase = 'closed'").count > 0
               #previous-proposals
                 .clearfix
                   .large-icon.decision-icon
-                  %h2.header-text Previous decisions
+                  %h3.header-text Previous decisions
 
                 .content-proposal-body
                   %ul.selector-list

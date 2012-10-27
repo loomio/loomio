@@ -19,11 +19,6 @@ body.discussions.show {
     margin-bottom: 20px;
     min-height: 59px;
     padding-top: 2px;
-    h2.panel-header {
-      padding-left: 10px;
-      float: left;
-      min-height: 3px;
-    }
     .dropdown {
       float: right;
       padding: 5px 10px;
@@ -40,7 +35,7 @@ body.discussions.show {
     display: inline-block;
     width: 850px;
     margin: 0 0 4px 0px;
-    h1 { color: $dark-grey; }
+    h2 { color: $dark-grey; }
   }
   #edit-discussion-title {
     float: left;
