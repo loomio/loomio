@@ -11,10 +11,10 @@ module DiscussionsHelper
     end
   end
 
-  def css_class_unread_discussion_activity_for(page_group, discussion, user)
+  def css_class_unread_discussion_activity_for(group_page, discussion, user)
     css_class = "discussion-preview"
-    css_class += " showing-group" if (not discussion.group.parent.nil?) && (page_group && (page_group.parent.nil?))
-    css_class += " unread" if user_signed_in? && discussion.unread_by(user)
+    css_class += " showing-group" if (group_page && (group_page.not_a_subgroup? && discussion.group.a_subgroup?))
+    css_class += " unread" if user_signed_in? && group_page && discussion.unread_by(user)
     css_class
   end
 

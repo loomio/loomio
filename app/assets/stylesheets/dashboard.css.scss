@@ -4,7 +4,20 @@
 
 ul.button-list {
   float: right;
-  li {margin-bottom: 8px; }
+  li {margin-bottom: 8px;}
+}
+
+body.dashboard.show {
+  ul.selector-list {
+    margin: 3px 0 25px;
+  }
+  li.new-discussion-link {
+    padding: 5px 0 0 0;
+    a{
+      color: $mid-grey;
+      text-decoration: underline;
+    }
+  }
 }
 /*.info-help {*/
   /*margin-left: 6px;*/

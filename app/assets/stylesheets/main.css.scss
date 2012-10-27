@@ -138,8 +138,9 @@ li.selector-item {
   background-color: $highlighted;
   a { color: black; }
   a .proposal-title { color: black; }
-
 }
+ .discussion-preview .discussion-title {margin-top: 7px;}
+ 
 li.selector-item a.selector-link {
   display: block;
   padding: 5px 5px 5px 15px;
