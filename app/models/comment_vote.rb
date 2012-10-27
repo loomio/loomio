@@ -7,5 +7,6 @@ class CommentVote < ActiveRecord::Base
   delegate :name, :to => :user, :prefix => :user
   delegate :user, :to => :comment, :prefix => :comment
   delegate :group_full_name, :discussion, :to => :comment
+  delegate :group, :to => :discussion
   delegate :title, :to => :discussion, :prefix => :discussion
 end
