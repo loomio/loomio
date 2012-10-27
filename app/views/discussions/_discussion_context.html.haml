@@ -14,7 +14,7 @@
           class: "user-name-with-popover"
       -if defined? @last_collaborator
         .last-edited-by
-          = "Last edited by "
+          = "Last edited about #{time_ago_in_words(@discussion.last_versioned_at)} ago by "
           =link_to @last_collaborator.name, "#", "title" => @last_collaborator.name,
             "data-content" => "#{render 'users/name_popover', user: @last_collaborator, group: @discussion.group}",
             class: "user-name-with-popover"
