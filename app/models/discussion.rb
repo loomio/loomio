@@ -153,6 +153,12 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  def has_previous_versions?
+    previous_version.nil? ? false : previous_version.id.present?
+  end
+
+
+
   private
 
   def populate_last_comment_at
