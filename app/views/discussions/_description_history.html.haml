@@ -3,20 +3,22 @@
   %h2 Revision history
 .modal-header
   .user-profile-fields
-    %h4 User Profile Fields
-    %p= "Edited about #{time_ago_in_words(@discussion.updated_at)} ago by #{@discussion.originator}"
+    %h3 User Profile Fields
+    %p= "Edited about #{time_ago_in_words(@discussion.live? ? @discussion.updated_at : @discussion.version.created_at)} ago by #{@originator.name}"
   .revision-version
-    %h4 Version
+    %h3 Version
     %p
-      -if @discussion.previous_version.nil?
-        =link_to "Prev", "#", :method => :post, :class => "disabled",  :remote => true
+      -if @discussion.has_previous_versions?
+        =link_to "Prev", preview_version_discussion_path(@discussion, @discussion.previous_version.version), :method => :post, :id => "discussion-previous-version", :remote => true
       -else
-        =link_to "Prev", preview_version_discussion_path(@discussion.previous_version.version), :method => :post, :id => "discussion-previous-version", :remote => true
+        =link_to "Prev", "#", :class => "disabled"
       =" | "
-      -if @discussion.next_version.nil?
-        =link_to "Next", "#", :method => :post, :class => "disabled", :remote => true
+      -if @discussion.next_version.present?
+        =link_to "Next", preview_version_discussion_path(@discussion, @discussion.next_version.version), :method => :post, :id => "discussion-next-version", :remote => true
+      -elsif !(@discussion.live?)
+        =link_to "Next", preview_version_discussion_path(@discussion), :method => :post, :remote => true
       -else
-        =link_to "Next", preview_version_discussion_path(@discussion.next_version.version), :method => :post, :id => "discussion-next-version", :remote => true
+        =link_to "Next", "#", :class => "disabled"
 .modal-body
   %p= @discussion.description
 .modal-footer

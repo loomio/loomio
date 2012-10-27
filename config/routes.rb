@@ -38,7 +38,7 @@ Loomio::Application.routes.draw do
     get :new_proposal, :on => :member
     post :edit_title, :on => :member
   end
-  post "/discussion/preview_version/:version_id", :to => "discussions#preview_version", :as => "preview_version_discussion"
+  post "/discussion/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
   post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"
 
   resources :notifications, :only => :index do
