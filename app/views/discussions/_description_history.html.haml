@@ -4,7 +4,9 @@
 .modal-header
   .user-profile-fields
     %h3 User Profile Fields
-    %p= "Edited about #{time_ago_in_words(@discussion.live? ? @discussion.updated_at : @discussion.version.created_at)} ago by #{@originator.name}"
+    %p
+      = "Edited about #{time_ago_in_words(@discussion.last_versioned_at)} ago by #{@originator.name}"
+      %em= " (current)" if @discussion.live?
   .revision-version
     %h3 Version
     %p
