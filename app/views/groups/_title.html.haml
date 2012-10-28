@@ -1,7 +1,7 @@
 .page-container
   .group-title.clearfix
     - if group
-      %h1
+      %h2
         .home-title= link_to "Home", "/"
         = content_tag :span, "\u25B6", class: 'name-separator'
         = group.fancy_link
@@ -38,5 +38,5 @@
           #email-members-modal.modal.hidden
             = render "groups/email_members", :group => group
     - else
-      %h1
+      %h2
         .home-title= "Home"

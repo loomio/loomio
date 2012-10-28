@@ -1,0 +1,21 @@
+%li
+  %h3.clearfix.group-panel
+    = link_to group.name, group_path(group)
+    .parent-name= link_to "(#{group.parent.name})", group_path(group.parent) if group.parent
+    .new-discussion-link
+      %a{:href => '#new-discussion', 'data-toggle' => 'modal', 'data-group' => group.id, :class => 'btn btn-mini btn-grey'}
+        .mini-icon.topic-icon
+        Start a new discussion
+
+  %ul.selector-list.bordered
+    #discussions-with-motions
+      - group.discussions_with_current_motion_not_voted_on(current_user).each do |discussion|
+        %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
+      - group.discussions_with_current_motion_voted_on(current_user).each do |discussion|
+        %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
+    - group.discussions.each do |discussion|
+      - if ((discussion.never_read_by(current_user) || discussion.number_of_comments_since_last_looked(current_user) > 0) && (not discussion.current_motion))
+        %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
+    / %li.new-discussion-link
+    /   %a{:href => '#new-discussion', 'data-toggle' => 'modal', 'data-group' => group.id}
+    /     Start a new discussion in this group

@@ -165,10 +165,10 @@ $ ->
   )
 
 #*** check if discussion with motions list is empty ***
-$ ->
-  if $("body.groups.show").length > 0 ||  $("body.dashboard.show").length > 0
-    if $("#discussions-with-motions").children().html() != ""
-      $(".discussion-with-motion-divider").removeClass('hidden')
+# $ ->
+#   if $("body.groups.show").length > 0 ||  $("body.dashboard.show").length > 0
+#     if $("#discussions-with-motions").children().html() != ""
+#       $(".discussion-with-motion-divider").removeClass('hidden')
 
 # Edit description
 $ ->

@@ -2,13 +2,37 @@
 @import "bootstrap/mixins";
 @import "mixins";
 
-#dashboard-groups-list {
-  margin: 0 0 0 10px;
+ul.button-list {
+  float: right;
+  li {margin-bottom: 8px;}
 }
-#dashboard-groups-list a:hover { color: $dark-grey }
-.sub-panel a { color: $mid-grey; }
 
-
+body.dashboard.show {
+  .group-panel {
+    background-color: #EEE;
+    // border-bottom: 1px solid $light-grey;
+  }
+  h3 a{
+    color: $mid-grey;
+    padding-left: 5px;
+  }
+  .parent-name {
+    font-size: $font-tiny;
+    display: inline;
+  }
+  ul.selector-list {
+    margin: 0px 0 20px;
+  }
+  .new-discussion-link {
+    // padding: 4px 0 0 5px;
+    // a{
+    //   color: $mid-grey;
+    //   text-decoration: underline;
+    //   font-size: $font-small;
+    // }
+    float: right;
+  }
+}
 /*.info-help {*/
   /*margin-left: 6px;*/
   /*height: 19px;*/

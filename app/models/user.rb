@@ -157,22 +157,6 @@ class User < ActiveRecord::Base
     new_user
   end
 
-  def discussions_with_current_motion_not_voted_on
-    if discussions
-      (discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on)
-    else
-      []
-    end
-  end
-
-  def discussions_with_current_motion_voted_on
-    if discussions
-      (discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", id))
-    else
-      []
-    end
-  end
-
   def discussions_sorted
     discussions
       .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")

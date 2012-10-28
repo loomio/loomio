@@ -122,6 +122,14 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def a_subgroup?
+    not parent.nil?
+  end
+
+  def not_a_subgroup?
+    parent.nil?
+  end
+  
   #
   # ACTIVITY METHODS
   #

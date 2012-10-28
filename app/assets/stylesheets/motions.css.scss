@@ -2,6 +2,10 @@
 @import "mixins";
 
 /*  New & Edit motion form */
+
+#new-motion{
+  h2.new-title { color: $dark-grey; }
+}
 #motion-form{
   .input { margin-left: 0px; }
   .clearfix { padding-top: 0px; margin-bottom: 0px; }
