@@ -21,15 +21,16 @@ body.dashboard.show {
     display: inline;
   }
   ul.selector-list {
-    margin: 0px 0 25px;
+    margin: 0px 0 20px;
   }
-  li.new-discussion-link {
-    padding: 4px 0 0 5px;
-    a{
-      color: $mid-grey;
-      text-decoration: underline;
-      font-size: $font-small;
-    }
+  .new-discussion-link {
+    // padding: 4px 0 0 5px;
+    // a{
+    //   color: $mid-grey;
+    //   text-decoration: underline;
+    //   font-size: $font-small;
+    // }
+    float: right;
   }
 }
 /*.info-help {*/

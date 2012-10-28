@@ -13,8 +13,6 @@
   .row.main-content
     %section.span8
       %ul.group-activity-list
-        #all-discussions-loading
-          %li.selector-item.loading Loading...
         - @groups.each do |group|
           = render 'group_summary', group: group
           - group.subgroups.each do |subgroup|

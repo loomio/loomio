@@ -435,6 +435,13 @@ a.btn-icon:hover { color: $dark-grey; }
   margin: 6px 13px 0 13px;
   float: left;
 }
+.mini-icon{
+  background-repeat: no-repeat;
+  height: 14px;
+  width: 14px;
+  margin: 0px 5px 0 0;
+  float: left;
+}
 .header-bar-icon{
   position: relative;
   bottom: 2px;
@@ -444,9 +451,9 @@ a.btn-icon:hover { color: $dark-grey; }
   background-image:url('/assets/dot-18.png');
   float: right;
 }
-// .button-icon.topic-icon {
-//   background-image:url('/assets/topic-18.png');
-// }
+.mini-icon.topic-icon {
+  background-image:url('/assets/topic-14.png');
+}
 // .button-icon.member-icon {
 //   background-image:url('/assets/member-18.png');
 // }
