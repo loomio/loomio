@@ -8,14 +8,27 @@ ul.button-list {
 }
 
 body.dashboard.show {
+  .group-panel {
+    background-color: #EEE;
+    // border-bottom: 1px solid $light-grey;
+  }
+  h3 a{
+    color: $mid-grey;
+    padding-left: 5px;
+  }
+  .parent-name {
+    font-size: $font-tiny;
+    display: inline;
+  }
   ul.selector-list {
-    margin: 3px 0 25px;
+    margin: 0px 0 25px;
   }
   li.new-discussion-link {
-    padding: 5px 0 0 0;
+    padding: 4px 0 0 5px;
     a{
       color: $mid-grey;
       text-decoration: underline;
+      font-size: $font-small;
     }
   }
 }
