@@ -18,6 +18,9 @@ body {
   background-color: $main-background;
   height: 100%;
 }
+hr {
+  margin: 1px;
+}
 
 // typography
 h1 {
@@ -62,7 +65,8 @@ h5 {
 }
 .sub_group {font-size: $font-tiny;}
 
-#start-new-discussion { margin: 0 0 20px 2px; }
+// #start-new-discussion { margin: 0 0 20px 2px; }
+.main-content { margin-top: 20px; }
 #discussion-list {
   margin-bottom: 10px;
 }
@@ -116,22 +120,20 @@ li.empty-list-message {
 #closed-motions-page .selector-list { padding-bottom: 20px; }
 #closed-motions-page li.selector-item.loading { background-position: 270px 160px; }
 #closed-motions {
-  width: 600px;
-  margin-left: -300px;
+  width: 750px;
+  margin-left: -375px;
+  min-height: 550px;
 }
 
 /**** Structural elements ****/
 ul.selector-list.bordered { border-top: 1px solid $light-grey }
-ul.selector-list {
-  list-style: none;
-}
 li.selector-item {
   background-color: $unhighlighted;
   color: $dark-grey;
   font-weight: normal;
   border-bottom: 1px solid $light-grey;
 }
-.undecided, .unread {
+.discussion-preview.unread {
   background-color: $highlighted;
   a { color: black; }
   a .proposal-title { color: black; }
@@ -237,6 +239,11 @@ li.selector-item a.selector-link:hover {
   height: 12px;
   font-size: $font-small;
 }
+
+//*** color coded urgency labels ***
+.color-urgent { background-color: #CA3232; }
+.color-warning { background-color: #F89406; }
+.color-ok { background: #016B01; }
 
 form {
   label {
@@ -356,7 +363,6 @@ ul.loomio-process-flow {
   @include border-radius(8px);
   /*box-shadow: 2px 2px 2px $light-grey;*/
   background-color: white;
-  list-style: none;
   text-align: center;
   padding: 0;
   li.process-flow-item {
@@ -401,11 +407,13 @@ ul.loomio-process-flow {
 
 /**** buttons ****/
 .btn-app {
-  line-height: 24px;
-  padding: 3px 0px 0px 8px;
-  width: 190px;
+  line-height: 18px;
+  padding: 6px 8px 6px 8px;
+  width: 180px;
+  font-size: $font-medium;
   text-align: left;
 }
+.group-options .btn-app.dropdown-toggle{ width: 110px }
 .btn-grey { color: $mid-grey; }
 a.btn-icon:hover { color: $dark-grey; }
 
@@ -415,8 +423,8 @@ a.btn-icon:hover { color: $dark-grey; }
   background-repeat: no-repeat;
   height: 18px;
   width: 18px;
-  padding: 2px 5px 2px 0;
-  vertical-align: text-top;
+  padding: 0px 5px 0px 0;
+  vertical-align: text-bottom;
 }
 
 .large-icon{
@@ -435,19 +443,18 @@ a.btn-icon:hover { color: $dark-grey; }
   background-image:url('/assets/dot-18.png');
   float: right;
 }
-.button-icon.topic-icon {
-  background-image:url('/assets/topic-18.png');
-}
-.button-icon.member-icon {
-  background-image:url('/assets/member-18.png');
-  // background:transparent url('/assets/member-18.png');
-}
-.button-icon.group-icon {
-  background-image:url('/assets/group-18.png');
-}
-.button-icon.pie-icon {
-  background-image:url('/assets/pie-18.png');
-}
+// .button-icon.topic-icon {
+//   background-image:url('/assets/topic-18.png');
+// }
+// .button-icon.member-icon {
+//   background-image:url('/assets/member-18.png');
+// }
+// .button-icon.group-icon {
+//   background-image:url('/assets/group-18.png');
+// }
+// .button-icon.pie-icon {
+//   background-image:url('/assets/pie-18.png');
+// }
 .large-icon.topic-icon {
     background-image:url('/assets/topic-24.png');
 }

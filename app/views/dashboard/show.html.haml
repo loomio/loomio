@@ -1,5 +1,5 @@
-- if current_user && (not current_user.has_read_dashboard_notice?)
-  - message = "This is the Home page, where you can see a list of the discussions "
+- if user_signed_in? && (not current_user.has_read_dashboard_notice?)
+  - message = "Welcome to Loomio!\n This is the Home page, where you can see a list of the discussions "
   - message += "going on in all of your groups. To the right is a list of the groups you are a member of. "
   - message += "You can start a discussion on a new topic by clicking on the “Start a discussion” button.\n\n"
   - message += "If you have any questions or feedback we’d love to hear from you: "
@@ -9,9 +9,9 @@
 - if @groups.present?
   -#=render '/application/loomio_process_flow'
   =render '/groups/title', group: nil
-  =render '/application/button', :button_text => 'Start a discussion', :button_icon => 'topic',
-    :args => {:href => "#new-discussion",  "data-toggle" => "modal", :id => 'start-new-discussion'}
-  .row
+
+  = icon_button('#new-discussion', 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion', true)
+  .row.main-content
     %section.span8
       %ul.selector-list.bordered
         #all-discussions-loading

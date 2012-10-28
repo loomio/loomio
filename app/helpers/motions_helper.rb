@@ -1,6 +1,6 @@
 module MotionsHelper
   def motion_activity_count_for(motion, user)
-    user ? user.motion_activity_count(motion) : 0
+    user ? motion.number_of_votes_since_last_looked(user) : 0
   end
 
   def get_motion_preview_class(motion)

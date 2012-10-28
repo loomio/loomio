@@ -1,5 +1,5 @@
-@import "settings";
 @import "bootstrap/mixins";
+@import "settings";
 @import "mixins";
 
 /** discussion new (new loomio) modal*/
@@ -26,7 +26,7 @@ body.discussions.show {
     }
     .dropdown {
       float: right;
-      padding: 2px 10px;
+      padding: 5px 10px;
       li {
         background-color: white;
         border: none;
@@ -36,16 +36,16 @@ body.discussions.show {
       }
     }
   }
-  #discussion-title {
-    float: left;
-  }
-  h1#discussion-title {
-    color: $dark-grey;
+  .discussion-title-container{
+    display: inline-block;
+    width: 850px;
+    margin: 0 0 4px 0px;
+    h1 { color: $dark-grey; }
   }
   #edit-discussion-title {
     float: left;
     form {
-      margin-bottom: 0px;
+      margin: 4px 0 0 0;
       width: 830px;
     }
     form .control-group #discussion-input {
@@ -247,6 +247,7 @@ pre{
     margin-left: 45px;
     padding-bottom: 5px;
     border-bottom: 1px solid $light-grey;
+    margin-bottom: 5px;
   }
 
   .comment-container.with-avatar {
@@ -333,14 +334,63 @@ pre{
   background-color: $container;
 }
 .unread-group-activity {background-color: $group-activity;}
+
+.popover-motion-name { color: black; }
+.popover-content { padding-top: 8px; }
+.popover-close-date { 
+  font-weight: normal;
+  display: inline;
+  font-size: $font-tiny;
+  position: relative;
+  left: 5px;
+  bottom: 2px;
+}
+.popover-engagement { margin-bottom: 8px; }
+.popover-current-position-icon {
+  position: relative;
+  bottom: 3px;
+  display: inline;
+}
+ul.popover-activity-list {
+  max-height: 180px;
+  overflow-y: auto;
+}
+li.popover-item {
+  padding-left: 5px;
+  .vote-time { font-size: $font-tiny; }
+}
+li.selector-item .discussion-preview:hover {
+  background-color: $selector;
+}
 .discussion-preview {
+  float: left;
+  width: 620px;
+  height: 47px;
+  background-color: $unhighlighted;
   a {
     color: $dark-grey;
   }
   a:hover {
     text-decoration: none;
   }
-  a.selector-link {height: 37px;}
+  a.selector-discussion-link {
+    width: 573px;
+    float: left;
+    padding: 5px 0 5px 5px;
+  }
+  .selector-pie-link {
+    width: 42px;
+    height: 47px;
+    cursor: pointer;
+    float: right;
+    .pie {
+      margin: 6px 3px;
+    }
+    .preview-pie-button {
+      border: none;
+      padding: 0;
+    }
+  }
   .vote-icon {
     float: left;
     width: 20px;
@@ -377,19 +427,38 @@ pre{
   }
   .activity-icon { float: right; }
   .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
-  .pie-icon.activity-icon { margin: 8px 4px 0 8px; }
+  .pie-icon.activity-icon { margin: 10px 10px 0 0; }
   .activity-count {
     font-size: $font-tinywiny;
     position: relative;
     bottom: 8px;
-    z-index: 2;
-    left: 18px;
+    left: 16px;
+    color: white;
+    background-color: $group-activity;
   }
   .pie .activity-count {
     bottom: 1px;
-    left: 24px;
+    margin-left: 8px;
+    z-index: 2;
   }
   .discussion-link {
     position: relative;
+    z-index: 2;
   }
+}
+.popover-motion-name {
+  font-weight: normal;
+  margin-top: 10px;
+  padding-top: 5px;
+  border-top: 1px solid white;
+}
+.popover-header {
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $light-grey;
+}
+.popover-item {
+  padding: 5px 0 5px 0;
+  border-bottom: 1px solid $light-grey;
+  min-height: 40px;
 }

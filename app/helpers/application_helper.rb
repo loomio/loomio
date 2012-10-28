@@ -23,11 +23,19 @@ module ApplicationHelper
     result
   end
 
-  def set_title(group_name, page_title)
+  def set_title(group_name, page_title, parent = nil)
     title = page_title.blank? ? "" : page_title.to_s
-    title += " - " unless title.blank? || group_name.blank? 
+    title += " - " unless title.blank? || group_name.blank?
+    title += parent.name.to_s+" - " unless !parent || parent.name.blank?
     title += group_name.to_s unless group_name.blank?
     content_for :title, title 
+  end
+
+  def icon_button(link, text, icon, id, is_modal = false)
+    modal_string = "modal" if is_modal
+    content_tag(:a, :href => link, :class => 'btn btn-grey btn-app', :id => id, 'data-toggle' => modal_string) do
+      image_tag(icon, :class => 'button-icon') + text
+    end
   end
 
   def email_subject_prefix(group_name)

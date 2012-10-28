@@ -21,6 +21,7 @@ class Loomio.Views.Utils.GraphView extends Backbone.View
             padding: @options.padding
             diameter: @options.diameter
             shadowOffset: @options.shadow
+            highlightMouseOver: false
           }
         },
         legend: { show: @options.legend , location: 'e'}
