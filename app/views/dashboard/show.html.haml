@@ -31,12 +31,12 @@
                 - if ((discussion.never_read_by(current_user) || discussion.number_of_comments_since_last_looked(current_user) > 0) && (not discussion.current_motion))
                   %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
               %li.new-discussion-link
-                %a{:href => '#new-discussion', 'data-toggle' => 'modal'}
+                %a{:href => '#new-discussion', 'data-toggle' => 'modal', 'data-group' => group.id}
                   Start a new discussion in this group
     %section.span4
       =render 'buttons'
     =render '/application/closed_motions', user: current_user, group: nil
-    =render '/discussions/new', discussion: @discussion, user_groups: @groups
+    =render '/discussions/new', discussion: @discussion
 - else
   = link_to 'Create a group', new_group_path
   or wait until you are invited to one.
