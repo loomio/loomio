@@ -3,8 +3,8 @@
   %h2 Revision history
 .modal-header
   .user-profile-fields
-    %h3 User Profile Fields
-    %p
+    %h3= @discussion.title
+    %p.font-size-85pc
       = "Edited about #{time_ago_in_words(@discussion.last_versioned_at)} ago by #{@originator.name}"
       %em= " (current)" if @discussion.live?
   .revision-version
