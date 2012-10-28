@@ -1,12 +1,15 @@
 .modal-header
   %button.close{"data-dismiss" => "modal"}×
   %h2 Revision history
-.modal-header
-  .user-profile-fields
+.modal-body
+  .revision-title
     %h3= @discussion.title
     %p.font-size-85pc
       = "Edited about #{time_ago_in_words(@discussion.last_versioned_at)} ago by #{@originator.name}"
-      %em= " (current)" if @discussion.live?
+      -if @discussion.live?
+        %em= " (current)"
+      -else
+        %em=link_to " (Restore this version)", update_version_discussion_path(@discussion.version), :method => :post, :class => "", :remote => true, :id => "revert-to-version", :data => { :disable_with => "Applying changes..." }
   .revision-version
     %h3 Version
     %p
@@ -21,11 +24,7 @@
         =link_to "Next", preview_version_discussion_path(@discussion), :method => :post, :remote => true
       -else
         =link_to "Next", "#", :class => "disabled"
-.modal-body
+
   %p= @discussion.description
 .modal-footer
-  = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
-  -if @discussion.live?
-    =link_to "Go back to this version", "#","data-dismiss" => "modal", :method => :post, :class => "btn btn-info disabled", :id => "revert-to-version", :disabled => true
-  -else
-    =link_to "Go back to this version", update_version_discussion_path(@discussion.version), :method => :post, :class => "btn btn-info", :remote => true, :id => "revert-to-version", :data => { :disable_with => "Applying changes..." }
+  = link_to "Close", "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
