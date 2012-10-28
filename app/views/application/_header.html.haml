@@ -56,7 +56,7 @@
             = current_user.name
             %b.caret
           %ul.dropdown-menu
-            %li= link_to "Settings", user_settings_path
+            %li= link_to "Profile", user_settings_path
             %li= link_to "Email Preferences", email_preferences_path
             %li= link_to('Sign out', destroy_user_session_path, method: :delete)
 
