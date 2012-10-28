@@ -2,9 +2,7 @@
   - if can? :add_members, group
     .clearfix
       - if group.parent.blank?
-        %a.btn.btn-app#group-add-members{href: "#"}
-          %i.button-icon.member-icon
-          Add new member
+        = icon_button('#', 'Add new member', '/assets/member-18.png', 'group-add-members')
         #invite-group-members.hidden
           = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
             = devise_error_messages!
@@ -14,8 +12,6 @@
             = link_to "Cancel", "#", id: 'cancel-add-members'
         %input#group_id{ type: "hidden", value: group.id }
       - else
-        %a.btn.subgroup-add-members{href: "#invite-subgroup-members", 'data-toggle' => "modal" }
-          %i.button-icon.member-icon
-          Add members +
+        = icon_button("#invite-subgroup-members", 'Add new member', '/assets/member-18.png', 'group-add-members', true)
         #invite-subgroup-members.modal.hidden
           = render 'subgroup_add_members', group: group
