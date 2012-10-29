@@ -42,17 +42,14 @@
   }
   .privacy-dropdown {
     display: inline;
-    width: 100px;
+    width: 120px;
   }
-  .privacy-dropdown .dropdown-menu {
-    margin-top: 8px;
+  .privacy-dropdown .dropdown-menu a{
+    padding-left: 5px;
   }
-  .privacy-tick{
+  li.privacy-item i{
     display: inline-block;
     width: 15px;
-  }
-  li.privacy-item a{
-    padding-left: 5px;
   }
   .privacy-dropdown form {
     margin: 0px;
