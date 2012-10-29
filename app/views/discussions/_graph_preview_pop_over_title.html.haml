@@ -1,0 +1,7 @@
+%span.popover-header-title
+  = "Proposal" 
+%span{class: css_class_for_close_date(motion)}
+  - if motion.close_date
+    = "#{time_ago_in_words(motion.close_date)} until close"
+.popover-motion-name
+  = motion.name
