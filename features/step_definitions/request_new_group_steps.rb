@@ -36,7 +36,7 @@ Then /^I should be told that my request will be reviewed shortly$/ do
 end
 
 Then /^a new Loomio group request should not be created$/ do
-  pending # express the regexp above with the code you wish you had
+  GroupRequest.where(:name => "The whole world").size.should == 0
 end
 
 Then /^I should be told what to change in the form$/ do
