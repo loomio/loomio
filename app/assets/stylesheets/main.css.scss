@@ -120,22 +120,20 @@ li.empty-list-message {
 #closed-motions-page .selector-list { padding-bottom: 20px; }
 #closed-motions-page li.selector-item.loading { background-position: 270px 160px; }
 #closed-motions {
-  width: 600px;
-  margin-left: -300px;
+  width: 750px;
+  margin-left: -375px;
+  min-height: 550px;
 }
 
 /**** Structural elements ****/
 ul.selector-list.bordered { border-top: 1px solid $light-grey }
-ul.selector-list {
-  list-style: none;
-}
 li.selector-item {
   background-color: $unhighlighted;
   color: $dark-grey;
   font-weight: normal;
   border-bottom: 1px solid $light-grey;
 }
-.undecided, .unread {
+.discussion-preview.unread {
   background-color: $highlighted;
   a { color: black; }
   a .proposal-title { color: black; }
@@ -239,6 +237,11 @@ li.selector-item a.selector-link:hover {
   height: 12px;
   font-size: $font-small;
 }
+
+//*** color coded urgency labels ***
+.color-urgent { background-color: #CA3232; }
+.color-warning { background-color: #F89406; }
+.color-ok { background: #016B01; }
 
 form {
   label {
@@ -358,7 +361,6 @@ ul.loomio-process-flow {
   @include border-radius(8px);
   /*box-shadow: 2px 2px 2px $light-grey;*/
   background-color: white;
-  list-style: none;
   text-align: center;
   padding: 0;
   li.process-flow-item {

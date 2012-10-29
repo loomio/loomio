@@ -41,7 +41,9 @@ class Vote < ActiveRecord::Base
   delegate :name, :full_name, :to => :group, :prefix => :group
 
   after_save :send_notifications
-  after_save :update_activity
+
+  after_create :update_motion_last_vote_at
+  after_destroy :update_motion_last_vote_at
 
   def can_be_edited_by?(current_user)
     current_user && user == current_user
@@ -78,8 +80,9 @@ class Vote < ActiveRecord::Base
   end
 
   private
-    def update_activity
-      motion.update_activity
+    def update_motion_last_vote_at
+      motion.last_vote_at = motion.latest_vote_time
+      motion.save!
     end
 
     def send_notifications
