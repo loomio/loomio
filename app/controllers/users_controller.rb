@@ -6,7 +6,6 @@ class UsersController < BaseController
 
   def update
     if current_user.update_attributes(params[:user])
-      puts current_user.inspect
       flash[:notice] = "Your settings have been updated."
       redirect_to :root
     else
