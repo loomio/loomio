@@ -13,7 +13,7 @@ $ ->
     $(".privacy-item").click((event) ->
         $('#viewable_by').val($(this).children().attr('class'))
         $(".privacy-item").find('.icon-ok').removeClass('icon-ok')
-        $(this).find('.privacy-tick').children().addClass('icon-ok')
+        $(this).children().first().children().addClass('icon-ok')
         $("#privacy-settings-form").submit()
         event.preventDefault()
     )
