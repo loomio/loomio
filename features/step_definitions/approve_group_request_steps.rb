@@ -45,8 +45,8 @@ Then /^the group request should be marked as ignored$/ do
 end
 
 Then /^an invitation email should be sent to the admin$/ do
-  open_email(@group_request.admin_email)
-  current_email.should have_subject("Invitation to join Loomio (#{@group_request.name})")
+  open_email(@group_request.admin_email,
+     :with_subject => "Invitation to join Loomio (#{@group_request.name})")
 end
 
 Then /^I should be redirected to the Group Requests page$/ do
