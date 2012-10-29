@@ -35,6 +35,7 @@ body.pages, body.sessions.new {
     float: right;
   }
   .main-navigation{
+    .navbar .nav li a { text-shadow: none;}
     .navbar .nav li a:hover { color: $dark-grey; }
     .navbar .nav .active a{ background-color: $loomio-orange; }
     .navbar-inner {
