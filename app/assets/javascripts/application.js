@@ -27,3 +27,4 @@
 //= require notifications
 //= require dashboard
 //= require votes
+//= require pop-over

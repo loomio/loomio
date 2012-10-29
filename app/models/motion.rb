@@ -173,6 +173,23 @@ class Motion < ActiveRecord::Base
     discussion.update_activity if discussion
   end
 
+  def number_of_votes_since_last_looked(user)
+    last_viewed_at = last_looked_at_by(user)
+    number_of_votes_since(last_viewed_at)
+  end
+
+  def last_looked_at_by(user)
+    motion_read_log = MotionReadLog.where('motion_id = ? AND user_id = ?',
+      id, user.id).first
+    if motion_read_log
+      return motion_read_log.motion_last_viewed_at
+    end
+  end
+
+  def number_of_votes_since(time)
+    votes.where('votes.created_at > ?', time).count
+  end
+
   def comments
     discussion.comments
   end
@@ -184,9 +201,12 @@ class Motion < ActiveRecord::Base
     vote
   end
 
-  def update_activity
-    self.activity += 1
-    save
+  def latest_vote_time
+    if votes.count > 0
+      votes.order('created_at DESC').first.created_at
+    else
+      created_at
+    end
   end
 
   def set_outcome(str)
