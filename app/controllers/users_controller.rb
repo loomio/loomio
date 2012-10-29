@@ -11,7 +11,6 @@ class UsersController < BaseController
       redirect_to :root
     else
       flash[:error] = "Your settings did not get updated."
-      raise current_user.errors.messages.inspect
       redirect_to :back
     end
   end
