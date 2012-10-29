@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body",             :default => ""
+    t.text     "body"
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -83,10 +83,11 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "activity",        :default => 0, :null => false
     t.string   "title"
+    t.integer  "activity",           :default => 0,     :null => false
     t.datetime "last_comment_at"
     t.text     "description"
+    t.boolean  "has_current_motion", :default => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -143,7 +144,6 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.integer  "group_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.string   "token",           :null => false
   end
 
   create_table "memberships", :force => true do |t|
@@ -234,6 +234,10 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.boolean  "subscribed_to_daily_activity_email"
     t.boolean  "subscribed_to_mention_notifications"
     t.boolean  "subscribed_to_proposal_closure_notifications"
+    t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
+    t.boolean  "has_read_group_notice",                      :default => false, :null => false
+    t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
+    t.string   "avatar_initials"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -29,4 +29,19 @@ class GroupMailer < ActionMailer::Base
       end
     end
   end
+
+  def new_group_invited_to_loomio(admin_email, group_name)
+    @group_name = group_name
+    mail :to => admin_email,
+         :from => "\"Loomio\" <contact@loom.io>",
+         :subject => "Invitation to join Loomio (#{group_name})"
+  end
+
+  # def invite_to_group(recipient, invite)
+  #   @invite = invite
+  #   mail :to => recipient,
+  #        :reply_to => invite.inviter_email,
+  #        :subject => ("#{invite.inviter_name} has invited you to join " +
+  #                     "#{invite.group_full_name} on Loomio")
+  # end
 end

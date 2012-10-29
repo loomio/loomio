@@ -45,7 +45,7 @@ describe Group do
       end
 
       it "assigns Loomio Helper Bot as the author" do
-        @discussion.author_id.should == User.loomio_helper_bot.id
+        @discussion.author_id.should == User.get_loomio_user.id
       end
 
       it "creates an initial comment" do
