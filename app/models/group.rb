@@ -293,7 +293,6 @@ class Group < ActiveRecord::Base
 
   def create_welcome_loomio
     unless parent
-      # TODO: Move these strings into a i18n yml file
       comment_str = "Hey folks, I've been thinking it's time for a holiday. I know some people might be worried about our carbon footprint, but I have a serious craving for space-cheese!
 
 What does everyone think?"
@@ -311,7 +310,7 @@ Is it a good idea? Loomio Helper Bot wants to know what you think!
 If you're clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).
 
 You'll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
-      user = User.loomio_helper_bot
+      user = User.get_loomio_user
       membership = add_member!(user)
       discussion = user.authored_discussions.create!(:group_id => id,
         :title => "Example Discussion: Welcome and introduction to Loomio!",
@@ -321,8 +320,7 @@ You'll be prompted to make a short statement about the reason for your decision.
         :description => motion_str, :close_date => Time.now + 7.days)
       motion.save
       membership.destroy
-    end
-  end
+    end  end
 
   # Validators
   def limit_inheritance
