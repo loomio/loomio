@@ -403,6 +403,23 @@ ul.loomio-process-flow {
   }
 }
 
+/*** helper bot ***/
+#helper_bot {
+  float: right;
+  position: relative;
+  bottom: 30px;
+  margin-bottom: -40px;
+}
+
+body.discussions #helper_bot{
+    bottom: 68px;
+    margin-bottom: -60px;
+}
+
+body.groups.show #helper_bot{
+  right: 130px;
+}
+
 /**** buttons ****/
 .btn-app {
   line-height: 18px;
@@ -477,22 +494,3 @@ a.btn-icon:hover { color: $dark-grey; }
   background-image: url("pie-light-24.png");
 }
 
-
-body.groups.show #helper_bot{
-  text-align: right;
-  position: relative;
-  bottom: 50px;
-  right: 10px;
-  margin-bottom: -50px;
-}
-
-body.discussions #helper_bot{
-    float:right;
-}
-
-body.discussions.show .inner-container { margin-top: 50px; }
-
-body.dashboard.show #helper_bot{
-  margin-top: -20px;
-  float: right;
-}

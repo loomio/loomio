@@ -9,10 +9,10 @@ form.new_discussion {
 
 /** discussion show form*/
 body.discussions.show {
-  .group-title {
-    margin-bottom: 10px;
-    padding-top: 43px;
-  }
+  // .group-title {
+  //   margin-bottom: 10px;
+  //   padding-top: 43px;
+  // }
   .selector-panel {
     background-color: $selector-panel;
     @include border-radius(8px);
