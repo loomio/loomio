@@ -288,7 +288,7 @@ class Group < ActiveRecord::Base
   end
 
   def add_creator_as_admin
-    add_admin! creator if creator
+    add_admin! creator
   end
 
   def create_welcome_loomio
