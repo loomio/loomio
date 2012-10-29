@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20121025235642) do
-=======
-ActiveRecord::Schema.define(:version => 20121008010612) do
->>>>>>> 3ca0283a4916aff1853ef0b90ccb95d0fc1e0b31
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
