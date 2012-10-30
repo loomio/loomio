@@ -71,10 +71,10 @@ body.pages, body.sessions.new {
       background-image: linear-gradient(to bottom, white, #F2F2F2);
       background-repeat: repeat-x;
       border: 1px solid #DDD;
-      @include border-radius(5px);
       box-shadow: none;
     }
   }
+
   .header {
     margin-bottom: 20px;
     height: 150px;
