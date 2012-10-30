@@ -17,6 +17,7 @@ Loomio::Application.routes.draw do
     post :create_motion, :on => :member
     post :email_members, on: :member
     post :edit_description, :on => :member
+    post :edit_privacy, on: :member
   end
 
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
