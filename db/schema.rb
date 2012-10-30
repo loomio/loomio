@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121025235642) do
+ActiveRecord::Schema.define(:version => 20121030014815) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body",             :default => ""
+    t.text     "body"
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -84,10 +84,11 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "activity",        :default => 0, :null => false
     t.string   "title"
+    t.integer  "activity",           :default => 0,     :null => false
     t.datetime "last_comment_at"
     t.text     "description"
+    t.boolean  "has_current_motion", :default => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -107,7 +108,6 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
 
   create_table "group_requests", :force => true do |t|
     t.string   "name"
-    t.integer  "expected_size"
     t.text     "description"
     t.string   "admin_email"
     t.datetime "created_at",                           :null => false
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.string   "status"
     t.integer  "group_id"
     t.boolean  "cannot_contribute", :default => false
+    t.string   "expected_size"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
@@ -133,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.integer  "creator_id",                              :null => false
     t.integer  "memberships_count",    :default => 0,     :null => false
     t.datetime "archived_at"
+    t.integer  "max_size"
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
