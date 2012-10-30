@@ -1,14 +1,37 @@
-= simple_form_for(@group_request) do |f|
-  .modal-body
-    %p We're bringing on learning partner groups one at a time. Tell us a bit about yourselves so we can make sure we've got the resources to bring you on.
-    = f.input :name, :label => "What is the name of your group?"
-    = f.input :description, :placeholder => "Tell us a bit about your group, and why you'd like to use Loomio"
-    = f.input :admin_email, :label => "Your email"
-    = f.input :expected_size, :label => "Approximate number of people involved"
-    %hr
-    %p Loomio needs to be financially self-sufficient, so most learning partner groups are making a regular contribution in return for use of the tool. On the other hand, we don't want money to be a barrier to entry for groups without a budget who are doing great stuff in their communities. Let us know if this sounds like you:
-    = f.input :cannot_contribute, :label => "&nbsp;", :inline_label => "Our group is not in a position to contribute financially"
-
-  .modal-footer
-    .controls
-      = f.button :submit, :value => "Request new group", :class => "btn-info", id: "submit-group-request"
+= form_for(@group_request) do |f|
+  .row
+    .span8
+      %p
+      %p We're bringing on learning partner groups one at a time. Tell us a bit about yourselves so we can make sure we've got the resources to bring you on.
+      %br
+  .row
+    .span5
+      .control-group
+        = f.label :name, "What is the name of your group?", {id: "group-name-label", class: "control-label", for: "group-name"}
+        .presence-error-message Please fill in the name of your group
+        = f.text_field :name, class: "validate-presence inputError limit-250", id: "group-name"
+        .character-counter
+      .control-group
+        = f.label :name, "Description", {id: "description-label", class: "control-label", for: "description"}
+        .presence-error-message Please fill in a description of your group
+        = f.text_area :description, :placeholder => "Tell us a bit about your group, and why you'd like to use Loomio", class: "validate-presence"
+      .control-group
+        = f.label :admin_email, "Your email", {id: "admin-email-label", class: "control-label", for: "admin_email"}
+        .presence-error-message Please fill in a contact email
+        = f.text_field :admin_email, class: "validate-presence"
+      .control-group
+        = f.label :expected_size, "Approximate number of people involved", {id: "expected-size-label", class: "control-label", for: "expected_size"}
+        .presence-error-message Please fill an approximate size for your group
+        = f.text_field :expected_size, class: "validate-presence"
+      %hr
+    .span5
+      .helper-bot
+        = image_tag("mascot-medium-lefthand.gif")
+  .row
+    .span8
+      %p Loomio needs to be financially self-sufficient, so most learning partner groups are making a regular contribution in return for use of the tool. On the other hand, we don't want money to be a barrier to entry for groups without a budget who are doing great stuff in their communities. Let us know if this sounds like you:
+      = f.check_box :cannot_contribute
+      = f.label :cannot_contribute, "Our group is not in a position to contribute financially", class: "checkbox-label"
+      .controls
+        %br
+        = f.submit "Request new group", :class => "btn-info run-validations", id: "submit-group-request", :data => {:disable_with => "Requesting group"}
