@@ -7,22 +7,22 @@
   .row
     .span5
       .control-group
-        = f.label :name, "What is the name of your group?", {id: "group-name-label", class: "control-label", for: "group-name"}
-        .presence-error-message Please fill in the name of your group
-        = f.text_field :name, class: "validate-presence inputError limit-250", id: "group-name"
+        = f.label :name, "What is the name of your group?", {id: "group-name-label", class: "control-label", for: "group_request_name"}
+        .presence-error-message#group-error Please fill in the name of your group
+        = f.text_field :name, class: "validate-presence inputError limit-250", id: "group_request_name"
         .character-counter
       .control-group
-        = f.label :name, "Description", {id: "description-label", class: "control-label", for: "description"}
-        .presence-error-message Please fill in a description of your group
-        = f.text_area :description, :placeholder => "Tell us a bit about your group, and why you'd like to use Loomio", class: "validate-presence"
+        = f.label :description, "Description", {id: "description-label", class: "control-label", for: "group_request_description"}
+        .presence-error-message#description-error Please fill in a description of your group
+        = f.text_area :description, :placeholder => "Tell us a bit about your group, and why you'd like to use Loomio", class: "validate-presence", id: "group_request_description"
       .control-group
-        = f.label :admin_email, "Your email", {id: "admin-email-label", class: "control-label", for: "admin_email"}
-        .presence-error-message Please fill in a contact email
-        = f.text_field :admin_email, class: "validate-presence"
+        = f.label :admin_email, "Your email", {id: "admin-email-label", class: "control-label", for: "group_request_admin_email"}
+        .presence-error-message#email-error Please fill in a contact email
+        = f.text_field :admin_email, class: "validate-presence", id: "group_request_admin_email"
       .control-group
-        = f.label :expected_size, "Approximate number of people involved", {id: "expected-size-label", class: "control-label", for: "expected_size"}
-        .presence-error-message Please fill an approximate size for your group
-        = f.text_field :expected_size, class: "validate-presence"
+        = f.label :expected_size, "Approximate number of people involved", {id: "expected-size-label", class: "control-label", for: "group_request_expected_size"}
+        .presence-error-message#size-error Please fill an approximate size for your group
+        = f.text_field :expected_size, class: "validate-presence", id: "group_request_expected_size"
       %hr
     .span5
       .helper-bot
