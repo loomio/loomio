@@ -28,7 +28,7 @@ module ApplicationHelper
     title += " - " unless title.blank? || group_name.blank?
     title += parent.name.to_s+" - " unless !parent || parent.name.blank?
     title += group_name.to_s unless group_name.blank?
-    content_for :title, title 
+    content_for :title, title.gsub!(/[\A""\Z'<>]/, '')
   end
 
   def icon_button(link, text, icon, id, is_modal = false)
