@@ -56,6 +56,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'jasminerice'
   gem 'guard-jasmine'
+  gem 'letter_opener'
 end
 
 group :development do
@@ -70,7 +71,6 @@ group :development do
   gem 'launchy'
   gem 'spork'
   gem 'awesome_print'
-  gem 'letter_opener'
 end
 
 group :test do
