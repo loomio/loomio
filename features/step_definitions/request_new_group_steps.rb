@@ -6,7 +6,7 @@ When /^I visit the Request New Group page$/ do
 end
 
 Then /^I should see the Request New Group Form$/ do
-  page.should have_css("#request-new-group")
+  page.should have_css(".group_requests")
 end
 
 When /^I fill in and submit the Request New Group Form$/ do
@@ -28,10 +28,10 @@ When /^I fill in and submit the Request New Group Form incorrectly$/ do
   @group_size = 90
   @group_description = "Everyone in the entire world"
   @group_admin_email = "supreme_ruler@world.com"
-  fill_in "group_request_name", with: @group_name
-  fill_in "group_request_expected_size", with: @group_size
-  fill_in "group_request_description", with: @group_description
-  fill_in "group_request_admin_email", with: @group_admin_email
+  fill_in "group_request_name", with: ""
+  fill_in "group_request_expected_size", with: ""
+  fill_in "group_request_description", with: ""
+  fill_in "group_request_admin_email", with: ""
   find("#submit-group-request").click
 end
 
@@ -48,5 +48,8 @@ Then /^a new Loomio group request should not be created$/ do
 end
 
 Then /^I should be told what to change in the form$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_css("#group-error")
+  page.should have_css("#description-error")
+  page.should have_css("#email-error")
+  page.should have_css("#size-error")
 end

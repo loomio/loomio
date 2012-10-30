@@ -1,5 +1,5 @@
 class GroupRequestsController < BaseController
-  before_filter :authenticate_user!, except: [:new, :create, :confirmation]
+  before_filter :authenticate_user!, except: [:start, :new, :create, :confirmation]
 
   def new
     @group_request = GroupRequest.new

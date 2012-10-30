@@ -1,4 +1,4 @@
-pFeature: Admin approves group request to join Loomio
+Feature: Admin approves group request to join Loomio
   As a Loomio super-admin
   So that I can moderate the growth of the Loomio userbase
   I want to be able to approve group applications
