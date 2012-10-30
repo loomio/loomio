@@ -1,5 +1,5 @@
 %h1 Your Loomio Activity
-%p Showing you activity since #{l @since_time}
+%p Showing you activity since #{@since_time_formatted}
 
 %h2 Proposals
 -@groups.each do |group|
@@ -19,10 +19,10 @@
       =link_to(discussion.title, discussion_url(discussion))
       - num_new_comments = discussion.number_of_comments_since(@since_time)
       - if num_new_comments > 0
-        \- #{num_new_comments} new comments
+        \- #{pluralize(num_new_comments, "new comment", "new comments")}
       - else
         \- new discussion
       %br
-    =link_to('Start a discussion', new_group_discussion_url(group))
+    = "(#{link_to('Start a new discussion', new_group_discussion_url(group))})".html_safe
 
 %p=link_to 'Modify your email preferences', user_settings_url
