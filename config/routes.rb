@@ -3,8 +3,8 @@ Loomio::Application.routes.draw do
 
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
 
-  resources :group_requests, :only => :create
-  match "/request_new_group", :to => "group_requests#new", :as => :request_new_group
+  resources :group_requests, :only => [:create, :new]
+  match "/request_new_group", :to => "group_requests#start", :as => :request_new_group
   match "/group_request_confirmation", :to => "group_requests#confirmation", :as => :group_request_confirmation
 
   resources :groups, except: :index do
