@@ -27,7 +27,31 @@ body.pages, body.sessions.new {
   ul.about li { margin-bottom: 10px; }
 
   .main-container.container { padding-top: 0px; }
-  .inner-container { padding: 0 10px 0 10px; }
+  .inner-container { padding: 0 10px; }
+
+  .how-it-works-panel{
+    p{
+      font-size: 16px;
+    }
+    img, iframe{
+      border: 1px solid #eee;
+    }
+    .position-icons img{
+      float: left;
+      border: 0;
+      width: 30px;
+      height: 30px;
+      padding-right: 7px;
+    }
+    .position-icons p{
+      font-size: 14px;
+    }
+    p.special-last{ margin-bottom: 0;}
+  }
+
+  hr {
+    margin: 2.5em 0;
+  }
 
   #github-link {
     position: absolute;
