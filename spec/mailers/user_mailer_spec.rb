@@ -36,7 +36,9 @@ describe UserMailer do
     before :all do
       @user = create(:user)
       @group = create(:group)
-      @mail = UserMailer.added_to_group(@user, @group)
+      @inviter = stub_model(User, :name => "Mr. Inviter")
+      @membership = stub_model(Membership, :user => @user, :group => @group, :inviter => @inviter)
+      @mail = UserMailer.added_to_group(@membership)
     end
 
     it_behaves_like 'email_meta'
