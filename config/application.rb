@@ -50,6 +50,9 @@ module Loomio
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    # required for heroku
+    config.assets.initialize_on_precompile = false
+
     # Email admin when server gets exceptions!
     config.middleware.use ExceptionNotifier,
       :email_prefix => "[Loomio Exception] ",
@@ -58,5 +61,6 @@ module Loomio
 
     # Whitelist attributes so we never have to spend 2 days securing this app ;-)
     config.active_record.whitelist_attributes = true
+
   end
 end
