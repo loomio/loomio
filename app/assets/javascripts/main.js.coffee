@@ -213,7 +213,7 @@ $ ->
           unless this == currentPie
             $(this).popover('hide')
         )
-        $(this).find('.button_to').submit()
+        $(this).find('.button_to').submit() 
         event.stopPropagation()
         $(currentPie).popover('toggle')
         )
@@ -252,6 +252,16 @@ $ ->
       $("#closed-motions").modal('toggle')
       event.preventDefault()
     )
+
+$ ->
+  $("#helper_bot_video").on("show", ->
+    $('#helper_bot_video .video-iframe').html('<iframe width="560" height="420" src="http://www.youtube.com/embed/bIEyNNcXbZA?autoplay=1&amp;rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>')
+  )
+  $("#helper_bot_video").on("hide", ->  
+    $('#helper_bot_video .video-iframe').html('')
+  )
+
+  
 
 #pagination load on closed motions
 $ ->
