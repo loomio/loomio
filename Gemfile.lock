@@ -195,6 +195,7 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     has_scope (0.5.1)
+    high_voltage (1.2.0)
     highline (1.6.8)
     hike (1.2.1)
     i18n (0.6.1)
@@ -407,6 +408,7 @@ DEPENDENCIES
   guard-sass
   guard-spork
   haml-rails
+  high_voltage
   inherited_resources
   jasminerice
   jqplot-rails

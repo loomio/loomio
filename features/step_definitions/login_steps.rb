@@ -15,9 +15,5 @@ Then /^I should not be logged in$/ do
 end
 
 When /^I login as "(.*?)" with an incorrect password$/ do |email|
-  visit "/"
-  page.should have_content "sign in"
-  fill_in 'user_email', with: email
-  fill_in 'user_password', with: "wrong_password"
-  click_on "Sign in"
+  login(email, 'wrong_password')
 end
