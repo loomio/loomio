@@ -405,6 +405,23 @@ ul.loomio-process-flow {
   }
 }
 
+/*** helper bot ***/
+#helper_bot {
+  float: right;
+  position: relative;
+  bottom: 30px;
+  margin-bottom: -40px;
+}
+
+body.discussions #helper_bot{
+    bottom: 68px;
+    margin-bottom: -60px;
+}
+
+body.groups.show #helper_bot{
+  right: 130px;
+}
+
 /**** buttons ****/
 .btn-app {
   line-height: 18px;
@@ -478,3 +495,4 @@ a.btn-icon:hover { color: $dark-grey; }
 .large-icon.pie-icon {
   background-image: url("pie-light-24.png");
 }
+
