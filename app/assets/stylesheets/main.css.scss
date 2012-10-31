@@ -53,7 +53,7 @@ h5 {
 }
 
 // structural elements (containers etc.)
-.inner-container { margin-top: 70px; }
+.page-container { margin-top: 30px; }
 .group-link.clearfix {
   .group-link-name { float: left; }
   .group-link-activity { float: right; }
@@ -180,8 +180,10 @@ li.selector-item a.selector-link:hover {
 }
 
 .alert {
-  position: relative;
-  bottom: 20px;
+  margin: 10px 0;
+  // position: relative;
+  // top: 0px;
+  // bottom: 20px;
 }
 
 // misc (move stuff out of here..)
@@ -423,7 +425,7 @@ body.groups.show #helper_bot{
 /**** buttons ****/
 .btn-app {
   line-height: 18px;
-  padding: 6px 8px 6px 8px;
+  padding: 4px 8px 4px 8px;
   width: 180px;
   font-size: $font-medium;
   text-align: left;
