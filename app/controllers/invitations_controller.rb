@@ -1,8 +1,10 @@
 class InvitationsController < BaseController
   before_filter :get_resources
+  before_filter :authenticate_user!, :except => [:show]
 
   def show
     @inviter = @invitation.inviter
+    session[:invitation] = @invitation.token
   end
 
   private
