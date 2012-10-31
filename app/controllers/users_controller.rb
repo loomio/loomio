@@ -1,4 +1,21 @@
 class UsersController < BaseController
+  before_filter :authenticate_user!, :except => [:new, :create]
+
+  def new
+    @user = User.new
+    unless Invitation.find_by_token(session[:invitation])
+      redirect_to home
+    end
+  end
+
+  def create
+    @invitation = Invitation.find_by_token(session[:invitation])
+    if @invitation
+      redirect_to group_path(@invitation.group_id)
+    else
+      redirect_to home
+    end
+  end
 
   def update
     current_user.name = params[:user][:name]

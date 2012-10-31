@@ -29,3 +29,8 @@ Feature: User accepts invitation to Loomio group
     When I open the email and click the invitation link
     Then I should become a member of the group
     And I should be taken to the group page
+
+  Scenario: User tries to create an account without an invitation
+    Given I have not received an invitation
+    When I visit the create account page when 
+    Then I should be redirected to the homepage

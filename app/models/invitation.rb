@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-  attr_accessible :access_level, :group_id, :inviter_id, :recipient_email
+  attr_accessible :access_level, :group, :group_id, :inviter, :inviter_id, :recipient_email
 
   belongs_to :inviter, :class_name => "User"
   belongs_to :group

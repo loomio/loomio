@@ -26,7 +26,6 @@ Then /^I should be asked to create an account or log\-in$/ do
 end
 
 When /^I create my user account$/ do
-  pending
   click_on "create-account"
   fill_in "name", :with => "My name"
   fill_in "email", :email => "blah@jah.com"
