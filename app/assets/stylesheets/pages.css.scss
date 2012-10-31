@@ -1,0 +1,133 @@
+@import "settings";
+@import "bootstrap/mixins";
+
+body.pages, body.sessions.new {
+  background-color: #F7F7ED;
+
+  h1 { display: block; }
+  h2 {
+    color: $dark-grey;
+    font-size: 28px;
+    margin: 0 0 10px;
+  }
+  h3 {
+    color: $mid-grey;
+    font-size: 21px;
+    font-weight: normal;
+    margin-bottom: 15px;
+  }
+  p {
+    margin-bottom: 15px;
+    line-height: 24px;
+  }
+  ul.about {
+    list-style: circle;
+    padding-left: 20px;
+  }
+  ul.about li { margin-bottom: 10px; }
+
+  .main-container.container { padding-top: 0px; }
+  .inner-container { padding: 0 10px; }
+
+  .how-it-works-panel{
+    p{
+      font-size: 16px;
+    }
+    img, iframe{
+      border: 1px solid #eee;
+    }
+    .position-icons img{
+      float: left;
+      border: 0;
+      width: 30px;
+      height: 30px;
+      padding-right: 7px;
+    }
+    .position-icons p{
+      font-size: 14px;
+    }
+    p.special-last{ margin-bottom: 0;}
+  }
+
+  hr {
+    margin: 2.5em 0;
+  }
+
+  #github-link {
+    position: absolute;
+    right: 0px;
+    float: right;
+  }
+  .main-navigation{
+    .navbar .nav li a { text-shadow: none;}
+    .navbar .nav li a:hover { color: $dark-grey; }
+    .navbar .nav .active a{ background-color: $loomio-orange; }
+    .navbar-inner {
+      min-height: 39px;
+      background-color: #FAFAFA;
+      background-image: -moz-linear-gradient(top, white, #F2F2F2);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#F2F2F2));
+      background-image: -webkit-linear-gradient(top, white, #F2F2F2);
+      background-image: linear-gradient(to bottom, white, #F2F2F2);
+      background-repeat: repeat-x;
+      border: 1px solid #DDD;
+      box-shadow: none;
+    }
+  }
+
+  .header {
+    margin-bottom: 20px;
+    height: 150px;
+    background-image: url(loomio-orange.png);
+    background-position: 5px top;
+    background-repeat: no-repeat;
+    text-indent: -999em;
+    span {
+      display: none;
+    }
+  }
+  #loomio-project-iframe { margin-left: -10px; }
+
+  // *** browser not supported ***
+  .notice { padding-bottom: 25px; }
+
+  ul#browser-icons{
+    li {
+      float: left;
+      height: 120px;
+      margin: 5px;
+      padding: 5px;
+      width: 160px;
+    }
+    li:hover{
+      background-color: #F7F7ED;
+      @include border-radius(4px);
+    }
+    li:hover{
+      p.browser-title, p.visit-site{
+        background-color: $light-grey;
+        color: white;
+      }
+    }
+    a{
+      color: $mid-grey;
+    }
+    img {
+      display: block;
+      height: 80px;
+      margin: 0 auto 10px;
+    }
+    p{
+      font-size:$font-tiny;
+    }
+    p.browser-title, p.visit-site{
+      text-align: center;
+      color: $dark-grey;
+      background-color: $lighter-grey;
+      @include border-radius(4px);
+    }
+    p.browser-description{
+      height: 100px;
+    }
+  }
+}
