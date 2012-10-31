@@ -1,4 +1,4 @@
-- set_title @group.name, ""
+- set_title @group.name, "", @group.parent
 - if user_signed_in? && @group.parent.nil? && (not current_user.has_read_group_notice?)
   - message = "This is the Group page for \"#{@group.full_name}\". \n\n Here you can see this group’s discussions, "
   - message += "a description of what the group is for, "
