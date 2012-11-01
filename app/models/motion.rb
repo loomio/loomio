@@ -174,8 +174,13 @@ class Motion < ActiveRecord::Base
   end
 
   def number_of_votes_since_last_looked(user)
-    last_viewed_at = last_looked_at_by(user)
-    number_of_votes_since(last_viewed_at)
+    if user
+      last_viewed_at = last_looked_at_by(user)
+      if last_viewed_at 
+        return number_of_votes_since(last_viewed_at)
+      end
+    end
+    unique_votes.count
   end
 
   def last_looked_at_by(user)
