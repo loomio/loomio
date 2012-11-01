@@ -171,8 +171,7 @@ $ ->
       $(".discussion-with-motion-divider").removeClass('hidden')
 
 # Edit description
-root = exports ? this #FIXME - hacky way to make functions available in the Global scope (to access them after ajax update)
-root.enableInlineEdition = ()->
+Application.enableInlineEdition = ()->
   if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
     $(".edit-description").click((event) ->
       container = $(this).parents(".description-container")
@@ -192,7 +191,7 @@ root.enableInlineEdition = ()->
       event.preventDefault()
     )
 
-root.seeMoreDescription = () ->
+Application.seeMoreDescription = () ->
   #expand/shrink description text
   if $("body.discussions.show").length > 0
     $(".see-more").click((event) ->
@@ -206,8 +205,8 @@ root.seeMoreDescription = () ->
     )
 
 $ ->
-  enableInlineEdition()
-  seeMoreDescription()
+  Application.enableInlineEdition()
+  Application.seeMoreDescription()
 
 displayGraph = (this_pie, graph_id, data)->
   @pie_graph_view = new Loomio.Views.Utils.GraphView
