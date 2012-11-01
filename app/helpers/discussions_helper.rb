@@ -1,6 +1,6 @@
 module DiscussionsHelper
   def discussion_activity_count_for(discussion, user)
-    user ? discussion.number_of_comments_since_last_looked(user) : 0
+    discussion.number_of_comments_since_last_looked(user)
   end
 
   def enabled_icon_class_for(discussion, user)

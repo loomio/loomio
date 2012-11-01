@@ -122,58 +122,23 @@ describe Discussion do
     end
   end
 
-  describe "number_of_comments_since_last_looked(user)" do
-    it "should return the number of comments since user last read the discussion" do
-      user = stub_model(User)
-      discussion = build :discussion
-
-      discussion.should_receive(:last_looked_at_by).
-                 with(user).
-                 and_return("12-34-56")
-      discussion.should_receive(:number_of_comments_since).
-          with("12-34-56").and_return(5)
-
-      discussion.number_of_comments_since_last_looked(user).should == 5
-    end
-  end
-
   describe "last_looked_at_by(user)" do
     before do
       @user = stub_model(User)
       @discussion = build :discussion
       @discussion_read_log = mock_model(DiscussionReadLog)
-      @discussion.stub(:read_log_for).with(@user).
-                  and_return(@discussion_read_log)
     end
-    context "when user is a member" do
-      context "and has not read the discussion" do
-        it "should return the date the user joined the group" do
-          @discussion_read_log.stub(:blank?).and_return(true)
-          query_results = stub(:exists? => true)
-
-          Membership.stub(:where => query_results)
-          query_results.stub_chain(:first, :created_at).
-              and_return("12-34-56")
-          @discussion.last_looked_at_by(@user).should == "12-34-56"
-        end
-      end
-      context "and has read the discussion" do
-        it "should return the date the discussion was last viewed" do
-          @discussion_read_log.stub(:blank?).and_return(false)
-
-          @discussion_read_log.should_receive(:discussion_last_viewed_at).
-                               and_return("54-32-10")
-          @discussion.last_looked_at_by(@user).should == "54-32-10"
-        end
-      end
-    end
-    context "when user is not a member" do
-      it "should return nil" do
-        @discussion_read_log.stub(:blank?).and_return(true)
-
-        Membership.stub(:where, :first).
-                   and_return(stub(:exists? => false))
+    context "the user has not read the discussion" do
+      it "should return the date the user joined the group" do
+        @discussion.stub(:read_log_for).with(@user).and_return(nil)
         @discussion.last_looked_at_by(@user).should == nil
+      end
+    end
+    context "and has read the discussion" do
+      it "should return the date the discussion was last viewed" do
+        @discussion.stub(:read_log_for).with(@user).and_return(@discussion_read_log)
+        @discussion_read_log.stub(:discussion_last_viewed_at).and_return 5
+        @discussion.last_looked_at_by(@user).should == 5
       end
     end
   end
@@ -210,8 +175,37 @@ describe Discussion do
     end
   end
 
+  describe "number_of_comments_since_last_looked(user)" do
+    before do
+      @user = build(:user)
+      @discussion = create(:discussion)
+    end
+    context "the user is a member of the discussions group" do
+      it "returns the total number of votes if the user has not seen the motion" do
+        @discussion.stub(:last_looked_at_by).with(@user).and_return(nil)
+        @discussion.stub_chain(:comments, :count).and_return(5)
+
+        @discussion.number_of_comments_since_last_looked(@user).should == 5
+      end
+      it "returns the number of votes since the user last looked at the motion" do
+        last_viewed_at = Time.now
+        @discussion.stub(:last_looked_at_by).with(@user).and_return(last_viewed_at)
+        @discussion.stub(:number_of_comments_since).with(last_viewed_at).and_return(3)
+
+        @discussion.number_of_comments_since_last_looked(@user).should == 3
+      end
+    end
+    context "the user is not a member of the group" do
+      it "returns the total number of comments" do
+        @discussion.stub(:last_looked_at_by).with(@user).and_return(nil)
+        @discussion.stub_chain(:comments, :count).and_return(4)
+
+        @discussion.number_of_comments_since_last_looked(nil).should == 4
+      end
+    end
+  end
+
   describe "destroying discussion" do
     it "destroys associated comments"
   end
-
 end
