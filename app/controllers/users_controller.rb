@@ -15,7 +15,12 @@ class UsersController < BaseController
       @user = User.create(params[:user])
       unless @user.errors.any?
         group.add_member!(@user)
-        redirect_to group_path(@invitation.group_id)
+        discussion = group.discussions.where(:title => "Example Discussion: Welcome and introduction to Loomio!").first
+        if discussion
+          redirect_to discussion_path(discussion.id)
+        else
+          redirect_to group_path(@invitation.group_id)
+        end
       else
         redirect_to home
       end
