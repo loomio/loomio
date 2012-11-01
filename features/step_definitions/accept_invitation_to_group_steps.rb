@@ -26,15 +26,17 @@ Then /^I should be asked to create an account or log\-in$/ do
 end
 
 When /^I create my user account$/ do
+  @user_email = "blah@jah.com"
   click_on "create-account"
   fill_in "name", :with => "My name"
-  fill_in "email", :email => "blah@jah.com"
-  fill_in "password", :email => "password"
+  fill_in "email", :with => @user_email
+  fill_in "password", :with => "password"
   click_on "submit"
 end
 
 Then /^I should become a member of the group$/ do
-  pending # express the regexp above with the code you wish you had
+  @user = User.find_by_email(@user_email)
+  @group.users.include?(@user).should be_true
 end
 
 Then /^I should be taken to the group's demo proposal page$/ do

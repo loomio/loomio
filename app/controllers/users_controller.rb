@@ -10,8 +10,15 @@ class UsersController < BaseController
 
   def create
     @invitation = Invitation.find_by_token(session[:invitation])
+    group = Group.find(@invitation.group_id)
     if @invitation
-      redirect_to group_path(@invitation.group_id)
+      @user = User.create(params[:user])
+      unless @user.errors.any?
+        group.add_member!(@user)
+        redirect_to group_path(@invitation.group_id)
+      else
+        redirect_to home
+      end
     else
       redirect_to home
     end
