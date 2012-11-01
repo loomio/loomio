@@ -3,8 +3,14 @@ class InvitationsController < BaseController
   before_filter :authenticate_user!, :except => [:show]
 
   def show
-    @inviter = @invitation.inviter
-    session[:invitation] = @invitation.token
+    if current_user
+      group = Group.find(@invitation.group_id)
+      group.add_member!(current_user)
+      redirect_to group_url(group)
+    else
+      @inviter = @invitation.inviter
+      session[:invitation] = @invitation.token
+    end
   end
 
   private

@@ -35,12 +35,12 @@ When /^I create my user account$/ do
 end
 
 Then /^I should become a member of the group$/ do
-  @user = User.find_by_email(@user_email)
+  @user = User.find_by_email(@user_email) unless @user
   @group.users.include?(@user).should be_true
 end
 
-Then /^I should be taken to the group's demo proposal page$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^I should be taken to the group\'s demo proposal page$/ do
+  page.should have_content("We should have a holiday on the moon!")
 end
 
 Given /^I have been sent an invitation to join a Loomio group$/ do
@@ -52,10 +52,15 @@ Then /^I should be asked to create an account or log in$/ do
 end
 
 When /^I log in$/ do
-  pending # express the regexp above with the code you wish you had
+  @user_email = "jaba@jah.com"
+  click_on "create-account"
+  fill_in "name", :with => "My name"
+  fill_in "email", :with => @user_email
+  fill_in "password", :with => "password"
+  click_on "submit"
 end
 
 Then /^I should be taken to the group page$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content(@group.name)
 end
 
