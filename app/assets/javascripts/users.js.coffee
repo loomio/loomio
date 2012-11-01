@@ -14,8 +14,7 @@ $ ->
   )
 
 # adds bootstrap popovers to user names
-root = exports ? this #FIXME - hacky way to make setupPopovers available in the Global scope (used after ajax update)
-root.setupPopovers = () ->
+Application.setupPopovers = () ->
   isVisible = false
   clickedAway = false
   $('.user-name-with-popover').popover(
@@ -65,4 +64,4 @@ root.setupPopovers = () ->
       elem.removeClass('popover-visible')
 
 $ ->
-  setupPopovers()
+  Application.setupPopovers()
