@@ -1,9 +1,10 @@
 %h1 Create an account
-= form_for @user, :html => {:method => :post} do |f|
-  %p
-    = f.label :name, "Full name"
-    = f.text_field :name
-    = f.label :email
-    = f.text_field :email
-    = f.submit "Send an invitation", class: "btn btn-info"
+= form_for @user do |f|
+  = f.label :name, "Full name"
+  = f.text_field :name, id: 'name'
+  = f.label :email
+  = f.text_field :email, id: 'email'
+  = f.label :password
+  = f.text_field :password, id: 'password'
+  = f.submit "Send an invitation", class: "btn btn-info", id: 'submit'
 %br/
