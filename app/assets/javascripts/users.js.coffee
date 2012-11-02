@@ -14,7 +14,7 @@ $ ->
   )
 
 # adds bootstrap popovers to user names
-$ ->
+Application.setupPopovers = () ->
   isVisible = false
   clickedAway = false
   $('.user-name-with-popover').popover(
@@ -63,3 +63,5 @@ $ ->
       elem.popover('hide')
       elem.removeClass('popover-visible')
 
+$ ->
+  Application.setupPopovers()
