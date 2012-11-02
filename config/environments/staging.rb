@@ -62,8 +62,19 @@ Loomio::Application.configure do
     :location => Rails.root.join('tmp/mail')
   }
 
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'loomio.org'
+  }
+
+  ActionMailer::Base.delivery_method = :smtp
+
   config.action_mailer.default_url_options = {
-    :host => 'dev.loom.io',
+    :host => 'staging.loomio.org',
   }
 
   # Send deprecation notices to registered listeners
