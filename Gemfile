@@ -39,7 +39,7 @@ gem 'sass-rails',   '~> 3.2.5'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails' # Can we remove this?
   gem 'bootstrap-sass', '~>2.0.3'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.0.3'
@@ -82,6 +82,7 @@ group :test do
   gem 'email_spec'
 end
 
-group :production do
+group :staging, :production do
   gem 'newrelic_rpm'
+  gem 'aws-sdk'
 end
