@@ -4,7 +4,8 @@
     %a{:href => new_user_path, :id => 'create-account'}
       Click here
     to create an account and start participating.
-  .p#sign-in
+  .p
     If you already have an account, you can
-    <a href="#{new_user_session_path}">sign in here</a>.
+    %a{:href => new_user_session_path, :id => 'sign-in'}
+      sign in here
 

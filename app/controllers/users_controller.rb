@@ -4,7 +4,7 @@ class UsersController < BaseController
   def new
     @user = User.new
     unless Invitation.find_by_token(session[:invitation])
-      redirect_to home
+      redirect_to root_url
     end
   end
 
@@ -13,7 +13,9 @@ class UsersController < BaseController
     group = Group.find(@invitation.group_id)
     if @invitation
       @user = User.create(params[:user])
-      unless @user.errors.any?
+      if @user.errors.any?
+        redirect_to root_url
+      else
         group.add_member!(@user)
         discussion = group.discussions.where(:title => "Example Discussion: Welcome and introduction to Loomio!").first
         if discussion
@@ -21,11 +23,9 @@ class UsersController < BaseController
         else
           redirect_to group_path(@invitation.group_id)
         end
-      else
-        redirect_to home
       end
     else
-      redirect_to home
+      redirect_to root_url
     end
   end
 
