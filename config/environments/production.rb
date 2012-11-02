@@ -73,4 +73,7 @@ Loomio::Application.configure do
   config.action_mailer.default_url_options = {
     :host => 'loom.io',
   }
-nd
+
+  # Send deprecation notices to registered listeners
+  config.action_mailer.raise_delivery_errors = true
+end
