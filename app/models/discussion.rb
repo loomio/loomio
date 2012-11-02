@@ -13,6 +13,7 @@ class Discussion < ActiveRecord::Base
   validates :title, :length => { :maximum => 150 }
 
   acts_as_commentable
+  has_paper_trail :only => [:description]
 
   belongs_to :group
   belongs_to :author, class_name: 'User'
@@ -151,6 +152,15 @@ class Discussion < ActiveRecord::Base
       created_at
     end
   end
+
+  def has_previous_versions?
+    previous_version.nil? ? false : previous_version.id.present?
+  end
+
+  def last_versioned_at
+    previous_version.version.created_at
+  end
+
 
   private
 

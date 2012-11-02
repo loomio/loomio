@@ -15,19 +15,8 @@
       = render 'title', discussion: @discussion
       #discussion-panel-content
         #discussion-context
-          .row
-            .span8
-              =render '/application/description', model: @discussion, model_name: "discussion"
-            .span3.right-context
-              .helper-text.discussion-description-helper-text.hidden
-                %p Use this panel to give enough context for your group to have a well-informed discussion. As the discussion progresses, anyone can add information to make it easy for new people to get up to speed.
-              .discussion-author-info
-                = "Started #{time_ago_in_words(@discussion.created_at)} ago"
-                .started-by
-                  = "By "
-                  =link_to @discussion.author.name, "#", "title" => @discussion.author.name,
-                    "data-content" => "#{render 'users/name_popover', user: @discussion.author, group: @discussion.group}",
-                    class: "user-name-with-popover"
+          =render 'discussion_context'
+        #description-revision-history.modal.hidden
         .row
           .span6#content-history
             .large-icon.discussion-icon.enabled-icon
