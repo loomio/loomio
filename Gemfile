@@ -82,6 +82,7 @@ group :test do
   gem 'email_spec'
 end
 
-group :production do
+group :staging, :production do
   gem 'newrelic_rpm'
+  gem 'aws-sdk'
 end
