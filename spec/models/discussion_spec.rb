@@ -33,6 +33,24 @@ describe Discussion do
     discussion.last_comment_at.should == discussion.created_at
   end
 
+  context "versioning" do
+    before do
+      @discussion = create(:discussion)
+      @version_count = @discussion.versions.count
+    end
+
+    it "doesn't create a new version when unrelevant attribute is edited" do
+      @discussion.update_attribute :author, create(:user)
+      @discussion.should have(@version_count).versions
+    end
+
+      
+    it "creates a new version when discussion.description is edited" do
+      @discussion.update_attribute :description, "new description"
+      @discussion.should have(@version_count + 1).versions
+    end
+  end
+
   describe "#history" do
     before do
       @user = build(:user)
