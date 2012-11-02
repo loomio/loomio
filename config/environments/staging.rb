@@ -57,10 +57,12 @@ Loomio::Application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :file
-  config.action_mailer.file_settings = {
-    :location => Rails.root.join('tmp/mail')
-  }
+
+  # File delivery stuff
+  # config.action_mailer.delivery_method = :file
+  # config.action_mailer.file_settings = {
+  #   :location => Rails.root.join('tmp/mail')
+  # }
 
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
@@ -68,7 +70,7 @@ Loomio::Application.configure do
     :authentication => :plain,
     :user_name      => ENV['SENDGRID_USERNAME'],
     :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'loomio.org'
+    :domain         => 'heroku.com'
   }
 
   ActionMailer::Base.delivery_method = :smtp
