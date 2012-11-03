@@ -249,6 +249,7 @@ describe Motion do
       end
       it "returns the number of votes since the user last looked at the motion" do
         last_viewed_at = Time.now
+        @user.stub(:is_group_member?).with(@motion.group).and_return(true)
         @motion.stub(:last_looked_at_by).with(@user).and_return(last_viewed_at)
         @motion.stub(:number_of_votes_since).with(last_viewed_at).and_return(3)
 
