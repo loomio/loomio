@@ -20,6 +20,7 @@ class Invitation < ActiveRecord::Base
     group = Group.find(group_id)
     group.add_member!(user)
     expirey = Time.now
+    save!
   end
 
   protected

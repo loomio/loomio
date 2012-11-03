@@ -53,7 +53,7 @@ When /^I log in$/ do
   @user = FactoryGirl.create :user
   click_on "sign-in"
   fill_in "email", :with => @user.email
-  fill_in "password", :with => @user.password
+  fill_in "password", :with => "password"
   click_on "sign-in-btn"
 end
 
