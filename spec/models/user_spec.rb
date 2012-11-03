@@ -218,7 +218,7 @@ describe User do
       MotionReadLog.stub_chain(:where, :first).and_return(@motion_read_log)
       @motion_read_log.stub(:save!).and_return(true)
     end
-    it "updates the log eith the current time if motion_activity is not passed in" do
+    it "updates the log to the current time if motion_activity is not specified" do
       time_last_viewed = Time.now
       Time.stub(:now).and_return(time_last_viewed)
       @motion_read_log.should_receive(:motion_last_viewed_at=).with(time_last_viewed)
