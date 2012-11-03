@@ -30,7 +30,7 @@
           - if discussion.current_motion.voting? && motion_activity > 0
             %span.activity-count.label.label-info
               = motion_activity
-          - if user_signed_in?
+          - if user_signed_in? && current_user.is_group_member?(discussion.group)
             = button_to '', reset_motion_read_log_user_path(current_user, :motion => discussion.current_motion, :motion_activity => motion_activity), :remote => true, :class =>  "preview-pie-button"
     - else
       .large-icon.pie-icon.activity-icon
