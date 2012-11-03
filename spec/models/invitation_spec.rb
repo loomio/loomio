@@ -15,4 +15,35 @@ describe Invitation do
     invitation.stub(:token => "5235")
     invitation.to_param.should == invitation.token
   end
+
+  describe "#active?" do
+    before do
+      @invitation = build :invitation
+      @time_now = Time.now
+      Time.stub(:now).and_return(time_now)
+    end
+    it "returns true if not expired" do
+      @invitation.expirey = @time_now + 2.days
+      @invitation.save
+      @invitation.active?.should == true
+    end
+    it "returns false if expired" do
+      @invitation.expirey = @time_now - 2.days
+      @invitation.save!
+      @invitation.active?.should == false
+    end
+  end
+
+  describe "#add_invited_member(user)" do
+    it "adds an invited member to the group and marks the invitation as expired" do
+      time_now = Time.now
+      Time.stub(:now).and_return(time_now)
+      @user = create(:user)
+      @group = create(:group)
+      invitation = build :invitation
+      Group.stub(:find).and_return(@group)
+      @group.stub(:add_member!).with(@user)
+      invitation.add_invited_member(@user)
+    end
+  end
 end
