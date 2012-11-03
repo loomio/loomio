@@ -64,15 +64,11 @@ Loomio::Application.configure do
         #:address => "127.0.0.1",
         #:enable_starttls_auto => false
     #}
-  #config.action_mailer.perform_deliveries = true
-  #config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :sendmail
 
   config.action_mailer.default_url_options = {
     :host => 'loom.io',
   }
-
-  # Send deprecation notices to registered listeners
-  config.action_mailer.raise_delivery_errors = true
 end
