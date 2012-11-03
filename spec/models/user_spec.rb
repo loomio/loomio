@@ -218,12 +218,16 @@ describe User do
       MotionReadLog.stub_chain(:where, :first).and_return(@motion_read_log)
       @motion_read_log.stub(:save!).and_return(true)
     end
-    it "updates to the current time if there is no new activity since the page was loaded" do
+    it "updates the log eith the current time if motion_activity is not passed in" do
       time_last_viewed = Time.now
       Time.stub(:now).and_return(time_last_viewed)
       @motion_read_log.should_receive(:motion_last_viewed_at=).with(time_last_viewed)
 
       user.update_motion_read_log(@motion)
+    end
+    it "does not update the log if there is no new activity since the page was loaded" do
+      @motion_read_log.should_not_receive(:motion_last_viewed_at=)
+      user.update_motion_read_log(@motion, 0)
     end
     it "updates to the time of the vote last displayed as activity, if there is new activity since the page was loaded" do
       vote_activity_at = Time.now
