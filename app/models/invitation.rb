@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-  attr_accessible :access_level, :group, :group_id, :inviter, :inviter_id, :recipient_email
+  attr_accessible :access_level, :group, :group_id, :inviter, :inviter_id, :recipient_email, :expirey
 
   belongs_to :inviter, :class_name => "User"
   belongs_to :group
@@ -10,6 +10,16 @@ class Invitation < ActiveRecord::Base
 
   def to_param
     token
+  end
+
+  def active?
+    expirey >= Time.now
+  end
+
+  def add_invited_member(user)
+    group = Group.find(group_id)
+    group.add_member!(user)
+    expirey = Time.now
   end
 
   protected

@@ -11,17 +11,17 @@ class UsersController < BaseController
   def create
     @invitation = Invitation.find_by_token(session[:invitation])
     group = Group.find(@invitation.group_id)
-    if @invitation
+    if @invitation && @invitation.active?
       @user = User.create(params[:user])
       if @user.errors.any?
         redirect_to root_url
       else
-        group.add_member!(@user)
+        @invitation.add_invited_member(@user)
         discussion = group.discussions.where(:title => "Example Discussion: Welcome and introduction to Loomio!").first
         if discussion
           redirect_to discussion_path(discussion.id)
         else
-          redirect_to group_path(@invitation.group_id)
+          redirect_to group_path(group.id)
         end
       end
     else

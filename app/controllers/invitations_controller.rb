@@ -4,9 +4,8 @@ class InvitationsController < BaseController
 
   def show
     if current_user
-      group = Group.find(@invitation.group_id)
-      group.add_member!(current_user)
-      redirect_to group_url(group)
+      @invitation.add_invited_member(current_user)
+      redirect_to group_url(@invitation.group_id)
     else
       @inviter = @invitation.inviter
       session[:invitation] = @invitation.token
@@ -19,7 +18,7 @@ class InvitationsController < BaseController
     @group = Group.find(params[:group_id])
     @invitation = Invitation.where(:group_id => params[:group_id],
                                   :token => params[:id]).first
-    unless @invitation
+    unless @invitation && @invitation.active?
       redirect_to group_url(@group)
     end
   end
