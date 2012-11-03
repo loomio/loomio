@@ -189,7 +189,7 @@ class User < ActiveRecord::Base
     helper_bot
   end
 
-  def update_motion_read_log(motion, motion_activity = nil)
+  def update_motion_read_log(motion, motion_activity = 0)
     log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
     if log.nil?
       motion_read_log = MotionReadLog.new
