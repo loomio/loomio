@@ -62,6 +62,8 @@ Loomio::Application.configure do
     :location => Rails.root.join('tmp/mail')
   }
 
+  # Send emails using SendGrid
+  # ActionMailer::Base.delivery_method = :smtp
   # ActionMailer::Base.smtp_settings = {
   #   :address        => 'smtp.sendgrid.net',
   #   :port           => '587',
@@ -71,14 +73,10 @@ Loomio::Application.configure do
   #   :domain         => 'heroku.com'
   # }
 
-  # ActionMailer::Base.delivery_method = :smtp
-
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = {
     :host => 'staging.loomio.org',
   }
-
-  # Send deprecation notices to registered listeners
-  config.action_mailer.raise_delivery_errors = true
 
   config.paperclip_defaults = {
     :storage => :s3,
