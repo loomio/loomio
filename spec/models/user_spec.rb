@@ -223,7 +223,7 @@ describe User do
       Time.stub(:now).and_return(time_last_viewed)
       @motion_read_log.should_receive(:motion_last_viewed_at=).with(time_last_viewed)
 
-      user.update_motion_read_log(@motion, 0)
+      user.update_motion_read_log(@motion)
     end
     it "updates to the time of the vote last displayed as activity, if there is new activity since the page was loaded" do
       vote_activity_at = Time.now

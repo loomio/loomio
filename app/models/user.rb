@@ -197,7 +197,7 @@ class User < ActiveRecord::Base
       motion_read_log.motion_id = motion.id
       motion_read_log.save!
     else
-      unless motion_activity.blank?
+      if motion_activity == 0
         last_viewed = Time.now
       else
         votes_since_page_load = motion.number_of_votes_since_last_looked(self) - motion_activity
