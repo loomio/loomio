@@ -63,11 +63,4 @@ class UsersController < BaseController
     redirect_to :back
   end
 
-  def mentions
-    group = Group.find(params[:group])
-    @users = group.users
-    respond_to do |format|
-      format.json { render 'users/mentions' }
-    end
-  end
 end

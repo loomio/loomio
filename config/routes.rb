@@ -8,6 +8,7 @@ Loomio::Application.routes.draw do
   match "/group_request_confirmation", :to => "group_requests#confirmation", :as => :group_request_confirmation
 
   resources :groups, except: :index do
+    get :members, :on => :member
     post :add_members, on: :member
     get :add_subgroup, on: :member
     resources :motions#, name_prefix: "groups_"
@@ -54,7 +55,6 @@ Loomio::Application.routes.draw do
   resources :users do
     post :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
-    get :mentions, on: :collection
   end
   match "/users/dismiss_system_notice", :to => "users#dismiss_system_notice",
         :as => :dismiss_system_notice_for_user, :via => :post

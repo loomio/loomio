@@ -115,6 +115,14 @@ class GroupsController < GroupBaseController
     @group.description = @description
     @group.save!
   end
+  
+  def members 
+    puts("in group users")
+    @users = group.users
+    respond_to do |format|
+      format.json { render 'groups/users' }
+    end
+  end
 
   private
 
