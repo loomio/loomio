@@ -116,7 +116,7 @@ class GroupsController < GroupBaseController
     @group.save!
   end
   
-  def members 
+  def get_members 
     puts("in group users")
     @users = group.users
     respond_to do |format|

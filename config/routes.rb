@@ -8,7 +8,6 @@ Loomio::Application.routes.draw do
   match "/group_request_confirmation", :to => "group_requests#confirmation", :as => :group_request_confirmation
 
   resources :groups, except: :index do
-    get :members, :on => :member
     post :add_members, on: :member
     get :add_subgroup, on: :member
     resources :motions#, name_prefix: "groups_"
@@ -21,6 +20,7 @@ Loomio::Application.routes.draw do
   end
 
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
+  match "/groups/:id/members", :to => "groups#get_members", :as => :get_members, :via => :get
 
   resources :motions do
     resources :votes
