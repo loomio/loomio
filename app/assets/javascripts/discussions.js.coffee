@@ -20,7 +20,7 @@ $ ->
       tpl: "<li id='${id}' data-value='${username}'> ${name} <small> @${username}</small></li>"
       callback: (query, callback) ->
         group = $("#comment-input").data("group")
-        $.get "/users/mentions.json", q: query, group: group, ((result) ->
+        $.get "/groups/#{group}/members", ((result) ->
             console.log(result)
             names = _.toArray(result)
             names = _.map names, (name) ->
