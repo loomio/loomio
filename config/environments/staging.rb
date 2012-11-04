@@ -66,7 +66,7 @@ Loomio::Application.configure do
     :authentication => :plain,
     :user_name      => ENV['SENDGRID_USERNAME'],
     :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'loomio.org'
+    :domain         => 'heroku.com'
   }
 
   config.action_mailer.raise_delivery_errors = true
