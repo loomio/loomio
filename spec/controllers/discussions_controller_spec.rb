@@ -137,10 +137,13 @@ describe DiscussionsController do
         post :add_comment, comment: "Hello!", id: discussion.id
       end
 
-      it "fires mention event if any users were mentioned" do
-        user = create :user
-        Event.should_receive(:user_mentioned!).with(@comment, user)
-        post :add_comment, comment: "Hey @#{user.username}!", id: discussion.id
+      it "fires mention event if any users in the group were mentioned" do
+        group = create(:group, viewable_by: :members)
+        mentioned_user = create :user
+        group.add_member!(user)
+        group.add_member!(mentioned_user)
+        Event.should_receive(:user_mentioned!).with(@comment, mentioned_user)
+        post :add_comment, comment: "Hey @#{mentioned_user.username}", id: discussion.id
       end
 
       context "unsuccessfully" do
