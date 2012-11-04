@@ -117,7 +117,6 @@ class GroupsController < GroupBaseController
   end
   
   def get_members 
-    puts("in group users")
     @users = group.users
     respond_to do |format|
       format.json { render 'groups/users' }

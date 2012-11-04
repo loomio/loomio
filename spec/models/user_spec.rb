@@ -450,4 +450,10 @@ describe User do
       user.recent_notifications.count.should == 25
     end
   end
+
+  it "generates a unique username after invitation accepted" do
+    user1 = create :user
+    user2 = create :user
+    user1.username.should_not == user2.username
+  end
 end
