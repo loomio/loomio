@@ -66,18 +66,19 @@ Loomio::Application.configure do
     :authentication => :plain,
     :user_name      => ENV['SENDGRID_USERNAME'],
     :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com'
+    :domain         => 'loomio.org'
   }
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = {
-    :host => 'staging.loomio.org',
+    :host => 'loomio-staging.herokuapp.com',
   }
 
+  # Store avatars on Amazon S3
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => ENV['AWS_BUCKET'],
+      :bucket => ENV['AWS_UPLOADS_BUCKET'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
