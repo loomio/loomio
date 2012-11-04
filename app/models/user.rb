@@ -197,14 +197,16 @@ class User < ActiveRecord::Base
       motion_read_log.motion_id = motion.id
       motion_read_log.save!
     else
-      if motion_activity.nil?
-        last_viewed = Time.now
-      else
-        votes_since_page_load = motion.number_of_votes_since_last_looked(self) - motion_activity
-        last_viewed = motion.votes[(motion.votes.count - votes_since_page_load) - 1].created_at
+      if motion_activity.nil? || motion_activity > 0
+        if motion_activity
+          votes_since_page_load = motion.number_of_votes_since_last_looked(self) - motion_activity
+          last_viewed = motion.votes[(motion.votes.count - votes_since_page_load) - 1].created_at
+        else
+          last_viewed = Time.now
+        end
+        log.motion_last_viewed_at = last_viewed
+        log.save!
       end
-      log.motion_last_viewed_at = last_viewed
-      log.save!
     end
   end
 

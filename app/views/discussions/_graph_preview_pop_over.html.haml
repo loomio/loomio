@@ -1,4 +1,4 @@
-- if user_signed_in?
+- if user_signed_in? && user.is_group_member?(motion.group)
   %span.popover-current-position
     = "Your position"
     .popover-current-position-icon= render "motions/display_icons", position: user.get_position_for(motion)
