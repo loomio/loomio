@@ -56,7 +56,7 @@ module Loomio
     # Email admin when server gets exceptions!
     config.middleware.use ExceptionNotifier,
       :email_prefix => "[Loomio Exception] ",
-      :sender_address => %{"Exception Notifier" <dudley@loom.io>},
+      :sender_address => %{"Exception Notifier" <dudley@loomio.org>},
       :exception_recipients => %w{jon.lemmon@enspiral.com}
 
     # Whitelist attributes so we never have to spend 2 days securing this app ;-)
