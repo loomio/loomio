@@ -155,15 +155,16 @@ describe "User abilities" do
     it { should_not be_able_to(:open_voting, motion) }
     it { should_not be_able_to(:update, motion) }
     it { should_not be_able_to(:destroy, motion) }
-    it { should_not be_able_to(:get_and_clear_new_activity, motion) }
 
     context "group viewable_by: everyone" do
       before { group.update_attributes(:viewable_by => :everyone) }
       it { should be_able_to(:show, group) }
+      it { should be_able_to(:get_and_clear_new_activity, motion) }
     end
     context "group viewable_by: members" do
       before { group.update_attributes(:viewable_by => :members) }
       it { should_not be_able_to(:show, group) }
+      it { should_not be_able_to(:get_and_clear_new_activity, motion) }
     end
   end
 end

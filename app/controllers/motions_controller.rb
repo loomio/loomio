@@ -1,6 +1,6 @@
 class MotionsController < GroupBaseController
   load_and_authorize_resource :except => [:create, :show, :index]
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index, :get_and_clear_new_activity]
   before_filter :check_group_read_permissions, :only => :show
 
   def create
@@ -76,9 +76,12 @@ class MotionsController < GroupBaseController
 
   def get_and_clear_new_activity
     @motion = Motion.find(params[:id])
-    @user = current_user
-    @user.update_motion_read_log(@motion)
     @motion_activity = Integer(params[:motion_activity])
+    @user = nil
+    if user_signed_in?
+      @user = current_user
+      @user.update_motion_read_log(@motion)
+    end
   end
 
   private

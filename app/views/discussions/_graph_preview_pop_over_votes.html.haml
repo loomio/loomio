@@ -5,6 +5,8 @@
     = image_tag vote.user.avatar_url("medium")
 = render "motions/display_icons", position: vote.position
 %strong= vote.user.name 
-= " - #{vote.statement}"
+- if vote.statement != ""
+  = " - " 
+  = vote.statement
 .vote-time
   = time_ago_in_words(vote.created_at) + " ago"
