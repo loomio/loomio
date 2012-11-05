@@ -30,10 +30,6 @@ describe DiscussionsController do
           group.should_receive(:discussions_sorted)
           get :index, :group_id => group.id
         end
-        it "has the correct page title" do
-          get :index, :group_id => group.id
-          response.should have_selector("title", :content => "#{group.name} | Loomio")
-        end
       end
       context "without specifying a group" do
         it "gets sorted discussions for user with paging" do
@@ -41,7 +37,6 @@ describe DiscussionsController do
           user.should_receive(:discussions_sorted)
           get :index
         end
-        it "has the correct page title"
       end
 
       context do
