@@ -189,7 +189,7 @@ class User < ActiveRecord::Base
     helper_bot
   end
 
-  def update_motion_read_log(motion, activity_on_page_load = nil)
+  def update_motion_read_log(motion)
     log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
     if log.nil?
       motion_read_log = MotionReadLog.new
@@ -197,30 +197,21 @@ class User < ActiveRecord::Base
       motion_read_log.motion_id = motion.id
       motion_read_log.save!
     else
-      # if activity_on_page_load.nil? || activity_on_page_load > 0
-      #   total_new_activity_now = motion_activity_count_for(motion, self)
-      #   if activity_on_page_load
-      #     activity_since_page_loaded = total_new_activity_now - activity_on_page_load
-      #     last_viewed = motion.votes[(motion.votes.count - activity_since_page_loaded) - 1].created_at
-      #   else
-      #     last_viewed = Time.now
-      #   end
-      #   log.motion_last_viewed_at = last_viewed
-      #   log.save!
-      # end
+      log.motion_last_viewed_at = Time.now
+      log.save!
     end
   end
 
   def update_discussion_read_log(discussion)
-    if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
+    log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
+    if log.nil?
       discussion_read_log = DiscussionReadLog.new
       discussion_read_log.discussion_last_viewed_at = Time.now
       discussion_read_log.user_id = id
       discussion_read_log.discussion_id = discussion.id
       discussion_read_log.save!
     else
-      log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
-      log.discussion_last_viewed_at = Time.now()
+      log.discussion_last_viewed_at = Time.now
       log.save!
     end
   end
