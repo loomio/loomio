@@ -15,6 +15,7 @@ $ ->
     $(".selector-pie-link").popover ({
       placement: "right",
       trigger: "manual"
+      title: "Loading..."
       })
 #adds bootstrap tooltip to preview pies  
 $ ->

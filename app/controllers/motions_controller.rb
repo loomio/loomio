@@ -74,6 +74,13 @@ class MotionsController < GroupBaseController
     redirect_to discussion_url(motion.discussion, proposal: motion)
   end
 
+  def get_and_clear_new_activity
+    @motion = Motion.find(params[:id])
+    @user = current_user
+    # @motion_activity = Integer(params[:motion_activity])
+    # current_user.update_motion_read_log(@motion, @motion_activity)
+  end
+
   private
 
     def group
