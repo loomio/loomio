@@ -17,6 +17,7 @@ describe DiscussionsController do
       app_controller.stub(:cannot?).with(:show, group).and_return(false)
       Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
       Discussion.stub(:new).and_return(discussion)
+      User.stub(:find).and_return(user)
       Group.stub(:find).with(group.id.to_s).and_return(group)
     end
 
@@ -181,6 +182,7 @@ describe DiscussionsController do
           :description => "blah"
       end
     end
+
     describe "edit title" do
       before do
         discussion.stub(:save!)
@@ -196,6 +198,31 @@ describe DiscussionsController do
         xhr :post, :edit_title,
           :id => discussion.id,
           :title => "The Butterflys"
+      end
+    end
+
+    describe "change version" do
+      before do
+        @version_item = mock_model(Discussion, :description => "new version", :save! => true)
+        @version = mock_model(Version, :item => discussion)
+        Version.stub(:find).and_return(@version)
+        @version.stub(:reify).and_return(@version_item)
+        @version.stub(:save!)
+      end
+      it "calls reify on version" do
+        @version.should_receive(:reify)
+        xhr :post, :update_version,
+          :version_id => @version.id
+      end
+      it "saves the reified version" do
+        @version_item.should_receive(:save!)
+        xhr :post, :update_version,
+          :version_id => @version.id
+      end
+      it "renders the JS template" do
+        xhr :post, :update_version,
+          :version_id => @version.id
+        response.should render_template("discussions/update_version")
       end
     end
   end

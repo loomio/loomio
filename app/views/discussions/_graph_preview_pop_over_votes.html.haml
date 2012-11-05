@@ -1,0 +1,9 @@
+.medium-user-avatar.avatar-canvas#header-user-image
+  - if vote.user.avatar_url.nil?
+    %span.medium-user-initials.initials-decoration= vote.user.avatar_initials
+  - else
+    = image_tag vote.user.avatar_url("medium")
+= render "motions/display_icons", position: vote.position
+= vote.statement
+.vote-time
+  = time_ago_in_words(vote.created_at) + " ago"

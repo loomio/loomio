@@ -103,8 +103,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
-    childprocess (0.3.3)
-      ffi (~> 1.0.6)
+    childprocess (0.3.6)
+      ffi (~> 1.0, >= 1.0.6)
     cocaine (0.2.1)
     coffee-filter (0.1.1)
       coffee-script (>= 2.2.0)
@@ -167,7 +167,7 @@ GEM
     faker (1.0.1)
       i18n (~> 0.4)
     fastercsv (1.5.5)
-    ffi (1.0.11)
+    ffi (1.1.5)
     flay (1.4.3)
       ruby_parser (~> 2.0)
       sexp_processor (~> 3.0)
@@ -202,6 +202,7 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     has_scope (0.5.1)
+    high_voltage (1.2.0)
     highline (1.6.8)
     hike (1.2.1)
     i18n (0.6.1)
@@ -231,7 +232,7 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.2.0)
     libv8 (3.3.10.4)
-    libwebsocket (0.1.4)
+    libwebsocket (0.1.5)
       addressable
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -255,6 +256,9 @@ GEM
     newrelic_rpm (3.4.2.1)
     nokogiri (1.5.5)
     orm_adapter (0.0.7)
+    paper_trail (2.6.3)
+      activerecord (~> 3.0)
+      railties (~> 3.0)
     paperclip (3.1.2)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -333,7 +337,7 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    selenium-webdriver (2.24.0)
+    selenium-webdriver (2.25.0)
       childprocess (>= 0.2.5)
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
@@ -418,6 +422,7 @@ DEPENDENCIES
   guard-sass
   guard-spork
   haml-rails
+  high_voltage
   inherited_resources
   jasminerice
   jqplot-rails
@@ -428,6 +433,7 @@ DEPENDENCIES
   modernizr-rails (~> 2.0.6)
   newrelic_rpm
   nokogiri
+  paper_trail (~> 2)
   paperclip
   pg
   rabl
@@ -442,6 +448,7 @@ DEPENDENCIES
   rspec-rails
   ruby-prof!
   sass-rails (~> 3.2.5)
+  selenium-webdriver (= 2.25.0)
   shoulda-matchers
   simple_form
   simplecov

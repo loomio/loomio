@@ -7,7 +7,7 @@ describe "Home" do
     it "sees landing page" do
       visit root_path
 
-      should have_css('.landing')
+      should have_css('.pages')
     end
   end
 

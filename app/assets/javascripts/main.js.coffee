@@ -5,7 +5,6 @@ window.Application ||= {}
 # Application.html5 = exports ? this
 # Application.html5.supported = true if canvasSupported
 
-
 Application.convertUtcToRelativeTime = ->
   if $(".utc-time").length > 0
     today = new Date()
@@ -172,7 +171,7 @@ $ ->
       $(".discussion-with-motion-divider").removeClass('hidden')
 
 # Edit description
-$ ->
+Application.enableInlineEdition = ()->
   if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
     $(".edit-description").click((event) ->
       container = $(this).parents(".description-container")
@@ -183,12 +182,31 @@ $ ->
         container.find('#description-input').height(description_height)
       event.preventDefault()
     )
+    $(".edit-discussion-description").click (e)->
+      $(".discussion-description-helper-text").toggle()
     $("#cancel-add-description").click((event) ->
       $("#description-edit-form").toggle()
       $(".description-body").toggle()
       $(".discussion-description-helper-text").toggle()
       event.preventDefault()
     )
+
+Application.seeMoreDescription = () ->
+  #expand/shrink description text
+  if $("body.discussions.show").length > 0
+    $(".see-more").click((event) ->
+      $(this).parent().children(".short-description").toggle()
+      $(this).parent().children(".long-description").toggle()
+      if $(this).html() == "Show More"
+        $(this).html("Show Less")
+      else
+        $(this).html("Show More")
+      event.preventDefault()
+    )
+
+$ ->
+  Application.enableInlineEdition()
+  Application.seeMoreDescription()
 
 displayGraph = (this_pie, graph_id, data)->
   @pie_graph_view = new Loomio.Views.Utils.GraphView
@@ -202,6 +220,28 @@ displayGraph = (this_pie, graph_id, data)->
     padding: 1
     gap: 1
     shadow: 0.75
+    
+#*** hide/show mini-graph popovers
+$ ->
+  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
+    $(".selector-pie-link").click((event) ->
+      $(this).find('.pie').tooltip('hide')
+      if $(this).find(".popover").html() == null
+        currentPie = this
+        $('.selector-pie-link').each(() ->
+          unless this == currentPie
+            $(this).popover('hide')
+        )
+        $(this).find('.button_to').submit() 
+        event.stopPropagation()
+        $(currentPie).popover('toggle')
+        )
+
+$ ->
+  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
+    $(document).click((event) ->
+      $('.selector-pie-link').popover('hide')
+    )
 
 #*** closed motions modal***
 $ ->
@@ -231,6 +271,16 @@ $ ->
       $("#closed-motions").modal('toggle')
       event.preventDefault()
     )
+
+$ ->
+  $("#helper_bot_video").on("show", ->
+    $('#helper_bot_video .video-iframe').html('<iframe width="560" height="420" src="http://www.youtube.com/embed/bIEyNNcXbZA?autoplay=1&amp;rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>')
+  )
+  $("#helper_bot_video").on("hide", ->  
+    $('#helper_bot_video .video-iframe').html('')
+  )
+
+  
 
 #pagination load on closed motions
 $ ->

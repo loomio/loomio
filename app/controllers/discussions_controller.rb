@@ -43,6 +43,7 @@ class DiscussionsController < GroupBaseController
 
   def show
     @discussion = Discussion.find(params[:id])
+    @last_collaborator = User.find @discussion.originator.to_i if @discussion.has_previous_versions?
     @group = GroupDecorator.new(@discussion.group)
     @current_motion = @discussion.current_motion
     @vote = Vote.new
@@ -91,10 +92,14 @@ class DiscussionsController < GroupBaseController
   end
 
   def edit_description
-    discussion = Discussion.find(params[:id])
-    @description = params[:description]
-    discussion.description = @description
-    discussion.save!
+    @discussion = Discussion.find(params[:id])
+    description = params[:description]
+    @discussion.description = description
+    @discussion.save!
+    @last_collaborator = User.find @discussion.originator.to_i
+    respond_to do |format|
+      format.js { render :action => 'update_version' }
+    end    
   end
 
   def edit_title
@@ -103,18 +108,49 @@ class DiscussionsController < GroupBaseController
     discussion.save!
   end
 
+  def show_description_history
+    @discussion = Discussion.find(params[:id])
+    @originator = User.find @discussion.originator.to_i
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def preview_version
+    # assign live item if no version_id is passed
+    if params[:version_id].nil?
+      @discussion = Discussion.find(params[:id])
+    else
+      version = Version.find(params[:version_id])
+      @discussion = version.reify
+    end
+    @originator = User.find @discussion.originator.to_i
+    respond_to do |format|
+      format.js { render :action => 'show_description_history' }
+    end    
+  end
+
+  def update_version
+    @version = Version.find(params[:version_id])
+    @version.reify.save!
+    @discussion = @version.item
+    @last_collaborator = User.find @discussion.originator.to_i
+    respond_to do |format|
+      format.js
+    end     
+  end
+
   private
 
-    def group
-      @group ||= find_group
-    end
+  def group
+    @group ||= find_group
+  end
 
-    def find_group
-      if (params[:id] && (params[:id] != "new"))
-        Discussion.find(params[:id]).group
-      elsif params[:discussion][:group_id]
-        Group.find(params[:discussion][:group_id])
-      end
+  def find_group
+    if (params[:id] && (params[:id] != "new"))
+      Discussion.find(params[:id]).group
+    elsif params[:discussion][:group_id]
+      Group.find(params[:discussion][:group_id])
     end
-
+  end
 end

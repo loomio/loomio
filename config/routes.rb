@@ -17,6 +17,7 @@ Loomio::Application.routes.draw do
     post :create_motion, :on => :member
     post :email_members, on: :member
     post :edit_description, :on => :member
+    post :edit_privacy, on: :member
   end
 
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
@@ -34,9 +35,12 @@ Loomio::Application.routes.draw do
   resources :discussions, only: [:index, :show, :create, :update] do
     post :edit_description, :on => :member
     post :add_comment, :on => :member
+    post :show_description_history, :on => :member
     get :new_proposal, :on => :member
     post :edit_title, :on => :member
   end
+  post "/discussion/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
+  post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"
 
   resources :notifications, :only => :index do
     post :mark_as_viewed, :on => :collection, :via => :post
@@ -55,6 +59,7 @@ Loomio::Application.routes.draw do
   resources :users do
     post :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
+    post :reset_motion_read_log, on: :member
   end
   match "/users/dismiss_system_notice", :to => "users#dismiss_system_notice",
         :as => :dismiss_system_notice_for_user, :via => :post
@@ -73,13 +78,12 @@ Loomio::Application.routes.draw do
 
   # route logged in user to dashboard
   resources :dashboard, only: :show
+
   authenticated do
     root :to => 'dashboard#show'
   end
-  # route logged out user to landing page
-  resources :landing, only: :show
-  root :to => 'landing#show'
-  match '/demo' => 'landing#demo'
-  match '/browser_not_supported' => 'landing#browser_not_supported',
-    :as => :browser_not_supported
+
+  root :to => 'high_voltage/pages#show', :id => 'home'
+  match '/demo' => 'high_voltage/pages#show', :id => 'demo'
+  match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
 end

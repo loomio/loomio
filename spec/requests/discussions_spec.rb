@@ -1,16 +1,15 @@
 require 'spec_helper'
+include ActionView::Helpers::DateHelper
 
 describe "Discussion" do
+  let(:user) { create_logged_in_user }
   subject { page }
 
   context "a logged in user" do
     before do
-      @user = create(:user)
       @group = build(:group)
       @group.save
-      @group.add_member!(@user)
-      page.driver.post user_session_path, 'user[email]' => @user.email,
-                       'user[password]' => 'password'
+      @group.add_member!(user)
     end
 
     it "can create a new discussion" do
@@ -28,7 +27,9 @@ describe "Discussion" do
         @discussion = Discussion.new
         @discussion.group = @group
         @discussion.title = "New discussion!"
-        @discussion.author = @user
+        @discussion.author = user
+        PaperTrail.whodunnit = "#{user.id}"
+        @discussion.description = "Some basic description" 
         @discussion.save
       end
 
@@ -46,6 +47,34 @@ describe "Discussion" do
         click_on 'post-new-comment'
         should have_css(".discussions.show")
         should have_content("Here's a little comment")
+      end
+
+      context "discussion context area" do 
+        it "displays the author" do 
+          visit discussion_path(@discussion)
+
+          should have_css(".started-by .user-name-with-popover")
+        end
+
+        it "doesn't display revision history information if description not edited" do
+          visit discussion_path(@discussion)
+
+          should_not have_css(".last-edited-by")
+          should_not have_css(".see-description-history")
+        end
+
+        it "displays revision history information if description has been edited", :js => true do
+          visit discussion_path(@discussion)
+
+          click_on 'Edit discussion info'
+          fill_in 'description-input', with: "whatever"
+          click_on 'add-description-submit'
+
+          assert_description_updated
+
+          find(".last-edited-by").should have_content("Last edited about #{time_ago_in_words(@discussion.last_versioned_at)} ago by #{user.name}")
+          should have_css(".see-description-history")
+        end
       end
 
       context "the markdown engine" do
@@ -101,7 +130,7 @@ describe "Discussion" do
         motion = Motion.new
         motion.name = "A new proposal"
         motion.discussion = @discussion
-        motion.author = @user
+        motion.author = user
         motion.save
         visit discussion_path(@discussion)
         find('#close-voting').click
@@ -113,14 +142,14 @@ describe "Discussion" do
         motion = Motion.new
         motion.name = "A new proposal"
         motion.discussion = @discussion
-        motion.author = @user
+        motion.author = user
         motion.save
         motion.close_voting!
 
         motion2 = Motion.new
         motion2.name = "A new proposal"
         motion2.discussion = @discussion
-        motion2.author = @user
+        motion2.author = user
         motion2.save
         motion2.close_voting!
 
@@ -132,7 +161,7 @@ describe "Discussion" do
       end
 
       it "can see link to delete their own comments" do
-        comment = @discussion.add_comment(@user, "hello!")
+        comment = @discussion.add_comment(user, "hello!")
         visit discussion_path(@discussion)
 
         find("#comment-#{comment.id}").should have_content('Delete')
@@ -154,7 +183,7 @@ describe "Discussion" do
         visit discussion_path(@discussion)
         find("#comment-#{comment.id}").find_link('Like').click
 
-        should have_content("Liked by #{@user.name}")
+        should have_content("Liked by #{user.name}")
         should_not have_link("Like")
         should have_link("Unlike")
       end
@@ -163,15 +192,78 @@ describe "Discussion" do
         @user2 = create(:user)
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
-        @discussion.comments.first.like(@user)
+        @discussion.comments.first.like(user)
 
         visit discussion_path(@discussion)
         find("#comment-#{comment.id}").find_link('Unlike').click
-        should_not have_content("Liked by #{@user.name}")
+        should_not have_content("Liked by #{user.name}")
         should have_link("Like")
         should_not have_link("Unlike")
       end
+
+      context "revision history", :js => true do
+
+        before do
+          @user2 = create(:user)
+          @discussion.group.add_member!(@user2)
+          PaperTrail.whodunnit = "#{@user2.id}"
+          @original_description = @discussion.description
+          @discussion.update_attribute(:description, @discussion.description + " Some additional info.")
+        end
+
+        it "can change description to a previous version" do
+          open_modal(@discussion)
+
+          find("#description-revision-history").find_link('Prev').click
+          assert_modal_flushed
+          find("#revert-to-version").click
+          assert_description_updated
+          find(".description-body div:first").should_not have_content(@discussion.description)
+          find(".description-body div:first").should have_content(@original_description)
+        end
+
+        it "navigates to previous version and then back to current" do
+          open_modal(@discussion)
+
+          find("#description-revision-history").find_link('Prev').click
+          assert_modal_flushed
+          find("#description-revision-history").find_link('Next').click
+          assert_modal_flushed
+          find(".modal-body").should have_content(@discussion.description)
+        end
+
+        it "refreshes the modal window with appropriate version details" do
+          open_modal(@discussion)
+
+          find("#description-revision-history").find_link('Prev').click
+          assert_modal_flushed
+          find("#description-revision-history").find(".revision-title p").should have_content("Edited about #{time_ago_in_words(@discussion.last_versioned_at)} ago by #{@user2.name}")
+        end
+        
+      end
+
     end
+  end
+
+  # LOCAL HELPERS
+  def open_modal(discussion)
+    visit discussion_path(discussion)
+    find("#discussion-context").find_link('See revision history').click
+   assert_modal_flushed
+  end
+
+  def assert_modal_flushed
+    page.execute_script("$('#description-revision-history').empty()")
+    wait_until { page.has_css?("#description-revision-history div") }
+  rescue Capybara::TimeoutError
+    flunk 'Expected modal to receive html content.'
+  end
+
+  def assert_description_updated
+    page.execute_script("$('#discussion-context').empty()")
+    wait_until { page.has_css?("#discussion-context div") }
+  rescue Capybara::TimeoutError
+    flunk 'Expected discussion context to receive html content.'
   end
 end
 

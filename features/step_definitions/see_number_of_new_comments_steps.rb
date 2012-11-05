@@ -19,7 +19,7 @@ When /^I visit the dashboard$/ do
 end
 
 Then /^I should see the number of new comments the discussion has$/ do
-  find(".activity-count").should have_content("2")
+  find("#discussion-preview-#{@discussion.id} .activity-count").should have_content("2")
 end
 
 Then /^I should see the number of comments the discussion has$/ do

@@ -123,6 +123,13 @@ class GroupsController < GroupBaseController
     end
   end
 
+  def edit_privacy
+    @group = Group.find(params[:id])
+    @viewable_by = params[:viewable_by]
+    @group.viewable_by = @viewable_by
+    @group.save!
+  end
+  
   private
 
     def group

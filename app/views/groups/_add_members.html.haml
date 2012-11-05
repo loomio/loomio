@@ -12,8 +12,6 @@
             = link_to "Cancel", "#", id: 'cancel-add-members'
         %input#group_id{ type: "hidden", value: group.id }
       - else
-        %a.btn.subgroup-add-members{href: "#invite-subgroup-members", 'data-toggle' => "modal" }
-          %i.button-icon.member-icon
-          Add members +
+        = icon_button("#invite-subgroup-members", 'Add new member', '/assets/member-18.png', 'group-add-members', true)
         #invite-subgroup-members.modal.hidden
           = render 'subgroup_add_members', group: group

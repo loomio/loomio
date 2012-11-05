@@ -114,6 +114,27 @@ describe GroupsController do
       end
     end
 
+    describe "#edit privacy" do
+      before do
+        controller.stub(:authorize!).and_return(true)
+        controller.stub(:can?).with(:edit_privacy, group).and_return(true)
+        Group.stub(:find).and_return(group)
+        group.stub(:save!).and_return(true)
+      end
+      it "assigns viewable_by to the model" do
+        group.should_receive(:viewable_by=).with "member"
+        xhr :post, :edit_privacy,
+          :id => "12051",
+          :viewable_by => "member"
+      end
+      it "saves the model" do
+        group.should_receive :save!
+        xhr :post, :edit_privacy,
+          :id => group.id,
+          :viewable_by => "member"
+      end
+    end
+
     describe "add_members" do
       before do
         @user2 = create(:user)
