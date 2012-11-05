@@ -28,7 +28,7 @@
             %span.activity-count.label.label-info
               = motion_activity
           - if user_signed_in? && current_user.is_group_member?(discussion.group)
-            = button_to '', get_and_clear_new_activity_motion_path(:id => discussion.current_motion.id), :remote => true, :class =>  "preview-pie-button"
+            = button_to '', get_and_clear_new_activity_motion_path(:id => discussion.current_motion.id, :motion_activity => motion_activity), :remote => true, :class =>  "preview-pie-button"
     - else
       .large-icon.pie-icon.activity-icon
 
