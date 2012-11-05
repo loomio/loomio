@@ -35,6 +35,16 @@ class UsersController < BaseController
     end
   end
 
+  def reset_motion_read_log
+    @motion = Motion.find(params[:motion])
+    @motion_activity = Integer(params[:motion_activity])
+    current_user.update_motion_read_log(@motion, @motion_activity)
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
+  end
+
   def settings
     @user = current_user
   end

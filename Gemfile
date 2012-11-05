@@ -30,6 +30,9 @@ gem 'redcarpet', :git => 'https://github.com/vmg/redcarpet.git'
 gem 'rabl'
 gem 'twitter-text', :git => 'https://github.com/twitter/twitter-text-rb.git'
 gem 'jquery-atwho-rails'
+gem 'paper_trail', '~> 2'
+gem "high_voltage"
+gem 'thin'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
@@ -59,6 +62,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'jasminerice'
   gem 'guard-jasmine'
+  gem 'selenium-webdriver', '2.25.0'
 end
 
 group :development do

@@ -52,8 +52,12 @@ h5 {
   font-size: $font-tiny;
 }
 
+.font-size-85pc{
+  font-size: 85%;
+}
+
 // structural elements (containers etc.)
-.inner-container { margin-top: 70px; }
+.page-container { margin-top: 30px; }
 .group-link.clearfix {
   .group-link-name { float: left; }
   .group-link-activity { float: right; }
@@ -120,24 +124,22 @@ li.empty-list-message {
 #closed-motions-page .selector-list { padding-bottom: 20px; }
 #closed-motions-page li.selector-item.loading { background-position: 270px 160px; }
 #closed-motions {
-  width: 600px;
-  margin-left: -300px;
+  width: 750px;
+  margin-left: -375px;
+  min-height: 550px;
 }
 
 /**** Structural elements ****/
 ul.selector-list.bordered { border-top: 1px solid $light-grey }
-ul.selector-list {
-  list-style: none;
-}
 li.selector-item {
   background-color: $unhighlighted;
   color: $dark-grey;
   font-weight: normal;
   border-bottom: 1px solid $light-grey;
 }
-.undecided, .unread {
+.discussion-preview.unread {
   background-color: $highlighted;
-  a { color: black; }
+  a { color: #333; }
   a .proposal-title { color: black; }
 
 }
@@ -182,8 +184,10 @@ li.selector-item a.selector-link:hover {
 }
 
 .alert {
-  position: relative;
-  bottom: 20px;
+  margin: 10px 0;
+  // position: relative;
+  // top: 0px;
+  // bottom: 20px;
 }
 
 // misc (move stuff out of here..)
@@ -239,6 +243,11 @@ li.selector-item a.selector-link:hover {
   height: 12px;
   font-size: $font-small;
 }
+
+//*** color coded urgency labels ***
+.color-urgent { background-color: #CA3232; }
+.color-warning { background-color: #F89406; }
+.color-ok { background: #016B01; }
 
 form {
   label {
@@ -348,6 +357,14 @@ code{
 .modal-header h3 {
   display: inline;
   width: 80%;
+  font-weight: bold;
+  font-size: 1em;
+}
+.modal-header h2 {
+  display: inline;
+  width: 80%;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 
@@ -358,7 +375,6 @@ ul.loomio-process-flow {
   @include border-radius(8px);
   /*box-shadow: 2px 2px 2px $light-grey;*/
   background-color: white;
-  list-style: none;
   text-align: center;
   padding: 0;
   li.process-flow-item {
@@ -401,10 +417,27 @@ ul.loomio-process-flow {
   }
 }
 
+/*** helper bot ***/
+#helper_bot {
+  float: right;
+  position: relative;
+  bottom: 30px;
+  margin-bottom: -40px;
+}
+
+body.discussions #helper_bot{
+    bottom: 68px;
+    margin-bottom: -60px;
+}
+
+body.groups.show #helper_bot{
+  right: 130px;
+}
+
 /**** buttons ****/
 .btn-app {
   line-height: 18px;
-  padding: 6px 8px 6px 8px;
+  padding: 4px 8px 4px 8px;
   width: 180px;
   font-size: $font-medium;
   text-align: left;
@@ -474,3 +507,4 @@ a.btn-icon:hover { color: $dark-grey; }
 .large-icon.pie-icon {
   background-image: url("pie-light-24.png");
 }
+
