@@ -65,7 +65,9 @@ class Ability
     #
     # MOTIONS
     #
-    can :get_and_clear_new_activity, Motion, :id => user.motion_ids
+    can :get_and_clear_new_activity, Motion do |motion|
+      can? :show, motion.group
+    end
     can :create, Motion, :discussion_id => user.discussion_ids
     can [:destroy, :close_voting, :open_voting, :edit_outcome], Motion, :author_id => user.id
     can [:destroy, :close_voting, :open_voting, :edit_outcome], Motion,

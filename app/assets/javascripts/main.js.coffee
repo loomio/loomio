@@ -214,6 +214,10 @@ $ ->
           unless this == currentPie
             $(this).popover('hide')
         )
+        $(this).popover ({ 
+          title: $(this).attr('data-pop-over-title')
+          content: $(this).attr('data-pop-over-content')
+          })
         $(this).find('.button_to').submit()
         $(currentPie).popover('toggle')
     )
