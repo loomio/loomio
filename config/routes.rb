@@ -24,6 +24,7 @@ Loomio::Application.routes.draw do
 
   resources :motions do
     resources :votes
+    post :get_and_clear_new_activity, on: :member
     put :edit_outcome, :on => :member
   end
   match "/motions/:id/close", :to => "motions#close_voting", :as => :close_motion_voting,
@@ -55,7 +56,6 @@ Loomio::Application.routes.draw do
   resources :users do
     post :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
-    post :reset_motion_read_log, on: :member
   end
   match "/users/dismiss_system_notice", :to => "users#dismiss_system_notice",
         :as => :dismiss_system_notice_for_user, :via => :post

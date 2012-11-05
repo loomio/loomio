@@ -189,27 +189,25 @@ class User < ActiveRecord::Base
     helper_bot
   end
 
-  def update_motion_read_log(motion, motion_activity = nil)
+  def update_motion_read_log(motion, activity_on_page_load = nil)
     log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-    debugger
     if log.nil?
       motion_read_log = MotionReadLog.new
       motion_read_log.user_id = id
       motion_read_log.motion_id = motion.id
       motion_read_log.save!
     else
-      if motion_activity.nil? || motion_activity > 0
-        total_new_activity = motion.number_of_votes_since_last_looked(self)
-        activity_on_page_load = motion_activity
-        if motion_activity
-          activity_since_page_loaded = total_new_activity - activity_on_page_load
-          last_viewed = motion.votes[(motion.votes.count - activity_since_page_loaded) - 1].created_at
-        else
-          last_viewed = Time.now
-        end
-        log.motion_last_viewed_at = last_viewed
-        log.save!
-      end
+      # if activity_on_page_load.nil? || activity_on_page_load > 0
+      #   total_new_activity_now = motion_activity_count_for(motion, self)
+      #   if activity_on_page_load
+      #     activity_since_page_loaded = total_new_activity_now - activity_on_page_load
+      #     last_viewed = motion.votes[(motion.votes.count - activity_since_page_loaded) - 1].created_at
+      #   else
+      #     last_viewed = Time.now
+      #   end
+      #   log.motion_last_viewed_at = last_viewed
+      #   log.save!
+      # end
     end
   end
 
