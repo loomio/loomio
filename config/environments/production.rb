@@ -74,7 +74,8 @@ Loomio::Application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = {
-    :host => 'loomio.org',
+    # :host => 'loomio.org',
+    :host => 'loomio-production.herokuapp.com',
   }
 
   # Store avatars on Amazon S3
