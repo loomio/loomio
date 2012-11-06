@@ -1,6 +1,10 @@
 class BaseController < InheritedResources::Base
-  before_filter :authenticate_user!, :check_browser, :get_notifications
+  before_filter :site_down
   # inherit_resources
+
+  def site_down
+    redirect_to page_url("site_down")
+  end
 
   def check_browser
     if browser.ie6? # || browser.ie7?
