@@ -22,8 +22,7 @@
           .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"
     - if discussion.current_motion
       - motion_activity = motion_activity_count_for(discussion.current_motion, current_user)
-      - pop_over_title = render "discussions/graph_preview_pop_over_title", motion: discussion.current_motion
-      .selector-pie-link{ "data-popover-title" => pop_over_title, "data-poppver-content" => "Loading..." }
+      .selector-pie-link
         .pie{:id => "graph_#{discussion.current_motion.id}"}
           - if discussion.current_motion.voting? && motion_activity > 0
             %span.activity-count.label.label-info
