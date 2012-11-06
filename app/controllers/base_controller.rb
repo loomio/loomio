@@ -3,7 +3,7 @@ class BaseController < InheritedResources::Base
   # inherit_resources
 
   def site_down
-    redirect_to "http://loomio-production.herokuapp.com/"
+    redirect_to "http://loomio-production.herokuapp.com#{request.fullpath}"
   end
 
   def check_browser
