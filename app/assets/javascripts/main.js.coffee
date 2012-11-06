@@ -201,23 +201,21 @@ displayGraph = (this_pie, graph_id, data)->
     padding: 1
     gap: 1
     shadow: 0.75
-    
+
 #*** hide/show mini-graph popovers
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
     $(".selector-pie-link").click((event) ->
       $(this).find('.pie').tooltip('hide')
       if $(this).find(".popover").html() == null
+        event.stopPropagation()
         currentPie = this
         $('.selector-pie-link').each(() ->
           unless this == currentPie
             $(this).popover('hide')
         )
-        $(this).find('.button_to').submit() 
-        event.stopPropagation()
-        $(currentPie).popover('toggle')
-        )
-
+        $(this).find('.button_to').submit()
+    )
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
     $(document).click((event) ->
