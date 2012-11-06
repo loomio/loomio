@@ -14,7 +14,7 @@ class ChangeColumnExpectedSizeToStringInGroupRequest < ActiveRecord::Migration
 
   def down
     rename_column :group_requests, :expected_size, :temp_column
-    change_column :group_requests, :expected_size, :integer
+    add_column :group_requests, :expected_size, :integer
     GroupRequest.reset_column_information
     GroupRequest.all.each do |request|
       request.expected_size = request.temp_column.to_i
