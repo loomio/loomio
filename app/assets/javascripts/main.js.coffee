@@ -215,6 +215,7 @@ $ ->
             $(this).popover('hide')
         )
         $(this).find('.button_to').submit()
+        $(this).popover('toggle')
     )
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
