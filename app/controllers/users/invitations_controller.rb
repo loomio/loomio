@@ -1,4 +1,10 @@
 class Users::InvitationsController < Devise::InvitationsController
+  before_filter :site_down
+
+  def site_down
+    redirect_to page_url("site_down")
+  end
+
   def create
     # TODO: Make this big method less ugly
     #   - use cancan
