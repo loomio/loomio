@@ -47,6 +47,7 @@ describe "User abilities" do
     it { should_not be_able_to(:destroy, @other_user_membership) }
     it { should be_able_to(:destroy, @user_membership) }
     it { should be_able_to(:create, new_motion) }
+    it { should be_able_to(:get_and_clear_new_activity, other_users_motion) }
     it { should be_able_to(:close_voting, user_motion) }
     it { should be_able_to(:open_voting, user_motion) }
     it { should be_able_to(:destroy, user_motion) }
@@ -158,10 +159,12 @@ describe "User abilities" do
     context "group viewable_by: everyone" do
       before { group.update_attributes(:viewable_by => :everyone) }
       it { should be_able_to(:show, group) }
+      it { should be_able_to(:get_and_clear_new_activity, motion) }
     end
     context "group viewable_by: members" do
       before { group.update_attributes(:viewable_by => :members) }
       it { should_not be_able_to(:show, group) }
+      it { should_not be_able_to(:get_and_clear_new_activity, motion) }
     end
   end
 end
