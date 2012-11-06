@@ -1,5 +1,4 @@
 graph = $(<%= "'#graph_#{@motion.id}'" %>).parent()
-$(".popover").remove()
 graph.removeData('popover')
 graph.popover ({
   placement: "right",
