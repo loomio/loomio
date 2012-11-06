@@ -9,7 +9,6 @@
       .discussion-title
         = truncate(discussion.title, :length => 60, :separator => ' ')
         .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
- 
       .large-icon.discussion-icon.activity-icon{ class: enabled_icon_class_for(discussion, current_user) }
         - discussion_activity = discussion_activity_count_for(discussion, current_user)
         - if discussion_activity > 0
@@ -23,15 +22,12 @@
           .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"
     - if discussion.current_motion
       - motion_activity = motion_activity_count_for(discussion.current_motion, current_user)
-      - pop_over_title = render "discussions/graph_preview_pop_over_title", motion: discussion.current_motion
-      - pop_over_body = render "discussions/graph_preview_pop_over", motion: discussion.current_motion, user: current_user, motion_activity: motion_activity
-      .selector-pie-link{ "data-title" => pop_over_title, "data-content" => pop_over_body }
+      .selector-pie-link
         .pie{:id => "graph_#{discussion.current_motion.id}"}
           - if discussion.current_motion.voting? && motion_activity > 0
             %span.activity-count.label.label-info
               = motion_activity
-          - if user_signed_in? && current_user.is_group_member?(discussion.group)
-            = button_to '', reset_motion_read_log_user_path(current_user, :motion => discussion.current_motion, :motion_activity => motion_activity), :remote => true, :class =>  "preview-pie-button"
+          = button_to '', get_and_clear_new_activity_motion_path(:id => discussion.current_motion.id, :motion_activity => motion_activity), :remote => true, :class =>  "preview-pie-button"
     - else
       .large-icon.pie-icon.activity-icon
 
