@@ -2,7 +2,7 @@ class Users::InvitationsController < Devise::InvitationsController
   before_filter :site_down
 
   def site_down
-    redirect_to page_url("site_down")
+    redirect_to "http://loomio-production.herokuapp.com/"
   end
 
   def create
