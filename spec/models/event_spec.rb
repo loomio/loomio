@@ -232,7 +232,7 @@ describe Event do
       end
 
       it "sends email to user" do
-        UserMailer.should_receive(:added_to_group).with(@user, @group).
+        UserMailer.should_receive(:added_to_group).with(@membership).
           and_return(stub(deliver: true))
         @event = Event.user_added_to_group! @membership
       end

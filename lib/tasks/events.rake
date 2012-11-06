@@ -10,17 +10,17 @@ namespace :events do
         eventable = event.eventable
         case event.kind
         when "new_discussion", "new_motion"
-          user = eventable.author
-          group = eventable.group
+          user = eventable.author if eventable
+          group = eventable.group if eventable
         when "new_comment", "new_vote", "motion_blocked", "membership_requested", "comment_liked"
-          user = eventable.user
-          group = eventable.group
+          user = eventable.user if eventable
+          group = eventable.group if eventable
         when "motion_closed"
           user = event.user
-          group = eventable.group
+          group = eventable.group if eventable
         when "user_added_to_group"
-          user = eventable.inviter
-          group = eventable.group
+          user = eventable.inviter if eventable
+          group = eventable.group if eventable
         else
           user = nil
           group = nil

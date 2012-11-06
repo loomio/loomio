@@ -6,6 +6,7 @@ before_install:
 branches:
   only:
     - 'master'
+    - /^[0-9]+\.[0-9]+$/
 rvm:
   - 1.9.3
 before_script:

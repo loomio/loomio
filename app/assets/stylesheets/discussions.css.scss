@@ -9,9 +9,10 @@ form.new_discussion {
 
 /** discussion show form*/
 body.discussions.show {
-  .group-title {
-    margin-bottom: 10px;
-  }
+  // .group-title {
+  //   margin-bottom: 10px;
+  //   padding-top: 43px;
+  // }
   .selector-panel {
     background-color: $selector-panel;
     @include border-radius(8px);
@@ -89,7 +90,7 @@ body.discussions.show {
     width: 230px;
   }
 
-  .discussion-author-info {
+  .discussion-additional-info {
     font-size: $font-small;
     color: $mid-grey;
     width: 170px;
@@ -101,6 +102,34 @@ body.discussions.show {
   .header-text {
     color: $mid-grey;
     line-height: 2.0em;
+  }
+
+  .last-edited-by, .started-by {
+    margin-bottom: 10px;
+  }
+}
+
+#description-revision-history {
+  .revision-version {
+    a.disabled {
+      color: $mid-grey;
+      cursor: default;
+    }
+    a.disabled:hover {
+      text-decoration: none;
+    }
+  }
+  .revision-title {
+    width: 450px;
+    float: left;
+  }
+  .revision_version {
+    float: left;
+  }
+  .revision_version:after {
+    content: ".";
+    visibility: hidden;
+    clear: both;
   }
 }
 

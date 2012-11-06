@@ -9,8 +9,9 @@
 - if @groups.present?
   -#=render '/application/loomio_process_flow'
   =render '/groups/title', group: nil
-
-  = icon_button('#new-discussion', 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion', true)
+  .clearfix
+    =render 'application/helper_bot'
+    = icon_button('#new-discussion', 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion', true)
   .row.main-content
     %section.span8
       %ul.selector-list.bordered

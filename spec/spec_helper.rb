@@ -46,6 +46,12 @@ Spork.prefork do
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
 
+    # to make sure paper_trail data from one test doesn't spill over another
+    config.before :each do
+      PaperTrail.controller_info = {}
+      PaperTrail.whodunnit = nil
+    end
+
     config.before :suite do
       DatabaseCleaner.strategy = :transaction
       DatabaseCleaner.clean_with(:truncation)
