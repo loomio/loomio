@@ -16,7 +16,7 @@ end
 
 Given /^"(.*?)" is a(?: non-admin)?(?: member)? of(?: group)? "(.*?)"$/ do |email, group|
   @user = User.find_by_email(email)
-  if !user 
+  if !@user 
     @user = FactoryGirl.create(:user, :name => email.split("@").first, :email => email)
   end 
   Group.find_by_name(group).add_member!(@user)

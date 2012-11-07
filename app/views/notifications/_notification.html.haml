@@ -71,7 +71,7 @@
     - group_name = comment_vote.group_full_name
     - href = (discussion_path(comment_vote.discussion))+"#comment-#{comment_vote.comment_id}"
 
-  - elsif notification.event_kind == "mention"
+  - elsif notification.event_kind == "user_mentioned"
     - comment = notification.comment
     - user = comment.user
     - action_text = "mentioned you in a comment in"
