@@ -22,6 +22,26 @@ describe Discussion do
     discussion.comment_threads.should include(comment)
   end
 
+  context "events" do
+    before do
+      @discussion = create(:discussion)
+      @user = create(:user)
+      @discussion.group.add_member! @user
+    end
+    
+    it "fires new_comment event if comment was created successfully" do
+      Event.should_receive(:new_comment!)
+      @discussion.add_comment(@user, "this is a test comment")
+    end
+
+    it "fires mention event if any users were mentioned" do
+      Event.should_receive(:user_mentioned!)
+      mentioned_user = create :user
+      discussion.group.add_member! mentioned_user
+      comment = @discussion.add_comment(@user, "Hi, @#{mentioned_user.username}!")
+    end
+  end
+
   it "group non-member cannot add comment" do
     discussion = create(:discussion)
     comment = discussion.add_comment(create(:user), "this is a test comment")

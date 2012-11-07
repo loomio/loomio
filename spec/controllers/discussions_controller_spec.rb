@@ -133,20 +133,6 @@ describe DiscussionsController do
         response.should redirect_to(discussion_url(discussion))
       end
 
-      it "fires new_comment event if comment was created successfully" do
-        Event.should_receive(:new_comment!).with(@comment)
-        post :add_comment, comment: "Hello!", id: discussion.id
-      end
-
-      it "fires mention event if any users in the group were mentioned" do
-        group = create(:group, viewable_by: :members)
-        mentioned_user = create :user
-        group.add_member!(user)
-        group.add_member!(mentioned_user)
-        Event.should_receive(:user_mentioned!).with(@comment, mentioned_user)
-        post :add_comment, comment: "Hey @#{mentioned_user.username}", id: discussion.id
-      end
-
       context "unsuccessfully" do
         before do
           discussion.stub(:add_comment).

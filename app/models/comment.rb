@@ -107,6 +107,8 @@ class Comment < ActiveRecord::Base
     users
   end
 
+  
+
   private
     def update_discussion_last_comment_at
       discussion.last_comment_at = discussion.latest_comment_time
