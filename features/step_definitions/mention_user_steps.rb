@@ -1,5 +1,5 @@
 When /^I am adding a comment and type in "(.*?)"$/ do |arg1|
-  fill_in 'new-comment', with: +arg1
+  fill_in 'new-comment', with: arg1
 end
 
 When /^I click on "(.*?)" in the menu that pops up$/ do |arg1|
@@ -19,5 +19,6 @@ When /^a comment exists mentioning "(.*?)"$/ do |text|
 end
 
 Then /^I should see a link to "(.*?)"'s user$/ do |user|
+  visit(current_path)
   page.should have_link("@#{user}")
 end 
