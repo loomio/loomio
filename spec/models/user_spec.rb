@@ -211,56 +211,28 @@ describe User do
     MotionReadLog.count.should == 1
   end
 
-  context "updating an existing motion_read_log" do
-    before do
-      @motion = create(:motion)
-      @motion_read_log = mock_model(MotionReadLog)
-      MotionReadLog.stub_chain(:where, :first).and_return(@motion_read_log)
-      @motion_read_log.stub(:save!).and_return(true)
-    end
-    it "updates the log to the current time if motion_activity is not specified" do
-      time_last_viewed = Time.now
-      Time.stub(:now).and_return(time_last_viewed)
-      @motion_read_log.should_receive(:motion_last_viewed_at=).with(time_last_viewed)
-
-      user.update_motion_read_log(@motion)
-    end
-    it "does not update the log if there is no new activity since the page was loaded" do
-      @motion_read_log.should_not_receive(:motion_last_viewed_at=)
-      user.update_motion_read_log(@motion, 0)
-    end
-    it "updates to the time of the vote last displayed as activity, if there is new activity since the page was loaded" do
-      vote_activity_at = Time.now
-      @motion.stub(:number_of_votes_since_last_looked).with(user).and_return(3)
-      @motion.stub_chain(:votes, :count).and_return(8)
-      @motion.stub_chain(:votes, :[], :created_at).and_return(vote_activity_at)
-      @motion_read_log.should_receive(:motion_last_viewed_at=).with(vote_activity_at)  
-
-      user.update_motion_read_log(@motion, 1)
-    end
-  end
-
-  it "can update an existing discussion_read_log" do
-    @discussion = create :discussion, group: group
-    DiscussionReadLog.stub_chain(:where, :first)
-    @motion_read_log = mock_model(DiscussionReadLog)
-    DiscussionReadLog.stub(:new).and_return(@discussion_read_log)
-
-    time_now = Time.now()
-    Time.stub(:now).and_return(time_now)
-
-    @discussion_read_log.stub(:save!).and_return(true)
-    @discussion_read_log.should_receive(:discussion_last_viewed_at=).with(time_now)
-    @discussion_read_log.should_receive(:user_id=).with(user.id)
-    @discussion_read_log.should_receive(:discussion_id=).with(@discussion.id)
-
-    user.update_discussion_read_log(@discussion)
+  it "updates an existing motion_read_log" do
+    @motion = create(:motion)
+    @motion_read_log = mock_model(MotionReadLog)
+    MotionReadLog.stub_chain(:where, :first).and_return(@motion_read_log)
+    @motion_read_log.stub(:save!).and_return(true)
+    @motion_read_log.should_receive(:motion_last_viewed_at=)
+    user.update_motion_read_log(@motion)
   end
 
   it "can create a new discussion_read_log" do
     @discussion = create(:discussion, group: group)
     user.update_discussion_read_log(@discussion)
     DiscussionReadLog.count.should == 1
+  end
+
+  it "can update an existing discussion_read_log" do
+    @discussion = create :discussion, group: group
+    @discussion_read_log = mock_model(DiscussionReadLog)
+    DiscussionReadLog.stub_chain(:where, :first).and_return(@discussion_read_log)
+    @discussion_read_log.stub(:save!).and_return(true)
+    @discussion_read_log.should_receive(:discussion_last_viewed_at=)
+    user.update_discussion_read_log(@discussion)
   end
 
   it "can update group last_viewed_at" do
