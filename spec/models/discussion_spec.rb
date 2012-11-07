@@ -37,7 +37,7 @@ describe Discussion do
     it "fires mention event if any users were mentioned" do
       Event.should_receive(:user_mentioned!)
       mentioned_user = create :user
-      discussion.group.add_member! mentioned_user
+      @discussion.group.add_member! mentioned_user
       comment = @discussion.add_comment(@user, "Hi, @#{mentioned_user.username}!")
     end
   end
@@ -64,7 +64,6 @@ describe Discussion do
       @discussion.should have(@version_count).versions
     end
 
-      
     it "creates a new version when discussion.description is edited" do
       @discussion.update_attribute :description, "new description"
       @discussion.should have(@version_count + 1).versions
