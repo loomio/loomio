@@ -3,6 +3,11 @@
     <a class="close" data-dismiss="alert" href="#">×</a>
     = message
 
+- if !user_signed_in? && !on_landing_page
+  %div.alert-message{ "data-alert" => "alert", :class => "alert alert-warning" }
+    = link_to "Sign in", new_user_session_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
+    to participate.
+    You are currently logged out.
 
 -#
 -# SYSTEM MESSAGE
