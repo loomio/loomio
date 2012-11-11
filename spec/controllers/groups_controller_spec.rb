@@ -67,7 +67,7 @@ describe GroupsController do
     end
 
     it "creates a group" do
-      user = build(:user, :email => "contact@loom.io")
+      user = build(:user, :email => "contact@loomio.org")
       user.save
       @group = build(:group)
       post :create, :group => @group.attributes
@@ -79,7 +79,7 @@ describe GroupsController do
     end
 
     it "creates a subgroup" do
-      user = build(:user, :email => "contact@loom.io")
+      user = build(:user, :email => "contact@loomio.org")
       user.save
       @group = create(:group)
       @group.add_member! @user
