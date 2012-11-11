@@ -1,10 +1,6 @@
 class BaseController < InheritedResources::Base
-  before_filter :site_down
+  before_filter :authenticate_user!, :check_browser, :get_notifications
   # inherit_resources
-
-  def site_down
-    redirect_to "http://loomio-production.herokuapp.com#{request.fullpath}"
-  end
 
   def check_browser
     if browser.ie6? # || browser.ie7?

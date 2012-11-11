@@ -1,10 +1,4 @@
 class Users::InvitationsController < Devise::InvitationsController
-  before_filter :site_down
-
-  def site_down
-    redirect_to "http://loomio-production.herokuapp.com#{request.fullpath}"
-  end
-
   def create
     # TODO: Make this big method less ugly
     #   - use cancan
