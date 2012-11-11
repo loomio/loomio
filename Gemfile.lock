@@ -271,6 +271,9 @@ GEM
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-canonical-host (0.0.8)
+      addressable
+      rack (~> 1.0)
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.1)
@@ -431,6 +434,7 @@ DEPENDENCIES
   nokogiri
   paperclip
   pg
+  rack-canonical-host
   rails (= 3.2.6)
   rails-backbone
   rails_best_practices
