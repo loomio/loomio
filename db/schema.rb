@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121102220704) do
+ActiveRecord::Schema.define(:version => 20121107025313) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(:version => 20121102220704) do
     t.datetime "updated_at",                                         :null => false
     t.datetime "expirey",         :default => '2013-02-06 01:30:31'
     t.string   "token",                                              :null => false
+    t.boolean  "accepted",        :default => false
   end
 
   create_table "memberships", :force => true do |t|
