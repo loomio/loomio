@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
   include ApplicationHelper
-  default :from => "\"Loomio\" <noreply@loom.io>"
+  default :from => "\"Loomio\" <noreply@loomio.org>"
 
   def group_membership_approved(user, group)
     @user = user
