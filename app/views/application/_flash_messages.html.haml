@@ -7,6 +7,13 @@
 -# SYSTEM MESSAGE
 -#
 
+.alert-message{ "data-alert" => "alert", :class => "alert alert-warning" }
+  Hi there! We're in the process of switching to new servers, so you may notice a few   quirks during the next day or two. Sorry for any inconvenience!
+  %br
+  %br
+  If you have any questions, feel free send us an email at contact@loomio.org.
+
+
 -#- if current_user && (not current_user.has_read_system_notice?)
   -#.help-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
     -#= link_to "×", dismiss_system_notice_for_user_path,
@@ -16,7 +23,7 @@
     -#%br
     -#%br
     -#It's going to take some experimenting and tweaking to get this system just right,
-    -#so if you have any feedback please don't hesitate to send us an email at contact@loom.io.
+    -#so if you have any feedback please don't hesitate to send us an email at contact@loomio.org.
     -#%br
     -#%br
     -#This is just the beginning of our effort to improve notifications on Loomio.
