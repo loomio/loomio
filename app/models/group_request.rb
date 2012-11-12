@@ -26,6 +26,7 @@ class GroupRequest < ActiveRecord::Base
   def approve_request
     @group = Group.new(:name => name)
     @group.creator = User.loomio_helper_bot
+    @group.cannot_contribute = cannot_contribute
     @group.save!
     self.group_id = @group.id
     save!

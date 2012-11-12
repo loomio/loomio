@@ -18,6 +18,7 @@ describe GroupRequest do
       Group.stub :new => group
       group.stub :creator=
       group.stub :creator => stub(:user)
+      group.stub :cannot_contribute=
       group.stub :save!
       InvitesUsersToGroup.stub :invite!
     end
@@ -26,13 +27,14 @@ describe GroupRequest do
       Group.should_receive(:new).with(:name => group_request.name).
             and_return(group)
       group.should_receive(:creator=)
+      group.should_receive(:cannot_contribute=)
       group.should_receive(:save!)
       group_request.approve!
     end
 
     it "should invite the admin to the group" do
       InvitesUsersToGroup.should_receive(:invite!).
-        with(:recipient_email => group_request.admin_email,
+        with(:recipient_emails => [group_request.admin_email],
              :inviter => group.creator,
              :group => group,
              :access_level => "admin")
