@@ -25,9 +25,8 @@ class GroupRequest < ActiveRecord::Base
 
   def approve_request
     @group = Group.new(:name => name)
-    @group.creator = User.create!(:email => admin_email,
-                                  :name => admin_email,
-                                  :password => SecureRandom.hex(16))
+    @group.creator = User.get_loomio_user
+    @group.cannot_contribute = cannot_contribute
     @group.save!
     self.group_id = @group.id
     GroupMailer.new_group_invited_to_loomio(admin_email, name).deliver
