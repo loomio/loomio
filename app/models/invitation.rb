@@ -12,14 +12,14 @@ class Invitation < ActiveRecord::Base
     token
   end
 
-  def active?
-    expirey >= Time.now
+  def accepted?
+    accepted
   end
 
-  def add_invited_member(user)
+  def accept!(user)
     group = Group.find(group_id)
     group.add_member!(user)
-    expirey = Time.now
+    accepted = true
     save!
   end
 

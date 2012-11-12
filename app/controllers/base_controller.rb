@@ -9,10 +9,13 @@ class BaseController < InheritedResources::Base
   end
 
   def check_invitation
-    @invitation = Invitation.find_by_token(session[:invitation])
-    if @invitation && @invitation.active? && user_signed_in?
-      @invitation.add_invited_member(current_user)
-      redirect_to group_url(@invitation.group_id)
+    if user_signed_in? && session[:invitation]
+      @invitation = Invitation.find_by_token(session[:invitation])
+      if @invitation && (not @invitation.accepted?)
+        @invitation.accept!(current_user)
+        reset_session
+        redirect_to group_url(@invitation.group_id)
+      end
     end
   end
 

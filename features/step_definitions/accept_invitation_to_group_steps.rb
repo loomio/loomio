@@ -41,24 +41,43 @@ end
 Given /^I have not received an invitation$/ do
 end
 
-When /^I visit the create account page when$/ do
+When /^I visit the create account page$/ do
   visit new_user_path
 end
 
 Then /^I should be redirected to the homepage$/ do
-  page.should have_css('.landing')
+  page.should have_css('.pages.show')
 end
 
 When /^I log in$/ do
   @user = FactoryGirl.create :user
   click_on "sign-in"
-  fill_in "email", :with => @user.email
-  fill_in "password", :with => "password"
+  fill_in "user_email", :with => @user.email
+  fill_in "user_password", :with => "password"
   click_on "sign-in-btn"
 end
 
 Then /^I should be taken to the group page$/ do
   page.should have_content(@group.name)
+end
+
+Given /^there is an accepted invitation$/ do
+  step 'I have been invited to join a loomio group and I am a new user'
+  @invitation = Invitation.where(:recipient_email => @recipient_email).first
+  @invitation.accepted = true
+  @invitation.save!
+end
+
+Then /^I should not become a member of the group$/ do
+  @group.users.include?(@user).should be_false
+end
+
+When /^I visit the invitation link$/ do
+  step 'I open the email and click the invitation link'
+end
+
+Then /^I should see a message that the invitation has already been used$/ do
+  page.should have_content('This invitation has already been accepted by another user')
 end
 
 Then /^I should be taken to the group\'s demo proposal page$/ do
