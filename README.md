@@ -83,5 +83,5 @@ If you'd like to contribute to the project, check out [Contributing to Loomio](h
 
 ## License
 
-MIT License. Copyright (c) 2012 Enspiral Foundation Limited
+GNU Affero General Public License (AGPL). Copyright (c) 2012 Loomio Limited
 
