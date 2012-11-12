@@ -25,8 +25,6 @@ class UsersController < BaseController
         end
       end
     else
-      debugger
-      flash[:error] = "This invitation has already been used."
       redirect_to root_url
     end
   end
