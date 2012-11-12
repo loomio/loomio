@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body",             :default => ""
+    t.text     "body"
     t.string   "subject",          :default => ""
     t.integer  "user_id",          :default => 0,  :null => false
     t.integer  "parent_id"
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "activity",        :default => 0, :null => false
     t.string   "title"
+    t.integer  "activity",        :default => 0, :null => false
     t.datetime "last_comment_at"
     t.text     "description"
   end
@@ -162,11 +162,11 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "motion_read_logs", :force => true do |t|
-    t.integer  "motion_activity_when_last_read"
     t.integer  "motion_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "motion_last_viewed_at"
   end
 
   create_table "motions", :force => true do |t|
@@ -179,8 +179,8 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.string   "discussion_url", :default => "",       :null => false
     t.datetime "close_date"
     t.integer  "discussion_id"
-    t.integer  "activity",       :default => 0
     t.string   "outcome"
+    t.datetime "last_vote_at"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
@@ -240,6 +240,17 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
   add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"
   add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
   create_table "votes", :force => true do |t|
     t.integer  "motion_id"

@@ -7,11 +7,9 @@
         = group.fancy_link
       .dropdown.privacy-dropdown
         %a.dropdown-toggle{ :href => "#", :id => 'privacy', 'data-toggle' => 'dropdown',  "data-title" => "Privacy: '"+group.viewable_by.to_s+"' can see this group." }
-          = image_tag("privicon_"+group.viewable_by.to_s+".png", alt: group.viewable_by.to_s)
+          = image_tag("privicon_"+group.viewable_by.to_s+".png", alt: group.viewable_by.to_s, :id => 'privacy-image')
         - if can? :edit, group
-          %ul.dropdown-menu.pull-left
-            %li= link_to "Edit group settings", edit_group_path(group)
-
+          = render 'groups/privacy_settings', :group => group
       - if params[:controller] == 'groups' && params[:action] == 'show'
         - can_edit = can? :edit, group
         - can_leave = group.users_include? current_user
@@ -33,7 +31,7 @@
                 - membership = current_user.group_membership(group)
                 %li= link_to "Leave group", membership, method: :delete, :data => { confirm: "Are you sure you wish to leave #{group.name}?" }
               - if can_archive
-                %li= link_to "De-activate group", archive_group_path(group), method: :post, :data => { confirm: "Wait!!! Are you sure you want to de-activate #{group.name}? \n\n You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@loom.io." }
+                %li= link_to "De-activate group", archive_group_path(group), method: :post, :data => { confirm: "Wait!!! Are you sure you want to de-activate #{group.name}? \n\n You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@loomio.org." }
         - if can_email
           #email-members-modal.modal.hidden
             = render "groups/email_members", :group => group

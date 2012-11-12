@@ -206,45 +206,33 @@ describe User do
   end
 
   it "can create a new motion_read_log" do
-    @group = create :group
-    @discussion = create :discussion, group: @group
-    @motion = create :motion, discussion: @discussion
+    @motion = create(:motion)
     user.update_motion_read_log(@motion)
     MotionReadLog.count.should == 1
   end
 
-  it "can update an existing motion_read_log" do
-    @discussion = create :discussion, group: group
-    @motion = create(:motion,discussion: @discussion)
-    @motion.activity = 4
+  it "updates an existing motion_read_log" do
+    @motion = create(:motion)
+    @motion_read_log = mock_model(MotionReadLog)
+    MotionReadLog.stub_chain(:where, :first).and_return(@motion_read_log)
+    @motion_read_log.stub(:save!).and_return(true)
+    @motion_read_log.should_receive(:motion_last_viewed_at=)
     user.update_motion_read_log(@motion)
-    @motion.activity = 5
-    user.motion_activity_when_last_read(@motion).should == 4
-    user.update_motion_read_log(@motion)
-    user.motion_activity_when_last_read(@motion).should == 5
-  end
-
-  it "can update an existing discussion_read_log" do
-    @discussion = create :discussion, group: group
-    DiscussionReadLog.stub_chain(:where, :first)
-    @discussion_read_log = mock_model(DiscussionReadLog)
-    DiscussionReadLog.stub(:new).and_return(@discussion_read_log)
-
-    time_now = Time.now()
-    Time.stub(:now).and_return(time_now)
-
-    @discussion_read_log.stub(:save!).and_return(true)
-    @discussion_read_log.should_receive(:discussion_last_viewed_at=).with(time_now)
-    @discussion_read_log.should_receive(:user_id=).with(user.id)
-    @discussion_read_log.should_receive(:discussion_id=).with(@discussion.id)
-
-    user.update_discussion_read_log(@discussion)
   end
 
   it "can create a new discussion_read_log" do
     @discussion = create(:discussion, group: group)
     user.update_discussion_read_log(@discussion)
     DiscussionReadLog.count.should == 1
+  end
+
+  it "can update an existing discussion_read_log" do
+    @discussion = create :discussion, group: group
+    @discussion_read_log = mock_model(DiscussionReadLog)
+    DiscussionReadLog.stub_chain(:where, :first).and_return(@discussion_read_log)
+    @discussion_read_log.stub(:save!).and_return(true)
+    @discussion_read_log.should_receive(:discussion_last_viewed_at=)
+    user.update_discussion_read_log(@discussion)
   end
 
   it "can update group last_viewed_at" do
