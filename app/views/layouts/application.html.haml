@@ -22,9 +22,16 @@
       })();
 
   %body{class: "#{controller_name} #{action_name}"}
-    = render 'header', :notifications => @notifications,
-      :unviewed_notifications => @unviewed_notifications
-    .container
-      .inner-container
-        = render 'flash_messages', :flash => flash
-        = yield
+    - on_landing_page = true if controller_name == "pages" || controller_name == "sessions"
+    - supported = true unless params[:id] == 'browser_not_supported'
+
+    - unless on_landing_page
+      = render 'header', :notifications => @notifications,
+        :unviewed_notifications => @unviewed_notifications
+    .main-container.container
+      = render "fork_us_github" if on_landing_page && supported
+      = render 'flash_messages', :flash => flash, :on_landing_page => on_landing_page
+      = render "header_logged_out" if on_landing_page && supported
+      = yield
+
+

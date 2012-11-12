@@ -72,24 +72,28 @@ describe Vote do
     vote.should_not be_valid
   end
 
-  it 'should update motion_activity when new vote is created' do
-    motion.activity = 2
-    vote = Vote.new(position: 'yes')
+  it 'should update motion_last_vote_at when new vote is created' do
+    vote = Vote.new(position: "yes")
     vote.motion = motion
     vote.user = user
+    vote_time = stub "time"
+    motion.stub(:latest_vote_time).and_return(vote_time)
+    motion.should_receive(:last_vote_at=).with(vote_time)
+    motion.should_receive(:save!)
     vote.save!
-    motion.activity.should == 3
   end
 
-  it 'should update motion_activity when vote is changed' do
-    motion.activity = 2
+  it 'should update motion_last_vote_at when vote is changed' do
+    pending "This is currently happening in the VotesController#update. But it should be moved into the model"
     vote = Vote.new(position: 'yes')
     vote.motion = motion
     vote.user = user
     vote.save!
     vote.position = 'no'
+    motion.stub(:latest_vote_time).and_return(vote_time)
+    motion.should_receive(:last_vote_at=).with(vote_time)
+    motion.should_receive(:save!)
     vote.save!
-    motion.activity.should == 4
   end
 
   describe "previous_vote" do
