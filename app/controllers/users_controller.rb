@@ -11,12 +11,12 @@ class UsersController < BaseController
   def create
     @invitation = Invitation.find_by_token(session[:invitation])
     group = Group.find(@invitation.group_id)
-    if @invitation && @invitation.active?
+    if @invitation && (not @invitation.accepted?)
       @user = User.create(params[:user])
       if @user.errors.any?
         redirect_to root_url
       else
-        @invitation.add_invited_member(@user)
+        @invitation.accept!(@user)
         discussion = group.discussions.where(:title => "Example Discussion: Welcome and introduction to Loomio!").first
         if discussion
           redirect_to discussion_path(discussion.id)
@@ -25,6 +25,8 @@ class UsersController < BaseController
         end
       end
     else
+      debugger
+      flash[:error] = "This invitation has already been used."
       redirect_to root_url
     end
   end
