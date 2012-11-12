@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(:version => 20121112031644) do
     t.integer  "memberships_count",    :default => 0,     :null => false
     t.datetime "archived_at"
     t.integer  "max_size"
-    t.boolean  "cannont_contribute",   :default => false
+    t.boolean  "cannot_contribute",    :default => false
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"

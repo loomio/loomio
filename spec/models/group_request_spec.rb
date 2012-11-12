@@ -10,30 +10,33 @@ describe GroupRequest do
 
   describe "#approve!" do
     before do
-      @group = mock_model Group
-      @group.stub :creator=
-      @group.stub :save!
-      Group.stub :new => @group
-      @mailer = double(:deliver => true)
-      GroupMailer.stub :new_group_invited_to_loomio => @mailer
       @group_request = create :group_request
       @creator = mock_model User, :email => @group_request.admin_email
+      @group = mock_model Group
+      @group.stub :creator=
+      @group.stub :creator => stub(:user)
+      @group.stub :cannot_contribute=
+      @group.stub :save!
+      Group.stub :new => @group
       User.stub :create! => @creator
+      InvitesUsersToGroup.stub :invite!
     end
 
     it "should create a group with the group_request's attributes" do
       Group.should_receive(:new).with(:name => @group_request.name).
             and_return @group
       @group.should_receive(:creator=).with @creator
+      @group.should_receive(:cannot_contribute=)
       @group.should_receive :save!
       @group_request.approve!
     end
 
-    it "should send an instructional email (with invite token) to the admin of the group" do
-      GroupMailer.should_receive(:new_group_invited_to_loomio).
-        with(@group_request.admin_email, @group_request.name).
-        and_return @mailer
-      @mailer.should_receive(:deliver)
+    it "should invite the admin to the group" do
+      InvitesUsersToGroup.should_receive(:invite!).
+        with(:recipient_emails => [@group_request.admin_email],
+             :inviter => @group.creator,
+             :group => @group,
+             :access_level => "admin")
       @group_request.approve!
     end
 

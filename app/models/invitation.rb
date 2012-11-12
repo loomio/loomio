@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-  attr_accessible :access_level, :group, :group_id, :inviter, :inviter_id, :recipient_email, :expirey
+  attr_accessible :access_level, :group, :group_id, :inviter, :inviter_id, :recipient_email
 
   belongs_to :inviter, :class_name => "User"
   belongs_to :group
@@ -17,10 +17,6 @@ class Invitation < ActiveRecord::Base
     group.add_member!(user)
     accepted = true
     save!
-  end
-
-  def expired?
-    # expires_at < Time.now
   end
 
   protected
