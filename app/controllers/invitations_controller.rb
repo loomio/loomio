@@ -3,9 +3,8 @@ class InvitationsController < BaseController
   before_filter :authenticate_user!, :except => [:show]
 
   def show
-    debugger
     if @invitation.nil? || @invitation.accepted?
-      render 'invitation_accepted_error_page'
+      render "invitation_accepted_error_page"
     else  
       if user_signed_in?
         @invitation.accept!(current_user)
@@ -23,8 +22,5 @@ class InvitationsController < BaseController
     @group = Group.find(params[:group_id])
     @invitation = Invitation.where(:group_id => params[:group_id],
                                   :token => params[:id]).first
-    # unless @invitation && (not @invitation.accepted?)
-    #   render 'invitation_accepted_error_page'
-    # end
   end
 end
