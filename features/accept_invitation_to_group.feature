@@ -32,14 +32,12 @@ Feature: User accepts invitation to Loomio group
 
   Scenario: User tries to create an account without an invitation
     Given I have not received an invitation
-    When I visit the create account page when 
+    When I visit the create account page
     Then I should be redirected to the homepage
 
   Scenario: User tries to accept a used invitation
-    Given I have been invited to join a loomio group and I am an existing user
-    When I open the email and click the invitation link
-    And I log in
-    And I become a member
-    And I open the email and click the invitation link
-    And I log in as someone else
-    Then I do not create another membership
+    Given there is an accepted invitation
+    When I visit the invitation link
+    Then I should see a message that the invitation has already been used
+    And I should not become a member of the group
+
