@@ -11,27 +11,27 @@ Feature: Email preferences page
 
   Scenario: User enables daily email
     When I visit the email preferences page
-    And I check "Send me the Daily Activity Email"
-    And I click save
+    And I check "user_subscribed_to_daily_activity_email"
+    And I click "Update preferences"
     Then I should be subscribed to the daily actitivy email
 
   Scenario: User disables daily email
     Given I am subscribed to the daily activity email
     When I visit the email preferences page
-    And I uncheck "Send me the Daily Activity Email"
-    And I click save
+    And I uncheck "user_subscribed_to_daily_activity_email"
+    And I click "Update preferences"
     Then I should not be subscribed to the daily actitivy email
 
   Scenario: User enables 24 hour proposal close notification
     When I visit the email preferences page
-    And I check "24 hours before a proposal closes"
-    And I click save
+    And I check "user_subscribed_to_proposal_closure_notifications"
+    And I click "Update preferences"
     Then I should be subscribed to proposal closure notification emails
 
   Scenario: User disables 24 hour proposal close notification
     When I visit the email preferences page
-    And I uncheck "24 hours before any proposal closes"
-    And I click save
+    And I uncheck "user_subscribed_to_proposal_closure_notifications"
+    And I click "Update preferences"
     Then I should not be subscribed to proposal closure notification emails
 
   Scenario: User enables group notifications

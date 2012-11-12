@@ -1,20 +1,15 @@
 %h1 Email Preferences
-
+%br
+%br
 =simple_form_for(@user) do |f|
-  %h2 Daily Acitivty Summary
-  %p A once a day email to keep you informed of activity on Discussions and Proposals in all your groups.
-  =f.input :subscribed_to_daily_activity_email, label: 'Send me the Daily Activity Email'
-
-  %h2 Personal Notifications
-  %p Instant notification about things that happen. We will email you... 
+  =f.input :subscribed_to_daily_activity_email, :inline_label => 'Send me a daily activity email summarising what’s been happening in my groups', :label => false
 
   -#=f.input :subscribed_to_mention_notifications, label: 'When someone mentions your name'
-  =f.input :subscribed_to_proposal_closure_notifications, label: '24 hours before a proposal closes'
+  =f.input :subscribed_to_proposal_closure_notifications, :inline_label => 'Remind me 24 hours before a proposal closes', :label => false
 
   -#%h2 Group Activity Notifications
   -#%p For each group, check the box if you want to be emailed immediately about new discussions and when proposals proposals are put up and close.
 
   -#=f.memberships.each do |mf|
     -#=mf.input :subscribed_to_notification_emails
-
-  =f.submit 'Save'
+  =f.submit 'Update preferences', :class => "btn, btn-info"
