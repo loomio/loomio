@@ -13,7 +13,7 @@ class BaseController < InheritedResources::Base
       @invitation = Invitation.find_by_token(session[:invitation])
       if @invitation && (not @invitation.accepted?)
         @invitation.accept!(current_user)
-        reset_session
+        session[:invitation] = nil
         redirect_to group_url(@invitation.group_id)
       end
     end
