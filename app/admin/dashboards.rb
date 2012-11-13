@@ -22,37 +22,6 @@ ActiveAdmin::Dashboards.build do
     h1 { Motion.count }
   end
 
-  # section "Discussion Per Group (Average)", :priority => 5 do
-  #   sum = 0.0
-  #   Group.unscoped.all.each do |group|
-  #     sum += group.discussions.count
-  #   end
-  #   h1 { "#{(sum / Group.count).round}" }
-  # end
-
-  # section "Comments Per Discussion (Average)", :priority => 6 do
-  #   sum = 0
-  #   Discussion.all.each do |discussion|
-  #     sum += discussion.comments.count
-  #   end
-  #   h1 { "#{sum / Discussion.count}" }
-  # end
-
-  # section "Proposal Engagement (Average)", :priority => 8 do
-  #   sum = 0
-  #   Motion.all.each do |motion|
-  #     # This block will include archived motions in stats
-  #     # if motion.group == nil # include archived motions
-  #     #   motion.discussion.group = Group.unscoped.find(motion.discussion.group_id)
-  #     # end
-  #     # sum += motion.percent_voted
-  #     unless motion.group == nil
-  #       sum += motion.percent_voted
-  #     end
-  #   end
-  #   h1 { "#{sum / Motion.count}%" }
-  # end
-
   # Define your dashboard sections here. Each block will be
   # rendered on the dashboard in the context of the view. So just
   # return the content which you would like to display.
