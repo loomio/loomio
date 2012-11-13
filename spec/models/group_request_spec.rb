@@ -19,6 +19,7 @@ describe GroupRequest do
       group.stub :creator=
       group.stub :creator => stub(:user)
       group.stub :cannot_contribute=
+      group.stub :max_size=
       group.stub :save!
       InvitesUsersToGroup.stub :invite!
     end
@@ -28,6 +29,7 @@ describe GroupRequest do
             and_return(group)
       group.should_receive(:creator=)
       group.should_receive(:cannot_contribute=)
+      group.should_receive(:max_size=)
       group.should_receive(:save!)
       group_request.approve!
     end
