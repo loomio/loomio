@@ -5,13 +5,12 @@ class InvitationsController < BaseController
   def show
     if @invitation.nil? || @invitation.accepted?
       render "invitation_accepted_error_page"
-    else  
+    else
+      session[:invitation] = @invitation.token
+      @inviter = @invitation.inviter
       if user_signed_in?
-        @invitation.accept!(current_user)
+        flash[:success] = "You have been added to #{@group.name}."
         redirect_to group_url(@invitation.group_id)
-      else
-        @inviter = @invitation.inviter
-        session[:invitation] = @invitation.token
       end
     end
   end

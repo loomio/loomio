@@ -80,6 +80,14 @@ Then /^I should see a message that the invitation has already been used$/ do
   page.should have_content('This invitation has already been accepted by another user')
 end
 
+Given /^I have requested to start a loomio group and the requst has been approved$/ do
+  step 'I have been invited to join a loomio group and I am a new user'
+end
+
+Then /^I should become the admin of the group$/ do
+  @user.is_group_admin?(@group).should == true
+end
+
 Then /^I should be taken to the group\'s demo proposal page$/ do
   page.should have_content("We should have a holiday on the moon!")
 end
