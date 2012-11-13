@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112031644) do
+ActiveRecord::Schema.define(:version => 20121112221643) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20121112031644) do
     t.integer  "group_id"
     t.boolean  "cannot_contribute", :default => false
     t.string   "expected_size"
+    t.integer  "max_size",          :default => 50
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"

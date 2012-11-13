@@ -1,5 +1,5 @@
 class GroupRequest < ActiveRecord::Base
-  attr_accessible :admin_email, :description, :expected_size, :name, :cannot_contribute
+  attr_accessible :admin_email, :description, :expected_size, :name, :cannot_contribute, :max_size
 
   belongs_to :group
 
@@ -27,6 +27,7 @@ class GroupRequest < ActiveRecord::Base
     @group = Group.new(:name => name)
     @group.creator = User.get_loomio_user
     @group.cannot_contribute = cannot_contribute
+    @group.max_size = max_size
     @group.save!
     self.group_id = @group.id
     GroupMailer.new_group_invited_to_loomio(admin_email, name).deliver

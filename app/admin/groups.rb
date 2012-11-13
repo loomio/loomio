@@ -11,6 +11,7 @@ ActiveAdmin.register Group do
   index :download_links => false do
     column :id
     column :name
+    column :max_size
     column "Members", :memberships_count
     column "Discussions" do |group|
       group.discussions.count
