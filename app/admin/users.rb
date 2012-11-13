@@ -3,7 +3,7 @@ ActiveAdmin.register User do
   filter :name
   filter :email
 
-  index do
+  index :download_links => false do
     column :name
     column :email
     column "Invitation Link" do |user|
