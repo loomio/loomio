@@ -1,6 +1,6 @@
 class GroupMailer < ActionMailer::Base
   include ApplicationHelper
-  default :from => "\"Loomio\" <noreply@loom.io>"
+  default :from => "\"Loomio\" <noreply@loomio.org>"
 
   def new_membership_request(membership)
     @user = membership.user
@@ -29,4 +29,3 @@ class GroupMailer < ActionMailer::Base
       end
     end
   end
-end

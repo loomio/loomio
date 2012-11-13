@@ -30,6 +30,7 @@ gem 'redcarpet', :git => 'https://github.com/vmg/redcarpet.git'
 gem 'paper_trail', '~> 2'
 gem "high_voltage"
 gem 'thin'
+gem 'rack-canonical-host'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
@@ -41,7 +42,7 @@ gem 'coffee-rails', '~> 3.2.2'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails' # Can we remove this?
   gem 'bootstrap-sass', '~>2.0.3'
   gem 'uglifier', '>= 1.0.3'
   gem 'modernizr-rails', '~> 2.0.6'
@@ -85,6 +86,7 @@ group :test do
   gem 'email_spec'
 end
 
-group :production do
+group :staging, :production do
   gem 'newrelic_rpm'
+  gem 'aws-sdk'
 end

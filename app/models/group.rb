@@ -118,7 +118,7 @@ class Group < ActiveRecord::Base
     elsif creator
       creator.email
     else
-      "noreply@loom.io"
+      "noreply@loomio.org"
     end
   end
 

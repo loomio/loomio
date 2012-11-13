@@ -59,21 +59,31 @@ Loomio::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  #config.action_mailer.delivery_method = :smtp
-  #config.action_mailer.smtp_settings = {
-        #:address => "127.0.0.1",
-        #:enable_starttls_auto => false
-    #}
-  #config.action_mailer.perform_deliveries = true
-  #config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.default_url_options = {
-    :host => 'loom.io',
+  # Send emails using SendGrid
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'loomio.org'
   }
 
-  # Send deprecation notices to registered listeners
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = {
+    :host => 'www.loomio.org',
+  }
+
+  # Store avatars on Amazon S3
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['AWS_UPLOADS_BUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
 end

@@ -19,7 +19,7 @@ describe GroupMailer do
     end
 
     it 'renders the sender email' do
-      @mail.from.should == ['noreply@loom.io']
+      @mail.from.should == ['noreply@loomio.org']
     end
 
     it 'assigns correct reply_to' do
@@ -75,26 +75,5 @@ describe GroupMailer do
 
     its(:subject) { should == "[Loomio: #{@group.full_name}] #{@subject}" }
     its(:to) { should == [@recipient.email] }
-    its(:from) { should == ['noreply@loom.io'] }
+    its(:from) { should == ['noreply@loomio.org'] }
   end
-
-  # describe "#invite_to_group" do
-  #   before :each do
-  #     @recipient_email = "newperson@testgroupy.com"
-  #     @invite = double(:inviter_name => "Bloop",
-  #                      :inviter_email => "goobly@goog.com",
-  #                      :group_full_name => "Newww group",
-  #                      :token => "asbglkh")
-  #     @mail = GroupMailer.invite_to_group(@recipient_email, @invite)
-  #   end
-
-  #   subject { @mail }
-
-  #   its(:subject) { should eq("#{@invite.inviter_name} has invited you to join " +
-  #                             "#{@invite.group_full_name} on Loomio") }
-  #   its(:to) { should eq([@recipient_email]) }
-  #   its(:from) { should eq(["contact@loom.io"]) }
-  #   its(:reply_to) { should eq([@invite.inviter_email]) }
-  #   its(:body) { should match(/#{@invite.token}/) }
-  # end
-end
