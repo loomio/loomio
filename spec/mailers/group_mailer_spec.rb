@@ -77,3 +77,4 @@ describe GroupMailer do
     its(:to) { should == [@recipient.email] }
     its(:from) { should == ['noreply@loomio.org'] }
   end
+end

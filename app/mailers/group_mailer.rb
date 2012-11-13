@@ -29,3 +29,4 @@ class GroupMailer < ActionMailer::Base
       end
     end
   end
+end

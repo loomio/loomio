@@ -10,7 +10,7 @@ class InvitesUsersToGroup
                          :group => group,
                          :access_level => access_level)
       GroupInvitationMailer.send("invite_#{access_level}",
-                                  :recipient_email => recipient_emails,
+                                  :recipient_email => recipient_email,
                                   :group => group,
                                   :inviter => inviter,
                                   :token => invitation.token).deliver
