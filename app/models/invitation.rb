@@ -14,8 +14,8 @@ class Invitation < ActiveRecord::Base
 
   def accept!(user)
     group = Group.find(group_id)
-    group.add_member!(user)
-    accepted = true
+    group.add_admin!(user)
+    self.accepted = true
     save!
   end
 

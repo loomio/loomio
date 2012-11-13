@@ -30,6 +30,12 @@ Feature: User accepts invitation to Loomio group
     Then I should become a member of the group
     And I should be taken to the group page
 
+  Scenario: User being the first to accept the invite becomes the group admin
+    Given I have requested to start a loomio group and the requst has been approved
+    When I open the email and click the invitation link
+    And I log in
+    Then I should become the admin of the group
+
   Scenario: User tries to create an account without an invitation
     Given I have not received an invitation
     When I visit the create account page
