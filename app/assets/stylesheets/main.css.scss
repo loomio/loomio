@@ -23,22 +23,19 @@ hr {
 }
 
 // typography
-h1 {
-  color: $mid-grey;
+h1, h4, h5 {
+  color: $header-title-color;
 }
-h2 { font-weight: normal; }
-h4 { color: $header-title-color; }
 h2, h3 {
   line-height: 1.6em;
   display: inline;
-  a { color: $group-title-color; }
-  a:hover { color: $group-title-color; }
-  color: $group-title-color; 
+  color: $header-title-color;
+  a { color: $header-link-color; }
+  a:hover { color: $header-link-color; }
 }
 
 // structural elements (containers etc.)
 .page-container { margin-top: 30px; }
-.page-title { color: $header-title-color; }
 .group-link.clearfix {
   .group-link-name { float: left; }
   .group-link-activity { float: right; }
@@ -46,9 +43,6 @@ h2, h3 {
 }
 .popover { z-index: 10000; }
 
-.sub-panel li .group-link a {
-  text-decoration: none;
-}
 .sub_group {font-size: $font-tiny;}
 
 // #start-new-discussion { margin: 0 0 20px 2px; }

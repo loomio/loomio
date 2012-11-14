@@ -9,6 +9,9 @@ body.discussions.new {
 
 /** discussion show form*/
 body.discussions.show {
+  h2#discussion-title {
+    font-size: 22px;
+  }
   .selector-panel {
     background-color: $selector-panel;
     @include border-radius(8px);
@@ -16,11 +19,6 @@ body.discussions.show {
     margin-bottom: 20px;
     min-height: 59px;
     padding-top: 2px;
-    h2.panel-header {
-      padding-left: 10px;
-      float: left;
-      min-height: 3px;
-    }
     .dropdown {
       float: right;
       padding: 5px 10px;
@@ -95,8 +93,8 @@ body.discussions.show {
   }
 
   .header-text {
-    color: $mid-grey;
-    font-weight: bold;
+  //   color: $mid-grey;
+  //   font-weight: bold;
     line-height: 2.0em;
   }
 }
@@ -163,6 +161,9 @@ li s hard.motion-preview {
   }
   h4{
     font-size: 1.1em;
+  }
+  h5{
+    font-size: 1.0em;
   }
 }
 

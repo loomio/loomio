@@ -1,5 +1,5 @@
 .page-container
   - group = GroupDecorator.decorate(@discussion.group) if @discussion.group
   = render '/groups/title', group: group
-  %h2.page-title Start a discussion
+  %h3 Start a discussion
   = render "/discussions/form", :discussion => @discussion, :user_groups => @user_groups
