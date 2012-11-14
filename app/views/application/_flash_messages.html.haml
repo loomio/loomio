@@ -3,6 +3,11 @@
     <a class="close" data-dismiss="alert" href="#">×</a>
     = message
 
+- if !user_signed_in? && !on_landing_page && controller_name != "invitations"
+  %div.alert-message{ "data-alert" => "alert", :class => "alert alert-warning" }
+    = link_to "Sign in", new_user_session_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
+    to participate.
+    You are currently logged out.
 
 -#
 -# SYSTEM MESSAGE
@@ -17,7 +22,7 @@
     -#%br
     -#%br
     -#It's going to take some experimenting and tweaking to get this system just right,
-    -#so if you have any feedback please don't hesitate to send us an email at contact@loom.io.
+    -#so if you have any feedback please don't hesitate to send us an email at contact@loomio.org.
     -#%br
     -#%br
     -#This is just the beginning of our effort to improve notifications on Loomio.

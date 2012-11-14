@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
-             motion_closed membership_requested user_added_to_group comment_liked]
+             motion_closing_soon motion_closed membership_requested user_added_to_group comment_liked]
 
   has_many :notifications, :dependent => :destroy
   belongs_to :eventable, :polymorphic => true
@@ -50,6 +50,13 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def self.motion_closing_soon!(motion)
+    event = create!(:kind => "motion_closing_soon", :eventable => motion)
+    motion.group_users.each do |user|
+      event.notifications.create! :user => user
+    end
+  end
+
   def self.new_vote!(vote)
     event = create!(:kind => "new_vote", :eventable => vote)
     begin
@@ -90,7 +97,7 @@ class Event < ActiveRecord::Base
     event.notifications.create! :user => membership.user
     # Send email only if the user has already accepted invitation to Loomio
     if membership.user.accepted_or_not_invited?
-      UserMailer.added_to_group(membership.user, membership.group).deliver
+      UserMailer.added_to_group(membership).deliver
     end
     event
   end

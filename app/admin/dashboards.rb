@@ -18,32 +18,8 @@ ActiveAdmin::Dashboards.build do
     h1 { Discussion.count }
   end
 
-  section "Discussion Per Group (Average)", :priority => 5 do
-    sum = 0.0
-    Group.all.each do |group|
-      sum += group.discussions.count
-    end
-    h1 { "#{(sum / Group.count).round}" }
-  end
-
-  section "Comments Per Discussion (Average)", :priority => 6 do
-    sum = 0
-    Discussion.all.each do |discussion|
-      sum += discussion.comments.count
-    end
-    h1 { "#{sum / Discussion.count}" }
-  end
-
   section "Proposals", :priority => 7 do
     h1 { Motion.count }
-  end
-
-  section "Proposal Engagement (Average)", :priority => 8 do
-    sum = 0
-    Motion.all.each do |motion|
-      sum += motion.percent_voted
-    end
-    h1 { "#{sum / Motion.count}%" }
   end
 
   # Define your dashboard sections here. Each block will be

@@ -1,0 +1,15 @@
+- if user_signed_in? && user.is_group_member?(motion.group)
+  %span.popover-current-position
+    = "Your position"
+    .popover-current-position-icon= render "motions/display_icons", position: user.get_position_for(motion)
+
+.popover-engagement
+  = "Engagement #{motion.percent_voted}%"
+
+- if motion_activity > 0
+  .popover-header
+    New activity
+  %ul.popover-activity-list
+    - motion.votes.order('created_at DESC')[(0..motion_activity - 1)].each do |vote|
+      %li.popover-item
+        = render "discussions/graph_preview_pop_over_votes", vote: vote, motion: motion

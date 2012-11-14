@@ -15,7 +15,7 @@ class Ability
     can :show, Group, :viewable_by => :parent_group_members,
                       :parent_id => user.group_ids
 
-    can [:update, :email_members, :edit_description], Group, :id => user.adminable_group_ids
+    can [:update, :email_members, :edit_description, :edit_privacy], Group, :id => user.adminable_group_ids
 
     can [:add_subgroup], Group, :id => user.group_ids
 
@@ -56,7 +56,7 @@ class Ability
 
     can :index, Discussion
 
-    can [:add_comment, :new_proposal, :create, :edit_description, :edit_title], Discussion, :group_id => user.group_ids
+    can [:add_comment, :new_proposal, :create, :edit_description, :edit_title, :show_description_history, :preview_version, :update_version], Discussion, :group_id => user.group_ids
 
     can :destroy, Comment, user_id: user.id
 
@@ -65,8 +65,10 @@ class Ability
     #
     # MOTIONS
     #
+    can :get_and_clear_new_activity, Motion do |motion|
+      can? :show, motion.group
+    end
     can :create, Motion, :discussion_id => user.discussion_ids
-
     can [:destroy, :close_voting, :open_voting, :edit_outcome], Motion, :author_id => user.id
     can [:destroy, :close_voting, :open_voting, :edit_outcome], Motion,
       :discussion => { :group_id => user.adminable_group_ids }

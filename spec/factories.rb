@@ -22,13 +22,29 @@ FactoryGirl.define do
   factory :discussion do
     association :author, :factory => :user
     group
-    title 'Title of discussion'
+    title Faker::Lorem.sentence(2)
     description 'A description for this discussion'
     after(:build) do |discussion|
+      discussion.group.parent.add_member!(discussion.author) if discussion.group.parent
       discussion.group.add_member!(discussion.author)
     end
     after(:create) do |discussion|
       discussion.group.save
+    end
+  end
+
+  factory :comment do
+    user
+    association :commentable, factory: :discussion
+    title Faker::Lorem.sentence(2)
+    body 'body of the comment'
+
+    after(:build) do |comment|
+      comment.discussion.group.parent.add_member!(comment.user) if comment.discussion.group.parent
+      comment.discussion.group.add_member!(comment.user)
+    end
+    after(:create) do |comment|
+      comment.discussion.group.save
     end
   end
 
@@ -44,6 +60,11 @@ FactoryGirl.define do
     after(:create) do |motion|
       motion.group.save
     end
+  end
+
+  factory :motion_read_log do
+    user
+    motion
   end
 
   factory :vote do

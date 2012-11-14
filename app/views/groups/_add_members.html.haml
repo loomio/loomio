@@ -37,8 +37,6 @@
               - if no_member_limit || invites_left > 0
                 = f.submit "Send invite", class: "btn btn-info", id: "user-submit", :data => { :disable_with => "Sending" }
       - else
-        %a.btn.btn-small.btn-icon.subgroup-add-members{href: "#invite-subgroup-members", 'data-toggle' => "modal" }
-          .small-icon.member-icon
-          .btn-text Add members +
+        = icon_button("#invite-subgroup-members", 'Add new member', '/assets/member-18.png', 'group-add-members', true)
         #invite-subgroup-members.modal.hidden
           = render 'subgroup_add_members', group: group

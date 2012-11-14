@@ -1,3 +1,8 @@
+# Set placeholders
+$ ->
+  if $("body.discussions.new").length > 0
+    $('input, textarea').placeholder()
+
 # Edit title
 $ ->
   if $("body.discussions.show").length > 0
@@ -12,18 +17,4 @@ $ ->
       event.preventDefault()
     )
 
-    $(".edit-discussion-description").click (e)->
-      $(".discussion-description-helper-text").toggle()
 
-#expand/srink description text
-$ ->
-  if $("body.discussions.show").length > 0
-    $(".see-more").click((event) ->
-      $(this).parent().children(".short-description").toggle()
-      $(this).parent().children(".long-description").toggle()
-      if $(this).html() == "Show More"
-        $(this).html("Show Less")
-      else
-        $(this).html("Show More")
-      event.preventDefault()
-    )

@@ -11,18 +11,20 @@ Loomio::Application.routes.draw do
     post :add_members, on: :member
     get :add_subgroup, on: :member
     resources :motions#, name_prefix: "groups_"
-    resources :discussions, only: :index
+    resources :discussions, only: [:index, :new]
     get :request_membership, on: :member
     get :new_motion, :on => :member
     post :create_motion, :on => :member
     post :email_members, on: :member
     post :edit_description, :on => :member
+    post :edit_privacy, on: :member
   end
 
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
 
   resources :motions do
     resources :votes
+    post :get_and_clear_new_activity, on: :member
     put :edit_outcome, :on => :member
   end
   match "/motions/:id/close", :to => "motions#close_voting", :as => :close_motion_voting,
@@ -30,12 +32,15 @@ Loomio::Application.routes.draw do
   match "/motions/:id/open", :to => "motions#open_voting", :as => :open_motion_voting,
         :via => :post
 
-  resources :discussions, only: [:index, :show, :create, :update] do
+  resources :discussions, except: [:destroy, :edit] do
     post :edit_description, :on => :member
     post :add_comment, :on => :member
+    post :show_description_history, :on => :member
     get :new_proposal, :on => :member
     post :edit_title, :on => :member
   end
+  post "/discussion/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
+  post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"
 
   resources :notifications, :only => :index do
     post :mark_as_viewed, :on => :collection, :via => :post
@@ -69,16 +74,21 @@ Loomio::Application.routes.draw do
     post :unlike, on: :member
   end
   match "/settings", :to => "users#settings", :as => :user_settings
+  match 'email_preferences', :to => "users#email_preferences", :as => :email_preferences
 
   # route logged in user to dashboard
   resources :dashboard, only: :show
+
   authenticated do
     root :to => 'dashboard#show'
   end
-  # route logged out user to landing page
-  resources :landing, only: :show
-  root :to => 'landing#show'
-  match '/demo' => 'landing#demo'
-  match '/browser_not_supported' => 'landing#browser_not_supported',
-    :as => :browser_not_supported
+
+  root :to => 'high_voltage/pages#show', :id => 'home'
+  match '/demo' => 'high_voltage/pages#show', :id => 'demo'
+  match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
+  match '/how-it-works' => 'high_voltage/pages#show', :id => 'how_it_works'
+  match '/get-involved' => 'high_voltage/pages#show', :id => 'get_involved'
+  match '/about' => 'high_voltage/pages#show', :id => 'about'
+  match '/contact' => 'high_voltage/pages#show', :id => 'contact'
+  match '/blog' => 'high_voltage/pages#show', :id => 'blog'
 end
