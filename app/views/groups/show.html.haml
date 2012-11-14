@@ -10,7 +10,7 @@
 .clearfix
   =render 'application/helper_bot'
   - if can? :create, @discussion
-    = icon_button('#new-discussion', 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion', true)
+    = icon_button(new_discussion_path(:group_id => @group.id), 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion')
 .row.main-content
   %section.span8
     %ul.selector-list.bordered
@@ -38,6 +38,3 @@
     =render 'membership_requests', group: @group
     =render 'members', group: @group
   =render '/application/closed_motions', user: nil, group: @group
-
-- if can? :create, @discussion
-  =render '/discussions/new', discussion: @discussion, user_groups: nil

@@ -33,19 +33,21 @@ gem 'jquery-atwho-rails'
 gem 'paper_trail', '~> 2'
 gem "high_voltage"
 gem 'thin'
+gem 'rack-canonical-host'
+gem 'sanitize_email'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
 #
 #       https://github.com/rails/sass-rails/issues/38#issuecomment-2046678
 gem 'sass-rails',   '~> 3.2.5'
+gem 'coffee-rails', '~> 3.2.2'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails' # Can we remove this?
   gem 'bootstrap-sass', '~>2.0.3'
-  gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.0.3'
   gem 'modernizr-rails', '~> 2.0.6'
 end
@@ -63,6 +65,7 @@ group :development, :test do
   gem 'jasminerice'
   gem 'guard-jasmine'
   gem 'selenium-webdriver', '2.25.0'
+  gem 'letter_opener'
 end
 
 group :development do
@@ -88,6 +91,7 @@ group :test do
   gem 'email_spec'
 end
 
-group :production do
+group :staging, :production do
   gem 'newrelic_rpm'
+  gem 'aws-sdk'
 end

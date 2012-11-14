@@ -83,6 +83,11 @@ GEM
     awesome_nested_set (2.1.2)
       activerecord (>= 3.0.0)
     awesome_print (1.0.2)
+    aws-sdk (1.3.9)
+      httparty (~> 0.7)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.3)
     bourbon (2.1.1)
@@ -205,6 +210,9 @@ GEM
     high_voltage (1.2.0)
     highline (1.6.8)
     hike (1.2.1)
+    httparty (0.8.3)
+      multi_json (~> 1.0)
+      multi_xml
     i18n (0.6.1)
     inherited_resources (1.3.0)
       has_scope (~> 0.5.0)
@@ -231,6 +239,8 @@ GEM
     less-rails (2.2.3)
       actionpack (>= 3.1)
       less (~> 2.2.0)
+    letter_opener (1.0.0)
+      launchy (>= 2.0.4)
     libv8 (3.3.10.4)
     libwebsocket (0.1.5)
       addressable
@@ -246,6 +256,7 @@ GEM
     mime-types (1.19)
     modernizr-rails (2.0.6)
     multi_json (1.3.6)
+    multi_xml (0.5.1)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -253,7 +264,7 @@ GEM
     net-ssh (2.2.1)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    newrelic_rpm (3.4.2.1)
+    newrelic_rpm (3.5.0.1)
     nokogiri (1.5.5)
     orm_adapter (0.0.7)
     paper_trail (2.6.3)
@@ -276,6 +287,9 @@ GEM
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-canonical-host (0.0.8)
+      addressable
+      rack (~> 1.0)
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.1)
@@ -332,6 +346,7 @@ GEM
     ruby_parser (2.3.1)
       sexp_processor (~> 3.0)
     rubyzip (0.9.9)
+    sanitize_email (1.0.4)
     sass (3.1.11)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -380,6 +395,7 @@ GEM
     uglifier (1.1.0)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    uuidtools (2.1.3)
     warden (1.1.1)
       rack (>= 1.0)
     xpath (0.1.4)
@@ -394,6 +410,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 2.2.2)!
   acts_as_commentable_with_threading
   awesome_print
+  aws-sdk
   bootstrap-sass (~> 2.0.3)
   browser
   cancan
@@ -430,6 +447,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   launchy
+  letter_opener
   modernizr-rails (~> 2.0.6)
   newrelic_rpm
   nokogiri
@@ -437,6 +455,7 @@ DEPENDENCIES
   paperclip
   pg
   rabl
+  rack-canonical-host
   rails (= 3.2.6)
   rails-backbone
   rails_best_practices
@@ -447,6 +466,7 @@ DEPENDENCIES
   rmagick
   rspec-rails
   ruby-prof!
+  sanitize_email
   sass-rails (~> 3.2.5)
   selenium-webdriver (= 2.25.0)
   shoulda-matchers

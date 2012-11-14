@@ -1,3 +1,8 @@
+# Set placeholders
+$ ->
+  if $("body.discussions.new").length > 0
+    $('input, textarea').placeholder()
+
 # Edit title
 $ ->
   if $("body.discussions.show").length > 0

@@ -11,7 +11,7 @@ Loomio::Application.routes.draw do
     post :add_members, on: :member
     get :add_subgroup, on: :member
     resources :motions#, name_prefix: "groups_"
-    resources :discussions, only: :index
+    resources :discussions, only: [:index, :new]
     get :request_membership, on: :member
     get :new_motion, :on => :member
     post :create_motion, :on => :member
@@ -33,7 +33,7 @@ Loomio::Application.routes.draw do
   match "/motions/:id/open", :to => "motions#open_voting", :as => :open_motion_voting,
         :via => :post
 
-  resources :discussions, only: [:index, :show, :create, :update] do
+  resources :discussions, except: [:destroy, :edit] do
     post :edit_description, :on => :member
     post :add_comment, :on => :member
     post :show_description_history, :on => :member
@@ -75,6 +75,7 @@ Loomio::Application.routes.draw do
     post :unlike, on: :member
   end
   match "/settings", :to => "users#settings", :as => :user_settings
+  match 'email_preferences', :to => "users#email_preferences", :as => :email_preferences
 
   # route logged in user to dashboard
   resources :dashboard, only: :show
@@ -86,4 +87,9 @@ Loomio::Application.routes.draw do
   root :to => 'high_voltage/pages#show', :id => 'home'
   match '/demo' => 'high_voltage/pages#show', :id => 'demo'
   match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
+  match '/how-it-works' => 'high_voltage/pages#show', :id => 'how_it_works'
+  match '/get-involved' => 'high_voltage/pages#show', :id => 'get_involved'
+  match '/about' => 'high_voltage/pages#show', :id => 'about'
+  match '/contact' => 'high_voltage/pages#show', :id => 'contact'
+  match '/blog' => 'high_voltage/pages#show', :id => 'blog'
 end
