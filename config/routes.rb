@@ -32,7 +32,7 @@ Loomio::Application.routes.draw do
   match "/motions/:id/open", :to => "motions#open_voting", :as => :open_motion_voting,
         :via => :post
 
-  resources :discussions, only: [:index, :show, :create, :update] do
+  resources :discussions, except: [:destroy, :edit] do
     post :edit_description, :on => :member
     post :add_comment, :on => :member
     post :show_description_history, :on => :member
