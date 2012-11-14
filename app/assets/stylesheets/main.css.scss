@@ -24,36 +24,21 @@ hr {
 
 // typography
 h1 {
-	font-size: $font-xlarge;
   color: $mid-grey;
-  a { color: $mid-grey; }
-  a:hover { color: $mid-grey; }
-  font-weight: normal;
+}
+h2 { font-weight: normal; }
+h4 { color: $header-title-color; }
+h2, h3 {
   line-height: 1.6em;
   display: inline;
-}
-h2 {
-    font-size: $font-large;
-    color: $header-titles-color;
-    font-weight: normal;
-    line-height: 1.6em;
-    display: inline;
-}
-h3 {
-  font-weight: bold;
-	font-size: $font-medium-large;
-}
-
-h4 {
-  font-weight: normal;
-  font-size: $font-small;
-}
-h5 {
-  font-size: $font-tiny;
+  a { color: $group-title-color; }
+  a:hover { color: $group-title-color; }
+  color: $group-title-color; 
 }
 
 // structural elements (containers etc.)
 .page-container { margin-top: 30px; }
+.page-title { color: $header-title-color; }
 .group-link.clearfix {
   .group-link-name { float: left; }
   .group-link-activity { float: right; }
