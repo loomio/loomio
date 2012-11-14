@@ -1,6 +1,6 @@
 class MotionMailer < ActionMailer::Base
   include ApplicationHelper
-  default :from => "\"Loomio\" <noreply@loom.io>"
+  default :from => "\"Loomio\" <noreply@loomio.org>"
 
   def new_motion_created(motion, email)
     @motion = motion
@@ -14,7 +14,7 @@ class MotionMailer < ActionMailer::Base
     @motion = motion
     @group = motion.group
     mail( to: email, 
-          reply_to: "noreply@loom.io",
+          reply_to: "noreply@loomio.org",
           subject: "#{email_subject_prefix(@group.full_name)} Proposal closed - #{@motion.name}")
   end
 

@@ -27,14 +27,21 @@
   :coffeescript
     $ ->
       # Display vote graph
-      @pie_graph_view = new Loomio.Views.Utils.GraphView
-        el: '.pie'
-        id_string: "graph_#{motion.id}"
-        legend: false
-        data: #{motion.votes_graph_ready.to_json}
-        type: 'pie'
-        tooltip_selector: '#tooltip'
-        diameter: 25
-        padding: 1
-        gap: 1
-        shadow: 0.75
+      make_the_graph = ->
+        @pie_graph_view = new Loomio.Views.Utils.GraphView
+          el: '.pie'
+          id_string: "graph_#{motion.id}"
+          legend: false
+          data: #{motion.votes_graph_ready.to_json}
+          type: 'pie'
+          tooltip_selector: '#tooltip'
+          diameter: 25
+          padding: 1
+          gap: 1
+          shadow: 0.75
+          
+      # IE8 FIX - for some reason we have to load the graph after everything else.
+      # Otherwise, the graph doesn't display in IE8.
+      #
+      # Ideally, we'd like to be able to delete this line:
+      $(window).load(make_the_graph)

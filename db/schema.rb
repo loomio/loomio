@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121003033500) do
+ActiveRecord::Schema.define(:version => 20121025235642) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -112,9 +112,9 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
     t.string   "admin_email"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
-    t.boolean  "cannot_contribute", :default => false
     t.string   "status"
     t.integer  "group_id"
+    t.boolean  "cannot_contribute", :default => false
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
@@ -153,7 +153,8 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
     t.datetime "updated_at"
     t.string   "access_level"
     t.integer  "inviter_id"
-    t.datetime "group_last_viewed_at", :null => false
+    t.datetime "group_last_viewed_at",              :null => false
+    t.boolean  "subscribed_to_notification_emails"
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
@@ -161,11 +162,11 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "motion_read_logs", :force => true do |t|
-    t.integer  "motion_activity_when_last_read"
     t.integer  "motion_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "motion_last_viewed_at"
   end
 
   create_table "motions", :force => true do |t|
@@ -178,8 +179,8 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
     t.string   "discussion_url", :default => "",       :null => false
     t.datetime "close_date"
     t.integer  "discussion_id"
-    t.integer  "activity",       :default => 0
     t.string   "outcome"
+    t.datetime "last_vote_at"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
@@ -197,45 +198,59 @@ ActiveRecord::Schema.define(:version => 20121003033500) do
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                      :default => "",    :null => false
-    t.string   "encrypted_password",                         :default => ""
+    t.string   "email",                                                       :default => "",    :null => false
+    t.string   "encrypted_password",                           :limit => 128, :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                              :default => 0
+    t.integer  "sign_in_count",                                               :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                                      :default => false
+    t.boolean  "admin",                                                       :default => false
     t.string   "name"
     t.string   "unconfirmed_email"
-    t.string   "invitation_token",             :limit => 60
+    t.string   "invitation_token",                             :limit => 60
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.datetime "deleted_at"
-    t.boolean  "has_read_system_notice",                     :default => false, :null => false
-    t.boolean  "is_admin",                                   :default => false
+    t.boolean  "has_read_system_notice",                                      :default => false, :null => false
+    t.boolean  "is_admin",                                                    :default => false
     t.string   "avatar_kind"
     t.string   "uploaded_avatar_file_name"
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
-    t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
-    t.boolean  "has_read_group_notice",                      :default => false, :null => false
-    t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
+    t.boolean  "has_read_dashboard_notice",                                   :default => false, :null => false
+    t.boolean  "has_read_group_notice",                                       :default => false, :null => false
+    t.boolean  "has_read_discussion_notice",                                  :default => false, :null => false
+    t.boolean  "subscribed_to_daily_activity_email"
+    t.boolean  "subscribed_to_mention_notifications"
+    t.boolean  "subscribed_to_proposal_closure_notifications"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"
   add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
   create_table "votes", :force => true do |t|
     t.integer  "motion_id"

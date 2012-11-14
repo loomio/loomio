@@ -7,7 +7,7 @@ describe UserMailer do
     end
 
     it 'renders the sender email' do
-      @mail.from.should == ['noreply@loom.io']
+      @mail.from.should == ['noreply@loomio.org']
     end
   end
   context 'sending email on membership approval' do
@@ -36,7 +36,9 @@ describe UserMailer do
     before :all do
       @user = create(:user)
       @group = create(:group)
-      @mail = UserMailer.added_to_group(@user, @group)
+      @inviter = stub_model(User, :name => "Mr. Inviter")
+      @membership = stub_model(Membership, :user => @user, :group => @group, :inviter => @inviter)
+      @mail = UserMailer.added_to_group(@membership)
     end
 
     it_behaves_like 'email_meta'

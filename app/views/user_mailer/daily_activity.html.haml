@@ -1,0 +1,28 @@
+%h1 Your Loomio Activity
+%p Showing you what’s been happening in your Loomio groups in the last 24 hours
+
+%h2 Decisions
+-@groups.each do |group|
+  %h3=group.name
+  %p 
+    -@activity[group.name][:motions].each do |motion|
+      =link_to(motion.name, motion_url(motion))
+      -if motion.close_date.present?
+        \- closes in #{time_ago_in_words(motion.close_date)}
+      %br
+
+%h2 Discussions
+-@groups.each do |group|
+  %h3=group.name
+  %p
+    -@activity[group.name][:discussions].each do |discussion|
+      =link_to(discussion.title, discussion_url(discussion))
+      - num_new_comments = discussion.number_of_comments_since(@since_time)
+      - if num_new_comments > 0
+        \- #{pluralize(num_new_comments, "new comment", "new comments")}
+      - else
+        \- new discussion
+      %br
+    = "(#{link_to('Start a new discussion', new_group_discussion_url(group))})".html_safe
+
+%p=link_to 'Modify your email preferences', user_settings_url

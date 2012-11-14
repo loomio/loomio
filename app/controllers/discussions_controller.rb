@@ -1,11 +1,15 @@
 class DiscussionsController < GroupBaseController
-  load_and_authorize_resource :except => [:show, :create, :index]
+  load_and_authorize_resource :except => [:show, :new, :create, :index]
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :check_group_read_permissions, :only => :show
 
   def new
-    @group = GroupDecorator.new(Group.find(params[:discussion][:group_id]))
-    @discussion = Discussion.new(group: @group)
+    @discussion = Discussion.new
+    if params[:group_id]
+      @discussion.group_id = params[:group_id]
+    else
+      @user_groups = current_user.groups.order('name') unless params[:group_id]
+    end
   end
 
   def create
@@ -43,6 +47,7 @@ class DiscussionsController < GroupBaseController
 
   def show
     @discussion = Discussion.find(params[:id])
+    @last_collaborator = User.find @discussion.originator.to_i if @discussion.has_previous_versions?
     @group = GroupDecorator.new(@discussion.group)
     @current_motion = @discussion.current_motion
     @vote = Vote.new
@@ -84,10 +89,14 @@ class DiscussionsController < GroupBaseController
   end
 
   def edit_description
-    discussion = Discussion.find(params[:id])
-    @description = params[:description]
-    discussion.description = @description
-    discussion.save!
+    @discussion = Discussion.find(params[:id])
+    description = params[:description]
+    @discussion.description = description
+    @discussion.save!
+    @last_collaborator = User.find @discussion.originator.to_i
+    respond_to do |format|
+      format.js { render :action => 'update_version' }
+    end    
   end
 
   def edit_title
@@ -96,18 +105,49 @@ class DiscussionsController < GroupBaseController
     discussion.save!
   end
 
+  def show_description_history
+    @discussion = Discussion.find(params[:id])
+    @originator = User.find @discussion.originator.to_i
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def preview_version
+    # assign live item if no version_id is passed
+    if params[:version_id].nil?
+      @discussion = Discussion.find(params[:id])
+    else
+      version = Version.find(params[:version_id])
+      @discussion = version.reify
+    end
+    @originator = User.find @discussion.originator.to_i
+    respond_to do |format|
+      format.js { render :action => 'show_description_history' }
+    end    
+  end
+
+  def update_version
+    @version = Version.find(params[:version_id])
+    @version.reify.save!
+    @discussion = @version.item
+    @last_collaborator = User.find @discussion.originator.to_i
+    respond_to do |format|
+      format.js
+    end     
+  end
+
   private
 
-    def group
-      @group ||= find_group
-    end
+  def group
+    @group ||= find_group
+  end
 
-    def find_group
-      if (params[:id] && (params[:id] != "new"))
-        Discussion.find(params[:id]).group
-      elsif params[:discussion][:group_id]
-        Group.find(params[:discussion][:group_id])
-      end
+  def find_group
+    if (params[:id] && (params[:id] != "new"))
+      Discussion.find(params[:id]).group
+    elsif params[:discussion][:group_id]
+      Group.find(params[:discussion][:group_id])
     end
-
+  end
 end

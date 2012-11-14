@@ -94,10 +94,12 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
-                  :uploaded_avatar
+                  :uploaded_avatar, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications
 
   after_create :ensure_name_entry
   before_save :set_avatar_initials
+
+  scope :daily_activity_email_recipients, where({subscribed_to_daily_activity_email: true})
 
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
 
@@ -105,6 +107,11 @@ class User < ActiveRecord::Base
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
   end
 
+  def get_position_for(motion)
+    vote = Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
+    vote.position if vote
+  end
+  
   def voted?(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
   end
@@ -185,42 +192,28 @@ class User < ActiveRecord::Base
   end
 
   def update_motion_read_log(motion)
-    if MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first == nil
+    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+    if log.nil?
       motion_read_log = MotionReadLog.new
-      motion_read_log.motion_activity_when_last_read = motion.activity
       motion_read_log.user_id = id
       motion_read_log.motion_id = motion.id
-      motion_read_log.save
+      motion_read_log.save!
     else
-      log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-      log.motion_activity_when_last_read = motion.activity
-      log.save
+      log.motion_last_viewed_at = Time.now
+      log.save!
     end
-  end
-
-  def motion_activity_when_last_read(motion)
-    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-    if log
-      log.motion_activity_when_last_read
-    else
-      0
-    end
-  end
-
-  def motion_activity_count(motion)
-    motion.activity - motion_activity_when_last_read(motion)
   end
 
   def update_discussion_read_log(discussion)
-    if DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first == nil
+    log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
+    if log.nil?
       discussion_read_log = DiscussionReadLog.new
-      discussion_read_log.discussion_last_viewed_at = Time.now()
+      discussion_read_log.discussion_last_viewed_at = Time.now
       discussion_read_log.user_id = id
       discussion_read_log.discussion_id = discussion.id
       discussion_read_log.save!
     else
-      log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
-      log.discussion_last_viewed_at = Time.now()
+      log.discussion_last_viewed_at = Time.now
       log.save!
     end
   end
