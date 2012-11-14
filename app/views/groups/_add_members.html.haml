@@ -2,9 +2,7 @@
   - if can? :add_members, group
     .clearfix
       - if group.parent.blank?
-        %a.btn.btn-small.btn-icon#group-add-members{href: "#invite-group-members", 'data-toggle' => "modal" }
-          .small-icon.member-icon
-          .btn-text Add new member
+        = icon_button('#invite-group-members', 'Add new member', '/assets/member-18.png', 'group-add-members', true)
         #invite-group-members.modal.hidden
           - no_member_limit = true
           - invites_left = 0

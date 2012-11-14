@@ -18,21 +18,6 @@ $ ->
         event.preventDefault()
     )
 
-#*** add member form ***
-$ ->
-  if $("body.groups.show").length > 0
-    $("#group-add-members").click((event) ->
-      $("#group-add-members").addClass('hidden')
-      $("#invite-group-members").removeClass('hidden')
-      $("#user_email").focus()
-      event.preventDefault()
-    )
-    $("#cancel-add-members").click((event) ->
-      $("#group-add-members").removeClass('hidden')
-      $("#invite-group-members").addClass('hidden')
-      event.preventDefault()
-    )
-
 #*** ajax for discussions on group page ***
 $ ->
   if $("body.groups.show").length > 0 && $('#group-discussions').html() != null
