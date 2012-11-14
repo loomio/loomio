@@ -320,8 +320,7 @@ You'll be prompted to make a short statement about the reason for your decision.
         :description => motion_str, :close_date => Time.now + 7.days)
       motion.save
       membership.destroy
-    end
-  end
+    end  end
 
   # Validators
   def limit_inheritance

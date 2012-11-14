@@ -31,6 +31,7 @@ gem 'paper_trail', '~> 2'
 gem "high_voltage"
 gem 'thin'
 gem 'rack-canonical-host'
+gem 'sanitize_email'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
@@ -61,6 +62,7 @@ group :development, :test do
   gem 'jasminerice'
   gem 'guard-jasmine'
   gem 'selenium-webdriver', '2.25.0'
+  gem 'letter_opener'
 end
 
 group :development do
