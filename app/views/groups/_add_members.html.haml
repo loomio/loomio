@@ -8,7 +8,7 @@
             = devise_error_messages!
             = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
             = f.input :email, placeholder: "Email address", label: false
-            = f.submit "Invite", class: "btn btn-small", id: 'invite'
+            = f.submit "Invite", class: "btn btn-small", id: 'invite', :disable_with => "Invite"
             = link_to "Cancel", "#", id: 'cancel-add-members'
         %input#group_id{ type: "hidden", value: group.id }
       - else

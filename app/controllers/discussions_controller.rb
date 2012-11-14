@@ -1,11 +1,15 @@
 class DiscussionsController < GroupBaseController
-  load_and_authorize_resource :except => [:show, :create, :index]
+  load_and_authorize_resource :except => [:show, :new, :create, :index]
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :check_group_read_permissions, :only => :show
 
   def new
-    @group = GroupDecorator.new(Group.find(params[:discussion][:group_id]))
-    @discussion = Discussion.new(group: @group)
+    @discussion = Discussion.new
+    if params[:group_id]
+      @discussion.group_id = params[:group_id]
+    else
+      @user_groups = current_user.groups.order('name') unless params[:group_id]
+    end
   end
 
   def create

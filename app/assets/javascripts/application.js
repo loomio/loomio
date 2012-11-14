@@ -11,6 +11,7 @@
 //= require lib/jqplot.pieRenderer.min
 //= require lib/jquery.tokeninput
 //= require lib/jquery.mousewheel
+//= require lib/jquery.placeholder
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync

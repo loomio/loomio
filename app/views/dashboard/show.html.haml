@@ -11,7 +11,7 @@
   =render '/groups/title', group: nil
   .clearfix
     =render 'application/helper_bot'
-    = icon_button('#new-discussion', 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion', true)
+    = icon_button(new_discussion_path, 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion')
   .row.main-content
     %section.span8
       %ul.selector-list.bordered
@@ -30,7 +30,6 @@
       =render 'groups'
       =render '/application/see_closed_motions'
     =render '/application/closed_motions', user: current_user, group: nil
-    =render '/discussions/new', discussion: @discussion, user_groups: @groups
 - else
   = link_to 'Create a group', new_group_path
   or wait until you are invited to one.
