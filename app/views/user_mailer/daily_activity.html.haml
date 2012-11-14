@@ -1,7 +1,7 @@
 %h1 Your Loomio Activity
-%p Showing you activity since #{@since_time_formatted}
+%p Showing you what’s been happening in your Loomio groups in the last 24 hours
 
-%h2 Proposals
+%h2 Decisions
 -@groups.each do |group|
   %h3=group.name
   %p 
