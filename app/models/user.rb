@@ -94,10 +94,12 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
-                  :uploaded_avatar
+                  :uploaded_avatar, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications
 
   after_create :ensure_name_entry
   before_save :set_avatar_initials
+
+  scope :daily_activity_email_recipients, where({subscribed_to_daily_activity_email: true})
 
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
 

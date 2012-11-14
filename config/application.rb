@@ -21,7 +21,7 @@ module Loomio
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    #config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += %W(#{config.root}/extras)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -50,17 +50,12 @@ module Loomio
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    # required for heroku
-    config.assets.initialize_on_precompile = false
-
-    # Email admin when server gets exceptions!
-    config.middleware.use ExceptionNotifier,
-      :email_prefix => "[Loomio Exception] ",
-      :sender_address => %{"Exception Notifier" <dudley@loomio.org>},
-      :exception_recipients => %w{jon.lemmon@enspiral.com}
-
     # Whitelist attributes so we never have to spend 2 days securing this app ;-)
     config.active_record.whitelist_attributes = true
+    config.active_record.observers = :notification_observer
+
+    # required for heroku
+    config.assets.initialize_on_precompile = false
 
   end
 end
