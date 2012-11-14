@@ -3,7 +3,7 @@
 @import "mixins";
 
 /** discussion new (new loomio) modal*/
-form.new_discussion {
+body.discussions.new {
   .helper-text.align-with-input { margin-top: 20px }
 }
 
