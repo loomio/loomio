@@ -9,10 +9,6 @@ body.discussions.new {
 
 /** discussion show form*/
 body.discussions.show {
-  // .group-title {
-  //   margin-bottom: 10px;
-  //   padding-top: 43px;
-  // }
   .selector-panel {
     background-color: $selector-panel;
     @include border-radius(8px);
@@ -41,7 +37,6 @@ body.discussions.show {
     display: inline-block;
     width: 850px;
     margin: 0 0 4px 0px;
-    h1 { color: $dark-grey; }
   }
   #edit-discussion-title {
     float: left;
@@ -101,6 +96,7 @@ body.discussions.show {
 
   .header-text {
     color: $mid-grey;
+    font-weight: bold;
     line-height: 2.0em;
   }
 }
