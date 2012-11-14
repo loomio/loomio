@@ -305,11 +305,14 @@ class User < ActiveRecord::Base
   end
 
   def generate_username
+    ensure_name_entry if name.nil?
     if name.include? '@'
       #email used in place of name
-      new_username = email.split("@").first 
+      email_str = email.split("@").first 
+      new_username = email_str.gsub(/\s+/, "").downcase
+    else
+      new_username = name.gsub(/\s+/, "").downcase
     end
-    new_username = name.gsub(/\s+/, "").downcase
     username_tmp = new_username.dup
     num = 1
     while(User.where("username = ?", username_tmp).count > 0)
