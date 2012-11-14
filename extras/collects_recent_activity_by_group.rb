@@ -10,7 +10,7 @@ class CollectsRecentActivityByGroup
       h = {}
       h[:discussions] = group.discussions.active_since(recent_time)
       h[:motions] = group.motions_in_voting_phase
-      r[group.name] = h
+      r[group.full_name] = h
     end
     r
 
