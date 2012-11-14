@@ -8,7 +8,7 @@ ActiveAdmin.register Group do
     group.includes [:creator]
   end
 
-  index do
+  index :download_links => false do
     column :id
     column :name
     column "Members", :memberships_count
