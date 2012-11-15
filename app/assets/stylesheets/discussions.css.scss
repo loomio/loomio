@@ -127,13 +127,13 @@ li s hard.motion-preview {
   font-size: 14px; /* should prob use a $var here eh? */
 }
 
-.comment-body, .model-description, .motion {
+.comment-body, .model-description, .motion .description {
   p {
     word-wrap: break-word;
   }
   ul, ol, li {
     margin-left: 10px;
-    word-wrap: break-word;    
+    word-wrap: break-word;
     line-height: 18px;
   }
   ul{
