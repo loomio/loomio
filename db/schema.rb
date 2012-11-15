@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112221643) do
+ActiveRecord::Schema.define(:version => 20121115004125) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20121112221643) do
     t.boolean  "cannot_contribute", :default => false
     t.string   "expected_size"
     t.integer  "max_size",          :default => 50
+    t.string   "robot_trap"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
@@ -203,19 +204,19 @@ ActiveRecord::Schema.define(:version => 20121112221643) do
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                                       :default => "",    :null => false
-    t.string   "encrypted_password",                           :limit => 128, :default => ""
+    t.string   "email",                                                      :default => "",    :null => false
+    t.string   "encrypted_password",                                         :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                               :default => 0
+    t.integer  "sign_in_count",                                              :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                                                       :default => false
+    t.boolean  "admin",                                                      :default => false
     t.string   "name"
     t.string   "unconfirmed_email"
     t.string   "invitation_token",                             :limit => 60
@@ -225,8 +226,8 @@ ActiveRecord::Schema.define(:version => 20121112221643) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.datetime "deleted_at"
-    t.boolean  "has_read_system_notice",                                      :default => false, :null => false
-    t.boolean  "is_admin",                                                    :default => false
+    t.boolean  "has_read_system_notice",                                     :default => false, :null => false
+    t.boolean  "is_admin",                                                   :default => false
     t.string   "avatar_kind"
     t.string   "uploaded_avatar_file_name"
     t.string   "uploaded_avatar_content_type"
