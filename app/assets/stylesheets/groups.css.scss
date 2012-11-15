@@ -8,13 +8,6 @@
 // group title (on almost all pages)
 .group-title {
   margin: 0 0 10px 0;
-  h1 {
-    float: left;
-    line-height: 1.2em;
-  }
-  h1 page-title a {
-    color: $dark-grey;
-  }
   .home-title {
     display: inline;
     color: $dark-grey;
@@ -43,6 +36,7 @@
   .privacy-dropdown {
     display: inline;
     width: 120px;
+    bottom: 5px;
   }
   .privacy-dropdown .dropdown-menu a{
     padding-left: 5px;
@@ -127,10 +121,7 @@ body.groups.show {
   border: 1px solid $light-grey;
   margin-bottom: 20px;
   padding: 6px 6px;
-  h3 {
-    font-size: $font-medium;
-    color: $header-titles-color;
-    display: inline;
+  h4 {
     line-height: 1.8em;
     margin-bottom: 5px;
   }
@@ -159,7 +150,6 @@ body.groups.show {
 
 /*group panel*/
 .sub-panel#groups{
-  h3 { display: block; }
   ul {
     .sub-group a{ padding-left: 20px; }
   }
@@ -203,15 +193,9 @@ body.groups.show {
 
 /* sub groups panel */
 #sub-groups {
-  h3 { display: block; }
   .group-link a:hover {
     color: $dark-grey;
   }
-}
-
-/* previous-discussions panel */
-.previous-discussions-panel {
-  h3 { display: block; }
 }
 
 /* membership request panel */
@@ -264,7 +248,11 @@ input#user_email{
 /* membership panel */
 .dropdown#members { padding-left: 5px; }
 
-.user-name { float: left; }
+.user-name { 
+  float: left;
+  a:hover { color: $dark-grey; }
+}
+
 .membership-count {
   float: right;
   font-size: $font-small;
