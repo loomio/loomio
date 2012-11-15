@@ -17,21 +17,16 @@ html { height: 100%; }
 body {
   background-color: $main-background;
   height: 100%;
+  color: $dark-grey;
 }
 hr {
   margin: 1px;
 }
 
-// typography
-h1, h4, h5 {
-  color: $header-title-color;
-}
-h2, h3 {
-  line-height: 1.6em;
+.group-title h2 {
+  color: #777;
   display: inline;
-  color: $header-title-color;
   a { color: $header-link-color; }
-  a:hover { color: $header-link-color; }
 }
 
 // structural elements (containers etc.)

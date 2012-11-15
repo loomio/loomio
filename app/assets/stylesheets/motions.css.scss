@@ -102,13 +102,8 @@
 /*** proposal (discussion page)***/
 
 
-#motion-title {
-  h2 {
-    float: left;
-    padding-right: 10px;
-  }
-}
 #content-proposal{
+  .motion-title { margin-top: 3px; }
   margin-left: 0px;
   .proposal-title-container {
     width: 305px;
