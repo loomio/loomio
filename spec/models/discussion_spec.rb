@@ -44,10 +44,28 @@ describe Discussion do
       @discussion.should have(@version_count).versions
     end
 
-      
     it "creates a new version when discussion.description is edited" do
       @discussion.update_attribute :description, "new description"
       @discussion.should have(@version_count + 1).versions
+    end
+  end
+  
+  describe "#never_read_by(user)" do
+    before do
+      @discussion = create :discussion
+    end
+    it "should retuen true if user is logged out" do
+      @discussion.never_read_by(@user).should == true
+    end
+    it "should return true if dicussion has never been read" do
+      @user = create :user
+      @discussion.stub(:read_log_for).with(@user).and_return(nil)
+      @discussion.never_read_by(@user).should == true
+    end
+    it "should return false if user has visited the discussion page" do
+      @user = create :user
+      @discussion.stub(:read_log_for).with(@user).and_return(true)
+      @discussion.never_read_by(@user).should == false
     end
   end
 
