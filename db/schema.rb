@@ -158,8 +158,7 @@ ActiveRecord::Schema.define(:version => 20121115012701) do
     t.datetime "updated_at"
     t.string   "access_level"
     t.integer  "inviter_id"
-    t.datetime "group_last_viewed_at",                             :null => false
-    t.integer  "noise_level",                       :default => 1, :null => false
+    t.datetime "group_last_viewed_at",              :null => false
     t.boolean  "subscribed_to_notification_emails"
   end
 
@@ -237,7 +236,6 @@ ActiveRecord::Schema.define(:version => 20121115012701) do
     t.boolean  "has_read_group_notice",                                      :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                                 :default => false, :null => false
     t.string   "avatar_initials"
-    t.boolean  "receive_emails",                                             :default => true,  :null => false
     t.boolean  "subscribed_to_daily_activity_email"
     t.boolean  "subscribed_to_mention_notifications"
     t.boolean  "subscribed_to_proposal_closure_notifications"
