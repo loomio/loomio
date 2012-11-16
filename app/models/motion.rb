@@ -125,14 +125,6 @@ class Motion < ActiveRecord::Base
     close_date != nil
   end
 
-  def discussion_activity
-    if discussion
-      discussion.activity
-    else
-      0
-    end
-  end
-
   def no_vote_count
     if voting?
       group_count - unique_votes.count
