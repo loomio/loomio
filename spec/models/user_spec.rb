@@ -438,4 +438,32 @@ describe User do
       user.recent_notifications.count.should == 25
     end
   end
+
+  describe "usernames" do 
+    it "generates a unique username after invitation accepted" do
+      user1 = User.new
+      user1.name = "Test User"
+      user1.email = "test1@example.com"
+      user1.password = "password"
+      user1.generate_username
+      user1.save!
+      user2 = User.new
+      user2.name = "Test User"
+      user2.email = "test2@example.com"
+      user2.password = "password"
+      user2.generate_username
+      user2.save!
+      user1.username.should_not == user2.username
+    end
+
+    it "ensures usernames are stripped from email addr names" do
+      user = User.new
+      user.name = "james@example.com"
+      user.email = "james@example.com"
+      user.password = "password"
+      user.generate_username
+      user.username.should_not == "james@example.com"
+    end
+  end
+
 end

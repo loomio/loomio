@@ -51,6 +51,7 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   def after_accept_path_for(user)
+    user.generate_username
     group = user.groups.first
     if group.nil?
       root_path
