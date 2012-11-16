@@ -22,11 +22,12 @@ $ ->
 $ ->
   if $("body.discussions.show").length > 0
     $("textarea").atWho "@", 
+      cache: false
       tpl: "<li id='${id}' data-value='${username}'> ${name} <small> @${username}</small></li>"
       callback: (query, callback) ->
         group = $("#comment-input").data("group")
-        $.get "/groups/#{group}/members", ((result) ->
-            console.log(result)
+        $.get "/groups/#{group}/members", pre: query, ((result) ->
+            #TODO tidy this up
             names = _.toArray(result)
             names = _.map names, (name) ->
               _.toArray(name)
