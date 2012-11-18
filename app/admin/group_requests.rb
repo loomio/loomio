@@ -6,12 +6,12 @@ ActiveAdmin.register GroupRequest do
   index do
     column :id
     column :name
+    column :expected_size
     column :description
     column :admin_email
     column "Can Contribute", :sortable => :cannot_contribute do |group_request|
       !group_request.cannot_contribute
     end
-    column :expected_size
     column :max_size
     column "Approve" do |group_request|
       link = ""
@@ -53,8 +53,8 @@ ActiveAdmin.register GroupRequest do
       f.input :name
       f.input :admin_email
       f.input :expected_size
-      f.input :max_size
       f.input :description
+      f.input :max_size
     end
     f.buttons
   end
