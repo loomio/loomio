@@ -1,4 +1,33 @@
 class UsersController < BaseController
+  before_filter :authenticate_user!, :except => [:new, :create]
+
+  def new
+    @user = User.new
+    unless Invitation.find_by_token(session[:invitation])
+      redirect_to root_url
+    end
+  end
+
+  def create
+    @invitation = Invitation.find_by_token(session[:invitation])
+    group = Group.find(@invitation.group_id)
+    if @invitation && (not @invitation.accepted?)
+      @user = User.create(params[:user])
+      if @user.errors.any?
+        redirect_to root_url
+      else
+        @invitation.accept!(@user)
+        discussion = group.discussions.where(:title => "Example Discussion: Welcome and introduction to Loomio!").first
+        if discussion
+          redirect_to discussion_path(discussion.id)
+        else
+          redirect_to group_path(group.id)
+        end
+      end
+    else
+      redirect_to root_url
+    end
+  end
 
   def email_preferences
     @user = current_user
