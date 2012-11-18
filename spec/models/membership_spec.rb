@@ -41,6 +41,13 @@ describe Membership do
       membership.errors_on(:user).should include(
         "must be a member of this group's parent")
     end
+
+    it "membership_count should be less than the group max_size" do
+      group.max_size = 1
+      group.save
+      group.add_member!(user)
+      expect { group.add_member!(user2) }.to raise_error
+    end
   end
 
   it "can have an inviter" do
