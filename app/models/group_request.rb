@@ -25,11 +25,15 @@ class GroupRequest < ActiveRecord::Base
 
   def approve_request
     @group = Group.new(:name => name)
-    @group.creator = User.get_loomio_user
+    @group.creator = User.loomio_helper_bot
     @group.cannot_contribute = cannot_contribute
     @group.max_size = max_size
     @group.save!
     self.group_id = @group.id
-    GroupMailer.new_group_invited_to_loomio(admin_email, name).deliver
+    save!
+    InvitesUsersToGroup.invite!(:recipient_emails => [admin_email],
+                                :inviter => @group.creator,
+                                :group => @group,
+                                :access_level => "admin")
   end
 end
