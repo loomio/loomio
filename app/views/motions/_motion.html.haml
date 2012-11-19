@@ -1,6 +1,6 @@
 .motion
   .clearfix
-    %h3.word-break= motion.name
+    %h3.motion-title.word-break= motion.name
     - if motion.closed?
       %span.label.label-important Closed
   .closing-info
@@ -11,10 +11,10 @@
         %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
     - else
       No close date
-  - if motion.closed?
-    =render "motions/outcome_statement", motion: motion, this_group: this_group
   .proposed-by
     = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
+  - if motion.closed?
+    =render "motions/outcome_statement", motion: motion, this_group: this_group
   .description
   
     <!--[if IE 7]>

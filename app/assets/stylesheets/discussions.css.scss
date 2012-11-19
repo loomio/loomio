@@ -9,10 +9,9 @@ body.discussions.new {
 
 /** discussion show form*/
 body.discussions.show {
-  // .group-title {
-  //   margin-bottom: 10px;
-  //   padding-top: 43px;
-  // }
+  h2#discussion-title {
+    font-size: 22px;
+  }
   .selector-panel {
     background-color: $selector-panel;
     @include border-radius(8px);
@@ -20,11 +19,6 @@ body.discussions.show {
     margin-bottom: 20px;
     min-height: 59px;
     padding-top: 2px;
-    h2.panel-header {
-      padding-left: 10px;
-      float: left;
-      min-height: 3px;
-    }
     .dropdown {
       float: right;
       padding: 5px 10px;
@@ -41,7 +35,6 @@ body.discussions.show {
     display: inline-block;
     width: 850px;
     margin: 0 0 4px 0px;
-    h1 { color: $dark-grey; }
   }
   #edit-discussion-title {
     float: left;
@@ -100,7 +93,8 @@ body.discussions.show {
   }
 
   .header-text {
-    color: $mid-grey;
+  //   color: $mid-grey;
+  //   font-weight: bold;
     line-height: 2.0em;
   }
 
@@ -161,13 +155,13 @@ li s hard.motion-preview {
   font-size: 14px; /* should prob use a $var here eh? */
 }
 
-.comment-body, .model-description, .motion {
+.comment-body, .model-description, .motion .description {
   p {
     word-wrap: break-word;
   }
   ul, ol, li {
     margin-left: 10px;
-    word-wrap: break-word;    
+    word-wrap: break-word;
     line-height: 18px;
   }
   ul{
@@ -195,6 +189,9 @@ li s hard.motion-preview {
   }
   h4{
     font-size: 1.1em;
+  }
+  h5{
+    font-size: 1.0em;
   }
 }
 

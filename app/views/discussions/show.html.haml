@@ -20,14 +20,14 @@
         .row
           .span6#content-history
             .large-icon.discussion-icon.enabled-icon
-            %h2.header-text Discussion
+            %h3.header-text Discussion
             #content-history-body
               = render 'add_comment', discussion: @discussion
               = render 'history', discussion: @discussion, history: @discussion.history
 
           .span6#content-proposal
             .large-icon.decision-icon
-            %h2.header-text Current decision
+            %h3.header-text Current decision
             .content-proposal-body
               %ul.selector-list
                 - if @current_motion
@@ -49,7 +49,7 @@
               #previous-proposals
                 .clearfix
                   .large-icon.decision-icon
-                  %h2.header-text Previous decisions
+                  %h3.header-text Previous decisions
 
                 .content-proposal-body
                   %ul.selector-list

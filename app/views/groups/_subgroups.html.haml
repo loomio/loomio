@@ -1,6 +1,6 @@
 #sub-groups
   .sub-panel
-    %h3 Sub-groups
+    %h4 Sub-groups
     - if (can? :add_subgroup, group) && group.users.include?(current_user)
       = icon_button(add_subgroup_group_path(group), 'Create a sub-group', '/assets/group-18.png', 'subgroup-new')
     %ul.group-links
