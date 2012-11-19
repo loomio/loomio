@@ -107,7 +107,6 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
 
   create_table "group_requests", :force => true do |t|
     t.string   "name"
-    t.integer  "expected_size"
     t.text     "description"
     t.string   "admin_email"
     t.datetime "created_at",                           :null => false
@@ -115,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.string   "status"
     t.integer  "group_id"
     t.boolean  "cannot_contribute", :default => false
+    t.integer  "expected_size"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.integer  "group_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "token",           :null => false
   end
 
   create_table "memberships", :force => true do |t|
@@ -228,13 +229,13 @@ ActiveRecord::Schema.define(:version => 20121025235642) do
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
-    t.boolean  "has_read_dashboard_notice",                  :default => false, :null => false
-    t.boolean  "has_read_group_notice",                      :default => false, :null => false
-    t.boolean  "has_read_discussion_notice",                 :default => false, :null => false
-    t.string   "username"
+    t.boolean  "has_read_dashboard_notice",                                   :default => false, :null => false
+    t.boolean  "has_read_group_notice",                                       :default => false, :null => false
+    t.boolean  "has_read_discussion_notice",                                  :default => false, :null => false
     t.boolean  "subscribed_to_daily_activity_email"
     t.boolean  "subscribed_to_mention_notifications"
     t.boolean  "subscribed_to_proposal_closure_notifications"
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
