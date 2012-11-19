@@ -71,7 +71,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def never_read_by(user)
-    read_log_for(user).nil?
+    (user.nil? || read_log_for(user).nil?)
   end
 
   def number_of_comments_since_last_looked(user)
