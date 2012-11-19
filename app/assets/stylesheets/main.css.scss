@@ -17,39 +17,16 @@ html { height: 100%; }
 body {
   background-color: $main-background;
   height: 100%;
+  color: $dark-grey;
 }
 hr {
   margin: 1px;
 }
 
-// typography
-h1 {
-	font-size: $font-xlarge;
-  color: $mid-grey;
-  a { color: $mid-grey; }
-  a:hover { color: $mid-grey; }
-  font-weight: normal;
-  line-height: 1.6em;
+.group-title h2 {
+  color: #777;
   display: inline;
-}
-h2 {
-    font-size: $font-large;
-    color: $header-titles-color;
-    font-weight: normal;
-    line-height: 1.6em;
-    display: inline;
-}
-h3 {
-  font-weight: bold;
-	font-size: $font-medium-large;
-}
-
-h4 {
-  font-weight: normal;
-  font-size: $font-small;
-}
-h5 {
-  font-size: $font-tiny;
+  a { color: $header-link-color; }
 }
 
 .font-size-85pc{
@@ -65,9 +42,6 @@ h5 {
 }
 .popover { z-index: 10000; }
 
-.sub-panel li .group-link a {
-  text-decoration: none;
-}
 .sub_group {font-size: $font-tiny;}
 
 // #start-new-discussion { margin: 0 0 20px 2px; }
