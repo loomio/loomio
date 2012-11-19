@@ -69,6 +69,27 @@ describe Group do
     end
   end
 
+  describe "all_discussions(user)" do
+    # This spec has many more cases which are not written - see cucumber features/view_group_discussions.feature
+    context "a logged in user" do
+      context "a group member views the group that has a subgroup, viewable to parent group members, that they are not a member of" do
+        before do
+          @user = create(:user)
+          @user1 = create(:user)
+          @group = create(:group)
+          @subgroup = create(:group, :parent => @group, :viewable_by => 'parent_group_members')
+          @group.add_member!(@user)
+          @group.add_member!(@user1)
+          @subgroup.add_member!(@user1)
+          @discussion = create :discussion, :group => @subgroup, :author => @user1
+        end
+        it "should not return the subgroups discussions" do
+          @group.all_discussions(@user).should_not include(@discussion)
+        end
+      end
+    end
+  end
+
   context do
     before do
       @user = create(:user)
