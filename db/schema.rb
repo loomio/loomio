@@ -231,9 +231,13 @@ ActiveRecord::Schema.define(:version => 20121112221643) do
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
-    t.boolean  "has_read_dashboard_notice",                   :default => false, :null => false
-    t.boolean  "has_read_group_notice",                       :default => false, :null => false
-    t.boolean  "has_read_discussion_notice",                  :default => false, :null => false
+    t.boolean  "has_read_dashboard_notice",                                   :default => false, :null => false
+    t.boolean  "has_read_group_notice",                                       :default => false, :null => false
+    t.boolean  "has_read_discussion_notice",                                  :default => false, :null => false
+    t.boolean  "subscribed_to_daily_activity_email"
+    t.boolean  "subscribed_to_mention_notifications"
+    t.boolean  "subscribed_to_proposal_closure_notifications"
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

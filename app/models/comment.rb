@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  include Twitter::Extractor
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
   has_paper_trail
 
@@ -26,6 +27,7 @@ class Comment < ActiveRecord::Base
   delegate :participants, :to => :discussion, :prefix => :discussion
   delegate :group, :to => :discussion
   delegate :full_name, :to => :group, :prefix => :group
+  delegate :title, :to => :discussion, :prefix => :discussion
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
@@ -96,9 +98,21 @@ class Comment < ActiveRecord::Base
     discussion.current_motion
   end
 
+  def parse_mentions
+    users = []
+    usernames = extract_mentioned_screen_names(self.body)
+    usernames.each do |name|
+      users.push(User.find_by_username(name))
+    end      
+    users
+  end
+
+  
+
   private
     def update_discussion_last_comment_at
       discussion.last_comment_at = discussion.latest_comment_time
       discussion.save
     end
+
 end

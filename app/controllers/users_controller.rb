@@ -93,4 +93,5 @@ class UsersController < BaseController
     current_user.save!
     redirect_to :back
   end
+
 end
