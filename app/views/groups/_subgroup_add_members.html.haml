@@ -3,12 +3,16 @@
   %h3= "Select members to add to #{group.name}"
 = form_tag add_members_group_path do
   .modal-body
-    - group.parent.users_sorted.each do |member|
-      - unless member == current_user
-        .invite-member-checkbox-container
-          - is_member = false
-          - is_member = true if group.users_include?(member)
-          = check_box_tag "user_#{member.id}", 1, is_member, disabled: is_member
-          = label_tag "user_#{member.id}", member.name
+    - parent_members = group.parent.users_sorted
+    -if parent_members.count > 1
+      - group.parent.users_sorted.each do |member|
+        - unless member == current_user
+          .invite-member-checkbox-container
+            - is_member = false
+            - is_member = true if group.users_include?(member)
+            = check_box_tag "user_#{member.id}", 1, is_member, disabled: is_member
+            = label_tag "user_#{member.id}", member.name
+    - else
+      = "No parent group members exist to add. Please add the members to the parent group first."
   .modal-footer
     = submit_tag "Invite members", class: "btn btn-small btn-info", disable_with: "Invite members"
