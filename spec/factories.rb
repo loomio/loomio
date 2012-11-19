@@ -55,6 +55,7 @@ FactoryGirl.define do
     description 'Fake description'
     discussion
     after(:build) do |motion|
+      motion.group.parent.add_member!(motion.author) if motion.group.parent
       motion.group.add_member!(motion.author)
     end
     after(:create) do |motion|
