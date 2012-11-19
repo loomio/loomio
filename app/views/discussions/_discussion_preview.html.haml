@@ -27,7 +27,8 @@
           - if discussion.current_motion.voting? && motion_activity > 0
             %span.activity-count.label.label-info
               = motion_activity
-          = button_to '', get_and_clear_new_activity_motion_path(:id => discussion.current_motion.id, :motion_activity => motion_activity), :remote => true, :class =>  "preview-pie-button"
+          - if user_signed_in?
+            = button_to '', get_and_clear_new_activity_motion_path(:id => discussion.current_motion.id, :motion_activity => motion_activity), :remote => true, :class =>  "preview-pie-button"
     - else
       .large-icon.pie-icon.activity-icon
 

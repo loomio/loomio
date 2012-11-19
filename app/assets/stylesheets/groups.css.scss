@@ -243,7 +243,11 @@ body.groups.show {
 input#user_email{
   margin-bottom: 5px;
 }
-#new_user { padding-bottom: 14px; }
+.member-request-message{
+  color: $dark-grey;
+  a{ color: #08C }
+}
+// #new_user { padding-bottom: 14px; }
 
 /* membership panel */
 .dropdown#members { padding-left: 5px; }
@@ -295,3 +299,6 @@ input#user_email{
   margin: 0px auto;
 }
 
+body.group_requests.new {
+  .helper-bot { margin-top: 100px; }
+}

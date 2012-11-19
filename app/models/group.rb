@@ -1,7 +1,7 @@
 class Group < ActiveRecord::Base
   PERMISSION_CATEGORIES = [:everyone, :members, :admins, :parent_group_members]
 
-  attr_accessible :name, :viewable_by, :parent_id, :parent
+  attr_accessible :name, :viewable_by, :parent_id, :parent, :cannot_contribute
   attr_accessible :members_invitable_by, :email_new_motion, :description
 
   validates_presence_of :name
@@ -310,7 +310,7 @@ Is it a good idea? Loomio Helper Bot wants to know what you think!
 If you're clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).
 
 You'll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes."
-      user = User.get_loomio_user
+      user = User.loomio_helper_bot
       membership = add_member!(user)
       discussion = user.authored_discussions.create!(:group_id => id,
         :title => "Example Discussion: Welcome and introduction to Loomio!",
