@@ -133,11 +133,6 @@ describe DiscussionsController do
         response.should redirect_to(discussion_url(discussion))
       end
 
-      it "fires new_comment event if comment was created successfully" do
-        Event.should_receive(:new_comment!).with(@comment)
-        post :add_comment, comment: "Hello!", id: discussion.id
-      end
-
       context "unsuccessfully" do
         before do
           discussion.stub(:add_comment).
