@@ -48,6 +48,15 @@ class Discussion < ActiveRecord::Base
     if can_be_commented_on_by? user
       comment = Comment.build_from self, user.id, comment
       comment.save
+      if comment.valid?
+        Event.new_comment!(comment)
+        mentions = comment.parse_mentions
+        if mentions.present?
+          mentions.each do |mentioned_user|
+            Event.user_mentioned!(comment, mentioned_user)
+          end
+        end
+      end
       comment
     end
   end

@@ -9,6 +9,9 @@ FactoryGirl.define do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
     password 'password'
+    after(:build) do |user|
+      user.generate_username
+    end
   end
 
   factory :group do

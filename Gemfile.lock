@@ -13,6 +13,13 @@ GIT
       rails (~> 3.0)
 
 GIT
+  remote: https://github.com/twitter/twitter-text-rb.git
+  revision: f0458ba4eee710140f04c059d70b0faf368e3b10
+  specs:
+    twitter-text (1.5.0)
+      activesupport
+
+GIT
   remote: https://github.com/vmg/redcarpet.git
   revision: e7f328cd38985da7e7441aff17813132ff0e479a
   specs:
@@ -216,6 +223,7 @@ GEM
     jqplot-rails (0.1)
       railties (~> 3.0)
       thor (~> 0.14)
+    jquery-atwho-rails (0.1.6)
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
@@ -273,6 +281,9 @@ GEM
       activerecord (~> 3.0)
     polyglot (0.3.3)
     progressbar (0.10.0)
+    rabl (0.7.3)
+      activesupport (>= 2.3.14)
+      multi_json (~> 1.0)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -432,6 +443,7 @@ DEPENDENCIES
   inherited_resources
   jasminerice
   jqplot-rails
+  jquery-atwho-rails
   jquery-rails
   kaminari
   launchy
@@ -442,6 +454,7 @@ DEPENDENCIES
   paper_trail (~> 2)
   paperclip
   pg
+  rabl
   rack-canonical-host
   rails (= 3.2.6)
   rails-backbone
@@ -462,4 +475,5 @@ DEPENDENCIES
   spork
   thin
   twitter-bootstrap-rails
+  twitter-text!
   uglifier (>= 1.0.3)
