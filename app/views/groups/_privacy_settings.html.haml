@@ -5,7 +5,7 @@
       = "Everyone"
   - if group.parent
     %li.privacy-item
-      %a.members{:href => "#"}
+      %a.parent_group_members{:href => "#"}
         %i{:class => css_for_privacy_link(group, 'parent_group_members')}
         = "Parent group members"
   %li.privacy-item
