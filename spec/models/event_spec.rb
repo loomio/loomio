@@ -281,4 +281,40 @@ describe Event do
       end
     end
   end
+
+  describe "user_mentioned!" do
+    let(:mentioned_user) { stub_model User }
+    let(:comment) { stub_model(Comment, :discussion => discussion,
+                                        :user => stub_model(User)) }
+    before do
+      @event_notifications = stub :create! => nil
+      @event = mock_model Event, :notifications => @event_notifications
+      Event.stub(:create!).
+            with(:kind => "user_mentioned",
+                 :eventable => comment).
+            and_return(@event)
+    end
+
+    it "creates an event" do
+      Event.should_receive(:create!).
+            with(:kind => "user_mentioned",
+                 :eventable => comment).
+            and_return(@event)
+      Event.user_mentioned!(comment, mentioned_user)
+    end
+
+    it "notifies the mentioned user" do
+      @event_notifications.should_receive(:create!).
+                           with(:user => mentioned_user)
+      Event.user_mentioned!(comment, mentioned_user)
+    end
+
+    context "user mentions themselves" do
+      it "does not notify user" do
+        @event_notifications.should_not_receive(:create!).
+                             with(:user => comment.user)
+        Event.user_mentioned!(comment, comment.user)
+      end
+    end
+  end
 end
