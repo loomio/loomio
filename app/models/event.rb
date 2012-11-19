@@ -111,7 +111,9 @@ class Event < ActiveRecord::Base
   end
 
   def self.user_mentioned!(comment, mentioned_user)
-    event = create!(:kind => "user_mentioned", :eventable => comment, :user => comment.user)
-    event.notifications.create! :user => mentioned_user
+    event = create!(:kind => "user_mentioned", :eventable => comment)
+    unless mentioned_user == comment.user
+      event.notifications.create! :user => mentioned_user
+    end
   end
 end
