@@ -44,11 +44,24 @@ Then /^the group request should be marked as ignored$/ do
   @group_request.should be_ignored
 end
 
-Then /^an invitation email should be sent to the admin$/ do
-  open_email(@group_request.admin_email,
-     :with_subject => "Invitation to join Loomio (#{@group_request.name})")
+Then /^an invitation email should be sent to the group admin$/ do
+  open_email(@group_request.admin_email)
+  current_email.should have_subject("Invitation to join Loomio (#{@group_request.name})")
 end
 
 Then /^I should be redirected to the Group Requests page$/ do
   page.should have_css "body.admin_group_requests"
 end
+
+When /^I edit the maximum group size$/ do
+  @max_size = 135
+  click_link("Edit")
+  fill_in "group_request_max_size", :with => @max_size
+  click_on("Update Group request")
+  click_link("Group Requests")
+end
+
+Then /^the maximum group size should be assigned to the group$/ do
+  Group.where(:name => @group_request.name).first.max_size.should == @max_size
+end
+

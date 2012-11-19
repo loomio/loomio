@@ -49,6 +49,7 @@ class Membership < ActiveRecord::Base
   #
 
   before_create :set_group_last_viewed_at_to_now
+  before_create :check_group_max_size
   after_initialize :set_defaults
   before_destroy :remove_open_votes
   after_destroy :destroy_subgroup_memberships
@@ -96,6 +97,12 @@ class Membership < ActiveRecord::Base
   #
 
   private
+    def check_group_max_size
+      if group.max_size
+        raise "Group max_size exceeded" if group.memberships_count > group.max_size
+      end
+    end
+
     def set_group_last_viewed_at_to_now
       self.group_last_viewed_at = Time.now
     end
