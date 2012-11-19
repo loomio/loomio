@@ -38,6 +38,8 @@ end
 
 Given /^the group has discussions$/ do
   @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion_with_decision = FactoryGirl.create :discussion, :group => @group, :title => 'This is a discussion with decision'
+  FactoryGirl.create :motion, :discussion => @discussion_with_decision
 end
 
 Given /^I am not a member of a public group$/ do
@@ -91,6 +93,8 @@ end
 
 Given /^the sub\-group has discussions$/ do
   @sub_group_discussion = FactoryGirl.create :discussion, :group => @sub_group
+  @sub_group_discussion_with_decision = FactoryGirl.create :discussion, :group => @sub_group, :title => 'This is a sub group discussion with decision'
+  FactoryGirl.create :motion, :discussion => @sub_group_discussion_with_decision
 end
 
 When /^I visit the sub\-group page$/ do
@@ -103,18 +107,22 @@ end
 
 Then /^I should see the group's discussions$/ do
   page.should have_content(@discussion.title)
+  page.should have_content(@discussion_with_decision.title)
 end
 
 Then /^I should not see the group's discussions$/ do
   page.should_not have_content(@discussion.title)
+  page.should_not have_content(@discussion_with_decision.title)
 end
 
 Then /^I should see the sub\-group's discussions$/ do
   page.should have_content(@sub_group_discussion.title)
+  page.should have_content(@sub_group_discussion_with_decision.title)
 end
 
 Then /^I should not see the sub\-group's discussions$/ do
   page.should_not have_content(@sub_group_discussion.title)
+  page.should_not have_content(@sub_group_discussion_with_decision.title)
 end
 
 Then /^we should make this test work$/ do
