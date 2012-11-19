@@ -219,16 +219,15 @@ class Group < ActiveRecord::Base
 
   def all_discussions(user)
     if user
-      is_parent_member = user ? user.is_group_member?(self) : false
       Discussion.includes(:group => :memberships)
         .where("(discussions.group_id = ? 
           OR (groups.parent_id = ? AND groups.archived_at IS NULL
             AND (groups.viewable_by = 'everyone'
               OR (groups.viewable_by = 'members' AND memberships.user_id = ?)
-              OR (groups.viewable_by = 'parent_group_members' AND ?)
+
               )
             )
-          )", id, id, user.id, is_parent_member)
+          )", id, id, user.id)
     else
       Discussion.includes(:group)
         .where("(discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL
