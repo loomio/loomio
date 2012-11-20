@@ -287,7 +287,7 @@ class Group < ActiveRecord::Base
   end
 
   def add_creator_as_admin
-    add_admin! creator
+    add_admin! creator unless creator == User.loomio_helper_bot
   end
 
   def create_welcome_loomio
@@ -319,7 +319,8 @@ You'll be prompted to make a short statement about the reason for your decision.
         :description => motion_str, :close_date => Time.now + 7.days)
       motion.save
       membership.destroy
-    end  end
+    end
+  end
 
   # Validators
   def limit_inheritance
