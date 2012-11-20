@@ -226,13 +226,11 @@ li.selector-item a.selector-link:hover {
 
 form {
   label {
-		font-size: $font-small;
     color: $dark-grey;
     margin-bottom: 4px;
   }
 
   input, select, textarea {
-		font-size: $font-small;
 		height: auto;
     width: 370px;
     margin-bottom: 15px;
