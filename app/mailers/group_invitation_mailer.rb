@@ -1,5 +1,5 @@
 class GroupInvitationMailer < ActionMailer::Base
-  default from: "contact@loom.io"
+  default from: "contact@loomio.org"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
