@@ -99,7 +99,7 @@ class Membership < ActiveRecord::Base
   private
     def check_group_max_size
       if group.max_size
-        raise "Group max_size exceeded" if group.memberships_count > group.max_size
+        raise "Group max_size exceeded" if group.memberships_count >= group.max_size
       end
     end
 
