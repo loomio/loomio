@@ -1,3 +1,4 @@
+#encoding: UTF-8
 module ApplicationHelper
 
   def twitterized_type(type)
@@ -70,6 +71,49 @@ module ApplicationHelper
     
     markdown = Redcarpet::Markdown.new(renderer, *options)
     markdown.render(text).html_safe
+  end
+
+  def info_message_read?(user)
+    case controller_name
+      when 'discussions'
+        return (not user.has_read_discussion_notice?)
+      when 'groups'
+        return (not user.has_read_group_notice?) && @group.parent.nil?
+      when 'dashboard'
+        return (not user.has_read_dashboard_notice?)
+    end
+  end
+
+  def helper_info_path
+    case controller_name
+      when 'discussions'
+        return dismiss_discussion_notice_for_user_path
+      when 'groups'
+        return dismiss_group_notice_for_user_path
+      when 'dashboard'
+        return dismiss_dashboard_notice_for_user_path
+    end
+  end
+
+  def helper_info_message(user)
+    case controller_name
+      when 'discussions'
+        message = "The discussion topic is at the top of the page, followed by background information and context.\n\n"
+        message += "Discussion is on the left: to add a comment, write in the text box and click‘Post comment’.\n\n"
+        message += "Decisions are on the right. If you think the group is ready to make a decision, "
+        message += "you can make a proposal for the group to consider. If someone has already made a proposal, "
+        message += "you can see how the group feels on the pie graph, and state your position underneath.\n\n"
+      when 'groups'
+        message = "This is the Group page for \"#{@group.full_name}\". \n\n Here you can see this group’s discussions, "
+        message += "a description of what the group is for, "
+        message += "You can start a discussion on a new topic by clicking on the ‘Start a discussion’ button.\n\n"
+      when 'dashboard'
+        message = "Welcome to Loomio!\n This is the Home page, where you can see a list of the discussions "
+        message += "going on in all of your groups. To the right is a list of the groups you are a member of. "
+        message += "You can start a discussion on a new topic by clicking on the “Start a discussion” button.\n\n"
+        message += "If you have any questions or feedback we’d love to hear from you: "
+        message += "#{link_to "contact@loomio.org", 'mailto:contact@loomio.org', :target =>'_blank'}\n\n"
+    end
   end
 end
 
