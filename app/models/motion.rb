@@ -21,14 +21,14 @@ class Motion < ActiveRecord::Base
   delegate :users, :full_name, :to => :group, :prefix => :group
 
   after_create :initialize_discussion
-  after_create :email_motion_created
+  after_create :email_motion_created, :set_new_motion_activity
   before_save :set_disable_discussion
   before_save :format_discussion_url
 
   attr_accessor :create_discussion
   attr_accessor :enable_discussion
 
-  attr_accessible :name, :description, :discussion_url, :enable_discussion 
+  attr_accessible :name, :description, :discussion_url, :enable_discussion
   attr_accessible :close_date, :phase, :discussion_id, :outcome
 
   include AASM
@@ -109,14 +109,21 @@ class Motion < ActiveRecord::Base
     end
   end
 
+  # motion is closed by user
+  def close_motion!(user)
+    Event.motion_closed!(self, user)
+    close_voting!
+  end
+  # motion closes automatically if expired
   def open_close_motion
     if (close_date && close_date <= Time.now)
       if voting?
-        close_voting
+        Event.motion_closed!(self, nil)
+        close_voting!
         save
       end
     elsif closed?
-      open_voting
+      open_voting!
       save
     end
   end
@@ -211,7 +218,7 @@ class Motion < ActiveRecord::Base
       self.outcome = str
       save
     end
-  end 
+  end
 
   private
     def before_open
@@ -263,6 +270,10 @@ class Motion < ActiveRecord::Base
           end
         end
       end
+    end
+
+    def set_new_motion_activity
+      Event.new_motion!(self)
     end
 
     def email_motion_closed

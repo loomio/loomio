@@ -1,13 +1,33 @@
 When /^I choose to edit the discussion description$/ do
-  find(".edit-discussion-description").click
+  click_link("edit_description")
 end
 
 When /^I fill in and submit the discussion description form$/ do
-  @discussion_description_text = "This is all about myself"
-  fill_in "description-input", :with => @discussion_description_text
-  click_on "add-description-submit"
+  @description_text = "This discussion is interesting"
+  fill_in "description-input", :with  => @description_text
+  click_on("add-description-submit")
 end
 
-Then /^I should see the new discussion description$/ do
-  find("#discussion-context").should have_content(@discussion_description_text)
+Given /^I am a member of this group$/ do
+  @group.add_member! @user
+end
+
+Then /^I should see the description change$/ do
+  page.should have_content(@description_text)
+end
+
+Then /^I should see a record of my change in the discussion feed$/ do
+  find('#history-list').should have_content(@description_text)
+end
+
+Then /^I should not see a link to edit the description$/ do
+  page.should_not have_css("edit_description")
+end
+
+Given /^I am not a member of this group$/ do
+end
+
+Given /^there is a discussion in a group$/ do
+  @group = FactoryGirl.create :group
+  @discussion = FactoryGirl.create :discussion, :group => @group
 end

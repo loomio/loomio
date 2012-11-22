@@ -24,7 +24,6 @@ class VotesController < GroupBaseController
       @vote.motion = @motion
       @vote.user = current_user
       if @vote.save
-        fire_event(@vote)
         flash[:success] = "Position submitted"
       else
         flash[:warning] = "Your position could not be submitted"
@@ -44,7 +43,6 @@ class VotesController < GroupBaseController
       @vote.motion = @motion
       @vote.user = current_user
       if @vote.save
-        fire_event(@vote)
         flash[:success] = "Vote updated."
       else
         flash[:error] = "Could not update vote."
@@ -59,15 +57,5 @@ class VotesController < GroupBaseController
 
     def group
       group = Motion.find(params[:motion_id]).group
-    end
-
-    def fire_event(vote)
-      if vote.position != vote.previous_position
-        if vote.position == "block"
-          Event.motion_blocked!(vote)
-        else
-          Event.new_vote!(vote)
-        end
-      end
     end
 end

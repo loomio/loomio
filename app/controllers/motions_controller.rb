@@ -9,7 +9,6 @@ class MotionsController < GroupBaseController
     authorize! :create, @motion
     if @motion.save
       flash[:success] = "Proposal successfully created."
-      Event.new_motion!(@motion)
       redirect_to discussion_path(@motion.discussion)
     else
       flash[:warning] = "Proposal could not be created"
@@ -56,8 +55,7 @@ class MotionsController < GroupBaseController
 
   def close_voting
     resource
-    @motion.close_voting!
-    Event.motion_closed!(@motion, current_user)
+    @motion.close_motion! current_user
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
   end
 
@@ -97,5 +95,4 @@ class MotionsController < GroupBaseController
         Discussion.find(params[:motion][:discussion_id]).group
       end
     end
-
 end

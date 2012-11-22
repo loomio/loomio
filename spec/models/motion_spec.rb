@@ -26,6 +26,29 @@ describe Motion do
     @motion.user_has_voted?(nil).should == false
   end
 
+  context "events" do
+    before do
+      @user = create :user
+      @group = create :group
+      @group.add_admin! @user
+      @discussion = create :discussion, :group => @group
+    end
+    it "adds motion created activity if a motion is created successfully" do
+      Event.should_receive(:new_motion!)
+      motion = create :motion, :discussion => @discussion
+    end
+    it "adds motion closed activity if a motion is closed" do
+     motion = create :motion, :discussion => @discussion
+      Event.should_receive(:motion_closed!)
+      motion.close_motion!(@user)
+    end
+    it "adds edit motion close date activity if a motion close date is edited" do
+      motion = create :motion, :discussion => @discussion
+      Event.should_receive(:motion_close_date_edited!)
+      motion.edit_close_date :close_date => 3.days.from_now
+    end
+  end
+
   context "motion created" do
     it "sends email to group members if email notifications are enabled (default)" do
       pending "this test is weird"
@@ -284,7 +307,6 @@ describe Motion do
       last_viewed_at = Time.now
       motion = create(:motion)
       motion.votes.stub_chain(:where, :count).and_return(4)
-      
       motion.number_of_votes_since(last_viewed_at).should == 4
     end
   end

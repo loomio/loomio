@@ -14,8 +14,6 @@ Loomio::Application.routes.draw do
     resources :motions#, name_prefix: "groups_"
     resources :discussions, only: [:index, :new]
     get :request_membership, on: :member
-    get :new_motion, :on => :member
-    post :create_motion, :on => :member
     post :email_members, on: :member
     post :edit_description, :on => :member
     post :edit_privacy, on: :member

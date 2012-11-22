@@ -128,8 +128,8 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def history
-    (comments + votes + motions).sort!{ |a,b| b.created_at <=> a.created_at }
+  def activity
+    Event.where("discussion_id = ?", id)
   end
 
   def latest_history_time
@@ -171,6 +171,9 @@ class Discussion < ActiveRecord::Base
     previous_version.version.created_at
   end
 
+  def set_edit_discription_activity!(user)
+    Event.discussion_description_edited!(self, user)
+  end
 
   private
 
