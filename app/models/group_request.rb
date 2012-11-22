@@ -19,6 +19,10 @@ class GroupRequest < ActiveRecord::Base
     event :ignore do
       transitions :to => :ignored, :from => [:awaiting_approval]
     end
+
+    event :mark_as_already_approved do
+      transitions :to => :approved, :from => [:awaiting_approval, :ignored]
+    end
   end
 
   private
