@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-  KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
-             motion_closing_soon motion_closed membership_requested user_added_to_group comment_liked user_mentioned]
+  KINDS = %w[new_discussion edit_discussion_description new_comment new_motion new_vote motion_blocked
+             motion_closing_soon motion_closed edit_motion_close_date membership_requested user_added_to_group comment_liked user_mentioned]
 
   has_many :notifications, :dependent => :destroy
   belongs_to :eventable, :polymorphic => true
@@ -9,10 +9,11 @@ class Event < ActiveRecord::Base
   validates_inclusion_of :kind, :in => KINDS
   validates_presence_of :eventable
 
-  attr_accessible :kind, :eventable, :user
+  attr_accessible :kind, :eventable, :user, :discussion_id
 
   def self.new_discussion!(discussion)
-    event = create!(:kind => "new_discussion", :eventable => discussion)
+    event = create!(:kind => "new_discussion", :eventable => discussion,
+      :discussion => discussion)
     discussion.group_users.each do |user|
       unless user == discussion.author
         event.notifications.create! :user => user
@@ -21,8 +22,14 @@ class Event < ActiveRecord::Base
     event
   end
 
+  def self.discussion_description_edited!(discussion, editor)
+    activity = create!(:kind => "edit_discussion_description", :eventable => discussion,
+      :discussion_id => discussion.id, :user => editor)
+  end
+
   def self.new_comment!(comment)
-    event = create!(:kind => "new_comment", :eventable => comment)
+    event = create!(:kind => "new_comment", :eventable => comment,
+      :discussion_id => comment.discussion.id)
     comment.discussion_participants.each do |user|
       unless user == comment.user
         event.notifications.create! :user => user
@@ -32,7 +39,8 @@ class Event < ActiveRecord::Base
   end
 
   def self.new_motion!(motion)
-    event = create!(:kind => "new_motion", :eventable => motion)
+    event = create!(:kind => "new_motion", :eventable => motion,
+      :discussion_id => motion.discussion.id)
     motion.group_users.each do |user|
       unless user == motion.author
         event.notifications.create! :user => user
@@ -42,7 +50,8 @@ class Event < ActiveRecord::Base
   end
 
   def self.motion_closed!(motion, closer)
-    event = create!(:kind => "motion_closed", :eventable => motion, :user => closer)
+    event = create!(:kind => "motion_closed", :eventable => motion, :user => closer,
+      :discussion_id => motion.discussion.id)
     motion.group_users.each do |user|
       unless user == closer
         event.notifications.create! :user => user
@@ -57,8 +66,14 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def self.motion_close_date_edited!(motion)
+    activity = create!(:kind => "edit_motion_close_date", :eventable => motion,
+      :discussion => motion.discussion)
+  end
+
   def self.new_vote!(vote)
-    event = create!(:kind => "new_vote", :eventable => vote)
+    event = create!(:kind => "new_vote", :eventable => vote,
+      :discussion_id => vote.motion.discussion.id)
     begin
       unless vote.user == vote.motion_author
         event.notifications.create! :user => vote.motion_author
@@ -75,7 +90,8 @@ class Event < ActiveRecord::Base
   end
 
   def self.motion_blocked!(vote)
-    event = create!(:kind => "motion_blocked", :eventable => vote)
+    event = create!(:kind => "motion_blocked", :eventable => vote,
+      :discussion_id => vote.motion.discussion.id)
     vote.group_users.each do |user|
       unless user == vote.user
         event.notifications.create! :user => user

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115012701) do
+ActiveRecord::Schema.define(:version => 20121120042440) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20121115012701) do
     t.integer  "eventable_id"
     t.string   "eventable_type"
     t.integer  "user_id"
+    t.integer  "discussion_id"
   end
 
   add_index "events", ["eventable_id"], :name => "index_events_on_eventable_id"

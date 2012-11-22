@@ -42,7 +42,7 @@ class Vote < ActiveRecord::Base
 
   after_save :send_notifications
 
-  after_create :update_motion_last_vote_at
+  after_create :update_motion_last_vote_at, :set_new_vote_activity
   after_destroy :update_motion_last_vote_at
 
   def can_be_edited_by?(current_user)
@@ -83,6 +83,16 @@ class Vote < ActiveRecord::Base
     def update_motion_last_vote_at
       motion.last_vote_at = motion.latest_vote_time
       motion.save!
+    end
+
+    def set_new_vote_activity
+      if position != previous_position
+        if position == "block"
+          Event.motion_blocked!(self) 
+        else
+          Event.new_vote!(self)
+        end
+      end
     end
 
     def send_notifications

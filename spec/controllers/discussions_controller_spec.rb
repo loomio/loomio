@@ -55,9 +55,9 @@ describe DiscussionsController do
         it "creates a discussion_read_log"
 
         it "assigns array with discussion history" do
-          discussion.should_receive(:history).and_return(['fake'])
+          discussion.should_receive(:activity).and_return(['fake'])
           get :show, id: discussion.id
-          assigns(:history).should eq(['fake'])
+          assigns(:activity).should eq(['fake'])
         end
       end
     end
@@ -153,6 +153,7 @@ describe DiscussionsController do
 
     describe "edit description" do
       before do
+        discussion.stub(:set_edit_discription_activity!)
         discussion.stub(:save!)
       end
       it "assigns description to the model" do

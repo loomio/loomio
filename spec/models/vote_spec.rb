@@ -112,4 +112,11 @@ describe Vote do
       vote2.previous_vote.id.should == vote.id
     end
   end
+  context "activity" do
+    it "adds vote activity if a user votes on a motion" do
+      motion = create :motion
+      Event.should_receive(:new_vote!)
+      vote = create :vote, :motion => motion
+    end
+  end
 end

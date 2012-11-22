@@ -23,7 +23,7 @@
             %h3.header-text Discussion
             #content-history-body
               = render 'add_comment', discussion: @discussion
-              = render 'history', discussion: @discussion, history: @discussion.history
+              = render 'activity', discussion: @discussion, activity: @activity
 
           .span6#content-proposal
             .large-icon.decision-icon

@@ -22,18 +22,34 @@ describe Discussion do
     discussion.comment_threads.should include(comment)
   end
 
+  context "activity" do
+    before do
+      @discussion = create(:discussion)
+      @user = create(:user)
+      @discussion.group.add_member! @user
+    end
+    it "fires new_discussion activity" do
+      Event.should_receive(:new_discussion!)
+      discussion = create(:discussion)
+    end
+
+    it "fires new_comment activity if comment was created successfully" do
+      Event.should_receive(:new_comment!)
+      @discussion.add_comment(@user, "this is a test comment")
+    end
+
+    it "adds edit discussion description activity if a user edits the discussion description" do
+      Event.should_receive(:discussion_description_edited!)
+      @discussion.set_edit_discription_activity! @user
+    end
+  end
+
   context "events" do
     before do
       @discussion = create(:discussion)
       @user = create(:user)
       @discussion.group.add_member! @user
     end
-    
-    it "fires new_comment event if comment was created successfully" do
-      Event.should_receive(:new_comment!)
-      @discussion.add_comment(@user, "this is a test comment")
-    end
-
     it "fires mention event if any users were mentioned" do
       Event.should_receive(:user_mentioned!)
       mentioned_user = create :user
@@ -89,29 +105,19 @@ describe Discussion do
     end
   end
 
-  describe "#history" do
-    before do
-      @user = build(:user)
-      @user.save
-      @discussion = create(:discussion, author: @user)
-      @motion = create(:motion, discussion: @discussion)
-    end
-
-    it "should include comments" do
-      comment = @discussion.add_comment(@user, "this is a test comment")
-      @discussion.history.should include(comment)
-    end
-
-    it "should include motions" do
-      @discussion.history.should include(@discussion.current_motion)
-    end
-
-    it "should include votes" do
-      vote = Vote.new(position: 'yes')
-      vote.user = @user
-      vote.motion = @discussion.current_motion
-      vote.save
-      @discussion.history.should include(vote)
+  describe "#activity" do
+    it "should return all the activity for the discussion" do
+      @user = create :user
+      @group = create :group 
+      @group.add_member! @user
+      @discussion = create :discussion, :group => @group
+      @discussion.add_comment(@user, "this is a test comment")
+      @motion = create :motion, :discussion => @discussion
+      @vote = create :vote, :motion => @motion
+      activity = @discussion.activity
+      activity[0].kind.should == 'new_comment'
+      activity[1].kind.should == 'new_motion'
+      activity[2].kind.should == 'new_vote'
     end
   end
 
