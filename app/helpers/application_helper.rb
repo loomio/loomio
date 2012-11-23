@@ -95,12 +95,12 @@ module ApplicationHelper
     end
   end
 
-  def help_text(user)
+  def help_text(group)
     case "#{controller_name} #{action_name}"
       when 'discussions show'
         t :discussion_help_text
       when 'groups show'
-        t :group_help_text, :group_name => @group.full_name
+        t :group_help_text, :group_name => group.full_name
       when 'dashboard show'
         t :dashboard_help_text, :link => "#{link_to "contact@loomio.org", 'mailto:contact@loomio.org', :target =>'_blank'}\n\n"
     end
