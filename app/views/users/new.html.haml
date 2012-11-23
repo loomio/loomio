@@ -1,10 +1,19 @@
-%h1 Create an account
-= form_for @user do |f|
-  = f.label :name, "Full name"
-  = f.text_field :name, id: 'name'
-  = f.label :email
-  = f.text_field :email, id: 'email'
-  = f.label :password
-  = f.text_field :password, id: 'password'
-  = f.submit "Send an invitation", class: "btn btn-info", id: 'submit'
-%br/
+.page-container
+  %h1 Create an account
+
+  - if @user.errors.any?
+    .alert.alert-error
+      %strong= pluralize(@user.errors.count, "error") + " prohibited this account from being created"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  = form_for @user do |f|
+    = f.label :name, "Full name"
+    = f.text_field :name, id: 'name'
+    = f.label :email
+    = f.text_field :email, id: 'email'
+    = f.label :password
+    = f.text_field :password, id: 'password'
+    = f.submit "Create account", class: "btn btn-info", id: 'submit', :disable_with => "Create account"
+  %br/

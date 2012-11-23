@@ -2,7 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  errors:
+    messages:
+      email: "Not a valid email address"
   datetime:
     distance_in_words:
       less_than_x_seconds:
