@@ -5,8 +5,7 @@ When /^I visit the Request New Group page$/ do
   visit request_new_group_path
 end
 
-When /^I fill in and submit the Request New Group Form$/ do
-  click_on "request-new-group"
+When /^I fill in the Request New Group Form$/ do
   @group_name = "The whole world"
   @group_size = 90
   @group_description = "Everyone in the entire world"
@@ -16,7 +15,21 @@ When /^I fill in and submit the Request New Group Form$/ do
   fill_in "group_request_description", with: @group_description
   fill_in "group_request_admin_email", with: @group_admin_email
   choose("group_request_distribution_metric_2")
-  choose("group_request_sector_metric_community")
+  check("group_request_sectors_community")
+  check("group_request_sectors_other")
+  fill_in "group_request_other_sector", with: "activist"
+end
+
+When /^I fill in and submit the Request New Group Form$/ do
+  click_on "request-new-group"
+  step "I fill in the Request New Group Form"
+  find("#submit-group-request").click
+end
+
+When /^I fill in and submit the Request New Group Form as a Robot$/ do
+  click_on "request-new-group"
+  step "I fill in the Request New Group Form"
+  fill_in "group_request_robot_trap", with: "ImarobT!"
   find("#submit-group-request").click
 end
 
@@ -36,6 +49,10 @@ end
 
 Then /^a new Loomio group request should not be created$/ do
   GroupRequest.where(:name => "The whole world").size.should == 0
+end
+
+Then /^a new Loomio group request should be created and marked as spam$/ do
+  GroupRequest.first.should be_marked_as_spam
 end
 
 Then /^I should still see the Group Request Form$/ do
