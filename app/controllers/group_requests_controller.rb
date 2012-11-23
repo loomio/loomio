@@ -6,13 +6,11 @@ class GroupRequestsController < BaseController
   end
 
   def create
-    if params[:robot_trap].blank?
-      @group_request = GroupRequest.new(params[:group_request])
-      if @group_request.save
-        redirect_to group_request_confirmation_url
-      else
-        render :action => "new"
-      end
+    @group_request = GroupRequest.new(params[:group_request])
+    if @group_request.save
+      redirect_to group_request_confirmation_url
+    else
+      render :action => "new"
     end
   end
 

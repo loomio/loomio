@@ -9,12 +9,26 @@ describe GroupRequest do
     end
   end
 
-  it "should have an array of sectors" do
-    group_request.sectors = ["community", "business"]
+  it "marks spam as spam" do
+    group_request = create :group_request, :robot_trap => "spammy"
     group_request.save
-    group_request.reload
-    group_request.sectors.should include("community")
-    group_request.sectors.should include("business")
+    group_request.should be_marked_as_spam
+  end
+
+  describe "#sectors" do
+    it "should return an array" do
+      group_request.sectors = ["community", "business"]
+      group_request.save
+      group_request.reload
+      group_request.sectors[0].should == "community"
+      group_request.sectors[1].should == "business"
+    end
+  end
+
+  it "should have 'other_sector' string field" do
+    group_request.other_sector = "logging"
+    group_request.save
+    group_request.other_sector.should == "logging"
   end
 
   describe "#approve!" do
