@@ -1,5 +1,6 @@
 class Group < ActiveRecord::Base
   PERMISSION_CATEGORIES = [:everyone, :members, :admins, :parent_group_members]
+  # SECTOR_METRIC_CATEGORIES = [:community, :business, :government]
 
   attr_accessible :name, :viewable_by, :parent_id, :parent, :cannot_contribute
   attr_accessible :members_invitable_by, :email_new_motion, :description

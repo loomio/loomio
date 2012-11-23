@@ -1,12 +1,22 @@
 .page-container
+  =image_tag("loomio-orange.png")
   #invitation-container
-    %h3= "#{@inviter.name} has invited you to participate in group discussion and decision-making for #{@group.name}."
-    .p
-      %a{:href => new_user_path, :id => 'create-account'}
-        Click here
-      to create an account and start participating.
-    .p
-      If you already have an account, you can
-      %a{:href => new_user_session_path, :id => 'sign-in'}
-        sign in here
-
+    .row
+      %h3.span8.offset2 Your request to a start a new group on Loomio has been approved!
+    .row
+      %p &nbsp;
+    .row
+      .span2.offset2
+        =image_tag("mascot-medium-lefthand.gif")
+      .span6
+        %p
+          If you're new to Loomio, you'll need to set up an account before you create your group.
+        %p
+          %a.btn.btn-info{:href => new_user_path, :id => 'create-account'}
+            Create an account 
+        %p &nbsp;
+        %p
+          If you already have an account, log in to continue.
+        %p
+          %a.btn.btn-info{:href => new_user_session_path, :id => 'sign-in'}
+            Sign in here

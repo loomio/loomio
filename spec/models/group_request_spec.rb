@@ -9,6 +9,14 @@ describe GroupRequest do
     end
   end
 
+  it "should have an array of sectors" do
+    group_request.sectors = ["community", "business"]
+    group_request.save
+    group_request.reload
+    group_request.sectors.should include("community")
+    group_request.sectors.should include("business")
+  end
+
   describe "#approve!" do
     let(:invitation) { stub :token => "1234" }
     let(:group) { mock_model Group }

@@ -1,5 +1,10 @@
 class GroupRequest < ActiveRecord::Base
-  attr_accessible :admin_email, :description, :expected_size, :name, :cannot_contribute, :max_size
+  attr_accessible :admin_email, :description, :expected_size, :name, :cannot_contribute, :distribution_metric, :max_size
+  validates :name, :presence => true, :length => {:maximum => 250}
+  validates :description, :presence => true
+  validates :admin_email, :presence => true, :email => true
+  validates :expected_size, :presence => true
+
 
   belongs_to :group
 
@@ -23,6 +28,10 @@ class GroupRequest < ActiveRecord::Base
     event :mark_as_already_approved do
       transitions :to => :approved, :from => [:awaiting_approval, :ignored]
     end
+  end
+
+  def distribution_metric_labels
+
   end
 
   private

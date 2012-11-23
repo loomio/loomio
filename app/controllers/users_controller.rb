@@ -12,18 +12,19 @@ class UsersController < BaseController
     @invitation = Invitation.find_by_token(session[:invitation])
     group = Group.find(@invitation.group_id)
     if @invitation && (not @invitation.accepted?)
-      @user = User.create(params[:user])
-      if @user.errors.any?
-        redirect_to root_url
-      else
+      @user = User.new(params[:user])
+      if @user.save
         @invitation.accept!(@user)
+        
         discussion = group.discussions.where(:title => "Example Discussion: Welcome and introduction to Loomio!").first
         if discussion
           redirect_to discussion_path(discussion.id)
         else
           redirect_to group_path(group.id)
         end
-      end
+      else
+        render :action => "new"   
+      end   
     else
       redirect_to root_url
     end
