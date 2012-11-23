@@ -104,7 +104,6 @@ module ApplicationHelper
       when 'dashboard show'
         link = "#{link_to "contact@loomio.org", 'mailto:contact@loomio.org', :target =>'_blank'}\n\n"
         return t :dashboard_info_message, :link => link
-         
     end
   end
 end
