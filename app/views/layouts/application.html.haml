@@ -36,6 +36,6 @@
         = render 'header', :notifications => @notifications,
           :unviewed_notifications => @unviewed_notifications
         = render 'flash_messages', :flash => flash, :on_landing_page => false
-        = render '/application/help_text', message: help_text(@group), path: help_text_path if signed_in? && help_text_read?(current_user)
+        = render '/application/help_text', message: help_text(@group), path: dismiss_help_text_path unless signed_out? || help_text_dismissed?(current_user)
         .page-container
           = yield

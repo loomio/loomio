@@ -73,18 +73,18 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
-  def help_text_read?(user)
+  def help_text_dismissed?(user)
     case "#{controller_name} #{action_name}"
       when 'discussions show'
-        return (not user.has_read_discussion_notice?)
+        return user.has_read_discussion_notice?
       when 'groups show'
-        return (not user.has_read_group_notice?) && @group.parent.nil?
+        return user.has_read_group_notice? && @group.parent.nil?
       when 'dashboard show'
-        return (not user.has_read_dashboard_notice?)
+        return user.has_read_dashboard_notice?
     end
   end
 
-  def help_text_path
+  def dismiss_help_text_path
     case "#{controller_name} #{action_name}"
       when 'discussions show'
         return dismiss_discussion_notice_for_user_path
