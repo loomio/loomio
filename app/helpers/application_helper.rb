@@ -73,7 +73,7 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
-  def info_message_read?(user)
+  def help_text_read?(user)
     case "#{controller_name} #{action_name}"
       when 'discussions show'
         return (not user.has_read_discussion_notice?)
@@ -84,7 +84,7 @@ module ApplicationHelper
     end
   end
 
-  def helper_info_path
+  def help_text_path
     case "#{controller_name} #{action_name}"
       when 'discussions show'
         return dismiss_discussion_notice_for_user_path
@@ -95,15 +95,14 @@ module ApplicationHelper
     end
   end
 
-  def helper_info_message(user)
+  def help_text(user)
     case "#{controller_name} #{action_name}"
       when 'discussions show'
-        t :discussion_info_message
+        t :discussion_help_text
       when 'groups show'
-        t :group_info_message, :group_name => @group.full_name
+        t :group_help_text, :group_name => @group.full_name
       when 'dashboard show'
-        link = "#{link_to "contact@loomio.org", 'mailto:contact@loomio.org', :target =>'_blank'}\n\n"
-        return t :dashboard_info_message, :link => link
+        t :dashboard_help_text, :link => "#{link_to "contact@loomio.org", 'mailto:contact@loomio.org', :target =>'_blank'}\n\n"
     end
   end
 end
