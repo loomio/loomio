@@ -38,4 +38,4 @@
         = render 'flash_messages', :flash => flash, :on_landing_page => false
         = render '/application/helper_info', message: helper_info_message(current_user), path: helper_info_path if signed_in? && info_message_read?(current_user)
         .page-container
-        = yield
+          = yield
