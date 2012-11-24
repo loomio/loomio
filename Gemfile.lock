@@ -6,13 +6,6 @@ GIT
       tailor
 
 GIT
-  remote: https://github.com/mbleigh/acts-as-taggable-on.git
-  revision: 1338cb82593be43928ecafbc09a0a18f5fc08a94
-  specs:
-    acts-as-taggable-on (2.2.2)
-      rails (~> 3.0)
-
-GIT
   remote: https://github.com/twitter/twitter-text-rb.git
   revision: f0458ba4eee710140f04c059d70b0faf368e3b10
   specs:
@@ -408,7 +401,6 @@ PLATFORMS
 DEPENDENCIES
   aasm
   activeadmin
-  acts-as-taggable-on (~> 2.2.2)!
   acts_as_commentable_with_threading
   awesome_print
   aws-sdk
