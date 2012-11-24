@@ -1,58 +1,21 @@
-%ul.history-list#history-list
+%ul.activity-list#activty-list
   .divider
   - if activity.count == 0
-    %li.selector-item.empty-list-message.history-item
-      There aren't any activity_items in this discussion yet.
+    %li.selector-item.empty-list-message
+      There isn't any activity in this discussion yet.
   - else
     - activity.each do |activity_event|
       - activity_item = activity_event.eventable
-      - if activity_event.kind == 'new_comment'
-        / - comment = Comment.find(activity_item.eventable_id)
-        %li.history-item~ render activity_item
-      - if activity_event.kind == 'new_vote'
-        / - vote = Vote.find(activity_item.eventable_id)
-        %li.history-item
-          .comment-container
-            .comment.position
-              .position-icon
-                = render partial: "motions/display_icons", locals: { position: activity_item.position }
-              %span.comment-username
-                =link_to activity_item.user_name, "#", "title" => activity_item.user_name,
-                  "data-content" => "#{render 'users/name_popover', user: activity_item.user, group: discussion.group}",
-                  class: "user-name-with-popover"
-              %span.comment-label= render_position_message activity_item
-              - if activity_item.statement.present?
-                %span.position-message.word-break= "\"#{activity_item.statement}\""
-              .comment-time
-                = time_ago_in_words(activity_item.created_at) + " ago"
-      - if activity_event.kind == 'new_motion'
-        / - motion = Motion.find(activity_item.eventable_id)
-        %li.history-item
-          - classes = "comment proposal"
-          - classes += " current" if (activity_item == discussion.current_motion)
-          %div{class: classes}
-            .comment-container
-              .proposal-icon
-              %span.comment-username 
-                =link_to activity_item.author_name, "#", "title" => activity_item.author_name,
-                  "data-content" => "#{render 'users/name_popover', user: activity_item.author, group: discussion.group}", 
-                  class: "user-name-with-popover"
-              %span.comment-label created a proposal:
-              %span.proposal-text.word-break= " \"#{activity_item.name}\""
-              .comment-time
-                = time_ago_in_words(activity_item.created_at) + " ago"
-      - if activity_event.kind == 'motion_closed'
-        / - motion = Motion.find(activity_item.eventable_id)
-        %li.history-item
-          - classes = "comment proposal"
-          %div{class: classes}
-            .comment-container
-              .proposal-icon
-              %span.comment-username
-                =link_to activity_event.user.name, "#", "title" => activity_event.user.name,
-                  "data-content" => "#{render 'users/name_popover', user: activity_event.user, group: discussion.group}",
-                  class: "user-name-with-popover"
-              %span.comment-label closed the proposal:
-              %span.proposal-text.word-break= " \"#{activity_item.name}\""
-              .comment-time
-                = time_ago_in_words(activity_item.created_at) + " ago"
+      - case activity_event.kind
+        - when 'new_comment'
+          %li= render activity_item
+        - when 'new_vote'
+          = render 'activity_item', :activity_item => activity_item, :icon => 'position-icon', :position => activity_item.position, :group => activity_item.discussion.group, :actor => activity_item.user, :header => render_position_message(activity_item), :body => "\"#{activity_item.statement}\"", :time => activity_item.created_at
+        - when 'new_motion'
+          = render 'activity_item', :activity_item => activity_item, :icon => 'proposal-icon', :position => nil, :group => activity_item.discussion.group, :actor => activity_item.author, :header => 'created a proposal:', :body => " \"#{activity_item.name}\"", :time => activity_item.created_at
+        - when 'motion_closed'
+          = render 'activity_item', :activity_item => activity_item, :icon => 'proposal-icon', :position => nil, :group => activity_item.discussion.group, :actor => activity_event.user, :header => 'closed the proposal:', :body => " \"#{activity_item.name}\"", :time => activity_item.created_at
+        - when 'motion_close_date_edited'
+          = render 'activity_item', :activity_item => activity_item, :icon => 'proposal-icon', :position => nil, :group => activity_item.discussion.group, :actor => activity_event.user, :header => 'changed the closing date for the proposal to:', :body => " \"#{activity_item.close_date}\"", :time => activity_event.created_at
+        - when 'discussion_description_edited'
+          = render 'activity_item', :activity_item => activity_item, :icon => 'discussion-icon', :position => nil, :group => activity_item.group, :actor => activity_event.user, :header => 'edited the discussion description:', :body => " \"#{activity_item.description[0..30]}...\"", :time => activity_event.created_at

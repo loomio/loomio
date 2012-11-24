@@ -73,7 +73,7 @@ days_between = (local, current) ->
 
 # disable links on usernames
 $ ->
-  $('.comment-username a, .member-name a').click((event) ->
+  $('.activity-item-actor a, .member-name a').click((event) ->
     event.preventDefault()
   )
 

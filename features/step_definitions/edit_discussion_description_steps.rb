@@ -17,7 +17,7 @@ Then /^I should see the description change$/ do
 end
 
 Then /^I should see a record of my change in the discussion feed$/ do
-  find('#history-list').should have_content(@description_text)
+  find('#activity-list').should have_content(@description_text)
 end
 
 Then /^I should not see a link to edit the description$/ do

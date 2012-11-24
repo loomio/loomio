@@ -115,9 +115,9 @@ describe Discussion do
       @motion = create :motion, :discussion => @discussion
       @vote = create :vote, :motion => @motion
       activity = @discussion.activity
-      activity[0].kind.should == 'new_comment'
+      activity[0].kind.should == 'new_vote'
       activity[1].kind.should == 'new_motion'
-      activity[2].kind.should == 'new_vote'
+      activity[2].kind.should == 'new_comment'
     end
   end
 
