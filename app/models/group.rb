@@ -9,8 +9,8 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   validate :limit_inheritance
 
-  validates_length_of :name, :maximum=>250
   validates :description, :length => { :maximum => 250 }
+  validates :name, :length => { :maximum => 250 }
 
   after_initialize :set_defaults
   after_create :create_welcome_loomio

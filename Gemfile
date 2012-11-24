@@ -9,7 +9,9 @@ gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
 gem 'formtastic' # Deprecated. Use simple_form instead.
-gem 'simple_form'
+gem 'simple_form', '~> 2.0.0'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form', '~> 2.0.0'
 gem 'jqplot-rails'
 gem "rails-backbone"
 gem 'coffee-filter'
