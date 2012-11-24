@@ -1,6 +1,6 @@
+- set_title "", "New Sub-group"
 .page-container
   = render '/groups/title', group: GroupDecorator.decorate(@parent)
   #new-subgroup
-    %h3 Add a sub-group
-    = render :partial => 'form',
-      :locals => { :group => @subgroup, parent: @parent, submit_text: "Create group", :data => { :disable_with => "Creating group" } }
+    %h2 Add a sub-group
+    = render 'form', group: @group, parent: @parent, submit_text: "Create sub-group", disable_text: "Creating sub-group"
