@@ -18,10 +18,10 @@
           =render 'discussion_context'
         #description-revision-history.modal.hidden
         .row
-          .span6#content-history
+          .span6.content-activity
             .large-icon.discussion-icon.enabled-icon
             %h3.header-text Discussion
-            #content-history-body
+            .content-activity-body
               = render 'add_comment', discussion: @discussion
               = render 'activity', discussion: @discussion, activity: @activity
 

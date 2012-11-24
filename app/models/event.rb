@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-  KINDS = %w[new_discussion edit_discussion_description new_comment new_motion new_vote motion_blocked
-             motion_closing_soon motion_closed edit_motion_close_date membership_requested user_added_to_group comment_liked user_mentioned]
+  KINDS = %w[new_discussion discussion_description_edited new_comment new_motion new_vote motion_blocked
+             motion_closing_soon motion_closed motion_close_date_edited membership_requested user_added_to_group comment_liked user_mentioned]
 
   has_many :notifications, :dependent => :destroy
   belongs_to :eventable, :polymorphic => true
@@ -23,7 +23,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.discussion_description_edited!(discussion, editor)
-    activity = create!(:kind => "edit_discussion_description", :eventable => discussion,
+    activity = create!(:kind => "discussion_description_edited", :eventable => discussion,
       :discussion_id => discussion.id, :user => editor)
   end
 
@@ -67,7 +67,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.motion_close_date_edited!(motion)
-    activity = create!(:kind => "edit_motion_close_date", :eventable => motion,
+    activity = create!(:kind => "motion_close_date_edited", :eventable => motion,
       :discussion => motion.discussion)
   end
 

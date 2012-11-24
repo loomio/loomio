@@ -129,7 +129,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def activity
-    Event.where("discussion_id = ?", id)
+    Event.where("discussion_id = ?", id).order('created_at DESC')
   end
 
   def latest_history_time
