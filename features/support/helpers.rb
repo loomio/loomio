@@ -20,6 +20,6 @@ def visit_add_subgroup_page(groupname)
 end
 
 def fill_create_subgroup_common
-  fill_in "group-name", :with => 'test group'
+  fill_in "group_name", :with => 'test group'
   uncheck "group_email_new_motion"
 end

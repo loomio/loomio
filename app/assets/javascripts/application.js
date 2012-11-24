@@ -12,6 +12,8 @@
 //= require lib/jquery.tokeninput
 //= require lib/jquery.mousewheel
 //= require lib/jquery.placeholder
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync

@@ -16,31 +16,32 @@ end
 
 Given /^"(.*?)" is a(?: non-admin)?(?: member)? of(?: group)? "(.*?)"$/ do |email, group|
   @user = User.find_by_email(email)
-  if !@user 
+  if !@user
     @user = FactoryGirl.create(:user, :name => email.split("@").first, :email => email)
-  end 
+  end
   Group.find_by_name(group).add_member!(@user)
 end
 
 Given /^"(.*?)" is a[n]? admin(?: member)? of(?: group)? "(.*?)"$/ do |email, group|
   user = User.find_by_email(email)
-  if !user 
+  if !user
     user = FactoryGirl.create(:user, :email => email)
-  end 
+  end
   Group.find_by_name(group).add_admin!(user)
 end
 
 When /^I fill details for the subgroup$/ do
-  fill_in "group-name", :with => 'test group'
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_everyone"
   choose "group_members_invitable_by_members"
   uncheck "group_email_new_motion"
 end
 
-When /^I fill details for  public all members invite subgroup$/ do
+When /^I fill details for public all members invite subgroup$/ do
   fill_create_subgroup_common
   choose "group_viewable_by_everyone"
   choose "group_members_invitable_by_members"
+  click_on 'group_form_submit'
 end
 
 When /^I fill details for public admin only invite subgroup$/ do
@@ -76,3 +77,8 @@ end
 When /^I visit the group page for "(.*?)"$/ do |group_name|
   visit group_path(Group.find_by_name(group_name))
 end
+
+Then /^a new sub-group should be created$/ do
+  Group.where(:name=>"test group").should exist
+end
+
