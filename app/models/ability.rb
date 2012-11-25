@@ -58,6 +58,8 @@ class Ability
 
     can [:add_comment, :new_proposal, :create, :edit_description, :edit_title], Discussion, :group_id => user.group_ids
 
+    can :remove, Discussion, :group_id => user.adminable_group_ids
+
     can :destroy, Comment, user_id: user.id
 
     can [:like, :unlike], Comment, :discussion => { :id => user.discussion_ids }

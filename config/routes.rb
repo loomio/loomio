@@ -37,6 +37,8 @@ Loomio::Application.routes.draw do
     post :edit_title, :on => :member
   end
 
+  match "/discussion/remove/:id", :to => "discussions#remove", :as => :remove_discussion, :via => :post
+
   resources :notifications, :only => :index do
     post :mark_as_viewed, :on => :collection, :via => :post
   end

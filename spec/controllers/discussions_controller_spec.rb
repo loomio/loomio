@@ -199,5 +199,21 @@ describe DiscussionsController do
           :title => "The Butterflys"
       end
     end
+
+    describe "removing a discussion" do
+      before do
+        discussion.stub(:save!)
+      end
+
+      it "an admin can remove a discussion" do
+        discussion.should_receive :save!
+        post :remove, :id => discussion.id
+      end
+
+      it "should update the removed_at time" do
+        post :remove, :id => discussion.id
+        discussion.removed_at.should_not be_nil
+      end
+    end
   end
 end

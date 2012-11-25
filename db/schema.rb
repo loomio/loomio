@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005060102) do
+ActiveRecord::Schema.define(:version => 20121123223859) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20121005060102) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
+    t.datetime "removed_at"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"

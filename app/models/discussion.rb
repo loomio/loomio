@@ -7,6 +7,7 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  default_scope where(:removed_at => nil)
   # Do we even need this?
   # validates_with AuthorValidator
   validates_presence_of :title, :group, :author
