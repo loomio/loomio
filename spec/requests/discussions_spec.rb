@@ -245,7 +245,6 @@ describe "Discussion" do
           assert_modal_flushed
           find("#description-revision-history").find(".revision-title p").should have_content("Edited about #{time_ago_in_words(@discussion.last_versioned_at)} ago by #{@user2.name}")
         end
-        
       end
 
     end
