@@ -3,7 +3,8 @@
     <a class="close" data-dismiss="alert" href="#">×</a>
     = message
 
-- if !user_signed_in? && !on_landing_page && controller_name != "invitations"
+/ - if !user_signed_in? && !on_landing_page && controller_name != "invitations" && controller_name != "users"
+- if !user_signed_in? && (controller_name == "discussions" || controller_name == "groups")
   %div.alert-message{ "data-alert" => "alert", :class => "alert alert-warning" }
     = link_to "Sign in", new_user_session_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
     to participate.

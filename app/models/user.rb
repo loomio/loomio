@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, :presence => true
+  validates :email, :presence => true, :email => true
+  validates :password, :presence => true
+
   validates_attachment :uploaded_avatar,
     :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
     :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/png", "image/gif"] }

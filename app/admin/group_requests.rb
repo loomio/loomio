@@ -2,12 +2,12 @@ ActiveAdmin.register GroupRequest do
   scope :awaiting_approval, :default => true
   scope :approved
   scope :ignored
+  scope :marked_as_spam
 
   index do
     column :id
     column :name
     column :description
-    column :admin_email
     column "Can Contribute", :sortable => :cannot_contribute do |group_request|
       !group_request.cannot_contribute
     end
@@ -15,12 +15,12 @@ ActiveAdmin.register GroupRequest do
     column :max_size
     column "Approve" do |group_request|
       link = ""
-      if group_request.awaiting_approval? or group_request.ignored?
+      unless group_request.approved?
         link += link_to "Approve",
                approve_admin_group_request_path(group_request.id),
                :method => :put, :id => "approve_group_request_#{group_request.id}"
       end
-      if group_request.awaiting_approval?
+      if group_request.awaiting_approval? or group_request.marked_as_spam?
         link += " | "
         link += link_to "Ignore",
                 ignore_admin_group_request_path(group_request.id),
