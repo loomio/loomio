@@ -13,7 +13,6 @@ gem 'simple_form'
 gem 'jqplot-rails'
 gem "rails-backbone"
 gem 'coffee-filter'
-gem 'acts-as-taggable-on', '~> 2.2.2', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'
 gem 'aasm'
 gem 'cancan'
 gem 'acts_as_commentable_with_threading'
