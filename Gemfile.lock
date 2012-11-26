@@ -103,6 +103,10 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
+    client_side_validations (3.2.1)
+    client_side_validations-simple_form (2.0.1)
+      client_side_validations (~> 3.2.0)
+      simple_form (~> 2.0.3)
     cocaine (0.2.1)
     coffee-filter (0.1.1)
       coffee-script (>= 2.2.0)
@@ -353,7 +357,7 @@ GEM
     sexp_processor (3.1.0)
     shoulda-matchers (1.2.0)
       activesupport (>= 3.0.0)
-    simple_form (2.0.2)
+    simple_form (2.0.4)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
     simplecov (0.6.1)
@@ -410,6 +414,8 @@ DEPENDENCIES
   cane!
   capistrano
   capybara
+  client_side_validations
+  client_side_validations-simple_form (~> 2.0.0)
   coffee-filter
   coffee-rails (~> 3.2.2)
   cucumber-rails
@@ -463,7 +469,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.5)
   selenium-webdriver (= 2.25.0)
   shoulda-matchers
-  simple_form
+  simple_form (~> 2.0.0)
   simplecov
   spork
   thin

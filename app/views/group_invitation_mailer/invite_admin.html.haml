@@ -1,0 +1,13 @@
+%p Hi there
+
+%p Great news! Your request to set up a new group on Loomio has been approved!
+
+%p= "Click the following link to set up your group (#{@group.name}) on Loomio: "
+
+- link_url = group_invitation_url(@group, @token)
+%p= link_to link_url, link_url
+
+%p
+  Love,
+  %br
+  = link_to "Loomio", "http://loomio.org"
