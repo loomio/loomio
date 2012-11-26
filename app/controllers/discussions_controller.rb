@@ -70,6 +70,20 @@ class DiscussionsController < GroupBaseController
     end
   end
 
+  def remove
+    discussion = Discussion.find(params[:id])
+    discussion.removed_at = Time.current
+    @group = discussion.group
+
+    if discussion.save!
+      flash[:success] = "Discussion removed."
+      redirect_to group_url(@group)
+    else
+      flash[:error] = "Could not remove discussion."
+      redirect_to discussion_url(discussion)
+    end
+  end
+
   def add_comment
     comment = resource.add_comment(current_user, params[:comment])
     unless comment.valid?

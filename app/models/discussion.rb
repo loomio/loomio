@@ -7,7 +7,9 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  default_scope where(:removed_at => nil)
   scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
+
   # Do we even need this?
   # validates_with AuthorValidator
   validates_presence_of :title, :group, :author

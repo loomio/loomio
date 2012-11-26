@@ -44,6 +44,8 @@ Loomio::Application.routes.draw do
   post "/discussion/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
   post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"
 
+  match "/discussion/remove/:id", :to => "discussions#remove", :as => :remove_discussion, :via => :post
+
   resources :notifications, :only => :index do
     post :mark_as_viewed, :on => :collection, :via => :post
   end
