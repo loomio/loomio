@@ -188,18 +188,40 @@ describe DiscussionsController do
     end
 
     describe "removing a discussion" do
-      before do
-        discussion.stub(:save!)
-      end
-
-      it "an admin can remove a discussion" do
-        discussion.should_receive :save!
+      it "updates the removed_at time" do
+        discussion.stub :save!
+        discussion.should_receive :removed_at=
         post :remove, :id => discussion.id
       end
 
-      it "should update the removed_at time" do
-        post :remove, :id => discussion.id
-        discussion.removed_at.should_not be_nil
+      context "successfully" do
+        before do
+          discussion.stub(:save!).and_return true
+          post :remove, :id => discussion.id
+        end
+
+        it "gives a flash success message" do
+          flash[:success].should == "Discussion removed."
+        end
+
+        it "redirects to the group page" do
+          response.should redirect_to(group_path(discussion.group))
+        end
+      end
+
+      context "unsuccessfully" do
+        before do
+          discussion.stub(:save!).and_return false
+          post :remove, :id => discussion.id
+        end
+
+        it "gives a flash error message" do
+          flash[:error].should == "Could not remove discussion."
+        end
+
+        it "redirects to the discussion page" do
+          response.should redirect_to(discussion_path(discussion.id))
+        end
       end
     end
 
