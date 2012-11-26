@@ -12,7 +12,7 @@ Scenario: Mention user in comment
   When I am adding a comment and type in "@h"
   And I click on "@harry" in the menu that pops up
   Then I should see "@harry" added to the "new-comment" field
-  
+
 Scenario: View comment with mentions
   Given "harry@example.com" is a member of "demo-group"
   And I am viewing a discussion titled "hello" in "demo-group"
