@@ -24,7 +24,7 @@
         =link_to "Next", preview_version_discussion_path(@discussion), :method => :post, :remote => true
       -else
         =link_to "Next", "#", :class => "disabled"
-
-  %p= markdown(@discussion.description)
+  .revision-content
+    %p= markdown(@discussion.description)
 .modal-footer
   = link_to "Close", "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
