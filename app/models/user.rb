@@ -15,8 +15,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, :presence => true
-  validates :email, :presence => true, :email => true
-  validates :password, :presence => true
+  validates :email, :presence => true
 
   validates_attachment :uploaded_avatar,
     :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
@@ -115,7 +114,7 @@ class User < ActiveRecord::Base
     vote = Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
     vote.position if vote
   end
-  
+
   def voted?(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
   end

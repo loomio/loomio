@@ -88,5 +88,7 @@ FactoryGirl.define do
     expected_size 50
     description "MyText"
     admin_email Faker::Internet.email
+    distribution_metric 3
+    sectors ["community"]
   end
 end
