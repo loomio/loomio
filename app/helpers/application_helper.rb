@@ -73,14 +73,17 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
-  def help_text_dismissed?(user)
+  def help_text_dismissed?
+    return true unless current_user
     case "#{controller_name} #{action_name}"
-      when 'discussions show'
-        return user.has_read_discussion_notice?
-      when 'groups show'
-        return user.has_read_group_notice? && @group.parent.nil?
-      when 'dashboard show'
-        return user.has_read_dashboard_notice?
+    when 'discussions show'
+      current_user.has_read_discussion_notice?
+    when 'groups show'
+      current_user.has_read_group_notice? && @group.parent.nil?
+    when 'dashboard show'
+      current_user.has_read_dashboard_notice?
+    else
+      true
     end
   end
 
@@ -103,6 +106,12 @@ module ApplicationHelper
         t :group_help_text, :group_name => group.full_name
       when 'dashboard show'
         t :dashboard_help_text, :link => "#{link_to "contact@loomio.org", 'mailto:contact@loomio.org', :target =>'_blank'}\n\n"
+    end
+  end
+
+  def render_help_text(group)
+    unless help_text_dismissed?
+      render '/application/help_text', message: help_text(group), path: dismiss_help_text_path
     end
   end
 end
