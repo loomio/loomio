@@ -35,6 +35,7 @@ Feature: Email preferences page
     Then I should not be subscribed to proposal closure notification emails
 
   Scenario: User enables mention email notifications
+    Given I am not subscribed to mention email notifications
     When I visit the email preferences page
     And I check "user_subscribed_to_mention_notifications"
     And I click "Update preferences"

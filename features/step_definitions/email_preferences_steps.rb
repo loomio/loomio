@@ -8,7 +8,7 @@ Then /^I should be subscribed to the daily actitivy email$/ do
 end
 
 Given /^I am subscribed to the daily activity email$/ do
-  @user.update_attribute(:subscribed_to_daily_activity_email , false)
+  @user.update_attribute(:subscribed_to_daily_activity_email , true)
 end
 
 When /^I uncheck "(.*?)"$/ do |arg1|
@@ -32,6 +32,10 @@ end
 
 Given /^I am subscribed to mention email notifications$/ do
   @user.update_attribute(:subscribed_to_mention_notifications, true)
+end
+
+Given /^I am not subscribed to mention email notifications$/ do
+  @user.update_attribute(:subscribed_to_mention_notifications, false)
 end
 
 Then /^I should be subscribed to mention notifications$/ do
