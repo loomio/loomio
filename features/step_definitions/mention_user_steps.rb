@@ -10,16 +10,29 @@ When /^I click on "(.*?)" in the menu that pops up$/ do |arg1|
   end
 end
 
+When /^a comment exists mentioning "(.*?)"$/ do |text|
+  @discussion.add_comment @user, "Hey #{text}"
+end
+
+When /^I submit a comment mentioning "(.*?)"$/ do |mention|
+  fill_in 'new-comment', with: mention
+  click_button "post-new-comment"
+end
+
 Then /^I should see "(.*?)" added to the "(.*?)" field$/ do |text, field|
   input = find_field(field)
   input.value.should =~ /#{text}/
 end
 
-When /^a comment exists mentioning "(.*?)"$/ do |text|
-  @discussion.add_comment @user, "Hey #{text}"
-end
-
-Then /^I should see a link to "(.*?)"'s user$/ do |user|
+Then /^I should see a link to "(.*?)"\'s user$/ do |user|
   visit(current_path)
   page.should have_link("@#{user}")
+end
+
+Then /^the user should be notified that they were mentioned$/ do
+  Event.where(:kind => "user_mentioned").count.should == 1
+end
+
+Then /^the user should not be notified that they were mentioned$/ do
+  Event.where(:kind => "user_mentioned").count.should == 0
 end
