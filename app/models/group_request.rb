@@ -1,6 +1,7 @@
 class GroupRequest < ActiveRecord::Base
   attr_accessible :admin_email, :description, :expected_size, :name,
-                  :cannot_contribute, :distribution_metric, :max_size, :sectors, :robot_trap
+                  :cannot_contribute, :max_size, :robot_trap, :sectors_metric,
+                  :other_sectors_metric, :distribution_metric
 
   attr_accessor :robot_trap
 
@@ -9,9 +10,8 @@ class GroupRequest < ActiveRecord::Base
   validates :admin_email, :presence => true, :email => true
   validates :expected_size, :presence => true
   validates :distribution_metric, :presence => true
-  validates :sectors, :presence => true
 
-  serialize :sectors, Array
+  serialize :sectors_metric, Array
 
   belongs_to :group
 
@@ -51,6 +51,9 @@ class GroupRequest < ActiveRecord::Base
     @group.creator = User.loomio_helper_bot
     @group.cannot_contribute = cannot_contribute
     @group.max_size = max_size
+    @group.sectors_metric = sectors_metric
+    @group.other_sectors_metric = other_sectors_metric
+    @group.distribution_metric = distribution_metric
     @group.save!
     self.group_id = @group.id
     save!
