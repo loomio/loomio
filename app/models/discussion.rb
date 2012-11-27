@@ -34,8 +34,12 @@ class Discussion < ActiveRecord::Base
   attr_accessor :comment, :notify_group_upon_creation
 
   after_create :populate_last_comment_at
+  after_create :fire_new_discussion_event
 
 
+  def group_users_without_discussion_author
+    group.users.where(User.arel_table[:id].not_eq(author.id))
+  end
   #
   # COMMENT METHODS
   #
@@ -48,15 +52,6 @@ class Discussion < ActiveRecord::Base
     if can_be_commented_on_by? user
       comment = Comment.build_from self, user.id, comment
       comment.save
-      if comment.valid?
-        Event.new_comment!(comment)
-        mentions = comment.parse_mentions
-        if mentions.present?
-          mentions.each do |mentioned_user|
-            Event.user_mentioned!(comment, mentioned_user)
-          end
-        end
-      end
       comment
     end
   end
@@ -173,9 +168,12 @@ class Discussion < ActiveRecord::Base
 
 
   private
-
   def populate_last_comment_at
     self.last_comment_at = created_at
     save
+  end
+
+  def fire_new_discussion_event
+    Event.new_discussion!(self)
   end
 end

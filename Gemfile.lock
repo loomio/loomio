@@ -142,6 +142,11 @@ GEM
     debugger-linecache (1.1.1)
       debugger-ruby_core_source (>= 1.1.1)
     debugger-ruby_core_source (1.1.2)
+    delayed_job (3.0.4)
+      activesupport (~> 3.0)
+    delayed_job_active_record (0.3.3)
+      activerecord (>= 2.1.0, < 4)
+      delayed_job (~> 3.0)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -423,6 +428,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   debugger
+  delayed_job_active_record
   devise (~> 2.0.0)
   devise_invitable (~> 1.0.0)
   draper (~> 0.11.1)

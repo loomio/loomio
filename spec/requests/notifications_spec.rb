@@ -24,7 +24,7 @@ describe "Notifications" do
 
       it "should have a notification count of 1" do
         visit root_url
-        find("#notifications-count").should have_content("1")
+        find("#notifications-count").should have_content("3")
       end
     end
 
@@ -36,7 +36,7 @@ describe "Notifications" do
 
       it "should have a notification count of 2" do
         visit root_url
-        find("#notifications-count").should have_content("2")
+        find("#notifications-count").should have_content("5")
       end
     end
   end

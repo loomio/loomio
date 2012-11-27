@@ -1,319 +1,302 @@
 require 'spec_helper'
 
 describe Event do
-  it { should belong_to(:eventable) }
-  it { should belong_to(:user) }
-  it { should have_many(:notifications).dependent(:destroy) }
-  it { should validate_presence_of(:eventable) }
-  it { should allow_value("new_discussion").for(:kind) }
-  it { should allow_value("new_comment").for(:kind) }
-  it { should allow_value("new_vote").for(:kind) }
-  it { should allow_value("motion_blocked").for(:kind) }
-  it { should allow_value("membership_requested").for(:kind) }
-  it { should allow_value("user_added_to_group").for(:kind) }
-  it { should allow_value("comment_liked").for(:kind) }
-  it { should_not allow_value("blah").for(:kind) }
+  let(:user) { stub(:user, email: 'jon@lemmon.com') }
+  let(:event) { stub(:event, :notify! => true) }
+  let(:mailer) { stub(:mailer, :deliver => true) }
 
-  let(:discussion) { create(:discussion) }
-  let(:group) { discussion.group }
-
-  describe "new_discussion!" do
-    subject { Event.new_discussion!(discussion) }
-
-    its(:kind) { should eq("new_discussion") }
-    its(:eventable) { should eq(discussion) }
-
-    context "sending notifications" do
-      it "notifies group members" do
-        user = create(:user)
-        group = discussion.group
-        group.add_member! user
-        event = Event.new_discussion!(discussion)
-
-        event.notifications.where(:user_id => user.id).should exist
-      end
-
-      it "does not notify discussion author" do
-        event = Event.new_discussion!(discussion)
-
-        event.notifications.where(:user_id => discussion.author.id).
-          should_not exist
-      end
-    end
+  before do
+    Event.stub(:create!).and_return(event)
   end
 
-  describe "new_comment!" do
-    let(:comment) { stub_model(Comment, :discussion => discussion) }
-    subject { Event.new_comment!(comment) }
+  describe "new_discussion!", isolated: true do
+    let(:discussion) { stub(:discussion) }
+    before do
+      discussion.stub(:notify_group_upon_creation).and_return(false)
+      discussion.stub(:group_users_without_discussion_author).and_return([user])
+    end
 
-    its(:kind) { should eq("new_comment") }
-    its(:eventable) { should eq(comment) }
+    after do
+      Event.new_discussion!(discussion)
+    end
 
-    context "sending notifications" do
+    context 'if notify_group_upon_creation' do
       before do
-        @commentor, @participant, @non_participant =
-          create(:user), create(:user), create(:user)
-        group.add_member! @commentor
-        group.add_member! @participant
-        group.add_member! @non_participant
-        discussion.add_comment(@commentor, "hello!")
-        discussion.add_comment(@participant, "hi there commentor!")
-        comment = discussion.add_comment(@commentor, "fancy pantsy")
-        @event = Event.new_comment!(comment)
+        discussion.stub(:notify_group_upon_creation).and_return(true)
       end
-
-      it "notifies participants" do
-        @event.notifications.where(:user_id => @participant.id).
-          should exist
-      end
-
-      it "does not notify comment author" do
-        @event.notifications.where(:user_id => @commentor.id).
-          should_not exist
-      end
-
-      it "does not notify users who have not participated in the discussion" do
-        @event.notifications.where(:user_id => @non_participant.id).
-          should_not exist
+      it 'calls spam_new_discussion_created' do
+        DiscussionMailer.should_receive(:spam_new_discussion_created).with(discussion)
       end
     end
-  end
 
-  describe "new_motion!" do
-    let(:motion) { create(:motion) }
-    subject { Event.new_motion!(motion) }
-
-    its(:kind) { should eq("new_motion") }
-    its(:eventable) { should eq(motion) }
-
-    context "sending notifications" do
-      it "notifies group members" do
-        group = motion.group
-        @user1 = create(:user)
-        group.add_member! @user1
-        group_size = group.users.size
-        event = Event.new_motion!(motion)
-        event.notifications.where(:user_id => @user1.id).should exist
-      end
-
-      it "does not notify motion author" do
-        event = Event.new_motion!(motion)
-
-        event.notifications.where(:user_id => motion.author.id).
-          should_not exist
-      end
-    end
-  end
-
-  describe "new_vote!" do
-    let(:user) { mock_model(User) }
-    let(:vote) { mock_model(Vote, :motion_author => user,
-                            :discussion_author => user, :user => user) }
-    subject { Event.new_vote!(vote) }
-
-    its(:kind) { should eq("new_vote") }
-    its(:eventable) { should eq(vote) }
-
-    context "sending notifications" do
+    context 'if notify_group_upon_creation false' do
       before do
-        @user = create(:user)
-        @motion = create(:motion, :discussion => discussion, :author => create(:user))
-        @motion.group.add_member!(@user)
-        @vote = create(:vote, :user => @user, :motion => @motion, :position => "yes")
-        @event = Event.new_vote!(@vote)
+        discussion.stub(:notify_group_upon_creation).and_return(false)
+      end
+      it 'calls spam_new_discussion_created' do
+        DiscussionMailer.should_not_receive(:spam_new_discussion_created).with(discussion)
+      end
+    end
+
+    it 'creates an event with kind and eventable' do
+      Event.should_receive(:create!).with(:kind => 'new_discussion',
+                                          :eventable => discussion).and_return(event)
+    end
+
+    it 'notifys users but not the author' do
+      event.should_receive(:notify!).with(user)
+      Event.stub(:create!).and_return(event)
+      discussion.should_receive(:group_users_without_discussion_author).and_return([user])
+    end
+  end
+
+  describe "new_comment!", isolated: true do
+    let(:comment) { stub(:comment) }
+
+    before do
+      comment.stub(:parse_mentions).and_return([])
+      comment.stub(:other_discussion_participants).and_return([])
+    end
+
+    after do
+      Event.new_comment!(comment)
+    end
+
+    it 'creates an event with kind new_comment and eventable comment' do
+      Event.should_receive(:create!).with(kind: 'new_comment', 
+                                          eventable: comment).and_return(event)
+    end
+
+    it 'fires user_mentioned! for each mentioned user' do
+      comment.should_receive(:parse_mentions).and_return([user])
+      Event.should_receive(:user_mentioned!).with(comment, user)
+    end
+
+    it 'creates a notification for other discussion participant' do
+      comment.should_receive(:other_discussion_participants).and_return([user])
+      event.should_receive(:notify!).with(user)
+    end
+  end
+
+  describe "new_motion!", isolated: true do
+    let(:user) { stub(:user, :email => 'bill@dave.com') }
+    let(:motion) { stub(:motion) }
+
+    before do
+      motion.stub(:group_users_without_motion_author).and_return([user])
+      motion.stub(:group_email_new_motion?).and_return(false)
+    end
+
+    after do
+      Event.new_motion!(motion)
+    end
+
+    it 'creates an event' do
+      Event.should_receive(:create!).with(kind: 'new_motion', eventable: motion)
+    end
+
+    context 'if group.email_new_motion' do
+      before do
+        motion.should_receive(:group_email_new_motion?).and_return(true)
       end
 
-      it "notifies motion author" do
-        @event.notifications.where(:user_id => @motion.author.id).
-          should exist
+      it 'emails group_users_without_motion_author new_motion_created' do
+        MotionMailer.should_receive(:new_motion_created).with(motion, user.email).and_return(mailer)
+      end
+    end
+
+    context 'if not group.email_new_motion' do
+      before do
+        motion.should_receive(:group_email_new_motion?).and_return(false)
       end
 
-      it "notifies discussion author" do
-        @event.notifications.where(:user_id => discussion.author.id).
-          should exist
+      it 'does not email new motion created' do
+        MotionMailer.should_not_receive(:new_motion_created)
       end
+    end
 
-      it "does not notify motion author if they are the member who voted" do
-        @vote = @motion.author.votes.new(:position => "yes")
-        @vote.motion = @motion
-        @vote.save!
-        @event = Event.new_vote!(@vote)
+    it 'notifies group_users_without_motion_author' do
+      event.should_receive(:notify!).with(user)
+    end
+  end
 
-        @event.notifications.where(:user_id => @motion.author.id).
-          should_not exist
+  describe "new_vote!", :isolated => true do
+    let(:motion_author) { stub(:motion_author) }
+    let(:discussion_author) { stub(:discussion_author) }
+    let(:vote) { stub(:vote, 
+                      user: user,
+                      motion_author: motion_author,
+                      discussion_author: discussion_author) }
+    after do
+      Event.new_vote!(vote)
+    end
+
+    it 'creates a new_vote event with eventable vote' do
+      Event.should_receive(:create!).with(kind: 'new_vote', eventable: vote).and_return(event)
+    end
+
+    it 'notifies the motion_author' do
+      event.should_receive(:notify!).with(motion_author)
+    end
+
+    it 'notifies the discussion_author' do
+      event.should_receive(:notify!).with(discussion_author)
+    end
+
+    context 'voter is motion_author' do
+      let(:motion_author) { user }
+      it 'does not notify voter' do
+        event.should_not_receive(:notify!).with(motion_author)
       end
+    end
 
-      it "does not notify discussion author if they are the member who voted" do
-        @vote = discussion.author.votes.new(:position => "yes")
-        @vote.motion = @motion
-        @vote.save!
-        @event = Event.new_vote!(@vote)
+    context 'voter is discussion_author' do
+      let(:discussion_author) { user }
+      it 'does not notify voter' do
+        event.should_not_receive(:notify!).with(discussion_author)
+      end
+    end
 
-        @event.notifications.where(:user_id => discussion.author.id).
-          should_not exist
+    context 'motion_author is discussion_author' do
+      let(:motion_author) { discussion_author }
+      it 'only notifies that person once' do
+        event.should_receive(:notify!).once.with(motion_author)
       end
     end
   end
 
   describe "motion_blocked!" do
-    let(:vote) { mock_model(Vote, :group_users => []) }
-    subject { Event.motion_blocked!(vote) }
+    let(:vote) { stub(:vote, other_group_members: [user]) }
 
-    its(:kind) { should eq("motion_blocked") }
-    its(:eventable) { should eq(vote) }
+    after do
+      Event.motion_blocked!(vote)
+    end
 
-    context "sending notifications" do
-      before do
-        @user = create(:user)
-        @motion = create(:motion)
-        @motion.group.add_member!(@user)
-        @vote = @motion.author.votes.new(:position => "block")
-        @vote.motion = @motion
-        @vote.save!
-        @event = Event.motion_blocked!(@vote)
-      end
+    it 'creates a motion_blocked event' do
+      Event.should_receive(:create!).with(kind: 'motion_blocked',
+                                          eventable: vote).and_return(event)
+    end
 
-      it "notifies group members" do
-        @event.notifications.where(:user_id => @user.id).
-          should exist
-      end
-
-      it "does not notify blocker" do
-        @event.notifications.where(:user_id => @motion.author.id).
-          should_not exist
-      end
+    it 'notifies other group members' do
+      vote.should_receive(:other_group_members).and_return([user])
+      event.should_receive(:notify!).with(user)
     end
   end
 
-  describe "membership_requested!" do
-    let(:membership) { mock_model(Membership, :group_admins => []) }
-    subject { Event.membership_requested!(membership) }
+  describe "membership_requested!", isolated: true do
+    let(:membership) { stub(:membership) }
 
-    its(:kind) { should eq("membership_requested") }
-    its(:eventable) { should eq(membership) }
-
-    context "sending notifications" do
-      before do
-        @user, @admin1, @admin2 = create(:user), create(:user), create(:user)
-        @group = create(:group)
-        @group.add_admin! @admin1
-        @group.add_admin! @admin2
-        @membership = @group.add_request! @user
-        @event = Event.membership_requested! @membership
-      end
-
-      it "notifies admins" do
-        @event.notifications.where(:user_id => @admin1.id).
-          should exist
-        @event.notifications.where(:user_id => @admin2.id).
-          should exist
-      end
-    end
-  end
-
-  describe "user_added_to_group!" do
-    let(:membership) { create(:group).add_member! create(:user) }
-    subject { Event.user_added_to_group!(membership) }
-
-    its(:kind) { should eq("user_added_to_group") }
-    its(:eventable) { should eq(membership) }
-
-    context "sending notifications" do
-      before do
-        @group = create(:group)
-        @user = create(:user)
-        @membership = @group.add_member! @user
-        @event = Event.user_added_to_group! @membership
-      end
-
-      it "notifies user" do
-        @event.notifications.where(:user_id => @user.id).
-          should exist
-      end
-
-      it "sends email to user" do
-        UserMailer.should_receive(:added_to_group).with(@membership).
-          and_return(stub(deliver: true))
-        @event = Event.user_added_to_group! @membership
-      end
-
-      it "does not send email to user if user has not yet acctepted invitation
-          to loomio" do
-        @user = User.invite_and_notify!({ :email => "example@blah.com" },
-                                        create(:user), @group)
-        @membership = @user.memberships.first
-        UserMailer.should_not_receive(:added_to_group)
-
-        @event = Event.user_added_to_group! @membership
-      end
-    end
-  end
-
-  describe "comment_liked!" do
-    let(:comment_vote) { mock_model(CommentVote,
-      :user => mock_model(User), :comment_user => mock_model(User)) }
-    subject { Event.comment_liked!(comment_vote) }
-
-    its(:kind) { should eq("comment_liked") }
-    its(:eventable) { should eq(comment_vote) }
-
-    context "sending notifications" do
-      before do
-        @group = create(:group)
-        @user, @user2 = create(:user), create(:user)
-        discussion = create(:discussion, author: @user)
-        @group.add_member! @user2
-        @comment = discussion.add_comment @user, "hello"
-      end
-
-      it "notifies user" do
-        @comment_vote = @comment.like @user2
-        @event = Event.comment_liked! @comment_vote
-        @event.notifications.where(:user_id => @user.id).
-          should exist
-      end
-
-      it "does not notify user when they like their own comment" do
-        @comment_vote = @comment.like @user
-        @event = Event.comment_liked! @comment_vote
-        @event.notifications.where(:user_id => @user.id).
-          should_not exist
-      end
-    end
-  end
-
-  describe "user_mentioned!" do
-    let(:mentioned_user) { stub_model User }
-    let(:comment) { stub_model(Comment, :discussion => discussion,
-                                        :user => stub_model(User)) }
     before do
-      @event_notifications = stub :create! => nil
-      @event = mock_model Event, :notifications => @event_notifications
-      Event.stub(:create!).
-            with(:kind => "user_mentioned",
-                 :eventable => comment).
-            and_return(@event)
+      membership.stub(:group_admins).and_return([user])
     end
 
-    it "creates an event" do
+    after do
+      Event.membership_requested!(membership)
+    end
+
+    it 'creates an event' do
+      Event.should_receive(:create!).with(kind: 'membership_requested',
+                                          eventable: membership)
+    end
+
+    it 'notifies group admins' do
+      event.should_receive(:notify!).with(user)
+    end
+  end
+
+  describe "user_added_to_group!", isolated: true do
+    let(:membership) { stub(:membership, user: user) }
+
+    before do
+      user.stub(:accepted_or_not_invited?).and_return(false)
+    end
+
+    after do
+      Event.user_added_to_group!(membership)
+    end
+
+    it 'creates a user_added_to_group event' do
+      Event.should_receive(:create!).with(kind: 'user_added_to_group', 
+                                          eventable: membership).
+                                          and_return(event)
+    end
+
+    it 'notifies the user' do
+      event.should_receive(:notify!).with(user)
+    end
+
+    context 'accepted_or_not_invited is true' do
+      before do
+        user.should_receive(:accepted_or_not_invited?).and_return(true)
+      end
+
+      it 'delivers UserMailer.added_to_group' do
+        UserMailer.should_receive(:added_to_group).with(membership).and_return(mailer)
+      end
+    end
+
+    context 'accepted_or_not_invited is false' do
+      it 'does not deliver UserMailer.added_to_group' do
+        UserMailer.should_not_receive(:added_to_group)
+      end
+    end
+  end
+
+  describe "comment_liked!", isolated: true do
+    let(:commenter) { stub(:commenter) }
+    let(:voter) { stub(:voter) }
+    let(:comment_vote) { stub(:comment_vote, 
+                              comment_user: commenter, 
+                              user: voter) }
+
+    after do
+      Event.comment_liked!(comment_vote)
+    end
+
+    it 'creates a comment_liked event' do
+      Event.should_receive(:create!).with(kind: 'comment_liked',
+                                          eventable: comment_vote).
+                                          and_return(event)
+    end
+
+    it 'notifies the comment author' do
+      event.should_receive(:notify!).with(commenter)
+    end
+
+    context 'voter is commenter' do
+      before do
+        comment_vote.stub(:user).and_return(commenter)
+      end
+
+      it 'does not notify the user' do
+        event.should_not_receive(:notify!).with(user)
+      end
+    end
+  end
+
+  describe "user_mentioned!", focus: true, isolated: true do
+    let(:comment_author) { stub(:comment_author) }
+    let(:comment) { stub(:comment, user: comment_author) }
+    let(:mentioned_user) { stub(:mentioned_user) }
+
+    after do
+      Event.user_mentioned!(comment, mentioned_user)
+    end
+
+    it 'creates a user_mentioned event' do
       Event.should_receive(:create!).
-            with(:kind => "user_mentioned",
-                 :eventable => comment).
-            and_return(@event)
-      Event.user_mentioned!(comment, mentioned_user)
+        with(kind: 'user_mentioned', eventable: comment).
+        and_return(event)
     end
 
-    it "notifies the mentioned user" do
-      @event_notifications.should_receive(:create!).
-                           with(:user => mentioned_user)
-      Event.user_mentioned!(comment, mentioned_user)
+    it 'notifies the mentioned user' do
+      event.should_receive(:notify!).with(mentioned_user)
     end
 
-    context "user mentions themselves" do
-      it "does not notify user" do
-        @event_notifications.should_not_receive(:create!).
-                             with(:user => comment.user)
-        Event.user_mentioned!(comment, comment.user)
+    context 'mentioned user is comment author' do
+      let(:mentioned_user) { comment_author } 
+      it 'does not notify the user' do
+        event.should_not_receive(:notify!)
       end
     end
   end
