@@ -1,6 +1,7 @@
 class GroupRequest < ActiveRecord::Base
   attr_accessible :admin_email, :description, :expected_size, :name,
-                  :cannot_contribute, :distribution_metric, :max_size, :sectors, :robot_trap
+                  :cannot_contribute, :max_size, :robot_trap, :sectors_metric,
+                  :other_sectors_metric, :distribution_metric
 
   attr_accessor :robot_trap
 
@@ -9,9 +10,9 @@ class GroupRequest < ActiveRecord::Base
   validates :admin_email, :presence => true, :email => true
   validates :expected_size, :presence => true
   validates :distribution_metric, :presence => true
-  validates :sectors, :presence => true
+  validates :sectors_metric, :presence => true
 
-  serialize :sectors, Array
+  serialize :sectors_metric, Array
 
   belongs_to :group
 

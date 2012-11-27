@@ -89,6 +89,6 @@ FactoryGirl.define do
     description "MyText"
     admin_email Faker::Internet.email
     distribution_metric 3
-    sectors ["community"]
+    sectors_metric ["community"]
   end
 end
