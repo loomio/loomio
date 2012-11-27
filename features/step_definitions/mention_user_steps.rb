@@ -23,3 +23,23 @@ Then /^I should see a link to "(.*?)"'s user$/ do |user|
   visit(current_path)
   page.should have_link("@#{user}")
 end
+
+When /^I write and submit a comment that mentions harry$/ do
+  fill_in 'new-comment', with: 'hi @harry'
+  click_on 'Post comment'
+end
+
+Then /^harry should get an email saying I mentioned him$/ do
+  last_email = ActionMailer::Base.deliveries.last
+  last_email.to.should include 'harry@example.com'
+  last_email.body.should have_content 'mentioned'
+end
+
+Given /^the test email is empty$/ do
+  ActionMailer::Base.deliveries = []
+end
+
+Given /^harry is wants to be emailed when mentioned$/ do
+  harry = User.find_by_email 'harry@example.com'
+  harry.update_attribute(:subscribed_to_mention_notifications, true)
+end

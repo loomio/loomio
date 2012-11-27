@@ -34,6 +34,19 @@ Feature: Email preferences page
     And I click "Update preferences"
     Then I should not be subscribed to proposal closure notification emails
 
+  Scenario: User enables mention email notifications
+    When I visit the email preferences page
+    And I check "user_subscribed_to_mention_notifications"
+    And I click "Update preferences"
+    Then I should be subscribed to mention notifications
+
+  Scenario: User disables mention email notifications
+    Given I am subscribed to mention email notifications
+    When I visit the email preferences page
+    And I uncheck "user_subscribed_to_mention_notifications"
+    And I click "Update preferences"
+    Then I should not be subscribed to mention notifications
+
   Scenario: User enables group notifications
     #When I visit the email preferences page
     #And I check "Pals"
