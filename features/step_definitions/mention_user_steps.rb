@@ -39,7 +39,7 @@ Given /^the test email is empty$/ do
   ActionMailer::Base.deliveries = []
 end
 
-Given /^harry is wants to be emailed when mentioned$/ do
+Given /^harry wants to be emailed when mentioned$/ do
   harry = User.find_by_email 'harry@example.com'
   harry.update_attribute(:subscribed_to_mention_notifications, true)
 end
