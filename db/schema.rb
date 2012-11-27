@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123040721) do
+ActiveRecord::Schema.define(:version => 20121127010116) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -108,17 +108,17 @@ ActiveRecord::Schema.define(:version => 20121123040721) do
     t.string   "name"
     t.text     "description"
     t.string   "admin_email"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "status"
     t.integer  "group_id"
-    t.boolean  "cannot_contribute",   :default => false
+    t.boolean  "cannot_contribute",    :default => false
     t.string   "expected_size"
-    t.integer  "max_size",            :default => 50
+    t.integer  "max_size",             :default => 50
     t.string   "robot_trap"
     t.integer  "distribution_metric"
-    t.string   "sectors"
-    t.string   "other_sector"
+    t.string   "sectors_metric"
+    t.string   "other_sectors_metric"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
