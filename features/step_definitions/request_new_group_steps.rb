@@ -17,7 +17,7 @@ When /^I fill in the Request New Group Form$/ do
   choose("group_request_distribution_metric_2")
   check("group_request_sectors_metric_community")
   check("group_request_sectors_metric_other")
-  fill_in "group_request_other_sector_metric", with: "activist"
+  fill_in "group_request_other_sectors_metric", with: "activist"
 end
 
 When /^I fill in and submit the Request New Group Form$/ do
