@@ -30,43 +30,45 @@ describe Group do
   end
 
   describe "#create" do
-    context "creates a 'welcome to loomio' discussion and" do
-      before do
-        @group = create :group
-        @discussion = @group.discussions.first
-      end
+    # I feel that this is overkill to be doing on group.create and would be better done
+    # at controller level when admin creates new groups.
+    #context "creates a 'welcome to loomio' discussion and" do
+      #before do
+        #@group = create :group
+        #@discussion = @group.discussions.first
+      #end
 
-      it "sets the title" do
-        @discussion.title.should == "Example Discussion: Welcome and introduction to Loomio!"
-      end
+      #it "sets the title" do
+        #@discussion.title.should == "Example Discussion: Welcome and introduction to Loomio!"
+      #end
 
-      it "sets the description" do
-        @discussion.description.should_not be_nil
-      end
+      #it "sets the description" do
+        #@discussion.description.should_not be_nil
+      #end
 
-      it "assigns Loomio Helper Bot as the author" do
-        @discussion.author_id.should == User.loomio_helper_bot.id
-      end
+      #it "assigns Loomio Helper Bot as the author" do
+        #@discussion.author_id.should == User.loomio_helper_bot.id
+      #end
 
-      it "creates an initial comment" do
-        @discussion.comments.count.should == 1
-      end
+      #it "creates an initial comment" do
+        #@discussion.comments.count.should == 1
+      #end
 
-      it "creates a new motion" do
-        @discussion.motions.count.should == 1
-      end
-    end
+      #it "creates a new motion" do
+        #@discussion.motions.count.should == 1
+      #end
+    #end
 
-    it "does not create a 'welcome to loomio' discussion for subgroups" do
-      parent = create :group
-      group = create :group, :parent => parent
-      group.discussions.should be_empty
-    end
+    #it "does not create a 'welcome to loomio' discussion for subgroups" do
+      #parent = create :group
+      #group = create :group, :parent => parent
+      #group.discussions.should be_empty
+    #end
 
-    it "adds the creator as an admin" do
-      @group = create :group
-      @group.admins.should include(@group.creator)
-    end
+    #it "adds the creator as an admin" do
+      #@group = create :group
+      #@group.admins.should include(@group.creator)
+    #end
   end
 
   describe "all_discussions(user)" do
