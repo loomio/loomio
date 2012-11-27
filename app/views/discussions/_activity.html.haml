@@ -8,7 +8,8 @@
       - activity_item = activity_event.eventable
       - case activity_event.kind
         - when 'new_comment'
-          %li= render activity_item
+          - unless activity_item.is_archived?
+            %li= render activity_item
         - when 'new_vote'
           = render 'activity_item', :icon => 'position-icon', :position => activity_item.position, :group => activity_item.discussion.group, :actor => activity_item.user, :header => render_position_message(activity_item), :body => "\"#{activity_item.statement}\"", :time => activity_item.created_at
         - when 'new_motion'

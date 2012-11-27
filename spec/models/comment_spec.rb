@@ -19,8 +19,9 @@ describe Comment do
 
   describe "#archive!" do
     it "assigns archived_at the current datetime and saves the comment" do
-      comment.should_receive(:archived_at)
+      comment = create :comment
       comment.archive!
+      comment.archived_at.should_not == nil
     end
   end
 

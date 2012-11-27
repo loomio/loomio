@@ -224,9 +224,7 @@ class Motion < ActiveRecord::Base
     if date > Time.now
       self.close_date = date
       save
-      return true
     end
-    false
   end
 
   def set_motion_close_date_edited_activity!(user)

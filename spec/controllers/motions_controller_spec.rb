@@ -71,17 +71,15 @@ describe MotionsController do
       context "a valid date is entered" do
         it "calls set_motion_close_date, creates relavent activity and flashes a success" do
           motion.should_receive(:set_close_date).and_return true
-          @motion.should_receive(:set_motion_close_date_edited_activity!).with(user)
+          motion.should_receive(:set_motion_close_date_edited_activity!).with(user)
           post :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
-          flash[:success].should == "The close date has been changed."
           response.should redirect_to(discussion)
         end
       end
       context "an invalid date is entered" do
         it "displays an error message and returns to the discussion page" do
-          @motion.should_receive(:set_close_date).and_return false
+          motion.should_receive(:set_close_date).and_return false
           post :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
-          flash[:error].should == "The close date did not get changed, it needs to be a future date."
           response.should redirect_to(discussion)
         end
       end

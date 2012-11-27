@@ -12,53 +12,52 @@ class Event < ActiveRecord::Base
   attr_accessible :kind, :eventable, :user, :discussion_id
 
   def self.new_discussion!(discussion)
-    activity = create!(:kind => "new_discussion", :eventable => discussion,
+    event = create!(:kind => "new_discussion", :eventable => discussion,
       :discussion_id => discussion.id)
     discussion.group_users.each do |user|
       unless user == discussion.author
-        activity.notifications.create! :user => user
+        event.notifications.create! :user => user
       end
     end
-    activity
+    event
   end
 
   def self.discussion_description_edited!(discussion, editor)
-    activity = create!(:kind => "discussion_description_edited", :eventable => discussion,
+    create!(:kind => "discussion_description_edited", :eventable => discussion,
       :discussion_id => discussion.id, :user => editor)
-    activity
   end
 
   def self.new_comment!(comment)
-    activity = create!(:kind => "new_comment", :eventable => comment,
+    event = create!(:kind => "new_comment", :eventable => comment,
       :discussion_id => comment.discussion.id)
     comment.discussion_participants.each do |user|
       unless user == comment.user
-        activity.notifications.create! :user => user
+        event.notifications.create! :user => user
       end
     end
-    activity
+    event
   end
 
   def self.new_motion!(motion)
-    activity = create!(:kind => "new_motion", :eventable => motion,
+    event = create!(:kind => "new_motion", :eventable => motion,
       :discussion_id => motion.discussion.id)
     motion.group_users.each do |user|
       unless user == motion.author
-        activity.notifications.create! :user => user
+        event.notifications.create! :user => user
       end
     end
-    activity
+    event
   end
 
   def self.motion_closed!(motion, closer)
-    activity = create!(:kind => "motion_closed", :eventable => motion, :user => closer,
+    event = create!(:kind => "motion_closed", :eventable => motion, :user => closer,
       :discussion_id => motion.discussion.id)
     motion.group_users.each do |user|
       unless user == closer
-        activity.notifications.create! :user => user
+        event.notifications.create! :user => user
       end
     end
-    activity
+    event
   end
 
   def self.motion_closing_soon!(motion)
@@ -70,27 +69,26 @@ class Event < ActiveRecord::Base
   end
 
   def self.motion_close_date_edited!(motion, closer)
-    activity = create!(:kind => "motion_close_date_edited", :eventable => motion,
+    create!(:kind => "motion_close_date_edited", :eventable => motion,
       :user => closer,  :discussion_id => motion.discussion.id)
-    activity
   end
 
   def self.new_vote!(vote)
-    activity = create!(:kind => "new_vote", :eventable => vote,
+    event = create!(:kind => "new_vote", :eventable => vote,
       :discussion_id => vote.motion.discussion.id)
     begin
       unless vote.user == vote.motion_author
-        activity.notifications.create! :user => vote.motion_author
+        event.notifications.create! :user => vote.motion_author
       end
       unless vote.user == vote.discussion_author
-        activity.notifications.create! :user => vote.discussion_author
+        event.notifications.create! :user => vote.discussion_author
       end
     rescue ActiveRecord::RecordInvalid => error
       # Catches error if we are trying to create duplicate notifications for
       # the same user (i.e. if motion author and discussion author are same person)
       raise unless error.message =~ /User has already been taken/
     end
-    activity
+    event
   end
 
   def self.motion_blocked!(vote)
@@ -135,5 +133,6 @@ class Event < ActiveRecord::Base
     unless mentioned_user == comment.user
       event.notifications.create! :user => mentioned_user
     end
+    event
   end
 end

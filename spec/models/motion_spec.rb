@@ -31,15 +31,17 @@ describe Motion do
       @motion = create(:motion)
     end
     context "date is a future date" do
-      it "updates close_date and returns true" do
+      it "updates close_date" do
         future_date = 2.days.from_now
-        @motion.set_close_date(future_date).should == true
+        @motion.set_close_date(future_date)
         @motion.close_date.should == future_date
       end
     end
     context "date is a past date" do
-      it "returns false" do
-        @motion.set_close_date(2.days.ago).should == false
+      it "does not update close_date" do
+        past_date = 2.days.ago
+        @motion.set_close_date(past_date)
+        @motion.close_date.should_not  == past_date
       end
     end
   end

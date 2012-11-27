@@ -76,9 +76,6 @@ class MotionsController < GroupBaseController
     motion = Motion.find(params[:id])
     if motion.set_close_date((params[:motion][:close_date]).to_datetime)
       motion.set_motion_close_date_edited_activity!(current_user)
-      flash[:notice] = "The close date has been changed."
-    else
-      flash[:notice] = "The close date did not get changed, it needs to be a future date."
     end
     redirect_to discussion_url(motion.discussion)
   end
