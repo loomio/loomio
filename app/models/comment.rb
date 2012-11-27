@@ -102,7 +102,8 @@ class Comment < ActiveRecord::Base
     users = []
     usernames = extract_mentioned_screen_names(self.body)
     usernames.each do |name|
-      users.push(User.find_by_username(name))
+      user = User.find_by_username(name)
+      users.push(user) if user
     end
     users
   end
