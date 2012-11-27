@@ -13,8 +13,8 @@
   .span12
     .selector-panel
       = render 'title', discussion: @discussion
-      #discussion-panel-content
-        #discussion-context
+      .discussion-panel-content
+        .discussion-context
           =render 'discussion_context'
         #description-revision-history.modal.hidden
         .row
@@ -31,10 +31,7 @@
             .content-proposal-body
               %ul.selector-list
                 - if @current_motion
-                  - if (not @selected_motion) && (can? :close_voting, @current_motion)
-                    %li= link_to "Close proposal", close_motion_voting_path(@current_motion),
-                      :data => {confirm: "Are you sure you want to close this motion?"}, method: :post, class: 'btn btn-small proposal-btn', id: 'close-voting'
-                  - if @selected_motion && (@selected_motion != @current_motion)
+                  - if @previous_motion && (@previous_motion != @current_motion)
                     %li.selector-item.current-proposal
                       = render '/motions/motion_preview', motion: @current_motion, this_group: @group
                   - else
@@ -42,7 +39,7 @@
                       = render @current_motion, unique_votes: @unique_votes
                 - else
                   - if can? :create, Motion.new(discussion_id: @discussion.id)
-                    = link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-small proposal-btn', id: 'new-proposal'
+                    = link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-small new-proposal-btn', id: 'new-proposal'
                   %li.selector-item.empty-list-message= "There is not currently an open proposal under discussion"
 
             - if @discussion.motions.where("phase = 'closed'").count > 0
@@ -53,9 +50,24 @@
 
                 .content-proposal-body
                   %ul.selector-list
-                    - @discussion.motions.order("close_date desc").each do |closed_motion|
-                      - if closed_motion.closed?
-                        - if closed_motion == @selected_motion
-                          %li.selector-item= render @selected_motion, unique_votes: @unique_votes, this_group: @group
-                        - else
-                          %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
+                    - @discussion.closed_motions.order("close_date desc").each do |closed_motion|
+                      - if closed_motion == @previous_motion
+                        %li.selector-item= render @previous_motion, unique_votes: @unique_votes, this_group: @group
+                      - else
+                        %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
+- if @current_motion
+  #edit-close-date.modal.hidden
+    .modal-header
+      %button.close{"data-dismiss" => "modal"}×
+      %h3= "Change the close date for the proposal '#{@current_motion.name}'"
+    = form_for @current_motion, :url => edit_close_date_motion_path(@current_motion.id) do |f|
+      .modal-body#closing-inputs
+        .control-group
+          = text_field_tag :input_date, nil, class: "date-input validate-motion-close-date inputError"
+          = select_hour(@input_time, ampm: true)
+          %span.date-error-message
+            ="Please give a future close date"
+          =f.hidden_field :close_date
+      .modal-footer 
+        = submit_tag "Change", class: "motion btn btn-info", id: 'change-close-date', :data => { :disable_with => "Changing" } # run-validations
+        = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"

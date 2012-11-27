@@ -1,6 +1,6 @@
 class MotionsController < GroupBaseController
-  load_and_authorize_resource :except => [:create, :show, :index]
-  before_filter :authenticate_user!, :except => [:show, :index, :get_and_clear_new_activity]
+  load_and_authorize_resource :except => [:create, :edit_close_date, :show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index, :edit_close_date, :get_and_clear_new_activity]
   before_filter :check_group_read_permissions, :only => :show
 
   def create
@@ -70,6 +70,17 @@ class MotionsController < GroupBaseController
     motion = Motion.find(params[:motion][:id])
     motion.set_outcome(params[:motion][:outcome])
     redirect_to discussion_url(motion.discussion, proposal: motion)
+  end
+
+  def edit_close_date
+    motion = Motion.find(params[:id])
+    if motion.set_close_date((params[:motion][:close_date]).to_datetime)
+      motion.set_motion_close_date_edited_activity!(current_user)
+      flash[:notice] = "The close date has been changed."
+    else
+      flash[:notice] = "The close date did not get changed, it needs to be a future date."
+    end
+    redirect_to discussion_url(motion.discussion)
   end
 
   def get_and_clear_new_activity

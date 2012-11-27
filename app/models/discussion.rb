@@ -19,6 +19,9 @@ class Discussion < ActiveRecord::Base
   belongs_to :group
   belongs_to :author, class_name: 'User'
   has_many :motions
+  has_many :closed_motions,
+    :class_name => 'Motion',
+    :conditions => { phase: 'closed' }
   has_many :votes, through: :motions
   has_many :comments,  :as => :commentable
   has_many :users_with_comments, :through => :comments,
@@ -33,7 +36,7 @@ class Discussion < ActiveRecord::Base
 
   attr_accessor :comment, :notify_group_upon_creation
 
-  after_create :populate_last_comment_at
+  after_create :populate_last_comment_at, :set_new_discussion_activity!
 
 
   #
@@ -173,6 +176,10 @@ class Discussion < ActiveRecord::Base
 
   def set_edit_discription_activity!(user)
     Event.discussion_description_edited!(self, user)
+  end
+  
+  def set_new_discussion_activity!
+    Event.new_discussion!(self)
   end
 
   private

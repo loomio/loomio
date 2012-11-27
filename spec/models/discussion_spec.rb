@@ -30,7 +30,7 @@ describe Discussion do
     end
     it "fires new_discussion activity" do
       Event.should_receive(:new_discussion!)
-      discussion = create(:discussion)
+      @discussion.set_new_discussion_activity!
     end
 
     it "fires new_comment activity if comment was created successfully" do
@@ -113,7 +113,7 @@ describe Discussion do
       @discussion = create :discussion, :group => @group
       @discussion.add_comment(@user, "this is a test comment")
       @motion = create :motion, :discussion => @discussion
-      @vote = create :vote, :motion => @motion
+      @vote = create :vote, :position => 'yes', :motion => @motion
       activity = @discussion.activity
       activity[0].kind.should == 'new_vote'
       activity[1].kind.should == 'new_motion'

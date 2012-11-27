@@ -26,6 +26,7 @@ Loomio::Application.routes.draw do
     resources :votes
     post :get_and_clear_new_activity, on: :member
     put :edit_outcome, :on => :member
+    put :edit_close_date, :on => :member
   end
   match "/motions/:id/close", :to => "motions#close_voting", :as => :close_motion_voting,
         :via => :post
@@ -69,7 +70,8 @@ Loomio::Application.routes.draw do
   match "/users/dismiss_discussion_notice", :to => "users#dismiss_discussion_notice",
         :as => :dismiss_discussion_notice_for_user, :via => :post
 
-  resources :comments, only: :destroy do
+  resources :comments do
+    post :archive_comment, on: :member
     post :like, on: :member
     post :unlike, on: :member
   end

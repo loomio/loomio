@@ -1,4 +1,4 @@
-Feature: User edits discussion description
+  Feature: User edits discussion description
   As a Loomio user
   I want to be able to edit the discussion decription
   So I can provide a clear context for the discussion
