@@ -50,12 +50,6 @@ class Discussion < ActiveRecord::Base
       comment.save
       if comment.valid?
         Event.new_comment!(comment)
-        mentions = comment.parse_mentions
-        if mentions.present?
-          mentions.each do |mentioned_user|
-            Event.user_mentioned!(comment, mentioned_user)
-          end
-        end
       end
       comment
     end
