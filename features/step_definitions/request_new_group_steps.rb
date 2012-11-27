@@ -15,9 +15,9 @@ When /^I fill in the Request New Group Form$/ do
   fill_in "group_request_description", with: @group_description
   fill_in "group_request_admin_email", with: @group_admin_email
   choose("group_request_distribution_metric_2")
-  check("group_request_sectors_community")
-  check("group_request_sectors_other")
-  fill_in "group_request_other_sector", with: "activist"
+  check("group_request_sectors_metric_community")
+  check("group_request_sectors_metric_other")
+  fill_in "group_request_other_sector_metric", with: "activist"
 end
 
 When /^I fill in and submit the Request New Group Form$/ do
