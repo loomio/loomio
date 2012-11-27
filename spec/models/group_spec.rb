@@ -162,18 +162,19 @@ describe Group do
       @user = create(:user)
       @group = create(:group)
       @group.add_member!(@user)
+      Time.stub(:now).and_return Time.new(2012, 1, 1, 1)
       @discussion1 = create :discussion, :group => @group, :author => @user
     end
     it "returns a list of discussions sorted by last_comment_at" do
+      Time.stub(:now).and_return Time.new(2012, 1, 1, 2)
       @discussion2 = create :discussion, :group => @group, :author => @user
-      @discussion2.add_comment @user, "hi"
+      Time.stub(:now).and_return Time.new(2012, 1, 1, 3)
       @discussion3 = create :discussion, :group => @group, :author => @user
-      @discussion4 = create :discussion, :group => @group, :author => @user
-      @discussion1.add_comment @user, "hi"
-      @group.discussions_sorted(@user)[0].should == @discussion1
-      @group.discussions_sorted(@user)[1].should == @discussion4
-      @group.discussions_sorted(@user)[2].should == @discussion3
-      @group.discussions_sorted(@user)[3].should == @discussion2
+      Time.stub(:now).and_return Time.new(2012, 1, 1, 4)
+      @discussion2.add_comment @user, "hi"
+      @group.discussions_sorted(@user)[0].should == @discussion2
+      @group.discussions_sorted(@user)[1].should == @discussion3
+      @group.discussions_sorted(@user)[2].should == @discussion1
     end
     it "should not include discussions with a current motion" do
       motion = create :motion, :discussion => @discussion1, author: @user

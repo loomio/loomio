@@ -163,7 +163,11 @@ class Discussion < ActiveRecord::Base
   end
 
   def last_versioned_at
-    previous_version.version.created_at
+    if has_previous_versions?
+      previous_version.version.created_at
+    else
+      created_at
+    end
   end
 
 

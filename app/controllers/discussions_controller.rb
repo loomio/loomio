@@ -89,7 +89,7 @@ class DiscussionsController < GroupBaseController
     @last_collaborator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js { render :action => 'update_version' }
-    end    
+    end
   end
 
   def edit_title
@@ -117,7 +117,7 @@ class DiscussionsController < GroupBaseController
     @originator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js { render :action => 'show_description_history' }
-    end    
+    end
   end
 
   def update_version

@@ -28,9 +28,9 @@ end
 When /^I create my user account$/ do
   @user_email = "blah@jah.com"
   click_on "create-account"
-  fill_in "name", :with => "My name"
-  fill_in "email", :with => @user_email
-  fill_in "password", :with => "password"
+  fill_in "user_name", :with => "My name"
+  fill_in "user_email", :with => @user_email
+  fill_in "user_password", :with => "password"
   click_on "submit"
 end
 
