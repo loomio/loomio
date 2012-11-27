@@ -65,7 +65,7 @@ body.discussions.show {
     }
   }
 
-  #discussion-panel-content {
+  .discussion-panel-content {
     background-color: white;
     border-top: 1px solid $light-grey;
     border-bottom: 1px solid $light-grey;
@@ -73,7 +73,7 @@ body.discussions.show {
     margin-bottom: 5px;
   }
 
-  #discussion-context {
+  .discussion-context {
     min-height: 40px;
     border-bottom: 1px solid $light-grey;
     padding: 10px 0px 10px 50px;
@@ -127,12 +127,6 @@ body.discussions.show {
   }
 }
 
-#content-proposal {
-  .proposal-btn {
-    float: right;
-    margin-top: 8px;
-  }
-}
 .content-proposal-body {
   padding: 10px 10px 10px 50px;
 }
@@ -270,11 +264,11 @@ pre{
   }
   .activity-item-time{
     color: $dark-grey;
-    font-size: $font-small;
+    font-size: $font-tiny;
   }
   .activity-item-likes{
     color: $dark-grey;
-    font-size: $font-small;
+    font-size: $font-tiny;
   }
 }
 // Discussion preview list panel

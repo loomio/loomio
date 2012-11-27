@@ -1,22 +1,25 @@
 .motion
-  .clearfix
-    %h3.motion-title.word-break= motion.name
-    - if motion.closed?
-      %span.label.label-important Closed
-  .closing-info
-    - if motion.has_close_date?
-      - if motion.voting?
-        = "Closing in #{time_ago_in_words(motion.close_date)}"
-      - else
-        %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
-    - else
-      No close date
-  .proposed-by
-    = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
+  .row
+    .span4.motion-header-info
+      .clearfix
+        %h3.motion-title.word-break= motion.name
+        - if motion.closed?
+          %span.label.label-important Closed
+      #closing-info
+        - if motion.has_close_date?
+          - if motion.voting?
+            = "Closing in #{time_ago_in_words(motion.close_date)}"
+          - else
+            %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
+        - else
+          No close date
+      .proposed-by
+        = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
+    .span2.motion-admin-buttons
+      = render '/motions/admin_buttons', motion: @current_motion unless @previous_motion || motion.closed?
   - if motion.closed?
     =render "motions/outcome_statement", motion: motion, this_group: this_group
   .description
-  
     <!--[if IE 7]>
     .long-description{style: "display: none"}
       ~ markdown(motion.description)

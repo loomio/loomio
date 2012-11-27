@@ -26,6 +26,24 @@ describe Motion do
     @motion.user_has_voted?(nil).should == false
   end
 
+  describe "#set_close_date(date)" do
+    before do
+      @motion = create(:motion)
+    end
+    context "date is a future date" do
+      it "updates close_date and returns true" do
+        future_date = 2.days.from_now
+        @motion.set_close_date(future_date).should == true
+        @motion.close_date.should == future_date
+      end
+    end
+    context "date is a past date" do
+      it "returns false" do
+        @motion.set_close_date(2.days.ago).should == false
+      end
+    end
+  end
+
   context "events" do
     before do
       @user = create :user
@@ -34,18 +52,19 @@ describe Motion do
       @discussion = create :discussion, :group => @group
     end
     it "adds motion created activity if a motion is created successfully" do
-      Event.should_receive(:new_motion!)
       motion = create :motion, :discussion => @discussion
+      Event.should_receive(:new_motion!)
+      motion.set_new_motion_activity!
     end
     it "adds motion closed activity if a motion is closed" do
-     motion = create :motion, :discussion => @discussion
+      motion = create :motion, :discussion => @discussion
       Event.should_receive(:motion_closed!)
       motion.close_motion!(@user)
     end
     it "adds edit motion close date activity if a motion close date is edited" do
       motion = create :motion, :discussion => @discussion
       Event.should_receive(:motion_close_date_edited!)
-      motion.edit_close_date :close_date => 3.days.from_now
+      motion.set_motion_close_date_edited_activity!(@user)
     end
   end
 

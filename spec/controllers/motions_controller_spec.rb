@@ -23,7 +23,6 @@ describe MotionsController do
     context "creating a motion" do
       before do
         Motion.stub(:new).and_return(motion)
-        Event.stub(:new_motion!)
         motion.stub(:save).and_return(true)
         controller.stub(:authorize!).with(:create, motion).and_return(true)
         @motion_args = { :motion => { :discussion_id => discussion.id },
@@ -36,10 +35,6 @@ describe MotionsController do
       it "sets the flash success message" do
         post :create, @motion_args
         flash[:success].should =~ /Proposal successfully created./
-      end
-      it "fires the new_motion event" do
-        Event.should_receive(:new_motion!)
-        post :create, @motion_args
       end
     end
 
@@ -66,6 +61,29 @@ describe MotionsController do
       it "fires the close_motion event" do
         Event.should_receive(:motion_closed!)
         post :close_voting, :id => motion.id
+      end
+    end
+
+    context "changes the close date" do
+      before do
+        Motion.stub(:find).and_return motion
+      end
+      context "a valid date is entered" do
+        it "calls set_motion_close_date, creates relavent activity and flashes a success" do
+          motion.should_receive(:set_close_date).and_return true
+          @motion.should_receive(:set_motion_close_date_edited_activity!).with(user)
+          post :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+          flash[:success].should == "The close date has been changed."
+          response.should redirect_to(discussion)
+        end
+      end
+      context "an invalid date is entered" do
+        it "displays an error message and returns to the discussion page" do
+          @motion.should_receive(:set_close_date).and_return false
+          post :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+          flash[:error].should == "The close date did not get changed, it needs to be a future date."
+          response.should redirect_to(discussion)
+        end
       end
     end
 

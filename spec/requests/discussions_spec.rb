@@ -245,7 +245,6 @@ describe "Discussion" do
           assert_modal_flushed
           find("#description-revision-history").find(".revision-title p").should have_content("Edited about #{time_ago_in_words(@discussion.last_versioned_at)} ago by #{@user2.name}")
         end
-        
       end
 
     end
@@ -254,7 +253,7 @@ describe "Discussion" do
   # LOCAL HELPERS
   def open_modal(discussion)
     visit discussion_path(discussion)
-    find("#discussion-context").find_link('See revision history').click
+    find(".discussion-context").find_link('See revision history').click
    assert_modal_flushed
   end
 

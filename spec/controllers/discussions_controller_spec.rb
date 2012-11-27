@@ -67,7 +67,6 @@ describe DiscussionsController do
         discussion.stub(:add_comment)
         discussion.stub(:save).and_return(true)
         DiscussionMailer.stub(:spam_new_discussion_created)
-        Event.stub(:new_discussion!)
         @discussion_hash = { group_id: group.id, title: "Shinney",
                             comment: "Bright light" }
       end
@@ -84,10 +83,6 @@ describe DiscussionsController do
       end
       it "adds comment" do
         discussion.should_receive(:add_comment).with(user, "Bright light")
-        get :create, discussion: @discussion_hash
-      end
-      it "fires new_discussion event" do
-        Event.should_receive(:new_discussion!).with(discussion)
         get :create, discussion: @discussion_hash
       end
       it "displays flash success message" do

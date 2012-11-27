@@ -1,0 +1,5 @@
+- if can? :close_voting, motion
+  = link_to "Close proposal", close_motion_voting_path(motion),
+    :data => {confirm: "Are you sure you want to close this motion?"}, method: :post, class: 'btn btn-small', id: 'close-voting'
+- if can? :edit_close_date, motion
+  = link_to "Change close date", '#edit-close-date', "data-toggle" => "modal", class: 'btn btn-small', id: 'change_close_date'

@@ -21,7 +21,7 @@ class Motion < ActiveRecord::Base
   delegate :users, :full_name, :to => :group, :prefix => :group
 
   after_create :initialize_discussion
-  after_create :email_motion_created, :set_new_motion_activity
+  after_create :email_motion_created, :set_new_motion_activity!
   before_save :set_disable_discussion
   before_save :format_discussion_url
 
@@ -220,6 +220,23 @@ class Motion < ActiveRecord::Base
     end
   end
 
+  def set_close_date(date)
+    if date > Time.now
+      self.close_date = date
+      save
+      return true
+    end
+    false
+  end
+
+  def set_motion_close_date_edited_activity!(user)
+    Event.motion_close_date_edited!(self, user)
+  end
+
+  def set_new_motion_activity!
+    Event.new_motion!(self)
+  end
+  
   private
     def before_open
       self.close_date = Time.now + 1.week
@@ -271,11 +288,7 @@ class Motion < ActiveRecord::Base
         end
       end
     end
-
-    def set_new_motion_activity
-      Event.new_motion!(self)
-    end
-
+    
     def email_motion_closed
       MotionMailer.motion_closed(self, author_email).deliver
     end

@@ -209,6 +209,11 @@ li.selector-item a.selector-link:hover {
   position: relative;
   color: $error-color;
 }
+
+.date-error-message {
+  color: $error-color;
+}
+
 .character-counter {
   color: $mid-grey;
   text-align: right;
@@ -460,7 +465,7 @@ a.btn-icon:hover { color: $dark-grey; }
   width: 18px;
 }
 .activity-icon.discussion-icon {
-  background-image:url('/assets/discussion-18.png');
+  background-image:url('/assets/topic-18.png');
   background-position: 2px 1px;
   width: 18px;
 }

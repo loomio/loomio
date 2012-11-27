@@ -116,7 +116,7 @@ $ ->
     motionCloseDateValidation(form)
 
   motionCloseDateValidation = (form)->
-    if form.parents("#motion-form").length > 0
+    if form.parents("#motion-form").length > 0 || $('#edit-close-date').length > 0
       time_now = new Date()
       selected_date = new Date($("#motion_close_date").val())
       if selected_date <= time_now

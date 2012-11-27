@@ -72,6 +72,11 @@ class Comment < ActiveRecord::Base
   # CUSTOM METHODS (not part of acts_as_commentable)
   #
 
+  def archive!
+    self.archived_at = Time.now
+    self.save!
+  end
+
   def like(user)
     comment_vote = CommentVote.new
     comment_vote.comment = self

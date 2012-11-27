@@ -107,7 +107,8 @@ describe Event do
 
   describe "new_vote!" do
     let(:user) { mock_model(User) }
-    let(:vote) { mock_model(Vote, :motion_author => user,
+    let(:motion) { create(:motion) }
+    let(:vote) { mock_model(Vote, :motion_author => user, :motion => motion,
                             :discussion_author => user, :user => user) }
     subject { Event.new_vote!(vote) }
 
@@ -156,7 +157,8 @@ describe Event do
   end
 
   describe "motion_blocked!" do
-    let(:vote) { mock_model(Vote, :group_users => []) }
+    let(:motion) { create(:motion) }
+    let(:vote) { mock_model(Vote, :motion => motion, :group_users => []) }
     subject { Event.motion_blocked!(vote) }
 
     its(:kind) { should eq("motion_blocked") }
@@ -283,6 +285,7 @@ describe Event do
   end
 
   describe "user_mentioned!" do
+    let(:discussion)  { stub_model(Discussion) }
     let(:mentioned_user) { stub_model User }
     let(:comment) { stub_model(Comment, :discussion => discussion,
                                         :user => stub_model(User)) }
