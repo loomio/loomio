@@ -28,7 +28,7 @@ describe Discussion do
       @user = create(:user)
       @discussion.group.add_member! @user
     end
-    
+
     it "fires new_comment event if comment was created successfully" do
       Event.should_receive(:new_comment!)
       @discussion.add_comment(@user, "this is a test comment")
@@ -69,7 +69,7 @@ describe Discussion do
       @discussion.should have(@version_count + 1).versions
     end
   end
-  
+
   describe "#never_read_by(user)" do
     before do
       @discussion = create :discussion
