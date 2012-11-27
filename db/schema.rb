@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127010116) do
+ActiveRecord::Schema.define(:version => 20121127024737) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -139,6 +139,9 @@ ActiveRecord::Schema.define(:version => 20121127010116) do
     t.datetime "archived_at"
     t.integer  "max_size"
     t.boolean  "cannot_contribute",    :default => false
+    t.integer  "distribution_metric"
+    t.string   "sectors_metric"
+    t.string   "other_sectors_metric"
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
