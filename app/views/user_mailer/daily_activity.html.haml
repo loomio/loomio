@@ -3,7 +3,7 @@
 
 %h2 Decisions
 -@groups.each do |group|
-  -next unless @activity[group.full_name].present?
+  -next unless @activity[group.full_name][:motions].present?
   %h3=group.full_name
   %p 
     -@activity[group.full_name][:motions].each do |motion|
@@ -14,7 +14,7 @@
 
 %h2 Discussions
 -@groups.each do |group|
-  -next unless @activity[group.full_name]
+  -next unless @activity[group.full_name][:discussions].present?
   %h3=group.full_name
   %p
     -@activity[group.full_name][:discussions].each do |discussion|
