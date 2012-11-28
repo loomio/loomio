@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
-             motion_closing_soon motion_closed membership_requested user_added_to_group comment_liked user_mentioned]
+             motion_closing_soon motion_closed membership_requested
+             user_added_to_group comment_liked user_mentioned]
 
   has_many :notifications, :dependent => :destroy
   belongs_to :eventable, :polymorphic => true
@@ -23,8 +24,16 @@ class Event < ActiveRecord::Base
 
   def self.new_comment!(comment)
     event = create!(:kind => "new_comment", :eventable => comment)
+    mentions = comment.parse_mentions
+    # Fire off mentions
+    if mentions.present?
+      mentions.each do |mentioned_user|
+        Event.user_mentioned!(comment, mentioned_user)
+      end
+    end
     comment.discussion_participants.each do |user|
-      unless user == comment.user
+      # Do not notify yourself or mentioned users (they have already been notified)
+      unless (user == comment.user) || mentions.include?(user)
         event.notifications.create! :user => user
       end
     end
