@@ -7,7 +7,7 @@ class UserMailer < ActionMailer::Base
     @activity = activity
     @since_time = since_time
     @since_time_formatted = since_time.strftime('%A, %-d %B')
-    @groups = user.groups
+    @groups = user.groups.sort{|a,b| a.full_name <=> b.full_name }
     mail to: @user.email,
          subject: "Loomio - Your activity for #{@since_time_formatted}"
   end
