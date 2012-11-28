@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
            :conditions => { :access_level => Membership::MEMBER_ACCESS_LEVELS },
            :dependent => :destroy
 
+
   has_many :groups,
            :through => :memberships
   has_many :adminable_groups,
@@ -98,7 +99,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
                   :uploaded_avatar, :username, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications, 
-                  :subscribed_to_mention_notifications
+                  :subscribed_to_mention_notifications, :group_email_preferences
 
   after_create :ensure_name_entry
   before_save :set_avatar_initials
@@ -106,6 +107,27 @@ class User < ActiveRecord::Base
   scope :daily_activity_email_recipients, where({subscribed_to_daily_activity_email: true})
 
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
+
+
+  def email_notifications_for_group?(group)
+    memberships.where(:group_id => group.id, :subscribed_to_notification_emails => true).present?
+  end
+
+  def group_email_preferences
+    #membership ids for memberships which have subscribed to the group emails
+    memberships.where(:subscribed_to_notification_emails => true).map(&:id)
+  end
+
+  def group_email_preferences=(ids)
+    ids = ids.delete_if(&:blank?).map(&:to_i)
+    memberships.where(:subscribed_to_notification_emails => true).each do |m|
+      m.update_attribute(:subscribed_to_notification_emails, false)
+    end
+
+    memberships.where(:id => ids).each do |m|
+      m.update_attribute(:subscribed_to_notification_emails, true)
+    end
+  end
 
   def get_vote_for(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
