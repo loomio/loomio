@@ -14,20 +14,24 @@ Given /^I visit create subgroup page for group named "(.*?)"$/ do |arg1|
   click_link("subgroup-new")
 end
 
-Given /^"(.*?)" is a(?: non-admin)?(?: member)? of(?: group)? "(.*?)"$/ do |email, group|
+Given /^"(.*?)" is a(?: non-admin)?(?: member)? of(?: group)? "(.*?)"$/ do |email, group_name|
   @user = User.find_by_email(email)
-  if !@user 
+  if !@user
     @user = FactoryGirl.create(:user, :name => email.split("@").first, :email => email)
-  end 
-  Group.find_by_name(group).add_member!(@user)
+  end
+  group = Group.find_by_name(group_name)
+  group ||= FactoryGirl.create(:group, :name => group_name)
+  group.add_member!(@user)
 end
 
-Given /^"(.*?)" is a[n]? admin(?: member)? of(?: group)? "(.*?)"$/ do |email, group|
+Given /^"(.*?)" is an admin of(?: group)? "(.*?)"$/ do |email, group_name|
   user = User.find_by_email(email)
-  if !user 
+  if !user
     user = FactoryGirl.create(:user, :email => email)
-  end 
-  Group.find_by_name(group).add_admin!(user)
+  end
+  group = Group.find_by_name(group_name)
+  group ||= FactoryGirl.create(:group, :name => group_name)
+  group.add_admin!(user)
 end
 
 When /^I fill details for the subgroup$/ do
