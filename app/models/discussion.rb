@@ -23,7 +23,8 @@ class Discussion < ActiveRecord::Base
     :class_name => 'Motion',
     :conditions => { phase: 'closed' }
   has_many :votes, through: :motions
-  has_many :comments,  :as => :commentable
+  has_many :comments,  :as => :commentable,
+    :conditions => { archived_at: nil }
   has_many :users_with_comments, :through => :comments,
     :source => :user, :uniq => true
   has_many :events, :as => :eventable, :dependent => :destroy
@@ -135,14 +136,6 @@ class Discussion < ActiveRecord::Base
     Event.where("discussion_id = ?", id).order('created_at DESC')
   end
 
-  def latest_history_time
-    if history.count > 0
-      history.first.created_at
-    else
-      created_at
-    end
-  end
-
   def participants
     other_participants = []
     # Include discussion author
@@ -176,6 +169,10 @@ class Discussion < ActiveRecord::Base
     else
       created_at
     end
+  end
+  
+  def set_edit_title_activity!(user)
+    Event.discussion_title_edited!(self, user)
   end
 
   def set_edit_discription_activity!(user)

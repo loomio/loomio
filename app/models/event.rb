@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  KINDS = %w[new_discussion discussion_description_edited new_comment new_motion new_vote motion_blocked
+  KINDS = %w[new_discussion discussion_title_edited discussion_description_edited new_comment new_motion new_vote motion_blocked
              motion_closing_soon motion_closed motion_close_date_edited membership_requested user_added_to_group comment_liked user_mentioned]
 
   has_many :notifications, :dependent => :destroy
@@ -20,6 +20,11 @@ class Event < ActiveRecord::Base
       end
     end
     event
+  end
+
+  def self.discussion_title_edited!(discussion, editor)
+    create!(:kind => "discussion_title_edited", :eventable => discussion,
+      :discussion_id => discussion.id, :user => editor)
   end
 
   def self.discussion_description_edited!(discussion, editor)

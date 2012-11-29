@@ -101,6 +101,7 @@ class DiscussionsController < GroupBaseController
     @discussion = Discussion.find(params[:id])
     @discussion.title = params[:title]
     @discussion.save!
+    @discussion.set_edit_title_activity!(current_user)
   end
 
   def show_description_history

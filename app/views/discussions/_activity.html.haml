@@ -1,5 +1,5 @@
 %ul.activity-list#activty-list
-  .divider
+  %li.divider
   - if discussion.activity.count == 0
     %li.selector-item.empty-list-message
       There isn't any activity in this discussion yet.
@@ -21,6 +21,8 @@
         - when 'new_discussion'
           - discussion_version = discussion.version_at(activity_event.created_at)
           = render 'activity_item', :icon => 'discussion-icon', :position => nil, :group => activity_item.group, :actor => activity_item.author, :header => "created the discussion: #{activity_item.title}", :body => " \"#{discussion_version.description}\"", :time => activity_item.created_at
+        - when 'discussion_title_edited'
+          = render 'activity_item', :icon => 'loomio-icon', :position => nil, :group => activity_item.group, :actor => activity_event.user, :header => 'changed the discussion title:', :body => " \"#{activity_item.title}\"", :time => activity_event.created_at
         - when 'discussion_description_edited'
           - discussion_version = discussion.version_at(activity_event.created_at)
-          = render 'activity_item', :icon => 'discussion-icon', :position => nil, :group => activity_item.group, :actor => activity_event.user, :header => 'edited the discussion description:', :body => " \"#{discussion_version.description[0..60]}...\"", :time => activity_event.created_at
+          = render 'activity_item', :icon => 'discussion-icon', :position => nil, :group => activity_item.group, :actor => activity_event.user, :header => 'changed the discussion description:', :body => " \"#{discussion_version.description[0..60]}...\"", :time => activity_event.created_at
