@@ -16,7 +16,6 @@ class Comment < ActiveRecord::Base
   has_many :events, :as => :eventable, :dependent => :destroy
 
   after_create :update_discussion_last_comment_at
-  after_destroy :update_discussion_last_comment_at
 
   attr_accessible :body
 
@@ -79,6 +78,7 @@ class Comment < ActiveRecord::Base
   def archive!
     self.archived_at = Time.now
     self.save!
+    update_discussion_last_comment_at
   end
 
   def like(user)

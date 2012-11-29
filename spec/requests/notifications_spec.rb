@@ -20,7 +20,7 @@ describe "Notifications" do
     # Then I should see a new notification on the notifications icon
     #
     context "new discussion is created" do
-      before { Event.new_discussion! create(:discussion, group: @group) }
+      before { create(:discussion, group: @group) }
 
       it "should have a notification count of 1" do
         visit root_url
@@ -30,8 +30,8 @@ describe "Notifications" do
 
     context "two new discussions are created" do
       before do
-        Event.new_discussion! create(:discussion, group: @group)
-        Event.new_discussion! create(:discussion, group: @group)
+        create(:discussion, group: @group)
+        create(:discussion, group: @group)
       end
 
       it "should have a notification count of 2" do
@@ -66,7 +66,7 @@ describe "Notifications" do
       end
 
       it "shows and clears notifications", :js => true do
-        Event.new_discussion! create(:discussion, group: @group)
+        create(:discussion, group: @group)
 
         click_button("sign-in-btn")
 
