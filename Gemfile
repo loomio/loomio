@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '~> 3.2.6'
 gem "haml-rails"
 gem 'devise', '~> 2.0.0'
 gem 'devise_invitable', '~> 1.0.0'
@@ -9,11 +9,12 @@ gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
 gem 'formtastic' # Deprecated. Use simple_form instead.
-gem 'simple_form'
+gem 'simple_form', '~> 2.0.0'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form', '~> 2.0.0'
 gem 'jqplot-rails'
 gem "rails-backbone"
 gem 'coffee-filter'
-gem 'acts-as-taggable-on', '~> 2.2.2', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'
 gem 'aasm'
 gem 'cancan'
 gem 'acts_as_commentable_with_threading'

@@ -5,12 +5,7 @@ When /^I visit the Request New Group page$/ do
   visit request_new_group_path
 end
 
-Then /^I should see the Request New Group Form$/ do
-  page.should have_css(".group_requests")
-end
-
-When /^I fill in and submit the Request New Group Form$/ do
-  click_on "request-new-group"
+When /^I fill in the Request New Group Form$/ do
   @group_name = "The whole world"
   @group_size = 90
   @group_description = "Everyone in the entire world"
@@ -19,24 +14,33 @@ When /^I fill in and submit the Request New Group Form$/ do
   fill_in "group_request_expected_size", with: @group_size
   fill_in "group_request_description", with: @group_description
   fill_in "group_request_admin_email", with: @group_admin_email
+  choose("group_request_distribution_metric_2")
+  check("group_request_sectors_metric_community")
+  check("group_request_sectors_metric_other")
+  fill_in "group_request_other_sectors_metric", with: "activist"
+end
+
+When /^I fill in and submit the Request New Group Form$/ do
+  click_on "request-new-group"
+  step "I fill in the Request New Group Form"
+  find("#submit-group-request").click
+end
+
+When /^I fill in and submit the Request New Group Form as a Robot$/ do
+  click_on "request-new-group"
+  step "I fill in the Request New Group Form"
+  fill_in "group_request_robot_trap", with: "ImarobT!"
   find("#submit-group-request").click
 end
 
 When /^I fill in and submit the Request New Group Form incorrectly$/ do
   click_on "request-new-group"
-  @group_name = "The whole world"
-  @group_size = 90
-  @group_description = "Everyone in the entire world"
-  @group_admin_email = "supreme_ruler@world.com"
-  fill_in "group_request_name", with: ""
-  fill_in "group_request_expected_size", with: ""
-  fill_in "group_request_description", with: ""
-  fill_in "group_request_admin_email", with: ""
+  # try to submit blank form
   find("#submit-group-request").click
 end
 
 Then /^a new Loomio group request should be created$/ do
-  GroupRequest.where(:name => "The whole world").size.should == 1
+  GroupRequest.where(:name => @group_name).size.should == 1
 end
 
 Then /^I should be told that my request will be reviewed shortly$/ do
@@ -47,9 +51,10 @@ Then /^a new Loomio group request should not be created$/ do
   GroupRequest.where(:name => "The whole world").size.should == 0
 end
 
-Then /^I should be told what to change in the form$/ do
-  page.should have_css("#group-error")
-  page.should have_css("#description-error")
-  page.should have_css("#email-error")
-  page.should have_css("#size-error")
+Then /^a new Loomio group request should be created and marked as spam$/ do
+  GroupRequest.first.should be_marked_as_spam
+end
+
+Then /^I should still see the Group Request Form$/ do
+  page.should have_css("#new_group_request")
 end

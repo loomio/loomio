@@ -1,10 +1,10 @@
 %ul.activity-list#activty-list
   .divider
-  - if activity.count == 0
+  - if discussion.activity.count == 0
     %li.selector-item.empty-list-message
       There isn't any activity in this discussion yet.
   - else
-    - activity.each do |activity_event|
+    - discussion.activity.each do |activity_event|
       - activity_item = activity_event.eventable
       - case activity_event.kind
         - when 'new_comment'

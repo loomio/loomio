@@ -2,7 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  errors:
+    messages:
+      email: "Not a valid email address"
   datetime:
     distance_in_words:
       less_than_x_seconds:
@@ -38,3 +40,6 @@ en:
       almost_x_years:
         one:   "1 year"
         other: "%{count} years"
+  discussion_help_text: "This is the Discussion page. The discussion topic is at the top of the page, followed by background information and context.\n\n Discussion is on the left, to add a comment, write in the text box and click ‘Post comment’.\n\n Decisions are on the right. If you think the group is ready to make a decision, you can make a proposal for the group to consider. If someone has already made a proposal, you can see how the group feels on the pie graph, and state your position underneath.\n\n"
+  group_help_text: "This is the Group page for %{group_name}.\n\n Here you can see this group’s discussions, a description of what the group is for, You can start a discussion on a new topic by clicking on the ‘Start a discussion’ button.\n\n"
+  dashboard_help_text: "Welcome to Loomio!\n This is the Home page, where you can see a list of the discussions going on in all of your groups. To the right is a list of the groups you are a member of. You can start a discussion on a new topic by clicking on the “Start a discussion” button.\n\n If you have any questions or feedback we’d love to hear from you: %{link}\n\n"

@@ -98,9 +98,9 @@ class DiscussionsController < GroupBaseController
   end
 
   def edit_title
-    discussion = Discussion.find(params[:id])
-    discussion.title = params[:title]
-    discussion.save!
+    @discussion = Discussion.find(params[:id])
+    @discussion.title = params[:title]
+    @discussion.save!
   end
 
   def show_description_history
@@ -122,8 +122,14 @@ class DiscussionsController < GroupBaseController
     @originator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js { render :action => 'show_description_history' }
-    end    
+    end
   end
+
+  # def refresh_activity
+  #   debugger
+  #   @discussion = Discussion.find(params[:id])
+  #   @activity = discussion.activity
+  # end
 
   def update_version
     @version = Version.find(params[:version_id])

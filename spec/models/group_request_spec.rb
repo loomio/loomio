@@ -9,6 +9,28 @@ describe GroupRequest do
     end
   end
 
+  it "marks spam as spam" do
+    group_request = create :group_request, :robot_trap => "spammy"
+    group_request.save
+    group_request.should be_marked_as_spam
+  end
+
+  describe "#sectors_metric" do
+    it "should return an array" do
+      group_request.sectors_metric = ["community", "business"]
+      group_request.save
+      group_request.reload
+      group_request.sectors_metric[0].should == "community"
+      group_request.sectors_metric[1].should == "business"
+    end
+  end
+
+  it "should have 'other_sector' string field" do
+    group_request.other_sectors_metric = "logging"
+    group_request.save
+    group_request.other_sectors_metric.should == "logging"
+  end
+
   describe "#approve!" do
     let(:invitation) { stub :token => "1234" }
     let(:group) { mock_model Group }
@@ -20,6 +42,9 @@ describe GroupRequest do
       group.stub :creator => stub(:user)
       group.stub :cannot_contribute=
       group.stub :max_size=
+      group.stub :distribution_metric=
+      group.stub :sectors_metric=
+      group.stub :other_sectors_metric=
       group.stub :save!
       InvitesUsersToGroup.stub :invite!
     end
@@ -30,6 +55,9 @@ describe GroupRequest do
       group.should_receive(:creator=)
       group.should_receive(:cannot_contribute=)
       group.should_receive(:max_size=)
+      group.should_receive(:distribution_metric=)
+      group.should_receive(:sectors_metric=)
+      group.should_receive(:other_sectors_metric=)
       group.should_receive(:save!)
       group_request.approve!
     end

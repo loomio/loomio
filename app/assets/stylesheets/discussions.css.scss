@@ -125,6 +125,9 @@ body.discussions.show {
     visibility: hidden;
     clear: both;
   }
+  .revision-content{
+    clear:both;
+  }
 }
 
 .content-proposal-body {
@@ -201,7 +204,7 @@ pre{
   min-height: 660px;
   padding-right: 10px;
 
-  .content-activity-body {
+  .content-activity-container {
     padding: 10px 0px 10px 8px;
   }
   #new-comment-form {

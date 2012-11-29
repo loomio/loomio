@@ -79,6 +79,14 @@
     - group_name = comment.group_full_name
     - href = (discussion_path(comment.discussion))+"#comment-#{comment.id}"
 
+  - elsif notification.event_kind == "motion_closing_soon"
+    - motion = notification.motion
+    - user = current_user
+    - action_text = "Proposal is closing soon: "
+    - title_text = motion.name
+    - group_name = motion.group_full_name
+    - href = motion_path motion
+
   - date = time_ago_in_words(notification.created_at)
   - class_name = notification.viewed_at.nil? ? " unread" : ""
   - if user
@@ -94,7 +102,8 @@
           %span.medium-user-initials.initials-decoration
             = avatar_initials
       %span.notification-content
-        %span.bold-name= user.name
+        - unless notification.event_kind == "motion_closing_soon"
+          %span.bold-name= user.name
         = " #{action_text} "
         - if title_text
           %span.bold-name= truncate(title_text, :length => 80, :omission => '...')
