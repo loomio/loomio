@@ -8,7 +8,9 @@ namespace :emails do
     User.daily_activity_email_recipients.each do |user|
       puts "sending daily email for: #{user.email}"
       recent_activity = CollectsRecentActivityByGroup.for(user, since: since_time)
-      UserMailer.daily_activity(user, recent_activity, since_time).deliver!
+      if recent_activity[:any_activity?]
+        UserMailer.daily_activity(user, recent_activity, since_time).deliver!
+      end
     end
   end
 
