@@ -112,7 +112,10 @@ class Comment < ActiveRecord::Base
     usernames = extract_mentioned_screen_names(self.body)
     usernames.each do |name|
       user = User.find_by_username(name)
-      users.push(user) if user
+      # Only users that belong to this discussion's group
+      if user && user.group_ids.include?(discussion.group_id)
+        users.push(user)
+      end
     end
     users
   end
