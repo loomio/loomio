@@ -468,6 +468,11 @@ a.btn-icon:hover { color: $dark-grey; }
   width: 18px;
 }
 .activity-icon.discussion-icon {
+  background-image:url('/assets/discussion-18.png');
+  background-position: 2px 1px;
+  width: 18px;
+}
+.activity-icon.loomio-icon {
   background-image:url('/assets/topic-18.png');
   background-position: 2px 1px;
   width: 18px;

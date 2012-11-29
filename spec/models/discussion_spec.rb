@@ -38,6 +38,11 @@ describe Discussion do
       @discussion.add_comment(@user, "this is a test comment")
     end
 
+    it "adds edit discussion title activity if a user edits the discussion title" do
+      Event.should_receive(:discussion_title_edited!)
+      @discussion.set_edit_title_activity! @user
+    end
+
     it "adds edit discussion description activity if a user edits the discussion description" do
       Event.should_receive(:discussion_description_edited!)
       @discussion.set_edit_discription_activity! @user
