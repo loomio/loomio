@@ -265,8 +265,8 @@ describe "Discussion" do
   end
 
   def assert_description_updated
-    page.execute_script("$('#discussion-context').empty()")
-    wait_until { page.has_css?("#discussion-context div") }
+    page.execute_script("$('.discussion-context').empty()")
+    wait_until { page.has_css?(".discussion-context div") }
   rescue Capybara::TimeoutError
     flunk 'Expected discussion context to receive html content.'
   end

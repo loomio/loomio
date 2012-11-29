@@ -1,11 +1,7 @@
 class CommentsController < BaseController
   load_and_authorize_resource
 
-  # def destroy
-  #   destroy!{ discussion_url(resource.discussion) }
-  # end
-
-  def archive_comment
+  def archive
     @comment = resource
     if @comment.archive!
       flash[:notice] = "Comment was successfully deleted"
