@@ -111,14 +111,14 @@ class Comment < ActiveRecord::Base
     users = []
     usernames = extract_mentioned_screen_names(self.body)
     usernames.each do |name|
-      users.push(User.find_by_username(name))
-    end      
+      user = User.find_by_username(name)
+      users.push(user) if user
+    end
     users
   end
 
-  
-
   private
+
     def update_discussion_last_comment_at
       discussion.last_comment_at = discussion.latest_comment_time
       discussion.save

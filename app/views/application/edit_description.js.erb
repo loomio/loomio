@@ -2,5 +2,4 @@ var description = $("#description-input").val()
 $(".model-description").html("<%= j markdown(@description) %>")
 $(".description-body").show()
 $("#description-edit-form").hide()
-// There must be a better way to do this
 $(".discussion-description-helper-text").toggle()
