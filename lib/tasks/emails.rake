@@ -6,9 +6,9 @@ namespace :emails do
     # To test carefully for this, we should really write some unit tests for this rake task
     since_time = 24.hours.ago
     User.daily_activity_email_recipients.each do |user|
-      puts "sending daily email for: #{user.email}"
       recent_activity = CollectsRecentActivityByGroup.for(user, since: since_time)
       if recent_activity[:any_activity?]
+        puts "sending daily email for: #{user.email}"
         UserMailer.daily_activity(user, recent_activity, since_time).deliver!
       end
     end
