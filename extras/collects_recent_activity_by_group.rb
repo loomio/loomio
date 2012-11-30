@@ -1,9 +1,5 @@
 class CollectsRecentActivityByGroup
   def self.for(user, args)
-    # { loomio: { group: group_object,
-    #             discussions: [discussion objects]
-    #             proposals: [proposals active record scope] }
-    #
     recent_time = args[:since]
     r = {}
     r[:any_activity?] = false
