@@ -1,7 +1,6 @@
-graph = $(<%= "'#graph_#{@motion.id}'" %>).parent()
+var graph = $('<%= escape_javascript("#graph_#{@motion.id}")%>').parent()
 graph.popover('hide')
 graph.removeData('popover')
-
 graph.popover ({
   placement: "right",
   trigger: "manual",
@@ -9,4 +8,3 @@ graph.popover ({
   content: "<%= escape_javascript render 'discussions/graph_preview_pop_over', :motion => @motion, :user => @user, :motion_activity =>  @motion_activity%>"
 })
 graph.popover('toggle')
-graph.find('.activity-count').hide() if (<%= user_signed_in? %>)
