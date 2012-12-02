@@ -11,6 +11,8 @@ describe Comment do
   describe "creating a comment on a discussion" do
     it "updates discussion.last_comment_at" do
       discussion = create(:discussion)
+      discussion.last_comment_at = 2.days.ago
+      discussion.save!
       comment = discussion.add_comment discussion.author, "hi"
       discussion.reload
       discussion.last_comment_at.to_s.should == comment.created_at.to_s
@@ -22,6 +24,17 @@ describe Comment do
       comment = create :comment
       comment.archive!
       comment.archived_at.should_not == nil
+    end
+
+    it "updates the discussion field last_comment_at" do
+      discussion = create :discussion
+      comment = create :comment, commentable_id: discussion.id,
+                   commentable_type: 'Discussion', user: user, body: "Hello kitty"
+      comment1 = discussion.add_comment discussion.author, "delete me"
+      discussion.reload
+      comment.archive!
+      discussion.reload
+      discussion.last_comment_at.should == discussion.created_at
     end
   end
 
