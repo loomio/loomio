@@ -6,6 +6,10 @@ class VotesController < GroupBaseController
   # def begin_of_association_chain
   #   @motion
   #
+  def new
+    @motion = Motion.find(params[:motion_id])
+    @vote = Vote.new
+  end
 
   def destroy
     resource
