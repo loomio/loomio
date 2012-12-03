@@ -1,0 +1,11 @@
+- if can? :close_voting, motion
+  = link_to "Close proposal", '#confirm-close', 'data-toggle' => 'modal', class: 'btn btn-small', id: 'close-voting'
+#confirm-close.modal.hidden
+  .modal-header
+    %button.close ×
+    %h2= motion.name
+  .modal-body
+    %p Are you sure you wish to close this proposal?
+  .modal-footer
+    = link_to "Close proposal", close_motion_voting_path(motion), method: :post, class: "btn btn-info"
+    = link_to "Cancel", motion_path(motion.id), class: "btn btn-grey"
