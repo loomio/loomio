@@ -7,4 +7,5 @@
       .control-group
         = f.text_area :statement, placeholder: "Give a reason for your decision (optional)", class: "statement inputError limit-250"
         .character-counter
-      = f.submit class: "btn btn-info run-validations", :data => { :disable_with => "Updating position" }
+      = f.submit get_button_label, class: "btn btn-info run-validations", :data => { :disable_with => "Updating position" }
+      = link_to "Cancel", motion_path(motion.id), class: "btn btn-grey"
