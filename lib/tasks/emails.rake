@@ -7,7 +7,10 @@ namespace :emails do
     since_time = 24.hours.ago
     User.daily_activity_email_recipients.each do |user|
       recent_activity = CollectsRecentActivityByGroup.for(user, since: since_time)
-      UserMailer.daily_activity(user, recent_activity, since_time).deliver!
+      if recent_activity[:any_activity?]
+        puts "sending daily email for: #{user.email}"
+        UserMailer.daily_activity(user, recent_activity, since_time).deliver!
+      end
     end
   end
 

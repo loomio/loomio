@@ -22,12 +22,6 @@ describe Discussion do
     discussion.comment_threads.should include(comment)
   end
 
-
-  it "fires a new_discussion event on create", :focus => true do
-    Event.should_receive(:new_discussion!)
-    create(:discussion)
-  end
-
   it "group non-member cannot add comment" do
     discussion = create(:discussion)
     comment = discussion.add_comment(create(:user), "this is a test comment")
@@ -55,7 +49,7 @@ describe Discussion do
       @discussion.should have(@version_count + 1).versions
     end
   end
-  
+
   describe "#never_read_by(user)" do
     before do
       @discussion = create :discussion
