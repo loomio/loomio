@@ -128,6 +128,9 @@ class Event < ActiveRecord::Base
     def user_mentioned!(comment, mentioned_user)
       event = create!(:kind => "user_mentioned", :eventable => comment)
       unless mentioned_user == comment.user
+        if mentioned_user.subscribed_to_mention_notifications?
+          UserMailer.mentioned(mentioned_user, comment).deliver
+        end
         event.notify!(mentioned_user)
       end
     end

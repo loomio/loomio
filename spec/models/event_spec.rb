@@ -277,7 +277,8 @@ describe Event do
   describe "user_mentioned!", focus: true, isolated: true do
     let(:comment_author) { stub(:comment_author) }
     let(:comment) { stub(:comment, user: comment_author) }
-    let(:mentioned_user) { stub(:mentioned_user) }
+    let(:mentioned_user) { stub(:mentioned_user,
+                                :subscribed_to_mention_notifications? => false) }
 
     after do
       Event.user_mentioned!(comment, mentioned_user)
@@ -291,6 +292,16 @@ describe Event do
 
     it 'notifies the mentioned user' do
       event.should_receive(:notify!).with(mentioned_user)
+    end
+
+    context 'mentioned user is subscribed to email notifications' do
+      before do
+        mentioned_user.should_receive(:subscribed_to_mention_notifications?).and_return(true)
+      end
+
+      it 'emails the user to say they were mentioned' do
+        UserMailer.should_receive(:mentioned).with(mentioned_user, comment).and_return(mailer)
+      end
     end
 
     context 'mentioned user is comment author' do
