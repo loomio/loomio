@@ -1,7 +1,9 @@
-You were mentioned in a discussion titled #{@discussion.title}
+%p You were mentioned in a discussion titled #{@discussion.title}
 
-#{@comment.author.name} said:
+%p #{@comment.author.name} said:
 
-#{@comment.body}
+%p #{@comment.body}
 
-we need an partial to include about unsubscribing from these emails
+%p=link_to 'View the discussion', @discussion
+
+=render 'unsubscribe_link'

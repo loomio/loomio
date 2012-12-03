@@ -7,6 +7,7 @@ end
 Given /^"(.*?)" is subscribed to daily activity emails$/ do |arg1|
   User.find_by_name('Ben').update_attribute(:subscribed_to_daily_activity_email, true)
 end
+
 Given /^there is a group "(.*?)"$/ do |arg1|
   FactoryGirl.create :group, name: arg1
 end
@@ -29,17 +30,18 @@ Given /^there is a proposal "(.*?)" from the discussion "(.*?)"$/ do |arg1, arg2
 end
 
 When /^we send the daily activity email$/ do
-  since_time = Date.yesterday
-  User.daily_activity_email_recipients.each do |user|
-    recent_activity = CollectsRecentActivityByGroup.for(user, since: since_time)
-    UserMailer.daily_activity(user, recent_activity, since_time).deliver!
-  end
+  SendActivitySummary.to_subscribers!
 end
 
 Then /^"(.*?)" should get emailed$/ do |arg1|
   last_email = ActionMailer::Base.deliveries.last
   user = User.find_by_name(arg1)
   last_email.to.should include user.email
+end
+
+Then /^"(.*?)" should not get emailed$/ do |arg1|
+  last_email = ActionMailer::Base.deliveries.last
+  last_email.should be_nil
 end
 
 Then /^that email should have the discussion "(.*?)"$/ do |arg1|
@@ -50,4 +52,8 @@ end
 Then /^that email should have the proposal "(.*?)"$/ do |arg1|
   last_email = ActionMailer::Base.deliveries.last
   last_email.body.should have_content arg1
+end
+
+Then /^that email should have an unsubscribe link$/ do |arg1|
+  current_email.should have_content 'Unsubscribe or change your email preferences'
 end
