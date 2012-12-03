@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
-             motion_closing_soon motion_closed membership_requested user_added_to_group comment_liked user_mentioned]
+             motion_closing_soon motion_closed membership_requested
+             user_added_to_group comment_liked user_mentioned]
 
   has_many :notifications, :dependent => :destroy
   belongs_to :eventable, :polymorphic => true
