@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, #:registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :token_authenticatable
 
   validates :name, :presence => true
   validates :email, :presence => true
@@ -99,6 +100,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
                   :uploaded_avatar, :username, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications
 
+  before_save :ensure_authentication_token
   after_create :ensure_name_entry
   before_save :set_avatar_initials
 
