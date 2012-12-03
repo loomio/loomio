@@ -30,11 +30,7 @@ Given /^there is a proposal "(.*?)" from the discussion "(.*?)"$/ do |arg1, arg2
 end
 
 When /^we send the daily activity email$/ do
-  since_time = Date.yesterday
-  User.daily_activity_email_recipients.each do |user|
-    recent_activity = CollectsRecentActivityByGroup.for(user, since: since_time)
-    UserMailer.daily_activity(user, recent_activity, since_time).deliver!
-  end
+  SendActivitySummary.to_subscribers!
 end
 
 Then /^"(.*?)" should get emailed$/ do |arg1|
@@ -58,15 +54,6 @@ Then /^that email should have the proposal "(.*?)"$/ do |arg1|
   last_email.body.should have_content arg1
 end
 
-Then /^there should be an unsubscribe link in it$/ do
-  open_email('Ben@exmaple.org')
+Then /^that email should have an unsubscribe link$/ do |arg1|
   current_email.should have_content 'Unsubscribe or change your email preferences'
-end
-
-When /^ben clicks the unsubscribe link$/ do
-  current_email.click_on 'Unsubscribe or change your email preferences'
-end
-
-Then /^he should be taken to the email preferences page$/ do
-  page.should have_content 'Email Preferences'
 end
