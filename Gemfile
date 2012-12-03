@@ -5,6 +5,7 @@ gem "haml-rails"
 gem 'devise', '~> 2.0.0'
 gem 'devise_invitable', '~> 1.0.0'
 gem 'pg'
+gem 'sqlite3'
 gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
