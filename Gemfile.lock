@@ -376,7 +376,6 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.6)
     tailor (0.1.5)
       term-ansicolor (>= 1.0.5)
     term-ansicolor (1.0.7)
@@ -481,7 +480,6 @@ DEPENDENCIES
   simple_form (~> 2.0.0)
   simplecov
   spork
-  sqlite3
   thin
   twitter-bootstrap-rails
   twitter-text!
