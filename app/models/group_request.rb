@@ -55,6 +55,7 @@ class GroupRequest < ActiveRecord::Base
     @group.other_sectors_metric = other_sectors_metric
     @group.distribution_metric = distribution_metric
     @group.save!
+    @group.create_welcome_loomio
     self.group_id = @group.id
     save!
     InvitesUsersToGroup.invite!(:recipient_emails => [admin_email],
