@@ -1,4 +1,6 @@
 class AddMembersInvitableByToGroups < ActiveRecord::Migration
+  class Group < ActiveRecord::Base
+  end
   def up
     add_column :groups, :members_invitable_by, :string
 

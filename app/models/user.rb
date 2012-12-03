@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, #:registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :token_authenticatable
 
   validates :name, :presence => true
   validates :email, :presence => true
@@ -99,12 +100,17 @@ class User < ActiveRecord::Base
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
                   :uploaded_avatar, :username, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications
 
+  before_create :ensure_authentication_token!
   after_create :ensure_name_entry
   before_save :set_avatar_initials
 
   scope :daily_activity_email_recipients, where({subscribed_to_daily_activity_email: true})
 
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
+
+  def ensure_authentication_token!   
+    reset_authentication_token! if authentication_token.blank?   
+  end
 
   def get_vote_for(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
