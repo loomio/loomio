@@ -15,7 +15,6 @@ class Group < ActiveRecord::Base
   serialize :sectors_metric, Array
 
   after_initialize :set_defaults
-  after_create :create_welcome_loomio
   after_create :add_creator_as_admin
 
   default_scope where(:archived_at => nil)

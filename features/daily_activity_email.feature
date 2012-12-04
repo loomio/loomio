@@ -14,6 +14,11 @@ Feature: Daily activity email
     And that email should have the discussion "I'm Lonely"
     And that email should have the proposal "Party on Saturday"
 
-  Scenario: System scheduler sends out daily actitiy emails
-    given all the other stuff
-
+  Scenario: Ben is not sent a daily activity email
+    Given there is a user "Ben"
+    And "Ben" is subscribed to daily activity emails
+    Given there is a group "Pals"
+    And "Ben" belongs to "Pals"
+    # Note there is no discussions or motions.. so there should be no email
+    When we send the daily activity email
+    Then "Ben" should not get emailed
