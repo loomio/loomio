@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20121127024737) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
+    t.datetime "removed_at"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
