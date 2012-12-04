@@ -7,10 +7,6 @@ When /^I select the remove discussion link from the discussion dropdown$/ do
   click_on "remove-discussion"
 end
 
-When /^I confirm this action$/ do
-  page.driver.browser.switch_to.alert.accept
-end
-
 Then /^I should be directed to the group page$/ do
   page.should have_css("body.groups.show")
 end
