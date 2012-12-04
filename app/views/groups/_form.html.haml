@@ -1,7 +1,7 @@
 .row
   .span7
     #group-form
-      =simple_form_for @group, :validate => true do |f|
+      =simple_form_for group, :validate => true do |f|
         = f.input :name, :label => "Group Name"
         %h3 Privacy Settings
         - if group.parent.nil?
@@ -13,6 +13,4 @@
         %h3 Invitation Settings
         = f.input :members_invitable_by, :label => "Who can invite members to this #{suffix}?", :as => "radio_buttons", :collection => {'All group members' => 'members', 'Admins only' => 'admins'}
         = f.input :parent_id, :as => :hidden, :input_html => { :value => parent.id } unless parent.nil?
-        %h3 Notification Settings
-        = f.input :email_new_motion, :label => false, :inline_label => "Email group members when a new proposal is created in this group"
         = f.button :submit, submit_text, :class => "btn btn-info", :data => { :disable_with => disable_text }, :id => "group_form_submit"
