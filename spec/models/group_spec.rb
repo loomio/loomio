@@ -30,8 +30,6 @@ describe Group do
   end
 
   describe "#create" do
-    # I feel that this is overkill to be doing on group.create and would be better done
-    # at controller level when admin creates new groups.
     #context "creates a 'welcome to loomio' discussion and" do
       #before do
         #@group = create :group
