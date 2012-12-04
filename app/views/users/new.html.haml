@@ -1,10 +1,15 @@
-%h1 Create an account
-= form_for @user do |f|
-  = f.label :name, "Full name"
-  = f.text_field :name, id: 'name'
-  = f.label :email
-  = f.text_field :email, id: 'email'
-  = f.label :password
-  = f.text_field :password, id: 'password'
-  = f.submit "Send an invitation", class: "btn btn-info", id: 'submit'
-%br/
+.page-container
+  =image_tag("loomio-orange.png")
+  .row
+    .span8.offset2
+      %h2 Create an account
+      %p &nbsp;
+  .row
+    .span6.offset2
+      = simple_form_for @user, :validate => true do |f|
+        = f.input :name, :label => "Full name"
+        = f.input :email
+        = f.input :password
+        = f.submit "Create account", class: "btn btn-info btn-large", id: 'submit', :data => {:disable_with => "Create account"}
+    .span2
+      =image_tag("mascot-medium-lefthand.gif")

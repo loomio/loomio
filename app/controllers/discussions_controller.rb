@@ -16,11 +16,6 @@ class DiscussionsController < GroupBaseController
     @discussion = current_user.authored_discussions.new(params[:discussion])
     authorize! :create, @discussion
     if @discussion.save
-      @discussion.add_comment(current_user, params[:discussion][:comment])
-      if params[:discussion][:notify_group_upon_creation].to_i > 0
-        DiscussionMailer.spam_new_discussion_created(@discussion)
-      end
-      Event.new_discussion!(@discussion)
       flash[:success] = "Discussion sucessfully created."
       redirect_to @discussion
     else
@@ -108,7 +103,7 @@ class DiscussionsController < GroupBaseController
     @last_collaborator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js { render :action => 'update_version' }
-    end    
+    end
   end
 
   def edit_title
@@ -136,7 +131,7 @@ class DiscussionsController < GroupBaseController
     @originator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js { render :action => 'show_description_history' }
-    end    
+    end
   end
 
   def update_version

@@ -57,6 +57,22 @@ ActiveRecord::Schema.define(:version => 20121123223859) do
   add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
   create_table "did_not_votes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "motion_id"
@@ -75,7 +91,6 @@ ActiveRecord::Schema.define(:version => 20121123223859) do
     t.datetime "discussion_last_viewed_at"
   end
 
-  add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
   add_index "discussion_read_logs", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
   add_index "discussion_read_logs", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
@@ -115,8 +130,11 @@ ActiveRecord::Schema.define(:version => 20121123223859) do
     t.string   "status"
     t.integer  "group_id"
     t.string   "expected_size"
-    t.integer  "max_size",          :default => 50
+    t.integer  "max_size",             :default => 50
     t.string   "robot_trap"
+    t.integer  "distribution_metric"
+    t.string   "sectors_metric"
+    t.string   "other_sectors_metric"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
@@ -137,6 +155,9 @@ ActiveRecord::Schema.define(:version => 20121123223859) do
     t.datetime "archived_at"
     t.integer  "max_size"
     t.boolean  "cannot_contribute",    :default => false
+    t.integer  "distribution_metric"
+    t.string   "sectors_metric"
+    t.string   "other_sectors_metric"
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -239,8 +260,9 @@ ActiveRecord::Schema.define(:version => 20121123223859) do
     t.boolean  "has_read_discussion_notice",                                 :default => false, :null => false
     t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email"
-    t.boolean  "subscribed_to_mention_notifications"
+    t.boolean  "subscribed_to_mention_notifications",                         :default => true,  :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications"
+    t.string   "authentication_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

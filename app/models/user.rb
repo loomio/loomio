@@ -12,9 +12,12 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, #:registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :token_authenticatable
 
   validates :name, :presence => true
+  validates :email, :presence => true
+
   validates_attachment :uploaded_avatar,
     :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
     :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/png", "image/gif"] }
@@ -95,8 +98,10 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
-                  :uploaded_avatar, :username, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications
+                  :uploaded_avatar, :username, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications, 
+                  :subscribed_to_mention_notifications
 
+  before_save :ensure_authentication_token
   after_create :ensure_name_entry
   before_save :set_avatar_initials
 
@@ -112,7 +117,7 @@ class User < ActiveRecord::Base
     vote = Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
     vote.position if vote
   end
-  
+
   def voted?(motion)
     Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
   end

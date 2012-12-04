@@ -4,11 +4,7 @@ namespace :emails do
     # the cronjob gets called at a slightly different time (within say 30 seconds)
     # that we don't lose any data (at the moment we do)
     # To test carefully for this, we should really write some unit tests for this rake task
-    since_time = 24.hours.ago
-    User.daily_activity_email_recipients.each do |user|
-      recent_activity = CollectsRecentActivityByGroup.for(user, since: since_time)
-      UserMailer.daily_activity(user, recent_activity, since_time).deliver!
-    end
+    SendActivitySummary.to_subscribers!
   end
 
   task :send_proposal_closing_soon => :environment do

@@ -1,3 +1,4 @@
+#encoding: UTF-8
 module ApplicationHelper
 
   def twitterized_type(type)
@@ -70,6 +71,48 @@ module ApplicationHelper
     
     markdown = Redcarpet::Markdown.new(renderer, *options)
     markdown.render(text).html_safe
+  end
+
+  def help_text_dismissed?
+    return true unless current_user
+    case "#{controller_name} #{action_name}"
+    when 'discussions show'
+      current_user.has_read_discussion_notice?
+    when 'groups show'
+      current_user.has_read_group_notice? && @group.parent.nil?
+    when 'dashboard show'
+      current_user.has_read_dashboard_notice?
+    else
+      true
+    end
+  end
+
+  def dismiss_help_text_path
+    case "#{controller_name} #{action_name}"
+      when 'discussions show'
+        return dismiss_discussion_notice_for_user_path
+      when 'groups show'
+        return dismiss_group_notice_for_user_path
+      when 'dashboard show'
+        return dismiss_dashboard_notice_for_user_path
+    end
+  end
+
+  def help_text(group)
+    case "#{controller_name} #{action_name}"
+      when 'discussions show'
+        t :discussion_help_text
+      when 'groups show'
+        t :group_help_text, :group_name => group.full_name
+      when 'dashboard show'
+        t :dashboard_help_text, :link => "#{link_to "contact@loomio.org", 'mailto:contact@loomio.org', :target =>'_blank'}\n\n"
+    end
+  end
+
+  def render_help_text(group)
+    unless help_text_dismissed?
+      render '/application/help_text', message: help_text(group), path: dismiss_help_text_path
+    end
   end
 end
 
