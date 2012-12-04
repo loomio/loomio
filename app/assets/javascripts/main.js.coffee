@@ -77,7 +77,7 @@ $ ->
     $('body').append("<div class='modal' id='confirm-dialog'><div class='modal-header'><a href=#{cancelPath}
       class='close'>×</a><h3>Confirm action</h3></div><form action=#{confirmPath} method='post'>
       <div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='✓''><input name='authenticity_token' type='hidden' value=#{csrf}></div>
-      <div class='modal-body center'> #{bodyText}</div><div class='modal-footer'>&nbsp;<input class='btn btn-small btn-info', name='commit' type='submit' value='#{titleText}'>
+      <div class='modal-body center'> #{bodyText}</div><div class='modal-footer'>&nbsp;<input class='btn btn-small btn-info', name='commit' type='submit' value='#{titleText}' id='confirm-action'>
       <a href= #{cancelPath} class='btn btn-small'>Cancel</a></div></div></form>"
     )
     $('#confirm-dialog').modal('show')
