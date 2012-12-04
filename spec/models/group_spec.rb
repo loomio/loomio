@@ -30,32 +30,32 @@ describe Group do
   end
 
   describe "#create" do
-    context "creates a 'welcome to loomio' discussion and" do
-      before do
-        @group = create :group
-        @discussion = @group.discussions.first
-      end
+    #context "creates a 'welcome to loomio' discussion and" do
+      #before do
+        #@group = create :group
+        #@discussion = @group.discussions.first
+      #end
 
-      it "sets the title" do
-        @discussion.title.should == "Example Discussion: Welcome and introduction to Loomio!"
-      end
+      #it "sets the title" do
+        #@discussion.title.should == "Example Discussion: Welcome and introduction to Loomio!"
+      #end
 
-      it "sets the description" do
-        @discussion.description.should_not be_nil
-      end
+      #it "sets the description" do
+        #@discussion.description.should_not be_nil
+      #end
 
-      it "assigns Loomio Helper Bot as the author" do
-        @discussion.author_id.should == User.loomio_helper_bot.id
-      end
+      #it "assigns Loomio Helper Bot as the author" do
+        #@discussion.author_id.should == User.loomio_helper_bot.id
+      #end
 
-      it "creates an initial comment" do
-        @discussion.comments.count.should == 1
-      end
+      #it "creates an initial comment" do
+        #@discussion.comments.count.should == 1
+      #end
 
-      it "creates a new motion" do
-        @discussion.motions.count.should == 1
-      end
-    end
+      #it "creates a new motion" do
+        #@discussion.motions.count.should == 1
+      #end
+    #end
 
     it "does not create a 'welcome to loomio' discussion for subgroups" do
       parent = create :group
