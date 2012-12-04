@@ -2,7 +2,7 @@
 %p Showing you what’s been happening in your Loomio groups in the last 24 hours
 
 -@groups.each do |group|
-  -next unless @activity[group.full_name][:motions].present?
+  -next unless @activity[group.full_name].present?
   - @motions = @activity[group.full_name][:motions]
   - @discussions = @activity[group.full_name][:discussions]
 
