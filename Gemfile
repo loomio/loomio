@@ -5,7 +5,6 @@ gem "haml-rails"
 gem 'devise', '~> 2.1.0'
 gem 'devise_invitable', '~> 1.0.0'
 gem 'pg'
-gem 'sqlite3'
 gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
@@ -92,6 +91,7 @@ group :test do
   gem 'flay', :require => false
   gem "rails_best_practices", :require => false
   gem 'email_spec'
+  gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
 end
 
 group :staging, :production do
