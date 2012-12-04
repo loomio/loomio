@@ -3,6 +3,7 @@ class GroupsController < GroupBaseController
   before_filter :authenticate_user!, except: :show
   before_filter :check_group_read_permissions, :only => :show
 
+
   def create
     @group = Group.new(params[:group])
     @group.creator = current_user
@@ -11,7 +12,7 @@ class GroupsController < GroupBaseController
       flash[:success] = "Group created successfully."
       redirect_to @group
     else
-      redirect_to :back
+      render 'groups/new'
     end
   end
 

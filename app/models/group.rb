@@ -9,8 +9,8 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   validate :limit_inheritance
 
-  validates_length_of :name, :maximum=>250
   validates :description, :length => { :maximum => 250 }
+  validates :name, :length => { :maximum => 250 }
 
   serialize :sectors_metric, Array
 
@@ -283,7 +283,7 @@ class Group < ActiveRecord::Base
   private
 
   def set_defaults
-    self.viewable_by ||= :everyone if parent.nil?
+    self.viewable_by ||= :members if parent.nil?
     self.viewable_by ||= :parent_group_members unless parent.nil?
     self.members_invitable_by ||= :members
   end
