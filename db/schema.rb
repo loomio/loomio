@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204033009) do
+ActiveRecord::Schema.define(:version => 20121204065707) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -258,9 +258,9 @@ ActiveRecord::Schema.define(:version => 20121204033009) do
     t.boolean  "has_read_group_notice",                                       :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                                  :default => false, :null => false
     t.string   "username"
-    t.boolean  "subscribed_to_daily_activity_email"
+    t.boolean  "subscribed_to_daily_activity_email",                          :default => true,  :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,  :null => false
-    t.boolean  "subscribed_to_proposal_closure_notifications"
+    t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,  :null => false
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
   end
