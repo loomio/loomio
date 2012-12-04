@@ -92,6 +92,7 @@ group :test do
   gem 'flay', :require => false
   gem "rails_best_practices", :require => false
   gem 'email_spec'
+  gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
 end
 
 group :staging, :production do
