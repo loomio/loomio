@@ -1,9 +1,9 @@
 .row
   .span5
     = form_for [motion, vote] do |f|
-      = f.label :position, "Position"
+      = f.label :position, "Your position"
       = f.select :position, Vote::POSITIONS
-      = f.label :statement, "Statement"
+      = f.label :statement, "Your statement"
       .control-group
         = f.text_area :statement, placeholder: "Give a reason for your decision (optional)", class: "statement inputError limit-250"
         .character-counter
