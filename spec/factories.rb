@@ -17,6 +17,7 @@ FactoryGirl.define do
   factory :group do
     sequence(:name) { Faker::Name.name }
     association :creator, :factory => :user
+    viewable_by :everyone
     before(:create) do |group|
       group.parent.add_member!(group.creator) if group.parent
     end
