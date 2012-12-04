@@ -38,42 +38,41 @@ When /^I fill details for the subgroup$/ do
   fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_everyone"
   choose "group_members_invitable_by_members"
-  uncheck "group_email_new_motion"
 end
 
 When /^I fill details for public all members invite subgroup$/ do
-  fill_create_subgroup_common
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_everyone"
   choose "group_members_invitable_by_members"
   click_on 'group_form_submit'
 end
 
 When /^I fill details for public admin only invite subgroup$/ do
-  fill_create_subgroup_common
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_everyone"
   choose "group_members_invitable_by_admins"
 end
 
 When /^I fill details for members only all members invite subgroup$/ do
-  fill_create_subgroup_common
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_members"
   choose "group_members_invitable_by_members"
 end
 
 When /^I fill details for members only admin invite subgroup$/ do
-  fill_create_subgroup_common
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_members"
   choose "group_members_invitable_by_admins"
 end
 
 When /^I fill details for members and parent members only all members invite subgroup$/ do
-  fill_create_subgroup_common
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_members"
   choose "group_members_invitable_by_members"
 end
 
 When /^I fill details for members and parent members admin only invite ubgroup$/ do
-  fill_create_subgroup_common
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_members"
   choose "group_members_invitable_by_admins"
 end
