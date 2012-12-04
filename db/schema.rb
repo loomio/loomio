@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20121204033009) do
     t.datetime "discussion_last_viewed_at"
   end
 
+  add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
   add_index "discussion_read_logs", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
   add_index "discussion_read_logs", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
@@ -168,8 +169,8 @@ ActiveRecord::Schema.define(:version => 20121204033009) do
     t.integer  "group_id"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.string   "token",                              :null => false
     t.boolean  "accepted",        :default => false
-    t.string   "token"
   end
 
   create_table "memberships", :force => true do |t|
@@ -257,10 +258,10 @@ ActiveRecord::Schema.define(:version => 20121204033009) do
     t.boolean  "has_read_dashboard_notice",                                   :default => false, :null => false
     t.boolean  "has_read_group_notice",                                       :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                                  :default => false, :null => false
-    t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email"
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,  :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications"
+    t.string   "username"
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
   end
