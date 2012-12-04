@@ -99,6 +99,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
                   :uploaded_avatar, :username, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications
 
+  before_save :ensure_unsubscribe_token
+
   after_create :ensure_name_entry
   before_save :set_avatar_initials
 
@@ -328,6 +330,17 @@ class User < ActiveRecord::Base
   end
 
   private
+    def ensure_unsubscribe_token
+      if unsubscribe_token.blank?
+        found = false
+        while not found
+          token = Devise.friendly_token
+          found = true unless self.class.where(:unsubscribe_token => token).exists?
+        end
+        self.unsubscribe_token = token
+      end
+    end
+
     def ensure_name_entry
       unless name
         self.name = email
