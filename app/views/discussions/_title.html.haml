@@ -18,4 +18,4 @@
     %ul.dropdown-menu.pull-right
       %li= link_to "Edit discussion title", "#", :id => "edit-title"
       -if can? :remove, discussion
-        %li= link_to "Remove discussion", remove_discussion_path(discussion), method: :post, confirm: "Are you sure you want to remove this discussion?", id: 'remove-discussion'
+        %li= link_to "Remove Discussion", "#", 'data-title' => "Remove Discussion", 'data-body' => "Are you sure you want to remove this discussion?", 'data-confirm-path' => remove_discussion_path(discussion), 'data-cancel-path' => discussion_path(discussion), class: 'confirm-dialog', id: 'remove-discussion'
