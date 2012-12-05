@@ -1,19 +1,16 @@
-Given /^I am an admin of this group$/ do
+Given /^I am an admin of the group$/ do
   @group.add_admin! @user
 end
 
-Given /^the discussion has a proposal$/ do
+Given /^the discussion has an open proposal$/ do
   @motion = FactoryGirl.create :motion, :discussion => @discussion
-end
-
-Given /^the proposal is currently open$/ do
 end
 
 When /^I click the 'Close proposal' button$/ do
   click_on 'Close proposal'
 end
 
-When /^I confirm this action$/ do
+When /^I confirm the action$/ do
   find('#confirm-action').click()
 end
 
