@@ -8,6 +8,10 @@ When /^fill in discussion details$/ do
   click_on 'discussion-submit'
 end
 
+When /^I select "(.*?)" from the groups dropdown$/ do |arg1|
+  select arg1, from: 'discussion_group_id'
+end
+
 Then /^a discussion should be created$/ do
   Discussion.where(:title => "New discussion Test").should exist
 end
