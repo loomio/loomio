@@ -1,9 +1,3 @@
-Given /^I am an admin of the group$/ do
-  m = Membership.last
-  m.access_level = "admin"
-  m.save
-end
-
 When /^I visit the group settings page$/ do
   visit "/groups/" + Group.first.id.to_s + "/edit"
 end
