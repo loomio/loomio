@@ -153,13 +153,6 @@ describe GroupsController do
         post :add_members, id: @group.id,
           "user_#{@user2.id}" => 1, "user_#{@user3.id}" => 1
       end
-
-      it "fires user_added_to_group event" do
-        Event.should_receive(:user_added_to_group!).exactly(2).times
-
-        post :add_members, id: @group.id,
-          "user_#{@user2.id}" => 1, "user_#{@user3.id}" => 1
-      end
     end
 
     describe "archiving a group" do
@@ -205,6 +198,7 @@ describe GroupsController do
         controller.stub(:can?).with(:email_members, group).and_return(true)
         @email_subject = "i have something really important to say!"
         @email_body = "goobly"
+        GroupMailer.stub(:delay).and_return(GroupMailer)
         GroupMailer.stub(:deliver_group_email)
         @mailer_args = { :id => group.id, :group_email_body => @email_body,
                          :group_email_subject => @email_subject }
@@ -218,7 +212,7 @@ describe GroupsController do
 
       it "populates flash notice" do
         post :email_members, @mailer_args
-        flash[:success].should == "Email sent."
+        flash[:success].should == "Emails sending."
       end
 
       it "redirects to previous page" do
