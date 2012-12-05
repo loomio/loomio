@@ -45,6 +45,7 @@ describe GroupRequest do
       group.stub :distribution_metric=
       group.stub :sectors_metric=
       group.stub :other_sectors_metric=
+      group.stub :create_welcome_loomio
       group.stub :save!
       InvitesUsersToGroup.stub :invite!
     end
@@ -58,6 +59,7 @@ describe GroupRequest do
       group.should_receive(:distribution_metric=)
       group.should_receive(:sectors_metric=)
       group.should_receive(:other_sectors_metric=)
+      group.should_receive(:create_welcome_loomio)
       group.should_receive(:save!)
       group_request.approve!
     end

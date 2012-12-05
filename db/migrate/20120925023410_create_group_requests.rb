@@ -1,6 +1,6 @@
 class CreateGroupRequests < ActiveRecord::Migration
   def change
-    create_table :group_requests do |t|
+    create_table :group_requests, :force => true do |t|
       t.string :name
       t.integer :expected_size
       t.text :description

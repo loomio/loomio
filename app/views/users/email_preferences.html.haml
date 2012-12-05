@@ -1,11 +1,14 @@
 %h1 Email Preferences
-%br
-%br
 =simple_form_for(@user) do |f|
+  %h2 Daily Activity Summary
+  -if params[:unsubscribe_token]
+    =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
   =f.input :subscribed_to_daily_activity_email, :inline_label => 'Send me a daily activity email summarising what’s been happening in my groups', :label => false
 
   -#=f.input :subscribed_to_mention_notifications, label: 'When someone mentions your name'
+  %h2 Global Notifications
   =f.input :subscribed_to_proposal_closure_notifications, :inline_label => 'Remind me 24 hours before a proposal closes', :label => false
+  =f.input :subscribed_to_mention_notifications, :inline_label => 'Email me when someone mentions me in a comment', :label => false
 
   -#%h2 Group Activity Notifications
   -#%p For each group, check the box if you want to be emailed immediately about new discussions and when proposals proposals are put up and close.
