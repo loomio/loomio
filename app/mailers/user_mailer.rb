@@ -9,7 +9,15 @@ class UserMailer < ActionMailer::Base
     @since_time_formatted = since_time.strftime('%A, %-d %B')
     @groups = user.groups.sort{|a,b| a.full_name <=> b.full_name }
     mail to: @user.email,
-         subject: "Loomio - Your activity for #{@since_time_formatted}"
+         subject: "Loomio - Summary of the last 24 hours"
+  end
+
+  def mentioned(user, comment)
+    @user = user
+    @comment = comment
+    @discussion = comment.discussion
+    mail to: @user.email,
+         subject: "#{comment.author.name} mentioned you in the #{comment.group.name} group on Loomio"
   end
 
   def group_membership_approved(user, group)
