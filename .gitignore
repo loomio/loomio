@@ -15,3 +15,4 @@ public/system
 public/images
 .project
 Session.vim
+*.sql

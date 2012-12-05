@@ -1,10 +1,11 @@
 .row
   .span5
     = form_for [motion, vote] do |f|
-      = f.label :position, "Position"
+      = f.label :position, "Your position"
       = f.select :position, Vote::POSITIONS
-      = f.label :statement, "Statement"
+      = f.label :statement, "Your statement"
       .control-group
         = f.text_area :statement, placeholder: "Give a reason for your decision (optional)", class: "statement inputError limit-250"
         .character-counter
-      = f.submit "Update your position", class: "btn btn-info run-validations", :data => { :disable_with => "Updating position" }
+      = f.submit get_button_label, class: "btn btn-info run-validations", :data => { :disable_with => get_button_label }
+      = link_to "Cancel", motion_path(motion.id), class: "btn btn-grey"
