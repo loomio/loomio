@@ -6,6 +6,11 @@ class VotesController < GroupBaseController
   # def begin_of_association_chain
   #   @motion
   #
+  def new
+    @motion = Motion.find(params[:motion_id])
+    @vote = Vote.new
+    @vote.position = params[:position]
+  end
 
   def destroy
     resource
@@ -29,7 +34,7 @@ class VotesController < GroupBaseController
       else
         flash[:warning] = "Your position could not be submitted"
       end
-      redirect_to :back
+      redirect_to @motion
     else
       flash[:error] = "This proposal has closed. You can no longer decide on it."
       redirect_to @motion
