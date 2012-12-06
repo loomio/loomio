@@ -18,8 +18,8 @@ describe Group do
     it "has memberships" do
       @group.respond_to?(:memberships)
     end
-    it "defaults to viewable by everyone" do
-      @group.viewable_by.should == :everyone
+    it "defaults to viewable by members" do
+      @group.viewable_by.should == :members
     end
     it "defaults to members invitable by members" do
       @group.members_invitable_by.should == :members

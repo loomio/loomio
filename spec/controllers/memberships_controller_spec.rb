@@ -37,6 +37,7 @@ describe MembershipsController do
 
     context "requests membership to a group visible to everyone" do
       it "should succeed and redirect to group show page" do
+        @group.update_attributes({viewable_by: :everyone})
         post :create, :membership => {:group_id => @group.id}
         response.should redirect_to(group_url(@group))
         assigns(:group).requested_users.should include(@user)
