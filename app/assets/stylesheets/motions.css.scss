@@ -115,6 +115,10 @@
   .closing-info{
     font-size: $font-small;
   }
+  #close-voting {
+    float: right;
+    margin: 5px 0 0 0;
+  }
   #outcome-statement {
     color: $dark-grey;
     margin: 10px 0px;
