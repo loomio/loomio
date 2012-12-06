@@ -275,23 +275,6 @@ class Group < ActiveRecord::Base
     end
   end
 
-
-  #
-  # PRIVATE METHODS
-  #
-
-  private
-
-  def set_defaults
-    self.viewable_by ||= :everyone if parent.nil?
-    self.viewable_by ||= :parent_group_members unless parent.nil?
-    self.members_invitable_by ||= :members
-  end
-
-  def add_creator_as_admin
-    add_admin! creator unless creator == User.loomio_helper_bot
-  end
-
   def create_welcome_loomio
     unless parent
       comment_str = "Hey folks, I've been thinking it's time for a holiday. I know some people might be worried about our carbon footprint, but I have a serious craving for space-cheese!
@@ -322,6 +305,23 @@ You'll be prompted to make a short statement about the reason for your decision.
       motion.save
       membership.destroy
     end
+  end
+
+
+  #
+  # PRIVATE METHODS
+  #
+
+  private
+
+  def set_defaults
+    self.viewable_by ||= :everyone if parent.nil?
+    self.viewable_by ||= :parent_group_members unless parent.nil?
+    self.members_invitable_by ||= :members
+  end
+
+  def add_creator_as_admin
+    add_admin! creator unless creator == User.loomio_helper_bot
   end
 
   # Validators
