@@ -12,11 +12,11 @@ $ ->
 #adds bootstrap popovers to preview pies
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(".selector-pie-link").popover ({
+    $(".selector-pie-link").popover
       placement: "right",
       trigger: "manual"
-      })
-#adds bootstrap tooltip to preview pies  
+
+#adds bootstrap tooltip to preview pies
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
     $(".pie").tooltip
