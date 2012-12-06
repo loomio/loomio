@@ -23,8 +23,7 @@ Spork.prefork do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.orm = "active_record"
   Cucumber::Rails::Database.javascript_strategy = :truncation
-  # Capybara.default_driver = :selenium
-  Capybara.default_driver = :rack_test
+  Capybara.default_driver = :selenium
   Capybara.default_wait_time = 50
 end
 
