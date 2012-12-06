@@ -22,3 +22,9 @@ $ ->
     $(".pie").tooltip
       placement: "top",
       title: "Click to see more."
+
+#adds bootstrap tooltip to helper-bot
+$ ->
+  $(".helper-bot").tooltip
+    placement: "top",
+    title: "Click me and I will show you around"
