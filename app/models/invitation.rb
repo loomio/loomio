@@ -6,7 +6,7 @@ class Invitation < ActiveRecord::Base
 
   validates_uniqueness_of :token
 
-  before_create :generate_token
+  before_validation :generate_token, :on => :create
 
   def to_param
     token
@@ -19,7 +19,7 @@ class Invitation < ActiveRecord::Base
     save!
   end
 
-  protected
+  private
 
   def generate_token
     begin
