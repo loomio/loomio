@@ -22,23 +22,23 @@ describe "Notifications" do
     # Then I should see a new notification on the notifications icon
     #
     context "new discussion is created" do
-      before { create(:discussion, group: @group) }
+      before { Event.new_discussion! create(:discussion, group: @group) }
 
-      it "should have a notification count of 2" do
+      it "should have a notification count of 1", js: true do
         visit root_path
-        find("#notifications-count").should have_content("2")
+        find("#notifications-count").should have_content("1")
       end
     end
 
     context "two new discussions are created" do
       before do
-        create(:discussion, group: @group)
-        create(:discussion, group: @group)
+        Event.new_discussion! create(:discussion, group: @group)
+        Event.new_discussion! create(:discussion, group: @group)
       end
 
-      it "should have a notification count of 3" do
+      it "should have a notification count of 2", js: true do
         visit root_path
-        find("#notifications-count").should have_content("3")
+        find("#notifications-count").should have_content("2")
       end
     end
   end
@@ -68,10 +68,11 @@ describe "Notifications" do
 
       it "shows and clears notifications", :js => true do
         discussion = create(:discussion, group: @group)
+        Event.new_discussion! discussion
         visit root_path
-        page.should have_xpath("//title", :text => "(2) Loomio")
+        page.should have_xpath("//title", :text => "(1) Loomio")
 
-        find("#notifications-count").should have_content("2")
+        find("#notifications-count").should have_content("1")
 
         find("#notifications-toggle").click
         page.should have_xpath("//title", :text => "Loomio")
