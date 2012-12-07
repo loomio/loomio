@@ -14,7 +14,7 @@ class Discussion < ActiveRecord::Base
   validates :title, :length => { :maximum => 150 }
 
   acts_as_commentable
-  has_paper_trail :only => [:description]
+  has_paper_trail :only => [:title, :description]
 
   belongs_to :group
   belongs_to :author, class_name: 'User'
