@@ -3,7 +3,7 @@
     - if @discussions.exists?
       - @discussions.each do |discussion|
         %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
-    - else
+    - elsif @group.motions.count == 0
       %li.empty-list-message This group does not have any discussions yet.
   #discussions-loading
     %li.selector-item.loading Loading...
