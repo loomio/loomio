@@ -10,6 +10,9 @@ A new discussion was created in a Loomio group that you belong to.
 != "Started by: #{@discussion.author.name}"
 :plain
 
+- unless @discussion.description.blank?
+  != "Discription: #{@discussion.discription}"
+  
 - if @discussion.comments.present?
   != "Comment: \n#{@discussion.comments.first.body}"
 
