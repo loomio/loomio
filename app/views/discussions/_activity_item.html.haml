@@ -8,5 +8,5 @@
       =link_to actor.name, "#", "title" => actor.name,
         "data-content" => "#{render 'users/name_popover', user: actor, group: group}", class: "user-name-with-popover"
   %span.activity-item-header= header
-  %span.activity-item-body.word-break= body
+  %span.activity-item-content.word-break= body
   .activity-item-time= time_ago_in_words(time) + " ago"
