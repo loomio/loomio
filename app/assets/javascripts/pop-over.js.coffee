@@ -26,5 +26,5 @@ $ ->
 #adds bootstrap tooltip to helper-bot
 $ ->
   $(".helper-bot").tooltip
-    placement: "top",
+    placement: "left",
     title: "Click me and I will show you around"
