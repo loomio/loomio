@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20121127192006) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
+    t.datetime "removed_at"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -244,9 +245,9 @@ ActiveRecord::Schema.define(:version => 20121127192006) do
     t.boolean  "has_read_dashboard_notice",                                   :default => false, :null => false
     t.boolean  "has_read_group_notice",                                       :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                                  :default => false, :null => false
-    t.boolean  "subscribed_to_daily_activity_email"
-    t.boolean  "subscribed_to_mention_notifications"
-    t.boolean  "subscribed_to_proposal_closure_notifications"
+    t.boolean  "subscribed_to_daily_activity_email",                          :default => true,  :null => false
+    t.boolean  "subscribed_to_mention_notifications",                         :default => true,  :null => false
+    t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,  :null => false
     t.string   "username"
   end
 
