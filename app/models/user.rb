@@ -105,7 +105,7 @@ class User < ActiveRecord::Base
   after_create :ensure_name_entry
   before_save :set_avatar_initials
 
-  scope :daily_activity_email_recipients, where({subscribed_to_daily_activity_email: true})
+  scope :daily_activity_email_recipients, where("subscribed_to_daily_activity_email IS TRUE AND invitation_token IS NULL")
 
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
 
