@@ -116,7 +116,12 @@ describe Vote do
     it "adds vote activity if a user votes on a motion" do
       motion = create :motion
       Event.should_receive(:new_vote!)
-      vote = create :vote, :motion => motion
+      vote = create :vote, :motion => motion, :position => "yes"
+    end
+    it "adds motion_blocked activity if a user blocks a motion" do
+      motion = create :motion
+      Event.should_receive(:motion_blocked!)
+      vote = create :vote, :motion => motion, :position => "block"
     end
   end
 end
