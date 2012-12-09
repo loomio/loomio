@@ -35,12 +35,12 @@ When /^we send the daily activity email$/ do
 end
 
 Then /^"(.*?)" should get emailed$/ do |arg1|
-  ActionMailer::Base.deliveries.map { |delivery| delivery.to.first }.should include @user_email
+  ActionMailer::Base.deliveries.map { |delivery| delivery.to.last }.should include @user_email
+  ActionMailer::Base.deliveries.map { |delivery| delivery.subject }.should include "Loomio - Summary of the last 24 hours"
 end
 
 Then /^"(.*?)" should not get emailed$/ do |arg1|
-  last_email = ActionMailer::Base.deliveries.last
-  last_email.should be_nil
+  ActionMailer::Base.deliveries.map { |delivery| delivery.subject.last }.should_not include "Loomio - Summary of the last 24 hours"
 end
 
 Then /^that email should have the discussion "(.*?)"$/ do |arg1|
