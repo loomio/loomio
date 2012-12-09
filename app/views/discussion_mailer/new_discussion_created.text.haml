@@ -11,7 +11,7 @@ A new discussion was created in a Loomio group that you belong to.
 :plain
 
 - unless @discussion.description.blank?
-  != "Discription: #{@discussion.discription}"
+  != "Description: #{@discussion.description}"
   
 - if @discussion.comments.present?
   != "Comment: \n#{@discussion.comments.first.body}"
