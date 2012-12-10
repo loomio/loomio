@@ -168,7 +168,7 @@ describe GroupsController do
         @group.add_admin! @user
         @subgroup = create(:group, :parent => @group)
         @subgroup.add_member! @user
-        post :archive, :id => @group.id
+        put :archive, :id => @group.id
       end
       it "sets archived_at field on the group" do
         assigns(:group).archived_at.should_not == nil

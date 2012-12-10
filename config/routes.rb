@@ -71,7 +71,7 @@ Loomio::Application.routes.draw do
         :as => :dismiss_discussion_notice_for_user, :via => :post
 
   resources :comments do
-    post :archive, on: :member
+    put :archive, on: :member
     post :like, on: :member
     post :unlike, on: :member
   end
