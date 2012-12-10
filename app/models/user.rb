@@ -316,9 +316,9 @@ class User < ActiveRecord::Base
     if name.include? '@'
       #email used in place of name
       email_str = email.split("@").first 
-      new_username = email_str.gsub(/\s+/, "").downcase
+      new_username = email_str.gsub(/[^a-zA-Z0-9]/, "").downcase
     else
-      new_username = name.gsub(/\s+/, "").downcase
+      new_username = name.gsub(/[^a-zA-Z0-9]/, "").downcase
     end
     username_tmp = new_username.dup
     num = 1
