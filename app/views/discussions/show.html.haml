@@ -24,7 +24,7 @@
             .content-proposal-body
               %ul.selector-list
                 - if @current_motion
-                  - if @previous_motion && (@previous_motion != @current_motion)
+                  - if @selected_motion && (@selected_motion != @current_motion)
                     %li.selector-item.current-proposal
                       = render '/motions/motion_preview', motion: @current_motion, this_group: @group
                   - else
@@ -44,8 +44,8 @@
                 .content-proposal-body
                   %ul.selector-list
                     - @discussion.closed_motions.order("close_date desc").each do |closed_motion|
-                      - if closed_motion == @previous_motion
-                        %li.selector-item= render @previous_motion, unique_votes: @unique_votes, this_group: @group
+                      - if closed_motion == @selected_motion
+                        %li.selector-item= render @selected_motion, unique_votes: @unique_votes, this_group: @group
                       - else
                         %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
 - if @current_motion

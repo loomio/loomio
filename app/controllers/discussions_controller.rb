@@ -58,9 +58,9 @@ class DiscussionsController < GroupBaseController
         @user_already_voted = @current_motion.user_has_voted?(current_user)
       end
     else
-      @previous_motion = @discussion.closed_motion(params[:proposal])
-      @user_already_voted = @previous_motion.user_has_voted?(current_user)
-      @votes_for_graph = @previous_motion.votes_graph_ready
+      @selected_motion = @discussion.closed_motion(params[:proposal])
+      @user_already_voted = @selected_motion.user_has_voted?(current_user)
+      @votes_for_graph = @selected_motion.votes_graph_ready
     end
 
     if current_user
