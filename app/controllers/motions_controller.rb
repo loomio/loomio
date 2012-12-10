@@ -74,8 +74,10 @@ class MotionsController < GroupBaseController
 
   def edit_close_date
     motion = Motion.find(params[:id])
-    if motion.set_close_date((params[:motion][:close_date]).to_datetime)
-      motion.set_motion_close_date_edited_activity!(current_user)
+    if motion.set_close_date((params[:motion][:close_date]).to_datetime, current_user)
+      flash[:success] = "Close date successfully changed."
+    else
+      flash[:error] = "Invalid close date, it needs to be a furture date."
     end
     redirect_to discussion_url(motion.discussion)
   end
