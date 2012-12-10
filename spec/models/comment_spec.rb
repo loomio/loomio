@@ -28,13 +28,15 @@ describe Comment do
 
     it "updates the discussion field last_comment_at" do
       discussion = create :discussion
+      original_time = 8.hours.ago
+      Time.stub(:now => original_time)
       comment = create :comment, commentable_id: discussion.id,
                    commentable_type: 'Discussion', user: user, body: "Hello kitty"
+      Time.stub(:now => 3.hours.ago)
       comment1 = discussion.add_comment discussion.author, "delete me"
+      comment1.archive!
       discussion.reload
-      comment.archive!
-      discussion.reload
-      discussion.last_comment_at.should == discussion.created_at
+      discussion.last_comment_at.should == original_time
     end
   end
 
