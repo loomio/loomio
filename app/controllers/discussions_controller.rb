@@ -126,12 +126,6 @@ class DiscussionsController < GroupBaseController
     end
   end
 
-  # def refresh_activity
-  #   debugger
-  #   @discussion = Discussion.find(params[:id])
-  #   @activity = discussion.activity
-  # end
-
   def update_version
     @version = Version.find(params[:version_id])
     @version.reify.save!
