@@ -69,6 +69,7 @@
     height: 390px;
     .notification-item {
       background-color: $unhighlighted;
+      min-height: 48px;
     }
     .notification-item.unread {
       background-color: $highlighted;
