@@ -401,20 +401,21 @@ ul.loomio-process-flow {
 }
 
 /*** helper bot ***/
-#helper_bot {
+.helper-bot {
   float: right;
   position: relative;
   bottom: 30px;
   margin-bottom: -40px;
 }
 
-body.discussions #helper_bot{
+body.discussions .helper-bot{
     bottom: 68px;
     margin-bottom: -60px;
 }
 
-body.groups.show #helper_bot{
-  right: 130px;
+body.groups.show .helper-bot{
+  right: 140px;
+  bottom: 55px;
 }
 
 /**** buttons ****/
