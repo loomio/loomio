@@ -1,11 +1,12 @@
 Given /^there is a user "(.*?)"$/ do |arg1|
-  FactoryGirl.create :user, name: arg1, 
-                            email: "#{arg1}@example.org",
+  @user_email = "#{arg1}@example.org"
+  FactoryGirl.create :user, name: arg1,
+                            email: @user_email,
                             password: 'password'
 end
 
 Given /^"(.*?)" is subscribed to daily activity emails$/ do |arg1|
-  User.find_by_name('Ben').update_attribute(:subscribed_to_daily_activity_email, true)
+  User.find_by_name(arg1).update_attribute(:subscribed_to_daily_activity_email, true)
 end
 
 Given /^there is a group "(.*?)"$/ do |arg1|
@@ -19,7 +20,7 @@ Given /^"(.*?)" belongs to "(.*?)"$/ do |arg1, arg2|
 end
 
 Given /^there is a discussion "(.*?)" in "(.*?)"$/ do |arg1, arg2|
-  @discussion = FactoryGirl.create :discussion, 
+  @discussion = FactoryGirl.create :discussion,
                   {title: arg1, group: Group.find_by_name(arg2)}
 end
 
@@ -34,14 +35,12 @@ When /^we send the daily activity email$/ do
 end
 
 Then /^"(.*?)" should get emailed$/ do |arg1|
-  last_email = ActionMailer::Base.deliveries.last
-  user = User.find_by_name(arg1)
-  last_email.to.should include user.email
+  ActionMailer::Base.deliveries.map { |delivery| delivery.to.last }.should include @user_email
+  ActionMailer::Base.deliveries.map { |delivery| delivery.subject }.should include "Loomio - Summary of the last 24 hours"
 end
 
 Then /^"(.*?)" should not get emailed$/ do |arg1|
-  last_email = ActionMailer::Base.deliveries.last
-  last_email.should be_nil
+  ActionMailer::Base.deliveries.map { |delivery| delivery.subject.last }.should_not include "Loomio - Summary of the last 24 hours"
 end
 
 Then /^that email should have the discussion "(.*?)"$/ do |arg1|

@@ -99,8 +99,7 @@
   }
 }
 
-/*** proposal (discussion page)***/
-
+/*** _motion (discussion page)***/
 
 #content-proposal{
   .motion-title { margin-top: 3px; }
@@ -114,6 +113,10 @@
   }
   .closing-info{
     font-size: $font-small;
+  }
+  #close-voting {
+    float: right;
+    margin: 5px 0 0 0;
   }
   #outcome-statement {
     color: $dark-grey;

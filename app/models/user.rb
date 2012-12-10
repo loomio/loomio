@@ -12,8 +12,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, #:registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :token_authenticatable
+         :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, :presence => true
   validates :email, :presence => true
@@ -102,11 +101,12 @@ class User < ActiveRecord::Base
                   :uploaded_avatar, :username, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications, 
                   :subscribed_to_mention_notifications, :group_email_preferences
 
-  before_save :ensure_authentication_token
+  before_save :ensure_unsubscribe_token
+
   after_create :ensure_name_entry
   before_save :set_avatar_initials
 
-  scope :daily_activity_email_recipients, where({subscribed_to_daily_activity_email: true})
+  scope :daily_activity_email_recipients, where("subscribed_to_daily_activity_email IS TRUE AND invitation_token IS NULL")
 
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
 
@@ -353,6 +353,17 @@ class User < ActiveRecord::Base
   end
 
   private
+    def ensure_unsubscribe_token
+      if unsubscribe_token.blank?
+        found = false
+        while not found
+          token = Devise.friendly_token
+          found = true unless self.class.where(:unsubscribe_token => token).exists?
+        end
+        self.unsubscribe_token = token
+      end
+    end
+
     def ensure_name_entry
       unless name
         self.name = email

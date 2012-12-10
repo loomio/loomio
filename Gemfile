@@ -8,7 +8,7 @@ gem 'pg'
 gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
-gem 'formtastic' # Deprecated. Use simple_form instead.
+gem 'formtastic' # Deprecated - use simple_form instead.
 gem 'simple_form', '~> 2.0.0'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form', '~> 2.0.0'
@@ -92,6 +92,7 @@ group :test do
   gem 'flay', :require => false
   gem "rails_best_practices", :require => false
   gem 'email_spec'
+  gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
 end
 
 group :staging, :production do
