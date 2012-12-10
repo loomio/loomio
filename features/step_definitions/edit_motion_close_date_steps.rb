@@ -5,11 +5,8 @@ Given /^I am an admin of a group with a discussion$/ do
   @group.add_admin! @user
 end
 
-Given /^the discussion has a proposal$/ do
+Given /^the discussion has an open proposal$/ do
   @motion = FactoryGirl.create :motion, :discussion => @discussion
-end
-
-Given /^the proposal is currently open$/ do
 end
 
 When /^I click the 'change close date' button$/ do
