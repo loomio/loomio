@@ -5,15 +5,15 @@
   .span12
     .selector-panel
       = render 'title', discussion: @discussion
-      .discussion-panel-content
-        .discussion-context
+      #discussion-panel-content
+        #discussion-context
           =render 'discussion_context'
         #description-revision-history.modal.hidden
         .row
-          .span6.content-activity
+          .span6#content-activity
             .large-icon.discussion-icon.enabled-icon
             %h3.header-text Discussion
-            .content-activity-body
+            #content-activity-body
               = render 'add_comment', discussion: @discussion
               #activity-feed
                 = render 'activity', discussion: @discussion
