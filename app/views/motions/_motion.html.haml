@@ -16,7 +16,7 @@
       .proposed-by
         = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
     .span2.motion-admin-buttons
-      = render '/motions/admin_buttons', motion: @current_motion unless @previous_motion || motion.closed?
+      = render '/motions/admin_buttons', motion: @current_motion unless @selected_motion || motion.closed?
   - if motion.closed?
     =render "motions/outcome_statement", motion: motion, this_group: this_group
   .description
