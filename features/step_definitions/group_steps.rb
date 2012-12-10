@@ -34,6 +34,11 @@ Given /^"(.*?)" is an admin of(?: group)? "(.*?)"$/ do |email, group_name|
   group.add_admin!(user)
 end
 
+Given /^the group has a discussion with a decision$/ do
+  @discussion = FactoryGirl.create :discussion, :group => @group
+  @motion = FactoryGirl.create :motion, :discussion => @discussion
+end
+
 When /^I fill details for the subgroup$/ do
   fill_in "group-name", :with => 'test group'
   choose "group_viewable_by_everyone"
