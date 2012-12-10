@@ -47,7 +47,7 @@ class GroupRequest < ActiveRecord::Base
   private
 
   def approve_request
-    @group = Group.new(:name => name)
+    @group = Group.new(:name => name, :viewable_by => :members)
     @group.creator = User.loomio_helper_bot
     @group.cannot_contribute = cannot_contribute
     @group.max_size = max_size
