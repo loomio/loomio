@@ -83,7 +83,6 @@ Scenario: Parent-group non-member tries to view discussions for a sub-group view
   Then I should not see the sub-group's discussions
 
 
-
 Scenario: Public sub-group member views discussions for its parent-group, and sees the sub-group's discussions
   Given I am logged in
   And I am a member of a public sub-group
@@ -96,8 +95,7 @@ Scenario: Public sub-group non-member views discussions for its parent-group, an
   And I am not a member of a public sub-group
   And the sub-group has discussions
   When I visit the parent-group page
-  Then we should make this test work
-  # Then I should see the sub-group's discussions
+  Then I should see the sub-group's discussions
 
 Scenario: Private sub-group member views discussions for its parent-group, and sees the sub-group's discussions
   Given I am logged in

@@ -18,8 +18,8 @@ describe Group do
     it "has memberships" do
       @group.respond_to?(:memberships)
     end
-    it "defaults to viewable by everyone" do
-      @group.viewable_by.should == :everyone
+    it "defaults to viewable by members" do
+      @group.viewable_by.should == :members
     end
     it "defaults to members invitable by members" do
       @group.members_invitable_by.should == :members
@@ -30,8 +30,6 @@ describe Group do
   end
 
   describe "#create" do
-    # I feel that this is overkill to be doing on group.create and would be better done
-    # at controller level when admin creates new groups.
     #context "creates a 'welcome to loomio' discussion and" do
       #before do
         #@group = create :group

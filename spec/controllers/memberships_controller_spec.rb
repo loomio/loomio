@@ -12,7 +12,6 @@ describe MembershipsController do
 
     context "requests membership to a group visible to members" do
       before do
-        @group.update_attributes({viewable_by: :members})
         # note trying to sneek member level access.. should be ignored
         @membership_args = { :membership => {:group_id => @group.id,
                                              :access_level => 'member'} }
@@ -36,6 +35,9 @@ describe MembershipsController do
     end
 
     context "requests membership to a group visible to everyone" do
+      before do
+        @group.update_attributes({viewable_by: :everyone})
+      end
       it "should succeed and redirect to group show page" do
         post :create, :membership => {:group_id => @group.id}
         response.should redirect_to(group_url(@group))
