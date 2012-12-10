@@ -6,6 +6,17 @@ GIT
       tailor
 
 GIT
+  remote: https://github.com/jonleighton/poltergeist.git
+  revision: 5c2e092001074a8cf09f332d3714e9ba150bc8ca
+  specs:
+    poltergeist (1.0.2)
+      capybara (~> 1.1)
+      childprocess (~> 0.3)
+      faye-websocket (~> 0.4, >= 0.4.4)
+      http_parser.rb (~> 0.5.3)
+      multi_json (~> 1.0)
+
+GIT
   remote: https://github.com/twitter/twitter-text-rb.git
   revision: f0458ba4eee710140f04c059d70b0faf368e3b10
   specs:
@@ -175,6 +186,8 @@ GEM
     faker (1.0.1)
       i18n (~> 0.4)
     fastercsv (1.5.5)
+    faye-websocket (0.4.6)
+      eventmachine (>= 0.12.0)
     ffi (1.1.5)
     flay (1.4.3)
       ruby_parser (~> 2.0)
@@ -213,6 +226,7 @@ GEM
     high_voltage (1.2.0)
     highline (1.6.8)
     hike (1.2.1)
+    http_parser.rb (0.5.3)
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
@@ -267,7 +281,7 @@ GEM
     net-ssh (2.2.1)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    newrelic_rpm (3.5.0.1)
+    newrelic_rpm (3.5.3.25)
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
     paper_trail (2.6.3)
@@ -461,6 +475,7 @@ DEPENDENCIES
   paper_trail (~> 2)
   paperclip
   pg
+  poltergeist!
   rabl
   rack-canonical-host
   rails (~> 3.2.6)

@@ -1,6 +1,8 @@
 %h1 Email Preferences
 =simple_form_for(@user) do |f|
   %h2 Daily Activity Summary
+  -if params[:unsubscribe_token]
+    =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
   =f.input :subscribed_to_daily_activity_email, :inline_label => 'Send me a daily activity email summarising what’s been happening in my groups', :label => false
 
   -#=f.input :subscribed_to_mention_notifications, label: 'When someone mentions your name'

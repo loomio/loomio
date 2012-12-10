@@ -1,5 +1,6 @@
 class UsersController < BaseController
-  before_filter :authenticate_user!, :except => [:new, :create]
+  before_filter :authenticate_user!, except: [:new, :create, :email_preferences, :update]
+  before_filter :authenticate_user_by_unsubscribe_token_or_fallback, only: [:email_preferences, :update]
 
   def new
     @user = User.new
@@ -31,11 +32,12 @@ class UsersController < BaseController
   end
 
   def email_preferences
-    @user = current_user
+    @user = @restricted_user || current_user
   end
 
   def update
-    if current_user.update_attributes(params[:user])
+    @user = @restricted_user || current_user
+    if @user.update_attributes(params[:user])
       flash[:notice] = "Your settings have been updated."
       redirect_to :root
     else
@@ -95,4 +97,10 @@ class UsersController < BaseController
     redirect_to :back
   end
 
+  private
+  def authenticate_user_by_unsubscribe_token_or_fallback
+    unless (params[:unsubscribe_token].present? and @restricted_user = User.find_by_unsubscribe_token(params[:unsubscribe_token]))
+      authenticate_user!
+    end
+  end
 end

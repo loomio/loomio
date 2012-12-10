@@ -23,27 +23,28 @@
                 %li.group-item.new-group
                   =link_to "+ Request New Group", request_new_group_path
 
-            %li.nav-item.dropdown#notifications-container
-              - latest_seen_notification = notifications.first.id if notifications.exists?
-              = link_to "#", 'ajax-path' => mark_as_viewed_notifications_path(:latest_viewed => latest_seen_notification),
-                       :id => 'notifications-toggle', :class => 'dropdown-toggle nav-link', 'data-target' => '#',
-                       'data-toggle' => 'dropdown' do
-                %span.header-bar-icon.nav-item-icon.large-icon.notification-icon
-                - if unviewed_notifications.size > 0
-                  %span#notifications-count.label.label-important
-                    = unviewed_notifications.size
-                %span= "Notifications"
-                %b.caret
-              %ul.dropdown-menu
-                %li
-                  %h3 Notifications
-                %li#notification-items
-                  %ul
-                    - if notifications.count == 0
-                      %li.notifications-placeholder You do not have any notifications yet.
-                    - notifications.each do |notification|
-                      = render notification
-                %li#notifications-see-more= link_to "See all notifications", notifications_path
+            -if notifications.present?
+              %li.nav-item.dropdown#notifications-container
+                - latest_seen_notification = notifications.first.id if notifications.present?
+                = link_to "#", 'ajax-path' => mark_as_viewed_notifications_path(:latest_viewed => latest_seen_notification),
+                         :id => 'notifications-toggle', :class => 'dropdown-toggle nav-link', 'data-target' => '#',
+                         'data-toggle' => 'dropdown' do
+                  %span.header-bar-icon.nav-item-icon.large-icon.notification-icon
+                  - if unviewed_notifications.present?
+                    %span#notifications-count.label.label-important
+                      = unviewed_notifications.size
+                  %span= "Notifications"
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    %h3 Notifications
+                  %li#notification-items
+                    %ul
+                      - if notifications.empty?
+                        %li.notifications-placeholder You do not have any notifications yet.
+                      - notifications.each do |notification|
+                        = render notification
+                  %li#notifications-see-more= link_to "See all notifications", notifications_path
 
             %li.nav-item.dropdown#user
               %a.nav-link{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
