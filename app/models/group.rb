@@ -314,7 +314,7 @@ You'll be prompted to make a short statement about the reason for your decision.
   private
 
   def set_defaults
-    self.viewable_by ||= :everyone if parent.nil?
+    self.viewable_by ||= :members if parent.nil?
     self.viewable_by ||= :parent_group_members unless parent.nil?
     self.members_invitable_by ||= :members
   end
