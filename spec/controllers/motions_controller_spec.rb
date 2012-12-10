@@ -67,12 +67,17 @@ describe MotionsController do
     context "changes the close date" do
       before do
         Motion.stub(:find).and_return motion
+        controller.stub(:authorize!).with(:edit_close_date, motion).and_return(true)
+      end
+      it "checks user has permission" do
+        controller.should_receive(:authorize!)
+        post :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
       end
       context "a valid date is entered" do
         it "calls set_motion_close_date, creates relavent activity and flashes a success" do
           motion.should_receive(:set_close_date).and_return true
-          motion.should_receive(:set_motion_close_date_edited_activity!).with(user)
           post :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+          flash[:success].should =~ /Close date successfully changed./
           response.should redirect_to(discussion)
         end
       end
@@ -80,6 +85,7 @@ describe MotionsController do
         it "displays an error message and returns to the discussion page" do
           motion.should_receive(:set_close_date).and_return false
           post :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+          flash[:error].should =~ /Invalid close date, it needs to be a furture date./
           response.should redirect_to(discussion)
         end
       end
