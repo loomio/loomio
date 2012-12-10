@@ -65,7 +65,7 @@ body.discussions.show {
     }
   }
 
-  .discussion-panel-content {
+  #discussion-panel-content {
     background-color: white;
     border-top: 1px solid $light-grey;
     border-bottom: 1px solid $light-grey;
@@ -73,7 +73,7 @@ body.discussions.show {
     margin-bottom: 5px;
   }
 
-  .discussion-context {
+  #discussion-context {
     min-height: 40px;
     border-bottom: 1px solid $light-grey;
     padding: 10px 0px 10px 50px;
@@ -199,12 +199,12 @@ pre{
 
 
 /*** comments, positions & proposals in History ***/
-.content-activity {
+#content-activity {
   border-right: 1px solid $light-grey;
   min-height: 660px;
   padding-right: 10px;
 
-  .content-activity-body {
+  #content-activity-body {
     padding: 10px 0px 10px 8px;
   }
   #new-comment-form {
