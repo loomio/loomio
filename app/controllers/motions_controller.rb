@@ -1,6 +1,6 @@
 class MotionsController < GroupBaseController
-  load_and_authorize_resource :except => [:create, :edit_close_date, :show, :index]
-  before_filter :authenticate_user!, :except => [:show, :index, :edit_close_date, :get_and_clear_new_activity]
+  load_and_authorize_resource :except => [:create, :show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index, :get_and_clear_new_activity]
   before_filter :check_group_read_permissions, :only => :show
 
   def create
