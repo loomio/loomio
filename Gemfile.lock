@@ -112,7 +112,6 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
-    capybara-email (1.0.0)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
     client_side_validations (3.2.1)
@@ -453,7 +452,6 @@ DEPENDENCIES
   cane!
   capistrano
   capybara
-  capybara-email
   client_side_validations
   client_side_validations-simple_form (~> 2.0.0)
   coffee-filter
