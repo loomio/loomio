@@ -53,7 +53,7 @@ module ApplicationHelper
     if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
       text = " "
     end
-    
+
     options = [
       :no_intra_emphasis => true,
       :tables => true,
@@ -68,7 +68,7 @@ module ApplicationHelper
       :filter_html => true,
       :hard_wrap => true
     )
-    
+
     markdown = Redcarpet::Markdown.new(renderer, *options)
     markdown.render(text).html_safe
   end
@@ -79,7 +79,7 @@ module ApplicationHelper
     when 'discussions show'
       current_user.has_read_discussion_notice?
     when 'groups show'
-      current_user.has_read_group_notice? && @group.parent.nil?
+      current_user.has_read_group_notice?
     when 'dashboard show'
       current_user.has_read_dashboard_notice?
     else
