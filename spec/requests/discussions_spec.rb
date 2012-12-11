@@ -253,7 +253,7 @@ describe "Discussion" do
   # LOCAL HELPERS
   def open_modal(discussion)
     visit discussion_path(discussion)
-    find(".discussion-context").find_link('See revision history').click
+    find("#discussion-context").find_link('See revision history').click
    assert_modal_flushed
   end
 
@@ -265,8 +265,8 @@ describe "Discussion" do
   end
 
   def assert_description_updated
-    page.execute_script("$('.discussion-context').empty()")
-    wait_until { page.has_css?(".discussion-context div") }
+    page.execute_script("$('#discussion-context').empty()")
+    wait_until { page.has_css?("#discussion-context div") }
   rescue Capybara::TimeoutError
     flunk 'Expected discussion context to receive html content.'
   end

@@ -64,7 +64,7 @@ describe CollectsRecentActivityByGroup do
                                            {group: group, created_at: 2.days.ago} 
 
           @motion = FactoryGirl.create :motion, discussion: @discussion
-          @motion.close_voting!
+          @motion.close!
         end
         it 'does not return the proposal' do
           recent_activity[group.name][:motions].should_not include @motion
