@@ -34,9 +34,34 @@ Given /^"(.*?)" is an admin of(?: group)? "(.*?)"$/ do |email, group_name|
   group.add_admin!(user)
 end
 
+Given /^I am an admin of a group$/ do
+  @group = FactoryGirl.create :group
+  @group.add_admin! @user
+end
+
+Given /^I am a member of a group$/ do
+  @group = FactoryGirl.create :group
+  @group.add_member! @user
+end
+
 Given /^the group has a discussion with a decision$/ do
   @discussion = FactoryGirl.create :discussion, :group => @group
   @motion = FactoryGirl.create :motion, :discussion => @discussion
+end
+
+Given /^there is a discussion in the group$/ do
+  @discussion = FactoryGirl.create :discussion, :group => @group
+end
+
+Given /^there is a discussion in a public group$/ do
+  @group = FactoryGirl.create :group, :viewable_by => :everyone
+  @discussion = FactoryGirl.create :discussion, :group => @group
+end
+
+Given /^there is a discussion in a group I belong to$/ do
+  @group = FactoryGirl.create :group
+  @discussion = FactoryGirl.create :discussion, :group => @group
+  @group.add_member! @user
 end
 
 When /^I fill details for the subgroup$/ do
@@ -84,4 +109,8 @@ end
 
 When /^I visit the group page for "(.*?)"$/ do |group_name|
   visit group_path(Group.find_by_name(group_name))
+end
+
+When /^then I visit the group page$/ do
+  step %{I visit the group page}
 end
