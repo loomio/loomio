@@ -22,34 +22,6 @@ describe Discussion do
     discussion.comment_threads.should include(comment)
   end
 
-  context "activity" do
-    before do
-      @discussion = create(:discussion)
-      @user = create(:user)
-      @discussion.group.add_member! @user
-    end
-    
-    it "fires new_discussion activity" do
-      Event.should_receive(:new_discussion!)
-      @discussion.set_new_discussion_activity!
-    end
-
-    it "fires new_comment event if comment was created successfully" do
-      Event.should_receive(:new_comment!)
-      @discussion.add_comment(@user, "this is a test comment")
-    end
-
-    it "adds edit discussion title activity if a user edits the discussion title" do
-      Event.should_receive(:discussion_title_edited!)
-      @discussion.set_edit_title_activity! @user
-    end
-
-    it "adds edit discussion description activity if a user edits the discussion description" do
-      Event.should_receive(:discussion_description_edited!)
-      @discussion.set_edit_discription_activity! @user
-    end
-  end
-
   it "group non-member cannot add comment" do
     discussion = create(:discussion)
     comment = discussion.add_comment(create(:user), "this is a test comment")
