@@ -1,9 +1,3 @@
-Given /^there is a discussion in a group I belong to$/ do
-  @group = FactoryGirl.create :group
-  @discussion = FactoryGirl.create :discussion, :group => @group
-  @group.add_member! @user
-end
-
 Given /^I have never read the discussion before$/ do
 end
 
