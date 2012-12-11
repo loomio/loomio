@@ -13,31 +13,32 @@ When /^I select the group from the groups dropdown$/ do
 end
 
 When /^I fill in the discussion details and submit the form$/ do
-  fill_in 'discussion_title', with: 'New discussion Test'
-  fill_in 'discussion_description', with: 'Description of test discussion'
+  @discussion_title = Faker::Lorem.sentence
+  @discussion_description = Faker::Lorem.paragraph
+  fill_in 'discussion_title', with: @discussion_title
+  fill_in 'discussion_description', with: @discussion_description
   click_on 'discussion-submit'
 end
 
 Then /^a discussion should be created$/ do
-  Discussion.where(:title => "New discussion Test").should exist
-end
-
-Given /^"(.*?)" is a member of the group$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  Discussion.where(:title => @discussion_title).should exist
 end
 
 Given /^"(.*?)" has chosen to be emailed about new discussions and decisions for the group$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  @notified_user = User.find_by_name arg1
+  @notified_user.memberships.where(:group_id => @group.id).update_all(:subscribed_to_notification_emails => true)
 end
 
 Given /^"(.*?)" has chosen not to be emailed about new discussions and decisions for the group$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  @unnotified_user = User.find_by_name arg1
+  @unnotified_user.memberships.where(:group_id => @group.id).update_all(:subscribed_to_notification_emails => false)
 end
 
 Then /^"(.*?)" should be emailed about the new discussion$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  open_email(@notified_user.email, :with_subject => "New discussion")
+  current_email.default_part_body.to_s.should include(@discussion_title && "unsubscribe")
 end
 
 Then /^"(.*?)" should not be emailed about the new discussion$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  mailbox_for(@unnotified_user).size.should == 0
 end

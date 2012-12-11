@@ -22,8 +22,9 @@ Feature: User creates discussion
 
   Scenario: Members get emailed when a discussion is created
     Given "Ben" is a member of the group
-    And "Ben" has chosen to be emailed about new discussions and decisions for the group
     And "Hannah" is a member of the group
+    And no emails have been sent
+    And "Ben" has chosen to be emailed about new discussions and decisions for the group
     And "Hannah" has chosen not to be emailed about new discussions and decisions for the group
     When I visit the group page
     And I choose to create a discussion
