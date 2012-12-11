@@ -135,7 +135,7 @@ describe Discussion do
       @group.add_member! current_motion_author
       previous_motion = create(:motion, :discussion => @discussion,
                              :author => previous_motion_author)
-      previous_motion.close_voting!
+      previous_motion.close!
       current_motion = create(:motion, :discussion => @discussion,
                              :author => current_motion_author)
 

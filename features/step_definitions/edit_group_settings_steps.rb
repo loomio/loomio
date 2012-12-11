@@ -32,12 +32,6 @@ Then /^the group should be private$/ do
   Group.where(:name=>"New Test Group", :viewable_by=>"members").size > 0
 end
 
-Given /^I am a member of the group$/ do
-  m = Membership.last
-  m.access_level = "member"
-  m.save
-end
-
 Then /^I should not have access to group settings of "(.*?)"$/ do |group|
   visit "/groups/" + Group.find_by_name(group).id.to_s + "/edit"
   page.should have_content('Access denied')

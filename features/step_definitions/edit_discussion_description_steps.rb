@@ -8,23 +8,23 @@ When /^I fill in and submit the discussion description form$/ do
   click_on("add-description-submit")
 end
 
-Given /^I am a member of this group$/ do
+Given /^I am a member of the group$/ do
   @group.add_member! @user
 end
 
 Then /^I should see the description change$/ do
-  page.should have_content(@description_text)
+  find('#discussion-context').should have_content(@description_text)
 end
 
 Then /^I should see a record of my change in the discussion feed$/ do
-  find('#activity-feed').should have_content(@description_text)
+  find('#activity-feed').should have_content('changed the discussion description')
 end
 
 Then /^I should not see a link to edit the description$/ do
   page.should_not have_css("edit_description")
 end
 
-Given /^I am not a member of this group$/ do
+Given /^I am not a member of the group$/ do
 end
 
 Given /^there is a discussion in a group$/ do
