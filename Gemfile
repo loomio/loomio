@@ -35,7 +35,6 @@ gem 'paper_trail', '~> 2'
 gem "high_voltage"
 gem 'thin'
 gem 'rack-canonical-host'
-gem 'sanitize_email'
 gem 'delayed_job_active_record'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
