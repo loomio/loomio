@@ -79,7 +79,7 @@ module ApplicationHelper
     when 'discussions show'
       current_user.has_read_discussion_notice?
     when 'groups show'
-      current_user.has_read_group_notice? && @group.parent.nil?
+      current_user.has_read_group_notice?
     when 'dashboard show'
       current_user.has_read_dashboard_notice?
     else
