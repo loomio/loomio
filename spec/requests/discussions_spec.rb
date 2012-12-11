@@ -150,14 +150,14 @@ describe "Discussion" do
         motion.discussion = @discussion
         motion.author = user
         motion.save
-        motion.close_voting!
+        motion.close!
 
         motion2 = Motion.new
         motion2.name = "A new proposal"
         motion2.discussion = @discussion
         motion2.author = user
         motion2.save
-        motion2.close_voting!
+        motion2.close!
 
         visit discussion_path(@discussion)
 

@@ -40,7 +40,7 @@ describe Vote do
   end
 
   it "motion should only accept votes during the motion's voting phase" do
-    motion.close_voting!
+    motion.close!
     vote = Vote.new(position: "yes")
     vote.motion = motion
     vote.user = user
@@ -112,13 +112,15 @@ describe Vote do
       vote2.previous_vote.id.should == vote.id
     end
   end
-  context "activity" do
-    it "adds vote activity if a user votes on a motion" do
+  context "when a vote is created" do
+    it "adds new vote activity" do
       motion = create :motion
       Event.should_receive(:new_vote!)
       vote = create :vote, :motion => motion, :position => "yes"
     end
-    it "adds motion_blocked activity if a user blocks a motion" do
+  end
+  context "when a vote is blocked" do
+    it "adds motion_blocked activity" do
       motion = create :motion
       Event.should_receive(:motion_blocked!)
       vote = create :vote, :motion => motion, :position => "block"

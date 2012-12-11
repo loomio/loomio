@@ -2,9 +2,7 @@
   %div{:class => "activity-icon " + icon }
     = render 'motions/display_icons', position: position if position
   %span.activity-item-actor
-    - if actor.nil?
-      ="An expirey "
-    - else
+    - unless actor.blank?
       =link_to actor.name, "#", "title" => actor.name,
         "data-content" => "#{render 'users/name_popover', user: actor, group: group}", class: "user-name-with-popover"
   %span.activity-item-header= header

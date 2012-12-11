@@ -21,7 +21,8 @@ class Discussion < ActiveRecord::Base
   has_many :motions
   has_many :closed_motions,
     :class_name => 'Motion',
-    :conditions => { phase: 'closed' }
+    :conditions => { phase: 'closed' },
+    :order => "close_date desc"
   has_many :votes, through: :motions
   has_many :comments,  :as => :commentable,
     :conditions => { archived_at: nil }
