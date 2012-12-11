@@ -3,6 +3,7 @@ class DiscussionMailer < ActionMailer::Base
   default :from => "\"Loomio\" <noreply@loomio.org>"
 
   def new_discussion_created(discussion, user)
+    @user = user
     @discussion = discussion
     @group = discussion.group
     mail(

@@ -1,3 +1,9 @@
+Given /^I am a member of a group$/ do
+  group ||= FactoryGirl.create(:group, :name => Faker::Name.name)
+  group.add_member!(@user)
+  @group = group
+end
+
 Given /^a group "(.*?)" with "(.*?)" as admin$/ do |arg1, arg2|
   user = FactoryGirl.create(:user, :email => arg2)
   group = FactoryGirl.create(:group, :name => arg1)

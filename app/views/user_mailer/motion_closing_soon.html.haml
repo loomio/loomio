@@ -1,20 +1,20 @@
 %p
-  Proposal: 
+  Proposal:
   =link_to(@motion.name, motion_url(@motion))
   %br
-  Group: 
+  Group:
   =@motion.discussion.group.name
   %br
-  Author: 
+  Author:
   =@motion.author.name
   %br
-  Closes at: 
+  Closes at:
   =l @motion.close_date
   %br
   Description:
   =@motion.description
 
-%p 
+%p
   %b Summary
   %br
   -#-if @motion.user_has_voted?(@user)
@@ -29,13 +29,13 @@
   %br
   #{@motion.percent_voted}% of members have stated their position (#{@motion.group_count - @motion.no_vote_count}/#{@motion.group_count})
 
-%p 
+%p
   %b Positions
   %br
   -@motion.unique_votes.each do |vote|
-    #{vote.user_name} #{vote.position_to_s} 
+    #{vote.user_name} #{vote.position_to_s}
     -if vote.statement.present?
       \- #{vote.statement}
     %br
 
-=render 'unsubscribe_link'
+/ =render '/application/unsubscribe_link'
