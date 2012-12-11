@@ -53,15 +53,15 @@ class MotionsController < GroupBaseController
 
   # CUSTOM ACTIONS
 
-  def close_voting
+  def close
     resource
     @motion.close_motion! current_user
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
   end
 
-  def open_voting
+  def open
     resource
-    @motion.open_voting!
+    @motion.open!
     redirect_to discussion_url(@motion.discussion)
   end
 

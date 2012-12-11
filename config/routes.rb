@@ -28,9 +28,9 @@ Loomio::Application.routes.draw do
     put :edit_outcome, :on => :member
     put :edit_close_date, :on => :member
   end
-  match "/motions/:id/close", :to => "motions#close_voting", :as => :close_motion_voting,
+  match "/motions/:id/close", :to => "motions#close", :as => :close_motion_voting,
         :via => :post
-  match "/motions/:id/open", :to => "motions#open_voting", :as => :open_motion_voting,
+  match "/motions/:id/open", :to => "motions#open", :as => :open_motion_voting,
         :via => :post
 
   resources :discussions, except: [:destroy, :edit] do

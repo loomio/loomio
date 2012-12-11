@@ -50,14 +50,14 @@ describe "User abilities" do
     it { should be_able_to(:destroy, @user_membership) }
     it { should be_able_to(:create, new_motion) }
     it { should be_able_to(:get_and_clear_new_activity, other_users_motion) }
-    it { should be_able_to(:close_voting, user_motion) }
+    it { should be_able_to(:close, user_motion) }
     it { should be_able_to(:edit_close_date, user_motion) }
-    it { should be_able_to(:open_voting, user_motion) }
+    it { should be_able_to(:open, user_motion) }
     it { should be_able_to(:destroy, user_motion) }
     it { should_not be_able_to(:destroy, other_users_motion) }
-    it { should_not be_able_to(:close_voting, other_users_motion) }
+    it { should_not be_able_to(:close, other_users_motion) }
     it { should_not be_able_to(:edit_close_date, other_users_motion) }
-    it { should_not be_able_to(:open_voting, other_users_motion) }
+    it { should_not be_able_to(:open, other_users_motion) }
 
     it "cannot remove themselves if they are the only member of the group" do
       group.memberships.where("memberships.id != ?", @user_membership.id).destroy_all
@@ -118,9 +118,9 @@ describe "User abilities" do
     it { should be_able_to(:edit_privacy, group) }
     it { should_not be_able_to(:update, other_users_motion) }
     it { should be_able_to(:destroy, other_users_motion) }
-    it { should be_able_to(:close_voting, other_users_motion) }
+    it { should be_able_to(:close, other_users_motion) }
     it { should be_able_to(:edit_close_date, other_users_motion) }
-    it { should be_able_to(:open_voting, other_users_motion) }
+    it { should be_able_to(:open, other_users_motion) }
 
     it "should not be able to delete the only admin of a group" do
       group.admin_memberships.where("memberships.id != ?", @user_membership.id).destroy_all
@@ -156,9 +156,9 @@ describe "User abilities" do
     it { should_not be_able_to(:unlike, another_user_comment) }
     it { should_not be_able_to(:create, new_discussion) }
     it { should_not be_able_to(:create, new_motion) }
-    it { should_not be_able_to(:close_voting, motion) }
+    it { should_not be_able_to(:close, motion) }
     it { should_not be_able_to(:edit_close_date, motion) }
-    it { should_not be_able_to(:open_voting, motion) }
+    it { should_not be_able_to(:open, motion) }
     it { should_not be_able_to(:update, motion) }
     it { should_not be_able_to(:destroy, motion) }
 

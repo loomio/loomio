@@ -48,19 +48,19 @@ describe MotionsController do
 
     context "closing a motion" do
       before do
-        controller.stub(:authorize!).with(:close_voting, motion).and_return(true)
-        motion.stub(:close_voting!)
+        controller.stub(:authorize!).with(:close, motion).and_return(true)
+        motion.stub(:close!)
         Event.stub(:motion_closed!)
       end
 
       it "closes the motion" do
-        motion.should_receive(:close_voting!)
-        post :close_voting, :id => motion.id
+        motion.should_receive(:close!)
+        post :close, :id => motion.id
       end
 
       it "fires the close_motion event" do
         Event.should_receive(:motion_closed!)
-        post :close_voting, :id => motion.id
+        post :close, :id => motion.id
       end
     end
 

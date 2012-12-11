@@ -43,7 +43,7 @@
 
                 .content-proposal-body
                   %ul.selector-list
-                    - @discussion.closed_motions.order("close_date desc").each do |closed_motion|
+                    - @discussion.closed_motions.each do |closed_motion|
                       - if closed_motion == @selected_motion
                         %li.selector-item= render @selected_motion, unique_votes: @unique_votes, this_group: @group
                       - else

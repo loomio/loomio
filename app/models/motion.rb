@@ -36,11 +36,11 @@ class Motion < ActiveRecord::Base
     state :voting, :initial => true
     state :closed
 
-    event :open_voting, before: :before_open do
+    event :open, before: :before_open do
       transitions :to => :voting, :from => [:closed]
     end
 
-    event :close_voting, before: :before_close, after: :after_close do
+    event :close, before: :before_close, after: :after_close do
       transitions :to => :closed, :from => [:voting]
     end
   end
@@ -112,18 +112,19 @@ class Motion < ActiveRecord::Base
   # motion is closed by user
   def close_motion!(user)
     Event.motion_closed!(self, user)
-    close_voting!
+    close!
   end
+
   # motion closes automatically if expired
   def open_close_motion
     if (close_date && close_date <= Time.now)
       if voting?
         Event.motion_closed!(self, nil)
-        close_voting!
+        close!
         save
       end
     elsif closed?
-      open_voting!
+      open!
       save
     end
   end

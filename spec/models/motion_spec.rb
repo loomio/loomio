@@ -194,7 +194,7 @@ describe Motion do
       vote1 = create(:vote, :position => 'yes', :user => @user1, :motion => @motion)
       vote2 = create(:vote, :position => 'no', :user => @user2, :motion => @motion)
       @updated_at = @motion.updated_at
-      @motion.close_voting!
+      @motion.close!
     end
 
     it "stores users who did not vote" do
@@ -216,7 +216,7 @@ describe Motion do
     end
 
     it "reopening motion deletes did_not_vote records" do
-      @motion.open_voting
+      @motion.open
       DidNotVote.all.count.should == 0
     end
 
@@ -236,7 +236,7 @@ describe Motion do
       MotionMailer.should_receive(:motion_closed)
         .exactly(1).times
         .with(@motion, @motion.author_email).and_return(stub(deliver: true))
-      @motion.close_voting!
+      @motion.close!
     end
   end
 

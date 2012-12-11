@@ -86,12 +86,10 @@ class Vote < ActiveRecord::Base
     end
 
     def set_new_vote_activity!
-      if position != previous_position
-        if position == "block"
-          Event.motion_blocked!(self) 
-        else
-          Event.new_vote!(self)
-        end
+      if position == "block"
+        Event.motion_blocked!(self) 
+      else
+        Event.new_vote!(self)
       end
     end
 

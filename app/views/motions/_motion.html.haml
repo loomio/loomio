@@ -44,20 +44,16 @@
       %h3 State your position
       .vote-buttons.clearfix
         =link_to image_tag("hand-yes.png", title:"I agree", alt:"I agree"), "#", "title" => "I agree",
-          "data-content" => "I agree with this and want it to go ahead.",
-          "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-yes",
+          "data-content" => "I agree with this and want it to go ahead.", "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-yes", id: "yes-vote",
           onclick: "$('#vote_position').val('yes'); $('#position-title').text('You have decided to agree');"
         =link_to image_tag("hand-abstain.png", title:"I abstain", alt:"I abstain"), "#", "title" => "I abstain",
-          "data-content" =>  "I am happy with what the group decides without me.",
-          "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-abstain",
+          "data-content" =>  "I am happy with what the group decides without me.", "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-abstain",id: "abstain-vote",
           onclick: "$('#vote_position').val('abstain'); $('#position-title').text('You have decided to abstain');"
         =link_to image_tag("hand-no.png", title:"I disagree", alt:"I disagree"), "#", "title" => "I disagree",
-          "data-content" => "I think we can do better, but if the rest of the group feels like it’s the best course of action then I’m OK with it going ahead.",
-          "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-disagree",
+          "data-content" => "I think we can do better, but if the rest of the group feels like it’s the best course of action then I’m OK with it going ahead.", "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-disagree", id: "no-vote",
           onclick: "$('#vote_position').val('no'); $('#position-title').text('You have decided to disagree');"
         =link_to image_tag("hand-block.png",title:"I block", alt:"I block"), "#", "title" => "I block",
-          "data-content" => "I have strong objections to this proposal and am not OK with it going ahead.",
-          "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-block",
+          "data-content" => "I have strong objections to this proposal and am not OK with it going ahead.", "data-toggle" => "modal", href: "#vote-statement", class: "position btn vote-block",id: "block-vote",
           onclick: "$('#vote_position').val('block'); $('#position-title').text('You have decided to block');"
 
     .votes-table= render "motions/votes_table", motion: motion, unique_votes: unique_votes
@@ -73,7 +69,7 @@
             .character-counter
           =f.hidden_field :position
         .modal-footer
-          = submit_tag "Confirm position", class: "vote btn btn-info run-validations", :data => { :disable_with => "Confirming position" }
+          = submit_tag "Confirm position", class: "vote btn btn-info run-validations", :id => 'submit-vote', :data => { :disable_with => "Confirming position" }
           = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"
 
   :coffeescript

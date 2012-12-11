@@ -50,4 +50,16 @@ module DiscussionsHelper
   def add_mention_links(comment)
     auto_link_usernames_or_lists(comment, :username_url_base => "#", :username_include_symbol => true)
   end
+
+  def closed_motion_activity_actor(event_user)
+    event_user.nil? ? "" : event_user
+  end
+
+  def closed_motion_activity_header(event_user)
+    event_user.nil? ? "Proposal closed:" : "closed the proposal:"
+  end
+
+  def position_activity_body(body)
+    body.blank? ? "" : "'#{body}'"
+  end
 end
