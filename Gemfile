@@ -69,6 +69,7 @@ group :development, :test do
   gem 'guard-jasmine'
   gem 'selenium-webdriver', '2.25.0'
   gem 'letter_opener'
+  gem 'mailcatcher'
 end
 
 group :development do
