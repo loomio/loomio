@@ -192,6 +192,8 @@ GEM
     flay (1.4.3)
       ruby_parser (~> 2.0)
       sexp_processor (~> 3.0)
+    foreman (0.60.2)
+      thor (>= 0.13.6)
     formtastic (2.0.2)
       rails (~> 3.0)
     gherkin (2.11.1)
@@ -450,6 +452,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   faker
   flay
+  foreman
   formtastic
   gravtastic
   guard
