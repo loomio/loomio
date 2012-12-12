@@ -32,6 +32,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @motion = motion
     mail to: user.email,
+         reply_to: @motion.author,
          subject: "[Loomio - #{@motion.group.name}] Proposal closing soon: #{@motion.name}"
   end
 
