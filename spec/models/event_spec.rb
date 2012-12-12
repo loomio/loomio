@@ -104,7 +104,7 @@ describe Event do
       end
 
       it 'emails group_users_without_motion_author new_motion_created' do
-        MotionMailer.should_receive(:new_motion_created).with(motion, user.email).and_return(mailer)
+        MotionMailer.should_receive(:new_motion_created).with(motion, user).and_return(mailer)
       end
     end
 
@@ -126,7 +126,7 @@ describe Event do
   describe "new_vote!", :isolated => true do
     let(:motion_author) { stub(:motion_author) }
     let(:discussion_author) { stub(:discussion_author) }
-    let(:vote) { stub(:vote, 
+    let(:vote) { stub(:vote,
                       user: user,
                       motion_author: motion_author,
                       discussion_author: discussion_author) }

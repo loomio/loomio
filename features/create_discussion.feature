@@ -30,4 +30,5 @@ Feature: User creates discussion
     And I choose to create a discussion
     And I fill in the discussion details and submit the form
     Then "Ben" should be emailed about the new discussion
+    And clicking the link in the email should take him to the discussion
     And "Hannah" should not be emailed about the new discussion

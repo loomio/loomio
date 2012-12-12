@@ -39,6 +39,11 @@ Then /^"(.*?)" should be emailed about the new discussion$/ do |arg1|
   current_email.default_part_body.to_s.should include(@discussion_title && "unsubscribe")
 end
 
+Then /^clicking the link in the email should take him to the discussion$/ do
+  click_first_link_in_email
+  page.should have_content(@discussion_title)
+end
+
 Then /^"(.*?)" should not be emailed about the new discussion$/ do |arg1|
   mailbox_for(@unnotified_user).size.should == 0
 end

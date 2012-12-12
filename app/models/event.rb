@@ -49,7 +49,7 @@ class Event < ActiveRecord::Base
 
       motion.group_users_without_motion_author.each do |user|
         if user.email_notifications_for_group?(motion.group)
-          MotionMailer.new_motion_created(motion, user.email).deliver
+          MotionMailer.new_motion_created(motion, user).deliver
         end
         event.notify!(user)
       end
