@@ -25,12 +25,13 @@ You can install [ImageMagick](http://www.imagemagick.org/script/binary-releases.
   $ sudo apt-get install libmagickwand-dev
 ```
 
-### Set up the database
+### Set up the database (and other little bits)
 
 ```
   $ cd /dir/to/loomio/
   $ bundle install
   $ cp config/database.example.yml config/database.yml
+  $ cp .example-env .env
   $ bundle exec rake db:create
   $ bundle exec rake db:schema:load
   $ bundle exec rake db:schema:load RAILS_ENV=test
@@ -46,7 +47,7 @@ Then start the Rails server:
 
 ```
   $ cd /dir/to/loomio/
-  $ rails server
+  $ foreman start
 ```
 
 You can now see Loomio on your computer at `http:localhost:3000`
