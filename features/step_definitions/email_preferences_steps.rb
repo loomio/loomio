@@ -48,6 +48,16 @@ Then /^I should not be subscribed to mention notifications$/ do
   @user.subscribed_to_mention_notifications.should be_false
 end
 
+Then /^I should not be subscribed to group notifications about "(.*?)"$/ do |arg1|
+  @user.email_notifications_for_group?(Group.find_by_name(arg1)).should be_false
+end
+
 Then /^I should be subscribed to group notifications about "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  @user.email_notifications_for_group?(Group.find_by_name(arg1)).should be_true
+end
+
+Given /^I am subscribed to group notifications about "(.*?)"$/ do |arg1|
+  group_id = Group.find_by_name(arg1).id
+  membership = @user.memberships.where(group_id: group_id).first
+  membership.update_attribute(:subscribed_to_notification_emails, true)
 end

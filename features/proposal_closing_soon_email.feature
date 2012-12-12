@@ -12,5 +12,6 @@ Feature: Proposal closing soon email
     And there is a proposal "Party on Saturday" from the discussion "I'm Lonely"
     And the motion "Party on Saturday" is closing in 24 hours
     And "Ben" agreed with the proposal "Party on Saturday"
+    And no emails have been sent
     When we run the rake task to check for closing proposals, 24 hours before it closes.
     Then "Ben" gets a proposal closing soon email
