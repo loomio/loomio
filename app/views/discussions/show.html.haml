@@ -1,6 +1,6 @@
 - set_title @group.name, @discussion.title, @group.parent
 =render '/groups/title', group: @group
-=render 'application/helper_bot' 
+=render 'application/helper_bot'
 .row
   .span12
     .selector-panel
@@ -24,6 +24,8 @@
             .content-proposal-body
               %ul.selector-list
                 - if @current_motion
+                  - if (not @selected_motion) && (can? :close_voting, @current_motion)
+                    %li= render '/motions/admin_buttons', :motion => @current_motion
                   - if @selected_motion && (@selected_motion != @current_motion)
                     %li.selector-item.current-proposal
                       = render '/motions/motion_preview', motion: @current_motion, this_group: @group
@@ -61,6 +63,6 @@
           %span.date-error-message
             ="Please give a future close date"
           =f.hidden_field :close_date
-      .modal-footer 
+      .modal-footer
         = submit_tag "Change", class: "motion btn btn-info", id: 'change-close-date', :data => { :disable_with => "Changing" } # run-validations
         = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"

@@ -1,4 +1,6 @@
 class AddAdminToExistingGroups < ActiveRecord::Migration
+  class Group < ActiveRecord::Base
+  end
   def up
     Group.all.each do |group|
       m = group.memberships.first

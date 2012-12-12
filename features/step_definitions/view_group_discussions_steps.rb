@@ -11,10 +11,9 @@ Given /^a private group exists$/ do
 end
 
 Given /^a public sub\-group exists$/ do
-  @parent_group = FactoryGirl.create :group
-  @sub_group = FactoryGirl.create :group, :parent => @parent_group
-  @sub_group.viewable_by = :everyone
-  @sub_group.save
+  @parent_group = FactoryGirl.create :group, :viewable_by => :everyone
+  @sub_group = FactoryGirl.create :group, :parent => @parent_group,
+                                  :viewable_by => :everyone
 end
 
 Given /^a private sub\-group exists$/ do

@@ -58,6 +58,22 @@ ActiveRecord::Schema.define(:version => 20121210210130) do
   add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
   create_table "did_not_votes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "motion_id"
@@ -250,12 +266,15 @@ ActiveRecord::Schema.define(:version => 20121210210130) do
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,  :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,  :null => false
     t.string   "username"
+    t.string   "authentication_token"
+    t.string   "unsubscribe_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"
   add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["unsubscribe_token"], :name => "index_users_on_unsubscribe_token", :unique => true
 
   create_table "versions", :force => true do |t|
     t.string   "item_type",  :null => false
