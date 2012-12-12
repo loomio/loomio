@@ -5,6 +5,6 @@
 %p #{@comment.body}
 
 %p
-  = link_to "Click here to view this discussion", @discussion
+  = link_to "Click here to view this discussion", discussion_url(@discussion)
 
 = render 'unsubscribe_link'
