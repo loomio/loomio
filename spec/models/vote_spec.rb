@@ -96,6 +96,18 @@ describe Vote do
     vote.save!
   end
 
+  describe 'other_group_members' do
+    it 'returns members in the group' do
+      pending
+      vote.other_group_members.should include bill
+    end
+
+    it 'does not return the voter' do
+      pending
+      vote.other_group_members.should_not include sam
+    end
+  end
+
   describe "previous_vote" do
     it "gets position from previous vote on same motion by same user
         (if any)" do

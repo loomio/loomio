@@ -17,6 +17,12 @@ describe Comment do
       discussion.reload
       discussion.last_comment_at.to_s.should == comment.created_at.to_s
     end
+
+    it 'fires a new_comment! event' do
+      Event.should_receive(:new_comment!)
+      discussion = create(:discussion)
+      comment = discussion.add_comment discussion.author, "hi"
+    end
   end
 
   describe "#archive!" do

@@ -215,28 +215,11 @@ describe Motion do
       @motion.no_vote_count.should == @motion.group.users.count - @motion.votes.count
     end
 
-    it "reopening motion deletes did_not_vote records" do
-      @motion.open
-      DidNotVote.all.count.should == 0
-    end
-
     it "can have an outcome" do
       outcome = "Test Outcome"
       @motion.set_outcome(outcome)
       @motion.save
       @motion.outcome.should == outcome
-    end
-
-    it "sends a set outcome email notification to the motion author only" do
-      group = build(:group)
-      group.add_member!(create(:user))
-      group.add_member!(create(:user))
-      @discussion = create(:discussion, group: group)
-      @motion = create(:motion, discussion: @discussion)
-      MotionMailer.should_receive(:motion_closed)
-        .exactly(1).times
-        .with(@motion, @motion.author_email).and_return(stub(deliver: true))
-      @motion.close!
     end
   end
 

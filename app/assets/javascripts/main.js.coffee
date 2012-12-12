@@ -66,6 +66,23 @@ Application.getPageParam = () ->
   else
     ""
 
+# confirm dialog box for class ".confirm-dialog"
+$ ->
+  $(".confirm-dialog").click((event)->
+    titleText = $(".confirm-dialog").data("title")
+    bodyText = $(".confirm-dialog").data("body")
+    confirmPath = $(".confirm-dialog").data("confirm-path")
+    cancelPath = $(".confirm-dialog").data("cancel-path")
+    csrf = $('meta[name=csrf-token]').attr("content")
+    $('body').append("<div class='modal' id='confirm-dialog'><div class='modal-header'><a href=#{cancelPath}
+      class='close'>×</a><h3>Confirm action</h3></div><form action=#{confirmPath} method='post'>
+      <div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='✓''><input name='authenticity_token' type='hidden' value=#{csrf}></div>
+      <div class='modal-body center'> #{bodyText}</div><div class='modal-footer'>&nbsp;<input class='btn btn-small btn-info', name='commit' type='submit' value='#{titleText}' id='confirm-action'>
+      <a href= #{cancelPath} class='btn btn-small'>Cancel</a></div></div></form>"
+    )
+    $('#confirm-dialog').modal('show')
+  )
+
 $ ->
   $(".dismiss-help-notice").click((event)->
     $.post($(this).attr("href"))
@@ -245,7 +262,7 @@ $ ->
 #*** closed motions modal***
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    if $("body.groups.show").length > 0
+    if $("body.groups.show").length > 0 && $("#private-message").length == 0
       idStr = new Array
       idStr = $('#closed-motions-page').children().attr('class').split('_')
     $("#show-closed-motions").click((event) ->

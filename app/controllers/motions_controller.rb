@@ -59,12 +59,6 @@ class MotionsController < GroupBaseController
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
   end
 
-  def open
-    resource
-    @motion.open!
-    redirect_to discussion_url(@motion.discussion)
-  end
-
   def edit_outcome
     resource
     motion = Motion.find(params[:motion][:id])
@@ -85,7 +79,6 @@ class MotionsController < GroupBaseController
   def get_and_clear_new_activity
     @motion = Motion.find(params[:id])
     @motion_activity = Integer(params[:motion_activity])
-    @user = nil
     if user_signed_in?
       @user = current_user
       @user.update_motion_read_log(@motion)

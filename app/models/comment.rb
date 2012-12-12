@@ -16,6 +16,8 @@ class Comment < ActiveRecord::Base
   has_many :events, :as => :eventable, :dependent => :destroy
 
   after_create :update_discussion_last_comment_at
+  after_create :fire_new_comment_event
+  after_destroy :update_discussion_last_comment_at
 
   attr_accessible :body
 
@@ -28,6 +30,8 @@ class Comment < ActiveRecord::Base
   delegate :full_name, :to => :group, :prefix => :group
   delegate :title, :to => :discussion, :prefix => :discussion
 
+  alias_method :author, :user
+
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
   # example in readme
@@ -38,6 +42,10 @@ class Comment < ActiveRecord::Base
     c.body = comment
     c.user_id = user_id
     c
+  end
+
+  def other_discussion_participants
+    discussion.participants - [author]
   end
 
   #helper method to check if a comment has children
@@ -74,7 +82,7 @@ class Comment < ActiveRecord::Base
   def is_archived?
     not archived_at.nil?
   end
-  
+
   def archive!
     self.archived_at = Time.now
     self.save!
@@ -121,6 +129,9 @@ class Comment < ActiveRecord::Base
   end
 
   private
+    def fire_new_comment_event
+      Event.new_comment!(self)
+    end
 
     def update_discussion_last_comment_at
       discussion.last_comment_at = discussion.latest_comment_time

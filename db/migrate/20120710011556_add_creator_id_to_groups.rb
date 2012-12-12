@@ -1,4 +1,22 @@
 class AddCreatorIdToGroups < ActiveRecord::Migration
+  class Group < ActiveRecord::Base
+    has_many :memberships,
+      :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
+      :dependent => :destroy,
+      :extend => GroupMemberships,
+      :include => :user,
+      :order => "LOWER(users.name)"
+    has_many :membership_requests,
+      :conditions => {:access_level => 'request'},
+      :class_name => 'Membership',
+      :dependent => :destroy
+    has_many :admin_memberships,
+      :conditions => {:access_level => 'admin'},
+      :class_name => 'Membership',
+      :dependent => :destroy
+    has_many :users, :through => :memberships # TODO: rename to members
+  end
+
   def change
     add_column :groups, :creator_id, :int
     Group.reset_column_information

@@ -67,28 +67,19 @@ describe DiscussionsController do
         discussion.stub(:add_comment)
         discussion.stub(:save).and_return(true)
         DiscussionMailer.stub(:spam_new_discussion_created)
-        @discussion_hash = { group_id: group.id, title: "Shinney",
-                            comment: "Bright light" }
+        @discussion_hash = { group_id: group.id, title: "Shinney" }
       end
       it "does not send email by default" do
         DiscussionMailer.should_not_receive(:spam_new_discussion_created)
         get :create, discussion:
           @discussion_hash.merge({ notify_group_upon_creation: "0" })
       end
-      it "sends email if notify_group_upon_creation is passed in params" do
-        DiscussionMailer.should_receive(:spam_new_discussion_created).
-          with(discussion)
-        get :create, discussion:
-          @discussion_hash.merge({ notify_group_upon_creation: "1" })
-      end
-      it "adds comment" do
-        discussion.should_receive(:add_comment).with(user, "Bright light")
-        get :create, discussion: @discussion_hash
-      end
+
       it "displays flash success message" do
         get :create, discussion: @discussion_hash
         flash[:success].should match("Discussion sucessfully created.")
       end
+
       it "redirects to discussion" do
         get :create, discussion: @discussion_hash
         response.should redirect_to(discussion_path(discussion.id))

@@ -7,9 +7,11 @@ describe "Notifications" do
     before :each do
       @user = create(:user)
       @group = create(:group, name: 'Test Group', viewable_by: :members)
-      @group.add_member!(@user)
-      page.driver.post user_session_path, 'user[email]' => @user.email,
-                                          'user[password]' => 'password'
+      @group.add_member!(@user, User.loomio_helper_bot)
+      visit("/users/sign_in")
+      fill_in("user_email", :with => @user.email)
+      fill_in("user_password", :with => @user.password)
+      click_button("sign-in-btn")
     end
 
     # Spec:
@@ -22,9 +24,9 @@ describe "Notifications" do
     context "new discussion is created" do
       before { create(:discussion, group: @group) }
 
-      it "should have a notification count of 1" do
-        visit root_url
-        find("#notifications-count").should have_content("1")
+      it "should have a notification count of 2" do
+        visit root_path
+        find("#notifications-count").should have_content("2")
       end
     end
 
@@ -34,9 +36,9 @@ describe "Notifications" do
         create(:discussion, group: @group)
       end
 
-      it "should have a notification count of 2" do
-        visit root_url
-        find("#notifications-count").should have_content("2")
+      it "should have a notification count of 3" do
+        visit root_path
+        find("#notifications-count").should have_content("3")
       end
     end
   end
@@ -58,34 +60,30 @@ describe "Notifications" do
         @user = create(:user)
         @group = create(:group, name: 'Test Group', viewable_by: :members)
         @group.add_member!(@user)
-
         visit("/users/sign_in")
-
         fill_in("user_email", :with => @user.email)
         fill_in("user_password", :with => @user.password)
+        click_button("sign-in-btn")
       end
 
       it "shows and clears notifications", :js => true do
-        create(:discussion, group: @group)
+        discussion = create(:discussion, group: @group)
+        visit root_path
+        page.should have_xpath("//title", :text => "(2) Loomio")
 
-        click_button("sign-in-btn")
-
-        page.should have_xpath("//title", :text => "(1) Loomio")
-        find("#notifications-count").should have_content("1")
+        find("#notifications-count").should have_content("2")
 
         find("#notifications-toggle").click
-
         page.should have_xpath("//title", :text => "Loomio")
         page.should have_css("#notifications-count.hidden")
+
         find("#notifications-container").should have_content("new discussion")
       end
 
       it "does not break site if notification item no longer exists" do
         discussion = create(:discussion, group: @group)
-        Event.new_discussion! discussion
         discussion.delete
-
-        click_button("sign-in-btn")
+        visit root_path
 
         page.should have_css("body.dashboard.show")
       end

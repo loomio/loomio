@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CollectsRecentActivityByGroup do
   context 'for a user' do
     let(:user) { FactoryGirl.create :user }
-    let(:recent_activity) { CollectsRecentActivityByGroup.for(user, since: 1.day.ago) }
+    let(:recent_activity) { CollectsRecentActivityByGroup.new(user, since: 1.day.ago).results }
 
     context 'in a group' do
       let(:group) { FactoryGirl.create :group }
@@ -27,7 +27,7 @@ describe CollectsRecentActivityByGroup do
                                           {group: group, created_at: 2.days.ago} 
         end
         it 'does not return the discussion' do
-          recent_activity[group.name][:discussions].should_not include @discussion
+          recent_activity[group.name].should be_nil
         end
       end
 
@@ -67,7 +67,7 @@ describe CollectsRecentActivityByGroup do
           @motion.close!
         end
         it 'does not return the proposal' do
-          recent_activity[group.name][:motions].should_not include @motion
+          recent_activity[group.name].should be_nil
         end
       end
     end
