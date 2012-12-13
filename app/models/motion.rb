@@ -19,9 +19,10 @@ class Motion < ActiveRecord::Base
   delegate :name, :to => :author, :prefix => :author
   delegate :group, :to => :discussion
   delegate :users, :full_name, :to => :group, :prefix => :group
+  delegate :email_new_motion?, to: :group, prefix: :group
 
   after_create :initialize_discussion
-  after_create :email_motion_created
+  after_create :fire_new_motion_event
   before_save :set_disable_discussion
   before_save :format_discussion_url
 
@@ -53,6 +54,10 @@ class Motion < ActiveRecord::Base
     .where("votes.user_id = ?", user.id)
   }
 
+  def group_users_without_motion_author
+    group.users.where(User.arel_table[:id].not_eq(author.id))
+  end
+
   def user_has_voted?(user)
     votes.map{|v| v.user.id}.include?(user.id)
   end
@@ -77,7 +82,7 @@ class Motion < ActiveRecord::Base
   def votes_graph_ready
     votes_for_graph = []
     votes_breakdown.each do |k, v|
-      votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|v| v.user.email}]]
+      votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|b| b.user.email}]]
     end
     if votes.size == 0
       votes_for_graph.push ["Yet to vote (#{no_vote_count})", no_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
@@ -214,6 +219,10 @@ class Motion < ActiveRecord::Base
   end 
 
   private
+    def fire_new_motion_event
+      Event.new_motion!(self)
+    end
+
     def before_open
       self.close_date = Time.now + 1.week
       did_not_votes.each do |did_not_vote|
@@ -227,7 +236,6 @@ class Motion < ActiveRecord::Base
     end
 
     def after_close
-      email_motion_closed
     end
 
     def store_users_that_didnt_vote
@@ -253,20 +261,6 @@ class Motion < ActiveRecord::Base
         discussion.save
         save
       end
-    end
-
-    def email_motion_created
-      if group.email_new_motion
-        group.users.each do |user|
-          unless author == user
-            MotionMailer.new_motion_created(self, user.email).deliver
-          end
-        end
-      end
-    end
-
-    def email_motion_closed
-      MotionMailer.motion_closed(self, author_email).deliver
     end
 
     def format_discussion_url

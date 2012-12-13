@@ -2,13 +2,13 @@ source 'http://rubygems.org'
 
 gem 'rails', '~> 3.2.6'
 gem "haml-rails"
-gem 'devise', '~> 2.0.0'
+gem 'devise', '~> 2.1.0'
 gem 'devise_invitable', '~> 1.0.0'
 gem 'pg'
 gem 'capistrano'
 gem 'jquery-rails'
 gem 'inherited_resources'
-gem 'formtastic' # Deprecated. Use simple_form instead.
+gem 'formtastic' # Deprecated - use simple_form instead.
 gem 'simple_form', '~> 2.0.0'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form', '~> 2.0.0'
@@ -35,7 +35,8 @@ gem 'paper_trail', '~> 2'
 gem "high_voltage"
 gem 'thin'
 gem 'rack-canonical-host'
-gem 'sanitize_email'
+gem 'delayed_job_active_record'
+gem 'foreman'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
@@ -67,6 +68,7 @@ group :development, :test do
   gem 'guard-jasmine'
   gem 'selenium-webdriver', '2.25.0'
   gem 'letter_opener'
+  gem 'mailcatcher'
 end
 
 group :development do
@@ -90,6 +92,7 @@ group :test do
   gem 'flay', :require => false
   gem "rails_best_practices", :require => false
   gem 'email_spec'
+  gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
 end
 
 group :staging, :production do

@@ -1,2 +1,3 @@
-%h1 Edit your position
+%h2= link_to @motion.name, discussion_path(@motion.discussion)
+%h3 Edit your position
 = render 'form', motion: @motion, vote: @vote

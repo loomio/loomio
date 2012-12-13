@@ -3,6 +3,7 @@ When /^I am adding a comment and type in "(.*?)"$/ do |arg1|
 end
 
 When /^I click on "(.*?)" in the menu that pops up$/ do |arg1|
+  # this is failing intermittently (on Poltergeist at least)
   wait_until { find("#at-view", visible: true) }
   within('#at-view') do
     page.should have_content(arg1)
@@ -27,6 +28,23 @@ end
 Then /^I should see a link to "(.*?)"\'s user$/ do |user|
   visit(current_path)
   page.should have_link("@#{user}")
+end
+
+When /^I write and submit a comment that mentions harry$/ do
+  fill_in 'new-comment', with: 'hi @harry'
+  click_on 'Post comment'
+end
+
+Then /^harry should get an email saying I mentioned him$/ do
+  last_email = ActionMailer::Base.deliveries.last
+  last_email.to.should include 'harry@example.com'
+  last_email.body.should have_content 'mentioned'
+  last_email.body.should have_content 'Unsubscribe'
+end
+
+Given /^harry wants to be emailed when mentioned$/ do
+  harry = User.find_by_email 'harry@example.com'
+  harry.update_attribute(:subscribed_to_mention_notifications, true)
 end
 
 Then /^the user should be notified that they were mentioned$/ do

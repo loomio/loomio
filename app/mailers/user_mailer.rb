@@ -12,6 +12,14 @@ class UserMailer < ActionMailer::Base
          subject: "Loomio - Summary of the last 24 hours"
   end
 
+  def mentioned(user, comment)
+    @user = user
+    @comment = comment
+    @discussion = comment.discussion
+    mail to: @user.email,
+         subject: "#{comment.author.name} mentioned you in the #{comment.group.name} group on Loomio"
+  end
+
   def group_membership_approved(user, group)
     @user = user
     @group = group
@@ -24,6 +32,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @motion = motion
     mail to: user.email,
+         reply_to: @motion.author,
          subject: "[Loomio - #{@motion.group.name}] Proposal closing soon: #{@motion.name}"
   end
 

@@ -9,7 +9,6 @@ class MotionsController < GroupBaseController
     authorize! :create, @motion
     if @motion.save
       flash[:success] = "Proposal successfully created."
-      Event.new_motion!(@motion)
       redirect_to discussion_path(@motion.discussion)
     else
       flash[:warning] = "Proposal could not be created"
@@ -77,7 +76,6 @@ class MotionsController < GroupBaseController
   def get_and_clear_new_activity
     @motion = Motion.find(params[:id])
     @motion_activity = Integer(params[:motion_activity])
-    @user = nil
     if user_signed_in?
       @user = current_user
       @user.update_motion_read_log(@motion)

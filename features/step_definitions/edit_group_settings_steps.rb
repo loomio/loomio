@@ -1,9 +1,3 @@
-Given /^I am an admin of the group$/ do
-  m = Membership.last
-  m.access_level = "admin"
-  m.save
-end
-
 When /^I visit the group settings page$/ do
   visit "/groups/" + Group.first.id.to_s + "/edit"
 end
@@ -30,12 +24,6 @@ end
 
 Then /^the group should be private$/ do
   Group.where(:name=>"New Test Group", :viewable_by=>"members").size > 0
-end
-
-Given /^I am a member of the group$/ do
-  m = Membership.last
-  m.access_level = "member"
-  m.save
 end
 
 Then /^I should not have access to group settings of "(.*?)"$/ do |group|

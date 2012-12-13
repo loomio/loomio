@@ -34,6 +34,43 @@ Given /^"(.*?)" is an admin of(?: group)? "(.*?)"$/ do |email, group_name|
   group.add_admin!(user)
 end
 
+Given /^I am an admin of a group$/ do
+  @group = FactoryGirl.create :group
+  @group.add_admin! @user
+end
+
+Given /^I am a member of a group$/ do
+  @group = FactoryGirl.create :group
+  @group.add_member! @user
+end
+
+Given /^"(.*?)" is a member of the group$/ do |arg1|
+  user = FactoryGirl.create :user, name: arg1,
+                            email: "#{arg1}@example.org",
+                            password: 'password'
+  @group.add_member! user
+end
+
+Given /^the group has a discussion with a decision$/ do
+  @discussion = FactoryGirl.create :discussion, :group => @group
+  @motion = FactoryGirl.create :motion, :discussion => @discussion
+end
+
+Given /^there is a discussion in the group$/ do
+  @discussion = FactoryGirl.create :discussion, :group => @group
+end
+
+Given /^there is a discussion in a public group$/ do
+  @group = FactoryGirl.create :group, :viewable_by => :everyone
+  @discussion = FactoryGirl.create :discussion, :group => @group
+end
+
+Given /^there is a discussion in a group I belong to$/ do
+  @group = FactoryGirl.create :group
+  @discussion = FactoryGirl.create :discussion, :group => @group
+  @group.add_member! @user
+end
+
 When /^I fill details for the subgroup$/ do
   fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_everyone"

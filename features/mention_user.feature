@@ -13,6 +13,14 @@ Scenario: Mention user when writing a comment
   And I click on "@harry" in the menu that pops up
   Then I should see "@harry" added to the "new-comment" field
 
+Scenario: Mentioned user gets emailed
+  Given "harry@example.com" is a member of "demo-group"
+  And I am viewing a discussion titled "hello" in "demo-group"
+  And no emails have been sent
+  And harry wants to be emailed when mentioned
+  When I write and submit a comment that mentions harry
+  Then harry should get an email saying I mentioned him
+
 Scenario: Submit a comment mentioning a group member
   Given "harry@example.com" is a member of "demo-group"
   And I am viewing a discussion titled "hello" in "demo-group"
