@@ -22,7 +22,7 @@ class Motion < ActiveRecord::Base
   delegate :email_new_motion?, to: :group, prefix: :group
 
   after_create :initialize_discussion
-  after_create :set_new_motion_activity!
+  after_create :fire_new_motion_event
   before_save :set_disable_discussion
   before_save :format_discussion_url
 
@@ -37,7 +37,7 @@ class Motion < ActiveRecord::Base
     state :voting, :initial => true
     state :closed
 
-    event :close, before: :before_close, after: :after_close do
+    event :close, before: :before_close do
       transitions :to => :closed, :from => [:voting]
     end
   end
@@ -237,12 +237,13 @@ class Motion < ActiveRecord::Base
 
   private
 
+    def fire_new_motion_event
+      Event.new_motion!(self)
+    end
+
     def before_close
       store_users_that_didnt_vote
       self.close_date = Time.now
-    end
-
-    def after_close
     end
 
     def store_users_that_didnt_vote

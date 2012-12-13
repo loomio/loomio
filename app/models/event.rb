@@ -20,17 +20,18 @@ class Event < ActiveRecord::Base
   class << self
     def new_discussion!(discussion)
       #soon move this to the notification model
-      if discussion.notify_group_upon_creation
-        DiscussionMailer.spam_new_discussion_created(discussion)
-      end
 
       event = create!(:kind => "new_discussion", :eventable => discussion,
                       :discussion_id => discussion.id)
 
       discussion.group_users_without_discussion_author.each do |user|
+        if user.email_notifications_for_group?(discussion.group)
+          DiscussionMailer.new_discussion_created(discussion, user).deliver
+        end
         event.notify!(user)
       end
     end
+    handle_asynchronously :new_discussion!
 
     def new_comment!(comment)
       event = create!(:kind => "new_comment", :eventable => comment,
@@ -44,21 +45,20 @@ class Event < ActiveRecord::Base
         event.notify!(user)
       end
     end
+    handle_asynchronously :new_comment!
 
     def new_motion!(motion)
       event = create!(:kind => "new_motion", :eventable => motion,
                       :discussion_id => motion.discussion.id)
 
-      if motion.group_email_new_motion?
-        motion.group_users_without_motion_author.each do |user|
-          MotionMailer.new_motion_created(motion, user.email).deliver
-        end
-      end
-
       motion.group_users_without_motion_author.each do |user|
+        if user.email_notifications_for_group?(motion.group)
+          MotionMailer.new_motion_created(motion, user).deliver
+        end
         event.notify!(user)
       end
     end
+    handle_asynchronously :new_motion!
 
     def motion_closed!(motion, closer)
       MotionMailer.motion_closed(motion, motion.author.email).deliver
@@ -81,6 +81,7 @@ class Event < ActiveRecord::Base
         end
       end
     end
+    handle_asynchronously :motion_closing_soon!
 
     def new_vote!(vote)
       event = create!(:kind => "new_vote", :eventable => vote,
@@ -97,6 +98,7 @@ class Event < ActiveRecord::Base
         end
       end
     end
+    handle_asynchronously :new_vote!
 
     def motion_blocked!(vote)
       event = create!(:kind => "motion_blocked", :eventable => vote,
@@ -105,6 +107,7 @@ class Event < ActiveRecord::Base
         event.notify!(user)
       end
     end
+    handle_asynchronously :motion_blocked!
 
     def membership_requested!(membership)
       event = create!(:kind => "membership_requested",
@@ -113,6 +116,7 @@ class Event < ActiveRecord::Base
         event.notify!(admin)
       end
     end
+    handle_asynchronously :membership_requested!
 
     def user_added_to_group!(membership)
       event = create!(:kind => "user_added_to_group", :eventable => membership)
@@ -122,6 +126,7 @@ class Event < ActiveRecord::Base
         UserMailer.added_to_group(membership).deliver
       end
     end
+    handle_asynchronously :user_added_to_group!
 
     def comment_liked!(comment_vote)
       event = create!(:kind => "comment_liked", :eventable => comment_vote)
@@ -129,6 +134,7 @@ class Event < ActiveRecord::Base
         event.notify!(comment_vote.comment_user)
       end
     end
+    handle_asynchronously :comment_liked!
 
     def user_mentioned!(comment, mentioned_user)
       event = create!(:kind => "user_mentioned", :eventable => comment)
@@ -139,6 +145,7 @@ class Event < ActiveRecord::Base
         event.notify!(mentioned_user)
       end
     end
+<<<<<<< HEAD
 
     def discussion_title_edited!(discussion, editor)
       create!(:kind => "discussion_title_edited", :eventable => discussion,
@@ -160,5 +167,8 @@ class Event < ActiveRecord::Base
     handle_asynchronously :new_motion!
     handle_asynchronously :motion_closing_soon!
     handle_asynchronously :user_added_to_group!
+=======
+    handle_asynchronously :user_mentioned!
+>>>>>>> 33f9b0b32066c7c036fd053274a2afadfd2fe032
   end
 end
