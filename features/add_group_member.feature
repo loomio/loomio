@@ -8,9 +8,15 @@ Feature: Add member to group
 
   Scenario: Add existing Loomio user to group
     Given "hello@world.com" is a user
+    And no emails have been sent
     When I visit the group page for "demo-group"
     When I invite "hello@world.com" to the group
     Then "hello@world.com" should be added to the group
+    # And I would like to stop the test and look at it
+    And "hello@world.com" should receive an email with subject "You've been added to a group"
+    When they open the email
+    And they click the first link in the email
+    Then they should be taken to the group page
 
   Scenario: Add group member that is already in the group
     Given "hello@world.com" is a user
@@ -24,13 +30,11 @@ Feature: Add member to group
     And I invite "hello@world.com" to the group
     Then "hello@world.com" should be added to the group
 
-
   Scenario: Attempt to invite invalid email to group
     When I visit the group page for "demo-group"
     And I invite ""hey man" <hey@man.com>" to the group
     Then I should be notified that ""hey man" <hey@man.com>" is an invalid email
     And ""hey man" <hey@man.com>" should not be a member of "demo-group"
-
 
   Scenario: Attempt to invite member without email to group
     When I visit the group page for "demo-group"
