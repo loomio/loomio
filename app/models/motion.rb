@@ -22,6 +22,7 @@ class Motion < ActiveRecord::Base
   delegate :email_new_motion?, to: :group, prefix: :group
 
   after_create :initialize_discussion
+  after_create :fire_new_motion_event
   before_save :set_disable_discussion
   before_save :format_discussion_url
 
@@ -218,6 +219,10 @@ class Motion < ActiveRecord::Base
   end 
 
   private
+    def fire_new_motion_event
+      Event.new_motion!(self)
+    end
+
     def before_open
       self.close_date = Time.now + 1.week
       did_not_votes.each do |did_not_vote|

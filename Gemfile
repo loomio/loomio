@@ -36,6 +36,7 @@ gem "high_voltage"
 gem 'thin'
 gem 'rack-canonical-host'
 gem 'delayed_job_active_record'
+gem 'foreman'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
@@ -62,12 +63,12 @@ group :development, :test do
   gem 'ruby-prof', :git => 'https://github.com/wycats/ruby-prof.git'
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'capybara-email'
   gem 'database_cleaner'
   gem 'jasminerice'
   gem 'guard-jasmine'
   gem 'selenium-webdriver', '2.25.0'
   gem 'letter_opener'
+  gem 'mailcatcher'
 end
 
 group :development do

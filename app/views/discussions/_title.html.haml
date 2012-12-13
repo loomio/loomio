@@ -14,6 +14,8 @@
           = submit_tag "Save", class: 'btn btn-small run-validations', id: 'edit-title-submit', :data => {:disable_with => "Saving"}
           = link_to "Cancel", "#", id: 'cancel-edit-title'
   .dropdown
-    = link_to image_tag("dropdown.png"), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
+    = link_to image_tag("dropdown.png"), "#", class: "dropdown-toggle", 'data-toggle' => 'dropdown', id: 'discussion-options'
     %ul.dropdown-menu.pull-right
       %li= link_to "Edit discussion title", "#", :id => "edit-title"
+      -if can? :remove, discussion
+        %li= link_to "Remove Discussion", "#", 'data-title' => "Remove Discussion", 'data-body' => "Are you sure you want to remove this discussion?", 'data-confirm-path' => remove_discussion_path(discussion), 'data-cancel-path' => discussion_path(discussion), class: 'confirm-dialog', id: 'remove-discussion'

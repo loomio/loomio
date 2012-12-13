@@ -175,6 +175,44 @@ describe DiscussionsController do
       end
     end
 
+    describe "removing a discussion" do
+      it "updates the removed_at time" do
+        discussion.stub :save!
+        discussion.should_receive :removed_at=
+        post :remove, :id => discussion.id
+      end
+
+      context "successfully" do
+        before do
+          discussion.stub(:save!).and_return true
+          post :remove, :id => discussion.id
+        end
+
+        it "gives a flash success message" do
+          flash[:success].should == "Discussion removed."
+        end
+
+        it "redirects to the group page" do
+          response.should redirect_to(group_path(discussion.group))
+        end
+      end
+
+      context "unsuccessfully" do
+        before do
+          discussion.stub(:save!).and_return false
+          post :remove, :id => discussion.id
+        end
+
+        it "gives a flash error message" do
+          flash[:error].should == "Could not remove discussion."
+        end
+
+        it "redirects to the discussion page" do
+          response.should redirect_to(discussion_path(discussion.id))
+        end
+      end
+    end
+
     describe "change version" do
       before do
         @version_item = mock_model(Discussion, :description => "new version", :save! => true)

@@ -14,7 +14,7 @@ Feature: User accepts invitation to Loomio group
     When I open the email and click the invitation link
     And I create my user account
     Then I should become a member of the group
-    And I should be taken to the group's demo proposal page
+    And I should be taken to the group page
 
   Scenario: Existing logged-out user accepts invite to Loomio group
     Given I have been invited to join a loomio group and I am an existing user
