@@ -49,13 +49,14 @@ Feature: Email preferences page
     Then I should not be subscribed to mention notifications
 
   Scenario: User enables group notifications
-    #When I visit the email preferences page
-    #And I check "Pals"
-    #And I click save
-    #Then I should be subscribed to group notifications about "Pals"
+    When I visit the email preferences page
+    And I check "Pals"
+    And I click "Update preferences"
+    Then I should be subscribed to group notifications about "Pals"
 
   Scenario: User disables group notifications
-    #When I visit the email preferences page
-    #And I uncheck "Pals"
-    #And I click save
-    #Then I should be subscribed to group notifications about "Pals"
+    Given I am subscribed to group notifications about "Pals"
+    When I visit the email preferences page
+    And I uncheck "Pals"
+    And I click "Update preferences"
+    Then I should not be subscribed to group notifications about "Pals"
