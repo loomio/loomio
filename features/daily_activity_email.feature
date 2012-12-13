@@ -10,7 +10,7 @@ Feature: Daily activity email
     And there is a discussion "I'm Lonely" in "Pals"
     And there is a proposal "Party on Saturday" from the discussion "I'm Lonely"
     When we send the daily activity email
-    Then "Ben" should get emailed
+    Then "Ben" should get the daily activity email
     And that email should have the discussion "I'm Lonely"
     And that email should have the proposal "Party on Saturday"
 
@@ -21,4 +21,4 @@ Feature: Daily activity email
     And "Ben" belongs to "Pals"
     # Note there is no discussions or motions.. so there should be no email
     When we send the daily activity email
-    Then "Ben" should not get emailed
+    Then "Ben" should not get the daily activity email

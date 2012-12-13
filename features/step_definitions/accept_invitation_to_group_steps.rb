@@ -58,10 +58,6 @@ When /^I log in$/ do
   click_on "sign-in-btn"
 end
 
-Then /^I|they should be taken to the group page$/ do
-  page.should have_content(@group.name)
-end
-
 Given /^there is an accepted invitation$/ do
   step 'I have been invited to join a loomio group and I am a new user'
   @invitation = Invitation.where(:recipient_email => @recipient_email).first
@@ -88,9 +84,3 @@ end
 Then /^I should become the admin of the group$/ do
   @user.is_group_admin?(@group).should == true
 end
-
-Then /^I should be taken to the group\'s demo proposal page$/ do
-  page.should have_content("We should have a holiday on the moon!")
-end
-
-
