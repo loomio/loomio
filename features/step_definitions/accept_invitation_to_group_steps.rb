@@ -12,7 +12,6 @@ Given /^I have been invited to join a loomio group and I am an existing user$/ d
 end
 
 When /^I open the email and click the invitation link$/ do
-  pending "need to resolve email_spec capybara_email conflict"
   open_email(@recipient_email)
   click_first_link_in_email
 end
@@ -59,7 +58,7 @@ When /^I log in$/ do
   click_on "sign-in-btn"
 end
 
-Then /^I should be taken to the group page$/ do
+Then /^I|they should be taken to the group page$/ do
   page.should have_content(@group.name)
 end
 
