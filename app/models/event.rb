@@ -145,7 +145,6 @@ class Event < ActiveRecord::Base
         event.notify!(mentioned_user)
       end
     end
-<<<<<<< HEAD
 
     def discussion_title_edited!(discussion, editor)
       create!(:kind => "discussion_title_edited", :eventable => discussion,
@@ -167,8 +166,6 @@ class Event < ActiveRecord::Base
     handle_asynchronously :new_motion!
     handle_asynchronously :motion_closing_soon!
     handle_asynchronously :user_added_to_group!
-=======
     handle_asynchronously :user_mentioned!
->>>>>>> 33f9b0b32066c7c036fd053274a2afadfd2fe032
   end
 end
