@@ -46,7 +46,7 @@ class Vote < ActiveRecord::Base
   after_destroy :update_motion_last_vote_at
 
   def other_group_members
-    group.members.where(User.arel_table[:id].not_eq(user.id))
+    group.users.where(User.arel_table[:id].not_eq(user.id))
   end
 
   def can_be_edited_by?(current_user)
