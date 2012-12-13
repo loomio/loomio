@@ -1,0 +1,16 @@
+%p A new discussion was created in a Loomio group that you belong to.
+
+%p
+  = link_to("Click here to view this discussion", discussion_url(@discussion))
+
+%p
+  Discussion:
+  = @discussion.title
+  %br
+  Group:
+  = @discussion.group.full_name
+  %br
+  Started by:
+  = @discussion.author.name
+
+= render 'user_mailer/unsubscribe_link'
