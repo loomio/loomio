@@ -2,14 +2,14 @@
 %p Showing you what’s been happening in your Loomio groups in the last 24 hours
 
 -@groups.each do |group|
-  -next unless @activity[group.full_name][:motions].present?
+  -next unless @activity[group.full_name].present?
   - @motions = @activity[group.full_name][:motions]
   - @discussions = @activity[group.full_name][:discussions]
 
   %h2=group.full_name
   -if @motions.present?
     %p Decisions
-    %p 
+    %p
       -@activity[group.full_name][:motions].each do |motion|
         =link_to(motion.name, motion_url(motion))
         -if motion.close_date.present?
@@ -28,4 +28,4 @@
           \- new discussion
         %br
 
-%p=link_to 'Modify your email preferences', user_settings_url
+= render 'unsubscribe_link'

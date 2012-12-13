@@ -47,7 +47,7 @@ class GroupRequest < ActiveRecord::Base
   private
 
   def approve_request
-    @group = Group.new(:name => name)
+    @group = Group.new :name => name
     @group.creator = User.loomio_helper_bot
     @group.cannot_contribute = cannot_contribute
     @group.max_size = max_size
@@ -55,6 +55,7 @@ class GroupRequest < ActiveRecord::Base
     @group.other_sectors_metric = other_sectors_metric
     @group.distribution_metric = distribution_metric
     @group.save!
+    @group.create_welcome_loomio
     self.group_id = @group.id
     save!
     InvitesUsersToGroup.invite!(:recipient_emails => [admin_email],

@@ -240,6 +240,11 @@ form {
     margin: 1em 0 0.2em 0;
   }
 
+  /*.collection_check_boxes{
+    display: inline-block;
+    vertical-align: middle;
+  }
+*/
   .robot_trap {
     margin-left: -5000px;
     margin-bottom: 0;
@@ -400,20 +405,21 @@ ul.loomio-process-flow {
 }
 
 /*** helper bot ***/
-#helper_bot {
+.helper-bot {
   float: right;
   position: relative;
   bottom: 30px;
   margin-bottom: -40px;
 }
 
-body.discussions #helper_bot{
+body.discussions .helper-bot{
     bottom: 68px;
     margin-bottom: -60px;
 }
 
-body.groups.show #helper_bot{
-  right: 130px;
+body.groups.show .helper-bot{
+  right: 140px;
+  bottom: 55px;
 }
 
 /**** buttons ****/

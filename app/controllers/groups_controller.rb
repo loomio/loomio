@@ -9,6 +9,7 @@ class GroupsController < GroupBaseController
     @group.creator = current_user
     if @group.save
       @group.add_admin! current_user
+      @group.create_welcome_loomio
       flash[:success] = "Group created successfully."
       redirect_to @group
     else
@@ -64,8 +65,7 @@ class GroupsController < GroupBaseController
     params.each_key do |key|
       if key =~ /user_/
         user = User.find(key[5..-1])
-        membership = group.add_member!(user, current_user)
-        Event.user_added_to_group!(membership)
+        group.add_member!(user, current_user)
       end
     end
     flash[:success] = "Members added to group."
@@ -105,8 +105,8 @@ class GroupsController < GroupBaseController
     @group = Group.find(params[:id])
     subject = params[:group_email_subject]
     body = params[:group_email_body]
-    GroupMailer.deliver_group_email(@group, current_user, subject, body)
-    flash[:success] = "Email sent."
+    GroupMailer.delay.deliver_group_email(@group, current_user, subject, body)
+    flash[:success] = "Emails sending."
     redirect_to :back
   end
 

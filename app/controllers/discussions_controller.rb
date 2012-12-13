@@ -16,11 +16,6 @@ class DiscussionsController < GroupBaseController
     @discussion = current_user.authored_discussions.new(params[:discussion])
     authorize! :create, @discussion
     if @discussion.save
-      @discussion.add_comment(current_user, params[:discussion][:comment])
-      if params[:discussion][:notify_group_upon_creation].to_i > 0
-        DiscussionMailer.spam_new_discussion_created(@discussion)
-      end
-      Event.new_discussion!(@discussion)
       flash[:success] = "Discussion sucessfully created."
       redirect_to @discussion
     else
@@ -35,12 +30,14 @@ class DiscussionsController < GroupBaseController
       if cannot? :show, @group
         head 401
       else
-        @discussions = @group.discussions_sorted(current_user).page(params[:page]).per(10)
+        @discussions_without_motions = @group.discussions_sorted(current_user).page(params[:page]).per(10)
+        @no_discussions_exist = (@group.discussions.count == 0)
         render :layout => false if request.xhr?
       end
     else
       authenticate_user!
-      @discussions = current_user.discussions_sorted.page(params[:page]).per(10)
+      @discussions_without_motions = current_user.discussions_sorted.page(params[:page]).per(10)
+      @no_discussions_exist = (current_user.discussions.count == 0)
       render :layout => false if request.xhr?
     end
   end

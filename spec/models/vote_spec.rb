@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Vote do
   let(:user) { create(:user) }
-  let(:discussion) { create(:discussion, author: user) }
+  let(:group) { create(:group) }
+  let(:discussion) { create(:discussion, group: group, author: user) }
   let(:motion) { create(:motion, discussion: discussion) }
 
   it { Vote::POSITION_VERBS['yes'].should == 'agreed' }
@@ -83,17 +84,20 @@ describe Vote do
     vote.save!
   end
 
-  it 'should update motion_last_vote_at when vote is changed' do
-    pending "This is currently happening in the VotesController#update. But it should be moved into the model"
-    vote = Vote.new(position: 'yes')
-    vote.motion = motion
-    vote.user = user
-    vote.save!
-    vote.position = 'no'
-    motion.stub(:latest_vote_time).and_return(vote_time)
-    motion.should_receive(:last_vote_at=).with(vote_time)
-    motion.should_receive(:save!)
-    vote.save!
+  describe 'other_group_members' do
+    before do
+      @user1 = create :user
+      group.add_member!(@user1)
+      @vote = create :vote, user: user, motion: motion
+    end
+
+    it 'returns members in the group' do
+      @vote.other_group_members.should include @user1
+    end
+
+    it 'does not return the voter' do
+      @vote.other_group_members.should_not include user
+    end
   end
 
   describe "previous_vote" do

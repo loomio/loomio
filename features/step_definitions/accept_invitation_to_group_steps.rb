@@ -88,9 +88,3 @@ end
 Then /^I should become the admin of the group$/ do
   @user.is_group_admin?(@group).should == true
 end
-
-Then /^I should be taken to the group\'s demo proposal page$/ do
-  page.should have_content("We should have a holiday on the moon!")
-end
-
-

@@ -1,17 +1,17 @@
 class CollectsRecentActivityByGroup
-  def self.for(user, args)
-    recent_time = args[:since]
-    r = {}
-    r[:any_activity?] = false
+  attr_accessor :results
+
+  def initialize(user, args)
+    @results = {}
+    since = args[:since]
+
     user.groups.each do |group|
       h = {}
-      h[:discussions] = group.discussions.active_since(recent_time)
+      h[:discussions] = group.discussions.active_since(since)
       h[:motions] = group.motions_in_voting_phase
-      if h[:discussions] or h[:motions]
-        r[:any_activity?] = true
+      if h[:discussions].present? or h[:motions].present?
+        @results[group.full_name] = h
       end
-      r[group.full_name] = h
     end
-    r
   end
 end
