@@ -1,10 +1,9 @@
 Given /^"(.*?)" is subscribed to proposal closing soon notification emails$/ do |arg1|
-  User.find_by_name('Ben').update_attribute('subscribed_to_proposal_closure_notifications', true)
+  User.find_by_name(arg1).update_attribute('subscribed_to_proposal_closure_notifications', true)
 end
 
 When /^we run the rake task to check for closing proposals, (\d+) hours before it closes\.$/ do |arg1|
   now_but_tomorrow_1_hour_window = (1.day.from_now) ... (1.day.from_now + 1.hour)
-  ActionMailer::Base.deliveries = []
   Motion.where(:close_date => now_but_tomorrow_1_hour_window).each do |motion|
     Event.motion_closing_soon!(motion)
   end
@@ -12,10 +11,8 @@ end
 
 Then /^"(.*?)" gets a proposal closing soon email$/ do |arg1|
   user = User.find_by_name(arg1)
-  user_emailed = ActionMailer::Base.deliveries.any? do |email|
-    email.to.include? user.email
-  end
-  user_emailed.should be_true
+  open_email(user.email, :with_subject => "Proposal closing soon")
+  current_email.default_part_body.to_s.should include("unsubscribe")
 end
 
 Given /^the motion "(.*?)" is closing in (\d+) hours$/ do |arg1, arg2|

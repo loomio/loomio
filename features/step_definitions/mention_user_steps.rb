@@ -3,6 +3,7 @@ When /^I am adding a comment and type in "(.*?)"$/ do |arg1|
 end
 
 When /^I click on "(.*?)" in the menu that pops up$/ do |arg1|
+  # this is failing intermittently (on Poltergeist at least)
   wait_until { find("#at-view", visible: true) }
   within('#at-view') do
     page.should have_content(arg1)
@@ -38,10 +39,7 @@ Then /^harry should get an email saying I mentioned him$/ do
   last_email = ActionMailer::Base.deliveries.last
   last_email.to.should include 'harry@example.com'
   last_email.body.should have_content 'mentioned'
-end
-
-Given /^the test email is empty$/ do
-  ActionMailer::Base.deliveries = []
+  last_email.body.should have_content 'Unsubscribe'
 end
 
 Given /^harry wants to be emailed when mentioned$/ do
