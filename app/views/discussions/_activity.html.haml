@@ -12,6 +12,8 @@
             %li= render activity_item
         - when 'new_vote'
           = render 'activity_item', :icon => 'position-icon', :position => activity_item.position, :group => activity_item.discussion.group, :actor => activity_item.user, :header => render_position_message(activity_item), :body => position_activity_body(activity_item.statement), :time => activity_item.created_at
+        - when 'motion_blocked'
+          = render 'activity_item', :icon => 'position-icon', :position => activity_item.position, :group => activity_item.discussion.group, :actor => activity_item.user, :header => render_position_message(activity_item), :body => position_activity_body(activity_item.statement), :time => activity_item.created_at
         - when 'new_motion'
           = render 'activity_item', :icon => 'proposal-icon', :position => nil, :group => activity_item.discussion.group, :actor => activity_item.author, :header => 'created a proposal:', :body => " \"#{activity_item.name}\"", :time => activity_item.created_at
         - when 'motion_closed'

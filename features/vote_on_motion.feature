@@ -2,35 +2,35 @@ Feature: User votes on a motion
   In order to allow groups a way to decide on issues
   Users must be able to vote on a motion
 
-  # Scenario: As a logged in member I should be able to vote 'yes' on a proposal
-  #   Given I am logged in
-  #   And there is a discussion in a group I belong to
-  #   And the discussion has an open proposal
-  #   When I visit the discussion page
-  #   And I click the 'yes' vote button
-  #   And I enter a statement
-  #   Then I should see new vote in the activity feed
-  #   And I should see my vote in the list of positions
+  Scenario: As a logged in member I should be able to vote 'yes' on a proposal
+    Given I am logged in
+    And there is a discussion in a group I belong to
+    And the discussion has an open proposal
+    When I visit the discussion page
+    And I click the 'yes' vote button
+    And I enter a statement
+    Then I should see new vote in the activity feed
+    And I should see my vote in the list of positions
 
-  # Scenario: As a logged in member I should be able to 'abstain' on a proposal
-  #   Given I am logged in
-  #   And there is a discussion in a group I belong to
-  #   And the discussion has an open proposal
-  #   When I visit the discussion page
-  #   And I click the 'abstain' vote button
-  #   And I enter a statement
-  #   Then I should see new vote in the activity feed
-  #   And I should see my vote in the list of positions
+  Scenario: As a logged in member I should be able to 'abstain' on a proposal
+    Given I am logged in
+    And there is a discussion in a group I belong to
+    And the discussion has an open proposal
+    When I visit the discussion page
+    And I click the 'abstain' vote button
+    And I enter a statement
+    Then I should see new vote in the activity feed
+    And I should see my vote in the list of positions
 
-  # Scenario: As a logged in member I should be able to vote 'no' on a proposal
-  #   Given I am logged in
-  #   And there is a discussion in a group I belong to
-  #   And the discussion has an open proposal
-  #   When I visit the discussion page
-  #   And I click the 'no' vote button
-  #   And I enter a statement
-  #   Then I should see new vote in the activity feed
-  #   And I should see my vote in the list of positions
+  Scenario: As a logged in member I should be able to vote 'no' on a proposal
+    Given I am logged in
+    And there is a discussion in a group I belong to
+    And the discussion has an open proposal
+    When I visit the discussion page
+    And I click the 'no' vote button
+    And I enter a statement
+    Then I should see new vote in the activity feed
+    And I should see my vote in the list of positions
 
   Scenario: As a logged in member I should be able to vote 'block' on a proposal
     Given I am logged in

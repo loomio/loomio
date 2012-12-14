@@ -1,5 +1,5 @@
 When /^I choose to edit the discussion title$/ do
-  click_on("options-dropdown")
+  find("#options-dropdown").click
   click_link("edit-title")
 end
 
