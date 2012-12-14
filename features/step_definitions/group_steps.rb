@@ -44,6 +44,13 @@ Given /^I am a member of a group$/ do
   @group.add_member! @user
 end
 
+Given /^"(.*?)" is a member of the group$/ do |arg1|
+  user = FactoryGirl.create :user, name: arg1,
+                            email: "#{arg1}@example.org",
+                            password: 'password'
+  @group.add_member! user
+end
+
 Given /^the group has a discussion with a decision$/ do
   @discussion = FactoryGirl.create :discussion, :group => @group
   @motion = FactoryGirl.create :motion, :discussion => @discussion

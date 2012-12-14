@@ -42,11 +42,11 @@ class Vote < ActiveRecord::Base
 
   after_save :send_notifications
 
-  after_create :update_motion_last_vote_at
+  after_create :update_motion_last_vote_at, :set_new_vote_activity!
   after_destroy :update_motion_last_vote_at
 
   def other_group_members
-    group.members.where(User.arel_table[:id].not_eq(user.id))
+    group.users.where(User.arel_table[:id].not_eq(user.id))
   end
 
   def can_be_edited_by?(current_user)
@@ -87,6 +87,14 @@ class Vote < ActiveRecord::Base
     def update_motion_last_vote_at
       motion.last_vote_at = motion.latest_vote_time
       motion.save!
+    end
+
+    def set_new_vote_activity!
+      if position == "block"
+        Event.motion_blocked!(self) 
+      else
+        Event.new_vote!(self)
+      end
     end
 
     def send_notifications

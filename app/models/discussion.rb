@@ -14,13 +14,18 @@ class Discussion < ActiveRecord::Base
   validates :title, :length => { :maximum => 150 }
 
   acts_as_commentable
-  has_paper_trail :only => [:description]
+  has_paper_trail :only => [:title, :description]
 
   belongs_to :group
   belongs_to :author, class_name: 'User'
   has_many :motions
+  has_many :closed_motions,
+    :class_name => 'Motion',
+    :conditions => { phase: 'closed' },
+    :order => "close_date desc"
   has_many :votes, through: :motions
-  has_many :comments,  :as => :commentable
+  has_many :comments,  :as => :commentable,
+    :conditions => { archived_at: nil }
   has_many :users_with_comments, :through => :comments,
     :source => :user, :uniq => true
   has_many :events, :as => :eventable, :dependent => :destroy
@@ -35,7 +40,6 @@ class Discussion < ActiveRecord::Base
 
   after_create :populate_last_comment_at
   after_create :fire_new_discussion_event
-
 
   def group_users_without_discussion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
@@ -123,16 +127,8 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def history
-    (comments + votes + motions).sort!{ |a,b| b.created_at <=> a.created_at }
-  end
-
-  def latest_history_time
-    if history.count > 0
-      history.first.created_at
-    else
-      created_at
-    end
+  def activity
+    Event.where("discussion_id = ?", id).order('created_at DESC')
   end
 
   def participants
@@ -170,8 +166,17 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  def set_edit_title_activity!(user)
+    Event.discussion_title_edited!(self, user)
+  end
+
+  def set_edit_discription_activity!(user)
+    Event.discussion_description_edited!(self, user)
+  end
+
 
   private
+
   def populate_last_comment_at
     self.last_comment_at = created_at
     save

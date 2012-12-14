@@ -4,43 +4,47 @@ describe Event do
   let(:user) { stub(:user, email: 'jon@lemmon.com') }
   let(:event) { stub(:event, :notify! => true) }
   let(:mailer) { stub(:mailer, :deliver => true) }
+  let(:discussion) { mock_model Discussion }
+  let(:group) { stub(:group) }
 
   before do
     Event.stub(:create!).and_return(event)
   end
 
   describe "new_discussion!", isolated: true do
-    let(:discussion) { stub(:discussion) }
     before do
-      discussion.stub(:notify_group_upon_creation).and_return(false)
+      user.stub(:email_notifications_for_group?).and_return(false)
       discussion.stub(:group_users_without_discussion_author).and_return([user])
+      discussion.stub(:group).and_return(group)
     end
 
     after do
       Event.new_discussion!(discussion)
     end
 
-    context 'if notify_group_upon_creation' do
+    context 'if user.email_notifications_for_group?' do
       before do
-        discussion.stub(:notify_group_upon_creation).and_return(true)
+        user.should_receive(:email_notifications_for_group?).with(group).and_return(true)
       end
-      it 'calls spam_new_discussion_created' do
-        DiscussionMailer.should_receive(:spam_new_discussion_created).with(discussion)
+
+      it 'calls new_discussion_created' do
+        DiscussionMailer.should_receive(:new_discussion_created).with(discussion, user).and_return(mailer)
       end
     end
 
-    context 'if notify_group_upon_creation false' do
+    context 'if user.email_notifications_for_group? false' do
       before do
-        discussion.stub(:notify_group_upon_creation).and_return(false)
+        user.should_receive(:email_notifications_for_group?).with(group).and_return(false)
       end
-      it 'calls spam_new_discussion_created' do
-        DiscussionMailer.should_not_receive(:spam_new_discussion_created).with(discussion)
+      it 'does not email the user' do
+        DiscussionMailer.should_not_receive(:new_discussion_created)
       end
     end
 
     it 'creates an event with kind and eventable' do
-      Event.should_receive(:create!).with(:kind => 'new_discussion',
-                                          :eventable => discussion).and_return(event)
+      Event.should_receive(:create!).with(:kind => 'new_discussion', 
+                                          :eventable => discussion,
+                                          :discussion_id => discussion.id).and_return(event)
     end
 
     it 'notifys users but not the author' do
@@ -56,6 +60,7 @@ describe Event do
     before do
       comment.stub(:parse_mentions).and_return([])
       comment.stub(:other_discussion_participants).and_return([])
+      comment.stub(:discussion).and_return(discussion)
     end
 
     after do
@@ -63,8 +68,9 @@ describe Event do
     end
 
     it 'creates an event with kind new_comment and eventable comment' do
-      Event.should_receive(:create!).with(kind: 'new_comment', 
-                                          eventable: comment).and_return(event)
+      Event.should_receive(:create!).with(kind: 'new_comment',
+                                          eventable: comment,
+                                          discussion_id: discussion.id).and_return(event)
     end
 
     it 'fires user_mentioned! for each mentioned user' do
@@ -80,11 +86,13 @@ describe Event do
 
   describe "new_motion!", isolated: true do
     let(:user) { stub(:user, :email => 'bill@dave.com') }
-    let(:motion) { stub(:motion) }
+    let(:motion) { stub(:motion, :group => group) }
 
     before do
+      user.stub(:email_notifications_for_group?).and_return(false)
       motion.stub(:group_users_without_motion_author).and_return([user])
       motion.stub(:group_email_new_motion?).and_return(false)
+      motion.stub(:discussion).and_return(discussion)
     end
 
     after do
@@ -92,22 +100,24 @@ describe Event do
     end
 
     it 'creates an event' do
-      Event.should_receive(:create!).with(kind: 'new_motion', eventable: motion)
+      Event.should_receive(:create!).with(kind: 'new_motion', 
+                                          eventable: motion,
+                                          discussion_id: discussion.id)
     end
 
-    context 'if group.email_new_motion' do
+    context 'if user is subscribed to group notification emails' do
       before do
-        motion.should_receive(:group_email_new_motion?).and_return(true)
+        user.should_receive(:email_notifications_for_group?).with(motion.group).and_return(true)
       end
 
       it 'emails group_users_without_motion_author new_motion_created' do
-        MotionMailer.should_receive(:new_motion_created).with(motion, user.email).and_return(mailer)
+        MotionMailer.should_receive(:new_motion_created).with(motion, user).and_return(mailer)
       end
     end
 
-    context 'if not group.email_new_motion' do
+    context 'if user is not subscribed to group notification emails' do
       before do
-        motion.should_receive(:group_email_new_motion?).and_return(false)
+        user.should_receive(:email_notifications_for_group?).with(motion.group).and_return(false)
       end
 
       it 'does not email new motion created' do
@@ -123,16 +133,22 @@ describe Event do
   describe "new_vote!", :isolated => true do
     let(:motion_author) { stub(:motion_author) }
     let(:discussion_author) { stub(:discussion_author) }
-    let(:vote) { stub(:vote, 
+    let(:vote) { stub(:vote,
                       user: user,
                       motion_author: motion_author,
                       discussion_author: discussion_author) }
+    before do
+      vote.stub_chain(:motion, :discussion).and_return(discussion)
+    end
+
     after do
       Event.new_vote!(vote)
     end
 
     it 'creates a new_vote event with eventable vote' do
-      Event.should_receive(:create!).with(kind: 'new_vote', eventable: vote).and_return(event)
+      Event.should_receive(:create!).with(kind: 'new_vote',
+                                          eventable: vote,
+                                          discussion_id: discussion.id).and_return(event)
     end
 
     it 'notifies the motion_author' do
@@ -168,13 +184,18 @@ describe Event do
   describe "motion_blocked!" do
     let(:vote) { stub(:vote, other_group_members: [user]) }
 
+    before do
+      vote.stub_chain(:motion, :discussion).and_return(discussion)
+    end
+
     after do
       Event.motion_blocked!(vote)
     end
 
     it 'creates a motion_blocked event' do
       Event.should_receive(:create!).with(kind: 'motion_blocked',
-                                          eventable: vote).and_return(event)
+                                          eventable: vote,
+                                          discussion_id: discussion.id).and_return(event)
     end
 
     it 'notifies other group members' do
@@ -216,7 +237,7 @@ describe Event do
     end
 
     it 'creates a user_added_to_group event' do
-      Event.should_receive(:create!).with(kind: 'user_added_to_group', 
+      Event.should_receive(:create!).with(kind: 'user_added_to_group',
                                           eventable: membership).
                                           and_return(event)
     end
@@ -245,8 +266,8 @@ describe Event do
   describe "comment_liked!", isolated: true do
     let(:commenter) { stub(:commenter) }
     let(:voter) { stub(:voter) }
-    let(:comment_vote) { stub(:comment_vote, 
-                              comment_user: commenter, 
+    let(:comment_vote) { stub(:comment_vote,
+                              comment_user: commenter,
                               user: voter) }
 
     after do
@@ -305,7 +326,7 @@ describe Event do
     end
 
     context 'mentioned user is comment author' do
-      let(:mentioned_user) { comment_author } 
+      let(:mentioned_user) { comment_author }
       it 'does not notify the user' do
         event.should_not_receive(:notify!)
       end

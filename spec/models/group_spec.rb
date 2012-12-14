@@ -137,14 +137,14 @@ describe Group do
 
     it "should not return motions that belong to the group but are in phase 'closed'" do
       @group = motion.group
-      motion.close_voting!
+      motion.close!
       @group.motions_in_voting_phase.should_not include(motion)
     end
   end
 
   describe "motions_closed" do
     it "should return motions that belong to the group and are in phase 'voting'" do
-      motion.close_voting!
+      motion.close!
       @group = motion.group
       @group.motions_closed.should include(motion)
     end
@@ -176,7 +176,7 @@ describe Group do
     end
     it "should not include discussions with a current motion" do
       motion = create :motion, :discussion => @discussion1, author: @user
-      motion.close_voting!
+      motion.close!
       motion1 = create :motion, :discussion => @discussion1, author: @user
       @user.discussions_sorted.should_not include(@discussion1)
     end

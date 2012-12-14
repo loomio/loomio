@@ -7,7 +7,7 @@ class Motion < ActiveRecord::Base
   has_many :did_not_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
 
-  validates_presence_of :name, :discussion, :author 
+  validates_presence_of :name, :discussion, :author
   validates_inclusion_of :phase, in: PHASES
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
@@ -22,13 +22,14 @@ class Motion < ActiveRecord::Base
   delegate :email_new_motion?, to: :group, prefix: :group
 
   after_create :initialize_discussion
+  after_create :fire_new_motion_event
   before_save :set_disable_discussion
   before_save :format_discussion_url
 
   attr_accessor :create_discussion
   attr_accessor :enable_discussion
 
-  attr_accessible :name, :description, :discussion_url, :enable_discussion 
+  attr_accessible :name, :description, :discussion_url, :enable_discussion
   attr_accessible :close_date, :phase, :discussion_id, :outcome
 
   include AASM
@@ -36,11 +37,7 @@ class Motion < ActiveRecord::Base
     state :voting, :initial => true
     state :closed
 
-    event :open_voting, before: :before_open do
-      transitions :to => :voting, :from => [:closed]
-    end
-
-    event :close_voting, before: :before_close, after: :after_close do
+    event :close, before: :before_close do
       transitions :to => :closed, :from => [:voting]
     end
   end
@@ -113,15 +110,20 @@ class Motion < ActiveRecord::Base
     end
   end
 
+  # motion is closed by user
+  def close_motion!(user)
+    Event.motion_closed!(self, user)
+    close!
+  end
+
+  # motion closes automatically if expired
   def open_close_motion
     if (close_date && close_date <= Time.now)
       if voting?
-        close_voting
+        Event.motion_closed!(self, nil)
+        close!
         save
       end
-    elsif closed?
-      open_voting
-      save
     end
   end
 
@@ -215,22 +217,33 @@ class Motion < ActiveRecord::Base
       self.outcome = str
       save
     end
-  end 
+  end
+
+  def set_close_date(date, editor=nil)
+    if date > Time.now
+      self.close_date = date
+      set_motion_close_date_edited_activity!(editor)
+      save
+    end
+  end
+
+  def set_motion_close_date_edited_activity!(user)
+    Event.motion_close_date_edited!(self, user)
+  end
+
+  def set_new_motion_activity!
+    Event.new_motion!(self)
+  end
 
   private
-    def before_open
-      self.close_date = Time.now + 1.week
-      did_not_votes.each do |did_not_vote|
-        did_not_vote.delete
-      end
+
+    def fire_new_motion_event
+      Event.new_motion!(self)
     end
 
     def before_close
       store_users_that_didnt_vote
       self.close_date = Time.now
-    end
-
-    def after_close
     end
 
     def store_users_that_didnt_vote

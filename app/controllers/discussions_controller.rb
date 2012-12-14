@@ -48,7 +48,7 @@ class DiscussionsController < GroupBaseController
     @group = GroupDecorator.new(@discussion.group)
     @current_motion = @discussion.current_motion
     @vote = Vote.new
-    @history = @discussion.history
+    @activity = @discussion.activity
     if (not params[:proposal])
       if @current_motion
         @unique_votes = Vote.unique_votes(@current_motion)
@@ -89,15 +89,17 @@ class DiscussionsController < GroupBaseController
     @discussion.description = description
     @discussion.save!
     @last_collaborator = User.find @discussion.originator.to_i
+    @discussion.set_edit_discription_activity!(current_user)
     respond_to do |format|
       format.js { render :action => 'update_version' }
     end
   end
 
   def edit_title
-    discussion = Discussion.find(params[:id])
-    discussion.title = params[:title]
-    discussion.save!
+    @discussion = Discussion.find(params[:id])
+    @discussion.title = params[:title]
+    @discussion.save!
+    @discussion.set_edit_title_activity!(current_user)
   end
 
   def show_description_history

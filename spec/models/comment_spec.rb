@@ -11,6 +11,8 @@ describe Comment do
   describe "creating a comment on a discussion" do
     it "updates discussion.last_comment_at" do
       discussion = create(:discussion)
+      discussion.last_comment_at = 2.days.ago
+      discussion.save!
       comment = discussion.add_comment discussion.author, "hi"
       discussion.reload
       discussion.last_comment_at.to_s.should == comment.created_at.to_s
@@ -23,24 +25,24 @@ describe Comment do
     end
   end
 
-  describe "destroying a comment" do
-    let(:discussion) { create(:discussion) }
-
-    context "which is the only comment on a discussion" do
-      it "updates discussion.last_comment_at to discussion.created_at" do
-        comment = discussion.add_comment discussion.author, "hi"
-        discussion.last_comment_at.should == discussion.created_at
-      end
+  describe "#archive!" do
+    it "assigns archived_at the current datetime and saves the comment" do
+      comment = create :comment
+      comment.archive!
+      comment.archived_at.should_not == nil
     end
 
-    context "which is the most recent comment on a discussion" do
-      it "updates discussion.last_comment_at to the previous comment" do
-        comment1 = discussion.add_comment discussion.author, "hi"
-        comment2 = discussion.add_comment discussion.author, "hi"
-        comment2.destroy
-        discussion.reload
-        discussion.last_comment_at.to_s.should == comment1.created_at.to_s
-      end
+    it "updates the discussion field last_comment_at" do
+      discussion = create :discussion
+      original_time = 8.hours.ago
+      Time.stub(:now => original_time)
+      comment = create :comment, commentable_id: discussion.id,
+                   commentable_type: 'Discussion', user: user, body: "Hello kitty"
+      Time.stub(:now => 3.hours.ago)
+      comment1 = discussion.add_comment discussion.author, "delete me"
+      comment1.archive!
+      discussion.reload
+      discussion.last_comment_at.should == original_time
     end
   end
 

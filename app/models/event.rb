@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
-  KINDS = %w[new_discussion new_comment new_motion new_vote motion_blocked
+  KINDS = %w[new_discussion discussion_title_edited discussion_description_edited new_comment
+             new_motion new_vote motion_blocked motion_close_date_edited
              motion_closing_soon motion_closed membership_requested
              user_added_to_group comment_liked user_mentioned]
 
@@ -10,7 +11,7 @@ class Event < ActiveRecord::Base
   validates_inclusion_of :kind, :in => KINDS
   validates_presence_of :eventable
 
-  attr_accessible :kind, :eventable, :user
+  attr_accessible :kind, :eventable, :user, :discussion_id
 
   def notify!(user)
     notifications.create!(user: user)
@@ -19,19 +20,21 @@ class Event < ActiveRecord::Base
   class << self
     def new_discussion!(discussion)
       #soon move this to the notification model
-      if discussion.notify_group_upon_creation
-        DiscussionMailer.spam_new_discussion_created(discussion)
-      end
 
-      event = create!(:kind => "new_discussion", :eventable => discussion)
+      event = create!(:kind => "new_discussion", :eventable => discussion,
+                      :discussion_id => discussion.id)
 
       discussion.group_users_without_discussion_author.each do |user|
+        if user.email_notifications_for_group?(discussion.group)
+          DiscussionMailer.new_discussion_created(discussion, user).deliver
+        end
         event.notify!(user)
       end
     end
 
     def new_comment!(comment)
-      event = create!(:kind => "new_comment", :eventable => comment)
+      event = create!(:kind => "new_comment", :eventable => comment,
+                      :discussion_id => comment.discussion.id)
 
       comment.parse_mentions.each do |mentioned_user|
         Event.user_mentioned!(comment, mentioned_user)
@@ -43,22 +46,21 @@ class Event < ActiveRecord::Base
     end
 
     def new_motion!(motion)
-      event = create!(:kind => "new_motion", :eventable => motion)
-
-      if motion.group_email_new_motion?
-        motion.group_users_without_motion_author.each do |user|
-          MotionMailer.new_motion_created(motion, user.email).deliver
-        end
-      end
+      event = create!(:kind => "new_motion", :eventable => motion,
+                      :discussion_id => motion.discussion.id)
 
       motion.group_users_without_motion_author.each do |user|
+        if user.email_notifications_for_group?(motion.group)
+          MotionMailer.new_motion_created(motion, user).deliver
+        end
         event.notify!(user)
       end
     end
 
     def motion_closed!(motion, closer)
       MotionMailer.motion_closed(motion, motion.author.email).deliver
-      event = create!(:kind => "motion_closed", :eventable => motion, :user => closer)
+      event = create!(:kind => "motion_closed", :eventable => motion, :user => closer,
+                      :discussion_id => motion.discussion.id)
       motion.group_users.each do |user|
         unless user == closer
           event.notifications.create! :user => user
@@ -67,7 +69,7 @@ class Event < ActiveRecord::Base
     end
 
     def motion_closing_soon!(motion)
-      event = create!(:kind => "motion_closing_soon", 
+      event = create!(:kind => "motion_closing_soon",
                       :eventable => motion)
       motion.group_users.each do |user|
         event.notifications.create!(:user => user)
@@ -78,8 +80,8 @@ class Event < ActiveRecord::Base
     end
 
     def new_vote!(vote)
-      event = create!(:kind => "new_vote", 
-                      :eventable => vote)
+      event = create!(:kind => "new_vote", :eventable => vote,
+                      :discussion_id => vote.motion.discussion.id)
       voter = vote.user
 
       if voter != vote.motion_author
@@ -94,15 +96,15 @@ class Event < ActiveRecord::Base
     end
 
     def motion_blocked!(vote)
-      event = create!(:kind => "motion_blocked", 
-                      :eventable => vote)
+      event = create!(:kind => "motion_blocked", :eventable => vote,
+                      :discussion_id => vote.motion.discussion.id)
       vote.other_group_members.each do |user|
         event.notify!(user)
       end
     end
 
     def membership_requested!(membership)
-      event = create!(:kind => "membership_requested", 
+      event = create!(:kind => "membership_requested",
                       :eventable => membership)
       membership.group_admins.each do |admin|
         event.notify!(admin)
@@ -135,10 +137,30 @@ class Event < ActiveRecord::Base
       end
     end
 
+    def discussion_title_edited!(discussion, editor)
+      create!(:kind => "discussion_title_edited", :eventable => discussion,
+              :discussion_id => discussion.id, :user => editor)
+    end
+
+    def discussion_description_edited!(discussion, editor)
+      create!(:kind => "discussion_description_edited", :eventable => discussion,
+              :discussion_id => discussion.id, :user => editor)
+    end
+
+    def motion_close_date_edited!(motion, closer)
+      create!(:kind => "motion_close_date_edited", :eventable => motion,
+              :discussion_id => motion.discussion.id, :user => closer)
+    end
+
     handle_asynchronously :new_discussion!
     handle_asynchronously :new_comment!
     handle_asynchronously :new_motion!
     handle_asynchronously :motion_closing_soon!
+    handle_asynchronously :new_vote!
+    handle_asynchronously :motion_blocked!
+    handle_asynchronously :membership_requested!
+    handle_asynchronously :comment_liked!
     handle_asynchronously :user_added_to_group!
+    handle_asynchronously :user_mentioned!
   end
 end
