@@ -15,6 +15,7 @@ describe Event do
     before do
       user.stub(:email_notifications_for_group?).and_return(false)
       discussion.stub(:group_users_without_discussion_author).and_return([user])
+      discussion.stub(:group).and_return(group)
     end
 
     after do

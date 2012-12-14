@@ -3,7 +3,7 @@ When /^I click the delete button on a post$/ do
 end
 
 And /^I accept the popup to confirm$/ do
-  page.driver.browser.switch_to.alert.accept 
+  find('#confirm-action').click()
 end
 
 Then /^I should no longer see the post in the discussion$/ do

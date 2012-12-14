@@ -3,9 +3,9 @@ Feature: Admin/author edits a proposal close date
   I want to be able to edit the close date of a proposal
 
   Scenario: Admin extends a proposal close date
-    Given I am an admin of a group with a discussion
+    Given I am logged in
+    And I am an admin of a group with a discussion
     And the discussion has an open proposal
-    And I am logged in
     When I visit the discussion page
     And I click the 'change close date' button
     And I select the new close date

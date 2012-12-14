@@ -1,12 +1,7 @@
 Given /^I am an admin of a group with a discussion$/ do
-  @user =FactoryGirl.create :user
   @group = FactoryGirl.create :group
   @discussion = FactoryGirl.create :discussion, :group => @group
   @group.add_admin! @user
-end
-
-Given /^the discussion has an open proposal$/ do
-  @motion = FactoryGirl.create :motion, :discussion => @discussion
 end
 
 When /^I click the 'change close date' button$/ do
