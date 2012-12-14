@@ -14,9 +14,7 @@ ActiveAdmin.register Group do
     column :max_size
     column "Members", :memberships_count
     column "Discussions", :discussions_count
-    column "Motions" do |group|
-      group.motions.count
-    end
+    column "Motions", :motions_count
     column :creator, :sortable => 'users.name'
     column :created_at
     column :viewable_by
