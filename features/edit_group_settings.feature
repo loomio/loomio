@@ -5,11 +5,11 @@ Feature: Edit group settings
   Background:
     Given a group "demo-group" with "furry@example.com" as admin
     And "non-admin@example.com" is a non-admin of group "demo-group"
-    
+
   Scenario: Non-admin cannot edit group settings
     Given I am logged in as "non-admin@example.com"
     Then I should not have access to group settings of "demo-group"
-    
+
   Scenario: Change group visibility to public
     Given I am logged in as "furry@example.com"
     When I visit the group settings page
