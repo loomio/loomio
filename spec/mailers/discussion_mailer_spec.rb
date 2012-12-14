@@ -29,15 +29,4 @@ describe DiscussionMailer do
       @email.reply_to.should == [discussion.author_email]
     end
   end
-
-  context "sending all emails upon new discussion creation" do
-    it "sends message to each group user" do
-      # minus one for count as we don't want to send an email to the author
-      group.add_member! create(:user)
-      DiscussionMailer.should_receive(:new_discussion_created).
-        exactly(group.users.count - 1).times.and_return(stub(deliver: true))
-      DiscussionMailer.spam_new_discussion_created(discussion)
-    end
-  end
-
 end

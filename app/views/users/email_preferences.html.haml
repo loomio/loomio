@@ -10,9 +10,10 @@
   =f.input :subscribed_to_proposal_closure_notifications, :inline_label => 'Remind me 24 hours before a proposal closes', :label => false
   =f.input :subscribed_to_mention_notifications, :inline_label => 'Email me when someone mentions me in a comment', :label => false
 
-  -#%h2 Group Activity Notifications
-  -#%p For each group, check the box if you want to be emailed immediately about new discussions and when proposals proposals are put up and close.
+  %h2 Group Activity Notifications
+  %p For each group, check the box if you want to be emailed immediately about new discussions and decisions.
 
-  -#=f.memberships.each do |mf|
-    -#=mf.input :subscribed_to_notification_emails
+  =f.collection_check_boxes :group_email_preferences, @user.memberships.select{|m| m.group }.sort{|a,b| a.group_full_name <=> b.group_full_name}, :id, :group_full_name, {}, {:class => 'checkbox'}{ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
+
+
   =f.submit 'Update preferences', :class => "btn, btn-info"
