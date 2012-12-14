@@ -13,9 +13,7 @@ ActiveAdmin.register Group do
     column :name
     column :max_size
     column "Members", :memberships_count
-    column "Discussions" do |group|
-      group.discussions.count
-    end
+    column "Discussions", :discussions_count
     column "Motions" do |group|
       group.motions.count
     end
