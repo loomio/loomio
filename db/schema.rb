@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204065707) do
+ActiveRecord::Schema.define(:version => 20121214034713) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20121204065707) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
+    t.datetime "removed_at"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -158,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20121204065707) do
     t.integer  "distribution_metric"
     t.string   "sectors_metric"
     t.string   "other_sectors_metric"
+    t.integer  "discussions_count",    :default => 0,     :null => false
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
