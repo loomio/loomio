@@ -22,8 +22,12 @@ class Motion < ActiveRecord::Base
   delegate :email_new_motion?, to: :group, prefix: :group
 
   after_create :initialize_discussion
+  after_create :fire_new_motion_event
   before_save :set_disable_discussion
   before_save :format_discussion_url
+
+  after_save :update_counter_cache
+  after_destroy :update_counter_cache
 
   attr_accessor :create_discussion
   attr_accessor :enable_discussion
@@ -218,6 +222,10 @@ class Motion < ActiveRecord::Base
   end 
 
   private
+    def fire_new_motion_event
+      Event.new_motion!(self)
+    end
+
     def before_open
       self.close_date = Time.now + 1.week
       did_not_votes.each do |did_not_vote|
@@ -269,4 +277,9 @@ class Motion < ActiveRecord::Base
         self.disable_discussion = @enable_discussion == "1" ? "0" : "1"
       end
     end
-end
+    
+    def update_counter_cache
+      self.group.motions_count = group.motions.count
+      group.save
+    end
+  end

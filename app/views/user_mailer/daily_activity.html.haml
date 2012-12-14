@@ -9,7 +9,7 @@
   %h2=group.full_name
   -if @motions.present?
     %p Decisions
-    %p 
+    %p
       -@activity[group.full_name][:motions].each do |motion|
         =link_to(motion.name, motion_url(motion))
         -if motion.close_date.present?
@@ -28,4 +28,4 @@
           \- new discussion
         %br
 
-=render 'unsubscribe_link'
+= render 'unsubscribe_link'
