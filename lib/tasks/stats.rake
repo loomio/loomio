@@ -5,7 +5,9 @@ namespace :stats do
       csv << ["id", "name", "created_at", "viewable_by", "parent_id", "description", "memberships_count", "archived_at"]
       Group.all.each do |group|
         if group.viewable_by == :everyone
-         csv << [group.id, group.name, group.created_at, group.viewable_by, group.parent_id, group.description, group.memberships_count, group.archived_at]
+          csv << [group.id, group.name, group.created_at, group.viewable_by, group.parent_id, group.description, group.memberships_count, group.archived_at]
+        else
+          csv << [Digest::MD5.hexdigest(group.id.to_s), "Private", group.created_at, group.viewable_by, group.parent_id, "Private", group.memberships_count, group.archived_at]
         end
       end
     end
