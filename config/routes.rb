@@ -30,7 +30,7 @@ Loomio::Application.routes.draw do
     put :edit_outcome, :on => :member
   end
   match "/motions/:id/close", :to => "motions#close_voting", :as => :close_motion_voting,
-        :via => :post
+        :via => :put
   match "/motions/:id/open", :to => "motions#open_voting", :as => :open_motion_voting,
         :via => :post
 
