@@ -57,9 +57,6 @@ class Membership < ActiveRecord::Base
   after_save :update_counter_cache
   after_destroy :update_counter_cache
 
-  #
-  # STATE MACHINE
-  #
 
   include AASM
   aasm :column => :access_level do
@@ -72,7 +69,7 @@ class Membership < ActiveRecord::Base
     end
 
     event :make_admin do
-      transitions :to => :admin, :from => [:member]
+      transitions :to => :admin, :from => [:request, :member, :admin]
     end
 
     event :remove_admin do
@@ -80,9 +77,6 @@ class Membership < ActiveRecord::Base
     end
   end
 
-  #
-  # PUBLIC METHODS
-  #
 
   def group_has_multiple_admins?
     group.admins.count > 1
@@ -92,9 +86,15 @@ class Membership < ActiveRecord::Base
     return user_name ? user_name : user_email
   end
 
-  #
-  # PRIVATE METHODS
-  #
+  def promote_to_member!(inviter=nil)
+    # TODO: try to merge with approve!
+    if request?
+      self.inviter = inviter
+      approve!
+      Event.user_added_to_group! self
+    end
+  end
+
 
   private
     def check_group_max_size
@@ -122,7 +122,7 @@ class Membership < ActiveRecord::Base
     end
 
     def set_defaults
-      self.access_level ||= 'request'
+      self.access_level = 'request' if (access_level == nil) || access_level.is_a?(Array)
     end
 
     def update_counter_cache
