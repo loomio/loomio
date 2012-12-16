@@ -12,7 +12,6 @@ Given /^I have been invited to join a loomio group and I am an existing user$/ d
 end
 
 When /^I open the email and click the invitation link$/ do
-  pending "need to resolve email_spec capybara_email conflict"
   open_email(@recipient_email)
   click_first_link_in_email
 end
@@ -89,9 +88,3 @@ end
 Then /^I should become the admin of the group$/ do
   @user.is_group_admin?(@group).should == true
 end
-
-Then /^I should be taken to the group\'s demo proposal page$/ do
-  page.should have_content("We should have a holiday on the moon!")
-end
-
-

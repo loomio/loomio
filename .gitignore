@@ -16,3 +16,4 @@ public/images
 .project
 Session.vim
 *.sql
+.env
