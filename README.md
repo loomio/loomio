@@ -25,12 +25,13 @@ You can install [ImageMagick](http://www.imagemagick.org/script/binary-releases.
   $ sudo apt-get install libmagickwand-dev
 ```
 
-### Set up the database
+### Set up the database (and other little bits)
 
 ```
   $ cd /dir/to/loomio/
   $ bundle install
   $ cp config/database.example.yml config/database.yml
+  $ cp .example-env .env
   $ bundle exec rake db:create
   $ bundle exec rake db:schema:load
   $ bundle exec rake db:schema:load RAILS_ENV=test
@@ -46,7 +47,7 @@ Then start the Rails server:
 
 ```
   $ cd /dir/to/loomio/
-  $ rails server
+  $ foreman start
 ```
 
 You can now see Loomio on your computer at `http:localhost:3000`
@@ -77,9 +78,15 @@ login with two users at the same time)
 
 ## Contribute
 
-Loomio is being developed by a team of dedicated volunteers. We operate with a “flat” structure, meaning at the end of the day there’s no single person calling the shots. We all work together and decide collectively what the best decisions are, and we make these decisions using Loomio itself.
-
 If you'd like to contribute to the project, check out [Contributing to Loomio](https://github.com/enspiral/loomio/wiki/Contributing-to-Loomio).
+
+Also, before you submit a pull-request, please sign our CLA:
+
+http://goo.gl/YfXNU
+
+It ensures that the copyright will always stay on an OSI or FSF certified license. It was automatically generated using [harmony agreements](http://www.harmonyagreements.org/). If you're interested, here's the discussion that we had to decide on the license and CLA:
+
+http://www.loomio.org/discussions/248?proposal=476
 
 ## License
 

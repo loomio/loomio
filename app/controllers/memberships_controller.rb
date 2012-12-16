@@ -72,11 +72,7 @@ class MembershipsController < BaseController
       membership = @group.add_request!(current_user)
       Event.membership_requested!(membership)
       flash[:notice] = "Membership requested."
-      if can? :show, @group
-        redirect_to group_url(@group)
-      else
-        redirect_to root_url
-      end
+      redirect_to group_url(@group)
     else
       flash[:error] = "You cannot join a sub-group if you are not a member of the parent group."
       redirect_to :back

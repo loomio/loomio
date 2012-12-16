@@ -1,63 +1,16 @@
 .row
   .span7
     #group-form
-      =form_for(group) do |f|
-        .row
-          .span5
-            .control-group
-              = f.label :name, "Group Name",
-                {id: "group-name-label", class: "control-label", for: "group-name"}
-              #group-name-error.presence-error-message Please fill in a title
-              = f.text_field :name, class: "validate-presence inputError limit-250", id: "group-name"
-              .character-counter
-        .privacy-settings
-          #settings-header
-            %h4 Settings
-          %hr
-            - suffix = "group"
-            - suffix = "sub-group" unless group.parent.nil?
-          .setting-label= "Who can see this #{suffix}?"
-          .settings
-            .row
-              .span3
-                =f.radio_button :viewable_by, "everyone"
-                =f.label :viewable_by_everyone, "Public"
-              .span4
-                .explanation.helper-text
-                  %p= "- Anyone with a link can see this group"
-            .row
-              .span3
-                =f.radio_button :viewable_by, "members"
-                =f.label :viewable_by_members, "Members"
-              .span4
-                .explanation.helper-text
-                  %p= "- Only members of this #{suffix} can see this group"
-            - unless group.parent.nil?
-              .row
-                .span3
-                  =f.radio_button :viewable_by, "parent_group_members"
-                  =f.label :viewable_by_parent_group_members, "Parent group members"
-                .span4
-                  .explanation.helper-text
-                    %p= "- Only members of this sub-group and the parent group can see this sub-group"
-          %hr
-          .setting-label= "Who can invite members to this #{suffix}?"
-          .settings
-            .row
-              .span3
-                =f.radio_button :members_invitable_by, "members"
-                =f.label :members_invitable_by_everyone, "All group members"
-            .row
-              .span3
-                =f.radio_button :members_invitable_by, "admins"
-                =f.label :members_invitable_by_admins, "Admins only"
-          %hr
-        =f.hidden_field :parent_id, :value => parent.id unless parent.nil?
-
-        .settings
-          .notification-settings
-            = f.check_box :email_new_motion # TODO: check this by default
-            = f.label :email_new_motion,
-              "Email group members when a new proposal is created in this group", class: "checkbox-label"
-        = f.submit submit_text, class: "btn btn-info run-validations", id: "update-group", :data => {:disable_with => "Updating group"}
-
+      =simple_form_for group, :validate => true do |f|
+        = f.input :name, :label => "Group Name"
+        %h3 Privacy Settings
+        - if group.parent.nil?
+          - suffix = "group"
+          = f.input :viewable_by, :collection => {'Public - anyone with the link can see this group' => 'everyone', 'Members - only members of this group can see it' => 'members'}, :as => 'radio_buttons', :label => "Who can see this group?"
+        - else
+          - suffix = "sub-group"
+          = f.input :viewable_by, :collection => {'Public - anyone with the link can see this sub-group' => 'everyone', 'Parent group members - only members of the main group can view this sub-group' => 'parent_group_members', 'Members - only members of this sub-group can see it' => 'members'}, :as => 'radio_buttons', :label => "Who can see this sub-group?"
+        %h3 Invitation Settings
+        = f.input :members_invitable_by, :label => "Who can invite members to this #{suffix}?", :as => "radio_buttons", :collection => {'All group members' => 'members', 'Admins only' => 'admins'}
+        = f.input :parent_id, :as => :hidden, :input_html => { :value => parent.id } unless parent.nil?
+        = f.button :submit, submit_text, :class => "btn btn-info", :data => { :disable_with => disable_text }, :id => "group_form_submit"
