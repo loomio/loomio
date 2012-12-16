@@ -32,6 +32,9 @@ class Event < ActiveRecord::Base
       end
     end
 
+    # TODO: Some of the stuff in this event should be sent to delayed job.
+    #       However, we can't delay the entire event, otherwise posting comments
+    #       is too slow.
     def new_comment!(comment)
       event = create!(:kind => "new_comment", :eventable => comment,
                       :discussion_id => comment.discussion.id)
@@ -153,7 +156,7 @@ class Event < ActiveRecord::Base
     end
 
     handle_asynchronously :new_discussion!
-    handle_asynchronously :new_comment!
+    # handle_asynchronously :new_comment!
     handle_asynchronously :new_motion!
     handle_asynchronously :motion_closing_soon!
     handle_asynchronously :new_vote!
