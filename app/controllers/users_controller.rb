@@ -61,7 +61,8 @@ class UsersController < BaseController
   end
 
   def set_avatar_kind
-    current_user.avatar_kind = params[:avatar_kind]
+    @avatar_kind = params[:avatar_kind]
+    current_user.avatar_kind = @avatar_kind
     current_user.save
     respond_to do |format|
       format.html { redirect_to(root_url) }

@@ -45,7 +45,6 @@ describe Users::InvitationsController do
           User.should_receive(:find_by_email).and_return(nil)
           User.should_receive(:invite_and_notify!).and_return(invited_user)
           invited_user.should_receive(:errors).twice.and_return([])
-          Event.should_receive(:user_added_to_group!)
 
           post :create, user: {email: "test@example.com", group_id: group.id}
 
@@ -62,7 +61,6 @@ describe Users::InvitationsController do
         it "should succeed and redirect if member is not in group" do
           invited_user.should_receive(:groups).and_return([])
           group.should_receive(:add_member!).with(invited_user, user)
-          Event.should_receive(:user_added_to_group!)
 
           post :create, user: {email: email, group_id: group.id}
 
@@ -72,7 +70,6 @@ describe Users::InvitationsController do
 
         it "should display alert and redirect if member is already in group" do
           invited_user.should_receive(:groups).and_return([group])
-          Event.should_not_receive(:user_added_to_group!)
 
           post :create, user: {email: email, group_id: group.id}
 

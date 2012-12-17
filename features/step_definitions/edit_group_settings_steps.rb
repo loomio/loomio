@@ -11,7 +11,7 @@ When /^I update the settings to members only$/ do
 end
 
 When /^I update the group name$/ do
-  fill_in 'group-name', with: "Second Test Group"
+  fill_in 'group_name', with: "Second Test Group"
 end
 
 Then /^the group name is changed$/ do

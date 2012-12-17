@@ -12,8 +12,10 @@ describe "Groups" do
       @motion = create(:motion, name: 'Test Motion',
                               discussion: @discussion,
                               author: @user)
-      page.driver.post user_session_path, 'user[email]' => @user.email,
-                                          'user[password]' => 'password'
+      visit("/users/sign_in")
+      fill_in("user_email", :with => @user.email)
+      fill_in("user_password", :with => @user.password)
+      click_button("sign-in-btn")
     end
 
     context "admin of a group" do
@@ -36,8 +38,8 @@ describe "Groups" do
       it "can edit group" do
         visit edit_group_path(@group)
 
-        fill_in 'group-name', with: 'New groupie'
-        find("#update-group").click
+        fill_in 'group_name', with: 'New groupie'
+        find("#group_form_submit").click
 
         should have_content("New groupie")
       end
