@@ -1,31 +1,26 @@
 When /^I invite "(.*?)" to the group$/ do |email|
+  @current_user = User.find_by_email email
   click_on "group-add-members"
   fill_in 'user_email', with: email
   click_on 'invite'
 end
 
-Then /^"(.*?)" should be added to the group$/ do |email|
-  Membership.where(:user_id => User.find_by_email(email)).size.should > 0
+Then /^they should be added to the group$/ do
+  Membership.where(:user_id => User.find_by_email(@current_user.email)).size.should > 0
 end
 
-When /^no such user is already in the group$/ do
-  Membership.where(:group_id => Group.last.id, :user_id => User.last.id).size == 0
+Then /^I should be notified that they are already a member$/ do
+  page.should have_content("#{@current_user.email} is already in the group.")
 end
 
-Given /^there is a user in the group$/ do
-  visit '/groups/' + Group.last.id.to_s
-  fill_in 'user_email', with: 'new_group_member@example.com'
-  click_on 'invite'
+Then /^I should be notified that they have been invited$/ do
+  page.should have_content("An invite has been sent")
 end
 
-Then /^"(.*?)" should not be a member of "(.*?)"$/ do |email, group_name|
-  Group.find_by_name(group_name).users.find_by_email(email).should be_nil
+Then /^I should be notified that the email address is invalid$/ do
+  page.should have_content("The email address given seems invalid.")
 end
 
-Then /^I should be notified that "(.*?)" is already a member$/ do |email|
-  page.should have_content("#{email} is already in the group.")
-end
-
-Then /^I should be notified that "(.*?)" is an invalid email$/ do |email|
-  page.should have_content("#{email} was not invited. The email address given seems invalid.")
+Then /^"(.*?)" should not be a member of the group$/ do |email|
+  Group.find_by_name(@group.name).users.find_by_email(email).should be_nil
 end
