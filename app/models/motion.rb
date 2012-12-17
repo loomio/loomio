@@ -32,7 +32,7 @@ class Motion < ActiveRecord::Base
   attr_accessor :create_discussion
   attr_accessor :enable_discussion
 
-  attr_accessible :name, :description, :discussion_url, :enable_discussion 
+  attr_accessible :name, :description, :discussion_url, :enable_discussion
   attr_accessible :close_date, :phase, :discussion_id, :outcome
 
   include AASM
@@ -277,7 +277,7 @@ class Motion < ActiveRecord::Base
         self.disable_discussion = @enable_discussion == "1" ? "0" : "1"
       end
     end
-    
+
     def update_counter_cache
       group.update_attribute(:motions_count, group.motions.count)
     end
