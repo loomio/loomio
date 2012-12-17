@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214041654) do
+ActiveRecord::Schema.define(:version => 20121217032530) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(:version => 20121214041654) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
-    t.datetime "removed_at"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -183,8 +182,8 @@ ActiveRecord::Schema.define(:version => 20121214041654) do
     t.datetime "updated_at"
     t.string   "access_level"
     t.integer  "inviter_id"
-    t.datetime "group_last_viewed_at",              :null => false
-    t.boolean  "subscribed_to_notification_emails"
+    t.datetime "group_last_viewed_at",                                :null => false
+    t.boolean  "subscribed_to_notification_emails", :default => true
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
