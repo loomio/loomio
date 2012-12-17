@@ -64,7 +64,11 @@ class Event < ActiveRecord::Base
       MotionMailer.motion_closed(motion, motion.author.email).deliver
       event = create!(:kind => "motion_closed", :eventable => motion, :user => closer,
                       :discussion_id => motion.discussion.id)
-      event.notify!(closer)
+      motion.group_users.each do |user|
+        unless user == closer
+          event.notify!(user)
+        end
+      end
     end
 
     def motion_closing_soon!(motion)
