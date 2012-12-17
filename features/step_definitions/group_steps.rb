@@ -51,6 +51,10 @@ Given /^"(.*?)" is a member of the group$/ do |arg1|
   @group.add_member! user
 end
 
+Then /^(?:I|they) should be taken to the group page$/ do
+  page.should have_content(@group.name)
+end
+
 Given /^the group has a discussion with a decision$/ do
   @discussion = FactoryGirl.create :discussion, :group => @group
   @motion = FactoryGirl.create :motion, :discussion => @discussion
