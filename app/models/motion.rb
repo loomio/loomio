@@ -279,7 +279,6 @@ class Motion < ActiveRecord::Base
     end
     
     def update_counter_cache
-      self.group.motions_count = group.motions.count
-      group.save
+      group.update_attribute(:motions_count, group.motions.count)
     end
-  end
+end
