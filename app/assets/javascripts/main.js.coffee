@@ -69,7 +69,7 @@ Application.getPageParam = () ->
 # confirm dialog box for class ".confirm-dialog"
 $ ->
   $(".confirm-dialog").click((event)->
-    this_link = $(".confirm-dialog")
+    this_link = $(this)
     titleText = this_link.data("title")
     bodyText = this_link.data("body")
     methodText = this_link.data("method-type")
