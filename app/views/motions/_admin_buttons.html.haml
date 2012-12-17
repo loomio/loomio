@@ -1,2 +1,2 @@
 - if can? :close_voting, motion
-  = link_to "Close proposal", "#", 'data-title' => "Close proposal", 'data-body' => "Are you sure you want to close this proposal?", 'data-confirm-path' => close_motion_voting_path(motion), 'data-cancel-path' => motion_path(motion.id), class: 'btn btn-small confirm-dialog', id: 'close-voting'
+  = link_to "Close proposal", "#", 'data-title' => "Close proposal", 'data-body' => "Are you sure you want to close this proposal?", 'data-confirm-path' => close_motion_voting_path(motion), 'data-method-type' => 'put', class: 'btn btn-small confirm-dialog', id: 'close-voting'
