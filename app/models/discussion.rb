@@ -166,11 +166,11 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def set_edit_title_activity!(user)
+  def fire_edit_title_event(user)
     Event.discussion_title_edited!(self, user)
   end
 
-  def set_edit_discription_activity!(user)
+  def fire_edit_discription_event(user)
     Event.discussion_description_edited!(self, user)
   end
 

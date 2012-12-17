@@ -222,23 +222,19 @@ class Motion < ActiveRecord::Base
   def set_close_date(date, editor=nil)
     if date > Time.now
       self.close_date = date
-      set_motion_close_date_edited_activity!(editor)
+      fire_motion_close_date_edited_event(editor)
       save
     end
-  end
-
-  def set_motion_close_date_edited_activity!(user)
-    Event.motion_close_date_edited!(self, user)
-  end
-
-  def set_new_motion_activity!
-    Event.new_motion!(self)
   end
 
   private
 
     def fire_new_motion_event
       Event.new_motion!(self)
+    end
+
+    def fire_motion_close_date_edited_event(user)
+      Event.motion_close_date_edited!(self, user)
     end
 
     def before_close

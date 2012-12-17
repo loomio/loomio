@@ -54,9 +54,12 @@ describe Motion do
       @discussion = create :discussion, :group => @group
     end
     it "adds motion created activity if a motion is created successfully" do
-      motion = create :motion, :discussion => @discussion
-      Event.should_receive(:new_motion!)
-      motion.set_new_motion_activity!
+      motion = Motion.new
+      motion.name = "That we create me"
+      motion.author = @user
+      motion.discussion = @discussion
+      motion.should_receive(:fire_new_motion_event)
+      motion.save!
     end
     it "adds motion closed activity if a motion is closed" do
       motion = create :motion, :discussion => @discussion
@@ -65,8 +68,8 @@ describe Motion do
     end
     it "adds edit motion close date activity if a motion close date is edited" do
       motion = create :motion, :discussion => @discussion
-      Event.should_receive(:motion_close_date_edited!)
-      motion.set_motion_close_date_edited_activity!(@user)
+      motion.should_receive(:fire_motion_close_date_edited_event).with(@user)
+      motion.set_close_date(2.days.from_now, @user)
     end
   end
 

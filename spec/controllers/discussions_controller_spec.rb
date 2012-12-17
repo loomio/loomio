@@ -154,6 +154,12 @@ describe DiscussionsController do
           :id => discussion.id,
           :description => "blah"
       end
+      it "saves the model" do
+        discussion.should_receive :fire_edit_discription_event
+        xhr :post, :edit_description,
+          :id => discussion.id,
+          :description => "blah"
+      end
     end
 
     describe "edit title" do
@@ -168,6 +174,12 @@ describe DiscussionsController do
       end
       it "saves the model" do
         discussion.should_receive :save!
+        xhr :post, :edit_title,
+          :id => discussion.id,
+          :title => "The Butterflys"
+      end
+      it "creates activity in the events table" do
+        discussion.should_receive :fire_edit_title_event
         xhr :post, :edit_title,
           :id => discussion.id,
           :title => "The Butterflys"

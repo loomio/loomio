@@ -42,7 +42,7 @@ class Vote < ActiveRecord::Base
 
   after_save :send_notifications
 
-  after_create :update_motion_last_vote_at, :set_new_vote_activity!
+  after_create :update_motion_last_vote_at, :fire_new_vote_event
   after_destroy :update_motion_last_vote_at
 
   def other_group_members
@@ -89,7 +89,7 @@ class Vote < ActiveRecord::Base
       motion.save!
     end
 
-    def set_new_vote_activity!
+    def fire_new_vote_event
       if position == "block"
         Event.motion_blocked!(self) 
       else
