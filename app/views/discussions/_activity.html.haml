@@ -4,27 +4,6 @@
     %li.selector-item.empty-list-message
       There isn't any activity in this discussion yet.
   - else
-    - discussion.activity.each do |activity_event|
-      - activity_item = activity_event.eventable
-      - case activity_event.kind
-        - when 'new_comment'
-          - unless activity_item.is_archived?
-            %li= render activity_item
-        - when 'new_vote'
-          = render 'activity_item', :icon => 'position-icon', :position => activity_item.position, :group => activity_item.discussion.group, :actor => activity_item.user, :header => render_position_message(activity_item), :body => position_activity_body(activity_item.statement), :time => activity_item.created_at
-        - when 'motion_blocked'
-          = render 'activity_item', :icon => 'position-icon', :position => activity_item.position, :group => activity_item.discussion.group, :actor => activity_item.user, :header => render_position_message(activity_item), :body => position_activity_body(activity_item.statement), :time => activity_item.created_at
-        - when 'new_motion'
-          = render 'activity_item', :icon => 'proposal-icon', :position => nil, :group => activity_item.discussion.group, :actor => activity_item.author, :header => 'created a proposal:', :body => " \"#{activity_item.name}\"", :time => activity_item.created_at
-        - when 'motion_closed'
-          = render 'activity_item', :icon => 'proposal-icon', :position => nil, :group => activity_item.discussion.group, :actor => closed_motion_activity_actor(activity_event.user), :header => closed_motion_activity_header(activity_event.user), :body => " \"#{activity_item.name}\"", :time => activity_item.created_at
-        - when 'motion_close_date_edited'
-          = render 'activity_item', :icon => 'proposal-icon', :position => nil, :group => activity_item.discussion.group, :actor => activity_event.user, :header => 'changed the closing date for the proposal', :body => "", :time => activity_event.created_at
-        - when 'new_discussion'
-          - discussion_version = discussion.version_at(activity_event.created_at)
-          = render 'activity_item', :icon => 'discussion-icon', :position => nil, :group => activity_item.group, :actor => activity_item.author, :header => "created the discussion: ", :body => " \"#{discussion_version.title}\"", :time => activity_item.created_at
-        - when 'discussion_title_edited'
-          - discussion_version = discussion.version_at(activity_event.created_at)
-          = render 'activity_item', :icon => 'loomio-icon', :position => nil, :group => activity_item.group, :actor => activity_event.user, :header => 'changed the discussion title:', :body => " \"#{discussion_version.title}\"", :time => activity_event.created_at
-        - when 'discussion_description_edited'
-          = render 'activity_item', :icon => 'discussion-icon', :position => nil, :group => activity_item.group, :actor => activity_event.user, :header => 'changed the discussion description', :body => "", :time => activity_event.created_at
+    - discussion.activity.each do |event|
+      - activity_item = ActivityItem.new (event)
+      = render 'activity_item', :icon => activity_item.icon, :position => activity_item.position, :group => activity_item.group, :actor => activity_item.actor, :header => activity_item.header, :body => activity_item.body, :time => activity_item.time
