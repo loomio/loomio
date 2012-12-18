@@ -4,10 +4,10 @@ class RegenerateUsernames < ActiveRecord::Migration
       ensure_name_entry if name.nil?
       if name.include? '@'
         #email used in place of name
-        email_str = email.split("@").first 
-        new_username = email_str.gsub(/\s+/, "").downcase
+        email_str = email.split("@").first
+        new_username = email_str.gsub(/[^a-zA-Z0-9]/, "").downcase
       else
-        new_username = name.gsub(/\s+/, "").downcase
+        new_username = name.gsub(/[^a-zA-Z0-9]/, "").downcase
       end
       username_tmp = new_username.dup
       num = 1
@@ -28,10 +28,8 @@ class RegenerateUsernames < ActiveRecord::Migration
   end
 
   def up
-  	User.all.each do |user|
-  		if user.username =~ /[^a-zA-Z0-9]/
-	  		user.generate_username
-	  	end
+  	User.where("username ~ '[^a-zA-Z0-9]'").each do |user|
+  		user.generate_username
   	end
   end
 
