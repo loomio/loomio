@@ -1,16 +1,19 @@
-= simple_form_for @group_request, :validate => true do |f|
-  = f.input :name,  :label => "Group name"
-  = f.input :description, :placeholder => "Tell us a bit about your group, and why you'd like to use Loomio"
-  = f.input :admin_email, :label => "Your email"
-  = f.input :expected_size, :label => "Approximate number of people involved"
-  %h2 How spread out is your group?
-  = f.input :distribution_metric, :label => "On a scale of 1 to 5", :collection => {'1 - Our whole group has regular in-person meetings' => 0, '2 - Most of us meet in person regularly' => 1, '3 - Some of us meet in person' => 2, '4 - Most of our interactions are online' => 3, '5 - All of our interactions are online' => 4}, :as => :radio_buttons
-  %h2 What type of group is it?
-  = f.input :sectors_metric, :label => false, :as => :check_boxes, :collection => {'Community' => 'community', 'Business' => 'business', 'Government' => 'government', 'Other:' => 'other'}, :validate => { :presence => true }
-  = f.input :other_sectors_metric, :label => false
-  %h2 Contribution
-  %p Most groups are making a regular financial contribution in return for use of the tool. On the other hand, we don't want money to be a barrier to entry for groups without a budget. Let us know if this sounds like you:
-  = f.input :cannot_contribute, :label => false, :inline_label => "Our group is not in a position to contribute financially"
-  = f.input :robot_trap, :label => false, :placeholder => "Leave this field blank if you're a human", :input_html => { :class => "robot_trap" }
+.row
+  .span5.offset2
+    = simple_form_for @group_request, :validate => true do |f|
+      = f.input :name,  :label => "Group name"
+      = f.input :description, :placeholder => "Tell us a bit about your group, and why you'd like to use Loomio"
+      = f.input :admin_email, :label => "Your email"
+      = f.input :expected_size, :label => "Approximate number of people involved"
+      %h2 How spread out is your group?
+      = f.input :distribution_metric, :label => "On a scale of 1 to 5", :collection => {'1 - Our whole group has regular in-person meetings' => 0, '2 - Most of us meet in person regularly' => 1, '3 - Some of us meet in person' => 2, '4 - Most of our interactions are online' => 3, '5 - All of our interactions are online' => 4}, :as => :radio_buttons
+      %h2 What type of group is it?
+      = f.input :sectors_metric, :label => false, :as => :check_boxes, :collection => {'Community' => 'community', 'Business' => 'business', 'Government' => 'government', 'Other:' => 'other'}, :validate => { :presence => true }
+      = f.input :other_sectors_metric, :label => false
+      %h2 Contribution
+      %p Most groups are making a regular financial contribution in return for use of the tool. On the other hand, we don't want money to be a barrier to entry for groups without a budget. Let us know if this sounds like you:
+      = f.input :cannot_contribute, :label => false, :inline_label => "Our group is not in a position to contribute financially"
 
-  = f.submit 'Request new group', :class => "btn btn-large btn-info btn-block", id: "submit-group-request", :data => {:disable_with => "Request new group"}
+      = f.submit 'Request new group', :class => "btn btn-large btn-info btn-block", id: "submit-group-request", :data => {:disable_with => "Request new group"}
+
+      = f.input :robot_trap, :label => false, :placeholder => "Leave this field blank if you're a human", :input_html => { :class => "robot_trap" }

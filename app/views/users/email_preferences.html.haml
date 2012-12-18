@@ -13,7 +13,7 @@
   %h2 Group Activity Notifications
   %p For each group, check the box if you want to be emailed immediately about new discussions and decisions.
 
-  =f.collection_check_boxes :group_email_preferences, @user.memberships.select{|m| m.group }.sort{|a,b| a.group_full_name <=> b.group_full_name}, :id, :group_full_name, {}, {:class => 'checkbox'}{ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
+  .control-group
+    =f.collection_check_boxes :group_email_preferences, @user.memberships.select{|m| m.group }.sort{|a,b| a.group_full_name <=> b.group_full_name}, :id, :group_full_name, {}, {:class => 'checkbox'}{ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
 
-
-  =f.submit 'Update preferences', :class => "btn, btn-info"
+  =f.submit 'Update preferences', :class => "btn btn-info btn-large"
