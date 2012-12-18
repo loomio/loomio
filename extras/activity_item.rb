@@ -1,6 +1,4 @@
 class ActivityItem
-  attr_reader :icon, :position, :group, :actor, :header, :body, :time
-
   def initialize(event)
     event_item = event.eventable
     @item = case event.kind
