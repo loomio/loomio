@@ -9,7 +9,7 @@ class ActivityItem
       when 'new_vote'
         NewVoteActivityItem.new(event_item)
       when 'motion_blocked'
-        MotionBlockedActivityItem.new(event_item)
+        NewVoteActivityItem.new(event_item)
       when 'motion_closed'
         MotionClosedActivityItem.new(event, event_item)
       when 'motion_close_date_edited'
