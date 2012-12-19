@@ -28,8 +28,15 @@ task :events => :environment do    # Export all events, scramble users, scramble
           user = eventable.author if eventable
           group = eventable.group if eventable
         when "new_comment", "new_vote", "motion_blocked", "membership_requested", "comment_liked"
-          user = eventable.user if eventable
-          group = eventable.group if eventable
+          begin
+            user = eventable.user if eventable
+            group = eventable.group if eventable
+          rescue => error
+            puts error.class
+            puts error
+            user = nil
+            group = nil
+          end
         when "motion_closed"
           user = event.user
           group = eventable.group if eventable
@@ -40,29 +47,31 @@ task :events => :environment do    # Export all events, scramble users, scramble
           user = nil
           group = nil
         end
-   
+
         user_id = user ? user.id : ""
 
         # scramble users, and (private) groups & subgroups
 
         user_id = Digest::MD5.hexdigest(user_id.to_s)
 
-        if group.viewable_by == :everyone
-          group_id = group.id
-        else
-          group_id = Digest::MD5.hexdigest(group.id.to_s)
-        end
+        if group
+          if group.viewable_by == :everyone
+            group_id = group.id
+          else
+            group_id = Digest::MD5.hexdigest(group.id.to_s)
+          end
 
-        if group.parent and group.viewable_by == :everyone
-          parent_group_id = group.parent.id.to_s
-        elsif group.parent  # i.e. the group is not public
-          parent_group_id = Digest::MD5.hexdigest(group.parent.id.to_s)
-        else
-          parent_group_id =  ""
+          if group.parent and group.viewable_by == :everyone
+            parent_group_id = group.parent.id.to_s
+          elsif group.parent  # i.e. the group is not public
+            parent_group_id = Digest::MD5.hexdigest(group.parent.id.to_s)
+          else
+            parent_group_id =  ""
+          end
         end
 
         csv << [id, user_id, group_id, parent_group_id, kind, created_at]
-      end      
+      end
     end
   end
 end
