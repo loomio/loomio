@@ -1,8 +1,8 @@
 class ActivityItems::NewDiscussion
-  attr_reader :discussion
+  attr_reader :event, :discussion
 
-  def initialize(discussion)
-    @discussion = discussion
+  def initialize(event, discussion)
+    @event, @discussion = event, discussion
   end
 
   def icon
@@ -14,7 +14,7 @@ class ActivityItems::NewDiscussion
   end
 
   def actor
-    discussion.user
+    discussion.author
   end
 
   def header
@@ -22,7 +22,8 @@ class ActivityItems::NewDiscussion
   end
 
   def body
-    " \"#{discussion.version_at(discussion.created_at).title}\""
+    # " \"#{discussion.title}\""
+    " \"#{discussion.version_at(event.created_at).title}\""
   end
 
   def time
