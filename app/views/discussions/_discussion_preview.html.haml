@@ -5,7 +5,7 @@
       - if user_signed_in? && discussion.current_motion
         .vote-icon
           - if current_user.group_membership(this_group) || this_group.nil?
-            = render "motions/display_icons", position: current_user.position(discussion.current_motion)
+            %div{:class => 'activity-icon ' + vote_icon_name(current_user.position(discussion.current_motion))}
       .discussion-title
         = truncate(discussion.title, :length => 60, :separator => ' ')
         .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
