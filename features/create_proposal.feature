@@ -13,6 +13,7 @@ Feature: User creates proposal
     And I click "Create new proposal"
     And fill in the proposal details and submit the form
     Then a new proposal is created
+    And I should see the proposal details
 
   Scenario: Members get emailed when a proposal is created
    Given "Ben" is a member of the group

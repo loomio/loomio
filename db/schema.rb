@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210210130) do
+
+ActiveRecord::Schema.define(:version => 20121217032530) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -162,6 +163,8 @@ ActiveRecord::Schema.define(:version => 20121210210130) do
     t.integer  "distribution_metric"
     t.string   "sectors_metric"
     t.string   "other_sectors_metric"
+    t.integer  "discussions_count",    :default => 0,     :null => false
+    t.integer  "motions_count",        :default => 0,     :null => false
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -173,8 +176,8 @@ ActiveRecord::Schema.define(:version => 20121210210130) do
     t.integer  "group_id"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-    t.string   "token",                              :null => false
     t.boolean  "accepted",        :default => false
+    t.string   "token"
   end
 
   create_table "memberships", :force => true do |t|
@@ -184,8 +187,8 @@ ActiveRecord::Schema.define(:version => 20121210210130) do
     t.datetime "updated_at"
     t.string   "access_level"
     t.integer  "inviter_id"
-    t.datetime "group_last_viewed_at",              :null => false
-    t.boolean  "subscribed_to_notification_emails"
+    t.datetime "group_last_viewed_at",                                :null => false
+    t.boolean  "subscribed_to_notification_emails", :default => true
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
@@ -262,10 +265,10 @@ ActiveRecord::Schema.define(:version => 20121210210130) do
     t.boolean  "has_read_dashboard_notice",                                   :default => false, :null => false
     t.boolean  "has_read_group_notice",                                       :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                                  :default => false, :null => false
+    t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email",                          :default => true,  :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,  :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,  :null => false
-    t.string   "username"
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
   end

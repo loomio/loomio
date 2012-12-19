@@ -51,6 +51,10 @@ Given /^"(.*?)" is a member of the group$/ do |arg1|
   @group.add_member! user
 end
 
+Then /^(?:I|they) should be taken to the group page$/ do
+  page.should have_content(@group.name)
+end
+
 Given /^the group has a discussion with a decision$/ do
   @discussion = FactoryGirl.create :discussion, :group => @group
   @motion = FactoryGirl.create :motion, :discussion => @discussion
@@ -72,44 +76,44 @@ Given /^there is a discussion in a group I belong to$/ do
 end
 
 When /^I fill details for the subgroup$/ do
-  fill_in "group-name", :with => 'test group'
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_everyone"
   choose "group_members_invitable_by_members"
-  uncheck "group_email_new_motion"
 end
 
-When /^I fill details for  public all members invite subgroup$/ do
-  fill_create_subgroup_common
+When /^I fill details for public all members invite subgroup$/ do
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_everyone"
   choose "group_members_invitable_by_members"
+  click_on 'group_form_submit'
 end
 
 When /^I fill details for public admin only invite subgroup$/ do
-  fill_create_subgroup_common
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_everyone"
   choose "group_members_invitable_by_admins"
 end
 
 When /^I fill details for members only all members invite subgroup$/ do
-  fill_create_subgroup_common
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_members"
   choose "group_members_invitable_by_members"
 end
 
 When /^I fill details for members only admin invite subgroup$/ do
-  fill_create_subgroup_common
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_members"
   choose "group_members_invitable_by_admins"
 end
 
 When /^I fill details for members and parent members only all members invite subgroup$/ do
-  fill_create_subgroup_common
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_members"
   choose "group_members_invitable_by_members"
 end
 
 When /^I fill details for members and parent members admin only invite ubgroup$/ do
-  fill_create_subgroup_common
+  fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_members"
   choose "group_members_invitable_by_admins"
 end
@@ -118,6 +122,7 @@ When /^I visit the group page for "(.*?)"$/ do |group_name|
   visit group_path(Group.find_by_name(group_name))
 end
 
-When /^then I visit the group page$/ do
-  step %{I visit the group page}
+Then /^a new sub-group should be created$/ do
+  Group.where(:name=>"test group").should exist
 end
+

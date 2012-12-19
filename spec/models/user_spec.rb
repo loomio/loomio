@@ -467,6 +467,14 @@ describe User do
       user.generate_username
       user.username.should_not == "james@example.com"
     end
+
+    it "does not allow non-alphanumeric characters in usernames" do
+      user = User.new
+      user.name = "R!chard D. Bar_tle*tt$"
+      user.generate_username
+      user.username.should == "rcharddbartlett"
+    end
+
   end
 
 end

@@ -3,14 +3,13 @@ When /^I click create group$/ do
 end
 
 When /^I fill in the group details$/ do
-  fill_in 'group-name', with: "New Test Group"
-  click_on 'update-group'
+  fill_in 'group_name', with: "New Test Group"
+  click_on 'group_form_submit'
 end
 
 Given /^a group is created$/ do
-  visit "/groups/new"
-  fill_in 'group-name', with: "New Test Group"
-  click_on 'update-group'
+  fill_in 'group_name', with: "New Test Group"
+  click_on 'group_form_submit'
 end
 
 When /^I select public, open invite$/ do

@@ -241,7 +241,7 @@ form {
     height: 200px;
   }
 
-  h2{
+  h2, h3{
     margin: 1em 0 0.2em 0;
   }
 
@@ -254,6 +254,10 @@ form {
     margin-left: -5000px;
     margin-bottom: 0;
     height: 0;
+  }
+
+  input[type="submit"] {
+    margin: 1em 0 0 0;
   }
 
   /* this is a little mess that needs to be resolved*/

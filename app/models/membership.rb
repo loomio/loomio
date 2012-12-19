@@ -23,7 +23,7 @@ class Membership < ActiveRecord::Base
   # ASSOCIATIONS
   #
 
-  belongs_to :group
+  belongs_to :group, :counter_cache => true
   belongs_to :user
   belongs_to :inviter, :class_name => "User"
 
@@ -53,9 +53,6 @@ class Membership < ActiveRecord::Base
   after_initialize :set_defaults
   before_destroy :remove_open_votes
   after_destroy :destroy_subgroup_memberships
-
-  after_save :update_counter_cache
-  after_destroy :update_counter_cache
 
   #
   # STATE MACHINE
@@ -123,10 +120,5 @@ class Membership < ActiveRecord::Base
 
     def set_defaults
       self.access_level ||= 'request'
-    end
-
-    def update_counter_cache
-      self.group.memberships_count = group.memberships.count
-      group.save
     end
 end
