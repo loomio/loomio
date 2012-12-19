@@ -1,0 +1,82 @@
+.button-icon{
+  display: inline-block;
+  background-repeat: no-repeat;
+  height: 18px;
+  width: 18px;
+  padding: 0px 5px 0px 0;
+  vertical-align: text-bottom;
+}
+.activity-icon{
+  float: left;
+  padding-right: 0.4em;
+  display: block;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-position: 2px 1px;
+  width: 18px;
+}
+.large-icon{
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+  margin: 6px 13px 0 13px;
+  float: left;
+}
+
+.header-bar-icon{
+  position: relative;
+  bottom: 2px;
+}
+
+.button-icon.dot-icon {
+  background-image:url('/assets/dot-18.png');
+  float: right;
+}
+
+.activity-icon.proposal-icon {
+  background-image:url('/assets/pie-18.png');
+}
+.activity-icon.discussion-icon {
+  background-image:url('/assets/discussion-18.png');
+}
+.activity-icon.loomio-icon {
+  background-image:url('/assets/topic-18.png');
+}
+.activity-icon.position-yes-icon {
+  background-image:url('/assets/hand-yes-18.png');
+}
+.activity-icon.position-abstain-icon {
+  background-image:url('/assets/hand-abstain-18.png');
+}
+.activity-icon.position-no-icon {
+  background-image:url('/assets/hand-no-18.png');
+}
+.activity-icon.position-block-icon {
+  background-image:url('/assets/hand-block-18.png');
+}
+.activity-icon.position-unvoted-icon {
+  background-image:url('/assets/questionmark-18.png');
+}
+.large-icon.topic-icon {
+    background-image:url('/assets/topic-24.png');
+}
+.large-icon.discussion-icon.enabled-icon  {
+    background-image:url('/assets/discussion-24.png');
+}
+.large-icon.discussion-icon.disabled-icon  {
+    background-image:url('/assets/discussion-light-24.png');
+}
+.large-icon.decision-icon {
+    background-image:url('/assets/pie-24.png');
+}
+.large-icon.group-icon {
+  background-image:url('/assets/group-24.png');
+  margin: 0px;
+}
+.large-icon.notification-icon {
+  background-image:url('/assets/notification-24.png');
+  margin: 0;
+}
+.large-icon.pie-icon {
+  background-image: url("pie-light-24.png");
+}

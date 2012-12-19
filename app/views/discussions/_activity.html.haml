@@ -5,5 +5,8 @@
       There isn't any activity in this discussion yet.
   - else
     - discussion.activity.each do |event|
-      - activity_item = ActivityItem.new (event)
-      = render 'activity_item', :icon => activity_item.icon, :position => activity_item.position, :group => activity_item.group, :actor => activity_item.actor, :header => activity_item.header, :body => activity_item.body, :time => activity_item.time
+      - if event.kind == 'new_comment'
+        %li= render event.eventable
+      - else
+        - activity_item = ActivityItem.new (event)
+        %li.activity-item-container= render 'activity_item', :item => activity_item

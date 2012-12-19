@@ -1,51 +1,27 @@
 class ActivityItem
+  attr_accessor :item
+
+  delegate :icon, :position, :group, :actor, :header, :body, :time, :to => :item
+
   def initialize(event)
     event_item = event.eventable
     @item = case event.kind
       when 'new_motion'
-        NewMotionActivityItem.new(event_item)
+        ActivityItems::NewMotion.new(event_item)
       when 'new_vote'
-        NewVoteActivityItem.new(event_item)
+        ActivityItems::NewVote.new(event_item)
       when 'motion_blocked'
-        NewVoteActivityItem.new(event_item)
+        ActivityItems::NewVote.new(event_item)
       when 'motion_closed'
-        MotionClosedActivityItem.new(event, event_item)
+        ActivityItems::MotionClosed.new(event, event_item)
       when 'motion_close_date_edited'
-        MotionCloseDateEditedActivityItem.new(event, event_item)
+        ActivityItems::MotionCloseDateEdited.new(event, event_item)
       when 'new_discussion'
-        NewDiscussionActivityItem.new(event_item)
+        ActivityItems::NewDiscussion.new(event_item)
       when 'discussion_title_edited'
-        DiscussionTitleEditedActivityItem.new(event, event_item)
+        ActivityItems::DiscussionTitleEdited.new(event, event_item)
       when 'discussion_description_edited'
-        DiscussionDescriptionEditedActivityItem.new(event, event_item)
+        ActivityItems::DiscussionDescriptionEdited.new(event, event_item)
     end
-  end
-
-  def icon
-    @item.icon
-  end
-
-  def position
-    @item.position
-  end
-
-  def group
-    @item.group
-  end
-
-  def actor
-    @item.actor
-  end
-
-  def header
-    @item.header
-  end
-
-  def body
-    @item.body
-  end
-
-  def time
-    @item.time
   end
 end
