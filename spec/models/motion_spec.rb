@@ -26,31 +26,6 @@ describe Motion do
     @motion.user_has_voted?(nil).should == false
   end
 
-  context "motion created" do
-    it "sends email to group members if email notifications are enabled (default)" do
-      pending "this test is weird"
-      group = create(:group)
-      group.add_member!(create(:user))
-      group.add_member!(create(:user))
-      # Do not send email to author, so subtract one from total emails sent
-      MotionMailer.should_receive(:new_motion_created)
-        .exactly(group.users.count - 1).times
-        .with(kind_of(Motion), kind_of("")).and_return(stub(deliver: true))
-      @motion = create(:motion)
-    end
-
-    it "does not send email to group members if email notifications are disabled" do
-      group = build(:group)
-      group.email_new_motion = false
-      group.save
-      group.add_member!(create(:user))
-      group.add_member!(create(:user))
-      MotionMailer.should_not_receive(:new_motion_created)
-      @discussion = create(:discussion, group: group)
-      @motion = create(:motion, discussion: @discussion)
-    end
-  end
-
   it "cannot have invalid phases" do
     @motion = create(:motion)
     @motion.phase = 'bad'
