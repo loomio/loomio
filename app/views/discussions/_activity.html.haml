@@ -6,7 +6,7 @@
   - else
     - discussion.activity.each do |event|
       - if event.kind == 'new_comment'
-        %li= render event.eventable
+        %li= render event.eventable unless event.eventable.is_archived?
       - else
         - activity_item = ActivityItem.new (event)
         %li.activity-item-container= render 'activity_item', :item => activity_item
