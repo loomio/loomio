@@ -11,7 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
 ActiveRecord::Schema.define(:version => 20121217032530) do
 
   create_table "active_admin_comments", :force => true do |t|
@@ -176,8 +175,8 @@ ActiveRecord::Schema.define(:version => 20121217032530) do
     t.integer  "group_id"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.string   "token",                              :null => false
     t.boolean  "accepted",        :default => false
-    t.string   "token"
   end
 
   create_table "memberships", :force => true do |t|
@@ -265,10 +264,10 @@ ActiveRecord::Schema.define(:version => 20121217032530) do
     t.boolean  "has_read_dashboard_notice",                                   :default => false, :null => false
     t.boolean  "has_read_group_notice",                                       :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                                  :default => false, :null => false
-    t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email",                          :default => true,  :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,  :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,  :null => false
+    t.string   "username"
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
   end
