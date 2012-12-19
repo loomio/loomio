@@ -1,9 +1,9 @@
 When /^fill in the proposal details and submit the form$/ do
   @proposal_name = Faker::Lorem.sentence
   @proposal_description = Faker::Lorem.paragraph
-  fill_in 'motion-name', with: @proposal_name
+  fill_in 'motion_name', with: @proposal_name
   fill_in 'motion_description', with: @proposal_description
-  click_on 'Create proposal'
+  click_on 'proposal-submit'
 end
 
 Then /^"(.*?)" should be emailed about the new proposal$/ do |arg1|
