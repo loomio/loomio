@@ -18,7 +18,7 @@ class Membership < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :group_id
 
   belongs_to :group, :counter_cache => true
-  belongs_to :user
+  belongs_to :user, :counter_cache => true
   belongs_to :inviter, :class_name => "User"
   has_many :events, :as => :eventable, :dependent => :destroy
 

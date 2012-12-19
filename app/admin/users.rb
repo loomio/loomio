@@ -15,6 +15,7 @@ ActiveAdmin.register User do
     column :created_at
     column :last_sign_in_at
     column :is_admin
+    column "No. of groups", :memberships_count
     default_actions
   end
 
