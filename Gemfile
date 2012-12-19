@@ -39,6 +39,7 @@ gem 'rack-canonical-host'
 gem 'delayed_job_active_record'
 gem 'hirefireapp'
 gem 'foreman'
+gem 'aws-sdk'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
