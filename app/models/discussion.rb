@@ -16,7 +16,7 @@ class Discussion < ActiveRecord::Base
   acts_as_commentable
   has_paper_trail :only => [:title, :description]
 
-  belongs_to :group
+  belongs_to :group, :counter_cache => true
   belongs_to :author, class_name: 'User'
   has_many :motions
   has_many :closed_motions,
@@ -176,13 +176,12 @@ class Discussion < ActiveRecord::Base
 
 
   private
+    def populate_last_comment_at
+      self.last_comment_at = created_at
+      save
+    end
 
-  def populate_last_comment_at
-    self.last_comment_at = created_at
-    save
-  end
-
-  def fire_new_discussion_event
-    Event.new_discussion!(self)
-  end
+    def fire_new_discussion_event
+      Event.new_discussion!(self)
+    end
 end

@@ -26,6 +26,9 @@ class Motion < ActiveRecord::Base
   before_save :set_disable_discussion
   before_save :format_discussion_url
 
+  after_save :update_counter_cache
+  after_destroy :update_counter_cache
+
   attr_accessor :create_discussion
   attr_accessor :enable_discussion
 
@@ -277,5 +280,9 @@ class Motion < ActiveRecord::Base
       if @enable_discussion
         self.disable_discussion = @enable_discussion == "1" ? "0" : "1"
       end
+    end
+
+    def update_counter_cache
+      group.update_attribute(:motions_count, group.motions.count)
     end
 end

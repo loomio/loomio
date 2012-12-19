@@ -10,35 +10,12 @@ describe MembershipsController do
       request.env["HTTP_REFERER"] = group_url(@group)
     end
 
-    context "requests membership to a group visible to members" do
-      before do
-        # note trying to sneek member level access.. should be ignored
-        @membership_args = { :membership => {:group_id => @group.id,
-                                             :access_level => 'member'} }
-      end
-      it "redirects to dashboard" do
-        post :create, @membership_args
-        response.should redirect_to(root_url)
-      end
-      it "assigns group variable" do
-        post :create, @membership_args
-        assigns(:group).requested_users.should include(@user)
-      end
-      it "shows flash notice" do
-        post :create, @membership_args
-        flash[:notice].should =~ /Membership requested/
-      end
-      it "fires membership_requested event" do
-        Event.should_receive(:membership_requested!)
-        post :create, @membership_args
-      end
-    end
-
     context "requests membership to a group visible to everyone" do
       before do
         @group.update_attributes({viewable_by: :everyone})
       end
       it "should succeed and redirect to group show page" do
+        @group.update_attributes({viewable_by: :everyone})
         post :create, :membership => {:group_id => @group.id}
         response.should redirect_to(group_url(@group))
         assigns(:group).requested_users.should include(@user)
