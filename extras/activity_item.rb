@@ -17,7 +17,7 @@ class ActivityItem
       when 'motion_close_date_edited'
         ActivityItems::MotionCloseDateEdited.new(event, event_item)
       when 'new_discussion'
-        ActivityItems::NewDiscussion.new(event_item)
+        ActivityItems::NewDiscussion.new(event, event_item)
       when 'discussion_title_edited'
         ActivityItems::DiscussionTitleEdited.new(event, event_item)
       when 'discussion_description_edited'
