@@ -40,7 +40,7 @@ class Motion < ActiveRecord::Base
       transitions :to => :voting, :from => [:closed]
     end
 
-    event :close_voting, before: :before_close, after: :after_close do
+    event :close_voting, before: :before_close do
       transitions :to => :closed, :from => [:voting]
     end
   end
@@ -91,9 +91,7 @@ class Motion < ActiveRecord::Base
 
   def blocked?
     unique_votes.each do |v|
-      if v.position == "block"
-        return true
-      end
+      return true if v.position == "block"
     end
     false
   end
@@ -113,14 +111,9 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  def open_close_motion
-    if (close_date && close_date <= Time.now)
-      if voting?
-        close_voting
-        save
-      end
-    elsif closed?
-      open_voting
+  def close_if_expired
+    if (voting? && close_date && close_date <= Time.now)
+      close_voting
       save
     end
   end
@@ -172,9 +165,7 @@ class Motion < ActiveRecord::Base
   def number_of_votes_since_last_looked(user)
     if user && user.is_group_member?(group)
       last_viewed_at = last_looked_at_by(user)
-      if last_viewed_at 
-        return number_of_votes_since(last_viewed_at)
-      end
+      return number_of_votes_since(last_viewed_at) if last_viewed_at
     end
     unique_votes.count
   end
@@ -182,9 +173,7 @@ class Motion < ActiveRecord::Base
   def last_looked_at_by(user)
     motion_read_log = MotionReadLog.where('motion_id = ? AND user_id = ?',
       id, user.id).first
-    if motion_read_log
-      return motion_read_log.motion_last_viewed_at
-    end
+    return motion_read_log.motion_last_viewed_at if motion_read_log
   end
 
   def number_of_votes_since(time)
@@ -230,9 +219,6 @@ class Motion < ActiveRecord::Base
       self.close_date = Time.now
     end
 
-    def after_close
-    end
-
     def store_users_that_didnt_vote
       did_not_votes.each do |did_not_vote|
         did_not_vote.delete
@@ -265,8 +251,6 @@ class Motion < ActiveRecord::Base
     end
 
     def set_disable_discussion
-      if @enable_discussion
-        self.disable_discussion = @enable_discussion == "1" ? "0" : "1"
-      end
+      self.disable_discussion = @enable_discussion == "1" ? "0" : "1" if @enable_discussion
     end
 end
