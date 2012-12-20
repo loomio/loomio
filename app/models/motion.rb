@@ -49,8 +49,7 @@ class Motion < ActiveRecord::Base
   scope :closed_sorted, closed.order('close_date DESC')
 
   scope :that_user_has_voted_on, lambda {|user|
-    joins(:votes)
-    .where("votes.user_id = ?", user.id)
+    joins(:votes).where("votes.user_id = ?", user.id)
   }
 
   def group_users_without_motion_author
@@ -147,11 +146,8 @@ class Motion < ActiveRecord::Base
   end
 
   def group_count
-    if voting?
-      group.users.count
-    else
-      unique_votes.count + no_vote_count
-    end
+    return group.users.count if voting?
+    unique_votes.count + no_vote_count
   end
 
   def group_members
@@ -164,8 +160,7 @@ class Motion < ActiveRecord::Base
 
   def number_of_votes_since_last_looked(user)
     if user && user.is_group_member?(group)
-      last_viewed_at = last_looked_at_by(user)
-      return number_of_votes_since(last_viewed_at) if last_viewed_at
+      return number_of_votes_since(last_viewed_at) if last_looked_at_by(user)
     end
     unique_votes.count
   end
@@ -192,11 +187,8 @@ class Motion < ActiveRecord::Base
   end
 
   def latest_vote_time
-    if votes.count > 0
-      votes.order('created_at DESC').first.created_at
-    else
-      created_at
-    end
+    return votes.order('created_at DESC').first.created_at if votes.count > 0
+    created_at
   end
 
   def set_outcome(str)
@@ -204,7 +196,7 @@ class Motion < ActiveRecord::Base
       self.outcome = str
       save
     end
-  end 
+  end
 
   private
     def before_open
