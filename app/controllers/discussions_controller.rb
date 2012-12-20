@@ -68,11 +68,11 @@ class DiscussionsController < GroupBaseController
   end
 
   def add_comment
+    @discussion = Discussion.find(params[:id])
     comment = resource.add_comment(current_user, params[:comment])
     unless comment.valid?
       flash[:error] = "Comment could not be created."
     end
-    redirect_to discussion_path(resource.id)
   end
 
   def new_proposal
@@ -131,7 +131,7 @@ class DiscussionsController < GroupBaseController
     @last_collaborator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js
-    end     
+    end
   end
 
   private
