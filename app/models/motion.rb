@@ -22,13 +22,12 @@ class Motion < ActiveRecord::Base
   delegate :email_new_motion?, to: :group, prefix: :group
 
   after_create :initialize_discussion
-  before_save :set_disable_discussion
   before_save :format_discussion_url
 
   attr_accessor :create_discussion
   attr_accessor :enable_discussion
 
-  attr_accessible :name, :description, :discussion_url, :enable_discussion 
+  attr_accessible :name, :description, :discussion_url
   attr_accessible :close_date, :phase, :discussion_id, :outcome
 
   include AASM

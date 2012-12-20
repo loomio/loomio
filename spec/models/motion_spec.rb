@@ -273,7 +273,7 @@ describe Motion do
       last_viewed_at = Time.now
       motion = create(:motion)
       motion.votes.stub_chain(:where, :count).and_return(4)
-      
+
       motion.number_of_votes_since(last_viewed_at).should == 4
     end
   end
