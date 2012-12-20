@@ -241,8 +241,4 @@ class Motion < ActiveRecord::Base
         self.discussion_url = "http://" + self.discussion_url
       end
     end
-
-    def set_disable_discussion
-      self.disable_discussion = @enable_discussion == "1" ? "0" : "1" if @enable_discussion
-    end
 end
