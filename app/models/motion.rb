@@ -160,7 +160,7 @@ class Motion < ActiveRecord::Base
 
   def number_of_votes_since_last_looked(user)
     if user && user.is_group_member?(group)
-      return number_of_votes_since(last_viewed_at) if last_looked_at_by(user)
+      return number_of_votes_since(last_looked_at_by(user)) if last_looked_at_by(user)
     end
     unique_votes.count
   end
