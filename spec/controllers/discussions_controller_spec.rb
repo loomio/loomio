@@ -139,7 +139,7 @@ describe DiscussionsController do
 
     describe "edit description" do
       before do
-        discussion.stub(:set_edit_discription_activity!)
+        discussion.stub(:set_edit_description_activity!)
         discussion.stub(:save!)
       end
       it "assigns description to the model" do

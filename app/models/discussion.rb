@@ -24,8 +24,7 @@ class Discussion < ActiveRecord::Base
     :conditions => { phase: 'closed' },
     :order => "close_date desc"
   has_many :votes, through: :motions
-  has_many :comments,  :as => :commentable,
-    :conditions => { archived_at: nil }
+  has_many :comments,  :as => :commentable
   has_many :users_with_comments, :through => :comments,
     :source => :user, :uniq => true
   has_many :events, :as => :eventable, :dependent => :destroy
@@ -166,19 +165,31 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def fire_edit_title_event(user)
-    Event.discussion_title_edited!(self, user)
+  def set_description!(description, user)
+    description = description
+    save!
+    fire_edit_dscription_event(current_user)
   end
 
-  def fire_edit_discription_event(user)
-    Event.discussion_description_edited!(self, user)
+  def set_title!(title, user)
+    title = title
+    save!
+    fire_edit_title_event(user)
   end
-
 
   private
+
     def populate_last_comment_at
       self.last_comment_at = created_at
       save
+    end
+
+    def fire_edit_title_event(user)
+      Event.discussion_title_edited!(self, user)
+    end
+
+    def fire_edit_description_event(user)
+      Event.discussion_description_edited!(self, user)
     end
 
     def fire_new_discussion_event
