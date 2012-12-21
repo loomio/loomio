@@ -1,32 +1,61 @@
 #motion-form
-  .row
-    .span10
-      =form_for(*form_args) do |f|
-        .row
-          .span5
-            .control-group
-              = f.label :name, "Title", {class: "control-label", for: "inputError"}
-              .presence-error-message Please fill in a proposal title
-              = f.text_field :name, class: "validate-presence inputError limit-150", id: "motion-name", :placeholder => "What is your proposed course of action?"
-              .character-counter
-          .span5
-            .helper-text
-              %p Make the title as clear and succinct as possible so people know exactly what it means when they agree or disagree with your proposal.
-        .row
-          .span5
-            #closing-inputs
-              .control-group
-                = f.label :close_date, "Closing", {class: "control-label", for: "date-input", id: "close-date-label"}
-                = text_field_tag :input_date, nil, class: "date-input validate-motion-close-date inputError"
-                = select_hour(@input_time, ampm: true)
-                %span.date-error-message
-                  ='Please give a future close date (The date you gave has past)'
-            #description
-              = f.label :description, "Details"
-              = f.text_area :description, :placeholder => "Give enough information so that anyone in your group can make a well-informed decision."
-        =f.submit submit_text, class: "btn submit btn-info run-validations",
-          :data => { :disable_with => "Creating proposal" }
-        =f.hidden_field :close_date, as: :hidden
-        =f.hidden_field :phase, as: :hidden, value: "voting"
-        =f.hidden_field :facilitator_id, as: :hidden, value: current_user.id
-        =f.hidden_field :discussion_id, as: :hidden, value: @motion.discussion_id
+  = simple_form_for @motion, validate: true do |f|
+    %h2 New proposal
+    .row
+      .span5
+        = f.input :name, label: "Title", id: "motion-name", :placeholder => "What is your proposed course of action?"
+      .span5
+        %p Make the title as clear and succinct as possible so people know exactly what it means when they agree or disagree with your proposal.
+
+    .row
+      .span5
+        #closing-inputs
+          .control-group
+            = f.label :close_date, "Closing", {class: "control-label", for: "date-input", id: "close-date-label"}
+            = text_field_tag :input_date, nil, class: "date-input validate-motion-close-date inputError"
+            = select_hour(@input_time, ampm: true)
+            %span.date-error-message
+              ='Please give a future close date (The date you gave has past)'
+
+        #description
+          = f.input :description, label: "Details", placeholder: "Give enough information so that anyone in your group can make a well-informed decision."
+
+        = f.input :close_date, as: :hidden
+        = f.input :phase, as: :hidden, input_html: {value: "voting"}
+        = f.input :facilitator_id, as: :hidden, input_html: {value: current_user.id}
+        = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}
+        = f.submit 'Start proposal', :class => "btn btn-large btn-info run-validations", id: "proposal-submit", :data => {:disable_with => "Starting"}
+
+
+/ #motion-form
+/   .row
+/     .span10
+/       =form_for(*form_args) do |f|
+/         .row
+/           .span5
+/             .control-group
+/               = f.label :name, "Title", {class: "control-label", for: "inputError"}
+/               .presence-error-message Please fill in a proposal title
+/               = f.text_field :name, class: "validate-presence inputError limit-150", id: "motion-name", :placeholder => "What is your proposed course of action?"
+/               .character-counter
+/           .span5
+/             .helper-text
+/               %p Make the title as clear and succinct as possible so people know exactly what it means when they agree or disagree with your proposal.
+/         .row
+/           .span5
+/             #closing-inputs
+/               .control-group
+/                 = f.label :close_date, "Closing", {class: "control-label", for: "date-input", id: "close-date-label"}
+/                 = text_field_tag :input_date, nil, class: "date-input validate-motion-close-date inputError"
+/                 = select_hour(@input_time, ampm: true)
+/                 %span.date-error-message
+/                   ='Please give a future close date (The date you gave has past)'
+/             #description
+/               = f.label :description, "Details"
+/               = f.text_area :description, :placeholder => "Give enough information so that anyone in your group can make a well-informed decision."
+/         =f.submit submit_text, class: "btn submit btn-info run-validations",
+/           :data => { :disable_with => "Creating proposal" }
+/         =f.hidden_field :close_date, as: :hidden
+/         =f.hidden_field :phase, as: :hidden, value: "voting"
+/         =f.hidden_field :facilitator_id, as: :hidden, value: current_user.id
+/         =f.hidden_field :discussion_id, as: :hidden, value: @motion.discussion_id

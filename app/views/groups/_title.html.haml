@@ -1,8 +1,8 @@
 .page-container
   .group-title.clearfix
     - if group
-      %h2
-        .home-title= link_to "Home", "/"
+      %h1.home-title
+        = link_to "Home", "/"
         = content_tag :span, "\u25B6", class: 'name-separator'
         = group.fancy_link
       .dropdown.privacy-dropdown
@@ -36,5 +36,5 @@
           #email-members-modal.modal.hidden
             = render "groups/email_members", :group => group
     - else
-      %h2
-        .home-title= link_to "Home", "/"
+      %h1.home-title
+        = link_to "Home", "/"
