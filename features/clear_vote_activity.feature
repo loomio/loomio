@@ -30,7 +30,7 @@ Feature: Clear vote activity
     And the discussion has an open proposal
     And there is proposal activity on the discussion
     And I visit the discussion page
-    And then I visit the group page
+    And I visit the group page
     Then I should not see any new activity for that discussion
 
   Scenario: Logged out user views a discussion's proposal activity from the group page

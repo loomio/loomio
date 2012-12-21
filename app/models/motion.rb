@@ -7,7 +7,7 @@ class Motion < ActiveRecord::Base
   has_many :did_not_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
 
-  validates_presence_of :name, :discussion, :author 
+  validates_presence_of :name, :discussion, :author
   validates_inclusion_of :phase, in: PHASES
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
@@ -22,7 +22,10 @@ class Motion < ActiveRecord::Base
   delegate :email_new_motion?, to: :group, prefix: :group
 
   after_create :initialize_discussion
+  after_create :fire_new_motion_event
   before_save :format_discussion_url
+  after_save :update_counter_cache
+  after_destroy :update_counter_cache
 
   attr_accessor :create_discussion
 
@@ -197,6 +200,10 @@ class Motion < ActiveRecord::Base
   end
 
   private
+    def fire_new_motion_event
+      Event.new_motion!(self)
+    end
+
     def before_open
       self.close_date = Time.now + 1.week
       did_not_votes.each do |did_not_vote|
@@ -238,5 +245,9 @@ class Motion < ActiveRecord::Base
       unless self.discussion_url.match(/^http/) || self.discussion_url.empty?
         self.discussion_url = "http://" + self.discussion_url
       end
+    end
+
+    def update_counter_cache
+      group.update_attribute(:motions_count, group.motions.count)
     end
 end
