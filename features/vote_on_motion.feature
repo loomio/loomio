@@ -1,6 +1,6 @@
 Feature: User votes on a motion
-  In order to allow groups a way to decide on issues
-  Users must be able to vote on a motion
+  As a user in order to express my position on an issue
+  I must be able to vote on a motion
 
   Scenario: As a logged in member I should be able to vote 'yes' on a proposal
     Given I am logged in
