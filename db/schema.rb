@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(:version => 20121217032530) do
     t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "archived_at"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
