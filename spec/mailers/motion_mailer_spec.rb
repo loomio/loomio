@@ -8,7 +8,7 @@ describe MotionMailer do
 
   describe 'sending email on new motion creation' do
     before(:all) do
-      @email = MotionMailer.new_motion_created(motion, user.email)
+      @email = MotionMailer.new_motion_created(motion, user)
     end
 
     #ensure that the subject is correct

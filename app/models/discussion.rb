@@ -16,7 +16,7 @@ class Discussion < ActiveRecord::Base
   acts_as_commentable
   has_paper_trail :only => [:description]
 
-  belongs_to :group
+  belongs_to :group, :counter_cache => true
   belongs_to :author, class_name: 'User'
   has_many :motions
   has_many :votes, through: :motions
@@ -35,7 +35,6 @@ class Discussion < ActiveRecord::Base
 
   after_create :populate_last_comment_at
   after_create :fire_new_discussion_event
-
 
   def group_users_without_discussion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
@@ -172,12 +171,12 @@ class Discussion < ActiveRecord::Base
 
 
   private
-  def populate_last_comment_at
-    self.last_comment_at = created_at
-    save
-  end
+    def populate_last_comment_at
+      self.last_comment_at = created_at
+      save
+    end
 
-  def fire_new_discussion_event
-    Event.new_discussion!(self)
-  end
+    def fire_new_discussion_event
+      Event.new_discussion!(self)
+    end
 end
