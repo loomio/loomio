@@ -53,7 +53,7 @@ describe Motion do
       @group.add_admin! @user
       @discussion = create :discussion, :group => @group
     end
-    it "adds motion created activity if a motion is created successfully" do
+    it "fires new_motion event if a motion is created successfully" do
       motion = Motion.new
       motion.name = "That we create me"
       motion.author = @user
