@@ -362,6 +362,9 @@ code{
   filter:alpha(opacity=100);
   form {
     margin: 0;
+    .btn{
+      margin: 0;
+    }
   }
 }
 .modal-header h3 {
