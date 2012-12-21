@@ -23,16 +23,13 @@ class Motion < ActiveRecord::Base
 
   after_create :initialize_discussion
   after_create :fire_new_motion_event
-  before_save :set_disable_discussion
   before_save :format_discussion_url
-
   after_save :update_counter_cache
   after_destroy :update_counter_cache
 
   attr_accessor :create_discussion
-  attr_accessor :enable_discussion
 
-  attr_accessible :name, :description, :discussion_url, :enable_discussion
+  attr_accessible :name, :description, :discussion_url
   attr_accessible :close_date, :phase, :discussion_id, :outcome
 
   include AASM
@@ -49,8 +46,7 @@ class Motion < ActiveRecord::Base
   scope :closed_sorted, closed.order('close_date DESC')
 
   scope :that_user_has_voted_on, lambda {|user|
-    joins(:votes)
-    .where("votes.user_id = ?", user.id)
+    joins(:votes).where("votes.user_id = ?", user.id)
   }
 
   def group_users_without_motion_author
@@ -91,9 +87,7 @@ class Motion < ActiveRecord::Base
 
   def blocked?
     unique_votes.each do |v|
-      if v.position == "block"
-        return true
-      end
+      return true if v.position == "block"
     end
     false
   end
@@ -113,6 +107,7 @@ class Motion < ActiveRecord::Base
     end
   end
 
+<<<<<<< HEAD
   # motion is closed by user
   def close_motion!(user)
     Event.motion_closed!(self, user)
@@ -127,6 +122,12 @@ class Motion < ActiveRecord::Base
         close!
         save
       end
+=======
+  def close_if_expired
+    if (voting? && close_date && close_date <= Time.now)
+      close_voting
+      save
+>>>>>>> b55be0bb984bc3a9999a06e4586ada46e4c1575a
     end
   end
 
@@ -159,11 +160,8 @@ class Motion < ActiveRecord::Base
   end
 
   def group_count
-    if voting?
-      group.users.count
-    else
-      unique_votes.count + no_vote_count
-    end
+    return group.users.count if voting?
+    unique_votes.count + no_vote_count
   end
 
   def group_members
@@ -176,10 +174,7 @@ class Motion < ActiveRecord::Base
 
   def number_of_votes_since_last_looked(user)
     if user && user.is_group_member?(group)
-      last_viewed_at = last_looked_at_by(user)
-      if last_viewed_at 
-        return number_of_votes_since(last_viewed_at)
-      end
+      return number_of_votes_since(last_looked_at_by(user)) if last_looked_at_by(user)
     end
     unique_votes.count
   end
@@ -187,9 +182,7 @@ class Motion < ActiveRecord::Base
   def last_looked_at_by(user)
     motion_read_log = MotionReadLog.where('motion_id = ? AND user_id = ?',
       id, user.id).first
-    if motion_read_log
-      return motion_read_log.motion_last_viewed_at
-    end
+    return motion_read_log.motion_last_viewed_at if motion_read_log
   end
 
   def number_of_votes_since(time)
@@ -208,11 +201,8 @@ class Motion < ActiveRecord::Base
   end
 
   def latest_vote_time
-    if votes.count > 0
-      votes.order('created_at DESC').first.created_at
-    else
-      created_at
-    end
+    return votes.order('created_at DESC').first.created_at if votes.count > 0
+    created_at
   end
 
   def set_outcome(str)
@@ -221,6 +211,7 @@ class Motion < ActiveRecord::Base
       save
     end
   end
+<<<<<<< HEAD
 
   def set_close_date(date, editor=nil)
     if date > Time.now
@@ -229,6 +220,8 @@ class Motion < ActiveRecord::Base
       save
     end
   end
+=======
+>>>>>>> b55be0bb984bc3a9999a06e4586ada46e4c1575a
 
   private
 
@@ -273,12 +266,6 @@ class Motion < ActiveRecord::Base
     def format_discussion_url
       unless self.discussion_url.match(/^http/) || self.discussion_url.empty?
         self.discussion_url = "http://" + self.discussion_url
-      end
-    end
-
-    def set_disable_discussion
-      if @enable_discussion
-        self.disable_discussion = @enable_discussion == "1" ? "0" : "1"
       end
     end
 
