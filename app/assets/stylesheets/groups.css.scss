@@ -7,7 +7,13 @@
 
 // group title (on almost all pages)
 .group-title {
-  margin: 0 0 10px 0;
+  margin: 0;
+
+  h1{
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+
   .home-title {
     display: inline;
     color: $dark-grey;

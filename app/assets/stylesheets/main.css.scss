@@ -75,7 +75,7 @@ hr {
   #add-description-submit { float: left; }
   #cancel-add-description {
     float: left;
-    margin-left: 10px;
+    margin: 15px 0 0 10px;
     color: $mid-grey;
     text-decoration: underline;
     position: relative;
@@ -229,38 +229,61 @@ li.selector-item a.selector-link:hover {
 .color-warning { background-color: #F89406; }
 .color-ok { background: #016B01; }
 
+.page-title h1{
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+
+.rm-margin-top{
+  margin-top: 0;
+}
+
+.rm-margin-bottom{
+  margin-bottom: 0;
+}
+
+#vote-form textarea{
+  height: 100px;
+}
+
 form {
-  input, select, textarea {
-		height: auto;
-    width: 370px;
-    margin-bottom: 15px;
-    display: block;
-  }
-
-  textarea {
-    height: 200px;
-  }
-
-  h2, h3{
-    margin: 1em 0 0.2em 0;
-  }
-
-  /*.collection_check_boxes{
-    display: inline-block;
-    vertical-align: middle;
-  }
-*/
   .robot_trap {
     margin-left: -5000px;
     margin-bottom: 0;
     height: 0;
   }
 
-  input[type="submit"] {
-    margin: 1em 0 0 0;
+  input, select, textarea {
+    width: 100%;
   }
 
-  /* this is a little mess that needs to be resolved*/
+  textarea {
+    margin-bottom: 0;
+    height: 200px;
+  }
+
+  h2, h3, .btn{
+    /*bootstrap form .control-groups have 9px bottom margin*/
+    margin: 15px 0 9px 0;
+  }
+
+  .control-group{}
+
+/*  input[type="submit"] {
+    margin: 1em 0 0 0;
+  }*/
+
+  /*input, select, textarea {
+		height: auto;
+    width: 370px;
+    margin-bottom: 15px;
+    display: block;
+  }
+
+
+
+   this is a little mess that needs to be resolved
   input[type="checkbox"] {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -274,7 +297,7 @@ form {
   .checkbox-label {
     margin-left: 5px;
     display: inline;
-  }
+  }*/
 }
 
 .hidden {
