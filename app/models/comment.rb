@@ -79,16 +79,6 @@ class Comment < ActiveRecord::Base
   # CUSTOM METHODS (not part of acts_as_commentable)
   #
 
-  def is_archived?
-    not archived_at.nil?
-  end
-
-  def archive!
-    self.archived_at = Time.now
-    self.save!
-    update_discussion_last_comment_at
-  end
-
   def like(user)
     comment_vote = CommentVote.new
     comment_vote.comment = self

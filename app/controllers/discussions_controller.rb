@@ -85,11 +85,8 @@ class DiscussionsController < GroupBaseController
 
   def edit_description
     @discussion = Discussion.find(params[:id])
-    description = params[:description]
-    @discussion.description = description
-    @discussion.save!
+    @description.set_description!(params[:description], current_user)
     @last_collaborator = User.find @discussion.originator.to_i
-    @discussion.fire_edit_discription_event(current_user)
     respond_to do |format|
       format.js { render :action => 'update_version' }
     end
@@ -97,9 +94,7 @@ class DiscussionsController < GroupBaseController
 
   def edit_title
     @discussion = Discussion.find(params[:id])
-    @discussion.title = params[:title]
-    @discussion.save!
-    @discussion.fire_edit_title_event(current_user)
+    @discussion.set_title!(params[:title], current_user)
   end
 
   def show_description_history
