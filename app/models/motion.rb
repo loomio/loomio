@@ -25,7 +25,6 @@ class Motion < ActiveRecord::Base
   before_save :format_discussion_url
 
   attr_accessor :create_discussion
-  attr_accessor :enable_discussion
 
   attr_accessible :name, :description, :discussion_url
   attr_accessible :close_date, :phase, :discussion_id, :outcome
