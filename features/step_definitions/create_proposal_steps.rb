@@ -1,9 +1,9 @@
 When /^fill in the proposal details and submit the form$/ do
   @proposal_name = Faker::Lorem.sentence
   @proposal_description = Faker::Lorem.paragraph
-  fill_in 'motion-name', with: @proposal_name
+  fill_in 'motion_name', with: @proposal_name
   fill_in 'motion_description', with: @proposal_description
-  click_on 'Create proposal'
+  click_on 'proposal-submit'
 end
 
 Then /^"(.*?)" should be emailed about the new proposal$/ do |arg1|
@@ -34,3 +34,9 @@ Then /^the email should tell him when the proposal closes$/ do
   pending "this is a reminder to add motion closing time to new_motion_created.html.haml"
 end
 
+Then /^I should see the proposal details$/ do
+  proposal_description = @proposal_description.length > 20 ? @proposal_description[0..19] : @proposal_description
+  find('.motion-title').should have_content(@proposal_name)
+  find('.description').should have_content(proposal_description)
+  find('.pie').text.blank?.should == false
+end

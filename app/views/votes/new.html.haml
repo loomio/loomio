@@ -1,4 +1,3 @@
-%h2= link_to @motion.name, discussion_path(@motion.discussion)
-%h3 State your position
-= render 'form', motion: @motion, vote: @vote
-
+.page-title
+  %h1= link_to @motion.name, discussion_path(@motion.discussion)
+= render 'form', motion: @motion, vote: @vote, form_title: "State your position"
