@@ -7,7 +7,7 @@ class Motion < ActiveRecord::Base
   has_many :did_not_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
 
-  validates_presence_of :name, :discussion, :author 
+  validates_presence_of :name, :discussion, :author
   validates_inclusion_of :phase, in: PHASES
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
@@ -23,13 +23,13 @@ class Motion < ActiveRecord::Base
 
   after_create :initialize_discussion
   after_create :fire_new_motion_event
-  before_save :set_disable_discussion
   before_save :format_discussion_url
+  after_save :update_counter_cache
+  after_destroy :update_counter_cache
 
   attr_accessor :create_discussion
-  attr_accessor :enable_discussion
 
-  attr_accessible :name, :description, :discussion_url, :enable_discussion 
+  attr_accessible :name, :description, :discussion_url
   attr_accessible :close_date, :phase, :discussion_id, :outcome
 
   include AASM
@@ -41,7 +41,7 @@ class Motion < ActiveRecord::Base
       transitions :to => :voting, :from => [:closed]
     end
 
-    event :close_voting, before: :before_close, after: :after_close do
+    event :close_voting, before: :before_close do
       transitions :to => :closed, :from => [:voting]
     end
   end
@@ -50,8 +50,7 @@ class Motion < ActiveRecord::Base
   scope :closed_sorted, closed.order('close_date DESC')
 
   scope :that_user_has_voted_on, lambda {|user|
-    joins(:votes)
-    .where("votes.user_id = ?", user.id)
+    joins(:votes).where("votes.user_id = ?", user.id)
   }
 
   def group_users_without_motion_author
@@ -92,9 +91,7 @@ class Motion < ActiveRecord::Base
 
   def blocked?
     unique_votes.each do |v|
-      if v.position == "block"
-        return true
-      end
+      return true if v.position == "block"
     end
     false
   end
@@ -114,14 +111,9 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  def open_close_motion
-    if (close_date && close_date <= Time.now)
-      if voting?
-        close_voting
-        save
-      end
-    elsif closed?
-      open_voting
+  def close_if_expired
+    if (voting? && close_date && close_date <= Time.now)
+      close_voting
       save
     end
   end
@@ -155,11 +147,8 @@ class Motion < ActiveRecord::Base
   end
 
   def group_count
-    if voting?
-      group.users.count
-    else
-      unique_votes.count + no_vote_count
-    end
+    return group.users.count if voting?
+    unique_votes.count + no_vote_count
   end
 
   def group_members
@@ -172,10 +161,7 @@ class Motion < ActiveRecord::Base
 
   def number_of_votes_since_last_looked(user)
     if user && user.is_group_member?(group)
-      last_viewed_at = last_looked_at_by(user)
-      if last_viewed_at 
-        return number_of_votes_since(last_viewed_at)
-      end
+      return number_of_votes_since(last_looked_at_by(user)) if last_looked_at_by(user)
     end
     unique_votes.count
   end
@@ -183,9 +169,7 @@ class Motion < ActiveRecord::Base
   def last_looked_at_by(user)
     motion_read_log = MotionReadLog.where('motion_id = ? AND user_id = ?',
       id, user.id).first
-    if motion_read_log
-      return motion_read_log.motion_last_viewed_at
-    end
+    return motion_read_log.motion_last_viewed_at if motion_read_log
   end
 
   def number_of_votes_since(time)
@@ -204,11 +188,8 @@ class Motion < ActiveRecord::Base
   end
 
   def latest_vote_time
-    if votes.count > 0
-      votes.order('created_at DESC').first.created_at
-    else
-      created_at
-    end
+    return votes.order('created_at DESC').first.created_at if votes.count > 0
+    created_at
   end
 
   def set_outcome(str)
@@ -216,7 +197,7 @@ class Motion < ActiveRecord::Base
       self.outcome = str
       save
     end
-  end 
+  end
 
   private
     def fire_new_motion_event
@@ -233,9 +214,6 @@ class Motion < ActiveRecord::Base
     def before_close
       store_users_that_didnt_vote
       self.close_date = Time.now
-    end
-
-    def after_close
     end
 
     def store_users_that_didnt_vote
@@ -269,9 +247,7 @@ class Motion < ActiveRecord::Base
       end
     end
 
-    def set_disable_discussion
-      if @enable_discussion
-        self.disable_discussion = @enable_discussion == "1" ? "0" : "1"
-      end
+    def update_counter_cache
+      group.update_attribute(:motions_count, group.motions.count)
     end
 end
