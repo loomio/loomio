@@ -1,2 +1,3 @@
 RACK_ENV=development
 PORT=3000
+SECRET_COOKIE_TOKEN=changethisforproduction
