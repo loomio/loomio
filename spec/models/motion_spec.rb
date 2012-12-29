@@ -33,14 +33,14 @@ describe Motion do
     context "date is a future date" do
       it "updates close_date" do
         future_date = 2.days.from_now
-        @motion.set_close_date(future_date)
+        @motion.set_close_date!(future_date)
         @motion.close_date.should == future_date
       end
     end
     context "date is a past date" do
       it "does not update close_date" do
         past_date = 2.days.ago
-        @motion.set_close_date(past_date)
+        @motion.set_close_date!(past_date)
         @motion.close_date.should_not  == past_date
       end
     end
@@ -69,7 +69,7 @@ describe Motion do
     it "adds edit motion close date activity if a motion close date is edited" do
       motion = create :motion, :discussion => @discussion
       motion.should_receive(:fire_motion_close_date_edited_event).with(@user)
-      motion.set_close_date(2.days.from_now, @user)
+      motion.set_close_date!(2.days.from_now, @user)
     end
   end
 
@@ -150,7 +150,7 @@ describe Motion do
   it "cannot have an outcome if voting open" do
     @motion = create(:motion)
     @motion.outcome.blank?.should == true
-    @motion.set_outcome("blah blah")
+    @motion.set_outcome!("blah blah")
     @motion.save
     @motion.outcome.blank?.should == true
   end
@@ -220,7 +220,7 @@ describe Motion do
 
     it "can have an outcome" do
       outcome = "Test Outcome"
-      @motion.set_outcome(outcome)
+      @motion.set_outcome!(outcome)
       @motion.save
       @motion.outcome.should == outcome
     end
