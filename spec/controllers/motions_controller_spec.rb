@@ -55,13 +55,13 @@ describe MotionsController do
       end
 
       it "closes the motion" do
-        motion.should_receive(:close!)
-        post :close, :id => motion.id
+        motion.should_receive(:close_motion!)
+        put :close, :id => motion.id
       end
 
-      it "fires the close_motion event" do
-        Event.should_receive(:motion_closed!)
-        post :close, :id => motion.id
+      it "redirects back to discussion showing motion as closed" do
+        put :close, :id => motion.id
+        response.should redirect_to(discussion_url(discussion) + '?proposal=' + motion.id.to_s)
       end
     end
 
@@ -72,20 +72,20 @@ describe MotionsController do
       end
       it "checks user has permission" do
         controller.should_receive(:authorize!)
-        post :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+        put :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
       end
       context "a valid date is entered" do
         it "calls set_motion_close_date, creates relavent activity and flashes a success" do
-          motion.should_receive(:set_close_date).and_return true
-          post :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+          motion.should_receive(:set_close_date!).and_return true
+          put :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
           flash[:success].should =~ /Close date successfully changed./
           response.should redirect_to(discussion)
         end
       end
       context "an invalid date is entered" do
         it "displays an error message and returns to the discussion page" do
-          motion.should_receive(:set_close_date).and_return false
-          post :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+          motion.should_receive(:set_close_date!).and_return false
+          put :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
           flash[:error].should =~ /Invalid close date, it needs to be a furture date./
           response.should redirect_to(discussion)
         end

@@ -25,7 +25,7 @@ Loomio::Application.routes.draw do
   resources :motions do
     resources :votes
     post :get_and_clear_new_activity, on: :member
-    post :close, :on => :member
+    put :close, :on => :member
     put :edit_outcome, :on => :member
     put :edit_close_date, :on => :member
   end
