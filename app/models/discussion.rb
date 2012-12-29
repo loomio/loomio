@@ -166,13 +166,13 @@ class Discussion < ActiveRecord::Base
   end
 
   def set_description!(description, user)
-    description = description
+    self.description = description
     save!
-    fire_edit_dscription_event(current_user)
+    fire_edit_description_event(user)
   end
 
   def set_title!(title, user)
-    title = title
+    self.title = title
     save!
     fire_edit_title_event(user)
   end
