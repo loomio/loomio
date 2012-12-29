@@ -114,11 +114,6 @@ describe DiscussionsController do
         post :add_comment, comment: "Hello!", id: discussion.id
       end
 
-      it "redirects to the discussion" do
-        post :add_comment, comment: "Hello!", id: discussion.id
-        response.should redirect_to(discussion_url(discussion))
-      end
-
       context "unsuccessfully" do
         before do
           discussion.stub(:add_comment).
@@ -143,19 +138,7 @@ describe DiscussionsController do
         discussion.stub(:save!)
       end
       it "assigns description to the model" do
-        discussion.should_receive(:description=).with "blah"
-        xhr :post, :edit_description,
-          :id => discussion.id,
-          :description => "blah"
-      end
-      it "saves the model" do
-        discussion.should_receive :save!
-        xhr :post, :edit_description,
-          :id => discussion.id,
-          :description => "blah"
-      end
-      it "saves the model" do
-        discussion.should_receive :fire_edit_discription_event
+        discussion.should_receive(:set_description!)
         xhr :post, :edit_description,
           :id => discussion.id,
           :description => "blah"

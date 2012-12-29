@@ -72,6 +72,10 @@ class DiscussionsController < GroupBaseController
     comment = resource.add_comment(current_user, params[:comment])
     unless comment.valid?
       flash[:error] = "Comment could not be created."
+      redirect_to discussion_path(resource.id)
+    end
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -85,7 +89,7 @@ class DiscussionsController < GroupBaseController
 
   def edit_description
     @discussion = Discussion.find(params[:id])
-    @description.set_description!(params[:description], current_user)
+    @discussion.set_description!(params[:description], current_user)
     @last_collaborator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js { render :action => 'update_version' }
