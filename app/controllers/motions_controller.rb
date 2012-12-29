@@ -62,13 +62,13 @@ class MotionsController < GroupBaseController
   def edit_outcome
     resource
     motion = Motion.find(params[:motion][:id])
-    motion.set_outcome(params[:motion][:outcome])
+    motion.set_outcome!(params[:motion][:outcome])
     redirect_to discussion_url(motion.discussion, proposal: motion)
   end
 
   def edit_close_date
     motion = Motion.find(params[:id])
-    if motion.set_close_date((params[:motion][:close_date]).to_datetime, current_user)
+    if motion.set_close_date!((params[:motion][:close_date]).to_datetime, current_user)
       flash[:success] = "Close date successfully changed."
     else
       flash[:error] = "Invalid close date, it needs to be a furture date."

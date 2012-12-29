@@ -107,27 +107,29 @@ class Motion < ActiveRecord::Base
     end
   end
 
-<<<<<<< HEAD
   # motion is closed by user
-  def close_motion!(user)
-    Event.motion_closed!(self, user)
+  def close_motion!(user=nil)
     close!
+    save
+    fire_motion_closed_event(user)
   end
 
-  # motion closes automatically if expired
-  def open_close_motion
-    if (close_date && close_date <= Time.now)
-      if voting?
-        Event.motion_closed!(self, nil)
-        close!
-        save
-      end
-=======
   def close_if_expired
-    if (voting? && close_date && close_date <= Time.now)
-      close_voting
+    close_motion! if (voting? && close_date && close_date <= Time.now)
+  end
+
+  def set_close_date!(date, editor=nil)
+    if date > Time.now
+      self.close_date = date
       save
->>>>>>> b55be0bb984bc3a9999a06e4586ada46e4c1575a
+      fire_motion_close_date_edited_event(editor)
+    end
+  end
+  
+  def set_outcome!(str)
+    if closed?
+      self.outcome = str
+      save
     end
   end
 
@@ -205,30 +207,16 @@ class Motion < ActiveRecord::Base
     created_at
   end
 
-  def set_outcome(str)
-    if closed?
-      self.outcome = str
-      save
-    end
-  end
-<<<<<<< HEAD
-
-  def set_close_date(date, editor=nil)
-    if date > Time.now
-      self.close_date = date
-      fire_motion_close_date_edited_event(editor)
-      save
-    end
-  end
-=======
->>>>>>> b55be0bb984bc3a9999a06e4586ada46e4c1575a
-
   private
 
     def fire_new_motion_event
       Event.new_motion!(self)
     end
 
+    def fire_motion_closed_event(user)
+      Event.motion_closed!(self, user)
+    end
+    
     def fire_motion_close_date_edited_event(user)
       Event.motion_close_date_edited!(self, user)
     end
