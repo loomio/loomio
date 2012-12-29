@@ -13,26 +13,6 @@ describe CommentsController do
       app_controller.stub(:resource).and_return(comment)
     end
 
-    context "archiving a comment" do
-      it "checks permissions" do
-        comment.stub(:archive!).and_return true
-        app_controller.should_receive(:authorize!).and_return(true)
-        put :archive, id: 23
-      end
-
-      it "adds a message to the flash" do
-        comment.stub(:archive!).and_return true
-        put :archive, id: 23
-        flash[:notice].should match("Comment was successfully deleted")
-      end
-
-      it "redirects to the comment's discussion" do
-        comment.stub(:archive!).and_return true
-        put :archive, id: 23
-        response.should redirect_to(discussion_url(discussion))
-      end
-    end
-
     context "user likes a comment" do
       before do
         @comment_vote = mock("comment_vote")
