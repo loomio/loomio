@@ -44,8 +44,8 @@ describe "Discussion" do
         visit discussion_path(@discussion)
 
         fill_in 'new-comment', with: "Here's a little comment"
-        click_on 'post-new-comment'
-        should have_css(".discussions.show")
+        click_on 'post-new-comment' 
+        visit discussion_path(@discussion)
         should have_content("Here's a little comment")
       end
 
@@ -85,39 +85,39 @@ describe "Discussion" do
         it "autolinks a link" do
           fill_in 'new-comment', with: "http://loom.io"
           click_on 'post-new-comment'
-
+          visit discussion_path(@discussion)
           should have_link('http://loom.io', {:href => 'http://loom.io', :target => '_blank'})
         end
         it "correctly formats a complex link" do
           fill_in 'new-comment', with: "[stuff] (http://loom.io/someone's gross url#ew \"Someone's Gross Url\")"
           click_on 'post-new-comment'
-
+          visit discussion_path(@discussion)
           should have_link('stuff', {:href => 'http://loom.io/someone\'s%20gross%20url#ew', :target => '_blank'})
         end
         it "correctly handles an empty link" do
           fill_in 'new-comment', with: "[stuff] ()"
           click_on 'post-new-comment'
-
+          visit discussion_path(@discussion)
           should have_link('stuff', {:href => '#', :target => '_blank'})
         end
         it "does not allow user inputted html" do
           fill_in 'new-comment', with: "<p id='should_not_be_here'>should_be_here</p>"
           click_on 'post-new-comment'
-
+          visit discussion_path(@discussion)
           should_not have_selector('p#should_not_be_here')
           should have_content('should_be_here')
         end
         it "italicizes with _underscore_italic_ and *bold_italic*" do
           fill_in 'new-comment', with: "_underscore_italic_ and *star_italic*"
           click_on 'post-new-comment'
-
+          visit discussion_path(@discussion)
           should have_selector('em', :text => 'underscore_italic')
           should have_selector('em', :text => 'star_italic')
         end
         it "bolds text with __underscore_bold__ and **star_bold**" do
           fill_in 'new-comment', with: "__underscore_bold__ and **star_bold**"
           click_on 'post-new-comment'
-
+          visit discussion_path(@discussion)
           should have_selector('strong', :text => 'underscore_bold')
           should have_selector('strong', :text => 'star_bold')
         end
@@ -127,7 +127,7 @@ describe "Discussion" do
           ```
           "
           click_on 'post-new-comment'
-
+          visit discussion_path(@discussion)
           should have_selector('pre > code.ruby', :text => 'code_block')
         end
       end
