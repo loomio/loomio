@@ -8,10 +8,6 @@ When /^I fill in and submit the discussion description form$/ do
   click_on("add-description-submit")
 end
 
-Given /^I am a member of the group$/ do
-  @group.add_member! @user
-end
-
 Then /^I should see the description change$/ do
   find('#discussion-context').should have_content(@description_text)
 end

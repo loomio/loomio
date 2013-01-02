@@ -117,14 +117,14 @@ describe Vote do
     end
   end
   context "when a vote is created" do
-    it "adds new vote activity" do
+    it "fires a 'new_vote' event" do
       motion = create :motion
       Event.should_receive(:new_vote!)
       vote = create :vote, :motion => motion, :position => "yes"
     end
   end
   context "when a vote is blocked" do
-    it "adds motion_blocked activity" do
+    it "fires a 'motion_blocked' event" do
       motion = create :motion
       Event.should_receive(:motion_blocked!)
       vote = create :vote, :motion => motion, :position => "block"

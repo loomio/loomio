@@ -1,6 +1,6 @@
   Feature: User edits discussion title
   As a Loomio user
-  I want to be able to edit the discussion decription
+  I want to be able to edit the discussion title
   So I can provide a clear context for the discussion
 
 Scenario: User edits the discussion description
