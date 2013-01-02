@@ -52,12 +52,10 @@ describe "User abilities" do
     it { should be_able_to(:get_and_clear_new_activity, other_users_motion) }
     it { should be_able_to(:close, user_motion) }
     it { should be_able_to(:edit_close_date, user_motion) }
-    it { should be_able_to(:open, user_motion) }
     it { should be_able_to(:destroy, user_motion) }
     it { should_not be_able_to(:destroy, other_users_motion) }
     it { should_not be_able_to(:close, other_users_motion) }
     it { should_not be_able_to(:edit_close_date, other_users_motion) }
-    it { should_not be_able_to(:open, other_users_motion) }
 
     it "cannot remove themselves if they are the only member of the group" do
       group.memberships.where("memberships.id != ?", @user_membership.id).destroy_all
@@ -120,7 +118,6 @@ describe "User abilities" do
     it { should be_able_to(:destroy, other_users_motion) }
     it { should be_able_to(:close, other_users_motion) }
     it { should be_able_to(:edit_close_date, other_users_motion) }
-    it { should be_able_to(:open, other_users_motion) }
 
     it "should not be able to delete the only admin of a group" do
       group.admin_memberships.where("memberships.id != ?", @user_membership.id).destroy_all
