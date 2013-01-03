@@ -9,6 +9,11 @@ $ ->
   $(".position").popover
     placement: "top"
 
+# adds bootstrap popover to privacy icon
+$ ->
+  $("#privacy").tooltip
+    placement: "top"
+
 #adds bootstrap popovers to preview pies
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
