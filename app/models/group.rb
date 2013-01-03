@@ -165,54 +165,49 @@ class Group < ActiveRecord::Base
   end
 
   def add_request!(user)
-    unless requested_users_include?(user) || users.exists?(user)
-      if parent.nil? || user.group_membership(parent)
-        membership = memberships.build_for_user(user, access_level: 'request')
-        membership.save!
-        GroupMailer.new_membership_request(membership).deliver
-        reload
-        membership
-      end
-    end
-  end
-
-  def add_member!(user, inviter=nil)
-    unless users.exists?(user)
-      unless membership = requested_users_include?(user)
-        membership = memberships.build_for_user(user)
-      end
-      membership.access_level = 'member'
-      membership.inviter = inviter
-      membership.save!
-      reload
-      Event.user_added_to_group!(membership)
+    if user_can_join?(user) && !user_membership_or_request_exists?(user)
+      membership = user.memberships.create!(:group_id => id)
+      GroupMailer.new_membership_request(membership).deliver
       membership
     end
   end
 
-  def add_admin!(user)
-    unless (membership = memberships.find_by_user_id(user) ||
-            membership = membership_requests.find_by_user_id(user))
-      membership = memberships.build_for_user(user)
-    end
-    membership.access_level = 'admin'
-    membership.save!
-    reload
+  def add_member!(user, inviter=nil)
+    membership = find_or_build_membership_for_user(user)
+    membership.promote_to_member!(inviter)
     membership
   end
 
+  def add_admin!(user)
+    membership = find_or_build_membership_for_user(user)
+    membership.make_admin!
+    membership
+  end
 
-  #
-  # PERMISSION-CHECKS
-  #
-
-  def requested_users_include?(user)
-    membership_requests.find_by_user_id(user)
+  def find_or_build_membership_for_user(user)
+    membership = Membership.where(:user_id => user, :group_id => self).first
+    membership ||= user.memberships.build(:group_id => id)
   end
 
   def has_admin_user?(user)
     return true if admins.include?(user)
     return true if (parent && parent.admins.include?(user))
+  end
+
+  def user_membership_or_request_exists? user
+    Membership.where(:user_id => user, :group_id => self).exists?
+  end
+
+  def user_can_join? user
+    is_a_parent? || user_is_a_parent_member?(user)
+  end
+
+  def is_a_parent?
+    parent.nil?
+  end
+
+  def user_is_a_parent_member? user
+    user.group_membership(parent)
   end
 
   #
