@@ -220,29 +220,33 @@ class User < ActiveRecord::Base
   end
 
   def update_motion_read_log(motion)
-    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-    if log.nil?
-      motion_read_log = MotionReadLog.new
-      motion_read_log.user_id = id
-      motion_read_log.motion_id = motion.id
-      motion_read_log.save!
-    else
-      log.motion_last_viewed_at = Time.now
-      log.save!
+    if is_group_member?(motion.group)
+      log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
+      if log.nil?
+        motion_read_log = MotionReadLog.new
+        motion_read_log.user_id = id
+        motion_read_log.motion_id = motion.id
+        motion_read_log.save!
+      else
+        log.motion_last_viewed_at = Time.now
+        log.save!
+      end
     end
   end
 
   def update_discussion_read_log(discussion)
-    log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
-    if log.nil?
-      discussion_read_log = DiscussionReadLog.new
-      discussion_read_log.discussion_last_viewed_at = Time.now
-      discussion_read_log.user_id = id
-      discussion_read_log.discussion_id = discussion.id
-      discussion_read_log.save!
-    else
-      log.discussion_last_viewed_at = Time.now
-      log.save!
+    if is_group_member?(discussion.group)
+      log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
+      if log.nil?
+        discussion_read_log = DiscussionReadLog.new
+        discussion_read_log.discussion_last_viewed_at = Time.now
+        discussion_read_log.user_id = id
+        discussion_read_log.discussion_id = discussion.id
+        discussion_read_log.save!
+      else
+        log.discussion_last_viewed_at = Time.now
+        log.save!
+      end
     end
   end
 
