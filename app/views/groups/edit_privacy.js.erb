@@ -1,2 +1,1 @@
 $('#privacy-image').attr('src', "/assets/privicon_<%= @group.viewable_by.to_s %>.png");
-$('#privacy').attr('data-original-title', "Privacy: '<%= @group.viewable_by.to_s %>' can see this group.").tooltip('fixTitle');
