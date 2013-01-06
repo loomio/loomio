@@ -55,3 +55,9 @@ activate_discussions_tooltips = () ->
   $(".unread-group-activity").tooltip
     placement: "top"
     title: 'There have been new comments on this discussion since you last visited the group.'
+
+# adds bootstrap popover to privacy icon
+$ ->
+  $("#privacy").tooltip
+    placement: "top"
+
