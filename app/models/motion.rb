@@ -169,7 +169,7 @@ class Motion < ActiveRecord::Base
   end
 
   def last_looked_at_by(user)
-    motion_read_log.motion_last_viewed_at if read_log_for(user)
+    read_log_for(user).motion_last_viewed_at if read_log_for(user)
   end
 
   def number_of_votes_since(time)
