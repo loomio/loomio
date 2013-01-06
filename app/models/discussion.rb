@@ -136,15 +136,11 @@ class Discussion < ActiveRecord::Base
 
   def participants
     included_participants = users_with_comments.all
-    included_participants << author unless participants_include?(author)
+    included_participants << author
     motions.each do |motion|
-      included_participants << motion.author unless participants_include?(motion.author)
+      included_participants << motion.author
     end
     included_participants.uniq
-  end
-
-  def participants_include?(user)
-    users_with_comments.find_by_id(user.id)
   end
 
   def latest_comment_time
