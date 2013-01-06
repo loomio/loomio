@@ -79,10 +79,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def last_looked_at_by(user)
-    discussion_read_log = read_log_for(user)
-    if discussion_read_log
-      discussion_read_log.discussion_last_viewed_at
-    end
+    discussion_read_log.discussion_last_viewed_at if read_log_for(user)
   end
 
   def number_of_comments_since(time)
