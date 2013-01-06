@@ -70,16 +70,13 @@ class Discussion < ActiveRecord::Base
 
   def number_of_comments_since_last_looked(user)
     if user
-      last_viewed_at = last_looked_at_by(user)
-      if last_viewed_at 
-        return number_of_comments_since(last_viewed_at)
-      end
+      return number_of_comments_since(last_looked_at_by(user)) if last_looked_at_by(user)
     end
     comments.count
   end
 
   def last_looked_at_by(user)
-    discussion_read_log.discussion_last_viewed_at if read_log_for(user)
+    read_log_for(user).discussion_last_viewed_at if read_log_for(user)
   end
 
   def number_of_comments_since(time)
@@ -112,11 +109,8 @@ class Discussion < ActiveRecord::Base
   end
 
   def closed_motion(motion)
-    if motion
-      motions.find(motion)
-    else
-      motions.where("phase = 'closed'").order("close_date desc").first
-    end
+    return motions.find(motion) if motion
+    motions.where("phase = 'closed'").order("close_date desc").first
   end
 
   def history
@@ -124,11 +118,8 @@ class Discussion < ActiveRecord::Base
   end
 
   def latest_history_time
-    if history.count > 0
-      history.first.created_at
-    else
-      created_at
-    end
+    return history.first.created_at if history.count > 0
+    created_at
   end
 
   def participants
@@ -147,11 +138,8 @@ class Discussion < ActiveRecord::Base
   end
 
   def latest_comment_time
-    if comments.count > 0
-      comments.order('created_at DESC').first.created_at
-    else
-      created_at
-    end
+    return comments.order('created_at DESC').first.created_at if comments.count > 0
+    created_at
   end
 
   def has_previous_versions?
@@ -159,11 +147,8 @@ class Discussion < ActiveRecord::Base
   end
 
   def last_versioned_at
-    if has_previous_versions?
-      previous_version.version.created_at
-    else
-      created_at
-    end
+    return previous_version.version.created_at if has_previous_versions?
+    created_at
   end
 
 
