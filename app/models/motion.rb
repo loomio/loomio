@@ -166,10 +166,13 @@ class Motion < ActiveRecord::Base
     unique_votes.count
   end
 
-  def last_looked_at_by(user)
-    motion_read_log = MotionReadLog.where('motion_id = ? AND user_id = ?',
+  def read_log_for(user)
+    MotionReadLog.where('motion_id = ? AND user_id = ?',
       id, user.id).first
-    return motion_read_log.motion_last_viewed_at if motion_read_log
+  end
+
+  def last_looked_at_by(user)
+    motion_read_log.motion_last_viewed_at if read_log_for(user)
   end
 
   def number_of_votes_since(time)
