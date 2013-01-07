@@ -2,6 +2,7 @@ class DiscussionsController < GroupBaseController
   load_and_authorize_resource :except => [:show, :new, :create, :index]
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :check_group_read_permissions, :only => :show
+  after_filter :store_location, :only => :show
 
   def new
     @discussion = Discussion.new
@@ -129,7 +130,7 @@ class DiscussionsController < GroupBaseController
     @last_collaborator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js
-    end     
+    end
   end
 
   private
