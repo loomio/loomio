@@ -23,7 +23,6 @@ describe MotionsController do
     context "creating a motion" do
       before do
         Motion.stub(:new).and_return(motion)
-        Event.stub(:new_motion!)
         motion.stub(:save).and_return(true)
         controller.stub(:authorize!).with(:create, motion).and_return(true)
         @motion_args = { :motion => { :discussion_id => discussion.id },
@@ -36,11 +35,6 @@ describe MotionsController do
       it "sets the flash success message" do
         post :create, @motion_args
         flash[:success].should =~ /Proposal successfully created./
-      end
-      it "fires the new_motion event" do
-        pending "RDB PENDING FEST 12-12-12"
-        Event.should_receive(:new_motion!)
-        post :create, @motion_args
       end
     end
 
@@ -55,19 +49,46 @@ describe MotionsController do
 
     context "closing a motion" do
       before do
-        controller.stub(:authorize!).with(:close_voting, motion).and_return(true)
-        motion.stub(:close_voting!)
+        controller.stub(:authorize!).with(:close, motion).and_return(true)
+        motion.stub(:close!)
         Event.stub(:motion_closed!)
       end
 
       it "closes the motion" do
-        motion.should_receive(:close_voting!)
-        post :close_voting, :id => motion.id
+        motion.should_receive(:close_motion!)
+        put :close, :id => motion.id
       end
 
-      it "fires the close_motion event" do
-        Event.should_receive(:motion_closed!)
-        post :close_voting, :id => motion.id
+      it "redirects back to discussion showing motion as closed" do
+        put :close, :id => motion.id
+        response.should redirect_to(discussion_url(discussion) + '?proposal=' + motion.id.to_s)
+      end
+    end
+
+    context "changes the close date" do
+      before do
+        Motion.stub(:find).and_return motion
+        controller.stub(:authorize!).with(:edit_close_date, motion).and_return(true)
+      end
+      it "checks user has permission" do
+        controller.should_receive(:authorize!)
+        put :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+      end
+      context "a valid date is entered" do
+        it "calls set_motion_close_date, creates relavent activity and flashes a success" do
+          motion.should_receive(:set_close_date!).and_return true
+          put :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+          flash[:success].should =~ /Close date successfully changed./
+          response.should redirect_to(discussion)
+        end
+      end
+      context "an invalid date is entered" do
+        it "displays an error message and returns to the discussion page" do
+          motion.should_receive(:set_close_date!).and_return false
+          put :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+          flash[:error].should =~ /Invalid close date, it needs to be a furture date./
+          response.should redirect_to(discussion)
+        end
       end
     end
 

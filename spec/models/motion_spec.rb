@@ -26,6 +26,53 @@ describe Motion do
     @motion.user_has_voted?(nil).should == false
   end
 
+  describe "#set_close_date(date)" do
+    before do
+      @motion = create(:motion)
+    end
+    context "date is a future date" do
+      it "updates close_date" do
+        future_date = 2.days.from_now
+        @motion.set_close_date!(future_date)
+        @motion.close_date.should == future_date
+      end
+    end
+    context "date is a past date" do
+      it "does not update close_date" do
+        past_date = 2.days.ago
+        @motion.set_close_date!(past_date)
+        @motion.close_date.should_not  == past_date
+      end
+    end
+  end
+
+  context "events" do
+    before do
+      @user = create :user
+      @group = create :group
+      @group.add_admin! @user
+      @discussion = create :discussion, :group => @group
+    end
+    it "fires new_motion event if a motion is created successfully" do
+      motion = Motion.new
+      motion.name = "That we create me"
+      motion.author = @user
+      motion.discussion = @discussion
+      motion.should_receive(:fire_new_motion_event)
+      motion.save!
+    end
+    it "adds motion closed activity if a motion is closed" do
+      motion = create :motion, :discussion => @discussion
+      Event.should_receive(:motion_closed!)
+      motion.close_motion!(@user)
+    end
+    it "adds edit motion close date activity if a motion close date is edited" do
+      motion = create :motion, :discussion => @discussion
+      motion.should_receive(:fire_motion_close_date_edited_event).with(@user)
+      motion.set_close_date!(2.days.from_now, @user)
+    end
+  end
+
   it "cannot have invalid phases" do
     @motion = create(:motion)
     @motion.phase = 'bad'
@@ -78,7 +125,7 @@ describe Motion do
   it "cannot have an outcome if voting open" do
     @motion = create(:motion)
     @motion.outcome.blank?.should == true
-    @motion.set_outcome("blah blah")
+    @motion.set_outcome!("blah blah")
     @motion.save
     @motion.outcome.blank?.should == true
   end
@@ -125,7 +172,7 @@ describe Motion do
       vote1 = create(:vote, :position => 'yes', :user => @user1, :motion => @motion)
       vote2 = create(:vote, :position => 'no', :user => @user2, :motion => @motion)
       @updated_at = @motion.updated_at
-      @motion.close_voting!
+      @motion.close!
     end
 
     it "stores users who did not vote" do
@@ -146,18 +193,12 @@ describe Motion do
       @motion.no_vote_count.should == @motion.group.users.count - @motion.votes.count
     end
 
-    it "reopening motion deletes did_not_vote records" do
-      @motion.open_voting
-      DidNotVote.all.count.should == 0
-    end
-
     it "can have an outcome" do
       outcome = "Test Outcome"
-      @motion.set_outcome(outcome)
+      @motion.set_outcome!(outcome)
       @motion.save
       @motion.outcome.should == outcome
     end
-
   end
 
   context "open motion" do

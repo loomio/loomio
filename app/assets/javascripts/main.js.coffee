@@ -68,8 +68,8 @@ Application.getPageParam = () ->
 
 # confirm dialog box for class ".confirm-dialog"
 $ ->
-  $(".confirm-dialog").click((event)->
-    this_link = $(this)
+  $("body").on("click", ".confirm-dialog", (event)->
+    this_link = $(event.currentTarget)
     titleText = this_link.data("title")
     bodyText = this_link.data("body")
     methodText = this_link.data("method-type")
@@ -88,6 +88,7 @@ $ ->
     $('#confirm-dialog-modal').modal('show')
     $('#confirm-dialog-modal').on('hidden', ->
       $(this).remove()
+    event.preventDefault()
     )
   )
 
@@ -141,7 +142,7 @@ $ ->
     motionCloseDateValidation(form)
 
   motionCloseDateValidation = (form)->
-    if form.parents("#motion-form").length > 0
+    if form.parents("#motion-form").length > 0 || $('#edit-close-date').length > 0
       time_now = new Date()
       selected_date = new Date($("#motion_close_date").val())
       if selected_date <= time_now

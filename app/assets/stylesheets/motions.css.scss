@@ -3,17 +3,7 @@
 
 /*  New & Edit motion form */
 #motion-form{
-  #closing-inputs {
-    #input_date{ width: 140px; display: inline-block; }
-    select { width: 100px; display: inline-block; }
-  }
   #close-date-label { display: block; }
-  /*.input { margin-left: 0px; }
-  .clearfix { padding-top: 0px; margin-bottom: 0px; }
-  .control-group { margin-bottom: 0 }
-  .character-counter { bottom: 16px; }
-  #motion-name { display: block }
-  #description { margin-top: 15px; }*/
 
   .date-error-message {
     font-size: $font-small;
@@ -24,7 +14,10 @@
     color: $error-color;
   }
 }
-
+#motion-form, #edit-close-date.modal #closing-inputs {
+  #input_date{ width: 140px; display: inline-block; }
+  select { width: 100px; display: inline-block; }
+}
 
 /*** motion preview ***/
 
@@ -100,16 +93,32 @@
 /*** _motion (discussion page)***/
 
 #content-proposal{
+  .new-proposal-btn {
+    margin: 8px 8px 0 0;
+    float: left;
+  }
   .motion-title { margin-top: 3px; }
   margin-left: 0px;
   .proposal-title-container {
     width: 305px;
   }
+  .motion-header-info {
+    width: 275px
+  }
+  .motion-admin-buttons {
+    width: 125px;
+    margin-left: 0;
+    .btn {
+      margin: 5px 0 0 0;
+      width: 105px;
+      float: right;
+    }
+  }
   .label{
     text-transform: lowercase;
     font-weight: normal;
   }
-  .closing-info{
+  #closing-info{
     font-size: $font-small;
   }
   #close-voting {
@@ -154,7 +163,7 @@
     .no-outcome { font-style: italic; }
   }
   .proposed-by {
-    font-size: $font-tiny;
+    font-size: $font-small;
     margin-bottom: 20px;
   }
   .description { width: 403px; }
@@ -193,12 +202,6 @@
     float: left;
     color: #000;
     display: inline;
-  }
-  .votes-table .position {
-    float: left;
-    height: 20px;
-    width: 30px;
-    text-align: center;
   }
   .votes-table .btn {
     float: right;

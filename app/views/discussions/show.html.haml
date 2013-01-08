@@ -1,6 +1,6 @@
 - set_title @group.name, @discussion.title, @group.parent
 =render '/groups/title', group: @group
-=render 'application/helper_bot' 
+=render 'application/helper_bot'
 .row
   .span12
     .selector-panel
@@ -10,12 +10,13 @@
           =render 'discussion_context'
         #description-revision-history.modal.hidden
         .row
-          .span6#content-history
+          .span6#content-activity
             .large-icon.discussion-icon.enabled-icon
             %h3.header-text Discussion
-            #content-history-body
+            #content-activity-body
               = render 'add_comment', discussion: @discussion
-              = render 'history', discussion: @discussion, history: @discussion.history
+              #activity-feed
+                = render 'activity', discussion: @discussion
 
           .span6#content-proposal
             .large-icon.decision-icon
@@ -33,7 +34,7 @@
                       = render @current_motion, unique_votes: @unique_votes
                 - else
                   - if can? :create, Motion.new(discussion_id: @discussion.id)
-                    = link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-small proposal-btn', id: 'new-proposal'
+                    = link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-small new-proposal-btn', id: 'new-proposal'
                   %li.selector-item.empty-list-message= "There is not currently an open proposal under discussion"
 
             - if @discussion.motions.where("phase = 'closed'").count > 0
@@ -44,9 +45,10 @@
 
                 .content-proposal-body
                   %ul.selector-list
-                    - @discussion.motions.order("close_date desc").each do |closed_motion|
-                      - if closed_motion.closed?
-                        - if closed_motion == @selected_motion
-                          %li.selector-item= render @selected_motion, unique_votes: @unique_votes, this_group: @group
-                        - else
-                          %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
+                    - @discussion.closed_motions.each do |closed_motion|
+                      - if closed_motion == @selected_motion
+                        %li.selector-item= render @selected_motion, unique_votes: @unique_votes, this_group: @group
+                      - else
+                        %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
+- if @current_motion
+  = render '/motions/edit_close_date', :motion => @current_motion, :input_time => @input_time
