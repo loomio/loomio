@@ -63,10 +63,10 @@ describe Group do
       #group.discussions.should be_empty
     #end
 
-    #it "adds the creator as an admin" do
-      #@group = create :group
-      #@group.admins.should include(@group.creator)
-    #end
+    it "adds the creator as an admin" do
+      @group = create :group
+      @group.admins.should include(@group.creator)
+    end
   end
 
   describe "all_discussions(user)" do
