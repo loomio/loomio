@@ -53,24 +53,27 @@ class MotionsController < GroupBaseController
 
   # CUSTOM ACTIONS
 
-  def close_voting
+  def close
     resource
-    @motion.close_voting!
-    Event.motion_closed!(@motion, current_user)
+    @motion.close_motion! current_user
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
-  end
-
-  def open_voting
-    resource
-    @motion.open_voting!
-    redirect_to discussion_url(@motion.discussion)
   end
 
   def edit_outcome
     resource
     motion = Motion.find(params[:motion][:id])
-    motion.set_outcome(params[:motion][:outcome])
+    motion.set_outcome!(params[:motion][:outcome])
     redirect_to discussion_url(motion.discussion, proposal: motion)
+  end
+
+  def edit_close_date
+    motion = Motion.find(params[:id])
+    if motion.set_close_date!((params[:motion][:close_date]).to_datetime, current_user)
+      flash[:success] = "Close date successfully changed."
+    else
+      flash[:error] = "Invalid close date, it needs to be a furture date."
+    end
+    redirect_to discussion_url(motion.discussion)
   end
 
   def get_and_clear_new_activity
@@ -95,5 +98,4 @@ class MotionsController < GroupBaseController
         Discussion.find(params[:motion][:discussion_id]).group
       end
     end
-
 end

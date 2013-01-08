@@ -37,13 +37,13 @@ end
 
 Then /^harry should get an email saying I mentioned him$/ do
   last_email = ActionMailer::Base.deliveries.last
-  last_email.to.should include 'harry@example.com'
+  last_email.to.should include 'harry@example.org'
   last_email.body.should have_content 'mentioned'
   last_email.body.should have_content 'Unsubscribe'
 end
 
 Given /^harry wants to be emailed when mentioned$/ do
-  harry = User.find_by_email 'harry@example.com'
+  harry = User.find_by_email 'harry@example.org'
   harry.update_attribute(:subscribed_to_mention_notifications, true)
 end
 
@@ -53,4 +53,8 @@ end
 
 Then /^the user should not be notified that they were mentioned$/ do
   Event.where(:kind => "user_mentioned").count.should == 0
+end
+
+Given /^I wait (\d+) seconds?$/ do |sec|
+  sleep(sec.to_i)
 end

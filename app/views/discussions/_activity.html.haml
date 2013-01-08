@@ -1,0 +1,12 @@
+%ul.activity-list#activity-list
+  %li.divider
+  - if discussion.activity.count == 0
+    %li.selector-item.empty-list-message
+      There isn't any activity in this discussion yet.
+  - else
+    - discussion.activity.each do |event|
+      - if event.kind == 'new_comment'
+        %li= render event.eventable
+      - else
+        - activity_item = ActivityItem.new (event)
+        %li.activity-item-container= render 'activity_item', :item => activity_item
