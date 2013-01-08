@@ -5,6 +5,7 @@ describe GroupMailer do
   describe 'sends email on membership request' do
     before :all do
       @group = create(:group)
+      @group.add_admin!(create(:user))
       @membership = @group.add_request!(create(:user))
       @mail = GroupMailer.new_membership_request(@membership)
     end
@@ -23,7 +24,6 @@ describe GroupMailer do
     end
 
     it 'assigns correct reply_to' do
-      pending "This spec is failing on travis for some reason..."
       @mail.reply_to.should == [@group.admin_email]
     end
 
