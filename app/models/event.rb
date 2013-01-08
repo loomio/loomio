@@ -38,14 +38,7 @@ class Event < ActiveRecord::Base
     def new_comment!(comment)
       event = create!(:kind => "new_comment", :eventable => comment,
                       :discussion_id => comment.discussion.id)
-
-      comment.parse_mentions.each do |mentioned_user|
-        Event.user_mentioned!(comment, mentioned_user)
-      end
-
-      comment.other_discussion_participants.each do |user|
-        event.notify!(user)
-      end
+      send_new_comment_mail!(comment)
     end
 
     def new_motion!(motion)
@@ -85,17 +78,7 @@ class Event < ActiveRecord::Base
     def new_vote!(vote)
       event = create!(:kind => "new_vote", :eventable => vote,
                       :discussion_id => vote.motion.discussion.id)
-      voter = vote.user
-
-      if voter != vote.motion_author
-        event.notify!(vote.motion_author)
-      end
-
-      if voter != vote.discussion_author
-        if vote.motion_author != vote.discussion_author
-          event.notify!(vote.discussion_author)
-        end
-      end
+      send_new_vote_mail!(vote)
     end
 
     def motion_blocked!(vote)
@@ -155,15 +138,39 @@ class Event < ActiveRecord::Base
               :discussion_id => motion.discussion.id, :user => closer)
     end
 
+    def send_new_vote_mail!(vote)
+      voter = vote.user
+      if voter != vote.motion_author
+        event.notify!(vote.motion_author)
+      end
+
+      if voter != vote.discussion_author
+        if vote.motion_author != vote.discussion_author
+          event.notify!(vote.discussion_author)
+        end
+      end
+    end
+
+    def send_new_comment_mail!(comment)
+      comment.parse_mentions.each do |mentioned_user|
+        Event.user_mentioned!(comment, mentioned_user)
+      end
+
+      comment.other_discussion_participants.each do |user|
+        event.notify!(user)
+      end
+    end
+
     handle_asynchronously :new_discussion!
-    # handle_asynchronously :new_comment!
     handle_asynchronously :new_motion!
     handle_asynchronously :motion_closing_soon!
-    handle_asynchronously :new_vote!
     handle_asynchronously :motion_blocked!
     handle_asynchronously :membership_requested!
     handle_asynchronously :comment_liked!
     handle_asynchronously :user_added_to_group!
     handle_asynchronously :user_mentioned!
+
+    handle_asynchronously :send_new_vote_mail!
+    handle_asynchronously :send_new_comment_mail!
   end
 end
