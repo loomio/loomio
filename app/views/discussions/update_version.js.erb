@@ -1,3 +1,7 @@
+//update activity feed
+$("#activity-feed").html("<%= escape_javascript(render :partial => 'activity', :locals => 
+{ :discussion => @discussion }) %>")
+
 var modal = $("#description-revision-history")
 
 if(modal.is(":visible")){

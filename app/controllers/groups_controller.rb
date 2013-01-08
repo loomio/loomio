@@ -85,22 +85,6 @@ class GroupsController < GroupBaseController
     @motion = Motion.new
   end
 
-  def create_motion
-    @group = Group.find(params[:id])
-    @discussion = current_user.authored_discussions.create!(group_id: @group.id,
-                  title: params[:motion][:name])
-    @motion = @discussion.motions.new(params[:motion])
-    @motion.author = current_user
-    if @motion.save
-      flash[:success] = "Proposal has been created."
-      Event.new_motion!(@motion)
-      redirect_to @discussion
-    else
-      flash[:error] = "Proposal could not be created."
-      redirect_to :back
-    end
-  end
-
   def email_members
     @group = Group.find(params[:id])
     subject = params[:group_email_subject]

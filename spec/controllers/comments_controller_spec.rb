@@ -13,23 +13,6 @@ describe CommentsController do
       app_controller.stub(:resource).and_return(comment)
     end
 
-    context "deleting comment" do
-      it "checks permissions" do
-        app_controller.should_receive(:authorize!).and_return(true)
-        delete :destroy, id: 23
-      end
-
-      it "adds a message to the flash" do
-        delete :destroy, id: 23
-        flash[:notice].should match("Comment was successfully destroyed")
-      end
-
-      it "redirects to the comment's discussion" do
-        delete :destroy, id: 23
-        response.should redirect_to(discussion_url(discussion))
-      end
-    end
-
     context "user likes a comment" do
       before do
         @comment_vote = mock("comment_vote")
