@@ -32,13 +32,10 @@ class Event < ActiveRecord::Base
       end
     end
 
-    # TODO: Some of the stuff in this event should be sent to delayed job.
-    #       However, we can't delay the entire event, otherwise posting comments
-    #       is too slow.
     def new_comment!(comment)
       event = create!(:kind => "new_comment", :eventable => comment,
                       :discussion_id => comment.discussion.id)
-      send_new_comment_mail!(comment)
+      send_new_comment_notifications!(comment, event)
     end
 
     def new_motion!(motion)
@@ -78,7 +75,7 @@ class Event < ActiveRecord::Base
     def new_vote!(vote)
       event = create!(:kind => "new_vote", :eventable => vote,
                       :discussion_id => vote.motion.discussion.id)
-      send_new_vote_mail!(vote)
+      send_new_vote_notifications!(vote, event)
     end
 
     def motion_blocked!(vote)
@@ -138,7 +135,7 @@ class Event < ActiveRecord::Base
               :discussion_id => motion.discussion.id, :user => closer)
     end
 
-    def send_new_vote_mail!(vote)
+    def send_new_vote_notifications!(vote, event)
       voter = vote.user
       if voter != vote.motion_author
         event.notify!(vote.motion_author)
@@ -151,7 +148,7 @@ class Event < ActiveRecord::Base
       end
     end
 
-    def send_new_comment_mail!(comment)
+    def send_new_comment_notifications!(comment, event)
       comment.parse_mentions.each do |mentioned_user|
         Event.user_mentioned!(comment, mentioned_user)
       end
@@ -170,7 +167,7 @@ class Event < ActiveRecord::Base
     handle_asynchronously :user_added_to_group!
     handle_asynchronously :user_mentioned!
 
-    handle_asynchronously :send_new_vote_mail!
-    handle_asynchronously :send_new_comment_mail!
+    handle_asynchronously :send_new_vote_notifications!
+    handle_asynchronously :send_new_comment_notifications!
   end
 end
