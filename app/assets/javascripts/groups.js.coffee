@@ -55,7 +55,3 @@ activate_discussions_tooltips = () ->
   $(".unread-group-activity").tooltip
     placement: "top"
     title: 'There have been new comments on this discussion since you last visited the group.'
-
-$ ->
-  $("#privacy").tooltip
-    placement: "top"
