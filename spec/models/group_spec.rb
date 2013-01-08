@@ -347,18 +347,6 @@ describe Group do
     end
   end
 
-  context "checking requested users" do
-    it "should return true if user has requested access to group" do
-      group = create(:group)
-      user = create(:user)
-      user2 = create(:user)
-      group.add_request!(user)
-      group.add_request!(user2)
-      group.requested_users_include?(user).should be_true
-      group.requested_users_include?(user2).should be_true
-    end
-  end
-
   describe "activity_since_last_viewed?(user)" do
     before do
       @group = create(:group)
