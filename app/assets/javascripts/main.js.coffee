@@ -219,6 +219,7 @@ Application.enableInlineEdition = ()->
       $(".discussion-additional-info").toggle()
       event.preventDefault()
     )
+
 Application.seeMoreDescription = () ->
   #expand/shrink description text
   if $("body.discussions.show").length > 0
