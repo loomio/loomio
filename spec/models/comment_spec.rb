@@ -20,7 +20,7 @@ describe Comment do
     end
 
     it 'fires a new_comment! event' do
-      Event.should_receive(:new_comment!)
+      Events::NewComment.should_receive(:publish!)
       discussion = create(:discussion)
       comment = discussion.add_comment discussion.author, "hi"
     end
@@ -96,7 +96,7 @@ describe Comment do
         @group.add_member! @member
         @comment = @discussion.add_comment @user, "@#{@member.username}"
       end
-      it "should return the mentioned user" do
+      it "returns the mentioned user" do
         @comment.mentioned_group_members.should include(@member)
       end
       it "should not return an un-mentioned user" do

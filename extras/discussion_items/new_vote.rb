@@ -1,4 +1,4 @@
-class ActivityItems::NewVote
+class DiscussionItems::NewVote < DiscussionItem
   attr_reader :vote
 
   def initialize(vote)
@@ -16,10 +16,6 @@ class ActivityItems::NewVote
     end
   end
 
-  def group
-    vote.discussion.group
-  end
-
   def actor
     vote.user
   end
@@ -31,8 +27,13 @@ class ActivityItems::NewVote
     message
   end
 
+  def group
+    vote.discussion.group
+  end
+
   def body
-    vote.statement.blank? ? "" : "'#{vote.statement}'"
+    return "" if vote.statement.blank?
+    "\"#{vote.statement}\""
   end
 
   def time

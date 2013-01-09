@@ -1,4 +1,4 @@
-class ActivityItems::NewMotion
+class DiscussionItems::NewMotion < DiscussionItem
   attr_reader :motion
 
   def initialize(motion)
@@ -9,16 +9,16 @@ class ActivityItems::NewMotion
     'proposal-icon'
   end
 
-  def group
-    motion.group
-  end
-
   def actor
     motion.author
   end
 
   def header
-    'created a proposal:'
+    I18n.t('discussion_items.new_motion') + ": "
+  end
+
+  def group
+    motion.group
   end
 
   def body
