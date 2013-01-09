@@ -1,20 +1,25 @@
 .motion
-  .clearfix
-    %h3.motion-title.word-break= motion.name
-    - if motion.closed?
-      %span.label.label-important Closed
-  .closing-info
-    - if motion.has_close_date?
-      - if motion.voting?
-        = "Closing in #{time_ago_in_words(motion.close_date)}"
-      - else
-        %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
-    - else
-      No close date
-  .proposed-by
-    = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
+  .row
+    .span4.motion-header-info
+      .clearfix
+        %h3.motion-title.word-break= motion.name
+        - if motion.closed?
+          %span.label.label-important Closed
+      #closing-info
+        - if motion.has_close_date?
+          - if motion.voting?
+            = "Closing in #{time_ago_in_words(motion.close_date)}"
+          - else
+            %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
+        - else
+          No close date
+      .proposed-by
+        = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
+    .span2.motion-admin-buttons
+      = render '/motions/admin_buttons', motion: @current_motion unless @selected_motion || motion.closed?
   - if motion.closed?
     =render "motions/outcome_statement", motion: motion, this_group: this_group
+
   .description
 
     <!--[if IE 7]>
@@ -40,10 +45,10 @@
     - if motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
       %h3 State your position
       .vote-buttons.clearfix
-        =link_to image_tag("hand-yes.png", title:"I agree", alt:"I agree"), new_motion_vote_path(motion_id: motion.id, position: 'yes'), "title" => "I agree", "data-content" => "I agree with this and want it to go ahead.", class: "position btn vote-yes"
-        =link_to image_tag("hand-abstain.png", title:"I abstain", alt:"I abstain"), new_motion_vote_path(motion_id: motion.id, position: 'abstain'), "title" => "I abstain", "data-content" =>  "I am happy with what the group decides without me.", class: "position btn vote-abstain"
-        =link_to image_tag("hand-no.png", title:"I disagree", alt:"I disagree"), new_motion_vote_path(motion_id: motion.id, position: 'no'), "title" => "I disagree", "data-content" => "I think we can do better, but if the rest of the group feels like it’s the best course of action then I’m OK with it going ahead.", class: "position btn vote-disagree"
-        =link_to image_tag("hand-block.png",title:"I block", alt:"I block"), new_motion_vote_path(motion_id: motion.id, position: 'block'), "title" => "I block", "data-content" => "I have strong objections to this proposal and am not OK with it going ahead.", class: "position btn vote-block"
+        =link_to image_tag("hand-yes.png", title:"I agree", alt:"I agree"), new_motion_vote_path(motion_id: motion.id, position: 'yes'), "title" => "I agree", "data-content" => "I agree with this and want it to go ahead.", class: "position btn vote-yes", id: "yes-vote"
+        =link_to image_tag("hand-abstain.png", title:"I abstain", alt:"I abstain"), new_motion_vote_path(motion_id: motion.id, position: 'abstain'), "title" => "I abstain", "data-content" =>  "I am happy with what the group decides without me.", class: "position btn vote-abstain", id: "abstain-vote"
+        =link_to image_tag("hand-no.png", title:"I disagree", alt:"I disagree"), new_motion_vote_path(motion_id: motion.id, position: 'no'), "title" => "I disagree", "data-content" => "I think we can do better, but if the rest of the group feels like it’s the best course of action then I’m OK with it going ahead.", class: "position btn vote-disagree", id: "no-vote"
+        =link_to image_tag("hand-block.png", title:"I block", alt:"I block"), new_motion_vote_path(motion_id: motion.id, position: 'block'), "title" => "I block", "data-content" => "I have strong objections to this proposal and am not OK with it going ahead.", class: "position btn vote-block", id: "block-vote"
 
     .votes-table= render "motions/votes_table", motion: motion, unique_votes: unique_votes
 
