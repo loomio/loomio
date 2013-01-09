@@ -208,15 +208,17 @@ Application.enableInlineEdition = ()->
         container.find('#description-input').height(description_height)
       event.preventDefault()
     )
-    $(".edit-discussion-description").click (e)->
+    $(".edit-discussion-description").click (event)->
       $(".discussion-description-helper-text").toggle()
+      $(".discussion-additional-info").toggle()
+      event.preventDefault()
     $("#cancel-add-description").click((event) ->
       $("#description-edit-form").toggle()
       $(".description-body").toggle()
       $(".discussion-description-helper-text").toggle()
+      $(".discussion-additional-info").toggle()
       event.preventDefault()
     )
-
 Application.seeMoreDescription = () ->
   #expand/shrink description text
   if $("body.discussions.show").length > 0
