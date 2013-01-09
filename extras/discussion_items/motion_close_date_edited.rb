@@ -1,4 +1,4 @@
-class ActivityItems::MotionCloseDateEdited
+class DiscussionItems::MotionCloseDateEdited < DiscussionItem
   attr_reader :event, :motion
 
   def initialize(event, motion)
@@ -9,16 +9,16 @@ class ActivityItems::MotionCloseDateEdited
     'proposal-icon'
   end
 
-  def group
-    motion.group
-  end
-
   def actor
     event.user
   end
 
+  def group
+    motion.group
+  end
+
   def header
-    'changed the closing date for the proposal'
+    I18n.t('discussion_items.motion_close_date_edited')
   end
 
   def body

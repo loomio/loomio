@@ -5,7 +5,7 @@ end
 When /^we run the rake task to check for closing proposals, (\d+) hours before it closes\.$/ do |arg1|
   now_but_tomorrow_1_hour_window = (1.day.from_now) ... (1.day.from_now + 1.hour)
   Motion.where(:close_date => now_but_tomorrow_1_hour_window).each do |motion|
-    Event.motion_closing_soon!(motion)
+    Events::MotionClosingSoon.publish!(motion)
   end
 end
 

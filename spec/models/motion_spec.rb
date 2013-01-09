@@ -63,7 +63,7 @@ describe Motion do
     end
     it "adds motion closed activity if a motion is closed" do
       motion = create :motion, :discussion => @discussion
-      Event.should_receive(:motion_closed!)
+      Events::MotionClosed.should_receive(:publish!)
       motion.close_motion!(@user)
     end
     it "adds edit motion close date activity if a motion close date is edited" do
@@ -180,7 +180,7 @@ describe Motion do
       not_voted_ids.should include(@user3.id)
     end
 
-    it "users_who_did_not_vote should return users who did not vote" do
+    it "users_who_did_not_vote returns users who did not vote" do
       @motion.users_who_did_not_vote.should include(@user3)
     end
 
@@ -304,7 +304,7 @@ describe Motion do
     before do
       @motion = create(:motion)
     end
-    it "should return the pecentage of users that have voted" do
+    it "returns the pecentage of users that have voted" do
       @motion.stub(:no_vote_count).and_return(10)
       @motion.stub(:group_count).and_return(20)
       @motion.percent_voted.should == 50
