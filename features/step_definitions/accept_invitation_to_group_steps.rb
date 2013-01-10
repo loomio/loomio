@@ -1,3 +1,7 @@
+Given /^"(.*?)" has been invited to the group but has not accepted$/ do |email|
+  User.invite_and_notify!({ :email => email }, @user, @group)
+end
+
 Given /^I have been invited to join a loomio group and I am a new user$/ do
   @group = FactoryGirl.create :group
   @inviter = FactoryGirl.create :user

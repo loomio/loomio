@@ -42,6 +42,8 @@ end
 Given /^I am a member of a group$/ do
   @group = FactoryGirl.create :group
   @group.add_member! @user
+  debugger
+  puts "hi"
 end
 
 Given /^"(.*?)" is a member of the group$/ do |arg1|

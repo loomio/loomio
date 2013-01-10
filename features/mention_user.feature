@@ -7,12 +7,15 @@ Background:
   And I am a member of a group
   And there is a discussion in the group
 
+
 Scenario: User selects a group member to mention
   Given "Harry" is a member of the group
+  And "harrysfriend@example.com" has been invited to the group but has not accepted
   When I visit the discussion page
   And I am adding a comment and type in "@h"
+  Then I should not see "@harrysfriend" in the menu that pops up
   And I click on "@harry" in the menu that pops up
-  Then I should see "@harry" added to the "new-comment" field
+  And I should see "@harry" added to the "new-comment" field
 
 Scenario: User mentions a group member
   Given "Harry" is a member of the group
