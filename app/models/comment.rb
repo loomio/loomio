@@ -17,7 +17,6 @@ class Comment < ActiveRecord::Base
 
   after_create :update_discussion_last_comment_at
   after_create :fire_new_comment_event
-
   after_destroy :update_discussion_last_comment_at
 
   attr_accessible :body

@@ -11,6 +11,8 @@ describe Comment do
   describe "creating a comment on a discussion" do
     it "updates discussion.last_comment_at" do
       discussion = create(:discussion)
+      discussion.last_comment_at = 2.days.ago
+      discussion.save!
       comment = discussion.add_comment discussion.author, "hi"
       discussion.reload
       discussion.last_comment_at.to_s.should == comment.created_at.to_s
@@ -23,27 +25,17 @@ describe Comment do
     end
   end
 
+
   describe "destroying a comment" do
     let(:discussion) { create(:discussion) }
-
     context "which is the only comment on a discussion" do
       it "updates discussion.last_comment_at to discussion.created_at" do
         comment = discussion.add_comment discussion.author, "hi"
         discussion.last_comment_at.should == discussion.created_at
       end
     end
-
-    context "which is the most recent comment on a discussion" do
-      it "updates discussion.last_comment_at to the previous comment" do
-        comment1 = discussion.add_comment discussion.author, "hi"
-        comment2 = discussion.add_comment discussion.author, "hi"
-        comment2.destroy
-        discussion.reload
-        discussion.last_comment_at.to_s.should == comment1.created_at.to_s
-      end
-    end
   end
-
+  
   context "liked by user" do
     before do
       @like = comment.like user

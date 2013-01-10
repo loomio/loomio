@@ -209,6 +209,11 @@ li.selector-item a.selector-link:hover {
   position: relative;
   color: $error-color;
 }
+
+.date-error-message {
+  color: $error-color;
+}
+
 .character-counter {
   color: $mid-grey;
   text-align: right;
@@ -459,66 +464,4 @@ body.groups.show .helper-bot{
 .group-options .btn-app.dropdown-toggle{ width: 110px }
 .btn-grey { color: $mid-grey; }
 a.btn-icon:hover { color: $dark-grey; }
-
-/**** icons ****/
-.button-icon{
-  display: inline-block;
-  background-repeat: no-repeat;
-  height: 18px;
-  width: 18px;
-  padding: 0px 5px 0px 0;
-  vertical-align: text-bottom;
-}
-
-.large-icon{
-  background-repeat: no-repeat;
-  height: 24px;
-  width: 24px;
-  margin: 6px 13px 0 13px;
-  float: left;
-}
-.header-bar-icon{
-  position: relative;
-  bottom: 2px;
-}
-
-.button-icon.dot-icon {
-  background-image:url('/assets/dot-18.png');
-  float: right;
-}
-// .button-icon.topic-icon {
-//   background-image:url('/assets/topic-18.png');
-// }
-// .button-icon.member-icon {
-//   background-image:url('/assets/member-18.png');
-// }
-// .button-icon.group-icon {
-//   background-image:url('/assets/group-18.png');
-// }
-// .button-icon.pie-icon {
-//   background-image:url('/assets/pie-18.png');
-// }
-.large-icon.topic-icon {
-    background-image:url('/assets/topic-24.png');
-}
-.large-icon.discussion-icon.enabled-icon  {
-    background-image:url('/assets/discussion-24.png');
-}
-.large-icon.discussion-icon.disabled-icon  {
-    background-image:url('/assets/discussion-light-24.png');
-}
-.large-icon.decision-icon {
-    background-image:url('/assets/pie-24.png');
-}
-.large-icon.group-icon {
-  background-image:url('/assets/group-24.png');
-  margin: 0px;
-}
-.large-icon.notification-icon {
-  background-image:url('/assets/notification-24.png');
-  margin: 0;
-}
-.large-icon.pie-icon {
-  background-image: url("pie-light-24.png");
-}
 
