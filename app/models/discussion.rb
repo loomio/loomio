@@ -112,11 +112,6 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def closed_motion(motion)
-    return motions.find(motion) if motion
-    motions.where("phase = 'closed'").order("close_date desc").first
-  end
-
   def history
     (comments + votes + motions).sort!{ |a,b| b.created_at <=> a.created_at }
   end
