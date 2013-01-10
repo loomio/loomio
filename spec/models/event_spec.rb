@@ -4,6 +4,7 @@ describe Event do
   let(:user) { stub(:user, email: 'jon@lemmon.com') }
   let(:event) { stub(:event, :notify! => true) }
   let(:mailer) { stub(:mailer, :deliver => true) }
+  let(:discussion) { mock_model Discussion }
   let(:group) { stub(:group) }
 
   before do
@@ -11,10 +12,10 @@ describe Event do
   end
 
   describe "new_discussion!", isolated: true do
-    let(:discussion) { stub(:discussion, :group => group) }
     before do
       user.stub(:email_notifications_for_group?).and_return(false)
       discussion.stub(:group_users_without_discussion_author).and_return([user])
+      discussion.stub(:group).and_return(group)
     end
 
     after do
@@ -41,8 +42,9 @@ describe Event do
     end
 
     it 'creates an event with kind and eventable' do
-      Event.should_receive(:create!).with(:kind => 'new_discussion',
-                                          :eventable => discussion).and_return(event)
+      Event.should_receive(:create!).with(:kind => 'new_discussion', 
+                                          :eventable => discussion,
+                                          :discussion_id => discussion.id).and_return(event)
     end
 
     it 'notifys users but not the author' do
@@ -58,6 +60,7 @@ describe Event do
     before do
       comment.stub(:parse_mentions).and_return([])
       comment.stub(:other_discussion_participants).and_return([])
+      comment.stub(:discussion).and_return(discussion)
     end
 
     after do
@@ -65,8 +68,9 @@ describe Event do
     end
 
     it 'creates an event with kind new_comment and eventable comment' do
-      Event.should_receive(:create!).with(kind: 'new_comment', 
-                                          eventable: comment).and_return(event)
+      Event.should_receive(:create!).with(kind: 'new_comment',
+                                          eventable: comment,
+                                          discussion_id: discussion.id).and_return(event)
     end
 
     it 'fires user_mentioned! for each mentioned user' do
@@ -88,6 +92,7 @@ describe Event do
       user.stub(:email_notifications_for_group?).and_return(false)
       motion.stub(:group_users_without_motion_author).and_return([user])
       motion.stub(:group_email_new_motion?).and_return(false)
+      motion.stub(:discussion).and_return(discussion)
     end
 
     after do
@@ -95,7 +100,9 @@ describe Event do
     end
 
     it 'creates an event' do
-      Event.should_receive(:create!).with(kind: 'new_motion', eventable: motion)
+      Event.should_receive(:create!).with(kind: 'new_motion', 
+                                          eventable: motion,
+                                          discussion_id: discussion.id)
     end
 
     context 'if user is subscribed to group notification emails' do
@@ -130,12 +137,18 @@ describe Event do
                       user: user,
                       motion_author: motion_author,
                       discussion_author: discussion_author) }
+    before do
+      vote.stub_chain(:motion, :discussion).and_return(discussion)
+    end
+
     after do
       Event.new_vote!(vote)
     end
 
     it 'creates a new_vote event with eventable vote' do
-      Event.should_receive(:create!).with(kind: 'new_vote', eventable: vote).and_return(event)
+      Event.should_receive(:create!).with(kind: 'new_vote',
+                                          eventable: vote,
+                                          discussion_id: discussion.id).and_return(event)
     end
 
     it 'notifies the motion_author' do
@@ -168,8 +181,48 @@ describe Event do
     end
   end
 
+  describe "motion_closed!" do
+    let(:user) { stub(:user) }
+    let(:closer) { stub(:user, :email => 'bill@dave.com') }
+    let(:motion) { stub(:motion, :group => group) }
+
+    before do
+      motion.stub(:discussion).and_return(discussion)
+      motion.stub(:author).and_return(closer)
+      motion.stub(:group_users).and_return([user])
+      MotionMailer.stub_chain(:motion_closed, :deliver)
+    end
+
+    after do
+      Event.motion_closed!(motion, closer)
+    end
+
+    it 'emails group_users motion_closed' do
+      MotionMailer.should_receive(:motion_closed).with(motion, closer.email).and_return(mailer)
+    end
+
+    it 'creates a motion_closed event' do
+      Event.should_receive(:create!).with(kind: 'motion_closed',
+                                          eventable: motion,
+                                          user: closer,
+                                          discussion_id: discussion.id).and_return(event)
+    end
+
+    it 'notifies other group members' do
+      event.should_receive(:notify!).with(user)
+    end
+
+    it 'does not notify other the closer' do
+      event.should_not_receive(:notify!).with(closer)
+    end
+  end
+
   describe "motion_blocked!" do
     let(:vote) { stub(:vote, other_group_members: [user]) }
+
+    before do
+      vote.stub_chain(:motion, :discussion).and_return(discussion)
+    end
 
     after do
       Event.motion_blocked!(vote)
@@ -177,7 +230,8 @@ describe Event do
 
     it 'creates a motion_blocked event' do
       Event.should_receive(:create!).with(kind: 'motion_blocked',
-                                          eventable: vote).and_return(event)
+                                          eventable: vote,
+                                          discussion_id: discussion.id).and_return(event)
     end
 
     it 'notifies other group members' do
@@ -219,7 +273,7 @@ describe Event do
     end
 
     it 'creates a user_added_to_group event' do
-      Event.should_receive(:create!).with(kind: 'user_added_to_group', 
+      Event.should_receive(:create!).with(kind: 'user_added_to_group',
                                           eventable: membership).
                                           and_return(event)
     end
@@ -248,8 +302,8 @@ describe Event do
   describe "comment_liked!", isolated: true do
     let(:commenter) { stub(:commenter) }
     let(:voter) { stub(:voter) }
-    let(:comment_vote) { stub(:comment_vote, 
-                              comment_user: commenter, 
+    let(:comment_vote) { stub(:comment_vote,
+                              comment_user: commenter,
                               user: voter) }
 
     after do
@@ -308,7 +362,7 @@ describe Event do
     end
 
     context 'mentioned user is comment author' do
-      let(:mentioned_user) { comment_author } 
+      let(:mentioned_user) { comment_author }
       it 'does not notify the user' do
         event.should_not_receive(:notify!)
       end

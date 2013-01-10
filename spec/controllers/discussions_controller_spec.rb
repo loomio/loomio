@@ -55,9 +55,9 @@ describe DiscussionsController do
         it "creates a discussion_read_log"
 
         it "assigns array with discussion history" do
-          discussion.should_receive(:history).and_return(['fake'])
+          discussion.should_receive(:activity).and_return(['fake'])
           get :show, id: discussion.id
-          assigns(:history).should eq(['fake'])
+          assigns(:activity).should eq(['fake'])
         end
       end
     end
@@ -67,9 +67,7 @@ describe DiscussionsController do
         discussion.stub(:add_comment)
         discussion.stub(:save).and_return(true)
         DiscussionMailer.stub(:spam_new_discussion_created)
-        Event.stub(:new_discussion!)
-        @discussion_hash = { group_id: group.id, title: "Shinney",
-                            comment: "Bright light" }
+        @discussion_hash = { group_id: group.id, title: "Shinney" }
       end
       it "does not send email by default" do
         DiscussionMailer.should_not_receive(:spam_new_discussion_created)
@@ -116,11 +114,6 @@ describe DiscussionsController do
         post :add_comment, comment: "Hello!", id: discussion.id
       end
 
-      it "redirects to the discussion" do
-        post :add_comment, comment: "Hello!", id: discussion.id
-        response.should redirect_to(discussion_url(discussion))
-      end
-
       context "unsuccessfully" do
         before do
           discussion.stub(:add_comment).
@@ -141,16 +134,11 @@ describe DiscussionsController do
 
     describe "edit description" do
       before do
+        discussion.stub(:set_edit_description_activity!)
         discussion.stub(:save!)
       end
       it "assigns description to the model" do
-        discussion.should_receive(:description=).with "blah"
-        xhr :post, :edit_description,
-          :id => discussion.id,
-          :description => "blah"
-      end
-      it "saves the model" do
-        discussion.should_receive :save!
+        discussion.should_receive(:set_description!)
         xhr :post, :edit_description,
           :id => discussion.id,
           :description => "blah"
@@ -169,6 +157,12 @@ describe DiscussionsController do
       end
       it "saves the model" do
         discussion.should_receive :save!
+        xhr :post, :edit_title,
+          :id => discussion.id,
+          :title => "The Butterflys"
+      end
+      it "creates activity in the events table" do
+        discussion.should_receive :fire_edit_title_event
         xhr :post, :edit_title,
           :id => discussion.id,
           :title => "The Butterflys"

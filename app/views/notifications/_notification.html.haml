@@ -29,7 +29,12 @@
     - group_name = motion.group_full_name
     - title_text = motion.name
     - href = discussion_path(motion.discussion, proposal: motion)
-    - action_text = "closed the proposal"
+    - if user
+      - action_text = "closed the proposal"
+    - else
+      - action_text = "Proposal has closed: "
+      - avatar_url = motion.author.avatar_url(:medium)
+      - avatar_initials = motion.author.avatar_initials
 
   - elsif notification.event_kind == "new_vote"
     - vote = notification.vote
@@ -93,7 +98,7 @@
     - avatar_url = user.avatar_url(:medium)
     - avatar_initials = user.avatar_initials
 
-  %li.selector-item{:class => "notification-item#{class_name}" }
+  %li.selector-item{:class => "notification-item#{class_name}", :id => "notification-#{notification.id}" }
     %a{:href => href }
       %span.medium-user-avatar.avatar-canvas
         - if avatar_url.present?
@@ -102,7 +107,7 @@
           %span.medium-user-initials.initials-decoration
             = avatar_initials
       %span.notification-content
-        - unless notification.event_kind == "motion_closing_soon"
+        - unless notification.event_kind == "motion_closing_soon" || (notification.event_kind == "motion_closed" && user.nil?)
           %span.bold-name= user.name
         = " #{action_text} "
         - if title_text
@@ -111,7 +116,7 @@
           = "#{date} ago · #{group_name}"
 
 - rescue => exception
-  - logger.error("NOTIFICATION ERROR: It looks like something got deleted without it's corresponding events/notifications being deleted as well. notification_id: #{notification.id}")
+  - logger.error("NOTIFICATION ERROR: It looks like something got deleted without it's corresponding events/notifications being deleted as well. notification_id: #{notification.id}\n#{exception}")
   -# TODO: Once we sort out a better deleting system for groups (https://trello.com/c/ll1na7KL) we should change this to a proper exception notification
   -#       so we know if there are any lingering notifications hanging around that shouldn't exist
   -#- ExceptionNotifier::Notifier.exception_notification(request.env, exception,

@@ -42,7 +42,7 @@ class Vote < ActiveRecord::Base
 
   after_save :send_notifications
 
-  after_create :update_motion_last_vote_at
+  after_create :update_motion_last_vote_at, :fire_new_vote_event
   after_destroy :update_motion_last_vote_at
 
   def other_group_members
@@ -87,6 +87,14 @@ class Vote < ActiveRecord::Base
     def update_motion_last_vote_at
       motion.last_vote_at = motion.latest_vote_time
       motion.save!
+    end
+
+    def fire_new_vote_event
+      if position == "block"
+        Event.motion_blocked!(self) 
+      else
+        Event.new_vote!(self)
+      end
     end
 
     def send_notifications

@@ -69,29 +69,19 @@ describe Discussion do
     end
   end
 
-  describe "#history" do
-    before do
-      @user = build(:user)
-      @user.save
-      @discussion = create(:discussion, author: @user)
-      @motion = create(:motion, discussion: @discussion)
-    end
-
-    it "should include comments" do
-      comment = @discussion.add_comment(@user, "this is a test comment")
-      @discussion.history.should include(comment)
-    end
-
-    it "should include motions" do
-      @discussion.history.should include(@discussion.current_motion)
-    end
-
-    it "should include votes" do
-      vote = Vote.new(position: 'yes')
-      vote.user = @user
-      vote.motion = @discussion.current_motion
-      vote.save
-      @discussion.history.should include(vote)
+  describe "#activity" do
+    it "should return all the activity for the discussion" do
+      @user = create :user
+      @group = create :group 
+      @group.add_member! @user
+      @discussion = create :discussion, :group => @group
+      @discussion.add_comment(@user, "this is a test comment")
+      @motion = create :motion, :discussion => @discussion
+      @vote = create :vote, :position => 'yes', :motion => @motion
+      activity = @discussion.activity
+      activity[0].kind.should == 'new_vote'
+      activity[1].kind.should == 'new_motion'
+      activity[2].kind.should == 'new_comment'
     end
   end
 
@@ -145,7 +135,7 @@ describe Discussion do
       @group.add_member! current_motion_author
       previous_motion = create(:motion, :discussion => @discussion,
                              :author => previous_motion_author)
-      previous_motion.close_voting!
+      previous_motion.close!
       current_motion = create(:motion, :discussion => @discussion,
                              :author => current_motion_author)
 
