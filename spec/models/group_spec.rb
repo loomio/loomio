@@ -63,10 +63,10 @@ describe Group do
       #group.discussions.should be_empty
     #end
 
-    #it "adds the creator as an admin" do
-      #@group = create :group
-      #@group.admins.should include(@group.creator)
-    #end
+    it "adds the creator as an admin" do
+      @group = create :group
+      @group.admins.should include(@group.creator)
+    end
   end
 
   describe "all_discussions(user)" do
@@ -137,14 +137,14 @@ describe Group do
 
     it "should not return motions that belong to the group but are in phase 'closed'" do
       @group = motion.group
-      motion.close_voting!
+      motion.close!
       @group.motions_in_voting_phase.should_not include(motion)
     end
   end
 
   describe "motions_closed" do
     it "should return motions that belong to the group and are in phase 'voting'" do
-      motion.close_voting!
+      motion.close!
       @group = motion.group
       @group.motions_closed.should include(motion)
     end
@@ -176,7 +176,7 @@ describe Group do
     end
     it "should not include discussions with a current motion" do
       motion = create :motion, :discussion => @discussion1, author: @user
-      motion.close_voting!
+      motion.close!
       motion1 = create :motion, :discussion => @discussion1, author: @user
       @user.discussions_sorted.should_not include(@discussion1)
     end
@@ -344,18 +344,6 @@ describe Group do
           .and_return(stub(deliver: true))
         @group.add_request!(@user)
       end
-    end
-  end
-
-  context "checking requested users" do
-    it "should return true if user has requested access to group" do
-      group = create(:group)
-      user = create(:user)
-      user2 = create(:user)
-      group.add_request!(user)
-      group.add_request!(user2)
-      group.requested_users_include?(user).should be_true
-      group.requested_users_include?(user2).should be_true
     end
   end
 

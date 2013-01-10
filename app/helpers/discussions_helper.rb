@@ -37,15 +37,6 @@ module DiscussionsHelper
     end
     css_class
   end
- 
-  def render_position_message(vote)
-    message = vote.position_to_s
-    if vote.previous_vote
-      message += " (previously " + vote.previous_vote.position_to_s + ")"
-    end
-    message += vote.statement.blank? ? "." : ":"
-    message
-  end
 
   def add_mention_links(comment)
     auto_link_usernames_or_lists(comment, :username_url_base => "#", :username_include_symbol => true)
