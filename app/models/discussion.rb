@@ -14,11 +14,15 @@ class Discussion < ActiveRecord::Base
   validates :title, :length => { :maximum => 150 }
 
   acts_as_commentable
-  has_paper_trail :only => [:description]
+  has_paper_trail :only => [:title, :description]
 
   belongs_to :group, :counter_cache => true
   belongs_to :author, class_name: 'User'
   has_many :motions
+  has_many :closed_motions,
+    :class_name => 'Motion',
+    :conditions => { phase: 'closed' },
+    :order => "close_date desc"
   has_many :votes, through: :motions
   has_many :comments,  :as => :commentable
   has_many :users_with_comments, :through => :comments,
@@ -117,9 +121,8 @@ class Discussion < ActiveRecord::Base
     (comments + votes + motions).sort!{ |a,b| b.created_at <=> a.created_at }
   end
 
-  def latest_history_time
-    return history.first.created_at if history.count > 0
-    created_at
+  def activity
+    Event.where("discussion_id = ?", id).order('created_at DESC')
   end
 
   def participants
@@ -151,11 +154,31 @@ class Discussion < ActiveRecord::Base
     created_at
   end
 
+  def set_description!(description, user)
+    self.description = description
+    save!
+    fire_edit_description_event(user)
+  end
+
+  def set_title!(title, user)
+    self.title = title
+    save!
+    fire_edit_title_event(user)
+  end
 
   private
+
     def populate_last_comment_at
       self.last_comment_at = created_at
       save
+    end
+
+    def fire_edit_title_event(user)
+      Event.discussion_title_edited!(self, user)
+    end
+
+    def fire_edit_description_event(user)
+      Event.discussion_description_edited!(self, user)
     end
 
     def fire_new_discussion_event

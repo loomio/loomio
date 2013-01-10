@@ -12,33 +12,15 @@ describe "Groups" do
       @motion = create(:motion, name: 'Test Motion',
                               discussion: @discussion,
                               author: @user)
-      login @user
+      visit("/users/sign_in")
+      fill_in("user_email", :with => @user.email)
+      fill_in("user_password", :with => @user.password)
+      click_button("sign-in-btn")
     end
 
     context "admin of a group" do
       before :each do
         @group.add_admin!(@user)
-      end
-
-      it "can visit group edit page" do
-        visit edit_group_path(@group)
-
-        current_url.should == edit_group_url(@group)
-      end
-
-      it "can visit add subgroup page" do
-        visit add_subgroup_group_path(@group)
-
-        have_css("#new-subgroup")
-      end
-
-      it "can edit group" do
-        visit edit_group_path(@group)
-
-        fill_in 'group_name', with: 'New groupie'
-        find("#group_form_submit").click
-
-        should have_content("New groupie")
       end
 
       context "viewing a group" do
@@ -142,19 +124,6 @@ describe "Groups" do
   end
 
   context "logged-out user" do
-    it "can view a public group" do
-      @user = create(:user)
-      @group = create(:group, name: 'Test Group', viewable_by: :everyone)
-      @group.add_member!(@user)
-      @discussion = create(:discussion, group: @group, author: @user)
-      @motion = create(:motion, name: 'Test Motion',
-                              discussion: @discussion,
-                              author: @user)
-      visit group_path(@group)
-
-      should have_content("Test Group")
-    end
-
     it "viewing a private group redirects to log-in" do
       @group = create(:group, name: 'Test Group', viewable_by: :members)
       visit group_path(@group)

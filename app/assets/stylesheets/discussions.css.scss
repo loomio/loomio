@@ -130,12 +130,6 @@ body.discussions.show {
   }
 }
 
-#content-proposal {
-  .proposal-btn {
-    float: right;
-    margin-top: 8px;
-  }
-}
 .content-proposal-body {
   padding: 10px 10px 10px 50px;
 }
@@ -154,11 +148,7 @@ li s hard.motion-preview {
 }
   /* Markdown styling */
 
-.comment-body li{
-  font-size: 14px; /* should prob use a $var here eh? */
-}
-
-.comment-body, .model-description, .motion .description {
+.activity-item-body, .model-description, .motion .description {
   p {
     word-wrap: break-word;
   }
@@ -209,68 +199,45 @@ pre{
 
 
 /*** comments, positions & proposals in History ***/
-#content-history {
+#content-activity {
   border-right: 1px solid $light-grey;
   min-height: 660px;
   padding-right: 10px;
 
-  #content-history-body {
+  #content-activity-body {
     padding: 10px 0px 10px 8px;
   }
-
   #new-comment-form {
     margin-bottom: 0px;
     padding: 0 0 10px 0;
     background-color: $comment-color;
   }
-
-  #comment-list li {
-    overflow: hidden;
-  }
-
   #new-comment-form img {
     float:left;
     margin-right: 10px;
   }
-
   #new-comment {
     margin: 0 0 5px 0px;
     height: 80px;
     color: $dark-grey;
     width: 380px;
   }
-
   #post-new-comment {
     margin: 5px 5px 5px 45px;
   }
 
-  ul.history-list {
+  ul.activity-list {
     list-style: none;
     margin: 0 15px 3px 0;
   }
-  ul.history-list .divider {
-    margin-left: 45px;
+  ul.activity-list .divider {
+    margin: 0 0 5px 45px;
     border-bottom: 1px solid $light-grey;
   }
   li.empty-list-message {
     margin-left: 45px;
   }
-
-  /* comment */
-  .comment{
-    color: $dark-grey;
-    font-size: $font-small;
-    background-color: $comment-color;
-    margin-top: 5px;
-  }
-
-  /* Apply word break only to paragraphs in comment-body */
-  .comment-body p{
-    /* The following styles prevent unbroken strings from breaking the layout */
-    word-wrap: break-word;
-  }
-
-  .comment-container {
+  .activity-item-container {
     width: 388px;
     float: left;
     margin-left: 45px;
@@ -278,77 +245,39 @@ pre{
     border-bottom: 1px solid $light-grey;
     margin-bottom: 5px;
   }
-
-  .comment-container.with-avatar {
+  .activity-item-container.with-avatar {
     margin-left: 10px;
     float: left;
   }
-
-  .comment-avatar {
+  .activity-item-avatar {
     height: 35px;
     margin-right: 0px;
-  }
-
-  .comment.position {
-    width: 388px;
-  }
-  .comment img {
     float: left;
   }
-
-  .comment .comment-username{
+  .activity-item-comment-actor{
     font-weight: bold;
   }
-  .comment .comment-label{
+  .activity-item-actor{
+    font-weight: bold;
+    a {color: $dark-grey;}
+  }
+  .activity-item-header{
     color: $dark-grey;
   }
-  .comment .comment-time{
-    color: $dark-grey;
-    font-size: $font-small;
-  }
-  .comment .comment-likes{
-    color: $dark-grey;
-    font-size: $font-small;
-  }
-
-  /* position */
-  .position .position-icon{
-    float: left;
-    padding-right: 0.4em;
-    display: block;
-    height: 18px;
-  }
-
-  .position .position-message{
+  .activity-item-content{
     color: $mid-grey;
     font-style: italic;
+    word-wrap: break-word;
   }
-
-
-  /* proposal */
-  .proposal-icon {
-    float: left;
-    padding-right: 0.4em;
-    display: block;
-    height: 18px;
-    width: 18px;
-    background-image:url('/assets/proposal.png');
-    background-repeat: no-repeat;
-    background-position: 2px 1px;
+  .activity-item-time{
+    color: $dark-grey;
+    font-size: $font-tiny;
   }
-  .proposal{
-    background: $comment-color;
-    color: $mid-grey;
-  }
-  .proposal .proposal-text{
-    color: $mid-grey;
-    font-style: italic;
-  }
-  .proposal.current{
-    background: $current-proposal;
+  .activity-item-likes{
+    color: $dark-grey;
+    font-size: $font-tiny;
   }
 }
-
 // Discussion preview list panel
 //
 // NOTE: this code is shared with the group show page and
