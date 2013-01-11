@@ -48,7 +48,7 @@ describe Discussion do
     end
   end
 
-  describe "last_versioned_at" do
+  describe "#last_versioned_at" do
     it "returns the time the discussion was created at if no previous version exists" do
       discussion = create :discussion
       discussion.last_versioned_at.should == discussion.created_at
