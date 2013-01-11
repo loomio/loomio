@@ -75,13 +75,11 @@ group :development do
   gem 'guard'
   gem 'guard-spork'
   gem 'guard-rspec'
-  gem 'guard-sass'
-  gem 'guard-coffeescript'
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
   gem 'launchy'
-  gem 'spork'
+  gem 'spork-rails'
   gem 'awesome_print'
 end
 
