@@ -33,6 +33,20 @@ describe Discussion do
     discussion.last_comment_at.should == discussion.created_at
   end
 
+  describe "#latest_comment_time" do
+    it "returns time of latest comment if comments exist" do
+      discussion = create :discussion
+      discussion.stub :comments => {:count => 1}
+      comment = discussion.stub_chain(:comments, :order, :first, :created_at)
+                          .and_return 12345
+      discussion.latest_comment_time.should == 12345
+    end
+    it "returns time of discussion creation if no comments exist"
+  end
+
+  describe "last_version_at" do
+  end
+
   context "versioning" do
     before do
       @discussion = create(:discussion)
