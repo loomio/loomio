@@ -13,6 +13,10 @@ Spork.prefork do
 
   # This file is copied to spec/ when you run 'rails generate rspec:install'
   ENV["RAILS_ENV"] ||= 'test'
+
+  # Fix for devise interfering with reloading the user model
+  Spork.trap_method(Rails::Application::RoutesReloader, :reload!) if Spork.using_spork?
+
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
