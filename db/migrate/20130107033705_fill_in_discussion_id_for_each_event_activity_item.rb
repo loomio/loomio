@@ -12,7 +12,7 @@ class FillInDiscussionIdForEachEventActivityItem < ActiveRecord::Migration
   end
 
   def up
-    Event.all.each do |event|
+    Event.find_each(:batch_size => 100) do |event|
       case event.kind
         when 'new_comment'
           event.discussion_id = event.eventable.discussion.id
