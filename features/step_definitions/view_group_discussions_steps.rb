@@ -41,6 +41,18 @@ Given /^the group has discussions$/ do
   FactoryGirl.create :motion, :discussion => @discussion_with_decision
 end
 
+Given /^I am a member of a group with a sub\-group$/ do
+  @group = FactoryGirl.create :group
+  @sub_group = FactoryGirl.create :group, :parent => @group
+  @sub_group.viewable_by = :members
+  @sub_group.save
+  @group.add_member! @user
+end
+
+Given /^I am a member of the sub\-group$/ do
+  @sub_group.add_member! @user
+end
+
 Given /^I am not a member of a public group$/ do
   step "a public group exists"
 end
