@@ -175,7 +175,7 @@ class Motion < ActiveRecord::Base
     MotionReadLog.where('motion_id = ? AND user_id = ?',
       id, user.id).first
   end
-  
+
   def number_of_votes_since_last_looked(user)
     if user
       return number_of_votes_since(last_looked_at_by(user)) if last_looked_at_by(user)
