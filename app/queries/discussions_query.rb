@@ -1,7 +1,7 @@
 require 'delegate'
 
 class DiscussionsQuery < SimpleDelegator
-  def initialize(user, group)
+  def self.for(group, user)
     if user
       relation = Discussion.includes(:group => :memberships)
         .where("(discussions.group_id = ?
@@ -13,6 +13,6 @@ class DiscussionsQuery < SimpleDelegator
         .where("(discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL
           AND groups.viewable_by = 'everyone'))", group.id, group.id)
     end
-    super(relation)
+    new(relation)
   end
 end
