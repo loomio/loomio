@@ -22,13 +22,6 @@ Spork.prefork do
   require 'rspec/autorun'
 
   RSpec.configure do |config|
-    # == Mock Framework
-    #
-    # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-    #
-    # config.mock_with :mocha
-    # config.mock_with :flexmock
-    # config.mock_with :rr
     config.mock_with :rspec
 
     config.treat_symbols_as_metadata_keys_with_true_values = true
@@ -36,9 +29,6 @@ Spork.prefork do
     config.run_all_when_everything_filtered = true
 
     config.include FactoryGirl::Syntax::Methods
-
-    # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-    config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
@@ -81,7 +71,5 @@ Spork.each_run do
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
-
-  #DatabaseCleaner.clean
 
 end
