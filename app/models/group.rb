@@ -211,38 +211,11 @@ class Group < ActiveRecord::Base
   end
 
   #
-  # DISCUSSION LISTS
+  # OTHER METHODS
   #
 
-  def all_discussions(user)
-    DiscussionsQuery.for(self, user)
-  end
-
-  def discussions_with_current_motion(user)
-    if all_discussions(user)
-      all_discussions(user).includes(:motions).where('motions.phase = ?', "voting")
-    else
-      []
-    end
-  end
-
-  def discussions_with_current_motion_not_voted_on(user)
-    if all_discussions(user)
-      (all_discussions(user).includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on(user))
-    else
-      []
-    end
-  end
-
-  def discussions_with_current_motion_voted_on(user)
-    if all_discussions(user)
-      all_discussions(user).includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", user.id).order("last_comment_at DESC")
-    else
-      []
-    end
-  end
-
   def discussions_sorted(user= nil)
+    # TODO: Merge into DiscussionsQuery
     if user && user.group_membership(self)
       user.discussions
         .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")

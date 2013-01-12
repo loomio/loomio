@@ -1,7 +1,37 @@
 require 'spec_helper'
 
 describe DiscussionsQuery do
-  describe "#for(group, user)" do
+  describe "::for(group)" do
+    let(:user) { nil }
+    let(:group) { create :group }
+
+    it "returns the group's discussions" do
+      discussion = create :discussion, :group => group
+      discussions = DiscussionsQuery.for(group, user)
+      discussions.should include(discussion)
+    end
+
+    it "returns public subgroup discussions" do
+      subgroup = create :group, :parent => group
+      subgroup_discussion = create :discussion, :group => subgroup
+      discussions = DiscussionsQuery.for(group, user)
+      discussions.should include(subgroup_discussion)
+    end
+
+    it "doesn't return private subgroup discussions" do
+      subgroup1 = create :group, :parent => group,
+                  :viewable_by => :parent_group_members
+      subgroup2 = create :group, :parent => group,
+                  :viewable_by => :members
+      subgroup1_discussion = create :discussion, :group => subgroup1
+      subgroup2_discussion = create :discussion, :group => subgroup2
+      discussions = DiscussionsQuery.for(group, user)
+      discussions.should_not include(subgroup1_discussion)
+      discussions.should_not include(subgroup2_discussion)
+    end
+  end
+
+  describe "::for(group, user)" do
     let(:user) { create :user }
     let(:group) { create :group, :creator => user }
 
@@ -44,33 +74,51 @@ describe DiscussionsQuery do
     end
   end
 
-  context "#for(group, observer)" do
-    let(:user) { nil }
-    let(:group) { create :group }
-
-    it "returns the group's discussions" do
+  describe "#with_current_motions" do
+    it "only returns discussions with current motions" do
+      group = create :group
       discussion = create :discussion, :group => group
-      discussions = DiscussionsQuery.for(group, user)
-      discussions.should include(discussion)
+      discussion_with_motion = create :discussion, :group => group
+      motion = create :motion, :discussion => discussion_with_motion
+      discussions = DiscussionsQuery.for(group).with_current_motions
+      discussions.should_not include(discussion)
+      discussions.should include(discussion_with_motion)
     end
+  end
 
-    it "returns public subgroup discussions" do
-      subgroup = create :group, :parent => group
-      subgroup_discussion = create :discussion, :group => subgroup
-      discussions = DiscussionsQuery.for(group, user)
-      discussions.should include(subgroup_discussion)
+  shared_context "motions with votes" do
+    before do
+      @user = create :user
+      @group = create :group
+      @group.add_member! @user
+      @discussion_with_no_vote = create :discussion, :group => @group, :author => @user
+      motion = create :motion, discussion: @discussion_with_no_vote, author: @user
+      @discussion_with_vote = create :discussion, :group => @group, :author => @user
+      motion_with_vote = create :motion, discussion: @discussion_with_vote, author: @user
+      vote = Vote.new position: "yes"
+      vote.motion = motion_with_vote
+      vote.user = @user
+      vote.save
     end
+  end
 
-    it "doesn't return private subgroup discussions" do
-      subgroup1 = create :group, :parent => group,
-                  :viewable_by => :parent_group_members
-      subgroup2 = create :group, :parent => group,
-                  :viewable_by => :members
-      subgroup1_discussion = create :discussion, :group => subgroup1
-      subgroup2_discussion = create :discussion, :group => subgroup2
-      discussions = DiscussionsQuery.for(group, user)
-      discussions.should_not include(subgroup1_discussion)
-      discussions.should_not include(subgroup2_discussion)
+  describe "#with_current_motions_user_has_voted_on" do
+    include_context "motions with votes"
+    it "only returns discussions that have a current motion that user has voted on" do
+      discussions = DiscussionsQuery.for(@group, @user)
+      discussions = discussions.with_current_motions_user_has_voted_on
+      discussions.should include(@discussion_with_vote)
+      discussions.should_not include(@discussion_with_no_vote)
+    end
+  end
+
+  describe "discussions_with_current_motion_not_voted_on(user)" do
+    include_context "motions with votes"
+    it "only returns discussions that have a current motion that user has not voted on" do
+      discussions = DiscussionsQuery.for(@group, @user)
+      discussions = discussions.with_current_motions_user_has_not_voted_on
+      discussions.should include(@discussion_with_no_vote)
+      discussions.should_not include(@discussion_with_vote)
     end
   end
 end
