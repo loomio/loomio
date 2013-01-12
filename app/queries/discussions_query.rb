@@ -30,6 +30,7 @@ class DiscussionsQuery < SimpleDelegator
   end
 
   def with_current_motions_user_has_voted_on
+    return [] unless @user
     with_current_motions.includes(:motions => :votes).
     where('votes.user_id = ?', @user.id).
     order("last_comment_at DESC")
