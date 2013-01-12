@@ -28,9 +28,3 @@ guard 'rspec', :all_on_start => false, :all_after_pass => false do
   # Query Objects
   watch(%r{^app/queries/.+/(.*)\.rb$})          { |m| "spec/queries/#{m[1]}_spec.rb" }
 end
-
-guard 'jasmine', :all_on_start => false do
-  watch(%r{spec/javascripts/spec\.(js\.coffee|js|coffee)$})         { "spec/javascripts" }
-  watch(%r{spec/javascripts/.+_spec\.(js\.coffee|js|coffee)$})
-  watch(%r{app/assets/javascripts/(.+?)\.(js\.coffee|js|coffee)$})  { |m| "spec/javascripts/#{m[1]}_spec.#{m[2]}" }
-end
