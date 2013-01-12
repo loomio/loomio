@@ -18,18 +18,10 @@ class GroupsController < GroupBaseController
   end
 
   def show
-    @group = GroupDecorator.new(Group.find(params[:id]))
-    @subgroups = @group.subgroups.accessible_by(current_ability, :show)
-    @motions_not_voted = []
-    if current_user
-      discussions = DiscussionsQuery.for(@group, current_user)
-      @discussions_with_current_motion_voted_on = discussions.with_current_motions_user_has_voted_on
-      @discussions_with_current_motion_not_voted_on = discussions.with_current_motions_user_has_not_voted_on
-      @discussion = Discussion.new(group_id: @group.id)
-    else
-      @discussions_with_current_motion_voted_on = DiscussionsQuery.for(@group).with_current_motions
-      @discussions_with_current_motion_not_voted_on = []
-    end
+    @group = GroupDecorator.new Group.find(params[:id])
+    @subgroups = @group.subgroups.accessible_by current_ability, :show
+    @discussions = DiscussionsQuery.for @group, current_user
+    @discussion = Discussion.new group_id: @group.id
   end
 
   def edit
