@@ -215,7 +215,7 @@ class Group < ActiveRecord::Base
   #
 
   def all_discussions(user)
-    DiscussionsQuery.new(user, self)
+    DiscussionsQuery.for(self, user)
   end
 
   def discussions_with_current_motion(user)
