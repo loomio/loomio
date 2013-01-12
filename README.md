@@ -1,4 +1,4 @@
-# Welcome to Loomio! [![Build Status](https://travis-ci.org/enspiral/loomio.png?branch=master)](https://travis-ci.org/enspiral/loomio) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/enspiral/loomio)
+# Welcome to Loomio! [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/enspiral/loomio) [![Build Status](https://travis-ci.org/enspiral/loomio.png?branch=master)](https://travis-ci.org/enspiral/loomio) [![Dependency Status](https://gemnasium.com/enspiral/loomio.png)](https://gemnasium.com/enspiral/loomio)
 
 Loomio is a free and open-source web application that helps groups make better decisions together.
 
