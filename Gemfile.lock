@@ -204,11 +204,6 @@ GEM
       lumberjack (>= 1.0.2)
       pry (>= 0.9.10)
       thor (>= 0.14.6)
-    guard-jasmine (1.2.2)
-      childprocess
-      guard (>= 0.8.3)
-      multi_json
-      thor
     guard-rspec (2.3.3)
       guard (>= 1.1)
       rspec (~> 2.11)
@@ -234,8 +229,6 @@ GEM
     inherited_resources (1.3.0)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
-    jasminerice (0.0.8)
-      haml
     journey (1.0.4)
     jqplot-rails (0.1)
       railties (~> 3.0)
@@ -485,13 +478,11 @@ DEPENDENCIES
   formtastic
   gravtastic
   guard
-  guard-jasmine
   guard-rspec
   guard-spork
   haml-rails
   high_voltage
   inherited_resources
-  jasminerice
   jqplot-rails
   jquery-atwho-rails
   jquery-rails
