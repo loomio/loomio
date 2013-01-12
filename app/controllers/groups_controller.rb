@@ -100,10 +100,10 @@ class GroupsController < GroupBaseController
     @group.description = @description
     @group.save!
   end
-  
+
   def get_members
     @users = group.users
-    if (params[:pre].present?) 
+    if (params[:pre].present?)
       @users = @users.select { |user| user.username =~ /#{params[:pre]}/ }
     end
     respond_to do |format|
@@ -117,7 +117,7 @@ class GroupsController < GroupBaseController
     @group.viewable_by = @viewable_by
     @group.save!
   end
-  
+
   private
 
     def group
