@@ -214,21 +214,6 @@ class Group < ActiveRecord::Base
   # OTHER METHODS
   #
 
-  def discussions_sorted(user= nil)
-    # TODO: Merge into DiscussionsQuery
-    if user && user.group_membership(self)
-      user.discussions
-        .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
-        .includes(:group)
-        .where('discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL)', id, id)
-        .order("last_comment_at DESC")
-    else
-      DiscussionsQuery.for(self)
-        .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
-        .order("last_comment_at DESC")
-    end
-  end
-
   def create_welcome_loomio
     unless parent
       comment_str = "Hey folks, I've been thinking it's time for a holiday. I know some people might be worried about our carbon footprint, but I have a serious craving for space-cheese!

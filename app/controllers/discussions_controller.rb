@@ -31,14 +31,13 @@ class DiscussionsController < GroupBaseController
       if cannot? :show, @group
         head 401
       else
-        @discussions_without_motions = @group.discussions_sorted(current_user).page(params[:page]).per(10)
-        @no_discussions_exist = (@group.discussions.count == 0)
+        @discussions = DiscussionsQuery.for(@group, current_user).
+                       without_current_motions.page(params[:page]).per(10)
         render :layout => false if request.xhr?
       end
     else
       authenticate_user!
-      @discussions_without_motions = current_user.discussions_sorted.page(params[:page]).per(10)
-      @no_discussions_exist = (current_user.discussions.count == 0)
+      @discussions = current_user.discussions_sorted.page(params[:page]).per(10)
       render :layout => false if request.xhr?
     end
   end
