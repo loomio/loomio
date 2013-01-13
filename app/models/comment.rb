@@ -44,10 +44,6 @@ class Comment < ActiveRecord::Base
     c
   end
 
-  def other_discussion_participants
-    discussion.participants - [author]
-  end
-
   #helper method to check if a comment has children
   def has_children?
     self.children.size > 0
@@ -82,6 +78,7 @@ class Comment < ActiveRecord::Base
   def like(user)
     comment_vote = CommentVote.new
     comment_vote.comment = self
+
     comment_vote.user = user
     comment_vote.value = true
     comment_vote.save
@@ -105,17 +102,20 @@ class Comment < ActiveRecord::Base
     discussion.current_motion
   end
 
-  def parse_mentions
+  def mentioned_group_members
     users = []
     usernames = extract_mentioned_screen_names(self.body)
     usernames.each do |name|
       user = User.find_by_username(name)
-      # Only users that belong to this discussion's group
       if user && user.group_ids.include?(discussion.group_id)
-        users.push(user)
+        users << user
       end
     end
     users
+  end
+
+  def non_mentioned_group_members
+    discussion.participants - mentioned_group_members
   end
 
   private
