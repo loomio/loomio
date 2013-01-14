@@ -4,7 +4,7 @@ class CommentsController < BaseController
   def destroy
     destroy!{ discussion_url(resource.discussion) }
   end
-
+  
   def like
     @comment = resource
     like = (params[:like]=='true')
@@ -19,5 +19,4 @@ class CommentsController < BaseController
     	format.js { render :template => "comments/comment_likes" }
     end
   end
-
 end

@@ -63,8 +63,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'jasminerice'
-  gem 'guard-jasmine'
   gem 'selenium-webdriver', '2.25.0'
   gem 'letter_opener'
   gem 'mailcatcher'
@@ -74,13 +72,11 @@ group :development do
   gem 'guard'
   gem 'guard-spork'
   gem 'guard-rspec'
-  gem 'guard-sass'
-  gem 'guard-coffeescript'
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
   gem 'launchy'
-  gem 'spork'
+  gem 'spork-rails'
   gem 'awesome_print'
 end
 

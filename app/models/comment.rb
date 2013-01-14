@@ -18,7 +18,6 @@ class Comment < ActiveRecord::Base
 
   after_create :update_discussion_last_comment_at
   after_create :fire_new_comment_event
-
   after_destroy :update_discussion_last_comment_at
 
   attr_accessible :body, :uses_markdown
@@ -45,10 +44,6 @@ class Comment < ActiveRecord::Base
     c.user_id = user_id
     c.uses_markdown = User.find_by_id(user_id).uses_markdown?
     c
-  end
-
-  def other_discussion_participants
-    discussion.participants - [author]
   end
 
   #helper method to check if a comment has children
@@ -85,6 +80,7 @@ class Comment < ActiveRecord::Base
   def like(user)
     comment_vote = CommentVote.new
     comment_vote.comment = self
+
     comment_vote.user = user
     comment_vote.value = true
     comment_vote.save
@@ -108,17 +104,20 @@ class Comment < ActiveRecord::Base
     discussion.current_motion
   end
 
-  def parse_mentions
+  def mentioned_group_members
     users = []
     usernames = extract_mentioned_screen_names(self.body)
     usernames.each do |name|
       user = User.find_by_username(name)
-      # Only users that belong to this discussion's group
       if user && user.group_ids.include?(discussion.group_id)
-        users.push(user)
+        users << user
       end
     end
     users
+  end
+
+  def other_discussion_participants
+    discussion.participants - [author]
   end
 
   private

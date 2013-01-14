@@ -1,5 +1,5 @@
 - if can? :add_comment, discussion
-  = form_tag add_comment_discussion_path(discussion), id: "new-comment-form" do
+  = form_tag add_comment_discussion_path(discussion), :remote => true, id: "new-comment-form" do
     .medium-user-avatar.avatar-canvas
       - if current_user.avatar_url
         = image_tag current_user.avatar_url(:medium)

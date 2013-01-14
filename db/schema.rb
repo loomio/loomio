@@ -12,7 +12,6 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20130108004633) do
-
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
     t.string   "resource_type", :null => false
@@ -117,8 +116,10 @@ ActiveRecord::Schema.define(:version => 20130108004633) do
     t.integer  "eventable_id"
     t.string   "eventable_type"
     t.integer  "user_id"
+    t.integer  "discussion_id"
   end
 
+  add_index "events", ["discussion_id"], :name => "index_events_on_discussion_id"
   add_index "events", ["eventable_id"], :name => "index_events_on_eventable_id"
   add_index "events", ["user_id"], :name => "index_events_on_user_id"
 

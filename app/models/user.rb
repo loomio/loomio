@@ -237,7 +237,6 @@ class User < ActiveRecord::Base
     log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
     if log.nil?
       discussion_read_log = DiscussionReadLog.new
-      discussion_read_log.discussion_last_viewed_at = Time.now
       discussion_read_log.user_id = id
       discussion_read_log.discussion_id = discussion.id
       discussion_read_log.save!
