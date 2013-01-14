@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :email, :presence => true
+  validates_inclusion_of :uses_markdown, :in => [true,false]
 
   validates_attachment :uploaded_avatar,
     :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
@@ -99,7 +100,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
                   :uploaded_avatar, :username, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications, 
-                  :subscribed_to_mention_notifications, :group_email_preferences
+                  :subscribed_to_mention_notifications, :group_email_preferences, :uses_markdown
 
   before_save :ensure_unsubscribe_token
 
@@ -350,6 +351,14 @@ class User < ActiveRecord::Base
     end
     self.username = username_tmp
     save
+  end
+
+  def markdown_onoff
+    uses_markdown? ? 'on' : 'off'
+  end
+
+  def uses_markdown?
+    self.uses_markdown
   end
 
   private

@@ -159,6 +159,7 @@ li s hard.motion-preview {
 }
 
 .comment-body, .model-description, .motion .description {
+  font-size: 14px;
   p {
     word-wrap: break-word;
   }
@@ -196,6 +197,9 @@ li s hard.motion-preview {
   h5{
     font-size: 1.0em;
   }
+  hr{
+  margin:1em
+  }
 }
 
 /** Code block padding (Stops avatars destroying indentation) */
@@ -209,6 +213,11 @@ pre{
 
 
 /*** comments, positions & proposals in History ***/
+#markdown-dropdown li i {
+display: inline-block;
+width: 15px;
+}
+
 #content-history {
   border-right: 1px solid $light-grey;
   min-height: 660px;
@@ -232,6 +241,15 @@ pre{
     float:left;
     margin-right: 10px;
   }
+
+  #markdown-dropdown {
+    margin-top: -43px;
+    margin-right: 10px;
+  }
+
+  #markdown-setting-dropdown {
+    margin-top: -20px;
+  } 
 
   #new-comment {
     margin: 0 0 5px 0px;

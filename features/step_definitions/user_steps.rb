@@ -16,3 +16,6 @@ Given /^I am logged in$/ do
   login @user.email, "password"
 end
 
+Given /^I prefer markdown$/ do
+  @user.wants_markdown = true
+end

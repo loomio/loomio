@@ -12,6 +12,7 @@ class Discussion < ActiveRecord::Base
   # validates_with AuthorValidator
   validates_presence_of :title, :group, :author
   validates :title, :length => { :maximum => 150 }
+  validates_inclusion_of :uses_markdown, :in => [true,false]
 
   acts_as_commentable
   has_paper_trail :only => [:description]
@@ -29,7 +30,7 @@ class Discussion < ActiveRecord::Base
   delegate :full_name, :to => :group, :prefix => :group
   delegate :email, :to => :author, :prefix => :author
 
-  attr_accessible :group_id, :group, :title, :description
+  attr_accessible :group_id, :group, :title, :description, :uses_markdown
 
   attr_accessor :comment, :notify_group_upon_creation
 

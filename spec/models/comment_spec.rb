@@ -7,6 +7,7 @@ describe Comment do
                    commentable_type: 'Discussion', user_id: user.id) }
 
   it { should have_many(:events).dependent(:destroy) }
+  it { should respond_to(:uses_markdown) }
 
   describe "creating a comment on a discussion" do
     it "updates discussion.last_comment_at" do

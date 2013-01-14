@@ -83,4 +83,17 @@ describe UsersController do
       response.should redirect_to(previous_url)
     end
   end
+
+  describe "#set_markdown" do
+    before do
+      user.stub(:update_attributes).and_return(true)
+      User.stub(:find_by_id).and_return(user)
+    end
+    it "updates the the uses_markdown attribute in the database" do
+      user.should_receive(:update_attributes).with "true"
+      xhr :post, :set_markdown,
+        :id => 1,
+        :uses_markdown => "true"
+    end
+  end
 end
