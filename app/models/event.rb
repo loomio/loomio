@@ -162,7 +162,7 @@ class Event < ActiveRecord::Base
     comment.mentioned_group_members.each do |mentioned_user|
       Event.user_mentioned!(comment, mentioned_user)
     end
-    comment.non_mentioned_group_members.each do |non_mentioned_user|
+    comment.other_discussion_participants.each do |non_mentioned_user|
       notify!(non_mentioned_user)
     end
   end

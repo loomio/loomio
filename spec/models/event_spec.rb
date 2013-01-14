@@ -426,7 +426,7 @@ describe Event do
       @mentioned_user = stub(:user)
       @non_mentioned_user = stub(:user)
       @comment.stub(:mentioned_group_members).and_return([@mentioned_user])
-      @comment.stub(:non_mentioned_group_members).and_return([@non_mentioned_user])
+      @comment.stub(:other_discussion_participants).and_return([@non_mentioned_user])
       @event.stub(:notify!)
       Event.stub(:user_mentioned!)
     end

@@ -114,8 +114,8 @@ class Comment < ActiveRecord::Base
     users
   end
 
-  def non_mentioned_group_members
-    discussion.participants - mentioned_group_members
+  def other_discussion_participants
+    discussion.participants - [author]
   end
 
   private
