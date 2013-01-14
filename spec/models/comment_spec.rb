@@ -81,7 +81,7 @@ describe Comment do
     end
   end
 
-  describe "mentioned_group_members" do
+  describe "#mentioned_group_members" do
     before do
       @group = create :group
       @user = create :user
@@ -110,6 +110,21 @@ describe Comment do
         @comment = @discussion.add_comment @user, "@#{non_member.username}"
         @comment.mentioned_group_members.should_not include(non_member)
       end
+    end
+  end
+
+  describe "#other_discussion_participants" do
+    before do
+      @author = create :user
+      @participant = create :user
+      comment.stub_chain(:discussion, :participants).and_return([@participant, @author])
+      comment.stub(:author).and_return(@author)
+    end
+    it "should not return the the other participants" do
+      comment.other_discussion_participants.should include(@participant)
+    end
+    it "should not return the author" do
+      comment.other_discussion_participants.should_not include(@author)
     end
   end
 end
