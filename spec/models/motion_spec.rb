@@ -26,6 +26,53 @@ describe Motion do
     @motion.user_has_voted?(nil).should == false
   end
 
+  describe "#set_close_date(date)" do
+    before do
+      @motion = create(:motion)
+    end
+    context "date is a future date" do
+      it "updates close_date" do
+        future_date = 2.days.from_now
+        @motion.set_close_date!(future_date)
+        @motion.close_date.should == future_date
+      end
+    end
+    context "date is a past date" do
+      it "does not update close_date" do
+        past_date = 2.days.ago
+        @motion.set_close_date!(past_date)
+        @motion.close_date.should_not  == past_date
+      end
+    end
+  end
+
+  context "events" do
+    before do
+      @user = create :user
+      @group = create :group
+      @group.add_admin! @user
+      @discussion = create :discussion, :group => @group
+    end
+    it "fires new_motion event if a motion is created successfully" do
+      motion = Motion.new
+      motion.name = "That we create me"
+      motion.author = @user
+      motion.discussion = @discussion
+      motion.should_receive(:fire_new_motion_event)
+      motion.save!
+    end
+    it "adds motion closed activity if a motion is closed" do
+      motion = create :motion, :discussion => @discussion
+      Event.should_receive(:motion_closed!)
+      motion.close_motion!(@user)
+    end
+    it "adds edit motion close date activity if a motion close date is edited" do
+      motion = create :motion, :discussion => @discussion
+      motion.should_receive(:fire_motion_close_date_edited_event).with(@user)
+      motion.set_close_date!(2.days.from_now, @user)
+    end
+  end
+
   it "cannot have invalid phases" do
     @motion = create(:motion)
     @motion.phase = 'bad'
@@ -78,7 +125,7 @@ describe Motion do
   it "cannot have an outcome if voting open" do
     @motion = create(:motion)
     @motion.outcome.blank?.should == true
-    @motion.set_outcome("blah blah")
+    @motion.set_outcome!("blah blah")
     @motion.save
     @motion.outcome.blank?.should == true
   end
@@ -125,7 +172,7 @@ describe Motion do
       vote1 = create(:vote, :position => 'yes', :user => @user1, :motion => @motion)
       vote2 = create(:vote, :position => 'no', :user => @user2, :motion => @motion)
       @updated_at = @motion.updated_at
-      @motion.close_voting!
+      @motion.close!
     end
 
     it "stores users who did not vote" do
@@ -142,30 +189,47 @@ describe Motion do
       @motion.users_who_did_not_vote.should_not include(@user2)
     end
 
-    it "no_vote_count should return number of users who did not vote" do
-      @motion.no_vote_count.should == @motion.group.users.count - @motion.votes.count
-    end
-
-    it "reopening motion deletes did_not_vote records" do
-      @motion.open_voting
-      DidNotVote.all.count.should == 0
-    end
-
     it "can have an outcome" do
       outcome = "Test Outcome"
-      @motion.set_outcome(outcome)
+      @motion.set_outcome!(outcome)
       @motion.save
       @motion.outcome.should == outcome
     end
-
   end
 
-  context "open motion" do
-    before :each do
-      @user1 = build(:user)
-      @user1.save
-      @group = build(:group, :creator => @user1)
-      @group.save
+  describe "#no_vote_count" do
+    let(:motion) { create :motion }
+
+    it "returns the number of members who did not vote" do
+      user = create :user
+      motion.group.add_member! user
+      create :vote, :motion => motion, :position => "yes", :user => user
+      motion.no_vote_count.should == motion.group_users.count - 1
+    end
+
+    it "still works if the same user votes multiple times" do
+      user = create :user
+      motion.group.add_member! user
+      create :vote, :motion => motion, :position => "yes", :user => user
+      create :vote, :motion => motion, :position => "no", :user => user
+      motion.no_vote_count.should == motion.group_users.count - 1
+    end
+
+    context "for a closed motion" do
+      before { motion.close! }
+
+      it "returns the number of members who did not vote" do
+        motion.should be_closed
+        motion.stub(:did_not_votes).and_return(stub :count => 99)
+        motion.no_vote_count.should == 99
+      end
+    end
+  end
+
+  describe "#users_who_did_not_vote" do
+    it "returns users who did not vote" do
+      @user1 = create :user
+      @group = create :group, :creator => @user1
       @discussion = create(:discussion, group: @group, author: @user1)
       @motion1 = create(:motion, name: "hi",
                                 author: @user1,
@@ -173,30 +237,8 @@ describe Motion do
                                 phase: "voting")
       @motion1.author = @user1
       @motion1.save!
-    end
-
-    context "no_vote_count" do
-      it "should return number of users who have not voted yet" do
-        @motion1.no_vote_count.should == 1
-      end
-
-      it "should not change if users vote multiple times" do
-        pending "this test is failing for some reason, but the functionality works everywhere else"
-        user2 = build(:user)
-        user2.save
-        @group.add_member! user2
-        Vote.create!(motion: @motion1, position: "yes", user: @user1)
-        Vote.create!(motion: @motion1, position: "no", user: @user1)
-        Vote.create!(motion: @motion1, position: "abstain", user: @user1)
-        @motion1.reload
-        @motion1.no_vote_count.should == 1
-      end
-    end
-
-    it "users_who_did_not_vote should return users who did not vote" do
       @motion1.users_who_did_not_vote.should include(@user1)
     end
-
   end
 
   describe "number_of_votes_since_last_looked(user)" do
@@ -232,14 +274,19 @@ describe Motion do
 
   describe "last_looked_at_by(user)" do
     it "returns the date when the user last looked at the motion" do
-      user = build(:user)
-      motion = create(:motion)
-      last_viewed_at = Time.now
-      log = create(:motion_read_log)
-      MotionReadLog.stub_chain(:where, :first).and_return(log)
-      log.stub(:motion_last_viewed_at).and_return(last_viewed_at)
+      user = create :user
+      motion = create :motion
+      motion.stub(:read_log_for).and_return stub :motion_last_viewed_at => 123
 
-      motion.last_looked_at_by(user).should == last_viewed_at
+      motion.last_looked_at_by(user).should == 123
+    end
+
+    it "returns nil if no read log exists" do
+      user = create :user
+      motion = create :motion
+      motion.stub(:read_log_for).and_return nil
+
+      motion.last_looked_at_by(user).should == nil
     end
   end
 

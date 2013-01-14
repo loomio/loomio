@@ -37,11 +37,7 @@ class Motion < ActiveRecord::Base
     state :voting, :initial => true
     state :closed
 
-    event :open_voting, before: :before_open do
-      transitions :to => :voting, :from => [:closed]
-    end
-
-    event :close_voting, before: :before_close do
+    event :close, before: :before_close do
       transitions :to => :closed, :from => [:voting]
     end
   end
@@ -111,9 +107,28 @@ class Motion < ActiveRecord::Base
     end
   end
 
+  # motion is closed by user
+  def close_motion!(user=nil)
+    close!
+    save
+    fire_motion_closed_event(user)
+  end
+
   def close_if_expired
-    if (voting? && close_date && close_date <= Time.now)
-      close_voting
+    close_motion! if (voting? && close_date && close_date <= Time.now)
+  end
+
+  def set_close_date!(date, editor=nil)
+    if date > Time.now
+      self.close_date = date
+      save
+      fire_motion_close_date_edited_event(editor)
+    end
+  end
+  
+  def set_outcome!(str)
+    if closed?
+      self.outcome = str
       save
     end
   end
@@ -123,11 +138,8 @@ class Motion < ActiveRecord::Base
   end
 
   def no_vote_count
-    if voting?
-      group_count - unique_votes.count
-    else
-      did_not_votes.count
-    end
+    return group_count - unique_votes.count if voting?
+    did_not_votes.count
   end
 
   def percent_voted
@@ -159,17 +171,20 @@ class Motion < ActiveRecord::Base
     discussion.update_activity if discussion
   end
 
+  def read_log_for(user)
+    MotionReadLog.where('motion_id = ? AND user_id = ?',
+      id, user.id).first
+  end
+
   def number_of_votes_since_last_looked(user)
-    if user && user.is_group_member?(group)
+    if user
       return number_of_votes_since(last_looked_at_by(user)) if last_looked_at_by(user)
     end
     unique_votes.count
   end
 
   def last_looked_at_by(user)
-    motion_read_log = MotionReadLog.where('motion_id = ? AND user_id = ?',
-      id, user.id).first
-    return motion_read_log.motion_last_viewed_at if motion_read_log
+    read_log_for(user).motion_last_viewed_at if read_log_for(user)
   end
 
   def number_of_votes_since(time)
@@ -192,23 +207,18 @@ class Motion < ActiveRecord::Base
     created_at
   end
 
-  def set_outcome(str)
-    if closed?
-      self.outcome = str
-      save
-    end
-  end
-
   private
+
     def fire_new_motion_event
       Event.new_motion!(self)
     end
 
-    def before_open
-      self.close_date = Time.now + 1.week
-      did_not_votes.each do |did_not_vote|
-        did_not_vote.delete
-      end
+    def fire_motion_closed_event(user)
+      Event.motion_closed!(self, user)
+    end
+    
+    def fire_motion_close_date_edited_event(user)
+      Event.motion_close_date_edited!(self, user)
     end
 
     def before_close

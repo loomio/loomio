@@ -12,6 +12,8 @@ describe Comment do
   describe "creating a comment on a discussion" do
     it "updates discussion.last_comment_at" do
       discussion = create(:discussion)
+      discussion.last_comment_at = 2.days.ago
+      discussion.save!
       comment = discussion.add_comment discussion.author, "hi"
       discussion.reload
       discussion.last_comment_at.to_s.should == comment.created_at.to_s
@@ -24,23 +26,13 @@ describe Comment do
     end
   end
 
+
   describe "destroying a comment" do
     let(:discussion) { create(:discussion) }
-
     context "which is the only comment on a discussion" do
       it "updates discussion.last_comment_at to discussion.created_at" do
         comment = discussion.add_comment discussion.author, "hi"
         discussion.last_comment_at.should == discussion.created_at
-      end
-    end
-
-    context "which is the most recent comment on a discussion" do
-      it "updates discussion.last_comment_at to the previous comment" do
-        comment1 = discussion.add_comment discussion.author, "hi"
-        comment2 = discussion.add_comment discussion.author, "hi"
-        comment2.destroy
-        discussion.reload
-        discussion.last_comment_at.to_s.should == comment1.created_at.to_s
       end
     end
   end
@@ -87,6 +79,53 @@ describe Comment do
       it "does not decrease like count" do
         comment.likes.count.should == 0
       end
+    end
+  end
+
+  describe "#mentioned_group_members" do
+    before do
+      @group = create :group
+      @user = create :user
+      @discussion = create :discussion, :author => @user, :group => @group
+      Event.stub(:send_new_comment_notifications!)
+      @user.stub(:subscribed_to_mention_notifications?).and_return(true)
+    end
+    context "user mentions another group member" do
+      before do
+        @member = create :user
+        @group.add_member! @member
+        @comment = @discussion.add_comment @user, "@#{@member.username}"
+      end
+      it "should return the mentioned user" do
+        @comment.mentioned_group_members.should include(@member)
+      end
+      it "should not return an un-mentioned user" do
+        member1 = create :user
+        @group.add_member! member1
+        @comment.mentioned_group_members.should_not include(member1)
+      end
+    end
+    context "user mentions a non-group member" do
+      it "should not return a mentioned non-member" do
+        non_member = create :user
+        @comment = @discussion.add_comment @user, "@#{non_member.username}"
+        @comment.mentioned_group_members.should_not include(non_member)
+      end
+    end
+  end
+
+  describe "#other_discussion_participants" do
+    before do
+      @author = create :user
+      @participant = create :user
+      comment.stub_chain(:discussion, :participants).and_return([@participant, @author])
+      comment.stub(:author).and_return(@author)
+    end
+    it "should not return the the other participants" do
+      comment.other_discussion_participants.should include(@participant)
+    end
+    it "should not return the author" do
+      comment.other_discussion_participants.should_not include(@author)
     end
   end
 end

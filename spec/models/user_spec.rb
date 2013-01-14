@@ -64,7 +64,7 @@ describe User do
     end
 
     it "does not return the user's votes on motions that are closed" do
-      @motion.close_voting!
+      @motion.close!
       user.open_votes.should_not include(@vote)
     end
   end
@@ -92,7 +92,7 @@ describe User do
 
     it "should not return motions that belong to the group but are in phase 'closed'" do
       motion = create(:motion, author: user)
-      motion.close_voting!
+      motion.close!
       user.motions_in_voting_phase.should_not include(motion)
     end
   end
@@ -100,7 +100,7 @@ describe User do
   describe "motions_closed" do
     it "should return motions that belong to the group and are in phase 'voting'" do
       motion = create(:motion, author: user)
-      motion.close_voting!
+      motion.close!
       user.motions_closed.should include(motion)
     end
 
@@ -160,7 +160,7 @@ describe User do
 
     it "should not include discussions with a current motion" do
       motion = create :motion, :discussion => @discussion1, author: @user
-      motion.close_voting!
+      motion.close!
       motion1 = create :motion, :discussion => @discussion1, author: @user
       @user.discussions_sorted.should_not include(@discussion1)
     end
