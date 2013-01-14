@@ -34,3 +34,22 @@ $ ->
             callback _.toArray(names)
         ), "json"
 
+$ ->
+  if $("body.discussions.show").length > 0
+    $("#enable-markdown").click((event) ->
+        $("#uses_markdown").val(true)
+        $(".markdown-item").find('.icon-ok').removeClass('icon-ok')
+        $(this).children().first().children().addClass('icon-ok')
+        $("#markdown-settings-form").submit()
+        event.preventDefault()
+    )
+
+$ ->
+  if $("body.discussions.show").length > 0
+    $("#disable-markdown").click((event) ->
+        $("#uses_markdown").val(false)
+        $(".markdown-item").find('.icon-ok').removeClass('icon-ok')
+        $(this).children().first().children().addClass('icon-ok')
+        $("#markdown-settings-form").submit()
+        event.preventDefault()
+    )

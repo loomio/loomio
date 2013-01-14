@@ -28,3 +28,9 @@ $ ->
   $(".helper-bot").tooltip
     placement: "left",
     title: "Click me and I will show you around"
+
+#adds bootstrap tooltip to makdown-settings-dropdown
+$ ->
+  $("#markdown-dropdown").tooltip
+    placement: "top",
+    title: "Text formatting settings and info."

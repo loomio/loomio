@@ -50,4 +50,8 @@ module DiscussionsHelper
   def add_mention_links(comment)
     auto_link_usernames_or_lists(comment, :username_url_base => "#", :username_include_symbol => true)
   end
+
+  def css_for_markdown_link(current_user, setting)
+    return "icon-ok" if (current_user.uses_markdown == setting)
+  end
 end
