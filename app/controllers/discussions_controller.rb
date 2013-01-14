@@ -33,11 +33,13 @@ class DiscussionsController < GroupBaseController
       else
         @discussions = DiscussionsQuery.for(@group, current_user).
                        without_current_motions.page(params[:page]).per(10)
+        @no_discussions_exist = (@group.discussions.count == 0)
         render :layout => false if request.xhr?
       end
     else
       authenticate_user!
       @discussions = current_user.discussions_sorted.page(params[:page]).per(10)
+      @no_discussions_exist = (current_user.discussions.count == 0)
       render :layout => false if request.xhr?
     end
   end
