@@ -310,7 +310,7 @@ describe Event do
     end
   end
 
-  describe "user_mentioned!", focus: true, isolated: true do
+  describe "user_mentioned!", isolated: true do
     let(:comment_author) { stub(:comment_author) }
     let(:comment) { stub(:comment, user: comment_author) }
     let(:mentioned_user) { stub(:mentioned_user,

@@ -12,18 +12,18 @@ class FillInDiscussionIdForEachEventActivityItem < ActiveRecord::Migration
   end
 
   def up
-    Event.all.each do |event|
+    Event.find_each(:batch_size => 100) do |event|
       case event.kind
         when 'new_comment'
-          event.discussion_id = event.eventable.discussion.id
+          event.discussion_id = event.eventable.commentable_id
         when 'new_motion', 'motion_closed', 'motion_close_date_edited'
-          event.discussion_id = event.eventable.discussion.id
+          event.discussion_id = event.eventable.discussion_id
         when 'new_vote', 'motion_blocked'
-          event.discussion_id = event.eventable.motion.discussion.id
+          event.discussion_id = event.eventable.motion.discussion_id
         when 'new_discussion', 'discussion_title_edited', 'discussion_description_edited'
-          event.discussion_id = event.eventable.id
+          event.discussion_id = event.eventable_id
       end
-      event.save
+      event.save(:validate => false)
     end
   end
 

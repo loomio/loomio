@@ -6,7 +6,7 @@
 # To render a printscreen of the page:
 # page.driver.render('./screenshots/file.png', :full => true)
 
-if ENV['USE_POLTERGEIST']
+unless ENV['FULL_BROWSER']
   require 'capybara/poltergeist'
   polter_options = {
     :js_errors => true,
