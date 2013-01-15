@@ -9,7 +9,7 @@
       = text_area_tag 'comment', "", id: 'new-comment', placeholder: "Say something..."
       = submit_tag "Post comment", class: "btn btn-small submit", id: 'post-new-comment', :data => {:disable_with => "Post comment"}
   .dropdown#markdown-dropdown
-    %a.dropdown-toggle{href:'#markdown-dropdown', 'data-toggle'=> 'dropdown'}
+    %a.dropdown-toggle{href:'#markdown-dropdown', id:'markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
       - if @uses_markdown
         = image_tag("markdown_on.png", :id => 'markdown-icon')
       - else

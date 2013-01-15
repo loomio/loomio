@@ -1,10 +1,10 @@
 %ul.dropdown-menu#markdown-setting-dropdown
   %li#enable-markdown.markdown-item
-    %a{href: '#'}
+    %a{href: '#', id: 'enable-markdown-link'}
       %i{:class => css_for_markdown_link(current_user, true)}
       = 'Enable'
   %li#disable-markdown.markdown-item
-    %a{href: '#'}
+    %a{href: '#', id: 'disable-markdown-link'}
       %i{:class => css_for_markdown_link(current_user, false)}
       = 'Disable'
   .divider
