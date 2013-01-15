@@ -37,7 +37,14 @@ class DiscussionsController < GroupBaseController
       end
     else
       authenticate_user!
-      @discussions_without_motions = current_user.discussions_sorted.page(params[:page]).per(10)
+      if params[:search].present?
+        filtered_motions = current_user.discussions_sorted.select { |discussion| 
+          discussion.title =~ /#{params[:search]}/i
+        }
+        @discussions_without_motions = Kaminari.paginate_array(filtered_motions).page(params[:page]).per(10)
+      else
+        @discussions_without_motions = current_user.discussions_sorted.page(params[:page]).per(10)
+      end
       @no_discussions_exist = (current_user.discussions.count == 0)
       render :layout => false if request.xhr?
     end
