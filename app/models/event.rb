@@ -35,7 +35,7 @@ class Event < ActiveRecord::Base
     def new_comment!(comment)
       event = create!(:kind => "new_comment", :eventable => comment,
                       :discussion_id => comment.discussion.id)
-      send_new_comment_notifications!(comment, event)
+      event.send_new_comment_notifications!(comment)
     end
 
     def new_motion!(motion)
@@ -75,7 +75,7 @@ class Event < ActiveRecord::Base
     def new_vote!(vote)
       event = create!(:kind => "new_vote", :eventable => vote,
                       :discussion_id => vote.motion.discussion.id)
-      send_new_vote_notifications!(vote, event)
+      event.send_new_vote_notifications!(vote)
     end
 
     def motion_blocked!(vote)
@@ -135,29 +135,6 @@ class Event < ActiveRecord::Base
               :discussion_id => motion.discussion.id, :user => closer)
     end
 
-    def send_new_vote_notifications!(vote, event)
-      voter = vote.user
-      if voter != vote.motion_author
-        event.notify!(vote.motion_author)
-      end
-
-      if voter != vote.discussion_author
-        if vote.motion_author != vote.discussion_author
-          event.notify!(vote.discussion_author)
-        end
-      end
-    end
-
-    def send_new_comment_notifications!(comment, event)
-      comment.parse_mentions.each do |mentioned_user|
-        Event.user_mentioned!(comment, mentioned_user)
-      end
-
-      comment.other_discussion_participants.each do |user|
-        event.notify!(user)
-      end
-    end
-
     handle_asynchronously :new_discussion!
     handle_asynchronously :new_motion!
     handle_asynchronously :motion_closing_soon!
@@ -166,8 +143,30 @@ class Event < ActiveRecord::Base
     handle_asynchronously :comment_liked!
     handle_asynchronously :user_added_to_group!
     handle_asynchronously :user_mentioned!
-
-    handle_asynchronously :send_new_vote_notifications!
-    handle_asynchronously :send_new_comment_notifications!
   end
+
+  def send_new_vote_notifications!(vote)
+    voter = vote.user
+    if voter != vote.motion_author
+      notify!(vote.motion_author)
+    end
+
+    if voter != vote.discussion_author
+      if vote.motion_author != vote.discussion_author
+        notify!(vote.discussion_author)
+      end
+    end
+  end
+
+  def send_new_comment_notifications!(comment)
+    comment.mentioned_group_members.each do |mentioned_user|
+      Event.user_mentioned!(comment, mentioned_user)
+    end
+    comment.other_discussion_participants.each do |non_mentioned_user|
+      notify!(non_mentioned_user)
+    end
+  end
+
+  handle_asynchronously :send_new_vote_notifications!
+  handle_asynchronously :send_new_comment_notifications!
 end
