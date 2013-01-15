@@ -49,7 +49,6 @@ class DiscussionsController < GroupBaseController
     @group = GroupDecorator.new(@discussion.group)
     @current_motion = @discussion.current_motion
     @vote = Vote.new
-    @uses_markdown = current_user.uses_markdown?
     @activity = @discussion.activity
     if (not params[:proposal])
       if @current_motion
