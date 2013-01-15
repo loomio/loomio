@@ -86,14 +86,19 @@ describe UsersController do
 
   describe "#set_markdown" do
     before do
-      user.stub(:update_attributes).and_return(true)
-      User.stub(:find_by_id).and_return(user)
+      user.stub(:save!)
     end
-    it "updates the the uses_markdown attribute in the database" do
-      user.should_receive(:update_attributes).with "true"
+    after do
       xhr :post, :set_markdown,
+        :current_user => 1,
         :id => 1,
         :uses_markdown => "true"
+    end
+    it "updates the uses_markdown attribute in the model" do
+      user.should_receive(:uses_markdown=).with "true"
+    end
+    it "saves the model" do
+      user.should_receive(:save!)
     end
   end
 end
