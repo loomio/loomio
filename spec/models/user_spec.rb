@@ -477,19 +477,4 @@ describe User do
     end
 
   end
-
-  describe "#markdown_onoff" do
-    context "user's markdown preference is false" do
-      it "should return 'off'" do
-        user.update_attributes( uses_markdown: false )
-        user.markdown_onoff.should == 'off'
-      end
-    end
-    context "user's markdown preference is true" do
-      it "should return 'on'" do
-        user.update_attributes( uses_markdown: true )
-        user.markdown_onoff.should == 'on'
-      end
-    end
-  end
 end
