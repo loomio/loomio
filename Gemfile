@@ -64,8 +64,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'jasminerice'
-  gem 'guard-jasmine'
   gem 'selenium-webdriver', '2.25.0'
   gem 'letter_opener'
   gem 'mailcatcher'
