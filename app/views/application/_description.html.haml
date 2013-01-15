@@ -1,17 +1,18 @@
+- description_markdown_setting ||= false
 .description-container
   .description-body
     - too_long = true if model.description && model.description.length > 500
 
     <!--[if IE 7]>
     .long-description.model-description
-      ~ markdown(model.description)
+      ~ conditional_markdown(description_markdown_setting, model.description)
     <![endif]-->
     
     <!--[if !IE 7]><!-->
     .short-description.model-description
-      ~ markdown(truncate(model.description, length: 500, omission: '...', separator: ' '))
+      ~ conditional_markdown(description_markdown_setting, truncate(model.description, length: 500, omission: '...', separator: ' '))
     .long-description.model-description{style: "display: none"}
-      ~ markdown(model.description)
+      ~ conditional_markdown(description_markdown_setting, model.description)
     = link_to "Show More", "#", class: 'see-more' if too_long
     <!--<![endif]-->
     

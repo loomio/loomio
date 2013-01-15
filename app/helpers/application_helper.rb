@@ -73,8 +73,8 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
-  def conditional_markdown(object, text, options=nil)
-    if object.uses_markdown?
+  def conditional_markdown(truefalse, text, options=nil)
+    if truefalse
       markdown(text, options)
     else
       text
