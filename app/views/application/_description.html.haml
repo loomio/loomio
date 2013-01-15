@@ -4,14 +4,14 @@
 
     <!--[if IE 7]>
     .long-description.model-description
-      ~ conditional_markdown(@discussion, model.description)
+      ~ markdown(model.description)
     <![endif]-->
     
     <!--[if !IE 7]><!-->
     .short-description.model-description
-      ~ conditional_markdown(@discussion, truncate(model.description, length: 500, omission: '...', separator: ' '))
+      ~ markdown(truncate(model.description, length: 500, omission: '...', separator: ' '))
     .long-description.model-description{style: "display: none"}
-      ~ conditional_markdown(@discussion, model.description)
+      ~ markdown(model.description)
     = link_to "Show More", "#", class: 'see-more' if too_long
     <!--<![endif]-->
     
