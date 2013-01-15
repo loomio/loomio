@@ -27,10 +27,10 @@ When /^I disable markdown$/ do
   click_on 'disable-markdown-link'
 end
 
-Then /^markdown preference should show enabled$/ do
-
+Then /^markdown should now be on by default$/ do
+  page.should have_css('.markdown-on')
 end
 
-Then /^markdown preference should show disabled$/ do
-
+Then /^markdown should now be off by default$/ do
+  page.should have_css('.markdown-off')
 end

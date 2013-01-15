@@ -352,14 +352,6 @@ class User < ActiveRecord::Base
     save
   end
 
-  def markdown_onoff
-    uses_markdown? ? 'on' : 'off'
-  end
-
-  def uses_markdown?
-    self.uses_markdown
-  end
-
   private
     def ensure_unsubscribe_token
       if unsubscribe_token.blank?
@@ -378,5 +370,4 @@ class User < ActiveRecord::Base
         save
       end
     end
-
 end
