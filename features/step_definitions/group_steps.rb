@@ -81,6 +81,17 @@ Given /^there is a discussion in a group I belong to$/ do
   @group.add_member! @user
 end
 
+Given /^the group has multiple discussions$/ do 
+  @group = FactoryGirl.create :group
+  3.times do |i| 
+    discussion = FactoryGirl.create :discussion, :group => @group, :title => "Test discussion #{i}"
+  end 
+end
+
+And /^the group has a discussion titled "(.*?)"$/ do |discussion_title|
+  @discussion = FactoryGirl.create :discussion, :group => @group, :title => discussion_title
+end
+
 When /^I fill details for the subgroup$/ do
   fill_in "group_name", :with => 'test group'
   choose "group_viewable_by_everyone"
