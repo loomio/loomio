@@ -71,8 +71,10 @@ class UsersController < BaseController
   end
 
   def set_markdown
-    current_user.update_attributes( uses_markdown: params[:uses_markdown] )
-    current_user.reload
+    current_user.uses_markdown = params[:uses_markdown]
+    current_user.save!
+    #current_user.update_attributes( uses_markdown: params[:uses_markdown] )
+    #current_user.reload
   end
 
   def settings
