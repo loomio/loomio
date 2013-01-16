@@ -12,6 +12,7 @@ describe User do
 
   it { should have_many(:notifications) }
   it { should have(1).errors_on(:name) }
+  it { should respond_to(:uses_markdown) }
 
   it "must have a valid email" do
     user = User.new
@@ -476,5 +477,4 @@ describe User do
     end
 
   end
-
 end
