@@ -69,66 +69,6 @@ describe Group do
     end
   end
 
-  describe "all_discussions(user)" do
-    # This spec has many more cases which are not written - see cucumber features/view_group_discussions.feature
-    context "a logged in user" do
-      context "a group member views the group that has a subgroup, viewable to parent group members, that they are not a member of" do
-        before do
-          @user = create(:user)
-          @user1 = create(:user)
-          @group = create(:group)
-          @subgroup = create(:group, :parent => @group, :viewable_by => 'parent_group_members')
-          @group.add_member!(@user)
-          @group.add_member!(@user1)
-          @subgroup.add_member!(@user1)
-          @discussion = create :discussion, :group => @subgroup, :author => @user1
-        end
-        it "should not return the subgroups discussions" do
-          @group.all_discussions(@user).should_not include(@discussion)
-        end
-      end
-    end
-  end
-
-  context do
-    before do
-      @user = create(:user)
-      @group = create(:group)
-      group1 = create(:group)
-      @group.add_member!(@user)
-      group1.add_member!(@user)
-      @discussion1 = create :discussion, :group => @group, :author => @user
-      motion1 = create(:motion, discussion: @discussion1, author: @user)
-      @discussion2 = create :discussion, :group => @group, :author => @user
-      motion2 = create(:motion, discussion: @discussion2, author: @user)
-      @discussion3 = create :discussion, :group => group1, :author => @user
-      motion3 = create(:motion, discussion: @discussion3, author: @user)
-      vote = Vote.new(position: "yes")
-      vote.motion = motion2
-      vote.user = @user
-      vote.save
-      vote = Vote.new(position: "yes")
-      vote.motion = motion3
-      vote.user = @user
-      vote.save
-    end
-    describe "discussions_with_current_motion_voted_on(user)" do
-      it "should return all discussion in the group with a current motion that a user has voted on" do
-        @group.discussions_with_current_motion_voted_on(@user).should include(@discussion2)
-        @group.discussions_with_current_motion_voted_on(@user).should_not include(@discussion1)
-        @group.discussions_with_current_motion_voted_on(@user).should_not include(@discussion3)
-      end
-    end
-    describe "discussions_with_current_motion_not_voted_on(user)" do
-      it "should return all discussion in the group with a current motion that a user has not voted on" do
-        @group.discussions_with_current_motion_not_voted_on(@user).should include(@discussion1)
-        @group.discussions_with_current_motion_not_voted_on(@user).should_not include(@discussion2)
-        @group.discussions_with_current_motion_not_voted_on(@user).should_not include(@discussion3)
-      end
-    end
-  end
-
-
   describe "motions_in_voting_phase" do
     it "should return motions that belong to the group and are in phase 'voting'" do
       @group = motion.group
@@ -152,50 +92,6 @@ describe Group do
     it "should not return motions that belong to the group but are in phase 'closed'" do
       @group = motion.group
       @group.motions_closed.should_not include(motion)
-    end
-  end
-
-  describe "group.discussions_sorted_for_user(user)" do
-    before do
-      @user = create(:user)
-      @group = create(:group)
-      @group.add_member!(@user)
-      Time.stub(:now).and_return Time.new(2012, 1, 1, 1)
-      @discussion1 = create :discussion, :group => @group, :author => @user
-    end
-    it "returns a list of discussions sorted by last_comment_at" do
-      Time.stub(:now).and_return Time.new(2012, 1, 1, 2)
-      @discussion2 = create :discussion, :group => @group, :author => @user
-      Time.stub(:now).and_return Time.new(2012, 1, 1, 3)
-      @discussion3 = create :discussion, :group => @group, :author => @user
-      Time.stub(:now).and_return Time.new(2012, 1, 1, 4)
-      @discussion2.add_comment @user, "hi"
-      @group.discussions_sorted(@user)[0].should == @discussion2
-      @group.discussions_sorted(@user)[1].should == @discussion3
-      @group.discussions_sorted(@user)[2].should == @discussion1
-    end
-    it "should not include discussions with a current motion" do
-      motion = create :motion, :discussion => @discussion1, author: @user
-      motion.close!
-      motion1 = create :motion, :discussion => @discussion1, author: @user
-      @user.discussions_sorted.should_not include(@discussion1)
-    end
-    context "for a group that has subgroups" do
-      before do
-        subgroup1 = create(:group, :parent => @group)
-        subgroup2 = create(:group, :parent => @group)
-        user2 = create(:user)
-        @group.add_member! user2
-        subgroup1.add_member!(@user)
-        @discussion5 = create :discussion, :group => subgroup1, :author => @user
-        @discussion6 = create :discussion, :group => subgroup2, :author => user2
-      end
-      it "returns discussions for subgroups that the user belongs to" do
-        @group.discussions_sorted(@user).should include(@discussion5)
-      end
-      it "does not return discussions for subgroups the user does not belong to" do
-        @group.discussions_sorted(@user).should_not include(@discussion6)
-      end
     end
   end
 

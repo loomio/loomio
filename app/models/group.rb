@@ -211,64 +211,8 @@ class Group < ActiveRecord::Base
   end
 
   #
-  # DISCUSSION LISTS
+  # OTHER METHODS
   #
-
-  def all_discussions(user)
-    if user
-      Discussion.includes(:group => :memberships)
-        .where("(discussions.group_id = ? 
-          OR (groups.parent_id = ? AND groups.archived_at IS NULL
-            AND (groups.viewable_by = 'everyone'
-              OR (groups.viewable_by = 'members' AND memberships.user_id = ?)
-
-              )
-            )
-          )", id, id, user.id)
-    else
-      Discussion.includes(:group)
-        .where("(discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL
-          AND groups.viewable_by = 'everyone'))", id, id)
-    end
-  end
-
-  def discussions_with_current_motion(user)
-    if all_discussions(user)
-      all_discussions(user).includes(:motions).where('motions.phase = ?', "voting")
-    else
-      []
-    end
-  end
-
-  def discussions_with_current_motion_not_voted_on(user)
-    if all_discussions(user)
-      (all_discussions(user).includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on(user))
-    else
-      []
-    end
-  end
-
-  def discussions_with_current_motion_voted_on(user)
-    if all_discussions(user)
-      all_discussions(user).includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", user.id).order("last_comment_at DESC")
-    else
-      []
-    end
-  end
-
-  def discussions_sorted(user= nil)
-    if user && user.group_membership(self)
-      user.discussions
-        .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
-        .includes(:group)
-        .where('discussions.group_id = ? OR (groups.parent_id = ? AND groups.archived_at IS NULL)', id, id)
-        .order("last_comment_at DESC")
-    else
-      all_discussions(user= nil)
-        .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
-        .order("last_comment_at DESC")
-    end
-  end
 
   def create_welcome_loomio
     unless parent
