@@ -152,6 +152,10 @@ class User < ActiveRecord::Base
     memberships.for_group(group).exists?
   end
 
+  def is_parent_group_member?(group)
+    memberships.for_group(group.parent).exists? if group.parent
+  end
+
   def group_membership(group)
     memberships.for_group(group).first
   end
@@ -188,6 +192,7 @@ class User < ActiveRecord::Base
   end
 
   def discussions_with_current_motion_not_voted_on
+    # TODO: Merge into Queries::VisibleDiscussions
     if discussions
       (discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on)
     else
@@ -196,6 +201,7 @@ class User < ActiveRecord::Base
   end
 
   def discussions_with_current_motion_voted_on
+    # TODO: Merge into Queries::VisibleDiscussions
     if discussions
       (discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", id))
     else
@@ -204,6 +210,7 @@ class User < ActiveRecord::Base
   end
 
   def discussions_sorted
+    # TODO: Merge into Queries::VisibleDiscussions
     discussions
       .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
       .order("last_comment_at DESC")
