@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe DiscussionsQuery do
+describe Queries::VisibleDiscussions do
   let(:user) { create :user }
   let(:group) { create :group, :creator => user }
 
@@ -13,7 +13,7 @@ describe DiscussionsQuery do
     discussion3 = create :discussion, :group => group, :author => user
     Time.stub(:now).and_return Time.new(2012, 1, 1, 4)
     discussion2.add_comment(user, "hi")
-    discussions = DiscussionsQuery.for(group)
+    discussions = Queries::VisibleDiscussions.for(group)
     discussions[0].should == discussion2
     discussions[1].should == discussion3
     discussions[2].should == discussion1
@@ -23,14 +23,14 @@ describe DiscussionsQuery do
     context "public group" do
       it "returns the group's discussions" do
         discussion = create :discussion, :group => group
-        discussions = DiscussionsQuery.for(group)
+        discussions = Queries::VisibleDiscussions.for(group)
         discussions.should include(discussion)
       end
 
       it "returns public subgroup discussions" do
         subgroup = create :group, :parent => group
         subgroup_discussion = create :discussion, :group => subgroup
-        discussions = DiscussionsQuery.for(group)
+        discussions = Queries::VisibleDiscussions.for(group)
         discussions.should include(subgroup_discussion)
       end
 
@@ -41,7 +41,7 @@ describe DiscussionsQuery do
                            :viewable_by => :members
         subgroup1_discussion = create :discussion, :group => subgroup1
         subgroup2_discussion = create :discussion, :group => subgroup2
-        discussions = DiscussionsQuery.for(group)
+        discussions = Queries::VisibleDiscussions.for(group)
         discussions.should_not include(subgroup1_discussion)
         discussions.should_not include(subgroup2_discussion)
       end
@@ -52,7 +52,7 @@ describe DiscussionsQuery do
 
       it "returns no discussions" do
         discussion = create :discussion, :group => group
-        discussions = DiscussionsQuery.for(group)
+        discussions = Queries::VisibleDiscussions.for(group)
         discussions.should be_empty
       end
     end
@@ -62,7 +62,7 @@ describe DiscussionsQuery do
 
       it "returns no discussions" do
         discussion = create :discussion, :group => group
-        discussions = DiscussionsQuery.for(group)
+        discussions = Queries::VisibleDiscussions.for(group)
         discussions.should be_empty
       end
     end
@@ -71,7 +71,7 @@ describe DiscussionsQuery do
   describe "::for(group, member)" do
     it "returns the group's discussions" do
       discussion = create :discussion, :group => group
-      discussions = DiscussionsQuery.for(group, user)
+      discussions = Queries::VisibleDiscussions.for(group, user)
       discussions.should include(discussion)
     end
 
@@ -85,7 +85,7 @@ describe DiscussionsQuery do
       subgroup_discussion1 = create :discussion, :group => subgroup1
       subgroup_discussion2 = create :discussion, :group => subgroup2
       subgroup_discussion3 = create :discussion, :group => subgroup3
-      discussions = DiscussionsQuery.for(group, user)
+      discussions = Queries::VisibleDiscussions.for(group, user)
       discussions.should include(subgroup_discussion1)
       discussions.should include(subgroup_discussion2)
       discussions.should include(subgroup_discussion3)
@@ -101,7 +101,7 @@ describe DiscussionsQuery do
       subgroup_discussion1 = create :discussion, :group => subgroup1
       subgroup_discussion2 = create :discussion, :group => subgroup2
       subgroup_discussion3 = create :discussion, :group => subgroup3
-      discussions = DiscussionsQuery.for(group, user)
+      discussions = Queries::VisibleDiscussions.for(group, user)
       discussions.should_not include(subgroup_discussion1)
       discussions.should_not include(subgroup_discussion2)
       discussions.should_not include(subgroup_discussion3)
@@ -114,21 +114,21 @@ describe DiscussionsQuery do
 
     it "returns the group's discussions" do
       discussion = create :discussion, :group => group
-      discussions = DiscussionsQuery.for(group, user)
+      discussions = Queries::VisibleDiscussions.for(group, user)
       discussions.should include(discussion)
     end
 
     it "doesn't return discussions if group is private" do
       group.update_attribute(:viewable_by, :members)
       discussion = create :discussion, :group => group
-      discussions = DiscussionsQuery.for(group, user)
+      discussions = Queries::VisibleDiscussions.for(group, user)
       discussions.should_not include(discussion)
     end
 
     it "returns discussions for public subgroups" do
       subgroup = create :group, :parent => group, :viewable_by => :everyone
       subgroup_discussion = create :discussion, :group => subgroup
-      discussions = DiscussionsQuery.for(group, user)
+      discussions = Queries::VisibleDiscussions.for(group, user)
       discussions.should include(subgroup_discussion)
     end
 
@@ -139,7 +139,7 @@ describe DiscussionsQuery do
                          :viewable_by => :members
       subgroup_discussion = create :discussion, :group => subgroup
       subgroup_discussion2 = create :discussion, :group => subgroup2
-      discussions = DiscussionsQuery.for(group, user)
+      discussions = Queries::VisibleDiscussions.for(group, user)
       discussions.should_not include(subgroup_discussion)
       discussions.should_not include(subgroup_discussion2)
     end
@@ -153,7 +153,7 @@ describe DiscussionsQuery do
 
     context "public subgroup" do
       it "returns the subgroup's discussions" do
-        discussions = DiscussionsQuery.for(subgroup, user)
+        discussions = Queries::VisibleDiscussions.for(subgroup, user)
         discussions.should include(discussion)
       end
     end
@@ -161,7 +161,7 @@ describe DiscussionsQuery do
     context "private subgroup" do
       it "doesn't return discussions" do
         subgroup.update_attribute(:viewable_by, :members)
-        discussions = DiscussionsQuery.for(subgroup, user)
+        discussions = Queries::VisibleDiscussions.for(subgroup, user)
         discussions.should_not include(discussion)
       end
     end
@@ -169,7 +169,7 @@ describe DiscussionsQuery do
     context "visible-to-parent subgroup" do
       it "returns the subgroup's discussions" do
         subgroup.update_attribute(:viewable_by, :parent_group_members)
-        discussions = DiscussionsQuery.for(subgroup, user)
+        discussions = Queries::VisibleDiscussions.for(subgroup, user)
         discussions.should include(discussion)
       end
     end
@@ -181,7 +181,7 @@ describe DiscussionsQuery do
       discussion = create :discussion, :group => group
       discussion_with_motion = create :discussion, :group => group
       motion = create :motion, :discussion => discussion_with_motion
-      discussions = DiscussionsQuery.for(group).with_current_motions
+      discussions = Queries::VisibleDiscussions.for(group).with_current_motions
       discussions.should_not include(discussion)
       discussions.should include(discussion_with_motion)
     end
@@ -206,14 +206,14 @@ describe DiscussionsQuery do
   describe "#with_current_motions_user_has_voted_on" do
     include_context "motions with votes"
     it "returns only discussions that have a current motion that user has voted on" do
-      discussions = DiscussionsQuery.for(@group, @user)
+      discussions = Queries::VisibleDiscussions.for(@group, @user)
       discussions = discussions.with_current_motions_user_has_voted_on
       discussions.should include(@discussion_with_vote)
       discussions.should_not include(@discussion_with_no_vote)
     end
 
     it "returns no discussions if user is nil" do
-      discussions = DiscussionsQuery.for(@group, nil)
+      discussions = Queries::VisibleDiscussions.for(@group, nil)
       discussions = discussions.with_current_motions_user_has_voted_on
       discussions.should be_empty
     end
@@ -222,21 +222,21 @@ describe DiscussionsQuery do
   describe "#with_current_motions_user_has_not_voted_on" do
     include_context "motions with votes"
     it "returns only discussions that have a current motion that user has not voted on" do
-      discussions = DiscussionsQuery.for(@group, @user)
+      discussions = Queries::VisibleDiscussions.for(@group, @user)
       discussions = discussions.with_current_motions_user_has_not_voted_on
       discussions.should include(@discussion_with_no_vote)
       discussions.should_not include(@discussion_with_vote)
     end
 
     it "returns all discussions with motions if user is nil" do
-      discussions = DiscussionsQuery.for(@group, nil)
+      discussions = Queries::VisibleDiscussions.for(@group, nil)
       discussions = discussions.with_current_motions_user_has_not_voted_on
       discussions.should include(@discussion_with_no_vote)
       discussions.should include(@discussion_with_vote)
     end
 
     it "returns all discussions with motions if user is not a member" do
-      discussions = DiscussionsQuery.for(@group, create(:user))
+      discussions = Queries::VisibleDiscussions.for(@group, create(:user))
       discussions = discussions.with_current_motions_user_has_not_voted_on
       discussions.should include(@discussion_with_no_vote)
       discussions.should include(@discussion_with_vote)
@@ -248,7 +248,7 @@ describe DiscussionsQuery do
       discussion = create :discussion, :group => group
       discussion2 = create :discussion, :group => group
       motion = create :motion, :discussion => discussion2
-      discussions = DiscussionsQuery.for(group).without_current_motions
+      discussions = Queries::VisibleDiscussions.for(group).without_current_motions
       discussions.should include(discussion)
       discussions.should_not include(discussion2)
     end
