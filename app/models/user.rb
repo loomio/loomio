@@ -192,7 +192,7 @@ class User < ActiveRecord::Base
   end
 
   def discussions_with_current_motion_not_voted_on
-    # TODO: Merge into DiscussionsQuery
+    # TODO: Merge into Queries::VisibleDiscussions
     if discussions
       (discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on)
     else
@@ -201,7 +201,7 @@ class User < ActiveRecord::Base
   end
 
   def discussions_with_current_motion_voted_on
-    # TODO: Merge into DiscussionsQuery
+    # TODO: Merge into Queries::VisibleDiscussions
     if discussions
       (discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", id))
     else
@@ -210,7 +210,7 @@ class User < ActiveRecord::Base
   end
 
   def discussions_sorted
-    # TODO: Merge into DiscussionsQuery
+    # TODO: Merge into Queries::VisibleDiscussions
     discussions
       .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
       .order("last_comment_at DESC")

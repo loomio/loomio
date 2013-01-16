@@ -1,6 +1,6 @@
 require 'delegate'
 
-class DiscussionsQuery < SimpleDelegator
+class Queries::VisibleDiscussions < SimpleDelegator
   def initialize(relation, group, user=nil)
     @group = group
     @user = user

@@ -19,9 +19,9 @@ class GroupsController < GroupBaseController
 
   def show
     @group = GroupDecorator.new Group.find(params[:id])
-    @subgroups = @group.subgroups.accessible_by current_ability, :show
-    @discussions = DiscussionsQuery.for @group, current_user
-    @discussion = Discussion.new group_id: @group.id
+    @subgroups = @group.subgroups.accessible_by(current_ability, :show)
+    @discussions = Queries::VisibleDiscussions.for(@group, current_user)
+    @discussion = Discussion.new(group_id: @group.id)
   end
 
   def edit
