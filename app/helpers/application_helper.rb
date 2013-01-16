@@ -73,6 +73,14 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
+  def conditional_markdown(truefalse, text, options=nil)
+    if truefalse
+      markdown(text, options)
+    else
+      text
+    end
+  end
+
   def help_text_dismissed?
     return true unless current_user
     case "#{controller_name} #{action_name}"

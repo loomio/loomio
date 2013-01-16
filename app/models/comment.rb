@@ -5,6 +5,7 @@ class Comment < ActiveRecord::Base
 
   validates_presence_of :body
   validates_presence_of :user
+  validates_inclusion_of :uses_markdown, :in => [true,false]
 
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
@@ -19,7 +20,7 @@ class Comment < ActiveRecord::Base
   after_create :fire_new_comment_event
   after_destroy :update_discussion_last_comment_at
 
-  attr_accessible :body
+  attr_accessible :body, :uses_markdown
 
   default_scope order("id DESC")
 
@@ -41,6 +42,7 @@ class Comment < ActiveRecord::Base
     c.commentable_type = obj.class.base_class.name
     c.body = comment
     c.user_id = user_id
+    c.uses_markdown = User.find_by_id(user_id).uses_markdown?
     c
   end
 
