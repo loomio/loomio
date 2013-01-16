@@ -58,4 +58,4 @@ activate_discussions_tooltips = () ->
 
 $ ->
   $("#privacy").tooltip
-    placement: "top"
+    placement: "right"
