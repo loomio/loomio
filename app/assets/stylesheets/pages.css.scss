@@ -29,7 +29,7 @@ body.pages, body.sessions.new {
   .main-container.container { padding-top: 0px; }
   .inner-container { padding: 0 10px; }
 
-  .how-it-works-panel{
+  .how-it-works-panel, .values-panel{
     p{
       font-size: 16px;
     }
@@ -47,6 +47,11 @@ body.pages, body.sessions.new {
       font-size: 14px;
     }
     p.special-last{ margin-bottom: 0;}
+  }
+  .values-panel img{
+    border: none;
+    float: left;
+    margin: 0 1em 1em 0;
   }
 
   hr {
