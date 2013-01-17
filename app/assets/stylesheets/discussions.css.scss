@@ -186,6 +186,9 @@ li s hard.motion-preview {
   h5{
     font-size: 1.0em;
   }
+  hr{
+  margin:1em
+  }
 }
 
 /** Code block padding (Stops avatars destroying indentation) */
@@ -199,6 +202,11 @@ pre{
 
 
 /*** comments, positions & proposals in History ***/
+#markdown-dropdown li i {
+  display: inline-block;
+  width: 15px;
+}
+
 #content-activity {
   border-right: 1px solid $light-grey;
   min-height: 660px;
@@ -216,6 +224,13 @@ pre{
     float:left;
     margin-right: 10px;
   }
+  #markdown-dropdown {
+    margin-top: -43px;
+    margin-right: 10px;
+  }
+  #markdown-setting-dropdown {
+    margin-top: -20px;
+  }
   #new-comment {
     margin: 0 0 5px 0px;
     height: 80px;
@@ -225,7 +240,6 @@ pre{
   #post-new-comment {
     margin: 5px 5px 5px 45px;
   }
-
   ul.activity-list {
     list-style: none;
     margin: 0 15px 3px 0;

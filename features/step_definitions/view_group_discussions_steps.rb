@@ -41,7 +41,7 @@ Given /^the group has discussions$/ do
   FactoryGirl.create :motion, :discussion => @discussion_with_decision
 end
 
-Given /^I am not a member of a public group$/ do
+Given /^a public group exists that I am not a member of$/ do
   step "a public group exists"
 end
 
@@ -50,8 +50,16 @@ Given /^I am a member of a private group$/ do
   @group.add_member! @user
 end
 
-Given /^I am not a member of a private group$/ do
+Given /^a private group exists that I am not a member of$/ do
   step "a private group exists"
+end
+
+Given /^a public sub\-group exists that I am not a member of$/ do
+  step "a public sub-group exists"
+end
+
+Given /^a private sub\-group exists that I am not a member of$/ do
+  step "a private sub-group exists"
 end
 
 Given /^I am a member of a public sub\-group$/ do
@@ -60,18 +68,10 @@ Given /^I am a member of a public sub\-group$/ do
   @sub_group.add_member! @user
 end
 
-Given /^I am not a member of a public sub\-group$/ do
-  step "a public sub-group exists"
-end
-
 Given /^I am a member of a private sub\-group$/ do
   step "a private sub-group exists"
   @parent_group.add_member! @user
   @sub_group.add_member! @user
-end
-
-Given /^I am not a member of a private sub\-group$/ do
-  step "a private sub-group exists"
 end
 
 Given /^I am a member of a sub\-group viewable by parent\-group members$/ do

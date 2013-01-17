@@ -81,6 +81,7 @@ describe "Discussion" do
       context "the markdown engine" do
         before :each do
           visit discussion_path(@discussion)
+          user.update_attributes(uses_markdown: true)
         end
         it "autolinks a link" do
           fill_in 'new-comment', with: "http://loom.io"
