@@ -31,20 +31,14 @@ class DiscussionsController < GroupBaseController
       if cannot? :show, @group
         head 401
       else
-        @discussions_without_motions = @group.discussions_sorted(current_user).page(params[:page]).per(10)
+        @discussions = Queries::VisibleDiscussions.for(@group, current_user).
+                       without_current_motions.page(params[:page]).per(10)
         @no_discussions_exist = (@group.discussions.count == 0)
         render :layout => false if request.xhr?
       end
     else
       authenticate_user!
-      if params[:search].present?
-        filtered_motions = current_user.discussions_sorted.select { |discussion| 
-          discussion.title =~ /#{params[:search]}/i
-        }
-        @discussions_without_motions = Kaminari.paginate_array(filtered_motions).page(params[:page]).per(10)
-      else
-        @discussions_without_motions = current_user.discussions_sorted.page(params[:page]).per(10)
-      end
+      @discussions = current_user.discussions_sorted.page(params[:page]).per(10)
       @no_discussions_exist = (current_user.discussions.count == 0)
       render :layout => false if request.xhr?
     end
@@ -138,6 +132,25 @@ class DiscussionsController < GroupBaseController
     @last_collaborator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js
+    end
+  end
+
+  def search
+    if params[:query].present? 
+      query = params[:query]
+      if params[:group_id].present?
+        @group = Group.find(params[:group_id])
+        @discussions = Queries::VisibleDiscussions.for(@group, current_user, query).
+                         without_current_motions.page(params[:page]).per(10)
+        end
+      else
+        authenticate_user!
+        @discussions = current_user.discussions_sorted(query).page(params[:page]).per(10)
+      end
+      @no_discussions_exist = (@discussions.count == 0)
+      render "index", :layout => false if request.xhr?
+    else
+      redirect_to :action => :index
     end
   end
 
