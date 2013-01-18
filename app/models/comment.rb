@@ -107,7 +107,7 @@ class Comment < ActiveRecord::Base
   def mentioned_group_members
     users = []
     usernames = extract_mentioned_screen_names(self.body)
-    usernames.each do |name|
+    usernames.uniq.each do |name|
       user = User.find_by_username(name)
       if user && user.group_ids.include?(discussion.group_id)
         users << user
