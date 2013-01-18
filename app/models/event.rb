@@ -149,12 +149,13 @@ class Event < ActiveRecord::Base
     end
 
     def send_new_comment_notifications!(comment, event)
-      comment.parse_mentions.each do |mentioned_user|
+      mentioned_users = comment.parse_mentions
+      mentioned_users.each do |mentioned_user|
         Event.user_mentioned!(comment, mentioned_user)
       end
 
       comment.other_discussion_participants.each do |user|
-        event.notify!(user)
+        event.notify!(user) unless mentioned_users.include? user
       end
     end
 
