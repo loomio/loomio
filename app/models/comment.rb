@@ -108,7 +108,7 @@ class Comment < ActiveRecord::Base
   def parse_mentions
     users = []
     usernames = extract_mentioned_screen_names(self.body)
-    usernames.each do |name|
+    usernames.uniq.each do |name|
       user = User.find_by_username(name)
       # Only users that belong to this discussion's group
       if user && user.group_ids.include?(discussion.group_id)
