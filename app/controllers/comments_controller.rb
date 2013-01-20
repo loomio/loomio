@@ -4,7 +4,7 @@ class CommentsController < BaseController
   def destroy
     destroy!{ discussion_url(resource.discussion) }
   end
-  
+
   def like
     @comment = resource
     like = (params[:like]=='true')
