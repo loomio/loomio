@@ -3,16 +3,14 @@
 # discussions
 $ ->
   # params = Application.getPageParam()
-  params = ""
-  load_discussions(params)
+  load_discussions()
 
-load_discussions = (params, callback) ->
+load_discussions = () ->
+  params = ""
   $('#user-discussions').load("/discussions" + params, ->
     Application.convertUtcToRelativeTime()
     $("#user-discussions").removeClass('hidden')
     $("#discussions-loading").addClass('hidden')
-    if callback isnt undefined
-      callback()
   )
   $("#all-discussions-loading").addClass('hidden')  
 
@@ -42,17 +40,21 @@ $ ->
     clearTimeout searchInputTimer
     if $("#discussions-search-filter-input").val().length >= 3 
       #wait till 'finished typing' - don't hit the server on every keypress
-      searchInputTimer = setTimeout(filter_search, inputInterval)
+      searchInputTimer = setTimeout(discussions_filter, inputInterval)
     else
       #remove filter - load all discussions and unhighlight
-      load_discussions("", ->
-        $(".discussion-title").unhighlight()
-      )
+      load_discussions()
+      $(".discussion-title").unhighlight()
 
-filter_search = () ->
+discussions_filter = () ->
     term = $("#discussions-search-filter-input").val()
-    params = "?search=" + encodeURIComponent(term)
-    load_discussions(params, ->
+    params = "?query=" + encodeURIComponent(term)
+    $('#user-discussions').addClass('hidden')
+    $('#discussions-loading').removeClass('hidden')
+    $('#user-discussions').load("/discussions/search" + params, ->
+      Application.convertUtcToRelativeTime()
+      $("#user-discussions").removeClass('hidden')
+      $("#discussions-loading").addClass('hidden')
       $(".discussion-title").highlight(term)
     )
-    
+
