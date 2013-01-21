@@ -9,21 +9,40 @@ class Queries::VisibleDiscussions < SimpleDelegator
   end
 
   class << self
-    def for(group, user=nil)
+    def for(group, user=nil, title_query=nil)
       if user
         if user.is_group_member?(group)
-          relation = Discussion.includes(:group => :memberships).
-                     where("discussions.group_id = ?
-                     OR (groups.parent_id = ? AND groups.archived_at IS NULL
-                     AND memberships.user_id = ?)",
-                     group.id, group.id, user.id)
+          if title_query.present?
+            relation = Discussion.includes(:group => :memberships).
+                       where("discussions.group_id = ?
+                       OR (groups.parent_id = ? AND groups.archived_at IS NULL
+                       AND memberships.user_id = ?)
+                       AND discussions.title ILIKE ?",
+                       group.id, group.id, user.id, title_query)
+          else
+            relation = Discussion.includes(:group => :memberships).
+                       where("discussions.group_id = ?
+                       OR (groups.parent_id = ? AND groups.archived_at IS NULL
+                       AND memberships.user_id = ?)",
+                       group.id, group.id, user.id)
+          end
         elsif user.is_parent_group_member?(group)
-          relation = Discussion.includes(:group).
-                     where("
-                     discussions.group_id = ?
-                     AND (groups.viewable_by = 'everyone'
-                     OR groups.viewable_by = 'parent_group_members')",
-                     group.id)
+          if title_query.present?
+            relation = Discussion.includes(:group).
+                       where("
+                       discussions.group_id = ?
+                       AND (groups.viewable_by = 'everyone'
+                       OR groups.viewable_by = 'parent_group_members')
+                       AND discussions.title ILIKE ?",
+                       group.id, title_query)
+          else
+            relation = Discussion.includes(:group).
+                       where("
+                       discussions.group_id = ?
+                       AND (groups.viewable_by = 'everyone'
+                       OR groups.viewable_by = 'parent_group_members')",
+                       group.id)
+          end
         else
           relation = publicly_viewable_discussions_for(group)
         end

@@ -142,7 +142,6 @@ class DiscussionsController < GroupBaseController
         @group = Group.find(params[:group_id])
         @discussions = Queries::VisibleDiscussions.for(@group, current_user, query).
                          without_current_motions.page(params[:page]).per(10)
-        end
       else
         authenticate_user!
         @discussions = current_user.discussions_sorted(query).page(params[:page]).per(10)
