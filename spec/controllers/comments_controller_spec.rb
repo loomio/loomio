@@ -15,9 +15,9 @@ describe CommentsController do
 
     context "user likes a comment" do
       before do
-        @comment_vote = mock("comment_vote")
+        @comment_vote = mock_model(CommentVote)
         comment.stub(:like, :like => true).and_return(@comment_vote)
-        Event.stub(:comment_liked!)
+        Events::CommentLiked.stub(:publish!)
       end
 
       it "checks permissions" do
@@ -31,10 +31,9 @@ describe CommentsController do
       end
 
       it "fires comment_liked! event" do
-        Event.should_receive(:comment_liked!).with(@comment_vote)
+        Events::CommentLiked.should_receive(:publish!).with(@comment_vote)
         post :like, id: 23, like: 'true'
       end
-
     end
 
     context "user unlikes a comment" do

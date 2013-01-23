@@ -85,7 +85,7 @@ describe User do
   end
 
   describe "motions_in_voting_phase" do
-    it "should return motions that belong to user and are in phase 'voting'" do
+    it "returns motions that belong to user and are in phase 'voting'" do
       motion = create(:motion, author: user)
       user.motions_in_voting_phase.should include(motion)
     end
@@ -98,7 +98,7 @@ describe User do
   end
 
   describe "motions_closed" do
-    it "should return motions that belong to the group and are in phase 'voting'" do
+    it "returns motions that belong to the group and are in phase 'voting'" do
       motion = create(:motion, author: user)
       motion.close!
       user.motions_closed.should include(motion)
@@ -123,14 +123,14 @@ describe User do
       vote.save
     end
     describe "discussions_with_current_motion_not_voted_on" do
-      it "should return all discussions with a current motion that a user has not voted on" do
+      it "returns all discussions with a current motion that a user has not voted on" do
         user.discussions_with_current_motion_not_voted_on.should include(@discussion1)
         user.discussions_with_current_motion_not_voted_on.should_not include(@discussion2)
       end
     end
 
     describe "discussions_with_current_motion_voted_on" do
-      it "should return all discussions with a current motion that a user has voted on" do
+      it "returns all discussions with a current motion that a user has voted on" do
         user.discussions_with_current_motion_voted_on.should include(@discussion2)
         user.discussions_with_current_motion_voted_on.should_not include(@discussion1)
       end
@@ -352,8 +352,8 @@ describe User do
   end
 
   describe "gravatar?(email, options = {})" do
-    it "should return true if gravatar exists"
-    it "should return false if gravater does not exist"
+    it "returns true if gravatar exists"
+    it "returns false if gravater does not exist"
   end
 
   it "sets deleted_at (Time.current) when deactivate! is called" do
