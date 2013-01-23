@@ -1,4 +1,4 @@
-class ActivityItems::DiscussionDescriptionEdited
+class DiscussionItems::DiscussionDescriptionEdited < DiscussionItem
   attr_reader :event, :discussion
 
   def initialize(event, discussion)
@@ -9,16 +9,16 @@ class ActivityItems::DiscussionDescriptionEdited
     'discussion-icon'
   end
 
-  def group
-    discussion.group
-  end
-
   def actor
     event.user
   end
 
   def header
-    'changed the discussion description'
+    I18n.t('discussion_items.discussion_description_edited')
+  end
+
+  def group
+    discussion.group
   end
 
   def body

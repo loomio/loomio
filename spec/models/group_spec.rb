@@ -70,7 +70,7 @@ describe Group do
   end
 
   describe "motions_in_voting_phase" do
-    it "should return motions that belong to the group and are in phase 'voting'" do
+    it "returns motions that belong to the group and are in phase 'voting'" do
       @group = motion.group
       @group.motions_in_voting_phase.should include(motion)
     end
@@ -83,7 +83,7 @@ describe Group do
   end
 
   describe "motions_closed" do
-    it "should return motions that belong to the group and are in phase 'voting'" do
+    it "returns motions that belong to the group and are in phase 'voting'" do
       motion.close!
       @group = motion.group
       @group.motions_closed.should include(motion)
@@ -253,23 +253,23 @@ describe Group do
       before do
         @group.stub(:membership).with(@user).and_return(@membership)
       end
-      it "should return false if there is new activity since this group was last viewed but does not have any discussions with unread activity" do
+      it "returns false if there is new activity since this group was last viewed but does not have any discussions with unread activity" do
         @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
         @group.discussions.stub_chain(:joins, :where, :count).and_return(0)
         @group.activity_since_last_viewed?(@user).should == false
       end
-      it "should return false if there is no new activity since this group was last viewed but does have discussions with unread activity" do
+      it "returns false if there is no new activity since this group was last viewed but does have discussions with unread activity" do
         @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
         @group.discussions.stub_chain(:joins, :where, :count).and_return(0)
         @group.activity_since_last_viewed?(@user).should == false
       end
-      it "should return true if there is no new activity since this group was last viewed but does have discussions with unread activity" do
+      it "returns true if there is no new activity since this group was last viewed but does have discussions with unread activity" do
         @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
         @group.discussions.stub_chain(:joins, :where, :count).and_return(2)
         @group.activity_since_last_viewed?(@user).should == true
       end
     end
-    it "should return false there is no membership" do
+    it "returns false there is no membership" do
       @group.stub(:membership).with(@user)
       @group.activity_since_last_viewed?(@user).should == false
     end

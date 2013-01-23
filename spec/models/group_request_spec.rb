@@ -16,7 +16,7 @@ describe GroupRequest do
   end
 
   describe "#sectors_metric" do
-    it "should return an array" do
+    it "returns an array" do
       group_request.sectors_metric = ["community", "business"]
       group_request.save
       group_request.reload

@@ -1,96 +1,10 @@
 - begin
-  - if notification.event_kind == "new_discussion"
-    - discussion = notification.discussion
-    - user = discussion.author
-    - action_text = "started a new discussion"
-    - title_text = discussion.title
-    - group_name = discussion.group_full_name
-    - href = discussion_path(discussion)
-
-  - elsif notification.event_kind == "new_comment"
-    - comment = notification.comment
-    - user = comment.user
-    - action_text = "commented on the discussion"
-    - title_text = comment.discussion.title
-    - group_name = comment.group_full_name
-    - href = discussion_path(comment.discussion)
-
-  - elsif notification.event_kind == "new_motion"
-    - motion = notification.motion
-    - user = motion.author
-    - action_text = "created a new proposal"
-    - title_text = motion.name
-    - group_name = motion.group_full_name
-    - href = discussion_path(motion.discussion)
-
-  - elsif notification.event_kind == "motion_closed"
-    - motion = notification.motion
-    - user = notification.event.user
-    - group_name = motion.group_full_name
-    - title_text = motion.name
-    - href = discussion_path(motion.discussion, proposal: motion)
-    - if user
-      - action_text = "closed the proposal"
-    - else
-      - action_text = "Proposal has closed: "
-      - avatar_url = motion.author.avatar_url(:medium)
-      - avatar_initials = motion.author.avatar_initials
-
-  - elsif notification.event_kind == "new_vote"
-    - vote = notification.vote
-    - user = vote.user
-    - action_text = "#{Vote::POSITION_VERBS[vote.position]} on the proposal"
-    - title_text = vote.motion_name
-    - group_name = vote.group_full_name
-    - href = discussion_path(vote.discussion, :proposal => vote.motion.id)
-
-  - elsif notification.event_kind == "motion_blocked"
-    - vote = notification.vote
-    - user = vote.user
-    - action_text = "blocked the proposal"
-    - title_text = vote.motion_name
-    - group_name = vote.group_full_name
-    - href = discussion_path(vote.discussion, :proposal => vote.motion.id)
-
-  - elsif notification.event_kind == "membership_requested"
-    - membership = notification.membership
-    - user = membership.user
-    - action_text = "requested membership to"
-    - title_text = membership.group_full_name
-    - group_name = membership.group_full_name
-    - href = group_path(membership.group)
-
-  - elsif notification.event_kind == "user_added_to_group"
-    - membership = notification.membership
-    - user = membership.inviter
-    - action_text = "added you to the group"
-    - title_text = membership.group_full_name
-    - group_name = membership.group_full_name
-    - href = group_path(membership.group)
-
-  - elsif notification.event_kind == "comment_liked"
-    - comment_vote = notification.comment_vote
-    - user = comment_vote.user
-    - action_text = "liked your comment in the discussion"
-    - title_text = comment_vote.discussion_title
-    - group_name = comment_vote.group_full_name
-    - href = (discussion_path(comment_vote.discussion))+"#comment-#{comment_vote.comment_id}"
-
-  - elsif notification.event_kind == "user_mentioned"
-    - comment = notification.comment
-    - user = comment.user
-    - action_text = "mentioned you in a comment in"
-    - title_text = comment.discussion_title
-    - group_name = comment.group_full_name
-    - href = (discussion_path(comment.discussion))+"#comment-#{comment.id}"
-
-  - elsif notification.event_kind == "motion_closing_soon"
-    - motion = notification.motion
-    - user = current_user
-    - action_text = "Proposal is closing soon: "
-    - title_text = motion.name
-    - group_name = motion.group_full_name
-    - href = motion_path motion
+  - item = NotificationItem.new(notification).item
+  - user = item.actor
+  - action_text = item.action_text
+  - title_text = item.title
+  - group_name = item.group_full_name
+  - href = item.link
 
   - date = time_ago_in_words(notification.created_at)
   - class_name = notification.viewed_at.nil? ? " unread" : ""
@@ -117,10 +31,8 @@
 
 - rescue => exception
   - logger.error("NOTIFICATION ERROR: It looks like something got deleted without it's corresponding events/notifications being deleted as well. notification_id: #{notification.id}\n#{exception}")
-  -# TODO: Once we sort out a better deleting system for groups (https://trello.com/c/ll1na7KL) we should change this to a proper exception notification
-  -#       so we know if there are any lingering notifications hanging around that shouldn't exist
-  -#- ExceptionNotifier::Notifier.exception_notification(request.env, exception,
-    -#:data => {:notification_id => notification.id, :message => "This error most likely means that something got deleted without it's corresponding events/notifications being deleted as well notification_id: #{notification.id}").deliver
+  / TODO: Once we sort out a better deleting system for groups (https://trello.com/c/ll1na7KL) we should change this to a proper exception notification so we know if there are any lingering notifications hanging around that shouldn't exist
+  / - ExceptionNotifier::Notifier.exception_notification(request.env, exception,
+  /   :data => {:notification_id => notification.id, :message => "This error most likely means that something got deleted without it's corresponding events/notifications being deleted as well notification_id: #{notification.id}").deliver
 
 
-          

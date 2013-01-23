@@ -125,7 +125,7 @@ class Motion < ActiveRecord::Base
       fire_motion_close_date_edited_event(editor)
     end
   end
-  
+
   def set_outcome!(str)
     if closed?
       self.outcome = str
@@ -210,15 +210,15 @@ class Motion < ActiveRecord::Base
   private
 
     def fire_new_motion_event
-      Event.new_motion!(self)
+      Events::NewMotion.publish!(self)
     end
 
     def fire_motion_closed_event(user)
-      Event.motion_closed!(self, user)
+      Events::MotionClosed.publish!(self, user)
     end
-    
+
     def fire_motion_close_date_edited_event(user)
-      Event.motion_close_date_edited!(self, user)
+      Events::MotionCloseDateEdited.publish!(self, user)
     end
 
     def before_close
