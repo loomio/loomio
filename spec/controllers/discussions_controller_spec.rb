@@ -137,11 +137,15 @@ describe DiscussionsController do
         discussion.stub(:set_edit_description_activity!)
         discussion.stub(:save!)
       end
-      it "assigns description to the model" do
-        discussion.should_receive(:set_description!)
+
+      after do
         xhr :post, :edit_description,
           :id => discussion.id,
           :description => "blah"
+      end
+
+      it "assigns description to the model" do
+        discussion.should_receive(:set_description!)
       end
     end
 
@@ -149,23 +153,21 @@ describe DiscussionsController do
       before do
         discussion.stub(:save!)
       end
-      it "assigns title to the model" do
-        discussion.should_receive(:title=).with "The Butterflys"
+
+      after do
         xhr :post, :edit_title,
           :id => discussion.id,
           :title => "The Butterflys"
+      end
+
+      it "assigns title to the model" do
+        discussion.should_receive(:title=).with "The Butterflys"
       end
       it "saves the model" do
         discussion.should_receive :save!
-        xhr :post, :edit_title,
-          :id => discussion.id,
-          :title => "The Butterflys"
       end
       it "creates activity in the events table" do
         discussion.should_receive :fire_edit_title_event
-        xhr :post, :edit_title,
-          :id => discussion.id,
-          :title => "The Butterflys"
       end
     end
 
@@ -177,6 +179,11 @@ describe DiscussionsController do
         @version.stub(:reify).and_return(@version_item)
         @version.stub(:save!)
       end
+
+      after do
+
+      end
+
       it "calls reify on version" do
         @version.should_receive(:reify)
         xhr :post, :update_version,
