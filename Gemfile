@@ -50,7 +50,7 @@ gem 'coffee-rails', '~> 3.2.2'
 group :assets do
   gem 'bootstrap-sass', '~>2.0.3'
   gem 'uglifier', '>= 1.0.3'
-  gem 'modernizr-rails', '~> 2.0.6'
+  gem 'modernizr-rails'
 end
 
 group :development, :test do
