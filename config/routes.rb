@@ -7,7 +7,7 @@
   match "/request_new_group", :to => "group_requests#start", :as => :request_new_group
   match "/group_request_confirmation", :to => "group_requests#confirmation", :as => :group_request_confirmation
 
-  resources :groups, except: :index do
+  resources :groups, except: [:index, :new] do
     resources :invitations, :only => :show
     post :add_members, on: :member
     get :add_subgroup, on: :member
