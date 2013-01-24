@@ -120,7 +120,7 @@ describe MembershipsController do
         end
         it "does not send a notification email if member is already approved" do
           @membership = @group.add_member!(@new_user)
-          UserMailer.should_not_receive(:group_membership_approved).and_return(stub(deliver: true))
+          UserMailer.should_not_receive(:group_membership_approved)
           post :approve_request, :id => @membership.id
         end
       end

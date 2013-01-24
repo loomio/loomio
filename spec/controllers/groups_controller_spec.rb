@@ -143,7 +143,7 @@ describe GroupsController do
         @group.add_admin! @user
         @group.stub(:add_member!)
         Group.stub(:find).with(@group.id.to_s).and_return(@group)
-        Event.stub(:user_added_to_group!)
+        Events::UserAddedToGroup.stub(:publish!)
       end
 
       it "adds members to group" do

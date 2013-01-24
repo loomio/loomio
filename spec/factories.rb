@@ -92,4 +92,5 @@ FactoryGirl.define do
     distribution_metric 3
     sectors_metric ["community"]
   end
+
 end

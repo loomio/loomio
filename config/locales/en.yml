@@ -40,6 +40,32 @@ en:
       almost_x_years:
         one:   "1 year"
         other: "%{count} years"
+
   discussion_help_text: "This is the Discussion page. The discussion topic is at the top of the page, followed by background information and context.\n\n Discussion is on the left, to add a comment, write in the text box and click ‘Post comment’.\n\n Decisions are on the right. If you think the group is ready to make a decision, you can make a proposal for the group to consider. If someone has already made a proposal, you can see how the group feels on the pie graph, and state your position underneath.\n\n"
   group_help_text: "This is the Group page for %{group_name}.\n\n Here you can see this group’s discussions, a description of what the group is for, You can start a discussion on a new topic by clicking on the ‘Start a discussion’ button.\n\n"
   dashboard_help_text: "Welcome to Loomio!\n This is the Home page, where you can see a list of the discussions going on in all of your groups. To the right is a list of the groups you are a member of. You can start a discussion on a new topic by clicking on the “Start a discussion” button.\n\n If you have any questions or feedback we’d love to hear from you: %{link}\n\n"
+
+  notifications:
+    new_discussion: "started a new discussion"
+    new_motion: "created a new proposal"
+    motion_closed:
+      by_user: "closed the proposal"
+      by_expirey: "Proposal has closed"
+    new_vote: "%{position} on the proposal"
+    new_comment: "commented on the discussion"
+    comment_liked: "liked your comment in the discussion"
+    user_mentioned: "mentioned you in a comment in"
+    membership_requested: "requested membership to"
+    user_added_to_group: "added you to the group"
+    motion_closing_soon: "Proposal is closing soon"
+    motion_blocked: "blocked the proposal"
+
+  discussion_items:
+    new_discussion: "created the discussion"
+    new_motion: "created a proposal"
+    motion_closed:
+      by_user: "closed the proposal"
+      by_expirey: "Proposal closed"
+    motion_close_date_edited: "changed the closing date for the proposal"
+    discussion_title_edited: "changed the discussion title"
+    discussion_description_edited: "changed the discussion description"

@@ -66,7 +66,7 @@ class Membership < ActiveRecord::Base
     if request?
       self.inviter = inviter
       approve!
-      Event.user_added_to_group! self
+      Events::UserAddedToGroup.publish!(self)
     end
   end
 

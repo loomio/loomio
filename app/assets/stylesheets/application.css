@@ -15,6 +15,7 @@
  *= require pages
  *= require notifications
  *= require motions
+ *= require votes
  *= require users
  *= require memberships
  *= require group_requests

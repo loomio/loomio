@@ -175,8 +175,8 @@ ActiveRecord::Schema.define(:version => 20130114223848) do
     t.integer  "group_id"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.string   "token",                              :null => false
     t.boolean  "accepted",        :default => false
-    t.string   "token"
   end
 
   create_table "memberships", :force => true do |t|
@@ -214,7 +214,7 @@ ActiveRecord::Schema.define(:version => 20130114223848) do
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
-    t.boolean  "uses_markdown",  :default => false,    :null => false
+    t.boolean  "uses_markdown",  :default => true,     :null => false
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
@@ -265,10 +265,10 @@ ActiveRecord::Schema.define(:version => 20130114223848) do
     t.boolean  "has_read_dashboard_notice",                                   :default => false, :null => false
     t.boolean  "has_read_group_notice",                                       :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                                  :default => false, :null => false
-    t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email",                          :default => true,  :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,  :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,  :null => false
+    t.string   "username"
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
     t.boolean  "uses_markdown",                                               :default => false

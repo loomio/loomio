@@ -272,7 +272,7 @@ GEM
       polyamorous (~> 0.5.0)
     method_source (0.8.1)
     mime-types (1.19)
-    modernizr-rails (2.0.6)
+    modernizr-rails (2.6.1)
     multi_json (1.5.0)
     multi_xml (0.5.1)
     net-scp (1.0.4)
@@ -306,7 +306,7 @@ GEM
     rabl (0.7.3)
       activesupport (>= 2.3.14)
       multi_json (~> 1.0)
-    rack (1.4.3)
+    rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-canonical-host (0.0.8)
@@ -481,7 +481,7 @@ DEPENDENCIES
   launchy
   letter_opener
   mailcatcher
-  modernizr-rails (~> 2.0.6)
+  modernizr-rails
   newrelic_rpm
   nokogiri
   paper_trail (~> 2)
