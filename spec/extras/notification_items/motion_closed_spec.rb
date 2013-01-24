@@ -5,7 +5,7 @@ describe NotificationItems::MotionClosed do
   it "#actor returns the user who closed the motion" do
     closer = stub(:user)
     notification.stub_chain(:event, :user).and_return(closer)
-    item.actor.should == notification.event.user
+    item.actor.should == closer
   end
 
   context "user closed motion" do

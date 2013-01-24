@@ -25,8 +25,8 @@ class NotificationItems::MotionClosed < NotificationItem
   end
 
   def avatar_url
-    return actor.avatar_url if actor
-    @notification.eventable.author.avatar_url
+    return actor.avatar_url(:medium) if actor
+    @notification.eventable.author.avatar_url(:medium)
   end
 
   def avatar_initials
