@@ -5,12 +5,11 @@
   - title_text = item.title
   - group_name = item.group_full_name
   - href = item.link
+  - avatar_url = item.avatar_url
+  - avatar_initials = item.avatar_initials
 
   - date = time_ago_in_words(notification.created_at)
   - class_name = notification.viewed_at.nil? ? " unread" : ""
-  - if user
-    - avatar_url = user.avatar_url(:medium)
-    - avatar_initials = user.avatar_initials
 
   %li.selector-item{:class => "notification-item#{class_name}", :id => "notification-#{notification.id}" }
     %a{:href => href }
