@@ -3,7 +3,7 @@ Given /^I am an admin of this group$/ do
 end
 
 When /^I select the delete discussion link from the discussion dropdown$/ do
-  find("#discussion-options").click
+  find("#options-dropdown").click
   click_on "delete-discussion"
 end
 
@@ -20,6 +20,6 @@ Then /^I should see a message notifying me of the deletion$/ do
 end
 
 When /^I should not see the delete discussion link in the discussion dropdown$/ do
-  find("#discussion-options").click
+  find("#options-dropdown").click
   page.should_not have_css('delete-discussion')
 end
