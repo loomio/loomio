@@ -1,7 +1,7 @@
 @import "settings";
 @import "bootstrap/mixins";
 
-body.pages, body.sessions.new {
+body.pages, body.sessions.newOFF {
   background-color: #F7F7ED;
 
   h1 { display: block; }
