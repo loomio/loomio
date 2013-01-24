@@ -7,6 +7,7 @@ gem 'devise_invitable', '~> 1.0.0'
 gem 'pg'
 gem 'capistrano'
 gem 'jquery-rails'
+gem "jquery-scrollto-rails"
 gem 'inherited_resources'
 gem 'formtastic' # Deprecated - use simple_form instead.
 gem 'simple_form', '~> 2.0.0'

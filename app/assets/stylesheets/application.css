@@ -5,6 +5,7 @@
  *= require_self
  *= require jqplot.1.0.0b2_r792
  *= require lib/jquery.atwho
+ *= require home2
  *= require main
  *= require icons
  *= require header
