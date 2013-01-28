@@ -72,7 +72,7 @@ class MotionsController < GroupBaseController
     if motion.set_close_date!(new_close_date, current_user)
       flash[:success] = "Close date successfully changed."
     else
-      flash[:error] = "Invalid close date. Make sure the date you pick is in the future (not the past)."
+      flash[:error] = "Invalid close date. Make sure the date you pick is in the future."
     end
     redirect_to discussion_url(motion.discussion)
   end
