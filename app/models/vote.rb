@@ -91,9 +91,9 @@ class Vote < ActiveRecord::Base
 
     def fire_new_vote_event
       if position == "block"
-        Event.motion_blocked!(self) 
+        Events::MotionBlocked.publish!(self) 
       else
-        Event.new_vote!(self)
+        Events::NewVote.publish!(self)
       end
     end
 

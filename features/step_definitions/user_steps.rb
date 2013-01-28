@@ -16,3 +16,10 @@ Given /^I am logged in$/ do
   login @user.email, "password"
 end
 
+Given /^I prefer markdown$/ do
+  @user.update_attributes(uses_markdown: true)
+end
+
+Given /^I don't prefer markdown$/ do
+  @user.update_attributes(uses_markdown: false)
+end

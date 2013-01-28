@@ -10,9 +10,9 @@
       #all-discussions-loading
         %li.selector-item.loading Loading...
       #discussions-with-motions
-        - @discussions_with_current_motion_not_voted_on.each do |discussion|
+        - @discussions.with_current_motions_user_has_not_voted_on.each do |discussion|
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
-        - @discussions_with_current_motion_voted_on.each do |discussion|
+        - @discussions.with_current_motions_user_has_voted_on.each do |discussion|
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
         .discussion-with-motion-divider.hidden
       #group-discussions.hidden

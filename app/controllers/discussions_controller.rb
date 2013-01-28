@@ -31,13 +31,14 @@ class DiscussionsController < GroupBaseController
       if cannot? :show, @group
         head 401
       else
-        @discussions_without_motions = @group.discussions_sorted(current_user).page(params[:page]).per(10)
+        @discussions = Queries::VisibleDiscussions.for(@group, current_user).
+                       without_current_motions.page(params[:page]).per(10)
         @no_discussions_exist = (@group.discussions.count == 0)
         render :layout => false if request.xhr?
       end
     else
       authenticate_user!
-      @discussions_without_motions = current_user.discussions_sorted.page(params[:page]).per(10)
+      @discussions = current_user.discussions_sorted.page(params[:page]).per(10)
       @no_discussions_exist = (current_user.discussions.count == 0)
       render :layout => false if request.xhr?
     end
@@ -50,6 +51,7 @@ class DiscussionsController < GroupBaseController
     @current_motion = @discussion.current_motion
     @vote = Vote.new
     @activity = @discussion.activity
+    @uses_markdown = current_user.uses_markdown?
     if (not params[:proposal])
       if @current_motion
         @unique_votes = Vote.unique_votes(@current_motion)
@@ -57,7 +59,7 @@ class DiscussionsController < GroupBaseController
         @user_already_voted = @current_motion.user_has_voted?(current_user)
       end
     else
-      @selected_motion = @discussion.closed_motion(params[:proposal])
+      @selected_motion = Motion.find(params[:proposal])
       @user_already_voted = @selected_motion.user_has_voted?(current_user)
       @votes_for_graph = @selected_motion.votes_graph_ready
     end

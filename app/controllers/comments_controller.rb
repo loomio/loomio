@@ -4,13 +4,13 @@ class CommentsController < BaseController
   def destroy
     destroy!{ discussion_url(resource.discussion) }
   end
-  
+
   def like
     @comment = resource
     like = (params[:like]=='true')
     if like
       comment_vote = resource.like current_user
-      Event.comment_liked!(comment_vote)
+      Events::CommentLiked.publish!(comment_vote)
     else
       resource.unlike current_user
     end

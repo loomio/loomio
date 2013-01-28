@@ -7,6 +7,7 @@ describe Comment do
                    commentable_type: 'Discussion', user_id: user.id) }
 
   it { should have_many(:events).dependent(:destroy) }
+  it { should respond_to(:uses_markdown) }
 
   describe "creating a comment on a discussion" do
     it "updates discussion.last_comment_at" do
@@ -19,7 +20,7 @@ describe Comment do
     end
 
     it 'fires a new_comment! event' do
-      Event.should_receive(:new_comment!)
+      Events::NewComment.should_receive(:publish!)
       discussion = create(:discussion)
       comment = discussion.add_comment discussion.author, "hi"
     end
@@ -35,7 +36,7 @@ describe Comment do
       end
     end
   end
-  
+
   context "liked by user" do
     before do
       @like = comment.like user
@@ -78,6 +79,53 @@ describe Comment do
       it "does not decrease like count" do
         comment.likes.count.should == 0
       end
+    end
+  end
+
+  describe "#mentioned_group_members" do
+    before do
+      @group = create :group
+      @user = create :user
+      @discussion = create :discussion, :author => @user, :group => @group
+      Event.stub(:send_new_comment_notifications!)
+      @user.stub(:subscribed_to_mention_notifications?).and_return(true)
+    end
+    context "user mentions another group member" do
+      before do
+        @member = create :user
+        @group.add_member! @member
+        @comment = @discussion.add_comment @user, "@#{@member.username}"
+      end
+      it "returns the mentioned user" do
+        @comment.mentioned_group_members.should include(@member)
+      end
+      it "should not return an un-mentioned user" do
+        member1 = create :user
+        @group.add_member! member1
+        @comment.mentioned_group_members.should_not include(member1)
+      end
+    end
+    context "user mentions a non-group member" do
+      it "should not return a mentioned non-member" do
+        non_member = create :user
+        @comment = @discussion.add_comment @user, "@#{non_member.username}"
+        @comment.mentioned_group_members.should_not include(non_member)
+      end
+    end
+  end
+
+  describe "#other_discussion_participants" do
+    before do
+      @author = create :user
+      @participant = create :user
+      comment.stub_chain(:discussion, :participants).and_return([@participant, @author])
+      comment.stub(:author).and_return(@author)
+    end
+    it "should not return the the other participants" do
+      comment.other_discussion_participants.should include(@participant)
+    end
+    it "should not return the author" do
+      comment.other_discussion_participants.should_not include(@author)
     end
   end
 end

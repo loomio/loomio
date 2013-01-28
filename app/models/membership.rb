@@ -66,7 +66,7 @@ class Membership < ActiveRecord::Base
     if request?
       self.inviter = inviter
       approve!
-      Event.user_added_to_group! self
+      Events::UserAddedToGroup.publish!(self)
     end
   end
 
@@ -90,7 +90,8 @@ class Membership < ActiveRecord::Base
     end
 
     def remove_open_votes
-      group.discussions_with_current_motion_voted_on(user).each do |discussion|
+      discussions = Queries::VisibleDiscussions.for(group, user)
+      discussions.with_current_motions_user_has_voted_on.each do |discussion|
         votes = discussion.current_motion.votes.where(:user_id => user.id)
         votes.destroy_all
       end
