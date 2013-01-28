@@ -1,31 +1,4 @@
-.navbar.navbar-fixed-top
-  .navbar-inner
-    .container
-      .scroll-nav
-        %a.brand{href: "#top"}
-          =image_tag("top-bar-loomio.png")
-      .nav-collapse
-        %ul.nav.scroll-nav
-          %li
-            %a{href: "#why"} Why
-          %li
-            %a{href: "#how"} How
-          %li
-            %a{href: "#who"} Who
-        %ul.nav.pull-right
-          %li
-            %a{href: user_session_path} Sign In
-
-.container#top
-  .section#first
-    .inner-container
-      .row-fluid
-        .span3 &nbsp;
-        .span6
-          =image_tag("logo-426px-mauve-matte.png")
-          %h2 collaborative decision-making
-
-
+.container
   .section
     .inner-container
       .row-fluid
@@ -36,13 +9,9 @@
           %p We're in 'private beta', which means we're not accepting public sign-ups yet. If you want to get involved early, click here:
           %p.no-bottom-margin
             %a.btn.btn-large.btn-primary Sign up to be a beta tester
-
-
-
         .span6
           %h2.buffer &nbsp;
           <iframe class="no-bottom-margin" src="http://player.vimeo.com/video/51331688?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=ff9933" width="426" height="264" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
 
   .anchor#why
   .section#purpose
@@ -50,7 +19,6 @@
       .row-fluid
         .subhead
           %h1 Purpose
-
       .row-fluid
         .span1 &nbsp;
         .span2
@@ -58,9 +26,7 @@
         .span6
           %h2.buffer Creating a world where it’s easy for anyone to participate in decisions that affect them.
           %p With the right collaborative process, groups generate better ideas, decisions and actions than any individual would by themselves.
-
           %p Loomio breaks down the barriers to participation in decision-making at every level: in neighbourhoods, community organisations, businesses, social movements, and local and national governance.
-
           %p.no-bottom-margin Collaborative decision-making balances individual autonomy with the collective good.
 
   .section#principles
@@ -68,7 +34,6 @@
       .row-fluid
         .subhead
           %h1 Principles
-
       .row-fluid#coop
         .span1 &nbsp;
         .span2
@@ -82,7 +47,6 @@
           /   .toggle
           /     %a{"data-toggle" => "collapse", "data-target" => "#ml1"}
           /       More
-
           /   .collapse.in#ml1
           /     %ul
           /       %li
@@ -97,9 +61,7 @@
           /         %i.icon-facetime-video
           /         %a{}
           /           Panel discussion on peer-production
-
       .divider
-
       .row-fluid
         .span1 &nbsp;
         .span2
@@ -109,9 +71,7 @@
           %h3 We are committed to remaining independent so we can provide a neutral place for any group to come together.
           %p We’re immensely proud of our diverse and growing user community: community organisations, businesses, educators, government departments, social activist groups, and families.
           %p Loomio needs to remain independent to support this diversity. We will never do anything to compromise our autonomy or core purpose. We will never sell your data.
-
       .divider
-
       .row-fluid#free
         .span1 &nbsp;
         .span2
@@ -122,9 +82,7 @@
           %p Loomio couldn’t be anything other than open-source.
           %p Peer-production is transforming the way communities create value, laying the foundation for a new economy of abundance. Open collaboration unlocks collective wisdom on a scale we’ve never seen before, producing invaluable public resources like Wikipedia and Linux.
           %p Free software is about the freedom of the user, not the price of the service. Groups with a budget contribute financially for the use of Loomio. This means we can gift it to groups without a budget.
-
       .divider
-
       .row-fluid#adaptive
         .span1 &nbsp;
         .span2
@@ -133,10 +91,7 @@
           %h2.squish Adaptive, reflexive, user-driven
           %h3 Loomio uses Loomio to develop Loomio.
           %p Development of Loomio is iterative, self-reflexive and adaptive, driven by the collective wisdom of the user community. We’re developing an open participatory design methodology that will allow anyone affected by Loomio to have a say in how it works.
-
-
       .divider
-
       .row-fluid
         .span1 &nbsp;
         .span2
@@ -152,17 +107,13 @@
       .row-fluid
         .subhead
           %h1 How it works
-
       .row-fluid
         .span6
           %h2 Loomio is easy
           %p Check out the video for a quick demonstration of how it works.
-
         .span6
           <iframe src="http://player.vimeo.com/video/52025402?title=0&amp;byline=0&amp;portrait=0&amp;badge=0" width="426" height="319" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
       .divider
-
       .row-fluid
         .span6
           %h2 Getting started
@@ -174,10 +125,7 @@
             .modal-body
               %a{"data-dismiss" => "modal"}
                 =image_tag("how-it-works-overview-big.jpg")
-
-
       .divider
-
       .row-fluid
         .span6
           %h2 Have a discussion
@@ -189,9 +137,7 @@
             .modal-body
               %a{"data-dismiss" => "modal"}
                 =image_tag("how-it-works-discussion-big.jpg")
-
       .divider
-
       .row-fluid
         .span6
           %h2 Make a decision
@@ -206,7 +152,6 @@
             %p Disagree means you think there might be a better alternative, but you’re willing to go with the group’s decision.
             =image_tag("hand-block.png", class: "pull-left")
             %p Block means you’ve got serious objections and you’ll be extremely unhappy if this proposal goes ahead.
-
         .span6
           %a{"data-toggle" => "modal", href: "#hiw3"}
             =image_tag("how-it-works-decision-ss.jpg")
@@ -214,9 +159,7 @@
             .modal-body
               %a{"data-dismiss" => "modal"}
                 =image_tag("how-it-works-decision-big.jpg")
-
       .divider
-
       .row-fluid
         .span6
           %h2 See how everyone feels
@@ -228,7 +171,6 @@
             .modal-body
               %a{"data-dismiss" => "modal"}
                 =image_tag("how-it-works-position-big.jpg")
-
       .divider
       .row-fluid
         .span6
@@ -244,20 +186,16 @@
       .row-fluid
         .subhead
           %h1 About us
-
       .row-fluid
         .span6
           %p Loomio emerged when activists from the Occupy movement collided with businesspeople from the social enterprise network <a href="http://enspiral.com">Enspiral</a> and realised that they were using different approaches to work towards the same aim.
           %p Loomio is being built by a core team in Wellington, New Zealand, and a wider network of friends and supporters all over the world. This video is a presentation by one of the team members that explains some of the background of the project.
-
         .span6
           <iframe src="http://player.vimeo.com/video/53696972?title=0&amp;byline=0&amp;portrait=0" width="426" height="239" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
       .divider
-
       .row-fluid
         .span6
           =image_tag("retreat-photo.jpg")
-
         .span6
           %h2 Contact
           %h3 Interested? Get in touch!

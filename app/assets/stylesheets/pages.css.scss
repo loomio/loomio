@@ -170,4 +170,18 @@ body.sessions.new, body.pages.show{
   form a{
     font-size: 18px;
   }
+  ul#browser-icons{
+    a{
+      font-size: 16px;
+      line-height: 18px;
+    }
+    li {
+      float: left;
+      height: 120px;
+      margin: 5px;
+      padding: 5px;
+      width: 150px;
+      text-align: center;
+    }
+  }
 }

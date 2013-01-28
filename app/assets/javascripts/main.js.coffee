@@ -331,7 +331,7 @@ $ ->
 
 # homepage scroll effect
 $ ->
-  $(".scroll-nav a").click((event)->
+  $(".scroll-nav").click((event)->
     target = this.hash
     offsetIE7 = 0;
     if ($.browser.msie  && parseInt($.browser.version, 10) == 7)
