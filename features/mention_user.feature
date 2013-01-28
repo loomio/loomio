@@ -7,7 +7,6 @@ Background:
   And I am a member of a group
   And there is a discussion in the group
 
-
 Scenario: User selects a group member to mention
   Given "Harry" is a member of the group
   When I visit the discussion page
