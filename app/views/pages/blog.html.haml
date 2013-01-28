@@ -1,4 +1,11 @@
-%div{style: "text-align: center; padding-top: 15px;"}
-  %h2 Blog is temporarily down
-  %p{style: "font-size: 1.1em; margin-top: 10px;"} We're in the process of transitioning servers, so our blog is currently disabled. Sorry, we'll have it back up again in a few days!
-  %p= link_to "Read more about Loomio", "/how-it-works"
+= render "header_logged_out"
+
+.container
+  .section
+    .inner-container
+      .row-fluid
+        .span2 &nbsp;
+        .span8
+          %h2 Blog is temporarily down
+          %p Our blog is currently disabled. Sorry, we'll have it back up again soon!
+          %p= link_to "Read more about Loomio", "/"
