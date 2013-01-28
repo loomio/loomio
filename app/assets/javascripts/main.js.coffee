@@ -333,12 +333,10 @@ $ ->
 $ ->
   $(".scroll-nav a").click((event)->
     target = this.hash
-    # console.log(target)
+    offsetIE7 = 0;
+    if ($.browser.msie  && parseInt($.browser.version, 10) == 7)
+      offsetIE7 = -34;
     event.preventDefault()
-    if target == '#top'
-      $.scrollTo('0px', 1000)
-    else
-      $.scrollTo(target, 1000)
+    $.scrollTo(target, 1000, {offset: offsetIE7})
     location.hash = target
   )
-
