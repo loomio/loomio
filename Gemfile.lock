@@ -105,7 +105,7 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
-    capybara (1.1.2)
+    capybara (1.1.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
@@ -119,6 +119,7 @@ GEM
       client_side_validations (~> 3.2.0)
       simple_form (~> 2.0.3)
     cocaine (0.4.2)
+    coderay (1.0.8)
     coffee-filter (0.1.1)
       coffee-script (>= 2.2.0)
       haml (>= 3.0.18)
@@ -131,7 +132,6 @@ GEM
     coffee-script-source (1.1.3)
     colored (1.2)
     columnize (0.3.6)
-    commonjs (0.2.6)
     cucumber (1.2.1)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
@@ -142,7 +142,7 @@ GEM
       cucumber (>= 1.1.8)
       nokogiri (>= 1.5.0)
     daemons (1.1.9)
-    database_cleaner (0.8.0)
+    database_cleaner (0.9.1)
     debugger (1.2.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.1.1)
@@ -187,7 +187,7 @@ GEM
     fastercsv (1.5.5)
     faye-websocket (0.4.6)
       eventmachine (>= 0.12.0)
-    ffi (1.1.5)
+    ffi (1.3.1)
     flay (1.4.3)
       ruby_parser (~> 2.0)
       sexp_processor (~> 3.0)
@@ -198,24 +198,17 @@ GEM
     gherkin (2.11.1)
       json (>= 1.4.6)
     gravtastic (3.2.6)
-    guard (1.0.0)
-      ffi (>= 0.5.0)
-      thor (~> 0.14.6)
-    guard-coffeescript (0.6.0)
-      coffee-script (>= 2.2.0)
-      guard (>= 0.8.3)
-    guard-jasmine (1.2.2)
-      childprocess
-      guard (>= 0.8.3)
-      multi_json
-      thor
-    guard-rspec (0.5.8)
-      guard (>= 0.8.4)
-    guard-sass (0.6.0)
-      guard (>= 0.4.0)
-      sass (>= 3.1)
-    guard-spork (0.5.2)
-      guard (>= 0.10.0)
+    guard (1.6.1)
+      listen (>= 0.6.0)
+      lumberjack (>= 1.0.2)
+      pry (>= 0.9.10)
+      thor (>= 0.14.6)
+    guard-rspec (2.3.3)
+      guard (>= 1.1)
+      rspec (~> 2.11)
+    guard-spork (1.4.1)
+      childprocess (>= 0.2.3)
+      guard (>= 1.1)
       spork (>= 0.8.4)
     haml (3.1.4)
     haml-rails (0.3.4)
@@ -235,8 +228,6 @@ GEM
     inherited_resources (1.3.0)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
-    jasminerice (0.0.8)
-      haml
     journey (1.0.4)
     jqplot-rails (0.1)
       railties (~> 3.0)
@@ -252,16 +243,13 @@ GEM
       railties (>= 3.0.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
-    less (2.2.1)
-      commonjs (~> 0.2.6)
-    less-rails (2.2.3)
-      actionpack (>= 3.1)
-      less (~> 2.2.0)
     letter_opener (1.0.0)
       launchy (>= 2.0.4)
-    libv8 (3.3.10.4)
-    libwebsocket (0.1.5)
+    libwebsocket (0.1.7.1)
       addressable
+      websocket
+    listen (0.7.1)
+    lumberjack (1.0.2)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -280,8 +268,9 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
+    method_source (0.8.1)
     mime-types (1.19)
-    modernizr-rails (2.0.6)
+    modernizr-rails (2.6.1)
     multi_json (1.5.0)
     multi_xml (0.5.1)
     net-scp (1.0.4)
@@ -292,7 +281,7 @@ GEM
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     newrelic_rpm (3.5.3.25)
-    nokogiri (1.5.5)
+    nokogiri (1.5.6)
     orm_adapter (0.4.0)
     paper_trail (2.6.3)
       activerecord (~> 3.0)
@@ -308,10 +297,14 @@ GEM
       activerecord (~> 3.0)
     polyglot (0.3.3)
     progressbar (0.10.0)
+    pry (0.9.10)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
     rabl (0.7.3)
       activesupport (>= 2.3.14)
       multi_json (~> 1.0)
-    rack (1.4.3)
+    rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-canonical-host (0.0.8)
@@ -359,19 +352,21 @@ GEM
       json (~> 1.4)
     responders (0.6.4)
     rmagick (2.13.1)
-    rspec (2.11.0)
-      rspec-core (~> 2.11.0)
-      rspec-expectations (~> 2.11.0)
-      rspec-mocks (~> 2.11.0)
-    rspec-core (2.11.0)
-    rspec-expectations (2.11.1)
+    rspec (2.12.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
+    rspec-core (2.12.2)
+    rspec-expectations (2.12.1)
       diff-lcs (~> 1.1.3)
-    rspec-mocks (2.11.1)
-    rspec-rails (2.11.0)
+    rspec-mocks (2.12.1)
+    rspec-rails (2.12.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec (~> 2.11.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
     ruby_parser (2.3.1)
       sexp_processor (~> 3.0)
     rubyzip (0.9.9)
@@ -402,7 +397,11 @@ GEM
     skinny (0.2.1)
       eventmachine (~> 0.12)
       thin (~> 1.2)
-    spork (0.9.2)
+    slop (3.3.3)
+    spork (1.0.0rc3)
+    spork-rails (3.2.1)
+      rails (>= 3.0.0, < 3.3.0)
+      spork (>= 1.0rc0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -412,22 +411,15 @@ GEM
     tailor (0.1.5)
       term-ansicolor (>= 1.0.5)
     term-ansicolor (1.0.7)
-    therubyracer (0.10.1)
-      libv8 (~> 3.3.10)
     thin (1.4.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
-    thor (0.14.6)
+    thor (0.16.0)
     tilt (1.3.3)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.1.0)
-      actionpack (>= 3.1)
-      less-rails (~> 2.2.2)
-      railties (>= 3.1)
-      therubyracer (~> 0.10.1)
     tzinfo (0.3.35)
     uglifier (1.1.0)
       execjs (>= 0.3.0)
@@ -435,6 +427,7 @@ GEM
     uuidtools (2.1.3)
     warden (1.2.1)
       rack (>= 1.0)
+    websocket (1.0.6)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
@@ -473,15 +466,11 @@ DEPENDENCIES
   formtastic
   gravtastic
   guard
-  guard-coffeescript
-  guard-jasmine
   guard-rspec
-  guard-sass
   guard-spork
   haml-rails
   high_voltage
   inherited_resources
-  jasminerice
   jqplot-rails
   jquery-atwho-rails
   jquery-rails
@@ -489,7 +478,7 @@ DEPENDENCIES
   launchy
   letter_opener
   mailcatcher
-  modernizr-rails (~> 2.0.6)
+  modernizr-rails
   newrelic_rpm
   nokogiri
   paper_trail (~> 2)
@@ -513,8 +502,7 @@ DEPENDENCIES
   shoulda-matchers
   simple_form (~> 2.0.0)
   simplecov
-  spork
+  spork-rails
   thin
-  twitter-bootstrap-rails
   twitter-text!
   uglifier (>= 1.0.3)

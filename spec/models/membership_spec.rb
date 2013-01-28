@@ -129,7 +129,7 @@ describe Membership do
         @membership.stub :request? => true
         @membership.should_receive(:inviter=).with @inviter
         @membership.should_receive :approve!
-        Event.should_receive(:user_added_to_group!).with @membership
+        Events::UserAddedToGroup.should_receive(:publish!).with(@membership)
       end
     end
 

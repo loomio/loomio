@@ -35,14 +35,14 @@ describe VotesController do
           assigns(:vote).statement.should == 'blah'
         end
         it "fires new_vote event" do
-          Event.should_receive(:new_vote!)
+          Events::NewVote.should_receive(:publish!)
           post :create, @vote_args
         end
       end
 
       describe "casting a 'block' vote" do
         it "fires motion_blocked event" do
-          Event.should_receive(:motion_blocked!)
+          Events::MotionBlocked.should_receive(:publish!)
           post :create, motion_id: @motion.id,
                    vote: { position: 'block' }
         end
@@ -72,7 +72,7 @@ describe VotesController do
           response.should redirect_to(@motion.discussion)
         end
         it "fires new_vote event" do
-          Event.should_receive(:new_vote!)
+          Events::NewVote.should_receive(:publish!)
           post :update, @vote_args
         end
       end

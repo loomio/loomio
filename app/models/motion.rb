@@ -125,7 +125,7 @@ class Motion < ActiveRecord::Base
       fire_motion_close_date_edited_event(editor)
     end
   end
-  
+
   def set_outcome!(str)
     if closed?
       self.outcome = str
@@ -138,11 +138,8 @@ class Motion < ActiveRecord::Base
   end
 
   def no_vote_count
-    if voting?
-      group_count - unique_votes.count
-    else
-      did_not_votes.count
-    end
+    return group_count - unique_votes.count if voting?
+    did_not_votes.count
   end
 
   def percent_voted
@@ -174,17 +171,20 @@ class Motion < ActiveRecord::Base
     discussion.update_activity if discussion
   end
 
+  def read_log_for(user)
+    MotionReadLog.where('motion_id = ? AND user_id = ?',
+      id, user.id).first
+  end
+
   def number_of_votes_since_last_looked(user)
-    if user && user.is_group_member?(group)
+    if user
       return number_of_votes_since(last_looked_at_by(user)) if last_looked_at_by(user)
     end
     unique_votes.count
   end
 
   def last_looked_at_by(user)
-    motion_read_log = MotionReadLog.where('motion_id = ? AND user_id = ?',
-      id, user.id).first
-    return motion_read_log.motion_last_viewed_at if motion_read_log
+    read_log_for(user).motion_last_viewed_at if read_log_for(user)
   end
 
   def number_of_votes_since(time)
@@ -210,15 +210,15 @@ class Motion < ActiveRecord::Base
   private
 
     def fire_new_motion_event
-      Event.new_motion!(self)
+      Events::NewMotion.publish!(self)
     end
 
     def fire_motion_closed_event(user)
-      Event.motion_closed!(self, user)
+      Events::MotionClosed.publish!(self, user)
     end
-    
+
     def fire_motion_close_date_edited_event(user)
-      Event.motion_close_date_edited!(self, user)
+      Events::MotionCloseDateEdited.publish!(self, user)
     end
 
     def before_close
