@@ -34,7 +34,6 @@ class Group < ActiveRecord::Base
     :class_name => 'Membership',
     :dependent => :destroy
   has_many :users, :through => :memberships, # TODO: rename to members
-           :conditions => { :invitation_token => nil }
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, :dependent => :destroy
