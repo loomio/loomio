@@ -16,17 +16,15 @@ Feature: User creates proposal
     And I should see the proposal details
 
   Scenario: Members get emailed when a proposal is created
-    Given "Ben" is a member of the group
+   Given "Ben" is a member of the group
     And "Hannah" is a member of the group
-    And "newuser@example.org" has been invited to the group but has not accepted
     And no emails have been sent
     And "Ben" has chosen to be emailed about new discussions and decisions for the group
     And "Hannah" has chosen not to be emailed about new discussions and decisions for the group
     When I visit the discussion page
     And I click "Create new proposal"
     And fill in the proposal details and submit the form
-    Then "ben@example.org" should have an email
-    When "ben@example.org" opens the email
+    Then "Ben" should be emailed about the new proposal
     And clicking the link in the email should take him to the proposal
-    Then "hannah@example.org" should receive no email
-    And "newuser@example.org" should receive no email
+    And "Hannah" should not be emailed about the new proposal
+    And the email should tell him when the proposal closes
