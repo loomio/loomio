@@ -496,3 +496,18 @@ a.btn-icon:hover { color: $dark-grey; }
   background-image: url("pie-light-24.png");
 }
 
+// Temporary overrides for the new homepage (Jan 2013)
+.sessions.new {
+  form {
+    #user_email, #user_password, textarea {
+      width: 100%;
+    }
+    input[type="checkbox"] {
+      margin: 3px 0px;
+      display: inline-block;
+    }
+    input[type="submit"] {
+      margin: 14px 0 9px 0;
+    }
+  }
+}
