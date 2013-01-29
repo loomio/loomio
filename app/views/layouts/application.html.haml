@@ -21,16 +21,14 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
-  %body{class: "#{controller_name} #{action_name}"}
-    - on_landing_page = true if controller_name == "pages" || controller_name == "sessions"
-    - supported = true unless params[:id] == 'browser_not_supported'
 
-    - if on_landing_page && supported
-      .main-container.container
-        = render "fork_us_github"
-        = render 'flash_messages', :flash => flash, :on_landing_page => true
-        = render "header_logged_out"
-        = yield
+  %body{class: "#{controller_name} #{action_name}"}
+    - outside_app = true if controller_name == "pages" || controller_name == "sessions" || params[:id] == 'browser_not_supported'
+    -if outside_app
+      .container.home-flash
+        = render 'flash_messages', :flash => flash
+      = render "header_logged_out"
+      = yield
     -else
       .main-container.container
         = render 'header', :notifications => @notifications,
