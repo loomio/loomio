@@ -20,8 +20,18 @@ When /^I fill in the discussion details and submit the form$/ do
   click_on 'discussion-submit'
 end
 
+When /^I fill in the discussion details without a title and submit the form$/ do
+  @discussion_description = Faker::Lorem.paragraph
+  fill_in 'discussion_description', with: @discussion_description
+  click_on 'discussion-submit'
+end
+
 Then /^a discussion should be created$/ do
   Discussion.where(:title => @discussion_title).should exist
+end
+
+Then /^a discussion should not be created$/ do
+  Discussion.where(:title => @discussion_title).should_not exist
 end
 
 Given /^"(.*?)" has chosen to be emailed about new discussions and decisions for the group$/ do |arg1|
@@ -46,4 +56,8 @@ end
 
 Then /^"(.*?)" should not be emailed about the new discussion$/ do |arg1|
   mailbox_for(@unnotified_user).size.should == 0
+end
+
+Then /^I should see the following error message: "(.*?)"$/ do |arg1|
+  page.should have_content(arg1)
 end

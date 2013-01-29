@@ -87,6 +87,7 @@ class DiscussionsController < GroupBaseController
     discussion = Discussion.find(params[:id])
     @motion.discussion = discussion
     @group = GroupDecorator.new(discussion.group)
+    @close_hour = @motion.close_date.hour
     render 'motions/new'
   end
 

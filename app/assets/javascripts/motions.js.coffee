@@ -3,40 +3,27 @@ DAY = 1000 * 60 * 60 * 24
 #** New Motion **
 $ ->
   if $("#motion-form").length > 0
-    local_datetime = $('#local_time').val()
+    local_datetime = $('#motion_close_date').val()
     yy = local_datetime.substring(0,4)
     mm = local_datetime.substring(5,7)
     dd = local_datetime.substring(8,10)
     hh = local_datetime.substring(11,13).toString()
-    $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
-    $("#input_date").datepicker("setDate", dd + "-" + mm + "-" + yy)
-    $("#date_hour").val(hh)
-    setCloseDate()
+    $("#motion_close_date").datepicker({"dateFormat": "dd-mm-yy"})
+    $("#motion_close_date").datepicker("setDate", dd + "-" + mm + "-" + yy)
+    # $("#date_hour").val(hh)
 
 #** Edit Motion **
 $ ->
   $("#edit-close-date").on('shown', (e) ->
-    local_datetime = $('#local_time').val()
+    local_datetime = $('#local_default_close_time').val()
     yy = local_datetime.substring(0,4)
     mm = local_datetime.substring(5,7)
     dd = local_datetime.substring(8,10)
     hh = local_datetime.substring(11,13).toString()
     date_string = "#{dd}-#{mm}-#{yy}"
-    $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
-    $("#input_date").datepicker("setDate", date_string)
+    $("#motion_close_date").datepicker({"dateFormat": "dd-mm-yy"})
+    $("#motion_close_date").datepicker("setDate", date_string)
     $("#date_hour").val(hh)
-    setCloseDate()
-  )
-
-# Reload hidden close_date field
-$ ->
-  $("#input_date").change((e) ->
-    setCloseDate()
-  )
-
-$ ->
-  $("#date_hour").change((e) ->
-    setCloseDate()
   )
 
 # convert string formats 'dd-mm-yyyy', 'hh', 'OO' to datetime
@@ -53,8 +40,8 @@ setCloseDate = ->
   removeDateError()
   currentDatetime = new Date()
   utcDatetime = new Date()
-  offset = $("#local_time").val().substring(21,23)
-  utcDatetime = buildUtcDatetime($("#input_date").val(),
+  offset = $("#local_default_close_time").val().substring(21,23)
+  utcDatetime = buildUtcDatetime($("#motion_close_date").val(),
                                       $("#date_hour").val(), offset)
   $("#motion_close_date").val(utcDatetime)
   if (utcDatetime >= currentDatetime)

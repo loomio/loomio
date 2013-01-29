@@ -6,9 +6,9 @@ Feature: Admin/author closes a proposal
   Scenario: Admin closes a proposal
     Given I am logged in
     And I am an admin of a group
-    And there is a discussion in the group
-    And the discussion has an open proposal
+    And the group has a discussion with a decision
     When I visit the discussion page
+    # And I take a screenshot
     And I click the 'Close proposal' button
     And I confirm the action
     Then I should see the proposal in the list of previous proposals

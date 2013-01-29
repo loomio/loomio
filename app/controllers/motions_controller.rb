@@ -11,8 +11,7 @@ class MotionsController < GroupBaseController
       flash[:success] = "Proposal successfully created."
       redirect_to discussion_path(@motion.discussion)
     else
-      flash[:warning] = "Proposal could not be created"
-      redirect_to :back
+      render 'new'
     end
   end
 

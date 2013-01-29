@@ -25,3 +25,7 @@ end
 Then /^I would like to stop the test and look at it$/ do
   debugger
 end
+
+Then /^I take a screenshot$/ do
+  page.driver.render('./screenshots/file.png', :full => true)
+end

@@ -12,8 +12,15 @@ Feature: User creates proposal
     When I visit the discussion page
     And I click "Create new proposal"
     And fill in the proposal details and submit the form
-    Then a new proposal is created
+    Then a new proposal should be created
     And I should see the proposal details
+
+  Scenario: Group member tries to creates proposal without close date
+    When I visit the discussion page
+    And I click "Create new proposal"
+    And fill in the proposal without close date and submit the form
+    Then a new proposal should not be created
+    And I should see an error message
 
   Scenario: Members get emailed when a proposal is created
    Given "Ben" is a member of the group

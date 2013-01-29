@@ -11,7 +11,7 @@
   %br
   Author:
   = @motion.author.name
-  / - if @motion.has_close_date?
+
   /   Closes in:
   /   = time_ago_in_words(@motion.close_date + @motion.close_date.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z'))
 

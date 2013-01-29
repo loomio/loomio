@@ -6,6 +6,15 @@ When /^fill in the proposal details and submit the form$/ do
   click_on 'proposal-submit'
 end
 
+When /^fill in the proposal without close date and submit the form$/ do
+  @proposal_name = Faker::Lorem.sentence
+  @proposal_description = Faker::Lorem.paragraph
+  fill_in 'motion_name', with: @proposal_name
+  fill_in 'input_date', with: " "
+  fill_in 'motion_description', with: @proposal_description
+  click_on 'proposal-submit'
+end
+
 Then /^"(.*?)" should be emailed about the new proposal$/ do |arg1|
   open_email(@notified_user.email, :with_subject => "New proposal")
   current_email.default_part_body.to_s.should include(@proposal_name && "unsubscribe")
@@ -20,14 +29,12 @@ Then /^"(.*?)" should not be emailed about the new proposal$/ do |arg1|
   mailbox_for(@unnotified_user).size.should == 0
 end
 
-Then /^a new proposal is created$/ do
+Then /^a new proposal should be created$/ do
   Motion.where(:name => @proposal_name).should exist
 end
 
-When /^I am on a group page$/ do
-  pending "is this needed?"
-  group = Group.all.first
-  visit "/groups/" + group.id.to_s
+Then /^a new proposal should not be created$/ do
+  Motion.where(:name => @proposal_name).should_not exist
 end
 
 Then /^the email should tell him when the proposal closes$/ do
@@ -39,4 +46,8 @@ Then /^I should see the proposal details$/ do
   find('.motion-title').should have_content(@proposal_name)
   find('.description').should have_content(proposal_description)
   find('.pie').text.blank?.should == false
+end
+
+Then /^I should see an error message$/ do
+  page.should have_content("Please give a future close date.")
 end

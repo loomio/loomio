@@ -6,22 +6,15 @@
         = f.input :name, label: "Title", id: "motion-name", :placeholder => "What is your proposed course of action?"
       .span5
         %p Make the title as clear and succinct as possible so people know exactly what it means when they agree or disagree with your proposal.
-
+    .row
+      .span3
+        = f.input :close_date, label: "Closes at", as: :string
+      .span2.date-hour
+        = select_hour(@close_hour, ampm: true)
     .row
       .span5
-        #closing-inputs
-          .control-group
-            = f.label :close_date, "Closing", {class: "control-label", for: "date-input", id: "close-date-label"}
-            = text_field_tag :input_date, nil, class: "date-input validate-motion-close-date inputError"
-            = select_hour(@input_time, ampm: true)
-            %span.date-error-message
-              ='Please give a future close date (The date you gave has past)'
-
         #description
           = f.input :description, label: "Details", placeholder: "Give enough information so that anyone in your group can make a well-informed decision."
-        = f.input :close_date, as: :hidden
-        = hidden_field_tag :local_time, Time.now.localtime + 3.days
-        = f.input :phase, as: :hidden, input_html: {value: "voting"}
-        = f.input :facilitator_id, as: :hidden, input_html: {value: current_user.id}
+        = hidden_field_tag :local_default_close_time, Time.now.localtime + 3.days
         = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}
         = f.submit 'Start proposal', :class => "btn btn-large btn-info run-validations", id: "proposal-submit", :data => {:disable_with => "Starting"}

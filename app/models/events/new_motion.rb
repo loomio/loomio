@@ -1,5 +1,5 @@
 class Events::NewMotion < Event
-  after_create :notify_users!
+  after_create :queue_notifications_job!
 
   def self.publish!(motion)
     create!(:kind => "new_motion", :eventable => motion,
@@ -12,12 +12,16 @@ class Events::NewMotion < Event
 
   private
 
-    def notify_users!
-      motion.group_users_without_motion_author.each do |user|
-        if user.email_notifications_for_group?(motion.group)
-          MotionMailer.new_motion_created(motion, user).deliver
-        end
-        notify!(user)
+  def notify_users!
+    motion.group_users_without_motion_author.each do |user|
+      if user.email_notifications_for_group?(motion.group)
+        MotionMailer.new_motion_created(motion, user).deliver
       end
+      notify!(user)
     end
+  end
+
+  def queue_notifications_job!
+    delay.notify_users!
+  end
 end
