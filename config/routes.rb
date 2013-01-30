@@ -91,15 +91,15 @@ Loomio::Application.routes.draw do
   match '/blog' => 'high_voltage/pages#show', :id => 'blog'
 
   #redirect old pages:
-  match '/pages/how*it*works' => redirect('/')
-  match '/pages/get*involved' => redirect('/')
-  match '/pages/about' => redirect('/')
-  match '/pages/contact' => redirect('/')
+  match '/pages/how*it*works' => redirect('/#how')
+  match '/pages/get*involved' => redirect('/#who')
+  match '/pages/about' => redirect('/#who')
+  match '/pages/contact' => redirect('/#who')
   match '/pages/blog' => redirect('/blog')
   match '/pages/privacy' => redirect('/privacy')
-  match '/how*it*works' => redirect('/')
-  match '/get*involved' => redirect('/')
-  match '/about' => redirect('/')
-  match '/contact' => redirect('/')
+  match '/how*it*works' => redirect('/#how')
+  match '/get*involved' => redirect('/#who')
+  match '/about' => redirect('/#who')
+  match '/contact' => redirect('/#who')
   match '/demo' => redirect('/')
 end
