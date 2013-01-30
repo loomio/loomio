@@ -19,7 +19,7 @@
               = f.check_box :remember_me, class: "pull-left"
               = f.label :remember_me, "Remember me", class: "checkbox-label"
             .sign-in-button
-              = f.submit "Sign in", class: "btn btn-info btn-large", :id => "sign-in-btn"
+              = f.submit "Sign in", class: "btn btn-info btn-large", :id => "sign-in-btn", :data => { :disable_with => "Signing in" }
             = render :partial => "devise/shared/links"
 
         .span1 &nbsp;
