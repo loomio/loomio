@@ -11,8 +11,7 @@ class MotionsController < GroupBaseController
       flash[:success] = "Proposal successfully created."
       redirect_to discussion_path(@motion.discussion)
     else
-      flash[:warning] = "Proposal could not be created"
-      redirect_to :back
+      render 'new'
     end
   end
 
@@ -68,10 +67,11 @@ class MotionsController < GroupBaseController
 
   def edit_close_date
     motion = Motion.find(params[:id])
-    if motion.set_close_date!((params[:motion][:close_date]).to_datetime, current_user)
+    new_close_date = params[:motion][:close_date].to_datetime
+    if motion.set_close_date!(new_close_date, current_user)
       flash[:success] = "Close date successfully changed."
     else
-      flash[:error] = "Invalid close date, it needs to be a furture date."
+      flash[:error] = "Invalid close date. Make sure the date you pick is in the future."
     end
     redirect_to discussion_url(motion.discussion)
   end

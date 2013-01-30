@@ -11,7 +11,13 @@ describe Motion do
   it {should have(1).errors_on(:name)}
   it {should have(1).errors_on(:author)}
 
-  it "user_has_voted?(user) returns true if the given user has voted on motion" do
+  it "sets a default close date of 3 days from now" do
+    Time.stub(now: Time.at(0))
+    motion = create(:motion)
+    motion.close_date.should == Time.now + 3.days
+  end
+
+  it "#user_has_voted?(user) returns true if the given user has voted on motion" do
     @user = create(:user)
     @motion = create(:motion, :author => @user)
     @vote = build(:vote,:position => "yes")
@@ -21,7 +27,7 @@ describe Motion do
     @motion.user_has_voted?(@user).should == true
   end
 
-  it "user_has_voted?(user) returns false if given nil" do
+  it "#user_has_voted?(user) returns false if given nil" do
     @motion = create(:motion)
     @motion.user_has_voted?(nil).should == false
   end
@@ -107,12 +113,6 @@ describe Motion do
     @motion = create(:motion)
     @motion.close_date = '2012-12-12'
     @motion.close_date.should == Date.parse('2012-12-12')
-    @motion.should be_valid
-  end
-
-  it "can have a discussion link" do
-    @motion = create(:motion)
-    @motion.discussion_url = "http://our-discussion.com"
     @motion.should be_valid
   end
 

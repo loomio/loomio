@@ -19,8 +19,7 @@ describe "Home" do
       @discussion = create(:discussion, group: @group)
       @motion = create(:motion, name: 'Test Motion', discussion: @discussion,
                               author: @user)
-      page.driver.post user_session_path, 'user[email]' => @user.email,
-                                          'user[password]' => 'password'
+      login @user
     end
 
     context "visits home" do

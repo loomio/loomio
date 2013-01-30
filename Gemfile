@@ -38,6 +38,7 @@ gem 'thin'
 gem 'rack-canonical-host'
 gem 'delayed_job_active_record'
 gem 'foreman'
+gem 'validates_timeliness', '~> 3.0'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this

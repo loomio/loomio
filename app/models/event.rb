@@ -16,9 +16,4 @@ class Event < ActiveRecord::Base
   def notify!(user)
     notifications.create!(user: user)
   end
-
-  def notify_users!
-  end
-
-  handle_asynchronously :notify_users!
 end

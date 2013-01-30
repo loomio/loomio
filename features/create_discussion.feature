@@ -20,6 +20,13 @@ Feature: User creates discussion
     And I fill in the discussion details and submit the form
     Then a discussion should be created
 
+  Scenario: Group member tries to create discussion from group page without specifying a title
+    When I visit the group page
+    And I choose to create a discussion
+    And I fill in the discussion details without a title and submit the form
+    Then a discussion should not be created
+    And I should see the following error message: "can't be blank"
+
   Scenario: Members get emailed when a discussion is created
     Given "Ben" is a member of the group
     And "Hannah" is a member of the group

@@ -1,65 +1,55 @@
 DAY = 1000 * 60 * 60 * 24
 
+#** New Motion **
 $ ->
-  if $("#motion-form").length > 0 || $("#edit-close-date").length > 0
-    pad2 = ((number) ->
-      if number < 10
-        '0' + number
-      else
-        number.toString()
-    )
-    if $("#new-motion").length > 0
-      #** New Motion **
-      datetime = new Date()
-      datetime.setDate(datetime.getDate() + 3)
-      hours = pad2(datetime.getHours())
-      $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
-      $("#input_date").datepicker("setDate", datetime)
-      $("#date_hour").val(hours)
-      $("#motion_close_date").val(datetime)
-      set_close_date()
-    else
-      #** Edit Motion **
-      date = Application.timestampToDateObject($("#motion_close_date").val())
-      year = date.getFullYear().toString().substring(2,4)
-      month = pad2(date.getMonth() + 1)
-      day = pad2(date.getDate())
-      hour = pad2(date.getHours())
-      date_string = "#{day}-#{month}-#{year}"
-      $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
-      $("#input_date").datepicker("setDate", date_string)
-      $("#date_hour").val(hour)
-      set_close_date()
+  if $("#motion-form").length > 0
+    local_datetime = $('#motion_close_date').val()
+    yy = local_datetime.substring(0,4)
+    mm = local_datetime.substring(5,7)
+    dd = local_datetime.substring(8,10)
+    hh = local_datetime.substring(11,13).toString()
+    $("#motion_close_date").datepicker({"dateFormat": "dd-mm-yy"})
+    $("#motion_close_date").datepicker("setDate", dd + "-" + mm + "-" + yy)
+    # $("#date_hour").val(hh)
 
-
-# Reload hidden close_date field
+#** Edit Motion **
 $ ->
-  $("#input_date").change((e) ->
-    set_close_date()
+  $("#edit-close-date").on('shown', (e) ->
+    local_datetime = $('#local_default_close_time').val()
+    yy = local_datetime.substring(0,4)
+    mm = local_datetime.substring(5,7)
+    dd = local_datetime.substring(8,10)
+    hh = local_datetime.substring(11,13).toString()
+    date_string = "#{dd}-#{mm}-#{yy}"
+    $("#motion_close_date").datepicker({"dateFormat": "dd-mm-yy"})
+    $("#motion_close_date").datepicker("setDate", date_string)
+    $("#date_hour").val(hh)
   )
 
-$ ->
-  $("#date_hour").change((e) ->
-    set_close_date()
-  )
+# convert string formats 'dd-mm-yyyy', 'hh', 'OO' to datetime
+buildUtcDatetime = (dateStr, dateHrs, offset) ->
+  datetime = new Date()
+  datetime.setYear(parseInt(dateStr.substring(6,10), 10))
+  month = dateStr.substring(3,5)
+  day = dateStr.substring(0,2)
+  datetime.setMonth(parseInt(month, 10) - 1, parseInt(day, 10))
+  datetime.setUTCHours((parseInt(dateHrs, 10) - offset))
+  return datetime
 
-set_close_date = ->
-  remove_date_error()
-  date = $("#input_date").val()
-  local_datetime = new Date()
-  current_datetime = new Date()
-  local_datetime.setYear(parseInt(date.substring(6,10), 10))
-  month = date.substring(3,5)
-  day = date.substring(0,2)
-  local_datetime.setMonth(parseInt(month, 10) - 1, parseInt(day, 10))
-  local_datetime.setHours(parseInt($("#date_hour").val(), 10))
-  $("#motion_close_date").val(local_datetime)
-  if (local_datetime >= current_datetime)
-    $(".date-description").text("Closing date (" + days_between(local_datetime, current_datetime) + "):")
+setCloseDate = ->
+  removeDateError()
+  currentDatetime = new Date()
+  utcDatetime = new Date()
+  offset = $("#local_default_close_time").val().substring(21,23)
+  utcDatetime = buildUtcDatetime($("#motion_close_date").val(),
+                                      $("#date_hour").val(), offset)
+  $("#motion_close_date").val(utcDatetime)
+  if (utcDatetime >= currentDatetime)
+    $(".date-description").text("Closing date (" + days_between(utcDatetime, currentDatetime) + "):")
   else
     $(".date-description").text("Closing date:")
 
-remove_date_error = ->
+removeDateError = ->
   $(".validate-motion-close-date").parent().removeClass("error")
   $(".date-error-message").hide()
 

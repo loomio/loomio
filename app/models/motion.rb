@@ -7,13 +7,11 @@ class Motion < ActiveRecord::Base
   has_many :did_not_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
 
-  validates_presence_of :name, :discussion, :author
+  validates_presence_of :name, :discussion, :author, :close_date
   validates_inclusion_of :phase, in: PHASES
-  validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
-    allow_blank: true
-
   validates_length_of :name, :maximum => 250
   validates_length_of :outcome, :maximum => 250
+  validates :close_date, timeliness: { after: Time.now }, presence: true, on: :create
 
   delegate :email, :to => :author, :prefix => :author
   delegate :name, :to => :author, :prefix => :author
@@ -21,15 +19,15 @@ class Motion < ActiveRecord::Base
   delegate :users, :full_name, :to => :group, :prefix => :group
   delegate :email_new_motion?, to: :group, prefix: :group
 
+  after_initialize :set_defaults
   after_create :initialize_discussion
   after_create :fire_new_motion_event
-  before_save :format_discussion_url
   after_save :update_counter_cache
   after_destroy :update_counter_cache
 
   attr_accessor :create_discussion
 
-  attr_accessible :name, :description, :discussion_url
+  attr_accessible :name, :description
   attr_accessible :close_date, :phase, :discussion_id, :outcome
 
   include AASM
@@ -133,10 +131,6 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  def has_close_date?
-    close_date != nil
-  end
-
   def no_vote_count
     return group_count - unique_votes.count if voting?
     did_not_votes.count
@@ -207,57 +201,56 @@ class Motion < ActiveRecord::Base
     created_at
   end
 
+
   private
 
-    def fire_new_motion_event
-      Events::NewMotion.publish!(self)
-    end
+  def set_defaults
+    self.close_date ||= Time.now + 3.days
+  end
 
-    def fire_motion_closed_event(user)
-      Events::MotionClosed.publish!(self, user)
-    end
+  def fire_new_motion_event
+    Events::NewMotion.publish!(self)
+  end
 
-    def fire_motion_close_date_edited_event(user)
-      Events::MotionCloseDateEdited.publish!(self, user)
-    end
+  def fire_motion_closed_event(user)
+    Events::MotionClosed.publish!(self, user)
+  end
 
-    def before_close
-      store_users_that_didnt_vote
-      self.close_date = Time.now
-    end
+  def fire_motion_close_date_edited_event(user)
+    Events::MotionCloseDateEdited.publish!(self, user)
+  end
 
-    def store_users_that_didnt_vote
-      did_not_votes.each do |did_not_vote|
-        did_not_vote.delete
-      end
-      group.users.each do |user|
-        unless user_has_voted?(user)
-          did_not_vote = DidNotVote.new
-          did_not_vote.user = user
-          did_not_vote.motion = self
-          did_not_vote.save
-        end
-      end
-      reload
-    end
+  def before_close
+    store_users_that_didnt_vote
+    self.close_date = Time.now
+  end
 
-    def initialize_discussion
-      unless discussion
-        self.discussion = Discussion.new(group: group)
-        discussion.author = author
-        discussion.title = name
-        discussion.save
-        save
+  def store_users_that_didnt_vote
+    did_not_votes.each do |did_not_vote|
+      did_not_vote.delete
+    end
+    group.users.each do |user|
+      unless user_has_voted?(user)
+        did_not_vote = DidNotVote.new
+        did_not_vote.user = user
+        did_not_vote.motion = self
+        did_not_vote.save
       end
     end
+    reload
+  end
 
-    def format_discussion_url
-      unless self.discussion_url.match(/^http/) || self.discussion_url.empty?
-        self.discussion_url = "http://" + self.discussion_url
-      end
+  def initialize_discussion
+    unless discussion
+      self.discussion = Discussion.new(group: group)
+      discussion.author = author
+      discussion.title = name
+      discussion.save
+      save
     end
+  end
 
-    def update_counter_cache
-      group.update_attribute(:motions_count, group.motions.count)
-    end
+  def update_counter_cache
+    group.update_attribute(:motions_count, group.motions.count)
+  end
 end

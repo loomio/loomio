@@ -6,13 +6,10 @@
         - if motion.closed?
           %span.label.label-important Closed
       #closing-info
-        - if motion.has_close_date?
-          - if motion.voting?
-            = "Closing in #{time_ago_in_words(motion.close_date)}"
-          - else
-            %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
+        - if motion.voting?
+          = "Closing in #{time_ago_in_words(motion.close_date)}"
         - else
-          No close date
+          %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
       .proposed-by
         = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
     .span2.motion-admin-buttons
