@@ -220,6 +220,7 @@ GEM
     high_voltage (1.2.0)
     highline (1.6.8)
     hike (1.2.1)
+    hirefireapp (0.0.8)
     http_parser.rb (0.5.3)
     httparty (0.8.3)
       multi_json (~> 1.0)
@@ -472,6 +473,7 @@ DEPENDENCIES
   guard-spork
   haml-rails
   high_voltage
+  hirefireapp
   inherited_resources
   jqplot-rails
   jquery-atwho-rails
