@@ -1,7 +1,10 @@
-if ("<%= current_user.avatar_url %>" == "") {
+if ("<%= @avatar_kind %>" == "initials") {
   $('#avatar-preview').html("<%= current_user.avatar_initials.gsub('"', "'").html_safe %>");
+  $('#header-user-image').html("<%= current_user.avatar_initials.gsub('"', "'").html_safe %>");
+  $('#image-option-initials').html("<%= current_user.avatar_initials.gsub('"', "'").html_safe %>");
 }
 else {
-  $('#avatar-preview').html("<%= image_tag(current_user.avatar_url("large")).gsub('"', "'").html_safe %>");
-}
-$('#user-avatar-kind').val("<%= @avatar_kind %>")
+  $('#avatar-preview').html("<%= image_tag(current_user.avatar_url(@avatar_kind, 'large')).gsub('"', "'").html_safe %>");
+  $('#header-user-image').html("<%= image_tag(current_user.avatar_url(@avatar_kind, 'small')).gsub('"', "'").html_safe %>");
+};
+$('#user-avatar-kind').val("<%= @avatar_kind %>");

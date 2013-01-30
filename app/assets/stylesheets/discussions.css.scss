@@ -207,6 +207,12 @@ pre{
   width: 15px;
 }
 
+.comment-anchor {
+  padding-top: 50px; 
+  margin-top: -50px;
+  display:block;
+}
+
 #content-activity {
   border-right: 1px solid $light-grey;
   min-height: 660px;
@@ -253,14 +259,13 @@ pre{
   }
   .activity-item-container {
     width: 388px;
-    float: left;
     margin-left: 45px;
     padding-bottom: 5px;
     border-bottom: 1px solid $light-grey;
     margin-bottom: 5px;
   }
   .activity-item-container.with-avatar {
-    margin-left: 10px;
+    margin-left: 0px;
     float: left;
   }
   .activity-item-avatar {

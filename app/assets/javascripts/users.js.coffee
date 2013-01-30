@@ -2,10 +2,38 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+
+# unhide edit user name form
+$ ->
+  $('#edit-name-link').click((event) ->
+    $(this).addClass('hidden')
+    $('#edit-name-form').removeClass('hidden')
+    event.preventDefault()
+  )
+
+# hide edit user name form
+$ ->
+  $('#cancel-edit-name').click((event) ->
+    $('#edit-name-form').addClass('hidden')
+    $('#edit-name-link').removeClass('hidden')
+    event.preventDefault()
+  )
+
+$ ->
+  $('.image-setting').click((event) ->
+    if not $('#file-too-big-message').hasClass('hidden')
+      $('#file-too-big-message').addClass('hidden')
+  )
+
 $ ->
   $("#uploaded-avatar").change((event, ui) ->
-    $("#user-avatar-kind").val("uploaded")
-    $("#upload-form").submit()
+    size = this.files[0].size/1024
+    if size < $('#max-file-size').val()
+      $("#user-avatar-kind").val("uploaded")
+      $("#upload-form").submit()
+    else
+      $('#file-too-big-message').removeClass('hidden')
+      $(this).val("")
   )
 
   $("#upload-new-image").click((event, ui) ->
