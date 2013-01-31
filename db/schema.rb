@@ -272,6 +272,7 @@ ActiveRecord::Schema.define(:version => 20130114223848) do
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
     t.boolean  "uses_markdown",                                               :default => false
+    t.integer  "memberships_count",                                           :default => 0,     :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
