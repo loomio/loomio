@@ -25,3 +25,9 @@ Feature: Post a comment in a discussion
     Then a comment should be added to the discussion
     And the comment should not format markdown characters
     And markdown should now be off by default
+
+  Scenario: Comments have permalinks
+    Given there is a comment in a public discussion
+    When I visit the discussion page
+    Then there should be an anchor for the comment
+    And I should see a permalink to the anchor for that comment
