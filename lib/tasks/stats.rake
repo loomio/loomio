@@ -39,7 +39,10 @@ task :events => :environment do    # Export all events, scramble users, scramble
 
     file = CSV.generate do |csv|
       csv << ["id", "user", "group", "parent_group", "kind", "created_at"]
-      Event.all.each do |event|
+      count = 0
+      Event.find_each do |event|
+        count += 1
+        puts count if (count % 100) == 0
         id = event.id
         kind = event.kind
         created_at = event.created_at
