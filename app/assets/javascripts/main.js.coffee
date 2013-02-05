@@ -182,7 +182,8 @@ $ ->
   $(".limit-250").keyup(() ->
     $(".error-message").hide()
     chars = $(this).val().length
-    left = 250 - chars
+    breaks = $(this).val().split(/\n|\f/).length
+    left = 250 - chars - breaks
     display_count(left, $(this))
   )
 
@@ -191,7 +192,8 @@ $ ->
   $(".limit-150").keyup(() ->
     $(".error-message").hide()
     chars = $(this).val().length
-    left = 150 - chars
+    breaks = $(this).val().split(/\n|\f/).length
+    left = 150 - chars - breaks
     display_count(left, $(this))
   )
 
