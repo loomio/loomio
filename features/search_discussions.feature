@@ -10,8 +10,8 @@ Background:
 Scenario: User enters a search term to filter discussions
   When I visit the group page
   Given the group has multiple discussions
-  And the group has a discussion titled "Search"
-  When I enter "Search" in the discussions search input
-  Then I should only see discussions with "Search" in the title
+  And the group has a discussion titled "What should we have for breakfast?"
+  When I enter "breakfast" in the discussions search input
+  Then I should only see discussions with "breakfast" in the title
 
 
