@@ -65,7 +65,7 @@ describe Motion do
     it "adds motion closed activity if a motion is closed" do
       motion = create :motion, :discussion => @discussion
       Events::MotionClosed.should_receive(:publish!)
-      motion.close_motion!(@user)
+      motion.close!(@user)
     end
     it "adds edit motion close date activity if a motion close date is edited" do
       motion = create :motion, :discussion => @discussion

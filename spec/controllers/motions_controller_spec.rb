@@ -51,12 +51,11 @@ describe MotionsController do
       before do
         controller.stub(:authorize!).with(:close, motion).and_return(true)
         motion.stub(:close!)
-        motion.stub(:close_motion!)
         Event.stub(:motion_closed!)
       end
 
       it "closes the motion" do
-        motion.should_receive(:close_motion!)
+        motion.should_receive(:close!)
         put :close, :id => motion.id
       end
 

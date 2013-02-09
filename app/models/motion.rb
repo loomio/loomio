@@ -33,10 +33,11 @@ class Motion < ActiveRecord::Base
     joins(:votes).where("votes.user_id = ?", user.id)
   }
 
-  def close!
+  def close!(user=nil)
     store_users_that_didnt_vote
     self.close_date = Time.now
     save!
+    fire_motion_closed_event(user)
   end
 
   def open?
@@ -105,14 +106,8 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  # motion is closed by user
-  def close_motion!(user=nil)
-    close!
-    fire_motion_closed_event(user)
-  end
-
   def close_if_expired
-    close_motion! if closed?
+    close! if closed?
   end
 
   def set_close_date!(date, editor=nil)
