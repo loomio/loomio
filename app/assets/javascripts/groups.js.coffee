@@ -21,8 +21,7 @@ $ ->
 #*** ajax for discussions on group page ***
 $ ->
   if $("body.groups.show").length > 0 && $('#group-discussions').html() != null
-    console.log("he")
-    #load_discussions
+    load_discussions
 
 $ ->
   if $("body.groups.show").length > 0
@@ -50,3 +49,12 @@ activate_discussions_tooltips = () ->
 $ ->
   $("#privacy").tooltip
     placement: "right"
+
+load_discussions = () ->
+  params = ""
+  $('#user-discussions').load("/discussions" + params, ->
+    Application.convertUtcToRelativeTime()
+    $("#user-discussions").removeClass('hidden')
+    $("#discussions-loading").addClass('hidden')
+  )
+  $("#all-discussions-loading").addClass('hidden')  
