@@ -35,6 +35,7 @@ $ ->
 searchInputTimer = undefined
 inputInterval = 500
 
+# ajax for discussions filter/search input
 $ ->
   $("#discussions-search-filter-input").keyup ->
     clearTimeout searchInputTimer
@@ -49,12 +50,25 @@ $ ->
 discussions_filter = () ->
     term = $("#discussions-search-filter-input").val()
     params = "?query=" + encodeURIComponent(term)
-    $('#user-discussions').addClass('hidden')
-    $('#discussions-loading').removeClass('hidden')
-    $('#user-discussions').load("/discussions/search" + params, ->
-      Application.convertUtcToRelativeTime()
-      $("#user-discussions").removeClass('hidden')
-      $("#discussions-loading").addClass('hidden')
-      $(".discussion-title").highlight(term)
-    )
+    if $("body.groups.show").length > 0 && $('#group-discussions').html() != null
+      params += "&group_id=" + $('#group-discussions').attr('data-group') 
+      $("#all-discussions-loading").addClass('hidden')
+      $("#group-discussions").addClass('hidden')
+      $('#discussions-loading').removeClass('hidden')
+      $('#group-discussions').load("/discussions/search" + params, ->
+        Application.convertUtcToRelativeTime()
+        $("#group-discussions").removeClass('hidden')
+        $("#discussions-loading").addClass('hidden')
+        $(".discussion-title").highlight(term)
+      )
+    else
+      $("#all-discussions-loading").addClass('hidden')
+      $('#user-discussions').addClass('hidden')
+      $('#discussions-loading').removeClass('hidden')
+      $('#user-discussions').load("/discussions/search" + params, ->
+        Application.convertUtcToRelativeTime()
+        $("#user-discussions").removeClass('hidden')
+        $("#discussions-loading").addClass('hidden')
+        $(".discussion-title").highlight(term)
+      )
 

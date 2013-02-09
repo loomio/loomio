@@ -16,7 +16,7 @@
         - @discussions.with_current_motions_user_has_voted_on.each do |discussion|
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
         .discussion-with-motion-divider.hidden
-      #group-discussions.hidden
+      #group-discussions.hidden{:data => {:group => @group.id}}
         %div{ class: "group_#{@group.id}" }
 
   %section.span4

@@ -21,7 +21,17 @@ $ ->
 #*** ajax for discussions on group page ***
 $ ->
   if $("body.groups.show").length > 0 && $('#group-discussions').html() != null
-    load_discussions
+    idStr = new Array
+    idStr = $('#group-discussions').children().attr('class').split('_')
+    # params = Application.getPageParam()
+    params = ""
+    $('#group-discussions').load("/groups/#{idStr[1]}/discussions" + params, ->
+      Application.convertUtcToRelativeTime()
+      $("#group-discussions").removeClass('hidden')
+      $("#discussions-loading").addClass('hidden')
+      activate_discussions_tooltips()
+    )
+    $("#all-discussions-loading").addClass('hidden')
 
 $ ->
   if $("body.groups.show").length > 0
@@ -49,12 +59,3 @@ activate_discussions_tooltips = () ->
 $ ->
   $("#privacy").tooltip
     placement: "right"
-
-load_discussions = () ->
-  params = ""
-  $('#user-discussions').load("/discussions" + params, ->
-    Application.convertUtcToRelativeTime()
-    $("#user-discussions").removeClass('hidden')
-    $("#discussions-loading").addClass('hidden')
-  )
-  $("#all-discussions-loading").addClass('hidden')  
