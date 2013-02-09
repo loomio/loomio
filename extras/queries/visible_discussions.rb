@@ -9,40 +9,21 @@ class Queries::VisibleDiscussions < SimpleDelegator
   end
 
   class << self
-    def for(group, user=nil, title_query=nil)
+    def for(group, user=nil)
       if user
         if user.is_group_member?(group)
-          if title_query.present?
-            relation = Discussion.includes(:group => :memberships).
-                       where("discussions.group_id = ?
-                       OR (groups.parent_id = ? AND groups.archived_at IS NULL
-                       AND memberships.user_id = ?)
-                       AND discussions.title ILIKE ?",
-                       group.id, group.id, user.id, title_query)
-          else
-            relation = Discussion.includes(:group => :memberships).
-                       where("discussions.group_id = ?
-                       OR (groups.parent_id = ? AND groups.archived_at IS NULL
-                       AND memberships.user_id = ?)",
-                       group.id, group.id, user.id)
-          end
+          relation = Discussion.includes(:group => :memberships).
+                     where("discussions.group_id = ?
+                     OR (groups.parent_id = ? AND groups.archived_at IS NULL
+                     AND memberships.user_id = ?)",
+                     group.id, group.id, user.id)
         elsif user.is_parent_group_member?(group)
-          if title_query.present?
-            relation = Discussion.includes(:group).
-                       where("
-                       discussions.group_id = ?
-                       AND (groups.viewable_by = 'everyone'
-                       OR groups.viewable_by = 'parent_group_members')
-                       AND discussions.title ILIKE ?",
-                       group.id, title_query)
-          else
-            relation = Discussion.includes(:group).
-                       where("
-                       discussions.group_id = ?
-                       AND (groups.viewable_by = 'everyone'
-                       OR groups.viewable_by = 'parent_group_members')",
-                       group.id)
-          end
+          relation = Discussion.includes(:group).
+                     where("
+                     discussions.group_id = ?
+                     AND (groups.viewable_by = 'everyone'
+                     OR groups.viewable_by = 'parent_group_members')",
+                     group.id)
         else
           relation = publicly_viewable_discussions_for(group)
         end
@@ -81,5 +62,9 @@ class Queries::VisibleDiscussions < SimpleDelegator
 
   def without_current_motions
     includes(:motions).where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+  end
+
+  def where_title_is_like(title_query)
+    where("discussions.title ILIKE ?", title_query)
   end
 end
