@@ -14,7 +14,7 @@ class VotesController < GroupBaseController
 
   def destroy
     resource
-    if @motion.voting?
+    if @motion.open?
       destroy! { @motion.discussion }
     else
       flash[:error] = "The proposal has closed. You can no longer modify your posiiton."
@@ -24,7 +24,7 @@ class VotesController < GroupBaseController
 
   def create
     @motion = Motion.find(params[:motion_id])
-    if @motion.voting?
+    if @motion.open?
       @vote = Vote.new(params[:vote])
       @vote.motion = @motion
       @vote.user = current_user
@@ -42,7 +42,7 @@ class VotesController < GroupBaseController
 
   def update
     @motion = Motion.find(params[:motion_id])
-    if @motion.voting?
+    if @motion.open?
       params[:vote].delete(:id)
       @vote = Vote.new(params[:vote])
       @vote.motion = @motion
@@ -53,7 +53,7 @@ class VotesController < GroupBaseController
         flash[:error] = "Could not update vote."
       end
     else
-      flash[:error] = "Can only vote in voting phase"
+      flash[:error] = "Can only vote on open proposals"
     end
     redirect_to @motion.discussion
   end

@@ -38,16 +38,6 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, :dependent => :destroy
   has_many :motions, :through => :discussions
-  has_many :motions_in_voting_phase,
-           :through => :discussions,
-           :source => :motions,
-           :conditions => { phase: 'voting' },
-           :order => 'close_date'
-  has_many :motions_closed,
-           :through => :discussions,
-           :source => :motions,
-           :conditions => { phase: 'closed' },
-           :order => 'close_date DESC'
 
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
@@ -121,6 +111,14 @@ class Group < ActiveRecord::Base
     else
       "noreply@loomio.org"
     end
+  end
+
+  def open_motions
+    motions.where('close_date > ?', Time.now).order("close_date")
+  end
+
+  def closed_motions
+    motions.where('close_date <= ?', Time.now).order("close_date desc")
   end
 
   #

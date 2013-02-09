@@ -106,7 +106,7 @@ describe Discussion do
       @group.add_member! @user
       @discussion = create :discussion, :group => @group
       @discussion.add_comment(@user, "this is a test comment")
-      @motion = create :motion, :discussion => @discussion
+      @motion = create :motion, discussion: @discussion
       @vote = create :vote, :position => 'yes', :motion => @motion
       activity = @discussion.activity
       activity[0].kind.should == 'new_vote'
@@ -120,14 +120,14 @@ describe Discussion do
       @discussion = create :discussion
       @motion = create :motion, discussion: @discussion
     end
-    context "where motion is in 'voting' phase" do
+    context "where motion is open" do
       it "returns motion" do
         @discussion.current_motion.should eq(@motion)
       end
     end
     context "where motion close date has past" do
       before do
-        @motion.close_date = Time.now
+        @motion.close_date = 2.days.ago
         @motion.save
       end
       it "does not return motion" do
@@ -163,11 +163,11 @@ describe Discussion do
       current_motion_author = create(:user)
       @group.add_member! previous_motion_author
       @group.add_member! current_motion_author
-      previous_motion = create(:motion, :discussion => @discussion,
-                             :author => previous_motion_author)
+      previous_motion = create(:motion, discussion: @discussion,
+                             author: previous_motion_author)
       previous_motion.close!
-      current_motion = create(:motion, :discussion => @discussion,
-                             :author => current_motion_author)
+      current_motion = create(:motion, discussion: @discussion,
+                             author: current_motion_author  )
 
       @discussion.participants.should include(previous_motion_author)
       @discussion.participants.should include(current_motion_author)

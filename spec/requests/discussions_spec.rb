@@ -134,22 +134,16 @@ describe "Discussion" do
       end
 
       it "can view a closed proposal" do
-        motion = Motion.new
-        motion.name = "A new proposal"
-        motion.discussion = @discussion
-        motion.author = user
-        motion.save
+        motion = create :motion, name: "A new proposal",
+                        discussion: @discussion,
+                        author: user
         motion.close!
-
-        motion2 = Motion.new
-        motion2.name = "A new proposal"
-        motion2.discussion = @discussion
-        motion2.author = user
-        motion2.save
+        motion2 = create :motion, name: "A new proposal",
+                        discussion: @discussion,
+                        author: user
         motion2.close!
 
         visit discussion_path(@discussion)
-
         find('#previous-proposals').click_on motion2.name
 
         find(".motion").should have_content(motion2.name)

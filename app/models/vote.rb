@@ -8,7 +8,7 @@ class Vote < ActiveRecord::Base
   end
   class ClosableValidator < ActiveModel::EachValidator
     def validate_each(object, attribute, value)
-      if object.motion && (not object.motion.voting?)
+      if object.motion && (not object.motion.open?)
         object.errors.add attribute,
           "can only be modified while the motion is open."
       end

@@ -69,29 +69,29 @@ describe Group do
     end
   end
 
-  describe "motions_in_voting_phase" do
-    it "returns motions that belong to the group and are in phase 'voting'" do
+  describe "open_motions" do
+    it "returns open motions that belong to the group" do
       @group = motion.group
-      @group.motions_in_voting_phase.should include(motion)
+      @group.open_motions.should include(motion)
     end
 
-    it "should not return motions that belong to the group but are in phase 'closed'" do
+    it "should not return closed motions that belong to the group" do
       @group = motion.group
       motion.close!
-      @group.motions_in_voting_phase.should_not include(motion)
+      @group.open_motions.should_not include(motion)
     end
   end
 
-  describe "motions_closed" do
-    it "returns motions that belong to the group and are in phase 'voting'" do
+  describe "closed_motions" do
+    it "returns closed motions that belong to the group" do
       motion.close!
       @group = motion.group
-      @group.motions_closed.should include(motion)
+      @group.closed_motions.should include(motion)
     end
 
-    it "should not return motions that belong to the group but are in phase 'closed'" do
+    it "should not return open motions that belong to the group" do
       @group = motion.group
-      @group.motions_closed.should_not include(motion)
+      @group.closed_motions.should_not include(motion)
     end
   end
 

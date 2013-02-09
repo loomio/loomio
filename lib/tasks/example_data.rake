@@ -22,7 +22,7 @@ namespace :data do
     membership.save!
     
     # add a motion
-    motion = Motion.new(name: 'Start using seed.rb', phase: 'voting', description: "Fake description")
+    motion = Motion.new(name: 'Start using seed.rb', close_date: 2.days.from_now, description: "Fake description")
     motion.author = user1
     motion.facilitator = motion.author
     discussion = Discussion.new(title: "A Discussion")

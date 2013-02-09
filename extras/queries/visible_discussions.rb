@@ -47,7 +47,7 @@ class Queries::VisibleDiscussions < SimpleDelegator
   end
 
   def with_current_motions
-    includes(:motions).where('motions.phase = ?', "voting")
+    includes(:motions).where('motions.close_date > ?', Time.now)
   end
 
   def with_current_motions_user_has_voted_on
@@ -61,6 +61,6 @@ class Queries::VisibleDiscussions < SimpleDelegator
   end
 
   def without_current_motions
-    includes(:motions).where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+    includes(:motions).where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE close_date > ?)", Time.now)
   end
 end

@@ -73,21 +73,8 @@ class User < ActiveRecord::Base
   has_many :authored_motions,
            :class_name => 'Motion',
            :foreign_key => 'author_id'
-  has_many :motions_in_voting_phase,
-           :through => :discussions,
-           :source => :motions,
-           :conditions => { phase: 'voting' }
-  has_many :motions_closed,
-           :through => :discussions,
-           :source => :motions,
-           :conditions => { phase: 'closed' },
-           :order => 'close_date DESC'
 
   has_many :votes
-  has_many :open_votes,
-           :class_name => 'Vote',
-           :source => :votes,
-           :through => :motions_in_voting_phase
 
   has_many :notifications
 
@@ -192,10 +179,18 @@ class User < ActiveRecord::Base
     new_user
   end
 
+  def open_motions
+    motions.where('close_date > ?', Time.now)
+  end
+
+  def closed_motions
+    motions.where('close_date <= ?', Time.now).order("close_date desc")
+  end
+
   def discussions_with_current_motion_not_voted_on
     # TODO: Merge into Queries::VisibleDiscussions
     if discussions
-      (discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on)
+      (discussions.includes(:motions).where('motions.close_date > ?', Time.now) -  discussions_with_current_motion_voted_on)
     else
       []
     end
@@ -204,7 +199,7 @@ class User < ActiveRecord::Base
   def discussions_with_current_motion_voted_on
     # TODO: Merge into Queries::VisibleDiscussions
     if discussions
-      (discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", id))
+      (discussions.includes(:motions => :votes).where('motions.close_date > ? AND votes.user_id = ?', Time.now, id))
     else
       []
     end
@@ -213,7 +208,7 @@ class User < ActiveRecord::Base
   def discussions_sorted
     # TODO: Merge into Queries::VisibleDiscussions
     discussions
-      .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+      .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE close_date > ?)", Time.now)
       .order("last_comment_at DESC")
   end
 

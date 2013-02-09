@@ -20,10 +20,6 @@ class Discussion < ActiveRecord::Base
   belongs_to :group, :counter_cache => true
   belongs_to :author, class_name: 'User'
   has_many :motions
-  has_many :closed_motions,
-    :class_name => 'Motion',
-    :conditions => { phase: 'closed' },
-    :order => "close_date desc"
   has_many :votes, through: :motions
   has_many :comments,  :as => :commentable
   has_many :users_with_comments, :through => :comments,
@@ -101,15 +97,23 @@ class Discussion < ActiveRecord::Base
     false
   end
 
+  def open_motions
+    motions.where('close_date > ?', Time.now).order("close_date desc")
+  end
+
+  def closed_motions
+    motions.where('close_date <= ?', Time.now).order("close_date desc")
+  end
+
   def current_motion_close_date
     current_motion.close_date
   end
 
   def current_motion
-    motion = motions.where("phase = 'voting'").last if motions
+    motion = open_motions.last if open_motions
     if motion
       motion.close_if_expired
-      motion if motion.voting?
+      motion if motion.open?
     end
   end
 
