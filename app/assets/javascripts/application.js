@@ -13,6 +13,7 @@
 //= require lib/jquery.mousewheel
 //= require lib/jquery.placeholder
 //= require lib/jquery.highlight
+//= require scrollTo
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require underscore

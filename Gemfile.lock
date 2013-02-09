@@ -220,6 +220,7 @@ GEM
     high_voltage (1.2.0)
     highline (1.6.8)
     hike (1.2.1)
+    hirefireapp (0.0.8)
     http_parser.rb (0.5.3)
     httparty (0.8.3)
       multi_json (~> 1.0)
@@ -236,6 +237,8 @@ GEM
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
+    jquery-scrollto-rails (1.4.2)
+      railties (~> 3.1)
     json (1.7.6)
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
@@ -270,7 +273,7 @@ GEM
       polyamorous (~> 0.5.0)
     method_source (0.8.1)
     mime-types (1.19)
-    modernizr-rails (2.0.6)
+    modernizr-rails (2.6.1)
     multi_json (1.5.0)
     multi_xml (0.5.1)
     net-scp (1.0.4)
@@ -304,7 +307,7 @@ GEM
     rabl (0.7.3)
       activesupport (>= 2.3.14)
       multi_json (~> 1.0)
-    rack (1.4.3)
+    rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-canonical-host (0.0.8)
@@ -470,15 +473,17 @@ DEPENDENCIES
   guard-spork
   haml-rails
   high_voltage
+  hirefireapp
   inherited_resources
   jqplot-rails
   jquery-atwho-rails
   jquery-rails
+  jquery-scrollto-rails
   kaminari
   launchy
   letter_opener
   mailcatcher
-  modernizr-rails (~> 2.0.6)
+  modernizr-rails
   newrelic_rpm
   nokogiri
   paper_trail (~> 2)

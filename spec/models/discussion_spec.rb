@@ -87,12 +87,12 @@ describe Discussion do
     it "should retuen true if user is logged out" do
       @discussion.never_read_by(@user).should == true
     end
-    it "should return true if dicussion has never been read" do
+    it "returns true if dicussion has never been read" do
       @user = create :user
       @discussion.stub(:read_log_for).with(@user).and_return(nil)
       @discussion.never_read_by(@user).should == true
     end
-    it "should return false if user has visited the discussion page" do
+    it "returns false if user has visited the discussion page" do
       @user = create :user
       @discussion.stub(:read_log_for).with(@user).and_return(true)
       @discussion.never_read_by(@user).should == false
@@ -100,7 +100,7 @@ describe Discussion do
   end
 
   describe "#activity" do
-    it "should return all the activity for the discussion" do
+    it "returns all the activity for the discussion" do
       @user = create :user
       @group = create :group 
       @group.add_member! @user
@@ -185,13 +185,13 @@ describe Discussion do
       @discussion_read_log = mock_model(DiscussionReadLog)
     end
     context "the user has not read the discussion" do
-      it "should return the date the user joined the group" do
+      it "returns the date the user joined the group" do
         @discussion.stub(:read_log_for).with(@user).and_return(nil)
         @discussion.last_looked_at_by(@user).should == nil
       end
     end
     context "and has read the discussion" do
-      it "should return the date the discussion was last viewed" do
+      it "returns the date the discussion was last viewed" do
         @discussion.stub(:read_log_for).with(@user).and_return(@discussion_read_log)
         @discussion_read_log.stub(:discussion_last_viewed_at).and_return 5
         @discussion.last_looked_at_by(@user).should == 5

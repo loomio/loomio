@@ -7,6 +7,7 @@ gem 'devise_invitable', '~> 1.0.0'
 gem 'pg'
 gem 'capistrano'
 gem 'jquery-rails'
+gem "jquery-scrollto-rails"
 gem 'inherited_resources'
 gem 'formtastic' # Deprecated - use simple_form instead.
 gem 'simple_form', '~> 2.0.0'
@@ -36,7 +37,9 @@ gem "high_voltage"
 gem 'thin'
 gem 'rack-canonical-host'
 gem 'delayed_job_active_record'
+gem 'hirefireapp'
 gem 'foreman'
+gem 'aws-sdk'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
@@ -50,7 +53,7 @@ gem 'coffee-rails', '~> 3.2.2'
 group :assets do
   gem 'bootstrap-sass', '~>2.0.3'
   gem 'uglifier', '>= 1.0.3'
-  gem 'modernizr-rails', '~> 2.0.6'
+  gem 'modernizr-rails'
 end
 
 group :development, :test do

@@ -1,5 +1,5 @@
 .activity-item-time
-  = time_ago_in_words(comment.created_at) + " ago"
+  = link_to time_ago_in_words(comment.created_at) + " ago", "#comment-#{comment.id}"
   - if can? :like, comment
     = " · "
     - if likes.find_by_user_id(current_user.id).nil?

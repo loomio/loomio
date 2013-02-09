@@ -51,12 +51,9 @@ describe GroupMailer do
         with(group, sender, email_subject, email_body, member).
         and_return(mailer)
       GroupMailer.should_not_receive(:group_email).
-        with(group, sender, email_subject, email_body, sender).
-        and_return(mailer)
+        with(group, sender, email_subject, email_body, sender)
       GroupMailer.should_not_receive(:group_email).
-        with(group, sender, email_subject, email_body, invitee).
-        and_return(mailer)
-
+        with(group, sender, email_subject, email_body, invitee)
       GroupMailer.deliver_group_email(group, sender,
                                       email_subject, email_body)
     end

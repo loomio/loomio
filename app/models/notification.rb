@@ -13,14 +13,5 @@ class Notification < ActiveRecord::Base
   default_scope order("id DESC")
 
   scope :unviewed, where("viewed_at IS NULL")
-
-  def method_missing method_name, *args
-    name = method_name.to_s
-    if name =~ /^(discussion|comment|motion|vote|membership|comment_vote|user_mentioned)$/
-      event.eventable if event.eventable_type == name.camelize
-    else
-      super
-    end
-  end
 end
 

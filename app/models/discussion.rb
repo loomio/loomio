@@ -122,18 +122,12 @@ class Discussion < ActiveRecord::Base
   end
 
   def participants
-    other_participants = []
-    # Include discussion author
-    unless users_with_comments.find_by_id(author.id)
-      other_participants << author
-    end
-    # Include motion authors
+    included_participants = users_with_comments.all
+    included_participants << author
     motions.each do |motion|
-      unless users_with_comments.find_by_id(motion.author.id)
-        other_participants << motion.author
-      end
+      included_participants << motion.author
     end
-    users_with_comments.all + other_participants.uniq
+    included_participants.uniq
   end
 
   def latest_comment_time
@@ -170,14 +164,14 @@ class Discussion < ActiveRecord::Base
     end
 
     def fire_edit_title_event(user)
-      Event.discussion_title_edited!(self, user)
+      Events::DiscussionTitleEdited.publish!(self, user)
     end
 
     def fire_edit_description_event(user)
-      Event.discussion_description_edited!(self, user)
+      Events::DiscussionDescriptionEdited.publish!(self, user)
     end
 
     def fire_new_discussion_event
-      Event.new_discussion!(self)
+      Events::NewDiscussion.publish!(self)
     end
 end
