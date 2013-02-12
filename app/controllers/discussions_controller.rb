@@ -142,7 +142,7 @@ class DiscussionsController < GroupBaseController
       if params[:group_id].present?
         @group = Group.find(params[:group_id])
         @discussions = Queries::VisibleDiscussions.for(@group, current_user).
-                         where_title_is_like(query).page(params[:page]).per(10)
+                         without_current_motions.where_title_is_like(query).page(params[:page]).per(10)
       else
         authenticate_user!
         @discussions = current_user.discussions_sorted(query).page(params[:page]).per(10)
