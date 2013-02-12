@@ -4,16 +4,16 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container
-      %a.brand{href: "/#top", class: "#{scroll_trigger}"}
+      %a.brand{href: "/#top", class: scroll_trigger}
         =image_tag("top-bar-loomio.png")
       .nav-collapse
         %ul.nav
           %li
-            %a{href: "/#why", class: "#{scroll_trigger}"} Why
+            %a{href: "/#why", class: scroll_trigger} Why
           %li
-            %a{href: "/#how", class: "#{scroll_trigger}"} How
+            %a{href: "/#how", class: scroll_trigger} How
           %li
-            %a{href: "/#who", class: "#{scroll_trigger}"} Who
+            %a{href: "/#who", class: scroll_trigger} Who
         %ul.nav.pull-right
           %li
             %a{href: user_session_path} Sign In

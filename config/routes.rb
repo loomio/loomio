@@ -85,7 +85,6 @@ Loomio::Application.routes.draw do
     root :to => 'dashboard#show'
   end
 
-  root :to => 'high_voltage/pages#show', :id => 'home'
   match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
   match '/privacy' => 'high_voltage/pages#show', :id => 'privacy'
   match '/blog' => 'high_voltage/pages#show', :id => 'blog'

@@ -1,3 +1,3 @@
 class PagesController < HighVoltage::PagesController
- layout 'frontpage'
+  layout 'frontpage'
 end
