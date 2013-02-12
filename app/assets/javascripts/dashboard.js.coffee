@@ -7,11 +7,20 @@ $ ->
 
 load_discussions = () ->
   params = ""
-  $('#user-discussions').load("/discussions" + params, ->
-    Application.convertUtcToRelativeTime()
-    $("#user-discussions").removeClass('hidden')
-    $("#discussions-loading").addClass('hidden')
-  )
+  if $("body.groups.show").length > 0 && $('#group-discussions').html() != null
+    idStr = $('#group-discussions').attr('data-group')
+    $('#group-discussions').load("/groups/#{idStr}/discussions" + params, ->
+      Application.convertUtcToRelativeTime()
+      $("#group-discussions").removeClass('hidden')
+      $("#discussions-loading").addClass('hidden')
+      activate_discussions_tooltips()
+    )
+  else
+    $('#user-discussions').load("/discussions" + params, ->
+      Application.convertUtcToRelativeTime()
+      $("#user-discussions").removeClass('hidden')
+      $("#discussions-loading").addClass('hidden')
+    )
   $("#all-discussions-loading").addClass('hidden')  
 
 $ ->
@@ -71,4 +80,9 @@ discussions_filter = () ->
         $("#discussions-loading").addClass('hidden')
         $(".discussion-title").highlight(term)
       )
+
+activate_discussions_tooltips = () ->
+  $(".unread-group-activity").tooltip
+    placement: "top"
+    title: 'There have been new comments on this discussion since you last visited the group.'
 
