@@ -1,6 +1,5 @@
 - likes = comment.likes
-%div
-  %a{class: "comment-anchor", id: "comment-#{comment.id}"}
+.clearfix{id: "comment-#{comment.id}"}
   .activity-item-avatar.medium-user-avatar.avatar-canvas
     - if comment.user.avatar_url
       = image_tag comment.user.avatar_url(:medium)
@@ -15,4 +14,3 @@
     .activity-item-header~ add_mention_links(conditional_markdown(comment.uses_markdown?, comment.body.to_s.force_encoding("UTF-8"))).html_safe
     .comment-time-and-likes
       =render 'comments/comment_likes', comment: comment, likes: likes
-  .clearfix
