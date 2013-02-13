@@ -1,4 +1,4 @@
-Loomio::Application.routes.draw do
+  Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
@@ -83,12 +83,24 @@ Loomio::Application.routes.draw do
     root :to => 'dashboard#show'
   end
 
+
+
   root :to => 'high_voltage/pages#show', :id => 'home'
-  match '/demo' => 'high_voltage/pages#show', :id => 'demo'
+
   match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
-  match '/how-it-works' => 'high_voltage/pages#show', :id => 'how_it_works'
-  match '/get-involved' => 'high_voltage/pages#show', :id => 'get_involved'
-  match '/about' => 'high_voltage/pages#show', :id => 'about'
-  match '/contact' => 'high_voltage/pages#show', :id => 'contact'
+  match '/privacy' => 'high_voltage/pages#show', :id => 'privacy'
   match '/blog' => 'high_voltage/pages#show', :id => 'blog'
+
+  #redirect old pages:
+  match '/pages/how*it*works' => redirect('/pages/home#how')
+  match '/pages/get*involved' => redirect('/pages/home#who')
+  match '/pages/about' => redirect('/pages/home#who')
+  match '/pages/contact' => redirect('/pages/home#who')
+  match '/pages/blog' => redirect('/pages/home/blog')
+  match '/pages/privacy' => redirect('/pages/home/privacy')
+  match '/how*it*works' => redirect('/pages/home#how')
+  match '/get*involved' => redirect('/pages/home#who')
+  match '/about' => redirect('/pages/home#who')
+  match '/contact' => redirect('/pages/home#who')
+  match '/demo' => redirect('/')
 end
