@@ -208,13 +208,13 @@ ActiveRecord::Schema.define(:version => 20130114223848) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "phase",          :default => "voting", :null => false
     t.string   "discussion_url", :default => "",       :null => false
     t.datetime "close_date"
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
     t.boolean  "uses_markdown",  :default => true,     :null => false
+    t.string   "phase",          :default => "voting", :null => false
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
