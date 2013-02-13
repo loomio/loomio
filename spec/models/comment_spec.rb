@@ -114,18 +114,24 @@ describe Comment do
     end
   end
 
-  describe "#other_discussion_participants" do
+  describe "#non_mentioned_discussion_participants" do
     before do
-      @author = create :user
-      @participant = create :user
-      comment.stub_chain(:discussion, :participants).and_return([@participant, @author])
+      @group = create :group
+      @author = stub(:user)
+      @participant = stub(:user)
+      @mentioned_user = stub(:user)
+      comment.stub_chain(:discussion, :participants).and_return([@participant, @author, @mentioned_user])
+      comment.stub(:mentioned_group_members).and_return([@mentioned_user])
       comment.stub(:author).and_return(@author)
     end
-    it "should not return the the other participants" do
-      comment.other_discussion_participants.should include(@participant)
+    it "should return the the other participants" do
+      comment.non_mentioned_discussion_participants.should include(@participant)
     end
     it "should not return the author" do
-      comment.other_discussion_participants.should_not include(@author)
+      comment.non_mentioned_discussion_participants.should_not include(@author)
+    end
+    it "should not return a mentioned user" do
+      comment.non_mentioned_discussion_participants.should_not include(@mentioned_user)
     end
   end
 end

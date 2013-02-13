@@ -27,7 +27,7 @@ describe Events::NewComment do
                                          discussion_id: comment.discussion.id) }
     before do
       comment.stub(:mentioned_group_members).and_return([mentioned_user])
-      comment.stub(:other_discussion_participants).and_return([non_mentioned_user])
+      comment.stub(:non_mentioned_discussion_participants).and_return([non_mentioned_user])
       Events::UserMentioned.stub(:publish!)
     end
 
