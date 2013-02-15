@@ -89,7 +89,6 @@ Loomio::Application.routes.draw do
   match '/privacy' => 'high_voltage/pages#show', :id => 'privacy'
   match '/blog' => 'high_voltage/pages#show', :id => 'blog'
 
-  match "/pages/*id" => 'pages#show', :as => :page, :format => false
   root :to => 'pages#show', :id => 'home'
 
   #redirect old pages:
@@ -104,4 +103,5 @@ Loomio::Application.routes.draw do
   match '/about' => redirect('/pages/home#who')
   match '/contact' => redirect('/pages/home#who')
   match '/demo' => redirect('/')
+  match "/pages/*id" => 'pages#show', :as => :page, :format => false
 end
