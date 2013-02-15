@@ -22,12 +22,12 @@ namespace :stats do
     s3file('groups.csv').write file
   end
 
-  task :users => :environment do   # Export all users' create dates
+  task :users => :environment do   # Export some user data
     require 'csv'
     file = CSV.generate do |csv|
-      csv << ["id", "created_at", "memberships_count"]
+      csv << ["id", "created_at", "last_sign_in_at", "memberships_count"]
       User.all.each do |user|
-        csv << [scramble(user.id), user.created_at, user.memberships_count]
+        csv << [scramble(user.id), user.created_at, user.last_sign_in_at, user.memberships_count]
       end
     end
 
@@ -35,6 +35,71 @@ namespace :stats do
   end
 
 task :events => :environment do    # Export all events, scramble users, scramble private groups & subgroups
+    require 'csv'
+
+    file = CSV.generate do |csv|
+      csv << ["id", "user", "group", "parent_group", "kind", "created_at"]
+      count = 0
+      Event.find_each do |event|
+        count += 1
+        puts count if (count % 100) == 0
+        id = event.id
+        kind = event.kind
+        created_at = event.created_at
+        eventable = event.eventable
+        case event.kind
+        when "new_discussion", "new_motion"
+          user = eventable.author if eventable
+          group = eventable.group if eventable
+        when "new_comment", "new_vote", "motion_blocked", "membership_requested", "comment_liked", "mentioned_user"
+          begin
+            user = eventable.user if eventable
+            group = eventable.group if eventable
+          rescue => error
+            puts error.class
+            puts error
+            user = nil
+            group = nil
+          end
+        when "motion_closed"
+          user = event.user
+          group = eventable.group if eventable
+        when "user_added_to_group"
+          user = eventable.inviter if eventable
+          group = eventable.group if eventable
+        else
+          user = nil
+          group = nil
+        end
+
+        user_id = user ? user.id : ""
+
+        # scramble users, and (private) groups & subgroups
+
+        if group
+          if group.viewable_by == :everyone
+            group_id = group.id
+          else
+            group_id = scramble(group.id)
+          end
+
+          if group.parent and group.viewable_by == :everyone
+            parent_group_id = group.parent.id.to_s
+          elsif group.parent  # i.e. the group is not public
+            parent_group_id = scramble(group.parent.id)
+          else
+            parent_group_id =  ""
+          end
+        end
+
+        csv << [id, scramble(user_id), group_id, parent_group_id, kind, created_at]
+      end
+    end
+
+    s3file('events.csv').write file
+  end
+
+task :group_events => :environment do    # Export all events associated with a particular group & its subgroups, no privacy
     require 'csv'
 
     file = CSV.generate do |csv|
@@ -116,6 +181,7 @@ task :events => :environment do    # Export all events, scramble users, scramble
   end
 
   def s3file (filename)
-    AWS::S3.new.buckets['loomio-metrics'].objects.create filename
+    raise "Please set environment variable LOOMIO_INSTANCE" if ENV["LOOMIO_INSTANCE"].blank?
+    AWS::S3.new.buckets['loomio-metrics'].objects.create ENV["LOOMIO_INSTANCE"] + '-' + filename
   end
 end
