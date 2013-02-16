@@ -8,7 +8,7 @@
       = link_to "Unlike", like_comment_path(id: comment, like: 'false'), method: :post, remote: true
   - if comment.user == current_user
     = " · "
-    = link_to "Delete", "#", 'data-title' => "Delete comment", 'data-body' => "Are you sure you want to delete this comment?", 'data-confirm-path' => comment_path(comment), 'data-method-type' => 'delete', class: 'confirm-dialog', id: 'delete-comment'
+    = link_to "Delete", "#", 'data-title' => "Delete comment", 'data-body' => "Are you sure you want to delete this comment?", 'data-confirm-path' => comment_path(comment), 'data-method-type' => 'delete', class: 'confirm-dialog', id: "delete-comment-#{comment.id}"
 - if likes.count > 0
   .activity-item-likes
     - likers = likes.map { |like| link_to(like.user_name, "#") }
