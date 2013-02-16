@@ -1,6 +1,5 @@
 - likes = comment.likes
-.clearfix
-  %a{class: "comment-anchor", id: "comment-#{comment.id}"}
+%div{class: "clearfix comment-anchor", id: "comment-#{comment.id}"}
   = render 'avatar', user: comment.user, size: "medium", kind: nil, id: nil
   .activity-item-container.with-avatar
     .activity-item-comment-actor
