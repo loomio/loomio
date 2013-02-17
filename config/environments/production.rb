@@ -12,10 +12,10 @@ Loomio::Application.configure do
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
-  #config.assets.compress = true
+  config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  # config.assets.compile = false
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -44,7 +44,7 @@ Loomio::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += %w(active_admin.css.scss active_admin.js)
+  config.assets.precompile += %w(active_admin.css active_admin.js frontpage.js frontpage.css active_admin.css)
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
