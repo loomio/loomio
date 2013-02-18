@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2.11'
+gem 'rails', '~> 3.2.12'
 gem "haml-rails"
-gem 'devise', '~> 2.1.0'
+gem 'devise', '~> 2.2.3'
 gem 'devise_invitable', '~> 1.0.0'
 gem 'pg'
 gem 'capistrano'
