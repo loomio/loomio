@@ -1,15 +1,6 @@
 class Discussion < ActiveRecord::Base
-  class AuthorValidator < ActiveModel::Validator
-    def validate(record)
-      unless (record.group.nil? || record.group.users.include?(record.author))
-        record.errors[:author] << 'must be a member of the discussion group'
-      end
-    end
-  end
-
   scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
-  # Do we even need this?
-  # validates_with AuthorValidator
+
   validates_presence_of :title, :group, :author
   validates :title, :length => { :maximum => 150 }
   validates_inclusion_of :uses_markdown, :in => [true,false]
