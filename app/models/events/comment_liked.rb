@@ -11,9 +11,11 @@ class Events::CommentLiked < Event
 
   private
 
-    def notify_users!
-      unless comment_vote.user == comment_vote.comment_user
-        notify!(comment_vote.comment_user)
-      end
+  def notify_users!
+    unless comment_vote.user == comment_vote.comment_user
+      notify!(comment_vote.comment_user)
     end
+  end
+
+  handle_asynchronously :notify_users!
 end

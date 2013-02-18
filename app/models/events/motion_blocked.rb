@@ -12,9 +12,11 @@ class Events::MotionBlocked < Event
 
   private
 
-    def notify_users!
-      vote.other_group_members.each do |user|
-        notify!(user)
-      end
+  def notify_users!
+    vote.other_group_members.each do |user|
+      notify!(user)
     end
+  end
+
+  handle_asynchronously :notify_users!
 end
