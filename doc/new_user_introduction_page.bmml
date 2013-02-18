@@ -1,0 +1,35 @@
+<mockup version="1.0" skin="sketch" measuredW="671" measuredH="600" mockupW="590" mockupH="572">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::VideoPlayer" x="95" y="135" w="-1" h="-1" measuredW="300" measuredH="200" zOrder="0" locked="false" isInGroup="-1"/>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="81" y="28" w="-1" h="-1" measuredW="353" measuredH="50" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Welcome%20to%20Loomio</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::SubTitle" x="81" y="93" w="-1" h="-1" measuredW="237" measuredH="33" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Introduction%20to%20Loomio</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::SubTitle" x="81" y="363" w="-1" h="-1" measuredW="340" measuredH="33" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>How%20do%20I%20keep%20on%20top%20of%20things%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Paragraph" x="81" y="396" w="439" h="80" measuredW="200" measuredH="80" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Ensure%20that%20you%20are%20subscribed%20to%20email%20notifications.%20With%20the%20following%20email%20alerts%20you%27ll%20be%20emailed%20when%20new%20discussions%20and%20decisions%20are%20started%2C%20and%20before%20any%20proposals%20close.%20If%20you%20just%20need%20to%20keep%20up%20with%20the%20group%20you%20can%20chill%20out%20now.</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::SubTitle" x="81" y="487" w="-1" h="-1" measuredW="590" measuredH="33" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>How%20do%20I%20start%20discussions%20and%20decisions%20with%20my%20group%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Paragraph" x="88" y="520" w="447" h="80" measuredW="200" measuredH="80" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>You%20go%20to%20the%20group%20page%20and%20click%20start%20a%20discussion.</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
