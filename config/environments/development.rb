@@ -33,4 +33,11 @@ Loomio::Application.configure do
   config.action_mailer.file_settings = {
     :location => Rails.root.join('tmp/mail')
   }
+
+  #fake production settings
+  #config.serve_static_assets = false
+  #config.assets.compress = true
+  #config.assets.compile = false
+  #config.assets.digest = true
+  #config.assets.precompile += %w(active_admin.css active_admin.js frontpage.js frontpage.css active_admin.css)
 end
