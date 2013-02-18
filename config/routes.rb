@@ -1,7 +1,7 @@
   Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  devise_for :users, :controllers => { :invitations => 'users/invitations' }
+  devise_for :users, :controllers => { :sessions => 'users/sessions', :invitations => 'users/invitations' }
 
   resources :group_requests, :only => [:create, :new]
   match "/request_new_group", :to => "group_requests#start", :as => :request_new_group
@@ -83,13 +83,12 @@
     root :to => 'dashboard#show'
   end
 
-
-
-  root :to => 'high_voltage/pages#show', :id => 'home'
-
   match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
   match '/privacy' => 'high_voltage/pages#show', :id => 'privacy'
   match '/blog' => 'high_voltage/pages#show', :id => 'blog'
+
+  match "/pages/*id" => 'pages#show', :as => :page, :format => false
+  root :to => 'pages#show', :id => 'home'
 
   #redirect old pages:
   match '/pages/how*it*works' => redirect('/pages/home#how')
