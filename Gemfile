@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2.6'
+gem 'rails', '~> 3.2.11'
 gem "haml-rails"
 gem 'devise', '~> 2.1.0'
 gem 'devise_invitable', '~> 1.0.0'
@@ -72,6 +72,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'meta_request', '0.2.1'
   gem 'guard'
   gem 'guard-spork'
   gem 'guard-rspec'
