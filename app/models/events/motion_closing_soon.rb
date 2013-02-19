@@ -19,6 +19,4 @@ class Events::MotionClosingSoon < Event
       notify!(user)
     end
   end
-
-  handle_asynchronously :notify_users!
 end
