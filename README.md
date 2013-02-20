@@ -93,6 +93,7 @@ CANONICAL_HOST=www.yourloomiosite.com (the web domain for your loomio server)
 SENDGRID_USERNAME=your-sendgrid-username (we use SendGrid for sending emails, which you'll need to create an account for.
                                           if you'd rather not use sendgrid, you'll need to edit production.rb)
 SENDGRID_PASSWORD=your-sendgrid-password
+EXCEPTION_RECIPIENT=you@example.org (any errors that occur on your loomio instance will be sent to this email address)
 ```
 
 If you're using Heroku, [read here](https://devcenter.heroku.com/articles/config-vars) about how to set these environment variables. If you're not using Heroku, edit the `.env` file in the root of your app directory (unconfirmed whether or not this actually works).
