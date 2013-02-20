@@ -15,8 +15,7 @@ describe "Votes" do
     end
 
     before :each do
-      page.driver.post user_session_path, 'user[email]' => @user.email,
-                       'user[password]' => 'password'
+      login @user
     end
 
     it "can create a vote for a motion" do

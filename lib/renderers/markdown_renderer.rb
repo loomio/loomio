@@ -1,6 +1,10 @@
 require 'open-uri'
 
 class MarkdownRenderer < Redcarpet::Render::HTML
+  def initialize
+    super(:filter_html => true, :hard_wrap => true)
+  end
+
   def link(link, title, alt_text)
     if link
       safelink = URI.escape(link).gsub(/%23/, '#')
