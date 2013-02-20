@@ -1,8 +1,3 @@
-Given /^there is a comment in a public discussion$/ do
-  @comment = FactoryGirl.create :comment
-  @discussion = @comment.discussion
-end
-
 When /^I write and submit a comment$/ do
   @comment_text = 'Test comment,'
   @comment_markdown_text = ' also i like http://xkcd.org and also _markdown_'
@@ -42,11 +37,11 @@ Then /^markdown should now be off by default$/ do
 end
 
 Then /^there should be an anchor for the comment$/ do
-  page.should have_css("#comment-#{@comment.id}")
+  page.should have_css("#comment-2")
 end
 
 Then /^I should see a permalink to the anchor for that comment$/ do
-  find("#comment-#{@comment.id}-permalink")[:href].should == discussion_path(@discussion) + "#comment-#{@comment.id}"
+  find('.activity-item-time a')[:href].should == "#comment-2"
 end
 
 Then /^the comment should autolink links$/ do

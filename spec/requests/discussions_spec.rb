@@ -29,7 +29,7 @@ describe "Discussion" do
         @discussion.title = "New discussion!"
         @discussion.author = user
         PaperTrail.whodunnit = "#{user.id}"
-        @discussion.description = "Some basic description" 
+        @discussion.description = "Some basic description"
         @discussion.save
       end
 
@@ -44,13 +44,13 @@ describe "Discussion" do
         visit discussion_path(@discussion)
 
         fill_in 'new-comment', with: "Here's a little comment"
-        click_on 'post-new-comment' 
+        click_on 'post-new-comment'
         visit discussion_path(@discussion)
         should have_content("Here's a little comment")
       end
 
-      context "discussion context area" do 
-        it "displays the author" do 
+      context "discussion context area" do
+        it "displays the author" do
           visit discussion_path(@discussion)
 
           should have_css(".started-by .user-name-with-popover")
@@ -123,8 +123,8 @@ describe "Discussion" do
           should have_selector('strong', :text => 'star_bold')
         end
         it "formats a ruby code block with ```ruby code_block ```" do
-          fill_in 'new-comment', with: "```ruby 
-          code_block 
+          fill_in 'new-comment', with: "```ruby
+          code_block
           ```
           "
           click_on 'post-new-comment'
@@ -159,7 +159,7 @@ describe "Discussion" do
         comment = @discussion.add_comment(user, "hello!")
         visit discussion_path(@discussion)
 
-        find("#comment-#{comment.id}").should have_content('Delete')
+        find("#delete-comment-#{comment.id}")
       end
 
       it "cannot see link to delete other people's comments" do
@@ -176,7 +176,9 @@ describe "Discussion" do
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
         visit discussion_path(@discussion)
-        find("#comment-#{comment.id}").find_link('Like').click
+        find("#like-comment-#{comment.id}")
+        find_link("Like").click
+        visit discussion_path(@discussion)
 
         should have_content("Liked by #{user.name}")
         should_not have_link("Like")
@@ -190,13 +192,16 @@ describe "Discussion" do
         @discussion.comments.first.like(user)
 
         visit discussion_path(@discussion)
-        find("#comment-#{comment.id}").find_link('Unlike').click
+        find("#unlike-comment-#{comment.id}")
+        find_link("Unlike").click
+        visit discussion_path(@discussion)
+
         should_not have_content("Liked by #{user.name}")
         should have_link("Like")
         should_not have_link("Unlike")
       end
 
-      context "revision history", :js => true do
+      context "revision history" do
 
         before do
           pending "These tests are failing for some reason"

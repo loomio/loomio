@@ -1,5 +1,6 @@
 - likes = comment.likes
-.clearfix{id: "comment-#{comment.id}"}
+.clearfix
+  %a{class: "comment-anchor", id: "comment-#{comment.id}"}
   .activity-item-avatar.medium-user-avatar.avatar-canvas
     - if comment.user.avatar_url
       = image_tag comment.user.avatar_url(:medium)
