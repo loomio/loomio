@@ -12,7 +12,7 @@ class NotificationItems::CommentLiked < NotificationItem
   end
 
   def link
-    discussion_path = url_helpers.discussion_path(@notification.eventable)
+    discussion_path = url_helpers.discussion_path(@notification.eventable.discussion)
     discussion_path + "#comment-#{@notification.eventable.comment_id}"
   end
 end
