@@ -22,6 +22,10 @@ When /^I accept popup$/ do
   page.driver.browser.switch_to.alert.accept unless Capybara.javascript_driver == :poltergeist #poltergeist always confirms these
 end
 
-Then /^I would like to stop the test and look at it$/ do
+Then /^I start the debugger$/ do
   debugger
+end
+
+Then /^I take a screenshot$/ do
+  page.driver.render('./screenshots/file.png', :full => true)
 end
