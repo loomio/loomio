@@ -30,6 +30,18 @@ Spork.prefork do
 
     config.include FactoryGirl::Syntax::Methods
 
+    require 'capybara/poltergeist'
+    polter_options = {
+      :js_errors => true,
+      :inspector => true,
+      :debug => false
+    }
+    Capybara.default_driver = :poltergeist
+    Capybara.javascript_driver = :poltergeist
+    Capybara.register_driver :poltergeist do |app|
+      Capybara::Poltergeist::Driver.new(app, polter_options)
+    end
+
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.
