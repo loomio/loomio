@@ -20,7 +20,7 @@ Scenario: User mentions a group member
   And harry wants to be emailed when mentioned
   When I visit the discussion page
   And I write and submit a comment that mentions harry
-  And I wait 1 second
+  And I wait 5 seconds
   Then harry should get an email saying I mentioned him
   And the user should be notified that they were mentioned
 

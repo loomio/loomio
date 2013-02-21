@@ -8,10 +8,7 @@ describe "Notifications" do
       @user = create(:user)
       @group = create(:group, name: 'Test Group', viewable_by: :members)
       @group.add_member!(@user, User.loomio_helper_bot)
-      visit("/users/sign_in")
-      fill_in("user_email", :with => @user.email)
-      fill_in("user_password", :with => @user.password)
-      click_button("sign-in-btn")
+      login @user
     end
 
     # Spec:
@@ -60,13 +57,10 @@ describe "Notifications" do
         @user = create(:user)
         @group = create(:group, name: 'Test Group', viewable_by: :members)
         @group.add_member!(@user)
-        visit("/users/sign_in")
-        fill_in("user_email", :with => @user.email)
-        fill_in("user_password", :with => @user.password)
-        click_button("sign-in-btn")
+        login @user
       end
 
-      it "shows and clears notifications", :js => true do
+      it "shows and clears notifications" do
         discussion = create(:discussion, group: @group)
         visit root_path
         page.should have_xpath("//title", :text => "(2) Loomio")
