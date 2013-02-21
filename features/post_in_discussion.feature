@@ -12,6 +12,8 @@ Feature: Post a comment in a discussion
     And I write and submit a comment
     Then a comment should be added to the discussion
     And the comment should format markdown characters
+    And the comment should autolink links
+    And the comment should include appropriate new lines
     And markdown should now be on by default
 
   Scenario: User disable markdown and posts a comment
@@ -24,6 +26,8 @@ Feature: Post a comment in a discussion
     And I write and submit a comment
     Then a comment should be added to the discussion
     And the comment should not format markdown characters
+    And the comment should autolink links
+    And the comment should include appropriate new lines
     And markdown should now be off by default
 
   Scenario: Comments have permalinks
