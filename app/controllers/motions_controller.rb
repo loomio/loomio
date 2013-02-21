@@ -7,6 +7,8 @@ class MotionsController < GroupBaseController
     @motion = current_user.authored_motions.new(params[:motion])
     logger.debug("PARAMS: #{params[:motion]}")
     logger.debug("MOTION (before save): #{@motion.attributes.inspect}")
+    @motion.close_date = (params[:motion][:close_date]).to_datetime
+    logger.debug("MOTION (before save, after hack): #{@motion.attributes.inspect}")
     @group = GroupDecorator.new(@motion.group)
     authorize! :create, @motion
     if @motion.save
