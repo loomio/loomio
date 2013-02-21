@@ -1,7 +1,7 @@
 .row
   .span5#group-form
-    %h1 New Group
-    =simple_form_for group, :validate => true do |f|
+    %h1= form_title
+    = simple_form_for group, :validate => true do |f|
       = f.input :name, :label => "Group Name", input_html: {class: "rm-margin-bottom"}
       %h2 Privacy Settings
       - if group.parent.nil?
