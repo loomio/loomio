@@ -207,6 +207,12 @@ pre{
   width: 15px;
 }
 
+.comment-anchor {
+  padding-top: 50px;
+  margin-top: -50px;
+  display:block;
+}
+
 #content-activity {
   border-right: 1px solid $light-grey;
   min-height: 660px;
