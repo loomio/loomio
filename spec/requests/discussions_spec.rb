@@ -159,7 +159,7 @@ describe "Discussion" do
         comment = @discussion.add_comment(user, "hello!")
         visit discussion_path(@discussion)
 
-        find("#comment-#{comment.id}").should have_content('Delete')
+        find("#comment-container-#{comment.id}").should have_content('Delete')
       end
 
       it "cannot see link to delete other people's comments" do
@@ -168,7 +168,7 @@ describe "Discussion" do
         comment = @discussion.add_comment(@user2, "hello!")
         visit discussion_path(@discussion)
 
-        find("#comment-#{comment.id}").should_not have_content('Delete')
+        find("#comment-container-#{comment.id}").should_not have_content('Delete')
       end
 
       it "can 'like' a comment" do
@@ -176,7 +176,7 @@ describe "Discussion" do
         @discussion.group.add_member!(@user2)
         comment = @discussion.add_comment(@user2, "hello!")
         visit discussion_path(@discussion)
-        find("#comment-#{comment.id}").find_link('Like').click
+        find("#comment-container-#{comment.id}").find_link('Like').click
 
         should have_content("Liked by #{user.name}")
         should_not have_link("Like")
@@ -190,7 +190,7 @@ describe "Discussion" do
         @discussion.comments.first.like(user)
 
         visit discussion_path(@discussion)
-        find("#comment-#{comment.id}").find_link('Unlike').click
+        find("#comment-container-#{comment.id}").find_link('Unlike').click
         should_not have_content("Liked by #{user.name}")
         should have_link("Like")
         should_not have_link("Unlike")

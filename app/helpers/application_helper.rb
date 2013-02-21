@@ -53,7 +53,7 @@ module ApplicationHelper
     if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
       text = " "
     end
-    
+
     options = [
       :no_intra_emphasis => true,
       :tables => true,
@@ -68,7 +68,7 @@ module ApplicationHelper
       :filter_html => true,
       :hard_wrap => true
     )
-    
+
     markdown = Redcarpet::Markdown.new(renderer, *options)
     markdown.render(text).html_safe
   end

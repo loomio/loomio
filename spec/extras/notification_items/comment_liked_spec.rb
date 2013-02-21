@@ -23,7 +23,9 @@ describe NotificationItems::CommentLiked do
   end
 
   it "#link returns a path to the comment" do
-    item.stub_chain(:url_helpers, :discussion_path).and_return("/discussions/1/")
+    discussion = stub(:discussion)
+    notification.stub_chain(:eventable, :discussion).and_return(discussion)
+    item.stub_chain(:url_helpers, :discussion_path).with(discussion).and_return("/discussions/1/")
     notification.stub_chain(:eventable, :comment_id).and_return("123")
     item.link.should == "/discussions/1/#comment-123"
   end

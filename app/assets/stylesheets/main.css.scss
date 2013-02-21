@@ -198,9 +198,10 @@ li.selector-item a.selector-link:hover {
   font-weight: normal;
   font-size: $font-tiny;
 }
-.group-presence-error-message {
-  float: right;
-  position: relative;
+.file-error-message {
+  // position: relative;
+  // right: 20px;
+  margin-left: -30px;
   color: $error-color;
 }
 
