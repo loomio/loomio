@@ -5,15 +5,11 @@ class MotionsController < GroupBaseController
 
   def create
     @motion = current_user.authored_motions.new(params[:motion])
-    logger.debug("PARAMS: #{params[:motion]}")
-    logger.debug("MOTION (before save): #{@motion.attributes.inspect}")
-    @motion.close_date = (params[:motion][:close_date]).to_datetime
-    logger.debug("MOTION (before save, after hack): #{@motion.attributes.inspect}")
+    @motion.close_date = params[:motion][:close_date].to_datetime
     @group = GroupDecorator.new(@motion.group)
     authorize! :create, @motion
     if @motion.save
       flash[:success] = "Proposal successfully created."
-      logger.debug("MOTION (after save): #{@motion.attributes.inspect}")
       redirect_to discussion_path(@motion.discussion)
     else
       flash[:warning] = "Proposal could not be created"
