@@ -1,7 +1,7 @@
 %p A new proposal was created in a Loomio group that you belong to.
-
 %p
-  = link_to("Click here to view this proposal", discussion_url(@motion.discussion))
+  = link_to("Click here to view this proposal", "#{discussion_url(@motion.discussion, proposal: @motion)}")
+
 %p
   Proposal:
   = @motion.name
