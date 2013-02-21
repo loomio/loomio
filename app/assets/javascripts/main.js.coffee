@@ -82,7 +82,8 @@ $ ->
       <input name='_method' type='hidden' value='#{methodText}'>
       <input name='authenticity_token' type='hidden' value=#{csrf}></div>
       <div class='modal-body center'> #{bodyText}</div><div class='modal-footer'>&nbsp;
-      <input class='btn btn-small btn-info', name='commit' type='submit' value='#{titleText}' id='confirm-action'>
+      <input class='btn btn-small btn-info', name='commit' type='submit' value='#{titleText}' id='confirm-action'
+             data-disable-with='#{titleText}'>
       <a data-dismiss='modal' class='btn btn-small'>Cancel</a></div></div></form>"
     )
     $('#confirm-dialog-modal').modal('show')
