@@ -4,6 +4,10 @@ class DiscussionsController < GroupBaseController
   before_filter :check_group_read_permissions, :only => :show
   after_filter :store_location, :only => :show
 
+  rescue_from ActiveRecord::RecordNotFound do
+    render 'discussions/not_found'
+  end
+
   def new
     @discussion = Discussion.new
     if params[:group_id]
@@ -23,6 +27,13 @@ class DiscussionsController < GroupBaseController
       render action: :new
       flash[:error] = "Discussion could not be created."
     end
+  end
+
+  def destroy
+    @discussion = Discussion.find(params[:id])
+    @discussion.destroy
+    flash[:success] = "Discussion sucessfully deleted."
+    redirect_to @discussion.group
   end
 
   def index

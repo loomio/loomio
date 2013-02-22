@@ -63,7 +63,7 @@ describe "Discussion" do
           should_not have_css(".see-description-history")
         end
 
-        it "displays revision history information if description has been edited", :js => true do
+        it "displays revision history information if description has been edited" do
           pending "This test is failing for some reason"
           visit discussion_path(@discussion)
 

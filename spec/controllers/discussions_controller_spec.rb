@@ -86,6 +86,25 @@ describe DiscussionsController do
       end
     end
 
+    context "deleting a discussion" do
+      before do
+        discussion.stub(:destroy)
+        # controller.stub(:authorize!).with(:destroy, discussion).and_return(true)
+      end
+      it "destroys discussion" do
+        discussion.should_receive(:destroy)
+        delete :destroy, id: discussion.id
+      end
+      it "redirects to group" do
+        delete :destroy, id: discussion.id
+        response.should redirect_to(group)
+      end
+      it "gives flash success message" do
+        delete :destroy, id: discussion.id
+        flash[:success].should =~ /Discussion sucessfully deleted/
+      end
+    end
+
     describe "creating a new proposal" do
       it "is successful" do
         get :new_proposal, id: discussion.id
