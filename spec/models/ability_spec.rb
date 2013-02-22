@@ -38,6 +38,7 @@ describe "User abilities" do
     it { should be_able_to(:update_version, discussion) }
     it { should be_able_to(:index, Discussion) }
     it { should be_able_to(:destroy, user_comment) }
+    it { should_not be_able_to(:destroy, discussion) }
     it { should_not be_able_to(:destroy, another_user_comment) }
     it { should be_able_to(:like, user_comment) }
     it { should be_able_to(:like, another_user_comment) }
@@ -110,6 +111,7 @@ describe "User abilities" do
 
     it { should be_able_to(:update, group) }
     it { should be_able_to(:email_members, group) }
+    it { should be_able_to(:destroy, discussion) }
     it { should be_able_to(:make_admin, @membership_request) }
     it { should be_able_to(:remove_admin, @membership_request) }
     it { should be_able_to(:destroy, @other_user_membership) }
@@ -149,6 +151,7 @@ describe "User abilities" do
     it { should_not be_able_to(:new_proposal, discussion) }
     it { should_not be_able_to(:add_comment, discussion) }
     it { should be_able_to(:index, Discussion) }
+    it { should_not be_able_to(:destroy, discussion) }
     it { should_not be_able_to(:destroy, another_user_comment) }
     it { should_not be_able_to(:like, another_user_comment) }
     it { should_not be_able_to(:unlike, another_user_comment) }
