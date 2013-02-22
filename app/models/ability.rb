@@ -14,18 +14,13 @@ class Ability
     can :show, Group, :viewable_by => :members, :id => user.group_ids
     can :show, Group, :viewable_by => :parent_group_members,
                       :parent_id => user.group_ids
-
     can [:update, :email_members, :edit_description, :edit_privacy], Group, :id => user.adminable_group_ids
-
     can [:add_subgroup, :get_members], Group, :id => user.group_ids
-
     can :add_members, Group, :members_invitable_by => :members,
                              :id => user.group_ids
     can :add_members, Group, :members_invitable_by => :admins,
                              :id => user.adminable_group_ids
-
     can :archive, Group, :id => user.adminable_group_ids
-
     can [:create, :request_membership], Group
 
     #
@@ -33,7 +28,6 @@ class Ability
     #
 
     can :create, Membership
-
     can :cancel_request, Membership, :user => user
 
     can [:approve_request, :ignore_request], Membership do |membership|
@@ -55,11 +49,10 @@ class Ability
     #
 
     can :index, Discussion
-
+    can :destroy, Discussion, group_id: user.adminable_group_ids
     can [:add_comment, :new_proposal, :create, :edit_description, :edit_title, :show_description_history, :preview_version, :update_version], Discussion, :group_id => user.group_ids
 
     can :destroy, Comment, user_id: user.id
-
     can [:like, :unlike], Comment, :discussion => { :id => user.discussion_ids }
 
     #

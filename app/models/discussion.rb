@@ -10,13 +10,13 @@ class Discussion < ActiveRecord::Base
 
   belongs_to :group, :counter_cache => true
   belongs_to :author, class_name: 'User'
-  has_many :motions
+  has_many :motions, :dependent => :destroy
   has_many :closed_motions,
     :class_name => 'Motion',
     :conditions => { phase: 'closed' },
     :order => "close_date desc"
   has_many :votes, through: :motions
-  has_many :comments,  :as => :commentable
+  has_many :comments,  :as => :commentable, :dependent => :destroy
   has_many :users_with_comments, :through => :comments,
     :source => :user, :uniq => true
   has_many :events, :as => :eventable, :dependent => :destroy
