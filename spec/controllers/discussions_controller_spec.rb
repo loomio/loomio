@@ -6,6 +6,7 @@ describe DiscussionsController do
   let(:motion) { mock_model(Motion) }
   let(:group) { mock_model(Group) }
   let(:discussion) { stub_model(Discussion,
+                                title: "Top ten",
                                 author: user,
                                 current_motion: motion,
                                 group: group) }
@@ -47,12 +48,26 @@ describe DiscussionsController do
           motion.stub(:voting?).and_return(true)
           discussion.stub(:history)
         end
+
         it "responds with success" do
           get :show, id: discussion.id
           response.should be_success
         end
-        it "creates a motion_read_log if there is a current motion"
-        it "creates a discussion_read_log"
+
+        it "creates a motion_read_log if there is a current motion" do
+          user.should_receive(:update_motion_read_log).with(motion)
+          get :show, id: discussion.id
+        end
+
+        it "creates a discussion_read_log" do
+          user.should_receive(:update_discussion_read_log).with(discussion)
+          get :show, id: discussion.id
+        end
+
+        it "updates the discussion's total view counter" do
+          get :show, id: discussion.id
+          discussion.total_views.should == 1
+        end
 
         it "assigns array with discussion history" do
           discussion.should_receive(:activity).and_return(['fake'])
