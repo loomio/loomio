@@ -11,5 +11,6 @@ class SetDefaultAvatarKindInUser < ActiveRecord::Migration
   end
 
   def down
+    change_column_default(:users, :avatar_kind, nil)
   end
 end
