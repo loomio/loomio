@@ -71,6 +71,11 @@ class Discussion < ActiveRecord::Base
     comments.count
   end
 
+  def update_total_views
+    self.total_views += 1
+    save!
+  end
+
   def last_looked_at_by(user)
     read_log_for(user).discussion_last_viewed_at if read_log_for(user)
   end
