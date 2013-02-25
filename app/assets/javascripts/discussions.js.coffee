@@ -34,13 +34,18 @@ $ ->
 
 $ ->
   if $("body.discussions.show").length > 0
-    $(".toggle-markdown").click((event) ->
-        if $("#uses_markdown").val() == 'true'
-          $("#uses_markdown").val(false)
-        else
-          $("#uses_markdown").val(true)
-        $(".toggle-markdown").find('.icon-ok').removeClass('icon-ok')
-        $(this).children().first().children().addClass('icon-ok')
-        $("#markdown-settings-form").submit()
-        event.preventDefault()
+    $("#enable-markdown").click((event) ->
+      updateMarkdownSetting(this, true)
     )
+$ ->
+  if $("body.discussions.show").length > 0
+    $("#disable-markdown").click((event) ->
+      updateMarkdownSetting(this, false)
+    )
+
+updateMarkdownSetting = (selected, usesMarkdown) ->
+  $("#uses_markdown").val(usesMarkdown)
+  $('#markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
+  $(selected).children().first().children().addClass('icon-ok')
+  $("#markdown-settings-form").submit()
+  event.preventDefault()
