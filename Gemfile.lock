@@ -276,7 +276,7 @@ GEM
       polyamorous (~> 0.5.0)
     method_source (0.8.1)
     mime-types (1.21)
-    modernizr-rails (2.6.1)
+    modernizr-rails (2.6.2)
     multi_json (1.6.1)
     multi_xml (0.5.1)
     net-scp (1.0.4)
