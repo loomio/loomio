@@ -1,12 +1,13 @@
-Feature: Delete post
-  User no longer wishes their post to be visable in the discussion
-  A user must be able to delete a post
+Feature: Admin deletes post
+  As an admin
+  So that I can remove inappropriate content
+  I want to be able to delete other user's comments
 
-  Scenario: Delete post
+  Scenario: Admin deletes another users comment
     Given I am logged in
     And I am an admin of a group with a discussion
+    And the discussion has comments
     And I am on the discussion page
-    And I write and submit a comment
     When I click the delete button on a post
     And I accept the popup to confirm
     Then I should no longer see the post in the discussion
