@@ -101,6 +101,7 @@ describe "User abilities" do
   context "admin of a group" do
     let(:group) { create(:group) }
     let(:discussion) { create(:discussion, group: group) }
+    let(:another_user_comment) { discussion.add_comment(other_user, "hello") }
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
 
     before do
@@ -121,6 +122,7 @@ describe "User abilities" do
     it { should be_able_to(:destroy, other_users_motion) }
     it { should be_able_to(:close, other_users_motion) }
     it { should be_able_to(:edit_close_date, other_users_motion) }
+    it { should be_able_to(:destroy, another_user_comment) }
 
     it "should not be able to delete the only admin of a group" do
       group.admin_memberships.where("memberships.id != ?", @user_membership.id).destroy_all

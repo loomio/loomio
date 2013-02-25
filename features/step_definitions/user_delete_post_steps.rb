@@ -9,3 +9,7 @@ end
 Then /^I should no longer see the post in the discussion$/ do
   find('#activity-feed').should_not have_content('Test comment')
 end
+
+Then /^I should not see the delete link on another users comment$/ do
+  find('#activity-feed').should_not have_content('Delete')
+end
