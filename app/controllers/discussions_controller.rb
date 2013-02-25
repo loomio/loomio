@@ -62,7 +62,6 @@ class DiscussionsController < GroupBaseController
     @current_motion = @discussion.current_motion
     @vote = Vote.new
     @activity = @discussion.activity
-    @uses_markdown = current_user.uses_markdown?
     if (not params[:proposal])
       if @current_motion
         @unique_votes = Vote.unique_votes(@current_motion)
@@ -76,6 +75,7 @@ class DiscussionsController < GroupBaseController
     end
 
     if current_user
+      @uses_markdown = current_user.uses_markdown?
       current_user.update_motion_read_log(@current_motion) if @current_motion
       current_user.update_discussion_read_log(@discussion)
       @discussion.update_total_views
