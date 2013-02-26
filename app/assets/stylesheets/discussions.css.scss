@@ -65,7 +65,7 @@ body.discussions.show {
     }
   }
 
-  #discussion-panel-content {
+  #discussion-page-container {
     background-color: white;
     border-top: 1px solid $light-grey;
     border-bottom: 1px solid $light-grey;
@@ -187,7 +187,7 @@ li s hard.motion-preview {
     font-size: 1.0em;
   }
   hr{
-  margin:1em
+    margin: 1em;
   }
 }
 
@@ -213,12 +213,12 @@ pre{
   display:block;
 }
 
-#content-activity {
+#discussion-activity-container {
   border-right: 1px solid $light-grey;
   min-height: 660px;
   padding-right: 10px;
 
-  #content-activity-body {
+  #discussion-activity-body {
     padding: 10px 0px 10px 8px;
   }
   #new-comment-form {
@@ -246,56 +246,55 @@ pre{
   #post-new-comment {
     margin: 5px 5px 5px 45px;
   }
-  ul.activity-list {
+  ul#activity-list {
     list-style: none;
     margin: 0 15px 3px 0;
-  }
-  ul.activity-list .divider {
-    margin: 0 0 5px 45px;
-    border-bottom: 1px solid $light-grey;
-  }
-  li.empty-list-message {
-    margin-left: 45px;
-  }
-  .activity-item-container {
-    width: 388px;
-    float: left;
-    margin-left: 45px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid $light-grey;
-    margin-bottom: 5px;
-  }
-  .activity-item-container.with-avatar {
-    margin-left: 10px;
-    float: left;
-  }
-  .activity-item-avatar {
-    height: 35px;
-    margin-right: 0px;
-    float: left;
-  }
-  .activity-item-comment-actor{
-    font-weight: bold;
-  }
-  .activity-item-actor{
-    font-weight: bold;
-    a {color: $dark-grey;}
-  }
-  .activity-item-header{
-    color: $dark-grey;
-  }
-  .activity-item-content{
-    color: $mid-grey;
-    font-style: italic;
-    word-wrap: break-word;
-  }
-  .activity-item-time{
-    color: $dark-grey;
-    font-size: $font-tiny;
-  }
-  .activity-item-likes{
-    color: $dark-grey;
-    font-size: $font-tiny;
+    width: 437px;
+
+    li.empty-list-message {
+      margin-left: 45px; /*check this still works*/
+    }
+    .divider {
+      border-bottom: 1px solid $light-grey;
+      margin: 0 0 5px 45px;
+    }
+    .activity-item-container {
+      width: 100%;
+    }
+    .activity-item-body {
+      margin-left: 45px;
+      border-bottom: 1px solid $light-grey;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+    }
+    .activity-item-avatar {
+      height: 35px;
+      margin-right: 0px;
+      float: left;
+    }
+    .activity-item-comment-actor{
+      font-weight: bold;
+    }
+    .activity-item-actor{
+      font-weight: bold;
+      a {color: $dark-grey;}
+    }
+    .activity-item-header{
+      color: $dark-grey;
+    }
+    .activity-item-content{
+      color: $mid-grey;
+      font-style: italic;
+      word-wrap: break-word;
+    }
+    .activity-item-time{
+      color: $dark-grey;
+      font-size: $font-tiny;
+    }
+    .activity-item-likes{
+      color: $dark-grey;
+      font-size: $font-tiny;
+    }
   }
 }
 // Discussion preview list panel
