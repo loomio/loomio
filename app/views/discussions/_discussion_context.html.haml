@@ -1,4 +1,3 @@
-
 .row
   .span8
     =render '/application/description', model: @discussion, model_name: "discussion", description_markdown_setting: @discussion.uses_markdown
@@ -21,3 +20,4 @@
         .see-revision-history
           %i.icon-time
           =link_to "See revision history", show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
+#description-revision-history.modal.hidden

@@ -1,5 +1,5 @@
 - likes = comment.likes
-.clearfix
+%div{id: "comment-container-#{comment.id}"}
   %a{class: "comment-anchor", id: "comment-#{comment.id}"}
   .activity-item-avatar.medium-user-avatar.avatar-canvas
     - if comment.user.avatar_url
@@ -7,7 +7,7 @@
     - else
       %span.medium-user-initials.initials-decoration
         = comment.user.avatar_initials
-  .activity-item-container.with-avatar
+  .activity-item-body
     .activity-item-comment-actor
       =link_to comment.user_name, "#", "title" => comment.user_name,
         "data-content" => "#{render 'users/name_popover', user: comment.user, group: comment.group}",
