@@ -1,4 +1,4 @@
-%ul.activity-list#activity-list
+%ul#activity-list
   %li.divider
   - if discussion.activity.count == 0
     %li.selector-item.empty-list-message
@@ -6,7 +6,7 @@
   - else
     - discussion.activity.each do |event|
       - if event.kind == 'new_comment'
-        %li= render event.eventable
+        %li.activity-item-container= render event.eventable
       - else
         - discussion_item = DiscussionItem.new (event)
         %li.activity-item-container= render 'discussion_item', :item => discussion_item
