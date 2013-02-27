@@ -22,6 +22,7 @@ class GroupsController < GroupBaseController
     @subgroups = @group.subgroups.accessible_by(current_ability, :show)
     @discussions = Queries::VisibleDiscussions.for(@group, current_user)
     @discussion = Discussion.new(group_id: @group.id)
+    @invited_users = @group.invited_users
   end
 
   def edit
