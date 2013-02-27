@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130209082913) do
+=======
+ActiveRecord::Schema.define(:version => 20130227030124) do
+>>>>>>> ff6a55f607d97b0ecd0fe8567221b924fcc2ded9
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -105,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20130209082913) do
     t.datetime "last_comment_at"
     t.text     "description"
     t.boolean  "uses_markdown",   :default => true, :null => false
+    t.integer  "total_views",     :default => 0,    :null => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -175,8 +180,8 @@ ActiveRecord::Schema.define(:version => 20130209082913) do
     t.integer  "group_id"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-    t.string   "token",                              :null => false
     t.boolean  "accepted",        :default => false
+    t.string   "token"
   end
 
   create_table "memberships", :force => true do |t|
@@ -264,14 +269,14 @@ ActiveRecord::Schema.define(:version => 20130209082913) do
     t.boolean  "has_read_dashboard_notice",                                   :default => false, :null => false
     t.boolean  "has_read_group_notice",                                       :default => false, :null => false
     t.boolean  "has_read_discussion_notice",                                  :default => false, :null => false
+    t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email",                          :default => true,  :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,  :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,  :null => false
-    t.string   "username"
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.boolean  "uses_markdown",                                               :default => false
     t.integer  "memberships_count",                                           :default => 0,     :null => false
+    t.boolean  "uses_markdown",                                               :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -12,16 +12,18 @@ class Events::NewVote < Event
 
   private
 
-    def notify_users!
-      voter = vote.user
-      if voter != vote.motion_author
-        notify!(vote.motion_author)
-      end
+  def notify_users!
+    voter = vote.user
+    if voter != vote.motion_author
+      notify!(vote.motion_author)
+    end
 
-      if voter != vote.discussion_author
-        if vote.motion_author != vote.discussion_author
-          notify!(vote.discussion_author)
-        end
+    if voter != vote.discussion_author
+      if vote.motion_author != vote.discussion_author
+        notify!(vote.discussion_author)
       end
     end
+  end
+
+  handle_asynchronously :notify_users!
 end

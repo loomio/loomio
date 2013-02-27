@@ -15,12 +15,14 @@ class Events::UserMentioned < Event
 
   private
 
-    def notify_users!
-      unless mentioned_user == comment.user
-        if mentioned_user.subscribed_to_mention_notifications?
-          UserMailer.mentioned(mentioned_user, comment).deliver
-        end
-        notify!(mentioned_user)
+  def notify_users!
+    unless mentioned_user == comment.user
+      if mentioned_user.subscribed_to_mention_notifications?
+        UserMailer.mentioned(mentioned_user, comment).deliver
       end
+      notify!(mentioned_user)
     end
+  end
+
+  handle_asynchronously :notify_users!
 end

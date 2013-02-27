@@ -1,8 +1,9 @@
-%div{:class => "activity-icon " + item.icon }
-%span.activity-item-actor
-  - unless item.actor.blank?
-    =link_to item.actor.name, "#", "title" => item.actor.name,
-      "data-content" => "#{render 'users/name_popover', user: item.actor, group: item.group}", class: "user-name-with-popover"
-%span.activity-item-header= item.header
-%span.activity-item-content.word-break= item.body
-.activity-item-time= time_ago_in_words(item.time) + " ago"
+.activity-item-body
+  %div{:class => "activity-icon " + item.icon }
+  %span.activity-item-actor
+    - unless item.actor.blank?
+      =link_to item.actor.name, "#", "title" => item.actor.name,
+        "data-content" => "#{render 'users/name_popover', user: item.actor, group: item.group}", class: "user-name-with-popover"
+  %span.activity-item-header= item.header
+  %span.activity-item-content.word-break= item.body
+  .activity-item-time= time_ago_in_words(item.time) + " ago"

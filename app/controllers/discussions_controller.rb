@@ -4,6 +4,10 @@ class DiscussionsController < GroupBaseController
   before_filter :check_group_read_permissions, :only => :show
   after_filter :store_location, :only => :show
 
+  rescue_from ActiveRecord::RecordNotFound do
+    render 'discussions/not_found'
+  end
+
   def new
     @discussion = Discussion.new
     if params[:group_id]
@@ -23,6 +27,13 @@ class DiscussionsController < GroupBaseController
       render action: :new
       flash[:error] = "Discussion could not be created."
     end
+  end
+
+  def destroy
+    @discussion = Discussion.find(params[:id])
+    @discussion.destroy
+    flash[:success] = "Discussion sucessfully deleted."
+    redirect_to @discussion.group
   end
 
   def index
@@ -51,7 +62,6 @@ class DiscussionsController < GroupBaseController
     @current_motion = @discussion.current_motion
     @vote = Vote.new
     @activity = @discussion.activity
-    @uses_markdown = current_user.uses_markdown?
     if (not params[:proposal])
       if @current_motion
         @unique_votes = Vote.unique_votes(@current_motion)
@@ -65,21 +75,16 @@ class DiscussionsController < GroupBaseController
     end
 
     if current_user
+      @uses_markdown = current_user.uses_markdown?
       current_user.update_motion_read_log(@current_motion) if @current_motion
       current_user.update_discussion_read_log(@discussion)
+      @discussion.update_total_views
     end
   end
 
   def add_comment
     @discussion = Discussion.find(params[:id])
     comment = resource.add_comment(current_user, params[:comment])
-    unless comment.valid?
-      flash[:error] = "Comment could not be created."
-      redirect_to discussion_path(resource.id)
-    end
-    respond_to do |format|
-      format.js
-    end
   end
 
   def new_proposal

@@ -6,6 +6,7 @@ describe DiscussionsController do
   let(:motion) { mock_model(Motion) }
   let(:group) { mock_model(Group) }
   let(:discussion) { stub_model(Discussion,
+                                title: "Top ten",
                                 author: user,
                                 current_motion: motion,
                                 group: group) }
@@ -47,12 +48,26 @@ describe DiscussionsController do
           motion.stub(:open?).and_return(true)
           discussion.stub(:history)
         end
+
         it "responds with success" do
           get :show, id: discussion.id
           response.should be_success
         end
-        it "creates a motion_read_log if there is a current motion"
-        it "creates a discussion_read_log"
+
+        it "creates a motion_read_log if there is a current motion" do
+          user.should_receive(:update_motion_read_log).with(motion)
+          get :show, id: discussion.id
+        end
+
+        it "creates a discussion_read_log" do
+          user.should_receive(:update_discussion_read_log).with(discussion)
+          get :show, id: discussion.id
+        end
+
+        it "updates the discussion's total view counter" do
+          get :show, id: discussion.id
+          discussion.total_views.should == 1
+        end
 
         it "assigns array with discussion history" do
           discussion.should_receive(:activity).and_return(['fake'])
@@ -83,6 +98,25 @@ describe DiscussionsController do
       it "redirects to discussion" do
         get :create, discussion: @discussion_hash
         response.should redirect_to(discussion_path(discussion.id))
+      end
+    end
+
+    context "deleting a discussion" do
+      before do
+        discussion.stub(:destroy)
+        # controller.stub(:authorize!).with(:destroy, discussion).and_return(true)
+      end
+      it "destroys discussion" do
+        discussion.should_receive(:destroy)
+        delete :destroy, id: discussion.id
+      end
+      it "redirects to group" do
+        delete :destroy, id: discussion.id
+        response.should redirect_to(group)
+      end
+      it "gives flash success message" do
+        delete :destroy, id: discussion.id
+        flash[:success].should =~ /Discussion sucessfully deleted/
       end
     end
 

@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2.6'
+gem 'rails', '~> 3.2.12'
 gem "haml-rails"
-gem 'devise', '~> 2.1.0'
+gem 'devise', '~> 2.2.3'
 gem 'devise_invitable', '~> 1.0.0'
 gem 'pg'
 gem 'capistrano'
@@ -40,6 +40,7 @@ gem 'delayed_job_active_record'
 gem 'hirefireapp'
 gem 'foreman'
 gem 'aws-sdk'
+gem 'rinku'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
@@ -72,6 +73,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'meta_request', '0.2.1'
   gem 'guard'
   gem 'guard-spork'
   gem 'guard-rspec'

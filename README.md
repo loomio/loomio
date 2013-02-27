@@ -76,6 +76,28 @@ You'll probably want to create several different users so that you can
 test the site out properly. (Try using separate browsers if you want to
 login with two users at the same time)
 
+### Configure for production server (e.g. Heroku)
+
+If you're trying to install Loomio on an actual server (as in, not just for development on your local machine), you'll need to do a few things differently.
+
+First, you need to make sure you're running a stable release. Have a look at the [list of Loomio stable releases](https://github.com/enspiral/loomio/tags) and make sure your server is using the latest version. **Do not use master on your production server -- it is untested**.
+
+Second, make sure you have set up the following environment variables:
+
+```
+SECRET_COOKIE_TOKEN=1234567890 (replace with a random string of alphanumeric characters, at least 30 chars long)
+AWS_ACCESS_KEY_ID=your-key-here (you'll need to set up an AWS S3 account for hosting user uploads. ie user images)
+AWS_SECRET_ACCESS_KE=your-access-key
+AWS_UPLOADS_BUCKET=loomio-uploads (you'll need to create a bucket with this name on your S3 account)
+CANONICAL_HOST=www.yourloomiosite.com (the web domain for your loomio server)
+SENDGRID_USERNAME=your-sendgrid-username (we use SendGrid for sending emails, which you'll need to create an account for.
+                                          if you'd rather not use sendgrid, you'll need to edit production.rb)
+SENDGRID_PASSWORD=your-sendgrid-password
+EXCEPTION_RECIPIENT=you@example.org (any errors that occur on your loomio instance will be sent to this email address)
+```
+
+If you're using Heroku, [read here](https://devcenter.heroku.com/articles/config-vars) about how to set these environment variables. If you're not using Heroku, edit the `.env` file in the root of your app directory (unconfirmed whether or not this actually works).
+
 ## Contribute
 
 If you'd like to contribute to the project, check out [Contributing to Loomio](https://github.com/enspiral/loomio/wiki/Contributing-to-Loomio).

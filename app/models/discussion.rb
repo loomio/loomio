@@ -1,15 +1,6 @@
 class Discussion < ActiveRecord::Base
-  class AuthorValidator < ActiveModel::Validator
-    def validate(record)
-      unless (record.group.nil? || record.group.users.include?(record.author))
-        record.errors[:author] << 'must be a member of the discussion group'
-      end
-    end
-  end
-
   scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
-  # Do we even need this?
-  # validates_with AuthorValidator
+
   validates_presence_of :title, :group, :author
   validates :title, :length => { :maximum => 150 }
   validates_inclusion_of :uses_markdown, :in => [true,false]
@@ -19,9 +10,13 @@ class Discussion < ActiveRecord::Base
 
   belongs_to :group, :counter_cache => true
   belongs_to :author, class_name: 'User'
-  has_many :motions
+  has_many :motions, :dependent => :destroy
+  has_many :closed_motions,
+    :class_name => 'Motion',
+    :conditions => { phase: 'closed' },
+    :order => "close_date desc"
   has_many :votes, through: :motions
-  has_many :comments,  :as => :commentable
+  has_many :comments,  :as => :commentable, :dependent => :destroy
   has_many :users_with_comments, :through => :comments,
     :source => :user, :uniq => true
   has_many :events, :as => :eventable, :dependent => :destroy
@@ -74,6 +69,11 @@ class Discussion < ActiveRecord::Base
       return number_of_comments_since(last_looked_at_by(user)) if last_looked_at_by(user)
     end
     comments.count
+  end
+
+  def update_total_views
+    self.total_views += 1
+    save!
   end
 
   def last_looked_at_by(user)

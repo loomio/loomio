@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title Loomio
+    <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
+    = stylesheet_link_tag    "frontpage"
+    = csrf_meta_tags
+    %meta{'name' => 'description', :content => 'Loomio is a free and open-source web application that helps groups make better decisions together.'}
+
+  %body{class: "#{controller_name} #{action_name}"}
+    .container.home-flash
+      = render 'flash_messages', :flash => flash
+    = render "header_logged_out"
+    = yield
+  = javascript_include_tag "frontpage"

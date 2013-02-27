@@ -178,6 +178,17 @@ describe Discussion do
     end
   end
 
+  describe "#update_total_views" do
+    before do
+      @discussion = create(:discussion)
+    end
+    it "increases the total_views by 1" do
+      @discussion.total_views.should == 0
+      @discussion.update_total_views
+      @discussion.total_views.should == 1
+    end
+  end
+
   describe "last_looked_at_by(user)" do
     before do
       @user = stub_model(User)

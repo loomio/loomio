@@ -11,12 +11,12 @@ class Events::MotionClosingSoon < Event
 
   private
 
-    def notify_users!
-      motion.group_users.each do |user|
-        if user.subscribed_to_proposal_closure_notifications
-          UserMailer.motion_closing_soon(user, motion).deliver!
-        end
-        notify!(user)
+  def notify_users!
+    motion.group_users.each do |user|
+      if user.subscribed_to_proposal_closure_notifications
+        UserMailer.motion_closing_soon(user, motion).deliver!
       end
+      notify!(user)
     end
+  end
 end

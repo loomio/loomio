@@ -63,7 +63,7 @@ describe MotionMailer do
     it 'sends to the motion author' do
       @email.to.should == [motion.author_email]
     end
-    
+
     #ensure that reply to is correct
     it 'assigns reply to' do
       pending "This spec is failing on travis for some reason..."
@@ -73,11 +73,6 @@ describe MotionMailer do
     #ensure that the group name variable appears in the email body
     it 'assigns group.full_name' do
       @email.body.encoded.should match(group.full_name)
-    end
-
-    #ensure that the blocking user name appears in the email body
-    it 'assigns user.name' do
-      @email.body.encoded.should match(@vote.user.name)
     end
 
     #ensure that the discussion_url appears in the email body
