@@ -35,7 +35,7 @@
                     = link_to "Create new proposal", new_proposal_discussion_path(@discussion.id), class: 'btn btn-small new-proposal-btn', id: 'new-proposal'
                   %li.selector-item.empty-list-message= "There is not currently an open proposal under discussion"
 
-            - if @discussion.motions.where("phase = 'closed'").count > 0
+            - if @discussion.closed_motions.present?
               #previous-proposals
                 .clearfix
                   .large-icon.decision-icon

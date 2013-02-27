@@ -40,7 +40,7 @@ describe Vote do
     vote.should_not be_valid
   end
 
-  it "motion should only accept votes during the motion's voting phase" do
+  it "motion should only accept votes if open" do
     motion.close!
     vote = Vote.new(position: "yes")
     vote.motion = motion

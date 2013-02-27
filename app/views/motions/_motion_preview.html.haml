@@ -12,13 +12,10 @@
             - if !motion.outcome.blank?
               = "Outcome: #{motion.outcome}"
           .proposal-close-date
-            - if motion.close_date.present?
-              - if motion.voting?
-                = "closing in #{time_ago_in_words(motion.close_date)}"
-              - else
-                = "closed #{time_ago_in_words(motion.close_date)} ago"
+            - if motion.open?
+              = "closing in #{time_ago_in_words(motion.close_date)}"
             - else
-              = "no close date"
+              = "closed #{time_ago_in_words(motion.close_date)} ago"
             =" · " unless this_group
           .proposal-group-name= DiscussionDecorator.new(motion.discussion).display_group_name(this_group)
       .pie{id: "graph_#{motion.id}", 'data-votes' => motion.votes_graph_ready.to_json}

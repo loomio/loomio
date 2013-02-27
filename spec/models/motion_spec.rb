@@ -13,7 +13,7 @@ describe Motion do
 
   it "user_has_voted?(user) returns true if the given user has voted on motion" do
     @user = create(:user)
-    @motion = create(:motion, :author => @user)
+    @motion = create(:motion, author: @user)
     @vote = build(:vote,:position => "yes")
     @vote.user = @user
     @vote.motion = @motion
@@ -58,25 +58,20 @@ describe Motion do
       motion.name = "That we create me"
       motion.author = @user
       motion.discussion = @discussion
+      motion.close_date = 2.days.from_now
       motion.should_receive(:fire_new_motion_event)
       motion.save!
     end
     it "adds motion closed activity if a motion is closed" do
       motion = create :motion, :discussion => @discussion
       Events::MotionClosed.should_receive(:publish!)
-      motion.close_motion!(@user)
+      motion.close!(@user)
     end
     it "adds edit motion close date activity if a motion close date is edited" do
       motion = create :motion, :discussion => @discussion
       motion.should_receive(:fire_motion_close_date_edited_event).with(@user)
       motion.set_close_date!(2.days.from_now, @user)
     end
-  end
-
-  it "cannot have invalid phases" do
-    @motion = create(:motion)
-    @motion.phase = 'bad'
-    @motion.should_not be_valid
   end
 
   it "it can remain un-blocked" do
@@ -122,7 +117,7 @@ describe Motion do
     @motion.discussion.should_not be_nil
   end
 
-  it "cannot have an outcome if voting open" do
+  it "cannot have an outcome if open" do
     @motion = create(:motion)
     @motion.outcome.blank?.should == true
     @motion.set_outcome!("blah blah")
@@ -234,7 +229,7 @@ describe Motion do
       @motion1 = create(:motion, name: "hi",
                                 author: @user1,
                                 discussion: @discussion,
-                                phase: "voting")
+                                )
       @motion1.author = @user1
       @motion1.save!
       @motion1.users_who_did_not_vote.should include(@user1)

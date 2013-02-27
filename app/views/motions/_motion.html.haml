@@ -6,13 +6,10 @@
         - if motion.closed?
           %span.label.label-important Closed
       #closing-info
-        - if motion.has_close_date?
-          - if motion.voting?
-            = "Closing in #{time_ago_in_words(motion.close_date)}"
-          - else
-            %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
+        - if motion.open?
+          = "Closing in #{time_ago_in_words(motion.close_date)}"
         - else
-          No close date
+          %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
       .proposed-by
         = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
     .span2.motion-admin-buttons
@@ -42,7 +39,7 @@
     = "have " unless motion.closed?
     = "stated their position (#{motion.group_count - motion.no_vote_count}/#{motion.group_count})"
   .votes
-    - if motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
+    - if motion.open? && @group.users_include?(current_user) && (not @user_already_voted)
       %h3 State your position
       .vote-buttons.clearfix
         =link_to image_tag("hand-yes.png", title:"I agree", alt:"I agree"), new_motion_vote_path(motion_id: motion.id, position: 'yes'), "title" => "I agree", "data-content" => "I agree with this and want it to go ahead.", class: "position btn vote-yes", id: "yes-vote"

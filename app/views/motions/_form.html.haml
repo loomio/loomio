@@ -21,7 +21,6 @@
           = f.input :description, label: "Details", placeholder: "Give enough information so that anyone in your group can make a well-informed decision."
 
         = f.input :close_date, as: :hidden
-        = f.input :phase, as: :hidden, input_html: {value: "voting"}
         = f.input :facilitator_id, as: :hidden, input_html: {value: current_user.id}
         = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}
         = f.submit 'Start proposal', :class => "btn btn-large btn-info run-validations", id: "proposal-submit", :data => {:disable_with => "Starting"}
