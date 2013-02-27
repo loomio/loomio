@@ -70,34 +70,35 @@ class Membership < ActiveRecord::Base
     end
   end
 
+
   private
 
-    def check_group_max_size
-      if group.max_size
-        raise "Group max_size exceeded" if group.memberships_count >= group.max_size
-      end
+  def check_group_max_size
+    if group.max_size
+      raise "Group max_size exceeded" if group.memberships_count >= group.max_size
     end
+  end
 
-    def set_group_last_viewed_at_to_now
-      self.group_last_viewed_at = Time.now
-    end
+  def set_group_last_viewed_at_to_now
+    self.group_last_viewed_at = Time.now
+  end
 
-    def destroy_subgroup_memberships
-      group.subgroups.each do |subgroup|
-        membership = subgroup.memberships.find_by_user_id(user.id)
-        membership.destroy if membership
-      end
+  def destroy_subgroup_memberships
+    group.subgroups.each do |subgroup|
+      membership = subgroup.memberships.find_by_user_id(user.id)
+      membership.destroy if membership
     end
+  end
 
-    def remove_open_votes
-      discussions = Queries::VisibleDiscussions.for(group, user)
-      discussions.with_current_motions_user_has_voted_on.each do |discussion|
-        votes = discussion.current_motion.votes.where(:user_id => user.id)
-        votes.destroy_all
-      end
+  def remove_open_votes
+    discussions = Queries::VisibleDiscussions.for(group, user)
+    discussions.with_current_motions_user_has_voted_on.each do |discussion|
+      votes = discussion.current_motion.votes.where(:user_id => user.id)
+      votes.destroy_all
     end
+  end
 
-    def set_defaults
-      self.access_level = 'request' if (access_level == nil) || access_level.is_a?(Array)
-    end
+  def set_defaults
+    self.access_level = 'request' if (access_level == nil) || access_level.is_a?(Array)
+  end
 end
