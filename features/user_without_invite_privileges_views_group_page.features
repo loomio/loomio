@@ -1,0 +1,9 @@
+Feature: User without invite privileges views a public group page
+  As a user without invite privileges
+  So that I am not compromising anyone's privacy
+  I should not see the list of invited users' email addresses
+
+Scenario: Logged out user views a public group page
+  Given a public group exists
+  When I visit the group page
+  Then I should not see the list of invited users

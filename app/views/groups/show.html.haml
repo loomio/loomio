@@ -27,4 +27,6 @@
     =render '/application/see_closed_motions'
     =render 'membership_requests', group: @group
     =render 'members', group: @group
+    - if (@invited_users.count > 0) && (can? :add_members, @group)
+      =render 'invited_users', group: @group
   =render '/application/closed_motions', user: nil, group: @group
