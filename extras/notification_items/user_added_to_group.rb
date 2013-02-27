@@ -18,4 +18,8 @@ class NotificationItems::UserAddedToGroup < NotificationItem
   def link
     url_helpers.group_path(@notification.eventable.group)
   end
+
+  def actor
+    @notification.eventable.inviter
+  end
 end
