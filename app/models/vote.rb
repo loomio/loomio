@@ -83,23 +83,27 @@ class Vote < ActiveRecord::Base
     previous_vote.position if previous_vote
   end
 
+
   private
-    def update_motion_last_vote_at
+
+  def update_motion_last_vote_at
+    unless motion.nil?
       motion.last_vote_at = motion.latest_vote_time
       motion.save!
     end
+  end
 
-    def fire_new_vote_event
-      if position == "block"
-        Events::MotionBlocked.publish!(self) 
-      else
-        Events::NewVote.publish!(self)
-      end
+  def fire_new_vote_event
+    if position == "block"
+      Events::MotionBlocked.publish!(self)
+    else
+      Events::NewVote.publish!(self)
     end
+  end
 
-    def send_notifications
-      if position == "block" && previous_vote != "block"
-        MotionMailer.motion_blocked(self).deliver
-      end
+  def send_notifications
+    if position == "block" && previous_vote != "block"
+      MotionMailer.motion_blocked(self).deliver
     end
+  end
 end
