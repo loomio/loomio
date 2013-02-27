@@ -267,37 +267,6 @@ form {
     /*bootstrap form .control-groups have 9px bottom margin*/
     margin: 15px 0 9px 0;
   }
-
-  .control-group{}
-
-/*  input[type="submit"] {
-    margin: 1em 0 0 0;
-  }*/
-
-  /*input, select, textarea {
-		height: auto;
-    width: 370px;
-    margin-bottom: 15px;
-    display: block;
-  }
-
-
-
-   this is a little mess that needs to be resolved
-  input[type="checkbox"] {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: inline;
-  }
-
-  .checkbox input{
-    margin-top: 0px;
-  }
-
-  .checkbox-label {
-    margin-left: 5px;
-    display: inline;
-  }*/
 }
 
 .hidden {
@@ -464,4 +433,3 @@ body.groups.show .helper-bot{
 .group-options .btn-app.dropdown-toggle{ width: 110px }
 .btn-grey { color: $mid-grey; }
 a.btn-icon:hover { color: $dark-grey; }
-
