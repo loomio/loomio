@@ -140,12 +140,12 @@ describe DiscussionsController do
 
       it "checks permissions" do
         app_controller.should_receive(:authorize!).and_return(true)
-        post :add_comment, comment: "Hello!", id: discussion.id
+        xhr :post, :add_comment, comment: "Hello!", id: discussion.id
       end
 
       it "calls adds_comment on discussion" do
         discussion.should_receive(:add_comment).with(user, "Hello!")
-        post :add_comment, comment: "Hello!", id: discussion.id
+        xhr :post, :add_comment, comment: "Hello!", id: discussion.id
       end
 
       context "unsuccessfully" do
@@ -156,12 +156,7 @@ describe DiscussionsController do
 
         it "does not fire new_comment event" do
           Event.should_not_receive(:new_comment!)
-          post :add_comment, comment: "Hello!", id: discussion.id
-        end
-
-        it "populates flash with error message" do
-          post :add_comment, comment: "Hello!", id: discussion.id
-          flash[:error].should == "Comment could not be created."
+          xhr :post, :add_comment, comment: "Hello!", id: discussion.id
         end
       end
     end
