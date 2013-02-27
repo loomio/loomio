@@ -8,10 +8,12 @@ Background:
 
 Scenario: Mention user when writing a comment
   Given "harry@example.com" is a member of "demo-group"
+  And "harrysfriend@example.com" has been invited to the group "demo-group" but has not accepted
   And I am viewing a discussion titled "hello" in "demo-group"
   When I am adding a comment and type in "@h"
+  Then I should not see "@harrysfriend" in the menu that pops up
   And I click on "@harry" in the menu that pops up
-  Then I should see "@harry" added to the "new-comment" field
+  And I should see "@harry" added to the "new-comment" field
 
 Scenario: Mentioned user gets emailed
   Given "harry@example.com" is a member of "demo-group"

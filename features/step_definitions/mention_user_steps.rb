@@ -11,6 +11,14 @@ When /^I click on "(.*?)" in the menu that pops up$/ do |arg1|
   end
 end
 
+When /^I should not see "(.*?)" in the menu that pops up$/ do |arg1|
+  # this is failing intermittently (on Poltergeist at least)
+  wait_until { find("#at-view", visible: true) }
+  within('#at-view') do
+    page.should_not have_content(arg1)
+  end
+end
+
 When /^a comment exists mentioning "(.*?)"$/ do |text|
   @discussion.add_comment @user, "Hey #{text}"
 end
