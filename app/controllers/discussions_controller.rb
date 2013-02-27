@@ -85,13 +85,6 @@ class DiscussionsController < GroupBaseController
   def add_comment
     @discussion = Discussion.find(params[:id])
     comment = resource.add_comment(current_user, params[:comment])
-    unless comment.valid?
-      flash[:error] = "Comment could not be created."
-      redirect_to discussion_path(resource.id)
-    end
-    respond_to do |format|
-      format.js
-    end
   end
 
   def new_proposal
