@@ -83,6 +83,8 @@ group :development do
   gem 'launchy'
   gem 'spork-rails'
   gem 'awesome_print'
+  gem 'better_errors'
+  gem 'meta_request'
 end
 
 group :test do
