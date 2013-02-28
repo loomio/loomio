@@ -93,6 +93,9 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
+    better_errors (0.6.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
     bootstrap-sass (2.0.3)
     bourbon (2.1.1)
       sass (>= 3.1)
@@ -449,6 +452,7 @@ DEPENDENCIES
   acts_as_commentable_with_threading
   awesome_print
   aws-sdk
+  better_errors
   bootstrap-sass (~> 2.0.3)
   browser
   cancan
