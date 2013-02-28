@@ -74,6 +74,7 @@ end
 
 group :development do
   gem 'meta_request', '0.2.1'
+  gem 'better_errors'
   gem 'guard'
   gem 'guard-spork'
   gem 'guard-rspec'
