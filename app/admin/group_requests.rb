@@ -13,6 +13,7 @@ ActiveAdmin.register GroupRequest do
     end
     column :expected_size
     column :max_size
+    column :admin_email
     column "Approve" do |group_request|
       link = ""
       unless group_request.approved?
