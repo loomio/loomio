@@ -1,5 +1,5 @@
 ActiveAdmin.register Group do
-  actions :index, :show
+  actions :index, :show, :edit
   filter :name
   filter :creator
   filter :parent
@@ -22,5 +22,21 @@ ActiveAdmin.register Group do
       group.description
     end
     default_actions
+  end
+
+  form do |f|
+    f.inputs "Details" do
+      f.input :id, :input_html => { :disabled => true }
+      f.input :name, :input_html => { :disabled => true }
+      f.input :max_size
+    end
+    f.buttons
+  end
+
+  member_action :update, :method => :put do
+    group = Group.find(params[:id])
+    group.max_size = params[:group][:max_size]
+    group.save
+    redirect_to admin_groups_url, :notice => "Group updated"
   end
 end
