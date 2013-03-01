@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+
   PERMISSION_CATEGORIES = [:everyone, :members, :admins, :parent_group_members]
 
   attr_accessible :name, :viewable_by, :parent_id, :parent, :cannot_contribute
@@ -8,13 +9,15 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   validate :limit_inheritance
-
   validates :description, :length => { :maximum => 250 }
   validates :name, :length => { :maximum => 250 }
+  validates :max_size, presence: true, if: :is_a_parent?
+  validate :max_size_is_nil, if: :is_a_subgroup?
 
   serialize :sectors_metric, Array
 
   after_initialize :set_defaults
+  before_validation :set_max_group_size, on: :create
   after_create :add_creator_as_admin
 
   default_scope where(:archived_at => nil)
@@ -206,6 +209,10 @@ class Group < ActiveRecord::Base
     parent.nil?
   end
 
+  def is_a_subgroup?
+    parent.present?
+  end
+
   def user_is_a_parent_member? user
     user.group_membership(parent)
   end
@@ -253,6 +260,10 @@ You'll be prompted to make a short statement about the reason for your decision.
 
   private
 
+  def set_max_group_size
+    self.max_size = 50 if (is_a_parent? && max_size.nil?)
+  end
+
   def set_defaults
     self.viewable_by ||= :members if parent.nil?
     self.viewable_by ||= :parent_group_members unless parent.nil?
@@ -270,4 +281,9 @@ You'll be prompted to make a short statement about the reason for your decision.
     end
   end
 
+  def max_size_is_nil
+    unless max_size.nil?
+      errors.add(:max_size, "Cannot be nil")
+    end
+  end
 end
