@@ -18,4 +18,8 @@ class NotificationItems::MotionClosingSoon < NotificationItem
   def link
     url_helpers.motion_path(@notification.eventable)
   end
+
+  def avatar
+    @notification.eventable.author
+  end
 end

@@ -62,12 +62,47 @@ describe UsersController do
   end
 
   describe "#set_avatar_kind" do
-    it "updates user.avatar_kind" do
-      user.should_receive(:avatar_kind=).with("uploaded")
-      user.should_receive(:save).and_return(true)
+    before do
+      user.stub(:save!)
+    end
+    after do
+      xhr :put, :set_avatar_kind, id: 1, avatar_kind: "Uploaded"
+    end
+    it "updates the avatar_kind attribute in the model" do
+      user.should_receive(:avatar_kind=).with "Uploaded"
+    end
+    it "saves the model" do
+      user.should_receive(:save!)
+    end
+  end
 
-      xhr :post, :set_avatar_kind, :format => :json, :id => 999,
-        :avatar_kind => "uploaded"
+  describe "#edit_name" do
+    before do
+      user.stub(:save!)
+    end
+    after do
+      xhr :put, :edit_name, id: 1, user_name: "Benson"
+    end
+    it "updates the uses_name attribute in the model" do
+      user.should_receive(:name=).with "Benson"
+    end
+    it "saves the model" do
+      user.should_receive(:save!)
+    end
+  end
+
+  describe "#set_markdown" do
+    before do
+      user.stub(:save!)
+    end
+    after do
+      xhr :post, :set_markdown, :current_user => 1, :id => 1, :uses_markdown => "true"
+    end
+    it "updates the uses_markdown attribute in the model" do
+      user.should_receive(:uses_markdown=).with "true"
+    end
+    it "saves the model" do
+      user.should_receive(:save!)
     end
   end
 
@@ -81,24 +116,6 @@ describe UsersController do
     it "redirects to previous page" do
       post :dismiss_system_notice
       response.should redirect_to(previous_url)
-    end
-  end
-
-  describe "#set_markdown" do
-    before do
-      user.stub(:save!)
-    end
-    after do
-      xhr :post, :set_markdown,
-        :current_user => 1,
-        :id => 1,
-        :uses_markdown => "true"
-    end
-    it "updates the uses_markdown attribute in the model" do
-      user.should_receive(:uses_markdown=).with "true"
-    end
-    it "saves the model" do
-      user.should_receive(:save!)
     end
   end
 end
