@@ -1,11 +1,7 @@
 %li{:id => membership.user_id}
   .clearfix
-    .small-user-avatar.avatar-canvas
-      - if membership.user.avatar_url
-        = image_tag membership.user.avatar_url(:small)
-      - else
-        %span.small-user-initials.initials-decoration= membership.user.avatar_initials
     - member = User.find(membership.user_id)
+    = render 'avatar', user: membership.user, size: "small", kind: nil, id: nil
     .user-name
       - name_length = (member.is_group_admin?(group) or (can? :edit, group and current_user.is_group_admin?(group))) ? 18 : 35
       %span.membership-user-name

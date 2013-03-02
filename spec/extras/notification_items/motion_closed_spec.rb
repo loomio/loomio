@@ -2,25 +2,22 @@ describe NotificationItems::MotionClosed do
   let(:notification) { stub(:notification) }
   let(:item) { NotificationItems::MotionClosed.new(notification) }
 
+  before do
+    @closer = stub(:user)
+    notification.stub_chain(:event, :user).and_return(@closer)
+  end
+
   it "#actor returns the user who closed the motion" do
-    closer = stub(:user)
-    notification.stub_chain(:event, :user).and_return(closer)
-    item.actor.should == closer
+    item.actor.should == @closer
   end
 
   context "user closed motion" do
-    before { notification.stub_chain(:event, :user).and_return(stub(:user)) }
-
     it "#action_text returns a string" do
       item.action_text.should == I18n.t('notifications.motion_closed.by_user')
     end
-    it "#avatar_url returns the users avatar url" do
-      notification.stub_chain(:event, :user, :avatar_url).and_return("hello")
-      item.avatar_url.should == notification.event.user.avatar_url
-    end
-    it "#avatar_initials returns the users avatar initials" do
-      notification.stub_chain(:event, :user, :avatar_initials).and_return("hello")
-      item.avatar_initials.should == notification.event.user.avatar_initials
+
+    it "#avatar returns the correct user for the notification avatar" do
+      item.avatar.should == @closer
     end
   end
 
@@ -31,14 +28,9 @@ describe NotificationItems::MotionClosed do
       item.action_text.should == I18n.t('notifications.motion_closed.by_expirey') + ": "
     end
 
-    it "#avatar_url returns the users avatar url" do
-      notification.stub_chain(:eventable, :author, :avatar_url).and_return("hello")
-      item.avatar_url.should == notification.eventable.author.avatar_url
-    end
-
-    it "#avatar_initials returns the users avatar initials" do
-      notification.stub_chain(:eventable, :author, :avatar_initials).and_return("hello")
-      item.avatar_initials.should == notification.eventable.author.avatar_initials
+    it "#avatar returns the correct user for the notification avatar" do
+      notification.stub_chain(:eventable, :author).and_return("Peter")
+      item.avatar.should == notification.eventable.author
     end
   end
 
