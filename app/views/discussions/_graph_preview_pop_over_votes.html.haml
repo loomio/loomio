@@ -1,8 +1,4 @@
-.medium-user-avatar.avatar-canvas#header-user-image
-  - if vote.user.avatar_url.nil?
-    %span.medium-user-initials.initials-decoration= vote.user.avatar_initials
-  - else
-    = image_tag vote.user.avatar_url("medium")
+= render 'avatar', user: vote.user, size: "medium", kind: nil, id: nil
 %div{:class => 'activity-icon ' + vote_icon_name(vote.position)}
 %strong= vote.user.name 
 - if vote.statement != ""

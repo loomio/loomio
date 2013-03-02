@@ -5,20 +5,14 @@
   - title_text = item.title
   - group_name = item.group_full_name
   - href = item.link
-  - avatar_url = item.avatar_url
-  - avatar_initials = item.avatar_initials
+  - avatar = item.avatar
 
   - date = time_ago_in_words(notification.created_at)
   - class_name = notification.viewed_at.nil? ? " unread" : ""
 
   %li.selector-item{:class => "notification-item#{class_name}", :id => "notification-#{notification.id}" }
     %a{:href => href }
-      %span.medium-user-avatar.avatar-canvas
-        - if avatar_url.present?
-          = image_tag avatar_url
-        - else
-          %span.medium-user-initials.initials-decoration
-            = avatar_initials
+      = render 'avatar', user: avatar, size: "medium", kind: nil, id: nil
       %span.notification-content
         - unless notification.event_kind == "motion_closing_soon" || (notification.event_kind == "motion_closed" && user.nil?)
           %span.bold-name= user.name
