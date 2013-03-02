@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   require 'net/http'
   require 'digest/md5'
 
+  AVATAR_KINDS = %w[initials uploaded gravatar]
   LARGE_IMAGE = 170
   MED_LARGE_IMAGE = 70
   MEDIUM_IMAGE = 35
@@ -18,6 +19,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   validates_inclusion_of :uses_markdown, :in => [true,false]
 
+  validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
   validates_attachment :uploaded_avatar,
     :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
     :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/png", "image/gif"] }
@@ -102,10 +104,9 @@ class User < ActiveRecord::Base
                   :uploaded_avatar, :username, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications, 
                   :subscribed_to_mention_notifications, :group_email_preferences, :uses_markdown
 
-  before_save :ensure_unsubscribe_token
-
+  before_save :set_avatar_initials, :ensure_unsubscribe_token
+  before_create :set_default_avatar_kind
   after_create :ensure_name_entry
-  before_save :set_avatar_initials
 
   scope :daily_activity_email_recipients, where("subscribed_to_daily_activity_email IS TRUE AND invitation_token IS NULL")
 
@@ -296,18 +297,8 @@ class User < ActiveRecord::Base
     super && !deleted_at
   end
 
-  def gravatar?(email, options = {})
-    hash = Digest::MD5.hexdigest(email.to_s.downcase)
-    options = { :rating => 'x', :timeout => 2 }.merge(options)
-    http = Net::HTTP.new('www.gravatar.com', 80)
-    http.read_timeout = options[:timeout]
-    response = http.request_head("/avatar/#{hash}?rating=#{options[:rating]}&default=http://gravatar.com/avatar")
-    response.code != '302'
-  rescue StandardError, Timeout::Error
-    false  # Don't show "gravatar" if the service is down or slow
-  end
-
-  def avatar_url(size = :medium)
+  def avatar_url(kind = nil, size)
+    kind = avatar_kind if kind.nil?
     size = size.to_sym
     case size
     when :small
@@ -321,23 +312,30 @@ class User < ActiveRecord::Base
     else
       pixels = User::SMALL_IMAGE
     end
-    if avatar_kind == "gravatar"
+    if kind == "gravatar"
       gravatar_url(:size => pixels)
-    elsif avatar_kind == "uploaded"
+    elsif kind == "uploaded"
       uploaded_avatar.url(size)
     end
   end
 
-  def set_avatar_initials
-    initials = ""
-    if  name.blank? || name == email
-      initials = email[0..1]
-    else
-      name.split.each { |name| initials += name[0] }
-    end
-    initials = initials.upcase.gsub(/ /, '')
-    initials = "DU" if deleted_at
-    self.avatar_initials = initials[0..2]
+  def using_initials?
+    avatar_kind == "initials"
+  end
+
+  def has_uploaded_image?
+    uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
+  end
+
+  def has_gravatar?(options = {})
+    hash = Digest::MD5.hexdigest(email.to_s.downcase)
+    options = { :rating => 'x', :timeout => 2 }.merge(options)
+    http = Net::HTTP.new('www.gravatar.com', 80)
+    http.read_timeout = options[:timeout]
+    response = http.request_head("/avatar/#{hash}?rating=#{options[:rating]}&default=http://gravatar.com/avatar")
+    response.code != '302'
+  rescue StandardError, Timeout::Error
+    false  # Don't show "gravatar" if the service is down or slow
   end
 
   def generate_username
@@ -360,21 +358,40 @@ class User < ActiveRecord::Base
   end
 
   private
-    def ensure_unsubscribe_token
-      if unsubscribe_token.blank?
-        found = false
-        while not found
-          token = Devise.friendly_token
-          found = true unless self.class.where(:unsubscribe_token => token).exists?
-        end
-        self.unsubscribe_token = token
-      end
-    end
 
-    def ensure_name_entry
-      unless name
-        self.name = email
-        save
-      end
+  def set_default_avatar_kind
+    if has_gravatar?
+      self.avatar_kind = "gravatar"
     end
+  end
+
+  def ensure_unsubscribe_token
+    if unsubscribe_token.blank?
+      found = false
+      while not found
+        token = Devise.friendly_token
+        found = true unless self.class.where(:unsubscribe_token => token).exists?
+      end
+      self.unsubscribe_token = token
+    end
+  end
+
+  def ensure_name_entry
+    unless name
+      self.name = email
+      save
+    end
+  end
+
+  def set_avatar_initials
+    initials = ""
+    if  name.blank? || name == email
+      initials = email[0..1]
+    else
+      name.split.each { |name| initials += name[0] }
+    end
+    initials = initials.upcase.gsub(/ /, '')
+    initials = "DU" if deleted_at
+    self.avatar_initials = initials[0..2]
+  end
 end
