@@ -56,7 +56,8 @@
   end
 
   resources :users do
-    post :set_avatar_kind, on: :member
+    put :edit_name, on: :member
+    put :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
     post :set_markdown, on: :member
   end

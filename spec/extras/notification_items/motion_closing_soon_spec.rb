@@ -27,4 +27,9 @@ describe NotificationItems::MotionClosingSoon do
     notification.stub(:eventable).and_return(stub(:motion))
     item.link.should == "/motions/1"
   end
+
+  it "#avatar returns the correct user for the notification avatar" do
+    notification.stub_chain(:eventable, :author).and_return("Peter")
+    item.avatar.should == notification.eventable.author
+  end
 end
