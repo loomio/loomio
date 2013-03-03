@@ -1,7 +1,7 @@
 class NotificationItem
   attr_accessor :item, :notification
 
-  delegate :actor, :action_text, :title, :group_full_name, :link, :avatar_url, :avatar_initials, :to => :item
+  delegate :actor, :action_text, :title, :group_full_name, :link, :avatar, :to => :item
 
   def initialize(notification)
     @notification = notification
@@ -43,11 +43,7 @@ class NotificationItem
     @notification.eventable.group_full_name
   end
 
-  def avatar_url
-    actor.avatar_url
-  end
-
-  def avatar_initials
-    actor.avatar_initials
+  def avatar
+    actor
   end
 end
