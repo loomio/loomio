@@ -14,12 +14,13 @@
                 %span= "Groups"
                 %b.caret
               %ul.dropdown-menu
-                - current_user.root_groups.each do |group|
-                  = render 'group_dropdown_item', user: current_user, group: group, subgroup: false
-                  - if group.subgroups.size > 0
-                    - group.subgroups.each do |subgroup|
-                      - if current_user.group_membership(subgroup)
-                        = render 'group_dropdown_item', user: current_user, group: subgroup, subgroup: true
+                #group-dropdown-items
+                  - current_user.root_groups.each do |group|
+                    = render 'group_dropdown_item', user: current_user, group: group, subgroup: false
+                    - if group.subgroups.size > 0
+                      - group.subgroups.each do |subgroup|
+                        - if current_user.group_membership(subgroup)
+                          = render 'group_dropdown_item', user: current_user, group: subgroup, subgroup: true
                 %li.group-item.new-group
                   =link_to "+ Request New Group", request_new_group_path
 
@@ -38,7 +39,7 @@
                 %ul.dropdown-menu
                   %li
                     %h3 Notifications
-                  %li#notification-items
+                  %li#notification-dropdown-items
                     %ul
                       - if notifications.empty?
                         %li.notifications-placeholder You do not have any notifications yet.
