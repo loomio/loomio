@@ -7,6 +7,8 @@
     = csrf_meta_tags
     %meta{'name' => 'description', :content => 'Loomio is a free and open-source web application that helps groups make better decisions together.'}
 
+    %meta{property:"fb:admins", content:"219748918130373"}
+
   %body{class: "#{controller_name} #{action_name}"}
     .container.home-flash
       = render 'flash_messages', :flash => flash
