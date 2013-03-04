@@ -84,7 +84,8 @@ class DiscussionsController < GroupBaseController
 
   def add_comment
     @discussion = Discussion.find(params[:id])
-    comment = resource.add_comment(current_user, params[:comment])
+    comment = @discussion.add_comment(current_user, params[:comment])
+    current_user.update_discussion_read_log(@discussion)
   end
 
   def new_proposal

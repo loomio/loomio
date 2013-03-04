@@ -24,6 +24,10 @@ Then /^the comment should not format markdown characters$/ do
   page.should have_content(@comment_markdown_text)
 end
 
+Then /^I should not see new activity for the discussion$/ do
+  find("#discussion-preview-#{@discussion.id}").should_not have_css(".activity-count")
+end
+
 Then /^the comment should format markdown characters$/ do
   page.should_not have_content(@comment_markdown_text)
 end
