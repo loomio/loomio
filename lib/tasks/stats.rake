@@ -9,12 +9,12 @@ namespace :stats do
   task :groups => :environment do    # Export all groups, scramble details of private ones
     require 'csv'
     file = CSV.generate do |csv|
-      csv << ["id", "name", "created_at", "viewable_by", "parent_id", "description", "memberships_count", "archived_at"]
+      csv << ["id", "name", "created_at", "viewable_by", "parent_id", "description", "memberships_count", "archived_at", "distribution_metric"]
       Group.all.each do |group|
         if group.viewable_by == :everyone
-          csv << [group.id, group.name, group.created_at, group.viewable_by, group.parent_id, group.description, group.memberships_count, group.archived_at]
+          csv << [group.id, group.name, group.created_at, group.viewable_by, group.parent_id, group.description, group.memberships_count, group.archived_at, distribution_metric]
         else
-          csv << [scramble(group.id), "Private", group.created_at, group.viewable_by, group.parent_id, "Private", group.memberships_count, group.archived_at]
+          csv << [scramble(group.id), "Private", group.created_at, group.viewable_by, group.parent_id, "Private", group.memberships_count, group.archived_at, distribution_metric]
         end
       end
     end
@@ -25,9 +25,9 @@ namespace :stats do
   task :users => :environment do   # Export all users' create dates
     require 'csv'
     file = CSV.generate do |csv|
-      csv << ["id", "created_at", "memberships_count"]
+      csv << ["id", "created_at", "last_sign_in_at", "memberships_count"]
       User.all.each do |user|
-        csv << [scramble(user.id), user.created_at, user.memberships_count]
+        csv << [scramble(user.id), user.created_at, user.last_sign_in_at, user.memberships_count]
       end
     end
 
@@ -38,7 +38,7 @@ task :events => :environment do    # Export all events, scramble users, scramble
     require 'csv'
 
     file = CSV.generate do |csv|
-      csv << ["id", "user", "group", "parent_group", "kind", "created_at"]
+      csv << ["id", "user", "group", "parent_group", "top_group", "kind", "created_at"]
       count = 0
       Event.find_each do |event|
         count += 1
@@ -83,7 +83,7 @@ task :events => :environment do    # Export all events, scramble users, scramble
             group_id = scramble(group.id)
           end
 
-          if group.parent and group.viewable_by == :everyone
+          if group.parent and group.parent.viewable_by == :everyone
             parent_group_id = group.parent.id.to_s
           elsif group.parent  # i.e. the group is not public
             parent_group_id = scramble(group.parent.id)
@@ -92,7 +92,9 @@ task :events => :environment do    # Export all events, scramble users, scramble
           end
         end
 
-        csv << [id, scramble(user_id), group_id, parent_group_id, kind, created_at]
+        top_group = !parent_group_id.blank? ? parent_group_id : group_id
+
+        csv << [id, scramble(user_id), group_id, parent_group_id, top_group, kind, created_at]
       end
     end
 
@@ -116,6 +118,7 @@ task :events => :environment do    # Export all events, scramble users, scramble
   end
 
   def s3file (filename)
-    AWS::S3.new.buckets['loomio-metrics'].objects.create filename
+    raise "Please set environment variable LOOMIO_INSTANCE" if ENV["LOOMIO_INSTANCE"].blank?
+    AWS::S3.new.buckets['loomio-metrics'].objects.create ENV["LOOMIO_INSTANCE"] + '-' + filename
   end
 end
