@@ -118,7 +118,7 @@ task :events => :environment do    # Export all events, scramble users, scramble
   end
 
   def s3file (filename)
-    raise "Please set environment variable LOOMIO_INSTANCE" if ENV["LOOMIO_INSTANCE"].blank?
-    AWS::S3.new.buckets['loomio-metrics'].objects.create ENV["LOOMIO_INSTANCE"] + '-' + filename
+    raise "Please set environment variable CANONICAL_HOST" if ENV["CANONICAL_HOST"].blank?
+    AWS::S3.new.buckets['loomio-metrics'].objects.create ENV["CANONICAL_HOST"] + '-' + filename
   end
 end
