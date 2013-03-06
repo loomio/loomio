@@ -1,13 +1,13 @@
   Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  devise_for :users, :controllers => { :invitations => 'users/invitations' }
+  devise_for :users, :controllers => { :sessions => 'users/sessions', :invitations => 'users/invitations' }
 
   resources :group_requests, :only => [:create, :new]
   match "/request_new_group", :to => "group_requests#start", :as => :request_new_group
   match "/group_request_confirmation", :to => "group_requests#confirmation", :as => :group_request_confirmation
 
-  resources :groups, except: :index do
+  resources :groups, except: [:index, :new] do
     resources :invitations, :only => :show
     post :add_members, on: :member
     get :add_subgroup, on: :member
@@ -17,6 +17,7 @@
     post :email_members, on: :member
     post :edit_description, :on => :member
     post :edit_privacy, on: :member
+    delete :leave_group, on: :member
   end
 
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
@@ -30,7 +31,7 @@
     put :edit_close_date, :on => :member
   end
 
-  resources :discussions, except: [:destroy, :edit] do
+  resources :discussions, except: [:edit] do
     post :edit_description, :on => :member
     post :add_comment, :on => :member
     post :show_description_history, :on => :member
@@ -56,7 +57,8 @@
   end
 
   resources :users do
-    post :set_avatar_kind, on: :member
+    put :edit_name, on: :member
+    put :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
     post :set_markdown, on: :member
   end
@@ -84,13 +86,12 @@
     root :to => 'dashboard#show'
   end
 
-
-
-  root :to => 'high_voltage/pages#show', :id => 'home'
-
   match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
   match '/privacy' => 'high_voltage/pages#show', :id => 'privacy'
   match '/blog' => 'high_voltage/pages#show', :id => 'blog'
+
+  match "/pages/*id" => 'pages#show', :as => :page, :format => false
+  root :to => 'pages#show', :id => 'home'
 
   #redirect old pages:
   match '/pages/how*it*works' => redirect('/pages/home#how')

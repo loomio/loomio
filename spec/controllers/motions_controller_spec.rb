@@ -25,8 +25,9 @@ describe MotionsController do
         Motion.stub(:new).and_return(motion)
         motion.stub(:save).and_return(true)
         controller.stub(:authorize!).with(:create, motion).and_return(true)
-        @motion_args = { :motion => { :discussion_id => discussion.id },
-          :group_id => group.id }
+        @motion_args = { :motion => { :discussion_id => discussion.id,
+                                      :close_date => (Time.now + 3.hours).to_s },
+                         :group_id => group.id }
       end
       it "redirects to discussion page" do
         post :create, @motion_args
@@ -87,7 +88,7 @@ describe MotionsController do
         it "displays an error message and returns to the discussion page" do
           motion.should_receive(:set_close_date!).and_return false
           put :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
-          flash[:error].should =~ /Invalid close date, it needs to be a furture date./
+          flash[:error].should =~ /Invalid close date, it needs to be a future date./
           response.should redirect_to(discussion)
         end
       end

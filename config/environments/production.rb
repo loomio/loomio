@@ -12,7 +12,7 @@ Loomio::Application.configure do
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
-  #config.assets.compress = true
+  config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   # config.assets.compile = false
@@ -44,7 +44,7 @@ Loomio::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += %w(active_admin.css.scss active_admin.js)
+  config.assets.precompile += %w(active_admin.css active_admin.js frontpage.js frontpage.css)
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
@@ -77,8 +77,8 @@ Loomio::Application.configure do
   # Email admin when server gets exceptions!
   config.middleware.use ExceptionNotifier,
     :email_prefix => "[Loomio Exception] ",
-    :sender_address => %{"Exception Notifier" <dudley@loom.io>},
-    :exception_recipients => %w{jon.lemmon@enspiral.com}
+    :sender_address => %{"Exception Notifier" <dudley@loomio.org>},
+    :exception_recipients => [ENV['EXCEPTION_RECIPIENT']]
 
   config.action_mailer.default_url_options = {
     :host => 'www.loomio.org',

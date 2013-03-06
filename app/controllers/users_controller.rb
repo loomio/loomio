@@ -46,6 +46,12 @@ class UsersController < BaseController
     end
   end
 
+  def edit_name
+    @user_name = params[:user_name]
+    current_user.name = @user_name
+    current_user.save!
+  end
+
   def upload_new_avatar
     new_uploaded_avatar = params[:uploaded_avatar]
 
@@ -63,18 +69,12 @@ class UsersController < BaseController
   def set_avatar_kind
     @avatar_kind = params[:avatar_kind]
     current_user.avatar_kind = @avatar_kind
-    current_user.save
-    respond_to do |format|
-      format.html { redirect_to(root_url) }
-      format.js {}
-    end
+    current_user.save!
   end
 
   def set_markdown
     current_user.uses_markdown = params[:uses_markdown]
     current_user.save!
-    #current_user.update_attributes( uses_markdown: params[:uses_markdown] )
-    #current_user.reload
   end
 
   def settings

@@ -48,15 +48,12 @@
 
             %li.nav-item.dropdown#user
               %a.nav-link{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
-                .small-user-avatar.avatar-canvas#header-user-image
-                  - if current_user.avatar_url.nil?
-                    %span.small-user-initials.initials-decoration= current_user.avatar_initials
-                  - else
-                    = image_tag current_user.avatar_url("small")
-                = current_user.name
+                = render 'avatar', user: current_user, size: "small", kind: nil, id: 'header-user-image'
+                %span#user-name-dropdown
+                  = current_user.name
                 %b.caret
               %ul.dropdown-menu
-                %li= link_to "Settings", user_settings_path
+                %li= link_to "User Settings", user_settings_path
                 %li= link_to "Email Preferences", email_preferences_path
                 %li= link_to('Sign out', destroy_user_session_path, method: :delete)
 

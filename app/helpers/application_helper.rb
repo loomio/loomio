@@ -64,20 +64,33 @@ module ApplicationHelper
       :superscript => true
     ]
 
-    renderer = MarkdownRenderer.new(
-      :filter_html => true,
-      :hard_wrap => true
-    )
+    renderer = MarkdownRenderer.new
     
     markdown = Redcarpet::Markdown.new(renderer, *options)
     markdown.render(text).html_safe
   end
 
-  def conditional_markdown(truefalse, text, options=nil)
-    if truefalse
-      markdown(text, options)
+  def conditional_markdown(md_boolean, text, options=nil)
+    if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
+      text = " "
+    end
+
+    if md_boolean
+      options = [
+        :no_intra_emphasis => true,
+        :tables => true,
+        :fenced_code_blocks => true,
+        :autolink => true,
+        :strikethrough => true,
+        :space_after_headers => true,
+        :superscript => true
+      ]
+
+      renderer = MarkdownRenderer.new
+      markdown = Redcarpet::Markdown.new(renderer, *options)
+      markdown.render(text).html_safe
     else
-      text
+      simple_format(Rinku.auto_link(text, mode=:all, link_attr=nil, skip_tags=nil))
     end
   end
 

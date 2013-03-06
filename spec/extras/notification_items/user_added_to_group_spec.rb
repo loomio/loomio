@@ -2,10 +2,9 @@ describe NotificationItems::UserAddedToGroup do
   let(:notification) { stub(:notification) }
   let(:item) { NotificationItems::UserAddedToGroup.new(notification) }
 
-  it "#actor returns the user who has been added to the group" do
-    user = stub(:user)
-    notification.stub_chain(:eventable, :user).and_return(user)
-    item.actor.should == notification.eventable.user
+  it "#actor returns the user who invited the new user to the group" do
+    notification.stub_chain(:eventable, :inviter).and_return stub
+    item.actor.should == notification.eventable.inviter
   end
 
   it "#action_text returns a string" do

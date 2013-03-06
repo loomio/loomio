@@ -11,9 +11,11 @@ class Events::MembershipRequested < Event
 
   private
 
-    def notify_users!
-      membership_request.group_admins.each do |admin|
-        notify!(admin)
-      end
+  def notify_users!
+    membership_request.group_admins.each do |admin|
+      notify!(admin)
     end
+  end
+
+  handle_asynchronously :notify_users!
 end

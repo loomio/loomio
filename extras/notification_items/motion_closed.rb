@@ -12,7 +12,7 @@ class NotificationItems::MotionClosed < NotificationItem
   end
 
   def action_text
-    return I18n.t('notifications.motion_closed.by_user') if @notification.event.user
+    return I18n.t('notifications.motion_closed.by_user') if actor
     I18n.t('notifications.motion_closed.by_expirey') + ": "
   end
 
@@ -24,11 +24,8 @@ class NotificationItems::MotionClosed < NotificationItem
     url_helpers.motion_path(@notification.eventable)
   end
 
-  def avatar_url
-    @notification.eventable.author.avatar_url if @notification.event.user
-  end
-
-  def avatar_initials
-    @notification.eventable.author.avatar_initials if @notification.event.user
+  def avatar
+    return actor if actor
+    @notification.eventable.author
   end
 end

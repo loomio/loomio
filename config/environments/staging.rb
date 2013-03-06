@@ -12,10 +12,10 @@ Loomio::Application.configure do
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
-  #config.assets.compress = true
+  config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  #config.assets.compile = false
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -44,7 +44,7 @@ Loomio::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += %w(active_admin.css.scss active_admin.js)
+  config.assets.precompile += %w(active_admin.css active_admin.js frontpage.js frontpage.css)
 
   # Enable threaded mode
   # config.threadsafe!
@@ -56,18 +56,21 @@ Loomio::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  # config.action_mailer.delivery_method = :test
 
-  # Send emails using SendGrid
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '587',
-    :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'loomio.org'
-  }
+  if ENV['ENABLE_STAGING_EMAILS']
+    # Send emails using SendGrid
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address        => 'smtp.sendgrid.net',
+      :port           => '587',
+      :authentication => :plain,
+      :user_name      => ENV['SENDGRID_USERNAME'],
+      :password       => ENV['SENDGRID_PASSWORD'],
+      :domain         => 'loomio.org'
+    }
+  else
+    config.action_mailer.delivery_method = :test
+  end
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = {

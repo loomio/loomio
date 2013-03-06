@@ -54,6 +54,7 @@ class GroupsController < GroupBaseController
     @subgroup.members_invitable_by = @parent.members_invitable_by
   end
 
+  # This method is only for subgroups
   def add_members
     params.each_key do |key|
       if key =~ /user_/

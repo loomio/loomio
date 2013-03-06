@@ -35,19 +35,17 @@ $ ->
 $ ->
   if $("body.discussions.show").length > 0
     $("#enable-markdown").click((event) ->
-        $("#uses_markdown").val(true)
-        $(".markdown-item").find('.icon-ok').removeClass('icon-ok')
-        $(this).children().first().children().addClass('icon-ok')
-        $("#markdown-settings-form").submit()
-        event.preventDefault()
+      updateMarkdownSetting(this, true)
     )
-
 $ ->
   if $("body.discussions.show").length > 0
     $("#disable-markdown").click((event) ->
-        $("#uses_markdown").val(false)
-        $(".markdown-item").find('.icon-ok').removeClass('icon-ok')
-        $(this).children().first().children().addClass('icon-ok')
-        $("#markdown-settings-form").submit()
-        event.preventDefault()
+      updateMarkdownSetting(this, false)
     )
+
+updateMarkdownSetting = (selected, usesMarkdown) ->
+  $("#uses_markdown").val(usesMarkdown)
+  $('#markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
+  $(selected).children().first().children().addClass('icon-ok')
+  $("#markdown-settings-form").submit()
+  event.preventDefault()

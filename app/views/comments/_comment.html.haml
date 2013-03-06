@@ -1,13 +1,9 @@
 - likes = comment.likes
-%div
+%div{id: "comment-container-#{comment.id}"}
   %a{class: "comment-anchor", id: "comment-#{comment.id}"}
   .activity-item-avatar.medium-user-avatar.avatar-canvas
-    - if comment.user.avatar_url
-      = image_tag comment.user.avatar_url(:medium)
-    - else
-      %span.medium-user-initials.initials-decoration
-        = comment.user.avatar_initials
-  .activity-item-container.with-avatar
+    = render 'application/avatar', user: comment.user, size: "medium", kind: nil, id: nil
+  .activity-item-body
     .activity-item-comment-actor
       =link_to comment.user_name, "#", "title" => comment.user_name,
         "data-content" => "#{render 'users/name_popover', user: comment.user, group: comment.group}",
@@ -15,4 +11,3 @@
     .activity-item-header~ add_mention_links(conditional_markdown(comment.uses_markdown?, comment.body.to_s.force_encoding("UTF-8"))).html_safe
     .comment-time-and-likes
       =render 'comments/comment_likes', comment: comment, likes: likes
-  .clearfix
