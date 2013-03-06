@@ -7,7 +7,8 @@
           - if current_user.group_membership(this_group) || this_group.nil?
             %div{:class => 'activity-icon ' + vote_icon_name(current_user.position(discussion.current_motion))}
       .discussion-title
-        = truncate(discussion.title, :length => 60, :separator => ' ')
+        .title
+          = truncate(discussion.title, :length => 60, :separator => ' ')
         .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
       .large-icon.discussion-icon.activity-icon{ class: enabled_icon_class_for(discussion, current_user) }
         - discussion_activity = discussion_activity_count_for(discussion, current_user)
