@@ -211,18 +211,17 @@ class User < ActiveRecord::Base
     end
   end
 
-  def discussions_sorted(title_query = nil)
+  def discussions_sorted
     # TODO: Merge into Queries::VisibleDiscussions
-    if title_query.present?
-      discussions
-        .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')
-          AND discussions.title ILIKE ?", "%#{title_query}%")
+    discussions
+      .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+      .order("last_comment_at DESC")
+  end
+
+  def motions_or_discussions_by_query(title_query)
+    discussions
+        .where("discussions.title ILIKE ?", "%#{title_query}%")
         .order("last_comment_at DESC")
-    else
-      discussions
-        .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
-        .order("last_comment_at DESC")
-    end
   end
 
   def self.loomio_helper_bot

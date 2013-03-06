@@ -70,7 +70,7 @@ $ ->
     else
       #remove filter - load all discussions and unhighlight
       load_discussions()
-      $("#discussions-with-motions").addClass('hidden')
+      $("#discussions-with-motions").removeClass('hidden')
       $(".discussion-title .title").unhighlight()
 
 discussions_filter = () ->

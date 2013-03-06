@@ -65,7 +65,6 @@ class Queries::VisibleDiscussions < SimpleDelegator
   end
 
   def where_title_is_like(title_query)
-    puts self
     where("discussions.title ILIKE ?", "%#{title_query}%")
   end
 end
