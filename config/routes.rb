@@ -1,21 +1,22 @@
 Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  devise_for :users, :controllers => { :sessions => 'users/sessions', :invitations => 'users/invitations' }
+  devise_for :users, controllers: { sessions: 'users/sessions', invitations: 'users/invitations' }
 
-  resources :group_requests, :only => [:create, :new]
-  match "/request_new_group", :to => "group_requests#start", :as => :request_new_group
-  match "/group_request_confirmation", :to => "group_requests#confirmation", :as => :group_request_confirmation
+  resources :group_requests, only: [:create, :new] do
+    get :start_new_group, on: :member
+  end
+  match "/request_new_group", to: "group_requests#start", as: :request_new_group
+  match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
 
   resources :groups, except: [:index, :new] do
-    resources :invitations, :only => :show
     post :add_members, on: :member
     get :add_subgroup, on: :member
     resources :motions#, name_prefix: "groups_"
     resources :discussions, only: [:index, :new]
     get :request_membership, on: :member
     post :email_members, on: :member
-    post :edit_description, :on => :member
+    post :edit_description, on: :member
     post :edit_privacy, on: :member
     delete :leave_group, on: :member
   end
