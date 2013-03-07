@@ -25,6 +25,31 @@ describe GroupRequestsController do
     end
   end
 
+  describe "#start_new_group" do
+    before do
+    end
+    context "token is correct" do
+      context "group request status is approved" do
+        it "sets the start_new_group session variable" do
+        end
+        context "user is signed in" do
+          it "redirects to the group page" do
+          end
+        end
+      end
+      context "group request status is accepted" do
+        it "redirects to the group page" do
+        end
+      end
+    end
+    context "token is incorrect" do
+      context "group request is approved"
+      context "group request is awaiting_approval"
+      context "group request is "
+      it "renders the invalid start group link page"
+    end
+  end
+
   describe "#confirmation" do
     it "should successfully render the confirmation page" do
       get :confirmation

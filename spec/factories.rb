@@ -94,4 +94,7 @@ FactoryGirl.define do
     sectors_metric ["community"]
   end
 
+  factory :invitation do
+    group_request
+  end
 end
