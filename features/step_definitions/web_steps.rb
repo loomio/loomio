@@ -23,5 +23,9 @@ When /^I accept popup$/ do
 end
 
 Then /^I would like to stop the test and look at it$/ do
+  step 'debugger'
+end
+
+Then /^debugger$/ do
   debugger
 end

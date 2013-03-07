@@ -132,3 +132,6 @@ Then /^a new sub-group should be created$/ do
   Group.where(:name=>"test group").should exist
 end
 
+Then /^I should not see the list of invited users$/ do
+  page.should_not have_css('#invited-users')
+end

@@ -297,15 +297,15 @@ class User < ActiveRecord::Base
     super && !deleted_at
   end
 
-  def avatar_url(kind = nil, size)
+  def avatar_url(size=nil, kind=nil)
+    size = size ? size.to_sym : :medium
     kind = avatar_kind if kind.nil?
-    size = size.to_sym
     case size
     when :small
       pixels = User::SMALL_IMAGE
     when :medium
       pixels = User::MEDIUM_IMAGE
-    when :medlarge
+    when :"med-large"
       pixels = User::MED_LARGE_IMAGE
     when :large
       pixels = User::LARGE_IMAGE

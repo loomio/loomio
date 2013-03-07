@@ -10,14 +10,13 @@ Feature: Member adds user to group
     Given I am a member of a group invitable by members
     When I visit the group page
     And I invite "newuser@example.org" to the group
-    And I should be notified that they have been invited
-    When I visit the group page
-    Then I should see "newuser@example.org" listed in the invited list
+    Then I should be notified that they have been invited
+    And I should see "newuser@example.org" listed in the invited list
 
   Scenario: Member attempts to add a non-existing Loomio user to a group invitable by admins
-    Given "newuser@example.org" has been invited to the group
-    And I am a member of a group
-    And  the group is invitable by admins
+    Given I am a member of a group
+    And "newuser@example.org" has been invited to the group
+    And the group is invitable by admins
     When I visit the group page
     Then I should not see the add member button
     And I should not see the invited user list
