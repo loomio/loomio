@@ -3,14 +3,13 @@
   #invitation-container
     .row
       %h3.span8.offset2 Your request to a start a new group on Loomio has been approved!
-      %p &nbsp;
     .row
       .span6.offset2
         %p If you're new to Loomio, you'll need to set up an account before you create your group.
         %p
           %a.btn.btn-info.btn-large{:href => new_user_path, :id => 'create-account'}
-            Create an account 
-        %p &nbsp;
+            Create an account
+        %br
         %p If you already have an account, sign in to continue.
         %p
           %a.btn.btn-info.btn-large{:href => new_user_session_path, :id => 'sign-in'}
