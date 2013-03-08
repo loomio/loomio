@@ -72,8 +72,9 @@ class Discussion < ActiveRecord::Base
   end
 
   def update_total_views
-    self.total_views += 1
-    save!
+    # this is now an atomic operation (faster and less error prone)
+    # http://www.alfreddd.com/2011/01/atomic-increment-in-rails.html
+    self.class.increment_counter :total_views, self.id
   end
 
   def last_looked_at_by(user)
