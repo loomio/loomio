@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304040051) do
+ActiveRecord::Schema.define(:version => 20130306223703) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -304,5 +304,11 @@ ActiveRecord::Schema.define(:version => 20130304040051) do
 
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
+
+  create_table "woc_options", :force => true do |t|
+    t.string   "example_discussion_url"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
 
 end
