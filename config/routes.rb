@@ -1,4 +1,4 @@
-  Loomio::Application.routes.draw do
+Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :users, :controllers => { :sessions => 'users/sessions', :invitations => 'users/invitations' }
@@ -104,4 +104,8 @@
   match '/about' => redirect('/pages/home#who')
   match '/contact' => redirect('/pages/home#who')
   match '/demo' => redirect('/')
+
+  resources :woc, only: :index do
+    post :send_request, on: :collection
+  end
 end
