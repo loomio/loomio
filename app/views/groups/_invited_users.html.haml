@@ -1,0 +1,13 @@
+.sub-panel
+  .membership-count.label
+    = @invited_users.count
+  %h4 Invited users
+  %ul#invited-users
+    - @invited_users.each do |user|
+      %li{:id => user.id}
+        .clearfix
+          = render 'avatar', user: user, size: "small", kind: nil, id: nil
+          %span.membership-user-name
+            = link_to truncate(user.email, :length => 35, :omission => '...'), "#",
+              "title" => user.email, "data-content" => "#{render 'users/name_popover',
+              user: user, group: group }", class: 'user-name-with-popover'

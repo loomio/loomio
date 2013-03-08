@@ -4,7 +4,7 @@ if ("<%= @avatar_kind %>" == "initials") {
   $('#image-option-initials').html("<%= escape_javascript(current_user.avatar_initials) %>");
 }
 else {
-  $('#avatar-preview').html("<%= escape_javascript(image_tag(current_user.avatar_url(@avatar_kind, :large))) %>");
-  $('#header-user-image').html("<%= escape_javascript(image_tag(current_user.avatar_url(@avatar_kind, :small))) %>");
+  $('#avatar-preview').html("<%= escape_javascript(image_tag(current_user.avatar_url(:large, @avatar_kind))) %>");
+  $('#header-user-image').html("<%= escape_javascript(image_tag(current_user.avatar_url(:small, @avatar_kind))) %>");
 };
 $('#user-avatar-kind').val("<%= @avatar_kind %>");

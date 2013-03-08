@@ -8,6 +8,8 @@ Feature: Proposal closing soon email
     And "Ben" is subscribed to proposal closing soon notification emails
     And there is a group "Pals"
     And "Ben" belongs to "Pals"
+    Given "newuser@example.com" has been invited to the group "Pals" but has not accepted
+    And no emails have been sent
     And there is a discussion "I'm Lonely" in "Pals"
     And there is a proposal "Party on Saturday" from the discussion "I'm Lonely"
     And the motion "Party on Saturday" is closing in 24 hours
@@ -15,3 +17,4 @@ Feature: Proposal closing soon email
     And no emails have been sent
     When we run the rake task to check for closing proposals, 24 hours before it closes.
     Then "Ben" gets a proposal closing soon email
+    And "newuser@example.com" should receive no email
