@@ -1,4 +1,4 @@
-body.sessions.new, body.pages.show{
+body.sessions.new, body.pages.show, body.woc.index{
   color: black;
 
   p, label{
@@ -50,6 +50,9 @@ body.sessions.new, body.pages.show{
     }
     .buffer{
       margin-bottom: 18px;
+    }
+    #woc-index .buffer{
+      margin-bottom: 36px;
     }
     .no-bottom-margin{
       margin-bottom: 0px;
