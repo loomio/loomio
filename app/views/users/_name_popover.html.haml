@@ -1,6 +1,6 @@
 #user-email-popover
   .clearfix
     = render 'avatar', user: user, size: "med-large", kind: nil, id: nil
-    - if current_user && current_user.is_group_member?(group)
+    - if current_user && current_user.is_group_admin?(group)
       .user-details
         = mail_to user.email

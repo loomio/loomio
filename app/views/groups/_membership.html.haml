@@ -1,27 +1,27 @@
-%li{:id => membership.user_id}
+%li{:id => user.id}
   .clearfix
-    - member = User.find(membership.user_id)
-    = render 'avatar', user: membership.user, size: "small", kind: nil, id: nil
+    = render 'avatar', user: user, size: "small", kind: nil, id: nil
     .user-name
-      - name_length = (member.is_group_admin?(group) or (can? :edit, group and current_user.is_group_admin?(group))) ? 18 : 35
+      - name_length = (user.is_group_admin?(group) or (can? :edit, group and current_user.is_group_admin?(group))) ? 18 : 35
       %span.membership-user-name
-        = link_to truncate(membership.user_name_or_email, :length => name_length, :omission => '...'), "#",
-          "title" => membership.user_name_or_email, "data-content" => "#{render 'users/name_popover',
-          user: membership.user, group: group }", class: 'user-name-with-popover'
+        = link_to truncate(user.name, :length => name_length, :omission => '...'), "#",
+          "title" => user.name, "data-content" => "#{render 'users/name_popover',
+          user: user, group: group }", class: 'user-name-with-popover'
     .admin-controls
+      - membership = user.group_membership(group)
       - if (can? :edit, group and current_user.is_group_admin?(group))
         =link_to "×", membership, method: :delete, class: 'close',
-          :data => { :confirm => "Are you sure you wish to remove #{membership.user_email} from the group?" }
-        - if member.is_group_admin?(group)
+          :data => { :confirm => "Are you sure you wish to remove #{user.name} from the group?" }
+        - if user.is_group_admin?(group)
           = link_to "Remove admin", "#", 'data-title' => "Remove admin",
-              'data-body' => "Are you sure you no longer want #{membership.user_name} to be an admin for this group?",
+              'data-body' => "Are you sure you no longer want #{user.name} to be an admin for this group?",
               'data-confirm-path' => remove_admin_membership_path(membership),
               'data-method-type' => 'post', class: 'confirm-dialog', id: 'remove admin'
         - else
           = link_to "Make admin", "#", 'data-title' => "Make admin",
-              'data-body' => "Are you sure you want to make #{membership.user_name} an admin for this group?",
+              'data-body' => "Are you sure you want to make #{user.name} an admin for this group?",
               'data-confirm-path' =>  make_admin_membership_path(membership), 'data-method-type' => 'post',
               class: 'confirm-dialog', id: 'make admin'
       - else
-        - if member.is_group_admin?(group)
+        - if user.is_group_admin?(group)
           = "Group Admin"
