@@ -5,7 +5,7 @@ class DiscussionsController < GroupBaseController
   after_filter :store_location, :only => :show
 
   rescue_from ActiveRecord::RecordNotFound do
-    render 'discussions/not_found'
+    render 'application/not_found', locals: { item: "discussion" }
   end
 
   def new
@@ -62,6 +62,7 @@ class DiscussionsController < GroupBaseController
     @current_motion = @discussion.current_motion
     @vote = Vote.new
     @activity = @discussion.activity
+    assign_meta_data
     if (not params[:proposal])
       if @current_motion
         @unique_votes = Vote.unique_votes(@current_motion)
@@ -143,6 +144,13 @@ class DiscussionsController < GroupBaseController
   end
 
   private
+
+  def assign_meta_data
+    if @group.viewable_by == :everyone
+      @meta_title = @discussion.title
+      @meta_description = @discussion.description
+    end
+  end
 
   def group
     @group ||= find_group

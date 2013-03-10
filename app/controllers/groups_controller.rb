@@ -4,6 +4,10 @@ class GroupsController < GroupBaseController
   before_filter :check_group_read_permissions, :only => :show
   after_filter :store_location, :only => :show
 
+  rescue_from ActiveRecord::RecordNotFound do
+    render 'application/not_found', locals: { item: "group" }
+  end
+
   def create
     @group = Group.new(params[:group])
     @group.creator = current_user
@@ -23,6 +27,7 @@ class GroupsController < GroupBaseController
     @discussions = Queries::VisibleDiscussions.for(@group, current_user)
     @discussion = Discussion.new(group_id: @group.id)
     @invited_users = @group.invited_users
+    assign_meta_data
   end
 
   def edit
@@ -114,6 +119,13 @@ class GroupsController < GroupBaseController
   end
 
   private
+
+    def assign_meta_data
+      if @group.viewable_by == :everyone
+        @meta_title = @group.name
+        @meta_description = @group.description
+      end
+    end
 
     def group
       resource
