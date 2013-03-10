@@ -6,18 +6,20 @@ When /^I visit the Request New Group page$/ do
 end
 
 When /^I fill in the Request New Group Form$/ do
-  @group_name = "The whole world"
-  @group_size = 90
-  @group_description = "Everyone in the entire world"
+  @group_admin = "Group master Sam"
   @group_admin_email = "supreme_ruler@world.com"
-  fill_in "group_request_name", with: @group_name
-  fill_in "group_request_expected_size", with: @group_size
-  fill_in "group_request_description", with: @group_description
+  @group_country_name = "nz"
+  @group_name = "The whole world"
+  @group_request_sector = "business"
+  @group_description = "Everyone in the entire world"
+  @group_size = 90
+  fill_in "group_request_admin_name", with: @group_admin
   fill_in "group_request_admin_email", with: @group_admin_email
-  choose("group_request_distribution_metric_2")
-  check("group_request_sectors_metric_community")
-  check("group_request_sectors_metric_other")
-  fill_in "group_request_other_sectors_metric", with: "activist"
+  select(@group_country_name, from: 'group_request_country_name')
+  fill_in "group_request_name", with: @group_name
+  find(:css, '#group_request_sectors_business').set(true)
+  fill_in "group_request_description", with: @group_description
+  fill_in "group_request_expected_size", with: @group_size
 end
 
 When /^I fill in and submit the Request New Group Form$/ do
@@ -58,3 +60,4 @@ end
 Then /^I should still see the Group Request Form$/ do
   page.should have_css("#new_group_request")
 end
+
