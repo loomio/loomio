@@ -24,7 +24,7 @@ Loomio::Application.routes.draw do
   match "/groups/:id/members", :to => "groups#get_members", :as => :get_members, :via => :get
 
   resources :motions do
-    resources :votes
+    resources :votes, only: [:new, :edit, :create, :update]
     post :get_and_clear_new_activity, on: :member
     put :close, :on => :member
     put :edit_outcome, :on => :member
@@ -44,8 +44,6 @@ Loomio::Application.routes.draw do
   resources :notifications, :only => :index do
     post :mark_as_viewed, :on => :collection, :via => :post
   end
-
-  resources :votes
 
   resources :memberships, except: [:new, :update, :show] do
     post :make_admin, on: :member
