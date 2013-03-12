@@ -404,24 +404,6 @@ ul.loomio-process-flow {
   }
 }
 
-/*** helper bot ***/
-.helper-bot {
-  float: right;
-  position: relative;
-  bottom: 30px;
-  margin-bottom: -40px;
-}
-
-body.discussions .helper-bot{
-    bottom: 68px;
-    margin-bottom: -60px;
-}
-
-body.groups.show .helper-bot{
-  right: 140px;
-  bottom: 55px;
-}
-
 /**** buttons ****/
 .btn-app {
   line-height: 18px;
