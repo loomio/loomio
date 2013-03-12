@@ -23,12 +23,6 @@ $ ->
       placement: "top",
       title: "Click to see more."
 
-#adds bootstrap tooltip to helper-bot
-$ ->
-  $(".helper-bot").tooltip
-    placement: "left",
-    title: "Click me and I will show you around"
-
 #adds bootstrap tooltip to makdown-settings-dropdown
 $ ->
   $("#markdown-dropdown").tooltip

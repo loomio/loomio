@@ -1,7 +1,6 @@
 - set_title @group.name, "", @group.parent
 = render '/groups/title', group: @group
 .clearfix
-  =render 'application/helper_bot'
   - if can? :create, @discussion
     = icon_button(new_discussion_path(:group_id => @group.id), 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion')
 .row.main-content
