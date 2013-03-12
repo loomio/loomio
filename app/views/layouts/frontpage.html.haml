@@ -10,6 +10,6 @@
   %body{class: "#{controller_name} #{action_name}"}
     .container.home-flash
       = render 'flash_messages', :flash => flash
-    = render "header_logged_out"
+    = render "marketing_header"
     = yield
   = javascript_include_tag "frontpage"
