@@ -12,7 +12,7 @@ class WocController < ApplicationController
                        to participate in the Wellington Online Collaboration.</p>
                        <p>You should hear from us within 24hrs. Drop us a line if
                        you have any queries: contact@loomio.org</p>".html_safe
-    redirect_to woc_index_url
+    redirect_to collaborate_url
   end
 
   def success
