@@ -6,10 +6,15 @@
   %div.alert-message{ "data-alert" => "alert", :class => "alert alert-warning" }
     - if (@group && @group.id == 696) || (@discussion && @discussion.group_id == 696)
       %p
-        If you don't have a Loomio account
-        = link_to "click here", collaborate_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
-        to request access.
-    %p
+        Do you want to participate in this group?
+      %p
+        If you've never used Loomio before,
+        = link_to "click here to join.", collaborate_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
+      %p
+        If you've already got a Loomio account,
+        = link_to "click here to sign in.", new_user_session_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
+        to participate if you already have an account.
+    - else
       = link_to "Sign in", new_user_session_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
       to participate. You are currently logged out.
 /
