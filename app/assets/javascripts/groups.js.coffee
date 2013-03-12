@@ -36,6 +36,9 @@ $ ->
           $("#discussions-with-motions").show()
         $("#discussion-list").removeClass('hidden')
         $("#discussions-loading").addClass('hidden')
+        term = $("#discussions-search-filter-input").val()
+        if term.length >= 3
+          $(".discussion-title .title").highlight(term)  
       )
       e.preventDefault()
   )
@@ -52,6 +55,9 @@ $ ->
           Application.convertUtcToRelativeTime()
           $("#discussion-list").removeClass('hidden')
           $("#discussions-loading").addClass('hidden')
+          term = $("#discussions-search-filter-input").val()
+          if term.length >= 3
+            $(".discussion-title .title").highlight(term)   
           activate_discussions_tooltips()
         )
         e.preventDefault()
