@@ -86,7 +86,7 @@ Loomio::Application.routes.draw do
   match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
   match '/privacy' => 'high_voltage/pages#show', :id => 'privacy'
   match '/blog' => 'high_voltage/pages#show', :id => 'blog'
-  match '/collaborate', to: "woc#index"
+  match '/collaborate', to: "woc#index", as: :collaborate
 
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
   root :to => 'pages#show', :id => 'home'
