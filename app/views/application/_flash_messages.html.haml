@@ -2,13 +2,16 @@
   %div.alert-message{ "data-alert" => "alert", :class => "alert alert-#{twitterized_type(type)}" }
     <a class="close" data-dismiss="alert" href="#">×</a>
     = message
-
 - if !user_signed_in? && (controller_name == "discussions" || controller_name == "groups")
   %div.alert-message{ "data-alert" => "alert", :class => "alert alert-warning" }
-    = link_to "Sign in", new_user_session_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
-    to participate.
-    You are currently logged out.
-
+    - if (@group && @group.id == 696) || (@discussion && @discussion.group_id == 696)
+      %p
+        If you don't have a Loomio account
+        = link_to "click here", woc_index_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
+        to request access.
+    %p
+      = link_to "Sign in", new_user_session_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
+      to participate. You are currently logged out.
 /
 / SYSTEM MESSAGE
 /
