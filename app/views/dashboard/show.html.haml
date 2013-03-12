@@ -1,7 +1,6 @@
 - if @groups.present?
   =render '/groups/title', group: nil
   .clearfix
-    =render 'application/helper_bot'
     = icon_button(new_discussion_path, 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion')
   .row.main-content
     %section.span8
