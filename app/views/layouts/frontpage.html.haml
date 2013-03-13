@@ -6,6 +6,7 @@
     = stylesheet_link_tag    "frontpage"
     = csrf_meta_tags
     %meta{'name' => 'description', :content => 'Loomio is a free and open-source web application that helps groups make better decisions together.'}
+    = render 'social_metadata_frontpage'
 
   %body{class: "#{controller_name} #{action_name}"}
     .container.home-flash

@@ -75,6 +75,11 @@ Given /^there is a discussion in a public group$/ do
   @discussion = FactoryGirl.create :discussion, :group => @group
 end
 
+Given /^there is a discussion in a private group$/ do
+  @group = FactoryGirl.create :group, :viewable_by => :members
+  @discussion = FactoryGirl.create :discussion, :group => @group
+end
+
 Given /^there is a discussion in a group I belong to$/ do
   @group = FactoryGirl.create :group
   @discussion = FactoryGirl.create :discussion, :group => @group
