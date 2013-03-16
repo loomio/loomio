@@ -4,7 +4,7 @@ class GroupBaseController < BaseController
 
   def check_group_read_permissions
     if cannot? :show, group
-      if current_user
+      if user_signed_in?
         render 'groups/private_or_not_found'
       else
         authenticate_user!

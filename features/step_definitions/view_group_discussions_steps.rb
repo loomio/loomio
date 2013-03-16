@@ -1,12 +1,14 @@
 Given /^a public group exists$/ do
   @group = FactoryGirl.create :group
   @group.viewable_by = :everyone
+  @group.description = "this group is public"
   @group.save
 end
 
 Given /^a private group exists$/ do
   @group = FactoryGirl.create :group
   @group.viewable_by = :members
+  @group.description = "this group is private"
   @group.save
 end
 
@@ -37,6 +39,8 @@ end
 
 Given /^the group has discussions$/ do
   @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion.description = "this discussion should inherit privacy from it's group"
+  @discussion.save
   @discussion_with_decision = FactoryGirl.create :discussion, :group => @group, :title => 'This is a discussion with decision'
   FactoryGirl.create :motion, :discussion => @discussion_with_decision
 end
