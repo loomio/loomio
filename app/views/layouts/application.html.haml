@@ -7,8 +7,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     %link{:href => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/flick/jquery-ui.css", :rel => "stylesheet", :type => "text/css"}
-    %meta{'name' => 'description', :content => 'Loomio is a free and open-source web application that helps groups make better decisions together.'}
-    = render 'social_metadata_in_app', :description => @meta_description, :title => @meta_title
+    = render 'social_metadata', :description => @meta_description, :title => @meta_title
     = render 'google_analytics'
 
   %body{class: "#{controller_name} #{action_name}"}
