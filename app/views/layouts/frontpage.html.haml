@@ -1,7 +1,8 @@
 !!!
 %html
   %head
-    %title Loomio
+    - title = @title ? @title : "Loomio"
+    %title= title
     <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
     = stylesheet_link_tag    "frontpage"
     = csrf_meta_tags

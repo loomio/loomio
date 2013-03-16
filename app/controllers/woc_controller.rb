@@ -2,6 +2,7 @@ class WocController < ApplicationController
   layout 'frontpage'
 
   def index
+    @title = "Loomio - Wellington Online Collaboration: Alcohol Management Strategy"
     @example_discussion_url = WocOptions.first.example_discussion_url
     assign_meta_data
   end
@@ -22,7 +23,7 @@ class WocController < ApplicationController
   private
 
   def assign_meta_data
-    @meta_title = "Wellington Online Collaboration: Alcohol Management Strategy"
+    @meta_title = "Loomio - Wellington Online Collaboration: Alcohol Management Strategy"
     @meta_description = "People all over Wellington are getting together online to work with their " +
                         "City Council to collaborate on an Alcohol Management Strategy for the city. " +
                         "Click here to participate!"
