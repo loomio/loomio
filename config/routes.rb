@@ -1,4 +1,4 @@
-  Loomio::Application.routes.draw do
+Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :users, :controllers => { :sessions => 'users/sessions', :invitations => 'users/invitations' }
@@ -7,7 +7,7 @@
   match "/request_new_group", :to => "group_requests#start", :as => :request_new_group
   match "/group_request_confirmation", :to => "group_requests#confirmation", :as => :group_request_confirmation
 
-  resources :groups, except: :index do
+  resources :groups, except: [:index, :new] do
     resources :invitations, :only => :show
     post :add_members, on: :member
     get :add_subgroup, on: :member
@@ -24,7 +24,7 @@
   match "/groups/:id/members", :to => "groups#get_members", :as => :get_members, :via => :get
 
   resources :motions do
-    resources :votes
+    resources :votes, only: [:new, :edit, :create, :update]
     post :get_and_clear_new_activity, on: :member
     put :close, :on => :member
     put :edit_outcome, :on => :member
@@ -45,8 +45,6 @@
     post :mark_as_viewed, :on => :collection, :via => :post
   end
 
-  resources :votes
-
   resources :memberships, except: [:new, :update, :show] do
     post :make_admin, on: :member
     post :remove_admin, on: :member
@@ -56,7 +54,8 @@
   end
 
   resources :users do
-    post :set_avatar_kind, on: :member
+    put :edit_name, on: :member
+    put :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
     post :set_markdown, on: :member
   end
@@ -87,6 +86,7 @@
   match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
   match '/privacy' => 'high_voltage/pages#show', :id => 'privacy'
   match '/blog' => 'high_voltage/pages#show', :id => 'blog'
+  match '/collaborate', to: "woc#index", as: :collaborate
 
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
   root :to => 'pages#show', :id => 'home'
@@ -103,4 +103,8 @@
   match '/about' => redirect('/pages/home#who')
   match '/contact' => redirect('/pages/home#who')
   match '/demo' => redirect('/')
+
+  resources :woc, only: :index do
+    post :send_request, on: :collection
+  end
 end

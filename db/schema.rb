@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227030124) do
+ActiveRecord::Schema.define(:version => 20130306223703) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -232,7 +232,7 @@ ActiveRecord::Schema.define(:version => 20130227030124) do
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                                       :default => "",    :null => false
+    t.string   "email",                                                       :default => "",         :null => false
     t.string   "encrypted_password",                           :limit => 128, :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -254,24 +254,24 @@ ActiveRecord::Schema.define(:version => 20130227030124) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.datetime "deleted_at"
-    t.boolean  "has_read_system_notice",                                      :default => false, :null => false
+    t.boolean  "has_read_system_notice",                                      :default => false,      :null => false
     t.boolean  "is_admin",                                                    :default => false
-    t.string   "avatar_kind"
+    t.string   "avatar_kind",                                                 :default => "initials", :null => false
     t.string   "uploaded_avatar_file_name"
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
-    t.boolean  "has_read_dashboard_notice",                                   :default => false, :null => false
-    t.boolean  "has_read_group_notice",                                       :default => false, :null => false
-    t.boolean  "has_read_discussion_notice",                                  :default => false, :null => false
+    t.boolean  "has_read_dashboard_notice",                                   :default => false,      :null => false
+    t.boolean  "has_read_group_notice",                                       :default => false,      :null => false
+    t.boolean  "has_read_discussion_notice",                                  :default => false,      :null => false
     t.string   "username"
-    t.boolean  "subscribed_to_daily_activity_email",                          :default => true,  :null => false
-    t.boolean  "subscribed_to_mention_notifications",                         :default => true,  :null => false
-    t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,  :null => false
+    t.boolean  "subscribed_to_daily_activity_email",                          :default => true,       :null => false
+    t.boolean  "subscribed_to_mention_notifications",                         :default => true,       :null => false
+    t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.integer  "memberships_count",                                           :default => 0,     :null => false
+    t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.boolean  "uses_markdown",                                               :default => false
   end
 
@@ -303,5 +303,11 @@ ActiveRecord::Schema.define(:version => 20130227030124) do
 
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
+
+  create_table "woc_options", :force => true do |t|
+    t.string   "example_discussion_url"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
 
 end

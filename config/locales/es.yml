@@ -1,0 +1,69 @@
+es:
+  errors:
+    messages:
+      email: "No es una dirección de correo válida"
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one:   "segundo"
+        other: "%{count} segundos"
+      x_seconds:
+        one:   "1 segundo"
+        other: "%{count} segundos"
+      less_than_x_minutes:
+        one:   "1 minuto"
+        other: "%{count} minutos"
+      x_minutes:
+        one:   "1 minuto"
+        other: "%{count} minutos"
+      about_x_hours:
+        one:   "1 hora"
+        other: "%{count} hora"
+      x_days:
+        one:   "1 día"
+        other: "%{count} días"
+      about_x_months:
+        one:   "1 mes"
+        other: "%{count} meses"
+      x_months:
+        one:   "1 mes"
+        other: "%{count} meses"
+      about_x_years:
+        one:   "1 año"
+        other: "%{count} años"
+      over_x_years:
+        one:   "1 año"
+        other: "%{count} años"
+      almost_x_years:
+        one:   "1 año"
+        other: "%{count} años"
+
+  discussion_help_text: "Esta es la página de discusión. El tema de la discusión está al principio de la página, seguido por información de fondo y contexto.\n\n La discusión está a la izquierda, para agregar un comentario escribe en el cuadro de texto y cliquea 'Comentar'.\n\n Las decisiones están a la derecha. Si piensas que el grupo está listo para tomar una decisión, puedes hacer una propuesta para poner a consideración del grupo. Si alguien ya ha realizado una propuesta, puedes ver cómo se siente el grupo en el gráfico de torta y tomar posición debajo.\n\n"
+
+  group_help_text: "Esta es la página del Grupo %{group_name}.\n\n Aquí podrás ver las discusiones del grupo, una descripción de sus objetivos o iniciar una discusión sobre un tema nuevo cliqueando el botón 'Iniciar una discusión'.\n\n"
+  dashboard_help_text: "¡Bienvenido/a a Loomio!\n Esta es la página de Inicio, donde podrás ver una lista de las discusiones activas de todos tus grupos. A la derecha hay una lista de los grupos de los que eres miembro. Puedes iniciar una discusión en una tema nuevo cliqueando el botón 'Iniciar una discusión'.\n\n Si tenés alguna pregunta o contribución nos encantaría escucharla: %{link}\n\n"
+
+  notifications:
+    new_discussion: "abrió una propuesta"
+    new_motion: "creó una nueva propuesta"
+    motion_closed:
+      by_user: "cerró la propuesta"
+      by_expirey: "La propuesta cerró"
+    new_vote: "%{position} sobre la propuesta"
+    new_comment: "comentó en la discusión"
+    comment_liked: "le gusta tu comentario en la discusión"
+    user_mentioned: "te mencionó en un comentario sobre"
+    membership_requested: "pidió membresía en"
+    user_added_to_group: "te agregó al grupo"
+    motion_closing_soon: "La propuesta está por cerrar"
+    motion_blocked: "bloqueó la propuesta"
+
+  discussion_items:
+    new_discussion: "creó la discusión"
+    new_motion: "creó la propuesta"
+    motion_closed:
+      by_user: "cerró la propuesta"
+      by_expirey: "La propuesta está cerrada"
+    motion_close_date_edited: "cambió la fecha de cierre de la propuesta"
+    discussion_title_edited: "cambió el título de la discusión"
+    discussion_description_edited: "cambió la descripción de la discusión"

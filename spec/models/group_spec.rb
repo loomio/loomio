@@ -15,6 +15,12 @@ describe Group do
     it "must have a name" do
       @group.should have(1).errors_on(:name)
     end
+    it "must have a max_size if it is a parent" do
+      group = create(:group)
+      group.max_size = nil
+      group.valid?
+      group.should have(1).errors_on(:max_size)
+    end
     it "has memberships" do
       @group.respond_to?(:memberships)
     end
@@ -144,10 +150,15 @@ describe Group do
     end
   end
 
-  context "has a parent" do
+  context "subgroup" do
     before :each do
       @group = create(:group)
       @subgroup = create(:group, :parent => @group)
+    end
+    it "cannot have a max_size" do
+      @subgroup.max_size = 5
+      @subgroup.save
+      @subgroup.should have(1).errors_on(:max_size)
     end
     it "can access it's parent" do
       @subgroup.parent.should == @group

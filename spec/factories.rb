@@ -16,6 +16,7 @@ FactoryGirl.define do
 
   factory :group do
     sequence(:name) { Faker::Name.name }
+    description 'A description for this group'
     association :creator, :factory => :user
     viewable_by :everyone
     before(:create) do |group|

@@ -61,11 +61,6 @@ describe GroupsController do
       end
     end
 
-    it "shows a new group form" do
-      get :new
-      response.should be_success
-    end
-
     it "creates a group" do
       user = build(:user, :email => "contact@loomio.org")
       user.save
@@ -184,8 +179,9 @@ describe GroupsController do
         @group.archived_at = Time.now
         @group.save
       end
-      it "throws an error" do
-        lambda { get :show, :id => @group.id }.should raise_error
+      it "should render the page not found template" do
+        get :show, :id => @group.id
+        response.should render_template('application/not_found')
       end
     end
 
