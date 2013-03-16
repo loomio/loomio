@@ -5,8 +5,7 @@
     <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
     = stylesheet_link_tag    "frontpage"
     = csrf_meta_tags
-    %meta{'name' => 'description', :content => 'Loomio is a free and open-source web application that helps groups make better decisions together.'}
-    = render 'social_metadata_frontpage'
+    = render 'social_metadata', description: @meta_description, title: @meta_title
 
   %body{class: "#{controller_name} #{action_name}"}
     .container.home-flash
