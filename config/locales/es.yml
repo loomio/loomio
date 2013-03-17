@@ -57,7 +57,7 @@ es:
     user_added_to_group: "te agregó al grupo"
     motion_closing_soon: "La propuesta está por cerrar"
     motion_blocked: "bloqueó la propuesta"
-
+ 
   discussion_items:
     new_discussion: "creó la discusión"
     new_motion: "creó la propuesta"
