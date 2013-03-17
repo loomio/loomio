@@ -1,8 +1,7 @@
 %ul#activity-list
   %li.divider
   - if discussion.activity.count == 0
-    %li.selector-item.empty-list-message
-      There isn't any activity in this discussion yet.
+    %li.selector-item.empty-list-message= t :empty_discussion_list
   - else
     - discussion.activity.each do |event|
       - if event.kind == 'new_comment'
