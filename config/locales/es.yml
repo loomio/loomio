@@ -38,17 +38,17 @@ es:
         one:   "1 año"
         other: "%{count} años"
 
-  discussion_help_text: "Esta es la página de discusión. El tema de la discusión está al principio de la página, seguido por información de fondo y contexto.\n\n La discusión está a la izquierda, para agregar un comentario escribe en el cuadro de texto y cliquea 'Comentar'.\n\n Las decisiones están a la derecha. Si piensas que el grupo está listo para tomar una decisión, puedes hacer una propuesta para poner a consideración del grupo. Si alguien ya ha realizado una propuesta, puedes ver cómo se siente el grupo en el gráfico de torta y tomar posición debajo.\n\n"
+  discussion_help_text: "Esta es la página de discusión. El tema de discusión está al principio de la página, seguido por información de fondo y contexto.\n\n La discusión está a la izquierda, para agregar un comentario escribe en el cuadro de texto y cliquea 'Comentar'.\n\n Las decisiones están a la derecha. Si piensas que el grupo está listo para tomar una decisión, puedes hacer una propuesta para poner a consideración del grupo. Si alguien ya ha realizado una propuesta, puedes ver cómo se siente el grupo en el gráfico de torta y tomar posición debajo.\n\n"
 
   group_help_text: "Esta es la página del Grupo %{group_name}.\n\n Aquí podrás ver las discusiones del grupo, una descripción de sus objetivos o iniciar una discusión sobre un tema nuevo cliqueando el botón 'Iniciar una discusión'.\n\n"
-  dashboard_help_text: "¡Bienvenido/a a Loomio!\n Esta es la página de Inicio, donde podrás ver una lista de las discusiones activas de todos tus grupos. A la derecha hay una lista de los grupos de los que eres miembro. Puedes iniciar una discusión en una tema nuevo cliqueando el botón 'Iniciar una discusión'.\n\n Si tenés alguna pregunta o contribución nos encantaría escucharla: %{link}\n\n"
+  dashboard_help_text: "¡Bienvenido/a a Loomio!\n Esta es la página de Inicio, donde podrás ver una lista de las discusiones activas de todos tus grupos. A la derecha hay una lista de los grupos de los que eres miembro. Puedes iniciar una discusión en una tema nuevo cliqueando el botón 'Iniciar una discusión'.\n\n Si tienes alguna pregunta o contribución nos encantaría escucharla: %{link}\n\n"
 
   notifications:
     new_discussion: "abrió una propuesta"
     new_motion: "creó una nueva propuesta"
     motion_closed:
       by_user: "cerró la propuesta"
-      by_expirey: "La propuesta cerró"
+      by_expirey: "La propuesta se ha cerrado"
     new_vote: "%{position} sobre la propuesta"
     new_comment: "comentó en la discusión"
     comment_liked: "le gusta tu comentario en la discusión"
