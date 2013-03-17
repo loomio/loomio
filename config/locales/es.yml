@@ -48,7 +48,7 @@ es:
     new_motion: "creó una nueva propuesta"
     motion_closed:
       by_user: "cerró la propuesta"
-      by_expirey: "La propuesta cerró"
+      by_expirey: "La propuesta se ha cerrado"
     new_vote: "%{position} sobre la propuesta"
     new_comment: "comentó en la discusión"
     comment_liked: "le gusta tu comentario en la discusión"
