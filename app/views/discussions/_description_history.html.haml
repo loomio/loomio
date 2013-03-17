@@ -1,30 +1,32 @@
 .modal-header
   %button.close{"data-dismiss" => "modal"}×
-  %h2 Revision history
+  %h2= t "description_history.header"
 .modal-body
   .revision-title
     %h3= @discussion.title
     %p.font-size-85pc
-      = "Edited about #{time_ago_in_words(@discussion.last_versioned_at)} ago by #{@originator.name}"
-      -if @discussion.live?
-        %em= " (current)"
-      -else
-        %em=link_to " (Restore this version)", update_version_discussion_path(@discussion.version), :method => :post, :class => "", :remote => true, :id => "revert-to-version", :data => { :disable_with => "Applying changes..." }
+      = t("description_history.edited_by", when: time_ago_in_words(@discussion.last_versioned_at), who: @originator.name)
+      %em
+        = " "
+        -if @discussion.live?
+          =t "description_history.current"
+        -else
+          =link_to t("description_history.restore"), update_version_discussion_path(@discussion.version), :method => :post, :class => "", :remote => true, :id => "revert-to-version", :data => { :disable_with => t("description_history.applying_changes") }
   .revision-version
-    %h3 Version
+    %h3= t "description_history.subheader"
     %p
       -if @discussion.has_previous_versions?
-        =link_to "Prev", preview_version_discussion_path(@discussion, @discussion.previous_version.version), :method => :post, :id => "discussion-previous-version", :remote => true
+        =link_to t("description_history.previous"), preview_version_discussion_path(@discussion, @discussion.previous_version.version), :method => :post, :id => "discussion-previous-version", :remote => true
       -else
-        =link_to "Prev", "#", :class => "disabled"
+        =link_to t("description_history.previous"), "#", :class => "disabled"
       =" | "
       -if @discussion.next_version.present?
-        =link_to "Next", preview_version_discussion_path(@discussion, @discussion.next_version.version), :method => :post, :id => "discussion-next-version", :remote => true
+        =link_to t("description_history.next"), preview_version_discussion_path(@discussion, @discussion.next_version.version), :method => :post, :id => "discussion-next-version", :remote => true
       -elsif !(@discussion.live?)
-        =link_to "Next", preview_version_discussion_path(@discussion), :method => :post, :remote => true
+        =link_to t("description_history.next"), preview_version_discussion_path(@discussion), :method => :post, :remote => true
       -else
-        =link_to "Next", "#", :class => "disabled"
+        =link_to t("description_history.next"), "#", :class => "disabled"
   .revision-content
     %p= markdown(@discussion.description)
 .modal-footer
-  = link_to "Close", "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
+  = link_to t(:close), "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"

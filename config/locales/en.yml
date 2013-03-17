@@ -79,3 +79,27 @@ en:
   previous_decisions: "Previous decisions"
   create_new_proposal: "Create new proposal"
   empty_decision_list: "There is not currently an open proposal under discussion"
+  empty_discussion_list: "There isn't any activity in this discussion yet."
+
+  comment_form_placeholder: "Say something..."
+  comment_form_submit_button: "Post comment"
+
+  discussion_context:
+    started_when: "Started %{when} ago"
+    helper_text: "Use this panel to give enough context for your group to have a well-informed discussion. As the discussion progresses, anyone can add information to make it easy for new people to get up to speed."
+
+  description_history:
+    header: "Revision history"
+    subheader: "Version"
+    edited_by: "Edited about %{when} ago by %{who}"
+    current: "(current)"
+    restore: "(Restore this version)"
+    applying_changes: "(Applying changes...)"
+    previous: "Prev"
+    next: "Next"
+
+  #
+  # COMMON WORDS
+  #
+
+  close: "Close"

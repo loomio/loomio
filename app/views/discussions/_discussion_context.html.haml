@@ -3,9 +3,9 @@
     =render '/application/description', model: @discussion, model_name: "discussion", description_markdown_setting: @discussion.uses_markdown
   .span3.right-context
     .helper-text.discussion-description-helper-text.hidden
-      %p Use this panel to give enough context for your group to have a well-informed discussion. As the discussion progresses, anyone can add information to make it easy for new people to get up to speed.
+      %p= t "discussion_context.helper_text"
     .discussion-additional-info
-      = "Started #{time_ago_in_words(@discussion.created_at)} ago"
+      = t("discussion_context.started_when", when: time_ago_in_words(@discussion.created_at))
       .started-by
         = "By "
         =link_to @discussion.author.name, "#", "title" => @discussion.author.name,
