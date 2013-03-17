@@ -1,13 +1,13 @@
 .row
   .span5
     = simple_form_for discussion, :validate => true do |f|
-      %h2 Start a discussion
+      %h2= t "discussion_form.start_discussion"
       .control-group
         - if @user_groups
-          %p Which group would you like to engage in this discussion?
+          %p= t "discussion_form.who"
           = f.collection_select :group_id, user_groups.sort{|a,b| a.full_name <=> b.full_name}, :id, :full_name
         - else
           = f.input :group_id, :as => :hidden
-      = f.input :title, :placeholder => "What is the topic you'd like to discuss?"
-      = f.input :description, :label => "Context", :placeholder => "This information will appear at the top of the discussion page. Introduce the topic and give enough context for your group to have a well-informed discussion."
-      = f.submit 'Start discussion', :class => "btn btn-large btn-info", id: "discussion-submit", :data => {:disable_with => "Starting"}
+      = f.input :title
+      = f.input :description
+      = f.submit :class => "btn btn-large btn-info", id: "discussion-submit", :data => {:disable_with => t("discussion_form.starting")}

@@ -31,14 +31,14 @@
                       = render @current_motion, unique_votes: @unique_votes
                 - else
                   - if can? :create, Motion.new(discussion_id: @discussion.id)
-                    = link_to t("create_new_proposal"), new_proposal_discussion_path(@discussion.id), class: 'btn btn-small new-proposal-btn', id: 'new-proposal'
+                    = link_to t(:create_new_proposal), new_proposal_discussion_path(@discussion.id), class: 'btn btn-small new-proposal-btn', id: 'new-proposal'
                   %li.selector-item.empty-list-message= t :empty_decision_list
 
             - if @discussion.motions.where("phase = 'closed'").count > 0
               #previous-proposals
                 .clearfix
                   .large-icon.decision-icon
-                  %h3.header-text= t "previous_decisions"
+                  %h3.header-text= t :previous_decisions
 
                 .content-proposal-body
                   %ul.selector-list

@@ -11,13 +11,11 @@
           = text_field_tag 'title', discussion.title, {id: 'discussion-input', class: 'inputError limit-150'}
           .character-counter
         .save-buttons.clearfix
-          = submit_tag "Save", class: 'btn btn-small run-validations', id: 'edit-title-submit', :data => {:disable_with => "Saving"}
-          = link_to "Cancel", "#", id: 'cancel-edit-title'
-  - if can?(:edit_title, discussion) || can?(:destroy, discussion)
-    .dropdown
-      = link_to image_tag("dropdown.png"), "#", id: "options-dropdown", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
-      %ul.dropdown-menu.pull-right
-        - if can?(:edit_title, discussion)
-          %li= link_to "Edit discussion title", "#", :id => "edit-title"
-        -if can? :destroy, discussion
-          %li= link_to "Delete discussion", "#", 'data-method-type' => 'delete', 'data-title' => "Delete Discussion", 'data-body' => "Are you sure you want to permanently delete this discussion?", 'data-confirm-path' => discussion_path(discussion), class: 'confirm-dialog', id: 'delete-discussion'
+          = submit_tag t(:save), class: 'btn btn-small run-validations', id: 'edit-title-submit', :data => {:disable_with => t(:saving)}
+          = link_to t(:cancel), "#", id: 'cancel-edit-title'
+  .dropdown
+    = link_to image_tag("dropdown.png"), "#", id: "options-dropdown", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
+    %ul.dropdown-menu.pull-right
+      %li= link_to t(:edit_discussion_title), "#", :id => "edit-title"
+      -if can? :destroy, discussion
+        %li= link_to t(:delete_discussion), "#", 'data-method-type' => 'delete', 'data-title' => t(:delete_discussion), 'data-body' => t(:confirm_delete), 'data-confirm-path' => discussion_path(discussion), class: 'confirm-dialog', id: 'delete-discussion'

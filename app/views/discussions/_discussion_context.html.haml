@@ -3,21 +3,22 @@
     =render '/application/description', model: @discussion, model_name: "discussion", description_markdown_setting: @discussion.uses_markdown
   .span3.right-context
     .helper-text.discussion-description-helper-text.hidden
-      %p Use this panel to give enough context for your group to have a well-informed discussion. As the discussion progresses, anyone can add information to make it easy for new people to get up to speed.
+      %p= t "discussion_context.helper_text"
     .discussion-additional-info
-      = "Started #{time_ago_in_words(@discussion.created_at)} ago"
+      = t("discussion_context.started_when", when: time_ago_in_words(@discussion.created_at))
       .started-by
-        = "By "
+        = t :by
+        = " "
         =link_to @discussion.author.name, "#", "title" => @discussion.author.name,
           "data-content" => "#{render 'users/name_popover', user: @discussion.author, group: @discussion.group}",
           class: "user-name-with-popover"
       -if defined? @last_collaborator
         .last-edited-by
-          = "Last edited about #{time_ago_in_words(@discussion.last_versioned_at)} ago by "
+          = t("discussion_context.last_edited", when: time_ago_in_words(@discussion.last_versioned_at))
           =link_to @last_collaborator.name, "#", "title" => @last_collaborator.name,
             "data-content" => "#{render 'users/name_popover', user: @last_collaborator, group: @discussion.group}",
             class: "user-name-with-popover"
         .see-revision-history
           %i.icon-time
-          =link_to "See revision history", show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
+          =link_to t("discussion_context.see_revision_history"), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
 #description-revision-history.modal.hidden
