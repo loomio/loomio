@@ -79,3 +79,66 @@ en:
   previous_decisions: "Previous decisions"
   create_new_proposal: "Create new proposal"
   empty_decision_list: "There is not currently an open proposal under discussion"
+  empty_discussion_list: "There isn't any activity in this discussion yet."
+
+  discussion_context:
+    started_when: "Started %{when} ago"
+    helper_text: "Use this panel to give enough context for your group to have a well-informed discussion. As the discussion progresses, anyone can add information to make it easy for new people to get up to speed."
+    last_edited: "Last edited about %{when} ago by "
+    see_revision_history: "See revision history"
+
+  description_history:
+    header: "Revision history"
+    subheader: "Version"
+    edited_by: "Edited about %{when} ago by %{who}"
+    current: "(current)"
+    restore: "(Restore this version)"
+    applying_changes: "(Applying changes...)"
+    previous: "Prev"
+    next: "Next"
+
+  comment_form_placeholder: "Say something..."
+  comment_form_submit_button: "Post comment"
+
+  markdown_settings_more_info: "More info..."
+  edit_discussion_title: "Edit discussion title"
+  delete_discussion: "Delete discussion"
+  confirm_delete: "Are you sure you want to permanently delete this discussion?"
+
+  #
+  # COMMON WORDS
+  #
+
+  close: "Close"
+  by: "By"
+  ago: "ago"
+  enable: "Enable"
+  disable: "Disable"
+  save: "Save"
+  saving: "Saving"
+  cancel: "Cancel"
+
+  #
+  # FORMS
+  #
+
+  discussion_form:
+    start_discussion: "Start a discussion"
+    who: "Which group would you like to engage in this discussion?"
+    context: "Context"
+    starting: "Starting..."
+
+  simple_form:
+    labels:
+      discussion:
+        title: "Title"
+        description: "Context"
+    placeholders:
+      discussion:
+        title: "What is the topic you'd like to discuss?"
+        description: "This information will appear at the top of the discussion page. Introduce the topic and give enough context for your group to have a well-informed discussion."
+
+  helpers:
+    submit:
+      discussion:
+        create: "Start discussion"
