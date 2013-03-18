@@ -1,3 +1,3 @@
-- set_title @group.name, "Edit Group"
+- set_title @group.name, t(:edit_group)
 = render '/groups/title', group: @group
-= render 'form', group: @group, parent: @parent, submit_text: "Update group", disable_text: "Updating group", form_title: "Edit group"
+= render 'form', group: @group, parent: @parent, submit_text: t(:update_group), disable_text: t(:updating_group), form_title: t(:edit_group)

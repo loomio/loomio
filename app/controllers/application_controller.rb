@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :set_locale
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
     request.env["HTTP_REFERER"] = root_url if request.env["HTTP_REFERER"].nil?
-    flash[:error] = "Access denied."
+    flash[:error] = t("error.access_denied")
     redirect_to :back
   end
 

@@ -14,22 +14,22 @@
         If you've already got a Loomio account,
         = link_to "click here to sign in.", new_user_session_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
     - else
-      = link_to "Sign in", new_user_session_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
-      to participate. You are currently logged out.
+      = link_to t(:sign_in), new_user_session_path, style: "color: #C09853; font-weight: bold; text-decoration: underline;"
+      = t :sign_in_details
 /
 / SYSTEM MESSAGE
 /
 
-- if current_user && (not current_user.has_read_system_notice?)
-  .help-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-success" }
-    =link_to "×", dismiss_system_notice_for_user_path, :class => "close dismiss-help-notice", "data-dismiss" => "alert"
-    %p
-      %strong Loomio has new features!
-    %p
-      Now you can delete discussions and change the closing date on your proposals.
-      Also, we've turned comment text formatting off by default, but you can switch it back on with the little grey icon next to the comment box.
-      =link_to "Click here to find out more about these features.", "https://www.loomio.org/discussions/2143"
-    %p
-      P.S. If you're interested in giving feedback or contributing to the future development of Loomio, join the
-      =link_to "Loomio Community group", "https://www.loomio.org/groups/3"
-    =link_to "Click here to dismiss this message", dismiss_system_notice_for_user_path, :class => "dismiss-help-notice", "data-dismiss" => "alert"
+/ - if current_user && (not current_user.has_read_system_notice?)
+/   .help-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-success" }
+/     =link_to "×", dismiss_system_notice_for_user_path, :class => "close dismiss-help-notice", "data-dismiss" => "alert"
+/     %p
+/       %strong Loomio has new features!
+/     %p
+/       Now you can delete discussions and change the closing date on your proposals.
+/       Also, we've turned comment text formatting off by default, but you can switch it back on with the little grey icon next to the comment box.
+/       =link_to "Click here to find out more about these features.", "https://www.loomio.org/discussions/2143"
+/     %p
+/       P.S. If you're interested in giving feedback or contributing to the future development of Loomio, join the
+/       =link_to "Loomio Community group", "https://www.loomio.org/groups/3"
+/     =link_to "Click here to dismiss this message", dismiss_system_notice_for_user_path, :class => "dismiss-help-notice", "data-dismiss" => "alert"

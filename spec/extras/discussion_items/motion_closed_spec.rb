@@ -26,7 +26,7 @@ describe DiscussionItems::MotionClosed do
     end
 
     it "#header returns a string" do
-      item.header.should == I18n.t('discussion_items.motion_closed.by_expirey') + ": "
+      item.header.should == I18n.t('discussion_items.motion_closed.by_expiry') + ": "
     end
   end
 

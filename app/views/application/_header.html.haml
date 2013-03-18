@@ -11,7 +11,7 @@
             %li.nav-item.dropdown#groups
               %a.nav-link{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
                 %span.header-bar-icon.nav-item-icon.large-icon.group-icon
-                %span= "Groups"
+                %span= t :groups
                 %b.caret
               %ul.dropdown-menu
                 #group-dropdown-items
@@ -22,7 +22,7 @@
                         - if current_user.group_membership(subgroup)
                           = render 'group_dropdown_item', user: current_user, group: subgroup, subgroup: true
                 %li.group-item.new-group
-                  =link_to "+ Request New Group", request_new_group_path
+                  =link_to t(:request_new_group), request_new_group_path
 
             -if notifications.present?
               %li.nav-item.dropdown#notifications-container
@@ -34,18 +34,18 @@
                   - if unviewed_notifications.present?
                     %span#notifications-count.label.label-important
                       = unviewed_notifications.size
-                  %span= "Notifications"
+                  %span= t("notifications.header")
                   %b.caret
                 %ul.dropdown-menu
                   %li
-                    %h3 Notifications
+                    %h3= t("notifications.header")
                   %li#notification-dropdown-items
                     %ul
                       - if notifications.empty?
-                        %li.notifications-placeholder You do not have any notifications yet.
+                        %li.notifications-placeholder= t :empty_notifications
                       - notifications.each do |notification|
                         = render notification
-                  %li#notifications-see-more= link_to "See all notifications", notifications_path
+                  %li#notifications-see-more= link_to t(:see_all_notifications), notifications_path
 
             %li.nav-item.dropdown#user
               %a.nav-link{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
@@ -54,15 +54,15 @@
                   = current_user.name
                 %b.caret
               %ul.dropdown-menu
-                %li= link_to "User Settings", user_settings_path
-                %li= link_to "Email Preferences", email_preferences_path
-                %li= link_to('Sign out', destroy_user_session_path, method: :delete)
+                %li= link_to t(:user_settings), user_settings_path
+                %li= link_to t(:email_preferences), email_preferences_path
+                %li= link_to(t(:sign_out), destroy_user_session_path, method: :delete)
 
             %li.nav-item#feedback
               %a.nav-link{:href => 'mailto:contact@loomio.org', :target => '_blank'}
-                Give us feedback
+                = t :feedback
 
           - else
             %li.nav-item#sign-in
               %a.nav-link{:href => new_user_session_path}
-                Sign in
+                = t :sign_in

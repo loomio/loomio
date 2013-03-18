@@ -23,18 +23,18 @@ class DiscussionsController < GroupBaseController
     @discussion = current_user.authored_discussions.new(params[:discussion])
     authorize! :create, @discussion
     if @discussion.save
-      flash[:success] = "Discussion sucessfully created."
+      flash[:success] = t("success.discussion_created")
       redirect_to @discussion
     else
       render action: :new
-      flash[:error] = "Discussion could not be created."
+      flash[:error] = t("error.discussion_not_created")
     end
   end
 
   def destroy
     @discussion = Discussion.find(params[:id])
     @discussion.destroy
-    flash[:success] = "Discussion sucessfully deleted."
+    flash[:success] = t("success.discussion_deleted")
     redirect_to @discussion.group
   end
 

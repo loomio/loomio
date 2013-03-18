@@ -2,14 +2,14 @@
   =image_tag("loomio-orange.png")
   .row
     .span8.offset2
-      %h2 Create an account
+      %h2= t("new_user_form.create_an_account")
       %p &nbsp;
   .row
-    .span6.offset2
+    .span4.offset2
       = simple_form_for @user, :validate => true do |f|
-        = f.input :name, :label => "Full name"
+        = f.input :name
         = f.input :email
         = f.input :password
-        = f.submit "Create account", class: "btn btn-info btn-large", id: 'submit', :data => {:disable_with => "Create account"}
-    .span2
+        = f.submit class: "btn btn-info btn-large", id: 'submit', :data => {:disable_with => t("helpers.submit.user.create")}
+    .span2.offset1
       =image_tag("mascot-medium-lefthand.gif")
