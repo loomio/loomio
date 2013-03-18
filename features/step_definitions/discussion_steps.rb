@@ -9,3 +9,8 @@ end
 Then /^I should see the discussion$/ do
   find('#activity-list')
 end
+
+Then /^I should not see discussion options dropdown$/ do
+  page.should_not have_css('#options-dropdown')
+end
+
