@@ -1,4 +1,4 @@
-class AddFieldsToGroupRequest < ActiveRecord::Migration
+class AddFieldsToGroupsAndGroupRequests < ActiveRecord::Migration
   def change
     rename_column :group_requests, :sectors_metric, :sectors
     rename_column :group_requests, :other_sectors_metric, :other_sector

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe GroupRequestsController do
-
   let(:group_request) { build :group_request }
 
   describe "#new" do
