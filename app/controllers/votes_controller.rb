@@ -17,7 +17,7 @@ class VotesController < GroupBaseController
     if @motion.voting?
       destroy! { @motion.discussion }
     else
-      flash[:error] = "The proposal has closed. You can no longer modify your posiiton."
+      flash[:error] = t("error.cant_modify_position")
       redirect_to @motion.discussion
     end
   end
@@ -29,13 +29,13 @@ class VotesController < GroupBaseController
       @vote.motion = @motion
       @vote.user = current_user
       if @vote.save
-        flash[:success] = "Position submitted"
+        flash[:success] = t("success.position_submitted")
       else
-        flash[:warning] = "Your position could not be submitted"
+        flash[:warning] = t("warning.position_not_submitted")
       end
       redirect_to @motion
     else
-      flash[:error] = "This proposal has closed. You can no longer decide on it."
+      flash[:error] = t("error.cant_state_position")
       redirect_to @motion
     end
   end
@@ -48,9 +48,9 @@ class VotesController < GroupBaseController
       @vote.motion = @motion
       @vote.user = current_user
       if @vote.save
-        flash[:success] = "Vote updated."
+        flash[:success] = t("success.position_updated")
       else
-        flash[:error] = "Could not update vote."
+        flash[:error] = t("error.position_not_updated")
       end
     else
       flash[:error] = "Can only vote in voting phase"

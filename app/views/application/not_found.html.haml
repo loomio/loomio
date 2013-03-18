@@ -1,5 +1,5 @@
 #private-message
   %br
-  %h1= item.capitalize + " not found."
+  %h1= item.capitalize + t(:not_found) + "."
   %br
-  %h2= "The #{item} you tried to access does not exist. It may have been deleted."
+  %h2= t(:not_found_details, item: item)

@@ -2,7 +2,7 @@
 = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
   = devise_error_messages!
   %h5
-    = f.label :email, "Email"
+    = f.label :email, t(:email)
     = f.email_field :email
-  = f.submit "Resend confirmation instructions", class: "btn primary"
+  = f.submit t(:resend_confirmation), class: "btn primary"
 = render :partial => "devise/shared/links"

@@ -84,7 +84,7 @@ describe DiscussionsController do
 
       it "displays flash success message" do
         get :create, discussion: @discussion_hash
-        flash[:success].should match("Discussion sucessfully created.")
+        flash[:success].should match("Discussion successfully created.")
       end
 
       it "redirects to discussion" do
@@ -108,7 +108,7 @@ describe DiscussionsController do
       end
       it "gives flash success message" do
         delete :destroy, id: discussion.id
-        flash[:success].should =~ /Discussion sucessfully deleted/
+        flash[:success].should =~ /Discussion successfully deleted/
       end
     end
 

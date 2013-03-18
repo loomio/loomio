@@ -1,10 +1,55 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
   errors:
     messages:
       email: "Not a valid email address"
+  error:
+    access_denied: "Access denied."
+    cant_join_subgroup: "You cannot join a sub-group if you are not a member of the parent group."
+    cant_modify_position: "This proposal has closed."
+    cant_state_position: "This proposal has closed."
+    discussion_not_created: "Discussion could not be created."
+    group_not_archived: "Group could not be archived."
+    invalid_email: "%{which_email} was not invited. Please check the email address is correct."
+    invalid_close_date: "Invalid close date, please check this date has not passed."
+    image_upload_fail: "Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file."
+    permission_to_invite: "You do not have permission to invite new members."
+    position_not_updated: "Could not update position."
+    settings_not_updated: "Your settings did not get updated."
+  alert:
+    duplicate_email: "%{which_email} is already in the group."
+  notice:
+    admin_rights_removed: "%{which_user}'s admin rights have been removed."
+    email_added: "%{which_email} has been added to the group."
+    member_removed: "Member removed."
+    membership_approved: "Membership approved"
+    membership_requested: "Membership requested."
+    membership_request_canceled: "Membership request canceled."
+    membership_request_ignored: "Membership request ignored."
+    settings_updated: "Your settings have been updated."
+    user_made_admin: "%{which_user} has been made an admin."
+    you_have_left_group: "You have left %{which_group}."
+  warning:
+    cant_remove_last_admin: "You are the last admin and cannot be removed."
+    membership_request_already_ignored: "Membership request has already been ignored."
+    membership_request_already_canceled: "Membership request has already been canceled."
+    position_not_submitted: "Your position could not be submitted"
+    proposal_not_created: "Proposal could not be created"
+    user_already_admin: "%{which_user} is already an admin."
+    user_already_member: "User is already a member of this group"
+    user_not_admin: "%{which_user} is not an admin"
+  success:
+    added_to_group: "You have been added to %{which_group}."
+    close_date_changed: "Close date successfully changed."
+    discussion_created: "Discussion successfully created."
+    discussion_deleted: "Discussion successfully deleted."
+    emails_sending: "Emails sending."
+    group_archived: "Group archived successfully."
+    group_created: "Group created successfully."
+    members_added: "Members added to group."
+    position_submitted: "Position submitted"
+    position_updated: "Position updated."
+    proposal_created: "Proposal successfully created."
+    proposal_deleted: "Proposal deleted."
   datetime:
     distance_in_words:
       less_than_x_seconds:
@@ -46,11 +91,12 @@ en:
   dashboard_help_text: "Welcome to Loomio!\n This is the Home page, where you can see a list of the discussions going on in all of your groups. To the right is a list of the groups you are a member of. You can start a discussion on a new topic by clicking on the “Start a discussion” button.\n\n If you have any questions or feedback we’d love to hear from you: %{link}\n\n"
 
   notifications:
+    header: "Notifications"
     new_discussion: "started a new discussion"
     new_motion: "created a new proposal"
     motion_closed:
       by_user: "closed the proposal"
-      by_expirey: "Proposal has closed"
+      by_expiry: "Proposal has closed"
     new_vote: "%{position} on the proposal"
     new_comment: "commented on the discussion"
     comment_liked: "liked your comment in the discussion"
@@ -59,6 +105,90 @@ en:
     user_added_to_group: "added you to the group"
     motion_closing_soon: "Proposal is closing soon"
     motion_blocked: "blocked the proposal"
+
+  edit_discussion_context: "Edit discussion context"
+  request_new_group: "Request New Group"
+  request_new_group_details: "or wait until you are invited to one."
+  empty_notifications: "You do not have any notifications yet."
+  see_all_notifications: "See all notifications"
+  user_settings: "User Settings"
+  email_preferences: "Email Preferences"
+  sign_out: "Sign out"
+  feedback: "Give us feedback"
+  sign_in: "Sign in"
+  sign_in_details: "to participate. You are currently logged out."
+  tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
+
+  not_found: "not found"
+  not_found_details: "The %{item} you tried to access does not exist. It may have been deleted."
+  click_to_dismiss: "Click here to dismiss this message"
+  generic_confirm: "Are you sure?"
+
+  #
+  # GROUP PAGE
+  #
+
+  add_new_member: "Add new member"
+  invite_members_to_group: "Invite members to %{which_group}"
+  remaining_invites: "remaining invites"
+  need_more_invites_html: "Need more? Loomio is in closed beta, which means we're still in development and have limited resources for user support. If you'd like to increase the size of your group %{href}."
+  get_in_touch_link: "get in touch"
+
+  email_members_in_group: "Email the members in %{which_group}"
+  subject_error: "Please fill in a subject"
+  subject_placeholder: "Write a subject"
+  message_error: "Please fill in a message"
+  message_placeholder: "Write a message to the members of %{which_group}."
+
+  email_group_members: "Email group members"
+  edit_group_settings: "Edit group settings"
+  leave_group: "Leave group"
+  confirm_leave_group: "Are you sure you wish to leave %{which_group}?"
+  deactivate_group: "De-activate group"
+  confirm_deactivate_group: "Wait!!! Are you sure you want to de-activate %{which_group}? You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@loomio.org."
+
+  invited_users: "Invited members"
+  members: "Members"
+  confirm_remove_user: "Are you sure you wish to remove %{which_user} from the group?"
+  remove_admin: "Remove admin"
+  confirm_remove_admin: "Are you sure you no longer want %{which_user} to be an admin for this group?"
+  make_admin: "Make admin"
+  confirm_make_admin: "Are you sure you want to make %{which_user} an admin for this group?"
+
+  membership_requests: "Membership requests"
+  confirm_approve_membership_request: "Are you sure you want to add %{which_user} to the group?"
+  ignore_request: "Ignore request"
+  confirm_ignore_membership_request: "Are you sure you want to ignore the member request from %{which_user}?"
+  membership_requested: "Membership Requested"
+  request_membership: "Request membership"
+  confirm_remove_membership_request: "Are you sure you wish to withdraw your membership request for this group?"
+
+  subgroups: "Sub-groups"
+  create_a_subgroup: "Create a sub-group"
+  select_members_to_add: "Select members to add to %{which_group}"
+  empty_parent_group: "Please add the members to the parent group first."
+  invite_members: "Invite members"
+  new_subgroup: "New sub-group"
+  create_subgroup: "Create sub-group"
+  creating_subgroup: "Creating sub-group"
+
+  group_privacy: "Privacy: '%{who}' can see this group."
+  everyone: "Everyone"
+  parent_group_members: "Parent group members"
+  members: "Members"
+
+  new_group: "New group"
+  create_group: "Create group"
+  creating_group: "Creating group"
+  edit_group: "Edit Group"
+  update_group: "Update group"
+  updating_group: "Updating group"
+
+  group_not_found: "Group not found."
+  group_not_found_details: "This group might be private. If someone gave you this link, ask them to invite you to the group."
+
+  start_a_discussion: "Start a discussion"
+  group_description: "Group description"
 
   #
   # DISCUSSION PAGE
@@ -69,7 +199,7 @@ en:
     new_motion: "created a proposal"
     motion_closed:
       by_user: "closed the proposal"
-      by_expirey: "Proposal closed"
+      by_expiry: "Proposal closed"
     motion_close_date_edited: "changed the closing date for the proposal"
     discussion_title_edited: "changed the discussion title"
     discussion_description_edited: "changed the discussion description"
@@ -77,13 +207,17 @@ en:
   discussion: "Discussion"
   current_decision: "Current decision"
   previous_decisions: "Previous decisions"
+  see_previous_decisions: "See previous decisions"
   create_new_proposal: "Create new proposal"
-  empty_decision_list: "There is not currently an open proposal under discussion"
-  empty_discussion_list: "There isn't any activity in this discussion yet."
+  empty_decision_list: "There is not currently an open proposal."
+  empty_decision_index: "This group has not made any decisions yet."
+  empty_discussion_list: "There is no activity in this discussion yet."
+  empty_discussion_index: "There are no discussions in any of your groups."
+  empty_discussion_index_group: "This group does not have any discussions yet."
 
   discussion_context:
     started_when: "Started %{when} ago"
-    helper_text: "Use this panel to give enough context for your group to have a well-informed discussion. As the discussion progresses, anyone can add information to make it easy for new people to get up to speed."
+    helper_text: "Use this panel to give enough context for your group to have a well-informed discussion. As the discussion progresses, anyone can add information to make it easy for new people to catch up."
     last_edited: "Last edited about %{when} ago by "
     see_revision_history: "See revision history"
 
@@ -100,45 +234,190 @@ en:
   comment_form_placeholder: "Say something..."
   comment_form_submit_button: "Post comment"
 
+  liked_by: "Liked by %{who}"
+  delete_comment: "Delete comment"
+  confirm_delete_comment: "Are you sure you want to delete this comment?"
+
   markdown_settings_more_info: "More info..."
   edit_discussion_title: "Edit discussion title"
   delete_discussion: "Delete discussion"
-  confirm_delete: "Are you sure you want to permanently delete this discussion?"
+  confirm_delete_discussion: "Are you sure you want to permanently delete this discussion?"
 
   #
-  # COMMON WORDS
+  # DECISIONS / PROPOSALS / MOTIONS
   #
 
-  close: "Close"
-  by: "By"
-  ago: "ago"
-  enable: "Enable"
-  disable: "Disable"
-  save: "Save"
-  saving: "Saving"
-  cancel: "Cancel"
+  new_proposal: "New Proposal"
+
+  close_proposal: "Close proposal"
+  confirm_close_proposal: "Are you sure you want to close this proposal?"
+  change_proposal_close_date: "Change close date"
+  change_proposal_close_date_header: "Change the close date for the proposal '%{which}'"
+  proposal_close_date_error: "Please give a future close date"
+  proposal_closing_when: "Closing in %{when}"
+  proposal_closed_when: "Closed %{when} ago"
+  proposed_when_by_who: "Proposed %{when} ago by %{who}"
+  engagement_on_open_proposal: "%{percent}% of members have stated their position (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "%{percent}% of members stated their position (%{numerator}/%{denominator})"
+
+  state_your_position: "State your position"
+  positions: "Positions"
+  yes_position: "I agree"
+  yes_details: "I agree with this and want it to go ahead."
+  abstain_position: "I abstain"
+  abstain_details: "I am happy for the group to decide without me."
+  no_position: "I disagree"
+  no_details: "I think we can probably do better."
+  block_position: "I block"
+  block_details: "I have strong objections to this proposal and am not OK with it going ahead."
+  not_voted: "[Show members who have not yet decided]"
+  outcome: "Outcome"
+  outcome_placeholder: "What was the outcome of this proposal?"
+
+  #
+  # SIGN IN
+  #
+
+  resend_confirmation: "Resend confirmation instructions"
+  new_password: "New password"
+  confirm_new_password: "Confirm new password"
+  change_your_password: "Change your password"
+  change_my_password: "Change my password"
+  send_password_reset: "Send me reset password instructions"
+  blank_details: "(leave blank if you don't want to change it)"
+  password_confirmation: "Password confirmation"
+  current_password: "Current password"
+  password_details: "(we need your current password to confirm your changes)"
+  cancel_my_account: "Cancel my account"
+  remember_me: "Remember me"
+  signing_in: "Signing in"
+  dont_have_account: "Don't have an account?"
+  closed_beta: "We're currently in closed testing and not accepting public sign-ups (yet!)."
+  closed_beta_details: "If you belong to a group that is using Loomio but you don't have your own Loomio account, please contact the person in your organization who set up Loomio and ask them to add you to the group."
+  forgot_your_password: "Forgot your password?"
+  confirmation_not_received: "Didn't receive confirmation instructions?"
+  unlock_not_received: "Didn't receive unlock instructions?"
 
   #
   # FORMS
   #
 
   discussion_form:
-    start_discussion: "Start a discussion"
-    who: "Which group would you like to engage in this discussion?"
+    header: "Start a discussion"
+    who: "Which group would you like to start this discussion in?"
     context: "Context"
-    starting: "Starting..."
+
+  motion_form:
+    header: "New proposal"
+    name_helper: "Make the title as clear and succinct as possible."
+
+  group_form:
+    privacy_settings: "Privacy Settings"
+    everyone_details: "Public - anyone with the link can see this %{group_or_subgroup}"
+    members_details: "Members - only members of this %{group_or_subgroup} can see it"
+    parent_group_members_details: "Parent group members - only members of the main group can view this sub-group"
+    invitation_settings: "Invitation Settings"
+    all_group_members: "All %{group_or_subgroup} members"
+    admins_only: "Admins only"
+
+  vote_form:
+    header: "State your position"
+    edit: "Edit your position"
+    placeholder: "Give a reason for your decision (optional)"
+    your_position: "Your position"
+    your_statement: "Your statement"
+
+  email_preferences_form:
+    header: "Email Preferences"
+    daily_activity_summary: "Daily Activity Summary"
+    daily_activity_subscription: "Send me a daily activity email summarising what’s been happening in my groups"
+    global_notifications: "Global Notifications"
+    proposal_closing_soon_subscription: "Remind me 24 hours before a proposal closes"
+    mentions_subscription: "Email me when someone mentions me in a comment"
+    group_activity_notifications: "Group Activity Notifications"
+    group_activity_details: "For each group, check the box if you want to be emailed immediately about new discussions and decisions."
+    update_preferences: "Update preferences"
+
+  new_user_form:
+    create_an_account: "Create an account"
+
+  user_settings_form:
+    header: "User Settings"
+    picture: "Picture"
+    use_avatar_kind: "Use %{kind}"
+    upload_new_image: "Upload a new image"
 
   simple_form:
     labels:
       discussion:
         title: "Title"
         description: "Context"
+      group:
+        name: "Group Name"
+        viewable_by: "Who can see this %{group_or_subgroup}?"
+        invitable_by: "Who can invite members to this %{group_or_subgroup}?"
+      motion:
+        name: "Title"
+        description: "Details"
+      user:
+        name: "Full name"
+        email: "Email"
+        password: "Password"
     placeholders:
       discussion:
         title: "What is the topic you'd like to discuss?"
         description: "This information will appear at the top of the discussion page. Introduce the topic and give enough context for your group to have a well-informed discussion."
+      motion:
+        name: "What is your proposed course of action?"
+        description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
 
   helpers:
     submit:
       discussion:
         create: "Start discussion"
+      motion:
+        create: "Start proposal"
+      user:
+        create: "Create account"
+
+  #
+  # COMMON WORDS
+  #
+
+  ago: "ago"
+  approve: "Approve"
+  back: "Back"
+  by: "By"
+  cancel: "Cancel"
+  change: "Change"
+  changing: "Changing"
+  close: "Close"
+  closing: "Closing"
+  closed: "Closed"
+  delete: "Delete"
+  edit: "Edit"
+  email_address: "Email address"
+  enable: "Enable"
+  participation: "Participation"
+  disable: "Disable"
+  groups: "Groups"
+  group_admin: "Group Admin"
+  home: "Home"
+  like: "Like"
+  loading: "Loading..."
+  message: "Message"
+  name: "Name"
+  new_activity: "New activity"
+  password: "Password"
+  options: "Options"
+  save: "Save"
+  saving: "Saving"
+  sending: "Sending"
+  send_invite: "Send invite"
+  send_email: "Send email"
+  show_more: "Show More"
+  starting: "Starting"
+  subject: "Subject"
+  unlike: "Unlike"
+  until_close: "until close"
+  update: "Update"
