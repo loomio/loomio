@@ -1,5 +1,5 @@
 Then /^facebook meta-data should be present$/ do
-  page.should have_xpath("//head/meta[@property=\"fb:admins\"]")
+  page.should have_xpath("//head/meta[@property=\"fb:app_id\"]")
 end
 
 Then /^social meta-data about the group should be present$/ do
