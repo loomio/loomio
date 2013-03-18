@@ -1,8 +1,52 @@
+Given /^"(.*?)" has been invited to the group$/ do |email|
+  User.invite_and_notify!(FactoryGirl.attributes_for(:user), FactoryGirl.create(:user), @group)
+end
+
+Given /^I am a member of a group invitable by members$/ do
+  @group = FactoryGirl.create :group
+  @group.members_invitable_by = :members
+  @group.save!
+  @group.add_member! @user
+end
+
+Given /^the group is invitable by admins$/ do
+  @group.members_invitable_by = :admins
+  @group.save!
+end
+
+Given /^I am a member of a subgroup invitable by members$/ do
+  @subgroup = FactoryGirl.create :group, parent: @group, members_invitable_by: "members"
+  @subgroup.add_member!(@user)
+end
+
+Given /^I am a member of a subgroup invitable by admins$/ do
+  @subgroup = FactoryGirl.create :group, parent: @group, members_invitable_by: "admins"
+  @subgroup.add_member!(@user)
+end
+
+Given /^I am an admin of a subgroup invitable by admins$/ do
+  @subgroup = FactoryGirl.create :group, parent: @group, members_invitable_by: "admins"
+  @subgroup.add_admin!(@user)
+end
+
 When /^I invite "(.*?)" to the group$/ do |email|
   @current_user = User.find_by_email email
   click_on "group-add-members"
   fill_in 'user_email', with: email
   click_on 'invite'
+end
+
+When /^I visit the subgroup page$/ do
+  visit group_path(@subgroup)
+end
+
+When /^I click add new member$/ do
+  find("#group-add-members").click
+end
+
+When /^I select "(.*?)" from the list of members$/ do |arg1|
+  user = User.find_by_name(arg1)
+  find("#user_#{user.id}").click
 end
 
 Then /^they should be added to the group$/ do
@@ -37,18 +81,18 @@ Then /^I should not see the invited user list$/ do
   page.should_not have_css("#invited-users")
 end
 
-Given /^"(.*?)" has been invited to the group$/ do |email|
-  User.invite_and_notify!(FactoryGirl.attributes_for(:user), FactoryGirl.create(:user), @group)
+Then /^I should see "(.*?)" in the list$/ do |email|
+  find("#invite-subgroup-members").should have_content(email)
 end
 
-Given /^I am a member of a group invitable by members$/ do
-  @group = FactoryGirl.create :group
-  @group.members_invitable_by = :members
-  @group.save!
-  @group.add_member! @user
+Then /^I should not see "(.*?)" in the list$/ do |email|
+  find("#invite-subgroup-members").should_not have_content(email)
 end
 
-Given /^the group is invitable by admins$/ do
-  @group.members_invitable_by = :admins
-  @group.save!
+Then /^I should see "(.*?)" as an invited user of the subgroup$/ do |email|
+  find("#invited-users").should have_content(email)
+end
+
+Then /^I should see "(.*?)" as a member of the subgroup$/ do |email|
+  find("#users-list").should have_content(email)
 end
