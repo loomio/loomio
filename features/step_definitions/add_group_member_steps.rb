@@ -44,10 +44,9 @@ When /^I click add new member$/ do
   find("#group-add-members").click
 end
 
-When /^I select "(.*?)" and click Invite members$/ do |email|
-  user = User.find_by_email(email)
+When /^I select "(.*?)" from the list of members$/ do |arg1|
+  user = User.find_by_name(arg1)
   find("#user_#{user.id}").click
-  click_on 'Invite members'
 end
 
 Then /^they should be added to the group$/ do
@@ -86,6 +85,14 @@ Then /^I should see "(.*?)" in the list$/ do |email|
   find("#invite-subgroup-members").should have_content(email)
 end
 
-Then /^"(.*?)" should become an invited user for the subgroup$/ do |email|
+Then /^I should not see "(.*?)" in the list$/ do |email|
+  find("#invite-subgroup-members").should_not have_content(email)
+end
+
+Then /^I should see "(.*?)" as an invited user of the subgroup$/ do |email|
   find("#invited-users").should have_content(email)
+end
+
+Then /^I should see "(.*?)" as a member of the subgroup$/ do |email|
+  find("#users-list").should have_content(email)
 end

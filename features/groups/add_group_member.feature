@@ -62,22 +62,46 @@ Feature: Member adds user to group
     Then I should be notified that the email address is invalid
     And "Hannah" should not be a member of the group
 
+
+  Scenario: Subgroup member adds members to subgroup
+    Given I am a member of a group
+    And I am a member of a subgroup invitable by members
+    And "David" is a member of the group
+    And "Joe" is a member of the group
+    When I visit the subgroup page
+    And I click add new member
+    And I select "David" from the list of members
+    And I select "Joe" from the list of members
+    And I click "Invite members"
+    Then I should see "David" as a member of the subgroup
+    And I should see "Joe" as a member of the subgroup
+
+  Scenario: Subgroup member cannot add members to a subgroup invitable by admins
+    Given I am a member of a group
+    And I am a member of a subgroup invitable by admins
+    When I visit the subgroup page
+    Then I should not see the add member button
+
   Scenario: Member adds a user invited to the parent group to a subgroup invitable by members
     Given I am a member of a group
     And "david@example.org" has been invited to the group but has not accepted
     And I am a member of a subgroup invitable by members
     When I visit the subgroup page
     And I click add new member
-    Then I should see "david@example.org" in the list
-    When I select "david@example.org" and click Invite members
-    Then "david@example.org" should become an invited user for the subgroup
+    And I select "david@example.org" from the list of members
+    And I click "Invite members"
+    Then I should see "david@example.org" as an invited user of the subgroup
 
-  Scenario: Member attempts to add a user invited to the parent group to a subgroup invitable by admins
+  Scenario: Group member cannot see invited users when adding subgroup members (if parent group is invitable by admins)
     Given I am a member of a group
+    And the group is invitable by admins
     And "david@example.org" has been invited to the group but has not accepted
-    And I am a member of a subgroup invitable by admins
+    And "Joe" is a member of the group
+    And I am a member of a subgroup invitable by members
     When I visit the subgroup page
-    Then I should not see the add member button
+    And I click add new member
+    Then I should not see "david@example.org" in the list
+    But I should see "Joe" in the list
 
   Scenario: Admin adds a user invited to the parent group to a subgroup invitable by admins
     Given I am a member of a group
@@ -86,5 +110,6 @@ Feature: Member adds user to group
     When I visit the subgroup page
     And I click add new member
     Then I should see "david@example.org" in the list
-    When I select "david@example.org" and click Invite members
-    Then "david@example.org" should become an invited user for the subgroup
+    When I select "david@example.org" from the list of members
+    And I click "Invite members"
+    Then I should see "david@example.org" as an invited user of the subgroup
