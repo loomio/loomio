@@ -14,7 +14,7 @@ end
 
 When /^I fill in the discussion details and submit the form$/ do
   @discussion_title = Faker::Lorem.sentence
-  @discussion_description = Faker::Lorem.paragraph
+  @discussion_description = Faker::Lorem.paragraph + "*markdown*"
   fill_in 'discussion_title', with: @discussion_title
   fill_in 'discussion_description', with: @discussion_description
   click_on 'discussion-submit'
@@ -22,6 +22,16 @@ end
 
 Then /^a discussion should be created$/ do
   Discussion.where(:title => @discussion_title).should exist
+end
+
+Then /^the discussion should inherit markdown preference from user$/ do
+  discussion = Discussion.where(:title => @discussion_title)
+  if @user.uses_markdown
+    find('.description-body').should_not have_content("*markdown*")
+  else
+    find('.description-body').should have_content("*markdown*")
+  end
+  # discussion.uses_markdown.should == @user.uses_markdown
 end
 
 Given /^"(.*?)" has chosen to be emailed about new discussions and decisions for the group$/ do |arg1|

@@ -6,6 +6,7 @@ class MotionsController < GroupBaseController
   def create
     @motion = current_user.authored_motions.new(params[:motion])
     @motion.close_date = params[:motion][:close_date].to_datetime
+    @motion.uses_markdown = current_user.uses_markdown? ? true : false
     @group = GroupDecorator.new(@motion.group)
     authorize! :create, @motion
     if @motion.save

@@ -24,15 +24,16 @@
 
     <!--[if IE 7]>
     .long-description
-      ~ markdown(motion.description)
+      ~ conditional_markdown(motion_markdown_preference, motion.description)
     <![endif]-->
 
     <!--[if !IE 7]><!-->
     - too_long = true if motion.description && motion.description.length > 200
+    - motion_markdown_preference
     .short-description
-      ~ markdown(truncate(motion.description, length: 200, omission: '...', separator: ' '))
+      ~ conditional_markdown(motion_markdown_preference, truncate(motion.description, length: 200, omission: '...', separator: ' '))
     .long-description{style: "display: none"}
-      ~ markdown(motion.description)
+      ~ conditional_markdown(motion_markdown_preference, motion.description)
     = link_to "Show More", "#", class: 'see-more' if too_long
     <!--<![endif]-->
 

@@ -1,6 +1,6 @@
 When /^fill in the proposal details and submit the form$/ do
   @proposal_name = Faker::Lorem.sentence
-  @proposal_description = Faker::Lorem.paragraph
+  @proposal_description = Faker::Lorem.paragraph + "*markdown*"
   fill_in 'motion_name', with: @proposal_name
   fill_in 'motion_description', with: @proposal_description
   click_on 'proposal-submit'
@@ -26,4 +26,13 @@ Then /^I should see the proposal details$/ do
   find('.motion-title').should have_content(@proposal_name)
   find('.description').should have_content(proposal_description)
   find('.pie').text.blank?.should == false
+end
+
+Then /^the proposal description should inherit my markdown preference$/ do
+  motion = Motion.where(:name => @proposal_name)
+  if @user.uses_markdown
+    find('.content-proposal-body').should_not have_content("*markdown*")
+  else
+    find('.content-proposal-body').should have_content("*markdown*")
+  end
 end

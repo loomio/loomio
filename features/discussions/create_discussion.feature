@@ -6,12 +6,14 @@ Feature: User creates discussion
   Background:
     Given I am logged in
     And I am a member of a group
+    And I prefer markdown
 
   Scenario: Group member creates discussion from group page
     When I visit the group page
     And I choose to create a discussion
     And I fill in the discussion details and submit the form
     Then a discussion should be created
+    And the discussion should inherit markdown preference from user
 
   Scenario: Group member creates discussion from dashboard
     When I visit the dashboard
