@@ -2,12 +2,12 @@
 = render '/groups/title', group: @group
 .clearfix
   - if can? :create, @discussion
-    = icon_button(new_discussion_path(:group_id => @group.id), 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion')
+    = icon_button(new_discussion_path(:group_id => @group.id), t(:start_a_discussion), '/assets/topic-18.png', 'start-new-discussion')
 .row.main-content
   %section.span8
     %ul.selector-list.bordered
       #all-discussions-loading
-        %li.selector-item.loading Loading...
+        %li.selector-item.loading= t(:loading)
       #discussions-with-motions
         - @discussions.with_current_motions_user_has_not_voted_on.each do |discussion|
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
@@ -20,7 +20,7 @@
   %section.span4
     =render 'request_membership', group: @group
     .sub-panel#group-description-panel
-      %h4= "Group description"
+      %h4= t :group_description
       =render '/application/description', model: @group, model_name: "group"
     =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
     =render '/application/see_closed_motions'

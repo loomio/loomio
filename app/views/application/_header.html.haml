@@ -11,7 +11,7 @@
             %li.nav-item.dropdown#groups
               %a.nav-link{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
                 %span.header-bar-icon.nav-item-icon.large-icon.group-icon
-                %span= "Groups"
+                %span= t :groups
                 %b.caret
               %ul.dropdown-menu
                 #group-dropdown-items
@@ -22,7 +22,7 @@
                         - if current_user.group_membership(subgroup)
                           = render 'group_dropdown_item', user: current_user, group: subgroup, subgroup: true
                 %li.group-item.new-group
-                  =link_to "+ Request New Group", request_new_group_path
+                  =link_to t(:request_new_group), request_new_group_path
 
             -if notifications.present?
               %li.nav-item.dropdown#notifications-container
@@ -34,7 +34,7 @@
                   - if unviewed_notifications.present?
                     %span#notifications-count.label.label-important
                       = unviewed_notifications.size
-                  %span= "Notifications"
+                  %span= t("notifications.header")
                   %b.caret
                 %ul.dropdown-menu
                   %li

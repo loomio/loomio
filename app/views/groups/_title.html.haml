@@ -2,7 +2,7 @@
   .group-title.clearfix
     - if group
       %h1.home-title
-        = link_to "Home", "/"
+        = link_to t(:home), "/"
         = content_tag :span, "\u25B6", class: 'name-separator'
         = group.fancy_link
       = render 'groups/privacy_dropdown', :group => group
@@ -15,22 +15,22 @@
           .dropdown.btn-group.group-options
             %a.btn.btn-grey.btn-app.dropdown-toggle{ :href => "#", 'data-toggle' => 'dropdown' }
               %i.icon-cog
-              Options
-              = image_tag("dropdown.png", title:'Options', alt:'Options', class: "options-dropdown-icon")
+              = t(:options)
+              = image_tag("dropdown.png", :title => t(:options), :alt => t(:options), class: "options-dropdown-icon")
             %ul.dropdown-menu.pull-right
               - if can_email
-                %li= link_to "Email group members", "#email-members-modal", "data-toggle" => "modal"
+                %li= link_to t(:email_group_members), "#email-members-modal", "data-toggle" => "modal"
                 %hr
               - if can_edit
-                %li= link_to "Edit group settings", edit_group_path(group)
+                %li= link_to t(:edit_group_settings), edit_group_path(group)
               - if can_leave
                 - membership = current_user.group_membership(group)
-                %li= link_to "Leave group", "#", 'data-title' => "Leave group",'data-body' => "Are you sure you wish to leave #{group.name}?", 'data-confirm-path' => membership_path(membership), 'data-method-type' => 'delete', class: 'confirm-dialog', id: 'leave group'
+                %li= link_to t(:leave_group), "#", 'data-title' => t(:leave_group), 'data-body' => t(:confirm_leave_group, which_group: group.name), 'data-confirm-path' => membership_path(membership), 'data-method-type' => 'delete', class: 'confirm-dialog', id: 'leave group'
               - if can_archive
-                %li= link_to "De-activate group", "#", 'data-title' => "De-activate group", 'data-body' => "Wait!!! Are you sure you want to de-activate #{group.name}? \n\n You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@loomio.org.", 'data-confirm-path' => archive_group_path(group), 'data-method-type' => 'post', class: 'confirm-dialog', id: 'de-activate group'
+                %li= link_to t(:deactivate_group), "#", 'data-title' => t(:deactivate_group), 'data-body' => t(:confirm_deactivate_group, which_group: group.name), 'data-confirm-path' => archive_group_path(group), 'data-method-type' => 'post', class: 'confirm-dialog', id: 'de-activate group'
         - if can_email
           #email-members-modal.modal.hidden
             = render "groups/email_members", :group => group
     - else
       %h1.home-title
-        = link_to "Home", "/"
+        = link_to t(:home), "/"

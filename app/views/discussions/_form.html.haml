@@ -1,7 +1,7 @@
 .row
   .span5
     = simple_form_for discussion, :validate => true do |f|
-      %h2= t "discussion_form.start_discussion"
+      %h2= t "discussion_form.header"
       .control-group
         - if @user_groups
           %p= t "discussion_form.who"
@@ -10,4 +10,4 @@
           = f.input :group_id, :as => :hidden
       = f.input :title
       = f.input :description
-      = f.submit :class => "btn btn-large btn-info", id: "discussion-submit", :data => {:disable_with => t("discussion_form.starting")}
+      = f.submit :class => "btn btn-large btn-info", id: "discussion-submit", :data => {:disable_with => t("starting")}

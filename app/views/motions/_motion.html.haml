@@ -4,17 +4,17 @@
       .clearfix
         %h3.motion-title.word-break= motion.name
         - if motion.closed?
-          %span.label.label-important Closed
+          %span.label.label-important= t(:closed)
       #closing-info
         - if motion.has_close_date?
           - if motion.voting?
-            = "Closing in #{time_ago_in_words(motion.close_date)}"
+            = t(:proposal_closing_when, when: time_ago_in_words(motion.close_date))
           - else
-            %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
+            %span= t(:proposal_closed_when, when: time_ago_in_words(motion.close_date))
         - else
           No close date
       .proposed-by
-        = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
+        = t(:proposed_when_by_who, who: time_ago_in_words(motion.created_at), when: motion.author_name)
     .span2.motion-admin-buttons
       = render '/motions/admin_buttons', motion: @current_motion unless @selected_motion || motion.closed?
   - if motion.closed?
@@ -33,22 +33,36 @@
       ~ markdown(truncate(motion.description, length: 200, omission: '...', separator: ' '))
     .long-description{style: "display: none"}
       ~ markdown(motion.description)
-    = link_to "Show More", "#", class: 'see-more' if too_long
+    = link_to t(:show_more), "#", class: 'see-more' if too_long
     <!--<![endif]-->
 
   .pie{id: "graph_#{motion.id}"}
   .percentage-to-vote
-    = "#{motion.percent_voted}% of members "
-    = "have " unless motion.closed?
-    = "stated their position (#{motion.group_count - motion.no_vote_count}/#{motion.group_count})"
+    - if motion.closed?
+      = t(:engagement_on_closed_proposal, percent: motion.percent_voted, :numerator => (motion.group_count - motion.no_vote_count), denominator:  motion.group_count)
+    - else
+      = t(:engagement_on_open_proposal, percent: motion.percent_voted, :numerator => (motion.group_count - motion.no_vote_count), denominator:  motion.group_count)
+
   .votes
     - if motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
-      %h3 State your position
+      %h3= t :state_your_position
       .vote-buttons.clearfix
-        =link_to image_tag("hand-yes.png", title:"I agree", alt:"I agree"), new_motion_vote_path(motion_id: motion.id, position: 'yes'), "title" => "I agree", "data-content" => "I agree with this and want it to go ahead.", class: "position btn vote-yes", id: "yes-vote"
-        =link_to image_tag("hand-abstain.png", title:"I abstain", alt:"I abstain"), new_motion_vote_path(motion_id: motion.id, position: 'abstain'), "title" => "I abstain", "data-content" =>  "I am happy with what the group decides without me.", class: "position btn vote-abstain", id: "abstain-vote"
-        =link_to image_tag("hand-no.png", title:"I disagree", alt:"I disagree"), new_motion_vote_path(motion_id: motion.id, position: 'no'), "title" => "I disagree", "data-content" => "I think we can do better, but if the rest of the group feels like it’s the best course of action then I’m OK with it going ahead.", class: "position btn vote-disagree", id: "no-vote"
-        =link_to image_tag("hand-block.png", title:"I block", alt:"I block"), new_motion_vote_path(motion_id: motion.id, position: 'block'), "title" => "I block", "data-content" => "I have strong objections to this proposal and am not OK with it going ahead.", class: "position btn vote-block", id: "block-vote"
+        =link_to image_tag("hand-yes.png", :title => t(:yes_position), :alt => t(:yes_position)),
+                 new_motion_vote_path(motion_id: motion.id, position: 'yes'),
+                 "title" => t(:yes_position), "data-content" => t(:yes_details),
+                 class: "position btn vote-yes", id: "yes-vote"
+        =link_to image_tag("hand-abstain.png", :title => t(:abstain_position), :alt => t(:abstain_position)),
+                 new_motion_vote_path(motion_id: motion.id, position: 'abstain'),
+                 "title" => t(:abstain_position), "data-content" => t(:abstain_details),
+                 class: "position btn vote-abstain", id: "abstain-vote"
+        =link_to image_tag("hand-no.png", :title => t(:no_position), :alt => t(:no_position)),
+                 new_motion_vote_path(motion_id: motion.id, position: 'no'),
+                 "title" => t(:no_position), "data-content" => t(:no_details),
+                 class: "position btn vote-disagree", id: "no-vote"
+        =link_to image_tag("hand-block.png", :title => t(:block_position), :alt => t(:block_position)),
+                 new_motion_vote_path(motion_id: motion.id, position: 'block'),
+                 "title" => t(:block_position), "data-content" => t(:block_details),
+                 class: "position btn vote-block", id: "block-vote"
 
     .votes-table= render "motions/votes_table", motion: motion, unique_votes: unique_votes
 

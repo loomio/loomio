@@ -1,4 +1,4 @@
-%h3 Positions
+%h3= t :positions
 - unique_votes = motion.unique_votes
 - if unique_votes.size > 0
   - if current_user && motion.user_has_voted?(current_user)
@@ -11,4 +11,4 @@
     .position-row.clearfix
       .activity-icon= image_tag "questionmark.png"
       = link_to user.name, "#", "title" => user.name, "data-content" => "#{render 'users/name_popover', user: user, group: motion.group}", :class => "user-name-with-popover"
-= link_to '[Show users who have not yet decided]', '#', class: 'toggle-yet-to-vote'
+= link_to t(:not_voted), '#', class: 'toggle-yet-to-vote'

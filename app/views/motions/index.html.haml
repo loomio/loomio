@@ -4,7 +4,7 @@
       - @closed_motions.each do |motion|
         %li.selector-item= render '/motions/motion_preview', motion: motion, this_group: @group
     - else
-      %li.selector-item.empty-list-message= "This group has not made any decisions yet."
+      %li.selector-item.empty-list-message= t(:empty_decision_index)
   #closed-motions-loading
-    %li.selector-item.loading Loading...
+    %li.selector-item.loading= t(:loading)
 = paginate @closed_motions, :window => 3, :remote => :true
