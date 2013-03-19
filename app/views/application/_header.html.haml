@@ -1,4 +1,4 @@
-.logged-in-navigation 
+.logged-in-navigation
   .navbar.navbar-fixed-top
     .navbar-inner
       .container
@@ -38,14 +38,14 @@
                   %b.caret
                 %ul.dropdown-menu
                   %li
-                    %h3 Notifications
+                    %h3= t("notifications.header")
                   %li#notification-dropdown-items
                     %ul
                       - if notifications.empty?
-                        %li.notifications-placeholder You do not have any notifications yet.
+                        %li.notifications-placeholder= t :empty_notifications
                       - notifications.each do |notification|
                         = render notification
-                  %li#notifications-see-more= link_to "See all notifications", notifications_path
+                  %li#notifications-see-more= link_to t(:see_all_notifications), notifications_path
 
             %li.nav-item.dropdown#user
               %a.nav-link{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
@@ -54,15 +54,15 @@
                   = current_user.name
                 %b.caret
               %ul.dropdown-menu
-                %li= link_to "User Settings", user_settings_path
-                %li= link_to "Email Preferences", email_preferences_path
-                %li= link_to('Sign out', destroy_user_session_path, method: :delete)
+                %li= link_to t(:user_settings), user_settings_path
+                %li= link_to t(:email_preferences), email_preferences_path
+                %li= link_to(t(:sign_out), destroy_user_session_path, method: :delete)
 
             %li.nav-item#feedback
               %a.nav-link{:href => 'mailto:contact@loomio.org', :target => '_blank'}
-                Give us feedback
+                = t :feedback
 
           - else
             %li.nav-item#sign-in
               %a.nav-link{:href => new_user_session_path}
-                Sign in
+                = t :sign_in

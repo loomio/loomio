@@ -2,15 +2,15 @@
   .span5#group-form
     %h1= form_title
     = simple_form_for group, :validate => true do |f|
-      = f.input :name, :label => "Group Name", input_html: {class: "rm-margin-bottom"}
-      %h2 Privacy Settings
+      = f.input :name, input_html: {class: "rm-margin-bottom"}
+      %h2= t "group_form.privacy_settings"
       - if group.parent.nil?
-        - suffix = "group"
-        = f.input :viewable_by, :collection => {'Public - anyone with the link can see this group' => 'everyone', 'Members - only members of this group can see it' => 'members'}, :as => 'radio_buttons', :label => "Who can see this group?"
+        - group_or_subgroup = "group"
+        = f.input :viewable_by, :collection => {t("group_form.everyone_details", group_or_subgroup: group_or_subgroup) => 'everyone', t("group_form.members_details", group_or_subgroup: group_or_subgroup) => 'members'}, :as => 'radio_buttons', :label => t("simple_form.labels.group.viewable_by", group_or_subgroup: group_or_subgroup)
       - else
-        - suffix = "sub-group"
-        = f.input :viewable_by, :collection => {'Public - anyone with the link can see this sub-group' => 'everyone', 'Parent group members - only members of the main group can view this sub-group' => 'parent_group_members', 'Members - only members of this sub-group can see it' => 'members'}, :as => 'radio_buttons', :label => "Who can see this sub-group?"
-      %h2 Invitation Settings
-      = f.input :members_invitable_by, :label => "Who can invite members to this #{suffix}?", :as => "radio_buttons", :collection => {'All group members' => 'members', 'Admins only' => 'admins'}
+        - group_or_subgroup = "sub-group"
+        = f.input :viewable_by, :collection => { t("group_form.everyone_details", group_or_subgroup: group_or_subgroup) => 'everyone', t("group_form.parent_group_members_details", group_or_subgroup: group_or_subgroup) => 'parent_group_members', t("group_form.members_details", group_or_subgroup: group_or_subgroup) => 'members'}, :as => 'radio_buttons', :label => t("simple_form.labels.group.viewable_by", group_or_subgroup: group_or_subgroup)
+      %h2= t "group_form.invitation_settings"
+      = f.input :members_invitable_by, :label => t("simple_form.labels.group.invitable_by", group_or_subgroup: group_or_subgroup), :as => "radio_buttons", :collection => {t("group_form.all_group_members", group_or_subgroup: group_or_subgroup) => 'members', t("group_form.admins_only") => 'admins'}
       = f.input :parent_id, :as => :hidden, :input_html => { :value => parent.id } unless parent.nil?
       = f.button :submit, submit_text, :class => "btn btn-info btn-large", :data => { :disable_with => disable_text }, :id => "group_form_submit"

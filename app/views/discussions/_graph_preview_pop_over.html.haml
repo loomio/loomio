@@ -4,11 +4,11 @@
     %div{:class => 'activity-icon ' + vote_icon_name(user.get_position_for(motion))}
 
 .popover-engagement
-  = "Engagement #{motion.percent_voted}%"
+  = t(:engagement) + " #{motion.percent_voted}%"
 
 - if motion_activity > 0
   .popover-header
-    New activity
+    =t :new_activity
   %ul.popover-activity-list
     - motion.votes.order('created_at DESC')[(0..motion_activity - 1)].each do |vote|
       %li.popover-item

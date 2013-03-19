@@ -1,6 +1,10 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
+#
+# APPLICATION
+#
+
 en:
   errors:
     messages:
@@ -62,7 +66,22 @@ en:
     motion_blocked: "blocked the proposal"
 
   edit_model_info: "Edit %{which_model} info"
-  request_new_group: "+ Request New Group"
+  request_new_group: "Request New Group"
+  request_new_group_details: or wait until you are invited to one.
+  empty_notifications: "You do not have any notifications yet."
+  see_all_notifications: "See all notifications"
+  user_settings: "User Settings"
+  email_preferences: "Email Preferences"
+  sign_out: "Sign out"
+  feedback: "Give us feedback"
+  sign_in: "Sign in"
+  sign_in_details: "to participate. You are currently logged out."
+  tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
+
+  not_found: "not found"
+  not_found_details: "The %{item} you tried to access does not exist. It may have been deleted."
+  click_to_dismiss: "Click here to dismiss this message"
+  generic_confirm: "Are you sure?"
 
   #
   # GROUP PAGE
@@ -148,10 +167,13 @@ en:
   discussion: "Discussion"
   current_decision: "Current decision"
   previous_decisions: "Previous decisions"
+  see_previous_decisions: "See previous decisions"
   create_new_proposal: "Create new proposal"
   empty_decision_list: "There is not currently an open proposal under discussion"
   empty_decision_index: "This group has not made any decisions yet."
   empty_discussion_list: "There isn't any activity in this discussion yet."
+  empty_discussion_index: "There are no discussions in any of your groups"
+  empty_discussion_index_group: "This group does not have any discussions yet."
 
   discussion_context:
     started_when: "Started %{when} ago"
@@ -214,6 +236,30 @@ en:
   outcome_placeholder: "What was the outcome of this proposal?"
 
   #
+  # SIGN IN
+  #
+
+  resend_confirmation: "Resend confirmation instructions"
+  new_password: "New password"
+  confirm_new_password: "Confirm new password"
+  change_your_password: "Change your password"
+  change_my_password: "Change my password"
+  send_password_reset: "Send me reset password instructions"
+  blank_details: "(leave blank if you don't want to change it)"
+  password_confirmation: "Password confirmation"
+  current_password: "Current password"
+  password_details: "(we need your current password to confirm your changes)"
+  cancel_my_account: "Cancel my account"
+  remember_me: "Remember me"
+  signing_in: "Signing in"
+  dont_have_account: "Don't have an account?"
+  closed_beta: "We're currently in closed testing and not accepting public sign-ups (yet!)."
+  closed_beta_details: "If you belong to a group that is using Loomio but you don't have your own Loomio account, please contact the person in your organization who set up Loomio and ask them to add you to the group."
+  forgot_your_password: "Forgot your password?"
+  confirmation_not_received: "Didn't receive confirmation instructions?"
+  unlock_not_received: "Didn't receive unlock instructions?"
+
+  #
   # FORMS
   #
 
@@ -226,6 +272,15 @@ en:
     header: "New proposal"
     name_helper: "Make the title as clear and succinct as possible so people know exactly what it means when they agree or disagree with your proposal."
 
+  group_form:
+    privacy_settings: "Privacy Settings"
+    everyone_details: "Public - anyone with the link can see this %{group_or_subgroup}"
+    members_details: "Members - only members of this %{group_or_subgroup} can see it"
+    parent_group_members_details: "Parent group members - only members of the main group can view this sub-group"
+    invitation_settings: "Invitation Settings"
+    all_group_members: "All %{group_or_subgroup} members"
+    admins_only: "Admins only"
+
   simple_form:
     labels:
       discussion:
@@ -234,6 +289,10 @@ en:
       motion:
         name: "Title"
         description: "Details"
+      group:
+        name: "Group Name"
+        viewable_by: "Who can see this %{group_or_subgroup}?"
+        invitable_by: "Who can invite members to this %{group_or_subgroup}?"
     placeholders:
       discussion:
         title: "What is the topic you'd like to discuss?"
@@ -255,6 +314,7 @@ en:
 
   ago: "ago"
   approve: "Approve"
+  back: "Back"
   by: "By"
   cancel: "Cancel"
   change: "Change"
@@ -266,6 +326,7 @@ en:
   edit: "Edit"
   email_address: "Email address"
   enable: "Enable"
+  engagement: "Engagement"
   disable: "Disable"
   groups: "Groups"
   group_admin: "Group Admin"
@@ -273,6 +334,8 @@ en:
   like: "Like"
   loading: "Loading..."
   message: "Message"
+  new_activity: "New activity"
+  password: "Password"
   options: "Options"
   save: "Save"
   saving: "Saving"
@@ -283,3 +346,5 @@ en:
   starting: "Starting"
   subject: "Subject"
   unlike: "Unlike"
+  until_close: "until close"
+  update: "Update"
