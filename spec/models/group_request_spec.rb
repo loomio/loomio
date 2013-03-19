@@ -15,36 +15,35 @@ describe GroupRequest do
     group_request.should be_marked_as_spam
   end
 
-  describe "#sectors_metric" do
+  describe "#sectors" do
     it "returns an array" do
-      group_request.sectors_metric = ["community", "business"]
+      group_request.sectors = ["community", "business"]
       group_request.save
       group_request.reload
-      group_request.sectors_metric[0].should == "community"
-      group_request.sectors_metric[1].should == "business"
+      group_request.sectors[0].should == "community"
+      group_request.sectors[1].should == "business"
     end
   end
 
   it "should have 'other_sector' string field" do
-    group_request.other_sectors_metric = "logging"
+    group_request.other_sector = "logging"
     group_request.save
-    group_request.other_sectors_metric.should == "logging"
+    group_request.other_sector.should == "logging"
   end
 
-  describe "#approve!" do
-    let(:invitation) { stub :token => "1234" }
+  describe "#approve_request" do
     let(:group) { mock_model Group }
-    let(:mailer) { stub :deliver => true }
+    # let(:mailer) { stub :deliver => true }
 
     before do
       Group.stub :new => group
       group.stub :creator=
       group.stub :creator => stub(:user)
-      group.stub :cannot_contribute=
+      group.stub :country_name=
+      group.stub :sectors=
+      group.stub :other_sector=
       group.stub :max_size=
-      group.stub :distribution_metric=
-      group.stub :sectors_metric=
-      group.stub :other_sectors_metric=
+      group.stub :cannot_contribute=
       group.stub :create_welcome_loomio
       group.stub :save!
       InvitesUsersToGroup.stub :invite!
@@ -54,11 +53,11 @@ describe GroupRequest do
       Group.should_receive(:new).with(:name => group_request.name).
             and_return(group)
       group.should_receive(:creator=)
-      group.should_receive(:cannot_contribute=)
+      group.should_receive(:country_name=)
+      group.should_receive(:sectors=)
+      group.should_receive(:other_sector=)
       group.should_receive(:max_size=)
-      group.should_receive(:distribution_metric=)
-      group.should_receive(:sectors_metric=)
-      group.should_receive(:other_sectors_metric=)
+      group.should_receive(:cannot_contribute=)
       group.should_receive(:create_welcome_loomio)
       group.should_receive(:save!)
       group_request.approve!

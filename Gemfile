@@ -11,6 +11,7 @@ gem "jquery-scrollto-rails"
 gem 'inherited_resources'
 gem 'formtastic' # Deprecated - use simple_form instead.
 gem 'simple_form', '~> 2.0.0'
+gem "country_select", "~> 1.1.3"
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form', '~> 2.0.0'
 gem 'jqplot-rails'

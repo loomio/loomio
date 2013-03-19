@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe GroupRequestsController do
   let(:group_request) { build :group_request }
+
   describe "#new" do
     before do
       GroupRequest.stub(:new => group_request)
@@ -20,7 +21,7 @@ describe GroupRequestsController do
 
   describe "#create" do
     it "should redirect to the confirmation page" do
-      put :create, :group_request => group_request.attributes
+      post :create, :group_request => attributes_for(:group_request)
       response.should redirect_to(group_request_confirmation_url)
     end
   end

@@ -1,17 +1,19 @@
 class GroupRequest < ActiveRecord::Base
-  attr_accessible :admin_email, :description, :expected_size, :name,
-                  :cannot_contribute, :max_size, :robot_trap, :sectors_metric,
-                  :other_sectors_metric, :distribution_metric
+
+  attr_accessible :admin_name, :admin_email, :country_name, :name, :sectors, :other_sector,
+                  :description, :expected_size, :max_size, :cannot_contribute, :robot_trap
 
   attr_accessor :robot_trap
 
-  validates :name, :presence => true, :length => {:maximum => 250}
-  validates :description, :presence => true
-  validates :admin_email, :presence => true, :email => true
-  validates :expected_size, :presence => true
-  validates :distribution_metric, :presence => true
+  validates :admin_name, presence: true, length: {maximum: 250}
+  validates :admin_email, presence: true, email: true
+  validates :country_name, presence: true
+  validates :name, presence: true, length: {maximum: 250}
+  validates :sectors, presence: true
+  validates :description, presence: true
+  validates :expected_size, presence: true
 
-  serialize :sectors_metric, Array
+  serialize :sectors, Array
 
   belongs_to :group
 
@@ -49,11 +51,11 @@ class GroupRequest < ActiveRecord::Base
   def approve_request
     @group = Group.new :name => name
     @group.creator = User.loomio_helper_bot
-    @group.cannot_contribute = cannot_contribute
+    @group.country_name = country_name
+    @group.sectors = sectors
+    @group.other_sector = other_sector
     @group.max_size = max_size
-    @group.sectors_metric = sectors_metric
-    @group.other_sectors_metric = other_sectors_metric
-    @group.distribution_metric = distribution_metric
+    @group.cannot_contribute = cannot_contribute
     @group.save!
     @group.create_welcome_loomio
     self.group_id = @group.id

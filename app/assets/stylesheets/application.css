@@ -17,6 +17,5 @@
  *= require votes
  *= require users
  *= require memberships
- *= require group_requests
  *= require invitations
 */
