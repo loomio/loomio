@@ -31,7 +31,6 @@ Then /^the discussion should inherit markdown preference from user$/ do
   else
     find('.description-body').should have_content("*markdown*")
   end
-  # discussion.uses_markdown.should == @user.uses_markdown
 end
 
 Given /^"(.*?)" has chosen to be emailed about new discussions and decisions for the group$/ do |arg1|

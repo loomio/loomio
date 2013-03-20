@@ -2,3 +2,7 @@
   - group = GroupDecorator.decorate(@discussion.group) if @discussion.group
   = render '/groups/title', group: group
   = render "/discussions/form", :discussion => @discussion, :user_groups => @user_groups
+  .dropdown#comment-markdown-dropdown
+    %a.dropdown-toggle{href:'#comment-markdown-dropdown', id:'markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
+      = markdown_img(@uses_markdown)
+    = render 'markdown_settings'

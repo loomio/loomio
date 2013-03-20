@@ -19,7 +19,7 @@ $ ->
 
 $ ->
   if $("body.discussions.show").length > 0
-    $("textarea").atWho "@", 
+    $("textarea").atWho "@",
       cache: false
       tpl: "<li id='${id}' data-value='${username}'> ${name} <small> @${username}</small></li>"
       callback: (query, callback) ->
@@ -32,20 +32,56 @@ $ ->
             callback _.toArray(names)
         ), "json"
 
+# post Comment markdown buttons
 $ ->
   if $("body.discussions.show").length > 0
+    $("#comment-markdown-dropdown .enable-markdown").click((event) ->
+      updateMarkdownUserSetting(this, true)
+    )
+$ ->
+  if $("body.discussions.show").length > 0
+    $("#comment-markdown-dropdown .disable-markdown").click((event) ->
+      updateMarkdownUserSetting(this, false)
+    )
+
+updateMarkdownUserSetting = (selected, usesMarkdown) ->
+  $('#comment-markdown-dropdown .uses_markdown').val(usesMarkdown)
+  $('#comment-markdown-dropdown .markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
+  $(selected).children().first().children().addClass('icon-ok')
+  $("#markdown-settings-form").submit()
+  event.preventDefault()
+
+# create Discussion markdown buttons
+$ ->
+  if $("body.discussions.new").length > 0
     $("#enable-markdown").click((event) ->
       updateMarkdownSetting(this, true)
     )
 $ ->
-  if $("body.discussions.show").length > 0
+  if $("body.discussions.new").length > 0
     $("#disable-markdown").click((event) ->
       updateMarkdownSetting(this, false)
     )
 
-updateMarkdownSetting = (selected, usesMarkdown) ->
-  $("#uses_markdown").val(usesMarkdown)
-  $('#markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
+# edit Discussion description makdown buttons
+$ ->
+  if $("body.discussions.show").length > 0
+    $("#discussion-markdown-dropdown .enable-markdown").click((event) ->
+      updateMarkdownForDiscussion(this, true)
+    )
+$ ->
+  if $("body.discussions.show").length > 0
+    $("#discussion-markdown-dropdown .disable-markdown").click((event) ->
+      updateMarkdownForDiscussion(this, false)
+    )
+
+updateMarkdownForDiscussion = (selected, usesMarkdown) ->
+  $('#description-edit-form .uses_markdown').val(usesMarkdown)
+  $('#discussion-markdown-dropdown .uses_markdown').val(usesMarkdown)
+  $('#discussion-markdown-dropdown .markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
   $(selected).children().first().children().addClass('icon-ok')
-  $("#markdown-settings-form").submit()
-  event.preventDefault()
+  image_tag = $('#discussion-markdown-dropdown-link')
+  if usesMarkdown
+    image_tag.html("<img alt='Markdown_on' class='markdown-icon markdown-on' src='/assets/markdown_on.png'>")
+  else
+    image_tag.html("<img alt='Markdown_off' class='markdown-icon markdown-off' src='/assets/markdown_off.png'>")

@@ -48,9 +48,9 @@ module DiscussionsHelper
 
   def markdown_img(uses_markdown)
     if uses_markdown
-      image_tag("markdown_on.png", :id => 'markdown-icon', class: 'markdown-on')
+      image_tag("markdown_on.png", class: 'markdown-icon markdown-on')
     else
-      image_tag("markdown_off.png", :id => 'markdown-icon', class: 'markdown-off')
+      image_tag("markdown_off.png", class: 'markdown-icon markdown-off')
     end
   end
 end
