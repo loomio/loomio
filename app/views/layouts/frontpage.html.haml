@@ -7,6 +7,7 @@
     = stylesheet_link_tag    "frontpage"
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
+    = render 'google_analytics'
 
   %body{class: "#{controller_name} #{action_name}"}
     .container.home-flash
