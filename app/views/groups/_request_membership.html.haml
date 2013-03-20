@@ -5,9 +5,9 @@
       - if membership_request.present?
         = link_to "Membership Requested", membership_request, method: :delete,
           confirm: "Are you sure you wish to withdraw your membership request from this group?",
-          class: "btn btn-small", id: "membership-requested"
+          class: "btn", id: "membership-requested"
       - else
         - if group.parent.nil? || current_user.group_membership(group.parent)
           =form_for(Membership.new) do |f|
             %input{name: "membership[group_id]", type: :hidden, value: group.id}
-              =submit_tag "Request membership", class: "btn btn-small"
+              =submit_tag "Request membership", class: "btn"
