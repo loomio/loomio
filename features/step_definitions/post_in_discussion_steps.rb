@@ -6,14 +6,14 @@ When /^I write and submit a comment$/ do
   click_on 'post-new-comment'
 end
 
-When /^I enable markdown$/ do
-  click_on 'markdown-dropdown-link'
-  click_on 'enable-markdown-link'
+When /^I enable comment markdown$/ do
+  click_on 'comment-markdown-dropdown-link'
+  find('#comment-markdown-dropdown .enable-markdown').click
 end
 
-When /^I disable markdown$/ do
-  click_on 'markdown-dropdown-link'
-  click_on 'disable-markdown-link'
+When /^I disable comment markdown$/ do
+  click_on 'comment-markdown-dropdown-link'
+  find('#comment-markdown-dropdown .disable-markdown').click
 end
 
 Then /^a comment should be added to the discussion$/ do
@@ -33,12 +33,12 @@ Then /^the comment should format markdown characters$/ do
   page.should_not have_content(@comment_markdown_text)
 end
 
-Then /^markdown should now be on by default$/ do
-  page.should have_css('.markdown-on')
+Then /^comment markdown should now be on by default$/ do
+  find('#discussion-activity-container').should have_css('.markdown-on')
 end
 
-Then /^markdown should now be off by default$/ do
-  page.should have_css('.markdown-off')
+Then /^comment markdown should now be off by default$/ do
+  find('#discussion-activity-container').should have_css('.markdown-off')
 end
 
 Then /^there should be an anchor for the comment$/ do

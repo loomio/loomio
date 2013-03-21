@@ -80,8 +80,8 @@ describe "Discussion" do
 
       context "the markdown engine" do
         before :each do
-          visit discussion_path(@discussion)
           user.update_attributes(uses_markdown: true)
+          visit discussion_path(@discussion)
         end
         it "autolinks a link" do
           fill_in 'new-comment', with: "http://loom.io"
@@ -90,16 +90,16 @@ describe "Discussion" do
           should have_link('http://loom.io', {:href => 'http://loom.io', :target => '_blank'})
         end
         it "correctly formats a complex link" do
-          fill_in 'new-comment', with: "[stuff] (http://loom.io/someone's gross url#ew \"Someone's Gross Url\")"
+          fill_in 'new-comment', with: "[stuff](http://loom.io/someone's gross url#ew) \"Someone's Gross Url\")"
           click_on 'post-new-comment'
           visit discussion_path(@discussion)
           should have_link('stuff', {:href => 'http://loom.io/someone\'s%20gross%20url#ew', :target => '_blank'})
         end
         it "correctly handles an empty link" do
-          fill_in 'new-comment', with: "[stuff] ()"
+          fill_in 'new-comment', with: "[stuff]()"
           click_on 'post-new-comment'
           visit discussion_path(@discussion)
-          should have_link('stuff', {:href => '#', :target => '_blank'})
+          should have_link('stuff', {:href => '', :target => '_blank'})
         end
         it "does not allow user inputted html" do
           fill_in 'new-comment', with: "<p id='should_not_be_here'>should_be_here</p>"
@@ -156,7 +156,7 @@ describe "Discussion" do
       end
 
       it "can see link to delete their own comments" do
-        comment = @discussion.add_comment(user, "hello!")
+        comment = @discussion.add_comment(user, "hello!", false)
         visit discussion_path(@discussion)
 
         find("#delete-comment-#{comment.id}")
@@ -165,7 +165,7 @@ describe "Discussion" do
       it "cannot see link to delete other people's comments" do
         @user2 = create(:user)
         @discussion.group.add_member!(@user2)
-        comment = @discussion.add_comment(@user2, "hello!")
+        comment = @discussion.add_comment(@user2, "hello!", false)
         visit discussion_path(@discussion)
 
         find("#comment-#{comment.id}").should_not have_content('Delete')
@@ -174,7 +174,7 @@ describe "Discussion" do
       it "can 'like' a comment" do
         @user2 = create(:user)
         @discussion.group.add_member!(@user2)
-        comment = @discussion.add_comment(@user2, "hello!")
+        comment = @discussion.add_comment(@user2, "hello!", false)
         visit discussion_path(@discussion)
         find("#like-comment-#{comment.id}")
         find_link("Like").click
@@ -188,7 +188,7 @@ describe "Discussion" do
       it "can 'unlike' a comment" do
         @user2 = create(:user)
         @discussion.group.add_member!(@user2)
-        comment = @discussion.add_comment(@user2, "hello!")
+        comment = @discussion.add_comment(@user2, "hello!", false)
         @discussion.comments.first.like(user)
 
         visit discussion_path(@discussion)

@@ -58,7 +58,6 @@ Loomio::Application.routes.draw do
     put :edit_name, on: :member
     put :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
-    post :set_markdown, on: :member
   end
 
   match "/users/dismiss_system_notice", :to => "users#dismiss_system_notice",

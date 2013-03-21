@@ -27,6 +27,11 @@ $ ->
 
 #adds bootstrap tooltip to makdown-settings-dropdown
 $ ->
-  $("#markdown-dropdown").tooltip
-    placement: "top",
+  $("#comment-markdown-dropdown").tooltip
+    placement: "left",
+    title: "Text formatting settings and info."
+
+$ ->
+  $("#discussion-markdown-dropdown").tooltip
+    placement: "left",
     title: "Text formatting settings and info."
