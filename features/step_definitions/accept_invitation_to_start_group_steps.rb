@@ -1,6 +1,7 @@
 Given /^I have requested to start a loomio group$/ do
   @admin_email = @user ? @user.email : "test@example.org"
-  @group_request = FactoryGirl.create :group_request, admin_email: @admin_email
+  @group_request = FactoryGirl.create :group_request, admin_email: @admin_email, status: 'verified'
+  reset_mailer
 end
 
 Given /^the group request has been approved$/ do

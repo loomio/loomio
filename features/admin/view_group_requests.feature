@@ -8,9 +8,14 @@ Feature: Loomio admin views group requests
     And I am logged in
     And there are many group requests
 
-  Scenario: Loomio admin views group requests
+  Scenario: Loomio admin views verified group requests
     When I visit the Group Requests page on the admin panel
-    Then I should only see the unapproved group requests
+    Then I should only see the verified group requests
+
+  Scenario: Loomio admin views unverified group requests
+    When I visit the Group Requests page on the admin panel
+    And I click to see unverified group requests
+    Then I should only see the unverified group requests
 
   Scenario: Loomio admin views approved group requests
     When I visit the Group Requests page on the admin panel

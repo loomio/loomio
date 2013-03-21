@@ -39,12 +39,21 @@ When /^I fill in and submit the Request New Group Form incorrectly$/ do
   find("#submit-group-request").click
 end
 
+When /^I open the verification email sent to me$/ do
+  open_email(@group_admin_email)
+end
+
+When /^I click the verification link$/ do
+  click_first_link_in_email
+end
+
 Then /^a new Loomio group request should be created$/ do
-  GroupRequest.where(:name => @group_name).size.should == 1
+  @group_request = GroupRequest.where(:name => @group_name).first
+  @group_request.should_not be_nil
 end
 
 Then /^I should be told that my request will be reviewed shortly$/ do
-  page.should have_css("body.group_requests.confirmation")
+  page.should have_css("body.group_requests.verify")
 end
 
 Then /^a new Loomio group request should not be created$/ do
@@ -58,3 +67,13 @@ end
 Then /^I should still see the Group Request Form$/ do
   page.should have_css("#new_group_request")
 end
+
+Then /^I should be told to check my inbox for a verification email$/ do
+  page.should have_content("Please check your email for a verification link")
+end
+
+Then /^the group request should be marked as verified$/ do
+  @group_request.reload
+  @group_request.status.should == 'verified'
+end
+

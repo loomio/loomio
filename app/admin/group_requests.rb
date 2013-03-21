@@ -1,8 +1,10 @@
 ActiveAdmin.register GroupRequest do
-  scope :awaiting_approval, :default => true
+  scope :unverified
+  scope :verified, :default => true
   scope :approved
+  scope :manually_approved
   scope :accepted
-  scope :ignored
+  scope :defered
   scope :marked_as_spam
   scope :all
 
@@ -18,27 +20,36 @@ ActiveAdmin.register GroupRequest do
     column :admin_email
     column "Approve" do |group_request|
       link = ""
-      unless group_request.approved? or group_request.accepted?
+      if group_request.verified? or group_request.defered?
         link += link_to "Approve",
                approve_admin_group_request_path(group_request.id),
                :method => :put, :id => "approve_group_request_#{group_request.id}"
       end
-      if group_request.awaiting_approval? or group_request.marked_as_spam?
-        link += " | "
-        link += link_to "Ignore",
-                ignore_admin_group_request_path(group_request.id),
-                :method => :put, :id => "ignore_group_request_#{group_request.id}"
-      end
-      if group_request.awaiting_approval? or group_request.ignored?
+      if group_request.unverified? or group_request.verified? or group_request.defered?
         link += " | "
         link += link_to "Already Approved",
                mark_as_manually_approved_admin_group_request_path(group_request.id),
                :method => :put, :id => "approve_group_request_#{group_request.id}"
+      end
+      if group_request.verified?
+        link += " | "
+        link += link_to "Defer",
+                defer_admin_group_request_path(group_request.id),
+                :method => :put, :id => "defer_group_request_#{group_request.id}"
+      end
+      if group_request.unverified? or group_request.verified? or group_request.defered?
         link += " | "
         link += link_to "Mark as Spam",
                mark_as_spam_admin_group_request_path(group_request.id),
                :method => :put, :id => "mark_as_spam_group_request_#{group_request.id}"
       end
+      if group_request.marked_as_spam? or group_request.manually_approved?
+        link += " | "
+        link += link_to "Mark as Unverified",
+               mark_as_unverified_admin_group_request_path(group_request.id),
+               :method => :put, :id => "mark_as_unverified_group_request_#{group_request.id}"
+      end
+      link += " | " if link != ""
       link.html_safe
     end
     column :created_at
@@ -54,11 +65,10 @@ ActiveAdmin.register GroupRequest do
       "<a href='#{admin_group_path(group)}'>#{group.name}</a>").html_safe
   end
 
-  member_action :ignore, :method => :put do
+  member_action :defer, :method => :put do
     group_request = GroupRequest.find(params[:id])
-    group_request.ignore!
-    group = group_request.group
-    redirect_to admin_group_requests_path, :notice => "Group request ignored."
+    group_request.defer!
+    redirect_to admin_group_requests_path, :notice => "Group request defered."
   end
 
   member_action :mark_as_manually_approved, :method => :put do
@@ -74,6 +84,14 @@ ActiveAdmin.register GroupRequest do
     group_request.mark_as_spam!
     redirect_to admin_group_requests_path,
       :notice => "Group marked as 'spam': " +
+      group_request.name
+  end
+
+  member_action :mark_as_unverified, :method => :put do
+    group_request = GroupRequest.find(params[:id])
+    group_request.mark_as_unverified!
+    redirect_to admin_group_requests_path,
+      :notice => "Group marked as 'unverified': " +
       group_request.name
   end
 
