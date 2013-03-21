@@ -7,7 +7,11 @@ Feature: User requests to create a group on Loomio
     When I visit the Request New Group page
     And I fill in and submit the Request New Group Form
     Then a new Loomio group request should be created
-    And I should be told that my request will be reviewed shortly
+    And I should be told to check my inbox for a verification email
+    When I open the verification email sent to me
+    And I click the verification link
+    Then I should be told that my request will be reviewed shortly
+    And the group request should be marked as verified
 
   Scenario: User submits an incorrect Request New Group Form
     When I visit the Request New Group page
@@ -19,4 +23,4 @@ Feature: User requests to create a group on Loomio
     When I visit the Request New Group page
     And I fill in and submit the Request New Group Form as a Robot
     Then a new Loomio group request should be created and marked as spam
-    And I should be told that my request will be reviewed shortly
+    And I should be told to check my inbox for a verification email

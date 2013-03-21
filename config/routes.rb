@@ -4,6 +4,7 @@ Loomio::Application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions', invitations: 'users/invitations' }
 
   resources :group_requests, only: [:create, :new] do
+    get :verify, on: :member
     get :start_new_group, on: :member
   end
   match "/request_new_group", to: "group_requests#start", as: :request_new_group

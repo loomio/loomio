@@ -26,6 +26,6 @@ Feature: Loomio admin approves group request to join Loomio
   Scenario: Loomio admin ignores a group request
     When I visit the Group Requests page on the admin panel
     And I ignore the request
-    Then the group request should be marked as ignored
+    Then the group request should be marked as defered
     And I should be redirected to the Group Requests page
     And I should no longer see the request

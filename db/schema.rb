@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314013601) do
+ActiveRecord::Schema.define(:version => 20130321035625) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -169,15 +169,6 @@ ActiveRecord::Schema.define(:version => 20130314013601) do
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
-
-  create_table "invitations", :force => true do |t|
-    t.string  "recipient_email"
-    t.integer "inviter_id"
-    t.integer "group_id"
-    t.string  "token"
-    t.boolean "accepted",         :default => false
-    t.integer "group_request_id"
-  end
 
   create_table "memberships", :force => true do |t|
     t.integer  "group_id"

@@ -44,7 +44,7 @@ describe GroupRequestsController do
     end
     context "token is incorrect" do
       context "group request is approved"
-      context "group request is awaiting_approval"
+      context "group request is unverified"
       context "group request is "
       it "renders the invalid start group link page"
     end

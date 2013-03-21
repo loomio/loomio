@@ -35,9 +35,9 @@ Then /^the group request should be marked as approved$/ do
   @group_request.should be_approved
 end
 
-Then /^the group request should be marked as ignored$/ do
+Then /^the group request should be marked as defered$/ do
   @group_request.reload
-  @group_request.should be_ignored
+  @group_request.should be_defered
 end
 
 Then /^an invitation email should be sent to the group admin$/ do

@@ -1,5 +1,5 @@
 class GroupRequestsController < BaseController
-  before_filter :authenticate_user!, except: [:start, :start_new_group, :new, :create, :confirmation]
+  before_filter :authenticate_user!, except: [:start, :verify, :start_new_group, :new, :create, :confirmation]
 
   def new
     @group_request = GroupRequest.new
@@ -15,6 +15,11 @@ class GroupRequestsController < BaseController
   end
 
   def confirmation
+  end
+
+  def verify
+    group_request = GroupRequest.find_by_token(params[:token])
+    group_request.verify!
   end
 
   def start_new_group

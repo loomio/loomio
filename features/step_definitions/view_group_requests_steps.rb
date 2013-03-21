@@ -1,5 +1,5 @@
 Given /^there are many group requests$/ do
-  @unapproved_group_request = FactoryGirl.create :group_request, status: :awaiting_approval
+  @unapproved_group_request = FactoryGirl.create :group_request, status: :unverified
   @approved_group_request = FactoryGirl.create :group_request, status: :approved
   @accepted_group_request = FactoryGirl.create :group_request, status: :accepted
   @group_requests = [@unapproved_group_request, @approved_group_request, @accepted_group_request]
