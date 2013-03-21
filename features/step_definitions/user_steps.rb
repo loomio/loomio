@@ -13,7 +13,7 @@ end
 
 Given /^I am logged in$/ do
   @user ||= FactoryGirl.create :user
-  login @user.email, "password"
+  login_automatically @user
 end
 
 Given /^I prefer markdown$/ do

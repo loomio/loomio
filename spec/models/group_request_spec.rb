@@ -47,7 +47,7 @@ describe GroupRequest do
       group.stub :other_sectors_metric=
       group.stub :create_welcome_loomio
       group.stub :save!
-      InvitesUsersToGroup.stub :invite!
+      StartGroupMailer.stub_chain(:invite_admin_to_start_group, :deliver)
     end
 
     it "should create a group with the group_request's attributes" do
@@ -65,11 +65,8 @@ describe GroupRequest do
     end
 
     it "should invite the admin to the group" do
-      InvitesUsersToGroup.should_receive(:invite!).
-        with(:recipient_emails => [group_request.admin_email],
-             :inviter => group.creator,
-             :group => group,
-             :access_level => "admin")
+      StartGroupMailer.should_receive(:invite_admin_to_start_group).
+                          with(group_request)
       group_request.approve!
     end
 
@@ -81,6 +78,27 @@ describe GroupRequest do
     it "should set the status to approved" do
       group_request.approve!
       group_request.should be_approved
+    end
+  end
+
+  describe "#accept!(user)" do
+    let(:group) { mock_model(Group) }
+    let(:user) { stub(:user) }
+
+    before do
+      group.stub(:add_admin!)
+      group_request.status = :approved
+      group_request.group = group
+    end
+
+    it "makes the user an admin of the group" do
+      group.should_receive(:add_admin!).with(user)
+      group_request.accept!(user)
+    end
+
+    it "sets the status to accepted" do
+      group_request.accept!(user)
+      group_request.should be_accepted
     end
   end
 
@@ -96,6 +114,13 @@ describe GroupRequest do
       group_request.ignore!
       group_request.should_receive(:approve_request)
       group_request.approve!
+    end
+  end
+
+  describe "#mark_as_spam!" do
+    it "should set the status to marked_as_spam" do
+      group_request.mark_as_spam!
+      group_request.should be_marked_as_spam
     end
   end
 end
