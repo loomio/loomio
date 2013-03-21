@@ -9,7 +9,7 @@
 %p Click the following link to start the group setup process:
 
 %strong
-  - link_url = group_invitation_url(@group, @token)
+  - link_url = start_new_group_group_request_url(@group_request, token: @token)
   %p= link_to link_url, link_url
 
 %p Your group can either be publically viewable or private. The default is private - you can change this on your group settings page:
