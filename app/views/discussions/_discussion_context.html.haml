@@ -1,6 +1,6 @@
 .row
   .span8
-    =render '/application/description', model: @discussion, model_name: "discussion", description_markdown_setting: @discussion.uses_markdown
+    =render 'description', discussion: @discussion, description: @discussion.description, description_markdown_setting: @discussion.uses_markdown
   .span3.right-context
     .helper-text.discussion-description-helper-text.hidden
       %p Use this panel to give enough context for your group to have a well-informed discussion. As the discussion progresses, anyone can add information to make it easy for new people to get up to speed.

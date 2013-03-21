@@ -1,0 +1,13 @@
+%ul.dropdown-menu.markdown-setting-dropdown
+  %li.enable-markdown
+    %a{href: '#', class: 'enable-markdown-link'}
+      %i{:class => css_for_markdown_link(target, true)}
+      = 'Enable'
+  %li.disable-markdown
+    %a{href: '#', class: 'disable-markdown-link'}
+      %i{:class => css_for_markdown_link(target, false)}
+      = 'Disable'
+  .divider
+  %li
+    %a{href: 'https://www.loomio.org/discussions/1124', target: '_blank'}
+      More info...

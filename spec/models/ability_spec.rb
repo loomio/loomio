@@ -15,8 +15,8 @@ describe "User abilities" do
     let(:discussion) { create(:discussion, group: group) }
     let(:new_discussion) { user.authored_discussions.new(
                            group: group, title: "new discussion") }
-    let(:user_comment) { discussion.add_comment(user, "hello") }
-    let(:another_user_comment) { discussion.add_comment(other_user, "hello") }
+    let(:user_comment) { discussion.add_comment(user, "hello", false) }
+    let(:another_user_comment) { discussion.add_comment(other_user, "hello", false) }
     let(:user_motion) { create(:motion, author: user, discussion: discussion) }
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
@@ -33,6 +33,7 @@ describe "User abilities" do
     it { should be_able_to(:new_proposal, discussion) }
     it { should be_able_to(:add_comment, discussion) }
     it { should be_able_to(:edit_description, discussion) }
+    it { should be_able_to(:edit_description, group) }
     it { should be_able_to(:show_description_history, discussion) }
     it { should be_able_to(:preview_version, discussion) }
     it { should be_able_to(:update_version, discussion) }
@@ -101,7 +102,7 @@ describe "User abilities" do
   context "admin of a group" do
     let(:group) { create(:group) }
     let(:discussion) { create(:discussion, group: group) }
-    let(:another_user_comment) { discussion.add_comment(other_user, "hello") }
+    let(:another_user_comment) { discussion.add_comment(other_user, "hello", false) }
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
 
     before do
@@ -144,7 +145,7 @@ describe "User abilities" do
     let(:motion) { create(:motion, discussion: discussion) }
     let(:new_discussion) { user.authored_discussions.new(
                            group: group, title: "new discussion") }
-    let(:another_user_comment) { discussion.add_comment(discussion.author, "hello") }
+    let(:another_user_comment) { discussion.add_comment(discussion.author, "hello", false) }
 
     it { should_not be_able_to(:update, group) }
     it { should_not be_able_to(:email_members, group) }

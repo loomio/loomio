@@ -3,8 +3,22 @@
 @import "mixins";
 
 /** discussion new (new loomio) modal*/
-body.discussions.new {
+body.discussions.new, body.discussions.create {
   .helper-text.align-with-input { margin-top: 20px }
+
+  #discussion-markdown-dropdown {
+    float: right;
+    margin-top: 8px;
+  }
+
+  #discussion-submit {
+    position: relative;
+    float: left;
+  }
+
+    .markdown-setting-dropdown {
+    margin-top: -14px;
+  }
 }
 
 /** discussion show form*/
@@ -77,6 +91,10 @@ body.discussions.show {
     min-height: 40px;
     border-bottom: 1px solid $light-grey;
     padding: 10px 0px 10px 50px;
+
+    #discussion-markdown-dropdown {
+      margin-top: 10px;
+    }
   }
 
   .right-context {
@@ -202,7 +220,12 @@ pre{
 
 
 /*** comments, positions & proposals in History ***/
-#markdown-dropdown li i {
+#comment-markdown-dropdown li i {
+  display: inline-block;
+  width: 15px;
+}
+
+#discussion-markdown-dropdown li i {
   display: inline-block;
   width: 15px;
 }
@@ -230,11 +253,11 @@ pre{
     float:left;
     margin-right: 10px;
   }
-  #markdown-dropdown {
+  #comment-markdown-dropdown {
     margin-top: -43px;
     margin-right: 10px;
   }
-  #markdown-setting-dropdown {
+  .markdown-setting-dropdown {
     margin-top: -20px;
   }
   #new-comment {
