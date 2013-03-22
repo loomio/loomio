@@ -8,7 +8,7 @@ class WocMailer < ActionMailer::Base
     subject = robot_trap.present? ? "[Possible spam] " : ""
     subject += "WOC Request: #{@name} - #{@email}"
     mail(
-      to: "ben@loomio.org",
+      to: "contact@loomio.org",
       reply_to: "contact@loomio.org",
       subject: subject)
   end
