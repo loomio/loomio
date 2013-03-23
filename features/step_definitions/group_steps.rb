@@ -8,9 +8,9 @@ Given /^a group(?: named)? "(.*?)"(?: exists)?$/ do |group_name|
   FactoryGirl.create(:group, :name => group_name)
 end
 
-Given /^I visit create subgroup page for group named "(.*?)"$/ do |arg1|
+Given /^I visit create subgroup page$/ do
   find("#groups").click_on("Groups")
-  find("#groups").click_on(arg1)
+  find("#groups").click_on(@group.name)
   click_link("subgroup-new")
 end
 
