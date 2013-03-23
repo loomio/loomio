@@ -1,9 +1,10 @@
   Feature: Create sub group
 
   Background:
-    Given a group "demo-group" with "furry@example.com" as admin
-    And I am logged in as "furry@example.com"
-    And I visit create subgroup page for group named "demo-group"
+    Given I am logged in
+    And I am an admin of a group
+    And I visit the group page
+    And I visit create subgroup page
 
   Scenario: Create public subgroup where all group members can invite
     When I fill details for public all members invite subgroup
