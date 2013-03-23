@@ -71,12 +71,15 @@ class GroupRequest < ActiveRecord::Base
     accept_request!
   end
 
-
-  private
-
   def send_verification
     StartGroupMailer.verification(self).deliver
   end
+
+  def send_invitation_to_start_group
+    StartGroupMailer.invite_admin_to_start_group(self).deliver
+  end
+
+  private
 
   def approve_request
     @group = Group.new name: name
@@ -90,7 +93,7 @@ class GroupRequest < ActiveRecord::Base
     @group.create_welcome_loomio
     self.group = @group
     save!
-    StartGroupMailer.invite_admin_to_start_group(self).deliver
+    send_invitation_to_start_group
   end
 
   def mark_spam
