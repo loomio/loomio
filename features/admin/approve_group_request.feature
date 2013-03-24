@@ -6,7 +6,7 @@ Feature: Loomio admin approves group request to join Loomio
   Background:
     Given I am a Loomio super-admin
     And I am logged in
-    And there is a request to join Loomio
+    And there is a verified request to join Loomio
 
   Scenario: Loomio admin sets the maximum group size
     When I visit the Group Requests page on the admin panel
@@ -18,14 +18,15 @@ Feature: Loomio admin approves group request to join Loomio
     When I visit the Group Requests page on the admin panel
     And I approve the request
     Then the group request should be marked as approved
+    And the time the request was approved should be recorded
     And the group should be created
-    And an invitation email should be sent to the group admin
+    And an invitation to start a new group should be sent to the group admin
     And I should be redirected to the Group Requests page
     And I should no longer see the request
 
-  Scenario: Loomio admin ignores a group request
+  Scenario: Loomio admin defers a group request
     When I visit the Group Requests page on the admin panel
-    And I ignore the request
+    And I defer the request
     Then the group request should be marked as defered
     And I should be redirected to the Group Requests page
     And I should no longer see the request

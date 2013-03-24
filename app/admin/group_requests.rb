@@ -12,7 +12,7 @@ ActiveAdmin.register GroupRequest do
     column :id
     column :name
     column :description
-    column "Can Contribute", :sortable => :cannot_contribute do |group_request|
+    column "Contribute?", :sortable => :cannot_contribute do |group_request|
       !group_request.cannot_contribute
     end
     column :expected_size
@@ -26,7 +26,7 @@ ActiveAdmin.register GroupRequest do
                :method => :put, :id => "approve_group_request_#{group_request.id}"
       end
       if group_request.unverified? or group_request.verified? or group_request.defered?
-        link += " | "
+         link += " | "
         link += link_to "Already Approved",
                mark_as_manually_approved_admin_group_request_path(group_request.id),
                :method => :put, :id => "approve_group_request_#{group_request.id}"
@@ -52,23 +52,71 @@ ActiveAdmin.register GroupRequest do
       link += " | " if link != ""
       link.html_safe
     end
+    column :approved_at, sortable: :approved_at
     column :created_at
     default_actions
   end
 
+  show do
+    attributes_table do
+      row :name
+      row :admin_email
+      row :description
+      row :expected_size
+      row :status if group_request.unverified? or group_request.verified?
+      if group_request.unverified?
+        row ('Resend Verification Link') { link_to "resend",
+                        resend_verification_admin_group_request_path(group_request.id),
+                        :method => :get, :id => "resend_verification_admin_group_request_#{group_request.id}" }
+      end
+      row ('Touch level') do
+        if group_request.high_touch?
+          link_to "Low Touch (click to change)", low_touch_admin_group_request_path(group_request.id),
+              :method => :put, :id => "low_touch_admin_group_request_#{group_request.id}"
+        else
+          link_to "High Touch (click to change)", high_touch_admin_group_request_path(group_request.id),
+              :method => :put, :id => "high_touch_admin_group_request_#{group_request.id}"
+        end
+      end
+      if group_request.verified? and not group_request.approved?
+        row ('Approve request') { link_to "approve", approve_admin_group_request_path(group_request.id),
+                        :method => :put, :id => "approve_admin_group_request_#{group_request.id}" }
+        row ('Defer request until a later date') { link_to "defer", defer_admin_group_request_path(group_request.id),
+                        :method => :put, :id => "defer_admin_group_request_#{group_request.id}" }
+      end
+      if group_request.approved? or group_request.manually_approved?
+        row :approved_at
+        row ('Action') { link_to "resend invitation to start group",
+                        resend_invitation_to_start_group_admin_group_request_path(group_request.id),
+                        :method => :get,
+                        :id => "resend_invitation_to_start_group_admin_group_request_#{group_request.id}" }
+      end
+      if group_request.defered?
+        row :defered_until
+        row('Action') { link_to "approve", approve_admin_group_request_path(group_request.id),
+                        :method => :put, :id => "approve_admin_group_request_#{group_request.id}" }
+      end
+      if group_request.marked_as_spam?
+        row('Mark as unverified') { link_to "reset", mark_as_unverified_admin_group_request_path(group_request.id),
+                        :method => :put, :id => "mark_as_unverified_admin_group_request_#{group_request.id}" }
+      end
+    end
+    active_admin_comments
+  end
+
   member_action :approve, :method => :put do
-    group_request = GroupRequest.find(params[:id])
-    group_request.approve!
-    group = group_request.group
+    @group_request = GroupRequest.find(params[:id])
+    @group_request.approve!
+    group = @group_request.group
     redirect_to admin_group_requests_path,
       :notice => ("Group approved: " +
       "<a href='#{admin_group_path(group)}'>#{group.name}</a>").html_safe
   end
 
   member_action :defer, :method => :put do
-    group_request = GroupRequest.find(params[:id])
-    group_request.defer!
-    redirect_to admin_group_requests_path, :notice => "Group request defered."
+    @group_request = GroupRequest.find(params[:id])
+    # @group_request.defer!
+    # redirect_to admin_group_requests_path, :notice => "Group request defered."
   end
 
   member_action :mark_as_manually_approved, :method => :put do
@@ -111,65 +159,18 @@ ActiveAdmin.register GroupRequest do
       group_request.name
   end
 
-  show do
-    attributes_table do
-      row :name
-      row :admin_email
-      row :description
-      row :expected_size
-      row :status if group_request.unverified? or group_request.verified?
-      if group_request.unverified?
-        row 'Resend Verification Link' do
-          link_to "resend", resend_verification_admin_group_request_path(group_request.id),
-                 :method => :get, :id => "resend_verification_admin_group_request_#{group_request.id}"
-        end
-      end
-      row 'Touch level' do
-      end
-      if group_request.verified? and not group_request.approved?
-        row 'Approve request' do
-          link_to "approve", approve_admin_group_request_path(group_request.id),
-                 :method => :put, :id => "approve_admin_group_request_#{group_request.id}"
-        end
-        row 'Defer request until a later date' do
-          link_to "defer", defer_admin_group_request_path(group_request.id),
-                 :method => :put, :id => "defer_admin_group_request_#{group_request.id}"
-        end
-      end
-      if group_request.approved? or group_request.manually_approved?
-        row 'Approved on' do
-        end
-        row 'Action' do
-          link_to "resend invitation to start group",
-            resend_invitation_to_start_group_admin_group_request_path(group_request.id),
-            :method => :get,
-            :id => "resend_invitation_to_start_group_admin_group_request_#{group_request.id}"
-        end
-      end
-      if group_request.defered?
-        row 'Defered until' do
-        end
-        row 'Action' do
-          link_to "approve", approve_admin_group_request_path(group_request.id),
-                 :method => :put, :id => "approve_admin_group_request_#{group_request.id}"
-        end
-      end
-      if group_request.marked_as_spam?
-        row 'Mark as unverified' do
-          link_to "reset", mark_as_unverified_admin_group_request_path(group_request.id),
-                 :method => :put, :id => "mark_as_unverified_admin_group_request_#{group_request.id}"
-        end
-      end
-    end
-    # action_item do
+  member_action :low_touch, :method => :put do
+    group_request = GroupRequest.find(params[:id])
+    group_request.set_high_touch!(false)
+    redirect_to admin_group_requests_path,
+      :notice => group_request.name + " set to low touch"
+  end
 
-      # end
-    # end
-    if group_request.verified? or group_request.defered?
-      link = link_to "Approve", approve_admin_group_request_path(group_request.id),
-               :method => :put, :id => "approve_group_request_#{group_request.id}"
-    end
-    active_admin_comments
+  member_action :high_touch, :method => :put do
+    group_request = GroupRequest.find(params[:id])
+    group_request.set_high_touch!(true)
+    redirect_to admin_group_requests_path,
+      :notice => group_request.name + " set to high touch"
   end
 
   form do |f|

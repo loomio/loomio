@@ -69,7 +69,7 @@ describe GroupRequest do
       @group_request.verify!
     end
 
-    it "should create a group with the group_request's attributes" do
+    it "creates a group with the group_request's attributes" do
       Group.should_receive(:new).with(:name => @group_request.name).
             and_return(group)
       group.should_receive(:creator=)
@@ -81,6 +81,13 @@ describe GroupRequest do
       group.should_receive(:create_welcome_loomio)
       group.should_receive(:save!)
       @group_request.approve!
+    end
+
+    it "sets the approved_at with the current time" do
+      approval_time = Time.now
+      Time.stub(:now).and_return(approval_time)
+      @group_request.approve!
+      @group_request.approved_at.should eq(approval_time)
     end
 
     it "should invite the admin to the group" do
@@ -228,6 +235,14 @@ describe GroupRequest do
     it "can set the status to unverified" do
       @group_request.mark_as_unverified!
       @group_request.should be_unverified
+    end
+  end
+
+  describe "#set_high_touch!(value)" do
+    before { @group_request.save! }
+    it "sets the high_touch to value" do
+      @group_request.set_high_touch!(true)
+      @group_request.high_touch.should be_true
     end
   end
 end

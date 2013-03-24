@@ -71,6 +71,11 @@ class GroupRequest < ActiveRecord::Base
     accept_request!
   end
 
+  def set_high_touch!(value)
+    self.high_touch = value
+    save!
+  end
+
   def send_verification
     StartGroupMailer.verification(self).deliver
   end
@@ -92,6 +97,7 @@ class GroupRequest < ActiveRecord::Base
     @group.save!
     @group.create_welcome_loomio
     self.group = @group
+    self.approved_at = Time.now
     save!
     send_invitation_to_start_group
   end

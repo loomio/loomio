@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321035625) do
+ActiveRecord::Schema.define(:version => 20130323063336) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -141,6 +141,9 @@ ActiveRecord::Schema.define(:version => 20130321035625) do
     t.string   "sectors_metric"
     t.string   "other_sectors_metric"
     t.string   "token"
+    t.boolean  "high_touch",           :default => false, :null => false
+    t.datetime "approved_at"
+    t.datetime "defered_until"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"

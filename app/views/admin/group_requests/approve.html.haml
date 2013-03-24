@@ -1,0 +1,7 @@
+%h2 Send Approval Email
+
+%h3= "To: #{@group_request.admin_email}"
+%h3= "Subject: Invitation to join Loomio"
+
+- form_tag do |f|
+  = f.input :expected_size
