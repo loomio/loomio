@@ -1,6 +1,0 @@
-- li_class = "group-item"
-- li_class += " sub-group" if subgroup
-%li{class: li_class}
-  %a.selector-link{ href: group_path(group) }
-    .group-link.clearfix
-      .group-link-name= group.name.length < 35 ? group.name : group.name[0..32]+'...'

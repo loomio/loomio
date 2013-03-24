@@ -1,4 +1,4 @@
-- if @groups.present?
+- if current_user.parent_groups.present?
   =render '/groups/title', group: nil
   .clearfix
     = icon_button(new_discussion_path, t(:start_a_discussion), '/assets/topic-18.png', 'start-new-discussion')

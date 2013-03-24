@@ -8,7 +8,6 @@ rescue NameError
 end
 
 Before do
-  DatabaseCleaner.clean
   DatabaseCleaner.start
 end
 
