@@ -10,12 +10,10 @@ When /^I fill in and submit the discussion title form$/ do
 end
 
 Then /^I should see the title change$/ do
-  pending
   find('#discussion-title').should have_content(@title_text)
 end
 
 Then /^I should see a record of my title change in the discussion feed$/ do
-  pending
   find('#activity-list').should have_content(@title_text)
 end
 

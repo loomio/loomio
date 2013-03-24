@@ -4,8 +4,7 @@ Feature: Logged out user views a discussion
   I want to view a discussion for a group I am not a member of
 
 Scenario: Logged out user views another groups discussion
-  Given there is a discussion in a group
-  And I am not a member of the group
+  Given there is a discussion in a public group
   When I visit the discussion page
   Then I should see the discussion
   And I should not see discussion options dropdown
