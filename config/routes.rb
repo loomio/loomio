@@ -1,21 +1,22 @@
-  Loomio::Application.routes.draw do
+Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  devise_for :users, :controllers => { :sessions => 'users/sessions', :invitations => 'users/invitations' }
+  devise_for :users, controllers: { sessions: 'users/sessions', invitations: 'users/invitations' }
 
-  resources :group_requests, :only => [:create, :new]
-  match "/request_new_group", :to => "group_requests#start", :as => :request_new_group
-  match "/group_request_confirmation", :to => "group_requests#confirmation", :as => :group_request_confirmation
+  resources :group_requests, only: [:create, :new] do
+    get :start_new_group, on: :member
+  end
+  match "/request_new_group", to: "group_requests#start", as: :request_new_group
+  match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
 
   resources :groups, except: [:index, :new] do
-    resources :invitations, :only => :show
     post :add_members, on: :member
     get :add_subgroup, on: :member
     resources :motions#, name_prefix: "groups_"
     resources :discussions, only: [:index, :new]
     get :request_membership, on: :member
     post :email_members, on: :member
-    post :edit_description, :on => :member
+    post :edit_description, on: :member
     post :edit_privacy, on: :member
     delete :leave_group, on: :member
   end
@@ -24,7 +25,7 @@
   match "/groups/:id/members", :to => "groups#get_members", :as => :get_members, :via => :get
 
   resources :motions do
-    resources :votes
+    resources :votes, only: [:new, :edit, :create, :update]
     post :get_and_clear_new_activity, on: :member
     put :close, :on => :member
     put :edit_outcome, :on => :member
@@ -45,8 +46,6 @@
   resources :notifications, :only => :index do
     post :mark_as_viewed, :on => :collection, :via => :post
   end
-
-  resources :votes
 
   resources :memberships, except: [:new, :update, :show] do
     post :make_admin, on: :member
@@ -89,6 +88,7 @@
   match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
   match '/privacy' => 'high_voltage/pages#show', :id => 'privacy'
   match '/blog' => 'high_voltage/pages#show', :id => 'blog'
+  match '/collaborate', to: "woc#index", as: :collaborate
 
   match "/pages/*id" => 'pages#show', :as => :page, :format => false
   root :to => 'pages#show', :id => 'home'
@@ -105,4 +105,8 @@
   match '/about' => redirect('/pages/home#who')
   match '/contact' => redirect('/pages/home#who')
   match '/demo' => redirect('/')
+
+  resources :woc, only: :index do
+    post :send_request, on: :collection
+  end
 end

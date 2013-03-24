@@ -53,7 +53,7 @@ module ApplicationHelper
     if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
       text = " "
     end
-    
+
     options = [
       :no_intra_emphasis => true,
       :tables => true,
@@ -65,7 +65,7 @@ module ApplicationHelper
     ]
 
     renderer = MarkdownRenderer.new
-    
+
     markdown = Redcarpet::Markdown.new(renderer, *options)
     markdown.render(text).html_safe
   end
@@ -80,7 +80,7 @@ module ApplicationHelper
         :no_intra_emphasis => true,
         :tables => true,
         :fenced_code_blocks => true,
-        :autolink => true,
+        :autolink => false, #ideally we would use true here, but autolink is botching % signs https://github.com/vmg/redcarpet/issues/209
         :strikethrough => true,
         :space_after_headers => true,
         :superscript => true
@@ -88,9 +88,9 @@ module ApplicationHelper
 
       renderer = MarkdownRenderer.new
       markdown = Redcarpet::Markdown.new(renderer, *options)
-      markdown.render(text).html_safe
+      Rinku.auto_link(markdown.render(text), mode=:all, 'target="_blank"').html_safe
     else
-      simple_format(Rinku.auto_link(text, mode=:all, link_attr=nil, skip_tags=nil))
+      Rinku.auto_link(simple_format(text), mode=:all, 'target="_blank"').html_safe
     end
   end
 

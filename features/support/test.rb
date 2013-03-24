@@ -18,4 +18,6 @@ unless ENV['FULL_BROWSER']
   Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(app, polter_options)
   end
+
+  # Capybara.default_driver = :rack_test
 end

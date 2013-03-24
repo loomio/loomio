@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304040051) do
+ActiveRecord::Schema.define(:version => 20130318033458) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20130304040051) do
     t.integer  "distribution_metric"
     t.string   "sectors_metric"
     t.string   "other_sectors_metric"
+    t.string   "token"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
@@ -168,17 +169,6 @@ ActiveRecord::Schema.define(:version => 20130304040051) do
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
-
-  create_table "invitations", :force => true do |t|
-    t.string   "recipient_email"
-    t.string   "access_level"
-    t.integer  "inviter_id"
-    t.integer  "group_id"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
-    t.boolean  "accepted",        :default => false
-    t.string   "token"
-  end
 
   create_table "memberships", :force => true do |t|
     t.integer  "group_id"
@@ -304,5 +294,11 @@ ActiveRecord::Schema.define(:version => 20130304040051) do
 
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
+
+  create_table "woc_options", :force => true do |t|
+    t.string   "example_discussion_url"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
 
 end

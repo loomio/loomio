@@ -210,7 +210,7 @@ describe User do
     end
 
     it "adds user to group" do
-      @group.users.should include(@user)
+      @group.invited_users.should include(@user)
     end
 
     it "adds inviter to membership" do

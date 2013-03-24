@@ -109,9 +109,15 @@ class User < ActiveRecord::Base
   after_create :ensure_name_entry
 
   scope :daily_activity_email_recipients, where("subscribed_to_daily_activity_email IS TRUE AND invitation_token IS NULL")
+  scope :sorted_by_name, order("lower(name)")
 
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
 
+  # Provide can? and cannot? as methods for checking permissions
+  def ability
+    @ability ||= Ability.new(self)
+  end
+  delegate :can?, :cannot?, :to => :ability
 
   def email_notifications_for_group?(group)
     memberships.where(:group_id => group.id, :subscribed_to_notification_emails => true).present?
@@ -303,15 +309,15 @@ class User < ActiveRecord::Base
     super && !deleted_at
   end
 
-  def avatar_url(kind = nil, size)
+  def avatar_url(size=nil, kind=nil)
+    size = size ? size.to_sym : :medium
     kind = avatar_kind if kind.nil?
-    size = size.to_sym
     case size
     when :small
       pixels = User::SMALL_IMAGE
     when :medium
       pixels = User::MEDIUM_IMAGE
-    when :medlarge
+    when :"med-large"
       pixels = User::MED_LARGE_IMAGE
     when :large
       pixels = User::LARGE_IMAGE

@@ -18,10 +18,6 @@ When /^I ignore the request$/ do
   click_link("ignore_group_request_#{@group_request.id}")
 end
 
-Then /^I should see the request$/ do
-  page.should have_css "#group_request_#{@group_request.id}"
-end
-
 Then /^I should no longer see the request$/ do
   page.should_not have_css "#group_request_#{@group_request.id}"
 end

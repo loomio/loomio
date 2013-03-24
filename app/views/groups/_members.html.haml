@@ -1,10 +1,9 @@
 - unless group.hide_members && (cannot? :edit, group)
   .sub-panel
     .membership-count.label
-      = group.memberships.count
+      = group.users.count
     %h4 Members
     = render 'add_members', group: group
     %ul#users-list
-      = render :partial => 'membership',
-        :collection => group.memberships,
-        :locals => { group: group }
+      - group.users.each do |user|
+        = render 'membership', user: user, group: group

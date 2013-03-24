@@ -89,7 +89,13 @@
       margin-left: 10px;
     }
   }
+
   /* group dropdown items */
+  #group-dropdown-items {
+    overflow-y: auto;
+    max-height: 390px;
+    min-width: 350px;
+  }
   li#groups ul.dropdown-menu {
     background-color: #eee;
     a { min-width: 250px; }

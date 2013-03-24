@@ -8,9 +8,9 @@ Given /^a group(?: named)? "(.*?)"(?: exists)?$/ do |group_name|
   FactoryGirl.create(:group, :name => group_name)
 end
 
-Given /^I visit create subgroup page for group named "(.*?)"$/ do |arg1|
+Given /^I visit create subgroup page$/ do
   find("#groups").click_on("Groups")
-  find("#groups").click_on(arg1)
+  find("#groups").click_on(@group.name)
   click_link("subgroup-new")
 end
 
@@ -57,6 +57,13 @@ Given /^"(.*?)" is not a member of the group$/ do |arg1|
                             password: 'password'
 end
 
+Given /^"(.*?)" is a member of the subgroup$/ do |arg1|
+  user = FactoryGirl.create :user, name: arg1,
+                            email: "#{arg1}@example.org",
+                            password: 'password'
+  @subgroup.add_member! user
+end
+
 Then /^(?:I|they) should be taken to the group page$/ do
   page.should have_content(@group.name)
 end
@@ -72,6 +79,11 @@ end
 
 Given /^there is a discussion in a public group$/ do
   @group = FactoryGirl.create :group, :viewable_by => :everyone
+  @discussion = FactoryGirl.create :discussion, :group => @group
+end
+
+Given /^there is a discussion in a private group$/ do
+  @group = FactoryGirl.create :group, :viewable_by => :members
   @discussion = FactoryGirl.create :discussion, :group => @group
 end
 
@@ -143,3 +155,6 @@ Then /^a new sub-group should be created$/ do
   Group.where(:name=>"test group").should exist
 end
 
+Then /^I should not see the list of invited users$/ do
+  page.should_not have_css('#invited-users')
+end

@@ -4,7 +4,7 @@ gem 'rails', '~> 3.2.12'
 gem "haml-rails"
 gem 'devise', '~> 2.2.3'
 gem 'devise_invitable', '~> 1.0.0'
-gem 'pg'
+gem 'pg', '~> 0.14.1'
 gem 'capistrano'
 gem 'jquery-rails'
 gem "jquery-scrollto-rails"
