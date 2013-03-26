@@ -11,12 +11,45 @@ When /^I visit the Group Requests page on the admin panel$/ do
   visit admin_group_requests_path
 end
 
-When /^I approve the request$/ do
+When /^I click approve for a request$/ do
   click_link("approve_group_request_#{@group_request.id}")
 end
 
-When /^I defer the request$/ do
+When /^I click defer for the request$/ do
   click_link("defer_group_request_#{@group_request.id}")
+end
+
+When /^I should see the send approval email page$/ do
+  page.should have_content('Send Approval Email')
+end
+
+When /^I customise the approval email text$/ do
+  fill_in 'message_body', with: 'Lovely group'
+  fill_in 'Max size', with: '25'
+end
+
+When /^I click the send and approve button$/ do
+  click_on 'Approve and send email'
+end
+
+When /^I edit the maximum group size$/ do
+  @max_size = 135
+  click_link("Edit")
+  fill_in "group_request_max_size", :with => @max_size
+  click_on("Update Group request")
+  click_link("Group Requests")
+end
+
+When /^I should see the send defer email page$/ do
+  page.should have_content('Send Defer Email')
+end
+
+When /^I select the date to defer until$/ do
+  fill_in "group_request_defered_until", with: "2013-3-24"
+end
+
+When /^I click the send and defer button$/ do
+  click_on 'Defer and send email'
 end
 
 Then /^I should no longer see the request$/ do
@@ -46,25 +79,18 @@ Then /^the group request should be marked as defered$/ do
   @group_request.should be_defered
 end
 
-Then /^an invitation to start a new group should be sent to the group admin$/ do
+Then /^an email should be sent to the group admin containing a link to start the new group$/ do
   open_email(@group_request.admin_email)
-  current_email.should have_content("Great news! Your request for a Loomio group has been approved!")
+  current_email.should have_content(start_new_group_group_request_url(@group_request, token: @token))
 end
 
 Then /^I should be redirected to the Group Requests page$/ do
   page.should have_css "body.admin_group_requests"
 end
 
-When /^I edit the maximum group size$/ do
-  @max_size = 135
-  click_link("Edit")
-  fill_in "group_request_max_size", :with => @max_size
-  click_on("Update Group request")
-  click_link("Group Requests")
-end
-
 Then /^the maximum group size should be assigned to the group$/ do
   Group.where(:name => @group_request.name).first.max_size.should == @max_size
 end
+
 
 

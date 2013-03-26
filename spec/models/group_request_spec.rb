@@ -90,12 +90,6 @@ describe GroupRequest do
       @group_request.approved_at.should eq(approval_time)
     end
 
-    it "should invite the admin to the group" do
-      StartGroupMailer.should_receive(:invite_admin_to_start_group).
-                          with(@group_request)
-      @group_request.approve!
-    end
-
     it "should link to the newly created group" do
       @group_request.approve!
       @group_request.group_id.should eq(group.id)
@@ -104,6 +98,12 @@ describe GroupRequest do
     it "should set the status to approved" do
       @group_request.approve!
       @group_request.should be_approved
+    end
+
+    it "should invite the admin to the group" do
+      StartGroupMailer.should_receive(:invite_admin_to_start_group).
+                          with(@group_request)
+      @group_request.approve!
     end
   end
 
