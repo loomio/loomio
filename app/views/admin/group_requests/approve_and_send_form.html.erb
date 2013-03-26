@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="span6">
+  <h2>Send Approval Email</h2>
+  <h3>To: <%=@group_request.admin_email %></h3>
+  <h3>Subject: Invitation to join Loomio</h3>
+
+  <%= simple_form_for @group_request, url: approve_and_send_admin_group_request_path do |f| %>
+    <textarea name="message_body">
+Dear <%= @group_request.name %>
+
+Your request to join loomio has been aprroved. Follow the link below to setup your group on Loomio
+
+{group_invitation_link}
+
+Thanks a bunch.
+Lots of love, your scoobie
+<%= current_user.name %>
+    </textarea>
+    <br/>
+    <br/>
+    <%= f.input :max_size %>
+    <br/>
+    <br/>
+    <%= f.submit 'Approve and send email' %>
+  <% end %>
+  </form>
+</div>
