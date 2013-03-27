@@ -1,5 +1,17 @@
 @import "settings";
 
+.dropdown-menu {
+  a {
+    clear: both;
+    color: #555;
+    display: block;
+    font-weight: normal;
+    line-height: 18px;
+    padding: 3px 15px;
+    white-space: nowrap;
+  }
+  li > a:hover, .active > a, .active > a:hover { background-color: #08c; }
+}
 
 .main-container {
   margin: auto;
