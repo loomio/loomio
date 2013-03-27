@@ -1,5 +1,6 @@
+<% @uses_markdown ||= false %>
 var description = $("#description-input").val()
-$(".model-description").html("<%= j markdown(@description) %>")
+$(".model-description").html("<%= j conditional_markdown(@uses_markdown, @description) %>")
 $(".description-body").show()
 $("#description-edit-form").hide()
 $(".discussion-description-helper-text").toggle()

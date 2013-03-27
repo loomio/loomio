@@ -152,6 +152,11 @@ class Discussion < ActiveRecord::Base
     fire_edit_title_event(user)
   end
 
+  def clone_markdown_setting(user)
+    self.uses_markdown = user.uses_markdown?
+    save!
+  end
+
   private
 
     def populate_last_comment_at

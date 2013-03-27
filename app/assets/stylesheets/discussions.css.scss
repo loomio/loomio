@@ -202,7 +202,11 @@ pre{
 
 
 /*** comments, positions & proposals in History ***/
-#markdown-dropdown li i {
+#comment-markdown-dropdown li i {
+  display: inline-block;
+  width: 15px;
+}
+#discussion-markdown-dropdown li i {
   display: inline-block;
   width: 15px;
 }
@@ -230,11 +234,15 @@ pre{
     float:left;
     margin-right: 10px;
   }
-  #markdown-dropdown {
+  #comment-markdown-dropdown {
     margin-top: -43px;
     margin-right: 10px;
   }
-  #markdown-setting-dropdown {
+  #discussion-markdown-dropdown {
+    margin-top: -43px;
+    margin-right: 10px;
+  }
+  .markdown-setting-dropdown {
     margin-top: -20px;
   }
   #new-comment {

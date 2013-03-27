@@ -1,16 +1,17 @@
-%ul.dropdown-menu#markdown-setting-dropdown
-  %li#enable-markdown
+- model ||= current_user
+%ul.dropdown-menu.markdown-setting-dropdown
+  %li.enable-markdown
     %a{href: '#', id: 'enable-markdown-link'}
-      %i{:class => css_for_markdown_link(current_user, true)}
+      %i{:class => css_for_markdown_link(model, true)}
       = 'Enable'
-  %li#disable-markdown
+  %li.disable-markdown
     %a{href: '#', id: 'disable-markdown-link'}
-      %i{:class => css_for_markdown_link(current_user, false)}
+      %i{:class => css_for_markdown_link(model, false)}
       = 'Disable'
   .divider
   %li
     %a{href: 'https://www.loomio.org/discussions/1124'}
       More info...
-= form_tag set_markdown_user_path(current_user.id), remote: true, id: 'markdown-settings-form' do
-  = hidden_field_tag 'id', current_user.id
-  = hidden_field_tag 'uses_markdown', @uses_markdown, {id: 'uses_markdown'}
+= form_tag set_markdown_user_path(model.id), remote: true, id: 'markdown-settings-form' do
+  = hidden_field_tag 'id', model.id
+  = hidden_field_tag 'uses_markdown', @uses_markdown, {class: 'uses_markdown'}

@@ -20,4 +20,4 @@ Capybara.default_selector = :css
 ActionController::Base.allow_rescue = false
 Cucumber::Rails::Database.javascript_strategy = :truncation
 Capybara.default_driver = :selenium
-Capybara.default_wait_time = 20
+Capybara.default_wait_time = 5

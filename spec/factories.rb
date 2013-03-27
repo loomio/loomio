@@ -35,6 +35,7 @@ FactoryGirl.define do
     end
     after(:create) do |discussion|
       discussion.group.save
+      discussion.clone_markdown_setting(discussion.author)
     end
   end
 

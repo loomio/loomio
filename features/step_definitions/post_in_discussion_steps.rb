@@ -12,8 +12,16 @@ When /^I enable markdown$/ do
 end
 
 When /^I disable markdown$/ do
-  click_on 'markdown-dropdown-link'
+  click_on 'comment-markdown-dropdown-link'
   click_on 'disable-markdown-link'
+end
+
+When /^I change my markdown preference$/ do
+  if @user.uses_markdown
+    step 'I disable markdown'
+  else
+    step 'I enable markdown'
+  end
 end
 
 Then /^a comment should be added to the discussion$/ do

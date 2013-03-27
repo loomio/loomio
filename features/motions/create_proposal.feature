@@ -5,6 +5,7 @@ Feature: User creates proposal
 
   Background:
     Given I am logged in
+    And I prefer markdown
     And I am a member of a group
     And there is a discussion in the group
 
@@ -14,6 +15,7 @@ Feature: User creates proposal
     And fill in the proposal details and submit the form
     Then a new proposal is created
     And I should see the proposal details
+    And the proposal description should inherit my markdown preference
 
   Scenario: Members get emailed when a proposal is created
    Given "Ben" is a member of the group
