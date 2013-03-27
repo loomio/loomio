@@ -183,14 +183,17 @@
   #vote-statement .character-counter { width: 528px; }
   .inputError { margin-left: 0px; height: 65px; }
   .control-group { padding-top: 0px; padding-bottom: 0px; }
-  .vote-buttons .btn {
-    float: left;
-    width: 40px;
-    @include box-shadow(1px, 1px, 3px, $mid-grey);
-    border: 1px solid $light-grey;
-    @include border-radius(5px);
-    padding: 3px;
-    margin: 10px 10px 15px 0;
+  .vote-buttons {
+    .btn {
+      float: left;
+      width: 40px;
+      @include box-shadow(1px, 1px, 3px, $mid-grey);
+      border: 1px solid $light-grey;
+      @include border-radius(5px);
+      padding: 3px;
+      margin: 10px 10px 15px 0;
+    }
+    .popover-title { font-size: 1.2em; font-weight: 700; }
   }
   .votes-table { padding-bottom: 10px; }
   .votes-table .position-row {
