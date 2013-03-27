@@ -69,6 +69,3 @@ Then /^I should be notified the invitation has already been accepted$/ do
   page.should have_content('has already been accepted.')
 end
 
-Then /^I should become the creator of the group$/ do
-  @group.creator.should == User.find_by_email(@admin_email)
-end

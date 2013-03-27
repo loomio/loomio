@@ -10,7 +10,6 @@ Feature: Group admin accepts invitation to start a Loomio group
     And I click the invitation link to start a new group
     And I choose to create an account
     And I fill in and submit the new user form
-    Then I should become the creator of the group
     And I should become the admin of the group
     And the group request should be marked as accepted
     And I should be taken to the group page

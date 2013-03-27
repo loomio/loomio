@@ -13,7 +13,6 @@ class BaseController < InheritedResources::Base
       group_request = GroupRequest.find_by_token(session[:start_new_group_token])
       if group_request && (not group_request.accepted?)
         group_request.accept!(current_user)
-        group_request.group.creator = current_user
         flash[:success] = "You have been added to #{group_request.group.name}."
         session[:start_new_group_token] = nil
         redirect_to group_url(group_request.group_id)

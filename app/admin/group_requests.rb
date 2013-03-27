@@ -19,6 +19,7 @@ ActiveAdmin.register GroupRequest do
     column :max_size
     column :admin_email
     column :approved_at, sortable: :approved_at
+    column(:approved_by) {|gr| }
     column :created_at
     default_actions
   end
