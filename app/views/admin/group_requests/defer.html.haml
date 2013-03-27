@@ -1,6 +1,0 @@
-%h2 Defer Email
-
-%h3= "To: #{@group_request.admin_email}"
-
-/ - form_tag(@group_request_path, id: @group_request.id) do |f|
-/   = f.input :defered_until, "Defed until: ", as: :date_picker
