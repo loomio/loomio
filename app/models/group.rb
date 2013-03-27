@@ -61,12 +61,9 @@ class Group < ActiveRecord::Base
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
 
-  belongs_to :creator,  :class_name => "User"
-
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
   delegate :name, :to => :parent, :prefix => true
-  delegate :email, :to => :creator, :prefix => true
 
   #
   # ACCESSOR METHODS
@@ -115,16 +112,6 @@ class Group < ActiveRecord::Base
       parent_name
     else
       name
-    end
-  end
-
-  def admin_email
-    if admins.exists?
-      admins.first.email
-    elsif creator
-      creator.email
-    else
-      "noreply@loomio.org"
     end
   end
 
@@ -277,10 +264,6 @@ You'll be prompted to make a short statement about the reason for your decision.
     self.viewable_by ||= :members if parent.nil?
     self.viewable_by ||= :parent_group_members unless parent.nil?
     self.members_invitable_by ||= :members
-  end
-
-  def add_creator_as_admin
-    add_admin! creator unless creator == User.loomio_helper_bot
   end
 
   # Validators

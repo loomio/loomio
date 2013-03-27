@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Queries::VisibleDiscussions do
   let(:user) { create :user }
-  let(:group) { create :group, :creator => user }
+  let(:group) { create :group}
 
   it "::for sorts discussions by latest comment time" do
     Time.stub(:now).and_return Time.new(2012, 1, 1, 1)
@@ -76,12 +76,9 @@ describe Queries::VisibleDiscussions do
     end
 
     it "returns discussions for subgroups the user belongs to" do
-      subgroup1 = create :group, :creator => user, :parent => group,
-                         :viewable_by => :everyone
-      subgroup2 = create :group, :creator => user, :parent => group,
-                         :viewable_by => :parent_group_members
-      subgroup3 = create :group, :creator => user, :parent => group,
-                         :viewable_by => :members
+      subgroup1 = create :group, :parent => group, :viewable_by => :everyone
+      subgroup2 = create :group, :parent => group, :viewable_by => :parent_group_members
+      subgroup3 = create :group, :parent => group, :viewable_by => :members
       subgroup_discussion1 = create :discussion, :group => subgroup1
       subgroup_discussion2 = create :discussion, :group => subgroup2
       subgroup_discussion3 = create :discussion, :group => subgroup3
@@ -147,7 +144,7 @@ describe Queries::VisibleDiscussions do
 
   describe "::for(subgroup, parent_group_member)" do
     let(:user) { create :user }
-    let(:parent_group) { create :group, :creator => user }
+    let(:parent_group) { create :group }
     let(:subgroup) { create :group, :parent => parent_group }
     let(:discussion) { create :discussion, :group => subgroup }
 

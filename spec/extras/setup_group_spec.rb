@@ -13,10 +13,6 @@ describe SetupGroup do
       @group = @setup_group.approve_group_request!(approved_by: @approver)
     end
 
-    it 'does not set the group creator' do
-      @group.creator.should be_nil
-    end
-
     it 'creates the group' do
       @group.should be_persisted
     end
@@ -35,7 +31,7 @@ describe SetupGroup do
       @group.group_request.should == @group_request
     end
 
-    it 'records who approved the group request', focus: true do
+    it 'records who approved the group request' do
       @group_request.approved_by.should == @approver
     end
   end

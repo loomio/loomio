@@ -10,7 +10,6 @@ class GroupsController < GroupBaseController
 
   def create
     @group = Group.new(params[:group])
-    @group.creator = current_user
     if @group.save
       @group.add_admin! current_user
       @group.create_welcome_loomio

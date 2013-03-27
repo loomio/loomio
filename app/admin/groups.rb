@@ -1,12 +1,7 @@
 ActiveAdmin.register Group do
   actions :index, :show, :edit
   filter :name
-  filter :creator
   filter :parent
-
-  scope :all, :default => true do |group|
-    group.includes [:creator]
-  end
 
   index :download_links => false do
     column :id
@@ -15,7 +10,6 @@ ActiveAdmin.register Group do
     column "Members", :memberships_count
     column "Discussions", :discussions_count
     column "Motions", :motions_count
-    column :creator, :sortable => 'users.name'
     column :created_at
     column :viewable_by
     column :description, :sortable => :description do |group|

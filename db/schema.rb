@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326220507) do
+ActiveRecord::Schema.define(:version => 20130327015318) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -162,7 +162,6 @@ ActiveRecord::Schema.define(:version => 20130326220507) do
     t.boolean  "hide_members",         :default => false
     t.boolean  "beta_features",        :default => false
     t.string   "description"
-    t.integer  "creator_id"
     t.integer  "memberships_count",    :default => 0,     :null => false
     t.datetime "archived_at"
     t.integer  "max_size"

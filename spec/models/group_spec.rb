@@ -166,9 +166,6 @@ describe Group do
       @group.add_request!(@user)
       @group.add_admin!(@user)
     end
-    it "has an admin email" do
-      @group.admin_email.should == @group.creator_email
-    end
     it "can be administered by admin of parent" do
       @subgroup = build(:group, :parent => @group)
       @subgroup.has_admin_user?(@user)
