@@ -24,7 +24,6 @@ When /^I should see the send approval email page$/ do
 end
 
 When /^I customise the approval email text$/ do
-  fill_in 'message_body', with: 'Lovely group'
   fill_in 'Max size', with: '25'
 end
 
@@ -49,7 +48,7 @@ When /^I select the date to defer until$/ do
 end
 
 When /^I click the send and defer button$/ do
-  click_on 'Defer and send email'
+  click_on("Defer and send email")
 end
 
 Then /^I should no longer see the request$/ do
@@ -69,11 +68,6 @@ Then /^the group request should be marked as approved$/ do
   @group_request.should be_approved
 end
 
-Then /^the time the request was approved should be recorded$/ do
-  @group_request.reload
-  @group_request.approved_at.should_not be_nil
-end
-
 Then /^the group request should be marked as defered$/ do
   @group_request.reload
   @group_request.should be_defered
@@ -81,7 +75,7 @@ end
 
 Then /^an email should be sent to the group admin containing a link to start the new group$/ do
   open_email(@group_request.admin_email)
-  current_email.should have_content(start_new_group_group_request_url(@group_request, token: @token))
+  current_email.should have_content(start_new_group_group_request_path(@group_request, token: @token))
 end
 
 Then /^I should be redirected to the Group Requests page$/ do

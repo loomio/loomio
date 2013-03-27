@@ -1,21 +1,25 @@
 class GroupRequest < ActiveRecord::Base
-  attr_accessible :admin_email, :description, :expected_size, :name,
-                  :cannot_contribute, :max_size, :robot_trap, :sectors_metric,
-                  :other_sectors_metric, :distribution_metric
+
+  attr_accessible :admin_name, :admin_email, :country_name, :name, :sectors, :other_sector,
+                  :description, :expected_size, :max_size, :cannot_contribute, :robot_trap
 
   attr_accessor :robot_trap
 
-  validates :name, :presence => true, :length => {:maximum => 250}
-  validates :description, :presence => true
-  validates :admin_email, :presence => true, :email => true
-  validates :expected_size, :presence => true
-  validates :distribution_metric, :presence => true
   validates :token, :uniqueness => true, :presence => true,
             :length => {:minimum => 20}
 
-  serialize :sectors_metric, Array
+  validates :admin_name, presence: true, length: {maximum: 250}
+  validates :admin_email, presence: true, email: true
+  validates :country_name, presence: true
+  validates :name, presence: true, length: {maximum: 250}
+  validates :sectors, presence: true
+  validates :description, presence: true
+  validates :expected_size, presence: true
+
+  serialize :sectors, Array
 
   belongs_to :group
+  belongs_to :approved_by, class_name: 'User'
 
   scope :verified, where(:status => :verified)
   scope :unverified, where(:status => :unverified)
@@ -24,7 +28,6 @@ class GroupRequest < ActiveRecord::Base
 
   before_create :mark_spam
   before_validation :generate_token, on: :create
-  after_create :send_verification
 
   include AASM
   aasm column: :status do  # defaults to aasm_state
@@ -40,7 +43,7 @@ class GroupRequest < ActiveRecord::Base
       transitions to: :verified, from: [:unverified]
     end
 
-    event :approve, before: :approve_request do
+    event :approve_request do
       transitions to: :approved, from: [:verified, :defered]
     end
 
@@ -66,6 +69,12 @@ class GroupRequest < ActiveRecord::Base
 
   end
 
+  def approve!(args)
+    self.approved_by = args[:approved_by]
+    update_attribute(:approved_at, DateTime.now)
+    approve_request!
+  end
+
   def accept!(user)
     group.add_admin!(user)
     accept_request!
@@ -76,31 +85,7 @@ class GroupRequest < ActiveRecord::Base
     save!
   end
 
-  def send_verification
-    StartGroupMailer.verification(self).deliver
-  end
-
-  def send_invitation_to_start_group
-    StartGroupMailer.invite_admin_to_start_group(self).deliver
-  end
-
   private
-
-  def approve_request
-    @group = Group.new name: name
-    @group.creator = User.loomio_helper_bot
-    @group.cannot_contribute = cannot_contribute
-    @group.max_size = max_size
-    @group.sectors_metric = sectors_metric
-    @group.other_sectors_metric = other_sectors_metric
-    @group.distribution_metric = distribution_metric
-    @group.save!
-    @group.create_welcome_loomio
-    self.group = @group
-    self.approved_at = Time.now
-    save!
-    send_invitation_to_start_group
-  end
 
   def mark_spam
     mark_as_spam unless robot_trap.blank?
@@ -109,7 +94,7 @@ class GroupRequest < ActiveRecord::Base
   def generate_token
     begin
       token = SecureRandom.urlsafe_base64
-    end while GroupRequest.where(:token => token).exists?
+    end while self.class.where(:token => token).exists?
     self.token = token
   end
 end

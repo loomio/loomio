@@ -18,40 +18,6 @@ ActiveAdmin.register GroupRequest do
     column :expected_size
     column :max_size
     column :admin_email
-    column "Approve" do |group_request|
-      link = ""
-      if group_request.verified? or group_request.defered?
-        link += link_to("Approve",
-              approve_and_send_form_admin_group_request_path(group_request.id),
-              id: "approve_group_request_#{group_request.id}")
-      end
-      if group_request.unverified? or group_request.verified? or group_request.defered?
-         link += " | "
-        link += link_to "Already Approved",
-               mark_as_manually_approved_admin_group_request_path(group_request.id),
-               :method => :put
-      end
-      if group_request.verified?
-        link += " | "
-        link += link_to("Defer",
-                defer_and_send_form_admin_group_request_path(group_request.id),
-                id: "defer_group_request_#{group_request.id}")
-      end
-      if group_request.unverified? or group_request.verified? or group_request.defered?
-        link += " | "
-        link += link_to "Mark as Spam",
-               mark_as_spam_admin_group_request_path(group_request.id),
-               :method => :put
-      end
-      if group_request.marked_as_spam? or group_request.manually_approved?
-        link += " | "
-        link += link_to "Mark as Unverified",
-               mark_as_unverified_admin_group_request_path(group_request.id),
-               :method => :put
-      end
-      link += " | " if link != ""
-      link.html_safe
-    end
     column :approved_at, sortable: :approved_at
     column :created_at
     default_actions
@@ -107,8 +73,9 @@ ActiveAdmin.register GroupRequest do
 
   member_action :approve_and_send, :method => :put do
     @group_request = GroupRequest.find(params[:id])
-    @group_request.approve!
-    group = @group_request.group
+    setup_group = SetupGroup.new(@group_request)
+    group = setup_group.approve_group_request!
+    setup_group.send_invitation_to_start_group!(params[:message_body])
     redirect_to admin_group_requests_path,
       :notice => ("Group approved: " +
       "<a href='#{admin_group_path(group)}'>#{group.name}</a>").html_safe

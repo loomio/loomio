@@ -4,7 +4,11 @@ Given /^I have requested to start a loomio group$/ do
 end
 
 Given /^the group request has been approved$/ do
-  @group_request.approve!
+  @approver = FactoryGirl.create :user
+  @group_request.verify!
+  setup_group = SetupGroup.new(@group_request)
+  setup_group.approve_group_request!(approved_by: @approver)
+  setup_group.send_invitation_to_start_group!('{group_invitation_link}')
   @group = @group_request.group
 end
 
@@ -63,4 +67,8 @@ end
 
 Then /^I should be notified the invitation has already been accepted$/ do
   page.should have_content('has already been accepted.')
+end
+
+Then /^I should become the creator of the group$/ do
+  @group.creator.should == User.find_by_email(@admin_email)
 end

@@ -2,24 +2,13 @@ require 'spec_helper'
 
 describe GroupRequest do
   before do
-    StartGroupMailer.stub_chain(:verification, :deliver)
     @group_request = build(:group_request)
   end
 
-  describe "#sectors_metric" do
-    it "returns an array" do
-      @group_request.sectors_metric = ["community", "business"]
-      @group_request.save
-      @group_request.reload
-      @group_request.sectors_metric[0].should == "community"
-      @group_request.sectors_metric[1].should == "business"
-    end
-  end
-
   it "should have 'other_sector' string field" do
-    @group_request.other_sectors_metric = "logging"
+    @group_request.other_sector = "logging"
     @group_request.save
-    @group_request.other_sectors_metric.should == "logging"
+    @group_request.other_sector.should == "logging"
   end
 
   describe "#status" do
@@ -27,11 +16,6 @@ describe GroupRequest do
       @group_request.save!
       @group_request.should be_unverified
     end
-  end
-
-  it 'should send a verification email' do
-    StartGroupMailer.should_receive(:verification).with(@group_request)
-    @group_request.save!
   end
 
   it "marks spam as spam" do
@@ -45,65 +29,6 @@ describe GroupRequest do
     it "should set the status to verified" do
       @group_request.verify!
       @group_request.should be_verified
-    end
-  end
-
-  describe "#approve!" do
-    let(:invitation) { stub :token => "1234" }
-    let(:group) { mock_model Group }
-    let(:mailer) { stub :deliver => true }
-
-    before do
-      Group.stub :new => group
-      group.stub :creator=
-      group.stub :creator => stub(:user)
-      group.stub :cannot_contribute=
-      group.stub :max_size=
-      group.stub :distribution_metric=
-      group.stub :sectors_metric=
-      group.stub :other_sectors_metric=
-      group.stub :create_welcome_loomio
-      group.stub :save!
-      StartGroupMailer.stub_chain(:invite_admin_to_start_group, :deliver)
-      @group_request.save!
-      @group_request.verify!
-    end
-
-    it "creates a group with the group_request's attributes" do
-      Group.should_receive(:new).with(:name => @group_request.name).
-            and_return(group)
-      group.should_receive(:creator=)
-      group.should_receive(:cannot_contribute=)
-      group.should_receive(:max_size=)
-      group.should_receive(:distribution_metric=)
-      group.should_receive(:sectors_metric=)
-      group.should_receive(:other_sectors_metric=)
-      group.should_receive(:create_welcome_loomio)
-      group.should_receive(:save!)
-      @group_request.approve!
-    end
-
-    it "sets the approved_at with the current time" do
-      approval_time = Time.now
-      Time.stub(:now).and_return(approval_time)
-      @group_request.approve!
-      @group_request.approved_at.should eq(approval_time)
-    end
-
-    it "should link to the newly created group" do
-      @group_request.approve!
-      @group_request.group_id.should eq(group.id)
-    end
-
-    it "should set the status to approved" do
-      @group_request.approve!
-      @group_request.should be_approved
-    end
-
-    it "should invite the admin to the group" do
-      StartGroupMailer.should_receive(:invite_admin_to_start_group).
-                          with(@group_request)
-      @group_request.approve!
     end
   end
 

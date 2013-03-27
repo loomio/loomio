@@ -8,9 +8,10 @@ class GroupRequestsController < BaseController
   def create
     @group_request = GroupRequest.new(params[:group_request])
     if @group_request.save
+      StartGroupMailer.verification(@group_request).deliver
       redirect_to group_request_confirmation_url
     else
-      render :action => "new"
+      render action: 'new'
     end
   end
 

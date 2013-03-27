@@ -8,19 +8,21 @@ class Group < ActiveRecord::Base
   validates_presence_of :name
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
-  validate :limit_inheritance
   validates :description, :length => { :maximum => 250 }
   validates :name, :length => { :maximum => 250 }
   validates :max_size, presence: true, if: :is_a_parent?
+
+  validate :limit_inheritance
   validate :max_size_is_nil, if: :is_a_subgroup?
 
   serialize :sectors_metric, Array
 
   after_initialize :set_defaults
   before_validation :set_max_group_size, on: :create
-  after_create :add_creator_as_admin
 
   default_scope where(:archived_at => nil)
+
+  has_one :group_request
 
   has_many :memberships,
     :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
@@ -178,7 +180,6 @@ class Group < ActiveRecord::Base
   def add_request!(user)
     if user_can_join?(user) && !user_membership_or_request_exists?(user)
       membership = user.memberships.create!(:group_id => id)
-      GroupMailer.new_membership_request(membership).deliver
       membership
     end
   end

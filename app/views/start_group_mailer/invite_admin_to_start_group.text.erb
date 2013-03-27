@@ -1,0 +1,3 @@
+<% link = start_new_group_group_request_url(@group_request,
+                                            token: @group_request.token) %>
+<%= @message_body.gsub('{group_invitation_link}', link) %>
