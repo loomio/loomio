@@ -1,7 +1,9 @@
 Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: { sessions: 'users/sessions', invitations: 'users/invitations' }
+  devise_for :users, controllers: { sessions: 'users/sessions' }
+
+  resources :invitations, only: [:show]
 
   resources :group_requests, only: [:create, :new] do
     get :verify, on: :member

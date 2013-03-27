@@ -14,6 +14,16 @@ FactoryGirl.define do
     end
   end
 
+  factory :admin_user, class: User do
+    sequence(:email) { Faker::Internet.email }
+    sequence(:name) { Faker::Name.name }
+    password 'password'
+    is_admin {true}
+    after(:build) do |user|
+      user.generate_username
+    end
+  end
+
   factory :group do
     sequence(:name) { Faker::Name.name }
     description 'A description for this group'

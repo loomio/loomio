@@ -19,8 +19,8 @@ class SetupGroup
     @group
   end
 
-  def send_invitation_to_start_group!(message_body)
-    StartGroupMailer.invite_admin_to_start_group(group_request, message_body).deliver
+  def send_invitation_to_start_group!(args)
+    StartGroupMailer.invite_admin_to_start_group(args[:invitation], args[:message_body]).deliver
   end
 
 end

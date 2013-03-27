@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130327015318) do
+ActiveRecord::Schema.define(:version => 20130327031958) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -141,11 +141,11 @@ ActiveRecord::Schema.define(:version => 20130327015318) do
     t.string   "sectors"
     t.string   "other_sector"
     t.string   "token"
+    t.string   "admin_name"
+    t.string   "country_name"
     t.boolean  "high_touch",          :default => false, :null => false
     t.datetime "approved_at"
     t.datetime "defered_until"
-    t.string   "admin_name"
-    t.string   "country_name"
     t.integer  "approved_by_id"
   end
 
@@ -176,6 +176,17 @@ ActiveRecord::Schema.define(:version => 20130327015318) do
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
 
+  create_table "invitations", :force => true do |t|
+    t.string  "recipient_email",                    :null => false
+    t.integer "inviter_id",                         :null => false
+    t.integer "group_id",                           :null => false
+    t.boolean "to_be_admin",     :default => false, :null => false
+    t.string  "token",                              :null => false
+  end
+
+  add_index "invitations", ["group_id"], :name => "index_invitations_on_group_id"
+  add_index "invitations", ["token"], :name => "index_invitations_on_token"
+
   create_table "memberships", :force => true do |t|
     t.integer  "group_id"
     t.integer  "user_id"
@@ -205,13 +216,13 @@ ActiveRecord::Schema.define(:version => 20130327015318) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "phase",          :default => "voting", :null => false
     t.string   "discussion_url", :default => "",       :null => false
     t.datetime "close_date"
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
     t.boolean  "uses_markdown",  :default => true,     :null => false
-    t.string   "phase",          :default => "voting", :null => false
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
@@ -262,14 +273,14 @@ ActiveRecord::Schema.define(:version => 20130327015318) do
     t.boolean  "has_read_dashboard_notice",                                   :default => false,      :null => false
     t.boolean  "has_read_group_notice",                                       :default => false,      :null => false
     t.boolean  "has_read_discussion_notice",                                  :default => false,      :null => false
+    t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email",                          :default => true,       :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,       :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
-    t.string   "username"
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.boolean  "uses_markdown",                                               :default => false
     t.integer  "memberships_count",                                           :default => 0,          :null => false
+    t.boolean  "uses_markdown",                                               :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
