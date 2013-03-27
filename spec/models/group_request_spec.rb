@@ -1,34 +1,51 @@
 require 'spec_helper'
 
 describe GroupRequest do
-  let(:group_request) { create :group_request }
-
-  describe "#status" do
-    it "should default to awaiting_approval" do
-      group_request.should be_awaiting_approval
-    end
-  end
-
-  it "marks spam as spam" do
-    group_request = create :group_request, :robot_trap => "spammy"
-    group_request.save
-    group_request.should be_marked_as_spam
+  before do
+    StartGroupMailer.stub_chain(:verification, :deliver)
+    @group_request = build(:group_request)
   end
 
   describe "#sectors_metric" do
     it "returns an array" do
-      group_request.sectors_metric = ["community", "business"]
-      group_request.save
-      group_request.reload
-      group_request.sectors_metric[0].should == "community"
-      group_request.sectors_metric[1].should == "business"
+      @group_request.sectors_metric = ["community", "business"]
+      @group_request.save
+      @group_request.reload
+      @group_request.sectors_metric[0].should == "community"
+      @group_request.sectors_metric[1].should == "business"
     end
   end
 
   it "should have 'other_sector' string field" do
-    group_request.other_sectors_metric = "logging"
-    group_request.save
-    group_request.other_sectors_metric.should == "logging"
+    @group_request.other_sectors_metric = "logging"
+    @group_request.save
+    @group_request.other_sectors_metric.should == "logging"
+  end
+
+  describe "#status" do
+    it "should default to unverified" do
+      @group_request.save!
+      @group_request.should be_unverified
+    end
+  end
+
+  it 'should send a verification email' do
+    StartGroupMailer.should_receive(:verification).with(@group_request)
+    @group_request.save!
+  end
+
+  it "marks spam as spam" do
+    @group_request.robot_trap = "spammy"
+    @group_request.save
+    @group_request.should be_marked_as_spam
+  end
+
+  describe "#verify!" do
+    before { @group_request.save! }
+    it "should set the status to verified" do
+      @group_request.verify!
+      @group_request.should be_verified
+    end
   end
 
   describe "#approve!" do
@@ -48,10 +65,12 @@ describe GroupRequest do
       group.stub :create_welcome_loomio
       group.stub :save!
       StartGroupMailer.stub_chain(:invite_admin_to_start_group, :deliver)
+      @group_request.save!
+      @group_request.verify!
     end
 
     it "should create a group with the group_request's attributes" do
-      Group.should_receive(:new).with(:name => group_request.name).
+      Group.should_receive(:new).with(:name => @group_request.name).
             and_return(group)
       group.should_receive(:creator=)
       group.should_receive(:cannot_contribute=)
@@ -61,23 +80,23 @@ describe GroupRequest do
       group.should_receive(:other_sectors_metric=)
       group.should_receive(:create_welcome_loomio)
       group.should_receive(:save!)
-      group_request.approve!
+      @group_request.approve!
     end
 
     it "should invite the admin to the group" do
       StartGroupMailer.should_receive(:invite_admin_to_start_group).
-                          with(group_request)
-      group_request.approve!
+                          with(@group_request)
+      @group_request.approve!
     end
 
     it "should link to the newly created group" do
-      group_request.approve!
-      group_request.group_id.should eq(group.id)
+      @group_request.approve!
+      @group_request.group_id.should eq(group.id)
     end
 
     it "should set the status to approved" do
-      group_request.approve!
-      group_request.should be_approved
+      @group_request.approve!
+      @group_request.should be_approved
     end
   end
 
@@ -87,40 +106,128 @@ describe GroupRequest do
 
     before do
       group.stub(:add_admin!)
-      group_request.status = :approved
-      group_request.group = group
+      @group_request.status = :approved
+      @group_request.group = group
+      @group_request.save!
     end
 
     it "makes the user an admin of the group" do
       group.should_receive(:add_admin!).with(user)
-      group_request.accept!(user)
+      @group_request.accept!(user)
     end
 
     it "sets the status to accepted" do
-      group_request.accept!(user)
-      group_request.should be_accepted
+      @group_request.accept!(user)
+      @group_request.should be_accepted
     end
   end
 
-  describe "#ignore!" do
-    it "should set the status to ignored" do
-      group_request.ignore!
-      group_request.should be_ignored
+  describe "#defer!" do
+    before do
+      @group_request.save!
+      @group_request.verify!
+    end
+
+    it "should set the status to defered" do
+      @group_request.defer!
+      @group_request.should be_defered
     end
   end
 
-  context "that has been ignored" do
-    it "can later be approved" do
-      group_request.ignore!
-      group_request.should_receive(:approve_request)
-      group_request.approve!
+  describe "#marked_as_manually_approved!" do
+    before { @group_request.save! }
+    it "should set the status to manually_approved" do
+      @group_request.mark_as_manually_approved!
+      @group_request.should be_manually_approved
     end
   end
 
   describe "#mark_as_spam!" do
+    before { @group_request.save! }
     it "should set the status to marked_as_spam" do
-      group_request.mark_as_spam!
-      group_request.should be_marked_as_spam
+      @group_request.mark_as_spam!
+      @group_request.should be_marked_as_spam
+    end
+  end
+
+  describe "#mark_as_unverified!" do
+    before do
+      @group_request.save!
+      @group_request.mark_as_spam!
+    end
+
+    it "should set the status to unverified" do
+      @group_request.mark_as_unverified!
+      @group_request.should be_unverified
+    end
+  end
+
+  context "that has been verified" do
+    before do
+      @group_request.save!
+      @group_request.verify!
+    end
+
+    it "can later be approved" do
+      @group_request.should_receive(:approve_request)
+      @group_request.approve!
+    end
+
+    it "can set the status to marked_as_smanually_approved" do
+      @group_request.mark_as_manually_approved!
+      @group_request.should be_manually_approved
+    end
+
+    it "can set the status to marked_as_spam" do
+      @group_request.mark_as_spam!
+      @group_request.should be_marked_as_spam
+    end
+  end
+
+  context "that has been defered" do
+    before do
+      @group_request.save!
+      @group_request.verify!
+      @group_request.defer!
+    end
+
+    it "can later be approved" do
+      @group_request.should_receive(:approve_request)
+      @group_request.approve!
+    end
+
+    it "can later be marked as manually_approved" do
+      @group_request.mark_as_manually_approved!
+      @group_request.should be_manually_approved
+    end
+
+    it "can set the status to marked_as_spam" do
+      @group_request.mark_as_spam!
+      @group_request.should be_marked_as_spam
+    end
+  end
+
+  context "that has been manually_approved" do
+    before do
+      @group_request.save!
+      @group_request.mark_as_manually_approved!
+    end
+
+    it "can set the status to unverified" do
+      @group_request.mark_as_unverified!
+      @group_request.should be_unverified
+    end
+  end
+
+  context "that has been marked_as_spam" do
+    before do
+      @group_request.save!
+      @group_request.mark_as_spam!
+    end
+
+    it "can set the status to unverified" do
+      @group_request.mark_as_unverified!
+      @group_request.should be_unverified
     end
   end
 end

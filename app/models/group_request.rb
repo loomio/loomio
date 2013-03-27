@@ -17,41 +17,53 @@ class GroupRequest < ActiveRecord::Base
 
   belongs_to :group
 
-  scope :awaiting_approval, where(:status => :awaiting_approval)
+  scope :verified, where(:status => :verified)
+  scope :unverified, where(:status => :unverified)
   scope :approved, where(:status => :approved)
   scope :accepted, where(:status => :accepted)
 
   before_create :mark_spam
   before_validation :generate_token, on: :create
+  after_create :send_verification
 
   include AASM
   aasm column: :status do  # defaults to aasm_state
-    state :awaiting_approval, initial: true
+    state :unverified, initial: true
+    state :verified
     state :approved
     state :accepted
-    state :ignored
+    state :defered
     state :manually_approved
     state :marked_as_spam
 
+    event :verify do
+      transitions to: :verified, from: [:unverified]
+    end
+
     event :approve, before: :approve_request do
-      transitions to: :approved, from: [:awaiting_approval, :ignored, :marked_as_spam]
+      transitions to: :approved, from: [:verified, :defered]
     end
 
     event :accept_request do
       transitions to: :accepted, from: [:approved]
     end
 
-    event :ignore do
-      transitions to: :ignored, from: [:awaiting_approval, :marked_as_spam]
+    event :defer do
+      transitions to: :defered, from: [:verified]
     end
 
     event :mark_as_manually_approved do
-      transitions to: :manually_approved, from: [:awaiting_approval, :ignored]
+      transitions to: :manually_approved, from: [:unverified, :verified, :defered]
     end
 
     event :mark_as_spam do
-      transitions to: :marked_as_spam, from: [:awaiting_approval, :ignored]
+      transitions to: :marked_as_spam, from: [:unverified, :verified, :defered]
     end
+
+    event :mark_as_unverified do
+      transitions to: :unverified, from: [:marked_as_spam, :manually_approved]
+    end
+
   end
 
   def accept!(user)
@@ -61,6 +73,10 @@ class GroupRequest < ActiveRecord::Base
 
 
   private
+
+  def send_verification
+    StartGroupMailer.verification(self).deliver
+  end
 
   def approve_request
     @group = Group.new name: name
