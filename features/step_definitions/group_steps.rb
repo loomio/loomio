@@ -147,3 +147,8 @@ end
 Then /^I should not see the list of invited users$/ do
   page.should_not have_css('#invited-users')
 end
+
+Given /^the group has a subgroup$/ do
+  @subgroup = FactoryGirl.create(:group, parent: @group)
+  @subgroup.add_member!(@user)
+end
