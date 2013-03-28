@@ -1,0 +1,10 @@
+#move-discussion-modal.modal.hidden
+  .modal-header
+    %button.close{"data-dismiss" => "modal"}×
+    %h3= "Where would you like to move this discussion to?"
+  = form_for move_discussion_path, method: :put do |f|
+    .modal-body
+      / = f.collection_select :group_id, user_groups.sort{|a,b| a.full_name <=> b.full_name}, :id, :full_name
+    .modal-footer
+      = f.submit  class: "btn btn-info", id: 'move-discussion-submit', :data => { :disable_with => "Moving" }
+      = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn"
