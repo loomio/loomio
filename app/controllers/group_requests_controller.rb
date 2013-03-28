@@ -18,8 +18,8 @@ class GroupRequestsController < BaseController
   end
 
   def start_new_group
-    group_request = GroupRequest.find(params[:id])
-    if group_request.token != params[:token] || group_request.accepted?
+    group_request = GroupRequest.find_by_token(params[:token])
+    if group_request.nil? or group_request.accepted?
       render "invitation_accepted_error_page"
     else
       session[:start_new_group_token] = group_request.token
