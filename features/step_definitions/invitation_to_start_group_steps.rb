@@ -41,16 +41,23 @@ Given /^an invitiation to start a loomio group has been sent$/ do
 end
 
 When /^the user clicks the invitiation link$/ do
-  open_email(@group_request.admin_email)
-  click_first_link_in_email
+  email = ActionMailer::Base.deliveries.last
+  url = email.body.match(/https?:\/\/[\S]+/)[0]
+  path = URI.parse(url).path
+  puts path
+  visit path
+  save_and_open_page
 end
 
 When /^signs up as a new user$/ do
-  fill_in :full_name, with: 'Jimmy Jiminson'
-  fill_in :email, with: 'jim@jiminson.com'
-  fill_in :password, with: 'milkbottle'
-  fill_in :password_confirmation, with: 'milkbottle'
-  click_on 'Sign Up!'
+
+  within ".signup-form" do
+    fill_in :name, with: 'Jimmy Jiminson'
+    fill_in :email, with: 'jim@jiminson.com'
+    fill_in :password, with: 'milkbottle'
+    fill_in :password_confirmation, with: 'milkbottle'
+    click_on 'Sign Up!'
+  end
 end
 
 Then /^they should see the Start your Group wizard$/ do

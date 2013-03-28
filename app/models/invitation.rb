@@ -4,8 +4,15 @@ class Invitation < ActiveRecord::Base
   attr_accessible :recipient_email, :inviter, :group, :to_be_admin
   belongs_to :inviter, class_name: User
   belongs_to :group
-
   before_save :ensure_token_is_present
+
+  def inviter_name
+    ''
+  end
+
+  def group_name
+    ''
+  end
 
   private
   def ensure_token_is_present

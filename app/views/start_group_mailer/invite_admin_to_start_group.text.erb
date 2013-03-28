@@ -1,2 +1,2 @@
-<% link = invitation_path(@invitation) %>
+<% link = invitation_url(@invitation) %>
 <%= @message_body.gsub('{invitation_link}', link) %>
