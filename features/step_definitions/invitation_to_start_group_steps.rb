@@ -22,19 +22,35 @@ When /^I approve the group request and send the setup invitation$/ do
 end
 
 Then /^the requestor should get an invitation to start a loomio group$/ do
-  pending # express the regexp above with the code you wish you had
+  open_email(@group_request.admin_email)
+  current_email.should have_content(invitation_path(@invitation))
+  current_email.should have_content(@invitation.token)
 end
 
 Given /^an invitiation to start a loomio group has been sent$/ do
-  pending # express the regexp above with the code you wish you had
+  @group_request = FactoryGirl.create(:group_request)
+  @group_request.verify!
+  @site_admin = FactoryGirl.create :user, :is_admin => true
+  @setup_group = SetupGroup.new(@group_request)
+  @group = @setup_group.approve_group_request!(approved_by: @site_admin)
+  @invitation = CreateInvitation.to_start_group!(group: @group,
+                                                 inviter: @site_admin,
+                                                 recipient_email: @group_request.admin_email)
+  @setup_group.send_invitation_to_start_group!(invitation: @invitation,
+                                               message_body: 'We woud love to! {invitation_link}')
 end
 
 When /^the user clicks the invitiation link$/ do
-  pending # express the regexp above with the code you wish you had
+  open_email(@group_request.admin_email)
+  click_first_link_in_email
 end
 
 When /^signs up as a new user$/ do
-  pending # express the regexp above with the code you wish you had
+  fill_in :full_name, with: 'Jimmy Jiminson'
+  fill_in :email, with: 'jim@jiminson.com'
+  fill_in :password, with: 'milkbottle'
+  fill_in :password_confirmation, with: 'milkbottle'
+  click_on 'Sign Up!'
 end
 
 Then /^they should see the Start your Group wizard$/ do

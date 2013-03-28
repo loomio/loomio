@@ -16,7 +16,6 @@ class StartGroupMailer < ActionMailer::Base
   end
 
   def invite_admin_to_start_group(invitation, message_body)
-    puts invitation.inspect
     @invitation = invitation
     @group = invitation.group
     @token = invitation.token

@@ -1,4 +1,6 @@
 class Invitation < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :token
   attr_accessible :recipient_email, :inviter, :group, :to_be_admin
   belongs_to :inviter, class_name: User
   belongs_to :group

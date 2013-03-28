@@ -195,6 +195,7 @@ GEM
       thor (>= 0.13.6)
     formtastic (2.0.2)
       rails (~> 3.0)
+    friendly_id (4.0.9)
     gherkin (2.11.1)
       json (>= 1.4.6)
     gravtastic (3.2.6)
@@ -474,6 +475,7 @@ DEPENDENCIES
   flay
   foreman
   formtastic
+  friendly_id (~> 4.0.9)
   gravtastic
   guard
   guard-rspec
