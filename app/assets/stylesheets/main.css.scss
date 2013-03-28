@@ -156,42 +156,9 @@ li.selector-item a.selector-link:hover {
   text-decoration: none;
   .group-activity-indicator.unread-group-activity { background-color: $group-activity; }
 }
-.pagination {
-  a {
-    color: $mid-grey;
-    border: 1px solid $light-grey;
-    border-left-width: 0;
-  }
-  margin: 2px 0 5px 0;
-}
-.pagination li.page a {
-  background-position: 16px 10px;
-}
-.pagination ul{
-  border-top: 0px;
-}
-.pagination li.next_page, li.prev {
-  a {
-    text-indent: -100em;
-    overflow: hidden;
-    padding: 0 5px;
-    width: 29px;
-  }
-}
-.pagination li.prev a {
-  background: url(previous.png) no-repeat;
-  background-position: 16px 10px;
-}
-.pagination li.next_page a {
-  background: url(Next.png) no-repeat;
-  background-position: 16px 10px;
-}
 
 .alert {
   margin: 10px 0;
-  // position: relative;
-  // top: 0px;
-  // bottom: 20px;
 }
 
 // misc (move stuff out of here..)
