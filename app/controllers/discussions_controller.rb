@@ -69,10 +69,23 @@ class DiscussionsController < GroupBaseController
       @displayed_motion = @current_motion
     end
     if current_user
+      @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
       @uses_markdown = current_user.uses_markdown?
       ViewLogger.motion_viewed(@current_motion, current_user) if @current_motion
       ViewLogger.discussion_viewed(@discussion, current_user)
     end
+  end
+
+  def move
+    @discussion = Discussion.find(params[:id])
+    destination = Group.find(params[:discussion][:group_id])
+    @discussion.group_id = params[:discussion][:group_id]
+    if DiscussionMover.can_move?(current_user, destination) && @discussion.save!
+      flash[:success] = "Discussion successfully moved."
+    else
+      flash[:error] = "Discussion could not be moved."
+    end
+    redirect_to @discussion
   end
 
   def add_comment

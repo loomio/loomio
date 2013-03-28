@@ -44,6 +44,11 @@ Given /^I am a member of a group$/ do
   @group.add_member! @user
 end
 
+Given /^I am an admin of the subgroup$/ do
+  @subgroup = FactoryGirl.create :group, parent: @group
+  @subgroup.add_admin! @user
+end
+
 Given /^"(.*?)" is a member of the group$/ do |arg1|
   user = FactoryGirl.create :user, name: arg1,
                             email: "#{arg1}@example.org",
@@ -91,6 +96,10 @@ Given /^there is a discussion in a group I belong to$/ do
   @group = FactoryGirl.create :group
   @discussion = FactoryGirl.create :discussion, :group => @group
   @group.add_member! @user
+end
+
+Given /^the subgroup has a discussion$/ do
+  @discussion = FactoryGirl.create :discussion, :group => @subgroup
 end
 
 When /^I fill details for the subgroup$/ do
@@ -146,4 +155,19 @@ end
 
 Then /^I should not see the list of invited users$/ do
   page.should_not have_css('#invited-users')
+end
+
+Given /^the group has a subgroup$/ do
+  @subgroup = FactoryGirl.create(:group, parent: @group)
+end
+
+Given /^the group has a subgroup I am an admin of$/ do
+  @subgroup = FactoryGirl.create(:group, parent: @group)
+  @subgroup.add_admin!(@user)
+end
+
+Then /^the group has another subgroup with a discussion I am an admin of$/ do
+  @subgroup1 = FactoryGirl.create(:group, parent: @group)
+  @subgroup1.add_admin!(@user)
+  @discussion = FactoryGirl.create :discussion, :group => @subgroup1
 end
