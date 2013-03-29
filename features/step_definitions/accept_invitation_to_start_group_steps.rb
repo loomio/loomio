@@ -42,6 +42,14 @@ When /^I choose to log in and then I submit the login form$/ do
   click_on "sign-in-btn"
 end
 
+When /^I click the old format invitation link to start a new group$/ do
+  visit("/groups/#{@group_request.group_id}/invitations/#{@group_request.token}")
+end
+
+Then /^I should be asked to create an account$/ do
+  page.should have_content("Your request to a start a new group on Loomio has been approved!")
+end
+
 Then /^I should become the admin of the group$/ do
   @user ||= User.find_by_email(@admin_email)
   @user.is_group_admin?(@group).should == true
