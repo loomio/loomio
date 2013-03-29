@@ -121,13 +121,29 @@ describe DiscussionsController do
     end
 
     describe "creating a new proposal" do
-      it "is successful" do
-        get :new_proposal, id: discussion.id
-        response.should be_success
+      context "current proposal already exists" do
+        it "redirects to the discussion page" do
+          get :new_proposal, id: discussion.id
+          response.should redirect_to(discussion)
+        end
+        it "displays a proposal already exists message" do
+          get :new_proposal, id: discussion.id
+          flash[:notice].should =~ /A current proposal already exists for this disscussion./
+        end
       end
-      it "renders new motion template" do
-        get :new_proposal, id: discussion.id
-        response.should render_template("motions/new")
+      context "where no current proposal exists" do
+        before do
+          discussion.stub(current_motion: nil)
+          Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
+          get :new_proposal, id: discussion.id
+        end
+        it "succeeds" do
+          response.should be_success
+        end
+        it "renders new motion template" do
+          get :new_proposal, id: discussion.id
+          response.should render_template("motions/new")
+        end
       end
     end
 
