@@ -38,7 +38,6 @@ Loomio::Application.routes.draw do
     post :show_description_history, :on => :member
     get :new_proposal, :on => :member
     post :edit_title, :on => :member
-    put :move, :on => :member
   end
   post "/discussion/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
   post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"

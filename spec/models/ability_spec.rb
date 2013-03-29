@@ -36,7 +36,6 @@ describe "User abilities" do
     it { should be_able_to(:show_description_history, discussion) }
     it { should be_able_to(:preview_version, discussion) }
     it { should be_able_to(:update_version, discussion) }
-    it { should_not be_able_to(:move, discussion) }
     it { should be_able_to(:index, Discussion) }
     it { should be_able_to(:destroy, user_comment) }
     it { should_not be_able_to(:destroy, discussion) }
@@ -114,7 +113,6 @@ describe "User abilities" do
     it { should be_able_to(:update, group) }
     it { should be_able_to(:email_members, group) }
     it { should be_able_to(:destroy, discussion) }
-    it { should be_able_to(:move, discussion) }
     it { should be_able_to(:make_admin, @membership_request) }
     it { should be_able_to(:remove_admin, @membership_request) }
     it { should be_able_to(:destroy, @other_user_membership) }
