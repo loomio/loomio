@@ -46,3 +46,9 @@ Feature: Group admin accepts invitation to start a Loomio group
     When I open the email sent to me
     And I click the invitation link to start a new group
     Then I should be notified the invitation has already been accepted
+
+  Scenario: User accepts an invitation containing the old style link
+    Given I have requested to start a loomio group
+    And the group request has been approved
+    When I click the old format invitation link to start a new group
+    Then I should be asked to create an account

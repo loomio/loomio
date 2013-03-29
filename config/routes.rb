@@ -84,6 +84,9 @@ Loomio::Application.routes.draw do
     root :to => 'dashboard#show'
   end
 
+  #redirect old invites
+  match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
+
   match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
   match '/privacy' => 'high_voltage/pages#show', :id => 'privacy'
   match '/blog' => 'high_voltage/pages#show', :id => 'blog'
