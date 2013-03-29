@@ -19,9 +19,5 @@
       %ul.dropdown-menu.pull-right
         - if can?(:edit_title, discussion)
           %li= link_to "Edit discussion title", "#", :id => "edit-title"
-        -if can? :move, discussion
-          %li= link_to "Move discussion", '#move-discussion-modal', "data-toggle" => "modal", id: 'move-discussion'
         -if can? :destroy, discussion
           %li= link_to "Delete discussion", "#", 'data-method-type' => 'delete', 'data-title' => "Delete Discussion", 'data-body' => "Are you sure you want to permanently delete this discussion?", 'data-confirm-path' => discussion_path(discussion), class: 'confirm-dialog', id: 'delete-discussion'
-
-=render "discussions/move_discussion_modal"
