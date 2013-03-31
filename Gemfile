@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '~> 3.2.12'
-gem "haml-rails"
+gem 'haml-rails', '~> 0.4'
 gem 'devise', '~> 2.2.3'
 gem 'devise_invitable', '~> 1.0.0'
 gem 'pg', '~> 0.14.1'
@@ -46,7 +46,7 @@ gem 'rinku'
 #       which does not allow us to do this
 #
 #       https://github.com/rails/sass-rails/issues/38#issuecomment-2046678
-gem 'sass-rails',   '~> 3.2.5'
+gem 'sass-rails',   '~> 3.2.6'
 gem 'coffee-rails', '~> 3.2.2'
 
 # Gems used only for assets and not required
@@ -63,7 +63,6 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'faker'
   gem 'rspec-rails'
-  gem 'ruby-prof', :git => 'https://github.com/wycats/ruby-prof.git'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
@@ -88,12 +87,10 @@ end
 
 group :test do
   gem 'cucumber-rails', :require => false
-  gem 'cane', :git => 'git://github.com/square/cane.git'
-  gem 'simplecov', :require => false
-  gem 'flay', :require => false
-  gem "rails_best_practices", :require => false
   gem 'email_spec'
   gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
+  gem 'webmock', '~> 1.11.0'
+  gem 'vcr', '~> 2.4.0'
 end
 
 group :staging, :production do
