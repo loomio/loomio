@@ -18,9 +18,16 @@ Spork.prefork do
   Spork.trap_method(Rails::Application::RoutesReloader, :reload!) if Spork.using_spork?
 
   require File.expand_path("../../config/environment", __FILE__)
+
+  require 'vcr'
+  VCR.configure do |c|
+    c.cassette_library_dir = 'spec/support/vcr_cassettes'
+    c.hook_into :webmock
+    c.ignore_localhost = true
+  end
+
   require 'rspec/rails'
   require 'rspec/autorun'
-
   RSpec.configure do |config|
     config.mock_with :rspec
 
