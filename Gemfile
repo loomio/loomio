@@ -89,7 +89,7 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'email_spec'
   gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
-  gem 'webmock', '~> 1.11.0'
+  gem 'webmock', '~> 1.9.0'
   gem 'vcr', '~> 2.4.0'
 end
 
