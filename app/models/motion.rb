@@ -53,10 +53,6 @@ class Motion < ActiveRecord::Base
     group.users.where(User.arel_table[:id].not_eq(author.id))
   end
 
-  def user_has_voted?(user)
-    votes.map{|v| v.user.id}.include?(user.id)
-  end
-
   def with_votes
     votes if votes.size > 0
   end
@@ -74,7 +70,7 @@ class Motion < ActiveRecord::Base
     }.to_hash
   end
 
-  def votes_graph_ready
+  def votes_for_graph
     votes_for_graph = []
     votes_breakdown.each do |k, v|
       votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|b| b.user.email}]]
@@ -105,6 +101,10 @@ class Motion < ActiveRecord::Base
       discussion.group = group
       discussion.save
     end
+  end
+
+  def unique_votes
+    Vote.unique_votes(self)
   end
 
   # motion is closed by user

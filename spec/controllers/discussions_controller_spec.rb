@@ -42,7 +42,7 @@ describe DiscussionsController do
 
       context do
         before do
-          motion.stub(:votes_graph_ready).and_return([])
+          motion.stub(:votes_for_graph).and_return([])
           motion.stub(:user_has_voted?).and_return(true)
           motion.stub(:open_close_motion)
           motion.stub(:voting?).and_return(true)
