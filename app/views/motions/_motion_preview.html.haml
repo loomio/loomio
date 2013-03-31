@@ -21,7 +21,7 @@
               = "no close date"
             =" · " unless this_group
           .proposal-group-name= DiscussionDecorator.new(motion.discussion).display_group_name(this_group)
-      .pie{id: "graph_#{motion.id}", 'data-votes' => motion.votes_graph_ready.to_json}
+      .pie{id: "graph_#{motion.id}", 'data-votes' => motion.votes_for_graph.to_json}
 
 - if params[:controller] == 'discussions'
   :coffeescript
@@ -32,14 +32,14 @@
           el: '.pie'
           id_string: "graph_#{motion.id}"
           legend: false
-          data: #{motion.votes_graph_ready.to_json}
+          data: #{motion.votes_for_graph.to_json}
           type: 'pie'
           tooltip_selector: '#tooltip'
           diameter: 25
           padding: 1
           gap: 1
           shadow: 0.75
-          
+
       # IE8 FIX - for some reason we have to load the graph after everything else.
       # Otherwise, the graph doesn't display in IE8.
       #

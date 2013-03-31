@@ -16,9 +16,8 @@
       .proposed-by
         = "Proposed #{time_ago_in_words(motion.created_at)} ago by #{motion.author_name}"
     .span2.motion-admin-buttons
-      = render '/motions/admin_buttons', motion: @current_motion unless @selected_motion || motion.closed?
-  - if motion.closed?
-    =render "motions/outcome_statement", motion: motion, this_group: this_group
+      = render '/motions/admin_buttons', motion: motion unless motion.closed?
+    =render "motions/outcome_statement", motion: motion, this_group: this_group if motion.closed?
 
   .description
 
@@ -42,7 +41,7 @@
     = "have " unless motion.closed?
     = "stated their position (#{motion.group_count - motion.no_vote_count}/#{motion.group_count})"
   .votes
-    - if motion.voting? && @group.users_include?(current_user) && (not @user_already_voted)
+    - if display_vote_buttons?(motion, current_user)
       %h3 State your position
       .vote-buttons.clearfix
         =link_to image_tag("hand-yes.png", title:"I agree", alt:"I agree"), new_motion_vote_path(motion_id: motion.id, position: 'yes'), "title" => "I agree", "data-content" => "I agree with this and want it to go ahead.", class: "position btn vote-yes", id: "yes-vote"
@@ -60,7 +59,7 @@
           el: '.pie'
           id_string: "graph_#{motion.id}"
           legend: true
-          data: #{@votes_for_graph.to_json}
+          data: #{motion.votes_for_graph.to_json}
           type: 'pie'
           tooltip_selector: '#tooltip'
           diameter: 200
