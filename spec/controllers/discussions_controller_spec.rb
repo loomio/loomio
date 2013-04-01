@@ -54,21 +54,6 @@ describe DiscussionsController do
           response.should be_success
         end
 
-        it "creates a motion_read_log if there is a current motion" do
-          user.should_receive(:update_motion_read_log).with(motion)
-          get :show, id: discussion.id
-        end
-
-        it "creates a discussion_read_log" do
-          user.should_receive(:update_discussion_read_log).with(discussion)
-          get :show, id: discussion.id
-        end
-
-        it "updates the discussion's total view counter" do
-          get :show, id: discussion.id
-          discussion.total_views.should == 1
-        end
-
         it "assigns array with discussion history" do
           discussion.should_receive(:activity).and_return(['fake'])
           get :show, id: discussion.id

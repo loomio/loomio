@@ -70,16 +70,15 @@ class DiscussionsController < GroupBaseController
     end
     if current_user
       @uses_markdown = current_user.uses_markdown?
-      @discussion.update_total_views
-      current_user.update_motion_read_log(@current_motion) if @current_motion
-      current_user.update_discussion_read_log(@discussion)
+      ViewLogger.motion_viewed(@current_motion, current_user) if @current_motion
+      ViewLogger.discussion_viewed(@discussion, current_user)
     end
   end
 
   def add_comment
     @discussion = Discussion.find(params[:id])
     comment = @discussion.add_comment(current_user, params[:comment])
-    current_user.update_discussion_read_log(@discussion)
+    ViewLogger.discussion_viewed(@discussion, current_user)
   end
 
   def new_proposal

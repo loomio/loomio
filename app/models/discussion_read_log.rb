@@ -1,4 +1,6 @@
 class DiscussionReadLog < ActiveRecord::Base
+  attr_accessible :user_id, :discussion_id, :discussion_last_viewed_at
+
   belongs_to :user
   belongs_to :discussion
   validates_presence_of :discussion_last_viewed_at, :discussion_id, :user_id
