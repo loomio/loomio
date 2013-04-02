@@ -46,4 +46,53 @@ describe EmailPreferences do
       end
     end
   end
+
+  context "when setting data" do
+    describe "#update_attributes" do
+      let(:user) { mock_model(User) }
+
+      it "passes attributes on to user" do
+        attributes = {'a' => 'b'}
+        user.should_receive(:update_attributes).with(attributes)
+        subject.update_attributes(attributes)
+      end
+
+      it "doesn't pass on group_email_preferences" do
+        attributes = {'a' => 'b', 'group_email_preferences' => 'c'}
+        subject.should_receive(:group_email_preferences=).with('c')
+        user.should_receive(:update_attributes).with({'a' => 'b'})
+        subject.update_attributes(attributes)
+      end
+    end
+
+    describe "#group_email_preferences=" do
+      let(:user) { FactoryGirl.create(:user) }
+
+      it "does nothing if given nil" do
+        m1 = create_membership_for_new_group("Foo", subscribed: true)
+        subject.group_email_preferences = nil
+        m1.reload.subscribed_to_notification_emails.should be_true
+      end
+
+      it "disables membership notification if id not included in array" do
+        m1 = create_membership_for_new_group("Foo", subscribed: true)
+        subject.group_email_preferences = ['9232']
+        m1.reload.subscribed_to_notification_emails.should be_false
+      end
+
+      it "enables membership notification if id is included in array" do
+        m1 = create_membership_for_new_group("Foo", subscribed: false)
+        subject.group_email_preferences = [m1.id.to_s]
+        m1.reload.subscribed_to_notification_emails.should be_true
+      end
+
+      it "both enables and disables as required" do
+        m1 = create_membership_for_new_group("Foo", subscribed: false)
+        m2 = create_membership_for_new_group("Bar", subscribed: true)
+        subject.group_email_preferences = [m1.id.to_s]
+        m1.reload.subscribed_to_notification_emails.should be_true
+        m2.reload.subscribed_to_notification_emails.should be_false
+      end
+    end
+  end
 end

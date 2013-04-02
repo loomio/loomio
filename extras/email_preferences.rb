@@ -13,11 +13,12 @@ class EmailPreferences
   end
 
   def update_attributes(attributes)
+    self.group_email_preferences = attributes.delete('group_email_preferences')
     @user.update_attributes(attributes)
   end
 
   def all_memberships
-    @user.memberships.includes(:group).order("groups.name")
+    memberships.includes(:group).order("groups.name")
   end
 
   def self.model_name
@@ -25,8 +26,29 @@ class EmailPreferences
   end
 
   def group_email_preferences
-    Membership.
-      where(:user_id => @user.id, :subscribed_to_notification_emails => true).
+    memberships.
+      where(:subscribed_to_notification_emails => true).
       map(&:id)
   end
+
+  def group_email_preferences=(membership_id_strings)
+    if membership_id_strings
+      self.subscribed_membership_ids = membership_id_strings.reject(&:blank?).map(&:to_i)
+    end
+  end
+
+  private
+
+    def subscribed_membership_ids=(membership_ids)
+      update_subscriptions memberships, false
+      update_subscriptions memberships.where(id: membership_ids), true
+    end
+
+    def update_subscriptions(scope, value)
+      scope.update_all(subscribed_to_notification_emails: value)
+    end
+
+    def memberships
+      @user.memberships
+    end
 end
