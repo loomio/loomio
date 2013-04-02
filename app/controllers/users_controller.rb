@@ -25,7 +25,8 @@ class UsersController < BaseController
   end
 
   def email_preferences
-    @user = @restricted_user || current_user
+    user = @restricted_user || current_user
+    @email_preferences = UserEmailPreferences.new(user)
   end
 
   def update

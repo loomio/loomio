@@ -123,11 +123,6 @@ class User < ActiveRecord::Base
     memberships.where(:group_id => group.id, :subscribed_to_notification_emails => true).present?
   end
 
-  def group_email_preferences
-    #membership ids for memberships which have subscribed to the group emails
-    memberships.where(:subscribed_to_notification_emails => true).map(&:id)
-  end
-
   def group_email_preferences=(ids)
     ids = ids.delete_if(&:blank?).map(&:to_i)
     memberships.where(:subscribed_to_notification_emails => true).each do |m|
