@@ -1,6 +1,6 @@
 class UsersController < BaseController
   before_filter :authenticate_user!, except: [:new, :create, :email_preferences, :update]
-  before_filter :authenticate_user_by_unsubscribe_token_or_fallback, only: [:email_preferences, :update]
+  before_filter :authenticate_user_by_unsubscribe_token_or_fallback, only: [:update]
 
   def new
     @user = User.new
