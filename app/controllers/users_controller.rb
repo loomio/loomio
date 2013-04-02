@@ -13,6 +13,7 @@ class UsersController < BaseController
     if @group_request && (not @group_request.accepted?)
       @user = User.new(params[:user])
       if @user.save
+        @user.generate_username
         sign_in @user
         redirect_to group_path(@group_request.group)
       else
