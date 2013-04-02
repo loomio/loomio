@@ -11,7 +11,7 @@ ActiveAdmin::Dashboards.build do
   end
 
   section "Members Per Group (average)", :priority => 3 do
-    h1{ Group.average("memberships_count").round }
+    h1{ Group.average("memberships_count").round unless Group.count == 0 }
   end
 
   section "Discussions", :priority => 4 do
