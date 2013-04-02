@@ -1,0 +1,15 @@
+A new discussion was created in a Loomio group that you belong to.
+\
+To view this discussion click:
+= discussion_url(@discussion)
+\
+Discussion:
+= @discussion.title
+\
+Group:
+= @discussion.group.full_name
+\
+Started by:
+= @discussion.author.name
+\
+= render 'user_mailer/unsubscribe_link_text'
