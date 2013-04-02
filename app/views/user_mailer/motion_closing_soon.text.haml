@@ -1,0 +1,35 @@
+Proposal:
+\
+=@motion.name
+\
+To view this discussion click:
+=motion_url(@motion)
+\
+Group:
+=@motion.discussion.group.name
+\
+Author:
+=@motion.author.name
+\
+Closes at:
+=l @motion.close_date
+\
+Description:
+=@motion.description
+\
+Summary
+\
+-@motion.votes_for_graph.each do |results|
+  =results[0]
+\
+#{@motion.percent_voted}% of members have stated their position (#{@motion.group_count - @motion.no_vote_count}/#{@motion.group_count})
+\
+Positions
+\
+-@motion.unique_votes.each do |vote|
+  #{vote.user_name} #{vote.position_to_s}
+  -if vote.statement.present?
+    \- #{vote.statement}
+    \
+
+=render 'unsubscribe_link_text'
