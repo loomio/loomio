@@ -439,3 +439,11 @@ li.selector-item .discussion-preview:hover {
   border-bottom: 1px solid $light-grey;
   min-height: 40px;
 }
+.discussions-search-form {
+  float: right;
+  margin-right: 265px;
+}
+.highlight {
+  font-weight: 600;
+  text-decoration: underline;
+}

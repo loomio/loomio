@@ -2,6 +2,7 @@
   =render '/groups/title', group: nil
   .clearfix
     = icon_button(new_discussion_path, 'Start a discussion', '/assets/topic-18.png', 'start-new-discussion')
+    = render 'discussions/search_filter'
   .row.main-content
     %section.span8
       %ul.selector-list.bordered

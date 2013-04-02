@@ -63,4 +63,8 @@ class Queries::VisibleDiscussions < SimpleDelegator
   def without_current_motions
     includes(:motions).where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
   end
+
+  def where_title_is_like(title_query)
+    where("discussions.title ILIKE ?", "%#{title_query}%")
+  end
 end

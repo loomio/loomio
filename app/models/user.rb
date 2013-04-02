@@ -224,6 +224,12 @@ class User < ActiveRecord::Base
       .order("last_comment_at DESC")
   end
 
+  def motions_or_discussions_by_query(title_query)
+    discussions
+        .where("discussions.title ILIKE ?", "%#{title_query}%")
+        .order("last_comment_at DESC")
+  end
+
   def self.loomio_helper_bot
     helper_bot = User.find_or_create_by_email('contact@loom.io')
     unless helper_bot.persisted?

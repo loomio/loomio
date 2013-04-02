@@ -148,6 +148,24 @@ class DiscussionsController < GroupBaseController
     end
   end
 
+  def search
+    if params[:query].present? 
+      query = params[:query]
+      if params[:group_id].present?
+        @group = Group.find(params[:group_id])
+        @discussions = Queries::VisibleDiscussions.for(@group, current_user).
+                         where_title_is_like(query).page(params[:page]).per(10)
+      else
+        authenticate_user!
+        @discussions = current_user.motions_or_discussions_by_query(query).page(params[:page]).per(10)
+      end
+      @no_discussions_found = (@discussions.count == 0)
+      render "index", :layout => false if request.xhr?
+    else
+      redirect_to :action => :index
+    end
+  end
+
   private
 
   def assign_meta_data

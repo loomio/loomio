@@ -13,6 +13,7 @@
 //= require lib/jquery.tokeninput
 //= require lib/jquery.mousewheel
 //= require lib/jquery.placeholder
+//= require lib/jquery.highlight
 //= require scrollTo
 //= require rails.validations
 //= require rails.validations.simple_form
@@ -30,7 +31,6 @@
 //= require motions
 //= require users
 //= require notifications
-//= require dashboard
 //= require votes
 //= require jquery.atwho
 //= require pop-over
