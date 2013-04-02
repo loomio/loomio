@@ -1,7 +1,7 @@
 .row
   .span12
     %h1 Email Preferences
-    =simple_form_for(@email_preferences, :method => :put) do |f|
+    =simple_form_for(@email_preferences, :url => update_email_preferences_path, :method => :put) do |f|
       %h2 Daily Activity Summary
       -if params[:unsubscribe_token]
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
@@ -16,6 +16,6 @@
       %p For each group, check the box if you want to be emailed immediately about new discussions and decisions.
 
       .control-group
-        =f.collection_check_boxes :group_email_preferences, @email_preferences.all_memberships, :id, :group_full_name, {}, {:class => 'checkbox'}{ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
+        =f.collection_check_boxes(:group_email_preferences, @email_preferences.all_memberships, :id, :group_full_name, {}, {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
 
       =f.submit 'Update preferences', :class => "btn btn-info btn-large"

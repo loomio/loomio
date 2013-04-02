@@ -24,11 +24,6 @@ class UsersController < BaseController
     end
   end
 
-  def email_preferences
-    user = @restricted_user || current_user
-    @email_preferences = UserEmailPreferences.new(user)
-  end
-
   def update
     @user = @restricted_user || current_user
     if @user.update_attributes(params[:user])
@@ -97,12 +92,5 @@ class UsersController < BaseController
     current_user.has_read_discussion_notice = true
     current_user.save!
     redirect_to :back
-  end
-
-  private
-  def authenticate_user_by_unsubscribe_token_or_fallback
-    unless (params[:unsubscribe_token].present? and @restricted_user = User.find_by_unsubscribe_token(params[:unsubscribe_token]))
-      authenticate_user!
-    end
   end
 end

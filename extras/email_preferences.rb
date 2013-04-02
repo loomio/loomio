@@ -1,5 +1,5 @@
 
-class UserEmailPreferences
+class EmailPreferences
   attr_reader :user
 
   delegate :to_key,
@@ -12,12 +12,16 @@ class UserEmailPreferences
     @user = user
   end
 
+  def update_attributes(attributes)
+    @user.update_attributes(attributes)
+  end
+
   def all_memberships
     @user.memberships.includes(:group).order("groups.name")
   end
 
   def self.model_name
-    User.model_name
+    ActiveModel::Name.new(self)
   end
 
   def group_email_preferences

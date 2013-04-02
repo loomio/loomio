@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe UserEmailPreferences do
-  subject { UserEmailPreferences.new(user) }
+describe EmailPreferences do
+  subject { EmailPreferences.new(user) }
 
   def create_membership(options)
     result = Membership.new
