@@ -52,7 +52,6 @@ class User < ActiveRecord::Base
            :conditions => { :access_level => Membership::MEMBER_ACCESS_LEVELS },
            :dependent => :destroy
 
-
   has_many :groups,
            :through => :memberships
   has_many :adminable_groups,
