@@ -1,6 +1,6 @@
 class UsersController < BaseController
   before_filter :authenticate_user!, except: [:new, :create, :email_preferences, :update]
-  before_filter :authenticate_user_by_unsubscribe_token_or_fallback, only: [:email_preferences, :update]
+  before_filter :authenticate_user_by_unsubscribe_token_or_fallback, only: [:update]
 
   def new
     @user = User.new
@@ -22,10 +22,6 @@ class UsersController < BaseController
     else
       redirect_to root_url
     end
-  end
-
-  def email_preferences
-    @user = @restricted_user || current_user
   end
 
   def update
@@ -96,12 +92,5 @@ class UsersController < BaseController
     current_user.has_read_discussion_notice = true
     current_user.save!
     redirect_to :back
-  end
-
-  private
-  def authenticate_user_by_unsubscribe_token_or_fallback
-    unless (params[:unsubscribe_token].present? and @restricted_user = User.find_by_unsubscribe_token(params[:unsubscribe_token]))
-      authenticate_user!
-    end
   end
 end
