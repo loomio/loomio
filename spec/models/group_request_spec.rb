@@ -36,6 +36,7 @@ describe GroupRequest do
       @group_request.verify!
       @group_request.should be_verified
     end
+  end
 
   it "should have 'other_sector' string field" do
     group_request.other_sector = "logging"

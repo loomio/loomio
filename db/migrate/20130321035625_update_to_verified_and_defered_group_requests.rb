@@ -1,4 +1,7 @@
 class AddUnverifiedStatusToGroupRequests < ActiveRecord::Migration
+  class GroupRequest < ActiveRecord::Base
+  end
+
   def up
     GroupRequest.where(status: 'awaiting_approval').update_all(status: 'verified')
     GroupRequest.where(status: 'ignored').update_all(status: 'defered')

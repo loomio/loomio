@@ -21,11 +21,7 @@ describe GroupRequestsController do
 
   describe "#create" do
     it "should redirect to the confirmation page" do
-<<<<<<< HEAD
       put :create, group_request: group_request.attributes
-=======
-      post :create, :group_request => attributes_for(:group_request)
->>>>>>> feature/update-group-request-page
       response.should redirect_to(group_request_confirmation_url)
     end
   end
