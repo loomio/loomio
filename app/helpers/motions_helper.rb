@@ -7,4 +7,8 @@ module MotionsHelper
     motion_class = ["motion-preview", "clearfix"]
     motion_class.join(" ")
   end
+
+  def display_vote_buttons?(motion, user)
+    motion.voting? && (not motion.user_has_voted?(user)) && motion.group.users_include?(user)
+  end
 end

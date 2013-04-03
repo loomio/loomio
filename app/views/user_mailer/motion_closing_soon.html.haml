@@ -24,7 +24,7 @@
   -#-else
     -#Please state your position
   -#%br
-  -@motion.votes_graph_ready.each do |results|
+  -@motion.votes_for_graph.each do |results|
     =results[0]
   %br
   #{@motion.percent_voted}% of members have stated their position (#{@motion.group_count - @motion.no_vote_count}/#{@motion.group_count})
