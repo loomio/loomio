@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'spec_helper'
 
 describe User do
@@ -439,20 +440,24 @@ describe User do
   end
 
   describe "usernames" do 
+    before do
+      @user1 = User.new(name: "Test User", email: "test1@example.com", password: "password")
+      @user2 = User.new(name: "Test User", email: "test2@example.com", password: "password")
+    end
     it "generates a unique username after invitation accepted" do
-      user1 = User.new
-      user1.name = "Test User"
-      user1.email = "test1@example.com"
-      user1.password = "password"
-      user1.generate_username
-      user1.save!
-      user2 = User.new
-      user2.name = "Test User"
-      user2.email = "test2@example.com"
-      user2.password = "password"
-      user2.generate_username
-      user2.save!
-      user1.username.should_not == user2.username
+      @user1.generate_username
+      @user1.save!
+      @user2.generate_username
+      @user2.save!
+      @user1.username.should_not == @user2.username
+    end
+
+    it "doesn't change username if already correctly set" do
+      @user1.generate_username # @user1.username now equals "testuser"
+      @user1.save!
+      @user2.username = "testuser1" 
+      @user2.save!
+      expect{ @user2.generate_username }.to_not change{@user2.username}
     end
 
     it "ensures usernames are stripped from email addr names" do
@@ -471,5 +476,11 @@ describe User do
       user.username.should == "rcharddbartlett"
     end
 
+    it "changes non ASCII characters to their ASCII counterparts" do
+      user = User.new
+      user.name = "Kæsper Thör Nørdskov _^25*/\!"
+      user.generate_username
+      user.username.should == "kaesperthornordskov25"
+    end
   end
 end
