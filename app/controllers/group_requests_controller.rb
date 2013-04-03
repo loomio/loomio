@@ -10,7 +10,7 @@ class GroupRequestsController < BaseController
     if @group_request.save
       redirect_to group_request_confirmation_url
     else
-      render :action => "new"
+      render action: 'new'
     end
   end
 
