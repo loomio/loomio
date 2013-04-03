@@ -95,11 +95,4 @@ FactoryGirl.define do
     expected_size 50
     cannot_contribute false
   end
-<<<<<<< HEAD
-
-  factory :invitation do
-    group_request
-  end
-=======
->>>>>>> feature/update-group-request-page
 end
