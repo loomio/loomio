@@ -1,5 +1,17 @@
 @import "settings";
 
+.dropdown-menu {
+  a {
+    clear: both;
+    color: #555;
+    display: block;
+    font-weight: normal;
+    line-height: 18px;
+    padding: 3px 15px;
+    white-space: nowrap;
+  }
+  li > a:hover, .active > a, .active > a:hover { background-color: #08c; }
+}
 
 .main-container {
   margin: auto;
@@ -9,12 +21,6 @@
 }
 
 .logged-in-navigation {
-  .navbar-inner {
-    background-image: url("title-bar-gradient.jpg");
-    background-repeat: repeat-x;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
-    z-index: 3;
-  }
   .nav-item-icon {
     padding-right: 5px;
     opacity: 0.8;

@@ -17,3 +17,4 @@ public/images
 Session.vim
 *.sql
 .env
+.idea

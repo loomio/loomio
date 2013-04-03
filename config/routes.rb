@@ -76,7 +76,8 @@ Loomio::Application.routes.draw do
     post :unlike, on: :member
   end
   match "/settings", :to => "users#settings", :as => :user_settings
-  match 'email_preferences', :to => "users#email_preferences", :as => :email_preferences
+  match 'email_preferences', :to => "email_preferences#edit", :as => :email_preferences, :via => :get
+  match 'email_preferences', :to => "email_preferences#update", :as => :update_email_preferences, :via => :put
 
   # route logged in user to dashboard
   resources :dashboard, only: :show
@@ -84,6 +85,9 @@ Loomio::Application.routes.draw do
   authenticated do
     root :to => 'dashboard#show'
   end
+
+  #redirect old invites
+  match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
 
   match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
   match '/privacy' => 'high_voltage/pages#show', :id => 'privacy'

@@ -10,7 +10,6 @@ ul, ol, li {
   padding: 0;
 }
 ul { list-style: none; }
-.dropdown-menu a { color: #555; }
 
 html { height: 100%; }
 
@@ -22,6 +21,31 @@ body {
 hr {
   margin: 1px;
 }
+
+// Override bootstrap 2.3 headers with 2.0.3 styles
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: inherit;
+  font-weight: bold;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+h1 {
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3 {
+  font-size: 18px;
+  line-height: 27px;
+}
+h4 { font-size: 14px; }
+h5 { font-size: 12px; }
+h6 { font-size: 11px; }
+h4, h5, h6 { line-height: 18px; }
 
 .group-title h2 {
   color: #777;
@@ -40,7 +64,12 @@ hr {
   .group-link-activity { float: right; }
   .button-icon { padding: 0 }
 }
-.popover { z-index: 10000; }
+.activity-item-body .popover h3 { padding: 8px 14px; }
+
+.popover {
+  width: 276px;
+  z-index: 10000;
+}
 
 .sub_group {font-size: $font-tiny;}
 
@@ -127,42 +156,9 @@ li.selector-item a.selector-link:hover {
   text-decoration: none;
   .group-activity-indicator.unread-group-activity { background-color: $group-activity; }
 }
-.pagination {
-  a {
-    color: $mid-grey;
-    border: 1px solid $light-grey;
-    border-left-width: 0;
-  }
-  margin: 2px 0 5px 0;
-}
-.pagination li.page a {
-  background-position: 16px 10px;
-}
-.pagination ul{
-  border-top: 0px;
-}
-.pagination li.next_page, li.prev {
-  a {
-    text-indent: -100em;
-    overflow: hidden;
-    padding: 0 5px;
-    width: 29px;
-  }
-}
-.pagination li.prev a {
-  background: url(previous.png) no-repeat;
-  background-position: 16px 10px;
-}
-.pagination li.next_page a {
-  background: url(Next.png) no-repeat;
-  background-position: 16px 10px;
-}
 
 .alert {
   margin: 10px 0;
-  // position: relative;
-  // top: 0px;
-  // bottom: 20px;
 }
 
 // misc (move stuff out of here..)
