@@ -59,27 +59,20 @@ class DiscussionsController < GroupBaseController
     @discussion = Discussion.find(params[:id])
     @last_collaborator = User.find @discussion.originator.to_i if @discussion.has_previous_versions?
     @group = GroupDecorator.new(@discussion.group)
-    @current_motion = @discussion.current_motion
     @vote = Vote.new
+    @current_motion = @discussion.current_motion
     @activity = @discussion.activity
     assign_meta_data
-    if (not params[:proposal])
-      if @current_motion
-        @unique_votes = Vote.unique_votes(@current_motion)
-        @votes_for_graph = @current_motion.votes_graph_ready
-        @user_already_voted = @current_motion.user_has_voted?(current_user)
-      end
-    else
-      @selected_motion = Motion.find(params[:proposal])
-      @user_already_voted = @selected_motion.user_has_voted?(current_user)
-      @votes_for_graph = @selected_motion.votes_graph_ready
+    if params[:proposal]
+      @displayed_motion = Motion.find(params[:proposal])
+    elsif @current_motion
+      @displayed_motion = @current_motion
     end
-
     if current_user
       @uses_markdown = current_user.uses_markdown?
+      @discussion.update_total_views
       current_user.update_motion_read_log(@current_motion) if @current_motion
       current_user.update_discussion_read_log(@discussion)
-      @discussion.update_total_views
     end
   end
 

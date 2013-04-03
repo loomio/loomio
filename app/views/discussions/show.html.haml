@@ -20,32 +20,29 @@
             %h3.header-text= t :current_decision
             .content-proposal-body
               %ul.selector-list
-                - if @current_motion
-                  - if (not @selected_motion) && (can? :close_voting, @current_motion)
-                    %li= render '/motions/admin_buttons', :motion => @current_motion
-                  - if @selected_motion && (@selected_motion != @current_motion)
-                    %li.selector-item.current-proposal
-                      = render '/motions/motion_preview', motion: @current_motion, this_group: @group
-                  - else
-                    %li.selector-item.current-proposal
-                      = render @current_motion, unique_votes: @unique_votes
-                - else
+                - if @current_motion.nil?
                   - if can? :create, Motion.new(discussion_id: @discussion.id)
                     = link_to t("create_new_proposal"), new_proposal_discussion_path(@discussion.id), class: 'btn new-proposal-btn', id: 'new-proposal'
                   %li.selector-item.empty-list-message= t :empty_decision_list
-
-            - if @discussion.motions.where("phase = 'closed'").count > 0
+                - else
+                  - if @displayed_motion == @current_motion
+                    - if can? :close_voting, @current_motion
+                      %li= render '/motions/admin_buttons', :motion => @current_motion
+                    %li.selector-item.current-proposal
+                      = render @current_motion, unique_votes: @current_motion.unique_votes
+                  - else
+                    %li.selector-item.current-proposal
+                      = render '/motions/motion_preview', motion: @current_motion, this_group: @group
+                  = render '/motions/edit_close_date', motion: @current_motion, input_time: @input_time
+            - if @discussion.closed_motions.count > 0
               #previous-proposals
                 .clearfix
                   .large-icon.decision-icon
                   %h3.header-text= t "previous_decisions"
-
                 .content-proposal-body
                   %ul.selector-list
                     - @discussion.closed_motions.each do |closed_motion|
-                      - if closed_motion == @selected_motion
-                        %li.selector-item= render @selected_motion, unique_votes: @unique_votes, this_group: @group
+                      - if closed_motion == @displayed_motion
+                        %li.selector-item= render closed_motion, unique_votes: closed_motion.unique_votes, this_group: @group
                       - else
                         %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
-- if @current_motion
-  = render '/motions/edit_close_date', :motion => @current_motion, :input_time => @input_time
