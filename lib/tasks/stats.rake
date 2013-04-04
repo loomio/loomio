@@ -19,7 +19,7 @@ namespace :stats do
       end
     end
 
-    s3file('groups.csv').write file
+    s3write('groups.csv', file)
   end
 
   task :users => :environment do   # Export all users' create dates
@@ -31,7 +31,7 @@ namespace :stats do
       end
     end
 
-    s3file('users.csv').write file
+    s3write('users.csv', file)
   end
 
 task :events => :environment do    # Export all events, scramble users, scramble private groups & subgroups
@@ -98,7 +98,7 @@ task :events => :environment do    # Export all events, scramble users, scramble
       end
     end
 
-    s3file('events.csv').write file
+    s3write('events.csv', file)
   end
 
   def export_model_to_s3(model, fields)
@@ -110,15 +110,15 @@ task :events => :environment do    # Export all events, scramble users, scramble
       end
     end
 
-    s3file(model.name + '.csv').write file
+    s3write(model.name + '.csv', file)
   end
 
   def scramble(method)
     Digest::MD5.hexdigest(method.to_s)
   end
 
-  def s3file (filename)
+  def s3write (filename, data)
     raise "Please set environment variable CANONICAL_HOST" if ENV["CANONICAL_HOST"].blank?
-    AWS::S3.new.buckets['loomio-metrics'].objects.create ENV["CANONICAL_HOST"] + '-' + filename
+    AWS::S3.new.buckets['loomio-metrics'].objects.create(ENV["CANONICAL_HOST"] + '-' + filename, data)
   end
 end
