@@ -87,7 +87,7 @@ class MotionsController < GroupBaseController
     @motion_activity = Integer(params[:motion_activity])
     if user_signed_in?
       @user = current_user
-      @user.update_motion_read_log(@motion)
+      ViewLogger.motion_viewed(@motion, @user)
     end
   end
 
