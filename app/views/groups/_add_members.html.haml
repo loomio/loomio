@@ -12,7 +12,7 @@
           .modal-header
             %button.close{"data-dismiss" => "modal"}×
             %h2= "Invite members to #{group.name}"
-          = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
+          = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post, autocomplete: "off" }) do |f|
             .modal-body
               - if no_member_limit || invites_left > 0
                 = devise_error_messages!
