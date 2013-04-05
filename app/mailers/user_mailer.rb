@@ -1,5 +1,6 @@
 class UserMailer < ActionMailer::Base
   include ApplicationHelper
+  include ActionView::Helpers::TextHelper
   default :from => "\"Loomio\" <noreply@loomio.org>"
 
   def daily_activity(user, activity, since_time)
@@ -15,6 +16,7 @@ class UserMailer < ActionMailer::Base
   def mentioned(user, comment)
     @user = user
     @comment = comment
+    @comment_body = conditional_markdown(comment.uses_markdown, comment.body)
     @discussion = comment.discussion
     mail to: @user.email,
          subject: "#{comment.author.name} mentioned you in the #{comment.group.name} group on Loomio"
