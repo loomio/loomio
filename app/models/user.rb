@@ -92,12 +92,6 @@ class User < ActiveRecord::Base
 
   has_many :notifications
 
-  has_many :discussion_read_logs,
-           :dependent => :destroy
-
-  has_many :motion_read_logs,
-           :dependent => :destroy
-
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
                   :uploaded_avatar, :username, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications, 
@@ -106,6 +100,7 @@ class User < ActiveRecord::Base
   before_save :set_avatar_initials, :ensure_unsubscribe_token
   before_create :set_default_avatar_kind
   after_create :ensure_name_entry
+  before_destroy { |user| ViewLogger.remove_all_logs_for(user.id) }
 
   scope :daily_activity_email_recipients, where("subscribed_to_daily_activity_email IS TRUE AND invitation_token IS NULL")
   scope :sorted_by_name, order("lower(name)")
@@ -215,40 +210,6 @@ class User < ActiveRecord::Base
       helper_bot.save
     end
     helper_bot
-  end
-
-  def update_motion_read_log(motion)
-    log = MotionReadLog.where('motion_id = ? AND user_id = ?', motion.id, id).first
-    if log.nil?
-      motion_read_log = MotionReadLog.new
-      motion_read_log.user_id = id
-      motion_read_log.motion_id = motion.id
-      motion_read_log.save!
-    else
-      log.motion_last_viewed_at = Time.now
-      log.save!
-    end
-  end
-
-  def update_discussion_read_log(discussion)
-    log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, id).first
-    if log.nil?
-      discussion_read_log = DiscussionReadLog.new
-      discussion_read_log.user_id = id
-      discussion_read_log.discussion_id = discussion.id
-      discussion_read_log.save!
-    else
-      log.discussion_last_viewed_at = Time.now
-      log.save!
-    end
-  end
-
-  def update_group_last_viewed_at(group)
-    membership = group_membership(group)
-    if membership
-      membership.group_last_viewed_at = Time.now()
-      membership.save!
-    end
   end
 
   def self.find_by_email(email)
