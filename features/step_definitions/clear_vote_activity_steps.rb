@@ -27,7 +27,7 @@ Then /^I should see a summary of the proposal's activity$/ do
 end
 
 Then /^the proposal activity count should clear for that discussion$/ do
-  find("#graph_#{@motion.id}").should_not have_css(".activity-count.hidden")
+  find("#graph_#{@motion.id}").should_not have_css(".activity-count")
 end
 
 Then /^I should not see any new activity for that discussion$/ do
