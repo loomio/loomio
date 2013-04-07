@@ -2,7 +2,9 @@
 
 %p #{@comment.author.name} said:
 
-%p #{@comment.body}
+%p
+  :plain
+    #{@comment_body}
 
 %p
   = link_to "Click here to view this discussion", discussion_url(@discussion)
