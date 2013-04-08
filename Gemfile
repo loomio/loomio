@@ -15,7 +15,6 @@ gem 'client_side_validations'
 gem 'client_side_validations-simple_form', '~> 2.0.0'
 gem 'jqplot-rails'
 gem "rails-backbone"
-gem 'coffee-filter'
 gem 'aasm'
 gem 'cancan'
 gem 'acts_as_commentable_with_threading'
@@ -26,7 +25,7 @@ gem 'rmagick'
 gem 'gravtastic'
 gem 'paperclip'
 gem 'kaminari'
-gem 'activeadmin'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'nokogiri'
 gem 'redcarpet', :git => 'https://github.com/vmg/redcarpet.git'
 gem 'rabl'
@@ -43,38 +42,27 @@ gem 'aws-sdk'
 gem 'rinku'
 gem "friendly_id", "~> 4.0.9"
 
-# NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
-#       which does not allow us to do this
-#
-#       https://github.com/rails/sass-rails/issues/38#issuecomment-2046678
-gem 'sass-rails',   '~> 3.2.5'
-gem 'coffee-rails', '~> 3.2.2'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'sass-rails',   '~> 3.2.5'
+  gem 'coffee-rails', '~> 3.2.2'
   gem 'bootstrap-sass', '~>2.0.3'
   gem 'uglifier', '>= 1.0.3'
   gem 'modernizr-rails'
 end
 
 group :development, :test do
-  gem 'capybara-screenshot'
   gem 'thin'
   gem 'debugger'
-  gem "factory_girl_rails", "~> 4.0"
-  gem 'faker'
   gem 'rspec-rails'
   gem 'ruby-prof', :git => 'https://github.com/wycats/ruby-prof.git'
-  gem 'shoulda-matchers'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'selenium-webdriver'
-  gem 'letter_opener'
-  gem 'mailcatcher'
 end
 
 group :development do
+  gem 'mailcatcher'
+  gem 'letter_opener'
   gem 'meta_request', '0.2.1'
   gem 'better_errors'
   gem 'guard'
@@ -88,6 +76,12 @@ group :development do
 end
 
 group :test do
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'faker'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
   gem 'launchy'
   gem 'cucumber-rails', :require => false
   gem 'cane', :git => 'git://github.com/square/cane.git'
