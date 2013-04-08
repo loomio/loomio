@@ -26,8 +26,9 @@ describe InvitationsController do
       end
 
       it 'does not accept the invitation' do
-        AcceptInvitation.should_not_receive(:from_user_with_token)
+        AcceptInvitation.should_not_receive(:and_grant_access!)
       end
+
     end
 
     context "user is signed in" do
@@ -35,16 +36,40 @@ describe InvitationsController do
       let(:invitation) {stub(:invitation, :group => group)}
       before do
         sign_in @user = FactoryGirl.create(:user)
-        AcceptInvitation.should_receive(:from_user_with_token).with(@user, 'asdfghjkl').and_return(invitation)
       end
 
-      it "accepts invitation from user" do
-        get :show, :id => 'asdfghjkl'
+      context '' do
+        before do
+          Invitation.should_receive(:find_by_token).and_return(invitation)
+          AcceptInvitation.should_receive(:and_grant_access!).with(invitation, @user)
+        end
+
+        it "accepts invitation from user" do
+          get :show, :id => 'asdfghjkl'
+        end
+
+        it "forwards user to group" do
+          get :show, :id => 'asdfghjkl'
+          response.should redirect_to group_path(group)
+        end
+
       end
 
-      it "forwards user to group" do
-        get :show, :id => 'asdfghjkl'
-        response.should redirect_to group_path(group)
+      context 'and has invitation_token in session' do
+        before do
+          session[:invitation_token] = 'abcdefg'
+          Invitation.should_receive(:find_by_token).and_return(invitation)
+          AcceptInvitation.should_receive(:and_grant_access!).with(invitation, @user)
+          get :show
+        end
+
+        it 'accepts the invitation and redirects them to the group page' do
+          response.should redirect_to group_path(group)
+        end
+
+        it 'removes invitation token from the session' do
+          session[:invitation_token].should be_nil
+        end
       end
     end
   end

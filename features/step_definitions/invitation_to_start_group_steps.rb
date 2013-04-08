@@ -44,20 +44,21 @@ When /^the user clicks the invitiation link$/ do
   email = ActionMailer::Base.deliveries.last
   url = email.body.match(/https?:\/\/[\S]+/)[0]
   path = URI.parse(url).path
-  puts path
   visit path
-  save_and_open_page
 end
 
 When /^signs up as a new user$/ do
-
   within ".signup-form" do
     fill_in :name, with: 'Jimmy Jiminson'
     fill_in :email, with: 'jim@jiminson.com'
     fill_in :password, with: 'milkbottle'
     fill_in :password_confirmation, with: 'milkbottle'
-    click_on 'Sign Up!'
+    click_on 'Sign up'
   end
+end
+
+Then /^they should be redirected to the group setup wizard$/ do
+  current_url.should == group_setup_path(@group.id)
 end
 
 Then /^they should see the Start your Group wizard$/ do

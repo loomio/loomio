@@ -59,6 +59,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'capybara-screenshot'
   gem 'thin'
   gem 'debugger'
   gem "factory_girl_rails", "~> 4.0"
@@ -68,7 +69,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'selenium-webdriver', '2.25.0'
+  gem 'selenium-webdriver'
   gem 'letter_opener'
   gem 'mailcatcher'
 end
@@ -82,12 +83,12 @@ group :development do
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
-  gem 'launchy'
   gem 'spork-rails'
   gem 'awesome_print'
 end
 
 group :test do
+  gem 'launchy'
   gem 'cucumber-rails', :require => false
   gem 'cane', :git => 'git://github.com/square/cane.git'
   gem 'simplecov', :require => false

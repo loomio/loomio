@@ -1,9 +1,15 @@
 class InvitationsController < ApplicationController
   def show
+    @invitation = Invitation.find_by_token(params[:id])
 
     if current_user
-      @invitation = AcceptInvitation.from_user_with_token(current_user, params[:id])
-      redirect_to @invitation.group
+      AcceptInvitation.and_grant_access!(@invitation, current_user)
+      session[:invitation_token] = nil
+      if @invitation.group.admins.include? current_user
+        redirect_to group_setup_path(@invitation.group.id)
+      else
+        redirect_to @invitation.group
+      end
     else
       session[:invitation_token] = params[:id]
       @user = User.new
