@@ -4,10 +4,15 @@ class MotionsController < GroupBaseController
   before_filter :check_group_read_permissions, :only => :show
 
   def create
-    @motion = current_user.authored_motions.new(params[:motion])
-    @motion.close_date = params[:motion][:close_date].to_datetime
-    @group = GroupDecorator.new(@motion.group)
-    authorize! :create, @motion
+    if Discussion.find(params[:motion][:discussion_id]).current_motion
+      redirect_to @discussion
+      flash[:notice] = "A proposal has already been created"
+    else
+      @motion = current_user.authored_motions.new(params[:motion])
+      @motion.close_date = params[:motion][:close_date].to_datetime
+      @group = GroupDecorator.new(@motion.group)
+      authorize! :create, @motion
+    end
     if @motion.save
       flash[:success] = "Proposal successfully created."
       redirect_to discussion_path(@motion.discussion)
@@ -82,7 +87,7 @@ class MotionsController < GroupBaseController
     @motion_activity = Integer(params[:motion_activity])
     if user_signed_in?
       @user = current_user
-      @user.update_motion_read_log(@motion)
+      ViewLogger.motion_viewed(@motion, @user)
     end
   end
 

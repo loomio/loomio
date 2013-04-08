@@ -12,7 +12,7 @@
           .modal-header
             %button.close{"data-dismiss" => "modal"}×
             %h2= "Invite members to #{group.name}"
-          = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post }) do |f|
+          = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post, autocomplete: "off" }) do |f|
             .modal-body
               - if no_member_limit || invites_left > 0
                 = devise_error_messages!
@@ -31,7 +31,7 @@
                     = "and we'll see what we can do."
               %input#group_id{ type: "hidden", value: group.id }
             .modal-footer
-              = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
+              = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-grey"
               - if no_member_limit || invites_left > 0
                 = f.submit "Send invite", class: "btn btn-info", id: "user-submit", :data => { :disable_with => "Sending" }
       - else

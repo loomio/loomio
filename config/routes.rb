@@ -7,13 +7,13 @@ Loomio::Application.routes.draw do
 
   resources :group_requests, only: [:create, :new] do
     get :verify, on: :member
-    get :start_new_group, on: :member
   end
   
   match "/request_new_group", to: "group_requests#start", as: :request_new_group
   match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
 
   resources :groups, except: [:index, :new] do
+    
     post :add_members, on: :member
     get :add_subgroup, on: :member
     resources :motions#, name_prefix: "groups_"
@@ -42,6 +42,7 @@ Loomio::Application.routes.draw do
     post :show_description_history, :on => :member
     get :new_proposal, :on => :member
     post :edit_title, :on => :member
+    put :move, :on => :member
   end
   post "/discussion/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
   post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"
@@ -79,7 +80,8 @@ Loomio::Application.routes.draw do
     post :unlike, on: :member
   end
   match "/settings", :to => "users#settings", :as => :user_settings
-  match 'email_preferences', :to => "users#email_preferences", :as => :email_preferences
+  match 'email_preferences', :to => "email_preferences#edit", :as => :email_preferences, :via => :get
+  match 'email_preferences', :to => "email_preferences#update", :as => :update_email_preferences, :via => :put
 
   # route logged in user to dashboard
   resources :dashboard, only: :show
@@ -87,6 +89,9 @@ Loomio::Application.routes.draw do
   authenticated do
     root :to => 'dashboard#show'
   end
+
+  #redirect old invites
+  match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
 
   match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
   match '/privacy' => 'high_voltage/pages#show', :id => 'privacy'

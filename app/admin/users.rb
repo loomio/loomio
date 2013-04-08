@@ -21,8 +21,9 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "Details" do
-      f.input :name, :input_html => { :disabled => true }
-      f.input :email, :input_html => { :disabled => true }
+      f.input :name
+      f.input :email
+      f.input :username
       f.input :is_admin
     end
     f.buttons
@@ -30,6 +31,9 @@ ActiveAdmin.register User do
 
   member_action :update, :method => :put do
     user = User.find(params[:id])
+    user.name = params[:user][:name]
+    user.email = params[:user][:email]
+    user.username = params[:user][:username]
     user.is_admin = params[:user][:is_admin]
     user.save
     redirect_to admin_users_url, :notice => "User updated"

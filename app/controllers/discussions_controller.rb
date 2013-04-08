@@ -59,42 +59,52 @@ class DiscussionsController < GroupBaseController
     @discussion = Discussion.find(params[:id])
     @last_collaborator = User.find @discussion.originator.to_i if @discussion.has_previous_versions?
     @group = GroupDecorator.new(@discussion.group)
-    @current_motion = @discussion.current_motion
     @vote = Vote.new
+    @current_motion = @discussion.current_motion
     @activity = @discussion.activity
     assign_meta_data
-    if (not params[:proposal])
-      if @current_motion
-        @unique_votes = Vote.unique_votes(@current_motion)
-        @votes_for_graph = @current_motion.votes_graph_ready
-        @user_already_voted = @current_motion.user_has_voted?(current_user)
-      end
-    else
-      @selected_motion = Motion.find(params[:proposal])
-      @user_already_voted = @selected_motion.user_has_voted?(current_user)
-      @votes_for_graph = @selected_motion.votes_graph_ready
+    if params[:proposal]
+      @displayed_motion = Motion.find(params[:proposal])
+    elsif @current_motion
+      @displayed_motion = @current_motion
     end
-
     if current_user
+      @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
       @uses_markdown = current_user.uses_markdown?
-      current_user.update_motion_read_log(@current_motion) if @current_motion
-      current_user.update_discussion_read_log(@discussion)
-      @discussion.update_total_views
+      ViewLogger.motion_viewed(@current_motion, current_user) if @current_motion
+      ViewLogger.discussion_viewed(@discussion, current_user)
     end
+  end
+
+  def move
+    @discussion = Discussion.find(params[:id])
+    destination = Group.find(params[:discussion][:group_id])
+    @discussion.group_id = params[:discussion][:group_id]
+    if DiscussionMover.can_move?(current_user, destination) && @discussion.save!
+      flash[:success] = "Discussion successfully moved."
+    else
+      flash[:error] = "Discussion could not be moved."
+    end
+    redirect_to @discussion
   end
 
   def add_comment
     @discussion = Discussion.find(params[:id])
     comment = @discussion.add_comment(current_user, params[:comment])
-    current_user.update_discussion_read_log(@discussion)
+    ViewLogger.discussion_viewed(@discussion, current_user)
   end
 
   def new_proposal
-    @motion = Motion.new
     discussion = Discussion.find(params[:id])
-    @motion.discussion = discussion
-    @group = GroupDecorator.new(discussion.group)
-    render 'motions/new'
+    if discussion.current_motion
+      redirect_to discussion
+      flash[:notice] = "A current proposal already exists for this disscussion."
+    else
+      @motion = Motion.new
+      @motion.discussion = discussion
+      @group = GroupDecorator.new(discussion.group)
+      render 'motions/new'
+    end
   end
 
   def edit_description

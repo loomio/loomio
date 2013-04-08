@@ -42,11 +42,12 @@ describe DiscussionsController do
 
       context do
         before do
-          motion.stub(:votes_graph_ready).and_return([])
+          motion.stub(:votes_for_graph).and_return([])
           motion.stub(:user_has_voted?).and_return(true)
           motion.stub(:open_close_motion)
           motion.stub(:voting?).and_return(true)
           discussion.stub(:history)
+          DiscussionMover.stub(:destination_groups)
         end
 
         it "responds with success" do
@@ -54,25 +55,16 @@ describe DiscussionsController do
           response.should be_success
         end
 
-        it "creates a motion_read_log if there is a current motion" do
-          user.should_receive(:update_motion_read_log).with(motion)
-          get :show, id: discussion.id
-        end
-
-        it "creates a discussion_read_log" do
-          user.should_receive(:update_discussion_read_log).with(discussion)
-          get :show, id: discussion.id
-        end
-
-        it "updates the discussion's total view counter" do
-          get :show, id: discussion.id
-          discussion.total_views.should == 1
-        end
-
         it "assigns array with discussion history" do
           discussion.should_receive(:activity).and_return(['fake'])
           get :show, id: discussion.id
           assigns(:activity).should eq(['fake'])
+        end
+
+        it "assigns array with group destinations for moving" do
+          DiscussionMover.should_receive(:destination_groups).and_return(['fake'])
+          get :show, id: discussion.id
+          assigns(:destination_groups).should eq(['fake'])
         end
       end
     end
@@ -120,14 +112,50 @@ describe DiscussionsController do
       end
     end
 
-    describe "creating a new proposal" do
-      it "is successful" do
-        get :new_proposal, id: discussion.id
-        response.should be_success
+    context "moving a discussion" do
+      before do
+        group = create :group
+        Group.stub(:find).and_return(group)
+        DiscussionMover.stub(:can_move?).and_return(true)
       end
-      it "renders new motion template" do
-        get :new_proposal, id: discussion.id
-        response.should render_template("motions/new")
+      it "moves the discussion to the selected group" do
+        discussion.should_receive(:group_id=).with(group.id.to_s)
+        put :move, id: discussion.id, discussion: { group_id: group.id }
+      end
+      it "redirects to the discussion" do
+        put :move, id: discussion.id, discussion: { group_id: group.id }
+        response.should redirect_to(discussion)
+      end
+      it "gives flash success message" do
+        put :move, id: discussion.id, discussion: { group_id: group.id }
+        flash[:success].should =~ /Discussion successfully moved./
+      end
+    end
+
+    describe "creating a new proposal" do
+      context "current proposal already exists" do
+        it "redirects to the discussion page" do
+          get :new_proposal, id: discussion.id
+          response.should redirect_to(discussion)
+        end
+        it "displays a proposal already exists message" do
+          get :new_proposal, id: discussion.id
+          flash[:notice].should =~ /A current proposal already exists for this disscussion./
+        end
+      end
+      context "where no current proposal exists" do
+        before do
+          discussion.stub(current_motion: nil)
+          Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
+          get :new_proposal, id: discussion.id
+        end
+        it "succeeds" do
+          response.should be_success
+        end
+        it "renders new motion template" do
+          get :new_proposal, id: discussion.id
+          response.should render_template("motions/new")
+        end
       end
     end
 

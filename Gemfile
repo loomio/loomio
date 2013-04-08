@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2.12'
-gem "haml-rails"
+gem 'rails', '~> 3.2.13'
+gem 'haml-rails', '~> 0.4'
 gem 'devise', '~> 2.2.3'
 gem 'pg'
 gem 'capistrano'
@@ -76,6 +76,8 @@ group :development do
 end
 
 group :test do
+  gem 'vcr'
+  gem 'webmock'
   gem "factory_girl_rails", "~> 4.0"
   gem 'faker'
   gem 'capybara'
@@ -93,6 +95,5 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'newrelic_rpm'
-  gem 'aws-sdk'
+  gem 'newrelic_rpm', '~> 3.5.7.59'
 end

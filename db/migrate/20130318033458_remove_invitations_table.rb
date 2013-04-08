@@ -8,6 +8,8 @@ class RemoveInvitationsTable < ActiveRecord::Migration
       status == 'accepted'
     end
   end
+  class Group < ActiveRecord::Base
+  end
 
   def up
     drop_table :invitations

@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130327031958) do
+=======
+ActiveRecord::Schema.define(:version => 20130402220904) do
+>>>>>>> feature/new-group-wizard
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -138,6 +142,7 @@ ActiveRecord::Schema.define(:version => 20130327031958) do
     t.integer  "max_size",            :default => 50
     t.string   "robot_trap"
     t.integer  "distribution_metric"
+<<<<<<< HEAD
     t.string   "sectors"
     t.string   "other_sector"
     t.string   "token"
@@ -147,6 +152,11 @@ ActiveRecord::Schema.define(:version => 20130327031958) do
     t.datetime "approved_at"
     t.datetime "defered_until"
     t.integer  "approved_by_id"
+=======
+    t.string   "sectors_metric"
+    t.string   "other_sectors_metric"
+    t.string   "token"
+>>>>>>> feature/new-group-wizard
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
@@ -176,6 +186,7 @@ ActiveRecord::Schema.define(:version => 20130327031958) do
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
 
+<<<<<<< HEAD
   create_table "invitations", :force => true do |t|
     t.string  "recipient_email",                    :null => false
     t.integer "inviter_id",                         :null => false
@@ -187,6 +198,8 @@ ActiveRecord::Schema.define(:version => 20130327031958) do
   add_index "invitations", ["group_id"], :name => "index_invitations_on_group_id"
   add_index "invitations", ["token"], :name => "index_invitations_on_token"
 
+=======
+>>>>>>> feature/new-group-wizard
   create_table "memberships", :force => true do |t|
     t.integer  "group_id"
     t.integer  "user_id"

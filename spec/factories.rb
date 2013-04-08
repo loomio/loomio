@@ -102,4 +102,7 @@ FactoryGirl.define do
     cannot_contribute false
   end
 
+  factory :invitation do
+    group_request
+  end
 end

@@ -86,9 +86,9 @@ $ ->
       <input name='_method' type='hidden' value='#{methodText}'>
       <input name='authenticity_token' type='hidden' value=#{csrf}></div>
       <div class='modal-body center'> #{bodyText}</div><div class='modal-footer'>&nbsp;
-      <input class= 'btn btn-small #{buttonType}', name='commit' type='submit' value='#{titleText}' id='confirm-action'
+      <input class= 'btn #{buttonType}', name='commit' type='submit' value='#{titleText}' id='confirm-action'
              data-disable-with='#{titleText}'>
-      <a data-dismiss='modal' class='btn btn-small'>Cancel</a></div></div></form>"
+      <a data-dismiss='modal' class='btn'>Cancel</a></div></div></form>"
     )
     $('#confirm-dialog-modal').modal('show')
     $('#confirm-dialog-modal').on('hidden', ->
@@ -258,12 +258,12 @@ displayGraph = (this_pie, graph_id, data)->
 #*** hide/show mini-graph popovers
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(".selector-pie-link").click((event) ->
+    $(".motion-popover-link").click((event) ->
       $(this).find('.pie').tooltip('hide')
       if $(this).find(".popover").html() == null
         event.stopPropagation()
         currentPie = this
-        $('.selector-pie-link').each(() ->
+        $('.motion-popover-link').each(() ->
           unless this == currentPie
             $(this).popover('hide')
         )
@@ -273,7 +273,7 @@ $ ->
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
     $(document).click((event) ->
-      $('.selector-pie-link').popover('hide')
+      $('.motion-popover-link').popover('hide')
     )
 
 #*** closed motions modal***
