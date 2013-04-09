@@ -297,7 +297,7 @@ class User < ActiveRecord::Base
     else
       new_username = name.parameterize.gsub(/[^a-z0-9]/, "")
     end
-    username_tmp = new_username.dup
+    username_tmp = new_username.dup.slice(0,18)
     num = 1
     while(User.where("username = ?", username_tmp).count > 0)
       break if username == username_tmp
