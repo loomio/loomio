@@ -1,0 +1,11 @@
+@import "settings";
+@import "mixins";
+
+#group-setup {
+  .radio { margin-left: 10px; }
+  #next, #prev {
+    float: right;
+    margin-left: 5px;
+  }
+  #wizard-tabs { min-height: 550px; }
+}
