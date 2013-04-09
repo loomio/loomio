@@ -22,6 +22,10 @@ Then /^I should see the setup discussion tab$/ do
   find('.tab-content').should have_css('#discussion-tab.active')
 end
 
-Then /^I should see the setup decission tab$/ do
+Then /^I should see the setup decision tab$/ do
   find('.tab-content').should have_css('#motion-tab.active')
+end
+
+Then /^I should see the setup invites tab$/ do
+  find('.tab-content').should have_css('#invite-tab.active')end
 end

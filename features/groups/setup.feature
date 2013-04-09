@@ -18,9 +18,12 @@ Feature: Setup group
     Then I should see the setup discussion tab
     When I click the next button
     Then I should see the setup decission tab
+    When I click the next button
+    Then I should see the setup invites tab
 
+    When I click the prev button
+    Then I should see the setup decision tab
     When I click the prev button
     Then I should see the setup discussion tab
     When I click the prev button
     Then I should see the setup group tab
-

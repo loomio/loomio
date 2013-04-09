@@ -2,10 +2,17 @@
 @import "mixins";
 
 #group-setup {
-  .radio { margin-left: 10px; }
-  #next, #prev {
+  .string, .text { width: 360px; }
+  .radio { padding-left: 22px; }
+  #next, #finish {
     float: right;
-    margin-left: 5px;
+    margin-right: 5px;
   }
-  #wizard-tabs { min-height: 550px; }
+  #wizard-tabs { min-height: 600px; }
+  #user-invitation {
+    .string, .text { width: 330px; }
+    #group_setup_members_list { height: 100px; }
+    padding: 15px;
+    border: 1px solid #BBB;
+  }
 }

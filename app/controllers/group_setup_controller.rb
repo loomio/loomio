@@ -5,4 +5,10 @@ class GroupSetupController < BaseController
     @group_id = params[:id]
     render 'setup'
   end
+
+  def save
+    @group_setup = GroupSetup.find(params[:id])
+    @group_setup.save!
+    render 'setup'
+  end
 end

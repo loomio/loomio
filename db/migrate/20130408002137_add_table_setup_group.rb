@@ -10,6 +10,10 @@ class AddTableSetupGroup < ActiveRecord::Migration
       t.string :motion_title
       t.text :motion_description
       t.datetime :close_date
+      t.string :admin_email
+      t.text :members_list
+      t.string :invite_subject
+      t.text :invite_body
 
       t.timestamps
     end

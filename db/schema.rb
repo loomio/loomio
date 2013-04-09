@@ -155,6 +155,10 @@ ActiveRecord::Schema.define(:version => 20130408002137) do
     t.string   "motion_title"
     t.text     "motion_description"
     t.datetime "close_date"
+    t.string   "admin_email"
+    t.text     "members_list"
+    t.string   "invite_subject"
+    t.text     "invite_body"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
   end

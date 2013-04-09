@@ -3,12 +3,14 @@ $ ->
     hideButtons()
     $("#next").click((event) ->
       $('ul.nav-tabs li.active').next().find('a').tab('show')
-      hideButtons()
     )
     $("#prev").click((event) ->
       $('ul.nav-tabs li.active').prev().find('a').tab('show')
-      hideButtons()
     )
+
+$ ->
+  $('a[data-toggle="pill"]').on 'shown', (event) ->
+    hideButtons()
 
 hideButtons = () ->
   activeTab = $('ul.nav-tabs li.active')
@@ -18,5 +20,7 @@ hideButtons = () ->
     $('#prev').show()
   if activeTab[0] == $('ul.nav-tabs li:last')[0]
     $('#next').hide()
+    $('#finish').show()
   else
     $('#next').show()
+    $('#finish').hide()
