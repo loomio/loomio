@@ -28,7 +28,7 @@ gem 'paperclip', '~> 3.4.0'
 gem 'kaminari', '~> 0.13.0'
 gem 'activeadmin', '~> 0.4.3'
 gem 'nokogiri', '~> 1.5.9'
-gem 'redcarpet', '~> 2.1.1'
+gem 'redcarpet', '~> 2.2.2'
 gem 'rabl', '~> 0.7.3'
 gem 'twitter-text', '~> 1.5.0'
 gem 'jquery-atwho-rails', '~> 0.1.6'
@@ -41,7 +41,6 @@ gem 'hirefireapp', '~> 0.0.8'
 gem 'foreman', '~> 0.60.2'
 gem 'aws-sdk', '~> 1.8.5'
 gem 'rinku', '~> 1.7.2'
-
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
 #

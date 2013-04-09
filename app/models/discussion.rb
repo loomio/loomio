@@ -14,7 +14,7 @@ class Discussion < ActiveRecord::Base
   has_many :closed_motions,
     :class_name => 'Motion',
     :conditions => { phase: 'closed' },
-    :order => "close_date desc"
+    :order => "close_at desc"
   has_many :votes, through: :motions
   has_many :comments,  :as => :commentable, :dependent => :destroy
   has_many :users_with_comments, :through => :comments,
@@ -43,9 +43,9 @@ class Discussion < ActiveRecord::Base
     group.users.include? user
   end
 
-  def add_comment(user, comment)
+  def add_comment(user, comment, uses_markdown)
     if can_be_commented_on_by? user
-      comment = Comment.build_from self, user.id, comment
+      comment = Comment.build_from self, user.id, comment, uses_markdown
       comment.save
       comment
     end
@@ -97,8 +97,8 @@ class Discussion < ActiveRecord::Base
     false
   end
 
-  def current_motion_close_date
-    current_motion.close_date
+  def current_motion_close_at
+    current_motion.close_at
   end
 
   def current_motion
@@ -140,8 +140,9 @@ class Discussion < ActiveRecord::Base
     created_at
   end
 
-  def set_description!(description, user)
+  def set_description!(description, uses_markdown, user)
     self.description = description
+    self.uses_markdown = uses_markdown
     save!
     fire_edit_description_event(user)
   end

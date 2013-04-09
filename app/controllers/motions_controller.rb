@@ -9,15 +9,14 @@ class MotionsController < GroupBaseController
       flash[:notice] = "A proposal has already been created"
     else
       @motion = current_user.authored_motions.new(params[:motion])
-      @motion.close_date = params[:motion][:close_date].to_datetime
       @group = GroupDecorator.new(@motion.group)
       authorize! :create, @motion
     end
     if @motion.save
-      flash[:success] = "Proposal successfully created."
+      flash[:success] = t("success.proposal_created")
       redirect_to discussion_path(@motion.discussion)
     else
-      flash[:warning] = "Proposal could not be created"
+      flash[:warning] = t("warning.proposal_not_created")
       redirect_to :back
     end
   end
@@ -54,7 +53,7 @@ class MotionsController < GroupBaseController
     resource
     @motion.destroy
     redirect_to group_url(@motion.group)
-    flash[:success] = "Proposal deleted."
+    flash[:success] = t("success.proposal_deleted")
   end
 
   # CUSTOM ACTIONS
@@ -73,13 +72,17 @@ class MotionsController < GroupBaseController
   end
 
   def edit_close_date
-    motion = Motion.find(params[:id])
-    if motion.set_close_date!((params[:motion][:close_date]).to_datetime, current_user)
-      flash[:success] = "Close date successfully changed."
+    motion = Motion.find(params[:motion][:id])
+    safe_values = {}
+    safe_values[:close_at_date] = params[:motion][:close_at_date]
+    safe_values[:close_at_time] = params[:motion][:close_at_time]
+    if motion.update_attributes(safe_values)
+      Events::MotionCloseDateEdited.publish!(@motion, current_user)
+      flash[:success] = t("success.close_date_changed")
     else
-      flash[:error] = "Invalid close date, it needs to be a future date."
+      flash[:error] = t("error.invalid_close_date")
     end
-    redirect_to discussion_url(motion.discussion)
+    redirect_to discussion_url(@motion.discussion)
   end
 
   def get_and_clear_new_activity

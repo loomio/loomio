@@ -2,7 +2,7 @@
   - if can? :add_members, group
     .clearfix
       - if group.parent.blank?
-        = icon_button('#invite-group-members', 'Add new member', '/assets/member-18.png', 'group-add-members', true)
+        = icon_button('#invite-group-members', t(:add_new_member), '/assets/member-18.png', 'group-add-members', true)
         #invite-group-members.modal.hidden
           - no_member_limit = true
           - invites_left = 0
@@ -11,30 +11,25 @@
             - invites_left = group.max_size - group.memberships_count if group.max_size - group.memberships_count > 0
           .modal-header
             %button.close{"data-dismiss" => "modal"}×
-            %h2= "Invite members to #{group.name}"
+            %h2= t(:invite_members_to_group, which_group: group.name)
           = semantic_form_for(User.new, url: user_invitation_path, html: { method: :post, autocomplete: "off" }) do |f|
             .modal-body
               - if no_member_limit || invites_left > 0
                 = devise_error_messages!
                 = f.input :group_id, as: :hidden, label: false, input_html: { value: group.id }
-                = f.input :email, placeholder: "Email address", label: false
+                = f.input :email, placeholder: t(:email_address), label: false
               - unless no_member_limit
                 .member-request-message
                   %span.label= invites_left
-                  = "remaining invites"
+                  = t(:remaining_invtes)
                   %p
-                  %p
-                    = "Need more? Loomio is in closed beta, which means we're still in development"
-                    = "and have limited resources for user support. If you'd like to increase the"
-                    = "size of your group "
-                    = link_to "get in touch", 'mailto:contact@loomio.org', :target =>'_blank'
-                    = "and we'll see what we can do."
+                  %p= t(:need_more_invites_html, :href => link_to( t("get_in_touch_link"), "mailto:contact@loomio.org", target: "_blank"))
               %input#group_id{ type: "hidden", value: group.id }
             .modal-footer
-              = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-grey"
+              = link_to t(:cancel), "#", "data-dismiss" => "modal", class: "btn btn-grey"
               - if no_member_limit || invites_left > 0
-                = f.submit "Send invite", class: "btn btn-info", id: "user-submit", :data => { :disable_with => "Sending" }
+                = f.submit t(:send_invite), class: "btn btn-info", id: "user-submit", :data => { :disable_with => t(:sending) }
       - else
-        = icon_button("#invite-subgroup-members", 'Add new member', '/assets/member-18.png', 'group-add-members', true)
+        = icon_button("#invite-subgroup-members", t(:add_new_member), '/assets/member-18.png', 'group-add-members', true)
         #invite-subgroup-members.modal.hidden
           = render 'subgroup_add_members', group: group

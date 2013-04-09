@@ -2,6 +2,6 @@
   = link_to set_avatar_kind_user_path(user, :avatar_kind => kind), :method => :put, id: "use_#{kind}", :remote => true do
     %span
       = render 'avatar', user: user, size: "medium", kind: kind, id: "image-option-#{kind}"
-      - option_label = "Use #{kind}"
+      - option_label = t("user_settings_form.use_avatar_kind", kind: kind)
       - option_label += " image" if kind = "uploaded"
       .option-label= option_label

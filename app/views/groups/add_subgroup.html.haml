@@ -1,4 +1,4 @@
-- set_title "", "New Sub-group"
+- set_title "", t(:new_subgroup)
 .page-container
   = render '/groups/title', group: GroupDecorator.decorate(@parent)
-  = render 'form', group: @subgroup, parent: @parent, submit_text: "Create sub-group", disable_text: "Creating sub-group", form_title: "New sub-group"
+  = render 'form', group: @subgroup, parent: @parent, submit_text: t(:create_subgroup), disable_text: t(:creating_subgroup), form_title: t(:new_subgroup)

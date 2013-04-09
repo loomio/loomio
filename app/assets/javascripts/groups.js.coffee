@@ -50,6 +50,7 @@ $ ->
         e.preventDefault()
     )
 
+
 # adds bootstrap popovers to group activity indicators
 activate_discussions_tooltips = () ->
   $(".unread-group-activity").tooltip

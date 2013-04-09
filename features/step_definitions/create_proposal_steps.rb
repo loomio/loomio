@@ -6,6 +6,10 @@ When /^fill in the proposal details and submit the form$/ do
   click_on 'proposal-submit'
 end
 
+Then /^I should see the create proposal page$/ do
+  page.should have_css("#motion-form")
+end
+
 Then /^clicking the link in the email should take him to the proposal$/ do
   click_first_link_in_email
   page.should have_content(@proposal_name)

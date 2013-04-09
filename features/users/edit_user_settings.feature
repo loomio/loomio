@@ -13,6 +13,11 @@ Feature: Edit user settings
     When I visit the group page
     Then I should see my display name has been updated
 
-  Scenario: User updates profile photo
+  Scenario: User updates profile photoc
     Given I visit the user settings page
     And I upload a profile image
+
+  Scenario: User selects time_zone
+    Given I visit the user settings page
+    When I select my time_zone and click update
+    Then my time_zone is stored in the database

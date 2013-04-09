@@ -29,6 +29,7 @@ FactoryGirl.define do
     group
     title Faker::Lorem.sentence(2)
     description 'A description for this discussion'
+    uses_markdown false
     after(:build) do |discussion|
       discussion.group.parent.add_member!(discussion.author) if discussion.group.parent
       discussion.group.add_member!(discussion.author)
@@ -59,6 +60,9 @@ FactoryGirl.define do
     phase 'voting'
     description 'Fake description'
     discussion
+    close_at_date '24-12-2044'
+    close_at_time '16:00'
+    close_at_time_zone 'Wellington'
     after(:build) do |motion|
       motion.group.parent.add_member!(motion.author) if motion.group.parent
       motion.group.add_member!(motion.author)
@@ -92,6 +96,25 @@ FactoryGirl.define do
     admin_email Faker::Internet.email
     distribution_metric 3
     sectors_metric ["community"]
+  end
+
+  factory :group_setup do
+    group
+    group_name Faker::Name.name
+    group_description "My text outlining the group"
+    viewable_by :members
+    members_invitable_by :admins
+    discussion_title Faker::Name.name
+    discussion_description "My text outlining the discussion"
+    motion_title Faker::Name.name
+    motion_description "My text outlining the proposal"
+    close_at_date (Date.today + 3.day).strftime("%d-%m-%Y")
+    close_at_time "12:00"
+    close_at_time_zone "Wellington"
+    admin_email Faker::Internet.email
+    members_list "#{Faker::Internet.email}, #{Faker::Internet.email}"
+    invite_subject "Welcome to our world"
+    invite_body "Please entertain me"
   end
 
   factory :invitation do

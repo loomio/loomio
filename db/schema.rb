@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130402220904) do
+ActiveRecord::Schema.define(:version => 20130418033925) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -145,6 +145,27 @@ ActiveRecord::Schema.define(:version => 20130402220904) do
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
 
+  create_table "group_setups", :force => true do |t|
+    t.integer  "group_id"
+    t.string   "group_name"
+    t.text     "group_description"
+    t.string   "viewable_by",            :default => "members"
+    t.string   "members_invitable_by",   :default => "admins"
+    t.string   "discussion_title"
+    t.text     "discussion_description"
+    t.string   "motion_title"
+    t.text     "motion_description"
+    t.date     "close_at_date"
+    t.string   "close_at_time_zone"
+    t.string   "close_at_time"
+    t.string   "admin_email"
+    t.text     "members_list"
+    t.string   "invite_subject"
+    t.text     "invite_body"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+  end
+
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -156,7 +177,6 @@ ActiveRecord::Schema.define(:version => 20130402220904) do
     t.boolean  "hide_members",         :default => false
     t.boolean  "beta_features",        :default => false
     t.string   "description"
-    t.integer  "creator_id",                              :null => false
     t.integer  "memberships_count",    :default => 0,     :null => false
     t.datetime "archived_at"
     t.integer  "max_size"
@@ -166,6 +186,7 @@ ActiveRecord::Schema.define(:version => 20130402220904) do
     t.string   "other_sectors_metric"
     t.integer  "discussions_count",    :default => 0,     :null => false
     t.integer  "motions_count",        :default => 0,     :null => false
+    t.integer  "creator_id"
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -199,13 +220,16 @@ ActiveRecord::Schema.define(:version => 20130402220904) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "phase",          :default => "voting", :null => false
-    t.string   "discussion_url", :default => "",       :null => false
-    t.datetime "close_date"
+    t.string   "discussion_url",     :default => "",       :null => false
+    t.datetime "close_at"
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
-    t.boolean  "uses_markdown",  :default => true,     :null => false
+    t.boolean  "uses_markdown",      :default => true,     :null => false
+    t.string   "phase",              :default => "voting", :null => false
+    t.date     "close_at_date"
+    t.string   "close_at_time"
+    t.string   "close_at_time_zone"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
@@ -256,14 +280,15 @@ ActiveRecord::Schema.define(:version => 20130402220904) do
     t.boolean  "has_read_dashboard_notice",                                   :default => false,      :null => false
     t.boolean  "has_read_group_notice",                                       :default => false,      :null => false
     t.boolean  "has_read_discussion_notice",                                  :default => false,      :null => false
-    t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email",                          :default => true,       :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,       :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
+    t.string   "username"
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.boolean  "uses_markdown",                                               :default => false
+    t.integer  "memberships_count",                                           :default => 0,          :null => false
+    t.string   "time_zone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

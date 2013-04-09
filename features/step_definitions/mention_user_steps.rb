@@ -12,7 +12,7 @@ When /^I click on "(.*?)" in the menu that pops up$/ do |arg1|
 end
 
 When /^a comment exists mentioning "(.*?)"$/ do |text|
-  @discussion.add_comment @user, "Hey #{text}"
+  @discussion.add_comment @user, "Hey #{text}", false
 end
 
 When /^I submit a comment mentioning "(.*?)"$/ do |mention|
@@ -38,8 +38,8 @@ end
 Then /^harry should get an email saying I mentioned him$/ do
   last_email = ActionMailer::Base.deliveries.last
   last_email.to.should include 'harry@example.org'
-  last_email.body.should have_content 'mentioned'
-  last_email.body.should have_content 'Unsubscribe'
+  last_email.default_part_body.should have_content 'mentioned'
+  last_email.default_part_body.should have_content 'Unsubscribe'
 end
 
 Given /^harry wants to be emailed when mentioned$/ do

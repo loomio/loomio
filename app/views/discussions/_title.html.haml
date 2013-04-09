@@ -11,7 +11,7 @@
           = text_field_tag 'title', discussion.title, {id: 'discussion-input', class: 'inputError limit-150'}
           .character-counter
         .save-buttons.clearfix
-          = submit_tag "Save", class: 'btn btn-small run-validations', id: 'edit-title-submit', :data => {:disable_with => "Saving"}
-          = link_to "Cancel", "#", id: 'cancel-edit-title'
+          = submit_tag t(:save), class: 'btn btn-small run-validations', id: 'edit-title-submit', :data => {:disable_with => t(:saving)}
+          = link_to t(:cancel), "#", id: 'cancel-edit-title'
   - if can?(:edit_title, discussion) || can?(:move, discussion) || can?(:destroy, discussion)
     =render "discussions/options", discussion: discussion

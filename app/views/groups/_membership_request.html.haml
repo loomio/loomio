@@ -2,6 +2,5 @@
   .clearfix
     .membership-user-name= truncate(membership_request.user_name, :length => 29, :omission => '...')
     .admin-controls
-      =link_to "Approve", "#", 'data-title' => "Approve", 'data-body' => "Are you sure you want to add #{membership_request.user_email} to the group?", 'data-confirm-path' => approve_request_for_membership_path(membership_request), 'data-method-type' => 'post', class: 'confirm-dialog', id: 'approve'
-      =link_to "×", "#", 'data-title' => "Ignore request", 'data-body' => "Are you sure you want to ignore the member request from #{membership_request.user_email}?", 'data-confirm-path' => ignore_request_for_membership_path(membership_request), 'data-method-type' => 'post', class: 'confirm-dialog close', id: 'ignore'
-        
+      =link_to t(:approve), "#", 'data-title' => t(:approve), 'data-body' => t(:confirm_approve_membership_request, which_user: membership_request.user_email), 'data-confirm-path' => approve_request_for_membership_path(membership_request), 'data-method-type' => 'post', class: 'confirm-dialog', id: 'approve'
+      =link_to "×", "#", 'data-title' => t(:ignore_request), 'data-body' => t(:confirm_ignore_membership_request, which_user: membership_request.user_email), 'data-confirm-path' => ignore_request_for_membership_path(membership_request), 'data-method-type' => 'post', class: 'confirm-dialog close', id: 'ignore'

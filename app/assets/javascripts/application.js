@@ -25,6 +25,7 @@
 //= require bootstrap
 //= require bootstrap-custom
 //= require main
+//= require group_setup
 //= require groups
 //= require discussions
 //= require motions

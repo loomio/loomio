@@ -22,7 +22,7 @@
               %ul.selector-list
                 - if @current_motion.nil?
                   - if can? :create, Motion.new(discussion_id: @discussion.id)
-                    = link_to t("create_new_proposal"), new_proposal_discussion_path(@discussion.id), class: 'btn new-proposal-btn', id: 'new-proposal'
+                    = link_to t(:create_new_proposal), new_proposal_discussion_path(@discussion.id), class: 'btn new-proposal-btn', id: 'new-proposal'
                   %li.selector-item.empty-list-message= t :empty_decision_list
                 - else
                   - if @displayed_motion == @current_motion
@@ -38,7 +38,7 @@
               #previous-proposals
                 .clearfix
                   .large-icon.decision-icon
-                  %h3.header-text= t "previous_decisions"
+                  %h3.header-text= t :previous_decisions
                 .content-proposal-body
                   %ul.selector-list
                     - @discussion.closed_motions.each do |closed_motion|

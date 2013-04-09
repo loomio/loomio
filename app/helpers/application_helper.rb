@@ -48,29 +48,18 @@ module ApplicationHelper
     not signed_in?
   end
 
-  def markdown(text, options=nil)
-
-    if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
-      text = " "
+  def populate_time_select
+    time_select = []
+    (0..23).each do |hour|
+      ampm = (hour < 12) ? 'am': 'pm'
+      hour = 12 if hour == 0
+      hour_padded = (hour < 10) ? "0#{hour}" : hour
+      time_select << ["#{hour_padded} #{ampm}", "#{hour_padded}:00"]
     end
-
-    options = [
-      :no_intra_emphasis => true,
-      :tables => true,
-      :fenced_code_blocks => true,
-      :autolink => true,
-      :strikethrough => true,
-      :space_after_headers => true,
-      :superscript => true
-    ]
-
-    renderer = MarkdownRenderer.new
-
-    markdown = Redcarpet::Markdown.new(renderer, *options)
-    markdown.render(text).html_safe
+    time_select
   end
 
-  def conditional_markdown(md_boolean, text, options=nil)
+  def render_rich_text(md_boolean, text, options=nil)
     if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
       text = " "
     end
@@ -80,17 +69,17 @@ module ApplicationHelper
         :no_intra_emphasis => true,
         :tables => true,
         :fenced_code_blocks => true,
-        :autolink => false, #ideally we would use true here, but autolink is botching % signs https://github.com/vmg/redcarpet/issues/209
+        :autolink => true,
         :strikethrough => true,
         :space_after_headers => true,
         :superscript => true
       ]
 
-      renderer = MarkdownRenderer.new
+      renderer = Redcarpet::Render::HTML.new(link_attributes: {target: '_blank'})
       markdown = Redcarpet::Markdown.new(renderer, *options)
-      Rinku.auto_link(markdown.render(text), mode=:all, 'target="_blank"').html_safe
+      markdown.render(html_escape(text)).html_safe
     else
-      Rinku.auto_link(simple_format(text), mode=:all, 'target="_blank"').html_safe
+      Rinku.auto_link(simple_format(html_escape(text)), mode=:all, 'target="_blank"').html_safe
     end
   end
 

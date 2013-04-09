@@ -1,24 +1,6 @@
 @import "settings";
 @import "mixins";
 
-/*  New & Edit motion form */
-#motion-form{
-  #close-date-label { display: block; }
-
-  .date-error-message {
-    font-size: $font-small;
-    line-height: 1em;
-    display: inline-block;
-    width: 200px;
-    margin-left: 5px;
-    color: $error-color;
-  }
-}
-#motion-form, #edit-close-date.modal #closing-inputs {
-  #input_date{ width: 140px; display: inline-block; }
-  select { width: 100px; display: inline-block; }
-}
-
 /*** motion preview ***/
 
 .motion-preview:hover {

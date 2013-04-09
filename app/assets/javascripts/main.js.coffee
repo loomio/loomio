@@ -5,6 +5,171 @@ window.Application ||= {}
 # Application.html5 = exports ? this
 # Application.html5.supported = true if canvasSupported
 
+$ ->
+  Application.enableInlineEdition()
+  Application.seeMoreDescription()
+  hideAllErrorMessages()
+  initializeDatepicker()
+  collapseHomepageAccordian()
+
+$ ->
+  $(".dismiss-help-notice").click (event)->
+    $.post($(this).attr("href"))
+    $(this).parent(".help-notice").remove()
+    event.preventDefault()
+    event.stopPropagation()
+
+ #The following methods are used to provide client side validation for
+ #- character count
+ #- date validation specific for motion-form
+
+$ -> # Remove error class on field if not empty
+  $(".validate-presence").change () ->
+    hidePresenceErrorMessageFor($(this))
+
+$ -> # Remove error class on field if not empty
+  $(".validate-presence").keyup () ->
+    hidePresenceErrorMessageFor($(this))
+
+$ -> # Remove error class on closing inputs if changed
+  $(".motion_close_at_date").change () ->
+    hideDateErrorMessageFor($(this))
+
+$ -> # Remove error class on closing inputs if changed
+  $(".motion_close_at_time").change () ->
+    hideDateErrorMessageFor($(this))
+
+$ -> # Remove error class on closing inputs if changed
+  $(".motion_close_at_time_zone").change () ->
+    hideDateErrorMessageFor($(this))
+
+$ -> # Run validations and prevent default if false
+  $(".run-validations").click (event, ui) ->
+    form = $(this).parents("form")
+    unless Application.validateForm(form)
+      event.preventDefault()
+
+$ -> # Character count for 250 characters max
+  $(".limit-250").keyup () ->
+    $(".error-message").hide()
+    chars = $(this).val().length
+    left = 250 - chars
+    display_count(left, $(this))
+
+$ -> # Character count for 150 characters max
+  $(".limit-150").keyup () ->
+    $(".error-message").hide()
+    chars = $(this).val().length
+    left = 150 - chars
+    display_count(left, $(this))
+
+$ -> # check if discussion with motions list is empty
+  if $("body.groups.show").length > 0 ||  $("body.dashboard.show").length > 0
+    if $("#discussions-with-motions").children().html() != ""
+      $(".discussion-with-motion-divider").removeClass('hidden')
+
+$ -> # hide/show mini-graph popovers
+  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
+    $(".motion-popover-link").click((event) ->
+      $(this).find('.pie').tooltip('hide')
+      if $(this).find(".popover").html() == null
+        event.stopPropagation()
+        currentPie = this
+        $('.motion-popover-link').each(() ->
+          unless this == currentPie
+            $(this).popover('hide')
+        )
+        $(this).find('.button_to').submit()
+        $(this).popover('toggle')
+    )
+
+$ ->
+  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
+    $(document).click((event) ->
+      $('.motion-popover-link').popover('hide')
+    )
+
+$ -> # closed motions modal
+  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
+    if $("body.groups.show").length > 0 && $("#private-message").length == 0
+      idStr = new Array
+      idStr = $('#closed-motions-page').children().attr('class').split('_')
+    $("#show-closed-motions").click((event) ->
+      $("#closed-motions").modal('toggle')
+      $("#closed-motions-page").removeClass('hidden')
+      $("#closed-motions-loading").removeClass('hidden')
+      $("#closed-motions-list").addClass('hidden')
+      if $("body.groups.show").length > 0
+        pathStr = "/groups/#{idStr[1]}/motions"
+      else
+        pathStr = "/motions"
+      $('#closed-motions-page').load(pathStr, ->
+        $("#closed-motions-list").removeClass('hidden')
+        $("#closed-motions-loading").addClass('hidden')
+        $("#closed-motions").find('.pie').each(->
+          displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
+        )
+      )
+      event.preventDefault()
+    )
+    $("#closed-motions .close").click((event) ->
+      $("#closed-motions").modal('toggle')
+      event.preventDefault()
+    )
+
+$ -> # Pagination load on closed motions
+  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
+    $(document).on('click', '#closed-motions-page .pagination a', (e)->
+      unless $(this).parent().hasClass("gap")
+        $("#closed-motions-list").addClass('hidden')
+        $("#closed-motions-loading").removeClass('hidden')
+        $('#closed-motions-page').load($(this).attr('href'), ->
+          $("#closed-motion-list").removeClass('hidden')
+          $("#closed-motions-loading").addClass('hidden')
+          $("#closed-motions").find('.pie').each(->
+            displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
+            )
+          )
+        e.preventDefault()
+      )
+
+$ -> # Confirm dialog box for class ".confirm-dialog"
+  $("body").on("click", ".confirm-dialog", (event)->
+    this_link = $(event.currentTarget)
+    titleText = this_link.data("title")
+    bodyText = this_link.data("body")
+    methodText = this_link.data("method-type")
+    if methodText == 'delete'
+      buttonType = 'btn-danger'
+    else
+      buttonType = 'btn-info'
+    confirmPath = this_link.data("confirm-path")
+    csrf = $('meta[name=csrf-token]').attr("content")
+    $('body').append("<div class='modal' id='confirm-dialog-modal'><div class='modal-header'>
+      <a data-dismiss='modal' class='close'>×</a><h3>Confirm action</h3></div>
+      <form action=#{confirmPath} method='post'>
+      <div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='✓'>
+      <input name='_method' type='hidden' value='#{methodText}'>
+      <input name='authenticity_token' type='hidden' value=#{csrf}></div>
+      <div class='modal-body center'> #{bodyText}</div><div class='modal-footer'>&nbsp;
+      <input class= 'btn #{buttonType}', name='commit' type='submit' value='#{titleText}' id='confirm-action'
+             data-disable-with='#{titleText}'>
+      <a data-dismiss='modal' class='btn'>Cancel</a></div></div></form>"
+    )
+    $('#confirm-dialog-modal').modal('show')
+    $('#confirm-dialog-modal').on('hidden', ->
+      $(this).remove()
+    event.preventDefault()
+    )
+  )
+
+
+collapseHomepageAccordian = () ->
+  $(".collapse").collapse()
+
+initializeDatepicker = () ->
+  $('input.datepicker').datepicker(dateFormat: 'dd-mm-yy')
+
 Application.convertUtcToRelativeTime = ->
   if $(".utc-time").length > 0
     today = new Date()
@@ -66,108 +231,14 @@ Application.getPageParam = () ->
   else
     ""
 
-# confirm dialog box for class ".confirm-dialog"
-$ ->
-  $("body").on("click", ".confirm-dialog", (event)->
-    this_link = $(event.currentTarget)
-    titleText = this_link.data("title")
-    bodyText = this_link.data("body")
-    methodText = this_link.data("method-type")
-    if methodText == 'delete'
-      buttonType = 'btn-danger'
-    else
-      buttonType = 'btn-info'
-    confirmPath = this_link.data("confirm-path")
-    csrf = $('meta[name=csrf-token]').attr("content")
-    $('body').append("<div class='modal' id='confirm-dialog-modal'><div class='modal-header'>
-      <a data-dismiss='modal' class='close'>×</a><h3>Confirm action</h3></div>
-      <form action=#{confirmPath} method='post'>
-      <div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='✓'>
-      <input name='_method' type='hidden' value='#{methodText}'>
-      <input name='authenticity_token' type='hidden' value=#{csrf}></div>
-      <div class='modal-body center'> #{bodyText}</div><div class='modal-footer'>&nbsp;
-      <input class= 'btn #{buttonType}', name='commit' type='submit' value='#{titleText}' id='confirm-action'
-             data-disable-with='#{titleText}'>
-      <a data-dismiss='modal' class='btn'>Cancel</a></div></div></form>"
-    )
-    $('#confirm-dialog-modal').modal('show')
-    $('#confirm-dialog-modal').on('hidden', ->
-      $(this).remove()
-    event.preventDefault()
-    )
-  )
-
-$ ->
-  $(".dismiss-help-notice").click((event)->
-    $.post($(this).attr("href"))
-    $(this).parent(".help-notice").remove()
-    event.preventDefault()
-    event.stopPropagation()
-  )
-
- #The following methods are used to provide client side validation for
- #- character count
- #- presence required
- #- date validation specific for motion-form
-
-$ ->
-  $(".validate-presence").change(() ->
-    if $(this).val() != ""
-        $(this).parent().removeClass("error")
-        $(this).parent().find(".presence-error-message").hide()
-  )
-$ ->
-  $(".validate-presence").keyup(() ->
-    $(this).parent().removeClass("error")
-    $(this).parent().find(".presence-error-message").hide()
-  )
-
-$ ->
-  $(".presence-error-message").hide()
-  $(".date-error-message").hide()
-
-  $(".run-validations").click((event, ui) ->
-    form = $(this).parents("form")
-    form.find(".validate-presence").each((index, element) ->
-      if $(element).is(":visible") && $(element).val() == ""
-        parent = $(element).parent()
-        parent.addClass("error")
-        parent.find(".presence-error-message").show()
-    )
-
-    runCustomValidations(form)
-
-    form.find(".control-group").each((index, group) ->
-      if $(group).hasClass("error")
-        event.preventDefault()
-    )
-  )
-
-  runCustomValidations = (form)->
-    motionCloseDateValidation(form)
-
-  motionCloseDateValidation = (form)->
-    if form.parents("#motion-form").length > 0 || $('#edit-close-date').length > 0
-      time_now = new Date()
-      selected_date = new Date($("#motion_close_date").val())
-      if selected_date <= time_now
-        $(".validate-motion-close-date").parent().addClass("error")
-        $(".date-error-message").show()
-
-# adds bootstrap popovers to group activity indicators
-$ ->
-  $(".group-activity").tooltip
-    placement: "top"
-    title: 'There have been new comments since you last visited this group.'
-
-# character count for statement on discussion:show page
+# Character count for statement on discussion:show page
 pluralize_characters = (num) ->
   if(num == 1)
     return num + " character"
   else
     return num + " characters"
 
-# display charcaters left
+# Display charcaters left
 display_count = (num, object) ->
   if(num >= 0)
     object.parent().find(".character-counter").text(pluralize_characters(num) + " left")
@@ -176,30 +247,6 @@ display_count = (num, object) ->
     num = num * (-1)
     object.parent().find(".character-counter").text(pluralize_characters(num) + " too long")
     object.parent().addClass("error")
-
-# character count for 250 characters max
-$ ->
-  $(".limit-250").keyup(() ->
-    $(".error-message").hide()
-    chars = $(this).val().length
-    left = 250 - chars
-    display_count(left, $(this))
-  )
-
- #character count for 150 characters max
-$ ->
-  $(".limit-150").keyup(() ->
-    $(".error-message").hide()
-    chars = $(this).val().length
-    left = 150 - chars
-    display_count(left, $(this))
-  )
-
-#*** check if discussion with motions list is empty ***
-$ ->
-  if $("body.groups.show").length > 0 ||  $("body.dashboard.show").length > 0
-    if $("#discussions-with-motions").children().html() != ""
-      $(".discussion-with-motion-divider").removeClass('hidden')
 
 # Edit description
 Application.enableInlineEdition = ()->
@@ -225,8 +272,8 @@ Application.enableInlineEdition = ()->
       event.preventDefault()
     )
 
+# Expand/shrink description text
 Application.seeMoreDescription = () ->
-  #expand/shrink description text
   if $("body.discussions.show").length > 0
     $(".see-more").click((event) ->
       $(this).parent().children(".short-description").toggle()
@@ -237,10 +284,6 @@ Application.seeMoreDescription = () ->
         $(this).html("Show More")
       event.preventDefault()
     )
-
-$ ->
-  Application.enableInlineEdition()
-  Application.seeMoreDescription()
 
 displayGraph = (this_pie, graph_id, data)->
   @pie_graph_view = new Loomio.Views.Utils.GraphView
@@ -255,73 +298,61 @@ displayGraph = (this_pie, graph_id, data)->
     gap: 1
     shadow: 0.75
 
-#*** hide/show mini-graph popovers
-$ ->
-  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(".motion-popover-link").click((event) ->
-      $(this).find('.pie').tooltip('hide')
-      if $(this).find(".popover").html() == null
-        event.stopPropagation()
-        currentPie = this
-        $('.motion-popover-link').each(() ->
-          unless this == currentPie
-            $(this).popover('hide')
-        )
-        $(this).find('.button_to').submit()
-        $(this).popover('toggle')
+Application.validateForm = (form) ->
+  formValid = true
+  form.find(".validate-presence").each((index, field) ->
+    formValid = false unless Application.validatePresence(field)
+    return
     )
-$ ->
-  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(document).click((event) ->
-      $('.motion-popover-link').popover('hide')
-    )
+  if form.find(".motion-closing-inputs").is(':visible') == true
+    formValid = false unless validateMotionCloseDate($(".motion-closing-inputs"))
+  formValid
 
-#*** closed motions modal***
-$ ->
-  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    if $("body.groups.show").length > 0 && $("#private-message").length == 0
-      idStr = new Array
-      idStr = $('#closed-motions-page').children().attr('class').split('_')
-    $("#show-closed-motions").click((event) ->
-      $("#closed-motions").modal('toggle')
-      $("#closed-motions-page").removeClass('hidden')
-      $("#closed-motions-loading").removeClass('hidden')
-      $("#closed-motions-list").addClass('hidden')
-      if $("body.groups.show").length > 0
-        pathStr = "/groups/#{idStr[1]}/motions"
-      else
-        pathStr = "/motions"
-      $('#closed-motions-page').load(pathStr, ->
-        $("#closed-motions-list").removeClass('hidden')
-        $("#closed-motions-loading").addClass('hidden')
-        $("#closed-motions").find('.pie').each(->
-          displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
-        )
-      )
-      event.preventDefault()
-    )
-    $("#closed-motions .close").click((event) ->
-      $("#closed-motions").modal('toggle')
-      event.preventDefault()
-    )
+Application.validatePresence = (field) ->
+  if $(field).is(":visible") && $(field).val() == ""
+    error_div = $(field).closest('.control-group').parent().closest('.control-group')
+    error_div.addClass("error")
+    error_div.find(".inline-help").show()
+    return false
+  true
 
-#pagination load on closed motions
-$ ->
-  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(document).on('click', '#closed-motions-page .pagination a', (e)->
-      unless $(this).parent().hasClass("gap")
-        $("#closed-motions-list").addClass('hidden')
-        $("#closed-motions-loading").removeClass('hidden')
-        $('#closed-motions-page').load($(this).attr('href'), ->
-          $("#closed-motion-list").removeClass('hidden')
-          $("#closed-motions-loading").addClass('hidden')
-          $("#closed-motions").find('.pie').each(->
-            displayGraph($(this), $(this).attr('id'),  $.parseJSON($(this).attr('data-votes')))
-            )
-          )
-        e.preventDefault()
-      )
+validateMotionCloseDate = (closeAtControlGroup) ->
+  timeNow = new Date()
+  if parseCloseDateTimeZoneFields(closeAtControlGroup) < timeNow
+    $(closeAtControlGroup).addClass("error")
+    $(closeAtControlGroup).find(".inline-help").show()
+    return false
+  true
 
-# homepage accordion
-$ ->
-  $(".collapse").collapse()
+parseCloseDateTimeZoneFields = (closeAtControlGroup) ->
+  selectedDate = new Date()
+  closeAtDate = closeAtControlGroup.find('.motion-close-at-date').val()
+  closeAtTime = closeAtControlGroup.find('.motion-close-at-time').val()
+  closeAtTimeZone = closeAtControlGroup.find('.motion-close-at-time-zone').val()
+  listOfTimeZones = closeAtControlGroup.find('.motion-close-at-time-zone').text()
+
+  timeZoneAsHourOffset = getTimeZoneOffsetFromList(listOfTimeZones, closeAtTimeZone)
+  month = closeAtDate.substring(3,5)
+  day = closeAtDate.substring(0,2)
+
+  selectedDate.setUTCFullYear(parseInt(closeAtDate.substring(6,10), 10))
+  selectedDate.setUTCMonth(parseInt(month, 10) - 1, parseInt(day, 10))
+  selectedDate.setUTCHours(parseInt(closeAtTime, 10) - timeZoneAsHourOffset)
+  selectedDate
+
+getTimeZoneOffsetFromList = (list, timeZoneName) ->
+  index = list.indexOf(timeZoneName)
+  timeZoneAsHourOffset = parseInt(list.substring(index - 8, index - 5))
+
+hidePresenceErrorMessageFor = (field) ->
+  unless $(field).val() == ""
+      error_div = $(field).closest('.control-group').parent().closest('.control-group')
+      error_div.removeClass("error")
+      error_div.find(".inline-help").hide()
+
+hideDateErrorMessageFor = (field) ->
+  $(field).closest('.motion-closing-inputs').removeClass("error")
+  row = $(field).closest('.motion-closing-inputs').find(".inline-help").hide()
+
+hideAllErrorMessages = () ->
+  $(".inline-help").hide()
