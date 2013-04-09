@@ -4,8 +4,8 @@ end
 Given /^the discussion has comments$/ do
   @commenter = FactoryGirl.create :user
   @group.add_member! @commenter
-  @discussion.add_comment @commenter, "hey there"
-  @discussion.add_comment @commenter, "how are you"
+  @discussion.add_comment @commenter, "hey there", false
+  @discussion.add_comment @commenter, "how are you", false
 end
 
 When /^I visit the dashboard$/ do

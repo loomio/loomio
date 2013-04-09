@@ -20,18 +20,19 @@
     =render "motions/outcome_statement", motion: motion, this_group: this_group if motion.closed?
 
   .description
-
+    - too_long = true if motion.description && motion.description.length > 200
+    - long_description = render_rich_text(false, motion.description)
+    - short_description = render_rich_text(false, truncate(motion.description, length: 200, omission: '...', separator: ' '))
     <!--[if IE 7]>
     .long-description
-      ~ markdown(motion.description)
+      ~ long_description
     <![endif]-->
 
     <!--[if !IE 7]><!-->
-    - too_long = true if motion.description && motion.description.length > 200
     .short-description
-      ~ markdown(truncate(motion.description, length: 200, omission: '...', separator: ' '))
+      ~ short_description
     .long-description{style: "display: none"}
-      ~ markdown(motion.description)
+      ~ long_description
     = link_to "Show More", "#", class: 'see-more' if too_long
     <!--<![endif]-->
 

@@ -10,4 +10,9 @@
           = f.input :group_id, :as => :hidden
       = f.input :title, :placeholder => "What is the topic you'd like to discuss?"
       = f.input :description, :label => "Context", :placeholder => "This information will appear at the top of the discussion page. Introduce the topic and give enough context for your group to have a well-informed discussion."
-      = f.submit 'Start discussion', :class => "btn btn-large btn-info", id: "discussion-submit", :data => {:disable_with => "Starting"}
+      = f.hidden_field 'uses_markdown', value: @uses_markdown, id: 'global-uses-markdown'
+      = f.submit 'Start discussion', :class => "btn btn-medium btn-info", id: "discussion-submit", :data => {:disable_with => "Starting"}
+    .dropdown#discussion-markdown-dropdown.global-markdown-setting
+      %a.dropdown-toggle{href:'#discussion-markdown-dropdown', id:'discussion-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
+        = markdown_img(@uses_markdown)
+      = render 'markdown_setting', target: current_user

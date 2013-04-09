@@ -29,6 +29,7 @@ FactoryGirl.define do
     group
     title Faker::Lorem.sentence(2)
     description 'A description for this discussion'
+    uses_markdown false
     after(:build) do |discussion|
       discussion.group.parent.add_member!(discussion.author) if discussion.group.parent
       discussion.group.add_member!(discussion.author)

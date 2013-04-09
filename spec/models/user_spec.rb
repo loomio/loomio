@@ -167,9 +167,9 @@ describe User do
     it "returns a list of discussions sorted by last_comment_at" do
       pending 'this does not help'
       @discussion2 = create :discussion, :author => @user
-      @discussion2.add_comment @user, "hi"
+      @discussion2.add_comment @user, "hi", false
       @discussion3 = create :discussion, :author => @user
-      @discussion1.add_comment @user, "hi"
+      @discussion1.add_comment @user, "hi", false
       @user.discussions_sorted.should == [@discussion1, @discussion4, @discussion3, ]
       @user.discussions_sorted[0].should == @discussion1
       @user.discussions_sorted[1].should == @discussion4

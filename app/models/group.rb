@@ -253,7 +253,7 @@ You'll be prompted to make a short statement about the reason for your decision.
       discussion = user.authored_discussions.create!(:group_id => id,
         :title => "Example Discussion: Welcome and introduction to Loomio!",
         :description => description_str)
-      discussion.add_comment(user, comment_str)
+      discussion.add_comment(user, comment_str, false)
       motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We should have a holiday on the moon!",
         :description => motion_str, :close_date => Time.now + 7.days)
       motion.save
