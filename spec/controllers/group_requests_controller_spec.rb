@@ -21,8 +21,38 @@ describe GroupRequestsController do
 
   describe "#create" do
     it "should redirect to the confirmation page" do
-      post :create, :group_request => attributes_for(:group_request)
+      put :create, group_request: group_request.attributes
       response.should redirect_to(group_request_confirmation_url)
+    end
+  end
+
+  describe "#confirmation" do
+    it "should successfully render the confirmation page" do
+      get :confirmation
+      response.should be_success
+      response.should render_template("confirmation")
+    end
+  end
+
+  describe "#verify" do
+    before { GroupRequest.stub(:find_by_token).and_return(group_request) }
+
+    context "group_request has not yet been verified" do
+      it "sets the status to verified" do
+        group_request.should_receive(:verify!)
+        put :verify, token: group_request.token
+      end
+      it "should render the verified page" do
+        put :verify, token: group_request.token
+        response.should render_template("verify")
+      end
+    end
+    context "group_request has been verified" do
+      before { group_request.stub(:unverified?).and_return(false) }
+      it "renders the invitation_accepted_error_page" do
+        put :verify, token: group_request.token
+        response.should render_template("invitation_accepted_error_page")
+      end
     end
   end
 
@@ -50,13 +80,4 @@ describe GroupRequestsController do
       it "renders the invalid start group link page"
     end
   end
-
-  describe "#confirmation" do
-    it "should successfully render the confirmation page" do
-      get :confirmation
-      response.should be_success
-      response.should render_template("confirmation")
-    end
-  end
-
 end

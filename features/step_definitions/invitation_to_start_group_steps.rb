@@ -48,11 +48,12 @@ When /^the user clicks the invitiation link$/ do
 end
 
 When /^signs up as a new user$/ do
+  save_and_open_page
   within ".signup-form" do
-    fill_in :name, with: 'Jimmy Jiminson'
-    fill_in :email, with: 'jim@jiminson.com'
-    fill_in :password, with: 'milkbottle'
-    fill_in :password_confirmation, with: 'milkbottle'
+    fill_in 'Name', with: 'Jimmy Jiminson'
+    fill_in 'Email', with: 'jim@jiminson.com'
+    fill_in :user_password, with: 'milkbottle'
+    fill_in :user_password_confirmation, with: 'milkbottle'
     click_on 'Sign up'
   end
 end

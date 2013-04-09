@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe GroupRequest do
   before do
+    StartGroupMailer.stub_chain(:verification, :deliver)
     @group_request = build(:group_request)
   end
 
@@ -16,6 +17,11 @@ describe GroupRequest do
       @group_request.save!
       @group_request.should be_unverified
     end
+  end
+
+  it 'should send a verification email' do
+    StartGroupMailer.should_receive(:verification).with(@group_request)
+    @group_request.save!
   end
 
   it "marks spam as spam" do
@@ -172,9 +178,91 @@ describe GroupRequest do
   end
 
   describe "#mark_as_spam!" do
+    before { @group_request.save! }
     it "should set the status to marked_as_spam" do
-      group_request.mark_as_spam!
-      group_request.should be_marked_as_spam
+      @group_request.mark_as_spam!
+      @group_request.should be_marked_as_spam
+    end
+  end
+
+  describe "#mark_as_unverified!" do
+    before do
+      @group_request.save!
+      @group_request.mark_as_spam!
+    end
+
+    it "should set the status to unverified" do
+      @group_request.mark_as_unverified!
+      @group_request.should be_unverified
+    end
+  end
+
+  context "that has been verified" do
+    before do
+      @group_request.save!
+      @group_request.verify!
+    end
+
+    it "can later be approved" do
+      @group_request.should_receive(:approve_request)
+      @group_request.approve!
+    end
+
+    it "can set the status to marked_as_smanually_approved" do
+      @group_request.mark_as_manually_approved!
+      @group_request.should be_manually_approved
+    end
+
+    it "can set the status to marked_as_spam" do
+      @group_request.mark_as_spam!
+      @group_request.should be_marked_as_spam
+    end
+  end
+
+  context "that has been defered" do
+    before do
+      @group_request.save!
+      @group_request.verify!
+      @group_request.defer!
+    end
+
+    it "can later be approved" do
+      @group_request.should_receive(:approve_request)
+      @group_request.approve!
+    end
+
+    it "can later be marked as manually_approved" do
+      @group_request.mark_as_manually_approved!
+      @group_request.should be_manually_approved
+    end
+
+    it "can set the status to marked_as_spam" do
+      @group_request.mark_as_spam!
+      @group_request.should be_marked_as_spam
+    end
+  end
+
+  context "that has been manually_approved" do
+    before do
+      @group_request.save!
+      @group_request.mark_as_manually_approved!
+    end
+
+    it "can set the status to unverified" do
+      @group_request.mark_as_unverified!
+      @group_request.should be_unverified
+    end
+  end
+
+  context "that has been marked_as_spam" do
+    before do
+      @group_request.save!
+      @group_request.mark_as_spam!
+    end
+
+    it "can set the status to unverified" do
+      @group_request.mark_as_unverified!
+      @group_request.should be_unverified
     end
   end
 end

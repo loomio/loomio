@@ -30,16 +30,24 @@ class Group < ActiveRecord::Base
     :extend => GroupMemberships,
     :include => :user,
     :order => "LOWER(users.name)"
+
   has_many :membership_requests,
     :conditions => {:access_level => 'request'},
     :class_name => 'Membership',
     :dependent => :destroy
+
   has_many :admin_memberships,
     :conditions => {:access_level => 'admin'},
     :class_name => 'Membership',
     :dependent => :destroy
-  has_many :users, :through => :memberships, # TODO: rename to members
-           :conditions => { :invitation_token => nil }
+
+  has_many :members, 
+           through: :memberships,
+           source: :user,
+           conditions: { :invitation_token => nil }
+
+  alias :users :members
+
   has_many :invited_users, :through => :memberships, source: :user,
            :conditions => "invitation_token is not NULL"
   has_many :users_and_invited_users, through: :memberships, source: :user
@@ -177,9 +185,10 @@ class Group < ActiveRecord::Base
     membership
   end
 
-  def add_admin!(user)
+  def add_admin!(user, inviter = nil)
     membership = find_or_build_membership_for_user(user)
     membership.make_admin!
+    membership.inviter = inviter if inviter.present?
     membership
   end
 

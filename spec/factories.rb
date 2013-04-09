@@ -92,7 +92,7 @@ FactoryGirl.define do
   end
 
   factory :group_request do
-    admin_name Faker::Name.name
+    sequence(:admin_name) { Faker::Name.name }
     admin_email Faker::Internet.email
     country_name "nz"
     sectors ["community"]
@@ -103,6 +103,7 @@ FactoryGirl.define do
   end
 
   factory :invitation do
-    group_request
+    recipient_email { Faker::Internet.email }
+    association :inviter, factory: :user
   end
 end

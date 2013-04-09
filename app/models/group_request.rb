@@ -7,7 +7,6 @@ class GroupRequest < ActiveRecord::Base
 
   validates :token, :uniqueness => true, :presence => true,
             :length => {:minimum => 20}
-
   validates :admin_name, presence: true, length: {maximum: 250}
   validates :admin_email, presence: true, email: true
   validates :country_name, presence: true

@@ -75,6 +75,6 @@ Then /^I should be told to check my inbox for a verification email$/ do
 end
 
 Then /^the group request should be marked as verified$/ do
+  @group_request.reload
   @group_request.status.should == 'verified'
 end
-

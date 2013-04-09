@@ -10,7 +10,7 @@ class BaseController < InheritedResources::Base
 
   def check_for_invitation
     if session[:invitation_token] and current_user
-      redirect_to invitations_path(session[:invitation_token])
+      redirect_to invitation_path(session[:invitation_token])
     end
   end
 

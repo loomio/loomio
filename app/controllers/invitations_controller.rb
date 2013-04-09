@@ -6,7 +6,7 @@ class InvitationsController < ApplicationController
       AcceptInvitation.and_grant_access!(@invitation, current_user)
       session[:invitation_token] = nil
       if @invitation.group.admins.include? current_user
-        redirect_to group_setup_path(@invitation.group.id)
+        redirect_to setup_group_path(@invitation.group.id)
       else
         redirect_to @invitation.group
       end

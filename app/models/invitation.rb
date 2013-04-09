@@ -5,13 +5,14 @@ class Invitation < ActiveRecord::Base
   belongs_to :inviter, class_name: User
   belongs_to :group
   before_save :ensure_token_is_present
+  belongs_to :accepted_by, class_name: User
 
   def inviter_name
-    ''
+    inviter.name
   end
 
   def group_name
-    ''
+    group.name
   end
 
   private
