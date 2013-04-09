@@ -218,12 +218,12 @@ displayGraph = (this_pie, graph_id, data)->
 #*** hide/show mini-graph popovers
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(".selector-pie-link").click((event) ->
+    $(".motion-popover-link").click((event) ->
       $(this).find('.pie').tooltip('hide')
       if $(this).find(".popover").html() == null
         event.stopPropagation()
         currentPie = this
-        $('.selector-pie-link').each(() ->
+        $('.motion-popover-link').each(() ->
           unless this == currentPie
             $(this).popover('hide')
         )
@@ -233,7 +233,7 @@ $ ->
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
     $(document).click((event) ->
-      $('.selector-pie-link').popover('hide')
+      $('.motion-popover-link').popover('hide')
     )
 
 #*** closed motions modal***

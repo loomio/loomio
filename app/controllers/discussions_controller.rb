@@ -71,17 +71,30 @@ class DiscussionsController < GroupBaseController
       @displayed_motion = @current_motion
     end
     if current_user
+      @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
       @uses_markdown = current_user.uses_markdown?
-      @discussion.update_total_views
-      current_user.update_motion_read_log(@current_motion) if @current_motion
-      current_user.update_discussion_read_log(@discussion)
+      ViewLogger.motion_viewed(@current_motion, current_user) if @current_motion
+      ViewLogger.discussion_viewed(@discussion, current_user)
     end
+  end
+
+  def move
+    @discussion = Discussion.find(params[:id])
+    destination = Group.find(params[:discussion][:group_id])
+    @discussion.group_id = params[:discussion][:group_id]
+    if DiscussionMover.can_move?(current_user, destination) && @discussion.save!
+      flash[:success] = "Discussion successfully moved."
+    else
+      flash[:error] = "Discussion could not be moved."
+    end
+    redirect_to @discussion
   end
 
   def add_comment
     @discussion = Discussion.find(params[:id])
     comment = @discussion.add_comment(current_user, params[:comment], params[:global_uses_markdown])
     current_user.update_discussion_read_log(@discussion)
+    ViewLogger.discussion_viewed(@discussion, current_user)
   end
 
   def new_proposal

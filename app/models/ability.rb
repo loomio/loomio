@@ -51,6 +51,7 @@ class Ability
 
     can :index, Discussion
     can :destroy, Discussion, group_id: user.adminable_group_ids
+    can :move, Discussion, group_id: user.adminable_group_ids
     can [:add_comment, :new_proposal, :create, :edit_description, :edit_title, :show_description_history, :preview_version, :update_version], Discussion, :group_id => user.group_ids
 
     can :destroy, Comment, user_id: user.id

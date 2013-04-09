@@ -47,6 +47,7 @@ describe DiscussionsController do
           motion.stub(:open_close_motion)
           motion.stub(:voting?).and_return(true)
           discussion.stub(:history)
+          DiscussionMover.stub(:destination_groups)
         end
 
         it "responds with success" do
@@ -54,25 +55,16 @@ describe DiscussionsController do
           response.should be_success
         end
 
-        it "creates a motion_read_log if there is a current motion" do
-          user.should_receive(:update_motion_read_log).with(motion)
-          get :show, id: discussion.id
-        end
-
-        it "creates a discussion_read_log" do
-          user.should_receive(:update_discussion_read_log).with(discussion)
-          get :show, id: discussion.id
-        end
-
-        it "updates the discussion's total view counter" do
-          get :show, id: discussion.id
-          discussion.total_views.should == 1
-        end
-
         it "assigns array with discussion history" do
           discussion.should_receive(:activity).and_return(['fake'])
           get :show, id: discussion.id
           assigns(:activity).should eq(['fake'])
+        end
+
+        it "assigns array with group destinations for moving" do
+          DiscussionMover.should_receive(:destination_groups).and_return(['fake'])
+          get :show, id: discussion.id
+          assigns(:destination_groups).should eq(['fake'])
         end
       end
     end
@@ -117,6 +109,26 @@ describe DiscussionsController do
       it "gives flash success message" do
         delete :destroy, id: discussion.id
         flash[:success].should =~ /Discussion sucessfully deleted/
+      end
+    end
+
+    context "moving a discussion" do
+      before do
+        group = create :group
+        Group.stub(:find).and_return(group)
+        DiscussionMover.stub(:can_move?).and_return(true)
+      end
+      it "moves the discussion to the selected group" do
+        discussion.should_receive(:group_id=).with(group.id.to_s)
+        put :move, id: discussion.id, discussion: { group_id: group.id }
+      end
+      it "redirects to the discussion" do
+        put :move, id: discussion.id, discussion: { group_id: group.id }
+        response.should redirect_to(discussion)
+      end
+      it "gives flash success message" do
+        put :move, id: discussion.id, discussion: { group_id: group.id }
+        flash[:success].should =~ /Discussion successfully moved./
       end
     end
 
