@@ -25,6 +25,6 @@
       -else
         =link_to "Next", "#", :class => "disabled"
   .revision-content
-    %p= markdown(@discussion.description)
+    %p= render_rich_text(@discussion.uses_markdown, @discussion.description)
 .modal-footer
   = link_to "Close", "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"

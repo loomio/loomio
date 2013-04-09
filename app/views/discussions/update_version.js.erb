@@ -1,5 +1,5 @@
 //update activity feed
-$("#activity-feed").html("<%= escape_javascript(render :partial => 'activity', :locals => 
+$("#activity-feed").html("<%= escape_javascript(render :partial => 'activity', :locals =>
 { :discussion => @discussion }) %>")
 
 var modal = $("#description-revision-history")
@@ -7,10 +7,9 @@ var modal = $("#description-revision-history")
 if(modal.is(":visible")){
   modal.modal('hide')
 }
-$("#discussion-context").html("<%= escape_javascript(render 'discussion_context', model: @discussion, model_name: 'discussion')%>")
+$("#discussion-context").html("<%= escape_javascript(render 'discussion_context')%>")
 
 // calling all the JS needed to have a fully functional interface after DOM replacement
-Application.enableInlineEdition()
-Application.seeMoreDescription()
+Discussion.enableInlineEdition()
+Discussion.seeMoreDescription()
 Application.setupPopovers()
-

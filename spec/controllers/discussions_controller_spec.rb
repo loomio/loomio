@@ -163,17 +163,18 @@ describe DiscussionsController do
       before do
         Event.stub(:new_comment!)
         @comment = mock_model(Comment, :valid? => true)
-        discussion.stub(:add_comment).and_return(@comment)
+        discussion.stub(add_comment: @comment)
       end
 
       it "checks permissions" do
         app_controller.should_receive(:authorize!).and_return(true)
-        xhr :post, :add_comment, comment: "Hello!", id: discussion.id
+        xhr :post, :add_comment, comment: "Hello!", id: discussion.id, global_uses_markdown: false
       end
 
-      it "calls adds_comment on discussion" do
-        discussion.should_receive(:add_comment).with(user, "Hello!")
-        xhr :post, :add_comment, comment: "Hello!", id: discussion.id
+      it "calls add_comment on discussion" do
+        uses_markdown = false
+        discussion.should_receive(:add_comment).with(user, "Hello!", uses_markdown)
+        xhr :post, :add_comment, comment: "Hello!", id: discussion.id, global_uses_markdown: uses_markdown
       end
 
       context "unsuccessfully" do
@@ -184,7 +185,7 @@ describe DiscussionsController do
 
         it "does not fire new_comment event" do
           Event.should_not_receive(:new_comment!)
-          xhr :post, :add_comment, comment: "Hello!", id: discussion.id
+          xhr :post, :add_comment, comment: "Hello!", id: discussion.id, global_uses_markdown: false
         end
       end
     end

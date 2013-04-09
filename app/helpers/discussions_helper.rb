@@ -42,15 +42,15 @@ module DiscussionsHelper
     auto_link_usernames_or_lists(comment, :username_url_base => "#", :username_include_symbol => true)
   end
 
-  def css_for_markdown_link(current_user, setting)
-    return "icon-ok" if (current_user.uses_markdown == setting)
+  def css_for_markdown_link(target, setting)
+    return "icon-ok" if (target.uses_markdown == setting)
   end
 
   def markdown_img(uses_markdown)
     if uses_markdown
-      image_tag("markdown_on.png", :id => 'markdown-icon', class: 'markdown-on')
+      image_tag("markdown_on.png", class: 'markdown-icon markdown-on')
     else
-      image_tag("markdown_off.png", :id => 'markdown-icon', class: 'markdown-off')
+      image_tag("markdown_off.png", class: 'markdown-icon markdown-off')
     end
   end
 end

@@ -58,21 +58,21 @@ describe "Motions" do
       end
 
       it "can see link to delete their own comments" do
-        @motion.discussion.add_comment(@user, "hello!")
+        @motion.discussion.add_comment(@user, "hello!", false)
 
         visit motion_path(id: @motion.id)
         find('.comment').should have_content('Delete')
       end
 
       it "cannot see link to delete other people's comments" do
-        @motion.discussion.add_comment(@user2, "hello!")
+        @motion.discussion.add_comment(@user2, "hello!", false)
 
         visit motion_path(id: @motion.id)
         find('.comment').should_not have_content('Delete')
       end
 
       it "can 'like' a comment" do
-        @motion.discussion.add_comment(@user2, "hello!")
+        @motion.discussion.add_comment(@user2, "hello!", false)
 
         visit motion_path(id: @motion.id)
         find('.comment').find_link('Like').click
@@ -83,7 +83,7 @@ describe "Motions" do
       end
 
       it "can 'unlike' a comment" do
-        @motion.discussion.add_comment(@user2, "hello!")
+        @motion.discussion.add_comment(@user2, "hello!", false)
         @motion.discussion.comments.first.like(@user)
 
         visit motion_path(id: @motion.id)
@@ -98,7 +98,7 @@ describe "Motions" do
       before :each do
         membership = @group.memberships.find_by_user_id(@user.id)
         membership.destroy
-        @motion.discussion.add_comment(@user2, "hello!")
+        @motion.discussion.add_comment(@user2, "hello!", false)
         visit motion_path(id: @motion.id)
       end
 
@@ -145,7 +145,7 @@ describe "Motions" do
       @motion = create(:motion, name: 'Test Motion', group: @group,
                               author: @user)
       @motion.save!
-      @motion.discussion.add_comment(@user, "hello!")
+      @motion.discussion.add_comment(@user, "hello!", false)
 
       visit motion_path(@motion)
 

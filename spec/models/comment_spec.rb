@@ -14,7 +14,7 @@ describe Comment do
       discussion = create(:discussion)
       discussion.last_comment_at = 2.days.ago
       discussion.save!
-      comment = discussion.add_comment discussion.author, "hi"
+      comment = discussion.add_comment discussion.author, "hi", false
       discussion.reload
       discussion.last_comment_at.to_s.should == comment.created_at.to_s
     end
@@ -22,7 +22,7 @@ describe Comment do
     it 'fires a new_comment! event' do
       Events::NewComment.should_receive(:publish!)
       discussion = create(:discussion)
-      comment = discussion.add_comment discussion.author, "hi"
+      comment = discussion.add_comment discussion.author, "hi", false
     end
   end
 
@@ -31,7 +31,7 @@ describe Comment do
     let(:discussion) { create(:discussion) }
     context "which is the only comment on a discussion" do
       it "updates discussion.last_comment_at to discussion.created_at" do
-        comment = discussion.add_comment discussion.author, "hi"
+        comment = discussion.add_comment discussion.author, "hi", false
         discussion.last_comment_at.should == discussion.created_at
       end
     end
@@ -94,7 +94,7 @@ describe Comment do
       before do
         @member = create :user
         @group.add_member! @member
-        @comment = @discussion.add_comment @user, "@#{@member.username}"
+        @comment = @discussion.add_comment @user, "@#{@member.username}", false
       end
       it "returns the mentioned user" do
         @comment.mentioned_group_members.should include(@member)
@@ -108,7 +108,7 @@ describe Comment do
     context "user mentions a non-group member" do
       it "should not return a mentioned non-member" do
         non_member = create :user
-        @comment = @discussion.add_comment @user, "@#{non_member.username}"
+        @comment = @discussion.add_comment @user, "@#{non_member.username}", false
         @comment.mentioned_group_members.should_not include(non_member)
       end
     end
