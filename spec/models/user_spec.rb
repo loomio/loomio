@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require 'spec_helper'
+require 'spec_helper' 
 
 describe User do
   let(:user) { create(:user) }
@@ -478,9 +478,16 @@ describe User do
 
     it "changes non ASCII characters to their ASCII counterparts" do
       user = User.new
-      user.name = "Kæsper Thör Nørdskov _^25*/\!"
+      user.name = "Kæsper Nørdskov _^25*/\!"
       user.generate_username
-      user.username.should == "kaesperthornordskov25"
+      user.username.should == "kaespernordskov25"
+    end
+
+    it "usernames radical should be 18 characters max" do
+      user = User.new
+      user.name = "Wow this is quite long as a name"
+      user.generate_username
+      user.username.length.should equal(18) 
     end
   end
 end
