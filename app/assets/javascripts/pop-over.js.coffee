@@ -13,7 +13,7 @@ $ ->
 #adds bootstrap popovers to preview pies
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(".selector-pie-link").popover
+    $(".motion-popover-link").popover
       html: true,
       placement: "right",
       trigger: "manual"
