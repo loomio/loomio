@@ -19,13 +19,13 @@ describe Discussion do
     user = create(:user)
     discussion = create(:discussion)
     discussion.group.add_member! user
-    comment = discussion.add_comment(user, "this is a test comment")
+    comment = discussion.add_comment(user, "this is a test comment", false)
     discussion.comment_threads.should include(comment)
   end
 
   it "group non-member cannot add comment" do
     discussion = create(:discussion)
-    comment = discussion.add_comment(create(:user), "this is a test comment")
+    comment = discussion.add_comment(create(:user), "this is a test comment", false)
     discussion.comment_threads.should_not include(comment)
   end
 
@@ -105,7 +105,7 @@ describe Discussion do
       @group = create :group 
       @group.add_member! @user
       @discussion = create :discussion, :group => @group
-      @discussion.add_comment(@user, "this is a test comment")
+      @discussion.add_comment(@user, "this is a test comment", false)
       @motion = create :motion, :discussion => @discussion
       @vote = create :vote, :position => 'yes', :motion => @motion
       activity = @discussion.activity
@@ -145,8 +145,8 @@ describe Discussion do
       @group.add_member! @user2
       @group.add_member! @user3
       @group.add_member! @user4
-      @discussion.add_comment(@user2, "givin a shout out to user3!")
-      @discussion.add_comment(@user3, "thanks 4 thah love usah two!")
+      @discussion.add_comment(@user2, "givin a shout out to user3!", false)
+      @discussion.add_comment(@user3, "thanks 4 thah love usah two!", false)
     end
 
     it "should include users who have commented on discussion" do

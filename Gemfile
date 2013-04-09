@@ -41,7 +41,6 @@ gem 'hirefireapp', '~> 0.0.8'
 gem 'foreman', '~> 0.60.2'
 gem 'aws-sdk', '~> 1.8.5'
 gem 'rinku', '~> 1.7.2'
-
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
 #
