@@ -28,6 +28,11 @@ When /^I enter a statement for my block$/ do
   find('#submit-vote').click
 end
 
+Then /^the proposal author should recieve an email with subject "(.*?)"$/ do |subject|
+  last_email = ActionMailer::Base.deliveries.last
+  last_email.subject.should =~ /Proposal blocked/
+end
+
 Then /^I should see my vote in the list of positions$/ do
   find('.votes-table').should have_content(@user.name)
 end
