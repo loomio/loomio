@@ -49,6 +49,10 @@ When /^I select "(.*?)" from the list of members$/ do |arg1|
   find("#user_#{user.id}").click
 end
 
+Then /^the request is approved$/ do
+  Membership.last.promote_to_member!
+end
+
 Then /^they should be added to the group$/ do
   Membership.where(:user_id => User.find_by_email(@current_user.email)).size.should > 0
 end
@@ -95,4 +99,9 @@ end
 
 Then /^I should see "(.*?)" as a member of the subgroup$/ do |email|
   find("#users-list").should have_content(email)
+end
+
+Then /^I should get an email with subject "(.*?)"$/ do |arg1|
+  last_email = ActionMailer::Base.deliveries.last
+  last_email.subject.should =~ /You've been added to a group/
 end
