@@ -165,7 +165,7 @@ body.groups.show {
 #request-membership {
   form { display: inline; }
   .btn {
-    width: 150px;
+    width: 170px;
     color: $mid-grey;
   }
   margin-bottom: 10px;
@@ -260,7 +260,7 @@ input#user_email{
 /* membership panel */
 .dropdown#members { padding-left: 5px; }
 
-.user-name { 
+.user-name {
   float: left;
   a:hover { color: $dark-grey; }
 }
