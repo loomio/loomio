@@ -48,7 +48,6 @@ When /^the user clicks the invitiation link$/ do
 end
 
 When /^signs up as a new user$/ do
-  save_and_open_page
   within ".signup-form" do
     fill_in 'Name', with: 'Jimmy Jiminson'
     fill_in 'Email', with: 'jim@jiminson.com'
@@ -59,7 +58,7 @@ When /^signs up as a new user$/ do
 end
 
 Then /^they should be redirected to the group setup wizard$/ do
-  current_url.should == group_setup_path(@group.id)
+  URI.parse(current_url).path.should == setup_group_path(@group.id)
 end
 
 Then /^they should see the Start your Group wizard$/ do

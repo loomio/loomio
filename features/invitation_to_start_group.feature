@@ -9,7 +9,6 @@ Feature: User is invited to start a group on loomio
     When I approve the group request and send the setup invitation
     Then the requestor should get an invitation to start a loomio group
 
-  @wip
   Scenario: New user accepts invitiation to start a loomio group
     Given an invitiation to start a loomio group has been sent
     When the user clicks the invitiation link
