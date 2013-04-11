@@ -1,6 +1,6 @@
 .row
   .span5#group-setup
-    = simple_form_for @group_setup, url: setup_group_path(@group_id), method: :post do |f|
+    = simple_form_for @group_setup, url: setup_group_path, method: :post do |f|
       %ul.nav.nav-tabs
         %li.active
           %a{ href: "#group-tab", 'data-toggle' => "pill"}
@@ -23,6 +23,7 @@
               = f.input :group_description, required: true, :placeholder => "What is the purpose of your group?"
               %h2 Settings
               = f.input :viewable_by, :collection => {'Public - anyone with the link can see this group' => 'everyone', 'Members - only members of this group can see it' => 'members'}, :as => 'radio_buttons', :label => "Who can see this group?"
+              %br
               = f.input :members_invitable_by, :label => "Who can invite members to this group?", :as => "radio_buttons", :collection => {'All group members' => 'members', 'Admins only' => 'admins'}
         .tab-pane#discussion-tab
           .row

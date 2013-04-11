@@ -2,13 +2,16 @@
 @import "mixins";
 
 #group-setup {
-  .string, .text { width: 360px; }
+  // the following two lines added to cope with a bootstrap tab bug
+  // trimming off the start and end of the inputs
+  .string, .text { width: 366px; }
   .radio { padding-left: 22px; }
+
   #next, #finish {
     float: right;
-    margin-right: 5px;
+    margin-left: 5px;
   }
-  #wizard-tabs { min-height: 600px; }
+  #wizard-tabs { min-height: 595px; }
   #user-invitation {
     .string, .text { width: 330px; }
     #group_setup_members_list { height: 100px; }
