@@ -1,14 +1,14 @@
 DAY = 1000 * 60 * 60 * 24
 
 $ ->
-  if $("#motion-form").length > 0 || $("#edit-close-date").length > 0
+  if $("#motion-form").length > 0 || $("#edit-close-date").length > 0 || $("#group-setup").length > 0
     pad2 = ((number) ->
       if number < 10
         '0' + number
       else
         number.toString()
     )
-    if $("#new-motion").length > 0
+    if $("#new-motion").length > 0 || $("#group-setup").length > 0
       #** New Motion **
       datetime = new Date()
       datetime.setDate(datetime.getDate() + 3)

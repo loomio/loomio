@@ -102,6 +102,23 @@ FactoryGirl.define do
     cannot_contribute false
   end
 
+  factory :group_setup do
+    association :group, :factory => :group
+    group_name Faker::Name.name
+    group_description "My text outlining the group"
+    viewable_by :members
+    members_invitable_by :admins
+    discussion_title Faker::Name.name
+    discussion_description "My text outlining the discussion"
+    motion_title Faker::Name.name
+    motion_description "My text outlining the proposal"
+    close_date Time.now + 3.days
+    admin_email Faker::Internet.email
+    members_list "#{Faker::Internet.email}, #{Faker::Internet.email}"
+    invite_subject "Welcome to our world"
+    invite_body "Please entertain me"
+  end
+
   factory :invitation do
     recipient_email { Faker::Internet.email }
     association :inviter, factory: :user
