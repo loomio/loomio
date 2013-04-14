@@ -3,11 +3,11 @@
     #request-membership
       - membership_request = group.membership_requests.find_by_user_id(current_user)
       - if membership_request.present?
-        = link_to "Membership Requested", membership_request, method: :delete,
-          confirm: "Are you sure you wish to withdraw your membership request from this group?",
+        = link_to t(:membership_requested), membership_request, method: :delete,
+          confirm: t(:confirm_remove_membership_request),
           class: "btn", id: "membership-requested"
       - else
         - if group.parent.nil? || current_user.group_membership(group.parent)
           =form_for(Membership.new) do |f|
             %input{name: "membership[group_id]", type: :hidden, value: group.id}
-              =submit_tag "Request membership", class: "btn"
+              =submit_tag t(:request_membership), class: "btn"

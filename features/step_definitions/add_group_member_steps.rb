@@ -62,7 +62,7 @@ Then /^I should be notified that they have been invited$/ do
 end
 
 Then /^I should be notified that the email address is invalid$/ do
-  page.should have_content("The email address given seems invalid.")
+  page.should have_content("was not invited. Please check the email address is correct.")
 end
 
 Then /^"(.*?)" should not be a member of the group$/ do |email|

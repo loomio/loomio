@@ -1,6 +1,6 @@
 .modal-header
   %button.close{"data-dismiss" => "modal"}×
-  %h3= "Select members to add to #{group.name}"
+  %h3= t(:select_members_to_add, which_group: group.name)
 = form_tag add_members_group_path do
   .modal-body
     - addable_users = group.parent_members_visible_to(current_user)
@@ -12,6 +12,6 @@
             = check_box_tag "user_#{user.id}", 1, is_user, disabled: is_user
             = label_tag "user_#{user.id}", user.name
     - else
-      = "No parent group members exist to add. Please add the members to the parent group first."
+      = t :empty_parent_group
   .modal-footer
-    = submit_tag "Invite members", class: "btn btn-info", disable_with: "Invite members"
+    = submit_tag t(:invite_members), class: "btn btn-info", disable_with: t(:invite_members)

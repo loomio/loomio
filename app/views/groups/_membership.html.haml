@@ -11,17 +11,17 @@
       - membership = user.group_membership(group)
       - if (can? :edit, group and current_user.is_group_admin?(group))
         =link_to "×", membership, method: :delete, class: 'close',
-          :data => { :confirm => "Are you sure you wish to remove #{user.name} from the group?" }
+          :data => { :confirm => t(:confirm_remove_user, which_user: user.name) }
         - if user.is_group_admin?(group)
-          = link_to "Remove admin", "#", 'data-title' => "Remove admin",
-              'data-body' => "Are you sure you no longer want #{user.name} to be an admin for this group?",
+          = link_to t(:remove_admin), "#", 'data-title' => t(:remove_admin),
+              'data-body' => t(:confirm_remove_admin, which_user: user.name),
               'data-confirm-path' => remove_admin_membership_path(membership),
               'data-method-type' => 'post', class: 'confirm-dialog', id: 'remove admin'
         - else
-          = link_to "Make admin", "#", 'data-title' => "Make admin",
-              'data-body' => "Are you sure you want to make #{user.name} an admin for this group?",
+          = link_to t(:make_admin), "#", 'data-title' => t(:make_admin),
+              'data-body' => t(:confirm_make_admin, which_user: user.name),
               'data-confirm-path' =>  make_admin_membership_path(membership), 'data-method-type' => 'post',
               class: 'confirm-dialog', id: 'make admin'
       - else
         - if user.is_group_admin?(group)
-          = "Group Admin"
+          = t :group_admin

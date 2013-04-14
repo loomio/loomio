@@ -1,9 +1,9 @@
 module VotesHelper
   def vote_submit_button_text
     if action_name == 'new'
-      return 'Submit position'
+      return t("vote_form.submit")
     else
-      return 'Update position'
+      return t("vote_form.update")
     end
   end
 

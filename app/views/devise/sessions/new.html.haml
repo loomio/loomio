@@ -5,27 +5,27 @@
         .subhead
           .span1 &nbsp;
           .span4
-            %h2 Sign in
+            %h2= t :sign_in
 
       .row-fluid
         .span1 &nbsp;
         .span4
           = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-            = f.label :email, "Email"
+            = f.label :email, t(:email)
             = f.email_field :email
-            = f.label :password, "Password"
+            = f.label :password, t(:password)
             = f.password_field :password
             - if devise_mapping.rememberable?
               = f.check_box :remember_me, class: "pull-left"
-              = f.label :remember_me, "Remember me", class: "checkbox-label"
+              = f.label :remember_me, t(:remember_me), class: "checkbox-label"
             .sign-in-button
-              = f.submit "Sign in", class: "btn btn-info btn-large", :id => "sign-in-btn", :data => { :disable_with => "Signing in" }
+              = f.submit t(:sign_in), class: "btn btn-info btn-large", :id => "sign-in-btn", :data => { :disable_with => t(:sign_in) }
             = render :partial => "devise/shared/links"
 
         .span1 &nbsp;
         .span5
           %p
-            %strong Don't have an account?
+            %strong= t :dont_have_account
             %br
-            We're currently in closed testing and not accepting public sign-ups (yet!).
-          %p If you belong to a group that is using Loomio but you don't have your own Loomio account, please contact the person in your organization who set up Loomio and ask them to add you to the group.
+            = t :closed_beta
+          %p= t :closed_beta_details
