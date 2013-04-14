@@ -14,26 +14,21 @@ class Users::InvitationsController < Devise::InvitationsController
             set_flash_message :notice, :send_instructions, :email => email
             respond_with @user, :location => group_url(group)
           else
-            # Jon: Sorry I know this is bad code. The validations should
-            # be happening the standard rails way (with client-side
-            # validations). But it's going to be a pain in the ass to code
-            # and I'd rather save that work for when we refactor this method.
-            # (Which I should probably stop putting off...)
-            flash[:error] = "#{email} was not invited. The email address given seems invalid."
+            flash[:error] = t("error.invalid_email", which_email: email)
             respond_with_navigational(@user) { redirect_to group_url(group) }
           end
         else
           if existing_user.groups.include? group
-            flash[:alert] = "#{email} is already in the group."
+            flash[:alert] = t("alert.duplicate_email", which_email: email)
           else
             membership = group.add_member! existing_user, current_user
-            flash[:notice] = "#{email} has been added to the group."
+            flash[:notice] = t("notice.email_added", which_email: email)
             # TODO: handle if mmember fails to be added
           end
           redirect_to group_url(group)
         end
       else
-        flash[:error] = "You do not have permission to invite new members."
+        flash[:error] = t("error.permission_to_invite")
         redirect_to group_url(group)
       end
     else

@@ -5,9 +5,9 @@ class MembershipsController < BaseController
     @membership = Membership.find(params[:id])
     if @membership.member?
       @membership.make_admin!
-      flash[:notice] = "#{@membership.user_name} has been made an admin."
+      flash[:notice] = t("notice.user_made_admin", which_user: @membership.user_name)
     else
-      flash[:warning] = "#{@membership.user_name} is already an admin."
+      flash[:warning] = t("warning.user_already_admin", which_user: @membership.user_name)
     end
     redirect_to @membership.group
   end
@@ -17,12 +17,12 @@ class MembershipsController < BaseController
     if @membership.admin?
       if @membership.group_has_multiple_admins?
         @membership.remove_admin!
-        flash[:notice] = "#{@membership.user_name}'s admin rights have been removed."
+        flash[:notice] = t("notice.admin_rights_removed", which_user: @membership.user_name)
       else
-        flash[:warning] = "You are the last admin and cannot be removed"
+        flash[:warning] = t("warning.cant_remove_last_admin")
       end
     else
-      flash[:warning] = "#{@membership.user_name} is not an admin"
+      flash[:warning] = t("warning.user_not_admin", which_user: @membership.user_name)
     end
     redirect_to @membership.group
   end
@@ -31,10 +31,10 @@ class MembershipsController < BaseController
     @membership = Membership.find(params[:id])
     if @membership.request?
       @membership.approve!
-      flash[:notice] = "Membership approved"
+      flash[:notice] = t("notice.membership_approved")
       UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
     else
-      flash[:warning] = "User is already a member of this group"
+      flash[:warning] = t("warning.user_already_member")
     end
     redirect_to @membership.group
   end
@@ -43,10 +43,10 @@ class MembershipsController < BaseController
     if @membership = Membership.find_by_id(params[:id])
       authorize! :ignore_request, @membership
       @membership.destroy
-      flash[:notice] = "Membership request ignored."
+      flash[:notice] = t("notice.membership_request_ignored")
       redirect_to @membership.group
     else
-      flash[:warning] = "Membership request has already been ignored."
+      flash[:warning] = t("warning.membership_request_already_ignored")
       redirect_to :back
     end
   end
@@ -55,10 +55,10 @@ class MembershipsController < BaseController
     if @membership = Membership.find_by_id(params[:id])
       authorize! :cancel_request, @membership
       @membership.destroy
-      flash[:notice] = "Membership request canceled."
+      flash[:notice] = t("notice.membership_request_canceled")
       redirect_to @membership.group
     else
-      flash[:warning] = "Membership request has already been canceled."
+      flash[:warning] = t("warning.membership_request_already_canceled")
       redirect_to :back
     end
   end
@@ -71,10 +71,10 @@ class MembershipsController < BaseController
     if @group.parent.nil? || current_user.group_membership(@group.parent)
       membership = @group.add_request!(current_user)
       Events::MembershipRequested.publish!(membership)
-      flash[:notice] = "Membership requested."
+      flash[:notice] = t("notice.membership_requested")
       redirect_to group_url(@group)
     else
-      flash[:error] = "You cannot join a sub-group if you are not a member of the parent group."
+      flash[:error] = t("error.cant_join_subgroup")
       redirect_to :back
     end
   end
@@ -84,9 +84,9 @@ class MembershipsController < BaseController
       authorize! :destroy, @membership
       @membership.destroy
       if current_user == @membership.user
-        flash[:notice] = "You have left #{@membership.group.name}."
+        flash[:notice] = t("notice.you_have_left_group", which_group: @membership.group.name)
       else
-        flash[:notice] = "Member removed."
+        flash[:notice] = t("notice.member_removed")
       end
       redirect_to @membership.group
     else

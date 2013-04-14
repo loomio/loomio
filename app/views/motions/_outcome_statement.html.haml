@@ -6,16 +6,16 @@
           = form_for motion, :url => edit_outcome_motion_path(motion.id) do |f|
             = f.hidden_field :id
             .control-group
-              = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', placeholder: "What was the outcome of this proposal?"
+              = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', :placeholder => t(:outcome_placeholder)
               .character-counter
             .save-button.clearfix
-              = f.submit "Save", class: 'btn btn-mini run-validations', id: 'add-outcome-submit'
+              = f.submit t(:save), class: 'btn btn-mini run-validations', id: 'add-outcome-submit'
       - else
         #outcome-input.hidden
           = form_for motion, :url => edit_outcome_motion_path(motion.id) do |f|
             = f.hidden_field :id
             .control-group
-              = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', placeholder: "What was the outcome of this proposal?"
+              = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', :placeholder => t(:outcome_placeholder)
               .character-counter
             .save-button.clearfix
               = f.submit "Save", class: 'btn btn-mini run-validations', id: 'add-outcome-submit'
@@ -24,6 +24,6 @@
         .statement-display.well
           .clearfix
             - if can? :edit_outcome, motion
-              = button_to "Edit", "#", class: 'btn btn-mini outcome-edit-button', id: 'edit-outcome', :method => "get"
-            .outcome-label Outcome
+              = button_to t(:edit), "#", class: 'btn btn-mini outcome-edit-button', id: 'edit-outcome', :method => "get"
+            .outcome-label= t(:outcome)
             %p= motion.outcome

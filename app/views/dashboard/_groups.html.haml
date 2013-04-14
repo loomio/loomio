@@ -1,6 +1,6 @@
 .sub-panel#groups
-  %h4 Groups
-  = icon_button(request_new_group_path, 'Request new group', '/assets/group-18.png', 'request-new-group')
+  %h4= t :groups
+  = icon_button(request_new_group_path, t(:request_new_group), '/assets/group-18.png', 'request-new-group')
   %ul#dashboard-groups-list
     - current_user.root_groups.each do |group|
       %li
