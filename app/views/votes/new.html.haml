@@ -1,3 +1,3 @@
 .page-title
   %h1= link_to @motion.name, discussion_path(@motion.discussion)
-= render 'form', motion: @motion, vote: @vote, form_title: "State your position"
+= render 'form', motion: @motion, vote: @vote, form_title: t("vote_form.header")

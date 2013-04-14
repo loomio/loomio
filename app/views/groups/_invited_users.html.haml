@@ -1,7 +1,7 @@
 .sub-panel
   .membership-count.label
     = @invited_users.count
-  %h4 Invited users
+  %h4= t(:invited_users)
   %ul#invited-users
     - @invited_users.each do |user|
       %li{:id => user.id}

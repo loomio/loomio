@@ -16,7 +16,7 @@ Then /^I should not see the discussion in the list of discussions$/ do
 end
 
 Then /^I should see a message notifying me of the deletion$/ do
-  page.should have_content('Discussion sucessfully deleted.')
+  page.should have_content('Discussion successfully deleted.')
 end
 
 When /^I should not see the delete discussion link in the discussion dropdown$/ do

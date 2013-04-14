@@ -2,12 +2,12 @@
   %li.enable-markdown
     %a{href: '#', class: 'enable-markdown-link'}
       %i{:class => css_for_markdown_link(target, true)}
-      = 'Enable'
+      = t :enable
   %li.disable-markdown
     %a{href: '#', class: 'disable-markdown-link'}
       %i{:class => css_for_markdown_link(target, false)}
-      = 'Disable'
+      = t :disable
   .divider
   %li
     %a{href: 'https://www.loomio.org/discussions/1124', target: '_blank'}
-      More info...
+      = t :markdown_settings_more_info

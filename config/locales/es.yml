@@ -2,6 +2,54 @@ es:
   errors:
     messages:
       email: "No es una dirección de correo válida"
+  error:
+    access_denied: "Acceso denegado."
+    cant_join_subgroup: "No puedes unirte a un sub-grupo sino eres miembro del grupo superior."
+    cant_modify_position: "La propuesta ha cerrado. Ya no puedes modificar tu posición."
+    cant_state_position: "Esta propuesta ha cerrado. Ya no puedes decidir."
+    discussion_not_created: "No se ha creado la discusión."
+    group_not_archived: "El grupo no pudo ser archivado."
+    invalid_email: "%{which_email} no esta invitado. La dirección de correo electrónico dada parece ser invalida."
+    invalid_close_date: "Fecha de cierre invalida, Necesita ser una fecha después a la de hoy."
+    image_upload_fail: "Imposible subir foto. Asegúrate que el archivo sea inferior a 1 MB y sea un .jpeg, .png, o .gif"
+    permission_to_invite: "No tienes permiso para invitar a nuevos miembros."
+    position_not_updated: "Su posición no ha sido actualizada."
+    settings_not_updated: "Tus ajustes no han sido modificados."
+  alert:
+    duplicate_email: "%{which_email} ya esta en el grupo."
+  notice:
+    admin_rights_removed: "Los derechos de %{which_user} como administrador han sido removidos."
+    email_added: "%{which_email} se ha añadido al grupo."
+    member_removed: "Miembro eliminado."
+    membership_approved: "Membresía aprobada"
+    membership_requested: "Membresía solicitada."
+    membership_request_canceled: "Pedido de membresía cancelada."
+    membership_request_ignored: "Pedido de membresía ignorado."
+    settings_updated: "Tus ajustes han sido actualizados."
+    user_made_admin: "%{which_user} se ha hecho un administrador."
+    you_have_left_group: "Te has ido de %{which_group}."
+  warning:
+    cant_remove_last_admin: "Eres el ultimo administrador y no puedes ser removido"
+    membership_request_already_ignored: "Solicitud de membresía ya ha sido ignorada."
+    membership_request_already_canceled: "Solicitud de membresía ya ha sido cancelada."
+    position_not_submitted: "Tu posición no pudo ser enviada"
+    proposal_not_created: "Propuesta no pudo ser creada"
+    user_already_admin: "%{which_user} ya es un administrador."
+    user_already_member: "Usuario ya es miembro de este grupo"
+    user_not_admin: "%{which_user} no es un administrador"
+  success:
+    added_to_group: "Has sido adherido a %{which_group}."
+    close_date_changed: "Fecha de cierre cambiada exitosamente."
+    discussion_created: "Discusión creada exitosamente."
+    discussion_deleted: "Discusión exitosamente eliminada."
+    emails_sending: "Enviando correos electrónicos."
+    group_archived: "Grupo archivado exitosamente."
+    group_created: "Grupo creado exitosamente."
+    members_added: "Miembros adheridos al grupo."
+    position_submitted: "Posición enviada"
+    position_updated: "Posición actualizada."
+    proposal_created: "Propuesta creada exitosamente."
+    proposal_deleted: "Propuesta eliminada."
   datetime:
     distance_in_words:
       less_than_x_seconds:
@@ -38,17 +86,17 @@ es:
         one:   "1 año"
         other: "%{count} años"
 
-  discussion_help_text: "Esta es la página de discusión. El tema de discusión está al principio de la página, seguido por información de fondo y contexto.\n\n La discusión está a la izquierda, para agregar un comentario escribe en el cuadro de texto y cliquea 'Comentar'.\n\n Las decisiones están a la derecha. Si piensas que el grupo está listo para tomar una decisión, puedes hacer una propuesta para poner a consideración del grupo. Si alguien ya ha realizado una propuesta, puedes ver cómo se siente el grupo en el gráfico de torta y tomar posición debajo.\n\n"
-
-  group_help_text: "Esta es la página del Grupo %{group_name}.\n\n Aquí podrás ver las discusiones del grupo, una descripción de sus objetivos o iniciar una discusión sobre un tema nuevo cliqueando el botón 'Iniciar una discusión'.\n\n"
-  dashboard_help_text: "¡Bienvenido/a a Loomio!\n Esta es la página de Inicio, donde podrás ver una lista de las discusiones activas de todos tus grupos. A la derecha hay una lista de los grupos de los que eres miembro. Puedes iniciar una discusión en una tema nuevo cliqueando el botón 'Iniciar una discusión'.\n\n Si tienes alguna pregunta o contribución nos encantaría escucharla: %{link}\n\n"
+  discussion_help_text: "Esta es la página de discusión. El tema de discusión está al principio de la página, seguido por información de fondo y contexto.\n\n La discusión está a la izquierda, para agregar un comentario escribe en el cuadro de texto y haz click en 'Comentar'.\n\n Las decisiones están a la derecha. Si piensas que el grupo está listo para tomar una decisión, puedes hacer una propuesta para poner a consideración del grupo. Si alguien ya ha realizado una propuesta, puedes ver cómo se siente el grupo en el gráfico de torta y tomar posición debajo.\n\n"
+  group_help_text: "Esta es la página del Grupo %{group_name}.\n\n Aquí podrás ver las discusiones del grupo, una descripción de sus objetivos o iniciar una discusión sobre un tema nuevo haciendo click el botón 'Iniciar una discusión'.\n\n"
+  dashboard_help_text: "¡Bienvenido/a a Loomio!\n Esta es la página de Inicio, donde podrás ver una lista de las discusiones activas de todos tus grupos. A la derecha hay una lista de los grupos de los que eres miembro. Puedes iniciar una discusión en una tema nuevo haciendo click en el botón 'Iniciar una discusión'.\n\n Si tienes alguna pregunta o contribución nos encantaría escucharla: %{link}\n\n"
 
   notifications:
+    header: "Notificaciones"
     new_discussion: "abrió una propuesta"
     new_motion: "creó una nueva propuesta"
     motion_closed:
       by_user: "cerró la propuesta"
-      by_expirey: "La propuesta se ha cerrado"
+      by_expiry: "La propuesta se ha cerrado"
     new_vote: "%{position} sobre la propuesta"
     new_comment: "comentó en la discusión"
     comment_liked: "le gusta tu comentario en la discusión"
@@ -58,12 +106,320 @@ es:
     motion_closing_soon: "La propuesta está por cerrar"
     motion_blocked: "bloqueó la propuesta"
 
+  edit_discussion_context: "Editar la discusión información"
+  request_new_group: "Solicitar Nuevo grupo"
+  request_new_group_details: "o espera hasta que seas invitado a uno."
+  empty_notifications: "Todavía no tienes notificaciones."
+  see_all_notifications: "Ver todas tus notificaciones"
+  user_settings: "Configuración de Usuario"
+  email_preferences: "Preferencias de correo electrónico"
+  sign_out: "Salir"
+  feedback: "Déjanos tus comentarios"
+  sign_in: "Entrar"
+  sign_in_details: "Para participar. No estas en tu sesión."
+  tagline: "Creando un mundo donde es fácil para todos participar de las decisiones que nos afectan."
+
+  not_found: "no se encontró"
+  not_found_details: "Lo que %{item} intentas acceder puede que no exista. O ha sido removido."
+  click_to_dismiss: "Presione aquí para deshacerse de este mensaje"
+  generic_confirm: "Estas seguro?"
+
+  #
+  # GROUP PAGE
+  #
+
+  add_new_member: "Adherir Nuevo miembro"
+  invite_members_to_group: "Invitar miembros a %{which_group}"
+  remaining_invites: "invitaciones restantes"
+  need_more_invites_html: "Necesitas mas? Loomio se encuentra en fase beta cerrada, lo que significa que estamos en desarrollo y tenemos recursos limitados para apoyo al usuario. Si te gustaría aumentar el tamaño de tu grupo %{href} y veremos como te podemos ayudar."
+  get_in_touch_link: "ponerse en contacto"
+
+  email_members_in_group: "Enviar correo electrónico a los miembros de %{which_group}"
+  subject_error: "Por favor escriba un titulo"
+  subject_placeholder: "Escriba el titulo"
+  message_error: "Por favor escriba un mensaje"
+  message_placeholder: "Escribe un mensaje a los miembros de %{which_group}."
+
+  email_group_members: "Enviar correo electrónico a los miembros del grupo"
+  edit_group_settings: "Editar configuraciones del grupo"
+  leave_group: "Abandonar grupo"
+  confirm_leave_group: "Estas seguro que deseas abandonar el grupo %{which_group}?"
+  deactivate_group: "Desactivar grupo"
+  confirm_deactivate_group: "Espera!!! Estas seguro que deseas desactivar %{which_group}? Ya no podrás ver el grupo. Sin embargo, si cambias de opinión puedes pedirnos que lo reactivemos por ti enviándonos un correo electrónico contact@loomio.org."
+
+  invited_users: "Miembros invitados"
+  members: "Miembros"
+  confirm_remove_user: "Estas seguro que deseas remover a %{which_user} del grupo?"
+  remove_admin: "Eliminar admin"
+  confirm_remove_admin: "Estas seguro que ya no quieres que %{which_user} sea un administrador de este grupo?"
+  make_admin: "Convertir en admin"
+  confirm_make_admin: "Estas seguro que quieres que %{which_user} sea un administrador para este grupo?"
+
+  membership_requests: "Petición de membresías"
+  confirm_approve_membership_request: "Estas seguro que deseas que %{which_user} pertenezca a este grupo?"
+  ignore_request: "Ignorar petición"
+  confirm_ignore_membership_request: "Estas seguro que deseas ignorar la petición al grupo de %{which_user}?"
+  membership_requested: "Petición enviada"
+  request_membership: "Petición de membresías"
+  confirm_remove_membership_request: "Estas seguro que deseas retirar tu petición de membresía a este grupo?"
+
+  subgroups: "Sub-grupos"
+  create_a_subgroup: "Crear un sub-grupo"
+  select_members_to_add: "Seleccionar miembros a adherir a %{which_group}"
+  empty_parent_group: "Por favor primero adhiera a los miembros del grupo superior."
+  invite_members: "Invitar miembros"
+  new_subgroup: "Nuevo sub-grupo"
+  create_subgroup: "Crear sub-grupo"
+  creating_subgroup: "Creando sub-grupo"
+
+  group_privacy: "Privacidad: '%{who}' Quien puede ver este grupo."
+  everyone: "Todos"
+  parent_group_members: "Grupo de nivel superior"
+  members: "Miembros"
+
+  new_group: "Nuevo grupo"
+  create_group: "Crear grupo"
+  creating_group: "Creando grupo"
+  edit_group: "Editar Grupo"
+  update_group: "Actualizar grupo"
+  updating_group: "Actualizando grupo"
+
+  group_not_found: "No se encontró dicho grupo."
+  group_not_found_details: "Este grupo puede ser privado. Si alguien te ha dado este enlace, puede ser que necesiten invitarte a uno de sus grupos para que puedas ver esta página."
+
+  start_a_discussion: "Empezar una discusión"
+  group_description: "Descripción del grupo"
+
+  #
+  # DISCUSSION PAGE
+  #
+
   discussion_items:
-    new_discussion: "creó la discusión"
-    new_motion: "creó la propuesta"
+    new_discussion: "se ha creado la discusión"
+    new_motion: "se ha creado propuesta"
     motion_closed:
-      by_user: "cerró la propuesta"
-      by_expirey: "La propuesta está cerrada"
-    motion_close_date_edited: "cambió la fecha de cierre de la propuesta"
-    discussion_title_edited: "cambió el título de la discusión"
-    discussion_description_edited: "cambió la descripción de la discusión"
+      by_user: "cerrar propuesta"
+      by_expiry: "se ha cerrado la propuesta"
+    motion_close_date_edited: "cambio la fecha de cierre de la propuesta"
+    discussion_title_edited: "cambio el titulo de discusión"
+    discussion_description_edited: "cambio descripción de discusión"
+
+  discussion: "Discusión"
+  current_decision: "Decisión actual"
+  previous_decisions: "Decisiones anteriores"
+  see_previous_decisions: "Ver decisiones anteriores"
+  create_new_proposal: "Crear nueva propuesta"
+  empty_decision_list: "Actualmente no existe una propuesta abierta a discusión"
+  empty_decision_index: " Este grupo no ha tomado ninguna decisión todavía."
+  empty_discussion_list: "Todavía no hay actividad en esta discusión."
+  empty_discussion_index: "No hay discusiones en ninguno de tus grupos"
+  empty_discussion_index_group: "Este grupo no tiene discusiones todavía."
+
+  discussion_context:
+    started_when: "Empezó hace %{when}"
+    helper_text: " Utilice este espacio para dar contexto suficiente para que tu grupo tenga una discusión bien informada. Y a medida que el debate avance, cualquiera pueda añadir información haciendo más fácil para la gente nueva ponerse al día."
+    last_edited: "Ultima vez editado hace %{when} "
+    see_revision_history: "Ver historial de revisión"
+
+  description_history:
+    header: "Historial de revisión"
+    subheader: "Versión"
+    edited_by: "Actualizado  %{when} por %{who}"
+    current: "(Actual)"
+    restore: "(Restaurar esta versión)"
+    applying_changes: "(Aplicando cambios...)"
+    previous: "Previo"
+    next: "Siguiente"
+
+  comment_form_placeholder: "Diga algo..."
+  comment_form_submit_button: "Publicar comentario"
+
+  liked_by: "Le ha gustado a %{who}"
+  delete_comment: "Borrar comentario"
+  confirm_delete_comment: "Estas seguro que quieres borrar este comentario?"
+
+  markdown_settings_more_info: "Mas información..."
+  edit_discussion_title: "Editar titulo de discusión"
+  delete_discussion: "Eliminar discusión"
+  confirm_delete_discussion: "Estas seguro que quieres eliminar permanentemente esta discusión?"
+
+  #
+  # DECISIONS / PROPOSALS / MOTIONS
+  #
+
+  new_proposal: "Nueva propuesta"
+
+  close_proposal: "Cerrar propuesta"
+  confirm_close_proposal: "Estas seguro que quieres cerrar esta propuesta?" 
+  change_proposal_close_date: "Cambiar fecha de cierre"
+  change_proposal_close_date_header: "Cambiar la fecha de cierre para la propuesta '%{which}'"
+  proposal_close_date_error: "Por favor ponga una fecha futura"
+  proposal_closing_when: "Cierra en %{when}"
+  proposal_closed_when: "Cerro %{when}"
+  proposed_when_by_who: "Propuesto %{when} por %{who}"
+  engagement_on_open_proposal: "%{percent}% de miembros ha manifestado su posición (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "%{percent}% miembros que establecieron su posición (%{numerator}/%{denominator})"
+
+  state_your_position: "Establece tu posición"
+  positions: "Posiciones"
+  yes_position: "Estoy de acuerdo"
+  yes_details: "Estoy de acuerdo con esto y quiero que siga adelante."
+  abstain_position: "Me abstengo"
+  abstain_details: "Estoy contento con lo que el grupo decida sin mi."
+  no_position: "No estoy de acuerdo"
+  no_details: " Creo que podemos hacerlo mejor, pero si el resto del grupo se siente que es el mejor curso de acción, entonces yo estoy de acuerdo con que siga adelante."
+  block_position: "Bloqueo"
+  block_details: "Tengo fuertes objeciones a esta propuesta y no estoy de acuerdo con que siga adelante."
+  not_voted: "[Mostrar los usuarios que aun no han decidido]"
+  outcome: "Resultado"
+  outcome_placeholder: "Cual fue el resultado de esta propuesta?"
+
+  #
+  # SIGN IN
+  #
+
+  resend_confirmation: "Volver a enviar confirmación"
+  new_password: "Nueva contraseña"
+  confirm_new_password: "Confirmar nueva contraseña"
+  change_your_password: "Cambiar contraseña"
+  change_my_password: "Cambiar mi contraseña"
+  send_password_reset: "Enviarme instrucciones para restablecimiento de contraseña"
+  blank_details: "(dejar en blanco si no deseas cambiarla)"
+  password_confirmation: "Confirmación de la contraseña"
+  current_password: "Contraseña actual"
+  password_details: "(necesitamos tu contraseña actual para confirmar los cambios)"
+  cancel_my_account: "Cancelar mi cuenta"
+  remember_me: "Recordarme"
+  signing_in: "Entrar"
+  dont_have_account: "No tienes una cuenta?"
+  closed_beta: "Estamos actualmente en fase de prueba cerrada y no estamos aceptando peticiones del publico (todavía!)."
+  closed_beta_details: " Si perteneces a un grupo que está utilizando Loomio pero no tienes cuenta propia con Loomio, por favor póngase en contacto con la persona de su organización que creó Loomio y pide que te agreguen al grupo. "
+  forgot_your_password: "Olvidaste tu contraseña?"
+  confirmation_not_received: "No has recibido las instrucciones de confirmación?"
+  unlock_not_received: "No has recibido instrucciones de desbloqueo?"
+
+  #
+  # FORMS
+  #
+
+  discussion_form:
+    header: "Empezar una discusión"
+    who: "Con que grupo te gustaría establecer una discusión?"
+    context: "Contexto"
+
+  motion_form:
+    header: "Nueva propuesta"
+    name_helper: " Haz el título lo más claro y conciso posible para que la gente sepa exactamente lo que quieres decir cuando estén de acuerdo o en desacuerdo con la propuesta."
+
+  group_form:
+    privacy_settings: "Configuración de privacidad"
+    everyone_details: "Publico – cualquiera que tenga este enlace puede ver %{group_or_subgroup}"
+    members_details: "Miembros - solo miembros de %{group_or_subgroup} pueden verlo"
+    parent_group_members_details: "Grupo de nivel superior – solo miembros del grupo principal pueden ver esto"
+    invitation_settings: "Configuración de invitaciones"
+    all_group_members: "Todos los miembros de %{group_or_subgroup}"
+    admins_only: "Solo administradores"
+
+  vote_form:
+    header: "Establece tu posición"
+    edit: "Modifica tu posición"
+    placeholder: "Da una razón para tu decisión (opcional)"
+    your_position: "Tu posición"
+    your_statement: "Tu opinión o enunciación"
+    submit: "Submit position"
+    update: "Update position"
+
+  email_preferences_form:
+    header: "Preferencias de correo electrónico"
+    daily_activity_summary: "Sumario de actividades diarias"
+    daily_activity_subscription: "Enviarme actividad diaria resumiendo lo que ha estado pasando en mis grupos"
+    global_notifications: "Notificaciones globales"
+    proposal_closing_soon_subscription: "Recordarme 24 horas antes del cierre de una propuesta"
+    mentions_subscription: "Enviarme correo electrónico cuando alguien me menciona en un comentario"
+    group_activity_notifications: "Notificaciones de la actividad del grupo"
+    group_activity_details: "Por cada grupo, marca la casilla si deseas recibir un correo electrónico inmediatamente se abra una nueva discusión o decisión."
+    update_preferences: "Preferencias de actualización"
+
+  new_user_form:
+    create_an_account: "Crear una cuenta"
+
+  user_settings_form:
+    header: "Preferencias de Usuario"
+    picture: "Foto"
+    use_avatar_kind: "Usar %{kind}"
+    upload_new_image: "Subir nueva imagen"
+
+  simple_form:
+    labels:
+      discussion:
+        title: "Titulo"
+        description: "Contexto"
+      motion:
+        name: "Titulo"
+        description: "Detalles"
+      group:
+        name: "Nombre del Grupo"
+        viewable_by: "Quien puede ver esto %{group_or_subgroup}?"
+        invitable_by: "Quien puede invitar miembros a este %{group_or_subgroup}?"
+      user:
+        name: "Nombre completo"
+        email: "Correo electrónico"
+        password: "Contraseña"
+    placeholders:
+      discussion:
+        title: "Cual es el tema que te gustaría discutir?"
+        description: " Esta información aparecerá en la parte superior de la página de discusión. Presenta el tema y da un contexto suficiente para que tu grupo tenga una discusión bien informada."
+      motion:
+        name: "Cual es tu propuesta de plan de acción?"
+        description: "Da información suficiente para que cualquier persona en tu grupo pueda tomar una decisión bien informada."
+
+  helpers:
+    submit:
+      discussion:
+        create: "Empezar discusión"
+      motion:
+        create: "Empezar propuesta"
+      user:
+        create: "Crear cuenta"
+
+  #
+  # COMMON WORDS
+  #
+
+  ago: "hace"
+  approve: "Aprobar"
+  back: "Atrás"
+  by: "Por"
+  cancel: "Cancelar"
+  change: "Cambiar"
+  changing: "Cambiando"
+  close: "Cerrar"
+  closing: "Cerrando"
+  closed: "Cerrado"
+  delete: "Eliminar"
+  edit: "Editar"
+  email_address: "Correo electrónico"
+  enable: "Encender"
+  participation: "Participación"
+  disable: "Apagar"
+  groups: "Grupos"
+  group_admin: "Grupo Admin"
+  home: "Página principal"
+  like: "Gusta"
+  loading: "Cargando..."
+  message: "Mensaje"
+  name: "Nombre"
+  new_activity: "Nueva actividad"
+  password: "Contraseña"
+  options: "Opciones"
+  save: "Guardar"
+  saving: "Guardando"
+  sending: "Enviando"
+  send_invite: "Mandar invitación"
+  send_email: "Mandar correo electrónico"
+  show_more: "Mostrar mas"
+  starting: "Empezando"
+  subject: "Titulo"
+  unlike: "Ya no me gusta"
+  until_close: "hasta que cierre"
+  update: "Actualizar"
