@@ -1,5 +1,5 @@
 .dropdown.privacy-dropdown
-  %a.dropdown-toggle{ :href => "#", :id => 'privacy', 'data-toggle' => 'dropdown',  "data-title" => t(:group_privacy, who: group.viewable_by.to_s) }
+  %a.dropdown-toggle{ :href => "#", :id => 'privacy', 'data-toggle' => 'dropdown',  "data-title" => t(:group_privacy, who: group.viewable_by.to_s), 'data-container'=> 'body' }
     = image_tag("privicon_"+group.viewable_by.to_s+".png", alt: group.viewable_by.to_s, :id => 'privacy-image')
   - if can? :edit, group
     %ul.dropdown-menu.pull-left
