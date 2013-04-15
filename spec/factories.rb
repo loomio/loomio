@@ -27,7 +27,7 @@ FactoryGirl.define do
     association :author, :factory => :user
     group
     title Faker::Lorem.sentence(2)
-    description 'A description for this discussion'
+    description 'A description for this discussion. Should this be *rich*?'
     uses_markdown false
     after(:build) do |discussion|
       discussion.group.parent.add_member!(discussion.author) if discussion.group.parent
@@ -76,7 +76,8 @@ FactoryGirl.define do
   factory :vote do
     user
     motion
-    position Vote::POSITIONS.sample
+    ##  update below with Vote::POSITIONS content if changed###
+    position %w[yes no abstain block].sample
     after(:build) do |vote|
       vote.motion.group.add_member!(vote.user)
     end
@@ -92,6 +93,7 @@ FactoryGirl.define do
     admin_email Faker::Internet.email
     distribution_metric 3
     sectors_metric ["community"]
+    group
   end
 
   factory :invitation do

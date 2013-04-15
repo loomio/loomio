@@ -57,5 +57,8 @@ module Loomio
 
     # required for heroku
     config.assets.initialize_on_precompile = false
+
+    # Enable roadie (email css-->inline style gem)
+    config.roadie.enable = true
   end
 end

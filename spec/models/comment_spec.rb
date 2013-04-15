@@ -1,3 +1,4 @@
+include ERB::Util
 require 'spec_helper'
 
 describe Comment do

@@ -2,4 +2,5 @@
 %html
   %p Your request for access to the group '#{@group.name}' on Loomio has been approved.
 
-  %p Click #{link_to("here", group_url(@group))} to view group
+  %p
+    =link_to("Click here to view group", group_url(@group))
