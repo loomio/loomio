@@ -89,21 +89,6 @@ describe UsersController do
     end
   end
 
-  describe "#edit_name" do
-    before do
-      user.stub(:save!)
-    end
-    after do
-      xhr :put, :edit_name, id: 1, user_name: "Benson"
-    end
-    it "updates the uses_name attribute in the model" do
-      user.should_receive(:name=).with "Benson"
-    end
-    it "saves the model" do
-      user.should_receive(:save!)
-    end
-  end
-
   # describe "#set_markdown" do
   #   before do
   #     user.stub(:save!)
