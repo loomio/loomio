@@ -153,6 +153,14 @@ class Discussion < ActiveRecord::Base
     fire_edit_title_event(user)
   end
 
+  def move!(destination, user)
+    if user.is_group_admin?(destination)
+      self.group_id = destination.id
+      return true if save!
+    end
+    false
+  end
+
   private
 
     def populate_last_comment_at

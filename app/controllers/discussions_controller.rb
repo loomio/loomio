@@ -81,8 +81,7 @@ class DiscussionsController < GroupBaseController
   def move
     @discussion = Discussion.find(params[:id])
     destination = Group.find(params[:discussion][:group_id])
-    @discussion.group_id = params[:discussion][:group_id]
-    if DiscussionMover.can_move?(current_user, destination) && @discussion.save!
+    if @discussion.move!(destination, current_user)
       flash[:success] = "Discussion successfully moved."
     else
       flash[:error] = "Discussion could not be moved."

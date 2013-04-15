@@ -114,20 +114,21 @@ describe DiscussionsController do
 
     context "moving a discussion" do
       before do
-        group = create :group
-        Group.stub(:find).and_return(group)
-        DiscussionMover.stub(:can_move?).and_return(true)
+        @group = create :group
+        Group.stub(:find).and_return(@group)
+        Discussion.stub(:find).and_return(discussion)
+        discussion.stub(:move!).with(@group, user).and_return(true)
       end
       it "moves the discussion to the selected group" do
-        discussion.should_receive(:group_id=).with(group.id.to_s)
-        put :move, id: discussion.id, discussion: { group_id: group.id }
+        discussion.should_receive(:move!).with(@group, user)
+        put :move, id: discussion.id, discussion: { group_id: @group.id }
       end
       it "redirects to the discussion" do
-        put :move, id: discussion.id, discussion: { group_id: group.id }
+        put :move, id: discussion.id, discussion: { group_id: @group.id }
         response.should redirect_to(discussion)
       end
       it "gives flash success message" do
-        put :move, id: discussion.id, discussion: { group_id: group.id }
+        put :move, id: discussion.id, discussion: { group_id: @group.id }
         flash[:success].should =~ /Discussion successfully moved./
       end
     end

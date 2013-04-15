@@ -178,6 +178,31 @@ describe Discussion do
     end
   end
 
+  describe "#move!(destination, user)" do
+    before do
+      @user = create :user
+      @destination = create :group
+      @discussion = create :discussion
+    end
+    context "user is admin of not destination" do
+      it "returns false" do
+        @discussion.move!(@destination, @user).should == false
+      end
+    end
+    context "user is admin of destiation" do
+      before { @destination.add_admin!(@user) }
+
+      it "sets the group_id for the discussion" do
+        @discussion.should_receive(:group_id=).with(@destination.id)
+        @discussion.move!(@destination, @user)
+      end
+
+      it "returns true" do
+        @discussion.move!(@destination, @user).should == true
+      end
+    end
+  end
+
   describe "#update_total_views" do
     before do
       @discussion = create(:discussion)

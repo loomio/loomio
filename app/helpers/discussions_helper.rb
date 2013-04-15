@@ -1,6 +1,24 @@
 module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
+
+  def destination_groups(group, user)
+    destinations = []
+    destinations << [group.parent.name, group.parent.id] if group.is_a_subgroup? && user.is_group_admin?(group.parent)
+    destinations += subgroup_destinations(group, user)
+  end
+
+  def subgroup_destinations(group, user)
+    subgroup_destinations = []
+    parent = group.parent || group
+    parent.subgroups.each do |subgroup|
+      if user.is_group_admin?(subgroup) && subgroup != group
+        subgroup_destinations << [subgroup.name, subgroup.id]
+      end
+    end
+    subgroup_destinations
+  end
+
   def discussion_activity_count_for(discussion, user)
     discussion.number_of_comments_since_last_looked(user)
   end
