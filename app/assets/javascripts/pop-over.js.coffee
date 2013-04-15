@@ -33,5 +33,6 @@ $ ->
 
 $ ->
   $("#discussion-markdown-dropdown").tooltip
-    placement: "left",
+    placement: "right",
+    container: "body",
     title: "Text formatting settings and info."
