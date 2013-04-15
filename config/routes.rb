@@ -56,7 +56,6 @@ Loomio::Application.routes.draw do
   end
 
   resources :users do
-    put :edit_name, on: :member
     put :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
   end
