@@ -1,27 +1,30 @@
 .row
-  .span5#group-setup
-    = simple_form_for @group_setup, url: setup_group_path, method: :post do |f|
+  .span8#group-setup
+    = simple_form_for @group_setup, url: finish_group_path, method: :put do |f|
       %ul.nav.nav-tabs
-        %li.active
-          %a{ href: "#group-tab", 'data-toggle' => "pill"}
-            Group
-        %li
-          %a{ href: "#discussion-tab", 'data-toggle' => "pill"}
-            Discusison
-        %li
-          %a{ href: "#motion-tab", 'data-toggle' => "pill"}
-            Decision
-        %li
-          %a{ href: "#invite-tab", 'data-toggle' => "pill"}
-            Invite
+        %li.disabled.active
+          %a{ href: "#group-tab" }
+            Set up your group
+        %li.disabled
+          %a{ href: "#discussion-tab" }
+            Start a discussion
+        %li.disabled
+          %a{ href: "#motion-tab" }
+            Start a decision
+        %li.disabled
+          %a{ href: "#invite-tab" }
+            Invite your group
       .tab-content#wizard-tabs
         .tab-pane.active#group-tab
           .row
             .span5
               %h1 Set up your group
-              = f.input :group_name, required: true
-              = f.input :group_description, required: true, :placeholder => "What is the purpose of your group?"
+              .control-group
+                = f.input :group_name, input_html: { class: 'validate-presence' }
+              .control-group
+                = f.input :group_description, input_html: { class: 'validate-presence', :placeholder => "What is the purpose of your group?" }
               %h2 Settings
+              %p Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term.
               = f.input :viewable_by, :collection => {'Public - anyone with the link can see this group' => 'everyone', 'Members - only members of this group can see it' => 'members'}, :as => 'radio_buttons', :label => "Who can see this group?"
               %br
               = f.input :members_invitable_by, :label => "Who can invite members to this group?", :as => "radio_buttons", :collection => {'All group members' => 'members', 'Admins only' => 'admins'}
@@ -30,8 +33,10 @@
             .span5
               %h1 Set up your first discussion
               %p Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term.
-              = f.input :discussion_title, required: true, :placeholder => "What is the topic you would like to discuss?"
-              = f.input :discussion_description, required: true, :placeholder => "Introduce the topic and give enough context for your group to have a well-informed discussion."
+              .control-group
+                = f.input :discussion_title, input_html: { class: 'validate-presence', :placeholder => "What is the topic you would like to discuss?" }
+              .control-group
+                = f.input :discussion_description, input_html: { class: 'validate-presence', :placeholder => "Introduce the topic and give enough context for your group to have a well-informed discussion." }
         .tab-pane#motion-tab
           .row
             .span5
@@ -39,28 +44,34 @@
               %p Often you’d wait for the discussion to progress for a while before making a proposal for your group to decide on. For the first discussion however, it’s a good idea to have a proposal open for everyone to participate in.
               %p A good proposal contains a plan of action for the group. Make your proposal as clear and succinct as possible so people know exactly what it means when they agree or disagree.
               %p You can set up your first proposal here:
-              = f.input :motion_title, required: true, :placeholder => "Make this as clear and succinct as possible."
-              = f.input :motion_description, required: true, :placeholder => "Give enough information so that anyone in your group can make a well-informed decision."
+              .control-group
+                = f.input :motion_title, input_html: { class: 'validate-presence', :placeholder => "Make this as clear and succinct as possible." }
+              .control-group
+                = f.input :motion_description, input_html: { class: 'validate-presence', :placeholder => "Give enough information so that anyone in your group can make a well-informed decision." }
               #closing-inputs
                 .control-group
-                  = f.label :close_date, "Closing", {class: "control-label", for: "date-input", id: "close-date-label"}
-                  = text_field_tag :input_date, nil, class: "date-input validate-motion-close-date inputError"
+                  = f.label :close_date, "Closing", { class: "control-label", for: "date-input", id: "close-date-label" }
+                  = text_field_tag :input_date, nil
                   = select_hour(@input_time, ampm: true)
+                  = f.input :close_date, as: :hidden, input_html: { class: "date-input validate-motion-close-date inputError" }
                   %span.date-error-message
                     ='Please give a future close date (The date you gave has past)'
-              = f.input :close_date, as: :hidden
         .tab-pane#invite-tab
           .row
             .span5
               %h1 Invite users
               #user-invitation
-                = f.input :admin_email, :input_html => { :value => current_user.email }
-                = f.input :members_list, placeholder: "User Name <user1@example.com>, user2@example.com"
-                = f.input :invite_subject
-                = f.input :invite_body
+                .control-group
+                  = f.input :admin_email, input_html: { class: 'validate-presence', :value => current_user.email }
+                .control-group
+                  = f.input :members_list, input_html: { class: 'validate-presence', placeholder: "User Name <user1@example.com>, user2@example.com" }
+                .control-group
+                  = f.input :invite_subject, input_html: { class: 'validate-presence' }
+                .control-group
+                  = f.input :invite_body, input_html: { class: 'validate-presence' }
       .row
         .span5
-          = f.submit 'Finish', class: 'btn btn-info btn-large', id: 'finish'
+          = f.submit 'Finish', class: "btn btn-info btn-large", id: 'finish'
           = link_to 'Next', '#', class: 'btn btn-info btn-large', id: 'next'
           = link_to 'Back', '#', class: 'btn btn-warning btn-large', id: 'prev'
       .row

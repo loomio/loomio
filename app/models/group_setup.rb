@@ -1,29 +1,45 @@
 class GroupSetup < ActiveRecord::Base
+  attr_accessible :group_name, :group_description, :viewable_by, :members_invitable_by,
+                  :discussion_title, :discussion_description, :motion_title, :motion_description,
+                  :close_date, :admin_email, :members_list, :invite_subject, :invite_body
+
   belongs_to :group
-  belongs_to :discussion
-  belongs_to :motion
 
-  def compose_group
-    build_group
-    group.name = group_name
-    group.description = group_description
-    group.viewable_by = viewable_by
-    group.members_invitable_by = members_invitable_by
+  def compose_group!(author)
+    self.group.update_attributes(name: group_name,
+                                 description: group_description,
+                                 viewable_by: viewable_by,
+                                 members_invitable_by: members_invitable_by)
+    self.group.creator = author
+    self.group.save!
   end
 
-  def compose_discussion
-    build_discussion
-    discussion.title = discussion_title
-    discussion.description = discussion_description
+  def compose_discussion!(author, group)
+    discussion = Discussion.new(title: discussion_title,
+                                description: discussion_description)
+    discussion.author = author
+    discussion.group = group
+    discussion.save!
   end
 
-  def compose_motion
-    build_motion
-    motion.name = motion_title
-    motion.description = motion_description
-    motion.close_date = close_date
+  def compose_motion!(author, discussion)
+    motion =  Motion.new( name: motion_title,
+                          description: motion_description,
+                          close_date: close_date,
+                          )
+    motion.author = author
+    motion.discussion = discussion
+    motion.save!
   end
 
   def send_invitations
+  end
+
+
+  def finish!(author)
+    return true if compose_group!(author) &&
+                   compose_discussion!(author, group) &&
+                   compose_motion!(author, group.discussions.first)
+    false
   end
 end

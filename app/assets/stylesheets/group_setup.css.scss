@@ -2,6 +2,7 @@
 @import "mixins";
 
 #group-setup {
+  #group_setup_group_description { height: 150px; }
   // the following two lines added to cope with a bootstrap tab bug
   // trimming off the start and end of the inputs
   .string, .text { width: 366px; }

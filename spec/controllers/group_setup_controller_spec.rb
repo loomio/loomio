@@ -26,39 +26,53 @@ describe GroupSetupController do
   end
 
   describe "#finish" do
-    let(:group_setup){stub(:group_setup, group_id: 1).as_null_object }
+    let(:group_setup){ mock_model(GroupSetup, group_id: group.id) }
 
     before do
       GroupSetup.stub(:find_by_group_id).and_return(group_setup)
+      group_setup.stub(:update_attributes!).and_return(true)
     end
 
-    context "expectations" do
-      after { post :finish, id: group_setup.group_id }
+    it 'updates the attributes' do
+      group_setup.should_receive(:update_attributes!)
+      post :finish, id: group_setup.group_id
+    end
 
-      it "calls build_group for the group_setup" do
-        group_setup.should_receive(:compose_group)
-      end
+    it "calls finish! on the group_setup" do
+      group_setup.should_receive(:finish!)
+      post :finish, id: group_setup.group_id
+    end
 
-      it "calls build_discussion for the group_setup" do
-        group_setup.should_receive(:compose_discussion)
-      end
-
-      it "calls build_motion for the group_setup" do
-        group_setup.should_receive(:compose_motion)
-      end
-
-      it "calls save to save all the built objects" do
-        group_setup.should_receive(:save!)
+    context "completes successfully" do
+      before do
+        group_setup.stub(:finish!).and_return(true)
+        group_setup.stub(:send_invitations)
       end
 
       it "calls send_invitations for the group_setup" do
         group_setup.should_receive(:send_invitations)
+        post :finish, id: group_setup.group_id
+      end
+
+      it "redirects to the group page" do
+        post :finish, id: group_setup.group_id
+        response.should redirect_to(group_path(group_setup.group_id))
       end
     end
 
-    it "redirects to the group page" do
-      post :finish, id: group_setup.group_id
-      response.should redirect_to(group_path(group_setup.group_id))
+    context "does not complete successfully" do
+      before do
+        group_setup.stub(:finish!).and_return(false)
+        post :finish, id: group_setup.group_id
+      end
+
+      it "renders a flash message could not complete" do
+        flash[:error].should match("Set up could not complete.")
+      end
+
+      it "renders the setup page" do
+        response.should render_template('setup')
+      end
     end
   end
 end

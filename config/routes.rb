@@ -12,7 +12,7 @@ Loomio::Application.routes.draw do
   resources :groups, except: [:index, :new] do
     get :setup, on: :member, to: 'group_setup#setup'
     # put :setup, on: :member, to: 'group_setup#save'
-    post :finish, on: :member, to: 'group_setup#finish'
+    put :finish, on: :member, to: 'group_setup#finish'
     post :add_members, on: :member
     get :add_subgroup, on: :member
     resources :motions#, name_prefix: "groups_"

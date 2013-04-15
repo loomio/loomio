@@ -25,6 +25,7 @@
 //= require bootstrap
 //= require bootstrap-custom
 //= require main
+//= require group_setup
 //= require groups
 //= require discussions
 //= require motions
@@ -34,4 +35,3 @@
 //= require votes
 //= require jquery.atwho
 //= require pop-over
-//= require group_setup

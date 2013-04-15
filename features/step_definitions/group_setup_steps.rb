@@ -30,22 +30,20 @@ When /^I am on the final tab$/ do
   find('ul.nav-tabs li:last a').click()
 end
 
-Then /^a group should be set up$/ do
-  @group = Group.find(@group.id)
-  @group.should be_present
+Then /^the group_setup should be created$/ do
+  @group_setup = GroupSetup.find_by_group_id(@group.id)
 end
 
 Then /^the group should have a discussion$/ do
-  @discussion = @group.discussions.last
-  @discussion.should be_present
+  @group_setup.group.discussions.count.should == 1
 end
 
 Then /^the discussion should have a motion$/ do
-  @discussion.current_motion.should be_present
+  @group_setup.group.motions.count.should == 1
 end
 
 Then /^I should see the group page$/ do
-  page.should have_css('.group.show')
+  page.should have_css('.group')
 end
 
 When /^I fill in the group panel$/ do
@@ -67,6 +65,9 @@ When /^I fill in the invites panel$/ do
   fill_in 'Members list', with: "peanut@butter.co.nz, jam@toastie.com"
 end
 
-Then /^invitation should be sent out$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^invitations should be sent out to each recipient$/ do
+  @group_setup.recipients.each do |email_address|
+    open_email(email_address)
+    current_email.should have_subject(@group_setup.invite_subject)
+  end
 end

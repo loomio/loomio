@@ -95,7 +95,7 @@ FactoryGirl.define do
   end
 
   factory :group_setup do
-    association :group, :factory => :group
+    group
     group_name Faker::Name.name
     group_description "My text outlining the group"
     viewable_by :members

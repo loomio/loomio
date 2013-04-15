@@ -11,5 +11,5 @@
           ="Please give a future close date"
         =f.hidden_field :close_date
     .modal-footer
-      = submit_tag "Change", class: "motion btn btn-info", id: 'change-close-date', :data => { :disable_with => "Changing" } # run-validations
+      = submit_tag "Change", class: "motion btn btn-info run-validations", id: 'change-close-date', :data => { :disable_with => "Changing" } # run-validations
       = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-small"

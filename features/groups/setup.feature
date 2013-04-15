@@ -39,7 +39,7 @@ Feature: Setup group
     And I fill in the invites panel
     And I click the "finish" button
     # Then I should see the group page
-    Then a group should be set up
+    Then the group_setup should be created
     And the group should have a discussion
     And the discussion should have a motion
-    And invitation should be sent out
+    And invitations should be sent out to each recipient

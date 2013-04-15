@@ -5,66 +5,9 @@ window.Application ||= {}
 # Application.html5 = exports ? this
 # Application.html5.supported = true if canvasSupported
 
-Application.convertUtcToRelativeTime = ->
-  if $(".utc-time").length > 0
-    today = new Date()
-    month = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-               "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
-    date_offset = new Date()
-    offset = date_offset.getTimezoneOffset()/-60
-    $(".utc-time").each((index, element)->
-      date = $(element).html()
-      localDate = Application.timestampToDateObject(date)
-      hours = localDate.getHours()
-      mins = localDate.getMinutes()
-      mins = "0#{mins}" if mins.toString().length == 1
-      localDay = new Date(localDate.getFullYear(), localDate.getMonth(), localDate.getDate())
-      todayDay = new Date(today.getFullYear(), today.getMonth(), today.getDate())
-      if localDay.getTime() == todayDay.getTime()
-        if hours < 12
-          hours = 12 if hours == 0
-          date_string = "#{hours}:#{mins} AM"
-        else
-          hours = 24 if hours == 12
-          date_string = "#{hours-12}:#{mins} PM"
-      else
-        date_string = "#{localDate.getDate()} #{month[localDate.getMonth()]}"
-      $(element).html(String(date_string))
-      $(element).removeClass('utc-time')
-      $(element).addClass('relative-time')
-    )
-
-Application.timestampToDateObject = (timestamp)->
-  date = new Date()
-  offset = date.getTimezoneOffset()/-60
-  date.setYear(timestamp.substring(0,4))
-  date.setMonth((parseInt(timestamp.substring(5,7), 10) - 1).toString(), timestamp.substring(8,10))
-  date.setHours((parseInt(timestamp.substring(11,13), 10) + offset).toString())
-  date.setMinutes(timestamp.substring(14,16))
-  return date
-
-Application.getNextURL = (button_url) ->
-  current = document.URL
-  newURL = current
-  lastBackslash = current.lastIndexOf("/")
-  #checks if main url has backslash in the way
-  if lastBackslash == current.length-1
-    current = current.substr(0, lastBackslash)
-  #if current is already on a page number remove current page number
-  if current.lastIndexOf("?") > -1
-    newURL = current.split("?")[0]
-  if button_url.lastIndexOf("?") > -1
-    page_number = button_url.split("?")
-    newURL = newURL + "?" + page_number[1]
-  newURL
-
-Application.getPageParam = () ->
-  url = $(location).attr("href")
-  if url.lastIndexOf("?") > -1
-    page = "?" + url.split("?")[1]
-    page
-  else
-    ""
+$ ->
+  Application.enableInlineEdition()
+  Application.seeMoreDescription()
 
 # confirm dialog box for class ".confirm-dialog"
 $ ->
@@ -110,72 +53,25 @@ $ ->
  #- presence required
  #- date validation specific for motion-form
 
-$ ->
-  $(".validate-presence").change(() ->
+$ -> #remove error class on field if not empty
+  $(".validate-presence").change () ->
     if $(this).val() != ""
-        $(this).parent().removeClass("error")
-        $(this).parent().find(".presence-error-message").hide()
-  )
-$ ->
-  $(".validate-presence").keyup(() ->
-    $(this).parent().removeClass("error")
-    $(this).parent().find(".presence-error-message").hide()
-  )
+        $(this).parent().parent().removeClass("error")
+        # $(this).parent().find(".presence-error-message").hide()
+
+$ -> #remove error class on field if not empty
+  $(".validate-presence").keyup () ->
+    $(this).parent().parent().removeClass("error")
+    # $(this).parent().find(".presence-error-message").hide()
 
 $ ->
   $(".presence-error-message").hide()
   $(".date-error-message").hide()
 
-  $(".run-validations").click((event, ui) ->
+  $(".run-validations").click (event, ui) ->
     form = $(this).parents("form")
-    form.find(".validate-presence").each((index, element) ->
-      if $(element).is(":visible") && $(element).val() == ""
-        parent = $(element).parent()
-        parent.addClass("error")
-        parent.find(".presence-error-message").show()
-    )
-
-    runCustomValidations(form)
-
-    form.find(".control-group").each((index, group) ->
-      if $(group).hasClass("error")
-        event.preventDefault()
-    )
-  )
-
-  runCustomValidations = (form)->
-    motionCloseDateValidation(form)
-
-  motionCloseDateValidation = (form)->
-    if form.parents("#motion-form").length > 0 || $('#edit-close-date').length > 0
-      time_now = new Date()
-      selected_date = new Date($("#motion_close_date").val())
-      if selected_date <= time_now
-        $(".validate-motion-close-date").parent().addClass("error")
-        $(".date-error-message").show()
-
-# adds bootstrap popovers to group activity indicators
-$ ->
-  $(".group-activity").tooltip
-    placement: "top"
-    title: 'There have been new comments since you last visited this group.'
-
-# character count for statement on discussion:show page
-pluralize_characters = (num) ->
-  if(num == 1)
-    return num + " character"
-  else
-    return num + " characters"
-
-# display charcaters left
-display_count = (num, object) ->
-  if(num >= 0)
-    object.parent().find(".character-counter").text(pluralize_characters(num) + " left")
-    object.parent().removeClass("error")
-  else
-    num = num * (-1)
-    object.parent().find(".character-counter").text(pluralize_characters(num) + " too long")
-    object.parent().addClass("error")
+    unless Application.validateForm(form)
+      event.preventDefault()
 
 # character count for 250 characters max
 $ ->
@@ -200,60 +96,6 @@ $ ->
   if $("body.groups.show").length > 0 ||  $("body.dashboard.show").length > 0
     if $("#discussions-with-motions").children().html() != ""
       $(".discussion-with-motion-divider").removeClass('hidden')
-
-# Edit description
-Application.enableInlineEdition = ()->
-  if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
-    $(".edit-description").click((event) ->
-      container = $(this).parents(".description-container")
-      description_height = container.find(".model-description").height()
-      container.find(".description-body").toggle()
-      container.find("#description-edit-form").toggle()
-      if description_height > 90
-        container.find('#description-input').height(description_height)
-      event.preventDefault()
-    )
-    $(".edit-discussion-description").click (event)->
-      $(".discussion-description-helper-text").toggle()
-      $(".discussion-additional-info").toggle()
-      event.preventDefault()
-    $("#cancel-add-description").click((event) ->
-      $("#description-edit-form").toggle()
-      $(".description-body").toggle()
-      $(".discussion-description-helper-text").toggle()
-      $(".discussion-additional-info").toggle()
-      event.preventDefault()
-    )
-
-Application.seeMoreDescription = () ->
-  #expand/shrink description text
-  if $("body.discussions.show").length > 0
-    $(".see-more").click((event) ->
-      $(this).parent().children(".short-description").toggle()
-      $(this).parent().children(".long-description").toggle()
-      if $(this).html() == "Show More"
-        $(this).html("Show Less")
-      else
-        $(this).html("Show More")
-      event.preventDefault()
-    )
-
-$ ->
-  Application.enableInlineEdition()
-  Application.seeMoreDescription()
-
-displayGraph = (this_pie, graph_id, data)->
-  @pie_graph_view = new Loomio.Views.Utils.GraphView
-    el: this_pie
-    id_string: graph_id
-    legend: false
-    data: data
-    type: 'pie'
-    tooltip_selector: '#tooltip'
-    diameter: 25
-    padding: 1
-    gap: 1
-    shadow: 0.75
 
 #*** hide/show mini-graph popovers
 $ ->
@@ -325,3 +167,159 @@ $ ->
 # homepage accordion
 $ ->
   $(".collapse").collapse()
+
+
+Application.convertUtcToRelativeTime = ->
+  if $(".utc-time").length > 0
+    today = new Date()
+    month = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+               "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
+    date_offset = new Date()
+    offset = date_offset.getTimezoneOffset()/-60
+    $(".utc-time").each((index, element)->
+      date = $(element).html()
+      localDate = Application.timestampToDateObject(date)
+      hours = localDate.getHours()
+      mins = localDate.getMinutes()
+      mins = "0#{mins}" if mins.toString().length == 1
+      localDay = new Date(localDate.getFullYear(), localDate.getMonth(), localDate.getDate())
+      todayDay = new Date(today.getFullYear(), today.getMonth(), today.getDate())
+      if localDay.getTime() == todayDay.getTime()
+        if hours < 12
+          hours = 12 if hours == 0
+          date_string = "#{hours}:#{mins} AM"
+        else
+          hours = 24 if hours == 12
+          date_string = "#{hours-12}:#{mins} PM"
+      else
+        date_string = "#{localDate.getDate()} #{month[localDate.getMonth()]}"
+      $(element).html(String(date_string))
+      $(element).removeClass('utc-time')
+      $(element).addClass('relative-time')
+    )
+
+Application.timestampToDateObject = (timestamp)->
+  date = new Date()
+  offset = date.getTimezoneOffset()/-60
+  date.setYear(timestamp.substring(0,4))
+  date.setMonth((parseInt(timestamp.substring(5,7), 10) - 1).toString(), timestamp.substring(8,10))
+  date.setHours((parseInt(timestamp.substring(11,13), 10) + offset).toString())
+  date.setMinutes(timestamp.substring(14,16))
+  return date
+
+Application.getNextURL = (button_url) ->
+  current = document.URL
+  newURL = current
+  lastBackslash = current.lastIndexOf("/")
+  #checks if main url has backslash in the way
+  if lastBackslash == current.length-1
+    current = current.substr(0, lastBackslash)
+  #if current is already on a page number remove current page number
+  if current.lastIndexOf("?") > -1
+    newURL = current.split("?")[0]
+  if button_url.lastIndexOf("?") > -1
+    page_number = button_url.split("?")
+    newURL = newURL + "?" + page_number[1]
+  newURL
+
+Application.getPageParam = () ->
+  url = $(location).attr("href")
+  if url.lastIndexOf("?") > -1
+    page = "?" + url.split("?")[1]
+    page
+  else
+    ""
+
+# character count for statement on discussion:show page
+pluralize_characters = (num) ->
+  if(num == 1)
+    return num + " character"
+  else
+    return num + " characters"
+
+# display charcaters left
+display_count = (num, object) ->
+  if(num >= 0)
+    object.parent().find(".character-counter").text(pluralize_characters(num) + " left")
+    object.parent().removeClass("error")
+  else
+    num = num * (-1)
+    object.parent().find(".character-counter").text(pluralize_characters(num) + " too long")
+    object.parent().addClass("error")
+
+# Edit description
+Application.enableInlineEdition = ()->
+  if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
+    $(".edit-description").click((event) ->
+      container = $(this).parents(".description-container")
+      description_height = container.find(".model-description").height()
+      container.find(".description-body").toggle()
+      container.find("#description-edit-form").toggle()
+      if description_height > 90
+        container.find('#description-input').height(description_height)
+      event.preventDefault()
+    )
+    $(".edit-discussion-description").click (event)->
+      $(".discussion-description-helper-text").toggle()
+      $(".discussion-additional-info").toggle()
+      event.preventDefault()
+    $("#cancel-add-description").click((event) ->
+      $("#description-edit-form").toggle()
+      $(".description-body").toggle()
+      $(".discussion-description-helper-text").toggle()
+      $(".discussion-additional-info").toggle()
+      event.preventDefault()
+    )
+
+Application.seeMoreDescription = () ->
+  #expand/shrink description text
+  if $("body.discussions.show").length > 0
+    $(".see-more").click((event) ->
+      $(this).parent().children(".short-description").toggle()
+      $(this).parent().children(".long-description").toggle()
+      if $(this).html() == "Show More"
+        $(this).html("Show Less")
+      else
+        $(this).html("Show More")
+      event.preventDefault()
+    )
+
+displayGraph = (this_pie, graph_id, data)->
+  @pie_graph_view = new Loomio.Views.Utils.GraphView
+    el: this_pie
+    id_string: graph_id
+    legend: false
+    data: data
+    type: 'pie'
+    tooltip_selector: '#tooltip'
+    diameter: 25
+    padding: 1
+    gap: 1
+    shadow: 0.75
+
+Application.validateForm = (form) ->
+  formValid = true
+  form.find(".validate-presence").each((index, field) ->
+    formValid = false unless Application.validatePresence(field)
+    )
+  if $("#motion-form").length > 0 || $('#edit-close-date').length > 0 || $('#group-setup').length > 0
+    form.find(".validate-motion-close-date").each((index, field) ->
+      formValid = false unless validateMotionCloseDate(field)
+      )
+  formValid
+
+Application.validatePresence = (field) ->
+  if $(field).val() == "" && $(field).is(":visible")
+    parent = $(field).parent().parent()
+    parent.addClass("error")
+    return false
+  true
+
+validateMotionCloseDate = (field)->
+  time_now = new Date()
+  selected_date = new Date($(field).val())
+  if selected_date <= time_now && $(field).is(":visible")
+    $(".validate-motion-close-date").parent().addClass("error")
+    $(".date-error-message").show()
+    return false
+  true
