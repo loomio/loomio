@@ -7,12 +7,12 @@ When /^I write and submit a comment$/ do
 end
 
 When /^I enable comment markdown$/ do
-  click_on 'comment-markdown-dropdown-link'
+  find('#comment-markdown-dropdown-link .markdown-icon').click
   find('#comment-markdown-dropdown .enable-markdown').click
 end
 
 When /^I disable comment markdown$/ do
-  click_on 'comment-markdown-dropdown-link'
+  find('#comment-markdown-dropdown-link .markdown-icon').click
   find('#comment-markdown-dropdown .disable-markdown').click
 end
 
