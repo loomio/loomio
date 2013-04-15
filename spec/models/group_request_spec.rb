@@ -38,6 +38,10 @@ describe GroupRequest do
 
     before do
       Group.stub :new => group
+      group.stub :name=
+      group.stub :description=
+      group.stub :viewable_by=
+      group.stub :parent
       group.stub :creator=
       group.stub :creator => stub(:user)
       group.stub :cannot_contribute=

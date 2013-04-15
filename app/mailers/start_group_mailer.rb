@@ -1,5 +1,5 @@
 class StartGroupMailer < ActionMailer::Base
-  default from: "\"Loomio\" <contact@loomio.org>"
+  default from: "\"Loomio\" <contact@loomio.org>", :css => :email
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

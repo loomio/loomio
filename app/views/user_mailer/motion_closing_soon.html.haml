@@ -1,43 +1,58 @@
 = render '/application/mailer_doctype'
 %html
-  %p
-    Proposal:
-    =link_to(@motion.name, motion_url(@motion))
-    %br
-    Group:
-    =@motion.discussion.group.name
-    %br
-    Author:
-    =@motion.author.name
-    %br
-    Closes at:
-    =l @motion.close_date
-    %br
-    Description:
-    =@motion.description
+  %table
+    %tr
+      %th Proposal
+      %td= @motion.name
+    %tr
+      %th Group
+      %td= @motion.group.name
+    %tr
+      %th Author
+      %td= @motion.author.name
 
-  %p
-    %b Summary
-    %br
-    -#-if @motion.user_has_voted?(@user)
-      -#- vote = @user.get_vote_for(@motion)
-      -#Your position
-      -#=vote.position
-    -#-else
-      -#Please state your position
-    -#%br
-    -@motion.votes_for_graph.each do |results|
-      =results[0]
-    %br
-    #{@motion.percent_voted}% of members have stated their position (#{@motion.group_count - @motion.no_vote_count}/#{@motion.group_count})
+    - if @motion.has_close_date?
+      %tr
+        %th Closes&nbsp;at
+        %td= time_ago_in_words(@motion.close_date) + " (" + @motion.close_date.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
 
-  %p
-    %b Positions
-    %br
-    -@motion.unique_votes.each do |vote|
-      #{vote.user_name} #{vote.position_to_s}
-      -if vote.statement.present?
-        \- #{vote.statement}
-      %br
+    - if @motion.description.present?
+      %tr
+        %th &nbsp;
+        %td &nbsp;
+      %tr
+        %th Details
+        %td= @motion.description
+    %tr
+      %th &nbsp;
+      %td &nbsp;
+    %tr
+      %th Summary
+      %td
+        -#-if @motion.user_has_voted?(@user)
+          -#- vote = @user.get_vote_for(@motion)
+          -#Your position
+          -#=vote.position
+        -#-else
+          -#Please state your position
+        -#%br
+        -@motion.votes_for_graph.each do |results|
+          =results[0]
+        %br
+        #{@motion.percent_voted}% of members have stated their position (#{@motion.group_count - @motion.no_vote_count}/#{@motion.group_count})
+    %tr
+      %th &nbsp;
+      %td &nbsp;
+    %tr
+      %th Positions
+      %td
+        %table
+          -@motion.unique_votes.each do |vote|
+            %tr
+              %td.border-bottom= vote.user_name
+              %td.border-bottom.proposal-position{class: vote.position_to_s}= vote.position_to_s
+              %td.border-bottom
+                -if vote.statement.present?
+                  = vote.statement
 
   =render 'unsubscribe_link'

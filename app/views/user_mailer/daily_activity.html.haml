@@ -10,18 +10,18 @@
 
     %h2=group.full_name
     -if @motions.present?
-      %p Decisions
+      %h4 Decisions
       %p
-        -@activity[group.full_name][:motions].each do |motion|
+        -@motions.each do |motion|
           =link_to(motion.name, motion_url(motion))
           -if motion.close_date.present?
             \- closes in #{time_ago_in_words(motion.close_date)}
           %br
 
     -if @discussions.present?
-      %p Discussions
+      %h4 Discussions
       %p
-        -@activity[group.full_name][:discussions].each do |discussion|
+        -@discussions.each do |discussion|
           =link_to(discussion.title, discussion_url(discussion))
           - num_new_comments = discussion.number_of_comments_since(@since_time)
           - if num_new_comments > 0
