@@ -10,15 +10,15 @@ end
 
 When /^I approve the group request and send the setup invitation$/ do
   @setup_group = SetupGroup.new(@group_request)
-  @group = @setup_group.approve_group_request!(approved_by: @site_admin)
+  @group = @setup_group.approve_group_request(approved_by: @site_admin)
 
-  @invitation = CreateInvitation.to_start_group!(group: @group,
-                                                 inviter: @site_admin,
-                                                 recipient_email: @group_request.admin_email)
+  @invitation = CreateInvitation.to_start_group(group: @group,
+                                                inviter: @site_admin,
+                                                recipient_email: @group_request.admin_email)
 
 
-  @setup_group.send_invitation_to_start_group!(invitation: @invitation,
-                                               message_body: 'We woud love to! {invitation_link}')
+  @setup_group.send_invitation_to_start_group(invitation: @invitation,
+                                              message_body: 'We woud love to! {invitation_link}')
 end
 
 Then /^the requestor should get an invitation to start a loomio group$/ do
@@ -32,12 +32,12 @@ Given /^an invitiation to start a loomio group has been sent$/ do
   @group_request.verify!
   @site_admin = FactoryGirl.create :user, :is_admin => true
   @setup_group = SetupGroup.new(@group_request)
-  @group = @setup_group.approve_group_request!(approved_by: @site_admin)
-  @invitation = CreateInvitation.to_start_group!(group: @group,
-                                                 inviter: @site_admin,
-                                                 recipient_email: @group_request.admin_email)
-  @setup_group.send_invitation_to_start_group!(invitation: @invitation,
-                                               message_body: 'We woud love to! {invitation_link}')
+  @group = @setup_group.approve_group_request(approved_by: @site_admin)
+  @invitation = CreateInvitation.to_start_group(group: @group,
+                                                inviter: @site_admin,
+                                                recipient_email: @group_request.admin_email)
+  @setup_group.send_invitation_to_start_group(invitation: @invitation,
+                                              message_body: 'We woud love to! {invitation_link}')
 end
 
 When /^the user clicks the invitiation link$/ do
@@ -48,6 +48,7 @@ When /^the user clicks the invitiation link$/ do
 end
 
 When /^signs up as a new user$/ do
+  save_and_open_page
   within ".signup-form" do
     fill_in 'Name', with: 'Jimmy Jiminson'
     fill_in 'Email', with: 'jim@jiminson.com'

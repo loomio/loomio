@@ -14,8 +14,10 @@ Loomio::Application.routes.draw do
   match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
 
   resources :groups, except: [:index, :new] do
+    get :invite_people, on: :member, to: 'invite_people#new'
+    post :invite_people, on: :member, to: 'invite_people#create'
+
     get :setup, on: :member, to: 'group_setup#setup'
-    # put :setup, on: :member, to: 'group_setup#save'
     post :finish, on: :member, to: 'group_setup#finish'
     post :add_members, on: :member
     get :add_subgroup, on: :member

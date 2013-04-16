@@ -1,4 +1,5 @@
 namespace :stats do
+  desc 'Export stats to csv.. and upload to s3 for some reason'
   task :all => [:environment, :group_requests, :users, :groups,   :events] do
   end
 

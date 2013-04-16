@@ -3,9 +3,11 @@ class Invitation < ActiveRecord::Base
   friendly_id :token
   attr_accessible :recipient_email, :inviter, :group, :to_be_admin
   belongs_to :inviter, class_name: User
-  belongs_to :group
-  before_save :ensure_token_is_present
   belongs_to :accepted_by, class_name: User
+  belongs_to :group
+
+  validates_presence_of :group
+  before_save :ensure_token_is_present
 
   def inviter_name
     inviter.name

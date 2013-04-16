@@ -16,6 +16,4 @@ class InvitationsController < ApplicationController
       render template: 'invitations/please_sign_in'
     end
   end
-
-
 end

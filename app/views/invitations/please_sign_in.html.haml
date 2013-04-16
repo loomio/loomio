@@ -11,6 +11,7 @@
 .signin-form
   %p Already a loomio user? Sign in here:
   =simple_form_for(@user, url: user_session_path) do |f|
-    =f.input :name
+    =f.input :email
     =f.input :password
+    =f.submit t("devise.sessions.sign_in")
     / =f.submit t("devise.sessions.sign_in"

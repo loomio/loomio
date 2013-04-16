@@ -73,6 +73,4 @@ describe InvitationsController do
       end
     end
   end
-
-
 end

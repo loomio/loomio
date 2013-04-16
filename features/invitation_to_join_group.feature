@@ -2,13 +2,13 @@ Feature: Invitation to join group
   In order to get users into a group
   We need to send them invitations
 
-  @wip
   Scenario: Group Admin invites new user to join a group
     Given there is a group
     And I am an admin of that group
     And I am on the group show page
-    When I click "Invite people" from the members box
-    And enter "jim@jam" into the recipients
+    When I click Invite people from the members box
+    And enter "jim@jam.com" into the recipients
+    And fill in the message body
     And click Send Invitations
     Then "jim@jam.com" should get an invitation to join the group
 

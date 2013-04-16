@@ -5,8 +5,7 @@ class SetupGroup
     self.group_request = group_request
   end
 
-  def approve_group_request!(args)
-
+  def approve_group_request(args)
     @group = Group.new
     @group.group_request = group_request
 
@@ -19,7 +18,7 @@ class SetupGroup
     @group
   end
 
-  def send_invitation_to_start_group!(args)
+  def send_invitation_to_start_group(args)
     StartGroupMailer.invite_admin_to_start_group(args[:invitation], args[:message_body]).deliver
   end
 
