@@ -38,8 +38,8 @@ end
 Then /^harry should get an email saying I mentioned him$/ do
   last_email = ActionMailer::Base.deliveries.last
   last_email.to.should include 'harry@example.org'
-  last_email.body.should have_content 'mentioned'
-  last_email.body.should have_content 'Unsubscribe'
+  last_email.default_part_body.should have_content 'mentioned'
+  last_email.default_part_body.should have_content 'Unsubscribe'
 end
 
 Given /^harry wants to be emailed when mentioned$/ do
