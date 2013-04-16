@@ -48,7 +48,6 @@ When /^the user clicks the invitiation link$/ do
 end
 
 When /^signs up as a new user$/ do
-  save_and_open_page
   within ".signup-form" do
     fill_in 'Name', with: 'Jimmy Jiminson'
     fill_in 'Email', with: 'jim@jiminson.com'
