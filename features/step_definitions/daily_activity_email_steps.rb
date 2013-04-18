@@ -58,12 +58,12 @@ end
 
 Then /^that email should have the discussion "(.*?)"$/ do |arg1|
   last_email = ActionMailer::Base.deliveries.last
-  last_email.body.should have_content arg1
+  last_email.default_part_body.should have_content arg1
 end
 
 Then /^that email should have the proposal "(.*?)"$/ do |arg1|
   last_email = ActionMailer::Base.deliveries.last
-  last_email.body.should have_content arg1
+  last_email.default_part_body.should have_content arg1
 end
 
 Then /^that email should have an unsubscribe link$/ do |arg1|
