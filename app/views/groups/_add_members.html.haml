@@ -21,7 +21,7 @@
               - unless no_member_limit
                 .member-request-message
                   %span.label= invites_left
-                  = t(:remaining_invtes)
+                  = t(:remaining_invites)
                   %p
                   %p= t(:need_more_invites_html, :href => link_to( t("get_in_touch_link"), "mailto:contact@loomio.org", target: "_blank"))
               %input#group_id{ type: "hidden", value: group.id }
