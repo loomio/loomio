@@ -457,7 +457,7 @@ DEPENDENCIES
   rb-fchange (~> 0.0.5)
   rb-fsevent (~> 0.9.1)
   rb-inotify (~> 0.8.8)
-  redcarpet (~> 2.1.1)
+  redcarpet (~> 2.2.2)
   rinku (~> 1.7.2)
   rmagick (~> 2.13.1)
   rspec-rails (~> 2.12.2)
