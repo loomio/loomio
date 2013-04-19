@@ -5,7 +5,7 @@ class DiscussionsController < GroupBaseController
   after_filter :store_location, :only => :show
 
   rescue_from ActiveRecord::RecordNotFound do
-    render 'application/not_found', locals: { item: "discussion" }
+    render 'application/not_found', locals: { item: t(:discussion) }
   end
 
   def new
