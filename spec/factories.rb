@@ -59,6 +59,9 @@ FactoryGirl.define do
     phase 'voting'
     description 'Fake description'
     discussion
+    close_at_date '24-12-2044'
+    close_at_time '16:00'
+    close_at_time_zone 'Wellington'
     after(:build) do |motion|
       motion.group.parent.add_member!(motion.author) if motion.group.parent
       motion.group.add_member!(motion.author)
@@ -104,7 +107,7 @@ FactoryGirl.define do
     discussion_description "My text outlining the discussion"
     motion_title Faker::Name.name
     motion_description "My text outlining the proposal"
-    close_date Time.now + 3.days
+    close_at Time.now + 3.days
     admin_email Faker::Internet.email
     members_list "#{Faker::Internet.email}, #{Faker::Internet.email}"
     invite_subject "Welcome to our world"

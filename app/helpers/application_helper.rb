@@ -70,6 +70,17 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
+  def populate_time_select
+    time_select = []
+    (0..23).each do |hour|
+      ampm = (hour < 12) ? 'am': 'pm'
+      hour = 12 if hour == 0
+      hour_padded = (hour < 10) ? "0#{hour}" : hour
+      time_select << ["#{hour_padded} #{ampm}", "#{hour_padded}:00"]
+    end
+    time_select
+  end
+
   def conditional_markdown(md_boolean, text, options=nil)
     if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
       text = " "

@@ -8,9 +8,9 @@
       #closing-info
         - if motion.has_close_date?
           - if motion.voting?
-            = "Closing in #{time_ago_in_words(motion.close_date)}"
+            = "Closing in #{time_ago_in_words(motion.close_at)}"
           - else
-            %span= "Closed #{time_ago_in_words(motion.close_date)} ago"
+            %span= "Closed #{time_ago_in_words(motion.close_at)} ago"
         - else
           No close date
       .proposed-by

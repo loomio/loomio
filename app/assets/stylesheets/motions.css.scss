@@ -2,7 +2,7 @@
 @import "mixins";
 
 /*  New & Edit motion form */
-#motion-form, #group-setup {
+#motion-form {
   #close-date-label { display: block; }
 
   .date-error-message {
@@ -14,9 +14,14 @@
     color: $error-color;
   }
 }
-#motion-form, #edit-close-date.modal, #group-setup #closing-inputs {
-  #input_date{ width: 140px; display: inline-block; }
-  select { width: 100px; display: inline-block; }
+
+#closing-inputs {
+  .control-group { display: inline-block; }
+  .validate-motion-close-date { width: 140px; }
+  #motion_close_at_time  {
+    width: 100px;
+    margin-top: 10px;
+  }
 }
 
 /*** motion preview ***/

@@ -46,6 +46,14 @@ Then /^I should see the group page$/ do
   page.should have_css('.group')
 end
 
+Then /^I should see the timezone select$/ do
+  page.should have_css('#group_setup_close_at_time_zone')
+end
+
+Then /^I should see the finished page$/ do
+  page.should have_content('Finished!')
+end
+
 When /^I fill in the group panel$/ do
   fill_in 'Group name', with: "My group name"
   fill_in 'Group description', with: "A discription of my group"

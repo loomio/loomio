@@ -12,11 +12,11 @@
             - if !motion.outcome.blank?
               = "Outcome: #{motion.outcome}"
           .proposal-close-date
-            - if motion.close_date.present?
+            - if motion.close_at.present?
               - if motion.voting?
-                = "closing in #{time_ago_in_words(motion.close_date)}"
+                = "closing in #{time_ago_in_words(motion.close_at)}"
               - else
-                = "closed #{time_ago_in_words(motion.close_date)} ago"
+                = "closed #{time_ago_in_words(motion.close_at)} ago"
             - else
               = "no close date"
             =" · " unless this_group

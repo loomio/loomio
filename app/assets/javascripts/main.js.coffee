@@ -8,9 +8,12 @@ window.Application ||= {}
 $ ->
   Application.enableInlineEdition()
   Application.seeMoreDescription()
+  hideAllErrorMessages()
+  initializeDatepicker()
+  collapseHomepageAccordian()
 
-# confirm dialog box for class ".confirm-dialog"
-$ ->
+
+$ -> # Confirm dialog box for class ".confirm-dialog"
   $("body").on("click", ".confirm-dialog", (event)->
     this_link = $(event.currentTarget)
     titleText = this_link.data("title")
@@ -53,28 +56,34 @@ $ ->
  #- presence required
  #- date validation specific for motion-form
 
-$ -> #remove error class on field if not empty
+$ -> # Remove error class on field if not empty
   $(".validate-presence").change () ->
-    if $(this).val() != ""
-        $(this).parent().parent().removeClass("error")
-        # $(this).parent().find(".presence-error-message").hide()
+    hidePresenceErrorMessageFor($(this))
 
-$ -> #remove error class on field if not empty
+$ -> # Remove error class on field if not empty
   $(".validate-presence").keyup () ->
-    $(this).parent().parent().removeClass("error")
-    # $(this).parent().find(".presence-error-message").hide()
+    hidePresenceErrorMessageFor($(this))
 
-$ ->
-  $(".presence-error-message").hide()
-  $(".date-error-message").hide()
+$ -> # Remove error class on closing inputs if changed
+  $(".datepicker").change () ->
+    hideDateErrorMessageFor($(this))
 
+$ -> # Remove error class on closing inputs if changed
+  $("#group_setup_close_at_time").change () ->
+    hideDateErrorMessageFor($(this))
+
+$ -> # Remove error class on closing inputs if changed
+  $("#group_setup_close_at_time_zone").change () ->
+    hideDateErrorMessageFor($(this))
+
+$ -> # Run validations and prevent default if false
   $(".run-validations").click (event, ui) ->
     form = $(this).parents("form")
     unless Application.validateForm(form)
       event.preventDefault()
 
-# character count for 250 characters max
-$ ->
+
+$ -> # Character count for 250 characters max
   $(".limit-250").keyup(() ->
     $(".error-message").hide()
     chars = $(this).val().length
@@ -82,8 +91,7 @@ $ ->
     display_count(left, $(this))
   )
 
- #character count for 150 characters max
-$ ->
+$ -> # Character count for 150 characters max
   $(".limit-150").keyup(() ->
     $(".error-message").hide()
     chars = $(this).val().length
@@ -147,7 +155,7 @@ $ ->
       event.preventDefault()
     )
 
-#pagination load on closed motions
+# Pagination load on closed motions
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
     $(document).on('click', '#closed-motions-page .pagination a', (e)->
@@ -164,10 +172,12 @@ $ ->
         e.preventDefault()
       )
 
-# homepage accordion
-$ ->
+
+collapseHomepageAccordian = () ->
   $(".collapse").collapse()
 
+initializeDatepicker = () ->
+  $('input.datepicker').datepicker(dateFormat: 'dd-mm-yy')
 
 Application.convertUtcToRelativeTime = ->
   if $(".utc-time").length > 0
@@ -230,14 +240,14 @@ Application.getPageParam = () ->
   else
     ""
 
-# character count for statement on discussion:show page
+# Character count for statement on discussion:show page
 pluralize_characters = (num) ->
   if(num == 1)
     return num + " character"
   else
     return num + " characters"
 
-# display charcaters left
+# Display charcaters left
 display_count = (num, object) ->
   if(num >= 0)
     object.parent().find(".character-counter").text(pluralize_characters(num) + " left")
@@ -271,8 +281,8 @@ Application.enableInlineEdition = ()->
       event.preventDefault()
     )
 
+# Expand/shrink description text
 Application.seeMoreDescription = () ->
-  #expand/shrink description text
   if $("body.discussions.show").length > 0
     $(".see-more").click((event) ->
       $(this).parent().children(".short-description").toggle()
@@ -301,25 +311,56 @@ Application.validateForm = (form) ->
   formValid = true
   form.find(".validate-presence").each((index, field) ->
     formValid = false unless Application.validatePresence(field)
+    return
     )
-  if $("#motion-form").length > 0 || $('#edit-close-date').length > 0 || $('#group-setup').length > 0
-    form.find(".validate-motion-close-date").each((index, field) ->
-      formValid = false unless validateMotionCloseDate(field)
-      )
+  if form.find("#closing-inputs").is(':visible') == true
+    formValid = false unless validateMotionCloseDate($("#closing-inputs"))
   formValid
 
 Application.validatePresence = (field) ->
-  if $(field).val() == "" && $(field).is(":visible")
-    parent = $(field).parent().parent()
-    parent.addClass("error")
+  if $(field).is(":visible") && $(field).val() == ""
+    $(field).closest('.control-group').addClass("error")
+    $(field).closest('.row').find(".presence-error-message").show()
     return false
   true
 
-validateMotionCloseDate = (field)->
-  time_now = new Date()
-  selected_date = new Date($(field).val())
-  if selected_date <= time_now && $(field).is(":visible")
-    $(".validate-motion-close-date").parent().addClass("error")
-    $(".date-error-message").show()
+validateMotionCloseDate = (closeAtControlGroup) ->
+  timeNow = new Date()
+  selectedDate = parseCloseDateTimeZoneFields(closeAtControlGroup)
+  if (selectedDate <= timeNow)
+    $(closeAtControlGroup).addClass("error")
+    $(closeAtControlGroup).find(".date-error-message").show()
     return false
   true
+
+parseCloseDateTimeZoneFields = (closeAtControlGroup) ->
+  selectedDate = new Date()
+  closeAtDate = closeAtControlGroup.find('#group_setup_close_at_date').val()
+  closeAtTime = closeAtControlGroup.find('#group_setup_close_at_time').val()
+  closeAtTimeZone = closeAtControlGroup.find('#group_setup_close_at_time_zone').val()
+  listOfTimeZones = closeAtControlGroup.find('#group_setup_close_at_time_zone').text()
+
+  timeZoneAsHourOffset = getTimeZoneOffsetFromList(listOfTimeZones, closeAtTimeZone)
+  month = closeAtDate.substring(3,5)
+  day = closeAtDate.substring(0,2)
+
+  selectedDate.setYear(parseInt(closeAtDate.substring(6,10), 10))
+  selectedDate.setMonth(parseInt(month, 10) - 1, parseInt(day, 10))
+  selectedDate.setHours(parseInt(closeAtTime, 10) - timeZoneAsHourOffset)
+
+getTimeZoneOffsetFromList = (list, timeZoneName) ->
+  index = list.indexOf(timeZoneName)
+  timeZoneAsHourOffset = parseInt(list.substring(index - 8, index - 5))
+
+hidePresenceErrorMessageFor = (field) ->
+  unless $(field).val() == ""
+      $(field).closest('.control-group').removeClass("error")
+      $(field).closest('.row').find(".presence-error-message").hide()
+
+hideDateErrorMessageFor = (field) ->
+  $(field).closest('#closing-inputs').removeClass("error")
+  row = $(field).closest('#closing-inputs').find(".date-error-message").hide()
+
+hideAllErrorMessages = () ->
+  $(".presence-error-message").hide()
+  $(".date-error-message").hide()

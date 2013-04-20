@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408002137) do
+ActiveRecord::Schema.define(:version => 20130418033925) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -155,7 +155,9 @@ ActiveRecord::Schema.define(:version => 20130408002137) do
     t.text     "discussion_description"
     t.string   "motion_title"
     t.text     "motion_description"
-    t.datetime "close_date"
+    t.date     "close_at_date"
+    t.string   "close_at_time_zone"
+    t.string   "close_at_time"
     t.string   "admin_email"
     t.text     "members_list"
     t.string   "invite_subject"
@@ -218,13 +220,16 @@ ActiveRecord::Schema.define(:version => 20130408002137) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "discussion_url", :default => "",       :null => false
-    t.datetime "close_date"
+    t.string   "discussion_url",     :default => "",       :null => false
+    t.datetime "close_at"
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
-    t.boolean  "uses_markdown",  :default => true,     :null => false
-    t.string   "phase",          :default => "voting", :null => false
+    t.boolean  "uses_markdown",      :default => true,     :null => false
+    t.string   "phase",              :default => "voting", :null => false
+    t.date     "close_at_date"
+    t.string   "close_at_time"
+    t.string   "close_at_time_zone"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
@@ -283,6 +288,7 @@ ActiveRecord::Schema.define(:version => 20130408002137) do
     t.string   "unsubscribe_token"
     t.boolean  "uses_markdown",                                               :default => false
     t.integer  "memberships_count",                                           :default => 0,          :null => false
+    t.string   "time_zone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

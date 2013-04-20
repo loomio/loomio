@@ -9,7 +9,7 @@ class GroupSetupController < BaseController
     @group_setup.update_attributes(params[:group_setup])
     if @group_setup.finish!(current_user)
       @group_setup.send_invitations
-      redirect_to group_path(params[:id])
+      render 'finished'
     end
   end
 end

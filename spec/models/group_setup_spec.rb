@@ -43,9 +43,16 @@ describe "GroupSetup" do
       motion = group_setup.group.motions.first
       motion.name.should == group_setup.motion_title
       motion.description.should == group_setup.motion_description
-      motion.close_date.should == group_setup.close_date
+      motion.close_at.should == group_setup.close_at
       motion.discussion.should == @discussion
       motion.author.should == author
+    end
+  end
+
+  describe "#send_invitations(recipients)" do
+    it "sends an email to each recipient in the list" do
+      recipients = ["mad@waxfins.com", "tom@jerry@com"]
+      
     end
   end
 

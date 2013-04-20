@@ -10,7 +10,9 @@ class AddTableSetupGroup < ActiveRecord::Migration
       t.text :discussion_description
       t.string :motion_title
       t.text :motion_description
-      t.datetime :close_date
+      t.date :close_at_date
+      t.string :close_at_time_zone
+      t.string :close_at_time
       t.string :admin_email
       t.text :members_list
       t.string :invite_subject

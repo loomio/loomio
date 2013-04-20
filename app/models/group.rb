@@ -49,12 +49,12 @@ class Group < ActiveRecord::Base
            :through => :discussions,
            :source => :motions,
            :conditions => { phase: 'voting' },
-           :order => 'close_date'
+           :order => 'close_at'
   has_many :motions_closed,
            :through => :discussions,
            :source => :motions,
            :conditions => { phase: 'closed' },
-           :order => 'close_date DESC'
+           :order => 'close_at DESC'
 
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
@@ -255,7 +255,7 @@ You'll be prompted to make a short statement about the reason for your decision.
         :description => description_str)
       discussion.add_comment(user, comment_str)
       motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We should have a holiday on the moon!",
-        :description => motion_str, :close_date => Time.now + 7.days)
+        :description => motion_str, :close_at => Time.now + 7.days)
       motion.save
       membership.destroy
     end
