@@ -10,13 +10,13 @@
         .clearfix
           .proposal-outcome
             - if !motion.outcome.blank?
-              = "Outcome: #{motion.outcome}"
+              = t(:outcome) + ": " + motion.outcome
           .proposal-close-date
             - if motion.close_date.present?
               - if motion.voting?
-                = "closing in #{time_ago_in_words(motion.close_date)}"
+                = t(:proposal_closing_when, when: time_ago_in_words(motion.close_date))
               - else
-                = "closed #{time_ago_in_words(motion.close_date)} ago"
+                = t(:proposal_closed_when, when: time_ago_in_words(motion.close_date))
             - else
               = "no close date"
             =" · " unless this_group

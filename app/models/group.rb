@@ -46,11 +46,12 @@ class Group < ActiveRecord::Base
            source: :user,
            conditions: { :invitation_token => nil }
 
+  has_many :pending_invitations,
+           class_name: 'Invitation',
+           conditions: {accepted_at: nil}
+
   alias :users :members
 
-  has_many :invited_users, :through => :memberships, source: :user,
-           :conditions => "invitation_token is not NULL"
-  has_many :users_and_invited_users, through: :memberships, source: :user
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, :dependent => :destroy
@@ -98,6 +99,10 @@ class Group < ActiveRecord::Base
     write_attribute(:viewable_by, value.to_s)
   end
 
+  def members_can_invite?
+    members_invitable_by == :members
+  end
+
   def members_invitable_by
     value = read_attribute(:members_invitable_by)
     value.to_sym if value.present?
@@ -124,11 +129,7 @@ class Group < ActiveRecord::Base
   end
 
   def parent_members_visible_to(user)
-    if user.can?(:add_members, parent)
-      parent.users_and_invited_users.sorted_by_name
-    else
-      parent.users.sorted_by_name
-    end
+    parent.users.sorted_by_name
   end
 
   #
@@ -162,6 +163,26 @@ class Group < ActiveRecord::Base
       return true if unread_comments || unread_new_discussions.present?
     end
     false
+  end
+
+  def is_top_level?
+    parent.blank?
+  end
+
+  def is_sub_group?
+    parent.present?
+  end
+
+  def is_a_parent?
+    parent.nil?
+  end
+
+  def is_a_subgroup?
+    parent.present?
+  end
+
+  def admin_email
+    admins.first.email
   end
 
   #
@@ -210,13 +231,6 @@ class Group < ActiveRecord::Base
     is_a_parent? || user_is_a_parent_member?(user)
   end
 
-  def is_a_parent?
-    parent.nil?
-  end
-
-  def is_a_subgroup?
-    parent.present?
-  end
 
   def user_is_a_parent_member? user
     user.group_membership(parent)
@@ -250,7 +264,7 @@ You'll be prompted to make a short statement about the reason for your decision.
       discussion = user.authored_discussions.create!(:group_id => id,
         :title => "Example Discussion: Welcome and introduction to Loomio!",
         :description => description_str)
-      discussion.add_comment(user, comment_str)
+      discussion.add_comment(user, comment_str, false)
       motion = user.authored_motions.new(:discussion_id => discussion.id, :name => "We should have a holiday on the moon!",
         :description => motion_str, :close_date => Time.now + 7.days)
       motion.save

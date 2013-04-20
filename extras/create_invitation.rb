@@ -16,5 +16,6 @@ class CreateInvitation
                                  inviter: args[:inviter])
       InvitePeopleMailer.invitation_email(invitation, invite_people.message_body).deliver
     end
+    invite_people.parsed_recipients.size
   end
 end

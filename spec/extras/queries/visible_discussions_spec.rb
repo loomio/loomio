@@ -12,7 +12,7 @@ describe Queries::VisibleDiscussions do
     Time.stub(:now).and_return Time.new(2012, 1, 1, 3)
     discussion3 = create :discussion, :group => group, :author => user
     Time.stub(:now).and_return Time.new(2012, 1, 1, 4)
-    discussion2.add_comment(user, "hi")
+    discussion2.add_comment(user, "hi", false)
     discussions = Queries::VisibleDiscussions.for(group)
     discussions[0].should == discussion2
     discussions[1].should == discussion3

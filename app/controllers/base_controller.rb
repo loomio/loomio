@@ -1,7 +1,8 @@
-class BaseController < InheritedResources::Base
+class BaseController < ApplicationController
+  inherit_resources
   before_filter :authenticate_user!, :check_browser, :check_for_invitation, :get_notifications
-  # inherit_resources
 
+  private
   def check_browser
     if browser.ie6? # || browser.ie7?
       redirect_to browser_not_supported_url
@@ -20,4 +21,5 @@ class BaseController < InheritedResources::Base
       @notifications = current_user.recent_notifications
     end
   end
+
 end

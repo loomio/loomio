@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MembershipsController do
+describe Groups::MembershipsController do
   context 'signed in user' do
     before :each do
       @user = create(:user)

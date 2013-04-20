@@ -151,7 +151,7 @@ describe Motion do
       @discussion = create(:discussion)
       @motion = create(:motion, discussion: @discussion)
       @vote = Vote.create(position: "no", motion: @motion, user: @motion.author)
-      @comment = @motion.discussion.add_comment(@motion.author, "hello")
+      @comment = @motion.discussion.add_comment(@motion.author, "hello", false)
       @motion.destroy
     end
 

@@ -19,29 +19,27 @@ gem 'aasm'
 gem 'cancan'
 gem 'acts_as_commentable_with_threading'
 gem 'draper', '~> 0.11.1'
-gem 'exception_notification'
-gem 'browser'
-gem 'rmagick'
-gem 'gravtastic'
-gem 'paperclip'
-gem 'kaminari'
-gem 'activeadmin', github: 'gregbell/active_admin'
-gem 'nokogiri'
-gem 'redcarpet', :git => 'https://github.com/vmg/redcarpet.git'
-gem 'rabl'
-gem 'twitter-text', :git => 'https://github.com/twitter/twitter-text-rb.git'
-gem 'jquery-atwho-rails'
-gem 'paper_trail', '~> 2'
-gem "high_voltage"
-gem 'thin'
-gem 'rack-canonical-host'
-gem 'delayed_job_active_record'
-gem 'hirefireapp'
-gem 'foreman'
-gem 'aws-sdk'
-gem 'rinku'
-gem "friendly_id", "~> 4.0.9"
-
+gem 'exception_notification', '~> 2.6.1'
+gem 'browser', '~> 0.1.3'
+gem 'rmagick', '~> 2.13.1'
+gem 'gravtastic', '~> 3.2.6'
+gem 'paperclip', '~> 3.4.0'
+gem 'kaminari', '~> 0.13.0'
+gem 'activeadmin', '~> 0.4.3'
+gem 'nokogiri', '~> 1.5.9'
+gem 'redcarpet', '~> 2.1.1'
+gem 'rabl', '~> 0.7.3'
+gem 'twitter-text', '~> 1.5.0'
+gem 'jquery-atwho-rails', '~> 0.1.6'
+gem 'paper_trail', '~> 2.6.3'
+gem 'high_voltage', '~> 1.2.0'
+gem 'rack-canonical-host', '~> 0.0.8'
+gem 'delayed_job_active_record', '~> 0.3.3'
+gem 'hirefireapp', '~> 0.0.8'
+gem 'foreman', '~> 0.60.2'
+gem 'aws-sdk', '~> 1.8.5'
+gem 'rinku', '~> 1.7.2'
+gem 'friendly_id'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -91,7 +89,7 @@ group :test do
   gem 'flay', :require => false
   gem "rails_best_practices", :require => false
   gem 'email_spec'
-  gem 'poltergeist', :git => 'https://github.com/jonleighton/poltergeist.git'
+  gem 'poltergeist'
 end
 
 group :staging, :production do

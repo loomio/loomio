@@ -6,7 +6,5 @@ Feature: Non-member views group
   Scenario: Logged out user viewing public group cannot see private data
     Given a public group exists
     And the group has discussions
-    And "newuser@example.org" has been invited to the group
     When I visit the group page
     Then I should see the group's discussions
-    But I should not see the list of invited users

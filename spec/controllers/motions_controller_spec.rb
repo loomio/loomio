@@ -88,7 +88,7 @@ describe MotionsController do
         it "displays an error message and returns to the discussion page" do
           motion.should_receive(:set_close_date!).and_return false
           put :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
-          flash[:error].should =~ /Invalid close date, it needs to be a future date./
+          flash[:error].should =~ /Invalid close date, please check this date has not passed./
           response.should redirect_to(discussion)
         end
       end

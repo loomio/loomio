@@ -1,3 +1,5 @@
+window.Discussion ||= {}
+
 # Set placeholders
 $ ->
   if $("body.discussions.new").length > 0
@@ -19,7 +21,7 @@ $ ->
 
 $ ->
   if $("body.discussions.show").length > 0
-    $("textarea").atWho "@", 
+    $("textarea").atWho "@",
       cache: false
       tpl: "<li id='${id}' data-value='${username}'> ${name} <small> @${username}</small></li>"
       callback: (query, callback) ->
@@ -32,20 +34,85 @@ $ ->
             callback _.toArray(names)
         ), "json"
 
+
+# Global Markdown (new discussion & comments)
 $ ->
-  if $("body.discussions.show").length > 0
-    $("#enable-markdown").click((event) ->
+  if $("body.discussions.show").length > 0 || $("body.discussions.new").length > 0 || $("body.discussions.create").length > 0
+    $(".global-markdown-setting .enable-markdown").click((event) ->
+      img_to_replace = $('.global-markdown-setting').children().first()
+      img_to_replace.html('<img alt="Markdown_on" class="markdown-icon markdown-on" src="/assets/markdown_on.png">')
       updateMarkdownSetting(this, true)
     )
 $ ->
-  if $("body.discussions.show").length > 0
-    $("#disable-markdown").click((event) ->
+  if $("body.discussions.show").length > 0 || $("body.discussions.new").length > 0 || $("body.discussions.create").length > 0
+    $(".global-markdown-setting .disable-markdown").click((event) ->
+      img_to_replace = $('.global-markdown-setting').children().first()
+      img_to_replace.html('<img alt="Markdown_off" class="markdown-icon markdown-off" src="/assets/markdown_off.png">')
       updateMarkdownSetting(this, false)
     )
 
 updateMarkdownSetting = (selected, usesMarkdown) ->
-  $("#uses_markdown").val(usesMarkdown)
-  $('#markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
+  $("#global-uses-markdown").val(usesMarkdown)
+  $('.global-markdown-setting .markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
   $(selected).children().first().children().addClass('icon-ok')
-  $("#markdown-settings-form").submit()
   event.preventDefault()
+
+# Edit description
+Discussion.enableInlineEdition = ()->
+  if $("body.discussions.show").length > 0
+    $(".edit-description").click((event) ->
+      container = $(this).parents(".description-container")
+      description_height = container.find(".model-description").height()
+      container.find(".description-body").toggle()
+      container.find("#description-edit-form").toggle()
+      if description_height > 90
+        container.find('#description-input').height(description_height)
+      event.preventDefault()
+    )
+    $(".edit-discussion-description").click (event)->
+      $(".discussion-description-helper-text").toggle()
+      $(".discussion-additional-info").toggle()
+      event.preventDefault()
+    $("#cancel-add-description").click((event) ->
+      $("#description-edit-form").toggle()
+      $(".description-body").toggle()
+      $(".discussion-description-helper-text").toggle()
+      $(".discussion-additional-info").toggle()
+      event.preventDefault()
+    )
+
+     #edit description markdown setting
+    $(".local-markdown-setting .enable-markdown").click((event) ->
+      img_to_replace = $('#discussion-markdown-dropdown-link')
+      img_to_replace.html('<img alt="Markdown_on" class="markdown-icon markdown-on" src="/assets/markdown_on.png">')
+      editDescriptionMarkdownSetting(this, true)
+    )
+
+    $(".local-markdown-setting .disable-markdown").click((event) ->
+      img_to_replace = $('#discussion-markdown-dropdown-link')
+      img_to_replace.html('<img alt="Markdown_off" class="markdown-icon markdown-off" src="/assets/markdown_off.png">')
+      editDescriptionMarkdownSetting(this, false)
+    )
+
+    editDescriptionMarkdownSetting = (selected, usesMarkdown) ->
+      $('#description-markdown-setting').val(usesMarkdown)
+      $('.local-markdown-setting .markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
+      $(selected).children().first().children().addClass('icon-ok')
+      event.preventDefault()
+
+Discussion.seeMoreDescription = () ->
+  #expand/shrink description text
+  if $("body.discussions.show").length > 0
+    $(".see-more").click((event) ->
+      $(this).parent().children(".short-description").toggle()
+      $(this).parent().children(".long-description").toggle()
+      if $(this).html() == "Show More"
+        $(this).html("Show Less")
+      else
+        $(this).html("Show More")
+      event.preventDefault()
+    )
+
+$ ->
+  Discussion.enableInlineEdition()
+  Discussion.seeMoreDescription()

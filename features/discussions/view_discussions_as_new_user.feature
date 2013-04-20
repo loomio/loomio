@@ -3,8 +3,9 @@ Feature: New user views discussions
   Scenario: User without any groups views dashboard
     Given I am logged in
     When I visit the dashboard
-    Then I should see "Request a new group"
+    Then I should see "Request New Group"
 
+  @javascript
   Scenario: New user belonging to new group views dashboard
     Given I am logged in
     And I am a member of a public group
@@ -13,6 +14,7 @@ Feature: New user views discussions
     Then I should see the decision
     And I should see an empty discussion list
 
+  @javascript
   Scenario: New user belonging to new group views group
     Given I am logged in
     And I am a member of a public group
@@ -21,6 +23,7 @@ Feature: New user views discussions
     Then I should see the decision
     And I should see an empty discussion list
 
+  @javascript
   Scenario: New user views empty sub-group
     Given I am logged in
     And I am a member of a public sub-group

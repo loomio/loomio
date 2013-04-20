@@ -3,6 +3,7 @@ Feature: Admin deletes post
   So that I can remove inappropriate content
   I want to be able to delete other user's comments
 
+  @javascript
   Scenario: Admin deletes another users comment
     Given I am logged in
     And I am an admin of a group with a discussion

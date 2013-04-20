@@ -5,7 +5,7 @@ end
 
 Given /^I am a logged in site admin$/ do
   @site_admin = FactoryGirl.create :user, :is_admin => true
-  login_automatically @site_admin
+  login @site_admin
 end
 
 When /^I approve the group request and send the setup invitation$/ do
@@ -49,7 +49,7 @@ end
 
 When /^signs up as a new user$/ do
   within ".signup-form" do
-    fill_in 'Name', with: 'Jimmy Jiminson'
+    fill_in 'Full name', with: 'Jimmy Jiminson'
     fill_in 'Email', with: 'jim@jiminson.com'
     fill_in :user_password, with: 'milkbottle'
     fill_in :user_password_confirmation, with: 'milkbottle'

@@ -10,6 +10,7 @@ Scenario: Group member views discussions for a public group
   When I visit the group page
   Then I should see the group's discussions
 
+@javascript
 Scenario: Group non-member views discussions for a public group
   Given I am logged in
   And a public group exists that I am not a member of
@@ -31,7 +32,7 @@ Scenario: Group non-member tries to view discussions for a private group
   When I visit the group page
   Then I should not see the group's discussions
 
-
+@javascript
 Scenario: Sub-group member views discussions for a public sub-group
   Given I am logged in
   And I am a member of a public sub-group
@@ -76,6 +77,7 @@ Scenario: Sub-group member views discussions for a visible-to-parent sub-group
   Then I should see the sub-group's discussions
 
 
+@javascript
 Scenario: Parent-group member views discussions for a sub-group viewable by parent-group members
   Given I am logged in
   And I am a member of a parent-group that has a sub-group viewable by parent-group members
@@ -85,6 +87,7 @@ Scenario: Parent-group member views discussions for a sub-group viewable by pare
   When I visit the parent-group page
   Then I should not see the sub-group's discussions
 
+@javascript
 Scenario: Parent-group non-member tries to view discussions for a sub-group viewable by parent-group members
   Given I am logged in
   And I am not a member of a parent-group that has a sub-group viewable by parent-group members

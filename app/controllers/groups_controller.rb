@@ -13,7 +13,7 @@ class GroupsController < GroupBaseController
     if @group.save
       @group.add_admin! current_user
       @group.create_welcome_loomio
-      flash[:success] = "Group created successfully."
+      flash[:success] = t("success.group_created")
       redirect_to @group
     else
       render 'groups/new'
@@ -25,7 +25,6 @@ class GroupsController < GroupBaseController
     @subgroups = @group.subgroups.accessible_by(current_ability, :show)
     @discussions = Queries::VisibleDiscussions.for(@group, current_user)
     @discussion = Discussion.new(group_id: @group.id)
-    @invited_users = @group.invited_users
     assign_meta_data
   end
 
@@ -45,10 +44,10 @@ class GroupsController < GroupBaseController
     end
 
     if @group.save
-      flash[:success] = "Group archived successfully."
+      flash[:success] = t("success.group_archived")
       redirect_to dashboard_url
     else
-      flash[:error] = "Group could not be archived."
+      flash[:error] = t("error.group_not_archived")
       redirect_to :back
     end
   end
@@ -67,7 +66,7 @@ class GroupsController < GroupBaseController
         group.add_member!(user, current_user)
       end
     end
-    flash[:success] = "Members added to group."
+    flash[:success] = t("success.members_added")
     redirect_to group_url(group)
   end
 
@@ -89,7 +88,7 @@ class GroupsController < GroupBaseController
     subject = params[:group_email_subject]
     body = params[:group_email_body]
     GroupMailer.delay.deliver_group_email(@group, current_user, subject, body)
-    flash[:success] = "Emails sending."
+    flash[:success] = t("success.emails_sending")
     redirect_to :back
   end
 

@@ -41,6 +41,7 @@ When /^I visit the subgroup page$/ do
 end
 
 When /^I click add new member$/ do
+  find("#group-member-options").click
   find("#group-add-members").click
 end
 
@@ -62,7 +63,7 @@ Then /^I should be notified that they have been invited$/ do
 end
 
 Then /^I should be notified that the email address is invalid$/ do
-  page.should have_content("The email address given seems invalid.")
+  page.should have_content("was not invited. Please check the email address is correct.")
 end
 
 Then /^"(.*?)" should not be a member of the group$/ do |email|
@@ -74,7 +75,7 @@ Then /^I should see "(.*?)" listed in the invited list$/ do |email|
 end
 
 Then /^I should not see the add member button$/ do
-  find("#add-members").should_not have_content("#group-add-members")
+  page.should_not have_content("#group-add-members")
 end
 
 Then /^I should not see the invited user list$/ do

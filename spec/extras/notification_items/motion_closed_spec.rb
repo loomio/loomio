@@ -25,7 +25,7 @@ describe NotificationItems::MotionClosed do
     before { notification.stub_chain(:event, :user).and_return(nil) }
 
     it "#action_text returns a string" do
-      item.action_text.should == I18n.t('notifications.motion_closed.by_expirey') + ": "
+      item.action_text.should == I18n.t('notifications.motion_closed.by_expiry') + ": "
     end
 
     it "#avatar returns the correct user for the notification avatar" do
