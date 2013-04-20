@@ -13,7 +13,8 @@ Given(/^I am on the group show page$/) do
 end
 
 When(/^I click Invite people from the members box$/) do
-  click_on 'invite-people-btn'
+  click_on 'group-member-options'
+  click_on 'Invite people'
 end
 
 When(/^enter "(.*?)" into the recipients$/) do |arg1|

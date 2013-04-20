@@ -2,6 +2,7 @@ Feature: Invitation to join group
   In order to get users into a group
   We need to send them invitations
 
+  @javascript
   Scenario: Group Admin invites new user to join a group
     Given there is a group
     And I am an admin of that group

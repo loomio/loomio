@@ -8,6 +8,7 @@ Feature: Loomio admin approves group request to join Loomio
     And I am logged in
     And there is a verified request to join Loomio
 
+  @javascript
   Scenario: Loomio admin sets the maximum group size
     When I visit the Group Requests page on the admin panel
     And I edit the maximum group size
