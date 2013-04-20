@@ -28,6 +28,7 @@ Feature: Admin moves discussion
     And I click on move
     Then I should not see the subgroup name in the page title
 
+  @javascript
   Scenario: Admin moves a discussion between subgroups within the same parent group
     Given I am logged in
     And I am an admin of a group

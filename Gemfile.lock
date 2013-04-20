@@ -337,7 +337,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    redcarpet (2.1.1)
+    redcarpet (2.2.2)
     responders (0.9.3)
       railties (~> 3.1)
     rinku (1.7.2)
@@ -491,7 +491,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
-  redcarpet (~> 2.1.1)
+  redcarpet (~> 2.2.2)
   rinku (~> 1.7.2)
   rmagick (~> 2.13.1)
   rspec-rails
