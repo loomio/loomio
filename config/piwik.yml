@@ -31,3 +31,10 @@ test:
     disabled: true
     use_async: false
     hostname: localhost
+
+staging:
+  piwik:
+    id_site: 9
+    url: be.autiful.net/piwik
+    use_async: false
+    disabled: false
