@@ -42,13 +42,11 @@ When(/^click 'Remove admin' on the member$/) do
 end
 
 Then(/^the member should no longer be a group admin$/) do
-  sleep(2)
   @group.reload
   @group.admins.should_not include @another_user
 end
 
 Then(/^the member should no longer belong to the group$/) do
-  sleep(2)
   @group.reload
   @group.members.should_not include @another_user
 end

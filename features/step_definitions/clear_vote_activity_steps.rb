@@ -23,6 +23,7 @@ When /^I refresh the page and click on the mini\-pie graph for the discussion ag
 end
 
 Then /^I should see a summary of the proposal's activity$/ do
+  pending ' this looks like a mental spec'
   page.should have_content(@vote.statement)
 end
 
@@ -35,6 +36,7 @@ Then /^I should not see any new activity for that discussion$/ do
 end
 
 Then /^I should only see the new activity for the proposal$/ do
+  pending ' this looks like a mental spec'
   page.should have_content(@vote1.statement)
   page.should_not have_content(@vote.statement)
 end

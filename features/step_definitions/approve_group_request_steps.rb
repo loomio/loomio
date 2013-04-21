@@ -12,11 +12,12 @@ When /^I visit the Group Requests page on the admin panel$/ do
 end
 
 When /^I click approve for a request$/ do
-  click_link("approve_group_request_#{@group_request.id}")
+  click_link('View')
+  click_link("approve")
 end
 
 When /^I click defer for the request$/ do
-  click_link("defer_group_request_#{@group_request.id}")
+  click_link("Defer request until a later date")
 end
 
 When /^I should see the send approval email page$/ do
@@ -36,7 +37,6 @@ When /^I edit the maximum group size$/ do
   click_link("Edit")
   fill_in "group_request_max_size", :with => @max_size
   click_on("Update Group request")
-  click_link("Group Requests")
 end
 
 When /^I should see the send defer email page$/ do

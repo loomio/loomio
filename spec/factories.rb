@@ -28,6 +28,13 @@ FactoryGirl.define do
     sequence(:name) { Faker::Name.name }
     description 'A description for this group'
     viewable_by :everyone
+    after(:create) do |group, evaluator|
+      user = FactoryGirl.create(:user)
+      if group.parent.present?
+        group.parent.admins << user
+      end
+      group.admins << user
+    end
   end
 
   factory :discussion do

@@ -3,6 +3,7 @@ Feature: Non-member views group
   So that I can view a group's public discussions and information
   I want to see the group's public info
 
+  @javascript
   Scenario: Logged out user viewing public group cannot see private data
     Given a public group exists
     And the group has discussions

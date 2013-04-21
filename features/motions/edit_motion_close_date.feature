@@ -1,7 +1,8 @@
 Feature: Admin/author edits a proposal close date
   As a Loomio group admin or an authour of a proposal
   I want to be able to edit the close date of a proposal
-
+ 
+  @javascript
   Scenario: Admin extends a proposal close date
     Given I am logged in
     And I am an admin of a group with a discussion
