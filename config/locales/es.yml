@@ -120,7 +120,7 @@ es:
   tagline: "Creando un mundo donde es fácil para todos participar de las decisiones que nos afectan."
 
   not_found: "no se encontró"
-  not_found_details: "Lo que %{item} intentas acceder puede que no exista. O ha sido removido."
+  not_found_details: "Puede haber sido removido"
   click_to_dismiss: "Presione aquí para deshacerse de este mensaje"
   generic_confirm: "Estas seguro?"
 
@@ -402,6 +402,7 @@ es:
   enable: "Encender"
   participation: "Participación"
   disable: "Apagar"
+  group: "Grupo"
   groups: "Grupos"
   group_admin: "Grupo Admin"
   home: "Página principal"

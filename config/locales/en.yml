@@ -119,8 +119,8 @@ en:
   sign_in_details: "to participate. You are currently logged out."
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
 
-  not_found: "not found"
-  not_found_details: "The %{item} you tried to access does not exist. It may have been deleted."
+  not_found: "%{item} not found"
+  not_found_details: "It may have been deleted."
   click_to_dismiss: "Click here to dismiss this message"
   generic_confirm: "Are you sure?"
 
@@ -402,6 +402,7 @@ en:
   enable: "Enable"
   participation: "Participation"
   disable: "Disable"
+  group: "Group"
   groups: "Groups"
   group_admin: "Group Admin"
   home: "Home"
