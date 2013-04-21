@@ -1,0 +1,9 @@
+= render '/application/mailer_doctype'
+%html
+  %p Hello
+
+  %p #{@inviter.name} has invited you to participate in group discussion and decision making using a new tool called Loomio.
+
+  %p #{link_to("Click here", accept_invitation_url(@new_user, :invitation_token => @new_user.invitation_token))} to accept their invitation.
+
+  %p If you have any questions contact #{link_to(@inviter.email, "mailto:"+@inviter.email)} or find out more about Loomio at #{link_to("http://loomio.org", "http://loomio.org")}
