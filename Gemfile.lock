@@ -258,6 +258,10 @@ GEM
       cocaine (~> 0.4.0)
       mime-types
     pg (0.14.1)
+    piwik_analytics (1.0.2)
+      actionpack
+      activesupport
+      rails (>= 3.0.0)
     poltergeist (1.0.2)
       capybara (~> 1.1)
       childprocess (~> 0.3)
@@ -449,6 +453,7 @@ DEPENDENCIES
   paper_trail (~> 2.6.3)
   paperclip (~> 3.4.0)
   pg (~> 0.14.1)
+  piwik_analytics (~> 1.0.1)
   poltergeist (~> 1.0.2)
   rabl (~> 0.7.3)
   rack-canonical-host (~> 0.0.8)
