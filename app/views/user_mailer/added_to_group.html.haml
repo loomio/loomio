@@ -1,0 +1,12 @@
+= render '/application/mailer_doctype'
+%html
+  %p
+    - if @inviter != nil
+      = "#{@inviter.name} added you to a group called '#{@group.name}' on Loomio."
+    - else
+      = "You have been added to a group called '#{@group.name}' on Loomio."
+
+  %p
+    = link_to "view group", group_url(@group)
+
+  = render 'unsubscribe_link'
