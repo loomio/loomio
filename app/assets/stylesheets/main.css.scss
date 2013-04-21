@@ -157,13 +157,17 @@ li.selector-item a.selector-link:hover {
   .group-activity-indicator.unread-group-activity { background-color: $group-activity; }
 }
 
-#closing-inputs{
+.motion-closing-inputs {
   .control-group { display: inline-block; }
-  .validate-motion-close-date { width: 140px; }
-  select {
+  .motion-close-at-date { width: 140px; }
+  .motion-close-at-time, .motion-close-at-time-zone {
     margin-top: 10px;
     width: 115px;
     display: inline-block;
+  }
+  .inline-help {
+    position: relative;
+    left: 20px;
   }
 }
 

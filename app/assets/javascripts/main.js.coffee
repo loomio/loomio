@@ -64,15 +64,15 @@ $ -> # Remove error class on field if not empty
     hidePresenceErrorMessageFor($(this))
 
 $ -> # Remove error class on closing inputs if changed
-  $(".datepicker").change () ->
+  $(".motion_close_at_date").change () ->
     hideDateErrorMessageFor($(this))
 
 $ -> # Remove error class on closing inputs if changed
-  $("#group_setup_close_at_time").change () ->
+  $(".motion_close_at_time").change () ->
     hideDateErrorMessageFor($(this))
 
 $ -> # Remove error class on closing inputs if changed
-  $("#group_setup_close_at_time_zone").change () ->
+  $(".motion_close_at_time_zone").change () ->
     hideDateErrorMessageFor($(this))
 
 $ -> # Run validations and prevent default if false
@@ -326,8 +326,8 @@ Application.validateForm = (form) ->
     formValid = false unless Application.validatePresence(field)
     return
     )
-  if form.find("#closing-inputs").is(':visible') == true
-    formValid = false unless validateMotionCloseDate($("#closing-inputs"))
+  if form.find(".motion-closing-inputs").is(':visible') == true
+    formValid = false unless validateMotionCloseDate($(".motion-closing-inputs"))
   formValid
 
 Application.validatePresence = (field) ->
@@ -348,10 +348,10 @@ validateMotionCloseDate = (closeAtControlGroup) ->
 
 parseCloseDateTimeZoneFields = (closeAtControlGroup) ->
   selectedDate = new Date()
-  closeAtDate = closeAtControlGroup.find('#group_setup_close_at_date').val()
-  closeAtTime = closeAtControlGroup.find('#group_setup_close_at_time').val()
-  closeAtTimeZone = closeAtControlGroup.find('#group_setup_close_at_time_zone').val()
-  listOfTimeZones = closeAtControlGroup.find('#group_setup_close_at_time_zone').text()
+  closeAtDate = closeAtControlGroup.find('.motion-close-at-date').val()
+  closeAtTime = closeAtControlGroup.find('.motion-close-at-time').val()
+  closeAtTimeZone = closeAtControlGroup.find('.motion-close-at-time-zone').val()
+  listOfTimeZones = closeAtControlGroup.find('.motion-close-at-time-zone').text()
 
   timeZoneAsHourOffset = getTimeZoneOffsetFromList(listOfTimeZones, closeAtTimeZone)
   month = closeAtDate.substring(3,5)
@@ -373,8 +373,8 @@ hidePresenceErrorMessageFor = (field) ->
       error_div.find(".inline-help").hide()
 
 hideDateErrorMessageFor = (field) ->
-  $(field).closest('#closing-inputs').removeClass("error")
-  row = $(field).closest('#closing-inputs').find(".inline-help").hide()
+  $(field).closest('.motion-closing-inputs').removeClass("error")
+  row = $(field).closest('.motion-closing-inputs').find(".inline-help").hide()
 
 hideAllErrorMessages = () ->
   $(".inline-help").hide()

@@ -14,7 +14,10 @@
   .string, .text { width: 366px; }
   .radio { padding-left: 22px; }
 
-  .validate-motion-close-date { width: 140px; }
+  .motion-closing-inputs {
+    .motion-close-at-date { width: 140px; }
+  }
+
   #group_setup_members_list { height: 50px; }
   #invite-body {
     width: 356px;
