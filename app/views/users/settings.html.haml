@@ -1,8 +1,8 @@
 .row
   .span6
-    %h1 User Settings
+    %h1= t("user_settings_form.header")
     = render 'edit_name', user: @user
-    %h2 Picture
+    %h2= t("user_settings_form.picture")
     .row
       .span3
         = render 'avatar', user: @user, size: "large", kind: nil, id: 'avatar-preview'
@@ -14,7 +14,7 @@
             = render 'avatar_setting_option', user: @user, kind: 'gravatar'
           = render 'avatar_setting_option', user: @user, kind: 'initials'
           %li.image-setting
-            = link_to 'Upload a new image', '#', class: 'btn btn-grey', id: 'upload-new-image'
+            = link_to t("user_settings_form.upload_new_image"), '#', class: 'btn btn-grey', id: 'upload-new-image'
             = form_for [@user], :html => { :multipart => true, :id => 'upload-form' }, :url => upload_new_avatar_user_path(@user), :method => 'post' do
               = file_field_tag :uploaded_avatar, id: 'uploaded-avatar'
               = hidden_field_tag("user[avatar_kind]", "", :id => "user-avatar-kind")

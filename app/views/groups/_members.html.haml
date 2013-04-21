@@ -2,7 +2,7 @@
   .sub-panel
     .membership-count.label
       = group.users.count
-    %h4 Members
+    %h4= t :members
     = render 'add_members', group: group
     %ul#users-list
       - group.users.each do |user|

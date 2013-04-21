@@ -10,6 +10,7 @@ class DiscussionsController < GroupBaseController
 
   def new
     @discussion = Discussion.new
+    @uses_markdown = current_user.uses_markdown
     if params[:group_id]
       @discussion.group_id = params[:group_id]
     else
@@ -18,21 +19,22 @@ class DiscussionsController < GroupBaseController
   end
 
   def create
+    current_user.update_attributes(uses_markdown: params[:discussion][:uses_markdown])
     @discussion = current_user.authored_discussions.new(params[:discussion])
     authorize! :create, @discussion
     if @discussion.save
-      flash[:success] = "Discussion sucessfully created."
+      flash[:success] = t("success.discussion_created")
       redirect_to @discussion
     else
       render action: :new
-      flash[:error] = "Discussion could not be created."
+      flash[:error] = t("error.discussion_not_created")
     end
   end
 
   def destroy
     @discussion = Discussion.find(params[:id])
     @discussion.destroy
-    flash[:success] = "Discussion sucessfully deleted."
+    flash[:success] = t("success.discussion_deleted")
     redirect_to @discussion.group
   end
 
@@ -90,7 +92,7 @@ class DiscussionsController < GroupBaseController
 
   def add_comment
     @discussion = Discussion.find(params[:id])
-    comment = @discussion.add_comment(current_user, params[:comment])
+    comment = @discussion.add_comment(current_user, params[:comment], params[:global_uses_markdown])
     ViewLogger.discussion_viewed(@discussion, current_user)
   end
 
@@ -109,7 +111,7 @@ class DiscussionsController < GroupBaseController
 
   def edit_description
     @discussion = Discussion.find(params[:id])
-    @discussion.set_description!(params[:description], current_user)
+    @discussion.set_description!(params[:description], params[:description_uses_markdown], current_user)
     @last_collaborator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js { render :action => 'update_version' }

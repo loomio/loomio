@@ -65,7 +65,7 @@ describe VotesController do
         end
         it "assigns flash success message" do
           post :update, @vote_args
-          flash[:success].should =~ /Vote updated/
+          flash[:success].should =~ /Position updated/
         end
         it "redirects to motion discussion" do
           post :update, @vote_args
@@ -107,7 +107,7 @@ describe VotesController do
         post :create, motion_id: @motion.id,
              vote: {position: 'yes', statement: 'blah'}
         response.should be_redirect
-        flash[:error].should =~ /This proposal has closed. You can no longer decide on it/
+        flash[:error].should =~ /This proposal has closed./
       end
     end
   end

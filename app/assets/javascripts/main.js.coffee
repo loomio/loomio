@@ -104,6 +104,20 @@ $ ->
     if $("#discussions-with-motions").children().html() != ""
       $(".discussion-with-motion-divider").removeClass('hidden')
 
+#*** graph ***
+displayGraph = (this_pie, graph_id, data)->
+  @pie_graph_view = new Loomio.Views.Utils.GraphView
+    el: this_pie
+    id_string: graph_id
+    legend: false
+    data: data
+    type: 'pie'
+    tooltip_selector: '#tooltip'
+    diameter: 25
+    padding: 1
+    gap: 1
+    shadow: 0.75
+
 #*** hide/show mini-graph popovers
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0

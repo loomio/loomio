@@ -43,9 +43,9 @@ class Discussion < ActiveRecord::Base
     group.users.include? user
   end
 
-  def add_comment(user, comment)
+  def add_comment(user, comment, uses_markdown)
     if can_be_commented_on_by? user
-      comment = Comment.build_from self, user.id, comment
+      comment = Comment.build_from self, user.id, comment, uses_markdown
       comment.save
       comment
     end
@@ -140,8 +140,9 @@ class Discussion < ActiveRecord::Base
     created_at
   end
 
-  def set_description!(description, user)
+  def set_description!(description, uses_markdown, user)
     self.description = description
+    self.uses_markdown = uses_markdown
     save!
     fire_edit_description_event(user)
   end

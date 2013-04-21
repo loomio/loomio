@@ -1,4 +1,5 @@
-require 'spec_helper'
+# encoding: UTF-8
+require 'spec_helper' 
 
 describe User do
   let(:user) { create(:user) }
@@ -167,9 +168,9 @@ describe User do
     it "returns a list of discussions sorted by last_comment_at" do
       pending 'this does not help'
       @discussion2 = create :discussion, :author => @user
-      @discussion2.add_comment @user, "hi"
+      @discussion2.add_comment @user, "hi", false
       @discussion3 = create :discussion, :author => @user
-      @discussion1.add_comment @user, "hi"
+      @discussion1.add_comment @user, "hi", false
       @user.discussions_sorted.should == [@discussion1, @discussion4, @discussion3, ]
       @user.discussions_sorted[0].should == @discussion1
       @user.discussions_sorted[1].should == @discussion4
@@ -439,20 +440,24 @@ describe User do
   end
 
   describe "usernames" do 
+    before do
+      @user1 = User.new(name: "Test User", email: "test1@example.com", password: "password")
+      @user2 = User.new(name: "Test User", email: "test2@example.com", password: "password")
+    end
     it "generates a unique username after invitation accepted" do
-      user1 = User.new
-      user1.name = "Test User"
-      user1.email = "test1@example.com"
-      user1.password = "password"
-      user1.generate_username
-      user1.save!
-      user2 = User.new
-      user2.name = "Test User"
-      user2.email = "test2@example.com"
-      user2.password = "password"
-      user2.generate_username
-      user2.save!
-      user1.username.should_not == user2.username
+      @user1.generate_username
+      @user1.save!
+      @user2.generate_username
+      @user2.save!
+      @user1.username.should_not == @user2.username
+    end
+
+    it "doesn't change username if already correctly set" do
+      @user1.generate_username # @user1.username now equals "testuser"
+      @user1.save!
+      @user2.username = "testuser1" 
+      @user2.save!
+      expect{ @user2.generate_username }.to_not change{@user2.username}
     end
 
     it "ensures usernames are stripped from email addr names" do
@@ -471,5 +476,18 @@ describe User do
       user.username.should == "rcharddbartlett"
     end
 
+    it "changes non ASCII characters to their ASCII counterparts" do
+      user = User.new
+      user.name = "Kæsper Nørdskov _^25*/\!"
+      user.generate_username
+      user.username.should == "kaespernordskov25"
+    end
+
+    it "usernames radical should be 18 characters max" do
+      user = User.new
+      user.name = "Wow this is quite long as a name"
+      user.generate_username
+      user.username.length.should equal(18) 
+    end
   end
 end

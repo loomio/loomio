@@ -19,7 +19,7 @@ When /^I open the email sent to me$/ do
 end
 
 When /^I click the invitation link to start a new group$/ do
-  click_first_link_in_email
+  click_email_link_matching(/token/)
 end
 
 When /^I choose to create an account$/ do

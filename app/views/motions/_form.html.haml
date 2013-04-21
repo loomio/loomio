@@ -1,25 +1,20 @@
 #motion-form
   = simple_form_for @motion, validate: true do |f|
-    %h2 New proposal
-    .row
-      .span5
-        = f.input :name, label: "Title", id: "motion-name", :placeholder => "What is your proposed course of action?"
-      .span5
-        %p Make the title as clear and succinct as possible so people know exactly what it means when they agree or disagree with your proposal.
+    %p= t "motion_form.name_helper"
     .row
       .span9
         .control-group#closing-inputs
-          = f.input :close_at_date, as: :date_picker, label: 'Close date', input_html: { class: 'validate-motion-close-date' }
+          = f.input :close_at_date, as: :date_picker, label: t(:closing), input_html: { class: 'validate-motion-close-date' }
           = f.input :close_at_time, as: :select, collection: populate_time_select, include_blank: false, label: false
           = f.time_zone_select :close_at_time_zone, id: 'time-zone-select', label: false
-          %span.inline-help Please give a future close date (The date you gave has past)
+          %span.inline-help= t(:proposal_close_date_error)
     .row
       .span5
         #description
-          = f.input :description, label: "Details", placeholder: "Give enough information so that anyone in your group can make a well-informed decision."
+          = f.input :description
 
         = f.input :phase, as: :hidden, input_html: {value: "voting"}
         = f.input :facilitator_id, as: :hidden, input_html: {value: current_user.id}
         = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}
-        = f.submit 'Start proposal', :class => "btn btn-large btn-info run-validations", id: "proposal-submit", :data => {:disable_with => "Starting"}
+        = f.submit :class => "btn btn-large btn-info run-validations", id: "proposal-submit", :data => {:disable_with => :starting}
 

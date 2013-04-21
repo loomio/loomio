@@ -1,0 +1,10 @@
+You were mentioned in a discussion titled #{@discussion.title}
+\
+#{@comment.author.name} said:
+\
+#{@comment.body}
+\
+To view this discussion, go to:
+= discussion_url(@discussion)
+\
+= render 'unsubscribe_link_text'

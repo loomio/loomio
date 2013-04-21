@@ -14,7 +14,7 @@ end
 
 When /^I fill in the discussion details and submit the form$/ do
   @discussion_title = Faker::Lorem.sentence
-  @discussion_description = Faker::Lorem.paragraph
+  @discussion_description = "test _this markdown_ "+ Faker::Lorem.paragraph
   fill_in 'discussion_title', with: @discussion_title
   fill_in 'discussion_description', with: @discussion_description
   click_on 'discussion-submit'
@@ -44,3 +44,33 @@ Then /^clicking the link in the email should take him to the discussion$/ do
   page.should have_content(@discussion_title)
 end
 
+Given /^my global markdown preference is 'disabled'$/ do
+  step "I don't prefer markdown"
+end
+
+When /^I see discussion markdown is disabled$/ do
+  find('#discussion-markdown-dropdown').should have_css('.markdown-off')
+end
+
+When /^I see discussion markdown is enabled$/ do
+  find('#discussion-markdown-dropdown').should have_css('.markdown-on')
+end
+
+When /^I enable markdown for the discussion description$/ do
+  find('#discussion-markdown-dropdown-link').click
+  find('#discussion-markdown-dropdown .enable-markdown-link').click
+end
+
+When /^I disable markdown for the discussion description$/ do
+  find('#discussion-markdown-dropdown-link').click
+  find('#discussion-markdown-dropdown .disable-markdown-link').click
+end
+
+Then /^the discussion desription should render markdown$/ do
+  page.find('.description-body').should have_content('this markdown')
+  page.find('.description-body').should_not have_content('_this markdown_')
+end
+
+Then /^my global markdown preference should now be 'enabled'$/ do
+  step 'comment markdown should now be on by default'
+end

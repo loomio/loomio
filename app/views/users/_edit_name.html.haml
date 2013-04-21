@@ -1,5 +1,5 @@
 #edit-name
-  %h2 Name
+  %h2= t :name
   %span{id: 'edit-name-row'}
     %span{id: 'edit-name-text'}= user.name
     (<a href="#" id="edit-name-link">edit</a>)
@@ -7,5 +7,5 @@
     = hidden_field_tag 'id', user.id
     = text_field_tag :user_name, user.name, :autofocus => true
     .save-buttons.clearfix
-      = submit_tag "Save", class: 'btn btn-small btn-grey run-validations', id: 'edit-name-submit', :data => {:disable_with => "Saving"}
-      = link_to "Cancel", "#", id: 'cancel-edit-name'
+      = submit_tag t(:save), class: 'btn btn-small btn-grey run-validations', id: 'edit-name-submit', :data => {:disable_with => t(:saving)}
+      = link_to t(:cancel), "#", id: 'cancel-edit-name'

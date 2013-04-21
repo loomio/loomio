@@ -1,7 +1,7 @@
 #edit-close-date.modal.hidden
   .modal-header
     %button.close{"data-dismiss" => "modal"}×
-    %h3= "Change the close date for the proposal '#{motion.name}'"
+    %h3= t(:change_proposal_close_date_header, which: motion.name)
   = simple_form_for motion, :url => edit_close_date_motion_path(motion.id) do |f|
     .modal-body
       .row
@@ -10,7 +10,7 @@
             = f.input :close_at_date, as: :date_picker, label: 'Close date', input_html: { class: 'validate-motion-close-date' }
             = f.input :close_at_time, as: :select, collection: populate_time_select, include_blank: false, label: false
             = f.time_zone_select :close_at_time_zone, id: 'time-zone-select', label: false
-            %span.inline-help Please give a future close date (The date you gave has past)
+            %span.inline-help= t(:proposal_close_date_error)
     .modal-footer
-      = submit_tag "Change", class: "motion btn btn-info btn-large run-validations", id: 'change-close-date', :data => { :disable_with => "Change" }
-      = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-large"
+      = submit_tag t(:change), class: "motion btn btn-info btn-large run-validations", id: 'change-close-date', :data => { :disable_with => "Change" }
+      = link_to t(:cancel), "#", "data-dismiss" => "modal", class: "btn btn-large"
