@@ -2,9 +2,11 @@
 @import "mixins";
 
 #group-setup {
-  .presence-error-message, .date-error-message {
-    float: left;
-    top: 20px;
+  .control-group, .controls { display: inline-block; }
+  .control-label { display: block; }
+  .inline-help {
+    position: relative;
+    left: 20px;
   }
   #group_setup_group_description { height: 150px; }
   // the following two lines added to cope with a bootstrap tab bug
@@ -12,14 +14,7 @@
   .string, .text { width: 366px; }
   .radio { padding-left: 22px; }
 
-  #closing-inputs {
-    .control-group { display: inline-block; }
-    .validate-motion-close-date { width: 140px; }
-    #group_setup_close_at_time {
-      width: 100px;
-      margin-top: 10px; 
-    }
-  }
+  .validate-motion-close-date { width: 140px; }
   #group_setup_members_list { height: 50px; }
   #invite-body {
     width: 356px;

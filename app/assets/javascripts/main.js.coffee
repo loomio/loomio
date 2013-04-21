@@ -12,7 +12,6 @@ $ ->
   initializeDatepicker()
   collapseHomepageAccordian()
 
-
 $ -> # Confirm dialog box for class ".confirm-dialog"
   $("body").on("click", ".confirm-dialog", (event)->
     this_link = $(event.currentTarget)
@@ -319,17 +318,17 @@ Application.validateForm = (form) ->
 
 Application.validatePresence = (field) ->
   if $(field).is(":visible") && $(field).val() == ""
-    $(field).closest('.control-group').addClass("error")
-    $(field).closest('.row').find(".presence-error-message").show()
+    error_div = $(field).closest('.control-group').parent().closest('.control-group')
+    error_div.addClass("error")
+    error_div.find(".inline-help").show()
     return false
   true
 
 validateMotionCloseDate = (closeAtControlGroup) ->
   timeNow = new Date()
-  selectedDate = parseCloseDateTimeZoneFields(closeAtControlGroup)
-  if (selectedDate <= timeNow)
+  if parseCloseDateTimeZoneFields(closeAtControlGroup) < timeNow
     $(closeAtControlGroup).addClass("error")
-    $(closeAtControlGroup).find(".date-error-message").show()
+    $(closeAtControlGroup).find(".inline-help").show()
     return false
   true
 
@@ -344,9 +343,10 @@ parseCloseDateTimeZoneFields = (closeAtControlGroup) ->
   month = closeAtDate.substring(3,5)
   day = closeAtDate.substring(0,2)
 
-  selectedDate.setYear(parseInt(closeAtDate.substring(6,10), 10))
-  selectedDate.setMonth(parseInt(month, 10) - 1, parseInt(day, 10))
-  selectedDate.setHours(parseInt(closeAtTime, 10) - timeZoneAsHourOffset)
+  selectedDate.setUTCFullYear(parseInt(closeAtDate.substring(6,10), 10))
+  selectedDate.setUTCMonth(parseInt(month, 10) - 1, parseInt(day, 10))
+  selectedDate.setUTCHours(parseInt(closeAtTime, 10) - timeZoneAsHourOffset)
+  selectedDate
 
 getTimeZoneOffsetFromList = (list, timeZoneName) ->
   index = list.indexOf(timeZoneName)
@@ -354,13 +354,13 @@ getTimeZoneOffsetFromList = (list, timeZoneName) ->
 
 hidePresenceErrorMessageFor = (field) ->
   unless $(field).val() == ""
-      $(field).closest('.control-group').removeClass("error")
-      $(field).closest('.row').find(".presence-error-message").hide()
+      error_div = $(field).closest('.control-group').parent().closest('.control-group')
+      error_div.removeClass("error")
+      error_div.find(".inline-help").hide()
 
 hideDateErrorMessageFor = (field) ->
   $(field).closest('#closing-inputs').removeClass("error")
-  row = $(field).closest('#closing-inputs').find(".date-error-message").hide()
+  row = $(field).closest('#closing-inputs').find(".inline-help").hide()
 
 hideAllErrorMessages = () ->
-  $(".presence-error-message").hide()
-  $(".date-error-message").hide()
+  $(".inline-help").hide()
