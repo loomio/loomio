@@ -14,10 +14,14 @@ Feature: Setup group
   Scenario: Group admin navigates back and forth through the pages
     When I visit the group setup wizard for that group
     Then I should see the setup group tab
+    And I fill in the group panel
     When I click the "next" button
     Then I should see the setup discussion tab
+    And I fill in the discussion panel
     When I click the "next" button
     Then I should see the setup decision tab
+    And I should see the timezone select
+    And I fill in the motion panel
     When I click the "next" button
     Then I should see the setup invites tab
 
@@ -37,9 +41,11 @@ Feature: Setup group
     And I fill in the motion panel
     And I click the "next" button
     And I fill in the invites panel
-    And I click the "finish" button
-    # Then I should see the group page
-    Then a group should be set up
+    And I click the "send_invites" button
+    Then I should see the finished page
+    And the group_setup should be created
     And the group should have a discussion
     And the discussion should have a motion
-    And invitation should be sent out
+    And invitations should be sent out to each recipient
+    When I click the "finish" button
+    Then I should see the group page

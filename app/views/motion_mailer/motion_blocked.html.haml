@@ -3,7 +3,6 @@
   %p A proposal you are facilitating has been blocked.
   %p
     = link_to("Click here to view this proposal", "#{discussion_url(@motion.discussion, proposal: @motion)}")
-
   %p
     Proposal:
     = @motion.name
@@ -15,7 +14,7 @@
     = @motion.group.name
     / - if @motion.has_close_date?
     /   Closes in:
-    /   = time_ago_in_words(@motion.close_date + @motion.close_date.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z'))
+    /   = time_ago_in_words(@motion.close_at + @motion.close_at.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z'))
     %p
     - if @motion.description.present?
       Details:

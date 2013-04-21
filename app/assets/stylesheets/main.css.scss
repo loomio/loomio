@@ -157,6 +157,16 @@ li.selector-item a.selector-link:hover {
   .group-activity-indicator.unread-group-activity { background-color: $group-activity; }
 }
 
+#closing-inputs{
+  .control-group { display: inline-block; }
+  .validate-motion-close-date { width: 140px; }
+  select {
+    margin-top: 10px;
+    width: 115px;
+    display: inline-block;
+  }
+}
+
 .alert {
   margin: 10px 0;
 }
@@ -200,13 +210,7 @@ li.selector-item a.selector-link:hover {
   color: $error-color;
 }
 
-.presence-error-message {
-  float: right;
-  position: relative;
-  color: $error-color;
-}
-
-.date-error-message {
+.inline-help {
   color: $error-color;
 }
 
@@ -348,56 +352,6 @@ code{
   width: 80%;
   font-weight: bold;
   font-size: 1.2em;
-}
-
-
-ul.loomio-process-flow {
-  height: 100px;
-  margin: 0 auto 20px auto;
-  border: 1px solid $light-grey;
-  @include border-radius(8px);
-  /*box-shadow: 2px 2px 2px $light-grey;*/
-  background-color: white;
-  text-align: center;
-  padding: 0;
-  li.process-flow-item {
-    float: left;
-    padding: 0 72px;
-  }
-  li.process-flow-item .process-flow-icon {
-    background-repeat: no-repeat;
-    margin: 20px auto 0 auto;
-    height: 40px;
-    width: 40px;
-  }
-  li.process-flow-item#start { padding: 0 48px; }
-  li.process-flow-item#start .process-flow-icon {
-    background-image:url('/assets/loomio-40.png');
-    width: 107px;
-  }
-  li.process-flow-item#enguage .process-flow-icon {
-    background-image:url('/assets/discussion-40.png');
-    opacity: 0.6;
-  }
-  li.process-flow-item#decide .process-flow-icon {
-    background-image:url('/assets/pie-40.png');
-  }
-  li.process-flow-item#act .process-flow-icon {
-    background-image:url('/assets/action.png');
-  }
-  li.process-flow-item h1 {
-    line-height: 1em;
-    font-size: 1.6em;
-    color: $mid-grey;
-  }
-  li.process-flow-arrow {
-    display: inline-block;
-    float: left;
-    background-image:url('/assets/process-flow-arrow.png');
-    background-repeat: no-repeat;
-    height: 100px;
-    width: 32px;
-  }
 }
 
 /**** buttons ****/

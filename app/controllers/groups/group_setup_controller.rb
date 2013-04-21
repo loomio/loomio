@@ -6,11 +6,10 @@ class GroupSetupController < BaseController
 
   def finish
     @group_setup = GroupSetup.find_by_group_id(params[:id])
-    @group_setup.compose_group
-    @group_setup.compose_discussion
-    @group_setup.compose_motion
-    @group_setup.save!
-    @group_setup.send_invitations
-    redirect_to group_path(@group_setup.group_id)
+    @group_setup.update_attributes(params[:group_setup])
+    if @group_setup.finish!(current_user)
+      @group_setup.send_invitations
+      render 'finished'
+    end
   end
 end

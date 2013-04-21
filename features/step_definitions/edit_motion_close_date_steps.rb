@@ -11,7 +11,7 @@ end
 When /^I select the new close date$/ do
   pending
   @close_date = 5.days.from_now
-  fill_in "input_date", :with  => @close_date
+  fill_in "close_date_at", :with  => @close_date
   click_on("change-close-date")
 end
 

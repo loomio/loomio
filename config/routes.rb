@@ -29,8 +29,10 @@ Loomio::Application.routes.draw do
 
     get :setup, on: :member, to: 'groups/group_setup#setup'
     post :finish, on: :member, to: 'groups/group_setup#finish'
+
     post :add_members, on: :member
     get :add_subgroup, on: :member
+
     resources :motions
     resources :discussions, only: [:index, :new]
     get :request_membership, on: :member
