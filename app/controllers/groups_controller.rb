@@ -5,7 +5,7 @@ class GroupsController < GroupBaseController
   after_filter :store_location, :only => :show
 
   rescue_from ActiveRecord::RecordNotFound do
-    render 'application/not_found', locals: { item: "group" }
+    render 'application/not_found', locals: { item: t(:group) }
   end
 
   def create
