@@ -1,6 +1,9 @@
 #motion-form
   = simple_form_for @motion, validate: true do |f|
-    %p= t "motion_form.name_helper"
+    .row
+      .span5
+        %p= t "motion_form.name_helper"
+        = f.input :name
     .row
       .span9
         .control-group.motion-closing-inputs

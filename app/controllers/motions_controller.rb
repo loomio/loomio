@@ -72,16 +72,17 @@ class MotionsController < GroupBaseController
   end
 
   def edit_close_date
+    motion = Motion.find(params[:motion][:id])
+    safe_values = {}
     safe_values[:close_at_date] = params[:motion][:close_at_date]
     safe_values[:close_at_time] = params[:motion][:close_at_time]
-
-    if @motion.update_attributes(safe_values)
-      Events::MotionCloseDateEdited.publish!(@motion, user)
+    if motion.update_attributes(safe_values)
+      Events::MotionCloseDateEdited.publish!(@motion, current_user)
       flash[:success] = t("success.close_date_changed")
     else
       flash[:error] = t("error.invalid_close_date")
     end
-    redirect_to discussion_url(motion.discussion)
+    redirect_to discussion_url(@motion.discussion)
   end
 
   def get_and_clear_new_activity

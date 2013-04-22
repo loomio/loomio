@@ -134,18 +134,13 @@ describe "Discussion" do
       end
 
       it "can view a closed proposal" do
-        motion = Motion.new
-        motion.name = "A new proposal"
-        motion.discussion = @discussion
+        motion = build(:motion, discussion: @discussion)
         motion.author = user
-        motion.save
+        motion.save!
         motion.close!
-
-        motion2 = Motion.new
-        motion2.name = "A new proposal"
-        motion2.discussion = @discussion
-        motion2.author = user
-        motion2.save
+        motion2 = build(:motion, discussion: @discussion)
+        motion.author = user
+        motion.save!
         motion2.close!
 
         visit discussion_path(@discussion)

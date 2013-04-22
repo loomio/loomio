@@ -24,5 +24,6 @@ When /^I select my time_zone and click update$/ do
 end
 
 Then /^my time_zone is stored in the database$/ do
+  @user.reload
   @user.time_zone.should == "Moscow"
 end

@@ -185,7 +185,6 @@ $ ->
         e.preventDefault()
       )
 
-
 collapseHomepageAccordian = () ->
   $(".collapse").collapse()
 
