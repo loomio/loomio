@@ -112,4 +112,6 @@ Loomio::Application.routes.draw do
   resources :woc, only: :index do
     post :send_request, on: :collection
   end
+
+  match 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
 end

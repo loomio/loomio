@@ -2,8 +2,8 @@
 .description-container
   .description-body
     - too_long = true if group.description && group.description.length > 500
-    - long_description = render_rich_text(description_markdown_setting, group.description)
-    - short_description = render_rich_text(description_markdown_setting, truncate(group.description, length: 500, omission: '...', separator: ' '))
+    - long_description = render_rich_text(group.description, description_markdown_setting)
+    - short_description = render_rich_text(truncate(group.description, length: 500, omission: '...', separator: ' '), description_markdown_setting)
     <!--[if IE 7]>
     .long-description.model-description
       ~ long_description
