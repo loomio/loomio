@@ -19,7 +19,7 @@ namespace :stats do
       end
     end
 
-    s3write('groups.csv', file)
+    fogwrite('groups.csv', file)
   end
 
   task :users => :environment do   # Export all users' create dates
@@ -31,7 +31,7 @@ namespace :stats do
       end
     end
 
-    s3write('users.csv', file)
+    fogwrite('users.csv', file)
   end
 
   task :events => :environment do    # Export all events, scramble users, scramble private groups & subgroups
@@ -98,7 +98,7 @@ namespace :stats do
       end
     end
 
-    s3write('events.csv', file)
+    fogwrite('events.csv', file)
   end
 
   task :discussions => :environment do
@@ -109,7 +109,7 @@ namespace :stats do
         csv << [d.id, d.group_id, d.created_at, d.updated_at, d.last_comment_at, scramble(d.author_id)]
       end
     end
-    s3write('discussions.csv', file)
+    fogwrite('discussions.csv', file)
   end
 
   task :discussion_read_logs => :environment do
@@ -120,8 +120,9 @@ namespace :stats do
         csv << [l.id, l.discussion_id, l.created_at, l.discussion_last_viewed_at, scramble(l.user_id)]
       end
     end
-    s3write('discussion_read_logs.csv', file)
+    fogwrite('discussion_read_logs.csv', file)
   end
+
 
   def export_model_to_s3(model, fields)
     require 'csv'
@@ -132,17 +133,28 @@ namespace :stats do
       end
     end
 
-    s3write(model.name + '.csv', file)
+    fogwrite(model.name + '.csv', file)
   end
 
   def scramble(method)
     Digest::MD5.hexdigest(method.to_s)
   end
 
-  def s3write (filename, data)
+  def fogwrite(filename, data)
     name_space = ENV["CANONICAL_HOST"]
     name_space ||= ENV['METRICS_NAMESPACE']
     raise "Please set environment variable METRICS_NAMESPACE or CANONICAL_HOST" if name_space.blank?
-    AWS::S3.new.buckets['loomio-metrics'].objects.create(name_space + '-' + filename, data)
+
+    connection = Fog::Storage.new({
+      :provider                 => 'AWS',
+      :aws_access_key_id        => ENV['AWS_ACCESS_KEY_ID'],
+      :aws_secret_access_key    => ENV['AWS_SECRET_ACCESS_KEY']
+    })
+
+    connection.directories.get('loomio-metrics').files.create(
+      :key    => name_space + '-' + filename,
+      :body   => data,
+      :acl    => 'authenticated-read'
+    )
   end
 end
