@@ -48,6 +48,7 @@ gem 'rinku', '~> 1.7.2'
 gem 'sass-rails',   '~> 3.2.6'
 gem 'coffee-rails', '~> 3.2.2'
 gem 'piwik_analytics', '~> 1.0.1'
+gem 'fog'
 
 # Gems used only for assets and not required
 # in production environments by default.
