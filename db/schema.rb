@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130409020408) do
-=======
-ActiveRecord::Schema.define(:version => 20130403112049) do
->>>>>>> feature/new-group-wizard
+ActiveRecord::Schema.define(:version => 20130418033925) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -158,32 +154,15 @@ ActiveRecord::Schema.define(:version => 20130403112049) do
   create_table "group_setups", :force => true do |t|
     t.string   "group_name"
     t.text     "group_description"
-<<<<<<< HEAD
     t.string   "viewable_by"
     t.string   "members_invitable_by"
-=======
-    t.string   "viewable_by",            :default => "members"
-    t.string   "members_invitable_by",   :default => "admins"
->>>>>>> feature/new-group-wizard
     t.string   "discussion_title"
     t.text     "discussion_description"
     t.string   "motion_title"
     t.text     "motion_description"
-<<<<<<< HEAD
     t.datetime "close_date"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
-=======
-    t.date     "close_at_date"
-    t.string   "close_at_time_zone"
-    t.string   "close_at_time"
-    t.string   "admin_email"
-    t.text     "members_list"
-    t.string   "invite_subject"
-    t.text     "invite_body"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
->>>>>>> feature/new-group-wizard
   end
 
   create_table "groups", :force => true do |t|
@@ -206,11 +185,7 @@ ActiveRecord::Schema.define(:version => 20130403112049) do
     t.string   "other_sector"
     t.integer  "discussions_count",    :default => 0,     :null => false
     t.integer  "motions_count",        :default => 0,     :null => false
-<<<<<<< HEAD
     t.string   "country_name"
-=======
-    t.integer  "creator_id"
->>>>>>> feature/new-group-wizard
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -257,26 +232,16 @@ ActiveRecord::Schema.define(:version => 20130403112049) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
-    t.string   "phase",          :default => "voting", :null => false
-    t.string   "discussion_url", :default => "",       :null => false
-    t.datetime "close_date"
-    t.integer  "discussion_id"
-    t.string   "outcome"
-    t.datetime "last_vote_at"
-    t.boolean  "uses_markdown",  :default => true,     :null => false
-=======
+    t.string   "phase",              :default => "voting", :null => false
     t.string   "discussion_url",     :default => "",       :null => false
     t.datetime "close_at"
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
     t.boolean  "uses_markdown",      :default => true,     :null => false
-    t.string   "phase",              :default => "voting", :null => false
     t.date     "close_at_date"
     t.string   "close_at_time"
     t.string   "close_at_time_zone"
->>>>>>> feature/new-group-wizard
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
@@ -334,11 +299,8 @@ ActiveRecord::Schema.define(:version => 20130403112049) do
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
     t.integer  "memberships_count",                                           :default => 0,          :null => false
-<<<<<<< HEAD
     t.boolean  "uses_markdown",                                               :default => false
-=======
     t.string   "time_zone"
->>>>>>> feature/new-group-wizard
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
