@@ -1,0 +1,17 @@
+%h1 #{@invitation.inviter_name} invited you to join #{@invitation.group_name} on Loomio
+.signup-form
+  %p New to Loomio? You'll need to set up an account before you can join you group.
+  =simple_form_for(@user, url: user_registration_path) do |f|
+    =f.input :name
+    =f.input :email
+    =f.input :password
+    =f.input :password_confirmation, label: 'Confirm Password'
+    =f.submit t("devise.registrations.sign_up")
+
+.signin-form
+  %p Already a loomio user? Sign in here:
+  =simple_form_for(@user, url: user_session_path) do |f|
+    =f.input :email
+    =f.input :password
+    =f.submit t("devise.sessions.sign_in")
+    / =f.submit t("devise.sessions.sign_in"

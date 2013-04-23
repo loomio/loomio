@@ -1,25 +1,18 @@
 #motion-form
   = simple_form_for @motion, validate: true do |f|
-    %h2= t "motion_form.header"
+    %p= t "motion_form.name_helper"
+    .row
+      .span9
+        .control-group#closing-inputs
+          = f.input :close_at_date, as: :date_picker, label: t(:closing), input_html: { class: 'validate-motion-close-date' }
+          = f.input :close_at_time, as: :select, collection: populate_time_select, include_blank: false, label: false
+          = f.time_zone_select :close_at_time_zone, id: 'time-zone-select', label: false
+          %span.inline-help= t(:proposal_close_date_error)
     .row
       .span5
-        = f.input :name, id: "motion-name"
-      .span5
-        %p= t "motion_form.name_helper"
-
-    .row
-      .span5
-        #closing-inputs
-          .control-group
-            = f.label :close_date, t(:closing), {class: "control-label", for: "date-input", id: "close-date-label"}
-            = text_field_tag :input_date, nil, class: "date-input validate-motion-close-date inputError"
-            = select_hour(@input_time, ampm: true)
-            %span.date-error-message= t(:proposal_close_date_error)
-
         #description
           = f.input :description
 
-        = f.input :close_date, as: :hidden
         = f.input :phase, as: :hidden, input_html: {value: "voting"}
         = f.input :facilitator_id, as: :hidden, input_html: {value: current_user.id}
         = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}

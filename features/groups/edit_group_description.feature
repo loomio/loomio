@@ -3,6 +3,7 @@ Feature: User edits group description
   I want to be able to edit the group description
   So I can provide a clear context for the group
 
+  @javascript
   Scenario: User edits the group description
     Given I am logged in
     And there is a discussion in a group I belong to

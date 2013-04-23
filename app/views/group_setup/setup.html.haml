@@ -1,0 +1,104 @@
+.row
+  .span9#group-setup
+    = simple_form_for @group_setup, url: finish_group_path, method: :put do |f|
+      %ul.nav.nav-tabs
+        %li.disabled.active
+          %a{ href: "#group-tab" }
+            Set up your group
+        %li.disabled
+          %a{ href: "#discussion-tab" }
+            Start a discussion
+        %li.disabled
+          %a{ href: "#motion-tab" }
+            Start a decision
+        %li.disabled
+          %a{ href: "#invite-tab" }
+            Invite your group
+      .tab-content#wizard-tabs
+        .tab-pane.active#group-tab
+          .row
+            .span9
+              %h1 Set up your group
+              .control-group
+                = f.input :group_name, input_html: { class: 'validate-presence' }
+                %span.inline-help Please fill in the group title
+              .control-group
+                = f.input :group_description, input_html: { class: 'validate-presence', :placeholder => "What is the purpose of your group?" }
+                %span.inline-help Please fill in the group description
+              %h2 Settings
+          .row
+            .span5
+              %p Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term.
+              = f.input :viewable_by, :collection => {'Public - anyone with the link can see this group' => 'everyone', 'Members - only members of this group can see it' => 'members'}, :as => 'radio_buttons', :label => "Who can see this group?"
+              %br
+              = f.input :members_invitable_by, :label => "Who can invite members to this group?", :as => "radio_buttons", :collection => {'All group members' => 'members', 'Admins only' => 'admins'}
+        .tab-pane#discussion-tab
+          .row
+            .span5
+              %h1 Set up your first discussion
+              %p Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term.
+          .row
+            .span9
+              .control-group
+                = f.input :discussion_title, input_html: { class: 'validate-presence', :placeholder => "What is the topic you would like to discuss?" }
+                %span.inline-help Please fill in the discussion title
+              .control-group
+                = f.input :discussion_description, input_html: { class: 'validate-presence', :placeholder => "Introduce the topic and give enough context for your group to have a well-informed discussion." }
+                %span.inline-help Please fill in the discussion description
+        .tab-pane#motion-tab
+          .row
+            .span5
+              %h1 Start a decision
+              %p Often you’d wait for the discussion to progress for a while before making a proposal for your group to decide on. For the first discussion however, it’s a good idea to have a proposal open for everyone to participate in.
+              %p A good proposal contains a plan of action for the group. Make your proposal as clear and succinct as possible so people know exactly what it means when they agree or disagree.
+              %p You can set up your first proposal here:
+          .row
+            .span9
+              .control-group
+                = f.input :motion_title, input_html: { class: 'validate-presence', :placeholder => "Make this as clear and succinct as possible." }
+                %span.inline-help Please fill in the motion title
+              .control-group
+                = f.input :motion_description, input_html: { class: 'validate-presence', :placeholder => "Give enough information so that anyone in your group can make a well-informed decision." }
+                %span.inline-help Please fill in the motion description
+              .control-group#closing-inputs
+                = f.input :close_at_date, as: :date_picker, label: 'Close date', input_html: { class: 'validate-motion-close-date' }
+                = f.input :close_at_time, as: :select, collection: populate_time_select, include_blank: false, label: false
+                = f.time_zone_select :close_at_time_zone, label: false, id: 'time-zone-select'
+                %span.inline-help Please give a future close date
+        .tab-pane#invite-tab
+          .row
+            .span9
+              %h1 Invite users
+              .control-group
+                = f.input :admin_email, input_html: { class: 'validate-presence', :value => current_user.email }
+                %span.inline-help Please fill in the an administrator email address
+              .control-group
+                = f.input :members_list, input_html: { class: 'validate-presence', placeholder: "User Name <user1@example.com>, user2@example.com" }
+                %span.inline-help Please fill in the invited email addresse(s)
+              .control-group
+                = f.input :invite_subject, input_html: { class: 'validate-presence', :value => "Your invitation to participate in the #{@group_setup.group_name} group on Loomio" }
+                %span.inline-help Please fill in the subject for the invite
+          .row
+            .span5#invite-body
+              .control-group
+                = f.input :invite_body, value: "I've just set up our group to make decisions onine using a new tool called Loomio. It will help us get stuff done without having to meet in person or drown in emails."
+                %p Click the link below to accept the invitation:
+                %p [http://loomio.org/token]
+                %p Loomio is a tool for collaborative decisions-making. You can see more about how Loomio works here: http://loomio.org/how-it-works
+                %p To get started, I've opened up a new decision:
+                = @group_setup.motion_title
+                = @group_setup.motion_description
+
+                %p Click the invitation link above to sign in and have your say!
+                %br
+                %p Regards,
+                = @current_user.name
+                %p= @group_setup.group_name
+      .row
+        .span5
+          = f.submit 'Send invites', class: 'btn btn-info btn-large', id: 'send_invites', :data => { :disable_with => "Send invites" }
+          = link_to 'Next', '#', class: 'btn btn-info btn-large', id: 'next'
+          = link_to 'Back', '#', class: 'btn btn-warning btn-large', id: 'prev'
+      .row
+        .span5
+          = "saved x minutes ago"

@@ -1,4 +1,8 @@
 en:
+  date:
+    formats:
+      datepicker: "%d-%m-%Y"
+
   errors:
     messages:
       email: "Not a valid email address"

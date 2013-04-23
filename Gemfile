@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 gem 'rails', '~> 3.2.13'
 gem 'haml-rails', '~> 0.4'
 gem 'devise', '~> 2.2.3'
-gem 'devise_invitable', '~> 1.0.0'
 gem 'pg', '~> 0.14.1'
 gem 'capistrano', '~> 2.9.0'
 gem 'jquery-rails', '~> 1.0.19'
@@ -41,13 +40,15 @@ gem 'hirefireapp', '~> 0.0.8'
 gem 'foreman', '~> 0.60.2'
 gem 'aws-sdk', '~> 1.8.5'
 gem 'rinku', '~> 1.7.2'
+gem 'piwik_analytics', '~> 1.0.1'
+gem 'friendly_id', '~> 4.0.9'
+
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
 #
 #       https://github.com/rails/sass-rails/issues/38#issuecomment-2046678
 gem 'sass-rails',   '~> 3.2.6'
 gem 'coffee-rails', '~> 3.2.2'
-gem 'piwik_analytics', '~> 1.0.1'
 
 # Gems used only for assets and not required
 # in production environments by default.

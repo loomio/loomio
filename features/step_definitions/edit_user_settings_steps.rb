@@ -17,3 +17,12 @@ end
 Then /^I upload a profile image$/ do
   pending "TODO: write test for image upload"
 end
+
+When /^I select my time_zone and click update$/ do
+  select "(GMT+04:00) Moscow", from: 'user_time_zone'
+  click_on 'Update'
+end
+
+Then /^my time_zone is stored in the database$/ do
+  @user.time_zone.should == "Moscow"
+end

@@ -127,7 +127,7 @@ describe Discussion do
     end
     context "where motion close date has past" do
       before do
-        @motion.close_date = Time.now
+        @motion.close_at = Time.now
         @motion.save
       end
       it "does not return motion" do

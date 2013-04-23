@@ -14,13 +14,26 @@ FactoryGirl.define do
     end
   end
 
+  factory :admin_user, class: User do
+    sequence(:email) { Faker::Internet.email }
+    sequence(:name) { Faker::Name.name }
+    password 'password'
+    is_admin {true}
+    after(:build) do |user|
+      user.generate_username
+    end
+  end
+
   factory :group do
     sequence(:name) { Faker::Name.name }
     description 'A description for this group'
-    association :creator, :factory => :user
     viewable_by :everyone
-    before(:create) do |group|
-      group.parent.add_member!(group.creator) if group.parent
+    after(:create) do |group, evaluator|
+      user = FactoryGirl.create(:user)
+      if group.parent.present?
+        group.parent.admins << user
+      end
+      group.admins << user
     end
   end
 
@@ -60,6 +73,9 @@ FactoryGirl.define do
     phase 'voting'
     description 'Fake description'
     discussion
+    close_at_date '24-12-2044'
+    close_at_time '16:00'
+    close_at_time_zone 'Wellington'
     after(:build) do |motion|
       motion.group.parent.add_member!(motion.author) if motion.group.parent
       motion.group.add_member!(motion.author)
@@ -87,15 +103,35 @@ FactoryGirl.define do
   end
 
   factory :group_request do
-    name Faker::Name.name
-    expected_size 50
-    description "MyText"
+    sequence(:admin_name) { Faker::Name.name }
     admin_email Faker::Internet.email
-    distribution_metric 3
-    sectors_metric ["community"]
+    country_name "nz"
+    sectors ["community"]
+    name Faker::Name.name
+    description "MyText"
+    expected_size 50
+    cannot_contribute false
+  end
+
+  factory :group_setup do
+    group
+    group_name Faker::Name.name
+    group_description "My text outlining the group"
+    viewable_by :members
+    members_invitable_by :admins
+    discussion_title Faker::Name.name
+    discussion_description "My text outlining the discussion"
+    motion_title Faker::Name.name
+    motion_description "My text outlining the proposal"
+    close_at Time.now + 3.days
+    admin_email Faker::Internet.email
+    members_list "#{Faker::Internet.email}, #{Faker::Internet.email}"
+    invite_subject "Welcome to our world"
+    invite_body "Please entertain me"
   end
 
   factory :invitation do
-    group_request
+    recipient_email { Faker::Internet.email }
+    association :inviter, factory: :user
   end
 end

@@ -203,27 +203,6 @@ describe User do
     end
   end
 
-  describe "inviting user to Loomio and to group" do
-    before do
-      @inviter = create :user
-      @group = create :group
-      @user = User.invite_and_notify!({email: "foo@example.com"}, @inviter, @group)
-    end
-
-    it "adds user to group" do
-      @group.invited_users.should include(@user)
-    end
-
-    it "adds inviter to membership" do
-      @user.memberships.first.inviter.should == @inviter
-    end
-  end
-
-  it "invited user should have email as name" do
-    user = User.invite_and_notify!({email: "foo@example.com"}, create(:user), create(:group))
-    user.name.should == user.email
-  end
-
   it "can find user by email (case-insensitive)" do
     user = create(:user, email: "foobar@example.com")
     User.find_by_email("foObAr@exaMPLE.coM").should == user
