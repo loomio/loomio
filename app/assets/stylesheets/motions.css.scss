@@ -103,7 +103,8 @@
     width: 305px;
   }
   .motion-header-info {
-    width: 275px
+    width: 270px;
+    padding-right: 5px;
   }
   .motion-admin-buttons {
     width: 125px;
@@ -127,7 +128,6 @@
   }
   #outcome-statement {
     color: $dark-grey;
-    margin: 10px 0px;
     textarea {
       width: 390px;
       max-width: 390px;
@@ -166,7 +166,7 @@
     font-size: $font-small;
     margin-bottom: 20px;
   }
-  .description { width: 403px; }
+  .description { width: 380px; }
   .description p{
     //font-size: $font-small;
     color: $dark-grey;
