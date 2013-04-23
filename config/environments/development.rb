@@ -40,16 +40,4 @@ Loomio::Application.configure do
   #config.assets.compile = false
   #config.assets.digest = true
   #config.assets.precompile += %w(active_admin.css active_admin.js frontpage.js frontpage.css active_admin.css)
-
-  # Store avatars on Amazon S3
-  config.paperclip_defaults = {
-    :storage => :fog,
-    :fog_credentials => {
-      :provider => 'AWS',
-      :aws_access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-    },
-    :fog_directory => ENV['AWS_UPLOADS_BUCKET'],
-    :fog_public => true
-  }
 end
