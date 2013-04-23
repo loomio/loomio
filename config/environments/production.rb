@@ -86,12 +86,13 @@ Loomio::Application.configure do
 
   # Store avatars on Amazon S3
   config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_protocol => 'https',
-    :s3_credentials => {
-      :bucket => ENV['AWS_UPLOADS_BUCKET'],
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-    }
+    :storage => :fog,
+    :fog_credentials => {
+      :provider => 'AWS',
+      :aws_access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    :fog_directory => ENV['AWS_UPLOADS_BUCKET'],
+    :fog_public => true
   }
 end
