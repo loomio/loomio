@@ -1,3 +1,9 @@
 .page-title
   %h1= link_to @motion.name, discussion_path(@motion.discussion)
-= render 'form', motion: @motion, vote: @vote, form_title: t("vote_form.header")
+.row#vote-form
+  .span5
+    = render 'form', motion: @motion, vote: @vote, form_title: t("vote_form.header")
+  - if @motion.description.present?
+    .span5.offset1
+      %h3 Proposal details
+      = @motion.description
