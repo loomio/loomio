@@ -139,7 +139,7 @@ describe "Discussion" do
         motion.close_at_date = (Date.today - 3.days).strftime("%d-%m-%Y")
         motion.close_at_time = '16:00'
         motion.close_at_time_zone = 'Wellington'
-        motion.save
+        motion.save!
         motion.close!
         motion2 = build(:motion, discussion: @discussion)
         motion.author = user
