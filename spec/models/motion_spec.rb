@@ -211,7 +211,7 @@ describe Motion do
   describe "#users_who_did_not_vote" do
     it "returns users who did not vote" do
       @user1 = create :user
-      @group = create :group, :creator => @user1
+      @group = create :group
       @discussion = create(:discussion, group: @group, author: @user1)
       @motion1 = create(:motion, name: "hi",
                                 author: @user1,

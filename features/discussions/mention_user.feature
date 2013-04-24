@@ -7,6 +7,7 @@ Background:
   And I am a member of a group
   And there is a discussion in the group
 
+@javascript
 Scenario: User selects a group member to mention
   Given "Harry" is a member of the group
   And "harrysfriend@example.com" has been invited to the group but has not accepted
@@ -16,6 +17,7 @@ Scenario: User selects a group member to mention
   And I click on "@harry" in the menu that pops up
   And I should see "@harry" added to the "new-comment" field
 
+@javascript
 Scenario: User mentions a group member
   Given "Harry" is a member of the group
   And no emails have been sent
@@ -26,6 +28,7 @@ Scenario: User mentions a group member
   Then harry should get an email saying I mentioned him
   And the user should be notified that they were mentioned
 
+@javascript
 Scenario: User tries to mention a group non-member
   Given "Harry" is not a member of the group
   When I visit the discussion page

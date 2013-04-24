@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 gem 'rails', '~> 3.2.13'
 gem 'haml-rails', '~> 0.4'
 gem 'devise', '~> 2.2.3'
-gem 'devise_invitable', '~> 1.0.0'
 gem 'pg', '~> 0.14.1'
 gem 'capistrano', '~> 2.9.0'
 gem 'jquery-rails', '~> 1.0.19'
@@ -11,6 +10,7 @@ gem 'jquery-scrollto-rails', '~> 1.4.2'
 gem 'inherited_resources', '~> 1.3.0'
 gem 'formtastic' # Deprecated - use simple_form instead.
 gem 'simple_form', '~> 2.0.4'
+gem 'country_select', '~> 1.1.3'
 gem 'client_side_validations', '~> 3.2.1'
 gem 'client_side_validations-simple_form', '~> 2.0.1'
 gem 'jqplot-rails', '~> 0.1'
@@ -41,6 +41,9 @@ gem 'hirefireapp', '~> 0.0.8'
 gem 'foreman', '~> 0.60.2'
 gem 'aws-sdk', '~> 1.8.5'
 gem 'rinku', '~> 1.7.2'
+gem 'piwik_analytics', '~> 1.0.1'
+gem 'friendly_id', '~> 4.0.9'
+
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
 #

@@ -41,6 +41,7 @@ When /^I visit the subgroup page$/ do
 end
 
 When /^I click add new member$/ do
+  find("#group-member-options").click
   find("#group-add-members").click
 end
 
@@ -74,7 +75,7 @@ Then /^I should see "(.*?)" listed in the invited list$/ do |email|
 end
 
 Then /^I should not see the add member button$/ do
-  find("#add-members").should_not have_content("#group-add-members")
+  page.should_not have_content("#group-add-members")
 end
 
 Then /^I should not see the invited user list$/ do

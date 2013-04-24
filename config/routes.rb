@@ -1,20 +1,39 @@
 Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: { sessions: 'users/sessions', invitations: 'users/invitations' }
+  devise_for :users, controllers: { sessions: 'users/sessions' }
+
+  resources :invitations, only: [:show]
 
   resources :group_requests, only: [:create, :new] do
+    get :verify, on: :member
     get :start_new_group, on: :member
   end
+  
   match "/request_new_group", to: "group_requests#start", as: :request_new_group
   match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
 
   resources :groups, except: [:index, :new] do
-    get :setup, on: :member, to: 'group_setup#setup'
-    put :finish, on: :member, to: 'group_setup#finish'
+    resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
+    resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
+      member do
+       post :make_admin
+       post :remove_admin
+
+       # these three (and #new) are for membership requests which I hope to split off into a new class
+       post :approve_request, as: :approve_request_for
+       post :ignore_request, as: :ignore_request_for
+       post :cancel_request, as: :cancel_request_for
+      end
+    end
+
+    get :setup, on: :member, to: 'groups/group_setup#setup'
+    put :finish, on: :member, to: 'groups/group_setup#finish'
+
     post :add_members, on: :member
     get :add_subgroup, on: :member
-    resources :motions#, name_prefix: "groups_"
+
+    resources :motions
     resources :discussions, only: [:index, :new]
     get :request_membership, on: :member
     post :email_members, on: :member
@@ -49,13 +68,6 @@ Loomio::Application.routes.draw do
     post :mark_as_viewed, :on => :collection, :via => :post
   end
 
-  resources :memberships, except: [:new, :update, :show] do
-    post :make_admin, on: :member
-    post :remove_admin, on: :member
-    post :approve_request, on: :member, as: :approve_request_for
-    post :ignore_request, on: :member, as: :ignore_request_for
-    post :cancel_request, on: :member, as: :cancel_request_for
-  end
 
   resources :users do
     put :edit_name, on: :member
@@ -76,9 +88,10 @@ Loomio::Application.routes.draw do
     post :like, on: :member
     post :unlike, on: :member
   end
+
   match "/settings", :to => "users#settings", :as => :user_settings
-  match 'email_preferences', :to => "email_preferences#edit", :as => :email_preferences, :via => :get
-  match 'email_preferences', :to => "email_preferences#update", :as => :update_email_preferences, :via => :put
+  match 'email_preferences', :to => "users/email_preferences#edit", :as => :email_preferences, :via => :get
+  match 'email_preferences', :to => "users/email_preferences#update", :as => :update_email_preferences, :via => :put
 
   # route logged in user to dashboard
   resources :dashboard, only: :show
@@ -100,12 +113,12 @@ Loomio::Application.routes.draw do
   #redirect old pages:
   match '/pages/how*it*works' => redirect('/pages/home#how')
   match '/pages/get*involved' => redirect('/pages/home#who')
+  match '/how*it*works' => redirect('/pages/home#how')
+  match '/get*involved' => redirect('/pages/home#who')
   match '/pages/about' => redirect('/pages/home#who')
   match '/pages/contact' => redirect('/pages/home#who')
   match '/pages/blog' => redirect('/pages/home/blog')
   match '/pages/privacy' => redirect('/pages/home/privacy')
-  match '/how*it*works' => redirect('/pages/home#how')
-  match '/get*involved' => redirect('/pages/home#who')
   match '/about' => redirect('/pages/home#who')
   match '/contact' => redirect('/pages/home#who')
   match '/demo' => redirect('/')

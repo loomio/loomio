@@ -12,8 +12,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, #:registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :validatable
 
   validates :name, :presence => true
   validates :email, :presence => true
@@ -164,17 +163,6 @@ class User < ActiveRecord::Base
   def mark_notifications_as_viewed!(latest_viewed_id)
     unviewed_notifications.where("id <= ?", latest_viewed_id).
       update_all(:viewed_at => Time.now)
-  end
-
-  def self.invite_and_notify!(user_params, inviter, group)
-    new_user = User.invite!(user_params, inviter) do |u|
-      u.skip_invitation = true
-    end
-    if new_user.errors.empty?
-      membership = group.add_member! new_user, inviter
-      UserMailer.invited_to_loomio(new_user, inviter, group).deliver
-    end
-    new_user
   end
 
   def discussions_with_current_motion_not_voted_on

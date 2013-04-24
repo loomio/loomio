@@ -3,8 +3,7 @@ class AddAsciiConversionsInUsernames < ActiveRecord::Migration
     def generate_username
       ensure_name_entry if name.nil?
       if name.include? '@'
-        #email used in place of name
-        email_str = email.split("@").first 
+        email_str = email.split("@").first
         new_username = email_str.parameterize.gsub(/[^a-z0-9]/, "")
       else
         new_username = name.parameterize.gsub(/[^a-z0-9]/, "")
@@ -18,7 +17,6 @@ class AddAsciiConversionsInUsernames < ActiveRecord::Migration
       end
       self.username = username_tmp
       save
-      end
     end
 
     def ensure_name_entry

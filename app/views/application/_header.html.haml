@@ -44,7 +44,7 @@
                       - if notifications.empty?
                         %li.notifications-placeholder= t :empty_notifications
                       - notifications.each do |notification|
-                        = render notification
+                        = render partial: '/notifications/notification', locals: {:notification => notification}
                   %li#notifications-see-more= link_to t(:see_all_notifications), notifications_path
 
             %li.nav-item.dropdown#user

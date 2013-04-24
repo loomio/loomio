@@ -8,19 +8,21 @@ class Group < ActiveRecord::Base
   validates_presence_of :name
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
-  validate :limit_inheritance
   validates :description, :length => { :maximum => 250 }
   validates :name, :length => { :maximum => 250 }
   validates :max_size, presence: true, if: :is_a_parent?
+
+  validate :limit_inheritance
   validate :max_size_is_nil, if: :is_a_subgroup?
 
   serialize :sectors_metric, Array
 
   after_initialize :set_defaults
   before_validation :set_max_group_size, on: :create
-  after_create :add_creator_as_admin
 
   default_scope where(:archived_at => nil)
+
+  has_one :group_request
 
   has_many :memberships,
     :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
@@ -28,19 +30,28 @@ class Group < ActiveRecord::Base
     :extend => GroupMemberships,
     :include => :user,
     :order => "LOWER(users.name)"
+
   has_many :membership_requests,
     :conditions => {:access_level => 'request'},
     :class_name => 'Membership',
     :dependent => :destroy
+
   has_many :admin_memberships,
     :conditions => {:access_level => 'admin'},
     :class_name => 'Membership',
     :dependent => :destroy
-  has_many :users, :through => :memberships, # TODO: rename to members
-           :conditions => { :invitation_token => nil }
-  has_many :invited_users, :through => :memberships, source: :user,
-           :conditions => "invitation_token is not NULL"
-  has_many :users_and_invited_users, through: :memberships, source: :user
+
+  has_many :members, 
+           through: :memberships,
+           source: :user,
+           conditions: { :invitation_token => nil }
+
+  has_many :pending_invitations,
+           class_name: 'Invitation',
+           conditions: {accepted_at: nil}
+
+  alias :users :members
+
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, :dependent => :destroy
@@ -59,12 +70,9 @@ class Group < ActiveRecord::Base
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
 
-  belongs_to :creator,  :class_name => "User"
-
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
   delegate :name, :to => :parent, :prefix => true
-  delegate :email, :to => :creator, :prefix => true
 
   #
   # ACCESSOR METHODS
@@ -89,6 +97,10 @@ class Group < ActiveRecord::Base
 
   def viewable_by=(value)
     write_attribute(:viewable_by, value.to_s)
+  end
+
+  def members_can_invite?
+    members_invitable_by == :members
   end
 
   def members_invitable_by
@@ -116,22 +128,8 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def admin_email
-    if admins.exists?
-      admins.first.email
-    elsif creator
-      creator.email
-    else
-      "noreply@loomio.org"
-    end
-  end
-
   def parent_members_visible_to(user)
-    if user.can?(:add_members, parent)
-      parent.users_and_invited_users.sorted_by_name
-    else
-      parent.users.sorted_by_name
-    end
+    parent.users.sorted_by_name
   end
 
   #
@@ -167,6 +165,26 @@ class Group < ActiveRecord::Base
     false
   end
 
+  def is_top_level?
+    parent.blank?
+  end
+
+  def is_sub_group?
+    parent.present?
+  end
+
+  def is_a_parent?
+    parent.nil?
+  end
+
+  def is_a_subgroup?
+    parent.present?
+  end
+
+  def admin_email
+    admins.first.email
+  end
+
   #
   # MEMBERSHIP METHODS
   #
@@ -178,7 +196,6 @@ class Group < ActiveRecord::Base
   def add_request!(user)
     if user_can_join?(user) && !user_membership_or_request_exists?(user)
       membership = user.memberships.create!(:group_id => id)
-      GroupMailer.new_membership_request(membership).deliver
       membership
     end
   end
@@ -189,9 +206,10 @@ class Group < ActiveRecord::Base
     membership
   end
 
-  def add_admin!(user)
+  def add_admin!(user, inviter = nil)
     membership = find_or_build_membership_for_user(user)
     membership.make_admin!
+    membership.inviter = inviter if inviter.present?
     membership
   end
 
@@ -213,13 +231,6 @@ class Group < ActiveRecord::Base
     is_a_parent? || user_is_a_parent_member?(user)
   end
 
-  def is_a_parent?
-    parent.nil?
-  end
-
-  def is_a_subgroup?
-    parent.present?
-  end
 
   def user_is_a_parent_member? user
     user.group_membership(parent)
@@ -276,10 +287,6 @@ You'll be prompted to make a short statement about the reason for your decision.
     self.viewable_by ||= :members if parent.nil?
     self.viewable_by ||= :parent_group_members unless parent.nil?
     self.members_invitable_by ||= :members
-  end
-
-  def add_creator_as_admin
-    add_admin! creator unless creator == User.loomio_helper_bot
   end
 
   # Validators

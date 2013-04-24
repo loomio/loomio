@@ -7,12 +7,21 @@ class StartGroupMailer < ActionMailer::Base
   #   en.group_invitation_mailer.invite_member.subject
   #
 
-  def invite_admin_to_start_group(group_request)
+  def verification(group_request)
     @group_request = group_request
-    @group = group_request.group
     @token = group_request.token
 
     mail to: group_request.admin_email,
-         subject: "Invitation to join Loomio (#{@group.name})"
+         subject: "Please confirm your Loomio group request"
+  end
+
+  def invite_admin_to_start_group(invitation, message_body)
+    @invitation = invitation
+    @group = invitation.group
+    @token = invitation.token
+    @message_body = message_body
+
+    mail to: invitation.recipient_email,
+         subject: "Invitation to start Loomio group #{@group.name}"
   end
 end

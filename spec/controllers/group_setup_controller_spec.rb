@@ -59,6 +59,11 @@ describe GroupSetupController do
       it "redirects to the finished page" do
         post :finish, group_setup: [ group_name: "plink" ]
         response.should render_template('finished')
+
+      it "redirects to the group page" do
+        post :finish, id: group_setup.group_id,
+                      group_setup: { group_name: group_setup.group_name }
+        response.should redirect_to(group_path(group_setup.group_id))
       end
     end
 
@@ -66,6 +71,10 @@ describe GroupSetupController do
       before do
         group_setup.stub(:finish!).and_return(false)
         post :finish, group_setup: [ group_name: "plink" ]
+      end
+
+      it "renders a flash message could not complete" do
+        flash[:error].should match("Set up could not complete.")
       end
 
       it "renders the setup page" do

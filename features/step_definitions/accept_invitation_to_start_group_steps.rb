@@ -1,10 +1,15 @@
 Given /^I have requested to start a loomio group$/ do
   @admin_email = @user ? @user.email : "test@example.org"
-  @group_request = FactoryGirl.create :group_request, admin_email: @admin_email
+  @group_request = FactoryGirl.create :group_request, admin_email: @admin_email, status: 'verified'
+  reset_mailer
 end
 
 Given /^the group request has been approved$/ do
-  @group_request.approve!
+  @approver = FactoryGirl.create :user
+  @group_request.verify!
+  setup_group = SetupGroup.new(@group_request)
+  setup_group.approve_group_request(approved_by: @approver)
+  setup_group.send_invitation_to_start_group!('{group_invitation_link}')
   @group = @group_request.group
 end
 
