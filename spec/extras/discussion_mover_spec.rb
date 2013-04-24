@@ -7,8 +7,8 @@ describe DiscussionMover do
       @parent = create :group
       @subgroup = create :group, parent: @parent
       @subgroup1 = create :group, parent: @parent
-      @parent.add_admin(@user)
-      @subgroup.add_admin(@user)
+      @parent.add_admin!(@user)
+      @subgroup.add_admin!(@user)
     end
 
     context "the discussion is in a parent group" do

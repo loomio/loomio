@@ -15,7 +15,6 @@ describe "GroupSetup" do
       group.description.should == group_setup.group_description
       group.viewable_by.should == group_setup.viewable_by
       group.members_invitable_by.should == group_setup.members_invitable_by
-      group.creator.should == author
     end
   end
 

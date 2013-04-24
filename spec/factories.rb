@@ -1,4 +1,3 @@
-
 FactoryGirl.define do
   factory :membership do |m|
     m.user { |u| u.association(:user)}
@@ -111,25 +110,6 @@ FactoryGirl.define do
     description "MyText"
     expected_size 50
     cannot_contribute false
-  end
-
-  factory :group_setup do
-    group
-    group_name Faker::Name.name
-    group_description "My text outlining the group"
-    viewable_by :members
-    members_invitable_by :admins
-    discussion_title Faker::Name.name
-    discussion_description "My text outlining the discussion"
-    motion_title Faker::Name.name
-    motion_description "My text outlining the proposal"
-    close_at_date '24-12-2044'
-    close_at_time '16:00'
-    close_at_time_zone 'Wellington'
-    admin_email Faker::Internet.email
-    members_list "#{Faker::Internet.email}, #{Faker::Internet.email}"
-    invite_subject "Welcome to our world"
-    invite_body "Please entertain me"
   end
 
   factory :group_setup do

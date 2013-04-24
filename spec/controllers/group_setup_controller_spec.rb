@@ -37,12 +37,14 @@ describe GroupSetupController do
       group_setup.stub(:finish!).and_return(true)
       group_setup.stub(:send_invitations)
       group_setup.should_receive(:update_attributes)
-      post :finish, group_setup: [ group_name: "plink" ]
+      post :finish, id: group_setup.group_id,
+                      group_setup: [ group_name: "plink" ]
     end
 
     it "calls finish! on the group_setup" do
       group_setup.should_receive(:finish!)
-      post :finish, group_setup: [ group_name: "plink" ]
+      post :finish, id: group_setup.group_id,
+                      group_setup: [ group_name: "plink" ]
     end
 
     context "completes successfully" do
@@ -53,16 +55,19 @@ describe GroupSetupController do
 
       it "calls send_invitations for the group_setup" do
         group_setup.should_receive(:send_invitations)
-        post :finish, group_setup: [ group_name: "plink" ]
+        post :finish, id: group_setup.group_id,
+                      group_setup: [ group_name: "plink" ]
       end
 
       it "redirects to the finished page" do
-        post :finish, group_setup: [ group_name: "plink" ]
+        post :finish, id: group_setup.group_id,
+                      group_setup: [ group_name: "plink" ]
         response.should render_template('finished')
+      end
 
       it "redirects to the group page" do
         post :finish, id: group_setup.group_id,
-                      group_setup: { group_name: group_setup.group_name }
+                      group_setup: [ group_name: "plink" ]
         response.should redirect_to(group_path(group_setup.group_id))
       end
     end
@@ -70,7 +75,8 @@ describe GroupSetupController do
     context "does not complete successfully" do
       before do
         group_setup.stub(:finish!).and_return(false)
-        post :finish, group_setup: [ group_name: "plink" ]
+        post :finish, id: group_setup.group_id,
+                      group_setup: [ group_name: "plink" ]
       end
 
       it "renders a flash message could not complete" do

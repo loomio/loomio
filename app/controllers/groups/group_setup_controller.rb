@@ -10,6 +10,8 @@ class GroupSetupController < BaseController
     if @group_setup.finish!(current_user)
       @group_setup.send_invitations
       render 'finished'
+    else
+      render 'setup'
     end
   end
 end
