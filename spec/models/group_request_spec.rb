@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe GroupRequest do
+  let(:user) { create(:user) }
+
   before do
     StartGroupMailer.stub_chain(:verification, :deliver)
     @group_request = build(:group_request)
@@ -19,11 +21,6 @@ describe GroupRequest do
     end
   end
 
-  it 'should send a verification email' do
-    StartGroupMailer.should_receive(:verification).with(@group_request)
-    @group_request.save!
-  end
-
   it "marks spam as spam" do
     @group_request.robot_trap = "spammy"
     @group_request.save
@@ -40,7 +37,6 @@ describe GroupRequest do
 
   describe "#accept!(user)" do
     let(:group) { mock_model(Group) }
-    let(:user) { stub(:user) }
 
     before do
       group.stub(:add_admin!)
@@ -107,8 +103,8 @@ describe GroupRequest do
     end
 
     it "can later be approved" do
-      @group_request.should_receive(:approve_request)
-      @group_request.approve!
+      @group_request.should_receive(:approve_request!)
+      @group_request.approve!(approved_by: user)
     end
 
     it "can set the status to marked_as_smanually_approved" do
@@ -130,8 +126,8 @@ describe GroupRequest do
     end
 
     it "can later be approved" do
-      @group_request.should_receive(:approve_request)
-      @group_request.approve!
+      @group_request.should_receive(:approve_request!)
+      @group_request.approve!(approved_by: user)
     end
 
     it "can later be marked as manually_approved" do
@@ -204,8 +200,8 @@ describe GroupRequest do
     end
 
     it "can later be approved" do
-      @group_request.should_receive(:approve_request)
-      @group_request.approve!
+      @group_request.should_receive(:approve_request!)
+      @group_request.approve!(approved_by: user)
     end
 
     it "can set the status to marked_as_smanually_approved" do
@@ -227,8 +223,8 @@ describe GroupRequest do
     end
 
     it "can later be approved" do
-      @group_request.should_receive(:approve_request)
-      @group_request.approve!
+      @group_request.should_receive(:approve_request!)
+      @group_request.approve!(approved_by: user)
     end
 
     it "can later be marked as manually_approved" do

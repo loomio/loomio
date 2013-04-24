@@ -7,7 +7,7 @@ class GroupRequestsController < BaseController
 
   def create
     @group_request = GroupRequest.new(params[:group_request])
-    if @group_request.save
+    if @group_request.save!
       StartGroupMailer.verification(@group_request).deliver
       redirect_to group_request_confirmation_url
     else
@@ -20,7 +20,12 @@ class GroupRequestsController < BaseController
 
   def verify
     group_request = GroupRequest.find_by_token(params[:token])
-    group_request.verify!
+    if group_request.unverified?
+      group_request.verify!
+      render 'verify'
+    else
+      render 'invitation_accepted_error_page'
+    end
   end
 
   def start_new_group

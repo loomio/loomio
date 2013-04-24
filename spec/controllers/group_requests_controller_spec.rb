@@ -20,6 +20,12 @@ describe GroupRequestsController do
   end
 
   describe "#create" do
+    before { StartGroupMailer.stub_chain(:verification, :deliver).and_return(true) }
+
+    it 'should send a verification email' do
+      StartGroupMailer.should_receive(:verification).with(group_request)
+      put :create, group_request: group_request.attributes
+    end
     it "should redirect to the confirmation page" do
       put :create, group_request: group_request.attributes
       response.should redirect_to(group_request_confirmation_url)

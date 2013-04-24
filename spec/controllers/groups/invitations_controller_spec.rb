@@ -1,3 +1,3 @@
-describe PendingInvitationsController do
+# describe PendingInvitationsController do
 
-end
+# end

@@ -35,12 +35,14 @@ describe GroupSetupController do
 
     it 'updates the attributes' do
       group_setup.should_receive(:update_attributes!)
-      post :finish, id: group_setup.group_id
+      post :finish, id: group_setup.group_id,
+                    group_setup: { group_name: group_setup.group_name }
     end
 
     it "calls finish! on the group_setup" do
       group_setup.should_receive(:finish!)
-      post :finish, id: group_setup.group_id
+      post :finish, id: group_setup.group_id,
+                    group_setup: { group_name: group_setup.group_name }
     end
 
     context "completes successfully" do
@@ -51,11 +53,13 @@ describe GroupSetupController do
 
       it "calls send_invitations for the group_setup" do
         group_setup.should_receive(:send_invitations)
-        post :finish, id: group_setup.group_id
+        post :finish, id: group_setup.group_id,
+                      group_setup: { group_name: group_setup.group_name }
       end
 
       it "redirects to the group page" do
-        post :finish, id: group_setup.group_id
+        post :finish, id: group_setup.group_id,
+                      group_setup: { group_name: group_setup.group_name }
         response.should redirect_to(group_path(group_setup.group_id))
       end
     end
@@ -63,7 +67,8 @@ describe GroupSetupController do
     context "does not complete successfully" do
       before do
         group_setup.stub(:finish!).and_return(false)
-        post :finish, id: group_setup.group_id
+        post :finish, id: group_setup.group_id,
+                      group_setup: { group_name: group_setup.group_name }
       end
 
       it "renders a flash message could not complete" do

@@ -8,9 +8,9 @@ describe SetupGroup do
     @group_request.verify!
   end
 
-  describe 'approve_group_request!' do
+  describe 'approve_group_request' do
     before do
-      @group = @setup_group.approve_group_request!(approved_by: @approver)
+      @group = @setup_group.approve_group_request(approved_by: @approver)
     end
 
     it 'creates the group' do
@@ -41,7 +41,7 @@ describe SetupGroup do
     let(:message_body) { 'yo i am the message body {link_to_replace}'}
 
     before do
-      @group = @setup_group.approve_group_request!(approved_by: @approver)
+      @group = @setup_group.approve_group_request(approved_by: @approver)
     end
 
     after do

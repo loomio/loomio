@@ -1,4 +1,4 @@
-class AddUnverifiedStatusToGroupRequests < ActiveRecord::Migration
+class UpdateToVerifiedAndDeferedGroupRequests < ActiveRecord::Migration
   class GroupRequest < ActiveRecord::Base
   end
 

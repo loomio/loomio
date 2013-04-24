@@ -7,12 +7,11 @@ class GroupSetup < ActiveRecord::Base
 
   belongs_to :group
 
-  def compose_group!(author)
+  def compose_group!
     self.group.update_attributes(name: group_name,
                                  description: group_description,
                                  viewable_by: viewable_by,
                                  members_invitable_by: members_invitable_by)
-    self.group.creator = author
     self.group.save!
   end
 
@@ -41,7 +40,7 @@ class GroupSetup < ActiveRecord::Base
 
 
   def finish!(author)
-    return true if compose_group!(author) &&
+    return true if compose_group! &&
                    compose_discussion!(author, group) &&
                    compose_motion!(author, group.discussions.first)
     false

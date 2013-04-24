@@ -123,7 +123,9 @@ FactoryGirl.define do
     discussion_description "My text outlining the discussion"
     motion_title Faker::Name.name
     motion_description "My text outlining the proposal"
-    close_at Time.now + 3.days
+    close_at_date '24-12-2044'
+    close_at_time '16:00'
+    close_at_time_zone 'Wellington'
     admin_email Faker::Internet.email
     members_list "#{Faker::Internet.email}, #{Faker::Internet.email}"
     invite_subject "Welcome to our world"

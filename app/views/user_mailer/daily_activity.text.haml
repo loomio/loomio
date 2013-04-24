@@ -15,7 +15,7 @@ Showing you what’s been happening in your Loomio groups in the last 24 hours
     -@activity[group.full_name][:motions].each do |motion|
       =motion.name
       =motion_url(motion)
-      -if motion.close_date.present?
+      -if motion.close_at.present?
         \- closes in #{time_ago_in_words(motion.close_date)}
         \
   -if @discussions.present?

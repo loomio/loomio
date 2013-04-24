@@ -8,7 +8,7 @@ Given /^the group request has been approved$/ do
   @approver = FactoryGirl.create :user
   @group_request.verify!
   setup_group = SetupGroup.new(@group_request)
-  setup_group.approve_group_request!(approved_by: @approver)
+  setup_group.approve_group_request(approved_by: @approver)
   setup_group.send_invitation_to_start_group!('{group_invitation_link}')
   @group = @group_request.group
 end

@@ -61,7 +61,7 @@ describe UserMailer do
     before :all do
       @inviter = build(:user)
       @group = create(:group)
-      @user = User.invite_and_notify!({email: "test@example.com"}, @inviter, @group)
+      @user = create(:user)
       @mail = UserMailer.invited_to_loomio(@user, @inviter, @group)
     end
 
