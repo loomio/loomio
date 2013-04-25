@@ -41,6 +41,7 @@ Feature: User votes on a motion
     And I enter a statement for my block
     Then I should see my block in the activity feed
     And I should see my vote in the list of positions
+    And the proposal author should recieve an email with subject "Proposal blocked"
 
   Scenario: As a logged in member I should be able to edit my vote on a proposal
     Given I am logged in

@@ -39,6 +39,12 @@ When /^I fill in and submit the Request New Group Form incorrectly$/ do
   find("#submit-group-request").click
 end
 
+Then /^the group admins should receive an email with subject "(.*?)"$/ do |subject|
+  last_email = ActionMailer::Base.deliveries.last
+  last_email.to.should include *@group.admins.map(&:email)
+  last_email.subject.should =~ /New membership request/
+end
+
 Then /^a new Loomio group request should be created$/ do
   GroupRequest.where(:name => @group_name).size.should == 1
 end
