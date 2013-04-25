@@ -12,6 +12,7 @@ Feature: Admin/author closes a proposal
     And I click the 'Close proposal' button
     And I confirm the action
     Then I should see the proposal in the list of previous proposals
+    And the facilitator should recieve an email with subject "Proposal closed"
 
   Scenario: User tries to close a proposal
     Given there is a discussion in a public group
