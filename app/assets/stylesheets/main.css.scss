@@ -9,6 +9,7 @@ ul, ol, li {
   margin: 0;
   padding: 0;
 }
+
 ul { list-style: none; }
 
 html { height: 100%; }
@@ -18,9 +19,8 @@ body {
   height: 100%;
   color: $dark-grey;
 }
-hr {
-  margin: 1px;
-}
+
+hr { margin: 1px; }
 
 // Override bootstrap 2.3 headers with 2.0.3 styles
 h1, h2, h3, h4, h5, h6 {
@@ -53,9 +53,7 @@ h4, h5, h6 { line-height: 18px; }
   a { color: $header-link-color; }
 }
 
-.font-size-85pc{
-  font-size: 85%;
-}
+.font-size-85pc{ font-size: 85%; }
 
 // structural elements (containers etc.)
 .page-container { margin-top: 30px; }
@@ -71,7 +69,7 @@ h4, h5, h6 { line-height: 18px; }
   z-index: 10000;
 }
 
-.sub_group {font-size: $font-tiny;}
+.sub_group {font-size: $font-tiny; }
 
 // #start-new-discussion { margin: 0 0 20px 2px; }
 .main-content { margin-top: 20px; }
@@ -79,20 +77,22 @@ h4, h5, h6 { line-height: 18px; }
   margin-bottom: 10px;
 }
 
-#new_discussion .control-label {
-  display: block;
-}
+#new_discussion .control-label { display: block; }
+
 .see-more {
   font-size: $font-small;
   position: relative;
   bottom: 10px;
   display: block;
 }
+
 .model-description { padding-bottom: 10px; }
+
 .description-body {
   color: $dark-grey;
   margin-bottom: 10px;
 }
+
 #description-edit-form {
   margin-bottom: 0px;
   #description-input {
@@ -101,7 +101,9 @@ h4, h5, h6 { line-height: 18px; }
     margin-bottom: 5px;
   }
   .control-group { margin-bottom: 0px; }
+
   #add-description-submit { float: left; }
+
   #cancel-add-description {
     float: left;
     margin: 15px 0 0 10px;
@@ -111,19 +113,15 @@ h4, h5, h6 { line-height: 18px; }
     top: 5px;
     font-size: $font-tiny;
   }
-  #cancel-add-description:hover {
-    color: $dark-grey;
-  }
+
+  #cancel-add-description:hover { color: $dark-grey; }
 }
 
-li.empty-list-message {
-  padding: 5px 0px;
-}
+li.empty-list-message { padding: 5px 0px; }
+
 .discussion-with-motion-divider { border-bottom: 2px solid $light-grey; }
 
-#show-closed-motions {
-  margin-bottom: 10px;
-}
+#show-closed-motions { margin-bottom: 10px; }
 
 #closed-motions-page .selector-list { padding-bottom: 20px; }
 #closed-motions-page li.selector-item.loading { background-position: 270px 160px; }
@@ -161,9 +159,7 @@ li.selector-item a.selector-link:hover {
   .control-group { display: inline-block; }
   .motion-close-at-date { width: 140px; }
   .motion-close-at-time, .motion-close-at-time-zone {
-  .inline-help {
-    position: relative;
-    left: 20px;
+    width: 115;
   }
   .inline-help {
     position: relative;
@@ -171,9 +167,7 @@ li.selector-item a.selector-link:hover {
   }
 }
 
-.alert {
-  margin: 10px 0;
-}
+.alert { margin: 10px 0; }
 
 // misc (move stuff out of here..)
 
@@ -197,26 +191,23 @@ li.selector-item a.selector-link:hover {
   display: inline-block;
   @include ie7-inline-block();
 }
-.control-label {
-  display: inline;
-}
-.label-right{
-  float: right;
-}
+.control-label { display: inline; }
+
+.label-right{ float: right; }
+
 .label-group-activity {
   background-color: $group-activity;
   font-weight: normal;
   font-size: $font-tiny;
 }
+
 .group-presence-error-message {
   float: right;
   position: relative;
   color: $error-color;
 }
 
-.inline-help {
-  color: $error-color;
-}
+.inline-help { color: $error-color; }
 
 .character-counter {
   color: $mid-grey;
@@ -238,18 +229,11 @@ li.selector-item a.selector-link:hover {
     margin-bottom: 0;
 }
 
+.rm-margin-top { margin-top: 0; }
 
-.rm-margin-top{
-  margin-top: 0;
-}
+.rm-margin-bottom { margin-bottom: 0; }
 
-.rm-margin-bottom{
-  margin-bottom: 0;
-}
-
-#vote-form textarea{
-  height: 100px;
-}
+#vote-form textarea { height: 100px; }
 
 form {
   .robot_trap {
@@ -298,9 +282,10 @@ code{
 /* For modern browsers */
 .cf:before,
 .cf:after {
-    content:"";
-    display:table;
+  content:"";
+  display:table;
 }
+
 .cf:after {
     clear:both;
 }
@@ -319,9 +304,7 @@ code{
 }
 
 /* For IE 6/7 (trigger hasLayout) */
-.cf {
-    zoom:1;
-}
+.cf { zoom:1; }
 
 /* bootstrap UI CSS overrides - better IE7 compatibility */
 .popover-inner {
@@ -332,25 +315,24 @@ code{
     background-color: #f6f6f6;
   }
 }
-.modal-backdrop {
-  top: 0;
-}
+.modal-backdrop { top: 0; }
+
 .modal {
   opacity: 100%;
   filter:alpha(opacity=100);
   form {
     margin: 0;
-    .btn{
-      margin: 0;
-    }
+    .btn{ margin: 0; }
   }
 }
+
 .modal-header h3 {
   display: inline;
   width: 80%;
   font-weight: bold;
   font-size: 1em;
 }
+
 .modal-header h2 {
   display: inline;
   width: 80%;
@@ -366,6 +348,6 @@ code{
   font-size: $font-medium;
   text-align: left;
 }
-.group-options .btn-app.dropdown-toggle{ width: 110px }
+.group-options .btn-app.dropdown-toggle{ width: 110px; }
 .btn-grey { color: $mid-grey; }
 a.btn-icon:hover { color: $dark-grey; }
