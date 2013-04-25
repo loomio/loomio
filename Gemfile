@@ -13,7 +13,7 @@ gem 'simple_form', '~> 2.0.4'
 gem 'country_select', '~> 1.1.3'
 gem 'client_side_validations', '~> 3.2.1'
 gem 'client_side_validations-simple_form', '~> 2.0.1'
-gem 'jqplot-rails', '~> 0.1'
+gem 'jqplot-rails', '~> 0.3'
 gem 'rails-backbone', '~> 0.7.2'
 gem 'coffee-filter', '~> 0.1.1'
 gem 'aasm', '~> 3.0.3'
@@ -66,7 +66,7 @@ group :development, :test do
   gem 'faker', '~> 1.0.1'
   gem 'rspec-rails', '~> 2.12.2'
   gem 'shoulda-matchers', '~> 1.2.0'
-  gem 'capybara', '~> 1.1.4'
+  gem 'capybara', '~> 2.1.0'
   gem 'database_cleaner', '~> 0.9.1'
   gem 'selenium-webdriver', '~> 2.25.0'
   gem 'letter_opener', '~> 1.0.0'
@@ -90,7 +90,7 @@ end
 group :test do
   gem 'cucumber-rails', '~> 1.3.0', :require => false
   gem 'email_spec', '~> 1.2.1'
-  gem 'poltergeist', '~> 1.0.2'
+  gem 'poltergeist', '~> 1.2.0'
   gem 'webmock', '~> 1.9.0'
   gem 'vcr', '~> 2.4.0'
 end
