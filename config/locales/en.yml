@@ -2,6 +2,11 @@ en:
   errors:
     messages:
       email: "Not a valid email address"
+
+  date:
+    formats:
+      datepicker: "%d-%m-%Y"
+
   error:
     access_denied: "Access denied."
     cant_join_subgroup: "You cannot join a sub-group if you are not a member of the parent group."

@@ -1,8 +1,17 @@
 class BaseController < ApplicationController
   inherit_resources
   before_filter :authenticate_user!, :check_browser, :check_for_invitation, :get_notifications
+  helper_method :time_zone
 
   private
+  def time_zone
+    if current_user
+      current_user.time_zone
+    else
+      'Wellington'
+    end
+  end
+
   def check_browser
     if browser.ie6? # || browser.ie7?
       redirect_to browser_not_supported_url

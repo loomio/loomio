@@ -4,7 +4,7 @@
 // TODO: // * define site color variables
 // * mixin for gradient
 
-// CSS reset - does this exist elsewhere?
+/*CSS reset - does this exist elsewhere?*/
 ul, ol, li {
   margin: 0;
   padding: 0;
@@ -159,7 +159,13 @@ li.selector-item a.selector-link:hover {
   .control-group { display: inline-block; }
   .motion-close-at-date { width: 140px; }
   .motion-close-at-time, .motion-close-at-time-zone {
-    width: 115;
+    margin-top: 10px;
+    width: 115px;
+    display: inline-block;
+  }
+  .inline-help {
+    position: relative;
+    left: 20px;
   }
   .inline-help {
     position: relative;
@@ -348,6 +354,12 @@ code{
   font-size: $font-medium;
   text-align: left;
 }
+<<<<<<< HEAD
 .group-options .btn-app.dropdown-toggle{ width: 110px; }
 .btn-grey { color: $mid-grey; }
 a.btn-icon:hover { color: $dark-grey; }
+=======
+.group-options .btn-app.dropdown-toggle{ width: 110px }
+.btn-grey { color: $mid-grey }
+a.btn-icon:hover { color: $dark-grey }
+>>>>>>> 7818f4e4bca29041120f68f4addfd53d89c1b68c

@@ -18,6 +18,7 @@ unless ENV['FULL_BROWSER']
     Capybara::Poltergeist::Driver.new(app, polter_options)
   end
   Capybara.javascript_driver = :poltergeist
+  #Capybara.javascript_driver = :selenium
 
   # Capybara.default_driver = :rack_test
 end
