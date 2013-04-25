@@ -157,6 +157,19 @@ Then /^I should not see the list of invited users$/ do
   page.should_not have_css('#invited-users')
 end
 
+Then /^I email the group members$/ do
+  click_on "Options"
+  click_on "Email group members"
+  fill_in "group_email_subject", :with => "Message to group"
+  fill_in "group_email_body", :with => "Y'all are great"
+  click_on "Send email"
+end
+
+Then /^memberships should get an email with subject "(.*?)"$/ do |subject|
+  last_email = ActionMailer::Base.deliveries.last
+  last_email.subject.should =~ /Message to group/
+end
+
 Given /^the group has a subgroup$/ do
   @subgroup = FactoryGirl.create(:group, parent: @group)
 end
