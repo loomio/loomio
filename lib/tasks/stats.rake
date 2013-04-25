@@ -92,7 +92,7 @@ namespace :stats do
           end
         end
 
-        top_group = !parent_group_id.blank? ? parent_group_id : group_id
+        top_group = parent_group_id.blank? ? group_id : parent_group_id
 
         csv << [id, scramble(user_id), group_id, parent_group_id, top_group, kind, created_at]
       end
@@ -104,9 +104,10 @@ namespace :stats do
   task :discussions => :environment do
     require 'csv'
     file = CSV.generate do |csv|
-      csv << ["id", "group_id", "created_at", "updated_at", "last_comment_at", "author_id"]
+      csv << ["id", "group_id", "hashed_group_id", "top_group_id", "hashed_top_group_id", "created_at", "updated_at", "last_comment_at", "author_id"]
       Discussion.find_each do |d|
-        csv << [d.id, d.group_id, d.created_at, d.updated_at, d.last_comment_at, scramble(d.author_id)]
+        top_group = d.group.parent_id.nil? ? d.group.id : d.group.parent_id
+        csv << [d.id, d.group_id, scramble(d.group_id), top_group, scramble(top_group), d.created_at, d.updated_at, d.last_comment_at, scramble(d.author_id)]
       end
     end
     fogwrite('discussions.csv', file)
@@ -115,9 +116,11 @@ namespace :stats do
   task :discussion_read_logs => :environment do
     require 'csv'
     file = CSV.generate do |csv|
-      csv << ["id", "discussion_id", "created_at", "discussion_last_viewed_at", "user_id"]
+      csv << ["id", "discussion_id", "group_id", "hashed_group_id", "top_group_id", "hashed_top_group_id", "created_at", "discussion_last_viewed_at", "user_id"]
       DiscussionReadLog.find_each do |l|
-        csv << [l.id, l.discussion_id, l.created_at, l.discussion_last_viewed_at, scramble(l.user_id)]
+        group_id = l.discussion.group_id
+        top_group = l.discussion.group.parent_id.nil? ? group_id : l.discussion.group.parent_id
+        csv << [l.id, l.discussion_id, group_id, scramble(group_id), top_group, scramble(top_group), l.created_at, l.discussion_last_viewed_at, scramble(l.user_id)]
       end
     end
     fogwrite('discussion_read_logs.csv', file)
