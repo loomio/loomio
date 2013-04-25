@@ -4,23 +4,23 @@
 // TODO: // * define site color variables
 // * mixin for gradient
 
-// CSS reset - does this exist elsewhere?
-// ul, ol, li {
-//   margin: 0;
-//   padding: 0;
-// }
-// ul { list-style: none; }
+/*CSS reset - does this exist elsewhere?*/
+ul, ol, li {
+  margin: 0;
+  padding: 0;
+}
+ul { list-style: none; }
 
-// html { height: 100%; }
+html { height: 100%; }
 
-// body {
-//   background-color: $main-background;
-//   height: 100%;
-//   color: $dark-grey;
-// }
-// hr {
-//   margin: 1px;
-// }
+body {
+  background-color: $main-background;
+  height: 100%;
+  color: $dark-grey;
+}
+hr {
+  margin: 1px;
+}
 
 // Override bootstrap 2.3 headers with 2.0.3 styles
 h1, h2, h3, h4, h5, h6 {
