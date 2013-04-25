@@ -5,22 +5,22 @@
 // * mixin for gradient
 
 // CSS reset - does this exist elsewhere?
-ul, ol, li {
-  margin: 0;
-  padding: 0;
-}
-ul { list-style: none; }
+// ul, ol, li {
+//   margin: 0;
+//   padding: 0;
+// }
+// ul { list-style: none; }
 
-html { height: 100%; }
+// html { height: 100%; }
 
-body {
-  background-color: $main-background;
-  height: 100%;
-  color: $dark-grey;
-}
-hr {
-  margin: 1px;
-}
+// body {
+//   background-color: $main-background;
+//   height: 100%;
+//   color: $dark-grey;
+// }
+// hr {
+//   margin: 1px;
+// }
 
 // Override bootstrap 2.3 headers with 2.0.3 styles
 h1, h2, h3, h4, h5, h6 {
@@ -161,6 +161,10 @@ li.selector-item a.selector-link:hover {
   .control-group { display: inline-block; }
   .motion-close-at-date { width: 140px; }
   .motion-close-at-time, .motion-close-at-time-zone {
+    margin-top: 10px;
+    width: 115px;
+    display: inline-block;
+  }
   .inline-help {
     position: relative;
     left: 20px;
@@ -367,5 +371,5 @@ code{
   text-align: left;
 }
 .group-options .btn-app.dropdown-toggle{ width: 110px }
-.btn-grey { color: $mid-grey; }
-a.btn-icon:hover { color: $dark-grey; }
+.btn-grey { color: $mid-grey }
+a.btn-icon:hover { color: $dark-grey }

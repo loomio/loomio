@@ -63,7 +63,6 @@ class DiscussionsController < GroupBaseController
     @group = GroupDecorator.new(@discussion.group)
     @vote = Vote.new
     @current_motion = @discussion.current_motion
-    @user_time_zone = current_user.time_zone
     @activity = @discussion.activity
     assign_meta_data
     if params[:proposal]
@@ -105,7 +104,6 @@ class DiscussionsController < GroupBaseController
     else
       @motion = Motion.new
       @motion.discussion = discussion
-      @user_time_zone = current_user.time_zone
       @group = GroupDecorator.new(discussion.group)
       render 'motions/new'
     end
