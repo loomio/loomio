@@ -14,4 +14,4 @@
 
 %p If someone did not get their invitation email, please feel free to copy the invitation link above and give it the recipient yourself.
 
-=link_to 'Invite People', new_group_invitation_path(@group), class: 'btn'
+=link_to 'Invite People', new_group_invitation_path(@group), :class => "btn btn-info", :data => { disable_with: 'Send invitations' }
