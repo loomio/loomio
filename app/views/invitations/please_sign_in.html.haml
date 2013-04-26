@@ -2,6 +2,7 @@
 .signup-form
   %p New to Loomio? You'll need to set up an account before you can join you group.
   =simple_form_for(@user, url: user_registration_path) do |f|
+    =text_field_tag :javascript_time_zone, 'undefined'
     =f.input :name
     =f.input :email
     =f.input :password
@@ -11,7 +12,7 @@
 .signin-form
   %p Already a loomio user? Sign in here:
   =simple_form_for(@user, url: user_session_path) do |f|
+    =text_field_tag :javascript_time_zone, 'undefined'
     =f.input :email
     =f.input :password
     =f.submit t("devise.sessions.sign_in")
-    / =f.submit t("devise.sessions.sign_in"

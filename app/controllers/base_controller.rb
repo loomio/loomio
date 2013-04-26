@@ -4,8 +4,9 @@ class BaseController < ApplicationController
   helper_method :time_zone
 
   private
+
   def time_zone
-    if current_user
+    if current_user 
       current_user.time_zone
     else
       'Wellington'

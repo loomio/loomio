@@ -23,5 +23,5 @@
   .span5
     %h2 Time zone
     = simple_form_for @user, method: 'put' do |f|
-      = f.time_zone_select :time_zone, id: 'user-time-zone'
+      = f.time_zone_select :time_zone
       = f.submit "Update", class: "btn btn-info btn-large"
