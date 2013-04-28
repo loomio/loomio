@@ -9,6 +9,7 @@ Given /^I see proposal activity on the discussion$/ do
 end
 
 When /^I click on the mini\-pie graph for the discussion$/ do
+  pending
   find("#graph_#{@motion.id}").click
 end
 
@@ -18,6 +19,7 @@ When /^there is futher activity since I clicked the graph$/ do
 end
 
 When /^I refresh the page and click on the mini\-pie graph for the discussion again$/ do
+  pending
   step %{I visit the group page}
   step %{I click on the mini-pie graph for the discussion}
 end

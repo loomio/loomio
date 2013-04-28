@@ -10,7 +10,7 @@
   %tbody
     -@memberships.each do |membership|
       -user = membership.user
-      %tr
+      %tr{id: "membership-for-user-#{user.id}"}
         %td=render 'avatar', user: user, size: "small", kind: nil, id: nil
         %td=user.name
         %td=user.email
