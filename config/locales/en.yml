@@ -304,6 +304,15 @@ en:
   unlock_not_received: "Didn't receive unlock instructions?"
 
   #
+  # INVITATIONS
+  #
+
+  invitation_to_join_group:
+    subject: "Your invitation to participate in the %{group} on Loomio"
+    body_editable: "I've just set up our group to make decisions onine using a new tool called Loomio. It will help us get stuff done without having to meet in person or drown in emails."
+    body_uneditable: "Click the link below to accept the invitation:\n\n %{invite_link} \n\nLoomio is a tool for collaborative decisions-making. You can see more about how Loomio works here: http://loomio.org/how-it-works\n\nTo get started, I've opened up a new decision:\n\nClick the invitation link above to sign in and have your say!\n\nRegards,\n\n%{user_name}\n%{group_name}"
+
+  #
   # FORMS
   #
 
@@ -354,6 +363,13 @@ en:
     use_avatar_kind: "Use %{kind}"
     upload_new_image: "Upload a new image"
 
+  group_setup_form:
+    group_header: "Set up your group"
+    group_name_error: "Please fill in the group title"
+    group_description_error: "Please fill in the group description"
+    group_settings_header: "Settings"
+    group_settings_blurb: "Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term."
+
   simple_form:
     labels:
       discussion:
@@ -370,6 +386,19 @@ en:
         name: "Full name"
         email: "Email"
         password: "Password"
+      group_setup:
+        group_name: "Group Name"
+        group_description: "Group description"
+        viewable_by: "Who can see this group?"
+        invitable_by: "Who can invite members to this group?"
+        discussion_name: "Discussion Name"
+        discussion_description: "Discussion description"
+        motion_name: "Motion Name"
+        motion_description: "Motion description"
+        admin_email: "Admin email"
+        members_list: "Recipient list"
+        invite_subject: "Invite subject"
+        invite_body: "Invite body"
     placeholders:
       discussion:
         title: "What is the topic you'd like to discuss?"
@@ -377,7 +406,13 @@ en:
       motion:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
-
+      group_setup:
+        group_description: "What is the purpose of your group?"
+        discussion_title: "What is the topic you would like to discuss?"
+        discussion_description: "Introduce the topic and give enough context for your group to have a well-informed discussion."
+        motion_title: "Make this as clear and succinct as possible."
+        motion_description: "Give enough information so that anyone in your group can make a well-informed decision."
+        members_list: "User Name <user1@example.com>, user2@example.com"
   helpers:
     submit:
       discussion:

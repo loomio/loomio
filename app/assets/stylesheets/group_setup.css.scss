@@ -8,16 +8,15 @@
     position: relative;
     left: 20px;
   }
-  #group_setup_group_description { height: 150px; }
+  #group_setup_group_description { height: 130px; }
   // the following two lines added to cope with a bootstrap tab bug
   // trimming off the start and end of the inputs
   .string, .text { width: 366px; }
   .radio { padding-left: 22px; }
-
   .motion-closing-inputs {
     .motion-close-at-date { width: 140px; }
   }
-
+  #group_setup_motion_description { height: 150px; }
   #group_setup_members_list { height: 50px; }
   #invite-body {
     width: 356px;
@@ -26,16 +25,16 @@
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
+    background-color: #eeeeee;
   }
   #group_setup_invite_body {
     height: 70px;
-    width: 342px;
   }
   #next, #send_invites {
     float: right;
     margin-left: 5px;
   }
-  #wizard-tabs { min-height: 595px; }
+  #wizard-tabs { min-height: 600px; }
 }
 
 #finished { float: right; }

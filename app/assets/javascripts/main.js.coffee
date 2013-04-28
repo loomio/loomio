@@ -32,15 +32,15 @@ $ -> # Remove error class on field if not empty
     hidePresenceErrorMessageFor($(this))
 
 $ -> # Remove error class on closing inputs if changed
-  $(".motion_close_at_date").change () ->
+  $(".motion-close-at-date").change () ->
     hideDateErrorMessageFor($(this))
 
 $ -> # Remove error class on closing inputs if changed
-  $(".motion_close_at_time").change () ->
+  $(".motion-close-at-time").change () ->
     hideDateErrorMessageFor($(this))
 
 $ -> # Remove error class on closing inputs if changed
-  $(".motion_close_at_time_zone").change () ->
+  $(".motion-close-at-time-zone").change () ->
     hideDateErrorMessageFor($(this))
 
 $ -> # Run validations and prevent default if false

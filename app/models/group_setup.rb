@@ -36,6 +36,8 @@ class GroupSetup < ActiveRecord::Base
   end
 
   def send_invitations
+    invite_people = InvitePeople.new(params[:invite_people])
+    num = CreateInvitation.to_people_and_email_them(invite_people, group: @group, inviter: current_user)
   end
 
 

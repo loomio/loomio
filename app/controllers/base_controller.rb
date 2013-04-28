@@ -5,7 +5,7 @@ class BaseController < ApplicationController
 
   private
   def time_zone
-    if current_user
+    if user_signed_in?
       current_user.time_zone
     else
       'Wellington'
@@ -19,7 +19,7 @@ class BaseController < ApplicationController
   end
 
   def check_for_invitation
-    if session[:invitation_token] and current_user
+    if session[:invitation_token] and user_signed_in?
       redirect_to invitation_path(session[:invitation_token])
     end
   end
