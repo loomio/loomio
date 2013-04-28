@@ -18,9 +18,3 @@ Feature: Edit user settings
   Scenario: User updates profile photo
     Given I visit the user settings page
     And I upload a profile image
-
-  Scenario: User selects time_zone
-    Given I visit the user settings page
-    When I select my time_zone and click update
-    Then my time_zone is stored in the database
-

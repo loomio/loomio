@@ -33,12 +33,6 @@ Then /^I should see the edit close date modal$/ do
   find("#edit-close-date")
 end
 
-Then /^the time zone should match my time zone setting$/ do
-  @user.reload
-  # find(".motion-close-at-time-zone").find("option[text()= '(GMT-05:00) Bakota')#.text.should have_content(@user.time_zone)
-  page.should have_xpath "//select[@id = 'motion_close_at_time_zone']/option[@value = '']"
-end
-
-Then /^The proposal close date should change$/ do
+Then /^the proposal close date should change$/ do
   pending # express the regexp above with the code you wish you had
 end

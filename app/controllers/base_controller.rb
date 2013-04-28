@@ -4,6 +4,7 @@ class BaseController < ApplicationController
   helper_method :time_zone
 
   private
+
   def time_zone
     if user_signed_in?
       current_user.time_zone

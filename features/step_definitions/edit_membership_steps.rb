@@ -26,7 +26,6 @@ When(/^click 'Make admin' on the member$/) do
 end
 
 Then(/^the member should be a group admin$/) do
-  @group.reload
   @group.admins.should include @another_user
 end
 
@@ -36,23 +35,21 @@ Given(/^there is another group admin$/) do
 end
 
 When(/^click 'Remove admin' on the member$/) do
-  within('table.memberships tbody tr:last-child') do
+  within("table.memberships tbody tr#membership-for-user-#{@another_user.id}") do
     click_on 'Remove admin'
   end
 end
 
 Then(/^the member should no longer be a group admin$/) do
-  @group.reload
   @group.admins.should_not include @another_user
 end
 
 Then(/^the member should no longer belong to the group$/) do
-  @group.reload
   @group.members.should_not include @another_user
 end
 
 When(/^click 'Remove' on the member$/) do
-  within('table.memberships tbody tr:last-child') do
+  within("table.memberships tbody tr#membership-for-user-#{@another_user.id}") do
     click_on 'Remove'
   end
 end
