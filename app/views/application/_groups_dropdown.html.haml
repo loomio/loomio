@@ -1,0 +1,15 @@
+%li.nav-item.dropdown#groups
+  %a.nav-link{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
+    %span.header-bar-icon.nav-item-icon.large-icon.group-icon
+    %span= t :groups
+    %b.caret
+  %ul.dropdown-menu
+    #group-dropdown-items
+      - current_user.root_groups.each do |group|
+        = render 'group_dropdown_item', user: current_user, group: group, subgroup: false
+        - if group.subgroups.size > 0
+          - group.subgroups.each do |subgroup|
+            - if current_user.group_membership(subgroup)
+              = render 'group_dropdown_item', user: current_user, group: subgroup, subgroup: true
+    %li.group-item.new-group
+      =link_to t(:request_new_group), request_new_group_path
