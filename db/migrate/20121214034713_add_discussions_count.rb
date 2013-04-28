@@ -1,4 +1,7 @@
 class AddDiscussionsCount < ActiveRecord::Migration
+  class Group < ActiveRecord::Base
+    has_many :discussions
+  end
   def up
     add_column :groups, :discussions_count, :integer, :default => 0, :null => false
     Group.reset_column_information

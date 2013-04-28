@@ -1,5 +1,6 @@
 class CreateVersions < ActiveRecord::Migration
   def self.up
+    drop_table :versions if table_exists? :versions
     create_table :versions do |t|
       t.string   :item_type, :null => false
       t.integer  :item_id,   :null => false
