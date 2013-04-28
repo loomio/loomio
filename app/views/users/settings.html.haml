@@ -1,21 +1,27 @@
+%h1= t("user_settings_form.header")
+.row
+  .span4
+    = simple_form_for @user do |f|
+      = f.input :name
+      = f.input :language_preference, :collection => {"English" => "en", "Español" => "es"}, include_blank: false
+      = f.submit :class => "btn btn-info", id: "user-settings-submit"
+
 .row
   .span6
-    %h1= t("user_settings_form.header")
-    = render 'edit_name', user: @user
     %h2= t("user_settings_form.picture")
-    .row
-      .span3
-        = render 'avatar', user: @user, size: "large", kind: nil, id: 'avatar-preview'
-      .span3
-        %ul.user-image-options
-          - if @user.has_uploaded_image?
-            = render 'avatar_setting_option', user: @user, kind: 'uploaded'
-          - if @user.has_gravatar?
-            = render 'avatar_setting_option', user: @user, kind: 'gravatar'
-          = render 'avatar_setting_option', user: @user, kind: 'initials'
-          %li.image-setting
-            = link_to t("user_settings_form.upload_new_image"), '#', class: 'btn btn-grey', id: 'upload-new-image'
-            = form_for [@user], :html => { :multipart => true, :id => 'upload-form' }, :url => upload_new_avatar_user_path(@user), :method => 'post' do
-              = file_field_tag :uploaded_avatar, id: 'uploaded-avatar'
-              = hidden_field_tag("user[avatar_kind]", "", :id => "user-avatar-kind")
-              = hidden_field_tag :max_file_size, User::MAX_AVATAR_IMAGE_SIZE_CONST, id: 'max-file-size'
+.row
+  .span3
+    = render 'avatar', user: @user, size: "large", kind: nil, id: 'avatar-preview'
+  .span3
+    %ul.user-image-options
+      - if @user.has_uploaded_image?
+        = render 'avatar_setting_option', user: @user, kind: 'uploaded'
+      - if @user.has_gravatar?
+        = render 'avatar_setting_option', user: @user, kind: 'gravatar'
+      = render 'avatar_setting_option', user: @user, kind: 'initials'
+      %li.image-setting
+        = link_to t("user_settings_form.upload_new_image"), '#', class: 'btn btn-grey', id: 'upload-new-image'
+        = form_for [@user], :html => { :multipart => true, :id => 'upload-form' }, :url => upload_new_avatar_user_path(@user), :method => 'post' do
+          = file_field_tag :uploaded_avatar, id: 'uploaded-avatar'
+          = hidden_field_tag("user[avatar_kind]", "", :id => "user-avatar-kind")
+          = hidden_field_tag :max_file_size, User::MAX_AVATAR_IMAGE_SIZE_CONST, id: 'max-file-size'

@@ -26,18 +26,13 @@ class UsersController < BaseController
 
   def update
     if current_user.update_attributes(params[:user])
+      set_locale
       flash[:notice] = t("notice.settings_updated")
       redirect_to :root
     else
       flash[:error] = t("error.settings_not_updated")
       redirect_to :back
     end
-  end
-
-  def edit_name
-    @user_name = params[:user_name]
-    current_user.name = @user_name
-    current_user.save!
   end
 
   def upload_new_avatar
