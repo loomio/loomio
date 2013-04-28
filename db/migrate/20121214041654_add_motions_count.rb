@@ -1,4 +1,8 @@
 class AddMotionsCount < ActiveRecord::Migration
+  class Group < ActiveRecord::Base
+    has_many :discussions
+    has_many :motions, :through => :discussions
+  end
   def up
     add_column :groups, :motions_count, :integer, :default => 0, :null => false
     Group.reset_column_information
