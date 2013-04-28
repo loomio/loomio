@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403112049) do
+ActiveRecord::Schema.define(:version => 20130418032816) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -263,6 +263,7 @@ ActiveRecord::Schema.define(:version => 20130403112049) do
     t.string   "unsubscribe_token"
     t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.boolean  "uses_markdown",                                               :default => false
+    t.string   "language_preference"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -365,6 +365,7 @@ en:
         name: "Full name"
         email: "Email"
         password: "Password"
+        language_preference: "Language"
     placeholders:
       discussion:
         title: "What is the topic you'd like to discuss?"
@@ -381,6 +382,7 @@ en:
         create: "Start proposal"
       user:
         create: "Create account"
+        update: "Update settings"
 
   #
   # COMMON WORDS
