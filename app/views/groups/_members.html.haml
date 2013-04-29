@@ -8,12 +8,12 @@
         %ul.dropdown-menu.pull-right
           -if can? :add_members, group
             -if group.is_top_level?
-              %li=link_to 'Invite people', new_group_invitation_path(group)
-              %li=link_to 'Pending invitations', group_invitations_path(group)
+              %li=link_to t(:invite_people), new_group_invitation_path(group)
+              %li=link_to t(:pending_invitations), group_invitations_path(group)
             -else
               %li=link_to t(:add_new_member), '#invite-subgroup-members', :id => 'group-add-members', 'data-toggle' => 'modal'
           -if can? :edit, group
-            %li=link_to 'Edit memberships', group_memberships_path(group)
+            %li=link_to t(:edit_memberships), group_memberships_path(group)
           - if can? :email_members, group
             %li= link_to t(:email_group_members), "#email-members-modal", "data-toggle" => "modal"
         -if group.is_sub_group?
@@ -24,3 +24,7 @@
     %ul#users-list
       - group.users.each do |user|
         = render 'membership', user: user, group: group
+      -if can?(:add_members, group) and group.is_top_level?
+        %li
+          =link_to t(:invite_people), new_group_invitation_path(group), class: 'btn'
+          %small #{group.invitations_remaining} #{t :invitations_remaining}

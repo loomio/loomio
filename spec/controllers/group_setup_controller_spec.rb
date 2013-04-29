@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GroupSetupController do
+describe Groups::GroupSetupController do
   let(:user){create :user}
   let(:group) { create :group }
 
