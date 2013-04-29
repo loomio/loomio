@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20130422085712) do
     t.datetime "discussion_last_viewed_at"
   end
 
+  add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
   add_index "discussion_read_logs", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
   add_index "discussion_read_logs", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
