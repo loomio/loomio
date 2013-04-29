@@ -53,22 +53,34 @@ describe GroupSetupController do
         group_setup.stub(:send_invitations)
       end
 
-      it "calls send_invitations for the group_setup" do
-        group_setup.should_receive(:send_invitations)
+      it "builds the attributes for InvitePeople" do
+        group_setup.should_receive(:build_invites_attrirutes)
         post :finish, id: group_setup.group_id,
                       group_setup: [ group_name: "plink" ]
+      end
+
+      it "creates the invitations for the people to invite and emails them" do
+        InvitePeople.should_receive(:new)
+        post :finish, id: group_setup.group_id,
+                      group_setup: [ group_name: "plink" ]
+      end
+
+      it "creates the invitations for the people to invite and emails them" do
+        CreateInvitation.should_receive(:to_people_and_email_them)
+        post :finish, id: group_setup.group_id,
+                      group_setup: [ group_name: "plink" ]
+      end
+
+      it "renders a flash message could not complete" do
+        post :finish, id: group_setup.group_id,
+                      group_setup: [ group_name: "plink" ]
+        flash[:success].should =~ /invitations sent/
       end
 
       it "redirects to the finished page" do
         post :finish, id: group_setup.group_id,
                       group_setup: [ group_name: "plink" ]
         response.should render_template('finished')
-      end
-
-      it "redirects to the group page" do
-        post :finish, id: group_setup.group_id,
-                      group_setup: [ group_name: "plink" ]
-        response.should redirect_to(group_path(group_setup.group_id))
       end
     end
 

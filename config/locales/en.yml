@@ -310,7 +310,15 @@ en:
   invitation_to_join_group:
     subject: "Your invitation to participate in the %{group} on Loomio"
     body_editable: "I've just set up our group to make decisions onine using a new tool called Loomio. It will help us get stuff done without having to meet in person or drown in emails."
-    body_uneditable: "Click the link below to accept the invitation:\n\n %{invite_link} \n\nLoomio is a tool for collaborative decisions-making. You can see more about how Loomio works here: http://loomio.org/how-it-works\n\nTo get started, I've opened up a new decision:\n\nClick the invitation link above to sign in and have your say!\n\nRegards,\n\n%{user_name}\n%{group_name}"
+    body_uneditable: |
+      Click the link below to accept the invitation:
+      %{invite_link}
+      Loomio is a tool for collaborative decisions-making. You can see more about how Loomio works here: http://loomio.org/how-it-works
+      To get started, I've opened up a new decision:
+      Click the invitation link above to sign in and have your say
+      Regards,
+      %{user_name}
+      {group_name}"
 
   #
   # FORMS
@@ -364,11 +372,30 @@ en:
     upload_new_image: "Upload a new image"
 
   group_setup_form:
+    tabs:
+      group: "Set up your group"
+      discussion: "Start a discussion"
+      motion: "Start a decision"
+      invites: "Invite your group"
     group_header: "Set up your group"
-    group_name_error: "Please fill in the group title"
-    group_description_error: "Please fill in the group description"
     group_settings_header: "Settings"
     group_settings_blurb: "Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term."
+    discussion_header: "Set up your first discussion"
+    discussion_blurb: "Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term."
+    motion_header: "Start a decision"
+    motion_blurb: "Often you’d wait for the discussion to progress for a while before making a proposal for your group to decide on. For the first discussion however, it’s a good idea to have a proposal open for everyone to participate in.\n\nA good proposal contains a plan of action for the group. Make your proposal as clear and succinct as possible so people know exactly what it means when they agree or disagree.\n\nYou can set up your first proposal here:"
+    invites_header: "Invite users"
+    errors:
+      group_name: "Please fill in the group title"
+      group_description: "Please fill in the group description"
+      discussion_title: "Please fill in the discussion title"
+      discussion_description: "Please fill in the discussion description"
+      motion_title: "Please fill in the motion title"
+      motion_description: "Please fill in the motion description"
+      motion_closing_inputs: "Please give a future close date"
+      admin_email: "Please fill in the an administrator email address"
+      members_list: "Please fill in the invited email addresse(s)"
+      invites_body: "Please fill in the invite body"
 
   simple_form:
     labels:
@@ -395,6 +422,7 @@ en:
         discussion_description: "Discussion description"
         motion_name: "Motion Name"
         motion_description: "Motion description"
+        close_at_date: "Close date"
         admin_email: "Admin email"
         members_list: "Recipient list"
         invite_subject: "Invite subject"

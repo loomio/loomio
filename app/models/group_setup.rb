@@ -1,7 +1,8 @@
 class GroupSetup < ActiveRecord::Base
   attr_accessible :group_name, :group_description, :viewable_by, :members_invitable_by,
                   :discussion_title, :discussion_description, :motion_title, :motion_description,
-                  :close_at_date, :close_at_time, :close_at_time_zone, :admin_email, :members_list, :invite_subject, :invite_body
+                  :close_at_date, :close_at_time, :close_at_time_zone, :admin_email, :members_list,
+                  :invite_subject, :invite_body, :invite_body_uneditable
 
   after_initialize :set_default_close_at_date_and_time
 
@@ -34,12 +35,6 @@ class GroupSetup < ActiveRecord::Base
     motion.discussion = discussion
     motion.save!
   end
-
-  def send_invitations
-    invite_people = InvitePeople.new(params[:invite_people])
-    num = CreateInvitation.to_people_and_email_them(invite_people, group: @group, inviter: current_user)
-  end
-
 
   def finish!(author)
     return true if compose_group! &&

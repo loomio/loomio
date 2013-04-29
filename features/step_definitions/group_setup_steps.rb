@@ -55,7 +55,8 @@ Then /^I should see the finished page$/ do
 end
 
 When /^I fill in the group panel$/ do
-  fill_in 'Group name', with: "My group name"
+  save_and_open_page
+  fill_in 'group_setup_group_name', with: "My group name"
   fill_in 'Group description', with: "A discription of my group"
 end
 
@@ -70,7 +71,7 @@ When /^I fill in the motion panel$/ do
 end
 
 When /^I fill in the invites panel$/ do
-  fill_in 'Members list', with: "peanut@butter.co.nz, jam@toastie.com"
+  fill_in 'group_setup_members_list', with: "peanut@butter.co.nz, jam@toastie.com"
 end
 
 Then /^invitations should be sent out to each recipient$/ do
