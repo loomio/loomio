@@ -165,6 +165,10 @@ class Group < ActiveRecord::Base
     false
   end
 
+
+  # would be nice if the following 4 methods were reduced to just one - is_sub_group
+  # parent and top_level are the less nice terms
+  #
   def is_top_level?
     parent.blank?
   end
@@ -270,6 +274,10 @@ You'll be prompted to make a short statement about the reason for your decision.
       motion.save
       membership.destroy
     end
+  end
+
+  def invitations_remaining
+    max_size - memberships_count 
   end
 
 

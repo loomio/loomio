@@ -35,6 +35,18 @@ describe Group do
     end
   end
 
+  describe 'invitations_remaining', focus: true do
+    before do
+      @group = Group.new
+    end
+
+    it 'is max_size minus members.count' do
+      @group.max_size = 10
+      @group.should_receive(:memberships_count).and_return 5
+      @group.invitations_remaining.should == 5
+    end
+  end
+
   describe "motions_in_voting_phase" do
     it "returns motions that belong to the group and are in phase 'voting'" do
       @group = motion.group
