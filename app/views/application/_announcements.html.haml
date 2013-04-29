@@ -1,0 +1,7 @@
+- Announcement.current(current_user).each do |announcement|
+  - if announcement.locale == I18n.locale.to_s
+    = div_for announcement, class: "alert alert-success" do
+      = link_to "×", hide_announcement_path(announcement), remote: true, class: "close"
+      = render_rich_text(announcement.message)
+      %p
+        = link_to "Click here to dismiss this message", hide_announcement_path(announcement), remote: true

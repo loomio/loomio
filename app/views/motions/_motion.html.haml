@@ -21,8 +21,8 @@
 
   .description
     - too_long = true if motion.description && motion.description.length > 200
-    - long_description = render_rich_text(false, motion.description)
-    - short_description = render_rich_text(false, truncate(motion.description, length: 200, omission: '...', separator: ' '))
+    - long_description = render_rich_text(motion.description, false)
+    - short_description = render_rich_text(truncate(motion.description, length: 200, omission: '...', separator: ' '), false)
     <!--[if IE 7]>
     .long-description
       ~ long_description
