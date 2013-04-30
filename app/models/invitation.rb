@@ -26,7 +26,9 @@ class Invitation < ActiveRecord::Base
 
   def set_unique_token
     begin
-      token = SecureRandom.urlsafe_base64
+      token = (('a'..'z').to_a +
+               ('A'..'Z').to_a + 
+               (0..9).to_a).sample(20).join
     end while self.class.where(:token => token).exists?
     self.token = token
   end
