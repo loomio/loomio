@@ -1,5 +1,5 @@
 class BaseController < InheritedResources::Base
-  before_filter :authenticate_user!, :check_browser, :check_invitation, :get_notifications
+  before_filter :authenticate_user!, :check_browser, :check_invitation
   # inherit_resources
 
   def check_browser
@@ -17,13 +17,6 @@ class BaseController < InheritedResources::Base
         session[:start_new_group_token] = nil
         redirect_to group_url(group_request.group_id)
       end
-    end
-  end
-
-  def get_notifications
-    if user_signed_in?
-      @unviewed_notifications = current_user.unviewed_notifications
-      @notifications = current_user.recent_notifications
     end
   end
 end
