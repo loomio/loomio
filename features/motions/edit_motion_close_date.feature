@@ -13,13 +13,13 @@ Feature: Admin/author edits a proposal close date
     And I should see a record of my change in the discussion feed
 
   Scenario: Logged in non-admin/author tries to edit the motion close date
-    Given there is a discussion in a group
+    Given there is a discussion in a public group
     And the discussion has an open proposal
     When I visit the discussion page
     Then I should not see a link to edit the close date
 
   Scenario: Non member tries to edit the motion close date
-    Given there is a discussion in a group
+    Given there is a discussion in a public group
     And the discussion has an open proposal
     When I visit the discussion page
     Then I should not see a link to edit the close date

@@ -1,4 +1,4 @@
-- likes = comment.likes
+- likes = comment.likes.includes(:user)
 %div{id: "comment-container-#{comment.id}"}
   %a{class: "comment-anchor", id: "comment-#{comment.id}"}
   .activity-item-avatar.medium-user-avatar.avatar-canvas

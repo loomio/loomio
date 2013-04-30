@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-
   require 'net/http'
   require 'digest/md5'
 
@@ -220,8 +219,8 @@ class User < ActiveRecord::Base
     groups.where("parent_id IS NOT NULL")
   end
 
-  def root_groups
-    groups.where("parent_id IS NULL").find(:all, :order => "LOWER(name)")
+  def parent_groups
+    groups.where("parent_id IS NULL").order("LOWER(name)")
   end
 
   def position(motion)
