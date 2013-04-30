@@ -1,0 +1,13 @@
+%li.nav-item.dropdown#notifications-container
+  %a#notifications-toggle.dropdown-toggle.nav-link{'data-toggle' => 'dropdown', :href => '#'}
+    %span.header-bar-icon.nav-item-icon.large-icon.notification-icon
+    %span#notifications-count.label.label-important
+    %span= t("notifications.header")
+    %b.caret
+  %ul.dropdown-menu
+    %li
+      %h3= t("notifications.header")
+    %li#notification-dropdown-items
+      %ul
+        %li Loading
+    %li#notifications-see-more= link_to t(:see_all_notifications), notifications_path

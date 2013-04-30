@@ -1,0 +1,10 @@
+%ul
+  - if @notifications.empty?
+    %li.notifications-placeholder= t :empty_notifications
+  - @notifications.each do |notification|
+    = render notification
+:coffeescript
+  new_notifications_count = #{@unviewed_notifications.size}
+  if new_notifications_count > 0
+    $('span#notifications-count').html(new_notifications_count)
+

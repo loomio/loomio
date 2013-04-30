@@ -1,9 +1,13 @@
 class NotificationsController < BaseController
+  def dropdown_items
+    @unviewed_notifications = current_user.unviewed_notifications
+    @notifications = current_user.recent_notifications
+    render layout: false
+  end
+
   def index
     @notifications = []
-    if user_signed_in?
-      @notifications = current_user.notifications.page(params[:page]).per(15)
-    end
+    @notifications = current_user.notifications.page(params[:page]).per(15)
   end
 
   def mark_as_viewed
