@@ -4,14 +4,15 @@
 #group-setup {
   .control-group, .controls { display: inline-block; }
   .control-label { display: block; }
-  .inline-help {
+  .inline-help, .email-validation-help {
     position: relative;
     left: 20px;
   }
+  .email-validation-help { color: $error-color }
   #group_setup_group_description { height: 130px; }
   // the following two lines added to cope with a bootstrap tab bug
   // trimming off the start and end of the inputs
-  .string, .text { width: 366px; }
+  .string, .text, .textarea { width: 366px; }
   .radio { padding-left: 22px; }
   .motion-closing-inputs {
     .motion-close-at-date { width: 140px; }
@@ -27,8 +28,6 @@
     border-radius: 4px;
     background-color: #eeeeee;
   }
-  #group_setup_invite_body { height: 70px; }
-  #group_setup_invite_body_uneditable { height: 170px; }
 
   #next, #send_invites {
     float: right;

@@ -43,6 +43,15 @@ $ -> # Remove error class on closing inputs if changed
   $(".motion-close-at-time-zone").change () ->
     hideDateErrorMessageFor($(this))
 
+$ -> # Remove email help class if changed
+  $(".validate-emails").keyup () ->
+    hideValidateEmailErrorMessageFor($(this))
+
+$ -> # Parse emails and display number of valid ones
+  $(".validate-emails").focusout () ->
+    emailList = parseEmails($(this).val())
+    validateMinimumEmailCount(this, emailList.length)
+
 $ -> # Run validations and prevent default if false
   $(".run-validations").click (event, ui) ->
     form = $(this).parents("form")
@@ -301,18 +310,42 @@ displayGraph = (this_pie, graph_id, data)->
 Application.validateForm = (form) ->
   formValid = true
   form.find(".validate-presence").each((index, field) ->
-    formValid = false unless Application.validatePresence(field)
+    formValid = false unless validatePresence(field)
+    return
+    )
+  form.find(".validate-emails").each((index, field) ->
+    formValid = false unless validateEmails(field)
     return
     )
   if form.find(".motion-closing-inputs").is(':visible') == true
     formValid = false unless validateMotionCloseDate($(".motion-closing-inputs"))
   formValid
 
-Application.validatePresence = (field) ->
+validatePresence = (field) ->
   if $(field).is(":visible") && $(field).val() == ""
-    error_div = $(field).closest('.control-group').parent().closest('.control-group')
-    error_div.addClass("error")
-    error_div.find(".inline-help").show()
+    parentFor(field).addClass("error")
+    parentFor(field).find(".inline-help").show()
+    return false
+  true
+
+parseEmails = (emailString) ->
+  emailList = []
+  regex = /(?:"([^"]+)")? ?<?(.*?@[^>,]+)>?,? ?/g
+  while(person = regex.exec(emailString))
+    emailList.push(person[2])
+  return emailList
+
+validateEmails = (field) ->
+  if $(field).is(":visible")
+    emailList = parseEmails($(field).val())
+    return false unless validateMinimumEmailCount(field, emailList.length)
+    return false unless confirm("You are about to invite #{emailList.length} recipients")
+  true
+
+validateMinimumEmailCount = (field, num) ->
+  if num == 0
+    parentFor(field).addClass('error')
+    parentFor(field).find(".email-validation-help").text("Please enter at least one valid email address")
     return false
   true
 
@@ -344,11 +377,17 @@ getTimeZoneOffsetFromList = (list, timeZoneName) ->
   index = list.indexOf(timeZoneName)
   timeZoneAsHourOffset = parseInt(list.substring(index - 8, index - 5))
 
+hideValidateEmailErrorMessageFor = (field) ->
+  parentFor(field).removeClass("error")
+  parentFor(field).find(".email-validation-help").text("")
+
 hidePresenceErrorMessageFor = (field) ->
   unless $(field).val() == ""
-      error_div = $(field).closest('.control-group').parent().closest('.control-group')
-      error_div.removeClass("error")
-      error_div.find(".inline-help").hide()
+    parentFor(field).removeClass("error")
+    parentFor(field).find(".inline-help").hide()
+
+parentFor = (field) ->
+  $(field).closest('.control-group').parent().closest('.control-group')
 
 hideDateErrorMessageFor = (field) ->
   $(field).closest('.motion-closing-inputs').removeClass("error")

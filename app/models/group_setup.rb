@@ -2,7 +2,7 @@ class GroupSetup < ActiveRecord::Base
   attr_accessible :group_name, :group_description, :viewable_by, :members_invitable_by,
                   :discussion_title, :discussion_description, :motion_title, :motion_description,
                   :close_at_date, :close_at_time, :close_at_time_zone, :admin_email, :members_list,
-                  :invite_subject, :invite_body, :invite_body_uneditable
+                  :invite_subject, :invite_body
 
   after_initialize :set_default_close_at_date_and_time
 

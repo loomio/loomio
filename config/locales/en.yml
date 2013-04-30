@@ -312,13 +312,19 @@ en:
     body_editable: "I've just set up our group to make decisions onine using a new tool called Loomio. It will help us get stuff done without having to meet in person or drown in emails."
     body_uneditable: |
       Click the link below to accept the invitation:
-      %{invite_link}
-      Loomio is a tool for collaborative decisions-making. You can see more about how Loomio works here: http://loomio.org/how-it-works
-      To get started, I've opened up a new decision:
-      Click the invitation link above to sign in and have your say
+
+      {invitation_link}
+
+      Loomio is a tool for collaborative decisions-making. You can see more about how Loomio works here: http://loomio.org/how-it-works. To get started, I've opened up a new decision:
+
+      %{motion_name}
+      %{motion_description}
+
+      Click the invitation link above to sign in and have your say!
+
       Regards,
-      %{user_name}
-      {group_name}"
+      %{user}
+      %{group}
 
   #
   # FORMS
@@ -423,10 +429,10 @@ en:
         motion_name: "Motion Name"
         motion_description: "Motion description"
         close_at_date: "Close date"
-        admin_email: "Admin email"
-        members_list: "Recipient list"
-        invite_subject: "Invite subject"
-        invite_body: "Invite body"
+        admin_email: "From"
+        members_list: "Recipient list (enter addresses seperated by commas)"
+        invite_subject: "Subject"
+        invite_body: "Message"
     placeholders:
       discussion:
         title: "What is the topic you'd like to discuss?"

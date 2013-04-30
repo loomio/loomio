@@ -61,25 +61,21 @@
               .control-group.motion-closing-inputs
                 = f.input :close_at_date, as: :date_picker, input_html: { class: 'motion-close-at-date' }
                 = f.input :close_at_time, as: :select, collection: populate_time_select, include_blank: false, label: false, input_html: { class: 'motion-close-at-time' }
-                = f.time_zone_select :close_at_time_zone, nil, {}, { class: 'motion-close-at-time-zone', label: false }
+                = f.time_zone_select :close_at_time_zone, nil, { default: @current_user.time_zone }, class: 'motion-close-at-time-zone'
                 %span.inline-help= t("group_setup_form.errors.motion_closing_inputs")
         .tab-pane#invite-tab
           .row
             .span9
-              %h1= t("group_setup_form.invites_header") 
+              %h1= t("group_setup_form.invites_header")
               .control-group
-                = f.input :admin_email, input_html: { class: 'validate-presence', :value => current_user.email }
+                = f.input :admin_email, input_html: { class: 'validate-presence', :value => current_user.email, disabled: true }
                 %span.inline-help= t("group_setup_form.errors.admin_email")
               .control-group
-                = f.input :members_list, input_html: { class: 'validate-presence' }
-                %span.inline-help= t("group_setup_form.errors.members_list")
-              = f.input :invite_subject, input_html: { class: 'validate-presence', :value => t("invitation_to_join_group.subject", group: @group_setup.group_name), disabled: true }
+                = f.input :members_list, input_html: { class: 'validate-emails' }
+                %span.email-validation-help
               .control-group
                 = f.input :invite_body, input_html: { class: 'validate-presence', value: t("invitation_to_join_group.body_editable", group: @group_setup.group_name) }
                 %span.inline-help= t("group_setup_form.errors.invites_body")
-          .row
-            .span5
-              = f.input :invite_body_uneditable, label: false, input_html: { value: t("invitation_to_join_group.body_uneditable", invite_link: "[invite link here]", user_name: @current_user.name, group_name: @group_setup.group_name), disabled: true }
       .row
         .span5
           = f.submit 'Send invites', class: 'btn btn-info btn-large', id: 'send_invites', :data => { :disable_with => "Send invites" }

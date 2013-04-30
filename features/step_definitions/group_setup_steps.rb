@@ -2,6 +2,10 @@ Given /^I visit the group setup wizard for that group$/ do
   visit setup_group_path(@group.id)
 end
 
+Given /^the users time-zone has been set$/ do
+  @user.update_attribute(:time_zone, "Auckland")
+end
+
 Then /^I should see the group setup wizard$/ do
   page.should have_content('Set up your group')
 end
@@ -43,11 +47,11 @@ Then /^the discussion should have a motion$/ do
 end
 
 Then /^I should see the group page$/ do
-  page.should have_css('.group')
+  find('.group-title').should have_content(@group_setup.group_name)
 end
 
-Then /^I should see the timezone select$/ do
-  page.should have_css('#group_setup_close_at_time_zone')
+Then(/^I should see my time zone set in the timezone select$/) do
+  find('#group_setup_close_at_time_zone').value.should ==  "Auckland"
 end
 
 Then /^I should see the finished page$/ do
@@ -55,7 +59,6 @@ Then /^I should see the finished page$/ do
 end
 
 When /^I fill in the group panel$/ do
-  save_and_open_page
   fill_in 'group_setup_group_name', with: "My group name"
   fill_in 'Group description', with: "A discription of my group"
 end
@@ -75,8 +78,8 @@ When /^I fill in the invites panel$/ do
 end
 
 Then /^invitations should be sent out to each recipient$/ do
-  @group_setup.recipients.each do |email_address|
+  ["peanut@butter.co.nz", "jam@toastie.com"].each do |email_address|
     open_email(email_address)
-    current_email.should have_subject(@group_setup.invite_subject)
+    current_email.should have_content(@group_setup.invite_body)
   end
 end

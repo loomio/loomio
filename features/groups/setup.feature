@@ -6,6 +6,7 @@ Feature: Setup group
   Background:
     Given I am logged in
     And I am an admin of a group
+    And the users time-zone has been set
 
 @javascript
   Scenario: Group admin is taken to the start of the group setup process
@@ -22,7 +23,7 @@ Feature: Setup group
     And I fill in the discussion panel
     When I click the "next" button
     Then I should see the setup decision tab
-    And I should see the timezone select
+    And I should see my time zone set in the timezone select
     And I fill in the motion panel
     When I click the "next" button
     Then I should see the setup invites tab
@@ -45,10 +46,10 @@ Feature: Setup group
     And I click the "next" button
     And I fill in the invites panel
     And I click the "send_invites" button
-    # Then I should see the finished page
+    Then I should see the finished page
     And the group_setup should be created
     And the group should have a discussion
     And the discussion should have a motion
     And invitations should be sent out to each recipient
-    When I click the "finish" button
+    When I click the "finished" button
     Then I should see the group page

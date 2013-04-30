@@ -53,30 +53,6 @@ describe Groups::GroupSetupController do
         group_setup.stub(:send_invitations)
       end
 
-      it "builds the attributes for InvitePeople" do
-        group_setup.should_receive(:build_invites_attrirutes)
-        post :finish, id: group_setup.group_id,
-                      group_setup: [ group_name: "plink" ]
-      end
-
-      it "creates the invitations for the people to invite and emails them" do
-        InvitePeople.should_receive(:new)
-        post :finish, id: group_setup.group_id,
-                      group_setup: [ group_name: "plink" ]
-      end
-
-      it "creates the invitations for the people to invite and emails them" do
-        CreateInvitation.should_receive(:to_people_and_email_them)
-        post :finish, id: group_setup.group_id,
-                      group_setup: [ group_name: "plink" ]
-      end
-
-      it "renders a flash message could not complete" do
-        post :finish, id: group_setup.group_id,
-                      group_setup: [ group_name: "plink" ]
-        flash[:success].should =~ /invitations sent/
-      end
-
       it "redirects to the finished page" do
         post :finish, id: group_setup.group_id,
                       group_setup: [ group_name: "plink" ]
@@ -89,10 +65,6 @@ describe Groups::GroupSetupController do
         group_setup.stub(:finish!).and_return(false)
         post :finish, id: group_setup.group_id,
                       group_setup: [ group_name: "plink" ]
-      end
-
-      it "renders a flash message could not complete" do
-        flash[:error].should match("Set up could not complete.")
       end
 
       it "renders the setup page" do

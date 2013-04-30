@@ -29,7 +29,6 @@ $ -> #hide/show buttons on tab change
       $('.nav-tabs li a').on 'shown', (event) ->
         hideButtons()
 
-
 hideButtons = () ->
   activeTab = $('ul.nav-tabs li.active')
   if activeTab[0] == $('ul.nav-tabs li:first')[0]
