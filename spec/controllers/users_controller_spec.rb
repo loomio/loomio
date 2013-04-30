@@ -43,10 +43,10 @@ describe UsersController do
       post :update, :id => 999, :user => {:name => "Peter Chilltooth"}
       response.should redirect_to(previous_url)
     end
-    it "redirects to back on failure" do
+    it "redirects to user settings on failure" do
       user.stub(:save).and_return(false)
       post :update, :id => 999, :user => {:name => "Peter Chilltooth"}
-      response.should redirect_to(:back)
+      response.should redirect_to user_settings_url
     end
   end
 
@@ -67,10 +67,10 @@ describe UsersController do
       post :upload_new_avatar, :id => 999, :uploaded_avatar => "www.peter_chilltooth.jpg"
       flash[:error].should =~ /Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file./
     end
-    it "redirects to back" do
+    it "redirects to user settings" do
       @user.stub(:save).and_return(true)
       post :upload_new_avatar, :id => 999, :uploaded_avatar => "www.peter_chilltooth.jpg"
-      response.should redirect_to(:back)
+      response.should redirect_to user_settings_url
     end
   end
 
@@ -108,12 +108,7 @@ describe UsersController do
     it "sets flag on user model" do
       user.should_receive(:has_read_system_notice=).with(true)
       user.should_receive(:save!)
-      post :dismiss_system_notice
-    end
-
-    it "redirects to previous page" do
-      post :dismiss_system_notice
-      response.should redirect_to(previous_url)
+      xhr :post, :dismiss_system_notice
     end
   end
 end
