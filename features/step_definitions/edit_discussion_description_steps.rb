@@ -24,9 +24,6 @@ Then /^my global markdown preference should still be 'disabled'$/ do
   find('#comment-markdown-dropdown').should have_css('.markdown-off')
 end
 
-Given /^I am not a member of the group$/ do
-end
-
 Given /^there is a discussion in a group$/ do
   @group = FactoryGirl.create :group
   @discussion = FactoryGirl.create :discussion, :group => @group

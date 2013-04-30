@@ -56,7 +56,7 @@ Feature: User votes on a motion
 
 
   Scenario: As a non-member I should not be able to vote on a proposal
-    Given there is a discussion in a group
+    Given there is a discussion in a public group
     And the discussion has an open proposal
     When I visit the discussion page
     Then I should not see the vote buttons

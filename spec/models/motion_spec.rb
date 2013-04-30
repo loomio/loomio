@@ -11,19 +11,21 @@ describe Motion do
   it {should have(1).errors_on(:name)}
   it {should have(1).errors_on(:author)}
 
-  it "user_has_voted?(user) returns true if the given user has voted on motion" do
-    @user = create(:user)
-    @motion = create(:motion, :author => @user)
-    @vote = build(:vote,:position => "yes")
-    @vote.user = @user
-    @vote.motion = @motion
-    @vote.save!
-    @motion.user_has_voted?(@user).should == true
-  end
+  describe "#user_has_voted?(user)" do
+    it "returns true if the given user has voted on motion" do
+      @user = create(:user)
+      @motion = create(:motion, :author => @user)
+      @vote = build(:vote,:position => "yes")
+      @vote.user = @user
+      @vote.motion = @motion
+      @vote.save!
+      @motion.user_has_voted?(@user).should == true
+    end
 
-  it "user_has_voted?(user) returns false if given nil" do
-    @motion = create(:motion)
-    @motion.user_has_voted?(nil).should == false
+    it "returns false if given nil" do
+      @motion = create(:motion)
+      @motion.user_has_voted?(nil).should == false
+    end
   end
 
   describe "#set_close_date(date)" do
@@ -180,15 +182,6 @@ describe Motion do
       not_voted_ids.should include(@user3.id)
     end
 
-    it "users_who_did_not_vote returns users who did not vote" do
-      @motion.users_who_did_not_vote.should include(@user3)
-    end
-
-    it "users_who_did_not_vote should not return users who did  vote" do
-      @motion.users_who_did_not_vote.should_not include(@user1)
-      @motion.users_who_did_not_vote.should_not include(@user2)
-    end
-
     it "can have an outcome" do
       outcome = "Test Outcome"
       @motion.set_outcome!(outcome)
@@ -223,21 +216,6 @@ describe Motion do
         motion.stub(:did_not_votes).and_return(stub :count => 99)
         motion.no_vote_count.should == 99
       end
-    end
-  end
-
-  describe "#users_who_did_not_vote" do
-    it "returns users who did not vote" do
-      @user1 = create :user
-      @group = create :group, :creator => @user1
-      @discussion = create(:discussion, group: @group, author: @user1)
-      @motion1 = create(:motion, name: "hi",
-                                author: @user1,
-                                discussion: @discussion,
-                                phase: "voting")
-      @motion1.author = @user1
-      @motion1.save!
-      @motion1.users_who_did_not_vote.should include(@user1)
     end
   end
 
