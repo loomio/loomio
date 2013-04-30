@@ -8,7 +8,7 @@
               = image_tag("top-bar-loomio.png", :alt => "Loomio")
 
           - if user_signed_in?
-            = render 'groups_dropdown'
+            = render 'application/groups_dropdown'
             = render 'notifications_dropdown'
             = render 'user_dropdown'
 

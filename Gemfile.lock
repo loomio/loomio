@@ -294,6 +294,8 @@ GEM
       rack (~> 1.0)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
+    rack-mini-profiler (0.1.23)
+      rack (>= 1.1.3)
     rack-protection (1.3.1)
       rack
     rack-ssl (1.3.3)
@@ -465,6 +467,7 @@ DEPENDENCIES
   poltergeist (~> 1.0.2)
   rabl (~> 0.7.3)
   rack-canonical-host (~> 0.0.8)
+  rack-mini-profiler (~> 0.1.23)
   rails (~> 3.2.13)
   rails-backbone (~> 0.7.2)
   rb-fchange (~> 0.0.5)

@@ -26,7 +26,6 @@ Feature: User edits discussion description
     And I should see a record of my change in the discussion feed
 
   Scenario: User tries to edit the discussion description when they don't belong to the group
-    Given there is a discussion in a group
-    And I am not a member of the group
+    Given there is a discussion in a public group
     When I visit the discussion page
     Then I should not see a link to edit the description
