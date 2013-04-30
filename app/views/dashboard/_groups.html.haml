@@ -2,7 +2,7 @@
   %h4= t :groups
   = icon_button(request_new_group_path, t(:request_new_group), '/assets/group-18.png', 'request-new-group')
   %ul#dashboard-groups-list
-    - current_user.root_groups.each do |group|
+    - current_user.parent_groups.each do |group|
       %li
         .group-link.clearfix
           .group-link-name= link_to group.name, group_path(group), :class => 'view_'+group.viewable_by.to_s
