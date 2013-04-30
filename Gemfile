@@ -83,6 +83,7 @@ group :development do
   gem 'launchy', '~> 2.0.5'
   gem 'spork-rails', '~> 3.2.1'
   gem 'awesome_print', '~> 1.0.2'
+  gem 'rack-mini-profiler', '~> 0.1.23'
 end
 
 group :test do
