@@ -317,7 +317,7 @@ en:
 
       Loomio is a tool for collaborative decisions-making. You can see more about how Loomio works here: http://loomio.org/how-it-works. To get started, I've opened up a new decision:
 
-      %{motion_name}
+      %{motion_title}
       %{motion_description}
 
       Click the invitation link above to sign in and have your say!
@@ -391,6 +391,8 @@ en:
     motion_header: "Start a decision"
     motion_blurb: "Often you’d wait for the discussion to progress for a while before making a proposal for your group to decide on. For the first discussion however, it’s a good idea to have a proposal open for everyone to participate in.\n\nA good proposal contains a plan of action for the group. Make your proposal as clear and succinct as possible so people know exactly what it means when they agree or disagree.\n\nYou can set up your first proposal here:"
     invites_header: "Invite users"
+    invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
+    invitees_label: "Recipient list (enter addresses seperated by commas)"
     errors:
       group_name: "Please fill in the group title"
       group_description: "Please fill in the group description"
@@ -430,7 +432,6 @@ en:
         motion_description: "Motion description"
         close_at_date: "Close date"
         admin_email: "From"
-        members_list: "Recipient list (enter addresses seperated by commas)"
         invite_subject: "Subject"
         invite_body: "Message"
     placeholders:
@@ -446,7 +447,6 @@ en:
         discussion_description: "Introduce the topic and give enough context for your group to have a well-informed discussion."
         motion_title: "Make this as clear and succinct as possible."
         motion_description: "Give enough information so that anyone in your group can make a well-informed decision."
-        members_list: "User Name <user1@example.com>, user2@example.com"
   helpers:
     submit:
       discussion:

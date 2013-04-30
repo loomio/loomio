@@ -18,7 +18,10 @@
     .motion-close-at-date { width: 140px; }
   }
   #group_setup_motion_description { height: 150px; }
-  #group_setup_members_list { height: 50px; }
+  #invitees {
+    height: 50px;
+    width:  366px;
+  }
   #invite-body {
     width: 356px;
     border: 1px solid #ccc;

@@ -313,12 +313,8 @@ Application.validateForm = (form) ->
     formValid = false unless validatePresence(field)
     return
     )
-  form.find(".validate-emails").each((index, field) ->
-    formValid = false unless validateEmails(field)
-    return
-    )
-  if form.find(".motion-closing-inputs").is(':visible') == true
-    formValid = false unless validateMotionCloseDate($(".motion-closing-inputs"))
+  formValid = false unless validateEmailsAndConfirm($(".validate-emails"))
+  formValid = false unless validateMotionCloseDate($(".motion-closing-inputs"))
   formValid
 
 validatePresence = (field) ->
@@ -335,26 +331,28 @@ parseEmails = (emailString) ->
     emailList.push(person[2])
   return emailList
 
-validateEmails = (field) ->
+validateEmailsAndConfirm = (field) ->
   if $(field).is(":visible")
     emailList = parseEmails($(field).val())
     return false unless validateMinimumEmailCount(field, emailList.length)
     return false unless confirm("You are about to invite #{emailList.length} recipients")
+    $("#group_setup_members_list").val(emailList.toString())
   true
 
 validateMinimumEmailCount = (field, num) ->
   if num == 0
-    parentFor(field).addClass('error')
-    parentFor(field).find(".email-validation-help").text("Please enter at least one valid email address")
+    $(field).parent().addClass('error')
+    $(field).parent().find(".email-validation-help").text("Please enter at least one valid email address")
     return false
   true
 
-validateMotionCloseDate = (closeAtControlGroup) ->
-  timeNow = new Date()
-  if parseCloseDateTimeZoneFields(closeAtControlGroup) < timeNow
-    $(closeAtControlGroup).addClass("error")
-    $(closeAtControlGroup).find(".inline-help").show()
-    return false
+validateMotionCloseDate = (closeAtParent) ->
+  if $(closeAtParent).is(":visible")
+    timeNow = new Date()
+    if parseCloseDateTimeZoneFields(closeAtParent) < timeNow
+      $(closeAtParent).addClass("error")
+      $(closeAtParent).find(".inline-help").show()
+      return false
   true
 
 parseCloseDateTimeZoneFields = (closeAtControlGroup) ->
@@ -378,8 +376,8 @@ getTimeZoneOffsetFromList = (list, timeZoneName) ->
   timeZoneAsHourOffset = parseInt(list.substring(index - 8, index - 5))
 
 hideValidateEmailErrorMessageFor = (field) ->
-  parentFor(field).removeClass("error")
-  parentFor(field).find(".email-validation-help").text("")
+  $(field).parent().removeClass("error")
+  $(field).parent().find(".email-validation-help").text("")
 
 hidePresenceErrorMessageFor = (field) ->
   unless $(field).val() == ""

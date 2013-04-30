@@ -71,8 +71,10 @@
                 = f.input :admin_email, input_html: { class: 'validate-presence', :value => current_user.email, disabled: true }
                 %span.inline-help= t("group_setup_form.errors.admin_email")
               .control-group
-                = f.input :members_list, input_html: { class: 'validate-emails' }
+                = label 'invitees', t("group_setup_form.invitees_label"), class: "control-label", for: "invitees"
+                = text_area_tag 'invitees', nil, class: 'validate-emails', placeholder: t("group_setup_form.invitees_placeholder")
                 %span.email-validation-help
+                = f.input :members_list, as: :hidden
               .control-group
                 = f.input :invite_body, input_html: { class: 'validate-presence', value: t("invitation_to_join_group.body_editable", group: @group_setup.group_name) }
                 %span.inline-help= t("group_setup_form.errors.invites_body")

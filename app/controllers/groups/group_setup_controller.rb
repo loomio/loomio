@@ -22,6 +22,11 @@ class Groups::GroupSetupController < BaseController
 
   def build_invite_attributes(attrs)
     { recipients: attrs[:members_list],
-      message_body: ( attrs[:invite_body] + t("invitation_to_join_group.body_uneditable"))}
+      message_body: ( attrs[:invite_body] + t("invitation_to_join_group.body_uneditable",
+                                              motion_title: attrs[:motion_title],
+                                              motion_description: attrs[:motion_description],
+                                              group: attrs[:group_name],
+                                              user: current_user.name
+                                              ))}
   end
 end
