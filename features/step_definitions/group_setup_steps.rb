@@ -6,6 +6,32 @@ Given /^the users time-zone has been set$/ do
   @user.update_attribute(:time_zone, "Auckland")
 end
 
+Given(/^I fill in the form upto the invites tab$/) do
+  step 'I should see the setup group tab'
+  step 'I fill in the group panel'
+  step "I click the \"next\" button"
+  step 'I should see the setup discussion tab'
+  step 'I fill in the discussion panel'
+  step "I click the \"next\" button"
+  step 'I should see the setup decision tab'
+  step 'I should see my time zone set in the timezone select'
+  step 'I fill in the motion panel'
+  step "I click the \"next\" button"
+  step 'I should see the setup invites tab'
+end
+
+When(/^I fill in a list of valid and invalid emails$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see a flash message displaying number of valid emails$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see a list of the valid emails$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
 Then /^I should see the group setup wizard$/ do
   page.should have_content('Set up your group')
 end
@@ -74,12 +100,15 @@ When /^I fill in the motion panel$/ do
 end
 
 When /^I fill in the invites panel$/ do
-  fill_in 'group_setup_members_list', with: "peanut@butter.co.nz, jam@toastie.com"
+  fill_in 'invitees', with: "peanut@butter.co.nz, jam@toastie.com"
 end
 
 Then /^invitations should be sent out to each recipient$/ do
   ["peanut@butter.co.nz", "jam@toastie.com"].each do |email_address|
     open_email(email_address)
     current_email.should have_content(@group_setup.invite_body)
+    current_email.should have_content(@group_setup.motion_title)
+    current_email.should have_content(@group_setup.motion_description)
+    current_email.should have_content(@group_setup.group_name)
   end
 end
