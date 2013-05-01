@@ -1,0 +1,16 @@
+%li.nav-item.dropdown#groups
+  %a.nav-link{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
+    %span.header-bar-icon.nav-item-icon.large-icon.group-icon
+    %span= t :groups
+    %b.caret
+  %ul.dropdown-menu
+    #group-dropdown-items
+      - GroupsTree.for_user(current_user).depth_first_traversal do |group|
+        - li_class = "group-item"
+        - li_class += " sub-group" if group.is_a_subgroup?
+        %li{class: li_class}
+          %a.selector-link{ href: group_path(group) }
+            .group-link.clearfix
+              .group-link-name= group.name.length < 35 ? group.name : group.name[0..32]+'...'
+    %li.group-item.new-group
+      =link_to t(:request_new_group), request_new_group_path

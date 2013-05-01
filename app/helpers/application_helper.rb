@@ -59,7 +59,7 @@ module ApplicationHelper
     time_select
   end
 
-  def render_rich_text(md_boolean, text, options=nil)
+  def render_rich_text(text, md_boolean=true)
     if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
       text = " "
     end

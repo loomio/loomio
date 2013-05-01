@@ -66,12 +66,12 @@ Loomio::Application.routes.draw do
   post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"
 
   resources :notifications, :only => :index do
+    get :dropdown_items, on: :collection
     post :mark_as_viewed, :on => :collection, :via => :post
   end
 
 
   resources :users do
-    put :edit_name, on: :member
     put :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
   end
@@ -129,4 +129,6 @@ Loomio::Application.routes.draw do
   resources :woc, only: :index do
     post :send_request, on: :collection
   end
+
+  match 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
 end

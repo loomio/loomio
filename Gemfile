@@ -39,7 +39,6 @@ gem 'rack-canonical-host', '~> 0.0.8'
 gem 'delayed_job_active_record', '~> 0.3.3'
 gem 'hirefireapp', '~> 0.0.8'
 gem 'foreman', '~> 0.60.2'
-gem 'aws-sdk', '~> 1.8.5'
 gem 'rinku', '~> 1.7.2'
 gem 'piwik_analytics', '~> 1.0.1'
 gem 'friendly_id', '~> 4.0.9'
@@ -50,6 +49,7 @@ gem 'friendly_id', '~> 4.0.9'
 #       https://github.com/rails/sass-rails/issues/38#issuecomment-2046678
 gem 'sass-rails',   '~> 3.2.6'
 gem 'coffee-rails', '~> 3.2.2'
+gem 'fog'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -85,6 +85,7 @@ group :development do
   gem 'launchy', '~> 2.0.5'
   gem 'spork-rails', '~> 3.2.1'
   gem 'awesome_print', '~> 1.0.2'
+  gem 'rack-mini-profiler', '~> 0.1.23'
 end
 
 group :test do

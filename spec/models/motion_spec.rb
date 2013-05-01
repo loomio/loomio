@@ -21,19 +21,21 @@ describe Motion do
     motion.close_at.should == current_time.strftime('%Y-%m-%d %H:00 %Z')
   end
 
-  it "user_has_voted?(user) returns true if the given user has voted on motion" do
-    @user = create(:user)
-    @motion = create(:motion, :author => @user)
-    @vote = build(:vote,:position => "yes")
-    @vote.user = @user
-    @vote.motion = @motion
-    @vote.save!
-    @motion.user_has_voted?(@user).should == true
-  end
+  describe "#user_has_voted?(user)" do
+    it "returns true if the given user has voted on motion" do
+      @user = create(:user)
+      @motion = create(:motion, :author => @user)
+      @vote = build(:vote,:position => "yes")
+      @vote.user = @user
+      @vote.motion = @motion
+      @vote.save!
+      @motion.user_has_voted?(@user).should == true
+    end
 
-  it "user_has_voted?(user) returns false if given nil" do
-    @motion = create(:motion)
-    @motion.user_has_voted?(nil).should == false
+    it "returns false if given nil" do
+      @motion = create(:motion)
+      @motion.user_has_voted?(nil).should == false
+    end
   end
 
   context "events" do
@@ -162,15 +164,6 @@ describe Motion do
       not_voted_ids.should include(@user3.id)
     end
 
-    it "users_who_did_not_vote returns users who did not vote" do
-      @motion.users_who_did_not_vote.should include(@user3)
-    end
-
-    it "users_who_did_not_vote should not return users who did  vote" do
-      @motion.users_who_did_not_vote.should_not include(@user1)
-      @motion.users_who_did_not_vote.should_not include(@user2)
-    end
-
     it "can have an outcome" do
       outcome = "Test Outcome"
       @motion.set_outcome!(outcome)
@@ -208,6 +201,7 @@ describe Motion do
     end
   end
 
+<<<<<<< HEAD
   describe "#users_who_did_not_vote" do
     it "returns users who did not vote" do
       @user1 = create :user
@@ -223,6 +217,8 @@ describe Motion do
     end
   end
 
+=======
+>>>>>>> 44a1f26f1a8b59a8800454f73b163cb1e7a0e48e
   describe "number_of_votes_since_last_looked(user)" do
     before do
       @user = build(:user)

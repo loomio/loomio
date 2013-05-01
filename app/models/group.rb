@@ -78,6 +78,7 @@ class Group < ActiveRecord::Base
   # ACCESSOR METHODS
   #
 
+
   def beta_features
     if parent && (parent.beta_features == true)
       true
@@ -235,6 +236,13 @@ class Group < ActiveRecord::Base
     is_a_parent? || user_is_a_parent_member?(user)
   end
 
+  def is_a_parent?
+    parent_id.nil?
+  end
+
+  def is_a_subgroup?
+    parent_id.present?
+  end
 
   def user_is_a_parent_member? user
     user.group_membership(parent)
@@ -292,15 +300,15 @@ You'll be prompted to make a short statement about the reason for your decision.
   end
 
   def set_defaults
-    self.viewable_by ||= :members if parent.nil?
-    self.viewable_by ||= :parent_group_members unless parent.nil?
+    self.viewable_by ||= :members if parent_id.nil?
+    self.viewable_by ||= :parent_group_members unless parent_id.nil?
     self.members_invitable_by ||= :members
   end
 
   # Validators
   def limit_inheritance
-    unless parent.nil?
-      errors[:base] << "Can't set a subgroup as parent" unless parent.parent.nil?
+    unless parent_id.nil?
+      errors[:base] << "Can't set a subgroup as parent" unless parent.parent_id.nil?
     end
   end
 

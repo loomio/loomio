@@ -8,10 +8,9 @@ end
 
 
 Given /^I fill in and submit the new name$/ do
-  find('#edit-name-link').click
   @display_name = Faker::Name.name
   fill_in 'user_name', with: @display_name
-  click_on 'edit-name-submit'
+  click_on 'user-settings-submit'
 end
 
 Then /^I upload a profile image$/ do

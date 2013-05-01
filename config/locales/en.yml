@@ -421,6 +421,7 @@ en:
         name: "Full name"
         email: "Email"
         password: "Password"
+        language_preference: "Language"
       group_setup:
         group_name: "Group Name"
         group_description: "Group description"
@@ -434,6 +435,7 @@ en:
         admin_email: "From"
         invite_subject: "Subject"
         invite_body: "Message"
+
     placeholders:
       discussion:
         title: "What is the topic you'd like to discuss?"
@@ -455,6 +457,7 @@ en:
         create: "Start proposal"
       user:
         create: "Create account"
+        update: "Update settings"
 
   #
   # COMMON WORDS

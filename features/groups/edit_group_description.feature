@@ -6,7 +6,5 @@ Feature: User edits group description
   @javascript
   Scenario: User tries to edit the group description when they don't belong to the group
     Given there is a discussion in a group
-    And I am not a member of the group
     When I visit the group page
     Then I should not see a link to edit the group description
-

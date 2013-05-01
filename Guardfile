@@ -23,9 +23,10 @@ guard 'rspec', :all_on_start => false, :all_after_pass => false do
   watch('spec/spec_helper.rb')
   #watch('config/routes.rb')                           { "spec/routing" }
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
+
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 
-  # Query Objects
-  watch(%r{^app/queries/.+/(.*)\.rb$})          { |m| "spec/queries/#{m[1]}_spec.rb" }
+  # Extras (plain old ruby objects)
+  watch(%r{^extras/(.+)\.rb$})          { |m| "spec/extras/#{m[1]}_spec.rb" }
 end

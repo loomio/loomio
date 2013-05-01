@@ -31,5 +31,4 @@ class BaseController < ApplicationController
       @notifications = current_user.recent_notifications
     end
   end
-
 end
