@@ -1,6 +1,6 @@
 class GroupBaseController < BaseController
 
-  private
+  protected
   def require_current_user_is_group_admin
     @group = Group.find(params[:group_id])
     unless @group.admins.include? current_user

@@ -324,12 +324,12 @@ validatePresence = (field) ->
     return false
   true
 
-parseEmails = (emailString) ->
-  emailList = []
-  regex = /(?:"([^"]+)")? ?<?(.*?@[^>,]+)>?,? ?/g
-  while(person = regex.exec(emailString))
-    emailList.push(person[2])
-  return emailList
+parseEmails = (input_emails) ->
+  parsed_emails = []
+  regex = /[^\s<,]+?@[^>,\s]+/g
+  while(matches = regex.exec(input_emails))
+    parsed_emails.push(matches[0])
+  parsed_emails
 
 validateEmailsAndConfirm = (field) ->
   if $(field).is(":visible")
