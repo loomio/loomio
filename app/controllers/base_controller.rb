@@ -3,7 +3,9 @@ class BaseController < InheritedResources::Base
   # inherit_resources
 
   def load_announcements
-    @current_and_not_dismissed_announcements = Announcement.current_and_not_dismissed_by(current_user)
+    if current_user
+      @current_and_not_dismissed_announcements = Announcement.current_and_not_dismissed_by(current_user)
+    end
   end
 
   def check_browser
