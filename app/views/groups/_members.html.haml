@@ -5,7 +5,7 @@
         %a.btn.btn-grey.dropdown-toggle#group-member-options{ href: "#", 'data-toggle' => 'dropdown' }
           = t(:options)
           = image_tag("dropdown.png", :title => t(:options), :alt => t(:options), class: "options-dropdown-icon")
-        %ul.dropdown-menu.pull-right
+        %ul.dropdown-menu.pull-right.group-member-options
           -if can? :add_members, group
             -if group.is_top_level?
               %li=link_to t(:invite_people), new_group_invitation_path(group)

@@ -132,6 +132,9 @@ en:
   #
   # GROUP PAGE
   #
+  invite_people: "Invite people"
+  pending_invitations: 'Pending invitations'
+  edit_memberships: 'Edit memberships'
 
   add_new_member: "Add new member"
   invite_members_to_group: "Invite members to %{which_group}"

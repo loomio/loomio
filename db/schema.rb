@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422085712) do
+ActiveRecord::Schema.define(:version => 20130502031855) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(:version => 20130422085712) do
     t.datetime "discussion_last_viewed_at"
   end
 
-  add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
   add_index "discussion_read_logs", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
   add_index "discussion_read_logs", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
@@ -258,13 +257,13 @@ ActiveRecord::Schema.define(:version => 20130422085712) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "phase",              :default => "voting", :null => false
     t.string   "discussion_url",     :default => "",       :null => false
     t.datetime "close_at"
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
     t.boolean  "uses_markdown",      :default => true,     :null => false
-    t.string   "phase",              :default => "voting", :null => false
     t.date     "close_at_date"
     t.string   "close_at_time"
     t.string   "close_at_time_zone"
@@ -297,7 +296,6 @@ ActiveRecord::Schema.define(:version => 20130422085712) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                                                       :default => false
     t.string   "name"
     t.string   "unconfirmed_email"
     t.string   "invitation_token",                             :limit => 60
@@ -318,14 +316,14 @@ ActiveRecord::Schema.define(:version => 20130422085712) do
     t.boolean  "has_read_dashboard_notice",                                   :default => false,      :null => false
     t.boolean  "has_read_group_notice",                                       :default => false,      :null => false
     t.boolean  "has_read_discussion_notice",                                  :default => false,      :null => false
+    t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email",                          :default => true,       :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,       :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
-    t.string   "username"
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.boolean  "uses_markdown",                                               :default => false
     t.integer  "memberships_count",                                           :default => 0,          :null => false
+    t.boolean  "uses_markdown",                                               :default => false
     t.string   "time_zone"
     t.string   "language_preference"
   end

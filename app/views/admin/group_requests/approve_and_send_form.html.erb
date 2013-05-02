@@ -5,12 +5,12 @@
   <h3>Subject: Invitation to join Loomio</h3>
 
   <%= simple_form_for @group_request, url: approve_and_send_admin_group_request_path do |f| %>
-    <textarea name="message_body">
+    <textarea name="message_body", rows=20>
 Dear <%= @group_request.name %>
 
 Your request to join loomio has been aprroved. Follow the link below to setup your group on Loomio
 
-{group_invitation_link}
+{invitation_link}
 
 Thanks a bunch.
 Lots of love, your scoobie

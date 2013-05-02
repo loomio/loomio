@@ -23,7 +23,7 @@ class SetupGroup
                                                 inviter: args[:inviter],
                                                 recipient_email: group_request.admin_email)
 
-    StartGroupMailer.invite_admin_to_start_group(invitation, args[:message_body]).deliver
+    InvitePeopleMailer.invitation_email(invitation, args[:message_body]).deliver
   end
 
 end
