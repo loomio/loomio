@@ -4,4 +4,4 @@
       = link_to "×", hide_announcement_path(announcement), remote: true, class: "close"
       = render_rich_text(announcement.message)
       %p
-        = link_to "Click here to dismiss this message", hide_announcement_path(announcement), remote: true
+        = link_to t(:click_to_dismiss), hide_announcement_path(announcement), remote: true
