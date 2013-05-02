@@ -1,4 +1,4 @@
-class Groups::GroupSetupController < BaseController
+class Groups::GroupSetupController < GroupBaseController
 
   def setup
     @group_setup = GroupSetup.find_or_create_by_group_id(params[:id])
