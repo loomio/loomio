@@ -48,6 +48,7 @@ gem 'sass-rails',   '~> 3.2.6'
 gem 'coffee-rails', '~> 3.2.2'
 gem 'piwik_analytics', '~> 1.0.1'
 gem 'fog'
+gem 'rack-mini-profiler', '~> 0.1.23'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -83,7 +84,6 @@ group :development do
   gem 'launchy', '~> 2.0.5'
   gem 'spork-rails', '~> 3.2.1'
   gem 'awesome_print', '~> 1.0.2'
-  gem 'rack-mini-profiler', '~> 0.1.23'
 end
 
 group :test do
