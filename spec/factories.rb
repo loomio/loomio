@@ -102,11 +102,11 @@ FactoryGirl.define do
   end
 
   factory :group_request do
-    sequence(:admin_name) { Faker::Name.name }
-    admin_email Faker::Internet.email
+    admin_name { Faker::Name.name }
+    admin_email { Faker::Internet.email }
     country_name "nz"
     sectors ["community"]
-    name Faker::Name.name
+    name { Faker::Name.name }
     description "MyText"
     expected_size 50
     cannot_contribute false

@@ -37,6 +37,8 @@ When /^I edit the maximum group size$/ do
   click_link("Edit")
   fill_in "group_request_max_size", :with => @max_size
   click_on("Update Group request")
+  @group_request.save!
+  @group_request.should be_valid
 end
 
 When /^I should see the send defer email page$/ do

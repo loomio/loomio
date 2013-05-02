@@ -76,7 +76,7 @@ ActiveAdmin.register GroupRequest do
     @group_request = GroupRequest.find(params[:id])
     setup_group = SetupGroup.new(@group_request)
     group = setup_group.approve_group_request(current_user)
-    setup_group.send_invitation_to_start_group(params[:message_body])
+    setup_group.send_invitation_to_start_group(inviter: current_user, message_body: params[:message_body])
     redirect_to admin_group_requests_path,
       :notice => ("Group approved: " +
       "<a href='#{admin_group_path(group)}'>#{group.name}</a>").html_safe
@@ -151,10 +151,13 @@ ActiveAdmin.register GroupRequest do
     f.inputs do
       f.input :name
       f.input :admin_email
+      f.input :admin_name
+      f.input :country_name 
       f.input :expected_size
       f.input :max_size
       f.input :description
+      f.input :sectors, as: :check_boxes, collection: {'Community' => 'community', 'Business' => 'business', 'Government' => 'government', 'Other:' => 'other'}, :validate => { :presence => true }, label: "What type of group/organisation is it?"
+      f.actions
     end
-    f.buttons
   end
 end

@@ -12,7 +12,7 @@ Feature: Loomio admin approves group request to join Loomio
   Scenario: Loomio admin sets the maximum group size
     When I visit the Group Requests page on the admin panel
     And I edit the maximum group size
-    And I approve the request
+    And I click approve for a request
     Then the maximum group size should be assigned to the group
 
   Scenario: Loomio admin approves a group request
