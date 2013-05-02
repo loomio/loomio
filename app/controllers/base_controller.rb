@@ -1,6 +1,10 @@
 class BaseController < InheritedResources::Base
-  before_filter :authenticate_user!, :check_browser, :check_invitation
+  before_filter :authenticate_user!, :check_browser, :check_invitation, :load_announcements
   # inherit_resources
+
+  def load_announcements
+    @current_and_not_dismissed_announcements = Announcement.current_and_not_dismissed_by(current_user)
+  end
 
   def check_browser
     if browser.ie6? # || browser.ie7?
