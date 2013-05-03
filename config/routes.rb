@@ -24,6 +24,10 @@ Loomio::Application.routes.draw do
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
   match "/groups/:id/members", :to => "groups#get_members", :as => :get_members, :via => :get
 
+  match '/purpose' => 'pages#purpose', :as => "purpose"
+  match '/how_it_works' => 'pages#how_it_works'
+  match '/about_us' => 'pages#about_us'
+
   resources :motions do
     resources :votes, only: [:new, :edit, :create, :update]
     post :get_and_clear_new_activity, on: :member

@@ -1,4 +1,4 @@
-body.sessions.new, body.pages.show, body.woc.index, body.group_requests.start_new_group {
+body.sessions.new, body.pages.show, body.pages.purpose, body.pages.how_it_works, body.pages.about_us, body.woc.index, body.group_requests.start_new_group {
   color: black;
 
   p, label{
@@ -82,6 +82,11 @@ body.sessions.new, body.pages.show, body.woc.index, body.group_requests.start_ne
     border: none;
     margin-top: 66px;
   }
+
+  .section#purpose, .section#how-it-works, .section#about-us {
+    margin-top: 6em;
+  }
+
   #first .inner-container{
     padding: 0 34px;
   }
