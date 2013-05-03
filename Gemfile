@@ -53,6 +53,7 @@ gem 'rack-mini-profiler', '~> 0.1.23'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'asset_sync'
   gem 'bootstrap-sass', '~> 2.3.1.0'
   gem 'uglifier', '~> 1.1.0'
   gem 'modernizr-rails', '~> 2.6.2'
@@ -96,4 +97,5 @@ end
 
 group :staging, :production do
   gem 'newrelic_rpm', '~> 3.5.7.59'
+  gem 'heroku-deflater'
 end

@@ -47,6 +47,9 @@ GEM
       awesome_nested_set (>= 2.0)
     addressable (2.2.8)
     arel (3.0.2)
+    asset_sync (0.5.4)
+      activemodel
+      fog
     awesome_nested_set (2.1.2)
       activerecord (>= 3.0.0)
     awesome_print (1.0.2)
@@ -188,6 +191,8 @@ GEM
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
     has_scope (0.5.1)
+    heroku-deflater (0.4.1)
+      rack (~> 1.4.5)
     high_voltage (1.2.0)
     highline (1.6.8)
     hike (1.2.1)
@@ -415,6 +420,7 @@ DEPENDENCIES
   aasm (~> 3.0.3)
   activeadmin (~> 0.4.3)
   acts_as_commentable_with_threading (~> 1.1.2)
+  asset_sync
   awesome_print (~> 1.0.2)
   better_errors (~> 0.6.0)
   bootstrap-sass (~> 2.3.1.0)
@@ -445,6 +451,7 @@ DEPENDENCIES
   guard-rspec (~> 2.3.3)
   guard-spork (~> 1.4.1)
   haml-rails (~> 0.4)
+  heroku-deflater
   high_voltage (~> 1.2.0)
   hirefireapp (~> 0.0.8)
   inherited_resources (~> 1.3.0)
