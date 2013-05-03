@@ -2,6 +2,7 @@ class Groups::GroupSetupController < GroupBaseController
 
   def setup
     @group_setup = GroupSetup.find_or_create_by_group_id(params[:id])
+    @group_name = Group.find(params[:id]).name
   end
 
   def finish

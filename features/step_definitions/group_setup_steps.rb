@@ -21,15 +21,15 @@ Given(/^I fill in the form upto the invites tab$/) do
 end
 
 When(/^I fill in a list of valid and invalid emails$/) do
-  pending # express the regexp above with the code you wish you had
+  fill_in "invitees", with: "peter@post.com, der_rick@more.org, 'susan scrimsure' <sus@scrimmy.com>, am$%^87766, .com.com"
 end
 
 Then(/^I should see a flash message displaying number of valid emails$/) do
-  pending # express the regexp above with the code you wish you had
+  find('.alert').should have_content('3 invitations sent')
 end
 
 Then(/^I should see a list of the valid emails$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content "peter@post.com,der_rick@more.org,sus@scrimmy.com"
 end
 
 Then /^I should see the group setup wizard$/ do
@@ -85,7 +85,6 @@ Then /^I should see the finished page$/ do
 end
 
 When /^I fill in the group panel$/ do
-  fill_in 'group_setup_group_name', with: "My group name"
   fill_in 'Group description', with: "A discription of my group"
 end
 
