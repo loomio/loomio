@@ -17,5 +17,7 @@
       = render_help_text(@group)
       .page-container
         = yield
-    = render 'google_analytics'
-    = piwik_tracking_tag
+
+    - if Rails.env.production? || Rails.env.staging?
+      = render 'google_analytics'
+      = piwik_tracking_tag

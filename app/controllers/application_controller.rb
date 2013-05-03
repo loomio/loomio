@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
 
+  rescue_from CanCan::AccessDenied do |exception|
+    request.env["HTTP_REFERER"] = root_url if request.env["HTTP_REFERER"].nil?
+    flash[:error] = t("error.access_denied")
+    redirect_to :back
+  end
+
+  protected
+
   def set_locale
     if current_user
       if current_user.language_preference.nil?
@@ -12,28 +20,6 @@ class ApplicationController < ActionController::Base
     else
       I18n.locale = extract_locale_from_accept_language_header
     end
-  end
-
-  rescue_from CanCan::AccessDenied do |exception|
-    request.env["HTTP_REFERER"] = root_url if request.env["HTTP_REFERER"].nil?
-    flash[:error] = t("error.access_denied")
-    redirect_to :back
-  end
-
-  def after_sign_in_path_for(resource)
-    path = session[:return_to] || root_path
-    clear_stored_location
-    path
-  end
-
-  private
-
-  def store_location
-    session[:return_to] = request.fullpath
-  end
-
-  def clear_stored_location
-    session[:return_to] = nil
   end
 
   def extract_locale_from_accept_language_header
