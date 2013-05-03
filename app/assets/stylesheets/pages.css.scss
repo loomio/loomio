@@ -1,5 +1,147 @@
-body.sessions.new, body.pages.show, body.woc.index, body.group_requests.start_new_group {
+@import "settings";
+// CSS reset - does this exist elsewhere?
+ul, ol, li {
+  margin: 0;
+  padding: 0;
+}
+ul { list-style: none; }
+
+html { height: 100%; }
+
+body {
+  background-color: $main-background;
+  height: 100%;
+  color: $dark-grey;
+}
+
+hr {
+  margin: 1px;
+}
+
+// Override bootstrap 2.3 headers with 2.0.3 styles
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: inherit;
+  font-weight: bold;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+h1 {
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3 {
+  font-size: 18px;
+  line-height: 27px;
+}
+h4 { font-size: 14px; }
+h5 { font-size: 12px; }
+h6 { font-size: 11px; }
+h4, h5, h6 { line-height: 18px; }
+
+.font-size-85pc{
+  font-size: 85%;
+}
+
+// structural elements (containers etc.)
+.page-container { margin-top: 30px; }
+
+// #start-new-discussion { margin: 0 0 20px 2px; }
+.main-content { margin-top: 20px; }
+
+
+/**** Structural elements ****/
+ul.selector-list.bordered { border-top: 1px solid $light-grey }
+li.selector-item {
+  background-color: $unhighlighted;
+  color: $dark-grey;
+  font-weight: normal;
+  border-bottom: 1px solid $light-grey;
+}
+
+li.selector-item a.selector-link {
+  display: block;
+  padding: 5px 5px 5px 15px;
+}
+li.selector-item a.selector-link:hover {
+  background-color: $selector;
+  text-decoration: none;
+  .group-activity-indicator.unread-group-activity { background-color: $group-activity; }
+}
+
+.alert {
+  margin: 10px 0;
+}
+
+// color coded urgency labels
+.color-urgent { background-color: #CA3232; }
+.color-warning { background-color: #F89406; }
+.color-ok { background: #016B01; }
+
+.page-title h1{
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+
+.rm-margin-top{
+  margin-top: 0;
+}
+
+.rm-margin-bottom{
+  margin-bottom: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+/* For modern browsers */
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+.cf:after {
+    clear:both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+    zoom:1;
+}
+
+
+/**** buttons ****/
+.btn-app {
+  line-height: 18px;
+  padding: 4px 8px 4px 8px;
+  width: 180px;
+  font-size: $font-medium;
+  text-align: left;
+}
+
+.group-options .btn-app.dropdown-toggle{ width: 110px }
+.btn-grey { color: $mid-grey; }
+a.btn-icon:hover { color: $dark-grey; }
+body.sessions.new, 
+body.pages.home, 
+body.pages.purpose, 
+body.pages.how_it_works, 
+body.pages.about,
+body.pages.about_us, body.woc.index, body.group_requests.start_new_group {
   color: black;
+
+  .frontpage-nav {
+    text-transform:lowercase;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 130%;
+  }
 
   p, label{
     font-size: 18px;
@@ -14,19 +156,7 @@ body.sessions.new, body.pages.show, body.woc.index, body.group_requests.start_ne
     margin-top: 50px;
     margin-bottom: -50px;
   }
-  .navbar{
-    .navbar-inner .container{
-      margin-top: 0;
-    }
-    a.brand{
-      padding-bottom: 0;
-      margin-top:  -6px;
-      margin-left: 20px;
-    }
-    .pull-right{
-      padding-right: 34px;
-    }
-  }
+
   .container{
     .subhead{
       padding-bottom: 24px;
@@ -69,19 +199,23 @@ body.sessions.new, body.pages.show, body.woc.index, body.group_requests.start_ne
   .inner-container{
     padding: 34px;
   }
+
   .section{
     margin-top: 34px;
     background: white;
     box-shadow: 3px 3px 5px #eee;
     border: 1px solid #eee;
   }
-  .section#first{
-    background: transparent;
+
+  .section.first{
     margin-top: 0px;
-    box-shadow: none;
-    border: none;
-    margin-top: 66px;
   }
+
+
+  /*.section#purpose, .section#how-it-works, .section#about-us {*/
+    /*margin-top: 6em;*/
+  /*}*/
+
   #first .inner-container{
     padding: 0 34px;
   }

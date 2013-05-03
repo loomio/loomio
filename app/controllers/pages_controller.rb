@@ -1,3 +1,10 @@
-class PagesController < HighVoltage::PagesController
-  layout 'frontpage'
+class PagesController < ApplicationController
+  def home
+  end
+
+  def about
+  end
+
+  def privacy
+  end
 end
