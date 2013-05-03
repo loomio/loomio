@@ -26,4 +26,4 @@ $ ->
     if $('li.notification-item').length > 0
       notification_css_id = $('li.notification-item').first().attr('id')
       notification_id = /\d+/.exec(notification_css_id)
-      $.post("notifications/mark_as_viewed?latest_viewed=#{notification_id}")
+      $.post("/notifications/mark_as_viewed?latest_viewed=#{notification_id}")
