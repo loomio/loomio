@@ -1,4 +1,5 @@
 When /^I am on the settings page$/ do
+  puts page.driver.headers.inspect
   visit "/settings"
 end
 

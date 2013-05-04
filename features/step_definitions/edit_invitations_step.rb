@@ -1,5 +1,6 @@
 When(/^I view click pending invitations from the group page$/) do
   visit group_path(@group)
+  find("#group-member-options").click
   click_on 'Pending invitations'
 end
 

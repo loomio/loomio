@@ -7,17 +7,16 @@ Given /^there is a verified request to join Loomio$/ do
   reset_mailer
 end
 
-When /^I visit the Group Requests page on the admin panel$/ do
-  visit admin_group_requests_path
+When /^I visit the Group Request in the admin panel$/ do
+  visit admin_group_request_path(@group_request)
 end
 
 When /^I click approve for a request$/ do
-  click_link('View')
   click_link("approve")
 end
 
 When /^I click defer for the request$/ do
-  click_link("Defer request until a later date")
+  click_link("defer")
 end
 
 When /^I should see the send approval email page$/ do
@@ -33,12 +32,13 @@ When /^I click the send and approve button$/ do
 end
 
 When /^I edit the maximum group size$/ do
-  @max_size = 135
   click_link("Edit")
-  fill_in "group_request_max_size", :with => @max_size
+  fill_in "group_request_max_size", :with => 135
   click_on("Update Group request")
-  @group_request.save!
-  @group_request.should be_valid
+end
+
+When(/^I click the send and defer button$/) do
+  click_on "Defer and send email"
 end
 
 When /^I should see the send defer email page$/ do
@@ -47,10 +47,6 @@ end
 
 When /^I select the date to defer until$/ do
   fill_in "group_request_defered_until", with: "2013-3-24"
-end
-
-When /^I click the send and defer button$/ do
-  click_on("Defer and send email")
 end
 
 Then /^I should no longer see the request$/ do
@@ -75,9 +71,10 @@ Then /^the group request should be marked as defered$/ do
   @group_request.should be_defered
 end
 
-Then /^an email should be sent to the group admin containing a link to start the new group$/ do
+Then /^an email should be sent to the group admin with an invitation link$/ do
   open_email(@group_request.admin_email)
-  current_email.should have_content(start_new_group_group_request_path(@group_request, token: @token))
+  @invitation = Invitation.find_by_recipient_email(@group_request.admin_email)
+  current_email.should have_content(invitation_path(@invitation))
 end
 
 Then /^I should be redirected to the Group Requests page$/ do
@@ -85,7 +82,8 @@ Then /^I should be redirected to the Group Requests page$/ do
 end
 
 Then /^the maximum group size should be assigned to the group$/ do
-  Group.where(:name => @group_request.name).first.max_size.should == @max_size
+  @group_request.reload
+  @group_request.max_size.should == 135
 end
 
 

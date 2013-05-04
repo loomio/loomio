@@ -3,7 +3,7 @@ Given /^a public group exists$/ do
   @group.add_admin! FactoryGirl.create :user
   @group.viewable_by = :everyone
   @group.description = "this group is public"
-  @group.save
+  @group.save!
 end
 
 Given /^a private group exists$/ do

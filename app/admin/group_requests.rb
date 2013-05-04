@@ -81,6 +81,12 @@ ActiveAdmin.register GroupRequest do
       :notice => ("Group approved: " +
       "<a href='#{admin_group_path(group)}'>#{group.name}</a>").html_safe
   end
+  
+  member_action :update, method: :put do
+    update! do |format|
+      format.html {redirect_to admin_group_requests_path}
+    end
+  end
 
   member_action :defer_and_send_form, :method => :get do
     @group_request = GroupRequest.find(params[:id])
@@ -119,7 +125,7 @@ ActiveAdmin.register GroupRequest do
 
   member_action :resend_verification, :method => :get do
     group_request = GroupRequest.find(params[:id])
-    group_request.send_verification
+    StartGroupMailer.verification(group_request).deliver
     redirect_to admin_group_requests_path,
       :notice => "Verification email sent for " +
       group_request.name

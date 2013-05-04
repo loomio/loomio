@@ -14,7 +14,9 @@ end
 
 When(/^I click Invite people from the members box$/) do
   click_on 'group-member-options'
-  click_on 'Invite people'
+  within 'ul.group-member-options' do
+    click_on 'Invite people'
+  end
 end
 
 When(/^enter "(.*?)" into the recipients$/) do |arg1|
