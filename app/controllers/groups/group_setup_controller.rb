@@ -2,7 +2,9 @@ class Groups::GroupSetupController < GroupBaseController
 
   def setup
     @group_setup = GroupSetup.find_or_create_by_group_id(params[:id])
-    @group_name = Group.find(params[:id]).name
+    @group = Group.find(params[:id])
+    render 'no_permission' unless current_user.is_group_admin?(@group)
+    #render 'already_setup' unless @group.setup_completed_at.nil?
   end
 
   def finish
@@ -13,6 +15,8 @@ class Groups::GroupSetupController < GroupBaseController
       @invite_people = InvitePeople.new(invite_attributes)
       num = CreateInvitation.to_people_and_email_them(@invite_people, group: @group_setup.group, inviter: current_user)
       flash[:notice] = "#{num} invitations sent"
+      @group_setup.group.setup_completed_at = Time.now
+      @group_setup.group.save!
       render 'finished'
     else
       render 'setup'

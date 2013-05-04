@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422085712) do
+ActiveRecord::Schema.define(:version => 20130503040358) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(:version => 20130422085712) do
     t.integer  "discussions_count",    :default => 0,     :null => false
     t.integer  "motions_count",        :default => 0,     :null => false
     t.string   "country_name"
+    t.datetime "setup_completed_at"
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"

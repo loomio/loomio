@@ -20,7 +20,7 @@
             .span9
               %h1= t("group_setup_form.group_header")
               .control-group
-                = f.input :group_name, input_html: { class: 'validate-presence', :value => @group_name }
+                = f.input :group_name, input_html: { class: 'validate-presence', value: @group.name }
                 %span.inline-help= t("group_setup_form.errors.group_name")
               .control-group
                 = f.input :group_description, input_html: { class: 'validate-presence' }
@@ -76,7 +76,7 @@
                 %span.email-validation-help
                 = f.input :members_list, as: :hidden
               .control-group
-                = f.input :invite_body, input_html: { class: 'validate-presence', value: t("invitation_to_join_group.body_editable", group: @group_setup.group_name) }
+                = f.input :invite_body, input_html: { class: 'validate-presence', value: t("invitation_to_join_group.body_editable", group: @group.name) }
                 %span.inline-help= t("group_setup_form.errors.invites_body")
       .row
         .span5

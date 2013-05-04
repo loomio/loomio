@@ -20,24 +20,47 @@ Given(/^I fill in the form upto the invites tab$/) do
   step 'I should see the setup invites tab'
 end
 
+When(/^a group is already setup$/) do
+  @group.setup_completed_at = Time.now
+  @group.save!
+end
+
 When(/^I fill in a list of valid and invalid emails$/) do
   fill_in "invitees", with: "peter@post.com, der_rick@more.org, 'susan scrimsure' <sus@scrimmy.com>, am$%^87766, .com.com"
 end
 
-Then(/^I should see a flash message displaying number of valid emails$/) do
-  find('.alert').should have_content('3 invitations sent')
-end
-
-Then(/^I should see a list of the valid emails$/) do
-  page.should have_content "peter@post.com,der_rick@more.org,sus@scrimmy.com"
-end
-
-Then /^I should see the group setup wizard$/ do
-  page.should have_content('Set up your group')
+When /^I click Goto group$/ do
+  click_on 'Goto group'
 end
 
 When /^I click the "(.*?)" button$/ do |id|
   find("##{id}").click
+end
+
+When(/^I click Return to home$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I should see the home page$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I fill in the group panel$/ do
+  fill_in 'Group description', with: "A discription of my group"
+end
+
+When /^I fill in the discussion panel$/ do
+  fill_in 'Discussion title', with: "My discussion title"
+  fill_in 'Discussion description', with: "A discription of my discussion"
+end
+
+When /^I fill in the motion panel$/ do
+  fill_in 'Motion title', with: "My discussion title"
+  fill_in 'Motion description', with: "A discription of my discussion"
+end
+
+When /^I fill in the invites panel$/ do
+  fill_in 'invitees', with: "peanut@butter.co.nz, jam@toastie.com"
 end
 
 Then /^I should see the setup group tab$/ do
@@ -73,7 +96,7 @@ Then /^the discussion should have a motion$/ do
 end
 
 Then /^I should see the group page$/ do
-  find('.group-title').should have_content(@group_setup.group_name)
+  find('.group-title').should have_content(@group.name)
 end
 
 Then(/^I should see my time zone set in the timezone select$/) do
@@ -84,22 +107,27 @@ Then /^I should see the finished page$/ do
   page.should have_content('Finished!')
 end
 
-When /^I fill in the group panel$/ do
-  fill_in 'Group description', with: "A discription of my group"
+Then(/^I should be told that I dont have permission to set up this group$/) do
+  pending # express the regexp above with the code you wish you had
+end
+Then(/^I should see a flash message displaying number of valid emails$/) do
+  find('.alert').should have_content('3 invitations sent')
 end
 
-When /^I fill in the discussion panel$/ do
-  fill_in 'Discussion title', with: "My discussion title"
-  fill_in 'Discussion description', with: "A discription of my discussion"
+Then(/^the date the group was setup is stored$/) do
+  @group_setup.group.setup_completed_at.should_not be_nil
 end
 
-When /^I fill in the motion panel$/ do
-  fill_in 'Motion title', with: "My discussion title"
-  fill_in 'Motion description', with: "A discription of my discussion"
+Then(/^I should be told that the group has already been setup$/) do
+  page.should have_content "The group #{@group.name} has already been set up"
 end
 
-When /^I fill in the invites panel$/ do
-  fill_in 'invitees', with: "peanut@butter.co.nz, jam@toastie.com"
+Then(/^I should see a list of the valid emails$/) do
+  page.should have_content "peter@post.com,der_rick@more.org,sus@scrimmy.com"
+end
+
+Then /^I should see the group setup wizard$/ do
+  page.should have_content('Set up your group')
 end
 
 Then /^invitations should be sent out to each recipient$/ do

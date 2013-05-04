@@ -39,4 +39,10 @@
   #wizard-tabs { min-height: 600px; }
 }
 
-#finished { float: right; }
+body.group_setup.finish {
+  .recipient-list {
+    height: 300px;
+    overflow:scroll;
+  }
+  #finished { float: right; }
+}

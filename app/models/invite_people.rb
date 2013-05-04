@@ -22,4 +22,7 @@ class InvitePeople
     false
   end
 
+  def recipient_list
+    recipients.split(',')
+  end
 end
