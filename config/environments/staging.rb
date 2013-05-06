@@ -91,4 +91,5 @@ Loomio::Application.configure do
     :fog_directory => ENV['AWS_UPLOADS_BUCKET'],
     :fog_public => true
   }
+
 end
