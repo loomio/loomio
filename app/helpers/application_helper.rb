@@ -55,18 +55,22 @@ module ApplicationHelper
 
     if md_boolean
       options = [
-        :no_intra_emphasis => true,
-        :tables => true,
-        :fenced_code_blocks => true,
-        :autolink => true,
-        :strikethrough => true,
+        :no_intra_emphasis   => true,
+        :tables              => true,
+        :fenced_code_blocks  => true,
+        :autolink            => true,
+        :strikethrough       => true,
         :space_after_headers => true,
-        :superscript => true
+        :superscript         => true,
+        :underline           => true
       ]
 
-      renderer = Redcarpet::Render::HTML.new(link_attributes: {target: '_blank'})
+      renderer = Redcarpet::Render::HTML.new(
+        :filter_html         => true,
+        :link_attributes     => {target: '_blank'}
+        )
       markdown = Redcarpet::Markdown.new(renderer, *options)
-      markdown.render(html_escape(text)).html_safe
+      markdown.render(text).html_safe
     else
       Rinku.auto_link(simple_format(html_escape(text)), mode=:all, 'target="_blank"').html_safe
     end
@@ -114,5 +118,4 @@ module ApplicationHelper
     end
   end
 end
-
 
