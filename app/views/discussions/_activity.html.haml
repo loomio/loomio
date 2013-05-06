@@ -7,5 +7,5 @@
       - if event.kind == 'new_comment'
         %li.activity-item-container= render event.eventable
       - else
-        - discussion_item = DiscussionItem.new (event)
+        - discussion_item = DiscussionItem.new(event)
         %li.activity-item-container= render 'discussion_item', :item => discussion_item
