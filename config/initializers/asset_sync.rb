@@ -9,5 +9,7 @@ if defined?(AssetSync)
 
     # Fail silently.  Useful for environments such as Heroku
     config.fail_silently = true
+    config.gzip_compression = true
+
   end
 end
