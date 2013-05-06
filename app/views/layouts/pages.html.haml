@@ -11,7 +11,24 @@
   %body{class: "#{controller_name} #{action_name}"}
     .container.home-flash
       = render 'flash_messages', :flash => flash
-    = render "marketing_header"
+    .container#top
+      .inner-container
+        .row-fluid
+          .pull-right
+            =link_to 'Sign in', new_user_session_path, class: 'btn btn-info'
+          .span3 &nbsp;
+          .span6
+            =link_to image_tag("logo-426px-mauve-matte.png"), "/"
+            %h2 collaborative decision-making
+        .frontpage-nav
+          =link_to('Purpose', '/about#purpose') 
+          %span{style: 'padding-left: 3px; padding-right: 3px'}
+            &middot;
+
+          =link_to('How it works', '/about#how-it-works')
+          %span{style: 'padding-left: 3px; padding-right: 3px'}
+            &middot;
+          =link_to('About us', '/about#about-us')
     = yield
   = render 'google_analytics'
   = piwik_tracking_tag

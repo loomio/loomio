@@ -2,8 +2,16 @@ body.sessions.new,
 body.pages.home, 
 body.pages.purpose, 
 body.pages.how_it_works, 
+body.pages.about,
 body.pages.about_us, body.woc.index, body.group_requests.start_new_group {
   color: black;
+
+  .frontpage-nav {
+    text-transform:lowercase;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 130%;
+  }
 
   p, label{
     font-size: 18px;
@@ -73,23 +81,22 @@ body.pages.about_us, body.woc.index, body.group_requests.start_new_group {
   .inner-container{
     padding: 34px;
   }
+
   .section{
     margin-top: 34px;
     background: white;
     box-shadow: 3px 3px 5px #eee;
     border: 1px solid #eee;
   }
-  .section#first{
-    background: transparent;
+
+  .section.first{
     margin-top: 0px;
-    box-shadow: none;
-    border: none;
-    margin-top: 66px;
   }
 
-  .section#purpose, .section#how-it-works, .section#about-us {
-    margin-top: 6em;
-  }
+
+  /*.section#purpose, .section#how-it-works, .section#about-us {*/
+    /*margin-top: 6em;*/
+  /*}*/
 
   #first .inner-container{
     padding: 0 34px;

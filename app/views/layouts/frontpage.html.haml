@@ -11,7 +11,7 @@
   %body{class: "#{controller_name} #{action_name}"}
     .container.home-flash
       = render 'flash_messages', :flash => flash
-    = render "marketing_header"
+    %a{href: user_session_path} Sign In
     = yield
   = javascript_include_tag "frontpage"
   = render 'google_analytics'

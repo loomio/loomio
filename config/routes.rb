@@ -93,7 +93,7 @@ Loomio::Application.routes.draw do
   scope controller: 'pages' do
     get :purpose
     get :how_it_works
-    get :about_us
+    get :about
     get :privacy
     get :browser_not_supported
   end
@@ -107,13 +107,10 @@ Loomio::Application.routes.draw do
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
 
   #redirect old pages:
-  match '/pages/how*it*works' => redirect('/how_it_works')
-  match '/pages/get*involved' => redirect('/')
-  match '/pages/about' => redirect('/about_us')
-  match '/pages/contact' => redirect('/about_us')
-  match '/about' => redirect('/about_us')
-  match '/contact' => redirect('/about_us')
-  match '/pages/blog' => redirect('/pages/home/blog')
+  match '/pages/how*it*works' => redirect('/about#how-it-works')
+  match '/pages/get*involved' => redirect('/about')
+  match '/pages/about' => redirect('/about#about-us')
+  match '/pages/contact' => redirect('/about#about-us')
+  match '/contact' => redirect('/about#about-us')
   match '/pages/privacy' => redirect('/privacy_policy')
-  match '/demo' => redirect('/')
 end
