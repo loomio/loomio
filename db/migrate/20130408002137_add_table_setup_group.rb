@@ -14,9 +14,9 @@ class AddTableSetupGroup < ActiveRecord::Migration
       t.string :close_at_time_zone
       t.string :close_at_time
       t.string :admin_email
-      t.text :members_list
-      t.string :invite_subject
-      t.text :invite_body
+      t.text :recipients
+      t.string :message_subject
+      t.text :message_body
 
       t.timestamps
     end

@@ -10,6 +10,7 @@ class Groups::GroupSetupController < GroupBaseController
   def finish
     @group_setup = GroupSetup.find_by_group_id(params[:id])
     @group_setup.update_attributes(params[:group_setup])
+    @group_setup.admin_email = current_user.email
     if @group_setup.finish!(current_user)
       invite_attributes = build_invite_attributes(params[:group_setup])
       @invite_people = InvitePeople.new(invite_attributes)
@@ -23,11 +24,17 @@ class Groups::GroupSetupController < GroupBaseController
     end
   end
 
+  def save_setup
+    @group_setup = GroupSetup.find_by_group_id(params[:id])
+    @group_setup.update_attributes(params)
+  end
+
+
   private
 
   def build_invite_attributes(attrs)
-    { recipients: attrs[:members_list],
-      message_body: ( attrs[:invite_body] + t("invitation_to_join_group.body_uneditable",
+    { recipients: attrs[:recipients],
+      message_body: ( attrs[:message_body] + t("invitation_to_join_group.body_uneditable",
                                               motion_title: attrs[:motion_title],
                                               motion_description: attrs[:motion_description],
                                               group: attrs[:group_name],

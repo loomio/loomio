@@ -1,37 +1,14 @@
 @import "settings";
 @import "mixins";
 
-#group-setup {
-  .control-group, .controls { display: inline-block; }
+body.group_setup.setup {
   .control-label { display: block; }
-  .inline-help, .email-validation-help {
-    position: relative;
-    left: 20px;
-  }
-  .email-validation-help { color: $error-color }
   #group_setup_group_description { height: 130px; }
   // the following two lines added to cope with a bootstrap tab bug
   // trimming off the start and end of the inputs
-  .string, .text, .textarea { width: 366px; }
   .radio { padding-left: 22px; }
-  .motion-closing-inputs {
-    .motion-close-at-date { width: 140px; }
-  }
-  #group_setup_motion_description { height: 150px; }
-  #invitees {
-    height: 50px;
-    width:  366px;
-  }
-  #invite-body {
-    width: 356px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    background-color: #eeeeee;
-  }
 
+  #group_setup_motion_description { height: 150px; }
   #next, #send_invites {
     float: right;
     margin-left: 5px;
@@ -41,7 +18,7 @@
 
 body.group_setup.finish {
   .recipient-list {
-    height: 300px;
+    max_height: 300px;
     overflow:scroll;
   }
   #finished { float: right; }

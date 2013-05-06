@@ -1,7 +1,7 @@
 class GroupRequest < ActiveRecord::Base
 
   attr_accessible :admin_name, :admin_email, :country_name, :name, :sectors, :other_sector,
-                  :description, :expected_size, :max_size, :cannot_contribute, :robot_trap
+                  :description, :expected_size, :max_size, :cannot_contribute, :high_touch, :robot_trap
 
   attr_accessor :robot_trap
 
@@ -75,11 +75,6 @@ class GroupRequest < ActiveRecord::Base
   def accept!(user)
     group.add_admin!(user)
     accept_request!
-  end
-
-  def set_high_touch!(value)
-    self.high_touch = value
-    save!
   end
 
   private

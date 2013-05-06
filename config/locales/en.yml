@@ -405,8 +405,8 @@ en:
       motion_description: "Please fill in the motion description"
       motion_closing_inputs: "Please give a future close date"
       admin_email: "Please fill in the an administrator email address"
-      members_list: "Please fill in the invited email addresse(s)"
-      invites_body: "Please fill in the invite body"
+      recipients: "Please fill in the invited email addresse(s)"
+      message_body: "Please fill in the invite body"
 
   simple_form:
     labels:
@@ -436,8 +436,8 @@ en:
         motion_description: "Motion description"
         close_at_date: "Close date"
         admin_email: "From"
-        invite_subject: "Subject"
-        invite_body: "Message"
+        message_subject: "Subject"
+        message_body: "Message"
 
     placeholders:
       discussion:

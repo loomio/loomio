@@ -133,7 +133,7 @@ end
 Then /^invitations should be sent out to each recipient$/ do
   ["peanut@butter.co.nz", "jam@toastie.com"].each do |email_address|
     open_email(email_address)
-    current_email.should have_content(@group_setup.invite_body)
+    current_email.should have_content(@group_setup.message_body)
     current_email.should have_content(@group_setup.motion_title)
     current_email.should have_content(@group_setup.motion_description)
     current_email.should have_content(@group_setup.group_name)

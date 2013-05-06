@@ -17,6 +17,7 @@ ActiveAdmin.register GroupRequest do
     end
     column :expected_size
     column :max_size
+    column :high_touch
     column :admin_email
     column :approved_at, sortable: :approved_at
     column(:approved_by) {|gr| }
@@ -30,19 +31,11 @@ ActiveAdmin.register GroupRequest do
       row :admin_email
       row :description
       row :expected_size
+      row :high_touch
       row :status if group_request.unverified? or group_request.verified?
       if group_request.unverified?
         row ('Resend Verification Link') { link_to "resend",
             resend_verification_admin_group_request_path(group_request.id)}
-      end
-      row ('Touch level') do
-        if group_request.high_touch?
-          link_to "Low Touch (click to change)", low_touch_admin_group_request_path(group_request.id),
-            :method => :put
-        else
-          link_to "High Touch (click to change)", high_touch_admin_group_request_path(group_request.id),
-            :method => :put
-        end
       end
       if group_request.verified? and not group_request.approved?
         row ('Approve request') { link_to "approve",
@@ -139,26 +132,13 @@ ActiveAdmin.register GroupRequest do
       group_request.name
   end
 
-  member_action :low_touch, :method => :put do
-    group_request = GroupRequest.find(params[:id])
-    group_request.set_high_touch!(false)
-    redirect_to admin_group_requests_path,
-      :notice => group_request.name + " set to low touch"
-  end
-
-  member_action :high_touch, :method => :put do
-    group_request = GroupRequest.find(params[:id])
-    group_request.set_high_touch!(true)
-    redirect_to admin_group_requests_path,
-      :notice => group_request.name + " set to high touch"
-  end
-
   form do |f|
     f.inputs do
       f.input :name
       f.input :admin_email
       f.input :admin_name
-      f.input :country_name 
+      f.input :country_name
+      f.input :high_touch
       f.input :expected_size
       f.input :max_size
       f.input :description

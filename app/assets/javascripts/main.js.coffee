@@ -336,7 +336,7 @@ validateEmailsAndConfirm = (field) ->
     emailList = parseEmails($(field).val())
     return false unless validateMinimumEmailCount(field, emailList.length)
     return false unless confirm("You are about to invite #{emailList.length} recipients")
-    $("#group_setup_members_list").val(emailList.toString())
+    $(".recipients").val(emailList.toString())
   true
 
 validateMinimumEmailCount = (field, num) ->

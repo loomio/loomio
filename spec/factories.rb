@@ -126,9 +126,9 @@ FactoryGirl.define do
     close_at_time "12:00"
     close_at_time_zone "Wellington"
     admin_email Faker::Internet.email
-    members_list "#{Faker::Internet.email}, #{Faker::Internet.email}"
-    invite_subject "Welcome to our world"
-    invite_body "Please entertain me"
+    recipients "#{Faker::Internet.email}, #{Faker::Internet.email}"
+    message_subject "Welcome to our world"
+    message_body "Please entertain me"
   end
 
   factory :invitation do

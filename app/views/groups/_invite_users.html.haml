@@ -1,0 +1,13 @@
+.row
+  .span5
+    %h1 Invite people to join #{@group.name}
+    .control-group
+      = text_field_tag :admin_email, current_user.email, disabled: true
+    .control-group
+      = label 'invitees', t("group_setup_form.invitees_label"), class: "control-label", for: "invitees"
+      = text_area_tag 'invitees', nil, class: 'validate-emails', placeholder: t("group_setup_form.invitees_placeholder")
+      .email-validation-help
+      = form.input :recipients, as: :hidden, input_html: { class: 'recipients' }
+    .control-group
+      = form.input :message_body, as: :text, input_html: { class: 'validate-presence', value: t("invitation_to_join_group.body_editable", group: group.name) }
+      .inline-help= t("group_setup_form.errors.invites_body")

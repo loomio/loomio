@@ -17,14 +17,14 @@
       .tab-content#wizard-tabs
         .tab-pane.active#group-tab
           .row
-            .span9
+            .span5
               %h1= t("group_setup_form.group_header")
               .control-group
                 = f.input :group_name, input_html: { class: 'validate-presence', value: @group.name }
-                %span.inline-help= t("group_setup_form.errors.group_name")
+                .inline-help= t("group_setup_form.errors.group_name")
               .control-group
                 = f.input :group_description, input_html: { class: 'validate-presence' }
-                %span.inline-help= t("group_setup_form.errors.group_description")
+                .inline-help= t("group_setup_form.errors.group_description")
               %h2= t("group_setup_form.group_settings_header")
           .row
             .span5
@@ -38,51 +38,37 @@
               %h1= t("group_setup_form.discussion_header")
               %p= t("group_setup_form.discussion_blurb")
           .row
-            .span9
+            .span5
               .control-group
                 = f.input :discussion_title, input_html: { class: 'validate-presence' }
                 %span.inline-help= t("group_setup_form.errors.discussion_title")
               .control-group
                 = f.input :discussion_description, input_html: { class: 'validate-presence' }
-                %span.inline-help= t("group_setup_form.errors.discussion_description")
+                .inline-help= t("group_setup_form.errors.discussion_description")
         .tab-pane#motion-tab
           .row
             .span5
               %h1= t("group_setup_form.motion_header")
               %p= t("group_setup_form.motion_blurb")
           .row
-            .span9
+            .span5
               .control-group
                 = f.input :motion_title, input_html: { class: 'validate-presence' }
-                %span.inline-help= t("group_setup_form.errors.motion_title")
+                .inline-help= t("group_setup_form.errors.motion_title")
               .control-group
                 = f.input :motion_description, input_html: { class: 'validate-presence' }
-                %span.inline-help= t("group_setup_form.errors.motion_description")
+                .inline-help= t("group_setup_form.errors.motion_description")
               .control-group.motion-closing-inputs
                 = f.input :close_at_date, as: :date_picker, input_html: { class: 'motion-close-at-date' }
                 = f.input :close_at_time, as: :select, collection: populate_time_select, include_blank: false, label: false, input_html: { class: 'motion-close-at-time' }
                 = f.time_zone_select :close_at_time_zone, nil, { default: @current_user.time_zone }, class: 'motion-close-at-time-zone'
-                %span.inline-help= t("group_setup_form.errors.motion_closing_inputs")
+                .inline-help= t("group_setup_form.errors.motion_closing_inputs")
         .tab-pane#invite-tab
-          .row
-            .span9
-              %h1= t("group_setup_form.invites_header")
-              .control-group
-                = f.input :admin_email, input_html: { class: 'validate-presence', :value => current_user.email, disabled: true }
-                %span.inline-help= t("group_setup_form.errors.admin_email")
-              .control-group
-                = label 'invitees', t("group_setup_form.invitees_label"), class: "control-label", for: "invitees"
-                = text_area_tag 'invitees', nil, class: 'validate-emails', placeholder: t("group_setup_form.invitees_placeholder")
-                %span.email-validation-help
-                = f.input :members_list, as: :hidden
-              .control-group
-                = f.input :invite_body, input_html: { class: 'validate-presence', value: t("invitation_to_join_group.body_editable", group: @group.name) }
-                %span.inline-help= t("group_setup_form.errors.invites_body")
+          = render 'groups/invite_users', form: f, group: @group
       .row
         .span5
-          = f.submit 'Send invites', class: 'btn btn-info btn-large', id: 'send_invites', :data => { :disable_with => "Send invites" }
+          = f.submit 'Send invites', class: 'btn btn-info btn-large run-validations', id: 'send_invites', :data => { :disable_with => "Send invites" }
           = link_to 'Next', '#', class: 'btn btn-info btn-large', id: 'next'
           = link_to 'Back', '#', class: 'btn btn-warning btn-large', id: 'prev'
       .row
-        .span5
-          = "saved x minutes ago"
+        .span5#saved-at

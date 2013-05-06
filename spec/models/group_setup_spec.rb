@@ -68,7 +68,7 @@ describe "GroupSetup" do
   end
 
   describe "recipients" do
-    it "parses the string members_list and returns a collection" do
+    it "parses the string recipients and returns a collection" do
     end
   end
 end

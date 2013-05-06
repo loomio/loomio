@@ -160,7 +160,7 @@ li.selector-item a.selector-link:hover {
   .motion-close-at-date { width: 140px; }
   .motion-close-at-time, .motion-close-at-time-zone {
     margin-top: 10px;
-    width: 115px;
+    width: 113px;
     display: inline-block;
   }
   .inline-help {
@@ -213,6 +213,7 @@ li.selector-item a.selector-link:hover {
   color: $error-color;
 }
 
+.email-validation-help { color: $error-color }
 .inline-help { color: $error-color; }
 
 .character-counter {
