@@ -1,4 +1,5 @@
 class MotionsController < GroupBaseController
+  inherit_resources
   load_and_authorize_resource :except => [:create, :show, :index]
   before_filter :authenticate_user!, :except => [:show, :index, :get_and_clear_new_activity]
   before_filter :check_group_read_permissions, :only => :show

@@ -1,10 +1,11 @@
 Given /^there is an announcement$/ do
   Announcement.create! message: "I am an announcement", 
-    starts_at: 1.hour.ago, ends_at: 1.hour.from_now
+    starts_at: 2.day.ago, ends_at: 2.day.from_now
 end
 
 When /^I load the dashboard$/ do
   visit '/'
+  save_and_open_page
 end
 
 Then /^I should see the announcement$/ do

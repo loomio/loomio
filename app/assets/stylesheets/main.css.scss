@@ -18,6 +18,7 @@ body {
   height: 100%;
   color: $dark-grey;
 }
+
 hr {
   margin: 1px;
 }
@@ -47,24 +48,12 @@ h5 { font-size: 12px; }
 h6 { font-size: 11px; }
 h4, h5, h6 { line-height: 18px; }
 
-.group-title h2 {
-  color: #777;
-  display: inline;
-  a { color: $header-link-color; }
-}
-
 .font-size-85pc{
   font-size: 85%;
 }
 
 // structural elements (containers etc.)
 .page-container { margin-top: 30px; }
-.group-link.clearfix {
-  .group-link-name { float: left; }
-  .group-link-activity { float: right; }
-  .button-icon { padding: 0 }
-}
-.activity-item-body .popover h3 { padding: 8px 14px; }
 
 .popover {
   width: 276px;
@@ -75,62 +64,10 @@ h4, h5, h6 { line-height: 18px; }
 
 // #start-new-discussion { margin: 0 0 20px 2px; }
 .main-content { margin-top: 20px; }
-#discussion-list {
-  margin-bottom: 10px;
-}
 
-#new_discussion .control-label {
-  display: block;
-}
-.see-more {
-  font-size: $font-small;
-  position: relative;
-  bottom: 10px;
-  display: block;
-}
-.model-description { padding-bottom: 10px; }
-.description-body {
-  color: $dark-grey;
-  margin-bottom: 10px;
-}
-#description-edit-form {
-  margin-bottom: 0px;
-  #description-input {
-    width: 600px;
-    height: 90px;
-    margin-bottom: 5px;
-  }
-  .control-group { margin-bottom: 0px; }
-  #add-description-submit { float: left; }
-  #cancel-add-description {
-    float: left;
-    margin: 15px 0 0 10px;
-    color: $mid-grey;
-    text-decoration: underline;
-    position: relative;
-    top: 5px;
-    font-size: $font-tiny;
-  }
-  #cancel-add-description:hover {
-    color: $dark-grey;
-  }
-}
 
 li.empty-list-message {
   padding: 5px 0px;
-}
-.discussion-with-motion-divider { border-bottom: 2px solid $light-grey; }
-
-#show-closed-motions {
-  margin-bottom: 10px;
-}
-
-#closed-motions-page .selector-list { padding-bottom: 20px; }
-#closed-motions-page li.selector-item.loading { background-position: 270px 160px; }
-#closed-motions {
-  width: 750px;
-  margin-left: -375px;
-  min-height: 550px;
 }
 
 /**** Structural elements ****/

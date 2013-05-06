@@ -1,4 +1,5 @@
 class DiscussionsController < GroupBaseController
+  inherit_resources
   load_and_authorize_resource :except => [:show, :new, :create, :index]
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :check_group_read_permissions, :only => :show

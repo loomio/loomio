@@ -1,10 +1,28 @@
-class BaseController < InheritedResources::Base
+class BaseController < ApplicationController
   before_filter :authenticate_user!, :check_browser, :check_invitation, :load_announcements
-  # inherit_resources
+
+  protected
+
+  def store_location
+    session[:return_to] = request.fullpath
+  end
+
+  def clear_stored_location
+    session[:return_to] = nil
+  end
+
+  def after_sign_in_path_for(resource)
+    path = session[:return_to] || root_path
+    clear_stored_location
+    path
+  end
 
   def load_announcements
     if current_user
       @current_and_not_dismissed_announcements = Announcement.current_and_not_dismissed_by(current_user)
+      @current_and_not_dismissed_announcements = Announcement.current
+      puts @current_and_not_dismissed_announcements.inspect
+      puts Announcement.all.inspect
     end
   end
 

@@ -1,11 +1,13 @@
 Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: { sessions: 'users/sessions', invitations: 'users/invitations' }
+  devise_for :users, controllers: { sessions: 'users/sessions', 
+                                    invitations: 'users/invitations' }
 
   resources :group_requests, only: [:create, :new] do
     get :start_new_group, on: :member
   end
+
   match "/request_new_group", to: "group_requests#start", as: :request_new_group
   match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
 
@@ -24,10 +26,6 @@ Loomio::Application.routes.draw do
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
   match "/groups/:id/members", :to => "groups#get_members", :as => :get_members, :via => :get
 
-  match '/purpose' => 'pages#purpose', :as => "purpose"
-  match '/how_it_works' => 'pages#how_it_works'
-  match '/about_us' => 'pages#about_us'
-
   resources :motions do
     resources :votes, only: [:new, :edit, :create, :update]
     post :get_and_clear_new_activity, on: :member
@@ -44,6 +42,7 @@ Loomio::Application.routes.draw do
     post :edit_title, :on => :member
     put :move, :on => :member
   end
+
   post "/discussion/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
   post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"
 
@@ -65,6 +64,8 @@ Loomio::Application.routes.draw do
     post :upload_new_avatar, on: :member
   end
 
+  match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
+
   match "/users/dismiss_system_notice", :to => "users#dismiss_system_notice",
         :as => :dismiss_system_notice_for_user, :via => :post
   match "/users/dismiss_dashboard_notice", :to => "users#dismiss_dashboard_notice",
@@ -78,45 +79,41 @@ Loomio::Application.routes.draw do
     post :like, on: :member
     post :unlike, on: :member
   end
+
   match "/settings", :to => "users#settings", :as => :user_settings
   match 'email_preferences', :to => "email_preferences#edit", :as => :email_preferences, :via => :get
   match 'email_preferences', :to => "email_preferences#update", :as => :update_email_preferences, :via => :put
-
-  # route logged in user to dashboard
-  resources :dashboard, only: :show
 
   authenticated do
     root :to => 'dashboard#show'
   end
 
-  #redirect old invites
-  match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
+  root :to => 'pages#home'
 
-  match '/browser_not_supported' => 'high_voltage/pages#show', :id => 'browser_not_supported'
-  match '/privacy' => 'high_voltage/pages#show', :id => 'privacy'
-  match '/blog' => 'high_voltage/pages#show', :id => 'blog'
-  match '/collaborate', to: "woc#index", as: :collaborate
-
-  root :to => 'pages#show', :id => 'home'
-
-  #redirect old pages:
-  match '/pages/how*it*works' => redirect('/pages/home#how')
-  match '/pages/get*involved' => redirect('/pages/home#who')
-  match '/pages/about' => redirect('/pages/home#who')
-  match '/pages/contact' => redirect('/pages/home#who')
-  match '/pages/blog' => redirect('/pages/home/blog')
-  match '/pages/privacy' => redirect('/pages/home/privacy')
-  match '/how*it*works' => redirect('/pages/home#how')
-  match '/get*involved' => redirect('/pages/home#who')
-  match '/about' => redirect('/pages/home#who')
-  match '/contact' => redirect('/pages/home#who')
-  match '/demo' => redirect('/')
-
-  match "/pages/*id" => 'pages#show', :as => :page, :format => false
+  scope controller: 'pages' do
+    get :purpose
+    get :how_it_works
+    get :about_us
+    get :privacy
+    get :browser_not_supported
+  end
 
   resources :woc, only: :index do
     post :send_request, on: :collection
   end
+  match '/collaborate', to: "woc#index", as: :collaborate
 
-  match 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
+  #redirect old invites
+  match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
+
+  #redirect old pages:
+  match '/pages/how*it*works' => redirect('/how_it_works')
+  match '/pages/get*involved' => redirect('/')
+  match '/pages/about' => redirect('/about_us')
+  match '/pages/contact' => redirect('/about_us')
+  match '/about' => redirect('/about_us')
+  match '/contact' => redirect('/about_us')
+  match '/pages/blog' => redirect('/pages/home/blog')
+  match '/pages/privacy' => redirect('/privacy_policy')
+  match '/demo' => redirect('/')
 end
