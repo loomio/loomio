@@ -92,7 +92,7 @@ class DiscussionsController < GroupBaseController
 
   def add_comment
     @discussion = Discussion.find(params[:id])
-    comment = @discussion.add_comment(current_user, params[:comment], params[:global_uses_markdown])
+    @comment = @discussion.add_comment(current_user, params[:comment], params[:global_uses_markdown])
     ViewLogger.discussion_viewed(@discussion, current_user)
   end
 
