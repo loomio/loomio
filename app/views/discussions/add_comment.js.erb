@@ -1,3 +1,2 @@
 $("#new-comment").val('');
-$("#activity-feed").html("<%= escape_javascript(render :partial => 'activity', :locals =>
-{ :discussion => @discussion }) %>");
+$("ul#activity-list li.divider").after("<li class='activity-item-container'><%=escape_javascript(render @comment)%></li>");
