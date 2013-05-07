@@ -20,9 +20,6 @@ class BaseController < ApplicationController
   def load_announcements
     if current_user
       @current_and_not_dismissed_announcements = Announcement.current_and_not_dismissed_by(current_user)
-      @current_and_not_dismissed_announcements = Announcement.current
-      puts @current_and_not_dismissed_announcements.inspect
-      puts Announcement.all.inspect
     end
   end
 
