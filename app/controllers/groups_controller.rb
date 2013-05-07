@@ -48,7 +48,7 @@ class GroupsController < GroupBaseController
 
     if @group.save
       flash[:success] = t("success.group_archived")
-      redirect_to dashboard_url
+      redirect_to root_path
     else
       flash[:error] = t("error.group_not_archived")
       redirect_to :back
