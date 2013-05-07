@@ -99,7 +99,7 @@ Loomio::Application.routes.draw do
   resources :woc, only: :index do
     post :send_request, on: :collection
   end
-  match '/collaborate', to: "woc#index", as: :collaborate
+  get '/collaborate', to: "woc#index", as: :collaborate
 
   #redirect old invites
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
