@@ -1,3 +1,3 @@
 class Users::SessionsController < Devise::SessionsController
-  layout 'frontpage'
+  layout 'pages'
 end

@@ -23,6 +23,49 @@ body.discussions.new, body.discussions.create {
   }
 }
 
+#discussion-list {
+  margin-bottom: 10px;
+}
+
+#new_discussion .control-label {
+  display: block;
+}
+
+.see-more {
+  font-size: $font-small;
+  position: relative;
+  bottom: 10px;
+  display: block;
+}
+
+.model-description { padding-bottom: 10px; }
+.description-body {
+  color: $dark-grey;
+  margin-bottom: 10px;
+}
+
+#description-edit-form {
+  margin-bottom: 0px;
+  #description-input {
+    width: 600px;
+    height: 90px;
+    margin-bottom: 5px;
+  }
+  .control-group { margin-bottom: 0px; }
+  #add-description-submit { float: left; }
+  #cancel-add-description {
+    float: left;
+    margin: 15px 0 0 10px;
+    color: $mid-grey;
+    text-decoration: underline;
+    position: relative;
+    top: 5px;
+    font-size: $font-tiny;
+  }
+  #cancel-add-description:hover {
+    color: $dark-grey;
+  }
+}
 /** discussion show form*/
 body.discussions.show {
   h2#discussion-title {
@@ -170,6 +213,7 @@ li s hard.motion-preview {
 }
   /* Markdown styling */
 
+.activity-item-body .popover h3 { padding: 8px 14px; }
 .activity-item-body, .model-description, .motion .description {
   p {
     word-wrap: break-word;
