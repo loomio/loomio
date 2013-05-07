@@ -1,4 +1,6 @@
-%h1 Members of #{@group.full_name}
+= render '/groups/title', group: @group
+
+%h1 Members
 
 %table.memberships.table
   %thead

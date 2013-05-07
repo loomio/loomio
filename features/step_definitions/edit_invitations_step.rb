@@ -14,7 +14,7 @@ When(/^I visit the group page and click Invite People$/) do
 end
 
 When(/^invite a couple of people to join the group$/) do
-  fill_in 'Recipients', with: 'rob@enspiral.com, joe@webnet.com'
+  fill_in 'invitees', with: 'rob@enspiral.com, joe@webnet.com'
   fill_in 'Message body', with: 'yo join up {invitation_link}'
   click_on 'Send invitations'
 end

@@ -1,7 +1,0 @@
-%h1 Invite people to join #{@group.name}
-
-=simple_form_for(@invite_people, url: invite_people_group_path(@group.id), method: :post) do |f|
-  =f.input :recipients
-  =f.input :message_body
-  =f.submit 'Send invitations'
-

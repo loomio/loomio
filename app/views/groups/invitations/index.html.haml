@@ -1,4 +1,6 @@
-%h1 Pending Invitations to join #{@group.full_name}
+= render '/groups/title', group: @group
+
+%h1 Pending Invitations
 
 %table.pending-invitations.table
   %thead
@@ -14,4 +16,4 @@
 
 %p If someone did not get their invitation email, please feel free to copy the invitation link above and give it the recipient yourself.
 
-=link_to 'Invite People', new_group_invitation_path(@group), :class => "btn btn-info", :data => { disable_with: 'Send invitations' }
+=link_to 'Invite People', new_group_invitation_path(@group), :class => "btn btn-info btn-large", :data => { disable_with: 'Send invitations' }

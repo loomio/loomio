@@ -1,6 +1,7 @@
+%h1 Invite people
+%br
 .row
   .span5
-    %h1 Invite people to join #{@group.name}
     .control-group
       = text_field_tag :admin_email, current_user.email, disabled: true
     .control-group

@@ -3,6 +3,7 @@ class Groups::InvitationsController < GroupBaseController
 
   def new
     @invite_people = InvitePeople.new
+    @group = GroupDecorator.new(Group.find(params[:group_id]))
   end
 
   def create
@@ -14,6 +15,7 @@ class Groups::InvitationsController < GroupBaseController
 
   def index
     @pending_invitations = @group.pending_invitations
+    @group = GroupDecorator.new(Group.find(params[:group_id]))
   end
 
   def destroy

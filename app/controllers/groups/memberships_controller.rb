@@ -6,6 +6,7 @@ class Groups::MembershipsController < GroupBaseController
   # membership actions
   def index
     @memberships = @group.memberships
+    @group = GroupDecorator.new(Group.find(params[:group_id]))
   end
 
   def make_admin
