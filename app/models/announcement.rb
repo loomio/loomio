@@ -4,6 +4,10 @@ class Announcement < ActiveRecord::Base
   scope :current, lambda{ where("starts_at <= :now and ends_at > :now", now: Time.zone.now)}
 
   def self.current_and_not_dismissed_by(user)
-    current.where('id not in (?)', user.dismissed_announcement_ids)
+    if user.dismissed_announcement_ids.present?
+      current.where('announcements.id not in (?)', user.dismissed_announcement_ids)
+    else
+      current
+    end
   end
 end
