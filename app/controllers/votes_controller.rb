@@ -1,4 +1,5 @@
 class VotesController < GroupBaseController
+  inherit_resources
   belongs_to :motion
   # before_filter :ensure_group_member
   # belongs_to :motion
