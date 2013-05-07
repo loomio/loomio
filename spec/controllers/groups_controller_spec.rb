@@ -169,7 +169,7 @@ describe GroupsController do
         flash[:success].should =~ /Group archived successfully/
       end
       it "redirects to the dashboard" do
-        response.should redirect_to(:dashboard)
+        response.should redirect_to('/')
       end
     end
 
