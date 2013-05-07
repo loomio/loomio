@@ -1,32 +1,16 @@
-- if params[:id] == 'home'
-  - path_var = ''
-  - scroll_trigger = 'scroll-nav'
-- else
-  - path_var = '/pages/home'
-  - scroll_trigger = ''
-
 .navbar.navbar-inverse.navbar-fixed-top
   .navbar-inner
     .container
-      %a.brand{href: "#{path_var}#top", class: scroll_trigger}
+      %a.brand{href: '/'}
         =image_tag("top-bar-loomio.png")
       .nav-collapse
         %ul.nav
           %li
-            %a{href: "#{path_var}#why", class: scroll_trigger} Why
+            %a{href: purpose_path} Purpose
           %li
-            %a{href: "#{path_var}#how", class: scroll_trigger} How
+            %a{href: how_it_works_path} How it Works
           %li
-            %a{href: "#{path_var}#who", class: scroll_trigger} Who
+            %a{href: about_us_path} About Us
         %ul.nav.pull-right
           %li
             %a{href: user_session_path} Sign In
-
-.container#top
-  .section#first
-    .inner-container
-      .row-fluid
-        .span3 &nbsp;
-        .span6
-          =link_to image_tag("logo-426px-mauve-matte.png"), "/"
-          %h2 collaborative decision-making

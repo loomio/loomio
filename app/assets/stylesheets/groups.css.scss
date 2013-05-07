@@ -5,6 +5,17 @@
 @import "bootstrap/mixins";
 @import "mixins";
 
+.group-title h2 {
+  color: #777;
+  display: inline;
+  a { color: $header-link-color; }
+}
+
+.group-link.clearfix {
+  .group-link-name { float: left; }
+  .group-link-activity { float: right; }
+  .button-icon { padding: 0 }
+}
 // group title (on almost all pages)
 .group-title {
   margin: 0;
