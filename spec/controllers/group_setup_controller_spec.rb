@@ -35,7 +35,6 @@ describe Groups::GroupSetupController do
 
     it 'updates the attributes' do
       group_setup.stub(:finish!).and_return(true)
-      group_setup.stub(:send_invitations)
       group_setup.should_receive(:update_attributes)
       post :finish, id: group_setup.group_id,
                       group_setup: [ group_name: "plink" ]
@@ -50,7 +49,6 @@ describe Groups::GroupSetupController do
     context "completes successfully" do
       before do
         group_setup.stub(:finish!).and_return(true)
-        group_setup.stub(:send_invitations)
       end
 
       it "redirects to the finished page" do

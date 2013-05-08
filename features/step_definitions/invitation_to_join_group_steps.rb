@@ -20,7 +20,7 @@ When(/^I click Invite people from the members box$/) do
 end
 
 When(/^enter "(.*?)" into the recipients$/) do |arg1|
-  fill_in "invite_people[recipients]", with: arg1
+  fill_in "invitees", with: arg1
 end
 
 When(/^fill in the message body$/) do

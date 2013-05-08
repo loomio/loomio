@@ -7,17 +7,13 @@ Given /^the users time-zone has been set$/ do
 end
 
 Given(/^I fill in the form upto the invites tab$/) do
-  step 'I should see the setup group tab'
   step 'I fill in the group panel'
   step "I click the \"next\" button"
-  step 'I should see the setup discussion tab'
   step 'I fill in the discussion panel'
   step "I click the \"next\" button"
-  step 'I should see the setup decision tab'
   step 'I should see my time zone set in the timezone select'
   step 'I fill in the motion panel'
   step "I click the \"next\" button"
-  step 'I should see the setup invites tab'
 end
 
 When(/^a group is already setup$/) do
@@ -123,7 +119,9 @@ Then(/^I should be told that the group has already been setup$/) do
 end
 
 Then(/^I should see a list of the valid emails$/) do
-  page.should have_content "peter@post.com,der_rick@more.org,sus@scrimmy.com"
+  page.should have_content "peter@post.com"
+  page.should have_content "der_rick@more.org"
+  page.should have_content "sus@scrimmy.com"
 end
 
 Then /^I should see the group setup wizard$/ do

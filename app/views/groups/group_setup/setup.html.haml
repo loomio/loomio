@@ -41,7 +41,7 @@
             .span5
               .control-group
                 = f.input :discussion_title, input_html: { class: 'validate-presence' }
-                %span.inline-help= t("group_setup_form.errors.discussion_title")
+                .inline-help= t("group_setup_form.errors.discussion_title")
               .control-group
                 = f.input :discussion_description, input_html: { class: 'validate-presence' }
                 .inline-help= t("group_setup_form.errors.discussion_description")

@@ -24,6 +24,7 @@ class SetupGroup
                                                 recipient_email: group_request.admin_email)
 
     InvitePeopleMailer.invitation_email(invitation, args[:message_body]).deliver
+    invitation
   end
 
 end

@@ -298,7 +298,6 @@ ActiveRecord::Schema.define(:version => 20130503040358) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                                                       :default => false
     t.string   "name"
     t.string   "unconfirmed_email"
     t.string   "invitation_token",                             :limit => 60

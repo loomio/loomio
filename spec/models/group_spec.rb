@@ -35,7 +35,7 @@ describe Group do
     end
   end
 
-  describe 'invitations_remaining', focus: true do
+  describe 'invitations_remaining' do
     before do
       @group = Group.new
     end

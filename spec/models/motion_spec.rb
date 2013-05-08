@@ -201,7 +201,6 @@ describe Motion do
     end
   end
 
-<<<<<<< HEAD
   describe "#users_who_did_not_vote" do
     it "returns users who did not vote" do
       @user1 = create :user
@@ -217,8 +216,6 @@ describe Motion do
     end
   end
 
-=======
->>>>>>> 44a1f26f1a8b59a8800454f73b163cb1e7a0e48e
   describe "number_of_votes_since_last_looked(user)" do
     before do
       @user = build(:user)

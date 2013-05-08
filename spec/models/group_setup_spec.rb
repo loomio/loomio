@@ -50,12 +50,6 @@ describe "GroupSetup" do
     end
   end
 
-  describe "#send_invitations(recipients)" do
-    it "sends an email to each recipient in the list" do
-      recipients = ["mad@waxfins.com", "tom@jerry@com"]
-    end
-  end
-
   describe "finish!(author)" do
     it "returns true if group, discussion and motion are all created" do
       group_setup.finish!(author).should == true
@@ -64,11 +58,6 @@ describe "GroupSetup" do
     it "returns false if group or discussion or motion are not created" do
       group_setup.stub(:compose_motion!).and_return(false)
       group_setup.finish!(author).should == false
-    end
-  end
-
-  describe "recipients" do
-    it "parses the string recipients and returns a collection" do
     end
   end
 end

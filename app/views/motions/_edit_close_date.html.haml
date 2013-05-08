@@ -6,7 +6,7 @@
     .modal-body
       .row
         .span9
-          = render 'motions/close_at_inputs', form: f, user: @current_user
+          = render 'motions/close_at_inputs', form: f, user: user
     .modal-footer
       = submit_tag "Change", class: "motion btn btn-info btn-large run-validations", id: 'change-close-date', :data => { :disable_with => t(:changing) }
 

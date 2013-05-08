@@ -11,7 +11,7 @@ When(/^I view click edit memberships from the group page$/) do
 end
 
 Then(/^I should see the edit memberships page for the group$/) do
-  page.should have_content "Members of #{@group.full_name}"
+  page.should have_css('body.memberships.index')
   current_path.should == group_memberships_path(@group)
 end
 

@@ -12,12 +12,7 @@ When /^I approve the group request and send the setup invitation$/ do
   @setup_group = SetupGroup.new(@group_request)
   @group = @setup_group.approve_group_request(approved_by: @site_admin)
 
-  @invitation = CreateInvitation.to_start_group(group: @group,
-                                                inviter: @site_admin,
-                                                recipient_email: @group_request.admin_email)
-
-
-  @setup_group.send_invitation_to_start_group(invitation: @invitation,
+  @invitation = @setup_group.send_invitation_to_start_group(inviter: @site_admin,
                                               message_body: 'We woud love to! {invitation_link}')
 end
 
@@ -33,10 +28,7 @@ Given /^an invitiation to start a loomio group has been sent$/ do
   @site_admin = FactoryGirl.create :user, :is_admin => true
   @setup_group = SetupGroup.new(@group_request)
   @group = @setup_group.approve_group_request(approved_by: @site_admin)
-  @invitation = CreateInvitation.to_start_group(group: @group,
-                                                inviter: @site_admin,
-                                                recipient_email: @group_request.admin_email)
-  @setup_group.send_invitation_to_start_group(invitation: @invitation,
+  @setup_group.send_invitation_to_start_group(inviter: @site_admin,
                                               message_body: 'We woud love to! {invitation_link}')
 end
 
