@@ -10,13 +10,15 @@ class CommentsController < BaseController
     @comment = resource
     like = (params[:like]=='true')
     if like
-      comment_vote = resource.like current_user
+      comment_vote = @comment.like current_user
+      @comment.reload
       Events::CommentLiked.publish!(comment_vote)
     else
-      resource.unlike current_user
+      @comment.unlike current_user
+      @comment.reload
     end
     respond_to do |format|
-    	format.html { redirect_to discussion_url(resource.discussion) }
+    	format.html { redirect_to discussion_url(@comment.discussion) }
     	format.js { render :template => "comments/comment_likes" }
     end
   end

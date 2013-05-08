@@ -2,9 +2,8 @@ require 'spec_helper'
 
 describe Comment do
   let(:user) { stub_model(User) }
-  let(:discussion) { stub_model(Discussion) }
-  let(:comment) { Comment.create(commentable_id: discussion.id,
-                   commentable_type: 'Discussion', user_id: user.id) }
+  let(:discussion) { FactoryGirl.create(:discussion) }
+  let(:comment) { FactoryGirl.create(:comment, commentable: discussion) }
 
   it { should have_many(:events).dependent(:destroy) }
   it { should respond_to(:uses_markdown) }

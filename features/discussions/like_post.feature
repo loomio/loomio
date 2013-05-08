@@ -12,3 +12,6 @@ Feature: Like post
     When I write and submit a comment
     And I click the like button on a post
     Then a post should be liked by "furry@example.com"
+
+    When I click the unlike button on a post
+    Then I should not see any liked posts by "furry@example.com"
