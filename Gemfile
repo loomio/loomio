@@ -70,7 +70,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'meta_request', '~> 0.2.1'
+  gem 'meta_request', '~> 0.2.4'
   gem 'better_errors', '~> 0.6.0'
   gem 'guard', '~> 1.6.1'
   gem 'guard-spork', '~> 1.4.1'
