@@ -256,7 +256,7 @@ en:
   proposal_close_date_error: "Please give a future close date"
   proposal_closing_when: "Closing in %{when}"
   proposal_closed_when: "Closed %{when} ago"
-  proposed_when_by_who: "Proposed %{when} ago by %{who}"
+  proposed_when_by_who: "Proposed by %{who} %{when} ago"
   engagement_on_open_proposal: "%{percent}% of members have stated their position (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}% of members stated their position (%{numerator}/%{denominator})"
 
