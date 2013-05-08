@@ -31,6 +31,7 @@ describe Groups::GroupSetupController do
     before do
       GroupSetup.stub(:find_by_group_id).and_return(group_setup)
       group_setup.stub(:update_attributes).and_return(true)
+      group_setup.stub(:admin_email=).with(user.email)
     end
 
     it 'updates the attributes' do
