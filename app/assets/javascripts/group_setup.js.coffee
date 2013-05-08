@@ -1,7 +1,7 @@
-# $(document).ready ->
-#   setInterval () ->
-#     saveSetup()
-#   , 20000
+$(document).ready ->
+  setInterval () ->
+    saveSetup()
+  , 60000
 
 $ -> #initialiazation of form
   if $("body.group_setup").length > 0
@@ -9,6 +9,10 @@ $ -> #initialiazation of form
     $('#group_setup_group_name').focus()
 
 # EVENTS
+
+$ -> #call save when fields are tabbed out of
+  $('.validate-presence').on 'blur', (event) ->
+    saveSetup()
 
 $ -> #button functionality
   if $("body.group_setup").length > 0
@@ -31,14 +35,11 @@ $ -> #hide/show buttons on tab change
 
 saveSetup = () ->
   path = document.URL.replace(/setup/, "save_setup")
-  group_name = $('#group_setup_group_name')
-  group_description = $('#group_setup_description')
 
   $.ajax({
     type: "POST",
-    url: path
-    dataType: 'script',
-    data: { group_name: group_name.val(), group_description: group_description.val() }
+    url: path,
+    data: $('.edit_group_setup').serialize()
     })
 
 

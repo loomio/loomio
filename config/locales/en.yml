@@ -426,7 +426,7 @@ en:
         password: "Password"
         language_preference: "Language"
       group_setup:
-        group_name: "Group Name"
+        group_name: "Group name"
         group_description: "Group description"
         viewable_by: "Who can see this group?"
         invitable_by: "Who can invite members to this group?"

@@ -16,6 +16,15 @@ Given(/^I fill in the form upto the invites tab$/) do
   step "I click the \"next\" button"
 end
 
+When(/^I fill in the group name$/) do
+  @group_name = "Fantastic Spinners"
+  fill_in 'Group name', with: @group_name
+end
+
+When(/^I wait for (\d+) seconds$/) do |seconds|
+  sleep(seconds)
+end
+
 When(/^a group is already setup$/) do
   @group.setup_completed_at = Time.now
   @group.save!
@@ -31,14 +40,6 @@ end
 
 When /^I click the "(.*?)" button$/ do |id|
   find("##{id}").click
-end
-
-When(/^I click Return to home$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I should see the home page$/) do
-  pending # express the regexp above with the code you wish you had
 end
 
 When /^I fill in the group panel$/ do
@@ -57,6 +58,11 @@ end
 
 When /^I fill in the invites panel$/ do
   fill_in 'invitees', with: "peanut@butter.co.nz, jam@toastie.com"
+end
+
+Then(/^the group should be saved$/) do
+  group_setup = GroupSetup.find_by_group_id(@group.id)
+  group_setup.group_name.should == @group_name
 end
 
 Then /^I should see the setup group tab$/ do
@@ -104,8 +110,9 @@ Then /^I should see the finished page$/ do
 end
 
 Then(/^I should be told that I dont have permission to set up this group$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content "You do not have permission to set up this group"
 end
+
 Then(/^I should see a flash message displaying number of valid emails$/) do
   find('.alert').should have_content('3 invitations sent')
 end
@@ -115,7 +122,7 @@ Then(/^the date the group was setup is stored$/) do
 end
 
 Then(/^I should be told that the group has already been setup$/) do
-  page.should have_content "The group #{@group.name} has already been set up"
+  page.should have_content "The group #{@group.name} you are trying to setup, already exists."
 end
 
 Then(/^I should see a list of the valid emails$/) do

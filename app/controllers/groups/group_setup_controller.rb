@@ -3,8 +3,9 @@ class Groups::GroupSetupController < GroupBaseController
   def setup
     @group_setup = GroupSetup.find_or_create_by_group_id(params[:id])
     @group = Group.find(params[:id])
+    @group_setup.group_name ||= @group.name
     render 'no_permission' unless current_user.is_group_admin?(@group)
-    #render 'already_setup' unless @group.setup_completed_at.nil?
+    render 'already_setup' unless @group.setup_completed_at.nil?
   end
 
   def finish
@@ -26,7 +27,7 @@ class Groups::GroupSetupController < GroupBaseController
 
   def save_setup
     @group_setup = GroupSetup.find_by_group_id(params[:id])
-    @group_setup.update_attributes(params)
+    @group_setup.update_attributes(params[:group_setup])
   end
 
 

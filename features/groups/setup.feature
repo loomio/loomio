@@ -49,6 +49,14 @@ Feature: Setup group
     And the date the group was setup is stored
 
 @javascript
+  Scenario: Group admin starts setup and after 1 minute setup auto saves
+    Given I am an admin of a group
+    And I visit the group setup wizard for that group
+    When I fill in the group name
+    And I wait for 60 seconds
+    Then the group should be saved
+
+@javascript
   Scenario: Group admin tries to set up a group that alredy has been set up
     Given I am an admin of a group
     And the users time-zone has been set
