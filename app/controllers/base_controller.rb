@@ -1,15 +1,34 @@
 class BaseController < ApplicationController
-  inherit_resources
-  before_filter :authenticate_user!, :check_browser, :check_for_invitation, :get_notifications
+  before_filter :authenticate_user!, :check_browser, :check_for_invitation,:load_announcements
   helper_method :time_zone
 
-  private
+  protected
 
   def time_zone
     if user_signed_in?
       current_user.time_zone
     else
       'Wellington'
+    end
+  end
+
+  def store_location
+    session[:return_to] = request.fullpath
+  end
+
+  def clear_stored_location
+    session[:return_to] = nil
+  end
+
+  def after_sign_in_path_for(resource)
+    path = session[:return_to] || root_path
+    clear_stored_location
+    path
+  end
+
+  def load_announcements
+    if current_user
+      @current_and_not_dismissed_announcements = Announcement.current_and_not_dismissed_by(current_user)
     end
   end
 
@@ -22,13 +41,6 @@ class BaseController < ApplicationController
   def check_for_invitation
     if session[:invitation_token] and user_signed_in?
       redirect_to invitation_path(session[:invitation_token])
-    end
-  end
-
-  def get_notifications
-    if user_signed_in?
-      @unviewed_notifications = current_user.unviewed_notifications
-      @notifications = current_user.recent_notifications
     end
   end
 end

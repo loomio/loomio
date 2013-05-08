@@ -1,4 +1,5 @@
 class GroupsController < GroupBaseController
+  inherit_resources
   load_and_authorize_resource except: :show
   before_filter :authenticate_user!, except: :show
   before_filter :check_group_read_permissions, :only => :show
@@ -45,7 +46,7 @@ class GroupsController < GroupBaseController
 
     if @group.save
       flash[:success] = t("success.group_archived")
-      redirect_to dashboard_url
+      redirect_to root_path
     else
       flash[:error] = t("error.group_not_archived")
       redirect_to :back

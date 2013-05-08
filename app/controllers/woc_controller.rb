@@ -1,5 +1,5 @@
 class WocController < ApplicationController
-  layout 'frontpage'
+  layout 'pages'
 
   def index
     @title = "Loomio - Wellington Online Collaboration: Alcohol Management Strategy"

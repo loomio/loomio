@@ -1,4 +1,5 @@
 class DiscussionsController < GroupBaseController
+  inherit_resources
   load_and_authorize_resource :except => [:show, :new, :create, :index]
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :check_group_read_permissions, :only => :show
@@ -92,7 +93,7 @@ class DiscussionsController < GroupBaseController
 
   def add_comment
     @discussion = Discussion.find(params[:id])
-    comment = @discussion.add_comment(current_user, params[:comment], params[:global_uses_markdown])
+    @comment = @discussion.add_comment(current_user, params[:comment], params[:global_uses_markdown])
     ViewLogger.discussion_viewed(@discussion, current_user)
   end
 

@@ -1,4 +1,5 @@
 class Users::EmailPreferencesController < BaseController
+  inherit_resources
   skip_before_filter :authenticate_user!
   before_filter :authenticate_user_by_unsubscribe_token_or_fallback
   defaults :instance_name => 'email_preferences'

@@ -88,6 +88,13 @@ class User < ActiveRecord::Base
            :source => :votes,
            :through => :motions_in_voting_phase
 
+  has_many :announcement_dismissals
+
+  has_many :dismissed_announcements,
+           :through => :announcement_dismissals,
+           :source => :announcement
+  
+
   has_many :notifications
 
   # Setup accessible (or protected) attributes for your model
