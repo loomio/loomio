@@ -10,7 +10,7 @@ class Notification < ActiveRecord::Base
 
   attr_accessible :user, :event
 
-  default_scope order("id DESC")
+  default_scope order: "id DESC", include: [:event => [:eventable, :discussion]]
 
   scope :unviewed, where("viewed_at IS NULL")
 end
