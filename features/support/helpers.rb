@@ -1,4 +1,9 @@
 include Warden::Test::Helpers
+def view_screenshot
+  filename = "tmp/screenshots/#{Time.now.to_i}.png" 
+  page.driver.render(filename, full: true)
+  system("open #{filename}")
+end
 
 def login(email, password)
   visit "/users/sign_in"
