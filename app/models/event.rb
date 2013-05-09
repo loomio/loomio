@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
 
   has_many :notifications, :dependent => :destroy
   belongs_to :eventable, :polymorphic => true
+  belongs_to :discussion
   belongs_to :user
 
   validates_inclusion_of :kind, :in => KINDS

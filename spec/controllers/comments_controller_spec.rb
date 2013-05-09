@@ -4,7 +4,7 @@ describe CommentsController do
   let(:app_controller) { controller }
   let(:user) { stub_model(User) }
   let(:discussion) { mock_model(Discussion) }
-  let(:comment) { mock_model(Comment, discussion: discussion) }
+  let(:comment) { mock_model(Comment, discussion: discussion, reload: true) }
 
   context "authenticated user" do
     before do

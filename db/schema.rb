@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422085712) do
+ActiveRecord::Schema.define(:version => 20130508041523) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(:version => 20130422085712) do
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
     t.integer  "user_id"
-    t.boolean  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,18 +58,19 @@ ActiveRecord::Schema.define(:version => 20130422085712) do
   add_index "comment_votes", ["user_id"], :name => "index_comment_votes_on_user_id"
 
   create_table "comments", :force => true do |t|
-    t.integer  "commentable_id",   :default => 0
-    t.string   "commentable_type", :default => ""
-    t.string   "title",            :default => ""
-    t.text     "body",             :default => ""
-    t.string   "subject",          :default => ""
-    t.integer  "user_id",          :default => 0,     :null => false
+    t.integer  "commentable_id",      :default => 0
+    t.string   "commentable_type",    :default => ""
+    t.string   "title",               :default => ""
+    t.text     "body",                :default => ""
+    t.string   "subject",             :default => ""
+    t.integer  "user_id",             :default => 0,     :null => false
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "uses_markdown",    :default => false, :null => false
+    t.boolean  "uses_markdown",       :default => false, :null => false
+    t.integer  "comment_votes_count", :default => 0,     :null => false
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -163,27 +163,6 @@ ActiveRecord::Schema.define(:version => 20130422085712) do
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
-
-  create_table "group_setups", :force => true do |t|
-    t.integer  "group_id"
-    t.string   "group_name"
-    t.text     "group_description"
-    t.string   "viewable_by",            :default => "members"
-    t.string   "members_invitable_by",   :default => "admins"
-    t.string   "discussion_title"
-    t.text     "discussion_description"
-    t.string   "motion_title"
-    t.text     "motion_description"
-    t.date     "close_at_date"
-    t.string   "close_at_time_zone"
-    t.string   "close_at_time"
-    t.string   "admin_email"
-    t.text     "members_list"
-    t.string   "invite_subject"
-    t.text     "invite_body"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
-  end
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -302,8 +281,8 @@ ActiveRecord::Schema.define(:version => 20130422085712) do
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.boolean  "uses_markdown",                                               :default => false
+    t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.string   "language_preference"
   end
 
