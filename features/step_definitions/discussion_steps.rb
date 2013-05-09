@@ -3,7 +3,7 @@ Given /^I am on the discussion page$/ do
 end
 
 When /^I visit the discussion page$/ do
-  step 'I am on the discussion page'
+  visit discussion_path(@discussion)
 end
 
 Then /^I should see the discussion$/ do

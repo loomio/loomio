@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422085712) do
+ActiveRecord::Schema.define(:version => 20130508041523) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(:version => 20130422085712) do
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
     t.integer  "user_id"
-    t.boolean  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,18 +58,19 @@ ActiveRecord::Schema.define(:version => 20130422085712) do
   add_index "comment_votes", ["user_id"], :name => "index_comment_votes_on_user_id"
 
   create_table "comments", :force => true do |t|
-    t.integer  "commentable_id",   :default => 0
-    t.string   "commentable_type", :default => ""
-    t.string   "title",            :default => ""
-    t.text     "body",             :default => ""
-    t.string   "subject",          :default => ""
-    t.integer  "user_id",          :default => 0,     :null => false
+    t.integer  "commentable_id",      :default => 0
+    t.string   "commentable_type",    :default => ""
+    t.string   "title",               :default => ""
+    t.text     "body",                :default => ""
+    t.string   "subject",             :default => ""
+    t.integer  "user_id",             :default => 0,     :null => false
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "uses_markdown",    :default => false, :null => false
+    t.boolean  "uses_markdown",       :default => false, :null => false
+    t.integer  "comment_votes_count", :default => 0,     :null => false
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"

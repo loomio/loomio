@@ -1,4 +1,3 @@
-
 FactoryGirl.define do
   factory :membership do |m|
     m.user { |u| u.association(:user)}
