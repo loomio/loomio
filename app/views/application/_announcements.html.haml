@@ -2,7 +2,7 @@
   - @current_and_not_dismissed_announcements.each do |announcement|
     - if announcement.locale == I18n.locale.to_s
       = div_for announcement, class: "alert alert-success" do
-        = link_to "×", hide_announcement_path(announcement), remote: true, class: "close"
+        = link_to "×", "#", class: "close dismiss-announcement", data: {'hide-path' => hide_announcement_path(announcement, format: 'js')}
         = render_rich_text(announcement.message)
         %p
-          = link_to t(:click_to_dismiss), hide_announcement_path(announcement), remote: true
+          = link_to t(:click_to_dismiss), "#", class: "dismiss-announcement", data: {'hide-path' => hide_announcement_path(announcement, format: 'js')}
