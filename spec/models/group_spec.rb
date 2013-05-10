@@ -215,11 +215,6 @@ describe Group do
         @group.membership_requests.find_by_user_id(@user).should \
           == @user.membership_requests.find_by_group_id(@group)
       end
-      it "should send group admins a notification email" do
-        GroupMailer.should_receive(:new_membership_request).with(kind_of(Membership))
-          .and_return(stub(deliver: true))
-        @group.add_request!(@user)
-      end
     end
   end
 

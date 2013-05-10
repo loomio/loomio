@@ -201,21 +201,6 @@ describe Motion do
     end
   end
 
-  describe "#users_who_did_not_vote" do
-    it "returns users who did not vote" do
-      @user1 = create :user
-      @group = create :group
-      @discussion = create(:discussion, group: @group, author: @user1)
-      @motion1 = create(:motion, name: "hi",
-                                author: @user1,
-                                discussion: @discussion,
-                                phase: "voting")
-      @motion1.author = @user1
-      @motion1.save!
-      @motion1.users_who_did_not_vote.should include(@user1)
-    end
-  end
-
   describe "number_of_votes_since_last_looked(user)" do
     before do
       @user = build(:user)

@@ -35,22 +35,4 @@ describe SetupGroup do
       @group_request.approved_by.should == @approver
     end
   end
-
-  describe 'send_group_admin_invitiation_email' do
-    let(:mailer_stub){ stub(:mailer_stub, :deliver => true)}
-    let(:message_body) { 'yo i am the message body {link_to_replace}'}
-
-    before do
-      @group = @setup_group.approve_group_request(approved_by: @approver)
-    end
-
-    after do
-      @setup_group.send_invitation_to_start_group!(message_body)
-    end
-
-    it 'emails the group admin' do
-      StartGroupMailer.should_receive(:invite_admin_to_start_group).
-      with(@group_request, message_body).and_return(mailer_stub)
-    end
-  end
 end

@@ -15,11 +15,6 @@ describe UsersController do
       GroupRequest.stub!(:find_by_token).and_return(req)
       User.stub!(:new).and_return(user)
     end
-
-    it "generates a username based on user's name" do
-      user.should_receive(:generate_username)
-      post :create, :user => {}
-    end
   end
 
   describe "#update" do

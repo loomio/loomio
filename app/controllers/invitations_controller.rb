@@ -13,7 +13,7 @@ class InvitationsController < ApplicationController
     else
       session[:invitation_token] = params[:id]
       @user = User.new
-      render template: 'invitations/please_sign_in', layout: 'frontpage'
+      render template: 'invitations/please_sign_in', layout: 'pages'
     end
   end
 end

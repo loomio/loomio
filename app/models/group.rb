@@ -41,7 +41,7 @@ class Group < ActiveRecord::Base
     :class_name => 'Membership',
     :dependent => :destroy
 
-  has_many :members, 
+  has_many :members,
            through: :memberships,
            source: :user,
            conditions: { :invitation_token => nil }

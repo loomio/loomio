@@ -51,7 +51,7 @@ class Groups::MembershipsController < GroupBaseController
   # membership request actions
   # ¡crying! out for their own controller and model
   #
-  def approve
+  def approve_request
     @membership = Membership.find(params[:id])
     if @membership.request?
       @membership.approve!
@@ -63,7 +63,7 @@ class Groups::MembershipsController < GroupBaseController
     redirect_to @membership.group
   end
 
-  def ignore
+  def ignore_request
     if @membership = Membership.find_by_id(params[:id])
       authorize! :ignore_request, @membership
       @membership.destroy
@@ -75,7 +75,7 @@ class Groups::MembershipsController < GroupBaseController
     end
   end
 
-  def cancel
+  def cancel_request
     if @membership = Membership.find_by_id(params[:id])
       authorize! :cancel_request, @membership
       @membership.destroy

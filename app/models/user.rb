@@ -104,6 +104,7 @@ class User < ActiveRecord::Base
 
   before_save :set_avatar_initials, :ensure_unsubscribe_token
   before_create :set_default_avatar_kind
+  before_create :generate_username
   after_create :ensure_name_entry
   before_destroy { |user| ViewLogger.remove_all_logs_for(user.id) }
 
@@ -299,7 +300,6 @@ class User < ActiveRecord::Base
       num+=1
     end
     self.username = username_tmp
-    save
   end
 
   private

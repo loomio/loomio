@@ -30,44 +30,51 @@ describe Groups::GroupSetupController do
 
     before do
       GroupSetup.stub(:find_by_group_id).and_return(group_setup)
+      CreateInvitation.stub(:to_people_and_email_them).and_return(3)
       group_setup.stub(:update_attributes).and_return(true)
       group_setup.stub(:admin_email=).with(user.email)
+      group = stub(:group)
+      group.stub(:setup_completed_at=)
+      group.stub(:save!)
+      group_setup.stub(:group).and_return(group)
     end
 
-    it 'updates the attributes' do
-      group_setup.stub(:finish!).and_return(true)
-      group_setup.should_receive(:update_attributes)
-      post :finish, id: group_setup.group_id,
-                      group_setup: [ group_name: "plink" ]
-    end
+    context 'expectations' do
+      after { post :finish, id: group_setup.group_id,
+                    group_setup: { group_name: "plink", message_body: "Welcome" }}
 
-    it "calls finish! on the group_setup" do
-      group_setup.should_receive(:finish!)
-      post :finish, id: group_setup.group_id,
-                      group_setup: [ group_name: "plink" ]
-    end
-
-    context "completes successfully" do
-      before do
+      it 'updates the attributes' do
         group_setup.stub(:finish!).and_return(true)
+        group_setup.should_receive(:update_attributes)
       end
 
-      it "redirects to the finished page" do
-        post :finish, id: group_setup.group_id,
-                      group_setup: [ group_name: "plink" ]
-        response.should render_template('finished')
+      it "calls finish! on the group_setup" do
+        group_setup.should_receive(:finish!)
       end
     end
 
-    context "does not complete successfully" do
-      before do
-        group_setup.stub(:finish!).and_return(false)
-        post :finish, id: group_setup.group_id,
-                      group_setup: [ group_name: "plink" ]
+    context 'responses' do
+      context "completes successfully" do
+       before do
+          group_setup.stub(:finish!).and_return(true)
+          post :finish, id: group_setup.group_id,
+                group_setup: { group_name: "plink", message_body: "Welcome" }
+        end
+
+        it "redirects to the finished page" do
+          response.should render_template('finished')
+        end
       end
 
-      it "renders the setup page" do
-        response.should render_template('setup')
+      context "does not complete successfully" do
+        before do
+          group_setup.stub(:finish!).and_return(false)
+          post :finish, id: group_setup.group_id,
+                group_setup: { group_name: "plink", message_body: "Welcome" }
+        end
+        it "renders the setup page" do
+          response.should render_template('setup')
+        end
       end
     end
   end

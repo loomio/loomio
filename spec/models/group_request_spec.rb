@@ -165,14 +165,6 @@ describe GroupRequest do
     end
   end
 
-  describe "#set_high_touch!(value)" do
-    before { @group_request.save! }
-    it "sets the high_touch to value" do
-      @group_request.set_high_touch!(true)
-      @group_request.high_touch.should be_true
-    end
-  end
-
   describe "#mark_as_spam!" do
     before { @group_request.save! }
     it "should set the status to marked_as_spam" do
