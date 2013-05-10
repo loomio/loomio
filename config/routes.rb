@@ -59,7 +59,7 @@ Loomio::Application.routes.draw do
     post :cancel_request, on: :member, as: :cancel_request_for
   end
 
-  resources :users do
+  resources :users, :only => [:new, :create, :update, :show,] do
     put :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
   end
