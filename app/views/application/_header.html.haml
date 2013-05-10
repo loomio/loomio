@@ -10,10 +10,10 @@
                 = render 'application/groups_dropdown'
                 = render 'notifications_dropdown'
                 = render 'user_dropdown'
+            %li.nav-item#help
+              %a.nav-link{ :href => help_path }
+                %span= t :"help.help"
 
-              %li.nav-item#feedback
-                %a.nav-link{:href => 'mailto:contact@loomio.org', :target => '_blank'}
-                  = t :feedback
   - else
     .container#top
       .inner-container
