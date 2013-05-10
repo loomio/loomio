@@ -32,7 +32,7 @@ gem 'rabl', '~> 0.7.3'
 gem 'twitter-text', '~> 1.5.0'
 gem 'jquery-atwho-rails', '~> 0.1.6'
 gem 'paper_trail', '~> 2.6.3'
-gem 'thin', '~> 1.4.1'
+gem 'unicorn', '~> 4.6.2'
 gem 'rack-canonical-host', '~> 0.0.8'
 gem 'delayed_job_active_record', '~> 0.3.3'
 gem 'hirefireapp', '~> 0.0.8'
@@ -40,6 +40,7 @@ gem 'foreman', '~> 0.60.2'
 gem 'rinku', '~> 1.7.2'
 gem 'piwik_analytics', '~> 1.0.1'
 gem 'friendly_id', '~> 4.0.9'
+gem 'rack-timeout', '~> 0.0.4'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
@@ -73,7 +74,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'meta_request', '~> 0.2.1'
+  gem 'meta_request', '~> 0.2.4'
   gem 'better_errors', '~> 0.6.0'
   gem 'guard', '~> 1.6.1'
   gem 'guard-spork', '~> 1.4.1'

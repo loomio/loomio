@@ -4,7 +4,7 @@ class AnnouncementsController < BaseController
                                   user_id: current_user.id)
     respond_to do |format|
       format.html { redirect_to :back }
-      format.js
+      format.js { head :ok }
     end
   end
 end

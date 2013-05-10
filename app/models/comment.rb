@@ -1,5 +1,8 @@
 class Comment < ActiveRecord::Base
   include Twitter::Extractor
+
+  attr_accessible :body, :uses_markdown
+
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
   has_paper_trail
 
@@ -11,6 +14,7 @@ class Comment < ActiveRecord::Base
   # want user to vote on the quality of comments.
   #acts_as_voteable
 
+
   belongs_to :commentable, :polymorphic => true
   belongs_to :user
   has_many :comment_votes
@@ -20,9 +24,7 @@ class Comment < ActiveRecord::Base
   after_create :fire_new_comment_event
   after_destroy :update_discussion_last_comment_at
 
-  attr_accessible :body, :uses_markdown
-
-  default_scope order("id DESC")
+  default_scope include: [:comment_votes, :user], order: "id DESC"
 
   delegate :name, :to => :user, :prefix => :user
   delegate :email, :to => :user, :prefix => :user
@@ -78,22 +80,26 @@ class Comment < ActiveRecord::Base
   #
 
   def like(user)
-    comment_vote = CommentVote.new
-    comment_vote.comment = self
-
-    comment_vote.user = user
-    comment_vote.value = true
-    comment_vote.save
-    comment_vote
+    vote = comment_votes.build
+    vote.user = user
+    vote.save if persisted?
+    vote
   end
 
   def unlike(user)
-    like = likes.find_by_user_id(user.id)
-    like.destroy if like
+    comment_votes.where(:user_id => user.id).each(&:destroy)
   end
 
   def likes
-    return comment_votes.where("value = true")
+    comment_votes
+  end
+
+  def likes_count
+    comment_votes_count
+  end
+
+  def has_not_been_liked_by?(user)
+    !comment_votes.any?{ |cv| cv.user_id == user.id }
   end
 
   def discussion
