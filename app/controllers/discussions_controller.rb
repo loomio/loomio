@@ -92,9 +92,13 @@ class DiscussionsController < GroupBaseController
   end
 
   def add_comment
-    @discussion = Discussion.find(params[:id])
-    @comment = @discussion.add_comment(current_user, params[:comment], params[:global_uses_markdown])
-    ViewLogger.discussion_viewed(@discussion, current_user)
+    if params[:comment].present?
+      @discussion = Discussion.find(params[:id])
+      @comment = @discussion.add_comment(current_user, params[:comment], params[:global_uses_markdown])
+      ViewLogger.discussion_viewed(@discussion, current_user)
+    else
+      head :ok
+    end
   end
 
   def new_proposal
