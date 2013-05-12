@@ -16,7 +16,7 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    activeadmin (0.6.0)
+    activeadmin (0.5.1)
       arbre (>= 1.0.1)
       bourbon (>= 1.0.0)
       devise (>= 1.1.2)
@@ -429,7 +429,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm (~> 3.0.3)
-  activeadmin (~> 0.6.0)
+  activeadmin (~> 0.5.0)
   acts_as_commentable_with_threading (~> 1.1.2)
   asset_sync (~> 0.5.4)
   awesome_print (~> 1.0.2)
