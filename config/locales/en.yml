@@ -329,6 +329,9 @@ en:
       %{user}
       %{group}
 
+  defered_email:
+    subject: "defered (placeholder)"
+
   #
   # FORMS
   #

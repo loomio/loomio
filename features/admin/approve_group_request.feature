@@ -14,6 +14,7 @@ Feature: Loomio admin approves group request to join Loomio
     And I edit the maximum group size
     Then the maximum group size should be assigned to the group
 
+  @javascript
   Scenario: Loomio admin approves a group request
     When I visit the Group Request in the admin panel
     And I click approve for a request
@@ -26,6 +27,7 @@ Feature: Loomio admin approves group request to join Loomio
     And I should be redirected to the Group Requests page
     And I should no longer see the request
 
+  @javascript
   Scenario: Loomio admin defers a group request
     When I visit the Group Request in the admin panel
     And I click defer for the request
@@ -33,5 +35,6 @@ Feature: Loomio admin approves group request to join Loomio
     And I select the date to defer until
     And I click the send and defer button
     Then the group request should be marked as defered
+    And an email should be sent to the group admin explaining the defer
     And I should be redirected to the Group Requests page
     And I should no longer see the request

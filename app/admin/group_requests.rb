@@ -42,7 +42,12 @@ ActiveAdmin.register GroupRequest do
           approve_and_send_form_admin_group_request_path(group_request.id),
           id: "approve_group_request_#{group_request.id}" }
         row ('Defer request until a later date') {
-          link_to "defer", defer_and_send_form_admin_group_request_path(group_request.id) }
+          if group_request.defered_until.nil?
+            confirm_message = false
+          else
+            confirm_message = 'Are you sure you want to defer, this group request has previously been defered'
+          end
+          link_to "defer", defer_and_send_form_admin_group_request_path(group_request.id), confirm: false }
       end
       if group_request.approved? or group_request.manually_approved?
         row :approved_at
@@ -87,8 +92,10 @@ ActiveAdmin.register GroupRequest do
 
   member_action :defer_and_save, :method => :put do
     @group_request = GroupRequest.find(params[:id])
-    @group_request.defered_until = params[:defered_until]
+    @group_request.defered_until = params[:group_request][:defered_until]
+    @group_request.save!
     @group_request.defer!
+    StartGroupMailer.defered(@group_request).deliver
     redirect_to admin_group_requests_path, :notice => "Group request defered."
   end
 

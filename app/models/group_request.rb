@@ -37,7 +37,7 @@ class GroupRequest < ActiveRecord::Base
     state :marked_as_spam
 
     event :verify do
-      transitions to: :verified, from: [:unverified]
+      transitions to: :verified, from: [:unverified, :defered]
     end
 
     event :approve_request do
@@ -76,6 +76,15 @@ class GroupRequest < ActiveRecord::Base
     group.add_admin!(user)
     accept_request!
   end
+
+  def self.check_defered
+    defered_requests = GroupRequest.where(status: 'defered')
+    puts defered_requests.inspect
+    defered_requests.each do |group_request|
+      group_request.verify! if group_request.defered_until < Time.now
+    end
+  end
+
 
   private
 

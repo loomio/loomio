@@ -38,7 +38,7 @@ When /^I edit the maximum group size$/ do
 end
 
 When(/^I click the send and defer button$/) do
-  click_on "Defer and send email"
+  click_on("submit-defer-email")
 end
 
 When /^I should see the send defer email page$/ do
@@ -46,7 +46,7 @@ When /^I should see the send defer email page$/ do
 end
 
 When /^I select the date to defer until$/ do
-  fill_in "group_request_defered_until", with: "2013-3-24"
+  fill_in "group_request_defered_until", with: "2013-9-24"
 end
 
 Then /^I should no longer see the request$/ do
@@ -69,6 +69,7 @@ end
 Then /^the group request should be marked as defered$/ do
   @group_request.reload
   @group_request.should be_defered
+  @group_request.defered_until.should_not be_nil
 end
 
 Then /^an email should be sent to the group admin with an invitation link$/ do
@@ -86,5 +87,8 @@ Then /^the maximum group size should be assigned to the group$/ do
   @group_request.max_size.should == 135
 end
 
-
+Then(/^an email should be sent to the group admin explaining the defer$/) do
+  open_email(@group_request.admin_email)
+  current_email.subject.should have_content(I18n.t('defered_email.subject'))
+end
 

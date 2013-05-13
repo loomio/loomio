@@ -219,6 +219,11 @@ describe GroupRequest do
       @group_request.approve!(approved_by: user)
     end
 
+    it "can later be changed to verified" do
+      @group_request.verify!
+      @group_request.should be_verified
+    end
+
     it "can later be marked as manually_approved" do
       @group_request.mark_as_manually_approved!
       @group_request.should be_manually_approved
@@ -251,6 +256,27 @@ describe GroupRequest do
     it "can set the status to unverified" do
       @group_request.mark_as_unverified!
       @group_request.should be_unverified
+    end
+  end
+
+  context "#self.check_defered" do
+    before do
+      @group_request = create(:group_request)
+      @group_request1 = create(:group_request)
+      @group_request.verify!
+      @group_request1.verify!
+      @group_request.defer!
+      @group_request1.defer!
+      @group_request.defered_until = Time.now + 2.days
+      @group_request1.defered_until = Time.now - 2.days
+      @group_request.save!
+      @group_request1.save!
+    end
+
+    it "should return expired defered group_requests to verified" do
+      GroupRequest.check_defered
+      GroupRequest.find(@group_request.id).should be_defered
+      GroupRequest.find(@group_request1.id).should be_verified
     end
   end
 end

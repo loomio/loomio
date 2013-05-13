@@ -106,7 +106,7 @@ class User < ActiveRecord::Base
   before_create :set_default_avatar_kind
   before_create :generate_username
   after_create :ensure_name_entry
-  before_destroy { |user| ViewLogger.remove_all_logs_for(user.id) }
+  before_destroy { |user| ViewLogger.delete_all_logs_for(user.id) }
 
   scope :daily_activity_email_recipients, where("subscribed_to_daily_activity_email IS TRUE AND invitation_token IS NULL")
   scope :sorted_by_name, order("lower(name)")
