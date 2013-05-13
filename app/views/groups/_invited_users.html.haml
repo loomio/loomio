@@ -8,6 +8,4 @@
         .clearfix
           = render 'avatar', user: user, size: "small", kind: nil, id: nil
           %span.membership-user-name
-            = link_to truncate(user.email, :length => 35, :omission => '...'), "#",
-              "title" => user.email, "data-content" => "#{render 'users/name_popover',
-              user: user, group: group }", class: 'user-name-with-popover'
+            = truncate(user.email, :length => 35, :omission => '...')
