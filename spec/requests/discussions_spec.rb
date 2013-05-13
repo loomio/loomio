@@ -53,7 +53,7 @@ describe "Discussion" do
         it "displays the author" do
           visit discussion_path(@discussion)
 
-          should have_css(".started-by .user-name-with-popover")
+          should have_css(".started-by .user-name")
         end
 
         it "doesn't display revision history information if description not edited" do
