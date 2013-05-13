@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'spec_helper'
 include ActionView::Helpers::DateHelper
 
@@ -46,7 +48,7 @@ describe "Discussion" do
         fill_in 'new-comment', with: "Here's a little comment"
         click_on 'post-new-comment'
         visit discussion_path(@discussion)
-        should have_content("Here's a little comment")
+        should have_content("Here’s a little comment")
       end
 
       context "discussion context area" do
