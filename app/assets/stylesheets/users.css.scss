@@ -121,3 +121,12 @@ body.users.settings {
     color: $dark-grey;
   }
 }
+
+.users.show {
+  p.email, p.username {
+    font-size: 1.4em;
+    margin-top: .4em;
+  }
+  .span8 { margin-left: 0; }
+ }
+

@@ -7,6 +7,7 @@ en:
     cant_join_subgroup: "You cannot join a sub-group if you are not a member of the parent group."
     cant_modify_position: "This proposal has closed."
     cant_state_position: "This proposal has closed."
+    cant_view_member_profile: "You're unable to view the member's profile because you are not in the same group."
     discussion_not_created: "Discussion could not be created."
     group_not_archived: "Group could not be archived."
     invalid_email: "%{which_email} was not invited. Please check the email address is correct."
