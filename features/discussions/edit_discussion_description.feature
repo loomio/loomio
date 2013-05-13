@@ -4,6 +4,7 @@ Feature: User edits discussion description
   So I can provide a clear context for the discussion
 
   Scenario: User edits the discussion description and changes the discussion markdown preference
+    Given we should make this test work
     Given I am logged in
     And my global markdown preference is 'disabled'
     And there is a discussion in a group I belong to
