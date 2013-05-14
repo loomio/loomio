@@ -49,6 +49,27 @@ ActiveAdmin.register Group do
     end
     default_actions
   end
+  
+  show do |group|
+    attributes_table do
+      group.attributes.each do |k,v|
+        row k.to_sym
+      end
+    end
+    panel("Group Admins") do
+        table_for group.admins.each do |admin|
+          column :name
+          column :email do |user|
+            if user.email == group.admin_email
+              simple_format "#{mail_to(user.email,user.email)} <<<<< ADMIN_EMAIL"
+            else
+              mail_to(user.email,user.email)
+            end
+          end
+        end
+    end
+    active_admin_comments
+  end
 
   form do |f|
     f.inputs "Details" do
@@ -64,30 +85,11 @@ ActiveAdmin.register Group do
   member_action :update, :method => :put do
     group = Group.find(params[:id])
     group.max_size = params[:group][:max_size]
-    group.save
-    redirect_to admin_groups_url, :notice => "Group updated"
-  end
-
-  show do |group|
-    attributes_table do
-      group.attributes.each do |k,v|
-        row k.to_sym
-      end
+    if group.save
+      redirect_to admin_groups_url, :notice => "Group updated."
+    else
+      redirect_to admin_groups_url, :notice => "WARNING: Group could not be updated."
     end
-
-    panel("Group Admins") do
-        table_for group.admins.each do |admin|
-          column :name
-          column :email do |user|
-            if user.email == group.admin_email
-              simple_format "#{mail_to(user.email,user.email)} <<<<< ADMIN_EMAIL"
-            else
-              mail_to(user.email,user.email)
-            end
-          end
-        end
-    end
-    active_admin_comments
   end
 
   controller do
