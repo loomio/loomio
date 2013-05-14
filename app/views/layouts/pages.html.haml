@@ -15,13 +15,14 @@
       .inner-container
         .row-fluid
           .pull-right
+            =link_to 'Sign up', request_new_group_path, class: 'btn'
             =link_to 'Sign in', new_user_session_path, class: 'btn btn-info'
           .span3 &nbsp;
           .span6
             =link_to image_tag("logo-426px-mauve-matte.png"), "/"
             %h2 collaborative decision-making
         .frontpage-nav
-          =link_to('Purpose', '/about#purpose') 
+          =link_to('Purpose', '/about#purpose')
           %span{style: 'padding-left: 3px; padding-right: 3px'}
             &middot;
 
@@ -30,5 +31,6 @@
             &middot;
           =link_to('About us', '/about#about-us')
     = yield
+  = javascript_include_tag "frontpage"
   = render 'google_analytics'
   = piwik_tracking_tag

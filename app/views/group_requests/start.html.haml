@@ -1,5 +1,6 @@
 .page-container
-  =image_tag("loomio-orange.png")
+  -if signed_in?
+    =image_tag("loomio-orange.png", :id => "large-logo")
   #group-request-start
     .row
       %h2.span8.offset2 Get involved: sign up to be a Loomio beta tester!
