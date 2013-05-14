@@ -12,6 +12,7 @@ Feature: Invitation to join group
     And fill in the message body
     And click Send Invitations
     Then "jim@jam.com" should get an invitation to join the group
+    And I should be directed to the group page
 
   Scenario: New user accepts invitiation to join a group
     Given there is a group

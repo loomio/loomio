@@ -9,7 +9,7 @@ When(/^I sign in$/) do
   visit new_user_session_path
   fill_in 'Email', with: @user.email
   fill_in 'Password', with: 'password'
-  click_on 'Sign in'
+  click_on 'sign-in-btn'
 end
 
 Then(/^I should have a time_zone defined$/) do

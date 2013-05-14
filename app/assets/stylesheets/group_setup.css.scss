@@ -1,25 +1,26 @@
 @import "settings";
 @import "mixins";
 
-body.group_setup.setup {
-  .control-label { display: block; }
-  #group_setup_group_description { height: 130px; }
-  // the following two lines added to cope with a bootstrap tab bug
-  // trimming off the start and end of the inputs
-  .radio { padding-left: 22px; }
-
-  #group_setup_motion_description { height: 150px; }
-  #next, #send_invites {
-    float: right;
-    margin-left: 5px;
+body.group_setup {
+  &.finish {
+    .recipient-list {
+      max_height: 300px;
+      overflow:scroll;
+    }
+    #finished { float: right; }
   }
-  #wizard-tabs { min-height: 600px; }
-}
+  &.setup {
+    .control-label { display: block; }
+    #group_setup_group_description { height: 130px; }
+    #group_setup_motion_description { height: 150px; }
+    // the following two lines added to cope with a bootstrap tab bug
+    // trimming off the start and end of the inputs
+    .radio { padding-left: 22px; }
 
-body.group_setup.finish {
-  .recipient-list {
-    max_height: 300px;
-    overflow:scroll;
+    #next, #send_invites {
+      float: right;
+      margin-left: 5px;
+    }
+    #wizard-tabs { min-height: 600px; }
   }
-  #finished { float: right; }
 }
