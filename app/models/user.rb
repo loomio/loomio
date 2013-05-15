@@ -93,7 +93,7 @@ class User < ActiveRecord::Base
   has_many :dismissed_announcements,
            :through => :announcement_dismissals,
            :source => :announcement
-  
+
 
   has_many :notifications
 
@@ -287,7 +287,7 @@ class User < ActiveRecord::Base
     ensure_name_entry if name.nil?
     if name.include? '@'
       #email used in place of name
-      email_str = email.split("@").first 
+      email_str = email.split("@").first
       new_username = email_str.parameterize.gsub(/[^a-z0-9]/, "")
     else
       new_username = name.parameterize.gsub(/[^a-z0-9]/, "")
@@ -300,6 +300,10 @@ class User < ActiveRecord::Base
       num+=1
     end
     self.username = username_tmp
+  end
+
+  def in_same_group_as?(other_user)
+    (group_ids & other_user.group_ids).present?
   end
 
   private

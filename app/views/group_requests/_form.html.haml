@@ -2,22 +2,48 @@
   .span6.offset2
     = simple_form_for @group_request, :validate => true do |f|
       %h1 Get your group on Loomio
-      We're in 'private beta' which means we're manually approving each group that asks to join Loomio. This means there might be a delay in getting you on board but you will hear from us within 48 hours.
-      %h2 Tell us about yourself
-      = f.input :admin_name, label: "What is your name?"
-      = f.input :admin_email, label: "What is your email address?"
-      = f.input "country_name"
+      Loomio is a young project under rapid development - expect exciting changes. At the moment we are accepting applications manually. Tell us about your group and we’ll bring you on as soon as we can. 
+
       %h2 Tell us about your group
       = f.input :name, label: "What is the name of your group/organisation?"
-      = f.input :sectors, label: false, as: :check_boxes, collection: {'Community' => 'community', 'Business' => 'business', 'Government' => 'government', 'Other:' => 'other'}, :validate => { :presence => true }, label: "What type of group/organisation is it?"
-      = f.input :other_sector, label: false
-      = f.input :description, label: "Why do you want to use Loomio?", placeholder: "Tell us a bit about your group, and why you'd like to use Loomio"
+      = f.input :why_do_you_want, label: "Why does your group want to use Loomio?"
+      = f.input :group_core_purpose, label: "What is the core purpose of your group?"
+      = f.input :sectors, label: false, as: :check_boxes, 
+                collection: ['Informal network', 
+                             'Social movement',
+                             'Incorporated society',
+                             'Company',
+                             'Trust',
+                             'Government agency', 
+                             'Other'],
+                 :validate => { :presence => true }, 
+                 label: "What is the structure of your group/organisation?"
+
       = f.input :expected_size, label: "How many people to you expect to be in your loomio group?"
 
-      %h1 We're trying something new
-      %p Balancing two principles: money shouldn't be a barrier to access; too achieve maximum  positive social impact on an international scale, Loomio need to be functionally viable.
-      %h2 How would you like to contribute?
-      = f.input :cannot_contribute, collection: {"My group/organisation can pay a subscription for Loomio" => false, "My group/organisation doesn't have the budget to pay for Loomio" => true}, as: :radio_buttons, label: ""
+      %h2 Tell us about yourself
+      %p You’ll be the coordinator for your group while you’re getting set up.
+      = f.input :admin_name, label: "What is your name?"
+      = f.input :admin_email, label: "What is your email address?"
+      = f.input "country_name", label: 'What country do you live in?'
+
+      %h2 We’re trying something new...   
+      %p 
+        Loomio is a #{link_to('cooperative social enterprise', about_path)}, working to make everyday democracy accessible to as many people as possible. 
+        To achieve this vision we’re developing an ethical payment model to resource the software development.
+
+      %p
+        It’s really useful for us to know what types of groups want to use Loomio, and what kind of payment model works best for them. Which of the two options below would best fit your group?
+
+      = f.input :cannot_contribute, 
+        collection: {"<strong>Subscription:</strong><br/> Established groups and organisations will pay a regular monthly subscription".html_safe => false, 
+                     "<strong>Pay what you can:</strong><br/> If your group doesn’t have a formal budget, your group members will be invited to make a voluntary contribution.".html_safe => true}, 
+                as: :radio_buttons, label: ""
+
+      %p
+        This isn’t a commitment to pay, just useful information to help us design our model. Thanks! 
+        
+        
 
       = f.submit 'Submit Request', :class => "btn btn-large btn-info btn-block", data: {disable_with: "Requesting new group"}, id: "submit-group-request"
 

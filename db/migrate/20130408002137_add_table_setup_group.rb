@@ -1,6 +1,6 @@
 class AddTableSetupGroup < ActiveRecord::Migration
   def up
-    create_table :group_setups do |t|
+    create_table :group_setups, force: true do |t|
       t.integer :group_id
       t.string :group_name
       t.text :group_description

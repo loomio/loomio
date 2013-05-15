@@ -13,7 +13,8 @@ Loomio::Application.routes.draw do
     get :start_new_group, on: :member
   end
 
-  match "/request_new_group", to: "group_requests#start", as: :request_new_group
+  match "/request_new_group", to: "group_requests#new", as: :request_new_group
+
   match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
 
   resources :groups, except: [:index, :new] do

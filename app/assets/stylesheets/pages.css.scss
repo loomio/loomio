@@ -128,12 +128,17 @@ li.selector-item a.selector-link:hover {
 .group-options .btn-app.dropdown-toggle{ width: 110px }
 .btn-grey { color: $mid-grey; }
 a.btn-icon:hover { color: $dark-grey; }
-body.sessions.new, 
-body.pages.home, 
-body.pages.purpose, 
-body.pages.how_it_works, 
-body.pages.about,
-body.pages.about_us, body.woc.index, body.group_requests.start_new_group {
+
+
+.pages.home p:last-child { margin-bottom: 0; }
+
+.sessions.new,
+.pages.home,
+.pages.privacy,
+.pages.purpose,
+.pages.how_it_works,
+.pages.about,
+.pages.about_us, .woc.index, .group_requests.start_new_group {
   color: black;
 
   .frontpage-nav {
@@ -153,11 +158,14 @@ body.pages.about_us, body.woc.index, body.group_requests.start_new_group {
     margin-bottom: 0;
   }
   .home-flash{
-    margin-top: 50px;
-    margin-bottom: -50px;
+    margin-top: 1em;
   }
 
   .container{
+    &#top {
+      .inner-container { padding: 20px 0px 34px; }
+      h2 { color: rgba(0,0,0,.7); }
+    }
     .subhead{
       padding-bottom: 24px;
     }
@@ -199,6 +207,8 @@ body.pages.about_us, body.woc.index, body.group_requests.start_new_group {
   .inner-container{
     padding: 34px;
   }
+
+  .pull-right { margin-top: 10px; }
 
   .section{
     margin-top: 34px;
