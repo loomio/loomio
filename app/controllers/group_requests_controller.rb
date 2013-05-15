@@ -1,5 +1,7 @@
 class GroupRequestsController < BaseController
   before_filter :authenticate_user!, except: [:start, :verify, :start_new_group, :new, :create, :confirmation]
+  before_filter :already_verified, only: :verify
+  before_filter :validate_token, :already_accepted, only: :start_new_group
 
   def new
     @group_request = GroupRequest.new
@@ -15,26 +17,39 @@ class GroupRequestsController < BaseController
     end
   end
 
-  def confirmation
+  def start_new_group
+    group_request = GroupRequest.find_by_token(params[:token])
+    session[:start_new_group_token] = group_request.token
+    redirect_to group_url(group_request.group) if user_signed_in?
   end
 
   def verify
     group_request = GroupRequest.find_by_token(params[:token])
-    if group_request.unverified?
-      group_request.verify!
-      render 'verify'
-    else
-      render 'invitation_accepted_error_page'
-    end
+    group_request.verify!
   end
 
-  def start_new_group
-    group_request = GroupRequest.find(params[:id])
-    if group_request.token != params[:token] || group_request.accepted?
-      render "invitation_accepted_error_page"
-    else
-      session[:start_new_group_token] = group_request.token
-      redirect_to group_url(group_request.group_id) if user_signed_in?
-    end
+  def start
+  end
+
+  def confirmation
+  end
+
+
+  private
+
+  def already_verified
+    group_request = GroupRequest.find_by_token(params[:token])
+    redirect_to error_path(message: t('error.group_request_already_verified')) if group_request.verified?
+  end
+
+  def already_accepted
+    group_request = GroupRequest.find_by_token(params[:token])
+    redirect_to error_path(message: t('error.group_request_already_accepted')) if group_request.accepted?
+  end
+
+  def validate_token
+    group_request = GroupRequest.find_by_token(params[:token])
+    puts group_request.inspect
+    redirect_to error_path(message: t('error.group_request_invalid_token')) unless group_request
   end
 end

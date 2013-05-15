@@ -326,8 +326,8 @@ ActiveRecord::Schema.define(:version => 20130508041523) do
     t.string   "unsubscribe_token"
     t.boolean  "uses_markdown",                                               :default => false
     t.integer  "memberships_count",                                           :default => 0,          :null => false
-    t.string   "time_zone"
     t.string   "language_preference"
+    t.string   "time_zone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

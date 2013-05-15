@@ -23,6 +23,14 @@ describe Groups::GroupSetupController do
         assigns(:group_setup).should be_present
       end
     end
+    context 'group is already setup' do
+      it 'redirects to an error page' do
+        group.setup_completed_at = Time.now
+        group.save
+        get :setup, id: group.id
+        response.should redirect_to(error_path(message: I18n.t('error.group_already_setup')))
+      end
+    end
   end
 
   describe "#finish" do

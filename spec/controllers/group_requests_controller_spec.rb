@@ -20,7 +20,7 @@ describe GroupRequestsController do
   end
 
   describe "#create" do
-    before { StartGroupMailer.stub_chain(:verification, :deliver).and_return(true) }
+    before { StartGroupMailer.stub_chain(:verification, :deliver) }
 
     it 'should send a verification email' do
       StartGroupMailer.should_receive(:verification).with(group_request)
@@ -54,36 +54,49 @@ describe GroupRequestsController do
       end
     end
     context "group_request has been verified" do
-      before { group_request.stub(:unverified?).and_return(false) }
+      before { group_request.stub(:verified?).and_return(true) }
       it "renders the invitation_accepted_error_page" do
         put :verify, token: group_request.token
-        response.should render_template("invitation_accepted_error_page")
+        response.should redirect_to(error_path(message: I18n.t('error.group_request_already_verified')))
       end
     end
   end
 
   describe "#start_new_group" do
-    before do
-    end
     context "token is correct" do
+      before do
+        @group_request = create(:group_request)
+        GroupRequest.stub(:find_by_token).and_return(@group_request)
+      end
+
       context "group request status is approved" do
         it "sets the start_new_group session variable" do
+          session[:start_new_group_token].should_receive(@group_request.token)
+          get :start_new_group, token: group_request.token
         end
         context "user is signed in" do
+          before { controller.stub(:user_signed_in?).and_return(true) }
+
           it "redirects to the group page" do
+            get :start_new_group, token: @group_request.token
+            response.should redirect_to(group_path(@group_request))
           end
         end
       end
       context "group request status is accepted" do
-        it "redirects to the group page" do
+        before { @group_request.stub(:accepted?).and_return(true)}
+
+        it "redirects to an invitation_already_accepted page" do
+          get :start_new_group, token: @group_request.token
+          response.should redirect_to(error_path(message: I18n.t('error.group_request_already_accepted')))
         end
       end
     end
     context "token is incorrect" do
-      context "group request is approved"
-      context "group request is unverified"
-      context "group request is "
-      it "renders the invalid start group link page"
+      it "redirects to an invlaid token page" do
+        get :start_new_group, token: "iudf897987897"
+        response.should redirect_to(error_path(message: I18n.t('error.group_request_invalid_token')))
+      end
     end
   end
 end
