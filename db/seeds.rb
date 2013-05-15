@@ -15,14 +15,4 @@ def create_helper_bot
   end
 end
 
-def create_woc_options
-  woc_options = WocOptions.first
-  unless woc_options
-    woc_options = WocOptions.new
-    woc_options.example_discussion_url = 'https://www.loomio.org/woc'
-    woc_options.save!
-  end
-end
-
 create_helper_bot
-create_woc_options

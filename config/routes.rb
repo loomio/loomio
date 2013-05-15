@@ -101,11 +101,16 @@ Loomio::Application.routes.draw do
   end
   get '/collaborate', to: "woc#index", as: :collaborate
 
+  resources :we_the_people, only: :index do
+    post :send_request, on: :collection
+  end
+
   #redirect old invites
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
 
   #redirect old pages:
   get '/pages/how*it*works' => redirect('/about#how-it-works')
+  get '/pages/home' => redirect('/')
   get '/get*involved' => redirect('/about#how-it-works')
   get '/how*it*works' => redirect('/about#how-it-works')
   get '/pages/get*involved' => redirect('/about')
