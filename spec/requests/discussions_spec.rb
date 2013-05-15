@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'spec_helper'
 include ActionView::Helpers::DateHelper
 
@@ -49,7 +51,7 @@ describe "Discussion" do
         fill_in 'new-comment', with: "Here's a little comment"
         click_on 'post-new-comment'
         visit discussion_path(@discussion)
-        should have_content("Here's a little comment")
+        should have_content("Here’s a little comment")
       end
 
       context "discussion context area" do
@@ -57,7 +59,7 @@ describe "Discussion" do
           pending "should be converted to cucs, broken as specs"
           visit discussion_path(@discussion)
 
-          should have_css(".started-by .user-name-with-popover")
+          should have_css(".started-by .user-name")
         end
 
         it "doesn't display revision history information if description not edited" do

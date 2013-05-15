@@ -9,23 +9,8 @@
 body.admin_group_requests table.index_table thead tr th:nth-child(7) {
   width: 100px !important;
 }
-// Active Admin's got SASS!
-@import "active_admin/mixins";
-@import "active_admin/base";
 
-// Overriding any non-variable SASS must be done after the fact.
-// For example, to change the default status-tag color:
-//
-//   body.active_admin {
-//      .status_tag { background: #6090DB; }
-//   }
-//
-// Notice that Active Admin CSS rules are nested within a
-// 'body.active_admin' selector to prevent conflicts with
-// other pages in the app. It is best to wrap your changes in a 
-// namespace so they are properly recognized. You have options
-// if you e.g. want different styles for different namespaces:
-//
-// .active_admin       applies to any Active Admin namespace
-// .admin_namespace    applies to the admin namespace (eg: /admin)
-// .other_namespace    applies to a custom namespace named other (eg: /other)
+.admin-panel-paginate-toggle {
+	float: right;
+	margin-top:	-36px;
+}

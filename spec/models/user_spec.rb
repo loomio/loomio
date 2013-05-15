@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require 'spec_helper' 
+require 'spec_helper'
 
 describe User do
   let(:user) { create(:user) }
@@ -418,7 +418,7 @@ describe User do
     end
   end
 
-  describe "usernames" do 
+  describe "usernames" do
     before do
       @user1 = User.new(name: "Test User", email: "test1@example.com", password: "password")
       @user2 = User.new(name: "Test User", email: "test2@example.com", password: "password")
@@ -434,7 +434,7 @@ describe User do
     it "doesn't change username if already correctly set" do
       @user1.generate_username # @user1.username now equals "testuser"
       @user1.save!
-      @user2.username = "testuser1" 
+      @user2.username = "testuser1"
       @user2.save!
       expect{ @user2.generate_username }.to_not change{@user2.username}
     end
@@ -466,7 +466,23 @@ describe User do
       user = User.new
       user.name = "Wow this is quite long as a name"
       user.generate_username
-      user.username.length.should equal(18) 
+      user.username.length.should equal(18)
     end
   end
+
+  describe "#in_same_group_as?(other_user)" do
+    it "returns true if user and other_user are in the same group" do
+      group.add_member!(user)
+      other_user = create :user
+      group.add_member!(other_user)
+      user.in_same_group_as?(other_user).should == true
+    end
+    it "returns false if user and other_user do not share any groups" do
+      group.add_member!(user)
+      other_user = create :user
+      user.in_same_group_as?(other_user).should == false
+    end
+
+  end
+
 end

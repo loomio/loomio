@@ -1,5 +1,6 @@
 .page-container
-  =image_tag("loomio-orange.png")
+  -if signed_in?
+    =image_tag("loomio-orange.png", :id => "large-logo")
   #new-request
     .row
       %h2.span8.offset2 Thanks for getting in touch!
