@@ -63,8 +63,6 @@ Feature: Setup group
     And a group is already setup
     When I visit the group setup wizard for that group
     Then I should be told that the group has already been setup
-    When I click Goto group
-    And I should see the group page
 
 @javascript
   Scenario: Non group admin tries to set up a group

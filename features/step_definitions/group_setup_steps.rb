@@ -21,8 +21,8 @@ When(/^I fill in the group name$/) do
   fill_in 'Group name', with: @group_name
 end
 
-When(/^I wait for (\d+) seconds$/) do |seconds|
-  sleep(seconds)
+When(/^I wait for 60 seconds$/) do
+  sleep(60)
 end
 
 When(/^a group is already setup$/) do
@@ -110,7 +110,7 @@ Then /^I should see the finished page$/ do
 end
 
 Then(/^I should be told that I dont have permission to set up this group$/) do
-  page.should have_content "You do not have permission to set up this group"
+  page.should have_content(I18n.t('error.not_permitted_to_setup_group'))
 end
 
 Then(/^I should see a flash message displaying number of valid emails$/) do
@@ -122,7 +122,7 @@ Then(/^the date the group was setup is stored$/) do
 end
 
 Then(/^I should be told that the group has already been setup$/) do
-  page.should have_content "The group #{@group.name} you are trying to setup, already exists."
+  page.should have_content(I18n.t('error.group_already_setup'))
 end
 
 Then(/^I should see a list of the valid emails$/) do

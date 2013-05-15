@@ -6,7 +6,7 @@ class DiscussionsController < GroupBaseController
   after_filter :store_location, :only => :show
 
   rescue_from ActiveRecord::RecordNotFound do
-    render 'application/not_found', locals: { item: t(:discussion) }
+    render('application/display_error', message: t('error.not_found', item: t(:discussion)))
   end
 
   def new

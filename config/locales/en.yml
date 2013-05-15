@@ -27,6 +27,8 @@ en:
     group_already_setup: "The group you are trying to setup, already exists."
     not_permitted_to_setup_group: "You do not have permission to setup this group."
     duplicate_email: "%{which_email} is already in the group."
+    not_found: "%{item} not found\n\nIt may have been deleted."
+
   notice:
     admin_rights_removed: "%{which_user}'s admin rights have been removed."
     email_added: "%{which_email} has been added to the group."
@@ -129,8 +131,6 @@ en:
   sign_in_details: "to participate. You are currently logged out."
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
 
-  not_found: "%{item} not found"
-  not_found_details: "It may have been deleted."
   click_to_dismiss: "Click here to dismiss this message"
   generic_confirm: "Are you sure?"
 
