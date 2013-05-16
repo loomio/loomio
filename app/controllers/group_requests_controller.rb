@@ -1,5 +1,5 @@
 class GroupRequestsController < BaseController
-  before_filter :authenticate_user!, except: [:start, :verify, :start_new_group, :new, :create, :confirmation]
+  before_filter :authenticate_user!, except: [:verify, :start_new_group, :new, :create, :confirmation]
   before_filter :already_verified, only: :verify
   before_filter :validate_token, :already_accepted, only: :start_new_group
 
@@ -9,7 +9,7 @@ class GroupRequestsController < BaseController
 
   def create
     @group_request = GroupRequest.new(params[:group_request])
-    if @group_request.save!
+    if @group_request.save
       StartGroupMailer.verification(@group_request).deliver
       redirect_to group_request_confirmation_url
     else
@@ -26,9 +26,6 @@ class GroupRequestsController < BaseController
   def verify
     group_request = GroupRequest.find_by_token(params[:token])
     group_request.verify!
-  end
-
-  def start
   end
 
   def confirmation

@@ -11,9 +11,6 @@ Given(/^I fill in the form upto the invites tab$/) do
   step "I click the \"next\" button"
   step 'I fill in the discussion panel'
   step "I click the \"next\" button"
-  step 'I should see my time zone set in the timezone select'
-  step 'I fill in the motion panel'
-  step "I click the \"next\" button"
 end
 
 When(/^I fill in the group name$/) do
@@ -51,11 +48,6 @@ When /^I fill in the discussion panel$/ do
   fill_in 'Discussion description', with: "A discription of my discussion"
 end
 
-When /^I fill in the motion panel$/ do
-  fill_in 'Motion title', with: "My discussion title"
-  fill_in 'Motion description', with: "A discription of my discussion"
-end
-
 When /^I fill in the invites panel$/ do
   fill_in 'invitees', with: "peanut@butter.co.nz, jam@toastie.com"
 end
@@ -73,10 +65,6 @@ Then /^I should see the setup discussion tab$/ do
   find('.tab-content').should have_css('#discussion-tab.active')
 end
 
-Then /^I should see the setup decision tab$/ do
-  find('.tab-content').should have_css('#motion-tab.active')
-end
-
 Then /^I should see the setup invites tab$/ do
   find('.tab-content').should have_css('#invite-tab.active')
 end
@@ -91,10 +79,6 @@ end
 
 Then /^the group should have a discussion$/ do
   @group_setup.group.discussions.count.should == 1
-end
-
-Then /^the discussion should have a motion$/ do
-  @group_setup.group.motions.count.should == 1
 end
 
 Then /^I should see the group page$/ do

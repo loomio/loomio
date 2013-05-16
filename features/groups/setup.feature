@@ -13,8 +13,6 @@ Feature: Setup group
     And I visit the group setup wizard for that group
     And I fill in the form upto the invites tab
     When I click the "prev" button
-    Then I should see the setup decision tab
-    When I click the "prev" button
     Then I should see the setup discussion tab
     When I click the "prev" button
     Then I should see the setup group tab
@@ -42,7 +40,6 @@ Feature: Setup group
     Then I should see the finished page
     And the group_setup should be created
     And the group should have a discussion
-    And the discussion should have a motion
     And invitations should be sent out to each recipient
     When I click the "finished" button
     Then I should see the group page

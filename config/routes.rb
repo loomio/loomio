@@ -33,7 +33,6 @@ Loomio::Application.routes.draw do
 
     get :setup, on: :member, to: 'groups/group_setup#setup'
     put :finish, on: :member, to: 'groups/group_setup#finish'
-    put :save_setup, on: :member, to: 'groups/group_setup#save_setup'
 
     post :add_members, on: :member
     get :add_subgroup, on: :member

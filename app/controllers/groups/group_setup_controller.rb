@@ -15,18 +15,13 @@ class Groups::GroupSetupController < GroupBaseController
       invite_attributes = build_invite_attributes(params[:group_setup])
       @invite_people = InvitePeople.new(invite_attributes)
       num = CreateInvitation.to_people_and_email_them(@invite_people, group: @group_setup.group, inviter: current_user)
-      flash[:notice] = "#{num} invitations sent"
+      flash[:notice] = "#{num} invitation(s) sent"
       @group_setup.group.setup_completed_at = Time.now
       @group_setup.group.save!
-      render 'finished'
+      redirect_to group_path
     else
       render 'setup'
     end
-  end
-
-  def save_setup
-    @group_setup = GroupSetup.find_by_group_id(params[:id])
-    @group_setup.update_attributes(params[:group_setup])
   end
 
   private

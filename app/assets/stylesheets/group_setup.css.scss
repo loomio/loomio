@@ -12,7 +12,6 @@ body.group_setup {
   &.setup {
     .control-label { display: block; }
     #group_setup_group_description { height: 130px; }
-    #group_setup_motion_description { height: 150px; }
     // the following two lines added to cope with a bootstrap tab bug
     // trimming off the start and end of the inputs
     .radio { padding-left: 22px; }
@@ -21,6 +20,20 @@ body.group_setup {
       float: right;
       margin-left: 5px;
     }
-    #wizard-tabs { min-height: 600px; }
+    .more-help{
+      background: ghostwhite;
+      padding: 1.5em;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      @include box-shadow (1px, 1px, 1px, rgba(0,0,0,0.2));
+      @include border-radius (6px);
+      ul{
+        list-style: circle;
+        list-style-position:inside;
+        li{
+          margin-bottom: 0.25em;
+        }
+      }
+    }
+    #wizard-tabs { min-height: 510px; }
   }
 }

@@ -24,22 +24,9 @@ class GroupSetup < ActiveRecord::Base
     discussion.save!
   end
 
-  def compose_motion!(author, discussion)
-    motion =  Motion.new( name: motion_title,
-                          description: motion_description,
-                          close_at_date: close_at_date,
-                          close_at_time: close_at_time,
-                          close_at_time_zone: close_at_time_zone
-                          )
-    motion.author = author
-    motion.discussion = discussion
-    motion.save!
-  end
-
   def finish!(author)
     return true if compose_group! &&
-                   compose_discussion!(author, group) &&
-                   compose_motion!(author, group.discussions.first)
+                   compose_discussion!(author, group)
     false
   end
 
