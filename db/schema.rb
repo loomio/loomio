@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508041523) do
+ActiveRecord::Schema.define(:version => 20130515123316) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -45,6 +45,25 @@ ActiveRecord::Schema.define(:version => 20130508041523) do
     t.datetime "ends_at",                      :null => false
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "campaign_signups", :force => true do |t|
+    t.integer  "campaign_id"
+    t.string   "name"
+    t.string   "email"
+    t.boolean  "spam"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "campaign_signups", ["campaign_id"], :name => "index_campaign_signups_on_campaign_id"
+
+  create_table "campaigns", :force => true do |t|
+    t.string   "showcase_url"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "name",          :null => false
+    t.string   "manager_email", :null => false
   end
 
   create_table "comment_votes", :force => true do |t|
@@ -335,11 +354,5 @@ ActiveRecord::Schema.define(:version => 20130508041523) do
 
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
-
-  create_table "woc_options", :force => true do |t|
-    t.string   "example_discussion_url"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
-  end
 
 end
