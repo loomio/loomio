@@ -10,12 +10,13 @@ $ ->
   Application.seeMoreDescription()
   hideAllErrorMessages()
   initializeDatepicker()
+  initializeHelpNotices()
   collapseHomepageAccordian()
 
 $ ->
   $(".dismiss-help-notice").click (event)->
     $.post($(this).attr("href"))
-    $(this).parent(".help-notice").remove()
+    $('.help-notice').modal('hide')
     event.preventDefault()
     event.stopPropagation()
 
@@ -175,6 +176,11 @@ $ -> # Confirm dialog box for class ".confirm-dialog"
 
 collapseHomepageAccordian = () ->
   $(".collapse").collapse()
+
+initializeHelpNotices= () ->
+  $(".help-notice").modal(
+    backdrop = true
+  )
 
 initializeDatepicker = () ->
   $('input.datepicker').datepicker(dateFormat: 'dd-mm-yy')
