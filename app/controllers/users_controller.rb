@@ -24,11 +24,19 @@ class UsersController < BaseController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    unless current_user.in_same_group_as?(@user)
+      flash[:error] = t("error.cant_view_member_profile")
+      redirect_to root_url
+    end
+  end
+
   def update
     if current_user.update_attributes(params[:user])
       set_locale
       flash[:notice] = t("notice.settings_updated")
-      redirect_to :root
+      redirect_to root_url
     else
       flash[:error] = t("error.settings_not_updated")
       redirect_to :back

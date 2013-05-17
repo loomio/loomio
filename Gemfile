@@ -23,7 +23,7 @@ gem 'rmagick', '~> 2.13.1'
 gem 'gravtastic', '~> 3.2.6'
 gem 'paperclip', '~> 3.4.0'
 gem 'kaminari', '~> 0.13.0'
-gem 'activeadmin', '~> 0.4.3'
+gem 'activeadmin', '~> 0.5.0'
 gem 'nokogiri', '~> 1.5.9'
 gem 'redcarpet', '~> 2.2.2'
 gem 'rabl', '~> 0.7.3'
@@ -59,7 +59,7 @@ end
 
 group :development, :test do
   gem 'thin', '~> 1.4.1'
-  gem 'debugger', '~> 1.2.2'
+  gem 'debugger', '~> 1.6.0'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker', '~> 1.0.1'
   gem 'rspec-rails', '~> 2.12.2'

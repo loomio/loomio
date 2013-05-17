@@ -70,10 +70,12 @@ module ApplicationHelper
         :link_attributes     => {target: '_blank'}
         )
       markdown = Redcarpet::Markdown.new(renderer, *options)
-      markdown.render(text).html_safe
+      output = markdown.render(text)
     else
-      Rinku.auto_link(simple_format(html_escape(text)), mode=:all, 'target="_blank"').html_safe
+      output = Rinku.auto_link(simple_format(html_escape(text)), mode=:all, 'target="_blank"')
     end
+
+    Redcarpet::Render::SmartyPants.render(output).html_safe
   end
 
   def help_text_dismissed?
