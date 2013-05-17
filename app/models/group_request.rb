@@ -80,7 +80,6 @@ class GroupRequest < ActiveRecord::Base
 
   def self.check_defered
     defered_requests = GroupRequest.where(status: 'defered')
-    puts defered_requests.inspect
     defered_requests.each do |group_request|
       group_request.verify! if group_request.defered_until < Time.now
     end

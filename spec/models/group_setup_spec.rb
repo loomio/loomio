@@ -32,31 +32,13 @@ describe "GroupSetup" do
     end
   end
 
-  describe "compose_motion(author, discussion)" do
-    before do
-      @discussion = create(:discussion, group_id: group_setup.group.id)
-      group_setup.compose_motion!(author, @discussion)
-    end
-
-    it "creates a new motion from the group_setup and assigns it to the group's discussion" do
-      motion = group_setup.group.motions.first
-      motion.name.should == group_setup.motion_title
-      motion.description.should == group_setup.motion_description
-      motion.close_at_date.should == group_setup.close_at_date
-      motion.close_at_time.should == group_setup.close_at_time
-      motion.close_at_time_zone == group_setup.close_at_time_zone
-      motion.discussion.should == @discussion
-      motion.author.should == author
-    end
-  end
-
   describe "finish!(author)" do
-    it "returns true if group, discussion and motion are all created" do
+    it "returns true if group and discussion created" do
       group_setup.finish!(author).should == true
     end
 
-    it "returns false if group or discussion or motion are not created" do
-      group_setup.stub(:compose_motion!).and_return(false)
+    it "returns false if group or discussion are not created" do
+      group_setup.stub(:compose_group!).and_return(false)
       group_setup.finish!(author).should == false
     end
   end

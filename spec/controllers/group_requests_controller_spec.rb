@@ -20,10 +20,10 @@ describe GroupRequestsController do
   end
 
   describe "#create" do
-    before { StartGroupMailer.stub_chain(:verification, :deliver) }
+    # before { StartGroupMailer.stub_chain(:verification, :deliver).and_return(true) }
 
     it 'should send a verification email' do
-      StartGroupMailer.should_receive(:verification).with(group_request)
+      StartGroupMailer.should_receive(:verification).and_return(stub(deliver: true))
       put :create, group_request: group_request.attributes
     end
     it "should redirect to the confirmation page" do
@@ -65,21 +65,22 @@ describe GroupRequestsController do
   describe "#start_new_group" do
     context "token is correct" do
       before do
-        @group_request = create(:group_request)
+        @group = create(:group)
+        @group_request = create(:group_request, group: @group)
         GroupRequest.stub(:find_by_token).and_return(@group_request)
       end
 
       context "group request status is approved" do
         it "sets the start_new_group session variable" do
-          session[:start_new_group_token].should_receive(@group_request.token)
           get :start_new_group, token: group_request.token
+          controller.session[:start_new_group_token].should == @group_request.token
         end
         context "user is signed in" do
           before { controller.stub(:user_signed_in?).and_return(true) }
 
           it "redirects to the group page" do
             get :start_new_group, token: @group_request.token
-            response.should redirect_to(group_path(@group_request))
+            response.should redirect_to(group_path(@group))
           end
         end
       end

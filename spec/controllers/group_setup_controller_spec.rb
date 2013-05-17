@@ -70,7 +70,7 @@ describe Groups::GroupSetupController do
         end
 
         it "redirects to the finished page" do
-          response.should render_template('finished')
+          response.should redirect_to(group_path)
         end
       end
 

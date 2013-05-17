@@ -175,7 +175,7 @@ describe GroupsController do
       before do
         @group = create(:group)
         @group.archived_at = Time.now
-        @group.save
+        @group.save!
       end
       it "should render the page not found template" do
         get :show, :id => @group.id

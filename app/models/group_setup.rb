@@ -25,8 +25,7 @@ class GroupSetup < ActiveRecord::Base
   end
 
   def finish!(author)
-    return true if compose_group! &&
-                   compose_discussion!(author, group)
+    return true if compose_group! && compose_discussion!(author, group)
     false
   end
 

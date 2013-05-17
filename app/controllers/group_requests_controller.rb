@@ -46,7 +46,6 @@ class GroupRequestsController < BaseController
 
   def validate_token
     group_request = GroupRequest.find_by_token(params[:token])
-    puts group_request.inspect
     redirect_to error_path(message: t('error.group_request_invalid_token')) unless group_request
   end
 end
