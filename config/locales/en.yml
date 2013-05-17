@@ -389,7 +389,7 @@ en:
   # COMMON WORDS
   #
 
-  ago: "ago"
+  ago: "%{quantity_of_time} ago"
   approve: "Approve"
   back: "Back"
   by: "By"

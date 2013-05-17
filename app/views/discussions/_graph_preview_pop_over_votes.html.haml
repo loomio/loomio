@@ -5,4 +5,4 @@
   = " - " 
   = vote.statement
 .vote-time
-  = time_ago_in_words(vote.created_at) + " ago"
+  = t(:ago, :quantity_of_time => time_ago_in_words(vote.created_at))
