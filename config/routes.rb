@@ -19,6 +19,11 @@ Loomio::Application.routes.draw do
 
   resources :invitations, only: [:show]
 
+  resources :error_rainchecks, only: [:new, :create, :show]
+  get :not_found, to: 'error_rainchecks#error_page'
+  get "/error_raincheck", to: "dashboard#raise_error_raincheck"
+
+
   resources :group_requests, only: [:create, :new] do
     get :verify, on: :member
   end
@@ -166,3 +171,4 @@ Loomio::Application.routes.draw do
   get '/contact' => redirect('/about#about-us')
   get '/pages/privacy' => redirect('/privacy_policy')
 end
+

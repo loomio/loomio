@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625050817) do
+ActiveRecord::Schema.define(:version => 20130711031731) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -161,6 +161,14 @@ ActiveRecord::Schema.define(:version => 20130625050817) do
   add_index "discussions", ["group_id"], :name => "index_discussions_on_group_id"
   add_index "discussions", ["is_deleted"], :name => "index_discussions_on_is_deleted"
 
+  create_table "error_rainchecks", :force => true do |t|
+    t.string   "email"
+    t.string   "action"
+    t.string   "controller"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "events", :force => true do |t|
     t.string   "kind"
     t.datetime "created_at"
@@ -248,8 +256,8 @@ ActiveRecord::Schema.define(:version => 20130625050817) do
     t.string   "country_name"
     t.datetime "setup_completed_at"
     t.boolean  "next_steps_completed", :default => false, :null => false
-    t.string   "full_name"
     t.boolean  "paying_subscription",  :default => false, :null => false
+    t.string   "full_name"
   end
 
   add_index "groups", ["full_name"], :name => "index_groups_on_full_name"
@@ -323,13 +331,13 @@ ActiveRecord::Schema.define(:version => 20130625050817) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "phase",               :default => "voting", :null => false
-    t.string   "discussion_url",      :default => "",       :null => false
+    t.string   "phase",              :default => "voting", :null => false
+    t.string   "discussion_url",     :default => "",       :null => false
     t.datetime "close_at"
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
-    t.boolean  "uses_markdown",       :default => true,     :null => false
+    t.boolean  "uses_markdown",      :default => true,     :null => false
     t.date     "close_at_date"
     t.string   "close_at_time"
     t.string   "close_at_time_zone"
@@ -389,8 +397,8 @@ ActiveRecord::Schema.define(:version => 20130625050817) do
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.boolean  "uses_markdown",                                               :default => false
+    t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.string   "language_preference"
     t.string   "time_zone"
   end

@@ -506,7 +506,7 @@ en:
     invitation_not_found:  'Could not find invitation with that token. Please ask for a new invitation from the sender.'
     invitation_cancelled: 'This invitation has been cancelled. Please contact the sender of the invitation if you believe this was done in error.'
     invitation_already_used: 'This invitation has already been used. Please sign in to continue to your group.'
-    recipients: "Enter email addresses, seperated by commas:"
+    recipients: "Enter email addresses, separated by commas:"
     invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
     subject: "Please join our new Loomio group, %{group}"
     invite_people: "Invite people to your group"
@@ -548,6 +548,16 @@ en:
       Is it a good idea? Loomio Helper Bot wants to know what you think!
       If you’re clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).
       You’ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes.
+
+  #
+  # ERROR RAINCHECKS
+  #
+
+  error_raincheck:
+    heading: "We're sorry, but something went wrong."
+    intro_html: "<p>We've been notified about this issue and we'll take a look at it shortly.</p><p> If you continue to experience issues, you can enter your email address below and we can notify you when the error is resolved.</p>"
+    thank_you: "Thank you!"
+    notification_html: "We will notify you as soon as the issue has been resolved."
 
   #
   # FORMS
@@ -643,6 +653,8 @@ en:
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
       group:
         description: "Think about the simplest way you can describe your group: What do you want to achieve together? What types of decisions will you be making? Who will be involved?"
+      error_raincheck:
+        email: "Please enter your email address"
 
   helpers:
     submit:
@@ -653,6 +665,8 @@ en:
       user:
         create: "Create account"
         update: "Update settings"
+      error_raincheck:
+        create: "Submit"
 
   #
   # EMAILS
@@ -750,6 +764,7 @@ en:
   proposal: "Proposal"
   prev: "Prev"
   remove: "Remove"
+  return_home: "Return to home page"
   save: "Save"
   saving: "Saving"
   sending: "Sending"
