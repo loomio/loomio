@@ -17,6 +17,7 @@ en:
     group_not_archived: "Group could not be archived."
     invalid_email: "%{which_email} was not invited. Please check the email address is correct."
     invalid_close_date: "Invalid close date, please check this date has not passed."
+    invalid_email: "Please enter at least one valid email address"
     image_upload_fail: "Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file."
     permission_to_invite: "You do not have permission to invite new members."
     position_not_updated: "Could not update position."
@@ -104,7 +105,7 @@ en:
     message: "<p>The topic is at the top of the page, with context underneath.</p><p>Discussion is on the left: to add a comment, write in the text box and click ‘Post comment’.</p><p>Decisions are on the right. If you think the group is ready to make a decision, you can make a proposal for the group to consider. Once a proposal has been created, the pie graph shows how the group feels about it. Click a decision button to state your position.</p>"
   group_help_text:
     header: "Welcome to your new group!"
-    message: "<p>Invitations have successfully been sent to [these people - scrolling text box].</p><p>This is the “group page”: on the left is a list of all your discussions,</p><p>When you want the group to discuss another topic, start a new discussion.</p><p>Over on the right is the list of group members. Click ‘Add new member’ when you’re ready to send out more invitations.</p>"
+    message: "<p>This is the “group page”: on the left is a list of all your discussions,</p><p>When you want the group to discuss another topic, start a new discussion.</p><p>Over on the right is the list of group members. Click ‘Add new member’ when you’re ready to send out more invitations.</p>"
   dashboard_help_text:
     header: "Welcome to your Home page"
     message: "<p>The home page shows you all of the current discussions in all your groups.</p><p>To the right is a list of the groups you are a member of.</p><p>You can start a discussion on a new topic by clicking the “Start a discussion” button.</p>"

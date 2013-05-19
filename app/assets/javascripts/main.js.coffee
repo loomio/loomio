@@ -5,6 +5,7 @@ window.Application ||= {}
 # Application.html5 = exports ? this
 # Application.html5.supported = true if canvasSupported
 
+### INITIALIZATION ###
 $ ->
   Application.enableInlineEdition()
   Application.seeMoreDescription()
@@ -13,6 +14,8 @@ $ ->
   initializeHelpNotices()
   collapseHomepageAccordian()
 
+
+### EVENTS ###
 $ ->
   $(".dismiss-help-notice").click (event)->
     $.post($(this).attr("href"))
@@ -173,6 +176,7 @@ $ -> # Confirm dialog box for class ".confirm-dialog"
     )
   )
 
+### FUNCTIONS ###
 
 collapseHomepageAccordian = () ->
   $(".collapse").collapse()
@@ -348,7 +352,7 @@ validateEmailsAndConfirm = (field) ->
 validateMinimumEmailCount = (field, num) ->
   if num == 0
     $(field).parent().addClass('error')
-    $(field).parent().find(".email-validation-help").text("Please enter at least one valid email address")
+    $(field).parent().find(".email-validation-help").show()
     return false
   true
 
@@ -383,7 +387,7 @@ getTimeZoneOffsetFromList = (list, timeZoneName) ->
 
 hideValidateEmailErrorMessageFor = (field) ->
   $(field).parent().removeClass("error")
-  $(field).parent().find(".email-validation-help").text("")
+  $(field).parent().find(".email-validation-help").hide()
 
 hidePresenceErrorMessageFor = (field) ->
   unless $(field).val() == ""
@@ -399,3 +403,4 @@ hideDateErrorMessageFor = (field) ->
 
 hideAllErrorMessages = () ->
   $(".inline-help").hide()
+  $(".email-validation-help").hide()

@@ -5,7 +5,7 @@
     .control-group
       %p= t("invitation.recipients")
       = text_area_tag 'invitees', nil, class: 'validate-emails', placeholder: t("invitation.invitees_placeholder")
-      .email-validation-help
+      .email-validation-help= t('error.invalid_email')
       = form.input :recipients, as: :hidden, input_html: { class: 'recipients' }
       %p= t("invitation.invites_more_help")
     .control-group
