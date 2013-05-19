@@ -1,5 +1,5 @@
 .activity-item-time
-  = link_to time_ago_in_words(comment.created_at) + " ago", "#comment-#{comment.id}"
+  = link_to(t('ago', :quantity_of_time => time_ago_in_words(comment.created_at)), "#comment-#{comment.id}")
   - if can? :like, comment
     = " · "
     - if comment.has_not_been_liked_by?(current_user)
