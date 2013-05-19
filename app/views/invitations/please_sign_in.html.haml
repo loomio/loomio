@@ -1,25 +1,27 @@
 .container
-  .row
-    .span6.offset3
-      %h1 Welcome to Loomio
-      %p Your request to start a new group on Loomio has been approved! You'll need to set up a new account before you can create your group.
+  .section.first
+    .inner-container
+      .row
+        .span6.offset3
+          %h1 Welcome to Loomio
+          %p Your request to start a new group on Loomio has been approved! You'll need to set up a new account before you can create your group.
 
-  .row
-    .span4.offset3
-      .signup-form
-        %p
-          %strong Sign up
-          %br
-      =simple_form_for(@user, url: user_registration_path) do |f|
+      .row
+        .span4.offset3
+          .signup-form
+            %p
+              %strong Sign up
+              %br
+          =simple_form_for(@user, url: user_registration_path) do |f|
 
-        =f.input :name
-        =f.input :email
-        =f.input :password
-        =f.input :password_confirmation, label: 'Confirm Password'
-        =f.submit t("devise.registrations.sign_up"), class: "btn btn-info btn-large"
-  .row
-    .span6.offset3
-      %p
-        If you've already got an account,
-        %a
-          click here to sign in
+            =f.input :name
+            =f.input :email
+            =f.input :password
+            =f.input :password_confirmation, label: 'Confirm Password'
+            =f.submit t("devise.registrations.sign_up"), class: "btn btn-info btn-large"
+      .row
+        .span6.offset3
+          %p
+            If you've already got an account,
+            %a
+              click here to sign in

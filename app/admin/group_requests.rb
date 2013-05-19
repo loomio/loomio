@@ -57,7 +57,8 @@ ActiveAdmin.register GroupRequest do
       if group_request.defered?
         row :defered_until
         row ('Action') { link_to "approve", approve_and_send_form_admin_group_request_path(group_request.id) }
-        row ('Action') { link_to "move to verified", mark_as_verified_admin_group_request_path(group_request.id) }
+        row ('Action') { link_to "move to verified", mark_as_verified_admin_group_request_path(group_request.id),
+            :method => :put }
       end
       if group_request.marked_as_spam?
         row ('Mark as unverified') { link_to "reset", mark_as_unverified_admin_group_request_path(group_request.id),
