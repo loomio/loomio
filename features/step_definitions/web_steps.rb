@@ -33,3 +33,23 @@ end
 And /^show me the page$/ do
   save_and_open_page
 end
+
+And /^screenshot$/ do
+  step 'take a screenshot'
+end
+
+And /^take a screenshot$/ do
+  if @screenshot_count
+    @screenshot_count +=1
+    file_name = "#{@feature_name}: #{@scenario_name} (#{@screenshot_count})"
+  else
+    @screenshot_count = 0
+    file_name = "#{@feature_name}: #{@scenario_name}"
+  end
+  page.driver.render("tmp/screenshots/#{file_name}.png", full: true)
+  puts '[SCREENSHOT]: written to tmp/screenshots'
+end
+
+And /^take a screenshot and name it "(.*?)"$/ do |arg1|
+  page.driver.render("tmp/screenshots/cucumber_#{arg1}.png")
+end

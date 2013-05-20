@@ -24,10 +24,41 @@ Loomio::Application.configure do
   # Disable request forgery protection in test environment
   config.action_controller.allow_forgery_protection    = false
 
-  # Tell Action Mailer not to deliver emails to the real world.
-  # The :test delivery method accumulates sent emails in the
-  # ActionMailer::Base.deliveries array.
-  config.action_mailer.delivery_method = :test
+  if ENV['TEST_EMAIL'] == 'sendgrid'
+    # Send emails using SendGrid
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address        => 'smtp.sendgrid.net',
+      :port           => '587',
+      :authentication => :plain,
+      :user_name      => ENV['SENDGRID_USERNAME'],
+      :password       => ENV['SENDGRID_PASSWORD'],
+      :domain         => 'loomio.org'
+
+      #enable_starttls_auto: true
+    }
+    config.action_mailer.default_url_options = {
+      :host           => 'looimo-staging.herokuapp.com',
+    }
+    config.action_mailer.perform_deliveries = true
+
+  elsif ENV['TEST_EMAIL'] == 'mailcatcher'
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address        => 'localhost',
+      :port           => 1025,
+      :domain         => 'loomio.org'
+    }
+    config.action_mailer.default_url_options = {
+      :host           => 'loomio.org'
+    }
+    config.action_mailer.perform_deliveries = true
+  else
+    config.action_mailer.delivery_method = :test
+    config.action_mailer.default_url_options = {
+      :host           => 'localhost:3000'
+    }
+  end
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,
@@ -37,11 +68,5 @@ Loomio::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
-    :address => "localhost",
-    :port => 1025,
-    :domain => "tautoko.co.nz" }
+  config.action_mailer.raise_delivery_errors = true
 end
