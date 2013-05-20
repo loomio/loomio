@@ -69,9 +69,4 @@ Loomio::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.action_mailer.raise_delivery_errors = true
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
-    :address => "localhost",
-    :port => 1025,
-    :domain => "tautoko.co.nz" }
 end
