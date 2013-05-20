@@ -4,9 +4,6 @@ ActiveAdmin.register Group do
   filter :name
   filter :parent
 
-  scope :all, :default => true do |group|
-    group.includes [:creator]
-  end
   scope "Parent groups" do |group|
     group.where(parent_id: nil)
   end
