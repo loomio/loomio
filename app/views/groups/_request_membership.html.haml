@@ -3,7 +3,9 @@
     #request-membership
       - membership_request = group.membership_requests.find_by_user_id(current_user)
       - if membership_request.present?
-        = link_to t(:membership_requested), membership_request, method: :delete,
+        / = link_to t(:membership_requested), membership_request, method: :delete,
+        = link_to t(:membership_requested), cancel_request_for_membership_url(membership_request.id),
+          method: :post,
           confirm: t(:confirm_remove_membership_request),
           class: "btn", id: "membership-requested"
       - else
