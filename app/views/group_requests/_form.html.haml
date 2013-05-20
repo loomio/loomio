@@ -7,24 +7,12 @@
       %h2 Tell us about your group
       = f.input :name, label: "What is the name of your group/organisation?"
       = f.input :description, label: "Tell us about your group and why you'd like to use Loomio."
-      = f.input :sectors, label: false, as: :check_boxes,
-                collection: ['Informal network',
-                             'Social movement',
-                             'Incorporated society',
-                             'Company',
-                             'Trust',
-                             'Government agency',
-                             'Other'],
-                 :validate => { :presence => true },
-                 label: "What is the structure of your group/organisation?"
-
       = f.input :expected_size, label: "How many people to you expect to be in your loomio group?"
 
       %h2 Tell us about yourself
       %p You’ll be the coordinator for your group while you’re getting set up.
       = f.input :admin_name, label: "What is your name?"
       = f.input :admin_email, label: "What is your email address?"
-      = f.input "country_name", label: 'What country do you live in?'
 
       %h2 We’re trying something new...
       %p
