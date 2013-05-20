@@ -50,7 +50,7 @@ When(/^I open the email and click the accept invitation link$/) do
   visit path
 end
 
-When(/^sign up as a new user$/) do
+When(/^I sign up as a new user$/) dogit 
   fill_in :user_name, with: 'Jim Jameson'
   fill_in :user_email, with: 'jim@jam.com'
   fill_in :user_password, with: 'password'
@@ -74,7 +74,7 @@ Given(/^an existing user with email "(.*?)"$/) do |arg1|
   @user = FactoryGirl.create :user, email: arg1
 end
 
-When(/^sign in as "(.*?)"$/) do |arg1|
+When(/^I sign in as "(.*?)"$/) do |arg1|
   fill_in :user_email, with: arg1
   fill_in :user_password, with: 'password'
   find('#sign-in-btn').click()

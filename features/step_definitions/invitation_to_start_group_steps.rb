@@ -40,13 +40,11 @@ When /^the user clicks the invitiation link$/ do
 end
 
 When /^signs up as a new user$/ do
-  within ".signup-form" do
-    fill_in 'Full name', with: 'Jimmy Jiminson'
-    fill_in 'Email', with: 'jim@jiminson.com'
-    fill_in :user_password, with: 'milkbottle'
-    fill_in :user_password_confirmation, with: 'milkbottle'
-    click_on 'Sign up'
-  end
+  fill_in :user_name, with: 'Jimmy Jiminson'
+  fill_in :user_email, with: 'jim@jiminson.com'
+  fill_in :user_password, with: 'milkbottle'
+  fill_in :user_password_confirmation, with: 'milkbottle'
+  find('input[name=commit]').click()
 end
 
 Then /^they should be redirected to the group setup wizard$/ do

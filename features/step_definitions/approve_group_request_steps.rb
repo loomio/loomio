@@ -11,6 +11,10 @@ When /^I visit the Group Request in the admin panel$/ do
   visit admin_group_request_path(@group_request)
 end
 
+When /^I visit the Group Requests on the admin panel$/ do
+  visit admin_group_request_path
+end
+
 When /^I click approve for a request$/ do
   click_link("approve")
 end

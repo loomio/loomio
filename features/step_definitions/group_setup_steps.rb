@@ -7,6 +7,7 @@ Given /^the users time-zone has been set$/ do
 end
 
 Given(/^I fill in the form upto the invites tab$/) do
+  find('#start').click()
   step 'I fill in the group panel'
   step "I click the \"next\" button"
   step 'I fill in the discussion panel'
@@ -16,10 +17,6 @@ end
 When(/^I fill in the group name$/) do
   @group_name = "Fantastic Spinners"
   fill_in 'Group name', with: @group_name
-end
-
-When(/^I wait for 60 seconds$/) do
-  sleep(60)
 end
 
 When(/^a group is already setup$/) do
@@ -40,12 +37,12 @@ When /^I click the "(.*?)" button$/ do |id|
 end
 
 When /^I fill in the group panel$/ do
-  fill_in 'Group description', with: "A discription of my group"
+  fill_in 'group_setup_group_description', with: "A discription of my group"
 end
 
 When /^I fill in the discussion panel$/ do
   fill_in 'Discussion title', with: "My discussion title"
-  fill_in 'Discussion description', with: "A discription of my discussion"
+  fill_in 'group_setup_discussion_description', with: "A discription of my discussion"
 end
 
 When /^I fill in the invites panel$/ do
@@ -98,7 +95,7 @@ Then(/^I should be told that I dont have permission to set up this group$/) do
 end
 
 Then(/^I should see a flash message displaying number of valid emails$/) do
-  find('.alert').should have_content('3 invitations sent')
+  find('.alert').should have_content('3 invitation(s) sent')
 end
 
 Then(/^the date the group was setup is stored$/) do

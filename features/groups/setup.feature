@@ -25,9 +25,8 @@ Feature: Setup group
     And I fill in the form upto the invites tab
     When I fill in a list of valid and invalid emails
     And I click the "send_invites" button
-    Then I should see the finished page
     And  I should see a flash message displaying number of valid emails
-    And  I should see a list of the valid emails
+    And  I should see the group page
 
 @javascript
   Scenario: Group admin sets up a group
@@ -37,21 +36,11 @@ Feature: Setup group
     And I fill in the form upto the invites tab
     And I fill in the invites panel
     And I click the "send_invites" button
-    Then I should see the finished page
     And the group_setup should be created
     And the group should have a discussion
     And invitations should be sent out to each recipient
-    When I click the "finished" button
     Then I should see the group page
     And the date the group was setup is stored
-
-@javascript
-  Scenario: Group admin starts setup and after 1 minute setup auto saves
-    Given I am an admin of a group
-    And I visit the group setup wizard for that group
-    When I fill in the group name
-    And I wait for 60 seconds
-    Then the group should be saved
 
 @javascript
   Scenario: Group admin tries to set up a group that alredy has been set up

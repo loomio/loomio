@@ -19,7 +19,7 @@ Feature: Invitation to join group
     Given there is a group
     And an invitation to join the group has been sent to "jim@jam.com"
     When I open the email and click the accept invitation link
-    And sign up as a new user
+    And I sign up as a new user
     Then I should be a member of the group
     And I should be redirected to the group page
 
@@ -30,7 +30,7 @@ Feature: Invitation to join group
     And an invitation to join the group has been sent to "jim@jam.com"
     When I open the email and click the accept invitation link
     And I click the link to the sign in form
-    And sign in as "jim@jam.com"
+    And I sign in as "jim@jam.com"
     Then I should be a member of the group
     And I should be redirected to the group page
 

@@ -26,17 +26,6 @@ Given(/^I am invited to join a Loomio Group$/) do
                                                recipient_email: 'me@email.com')
 end
 
-When(/^I sign up as a new user$/) do
-  visit invitation_path(@invitation)
-  within '.signup-form' do
-    fill_in :user_name, with: 'Jim Jameson'
-    fill_in :user_email, with: 'jim@jam.com'
-    fill_in :user_password, with: 'password'
-    fill_in :user_password_confirmation, with: 'password'
-    click_on 'Sign up'
-  end
-end
-
 Then(/^the new user should have a time zone$/) do
   User.find_by_email('jim@jam.com').time_zone.should be_present
 end
