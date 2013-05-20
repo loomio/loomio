@@ -7,6 +7,37 @@
       %h2 Tell us about your group
       = f.input :name, label: "What is the name of your group/organisation?"
       = f.input :description, label: "Tell us about your group and why you'd like to use Loomio."
+      = f.input :sectors, label: false, as: :check_boxes,
+                collection: ['Company',
+                              'Open source software project',
+                              'Cooperative',
+                              'Incorporated society',
+                              'NGO',
+                              'Social enterprise',
+                              'Government organisation',
+                              'Local authority',
+                              'Informal community group/project',
+                              'Family or friends network',
+                              'School/educational institute',
+                              'Political organisation',
+                              'Social movement',
+                              'Social/environmental justice group',
+                              'Collective',
+                              'Board',
+                              'Closed source software project',
+                              'Student group',
+                              'Neighbourhood group',
+                              'Union',
+                              'Local food network',
+                              'Intentional community',
+                              'Committee',
+                              'Sports group',
+                              'Musical group',
+                              'Religious/spiritual organisation',
+                              'Other:'],
+                 :validate => { :presence => true },
+                 label: "What type of group is this?"
+      = f.input :other_sector, label: false
       = f.input :expected_size, label: "How many people to you expect to be in your loomio group?"
 
       %h2 Tell us about yourself
