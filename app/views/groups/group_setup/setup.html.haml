@@ -64,7 +64,13 @@
             .span4.offset1.more-help= t("group_setup_form.discussion_more_help").html_safe
 
         .tab-pane#invite-tab
-          = render 'groups/invite_users', form: f, group: @group
+          .row
+            .span5
+              = render 'groups/invite_users', form: f, group: @group
+            .span4.offset1
+              %br
+              %br
+              .more-help= t("invitation.invites_more_help2").html_safe
       .row
         .span5
           = f.submit "Finish setup", class: 'btn btn-info btn-large run-validations', id: 'send_invites', :data => { :disable_with => "Send invites" }

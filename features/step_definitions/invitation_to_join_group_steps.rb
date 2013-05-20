@@ -5,7 +5,7 @@ end
 Given(/^I am an admin of that group$/) do
   @group_admin = FactoryGirl.create(:user)
   @group.add_admin! @group_admin
-  login_automatically @group_admin
+  login @group_admin
 end
 
 Given(/^I am on the group show page$/) do
@@ -24,15 +24,11 @@ When(/^enter "(.*?)" into the recipients$/) do |arg1|
 end
 
 When(/^fill in the message body$/) do
-  fill_in 'invite_people[message_body]', with: 'hi please click the {invitation_link}'
+  fill_in 'invite_people_message_body', with: 'hi please click the {invitation_link}'
 end
 
 When(/^click Send Invitations$/) do
   click_on 'Send invitations'
-end
-
-When(/^I invite "(.*?)" to join the group$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^"(.*?)" should get an invitation to join the group$/) do |arg1|
@@ -55,13 +51,15 @@ When(/^I open the email and click the accept invitation link$/) do
 end
 
 When(/^sign up as a new user$/) do
-  within '.signup-form' do
-    fill_in :user_name, with: 'Jim Jameson'
-    fill_in :user_email, with: 'jim@jam.com'
-    fill_in :user_password, with: 'password'
-    fill_in :user_password_confirmation, with: 'password'
-    click_on 'Sign up'
-  end
+  fill_in :user_name, with: 'Jim Jameson'
+  fill_in :user_email, with: 'jim@jam.com'
+  fill_in :user_password, with: 'password'
+  fill_in :user_password_confirmation, with: 'password'
+  find('input[name=commit]').click()
+end
+
+When(/^I click the link to the sign in form$/) do
+  click_on 'click here to sign in'
 end
 
 Then(/^I should be a member of the group$/) do
@@ -77,11 +75,9 @@ Given(/^an existing user with email "(.*?)"$/) do |arg1|
 end
 
 When(/^sign in as "(.*?)"$/) do |arg1|
-  within '.signin-form' do
-    fill_in :user_email, with: arg1
-    fill_in :user_password, with: 'password'
-    click_on 'Sign in'
-  end 
+  fill_in :user_email, with: arg1
+  fill_in :user_password, with: 'password'
+  find('#sign-in-btn').click()
 end
 
 Given(/^I am signed in as "(.*?)"$/) do |arg1|

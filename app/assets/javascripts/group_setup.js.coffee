@@ -1,13 +1,11 @@
+### INITIASLIZATION ###
+
 $ -> #initialiazation of form
   if $("body.group_setup").length > 0
     hideButtons()
     $('#group_setup_group_name').focus()
 
-# EVENTS
-
-$ -> #call save when fields are tabbed out of
-  $('.validate-presence').on 'blur', (event) ->
-    saveSetup()
+### EVENTS ###
 
 $ -> #button functionality
   if $("body.group_setup").length > 0
@@ -27,6 +25,9 @@ $ -> #hide/show buttons on tab change
     if $("body.group_setup").length > 0
       $('.nav-tabs li a').on 'shown', (event) ->
         hideButtons()
+
+
+### FUCTIONS ###
 
 hideButtons = () ->
   activeTab = $('ul.nav-tabs li.active')

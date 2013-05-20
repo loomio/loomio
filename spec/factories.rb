@@ -8,6 +8,9 @@ FactoryGirl.define do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
     password 'password'
+    has_read_dashboard_notice true
+    has_read_group_notice true
+    has_read_discussion_notice true
     after(:build) do |user|
       user.generate_username
     end
