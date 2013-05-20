@@ -13,7 +13,11 @@ class InvitationsController < ApplicationController
     else
       session[:invitation_token] = params[:id]
       @user = User.new
-      render template: 'invitations/please_sign_in', layout: 'pages'
+      if @invitation.intent == 'join_group'
+        render template: 'invitations/join_group', layout: 'pages'
+      else
+        render template: 'invitations/start_group', layout: 'pages'
+      end
     end
   end
 end

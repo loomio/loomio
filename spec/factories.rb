@@ -107,8 +107,7 @@ FactoryGirl.define do
   factory :group_request do
     admin_name { Faker::Name.name }
     admin_email { Faker::Internet.email }
-    why_do_you_want "I really like it"
-    group_core_purpose "keep'n it real"
+    description "I really like it"
     country_name "nz"
     sectors ["community"]
     name { Faker::Name.name }

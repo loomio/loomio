@@ -52,6 +52,7 @@ When(/^I open the email and click the accept invitation link$/) do
 end
 
 When(/^I sign up as a new user$/) do
+  page.should have_content "#{@user.name} invited you to join #{@group.name}"
   fill_in :user_name, with: 'Jim Jameson'
   fill_in :user_email, with: 'jim@jam.com'
   fill_in :user_password, with: 'password'
@@ -60,6 +61,7 @@ When(/^I sign up as a new user$/) do
 end
 
 When(/^I click the link to the sign in form$/) do
+  view_screenshot
   click_on 'click here to sign in'
 end
 

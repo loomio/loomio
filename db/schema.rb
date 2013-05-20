@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515041437) do
+ActiveRecord::Schema.define(:version => 20130520091855) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -45,6 +45,25 @@ ActiveRecord::Schema.define(:version => 20130515041437) do
     t.datetime "ends_at",                      :null => false
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "campaign_signups", :force => true do |t|
+    t.integer  "campaign_id"
+    t.string   "name"
+    t.string   "email"
+    t.boolean  "spam"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "campaign_signups", ["campaign_id"], :name => "index_campaign_signups_on_campaign_id"
+
+  create_table "campaigns", :force => true do |t|
+    t.string   "showcase_url"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "name",          :null => false
+    t.string   "manager_email", :null => false
   end
 
   create_table "comment_votes", :force => true do |t|
@@ -111,7 +130,6 @@ ActiveRecord::Schema.define(:version => 20130515041437) do
     t.datetime "discussion_last_viewed_at"
   end
 
-  add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
   add_index "discussion_read_logs", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
   add_index "discussion_read_logs", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
@@ -227,6 +245,7 @@ ActiveRecord::Schema.define(:version => 20130515041437) do
     t.string   "token",                              :null => false
     t.integer  "accepted_by_id"
     t.datetime "accepted_at"
+    t.string   "intent"
   end
 
   add_index "invitations", ["group_id"], :name => "index_invitations_on_group_id"
@@ -261,13 +280,13 @@ ActiveRecord::Schema.define(:version => 20130515041437) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "phase",              :default => "voting", :null => false
     t.string   "discussion_url",     :default => "",       :null => false
     t.datetime "close_at"
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
     t.boolean  "uses_markdown",      :default => true,     :null => false
-    t.string   "phase",              :default => "voting", :null => false
     t.date     "close_at_date"
     t.string   "close_at_time"
     t.string   "close_at_time_zone"
@@ -320,14 +339,14 @@ ActiveRecord::Schema.define(:version => 20130515041437) do
     t.boolean  "has_read_dashboard_notice",                                   :default => false,      :null => false
     t.boolean  "has_read_group_notice",                                       :default => false,      :null => false
     t.boolean  "has_read_discussion_notice",                                  :default => false,      :null => false
+    t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email",                          :default => true,       :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,       :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
-    t.string   "username"
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.boolean  "uses_markdown",                                               :default => false
     t.integer  "memberships_count",                                           :default => 0,          :null => false
+    t.boolean  "uses_markdown",                                               :default => false
     t.string   "language_preference"
     t.string   "time_zone"
   end
@@ -360,11 +379,5 @@ ActiveRecord::Schema.define(:version => 20130515041437) do
 
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
-
-  create_table "woc_options", :force => true do |t|
-    t.string   "example_discussion_url"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
-  end
 
 end
