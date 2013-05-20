@@ -138,6 +138,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.purpose,
 .pages.how_it_works,
 .pages.about,
+.pages.pricing,
 .pages.about_us, .woc.index, .we_the_people.index, .group_requests.start_new_group {
   color: black;
 
@@ -220,11 +221,6 @@ a.btn-icon:hover { color: $dark-grey; }
   .section.first{
     margin-top: 0px;
   }
-
-
-  /*.section#purpose, .section#how-it-works, .section#about-us {*/
-    /*margin-top: 6em;*/
-  /*}*/
 
   #first .inner-container{
     padding: 0 34px;
@@ -330,5 +326,14 @@ a.btn-icon:hover { color: $dark-grey; }
       width: 150px;
       text-align: center;
     }
+  }
+}
+
+.pages.pricing{
+  .subhead h1{
+    font-size: 50px;
+  }
+  h1{
+    font-size: 36px;
   }
 }
