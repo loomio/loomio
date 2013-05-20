@@ -345,7 +345,7 @@ validateEmailsAndConfirm = (field) ->
   if $(field).is(":visible")
     emailList = parseEmails($(field).val())
     return false unless validateMinimumEmailCount(field, emailList.length)
-    return false unless confirm("You are about to invite #{emailList.length} recipients")
+    return false unless confirm("#{emailList.length} invitations will be sent")
     $(".recipients").val(emailList.toString())
   true
 

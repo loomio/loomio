@@ -34,6 +34,7 @@ end
 Then(/^"(.*?)" should get an invitation to join the group$/) do |arg1|
   last_email = ActionMailer::Base.deliveries.last
   last_email.to.should == [arg1]
+  last_email.from.should == [@group_admin.email]
 end
 
 Given(/^an invitation to join the group has been sent to "(.*?)"$/) do |arg1|
@@ -50,7 +51,7 @@ When(/^I open the email and click the accept invitation link$/) do
   visit path
 end
 
-When(/^I sign up as a new user$/) dogit 
+When(/^I sign up as a new user$/) do
   fill_in :user_name, with: 'Jim Jameson'
   fill_in :user_email, with: 'jim@jam.com'
   fill_in :user_password, with: 'password'
