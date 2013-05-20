@@ -108,86 +108,86 @@ describe "Test Email:" do
     token:              ('a'..'z').to_a.sample(25).join
   }
 
-  # describe "Discussion Mailer:" do
-  #   it "new_discussion_created" do
-  #     puts ' '
-  #     puts 'NEW_DISCUSSION_CREATED'
-  #     discussion.stub id: rand(1..1000)
+  describe "Discussion Mailer:" do
+    it "new_discussion_created" do
+      puts ' '
+      puts 'NEW_DISCUSSION_CREATED'
+      discussion.stub id: rand(1..1000)
 
-  #     addresses.each do |email|
-  #       user.stub email: email
-  #       DiscussionMailer.new_discussion_created(discussion, user).deliver
-  #       puts " ~ SENT (#{email})"
-  #     end
-  #   end
-  # end
+      addresses.each do |email|
+        user.stub email: email
+        DiscussionMailer.new_discussion_created(discussion, user).deliver
+        puts " ~ SENT (#{email})"
+      end
+    end
+  end
 
-  # describe "Group Mailer:" do
-  #   it "new_membership_request " do
-  #     puts ' '
-  #     puts 'NEW_MEMBERSHIP_REQUEST'
+  describe "Group Mailer:" do
+    it "new_membership_request " do
+      puts ' '
+      puts 'NEW_MEMBERSHIP_REQUEST'
 
-  #     addresses.each do |email|
-  #       admin.stub email: email
-  #       GroupMailer.new_membership_request(membership).deliver
-  #       puts " ~ SENT (#{email})"
-  #     end
-  #   end
+      addresses.each do |email|
+        admin.stub email: email
+        GroupMailer.new_membership_request(membership).deliver
+        puts " ~ SENT (#{email})"
+      end
+    end
 
-  #   it "group_email" do
-  #     puts ' '
-  #     puts 'GROUP_EMAIL'
+    it "group_email" do
+      puts ' '
+      puts 'GROUP_EMAIL'
 
-  #     @subject = Faker::Lorem.sentence(4)
-  #     @message = Faker::Lorem.paragraph(4)
+      @subject = Faker::Lorem.sentence(4)
+      @message = Faker::Lorem.paragraph(4)
 
-  #     addresses.each do |email|
-  #       user.stub email: email
-  #       GroupMailer.group_email(group, author, @subject, @message, user).deliver
-  #       puts " ~ SENT (#{email})"
-  #     end
-  #   end
+      addresses.each do |email|
+        user.stub email: email
+        GroupMailer.group_email(group, author, @subject, @message, user).deliver
+        puts " ~ SENT (#{email})"
+      end
+    end
 
-  #  ### SKIP: this mailer just iterates above mailer ###
-  #   # it "deliver_group_email" do
-  #   # end
-  # end
+   ### SKIP: this mailer just iterates above mailer ###
+    # it "deliver_group_email" do
+    # end
+  end
 
-  # describe "Motion Mailer:" do
-  #   it "new_motion_created" do
-  #     puts ' '
-  #     puts 'NEW_MOTION_CREATED'
+  describe "Motion Mailer:" do
+    it "new_motion_created" do
+      puts ' '
+      puts 'NEW_MOTION_CREATED'
 
-  #     addresses.each do |email|
-  #       user.stub email: email
-  #       MotionMailer.new_motion_created(motion, user).deliver
-  #       puts " ~ SENT (#{email})"
-  #     end
-  #   end
+      addresses.each do |email|
+        user.stub email: email
+        MotionMailer.new_motion_created(motion, user).deliver
+        puts " ~ SENT (#{email})"
+      end
+    end
 
-  #   it "motion_closed" do
-  #     puts ' '
-  #     puts 'MOTION_CLOSED'
+    it "motion_closed" do
+      puts ' '
+      puts 'MOTION_CLOSED'
 
-  #     addresses.each do |email|
-  #       MotionMailer.motion_closed(motion, email).deliver
-  #       puts " ~ SENT (#{email})"
-  #     end
-  #   end
+      addresses.each do |email|
+        MotionMailer.motion_closed(motion, email).deliver
+        puts " ~ SENT (#{email})"
+      end
+    end
 
-  #   it "motion_blocked" do
-  #     puts ' '
-  #     puts 'MOTION_BLOCKED'
+    it "motion_blocked" do
+      puts ' '
+      puts 'MOTION_BLOCKED'
 
-  #     addresses.each do |email|
-  #       vote.motion.author.stub email: email
-  #       MotionMailer.motion_blocked(vote).deliver
-  #       puts " ~ SENT (#{email})"
-  #     end
-  #   end
-  # end
+      addresses.each do |email|
+        vote.motion.author.stub email: email
+        MotionMailer.motion_blocked(vote).deliver
+        puts " ~ SENT (#{email})"
+      end
+    end
+  end
 
-  # describe "Start_group Mailer:" do
+  describe "Start_group Mailer:" do
     it "invite_admin_to_start_group" do
       puts ' '
       puts 'INVITE_ADMIN_TO_START_GROUP'
@@ -198,55 +198,55 @@ describe "Test Email:" do
         puts " ~ SENT (#{email})"
       end
     end
-  # end
+  end
 
   describe "User Mailer:" do
-    # it "daily_activity" do
-    #   puts ' '
-    #   puts 'DAILY_ACTIVITY'
+    it "daily_activity" do
+      puts ' '
+      puts 'DAILY_ACTIVITY'
 
-    #   @activity = {}
-    #   #create some groups
-    #   user_groups = []
-    #   rand(3..6).times { user_groups << create_group }
-    #   user.stub groups: user_groups
+      @activity = {}
+      #create some groups
+      user_groups = []
+      rand(3..6).times { user_groups << create_group }
+      user.stub groups: user_groups
 
-    #   user.groups.each do |group_i|
-    #     h = {}
+      user.groups.each do |group_i|
+        h = {}
 
-    #     #create some discussions
-    #     discussions = []
-    #     (2..rand(5)).each do |k|
-    #       a_discussion = create_discussion(group)
-    #       #create some comments in that discussion
-    #       rand(0..3).times do |l|
-    #         a_comment = create_comment(a_discussion)
-    #         a_discussion.comments << a_comment
-    #       end
-    #       discussions << a_discussion
-    #     end
-    #     h[:discussions] = discussions
+        #create some discussions
+        discussions = []
+        (2..rand(5)).each do |k|
+          a_discussion = create_discussion(group)
+          #create some comments in that discussion
+          rand(0..3).times do |l|
+            a_comment = create_comment(a_discussion)
+            a_discussion.comments << a_comment
+          end
+          discussions << a_discussion
+        end
+        h[:discussions] = discussions
 
-    #     #create some motions
-    #     motions = []
-    #     (0..rand(2)).each do |k|
-    #       a_motion = create_motion(discussion)
-    #       motions << a_motion
-    #     end
-    #     h[:motions] = motions
+        #create some motions
+        motions = []
+        (0..rand(2)).each do |k|
+          a_motion = create_motion(discussion)
+          motions << a_motion
+        end
+        h[:motions] = motions
 
-    #     @activity[group_i.full_name] = h
-    #   end
+        @activity[group_i.full_name] = h
+      end
 
-    #   @since_time = Time.now - 10.hours
+      @since_time = Time.now - 10.hours
 
-    #   addresses.each do |email|
-    #     user.stub email: email
-    #     Discussion.any_instance.stub number_of_comments_since: rand(13)
-    #     UserMailer.daily_activity(user, @activity, @since_time).deliver
-    #     puts " ~ SENT (#{email})"
-    #   end
-    # end
+      addresses.each do |email|
+        user.stub email: email
+        Discussion.any_instance.stub number_of_comments_since: rand(13)
+        UserMailer.daily_activity(user, @activity, @since_time).deliver
+        puts " ~ SENT (#{email})"
+      end
+    end
 
     it "mentioned" do
       puts ' '
