@@ -1,3 +1,4 @@
+window.Application ||= {}
 
 ### INITIALIZATION ###
 
@@ -54,7 +55,7 @@ hideDateErrorMessageFor = (field) ->
   $(field).closest('.motion-closing-inputs').removeClass("error")
   row = $(field).closest('.motion-closing-inputs').find(".inline-help").hide()
 
-validateMotionCloseDate = (closeAtParent) ->
+Application.validateMotionCloseDate = (closeAtParent) ->
   if $(closeAtParent).is(":visible")
     timeNow = new Date()
     if parseCloseDateTimeZoneFields(closeAtParent) < timeNow

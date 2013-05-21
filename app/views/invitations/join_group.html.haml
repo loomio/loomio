@@ -5,21 +5,4 @@
         .span6.offset3
           %h2 #{@invitation.inviter_name} invited you to join #{@invitation.group_name}
           %p You'll need to sign up or sign in to continue.
-
-      .row
-        .span4.offset3
-          .signup-form
-            %p
-              %strong Sign up
-              %br
-          =simple_form_for(@user, url: user_registration_path) do |f|
-            =f.input :name
-            =f.input :email
-            =f.input :password
-            =f.input :password_confirmation, label: 'Confirm Password'
-            =f.submit t("devise.registrations.sign_up"), class: "btn btn-info btn-large"
-      .row
-        .span6.offset3
-          %p
-            If you've already got an account,
-            =link_to 'click here to sign in', user_session_path
+      = render 'form'

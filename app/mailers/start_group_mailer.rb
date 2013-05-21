@@ -6,7 +6,7 @@ class StartGroupMailer < ActionMailer::Base
     @token = group_request.token
 
     mail to: group_request.admin_email,
-         subject: "Please confirm your Loomio group request"
+         subject: t('verified_email.subject')
   end
 
   def defered(group_request)

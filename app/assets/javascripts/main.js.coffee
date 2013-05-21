@@ -290,7 +290,7 @@ Application.validateForm = (form) ->
     return
     )
   formValid = false unless Application.validateEmailsAndConfirm($(".validate-emails"))
-  formValid = false unless validateMotionCloseDate($(".motion-closing-inputs"))
+  formValid = false unless Application.validateMotionCloseDate($(".motion-closing-inputs"))
   formValid
 
 validatePresence = (field) ->

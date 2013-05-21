@@ -3,15 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body.group_setup.setup, body.invitations.new {
-
   #invitees { height: 50px; }
-  // #message_body {
-  //   height: 200px;
-  //   border: 1px solid #ccc;
-  //   padding: 10px;
-  //   -webkit-border-radius: 4px;
-  //   -moz-border-radius: 4px;
-  //   border-radius: 4px;
-  //   background-color: #eeeeee;
-  // }
+  #group_setup_message_body { height: 165px; }
 }

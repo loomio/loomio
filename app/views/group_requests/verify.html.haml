@@ -1,4 +1,6 @@
 .page-container
+  -if signed_in?
+    =image_tag("loomio-orange.png", :id => "large-logo")
   .row
     .span6.offset2
       %h1 Thanks for your application!
@@ -6,11 +8,6 @@
       %p
         Your request to start a group on Loomio has been received. Our friendly humans will review it and we'll get back to you as soon as possible. If you haven’t heard from us within 48 hours, feel free to give us a nudge:
         = link_to("contact@loomio.org", "mailto:contact@loomio.org")
-
-      %p
-        While you wait,
-        = link_to("learn how to cultivate a thriving online community", "https://www.loomio.org/how-it-works")
-        on Loomio.
 
     .span2
       =image_tag("mascot-medium-lefthand.gif")

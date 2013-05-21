@@ -45,7 +45,7 @@
             .span4.offset1.more-help= t("group_setup_form.group_more_help").html_safe
           .row
             .span5
-              = f.input :viewable_by, :collection => {'Public - anyone with the link can see this group' => 'everyone', 'Members - only members of this group can see it' => 'members'}, :as => 'radio_buttons'
+              = f.input :viewable_by, :as => 'radio_buttons', :collection => {'Public - anyone with the link can see this group' => 'everyone', 'Members - only members of this group can see it' => 'members'}
               %br
               = f.input :members_invitable_by, :as => "radio_buttons", :collection => {'All group members' => 'members', 'Coordinators only' => 'admins'}
 

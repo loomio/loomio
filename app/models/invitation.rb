@@ -18,6 +18,10 @@ class Invitation < ActiveRecord::Base
     group.name
   end
 
+  def group_request_admin_name
+    group.group_request.admin_name
+  end
+
   private
   def ensure_token_is_present
     unless self.token.present?

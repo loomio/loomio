@@ -16,6 +16,7 @@ class InvitationsController < ApplicationController
       if @invitation.intent == 'join_group'
         render template: 'invitations/join_group', layout: 'pages'
       else
+        @user_name = @invitation.group_request_admin_name
         render template: 'invitations/start_group', layout: 'pages'
       end
     end

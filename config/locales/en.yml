@@ -348,9 +348,10 @@ en:
     invites_more_help2: "<p>You can invite people to your group at any time.</p><p>You might want to invite all your members in right away, or you could start by inviting just the people you’re working most closely with.</p>"
 
 
+  verified_email:
+    subject: "Thanks for your request, you’re almost done!"
   defered_email:
     subject: "defered (placeholder)"
-
   #
   # FORMS
   #
@@ -449,7 +450,7 @@ en:
         group_name: "What is the name of your group?"
         group_description: "Give a brief description of your group"
         viewable_by: "Who can see this group?"
-        invitable_by: "Who can invite members to this group?"
+        members_invitable_by: Who can invite members to this group?
         discussion_name: "What’s the first topic you’d like to discuss with your group?"
         discussion_description: "Introduce the topic and give enough information to get the conversation started:"
 
