@@ -5,6 +5,10 @@ Given(/^I have a user account with no time_zone$/) do
   @user.time_zone.should be_nil
 end
 
+Given(/^I follow the invitation link$/) do
+  visit invitation_path(@invitation.token)
+end
+
 When(/^I sign in$/) do
   visit new_user_session_path
   fill_in 'Email', with: @user.email

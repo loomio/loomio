@@ -35,27 +35,6 @@ $ -> # Remove error class on field if not empty
   $(".validate-presence").keyup () ->
     hidePresenceErrorMessageFor($(this))
 
-$ -> # Remove error class on closing inputs if changed
-  $(".motion-close-at-date").change () ->
-    hideDateErrorMessageFor($(this))
-
-$ -> # Remove error class on closing inputs if changed
-  $(".motion-close-at-time").change () ->
-    hideDateErrorMessageFor($(this))
-
-$ -> # Remove error class on closing inputs if changed
-  $(".motion-close-at-time-zone").change () ->
-    hideDateErrorMessageFor($(this))
-
-$ -> # Remove email help class if changed
-  $(".validate-emails").keyup () ->
-    hideValidateEmailErrorMessageFor($(this))
-
-$ -> # Parse emails and display number of valid ones
-  $(".validate-emails").focusout () ->
-    emailList = parseEmails($(this).val())
-    validateMinimumEmailCount(this, emailList.length)
-
 $ -> # Run validations and prevent default if false
   $(".run-validations").click (event, ui) ->
     form = $(this).parents("form")
@@ -304,26 +283,13 @@ Application.seeMoreDescription = () ->
       event.preventDefault()
     )
 
-displayGraph = (this_pie, graph_id, data)->
-  @pie_graph_view = new Loomio.Views.Utils.GraphView
-    el: this_pie
-    id_string: graph_id
-    legend: false
-    data: data
-    type: 'pie'
-    tooltip_selector: '#tooltip'
-    diameter: 25
-    padding: 1
-    gap: 1
-    shadow: 0.75
-
 Application.validateForm = (form) ->
   formValid = true
   form.find(".validate-presence").each((index, field) ->
     formValid = false unless validatePresence(field)
     return
     )
-  formValid = false unless validateEmailsAndConfirm($(".validate-emails"))
+  formValid = false unless Application.validateEmailsAndConfirm($(".validate-emails"))
   formValid = false unless validateMotionCloseDate($(".motion-closing-inputs"))
   formValid
 
@@ -334,61 +300,6 @@ validatePresence = (field) ->
     return false
   true
 
-parseEmails = (input_emails) ->
-  parsed_emails = []
-  regex = /[^\s<,]+?@[^>,\s]+/g
-  while(matches = regex.exec(input_emails))
-    parsed_emails.push(matches[0])
-  parsed_emails
-
-validateEmailsAndConfirm = (field) ->
-  if $(field).is(":visible")
-    emailList = parseEmails($(field).val())
-    return false unless validateMinimumEmailCount(field, emailList.length)
-    return false unless confirm("#{emailList.length} invitations will be sent")
-    $(".recipients").val(emailList.toString())
-  true
-
-validateMinimumEmailCount = (field, num) ->
-  if num == 0
-    $(field).parent().addClass('error')
-    $(field).parent().find(".email-validation-help").show()
-    return false
-  true
-
-validateMotionCloseDate = (closeAtParent) ->
-  if $(closeAtParent).is(":visible")
-    timeNow = new Date()
-    if parseCloseDateTimeZoneFields(closeAtParent) < timeNow
-      $(closeAtParent).addClass("error")
-      $(closeAtParent).find(".inline-help").show()
-      return false
-  true
-
-parseCloseDateTimeZoneFields = (closeAtControlGroup) ->
-  selectedDate = new Date()
-  closeAtDate = closeAtControlGroup.find('.motion-close-at-date').val()
-  closeAtTime = closeAtControlGroup.find('.motion-close-at-time').val()
-  closeAtTimeZone = closeAtControlGroup.find('.motion-close-at-time-zone').val()
-  listOfTimeZones = closeAtControlGroup.find('.motion-close-at-time-zone').text()
-
-  timeZoneAsHourOffset = getTimeZoneOffsetFromList(listOfTimeZones, closeAtTimeZone)
-  month = closeAtDate.substring(3,5)
-  day = closeAtDate.substring(0,2)
-
-  selectedDate.setUTCFullYear(parseInt(closeAtDate.substring(6,10), 10))
-  selectedDate.setUTCMonth(parseInt(month, 10) - 1, parseInt(day, 10))
-  selectedDate.setUTCHours(parseInt(closeAtTime, 10) - timeZoneAsHourOffset)
-  selectedDate
-
-getTimeZoneOffsetFromList = (list, timeZoneName) ->
-  index = list.indexOf(timeZoneName)
-  timeZoneAsHourOffset = parseInt(list.substring(index - 8, index - 5))
-
-hideValidateEmailErrorMessageFor = (field) ->
-  $(field).parent().removeClass("error")
-  $(field).parent().find(".email-validation-help").hide()
-
 hidePresenceErrorMessageFor = (field) ->
   unless $(field).val() == ""
     parentFor(field).removeClass("error")
@@ -396,10 +307,6 @@ hidePresenceErrorMessageFor = (field) ->
 
 parentFor = (field) ->
   $(field).closest('.control-group').parent().closest('.control-group')
-
-hideDateErrorMessageFor = (field) ->
-  $(field).closest('.motion-closing-inputs').removeClass("error")
-  row = $(field).closest('.motion-closing-inputs').find(".inline-help").hide()
 
 hideAllErrorMessages = () ->
   $(".inline-help").hide()
