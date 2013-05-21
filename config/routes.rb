@@ -4,6 +4,8 @@ Loomio::Application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions', 
                                     invitations: 'users/invitations' }
 
+  get :not_found, to: 'error_rainchecks#error_page'
+
   resources :group_requests, only: [:create, :new] do
     get :start_new_group, on: :member
   end
