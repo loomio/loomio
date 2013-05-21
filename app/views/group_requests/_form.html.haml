@@ -6,8 +6,7 @@
 
       %h2 Tell us about your group
       = f.input :name, label: "What is the name of your group/organisation?"
-      = f.input :group_core_purpose, label: "What is the core purpose of your group?"
-      = f.input :why_do_you_want, label: "Why does your group want to use Loomio?"
+      = f.input :description, label: "Tell us about your group and why you'd like to use Loomio."
       = f.input :sectors, label: false, as: :check_boxes,
                 collection: ['Company',
                               'Open source software project',
@@ -45,7 +44,6 @@
       %p You’ll be the coordinator for your group while you’re getting set up.
       = f.input :admin_name, label: "What is your name?"
       = f.input :admin_email, label: "What is your email address?"
-      = f.input "country_name", label: 'What country do you live in?'
 
       %h2 We’re trying something new...
       %p

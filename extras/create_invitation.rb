@@ -1,11 +1,13 @@
 class CreateInvitation
   def self.to_start_group(args)
     args[:to_be_admin] = true
+    args[:intent] = 'start_group'
     Invitation.create(args)
   end
 
   def self.to_join_group(args)
     args[:to_be_admin] = false
+    args[:intent] = 'join_group'
     Invitation.create(args)
   end
 

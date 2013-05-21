@@ -76,6 +76,12 @@ Loomio::Application.configure do
     config.action_mailer.delivery_method = :test
   end
 
+  # Email admin when server gets exceptions!
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Loomio STAGING Exception] ",
+    :sender_address => %{"Exception Notifier" <staging-exceptions@loomio.org>},
+    :exception_recipients => [ENV['EXCEPTION_RECIPIENT']]
+
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = {
     :host => 'loomio-staging.herokuapp.com',
