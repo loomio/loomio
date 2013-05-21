@@ -5,14 +5,21 @@
   %p
     = link_to("Click here to view this discussion", discussion_url(@discussion))
 
-  %p
-    Discussion:
-    = @discussion.title
-    %br
-    Group:
-    = @discussion.group.full_name
-    %br
-    Started by:
-    = @discussion.author.name
+  %table
+    %tr
+      %th
+        Discussion
+      %td
+        = @discussion.title
+    %tr
+      %th
+        Group
+      %td
+        = @discussion.group.full_name
+    %tr
+      %th
+        Started by
+      %td
+        = @discussion.author.name
 
   = render 'user_mailer/unsubscribe_link'

@@ -1,12 +1,18 @@
 = render '/application/mailer_doctype'
 %html
-  %p You were mentioned in a discussion titled #{@discussion.title}
+  %p
+    You were mentioned in a discussion:
+    = link_to "#{@discussion.title}", discussion_url(@discussion)
 
   %p #{@comment.author.name} said:
 
-  %p #{@comment.body}
+  %table
+    %tr
+      %td.comment
+        :plain
+          #{@rendered_comment_body}
 
   %p
-    = link_to "Click here to view this discussion", discussion_url(@discussion)
+    = link_to "see the comment on Loomio", discussion_url(@discussion)+"#comment-#{@comment.id}"
 
   = render 'unsubscribe_link'
