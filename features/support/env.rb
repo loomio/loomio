@@ -21,3 +21,8 @@ ActionController::Base.allow_rescue = false
 Cucumber::Rails::Database.javascript_strategy = :truncation
 Capybara.default_driver = :selenium
 Capybara.default_wait_time = 20
+
+Before do |scenario|
+  @feature_name = scenario.feature.title
+  @scenario_name = scenario.title
+end

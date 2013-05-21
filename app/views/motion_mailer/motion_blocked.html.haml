@@ -4,22 +4,28 @@
   %p
     = link_to("Click here to view this proposal", "#{discussion_url(@motion.discussion, proposal: @motion)}")
 
-  %p
-    Proposal:
-    = @motion.name
-    %br
-    Discussion:
-    = @discussion.title
-    %br
-    Group:
-    = @motion.group.name
+  %table
+    %tr
+      %th Proposal
+      %td= @motion.name
+    %tr
+      %th Discussion
+      %td= @discussion.title
+    %tr
+      %th Group
+      %td= @motion.group.name
+
     / - if @motion.has_close_date?
-    /   Closes in:
-    /   = time_ago_in_words(@motion.close_date + @motion.close_date.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z'))
-    %p
+    /   %tr
+    /     %th Closes in
+    /     %td= time_ago_in_words(@motion.close_date + @motion.close_date.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z'))
+
     - if @motion.description.present?
-      Details:
-      %br
-      = @motion.description
+      %tr
+        %th &nbsp;
+        %td &nbsp;
+      %tr
+        %th Details
+        %td= @motion.description
 
   = render 'user_mailer/unsubscribe_link'

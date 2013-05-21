@@ -1,0 +1,106 @@
+body{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+p{
+  word-wrap: break-word;
+  margin-bottom: 0.8em;
+  font-size: 14px;
+  color: #555;
+  max-width: 40em;
+}
+
+
+table{
+  max-width: 40em;
+  color: #555;
+  border-collapse: collapse;
+}
+th{
+  text-align: right;
+  vertical-align: top;
+  padding-right: 0.5em;
+}
+td{
+  .border-bottom{
+    border-bottom: 1px solid #999;
+  }
+}
+
+blockquote{
+  margin: 0 3em;
+  p {
+    max-width: 34em;
+  }
+}
+
+hr{
+  max-width: 40em;
+  margin-left: 0;
+}
+
+a{
+  color: #0088cc;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, h7{
+  display: block;
+  color: #555;
+  padding: 4px 0px;
+  max-width: 40em;
+}
+h1{
+  font-size: 1.4em;
+}
+h2{
+  font-size: 1.3em;
+}
+h3{
+  font-size: 1.2em;
+}
+h4{
+  font-size: 1.1em;
+  margin-bottom: 0;
+}
+h5{
+  font-size: 1.0em;
+}
+
+img{
+  max-width: 500px;
+}
+
+.proposal-position{
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-style: italic;
+}
+
+.comment{
+  font-size: 14px;
+  color: #555555;
+  padding-left: 25px;
+  max-width: 40em;
+  img {
+    max-width: 40em;
+  }
+}
+
+p.unsubscribe{
+  font-size: 12px;
+  border-top: 1px solid #CCCCCC;
+  padding-top: 5px;
+  max-width: 50em;
+  a {
+    text-decoration: underline;
+    color: #555555;
+  }
+}
+
+.agreed{ color: #90D490;}
+.abstained{ color: #F0BB67; }
+.disagreed{ color: #D49090}
+.blocked{ color: #dd0000 }

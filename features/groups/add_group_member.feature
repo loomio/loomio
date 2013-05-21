@@ -30,7 +30,7 @@ Feature: Member adds user to group
     Then they should be added to the group
     And they should receive an email with subject "You've been added to a group"
     When they open the email
-    And they click the first link in the email
+    And they click the third link in the email
     Then they should be taken to the group page
 
   Scenario: Admin invites non-existing Loomio user to group
