@@ -22,7 +22,7 @@ en:
     permission_to_invite: "You do not have permission to invite new members."
     position_not_updated: "Could not update position."
     settings_not_updated: "Your settings did not get updated."
-    group_request_already_verified: "Sorry! This invitation is invalid or has already been verified."
+    group_request_already_verified: "Sorry! The verification link you clicked has already been confirmed. If you haven't heard from us within 48 hours, get in touch: contact@loomio.org"
     group_request_already_accepted: "Sorry! This invitation is invalid or has already been accepted."
     group_request_invalid_token: "Sorry! This is an invalid token"
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
@@ -105,7 +105,7 @@ en:
     message: "<p>The topic is at the top of the page, with context underneath.</p><p>Discussion is on the left: to add a comment, write in the text box and click ‘Post comment’.</p><p>Decisions are on the right. If you think the group is ready to make a decision, you can make a proposal for the group to consider. Once a proposal has been created, the pie graph shows how the group feels about it. Click a decision button to state your position.</p>"
   group_help_text:
     header: "Welcome to your new group!"
-    message: "<p>This is the “group page”: on the left is a list of all your discussions,</p><p>When you want the group to discuss another topic, start a new discussion.</p><p>Over on the right is the list of group members. Click ‘Add new member’ when you’re ready to send out more invitations.</p>"
+    message: "<p>This is the <strong>group page</strong>. On the left is a list of all the discussions in this group.</p><p>When you want the group to discuss another topic, start a new discussion.</p>"
   dashboard_help_text:
     header: "Welcome to your Home page"
     message: "<p>The home page shows you all of the current discussions in all your groups.</p><p>To the right is a list of the groups you are a member of.</p><p>You can start a discussion on a new topic by clicking the “Start a discussion” button.</p>"
@@ -227,7 +227,7 @@ en:
   previous_decisions: "Previous decisions"
   see_previous_decisions: "See previous decisions"
   create_new_proposal: "Create new proposal"
-  empty_decision_list: "There is not currently an open proposal."
+  empty_decision_list: "Ready to make a decision? Anyone can start a proposal."
   empty_decision_index: "This group has not made any decisions yet."
   empty_discussion_list: "There is no activity in this discussion yet."
   empty_discussion_index: "There are no discussions in any of your groups."
@@ -324,23 +324,13 @@ en:
     invites_header: "Invite your group members"
     recipients: "Enter email addresses, seperated by commas:"
     invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
-    subject: "Your invitation to participate in the %{group} on Loomio"
-    body_editable: "I've just set up our group to make decisions onine using a new tool called Loomio. It will help us get stuff done without having to meet in person or drown in emails."
-    body_uneditable: |
-      Click the link below to accept the invitation:
+    subject: "Please join our new Loomio group, %{group}"
+    body_editable: |
+      Hi,
 
-      {invitation_link}
+      I’ve been looking into a new online tool for collaborative decision-making called Loomio that could be useful for our group. It looks like a great way to make decisions between meetings without a mountain of emails.
 
-      Loomio is a tool for collaborative decisions-making. You can see more about how Loomio works here: http://loomio.org/how-it-works. To get started, I've opened up a new decision:
-
-      %{motion_title}
-      %{motion_description}
-
-      Click the invitation link above to sign in and have your say!
-
-      Regards,
-      %{user}
-      %{group}
+      You can see how it works here: http://loomio.org/how-it-works/
 
     message_body: "Invitation message"
     invites_more_help: "You can customise the invitation your members receive, to explain what your group will be using Loomio for and why it’s worth their time to get involved."
@@ -413,7 +403,7 @@ en:
     group_settings_header: "Settings"
     group_settings_blurb: "Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term."
     group_more_help: "<p>The first question every new member will have is <em>what is this group for?</em></p><p>Think about the simplest way you can describe the group:<ul><li>What do you want to achieve together?</li><li>What types of decisions will you be making?</li><li>Who will be involved?</li></ul>"
-    discussion_header: "Set up your first discussion"
+    discussion_header: "Start a discussion"
     discussion_blurb: "Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term."
     discussion_more_help: "<p>Make sure you start with a clear discussion that your group members can easily engage with, so people can jump in and start participating straight away.</p><p>Is your group already having a discussion that you could shift to Loomio?</p>"
 
