@@ -29,13 +29,27 @@ describe MotionsController do
                                       :close_date => (Time.now + 3.hours).to_s },
                          :group_id => group.id }
       end
+
       it "redirects to discussion page" do
         post :create, @motion_args
         response.should redirect_to(discussion_url(discussion))
       end
+
       it "sets the flash success message" do
         post :create, @motion_args
         flash[:success].should =~ /Proposal successfully created./
+      end
+
+      context "where motion already exists" do
+        before { discussion.stub(current_motion: true) }
+        it "redirects to discussion page" do
+          post :create, @motion_args
+          response.should redirect_to(discussion_url(discussion))
+        end
+        it "sets the flash messeage" do
+          post :create, @motion_args
+          flash[:error].should == I18n.t(:"error.proposal_already_exists")
+        end
       end
     end
 
