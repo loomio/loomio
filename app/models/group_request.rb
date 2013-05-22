@@ -10,6 +10,7 @@ class GroupRequest < ActiveRecord::Base
   validates :name, presence: true, length: {maximum: 250}
   validates :description, presence: true
   validates :expected_size, presence: true
+  validates :cannot_contribute, presence: true
 
   serialize :sectors, Array
 

@@ -22,7 +22,8 @@
               %br
               %p As the coordinator, you’re responsible for setting up your Loomio group and inviting everyone in.
               %p As well as learning how to use a new piece of software, your group will be learning new processes for collaborating more effectively and making good decisions together.
-              %p Take a minute to think about how you can create an experience that immediately engages your new members, who will be seeing Loomio for the first time.
+              %p Take a minute to think about how you can create an experience that immediately engages your new members when they see Loomio for the first time.
+              %p It might be a good idea to talk to your group before you invite them.
               %p People will want to know why they’ve been invited, what’s expected of them, and why it’s worth their time to learn how to use a new tool.
 
               %h2 Ready to get started?
@@ -47,7 +48,7 @@
             .span5
               = f.input :viewable_by, :as => 'radio_buttons', :collection => {'Public - anyone with the link can see this group' => 'everyone', 'Members - only members of this group can see it' => 'members'}
               %br
-              = f.input :members_invitable_by, :as => "radio_buttons", :collection => {'All group members' => 'members', 'Coordinators only' => 'admins'}
+              = f.input :members_invitable_by, :as => "radio_buttons", :collection => {'All group members' => 'members', 'Coordinators only (you and anyone else you choose to make a group coordinator)' => 'admins'}, label: "Who can invite people to your group?"
 
         .tab-pane#discussion-tab
           .row
@@ -56,6 +57,7 @@
           .row
             .span5
               .control-group
+                %p This will be the first discussion your members see when they join Loomio.
                 = f.input :discussion_title, input_html: { class: 'validate-presence' }
                 .inline-help= t("group_setup_form.errors.discussion_title")
               .control-group
