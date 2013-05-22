@@ -258,17 +258,18 @@ Application.enableInlineEdition = ()->
         container.find('#description-input').height(description_height)
       event.preventDefault()
     )
-    $(".edit-discussion-description").click (event)->
+
+    $(".description-body").on('click', '.edit-discussion-description', (event)->
       $(".discussion-description-helper-text").toggle()
       $(".discussion-additional-info").toggle()
       event.preventDefault()
-    $("#cancel-add-description").click((event) ->
+      )
+    $("#cancel-add-description").click (event) ->
       $("#description-edit-form").toggle()
       $(".description-body").toggle()
       $(".discussion-description-helper-text").toggle()
       $(".discussion-additional-info").toggle()
       event.preventDefault()
-    )
 
 # Expand/shrink description text
 Application.seeMoreDescription = () ->
@@ -291,6 +292,7 @@ Application.validateForm = (form) ->
     )
   formValid = false unless Application.validateEmailsAndConfirm($(".validate-emails"))
   formValid = false unless Application.validateMotionCloseDate($(".motion-closing-inputs"))
+  alert('There is a problem with the form') unless formValid
   formValid
 
 validatePresence = (field) ->

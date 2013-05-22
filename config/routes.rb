@@ -58,7 +58,7 @@ Loomio::Application.routes.draw do
   end
 
   resources :discussions, except: [:edit] do
-    post :edit_description, :on => :member
+    post :update_description, :on => :member
     post :add_comment, :on => :member
     post :show_description_history, :on => :member
     get :new_proposal, :on => :member

@@ -6,6 +6,10 @@ Given /^there are many group requests$/ do
   @group_requests = [@unverified_group_request, @verified_group_request, @approved_group_request, @accepted_group_request]
 end
 
+When /^I visit the Group Requests page on the admin panel$/ do
+  visit admin_group_requests_path
+end
+
 When /^I click to see unverified group requests$/ do
   find("li.scope.unverified a").click
 end

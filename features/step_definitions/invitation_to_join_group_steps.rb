@@ -61,7 +61,6 @@ When(/^I sign up as a new user$/) do
 end
 
 When(/^I click the link to the sign in form$/) do
-  view_screenshot
   click_on 'click here to sign in'
 end
 

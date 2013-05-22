@@ -5,6 +5,9 @@ class CreateInvitation
     Invitation.create(args)
   end
 
+  # example of use:
+  #   args = { recipient_email: recipient_email, inviter: @user, group: @group }
+  #   CreateInvitation.to_join_group(args)
   def self.to_join_group(args)
     args[:to_be_admin] = false
     args[:intent] = 'join_group'

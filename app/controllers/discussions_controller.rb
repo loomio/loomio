@@ -114,13 +114,10 @@ class DiscussionsController < GroupBaseController
     end
   end
 
-  def edit_description
+  def update_description
     @discussion = Discussion.find(params[:id])
     @discussion.set_description!(params[:description], params[:description_uses_markdown], current_user)
-    @last_collaborator = User.find @discussion.originator.to_i
-    respond_to do |format|
-      format.js { render :action => 'update_version' }
-    end
+    redirect_to @discussion
   end
 
   def edit_title
@@ -153,12 +150,9 @@ class DiscussionsController < GroupBaseController
   def update_version
     @version = Version.find(params[:version_id])
     @version.reify.save!
-    @discussion = @version.item
-    @last_collaborator = User.find @discussion.originator.to_i
-    respond_to do |format|
-      format.js
-    end
+    redirect_to @version.reify()
   end
+
 
   private
 
