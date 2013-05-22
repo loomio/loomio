@@ -16,6 +16,7 @@ en:
     permission_to_invite: "You do not have permission to invite new members."
     position_not_updated: "Could not update position."
     settings_not_updated: "Your settings did not get updated."
+    proposal_already_exists: "There is already an open proposal in this discussion."
   alert:
     duplicate_email: "%{which_email} is already in the group."
   notice:
