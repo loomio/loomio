@@ -1,7 +1,11 @@
 @import "settings";
 @import "mixins";
 
+
 body.group_setup {
+  .nav-tabs > li > a:hover{
+    border-color: transparent;
+  }
   &.finish {
     .recipient-list {
       max_height: 300px;
@@ -34,6 +38,6 @@ body.group_setup {
         }
       }
     }
-    #wizard-tabs { min-height: 510px; }
+    /*#wizard-tabs { min-height: 510px; }*/
   }
 }

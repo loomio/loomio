@@ -28,10 +28,8 @@
 
               %h2 Ready to get started?
               %p
-                %a{class: "btn btn-large btn-info", style: "font-weight: bold", id: "start"}
+                %a{class: "btn btn-large btn-info", id: "start"}
                   Start setting up your group!
-              / %p.no-bottom-margin
-              /   %small Need extra help? <a href="#">Read more about our facilitation services here</a>.
         .tab-pane#group-tab
           %h1= t("group_setup_form.group_header")
           .row
@@ -48,7 +46,7 @@
             .span5
               = f.input :viewable_by, :as => 'radio_buttons', :collection => {'Public - anyone with the link can see this group' => 'everyone', 'Members - only members of this group can see it' => 'members'}
               %br
-              = f.input :members_invitable_by, :as => "radio_buttons", :collection => {'All group members' => 'members', 'Coordinators only (you and anyone else you choose to make a group coordinator)' => 'admins'}, label: "Who can invite people to your group?"
+              = f.input :members_invitable_by, :as => "radio_buttons", :collection => {'All group members' => 'members', 'Coordinators only' => 'admins'}, label: "Who can invite people to your group?"
 
         .tab-pane#discussion-tab
           .row

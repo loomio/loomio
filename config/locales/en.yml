@@ -22,7 +22,7 @@ en:
     permission_to_invite: "You do not have permission to invite new members."
     position_not_updated: "Could not update position."
     settings_not_updated: "Your settings did not get updated."
-    group_request_already_verified: "Sorry! This invitation is invalid or has already been verified."
+    group_request_already_verified: "Sorry! The verification link you clicked has already been confirmed. If you haven't heard from us within 48 hours, get in touch: contact@loomio.org"
     group_request_already_accepted: "Sorry! This invitation is invalid or has already been accepted."
     group_request_invalid_token: "Sorry! This is an invalid token"
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
@@ -328,9 +328,7 @@ en:
     body_editable: |
       Hi,
 
-      I’ve been looking into a new online tool for collaborative decision-making called Loomio that could be useful for our group.
-
-      It looks like a great way to make decisions between meetings without a mountain of emails.
+      I’ve been looking into a new online tool for collaborative decision-making called Loomio that could be useful for our group. It looks like a great way to make decisions between meetings without a mountain of emails.
 
       You can see how it works here: http://loomio.org/how-it-works/
 
