@@ -3,7 +3,7 @@ Feature: User requests to join group
   So that I can participate in discussions I'm interested in
   I want to be able to join groups
 
-  Scenario: User requests to join parent group
+  Scenario: User requests to join group
     Given I am logged in
     And a public group exists
     When I visit the group page

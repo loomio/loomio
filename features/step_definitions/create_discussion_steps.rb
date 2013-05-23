@@ -40,7 +40,7 @@ Then /^"(.*?)" should be emailed about the new discussion$/ do |arg1|
 end
 
 Then /^clicking the link in the email should take him to the discussion$/ do
-  click_first_link_in_email
+  step 'I click the third link in the email'
   page.should have_content(@discussion_title)
 end
 
@@ -57,6 +57,7 @@ When /^I see discussion markdown is enabled$/ do
 end
 
 When /^I enable markdown for the discussion description$/ do
+  find('#discussion-markdown-dropdown-link').click
   find('#discussion-markdown-dropdown-link').click
   find('#discussion-markdown-dropdown .enable-markdown-link').click
 end

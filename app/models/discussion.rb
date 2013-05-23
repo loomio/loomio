@@ -14,7 +14,7 @@ class Discussion < ActiveRecord::Base
   has_many :closed_motions,
     :class_name => 'Motion',
     :conditions => { phase: 'closed' },
-    :order => "close_date desc"
+    :order => "close_at desc"
   has_many :votes, through: :motions
   has_many :comments,  :as => :commentable, :dependent => :destroy
   has_many :users_with_comments, :through => :comments,
@@ -97,12 +97,12 @@ class Discussion < ActiveRecord::Base
     false
   end
 
-  def current_motion_close_date
-    current_motion.close_date
+  def current_motion_close_at
+    current_motion.close_at
   end
 
   def current_motion
-    motion = motions.where("phase = 'voting'").last if motions
+    motion = motions.where("phase = 'voting'").last
     if motion
       motion.close_if_expired
       motion if motion.voting?

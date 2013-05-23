@@ -1,0 +1,6 @@
+= render '/groups/title', group: @group
+= simple_form_for(@invite_people, url: group_invitations_path(@group), method: :post) do |f|
+  .row
+    .span5
+      = render 'groups/invite_users', form: f, group: @group
+      = f.submit 'Send invitations', :class => "btn btn-info btn-large run-validations", :data => { disable_with: 'Send invitations' }

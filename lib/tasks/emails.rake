@@ -13,7 +13,7 @@ namespace :emails do
     # that we don't lose any data (at the moment we do)
     # To test carefully for this, we should really write some unit tests for this rake task
     one_hour_window = (1.day.from_now) ... (1.day.from_now + 1.hour)
-    Motion.where(:close_date => one_hour_window).each do |motion|
+    Motion.where(:close_at => one_hour_window).each do |motion|
       Events::MotionClosingSoon.publish!(motion)
     end
   end

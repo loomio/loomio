@@ -11,7 +11,7 @@
         -if @discussion.live?
           =t "description_history.current"
         -else
-          =link_to t("description_history.restore"), update_version_discussion_path(@discussion.version), :method => :post, :class => "", :remote => true, :id => "revert-to-version", :data => { :disable_with => t("description_history.applying_changes") }
+          =link_to t("description_history.restore"), update_version_discussion_path(@discussion.version), :method => :post, :class => "", :id => "revert-to-version", :data => { :disable_with => t("description_history.applying_changes") }
   .revision-version
     %h3= t "description_history.subheader"
     %p

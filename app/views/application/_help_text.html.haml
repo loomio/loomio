@@ -1,6 +1,8 @@
-.help-notice.alert-message{ "data-alert" => "alert", :class => "alert alert-info" }
-  = link_to "×", path,
-    :class => "close dismiss-help-notice", "data-dismiss" => "alert"
-  = simple_format message
-  = link_to t(:click_to_dismiss), path,
-    :class => "dismiss-help-notice", "data-dismiss" => "alert"
+.help-notice.modal.hidden
+  .modal-header
+    %button.close.dismiss-help-notice{ href: args[:path] } &times;
+    %h2= args[:header]
+  .modal-body
+    = args[:message]
+  .modal-footer
+    = link_to t(:ok_got_it), args[:path], class: 'btn btn-info dismiss-help-notice'

@@ -4,7 +4,7 @@ class Membership < ActiveRecord::Base
 
   class MemberOfParentGroupValidator < ActiveModel::EachValidator
     def validate_each(object, attribute, value)
-      if object.group_parent.present? && !object.group_parent.users_and_invited_users.include?(value)
+      if object.group_parent.present? && !object.group_parent.users.include?(value)
         object.errors.add attribute, "must be a member of this group's parent"
       end
     end
@@ -68,6 +68,10 @@ class Membership < ActiveRecord::Base
       approve!
       Events::UserAddedToGroup.publish!(self)
     end
+  end
+
+  def admin?
+    access_level == 'admin'
   end
 
 

@@ -127,7 +127,9 @@ describe Discussion do
     end
     context "where motion close date has past" do
       before do
-        @motion.close_date = Time.now
+        @motion.close_at_date = (Date.today - 3.day).strftime("%d-%m-%Y")
+        @motion.close_at_time = "12:00"
+        @motion.close_at_time_zone = "Wellington"
         @motion.save
       end
       it "does not return motion" do
