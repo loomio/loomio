@@ -28,10 +28,6 @@ Then(/^there should be an invitation with the same token, group and inviter$/) d
   @invitation.token.should == @invitation_token
 end
 
-Then(/^the user account should be destroyed$/) do
-  expect { @invitee.reload }.to raise_error ActiveRecord::RecordNotFound
-end
-
 When(/^I load a devise invitation link$/) do
   @inviter = FactoryGirl.create :user
   @group = FactoryGirl.create :group
@@ -44,4 +40,20 @@ end
 
 Then(/^I should be redirected to the appropriate invitation path$/) do
   current_path.should == invitation_path(@invitation)
+end
+
+When(/^I destroy the old invited users$/) do
+  @invitee = FactoryGirl.create :user
+  @invitee.email = "dog@bones.com"
+  @invitee.name = "dog@bones.com"
+  @invitee.invitation_token = "partyrock"
+  @invitee.invitation_sent_at = "2013-05-23 00:45:36"
+  @invitee.invitation_accepted_at = nil
+  @invitee.save!
+
+  MigrateInvitations.destroy_old_users
+end
+
+Then(/^the users should be destroyed$/) do
+  expect { @invitee.reload }.to raise_error ActiveRecord::RecordNotFound
 end

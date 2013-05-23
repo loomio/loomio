@@ -7,7 +7,10 @@ Feature: Migrate devise invitable users to invitations
     Given there is a user account created by devise invitable
     When I migrate the devise invited users to invitations
     Then there should be an invitation with the same token, group and inviter
-    And the user account should be destroyed
+
+  Scenario: Destroy old invited users
+    When I destroy the old invited users
+    Then the users should be destroyed
 
   Scenario: Old invitation link redirects to new invitation path
     When I load a devise invitation link
