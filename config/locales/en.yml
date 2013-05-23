@@ -2,6 +2,11 @@ en:
   errors:
     messages:
       email: "Not a valid email address"
+
+  date:
+    formats:
+      datepicker: "%d-%m-%Y"
+
   error:
     access_denied: "Access denied."
     cant_join_subgroup: "You cannot join a sub-group if you are not a member of the parent group."
@@ -12,13 +17,22 @@ en:
     group_not_archived: "Group could not be archived."
     invalid_email: "%{which_email} was not invited. Please check the email address is correct."
     invalid_close_date: "Invalid close date, please check this date has not passed."
+    invalid_email: "Please enter at least one valid email address"
     image_upload_fail: "Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file."
     permission_to_invite: "You do not have permission to invite new members."
     position_not_updated: "Could not update position."
     settings_not_updated: "Your settings did not get updated."
+    group_request_already_verified: "Sorry! The verification link you clicked has already been confirmed. If you haven't heard from us within 48 hours, get in touch: contact@loomio.org"
+    group_request_already_accepted: "Sorry! This invitation is invalid or has already been accepted."
+    group_request_invalid_token: "Sorry! This is an invalid token"
+    group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
+    group_already_setup: "The group you are trying to setup already exists."
+    not_permitted_to_setup_group: "You do not have permission to setup this group."
     proposal_already_exists: "There is already an open proposal in this discussion."
   alert:
     duplicate_email: "%{which_email} is already in the group."
+    not_found: "%{item} not found\n\nIt may have been deleted."
+
   notice:
     admin_rights_removed: "%{which_user}'s admin rights have been removed."
     email_added: "%{which_email} has been added to the group."
@@ -88,9 +102,15 @@ en:
         one:   "1 year"
         other: "%{count} years"
 
-  discussion_help_text: "This is the Discussion page. The discussion topic is at the top of the page, followed by background information and context.\n\n Discussion is on the left, to add a comment, write in the text box and click ‘Post comment’.\n\n Decisions are on the right. If you think the group is ready to make a decision, you can make a proposal for the group to consider. If someone has already made a proposal, you can see how the group feels on the pie graph, and state your position underneath.\n\n"
-  group_help_text: "This is the Group page for %{group_name}.\n\n Here you can see this group’s discussions, a description of what the group is for, You can start a discussion on a new topic by clicking on the ‘Start a discussion’ button.\n\n"
-  dashboard_help_text: "Welcome to Loomio!\n This is the Home page, where you can see a list of the discussions going on in all of your groups. To the right is a list of the groups you are a member of. You can start a discussion on a new topic by clicking on the “Start a discussion” button.\n\n If you have any questions or feedback we’d love to hear from you: %{link}\n\n"
+  discussion_help_text:
+    header: "Welcome to your first discussion"
+    message: "<p>The topic is at the top of the page, with context underneath.</p><p>Discussion is on the left, decisions come up on the right. If you think the group is ready to make a decision, you can make a proposal for the group to consider.</p>"
+  group_help_text:
+    header: "Welcome to your new group!"
+    message: "<p>This is the <strong>group page</strong>. On the left is a list of all the discussions in this group.</p><p>When you want the group to discuss another topic, start a new discussion.</p>"
+  dashboard_help_text:
+    header: "Welcome to your Home page"
+    message: "<p>The home page shows you all of the current discussions in all the groups you are a member of.</p><p>You can start a discussion on a new topic by clicking the “Start a discussion” button.</p>"
 
   notifications:
     header: "Notifications"
@@ -121,14 +141,15 @@ en:
   sign_in_details: "to participate. You are currently logged out."
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
 
-  not_found: "%{item} not found"
-  not_found_details: "It may have been deleted."
   click_to_dismiss: "Click here to dismiss this message"
   generic_confirm: "Are you sure?"
 
   #
   # GROUP PAGE
   #
+  invite_people: "Invite people"
+  pending_invitations: 'Pending invitations'
+  edit_memberships: 'Edit memberships'
 
   add_new_member: "Add new member"
   invite_members_to_group: "Invite members to %{which_group}"
@@ -186,9 +207,6 @@ en:
   update_group: "Update group"
   updating_group: "Updating group"
 
-  group_not_found: "Group not found."
-  group_not_found_details: "This group might be private. If someone gave you this link, ask them to invite you to the group."
-
   start_a_discussion: "Start a discussion"
   group_description: "Group description"
 
@@ -211,7 +229,7 @@ en:
   previous_decisions: "Previous decisions"
   see_previous_decisions: "See previous decisions"
   create_new_proposal: "Create new proposal"
-  empty_decision_list: "There is not currently an open proposal."
+  empty_decision_list_html: "Ready to make a decision? <br> Anyone can start a proposal."
   empty_decision_index: "This group has not made any decisions yet."
   empty_discussion_list: "There is no activity in this discussion yet."
   empty_discussion_index: "There are no discussions in any of your groups."
@@ -301,6 +319,32 @@ en:
   unlock_not_received: "Didn't receive unlock instructions?"
 
   #
+  # INVITATIONS
+  #
+
+  invitation:
+    invites_header: "Invite your group members"
+    recipients: "Enter email addresses, seperated by commas:"
+    invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
+    subject: "Please join our new Loomio group, %{group}"
+    body_editable: |
+      Hi,
+
+      I’ve been looking into a new online tool for collaborative decision-making called Loomio that could be useful for our group. It looks like a great way to make decisions between meetings without a mountain of emails.
+
+      You can see how it works here: http://loomio.org/how-it-works/
+
+    message_body: "Invitation message"
+    invites_more_help: "You can customise the invitation your members receive, to explain what your group will be using Loomio for and why it’s worth their time to get involved."
+    invites_more_help1: "When you're ready, click 'finish setup' to send invitations and go to your brand new group!"
+    invites_more_help2: "<p>You can invite people to your group at any time.</p><p>You might want to invite all your members in right away, or you could start by inviting just the people you’re working most closely with.</p>"
+
+
+  verified_email:
+    subject: "Thanks for your request, you’re almost done!"
+  defered_email:
+    subject: "defered (placeholder)"
+  #
   # FORMS
   #
 
@@ -351,6 +395,32 @@ en:
     use_avatar_kind: "Use %{kind}"
     upload_new_image: "Upload a new image"
 
+  group_setup_form:
+    tabs:
+      intro: "Before you start"
+      group: "Set up your group"
+      discussion: "Start a discussion"
+      invites: "Invite your group"
+    group_header: "Set up your group"
+    group_settings_header: "Settings"
+    group_settings_blurb: "Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term."
+    group_more_help: "<p>The first question every new member will have is <em>what is this group for?</em></p><p>Think about the simplest way you can describe the group:<ul><li>What do you want to achieve together?</li><li>What types of decisions will you be making?</li><li>Who will be involved?</li></ul>"
+    discussion_header: "Start a discussion"
+    discussion_blurb: "Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term."
+    discussion_more_help: "<p>Make sure you start with a clear discussion that your group members can easily engage with, so people can jump in and start participating straight away.</p><p>Is your group already having a discussion that you could shift to Loomio?</p>"
+
+    errors:
+      group_name: "Please fill in the group title"
+      group_description: "Please fill in the group description"
+      discussion_title: "Please fill in the discussion title"
+      discussion_description: "Please fill in the discussion description"
+      motion_title: "Please fill in the motion title"
+      motion_description: "Please fill in the motion description"
+      motion_closing_inputs: "Please give a future close date"
+      admin_email: "Please fill in the an administrator email address"
+      invitees: "Please fill in the invited email addresse(s)"
+      message_body: "Please fill in the invite body"
+
   simple_form:
     labels:
       discussion:
@@ -368,6 +438,14 @@ en:
         email: "Email"
         password: "Password"
         language_preference: "Language"
+      group_setup:
+        group_name: "What is the name of your group?"
+        group_description: "Give a brief description of your group"
+        viewable_by: "Who can see this group?"
+        members_invitable_by: Who can invite members to this group?
+        discussion_name: "What’s the first topic you’d like to discuss with your group?"
+        discussion_description: "Introduce the topic and give enough information to get the conversation started:"
+
     placeholders:
       discussion:
         title: "What is the topic you'd like to discuss?"
@@ -375,9 +453,12 @@ en:
       motion:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
-
+      group_setup:
+        discussion_title: "What is the topic you would like to discuss?"
   helpers:
     submit:
+      group_setup:
+        create: "Finish setup"
       discussion:
         create: "Start discussion"
       motion:
@@ -415,8 +496,11 @@ en:
   message: "Message"
   name: "Name"
   new_activity: "New activity"
+  next: "Next"
   password: "Password"
+  prev: "Prev"
   options: "Options"
+  ok_got_it: "Okay, got it!"
   save: "Save"
   saving: "Saving"
   sending: "Sending"

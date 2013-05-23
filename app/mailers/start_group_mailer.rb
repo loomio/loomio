@@ -1,18 +1,18 @@
 class StartGroupMailer < ActionMailer::Base
   default from: "\"Loomio\" <contact@loomio.org>", :css => :email
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.group_invitation_mailer.invite_member.subject
-  #
-
-  def invite_admin_to_start_group(group_request)
+  def verification(group_request)
     @group_request = group_request
-    @group = group_request.group
     @token = group_request.token
 
     mail to: group_request.admin_email,
-         subject: "Invitation to join Loomio (#{@group.name})"
+         subject: t('verified_email.subject')
+  end
+
+  def defered(group_request)
+    @group_request = group_request
+
+    mail to: group_request.admin_email,
+         subject: t('defered_email.subject')
   end
 end

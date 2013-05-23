@@ -56,7 +56,7 @@ describe GroupsController do
         end
         it "viewing a group should redirect to private message page" do
           get :show, :id => @group.id
-          response.should render_template('private_or_not_found')
+          response.should render_template('application/display_error', message: I18n.t('error.group_private_or_not_found'))
         end
       end
     end
@@ -68,8 +68,6 @@ describe GroupsController do
       post :create, :group => @group.attributes
       assigns(:group).users.should include(@user)
       assigns(:group).admins.should include(@user)
-
-      assigns(:group).creator.should == @user
       response.should redirect_to(group_url(assigns(:group)))
     end
 
@@ -174,14 +172,15 @@ describe GroupsController do
     end
 
     describe "viewing an archived group" do
+      render_views
       before do
         @group = create(:group)
         @group.archived_at = Time.now
-        @group.save
+        @group.save!
       end
       it "should render the page not found template" do
         get :show, :id => @group.id
-        response.should render_template('application/not_found')
+        response.should render_template('application/display_error', message: I18n.t('error.group_private_or_not_found'))
       end
     end
 

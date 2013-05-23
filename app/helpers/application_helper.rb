@@ -48,6 +48,17 @@ module ApplicationHelper
     not signed_in?
   end
 
+  def populate_time_select
+    time_select = []
+    (0..23).each do |hour|
+      ampm = (hour < 12) ? 'am': 'pm'
+      hour = 12 if hour == 0
+      hour_padded = (hour < 10) ? "0#{hour}" : hour
+      time_select << ["#{hour_padded} #{ampm}", "#{hour_padded}:00"]
+    end
+    time_select
+  end
+
   def render_rich_text(text, md_boolean=true)
     if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
       text = " "
@@ -92,31 +103,22 @@ module ApplicationHelper
     end
   end
 
-  def dismiss_help_text_path
+  def help_text_args
+    args = {}
     case "#{controller_name} #{action_name}"
       when 'discussions show'
-        return dismiss_discussion_notice_for_user_path
+        args = { header: t("discussion_help_text.header"), message: t("discussion_help_text.message").html_safe, path: dismiss_discussion_notice_for_user_path }
       when 'groups show'
-        return dismiss_group_notice_for_user_path
+        args = { header: t("group_help_text.header"), message: t("group_help_text.message").html_safe, path: dismiss_group_notice_for_user_path }
       when 'dashboard show'
-        return dismiss_dashboard_notice_for_user_path
+        args = { header: t("dashboard_help_text.header"), message: t("dashboard_help_text.message").html_safe, path: dismiss_dashboard_notice_for_user_path }
     end
+    args
   end
 
-  def help_text(group)
-    case "#{controller_name} #{action_name}"
-      when 'discussions show'
-        t :discussion_help_text
-      when 'groups show'
-        t :group_help_text, :group_name => group.full_name
-      when 'dashboard show'
-        t :dashboard_help_text, :link => "#{link_to "contact@loomio.org", 'mailto:contact@loomio.org', :target =>'_blank'}\n\n"
-    end
-  end
-
-  def render_help_text(group)
+  def render_help_text
     unless help_text_dismissed?
-      render '/application/help_text', message: help_text(group), path: dismiss_help_text_path
+      render '/application/help_text', args: help_text_args
     end
   end
 end

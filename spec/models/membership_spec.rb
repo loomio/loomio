@@ -64,16 +64,16 @@ describe Membership do
 
     it "removes subgroup memberships (if existing)" do
       # Removes user from multiple subgroups
-      subgroup = build(:group, :creator => group.creator)
+      subgroup = build(:group )
       subgroup.parent = group
       subgroup.save!
       subgroup.add_member! user
-      subgroup2 = build(:group, :creator => group.creator)
+      subgroup2 = build(:group)
       subgroup2.parent = group
       subgroup2.save
       subgroup2.add_member! user
       # Does not try to remove user from subgroup if user is not a member
-      subgroup3 = build(:group, :creator => group.creator)
+      subgroup3 = build(:group)
       subgroup3.parent = group
       subgroup3.save
       @membership.destroy

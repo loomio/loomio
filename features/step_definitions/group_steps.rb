@@ -158,7 +158,7 @@ Then /^I should not see the list of invited users$/ do
 end
 
 Then /^I email the group members$/ do
-  click_on "Options"
+  find('#group-member-options').click()
   click_on "Email group members"
   fill_in "group_email_subject", :with => "Message to group"
   fill_in "group_email_body", :with => "Y'all are great"

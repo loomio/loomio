@@ -3,6 +3,7 @@ Feature: Admin deletes a discussion on Loomio
   So that I can delete any confusing or redundant discussions
   I want to be able to delete a discussion from my group
 
+  @javascript
   Scenario: Admin deletes the discussion from a group
     Given I am logged in
     And there is a discussion in a group I belong to

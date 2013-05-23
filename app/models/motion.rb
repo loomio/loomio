@@ -7,7 +7,7 @@ class Motion < ActiveRecord::Base
   has_many :did_not_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
 
-  validates_presence_of :name, :discussion, :author
+  validates_presence_of :name, :discussion, :author, :close_at
   validates_inclusion_of :phase, in: PHASES
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
     allow_blank: true
@@ -21,16 +21,17 @@ class Motion < ActiveRecord::Base
   delegate :users, :full_name, :to => :group, :prefix => :group
   delegate :email_new_motion?, to: :group, prefix: :group
 
-  after_create :initialize_discussion
-  after_create :fire_new_motion_event
+  before_validation :set_close_at
   before_save :format_discussion_url
   after_save :update_counter_cache
+  after_create :initialize_discussion
+  after_create :fire_new_motion_event
   after_destroy :update_counter_cache
 
   attr_accessor :create_discussion
 
-  attr_accessible :name, :description, :discussion_url
-  attr_accessible :close_date, :phase, :discussion_id, :outcome
+  attr_accessible :name, :description, :discussion_url, :discussion_id
+  attr_accessible :close_at_date, :close_at_time, :close_at_time_zone, :phase,  :outcome
 
   include AASM
   aasm :column => :phase do
@@ -42,8 +43,8 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  scope :voting_sorted, voting.order('close_date ASC')
-  scope :closed_sorted, closed.order('close_date DESC')
+  scope :voting_sorted, voting.order('close_at ASC')
+  scope :closed_sorted, closed.order('close_at DESC')
 
   scope :that_user_has_voted_on, lambda {|user|
     joins(:votes).where("votes.user_id = ?", user.id)
@@ -110,20 +111,12 @@ class Motion < ActiveRecord::Base
   # motion is closed by user
   def close_motion!(user=nil)
     close!
-    save
+    save!
     fire_motion_closed_event(user)
   end
 
   def close_if_expired
-    close_motion! if (voting? && close_date && close_date <= Time.now)
-  end
-
-  def set_close_date!(date, editor=nil)
-    if date > Time.now
-      self.close_date = date
-      save
-      fire_motion_close_date_edited_event(editor)
-    end
+    close_motion! if (voting? && close_at && close_at <= Time.now)
   end
 
   def set_outcome!(str)
@@ -134,7 +127,7 @@ class Motion < ActiveRecord::Base
   end
 
   def has_close_date?
-    close_date != nil
+    close_at != nil
   end
 
   def no_vote_count
@@ -195,7 +188,20 @@ class Motion < ActiveRecord::Base
     created_at
   end
 
+  def set_default_close_at_date_and_time
+    self.close_at_date ||= 3.days.from_now.to_date
+    self.close_at_time ||= Time.now.strftime("%H:00")
+  end
+
+
   private
+
+    def set_close_at
+      date_time_zone_format = '%Y-%m-%d %H:%M %Z'
+      tz_offset = ActiveSupport::TimeZone[close_at_time_zone].formatted_offset
+      date_time_zone_string = "#{close_at_date.to_s} #{close_at_time} #{tz_offset}"
+      self.close_at = DateTime.strptime(date_time_zone_string, date_time_zone_format)
+    end
 
     def fire_new_motion_event
       Events::NewMotion.publish!(self)
@@ -205,13 +211,9 @@ class Motion < ActiveRecord::Base
       Events::MotionClosed.publish!(self, user)
     end
 
-    def fire_motion_close_date_edited_event(user)
-      Events::MotionCloseDateEdited.publish!(self, user)
-    end
-
     def before_close
       store_users_that_didnt_vote
-      self.close_date = Time.now
+      self.close_at = Time.now
     end
 
     def store_users_that_didnt_vote

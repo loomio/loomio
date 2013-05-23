@@ -3,7 +3,7 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require jqplot.1.0.0b2_r792
+ *= require lib/jquery.jqplot.min
  *= require lib/jquery.atwho
  *= require main
  *= require icons
@@ -17,4 +17,7 @@
  *= require votes
  *= require users
  *= require memberships
+ *= require invitations
+ *= require group_setup
+ *= require group_requests
 */

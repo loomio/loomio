@@ -12,7 +12,7 @@ Then /^I should see the announcement$/ do
 end
 
 When /^I dismiss the announcement$/ do
-  click_on 'Click here to dismiss this message'
+  find('.close.dismiss-announcement').click()
 end
 
 When /^I reload the page$/ do

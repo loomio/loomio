@@ -116,7 +116,7 @@
 
 #group-form {
   form {
-    .inputError {
+    .validate-length {
       display: inline-block;
       @include ie7-inline-block();
     }
@@ -334,7 +334,7 @@ input#user_email{
 }
 
 /**** Private group form ****/
-#private-message {
+#permission-message {
   color: $mid-grey;
   text-align: center;
   width: 50%;
