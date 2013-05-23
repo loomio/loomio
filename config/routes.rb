@@ -96,6 +96,7 @@ Loomio::Application.routes.draw do
     post :unlike, on: :member
   end
 
+  get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
   match "/settings", :to => "users#settings", :as => :user_settings
   match 'email_preferences', :to => "users/email_preferences#edit", :as => :email_preferences, :via => :get
   match 'email_preferences', :to => "users/email_preferences#update", :as => :update_email_preferences, :via => :put
