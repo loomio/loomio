@@ -61,7 +61,7 @@ describe GroupMailer do
 
   describe "#group_email" do
     before :all do
-      @group = stub_model Group, :name => "Blue"
+      @group = stub_model Group, :name => "Blue", :admin_email => "goodbye@world.com"
       @sender = stub_model User, :name => "Marvin"
       @recipient = stub_model User, :email => "hello@world.com"
       @subject = "meeby"

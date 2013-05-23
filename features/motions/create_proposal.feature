@@ -7,10 +7,13 @@ Feature: User creates proposal
     Given I am logged in
     And I am a member of a group
     And there is a discussion in the group
+    And my time zone setting has been set
 
   Scenario: Group member creates proposal
     When I visit the discussion page
     And I click "Create new proposal"
+    Then I should see the create proposal page
+    And the time zone should match my time zone setting
     And fill in the proposal details and submit the form
     Then a new proposal is created
     And I should see the proposal details

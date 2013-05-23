@@ -1,3 +1,15 @@
+Given(/^"(.*?)" has been invited to the group but has not accepted$/) do |recipient_email|
+  args = { recipient_email: recipient_email, inviter: @user, group: @group }
+  CreateInvitation.to_join_group(args)
+end
+
+Then(/^I should not see "(.*?)" in the menu that pops up$/) do |recipient_email|
+  wait_until { find("#at-view", visible: true) }
+  within('#at-view') do
+    page.should_not have_content(recipient_email)
+  end
+end
+
 When /^I am adding a comment and type in "(.*?)"$/ do |arg1|
   fill_in 'new-comment', with: arg1
 end

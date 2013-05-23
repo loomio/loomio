@@ -6,12 +6,11 @@ class GroupsController < GroupBaseController
   after_filter :store_location, :only => :show
 
   rescue_from ActiveRecord::RecordNotFound do
-    render 'application/not_found', locals: { item: t(:group) }
+    render('application/display_error', message: t('error.not_found', item: t(:group)))
   end
 
   def create
     @group = Group.new(params[:group])
-    @group.creator = current_user
     if @group.save
       @group.add_admin! current_user
       @group.create_welcome_loomio
@@ -27,7 +26,6 @@ class GroupsController < GroupBaseController
     @subgroups = @group.subgroups.accessible_by(current_ability, :show)
     @discussions = Queries::VisibleDiscussions.for(@group, current_user)
     @discussion = Discussion.new(group_id: @group.id)
-    @invited_users = @group.invited_users
     assign_meta_data
   end
 

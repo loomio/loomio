@@ -3,6 +3,7 @@ Feature: User sees the number of new comments on a discussion
   So that I can know if a discussion has had new comments
   I want to know how many new comments a discussion has had since I last viewed it
 
+  @javascript
   Scenario: User visits dashboard and sees new comments on a discussion they've never read before
     Given I am logged in
     And there is a discussion in a group I belong to
@@ -11,6 +12,7 @@ Feature: User sees the number of new comments on a discussion
     When I visit the dashboard
     Then I should see the number of comments the discussion has
 
+  @javascript
   Scenario: User visits dashboard and sees new comments on a discussion they've read before
     Given I am logged in
     And there is a discussion in a group I belong to
@@ -19,6 +21,7 @@ Feature: User sees the number of new comments on a discussion
     When I visit the dashboard
     Then I should see the number of new comments the discussion has
 
+  @javascript
   Scenario: User visits group page and sees new comments on a discussion they've never read before
     Given I am logged in
     And there is a discussion in a group I belong to
@@ -27,6 +30,7 @@ Feature: User sees the number of new comments on a discussion
     When I visit the group page
     Then I should see the number of comments the discussion has
 
+  @javascript
   Scenario: User visits group page and sees new comments on a discussion they've read before
     Given I am logged in
     And there is a discussion in a group I belong to

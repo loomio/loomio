@@ -7,17 +7,15 @@
     -next unless @activity[group.full_name].present?
     - @motions = @activity[group.full_name][:motions]
     - @discussions = @activity[group.full_name][:discussions]
-
     %h2=group.full_name
     -if @motions.present?
       %h4 Decisions
       %p
         -@motions.each do |motion|
           =link_to(motion.name, motion_url(motion))
-          -if motion.close_date.present?
-            \- closes in #{time_ago_in_words(motion.close_date)}
+          -if motion.close_at.present?
+            \- closes in #{time_ago_in_words(motion.close_at)}
           %br
-
     -if @discussions.present?
       %h4 Discussions
       %p

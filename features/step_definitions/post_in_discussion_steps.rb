@@ -46,11 +46,11 @@ Then /^there should be an anchor for the comment$/ do
 end
 
 Then /^I should see a permalink to the anchor for that comment$/ do
-  find('.activity-item-time a')[:href].should match("#comment-2")
+  find('.activity-item-time a[href="#comment-2"]').should be_present
 end
 
 Then /^the comment should autolink links$/ do
-  page.should have_link('xkcd.org', {:href => 'http://xkcd.org', :target => '_blank'})
+  page.should have_link('xkcd.org', {:href => 'http://xkcd.org'})
 end
 
 Then /^the comment should include appropriate new lines$/ do

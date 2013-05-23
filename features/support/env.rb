@@ -9,6 +9,7 @@ require 'spork'
 
 require 'email_spec' # add this line if you use spork
 require 'email_spec/cucumber'
+#require 'capybara-screenshot/cucumber'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
@@ -19,7 +20,7 @@ ENV["RAILS_ENV"] ||= test
 Capybara.default_selector = :css
 ActionController::Base.allow_rescue = false
 Cucumber::Rails::Database.javascript_strategy = :truncation
-Capybara.default_driver = :selenium
+Capybara.default_driver = :rack_test
 Capybara.default_wait_time = 20
 
 Before do |scenario|

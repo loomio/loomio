@@ -1,48 +1,48 @@
  #The following methods are used to provide client side validation for
  #- character count
- #- presence required
  #- date validation specific for motion-form
 
-$ ->
-  $(".validate-presence").change(() ->
-    if $(this).val() != ""
-        $(this).parent().removeClass("error")
-        $(this).parent().find(".presence-error-message").hide()
-  )
-$ ->
-  $(".validate-presence").keyup(() ->
-    $(this).parent().removeClass("error")
-    $(this).parent().find(".presence-error-message").hide()
-  )
+$ -> # Remove error class on field if not empty
+  $(".validate-presence").change () ->
+    hidePresenceErrorMessageFor($(this))
 
-$ ->
-  $(".presence-error-message").hide()
-  $(".date-error-message").hide()
+$ -> # Remove error class on field if not empty
+  $(".validate-presence").keyup () ->
+    hidePresenceErrorMessageFor($(this))
 
-  $(".run-validations").click((event, ui) ->
+$ -> # Run validations and prevent default if false
+  $(".run-validations").click (event, ui) ->
     form = $(this).parents("form")
-    form.find(".validate-presence").each((index, element) ->
-      if $(element).is(":visible") && $(element).val() == ""
-        parent = $(element).parent()
-        parent.addClass("error")
-        parent.find(".presence-error-message").show()
+    unless Application.validateForm(form)
+      event.preventDefault()
+
+Application.validateForm = (form) ->
+  formValid = true
+  form.find(".validate-presence").each((index, field) ->
+    formValid = false unless validatePresence(field)
+    return
     )
+  formValid = false unless Application.validateEmailsAndConfirm($(".validate-emails"))
+  formValid = false unless Application.validateMotionCloseDate($(".motion-closing-inputs"))
+  alert('There is a problem with the form') unless formValid
+  formValid
 
-    runCustomValidations(form)
+validatePresence = (field) ->
+  if $(field).is(":visible") && $(field).val() == ""
+    parentFor(field).addClass("error")
+    parentFor(field).find(".inline-help").show()
+    return false
+  true
 
-    form.find(".control-group").each((index, group) ->
-      if $(group).hasClass("error")
-        event.preventDefault()
-    )
-  )
+hidePresenceErrorMessageFor = (field) ->
+  unless $(field).val() == ""
+    parentFor(field).removeClass("error")
+    parentFor(field).find(".inline-help").hide()
 
-  runCustomValidations = (form)->
-    motionCloseDateValidation(form)
+parentFor = (field) ->
+  $(field).closest('.control-group').parent().closest('.control-group')
 
-  motionCloseDateValidation = (form)->
-    if form.parents("#motion-form").length > 0 || $('#edit-close-date').length > 0
-      time_now = new Date()
-      selected_date = new Date($("#motion_close_date").val())
-      if selected_date <= time_now
-        $(".validate-motion-close-date").parent().addClass("error")
-        $(".date-error-message").show()
+hideAllErrorMessages = () ->
+  $(".inline-help").hide()
+  $(".email-validation-help").hide()
+

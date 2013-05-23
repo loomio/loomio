@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
     redirect_to :back
   end
 
+  def display_error
+    @message = params[:message]
+  end
+
+
   protected
 
   def set_locale

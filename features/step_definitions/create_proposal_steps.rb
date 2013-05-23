@@ -6,6 +6,10 @@ When /^fill in the proposal details and submit the form$/ do
   click_on 'proposal-submit'
 end
 
+Then /^I should see the create proposal page$/ do
+  page.should have_css("#motion-form")
+end
+
 Then /^clicking the link in the email should take him to the proposal$/ do
   click_first_link_in_email
   page.should have_content(@proposal_name)
@@ -25,5 +29,4 @@ Then /^I should see the proposal details$/ do
   proposal_description = @proposal_description.length > 20 ? @proposal_description[0..19] : @proposal_description
   find('.motion-title').should have_content(@proposal_name)
   find('.description').should have_content(proposal_description)
-  find('.pie').text.blank?.should == false
 end

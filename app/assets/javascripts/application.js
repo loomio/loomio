@@ -8,8 +8,8 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require jqplot.1.0.0b2_r792
-//= require lib/jqplot.pieRenderer.min
+//= require jqplot
+//= require jqplot/plugins/pieRenderer
 //= require lib/jquery.tokeninput
 //= require lib/jquery.mousewheel
 //= require lib/jquery.placeholder
@@ -24,6 +24,8 @@
 //= require bootstrap
 //= require bootstrap-custom
 //= require main
+//= require invitations
+//= require group_setup
 //= require validations
 //= require groups
 //= require discussions

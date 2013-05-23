@@ -8,8 +8,7 @@ class GroupMailer < ActionMailer::Base
     @admins = @group.admins.map(&:email)
     mail( :to => @admins,
           :reply_to => @group.admin_email,
-          :subject => "#{email_subject_prefix(@group.full_name)} New membership" +
-      " request from #{@user.name}")
+          :subject => "#{email_subject_prefix(@group.full_name)} New membership request from #{@user.name}")
   end
 
   def group_email(group, sender, subject, message, recipient)

@@ -7,20 +7,5 @@
         = link_to truncate(user.name, :length => name_length, :omission => '...'), user_path(user),
           class: 'user-name'
     .admin-controls
-      - membership = user.group_membership(group)
-      - if (can? :edit, group and current_user.is_group_admin?(group))
-        =link_to "×", membership, method: :delete, class: 'close',
-          :data => { :confirm => t(:confirm_remove_user, which_user: user.name) }
-        - if user.is_group_admin?(group)
-          = link_to t(:remove_admin), "#", 'data-title' => t(:remove_admin),
-              'data-body' => t(:confirm_remove_admin, which_user: user.name),
-              'data-confirm-path' => remove_admin_membership_path(membership),
-              'data-method-type' => 'post', class: 'confirm-dialog', id: 'remove admin'
-        - else
-          = link_to t(:make_admin), "#", 'data-title' => t(:make_admin),
-              'data-body' => t(:confirm_make_admin, which_user: user.name),
-              'data-confirm-path' =>  make_admin_membership_path(membership), 'data-method-type' => 'post',
-              class: 'confirm-dialog', id: 'make admin'
-      - else
-        - if user.is_group_admin?(group)
-          = t :group_admin
+      - if user.is_group_admin?(group)
+        = t :group_admin

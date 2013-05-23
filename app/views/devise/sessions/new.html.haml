@@ -11,6 +11,7 @@
         .span1 &nbsp;
         .span4
           = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+            = hidden_field_tag :javascript_time_zone, 'undefined'
             = f.label :email, t(:email)
             = f.email_field :email, autofocus: true
             = f.label :password, t(:password)

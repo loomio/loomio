@@ -50,32 +50,6 @@ $ ->
         e.preventDefault()
     )
 
-# edit group Application
-# description.enableInlineEdition = ()->
-$ ->
-  if $("body.groups.show").length > 0
-    $(".edit-description").click((event) ->
-      container = $(this).parents(".description-container")
-      description_height = container.find(".model-description").height()
-      container.find(".description-body").toggle()
-      container.find("#description-edit-form").toggle()
-      if description_height > 90
-        container.find('#description-input').height(description_height)
-      event.preventDefault()
-    )
-    $(".edit-discussion-description").click (event)->
-      $(".discussion-description-helper-text").toggle()
-      $(".discussion-additional-info").toggle()
-      event.preventDefault()
-    $("#cancel-add-description").click((event) ->
-      $("#description-edit-form").toggle()
-      $(".description-body").toggle()
-      $(".discussion-description-helper-text").toggle()
-      $(".discussion-additional-info").toggle()
-      event.preventDefault()
-    )
-
-
 # adds bootstrap popovers to group activity indicators
 activate_discussions_tooltips = () ->
   $(".unread-group-activity").tooltip
