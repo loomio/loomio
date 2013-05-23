@@ -60,6 +60,22 @@ describe GroupRequest do
     before do
       @group_request.save!
       @group_request.verify!
+
+      #Group.stub :new => group
+      #group.stub :name=
+      #group.stub :description=
+      #group.stub :viewable_by=
+      #group.stub :parent
+      #group.stub :creator=
+      #group.stub :creator => stub(:user)
+      #group.stub :cannot_contribute=
+      #group.stub :max_size=
+      #group.stub :distribution_metric=
+      #group.stub :sectors_metric=
+      #group.stub :other_sectors_metric=
+      #group.stub :create_welcome_loomio
+      #group.stub :save!
+      #StartGroupMailer.stub_chain(:invite_admin_to_start_group, :deliver)
     end
 
     it "should set the status to defered" do

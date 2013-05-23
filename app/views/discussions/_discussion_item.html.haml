@@ -5,4 +5,4 @@
       =link_to item.actor.name, user_path(item.actor), class: "user-name"
   %span.activity-item-header= item.header
   %span.activity-item-content.word-break= item.body
-  .activity-item-time= time_ago_in_words(item.time) + " " + t(:ago)
+  .activity-item-time= t(:ago, :quantity_of_time => time_ago_in_words(item.time))

@@ -107,7 +107,7 @@ es:
     motion_blocked: "bloqueó la propuesta"
 
   edit_discussion_context: "Editar la discusión información"
-  request_new_group: "Solicitar Nuevo grupo"
+  request_new_group: "Solicitar nuevo grupo"
   request_new_group_details: "o espera hasta que seas invitado a uno."
   empty_notifications: "Todavía no tienes notificaciones."
   see_all_notifications: "Ver todas tus notificaciones"
@@ -388,7 +388,7 @@ es:
   # COMMON WORDS
   #
 
-  ago: "hace"
+  ago: "hace %{quantity_of_time}"
   approve: "Aprobar"
   back: "Atrás"
   by: "Por"

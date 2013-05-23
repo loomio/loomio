@@ -28,6 +28,8 @@ en:
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
     not_permitted_to_setup_group: "You do not have permission to setup this group."
+    proposal_already_exists: "There is already an open proposal in this discussion."
+  alert:
     duplicate_email: "%{which_email} is already in the group."
     not_found: "%{item} not found\n\nIt may have been deleted."
 
@@ -469,7 +471,7 @@ en:
   # COMMON WORDS
   #
 
-  ago: "ago"
+  ago: "%{quantity_of_time} ago"
   approve: "Approve"
   back: "Back"
   by: "By"

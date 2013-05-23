@@ -5,20 +5,21 @@ class MotionsController < GroupBaseController
   before_filter :check_group_read_permissions, :only => :show
 
   def create
-    if Discussion.find(params[:motion][:discussion_id]).current_motion
+    @discussion = Discussion.find(params[:motion][:discussion_id])
+    if @discussion.current_motion
       redirect_to @discussion
-      flash[:notice] = "A proposal has already been created"
+      flash[:error] = t(:"error.proposal_already_exists")
     else
       @motion = current_user.authored_motions.new(params[:motion])
       @group = GroupDecorator.new(@motion.group)
       authorize! :create, @motion
-    end
-    if @motion.save
-      flash[:success] = t("success.proposal_created")
-      redirect_to discussion_path(@motion.discussion)
-    else
-      flash[:warning] = t("warning.proposal_not_created")
-      redirect_to :back
+      if @motion.save
+        flash[:success] = t("success.proposal_created")
+        redirect_to discussion_path(@discussion)
+      else
+        flash[:warning] = t("warning.proposal_not_created")
+        render action: :new
+      end
     end
   end
 

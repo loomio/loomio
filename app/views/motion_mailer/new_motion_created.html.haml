@@ -3,24 +3,29 @@
   %p A new proposal was created in a Loomio group that you belong to.
   %p
     = link_to("Click here to view this proposal", "#{discussion_url(@motion.discussion, proposal: @motion)}")
-  %p
-    Proposal:
-    = @motion.name
-    %br
-    Group:
-    = @motion.group.name
-    %br
-    Author:
-    = @motion.author.name
-    %br
-    - if @motion.has_close_date?
-      Closes in:
-      = time_ago_in_words(@motion.close_at) + " (" + @motion.close_at.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
 
-    %p
+  %table
+    %tr
+      %th Proposal
+      %td= @motion.name
+    %tr
+      %th Group
+      %td= @motion.group.name
+    %tr
+      %th Author
+      %td= @motion.author.name
+
+    - if @motion.has_close_date?
+      %tr
+        %th Closes&nbsp;in
+        %td= time_ago_in_words(@motion.close_date) + " (" + @motion.close_date.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
+
     - if @motion.description.present?
-      Details:
-      %br
-      = @motion.description
+      %tr
+        %th &nbsp;
+        %td &nbsp;
+      %tr
+        %th Details
+        %td= @motion.description
 
   = render 'user_mailer/unsubscribe_link'

@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130520091855) do
+=======
+ActiveRecord::Schema.define(:version => 20130515123316) do
+>>>>>>> master
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -45,6 +49,25 @@ ActiveRecord::Schema.define(:version => 20130520091855) do
     t.datetime "ends_at",                      :null => false
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "campaign_signups", :force => true do |t|
+    t.integer  "campaign_id"
+    t.string   "name"
+    t.string   "email"
+    t.boolean  "spam"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "campaign_signups", ["campaign_id"], :name => "index_campaign_signups_on_campaign_id"
+
+  create_table "campaigns", :force => true do |t|
+    t.string   "showcase_url"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "name",          :null => false
+    t.string   "manager_email", :null => false
   end
 
   create_table "comment_votes", :force => true do |t|
@@ -172,6 +195,7 @@ ActiveRecord::Schema.define(:version => 20130520091855) do
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
 
+<<<<<<< HEAD
   create_table "group_setups", :force => true do |t|
     t.integer  "group_id"
     t.string   "group_name"
@@ -193,6 +217,8 @@ ActiveRecord::Schema.define(:version => 20130520091855) do
     t.datetime "updated_at",                                    :null => false
   end
 
+=======
+>>>>>>> master
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -361,11 +387,5 @@ ActiveRecord::Schema.define(:version => 20130520091855) do
 
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
-
-  create_table "woc_options", :force => true do |t|
-    t.string   "example_discussion_url"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
-  end
 
 end
