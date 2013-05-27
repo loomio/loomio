@@ -7,17 +7,19 @@ Feature: Loomio admin views group requests
     Given I am a Loomio super-admin
     And I am logged in
     And there are many group requests
-
-  Scenario: Loomio admin views group requests
     When I visit the Group Requests page on the admin panel
-    Then I should only see the unapproved group requests
+
+  Scenario: Loomio admin views verified group requests
+    Then I should only see the verified group requests
+
+  Scenario: Loomio admin views unverified group requests
+    When I click to see unverified group requests
+    Then I should only see the unverified group requests
 
   Scenario: Loomio admin views approved group requests
-    When I visit the Group Requests page on the admin panel
-    And I click to see approved group requests
+    When I click to see approved group requests
     Then I should only see the approved group requests
 
   Scenario: Loomio admin views accepted group requests
-    When I visit the Group Requests page on the admin panel
-    And I click to see accepted group requests
+    When I click to see accepted group requests
     Then I should only see the accepted group requests

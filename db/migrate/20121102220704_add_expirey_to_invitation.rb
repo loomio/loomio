@@ -10,7 +10,7 @@ class AddExpireyToInvitation < ActiveRecord::Migration
     Invitation.reset_column_information
 
     Invitation.all.each do |invitation|
-      if User.find_by_email(invitation.recipient_email)
+      if User.find_by_email(invitation.admin_email)
         invitation.expirey = expired_date
         invitation.save(:validate => false)
       end

@@ -6,7 +6,7 @@
           = form_for motion, :url => edit_outcome_motion_path(motion.id) do |f|
             = f.hidden_field :id
             .control-group
-              = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', :placeholder => t(:outcome_placeholder)
+              = f.text_area :outcome, id: 'outcome-input', class: 'validate-length limit-250', :placeholder => t(:outcome_placeholder)
               .character-counter
             .save-button.clearfix
               = f.submit t(:save), class: 'btn btn-mini run-validations', id: 'add-outcome-submit'
@@ -15,7 +15,7 @@
           = form_for motion, :url => edit_outcome_motion_path(motion.id) do |f|
             = f.hidden_field :id
             .control-group
-              = f.text_area :outcome, id: 'outcome-input', class: 'inputError limit-250', :placeholder => t(:outcome_placeholder)
+              = f.text_area :outcome, id: 'outcome-input', class: 'validate-length limit-250', :placeholder => t(:outcome_placeholder)
               .character-counter
             .save-button.clearfix
               = f.submit "Save", class: 'btn btn-mini run-validations', id: 'add-outcome-submit'

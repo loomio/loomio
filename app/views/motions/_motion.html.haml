@@ -8,9 +8,9 @@
       #closing-info
         - if motion.has_close_date?
           - if motion.voting?
-            = t(:proposal_closing_when, when: time_ago_in_words(motion.close_date))
+            = t(:proposal_closing_when, when: time_ago_in_words(motion.close_at))
           - else
-            %span= t(:proposal_closed_when, when: time_ago_in_words(motion.close_date))
+            %span= t(:proposal_closed_when, when: time_ago_in_words(motion.close_at))
         - else
           No close date
       .proposed-by

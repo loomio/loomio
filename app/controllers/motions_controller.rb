@@ -11,7 +11,6 @@ class MotionsController < GroupBaseController
       flash[:error] = t(:"error.proposal_already_exists")
     else
       @motion = current_user.authored_motions.new(params[:motion])
-      @motion.close_date = params[:motion][:close_date].to_datetime
       @group = GroupDecorator.new(@motion.group)
       authorize! :create, @motion
       if @motion.save
@@ -75,13 +74,18 @@ class MotionsController < GroupBaseController
   end
 
   def edit_close_date
+    safe_values = {}
     motion = Motion.find(params[:id])
-    if motion.set_close_date!((params[:motion][:close_date]).to_datetime, current_user)
+    safe_values[:close_at_date] = params[:motion][:close_at_date]
+    safe_values[:close_at_time] = params[:motion][:close_at_time]
+
+    if motion.update_attributes(safe_values)
+      Events::MotionCloseDateEdited.publish!(motion, current_user)
       flash[:success] = t("success.close_date_changed")
     else
       flash[:error] = t("error.invalid_close_date")
     end
-    redirect_to discussion_url(motion.discussion)
+    redirect_to discussion_url(@motion.discussion)
   end
 
   def get_and_clear_new_activity

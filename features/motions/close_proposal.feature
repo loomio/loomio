@@ -3,6 +3,7 @@ Feature: Admin/author closes a proposal
   So that we can move the proposal into action or create another proposal
   I want to be able to close a proposal
 
+  @javascript
   Scenario: Admin closes a proposal
     Given I am logged in
     And I am an admin of a group
