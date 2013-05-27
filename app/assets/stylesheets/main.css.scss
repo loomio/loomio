@@ -67,6 +67,11 @@ h4, h5, h6 { line-height: 18px; }
 
 .sub_group {font-size: $font-tiny; }
 
+.discussion-with-motion-divider {
+  height: 1px;
+  background: #aaa;
+}
+
 // #start-new-discussion { margin: 0 0 20px 2px; }
 .main-content { margin-top: 20px; }
 #cancel-add-description:hover { color: $dark-grey; }
