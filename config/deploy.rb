@@ -69,3 +69,6 @@ after "deploy:update_code" do
 end
 
 load 'deploy/assets'
+
+        require './config/boot'
+        require 'airbrake/capistrano'

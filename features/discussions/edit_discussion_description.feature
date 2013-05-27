@@ -3,6 +3,7 @@ Feature: User edits discussion description
   I want to be able to edit the discussion description
   So I can provide a clear context for the discussion
 
+  @javascript
   Scenario: User edits the discussion description and changes the discussion markdown preference
     Given we should make this test work
     Given I am logged in
@@ -17,6 +18,7 @@ Feature: User edits discussion description
     Then the discussion desription should render markdown
     And my global markdown preference should still be 'disabled'
 
+  @javascript
   Scenario: User edits the discussion description
     Given I am logged in
     And there is a discussion in a group I belong to

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515123316) do
+ActiveRecord::Schema.define(:version => 20130527015722) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -167,21 +167,50 @@ ActiveRecord::Schema.define(:version => 20130515123316) do
     t.string   "name"
     t.text     "description"
     t.string   "admin_email"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "status"
     t.integer  "group_id"
-    t.boolean  "cannot_contribute",    :default => false
+    t.boolean  "cannot_contribute"
     t.string   "expected_size"
-    t.integer  "max_size",             :default => 50
+    t.integer  "max_size",            :default => 50
     t.string   "robot_trap"
     t.integer  "distribution_metric"
-    t.string   "sectors_metric"
-    t.string   "other_sectors_metric"
+    t.string   "sectors"
+    t.string   "other_sector"
     t.string   "token"
+    t.string   "admin_name"
+    t.string   "country_name"
+    t.boolean  "high_touch",          :default => false, :null => false
+    t.datetime "approved_at"
+    t.datetime "defered_until"
+    t.integer  "approved_by_id"
+    t.text     "why_do_you_want"
+    t.text     "group_core_purpose"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
+
+  create_table "group_setups", :force => true do |t|
+    t.integer  "group_id"
+    t.string   "group_name"
+    t.text     "group_description"
+    t.string   "viewable_by",            :default => "members"
+    t.string   "members_invitable_by",   :default => "admins"
+    t.string   "discussion_title"
+    t.text     "discussion_description"
+    t.string   "motion_title"
+    t.text     "motion_description"
+    t.date     "close_at_date"
+    t.string   "close_at_time_zone"
+    t.string   "close_at_time"
+    t.string   "admin_email"
+    t.text     "recipients"
+    t.string   "message_subject"
+    t.text     "message_body"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+  end
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -194,19 +223,34 @@ ActiveRecord::Schema.define(:version => 20130515123316) do
     t.boolean  "hide_members",         :default => false
     t.boolean  "beta_features",        :default => false
     t.string   "description"
-    t.integer  "creator_id",                              :null => false
     t.integer  "memberships_count",    :default => 0,     :null => false
     t.datetime "archived_at"
     t.integer  "max_size"
     t.boolean  "cannot_contribute",    :default => false
     t.integer  "distribution_metric"
-    t.string   "sectors_metric"
-    t.string   "other_sectors_metric"
+    t.string   "sectors"
+    t.string   "other_sector"
     t.integer  "discussions_count",    :default => 0,     :null => false
     t.integer  "motions_count",        :default => 0,     :null => false
+    t.string   "country_name"
+    t.datetime "setup_completed_at"
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
+
+  create_table "invitations", :force => true do |t|
+    t.string   "recipient_email",                    :null => false
+    t.integer  "inviter_id",                         :null => false
+    t.integer  "group_id",                           :null => false
+    t.boolean  "to_be_admin",     :default => false, :null => false
+    t.string   "token",                              :null => false
+    t.integer  "accepted_by_id"
+    t.datetime "accepted_at"
+    t.string   "intent"
+  end
+
+  add_index "invitations", ["group_id"], :name => "index_invitations_on_group_id"
+  add_index "invitations", ["token"], :name => "index_invitations_on_token"
 
   create_table "memberships", :force => true do |t|
     t.integer  "group_id"
@@ -237,13 +281,16 @@ ActiveRecord::Schema.define(:version => 20130515123316) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "phase",          :default => "voting", :null => false
-    t.string   "discussion_url", :default => "",       :null => false
-    t.datetime "close_date"
+    t.string   "phase",              :default => "voting", :null => false
+    t.string   "discussion_url",     :default => "",       :null => false
+    t.datetime "close_at"
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
-    t.boolean  "uses_markdown",  :default => true,     :null => false
+    t.boolean  "uses_markdown",      :default => true,     :null => false
+    t.date     "close_at_date"
+    t.string   "close_at_time"
+    t.string   "close_at_time_zone"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
@@ -273,7 +320,6 @@ ActiveRecord::Schema.define(:version => 20130515123316) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                                                       :default => false
     t.string   "name"
     t.string   "unconfirmed_email"
     t.string   "invitation_token",                             :limit => 60
@@ -303,6 +349,7 @@ ActiveRecord::Schema.define(:version => 20130515123316) do
     t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.boolean  "uses_markdown",                                               :default => false
     t.string   "language_preference"
+    t.string   "time_zone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

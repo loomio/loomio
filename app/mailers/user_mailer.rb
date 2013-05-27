@@ -39,15 +39,6 @@ class UserMailer < ActionMailer::Base
          subject: "[Loomio - #{@motion.group.name}] Proposal closing soon: #{@motion.name}"
   end
 
-  def added_to_group(membership)
-    @user = membership.user
-    @group = membership.group
-    @inviter = membership.inviter
-    mail( :to => @user.email,
-          :reply_to => @group.admin_email,
-          :subject => "[Loomio] You've been added to a group called '#{@group.full_name}'")
-  end
-
   # Invited to loomio (assumes user has been invited to a group at the same time)
   def invited_to_loomio(new_user, inviter, group)
     @new_user = new_user

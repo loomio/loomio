@@ -72,14 +72,18 @@ Loomio::Application.configure do
       :password       => ENV['SENDGRID_PASSWORD'],
       :domain         => 'loomio.org'
     }
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.default_url_options = {
+      :host => 'loomio-staging.herokuapp.com',
+    }
+    # Email admin when server gets exceptions!
+    config.middleware.use ExceptionNotifier,
+      :email_prefix => "[Loomio STAGING Exception] ",
+      :sender_address => %{"Exception Notifier" <staging-exceptions@loomio.org>},
+      :exception_recipients => [ENV['EXCEPTION_RECIPIENT']]
   else
     config.action_mailer.delivery_method = :test
   end
-
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = {
-    :host => 'loomio-staging.herokuapp.com',
-  }
 
   # Store avatars on Amazon S3
   config.paperclip_defaults = {

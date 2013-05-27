@@ -14,6 +14,7 @@ Then(/^I should see the We The People index$/) do
 end
 
 When(/^I fill in and submit the form with my name and email$/) do
+  pending
   @email = "goobly@joobly.com"
   fill_in "requested_name", with: "Goobly"
   fill_in "requested_email", with: @email

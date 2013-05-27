@@ -9,12 +9,12 @@ namespace :stats do
   task :groups => :environment do    # Export all groups, scramble details of private ones
     require 'csv'
     file = CSV.generate do |csv|
-      csv << ["id", "name", "created_at", "viewable_by", "parent_id", "description", "memberships_count", "archived_at", "distribution_metric", "sectors_metric", "other_sectors_metric", "cannot_contribute"]
+      csv << ["id", "name", "created_at", "viewable_by", "parent_id", "description", "memberships_count", "archived_at", "distribution_metric", "cannot_contribute"]
       Group.find_each do |group|
         if group.viewable_by == :everyone
-          csv << [group.id, group.name, group.created_at, group.viewable_by, group.parent_id, group.description, group.memberships_count, group.archived_at, group.distribution_metric, group.sectors_metric, group.other_sectors_metric, group.cannot_contribute]
+          csv << [group.id, group.name, group.created_at, group.viewable_by, group.parent_id, group.description, group.memberships_count, group.archived_at, group.distribution_metric, group.cannot_contribute]
         else
-          csv << [scramble(group.id), "Private", group.created_at, group.viewable_by, group.parent_id, "Private", group.memberships_count, group.archived_at, group.distribution_metric, group.sectors_metric, group.other_sectors_metric, group.cannot_contribute]
+          csv << [scramble(group.id), "Private", group.created_at, group.viewable_by, group.parent_id, "Private", group.memberships_count, group.archived_at, group.distribution_metric, group.cannot_contribute]
         end
       end
     end
