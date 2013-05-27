@@ -3,7 +3,7 @@
   %table
     %tr
       %th Proposal
-      %td= @motion.name
+      %td= link_to(@motion.name, motion_url(@motion))
     %tr
       %th Group
       %td= @motion.group.name
@@ -13,8 +13,8 @@
 
     - if @motion.has_close_date?
       %tr
-        %th Closes&nbsp;at
-        %td= time_ago_in_words(@motion.close_date) + " (" + @motion.close_date.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
+        %th Closes in
+        %td= time_ago_in_words(@motion.close_at) + " (" + @motion.close_at.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
 
     - if @motion.description.present?
       %tr

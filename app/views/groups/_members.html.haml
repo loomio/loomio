@@ -1,9 +1,30 @@
-- unless group.hide_members && (cannot? :edit, group)
+- unless group.hide_members && (cannot? :update, group)
   .sub-panel
-    .membership-count.label
-      = group.users.count
+    -if can?(:update, group) or logged_in_member_can_invite?(group)
+      .dropdown.btn-group.group-options
+        %a.btn.btn-grey.dropdown-toggle#group-member-options{ href: "#", 'data-toggle' => 'dropdown' }
+          = t(:options)
+          = image_tag("dropdown.png", :title => t(:options), :alt => t(:options), class: "options-dropdown-icon")
+        %ul.dropdown-menu.pull-right.group-member-options
+          -if can? :add_members, group
+            -if group.is_top_level?
+              %li=link_to t(:invite_people), new_group_invitation_path(group)
+              %li=link_to t(:pending_invitations), group_invitations_path(group)
+            -else
+              %li=link_to t(:add_new_member), '#invite-subgroup-members', :id => 'group-add-members', 'data-toggle' => 'modal'
+          -if can? :edit, group
+            %li=link_to t(:edit_memberships), group_memberships_path(group)
+          - if can? :email_members, group
+            %li= link_to t(:email_group_members), "#email-members-modal", "data-toggle" => "modal"
+        -if group.is_sub_group?
+          #invite-subgroup-members.modal.hidden
+            = render 'subgroup_add_members', group: group
     %h4= t :members
-    = render 'add_members', group: group
+
     %ul#users-list
       - group.users.each do |user|
         = render 'membership', user: user, group: group
+      -if can?(:add_members, group) and group.is_top_level?
+        %li
+          =link_to t(:invite_people), new_group_invitation_path(group), class: 'btn'
+          %small #{group.invitations_remaining} #{t :invitations_remaining}

@@ -10,6 +10,7 @@ Given /^my browser language header is set to "(.*?)"$/ do |arg1|
 end
 
 Given /^I have not set my language preference$/ do
+  puts "language preference: #{@user.language_preference}"
 end
 
 Given /^my language preference is set to "(.*?)"$/ do |arg1|

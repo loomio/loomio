@@ -1,83 +1,30 @@
-DAY = 1000 * 60 * 60 * 24
+window.Application ||= {}
+
+### INITIALIZATION ###
 
 $ ->
-  if $("#motion-form").length > 0 || $("#edit-close-date").length > 0
-    pad2 = ((number) ->
-      if number < 10
-        '0' + number
-      else
-        number.toString()
-    )
-    if $("#new-motion").length > 0
-      #** New Motion **
-      datetime = new Date()
-      datetime.setDate(datetime.getDate() + 3)
-      hours = pad2(datetime.getHours())
-      $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
-      $("#input_date").datepicker("setDate", datetime)
-      $("#date_hour").val(hours)
-      $("#motion_close_date").val(datetime)
-      set_close_date()
-    else
-      #** Edit Motion **
-      date = Application.timestampToDateObject($("#motion_close_date").val())
-      year = date.getFullYear().toString().substring(2,4)
-      month = pad2(date.getMonth() + 1)
-      day = pad2(date.getDate())
-      hour = pad2(date.getHours())
-      date_string = "#{day}-#{month}-#{year}"
-      $("#input_date").datepicker({"dateFormat": "dd-mm-yy"})
-      $("#input_date").datepicker("setDate", date_string)
-      $("#date_hour").val(hour)
-      set_close_date()
+  hideOrShowOutcome()
 
 
-# Reload hidden close_date field
-$ ->
-  $("#input_date").change((e) ->
-    set_close_date()
-  )
+### EVENTS ###
 
-$ ->
-  $("#date_hour").change((e) ->
-    set_close_date()
-  )
+$ -> # Remove error class on closing inputs if changed
+  $(".motion-close-at-date").change () ->
+    hideDateErrorMessageFor($(this))
 
-set_close_date = ->
-  remove_date_error()
-  date = $("#input_date").val()
-  local_datetime = new Date()
-  current_datetime = new Date()
-  local_datetime.setYear(parseInt(date.substring(6,10), 10))
-  month = date.substring(3,5)
-  day = date.substring(0,2)
-  local_datetime.setMonth(parseInt(month, 10) - 1, parseInt(day, 10))
-  local_datetime.setHours(parseInt($("#date_hour").val(), 10))
-  $("#motion_close_date").val(local_datetime)
-  if (local_datetime >= current_datetime)
-    $(".date-description").text("Closing date (" + days_between(local_datetime, current_datetime) + "):")
-  else
-    $(".date-description").text("Closing date:")
+$ -> # Remove error class on closing inputs if changed
+  $(".motion-close-at-time").change () ->
+    hideDateErrorMessageFor($(this))
 
-remove_date_error = ->
-  $(".validate-motion-close-date").parent().removeClass("error")
-  $(".date-error-message").hide()
+$ -> # Remove error class on closing inputs if changed
+  $(".motion-close-at-time-zone").change () ->
+    hideDateErrorMessageFor($(this))
 
-days_between = (local, current) ->
-  days_passed = Math.round((local.getTime() - current.getTime()) / DAY)
-  if (days_passed == 0)
-    return "today"
-  if (days_passed == 1)
-    return days_passed + " day from now"
-  return days_passed + " days from now"
-
-# disable links on usernames
-$ ->
-  $('.activity-item-actor a, .member-name a').click((event) ->
+$ -> # Disable links on usernames
+  $('.activity-item-actor a, .member-name a').click (event) ->
     event.preventDefault()
-  )
 
-$ ->
+$ -> # Toggle the list of members who  are yet to vote
   if $(".motion").length > 0
     $(".toggle-yet-to-vote").click((event) ->
       if $("#yet-to-vote").hasClass("hidden")
@@ -89,25 +36,68 @@ $ ->
       event.preventDefault()
     )
 
-# check for error and submit vote
-$ ->
-  $(".vote").click((event) ->
-    if $(".control-group").hasClass("error")
-      event.preventDefault()
-    else
+$ -> # Check for error and submit vote
+  $(".vote").click (event) ->
+    unless $(".control-group").hasClass("error")
       $('#new_vote').submit()
-      event.preventDefault()
-  )
+    event.preventDefault()
 
-# show form for editing outcome
-$ ->
-  $("#edit-outcome").click((event) ->
+$ -> # Show form for editing outcome
+  $("#edit-outcome").click (event) ->
     $("#outcome-input").toggle()
     $("#outcome-display").toggle()
     event.preventDefault()
-  )
 
-$ ->
+
+### FUNCTIONS ###
+
+hideDateErrorMessageFor = (field) ->
+  $(field).closest('.motion-closing-inputs').removeClass("error")
+  row = $(field).closest('.motion-closing-inputs').find(".inline-help").hide()
+
+Application.validateMotionCloseDate = (closeAtParent) ->
+  if $(closeAtParent).is(":visible")
+    timeNow = new Date()
+    if parseCloseDateTimeZoneFields(closeAtParent) < timeNow
+      $(closeAtParent).addClass("error")
+      $(closeAtParent).find(".inline-help").show()
+      return false
+  true
+
+parseCloseDateTimeZoneFields = (closeAtControlGroup) ->
+  selectedDate = new Date()
+  closeAtDate = closeAtControlGroup.find('.motion-close-at-date').val()
+  closeAtTime = closeAtControlGroup.find('.motion-close-at-time').val()
+  closeAtTimeZone = closeAtControlGroup.find('.motion-close-at-time-zone').val()
+  listOfTimeZones = closeAtControlGroup.find('.motion-close-at-time-zone').text()
+
+  timeZoneAsHourOffset = getTimeZoneOffsetFromList(listOfTimeZones, closeAtTimeZone)
+  month = closeAtDate.substring(3,5)
+  day = closeAtDate.substring(0,2)
+
+  selectedDate.setUTCFullYear(parseInt(closeAtDate.substring(6,10), 10))
+  selectedDate.setUTCMonth(parseInt(month, 10) - 1, parseInt(day, 10))
+  selectedDate.setUTCHours(parseInt(closeAtTime, 10) - timeZoneAsHourOffset)
+  selectedDate
+
+getTimeZoneOffsetFromList = (list, timeZoneName) ->
+  index = list.indexOf(timeZoneName)
+  timeZoneAsHourOffset = parseInt(list.substring(index - 8, index - 5))
+
+Application.displayGraph = (this_pie, graph_id, data)->
+  @pie_graph_view = new Loomio.Views.Utils.GraphView
+    el: this_pie
+    id_string: graph_id
+    legend: false
+    data: data
+    type: 'pie'
+    tooltip_selector: '#tooltip'
+    diameter: 25
+    padding: 1
+    gap: 1
+    shadow: 0.75
+
+hideOrShowOutcome = () ->
   if $("#outcome-input").length > 0
     if $("#outcome-input").hasClass("hidden")
       $("#outcome-display").removeClass("hidden")
@@ -115,6 +105,3 @@ $ ->
       $("#outcome-display").addClass("hidden")
   else
       $("#outcome-display").removeClass("hidden")
-
-
-

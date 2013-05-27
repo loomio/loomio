@@ -1,0 +1,3 @@
+# describe PendingInvitationsController do
+
+# end

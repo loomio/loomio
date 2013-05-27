@@ -197,9 +197,7 @@ describe DiscussionsController do
       end
 
       after do
-        xhr :post, :edit_description,
-          :id => discussion.id,
-          :description => "blah"
+        post :update_description, :id => discussion.id, :description => "blah"
       end
 
       it "assigns description to the model" do
@@ -238,24 +236,19 @@ describe DiscussionsController do
         @version.stub(:save!)
       end
 
-      after do
-
-      end
-
       it "calls reify on version" do
         @version.should_receive(:reify)
-        xhr :post, :update_version,
-          :version_id => @version.id
+        post :update_version, :version_id => @version.id
       end
+
       it "saves the reified version" do
         @version_item.should_receive(:save!)
-        xhr :post, :update_version,
-          :version_id => @version.id
+        post :update_version, :version_id => @version.id
       end
+
       it "renders the JS template" do
-        xhr :post, :update_version,
-          :version_id => @version.id
-        response.should render_template("discussions/update_version")
+        post :update_version, :version_id => @version.id
+        response.should be_redirect 
       end
     end
   end

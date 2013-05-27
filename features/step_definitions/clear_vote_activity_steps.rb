@@ -9,6 +9,7 @@ Given /^I see proposal activity on the discussion$/ do
 end
 
 When /^I click on the mini\-pie graph for the discussion$/ do
+  pending
   find("#graph_#{@motion.id}").click
 end
 
@@ -18,11 +19,13 @@ When /^there is futher activity since I clicked the graph$/ do
 end
 
 When /^I refresh the page and click on the mini\-pie graph for the discussion again$/ do
+  pending
   step %{I visit the group page}
   step %{I click on the mini-pie graph for the discussion}
 end
 
 Then /^I should see a summary of the proposal's activity$/ do
+  pending ' this looks like a mental spec'
   page.should have_content(@vote.statement)
 end
 
@@ -35,6 +38,7 @@ Then /^I should not see any new activity for that discussion$/ do
 end
 
 Then /^I should only see the new activity for the proposal$/ do
+  pending ' this looks like a mental spec'
   page.should have_content(@vote1.statement)
   page.should_not have_content(@vote.statement)
 end

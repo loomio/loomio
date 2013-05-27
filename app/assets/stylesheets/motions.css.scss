@@ -1,37 +1,6 @@
 @import "settings";
 @import "mixins";
 
-.discussion-with-motion-divider { border-bottom: 2px solid $light-grey; }
-
-#show-closed-motions {
-  margin-bottom: 10px;
-}
-
-#closed-motions-page .selector-list { padding-bottom: 20px; }
-#closed-motions-page li.selector-item.loading { background-position: 270px 160px; }
-#closed-motions {
-  width: 750px;
-  margin-left: -375px;
-  min-height: 550px;
-}
-/*  New & Edit motion form */
-#motion-form{
-  #close-date-label { display: block; }
-
-  .date-error-message {
-    font-size: $font-small;
-    line-height: 1em;
-    display: inline-block;
-    width: 200px;
-    margin-left: 5px;
-    color: $error-color;
-  }
-}
-#motion-form, #edit-close-date.modal #closing-inputs {
-  #input_date{ width: 140px; display: inline-block; }
-  select { width: 100px; display: inline-block; }
-}
-
 /*** motion preview ***/
 
 .motion-preview:hover {
@@ -194,7 +163,7 @@
   }
   #vote-statement .statement { width: 520px; }
   #vote-statement .character-counter { width: 528px; }
-  .inputError { margin-left: 0px; height: 65px; }
+  .validate-length { margin-left: 0px; height: 65px; }
   .control-group { padding-top: 0px; padding-bottom: 0px; }
   .vote-buttons {
     .btn {

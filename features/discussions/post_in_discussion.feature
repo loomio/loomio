@@ -2,6 +2,7 @@ Feature: Post a comment in a discussion
   To allow users to share their opinions
   A user must be able to post comments in a discussion
 
+  @javascript
   Scenario: User posts comment
     Given I am logged in
     And I am a member of a group
@@ -10,6 +11,7 @@ Feature: Post a comment in a discussion
     And I write and submit a comment
     Then a comment should be added to the discussion
 
+  @javascript
   Scenario: Discussion activity clears when user posts comment
     Given I am logged in
     And I am a member of a group
@@ -19,6 +21,7 @@ Feature: Post a comment in a discussion
     And I visit the group page
     Then I should not see new activity for the discussion
 
+  @javascript
   Scenario: User enables markdown and posts a comment
     Given I am logged in
     And I am a member of a group
@@ -33,6 +36,7 @@ Feature: Post a comment in a discussion
     And the comment should include appropriate new lines
     And comment markdown should now be on by default
 
+  @javascript
   Scenario: User disable markdown and posts a comment
     Given I am logged in
     And I am a member of a group

@@ -4,9 +4,11 @@ describe DiscussionMover do
   describe "#destination_groups(group, user)" do
     before do
       @user = create :user
-      @parent = create :group, creator: @user
-      @subgroup = create :group, parent: @parent, creator: @user
+      @parent = create :group
+      @subgroup = create :group, parent: @parent
       @subgroup1 = create :group, parent: @parent
+      @parent.add_admin!(@user)
+      @subgroup.add_admin!(@user)
     end
 
     context "the discussion is in a parent group" do
@@ -24,7 +26,8 @@ describe DiscussionMover do
         DiscussionMover.destination_groups(@subgroup, @user).should include([@parent.name, @parent.id])
       end
       it "returns all the subgroups of the parent I am an admin of" do
-        @subgroup2 = create :group, parent: @parent, creator: @user
+        @subgroup2 = create :group, parent: @parent
+        @subgroup2.add_admin!(@user)
         DiscussionMover.destination_groups(@subgroup, @user).should include([@subgroup2.name, @subgroup2.id])
         DiscussionMover.destination_groups(@subgroup, @user).should_not include([@subgroup1.name, @subgroup1.id])
       end

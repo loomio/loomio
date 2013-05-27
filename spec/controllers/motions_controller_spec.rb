@@ -26,7 +26,8 @@ describe MotionsController do
         motion.stub(:save).and_return(true)
         controller.stub(:authorize!).with(:create, motion).and_return(true)
         @motion_args = { :motion => { :discussion_id => discussion.id,
-                                      :close_date => (Time.now + 3.hours).to_s },
+                                      :close_at_date => Date.today.to_s,
+                                      :close_at_time => "5"},
                          :group_id => group.id }
       end
 
@@ -87,21 +88,25 @@ describe MotionsController do
         controller.stub(:authorize!).with(:edit_close_date, motion).and_return(true)
       end
       it "checks user has permission" do
+        Motion.stub(:find).and_return FactoryGirl.create(:motion)
         controller.should_receive(:authorize!)
-        put :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+        put :edit_close_date, :id => motion.id, :motion => { close_at_date: Time.now,
+                          close_at_time: "05:00", close_at_time_zone: "Wellington" }
       end
       context "a valid date is entered" do
         it "calls set_motion_close_date, creates relavent activity and flashes a success" do
-          motion.should_receive(:set_close_date!).and_return true
-          put :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+          motion.should_receive(:update_attributes).and_return true
+          put :edit_close_date, :id => motion.id, :motion => { close_at_date: Time.now,
+                          close_at_time: "05:00", close_at_time_zone: "Wellington" }
           flash[:success].should =~ /Close date successfully changed./
           response.should redirect_to(discussion)
         end
       end
       context "an invalid date is entered" do
         it "displays an error message and returns to the discussion page" do
-          motion.should_receive(:set_close_date!).and_return false
-          put :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now }
+          motion.should_receive(:update_attributes).and_return false
+          put :edit_close_date, :id => motion.id, :motion => { :close_date => Time.now,
+                  close_at_time: "05:00", close_at_time_zone: "Wellington" }
           flash[:error].should =~ /Invalid close date, please check this date has not passed./
           response.should redirect_to(discussion)
         end

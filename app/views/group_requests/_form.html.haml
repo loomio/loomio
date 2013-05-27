@@ -1,19 +1,28 @@
 .row
-  .span5.offset2
+  .span6.offset2
     = simple_form_for @group_request, :validate => true do |f|
-      = f.input :name,  :label => "Group name"
-      = f.input :description, :placeholder => "Tell us a bit about your group, and why you'd like to use Loomio"
-      = f.input :admin_email, :label => "Your email"
-      = f.input :expected_size, :label => "Approximate number of people involved"
-      %h2 How spread out is your group?
-      = f.input :distribution_metric, :label => "On a scale of 1 to 5", :collection => {'1 - Our whole group has regular in-person meetings' => 0, '2 - Most of us meet in person regularly' => 1, '3 - Some of us meet in person' => 2, '4 - Most of our interactions are online' => 3, '5 - All of our interactions are online' => 4}, :as => :radio_buttons
-      %h2 What type of group is it?
-      = f.input :sectors_metric, :label => false, :as => :check_boxes, :collection => {'Community' => 'community', 'Business' => 'business', 'Government' => 'government', 'Other:' => 'other'}, :validate => { :presence => true }
-      = f.input :other_sectors_metric, :label => false
-      %h2 Contribution
-      %p Most groups are making a regular financial contribution in return for use of the tool. On the other hand, we don't want money to be a barrier to entry for groups without a budget. Let us know if this sounds like you:
-      = f.input :cannot_contribute, :label => false, :inline_label => "Our group is not in a position to contribute financially"
+      %h1 Get your group on Loomio
+      Loomio is a young project under rapid development. At the moment we are accepting applications manually. Tell us about your group and we’ll bring you on as soon as we can.
 
-      = f.submit 'Request new group', :class => "btn btn-large btn-info btn-block", id: "submit-group-request", :data => {:disable_with => "Request new group"}
+      %h2 Tell us about your group
+      = f.input :name, label: "What is the name of your group/organisation?"
+      = f.input :description, label: "Tell us about your group and why you'd like to use Loomio."
+      = f.input :expected_size, label: "How many people to you expect to be in your Loomio group?"
 
-      = f.input :robot_trap, :label => false, :placeholder => "Leave this field blank if you're a human", :input_html => { :class => "robot_trap" }
+      %h2 Tell us about yourself
+      %p You’ll be the coordinator for your group while you’re getting set up.
+      = f.input :admin_name, label: "What is your name?"
+      = f.input :admin_email, label: "What is your email address?"
+
+      %h2 We’re trying something new...
+      %p
+        Loomio is a #{link_to('cooperative social enterprise', about_path, target: "_blank")}, working to make everyday democracy accessible to as many people as possible. To achieve this vision we’re developing an ethical payment model to resource the software development.
+
+      %p It’s really useful for us to know what types of groups want to use Loomio, and what kind of payment model works best for them.
+      = f.input :cannot_contribute, collection: [["<strong>Subscription:</strong><br/> Established groups and organisations pay a regular monthly subscription.".html_safe, false], ["<strong>Pay what you can:</strong><br/> If your group doesn’t have a formal budget, your group members will be invited to make a voluntary contribution.".html_safe, true]], as: :radio_buttons, label: "Which of the two options below would best fit your group?"
+
+      %p This isn’t a commitment to pay, just useful information to help us design our model. Thanks!
+
+      = f.submit 'Submit Request', :class => "btn btn-large btn-info btn-block", data: {disable_with: "Requesting new group"}, id: "submit-group-request"
+
+      = f.input :robot_trap, label: false, :placeholder => "Leave this field blank if you're a human", :input_html => { :class => "robot_trap" }
