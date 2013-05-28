@@ -111,6 +111,10 @@ Loomio::Application.routes.draw do
     get :browser_not_supported
   end
 
+  scope controller: 'help' do
+    get :help
+  end
+
   resources :woc, only: :index do
     post :send_request, on: :collection
   end
