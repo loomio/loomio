@@ -43,12 +43,6 @@ When /^I click the verification link$/ do
   step 'I click the third link in the email'
 end
 
-Then /^the group admins should receive an email with subject "(.*?)"$/ do |subject|
-  last_email = ActionMailer::Base.deliveries.last
-  last_email.to.should include *@group.admins.map(&:email)
-  last_email.subject.should =~ /New membership request/
-end
-
 Then /^a new Loomio group request should be created$/ do
   @group_request = GroupRequest.where(:name => @group_name).first
   @group_request.should_not be_nil
