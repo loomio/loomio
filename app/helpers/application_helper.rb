@@ -48,17 +48,6 @@ module ApplicationHelper
     not signed_in?
   end
 
-  def populate_time_select
-    time_select = []
-    (0..23).each do |hour|
-      ampm = (hour < 12) ? 'am': 'pm'
-      hour = 12 if hour == 0
-      hour_padded = (hour < 10) ? "0#{hour}" : hour
-      time_select << ["#{hour_padded} #{ampm}", "#{hour_padded}:00"]
-    end
-    time_select
-  end
-
   def render_rich_text(text, md_boolean=true)
     if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
       text = " "
