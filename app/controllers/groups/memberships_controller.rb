@@ -1,5 +1,5 @@
 class Groups::MembershipsController < GroupBaseController
-  load_and_authorize_resource :except => [:ignore_request, :cancel_request, :destroy, :index]
+  load_and_authorize_resource :except => [:approve_request, :ignore_request, :cancel_request, :destroy, :index]
   before_filter :require_current_user_is_group_admin, only: [:make_admin, :remove_admin, :index]
   before_filter :load_membership, only: [:make_admin, :remove_admin]
 
@@ -54,6 +54,7 @@ class Groups::MembershipsController < GroupBaseController
   def approve_request
     @membership = Membership.find(params[:id])
     if @membership.request?
+      authorize! :approve_request, @membership
       @membership.approve!
       flash[:notice] = t("notice.membership_approved")
       UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
