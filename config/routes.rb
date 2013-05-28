@@ -25,7 +25,7 @@ Loomio::Application.routes.draw do
        # these three (and #new) are for membership requests which I hope to split off into a new class
        post :approve_request, as: :approve_request_for
        post :ignore_request, as: :ignore_request_for
-       post :cancel_request, as: :cancel_request_for
+       delete :cancel_request, as: :cancel_request_for
       end
     end
 
