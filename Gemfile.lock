@@ -289,7 +289,6 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rack-timeout (0.0.4)
     rails (3.2.13)
       actionmailer (= 3.2.13)
       actionpack (= 3.2.13)
@@ -458,7 +457,6 @@ DEPENDENCIES
   rabl (~> 0.7.3)
   rack-canonical-host (~> 0.0.8)
   rack-mini-profiler (~> 0.1.23)
-  rack-timeout (~> 0.0.4)
   rails (~> 3.2.13)
   rails-backbone (~> 0.7.2)
   rb-fchange (~> 0.0.5)
