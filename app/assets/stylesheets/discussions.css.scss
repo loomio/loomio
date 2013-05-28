@@ -40,9 +40,12 @@ body.discussions.new, body.discussions.create {
 }
 
 .model-description { padding-bottom: 10px; }
-.description-body {
-  color: $dark-grey;
-  margin-bottom: 10px;
+
+body.discussions.show {
+  .description-body {
+    color: $dark-grey;
+    margin-bottom: 10px;
+  }
 }
 
 #description-edit-form {
