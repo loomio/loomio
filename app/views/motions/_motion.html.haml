@@ -24,21 +24,8 @@
   .row
     .span5
       .description
-        - too_long = true if motion.description && motion.description.length > 200
-        - long_description = render_rich_text(motion.description, false)
-        - short_description = render_rich_text(truncate(motion.description, length: 200, omission: '...', separator: ' '), false)
-        <!--[if IE 7]>
         .long-description
-          ~ long_description
-        <![endif]-->
-
-        <!--[if !IE 7]><!-->
-        .short-description
-          ~ short_description
-        .long-description{style: "display: none"}
-          ~ long_description
-        = link_to t(:show_more), "#", class: 'see-more' if too_long
-        <!--<![endif]-->
+          = render_rich_text(motion.description, false)
 
   .pie{id: "graph_#{motion.id}"}
   .percentage-to-vote
