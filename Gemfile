@@ -40,7 +40,6 @@ gem 'foreman', '~> 0.60.2'
 gem 'rinku', '~> 1.7.2'
 gem 'piwik_analytics', '~> 1.0.1'
 gem 'friendly_id', '~> 4.0.9'
-gem 'rack-timeout', '~> 0.0.4'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
