@@ -71,10 +71,6 @@
     float: right;
   }
 
-  li.nav-item#feedback {
-    float: right;
-  }
-
   li.nav-item.dropdown#user {
     float: right;
     #header-user-image {
@@ -128,5 +124,11 @@
     border-top: 1px solid $light-grey;
     a { color: $mid-grey; }
     background-color: #eee;
+  }
+  li.nav-item#help {
+    float: right;
+    padding-right: 14px;
+
+    .help-question { padding-right: 10px; }
   }
 }

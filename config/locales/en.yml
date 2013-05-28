@@ -136,7 +136,6 @@ en:
   user_settings: "User Settings"
   email_preferences: "Email Preferences"
   sign_out: "Sign out"
-  feedback: "Give us feedback"
   sign_in: "Sign in"
   sign_in_details: "to participate. You are currently logged out."
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
@@ -293,6 +292,35 @@ en:
   not_voted: "[Show members who have not yet decided]"
   outcome: "Outcome"
   outcome_placeholder: "What was the outcome of this proposal?"
+
+
+  #
+  # HELP PAGES
+  #
+
+  help:
+    build_shared_understanding: "Build shared understanding"
+    build_shared_understanding_description: "As the conversation progresses and new information comes to light, you can change your position as many times as you like until the proposal closes. If the group isn’t in love with the first proposal, anyone can suggest a better one and keep moving forward. Through this dynamic process, the collective wisdom of your group can generate better ideas than anyone would have come up with on their own."
+    get_in_touch: "Get in touch"
+    get_in_touch_description_html: "If you have any questions or feedback, send us an email: <a href='mailto:contact@loomio.org'>contact@loomio.org</a>"
+    getting_started: "Getting started"
+    getting_started_description: "On the left, the group discusses a topic, exchanging ideas and information. When there’s a decision for the group to make, it comes up on the right."
+    have_a_discussion: "Have a discussion"
+    have_a_discussion_description: "The topic and any relevant background information sit at the top of the page. Use the comment box to add your voice to the discussion."
+    help: "Help"
+    how_it_works: "How it works"
+    join_the_community: "Join the community"
+    join_the_community_description_html: "Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.<br /><br /><a href='https://www.loomio.org/groups/3'>Click here to go the Loomio Community group</a>, where you can request membership."
+    video_tutorial: "Video tutorial"
+    video_tutorial_description: "Check out the video for a quick demonstration of how to use Loomio."
+    make_a_decision: "Make a decision"
+    make_a_decision_description: "When the conversation has gone on for a while, anyone can make a proposal. When you’re ready to have your say, click one of the four decision buttons:"
+    positions_agree_description: "<span>Agree</span> means you’re happy with the proposal."
+    positions_abstain_description: "<span>Abstain</span> means you’re unsure, or you’re happy for the group to decide without you."
+    positions_disagree_description: "<span>Disagree</span> means you think there might be a better alternative, but you’re willing to go with the group’s decision."
+    positions_block_description: "<span>Block</span> means you’ve got serious objections and you’ll be extremely unhappy if this proposal goes ahead."
+    see_how_everyone_feels: "See how everyone feels"
+    see_how_everyone_feels_description: "When you’ve made your decision, you’ll be prompted to give a brief summary statement explaining why you feel that way. Underneath the pie, you can see how other people in the group have decided. These short statements make it really easy to catch up with where the discussion is up to."
 
   #
   # SIGN IN
