@@ -7,5 +7,6 @@ class AcceptInvitation
     else
       invitation.group.add_member!(user, invitation.inviter)
     end
+    invitation.save!
   end
 end
