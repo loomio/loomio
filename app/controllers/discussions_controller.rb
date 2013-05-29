@@ -96,6 +96,9 @@ class DiscussionsController < GroupBaseController
       @discussion = Discussion.find(params[:id])
       @comment = @discussion.add_comment(current_user, params[:comment], params[:global_uses_markdown])
       ViewLogger.discussion_viewed(@discussion, current_user)
+      unless request.xhr?
+        redirect_to @discussion
+      end
     else
       head :ok
     end
