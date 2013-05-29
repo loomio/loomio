@@ -24,6 +24,7 @@ en:
     settings_not_updated: "Your settings did not get updated."
     group_request_already_verified: "Sorry! The verification link you clicked has already been confirmed. If you haven't heard from us within 48 hours, get in touch: contact@loomio.org"
     group_request_already_accepted: "Sorry! This invitation is invalid or has already been accepted."
+    group_request_contribution: "Please select a category. This isn’t a commitment to pay, just useful information to help us design our model. Thanks!"
     group_request_invalid_token: "Sorry! This is an invalid token"
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
@@ -146,6 +147,7 @@ en:
   #
   # GROUP PAGE
   #
+
   invite_people: "Invite people"
   pending_invitations: 'Pending invitations'
   edit_memberships: 'Edit memberships'
@@ -366,12 +368,15 @@ en:
     invites_more_help: "You can customise the invitation your members receive, to explain what your group will be using Loomio for and why it’s worth their time to get involved."
     invites_more_help1: "When you're ready, click 'finish setup' to send invitations and go to your brand new group!"
     invites_more_help2: "<p>You can invite people to your group at any time.</p><p>You might want to invite all your members in right away, or you could start by inviting just the people you’re working most closely with.</p>"
-
+    send_invitations: "Send invitations"
+    invitation_link: "Invitation link"
+    copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
 
   verified_email:
     subject: "Thanks for your request, you’re almost done!"
   defered_email:
     subject: "defered (placeholder)"
+
   #
   # FORMS
   #
@@ -511,6 +516,7 @@ en:
   closed: "Closed"
   delete: "Delete"
   edit: "Edit"
+  email: "Email"
   email_address: "Email address"
   enable: "Enable"
   participation: "Participation"
