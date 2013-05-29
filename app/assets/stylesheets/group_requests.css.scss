@@ -1,9 +1,10 @@
-// Place all the styles related to the admin/groups controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com
-
 body.group_requests {
   &.new, &.create {
     textarea { height: 80px; }
+    .robot_trap {
+      margin-left: -5000px;
+      margin-bottom: 0;
+      height: 0;
+    }
   }
 }

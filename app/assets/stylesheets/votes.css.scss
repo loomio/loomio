@@ -1,3 +1,9 @@
-body.votes{
-  .character-counter { bottom: 0; }
+body.votes {
+  &.edit, &.new {
+    .character-counter { bottom: 0; }
+    #vote-form {
+      textarea{ height: 100px; }
+      h3{ margin: 15px 0 9px 0; }
+    }
+  }
 }

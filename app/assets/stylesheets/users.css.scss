@@ -1,10 +1,54 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import "settings";
 @import "mixins";
 
+body.users.show {
+  p.email, p.username {
+    font-size: 1.4em;
+    margin-top: .4em;
+  }
+  .span8 { margin-left: 0; }
+}
+
+body.users.settings {
+  ul.user-image-options {
+    margin-left: -30px;
+    h3 { margin: 0 0 0 30px; }
+    li {
+      margin: 0 0 10px 0;
+      padding: 0px 0px;
+      width: 250px;
+      a {
+        cursor: pointer;
+        color: $mid-grey;
+        float: left;
+        padding: 8px 8px;
+      }
+      .medium-user-image.image-canvas {
+        float: left;
+        width: 28px;
+      }
+      .option-label {
+        float: left;
+        line-height: 32px;
+        padding-left: 10px;
+        text-decoration: underline;
+        width: 140px;
+      }
+      #uploaded-avatar {
+        bottom: 36px;
+        filter: alpha(opacity=0);
+        height: 36px;
+        margin: 0;
+        opacity: 0;
+        position: relative;
+        width: 150px;
+      }
+      &.clearfix:hover { background-color: $selector; }
+    }
+  }
+}
+
+// app-wide classes for user avataars
 .avatar-canvas {
   background: $selector;
   border: 1px solid #B9B9B9;
@@ -47,86 +91,3 @@
   font-size: 10px;
   line-height: 22px;
 }
-
-body.users.settings {
-  ul.user-image-options {
-    margin-left: -30px;
-    h3 { margin: 0 0 0 30px; }
-  }
-  ul.user-image-options li {
-    padding: 0px 0px;
-    margin: 0 0 10px 0;
-    width: 250px;
-    a {
-      padding: 8px 8px;
-      cursor: pointer;
-      color: $mid-grey;
-      float: left;
-    }
-    .medium-user-image.image-canvas {
-      float: left;
-      width: 28px;
-    }
-    .option-label {
-      padding-left: 10px;
-      text-decoration: underline;
-      line-height: 32px;
-      float: left;
-      width: 140px;
-    }
-  }
-  ul.user-image-options li.clearfix:hover {
-    background-color: $selector
-  }
-}
-
-#uploaded-avatar {
-  position: relative;
-  width: 150px;
-  height: 36px;
-  bottom: 36px;
-  margin: 0;
-  opacity: 0;
-  filter: alpha(opacity=0);
-}
-
-#user-email-popover {
-  .avatar-canvas {
-    margin: 0 10px 0 0;
-    float: left;
-  }
-  .user-details {
-    display: block;
-    margin-left: 15px;
-  }
-}
-
-#edit-name {
-  margin: 18px 0px 20px;
-  #edit-name-text {
-    font-size: $font-large;
-  }
-  #edit-name-link {
-    font-size: $font-medium;
-  }
-  #cancel-edit-name {
-    margin: 15px 0 0 5px;
-    color: $mid-grey;
-    text-decoration: underline;
-    position: relative;
-    top: 5px;
-    font-size: $font-small;
-  }
-  #cancel-edit-name:hover {
-    color: $dark-grey;
-  }
-}
-
-.users.show {
-  p.email, p.username {
-    font-size: 1.4em;
-    margin-top: .4em;
-  }
-  .span8 { margin-left: 0; }
- }
-

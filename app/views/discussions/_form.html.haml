@@ -12,7 +12,7 @@
       = f.input :description
       = f.hidden_field 'uses_markdown', value: @uses_markdown, id: 'global-uses-markdown'
       = f.submit :class => "btn btn-medium btn-info", id: "discussion-submit", :data => {:disable_with => t(:starting)}
-    .dropdown#discussion-markdown-dropdown.global-markdown-setting
-      %a.dropdown-toggle{href:'#discussion-markdown-dropdown', id:'discussion-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
-        = markdown_img(@uses_markdown)
-      = render 'markdown_setting', target: current_user
+      .dropdown#discussion-markdown-dropdown.global-markdown-setting
+        %a.dropdown-toggle{href:'#discussion-markdown-dropdown', id:'discussion-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
+          = markdown_img(@uses_markdown)
+        = render 'markdown_setting', target: current_user

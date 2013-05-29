@@ -1,342 +1,138 @@
-// Place all the styles related to the groups controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 @import "settings";
 @import "bootstrap/mixins";
 @import "mixins";
 
-.group_requests {
+body.groups {
+  &.show {
+    .discussion-preview .discussion-title { margin-top: 7px; }
+    .discussion-preview.showing-group .discussion-title { margin-top: 0; }
 
-  .main-container {
-    background: none;
-    margin-top: 10px;
-    padding: 0 0 20px;
+    #group-description-panel {
+      #description-edit-form {
+        margin-bottom: 0;
 
-    .pull-right { margin-top: 34px; }
+        #description-input {
+          height: 90px;
+          margin-bottom: 2px;
+          width: 270px;
+        }
 
-    .page-container {
-      margin-top: 10px;
+        .character-counter {
+          top: 0;
+          width: 278px;
+        }
 
-      .page-container {
-        background: #ffffff;
-        border: 1px solid #eeeeee;
-        @include box-shadow(3px, 3px, 5px, #eeeeee);
-        padding: 34px 0;
+        .control-group { margin-bottom: 0; }
+      }
+    }
 
-        img#large-logo { margin-top: 20px; }
+    #sub-groups-panel {
+      .group-link a:hover { color: $dark-grey; }
+    }
+
+    #members-panel {
+      .membership-count {
+        background-color: $light-grey;
+        color: white;
+        font-size: $font-small;
+        margin: 2px;
+      }
+
+      .membership-user-name { float: left; }
+
+      #users-list .admin-controls {
+        color: $mid-grey;
+        float: right;
+        font-size: $font-tiny;
+        text-align: right;
+      }
+    }
+    .invite-member-checkbox-container {
+      label {
+        display: inline;
+        padding-left: 10px;
+        position: relative;
+        top: 4px;
       }
     }
   }
 }
 
-.group-title h2 {
-  color: #777;
-  display: inline;
-  a { color: $header-link-color; }
-}
-
-.group-link.clearfix {
-  .group-link-name { float: left; }
-  .group-link-activity { float: right; }
-  .button-icon { padding: 0 }
-}
 // group title (on almost all pages)
 .group-title {
   margin: 0;
-
-  h1{
+  h1 {
     font-size: 24px;
     margin-bottom: 0;
   }
 
   .home-title {
-    display: inline;
     color: $dark-grey;
-  }
-  #privacy {
     display: inline;
-    margin: 0 10px;
-    position: relative;
-    top: 2px;
   }
+
   .group-options {
     display: inline;
-    position: relative;
     float: right;
-  }
-  .group-options .icon-cog {
-    opacity: 0.65;
-    margin-top: 2px;
-  }
-  .group-options .options-dropdown-icon {
     position: relative;
-    bottom: 1px;
-    padding-right: 2px;
-    padding-left: 10px;
+    top: 5px;
+
+    .btn-app.dropdown-toggle{ width: 110px; }
+
+    .icon-cog {
+      margin-top: 2px;
+      opacity: 0.65;
+    }
+
+    .options-dropdown-icon {
+      bottom: 1px;
+      padding: 0 2px 0 14px;
+      position: relative;
+    }
   }
+
   .privacy-dropdown {
+    bottom: 5px;
     display: inline;
     width: 120px;
-    bottom: 5px;
-  }
-  .privacy-dropdown .dropdown-menu a{
-    padding-left: 5px;
-  }
-  li.privacy-item i{
-    display: inline-block;
-    width: 15px;
-  }
-  .privacy-dropdown form {
-    margin: 0px;
-    display: inline;
-  }
-  li.privacy-item button {
-    border: none;
-    border-radius: 0px;
-    -webkit-border-radius: 0px;
-    margin-bottom: 0px;
-    box-shadow: none;
-    width: 180px;
-    padding-left: 25px;
-    text-align: left;
-  }
-  li.privacy-item button:hover {
-    color: white;
-    background-color: #08c;
-  }
-}
 
-#group_email_subject {
-  width: 510px;
-}
-#group_email_body {
-  width: 510px;
-}
-
-
-#group-form {
-  form {
-    .validate-length {
-      display: inline-block;
-      @include ie7-inline-block();
+    .dropdown-menu a {
+      padding-left: 5px;
     }
-    #group-name-error { float: right; }
-    #group-name-label { display: inline; }
-    #group-name { display: block; }
-    .control-group { margin-bottom: 0px; }
-    .character-counter { bottom: 11px; }
-    hr {
-      margin: 5px 0px 10px 0px;
+
+    li.privacy-item
+      i {
+        display: inline-block;
+        width: 15px;
+      }
+
+      button {
+        border: none;
+        @include border-radius(0px);
+        box-shadow: none;
+        margin-bottom: 0;
+        padding-left: 25px;
+        text-align: left;
+        width: 180px;
+        &:hover {
+          background-color: #08c;
+          color: white;
+        }
+      }
+
+    form {
+      margin: 0;
+      display: inline;
     }
   }
-  #group_name { width: 390px; }
-  .setting-label {
-    margin-bottom: 4px;
-    color: $mid-grey;
-  }
-  .settings {
-    margin-bottom: 20px;
-  }
-  .privacy-settings input {
-    display: inline;
-    float: left;
-    margin-right: 10px;
-    margin-left: 15px;
-  }
-  .explanation {
-    position: relative;
-    right: 40px;
-    top: 1px;
-  }
 }
 
-/**** Group page ****/
-
-body.groups.show {
-  .discussion-preview .discussion-title {margin-top: 7px;}
-  .discussion-preview.showing-group .discussion-title {margin-top: 0}
-}
-.sub-panel {
-  background-color: $sub-selector-panel;
-  @include border-radius(8px);
-  border: 1px solid $light-grey;
-  margin-bottom: 20px;
-  padding: 6px 6px;
-  h4 {
-    line-height: 1.8em;
-    margin-bottom: 5px;
-  }
-  .edit_group .btn {
-    float: right;
-  }
-  ul.group-links, ul#users-list, ul#dashboard-groups-list {
-    margin-top: 8px;
-    li {
-      line-height: 1.6em;
-      background-color: $sub-selector-panel;
-    }
-  }
-  .dropdown { float: right; }
-  .dropdown li {
-    background-color: white;
-    line-height: 1em;
-  }
-  .dropdown li a {
-    color: $dark-grey;
-    text-shadow: none;
-    text-decoration: none;
-  }
-  .dropdown li a:hover { color: white; }
-}
-
-/*group panel*/
-.sub-panel#groups{
-  ul {
-    .sub-group a{ padding-left: 20px; }
-  }
-}
-
-/*request membership panel*/
-#request-membership {
-  form { display: inline; }
-  .btn {
-    width: 170px;
-    color: $mid-grey;
-  }
-  margin-bottom: 10px;
-}
-/* description panel */
-.sub-panel#group-description-panel {
-  #description-edit-form {
-    margin-bottom: 0px;
-    #description-input {
-      width: 270px;
-      height: 90px;
-      margin-bottom: 2px;
-    }
-    .character-counter {
-      width: 278px;
-      top: 0;
-    }
-    .control-group { margin-bottom: 0px; }
-  }
-}
-.edit-description {
-  color: $mid-grey;
-  text-decoration: underline;
-}
-.edit-description:hover {
-  color: $dark-grey;
-}
-#add-member-popup-btn {
-  margin-bottom: 5px;
-}
-
-/* sub groups panel */
-#sub-groups {
-  .group-link a:hover {
-    color: $dark-grey;
-  }
-}
-
-/* membership request panel */
-#member-requests { display: inline; }
-
-/* add member panel */
-#add-members {
-  .btn#invite {
-    margin-top: 0px;
-    width: 60px;
-    float: right;
-  }
-  #cancel-add-members {
-    color: $mid-grey;
-    padding-right: 10px;
-    float: right;
-    position: relative;
-    top: 6px;
-    font-size: $font-tiny;
-  }
-  li { padding: 0px; }
-}
-
-#invited-users li { margin-bottom: 5px; }
-
-#invite-group-members {
-  .modal-body {
-    max-height: 300px;
-    overflow-y: scroll;
-  }
-  form {
-    margin-bottom: 0px;
-    input.btn { margin: 0px; }
-  }
-}
-
-.invite-member-checkbox-container {
-  input, label { display: inline }
-}
-
-#user_email_input {
-  display: inline;
-  #user_email {
-    width: 270px;
-  }
-}
-input#user_email{
-  margin-bottom: 5px;
-}
-.member-request-message{
-  color: $dark-grey;
-  a{ color: #08C }
-}
-// #new_user { padding-bottom: 14px; }
-
-/* membership panel */
-.dropdown#members { padding-left: 5px; }
-
-.users-list .user-name {
-  float: left;
-  a:hover { color: $dark-grey; }
-}
-
-.membership-count {
-  float: right;
-  font-size: $font-small;
-  color: white;
-  background-color: $light-grey;
-  margin: 2px;
-}
-.membership-user-name {
-  color: $mid-grey;
-  float: left;
-}
-#users-list .admin-controls, #request-list .admin-controls {
-  float: right;
-  text-align: right;
-  font-size: $font-tiny;
-  color: $mid-grey;
-  .close {
-    float: right;
-    padding-left: 8px;
-    position: relative;
-    bottom: 2px;
-    color: $mid-grey;
-    opacity: 0.6;
-    text-decoration: none;
-  }
-  a:hover {
-    color: $dark-grey;
-  }
-  .close:hover {
-    color: black;
-  }
-}
-
-/**** Private group form ****/
-#permission-message {
-  color: $mid-grey;
+.name-separator {
+  display: inline-block;
+  @include ie7-inline-block();
+  width: 15px;
+  position: relative;
+  bottom: 1px;
+  font-size: 0.6em;
   text-align: center;
-  width: 50%;
-  margin: 0px auto;
 }
