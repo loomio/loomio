@@ -166,6 +166,13 @@ describe DiscussionsController do
         discussion.stub(add_comment: @comment)
       end
 
+      context 'javascript has failed' do
+        it 'redirects to discussion' do
+          post :add_comment, comment: "Hello!", id: discussion.id, global_uses_markdown: false
+          response.should redirect_to discussion
+        end
+      end
+
       it "checks permissions" do
         app_controller.should_receive(:authorize!).and_return(true)
         xhr :post, :add_comment, comment: "Hello!", id: discussion.id, global_uses_markdown: false
