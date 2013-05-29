@@ -13,6 +13,7 @@ class InvitePeople
   end
 
   def initialize(attributes = {})
+    return if attributes.nil?
     attributes.each do |name, value|
       send("#{name}=", value)
     end
