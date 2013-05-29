@@ -1,9 +1,11 @@
 @import "settings";
-@import "bootstrap/mixins";
-@import "mixins";
 
-#dashboard-groups-list {
-  margin: 0 0 0 10px;
+body.dashboard {
+  &.show {
+    .sub-panel ul {
+      margin: 0 0 0 10px;
+      a:hover { color: $dark-grey }
+      .sub-group a { padding-left: 20px; }
+    }
+  }
 }
-#dashboard-groups-list a:hover { color: $dark-grey }
-.sub-panel a { color: $mid-grey; }

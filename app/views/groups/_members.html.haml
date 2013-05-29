@@ -1,5 +1,5 @@
 - unless group.hide_members && (cannot? :update, group)
-  .sub-panel
+  .sub-panel#members-panel
     -if can?(:update, group) or logged_in_member_can_invite?(group)
       .dropdown.btn-group.group-options
         %a.btn.btn-grey.dropdown-toggle#group-member-options{ href: "#", 'data-toggle' => 'dropdown' }
@@ -27,4 +27,5 @@
       -if can?(:add_members, group) and group.is_top_level?
         %li
           =link_to t(:invite_people), new_group_invitation_path(group), class: 'btn'
-          %small #{group.invitations_remaining} #{t :invitations_remaining}
+          .label.membership-count= group.invitations_remaining
+          %small #{t :invitations_remaining}

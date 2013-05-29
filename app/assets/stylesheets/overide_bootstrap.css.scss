@@ -1,0 +1,38 @@
+// override bootstrap
+
+.btn { margin-bottom: 5px; }
+
+.modal {
+  opacity: 100%;
+  filter:alpha(opacity=100);
+  form {
+    margin: 0;
+    .btn{ margin: 0; }
+  }
+}
+
+.modal-backdrop {
+  background: #999;
+  top: 0;
+}
+
+.modal-header {
+  h2 { font-size: 1.2em; }
+  h3 { font-size: 1em; }
+  h2, h3 {
+    display: inline;
+    font-weight: bold;
+    width: 80%;
+  }
+}
+
+.control-label { display: inline; }
+
+.popover {
+  width: 276px;
+  z-index: 10000;
+}
+
+.popover-inner {
+  background: black;
+}
