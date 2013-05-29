@@ -5,7 +5,7 @@ When(/^I view click pending invitations from the group page$/) do
 end
 
 Then(/^I should see the pending invitations for the group$/) do
-  page.should have_content 'Pending Invitations'
+  page.should have_content 'Pending invitations'
 end
 
 When(/^I visit the group page and click Invite People$/) do
