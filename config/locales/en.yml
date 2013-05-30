@@ -50,9 +50,9 @@ en:
     membership_request_already_canceled: "Membership request has already been canceled."
     position_not_submitted: "Your position could not be submitted"
     proposal_not_created: "Proposal could not be created"
-    user_already_admin: "%{which_user} is already an admin."
-    user_already_member: "User is already a member of this group"
-    user_not_admin: "%{which_user} is not an admin"
+    user_already_admin: "%{which_user} is already an admin of this group."
+    user_already_member: "%{which_user} is already a member of this group."
+    user_not_admin: "Sorry, %{which_user} must be an admin of this group to access this."
   success:
     added_to_group: "You have been added to %{which_group}."
     close_date_changed: "Close date successfully changed."
