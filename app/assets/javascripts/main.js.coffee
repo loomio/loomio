@@ -234,4 +234,3 @@ Application.seeMoreDescription = () ->
         $(this).html("Show More")
       event.preventDefault()
     )
-
