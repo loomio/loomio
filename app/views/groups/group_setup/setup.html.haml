@@ -38,7 +38,9 @@
                 = f.input :group_name, input_html: { class: 'validate-presence' }
                 .inline-help= t("group_setup_form.errors.group_name")
               .control-group
-                = f.input :group_description, input_html: { class: 'validate-presence' }
+                .control-group
+                  = f.text_area :group_description, class: 'validate-presence validate-length limit-250'
+                  .character-counter
                 .inline-help= t("group_setup_form.errors.group_description")
               %h2= t("group_setup_form.group_settings_header")
             .span4.offset1.more-help= t("group_setup_form.group_more_help").html_safe
