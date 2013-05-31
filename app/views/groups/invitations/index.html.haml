@@ -1,19 +1,19 @@
 = render '/groups/title', group: @group
 
-%h1 Pending Invitations
+%h1=  t :pending_invitations
 
 %table.pending-invitations.table
   %thead
-    %th Email
-    %th Invitation Link
-    %th Cancel
+    %th= t :email
+    %th= t "invitation.invitation_link"
+    %th= t :cancel
   %tbody
-    -@pending_invitations.each do |invitation|
+    - @pending_invitations.each do |invitation|
       %tr
-        %td=invitation.recipient_email
-        %td=invitation_url(invitation)
-        %td=link_to('Cancel', group_invitation_path(@group, invitation), method: :delete, class: 'btn')
+        %td= invitation.recipient_email
+        %td= invitation_url(invitation)
+        %td= link_to(t(:cancel), group_invitation_path(@group, invitation), method: :delete, class: 'btn')
 
-%p If someone did not get their invitation email, please feel free to copy the invitation link above and give it the recipient yourself.
+%p= t "invitation.copy"
 
-=link_to 'Invite People', new_group_invitation_path(@group), :class => "btn btn-info btn-large", :data => { disable_with: 'Send invitations' }
+= link_to t(:invite_people), new_group_invitation_path(@group), :class => "btn btn-info btn-large", :data => { disable_with: t(:invite_people) }
