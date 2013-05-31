@@ -1,6 +1,6 @@
 # config/unicorn.rb
 
-worker_processes Integer(ENV['UNICORN_WORKERS'] || 3)
+worker_processes Integer(ENV['UNICORN_WORKERS'] || 1)
 timeout Integer(ENV['UNICORN_TIMEOUT'] || 30)
 preload_app true
 
