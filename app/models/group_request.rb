@@ -10,7 +10,7 @@ class GroupRequest < ActiveRecord::Base
   validates :expected_size, presence: true
   validates :admin_name, presence: true, length: {maximum: 250}
   validates :admin_email, presence: true, email: true
-  validates_inclusion_of :cannot_contribute, :in => [true, false]
+  validates_inclusion_of :cannot_contribute, :in => [true, false], message: I18n.t("error.group_request_contribution")
 
   belongs_to :group
   belongs_to :approved_by, class_name: 'User'
