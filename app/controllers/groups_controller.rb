@@ -111,6 +111,10 @@ class GroupsController < GroupBaseController
       format.json { render 'groups/users' }
     end
   end
+  
+  def statistics
+    @group = Group.find(params[:id])
+  end
 
   def edit_privacy
     @group = Group.find(params[:id])

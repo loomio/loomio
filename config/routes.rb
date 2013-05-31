@@ -21,6 +21,7 @@ Loomio::Application.routes.draw do
     post :edit_description, on: :member
     post :edit_privacy, on: :member
     delete :leave_group, on: :member
+    get :statistics
   end
 
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
