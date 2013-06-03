@@ -353,6 +353,9 @@ en:
   #
 
   invitation:
+    invitation_not_found:  'Could not find invitation with that token. Please ask for a new invitation from the sender.'
+    invitation_cancelled: 'This invitation has been cancelled. Please contact the sender of the invitation if you believe this was done in error.'
+    invitation_already_used: 'This invitation has already been used. Please sign in to continue to your group.'
     invites_header: "Invite your group members"
     recipients: "Enter email addresses, seperated by commas:"
     invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
