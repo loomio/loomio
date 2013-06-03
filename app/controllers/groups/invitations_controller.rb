@@ -10,7 +10,7 @@ class Groups::InvitationsController < GroupBaseController
     @invite_people = InvitePeople.new(params[:invite_people])
     if @invite_people.valid?
       num = CreateInvitation.to_people_and_email_them(@invite_people, group: @group, inviter: current_user)
-      flash[:notice] = "#{num} invitations sent"
+      flash[:notice] = "#{num} invitation(s) sent" if num > 0
       redirect_to group_path(@group)
     else
       load_decorated_group
@@ -30,6 +30,7 @@ class Groups::InvitationsController < GroupBaseController
   end
 
   private
+
   def load_invitation
     @invitation = @group.pending_invitations.find(params[:id])
   end
