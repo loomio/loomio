@@ -9,7 +9,6 @@
   = form.input :recipients, as: :hidden, input_html: { class: 'recipients' }
   %p= t("invitation.invites_more_help")
 .control-group
-  = form.input :message_body, label: false, as: :text, input_html: { class: 'validate-presence', value: t("invitation.body_editable", group: group.name) }, label: t("invitation.message_body")
-  .inline-help= t("group_setup_form.errors.invites_body")
+  = form.input :message_body, label: false, as: :text, input_html: { value: t("invitation.body_editable", group: group.name) }, label: t("invitation.message_body")
 %p= t("invitation.invites_more_help1")
 
