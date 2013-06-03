@@ -26,7 +26,7 @@ Then(/^there should be a couple of pending invitations to those people$/) do
 end
 
 Then(/^the flash notice should inform me of (\d+) invitations being sent$/) do |arg1|
-  page.should have_content "#{arg1} invitations sent"
+  page.should have_content "#{arg1} invitation(s) sent"
 end
 
 Given(/^there is a pending invitation to join the group$/) do
