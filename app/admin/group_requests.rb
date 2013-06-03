@@ -75,7 +75,7 @@ ActiveAdmin.register GroupRequest do
   member_action :approve_and_send, :method => :put do
     @group_request = GroupRequest.find(params[:id])
     setup_group = SetupGroup.new(@group_request)
-    group = setup_group.approve_group_request(current_user)
+    group = setup_group.approve_group_request(approved_by: current_user)
     setup_group.send_invitation_to_start_group(inviter: current_user, message_body: params[:message_body])
     redirect_to admin_group_requests_path,
       :notice => ("Group approved: " +
