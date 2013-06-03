@@ -69,7 +69,6 @@ describe "User abilities" do
     context "group members invitable by members" do
       before { group.update_attributes(:members_invitable_by => :members) }
       it { should be_able_to(:add_members, group) }
-      it { should be_able_to(:invite_people, group) }
       it { should be_able_to(:approve_request, membership_request) }
       it { should be_able_to(:ignore_request, membership_request) }
       it { should_not be_able_to(:destroy, @other_user_membership) }
@@ -78,7 +77,6 @@ describe "User abilities" do
     context "group members invitable by admins" do
       before { group.update_attributes(:members_invitable_by => :admins) }
       it { should_not be_able_to(:add_members, group) }
-      it { should_not be_able_to(:invite_people, group) }
       it { should_not be_able_to(:approve_request, membership_request) }
       it { should_not be_able_to(:ignore_request, membership_request) }
     end
@@ -137,7 +135,6 @@ describe "User abilities" do
     context "group members invitable by admins" do
       before { group.update_attributes(:members_invitable_by => :admins) }
       it { should be_able_to(:add_members, group) }
-      it { should be_able_to(:invite_people, group) }
       it { should be_able_to(:approve_request, @membership_request) }
     end
   end
@@ -156,7 +153,6 @@ describe "User abilities" do
     it { should_not be_able_to(:email_members, group) }
     it { should_not be_able_to(:add_subgroup, group) }
     it { should_not be_able_to(:add_members, group) }
-    it { should_not be_able_to(:invite_people, group) }
     it { should_not be_able_to(:new_proposal, discussion) }
     it { should_not be_able_to(:add_comment, discussion) }
     it { should_not be_able_to(:move, discussion) }

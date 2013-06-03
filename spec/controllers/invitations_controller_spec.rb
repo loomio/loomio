@@ -5,7 +5,11 @@ describe InvitationsController do
   describe "GET 'show'" do
 
     let(:group) { stub_model(Group) }
-    let(:invitation) {stub(:invitation, :group => group, :intent => 'join_group', :cancelled? => false)}
+    let(:invitation) {stub(:invitation,
+                           :group => group,
+                           :intent => 'join_group',
+                           :cancelled? => false,
+                           :accepted? => false)}
 
     context 'invitation not found' do
       render_views
