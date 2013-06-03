@@ -46,7 +46,7 @@ class Group < ActiveRecord::Base
 
   has_many :pending_invitations,
            class_name: 'Invitation',
-           conditions: {accepted_at: nil}
+           conditions: {accepted_at: nil, cancelled_at: nil}
 
   alias :users :members
 
