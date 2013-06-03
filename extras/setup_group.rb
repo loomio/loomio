@@ -14,7 +14,7 @@ class SetupGroup
     end
 
     group_request.approve!(args)
-    @group.save
+    @group.save!
     @group
   end
 
