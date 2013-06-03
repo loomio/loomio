@@ -16,5 +16,6 @@ public/images
 .project
 Session.vim
 *.sql
+*.dump
 .env
 .idea

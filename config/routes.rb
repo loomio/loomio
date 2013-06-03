@@ -8,7 +8,6 @@ Loomio::Application.routes.draw do
 
   resources :group_requests, only: [:create, :new] do
     get :verify, on: :member
-    get :start_new_group, on: :member
   end
 
   match "/request_new_group", to: "group_requests#new", as: :request_new_group
@@ -95,6 +94,8 @@ Loomio::Application.routes.draw do
   end
 
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
+  get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
+
   match "/settings", :to => "users#settings", :as => :user_settings
   match 'email_preferences', :to => "users/email_preferences#edit", :as => :email_preferences, :via => :get
   match 'email_preferences', :to => "users/email_preferences#update", :as => :update_email_preferences, :via => :put
