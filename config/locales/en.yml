@@ -455,7 +455,6 @@ en:
       motion_closing_inputs: "Please give a future close date"
       admin_email: "Please fill in the an administrator email address"
       invitees: "Please fill in the invited email addresse(s)"
-      message_body: "Please fill in the invite body"
 
   simple_form:
     labels:

@@ -15,7 +15,7 @@ class Groups::GroupSetupController < GroupBaseController
       invite_attributes = build_invite_attributes(params[:group_setup])
       @invite_people = InvitePeople.new(invite_attributes)
       num = CreateInvitation.to_people_and_email_them(@invite_people, group: @group_setup.group, inviter: current_user)
-      flash[:notice] = "#{num} invitation(s) sent"
+      flash[:notice] = "#{num} invitation(s) sent" if num > 0
       @group_setup.group.setup_completed_at = Time.now
       @group_setup.group.save!
       redirect_to group_path
