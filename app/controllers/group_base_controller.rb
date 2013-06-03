@@ -1,8 +1,16 @@
 class GroupBaseController < BaseController
-
   protected
+
+  def require_current_user_can_invite_people
+    load_group
+    unless can? :add_members, @group
+      flash[:warning] = t("warning.user_not_admin", which_user: current_user.name)
+      redirect_to @group
+    end
+  end
+
   def require_current_user_is_group_admin
-    @group = Group.find(params[:group_id])
+    load_group
     unless @group.admins.include? current_user
       flash[:warning] = t("warning.user_not_admin", which_user: current_user.name)
       redirect_to group_path(params[:group_id])
@@ -11,6 +19,10 @@ class GroupBaseController < BaseController
 
   def load_membership
     @membership = @group.memberships.find(params[:id])
+  end
+
+  def load_group
+    @group ||= Group.find(params[:group_id])
   end
 
   def check_group_read_permissions

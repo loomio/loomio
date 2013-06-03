@@ -47,7 +47,6 @@ When(/^I open the email and click the accept invitation link$/) do
   last_email = ActionMailer::Base.deliveries.last
   url = last_email.body.match(/https?:\/\/[\S]+/)[0]
   path = URI.parse(url).path
-  puts path
   visit path
 end
 
@@ -85,4 +84,23 @@ end
 Given(/^I am signed in as "(.*?)"$/) do |arg1|
   @user = FactoryGirl.create :user, email: arg1
   login_automatically @user
+end
+
+Given(/^I am a user but i am not signed in$/) do
+  @user = FactoryGirl.create :user
+end
+
+Given(/^I follow an invitation link I have already used$/) do
+  @coordinator = FactoryGirl.create(:user)
+  @group.add_admin!(@coordinator)
+  @invitation = CreateInvitation.to_join_group(group: @group, 
+                                               inviter: @coordinator,
+                                               recipient_email: 'jim@jimmy.com')
+
+  AcceptInvitation.and_grant_access!(@invitation, @user)
+  visit invitation_path(@invitation)
+end
+
+Then(/^I should be told the invitation link has already been used$/) do
+  page.should have_content 'invitation has already been used'
 end
