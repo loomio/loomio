@@ -52,4 +52,4 @@
                         %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
 
 / - if user_signed_in?#  && (not current_user.has_read_discussion_notice)
-/   = render "application/help_text", header: t("discussion_help_text.header"), message: t("discussion_help_text.message").html_safe, path: dismiss_discussion_notice_for_user_path
+/   = render "application/help_text", header: t("discussion_helper_text.header"), message: t("discussion_helper_text.message").html_safe, path: dismiss_discussion_notice_for_user_path
