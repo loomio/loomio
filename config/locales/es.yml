@@ -9,7 +9,6 @@ es:
     cant_state_position: "Esta propuesta ha cerrado. Ya no puedes decidir."
     discussion_not_created: "No se ha creado la discusión."
     group_not_archived: "El grupo no pudo ser archivado."
-    invalid_email: "%{which_email} no esta invitado. La dirección de correo electrónico dada parece ser invalida."
     invalid_close_date: "Fecha de cierre invalida, Necesita ser una fecha después a la de hoy."
     image_upload_fail: "Imposible subir foto. Asegúrate que el archivo sea inferior a 1 MB y sea un .jpeg, .png, o .gif"
     permission_to_invite: "No tienes permiso para invitar a nuevos miembros."
@@ -85,10 +84,6 @@ es:
         one:   "1 año"
         other: "%{count} años"
 
-  discussion_help_text: "Esta es la página de discusión. El tema de discusión está al principio de la página, seguido por información de fondo y contexto.\n\n La discusión está a la izquierda, para agregar un comentario escribe en el cuadro de texto y haz click en 'Comentar'.\n\n Las decisiones están a la derecha. Si piensas que el grupo está listo para tomar una decisión, puedes hacer una propuesta para poner a consideración del grupo. Si alguien ya ha realizado una propuesta, puedes ver cómo se siente el grupo en el gráfico de torta y tomar posición debajo.\n\n"
-  group_help_text: "Esta es la página del Grupo %{group_name}.\n\n Aquí podrás ver las discusiones del grupo, una descripción de sus objetivos o iniciar una discusión sobre un tema nuevo haciendo click el botón 'Iniciar una discusión'.\n\n"
-  dashboard_help_text: "¡Bienvenido/a a Loomio!\n Esta es la página de Inicio, donde podrás ver una lista de las discusiones activas de todos tus grupos. A la derecha hay una lista de los grupos de los que eres miembro. Puedes iniciar una discusión en una tema nuevo haciendo click en el botón 'Iniciar una discusión'.\n\n Si tienes alguna pregunta o contribución nos encantaría escucharla: %{link}\n\n"
-
   notifications:
     header: "Notificaciones"
     new_discussion: "abrió una propuesta"
@@ -118,8 +113,6 @@ es:
   sign_in_details: "Para participar. No estas en tu sesión."
   tagline: "Creando un mundo donde es fácil para todos participar de las decisiones que nos afectan."
 
-  not_found: "no se encontró"
-  not_found_details: "Puede haber sido removido"
   click_to_dismiss: "Presione aquí para deshacerse de este mensaje"
   generic_confirm: "Estas seguro?"
 
