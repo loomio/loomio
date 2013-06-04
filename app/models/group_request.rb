@@ -20,6 +20,7 @@ class GroupRequest < ActiveRecord::Base
   scope :approved, where(:status => :approved)
   scope :accepted, where(:status => :accepted)
 
+  before_destroy :prevent_destroy_if_group_present
   before_create :mark_spam
   before_validation :generate_token, on: :create
 
@@ -83,6 +84,12 @@ class GroupRequest < ActiveRecord::Base
 
 
   private
+  def prevent_destroy_if_group_present
+    if self.group.present?
+      errors.add(:group, "dont' delete group requests ok!")
+    end
+    errors.blank?
+  end
 
   def mark_spam
     mark_as_spam unless robot_trap.blank?
