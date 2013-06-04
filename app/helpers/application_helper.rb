@@ -96,11 +96,11 @@ module ApplicationHelper
     args = {}
     case "#{controller_name} #{action_name}"
       when 'discussions show'
-        args = { header: t("discussion_help_text.header"), message: t("discussion_help_text.message").html_safe, path: dismiss_discussion_notice_for_user_path }
+        args = { header: t("discussion_helper_text.header"), message: t("discussion_helper_text.message").html_safe, path: dismiss_discussion_notice_for_user_path }
       when 'groups show'
-        args = { header: t("group_help_text.header"), message: t("group_help_text.message").html_safe, path: dismiss_group_notice_for_user_path }
+        args = { header: t("group_helper_text.header"), message: t("group_helper_text.message").html_safe, path: dismiss_group_notice_for_user_path }
       when 'dashboard show'
-        args = { header: t("dashboard_help_text.header"), message: t("dashboard_help_text.message").html_safe, path: dismiss_dashboard_notice_for_user_path }
+        args = { header: t("dashboard_helper_text.header"), message: t("dashboard_helper_text.message").html_safe, path: dismiss_dashboard_notice_for_user_path }
     end
     args
   end

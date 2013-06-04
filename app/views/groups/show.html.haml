@@ -29,4 +29,4 @@
   =render '/application/closed_motions', user: nil, group: @group
 
 / - if user_signed_in?# && (not current_user.has_read_group_notice)
-/   = render 'application/help_text', header: t('group_help_text.header'), message: t('group_help_text.message').html_safe, path: dismiss_group_notice_for_user_path
+/   = render 'application/help_text', header: t('group_helper_text.header'), message: t('group_helper_text.message').html_safe, path: dismiss_group_notice_for_user_path
