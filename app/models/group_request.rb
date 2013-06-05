@@ -68,6 +68,7 @@ class GroupRequest < ActiveRecord::Base
     self.approved_by = args[:approved_by]
     update_attribute(:approved_at, DateTime.now)
     approve_request!
+    save!
   end
 
   def accept!(user)
