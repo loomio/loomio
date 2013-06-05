@@ -67,8 +67,8 @@ class GroupRequest < ActiveRecord::Base
   def approve!(args)
     self.approved_by = args[:approved_by]
     update_attribute(:approved_at, DateTime.now)
-    approve_request!
-    save!
+    approve_request
+    save! # saving separetely from state machine just to be sure...
     raise "NotApprovedProperly" unless approved?
   end
 
