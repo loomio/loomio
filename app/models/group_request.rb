@@ -68,13 +68,13 @@ class GroupRequest < ActiveRecord::Base
     self.approved_by = args[:approved_by]
     update_attribute(:approved_at, DateTime.now)
     approve_request
-    save! # saving separetely from state machine just to be sure...
-    raise "NotApprovedProperly" unless approved?
+    save!
   end
 
   def accept!(user)
     group.add_admin!(user)
-    accept_request!
+    accept_request
+    save!
   end
 
   def self.check_defered
