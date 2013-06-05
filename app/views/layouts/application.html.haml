@@ -22,4 +22,4 @@
 
     - if Rails.env.production? || Rails.env.staging?
       = render 'google_analytics'
-      = piwik_tracking_tag
+      /= piwik_tracking_tag # Disabling piwik until we've moved it over to our own server
