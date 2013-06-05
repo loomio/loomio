@@ -28,6 +28,7 @@ ActiveAdmin.register GroupRequest do
   show do
     attributes_table do
       row :name
+      row :group
       row :admin_email
       row :description
       row :expected_size
