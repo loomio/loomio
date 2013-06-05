@@ -69,6 +69,7 @@ class GroupRequest < ActiveRecord::Base
     update_attribute(:approved_at, DateTime.now)
     approve_request!
     save!
+    raise "NotApprovedProperly" unless approved?
   end
 
   def accept!(user)
