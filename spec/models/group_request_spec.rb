@@ -133,8 +133,8 @@ describe GroupRequest do
     end
 
     it "can later be approved" do
-      @group_request.should_receive(:approve_request!)
       @group_request.approve!(approved_by: user)
+      @group_request.should be_approved
     end
 
     it "can set the status to marked_as_smanually_approved" do
@@ -156,8 +156,8 @@ describe GroupRequest do
     end
 
     it "can later be approved" do
-      @group_request.should_receive(:approve_request!)
       @group_request.approve!(approved_by: user)
+      @group_request.should be_approved
     end
 
     it "can later be marked as manually_approved" do
@@ -222,8 +222,8 @@ describe GroupRequest do
     end
 
     it "can later be approved" do
-      @group_request.should_receive(:approve_request!)
       @group_request.approve!(approved_by: user)
+      @group_request.should be_approved
     end
 
     it "can set the status to marked_as_smanually_approved" do
@@ -245,8 +245,8 @@ describe GroupRequest do
     end
 
     it "can later be approved" do
-      @group_request.should_receive(:approve_request!)
       @group_request.approve!(approved_by: user)
+      @group_request.should be_approved
     end
 
     it "can later be changed to verified" do
