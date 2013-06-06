@@ -355,21 +355,17 @@ en:
     invitation_not_found:  'Could not find invitation with that token. Please ask for a new invitation from the sender.'
     invitation_cancelled: 'This invitation has been cancelled. Please contact the sender of the invitation if you believe this was done in error.'
     invitation_already_used: 'This invitation has already been used. Please sign in to continue to your group.'
-    invites_header: "Invite your group members"
     recipients: "Enter email addresses, seperated by commas:"
     invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
     subject: "Please join our new Loomio group, %{group}"
+    invite_people: "Invite people to your group"
     body_editable: |
-      Hi,
-
-      I’ve been looking into a new online tool for collaborative decision-making called Loomio that could be useful for our group.
-
+      Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio.
     message_body: "Invitation message"
-    invites_more_help: "You can customise the invitation your members receive, to explain what your group will be using Loomio for and why it’s worth their time to get involved."
-    invites_more_help1: "When you're ready, click 'finish setup' to send invitations and go to your brand new group!"
     invites_more_help2: "<p>You can invite people to your group at any time.</p><p>You might want to invite all your members in right away, or you could start by inviting just the people you’re working most closely with.</p>"
     send_invitations: "Send invitations"
     invitation_link: "Invitation link"
+    link_help: "Click this link to join %{group} on Loomio:"
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
 
   verified_email:

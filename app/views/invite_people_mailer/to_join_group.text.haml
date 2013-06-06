@@ -1,4 +1,4 @@
 = @message_body
 \
-Click this link to join the group:
+= t(:"invitation.link_help", group: @invitation.group.name)
 = invitation_url(@invitation)

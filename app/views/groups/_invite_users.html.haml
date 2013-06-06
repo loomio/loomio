@@ -1,4 +1,4 @@
-%h1= t("invitation.invites_header")
+%h2= t("invitation.invite_people")
 %br
 .control-group
   %p= t("invitation.recipients")
@@ -7,8 +7,6 @@
   %br
   %br
   = form.input :recipients, as: :hidden, input_html: { class: 'recipients' }
-  %p= t("invitation.invites_more_help")
 .control-group
   = form.input :message_body, label: false, as: :text, input_html: { value: t("invitation.body_editable", group: group.name) }, label: t("invitation.message_body")
-%p= t("invitation.invites_more_help1")
 
