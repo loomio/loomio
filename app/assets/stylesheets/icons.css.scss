@@ -1,82 +1,63 @@
+@import "settings";
+
 .button-icon{
-  display: inline-block;
   background-repeat: no-repeat;
+  display: inline-block;
   height: 18px;
-  width: 18px;
   padding: 0px 5px 0px 0;
   vertical-align: text-bottom;
+  width: 18px;
+  &.dot-icon {
+    background-image:url('/assets/dot-18.png');
+    float: right;
+  }
+  &:hover { color: $dark-grey; }
 }
+
 .activity-icon{
-  float: left;
-  padding-right: 0.4em;
-  display: block;
-  height: 18px;
   background-repeat: no-repeat;
   background-position: 2px 1px;
+  float: left;
+  display: block;
+  height: 18px;
+  padding-right: 0.4em;
   width: 18px;
+  &.discussion-icon { background-image:url('/assets/discussion-18.png'); }
+  &.loomio-icon { background-image:url('/assets/topic-18.png'); }
+  &.position-abstain-icon { background-image:url('/assets/hand-abstain-18.png'); }
+  &.position-block-icon { background-image:url('/assets/hand-block-18.png'); }
+  &.position-no-icon { background-image:url('/assets/hand-no-18.png'); }
+  &.position-unvoted-icon { background-image:url('/assets/questionmark-18.png'); }
+  &.position-yes-icon { background-image:url('/assets/hand-yes-18.png'); }
+  &.proposal-icon { background-image:url('/assets/pie-18.png'); }
 }
+
 .large-icon{
   background-repeat: no-repeat;
-  height: 24px;
-  width: 24px;
-  margin: 6px 13px 0 13px;
   float: left;
+  height: 24px;
+  margin: 6px 13px 0 13px;
+  width: 24px;
+  &.discussion-icon.enabled-icon  { background-image:url('/assets/discussion-24.png'); }
+  &.discussion-icon.disabled-icon  { background-image:url('/assets/discussion-light-24.png'); }
+  &.decision-icon { background-image:url('/assets/pie-24.png'); }
+  &.group-icon {
+    background-image:url('/assets/group-24.png');
+    margin: 0px;
+  }
+  &.notification-icon {
+    background-image:url('/assets/notification-24.png');
+    margin: 0;
+  }
+  &.pie-icon { background-image: url("pie-light-24.png"); }
+  &.topic-icon { background-image:url('/assets/topic-24.png'); }
 }
 
 .header-bar-icon{
-  position: relative;
   bottom: 2px;
+  position: relative;
 }
 
-.button-icon.dot-icon {
-  background-image:url('/assets/dot-18.png');
-  float: right;
-}
 
-.activity-icon.proposal-icon {
-  background-image:url('/assets/pie-18.png');
-}
-.activity-icon.discussion-icon {
-  background-image:url('/assets/discussion-18.png');
-}
-.activity-icon.loomio-icon {
-  background-image:url('/assets/topic-18.png');
-}
-.activity-icon.position-yes-icon {
-  background-image:url('/assets/hand-yes-18.png');
-}
-.activity-icon.position-abstain-icon {
-  background-image:url('/assets/hand-abstain-18.png');
-}
-.activity-icon.position-no-icon {
-  background-image:url('/assets/hand-no-18.png');
-}
-.activity-icon.position-block-icon {
-  background-image:url('/assets/hand-block-18.png');
-}
-.activity-icon.position-unvoted-icon {
-  background-image:url('/assets/questionmark-18.png');
-}
-.large-icon.topic-icon {
-    background-image:url('/assets/topic-24.png');
-}
-.large-icon.discussion-icon.enabled-icon  {
-    background-image:url('/assets/discussion-24.png');
-}
-.large-icon.discussion-icon.disabled-icon  {
-    background-image:url('/assets/discussion-light-24.png');
-}
-.large-icon.decision-icon {
-    background-image:url('/assets/pie-24.png');
-}
-.large-icon.group-icon {
-  background-image:url('/assets/group-24.png');
-  margin: 0px;
-}
-.large-icon.notification-icon {
-  background-image:url('/assets/notification-24.png');
-  margin: 0;
-}
-.large-icon.pie-icon {
-  background-image: url("pie-light-24.png");
-}
+
+

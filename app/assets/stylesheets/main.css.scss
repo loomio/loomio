@@ -1,18 +1,6 @@
 @import "settings";
 @import "bootstrap";
 @import "mixins";
-// TODO: // * define site color variables
-// * mixin for gradient
-
-/*CSS reset - does this exist elsewhere?*/
-ul, ol, li {
-  margin: 0;
-  padding: 0;
-}
-
-ul { list-style: none; }
-
-html { height: 100%; }
 
 body {
   background-color: $main-background;
@@ -20,9 +8,21 @@ body {
   color: $dark-grey;
 }
 
-hr { margin: 1px; }
+code{
+  padding: 1px 4px;
+  overflow: auto;
+  word-break: normal;
+  word-wrap: normal;
+}
 
-// Override bootstrap 2.3 headers with 2.0.3 styles
+form {
+  input, select, textarea { width: 100%; }
+  textarea {
+    margin-bottom: 0;
+    height: 200px;
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-family: inherit;
@@ -42,116 +42,53 @@ h3 {
   font-size: 18px;
   line-height: 27px;
 }
-h4 { font-size: 14px; }
-h5 { font-size: 12px; }
-h6 { font-size: 11px; }
-h4, h5, h6 { line-height: 18px; }
-
-.group-title h2 {
-  color: #777;
-  display: inline;
-  a { color: $header-link-color; }
+h4 {
+  font-size: 14px;
+  line-height: 18px;
+}
+h5 {
+  font-size: 12px;
+  line-height: 18px;
+}
+h6 {
+  font-size: 11px;
+  line-height: 18px;
+}
+h2, h3 {
+  margin: 15px 0 9px 0;
 }
 
-.font-size-85pc{ font-size: 85%; }
+hr { margin: 1px; }
 
-// structural elements (containers etc.)
-.page-container { margin-top: 30px; }
+html { height: 100%; }
 
-.popover {
-  width: 276px;
-  z-index: 10000;
-}
+ul { list-style: none; }
 
-.modal-backdrop { background: #999; }
-
-.sub_group {font-size: $font-tiny; }
-
-.discussion-with-motion-divider {
-  height: 1px;
-  background: #aaa;
-}
-
-// #start-new-discussion { margin: 0 0 20px 2px; }
-.main-content { margin-top: 20px; }
-#cancel-add-description:hover { color: $dark-grey; }
-
-/**** Structural elements ****/
-ul.selector-list.bordered { border-top: 1px solid $light-grey }
-li.selector-item {
-  background-color: $unhighlighted;
-  color: $dark-grey;
-  font-weight: normal;
-  border-bottom: 1px solid $light-grey;
-}
-.discussion-preview.unread {
-  background-color: $highlighted;
-  a { color: #333; }
-  a .proposal-title { color: black; }
-
-}
-li.selector-item a.selector-link {
-  display: block;
-  padding: 5px 5px 5px 15px;
-}
-li.selector-item a.selector-link:hover {
-  background-color: $selector;
-  text-decoration: none;
-  .group-activity-indicator.unread-group-activity { background-color: $group-activity; }
-}
-
-.motion-closing-inputs {
-  .control-group { display: inline-block; }
-  .motion-close-at-date { width: 140px; }
-  .motion-close-at-time, .motion-close-at-time-zone {
-    margin-top: 10px;
-    width: 113px;
-    display: inline-block;
-  }
+ul, ol, li {
+  margin: 0;
+  padding: 0;
 }
 
 .alert { margin: 10px 0; }
 
-// misc (move stuff out of here..)
-
-.helper-text p {
-  color: $mid-grey;
-  font-size: $font-small;
-}
-.helper-text h4 {
-  color: $mid-grey;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-.loading {
-  background: url(ajax-loader.gif) no-repeat;
-  background-position: 300px 200px;
-  line-height: 33.5em;
-  text-indent: -9999px;
-}
-.field_with_errors { display: inline; }
-.validate-length {
-  display: inline-block;
-  @include ie7-inline-block();
-}
-.control-label { display: inline; }
-
-.label-right{ float: right; }
-
-.label-group-activity {
-  background-color: $group-activity;
-  font-weight: normal;
-  font-size: $font-tiny;
+.btn-app {
+  line-height: 18px;
+  padding: 4px 8px 4px 8px;
+  width: 180px;
+  font-size: $font-medium;
+  text-align: left;
 }
 
-.group-presence-error-message {
-  float: right;
-  position: relative;
-  color: $error-color;
-}
+.btn-grey { color: $mid-grey; }
 
-.email-validation-help { color: $error-color }
-.inline-help { color: $error-color; }
+.cf {
+  zoom: 1;
+  &:after { clear:both; }
+  &:before, &:after {
+    content:"";
+    display:table;
+  }
+}
 
 .character-counter {
   color: $mid-grey;
@@ -163,79 +100,95 @@ li.selector-item a.selector-link:hover {
   font-size: $font-small;
 }
 
-// color coded urgency labels
-.color-urgent { background-color: #CA3232; }
-.color-warning { background-color: #F89406; }
-.color-ok { background: #016B01; }
-
-.page-title h1{
-    font-size: 24px;
-    margin-bottom: 0;
+.discussion-with-motion-divider {
+  height: 1px;
+  background: #aaa;
 }
 
-.rm-margin-top { margin-top: 0; }
+.field_with_errors { display: inline; }
 
-.rm-margin-bottom { margin-bottom: 0; }
+.inline-help { color: $error-color; }
 
-.rm-margin-bottom{
-  margin-bottom: 0;
-}
-
-#vote-form textarea { height: 100px; }
-
-form {
-  .robot_trap {
-    margin-left: -5000px;
-    margin-bottom: 0;
-    height: 0;
-  }
-
-  input, select, textarea {
-    width: 100%;
-  }
-
-  textarea {
-    margin-bottom: 0;
-    height: 200px;
-  }
-
-  h2, h3, .btn{
-    /*bootstrap form .control-groups have 9px bottom margin*/
-    margin: 15px 0 9px 0;
-  }
+.helper-text p {
+  color: $mid-grey;
+  font-size: $font-small;
 }
 
 .hidden {
   display: none;
 }
 
-.name-separator {
+.loading {
+  background: url(ajax-loader.gif) no-repeat;
+  background-position: 300px 200px;
+  line-height: 33.5em;
+  text-indent: -9999px;
+}
+
+.main-content { margin-top: 20px; }
+
+.page-container { margin-top: 30px; }
+
+ul.selector-list {
+  &.bordered { border-top: 1px solid $light-grey }
+
+  li.selector-item {
+    background-color: $unhighlighted;
+    border-bottom: 1px solid $light-grey;
+    color: $dark-grey;
+    font-weight: normal;
+
+    a.selector-link {
+      display: block;
+      padding: 5px 5px 5px 15px;
+
+      &:hover {
+        background-color: $selector;
+        text-decoration: none;
+      }
+    }
+    .unread {
+      background-color: $highlighted;
+      a {
+        color: #333;
+        .proposal-title { color: black; }
+      }
+    }
+  }
+}
+
+.sub-panel {
+  background-color: $sub-selector-panel;
+  border: 1px solid $light-grey;
+  @include border-radius(8px);
+  margin-bottom: 20px;
+  padding: 6px;
+
+  h4 {
+    line-height: 1.8em;
+    margin-bottom: 5px;
+  }
+
+  a { color: $mid-grey; }
+
+  .dropdown {
+    float: right;
+    li {
+      background-color: white;
+      line-height: 1em;
+    }
+    li a {
+      color: $dark-grey;
+      text-decoration: none;
+      text-shadow: none;
+      &:hover { color: white; }
+    }
+  }
+}
+
+.validate-length {
   display: inline-block;
   @include ie7-inline-block();
-  width: 15px;
-  position: relative;
-  bottom: 1px;
-  font-size: 0.6em;
-  text-align: center;
-}
-
-/* Markdown (Global so it's not specific to just Comments etc) */
-code{
-  padding: 1px 4px;
-  overflow: auto;
-  word-break: normal;
-  word-wrap: normal;
-}
-
-/* For modern browsers */
-.cf:before,
-.cf:after {
-  content:"";
-  display:table;
-}
-
-.cf:after {
-    clear:both;
 }
 
 .word-break {
@@ -251,51 +204,10 @@ code{
   -moz-binding: url('xbl.xml#wordwrap'); /* Firefox (using XBL) */
 }
 
-/* For IE 6/7 (trigger hasLayout) */
-.cf { zoom:1; }
-
-/* bootstrap UI CSS overrides - better IE7 compatibility */
-.popover-inner {
-  background: black;
+// edit description dropdown for group and discussion
+.edit-description {
+  color: $mid-grey;
+  text-decoration: underline;
+  &:hover { color: $dark-grey }
 }
-.selector-panel {
-  ul.tool-bar-list {
-    background-color: #f6f6f6;
-  }
-}
-.modal-backdrop { top: 0; }
-
-.modal {
-  opacity: 100%;
-  filter:alpha(opacity=100);
-  form {
-    margin: 0;
-    .btn{ margin: 0; }
-  }
-}
-
-.modal-header h3 {
-  display: inline;
-  width: 80%;
-  font-weight: bold;
-  font-size: 1em;
-}
-
-.modal-header h2 {
-  display: inline;
-  width: 80%;
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-/**** buttons ****/
-.btn-app {
-  line-height: 18px;
-  padding: 4px 8px 4px 8px;
-  width: 180px;
-  font-size: $font-medium;
-  text-align: left;
-}
-.group-options .btn-app.dropdown-toggle{ width: 110px; }
-.btn-grey { color: $mid-grey; }
-a.btn-icon:hover { color: $dark-grey; }
+#cancel-add-description:hover { color: $dark-grey; }
