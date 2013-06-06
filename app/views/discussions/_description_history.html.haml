@@ -4,7 +4,7 @@
 .modal-body
   .revision-title
     %h3= @discussion.title
-    %p.font-size-85pc
+    %p
       = t("description_history.edited_by", when: time_ago_in_words(@discussion.last_versioned_at), who: @originator.name)
       %em
         = " "

@@ -3,65 +3,12 @@
 
 /*** motion preview ***/
 
-.motion-preview:hover {
-  background-color: $selector;
-}
-
 .motion-preview {
   a {
     display: block;
+    &:hover { text-decoration: none; }
   }
-  a:hover {
-    text-decoration: none;
-  }
-  .vote-icon {
-    float: left;
-    width: 20px;
-    position: relative;
-    top: 6px;
-    padding-right: 7px;
-  }
-  .proposal-title-container {
-    color: $mid-grey;
-    float: left;
-    width: 470px;
-  }
-  .proposal-title {
-    font-size: $font-medium;
-    color: $dark-grey;
-  }
-  .proposal-outcome {
-    font-size: $font-small;
-  }
-  .proposal-close-date {
-    font-size: $font-small;
-    display: inline;
-    float: left;
-  }
-  .proposal-group-name {
-    font-size: $font-small;
-    position: relative;
-    left: 4px;
-  }
-  .engagement {
-    font-size: $font-small;
-    color: $mid-grey;
-    float: right;
-    width: 36px;
-    text-align: center;
-    margin-top: 9px;
-  }
-  .enguagement-label {
-    font-size: $font-tinywiny;
-    position: relative;
-    bottom: 4px;
-  }
-  .pie {
-    float: right;
-    width: 36px;
-    height: 36px;
-    z-index: 1;
-  }
+
   .activity-count {
     float: right;
     height: 14px;
@@ -70,65 +17,118 @@
     position: relative;
     left: 40px;
   }
-}
 
-/*** _motion (discussion page)***/
+  .pie {
+    float: right;
+    width: 36px;
+    height: 36px;
+    z-index: 1;
+  }
 
-#content-proposal{
-  .new-proposal-btn {
-    margin: 8px 8px 0 0;
+  .proposal-close-date {
+    font-size: $font-small;
+    display: inline;
     float: left;
   }
-  .motion-title { margin-top: 3px; }
-  margin-left: 0px;
-  .proposal-title-container {
-    width: 305px;
-  }
-  .motion-header-info {
-    width: 270px;
-    padding-right: 5px;
-  }
-  .motion-admin-buttons {
-    width: 125px;
-    margin-left: 0;
-    .btn {
-      margin: 5px 0 0 0;
-      width: 105px;
-      float: right;
-    }
-  }
-  .label{
-    text-transform: lowercase;
-    font-weight: normal;
-  }
-  #closing-info{
+
+  .proposal-group-name {
     font-size: $font-small;
+    position: relative;
+    left: 4px;
   }
+
+  .proposal-outcome { font-size: $font-small; }
+
+  .proposal-title {
+    font-size: $font-medium;
+    color: $dark-grey;
+  }
+
+  .proposal-title-container {
+    color: $mid-grey;
+    float: left;
+    width: 470px;
+  }
+
+  .vote-icon {
+    float: left;
+    width: 20px;
+    position: relative;
+    top: 6px;
+    padding-right: 7px;
+  }
+
+  &:hover { background-color: $selector; }
+}
+
+
+/*** _motion partial (discussion page) ***/
+
+#content-proposal{
+  margin-left: 0px;
+
+  #closing-info { font-size: $font-small; }
+
   #close-voting {
     float: right;
     margin: 5px 0 0 0;
   }
+
+  .description {
+    width: 380px;
+    p { color: $dark-grey; }
+  }
+
+  .control-group { padding-top: 0px; padding-bottom: 0px; }
+
+  .label {
+    text-transform: lowercase;
+    font-weight: normal;
+  }
+
+  .motion .pie { height: 250px; }
+
+  .motion-admin-buttons {
+    margin-left: 0;
+    width: 125px;
+
+    .btn {
+      float: right;
+      margin: 5px 0 0 0;
+      width: 105px;
+    }
+  }
+
+  .motion-header-info {
+    width: 270px;
+    padding-right: 5px;
+  }
+
+  .motion-title { margin-top: 3px; }
+
+  .new-proposal-btn {
+    float: left;
+    margin: 8px 8px 0 0;
+  }
+
+  .new_vote { padding-left: 0px; }
+
   #outcome-statement {
     color: $dark-grey;
-    textarea {
-      width: 390px;
-      max-width: 390px;
-      height: 40px;
-      max-height: 80px;
-    }
+
+    .button_to { margin: 0px; }
+
     .control-group { margin-bottom: 0px; }
+
     .character-counter {
       bottom: 0px;
       width: 250px;
       float: right;
       margin-bottom: 0px;
     }
-    .statement-display {
-      padding: 5px;
-      background-color: $lighter-grey;
-      font-size: 1em;
-    }
-    .button_to { margin: 0px; }
+
+    .no-outcome { font-style: italic; }
+
     .outcome-edit-button {
       margin: 0px;
       float: right;
@@ -137,64 +137,85 @@
       top: 0px;
       right: 0px;
     }
+
     .outcome-label {
       font-size: 1em;
       font-weight: bold;
       margin-bottom: 7px;
     }
-    .no-outcome { font-style: italic; }
+
+    .statement-display {
+      padding: 5px;
+      background-color: $lighter-grey;
+      font-size: 1em;
+    }
+
+    textarea {
+      height: 40px;
+      max-height: 80px;
+      max-width: 390px;
+      width: 390px;
+    }
   }
+
+  .proposal-title-container { width: 305px; }
+
   .proposed-by {
     font-size: $font-small;
     margin-bottom: 20px;
   }
-  .description { width: 380px; }
-  .description p{
-    //font-size: $font-small;
-    color: $dark-grey;
-  }
+
   .percentage-to-vote {
     font-size: $font-small;
     margin-bottom: 10px;
   }
-  .new_vote{ padding-left: 0px; }
-  .vote-form{
-    height: 100px;
-  }
-  #vote-statement .statement { width: 520px; }
-  #vote-statement .character-counter { width: 528px; }
+
   .validate-length { margin-left: 0px; height: 65px; }
-  .control-group { padding-top: 0px; padding-bottom: 0px; }
+
   .vote-buttons {
     .btn {
-      float: left;
-      width: 40px;
+      @include border-radius(5px);
       @include box-shadow(1px, 1px, 3px, $mid-grey);
       border: 1px solid $light-grey;
-      @include border-radius(5px);
-      padding: 3px;
+      float: left;
       margin: 10px 10px 15px 0;
+      padding: 3px;
+      width: 40px;
     }
+
     .popover-title { font-size: 1.2em; font-weight: 700; }
   }
-  .votes-table { padding-bottom: 10px; }
-  .votes-table .position-row {
-    padding-bottom: 3px;
-    padding-top: 2px;
+
+  #vote-statement {
+    .character-counter { width: 528px; }
+
+    .statement { width: 520px; }
   }
-  .votes-table .statement {
-    font-size: $font-tiny;
-    float: left;
-    color: #000;
-    display: inline;
+
+  .votes-table {
+    padding-bottom: 10px;
+
+    .btn {
+      float: right;
+      font-size: $font-tiny;
+      margin-left: 4px;
+      width: 20px;
+      padding: 2px 5px;
+    }
+
+    .position-row {
+      padding-bottom: 3px;
+      padding-top: 2px;
+    }
+
+    .statement {
+      color: #000;
+      display: inline;
+      font-size: $font-tiny;
+      float: left;
+    }
   }
-  .votes-table .btn {
-    float: right;
-    font-size: $font-tiny;
-    margin-left: 4px;
-    width: 20px;
-    padding: 2px 5px;
-  }
+
   .toggle-yet-to-vote{
     color: $mid-grey;
     font-size: $font-tiny;
@@ -202,12 +223,9 @@
   }
 }
 
-.motion .pie {
-    height: 250px;
-}
 table.jqplot-table-legend {
-  width: auto;
   border: none;
+  width: auto;
   td {
     border: none;
     line-height: 16px;
@@ -215,11 +233,16 @@ table.jqplot-table-legend {
   }
 }
 
-#vote-form{
-  textarea{
-    height: 100px;
-  }
-  h3{
-    margin: 15px 0 9px 0;
+.new_proposal, #edit-close-date {
+  .motion-closing-inputs {
+    .control-group { display: inline-block; }
+
+    .motion-close-at-date { width: 140px; }
+
+    .motion-close-at-time, .motion-close-at-time-zone {
+      display: inline-block;
+      margin-top: 10px;
+      width: 113px;
+    }
   }
 }

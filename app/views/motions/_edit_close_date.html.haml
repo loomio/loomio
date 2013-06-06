@@ -4,9 +4,7 @@
     %h3= t(:change_proposal_close_date_header, which: motion.name)
   = simple_form_for motion, :url => edit_close_date_motion_path(motion.id) do |f|
     .modal-body
-      .row
-        .span9
-          = render 'motions/close_at_inputs', form: f, user: user
+      = render 'motions/close_at_inputs', form: f, user: user
     .modal-footer
       = submit_tag "Change", class: "motion btn btn-info btn-large run-validations", id: 'change-close-date', :data => { :disable_with => t(:changing) }
 
