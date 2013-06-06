@@ -6,16 +6,16 @@
 
   <%= simple_form_for @group_request, url: approve_and_send_admin_group_request_path do |f| %>
     <textarea name="message_body", rows=20>
-Dear <%= @group_request.admin_name %>,
+Hi <%= @group_request.admin_name.split(' ').first %>,
 
-I've just approved your application to join Loomio. Click the link below to set it up.
+I've just approved your application to join Loomio. Click the link below to set up your group:
 
 {invitation_link}
 
-Let me know if you have any questions or feedback.
+Please let me know if you have any questions.
 
-Thank you,
-<%= current_user.name %>
+Thanks!
+<%= current_user.name.split(' ').first %>
     </textarea>
     <br/>
     <br/>
