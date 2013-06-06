@@ -32,6 +32,7 @@ Loomio::Application.routes.draw do
     put :finish, on: :member, to: 'groups/group_setup#finish'
 
     post :add_members, on: :member
+    post :hide_next_steps, on: :member
     get :add_subgroup, on: :member
 
     resources :motions

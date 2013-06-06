@@ -1,10 +1,17 @@
-- set_title @group.name, "", @group.parent
-= render '/groups/title', group: @group
-.clearfix
-  - if can? :create, @discussion
-    = icon_button(new_discussion_path(:group_id => @group.id), t(:start_a_discussion), '/assets/topic-18.png', 'start-new-discussion')
+.row
+  .span9
+    - set_title @group.name, "", @group.parent
+    = render '/groups/title', group: @group
+    - if can? :create, @discussion
+      = icon_button(new_discussion_path(:group_id => @group.id), t(:start_a_discussion), '/assets/topic-18.png', 'start-new-discussion')
+  .span3#button-container
+    - if can?(:add_members, @group) and @group.is_top_level?
+      = icon_button(new_group_invitation_path(@group), t(:invite_people), '/assets/member-18.png', 'invite-new-members')
+    = render 'options_dropdown', group: @group
+    =render 'request_membership', group: @group
+
 .row.main-content
-  %section.span8
+  %section.span9
     %ul.selector-list.bordered
       #all-discussions-loading
         %li.selector-item.loading= t(:loading)
@@ -17,16 +24,11 @@
       #group-discussions.hidden
         %div{ class: "group_#{@group.id}" }
 
-  %section.span4
-    =render 'request_membership', group: @group
-    .sub-panel#group-description-panel
-      %h4= t :group_description
-      =render 'groups/description', group: @group
+  %section.span3
+    =render 'setup_next_steps' if show_next_steps?(@group)
+    =render 'groups/description', group: @group
     =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
     =render '/application/see_closed_motions'
     =render 'membership_requests', group: @group
     =render 'members', group: @group
   =render '/application/closed_motions', user: nil, group: @group
-
-/ - if user_signed_in?# && (not current_user.has_read_group_notice)
-/   = render 'application/help_text', header: t('group_helper_text.header'), message: t('group_helper_text.message').html_safe, path: dismiss_group_notice_for_user_path

@@ -1,19 +1,20 @@
-- description_markdown_setting ||= false
-.description-container
-  .description-body
-    .long-description.model-description
-      ~ render_rich_text(group.description, description_markdown_setting)
+.sub-panel#group-description-panel
+  %h4= t :group_description
+  - description_markdown_setting ||= false
+  .description-container
+    .description-body
+      .long-description
+        ~ render_rich_text(group.description, description_markdown_setting)
+      - if can? :edit_description, group
+        = link_to "Edit group description", "#", class: "edit-description bottom-panel-link", id: 'edit_description'
 
     - if can? :edit_description, group
-      = link_to "Edit group info", "#", class: "edit-description edit-group-description", id: 'edit_description'
-
-  - if can? :edit_description, group
-    = form_tag send("edit_description_group_path", group), :id => "description-edit-form", :class => "hidden", :remote => true do |f|
-      = hidden_field_tag 'id'
-      .control-group
-        - class_str = 'validate-length limit-250'
-        = text_area_tag 'description', group.description, {id: 'description-input', class: class_str, :autofocus => true }
-        .character-counter
-      .save-buttons.clearfix
-        = submit_tag "Save", class: 'btn btn-small btn-grey run-validations', id: 'add-description-submit', :data => {:disable_with => "Saving"}
-        = link_to "Cancel", "#", id: 'cancel-add-description'
+      = form_tag send("edit_description_group_path", group), :id => "description-edit-form", :class => "hidden", :remote => true do |f|
+        = hidden_field_tag 'id'
+        .control-group
+          - class_str = 'validate-length limit-250'
+          = text_area_tag 'description', group.description, {id: 'description-input', class: class_str, :autofocus => true }
+          .character-counter
+        .save-buttons.clearfix
+          = submit_tag "Save", class: 'btn btn-small btn-grey run-validations', id: 'add-description-submit', :data => {:disable_with => "Saving"}
+          = link_to "Cancel", "#", id: 'cancel-add-description'

@@ -1,5 +1,4 @@
 When /^I choose to edit the group description$/ do
-  page.should have_css('.edit-group-description')
   find("#edit_description").click
 end
 
