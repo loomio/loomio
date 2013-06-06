@@ -1,14 +1,22 @@
-#users-list li {
-  height: 25px;
-  margin-bottom: 5px;
+ul#users-list {
+  li {
+    height: 25px;
+    margin-bottom: 5px;
 
-  img { float: left; }
+    img { float: left; }
 
-  .membership-user-name {
-    margin-left: 2px;
-    a {
-      text-decoration: none;
-      &:hover { text-decoration: underline; }
+    .membership-user-name {
+      margin-left: 2px;
+      a {
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+      }
+    }
+    .user-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 175px;
     }
   }
 }

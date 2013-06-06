@@ -1,6 +1,5 @@
 .sub-panel
   %h4= t :groups
-  = icon_button(request_new_group_path, t(:request_new_group), '/assets/group-18.png', 'request-new-group')
   %ul#dashboard-groups-list
     - current_user.parent_groups.each do |group|
       %li
@@ -12,3 +11,4 @@
               %li.sub-group
                 .group-link.clearfix
                   .group-link-name= link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
+    = link_to t(:request_new_group), request_new_group_path, id: 'request-new-group', class: 'bottom-panel-link'

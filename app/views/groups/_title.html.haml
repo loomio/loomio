@@ -1,37 +1,13 @@
-.page-container
-  .group-title#group-title
-    .row
-      - if group
-        .span10
-          %h1.home-title
-            = link_to t(:home), "/"
-            = content_tag :span, "\u25B6", class: 'name-separator'
-            = group.fancy_link
-          = render 'groups/privacy_dropdown', :group => group
-        - if params[:controller] == 'groups' && params[:action] == 'show'
-          - can_edit = can? :edit, group
-          - can_leave = group.users_include? current_user
-          - can_archive = can? :edit, group
-          - can_email = can? :email_members, group
-          - if can_edit || can_leave
-            .span2
-              .dropdown.btn-group.group-options
-                %a.btn.btn-grey.btn-app.dropdown-toggle.group-options{ :href => "#", 'data-toggle' => 'dropdown' }
-                  %i.icon-cog
-                  = t(:options)
-                  = image_tag("dropdown.png", :title => t(:options), :alt => t(:options), class: "options-dropdown-icon")
-                %ul.dropdown-menu.pull-right
-                  - if can_edit
-                    %li= link_to t(:edit_group_settings), edit_group_path(group)
-                  - if can_leave
-                    - membership = current_user.group_membership(group)
-                    %li= link_to t(:leave_group), "#", 'data-title' => t(:leave_group), 'data-body' => t(:confirm_leave_group, which_group: group.name), 'data-confirm-path' => group_membership_path(group, membership), 'data-method-type' => 'delete', class: 'confirm-dialog', id: 'leave group'
-                  - if can_archive
-                    %li= link_to t(:deactivate_group), "#", 'data-title' => t(:deactivate_group), 'data-body' => t(:confirm_deactivate_group, which_group: group.name), 'data-confirm-path' => archive_group_path(group), 'data-method-type' => 'post', class: 'confirm-dialog', id: 'de-activate group'
-          - if can_email
-            #email-members-modal.modal.hidden
-              = render "groups/email_members", :group => group
-      - else
-        .span10
-          %h1.home-title
-            = link_to t(:home), "/"
+.group-title
+  .row
+    - if group
+      .span10
+        %h1.home-title
+          = link_to t(:home), "/"
+          = content_tag :span, "\u25B6", class: 'name-separator'
+          = group.fancy_link
+        = render 'groups/privacy_dropdown', :group => group
+    - else
+      .span10
+        %h1.home-title
+          = link_to t(:home), "/"
