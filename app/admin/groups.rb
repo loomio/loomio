@@ -2,7 +2,6 @@ ActiveAdmin.register Group do
   actions :index, :show, :edit
   before_filter :set_pagination
   filter :name
-  filter :parent
 
   scope "Parent groups" do |group|
     group.where(parent_id: nil)
@@ -47,6 +46,7 @@ ActiveAdmin.register Group do
   
   show do |group|
     attributes_table do
+      row :group_request
       group.attributes.each do |k,v|
         row k.to_sym
       end
