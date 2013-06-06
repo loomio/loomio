@@ -362,9 +362,7 @@ en:
     body_editable: |
       Hi,
 
-      I’ve been looking into a new online tool for collaborative decision-making called Loomio that could be useful for our group. It looks like a great way to make decisions between meetings without a mountain of emails.
-
-      You can see how it works here: http://loomio.org/how-it-works/
+      I’ve been looking into a new online tool for collaborative decision-making called Loomio that could be useful for our group.
 
     message_body: "Invitation message"
     invites_more_help: "You can customise the invitation your members receive, to explain what your group will be using Loomio for and why it’s worth their time to get involved."
