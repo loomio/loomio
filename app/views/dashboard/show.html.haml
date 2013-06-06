@@ -3,7 +3,7 @@
   .clearfix
     = icon_button(new_discussion_path, t(:start_a_discussion), '/assets/topic-18.png', 'start-new-discussion')
   .row.main-content
-    %section.span8
+    %section.span9
       %ul.selector-list.bordered
         #all-discussions-loading
           %li.selector-item.loading= t(:loading)
@@ -16,7 +16,7 @@
         - if current_user && current_user.discussions.count == 0
           %li.empty-list-message.hidden= t(:empty_discussion_index)
       #user-discussions.hidden= t(:loading)
-    %section.span4
+    %section.span3
       =render 'groups'
       =render '/application/see_closed_motions'
     =render '/application/closed_motions', user: current_user, group: nil

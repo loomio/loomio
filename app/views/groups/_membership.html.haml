@@ -1,11 +1,5 @@
 %li{:id => user.id}
-  .clearfix
-    = render 'avatar', user: user, size: "small", kind: nil, id: nil
-    .user-name
-      - name_length = (user.is_group_admin?(group) or (can? :edit, group and current_user.is_group_admin?(group))) ? 18 : 35
-      %span.membership-user-name
-        = link_to truncate(user.name, :length => name_length, :omission => '...'), user_path(user),
-          class: 'user-name'
-    .admin-controls
-      - if user.is_group_admin?(group)
-        = t :group_admin
+  = render 'avatar', user: user, size: "small", kind: nil, id: nil
+  .user-name
+    %span.membership-user-name
+      = link_to user.name, user_path(user), class: 'user-name'

@@ -31,13 +31,6 @@ describe Groups::MembershipsController do
       it { @group.requested_users.should_not include(@user) }
       it { flash[:notice].should =~ /Membership request canceled/ }
       it { response.should redirect_to(@group) }
-
-      context "request was already canceled" do
-        before { post :cancel_request, :id => @membership.id }
-
-        it { response.should redirect_to(@group) }
-        it { flash[:warning].should =~ /Membership request has already been canceled/ }
-      end
     end
 
     it "sends an email to admins with new membership request" do

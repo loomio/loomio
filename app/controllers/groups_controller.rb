@@ -70,6 +70,13 @@ class GroupsController < GroupBaseController
     redirect_to group_url(group)
   end
 
+  def hide_next_steps
+    @group.update_attribute(:next_steps_completed, true)
+    # respond_to do | format |
+    #   format.html { redirect_to @group }
+    # end
+  end
+
   def request_membership
     if resource.users.include? current_user
       redirect_to group_url(resource)
