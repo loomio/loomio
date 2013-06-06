@@ -43,9 +43,7 @@ h5 { font-size: 12px; }
 h6 { font-size: 11px; }
 h4, h5, h6 { line-height: 18px; }
 
-.font-size-85pc{
-  font-size: 85%;
-}
+.revision-title p { font-size: 85%; }
 
 // structural elements (containers etc.)
 .page-container { margin-top: 30px; }
@@ -81,20 +79,6 @@ li.selector-item a.selector-link:hover {
 .color-urgent { background-color: #CA3232; }
 .color-warning { background-color: #F89406; }
 .color-ok { background: #016B01; }
-
-.page-title h1{
-    font-size: 24px;
-    margin-bottom: 0;
-}
-
-
-.rm-margin-top{
-  margin-top: 0;
-}
-
-.rm-margin-bottom{
-  margin-bottom: 0;
-}
 
 .hidden {
   display: none;
