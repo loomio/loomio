@@ -2,12 +2,12 @@
   .span6.offset2
     = simple_form_for @group_request, :validate => true do |f|
       %h1 Get your group on Loomio
-      Loomio is a young project under rapid development. At the moment we are accepting applications manually. Tell us about your group and we’ll bring you on as soon as we can.
+      %p Loomio is a young project under rapid development. At the moment we are accepting applications manually. Let us know about your group and we’ll bring you on as soon as we can.
 
       %h2 Tell us about your group
       = f.input :name, label: "What is the name of your group/organisation?"
       = f.input :description, label: "Tell us about your group and why you'd like to use Loomio."
-      = f.input :expected_size, label: "How many people to you expect to be in your Loomio group?"
+      = f.input :expected_size, label: "How many people do you expect to be in your Loomio group?"
 
       %h2 Tell us about yourself
       %p You’ll be the coordinator for your group while you’re getting set up.
@@ -15,11 +15,12 @@
       = f.input :admin_email, label: "What is your email address?"
 
       %h2 We’re trying something new...
-      %p
-        Loomio is a #{link_to('cooperative social enterprise', about_path, target: "_blank")}, working to make everyday democracy accessible to as many people as possible. To achieve this vision we’re developing an ethical payment model to resource the software development.
+      %p Loomio is a #{link_to('cooperative social enterprise', about_path, target: "_blank")}, working to make everyday democracy accessible to as many people as possible. To achieve this vision we’re developing an ethical payment model to resource the software development.
 
       %p It’s really useful for us to know what types of groups want to use Loomio, and what kind of payment model works best for them.
       = f.input :cannot_contribute, collection: [["<strong>Subscription:</strong><br/> Established groups and organisations pay a regular monthly subscription.".html_safe, false], ["<strong>Pay what you can:</strong><br/> If your group doesn’t have a formal budget, your group members will be invited to make a voluntary contribution.".html_safe, true]], as: :radio_buttons, label: "Which of the two options below would best fit your group?"
+
+      %p This isn’t a commitment to pay, just useful information to help us design our model. Thanks!
 
       = f.submit 'Submit Request', :class => "btn btn-large btn-info btn-block", data: {disable_with: "Requesting new group"}, id: "submit-group-request"
 
