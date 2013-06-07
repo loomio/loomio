@@ -49,9 +49,6 @@ GEM
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
-    asset_sync (0.5.4)
-      activemodel
-      fog
     awesome_nested_set (2.1.6)
       activerecord (>= 3.0.0)
     awesome_print (1.0.2)
@@ -406,7 +403,6 @@ DEPENDENCIES
   aasm (~> 3.0.3)
   activeadmin (~> 0.5.0)
   acts_as_commentable_with_threading (~> 1.1.2)
-  asset_sync (~> 0.5.4)
   awesome_print (~> 1.0.2)
   better_errors (~> 0.6.0)
   bootstrap-sass (~> 2.3.1.0)
