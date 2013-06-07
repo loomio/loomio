@@ -1,6 +1,9 @@
 body.group_requests {
   &.new, &.create {
+    abbr { display: none; }
+    h1 { margin-bottom: 10px; }
     textarea { height: 80px; }
+    .radio { padding-top: 10px; }
     .robot_trap {
       margin-left: -5000px;
       margin-bottom: 0;

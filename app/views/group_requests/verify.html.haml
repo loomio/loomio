@@ -4,9 +4,9 @@
   .row
     .span6.offset2
       %h1 Thanks for your application!
-
       %p
-        Your request to start a group on Loomio has been received. Our friendly humans will review it and we'll get back to you as soon as possible. If you haven’t heard from us within 48 hours, feel free to give us a nudge: contact@loomio.org.
+        Your request to start a group on Loomio has been received. Our friendly humans will review it and we'll get back to you as soon as possible. If you haven’t heard from us within 48 hours, feel free to give us a nudge:
+        = mail_to 'contact@loomio.org'
 
     .span2
       =image_tag("mascot-medium-lefthand.gif")
