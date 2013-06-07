@@ -10,6 +10,9 @@
         %p Please check your email for a verification link so that we know communication with you is getting through.
         %p
           %strong Make sure to click the link inside the email to finalise your request.
-        %p Contact us at contact@loomio.org if you don't receive an email.
+        %p
+          Contact us at
+          = mail_to 'contact@loomio.org'
+          if you don't receive an email.
       .span2
         =image_tag("mascot-medium-lefthand.gif")
