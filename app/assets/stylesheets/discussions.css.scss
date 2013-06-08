@@ -35,7 +35,7 @@ body.discussions.new, body.discussions.create {
 
 body.discussions.show {
   .description-body {
-    color: $dark-grey;
+    color: black;
     margin-bottom: 10px;
   }
 }
@@ -73,10 +73,9 @@ body.discussions.show {
   .selector-panel {
     background-color: $selector-panel;
     @include border-radius(8px);
-    border: 1px solid $light-grey;
-    margin-bottom: 20px;
+    border: 1px solid $lighter-grey;
+    margin: 10px 0 20px 0;
     min-height: 59px;
-    padding-top: 2px;
     .dropdown {
       float: right;
       padding: 5px 10px;
@@ -92,7 +91,7 @@ body.discussions.show {
   .discussion-title-container{
     display: inline-block;
     width: 850px;
-    margin: 0 0 4px 0px;
+    margin: 0 0 0 15px;
   }
   #edit-discussion-title {
     float: left;
@@ -125,16 +124,16 @@ body.discussions.show {
 
   #discussion-page-container {
     background-color: white;
-    border-top: 1px solid $light-grey;
-    border-bottom: 1px solid $light-grey;
+    border-top: 1px solid $lighter-grey;
+    border-bottom: 1px solid $lighter-grey;
     padding-bottom: 20px;
     margin-bottom: 5px;
   }
 
   #discussion-context {
-    min-height: 40px;
-    border-bottom: 1px solid $light-grey;
-    padding: 10px 0px 10px 50px;
+    min-height: 70px;
+    border-bottom: 1px solid $lighter-grey;
+    padding: 15px 10px 10px 15px;
 
     #discussion-markdown-dropdown {
       margin-right: 8px;
@@ -143,21 +142,18 @@ body.discussions.show {
   }
 
   .right-context {
-    width: 230px;
+    width: 265px;
   }
 
   .discussion-additional-info {
-    font-size: $font-small;
+    font-size: $font-smaller;
     color: $mid-grey;
-    width: 170px;
-    background-color: #EEE;
-    padding: 5px;
+    max-width: 190px;
     float: right;
   }
 
   .header-text {
-  //   color: $mid-grey;
-  //   font-weight: bold;
+    color: $mid-grey;
     line-height: 2.0em;
   }
 
@@ -196,7 +192,7 @@ body.discussions.show {
 .content-proposal-body {
   padding: 10px 10px 10px 50px;
 }
-.content-proposal-body ul.selector-list { border-top: 1px solid $light-grey; }
+.content-proposal-body ul.selector-list { border-top: 1px solid $lighter-grey; }
 li .motion {
   .close-date {
     font-size: $font-tiny;
@@ -283,9 +279,9 @@ pre{
 }
 
 #discussion-activity-container {
-  border-right: 1px solid $light-grey;
+  border-right: 1px solid $lighter-grey;
   min-height: 660px;
-  padding-right: 10px;
+  padding: 7px 10px 0 0;
 
   #discussion-activity-body {
     padding: 10px 0px 10px 8px;
@@ -316,12 +312,17 @@ pre{
     margin: 5px 5px 5px 45px;
   }
   ul#activity-list {
+    border-top: 1px solid $lighter-grey;
     list-style: none;
     margin: 0 15px 3px 0;
+    padding-top: 3px;
     width: 437px;
 
     li.empty-list-message {
       margin-left: 45px; /*check this still works*/
+    }
+    .activity-icon {
+      margin-left: -26px;
     }
     .divider {
       border-bottom: 1px solid $light-grey;
@@ -329,12 +330,12 @@ pre{
     }
     .activity-item-container {
       width: 100%;
+      margin-top: 8px;
     }
     .activity-item-body {
       margin-left: 45px;
-      border-bottom: 1px solid $light-grey;
-      margin-bottom: 5px;
-      padding-bottom: 5px;
+      border-bottom: 1px solid $lighter-grey;
+      padding-bottom: 9px;
     }
     .activity-item-avatar {
       height: 35px;
@@ -343,22 +344,32 @@ pre{
     }
     .activity-item-comment-actor{
       font-weight: bold;
+      float: left;
+      margin-right: 8px;
     }
     .activity-item-actor{
       font-weight: bold;
       a {color: $dark-grey;}
     }
     .activity-item-header{
-      color: $dark-grey;
+      p {
+        color: black;
+        &:last-child {
+          margin-bottom: 2px;
+        }
+      }
     }
     .activity-item-content{
       color: $mid-grey;
       font-style: italic;
       word-wrap: break-word;
     }
-    .activity-item-time{
-      color: $dark-grey;
+    .activity-item-time {
+      color: $mid-grey;
       font-size: $font-tiny;
+      a {
+        color: $mid-grey;
+      }
     }
     .activity-item-likes{
       color: $dark-grey;
@@ -383,7 +394,7 @@ pre{
 
 .popover-motion-name { color: black; }
 .popover-content { padding-top: 8px; }
-.popover-close-date { 
+.popover-close-date {
   font-weight: normal;
   display: inline;
   font-size: $font-tiny;
@@ -406,7 +417,7 @@ li.popover-item {
   .vote-time { font-size: $font-tiny; }
 }
 li.selector-item .discussion-preview:hover {
-  background-color: $selector;
+  background-color: $selector ! important;
 }
 
 .discussion-preview {
@@ -472,9 +483,14 @@ li.selector-item .discussion-preview:hover {
     height: 36px;
     z-index: 1;
   }
-  .activity-icon { float: right; }
-  .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
-  .pie-icon.activity-icon { margin: 10px 10px 0 0; }
+  .activity-icon {
+    float: right;
+  }
+  .discussion-icon.activity-icon {
+    margin: 8px 6px 0 0;
+  }
+  .pie-icon.activity-icon {
+    margin: 10px 5px 0 0; }
   .activity-count {
     font-size: $font-tinywiny;
     position: relative;
@@ -514,4 +530,10 @@ li.selector-item .discussion-preview:hover {
   padding: 5px 0 5px 0;
   border-bottom: 1px solid $light-grey;
   min-height: 40px;
+}
+
+.user-name {
+  &:link, &:visited {
+    color: $mid-grey;
+  }
 }
