@@ -10,6 +10,11 @@ $ ->
     placement: "top",
     trigger: "hover"
 
+# adds bootstrap tooltip to privacy dropdown
+$ ->
+  $("#privacy").tooltip
+    placement: "right"
+
 #adds bootstrap popovers to preview pies
 $ ->
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0

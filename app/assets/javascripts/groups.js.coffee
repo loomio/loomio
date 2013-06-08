@@ -48,12 +48,69 @@ $ ->
           activate_discussions_tooltips()
         )
         e.preventDefault()
-    )
-
+      )
 $ ->
-  $("#privacy").tooltip
-    placement: "right"
+  $('#setup-next-steps').css('cursor', 'default')
 
+$ -> #highlight start a discussion button on next-steps hover
+  if $("body.groups.show").length > 0
+    $("#first-discussion").mouseover (event) ->
+      # highlightNextStepsText($(this))
+      removeButtonGradient($("#start-new-discussion"))
+      addButtonHighlight($("#start-new-discussion"))
+
+$ -> #un_highlight
+  if $("body.groups.show").length > 0
+    $("#first-discussion").mouseleave (event) ->
+      # unHighlightNextStepsText($(this))
+      restoreButtonGradient($("#start-new-discussion"))
+      removeButtonHighlight($("#start-new-discussion"))
+
+$ -> #highlight example discussion on next-steps hover
+  if $("body.groups.show").length > 0
+    $("#example-discussion").mouseover (event) ->
+      # highlightNextStepsText($(this))
+      discussion = $('.discussion-preview:contains("Example Discussion")')
+      discussion.css('background-color', '#D9EDF7')
+
+$ -> #un_highlight
+  if $("body.groups.show").length > 0
+    $("#example-discussion").mouseleave (event) ->
+      # unHighlightNextStepsText($(this))
+      discussion = $('.discussion-preview:contains("Example Discussion")')
+      discussion.css('background-color', '#FFF')
+
+$ -> #highlight invite people button on next-steps hover
+  if $("body.groups.show").length > 0
+    $("#invite-people").mouseover (event) ->
+      # highlightNextStepsText($(this))
+      removeButtonGradient($("#invite-new-members"))
+      addButtonHighlight($("#invite-new-members"))
+
+$ -> #un_highlight
+  if $("body.groups.show").length > 0
+    $("#invite-people").mouseleave (event) ->
+      # unHighlightNextStepsText($(this))
+      restoreButtonGradient($("#invite-new-members"))
+      removeButtonHighlight($("#invite-new-members"))
+
+highlightNextStepsText = (object) ->
+  object.css('color', '#FFF')
+
+unHighlightNextStepsText = (object) ->
+  object.css('color', '#3A87AD')
+
+removeButtonGradient = (object) ->
+  object.css('background-image', 'none')
+
+restoreButtonGradient = (object) ->
+  object.css('background-image', 'linear-gradient(to bottom, #FFF, #E6E6E6)')
+
+addButtonHighlight = (object) ->
+  object.css('background-color', '#D9EDF7')
+
+removeButtonHighlight = (object) ->
+  object.css('background-color', '#F5F5F5')
 
 # adds bootstrap popovers to group activity indicators
 activate_discussions_tooltips = () ->
