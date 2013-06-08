@@ -6,7 +6,6 @@ Feature: Like post
     Given a group "demo-group" with "furry@example.com" as admin
     And I am logged in as "furry@example.com"
 
-  @javascript
   Scenario: Like post
     Given I am viewing a discussion titled "hello" in "demo-group"
     And I am on the discussion page

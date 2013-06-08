@@ -5,7 +5,8 @@ Given /^I am viewing a discussion titled "(.*?)" in "(.*?)"$/ do |disc_title, gr
 end
 
 When /^I choose to create a discussion$/ do
-  click_link 'Start a discussion'
+  # click_link 'Start a discussion'
+  click_on 'start-new-discussion'
 end
 
 When /^I select the group from the groups dropdown$/ do
@@ -67,7 +68,7 @@ When /^I disable markdown for the discussion description$/ do
   find('#discussion-markdown-dropdown .disable-markdown-link').click
 end
 
-Then /^the discussion desription should render markdown$/ do
+Then /^the discussion description should render markdown$/ do
   page.find('.description-body').should have_content('this markdown')
   page.find('.description-body').should_not have_content('_this markdown_')
 end

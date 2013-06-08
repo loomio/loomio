@@ -20,10 +20,10 @@ describe DiscussionItems::DiscussionTitleEdited do
     item.group.should == item.discussion.group
   end
 
-  it "#body returns the discussion's new title in quotes" do
+  it "#body returns the discussion's new title with a space at front" do
     item.stub_chain(:event, :created_at).and_return("blah")
     item.stub_chain(:discussion, :version_at, :title).and_return("goob")
-    item.body.should == " \"#{item.discussion.version_at.title}\""
+    item.body.should == " #{item.discussion.version_at.title}"
   end
 
   it "#time returns the time the discription's title was edited" do
