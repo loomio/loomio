@@ -80,19 +80,5 @@ Discussion.enableInlineEdition = ()->
     $(selected).children().first().children().addClass('icon-ok')
     event.preventDefault()
 
-Discussion.seeMoreDescription = () ->
-  #expand/shrink description text
-  if $("body.discussions.show").length > 0
-    $(".see-more").click((event) ->
-      $(this).parent().children(".short-description").toggle()
-      $(this).parent().children(".long-description").toggle()
-      if $(this).html() == "Show More"
-        $(this).html("Show Less")
-      else
-        $(this).html("Show More")
-      event.preventDefault()
-    )
-
 $ ->
   Discussion.enableInlineEdition()
-  Discussion.seeMoreDescription()

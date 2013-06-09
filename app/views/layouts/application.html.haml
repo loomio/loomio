@@ -16,7 +16,6 @@
       = render 'announcements' if user_signed_in?
       = render 'header'
       = render 'flash_messages', :flash => flash, :on_landing_page => false
-      = render_help_text if user_signed_in?
       .page-container
         = yield
 

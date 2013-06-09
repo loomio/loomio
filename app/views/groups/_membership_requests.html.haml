@@ -1,5 +1,5 @@
 - if group.membership_requests.present? && (can? :add_members, group)
-  .sub-panel
+  .sub-panel#membership-requests
     %h4= t :membership_requests
-    %ul#request-list
+    %ul
       =render :partial => 'membership_request', :collection => group.membership_requests
