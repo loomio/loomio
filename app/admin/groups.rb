@@ -14,6 +14,18 @@ ActiveAdmin.register Group do
     group.where('max_size > ? AND memberships_count/max_size >= ?', 0, 0.85)
   end
 
+  csv do
+    column :id
+    column :name
+    column :member_email_addresses do |g|
+      g.members.map{|m| [m.name, m.email] }.map{|ne| "#{ne[0]} <#{ne[1]}>"}.join(', ')
+    end
+
+    column :admin_email_addresses do |g|
+      g.admins.map{|m| [m.name, m.email] }.map{|ne| "#{ne[0]} <#{ne[1]}>"}.join(', ')
+    end
+  end
+
   index :download_links => false do
     if params[:pagination].blank?
       div :class => "admin-panel-paginate-toggle" do
