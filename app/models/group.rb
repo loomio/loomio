@@ -234,9 +234,12 @@ class Group < ActiveRecord::Base
   end
 
   def invitations_remaining
-    max_size - memberships_count 
+    max_size - memberships_count
   end
 
+  def is_setup?
+    self.setup_completed_at.present?
+  end
 
   private
 

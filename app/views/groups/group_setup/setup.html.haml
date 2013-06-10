@@ -1,82 +1,15 @@
 .row
-  .span12#group-setup
-    = simple_form_for @group_setup, url: finish_group_path, method: :put do |f|
-      %ul.nav.nav-tabs
-        %li.disabled.active
-          %a{ href: "#intro-tab" }
-            = t("group_setup_form.tabs.intro")
-        %li.disabled
-          %a{ href: "#group-tab" }
-            = t("group_setup_form.tabs.group")
-        %li.disabled
-          %a{ href: "#discussion-tab" }
-            = t("group_setup_form.tabs.discussion")
-        %li.disabled
-          %a{ href: "#invite-tab" }
-            = t("group_setup_form.tabs.invites")
-      .tab-content#wizard-tabs
-        .tab-pane.active#intro-tab
-          .row
-            .span5
-              %h1 Coordinating your first Loomio group
-              %br
-              %p As the coordinator, you’re responsible for setting up your Loomio group and inviting everyone in.
-              %p As well as learning how to use a new piece of software, your group will be learning new processes for collaborating more effectively and making good decisions together.
-              %p Take a minute to think about how you can create an experience that immediately engages your new members when they see Loomio for the first time.
-              %p It might be a good idea to talk to your group before you invite them.
-              %p People will want to know why they’ve been invited, what’s expected of them, and why it’s worth their time to learn how to use a new tool.
+  .span7
+    %h1 Coordinating your Loomio group
+.row
+  .span6#group-setup
+    %p= t("group_setup.intro")
+    = simple_form_for @group, url: finish_group_path, method: :put, validate: true do |f|
+      = f.input :name
+      = f.input :description, as: :text
+      %h2= t "group_form.privacy_settings"
+      = f.input :viewable_by, :as => 'radio_buttons', collection: [:everyone, :members]
+      %br
+      = f.input :members_invitable_by, :as => "radio_buttons", collection: [:admins, :members]
 
-              %h2 Ready to get started?
-              %p
-                %a{class: "btn btn-large btn-info", id: "start"}
-                  Start setting up your group!
-        .tab-pane#group-tab
-          %h1= t("group_setup_form.group_header")
-          .row
-            .span5
-              .control-group
-                = f.input :group_name, input_html: { class: 'validate-presence' }
-                .inline-help= t("group_setup_form.errors.group_name")
-              .control-group
-                .control-group
-                  = f.text_area :group_description, class: 'validate-presence validate-length limit-250'
-                  .character-counter
-                .inline-help= t("group_setup_form.errors.group_description")
-              %h2= t("group_setup_form.group_settings_header")
-            .span4.offset1.more-help= t("group_setup_form.group_more_help").html_safe
-          .row
-            .span5
-              = f.input :viewable_by, :as => 'radio_buttons', :collection => {'Public - anyone with the link can see this group' => 'everyone', 'Members - only members of this group can see it' => 'members'}
-              %br
-              = f.input :members_invitable_by, :as => "radio_buttons", :collection => {'All group members' => 'members', 'Coordinators only' => 'admins'}, label: "Who can invite people to your group?"
-
-        .tab-pane#discussion-tab
-          .row
-            .span5
-              %h1= t("group_setup_form.discussion_header")
-          .row
-            .span5
-              .control-group
-                %p This will be the first discussion your members see when they join Loomio.
-                = f.input :discussion_title, input_html: { class: 'validate-presence' }
-                .inline-help= t("group_setup_form.errors.discussion_title")
-              .control-group
-                = f.input :discussion_description, input_html: { class: 'validate-presence' }
-                .inline-help= t("group_setup_form.errors.discussion_description")
-            .span4.offset1.more-help= t("group_setup_form.discussion_more_help").html_safe
-
-        .tab-pane#invite-tab
-          .row
-            .span5
-              = render 'groups/invite_users', form: f, group: @group
-            .span4.offset1
-              %br
-              %br
-              .more-help= t("invitation.invites_more_help2").html_safe
-      .row
-        .span5
-          = f.submit "Finish setup", class: 'btn btn-info btn-large run-validations', id: 'send_invites', :data => { :disable_with => "Finish setup" }
-          = link_to t('next'), '#', class: 'btn btn-info btn-large', id: 'next'
-          = link_to t('prev'), '#', class: 'btn btn-warning btn-large', id: 'prev'
-      .row
-        .span5#saved-at
+      = f.submit t("group_setup.submit"), class: 'btn btn-info btn-large pull-right', id: 'complete_setup', :data => { :disable_with => t("group_setup.submit") }
