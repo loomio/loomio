@@ -6,7 +6,7 @@
       = icon_button(new_discussion_path(:group_id => @group.id), t(:start_a_discussion), '/assets/topic-18.png', 'start-new-discussion')
   .span3#button-container
     - if can?(:add_members, @group) and @group.is_top_level?
-      = icon_button(new_group_invitation_path(@group), t(:invite_people), '/assets/member-18.png', 'invite-new-members')
+      = render 'invite_button', group: @group
     = render 'options_dropdown', group: @group
     =render 'request_membership', group: @group
 
