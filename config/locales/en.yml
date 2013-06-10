@@ -1,4 +1,9 @@
 en:
+  activerecord:
+    errors:
+      messages:
+        blank: "can't be blank"
+
   errors:
     messages:
       email: "Not a valid email address"
@@ -27,7 +32,6 @@ en:
     group_request_invalid_token: "Sorry! This is an invalid token"
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
-    not_permitted_to_setup_group: "You do not have permission to setup this group."
     proposal_already_exists: "There is already an open proposal in this discussion."
   alert:
     duplicate_email: "%{which_email} is already in the group."
@@ -375,6 +379,31 @@ en:
     subject: "defered (placeholder)"
 
   #
+  # EXAMPLE CONTENT
+  #
+
+  example_discussion:
+    title: "Example Discussion: Welcome and introduction to Loomio"
+    description: |
+      Welcome to Loomio, a new tool for group decision-making.
+
+      By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, your group can put their heads together to find the best way forward.
+
+      You can use this example discussion to play around with the features of the tool.
+
+      To get the ball rolling, Loomio Helper Bot thinks it would be a great idea for your group to take a holiday together. The pie graph on the right shows how your group feels about the proposal. You can have your say by clicking on one of the decision buttons underneath.
+  example_motion:
+    name: "We should have a holiday on the moon!"
+    description: |
+      Loomio Helper Bot is really keen for your group to invest in a trip to the moon. Apparently the space-cheese is delicious. But the implications for your carbon footprint are worrying.
+
+      Is it a good idea? Loomio Helper Bot wants to know what you think!
+
+      If you’re clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).
+
+      You’ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes.
+
+  #
   # FORMS
   #
 
@@ -388,12 +417,8 @@ en:
     name_helper: "Make the title as clear and succinct as possible."
 
   group_form:
-    privacy_settings: "Privacy Settings"
-    everyone_details: "Public - anyone with the link can see this %{group_or_subgroup}"
-    members_details: "Members - only members of this %{group_or_subgroup} can see it"
-    parent_group_members_details: "Parent group members - only members of the main group can view this sub-group"
+    privacy_settings: "Privacy settings"
     invitation_settings: "Invitation Settings"
-    all_group_members: "All %{group_or_subgroup} members"
     admins_only: "Admins only"
 
   vote_form:
@@ -425,30 +450,9 @@ en:
     use_avatar_kind: "Use %{kind}"
     upload_new_image: "Upload a new image"
 
-  group_setup_form:
-    tabs:
-      intro: "Before you start"
-      group: "Set up your group"
-      discussion: "Start a discussion"
-      invites: "Invite your group"
-    group_header: "Set up your group"
-    group_settings_header: "Settings"
-    group_settings_blurb: "Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term."
-    group_more_help: "<p>The first question every new member will have is <em>what is this group for?</em></p><p>Think about the simplest way you can describe the group:<ul><li>What do you want to achieve together?</li><li>What types of decisions will you be making?</li><li>Who will be involved?</li></ul>"
-    discussion_header: "Start a discussion"
-    discussion_blurb: "Setting up an engaging discussion relevant to your group before inviting people in will dramatically increase the likelihood of your group succeeding in using Loomio long-term."
-    discussion_more_help: "<p>Make sure you start with a clear discussion that your group members can easily engage with, so people can jump in and start participating straight away.</p><p>Is your group already having a discussion that you could shift to Loomio?</p>"
-
-    errors:
-      group_name: "Please fill in the group title"
-      group_description: "Please fill in the group description"
-      discussion_title: "Please fill in the discussion title"
-      discussion_description: "Please fill in the discussion description"
-      motion_title: "Please fill in the motion title"
-      motion_description: "Please fill in the motion description"
-      motion_closing_inputs: "Please give a future close date"
-      admin_email: "Please fill in the an administrator email address"
-      invitees: "Please fill in the invited email addresse(s)"
+  group_setup:
+    intro: "As the group coordinator, you’re responsible for setting up and managing your Loomio group. First you need to fill in a few settings, then you can get into your new group, start a discussion or two, and send out some invitations!"
+    submit: "Take me to my group!"
 
   simple_form:
     labels:
@@ -456,9 +460,10 @@ en:
         title: "Title"
         description: "Context"
       group:
-        name: "Group Name"
-        viewable_by: "Who can see this %{group_or_subgroup}?"
-        invitable_by: "Who can invite members to this %{group_or_subgroup}?"
+        name: "What is the name of your group?"
+        description: "Give a brief description of your group:"
+        viewable_by: "Who can see this group?"
+        members_invitable_by: "Who can invite people to this group?"
       motion:
         name: "Title"
         description: "Details"
@@ -467,13 +472,16 @@ en:
         email: "Email"
         password: "Password"
         language_preference: "Language"
-      group_setup:
-        group_name: "What is the name of your group?"
-        group_description: "Give a brief description of your group"
-        viewable_by: "Who can see this group?"
-        members_invitable_by: Who can invite members to this group?
-        discussion_name: "What’s the first topic you’d like to discuss with your group?"
-        discussion_description: "Introduce the topic and give enough information to get the conversation started:"
+
+    options:
+      group:
+        viewable_by:
+          everyone: 'Public - anyone with the link can see this group'
+          members: 'Members - only members of this group can see it'
+          parent_group_members: "Parent group members - only members of the main group can view this sub-group"
+        members_invitable_by:
+          admins: 'Coordinators only'
+          members: 'All group members'
 
     placeholders:
       discussion:
@@ -482,12 +490,11 @@ en:
       motion:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
-      group_setup:
-        discussion_title: "What is the topic you would like to discuss?"
+      group:
+        description: "Think about the simplest way you can describe your group: What do you want to achieve together? What types of decisions will you be making? Who will be involved?"
+
   helpers:
     submit:
-      group_setup:
-        create: "Finish setup"
       discussion:
         create: "Start discussion"
       motion:

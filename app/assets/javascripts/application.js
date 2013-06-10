@@ -25,7 +25,6 @@
 //= require bootstrap-custom
 //= require main
 //= require invitations
-//= require group_setup
 //= require validations
 //= require groups
 //= require discussions
