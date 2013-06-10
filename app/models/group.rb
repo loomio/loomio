@@ -234,7 +234,7 @@ class Group < ActiveRecord::Base
   end
 
   def invitations_remaining
-    max_size - memberships_count
+    max_size - memberships_count - pending_invitations.count
   end
 
   def is_setup?

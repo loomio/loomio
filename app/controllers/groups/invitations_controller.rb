@@ -1,5 +1,6 @@
 class Groups::InvitationsController < GroupBaseController
   before_filter :require_current_user_can_invite_people
+  before_filter :ensure_invitations_available, only: [:new, :create]
 
   def new
     @invite_people = InvitePeople.new
@@ -30,6 +31,12 @@ class Groups::InvitationsController < GroupBaseController
   end
 
   private
+
+  def ensure_invitations_available
+    unless @group.invitations_remaining > 0
+      render 'no_invitations_left'
+    end
+  end
 
   def load_invitation
     @invitation = @group.pending_invitations.find(params[:id])
