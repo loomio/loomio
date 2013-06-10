@@ -95,7 +95,7 @@ Application.displayGraph = (this_pie, graph_id, data)->
     diameter: 25
     padding: 1
     gap: 1
-    shadow: 0.75
+    shadow: 0
 
 hideOrShowOutcome = () ->
   if $("#outcome-input").length > 0

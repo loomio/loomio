@@ -2,6 +2,6 @@
   =t :proposal
 %span{class: css_class_for_close_at(motion)}
   - if motion.close_at
-    = time_ago_in_words(motion.close_at) + t(:until_close)
+    = time_ago_in_words(motion.close_at) + ' ' + t(:until_close)
 .popover-motion-name
   = motion.name
