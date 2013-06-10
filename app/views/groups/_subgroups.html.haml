@@ -1,10 +1,9 @@
-#sub-groups-panel
-  .sub-panel
-    %h4= t :subgroups
-    - if (can? :add_subgroup, group) && group.users.include?(current_user)
-      = icon_button(add_subgroup_group_path(group), t(:create_a_subgroup), '/assets/group-18.png', 'subgroup-new')
-    %ul.group-links
-      - subgroups.each do |subgroup|
-        %li
-          .group-link
-            = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
+.sub-panel#sub-groups-panel
+  %h4= t :subgroups
+  %ul.group-links
+    - subgroups.each do |subgroup|
+      %li
+        .group-link
+          = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
+  - if (can? :add_subgroup, group) && group.users.include?(current_user)
+    = link_to t(:create_a_subgroup), add_subgroup_group_path(group), id: 'subgroup-new', class: 'bottom-panel-link';

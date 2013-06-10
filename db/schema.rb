@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605041615) do
+ActiveRecord::Schema.define(:version => 20130610051804) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -234,6 +234,7 @@ ActiveRecord::Schema.define(:version => 20130605041615) do
     t.integer  "motions_count",        :default => 0,     :null => false
     t.string   "country_name"
     t.datetime "setup_completed_at"
+    t.boolean  "next_steps_completed", :default => false, :null => false
   end
 
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -339,9 +340,6 @@ ActiveRecord::Schema.define(:version => 20130605041615) do
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
-    t.boolean  "has_read_dashboard_notice",                                   :default => false,      :null => false
-    t.boolean  "has_read_group_notice",                                       :default => false,      :null => false
-    t.boolean  "has_read_discussion_notice",                                  :default => false,      :null => false
     t.boolean  "subscribed_to_daily_activity_email",                          :default => true,       :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,       :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false

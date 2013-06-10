@@ -1,3 +1,3 @@
 .sub-panel.previous-discussions-panel
   %h4= t(:previous_decisions)
-  = icon_button('#', t(:see_previous_decisions), '/assets/pie-18.png', 'show-closed-motions')
+  = link_to t(:see_previous_decisions), '#', id: 'show-closed-motions', class: 'bottom-panel-link'

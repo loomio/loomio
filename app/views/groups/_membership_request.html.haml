@@ -1,6 +1,4 @@
 %li
-  .clearfix
-    .membership-user-name= truncate(membership_request.user_name, :length => 29, :omission => '...')
-    .admin-controls
-      =link_to t(:approve), "#", 'data-title' => t(:approve), 'data-body' => t(:confirm_approve_membership_request, which_user: membership_request.user_email), 'data-confirm-path' => approve_request_for_group_membership_path(membership_request.group, membership_request), 'data-method-type' => 'post', class: 'confirm-dialog', id: 'approve'
-      =link_to "×", "#", 'data-title' => t(:ignore_request), 'data-body' => t(:confirm_ignore_membership_request, which_user: membership_request.user_email), 'data-confirm-path' => ignore_request_for_group_membership_path(membership_request.group, membership_request), 'data-method-type' => 'post', class: 'confirm-dialog close', id: 'ignore'
+  .membership-user-name= truncate(membership_request.user_name, :length => 29, :omission => '...')
+  =link_to t(:approve), "#", 'data-title' => t(:approve), 'data-body' => t(:confirm_approve_membership_request, which_user: membership_request.user_email), 'data-confirm-path' => approve_request_for_group_membership_path(membership_request.group, membership_request), 'data-method-type' => 'post', class: 'confirm-dialog', id: 'approve'
+  =link_to "×", "#", 'data-title' => t(:ignore_request), 'data-body' => t(:confirm_ignore_membership_request, which_user: membership_request.user_email), 'data-confirm-path' => ignore_request_for_group_membership_path(membership_request.group, membership_request), 'data-method-type' => 'post', class: 'confirm-dialog close', id: 'ignore'

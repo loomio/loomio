@@ -31,13 +31,6 @@ body.discussions.new, body.discussions.create {
 }
 #start-proposal-text { padding: 4px; }
 
-.see-more {
-  font-size: $font-small;
-  position: relative;
-  bottom: 10px;
-  display: block;
-}
-
 .model-description { padding-bottom: 10px; }
 
 body.discussions.show {
@@ -46,6 +39,8 @@ body.discussions.show {
     margin-bottom: 10px;
   }
 }
+.long-description { padding-bottom: 10px; }
+
 .revision-title p { font-size: 85%; }
 
 #description-edit-form {
@@ -217,7 +212,7 @@ li s hard.motion-preview {
   /* Markdown styling */
 
 .activity-item-body .popover h3 { padding: 8px 14px; }
-.activity-item-body, .model-description, .motion .description {
+.activity-item-body, .long-description, .motion .description {
   p {
     word-wrap: break-word;
   }
@@ -416,7 +411,7 @@ li.selector-item .discussion-preview:hover {
 
 .discussion-preview {
   float: left;
-  width: 620px;
+  width: 700px;
   height: 47px;
   background-color: $unhighlighted;
   a {
@@ -426,7 +421,7 @@ li.selector-item .discussion-preview:hover {
     text-decoration: none;
   }
   a.selector-discussion-link {
-    width: 573px;
+    width: 653px;
     float: left;
     padding: 5px 0 5px 5px;
   }
@@ -457,7 +452,7 @@ li.selector-item .discussion-preview:hover {
   .group-name {
     font-size: $font-small;
     color: $mid-grey;
-    width: 340px;
+    width: 460px;
   }
   .discussion-date-info {
     display: inline;
