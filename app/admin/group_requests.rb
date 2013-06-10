@@ -13,7 +13,7 @@ ActiveAdmin.register GroupRequest do
   index do
     column :id
     column :name_and_email do |gr|
-      "#{gr.admin_name} <br/> #{gr.admin_email}".html_safe
+      "Group: #{gr.name} <br />Admin: #{gr.admin_name} <br/> #{gr.admin_email}".html_safe
     end
     column :description
     column :admin_notes
