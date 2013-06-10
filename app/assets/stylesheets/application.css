@@ -19,7 +19,6 @@
  *= require users
  *= require memberships
  *= require invitations
- *= require group_setup
  *= require group_requests
  *= require help
 */

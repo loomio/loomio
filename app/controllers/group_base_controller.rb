@@ -13,7 +13,7 @@ class GroupBaseController < BaseController
     load_group
     unless @group.admins.include? current_user
       flash[:warning] = t("warning.user_not_admin", which_user: current_user.name)
-      redirect_to group_path(params[:group_id])
+      redirect_to group_path(@group.id)
     end
   end
 
@@ -22,7 +22,11 @@ class GroupBaseController < BaseController
   end
 
   def load_group
-    @group ||= Group.find(params[:group_id])
+    @group ||= Group.find(group_id)
+  end
+
+  def group_id
+    params[:group_id] || params[:id]
   end
 
   def check_group_read_permissions
