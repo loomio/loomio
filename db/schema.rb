@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(:version => 20130610051804) do
     t.integer  "approved_by_id"
     t.text     "why_do_you_want"
     t.text     "group_core_purpose"
+    t.text     "admin_notes"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
