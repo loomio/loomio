@@ -151,8 +151,14 @@ en:
   # GROUP PAGE
   #
 
+  setup_steps_title: "Next steps:"
+  setup_step_1: "Check out the example discussion"
+  setup_step_2: "Start your first discussion"
+  setup_step_3: "Invite people to your group"
+
   invite_people: "Invite people"
-  pending_invitations: 'Pending invitations'
+  pending_invitations: 'Pending Invitations'
+  number_pending: 'and %{pending} pending'
   edit_memberships: 'Edit memberships'
 
   add_new_member: "Add new member"

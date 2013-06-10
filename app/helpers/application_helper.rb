@@ -77,38 +77,5 @@ module ApplicationHelper
 
     Redcarpet::Render::SmartyPants.render(output).html_safe
   end
-
-  def help_text_dismissed?
-    return true unless current_user
-    case "#{controller_name} #{action_name}"
-    when 'discussions show'
-      current_user.has_read_discussion_notice?
-    when 'groups show'
-      current_user.has_read_group_notice?
-    when 'dashboard show'
-      current_user.has_read_dashboard_notice?
-    else
-      true
-    end
-  end
-
-  def help_text_args
-    args = {}
-    case "#{controller_name} #{action_name}"
-      when 'discussions show'
-        args = { header: t("discussion_helper_text.header"), message: t("discussion_helper_text.message").html_safe, path: dismiss_discussion_notice_for_user_path }
-      when 'groups show'
-        args = { header: t("group_helper_text.header"), message: t("group_helper_text.message").html_safe, path: dismiss_group_notice_for_user_path }
-      when 'dashboard show'
-        args = { header: t("dashboard_helper_text.header"), message: t("dashboard_helper_text.message").html_safe, path: dismiss_dashboard_notice_for_user_path }
-    end
-    args
-  end
-
-  def render_help_text
-    unless help_text_dismissed?
-      render '/application/help_text', args: help_text_args
-    end
-  end
 end
 

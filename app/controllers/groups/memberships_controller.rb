@@ -77,16 +77,12 @@ class Groups::MembershipsController < GroupBaseController
   end
 
   def cancel_request
-    if @membership = Membership.find_by_id(params[:id])
-      authorize! :cancel_request, @membership
-      @group = @membership.group
-      @membership.destroy
-      flash[:notice] = t("notice.membership_request_canceled")
-      redirect_to @group
-    else
-      flash[:warning] = t("warning.membership_request_already_canceled")
-      redirect_to @group
-    end
+    @membership = Membership.find_by_id(params[:id])
+    authorize! :cancel_request, @membership
+    @group = @membership.group
+    @membership.destroy
+    flash[:notice] = t("notice.membership_request_canceled")
+    redirect_to @group
   end
 
   def create

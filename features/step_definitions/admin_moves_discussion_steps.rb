@@ -8,7 +8,7 @@ When /^I select the destination subgroup$/ do
 end
 
 Then /^I should see the destination subgroup name in the page title$/ do
-  find('#group-title').should have_content @subgroup.name
+  find('.group-title').should have_content @subgroup.name
 end
 
 When /^I select the destination parent group$/ do
@@ -16,7 +16,7 @@ When /^I select the destination parent group$/ do
 end
 
 Then /^I should not see the subgroup name in the page title$/ do
-  find('#group-title').should_not have_content @subgroup.name
+  find('.group-title').should_not have_content @subgroup.name
 end
 
 When /^I click on move$/ do

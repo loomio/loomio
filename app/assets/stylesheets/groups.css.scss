@@ -6,47 +6,42 @@ body.groups {
   &.show {
     .discussion-preview .discussion-title { margin-top: 7px; }
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }
-
+    #button-container { margin-top: 5px; }
     #group-description-panel {
       #description-edit-form {
-        margin-bottom: 0;
-
+        margin-bottom: 0px;
         #description-input {
+          width: 270px;
           height: 90px;
           margin-bottom: 2px;
-          width: 270px;
         }
-
         .character-counter {
-          top: 0;
           width: 278px;
+          top: 0;
         }
-
-        .control-group { margin-bottom: 0; }
+        .dropdown-menu a {
+          padding-left: 5px;
+        }
+        form {
+          margin: 0;
+          display: inline;
+        }
       }
     }
-
-    #sub-groups-panel {
-      .group-link a:hover { color: $dark-grey; }
-    }
-
-    #members-panel {
-      .membership-count {
-        background-color: $light-grey;
-        color: white;
-        font-size: $font-small;
-        margin: 2px;
+    .group-options {
+      width: 200px;
+      .dropdown-menu {
+        min-width: 216px;
+        margin-top: 0;
+        left: 0;
       }
-
-      .membership-user-name { float: left; }
-
-      #users-list .admin-controls {
-        color: $mid-grey;
-        float: right;
-        font-size: $font-tiny;
-        text-align: right;
+      .icon-cog {
+        margin: 2px 3px;
+        opacity: 0.4;
       }
     }
+    #invite-new-members { float: right; }
+
     .invite-member-checkbox-container {
       label {
         display: inline;
@@ -55,8 +50,80 @@ body.groups {
         top: 4px;
       }
     }
+
+    #members-panel {
+      .dropdown-menu {
+        min-width: 205px;
+        margin-top: 0;
+      }
+      #group-member-options {
+        float: right;
+        height: 14px;
+        line-height: 16px;
+        margin-top: 1px;
+      }
+      .membership-count {
+        background-color: $light-grey;
+        color: white;
+        font-size: $font-small;
+        margin: 2px;
+        float: right;
+      }
+    }
+    #request-membership {
+      form { display: inline; }
+      .btn {
+        width: 170px;
+        color: $mid-grey;
+      }
+    }
+    #membership-requests {
+      #approve { font-size: $font-tiny; }
+      .membership-user-name {
+        color: #777;
+        display: inline-block;
+        width: 146px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    #setup_next_steps {
+      background-color: #D9EDF7;
+      border-color: #BCE8F1;
+      color: #3A87AD;
+      ol {
+        margin-left: 20px;
+      }
+      padding-bottom: 10px;
+    }
+
+    #request-membership {
+      margin-bottom: 10px;
+      .btn {
+        width: 195px;
+        color: $mid-grey;
+      }
+      form { display: inline; }
+      #request-new-membership { width: 220px; }
+    }
+
+    #setup-next-steps {
+      background-color: #D9EDF7;
+      border-color: #BCE8F1;
+      color: #3A87AD;
+      padding-bottom: 10px;
+      ol { margin-left: 20px; }
+    }
+
+    #sub-groups-panel {
+      .group-link a:hover { color: $dark-grey; }
+    }
   }
 }
+
+#group_email_subject { width: 510px; }
+#group_email_body { width: 510px; }
 
 // group title (on almost all pages)
 .group-title {
@@ -65,65 +132,37 @@ body.groups {
     font-size: 24px;
     margin-bottom: 0;
   }
-
   .home-title {
     color: $dark-grey;
     display: inline;
   }
-
-  .group-options {
-    display: inline;
-    float: right;
-    position: relative;
-    top: 5px;
-
-    .btn-app.dropdown-toggle{ width: 110px; }
-
-    .icon-cog {
-      margin-top: 2px;
-      opacity: 0.65;
-    }
-
-    .options-dropdown-icon {
-      bottom: 1px;
-      padding: 0 2px 0 14px;
-      position: relative;
-    }
-  }
-
   .privacy-dropdown {
-    bottom: 5px;
     display: inline;
     width: 120px;
-
-    .dropdown-menu a {
-      padding-left: 5px;
-    }
-
-    li.privacy-item
-      i {
-        display: inline-block;
-        width: 15px;
-      }
-
-      button {
-        border: none;
-        @include border-radius(0px);
-        box-shadow: none;
-        margin-bottom: 0;
-        padding-left: 25px;
-        text-align: left;
-        width: 180px;
-        &:hover {
-          background-color: #08c;
-          color: white;
-        }
-      }
-
-    form {
-      margin: 0;
-      display: inline;
-    }
+    bottom: 5px;
+  }
+  .privacy-dropdown .dropdown-menu a { padding-left: 5px; }
+  li.privacy-item i {
+    display: inline-block;
+    width: 15px;
+  }
+  .privacy-dropdown form {
+    margin: 0px;
+    display: inline;
+  }
+  li.privacy-item button {
+    border: none;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    margin-bottom: 0px;
+    box-shadow: none;
+    width: 180px;
+    padding-left: 25px;
+    text-align: left;
+  }
+  li.privacy-item button:hover {
+    color: white;
+    background-color: #08c;
   }
 }
 
