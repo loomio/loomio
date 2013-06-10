@@ -1,4 +1,5 @@
 ActiveAdmin.register GroupRequest do
+  actions :all, :except => [:new]
   scope :unverified
   scope :verified, :default => true
   scope :approved
