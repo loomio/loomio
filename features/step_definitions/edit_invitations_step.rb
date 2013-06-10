@@ -1,15 +1,12 @@
-When(/^I view click pending invitations from the group page$/) do
-  visit group_path(@group)
-  find("#group-member-options").click
-  click_on 'Pending invitations'
+When(/^I click the pending link$/) do
+  click_on 'pending-count'
 end
 
 Then(/^I should see the pending invitations for the group$/) do
-  page.should have_content 'Pending invitations'
+  page.should have_content 'Pending Invitations'
 end
 
-When(/^I visit the group page and click Invite People$/) do
-  visit group_path(@group)
+When(/^I click Invite People$/) do
   click_on 'Invite people'
 end
 

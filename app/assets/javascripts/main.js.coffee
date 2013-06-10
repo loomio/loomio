@@ -8,7 +8,6 @@ window.Application ||= {}
 ### INITIALIZATION ###
 $ ->
   Application.enableInlineEdition()
-  Application.seeMoreDescription()
   Application.hideAllErrorMessages()
   initializeDatepicker()
   initializeHelpNotices()
@@ -202,7 +201,7 @@ Application.enableInlineEdition = ()->
   if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
     $(".edit-description").click((event) ->
       container = $(this).parents(".description-container")
-      description_height = container.find(".model-description").height()
+      description_height = container.find(".long-description").height()
       container.find(".description-body").toggle()
       container.find("#description-edit-form").toggle()
       if description_height > 90
@@ -221,16 +220,3 @@ Application.enableInlineEdition = ()->
       $(".discussion-description-helper-text").toggle()
       $(".discussion-additional-info").toggle()
       event.preventDefault()
-
-# Expand/shrink description text
-Application.seeMoreDescription = () ->
-  if $("body.discussions.show").length > 0
-    $(".see-more").click((event) ->
-      $(this).parent().children(".short-description").toggle()
-      $(this).parent().children(".long-description").toggle()
-      if $(this).html() == "Show More"
-        $(this).html("Show Less")
-      else
-        $(this).html("Show More")
-      event.preventDefault()
-    )

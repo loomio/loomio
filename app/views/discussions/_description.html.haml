@@ -1,10 +1,10 @@
 .description-container
   .description-body
-    .long-description.model-description
+    .long-description
       = render_rich_text(description, description_markdown_setting)
 
     - if can? :update_description, discussion
-      = link_to t(:edit_discussion_context), "#", class: "edit-description edit-discussion-description", id: 'edit_description'
+      = link_to t(:edit_discussion_context), "#", class: "edit-description edit-discussion-description bottom-panel-link", id: 'edit_description'
 
   - if can? :update_description, discussion
     = form_tag update_description_discussion_path(discussion), :id => "description-edit-form", :class => "hidden" do |f|
