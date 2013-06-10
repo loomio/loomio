@@ -157,6 +157,7 @@ en:
   setup_step_3: "Invite people to your group"
 
   invite_people: "Invite people"
+  no_invitations_button: "No invitations left"
   pending_invitations: 'Pending Invitations'
   number_pending: 'and %{pending} pending'
   edit_memberships: 'Edit memberships'

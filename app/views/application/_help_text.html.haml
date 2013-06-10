@@ -1,8 +1,0 @@
-.help-notice.modal.hidden
-  .modal-header
-    %button.close.dismiss-help-notice{ href: args[:path] } &times;
-    %h2= args[:header]
-  .modal-body
-    = args[:message]
-  .modal-footer
-    = link_to t(:ok_got_it), args[:path], class: 'btn btn-info dismiss-help-notice'

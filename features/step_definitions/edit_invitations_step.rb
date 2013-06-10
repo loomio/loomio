@@ -6,6 +6,19 @@ Then(/^I should see the pending invitations for the group$/) do
   page.should have_content 'Pending Invitations'
 end
 
+Then(/^I should not see a pending link$/) do
+  page.should_not have_content 'pending-count'
+end
+
+Then(/^I should see the no invitations page$/) do
+  page.should have_content 'Oops! Your group is full'
+end
+
+Given(/^The group has run out of invites$/) do
+  @group.max_size = 2
+  @group.save!
+end
+
 When(/^I click Invite People$/) do
   click_on 'Invite people'
 end

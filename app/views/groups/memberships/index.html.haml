@@ -2,7 +2,7 @@
 
 %h1 Members
 
-%table.memberships.table
+%table.memberships.table.table-striped
   %thead
     %th Photo
     %th Name
@@ -32,7 +32,7 @@
         %td=link_to 'Remove', 
             group_membership_path(@group, membership), 
             method: :delete, 
-            class: :btn,
+            class: 'btn btn-danger',
             :confirm => 'Are you sure you want to remove this user from the group?'
 
 %p 

@@ -18,7 +18,7 @@
           #invite-subgroup-members.modal.hidden
             = render 'subgroup_add_members', group: group
     %h4
-      = "#{t :members} (#{group.users.count})"
+      = "#{ t :members } (#{ group.memberships_count })"
 
     %ul#users-list
       - group.users.each do |user|
