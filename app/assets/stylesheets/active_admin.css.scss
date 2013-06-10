@@ -10,6 +10,10 @@ body.admin_group_requests table.index_table thead tr th:nth-child(7) {
   width: 100px !important;
 }
 
+body.admin_group_requests th.description a {
+  width: 300px
+}
+
 .admin-panel-paginate-toggle {
 	float: right;
 	margin-top:	-36px;
