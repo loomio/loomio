@@ -1,0 +1,17 @@
+= semantic_form_for [:admin, @group_request] do |f|
+  = f.inputs do
+    = f.input :name
+    = f.input :admin_email
+    = f.input :admin_name
+    = f.input :high_touch
+    = f.input :expected_size
+    = f.input :max_size
+    = f.input :description
+    = f.input :admin_notes
+    = f.actions
+
+- gr = @group_request
+
+%ul
+  - if gr.unverified?
+    %li= link_to('Resend Verification Link', resend_verification_admin_group_request_path(gr))
