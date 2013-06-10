@@ -16,6 +16,9 @@ class GroupRequest < ActiveRecord::Base
   belongs_to :approved_by, class_name: 'User'
 
   scope :verified, where(:status => :verified)
+  scope :starred, where(:high_touch => true)
+  scope :not_starred, where(:high_touch => false)
+  scope :waiting, -> { verified.not_starred }
   scope :unverified, where(:status => :unverified)
   scope :approved, where(:status => :approved)
   scope :accepted, where(:status => :accepted)
