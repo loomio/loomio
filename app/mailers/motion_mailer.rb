@@ -1,6 +1,5 @@
-class MotionMailer < ActionMailer::Base
+class MotionMailer < NoReplyMailer
   include ApplicationHelper
-  default :from => "\"Loomio\" <noreply@loomio.org>", :css => :email
 
   def new_motion_created(motion, user)
     @user = user

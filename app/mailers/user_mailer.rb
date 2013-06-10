@@ -1,8 +1,7 @@
-class UserMailer < ActionMailer::Base
+class UserMailer < NoReplyMailer
   include ApplicationHelper
   include ERB::Util
   include ActionView::Helpers::TextHelper
-  default :from => "\"Loomio\" <noreply@loomio.org>", :css => :email
 
   def daily_activity(user, activity, since_time)
     @user = user
@@ -20,7 +19,7 @@ class UserMailer < ActionMailer::Base
     @rendered_comment_body = render_rich_text(comment.body, comment.uses_markdown)
     @discussion = comment.discussion
     mail to: @user.email,
-         subject: "#{comment.author.name} mentioned you in the #{comment.group.name} group on Loomio"
+         subject: "#{comment.author.name} mentioned you in #{comment.group.name} on Loomio"
   end
 
   def group_membership_approved(user, group)

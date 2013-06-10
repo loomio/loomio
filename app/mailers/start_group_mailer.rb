@@ -1,6 +1,4 @@
-class StartGroupMailer < ActionMailer::Base
-  default from: "\"Loomio\" <contact@loomio.org>", :css => :email
-
+class StartGroupMailer < BaseMailer
   def verification(group_request)
     @group_request = group_request
     @token = group_request.token
