@@ -1,9 +1,9 @@
 %ul#activity-list
   %li.divider
-  - if discussion.activity.count == 0
+  - if discussion.filtered_activity.count == 0
     %li.selector-item.empty-list-message= t :empty_discussion_list
   - else
-    - discussion.activity.each do |event|
+    - discussion.filtered_activity.each do |event|
       - if event.kind == 'new_comment'
         %li.activity-item-container= render event.eventable
       - else

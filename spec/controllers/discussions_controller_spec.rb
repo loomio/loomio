@@ -47,6 +47,7 @@ describe DiscussionsController do
           motion.stub(:open_close_motion)
           motion.stub(:voting?).and_return(true)
           discussion.stub(:history)
+          discussion.stub(:filtered_activity)
           DiscussionMover.stub(:destination_groups)
         end
 

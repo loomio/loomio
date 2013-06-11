@@ -17,4 +17,11 @@ class Event < ActiveRecord::Base
   def notify!(user)
     notifications.create!(user: user)
   end
+
+  def is_repetition_of?(previous_event)
+    (kind == 'discussion_description_edited') &&
+    (kind == previous_event.kind) &&
+    (user == previous_event.user) &&
+    ((created_at - previous_event.created_at) / 60 < 10)
+  end
 end
