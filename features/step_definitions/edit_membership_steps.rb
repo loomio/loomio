@@ -15,6 +15,10 @@ Then(/^I should see the edit memberships page for the group$/) do
   current_path.should == group_memberships_path(@group)
 end
 
+Then(/^I should see the edit memberships page$/) do
+  page.should have_css('body.memberships.index')
+end
+
 Given(/^there is another group member$/) do
   @another_user = FactoryGirl.create :user
   @group.add_member! @another_user
