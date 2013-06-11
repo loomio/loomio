@@ -13,10 +13,11 @@ ActiveAdmin.register GroupRequest do
 
   index do
     column :id
-    column :name_and_email do |gr|
-      "#{gr.admin_name} <br/> #{gr.admin_email}".html_safe
-    end
+    column :name
     column :description
+    column :contact do |gr|
+      "#{gr.admin_name} &lt;#{gr.admin_email}&gt;".html_safe
+    end
     column :admin_notes
     column 'Size', :expected_size
     column 'Subscription' do |gr|
@@ -34,7 +35,7 @@ ActiveAdmin.register GroupRequest do
         end
         links << link_to('Star', set_high_touch_admin_group_request_path(gr), :method => :put)
         links << link_to('Edit', edit_admin_group_request_path(gr))
-        links << link_to('Destroy', admin_group_requests_path(gr), method: :delete)
+        links << link_to('Destroy', admin_group_request_path(gr), method: :delete)
         links.join(' ').html_safe
       end
     end
