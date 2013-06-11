@@ -41,6 +41,7 @@ describe DiscussionMover do
     before do
       @user = create :user
       @destination = create :group
+      @origin = create :group
     end
     context "user is admin of not destination" do
       it "returns false" do
