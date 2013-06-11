@@ -25,18 +25,17 @@ ActiveAdmin.register GroupRequest do
     column :created_at, sortable: :created_at do |gr|
       gr.created_at.to_date
     end
+    column :status
     column :actions do |gr|
       span do
-        [link_to('Approve', 
-                 approve_and_send_form_admin_group_request_path(gr)),
-         link_to('Star', 
-                 set_high_touch_admin_group_request_path(gr), 
-                 :method => :put),
-         link_to('Edit', 
-                 edit_admin_group_request_path(gr)),
-         link_to('Destroy', 
-                 admin_group_requests_path(gr), 
-                 method: :delete)].join(' ').html_safe
+        links = []
+        unless gr.approved?
+          links << link_to('Approve', approve_and_send_form_admin_group_request_path(gr))
+        end
+        links << link_to('Star', set_high_touch_admin_group_request_path(gr), :method => :put)
+        links << link_to('Edit', edit_admin_group_request_path(gr))
+        links << link_to('Destroy', admin_group_requests_path(gr), method: :delete)
+        links.join(' ').html_safe
       end
     end
   end
