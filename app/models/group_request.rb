@@ -1,7 +1,7 @@
 class GroupRequest < ActiveRecord::Base
 
   attr_accessible :name, :description, :expected_size, :admin_name, :admin_email,
-                  :cannot_contribute, :max_size, :high_touch, :robot_trap
+                  :cannot_contribute, :max_size, :high_touch, :robot_trap, :admin_notes
 
   attr_accessor :robot_trap
 

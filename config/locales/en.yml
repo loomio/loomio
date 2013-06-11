@@ -158,7 +158,7 @@ en:
 
   invite_people: "Invite people"
   no_invitations_button: "No invitations left"
-  pending_invitations: 'Pending Invitations'
+  pending_invitations: 'Pending invitations'
   number_pending: 'and %{pending} pending'
   edit_memberships: 'Edit memberships'
 
@@ -363,7 +363,10 @@ en:
   # INVITATIONS
   #
 
+
   invitation:
+    no_invitations_left: "Sorry you don't have any invitations left" 
+    no_invitations_left_get_more: "Please email contact@loomio.org and we'll see what we can do to help you"
     invitation_not_found:  'Could not find invitation with that token. Please ask for a new invitation from the sender.'
     invitation_cancelled: 'This invitation has been cancelled. Please contact the sender of the invitation if you believe this was done in error.'
     invitation_already_used: 'This invitation has already been used. Please sign in to continue to your group.'
