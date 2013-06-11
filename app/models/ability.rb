@@ -14,7 +14,7 @@ class Ability
     can :show, Group, :viewable_by => :members, :id => user.group_ids
     can :show, Group, :viewable_by => :parent_group_members,
                       :parent_id => user.group_ids
-    can [:update, :email_members, :edit_privacy], Group, :id => user.adminable_group_ids
+    can [:update, :email_members, :edit_privacy, :hide_next_steps], Group, :id => user.adminable_group_ids
     can :edit_description, Group, :id => user.group_ids
     can [:add_subgroup, :get_members], Group, :id => user.group_ids
     can :add_members, Group, :members_invitable_by => :members,
@@ -52,7 +52,7 @@ class Ability
     can :index, Discussion
     can :destroy, Discussion, group_id: user.adminable_group_ids
     can :move, Discussion, group_id: user.adminable_group_ids
-    can [:add_comment, :new_proposal, :create, :edit_description, :edit_title, :show_description_history, :preview_version, :update_version], Discussion, :group_id => user.group_ids
+    can [:add_comment, :new_proposal, :create, :update_description, :edit_title, :show_description_history, :preview_version, :update_version], Discussion, :group_id => user.group_ids
 
     can :destroy, Comment, user_id: user.id
     can :destroy, Comment, :discussion => { group_id: user.adminable_group_ids }

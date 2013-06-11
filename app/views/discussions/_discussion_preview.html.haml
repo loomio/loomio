@@ -16,10 +16,10 @@
             = discussion_activity
       .discussion-date-info
         -if discussion.current_motion
-          - if discussion.current_motion_close_date
-            .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_close_date)} until close"
+          - if discussion.current_motion_close_at
+            .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_close_at)} until close"
         - else
-          .latest-comment-time= "#{time_ago_in_words(discussion.latest_comment_time)} ago"
+          .latest-comment-time= "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.latest_comment_time))}"
     - if discussion.current_motion
       - motion_activity = motion_activity_count_for(discussion.current_motion, current_user)
       - popover_title = render 'discussions/graph_preview_pop_over_title', :motion => discussion.current_motion
@@ -49,7 +49,7 @@
           diameter: 25
           padding: 1
           gap: 1
-          shadow: 0.75
+          shadow: 0
 
       # IE8 FIX - for some reason we have to load the graph after everything else.
       # Otherwise, the graph doesn't display in IE8.

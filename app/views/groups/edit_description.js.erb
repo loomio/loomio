@@ -1,5 +1,5 @@
 var description = $("#description-input").val()
-$(".model-description").html("<%= j render_rich_text(@description, false) %>")
+$(".long-description").html("<%= j render_rich_text(@description, false) %>")
 $(".description-body").show()
 $("#description-edit-form").hide()
 $(".discussion-description-helper-text").toggle()

@@ -6,15 +6,13 @@ class GroupsController < GroupBaseController
   after_filter :store_location, :only => :show
 
   rescue_from ActiveRecord::RecordNotFound do
-    render 'application/not_found', locals: { item: t(:group) }
+    render 'application/display_error', locals: { message: t('error.group_private_or_not_found') }
   end
 
   def create
     @group = Group.new(params[:group])
-    @group.creator = current_user
     if @group.save
       @group.add_admin! current_user
-      @group.create_welcome_loomio
       flash[:success] = t("success.group_created")
       redirect_to @group
     else
@@ -27,7 +25,6 @@ class GroupsController < GroupBaseController
     @subgroups = @group.subgroups.accessible_by(current_ability, :show)
     @discussions = Queries::VisibleDiscussions.for(@group, current_user)
     @discussion = Discussion.new(group_id: @group.id)
-    @invited_users = @group.invited_users
     assign_meta_data
   end
 
@@ -73,6 +70,13 @@ class GroupsController < GroupBaseController
     redirect_to group_url(group)
   end
 
+  def hide_next_steps
+    @group.update_attribute(:next_steps_completed, true)
+    # respond_to do | format |
+    #   format.html { redirect_to @group }
+    # end
+  end
+
   def request_membership
     if resource.users.include? current_user
       redirect_to group_url(resource)
@@ -92,7 +96,7 @@ class GroupsController < GroupBaseController
     body = params[:group_email_body]
     GroupMailer.delay.deliver_group_email(@group, current_user, subject, body)
     flash[:success] = t("success.emails_sending")
-    redirect_to :back
+    redirect_to group_url(@group)
   end
 
   def edit_description

@@ -1,9 +1,8 @@
 .row
   .span8.offset2
-    .selector-panel
-      .clearfix
-        %h1.panel-header Notifications
-      %ul.selector-list
-        - @notifications.each do |notification|
-          = render notification
-      = paginate @notifications, :window => 3
+    .clearfix
+      %h1.panel-header Notifications
+    %ul.selector-list
+      - @notifications.each do |notification|
+        = render notification
+    = paginate @notifications, :window => 3

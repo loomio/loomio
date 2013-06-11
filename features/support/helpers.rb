@@ -5,15 +5,27 @@ def view_screenshot
   system("open #{filename}")
 end
 
-def login(email, password)
+def login(user_or_email, password = nil)
+
+  if password.nil?
+    #assume email is a user object and password is password
+    email = user_or_email.email
+    password = 'password'
+  else
+    email = user_or_email
+  end
+
   visit "/users/sign_in"
-  fill_in 'user_email', :with => email
+  fill_in 'user_email', with: email
   fill_in 'user_password', :with => password
   click_button 'Sign in'
 end
 
 def login_automatically(user)
-  login_as user, scope: :user
+  visit "/users/sign_in"
+  fill_in 'user_email', with: user.email
+  fill_in 'user_password', :with => 'password'
+  click_on 'sign-in-btn'
 end
 
 def logout

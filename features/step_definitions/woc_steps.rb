@@ -1,5 +1,5 @@
-Given /^there is a WOC campaign record$/ do |name|
-  @campaign = Campaign.create(name: name,
+Given /^there is a WOC campaign record$/ do
+  @campaign = Campaign.create(name: "woc",
                   manager_email: "contact@loomio.org",
                   showcase_url: 'http://google.com')
 end

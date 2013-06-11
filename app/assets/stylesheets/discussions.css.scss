@@ -7,9 +7,8 @@ body.discussions.new, body.discussions.create {
   .helper-text.align-with-input { margin-top: 20px }
 
   #discussion-markdown-dropdown {
-    float: left;
-    margin-top: 10px;
-    margin-left: 10px;
+    float: right;
+    margin-right: -12px;
   }
 
   #discussion-submit {
@@ -30,19 +29,19 @@ body.discussions.new, body.discussions.create {
 #new_discussion .control-label {
   display: block;
 }
-
-.see-more {
-  font-size: $font-small;
-  position: relative;
-  bottom: 10px;
-  display: block;
-}
+#start-proposal-text { padding: 4px; }
 
 .model-description { padding-bottom: 10px; }
-.description-body {
-  color: $dark-grey;
-  margin-bottom: 10px;
+
+body.discussions.show {
+  .description-body {
+    color: $dark-grey;
+    margin-bottom: 10px;
+  }
 }
+.long-description { padding-bottom: 10px; }
+
+.revision-title p { font-size: 85%; }
 
 #description-edit-form {
   margin-bottom: 0px;
@@ -55,7 +54,7 @@ body.discussions.new, body.discussions.create {
   #add-description-submit { float: left; }
   #cancel-add-description {
     float: left;
-    margin: 15px 0 0 10px;
+    margin-left: 15px;
     color: $mid-grey;
     text-decoration: underline;
     position: relative;
@@ -138,7 +137,6 @@ body.discussions.show {
     padding: 10px 0px 10px 50px;
 
     #discussion-markdown-dropdown {
-      margin-top: 10px;
       margin-right: 8px;
       padding-right: 0px;
     }
@@ -214,7 +212,7 @@ li s hard.motion-preview {
   /* Markdown styling */
 
 .activity-item-body .popover h3 { padding: 8px 14px; }
-.activity-item-body, .model-description, .motion .description {
+.activity-item-body, .long-description, .motion .description {
   p {
     word-wrap: break-word;
   }
@@ -303,7 +301,7 @@ pre{
   }
   #comment-markdown-dropdown {
     margin-top: -32px;
-    margin-right: -8px;
+    margin-right: -5px;
   }
   .markdown-setting-dropdown {
     margin-top: -2px;
@@ -410,9 +408,10 @@ li.popover-item {
 li.selector-item .discussion-preview:hover {
   background-color: $selector;
 }
+
 .discussion-preview {
   float: left;
-  width: 620px;
+  width: 700px;
   height: 47px;
   background-color: $unhighlighted;
   a {
@@ -422,7 +421,7 @@ li.selector-item .discussion-preview:hover {
     text-decoration: none;
   }
   a.selector-discussion-link {
-    width: 573px;
+    width: 653px;
     float: left;
     padding: 5px 0 5px 5px;
   }
@@ -453,7 +452,7 @@ li.selector-item .discussion-preview:hover {
   .group-name {
     font-size: $font-small;
     color: $mid-grey;
-    width: 340px;
+    width: 460px;
   }
   .discussion-date-info {
     display: inline;
@@ -493,7 +492,13 @@ li.selector-item .discussion-preview:hover {
     position: relative;
     z-index: 2;
   }
+
+  // color coded urgency labels
+  .color-urgent { background-color: #CA3232; }
+  .color-warning { background-color: #F89406; }
+  .color-ok { background: #016B01; }
 }
+
 .popover-motion-name {
   font-weight: normal;
   margin-top: 10px;

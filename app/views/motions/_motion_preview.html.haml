@@ -12,11 +12,11 @@
             - if !motion.outcome.blank?
               = t(:outcome) + ": " + motion.outcome
           .proposal-close-date
-            - if motion.close_date.present?
+            - if motion.close_at.present?
               - if motion.voting?
-                = t(:proposal_closing_when, when: time_ago_in_words(motion.close_date))
+                = t(:proposal_closing_when, when: time_ago_in_words(motion.close_at))
               - else
-                = t(:proposal_closed_when, when: time_ago_in_words(motion.close_date))
+                = t(:proposal_closed_when, when: time_ago_in_words(motion.close_at))
             - else
               = "no close date"
             =" · " unless this_group
@@ -38,7 +38,7 @@
           diameter: 25
           padding: 1
           gap: 1
-          shadow: 0.75
+          shadow: 0
 
       # IE8 FIX - for some reason we have to load the graph after everything else.
       # Otherwise, the graph doesn't display in IE8.

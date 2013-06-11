@@ -6,7 +6,7 @@ class DiscussionsController < GroupBaseController
   after_filter :store_location, :only => :show
 
   rescue_from ActiveRecord::RecordNotFound do
-    render 'application/not_found', locals: { item: t(:discussion) }
+    render 'application/display_error', locals: { message: t('error.not_found') }
   end
 
   def new
@@ -34,7 +34,7 @@ class DiscussionsController < GroupBaseController
 
   def destroy
     @discussion = Discussion.find(params[:id])
-    @discussion.destroy
+    @discussion.delay.destroy
     flash[:success] = t("success.discussion_deleted")
     redirect_to @discussion.group
   end
@@ -96,6 +96,9 @@ class DiscussionsController < GroupBaseController
       @discussion = Discussion.find(params[:id])
       @comment = @discussion.add_comment(current_user, params[:comment], params[:global_uses_markdown])
       ViewLogger.discussion_viewed(@discussion, current_user)
+      unless request.xhr?
+        redirect_to @discussion
+      end
     else
       head :ok
     end
@@ -108,24 +111,23 @@ class DiscussionsController < GroupBaseController
       flash[:notice] = "A current proposal already exists for this disscussion."
     else
       @motion = Motion.new
+      @motion.set_default_close_at_date_and_time
       @motion.discussion = discussion
       @group = GroupDecorator.new(discussion.group)
       render 'motions/new'
     end
   end
 
-  def edit_description
+  def update_description
     @discussion = Discussion.find(params[:id])
     @discussion.set_description!(params[:description], params[:description_uses_markdown], current_user)
-    @last_collaborator = User.find @discussion.originator.to_i
-    respond_to do |format|
-      format.js { render :action => 'update_version' }
-    end
+    redirect_to @discussion
   end
 
   def edit_title
     @discussion = Discussion.find(params[:id])
     @discussion.set_title!(params[:title], current_user)
+    redirect_to @discussion
   end
 
   def show_description_history
@@ -153,12 +155,9 @@ class DiscussionsController < GroupBaseController
   def update_version
     @version = Version.find(params[:version_id])
     @version.reify.save!
-    @discussion = @version.item
-    @last_collaborator = User.find @discussion.originator.to_i
-    respond_to do |format|
-      format.js
-    end
+    redirect_to @version.reify()
   end
+
 
   private
 

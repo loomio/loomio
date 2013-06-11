@@ -5,21 +5,21 @@ class MotionsController < GroupBaseController
   before_filter :check_group_read_permissions, :only => :show
 
   def create
-    if Discussion.find(params[:motion][:discussion_id]).current_motion
+    @discussion = Discussion.find(params[:motion][:discussion_id])
+    if @discussion.current_motion
       redirect_to @discussion
-      flash[:notice] = "A proposal has already been created"
+      flash[:error] = t(:"error.proposal_already_exists")
     else
       @motion = current_user.authored_motions.new(params[:motion])
-      @motion.close_date = params[:motion][:close_date].to_datetime
       @group = GroupDecorator.new(@motion.group)
       authorize! :create, @motion
-    end
-    if @motion.save
-      flash[:success] = t("success.proposal_created")
-      redirect_to discussion_path(@motion.discussion)
-    else
-      flash[:warning] = t("warning.proposal_not_created")
-      redirect_to :back
+      if @motion.save
+        flash[:success] = t("success.proposal_created")
+        redirect_to discussion_path(@discussion)
+      else
+        flash[:warning] = t("warning.proposal_not_created")
+        render action: :new
+      end
     end
   end
 
@@ -74,13 +74,18 @@ class MotionsController < GroupBaseController
   end
 
   def edit_close_date
+    safe_values = {}
     motion = Motion.find(params[:id])
-    if motion.set_close_date!((params[:motion][:close_date]).to_datetime, current_user)
+    safe_values[:close_at_date] = params[:motion][:close_at_date]
+    safe_values[:close_at_time] = params[:motion][:close_at_time]
+
+    if motion.update_attributes(safe_values)
+      Events::MotionCloseDateEdited.publish!(motion, current_user)
       flash[:success] = t("success.close_date_changed")
     else
       flash[:error] = t("error.invalid_close_date")
     end
-    redirect_to discussion_url(motion.discussion)
+    redirect_to discussion_url(@motion.discussion)
   end
 
   def get_and_clear_new_activity

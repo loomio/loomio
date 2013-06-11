@@ -2,12 +2,8 @@ ActiveAdmin.register Group do
   actions :index, :show, :edit
   before_filter :set_pagination
   filter :name
-  filter :creator
   filter :parent
 
-  scope :all, :default => true do |group|
-    group.includes [:creator]
-  end
   scope "Parent groups" do |group|
     group.where(parent_id: nil)
   end
@@ -16,6 +12,18 @@ ActiveAdmin.register Group do
   end
   scope "> 85% full" do |group|
     group.where('max_size > ? AND memberships_count/max_size >= ?', 0, 0.85)
+  end
+
+  csv do
+    column :id
+    column :name
+    column :member_email_addresses do |g|
+      g.members.map{|m| [m.name, m.email] }.map{|ne| "#{ne[0]} <#{ne[1]}>"}.join(', ')
+    end
+
+    column :admin_email_addresses do |g|
+      g.admins.map{|m| [m.name, m.email] }.map{|ne| "#{ne[0]} <#{ne[1]}>"}.join(', ')
+    end
   end
 
   index :download_links => false do
@@ -41,7 +49,6 @@ ActiveAdmin.register Group do
     end
     column "Discussions", :discussions_count
     column "Motions", :motions_count
-    column :creator, :sortable => 'users.name'
     column :created_at
     column :viewable_by
     column :description, :sortable => :description do |group|
@@ -75,9 +82,7 @@ ActiveAdmin.register Group do
     f.inputs "Details" do
       f.input :id, :input_html => { :disabled => true }
       f.input :name, :input_html => { :disabled => true }
-      if :max_size
-        f.input :max_size
-      end
+      f.input :max_size
     end
     f.buttons
   end

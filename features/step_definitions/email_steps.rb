@@ -184,6 +184,18 @@ When /^(?:I|they) click the first link in the email$/ do
   click_first_link_in_email
 end
 
+When /^(?:I|they) click the second link in the email$/ do
+  link = links_in_email(current_email)[1]
+  request_uri = URI::parse(link).request_uri
+  visit request_uri
+end
+
+When /^(?:I|they) click the third link in the email$/ do
+  link = links_in_email(current_email)[2]
+  request_uri = URI::parse(link).request_uri
+  visit request_uri
+end
+
 #
 # Debugging
 # These only work with Rails and OSx ATM since EmailViewer uses RAILS_ROOT and OSx's 'open' command.

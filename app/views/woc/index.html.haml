@@ -1,5 +1,5 @@
 .container
-  .section#woc-index
+  %section#woc-index
     .inner-container
       .row-fluid
         .span12
@@ -47,11 +47,11 @@
       %p Please fill in your name and email. We'll get back to you within 24 hours with an invite to join the discussion.
       .control-group
         = label_tag "requested_email", "Your full name"
-        %span.presence-error-message Please fill in your name
         = text_field_tag "requested_name", nil, class: "validate-presence"
+        .inline-help Please fill in your name
         = label_tag "requested_email", "Your email"
-        %span.presence-error-message Please fill in your email address
         = text_field_tag "requested_email", nil, class: "validate-presence"
+        .inline-help Please fill in your email address
         = text_field_tag :robot_trap, "", placeholder: "Leave this field blank if you're a human", class: "robot_trap"
     .modal-footer
       = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn btn-grey"

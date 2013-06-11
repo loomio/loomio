@@ -12,16 +12,16 @@ Showing you what’s been happening in your Loomio groups in the last 24 hours
     \
     Decisions
     \
-    -@activity[group.full_name][:motions].each do |motion|
+    -@motions.each do |motion|
       =motion.name
       =motion_url(motion)
-      -if motion.close_date.present?
-        \- closes in #{time_ago_in_words(motion.close_date)}
+      -if motion.close_at.present?
+        \- closes in #{time_ago_in_words(motion.close_at)}
         \
   -if @discussions.present?
     Discussions
     \
-    -@activity[group.full_name][:discussions].each do |discussion|
+    -@discussions.each do |discussion|
       =discussion.title
       =discussion_url(discussion)
       - num_new_comments = discussion.number_of_comments_since(@since_time)

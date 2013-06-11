@@ -23,7 +23,8 @@
                 - if @current_motion.nil?
                   - if can? :create, Motion.new(discussion_id: @discussion.id)
                     = link_to t(:create_new_proposal), new_proposal_discussion_path(@discussion.id), class: 'btn new-proposal-btn', id: 'new-proposal'
-                  %li.selector-item.empty-list-message= t :empty_decision_list
+                    %li.selector-item.empty-list-message#start-proposal-text
+                      = t :empty_decision_list_html
                 - else
                   - if @displayed_motion == @current_motion
                     - if can? :close_voting, @current_motion
@@ -33,7 +34,10 @@
                   - else
                     %li.selector-item.current-proposal
                       = render '/motions/motion_preview', motion: @current_motion, this_group: @group
-                  = render '/motions/edit_close_date', motion: @current_motion, input_time: @input_time
+
+            - if can? :edit_close_date, @current_motion
+              = render '/motions/edit_close_date', motion: @current_motion, user: @current_user, input_time: @input_time
+
             - if @discussion.closed_motions.count > 0
               #previous-proposals
                 .clearfix
@@ -46,3 +50,6 @@
                         %li.selector-item= render closed_motion, unique_votes: closed_motion.unique_votes, this_group: @group
                       - else
                         %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
+
+/ - if user_signed_in?#  && (not current_user.has_read_discussion_notice)
+/   = render "application/help_text", header: t("discussion_helper_text.header"), message: t("discussion_helper_text.message").html_safe, path: dismiss_discussion_notice_for_user_path

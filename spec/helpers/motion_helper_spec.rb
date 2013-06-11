@@ -1,4 +1,4 @@
- require 'spec_helper'
+require 'spec_helper'
 
 describe MotionsHelper do
   describe "display_vote_buttons?(motion)" do
@@ -26,6 +26,15 @@ describe MotionsHelper do
       it "returns false" do
         display_vote_buttons?(@motion, @user).should == false
       end
+    end
+  end
+  describe "time_select_options" do
+    it "should include all hour times" do
+      result = helper.time_select_options
+      result.should include(["12 am", "00:00"])
+      result.should include([" 2 am", "02:00"])
+      result.should include(["12 pm", "12:00"])
+      result.should include(["11 pm", "23:00"])
     end
   end
 end

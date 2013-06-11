@@ -1,6 +1,8 @@
 class UserMailer < ActionMailer::Base
   include ApplicationHelper
-  default :from => "\"Loomio\" <noreply@loomio.org>"
+  include ERB::Util
+  include ActionView::Helpers::TextHelper
+  default :from => "\"Loomio\" <noreply@loomio.org>", :css => :email
 
   def daily_activity(user, activity, since_time)
     @user = user
@@ -15,6 +17,7 @@ class UserMailer < ActionMailer::Base
   def mentioned(user, comment)
     @user = user
     @comment = comment
+    @rendered_comment_body = render_rich_text(comment.body, comment.uses_markdown)
     @discussion = comment.discussion
     mail to: @user.email,
          subject: "#{comment.author.name} mentioned you in the #{comment.group.name} group on Loomio"
@@ -34,15 +37,6 @@ class UserMailer < ActionMailer::Base
     mail to: user.email,
          reply_to: @motion.author.email,
          subject: "[Loomio - #{@motion.group.name}] Proposal closing soon: #{@motion.name}"
-  end
-
-  def added_to_group(membership)
-    @user = membership.user
-    @group = membership.group
-    @inviter = membership.inviter
-    mail( :to => @user.email,
-          :reply_to => @group.admin_email,
-          :subject => "[Loomio] You've been added to a group called '#{@group.full_name}'")
   end
 
   # Invited to loomio (assumes user has been invited to a group at the same time)

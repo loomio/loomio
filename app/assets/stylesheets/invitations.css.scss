@@ -1,0 +1,9 @@
+@import "settings";
+
+body.invitations {
+  &.new, &.create {
+    #invitees { height: 50px; }
+    #group_setup_message_body { height: 185px; }
+    .email-validation-help { color: $error-color }
+  }
+}

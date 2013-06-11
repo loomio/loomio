@@ -11,13 +11,11 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, #:registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :validatable
 
   validates :name, :presence => true
   validates :email, :presence => true
   validates_inclusion_of :uses_markdown, :in => [true,false]
-
   validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
   validates_attachment :uploaded_avatar,
     :size => { :in => 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
@@ -81,7 +79,7 @@ class User < ActiveRecord::Base
            :through => :discussions,
            :source => :motions,
            :conditions => { phase: 'closed' },
-           :order => 'close_date DESC'
+           :order => 'close_at DESC'
 
   has_many :votes
   has_many :open_votes,
@@ -97,16 +95,18 @@ class User < ActiveRecord::Base
 
 
   has_many :notifications
+  has_many :comments
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :avatar_kind, :email, :password, :password_confirmation, :remember_me,
                   :uploaded_avatar, :username, :subscribed_to_daily_activity_email, :subscribed_to_proposal_closure_notifications,
-                  :subscribed_to_mention_notifications, :group_email_preferences, :uses_markdown, :language_preference
+                  :subscribed_to_mention_notifications, :group_email_preferences, :uses_markdown, :time_zone, :language_preference
 
   before_save :set_avatar_initials, :ensure_unsubscribe_token
   before_create :set_default_avatar_kind
+  before_create :generate_username
   after_create :ensure_name_entry
-  before_destroy { |user| ViewLogger.remove_all_logs_for(user.id) }
+  before_destroy { |user| ViewLogger.delete_all_logs_for(user.id) }
 
   scope :daily_activity_email_recipients, where("subscribed_to_daily_activity_email IS TRUE AND invitation_token IS NULL")
   scope :sorted_by_name, order("lower(name)")
@@ -140,6 +140,14 @@ class User < ActiveRecord::Base
     memberships.for_group(group).with_access('admin').exists?
   end
 
+  def time_zone_city
+    TimeZoneToCity.convert time_zone
+  end
+
+  def time_zone
+    self[:time_zone] || 'UTC'
+  end
+
   def is_group_member?(group)
     memberships.for_group(group).exists?
   end
@@ -170,17 +178,6 @@ class User < ActiveRecord::Base
   def mark_notifications_as_viewed!(latest_viewed_id)
     unviewed_notifications.where("id <= ?", latest_viewed_id).
       update_all(:viewed_at => Time.now)
-  end
-
-  def self.invite_and_notify!(user_params, inviter, group)
-    new_user = User.invite!(user_params, inviter) do |u|
-      u.skip_invitation = true
-    end
-    if new_user.errors.empty?
-      membership = group.add_member! new_user, inviter
-      UserMailer.invited_to_loomio(new_user, inviter, group).deliver
-    end
-    new_user
   end
 
   def discussions_with_current_motion_not_voted_on
@@ -311,7 +308,6 @@ class User < ActiveRecord::Base
       num+=1
     end
     self.username = username_tmp
-    save
   end
 
   def in_same_group_as?(other_user)

@@ -1,22 +1,43 @@
 Loomio::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  devise_for :users, controllers: { sessions: 'users/sessions', 
-                                    invitations: 'users/invitations' }
+  devise_for :users, controllers: { sessions: 'users/sessions',
+                                    registrations: 'users/registrations' }
+
+  resources :invitations, only: [:show]
 
   get :not_found, to: 'error_rainchecks#error_page'
 
   resources :group_requests, only: [:create, :new] do
-    get :start_new_group, on: :member
+    get :verify, on: :member
   end
 
-  match "/request_new_group", to: "group_requests#start", as: :request_new_group
+  match "/request_new_group", to: "group_requests#new", as: :request_new_group
+
   match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
 
   resources :groups, except: [:index, :new] do
+    resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
+    resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
+      member do
+       post :make_admin
+       post :remove_admin
+
+       # these three (and #new) are for membership requests which I hope to split off into a new class
+       post :approve_request, as: :approve_request_for
+       post :ignore_request, as: :ignore_request_for
+       delete :cancel_request, as: :cancel_request_for
+      end
+    end
+
+    get :setup, on: :member, to: 'groups/group_setup#setup'
+    put :finish, on: :member, to: 'groups/group_setup#finish'
+
     post :add_members, on: :member
+    post :hide_next_steps, on: :member
     get :add_subgroup, on: :member
-    resources :motions#, name_prefix: "groups_"
+
+    resources :motions
     resources :discussions, only: [:index, :new]
     get :request_membership, on: :member
     post :email_members, on: :member
@@ -37,7 +58,7 @@ Loomio::Application.routes.draw do
   end
 
   resources :discussions, except: [:edit] do
-    post :edit_description, :on => :member
+    post :update_description, :on => :member
     post :add_comment, :on => :member
     post :show_description_history, :on => :member
     get :new_proposal, :on => :member
@@ -53,15 +74,8 @@ Loomio::Application.routes.draw do
     post :mark_as_viewed, :on => :collection, :via => :post
   end
 
-  resources :memberships, except: [:new, :update, :show] do
-    post :make_admin, on: :member
-    post :remove_admin, on: :member
-    post :approve_request, on: :member, as: :approve_request_for
-    post :ignore_request, on: :member, as: :ignore_request_for
-    post :cancel_request, on: :member, as: :cancel_request_for
-  end
 
-  resources :users do
+  resources :users, :only => [:new, :create, :update, :show,] do
     put :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
   end
@@ -82,9 +96,12 @@ Loomio::Application.routes.draw do
     post :unlike, on: :member
   end
 
+  get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
+  get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
+
   match "/settings", :to => "users#settings", :as => :user_settings
-  match 'email_preferences', :to => "email_preferences#edit", :as => :email_preferences, :via => :get
-  match 'email_preferences', :to => "email_preferences#update", :as => :update_email_preferences, :via => :put
+  match 'email_preferences', :to => "users/email_preferences#edit", :as => :email_preferences, :via => :get
+  match 'email_preferences', :to => "users/email_preferences#update", :as => :update_email_preferences, :via => :put
 
   authenticated do
     root :to => 'dashboard#show'
@@ -96,6 +113,10 @@ Loomio::Application.routes.draw do
     get :about
     get :privacy
     get :browser_not_supported
+  end
+
+  scope controller: 'help' do
+    get :help
   end
 
   resources :woc, only: :index do

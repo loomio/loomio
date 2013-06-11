@@ -18,7 +18,7 @@ class EmailPreferences
   end
 
   def all_memberships
-    memberships.includes(:group).order("groups.name")
+    memberships.includes(:group).order("groups.name").sort{|a,b| a.group_full_name <=> b.group_full_name }
   end
 
   def self.model_name

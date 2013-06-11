@@ -32,7 +32,7 @@ describe "User abilities" do
     it { should be_able_to(:add_subgroup, group) }
     it { should be_able_to(:new_proposal, discussion) }
     it { should be_able_to(:add_comment, discussion) }
-    it { should be_able_to(:edit_description, discussion) }
+    it { should be_able_to(:update_description, discussion) }
     it { should be_able_to(:edit_description, group) }
     it { should be_able_to(:show_description_history, discussion) }
     it { should be_able_to(:preview_version, discussion) }
@@ -114,6 +114,7 @@ describe "User abilities" do
 
     it { should be_able_to(:update, group) }
     it { should be_able_to(:email_members, group) }
+    it { should be_able_to(:hide_next_steps, group) }
     it { should be_able_to(:destroy, discussion) }
     it { should be_able_to(:move, discussion) }
     it { should be_able_to(:make_admin, @membership_request) }

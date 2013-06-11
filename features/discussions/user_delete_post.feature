@@ -3,6 +3,7 @@ Feature: User deletes post
   So that I can remove a comment I no longer wish to be visable in the discussion
   I want to be able to delete my comment
 
+  @javascript
   Scenario: User deletes their own comment
     Given I am logged in
     And I am a member of a group

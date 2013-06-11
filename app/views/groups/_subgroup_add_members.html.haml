@@ -8,7 +8,7 @@
       - addable_users.each do |user|
         - unless user == current_user
           .invite-member-checkbox-container
-            - is_user = group.users_and_invited_users.include?(user)
+            - is_user = group.members.include?(user)
             = check_box_tag "user_#{user.id}", 1, is_user, disabled: is_user
             = label_tag "user_#{user.id}", user.name
     - else

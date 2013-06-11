@@ -1,6 +1,6 @@
 class DiscussionMailer < ActionMailer::Base
   include ApplicationHelper
-  default :from => "\"Loomio\" <noreply@loomio.org>"
+  default :from => "\"Loomio\" <noreply@loomio.org>", :css => :email
 
   def new_discussion_created(discussion, user)
     @user = user

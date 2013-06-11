@@ -1,25 +1,22 @@
-// Place all the styles related to the memberships controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+ul#users-list {
+  li {
+    height: 25px;
+    margin-bottom: 5px;
 
-#users-list li {
-  margin-bottom: 5px;
-  height: 25px;
+    img { float: left; }
+
+    .membership-user-name {
+      margin-left: 2px;
+      a {
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+      }
+    }
+    .user-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 175px;
+    }
+  }
 }
-
-#users-list li img {
-  float: left;
-}
-
-#users-list li .membership-user-name {
-  margin-left: 2px;
-}
-
-#users-list li .membership-user-name a {
-  text-decoration: none;
-}
-
-#users-list li .membership-user-name a:hover {
-  text-decoration: underline;
-}
-
