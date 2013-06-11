@@ -42,7 +42,7 @@ class Groups::MembershipsController < GroupBaseController
       else
         flash[:notice] = t("notice.member_removed")
       end
-      redirect_to @membership.group
+      redirect_to group_memberships_path(@membership.group)
     else
       redirect_to :back
     end
