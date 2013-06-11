@@ -18,8 +18,7 @@ class DiscussionMover
     subgroup_destinations
   end
 
-  def self.can_move?(user, destination)
-    return true if user.is_group_admin?(destination)
-    false
+  def self.can_move?(user, origin, destination)
+    destination.admins.include?(user) && origin.admins.include?(user)
   end
 end
