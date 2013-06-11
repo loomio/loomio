@@ -66,7 +66,7 @@ describe Groups::MembershipsController do
           delete :destroy, :id => @membership.id
         end
         it { flash[:notice].should =~ /Member removed/ }
-        it { response.should redirect_to(@group) }
+        it { response.should redirect_to group_memberships_path(@group) }
         it { @group.users.should_not include(@new_user) }
 
         context "that was already removed" do

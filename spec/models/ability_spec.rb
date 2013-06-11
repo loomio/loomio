@@ -154,6 +154,7 @@ describe "User abilities" do
     it { should_not be_able_to(:email_members, group) }
     it { should_not be_able_to(:add_subgroup, group) }
     it { should_not be_able_to(:add_members, group) }
+    it { should_not be_able_to(:hide_next_steps, group) }
     it { should_not be_able_to(:new_proposal, discussion) }
     it { should_not be_able_to(:add_comment, discussion) }
     it { should_not be_able_to(:move, discussion) }

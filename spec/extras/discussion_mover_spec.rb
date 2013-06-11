@@ -41,16 +41,39 @@ describe DiscussionMover do
     before do
       @user = create :user
       @destination = create :group
+      @origin = create :group
     end
     context "user is admin of not destination" do
       it "returns false" do
-        DiscussionMover.can_move?(@user, @destination).should == false
+        DiscussionMover.can_move?(@user, @origin, @destination).should be_false
       end
     end
-    context "user is admin of destiation" do
+    context "user is member of origin and destination" do
+      it "returns false" do
+        @origin.add_member!(@user)
+        @destination.add_member!(@user)
+        DiscussionMover.can_move?(@user, @origin, @destination).should be_false
+      end
+    end
+    context "user is admin of origin and member of destination" do
+      it "returns false" do
+        @origin.add_admin!(@user)
+        @destination.add_member!(@user)
+        DiscussionMover.can_move?(@user, @origin, @destination).should be_false
+      end
+    end
+    context "user is member of origin and admin of destination" do
+      it "returns false" do
+        @origin.add_member!(@user)
+        @destination.add_admin!(@user)
+        DiscussionMover.can_move?(@user, @origin, @destination).should be_false
+      end
+    end
+    context "user is admin of origin and destination" do
       it "returns true" do
         @destination.add_admin!(@user)
-        DiscussionMover.can_move?(@user, @destination).should == true
+        @origin.add_admin!(@user)
+        DiscussionMover.can_move?(@user, @origin, @destination).should be_true
       end
     end
   end
