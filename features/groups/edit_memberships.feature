@@ -14,6 +14,7 @@ Feature: Edit Memberships for a group
     When I view click edit memberships from the group page
     And click 'Make admin' on the member
     Then the member should be a group admin
+    And I should see the edit memberships page
 
   Scenario: Group Admin removes admin from another member
     Given I am a signed in group admin
@@ -21,6 +22,7 @@ Feature: Edit Memberships for a group
     When I view click edit memberships from the group page
     And click 'Remove admin' on the member
     Then the member should no longer be a group admin
+    And I should see the edit memberships page
 
   Scenario: Group Admin removes another member from the group
     Given I am a signed in group admin
@@ -28,3 +30,5 @@ Feature: Edit Memberships for a group
     When I view click edit memberships from the group page
     And click 'Remove' on the member
     Then the member should no longer belong to the group
+    And I should see the edit memberships page
+
