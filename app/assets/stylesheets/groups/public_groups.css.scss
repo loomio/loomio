@@ -1,0 +1,26 @@
+body.public_groups {
+  &.index, &.find {
+    table {
+      width: 100%;
+      form {
+        margin-bottom: 0;
+        .control-group {
+          display: inline-block;
+          margin-bottom: 0px;
+        }
+        #query {
+          width: 200px;
+        }
+      }
+      th { text-align: left; }
+      td.group {
+        padding: 10px;
+        .group-name { font-weight: bold; }
+      }
+      td.members {
+        padding-left: 30px;
+        width: 20px;
+      }
+    }
+  }
+}
