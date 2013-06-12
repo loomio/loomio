@@ -1,15 +1,15 @@
 .logged-in-navigation
   - if user_signed_in?
-    .navbar.navbar-inverse.navbar-fixed-top
+    .navbar.navbar-fixed-top
       .navbar-inner
         .container
           %ul.nav-bar-list.clearfix
             %li.nav-item#logo-home
               %a.nav-logo-link{:href => "/"}
                 = image_tag("top-bar-loomio.png", :alt => "Loomio")
-                = render 'application/groups_dropdown'
-                = render 'notifications_dropdown'
-                = render 'user_dropdown'
+              = render 'application/groups_dropdown'
+              = render 'notifications_dropdown'
+              = render 'user_dropdown'
             %li.nav-item#help
               %a.nav-link{ :href => help_path }
                 %span= t :"help.help"
