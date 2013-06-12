@@ -9,3 +9,4 @@
       %br
       = f.submit t("invitation.send_invitations"), :class => "btn btn-info btn-large run-validations", :data => { disable_with: t("invitation.send_invitations") }
 
+      =render "application/hint", text: t(:"hint.invitation"), anchor: 'writing-a-great-invitation'

@@ -17,4 +17,5 @@
         = f.input :facilitator_id, as: :hidden, input_html: {value: current_user.id}
         = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}
         = f.submit :class => "btn btn-large btn-info run-validations", id: "proposal-submit", :data => {:disable_with => :starting}
+        = render 'application/hint', text: t(:"hint.proposal"), anchor: 'writing-a-clear-proposal'
 
