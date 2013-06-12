@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
     redirect_to :back
   end
 
-
   protected
 
   def set_locale
