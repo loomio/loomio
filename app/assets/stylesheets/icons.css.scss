@@ -45,6 +45,11 @@
     background-image:url('/assets/group-24.png');
     margin: 0px;
   }
+  &.heart-icon {
+    text-indent: -9999px;
+    background-image:url('/assets/heart-icon.png');
+    margin: 0;
+  }
   &.notification-icon {
     background-image:url('/assets/notification-24.png');
     margin: 0;
@@ -57,7 +62,3 @@
   bottom: 2px;
   position: relative;
 }
-
-
-
-

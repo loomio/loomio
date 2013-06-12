@@ -1,0 +1,36 @@
+//contributions page
+
+.contributions {
+  .row { margin-top: 1.6em; }
+  &.index {
+    margin-top: 1em;
+    .input-append { margin-bottom: 0; }
+    .span4#actions {
+      border-left: 1px solid #eee;
+      margin-left: 3em;
+      padding-left: 3.4em;
+      form { margin: .6em 0 0 0.2em; }
+      h2 span { font-size: .6em; }
+      .btn { margin-left: .4em; margin-top: 0; }
+      .btns { margin: .4em 0 0 2.8em; }
+      #any-amount {
+        margin-top: 2.2em;
+        div, select { margin-left: .6em; }
+        select { width: 70px; }
+        .btn { margin-left: 1em; }
+      }
+      #one-time {
+        margin-top: 2.2em;
+        .btn { margin-top: 0; }
+      }
+      #monthly {
+        .btns { margin-left: 3em; }
+      }
+    }
+    .span5#description {
+      img { width: 340px; }
+      span { font-weight: 700;}
+      #thanks { margin: 2em 0 .2em; }
+    }
+  }
+}

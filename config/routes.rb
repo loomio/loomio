@@ -104,6 +104,11 @@ Loomio::Application.routes.draw do
   match 'email_preferences', :to => "users/email_preferences#edit", :as => :email_preferences, :via => :get
   match 'email_preferences', :to => "users/email_preferences#update", :as => :update_email_preferences, :via => :put
 
+  resources :contributions, only: [:index, :create] do
+    get :callback, on: :collection
+    get :thanks, on: :collection
+  end
+
   authenticated do
     root :to => 'dashboard#show'
   end

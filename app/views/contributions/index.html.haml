@@ -1,0 +1,32 @@
+#contributions
+  %h1= t("contribution.thought_about_contributing")
+  .row
+    .span5#description
+      = simple_format t("contribution.thought_about_contributing_description")
+      = image_tag("loomio-orange-header.png", :alt => "Loomio")
+
+    .span4#actions
+      #monthly
+        %h2= t("contribution.monthly_html")
+        .btns
+          -{'12400461853BF0' => 5,
+            '2075FEF58DCF04' => 10,
+            'A57235C1CC0' => 20}.each_pair do |contract_id, amount|
+            %a{:href => "https://subscription.swipehq.com/?contract_id=#{contract_id}", class: "btn btn-warning", id: "monthly-#{amount}"} $#{amount}
+
+      #one-time
+        %h2= t("contribution.one_time_html")
+        .btns
+          -{'15CD9F339A187F' => 10,
+            '1240208F4FDEBD' => 20,
+            '1CE89C7DF9AD78' => 50}.each_pair do |product_id, amount|
+            %a{:href => "https://payment.swipehq.com/?product_id=#{product_id}", class: "btn btn-info", id: "once-off-#{amount}"} $#{amount}
+
+      #any-amount
+        %h2= t("contribution.any_amount")
+        =form_tag(contributions_path) do
+          .input-prepend
+            %span.add-on= '$'
+            %input.input-mini{:id => "custom_amount", :name => "amount", :type => "text"}
+            =select_tag(:currency, options_for_select(SwipeWrapper::CURRENCIES), class: 'input-mini')
+          %input{:id => "custom_amount_input", type: 'submit', value: 'submit', class: "btn"}
