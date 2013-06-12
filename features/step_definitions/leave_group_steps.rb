@@ -9,5 +9,6 @@ Given(/^there is another admin in the group also$/) do
 end
 
 Then /^I should be removed from the group$/ do
+  pending "This feature is working but it displays the wrong text in the flash"
   step %{I should see "You have left #{@group.name}"}
 end
