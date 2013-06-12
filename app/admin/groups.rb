@@ -55,7 +55,7 @@ ActiveAdmin.register Group do
     end
     default_actions
   end
-  
+
   show do |group|
     attributes_table do
       row :group_request
@@ -83,6 +83,7 @@ ActiveAdmin.register Group do
       f.input :id, :input_html => { :disabled => true }
       f.input :name, :input_html => { :disabled => true }
       f.input :max_size
+      f.input :paying_subscription, :as => :radio
     end
     f.buttons
   end

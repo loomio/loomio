@@ -482,7 +482,18 @@ describe User do
       other_user = create :user
       user.in_same_group_as?(other_user).should == false
     end
+  end
 
+  describe "belongs_to_paying_group" do
+    it "returns true if user is a member of a paying group" do
+      group.paying_subscription = true
+      group.save!
+      group.add_member!(user)
+      user.belongs_to_paying_group?.should == true
+    end
+    it "returns false if user is not a member of a paying group" do
+      group.paying_subscription == false
+    end
   end
 
 end
