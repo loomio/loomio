@@ -10,10 +10,12 @@ $font-xlarge: 1.5em;
 $font-xxlarge: 1.7em;
 
 // colors
-$lighter-grey: #E6E6E6;
+$lighter-grey: #E8E8E8;
 $light-grey: #BBB;
 $mid-grey: #777;
 $dark-grey: #555;
+$darker-grey: #333;
+$link-blue: #39A0C4;
 
 // $header-link-color: #5E91C9;
 $header-link-color: #4786CC;
@@ -28,13 +30,14 @@ $comment-color: white;
 $current-proposal: white;
 
 $main-background: #F7F7F7;
-$pattern-background: url('backgrounds/squairy_light.png');
+$pattern-background: url('backgrounds/squairy_lighter.png');
+//This background pattern is from 'Subtle Patterns' and is licensed under a Creative Commons Attribution-//ShareAlike 3.0 Unported License. http://subtlepatterns.comW
 
 $container: white;
 $sub-selector-panel: #efefef;
 $selector-panel: #ebebeb;
-$selector: #F7F3E2;
-$highlighted: #F7F3E2;
+$selector: #F9F2E8;
+$highlighted: #F9F2E8;
 $unhighlighted: white;
 // $group-activity: #ABBEE6;
 $group-activity: #75A0CF;

@@ -92,6 +92,7 @@ body.discussions.show {
     display: inline-block;
     width: 850px;
     margin: 0 0 0 15px;
+    padding: 10px 0;
   }
   #edit-discussion-title {
     float: left;
@@ -464,6 +465,7 @@ li.selector-item .discussion-preview:hover {
     font-size: $font-small;
     color: $mid-grey;
     width: 460px;
+    font-weight: bold;
   }
   .discussion-date-info {
     display: inline;
