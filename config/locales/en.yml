@@ -284,6 +284,7 @@ en:
   confirm_close_proposal: "Are you sure you want to close this proposal?"
   change_proposal_close_date: "Change close date"
   change_proposal_close_date_header: "Change the close date for the proposal '%{which}'"
+  proposal: Proposal
   proposal_close_date_error: "Please give a future close date"
   proposal_closing_when: "Closing in %{when}"
   proposal_closed_when: "Closed %{when} ago"
@@ -396,21 +397,16 @@ en:
     title: "Example Discussion: Welcome and introduction to Loomio"
     description: |
       Welcome to Loomio, a new tool for group decision-making.
-
       By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, your group can put their heads together to find the best way forward.
-
       You can use this example discussion to play around with the features of the tool.
-
       To get the ball rolling, Loomio Helper Bot thinks it would be a great idea for your group to take a holiday together. The pie graph on the right shows how your group feels about the proposal. You can have your say by clicking on one of the decision buttons underneath.
+
   example_motion:
     name: "We should have a holiday on the moon!"
     description: |
       Loomio Helper Bot is really keen for your group to invest in a trip to the moon. Apparently the space-cheese is delicious. But the implications for your carbon footprint are worrying.
-
       Is it a good idea? Loomio Helper Bot wants to know what you think!
-
       If you’re clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).
-
       You’ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes.
 
   #
