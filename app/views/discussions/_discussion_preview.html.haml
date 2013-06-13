@@ -1,5 +1,4 @@
 .clearfix
-  %span{ class: css_class_unread_group_activity_for(discussion, current_user)}
   %div{ class: css_class_unread_discussion_activity_for(this_group, discussion, current_user), id: "discussion-preview-#{discussion.id}" }
     %a.selector-discussion-link{ href: discussion_path(discussion) }
       - if user_signed_in? && discussion.current_motion

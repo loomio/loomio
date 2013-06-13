@@ -34,11 +34,11 @@ Then /^the comment should format markdown characters$/ do
 end
 
 Then /^comment markdown should now be on by default$/ do
-  find('#discussion-activity-container').should have_css('.markdown-on')
+  find('#content-comments').should have_css('.markdown-on')
 end
 
 Then /^comment markdown should now be off by default$/ do
-  find('#discussion-activity-container').should have_css('.markdown-off')
+  find('#content-comments').should have_css('.markdown-off')
 end
 
 Then /^there should be an anchor for the comment$/ do
