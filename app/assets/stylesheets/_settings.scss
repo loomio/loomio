@@ -1,7 +1,3 @@
-// twitter-bootstrap
-$baseFontSize: 14px;
-$baseLineHeight: 18px;
-
 // application
 $font-tinywiny: 0.7em;
 $font-tiny: 0.8em;
@@ -14,17 +10,19 @@ $font-xlarge: 1.5em;
 $font-xxlarge: 1.7em;
 
 // colors
-$lighter-grey: #E6E6E6;
+$lighter-grey: #E8E8E8;
 $light-grey: #BBB;
 $mid-grey: #777;
 $dark-grey: #555;
+$darker-grey: #333;
+$link-blue: #39A0C4;
 
 // $header-link-color: #5E91C9;
 $header-link-color: #4786CC;
 
 $loomio-orange: #ffa600;
 $header-color: #F2F2F2;
-$navbar-text-color: #BFBFBF;
+$navbar-text-color: #333;
 
 $error-color: firebrick;
 
@@ -32,12 +30,14 @@ $comment-color: white;
 $current-proposal: white;
 
 $main-background: #F7F7F7;
+$pattern-background: url('backgrounds/squairy_lighter.png');
+//This background pattern is from 'Subtle Patterns' and is licensed under a Creative Commons Attribution-//ShareAlike 3.0 Unported License. http://subtlepatterns.comW
 
 $container: white;
 $sub-selector-panel: #efefef;
 $selector-panel: #ebebeb;
-$selector: #e0eaf1;
-$highlighted: #f6f6f6;
+$selector: #F9F2E8;
+$highlighted: #F9F2E8;
 $unhighlighted: white;
 // $group-activity: #ABBEE6;
 $group-activity: #75A0CF;

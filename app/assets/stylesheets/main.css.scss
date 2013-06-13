@@ -3,9 +3,9 @@
 @import "mixins";
 
 body {
-  background-color: $main-background;
+  background: $pattern-background;
   height: 100%;
-  color: $dark-grey;
+  color: $darker-grey;
 }
 
 code{
@@ -25,7 +25,7 @@ form {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  font-family: inherit;
+  font-family: 'Arimo', sans-serif;
   font-weight: bold;
   color: inherit;
   text-rendering: optimizelegibility;
@@ -68,6 +68,9 @@ ul { list-style: none; }
 ul, ol, li {
   margin: 0;
   padding: 0;
+}
+a { 
+  color: $link-blue;
 }
 
 .alert { margin: 10px 0; }
@@ -157,14 +160,16 @@ ul.selector-list {
 
 .sub-panel {
   background-color: $sub-selector-panel;
-  border: 1px solid $light-grey;
-  @include border-radius(8px);
+  border: 1px solid #e2e2e2;
+  @include border-radius(4px);
   margin-bottom: 20px;
-  padding: 6px 10px;
+  padding: 15px;
 
   h4 {
     line-height: 1.8em;
     margin-bottom: 5px;
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 17px;
   }
   a { color: $mid-grey; }
   .bottom-panel-link {

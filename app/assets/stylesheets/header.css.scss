@@ -1,4 +1,5 @@
 @import "settings";
+@import "mixins";
 
 .dropdown-menu {
   a {
@@ -11,17 +12,19 @@
     white-space: nowrap;
   }
   li > a:hover, .active > a, .active > a:hover { 
-    background-color: #08c;
     text-decoration: none;
   }
+  h3 { padding-left: 15px; }
 }
 
 .main-container {
   margin: auto;
   background-color: $container;
   min-height: 100%;
-  padding: 40px 20px 20px 20px;
+  padding: 54px 20px 20px 20px;
 }
+
+
 
 .logged-in-navigation {
   .nav-item-icon {
@@ -33,7 +36,7 @@
   }
 
   li.nav-item {
-    margin-top: 2px;
+    margin-top: 10px;
     .caret {
       border-top: 4px solid $light-grey;
       opacity: 1;
@@ -42,25 +45,27 @@
   li.nav-item a.nav-logo-link {
     padding: 0px 8px 1px 0px;
     display: block;
+    margin-bottom: 9px;
   }
   li.nav-item a.nav-link {
-    color: $light-grey;
+    color: $mid-grey;
     display: block;
     padding: 8px 8px;
     line-height: 18px;
   }
   li.nav-item a.nav-link:hover{
-    color: white;
+    color: $mid-grey;
     text-decoration: none;
-    .caret { border-top: 4px solid white; }
+    .caret { border-top: 4px solid #333; }
     span.nav-item-icon{ opacity: 1; }
   }
 
-  li.nav-item ul.dropdown-menu a { color: $dark-grey; }
-  li.nav-item ul.dropdown-menu a:hover { color: white; }
+  li.nav-item ul.dropdown-menu a { color: $dark-grey; font-weight: bold; }
+  li.nav-item ul.dropdown-menu a:hover { color: $link-blue; background: none; }
 
   li.nav-item#logo-home {
     float: left;
+    margin-top: 8px;
   }
 
   li.nav-item#notifications-container {
@@ -71,14 +76,24 @@
     float: right;
   }
 
+  li.nav-item.dropdown h3 {
+    padding-left: 15px;
+  }
   li.nav-item.dropdown#user {
     float: right;
+    margin-top: 5px;
+
+    .avatar-canvas { border: none; }
+
+    a.nav-link { padding: 3px;}
+
+    .caret { margin-right: 4px; margin-top: 12px; }
     #header-user-image {
-      border: 1px solid #555;
       position: relative;
-      bottom: 5px;
       margin-right: 5px;
+      @include border-radius(3px);
     }
+    #user-name-dropdown { padding: 3px; display: inline-block; }
   }
   li.nav-item.dropdown#groups {
     float: left;
@@ -102,6 +117,9 @@
     overflow-y: auto;
     max-height: 390px;
     min-width: 350px;
+    h3 { 
+      padding-left: 20px; border-bottom: 1px solid $light-grey;
+    }
   }
   li#groups ul.dropdown-menu {
     background-color: #eee;
@@ -110,7 +128,7 @@
   li.group-item {
     background-color: white;
   }
-  li.group-item.sub-group a {
+  li.group-item.sub-group a,  {
     padding-left: 20px;
     font-size: $font-small;
   }
@@ -125,10 +143,15 @@
     a { color: $mid-grey; }
     background-color: #eee;
   }
+
   li.nav-item#help {
     float: right;
     padding-right: 14px;
 
     .help-question { padding-right: 10px; }
+  }
+  #notification-dropdown-items {
+    background: #fff;
+    a { color: $link-blue; }
   }
 }

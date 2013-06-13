@@ -4,7 +4,9 @@
     - title = @title ? @title : "Loomio"
     %title= title
     <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
-    = stylesheet_link_tag    "frontpage"
+    = stylesheet_link_tag  "frontpage"
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Arimo:400,700'
+
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
 
@@ -13,7 +15,7 @@
       = render 'flash_messages', :flash => flash
     .container#top
       .inner-container
-        .row-fluid
+        .row-fluid.home-header
           .pull-right
             - if controller_name == 'pages' && (action_name == 'home' || action_name == 'about')
               =link_to 'Sign up', request_new_group_path, class: 'btn'

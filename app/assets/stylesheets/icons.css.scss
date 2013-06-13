@@ -54,10 +54,17 @@
 }
 
 .header-bar-icon{
-  bottom: 2px;
-  position: relative;
+  margin: 0;
 }
 
+.large-icon.group-icon {
+  background: url('large-icons/group-grey.png') no-repeat 0 -2px;
+  width: 24px;
+  height: 24px;
+}
 
-
-
+.large-icon.bell-icon {
+  background: url('large-icons/bell-grey.png') no-repeat 0 1px;
+  width: 16px;
+  height: 24px;
+}

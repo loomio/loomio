@@ -37,11 +37,11 @@
     padding-bottom: 0;
   }
   #notifications-container .dropdown-menu a {
-    min-height: 42px;
+    min-height: 30px;
     padding-left: 5px;
   }
   #notifications-container .dropdown-menu h3 {
-    padding-left: 5px;
+    padding-left: 15px;
     color: #333;
   }
   #notifications-container .divider {
@@ -103,5 +103,8 @@ body.notifications.index .container {
   }
   li.notification-item:hover {
     background-color: $selector;
+    a {
+      color: $link-blue;
+    }
   }
 }
