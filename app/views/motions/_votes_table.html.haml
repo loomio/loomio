@@ -7,7 +7,7 @@
     - unless current_user && vote == current_user.get_vote_for(motion)
       = render "motions/votes_table_vote", vote: vote, motion: motion
 #yet-to-vote.hidden
-  - Queries::Voters.group_members_that_havent_voted_on(motion) do |user|
+  - Queries::Voters.group_members_that_havent_voted_on(motion).each do |user|
     .position-row.clearfix
       .activity-icon= image_tag "questionmark.png"
       = link_to user.name, user_path(user), class: 'user-name'
