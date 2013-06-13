@@ -6,9 +6,11 @@ Loomio::Application.routes.draw do
 
   resources :invitations, only: [:show]
 
+  resources :error_rainchecks, only: [:new, :create]
+
   get :not_found, to: 'error_rainchecks#error_page'
 
-  get :email_submitted, to: 'error_rainchecks#error_submitted_page'
+  # get :email_submitted, to: 'error_rainchecks#error_submitted_page'
 
   resources :group_requests, only: [:create, :new] do
     get :verify, on: :member

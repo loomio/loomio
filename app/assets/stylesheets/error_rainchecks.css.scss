@@ -1,19 +1,23 @@
-h1 {
-  line-height: 1.5em;
+body.error_rainchecks {
+  .content {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+  #header {
+      height: 150px;
+  }
+  #error-container{
+    width: 940px;
+    margin:10px auto;
+    h1 {
+      font-size: 20px;
+    }
+    input {
+      width: 30%;
+    }
+  #error-raincheck-submit {
+    width: 10%;
+    }
+  }
 }
-#error-head{
-  background-color: #292929;
-}
-.content {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  padding: 20px;
-}
-#header {
-    height: 150px;
-}
-#error-container{
-  width: 940px;
-  margin:0px auto;
-}
-
