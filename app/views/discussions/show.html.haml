@@ -4,10 +4,10 @@
   .span12
     .selector-panel
       = render 'title', discussion: @discussion
-      #discussion-page-container
+      #discussion-content-container
         #discussion-context= render 'discussion_context'
         .row
-          .span6#discussion-activity-container
+          .span6#content-comments
             .large-icon.discussion-icon.enabled-icon
             %h3.header-text= t :discussion
             #discussion-activity-body

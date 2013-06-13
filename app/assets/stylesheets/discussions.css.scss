@@ -2,74 +2,249 @@
 @import "settings";
 @import "mixins";
 
-/** discussion new (new loomio) modal*/
-body.discussions.new, body.discussions.create {
-  .helper-text.align-with-input { margin-top: 20px }
 
+body.discussions.new, body.discussions.create {
   #discussion-markdown-dropdown {
     float: right;
-    margin-right: -12px;
+    left: 12px;
+    li i {
+      display: inline-block;
+      width: 15px;
+    }
   }
-
   #discussion-submit {
-    position: relative;
     float: left;
+    position: relative;
   }
-
   .markdown-setting-dropdown {
     margin-top: 2px;
     margin-left: -10px;
   }
 }
 
-#discussion-list {
-  margin-bottom: 10px;
-}
-
-#new_discussion .control-label {
-  display: block;
-}
-#start-proposal-text { padding: 4px; }
-
-.model-description { padding-bottom: 10px; }
 
 body.discussions.show {
-  .description-body {
-    color: $dark-grey;
-    margin-bottom: 10px;
+  .discussion-title-container {
+    display: inline-block;
+    width: 850px;
+    margin: 0 0 4px 0px;
+
+    #discussion-title { font-size: 22px; }
+    #edit-discussion-title {
+      float: left;
+      #cancel-edit-title {
+        color: $mid-grey;
+        font-size: $font-tiny;
+        margin-left: 10px;
+        text-decoration: underline;
+        position: relative;
+        &:hover { color: $dark-grey; }
+      }
+      .character-counter { bottom: 0; }
+
+      .control-group { margin-bottom: 0px; }
+      form {
+        margin: 4px 0 0 0;
+        width: 830px;
+        .control-group #discussion-input {
+          width: 820px;
+          font-size: $font-xlarge;
+          margin-bottom: 2px;
+        }
+      }
+      .save-buttons {
+        position: relative;
+        bottom: 5px;
+      }
+    }
   }
-}
-.long-description { padding-bottom: 10px; }
-
-.revision-title p { font-size: 85%; }
-
-#description-edit-form {
-  margin-bottom: 0px;
-  #description-input {
-    width: 600px;
-    height: 90px;
+  #discussion-content-container {
+    background-color: white;
+    border-top: 1px solid $light-grey;
+    border-bottom: 1px solid $light-grey;
+    padding-bottom: 20px;
     margin-bottom: 5px;
+    .content-proposal-body {
+      padding: 10px 10px 10px 50px;
+      ul.selector-list {
+        border-top: 1px solid $light-grey;
+        li.empty-list-message { padding: 4px; }
+        li .motion {
+          .close-date {
+            color: $mid-grey;
+            font-size: $font-tiny;
+          }
+        }
+      }
+    }
+    #discussion-context {
+      border-bottom: 1px solid $light-grey;
+      min-height: 40px;
+      padding: 10px 0px 10px 50px;
+
+      #description-edit-form {
+        margin-bottom: 0px;
+        #add-description-submit { float: left; }
+        #cancel-add-description {
+          color: $mid-grey;
+          float: left;
+          font-size: $font-tiny;
+          margin: 0 0 0 10px;
+          position: relative;
+          text-decoration: underline;
+          top: 5px;
+        }
+        .control-group { margin-bottom: 0px; }
+        .description-body {
+          color: $dark-grey;
+          margin-bottom: 10px;
+        }
+        #description-input {
+          height: 90px;
+          margin-bottom: 5px;
+          width: 600px;
+        }
+      }
+
+      #description-revision-history {
+        .revision-content{
+          clear:both;
+        }
+        .revision-title {
+          width: 450px;
+          float: left;
+          p { font-size: 85%; }
+        }
+        .revision-version {
+          float: left;
+          a.disabled {
+            color: $mid-grey;
+            cursor: default;
+            &:hover { text-decoration: none; }
+          }
+          &:after {
+            content: ".";
+            visibility: hidden;
+            clear: both;
+          }
+        }
+      }
+      .discussion-additional-info {
+        background-color: #EEE;
+        color: $mid-grey;
+        float: right;
+        font-size: $font-small;
+        padding: 5px;
+        width: 170px;
+        .last-edited-by, .started-by { margin-bottom: 10px; }
+      }
+      #discussion-markdown-dropdown {
+        margin-right: 8px;
+        padding-right: 0px;
+      }
+      .long-description { padding-bottom: 10px; }
+      .right-context { width: 230px; }
+    }
   }
-  .control-group { margin-bottom: 0px; }
-  #add-description-submit { float: left; }
-  #cancel-add-description {
-    float: left;
-    margin-left: 15px;
-    color: $mid-grey;
-    text-decoration: underline;
-    position: relative;
-    top: 5px;
-    font-size: $font-tiny;
+
+  #content-comments {
+    border-right: 1px solid $light-grey;
+    min-height: 660px;
+    padding-right: 10px;
+    .comment-anchor {
+      padding-top: 50px;
+      margin-top: -50px;
+      display:block;
+    }
+    #comment-markdown-dropdown li i {
+      display: inline-block;
+      width: 15px;
+    }
+    #discussion-activity-body { padding: 10px 0px 10px 8px; }
+    #discussion-markdown-dropdown li i {
+      display: inline-block;
+      width: 15px;
+    }
+    #new-comment-form {
+      margin-bottom: 0px;
+      padding: 0 0 10px 0;
+      background-color: $comment-color;
+      img {
+        float:left;
+        margin-right: 10px;
+      }
+    }
+    #comment-markdown-dropdown {
+      margin-top: -32px;
+      margin-right: -8px;
+    }
+    .markdown-setting-dropdown {
+      margin-top: -2px;
+    }
+    #new-comment {
+      color: $dark-grey;
+      height: 80px;
+      margin: 0 0 5px 0px;
+      width: 380px;
+    }
+    #post-new-comment {
+      margin: 5px 5px 5px 45px;
+    }
+    /** Code block padding (Stops avatars destroying indentation) */
+    pre {
+      display: block;
+      margin: 10px 0px;
+      overflow: auto;
+      white-space: pre;
+      word-wrap: normal;
+    }
+    ul#activity-list {
+      list-style: none;
+      margin: 0 15px 3px 0;
+      width: 437px;
+      li.empty-list-message {
+        margin-left: 45px; /*check this still works*/
+      }
+      .divider {
+        border-bottom: 1px solid $light-grey;
+        margin: 0 0 5px 45px;
+      }
+      .activity-item-actor{
+        font-weight: bold;
+        a {color: $dark-grey;}
+      }
+      .activity-item-avatar {
+        height: 35px;
+        margin-right: 0px;
+        float: left;
+      }
+      .activity-item-body {
+        margin-left: 45px;
+        border-bottom: 1px solid $light-grey;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+      }
+      .activity-item-comment-actor { font-weight: bold; }
+      .activity-item-container { width: 100%; }
+      .activity-item-content{
+        color: $mid-grey;
+        font-style: italic;
+        word-wrap: break-word;
+      }
+      .activity-item-header{ color: $dark-grey; }
+      .activity-item-likes{
+        color: $dark-grey;
+        font-size: $font-tiny;
+      }
+      .activity-item-time{
+        color: $dark-grey;
+        font-size: $font-tiny;
+      }
+    }
   }
-  #cancel-add-description:hover {
-    color: $dark-grey;
-  }
-}
-/** discussion show form*/
-body.discussions.show {
-  h2#discussion-title {
-    font-size: 22px;
-  }
+
+  .header-text { line-height: 2.0em; }
+
   .selector-panel {
     background-color: $selector-panel;
     @include border-radius(8px);
@@ -89,127 +264,17 @@ body.discussions.show {
       }
     }
   }
-  .discussion-title-container{
-    display: inline-block;
-    width: 850px;
-    margin: 0 0 4px 0px;
-  }
-  #edit-discussion-title {
-    float: left;
-    form {
-      margin: 4px 0 0 0;
-      width: 830px;
-    }
-    form .control-group #discussion-input {
-      width: 820px;
-      font-size: $font-xlarge;
-      margin-bottom: 2px;
-    }
-    .control-group { margin-bottom: 0px; }
-    .character-counter { bottom: 0; }
-    .save-buttons {
-      position: relative;
-      bottom: 5px;
-    }
-    #cancel-edit-title {
-      margin-left: 10px;
-      color: $mid-grey;
-      text-decoration: underline;
-      position: relative;
-      font-size: $font-tiny;
-    }
-    #cancel-edit-title:hover {
-      color: $dark-grey;
-    }
-  }
-
-  #discussion-page-container {
-    background-color: white;
-    border-top: 1px solid $light-grey;
-    border-bottom: 1px solid $light-grey;
-    padding-bottom: 20px;
-    margin-bottom: 5px;
-  }
-
-  #discussion-context {
-    min-height: 40px;
-    border-bottom: 1px solid $light-grey;
-    padding: 10px 0px 10px 50px;
-
-    #discussion-markdown-dropdown {
-      margin-right: 8px;
-      padding-right: 0px;
-    }
-  }
-
-  .right-context {
-    width: 230px;
-  }
-
-  .discussion-additional-info {
-    font-size: $font-small;
-    color: $mid-grey;
-    width: 170px;
-    background-color: #EEE;
-    padding: 5px;
-    float: right;
-  }
-
-  .header-text {
-  //   color: $mid-grey;
-  //   font-weight: bold;
-    line-height: 2.0em;
-  }
-
-  .last-edited-by, .started-by {
-    margin-bottom: 10px;
-  }
 }
 
-#description-revision-history {
-  .revision-version {
-    a.disabled {
-      color: $mid-grey;
-      cursor: default;
-    }
-    a.disabled:hover {
-      text-decoration: none;
-    }
-  }
-  .revision-title {
-    width: 450px;
-    float: left;
-  }
-  .revision_version {
-    float: left;
-  }
-  .revision_version:after {
-    content: ".";
-    visibility: hidden;
-    clear: both;
-  }
-  .revision-content{
-    clear:both;
-  }
-}
-
-.content-proposal-body {
-  padding: 10px 10px 10px 50px;
-}
-.content-proposal-body ul.selector-list { border-top: 1px solid $light-grey; }
-li .motion {
-  .close-date {
-    font-size: $font-tiny;
-    color: $mid-grey;
-  }
-}
-li s hard.motion-preview {
+li.motion-preview {
   a {
     padding: 10px 15px;
     text-decoration: none;
   }
 }
-  /* Markdown styling */
+
+
+/* Markdown styling */
 
 .activity-item-body .popover h3 { padding: 8px 14px; }
 .activity-item-body, .long-description, .motion .description {
@@ -265,174 +330,74 @@ pre{
 }
 
 
-/*** comments, positions & proposals in History ***/
-#comment-markdown-dropdown li i {
-  display: inline-block;
-  width: 15px;
+
+// group and home pages
+#discussion-list {
+  margin-bottom: 10px;
+
+  .popover-content { padding-top: 8px; }
+  .popover-close-date {
+    font-weight: normal;
+    display: inline;
+    font-size: $font-tiny;
+    position: relative;
+    left: 5px;
+    bottom: 2px;
+  }
+  .popover-header {
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $light-grey;
+  }
+  .popover-motion-name {
+    color: black;
+    font-weight: normal;
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: 1px solid white;
+  }
+  .popover-engagement { margin-bottom: 8px; }
+  .popover-current-position-icon {
+    position: relative;
+    bottom: 3px;
+    display: inline;
+  }
+  ul.popover-activity-list {
+    max-height: 180px;
+    overflow-y: auto;
+  }
+  li.popover-item {
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid $light-grey;
+    min-height: 40px;
+    .vote-time { font-size: $font-tiny; }
+  }
 }
 
-#discussion-markdown-dropdown li i {
-  display: inline-block;
-  width: 15px;
-}
 
-.comment-anchor {
-  padding-top: 50px;
-  margin-top: -50px;
-  display:block;
-}
-
-#discussion-activity-container {
-  border-right: 1px solid $light-grey;
-  min-height: 660px;
-  padding-right: 10px;
-
-  #discussion-activity-body {
-    padding: 10px 0px 10px 8px;
-  }
-  #new-comment-form {
-    margin-bottom: 0px;
-    padding: 0 0 10px 0;
-    background-color: $comment-color;
-  }
-  #new-comment-form img {
-    float:left;
-    margin-right: 10px;
-  }
-  #comment-markdown-dropdown {
-    margin-top: -32px;
-    margin-right: -5px;
-  }
-  .markdown-setting-dropdown {
-    margin-top: -2px;
-  }
-  #new-comment {
-    margin: 0 0 5px 0px;
-    height: 80px;
-    color: $dark-grey;
-    width: 380px;
-  }
-  #post-new-comment {
-    margin: 5px 5px 5px 45px;
-  }
-  ul#activity-list {
-    list-style: none;
-    margin: 0 15px 3px 0;
-    width: 437px;
-
-    li.empty-list-message {
-      margin-left: 45px; /*check this still works*/
-    }
-    .divider {
-      border-bottom: 1px solid $light-grey;
-      margin: 0 0 5px 45px;
-    }
-    .activity-item-container {
-      width: 100%;
-    }
-    .activity-item-body {
-      margin-left: 45px;
-      border-bottom: 1px solid $light-grey;
-      margin-bottom: 5px;
-      padding-bottom: 5px;
-    }
-    .activity-item-avatar {
-      height: 35px;
-      margin-right: 0px;
-      float: left;
-    }
-    .activity-item-comment-actor{
-      font-weight: bold;
-    }
-    .activity-item-actor{
-      font-weight: bold;
-      a {color: $dark-grey;}
-    }
-    .activity-item-header{
-      color: $dark-grey;
-    }
-    .activity-item-content{
-      color: $mid-grey;
-      font-style: italic;
-      word-wrap: break-word;
-    }
-    .activity-item-time{
-      color: $dark-grey;
-      font-size: $font-tiny;
-    }
-    .activity-item-likes{
-      color: $dark-grey;
-      font-size: $font-tiny;
-    }
-  }
-}
-// Discussion preview list panel
-//
-// NOTE: this code is shared with the group show page and
-//       the dashboard page.
-//
-
-.group-activity-indicator {
-  margin: 0 0 0 -6px;
-  width: 4px;
-  height: 47px;
-  float: left;
-  background-color: $container;
-}
-.unread-group-activity {background-color: $group-activity;}
-
-.popover-motion-name { color: black; }
-.popover-content { padding-top: 8px; }
-.popover-close-date { 
-  font-weight: normal;
-  display: inline;
-  font-size: $font-tiny;
-  position: relative;
-  left: 5px;
-  bottom: 2px;
-}
-.popover-engagement { margin-bottom: 8px; }
-.popover-current-position-icon {
-  position: relative;
-  bottom: 3px;
-  display: inline;
-}
-ul.popover-activity-list {
-  max-height: 180px;
-  overflow-y: auto;
-}
-li.popover-item {
-  padding-left: 5px;
-  .vote-time { font-size: $font-tiny; }
-}
-li.selector-item .discussion-preview:hover {
-  background-color: $selector;
-}
 
 .discussion-preview {
-  float: left;
-  width: 700px;
-  height: 47px;
   background-color: $unhighlighted;
+  float: left;
+  height: 47px;
+  width: 700px;
+  &:hover { background-color: $selector; }
   a {
     color: $dark-grey;
+    &:hover { text-decoration: none; }
+    &.selector-discussion-link {
+      float: left;
+      width: 653px;
+      padding: 5px 0 5px 5px;
+    }
   }
-  a:hover {
-    text-decoration: none;
-  }
-  a.selector-discussion-link {
-    width: 653px;
-    float: left;
-    padding: 5px 0 5px 5px;
-  }
+
   .motion-popover-link {
-    width: 42px;
-    height: 47px;
     cursor: pointer;
     float: right;
-    .pie {
-      margin: 6px 3px;
-    }
+    height: 47px;
+    width: 42px;
+    .pie { margin: 6px 3px; }
     .preview-pie-button {
       border: none;
       padding: 0;
@@ -440,18 +405,18 @@ li.selector-item .discussion-preview:hover {
   }
   .vote-icon {
     float: left;
-    width: 20px;
     padding-right: 7px;
     position: relative;
     top: 6px;
+    width: 20px;
   }
   .discussion-title {
     display: inline;
     float: left;
   }
   .group-name {
-    font-size: $font-small;
     color: $mid-grey;
+    font-size: $font-small;
     width: 460px;
   }
   .discussion-date-info {
@@ -460,12 +425,8 @@ li.selector-item .discussion-preview:hover {
     font-size: $font-small;
     padding: 10px 10px 0 0;
   }
-  .discussion-date-info .latest-comment-time {
-    display: inline;
-  }
-  .discussion-date-info .proposal-close-date {
-    display: inline;
-  }
+  .discussion-date-info .latest-comment-time { display: inline; }
+  .discussion-date-info .proposal-close-date { display: inline; }
   .pie {
     float: right;
     width: 36px;
@@ -497,21 +458,4 @@ li.selector-item .discussion-preview:hover {
   .color-urgent { background-color: #CA3232; }
   .color-warning { background-color: #F89406; }
   .color-ok { background: #016B01; }
-}
-
-.popover-motion-name {
-  font-weight: normal;
-  margin-top: 10px;
-  padding-top: 5px;
-  border-top: 1px solid white;
-}
-.popover-header {
-  font-weight: bold;
-  padding-bottom: 5px;
-  border-bottom: 1px solid $light-grey;
-}
-.popover-item {
-  padding: 5px 0 5px 0;
-  border-bottom: 1px solid $light-grey;
-  min-height: 40px;
 }
