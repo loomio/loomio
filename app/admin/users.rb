@@ -8,7 +8,9 @@ ActiveAdmin.register User do
     column :email
     column :created_at
     column :last_sign_in_at
-    column :is_admin
+    column "Coordinator" do |user|
+      user.adminable_groups.any?
+    end
     column "No. of groups", :memberships_count
     default_actions
   end
