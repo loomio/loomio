@@ -1,4 +1,5 @@
 class Discussion < ActiveRecord::Base
+  default_scope -> {where(is_deleted: false)}
   scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
 
   validates_presence_of :title, :group, :author
@@ -151,6 +152,11 @@ class Discussion < ActiveRecord::Base
     self.title = title
     save!
     fire_edit_title_event(user)
+  end
+
+  def delayed_destroy
+    self.update_attribute(:is_deleted, true)
+    self.delay.destroy
   end
 
   private
