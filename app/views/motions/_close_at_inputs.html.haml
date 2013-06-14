@@ -2,4 +2,4 @@
   = form.input :close_at_date, as: :date_picker, input_html: { class: 'motion-close-at-date validate-presence' }
   = form.input :close_at_time, as: :select, collection: time_select_options, include_blank: false, label: false, input_html: { class: 'motion-close-at-time' }
   = form.input :close_at_time_zone, default: current_user.time_zone_city, include_blank: false, label: false, input_html: { class: 'motion-close-at-time-zone' }
-  .inline-help= t("group_setup_form.errors.motion_closing_inputs")
+  .inline-help= t("error.motion_closing_inputs")

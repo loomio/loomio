@@ -8,18 +8,6 @@ $ ->
 
 ### EVENTS ###
 
-$ -> # Remove error class on closing inputs if changed
-  $(".motion-close-at-date").change () ->
-    hideDateErrorMessageFor($(this))
-
-$ -> # Remove error class on closing inputs if changed
-  $(".motion-close-at-time").change () ->
-    hideDateErrorMessageFor($(this))
-
-$ -> # Remove error class on closing inputs if changed
-  $(".motion-close-at-time-zone").change () ->
-    hideDateErrorMessageFor($(this))
-
 $ -> # Disable links on usernames
   $('.activity-item-actor a, .member-name a').click (event) ->
     event.preventDefault()
@@ -51,20 +39,7 @@ $ -> # Show form for editing outcome
 
 ### FUNCTIONS ###
 
-hideDateErrorMessageFor = (field) ->
-  $(field).closest('.motion-closing-inputs').removeClass("error")
-  row = $(field).closest('.motion-closing-inputs').find(".inline-help").hide()
-
-Application.validateMotionCloseDate = (closeAtParent) ->
-  if $(closeAtParent).is(":visible")
-    timeNow = new Date()
-    if parseCloseDateTimeZoneFields(closeAtParent) < timeNow
-      $(closeAtParent).addClass("error")
-      $(closeAtParent).find(".inline-help").show()
-      return false
-  true
-
-parseCloseDateTimeZoneFields = (closeAtControlGroup) ->
+Application.parseCloseDateTimeZoneFields = (closeAtControlGroup) ->
   selectedDate = new Date()
   closeAtDate = closeAtControlGroup.find('.motion-close-at-date').val()
   closeAtTime = closeAtControlGroup.find('.motion-close-at-time').val()

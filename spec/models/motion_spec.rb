@@ -304,4 +304,18 @@ describe Motion do
       @vote.should_not be_nil
     end
   end
+
+  describe "#has_revisions?" do
+    before do
+      @motion = create(:motion)
+    end
+    it "returns true if there are no revisions" do
+      @motion.has_revisions?.should be_false
+    end
+    it "returns false if there are revisions" do
+      @motion.description = "Ch-ch-changes"
+      @motion.save!
+      @motion.has_revisions?.should be_true
+    end
+  end
 end

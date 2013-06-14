@@ -1,32 +1,28 @@
 .motion
   .row
-    .span4.motion-header-info
-      .clearfix
-        %h3.motion-title.word-break= motion.name
-        - if motion.closed?
-          %span.label.label-important= t(:closed)
-      #closing-info
-        - if motion.has_close_date?
-          - if motion.voting?
-            = t(:proposal_closing_when, when: time_ago_in_words(motion.close_at))
-          - else
-            %span= t(:proposal_closed_when, when: time_ago_in_words(motion.close_at))
-        - else
-          No close date
-      .proposed-by
-        = t(:proposed_when_by_who, when: time_ago_in_words(motion.created_at), who: motion.author_name)
-    .span2.motion-admin-buttons
+    .span5#name_and_description
+      %h3.motion-title.word-break= motion.name
+      - if motion.closed?
+        %span.label.label-important#closed-label
+          = t(:closed)
+      .description
+        .long-description
+          = render_rich_text(motion.description, false)
+    .span4#additional-info
+      - if motion.closed?
+        %span= t(:proposal_closed_when, when: time_ago_in_words(motion.close_at))
+      - else
+        = t(:proposal_closing_when, when: time_ago_in_words(motion.close_at))
+      #proposed_by_and_revision_link
+        %div= t(:proposed_when_by_who, when: time_ago_in_words(motion.created_at), who: motion.author_name)
+        - if motion.has_revisions?
+          %i.icon-time
+          = link_to t(:revision_history), revision_history_motion_path(motion), id: 'motion-revision-link'
+    .span2.admin-buttons
       = render '/motions/admin_buttons', motion: motion unless motion.closed?
   .row
     .span5
       =render "motions/outcome_statement", motion: motion, this_group: this_group if motion.closed?
-
-  .row
-    .span5
-      .description
-        .long-description
-          = render_rich_text(motion.description, false)
-
   .pie{id: "graph_#{motion.id}"}
   .percentage-to-vote
     - if motion.closed?

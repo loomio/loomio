@@ -67,28 +67,12 @@
 #content-proposal{
   margin-left: 0px;
 
-  #closing-info { font-size: $font-small; }
-
-  #close-voting {
-    float: right;
-    margin: 5px 0 0 0;
+  #additional-info {
+    padding-right: 10px;
+    width: 265px;
   }
 
-  .description {
-    width: 380px;
-    p { color: $dark-grey; }
-  }
-
-  .control-group { padding-top: 0px; padding-bottom: 0px; }
-
-  .label {
-    text-transform: lowercase;
-    font-weight: normal;
-  }
-
-  .motion .pie { height: 250px; }
-
-  .motion-admin-buttons {
+  .admin-buttons {
     margin-left: 0;
     width: 125px;
 
@@ -99,12 +83,31 @@
     }
   }
 
-  .motion-header-info {
-    width: 270px;
-    padding-right: 5px;
+  #closed-label { padding-right: 5px; }
+
+  #close-voting {
+    float: right;
+    margin: 5px 0 0 0;
   }
 
-  .motion-title { margin-top: 3px; }
+  .control-group { padding-top: 0px; padding-bottom: 0px; }
+
+  .description {
+    width: 380px;
+    p { color: $dark-grey; }
+  }
+
+  .label {
+    text-transform: lowercase;
+    font-weight: normal;
+  }
+
+  .motion .pie { height: 250px; }
+
+  #name_and_description {
+    padding-top: 3px;
+    width: 400px;
+  }
 
   .new-proposal-btn {
     float: left;
@@ -160,9 +163,7 @@
 
   .proposal-title-container { width: 305px; }
 
-  .proposed-by {
-    font-size: $font-small;
-  }
+  #proposed_by_and_revision_link { font-size: $font-small; }
 
   .percentage-to-vote {
     font-size: $font-small;
@@ -222,6 +223,24 @@
   }
 }
 
+ul#revision-history-list {
+  border-bottom: 1px solid $light-grey;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  li.row {
+    border-top: 1px solid $light-grey;
+    margin-left: 0;
+    padding: 10px;
+    .proposed-by { padding-bottom: 10px; }
+    .revision-info {
+      background-color: #EEE;
+      color: #777;
+      padding: 5px;
+      width: 170px;
+    }
+  }
+}
+
 table.jqplot-table-legend {
   border: none;
   width: auto;
@@ -232,16 +251,21 @@ table.jqplot-table-legend {
   }
 }
 
-.new_proposal, #edit-close-date {
+.new_proposal, .motions.edit {
   .motion-closing-inputs {
+    width: 472px;
+    #alternate {
+      background-color: #fff;
+      border: none;
+      box-shadow: none;
+    }
     .control-group { display: inline-block; }
-
-    .motion-close-at-date { width: 140px; }
-
     .motion-close-at-time, .motion-close-at-time-zone {
       display: inline-block;
       margin-top: 10px;
-      width: 113px;
     }
+    .motion-close-at-date { width: 130px; }
+    .motion-close-at-time { width: 90px; }
+    .motion-close-at-time-zone { width: 238px; }
   }
 }
