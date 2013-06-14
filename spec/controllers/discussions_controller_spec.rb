@@ -168,20 +168,20 @@ describe DiscussionsController do
 
       context 'javascript has failed' do
         it 'redirects to discussion' do
-          post :add_comment, comment: "Hello!", id: discussion.id, global_uses_markdown: false
+          post :add_comment, comment: "Hello!", id: discussion.id, uses_markdown: false
           response.should redirect_to discussion
         end
       end
 
       it "checks permissions" do
         app_controller.should_receive(:authorize!).and_return(true)
-        xhr :post, :add_comment, comment: "Hello!", id: discussion.id, global_uses_markdown: false
+        xhr :post, :add_comment, comment: "Hello!", id: discussion.id, uses_markdown: false
       end
 
       it "calls add_comment on discussion" do
         uses_markdown = false
         discussion.should_receive(:add_comment).with(user, "Hello!", uses_markdown)
-        xhr :post, :add_comment, comment: "Hello!", id: discussion.id, global_uses_markdown: uses_markdown
+        xhr :post, :add_comment, comment: "Hello!", id: discussion.id, uses_markdown: uses_markdown
       end
 
       context "unsuccessfully" do
