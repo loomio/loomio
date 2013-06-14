@@ -1,7 +1,7 @@
 class GroupRequest < ActiveRecord::Base
 
   attr_accessible :name, :description, :expected_size, :admin_name, :admin_email,
-                  :cannot_contribute, :max_size, :high_touch, :robot_trap
+                  :cannot_contribute, :max_size, :high_touch, :robot_trap, :admin_notes
 
   attr_accessor :robot_trap
 
@@ -16,6 +16,9 @@ class GroupRequest < ActiveRecord::Base
   belongs_to :approved_by, class_name: 'User'
 
   scope :verified, where(:status => :verified)
+  scope :starred, where(:high_touch => true)
+  scope :not_starred, where(:high_touch => false)
+  scope :waiting, -> { verified.not_starred }
   scope :unverified, where(:status => :unverified)
   scope :approved, where(:status => :approved)
   scope :accepted, where(:status => :accepted)

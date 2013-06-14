@@ -1,73 +1,52 @@
 ActiveAdmin.register GroupRequest do
   actions :all, :except => [:new]
+  scope :waiting, :default => true
+  scope :starred
   scope :unverified
-  scope :verified, :default => true
-  scope :approved
-  scope :manually_approved
-  scope :accepted
-  scope :defered
-  scope :marked_as_spam
   scope :all
+
+  filter :name
+  filter :description
+  filter :admin_email
+  filter :admin_name
+  filter :high_touch
 
   index do
     column :id
     column :name
     column :description
-    column "Contribute?", :sortable => :cannot_contribute do |group_request|
-      !group_request.cannot_contribute
+    column :contact do |gr|
+      "#{gr.admin_name} &lt;#{gr.admin_email}&gt;".html_safe
     end
-    column :expected_size
-    column :max_size
-    column :high_touch
-    column :admin_email
-    column :approved_at, sortable: :approved_at
-    column :approved_by
-    column :created_at
-    default_actions
+    column :admin_notes
+    column 'Size', :expected_size
+    column 'Subscription' do |gr|
+      gr.cannot_contribute? == false
+    end
+    column :created_at, sortable: :created_at do |gr|
+      gr.created_at.to_date
+    end
+    column :status
+    column :actions do |gr|
+      span do
+        links = []
+        unless gr.approved?
+          links << link_to('Approve', approve_and_send_form_admin_group_request_path(gr))
+        end
+        links << link_to('Star', set_high_touch_admin_group_request_path(gr), :method => :put)
+        links << link_to('Edit', edit_admin_group_request_path(gr))
+        links << link_to('Destroy', admin_group_request_path(gr), method: :delete)
+        links.join(' ').html_safe
+      end
+    end
   end
 
-  show do
-    attributes_table do
-      row :name
-      row :group
-      row :admin_email
-      row :description
-      row :expected_size
-      row :high_touch
-      row :status if group_request.unverified? or group_request.verified?
-      if group_request.unverified?
-        row ('Resend Verification Link') { link_to "resend",
-            resend_verification_admin_group_request_path(group_request.id)}
-      end
-      if group_request.verified? and not group_request.approved?
-        row ('Approve request') { link_to "approve",
-          approve_and_send_form_admin_group_request_path(group_request.id),
-          id: "approve_group_request_#{group_request.id}" }
-        row ('Defer request until a later date') {
-          if group_request.defered_until.nil?
-            confirm_message = false
-          else
-            confirm_message = 'Are you sure you want to defer, this group request has previously been defered'
-          end
-          link_to "defer", defer_and_send_form_admin_group_request_path(group_request.id), confirm: false }
-      end
-      if group_request.approved? or group_request.manually_approved?
-        row :approved_at
-        row ('Action') { link_to "resend invitation to start group",
-            resend_invitation_to_start_group_admin_group_request_path(group_request.id) }
-      end
-      if group_request.defered?
-        row :defered_until
-        row ('Action') { link_to "approve", approve_and_send_form_admin_group_request_path(group_request.id) }
-        row ('Action') { link_to "move to verified", mark_as_verified_admin_group_request_path(group_request.id),
-            :method => :put }
-      end
-      if group_request.marked_as_spam?
-        row ('Mark as unverified') { link_to "reset", mark_as_unverified_admin_group_request_path(group_request.id),
-            :method => :put }
-      end
-    end
-    active_admin_comments
+  form partial: 'form'
+
+  member_action :set_high_touch, :method => :put do
+    @group_request = GroupRequest.find(params[:id])
+    @group_request.update_attribute(:high_touch, true)
+    redirect_to admin_group_requests_path
   end
 
   member_action :approve_and_send_form, :method => :get do
@@ -151,17 +130,4 @@ ActiveAdmin.register GroupRequest do
       group_request.name
   end
 
-  form do |f|
-    f.inputs do
-      f.input :name
-      f.input :admin_email
-      f.input :admin_name
-      f.input :country_name
-      f.input :high_touch
-      f.input :expected_size
-      f.input :max_size
-      f.input :description
-      f.actions
-    end
-  end
 end

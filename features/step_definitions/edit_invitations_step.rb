@@ -3,7 +3,7 @@ When(/^I click the pending link$/) do
 end
 
 Then(/^I should see the pending invitations for the group$/) do
-  page.should have_content 'Pending Invitations'
+  page.should have_content I18n.t(:pending_invitations)
 end
 
 Then(/^I should not see a pending link$/) do
@@ -11,7 +11,7 @@ Then(/^I should not see a pending link$/) do
 end
 
 Then(/^I should see the no invitations page$/) do
-  page.should have_content 'Oops! Your group is full'
+  page.should have_content I18n.t(:"invitation.no_invitations_left")
 end
 
 Given(/^The group has run out of invites$/) do

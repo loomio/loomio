@@ -1,3 +1,8 @@
+When(/^I visit the admin Group Requests index$/) do
+  visit admin_group_requests_path
+  view_screenshot
+end
+
 Given /^I am a Loomio super\-admin$/ do
   @user = FactoryGirl.create :user, :is_admin => true
 end
@@ -16,7 +21,7 @@ When /^I visit the Group Requests on the admin panel$/ do
 end
 
 When /^I click approve for a request$/ do
-  click_link("approve")
+  click_link("Approve")
 end
 
 When /^I click defer for the request$/ do

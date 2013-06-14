@@ -1,5 +1,5 @@
-%h2 Oops! Your group is full
+%h2=t :"invitation.no_invitations_left"
 %br
-%p Please get in touch and we will be happy to expand your group: <a href="mailto:contact@loomio.org">contact@loomio.org</a>
+%p=t :"invitation.no_invitations_left_get_more"
 %br
-= link_to 'Back to group', group_path(@group), class: 'btn btn-info btn-large'
+= link_to t(:back), group_path(@group), class: 'btn btn-info btn-large'

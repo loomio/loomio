@@ -16,7 +16,7 @@ Feature: Loomio admin approves group request to join Loomio
 
   @javascript
   Scenario: Loomio admin approves a group request
-    When I visit the Group Request in the admin panel
+    When I visit the admin Group Requests index
     And I click approve for a request
     And I should see the send approval email page
     And I customise the approval email text
@@ -24,17 +24,5 @@ Feature: Loomio admin approves group request to join Loomio
     Then the group request should be marked as approved
     And the group should be created
     And an email should be sent to the group admin with an invitation link
-    And I should be redirected to the Group Requests page
-    And I should no longer see the request
-
-  @javascript
-  Scenario: Loomio admin defers a group request
-    When I visit the Group Request in the admin panel
-    And I click defer for the request
-    And I should see the send defer email page
-    And I select the date to defer until
-    And I click the send and defer button
-    Then the group request should be marked as defered
-    And an email should be sent to the group admin explaining the defer
     And I should be redirected to the Group Requests page
     And I should no longer see the request
