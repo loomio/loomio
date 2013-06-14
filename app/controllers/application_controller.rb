@@ -1,6 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  # rescue_from Exception, :with => :error_render_method
+
+  # def error_render_method
+  #   @error_raincheck = ErrorRaincheck.new
+  #   respond_to do |format|
+  #     format.html { render :template => "error_rainchecks/error_page" }
+  #     format.all  { render :nothing => true, :status => 500 }
+  #   end
+  # end
+
   before_filter :set_locale
 
   rescue_from CanCan::AccessDenied do |exception|
