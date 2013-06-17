@@ -14,14 +14,14 @@
             %li=link_to t(:edit_memberships), group_memberships_path(group)
           - if can? :email_members, group
             %li= link_to t(:email_group_members), "#email-members-modal", "data-toggle" => "modal"
-        -if group.is_sub_group?
-          #invite-subgroup-members.modal.hidden
-            = render 'subgroup_add_members', group: group
+    -if group.is_sub_group?
+      #invite-subgroup-members.modal.hidden
+        = render 'subgroup_add_members', group: group
     %h4
       = "#{ t :members } (#{ group.memberships_count })"
 
     %ul#users-list
-      - group.users.each do |user|
+      - group.users.sorted_by_name.each do |user|
         = render 'membership', user: user, group: group
     -if can?(:add_members, group) && group.is_top_level?
       = link_to members_pending_count(group), group_invitations_path(group), class: 'bottom-panel-link', id: 'pending-count'

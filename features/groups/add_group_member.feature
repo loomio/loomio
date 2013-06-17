@@ -16,7 +16,7 @@ Feature: Member adds user to group
     And I click add new member
     And I select "David" from the list of members
     And I select "Joe" from the list of members
-    And I click "Invite members"
+    And I confirm the selection
     Then I should see "David" as a member of the subgroup
     And I should see "Joe" as a member of the subgroup
 
