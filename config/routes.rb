@@ -10,6 +10,7 @@ Loomio::Application.routes.draw do
 
   get :not_found, to: 'error_rainchecks#error_page'
 
+
   resources :group_requests, only: [:create, :new] do
     get :verify, on: :member
   end
