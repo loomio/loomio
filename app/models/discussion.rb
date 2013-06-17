@@ -118,6 +118,16 @@ class Discussion < ActiveRecord::Base
     Event.includes(:eventable).where("discussion_id = ?", id).order('created_at DESC')
   end
 
+  def filtered_activity
+    filtered_activity = []
+    previous_event = activity.first
+    activity.reverse.each do |event|
+      filtered_activity << event unless event.is_repetition_of?(previous_event)
+      previous_event = event
+    end
+    filtered_activity.reverse
+  end
+
   def participants
     included_participants = users_with_comments.all
     included_participants << author
