@@ -34,7 +34,7 @@ class DiscussionsController < GroupBaseController
 
   def destroy
     @discussion = Discussion.find(params[:id])
-    @discussion.delay.destroy
+    @discussion.delayed_destroy
     flash[:success] = t("success.discussion_deleted")
     redirect_to @discussion.group
   end
