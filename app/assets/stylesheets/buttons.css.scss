@@ -1,0 +1,48 @@
+@import "settings";
+@import "bootstrap";
+@import "mixins";
+
+// loom-btn($background, $color)
+
+.loom-btn {
+  @include loom-btn(#fff, #777);
+  @include gradient-vertical(#fff, #eee);
+  border: 2px solid #e5e5e5;
+  text-shadow: none;
+  }
+.loom-btn.green {
+  @include loom-btn($loomio-orange, #fff);
+  }
+.loom-btn.blue {
+  @include loom-btn($loomio-orange, #fff);
+  }
+.loom-btn.orange {
+  @include loom-btn($loomio-orange, #fff);
+  }
+.loom-btn.gray {
+  @include loom-btn($loomio-orange, #fff);
+  }
+.loom-btn.red {
+  @include loom-btn($loomio-orange, #fff);
+  }
+.loom-btn.lightGray {
+  @include loom-btn(#f2f2f2, #666);
+  text-shadow: none;
+  border: 2px solid #eee;
+  }
+.loom-btn.white {
+  @include loom-btn(#fff, #777);
+  @include gradient-vertical(#fff, #eee);
+  border: 2px solid #e5e5e5;
+  text-shadow: none;
+}
+
+.loom-btn.disabled {
+  @include loom-btn(#f2f2f2, #666);
+  text-shadow: none;
+  border: 2px solid #eee;
+  }
+
+.loom-btn.active {
+  @include loom-btn(#999, #fff);
+  }

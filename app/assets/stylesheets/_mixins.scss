@@ -14,3 +14,53 @@
   border: 1px solid red;
 }
 
+// Loomio Buttons
+// -------------------------
+@mixin loom-btn($background, $color) {
+  color: $color;
+  display: inline-block;
+  @include ie7-inline-block();
+  text-align: center;
+  vertical-align: middle;
+  background: $background;
+  //border: 2px solid darken($background, 4.5%);
+  @include border-radius(4px);
+  font-size: 13px;
+  padding: 5px 9px;
+  cursor: pointer;
+  text-shadow: 0 0 2px #888;
+  vertical-align: middle;
+  // Give IE7 some love
+  @include ie7-restore-left-whitespace();
+  span {
+    line-height: 22px;
+  }
+  &:hover {
+    background: darken($background, 5%);
+    border: 2px solid darken($background, 8%);
+    text-decoration: none;
+  }
+  &.large {
+    padding: 9px 15px 9px 17px;
+    font-size: 23px;
+    line-height: 25px;
+    margin: 10px auto;
+    }
+  &.small {
+    padding: 3px 9px;
+    font-size: 11px;
+    line-height: 15px;
+    @include border-radius(3px);
+    }
+  &.tiny {
+    padding: 3px 9px;
+    font-size: 10px;
+    line-height: 13px;
+    @include border-radius(3px);
+    }
+  &.block {
+    display: block;
+    }
+}
+
+

@@ -89,6 +89,8 @@ Loomio::Application.routes.draw do
   match "/users/dismiss_discussion_notice", :to => "users#dismiss_discussion_notice",
         :as => :dismiss_discussion_notice_for_user, :via => :post
 
+  match 'pages/styleguide', to: 'pages#styleguide', :as=> 'styleguide'
+
   resources :comments , only: :destroy do
     post :like, on: :member
     post :unlike, on: :member
