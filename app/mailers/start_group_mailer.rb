@@ -6,13 +6,13 @@ class StartGroupMailer < ActionMailer::Base
     @token = group_request.token
 
     mail to: group_request.admin_email,
-         subject: t('verified_email.subject')
+         subject: "Thanks for your request, you're almost done!"
   end
 
   def defered(group_request)
     @group_request = group_request
 
     mail to: group_request.admin_email,
-         subject: t('defered_email.subject')
+         subject: "defered (placeholder)"
   end
 end

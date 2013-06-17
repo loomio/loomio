@@ -13,6 +13,16 @@ Given /^a private group exists$/ do
   @group.save
 end
 
+Given(/^a public group exists with a Spanish\-speaking admin "(.*?)"$/) do |arg1|
+  @group = FactoryGirl.create :group
+  @group.viewable_by = :everyone
+  @group.save
+  admin = @group.admins.first
+  admin.update_attribute(:language_preference, "es")
+  admin.update_attribute(:email, "#{arg1}@example.org")
+  admin.save
+end
+
 Given /^a public sub\-group exists$/ do
   @parent_group = FactoryGirl.create :group, :viewable_by => :everyone
   @sub_group = FactoryGirl.create :group, :parent => @parent_group,

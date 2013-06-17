@@ -37,7 +37,7 @@ describe MotionMailer do
 
     #ensure that the confirmation_url appears in the email body
     it 'assigns url_for motion' do
-      @email.body.encoded.should match(discussion_url(discussion))
+      @email.body.encoded.should match(motion_url(motion))
     end
   end
 

@@ -1,25 +1,35 @@
 = render '/application/mailer_doctype'
 %html
-  %p A new discussion was created in a Loomio group that you belong to.
+  %p= t("email.create_discussion.intro")
 
-  %p
-    = link_to("Click here to view this discussion", discussion_url(@discussion))
+  %p= link_to(t("email.view_discussion"), discussion_url(@discussion))
 
   %table
     %tr
-      %th
-        Discussion
+      %th= t :discussion
       %td
         = @discussion.title
     %tr
-      %th
-        Group
+      %th= t :group
       %td
         = @discussion.group.full_name
     %tr
-      %th
-        Started by
+      %th.nowrap= t("email.create_discussion.started_by")
       %td
         = @discussion.author.name
+    -if @rendered_discussion_description.present?
+      %tr
+        %th
+          &nbsp;
+        %td
+          &nbsp;
+      %tr
+        %th
+          Details
+        %td
+          = @rendered_discussion_description
+
+  %p
+    = link_to("Click here to view this discussion", discussion_url(@discussion))
 
   = render 'user_mailer/unsubscribe_link'

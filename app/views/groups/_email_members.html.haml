@@ -12,5 +12,5 @@
       %span.presence-error-message= t :message_error
       = text_area_tag "group_email_body", nil, :placeholder => t(:message_placeholder, which_group: group.full_name), :class => "validate-presence"
   .modal-footer
-    = submit_tag t(:send_email), class: "btn btn-info run-validations"
+    = submit_tag t(:send_email), class: "btn btn-info run-validations", :data => { :disable_with => t(:send_email) }
 
