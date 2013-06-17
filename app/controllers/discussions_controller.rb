@@ -65,6 +65,7 @@ class DiscussionsController < GroupBaseController
     @vote = Vote.new
     @current_motion = @discussion.current_motion
     @activity = @discussion.activity
+    @filtered_activity = @discussion.filtered_activity
     assign_meta_data
     if params[:proposal]
       @displayed_motion = Motion.find(params[:proposal])
