@@ -1,0 +1,3 @@
+:javascript
+  window.user_id = #{ user_signed_in? ? current_user.id : 'undefined' };
+  window.metrics_listener_url = "#{ ENV['METRICS_LISTENER_URL'] }";
