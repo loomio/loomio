@@ -1,8 +1,6 @@
 = render '/application/mailer_doctype'
 %html
-  %p #{@sender.name} made an announcement to #{@group.name}:
+  %p= t("email.group_email.intro", who: @sender.name, group: @group.name)
 
-  %p.comment
-    = @message
-  %p
-    #{link_to('Click here', group_url(@group))} view the group on Loomio.
+  %p.comment= @message
+  %p= link_to(t("email.view_group"), group_url(@group))

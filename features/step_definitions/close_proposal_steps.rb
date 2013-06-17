@@ -3,7 +3,7 @@ Given /^the discussion has an open proposal$/ do
 end
 
 When /^I click the 'Close proposal' button$/ do
-  click_on 'Close proposal'
+  find('#close-voting').click
 end
 
 When /^I confirm the action$/ do

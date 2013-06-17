@@ -1,10 +1,11 @@
-You were mentioned in a discussion titled #{@discussion.title}
+= t("email.mentioned.intro")
+#{@discussion.title}
 \
-#{@comment.author.name} said:
+= t("email.mentioned.said", comment_author: @comment.author.name)
 \
 #{@comment.body}
 \
-To view this discussion, go to:
-= discussion_url(@discussion)
+= t("email.view_comment")
+= discussion_url(@discussion)+"#comment-#{@comment.id}"
 \
 = render 'unsubscribe_link_text'

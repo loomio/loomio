@@ -27,10 +27,13 @@ describe Events::MembershipRequested do
   end
 
   context "after event has been published" do
-    let(:admin) { stub(:admin, email: 'hello@kitty.com') }
+    let(:admin) { stub(:admin, email: 'hello@kitty.com', language_preference: "en") }
     let(:event) { Events::MembershipRequested.new(kind: "new_comment",
                                                      eventable: membership) }
-    before { membership.stub(:group_admins).and_return([admin]) }
+    before {
+      membership.stub(:group_admins).and_return([admin])
+      User.stub(:find_by_email).and_return(admin)
+    }
 
     it 'notifies group admins' do
       event.should_receive(:notify!).with(admin)

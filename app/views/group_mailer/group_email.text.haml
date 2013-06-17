@@ -1,7 +1,7 @@
-!= "#{@sender.name} made an announcement to #{@group.name}:"
+= t("email.group_email.intro", who: @sender.name, group: @group.name)
 = "--------------------------------------------"
 \
 != @message
 \
-= "Click the link below to view the group on Loomio:"
+= "#{t("email.view_group")}:"
 = "#{group_url(@group)}"
