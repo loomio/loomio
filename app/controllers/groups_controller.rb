@@ -35,21 +35,9 @@ class GroupsController < GroupBaseController
   # CUSTOM CONTROLLER ACTIONS
 
   def archive
-    @group = Group.find(params[:id])
-    @group.archived_at = Time.current
-
-    @group.subgroups.each do |subgroup|
-      subgroup.archived_at = Time.current
-      subgroup.save
-    end
-
-    if @group.save
-      flash[:success] = t("success.group_archived")
-      redirect_to root_path
-    else
-      flash[:error] = t("error.group_not_archived")
-      redirect_to :back
-    end
+    @group.archive!
+    flash[:success] = t("success.group_archived")
+    redirect_to root_path
   end
 
   def add_subgroup

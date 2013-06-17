@@ -22,6 +22,7 @@ class Membership < ActiveRecord::Base
   belongs_to :inviter, :class_name => "User"
   has_many :events, :as => :eventable, :dependent => :destroy
 
+  default_scope -> { where(archived_at: nil) }
   scope :for_group, lambda {|group| where(:group_id => group)}
   scope :with_access, lambda {|access| where(:access_level => access)}
 

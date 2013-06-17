@@ -270,6 +270,7 @@ ActiveRecord::Schema.define(:version => 20130617220500) do
     t.integer  "inviter_id"
     t.datetime "group_last_viewed_at",                                :null => false
     t.boolean  "subscribed_to_notification_emails", :default => true
+    t.datetime "archived_at"
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
