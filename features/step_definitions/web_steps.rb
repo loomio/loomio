@@ -2,6 +2,10 @@ When /^I click "(.*?)"$/ do |arg1|
   click_on arg1
 end
 
+When(/^I click the element "(.*?)"$/) do |arg1|
+  find(arg1).click
+end
+
 When /^I check "(.*?)"$/ do |arg1|
   check arg1
 end

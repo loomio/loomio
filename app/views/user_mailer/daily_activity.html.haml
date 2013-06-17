@@ -1,7 +1,7 @@
 = render '/application/mailer_doctype'
 %html
-  %h1 Your Loomio Activity
-  %p Showing you what’s been happening in your Loomio groups in the last 24 hours
+  %h1= t("email.daily_activity.heading")
+  %p= t("email.daily_activity.intro")
 
   -@groups.each do |group|
     -next unless @activity[group.full_name].present?
@@ -9,7 +9,7 @@
     - @discussions = @activity[group.full_name][:discussions]
     %h2=group.full_name
     -if @motions.present?
-      %h4 Decisions
+      %h4= t :decisions
       %p
         -@motions.each do |motion|
           =link_to(motion.name, motion_url(motion))
@@ -17,7 +17,7 @@
             \- closes in #{time_ago_in_words(motion.close_at)}
           %br
     -if @discussions.present?
-      %h4 Discussions
+      %h4= t :discussions
       %p
         -@discussions.each do |discussion|
           =link_to(discussion.title, discussion_url(discussion))

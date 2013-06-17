@@ -1,15 +1,22 @@
-A new discussion was created in a Loomio group that you belong to.
+= t("email.create_discussion.intro")
 \
-To view this discussion click:
+= "#{t('email.view_discussion')}:"
 = discussion_url(@discussion)
 \
-Discussion:
+= "#{t(:discussion)}:"
 = @discussion.title
 \
-Group:
+= "#{t(:group)}:"
 = @discussion.group.full_name
 \
-Started by:
+= "#{t('email.create_discussion.started_by')}:"
 = @discussion.author.name
 \
+
+-if @discussion.description.present?
+  \
+  Details:
+  = @discussion.description
+
+
 = render 'user_mailer/unsubscribe_link_text'

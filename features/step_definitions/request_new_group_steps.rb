@@ -1,7 +1,7 @@
 Given /^I have discussed using Loomio with my group$/ do
 end
 
-When /^I visit the Request New Group page$/ do
+When /^(?:I|they) visit the Request New Group page$/ do
   visit request_new_group_path
 end
 
@@ -19,7 +19,7 @@ When /^I fill in the Request New Group Form$/ do
   choose("group_request_cannot_contribute_false")
 end
 
-When /^I fill in and submit the Request New Group Form$/ do
+When /^(?:I|they) fill in and submit the Request New Group Form$/ do
   step "I fill in the Request New Group Form"
   find("#submit-group-request").click
 end
