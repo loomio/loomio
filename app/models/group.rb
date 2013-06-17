@@ -21,6 +21,8 @@ class Group < ActiveRecord::Base
 
   default_scope where(:archived_at => nil)
 
+  scope :visible_to_the_public, where(viewable_by: 'everyone')
+
   has_one :group_request
 
   has_many :memberships,
@@ -72,6 +74,8 @@ class Group < ActiveRecord::Base
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
   delegate :name, :to => :parent, :prefix => true
+
+  paginates_per 20
 
   def beta_features
     if parent && (parent.beta_features == true)
