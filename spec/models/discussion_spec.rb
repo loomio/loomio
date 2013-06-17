@@ -274,7 +274,11 @@ describe Discussion do
     end
   end
 
-  describe "destroying discussion" do
-    it "destroys associated comments"
+  describe "#delayed_destroy" do
+    it 'sets deleted_at before calling destroy' do
+      @discussion = create(:discussion)
+      @discussion.should_receive(:is_deleted=).with(true)
+      @discussion.delayed_destroy
+    end
   end
 end
