@@ -1,10 +1,10 @@
 = render '/application/mailer_doctype'
 %html
   %p
-    You were mentioned in a discussion:
+    = t("email.mentioned.intro")
     = link_to "#{@discussion.title}", discussion_url(@discussion)
 
-  %p #{@comment.author.name} said:
+  %p= t("email.mentioned.said", comment_author: @comment.author.name)
 
   %table
     %tr
@@ -13,6 +13,6 @@
           #{@rendered_comment_body}
 
   %p
-    = link_to "see the comment on Loomio", discussion_url(@discussion)+"#comment-#{@comment.id}"
+    = link_to t("email.view_comment"), discussion_url(@discussion)+"#comment-#{@comment.id}"
 
   = render 'unsubscribe_link'

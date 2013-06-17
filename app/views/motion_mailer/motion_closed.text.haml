@@ -1,6 +1,4 @@
-= "Your proposal #{@motion.name} has closed, please click the following link to specify an outcome:"
-:plain
-
-= "#{discussion_url(@motion.discussion, proposal: @motion)}"
-:plain
-
+= t("email.proposal_closed.intro", proposal_name: @motion.name)
+\
+= t("email.proposal_closed.specify_outcome") + ":"
+= discussion_url(@motion.discussion, proposal: @motion)

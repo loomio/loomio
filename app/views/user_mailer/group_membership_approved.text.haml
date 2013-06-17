@@ -1,4 +1,4 @@
-="Your request for access to the group '#{@group.name}' on Loomio has been approved."
-:plain
-
-="View group: #{group_url(@group)}"
+= t("email.group_membership_approved.intro", group_name: @group.name)
+\
+= "#{t('email.view_group')}:"
+= group_url(@group)

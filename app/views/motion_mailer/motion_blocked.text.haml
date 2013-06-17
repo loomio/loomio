@@ -1,19 +1,19 @@
-A proposal you are facilitating has been blocked.
+= t("email.proposal_blocked.intro")
 \
-To view this discussion got to:
-= "#{discussion_url(@motion.discussion, proposal: @motion)}"
+= t("email.view_proposal")
+= discussion_url(@motion.discussion, proposal: @motion)
 \
-Proposal:
+= "#{t(:proposal)}:"
 = @motion.name
 \
-Discussion:
+= "#{t(:discussion)}:"
 = @discussion.title
 \
-Group:
+= "#{t(:group)}:"
 = @motion.group.name
 \
 - if @motion.description.present?
-  Details:
+  = "#{t(:details)}:"
   = @motion.description
 \
 = render 'user_mailer/unsubscribe_link_text'

@@ -1,8 +1,20 @@
-# RAILS_ENV=test TEST_EMAIL=mailcatcher rails runner lib/tasks/email_test.rb
-# RAILS_ENV=test TEST_EMAIL=sendgrid rails runner lib/tasks/email_test.rb
+####To send to Mailcatcher####
+#1. Start mailcatcher in terminal (if you need to install it, run `gem install mailcatcher`)
+#2. Open mailcatcher in your browser at http://localhost:1080
+#3. in terminal, run:
+#      RAILS_ENV=test TEST_EMAIL=mailcatcher rails runner lib/tasks/email_test.rb
 
-#NB if using sendgrid, you need to have SENDGRID_USERNAME and SENDGRID_PASSWORD defined
-#NB change the let(:addresses) below to define external targets
+####To send using Sendgrid####
+#1. Start mailcatcher in terminal (if you need to install it, run `gem install mailcatcher`)
+#2. Open mailcatcher in your browser at http://localhost:1080
+#3. Make sure you have a sengrid username and password to send emails through sendgrid
+#4. In terminal, run:
+#      RAILS_ENV=test TEST_EMAIL=sendgrid SENDGRID_USERNAME=***** SENDGRID_PASSWORD=****** rails runner lib/tasks/email_test.rb
+
+#NB Edit the let(:addresses) below to define external targets  (~line 85)
+#NB If you are running this command several times, consider adding SENDGRID_USERNAME and SENDGRID_PASSWORD to your .bash_profile or .zshrc file
+#   To the bottom of the file add the lines like:
+#       export SENDGRID_USERNAME=*******
 
 require 'spec_helper'
 require 'faker'
@@ -11,6 +23,7 @@ def create_user
   stub_model User,
       name:               Faker::Name.name,
       email:              Faker::Internet.email,
+      language_preference: "es",
       uses_markdown:      true,
       unsubscribe_token:  (('a'..'z').to_a+('0'..'9').to_a).sample(20).join,
       invitation_token:   (('a'..'z').to_a+('0'..'9').to_a).sample(20).join,
@@ -34,6 +47,8 @@ def create_discussion(in_group)
      group:              in_group,
      author:             author,
      title:              Faker::Lorem.sentence(2),
+     description:        "# Kill the Loomio Helper Bot \n\nIs really keen for your group to  *get this done*. Apparently the space-cheese is delicious. But the implications for your carbon footprint are worrying.",
+     uses_markdown:      true,
      comments:           []
 end
 
@@ -49,7 +64,7 @@ end
 def create_motion(in_discussion)
   stub_model Motion,
       name:               Faker::Name.title,
-      description:        Faker::Lorem.paragraph(rand(4..12)),
+      description:        "Loomio Helper Bot is really keen for your group to invest in a trip to the moon. Apparently the space-cheese is delicious. But the implications for your carbon footprint are worrying.\n\nIs it a good idea? Loomio Helper Bot wants to know what you think!\n\nIf you're clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).\n\nYou'll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes.",
       discussion:         in_discussion,
       group:              in_discussion.group,
       author:             author,
@@ -129,6 +144,7 @@ describe "Test Email:" do
 
       addresses.each do |email|
         admin.stub email: email
+        User.stub(:find_by_email).and_return(admin)
         GroupMailer.new_membership_request(membership).deliver
         puts " ~ SENT (#{email})"
       end
@@ -170,6 +186,7 @@ describe "Test Email:" do
       puts 'MOTION_CLOSED'
 
       addresses.each do |email|
+        User.stub(:find_by_email).and_return(admin)
         MotionMailer.motion_closed(motion, email).deliver
         puts " ~ SENT (#{email})"
       end
@@ -187,18 +204,22 @@ describe "Test Email:" do
     end
   end
 
-  describe "Start_group Mailer:" do
-    it "invite_admin_to_start_group" do
-      puts ' '
-      puts 'INVITE_ADMIN_TO_START_GROUP'
+  # describe "Start_group Mailer:" do
+  #   it "invite_admin_to_start_group" do
+  #     puts ' '
+  #     puts 'INVITE_ADMIN_TO_START_GROUP'
 
-      addresses.each do |email|
-        group_request.stub admin_email: email
-        StartGroupMailer.invite_admin_to_start_group(group_request).deliver
-        puts " ~ SENT (#{email})"
-      end
-    end
-  end
+  #     addresses.each do |email|
+  #       group_request.stub admin_email: email
+  #       StartGroupMailer.invite_admin_to_start_group(group_request).deliver
+  #       puts " ~ SENT (#{email})"
+  #     end
+  #   end
+  # end
+  #
+  # DEPRECATED
+  describe "verification"
+  describe "defer"
 
   describe "User Mailer:" do
     it "daily_activity" do
@@ -279,6 +300,7 @@ describe "Test Email:" do
 
       addresses.each do |email|
         user.stub email: email
+        User.stub(:find_by_email).and_return(admin)
         UserMailer.group_membership_approved(user, group).deliver
         puts " ~ SENT (#{email})"
       end
@@ -291,32 +313,10 @@ describe "Test Email:" do
       unique_votes = []
       rand(2..11).times { unique_votes << create_vote }
       motion.stub unique_votes: unique_votes
-
+      motion.stub close_at: Time.now + 1.hour
       addresses.each do |email|
         user.stub email: email
         UserMailer.motion_closing_soon(user, motion).deliver
-        puts " ~ SENT (#{email})"
-      end
-    end
-
-    it "added_to_group" do
-      puts ' '
-      puts 'ADDED_TO_GROUP'
-
-      addresses.each do |email|
-        membership.user.stub email: email
-        UserMailer.added_to_group(membership).deliver
-        puts " ~ SENT (#{email})"
-      end
-    end
-
-    it "invited_to_loomio" do
-      puts ' '
-      puts 'INVITED_TO_LOOMIO'
-
-      addresses.each do |email|
-        user.stub email: email
-        UserMailer.invited_to_loomio(user, author, group).deliver
         puts " ~ SENT (#{email})"
       end
     end
