@@ -41,8 +41,7 @@ When /^I visit the subgroup page$/ do
 end
 
 When /^I click add new member$/ do
-  find("#group-member-options").click
-  find("#group-add-members").click
+  find("#button-container").find("#group-add-members").click
 end
 
 When /^I select "(.*?)" from the list of members$/ do |arg1|
@@ -107,4 +106,8 @@ end
 Then /^I should get an email with subject "(.*?)"$/ do |arg1|
   last_email = ActionMailer::Base.deliveries.last
   last_email.subject.should =~ /Membership approved/
+end
+
+When(/^I confirm the selection$/) do
+  find("#submit-add-members").click
 end
