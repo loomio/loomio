@@ -25,15 +25,7 @@ describe Events::UserAddedToGroup do
 
     before do
       membership.stub(:user).and_return(user)
-      UserMailer.stub_chain(:added_to_group, :deliver)
     end
-
-    it 'delivers UserMailer.added_to_group' do
-      pending 'not sure if this should still happen'
-      UserMailer.should_receive(:added_to_group).with(membership)
-      event.save
-    end
-
 
     it 'notifies group admins' do
       event.should_receive(:notify!).with(user)

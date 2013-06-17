@@ -1,6 +1,5 @@
 = render '/application/mailer_doctype'
 %html
-  %p Your request for access to the group '#{@group.name}' on Loomio has been approved.
+  %p= t("email.group_membership_approved.intro", group_name: @group.name)
 
-  %p
-    =link_to("Click here to view group", group_url(@group))
+  %p= link_to(t("email.view_group"), group_url(@group))

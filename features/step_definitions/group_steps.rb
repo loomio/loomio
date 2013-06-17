@@ -56,6 +56,14 @@ Given /^"(.*?)" is a member of the group$/ do |arg1|
   @group.add_member! user
 end
 
+Given(/^"(.*?)" is a Spanish\-speaking member of the group$/) do |arg1|
+  user = FactoryGirl.create :user, name: arg1,
+                            email: "#{arg1}@example.org",
+                            password: 'password'
+  user.update_attribute(:language_preference, "es")
+  @group.add_member! user
+end
+
 Given /^"(.*?)" is not a member of the group$/ do |arg1|
   user = FactoryGirl.create :user, name: arg1,
                             email: "#{arg1}@example.org",

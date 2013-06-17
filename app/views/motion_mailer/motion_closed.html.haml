@@ -1,5 +1,5 @@
 = render '/application/mailer_doctype'
 %html
-  %p Your proposal #{@motion.name} has closed.
+  %p= t("email.proposal_closed.intro", proposal_name: @motion.name)
 
-  %p #{link_to('Please click here to specify an outcome.', discussion_url(@motion.discussion, proposal: @motion))}
+  %p= link_to(t("email.proposal_closed.specify_outcome"), discussion_url(@motion.discussion, proposal: @motion))

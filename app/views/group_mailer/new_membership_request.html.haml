@@ -1,5 +1,5 @@
 = render '/application/mailer_doctype'
 
-%p #{@user.name} has requested access to one of your Loomio groups.
+%p= t("email.membership_request.intro", name: @user.name, email: @user.email)
 
-%p You can approve or decline the request #{link_to("here", group_url(@group))}
+%p= link_to(t("email.membership_request.view_group"), group_url(@group))

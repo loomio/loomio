@@ -1,6 +1,5 @@
 #encoding: UTF-8
 module ApplicationHelper
-
   def twitterized_type(type)
     case type
       when :alert
@@ -40,18 +39,12 @@ module ApplicationHelper
     end
   end
 
-  def email_subject_prefix(group_name)
-    "[Loomio: #{group_name}]"
-  end
-
   def signed_out?
     not signed_in?
   end
 
   def render_rich_text(text, md_boolean=true)
-    if text == nil #there's gotta be a better way to do this? text=" " in args wasn't working
-      text = " "
-    end
+    return "" if text.blank?
 
     if md_boolean
       options = [

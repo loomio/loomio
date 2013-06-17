@@ -1,6 +1,6 @@
-Your Loomio Activity
+= t("email.daily_activity.heading")
 \
-Showing you what’s been happening in your Loomio groups in the last 24 hours
+= t("email.daily_activity.intro")
 \
 -@groups.each do |group|
   -next unless @activity[group.full_name].present?
@@ -10,7 +10,7 @@ Showing you what’s been happening in your Loomio groups in the last 24 hours
   =group.full_name
   -if @motions.present?
     \
-    Decisions
+    = t :decisions
     \
     -@motions.each do |motion|
       =motion.name
@@ -19,7 +19,7 @@ Showing you what’s been happening in your Loomio groups in the last 24 hours
         \- closes in #{time_ago_in_words(motion.close_at)}
         \
   -if @discussions.present?
-    Discussions
+    = t :discussions
     \
     -@discussions.each do |discussion|
       =discussion.title
