@@ -35,7 +35,7 @@ ActiveAdmin.register GroupRequest do
           links << link_to('Approve', approve_and_send_form_admin_group_request_path(gr))
         end
         links << link_to('Star', set_high_touch_admin_group_request_path(gr), :method => :put) unless gr.high_touch?
-        links << link_to('Un-star', ungset_high_touch_admin_group_request_path(gr), :method => :put) if gr.high_touch?
+        links << link_to('Un-star', unset_high_touch_admin_group_request_path(gr), :method => :put) if gr.high_touch?
         links << link_to('Edit', edit_admin_group_request_path(gr))
         links << link_to('Destroy', admin_group_request_path(gr), method: :delete)
         links.join(' ').html_safe
