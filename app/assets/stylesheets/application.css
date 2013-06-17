@@ -11,6 +11,7 @@
  *= require header
  *= require dashboard
  *= require groups
+ *= require groups/public_groups
  *= require discussions
  *= require pages
  *= require notifications
