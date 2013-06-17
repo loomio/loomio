@@ -23,12 +23,13 @@
   text-align: center;
   vertical-align: middle;
   background: $background;
-  //border: 2px solid darken($background, 4.5%);
+  border: 2px solid lighten($background, 10%);
   @include border-radius(4px);
   font-size: 13px;
-  padding: 5px 9px;
+  padding: 5px 11px;
+  font-weight: bold;
   cursor: pointer;
-  text-shadow: 0 0 2px #888;
+  text-shadow: 0 1px 0 darken($background, 15%);
   vertical-align: middle;
   // Give IE7 some love
   @include ie7-restore-left-whitespace();
@@ -36,9 +37,10 @@
     line-height: 22px;
   }
   &:hover {
-    background: darken($background, 5%);
+    background: darken($background, 6%);
     border: 2px solid darken($background, 8%);
     text-decoration: none;
+    color: $color;
   }
   &.large {
     padding: 9px 15px 9px 17px;
