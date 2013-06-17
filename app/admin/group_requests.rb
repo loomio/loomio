@@ -3,6 +3,7 @@ ActiveAdmin.register GroupRequest do
   scope :waiting, :default => true
   scope :starred
   scope :unverified
+  scope :approved
   scope :all
 
   filter :name
@@ -33,7 +34,8 @@ ActiveAdmin.register GroupRequest do
         unless gr.approved?
           links << link_to('Approve', approve_and_send_form_admin_group_request_path(gr))
         end
-        links << link_to('Star', set_high_touch_admin_group_request_path(gr), :method => :put)
+        links << link_to('Star', set_high_touch_admin_group_request_path(gr), :method => :put) unless gr.high_touch?
+        links << link_to('Un-star', unset_high_touch_admin_group_request_path(gr), :method => :put) if gr.high_touch?
         links << link_to('Edit', edit_admin_group_request_path(gr))
         links << link_to('Destroy', admin_group_request_path(gr), method: :delete)
         links.join(' ').html_safe
@@ -46,6 +48,12 @@ ActiveAdmin.register GroupRequest do
   member_action :set_high_touch, :method => :put do
     @group_request = GroupRequest.find(params[:id])
     @group_request.update_attribute(:high_touch, true)
+    redirect_to admin_group_requests_path
+  end
+
+  member_action :unset_high_touch, :method => :put do
+    @group_request = GroupRequest.find(params[:id])
+    @group_request.update_attribute(:high_touch, false)
     redirect_to admin_group_requests_path
   end
 

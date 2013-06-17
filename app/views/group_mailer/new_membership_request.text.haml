@@ -1,4 +1,5 @@
-= "#{@user.name} (#{@user.email}) has requested access to one of your Loomio groups."
+= t("email.membership_request.intro", name: @user.name, email: @user.email)
+
 :plain
 \
-= "You can approve or decline it at: " + group_url(@group)
+= t("email.membership_request.view_group") + ": " + group_url(@group)

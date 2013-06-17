@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611033610) do
+
+ActiveRecord::Schema.define(:version => 20130617033220) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -142,12 +143,14 @@ ActiveRecord::Schema.define(:version => 20130611033610) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",   :default => true, :null => false
-    t.integer  "total_views",     :default => 0,    :null => false
+    t.boolean  "uses_markdown",   :default => true,  :null => false
+    t.integer  "total_views",     :default => 0,     :null => false
+    t.boolean  "is_deleted",      :default => false, :null => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
   add_index "discussions", ["group_id"], :name => "index_discussions_on_group_id"
+  add_index "discussions", ["is_deleted"], :name => "index_discussions_on_is_deleted"
 
   create_table "error_rainchecks", :force => true do |t|
     t.string   "email"
@@ -245,6 +248,7 @@ ActiveRecord::Schema.define(:version => 20130611033610) do
     t.boolean  "next_steps_completed", :default => false, :null => false
   end
 
+  add_index "groups", ["name"], :name => "index_groups_on_name"
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
 
   create_table "invitations", :force => true do |t|
@@ -292,13 +296,13 @@ ActiveRecord::Schema.define(:version => 20130611033610) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "phase",              :default => "voting", :null => false
     t.string   "discussion_url",     :default => "",       :null => false
     t.datetime "close_at"
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
     t.boolean  "uses_markdown",      :default => true,     :null => false
+    t.string   "phase",              :default => "voting", :null => false
     t.date     "close_at_date"
     t.string   "close_at_time"
     t.string   "close_at_time_zone"
@@ -348,10 +352,10 @@ ActiveRecord::Schema.define(:version => 20130611033610) do
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
-    t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email",                          :default => false,      :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,       :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
+    t.string   "username"
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
     t.boolean  "uses_markdown",                                               :default => false

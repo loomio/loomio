@@ -1,11 +1,12 @@
 = render '/application/mailer_doctype'
 %html
-  %h2 You're almost done!
+  %h2= t("email.verification.header")
 
-  %p Please click this verification link to finalise your request:
+  %p= t("email.verification.intro")
 
   %strong
     - link_url = verify_group_request_url(@group_request, token: @token)
     %p= link_to link_url, link_url
 
-  %p If you did not request to join Loomio please ignore this email.
+  %p= t("email.verification.ignore")
+= t :group

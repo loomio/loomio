@@ -47,6 +47,7 @@ describe DiscussionsController do
           motion.stub(:open_close_motion)
           motion.stub(:voting?).and_return(true)
           discussion.stub(:history)
+          discussion.stub(:filtered_activity)
           DiscussionMover.stub(:destination_groups)
         end
 
@@ -95,11 +96,11 @@ describe DiscussionsController do
 
     context "deleting a discussion" do
       before do
-        discussion.stub(:destroy)
+        discussion.stub(:delayed_destroy)
         # controller.stub(:authorize!).with(:destroy, discussion).and_return(true)
       end
       it "destroys discussion" do
-        discussion.should_receive(:destroy)
+        discussion.should_receive(:delayed_destroy)
         delete :destroy, id: discussion.id
       end
       it "redirects to group" do

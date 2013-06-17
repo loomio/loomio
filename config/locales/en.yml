@@ -384,10 +384,6 @@ en:
     link_help: "Click this link to join %{group} on Loomio:"
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
 
-  verified_email:
-    subject: "Thanks for your request, you’re almost done!"
-  defered_email:
-    subject: "defered (placeholder)"
 
   #
   # EXAMPLE CONTENT
@@ -510,22 +506,79 @@ en:
         update: "Update settings"
 
   #
+  # EMAILS
+  #
+
+  email:
+    unsubscribe: "Unsubscribe or change your email preferences:"
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
+    view_comment: "Click here to view the comment on Loomio"
+    view_discussion: "Click here to view this discussion:"
+    view_group: "Click here to view the group on Loomio"
+    view_proposal: "Click here to view this proposal on Loomio"
+    create_discussion:
+      intro: "A new discussion was created in a Loomio group that you belong to."
+      started_by: "Started by"
+      subject: "New discussion - %{which}"
+    create_proposal:
+      intro: "A new proposal was created in a Loomio group that you belong to."
+      closes_in: "Closes in"
+      subject: "New proposal - %{which}"
+    daily_activity:
+      heading: "Your Loomio Activity"
+      intro: "Showing you what’s been happening in your Loomio groups in the last 24 hours"
+      subject: "Loomio - Summary of the last 24 hours"
+    group_email:
+      intro: "%{who} made an announcement to %{group}:"
+    group_membership_approved:
+      intro: "Your request for access to the group '%{group_name}' on Loomio has been approved."
+      subject: "Membership approved"
+    membership_request:
+      intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
+      subject: "New membership request from %{who}"
+      view_group: "You can approve or decline the request here"
+    mentioned:
+      intro: "You were mentioned in a discussion titled:"
+      said: "%{comment_author} said:"
+      subject: "%{who} mentioned you in the %{which} group on Loomio"
+    proposal_closed:
+      intro: 'Your proposal "%{proposal_name}" has closed.'
+      specify_outcome: "Please click here to specify an outcome"
+      subject: "Proposal closed - %{which}"
+    proposal_blocked:
+      intro: "A proposal you are facilitating has been blocked."
+      subject: "Proposal blocked - %{which}"
+    proposal_closing_soon:
+      closes_in: "Closes in"
+      subject: "Proposal closing soon: %{which}"
+      summary: "Summary"
+    verification:
+      header: "You're almost done!"
+      intro: "Please click this verification link to finalise your request:"
+      ignore: "If you did not request to join Loomio please ignore this email."
+
+
+  #
   # COMMON WORDS
   #
 
   ago: "%{quantity_of_time} ago"
   approve: "Approve"
+  author: "Author"
   back: "Back"
   by: "By"
   cancel: "Cancel"
   change: "Change"
   changing: "Changing"
+  click_here: "Click here"
   close: "Close"
   closing: "Closing"
   closed: "Closed"
+  decisions: "Decisions"
   delete: "Delete"
+  details: "Details"
+  discussions: "Discussions"
   edit: "Edit"
-  email: "Email"
   email_address: "Email address"
   enable: "Enable"
   participation: "Participation"
@@ -541,6 +594,7 @@ en:
   new_activity: "New activity"
   next: "Next"
   password: "Password"
+  proposal: "Proposal"
   prev: "Prev"
   options: "Options"
   ok_got_it: "Okay, got it!"
@@ -555,3 +609,6 @@ en:
   unlike: "Unlike"
   until_close: "until close"
   update: "Update"
+
+  common:
+    email: "Email"

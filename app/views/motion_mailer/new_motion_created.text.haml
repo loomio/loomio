@@ -1,23 +1,23 @@
-A new proposal was created in a Loomio group that you belong to.
+= t("email.create_proposal.intro")
 \
-To view this proposal, go to:
-= "#{discussion_url(@motion.discussion, proposal: @motion)}"
+= "#{t('email.view_proposal')}:"
+= motion_url(@motion)
 \
-Proposal:
+= "#{t(:proposal)}:"
 = @motion.name
 \
-Group:
+= "#{t(:group)}:"
 = @motion.group.name
 \
-Author:
+= "#{t(:author)}:"
 = @motion.author.name
 \
 - if @motion.has_close_date?
-  Closes in:
+  = "#{t('email.create_proposal.closes_in')}:"
   = time_ago_in_words(@motion.close_at) + " (" + @motion.close_at.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
 \
 - if @motion.description.present?
-  Details:
+  = "#{t(:details)}:"
   = @motion.description
 \
 = render 'user_mailer/unsubscribe_link_text'

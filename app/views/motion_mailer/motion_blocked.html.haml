@@ -1,30 +1,27 @@
 = render '/application/mailer_doctype'
 %html
-  %p A proposal you are facilitating has been blocked.
+  %p= t("email.proposal_blocked.intro")
   %p
-    = link_to("Click here to view this proposal", "#{discussion_url(@motion.discussion, proposal: @motion)}")
+    = link_to(t("email.view_proposal"), motion_url(@motion))
+
   %table
     %tr
-      %th Proposal
-      %td= @motion.name
+      %th= t :proposal
+      %td= link_to @motion.name, discussion_url(@motion.discussion, proposal: @motion)
     %tr
-      %th Discussion
+      %th= t :discussion
       %td= @discussion.title
     %tr
-      %th Group
+      %th= t :group
       %td= @motion.group.name
 
-    / - if @motion.has_close_date?
-    /   %tr
-    /     %th Closes in
-    /     %td= time_ago_in_words(@motion.close_date + @motion.close_date.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z'))
 
-    - if @motion.description.present?
+    - if @rendered_motion_description.present?
       %tr
         %th &nbsp;
         %td &nbsp;
       %tr
-        %th Details
-        %td= @motion.description
+        %th= t :details
+        %td= @rendered_motion_description
 
   = render 'user_mailer/unsubscribe_link'

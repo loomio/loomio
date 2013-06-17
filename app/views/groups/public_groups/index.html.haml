@@ -1,0 +1,19 @@
+%h1 Public groups directory
+
+%table.table.table-striped#directory
+  %thead
+    %th
+      = form_tag public_groups_path, method: 'get', class: 'form-search' do |f|
+        = text_field_tag :query, params[:query], class: 'search-query'
+        = submit_tag "Search", class: 'btn btn-grey'
+    %th Members
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td.group
+          = link_to group.name, group_path(group), class: 'group-name'
+          = " - #{group.description}" if group.description.present?
+        %td.members
+          = group.memberships_count
+
+= paginate @groups, :window => 3

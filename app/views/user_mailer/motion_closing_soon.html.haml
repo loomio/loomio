@@ -2,32 +2,32 @@
 %html
   %table
     %tr
-      %th Proposal
+      %th= t :proposal
       %td= link_to(@motion.name, motion_url(@motion))
     %tr
-      %th Group
+      %th= t :group
       %td= @motion.group.name
     %tr
-      %th Author
+      %th= t :author
       %td= @motion.author.name
 
     - if @motion.has_close_date?
       %tr
-        %th Closes in
+        %th.nowrap= t "email.proposal_closing_soon.closes_in"
         %td= time_ago_in_words(@motion.close_at) + " (" + @motion.close_at.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
 
-    - if @motion.description.present?
+    - if @rendered_motion_description.present?
       %tr
         %th &nbsp;
         %td &nbsp;
       %tr
-        %th Details
-        %td= @motion.description
+        %th= t :details
+        %td= @rendered_motion_description
     %tr
       %th &nbsp;
       %td &nbsp;
     %tr
-      %th Summary
+      %th= t "proposal_closing_soon.summary"
       %td
         -#-if @motion.user_has_voted?(@user)
           -#- vote = @user.get_vote_for(@motion)
@@ -37,14 +37,17 @@
           -#Please state your position
         -#%br
         -@motion.votes_for_graph.each do |results|
-          =results[0]
+          ="#{results[0]}, "
         %br
-        #{@motion.percent_voted}% of members have stated their position (#{@motion.group_count - @motion.no_vote_count}/#{@motion.group_count})
+        = t :engagement_on_open_proposal,
+              percent: @motion.percent_voted,
+              numerator: @motion.group_count - @motion.no_vote_count,
+              denominator: @motion.group_count
     %tr
       %th &nbsp;
       %td &nbsp;
     %tr
-      %th Positions
+      %th= t :positions
       %td
         %table
           -@motion.unique_votes.each do |vote|
@@ -54,5 +57,7 @@
               %td.border-bottom
                 -if vote.statement.present?
                   = vote.statement
+
+  %p #{link_to 'Click here', motion_url(@motion)} to visit this proposal on loomio
 
   =render 'unsubscribe_link'

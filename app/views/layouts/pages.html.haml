@@ -33,5 +33,8 @@
           =link_to('About us', '/about#about-us')
     = yield
   = javascript_include_tag "frontpage"
-  = render 'google_analytics'
-  /= piwik_tracking_tag # Disabling piwik until we've moved it over to our own server
+  - if Rails.env.production? || Rails.env.staging?
+    / = render 'metrics_listener_data'
+    / = javascript_include_tag 'load_metrics_listener'
+    = render 'google_analytics'
+    /= piwik_tracking_tag # Disabling piwik until we've moved it over to our own server

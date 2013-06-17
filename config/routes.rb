@@ -1,4 +1,7 @@
 Loomio::Application.routes.draw do
+
+  get "/groups", to: 'groups/public_groups#index', as: :public_groups
+
   ActiveAdmin.routes(self)
 
   devise_for :users, controllers: { sessions: 'users/sessions',
