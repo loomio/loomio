@@ -25,6 +25,7 @@
 .loom-btn.grey {
   @include loom-btn(#c5c5c5, #555);
   text-shadow: 1px 1px 1px #fff;
+  border: 2px solid #b5b5b5;
   }
 .loom-btn.red {
   @include loom-btn($red, #fff);

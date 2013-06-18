@@ -73,6 +73,28 @@ a {
   color: $link-blue;
 }
 
+hr {
+  height: 2px;
+  width: 100%;
+  border-bottom: 2px solid #ccc;
+}
+
+hr.orange {
+  height: 2px;
+  width: 100%;
+  border-bottom: 2px solid $loomio-orange;
+}
+
+p.intro, body.styleguide p.intro {
+  font-size: 19px;
+  line-height: 120%;
+}
+
+p, body.styleguide p {
+  font-size: 14px;
+  line-height: 120%;
+}
+
 .alert { margin: 10px 0; }
 
 .btn-app {
@@ -168,7 +190,6 @@ ul.selector-list {
   h4 {
     line-height: 1.8em;
     margin-bottom: 5px;
-    font-family: 'Archivo Narrow', sans-serif;
     font-size: 17px;
   }
   a { color: $mid-grey; }

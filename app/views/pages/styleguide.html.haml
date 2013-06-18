@@ -1,41 +1,49 @@
 -# Loomio style guide
 
-%h1 Heading One
+.container
+  %section
+    .inner-container
+      .row-fluid
+        %h1 Heading One
 
-%h2 Heading Two
+        %h2 Heading Two
 
-%h3 Heading Three
+        %h3 Heading Three
 
-%h4 Heading Four
+        %h4 Heading Four
 
-%h5 Heading Five
+        %h5 Heading Five
 
-%p.intro
-  Intro paragraph (mainly used on pages content)
+        %p.intro
+          Intro paragraph (mainly used on pages content). Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. 
 
-%p
-  Normal paragraph text
+        %p
+          Normal paragraph text. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
 
-%h3 Buttons
+        %hr
 
-= link_to 'large button', '', :class=>'loom-btn large'
+        %hr.orange
 
-//this is the defatul size
-= link_to 'default button', '', :class=>'loom-btn'
+        %h3 Buttons
 
-= link_to 'small button', '', :class=>'loom-btn small'
+        = link_to 'large button', '', :class=>'loom-btn large'
 
-= link_to 'tiny button', '', :class=>'loom-btn tiny'
+        //this is the defatul size
+        = link_to 'default button', '', :class=>'loom-btn'
 
-%h3 Button Colours
+        = link_to 'small button', '', :class=>'loom-btn small'
 
-%h4 Main buttons
-= link_to 'button', '', :class=>'loom-btn green'
-= link_to 'button', '', :class=>'loom-btn blue'
+        = link_to 'tiny button', '', :class=>'loom-btn tiny'
 
-%h4 Special buttons (alerts, warnings etc)
-= link_to 'button', '', :class=>'loom-btn orange'
-= link_to 'button', '', :class=>'loom-btn loomio-orange'
-= link_to 'button', '', :class=>'loom-btn red'
-= link_to 'button', '', :class=>'loom-btn grey'
-= link_to 'button', '', :class=>'loom-btn white'
+        %h3 Button Colours
+
+        %h4 Main buttons
+        = link_to 'button', '', :class=>'loom-btn green'
+        = link_to 'button', '', :class=>'loom-btn blue'
+
+        %h4 Special buttons (alerts, warnings etc)
+        = link_to 'button', '', :class=>'loom-btn orange'
+        = link_to 'button', '', :class=>'loom-btn loomio-orange'
+        = link_to 'button', '', :class=>'loom-btn red'
+        = link_to 'button', '', :class=>'loom-btn grey'
+        = link_to 'button', '', :class=>'loom-btn white'

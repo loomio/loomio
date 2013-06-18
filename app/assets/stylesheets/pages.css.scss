@@ -21,30 +21,28 @@ hr {
 
 // Override bootstrap 2.3 headers with 2.0.3 styles
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  
+  margin: 0 0 15px 0;
   font-family: 'Archivo Narrow', sans-serif;
   font-weight: bold;
   color: inherit;
+  line-height: 120%;
   text-rendering: optimizelegibility;
 }
 h1 {
-  font-size: 30px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
+  font-size: 36px;
+  color: #202020;
+  }
 h2 {
-  font-size: 24px;
-  line-height: 36px;
-}
+  font-size: 28px;
+  color: #202020;
+  }
 h3 {
-  font-size: 18px;
-  line-height: 27px;
-}
-h4 { font-size: 14px; }
-h5 { font-size: 12px; }
-h6 { font-size: 11px; }
-h4, h5, h6 { line-height: 18px; }
+  font-size: 19px;
+  color: #202020;
+  }
+h4 { font-size: 15px; color: $dark-grey; }
+h5 { font-size: 12px; color: $dark-grey; }
+h6 { font-size: 11px; color: $dark-grey; }
 
 .revision-title p { font-size: 85%; }
 
@@ -117,7 +115,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.purpose,
 .pages.how_it_works,
 .pages.about,
-.pages.about_us, .woc.index, .we_the_people.index, .group_requests.start_new_group {
+.pages.about_us, .woc.index, .we_the_people.index, .group_requests.start_new_group, .styleguide {
 
   .frontpage-nav {
     text-transform:lowercase;
@@ -133,6 +131,11 @@ a.btn-icon:hover { color: $dark-grey; }
   .home-header {
     text-align: center;
     text-shadow: 1px 1px 1px #fff;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fjalla One', sans-serif;
+    font-weight: normal;
   }
 
   p, label{
@@ -156,21 +159,14 @@ a.btn-icon:hover { color: $dark-grey; }
     .subhead{
       padding-bottom: 24px;
     }
-    h1{
-      margin-bottom: 5px;
-    }
-    h2{
-      font-size: 30px;
-      line-height: 36px;
-      margin-bottom: 5px;
-    }
+
     h2.squish{
       font-size:28px;
     }
     h3{
       font-size: 20px;
       line-height: 24px;
-      margin-bottom: 18px;
+      margin-bottom: 15px;
     }
     .buffer{
       margin-bottom: 18px;
@@ -184,7 +180,7 @@ a.btn-icon:hover { color: $dark-grey; }
   }
   .subhead h1, .head h1{
     font-size: 50px;
-    margin-bottom: 9px;
+    margin-bottom: 15px;
   }
   .head h1{
     margin: 72px 0 9px 0;
