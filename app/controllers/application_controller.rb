@@ -1,15 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  # rescue_from Exception, :with => :error_render_method
+  rescue_from Exception, :with => :render_raincheck_error
 
-  # def error_render_method
-  #   @error_raincheck = ErrorRaincheck.new
-  #   respond_to do |format|
-  #     format.html { render :template => "error_rainchecks/error_page" }
-  #     format.all  { render :nothing => true, :status => 500 }
-  #   end
-  # end
+  def render_raincheck_error
+    @error_raincheck = ErrorRaincheck.new({action: action_name, controller: controller_name})
+    respond_to do |format|
+      format.html { render :template => "error_rainchecks/error_page" }
+      format.all  { render :nothing => true, :status => 500 }
+    end
+  end
 
   before_filter :set_locale
 

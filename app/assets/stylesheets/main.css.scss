@@ -214,3 +214,21 @@ ul.selector-list {
 
 #cancel-add-description:hover { color: $dark-grey; }
 a.btn-icon:hover { color: $dark-grey; }
+
+
+#error-container {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    width: 940px;
+    margin:10px auto;
+    h1 {
+      font-size: 20px;
+    }
+    input {
+      width: 30%;
+    }
+  #error-raincheck-submit {
+    width: 10%;
+  }
+}
