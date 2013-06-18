@@ -18,10 +18,16 @@ class Group < ActiveRecord::Base
 
   after_initialize :set_defaults
   before_validation :set_max_group_size, on: :create
+  before_save :update_full_name_if_name_changed
 
   default_scope where(:archived_at => nil)
 
-  scope :visible_to_the_public, where(viewable_by: 'everyone')
+  scope :visible_to_the_public,
+        where(viewable_by: 'everyone').
+        where('memberships_count > 4').
+        order(:full_name)
+
+  scope :search_full_name, lambda { |query| where("full_name ILIKE ?", "%#{query}%") }
 
   has_one :group_request
 
@@ -109,14 +115,6 @@ class Group < ActiveRecord::Base
 
   def members_invitable_by=(value)
     write_attribute(:members_invitable_by, value.to_s)
-  end
-
-  def full_name(separator= " - ")
-    if parent
-      parent_name + separator + name
-    else
-      name
-    end
   end
 
   def root_name
@@ -245,15 +243,40 @@ class Group < ActiveRecord::Base
     self.setup_completed_at.present?
   end
 
+  def update_full_name_if_name_changed
+    if changes.include?('name')
+      update_full_name
+      subgroups.each do |subgroup|
+        subgroup.full_name = name + " - " + subgroup.name
+        subgroup.save(validate: false)
+      end
+    end
+  end
+
+  def update_full_name
+    self.full_name = calculate_full_name
+  end
+
   private
+
+  def calculate_full_name
+    if is_a_parent?
+      name
+    else
+      parent_name + " - " + name
+    end
+  end
 
   def set_max_group_size
     self.max_size = 50 if (is_a_parent? && max_size.nil?)
   end
 
   def set_defaults
-    self.viewable_by ||= :members if parent_id.nil?
-    self.viewable_by ||= :parent_group_members unless parent_id.nil?
+    if is_a_subgroup?
+      self.viewable_by ||= :parent_group_members
+    else
+      self.viewable_by ||= :members
+    end
     self.members_invitable_by ||= :members
   end
 
