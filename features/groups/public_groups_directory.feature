@@ -1,17 +1,16 @@
 Feature: Public groups directory
   So that public groups can be found and viewed easily
-  As a non-meber
+  As a person
   I want to be able to see an index of public groups
 
-  Scenario: non-member visits the public group directory
-    When I visit the public groups directory page
-    # When I visit the Loomio homepage
-    # And I click the link to the public groups directory
-    Then I should see the public groups directory page
-
-  Scenario: non-member searches for a group
+  Background:
     Given there are various public and private groups
+
+  Scenario: Person sees list of public groups
     When I visit the public groups directory page
-    And I type part of the group name I am looking for into the search box
-    Then I should only see groups that match my search in the list
-    And I should not see private groups
+    Then I should only see public groups with 5 or more members
+
+  Scenario: Person searches for a group
+    When I visit the public groups directory page
+    And I search
+    Then I should only see groups that match the search
