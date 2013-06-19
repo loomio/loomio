@@ -49,47 +49,10 @@ describe GroupRequest do
     end
   end
 
-  describe "#accept!(user)" do
-    let(:group) { mock_model(Group) }
-
-    before do
-      group.stub(:add_admin!)
-      @group_request.status = :approved
-      @group_request.group = group
-      @group_request.save!
-    end
-
-    it "makes the user an admin of the group" do
-      group.should_receive(:add_admin!).with(user)
-      @group_request.accept!(user)
-    end
-
-    it "sets the status to accepted" do
-      @group_request.accept!(user)
-      @group_request.should be_accepted
-    end
-  end
-
   describe "#defer!" do
     before do
       @group_request.save!
       @group_request.verify!
-
-      #Group.stub :new => group
-      #group.stub :name=
-      #group.stub :description=
-      #group.stub :viewable_by=
-      #group.stub :parent
-      #group.stub :creator=
-      #group.stub :creator => stub(:user)
-      #group.stub :cannot_contribute=
-      #group.stub :max_size=
-      #group.stub :distribution_metric=
-      #group.stub :sectors_metric=
-      #group.stub :other_sectors_metric=
-      #group.stub :create_welcome_loomio
-      #group.stub :save!
-      #StartGroupMailer.stub_chain(:invite_admin_to_start_group, :deliver)
     end
 
     it "should set the status to defered" do
