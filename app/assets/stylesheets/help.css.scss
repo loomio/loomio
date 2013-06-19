@@ -1,37 +1,26 @@
 @import "settings";
 @import "mixins";
-
-// Help page
 .help {
-  h1 { font-size: 36px; }
+  h1 {
+    font-size: 36px;
+    margin-top: 2em;
+    border-bottom: 1px solid;
+  }
   h2 {
     font-size: 28px;
-    margin-bottom: .3em;
-    margin-top: 2em;
+  }
+  h3{
+    font-size: 18px;
+    line-height: 1.2;
+    margin-bottom: 0.3em
   }
   p {
-    font-size: 16px;
+    font-size: 15px;
     margin-bottom: 2em;
+    line-height: 1.4;
   }
-  section { margin: 3em 0 3em; }
-  .span8 {
-    margin: 0;
-    width: 680px;
-    section#feedback {
-      margin: 6em 0 0;
-      h2 { margin-top: 0; }
-      .row-fluid { text-align: left; }
-    }
-    section#how-it-works {
-      margin: 0;
-      padding-top: 3em;
-      .divider{margin-top: 0em; border-bottom: 1px solid #eee}
-      #video_tutorial p { margin-left: 14%; }
-    }
-  }
-  .span3#sidenav {
+  #sidenav {
     .nav.nav-tabs {
-      width: 185px;
       .active {
         a {
           background-color: #08c;
@@ -56,34 +45,32 @@
     }
   }
 }
-
-//Renders in help and on frontpage
-section#how-it-works {
-  img, iframe { border: 1px solid #eee; }
-  iframe { margin-top: 0; }
-  p {
-    margin: 0 10% 18px;
-    text-align: left;
-  }
-  .divider{
-    margin-top: 3em
-  }
-  #make_a_decision {
+.pages.about #video-tutorial{
+  .span5, .span7 {width: 47%;}
+}
+.help, .pages.about{
+  #help-content {
+    h2 {
+      margin-bottom: .3em;
+      margin-top: 2em;
+      .blue{ color: #0088cc; }
+    }
+    iframe { margin-top: 0; }
+    .span4 img, iframe {
+      border: 1px solid #eee;
+      margin-top: 92px;
+    }
+    .example, .extra-margin{ margin-top: 32px}
+    padding-left: 2em;
     .positions {
-      margin: 0 14% 0;
+      margin-top: 92px;
       img {
         border: none;
-        margin: 0 4px 0 0;
+        margin: 0 4px 15px 0;
         width: 30px;
       }
-      p { margin: 0 0 18px; }
+      p { margin-bottom: 1em; }
       span { font-weight: 700; }
     }
   }
-  .row-fluid {
-    margin-bottom: 2em;
-    text-align: center;
-    &:first-child { margin-bottom: 0; }
-  }
-  #video_tutorial p { margin-left: 18%; }
 }
