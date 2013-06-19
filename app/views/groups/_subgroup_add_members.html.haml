@@ -2,16 +2,19 @@
   %button.close{"data-dismiss" => "modal"}×
   %h3= t(:select_members_to_add, which_group: group.name)
 = form_tag add_members_group_path do
-  .modal-body
-    - addable_users = group.parent_members_visible_to(current_user)
-    -if addable_users.count > 1
+  - addable_users = group.parent_members_visible_to(current_user)
+  -if addable_users.count > 1
+    .modal-body
       - addable_users.each do |user|
         - unless user == current_user
           .invite-member-checkbox-container
             - is_user = group.members.include?(user)
             = check_box_tag "user_#{user.id}", 1, is_user, disabled: is_user
             = label_tag "user_#{user.id}", user.name
-    - else
+    .modal-footer
+      = submit_tag t(:invite_members), class: "btn btn-info", disable_with: t(:invite_members), id: "submit-add-members"
+  -else
+    .modal-body
       = t :empty_parent_group
-  .modal-footer
-    = submit_tag t(:invite_members), class: "btn btn-info", disable_with: t(:invite_members)
+    .modal-footer
+      = link_to t(:cancel), "#", "data-dismiss" => "modal", class: "btn"
