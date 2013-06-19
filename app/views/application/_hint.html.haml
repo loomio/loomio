@@ -1,0 +1,6 @@
+.hint
+  %i.icon-star
+  -if anchor == 'no-link'
+    = text
+  -else
+    = link_to( text , help_path(anchor: anchor), target: "help" )

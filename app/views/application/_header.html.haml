@@ -11,7 +11,8 @@
                 = render 'notifications_dropdown'
                 = render 'user_dropdown'
             %li.nav-item#help
-              %a.nav-link{ :href => help_path }
+              %a.nav-link{ :href => help_path(anchor: 'how-it-works'), target: "help" }
+                %i.icon-star.icon-white
                 %span= t :"help.help"
 
   - else

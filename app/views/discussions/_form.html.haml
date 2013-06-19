@@ -16,3 +16,4 @@
         %a.dropdown-toggle{href:'#discussion-markdown-dropdown', id:'discussion-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
           = markdown_img(@uses_markdown)
         = render 'markdown_setting', target: current_user
+      = render 'application/hint', text: t(:"hint.discussion"), anchor: 'starting-an-engaging-discussion'

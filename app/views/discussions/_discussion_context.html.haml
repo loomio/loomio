@@ -3,7 +3,8 @@
     =render 'description', discussion: @discussion, description: @discussion.description, description_markdown_setting: @discussion.uses_markdown
   .span3.right-context
     .helper-text.discussion-description-helper-text.hidden
-      %p= t "discussion_context.helper_text"
+      =render "application/hint", text: t(:"hint.context"), anchor: 'starting-an-engaging-discussion'
+
     .discussion-additional-info
       = t("discussion_context.started_when", when: time_ago_in_words(@discussion.created_at))
       .started-by

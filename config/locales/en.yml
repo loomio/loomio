@@ -248,7 +248,6 @@ en:
 
   discussion_context:
     started_when: "Started %{when} ago"
-    helper_text: "Use this panel to give enough context for your group to have a well-informed discussion. As the discussion progresses, anyone can add information to make it easy for new people to catch up."
     last_edited: "Last edited about %{when} ago by "
     see_revision_history: "See revision history"
 
@@ -312,29 +311,114 @@ en:
   #
 
   help:
-    build_shared_understanding: "Build shared understanding"
-    build_shared_understanding_description: "As the conversation progresses and new information comes to light, you can change your position as many times as you like until the proposal closes. If the group isn’t in love with the first proposal, anyone can suggest a better one and keep moving forward. Through this dynamic process, the collective wisdom of your group can generate better ideas than anyone would have come up with on their own."
+    coordinating: 'Coordinating your Loomio group'
+    coordinating_details: |
+       As the coordinator, you’re responsible for setting up your Loomio group and inviting
+       everyone in. As well as learning how to use a new piece of software, your group will
+       be learning new processes for collaborating more effectively and making good decisions
+       together. Here are some tips for supporting your group to succeed:
+    different_ways: 'Different ways to use Loomio'
+    engaging_html: |
+      <h2>Tips for engaging your group</h2>
+      <p>People will be excited to jump in and start participating when there’s an engaging
+      proposal on the table. A good proposal contains a plan of action for the group, so
+      that it’s immediately obvious what it means to agree or disagree. Think about how you
+      can identify discussions/decisions the group is currently undertaking in person or by
+      email that would be easier if they were on Loomio.</p>
+      <p>If your group is just starting out, you could start a light-hearted decision, to give
+      everyone a chance to play with the tool and see the decision-making process in action.</p>
+      <p>Another simple way to encourage people to engage in a discussion is to use the @mention
+      feature to prompt specific people; this will send them an email to tell them they’ve been
+      mentioned in a comment.</p>
+    example1_html: |
+      <h3>You need the group to discuss a broad topic and develop a solution together</h3>
+      <p>Strategy: Discuss a topic for a while before creating a proposal.</p>
+      <p>Discussions often reach the best outcome if you build shared understanding
+      about the problem before jumping to a specific solution. When people get to
+      participate in the process, they’re much more likely to be on board with the outcome.</p>
+    example2_html: |
+      <h3>You already have a proposal in mind, and you want to get sign-off from the group to move forward.</h3>
+      <p>Strategy: Start a discussion about a specific decision and make a proposal immediately.</p>
+      <p>If you’ve got a clear outcome in mind but you want to make sure there aren’t any critical concerns,
+      you can use the proposal to get quick input into a decision.</p>
+      <p>You can do things like finalise a document, approve an application, or sign-off on a piece of work.</p>
     get_in_touch: "Get in touch"
     get_in_touch_description_html: "If you have any questions or feedback, send us an email: <a href='mailto:contact@loomio.org'>contact@loomio.org</a>"
     getting_started: "Getting started"
     getting_started_description: "On the left, the group discusses a topic, exchanging ideas and information. When there’s a decision for the group to make, it comes up on the right."
+    getting_the_most: 'Getting the most out of Loomio'
+    have_your_say_details_html: |
+      <p>When you’re ready to have your say, click one of the four decision buttons.</p>
+      <p>When you’ve made your decision, give a brief explanation. Underneath the pie,
+      you can see what everyone else thinks. This makes it quick and easy to catch up
+      with the discussion. As new information comes to light, you can change your
+      position at any time.</p>
     have_a_discussion: "Have a discussion"
     have_a_discussion_description: "The topic and any relevant background information sit at the top of the page. Use the comment box to add your voice to the discussion."
-    help: "Help"
+    help: "Help tips"
     how_it_works: "How it works"
+    invitation_html: |
+      <h2>Writing a great invitation</h2>
+      <p>The first question every new member will have is ‘what is this group for?’</p>
+      <p>Think about the simplest way you can describe the group: What do you want to
+      achieve together? What types of decisions will you be making? Who will be involved?</p>
+      <p>It can be a good idea to talk to your group first before you invite them to join Loomio.</p>
+      <p>People will want to know why they’ve been invited, what’s expected of them,
+      and why it’s worth their time to learn how to use a new tool.</p>
     join_the_community: "Join the community"
-    join_the_community_description_html: "Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.<br /><br /><a href='https://www.loomio.org/groups/3'>Click here to go the Loomio Community group</a>, where you can request membership."
-    video_id: "52025402"
-    video_tutorial: "Video tutorial"
-    video_tutorial_description: "Check out the video for a quick demonstration of how to use Loomio."
+    join_the_community_description_html: "Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.<br /><br /><a href='https://www.loomio.org/groups/3'>Click here to go the Loomio Community group</a>."
+    images_and_text_formatting: "Images and text formatting"
+    images_and_text_formatting_html: |
+      <p>Loomio uses ‘Markdown’ for image embedding and text formatting.
+      You can switch Markdown on with the small grey icon under the comment box.</p>
+      <p><a href='https://www.loomio.org/discussions/1124'>Click here</a>
+      for information on how to use Markdown.</p>
+    keep_up_to_date: "Keep up to date"
+    keep_up_to_date_html: |
+      <p>Clicking your group name at the top of the screen takes you to your Group Page,
+      where you can see a list of all the discussions and decisions for that group. If
+      you’re in more than one group, you can see all the activity in all of your groups
+      at once on the Home Page.</p>
+      <p>You’ll get email notifications when important things happen in your group.
+      You can change your email preferences <a href="%{link}"">here</a>.</p>
     make_a_decision: "Make a decision"
-    make_a_decision_description: "When the conversation has gone on for a while, anyone can make a proposal. When you’re ready to have your say, click one of the four decision buttons:"
+    make_a_decision_description: "When the group is ready to make a decision, anyone can make a proposal. Outline a clear course of action and give some background so everyone knows exactly what it means to agree or disagree."
+    prompt_people_details: "If you want to get the attention of a specific person in your group, type ‘@’ followed by their name. They’ll get an email letting them know you’ve mentioned them in a comment."
+    prompt_people_html: "Prompt people with <span class='blue'>@mentions</span>"
     positions_agree_description: "<span>Agree</span> means you’re happy with the proposal."
     positions_abstain_description: "<span>Abstain</span> means you’re unsure, or you’re happy for the group to decide without you."
     positions_disagree_description: "<span>Disagree</span> means you think there might be a better alternative, but you’re willing to go with the group’s decision."
     positions_block_description: "<span>Block</span> means you’ve got serious objections and you’ll be extremely unhappy if this proposal goes ahead."
-    see_how_everyone_feels: "See how everyone feels"
-    see_how_everyone_feels_description: "When you’ve made your decision, you’ll be prompted to give a brief summary statement explaining why you feel that way. Underneath the pie, you can see how other people in the group have decided. These short statements make it really easy to catch up with where the discussion is up to."
+    start_discussion: "Starting an engaging discussion"
+    start_discussion_html:  |
+      <p>When you start a discussion, make sure the title conveys the topic succinctly.
+      Use the Context Panel to give all the background information necessary for the
+      group to have a productive and informed discussion.</p>
+      <p>During the discussion, the Context Panel can be updated as new information
+      comes to light. As well as clarifying the topic, you can use this space for
+      sharing resources, summarising the discussion as it progresses, or outlining the
+      decision-making protocols your group is using.</p>
+    start_proposal: "Writing a clear proposal"
+    start_proposal_html: |
+      <p> If you make the title clear and succinct, people will immediately know exactly
+      what it means to agree or disagree.</p>
+      <p>It’s not the end of the world if a proposal doesn’t get clear agreement immediately.
+      If the group doesn’t love the first proposal, anyone can start a new proposal to
+      address the concerns raised, and keep the process moving forward.</p>
+      <p>Through this dynamic process, the collective wisdom of your group can generate better
+      ideas than anyone would have come up with on their own.</p>
+      <p>The deadline on a proposal can be extended at any time, if it looks like the decision
+      needs some more space. Everyone will get an email notification 24 hours before a proposal closes.</p>
+    video_id: "52025402"
+    video_tutorial: "Video tutorial"
+    video_tutorial_description: "Check out the video for a quick demonstration of how to use Loomio."
+
+  hint:
+    context: 'Tips for using the context panel'
+    discussion: 'Tips for starting an engaging discussion'
+    invitation: 'Tips for writing a great invitation'
+    proposal: 'Tips for writing a clear proposal'
+    vote: 'You can change your position at any time'
 
   #
   # SIGN IN
