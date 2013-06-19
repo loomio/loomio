@@ -1,14 +1,5 @@
 .sub-panel
   %h4= t :groups
   %ul#dashboard-groups-list
-    - current_user.parent_groups.each do |group|
-      %li
-        .group-link.clearfix
-          .group-link-name= link_to group.name, group_path(group), :class => 'view_'+group.viewable_by.to_s
-        - if group.subgroups.size > 0
-          - group.subgroups.each do |subgroup|
-            - if (current_user && current_user.group_membership(subgroup))
-              %li.sub-group
-                .group-link.clearfix
-                  .group-link-name= link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
+    = render '/application/groups_tree'
     = link_to t(:request_new_group), request_new_group_path, id: 'request-new-group', class: 'bottom-panel-link'

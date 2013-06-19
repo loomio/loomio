@@ -7,6 +7,8 @@ tmp/
 .sass-cache/
 *.swp
 .rvmrc
+.ruby-gemset
+.ruby-version
 *.tmproj
 *.DS_Store
 coverage
