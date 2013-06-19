@@ -69,7 +69,19 @@
           %p.no-bottom-margin We’re committed to remaining open and accountable to our community by sharing information about our internal decision-making, social impact results and finances. Communicating this information effectively is an ongoing challenge that we look forward to undertaking with our community.
 
 .container
-  = render 'help/how_it_works'
+  %section#help-content
+    .inner-container#how-it-works
+      .row-fluid
+        .span1
+          &nbsp;
+        .span10
+          = render 'help/how_it_works'
+      .row-fluid
+        .span1
+          &nbsp;
+        .span10
+          %h2 Build shared understanding
+          %p As the conversation progresses and new information comes to light, you can change your position as many times as you like until the proposal closes. If the group isn’t in love with the first proposal, anyone can suggest a better one and keep moving forward. Through this dynamic process, the collective wisdom of your group can generate better ideas than anyone would have come up with on their own.
 
 .container
   %section#about-us

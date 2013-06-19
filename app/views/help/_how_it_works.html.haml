@@ -1,43 +1,41 @@
-%section#how-it-works
-  .inner-container
-    .row-fluid
-      .subhead
-        %h1= t :"help.how_it_works"
-    .row-fluid#video_tutorial
-      %h2= t :"help.video_tutorial"
-      %p= t :"help.video_tutorial_description"
-      <iframe src='https://player.vimeo.com/video/#{t('help.video_id')}?title=0&amp;byline=0&amp;portrait=0&amp;badge=0' width='426' height='319' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-    .divider
-    .row-fluid#getting_started
-      %h2= t :"help.getting_started"
-      %p= t :"help.getting_started_description"
-      =link_to(image_tag("how-it-works-overview-ss.jpg"), image_path("how-it-works-overview-big.jpg"))
-    .divider
-    .row-fluid#have_a_discussion
-      %h2= t :"help.have_a_discussion"
-      %p= t :"help.have_a_discussion_description"
-      =link_to(image_tag("how-it-works-discussion-ss.jpg"), image_path("how-it-works-discussion-big.jpg"))
-    .divider
-    .row-fluid#make_a_decision
-      %h2= t :"help.make_a_decision"
-      %p= t :"help.make_a_decision_description"
-      .positions
-        =image_tag("hand-yes.png", class: "pull-left")
-        %p= t("help.positions_agree_description").html_safe
-        .clearfix
-        =image_tag("hand-abstain.png", class: "pull-left")
-        %p= t("help.positions_abstain_description").html_safe
-        =image_tag("hand-no.png", class: "pull-left")
-        %p= t("help.positions_disagree_description").html_safe
-        =image_tag("hand-block.png", class: "pull-left")
-        %p= t("help.positions_block_description").html_safe
-    .divider
-    .row-fluid#how_everyone_feels
-      %h2= t :"help.see_how_everyone_feels"
-      %p= t :"help.see_how_everyone_feels_description"
-      =link_to(image_tag("how-it-works-position-ss.jpg"), image_path("how-it-works-position-big.jpg"))
-    .divider
-    .row-fluid#shared_understanding
-      %h2= t :"help.build_shared_understanding"
-      %p= t :"help.build_shared_understanding_description"
-      =image_tag("mascot-wide.gif", class: "no-bottom-margin")
+.row-fluid
+  .subhead
+    %h1= t :"help.how_it_works"
+.row-fluid#video-tutorial
+  .span5
+    %h2= t :"help.video_tutorial"
+    %p= t :"help.video_tutorial_description"
+  .span7
+    <iframe src='https://player.vimeo.com/video/#{t('help.video_id')}?title=0&amp;byline=0&amp;portrait=0&amp;badge=0' width='356px' height='267px' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+.row-fluid#getting-started
+  .span8
+    %h2= t :"help.getting_started"
+    %p= t :"help.getting_started_description"
+  .span4
+    =link_to(image_tag("how-it-works-overview-ss.jpg"), image_path("how-it-works-overview-big.jpg"))
+.row-fluid#have-a-discussion
+  .span8
+    %h2= t :"help.have_a_discussion"
+    %p= t :"help.have_a_discussion_description"
+  .span4
+    =link_to(image_tag("how-it-works-discussion-ss.jpg"), image_path("how-it-works-discussion-big.jpg"))
+.row-fluid#make-a-decision
+  .span8
+    %h2= t :"help.make_a_decision"
+    %p= t :"help.make_a_decision_description"
+  .span4
+    =image_tag("how-it-works-decision-ss.jpg")
+.row-fluid#have-your-say
+  .span6
+    %h2= t :"help.have_your_say"
+    = t :"help.have_your_say_details_html"
+  .span6
+    .positions
+      =image_tag("hand-yes.png", class: "pull-left")
+      %p= t(:"help.positions_agree_description").html_safe
+      =image_tag("hand-abstain.png", class: "pull-left")
+      %p= t(:"help.positions_abstain_description").html_safe
+      =image_tag("hand-no.png", class: "pull-left")
+      %p= t(:"help.positions_disagree_description").html_safe
+      =image_tag("hand-block.png", class: "pull-left")
+      %p= t(:"help.positions_block_description").html_safe
