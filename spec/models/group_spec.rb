@@ -250,4 +250,23 @@ describe Group do
       @group.activity_since_last_viewed?(@user).should == false
     end
   end
+
+  describe 'archive!' do
+    let(:group) {FactoryGirl.create(:group)}
+    let(:user) {FactoryGirl.create(:user)}
+
+    before do
+      group.add_member!(user)
+      group.archive!
+    end
+
+    it 'sets archived_at on the group' do
+      group.archived_at.should be_present
+
+    end
+
+    it 'archives the memberships of the group' do
+      group.memberships.all?{|m| m.archived_at.should be_present}
+    end
+  end
 end

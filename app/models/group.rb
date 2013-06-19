@@ -34,9 +34,7 @@ class Group < ActiveRecord::Base
   has_many :memberships,
     :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
     :dependent => :destroy,
-    :extend => GroupMemberships,
-    :include => :user,
-    :order => "LOWER(users.name)"
+    :extend => GroupMemberships
 
   has_many :membership_requests,
     :conditions => {:access_level => 'request'},
@@ -82,6 +80,14 @@ class Group < ActiveRecord::Base
   delegate :name, :to => :parent, :prefix => true
 
   paginates_per 20
+
+  def archive!
+    self.update_attribute(:archived_at, DateTime.now)
+    memberships.update_all(:archived_at => DateTime.now)
+    subgroups.each do |group|
+      group.archive!
+    end
+  end
 
   def beta_features
     if parent && (parent.beta_features == true)
