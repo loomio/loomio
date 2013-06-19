@@ -65,11 +65,6 @@ Then /^the group request should be marked as accepted$/ do
   @group_request.should be_accepted
 end
 
-When /^I try to start the group with an incorrect token$/ do
-  token = "Fake874hye7iJYHG65345"
-  visit start_new_group_group_request_path(@group_request, token: token)
-end
-
 Then /^I should be notified the link is invalid$/ do
   page.should have_content('Sorry! This invitation is invalid')
 end

@@ -35,6 +35,7 @@ FactoryGirl.define do
       end
       group.admins << user
     end
+    setup_completed_at 1.hour.ago
   end
 
   factory :discussion do
