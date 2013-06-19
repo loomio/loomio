@@ -1,6 +1,5 @@
 When(/^I visit the admin Group Requests index$/) do
   visit admin_group_requests_path
-  view_screenshot
 end
 
 Given /^I am a Loomio super\-admin$/ do
