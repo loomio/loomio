@@ -597,12 +597,11 @@ en:
     unsubscribe: "Unsubscribe or change your email preferences:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
     view_comment: "Click here to view the comment on Loomio"
-    view_discussion: "Click here to view this discussion:"
+    view_discussion: "Click here to view this discussion"
     view_group: "Click here to view the group on Loomio"
     view_proposal: "Click here to view this proposal on Loomio"
     create_discussion:
-      intro: "A new discussion was created in a Loomio group that you belong to."
-      started_by: "Started by"
+      intro: "%{who} started a new discussion in %{which_group}:"
       subject: "New discussion - %{which}"
     create_proposal:
       intro: "A new proposal was created in a Loomio group that you belong to."
