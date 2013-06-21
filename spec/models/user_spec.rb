@@ -423,7 +423,7 @@ describe User do
       @user1 = User.new(name: "Test User", email: "test1@example.com", password: "password")
       @user2 = User.new(name: "Test User", email: "test2@example.com", password: "password")
     end
-    it "generates a unique username after invitation accepted" do
+    it "generates a unique username" do
       @user1.generate_username
       @user1.save!
       @user2.generate_username
