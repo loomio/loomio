@@ -4,12 +4,13 @@ class RepopulateGroupFullName < ActiveRecord::Migration
   end
 
   def up
+    Group.reset_column_information
     Group.where(parent_id: nil).find_each do |group|
       group.full_name = group.name
-      group.save(validate: false)
+      group.save!
       group.subgroups.each do |subgroup|
         subgroup.full_name = group.name + " - " + subgroup.name
-        subgroup.save(validate: false)
+        subgroup.save!
       end
     end
   end
