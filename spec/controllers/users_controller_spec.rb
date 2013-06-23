@@ -9,14 +9,6 @@ describe UsersController do
     request.env["HTTP_REFERER"] = previous_url
   end
 
-  describe "#create" do
-    before do
-      req = mock_model(GroupRequest, :accepted? => false, :group => mock(:group))
-      GroupRequest.stub!(:find_by_token).and_return(req)
-      User.stub!(:new).and_return(user)
-    end
-  end
-
   describe "#update" do
     it "updates user.name" do
       user.should_receive(:name=).with("Peter Chilltooth")
