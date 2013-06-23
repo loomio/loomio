@@ -1,12 +1,12 @@
 class InvitationsController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound do
-    render 'application/display_error', 
+    render 'application/display_error',
       locals: { message: t(:'invitation.invitation_not_found') }
   end
 
   rescue_from Invitation::InvitationCancelled do
-    render 'application/display_error', 
+    render 'application/display_error',
       locals: { message: t(:'invitation.invitation_cancelled') }
   end
 
@@ -14,7 +14,7 @@ class InvitationsController < ApplicationController
     if current_user and @invitation.accepted_by == current_user
       redirect_to @invitation.group
     else
-      render 'application/display_error', 
+      render 'application/display_error',
         locals: { message: t(:'invitation.invitation_already_used') }
     end
   end

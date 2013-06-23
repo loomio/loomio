@@ -3,7 +3,8 @@ ActiveAdmin.register GroupRequest do
   scope :waiting, :default => true
   scope :starred
   scope :unverified
-  scope :approved
+  scope :approved_but_not_setup
+  scope :setup_completed
   scope :all
 
   filter :name
