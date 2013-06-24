@@ -84,18 +84,15 @@ describe Discussion do
     before do
       @discussion = create :discussion
     end
-    it "should retuen true if user is logged out" do
+
+    it "should return true if user is logged out" do
       @discussion.never_read_by(@user).should == true
     end
+
     it "returns true if dicussion has never been read" do
       @user = create :user
       @discussion.stub(:read_log_for).with(@user).and_return(nil)
       @discussion.never_read_by(@user).should == true
-    end
-    it "returns false if user has visited the discussion page" do
-      @user = create :user
-      @discussion.stub(:read_log_for).with(@user).and_return(true)
-      @discussion.never_read_by(@user).should == false
     end
   end
 
@@ -281,7 +278,7 @@ describe Discussion do
         @discussion.stub(:last_looked_at_by).with(@user).and_return(nil)
         @discussion.stub_chain(:comments, :count).and_return(5)
 
-        @discussion.number_of_comments_since_last_looked(@user).should == 5
+        @discussion.number_of_comments_since_last_looked(@user).should == 6
       end
       it "returns the number of votes since the user last looked at the motion" do
         last_viewed_at = Time.now

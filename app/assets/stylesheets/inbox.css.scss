@@ -1,0 +1,89 @@
+// Place all the styles related to the inbox controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "settings";
+@import "mixins";
+
+.inbox-preferences {
+  text-align: right;
+}
+
+.inbox-group {
+  h2 {
+    margin: 0.5em 0 0.3em 0;
+  }
+  .mark-all-as-read {
+    text-align: right;
+    margin-top: 1.84em;
+  }
+}
+
+ul.inbox-list{
+  li {
+    .title a{
+      display: block;
+      width: 100%;
+    }
+    line-height: 2em;
+    padding: .5em 0;
+
+    .discussion-icon{
+      color: #fff;
+      top: 0.2em;
+      left: 0.3em;
+      background: #999;
+      border-radius: 0.2em;
+      position: relative;
+      &:before {
+        position:absolute;	
+        content: "";
+        bottom: -0.3em;
+        right: 0.4em;
+        width:0em;
+        height:0em;
+        border-bottom:0.4em solid transparent;
+        border-left:0.4em solid #999;
+      }
+    }
+    .icon {
+      font-size: .9em;
+      .motion-sparkline{
+        margin: 1px 0 0 1px;
+        line-height: 4em;
+      }
+      width: 2em;
+      margin: 0 0.5em;
+      display: inline-block;
+      height: 1.7em;
+      .activity-count{
+        bottom: 3px;
+        position: relative;
+        text-align: center;
+      }
+    }
+
+    .mark-as-read-btn, .unfollow-btn a {
+      display: block;
+      width: 100%;
+      font-size: 1.2em;
+      text-align: center;
+    }
+      /*margin: .5em;*/
+      /*padding: 0;*/
+      /*display: inline-block;*/
+      /*background: #ccc;*/
+      /*width: 2em;*/
+      /*height: 2em;*/
+    /*}*/
+    background: $even-lighter-grey;
+    border-top: 1px solid $lighter-grey;
+    .time {
+      color: $dark-grey;
+      span {
+        line-height: 0;
+      }
+      text-align: right;
+    }
+  }
+}
+

@@ -1,6 +1,6 @@
 class BaseController < ApplicationController
   include AutodetectTimeZone
-  before_filter :authenticate_user!, :check_browser, :check_for_invitation,:load_announcements
+  before_filter :authenticate_user!, :check_browser, :check_for_invitation, :load_announcements
   before_filter :set_time_zone_from_javascript
   helper_method :time_zone
 
@@ -29,7 +29,7 @@ class BaseController < ApplicationController
   end
 
   def load_announcements
-    if current_user
+    if current_user and not request.xhr?
       @current_and_not_dismissed_announcements = Announcement.current_and_not_dismissed_by(current_user)
     end
   end

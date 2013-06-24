@@ -12,8 +12,8 @@ When /^I visit the dashboard$/ do
   visit root_path
 end
 
-Then /^I should see the number of new comments the discussion has$/ do
-  find("#discussion-preview-#{@discussion.id} .activity-count").should have_content("2")
+Then(/^I should see that the discussion has (\d+) new comments$/) do |arg1|
+  find("#discussion-preview-#{@discussion.id} .activity-count").should have_content(arg1)
 end
 
 Then /^I should see the number of comments the discussion has$/ do

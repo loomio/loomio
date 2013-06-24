@@ -7,6 +7,14 @@ Loomio::Application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions',
                                     registrations: 'users/registrations' }
 
+  get "/inbox", to: "inbox#index", as: :inbox
+  get '/inbox/preferences', to: 'inbox#preferences', as: :inbox_preferences
+  put '/inbox/update_preferences', to: 'inbox#update_preferences', as: :update_inbox_preferences
+  match '/inbox/mark_as_read', to: 'inbox#mark_as_read', as: :mark_as_read_inbox
+  match '/inbox/mark_all_as_read', to: 'inbox#mark_all_as_read', as: :mark_all_as_read_inbox
+  match '/inbox/unfollow', to: 'inbox#unfollow', as: :unfollow_inbox
+
+
   resources :invitations, only: [:show]
 
   resources :group_requests, only: [:create, :new] do
@@ -59,6 +67,7 @@ Loomio::Application.routes.draw do
   end
 
   resources :discussions, except: [:edit] do
+    get :activity_counts, on: :collection
     post :update_description, :on => :member
     post :add_comment, :on => :member
     post :show_description_history, :on => :member
@@ -71,6 +80,7 @@ Loomio::Application.routes.draw do
   post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"
 
   resources :notifications, :only => :index do
+    get :groups_tree_dropdown, on: :collection
     get :dropdown_items, on: :collection
     post :mark_as_viewed, :on => :collection, :via => :post
   end
