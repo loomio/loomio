@@ -16,11 +16,10 @@ ActiveAdmin.register GroupRequest do
 
   index do
     column :id
-    column :name
-    column :description
-    column :contact do |gr|
-      "#{gr.admin_name} &lt;#{gr.admin_email}&gt;".html_safe
+    column :name_and_contact do |gr|
+      simple_format("#{gr.name}<br><br>#{gr.admin_name} &lt;#{gr.admin_email}&gt;".html_safe)
     end
+    column :description
     column :admin_notes
     column 'Size', :expected_size
     column 'Subscription' do |gr|

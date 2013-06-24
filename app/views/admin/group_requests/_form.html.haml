@@ -17,3 +17,6 @@
     %li= link_to('Resend Verification Link', resend_verification_admin_group_request_path(gr))
   - if gr.group.present?
     %li= link_to('Go to group', gr.group)
+  - if gr.approved? && gr.group.present?
+    - invitation = Invitation.where(group_id: gr.group_id, intent: 'start_group').first
+    %li= "Setup link: #{invitation_url(invitation)}"

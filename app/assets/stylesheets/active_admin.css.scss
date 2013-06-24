@@ -5,11 +5,6 @@
 // To customize the Active Admin interfaces, add your
 // styles here:
 
-// Set width for Approve column
-body.admin_group_requests table.index_table thead tr th:nth-child(7) {
-  width: 100px !important;
-}
-
 body.admin_group_requests th.description a {
   width: 300px
 }
