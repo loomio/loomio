@@ -56,6 +56,9 @@ Loomio::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  config.action_mailer.default_url_options = {
+    :host => 'loomio-staging.herokuapp.com',
+  }
 
   if ENV['ENABLE_STAGING_EMAILS']
     # Send emails using SendGrid
@@ -69,9 +72,6 @@ Loomio::Application.configure do
       :domain         => 'loomio.org'
     }
     config.action_mailer.raise_delivery_errors = true
-    config.action_mailer.default_url_options = {
-      :host => 'loomio-staging.herokuapp.com',
-    }
     # Email admin when server gets exceptions!
     config.middleware.use ExceptionNotifier,
       :email_prefix => "[Loomio STAGING Exception] ",
