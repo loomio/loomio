@@ -213,7 +213,11 @@ class Motion < ActiveRecord::Base
 
     def before_close
       store_users_that_didnt_vote
-      self.close_at = Time.now
+      time_stamp = Time.now
+      timezone_offset = time_stamp.strftime('%z')[0..-3].to_i
+      self.close_at_date = time_stamp.strftime('%Y-%m-%d').to_date
+      self.close_at_time = time_stamp.strftime('%H:00')
+      self.close_at_time_zone = ActiveSupport::TimeZone[timezone_offset]
     end
 
     def store_users_that_didnt_vote
