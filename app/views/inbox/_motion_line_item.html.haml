@@ -1,0 +1,20 @@
+%li.motion.row-fluid{data:{motion_id: item.id}}
+  .span1
+    .icon
+      -values = item.vote_counts.values
+      .motion-sparkline
+        -if values.sum == 0
+          0,0,0,0,1
+        -else
+          =values.join(',') 
+
+  .span8.title
+    = link_to item.title, item
+
+  .span2.time
+    %span.js-format-as-timeago{data:{time: item.close_at.iso8601}}
+      =time_formatted_relative_to_age(item.close_at)
+    left
+
+  .span1
+    &nbsp;

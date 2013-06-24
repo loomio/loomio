@@ -1,12 +1,12 @@
 class DiscussionReadLog < ActiveRecord::Base
-  attr_accessible :user_id, :discussion_id, :discussion_last_viewed_at
+  attr_accessible :user_id, :discussion_id, :discussion_last_viewed_at, :following
 
   belongs_to :user
   belongs_to :discussion
-  validates_presence_of :discussion_last_viewed_at, :discussion_id, :user_id
+  validates_presence_of :discussion_id, :user_id
   validates_uniqueness_of :user_id, :scope => :discussion_id
 
-  before_validation :set_discussion_last_viewed_at_to_now, :on => :create
+  before_validation :set_discussion_last_viewed_at_to_now, :on => :create, :unless => 'following == false'
 
   private
 

@@ -111,6 +111,9 @@
     max-height: 390px;
     min-width: 350px;
   }
+  li#inbox {
+    a {min-width: 250px}
+  }
   li#groups ul.dropdown-menu {
     background-color: #eee;
     a { min-width: 250px; }

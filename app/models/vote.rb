@@ -16,8 +16,10 @@ class Vote < ActiveRecord::Base
   end
 
   POSITIONS = %w[yes abstain no block]
-  POSITION_VERBS = { 'yes' => 'agreed', 'abstain' => 'abstained',
-                     'no' => 'disagreed', 'block' => 'blocked' }
+  POSITION_VERBS = { 'yes' => 'agreed', 
+                     'abstain' => 'abstained',
+                     'no' => 'disagreed', 
+                     'block' => 'blocked' }
   belongs_to :motion
   belongs_to :user
   has_many :events, :as => :eventable, :dependent => :destroy
@@ -40,10 +42,10 @@ class Vote < ActiveRecord::Base
   delegate :name, :to => :motion, :prefix => :motion
   delegate :name, :full_name, :to => :group, :prefix => :group
 
-  after_save :send_notifications
+  after_save :send_notifications, :update_motion_vote_counts
 
   after_create :update_motion_last_vote_at, :fire_new_vote_event
-  after_destroy :update_motion_last_vote_at
+  after_destroy :update_motion_last_vote_at, :update_motion_vote_counts
 
   def other_group_members
     group.users.where(User.arel_table[:id].not_eq(user.id))
@@ -85,6 +87,9 @@ class Vote < ActiveRecord::Base
 
 
   private
+  def update_motion_vote_counts
+    motion.update_vote_counts!
+  end
 
   def update_motion_last_vote_at
     unless motion.nil?
