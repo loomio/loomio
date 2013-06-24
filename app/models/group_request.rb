@@ -22,6 +22,7 @@ class GroupRequest < ActiveRecord::Base
   scope :unverified, where(status: :unverified)
   scope :approved_but_not_setup, joins(:group).where("status = 'approved' AND groups.setup_completed_at IS NULL")
   scope :setup_completed, joins(:group).where('groups.setup_completed_at IS NOT NULL')
+  scope :zero_members, joins(:group).where(groups: {memberships_count: 0}) 
 
   before_destroy :prevent_destroy_if_group_present
   before_create :mark_spam

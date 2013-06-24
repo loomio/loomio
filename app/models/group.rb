@@ -22,6 +22,7 @@ class Group < ActiveRecord::Base
 
   default_scope where(:archived_at => nil)
 
+  scope :parents_only, where(:parent_id => nil)
   scope :visible_to_the_public,
         where(viewable_by: 'everyone').
         where('memberships_count > 4').

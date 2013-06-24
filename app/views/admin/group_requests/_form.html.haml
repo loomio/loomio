@@ -3,7 +3,6 @@
     = f.input :name
     = f.input :admin_email
     = f.input :admin_name
-    = f.input :high_touch
     = f.input :approved_by
     = f.input :expected_size
     = f.input :max_size
@@ -16,3 +15,5 @@
 %ul
   - if gr.unverified?
     %li= link_to('Resend Verification Link', resend_verification_admin_group_request_path(gr))
+  - if gr.group.present?
+    %li= link_to('Go to group', gr.group)
