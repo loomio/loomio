@@ -1,0 +1,80 @@
+es:
+  discussion_items:
+    new_discussion: "se ha creado la discusión"
+    new_motion: "se ha creado propuesta"
+    motion_closed:
+      by_user: "cerrar propuesta"
+      by_expiry: "se ha cerrado la propuesta"
+    motion_close_date_edited: "cambio la fecha de cierre de la propuesta"
+    discussion_title_edited: "cambio el titulo de discusión"
+    discussion_description_edited: "cambio descripción de discusión"
+
+  discussion: "Discusión"
+  current_decision: "Decisión actual"
+  previous_decisions: "Decisiones anteriores"
+  see_previous_decisions: "Ver decisiones anteriores"
+  create_new_proposal: "Crear nueva propuesta"
+  empty_decision_list: "Actualmente no existe una propuesta abierta a discusión"
+  empty_decision_index: " Este grupo no ha tomado ninguna decisión todavía."
+  empty_discussion_list: "Todavía no hay actividad en esta discusión."
+  empty_discussion_index: "No hay discusiones en ninguno de tus grupos"
+  empty_discussion_index_group: "Este grupo no tiene discusiones todavía."
+
+  discussion_context:
+    started_when: "Empezó hace %{when}"
+    helper_text: " Utilice este espacio para dar contexto suficiente para que tu grupo tenga una discusión bien informada. Y a medida que el debate avance, cualquiera pueda añadir información haciendo más fácil para la gente nueva ponerse al día."
+    last_edited: "Ultima vez editado hace %{when} "
+    see_revision_history: "Ver historial de revisión"
+
+  description_history:
+    header: "Historial de revisión"
+    subheader: "Versión"
+    edited_by: "Actualizado  %{when} por %{who}"
+    current: "(Actual)"
+    restore: "(Restaurar esta versión)"
+    applying_changes: "(Aplicando cambios...)"
+    previous: "Previo"
+    next: "Siguiente"
+
+  comment_form_placeholder: "Diga algo..."
+  comment_form_submit_button: "Publicar comentario"
+
+  liked_by: "Le ha gustado a %{who}"
+  delete_comment: "Borrar comentario"
+  confirm_delete_comment: "Estas seguro que quieres borrar este comentario?"
+
+  markdown_settings_more_info: "Mas información..."
+  edit_discussion_title: "Editar titulo de discusión"
+  delete_discussion: "Eliminar discusión"
+  confirm_delete_discussion: "Estas seguro que quieres eliminar permanentemente esta discusión?"
+
+  #
+  # DECISIONS / PROPOSALS / MOTIONS
+  #
+
+  new_proposal: "Nueva propuesta"
+
+  close_proposal: "Cerrar propuesta"
+  confirm_close_proposal: "Estas seguro que quieres cerrar esta propuesta?"
+  change_proposal_close_date: "Cambiar fecha de cierre"
+  change_proposal_close_date_header: "Cambiar la fecha de cierre para la propuesta '%{which}'"
+  proposal_close_date_error: "Por favor ponga una fecha futura"
+  proposal_closing_when: "Cierra en %{when}"
+  proposal_closed_when: "Cerro %{when}"
+  proposed_when_by_who: "Propuesto %{when} por %{who}"
+  engagement_on_open_proposal: "%{percent}% de miembros ha manifestado su posición (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "%{percent}% miembros que establecieron su posición (%{numerator}/%{denominator})"
+
+  state_your_position: "Establece tu posición"
+  positions: "Posiciones"
+  yes_position: "Estoy de acuerdo"
+  yes_details: "Estoy de acuerdo con esto y quiero que siga adelante."
+  abstain_position: "Me abstengo"
+  abstain_details: "Estoy contento con lo que el grupo decida sin mi."
+  no_position: "No estoy de acuerdo"
+  no_details: " Creo que podemos hacerlo mejor, pero si el resto del grupo se siente que es el mejor curso de acción, entonces yo estoy de acuerdo con que siga adelante."
+  block_position: "Bloqueo"
+  block_details: "Tengo fuertes objeciones a esta propuesta y no estoy de acuerdo con que siga adelante."
+  not_voted: "[Mostrar los usuarios que aun no han decidido]"
+  outcome: "Resultado"
+  outcome_placeholder: "Cual fue el resultado de esta propuesta?"
