@@ -58,6 +58,6 @@
                 -if vote.statement.present?
                   = vote.statement
 
-  %p #{link_to 'Click here', motion_url(@motion)} to visit this proposal on loomio
+  %p= link_to(t("email.view_proposal"), motion_url(@motion))
 
   =render 'unsubscribe_link'
