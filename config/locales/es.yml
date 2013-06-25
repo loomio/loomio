@@ -2,11 +2,15 @@ es:
   errors:
     messages:
       email: "No es una dirección de correo válida"
+  date:
+    formats:
+      datepicker: "%d-%m-%Y"
   error:
     access_denied: "Acceso denegado."
     cant_join_subgroup: "No puedes unirte a un sub-grupo sino eres miembro del grupo superior."
     cant_modify_position: "La propuesta ha cerrado. Ya no puedes modificar tu posición."
     cant_state_position: "Esta propuesta ha cerrado. Ya no puedes decidir."
+    cant_view_member_profile: "No puedes ver el perfil de este miembro porque no perteneces al mismo grupo."
     discussion_not_created: "No se ha creado la discusión."
     group_not_archived: "El grupo no pudo ser archivado."
     invalid_close_date: "Fecha de cierre invalida, Necesita ser una fecha después a la de hoy."
@@ -14,8 +18,14 @@ es:
     permission_to_invite: "No tienes permiso para invitar a nuevos miembros."
     position_not_updated: "Su posición no ha sido actualizada."
     settings_not_updated: "Tus ajustes no han sido modificados."
+    group_request_already_verified: "Lo siento! El código de validación ya ha sido confirmado. Si no tienes novedades de nosotros en 48 horas, ponte en contacto: contact@loomio.org"
+    group_request_already_accepted: "Lo siento! Esta invitación es invalida o ya sido aceptada."
+    group_request_invalid_token: "Lo siento! Ese código es invalido"
+    group_already_setup: "El grupo que estas tratando de configurar ya existe."
+    proposal_already_exists: "Ya existe una propuesta abierta en esta discusión."
   alert:
     duplicate_email: "%{which_email} ya esta en el grupo."
+    not_found: "%{item} No se encontro.\n\nPudo haberse eliminado"
   notice:
     admin_rights_removed: "Los derechos de %{which_user} como administrador han sido removidos."
     email_added: "%{which_email} se ha añadido al grupo."
@@ -35,6 +45,7 @@ es:
     proposal_not_created: "Propuesta no pudo ser creada."
     user_already_admin: "%{which_user} ya es un administrador de este grupo."
     user_already_member: "%{which_user} ya es miembro de este grupo."
+    user_not_admin: "Lo siento, %{which_user} debe ser un administrador de este grupo para acceder a esto."
   success:
     added_to_group: "Has sido adherido a %{which_group}."
     close_date_changed: "Fecha de cierre cambiada exitosamente."
@@ -51,39 +62,38 @@ es:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one:   "segundo"
+        one: "segundo"
         other: "%{count} segundos"
       x_seconds:
-        one:   "1 segundo"
+        one: "1 segundo"
         other: "%{count} segundos"
       less_than_x_minutes:
-        one:   "1 minuto"
+        one: "1 minuto"
         other: "%{count} minutos"
       x_minutes:
-        one:   "1 minuto"
+        one: "1 minuto"
         other: "%{count} minutos"
       about_x_hours:
-        one:   "1 hora"
+        one: "1 hora"
         other: "%{count} hora"
       x_days:
-        one:   "1 día"
+        one: "1 día"
         other: "%{count} días"
       about_x_months:
-        one:   "1 mes"
+        one: "1 mes"
         other: "%{count} meses"
       x_months:
-        one:   "1 mes"
+        one: "1 mes"
         other: "%{count} meses"
       about_x_years:
-        one:   "1 año"
+        one: "1 año"
         other: "%{count} años"
       over_x_years:
-        one:   "1 año"
+        one: "1 año"
         other: "%{count} años"
       almost_x_years:
-        one:   "1 año"
+        one: "1 año"
         other: "%{count} años"
-
   notifications:
     header: "Notificaciones"
     new_discussion: "abrió una propuesta"
@@ -99,7 +109,6 @@ es:
     user_added_to_group: "te agregó al grupo"
     motion_closing_soon: "La propuesta está por cerrar"
     motion_blocked: "bloqueó la propuesta"
-
   edit_discussion_context: "Editar la discusión información"
   request_new_group: "Solicitar nuevo grupo"
   request_new_group_details: "o espera hasta que seas invitado a uno."
@@ -108,45 +117,35 @@ es:
   user_settings: "Configuración de Usuario"
   email_preferences: "Preferencias de correo electrónico"
   sign_out: "Salir"
-  feedback: "Déjanos tus comentarios"
   sign_in: "Entrar"
   sign_in_details: "Para participar. No estas en tu sesión."
   tagline: "Creando un mundo donde es fácil para todos participar de las decisiones que nos afectan."
-
   click_to_dismiss: "Presione aquí para deshacerse de este mensaje"
   generic_confirm: "Estas seguro?"
-
-  #
-  # GROUP PAGE
-  #
-
+  invite_people: "Invitar personas"
+  edit_memberships: 'Editar membresias'
   add_new_member: "Adherir Nuevo miembro"
   invite_members_to_group: "Invitar miembros a %{which_group}"
   remaining_invites: "invitaciones restantes"
   need_more_invites_html: "Necesitas mas? Loomio se encuentra en fase beta cerrada, lo que significa que estamos en desarrollo y tenemos recursos limitados para apoyo al usuario. Si te gustaría aumentar el tamaño de tu grupo %{href} y veremos como te podemos ayudar."
   get_in_touch_link: "ponerse en contacto"
-
   email_members_in_group: "Enviar correo electrónico a los miembros de %{which_group}"
   subject_error: "Por favor escriba un titulo"
   subject_placeholder: "Escriba el titulo"
   message_error: "Por favor escriba un mensaje"
   message_placeholder: "Escribe un mensaje a los miembros de %{which_group}."
-
   email_group_members: "Enviar correo electrónico a los miembros del grupo"
   edit_group_settings: "Editar configuraciones del grupo"
   leave_group: "Abandonar grupo"
   confirm_leave_group: "Estas seguro que deseas abandonar el grupo %{which_group}?"
   deactivate_group: "Desactivar grupo"
   confirm_deactivate_group: "Espera!!! Estas seguro que deseas desactivar %{which_group}? Ya no podrás ver el grupo. Sin embargo, si cambias de opinión puedes pedirnos que lo reactivemos por ti enviándonos un correo electrónico contact@loomio.org."
-
   invited_users: "Miembros invitados"
-  members: "Miembros"
   confirm_remove_user: "Estas seguro que deseas remover a %{which_user} del grupo?"
   remove_admin: "Eliminar admin"
   confirm_remove_admin: "Estas seguro que ya no quieres que %{which_user} sea un administrador de este grupo?"
   make_admin: "Convertir en admin"
   confirm_make_admin: "Estas seguro que quieres que %{which_user} sea un administrador para este grupo?"
-
   membership_requests: "Petición de membresías"
   confirm_approve_membership_request: "Estas seguro que deseas que %{which_user} pertenezca a este grupo?"
   ignore_request: "Ignorar petición"
@@ -154,7 +153,6 @@ es:
   membership_requested: "Petición enviada"
   request_membership: "Petición de membresías"
   confirm_remove_membership_request: "Estas seguro que deseas retirar tu petición de membresía a este grupo?"
-
   subgroups: "Sub-grupos"
   create_a_subgroup: "Crear un sub-grupo"
   select_members_to_add: "Seleccionar miembros a adherir a %{which_group}"
@@ -163,29 +161,18 @@ es:
   new_subgroup: "Nuevo sub-grupo"
   create_subgroup: "Crear sub-grupo"
   creating_subgroup: "Creando sub-grupo"
-
   group_privacy: "Privacidad: '%{who}' Quien puede ver este grupo."
   everyone: "Todos"
   parent_group_members: "Grupo de nivel superior"
   members: "Miembros"
-
   new_group: "Nuevo grupo"
   create_group: "Crear grupo"
   creating_group: "Creando grupo"
   edit_group: "Editar Grupo"
   update_group: "Actualizar grupo"
   updating_group: "Actualizando grupo"
-
-  group_not_found: "No se encontró dicho grupo."
-  group_not_found_details: "Este grupo puede ser privado. Si alguien te ha dado este enlace, puede ser que necesiten invitarte a uno de sus grupos para que puedas ver esta página."
-
   start_a_discussion: "Empezar una discusión"
   group_description: "Descripción del grupo"
-
-  #
-  # DISCUSSION PAGE
-  #
-
   discussion_items:
     new_discussion: "se ha creado la discusión"
     new_motion: "se ha creado propuesta"
@@ -195,24 +182,19 @@ es:
     motion_close_date_edited: "cambio la fecha de cierre de la propuesta"
     discussion_title_edited: "cambio el titulo de discusión"
     discussion_description_edited: "cambio descripción de discusión"
-
   discussion: "Discusión"
   current_decision: "Decisión actual"
   previous_decisions: "Decisiones anteriores"
   see_previous_decisions: "Ver decisiones anteriores"
   create_new_proposal: "Crear nueva propuesta"
-  empty_decision_list: "Actualmente no existe una propuesta abierta a discusión"
   empty_decision_index: " Este grupo no ha tomado ninguna decisión todavía."
   empty_discussion_list: "Todavía no hay actividad en esta discusión."
   empty_discussion_index: "No hay discusiones en ninguno de tus grupos"
   empty_discussion_index_group: "Este grupo no tiene discusiones todavía."
-
   discussion_context:
     started_when: "Empezó hace %{when}"
-    helper_text: " Utilice este espacio para dar contexto suficiente para que tu grupo tenga una discusión bien informada. Y a medida que el debate avance, cualquiera pueda añadir información haciendo más fácil para la gente nueva ponerse al día."
     last_edited: "Ultima vez editado hace %{when} "
     see_revision_history: "Ver historial de revisión"
-
   description_history:
     header: "Historial de revisión"
     subheader: "Versión"
@@ -222,25 +204,16 @@ es:
     applying_changes: "(Aplicando cambios...)"
     previous: "Previo"
     next: "Siguiente"
-
   comment_form_placeholder: "Diga algo..."
   comment_form_submit_button: "Publicar comentario"
-
   liked_by: "Le ha gustado a %{who}"
   delete_comment: "Borrar comentario"
   confirm_delete_comment: "Estas seguro que quieres borrar este comentario?"
-
   markdown_settings_more_info: "Mas información..."
   edit_discussion_title: "Editar titulo de discusión"
   delete_discussion: "Eliminar discusión"
   confirm_delete_discussion: "Estas seguro que quieres eliminar permanentemente esta discusión?"
-
-  #
-  # DECISIONS / PROPOSALS / MOTIONS
-  #
-
   new_proposal: "Nueva propuesta"
-
   close_proposal: "Cerrar propuesta"
   confirm_close_proposal: "Estas seguro que quieres cerrar esta propuesta?"
   change_proposal_close_date: "Cambiar fecha de cierre"
@@ -251,7 +224,6 @@ es:
   proposed_when_by_who: "Propuesto %{when} por %{who}"
   engagement_on_open_proposal: "%{percent}% de miembros ha manifestado su posición (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}% miembros que establecieron su posición (%{numerator}/%{denominator})"
-
   state_your_position: "Establece tu posición"
   positions: "Posiciones"
   yes_position: "Estoy de acuerdo"
@@ -265,14 +237,7 @@ es:
   not_voted: "[Mostrar los usuarios que aun no han decidido]"
   outcome: "Resultado"
   outcome_placeholder: "Cual fue el resultado de esta propuesta?"
-
-  #
-  # HELP PAGES
-  #
-
   help:
-    build_shared_understanding: "Construyendo entendimiento compartido"
-    build_shared_understanding_description: "A medida que la conversación avanza y nueva información aparece,  puedes cambiar tu posición cuantas veces quieras hasta el cierre final de la propuesta. Si el grupo no está convencido de la propuesta inicial, cualquiera puede sugerir una mejor para seguir adelante. A través de este proceso dinámico, la sabiduría colectiva de tu grupo puede generar mejores ideas que cualquiera pudiera generar por sí solo."
     get_in_touch: "Ponerse en contacto"
     get_in_touch_description_html: "Si tienes preguntas o sugerencias, envíalas a: <a href='mailto:contact@loomio.org'>contact@loomio.org</a>"
     getting_started: "Primeros pasos"
@@ -282,23 +247,16 @@ es:
     help: "Ayuda"
     how_it_works: "Cómo funciona"
     join_the_community: "Únete a la comunidad"
-    join_the_community_description_html: 'Todos están bienvenidos en "Loomio Community" donde hablamos de como aprovechar la herramienta al máximo, y como mejorarla.<br /><br /><a href="https://www.loomio.org/groups/3">Apreta aquí para ir al grupo "Loomio Community" group</a>, donde puedes solicitar membresía.'
-    video_id: "67765444"
-    video_tutorial: "Video tutorial"
-    video_tutorial_description: "Mira el video para una demostración rápida."
+    join_the_community_description_html: "Todos están bienvenidos en \"Loomio Community\" donde hablamos de como aprovechar la herramienta al máximo, y como mejorarla.<br /><br /><a href=\"https://www.loomio.org/groups/3\">Apreta aquí para ir al grupo \"Loomio Community\" group</a>, donde puedes solicitar membresía."
     make_a_decision: "Tomar una decisión"
     make_a_decision_description: "Cuando la conversación lleva establecida un tiempo determinado cualquiera puede iniciar una propuesta . Cuando estés listo para dar tu opinión, haz clic en uno de los cuatro botones de decisión:"
     positions_agree_description: "<span>Estás de acuerdo</span> y quieres que siga a delante."
     positions_abstain_description: "<span>Te abstienes</span>, significa que estás indeciso, o te sientes bien de que el grupo decida sin ti."
     positions_disagree_description: "<span>No estás de acuerdo</span>, significa que piensas que hay una mejor alternativa, pero estás dispuesto a seguir con la decisión del grupo."
     positions_block_description: "<span>Bloquear</span>, significa que tienes serias objeciones y estarías extremadamente en desacuerdo si la propuesta siguiera adelante."
-    see_how_everyone_feels: "Ver cómo se siente el grupo"
-    see_how_everyone_feels_description: "Cuando haz tomado tu decisión, serás impulsado a dar un corto sumario explicando porque te sientes de esa manera. Abajo del gráfico de torta, puedes ver como han decidido otras personas en el grupo. Estos pequeños resúmenes hacen muy fácil ponerse al día acerca de cómo va la discusión."
-
-  #
-  # SIGN IN
-  #
-
+    video_id: "67765444"
+    video_tutorial: "Video tutorial"
+    video_tutorial_description: "Mira el video para una demostración rápida."
   resend_confirmation: "Volver a enviar confirmación"
   new_password: "Nueva contraseña"
   confirm_new_password: "Confirmar nueva contraseña"
@@ -318,29 +276,30 @@ es:
   forgot_your_password: "Olvidaste tu contraseña?"
   confirmation_not_received: "No has recibido las instrucciones de confirmación?"
   unlock_not_received: "No has recibido instrucciones de desbloqueo?"
-
-  #
-  # FORMS
-  #
-
+  invitation:
+    invitation_not_found: 'No se pudo encontrar invitación. Por favor pida una nueva invitación.'
+    invitation_cancelled: 'Esta invitación ha sido cancelada. Contacta al remitente si crees que ha habido un error.'
+    invitation_already_used: 'Esta invitación ya ha sido usada. Por favor inicie sesión para continuar.'
+    recipients: "Entrar dirección de correo electrónico, separadas por comas:"
+    invitees_placeholder: "Nombre de usuario <user1@example.com>, user2@example.com"
+    subject: "Por favor forma parte de nuestro nuevo grupo en Loomio, %{group}"
+    invite_people: "Invitar personas"
+    message_body: "Mensaje de invitación"
+    invites_more_help2: "<p>Puedes invitar personas a tu grupo en cualquier momento.</p><p>Podrías invitar a todos los miembros del grupo, o puedes empezar invitando a los  que trabajan contigo diariamente.</p>"
+    send_invitations: "Enviar invitaciones"
+    invitation_link: "Enlace a la invitación"
+    copy: "Si alguien no ha recibido la invitación electrónica, no dudes en copiar el enlace arriba y enviarlo personalmente."
   discussion_form:
     header: "Empezar una discusión"
     who: "Con que grupo te gustaría establecer una discusión?"
     context: "Contexto"
-
   motion_form:
     header: "Nueva propuesta"
     name_helper: " Haz el título lo más claro y conciso posible para que la gente sepa exactamente lo que quieres decir cuando estén de acuerdo o en desacuerdo con la propuesta."
-
   group_form:
     privacy_settings: "Configuración de privacidad"
-    everyone_details: "Publico – cualquiera que tenga este enlace puede ver %{group_or_subgroup}"
-    members_details: "Miembros - solo miembros de %{group_or_subgroup} pueden verlo"
-    parent_group_members_details: "Grupo de nivel superior – solo miembros del grupo principal pueden ver esto"
     invitation_settings: "Configuración de invitaciones"
-    all_group_members: "Todos los miembros de %{group_or_subgroup}"
     admins_only: "Solo administradores"
-
   vote_form:
     header: "Establece tu posición"
     edit: "Modifica tu posición"
@@ -349,7 +308,6 @@ es:
     your_statement: "Tu opinión o enunciación"
     submit: "Submit position"
     update: "Update position"
-
   email_preferences_form:
     header: "Preferencias de correo electrónico"
     daily_activity_summary: "Sumario de actividades diarias"
@@ -360,28 +318,25 @@ es:
     group_activity_notifications: "Notificaciones de la actividad del grupo"
     group_activity_details: "Por cada grupo, marca la casilla si deseas recibir un correo electrónico inmediatamente se abra una nueva discusión o decisión."
     update_preferences: "Preferencias de actualización"
-
   new_user_form:
     create_an_account: "Crear una cuenta"
-
   user_settings_form:
     header: "Preferencias de Usuario"
     picture: "Foto"
     use_avatar_kind: "Usar %{kind}"
     upload_new_image: "Subir nueva imagen"
-
   simple_form:
     labels:
       discussion:
         title: "Titulo"
         description: "Contexto"
-      motion:
-        name: "Titulo"
-        description: "Detalles"
       group:
         name: "Nombre del Grupo"
         viewable_by: "Quien puede ver esto %{group_or_subgroup}?"
-        invitable_by: "Quien puede invitar miembros a este %{group_or_subgroup}?"
+        members_invitable_by: "Quien puede invitar miembros a este grupo?"
+      motion:
+        name: "Titulo"
+        description: "Detalles"
       user:
         name: "Nombre completo"
         email: "Correo electrónico"
@@ -394,7 +349,6 @@ es:
       motion:
         name: "Cual es tu propuesta de plan de acción?"
         description: "Da información suficiente para que cualquier persona en tu grupo pueda tomar una decisión bien informada."
-
   helpers:
     submit:
       discussion:
@@ -404,11 +358,6 @@ es:
       user:
         create: "Crear cuenta"
         update: "Actualizar preferencias"
-
-  #
-  # COMMON WORDS
-  #
-
   ago: "hace %{quantity_of_time}"
   approve: "Aprobar"
   back: "Atrás"
@@ -434,8 +383,12 @@ es:
   message: "Mensaje"
   name: "Nombre"
   new_activity: "Nueva actividad"
+  next: "Siguiente"
   password: "Contraseña"
+  proposal: "Propuesta"
+  prev: "Atrás"
   options: "Opciones"
+  ok_got_it: "Bien, lo tengo!"
   save: "Guardar"
   saving: "Guardando"
   sending: "Enviando"
