@@ -17,7 +17,12 @@ ActiveAdmin.register GroupRequest do
   index do
     column :id
     column :name_and_contact do |gr|
-      simple_format("#{gr.name}<br><br>#{gr.admin_name} &lt;#{gr.admin_email}&gt;".html_safe)
+      name = ERB::Util.h(gr.name)
+      admin_name = ERB::Util.h(gr.admin_name)
+      admin_email = ERB::Util.h(gr.admin_email)
+      (link_to(name, edit_admin_group_request_path(gr)) +
+       "<br><br>#{admin_name}".html_safe +
+       " &lt;#{admin_email}&gt;".html_safe)
     end
     column :description
     column :admin_notes
@@ -38,7 +43,8 @@ ActiveAdmin.register GroupRequest do
         links << link_to('Star', set_high_touch_admin_group_request_path(gr), :method => :put) unless gr.high_touch?
         links << link_to('Un-star', unset_high_touch_admin_group_request_path(gr), :method => :put) if gr.high_touch?
         links << link_to('Edit', edit_admin_group_request_path(gr))
-        links << link_to('Destroy', admin_group_request_path(gr), method: :delete)
+        links << link_to('Destroy', admin_group_request_path(gr), method: :delete,
+          data: { confirm: "Are you sure you want to delete the request?" })
         links.join(' ').html_safe
       end
     end
