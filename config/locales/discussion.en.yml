@@ -1,0 +1,100 @@
+en:
+  discussion_items:
+    new_discussion: "created the discussion"
+    new_motion: "created a proposal"
+    motion_closed:
+      by_user: "closed the proposal"
+      by_expiry: "Proposal closed"
+    motion_close_date_edited: "changed the closing date for the proposal"
+    discussion_title_edited: "changed the discussion title"
+    discussion_description_edited: "changed the discussion description"
+
+  discussion: "Discussion"
+  current_decision: "Current decision"
+  previous_decisions: "Previous decisions"
+  see_previous_decisions: "See previous decisions"
+  create_new_proposal: "Create new proposal"
+  empty_decision_list_html: "Ready to make a decision? <br> Anyone can start a proposal."
+  empty_decision_index: "This group has not made any decisions yet."
+  empty_discussion_list: "There is no activity in this discussion yet."
+  empty_discussion_index: "There are no discussions in any of your groups."
+  empty_discussion_index_group: "This group does not have any discussions yet."
+
+  discussion_context:
+    started_when: "Started %{when} ago"
+    last_edited: "Last edited about %{when} ago by "
+    see_revision_history: "See revision history"
+
+  description_history:
+    header: "Revision history"
+    subheader: "Version"
+    edited_by: "Edited about %{when} ago by %{who}"
+    current: "(current)"
+    restore: "(Restore this version)"
+    applying_changes: "(Applying changes...)"
+    previous: "Prev"
+    next: "Next"
+
+  comment_form_placeholder: "Say something..."
+  comment_form_submit_button: "Post comment"
+
+  liked_by: "Liked by %{who}"
+  delete_comment: "Delete comment"
+  confirm_delete_comment: "Are you sure you want to delete this comment?"
+
+  markdown_settings_more_info: "More info..."
+  edit_discussion_title: "Edit discussion title"
+  delete_discussion: "Delete discussion"
+  confirm_delete_discussion: "Are you sure you want to permanently delete this discussion?"
+
+  #
+  # DECISIONS / PROPOSALS / MOTIONS
+  #
+
+  new_proposal: "New Proposal"
+
+  close_proposal: "Close proposal"
+  confirm_close_proposal: "Are you sure you want to close this proposal?"
+  change_proposal_close_date: "Change close date"
+  change_proposal_close_date_header: "Change the close date for the proposal '%{which}'"
+  proposal: Proposal
+  proposal_close_date_error: "Please give a future close date"
+  proposal_closing_when: "Closing in %{when}"
+  proposal_closed_when: "Closed %{when} ago"
+  proposed_when_by_who: "Proposed by %{who} %{when} ago"
+  engagement_on_open_proposal: "%{percent}% of members have stated their position (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "%{percent}% of members stated their position (%{numerator}/%{denominator})"
+
+  state_your_position: "State your position"
+  positions: "Positions"
+  yes_position: "I agree"
+  yes_details: "I agree with this and want it to go ahead."
+  abstain_position: "I abstain"
+  abstain_details: "I am happy for the group to decide without me."
+  no_position: "I disagree"
+  no_details: "I think we can probably do better."
+  block_position: "I block"
+  block_details: "I have strong objections to this proposal and am not OK with it going ahead."
+  not_voted: "[Show members who have not yet decided]"
+  outcome: "Outcome"
+  outcome_placeholder: "What was the outcome of this proposal?"
+
+  #
+  # EXAMPLE CONTENT
+  #
+
+  example_discussion:
+    title: "Example Discussion: Welcome and introduction to Loomio"
+    description: |
+      Welcome to Loomio, a new tool for group decision-making.
+      By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, your group can put their heads together to find the best way forward.
+      You can use this example discussion to play around with the features of the tool.
+      To get the ball rolling, Loomio Helper Bot thinks it would be a great idea for your group to take a holiday together. The pie graph on the right shows how your group feels about the proposal. You can have your say by clicking on one of the decision buttons underneath.
+
+  example_motion:
+    name: "We should have a holiday on the moon!"
+    description: |
+      Loomio Helper Bot is really keen for your group to invest in a trip to the moon. Apparently the space-cheese is delicious. But the implications for your carbon footprint are worrying.
+      Is it a good idea? Loomio Helper Bot wants to know what you think!
+      If you’re clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).
+      You’ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes.

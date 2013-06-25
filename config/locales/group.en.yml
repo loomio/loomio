@@ -1,0 +1,70 @@
+en:
+  setup_steps_title: "Next steps:"
+  setup_step_1: "Check out the example discussion"
+  setup_step_2: "Start your first discussion"
+  setup_step_3: "Invite people to your group"
+
+  invite_people: "Invite people"
+  no_invitations_button: "No invitations left"
+  pending_invitations: 'Pending invitations'
+  number_pending: 'and %{pending} pending'
+  edit_memberships: 'Edit memberships'
+
+  add_new_member: "Add new member"
+  invite_members_to_group: "Invite members to %{which_group}"
+  remaining_invites: "remaining invites"
+  need_more_invites_html: "Need more? Loomio is in closed beta, which means we're still in development and have limited resources for user support. If you'd like to increase the size of your group %{href}."
+  get_in_touch_link: "get in touch"
+
+  email_members_in_group: "Email the members in %{which_group}"
+  subject_error: "Please fill in a subject"
+  subject_placeholder: "Write a subject"
+  message_error: "Please fill in a message"
+  message_placeholder: "Write a message to the members of %{which_group}."
+
+  email_group_members: "Email group members"
+  edit_group_settings: "Edit group settings"
+  leave_group: "Leave group"
+  confirm_leave_group: "Are you sure you wish to leave %{which_group}?"
+  deactivate_group: "De-activate group"
+  confirm_deactivate_group: "Wait!!! Are you sure you want to de-activate %{which_group}? You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@loomio.org."
+
+  invited_users: "Invited members"
+  members: "Members"
+  confirm_remove_user: "Are you sure you wish to remove %{which_user} from the group?"
+  remove_admin: "Remove admin"
+  confirm_remove_admin: "Are you sure you no longer want %{which_user} to be an admin for this group?"
+  make_admin: "Make admin"
+  confirm_make_admin: "Are you sure you want to make %{which_user} an admin for this group?"
+
+  membership_requests: "Membership requests"
+  confirm_approve_membership_request: "Are you sure you want to add %{which_user} to the group?"
+  ignore_request: "Ignore request"
+  confirm_ignore_membership_request: "Are you sure you want to ignore the member request from %{which_user}?"
+  membership_requested: "Membership Requested"
+  request_membership: "Request membership"
+  confirm_remove_membership_request: "Are you sure you wish to withdraw your membership request for this group?"
+
+  subgroups: "Sub-groups"
+  create_a_subgroup: "Create a sub-group"
+  select_members_to_add: "Select members to add to %{which_group}"
+  empty_parent_group: "Please add the members to the parent group first."
+  invite_members: "Invite members"
+  new_subgroup: "New sub-group"
+  create_subgroup: "Create sub-group"
+  creating_subgroup: "Creating sub-group"
+
+  group_privacy: "Privacy: '%{who}' can see this group."
+  everyone: "Everyone"
+  parent_group_members: "Parent group members"
+  members: "Members"
+
+  new_group: "New group"
+  create_group: "Create group"
+  creating_group: "Creating group"
+  edit_group: "Edit Group"
+  update_group: "Update group"
+  updating_group: "Updating group"
+
+  start_a_discussion: "Start a discussion"
+  group_description: "Group description"
