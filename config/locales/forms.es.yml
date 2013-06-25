@@ -1,0 +1,82 @@
+es:
+  discussion_form:
+    header: "Empezar una discusión"
+    who: "Con que grupo te gustaría establecer una discusión?"
+    context: "Contexto"
+
+  motion_form:
+    header: "Nueva propuesta"
+    name_helper: " Haz el título lo más claro y conciso posible para que la gente sepa exactamente lo que quieres decir cuando estén de acuerdo o en desacuerdo con la propuesta."
+
+  group_form:
+    privacy_settings: "Configuración de privacidad"
+    everyone_details: "Publico – cualquiera que tenga este enlace puede ver %{group_or_subgroup}"
+    members_details: "Miembros - solo miembros de %{group_or_subgroup} pueden verlo"
+    parent_group_members_details: "Grupo de nivel superior – solo miembros del grupo principal pueden ver esto"
+    invitation_settings: "Configuración de invitaciones"
+    all_group_members: "Todos los miembros de %{group_or_subgroup}"
+    admins_only: "Solo administradores"
+
+  vote_form:
+    header: "Establece tu posición"
+    edit: "Modifica tu posición"
+    placeholder: "Da una razón para tu decisión (opcional)"
+    your_position: "Tu posición"
+    your_statement: "Tu opinión o enunciación"
+    submit: "Submit position"
+    update: "Update position"
+
+  email_preferences_form:
+    header: "Preferencias de correo electrónico"
+    daily_activity_summary: "Sumario de actividades diarias"
+    daily_activity_subscription: "Enviarme actividad diaria resumiendo lo que ha estado pasando en mis grupos"
+    global_notifications: "Notificaciones globales"
+    proposal_closing_soon_subscription: "Recordarme 24 horas antes del cierre de una propuesta"
+    mentions_subscription: "Enviarme correo electrónico cuando alguien me menciona en un comentario"
+    group_activity_notifications: "Notificaciones de la actividad del grupo"
+    group_activity_details: "Por cada grupo, marca la casilla si deseas recibir un correo electrónico inmediatamente se abra una nueva discusión o decisión."
+    update_preferences: "Preferencias de actualización"
+
+  new_user_form:
+    create_an_account: "Crear una cuenta"
+
+  user_settings_form:
+    header: "Preferencias de Usuario"
+    picture: "Foto"
+    use_avatar_kind: "Usar %{kind}"
+    upload_new_image: "Subir nueva imagen"
+
+  simple_form:
+    labels:
+      discussion:
+        title: "Titulo"
+        description: "Contexto"
+      motion:
+        name: "Titulo"
+        description: "Detalles"
+      group:
+        name: "Nombre del Grupo"
+        viewable_by: "Quien puede ver esto %{group_or_subgroup}?"
+        invitable_by: "Quien puede invitar miembros a este %{group_or_subgroup}?"
+      user:
+        name: "Nombre completo"
+        email: "Correo electrónico"
+        password: "Contraseña"
+        language_preference: "Lenguaje"
+    placeholders:
+      discussion:
+        title: "Cual es el tema que te gustaría discutir?"
+        description: " Esta información aparecerá en la parte superior de la página de discusión. Presenta el tema y da un contexto suficiente para que tu grupo tenga una discusión bien informada."
+      motion:
+        name: "Cual es tu propuesta de plan de acción?"
+        description: "Da información suficiente para que cualquier persona en tu grupo pueda tomar una decisión bien informada."
+
+  helpers:
+    submit:
+      discussion:
+        create: "Empezar discusión"
+      motion:
+        create: "Empezar propuesta"
+      user:
+        create: "Crear cuenta"
+        update: "Actualizar preferencias"
