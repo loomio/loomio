@@ -70,5 +70,9 @@ module ApplicationHelper
 
     Redcarpet::Render::SmartyPants.render(output).html_safe
   end
+
+  def show_contribution_icon?
+    current_user && !current_user.belongs_to_paying_group?
+  end
 end
 

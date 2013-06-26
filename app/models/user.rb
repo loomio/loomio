@@ -314,6 +314,10 @@ class User < ActiveRecord::Base
     (group_ids & other_user.group_ids).present?
   end
 
+  def belongs_to_paying_group?
+    groups.any? { |group| group.paying_subscription? }
+  end
+
   private
 
   def set_default_avatar_kind
