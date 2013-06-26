@@ -162,7 +162,7 @@ class DiscussionsController < GroupBaseController
 
   def activity_counts
     # this ensures that you can't ask for comment counts for discussions you dont belong to 
-    discussion_ids = current_user.discussion_ids & params[:discussion_ids].map(&:to_i)
+    discussion_ids = current_user.discussion_ids & params[:discussion_ids].split('x').map(&:to_i)
 
     counts = Discussion.find(discussion_ids).map do |discussion|
       discussion.number_of_comments_since_last_looked(current_user)
