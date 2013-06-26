@@ -2,9 +2,9 @@ class Group < ActiveRecord::Base
 
   PERMISSION_CATEGORIES = [:everyone, :members, :admins, :parent_group_members]
 
-  attr_accessible :name, :viewable_by, :parent_id, :parent, :cannot_contribute
-  attr_accessible :members_invitable_by, :email_new_motion, :description, :setup_completed_at
-  attr_accessible :next_steps_completed
+  attr_accessible :name, :viewable_by, :parent_id, :parent, :cannot_contribute,
+                  :members_invitable_by, :email_new_motion, :description, :setup_completed_at,
+                  :next_steps_completed, :paying_subscription
 
   validates_presence_of :name
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
