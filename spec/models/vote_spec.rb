@@ -80,7 +80,6 @@ describe Vote do
     vote_time = stub "time"
     motion.stub(:latest_vote_time).and_return(vote_time)
     motion.should_receive(:last_vote_at=).with(vote_time)
-    motion.should_receive(:save!)
     vote.save!
   end
 

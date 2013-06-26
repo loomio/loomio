@@ -1,6 +1,38 @@
 require 'spec_helper'
 
 describe ApplicationHelper do
+  describe 'time_formatted_relative_to_age' do
+    let(:time){ "2013-01-02 16:55:00 UTC".to_time }
+
+    subject do
+      helper.time_formatted_relative_to_age(time)
+    end
+
+    context 'when time is same day' do
+      it 'displays hours, minutes and meridian' do
+        Timecop.freeze("2013-01-02 12:00:00 UTC") do
+          subject.should == ' 4:55 pm'
+        end
+      end
+    end
+
+    context 'when it is not the same day' do
+      it 'displays date only' do
+        Timecop.freeze("2013-01-01 12:00:00 UTC") do
+          subject.should == ' 2 Jan'
+        end
+      end
+    end
+
+    context 'when it is not the same year' do
+      it 'displays date and year' do
+        Timecop.freeze("2014-01-01 12:00:00 UTC") do
+          subject.should == '2/1/13'
+        end
+      end
+    end
+  end
+
   describe "display_title" do
     it "shows Loomio name" do
       helper.display_title(double(:size => 0)).should == "Loomio"

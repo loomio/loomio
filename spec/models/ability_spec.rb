@@ -31,6 +31,7 @@ describe "User abilities" do
     it { should_not be_able_to(:email_members, group) }
     it { should be_able_to(:add_subgroup, group) }
     it { should be_able_to(:new_proposal, discussion) }
+    it { should be_able_to(:show, discussion) }
     it { should be_able_to(:add_comment, discussion) }
     it { should be_able_to(:update_description, discussion) }
     it { should be_able_to(:edit_description, group) }
@@ -39,6 +40,7 @@ describe "User abilities" do
     it { should be_able_to(:update_version, discussion) }
     it { should_not be_able_to(:move, discussion) }
     it { should be_able_to(:index, Discussion) }
+    it { should be_able_to(:unfollow, Discussion) }
     it { should be_able_to(:destroy, user_comment) }
     it { should_not be_able_to(:destroy, discussion) }
     it { should_not be_able_to(:destroy, another_user_comment) }
@@ -151,6 +153,7 @@ describe "User abilities" do
     let(:another_user_comment) { discussion.add_comment(discussion.author, "hello", false) }
 
     it { should_not be_able_to(:update, group) }
+    it { should_not be_able_to(:show, discussion) }
     it { should_not be_able_to(:email_members, group) }
     it { should_not be_able_to(:add_subgroup, group) }
     it { should_not be_able_to(:add_members, group) }
@@ -159,6 +162,7 @@ describe "User abilities" do
     it { should_not be_able_to(:add_comment, discussion) }
     it { should_not be_able_to(:move, discussion) }
     it { should be_able_to(:index, Discussion) }
+    it { should_not be_able_to(:unfollow, group) }
     it { should_not be_able_to(:destroy, discussion) }
     it { should_not be_able_to(:destroy, another_user_comment) }
     it { should_not be_able_to(:like, another_user_comment) }

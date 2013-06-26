@@ -10,7 +10,7 @@ Feature: User sees the number of new comments on a discussion
     And I have never read the discussion before
     And the discussion has comments
     When I visit the dashboard
-    Then I should see the number of comments the discussion has
+    Then I should see that the discussion has 3 new comments
 
   @javascript
   Scenario: User visits dashboard and sees new comments on a discussion they've read before
@@ -19,7 +19,7 @@ Feature: User sees the number of new comments on a discussion
     And I have read the discussion before
     And the discussion has had new comments since I last read it
     When I visit the dashboard
-    Then I should see the number of new comments the discussion has
+    Then I should see that the discussion has 2 new comments
 
   @javascript
   Scenario: User visits group page and sees new comments on a discussion they've never read before
@@ -28,7 +28,7 @@ Feature: User sees the number of new comments on a discussion
     And I have never read the discussion before
     And the discussion has comments
     When I visit the group page
-    Then I should see the number of comments the discussion has
+    Then I should see that the discussion has 3 new comments
 
   @javascript
   Scenario: User visits group page and sees new comments on a discussion they've read before
@@ -37,4 +37,5 @@ Feature: User sees the number of new comments on a discussion
     And I have read the discussion before
     And the discussion has had new comments since I last read it
     When I visit the group page
-    Then I should see the number of new comments the discussion has
+    Then I should see that the discussion has 2 new comments
+
