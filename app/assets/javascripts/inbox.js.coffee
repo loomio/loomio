@@ -51,7 +51,7 @@ $ ->
     discussion_ids = $.map $(discussion_css_class), (e) ->
       $(e).data('discussion-id')
 
-    $.get '/discussions/activity_counts', {discussion_ids: discussion_ids}, (discussion_counts) ->
+    $.get '/discussions/activity_counts', {discussion_ids: discussion_ids.join('x')}, (discussion_counts) ->
       i = 0
       $(discussion_css_class).each ->
         i = discussion_ids.indexOf($(this).data('discussion-id'))
