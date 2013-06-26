@@ -1,4 +1,8 @@
 class NotificationsController < BaseController
+  def groups_tree_dropdown
+    render layout: false
+  end
+
   def dropdown_items
     @unviewed_notifications = current_user.unviewed_notifications
     @notifications = current_user.recent_notifications

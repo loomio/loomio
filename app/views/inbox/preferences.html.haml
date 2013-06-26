@@ -1,0 +1,21 @@
+%h2 Inbox preferences
+%p 
+  %strong Drag items 
+  to reorder them. 
+  %strong Uncheck 
+  to remove from inbox.
+
+
+=simple_form_for @inbox_preferences_form, 
+  url: update_inbox_preferences_path,
+  method: :put do |f|
+  .control-group.ui-sortable
+    -@inbox_preferences_form.all_memberships.each do |membership|
+      - group = membership.group
+      - next if group.nil?
+      %span
+        =label_tag "group_#{group.id}", class: 'checkbox' do
+          =check_box_tag 'groups[]', group.id, membership.inbox_position.present?, id: "group_#{group.id}", class: 'checkbox'
+          =group.full_name
+    -#=f.collection_check_boxes(:groups, @inbox_preferences_form.all_groups, :id, :full_name, {}, {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
+  =f.submit 'Save', class: 'btn btn-info'

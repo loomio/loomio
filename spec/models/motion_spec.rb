@@ -304,4 +304,33 @@ describe Motion do
       @vote.should_not be_nil
     end
   end
+
+  describe 'update_vote_counts!', focus: true do
+    context 'there is 1 vote for each position' do
+      let(:group){FactoryGirl.create :group}
+      let(:discussion){FactoryGirl.create :discussion, group: group}
+      let(:motion){FactoryGirl.create :motion, discussion: discussion}
+
+      before do
+        Vote::POSITIONS.each do |position|
+          user = create(:user)
+          group.add_member!(user)
+
+          vote = Vote.new(position: position)
+          vote.motion = motion
+          vote.user = user
+          vote.save!
+        end
+      end
+
+      context 'after updating the vote_counts' do
+        it 'has counts of 1' do
+          motion.yes_votes_count.should == 1
+          motion.no_votes_count.should == 1
+          motion.abstain_votes_count.should == 1
+          motion.block_votes_count.should == 1
+        end
+      end
+    end
+  end
 end
