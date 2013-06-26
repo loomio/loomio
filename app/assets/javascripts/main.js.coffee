@@ -15,12 +15,6 @@ $ ->
 
 
 ### EVENTS ###
-$ ->
-  $(".dismiss-help-notice").click (event)->
-    $.post($(this).attr("href"))
-    $('.help-notice').modal('hide')
-    event.preventDefault()
-    event.stopPropagation()
 
 $ -> # check if discussion with motions list is empty
   if $("body.groups.show").length > 0 ||  $("body.dashboard.show").length > 0
@@ -133,7 +127,7 @@ initializeHelpNotices= () ->
   )
 
 initializeDatepicker = () ->
-  $('input.datepicker').datepicker(dateFormat: 'dd-mm-yy')
+  $('input.datepicker').datepicker({ dateFormat: 'dd-mm-yy', minDate: - 0})
 
 Application.convertUtcToRelativeTime = ->
   if $(".utc-time").length > 0

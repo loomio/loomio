@@ -66,8 +66,8 @@ class Ability
       can? :show, motion.group
     end
     can :create, Motion, :discussion_id => user.discussion_ids
-    can [:destroy, :close, :edit_outcome, :edit_close_date], Motion, :author_id => user.id
-    can [:destroy, :close, :edit_outcome, :edit_close_date], Motion,
+    can [:edit, :update, :destroy, :close, :edit_outcome], Motion, :author_id => user.id
+    can [:edit, :update, :destroy, :close, :edit_outcome], Motion,
       :discussion => { :group_id => user.adminable_group_ids }
   end
 end

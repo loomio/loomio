@@ -1,0 +1,14 @@
+%li.row
+  .span9
+    %h2= revision.name
+    %p= revision.description
+    = t(:proposal_closing_when, when: time_ago_in_words(revision.close_at))
+    .proposed-by
+      = t(:proposed_when_by_who, when: time_ago_in_words(revision.created_at), who: revision.author_name)
+  .span3.revision-info
+    - if version
+      = t(:revision_edit_info, version_created_at: time_ago_in_words(version.created_at))
+      - editor = Motion.get_editor(version.whodunnit)
+      = link_to editor.name, user_path(editor), class: "user-name"
+    - else
+      = t('current_version')

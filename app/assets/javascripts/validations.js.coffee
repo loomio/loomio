@@ -20,6 +20,18 @@ $ -> # Character counter for limiting input
     left = max - chars
     display_count(left, $(this))
 
+$ -> # Remove error class on closing inputs if changed
+  $(".motion-close-at-date").change () ->
+    hideDateErrorMessageFor($(this))
+
+$ -> # Remove error class on closing inputs if changed
+  $(".motion-close-at-time").change () ->
+    hideDateErrorMessageFor($(this))
+
+$ -> # Remove error class on closing inputs if changed
+  $(".motion-close-at-time-zone").change () ->
+    hideDateErrorMessageFor($(this))
+
 $ -> # Run validations and prevent default if false
   $(".run-validations").click (event, ui) ->
     form = $(this).parents("form")
@@ -40,7 +52,7 @@ Application.validateForm = (form) ->
     return
     )
   formValid = false unless Application.validateEmailsAndConfirm($(".validate-emails"))
-  formValid = false unless Application.validateMotionCloseDate($(".motion-closing-inputs"))
+  formValid = false unless validateMotionCloseDate($(".motion-closing-inputs"))
   alert('There is a problem with the form') unless formValid
   formValid
 
@@ -48,10 +60,14 @@ Application.hideAllErrorMessages = () ->
   $(".inline-help").hide()
   $(".email-validation-help").hide()
 
+Application.isValidDate = (dateString) -> #takes input in the form 'yyyy-mm-dd'
+  bits = dateString.split('-')
+  new_date = new Date(bits[2], bits[1] - 1, bits[0])
+  return new_date && (new_date.getMonth() + 1) == parseInt(bits[1]) && new_date.getDate() == parseInt(bits[0])
+
 validatePresence = (field) ->
   if $(field).is(":visible") && $(field).val() == ""
-    parentFor(field).addClass("error")
-    parentFor(field).find(".inline-help").show()
+    addError(parentFor(field))
     return false
   true
 
@@ -59,10 +75,31 @@ validateInputLength = (field) ->
   return false if $(field).closest('.control-group').hasClass('error')
   true
 
+validateMotionCloseDate = (closeAtParent) ->
+  if $(closeAtParent).is(":visible")
+    timeNow = new Date()
+    unless Application.isValidDate(closeAtParent.find('.motion-close-at-date').val())
+      addError(closeAtParent)
+      return false
+    if Application.parseCloseDateTimeZoneFields(closeAtParent) < timeNow
+      addError(closeAtParent)
+      return false
+  true
+
+addError = (errorField) ->
+  $(errorField).addClass("error")
+  $(errorField).find(".inline-help").show()
+
+removeError = (errorField) ->
+  $(errorField).removeClass("error")
+  $(errorField).find(".inline-help").hide()
+
 hidePresenceErrorMessageFor = (field) ->
   unless $(field).val() == ""
-    parentFor(field).removeClass("error")
-    parentFor(field).find(".inline-help").hide()
+   removeError(parentFor(field))
+
+hideDateErrorMessageFor = (field) ->
+  removeError($(field).closest('.motion-closing-inputs'))
 
 parentFor = (field) ->
   $(field).closest('.control-group').parent().closest('.control-group')

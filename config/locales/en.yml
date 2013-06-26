@@ -32,6 +32,7 @@ en:
     group_request_invalid_token: "Sorry! This is an invalid token"
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
+    motion_closing_inputs: "Please enter a valid future date in the format 'dd-mm-yyyy"
     proposal_already_exists: "There is already an open proposal in this discussion."
   alert:
     duplicate_email: "%{which_email} is already in the group."
@@ -281,10 +282,12 @@ en:
 
   close_proposal: "Close proposal"
   confirm_close_proposal: "Are you sure you want to close this proposal?"
-  change_proposal_close_date: "Change close date"
+  edit_proposal: "Edit proposal"
+  current_version: "Current version"
+  revision_history: "See revision history"
+  revision_edit_info: "Edited %{version_created_at} ago, by"
   change_proposal_close_date_header: "Change the close date for the proposal '%{which}'"
   proposal: Proposal
-  proposal_close_date_error: "Please give a future close date"
   proposal_closing_when: "Closing in %{when}"
   proposal_closed_when: "Closed %{when} ago"
   proposed_when_by_who: "Proposed by %{who} %{when} ago"
@@ -499,8 +502,11 @@ en:
     context: "Context"
 
   motion_form:
-    header: "New proposal"
+    header_new: "New proposal"
+    header_edit: "Edit proposal"
     name_helper: "Make the title as clear and succinct as possible."
+    submit_create: "Create proposal"
+    submit_update: "Update proposal"
 
   group_form:
     privacy_settings: "Privacy settings"

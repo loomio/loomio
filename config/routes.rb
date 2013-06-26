@@ -53,18 +53,18 @@ Loomio::Application.routes.draw do
   resources :motions do
     resources :votes, only: [:new, :edit, :create, :update]
     post :get_and_clear_new_activity, on: :member
-    put :close, :on => :member
-    put :edit_outcome, :on => :member
-    put :edit_close_date, :on => :member
+    put :close, on: :member
+    put :edit_outcome, on: :member
+    get :revision_history, on: :member
   end
 
   resources :discussions, except: [:edit] do
-    post :update_description, :on => :member
-    post :add_comment, :on => :member
-    post :show_description_history, :on => :member
-    get :new_proposal, :on => :member
-    post :edit_title, :on => :member
-    put :move, :on => :member
+    post :update_description, on: :member
+    post :add_comment, on: :member
+    post :show_description_history, on: :member
+    get :new_proposal, on: :member
+    post :edit_title, on: :member
+    put :move, on: :member
   end
 
   post "/discussion/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"

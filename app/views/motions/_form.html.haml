@@ -1,21 +1,10 @@
-#motion-form
-  = simple_form_for @motion, validate: true do |f|
-    %h2= t "motion_form.header"
-    .row
-      .span5
-        %p= t "motion_form.name_helper"
-        = f.input :name, id: "motion-name"
-    .row
-      .span9
-        = render 'motions/close_at_inputs', form: f, user: @current_user
-    .row
-      .span5
-        #description
-          = f.input :description
-
-        = f.input :phase, as: :hidden, input_html: {value: "voting"}
-        = f.input :facilitator_id, as: :hidden, input_html: {value: current_user.id}
-        = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}
-        = f.submit :class => "btn btn-large btn-info run-validations", id: "proposal-submit", :data => {:disable_with => :starting}
-        = render 'application/hint', text: t(:"hint.proposal"), anchor: 'writing-a-clear-proposal'
-
+.row
+  .span6
+    = simple_form_for @motion, validate: true do |f|
+      %p= t "motion_form.name_helper"
+      = f.input :name
+      = render 'motions/close_at_inputs', form: f, user: @current_user
+      = f.input :description
+      = f.input :discussion_id, as: :hidden
+      = f.submit submit_btn_text, :class => "btn btn-large btn-info run-validations", id: "proposal-submit", :data => {:disable_with => disable_btn_text}
+      = render 'application/hint', text: t(:"hint.proposal"), anchor: 'writing-a-clear-proposal'

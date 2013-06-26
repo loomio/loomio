@@ -7,6 +7,8 @@ class Motion < ActiveRecord::Base
   has_many :did_not_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
 
+  has_paper_trail
+
   validates_presence_of :name, :discussion, :author, :close_at
   validates_inclusion_of :phase, in: PHASES
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
@@ -193,6 +195,13 @@ class Motion < ActiveRecord::Base
     self.close_at_time ||= Time.now.strftime("%H:00")
   end
 
+  def has_revisions?
+    versions.count > 1
+  end
+
+  def self.get_editor(editor_id)
+    User.find(editor_id)
+  end
 
   private
 

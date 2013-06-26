@@ -1,4 +1,4 @@
 - if can? :close, motion
   = link_to t(:close_proposal), "#", 'data-title' => t(:close_proposal), 'data-body' => t(:confirm_close_proposal), 'data-confirm-path' => close_motion_path(motion), 'data-method-type' => 'put', class: 'btn btn-small confirm-dialog', id: 'close-voting'
-- if can? :edit_close_date, motion
-  = link_to t(:change_proposal_close_date), '#edit-close-date', "data-toggle" => "modal", class: 'btn btn-small', id: 'change-close-date'
+- if can? :edit, motion
+  = link_to t(:edit_proposal), edit_motion_path(motion), class: 'btn btn-small', id: 'edit-motion'

@@ -1,7 +1,7 @@
 class MotionsController < GroupBaseController
   inherit_resources
-  load_and_authorize_resource :except => [:create, :show, :index]
-  before_filter :authenticate_user!, :except => [:show, :index, :get_and_clear_new_activity]
+  load_and_authorize_resource :except => [:create, :show, :index, :revision_history]
+  before_filter :authenticate_user!, :except => [:show, :index, :get_and_clear_new_activity, :revision_history]
   before_filter :check_group_read_permissions, :only => :show
 
   def create
@@ -51,6 +51,19 @@ class MotionsController < GroupBaseController
     end
   end
 
+  def edit
+    @group = GroupDecorator.new(@motion.group)
+  end
+
+  def update
+    if @motion.update_attributes(params[:motion])
+      Event.new
+      redirect_to discussion_url(@motion.discussion)
+    else
+      redirect_to edit_motion_url(@motion)
+    end
+  end
+
   def destroy
     resource
     @motion.destroy
@@ -73,21 +86,6 @@ class MotionsController < GroupBaseController
     redirect_to discussion_url(motion.discussion, proposal: motion)
   end
 
-  def edit_close_date
-    safe_values = {}
-    motion = Motion.find(params[:id])
-    safe_values[:close_at_date] = params[:motion][:close_at_date]
-    safe_values[:close_at_time] = params[:motion][:close_at_time]
-
-    if motion.update_attributes(safe_values)
-      Events::MotionCloseDateEdited.publish!(motion, current_user)
-      flash[:success] = t("success.close_date_changed")
-    else
-      flash[:error] = t("error.invalid_close_date")
-    end
-    redirect_to discussion_url(@motion.discussion)
-  end
-
   def get_and_clear_new_activity
     @motion = Motion.find(params[:id])
     @motion_activity = Integer(params[:motion_activity])
@@ -95,6 +93,11 @@ class MotionsController < GroupBaseController
       @user = current_user
       ViewLogger.motion_viewed(@motion, @user)
     end
+  end
+
+  def revision_history
+    @motion = Motion.find(params[:id])
+    @group = GroupDecorator.new(@motion.group)
   end
 
   private

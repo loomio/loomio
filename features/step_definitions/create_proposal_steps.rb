@@ -3,11 +3,11 @@ When /^I fill in the proposal details and submit the form$/ do
   @proposal_description = Faker::Lorem.paragraph
   fill_in 'motion_name', with: @proposal_name
   fill_in 'motion_description', with: @proposal_description
-  click_on 'proposal-submit'
+  click_on I18n.t('motion_form.submit_create')
 end
 
 Then /^I should see the create proposal page$/ do
-  page.should have_css("#motion-form")
+  page.should have_css("body.discussions.new_proposal")
 end
 
 Then /^clicking the link in the email should take him to the proposal$/ do
