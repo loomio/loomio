@@ -21,6 +21,16 @@ class ViewLogger
     discussion.update_total_views
   end
 
+  def self.discussion_unfollowed(discussion, user)
+    log = DiscussionReadLog.where('discussion_id = ? AND user_id = ?', discussion.id, user.id).first
+    if log.nil?
+      log = DiscussionReadLog.new
+      log.update_attributes(user_id: user.id, discussion_id: discussion.id, following: false)
+    else
+      log.update_attributes(following: false)
+    end
+  end
+
   def self.group_viewed(group, user)
     membership = user.group_membership(group)
     if membership

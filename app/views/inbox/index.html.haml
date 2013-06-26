@@ -1,0 +1,27 @@
+.row
+  .span10
+    %h1 Inbox
+  .span2.inbox-preferences
+    =link_to 'Preferences', inbox_preferences_path, class: 'preferences-link'
+.inbox-container
+  - @inbox.items_by_group do |group, items|
+    .inbox-group
+      .row
+        .span10
+          %h2= link_to group.full_name, group
+        .span2.mark-all-as-read
+          =link_to 'Mark all as read', mark_all_as_read_inbox_path(group_id: group.id), class: 'mark-all-as-read-btn', remote: true
+      %ul.inbox-list
+        - items.each do |item|
+          -if item.is_a? Discussion
+            =render 'discussion_line_item', item: item
+          -if item.is_a? Motion
+            =render 'motion_line_item', item: item
+
+- if @inbox.empty?
+  =t(:'inbox.empty')
+- else
+  .inbox-empty-msg{style: 'display: none'}
+    =t(:'inbox.empty')
+
+
