@@ -18,6 +18,7 @@ en:
     cant_modify_position: "This proposal has closed."
     cant_state_position: "This proposal has closed."
     cant_view_member_profile: "You're unable to view the member's profile because you are not in the same group."
+    contribution: "Please sign in to make a contribution."
     discussion_not_created: "Discussion could not be created."
     group_not_archived: "Group could not be archived."
     invalid_close_date: "Invalid close date, please check this date has not passed."
@@ -421,6 +422,31 @@ en:
     vote: 'You can change your position at any time'
 
   #
+  # CONTRIBUTIONS
+  #
+
+  contribution:
+    any_amount: Any one-time contribution
+    monthly_html: Monthly contribution <span>(USD)</span>
+    one_time_html: One-time contribution <span>(USD)</span>
+    tooltip: Choose your contribution
+    thought_about_contributing: Choose your contribution
+    thought_about_contributing_description: |
+      Loomio is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them. 
+
+      We believe money shouldn’t be a barrier, so we’re developing a revenue model that puts you in charge of the amount you pay.
+
+      Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users. 
+
+      Thanks for making this possible! 
+    thank_you_title: Thank you!
+    thank_you_body: |
+      Thank you for contributing to Loomio! 
+      Your financial contribution will help us to continue making collaborative decision-making easier and more accessible to the world.
+
+      You will receive an email shortly with a receipt for your contribution.
+
+  #
   # SIGN IN
   #
 
@@ -680,6 +706,7 @@ en:
   proposal: "Proposal"
   prev: "Prev"
   options: "Options"
+  other: "Other"
   ok_got_it: "Okay, got it!"
   save: "Save"
   saving: "Saving"
