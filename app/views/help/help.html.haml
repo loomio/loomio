@@ -1,14 +1,21 @@
 .span3#sidenav
   %ul.nav.nav-tabs.nav-stacked.affix
-    %li= link_to 'How it works', '#how-it-works'
-    %li.sub= link_to 'Video tutorial', '#video_tutorial'
-    %li.sub= link_to 'Getting started', '#getting_started'
-    %li.sub= link_to 'Have a discussion', '#have_a_discussion'
-    %li.sub= link_to 'Make a decision', '#make_a_decision'
-    %li.sub= link_to 'See how everyone feels', '#how_everyone_feels'
-    %li.sub= link_to 'Build shared understanding', '#shared_understanding'
-    %li= link_to 'Get in touch', '#feedback'
-
-.span8#help_content
-  = render 'help/how_it_works'
-  = render 'help/feedback'
+    %li= link_to t(:"help.how_it_works"), '#how-it-works'
+    %li= link_to t(:"help.getting_the_most"), '#getting-the-most-out-of-Loomio'
+    %li= link_to t(:"help.coordinating"), '#coordinating-your-Loomio-group'
+    %li= link_to t(:"help.get_in_touch"), '#get-in-touch'
+    %li= link_to t(:"help.join_the_community"), '#join-the-community'
+.span8#help-content
+  %section#how-it-works
+    .inner-container
+      = render 'help/how_it_works'
+      = render 'help/more_feature_help'
+  %section#getting-the-most-out-of-Loomio
+    .inner-container
+      = render 'help/more_culture_help'
+  %section#coordinating-your-Loomio-group
+    .inner-container
+      = render 'help/coordinator_help'
+  %section#get-in-touch
+    .inner-container
+      = render 'help/feedback'

@@ -10,8 +10,14 @@
                 = render 'application/groups_dropdown'
                 = render 'notifications_dropdown'
                 = render 'user_dropdown'
+            - if show_contribution_icon?
+              %li.nav-item#contribute
+                %a.nav-link.enable-tooltip{:href => '/contributions', title: t(:'contribution.tooltip')}
+                  %span.header-bar-icon.nav-item-icon.large-icon.heart-icon
+                    ❤
             %li.nav-item#help
-              %a.nav-link{ :href => help_path }
+              %a.nav-link{ :href => help_path(anchor: 'how-it-works'), target: "help" }
+                %i.icon-star.icon-white
                 %span= t :"help.help"
 
   - else

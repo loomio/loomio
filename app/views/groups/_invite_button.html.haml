@@ -1,1 +1,4 @@
-= icon_button(new_group_invitation_path(@group), t(:invite_people), '/assets/member-18.png', 'invite-new-members')
+-if group.is_top_level?
+  = icon_button(new_group_invitation_path(@group), t(:invite_people), '/assets/member-18.png', 'invite-new-members')
+-else
+  = icon_button('#invite-subgroup-members', t(:add_new_member), '/assets/member-18.png', 'group-add-members', true)

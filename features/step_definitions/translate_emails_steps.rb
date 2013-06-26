@@ -24,13 +24,15 @@ end
 Then(/^the new discussion email should be delivered to "(.*?)" in Spanish$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
   email = DiscussionMailer.new_discussion_created(@discussion, user)
-  email.body.encoded.should include(I18n.t(:group, locale: "es"))
+  snippet = I18n.t(:"email.create_discussion.intro", who: @discussion.author.name, which_group: @discussion.group.full_name, locale: "es")
+  email.body.encoded.should include(snippet)
 end
 
 Then(/^the new discussion email should be delivered to "(.*?)" in English$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
   email = DiscussionMailer.new_discussion_created(@discussion, user)
-  email.body.encoded.should include(I18n.t(:group, locale: "en"))
+  snippet = I18n.t(:"email.create_discussion.intro", who: @discussion.author.name, which_group: @discussion.group.full_name, locale: "en")
+  email.body.encoded.should include(snippet)
 end
 
 Given(/^"(.*?)" has created a new proposal$/) do |arg1|
