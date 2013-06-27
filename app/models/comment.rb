@@ -86,7 +86,6 @@ class Comment < ActiveRecord::Base
     end
 
     def update_discussion_last_comment_at
-      discussion.last_comment_at = discussion.latest_comment_time
-      discussion.save
+      discussion.update_attribute(:last_comment_at, created_at)
     end
 end

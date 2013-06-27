@@ -17,7 +17,7 @@ describe CollectsRecentActivityByGroup do
                                            {group: group, created_at: DateTime.now}
         end
         it 'returns the discussion' do
-          recent_activity[group.name][:discussions].should include @discussion
+          recent_activity[group.full_name][:discussions].should include @discussion
         end
       end
 
@@ -27,20 +27,19 @@ describe CollectsRecentActivityByGroup do
                                           {group: group, created_at: 2.days.ago} 
         end
         it 'does not return the discussion' do
-          recent_activity[group.name].should be_nil
+          recent_activity[group.full_name].should be_nil
         end
       end
 
-      context 'with a recently commented, old discussion' do
+      context 'with a recently commented, old discussion', focus: true do
         before do
           @discussion = FactoryGirl.create :discussion,
                                           {group: group, created_at: 2.days.ago} 
-
-          @comment = FactoryGirl.create :comment,
-                                        {:discussion => @discussion}
+          
+          @discussion.add_comment(@discussion.author, 'hi')
         end
         it 'returns the discussion' do
-          recent_activity[group.name][:discussions].should include @discussion
+          recent_activity[group.full_name][:discussions].should include @discussion
         end
       end
 
