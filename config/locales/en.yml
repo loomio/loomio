@@ -40,9 +40,9 @@ en:
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
     proposal_already_exists: "There is already an open proposal in this discussion."
+    not_found: "Item not found. It may have been deleted."
   alert:
     duplicate_email: "%{which_email} is already in the group."
-    not_found: "%{item} not found\n\nIt may have been deleted."
 
   notice:
     admin_rights_removed: "%{which_user}'s admin rights have been removed."
