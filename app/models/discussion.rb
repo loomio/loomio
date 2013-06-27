@@ -17,7 +17,7 @@ class Discussion < ActiveRecord::Base
     :conditions => { phase: 'closed' },
     :order => "close_at desc"
   has_many :votes, through: :motions
-  has_many :comments,  :as => :commentable, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
   has_many :users_with_comments, :through => :comments,
     :source => :user, :uniq => true
   has_many :events, :as => :eventable, :dependent => :destroy

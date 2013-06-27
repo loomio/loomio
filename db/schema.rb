@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625050817) do
+ActiveRecord::Schema.define(:version => 20130627000038) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -77,8 +77,7 @@ ActiveRecord::Schema.define(:version => 20130625050817) do
   add_index "comment_votes", ["user_id"], :name => "index_comment_votes_on_user_id"
 
   create_table "comments", :force => true do |t|
-    t.integer  "commentable_id",      :default => 0
-    t.string   "commentable_type",    :default => ""
+    t.integer  "discussion_id",       :default => 0
     t.string   "title",               :default => ""
     t.text     "body",                :default => ""
     t.string   "subject",             :default => ""
@@ -92,7 +91,8 @@ ActiveRecord::Schema.define(:version => 20130625050817) do
     t.integer  "comment_votes_count", :default => 0,     :null => false
   end
 
-  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["discussion_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["discussion_id"], :name => "index_comments_on_discussion_id"
   add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20130625050817) do
     t.boolean  "uses_markdown",   :default => true,  :null => false
     t.integer  "total_views",     :default => 0,     :null => false
     t.boolean  "is_deleted",      :default => false, :null => false
+    t.integer  "comments_count",  :default => 0,     :null => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
