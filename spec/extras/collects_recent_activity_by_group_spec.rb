@@ -37,7 +37,7 @@ describe CollectsRecentActivityByGroup do
                                           {group: group, created_at: 2.days.ago} 
 
           @comment = FactoryGirl.create :comment,
-                                        {:commentable => @discussion}
+                                        {:discussion => @discussion}
         end
         it 'returns the discussion' do
           recent_activity[group.name][:discussions].should include @discussion

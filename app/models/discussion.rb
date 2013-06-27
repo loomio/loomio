@@ -1,4 +1,6 @@
 class Discussion < ActiveRecord::Base
+  attr_accessible :group_id, :group, :title, :description, :uses_markdown
+
   default_scope -> {where(is_deleted: false)}
   scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
 
@@ -6,7 +8,6 @@ class Discussion < ActiveRecord::Base
   validates :title, :length => { :maximum => 150 }
   validates_inclusion_of :uses_markdown, :in => [true,false]
 
-  acts_as_commentable
   has_paper_trail :only => [:title, :description]
 
   belongs_to :group, :counter_cache => true
@@ -16,19 +17,15 @@ class Discussion < ActiveRecord::Base
     :class_name => 'Motion',
     :conditions => { phase: 'closed' },
     :order => "close_at desc"
+
   has_many :votes, through: :motions
   has_many :comments, :dependent => :destroy
-  has_many :users_with_comments, :through => :comments,
-    :source => :user, :uniq => true
-  has_many :events, :as => :eventable, :dependent => :destroy
+  has_many :commenters, :through => :comments, :source => :user, :uniq => true
+  has_many :events, :dependent => :destroy
 
   delegate :users, :to => :group, :prefix => :group
   delegate :full_name, :to => :group, :prefix => :group
   delegate :email, :to => :author, :prefix => :author
-
-  attr_accessible :group_id, :group, :title, :description, :uses_markdown
-
-  attr_accessor :comment, :notify_group_upon_creation
 
   after_create :populate_last_comment_at
   after_create :fire_new_discussion_event
@@ -36,9 +33,6 @@ class Discussion < ActiveRecord::Base
   def group_users_without_discussion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
   end
-  #
-  # COMMENT METHODS
-  #
 
   def can_be_commented_on_by?(user)
     group.users.include? user
@@ -51,10 +45,6 @@ class Discussion < ActiveRecord::Base
       comment
     end
   end
-
-  #
-  # MISC METHODS
-  #
 
   def read_log_for(user)
     DiscussionReadLog.where('discussion_id = ? AND user_id = ?',
@@ -76,12 +66,12 @@ class Discussion < ActiveRecord::Base
       last_seen = last_looked_at_by(user)
       if last_seen.nil?
         # include the discussion in the count
-        comments.count + 1
+        comments_count + 1
       else
         number_of_comments_since(last_seen)
       end
     else
-      comments.count
+      comments_count
     end
   end
 
@@ -91,7 +81,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def last_looked_at_by(user)
-    read_log_for(user).discussion_last_viewed_at if read_log_for(user)
+    read_log_for(user).try(:discussion_last_viewed_at)
   end
 
   def number_of_comments_since(time)
@@ -102,10 +92,14 @@ class Discussion < ActiveRecord::Base
     membership = group.membership(user)
     last_viewed_at = last_looked_at_by(user)
     if membership
-      return true if group.discussions
-        .includes(:comments)
-        .where('discussions.id = ? AND comments.user_id <> ? AND comments.created_at > ? AND comments.created_at > ?', id, user.id, membership.group_last_viewed_at, last_viewed_at)
-        .count > 0
+      return true if group.
+        discussions.
+        includes(:comments).
+        where('discussions.id = ? 
+           AND comments.user_id <> ? 
+           AND comments.created_at > ? 
+           AND comments.created_at > ?', id, user.id, membership.group_last_viewed_at, last_viewed_at).
+        count > 0
       return true if never_read_by(user) && (created_at > membership.group_last_viewed_at)
     end
     false
@@ -128,7 +122,8 @@ class Discussion < ActiveRecord::Base
   end
 
   def activity
-    Event.includes(:eventable).where("discussion_id = ?", id).order('created_at DESC')
+    events.includes(:eventable).order('created_at DESC')
+    #Event.includes(:eventable).where("discussion_id = ?", id).order('created_at DESC')
   end
 
   def filtered_activity
@@ -142,26 +137,34 @@ class Discussion < ActiveRecord::Base
   end
 
   def participants
-    included_participants = users_with_comments.all
-    included_participants << author
-    motions.each do |motion|
-      included_participants << motion.author
-    end
-    included_participants.uniq
+    participants = commenters.all
+    participants << author
+    participants += motion_authors
+    participants.uniq
+  end
+
+  def motion_authors
+    User.find(motions.pluck(:author_id))
   end
 
   def latest_comment_time
-    return comments.order('created_at DESC').first.created_at if comments.count > 0
-    created_at
+    if comments_count > 0
+      comments.order('created_at DESC').first.created_at
+    else
+      created_at
+    end
   end
 
   def has_previous_versions?
-    previous_version.nil? ? false : previous_version.id.present?
+    previous_version.present?
   end
 
   def last_versioned_at
-    return previous_version.version.created_at if has_previous_versions?
-    created_at
+    if has_previous_versions?
+      previous_version.version.created_at
+    else
+      created_at
+    end
   end
 
   def set_description!(description, uses_markdown, user)

@@ -15,6 +15,7 @@ class Event < ActiveRecord::Base
   attr_accessible :kind, :eventable, :user, :discussion_id
 
   def notify!(user)
+    raise user.inspect if user.is_a? Array
     notifications.create!(user: user)
   end
 

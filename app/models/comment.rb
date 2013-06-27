@@ -34,10 +34,10 @@ class Comment < ActiveRecord::Base
   # Helper class method that allows you to build a comment
   # by passing a discussion object, a user_id, and comment text
   # example in readme
-  def self.build_from(obj, user_id, comment, uses_markdown)
+  def self.build_from(obj, user_id, body, uses_markdown)
     c = self.new
     c.discussion_id = obj.id
-    c.body = comment
+    c.body = body
     c.user_id = user_id
     c.uses_markdown = uses_markdown
     c
@@ -72,15 +72,8 @@ class Comment < ActiveRecord::Base
   end
 
   def mentioned_group_members
-    users = []
     usernames = extract_mentioned_screen_names(self.body)
-    usernames.uniq.each do |name|
-      user = User.find_by_username(name)
-      if user && user.group_ids.include?(discussion.group_id)
-        users << user
-      end
-    end
-    users
+    group.users.where(username: usernames)
   end
 
   def non_mentioned_discussion_participants

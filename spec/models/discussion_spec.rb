@@ -20,13 +20,13 @@ describe Discussion do
     discussion = create(:discussion)
     discussion.group.add_member! user
     comment = discussion.add_comment(user, "this is a test comment", false)
-    discussion.comment_threads.should include(comment)
+    discussion.comments.should include(comment)
   end
 
   it "group non-member cannot add comment" do
     discussion = create(:discussion)
     comment = discussion.add_comment(create(:user), "this is a test comment", false)
-    discussion.comment_threads.should_not include(comment)
+    discussion.comments.should_not include(comment)
   end
 
   it "automatically populates last_comment_at with discussion.created at" do
@@ -276,7 +276,7 @@ describe Discussion do
     context "the user is a member of the discussions group" do
       it "returns the total number of votes if the user has not seen the motion" do
         @discussion.stub(:last_looked_at_by).with(@user).and_return(nil)
-        @discussion.stub_chain(:comments, :count).and_return(5)
+        @discussion.stub(:comments_count).and_return(5)
 
         @discussion.number_of_comments_since_last_looked(@user).should == 6
       end
@@ -291,7 +291,7 @@ describe Discussion do
     context "the user is not a member of the group" do
       it "returns the total number of comments" do
         @discussion.stub(:last_looked_at_by).with(@user).and_return(nil)
-        @discussion.stub_chain(:comments, :count).and_return(4)
+        @discussion.stub(:comments_count).and_return(4)
 
         @discussion.number_of_comments_since_last_looked(nil).should == 4
       end
