@@ -53,7 +53,7 @@ describe CollectsRecentActivityByGroup do
         end
 
         it 'returns the proposal' do
-          recent_activity[group.name][:motions].should include @motion
+          recent_activity[group.full_name][:motions].should include @motion
         end
       end
 
@@ -66,7 +66,7 @@ describe CollectsRecentActivityByGroup do
           @motion.close!
         end
         it 'does not return the proposal' do
-          recent_activity[group.name].should be_nil
+          recent_activity[group.full_name].should be_nil
         end
       end
     end
