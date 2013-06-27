@@ -43,10 +43,18 @@ module ApplicationHelper
     content_for :title, title.gsub(/["'<>]/, '')
   end
 
-  def icon_button(link, text, icon, id, is_modal = false)
-    modal_string = "modal" if is_modal
-    content_tag(:a, :href => link, :class => 'btn btn-grey btn-app', :id => id, 'data-toggle' => modal_string) do
-      image_tag(icon, :class => 'button-icon') + text
+  def icon_button(args)
+    href = args[:href]
+    method = args[:method] || 'get'
+    text = args[:text]
+    icon = args[:icon]
+    id = args[:id]
+    extra_classes = " #{args[:class]}"
+    data_toggle = args['data-toggle'] || false
+
+    classes = "btn btn-app" && extra_classes
+    content_tag(:a, href: href, method: method, class: classes, id: id, 'data-toggle' => data_toggle) do
+      image_tag(icon, class: 'button-icon') + text
     end
   end
 
