@@ -21,7 +21,7 @@ class Discussion < ActiveRecord::Base
   has_many :votes, through: :motions
   has_many :comments, :dependent => :destroy
   has_many :commenters, :through => :comments, :source => :user, :uniq => true
-  has_many :events, :dependent => :destroy
+  has_many :events, :as => :eventable, :dependent => :destroy
 
   delegate :users, :to => :group, :prefix => :group
   delegate :full_name, :to => :group, :prefix => :group
@@ -86,23 +86,6 @@ class Discussion < ActiveRecord::Base
 
   def number_of_comments_since(time)
     comments.where('comments.created_at > ?', time).count
-  end
-
-  def has_activity_since_group_last_viewed?(user)
-    membership = group.membership(user)
-    last_viewed_at = last_looked_at_by(user)
-    if membership
-      return true if group.
-        discussions.
-        includes(:comments).
-        where('discussions.id = ? 
-           AND comments.user_id <> ? 
-           AND comments.created_at > ? 
-           AND comments.created_at > ?', id, user.id, membership.group_last_viewed_at, last_viewed_at).
-        count > 0
-      return true if never_read_by(user) && (created_at > membership.group_last_viewed_at)
-    end
-    false
   end
 
   def current_motion_close_at

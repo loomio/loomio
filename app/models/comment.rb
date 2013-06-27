@@ -1,20 +1,17 @@
 class Comment < ActiveRecord::Base
+  attr_accessible :body, :uses_markdown
   include Twitter::Extractor
 
-  attr_accessible :body, :uses_markdown
-
-  acts_as_nested_set
   has_paper_trail
-
-  validates_presence_of :body
-  validates_presence_of :user
-  validates_inclusion_of :uses_markdown, :in => [true,false]
 
   belongs_to :discussion, counter_cache: true
   belongs_to :user
 
   has_many :comment_votes
   has_many :events, :as => :eventable, :dependent => :destroy
+
+  validates_presence_of :body, :user
+  validates_inclusion_of :uses_markdown, :in => [true,false]
 
   after_create :update_discussion_last_comment_at
   after_create :fire_new_comment_event
