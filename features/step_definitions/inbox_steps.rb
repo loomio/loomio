@@ -35,7 +35,7 @@ Then(/^I should see the motion$/) do
 end
 
 When(/^I have voted on the motion$/) do
-  ViewLogger.discussion_viewed(@motion.discussion, @user)
+  @motion.discussion.as_read_by(@user).viewed!
   vote = Vote.new(position: "yes")
   vote.motion = @motion
   vote.user = @user
@@ -72,4 +72,14 @@ end
 Then(/^the discussions should disappear$/) do
   page.should_not have_content @discussion.title
   page.should_not have_content @discussion2.title
+end
+
+Then(/^I should see the discussion has (\d+) unread$/) do |arg1|
+  find('.activity-count').should have_content arg1
+end
+
+Given(/^I have read the discussion but there is a new comment$/) do
+  @discussion.as_read_by(@user).viewed!
+  @discussion.group.add_member!(@discussion.author)
+  @discussion.add_comment(@discussion.author, 'hi')
 end

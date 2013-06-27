@@ -25,10 +25,10 @@ describe Group do
       @group.respond_to?(:memberships)
     end
     it "defaults to viewable by members" do
-      @group.viewable_by.should == :members
+      @group.viewable_by.should == 'members'
     end
     it "defaults to members invitable by members" do
-      @group.members_invitable_by.should == :members
+      @group.members_invitable_by.should == 'members'
     end
     it "has a full_name" do
       @group.full_name.should == @group.name
@@ -47,78 +47,29 @@ describe Group do
     end
   end
 
-  describe "motions_in_voting_phase" do
-    it "returns motions that belong to the group and are in phase 'voting'" do
+  describe "#voting_motions" do
+    it "returns motions that belong to the group and are open" do
       @group = motion.group
-      @group.motions_in_voting_phase.should include(motion)
+      @group.voting_motions.should include(motion)
     end
 
-    it "should not return motions that belong to the group but are in phase 'closed'" do
+    it "should not return motions that belong to the group but are closed" do
       @group = motion.group
       motion.close!
-      @group.motions_in_voting_phase.should_not include(motion)
+      @group.voting_motions.should_not include(motion)
     end
   end
 
-  describe "motions_closed" do
-    it "returns motions that belong to the group and are in phase 'voting'" do
+  describe "#closed_motions" do
+    it "returns motions that belong to the group and are open" do
       motion.close!
       @group = motion.group
-      @group.motions_closed.should include(motion)
+      @group.closed_motions.should include(motion)
     end
 
-    it "should not return motions that belong to the group but are in phase 'closed'" do
+    it "should not return motions that belong to the group but are closed'" do
       @group = motion.group
-      @group.motions_closed.should_not include(motion)
-    end
-  end
-
-  # NOTE (Jon): these descriptions seem ridiculous,
-  # why did i name the tests this way? mehh.....
-  describe "beta_features" do
-    context "group.beta_features = true" do
-      before do
-        @group = create(:group)
-        @group.beta_features = true
-        @group.save
-      end
-      it "group.beta_features? returns true" do
-        @group.beta_features?.should be_true
-      end
-      it "group.beta_features returns true" do
-        @group.beta_features.should be_true
-      end
-      context "subgroup.beta_features = false" do
-        before do
-          @subgroup = create(:group, :parent => @group)
-          @subgroup.beta_features = false
-          @subgroup.save
-        end
-        it "subgroup.beta_features? returns true" do
-          @subgroup.beta_features?.should be_true
-        end
-        it "subgroup.beta_features returns true" do
-          @subgroup.beta_features.should be_true
-        end
-      end
-    end
-    context "group.beta_features = false" do
-      context "subgroup.beta_features = true" do
-        before do
-          @group = create(:group)
-          @group.beta_features = false
-          @group.save
-          @subgroup = create(:group, :parent => @group)
-          @subgroup.beta_features = true
-          @subgroup.save
-        end
-        it "subgroup.beta_features? returns true" do
-          @subgroup.beta_features?.should be_true
-        end
-        it "subgroup.beta_features returns true" do
-          @subgroup.beta_features.should be_true
-        end
-      end
+      @group.closed_motions.should_not include(motion)
     end
   end
 
@@ -128,25 +79,30 @@ describe Group do
       @subgroup = create(:group, :parent => @group)
       @group.reload
     end
+
     it "cannot have a max_size" do
       @subgroup.max_size = 5
       @subgroup.save
       @subgroup.should have(1).errors_on(:max_size)
     end
+
     it "can access it's parent" do
       @subgroup.parent.should == @group
     end
+
     it "can access it's children" do
-      10.times {create(:group, :parent => @group)}
-      @group.subgroups.count.should eq(11)
+      @group.subgroups.count.should eq(1)
     end
+
     it "limits group inheritance to 1 level" do
       invalid = build(:group, :parent => @subgroup)
       invalid.should_not be_valid
     end
+
     it "defaults to viewable by parent group members" do
-      Group.new(:parent => @group).viewable_by.should == :parent_group_members
+      Group.new(:parent => @group).viewable_by.should == 'parent_group_members'
     end
+
     context "subgroup.full_name" do
       it "contains parent name" do
         @subgroup.full_name.should == "#{@group.name} - #{@subgroup.name}"
@@ -216,38 +172,6 @@ describe Group do
         @group.membership_requests.find_by_user_id(@user).should \
           == @user.membership_requests.find_by_group_id(@group)
       end
-    end
-  end
-
-  describe "activity_since_last_viewed?(user)" do
-    before do
-      @group = create(:group)
-      @user = create(:user)
-      @membership = create :membership, group: @group, user: @user
-    end
-    context "where user is a member" do
-      before do
-        @group.stub(:membership).with(@user).and_return(@membership)
-      end
-      it "returns false if there is new activity since this group was last viewed but does not have any discussions with unread activity" do
-        @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
-        @group.discussions.stub_chain(:joins, :where, :count).and_return(0)
-        @group.activity_since_last_viewed?(@user).should == false
-      end
-      it "returns false if there is no new activity since this group was last viewed but does have discussions with unread activity" do
-        @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
-        @group.discussions.stub_chain(:joins, :where, :count).and_return(0)
-        @group.activity_since_last_viewed?(@user).should == false
-      end
-      it "returns true if there is no new activity since this group was last viewed but does have discussions with unread activity" do
-        @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
-        @group.discussions.stub_chain(:joins, :where, :count).and_return(2)
-        @group.activity_since_last_viewed?(@user).should == true
-      end
-    end
-    it "returns false there is no membership" do
-      @group.stub(:membership).with(@user)
-      @group.activity_since_last_viewed?(@user).should == false
     end
   end
 

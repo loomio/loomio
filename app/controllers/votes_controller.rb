@@ -54,7 +54,7 @@ class VotesController < GroupBaseController
         flash[:error] = t("error.position_not_updated")
       end
     else
-      flash[:error] = "Can only vote in voting phase"
+      flash[:error] = "You cannot edit your position after the proposal has closed."
     end
     redirect_to @motion.discussion
   end

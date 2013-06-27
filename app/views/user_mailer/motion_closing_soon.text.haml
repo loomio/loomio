@@ -11,7 +11,7 @@
 = @motion.author.name
 \
 = "#{t 'email.proposal_closing_soon.closes_in'}:"
-= time_ago_in_words(@motion.close_at) + " (" + @motion.close_at.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
+= time_ago_in_words(@motion.closing_at) + " (" + @motion.closing_at.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
 \
 = "#{t :details}:"
 = @motion.description

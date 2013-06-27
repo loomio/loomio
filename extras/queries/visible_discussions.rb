@@ -1,66 +1,76 @@
-require 'delegate'
-
-class Queries::VisibleDiscussions < SimpleDelegator
-  def initialize(relation, group, user=nil)
-    @group = group
+class Queries::VisibleDiscussions < Delegator
+  def initialize(user: nil, group: nil, subgroups: false)
     @user = user
+    @group = group
 
-    super(relation)
+    @relation = Discussion.joins(:group)
+
+    @relation = if group
+                  if subgroups
+                    @relation.where('group_id = :id OR groups.parent_id = :id', id: group.id)
+                  else
+                    @relation.where(group_id: group.id)
+                  end
+                else
+                  @relation
+                end
+
+    @relation = if @user
+                  @relation = @relation.
+                    select('discussions.*,
+                            1 as joined_to_discussion_reader,
+                            dv.id as viewer_id,
+                            dv.user_id as viewer_user_id,
+                            dv.read_comments_count as read_comments_count,
+                            dv.last_read_at as last_read_at,
+                            dv.following as viewer_following').
+                    joins("LEFT OUTER JOIN discussion_readers dv ON
+                            dv.discussion_id = discussions.id AND dv.user_id = #{@user.id}")
+                  if group
+                    if group.viewable_by == 'parent_group_members'
+                      @relation = @relation.where('groups.id IN (:ids) OR (groups.viewable_by = :parent_group_members AND groups.parent_id IN (:ids))', {ids: user.group_ids, :parent_group_members => 'parent_group_members'} )
+                    elsif group.viewable_by == 'everyone'
+                      #we have some .. interesting behaviours in loomio.
+                      if subgroups
+                        @relation = @relation.where('groups.id IN (:ids) OR 
+                                                  (groups.viewable_by = :everyone AND groups.id = :group_id) OR
+                                                  (groups.viewable_by = :everyone AND groups.parent_id = :group_id)', {ids: user.group_ids, :everyone => 'everyone', :group_id => group.id})
+                      else
+                        @relation = @relation.where('groups.id IN (:ids) OR 
+                                                  (groups.viewable_by = :everyone AND groups.id = :group_id)', {ids: user.group_ids, :everyone => 'everyone', :group_id => group.id})
+                      end
+                    else
+                      @relation = @relation.where(groups: {id: user.group_ids})
+                    end
+                  end
+                  @relation
+                else
+                  # only public groups
+                  @relation.where('groups.viewable_by = ?', 'everyone')
+                end
+
+    super(@relation)
   end
 
-  class << self
-    def for(group, user=nil)
-      if user
-        if user.is_group_member?(group)
-          relation = Discussion.includes(:group => :memberships).
-                     where("discussions.group_id = ?
-                     OR (groups.parent_id = ? AND groups.archived_at IS NULL
-                     AND memberships.user_id = ?)",
-                     group.id, group.id, user.id)
-        elsif user.is_parent_group_member?(group)
-          relation = Discussion.includes(:group).
-                     where("
-                     discussions.group_id = ?
-                     AND (groups.viewable_by = 'everyone'
-                     OR groups.viewable_by = 'parent_group_members')",
-                     group.id)
-        else
-          relation = publicly_viewable_discussions_for(group)
-        end
-      else
-        relation = publicly_viewable_discussions_for(group)
-      end
-      relation = relation.order("last_comment_at DESC")
-
-      new(relation, group, user)
-    end
-
-    private
-
-    def publicly_viewable_discussions_for(group)
-      Discussion.includes(:group).
-                 where(
-                 "discussions.group_id = ? AND groups.viewable_by = 'everyone'
-                 OR (groups.parent_id = ? AND groups.archived_at IS NULL
-                 AND groups.viewable_by = 'everyone')", group.id, group.id)
-    end
+  def __getobj__
+    @relation
   end
 
-  def with_current_motions
-    includes(:motions).where('motions.phase = ?', "voting")
+  def __setobj__(obj)
+    @relation = obj
   end
 
-  def with_current_motions_user_has_voted_on
-    return [] unless @user
-    with_current_motions.includes(:motions => :votes).
-    where('votes.user_id = ?', @user.id)
+  def unread
+    @relation = @relation.where('(dv.last_read_at < discussions.last_comment_at) OR dv.last_read_at IS NULL')
+    self
   end
 
-  def with_current_motions_user_has_not_voted_on
-    with_current_motions - with_current_motions_user_has_voted_on
+  def followed
+    @relation = @relation.where('dv.following = ? OR dv.following IS NULL', true)
+    self
   end
 
   def without_current_motions
-    includes(:motions).where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+    includes(:motions).where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND closed_at IS NULL)")
   end
 end

@@ -91,12 +91,12 @@ Given /^there is a discussion in the group$/ do
 end
 
 Given /^there is a discussion in a public group$/ do
-  @group = FactoryGirl.create :group, :viewable_by => :everyone
+  @group = FactoryGirl.create :group, :viewable_by => 'everyone'
   @discussion = FactoryGirl.create :discussion, :group => @group
 end
 
 Given /^there is a discussion in a private group$/ do
-  @group = FactoryGirl.create :group, :viewable_by => :members
+  @group = FactoryGirl.create :group, :viewable_by => 'members'
   @discussion = FactoryGirl.create :discussion, :group => @group
 end
 

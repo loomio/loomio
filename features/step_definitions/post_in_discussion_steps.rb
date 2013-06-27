@@ -42,11 +42,11 @@ Then /^comment markdown should now be off by default$/ do
 end
 
 Then /^there should be an anchor for the comment$/ do
-  page.should have_css("#comment-2")
+  page.should have_css("#comment-1")
 end
 
 Then /^I should see a permalink to the anchor for that comment$/ do
-  find('.activity-item-time a[href="#comment-2"]').should be_present
+  find('.activity-item-time a[href="#comment-1"]').should be_present
 end
 
 Then /^the comment should autolink links$/ do

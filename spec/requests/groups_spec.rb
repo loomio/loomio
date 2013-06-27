@@ -6,7 +6,7 @@ describe "Groups" do
   context "a logged in user" do
     before :each do
       @user = create(:user)
-      @group = create(:group, name: 'Test Group', viewable_by: :members)
+      @group = create(:group, name: 'Test Group', viewable_by: 'members')
       @group.add_member!(@user)
       @discussion = create(:discussion, group: @group, author: @user)
       @motion = create(:motion, name: 'Test Motion',

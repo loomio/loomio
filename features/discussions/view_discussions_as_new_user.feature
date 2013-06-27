@@ -28,4 +28,5 @@ Feature: New user views discussions
     Given I am logged in
     And I am a member of a public sub-group
     When I visit the sub-group page
+    And view a screenshot
     Then I should see "This group does not have any discussions yet."
