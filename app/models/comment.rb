@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
   validates_presence_of :user
   validates_inclusion_of :uses_markdown, :in => [true,false]
 
-  belongs_to :discussion
+  belongs_to :discussion, counter_cache: true
   belongs_to :user
 
   has_many :comment_votes
