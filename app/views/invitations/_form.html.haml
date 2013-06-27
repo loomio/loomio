@@ -2,16 +2,16 @@
   .span4.offset3
     .signup-form
       %p
-        %strong Sign up
+        %strong= t :"devise.registrations.sign_up"
         %br
     =simple_form_for(@user, url: user_registration_path) do |f|
       =f.input :name, :input_html => { :value => @user_name }
       =f.input :email, :input_html => { :value => @invitation.recipient_email }
       =f.input :password
-      =f.input :password_confirmation, label: 'Confirm Password'
+      =f.input :password_confirmation
+      =f.input :language_preference, :collection => {"English" => "en", "Español" => "es", "ελληνικά" => "el"}, selected: I18n.locale, include_blank: false
       =f.submit t("devise.registrations.sign_up"), class: "btn btn-info btn-large"
 .row
   .span6.offset3
-    %p
-      If you've already got an account,
-      =link_to 'click here to sign in', user_session_path
+    %p= t :"or_sign_in_html", link: user_session_path
+
