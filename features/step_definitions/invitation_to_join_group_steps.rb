@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 Given(/^there is a group$/) do
   @group = FactoryGirl.create(:group)
 end
@@ -50,8 +52,16 @@ When(/^I open the email and click the accept invitation link$/) do
   visit path
 end
 
-When(/^I sign up as a new user$/) do
-  page.should have_content "#{@user.name} invited you to join #{@group.name}"
+When(/^(?:I|they) sign up as a new user speaking "(.*?)"$/) do |arg1|
+  fill_in :user_name, with: 'Jim Jameson'
+  fill_in :user_email, with: 'jim@jam.com'
+  fill_in :user_password, with: 'password'
+  fill_in :user_password_confirmation, with: 'password'
+  select arg1, from: :user_language_preference
+  find('input[name=commit]').click()
+end
+
+When(/^(?:I|they) sign up as a new user$/) do
   fill_in :user_name, with: 'Jim Jameson'
   fill_in :user_email, with: 'jim@jam.com'
   fill_in :user_password, with: 'password'

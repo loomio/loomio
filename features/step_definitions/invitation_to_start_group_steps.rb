@@ -39,14 +39,6 @@ When /^the user clicks the invitiation link$/ do
   visit path
 end
 
-When /^signs up as a new user$/ do
-  fill_in :user_name, with: 'Jimmy Jiminson'
-  fill_in :user_email, with: 'jim@jiminson.com'
-  fill_in :user_password, with: 'milkbottle'
-  fill_in :user_password_confirmation, with: 'milkbottle'
-  find('input[name=commit]').click()
-end
-
 Then /^they should be redirected to the group setup wizard$/ do
   URI.parse(current_url).path.should == setup_group_path(@group.id)
 end
