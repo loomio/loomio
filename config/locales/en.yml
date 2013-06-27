@@ -144,6 +144,7 @@ en:
   sign_in: "Sign in"
   sign_in_details: "to participate. You are currently logged out."
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
+  or_sign_in_html: "If you've already got an account, <a href='%{link}'0>click here to sign in</a>."
 
   click_to_dismiss: "Click here to dismiss this message"
   generic_confirm: "Are you sure?"
@@ -358,6 +359,7 @@ en:
     getting_started: "Getting started"
     getting_started_description: "On the left, the group discusses a topic, exchanging ideas and information. When there’s a decision for the group to make, it comes up on the right."
     getting_the_most: 'Getting the most out of Loomio'
+    have_your_say: "Have your say"
     have_your_say_details_html: |
       <p>When you’re ready to have your say, click one of the four decision buttons.</p>
       <p>When you’ve made your decision, give a brief explanation. Underneath the pie,
@@ -593,6 +595,7 @@ en:
         name: "Full name"
         email: "Email"
         password: "Password"
+        password_confirmation: "Confirm password"
         language_preference: "Language"
 
     options:

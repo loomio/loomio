@@ -12,5 +12,6 @@ Feature: User is invited to start a group on loomio
   Scenario: New user accepts invitiation to start a loomio group
     Given an invitiation to start a loomio group has been sent
     When the user clicks the invitiation link
-    And signs up as a new user
+    And they sign up as a new user speaking "Español"
     Then they should be redirected to the group setup wizard
+    And they should see "Grupo"
