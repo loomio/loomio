@@ -55,7 +55,7 @@ FactoryGirl.define do
 
   factory :comment do
     user
-    association :commentable, factory: :discussion
+    discussion
     title Faker::Lorem.sentence(2)
     body 'body of the comment'
 

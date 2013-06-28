@@ -9,6 +9,12 @@
   - if can? :destroy, comment
     = " · "
     = link_to t(:delete), "#", 'data-title' => t(:delete_comment), 'data-body' => t(:confirm_delete_comment), 'data-confirm-path' => comment_path(comment), 'data-method-type' => 'delete', class: 'confirm-dialog', id: "delete-comment-#{comment.id}"
+  - if can? :edit, comment
+    · 
+    = link_to t(:edit), [:edit, comment]
+  - if comment.is_edited?
+    · Edited
+    =link_to 'View changes', comment
 - if comment.likes_count > 0
   .activity-item-likes
     - likers = comment.likes.map { |like| link_to(like.user_name, "#") }

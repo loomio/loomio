@@ -54,7 +54,7 @@ class Ability
     can :move, Discussion, group_id: user.adminable_group_ids
     can [:unfollow, :add_comment, :new_proposal, :create, :update_description, :edit_title, :show_description_history, :preview_version, :update_version, :show], Discussion, :group_id => user.group_ids
 
-    can :destroy, Comment, user_id: user.id
+    can :manage, Comment, user_id: user.id
     can :destroy, Comment, :discussion => { group_id: user.adminable_group_ids }
 
     can [:like, :unlike], Comment, :discussion => { :id => user.discussion_ids }

@@ -26,6 +26,8 @@ describe "User abilities" do
       @other_user_membership = group.add_member!(other_user)
     end
 
+    it { should be_able_to(:manage, user_comment) }
+    it { should_not be_able_to(:manage, another_user_comment) }
     it { should be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
     it { should_not be_able_to(:email_members, group) }
