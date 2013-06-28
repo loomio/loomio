@@ -13,6 +13,12 @@ Feature: Error Rainchecks
 
   Scenario: Admin sees error_rainchecks in admin panel
     Given I am a Loomio admin
-    And I visit the Error Rainchecks in the admin panel
+    And I am logged in
+    When an error is raised in the show action of the dashboard_controller
+    And I enter my email address in the error_rainchecks error page
+    Then I should see the thank you page
+    When I visit the Error Rainchecks index in the admin panel
+    Then I should see the Error Rainchecks
+
 
 

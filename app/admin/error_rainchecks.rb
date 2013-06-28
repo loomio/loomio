@@ -1,5 +1,4 @@
 ActiveAdmin.register ErrorRaincheck do
-
   index do
     column :id
     column :email
