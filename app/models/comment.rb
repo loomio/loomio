@@ -31,6 +31,7 @@ class Comment < ActiveRecord::Base
   # Helper class method that allows you to build a comment
   # by passing a discussion object, a user_id, and comment text
   # example in readme
+  
   def self.build_from(obj, user_id, body, uses_markdown)
     c = self.new
     c.discussion_id = obj.id
@@ -40,9 +41,13 @@ class Comment < ActiveRecord::Base
     c
   end
 
-  #helper method to check if a comment has children
-  def has_children?
-    self.children.size > 0
+  def is_edited?
+    versions.size > 1
+  end
+
+  def edit_body!(body)
+    self.body = body
+    save!
   end
 
   def like(user)

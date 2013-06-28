@@ -1,9 +1,19 @@
 class CommentsController < BaseController
-  inherit_resources
   load_and_authorize_resource
 
   def destroy
     destroy!{ discussion_url(resource.discussion) }
+  end
+
+  def edit
+  end
+
+  def update
+    @comment.edit_body!(params[:comment][:body])
+    redirect_to @comment.discussion
+  end
+
+  def show
   end
 
   def like

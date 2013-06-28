@@ -25,6 +25,13 @@ describe Comment do
     end
   end
 
+  describe 'editing a comment' do
+    it 'changes the comment body' do
+      comment.edit_body!('something new')
+      comment.body.should == 'something new'
+    end
+  end
+
 
   describe "destroying a comment" do
     let(:discussion) { create(:discussion) }

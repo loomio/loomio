@@ -1,5 +1,5 @@
 Given(/^I have a comment on the discussion$/) do
-  @comment = @discussion.add_comment(@user, 'I do declare!', false)
+  @comment = @discussion.add_comment(@user, 'I do declare!')
 end
 
 When(/^I edit my comment$/) do

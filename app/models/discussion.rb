@@ -21,7 +21,7 @@ class Discussion < ActiveRecord::Base
   has_many :votes, through: :motions
   has_many :comments, :dependent => :destroy
   has_many :commenters, :through => :comments, :source => :user, :uniq => true
-  has_many :events, :as => :eventable, :dependent => :destroy
+  has_many :events, :dependent => :destroy
 
   delegate :users, :to => :group, :prefix => :group
   delegate :full_name, :to => :group, :prefix => :group
