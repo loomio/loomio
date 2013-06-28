@@ -1,2 +1,2 @@
 $("#new-comment").val('');
-$("ul#activity-list li.divider").after("<li class='activity-item-container'><%=escape_javascript(render @comment)%></li>");
+$("ul#activity-list").prepend("<li class='activity-item-container'><%=escape_javascript(render @comment)%></li>");

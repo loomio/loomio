@@ -5,6 +5,7 @@ $baseLineHeight: 18px;
 // application
 $font-tinywiny: 0.7em;
 $font-tiny: 0.8em;
+$font-smaller: 0.85em;
 $font-small: 0.9em;
 $font-medium: 1em;
 $font-medium-large: 1.2em;
@@ -14,7 +15,7 @@ $font-xxlarge: 1.7em;
 
 // colors
 $even-lighter-grey: #FAFAFA;
-$lighter-grey: #EAEAEA;
+$lighter-grey: #E6E6E6;
 $light-grey: #BBB;
 $mid-grey: #777;
 $dark-grey: #555;
@@ -33,13 +34,13 @@ $error-color: firebrick;
 $comment-color: white;
 $current-proposal: white;
 
-$main-background: #F7F7ED;
+$main-background: #F7F7F7;
 
 $container: white;
 $sub-selector-panel: #efefef;
 $selector-panel: #ebebeb;
 $selector: #e0eaf1;
-$highlighted: #edeff5;
+$highlighted: #f6f6f6;
 $unhighlighted: white;
 // $group-activity: #ABBEE6;
 $group-activity: #75A0CF;

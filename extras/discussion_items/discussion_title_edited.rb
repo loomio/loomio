@@ -22,7 +22,7 @@ class DiscussionItems::DiscussionTitleEdited < DiscussionItem
   end
 
   def body
-    " \"#{discussion.version_at(event.created_at).title}\""
+    " #{discussion.version_at(event.created_at).title}"
   end
 
   def time

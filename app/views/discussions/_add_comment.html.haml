@@ -3,7 +3,7 @@
     = render 'avatar', user: current_user, size: "medium", kind: nil, id: nil
     #comment-input{ data: {group: @group.id} }
       = text_area_tag 'comment', "", id: 'new-comment', placeholder: t(:comment_form_placeholder)
-      = hidden_field_tag 'global_uses_markdown', @uses_markdown, {id: 'global-uses-markdown'}
+      = hidden_field_tag 'uses_markdown', @uses_markdown, {id: 'global-uses-markdown'}
       = submit_tag t(:comment_form_submit_button), class: "btn btn-small submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
     .dropdown#comment-markdown-dropdown.global-markdown-setting
       %a.dropdown-toggle{href:'#comment-markdown-dropdown', id:'comment-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}

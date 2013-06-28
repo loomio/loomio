@@ -361,7 +361,7 @@ es:
   ago: "hace %{quantity_of_time}"
   approve: "Aprobar"
   back: "Atrás"
-  by: "Por"
+  by: "por"
   cancel: "Cancelar"
   change: "Cambiar"
   changing: "Cambiando"
