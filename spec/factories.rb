@@ -35,12 +35,13 @@ FactoryGirl.define do
       end
       group.admins << user
     end
+    setup_completed_at 1.hour.ago
   end
 
   factory :discussion do
     association :author, :factory => :user
     group
-    title Faker::Lorem.sentence(2)
+    title { Faker::Lorem.sentence(2) }
     description 'A description for this discussion. Should this be *rich*?'
     uses_markdown false
     after(:build) do |discussion|

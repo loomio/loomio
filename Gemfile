@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+ruby '2.0.0'
 gem 'rails', '~> 3.2.13'
 gem 'haml-rails', '~> 0.4'
 gem 'devise', '~> 2.2.3'
@@ -7,8 +8,6 @@ gem 'pg', '~> 0.14.1'
 gem 'capistrano'
 gem 'jquery-rails', '~> 1.0.19'
 gem 'inherited_resources', '~> 1.3.0'
-# DO NOT REMOVE - formtastic is currently used for active admin
-gem 'formtastic' # Deprecated - use simple_form instead.
 gem 'simple_form', '~> 2.0.4'
 gem 'country_select', '~> 1.1.3'
 gem 'client_side_validations', '~> 3.2.1'
@@ -40,6 +39,8 @@ gem 'foreman', '~> 0.60.2'
 gem 'rinku', '~> 1.7.2'
 gem 'piwik_analytics', '~> 1.0.1'
 gem 'friendly_id', '~> 4.0.9'
+gem 'httparty', '~> 0.11.0'
+gem 'timecop', '~> 0.6.1'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this

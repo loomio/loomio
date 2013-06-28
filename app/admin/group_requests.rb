@@ -3,7 +3,9 @@ ActiveAdmin.register GroupRequest do
   scope :waiting, :default => true
   scope :starred
   scope :unverified
-  scope :approved
+  scope :zero_members
+  scope :approved_but_not_setup
+  scope :setup_completed
   scope :all
 
   filter :name
@@ -14,11 +16,15 @@ ActiveAdmin.register GroupRequest do
 
   index do
     column :id
-    column :name
-    column :description
-    column :contact do |gr|
-      "#{gr.admin_name} &lt;#{gr.admin_email}&gt;".html_safe
+    column :name_and_contact do |gr|
+      name = ERB::Util.h(gr.name)
+      admin_name = ERB::Util.h(gr.admin_name)
+      admin_email = ERB::Util.h(gr.admin_email)
+      (link_to(name, edit_admin_group_request_path(gr)) +
+       "<br><br>#{admin_name}".html_safe +
+       " &lt;#{admin_email}&gt;".html_safe)
     end
+    column :description
     column :admin_notes
     column 'Size', :expected_size
     column 'Subscription' do |gr|
@@ -37,7 +43,8 @@ ActiveAdmin.register GroupRequest do
         links << link_to('Star', set_high_touch_admin_group_request_path(gr), :method => :put) unless gr.high_touch?
         links << link_to('Un-star', unset_high_touch_admin_group_request_path(gr), :method => :put) if gr.high_touch?
         links << link_to('Edit', edit_admin_group_request_path(gr))
-        links << link_to('Destroy', admin_group_request_path(gr), method: :delete)
+        links << link_to('Destroy', admin_group_request_path(gr), method: :delete,
+          data: { confirm: "Are you sure you want to delete the request?" })
         links.join(' ').html_safe
       end
     end
@@ -63,6 +70,8 @@ ActiveAdmin.register GroupRequest do
 
   member_action :approve_and_send, :method => :put do
     @group_request = GroupRequest.find(params[:id])
+    @group_request.update_attribute(:max_size, params[:group_request][:max_size])
+
     setup_group = SetupGroup.new(@group_request)
     group = setup_group.approve_group_request(approved_by: current_user)
     setup_group.send_invitation_to_start_group(inviter: current_user, message_body: params[:message_body])

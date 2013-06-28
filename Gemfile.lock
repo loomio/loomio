@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    aasm (3.0.18)
+    aasm (3.0.19)
     actionmailer (3.2.13)
       actionpack (= 3.2.13)
       mail (~> 2.5.3)
@@ -56,9 +56,9 @@ GEM
     better_errors (0.6.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    bootstrap-sass (2.3.1.0)
+    bootstrap-sass (2.3.1.3)
       sass (~> 3.2)
-    bourbon (3.1.6)
+    bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
     browser (0.1.6)
@@ -96,7 +96,8 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     country_select (1.1.3)
-    crack (0.3.2)
+    crack (0.4.0)
+      safe_yaml (~> 0.9.0)
     css_parser (1.3.4)
       addressable
     cucumber (1.3.2)
@@ -132,7 +133,7 @@ GEM
     eventmachine (1.0.3)
     exception_notification (2.6.1)
       actionmailer (>= 3.0.4)
-    excon (0.22.1)
+    excon (0.23.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -145,13 +146,13 @@ GEM
     fastercsv (1.5.5)
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
-    ffi (1.8.1)
-    fog (1.11.1)
+    ffi (1.9.0)
+    fog (1.12.1)
       builder
-      excon (~> 0.20)
+      excon (~> 0.23.0)
       formatador (~> 0.2.0)
-      json (~> 1.7)
       mime-types
+      multi_json (~> 1.0)
       net-scp (~> 1.1)
       net-ssh (>= 2.1.3)
       nokogiri (~> 1.5.0)
@@ -189,9 +190,12 @@ GEM
     heroku-deflater (0.5.1)
       rack (>= 1.4.5)
     highline (1.6.19)
-    hike (1.2.2)
+    hike (1.2.3)
     hirefireapp (0.0.8)
     http_parser.rb (0.5.3)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     i18n (0.6.1)
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
@@ -219,7 +223,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    meta_request (0.2.5)
+    meta_request (0.2.7)
       callsite
       rack-contrib
       railties
@@ -230,8 +234,9 @@ GEM
       polyamorous (~> 0.5.0)
     method_source (0.8.1)
     mime-types (1.23)
-    modernizr-rails (2.6.2.1)
-    multi_json (1.7.3)
+    modernizr-rails (2.6.2.3)
+    multi_json (1.7.7)
+    multi_xml (0.5.4)
     net-scp (1.1.1)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -240,7 +245,7 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     newrelic_rpm (3.5.7.59)
-    nokogiri (1.5.9)
+    nokogiri (1.5.10)
     orm_adapter (0.4.0)
     paper_trail (2.6.4)
       activerecord (~> 3.0)
@@ -267,7 +272,7 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-    pry-rails (0.3.0)
+    pry-rails (0.3.1)
       pry (>= 0.9.10)
     rabl (0.7.10)
       activesupport (>= 2.3.14)
@@ -280,7 +285,7 @@ GEM
       rack (~> 1.0)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
-    rack-mini-profiler (0.1.26)
+    rack-mini-profiler (0.1.27)
       rack (>= 1.1.3)
     rack-ssl (1.3.3)
       rack
@@ -306,7 +311,7 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     raindrops (0.11.0)
-    rake (10.0.4)
+    rake (10.1.0)
     rb-fchange (0.0.6)
       ffi
     rb-fsevent (0.9.3)
@@ -341,6 +346,7 @@ GEM
       rspec-mocks (~> 2.12.0)
     ruby-hmac (0.4.0)
     rubyzip (0.9.9)
+    safe_yaml (0.9.3)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -373,7 +379,8 @@ GEM
       rack (>= 1.0.0)
     thor (0.18.1)
     tilt (1.4.1)
-    treetop (1.4.12)
+    timecop (0.6.1)
+    treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
     twitter-text (1.5.0)
@@ -382,7 +389,7 @@ GEM
     uglifier (1.1.0)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
-    unicorn (4.6.2)
+    unicorn (4.6.3)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
@@ -392,7 +399,7 @@ GEM
     webmock (1.9.3)
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
-    websocket (1.0.7)
+    websocket (1.1.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -425,7 +432,6 @@ DEPENDENCIES
   faker (~> 1.0.1)
   fog
   foreman (~> 0.60.2)
-  formtastic
   friendly_id (~> 4.0.9)
   gravtastic (~> 3.2.6)
   guard (~> 1.6.1)
@@ -434,6 +440,7 @@ DEPENDENCIES
   haml-rails (~> 0.4)
   heroku-deflater
   hirefireapp (~> 0.0.8)
+  httparty (~> 0.11.0)
   inherited_resources (~> 1.3.0)
   jqplot-rails (~> 0.3)
   jquery-atwho-rails (~> 0.1.6)
@@ -469,6 +476,7 @@ DEPENDENCIES
   simple_form (~> 2.0.4)
   spork-rails (~> 3.2.1)
   thin (~> 1.5.0)
+  timecop (~> 0.6.1)
   twitter-text (~> 1.5.0)
   uglifier (~> 1.1.0)
   unicorn (~> 4.6.2)

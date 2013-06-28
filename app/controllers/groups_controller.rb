@@ -3,6 +3,7 @@ class GroupsController < GroupBaseController
   load_and_authorize_resource except: :show
   before_filter :authenticate_user!, except: :show
   before_filter :check_group_read_permissions, :only => :show
+  before_filter :ensure_group_is_setup, only: :show
   after_filter :store_location, :only => :show
 
   rescue_from ActiveRecord::RecordNotFound do
@@ -35,21 +36,9 @@ class GroupsController < GroupBaseController
   # CUSTOM CONTROLLER ACTIONS
 
   def archive
-    @group = Group.find(params[:id])
-    @group.archived_at = Time.current
-
-    @group.subgroups.each do |subgroup|
-      subgroup.archived_at = Time.current
-      subgroup.save
-    end
-
-    if @group.save
-      flash[:success] = t("success.group_archived")
-      redirect_to root_path
-    else
-      flash[:error] = t("error.group_not_archived")
-      redirect_to :back
-    end
+    @group.archive!
+    flash[:success] = t("success.group_archived")
+    redirect_to root_path
   end
 
   def add_subgroup
@@ -124,6 +113,14 @@ class GroupsController < GroupBaseController
   end
 
   private
+
+    def ensure_group_is_setup
+      if user_signed_in? && @group.admins.include?(current_user)
+        unless @group.is_setup? || @group.is_a_subgroup?
+          redirect_to setup_group_path(@group)
+        end
+      end
+    end
 
     def assign_meta_data
       if @group.viewable_by == :everyone

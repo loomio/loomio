@@ -1,5 +1,6 @@
 class Motion < ActiveRecord::Base
   PHASES = %w[voting closed]
+  CHART_COLOURS = ["#90D490", "#F0BB67", "#D49090", "#dd0000", '#ccc']
 
   belongs_to :author, :class_name => 'User'
   belongs_to :discussion
@@ -50,6 +51,10 @@ class Motion < ActiveRecord::Base
     joins(:votes).where("votes.user_id = ?", user.id)
   }
 
+  def title
+    name
+  end
+
   def group_users_without_motion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
   end
@@ -64,11 +69,17 @@ class Motion < ActiveRecord::Base
 
   def votes_breakdown
     last_votes = unique_votes()
-    positions = Array.new(Vote::POSITIONS)
-    positions.delete("did_not_vote")
-    positions.map {|position|
+    Vote::POSITIONS.map {|position|
       [position, last_votes.find_all{|vote| vote.position == position}]
     }.to_hash
+  end
+
+  def vote_counts
+    counts = {}
+    Vote::POSITIONS.each do |position|
+      counts[position] = self.send("#{position}_votes_count")
+    end
+    counts
   end
 
   def votes_for_graph
@@ -193,6 +204,24 @@ class Motion < ActiveRecord::Base
     self.close_at_time ||= Time.now.strftime("%H:00")
   end
 
+  def update_vote_counts!
+    position_counts = {}
+
+    Vote::POSITIONS.each do |position|
+      position_counts[position] = 0
+    end
+
+    Vote.unique_votes(self).each do |vote|
+      position_counts[vote.position] += 1
+    end
+    
+    Vote::POSITIONS.each do |position|
+      self.send("#{position}_votes_count=", position_counts[position])
+    end
+
+    save!
+  end
+
 
   private
 
@@ -217,7 +246,7 @@ class Motion < ActiveRecord::Base
       timezone_offset = time_stamp.strftime('%z')[0..-3].to_i
       self.close_at_date = time_stamp.strftime('%Y-%m-%d').to_date
       self.close_at_time = time_stamp.strftime('%H:00')
-      self.close_at_time_zone = ActiveSupport::TimeZone[timezone_offset]
+      self.close_at_time_zone = ActiveSupport::TimeZone[timezone_offset].name
     end
 
     def store_users_that_didnt_vote

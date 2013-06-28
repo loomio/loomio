@@ -15,13 +15,14 @@ class GroupRequest < ActiveRecord::Base
   belongs_to :group
   belongs_to :approved_by, class_name: 'User'
 
-  scope :verified, where(:status => :verified)
-  scope :starred, where(:high_touch => true)
-  scope :not_starred, where(:high_touch => false)
+  scope :verified, where(status: :verified)
+  scope :starred, where(high_touch: true)
+  scope :not_starred, where(high_touch: false)
   scope :waiting, -> { verified.not_starred }
-  scope :unverified, where(:status => :unverified)
-  scope :approved, where(:status => :approved)
-  scope :accepted, where(:status => :accepted)
+  scope :unverified, where(status: :unverified)
+  scope :approved_but_not_setup, joins(:group).where("status = 'approved' AND groups.setup_completed_at IS NULL")
+  scope :setup_completed, joins(:group).where('groups.setup_completed_at IS NOT NULL')
+  scope :zero_members, joins(:group).where(groups: {memberships_count: 0}) 
 
   before_destroy :prevent_destroy_if_group_present
   before_create :mark_spam
@@ -32,7 +33,6 @@ class GroupRequest < ActiveRecord::Base
     state :unverified, initial: true
     state :verified
     state :approved
-    state :accepted
     state :defered
     state :manually_approved
     state :marked_as_spam
@@ -43,10 +43,6 @@ class GroupRequest < ActiveRecord::Base
 
     event :approve_request do
       transitions to: :approved, from: [:verified, :defered]
-    end
-
-    event :accept_request do
-      transitions to: :accepted, from: [:approved]
     end
 
     event :defer do
@@ -74,19 +70,12 @@ class GroupRequest < ActiveRecord::Base
     save!
   end
 
-  def accept!(user)
-    group.add_admin!(user)
-    accept_request
-    save!
-  end
-
   def self.check_defered
     defered_requests = GroupRequest.where(status: 'defered')
     defered_requests.each do |group_request|
       group_request.verify! if group_request.defered_until < Time.now
     end
   end
-
 
   private
   def prevent_destroy_if_group_present

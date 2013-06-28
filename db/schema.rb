@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20130617033220) do
+ActiveRecord::Schema.define(:version => 20130625050817) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -97,6 +96,15 @@ ActiveRecord::Schema.define(:version => 20130617033220) do
   add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "contributions", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "identifier_id"
+    t.string   "response_code"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.text     "params"
+  end
+
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
@@ -129,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20130617033220) do
     t.datetime "updated_at"
     t.integer  "discussion_id"
     t.datetime "discussion_last_viewed_at"
+    t.boolean  "following",                 :default => true, :null => false
   end
 
   add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
@@ -176,7 +185,7 @@ ActiveRecord::Schema.define(:version => 20130617033220) do
     t.integer  "group_id"
     t.boolean  "cannot_contribute"
     t.string   "expected_size"
-    t.integer  "max_size",            :default => 50
+    t.integer  "max_size",            :default => 300
     t.string   "robot_trap"
     t.integer  "distribution_metric"
     t.string   "sectors"
@@ -239,8 +248,11 @@ ActiveRecord::Schema.define(:version => 20130617033220) do
     t.string   "country_name"
     t.datetime "setup_completed_at"
     t.boolean  "next_steps_completed", :default => false, :null => false
+    t.string   "full_name"
+    t.boolean  "paying_subscription",  :default => false, :null => false
   end
 
+  add_index "groups", ["full_name"], :name => "index_groups_on_full_name"
   add_index "groups", ["name"], :name => "index_groups_on_name"
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
 
@@ -269,6 +281,8 @@ ActiveRecord::Schema.define(:version => 20130617033220) do
     t.integer  "inviter_id"
     t.datetime "group_last_viewed_at",                                :null => false
     t.boolean  "subscribed_to_notification_emails", :default => true
+    t.datetime "archived_at"
+    t.integer  "inbox_position",                    :default => 0
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
@@ -289,16 +303,20 @@ ActiveRecord::Schema.define(:version => 20130617033220) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "discussion_url",     :default => "",       :null => false
+    t.string   "phase",               :default => "voting", :null => false
+    t.string   "discussion_url",      :default => "",       :null => false
     t.datetime "close_at"
     t.integer  "discussion_id"
     t.string   "outcome"
     t.datetime "last_vote_at"
-    t.boolean  "uses_markdown",      :default => true,     :null => false
-    t.string   "phase",              :default => "voting", :null => false
+    t.boolean  "uses_markdown",       :default => true,     :null => false
     t.date     "close_at_date"
     t.string   "close_at_time"
     t.string   "close_at_time_zone"
+    t.integer  "yes_votes_count",     :default => 0,        :null => false
+    t.integer  "no_votes_count",      :default => 0,        :null => false
+    t.integer  "abstain_votes_count", :default => 0,        :null => false
+    t.integer  "block_votes_count",   :default => 0,        :null => false
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
@@ -345,14 +363,14 @@ ActiveRecord::Schema.define(:version => 20130617033220) do
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
+    t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email",                          :default => false,      :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,       :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
-    t.string   "username"
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.boolean  "uses_markdown",                                               :default => false
     t.integer  "memberships_count",                                           :default => 0,          :null => false
+    t.boolean  "uses_markdown",                                               :default => false
     t.string   "language_preference"
     t.string   "time_zone"
   end

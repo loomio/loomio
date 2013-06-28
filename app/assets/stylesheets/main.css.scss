@@ -109,7 +109,10 @@ ul, ol, li {
 .field_with_errors { display: inline; }
 
 .inline-help { color: $error-color; }
-
+.hint {
+  clear: both;
+  padding: 1em 0;
+}
 .helper-text p {
   color: $mid-grey;
   font-size: $font-small;

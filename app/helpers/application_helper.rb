@@ -1,5 +1,16 @@
 #encoding: UTF-8
 module ApplicationHelper
+  def time_formatted_relative_to_age(time)
+    current_time = Time.now
+    if time.to_date == Time.now.to_date
+      l(time, format: :for_today)
+    elsif time.year != current_time.year
+      l(time.to_date, format: :for_another_year)
+    else
+      l(time.to_date, format: :for_this_year)
+    end
+  end
+
   def twitterized_type(type)
     case type
       when :alert
@@ -69,6 +80,10 @@ module ApplicationHelper
     end
 
     Redcarpet::Render::SmartyPants.render(output).html_safe
+  end
+
+  def show_contribution_icon?
+    current_user && !current_user.belongs_to_paying_group?
   end
 end
 

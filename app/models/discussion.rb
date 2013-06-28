@@ -62,14 +62,27 @@ class Discussion < ActiveRecord::Base
   end
 
   def never_read_by(user)
-    (user.nil? || read_log_for(user).nil?)
+    if user.nil?
+      true
+    elsif read_log_for(user).nil?
+      true
+    elsif read_log_for(user).discussion_last_viewed_at.nil?
+      true
+    end
   end
 
   def number_of_comments_since_last_looked(user)
     if user
-      return number_of_comments_since(last_looked_at_by(user)) if last_looked_at_by(user)
+      last_seen = last_looked_at_by(user)
+      if last_seen.nil?
+        # include the discussion in the count
+        comments.count + 1
+      else
+        number_of_comments_since(last_seen)
+      end
+    else
+      comments.count
     end
-    comments.count
   end
 
   def update_total_views

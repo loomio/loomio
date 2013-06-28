@@ -3,7 +3,7 @@
   .span4
     = simple_form_for @user do |f|
       = f.input :name
-      = f.input :language_preference, :collection => {"English" => "en", "Español" => "es"}, include_blank: false
+      = f.input :language_preference, :collection => {"English" => "en", "Español" => "es", "ελληνικά" => "el"}, include_blank: false
       = f.submit :class => "btn btn-info", id: "user-settings-submit"
 
 .row

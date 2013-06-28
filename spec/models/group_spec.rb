@@ -126,6 +126,7 @@ describe Group do
     before :each do
       @group = create(:group)
       @subgroup = create(:group, :parent => @group)
+      @group.reload
     end
     it "cannot have a max_size" do
       @subgroup.max_size = 5
@@ -148,13 +149,13 @@ describe Group do
     end
     context "subgroup.full_name" do
       it "contains parent name" do
-        @subgroup.full_name.should == "#{@subgroup.parent_name} - #{@subgroup.name}"
-        @subgroup.full_name(": ").should ==
-          "#{@subgroup.parent_name}: #{@subgroup.name}"
+        @subgroup.full_name.should == "#{@group.name} - #{@subgroup.name}"
       end
-      it "can have an optionally defined separator between names" do
-        @subgroup.full_name(": ").should ==
-          "#{@subgroup.parent_name}: #{@subgroup.name}"
+      it "updates if parent_name changes" do
+        @group.name = "bluebird"
+        @group.save!
+        @subgroup.reload
+        @subgroup.full_name.should == "#{@group.name} - #{@subgroup.name}"
       end
     end
   end
@@ -247,6 +248,25 @@ describe Group do
     it "returns false there is no membership" do
       @group.stub(:membership).with(@user)
       @group.activity_since_last_viewed?(@user).should == false
+    end
+  end
+
+  describe 'archive!' do
+    let(:group) {FactoryGirl.create(:group)}
+    let(:user) {FactoryGirl.create(:user)}
+
+    before do
+      group.add_member!(user)
+      group.archive!
+    end
+
+    it 'sets archived_at on the group' do
+      group.archived_at.should be_present
+
+    end
+
+    it 'archives the memberships of the group' do
+      group.memberships.all?{|m| m.archived_at.should be_present}
     end
   end
 end

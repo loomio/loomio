@@ -22,4 +22,6 @@
  *= require invitations
  *= require group_requests
  *= require help
-*/
+ *= require contributions
+ *= require inbox
+ */
