@@ -49,10 +49,10 @@ class Ability
     # DISCUSSIONS / COMMENTS
     #
 
-    can :index, Discussion
+    can :index, Discussion #misleading/incorrect needs to go (rob)
     can :destroy, Discussion, group_id: user.adminable_group_ids
     can :move, Discussion, group_id: user.adminable_group_ids
-    can [:add_comment, :new_proposal, :create, :update_description, :edit_title, :show_description_history, :preview_version, :update_version], Discussion, :group_id => user.group_ids
+    can [:unfollow, :add_comment, :new_proposal, :create, :update_description, :edit_title, :show_description_history, :preview_version, :update_version, :show], Discussion, :group_id => user.group_ids
 
     can :destroy, Comment, user_id: user.id
     can :destroy, Comment, :discussion => { group_id: user.adminable_group_ids }

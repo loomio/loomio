@@ -1,0 +1,20 @@
+%li.discussion.row-fluid{data:{discussion_id: item.id }}
+  = link_to item do
+    .span1
+      .icon.discussion-icon
+        .activity-count{title: 'Unread comments'}
+          &nbsp;
+
+
+    .span9.title
+      = item.title
+
+    .span1.time{title: 'Last comment at'}
+      = time_formatted_relative_to_age(item.last_comment_at)
+    -#.span1
+      -#.unfollow-btn
+        -#= link_to 'h', unfollow_inbox_path({class: item.class.to_s, id: item.id}), remote: true, method: :post, id: 'unfollow-btn'
+  .span1
+    .mark-as-read-btn
+      = link_to 'x', mark_as_read_inbox_path({class:item.class.to_s, id: item.id} ), remote: true, method: :post
+

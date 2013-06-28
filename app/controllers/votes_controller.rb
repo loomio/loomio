@@ -62,6 +62,6 @@ class VotesController < GroupBaseController
   private
 
     def group
-      group = Motion.find(params[:motion_id]).group
+      Motion.find(params[:motion_id]).group
     end
 end

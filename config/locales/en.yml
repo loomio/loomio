@@ -8,8 +8,14 @@ en:
     messages:
       email: "Not a valid email address"
 
+  time:
+    formats:
+      for_today: '%l:%M %P'
+
   date:
     formats:
+      for_this_year: '%e %b'
+      for_another_year: '%-d/%-m/%y'
       datepicker: "%d-%m-%Y"
 
   error:
@@ -34,9 +40,9 @@ en:
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
     proposal_already_exists: "There is already an open proposal in this discussion."
+    not_found: "Item not found. It may have been deleted."
   alert:
     duplicate_email: "%{which_email} is already in the group."
-    not_found: "%{item} not found\n\nIt may have been deleted."
 
   notice:
     admin_rights_removed: "%{which_user}'s admin rights have been removed."
@@ -107,6 +113,10 @@ en:
         one:   "1 year"
         other: "%{count} years"
 
+  inbox:
+    dropdown-btn: 'Inbox'
+    empty: You're up to date! There are no comments you haven't seen.
+
   notifications:
     header: "Notifications"
     new_discussion: "started a new discussion"
@@ -134,6 +144,7 @@ en:
   sign_in: "Sign in"
   sign_in_details: "to participate. You are currently logged out."
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
+  or_sign_in_html: "If you've already got an account, <a href='%{link}'0>click here to sign in</a>."
 
   click_to_dismiss: "Click here to dismiss this message"
   generic_confirm: "Are you sure?"
@@ -348,6 +359,7 @@ en:
     getting_started: "Getting started"
     getting_started_description: "On the left, the group discusses a topic, exchanging ideas and information. When there’s a decision for the group to make, it comes up on the right."
     getting_the_most: 'Getting the most out of Loomio'
+    have_your_say: "Have your say"
     have_your_say_details_html: |
       <p>When you’re ready to have your say, click one of the four decision buttons.</p>
       <p>When you’ve made your decision, give a brief explanation. Underneath the pie,
@@ -583,6 +595,7 @@ en:
         name: "Full name"
         email: "Email"
         password: "Password"
+        password_confirmation: "Confirm password"
         language_preference: "Language"
 
     options:

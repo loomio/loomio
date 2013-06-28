@@ -10,9 +10,14 @@ class ContributionsController < BaseController
   def create
     amount = params[:amount]
     currency = params[:currency]
-    wrapper = SwipeWrapper.new
-    identifier = wrapper.create_tx_identifier_for(user: current_user, amount: amount, currency: currency)
-    redirect_to "https://payment.swipehq.com/?identifier_id=#{identifier}"
+    if amount.present? && currency.present? and amount.to_i > 0
+      wrapper = SwipeWrapper.new
+      identifier = wrapper.create_tx_identifier_for(user: current_user, amount: amount, currency: currency)
+      redirect_to "https://payment.swipehq.com/?identifier_id=#{identifier}"
+    else
+      flash[:error] = "Please enter an amount to contibute"
+      redirect_to contributions_url
+    end
   end
 
   def index
