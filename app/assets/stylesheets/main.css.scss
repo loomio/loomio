@@ -137,7 +137,7 @@ ul.selector-list {
   &.bordered { border-top: 1px solid $light-grey }
   li.selector-item {
     background-color: $unhighlighted;
-    border-bottom: 1px solid $light-grey;
+    border-bottom: 1px solid $lighter-grey;
     color: $dark-grey;
     font-weight: normal;
     a.selector-link {
@@ -162,8 +162,9 @@ ul.selector-list {
   background-color: $sub-selector-panel;
   border: 1px solid $light-grey;
   @include border-radius(8px);
-  margin-bottom: 12px;
-  padding: 4px 6px 10px 6px;
+  margin-bottom: 20px;
+  padding: 6px 10px;
+
   h4 {
     line-height: 1.8em;
     margin-bottom: 5px;

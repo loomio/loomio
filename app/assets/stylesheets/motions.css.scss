@@ -66,8 +66,11 @@
 
 #content-proposal{
   margin-left: 0px;
+  padding: 7px 0 0 0;
 
-  #closing-info { font-size: $font-small; }
+  #closing-info {
+    font-size: $font-smaller;
+    color: $mid-grey; }
 
   #close-voting {
     float: right;
@@ -161,7 +164,9 @@
   .proposal-title-container { width: 305px; }
 
   .proposed-by {
-    font-size: $font-small;
+    color: $mid-grey;
+    font-size: $font-smaller;
+    margin-bottom: 20px;
   }
 
   .percentage-to-vote {

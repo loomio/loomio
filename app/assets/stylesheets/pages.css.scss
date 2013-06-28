@@ -44,10 +44,10 @@ h6 { font-size: 11px; }
 h4, h5, h6 { line-height: 18px; }
 
 // structural elements (containers etc.)
-.page-container { margin-top: 30px; }
+.page-container { margin-top: 20px; }
 
-// #start-new-discussion { margin: 0 0 20px 2px; }
-.main-content { margin-top: 20px; }
+.main-content {
+  margin-top: 15px; }
 
 
 /**** Structural elements ****/
@@ -56,7 +56,6 @@ li.selector-item {
   background-color: $unhighlighted;
   color: $dark-grey;
   font-weight: normal;
-  border-bottom: 1px solid $light-grey;
 }
 
 li.selector-item a.selector-link {
@@ -69,7 +68,7 @@ li.selector-item a.selector-link:hover {
 }
 
 .alert {
-  margin: 10px 0;
+  margin: 20px 0 -10px 0;
 }
 
 // color coded urgency labels

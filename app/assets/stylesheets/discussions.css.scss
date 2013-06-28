@@ -27,7 +27,7 @@ body.discussions.show {
   .discussion-title-container {
     display: inline-block;
     width: 850px;
-    margin: 0 0 4px 0px;
+    margin: 0 0 0 15px;
 
     #discussion-title { font-size: 22px; }
     #edit-discussion-title {
@@ -60,14 +60,14 @@ body.discussions.show {
   }
   #discussion-content-container {
     background-color: white;
-    border-top: 1px solid $light-grey;
+    border-top: 1px solid $lighter-grey;
     border-bottom: 1px solid $light-grey;
     padding-bottom: 20px;
     margin-bottom: 5px;
     .content-proposal-body {
       padding: 10px 10px 10px 50px;
       ul.selector-list {
-        border-top: 1px solid $light-grey;
+        border-top: 1px solid $lighter-grey;
         li.empty-list-message { padding: 4px; }
         li .motion {
           .close-date {
@@ -78,9 +78,9 @@ body.discussions.show {
       }
     }
     #discussion-context {
-      border-bottom: 1px solid $light-grey;
-      min-height: 40px;
-      padding: 10px 0px 10px 50px;
+      border-bottom: 1px solid $lighter-grey;
+      min-height: 70px;
+      padding: 15px 10px 10px 15px;
 
       #description-edit-form {
         margin-bottom: 0px;
@@ -96,7 +96,7 @@ body.discussions.show {
         }
         .control-group { margin-bottom: 0px; }
         .description-body {
-          color: $dark-grey;
+          color: black;
           margin-bottom: 10px;
         }
         #description-input {
@@ -130,12 +130,10 @@ body.discussions.show {
         }
       }
       .discussion-additional-info {
-        background-color: #EEE;
         color: $mid-grey;
         float: right;
-        font-size: $font-small;
-        padding: 5px;
-        width: 170px;
+        font-size: $font-smaller;
+        max-width: 190px;
         .last-edited-by, .started-by { margin-bottom: 10px; }
       }
       #discussion-markdown-dropdown {
@@ -143,12 +141,12 @@ body.discussions.show {
         padding-right: 0px;
       }
       .long-description { padding-bottom: 10px; }
-      .right-context { width: 230px; }
+      .right-context { width: 265px; }
     }
   }
 
   #content-comments {
-    border-right: 1px solid $light-grey;
+    border-right: 1px solid $lighter-grey;
     min-height: 660px;
     padding-right: 10px;
     .comment-anchor {
@@ -201,14 +199,16 @@ body.discussions.show {
     ul#activity-list {
       list-style: none;
       margin: 0 15px 3px 0;
+      padding-top: 3px;
       width: 437px;
       li.empty-list-message {
         margin-left: 45px; /*check this still works*/
       }
       .divider {
-        border-bottom: 1px solid $light-grey;
-        margin: 0 0 5px 45px;
+        border-bottom: 1px solid $lighter-grey;
+        margin: 0 0 13px 0px;
       }
+      .activity-icon {margin-left: -26px;}
       .activity-item-actor{
         font-weight: bold;
         a {color: $dark-grey;}
@@ -220,18 +220,29 @@ body.discussions.show {
       }
       .activity-item-body {
         margin-left: 45px;
-        border-bottom: 1px solid $light-grey;
-        margin-bottom: 5px;
-        padding-bottom: 5px;
+        border-bottom: 1px solid $lighter-grey;
+        padding-bottom: 9px;
       }
-      .activity-item-comment-actor { font-weight: bold; }
-      .activity-item-container { width: 100%; }
+      .activity-item-comment-actor {
+        float: left;
+        font-weight: bold;
+        margin-right: 8px;
+      }
+      .activity-item-container {
+        margin-top: 8px;
+        width: 100%;
+      }
       .activity-item-content{
         color: $mid-grey;
         font-style: italic;
         word-wrap: break-word;
       }
-      .activity-item-header{ color: $dark-grey; }
+      .activity-item-header{
+        p {
+          color: black;
+          &:last-child{margin-bottom: 2px;}
+        }
+      }
       .activity-item-likes{
         color: $dark-grey;
         font-size: $font-tiny;
@@ -243,15 +254,17 @@ body.discussions.show {
     }
   }
 
-  .header-text { line-height: 2.0em; }
+  .header-text {
+    color: $mid-grey;
+    line-height: 2.0em;
+  }
 
   .selector-panel {
     background-color: $selector-panel;
     @include border-radius(8px);
-    border: 1px solid $light-grey;
-    margin-bottom: 20px;
+    border: 1px solid $lighter-grey;
+    margin: 10px 0 20px 0;
     min-height: 59px;
-    padding-top: 2px;
     .dropdown {
       float: right;
       padding: 5px 10px;
@@ -263,6 +276,10 @@ body.discussions.show {
         }
       }
     }
+  }
+
+  .user-name {
+    &:link, &:visited{ color: $dark-grey;}
   }
 }
 
@@ -381,7 +398,7 @@ pre{
   float: left;
   height: 47px;
   width: 700px;
-  &:hover { background-color: $selector; }
+  &:hover { background-color: $selector ! important; }
   a {
     color: $dark-grey;
     &:hover { text-decoration: none; }
@@ -435,7 +452,7 @@ pre{
   }
   .activity-icon { float: right; }
   .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
-  .pie-icon.activity-icon { margin: 10px 10px 0 0; }
+  .pie-icon.activity-icon { margin: 12px 5px 0 0; }
   .activity-count {
     font-size: $font-tinywiny;
     position: relative;
@@ -458,4 +475,12 @@ pre{
   .color-urgent { background-color: #CA3232; }
   .color-warning { background-color: #F89406; }
   .color-ok { background: #016B01; }
+}
+
+/** pie chart tweaks **/
+div.jqplot-table-legend-swatch-outline {border: none;}
+
+div.jqplot-table-legend-swatch{
+  border-top-width: 6px;
+  border-bottom-width: 6px;
 }

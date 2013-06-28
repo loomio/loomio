@@ -33,7 +33,7 @@ class DiscussionItems::NewVote < DiscussionItem
 
   def body
     return "" if vote.statement.blank?
-    "\"#{vote.statement}\""
+    " #{vote.statement}"
   end
 
   def time
