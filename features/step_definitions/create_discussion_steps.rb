@@ -67,7 +67,7 @@ When /^I disable markdown for the discussion description$/ do
   find('#discussion-markdown-dropdown .disable-markdown-link').click
 end
 
-Then /^the discussion desription should render markdown$/ do
+Then /^the discussion description should render markdown$/ do
   page.find('.description-body').should have_content('this markdown')
   page.find('.description-body').should_not have_content('_this markdown_')
 end
