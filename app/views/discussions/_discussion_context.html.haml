@@ -7,10 +7,8 @@
 
     .discussion-additional-info
       = t("discussion_context.started_when", when: time_ago_in_words(@discussion.created_at))
-      .started-by
-        = t :by
-        = " "
-        =link_to @discussion.author.name, user_path(@discussion.author), class: "user-name"
+      = t :by
+      =link_to @discussion.author.name, user_path(@discussion.author), class: "user-name"
       -if defined? @last_collaborator
         .last-edited-by
           = t("discussion_context.last_edited", when: time_ago_in_words(@discussion.last_versioned_at))
