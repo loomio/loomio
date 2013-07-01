@@ -3,8 +3,8 @@
 body.dashboard {
   &.show {
     .sub-panel ul {
-      margin: 0 0 0 10px;
       a:hover { color: $dark-grey }
+      li { line-height: 21px; }
       .sub-group .group-link-name { padding-left: 20px; }
     }
   }

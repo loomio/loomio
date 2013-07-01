@@ -35,9 +35,9 @@ describe DiscussionItems::MotionClosed do
     item.group.should == item.motion.group
   end
 
-  it "#body returns the motion's name in quotes" do
+  it "#body returns the motion's name with a space at front" do
     item.stub_chain(:motion, :name).and_return("goob")
-    item.body.should == " \"#{item.motion.name}\""
+    item.body.should == " #{item.motion.name}"
   end
 
   it "#time returns the time the motion was closed" do
