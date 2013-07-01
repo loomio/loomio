@@ -22,7 +22,7 @@ class DiscussionItems::NewMotion < DiscussionItem
   end
 
   def body
-    " \"#{motion.name}\""
+    " #{motion.name}"
   end
 
   def time

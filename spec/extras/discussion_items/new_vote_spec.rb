@@ -20,8 +20,8 @@ describe DiscussionItems::NewVote do
   context "user has given a statement" do
     before { item.stub_chain(:vote, :statement).and_return(stub("It's furry!")) }
 
-    it "#body returns the users statement in quotes" do
-      item.body.should == "\"#{item.vote.statement}\""
+    it "#body returns the users statement with a space at front" do
+      item.body.should == " #{item.vote.statement}"
     end
   end
 
