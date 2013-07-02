@@ -1,14 +1,14 @@
 = render '/groups/title', group: @group
 
-%h1 Members
+%h1= t :members
 
 %table.memberships.table.table-striped
   %thead
-    %th Photo
-    %th Name
-    %th Email
-    %th Admin
-    %th Remove
+    %th= t :photo
+    %th= t :name
+    %th= t :"common.email"
+    %th= t :coordinator
+    %th= t :remove
   %tbody
     -@memberships.each do |membership|
       -user = membership.user
@@ -18,24 +18,21 @@
         %td=user.email
         %td
           - if membership.admin?
-            = link_to t(:remove_admin), 
-              remove_admin_group_membership_path(@group, membership), 
-              method: :post, 
+            = link_to t(:remove_coordinator),
+              remove_admin_group_membership_path(@group, membership),
+              method: :post,
               class: :btn,
-              :confirm => t(:confirm_remove_admin, which_user: user.name)
+              :confirm => t(:confirm_remove_coordinator, which_user: user.name)
           - else
-            = link_to t(:make_admin), 
-              make_admin_group_membership_path(@group, membership), 
-              method: :post, 
+            = link_to t(:make_coordinator),
+              make_admin_group_membership_path(@group, membership),
+              method: :post,
               class: :btn,
-              :confirm => t(:confirm_make_admin, which_user: user.name)
-        %td=link_to 'Remove', 
-            group_membership_path(@group, membership), 
-            method: :delete, 
+              :confirm => t(:confirm_make_coordinator, which_user: user.name)
+        %td=link_to t(:remove),
+            group_membership_path(@group, membership),
+            method: :delete,
             class: 'btn btn-danger',
-            :confirm => 'Are you sure you want to remove this user from the group?'
+            :confirm => t(:confirm_remove_member)
 
-%p 
-  Want to 
-  =link_to 'Invite People', new_group_invitation_path(@group)
-  to the group? 
+%p=t(:want_to_invite_html, link: new_group_invitation_path(@group))
