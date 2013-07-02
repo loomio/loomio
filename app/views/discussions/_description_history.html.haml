@@ -5,7 +5,7 @@
   .revision-title
     %h3= @discussion.title
     %p
-      = t("description_history.edited_by", when: time_ago_in_words(@discussion.last_versioned_at), who: @originator.name)
+      = t("description_history.edited", when: time_formatted_relative_to_age(@discussion.last_versioned_at), who: @originator.name)
       %em
         = " "
         -if @discussion.live?

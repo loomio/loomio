@@ -13,7 +13,7 @@
 
   .span2.time
     %span.js-format-as-timeago{data:{time: item.close_at.iso8601}}
-      =time_formatted_relative_to_age(item.close_at)
+      =time_formatted_relative_to_age(item.close_at, false)
     left
 
   .span1

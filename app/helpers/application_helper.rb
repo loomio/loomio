@@ -1,9 +1,13 @@
 #encoding: UTF-8
 module ApplicationHelper
-  def time_formatted_relative_to_age(time)
+  def time_formatted_relative_to_age(time, show_ago=true)
     current_time = Time.now
     if time.to_date == Time.now.to_date
-      l(time, format: :for_today)
+      if show_ago
+        t('ago', :quantity_of_time => time_ago_in_words(time))
+      else
+        l(time, format: :for_today)
+      end
     elsif time.year != current_time.year
       l(time.to_date, format: :for_another_year)
     else

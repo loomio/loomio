@@ -1,0 +1,20 @@
+.activity-item-time
+  = link_to time_formatted_relative_to_age(comment.created_at),
+              "#comment-#{comment.id}"
+  - if can? :like, comment
+    = " · "
+    - if comment.has_not_been_liked_by?(current_user)
+      = link_to t(:like), like_comment_path(id: comment, like: 'true'), method: :post, remote: true, id: "like-comment-#{comment.id}"
+    - else
+      = link_to t(:unlike), like_comment_path(id: comment, like: 'false'), method: :post, remote: true, id: "unlike-comment-#{comment.id}"
+  - if can? :destroy, comment
+    = " · "
+    = link_to t(:delete), "#", 'data-title' => t(:delete_comment), 'data-body' => t(:confirm_delete_comment), 'data-confirm-path' => comment_path(comment), 'data-method-type' => 'delete', class: 'confirm-dialog', id: "delete-comment-#{comment.id}"
+- if comment.likes_count > 0
+  .activity-item-likes
+    - likers = comment.likes.map { |like| link_to(like.user_name, "#") }
+    - if likers.length > 1
+      - likers = likers.slice(0, likers.length - 1).join(", ").concat(" and " + likers.slice(-1))
+    - else
+      - likers = likers[0]
+    = t(:liked_by, who: likers).html_safe
