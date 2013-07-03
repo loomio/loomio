@@ -441,22 +441,25 @@ en:
     any_amount: Any one-time contribution
     monthly_html: Monthly contribution <span>(USD)</span>
     one_time_html: One-time contribution <span>(USD)</span>
-    tooltip: Choose your contribution
+    tooltip: Contribute
     thought_about_contributing: Choose your contribution
     thought_about_contributing_description: |
-      Loomio is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them. 
+      Loomio is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
 
       We believe money shouldn’t be a barrier, so we’re developing a revenue model that puts you in charge of the amount you pay.
 
-      Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users. 
+      Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users.
 
-      Thanks for making this possible! 
-    thank_you_title: Thank you!
+      Thanks for making this possible!
+    thank_you_title: Thank you for contributing to Loomio!
     thank_you_body: |
-      Thank you for contributing to Loomio! 
-      Your financial contribution will help us to continue making collaborative decision-making easier and more accessible to the world.
+      Your contribution helps us deliver easy collaborative decision making to the world.
 
       You will receive an email shortly with a receipt for your contribution.
+
+      Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.
+
+      <a href='https://www.loomio.org/groups/3'>Take me to the Loomio Community group &raquo;</a>
 
   #
   # SIGN IN
