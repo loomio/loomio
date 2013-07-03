@@ -260,6 +260,7 @@ body.discussions.show {
   }
 
   .selector-panel {
+    h2 { margin: 0; }
     background-color: $selector-panel;
     @include border-radius(8px);
     border: 1px solid $lighter-grey;
