@@ -26,8 +26,7 @@ class ApplicationController < ActionController::Base
 
   def extract_locale_from_accept_language_header
     browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first).try(:to_s)
-    available_locales = %w{en es el}
-    if available_locales.include? browser_locale
+    if Translation::LOCALES.include? browser_locale
       browser_locale
     else
       I18n.default_locale
