@@ -688,6 +688,7 @@ en:
   # COMMON WORDS
   #
 
+  about: "About"
   ago: "%{quantity_of_time} ago"
   approve: "Approve"
   author: "Author"
