@@ -5,7 +5,7 @@ describe ApplicationHelper do
     let(:time){ "2013-01-02 16:55:00 UTC".to_time }
 
     subject do
-      helper.time_formatted_relative_to_age(time)
+      helper.time_formatted_relative_to_age(time, false)
     end
 
     context 'when time is same day' do

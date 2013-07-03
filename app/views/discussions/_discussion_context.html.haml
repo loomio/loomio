@@ -6,12 +6,12 @@
       =render "application/hint", text: t(:"hint.context"), anchor: 'starting-an-engaging-discussion'
 
     .discussion-additional-info
-      = t("discussion_context.started_when", when: time_ago_in_words(@discussion.created_at))
+      = t("discussion_context.started", when: time_formatted_relative_to_age(@discussion.created_at))
       = t :by
       =link_to @discussion.author.name, user_path(@discussion.author), class: "user-name"
       -if defined? @last_collaborator
         .last-edited-by
-          = t("discussion_context.last_edited", when: time_ago_in_words(@discussion.last_versioned_at))
+          = t("discussion_context.last_edited_when", when: time_formatted_relative_to_age(@discussion.last_versioned_at))
           =link_to @last_collaborator.name, user_path(@last_collaborator), class: "user-name"
         .see-revision-history
           %i.icon-time

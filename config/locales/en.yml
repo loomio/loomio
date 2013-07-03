@@ -259,14 +259,14 @@ en:
   empty_discussion_index_group: "This group does not have any discussions yet."
 
   discussion_context:
-    started_when: "Started %{when} ago"
-    last_edited: "Last edited about %{when} ago by "
+    started: "Started %{when}"
+    last_edited_when: "Last edited %{when} by "
     see_revision_history: "See revision history"
 
   description_history:
     header: "Revision history"
     subheader: "Version"
-    edited_by: "Edited about %{when} ago by %{who}"
+    edited: "Edited %{when} by %{who}"
     current: "(current)"
     restore: "(Restore this version)"
     applying_changes: "(Applying changes...)"
@@ -298,8 +298,8 @@ en:
   proposal: Proposal
   proposal_close_date_error: "Please give a future close date"
   proposal_closing_when: "Closing in %{when}"
-  proposal_closed_when: "Closed %{when} ago"
-  proposed_when_by_who: "Proposed by %{who} %{when} ago"
+  proposal_closed: "Closed %{when}"
+  proposed_by: "Proposed by %{who} %{when}"
   engagement_on_open_proposal: "%{percent}% of members have stated their position (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}% of members stated their position (%{numerator}/%{denominator})"
 
