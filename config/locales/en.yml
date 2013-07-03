@@ -260,8 +260,8 @@ en:
   empty_discussion_index_group: "This group does not have any discussions yet."
 
   discussion_context:
-    started_when: "Started %{when} ago"
-    last_edited: "Last edited about %{when} ago by "
+    started_html: "Started %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    last_edited_html: "Last edited %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "See revision history"
 
   description_history:
