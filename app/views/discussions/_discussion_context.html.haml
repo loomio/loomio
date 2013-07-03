@@ -6,13 +6,18 @@
       =render "application/hint", text: t(:"hint.context"), anchor: 'starting-an-engaging-discussion'
 
     .discussion-additional-info
-      = t("discussion_context.started_when", when: time_ago_in_words(@discussion.created_at))
-      = t :by
-      =link_to @discussion.author.name, user_path(@discussion.author), class: "user-name"
+      = t("discussion_context.started_html",
+          when: time_ago_in_words(@discussion.created_at),
+          who: @discussion.author.name,
+          link: user_path(@discussion.author),
+          link_class: 'user-name')
       -if defined? @last_collaborator
         .last-edited-by
-          = t("discussion_context.last_edited", when: time_ago_in_words(@discussion.last_versioned_at))
-          =link_to @last_collaborator.name, user_path(@last_collaborator), class: "user-name"
+          = t("discussion_context.last_edited_html",
+              when: time_ago_in_words(@discussion.last_versioned_at),
+              who: @last_collaborator.name,
+              link: user_path(@last_collaborator),
+              link_class: 'user-name')
         .see-revision-history
           %i.icon-time
           =link_to t("discussion_context.see_revision_history"), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
