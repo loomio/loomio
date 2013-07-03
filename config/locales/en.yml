@@ -140,7 +140,7 @@ en:
     motion_blocked: "blocked the proposal"
 
   edit_discussion_context: "Edit discussion context"
-  request_new_group: "Request New Group"
+  request_new_group: "Start a group"
   request_new_group_details: "or wait until you are invited to one."
   empty_notifications: "You do not have any notifications yet."
   see_all_notifications: "See all notifications"
@@ -244,6 +244,49 @@ en:
   group_description: "Group description"
   edit_group_description: "Edit group description"
 
+
+  #
+  # GROUP REQUESTS
+  #
+
+  group_request:
+    form:
+      name: "What is your name?"
+      email: "What is your email address?"
+      group_name: "What is the name of your group?"
+      placeholders:
+        name: "e.g. Jane Bloggs"
+        email: "e.g. jane@organisation.com"
+        group_name: "e.g. Jane's Accounting Services"
+    pwyc:
+      description_html: "Your group members will be invited to pay what they can.<p>If you would rather pay on behalf of your group, <a href='%{subscription_path}'>sign up for a subscription.</a></p>"
+      header: "Pay what you can"
+      intro: "Start your group"
+      submit: "Start group!"
+    selection:
+      description_html: "Money shouldn’t be a barrier to good collaborative decision making. Groups with a budget pay a subscription for using the tool, members of informal groups contribute what they can.</p><p id='last'>Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users.</p>"
+      intro: "What kind of group are you?"
+      informal_group:
+        description_html: "e.g. families, social movements, collectives</p><p>Members of your group will be asked to pay what they can.</p>"
+        header: "Informal group"
+        submit: "Pay what you can"
+      organisation:
+        description_html: "e.g. businesses, government agencies, community organisations</p><p>Your group will be invoiced monthly after a <span id='trial'>30 day free trial.</span></p>"
+        header: "Organisation"
+        submit: "Subscription"
+    subscription:
+      intro: "Try Loomio for free"
+      table:
+        description_html: "You'll be asked to enter credit card details at the end of your <span>30-day free trial.</span>"
+        price1_html: "<span>US</span> $30/mo"
+        price2_html: "<span>US</span> $50/mo"
+        price3_html: "<span>US</span> $100/mo"
+        price4_html: "<a mailto='contact@loomio.org'>Talk to us!</a>"
+        quantity1: "Up to 10 people"
+        quantity2: "Up to 25"
+        quantity3: "Up to 50"
+        quantity4: "more than 100"
+      submit: "Start your free trial!"
   #
   # DISCUSSION PAGE
   #
@@ -692,6 +735,11 @@ en:
     group_membership_approved:
       intro: "Your request for access to the group '%{group_name}' on Loomio has been approved."
       subject: "Membership approved"
+    invitation:
+      header: "Start your group on Loomio"
+      hi: "Hi %{name},"
+      intro: "Click the link below to set up your group %{group_name}:"
+      closing_message: "If you’ve got any questions or if there’s anything at all we can do to help you get up and running, we’d love to hear from you."
     membership_request:
       intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
       subject: "New membership request from %{who}"
@@ -711,6 +759,21 @@ en:
       closes_in: "Closes in"
       subject: "Proposal closing soon: %{which}"
       summary: "Summary"
+    trial_expiry:
+      header: "%{group_name}: Your Loomio trial is almost up."
+      hi: "Hi there,"
+      intro_html: |
+        Just a friendly reminder to let you know that your trial will expire in 5 days. We hope you're enjoying Loomio so far.
+        <p>Once the trial period runs out, you'll need to enter your payment details so your group can keep using Loomio.</p>
+        <p><a href=''>Click here</a> to set up your payment details now.</p>
+        <p>If you’ve got any questions or if there’s anything at all we can do to help your group succeed with Loomio, we’d love to hear from you.</p>
+    trial_follow_up:
+      header: "%{group_name}: How’s your Loomio trial going so far?"
+      hi: "Hi there,"
+      intro_html: |
+        Just a friendly reminder to let you know you're halfway through your trial. We hope you’re enjoying Loomio so far! If you’d like some tips about getting the most out of Loomio, <a href='/help#getting-the-most-out-of-Loomio'>have a look here.</a>
+        <p>You'll need to enter your payment information before the end of your trial to keep using Loomio. <a href=''>Click here</a> to set up your payment details now.</p>
+        <p>If you’ve got any questions or if there’s anything at all we can do to help your group succeed with Loomio, we’d love to hear from you.</p>
     verification:
       header: "You're almost done!"
       intro: "Please click this verification link to finalise your request:"
@@ -775,6 +838,7 @@ en:
   show_more: "Show More"
   starting: "Starting"
   subject: "Subject"
+  thanks: "Thanks!"
   unlike: "Unlike"
   until_close: "until close"
   update: "Update"

@@ -1,0 +1,18 @@
+.row
+  .span9.offset1
+    #intro
+      %h1= t("group_request.selection.intro")
+.row#payment_models
+  .span4.offset1
+    .payment-model-box#organisation
+      %h2= t("group_request.selection.organisation.header")
+      %p.examples= t("group_request.selection.organisation.description_html")
+      = link_to t("group_request.selection.organisation.submit"),  subscription_group_requests_path, class: "btn btn-success btn-large btn-block"
+  .span4
+    .payment-model-box#informal-group
+      %h2= t("group_request.selection.informal_group.header")
+      %p.examples= t("group_request.selection.informal_group.description_html")
+      = link_to t("group_request.selection.informal_group.submit"), pwyc_group_requests_path, class: "btn btn-info btn-large btn-block"
+.row
+  .span7.offset1
+    %p= t("group_request.selection.description_html")
