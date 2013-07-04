@@ -528,6 +528,16 @@ en:
       You’ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes.
 
   #
+  # ERROR RAINCHECKS
+  #
+
+  error_raincheck:
+    heading: "We're sorry, but something went wrong."
+    intro_html: "<p>We've been notified about this issue and we'll take a look at it shortly.</p><p> If you continue to experience issues, you can enter your email address below and we can notify you when the error is resolved.</p>"
+    thank_you: "Thank you!"
+    notification_html: "We will notify you as soon as the issue has been resolved."
+
+  #
   # FORMS
   #
 
@@ -617,6 +627,8 @@ en:
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
       group:
         description: "Think about the simplest way you can describe your group: What do you want to achieve together? What types of decisions will you be making? Who will be involved?"
+      error_raincheck:
+        email: "Please enter your email address"
 
   helpers:
     submit:
@@ -627,6 +639,8 @@ en:
       user:
         create: "Create account"
         update: "Update settings"
+      error_raincheck:
+        create: "Submit"
 
   #
   # EMAILS
@@ -721,6 +735,7 @@ en:
   options: "Options"
   other: "Other"
   ok_got_it: "Okay, got it!"
+  return_home: "Return to home page"
   save: "Save"
   saving: "Saving"
   sending: "Sending"

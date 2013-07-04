@@ -3,11 +3,10 @@
     %img(src="/assets/loomio-orange.png")
   .content
     = simple_form_for @error_raincheck, :validation => true do |f|
-      %h1 We're sorry, but something went wrong.
-      %p We've been notified about this issue and we'll take a look at it shortly.
-      %p If you continue to experience issues, you can enter your email address below and we can notify you when the error is resolved.
-      = f.input :email, label: false, placeholder: 'Please enter your email adress'
+      %h1= t :"error_raincheck.heading"
+      = t :"error_raincheck.intro_html"
+      = f.input :email, label: false
       = f.hidden_field :action
       = f.hidden_field :controller
-      = f.submit :class => "btn btn-medium btn-info", value: "Submit",id: "error-raincheck-submit"
-    %p= link_to 'Return to home page', root_path
+      = f.submit :class => "btn btn-medium btn-info", id: "error-raincheck-submit"
+    %p= link_to t(:"return_home"), root_path

@@ -1,7 +1,6 @@
 #error-container
   -if current_user
     %img(src="/assets/loomio-orange.png")
-  %h1 Thank you!
-  %p
-  %p We will notify you as soon as the issue has been resolved.
-  %p= link_to 'Return to home page', root_path
+  %h1= t :"error_raincheck.thank_you"
+  %p= t :"error_raincheck.notification_html"
+  %p= link_to t(:"return_home"), root_path, id: "return-home-link"
