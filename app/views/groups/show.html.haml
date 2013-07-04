@@ -3,7 +3,7 @@
     - set_title @group.name, "", @group.parent
     = render '/groups/title', group: @group
     - if can? :create, @discussion
-      = icon_button(new_discussion_path(:group_id => @group.id), t(:start_a_discussion), '/assets/topic-18.png', 'start-new-discussion')
+      = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
   .span3#button-container
     - if can?(:add_members, @group)
       = render 'invite_button', group: @group
