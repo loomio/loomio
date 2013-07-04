@@ -34,6 +34,18 @@ describe Discussion do
     discussion.last_comment_at.should == discussion.created_at
   end
 
+  describe "#search(query)" do
+    before { @user = create(:user) }
+    it "returns user's discussions that match the query string" do
+      discussion = create(:discussion, title: "jam toast", author: @user)
+      @user.discussions.search("jam").should == [discussion]
+    end
+    it "does not return discussions that don't belong to the user" do
+      discussion = create(:discussion, title: "sandwich crumbs")
+      @user.discussions.search("sandwich").should_not == [discussion]
+    end
+  end
+
   describe "#latest_comment_time" do
     it "returns time of latest comment if comments exist" do
       discussion = create :discussion

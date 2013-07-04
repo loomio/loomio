@@ -7,16 +7,12 @@
             %li.nav-item#logo-home
               %a.nav-logo-link{:href => "/"}
                 = image_tag("top-bar-loomio.png", :alt => "Loomio")
-            = render 'application/groups_dropdown'
             = render 'notifications_dropdown'
+            = render 'application/groups_dropdown'
             = render 'user_dropdown'
-            - if show_contribution_icon?
-              %li.nav-item#contribute
-                %a.nav-link.enable-tooltip{:href => '/contributions', title: t(:'contribution.tooltip')}
-                  %span.header-bar-icon.nav-item-icon.large-icon.heart-icon
-                    ❤
+            = render 'contribute'
             = render 'help_dropdown'
-
+            = render 'search'
   - else
     .container#top
       .inner-container

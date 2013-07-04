@@ -22,6 +22,10 @@ class Discussion < ActiveRecord::Base
     :source => :user, :uniq => true
   has_many :events, :as => :eventable, :dependent => :destroy
 
+  include PgSearch
+  pg_search_scope :search, against: [:title, :description],
+    using: {tsearch: {dictionary: "english"}}
+
   delegate :users, :to => :group, :prefix => :group
   delegate :full_name, :to => :group, :prefix => :group
   delegate :email, :to => :author, :prefix => :author

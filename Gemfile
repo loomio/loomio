@@ -41,6 +41,7 @@ gem 'piwik_analytics', '~> 1.0.1'
 gem 'friendly_id', '~> 4.0.9'
 gem 'httparty', '~> 0.11.0'
 gem 'timecop', '~> 0.6.1'
+gem 'pg_search', '~> 0.7.0'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
