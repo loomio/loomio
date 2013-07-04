@@ -1,9 +1,6 @@
 .footer.clearfix
   .left
-    - language_links = []
-    - Translation::LANGUAGES.each do |language|
-      - language_links << link_to( language[0], "?&locale=#{language[1]}" )
-    = language_links.join(" &middot; ").html_safe
+    = Translation.language_links.html_safe
   .right
-    = link_to t(:about), about_path
+    = link_to t(:about), about_path, target: 'blank'
     / = link_to "Blog", blog_path

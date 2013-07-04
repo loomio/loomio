@@ -1,742 +1,607 @@
-en:
+el:
   activerecord:
     errors:
       messages:
-        blank: "can't be blank"
-
+        blank: "δεν μπορεί να είναι κενό"
   errors:
     messages:
-      email: "Not a valid email address"
-
+      email: "Μη έγκυρη ηλεκτρονική διεύθυνση"
   time:
     formats:
       for_today: '%l:%M %P'
-
   date:
     formats:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
       datepicker: "%d-%m-%Y"
-
   error:
-    access_denied: "Access denied."
-    cant_join_subgroup: "You cannot join a sub-group if you are not a member of the parent group."
-    cant_modify_position: "This proposal has closed."
-    cant_state_position: "This proposal has closed."
-    cant_view_member_profile: "You're unable to view the member's profile because you are not in the same group."
-    contribution: "Please sign in to make a contribution."
-    discussion_not_created: "Discussion could not be created."
-    group_not_archived: "Group could not be archived."
-    invalid_close_date: "Invalid close date, please check this date has not passed."
-    invalid_email: "Please enter at least one valid email address"
-    image_upload_fail: "Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file."
-    permission_to_invite: "You do not have permission to invite new members."
-    position_not_updated: "Could not update position."
-    settings_not_updated: "Your settings did not get updated."
-    group_request_already_verified: "Sorry! The verification link you clicked has already been confirmed. If you haven't heard from us within 48 hours, get in touch: contact@loomio.org"
-    group_request_already_accepted: "Sorry! This invitation is invalid or has already been accepted."
-    group_request_contribution: "Please select a category. This isn’t a commitment to pay, just useful information to help us design our model. Thanks!"
-    group_request_invalid_token: "Sorry! This is an invalid token"
-    group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
-    group_already_setup: "The group you are trying to setup already exists."
-    proposal_already_exists: "There is already an open proposal in this discussion."
-    not_found: "Item not found. It may have been deleted."
+    access_denied: "Μη επιτρεπτή πρόσβαση."
+    cant_join_subgroup: "Δεν μπορείτε να συμμετάσχετε σε υπό-ομάδα εάν δεν είστε μέλος της κεντρικής ομάδας."
+    cant_modify_position: "Αυτή η πρόταση έχει κλείσει."
+    cant_state_position: "Αυτή η πρόταση έχει κλείσει."
+    cant_view_member_profile: "Είναι αδύνατον να δείτε τα προφίλ των μελών επειδή δεν είστε στην ίδια ομάδα."
+    contribution: "Παρακαλούμε συνδεθείτε για να κάνετε μια συνεισφορά."
+    discussion_not_created: "Η συζήτηση δεν μπόρεσε να δημιουργηθεί."
+    group_not_archived: "Η ομάδα δεν μπόρεσε να αρχειοθετηθεί."
+    invalid_close_date: "Μη έγκυρη ημερομηνία κλεισίματος, παρακαλούμε ελέγξτε ότι η ημερομηνία δεν έχει παρέλθει."
+    invalid_email: "Παρακαλούμε δηλώστε τουλάχιστον μια έγκυρη ηλεκτρονική διεύθυνση"
+    image_upload_fail: "Δεν μπορείτε να ανεβάσετε την εικόνα. Βεβαιωθείτε ότι η εικόνα είναι κάτω από 1 MB και είναι αρχείο  .jpeg, .png, ή .gif."
+    permission_to_invite: "Δεν έχετε το δικαιώμα να προσκαλέσετε νέα μέλη."
+    position_not_updated: "Δεν μπόρεσε να ενημερωθεί η θέση."
+    settings_not_updated: "Οι ρυθμίσεις σας δεν ενημερώθηκαν."
+    group_request_already_verified: "Συγνώμη! Ο σύνδεσμος επιβεβαιώσης που πατήσατε έχει ήδη επιβεβαιωθεί. Εάν δεν ακούσατε νέα από εμάς μέσα σε 48 ώρες, επικοινωνήστε με το contact@loomio.org"
+    group_request_already_accepted: "Συγνώμη! Αυτή η πρόσκληση είναι άκυρη ή ήδη έχει γίνει δεκτή."
+    group_request_contribution: "Παρακαλούμε επιλέξτε κατηγορία. Αυτό δεν είναι μια δέσμευση για να πληρώσει, αλλά χρήσιμες πληροφορίες για να μας βοηθήσει να σχεδιάσουμε καλύτερα το μοντέλο μας. Ευχαριστούμε!"
+    group_request_invalid_token: "Συγνώμη! Αυτό είναι ένα άκυρο διακριτικό"
+    group_private_or_not_found: "Η ομάδα δεν βρέθηκε \n\nΑυτή η ομάδα πιθανώς είναι ιδιωτική. Εάν κάποιος σας έδωσε αυτόν τον σύνδεσμο, ζητήστε του να σας προσκαλέσει στην ομάδα."
+    group_already_setup: "Η ομάδα που προσπαθείτε να στήσετε υπάρχει ήδη."
+    proposal_already_exists: "Υπάρχει ήδη ανοιχτή πρόταση για αυτή την συζήτηση."
+    not_found: "Το αντικείμενο δεν βρέθηκε. Πιθανώς έχει διαγραφεί."
   alert:
-    duplicate_email: "%{which_email} is already in the group."
-
+    duplicate_email: "%{which_email} βρίσκετε ήδη στην ομάδα."
   notice:
-    admin_rights_removed: "%{which_user}'s admin rights have been removed."
-    email_added: "%{which_email} has been added to the group."
-    member_removed: "Member removed."
-    membership_approved: "Membership approved"
-    membership_requested: "Membership requested."
-    membership_request_canceled: "Membership request canceled."
-    membership_request_ignored: "Membership request ignored."
-    settings_updated: "Your settings have been updated."
-    user_made_admin: "%{which_user} has been made an admin."
-    you_have_left_group: "You have left %{which_group}."
+    admin_rights_removed: "Του/της %{which_user} τα δικαιώματα διαχειριστή έχουν αφαιρεθεί."
+    email_added: "%{which_email} έχει προστεθεί στην ομάδα."
+    member_removed: "Το μέλος αφαιρέθηκε."
+    membership_approved: "Το μέλος εγκρίθηκε"
+    membership_requested: "Αίτηση μέλους έχει ζητηθεί."
+    membership_request_canceled: "Αίτηση μέλους απορίφθη."
+    membership_request_ignored: "Αίτηση μέλους αγνοήθηκε."
+    settings_updated: "Οι ρυθμίσεις σας έχουν ενημερωθεί."
+    user_made_admin: "Ο/Η %{which_user} έχει γίνει διαχειριστής/ρια."
+    you_have_left_group: "Αφαιρεθήκατε από το %{which_group}."
   warning:
-    cant_remove_last_admin: "You are the last admin and cannot be removed."
-    membership_request_already_ignored: "Membership request has already been ignored."
-    membership_request_already_canceled: "Membership request has already been canceled."
-    position_not_submitted: "Your position could not be submitted"
-    proposal_not_created: "Proposal could not be created"
-    user_already_admin: "%{which_user} is already an admin of this group."
-    user_already_member: "%{which_user} is already a member of this group."
-    user_not_admin: "Sorry, %{which_user} must be an admin of this group to access this."
+    cant_remove_last_admin: "Είστε ο τελευταίος διαχειριστής και δεν μπορείτε να αφαιρεθείτε."
+    membership_request_already_ignored: "Η αίτηση μέλους έχει ήδη αγνοηθεί."
+    membership_request_already_canceled: "Η αίτηση μέλους έχει ήδη ακυρωθεί."
+    position_not_submitted: "Η θέση σας δεν μπορούσε να υποβληθεί"
+    proposal_not_created: "Η πρόταση δεν μπόρεσε να δημιουργηθεί"
+    user_already_admin: "%{which_user} είναι ήδη διαχειριστής σε αυτήν την ομάδα."
+    user_already_member: "%{which_user} είναι ήδη μέλος αυτής της ομάδας."
+    user_not_admin: "Συγνώμη, ο/η %{which_user} πρέπει να είναι διαχειριστής/ρια της ομάδας για να αποκτήσει πρόσβαση σε αυτό."
   success:
-    added_to_group: "You have been added to %{which_group}."
-    close_date_changed: "Close date successfully changed."
-    discussion_created: "Discussion successfully created."
-    discussion_deleted: "Discussion successfully deleted."
-    emails_sending: "Emails sending."
-    group_archived: "Group archived successfully."
-    group_created: "Group created successfully."
-    members_added: "Members added to group."
-    position_submitted: "Position submitted"
-    position_updated: "Position updated."
-    proposal_created: "Proposal successfully created."
-    proposal_deleted: "Proposal deleted."
+    added_to_group: "Έχετε προστεθεί στο %{which_group}."
+    close_date_changed: "Η ημερομηνία κλεισίματος άλλαξε επιτυχώς."
+    discussion_created: "Η συζήτηση δημιουργήθηκε επιτυχώς."
+    discussion_deleted: "Η συζήτηση διαγράφηκε επιτυχώς."
+    emails_sending: "Τα μηνύματα στέλνονται."
+    group_archived: "Η ομάδα αρχειοθετήθηκε επιτυχώς."
+    group_created: "Η ομάδα δημιουργήθηκε επιτυχώς."
+    members_added: "Μέλη προστέθηκαν στην ομάδα."
+    position_submitted: "Θέση υποβλήθηκε"
+    position_updated: "Η θέση ενημερώθηκε."
+    proposal_created: "Η πρόταση δημιουργήθηκε επιτυχώς."
+    proposal_deleted: "Η πρόταση διαγράφηκε."
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one:   "seconds"
-        other: "%{count} seconds"
+        one: "δευτερόλεπτα"
+        other: "%{count} δευτερόλεπτα"
       x_seconds:
-        one:   "1 second"
-        other: "%{count} seconds"
+        one: "1 δευτερόλεπτο"
+        other: "%{count} δευτερόλεπτα"
       less_than_x_minutes:
-        one:   "1 minute"
-        other: "%{count} minutes"
+        one: "1 λεπτό"
+        other: "%{count} λεπτά"
       x_minutes:
-        one:   "1 minute"
-        other: "%{count} minutes"
+        one: "1 λεπτό"
+        other: "%{count} λεπτά"
       about_x_hours:
-        one:   "1 hour"
-        other: "%{count} hours"
+        one: "1 ώρα"
+        other: "%{count} ώρες"
       x_days:
-        one:   "1 day"
-        other: "%{count} days"
+        one: "1 ημέρα"
+        other: "%{count} ημέρες"
       about_x_months:
-        one:   "1 month"
-        other: "%{count} months"
+        one: "1 μήνα"
+        other: "%{count} μήνες"
       x_months:
-        one:   "1 month"
-        other: "%{count} months"
+        one: "1 μήνα"
+        other: "%{count} μήνες"
       about_x_years:
-        one:   "1 year"
-        other: "%{count} years"
+        one: "1 χρόνος"
+        other: "%{count} χρόνια"
       over_x_years:
-        one:   "1 year"
-        other: "%{count} years"
+        one: "1 χρόνος"
+        other: "%{count} χρόνια"
       almost_x_years:
-        one:   "1 year"
-        other: "%{count} years"
-
+        one: "1 χρόνος"
+        other: "%{count} χρόνια"
   inbox:
-    dropdown-btn: 'Inbox'
-    empty: You're up to date! There are no comments you haven't seen.
-
+    dropdown-btn: 'Εισερχόμενα'
+    empty: Είστε ενήμεροι! Δεν υπάρχουν σχόλια που δεν έχετε δει.
   notifications:
-    header: "Notifications"
-    new_discussion: "started a new discussion"
-    new_motion: "created a new proposal"
+    header: "Ειδοποιήσεις"
+    new_discussion: "Ξεκίνησε μια νέα συζήτηση"
+    new_motion: "Δημιουργήθηκε μια νέα πρόταση"
     motion_closed:
-      by_user: "closed the proposal"
-      by_expiry: "Proposal has closed"
-    new_vote: "%{position} on the proposal"
-    new_comment: "commented on the discussion"
-    comment_liked: "liked your comment in the discussion"
-    user_mentioned: "mentioned you in a comment in"
-    membership_requested: "requested membership to"
-    user_added_to_group: "added you to the group"
-    motion_closing_soon: "Proposal is closing soon"
-    motion_blocked: "blocked the proposal"
-
-  edit_discussion_context: "Edit discussion context"
-  request_new_group: "Request New Group"
-  request_new_group_details: "or wait until you are invited to one."
-  empty_notifications: "You do not have any notifications yet."
-  see_all_notifications: "See all notifications"
-  user_settings: "User Settings"
-  email_preferences: "Email Preferences"
-  sign_out: "Sign out"
-  sign_in: "Sign in"
-  sign_in_details: "to participate. You are currently logged out."
-  tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
-  or_sign_in_html: "If you've already got an account, <a href='%{link}'0>click here to sign in</a>."
-
-  click_to_dismiss: "Click here to dismiss this message"
-  generic_confirm: "Are you sure?"
-
+      by_user: "έκλεισε η πρόταση"
+      by_expiry: "Η πρόταση έχει κλείσει."
+    new_vote: "%{position} στην πρόταση"
+    new_comment: "έχετε σχολιάσει στην συζήτηση"
+    comment_liked: "άρεσε το σχόλιο σας στην συζήτηση"
+    user_mentioned: "σας ανεφέραν σε ένα σχόλιο στην/στον"
+    membership_requested: "έχει αιτηθεί για μέλος στο"
+    user_added_to_group: "προστεθήκατε στην ομάδα"
+    motion_closing_soon: "Η πρόταση κλείνει σύντομα"
+    motion_blocked: "μπλόκαρε την πρόταση"
+  edit_discussion_context: "Επεξεργασία περιεχομένου συζήτησης"
+  request_new_group: "Αίτηση νέας ομάδας"
+  request_new_group_details: "ή περιμένετε μέχρι να σας προσκαλέσουν σε μία."
+  empty_notifications: "Δεν έχετε καμία ειδοποίηση ακόμα."
+  see_all_notifications: "Δείτε όλες τις ειδοποιήσεις"
+  user_settings: "Ρυθμίσεις Χρήστη"
+  email_preferences: "Προτιμήσεις ηλεκτρονικού ταχυδρομείου"
+  sign_out: "Έξοδος"
+  sign_in: "Είσοδος"
+  sign_in_details: "για να συμμετάσχετε. Δεν έχετε συνδεθεί ακόμη."
+  tagline: "Δημιουργώντας έναν κόσμο όπου είναι εύκολο για τον καθένα να συμμετάσχει σε αποφάσεις που τους αφορούν."
+  or_sign_in_html: "Εάν έχετε ήδη λογαριασμό, <a href='%{link}'0>πατήστε εδώ για να εισέλθετε</a>."
+  click_to_dismiss: "Πατήστε εδώ για απορίψετε αυτό το μήνυμα."
+  generic_confirm: "Είστε σίγουροι?"
   discussion_helper_text:
-    header: "Welcome to your first discussion"
-    message: "<p>The topic is at the top of the page, with context underneath.</p><p>Discussion is on the left, decisions come up on the right. If you think the group is ready to make a decision, you can make a proposal for the group to consider.</p>"
+    header: "Καλώς ήρθατε στην πρώτη σας συζήτηση"
+    message: "<p>Το θέμα βρίσκετε στο πάνω μέρος της σελίδας, με το περιεχόμενο του από κάτω.</p><p>Η συζήτηση είναι στα αριστερά, οι αποφάσεις έρχονται στα δεξιά. Εάν πιστεύετε πως η ομάδα είναι έτοιμη να πάρει μια απόφαση, μπορείτε να κάνετε μια πρόταση για να την σκεφτεί η ομάδα.</p>"
   group_helper_text:
-    header: "Welcome to your new group!"
-    message: "<p>This is the <strong>group page</strong>. On the left is a list of all the discussions in this group.</p><p>When you want the group to discuss another topic, start a new discussion.</p>"
+    header: "Καλώς ήρθατε στην νέα σας ομάδα!"
+    message: "<p>Αυτή είναι η<strong>σελίδα της ομάδας</strong>. Στα αριστερά είναι η λίστα με όλες τις συζητήσεις της ομάδας.</p><p>Όταν θες η ομάδα να συζητήσει άλλο θέμα, ξεκινάς μια νέα συζήτηση.</p>"
   dashboard_helper_text:
-    header: "Welcome to your Home page"
-    message: "<p>The home page shows you all of the current discussions in all the groups you are a member of.</p><p>You can start a discussion on a new topic by clicking the “Start a discussion” button.</p>"
-
-  #
-  # GROUP PAGE
-  #
-
-  setup_steps_title: "Next steps:"
-  setup_step_1: "Check out the example discussion"
-  setup_step_2: "Start your first discussion"
-  setup_step_3: "Invite people to your group"
-
-  invite_people: "Invite people"
-  no_invitations_button: "No invitations left"
-  pending_invitations: 'Pending invitations'
-  number_pending: 'and %{pending} pending'
-  edit_memberships: 'Edit memberships'
-
-  add_new_member: "Add new member"
-  invite_members_to_group: "Invite members to %{which_group}"
-  remaining_invites: "remaining invites"
-  need_more_invites_html: "Need more? Loomio is in closed beta, which means we're still in development and have limited resources for user support. If you'd like to increase the size of your group %{href}."
-  get_in_touch_link: "get in touch"
-
-  email_members_in_group: "Email the members in %{which_group}"
-  subject_error: "Please fill in a subject"
-  subject_placeholder: "Write a subject"
-  message_error: "Please fill in a message"
-  message_placeholder: "Write a message to the members of %{which_group}."
-
-  email_group_members: "Email group members"
-  edit_group_settings: "Edit group settings"
-  leave_group: "Leave group"
-  confirm_leave_group: "Are you sure you wish to leave %{which_group}?"
-  deactivate_group: "De-activate group"
-  confirm_deactivate_group: "Wait!!! Are you sure you want to de-activate %{which_group}? You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@loomio.org."
-
-  invited_users: "Invited members"
-  members: "Members"
-  confirm_remove_user: "Are you sure you wish to remove %{which_user} from the group?"
-  remove_admin: "Remove admin"
-  confirm_remove_admin: "Are you sure you no longer want %{which_user} to be an admin for this group?"
-  make_admin: "Make admin"
-  confirm_make_admin: "Are you sure you want to make %{which_user} an admin for this group?"
-
-  membership_requests: "Membership requests"
-  confirm_approve_membership_request: "Are you sure you want to add %{which_user} to the group?"
-  ignore_request: "Ignore request"
-  confirm_ignore_membership_request: "Are you sure you want to ignore the member request from %{which_user}?"
-  membership_requested: "Membership Requested"
-  request_membership: "Request membership"
-  confirm_remove_membership_request: "Are you sure you wish to withdraw your membership request for this group?"
-
-  subgroups: "Sub-groups"
-  create_a_subgroup: "Create a sub-group"
-  select_members_to_add: "Select members to add to %{which_group}"
-  empty_parent_group: "Please add the members to the parent group first."
-  invite_members: "Invite members"
-  new_subgroup: "New sub-group"
-  create_subgroup: "Create sub-group"
-  creating_subgroup: "Creating sub-group"
-
-  group_privacy: "Privacy: '%{who}' can see this group."
-  everyone: "Everyone"
-  parent_group_members: "Parent group members"
-  members: "Members"
-
-  new_group: "New group"
-  create_group: "Create group"
-  creating_group: "Creating group"
-  edit_group: "Edit Group"
-  update_group: "Update group"
-  updating_group: "Updating group"
-
-  start_a_discussion: "Start a discussion"
-  group_description: "Group description"
-  edit_group_description: "Edit group description"
-
-  #
-  # DISCUSSION PAGE
-  #
-
+    header: "Καλώς ήρθες στην Κεντρική σου σελίδα"
+    message: "<p>Η Κεντρική σελίδα σου δείχνει όλες τις τωρινές συζητήσεις απ'όλες τις ομάδες που είσαι μέλος.</p><p> Μπορείς να ξεκινήσεις μια συζήτησης πατώντας στο κουμπί \"Ξεκινήστε μια συζήτηση\".</p>"
+  setup_steps_title: "Επόμενα βήματα:"
+  setup_step_1: "Ελέγξτε το παράδειγμα συζήτησης"
+  setup_step_2: "Ξεκινήσεις την πρώτη σας συζήτηση"
+  setup_step_3: "Προσκαλέστε άτομα στην ομάδα σας"
+  invite_people: "Προσκαλέστε άτομα"
+  no_invitations_button: "Δεν έχουν απομείνει προσκλήσεις"
+  pending_invitations: 'Εκκρεμείς προσκλήσεις'
+  number_pending: 'και  %{pending} αναμένεται '
+  edit_memberships: 'Επεξεργαστείτε τις αιτήσεις μελών'
+  add_new_member: "Προσθέστε νέο μέλος"
+  invite_members_to_group: "Προσκαλέστε μέλη στο/στη %{which_group}"
+  remaining_invites: "προσκλήσεις απομένουν"
+  need_more_invites_html: "Χρειάζεστε περισσότερα? Το Loomio είναι σε κλειστή δοκιμαστική έκδοση, το οποίο σημαίνει ότι είμαι ακόμα υπό ανάπτυξη και έχουμε περιορισμένους πόρους για την υποστήριξη χρηστών. Εάν θέλετε να αυξήσετε το μέγεθος της ομάδα σας %{href}."
+  get_in_touch_link: "μείνετε συντονισμένοι"
+  email_members_in_group: "Στείλτε μήνυμα (email) στα μέλη του %{which_group}"
+  subject_error: "Παρακαλώ συμπληρώστε ένα θέμα"
+  subject_placeholder: "Γράψτε ένα θέμα"
+  message_error: "Παρακαλώ συμπληρώστε το μήνυμα"
+  message_placeholder: "Γράψτε ένα μήνυμα στα μέλη της ομάδας %{which_group}."
+  email_group_members: "Στείλτε ηλεκτρονικό μήνυμα στα μέλη της ομάδας"
+  edit_group_settings: "Επεξεργαστείτε τις ρυθμίσεις της ομάδας"
+  leave_group: "Φύγετε από την ομάδα"
+  confirm_leave_group: "Είστε σίγουροι ότι θέλετε να φύγετε από την ομάδα %{which_group}?"
+  deactivate_group: "Απενεργοποιήστε την ομάδα"
+  confirm_deactivate_group: "Περιμένετε!!! Είστε σίγουροι ότι θέλετε να απενεργοποιήσετε την ομάδα %{which_group}? Δεν θα μπορείτε να βλέπετε πια την ομάδα. Ωστόσο, εάν επιθυμείτε να ξανά-ενεργοποιήσετε την ομάδα πάλι μπορείτε να μας το ζητήσετε στέλνοντας ηλεκτρονικό μήνυμα στο contact@loomio.org."
+  invited_users: "Τα μέλη προσκαλέστηκαν"
+  confirm_remove_user: "Είστε σίγουροι ότι θέλετε να αφαιρέσετε τον/την %{which_user} από την ομάδα?"
+  remove_admin: "Αφαιρέστε διαχειριστή"
+  confirm_remove_admin: "Είστε σίγουροι ότι δεν θέλετε ο/η %{which_user} να είναι διαχειριστής για αυτή την ομάδα?"
+  make_admin: "Κάντε τον/την διαχειριστή"
+  confirm_make_admin: "Είστε σίγουροι πως θέλετε να κάνετε τον/την %{which_user} διαχειριστή για αυτή την ομάδα"
+  membership_requests: "Αιτήσεις μελών"
+  confirm_approve_membership_request: "Είστε σίγουροι πως θέλετε να προσθέσετε τον/την %{which_user} στην ομάδα?"
+  ignore_request: "Αγνοήστε την αίτηση"
+  confirm_ignore_membership_request: "Είστε σίγουροι πως θέλετε να αγνοήσετε την αίτηση μέλους από τον/την %{which_user}?"
+  membership_requested: "Αίτηση μέλους έχει ζητηθεί"
+  request_membership: "Αίτηση για μέλος"
+  confirm_remove_membership_request: "Είστε σίγουροι πως επιθυμείτε να αποσύρετε την αίτηση μέλους για αυτήν την ομάδα?"
+  subgroups: "Υπο-ομάδες"
+  create_a_subgroup: "Δημιουργήστε μια υπο-ομάδα"
+  select_members_to_add: "Επιλέξτε μέλη για να προσθέσετε στην ομάδα %{which_group}"
+  empty_parent_group: "Παρακαλούμε προσθέστε τα μέλη στην κύρια ομάδα πρώτα."
+  invite_members: "Προσκαλέστε μέλη"
+  new_subgroup: "Νέα υπο-ομάδα"
+  create_subgroup: "Δημιουργία υπο-ομάδας"
+  creating_subgroup: "Δημιουργείτε υπο-ομάδα"
+  group_privacy: "Απόρρητο: '%{who}' μπορεί να δει αυτή την ομάδα."
+  everyone: "Όλοι"
+  parent_group_members: "Μέλη της κύριας ομάδας"
+  members: "Μέλη"
+  new_group: "Νέα ομάδα"
+  create_group: "Δημιουργία ομάδας"
+  creating_group: "Δημιουργείτε ομάδα"
+  edit_group: "Επεξεργασία ομάδας"
+  update_group: "Ενημέρωση ομάδας"
+  updating_group: "Ενημερώνεται η ομάδα"
+  start_a_discussion: "Ξεκινήστε μια συζήτηση"
+  group_description: "Περιγραφή ομάδας"
+  edit_group_description: "Επεξεργασία περιγραφής ομάδας"
   discussion_items:
-    new_discussion: "created the discussion"
-    new_motion: "created a proposal"
+    new_discussion: "Η συζήτηση δημιουργήθηκε"
+    new_motion: "Η πρόταση δημιουργήθηκε"
     motion_closed:
-      by_user: "closed the proposal"
-      by_expiry: "Proposal closed"
-    motion_close_date_edited: "changed the closing date for the proposal"
-    discussion_title_edited: "changed the discussion title"
-    discussion_description_edited: "changed the discussion description"
-
-  discussion: "Discussion"
-  current_decision: "Current decision"
-  previous_decisions: "Previous decisions"
-  see_previous_decisions: "See previous decisions"
-  create_new_proposal: "Create new proposal"
-  empty_decision_list_html: "Ready to make a decision? <br> Anyone can start a proposal."
-  empty_decision_index: "This group has not made any decisions yet."
-  empty_discussion_list: "There is no activity in this discussion yet."
-  empty_discussion_index: "There are no discussions in any of your groups."
-  empty_discussion_index_group: "This group does not have any discussions yet."
-
+      by_user: "έκλεισε την πρόταση"
+      by_expiry: "η πρόταση έκλεισε"
+    motion_close_date_edited: "άλλαξε η ημερομηνία κλεισίματος για την πρόταση"
+    discussion_title_edited: "άλλαξε ο τίτλος της συζήτησης"
+    discussion_description_edited: "άλλαξε η περιγραφή της συζήτησης"
+  discussion: "Συζήτηση"
+  current_decision: "Τωρινή απόφαση"
+  previous_decisions: "Προηγούμενες αποφάσεις"
+  see_previous_decisions: "Δείτε τις προηγούμενες αποφάσεις"
+  create_new_proposal: "Δημιουργήστε μια νέα πρόταση"
+  empty_decision_list_html: "Έτοιμοι να πάρετε απόφαση? <br> Οποιοσδήποτε μπορεί να ξεκινήσει μια πρόταση."
+  empty_decision_index: "Αυτή η ομάδα δεν έχει πάρει καμία απόφαση ακόμα."
+  empty_discussion_list: "Δεν υπάρχει δραστηριότητα στην συζήτηση ακόμα."
+  empty_discussion_index: "Δεν υπάρχουν συζητήσεις σε καμία από τις ομάδες σας."
+  empty_discussion_index_group: "Αυτή η ομάδα δεν έχει καμία συζήτηση ακόμα."
   discussion_context:
-    started_when: "Started %{when} ago"
-    last_edited: "Last edited about %{when} ago by "
-    see_revision_history: "See revision history"
-
+    started_when: "Ξεκίνησε πριν από %{when} "
+    last_edited: "Η τελευταία επεξεργασία έγινε περίπου πριν από %{when}"
+    see_revision_history: "Δείτε το ιστορικό αναθεωρήσεων"
   description_history:
-    header: "Revision history"
-    subheader: "Version"
-    edited_by: "Edited about %{when} ago by %{who}"
-    current: "(current)"
-    restore: "(Restore this version)"
-    applying_changes: "(Applying changes...)"
-    previous: "Prev"
-    next: "Next"
-
-  comment_form_placeholder: "Say something..."
-  comment_form_submit_button: "Post comment"
-
-  liked_by: "Liked by %{who}"
-  delete_comment: "Delete comment"
-  confirm_delete_comment: "Are you sure you want to delete this comment?"
-
-  markdown_settings_more_info: "More info..."
-  edit_discussion_title: "Edit discussion title"
-  delete_discussion: "Delete discussion"
-  confirm_delete_discussion: "Are you sure you want to permanently delete this discussion?"
-
-  #
-  # DECISIONS / PROPOSALS / MOTIONS
-  #
-
-  new_proposal: "New Proposal"
-
-  close_proposal: "Close proposal"
-  confirm_close_proposal: "Are you sure you want to close this proposal?"
-  change_proposal_close_date: "Change close date"
-  change_proposal_close_date_header: "Change the close date for the proposal '%{which}'"
-  proposal: Proposal
-  proposal_close_date_error: "Please give a future close date"
-  proposal_closing_when: "Closing in %{when}"
-  proposal_closed_when: "Closed %{when} ago"
-  proposed_when_by_who: "Proposed by %{who} %{when} ago"
-  engagement_on_open_proposal: "%{percent}% of members have stated their position (%{numerator}/%{denominator})"
-  engagement_on_closed_proposal: "%{percent}% of members stated their position (%{numerator}/%{denominator})"
-
-  state_your_position: "State your position"
-  positions: "Positions"
-  yes_position: "I agree"
-  yes_details: "I agree with this and want it to go ahead."
-  abstain_position: "I abstain"
-  abstain_details: "I am happy for the group to decide without me."
-  no_position: "I disagree"
-  no_details: "I think we can probably do better."
-  block_position: "I block"
-  block_details: "I have strong objections to this proposal and am not OK with it going ahead."
-  not_voted: "[Show members who have not yet decided]"
-  outcome: "Outcome"
-  outcome_placeholder: "What was the outcome of this proposal?"
-
-
-  #
-  # HELP PAGES
-  #
-
+    header: "Ιστορικό αναθεωρήσεων"
+    subheader: "Έκδοση"
+    edited_by: "Επεξεργάστηκε περίπου πριν από %{when} από τον/την %{who}"
+    current: "(τωρινό)"
+    restore: "(Επανέφερε αυτή την έκδοση)"
+    applying_changes: "(Εφαρμογή αλλαγών...)"
+    previous: "Προηγούμενο"
+    next: "Επόμενο"
+  comment_form_placeholder: "Πες κάτι..."
+  comment_form_submit_button: "Δημοσίευση σχόλιου"
+  liked_by: "Άρεσε στον/στην %{who}"
+  delete_comment: "Διαγραφή σχόλιου"
+  confirm_delete_comment: "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σχόλιο?"
+  markdown_settings_more_info: "Περισσότερες πληροφορίες..."
+  edit_discussion_title: "Επεξεργασία του τίτλου συζήτησης"
+  delete_discussion: "Διαγραφή συζήτησης"
+  confirm_delete_discussion: "Είστε σίγουροι ότι θέλετε να διαγράψετε μόνιμα αυτή την συζήτηση?"
+  new_proposal: "Νέα πρόταση"
+  close_proposal: "Κλείστε την πρόταση"
+  confirm_close_proposal: "Είστε σίγουροι ότι θέλετε να κλείσετε αυτήν την πρόταση?"
+  change_proposal_close_date: "Αλλάξτε την ημερομηνία κλεισίματος"
+  change_proposal_close_date_header: "Αλλάξτε την ημερομηνία κλεισίματος για την πρόταση '%{which}'"
+  proposal_close_date_error: "Παρακαλούμε δώστε μελλοντική ημερομηνία κλεισίματος"
+  proposal_closing_when: "Κλείνει σε %{when}"
+  proposal_closed_when: "Έκλεισε πριν από %{when}"
+  proposed_when_by_who: "Προτάθηκε από τον/την %{who} πριν από %{when} "
+  engagement_on_open_proposal: "%{percent}% των μελών έχουν πάρει θέση (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "%{percent}% των μελών έχουν πάρει θέση (%{numerator}/%{denominator})"
+  state_your_position: "Δηλώστε την θέση σας"
+  positions: "Θέσεις"
+  yes_position: "Συμφωνώ"
+  yes_details: "Συμφωνώ με αυτό και θέλω να προχωρήσει"
+  abstain_position: "Απέχω"
+  abstain_details: "Είμαι χαρούμενος με ότι αποφασίσει η ομάδα χωρίς εμένα."
+  no_position: "Διαφωνώ"
+  no_details: "Νομίζω ότι μπορούμε και καλύτερα."
+  block_position: "Μπλοκάρω"
+  block_details: "Έχω σοβαρές αντιρρήσεις για αυτή την πρόταση και δεν είμαι καλά με το να προχωρήσει."
+  not_voted: "[Δείξε τα μέλη που δεν έχουν αποφασίσει ακόμα]"
+  outcome: "Αποτέλεσμα"
+  outcome_placeholder: "Ποιό ήταν το αποτέλεσμα αυτής της πρότασης?"
   help:
-    coordinating: 'Coordinating your Loomio group'
-    coordinating_details: |
-       As the coordinator, you’re responsible for setting up your Loomio group and inviting
-       everyone in. As well as learning how to use a new piece of software, your group will
-       be learning new processes for collaborating more effectively and making good decisions
-       together. Here are some tips for supporting your group to succeed:
-    different_ways: 'Different ways to use Loomio'
-    engaging_html: |
-      <h2>Tips for engaging your group</h2>
-      <p>People will be excited to jump in and start participating when there’s an engaging
-      proposal on the table. A good proposal contains a plan of action for the group, so
-      that it’s immediately obvious what it means to agree or disagree. Think about how you
-      can identify discussions/decisions the group is currently undertaking in person or by
-      email that would be easier if they were on Loomio.</p>
-      <p>If your group is just starting out, you could start a light-hearted decision, to give
-      everyone a chance to play with the tool and see the decision-making process in action.</p>
-      <p>Another simple way to encourage people to engage in a discussion is to use the @mention
-      feature to prompt specific people; this will send them an email to tell them they’ve been
-      mentioned in a comment.</p>
+    coordinating: 'Συντονίζοντας την Loomio ομάδα σας'
+    coordinating_details: "Ως Συντονιστής, είστε υπεύθυνος για την ρύθμιση της Loomio ομάδας σας και καλώντας \nτον καθένα μέσα. Όπως και να μάθετε πως να χρησιμοποιείται ένα νέο κομμάτι του λογισμικού, η ομάδα σας θα\nμαθαίνει νέες διαδικασίες για να συνεργάζονται πιο αποτελεσματικά και να πραγματοποιούν καλές αποφάσεις\nμαζί. Εδώ είναι μερικές συμβουλές\
+      \ για να υποστηρίξετε την ομάδα σας να πετύχει:\n"
+    different_ways: 'Διάφοροι τρόποι να χρησιμοποιήσετε το Loomio'
+    engaging_html: "<h2>Συμβουλές για να συμμετάσχει η ομάδα σας</h2>\n\n<p>Οι άνθρωποι θα είναι ενθουσιασμένοι να έρχονται και να ξεκινήσουν να συμμετάσχουν όταν υπάρχει συμμετοχική\nπρόταση στο τραπέζι. Μια καλή πρόταση συμπεριλαμβάνει σχέδιο δράσης για την ομάδα, έτσι ώστε\nείναι αμέσως προφανές τι σημαίνει να συμφωνείς ή να διαφωνείς. Σκεφτείτε για\
+      \ το πως\nμπορείτε να προσδιορίσετε τις συζητήσεις/αποφάσεις που η ομάδα σας αναλαμβάνει αυτοπροσώπως ή με \nηλεκτρονικό ταχυδρομείο θα μπορούσε να είναι πιο εύκολο εάν ήταν στο Loomio.</p>\n<p> Εάν η ομάδα σας ξεκινάει, θα μπορούσατε να ξεκινήσετε με μια ανάλαφρη απόφαση, να δώσετε\nστον καθένα ευκαιρία να παίξει με το εργαλείο και να δει την διαδικασία\
+      \ λήψης αποφάσεων στην δράση.</p>\n<p>Άλλος απλός τρόπος είναι να ενθαρύνετε τους ανθρώπους να εμπλακούν σε μια συζήτηση χρησιμοποιώντας την @αναφορά \nχαρακτηριστικό ώστε να παρακινήσει συγκεκριμένα άτομα; αυτό θα στείλει κατευθείαν ηλεκτρονικό μήνυμα για να τους πει ότι έχουν\nαναφερθεί σε σχόλιο.</p>\n"
     example1_html: |
-      <h3>You need the group to discuss a broad topic and develop a solution together</h3>
-      <p>Strategy: Discuss a topic for a while before creating a proposal.</p>
-      <p>Discussions often reach the best outcome if you build shared understanding
-      about the problem before jumping to a specific solution. When people get to
-      participate in the process, they’re much more likely to be on board with the outcome.</p>
+      <h3>Η ομάδα χρειάζεται να συζητήσει ένα ευρύ θέμα και να αναπτύξουν μια λύση από κοινού</h3>
+      <p>Στρατηγική: Συζητήστε ένα θέμα πριν δημιουργήστε μια πρόταση.</p>
+      <p>Οι συζητήσεις συχνά φέρνουν το καλύτερο αποτέλεσμα εάν δημιουργήσουμε από κοινού κατανοητά
+      σχετικά με το πρόβλημα πριν πηδήξουμε σε συγκεκριμένη λύση. Όταν οι άνθρωποι μπαίνουν στην
+      διαδικασία για να συμμετάσχουν, είναι πολύ πιθανόν το να είναι παρόντες με το αποτέλεσμα.</p>
     example2_html: |
-      <h3>You already have a proposal in mind, and you want to get sign-off from the group to move forward.</h3>
-      <p>Strategy: Start a discussion about a specific decision and make a proposal immediately.</p>
-      <p>If you’ve got a clear outcome in mind but you want to make sure there aren’t any critical concerns,
-      you can use the proposal to get quick input into a decision.</p>
-      <p>You can do things like finalise a document, approve an application, or sign-off on a piece of work.</p>
-    get_in_touch: "Get in touch"
-    get_in_touch_description_html: "If you have any questions or feedback, send us an email: <a href='mailto:contact@loomio.org'>contact@loomio.org</a>"
-    getting_started: "Getting started"
-    getting_started_description: "On the left, the group discusses a topic, exchanging ideas and information. When there’s a decision for the group to make, it comes up on the right."
-    getting_the_most: 'Getting the most out of Loomio'
-    have_your_say: "Have your say"
+      <h3>Έχετε ήδη μια πρόταση στο μυαλό, και θέλετε να πάρετε την υπογραφή από την ομάδα για να προχωρήσετε μπροστά.</h3>
+      <p>Στρατηγική: Ξεκινήστε μια συζήτηση σχετικά με μια συγκεκριμένη απόφαση και κάντε πρόταση άμεσα.</p>
+      <p>Εάν έχετε καθαρό αποτέλεσμα στο μυαλό σας αλλά θέλετε να βεβαιωθείτε ότι δεν υπάρχουν σοβαρές ανησυχίες,
+      μπορείτε να χρησιμοποιήσετε την πρόταση για να παρθεί γρήγορα απόφαση.</p>
+      <p>Μπορείτε να κάνετε πράγματα όπως να τελειώσετε ένα κείμενο, να εγκρίνετε μια εφαρμογή, ή να υπογράψετε ένα κομμάτι δουλειάς.</p>
+    get_in_touch: "Μείνετε συντονισμένοι"
+    get_in_touch_description_html: "Εάν έχετε κάποιες ερωτήσεις ή σχόλια στείλτε μας ηλεκτρονικό μήνυμα στο:  <a href='mailto:contact@loomio.org'>contact@loomio.org</a>"
+    getting_started: "Ξεκινώντας"
+    getting_started_description: "Στα αριστερά, η ομάδα συζητάει ένα θέμα, ανταλλάζει ιδέες και πληροφορίες. Όταν υπάρχει μια απόφαση που πρέπει να κάνει η ομάδα, έρχεται στα δεξιά."
+    getting_the_most: 'Παίρνοντας τα περισσότερα από το Loomio'
+    have_your_say: "Πείτε την γνώμη σας"
     have_your_say_details_html: |
-      <p>When you’re ready to have your say, click one of the four decision buttons.</p>
-      <p>When you’ve made your decision, give a brief explanation. Underneath the pie,
-      you can see what everyone else thinks. This makes it quick and easy to catch up
-      with the discussion. As new information comes to light, you can change your
-      position at any time.</p>
-    have_a_discussion: "Have a discussion"
-    have_a_discussion_description: "The topic and any relevant background information sit at the top of the page. Use the comment box to add your voice to the discussion."
-    help: "Help tips"
-    how_it_works: "How it works"
+      <p>Όταν είστε έτοιμοι να πάρετε την απόφαση σας, πατήστε ένα από τα τέσσερα κουμπιά απόφασης.</p>
+      <p>Όταν έχετε πάρει την απόφαση σας, δώστε μια περιγραφική εξήγηση. Κάτω από την πίτα,
+      μπορείτε να δείτε τι σκέφτεται ο καθένας. Αυτό το κάνει γρήγορο και εύκολο για να είστε συντονισμένοι
+      με την συζήτηση. Όσο έρχονται νέες πληροφορίες στο φως, μπορείτε να αλλάξετε την
+      θέση σας ανά πάσα στιγμή.</p>
+    have_a_discussion: "Έχετε μια συζήτηση"
+    have_a_discussion_description: "Το θέμα και όποιες σχετικές πληροφορίες βρίσκονται στο πάνω μέρος της σελίδας. Χρησιμοποιήστε το κουτί για τα σχόλια και προσθέστε και την δικιά σας φωνή στην συζήτηση."
+    help: "Συμβουλές βοήθειας"
+    how_it_works: "Πως δουλεύει"
     invitation_html: |
-      <h2>Writing a great invitation</h2>
-      <p>The first question every new member will have is ‘what is this group for?’</p>
-      <p>Think about the simplest way you can describe the group: What do you want to
-      achieve together? What types of decisions will you be making? Who will be involved?</p>
-      <p>It can be a good idea to talk to your group first before you invite them to join Loomio.</p>
-      <p>People will want to know why they’ve been invited, what’s expected of them,
-      and why it’s worth their time to learn how to use a new tool.</p>
-    join_the_community: "Join the community"
-    join_the_community_description_html: "Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.<br /><br /><a href='https://www.loomio.org/groups/3'>Click here to go the Loomio Community group</a>."
-    images_and_text_formatting: "Images and text formatting"
+      <h2>Γράφοντας μια μεγάλη πρόσκληση</h2>
+      <p>Η πρώτη ερώτηση που έχει το κάθε νέο μέλος είναι αυτή η ομάδα για ποιον λόγο υπάρχει?’</p>
+      <p>Σκεφτείτε τον απλούστερο τρόπο που μπορείτε να περιγράψετε την ομάδα: Τι θέλετε να
+      επιτύχετε μαζί? Τι είδους αποφάσεις θα κάνετε? Ποιοι θα συμμετάσχουν?</p>
+      <p>Είναι καλή ιδέα να μιλήσετε στην ομάδα σας πρώτα πριν τους καλέσετε να εγγραφούν στο Loomio.</p>
+      <p>Οι άνθρωποι θα θέλουν να ξέρουν γιατί έχουν προσκαλεστεί, Τι να αναμένετε από αυτούς,
+      και γιατί αξίζει τον χρόνο τους να μάθουν αυτό το νέο εργαλείο.</p>
+    join_the_community: "Γίνετε μέλος της κοινότητας"
+    join_the_community_description_html: "Όλοι είναι ευπρόσδεκτοι να συμμετάσχουν στην κοινότητα του Loomio, όπου μιλάμε πως να κάνουμε το μεγαλύτερο το εργαλείο, και πως μπορεί να βελτιωθεί.<br /><br /><a href='https://www.loomio.org/groups/3'>Πατήστε εδώ για να πάτε στην κοινότητα της ομάδας στο Loomio</a>."
+    images_and_text_formatting: "Εικόνες και μορφοποίηση κειμένου"
     images_and_text_formatting_html: |
-      <p>Loomio uses ‘Markdown’ for image embedding and text formatting.
-      You can switch Markdown on with the small grey icon under the comment box.</p>
-      <p><a href='https://www.loomio.org/discussions/1124'>Click here</a>
-      for information on how to use Markdown.</p>
-    keep_up_to_date: "Keep up to date"
+      <p>Το Loomio χρησιμοποιεί το ‘Markdown’ για την ενσωμάτωση εικόνας και την μορφοποίηση κειμένου.
+      Μπορείτε να αλλάξετε στο Markdown με το μικρό γκρι εικονίδιο κάτω από το κουτί του σχόλιου.</p>
+      <p><a href='https://www.loomio.org/discussions/1124'>Πατήστε εδώ</a>
+      για πληροφορίες πως να χρησιμοποιείται το Markdown.</p>
+    keep_up_to_date: "Παραμείνετε ενημερωμένοι"
     keep_up_to_date_html: |
-      <p>Clicking your group name at the top of the screen takes you to your Group Page,
-      where you can see a list of all the discussions and decisions for that group. If
-      you’re in more than one group, you can see all the activity in all of your groups
-      at once on the Home Page.</p>
-      <p>You’ll get email notifications when important things happen in your group.
-      You can change your email preferences <a href="%{link}"">here</a>.</p>
-    make_a_decision: "Make a decision"
-    make_a_decision_description: "When the group is ready to make a decision, anyone can make a proposal. Outline a clear course of action and give some background so everyone knows exactly what it means to agree or disagree."
-    prompt_people_details: "If you want to get the attention of a specific person in your group, type ‘@’ followed by their name. They’ll get an email letting them know you’ve mentioned them in a comment."
-    prompt_people_html: "Prompt people with <span class='blue'>@mentions</span>"
-    positions_agree_description: "<span>Agree</span> means you’re happy with the proposal."
-    positions_abstain_description: "<span>Abstain</span> means you’re unsure, or you’re happy for the group to decide without you."
-    positions_disagree_description: "<span>Disagree</span> means you think there might be a better alternative, but you’re willing to go with the group’s decision."
-    positions_block_description: "<span>Block</span> means you’ve got serious objections and you’ll be extremely unhappy if this proposal goes ahead."
-    start_discussion: "Starting an engaging discussion"
-    start_discussion_html:  |
-      <p>When you start a discussion, make sure the title conveys the topic succinctly.
-      Use the Context Panel to give all the background information necessary for the
-      group to have a productive and informed discussion.</p>
-      <p>During the discussion, the Context Panel can be updated as new information
-      comes to light. As well as clarifying the topic, you can use this space for
-      sharing resources, summarising the discussion as it progresses, or outlining the
-      decision-making protocols your group is using.</p>
-    start_proposal: "Writing a clear proposal"
-    start_proposal_html: |
-      <p> If you make the title clear and succinct, people will immediately know exactly
-      what it means to agree or disagree.</p>
-      <p>It’s not the end of the world if a proposal doesn’t get clear agreement immediately.
-      If the group doesn’t love the first proposal, anyone can start a new proposal to
-      address the concerns raised, and keep the process moving forward.</p>
-      <p>Through this dynamic process, the collective wisdom of your group can generate better
-      ideas than anyone would have come up with on their own.</p>
-      <p>The deadline on a proposal can be extended at any time, if it looks like the decision
-      needs some more space. Everyone will get an email notification 24 hours before a proposal closes.</p>
+      <p>Πατώντας στο όνομα της ομάδας στο επάνω μέρος της οθόνης σας πηγαίνει στην σελίδα της ομάδας,
+      όπου μπορείτε να δείτε όλη την λίστα με τις συζητήσεις για αυτήν την ομάδα. Εάν
+      είστε σε περισσότερες από μία ομάδα, μπορείτε να δείτε όλη την δραστηριότητα σε όλες τις ομάδες
+      με την μία στην Κεντρική Σελίδα.</p>
+      <p>Θα παίρνετε ειδοποιήσεις ηλεκτρονικού μηνύματος όταν κάτι σημαντικό συμβαίνει στην ομάδα σου.
+      Μπορείτε να αλλάξετε τις προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας <a href="%{link}"">εδώ</a>.</p>
+    make_a_decision: "Πάτε μια απόφαση"
+    make_a_decision_description: "Όταν η ομάδα είναι έτοιμοι να πάρει μια απόφαση, οποιοσδήποτε μπορεί να κάνει πρόταση. Περιγράψτε ένα καθαρό θέμα δράσης και δώστε όσο περισσότερες πληροφορίες γίνετε για να γνωρίζει ο καθένας ακριβώς τι σημαίνει να συμφωνεί ή να διαφωνεί."
+    prompt_people_details: "Εάν θέλετε να πάρετε την προσοχή κάποιου συγκεκριμένου ατόμου στην ομάδα σας, πληκτρολογήστε  ‘@’ ακολουθώντας από το όνομα τους. Θα πάρουν ένα μήνυμα ηλεκτρονικού ταχυδρομείου γνωστοποιώντας τους ότι τους έχετε αναφέρει σε ένα σχόλιο."
+    prompt_people_html: "Προτρέψτε άτομα με <span class='blue'>@mentions</span>"
+    positions_agree_description: "<span>Συμφωνώ</span> σημαίνει ότι είστε χαρούμενος/η με την πρόταση."
+    positions_abstain_description: "<span>Αποχή</span> σημαίνει πως δεν είστε σίγουροι, ή είστε χαρούμενοι με όποια απόφαση πάρει η ομάδα χωρίς εσάς."
+    positions_disagree_description: "<span>Διαφωνώ</span> σημαίνει πως πιθανώς υπάρχει καλύτερη εναλλακτική, αλλά θα συμφιλιωθείτε με την απόφαση της ομάδας."
+    positions_block_description: "<span>Μπλοκάρισμα</span> σημαίνει πως έχετε πολύ σοβαρές ενστάσεις και θα είσαστε δυστυχισμένος έτσι και αυτή η πρόταση προχωρήσει."
+    start_discussion: "Ξεκινήστε μια ενδιαφέρουσα συζήτηση"
+    start_discussion_html: "<p>Όταν ξεκινάτε μια συζήτηση, βεβαιωθείτε ότι ο τίτλος εκφράζει το θέμα συνοπτικά.\nΧρησιμοποιήστε τον Πίνακα Περιεχομένου για να δώσετε όλες τις απαραίτητες πληροφορίες που χρειάζονται ώστε\nη ομάδα να έχει μια παραγωγική και τεκμηριωμένη συζήτηση.</p>\n<p>Κατά την διάρκεια της συζήτησης, ο Πίνακας περιεχομένου μπορεί να\
+      \ ενημερωθεί όσο έρχονται\nνέες πληροφορίες. Καθώς και για την αποσαφήνιση του θέματος, μπορείτε να χρησιμοποιήσετε αυτόν τον χώρο \nδιαμοιράζοντας τους πόρους, συνοψίζοντας την συζήτηση όσο εξελίσσεται, η να περιγράφεται τα\nπρωτόκολλα λήψης αποφάσεων που χρησιμοποιεί η ομάδα σας.</p>\n"
+    start_proposal: "Γράψτε μια καθαρή πρόταση"
+    start_proposal_html: "<p> Εάν κάνετε τον τίτλο σαφή και συνοπτικό, οι άνθρωποι θα γνωρίζουν άμεσα \nεάν συμφωνούν ή διαφωνούν με το θέμα.</p>\n<p>Δεν είναι το τέλος του κόσμου εάν μια πρόταση δεν πάρει ξεκάθαρη συμφωνία άμεσα.\nΕάν η ομάδα δεν της αρέσει η πρώτη πρόταση, οποιοσδήποτε μπορεί να ξεκινήσει μια νέα πρόταση για\nνα αντιμετωπιστούν οι ανησυχίες\
+      \ που εκφράστηκαν, και να συνεχίσει η διαδικασία για να προχωρήσει εμπρός το θέμα.</p>\n<p>Διαμέσου αυτής της δυναμικής διαδικασίας, η συλλογική σοφίας της ομάδας μπορεί να δημιουργήσει καλύτερες\nιδέες από οποιονδήποτε άλλον έρθει με τις δικές του.</p>\n<p>Η προθεσμία σε μια πρόταση μπορεί να επεκταθεί ανά πάσα στιγμή, αν φαίνεται ότι μια απόφαση\
+      \ \nχρειάζεται λίγο περισσότερο χρόνο. Όλοι θα παίρνουν ειδοποίηση μέσω μηνύματος ηλεκτρονικού ταχυδρομείου 24 ώρες πριν κλείσει μια πρόταση.</p>\n"
     video_id: "52025402"
-    video_tutorial: "Video tutorial"
-    video_tutorial_description: "Check out the video for a quick demonstration of how to use Loomio."
-
+    video_tutorial: "Εκμάθηση μέσω βίντεο"
+    video_tutorial_description: "Ελέγξτε το νέο βίντεο για μια γρήγορη επίδειξη πως να χρησιμοποιείται το loomio."
   hint:
-    context: 'Tips for using the context panel'
-    discussion: 'Tips for starting an engaging discussion'
-    invitation: 'Tips for writing a great invitation'
-    proposal: 'Tips for writing a clear proposal'
-    vote: 'You can change your position at any time'
-
-  #
-  # CONTRIBUTIONS
-  #
-
+    context: 'Συμβουλές για να χρησιμοποιήτε τον πίνακα περιεχόμενων'
+    discussion: 'Συμβουλές για να ξεκινήσετε μια ενδιαφέρουσα συζήτηση'
+    invitation: 'Συμβουλές για να γράψετε μια  μεγάλη πρόσκληση'
+    proposal: 'Συμβουλές για να γράψετε καθαρά μια πρόταση'
+    vote: 'Μπορείτε να αλλάξετε την θέση σας ανά πάσα στιγμή'
   contribution:
-    any_amount: Any one-time contribution
-    monthly_html: Monthly contribution <span>(USD)</span>
-    one_time_html: One-time contribution <span>(USD)</span>
-    tooltip: Contribute
-    thought_about_contributing: Choose your contribution
-    thought_about_contributing_description: |
-      Loomio is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
-
-      We believe money shouldn’t be a barrier, so we’re developing a revenue model that puts you in charge of the amount you pay.
-
-      Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users.
-
-      Thanks for making this possible!
-    thank_you_title: Thank you for contributing to Loomio!
+    any_amount: Οποιαδήποτε μιας φοράς συνεισφοράς
+    monthly_html: Μηνιαία συνεισφορά <span>(USD)</span>
+    one_time_html: Μία φορά συνεισφορά <span>(USD)</span>
+    tooltip: Συνεισφορά
+    thought_about_contributing: Επιλέξτε την συνεισφορά σας
+    thought_about_contributing_description: "Το Loomio είναι ένα μια συλλογική κοινωνική επιχείρηση που εργάζεται ώστε να κάνει εύκολο για οποιονδήποτε να συμμετάσχει σε αποφάσεις που τον αφορούν.\n\nΠιστεύουμε ότι τα λεφτά δεν θα έπρεπε να αποτελούν εμπόδιο, έτσι αναπτύσσουμε ένα εναλλακτικό μοντέλο εσόδων το\nοποίο σας καθιστά υπεύθυνους για το ποσό\
+      \ που πληρώνετε. \n\nΗ συνεισφορά σας σημαίνει ότι μπορούμε να κρατήσουμε το Loomio ανεξάρτητο, δωρεάν από διαφημίσεις, και καθοδηγούμενο από την κοινότητα των χρηστών μας\n\nΕυχαριστούμε που το κάνετε αυτό δυνατόν!\n"
+    thank_you_title: Ευχαριστούμε για την συνεισφορά σας στο Loomio!
     thank_you_body: |
-      Your contribution helps us deliver easy collaborative decision making to the world.
+      Η συνεισφορά σας μας βοηθάει να παραδώσουμε εύκολα συλλογικές λήψεις αποφάσεων στον κόσμο.
 
-      You will receive an email shortly with a receipt for your contribution.
+      Θα λάβετε σύντομα ένα ηλεκτρονικό μήνυμα με την απόδειξη για την συνεισφορά σας.
 
-      Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.
+      Όλοι είναι ευπρόσδεκτοι να συμμετάσχουν στην κοινότητα του Loomio, όπου συνομιλάμε για το πως θα το κάνουμε το καλύτερο εργαλείο και πως θα το βελτιώσουμε.
 
-      <a href='https://www.loomio.org/groups/3'>Take me to the Loomio Community group &raquo;</a>
-
-  #
-  # SIGN IN
-  #
-
-  resend_confirmation: "Resend confirmation instructions"
-  new_password: "New password"
-  confirm_new_password: "Confirm new password"
-  change_your_password: "Change your password"
-  change_my_password: "Change my password"
-  send_password_reset: "Send me reset password instructions"
-  blank_details: "(leave blank if you don't want to change it)"
-  password_confirmation: "Password confirmation"
-  current_password: "Current password"
-  password_details: "(we need your current password to confirm your changes)"
-  cancel_my_account: "Cancel my account"
-  remember_me: "Remember me"
-  signing_in: "Signing in"
-  dont_have_account: "Don't have an account?"
-  closed_beta: "We're currently in closed testing and not accepting public sign-ups (yet!)."
-  closed_beta_details: "If you belong to a group that is using Loomio but you don't have your own Loomio account, please contact the person in your organization who set up Loomio and ask them to add you to the group."
-  forgot_your_password: "Forgot your password?"
-  confirmation_not_received: "Didn't receive confirmation instructions?"
-  unlock_not_received: "Didn't receive unlock instructions?"
-
-  #
-  # INVITATIONS
-  #
-
-
+      <a href='https://www.loomio.org/groups/3'>Πήγαινε με στην ομάδα της κοινότητας του Loomio </a>
+  resend_confirmation: "Επαναποστολή οδηγιών επιβεβαιώσης"
+  new_password: "Νέος Κωδικός"
+  confirm_new_password: "Επιβεβαίωση νέου κωδικού"
+  change_your_password: "Άλλαξε τον κωδικό σου"
+  change_my_password: "Αλλαγή του κωδικού μου"
+  send_password_reset: "Στείλε μου οδηγίες για επαναφορά του κωδικού μου"
+  blank_details: "(αφήστε το κενό εάν δεν επιθυμείτε να το αλλάξετε)"
+  password_confirmation: "Επιβεβαίωση κωδικού"
+  current_password: "Τωρινός κωδικός"
+  password_details: "(χρειαζόμαστε τον τωρινό κωδικό σας για να επιβεβαιώσουμε τις αλλαγές)"
+  cancel_my_account: "Ακύρωσε τον λογαριασμό μου"
+  remember_me: "Να με θυμάσε"
+  signing_in: "Είσοδος"
+  dont_have_account: "Δεν έχετε λογαριασμό?"
+  closed_beta: "Είμαστε σε κλειστή δοκιμή και δεν δεχόμαστε δημόσιες εγγραφές (ακόμα!)."
+  closed_beta_details: "Εάν ανήκετε σε ομάδα η οποία χρησιμοποιεί το Loomio αλλά δεν έχετε Loomio λογαριασμό, παρακαλούμε επικοινωνήστε με το άτομο του οργανισμό σας, ο οποίος είναι διαχειριστής στο Loomio, και ζητήστε του να σας προσθέσει στην ομάδα."
+  forgot_your_password: "Ξεχάσατε τον κωδικό σας?"
+  confirmation_not_received: "Δεν λάβατε οδηγίες επιβεβαίωσης?"
+  unlock_not_received: "Δεν λάβατε οδηγίες ξεκλειδώματος?"
   invitation:
-    no_invitations_left: "Sorry you don't have any invitations left"
-    no_invitations_left_get_more: "Please email contact@loomio.org and we'll see what we can do to help you"
-    invitation_not_found:  'Could not find invitation with that token. Please ask for a new invitation from the sender.'
-    invitation_cancelled: 'This invitation has been cancelled. Please contact the sender of the invitation if you believe this was done in error.'
-    invitation_already_used: 'This invitation has already been used. Please sign in to continue to your group.'
-    recipients: "Enter email addresses, seperated by commas:"
-    invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
-    subject: "Please join our new Loomio group, %{group}"
-    invite_people: "Invite people to your group"
+    no_invitations_left: "Συγνώμη δεν έχουν απομείνει άλλες προσκλήσεις"
+    no_invitations_left_get_more: "Παρακαλούμε στείλτε ηλεκτρονικό μήνυμα στο contact@loomio.org και θα δούμε τι μπορούμε να κάνουμε"
+    invitation_not_found: 'Δεν μπόρεσα να βρω πρόσκληση με αυτό το διακριτικό. Παρακαλούμε ζητήστε νέα πρόσκληση από τον αποστολέα.'
+    invitation_cancelled: 'Αυτή η πρόσκληση έχει ακυρωθεί. Παρακαλούμε επικοινωνήστε με τον αποστολέα της πρόσκλησης εάν πιστεύετε πως αυτό έγινε από λάθος.'
+    invitation_already_used: 'Αυτή η πρόσκληση έχει χρησιμοποιηθεί ήδη. Παρακαλούμε συνδεθείτε για να συνεχίσετε στην ομάδα.'
+    recipients: "Βάλτε τις ηλεκτρονικές διευθύνσεις, χωρισμένες από κόμμα:"
+    invitees_placeholder: "Όνομα Χρήστη <user1@example.com>, user2@example.com"
+    subject: "Παρακαλούμε γίνετε μέλος στη νέα Loomio ομάδα μας, %{group}"
+    invite_people: "Προσκάλεσε άτομα στην ομάδα σου"
     body_editable: |
-      Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio.
-    message_body: "Invitation message"
-    invites_more_help2: "<p>You can invite people to your group at any time.</p><p>You might want to invite all your members in right away, or you could start by inviting just the people you’re working most closely with.</p>"
-    send_invitations: "Send invitations"
-    invitation_link: "Invitation link"
-    link_help: "Click this link to join %{group} on Loomio:"
-    copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
-
-
-  #
-  # EXAMPLE CONTENT
-  #
-
+      Γεια σου, έλα και πάρε αποφάσεις μαζί μας! Χρησιμοποιούμε ένα εργαλείο συλλογικό για λήψεις αποφάσεων που λέγεται Loomio.
+    message_body: "Μήνυμα πρόσκλησης"
+    invites_more_help2: "<p>Μπορείτε να προσκαλέσετε άτομα ανά πάση στιγμή στην ομάδα.</p><p>Πιθανώς θα θέλετε να καλέσετε όλα τα μέλη σας αμέσως, ή θα μπορούσατε να ξεκινήσετε προσκαλώντας μόνο τα άτομα που εργάζεστε πιο στενά.</p>"
+    send_invitations: "Στείλε προσκλήσεις"
+    invitation_link: "Σύνδεσμος πρόσκλησης"
+    link_help: "Πάτα σε αυτόν τον σύνδεσμο για να εγγραφείς στην ομάδα %{group} στο Loomio:"
+    copy: "Εάν κάποιος δεν έλαβε το ηλεκτρονικό μήνυμα πρόσκλησης, παρακαλούμε ελεύθερα αντιγράψτε τον σύνδεσμο της πρόσκλησης και δώστε τον στον παραλήπτη ο/η ίδιος/α."
   example_discussion:
-    title: "Example Discussion: Welcome and introduction to Loomio"
+    title: "Παράδειγμα Συζήτησης: Καλώς Ήρθατε και συστηθείτε στο Loomio"
     description: |
-      Welcome to Loomio, a new tool for group decision-making.
-      By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, your group can put their heads together to find the best way forward.
-      You can use this example discussion to play around with the features of the tool.
-      To get the ball rolling, Loomio Helper Bot thinks it would be a great idea for your group to take a holiday together. The pie graph on the right shows how your group feels about the proposal. You can have your say by clicking on one of the decision buttons underneath.
-
+      Καλώς Ήρθατε στο Loomio, ένα εργαλείο για ομαδικές λήψεις αποφάσεων.
+      Με την συμμετοχή σε ένα θέμα, συζητάτε διάφορες οπτικές και πληροφορίες, και αντιμετωπίζεται οποιαδήποτε ανησυχίες που προκύπτουν, η ομάδα σας μπορεί να βάλει όλες τις σκέψεις μαζί για να βρείτε ένα καλύτερο τρόπο για εμπρός.
+      Μπορείτε να χρησιμοποιήσετε αυτό το παράδειγμα συζήτησης για να παίξετε τριγύρω με τα χαρακτηριστικά του εργαλείου.
+      Για να συνεχίσει να περιστρέφεται η μπάλα, το ρομπότ βοήθειας του Loomio νομίζει πως θα ήταν καλή ιδέα για την ομάδα σας να κάνετε διακοπές μαζί. Το γράφημα πίτσας στα δεξιά δείχνει πως η ομάδα σας αισθάνεται σχετικά με την πρόταση. Μπορείτε να πείτε και εσείς πως νιώθετε πατώντας ένα από τα κουμπιά απόφασης κάτω από την πίτα.
   example_motion:
-    name: "We should have a holiday on the moon!"
+    name: "Πρέπει να έχουμε διακοπές στο φεγγάρι!"
     description: |
-      Loomio Helper Bot is really keen for your group to invest in a trip to the moon. Apparently the space-cheese is delicious. But the implications for your carbon footprint are worrying.
-      Is it a good idea? Loomio Helper Bot wants to know what you think!
-      If you’re clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).
-      You’ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes.
-
-  #
-  # FORMS
-  #
-
+      Το ρομπότ βοήθειας του Loomio είναι πραγματικά πρόθυμο να επενδύσει σε ένα ταξίδι στο φεγγάρι για την ομάδα σας. Προφανώς το διαστημοτυρί είναι πεντανόστιμο. Όμως οι συνέπειες για το αποτύπωμα άνθρακα σας είναι ανησυχητικές.
+      Είναι καλή ιδέα? Το ρομπότ βοήθειας του Loomio θέλει να ξέρει τι σκέφτεστε!
+      Εάν είστε σίγουροι για την θέση σας, πατήστε σε ένα από τα εικονίδια παρακάτω (πηγαίνετε πάνω από τα κουμπιά απόφασης για να δείτε την περιγραφή τι σημαίνει το καθένα).
+      Θα σας ζητηθεί να κάνετε μια σύντομη δήλωση για τον λόγο της απόφασης σας. Αυτό το κάνει ευκολότερο για να δείτε την σύνοψη τι σκέπτεται ο καθένας και γιατί. Μπορείτε να αλλάξετε γνώμη και να επεξεργαστείτε την απόφαση σας ελεύθερα μέχρι η πρόταση να κλείσει.
   discussion_form:
-    header: "Start a discussion"
-    who: "Which group would you like to start this discussion in?"
-    context: "Context"
-
+    header: "Ξεκινήστε μια συζήτηση"
+    who: "Σε ποιά ομάδα θέλετε να ξεκινήσετε την συζήτηση?"
+    context: "Περιεχόμενο"
   motion_form:
-    header: "New proposal"
-    name_helper: "Make the title as clear and succinct as possible."
-
+    header: "Νέα Πρόταση"
+    name_helper: "Κάντε τον τίτλος όσο πιο σαφή και συνοπτικό γίνετε."
   group_form:
-    privacy_settings: "Privacy settings"
-    invitation_settings: "Invitation Settings"
-    admins_only: "Admins only"
-
+    privacy_settings: "Ρυθμίσεις Απορρήτου"
+    invitation_settings: "Ρυθμίσεις προσκλήσεων"
+    admins_only: "Μόνο Διαχειριστές"
   vote_form:
-    header: "State your position"
-    edit: "Edit your position"
-    placeholder: "Give a reason for your decision (optional)"
-    your_position: "Your position"
-    your_statement: "Your statement"
-    submit: "Submit position"
-    update: "Update position"
-
+    header: "Δηλώστε την θέση σας"
+    edit: "Επεξεργαστείτε την θέση σας"
+    placeholder: "Δώστε μια αιτιολογία για την απόφαση σας (προαιρετικό)"
+    your_position: "Η θέση σας"
+    your_statement: "Η δήλωση σας"
+    submit: "Υποβολή θέσης"
+    update: "Ενημέρωση θέσης"
   email_preferences_form:
-    header: "Email Preferences"
-    daily_activity_summary: "Daily Activity Summary"
-    daily_activity_subscription: "Send me a daily activity email summarising what’s been happening in my groups"
-    global_notifications: "Global Notifications"
-    proposal_closing_soon_subscription: "Remind me 24 hours before a proposal closes"
-    mentions_subscription: "Email me when someone mentions me in a comment"
-    group_activity_notifications: "Group Activity Notifications"
-    group_activity_details: "For each group, check the box if you want to be emailed immediately about new discussions and decisions."
-    update_preferences: "Update preferences"
-
+    header: "Ρυθμίσεις ηλεκτρονικού ταχυδρομείου"
+    daily_activity_summary: "Σύνοψη ημερήσιας δραστηριότητας"
+    daily_activity_subscription: "Στείλε μου την ημερήσια δραστηριότητα με ηλεκτρονικό ταχυδρομείο συνοψίζωντας τι συμβαίνει στις ομάδες μου."
+    global_notifications: "Παγκόσμιες Ειδοποιήσεις"
+    proposal_closing_soon_subscription: "Θύμησε μου 24 ώρες πριν η πρόταση κλείσει"
+    mentions_subscription: "Ειδοποιήσε με όταν κάποιος με αναφέρει σε ένα σχόλιο"
+    group_activity_notifications: "Ειδοποιήσεις δραστηριότητας της ομάδας"
+    group_activity_details: "Για κάθε ομάδα, επιλέξτε το κουτί εάν θέλετε να ειδοποιήστε άμεσα μέσω ηλεκτρονικού ταχυδρομείου σχετικά με νέες συζητήσεις και αποφάσεις."
+    update_preferences: "Ενημέρωση προτιμήσεων"
   new_user_form:
-    create_an_account: "Create an account"
-
+    create_an_account: "Δημιουργήστε ένα λογαριασμό"
   user_settings_form:
-    header: "User Settings"
-    picture: "Picture"
-    use_avatar_kind: "Use %{kind}"
-    upload_new_image: "Upload a new image"
-
+    header: "Ρυθμίσεις Χρήστη"
+    picture: "Εικόνα"
+    use_avatar_kind: "Χρησιμοποιήστε %{kind}"
+    upload_new_image: "Ανεβάστε νέα εικόνα"
   group_setup:
-    intro: "As the group coordinator, you’re responsible for setting up and managing your Loomio group. First you need to fill in a few settings, then you can get into your new group, start a discussion or two, and send out some invitations!"
-    submit: "Take me to my group!"
-
+    intro: "Ως συντονιστής της ομάδας, είστε υπεύθυνος για να ρυθμίσετε και να διαχειριστείτε την ομάδα σας στο Loomio. Πρώτα απ' όλα χρειάζεται να συμπληρώσετε μερικές ρυθμίσεις, έπειτα μπορείτε να μπείτε στην νέα ομάδα, να ξεκινήσετε μία συζήτηση ή 2, και να στείλετε μερικές προσκλήσεις!"
+    submit: "Πήγαινε με στην ομάδα μου!"
   simple_form:
     labels:
       discussion:
-        title: "Title"
-        description: "Context"
+        title: "Τίτλος"
+        description: "Περιεχόμενο"
       group:
-        name: "What is the name of your group?"
-        description: "Give a brief description of your group:"
-        viewable_by: "Who can see this group?"
-        members_invitable_by: "Who can invite people to this group?"
+        name: "Ποιο είναι το όνομα της ομάδα σας?"
+        description: "Δώστε μια περιγραφή της ομάδα σας:"
+        viewable_by: "Ποιος μπορείς να δει αυτή την ομάδα?"
+        members_invitable_by: "Ποιος μπορεί να προσκαλέσει άτομα σε αυτή την ομάδα?"
       motion:
-        name: "Title"
-        description: "Details"
+        name: "Τίτλος"
+        description: "Λεπτομέρειες"
       user:
-        name: "Full name"
-        email: "Email"
-        password: "Password"
-        password_confirmation: "Confirm password"
-        language_preference: "Language"
-
+        name: "Πλήρες Όνοματεπώνυμο"
+        email: "Ηλεκτρονική Διεύθυνση"
+        password: "Κωδικός"
+        password_confirmation: "Επιβεβαίωση κωδικού"
+        language_preference: "Γλώσσα"
     options:
       group:
         viewable_by:
-          everyone: 'Public - anyone with the link can see this group'
-          members: 'Members - only members of this group can see it'
-          parent_group_members: "Parent group members - only members of the main group can view this sub-group"
+          everyone: 'Δημόσιο - οποιοσδήποτε με τον σύνδεσμο μπορεί να δει αυτή την ομάδα'
+          members: 'Μέλη - μόνο τα μέλη μπορούν να δουν αυτή την ομάδα'
+          parent_group_members: "Μέλη κύριας Ομάδας - μόνο τα μέλη της κύριας ομάδας μπορούν να δουν αυτή την υπο-ομάδα"
         members_invitable_by:
-          admins: 'Coordinators only'
-          members: 'All group members'
-
+          admins: 'Μόνο Συντονιστές'
+          members: 'Όλα τα μέλη της Ομάδας'
     placeholders:
       discussion:
-        title: "What is the topic you'd like to discuss?"
-        description: "This information will appear at the top of the discussion page. Introduce the topic and give enough context for your group to have a well-informed discussion."
+        title: "Ποιό είναι το θέμα που θα θέλατε να συζητήσετε?"
+        description: "Αυτή η πληροφορία θα εμφανιστεί στο πάνω μέρος της σελίδας συζήτησης. Εισάγετε το θέμα και δώστε αρκετό περιεχόμενο για την ομάδα για να έχει μια καλά τεκμηριωμένη συζήτηση."
       motion:
-        name: "What is your proposed course of action?"
-        description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
+        name: "Ποια είναι η δικιά σας προτεινόμενη πορεία δράσης?"
+        description: "Δώστε αρκετές πληροφορίες ώστε ο καθένας να γνωρίζει ακριβώς τι σημαίνει να συμφωνεί ή να διαφωνεί."
       group:
-        description: "Think about the simplest way you can describe your group: What do you want to achieve together? What types of decisions will you be making? Who will be involved?"
-
+        description: "Σκέψου με τον πιο απλό τρόπο για να περιγράψεις την ομάδα σου: Τι θέλετε να πετύχετε μαζί? Τι είδους αποφάσεις θέλετε να κάνετε? Ποιος θα εμπλέκεται?"
   helpers:
     submit:
       discussion:
-        create: "Start discussion"
+        create: "Ξεκινήστε μια συζήτηση"
       motion:
-        create: "Start proposal"
+        create: "Ξεκινήστε μια πρόταση"
       user:
-        create: "Create account"
-        update: "Update settings"
-
-  #
-  # EMAILS
-  #
-
+        create: "Δημιουργήστε ένα λογαριασμό"
+        update: "Ενημέρωση ρυθμίσεων"
   email:
-    unsubscribe: "Unsubscribe or change your email preferences:"
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
-    view_comment: "Click here to view the comment on Loomio"
-    view_discussion: "Click here to view this discussion"
-    view_group: "Click here to view the group on Loomio"
-    view_proposal: "Click here to view this proposal on Loomio"
+    unsubscribe: "Διαγραφείτε ή αλλάξτε τις ρυθμίσεις του ηλεκτρονικού ταχυδρομείου:"
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> για να διαγραφείτε ή για να αλλάξετε τις ρυθμίσεις ηλεκτρονικού ταχυδρομείου."
+    view_comment: "Πατήστε εδώ για να δείτε το σχόλιο στο Loomio"
+    view_discussion: "Πατήστε εδώ για να δείτε αυτή την συζήτηση"
+    view_group: "Πατήστε εδώ για να δείτε την ομάδα στο Loomio"
+    view_proposal: "Πατήστε εδώ για να δείτε αυτή την πρόταση στο Loomio"
     create_discussion:
-      intro: "%{who} started a new discussion in %{which_group}:"
-      subject: "New discussion - %{which}"
+      intro: "Ο/Η %{who} ξεκίνησε μια νέα συζήτηση στην ομάδα %{which_group}:"
+      subject: "Νέα Συζήτηση - %{which}"
     create_proposal:
-      intro: "A new proposal was created in a Loomio group that you belong to."
-      closes_in: "Closes in"
-      subject: "New proposal - %{which}"
+      intro: "Μια νέα πρόταση δημιουργήθηκε σε ομάδα του Loomio που ανήκετε."
+      closes_in: "Κλείνει σε"
+      subject: "Νέα πρόταση -  %{which}"
     daily_activity:
-      heading: "Your Loomio Activity"
-      intro: "Showing you what’s been happening in your Loomio groups in the last 24 hours"
-      subject: "Loomio - Summary of the last 24 hours"
+      heading: "Η δραστηριότητα σας στο Loomio"
+      intro: "Σας δείχνει τι συμβαίνει στις ομάδες σας στο Loomio τις τελευταίες 24 ώρες"
+      subject: "Loomio - Σύνοψη των τελευταίων 24 ωρών"
     group_email:
-      intro: "%{who} made an announcement to %{group}:"
+      intro: "Ο/Η %{who} έκανε μια ανακοίνωση στην ομάδα %{group}:"
     group_membership_approved:
-      intro: "Your request for access to the group '%{group_name}' on Loomio has been approved."
-      subject: "Membership approved"
+      intro: "Η αίτηση σας για πρόσβαση στην ομάδα '%{group_name}' στο Loomio έχει εγκριθεί."
+      subject: "Αίτηση Μέλους εγκρίθηκε"
     membership_request:
-      intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
-      subject: "New membership request from %{who}"
-      view_group: "You can approve or decline the request here"
+      intro: "Ο/Η %{name} (%{email}) έχει ζητήσει πρόσβαση σε μία από τις Loomio ομάδες σας."
+      subject: "Νέα αίτηση μέλους από %{who}"
+      view_group: "Μπορείς να εγκρίνεις ή να απορρίψεις την αίτηση εδώ"
     mentioned:
-      intro: "You were mentioned in a discussion titled:"
-      said: "%{comment_author} said:"
-      subject: "%{who} mentioned you in the %{which} group on Loomio"
+      intro: "Έχεις αναφερθεί σε μια συζήτηση με τίτλο:"
+      said: "%{comment_author} είπε:"
+      subject: "%{who} σε ανέφερε στην Ομάδα %{which} στο Loomio"
     proposal_closed:
-      intro: 'Your proposal "%{proposal_name}" has closed.'
-      specify_outcome: "Please click here to specify an outcome"
-      subject: "Proposal closed - %{which}"
+      intro: 'Η πρόταση σας "%{proposal_name}" έχει κλείσει.'
+      specify_outcome: "Παρακαλούμε πατήστε εδώ για να καθορίσετε το αποτέλεσμα"
+      subject: "Πρόταση έκλεισε  - %{which}"
     proposal_blocked:
-      intro: "A proposal you are facilitating has been blocked."
-      subject: "Proposal blocked - %{which}"
+      intro: "Μια πρόταση που σε διευκολύνει έχει μπλοκαριστεί."
+      subject: "Πρόταση μπλοκαρίστηκε  - %{which}"
     proposal_closing_soon:
-      closes_in: "Closes in"
-      subject: "Proposal closing soon: %{which}"
-      summary: "Summary"
+      closes_in: "Κλείνει σε"
+      subject: "Η πρόταση κλείνει σύντομα: %{which}"
+      summary: "Σύνοψη"
     verification:
-      header: "You're almost done!"
-      intro: "Please click this verification link to finalise your request:"
-      ignore: "If you did not request to join Loomio please ignore this email."
-
-
-  #
-  # COMMON WORDS
-  #
-
-  about: "About"
-  ago: "%{quantity_of_time} ago"
-  approve: "Approve"
-  author: "Author"
-  back: "Back"
-  by: "by"
-  cancel: "Cancel"
-  change: "Change"
-  changing: "Changing"
-  click_here: "Click here"
-  close: "Close"
-  closing: "Closing"
-  closed: "Closed"
-  decisions: "Decisions"
-  delete: "Delete"
-  details: "Details"
-  discussions: "Discussions"
-  edit: "Edit"
-  email_address: "Email address"
-  enable: "Enable"
-  participation: "Participation"
-  disable: "Disable"
-  group: "Group"
-  groups: "Groups"
-  group_admin: "Group Admin"
-  home: "Home"
-  like: "Like"
-  loading: "Loading..."
-  message: "Message"
-  name: "Name"
-  new_activity: "New activity"
-  next: "Next"
-  password: "Password"
-  proposal: "Proposal"
-  prev: "Prev"
-  options: "Options"
-  other: "Other"
-  ok_got_it: "Okay, got it!"
-  save: "Save"
-  saving: "Saving"
-  sending: "Sending"
-  send_invite: "Send invite"
-  send_email: "Send email"
-  show_more: "Show More"
-  starting: "Starting"
-  subject: "Subject"
-  unlike: "Unlike"
-  until_close: "until close"
-  update: "Update"
-
+      header: "Σχεδόν τελειώσατε!"
+      intro: "Παρακαλούμε πατήστε αυτόν τον σύνδεσμο επαλήθευσης για να τελειώσετε την αίτηση σας:"
+      ignore: "Εάν δεν έχετε κάνει αίτηση για να γίνετε μέλος στο Loomio παρακαλούμε αγνοήστε αυτό το email."
+  ago: "πριν από %{quantity_of_time} "
+  approve: "Έγκριση"
+  author: "Συγγραφέας"
+  back: "Πίσω"
+  by: "Από"
+  cancel: "Ακύρωση"
+  change: "Αλλαγή"
+  changing: "Αλλάζει"
+  click_here: "Πατήστε εδώ"
+  close: "Κλείσε"
+  closing: "Κλείνει"
+  closed: "Έκλεισε"
+  decisions: "Αποφάσεις"
+  delete: "Διαγραφή"
+  details: "Λεπτομέρειες"
+  discussions: "Συζητήσεις"
+  edit: "Επεξεργασία"
+  email_address: "Ηλεκτρονική διεύθυνση"
+  enable: "Ενεργοποιήσε"
+  participation: "Συμμετείχε"
+  disable: "Απενεργοποιήσε"
+  group: "Ομάδα"
+  groups: "Ομάδες"
+  group_admin: "Διαχειριστής Ομάδας"
+  home: "Κεντρική "
+  like: "Αρέσει"
+  loading: "Φορτώνει..."
+  message: "Μήνυμα"
+  name: "Όνομα"
+  new_activity: "Νέα δραστηριότητα"
+  next: "Επόμενο"
+  password: "Κωδικός"
+  proposal: "Πρόταση"
+  prev: "Προηγούμενο"
+  options: "Ρυθμίσεις"
+  other: "Άλλο"
+  ok_got_it: "Εντάξει, το έχω!"
+  save: "Αποθήκευση"
+  saving: "Αποθηκεύει"
+  sending: "Στέλνει"
+  send_invite: "Στείλε πρόσκληση"
+  send_email: "Στείλε ηλεκτρονικό ταχυδρομείο"
+  show_more: "Δείξε περισσότερα"
+  starting: "Ξεκινάει"
+  subject: "Θέμα"
+  unlike: "Δεν μ'άρέσει"
+  until_close: "μέχρι να κλείσει"
+  update: "Ενημέρωση"
   common:
-    email: "Email"
+    email: "Ηλεκτρονική Διεύθυνση"
