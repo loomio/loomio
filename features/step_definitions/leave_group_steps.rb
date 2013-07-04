@@ -1,5 +1,5 @@
 When /^I choose to leave the group$/ do
-  find('a.btn.group-options').click
+  find('#group-options').click
   step 'I click "Leave group"'
   step 'I confirm the action'
 end
