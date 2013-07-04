@@ -1,5 +1,5 @@
 When(/^I archive my group$/) do
-  click_on('group-options-btn') 
+  find('#group-options').click
   click_on('De-activate group')
   click_on('confirm-action')
 end
