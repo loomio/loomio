@@ -66,7 +66,7 @@
 
 #content-proposal{
   margin-left: 0px;
-  padding: 7px 0 0 0;
+  padding-top: 10px;
 
   #closing-info {
     font-size: $font-smaller;
@@ -106,8 +106,6 @@
     width: 270px;
     padding-right: 5px;
   }
-
-  .motion-title { margin-top: 3px; }
 
   .new-proposal-btn {
     float: left;
@@ -218,12 +216,16 @@
       font-size: $font-tiny;
       float: left;
     }
+
+    .user-name {
+      font-weight: bold;
+      margin-right: 8px;
+    }
   }
 
   .toggle-yet-to-vote{
     color: $mid-grey;
     font-size: $font-tiny;
-    margin: 10px 0 0 5px;
   }
 }
 

@@ -3,5 +3,4 @@
   = link_to vote.user_name, user_path(vote.user), class: 'user-name'
   - if vote.can_be_edited_by?(current_user) && motion.phase == 'voting'
     =link_to "edit", edit_motion_vote_path(motion, vote), class: 'btn btn-mini', id: 'edit-vote'
-  .statement
-  .word-break~ vote.statement
+  %span.word-break~ vote.statement
