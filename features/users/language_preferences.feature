@@ -33,10 +33,19 @@ Feature: Language preferences
     Then I should see "User Settings"
 
   @javascript
-  Scenario: Logged in user changes language preference
+  Scenario: Logged in user changes language preference from User Settings page
     Given I am logged in
     When I am on the settings page
     Then I should see "User Settings"
     And I change my language preference to Espanol
     When I am on the settings page
     Then I should see "Preferencias de Usuario"
+
+  @javascript
+  Scenario: Logged in user changes languge preference from URL params
+    Given I am logged in
+    And my browser language header is set to "es"
+    And my language preference is set to "hu"
+    When I visit "/?locale=ro"
+    And I visit "/help"
+    Then I should see "Cum functioneaza"

@@ -21,7 +21,10 @@ class ApplicationController < ActionController::Base
     else
       I18n.locale = extract_locale_from_accept_language_header
     end
-    I18n.locale = params[:locale] if params[:locale].present?
+    if params[:locale].present? && (Translation::LOCALES.include? params[:locale])
+      I18n.locale = params[:locale]
+      current_user.language_preference = params[:locale] if current_user
+    end
   end
 
   def extract_locale_from_accept_language_header
