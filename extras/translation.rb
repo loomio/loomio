@@ -17,7 +17,7 @@ class Translation
                             title='#{I18n.t(:change_language, language: language[0])}'>
                             #{language[0]}</a>"
     end
-    language_links << "<a href='https://www.loomio.org/discussions/4896'>#{I18n.t(:translate, default: "translate Loomio!")}</a>"
+    language_links << "<a href='https://www.loomio.org/discussions/4896'>#{I18n.t(:translate, default: "help translate Loomio!")}</a>"
     language_links.join(" &middot; ")
   end
 end
