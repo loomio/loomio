@@ -64,10 +64,10 @@ body.discussions.show {
     border-bottom: 1px solid $light-grey;
     padding-bottom: 20px;
     margin-bottom: 5px;
+    #previous-proposals .selector-list { border-top: 1px solid $lighter-grey; }
     .content-proposal-body {
-      padding: 10px 10px 10px 50px;
+      padding: 0 10px 10px 50px;
       ul.selector-list {
-        border-top: 1px solid $lighter-grey;
         li.empty-list-message { padding: 4px; }
         li .motion {
           .close-date {
@@ -148,7 +148,7 @@ body.discussions.show {
   #content-comments {
     border-right: 1px solid $lighter-grey;
     min-height: 660px;
-    padding-right: 10px;
+    padding: 10px 10px 0 0;
     .comment-anchor {
       padding-top: 50px;
       margin-top: -50px;
@@ -158,7 +158,13 @@ body.discussions.show {
       display: inline-block;
       width: 15px;
     }
-    #discussion-activity-body { padding: 10px 0px 10px 8px; }
+    #discussion-activity-body {
+      padding: 10px 0px 10px 8px;
+      .divider {
+        border-bottom: 1px solid $lighter-grey;
+        margin: 7px 15px 6px 0px;
+      }
+    }
     #discussion-markdown-dropdown li i {
       display: inline-block;
       width: 15px;
@@ -204,10 +210,6 @@ body.discussions.show {
       li.empty-list-message {
         margin-left: 45px; /*check this still works*/
       }
-      .divider {
-        border-bottom: 1px solid $lighter-grey;
-        margin: 0 0 13px 0px;
-      }
       .activity-icon {margin-left: -26px;}
       .activity-item-actor{
         font-weight: bold;
@@ -221,7 +223,7 @@ body.discussions.show {
       .activity-item-body {
         margin-left: 45px;
         border-bottom: 1px solid $lighter-grey;
-        padding-bottom: 9px;
+        padding-bottom: 8px;
       }
       .activity-item-comment-actor {
         float: left;
@@ -406,7 +408,7 @@ pre{
     &.selector-discussion-link {
       float: left;
       width: 653px;
-      padding: 5px 0 5px 5px;
+      padding: 6px 0 5px 5px;
     }
   }
 
@@ -440,11 +442,11 @@ pre{
   .discussion-date-info {
     display: inline;
     float: right;
-    font-size: $font-small;
+    font-size: $font-smaller;
+    color: $mid-grey;
     padding: 10px 10px 0 0;
+    .latest-comment-time, .proposal-close-date { display: inline; }
   }
-  .discussion-date-info .latest-comment-time { display: inline; }
-  .discussion-date-info .proposal-close-date { display: inline; }
   .pie {
     float: right;
     width: 36px;
