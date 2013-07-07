@@ -9,41 +9,44 @@ body.users.show {
   .span8 { margin-left: 0; }
 }
 
-body.users.settings {
-  ul.user-image-options {
-    margin-left: -30px;
-    h3 { margin: 0 0 0 30px; }
-    li {
-      margin: 0 0 10px 0;
-      padding: 0px 0px;
-      width: 250px;
-      a {
-        cursor: pointer;
-        color: $mid-grey;
-        float: left;
-        padding: 8px 8px;
+body.users {
+  &.settings, &.update {
+    form { margin-top: 10px; }
+    ul.user-image-options {
+      margin-left: -30px;
+      h3 { margin: 0 0 0 30px; }
+      li {
+        margin: 0 0 10px 0;
+        padding: 0px 0px;
+        width: 250px;
+        a {
+          cursor: pointer;
+          color: $mid-grey;
+          float: left;
+          padding: 8px 8px;
+        }
+        .medium-user-image.image-canvas {
+          float: left;
+          width: 28px;
+        }
+        .option-label {
+          float: left;
+          line-height: 32px;
+          padding-left: 10px;
+          text-decoration: underline;
+          width: 140px;
+        }
+        #uploaded-avatar {
+          bottom: 36px;
+          filter: alpha(opacity=0);
+          height: 36px;
+          margin: 0;
+          opacity: 0;
+          position: relative;
+          width: 150px;
+        }
+        &.clearfix:hover { background-color: $selector; }
       }
-      .medium-user-image.image-canvas {
-        float: left;
-        width: 28px;
-      }
-      .option-label {
-        float: left;
-        line-height: 32px;
-        padding-left: 10px;
-        text-decoration: underline;
-        width: 140px;
-      }
-      #uploaded-avatar {
-        bottom: 36px;
-        filter: alpha(opacity=0);
-        height: 36px;
-        margin: 0;
-        opacity: 0;
-        position: relative;
-        width: 150px;
-      }
-      &.clearfix:hover { background-color: $selector; }
     }
   }
 }
