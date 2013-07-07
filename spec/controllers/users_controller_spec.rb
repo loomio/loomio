@@ -33,7 +33,7 @@ describe UsersController do
     it "redirects to user settings on failure" do
       user.stub(:save).and_return(false)
       post :update, :id => 999, :user => {:name => "Peter Chilltooth"}
-      response.should redirect_to user_settings_url
+      response.should render_template('settings')
     end
   end
 

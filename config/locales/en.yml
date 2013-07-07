@@ -138,8 +138,8 @@ en:
   request_new_group_details: "or wait until you are invited to one."
   empty_notifications: "You do not have any notifications yet."
   see_all_notifications: "See all notifications"
-  user_settings: "User Settings"
-  email_preferences: "Email Preferences"
+  user_settings: "User settings"
+  email_preferences: "Email preferences"
   sign_out: "Sign out"
   sign_in: "Sign in"
   sign_in_details: "to participate. You are currently logged out."
@@ -559,7 +559,7 @@ en:
     update: "Update position"
 
   email_preferences_form:
-    header: "Email Preferences"
+    header: "Email preferences"
     daily_activity_summary: "Daily Activity Summary"
     daily_activity_subscription: "Send me a daily activity email summarising what’s been happening in my groups"
     global_notifications: "Global Notifications"
@@ -573,7 +573,7 @@ en:
     create_an_account: "Create an account"
 
   user_settings_form:
-    header: "User Settings"
+    header: "User settings"
     picture: "Picture"
     use_avatar_kind: "Use %{kind}"
     upload_new_image: "Upload a new image"

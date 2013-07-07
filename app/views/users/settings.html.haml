@@ -3,8 +3,9 @@
   .span4
     = simple_form_for @user do |f|
       = f.input :name
+      = f.input :email
       = f.input :language_preference, :collection => Translation::LANGUAGES, include_blank: false
-      = f.submit :class => "btn btn-info", id: "user-settings-submit"
+      = f.submit :class => "btn btn-info btn-large", id: "user-settings-submit"
 
 .row
   .span6

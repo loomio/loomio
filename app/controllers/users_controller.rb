@@ -15,8 +15,9 @@ class UsersController < BaseController
       flash[:notice] = t("notice.settings_updated")
       redirect_to root_url
     else
+      @user = current_user
       flash[:error] = t("error.settings_not_updated")
-      redirect_to user_settings_url
+      render "settings"
     end
   end
 
