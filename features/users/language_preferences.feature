@@ -30,13 +30,13 @@ Feature: Language preferences
     And my browser language header is set to "es"
     And my language preference is set to "en"
     When I am on the settings page
-    Then I should see "User Settings"
+    Then I should see "User settings"
 
   @javascript
   Scenario: Logged in user changes language preference from User Settings page
     Given I am logged in
     When I am on the settings page
-    Then I should see "User Settings"
+    Then I should see "User settings"
     And I change my language preference to Espanol
     When I am on the settings page
     Then I should see "Preferencias de Usuario"
