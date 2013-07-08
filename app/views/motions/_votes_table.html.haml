@@ -6,9 +6,15 @@
   - unique_votes.each do |vote|
     - unless current_user && vote == current_user.get_vote_for(motion)
       = render "motions/votes_table_vote", vote: vote, motion: motion
+
 #yet-to-vote.hidden
   - Queries::Voters.group_members_that_havent_voted_on(motion).each do |user|
     .position-row.clearfix
       .activity-icon= image_tag "questionmark.png"
       = link_to user.name, user_path(user), class: 'user-name'
+  .percentage-to-vote
+    - if motion.closed?
+      = t(:engagement_on_closed_proposal, percent: motion.percent_voted, :numerator => (motion.group_count - motion.no_vote_count), denominator:  motion.group_count)
+    - else
+      = t(:engagement_on_open_proposal, percent: motion.percent_voted, :numerator => (motion.group_count - motion.no_vote_count), denominator:  motion.group_count)
 = link_to t(:not_voted), '#', class: 'toggle-yet-to-vote'

@@ -10,6 +10,8 @@ class NotificationItem
         NotificationItems::NewDiscussion.new(notification)
       when "new_motion"
         NotificationItems::NewMotion.new(notification)
+      when "motion_edited"
+        NotificationItems::MotionEdited.new(notification)
       when "motion_closed"
         NotificationItems::MotionClosed.new(notification)
       when "new_vote"

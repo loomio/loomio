@@ -68,21 +68,40 @@
   margin-left: 0px;
   padding-top: 10px;
 
+  #additional-info {
+    background: #eee;
+    margin: 10px 0;
+    padding: 4px;
+  }
+
+  .admin-buttons {
+    margin: 0 0 5px 0;
+    width: 100px;
+
+    .btn {
+      float: right;
+      margin: 5px 0 0 0;
+      width: 60px;
+    }
+  }
+
+  #closed-label { padding-right: 5px; }
   #closing-info {
     font-size: $font-smaller;
-    color: $mid-grey; }
+    color: $mid-grey;
+  }
 
   #close-voting {
     float: right;
     margin: 5px 0 0 0;
   }
 
+  .control-group { padding-top: 0px; padding-bottom: 0px; }
+
   .description {
     width: 380px;
     p { color: $dark-grey; }
   }
-
-  .control-group { padding-top: 0px; padding-bottom: 0px; }
 
   .label {
     text-transform: lowercase;
@@ -91,20 +110,9 @@
 
   .motion .pie { height: 250px; }
 
-  .motion-admin-buttons {
-    margin-left: 0;
-    width: 125px;
-
-    .btn {
-      float: right;
-      margin: 5px 0 0 0;
-      width: 105px;
-    }
-  }
-
-  .motion-header-info {
-    width: 270px;
-    padding-right: 5px;
+  #motion-header {
+    padding-top: 3px;
+    // width: 275px;
   }
 
   .new-proposal-btn {
@@ -161,7 +169,7 @@
 
   .proposal-title-container { width: 305px; }
 
-  .proposed-by {
+  #proposed_by_and_revision_link {
     color: $mid-grey;
     font-size: $font-smaller;
     margin-bottom: 20px;
@@ -229,6 +237,28 @@
   }
 }
 
+ul#revision-history-list {
+  border-bottom: 1px solid $light-grey;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  li.row {
+    border-top: 1px solid $light-grey;
+    margin-left: 0;
+    padding: 10px;
+    .motion-revision {
+      margin-left: 0;
+      padding-right: 10px;
+    }
+    .proposed-by { padding-bottom: 10px; }
+    .revision-info {
+      background-color: #EEE;
+      color: #777;
+      padding: 5px;
+      width: 170px;
+    }
+  }
+}
+
 table.jqplot-table-legend {
   border: none;
   width: auto;
@@ -239,16 +269,30 @@ table.jqplot-table-legend {
   }
 }
 
-.new_proposal, #edit-close-date {
+.new_proposal, .motions.edit {
   .motion-closing-inputs {
-    .control-group { display: inline-block; }
-
-    .motion-close-at-date { width: 140px; }
-
+    width: 472px;
+    .control-group {
+      display: inline-block;
+      margin-bottom: 0
+    }
     .motion-close-at-time, .motion-close-at-time-zone {
       display: inline-block;
-      margin-top: 10px;
-      width: 113px;
+      margin: 0;
     }
+    .motion-close-at-date { width: 130px; }
+    .motion-close-at-time { width: 90px; }
+    .motion-close-at-time-zone { width: 238px; }
   }
+  #motion_description { height: 140px; }
+  #motion_edit_message {
+    height: 40px;
+    margin-top: 6px;
+  }
+  #notify-members {
+    margin-bottom: 6px;
+    label { display: inline-block; }
+  }
+  #notify_unvoted_members { margin-top: 0; }
+
 }

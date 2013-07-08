@@ -305,6 +305,20 @@ describe Motion do
     end
   end
 
+  describe "#has_revisions?" do
+    before do
+      @motion = create(:motion)
+    end
+    it "returns true if there are no revisions" do
+      @motion.has_revisions?.should be_false
+    end
+    it "returns false if there are revisions" do
+      @motion.description = "Ch-ch-changes"
+      @motion.save!
+      @motion.has_revisions?.should be_true
+    end
+  end
+
   describe 'update_vote_counts!', focus: true do
     context 'there is 1 vote for each position' do
       let(:group){FactoryGirl.create :group}

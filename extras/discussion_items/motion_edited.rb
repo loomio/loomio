@@ -1,4 +1,4 @@
-class DiscussionItems::MotionCloseDateEdited < DiscussionItem
+class DiscussionItems::MotionEdited < DiscussionItem
   attr_reader :event, :motion
 
   def initialize(event, motion)
@@ -18,11 +18,11 @@ class DiscussionItems::MotionCloseDateEdited < DiscussionItem
   end
 
   def header
-    I18n.t('discussion_items.motion_close_date_edited')
+    I18n.t('discussion_items.motion_edited')
   end
 
   def body
-    ""
+    motion.version_at(event.created_at).edit_message
   end
 
   def time

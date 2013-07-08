@@ -18,7 +18,7 @@ end
 
 Then /^The proposal close date should be updated$/ do
   pending
-  find('#closing-info').should have_content("Closing in 5 days")
+  find('.additional-info').should have_content("Closing in 5 days")
 end
 
 Then /^I should not see a link to edit the close date$/ do

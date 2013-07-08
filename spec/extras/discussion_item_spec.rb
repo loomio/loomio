@@ -29,6 +29,15 @@ describe DiscussionItem do
       end
     end
 
+    context "event is for edited motion" do
+      it "delagates to a MotionEdited discussion item" do
+        event.stub(:kind).and_return("motion_edited")
+        event.stub(:eventable).and_return(stub(:Motion))
+        DiscussionItem.new(event).
+          item.class.should == DiscussionItems::MotionEdited
+      end
+    end
+
     context "event is for closed motion" do
       it "delagates to a MotionClosed discussion item" do
         event.stub(:kind).and_return("motion_closed")
@@ -44,15 +53,6 @@ describe DiscussionItem do
         event.stub(:eventable).and_return(stub(:Vote))
         DiscussionItem.new(event).
           item.class.should == DiscussionItems::NewVote
-      end
-    end
-
-    context "event is for a editing the motion close date" do
-      it "delagates to a MotionCloseDateEdited discussion item" do
-        event.stub(:kind).and_return("motion_close_date_edited")
-        event.stub(:eventable).and_return(stub(:Motion))
-        DiscussionItem.new(event).
-          item.class.should == DiscussionItems::MotionCloseDateEdited
       end
     end
 

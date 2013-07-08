@@ -8,6 +8,8 @@ class Motion < ActiveRecord::Base
   has_many :did_not_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
 
+  has_paper_trail ignore: [:updated_at, :last_vote_at, :yes_votes_count, :no_votes_count, :abstain_votes_count, :block_votes_count]
+
   validates_presence_of :name, :discussion, :author, :close_at
   validates_inclusion_of :phase, in: PHASES
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
@@ -31,15 +33,15 @@ class Motion < ActiveRecord::Base
 
   attr_accessor :create_discussion
 
-  attr_accessible :name, :description, :discussion_url, :discussion_id
-  attr_accessible :close_at_date, :close_at_time, :close_at_time_zone, :phase,  :outcome
+  attr_accessible :name, :description, :discussion_url, :discussion_id, :edit_message
+  attr_accessible :close_at_date, :close_at_time, :close_at_time_zone, :phase, :outcome
 
   include AASM
   aasm :column => :phase do
     state :voting, :initial => true
     state :closed
 
-    event :close, before: :before_close do
+    event :close, before: :store_users_that_didnt_vote do
       transitions :to => :closed, :from => [:voting]
     end
   end
@@ -204,6 +206,14 @@ class Motion < ActiveRecord::Base
     self.close_at_time ||= Time.now.strftime("%H:00")
   end
 
+  def has_revisions?
+    versions.count > 1
+  end
+
+  def self.get_editor(editor_id)
+    User.find(editor_id)
+  end
+
   def update_vote_counts!
     position_counts = {}
 
@@ -214,7 +224,7 @@ class Motion < ActiveRecord::Base
     Vote.unique_votes(self).each do |vote|
       position_counts[vote.position] += 1
     end
-    
+
     Vote::POSITIONS.each do |position|
       self.send("#{position}_votes_count=", position_counts[position])
     end
@@ -238,11 +248,6 @@ class Motion < ActiveRecord::Base
 
     def fire_motion_closed_event(user)
       Events::MotionClosed.publish!(self, user)
-    end
-
-    def before_close
-      store_users_that_didnt_vote
-      self.close_at = Time.now
     end
 
     def store_users_that_didnt_vote

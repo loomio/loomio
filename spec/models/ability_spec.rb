@@ -56,12 +56,14 @@ describe "User abilities" do
     it { should be_able_to(:destroy, @user_membership) }
     it { should be_able_to(:create, new_motion) }
     it { should be_able_to(:get_and_clear_new_activity, other_users_motion) }
-    it { should be_able_to(:close, user_motion) }
-    it { should be_able_to(:edit_close_date, user_motion) }
+    it { should be_able_to(:edit, user_motion) }
+    it { should be_able_to(:update, user_motion) }
     it { should be_able_to(:destroy, user_motion) }
+    it { should be_able_to(:close, user_motion) }
+    it { should_not be_able_to(:edit, other_users_motion) }
+    it { should_not be_able_to(:update, other_users_motion) }
     it { should_not be_able_to(:destroy, other_users_motion) }
     it { should_not be_able_to(:close, other_users_motion) }
-    it { should_not be_able_to(:edit_close_date, other_users_motion) }
 
     it "cannot remove themselves if they are the only member of the group" do
       group.memberships.where("memberships.id != ?", @user_membership.id).destroy_all
@@ -86,17 +88,26 @@ describe "User abilities" do
     context "group viewable by members" do
       before { group.update_attributes(:viewable_by => :members) }
       it { should be_able_to(:show, group) }
+      it { should be_able_to(:show, other_users_motion) }
+      it { should be_able_to(:view_revision_history, other_users_motion) }
     end
 
     context "viewing a subgroup they do not belong to" do
       let(:subgroup) { create(:group, parent: group) }
+      let(:subgroup_discussion) { create :discussion, group: subgroup }
+      let(:subgroup_motion) { create :motion, discussion: subgroup_discussion }
+
       context "subgroup viewable by members" do
         before { subgroup.update_attributes(:viewable_by => :members) }
         it { should_not be_able_to(:show, subgroup) }
+        it { should_not be_able_to(:show, subgroup_motion) }
+        it { should_not be_able_to(:view_revision_history, subgroup_motion) }
       end
       context "subgroup viewable by parent group members" do
         before { subgroup.update_attributes(:viewable_by => :parent_group_members) }
         it { should be_able_to(:show, subgroup) }
+        it { should be_able_to(:show, subgroup_motion) }
+        it { should be_able_to(:view_revision_history, subgroup_motion) }
       end
     end
   end
@@ -124,10 +135,10 @@ describe "User abilities" do
     it { should be_able_to(:destroy, @other_user_membership) }
     it { should be_able_to(:edit_description, group) }
     it { should be_able_to(:edit_privacy, group) }
-    it { should_not be_able_to(:update, other_users_motion) }
-    it { should be_able_to(:destroy, other_users_motion) }
+    it { should be_able_to(:edit, other_users_motion) }
+    it { should be_able_to(:update, other_users_motion) }
     it { should be_able_to(:close, other_users_motion) }
-    it { should be_able_to(:edit_close_date, other_users_motion) }
+    it { should be_able_to(:destroy, other_users_motion) }
     it { should be_able_to(:destroy, another_user_comment) }
 
     it "should not be able to delete the only admin of a group" do
@@ -170,8 +181,8 @@ describe "User abilities" do
     it { should_not be_able_to(:create, new_discussion) }
     it { should_not be_able_to(:create, new_motion) }
     it { should_not be_able_to(:close, motion) }
-    it { should_not be_able_to(:edit_close_date, motion) }
     it { should_not be_able_to(:open, motion) }
+    it { should_not be_able_to(:edit, motion) }
     it { should_not be_able_to(:update, motion) }
     it { should_not be_able_to(:destroy, motion) }
 
@@ -179,11 +190,15 @@ describe "User abilities" do
       before { group.update_attributes(:viewable_by => :everyone) }
       it { should be_able_to(:show, group) }
       it { should be_able_to(:get_and_clear_new_activity, motion) }
+      it { should be_able_to(:show, motion) }
+      it { should be_able_to(:view_revision_history, motion) }
     end
     context "group viewable_by: members" do
       before { group.update_attributes(:viewable_by => :members) }
       it { should_not be_able_to(:show, group) }
       it { should_not be_able_to(:get_and_clear_new_activity, motion) }
+      it { should_not be_able_to(:show, motion) }
+      it { should_not be_able_to(:view_revision_history, motion) }
     end
   end
 end

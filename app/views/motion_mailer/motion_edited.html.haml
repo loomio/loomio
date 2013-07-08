@@ -1,0 +1,33 @@
+= render '/application/mailer_doctype'
+%html
+  %p= t("email.proposal_edited.intro", who: @editor.name, proposal_name: @motion.name)
+  - unless @motion.edit_message.blank?
+    %p= t("email.proposal_edited.change", edit_message: @motion.edit_message)
+
+  %table
+    %tr
+      %th= t :proposal
+      %td= @motion.name
+    %tr
+      %th= t :group
+      %td= @motion.group.name
+    %tr
+      %th= t :author
+      %td= @motion.author.name
+
+    - if @motion.has_close_date?
+      %tr
+        %th.nowrap= t("email.create_proposal.closes_in")
+        %td= time_ago_in_words(@motion.close_at) + " (" + @motion.close_at.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
+
+    - if @rendered_motion_description.present?
+      %tr
+        %th &nbsp;
+        %td &nbsp;
+      %tr
+        %th= t :details
+        %td= @rendered_motion_description
+
+  %p= link_to(t("email.view_proposal"), discussion_url(@motion.discussion))
+
+  / = render 'user_mailer/unsubscribe_link'
