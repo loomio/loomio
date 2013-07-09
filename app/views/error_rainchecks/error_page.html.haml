@@ -1,0 +1,12 @@
+#error-container
+  -if current_user
+    %img(src="/assets/loomio-orange.png")
+  .content
+    = simple_form_for @error_raincheck, :validation => true do |f|
+      %h1= t :"error_raincheck.heading"
+      = t :"error_raincheck.intro_html"
+      = f.input :email, label: false
+      = f.hidden_field :action
+      = f.hidden_field :controller
+      = f.submit :class => "btn btn-medium btn-info", id: "error-raincheck-submit"
+    %p= link_to t(:"return_home"), root_path

@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20130625050817) do
 
   create_table "active_admin_comments", :force => true do |t|
@@ -160,6 +161,14 @@ ActiveRecord::Schema.define(:version => 20130625050817) do
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
   add_index "discussions", ["group_id"], :name => "index_discussions_on_group_id"
   add_index "discussions", ["is_deleted"], :name => "index_discussions_on_is_deleted"
+
+  create_table "error_rainchecks", :force => true do |t|
+    t.string   "email"
+    t.string   "action"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "controller"
+  end
 
   create_table "events", :force => true do |t|
     t.string   "kind"
