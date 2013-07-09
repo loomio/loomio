@@ -149,6 +149,8 @@ Loomio::Application.routes.draw do
     post :send_request, on: :collection
   end
 
+  get "/error_raincheck", to: "dashboard#raise_error_raincheck"
+
   #redirect old invites
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
 
@@ -163,3 +165,4 @@ Loomio::Application.routes.draw do
   get '/contact' => redirect('/about#about-us')
   get '/pages/privacy' => redirect('/privacy_policy')
 end
+

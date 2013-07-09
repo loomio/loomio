@@ -25,7 +25,7 @@ Given(/^I am a Loomio admin$/) do
 end
 
 When(/^an error is raised in the show action of the dashboard_controller$/) do
-  visit root_path
+  visit "/error_raincheck"
   page.should have_content("We're sorry, but something went wrong.")
 end
 
@@ -40,7 +40,7 @@ end
 
 Then(/^I should see the Error Rainchecks$/) do
   page.should have_content("dashboard")
-  page.should have_content("show")
+  page.should have_content("raise_error_raincheck")
 end
 
 
