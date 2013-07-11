@@ -1,0 +1,17 @@
+- set_title @group.name, "", @group.parent
+= render '/groups/title', group: @group
+%h2 Membership requests
+%br
+-if can? :add_members, @group
+  %table.table#membership-request-list
+    %tr
+      %th #{t(:name)} & #{t('common.email')}
+      %th Introduction
+      %th= t(:approve)
+      %th= t(:ignore_request)
+    -@group.membership_requests.where('response IS ?', nil).each do |request|
+      %tr
+        %td #{request.name} &lt;#{request.email}&gt;
+        %td= render_rich_text(request.introduction, false)
+        %td= link_to t(:approve), approve_membership_request_path(request), method: :post, id: "approve-membership-request-#{request.id}"
+        %td= link_to t(:ignore), ignore_membership_request_path(request), method: :post, id: "ignore-membership-request-#{request.id}"

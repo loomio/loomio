@@ -28,7 +28,7 @@ es:
     not_found: "%{item} No se encontro.\n\nPudo haberse eliminado"
   notice:
     admin_rights_removed: "Los derechos de %{which_user} como administrador han sido removidos."
-    email_added: "%{which_email} se ha añadido al grupo."
+    user_added: "%{user_email_or_name} se ha añadido al grupo."
     member_removed: "Miembro eliminado."
     membership_approved: "Membresía aprobada"
     membership_requested: "Membresía solicitada."

@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Group do
   let(:motion) { create(:motion) }
+  let(:user) { create(:user) }
+  let(:group) { create(:group) }
 
   it { should have_many :discussions }
 
@@ -175,10 +177,6 @@ describe Group do
       @group.add_member!(@user)
       @group.add_admin!(@user)
     end
-    it "can promote requested member to admin" do
-      @group.add_request!(@user)
-      @group.add_admin!(@user)
-    end
     it "can be administered by admin of parent" do
       @subgroup = build(:group, :parent => @group)
       @subgroup.has_admin_user?(@user)
@@ -191,35 +189,9 @@ describe Group do
       @group.add_member!(@user)
       @group.add_member!(@user)
     end
-    it "fails silently when trying to request an already-requested member" do
-      @group.add_request!(@user)
-      @group.add_request!(@user)
-    end
-    it "fails silently when trying to request an already-existing member" do
-      @group.add_member!(@user)
-      @group.add_request!(@user)
-      @group.users.should include(@user)
-    end
-    it "can add a member if a request has already been created" do
-      @group.add_request!(@user)
-      @group.add_member!(@user)
-      @group.users.should include(@user)
-    end
-
-    context "receiving a member request" do
-      it "should not add user to group" do
-        @group.add_request!(@user)
-        @group.users.should_not include(@user)
-      end
-      it "should add user to member requests" do
-        @group.add_request!(@user)
-        @group.membership_requests.find_by_user_id(@user).should \
-          == @user.membership_requests.find_by_group_id(@group)
-      end
-    end
   end
 
-  describe "activity_since_last_viewed?(user)" do
+  describe "#activity_since_last_viewed?(user)" do
     before do
       @group = create(:group)
       @user = create(:user)
