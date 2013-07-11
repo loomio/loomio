@@ -49,3 +49,12 @@ Feature: Language preferences
     When I visit "/?locale=ro"
     And I visit "/help"
     Then I should see "Cum functioneaza"
+
+  Scenario: User sets their language preference on sign up page
+    Given there is a group
+    And an invitation to join the group has been sent to "jim@jam.com"
+    When I open the email and click the accept invitation link
+    And I sign up as a new user speaking "Español"
+    Then I should be a member of the group
+    And I should be redirected to the group page
+    And I should see "Página principal"
