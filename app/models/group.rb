@@ -38,9 +38,12 @@ class Group < ActiveRecord::Base
     :extend => GroupMemberships
 
   has_many :membership_requests,
-    :conditions => {:access_level => 'request'},
-    :class_name => 'Membership',
     :dependent => :destroy
+
+  has_many :pending_membership_requests,
+           class_name: 'MembershipRequest',
+           conditions: {response: nil},
+           dependent: :destroy
 
   has_many :admin_memberships,
     :conditions => {:access_level => 'admin'},
@@ -192,13 +195,6 @@ class Group < ActiveRecord::Base
     memberships.where("group_id = ? AND user_id = ?", id, user.id).first
   end
 
-  def add_request!(user)
-    if user_can_join?(user) && !user_membership_or_request_exists?(user)
-      membership = user.memberships.create!(:group_id => id)
-      membership
-    end
-  end
-
   def add_member!(user, inviter=nil)
     membership = find_or_build_membership_for_user(user)
     membership.promote_to_member!(inviter)
@@ -244,6 +240,14 @@ class Group < ActiveRecord::Base
 
   def invitations_remaining
     max_size - memberships_count - pending_invitations.count
+  end
+
+  def has_member_with_email?(email)
+    users.where('email = ?', email).present?
+  end
+
+  def has_membership_request_with_email?(email)
+    membership_requests.where('email = ?', email).present?
   end
 
   def is_setup?

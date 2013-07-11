@@ -16,9 +16,17 @@ module GroupsHelper
     user_signed_in? && current_user.is_group_admin?(group) && !group.next_steps_completed? && @group.is_top_level?
   end
 
+  def pending_membership_requests_count(group)
+    if group.pending_membership_requests.count > 0
+      t(:number_pending, pending: group.pending_membership_requests.count)
+    else
+      ""
+    end
+  end
+
   def members_pending_count(group)
     if group.pending_invitations.count > 0
-      t(:number_pending, pending: group.pending_invitations.count)
+      t(:and_number_pending, pending: group.pending_invitations.count)
     else
       ""
     end

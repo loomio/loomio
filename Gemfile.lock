@@ -393,6 +393,9 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    valid_email (0.0.4)
+      activemodel
+      mail
     vcr (2.4.0)
     warden (1.2.1)
       rack (>= 1.0)
@@ -480,5 +483,6 @@ DEPENDENCIES
   twitter-text (~> 1.5.0)
   uglifier (~> 1.1.0)
   unicorn (~> 4.6.2)
+  valid_email (~> 0.0.4)
   vcr (~> 2.4.0)
   webmock (~> 1.9.0)

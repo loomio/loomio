@@ -37,10 +37,6 @@ class User < ActiveRecord::Base
     #:url => "/system/:class/:attachment/:id/:style/:basename.:extension",
     #:path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
 
-  has_many :membership_requests,
-           :conditions => { :access_level => 'request' },
-           :class_name => 'Membership',
-           :dependent => :destroy
   has_many :admin_memberships,
            :conditions => { :access_level => 'admin' },
            :class_name => 'Membership',
@@ -53,10 +49,6 @@ class User < ActiveRecord::Base
            :through => :memberships
   has_many :adminable_groups,
            :through => :admin_memberships,
-           :class_name => 'Group',
-           :source => :group
-  has_many :group_requests,
-           :through => :membership_requests,
            :class_name => 'Group',
            :source => :group
 
