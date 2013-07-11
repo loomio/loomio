@@ -1,0 +1,8 @@
+=simple_form_for(@user, url: user_registration_path) do |f|
+  =f.input :name, :input_html => { :value => @user_name }
+  =f.input :email, :input_html => { :value => @invitation.recipient_email }
+  =f.input :password
+  =f.input :password_confirmation
+  =f.input :language_preference, :collection => Translation::LANGUAGES,
+           selected: I18n.locale, include_blank: false
+  =f.submit t("devise.registrations.sign_up"), class: "btn btn-info btn-large"
