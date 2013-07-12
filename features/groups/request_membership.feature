@@ -112,7 +112,7 @@ Feature: Individual requests group membership
 ## Approve Membership Request
 
   # @javascript
-  Scenario: A member with permission approves membership request from signed-out user
+  Scenario: A member with permission approves membership request from visitor
     Given I am a logged in coordinator of a group
     And there is a membership request from a signed-out user
     When I approve the membership request

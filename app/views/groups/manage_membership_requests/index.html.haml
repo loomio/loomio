@@ -7,8 +7,8 @@
     %tr
       %th #{t(:name)} & #{t('common.email')}
       %th Introduction
-      %th= t(:approve)
-      %th= t(:ignore_request)
+      %th= " "#t(:approve)
+      %th= " "#t(:ignore_request)
     -@group.membership_requests.where('response IS ?', nil).each do |request|
       %tr
         %td #{request.name} &lt;#{request.email}&gt;
