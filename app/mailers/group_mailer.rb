@@ -1,12 +1,15 @@
 class GroupMailer < BaseMailer
-  def new_membership_request(membership)
-    @user = membership.user
-    @group = membership.group
+  def new_membership_request(membership_request)
+    @membership_request = membership_request
+    if @membership_request.requestor
+      requestor_language_preference = @membership_request.requestor.language_preference
+    end
+    @group = membership_request.group
     @admins = @group.admins.map(&:email)
-    set_email_locale(User.find_by_email(@group.admin_email).language_preference, @user.language_preference)
+    set_email_locale(User.find_by_email(@group.admin_email).language_preference, requestor_language_preference)
     mail  :to => @admins,
           :reply_to => @group.admin_email,
-          :subject => "#{email_subject_prefix(@group.full_name)} " + t("email.membership_request.subject", who: @user.name)
+          :subject => "#{email_subject_prefix(@group.full_name)} " + t("email.membership_request.subject", who: membership_request.name)
   end
 
   def group_email(group, sender, subject, message, recipient)

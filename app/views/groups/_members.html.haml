@@ -25,3 +25,4 @@
         = render 'membership', user: user, group: group
     -if can?(:add_members, group) && group.is_top_level?
       = link_to members_pending_count(group), group_invitations_path(group), class: 'bottom-panel-link', id: 'pending-count'
+

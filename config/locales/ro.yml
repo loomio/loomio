@@ -145,7 +145,6 @@ ro:
   email_preferences: "Preferinte Email"
   sign_out: "De-logare"
   sign_in: "Login"
-  sign_in_details: "pentru a participa. Nu este logat."
   tagline: "Creand o lume in care este posibil pentru toti sa participe in deciziile care-i afecteaza."
   or_sign_in_html: "Daca ai deja un cont, <a href='%{link}'0>apasa aici pentru logare</a>."
   click_to_dismiss: "Click aici pentru a ascunde acest mesaj"

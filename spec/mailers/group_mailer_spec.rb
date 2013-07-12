@@ -6,32 +6,39 @@ describe GroupMailer do
     before :all do
       @group = create(:group)
       @group.add_admin!(create(:user))
-      @membership = @group.add_request!(create(:user))
-      @mail = GroupMailer.new_membership_request(@membership)
+      @membership_request = create(:membership_request, group: @group,
+                                   name: 'bob jones', email: "bobby@jones.org")
+      @mail = GroupMailer.new_membership_request(@membership_request)
     end
 
-    it 'renders the subject' do
-      @mail.subject.should ==
-        "[Loomio: #{@group.full_name}] New membership request from #{@membership.user.name}"
+    context "requestor is an existing loomio user" do
+      before { @membership_request.stub(:requestor, create(:user)) }
+      it 'renders the subject' do
+        @mail.subject.should ==
+          "[Loomio: #{@group.full_name}] New membership request from #{@membership_request.name}"
+      end
+
+      it "sends email to group admins" do
+        pending "for some reason this is failing on travis"
+        @mail.to.should == @group.admins.map(&:email)
+      end
+
+      it 'renders the sender email' do
+        @mail.from.should == ['noreply@loomio.org']
+      end
+
+      it 'assigns correct reply_to' do
+        pending "This spec is failing on travis for some reason..."
+        @mail.reply_to.should == [@group.admin_email]
+      end
+
+      it 'assigns confirmation_url for email body' do
+        @mail.body.encoded.should match(/\/groups\/#{@group.id}/)
+      end
+
     end
 
-    it "sends email to group admins" do
-      pending "for some reason this is failing on travis"
-      @mail.to.should == @group.admins.map(&:email)
-    end
-
-    it 'renders the sender email' do
-      @mail.from.should == ['noreply@loomio.org']
-    end
-
-    it 'assigns correct reply_to' do
-      pending "This spec is failing on travis for some reason..."
-      @mail.reply_to.should == [@group.admin_email]
-    end
-
-    it 'assigns confirmation_url for email body' do
-      @mail.body.encoded.should match(/\/groups\/#{@group.id}/)
-    end
+    context "requestor is not a loomio user"
   end
 
   describe "#deliver_group_email" do
