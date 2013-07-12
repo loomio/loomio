@@ -147,7 +147,6 @@ en:
   email_preferences: "Email preferences"
   sign_out: "Sign out"
   sign_in: "Sign in"
-  sign_in_details: "to participate. You are currently logged out."
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
   or_sign_in_html: "If you've already got an account, <a href='%{link}'0>click here to sign in</a>."
 
@@ -211,6 +210,7 @@ en:
   confirm_approve_membership_request: "Are you sure you want to add %{which_user} to the group?"
   cancel_membership_request: "Cancel request"
   ignore_request: "Ignore request"
+  ignore: "Ignore"
   confirm_ignore_membership_request: "Are you sure you want to ignore the member request from %{which_user}?"
   membership_requested: "Membership requested"
   request_membership: "Request membership"
