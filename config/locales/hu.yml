@@ -99,7 +99,6 @@ hu:
   email_preferences: "E-mail beállítások"
   sign_out: "Kijelentkezés"
   sign_in: "Bejelentkezés"
-  sign_in_details: ",szükséges a részvételhez. Jelenleg ki vagy jelentkezve."
   tagline: "Olyan világot teremtünk, ahol mindenki részt vehet a döntésekben és alakíthatja is azokat."
   or_sign_in_html: "Ha már van fiókod,  <a href='%{link}'0>ide kattintva jelentkezz be</a>."
   click_to_dismiss: "Ide kattintva eltűnik ez az üzenet"

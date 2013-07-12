@@ -1,0 +1,12 @@
+.row
+  .span6
+    %h1= form_title
+    = simple_form_for membership_request, url: group_membership_requests_path(group) do |f|
+      - if current_user
+        = f.input :name, placeholder: membership_request.name, disabled: true
+        = f.input :email, placeholder: membership_request.email, disabled: true
+      - else
+        = f.input :name
+        = f.input :email
+      = f.input :introduction, placeholder: t(:'simple_form.placeholders.membership_request.introduction', group_name: membership_request.group_name)
+      = f.submit t(:request_membership), class: "btn btn-info btn-large", data: { disable_with: t(:request_membership) }

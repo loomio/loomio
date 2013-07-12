@@ -1,5 +1,8 @@
-- if group.membership_requests.present? && (can? :add_members, group)
-  .sub-panel#membership-requests
-    %h4= t :membership_requests
-    %ul
-      =render :partial => 'membership_request', :collection => group.membership_requests
+- if group.membership_requests.where(response: nil).exists? && (can? :add_members, group)
+
+  .sub-panel#user-requests
+    %h4= t(:membership_requests)
+    / # - group.membership_requests.where(response: nil).each do |request|
+    / #   = render 'membership_request', membership_request: request
+    = link_to pending_membership_requests_count(group), group_membership_requests_path(group), class: 'bottom-panel-link', id: 'pending-count'
+

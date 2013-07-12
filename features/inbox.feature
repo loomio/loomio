@@ -29,6 +29,7 @@ Feature: Inbox
     When I visit the inbox
     Then the inbox should be empty
 
+  @javascript
   Scenario: User marks discussion as read
     Given I belong to a group with a discussion
     When I visit the inbox
@@ -41,8 +42,6 @@ Feature: Inbox
     When I visit the inbox
     And I click 'Mark all as read'
     Then the discussions should disappear
-
-    
 
   #Scenario: User unfollows discussion
     #Given I belong to a group with a discussion

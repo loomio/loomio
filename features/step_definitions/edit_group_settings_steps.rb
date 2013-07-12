@@ -28,7 +28,7 @@ end
 
 Then /^I should not have access to group settings of "(.*?)"$/ do |group|
   visit "/groups/" + Group.find_by_name(group).id.to_s + "/edit"
-  page.should have_content('Access denied')
+  page.should have_content(I18n.t(:'error.access_denied'))
 end
 
 When /^I update the invitations to allow all members$/ do

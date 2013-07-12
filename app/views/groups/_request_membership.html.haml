@@ -1,13 +1,10 @@
 - unless can? :add_members, group
-  - if not group.users_include?(current_user) || current_user.nil?
-    #request-membership
-      - membership_request = group.membership_requests.find_by_user_id(current_user)
-      - if membership_request.present?
-        = link_to t(:membership_requested), cancel_request_for_group_membership_path(group, membership_request), method: :delete,
-          confirm: t(:confirm_remove_membership_request),
-          class: "btn", id: "membership-requested"
-      - else
-        - if group.parent.nil? || current_user.group_membership(group.parent)
-          =form_for(Membership.new, url: group_memberships_path(group)) do |f|
-            %input{name: "membership[group_id]", type: :hidden, value: group.id}
-              =submit_tag t(:request_membership), class: "btn", id: 'request-new-membership'
+  -if !user_signed_in?
+    = icon_button(href: new_group_membership_request_path(group), text: t(:request_membership), icon: '/assets/group.png', id: 'request-membership', class: 'btn-info' )
+  -elsif not group.users_include?(current_user)
+    - membership_request = group.membership_requests.where(requestor_id: current_user.id, response: nil).first
+    - if membership_request.present?
+      = icon_button(href: cancel_membership_request_path(membership_request), method: 'delete', text: t(:cancel_membership_request), icon: '/assets/group-dark.png', id: 'membership-requested', class: 'btn-grey', 'data-confirm' => t(:confirm_remove_membership_request))
+    - else
+      - if group.is_a_parent? || group.user_is_a_parent_member?(current_user)
+        = icon_button(href: new_group_membership_request_path(group), text: t(:request_membership), icon: '/assets/group.png', id: 'request-membership', class: 'btn-info' )
