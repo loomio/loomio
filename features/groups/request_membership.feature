@@ -13,19 +13,25 @@ Feature: Individual requests group membership
     And I fill in and submit the Request membership form
     Then I should see a flash message confirming my membership request
 
-  Scenario: Visitor tries to request membership to a group using email of existing member
+  Scenario: Visitor cannot request membership to a group using email of existing member
     Given I am a visitor
     When I visit the request membership page for a group
     And I fill in and submit the Request membership form using email of existing member
     Then I should see a field error telling me I am already a member of the group
 
-  Scenario: Vistor tries to request membership to private group
+  Scenario: Vistor cannot request membership to private group
     Given I am a visitor
     And a private group exists
     When I visit the request membership page for the group
     Then I should be redirected to the homepage
 
-  Scenario: Visitor with pending membership request tries to submit new request
+  Scenario: Visitor cannot request membership to a subgroup
+    Given I am a visitor
+    And a public sub-group exists
+    When I visit the request membership page for the sub-group
+    Then I should be redirected to the homepage
+
+  Scenario: Visitor with pending membership request cannot submit new request
     Given I am a visitor
     And I have requested membership to a group (as a visitor)
     When I visit the request membership page for the group
@@ -48,19 +54,25 @@ Feature: Individual requests group membership
     And I fill in and submit the Request membership form (introduction only)
     Then I should see a flash message confirming my membership request
 
-  Scenario: User tries to request membership to private group
+  Scenario: User cannot request membership to private group
     Given I am logged in
     And a private group exists
     When I visit the request membership page for the group
     Then I should be redirected to the dashboard
 
-  Scenario: User tries to request membership to a sub-group viewable by parent
+  Scenario: User cannot request membership to a sub-group viewable by parent
     Given I am logged in
     And a sub-group viewable by parent-group members exists
     When I visit the request membership page for the sub-group
     Then I should be redirected to the dashboard
 
-  Scenario: User with pending membership request tries to submit new request
+  Scenario: User cannot request membership to a sub-group if they are not member of parent
+    Given I am logged in
+    And a public sub-group exists
+    When I visit the request membership page for the sub-group
+    Then I should be redirected to the dashboard
+
+  Scenario: User with pending membership request cannot submit new request
     Given I am logged in
     And I have requested membership to a group
     When I visit the request membership page for the group
@@ -91,7 +103,7 @@ Feature: Individual requests group membership
     And I fill in and submit the Request membership form (introduction only)
     Then I should see a flash message confirming my membership request
 
-  Scenario: Member of a group tries to request membership to their own group
+  Scenario: Member of a group cannot request membership to their own group
     Given I am logged in
     And I am a member of a group
     When I visit the request membership page for the group
@@ -128,7 +140,7 @@ Feature: Individual requests group membership
     And I should no longer see the membership request in the list
     And the requester should be added to the group
 
-  Scenario: An unauthorized member tries to visit the membership requests page of the group
+  Scenario: An unauthorized member cannot visit the membership requests page of the group
     Given I am logged in
     And I am a member of a group
     And membership requests can only be managed by group admins for the group
