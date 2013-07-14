@@ -8,7 +8,7 @@
     - if can?(:add_members, @group)
       = render 'invite_button', group: @group
     = render 'options_dropdown', group: @group
-    =render 'request_membership', group: @group
+    = request_membership_button(@group)
 
 .row.main-content
   %section.span9
