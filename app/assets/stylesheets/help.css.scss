@@ -46,9 +46,7 @@
     }
   }
 }
-.pages.about #video-tutorial{
-  .span5, .span7 {width: 47%;}
-}
+/*Styles applied to both in-app help and marketing site*/
 .help, .pages.about{
   #help-content {
     h2 {
@@ -74,4 +72,12 @@
       span { font-weight: 700; }
     }
   }
+}
+/*Styles only applied to in-app help page*/
+.help{
+  #help-content{padding-bottom: 60em;} /*makes anchors work better*/
+}
+/*Styles only applied to marketing site*/
+.pages.about #video-tutorial{
+  .span5, .span7 {width: 47%;}
 }
