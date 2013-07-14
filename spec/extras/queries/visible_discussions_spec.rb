@@ -140,6 +140,30 @@ describe Queries::VisibleDiscussions do
     end
   end
 
+  context "user viewing discussions for all their groups" do
+    before do
+      public_group
+      discussion_in_public_group
+      members_only_group
+      discussion_in_members_only_group
+      public_group.add_member! user
+    end
+
+    subject do
+      Queries::VisibleDiscussions.new(user: user, subgroups: true)
+    end
+
+    it {should include discussion_in_public_group}
+    it {should_not include discussion_in_members_only_group}
+  end
+
+  it "does not return discussions in archived groups" do
+    public_group
+    discussion_in_public_group
+    public_group.archive!
+    Queries::VisibleDiscussions.new.should_not include discussion_in_public_group
+  end
+
   # im not sure I wanna keep these.. anyway look at ActiveRecord::Relation#match for a better way of doing it - rg
   describe "with motions in voting" do
     before do
@@ -155,15 +179,15 @@ describe Queries::VisibleDiscussions do
   end
 
   describe "#without_current_motions" do
-    #before do
-      #create :current_motion, discussion: discussion_in_public_group
-    #end
+    before do
+      create :current_motion, discussion: discussion_in_public_group
+    end
 
-    #subject do
-      #Queries::VisibleDiscussions.new(user: user, group: public_group, subgroups: true ).joins(:motions).merge(Motion.voting)
-    #end
+    subject do
+      Queries::VisibleDiscussions.new(user: user, group: public_group, subgroups: true).
+                                  without_current_motions
+    end
 
-    #it {should_not include discussion_in_public_group}
-    #it {should include discussion_in_public_subgroup_of_public_group }
+    it {should_not include discussion_in_public_group}
   end
 end

@@ -29,7 +29,7 @@ class Inbox
   end
 
   def unread_discussions_for(group)
-    Queries::VisibleDiscussions.new(user: @user, group: group).unread.order('last_comment_at DESC').readonly(false)
+    Queries::VisibleDiscussions.new(user: @user, group: group).unread.readonly(false)
   end
 
   def unvoted_motions_for(group)

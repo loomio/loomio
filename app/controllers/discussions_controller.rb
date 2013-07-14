@@ -46,7 +46,9 @@ class DiscussionsController < GroupBaseController
       end
     else
       authenticate_user!
-      @discussions = Queries::VisibleDiscussions.new(user: current_user, subgroups: true).page(params[:page]).per(10)
+      @discussions = Queries::VisibleDiscussions.new(user: current_user, subgroups: true).
+                     without_current_motions.
+                     page(params[:page]).per(10)
       render :layout => false if request.xhr?
     end
   end

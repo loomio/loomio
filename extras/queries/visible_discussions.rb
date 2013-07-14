@@ -3,7 +3,7 @@ class Queries::VisibleDiscussions < Delegator
     @user = user
     @group = group
 
-    @relation = Discussion.joins(:group)
+    @relation = Discussion.joins(:group).where('groups.archived_at IS NULL').order('last_comment_at DESC')
 
     @relation = if group
                   if subgroups
@@ -71,6 +71,7 @@ class Queries::VisibleDiscussions < Delegator
   end
 
   def without_current_motions
-    includes(:motions).where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND closed_at IS NULL)")
+    @relation = @relation.where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND closed_at IS NULL)")
+    self
   end
 end
