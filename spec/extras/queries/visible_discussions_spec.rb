@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Queries::VisibleDiscussions do
-  
+
   #excuse the massive block of definitions.. they clean up the specs. - rg
- 
+
   let(:user) { create :user }
   let(:public_group) { create :group, viewable_by: 'everyone' }
   let(:discussion_in_public_group) { create :discussion, group: public_group }
@@ -16,7 +16,7 @@ describe Queries::VisibleDiscussions do
 
   let(:parent_group_members_only_subgroup_of_public_group) { create :group, parent: public_group, viewable_by: 'parent_group_members' }
   let(:discussion_in_parent_group_members_only_subgroup) { create :discussion, group: parent_group_members_only_subgroup_of_public_group}
-  
+
   let(:members_only_group){ create :group, viewable_by: 'members' }
   let(:discussion_in_members_only_group) { create :discussion, group: members_only_group }
 
@@ -43,7 +43,7 @@ describe Queries::VisibleDiscussions do
       subject do
         Queries::VisibleDiscussions.new(group: public_group, subgroups: true)
       end
-      
+
       it {should include discussion_in_public_group}
       it {should include discussion_in_public_subgroup_of_public_group}
       its(:size){should == 2} # and no more
@@ -62,7 +62,7 @@ describe Queries::VisibleDiscussions do
     subject do
       Queries::VisibleDiscussions.new(user: user, group: public_group)
     end
-    
+
     it 'includes a column indicating it was joined to discussion reader' do
       subject.first['joined_to_discussion_reader'].should == '1'
     end
@@ -72,7 +72,7 @@ describe Queries::VisibleDiscussions do
     subject do
       Queries::VisibleDiscussions.new(user: user, group: public_group, subgroups: true)
     end
-    
+
     it {should include discussion_in_public_group}
     it {should include discussion_in_public_subgroup_of_public_group}
     its(:size){should == 2} # and no more
@@ -82,7 +82,7 @@ describe Queries::VisibleDiscussions do
     subject do
       Queries::VisibleDiscussions.new(user: user, group: public_group, subgroups: false)
     end
-    
+
     it {should include discussion_in_public_group}
     its(:size){should == 1} # and no more
   end
@@ -100,7 +100,7 @@ describe Queries::VisibleDiscussions do
       it {should include discussion_in_members_only_group}
       its(:size){should == 1}
 
-      # visible_to: parent_group_members means the group is visible 
+      # visible_to: parent_group_members means the group is visible
       # but the discussions will not cascaded unless you are a member of the subgroup
       context 'member of parent_group_members_subgroup_of_members_only_group' do
         before { parent_group_members_subgroup_of_members_only_group.add_member! user}
