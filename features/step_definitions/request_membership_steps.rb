@@ -184,3 +184,8 @@ end
 Then(/^I should see a field error telling me I am already a member of the group$/) do
   page.should have_content(I18n.t(:'error.user_with_email_address_already_in_group'))
 end
+
+Given /^I am a member of a parent\-group that has a public sub\-group$/ do
+  step 'a public sub-group exists'
+  @parent_group.add_member! @user
+end
