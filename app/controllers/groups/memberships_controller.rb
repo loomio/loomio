@@ -1,6 +1,6 @@
 class Groups::MembershipsController < GroupBaseController
-  load_and_authorize_resource :except => [:destroy, :index]
-  before_filter :require_current_user_is_group_admin, only: [:make_admin, :remove_admin, :index]
+  load_and_authorize_resource except: [:index]
+  before_filter :require_current_user_is_group_admin, only: [:index]
   before_filter :load_membership, only: [:make_admin, :remove_admin]
 
   # membership actions
