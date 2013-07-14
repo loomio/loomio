@@ -1,4 +1,9 @@
 class Queries::VisibleDiscussions < Delegator
+  # NOTE (JL): this needs refactoring, it's trying to do too many things
+  # It should be split into more specific classes.
+  # Because right now it's being used to display discussions on the dashboard,
+  # group page, inbox, etc. All of which have very different use-cases. Particulary
+  # depending on whether the user is signed in or signed out.
   def initialize(user: nil, group: nil, subgroups: false)
     @user = user
     @group = group
@@ -42,6 +47,9 @@ class Queries::VisibleDiscussions < Delegator
                     else
                       @relation = @relation.where(groups: {id: user.group_ids})
                     end
+                  else
+                    # Only display discussions for groups the user belongs to (dashboard view)
+                    @relation = @relation.where('groups.id IN (:ids)', ids: user.group_ids)
                   end
                   @relation
                 else
