@@ -93,15 +93,15 @@ describe "User abilities" do
     context "viewing a subgroup they do not belong to" do
       let(:subgroup) { create(:group, parent: group) }
       let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
-      context "subgroup viewable by members" do
-        before { subgroup.update_attributes(:viewable_by => :members) }
-        it { should_not be_able_to(:show, subgroup) }
-        it { should_not be_able_to(:create, my_subgroup_membership_request) }
-      end
       context "subgroup viewable by parent group members" do
         before { subgroup.update_attributes(:viewable_by => :parent_group_members) }
         it { should be_able_to(:show, subgroup) }
         it { should be_able_to(:create, my_subgroup_membership_request) }
+      end
+      context "subgroup viewable by members" do
+        before { subgroup.update_attributes(:viewable_by => :members) }
+        it { should_not be_able_to(:show, subgroup) }
+        it { should_not be_able_to(:create, my_subgroup_membership_request) }
       end
     end
   end
@@ -203,7 +203,13 @@ describe "User abilities" do
       it { should_not be_able_to(:get_and_clear_new_activity, motion) }
     end
 
-    context "subgroup viewable to members", :focus do
+    context "subgroup viewable to everyone" do
+      let(:subgroup) { create(:group, parent: group, viewable_by: :everyone) }
+      let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
+
+      it { should_not be_able_to(:create, my_subgroup_membership_request) }
+    end
+    context "subgroup viewable to members" do
       let(:subgroup) { create(:group, parent: group, viewable_by: :parent_group_members) }
       let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
 
