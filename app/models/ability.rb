@@ -43,7 +43,7 @@ class Ability
     #
     # MEMBERSHIP REQUESTS
     #
-    can :create, MembershipRequest, group: {viewable_by: :everyone}
+    can :create, MembershipRequest, group: {viewable_by: :everyone, parent_id: nil}
     can :create, MembershipRequest, group: {viewable_by: :parent_group_members, parent_id: user.group_ids}
 
     can :cancel, MembershipRequest, requestor_id: user.id
