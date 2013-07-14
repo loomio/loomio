@@ -222,7 +222,7 @@ describe "User abilities" do
     end
 
     context "subgroup viewable to members", :focus do
-      let(:subgroup) { create(:group, parent: group, viewable_by: :parent_group_members) }
+      let(:subgroup) { create(:group, parent: group, viewable_by: 'parent_group_members') }
       let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
 
       it { should_not be_able_to(:create, my_subgroup_membership_request) }

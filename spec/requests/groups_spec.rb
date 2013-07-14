@@ -59,7 +59,7 @@ describe "Groups" do
       context "members invitable by admins only" do
         pending "should be converted to cucs, broken as specs"
         before :each do
-          @group.members_invitable_by = :admins
+          @group.members_invitable_by = 'admins'
           @group.save
         end
 

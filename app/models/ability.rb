@@ -36,16 +36,16 @@ class Ability
     end
 
     # MEMBERSHIP REQUESTS
-    can :create, MembershipRequest, group: {viewable_by: :everyone}
-    can :create, MembershipRequest, group: {viewable_by: :parent_group_members, parent_id: user.group_ids}
+    can :create, MembershipRequest, group: {viewable_by: 'everyone'}
+    can :create, MembershipRequest, group: {viewable_by: 'parent_group_members', parent_id: user.group_ids}
 
     can :cancel, MembershipRequest, requestor_id: user.id
 
     can [:manage_membership_requests, :approve, :ignore], MembershipRequest,
-      group_id: user.group_ids, group: {members_invitable_by: :members}
+      group_id: user.group_ids, group: {members_invitable_by: 'members'}
 
     can [:manage_membership_requests, :approve, :ignore], MembershipRequest,
-      group_id: user.adminable_group_ids, group: {members_invitable_by: :admins}
+      group_id: user.adminable_group_ids, group: {members_invitable_by: 'admins'}
 
     # DISCUSSIONS / COMMENTS
     can :show, Discussion, group: {viewable_by: 'everyone'}
