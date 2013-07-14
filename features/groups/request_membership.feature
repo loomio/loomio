@@ -96,6 +96,13 @@ Feature: Individual requests group membership
     And I fill in and submit the Request membership form (introduction only)
     Then I should see a flash message confirming my membership request
 
+  Scenario: Parent group member requests membership to a public sub-group
+    Given I am logged in
+    And I am a member of a parent-group that has a public sub-group
+    When I visit the request membership page for the sub-group
+    And I fill in and submit the Request membership form (introduction only)
+    Then I should see a flash message confirming my membership request
+
   Scenario: Parent group member requests membership to a sub-group viewable by parent
     Given I am logged in
     And I am a member of a parent-group that has a sub-group viewable by parent-group members
