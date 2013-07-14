@@ -114,16 +114,16 @@ end
 When(/^"(.*?)" requests membership to the group$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
   group = FactoryGirl.create :group
-  @membership = group.add_request!(user)
+  @membership_request = FactoryGirl.create :membership_request, group: group, requestor: user
 end
 
 Then(/^the membership request email should be delivered to "(.*?)" in Spanish$/) do |arg1|
-  email = GroupMailer.new_membership_request(@membership)
+  email = GroupMailer.new_membership_request(@membership_request)
   email.body.encoded.should include(I18n.t("email.membership_request.view_group", locale: "es"))
 end
 
 Then(/^the membership request email should be delivered to "(.*?)" in English$/) do |arg1|
-  email = GroupMailer.new_membership_request(@membership)
+  email = GroupMailer.new_membership_request(@membership_request)
   email.body.encoded.should include(I18n.t("email.membership_request.view_group", locale: "en"))
 end
 
@@ -132,7 +132,7 @@ When(/^"(.*?)" approves "(.*?)"s group membership request$/) do |arg1, arg2|
   user = User.find_by_email("#{arg2}@example.org")
   group = FactoryGirl.create :group
   group.add_admin!(admin)
-  @membership = group.add_request!(user)
+  @membership_request = FactoryGirl.create :membership_request, group: group, requestor: user
   @email = UserMailer.group_membership_approved(user, group)
 end
 

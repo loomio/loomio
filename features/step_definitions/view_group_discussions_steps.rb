@@ -1,3 +1,11 @@
+Given /^an open group exists$/ do
+  @group = FactoryGirl.create :group
+  @group.add_admin! FactoryGirl.create :user
+  @group.viewable_by = :everyone
+  @group.description = "This is an *Open Group* group, which would formally have been called a 'public group'"
+  @group.save!
+end
+
 Given /^a public group exists$/ do
   @group = FactoryGirl.create :group
   @group.add_admin! FactoryGirl.create :user

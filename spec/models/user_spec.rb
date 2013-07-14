@@ -65,11 +65,6 @@ describe User do
     user.admin_memberships.should include(membership)
   end
 
-  it "has correct group request" do
-    create(:membership,:group => group, :user => user)
-    user.group_requests.should include(group)
-  end
-
   it "has authored discussions" do
     group.add_member!(user)
     discussion = Discussion.new(:group => group, :title => "Hello world")

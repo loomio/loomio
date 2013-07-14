@@ -71,14 +71,6 @@ class GroupsController < GroupBaseController
     @group.update_attribute(:next_steps_completed, true)
   end
 
-  def request_membership
-    if resource.users.include? current_user
-      redirect_to group_url(resource)
-    else
-      @membership = Membership.new
-    end
-  end
-
   def new_motion
     @group = GroupDecorator.new Group.find(params[:id])
     @motion = Motion.new

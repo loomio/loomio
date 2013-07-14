@@ -19,7 +19,7 @@ en:
       datepicker: "%d-%m-%Y"
 
   error:
-    access_denied: "Access denied."
+    access_denied: "You do not have permission to do this."
     cant_join_subgroup: "You cannot join a sub-group if you are not a member of the parent group."
     cant_modify_position: "This proposal has closed."
     cant_state_position: "This proposal has closed."
@@ -40,16 +40,19 @@ en:
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
     proposal_already_exists: "There is already an open proposal in this discussion."
+    user_with_email_address_already_in_group: "A user with that email address already belongs to this group."
+    you_have_already_requested_membership: "You have already requested membership to this group."
+    you_are_already_a_member_of_this_group: "You are already a member of this group."
     not_found: "Item not found. It may have been deleted."
   alert:
     duplicate_email: "%{which_email} is already in the group."
 
   notice:
     admin_rights_removed: "%{which_user}'s admin rights have been removed."
-    email_added: "%{which_email} has been added to the group."
+    user_added: "%{user_email_or_name} has been added to the group."
+    new_user_added: "%{user_email_or_name} will be added to the group after they set up a Loomio account."
     member_removed: "Member removed."
-    membership_approved: "Membership approved"
-    membership_requested: "Membership requested."
+    membership_approved: "Membership approved."
     membership_request_canceled: "Membership request canceled."
     membership_request_ignored: "Membership request ignored."
     settings_updated: "Your settings have been updated."
@@ -57,6 +60,7 @@ en:
     you_have_left_group: "You have left %{which_group}."
   warning:
     cant_remove_last_admin: "You are the last admin and cannot be removed."
+    membership_request_already_approved: "Membership request has already been approved."
     membership_request_already_ignored: "Membership request has already been ignored."
     membership_request_already_canceled: "Membership request has already been canceled."
     position_not_submitted: "Your position could not be submitted"
@@ -73,6 +77,7 @@ en:
     group_archived: "Group archived successfully."
     group_created: "Group created successfully."
     members_added: "Members added to group."
+    membership_requested: "Membership requested. You will be notified once your request has been approved."
     position_submitted: "Position submitted"
     position_updated: "Position updated."
     proposal_created: "Proposal successfully created."
@@ -142,7 +147,6 @@ en:
   email_preferences: "Email preferences"
   sign_out: "Sign out"
   sign_in: "Sign in"
-  sign_in_details: "to participate. You are currently logged out."
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
   or_sign_in_html: "If you've already got an account, <a href='%{link}'0>click here to sign in</a>."
 
@@ -171,7 +175,8 @@ en:
   invite_people: "Invite people"
   no_invitations_button: "No invitations left"
   pending_invitations: 'Pending invitations'
-  number_pending: 'and %{pending} pending'
+  number_pending: '%{pending} pending'
+  and_number_pending: 'and %{pending} pending'
   edit_memberships: 'Edit memberships'
 
   add_new_member: "Add new member"
@@ -203,9 +208,11 @@ en:
 
   membership_requests: "Membership requests"
   confirm_approve_membership_request: "Are you sure you want to add %{which_user} to the group?"
+  cancel_membership_request: "Cancel request"
   ignore_request: "Ignore request"
+  ignore: "Ignore"
   confirm_ignore_membership_request: "Are you sure you want to ignore the member request from %{which_user}?"
-  membership_requested: "Membership Requested"
+  membership_requested: "Membership requested"
   request_membership: "Request membership"
   confirm_remove_membership_request: "Are you sure you wish to withdraw your membership request for this group?"
 
@@ -592,6 +599,8 @@ en:
         description: "Give a brief description of your group:"
         viewable_by: "Who can see this group?"
         members_invitable_by: "Who can invite people to this group?"
+      membership_request:
+        introduction: "Introduce yourself"
       motion:
         name: "Title"
         description: "Details"
@@ -616,6 +625,8 @@ en:
       discussion:
         title: "What is the topic you'd like to discuss?"
         description: "This information will appear at the top of the discussion page. Introduce the topic and give enough context for your group to have a well-informed discussion."
+      membership_request:
+        introduction: "Write a few words about who you are and why you would like to join %{group_name}."
       motion:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."

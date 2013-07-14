@@ -1,12 +1,3 @@
-$ ->
-  if $("body.groups.show").length > 0
-    $("#membership-requested").hover(
-      (e) ->
-        $(this).text("Cancel Request")
-      (e) ->
-        $(this).text("Membership Requested")
-    )
-
 #*** edit privacy settings from dropdown ***
 $ ->
   if $("#privacy-settings-form").length > 0
