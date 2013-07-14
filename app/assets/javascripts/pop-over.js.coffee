@@ -1,6 +1,10 @@
 $ ->
   $('.enable-tooltip').tooltip
-    placement: "bottom",
+    placement: "bottom"
+
+$ ->
+  $('.tooltip-top').tooltip
+    placement: 'top'
 
 # adds bootstrap popovers to group activity indicators
 $ ->

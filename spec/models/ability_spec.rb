@@ -94,15 +94,23 @@ describe "User abilities" do
     context "viewing a subgroup they do not belong to" do
       let(:subgroup) { create(:group, parent: group) }
       let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
-      context "subgroup viewable by members" do
-        before { subgroup.update_attributes(:viewable_by => 'members') }
-        it { should_not be_able_to(:show, subgroup) }
-        it { should_not be_able_to(:create, my_subgroup_membership_request) }
+
+      context "public subgroup" do
+        let(:discussion) { create(:discussion, group: subgroup) }
+        before { subgroup.update_attributes(:viewable_by => 'everyone') }
+        it { should be_able_to(:show, subgroup) }
+        it { should be_able_to(:show, discussion) }
+        it { should be_able_to(:create, my_subgroup_membership_request) }
       end
       context "subgroup viewable by parent group members" do
         before { subgroup.update_attributes(:viewable_by => 'parent_group_members') }
         it { should be_able_to(:show, subgroup) }
         it { should be_able_to(:create, my_subgroup_membership_request) }
+      end
+      context "private subgroup" do
+        before { subgroup.update_attributes(:viewable_by => 'members') }
+        it { should_not be_able_to(:show, subgroup) }
+        it { should_not be_able_to(:create, my_subgroup_membership_request) }
       end
     end
   end
@@ -164,10 +172,7 @@ describe "User abilities" do
     let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
 
     context "public group" do
-      before do
-        group.update_attributes!(:viewable_by => 'everyone')
-        discussion.reload
-      end
+      before { group.update_attributes!(:viewable_by => 'everyone') }
 
       it { should be_able_to(:show, group) }
       it { should be_able_to(:show, discussion) }
@@ -209,23 +214,29 @@ describe "User abilities" do
       it { should_not be_able_to(:get_and_clear_new_activity, motion) }
     end
 
-    context 'group viewable by parent group members' do
-      let(:parent_group){ create :group }
+    context "public subgroup" do
+      let(:subgroup) { create(:group, parent: group, viewable_by: 'everyone') }
+      let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
+      let(:discussion) { create(:discussion, group: subgroup) }
 
-      before do
-        group.viewable_by = 'parent_group_members'
-        group.parent = parent_group
-        parent_group.add_member! user
-        group.save!(validate: false)
-      end
+      it { should_not be_able_to(:create, my_subgroup_membership_request) }
       it { should be_able_to(:show, discussion) }
     end
 
-    context "subgroup viewable to members", :focus do
+    context 'subgroup viewable by parent group members' do
       let(:subgroup) { create(:group, parent: group, viewable_by: 'parent_group_members') }
       let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
 
       it { should_not be_able_to(:create, my_subgroup_membership_request) }
+      it { should_not be_able_to(:show, discussion) }
+    end
+
+    context "private subgroup" do
+      let(:subgroup) { create(:group, parent: group, viewable_by: 'parent_group_members') }
+      let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
+
+      it { should_not be_able_to(:create, my_subgroup_membership_request) }
+      it { should_not be_able_to(:show, discussion) }
     end
   end
 end
