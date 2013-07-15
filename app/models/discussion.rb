@@ -12,10 +12,6 @@ class Discussion < ActiveRecord::Base
   belongs_to :group, :counter_cache => true
   belongs_to :author, class_name: 'User'
   has_many :motions, :dependent => :destroy
-  has_many :closed_motions,
-    :class_name => 'Motion',
-    :conditions => { phase: 'closed' },
-    :order => "close_at desc"
   has_many :votes, through: :motions
   has_many :comments,  :as => :commentable, :dependent => :destroy
   has_many :users_with_comments, :through => :comments,
@@ -32,6 +28,14 @@ class Discussion < ActiveRecord::Base
 
   after_create :populate_last_comment_at
   after_create :fire_new_discussion_event
+
+  def voting_motions
+    motions.voting
+  end
+
+  def closed_motions
+    motions.closed
+  end
 
   def group_users_without_discussion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
@@ -111,12 +115,12 @@ class Discussion < ActiveRecord::Base
     false
   end
 
-  def current_motion_close_at
-    current_motion.close_at
+  def current_motion_closing_at
+    current_motion.closing_at
   end
 
   def current_motion
-    motion = motions.where("phase = 'voting'").last
+    motion = voting_motions.last
     if motion
       motion.close_if_expired
       motion if motion.voting?

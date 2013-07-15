@@ -62,7 +62,7 @@ class MotionsController < GroupBaseController
 
   def close
     resource
-    @motion.close_motion! current_user
+    @motion.close! current_user
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
   end
 

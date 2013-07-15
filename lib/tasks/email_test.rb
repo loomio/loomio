@@ -337,7 +337,7 @@ describe "Test Email:" do
       unique_votes = []
       rand(2..11).times { unique_votes << create_vote }
       motion.stub unique_votes: unique_votes
-      motion.stub close_at: Time.now + 1.hour
+      motion.stub closing_at: Time.now + 1.hour
       addresses.each do |email|
         user.stub email: email
         UserMailer.motion_closing_soon(user, motion).deliver

@@ -6,13 +6,10 @@
         - if motion.closed?
           %span.label.label-important= t(:closed)
       #closing-info
-        - if motion.has_close_date?
-          - if motion.voting?
-            = t(:proposal_closing_when, when: time_ago_in_words(motion.close_at))
-          - else
-            %span= t(:proposal_closed_when, when: time_ago_in_words(motion.close_at))
+        - if motion.voting?
+          = t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
         - else
-          No close date
+          %span= t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
       .proposed-by
         = t(:proposed_when_by_who, when: time_ago_in_words(motion.created_at), who: motion.author_name)
     .span2.motion-admin-buttons
