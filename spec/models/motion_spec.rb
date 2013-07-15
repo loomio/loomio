@@ -1,13 +1,29 @@
 require 'spec_helper'
 
 describe Motion do
+  describe "#voting?" do
+    it "returns true if motion is open" do
+      @motion = create :motion
+      @motion.voting?.should be_true
+      @motion.closed?.should be_false
+    end
+  end
+
+  describe "#closed?" do
+    it "returns true if motion is open" do
+      @motion = create(:motion, closed_at: 2.days.ago)
+      @motion.closed?.should be_true
+      @motion.voting?.should be_false
+    end
+  end
+
   it "assigns the close_at from close_at_* fields" do
     close_date = "23-05-2013"
     close_time = "15:00"
     time_zone = "Saskatchewan"
     motion = build(:motion, close_at_date: close_date, close_at_time: close_time, close_at_time_zone: time_zone)
     motion.save!
-    motion.close_at.in_time_zone("Saskatchewan").to_s.should == "2013-05-23 15:00:00 -0600"
+    motion.closing_at.in_time_zone("Saskatchewan").to_s.should == "2013-05-23 15:00:00 -0600"
   end
 
   describe "#user_has_voted?(user)" do
@@ -42,57 +58,38 @@ describe Motion do
     it "adds motion closed activity if a motion is closed" do
       motion = create :motion, :discussion => @discussion
       Events::MotionClosed.should_receive(:publish!)
-      motion.close_motion!(@user)
+      motion.close!(@user)
     end
   end
 
-  it "cannot have invalid phases" do
-    @motion = create(:motion)
-    @motion.phase = 'bad'
-    @motion.should_not be_valid
-  end
+  describe "#blocked?" do
+    before do
+      @motion = create(:motion)
+      @user1 = build(:user)
+      @user1.save
+      @motion.group.add_member!(@user1)
+    end
+    it "it can remain un-blocked" do
+      vote = Vote.new(position: 'yes')
+      vote.motion = @motion
+      vote.user = @user1
+      vote.save
+      @motion.blocked?.should == false
+    end
 
-  it "it can remain un-blocked" do
-    @motion = create(:motion)
-    user1 = build(:user)
-    user1.save
-    @motion.group.add_member!(user1)
-    vote = Vote.new(position: 'yes')
-    vote.motion = @motion
-    vote.user = user1
-    vote.save
-    @motion.blocked?.should == false
-  end
-
-  it "it can be blocked" do
-    @motion = create(:motion)
-    user1 = build(:user)
-    user1.save
-    @motion.group.add_member!(user1)
-    vote = Vote.new(position: 'block')
-    vote.motion = @motion
-    vote.user = user1
-    vote.save
-    @motion.blocked?.should == true
-  end
-
-  it "can have a close date" do
-    @motion = create(:motion)
-    @motion.close_at = '2012-12-12'
-    @motion.close_at.should == Date.parse('2012-12-12')
-    @motion.should be_valid
+    it "it can be blocked" do
+      vote = Vote.new(position: 'block')
+      vote.motion = @motion
+      vote.user = @user1
+      vote.save
+      @motion.blocked?.should == true
+    end
   end
 
   it "can have a discussion link" do
     @motion = create(:motion)
     @motion.discussion_url = "http://our-discussion.com"
     @motion.should be_valid
-  end
-
-  it "can have a discussion" do
-    @motion = create(:motion)
-    @motion.save
-    @motion.discussion.should_not be_nil
   end
 
   it "cannot have an outcome if voting open" do
@@ -222,20 +219,17 @@ describe Motion do
   end
 
   describe "last_looked_at_by(user)" do
-    it "returns the date when the user last looked at the motion" do
-      user = create :user
-      motion = create :motion
-      motion.stub(:read_log_for).and_return stub :motion_last_viewed_at => 123
-
-      motion.last_looked_at_by(user).should == 123
+    before do
+      @user = create :user
+      @motion = create :motion
     end
-
+    it "returns the date when the user last looked at the motion" do
+      @motion.stub(:read_log_for).and_return stub :motion_last_viewed_at => 123
+      @motion.last_looked_at_by(@user).should == 123
+    end
     it "returns nil if no read log exists" do
-      user = create :user
-      motion = create :motion
-      motion.stub(:read_log_for).and_return nil
-
-      motion.last_looked_at_by(user).should == nil
+      @motion.stub(:read_log_for).and_return nil
+      @motion.last_looked_at_by(@user).should == nil
     end
   end
 
@@ -260,25 +254,21 @@ describe Motion do
     end
   end
 
-  context do
-    let(:user1) { create(:user) }
-    let(:user2) { create(:user) }
-
+  describe "that_user_has_voted_on" do
     before do
-      @motion = create(:motion, author: user1)
-      @motion1 = create(:motion, author: user1)
+      @user1 = create :user
+      @motion = create(:motion, author: @user1)
+      @motion1 = create(:motion, author: @user1)
     end
-
-    describe "that_user_has_voted_on" do
-      it "returns motions that the user has voted" do
-        @motion.vote!(user1, 'yes', 'i agree!')
-        Motion.that_user_has_voted_on(user1).should include(@motion)
-      end
-      it "does not return motions that the user has not voted on (even if another user has)" do
-        @motion.group.add_member! user2
-        @motion.vote!(user2, 'yes', 'i agree!')
-        Motion.that_user_has_voted_on(user1).should_not include(@motion)
-      end
+    it "returns motions that the user has voted" do
+      @motion.vote!(@user1, 'yes', 'i agree!')
+      Motion.that_user_has_voted_on(@user1).should include(@motion)
+    end
+    it "does not return motions that the user has not voted on (even if another user has)" do
+      @user2 = create :user
+      @motion.group.add_member! @user2
+      @motion.vote!(@user2, 'yes', 'i agree!')
+      Motion.that_user_has_voted_on(@user1).should_not include(@motion)
     end
   end
 

@@ -15,8 +15,8 @@
             = discussion_activity
       .discussion-date-info
         -if discussion.current_motion
-          - if discussion.current_motion_close_at
-            .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_close_at)} until close"
+          - if discussion.current_motion_closing_at
+            .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_closing_at)} until close"
         - else
           .latest-comment-time= "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.latest_comment_time))}"
     - if discussion.current_motion
