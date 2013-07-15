@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625225411) do
+ActiveRecord::Schema.define(:version => 20130712035504) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -140,7 +140,6 @@ ActiveRecord::Schema.define(:version => 20130625225411) do
     t.boolean  "following",                 :default => true, :null => false
   end
 
-  add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
   add_index "discussion_read_logs", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
   add_index "discussion_read_logs", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
@@ -200,6 +199,7 @@ ActiveRecord::Schema.define(:version => 20130625225411) do
     t.text     "why_do_you_want"
     t.text     "group_core_purpose"
     t.text     "admin_notes"
+    t.boolean  "paying_subscription"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
@@ -267,10 +267,31 @@ ActiveRecord::Schema.define(:version => 20130625225411) do
     t.string   "intent"
     t.integer  "canceller_id"
     t.datetime "cancelled_at"
+    t.string   "recipient_name"
   end
 
   add_index "invitations", ["group_id"], :name => "index_invitations_on_group_id"
   add_index "invitations", ["token"], :name => "index_invitations_on_token"
+
+  create_table "membership_requests", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "introduction"
+    t.integer  "group_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "requestor_id"
+    t.integer  "responder_id"
+    t.string   "response"
+    t.datetime "responded_at"
+  end
+
+  add_index "membership_requests", ["email"], :name => "index_membership_requests_on_email"
+  add_index "membership_requests", ["group_id"], :name => "index_membership_requests_on_group_id"
+  add_index "membership_requests", ["name"], :name => "index_membership_requests_on_name"
+  add_index "membership_requests", ["requestor_id"], :name => "index_membership_requests_on_requestor_id"
+  add_index "membership_requests", ["responder_id"], :name => "index_membership_requests_on_responder_id"
+  add_index "membership_requests", ["response"], :name => "index_membership_requests_on_response"
 
   create_table "memberships", :force => true do |t|
     t.integer  "group_id"
@@ -312,12 +333,12 @@ ActiveRecord::Schema.define(:version => 20130625225411) do
     t.date     "close_at_date"
     t.string   "close_at_time"
     t.string   "close_at_time_zone"
-    t.text     "edit_message"
     t.integer  "yes_votes_count",     :default => 0,        :null => false
     t.integer  "no_votes_count",      :default => 0,        :null => false
     t.integer  "abstain_votes_count", :default => 0,        :null => false
     t.integer  "block_votes_count",   :default => 0,        :null => false
     t.string   "phase",               :default => "voting"
+    t.text     "edit_message"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
@@ -364,14 +385,14 @@ ActiveRecord::Schema.define(:version => 20130625225411) do
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
+    t.string   "username"
     t.boolean  "subscribed_to_daily_activity_email",                          :default => false,      :null => false
     t.boolean  "subscribed_to_mention_notifications",                         :default => true,       :null => false
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
-    t.string   "username"
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.boolean  "uses_markdown",                                               :default => false
     t.integer  "memberships_count",                                           :default => 0,          :null => false
+    t.boolean  "uses_markdown",                                               :default => false
     t.string   "language_preference"
     t.string   "time_zone"
   end
