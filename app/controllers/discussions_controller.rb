@@ -41,7 +41,11 @@ class DiscussionsController < GroupBaseController
       if cannot? :show, @group
         head 401
       else
-        @discussions = Queries::VisibleDiscussions.new(group: @group, user: current_user, subgroups: true).page(params[:page]).per(10)
+        @discussions = Queries::VisibleDiscussions.
+                       new(group: @group,
+                           user: current_user,
+                           subgroups: true).
+                       page(params[:page]).per(10)
         render :layout => false if request.xhr?
       end
     else

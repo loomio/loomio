@@ -11,11 +11,11 @@ describe Queries::VisibleDiscussions do
   let(:public_subgroup_of_public_group) { create :group, parent: public_group, viewable_by: 'everyone' }
   let(:discussion_in_public_subgroup_of_public_group) { create :discussion, group: public_subgroup_of_public_group }
 
+  let(:parent_group_members_subgroup_of_public_group) {create :group, viewable_by: 'parent_group_members', parent: public_group }
+  let(:discussion_in_parent_group_members_subgroup_of_public_group) {create :discussion, group: parent_group_members_subgroup_of_public_group}
+
   let(:members_only_subgroup_of_public_group) {create :group, parent: public_group, viewable_by: 'members' }
   let(:discussion_in_members_only_subgroup_of_public_group) { create :discussion, group: members_only_subgroup_of_public_group}
-
-  let(:parent_group_members_only_subgroup_of_public_group) { create :group, parent: public_group, viewable_by: 'parent_group_members' }
-  let(:discussion_in_parent_group_members_only_subgroup) { create :discussion, group: parent_group_members_only_subgroup_of_public_group}
 
   let(:members_only_group){ create :group, viewable_by: 'members' }
   let(:discussion_in_members_only_group) { create :discussion, group: members_only_group }
@@ -31,6 +31,7 @@ describe Queries::VisibleDiscussions do
 
     discussion_in_public_group
     discussion_in_public_subgroup_of_public_group
+    discussion_in_parent_group_members_subgroup_of_public_group
     discussion_in_members_only_subgroup_of_public_group
 
     discussion_in_members_only_group
@@ -87,6 +88,21 @@ describe Queries::VisibleDiscussions do
     its(:size){should == 1} # and no more
   end
 
+  describe "member of public_group" do
+    before do
+      public_group.add_member! user
+    end
+
+    subject do
+      Queries::VisibleDiscussions.new(user: user, group: public_group, subgroups: true)
+    end
+
+    # If you're a member of a group, it should not display the subgroups if you're not a member
+    # of the subgroup
+    it {should include discussion_in_public_group}
+    its(:size){should == 1} # and no more
+  end
+
   describe "member of members_only_group" do
     before do
       members_only_group.add_member! user
@@ -94,7 +110,7 @@ describe Queries::VisibleDiscussions do
 
     describe 'views discussions in members_only_group' do
       subject do
-        Queries::VisibleDiscussions.new(user: user, group: members_only_group)
+        Queries::VisibleDiscussions.new(user: user, group: members_only_group, subgroups: true)
       end
 
       it {should include discussion_in_members_only_group}
@@ -142,10 +158,6 @@ describe Queries::VisibleDiscussions do
 
   context "user viewing discussions for all their groups" do
     before do
-      public_group
-      discussion_in_public_group
-      members_only_group
-      discussion_in_members_only_group
       public_group.add_member! user
     end
 
@@ -154,11 +166,10 @@ describe Queries::VisibleDiscussions do
     end
 
     it {should include discussion_in_public_group}
-    it {should_not include discussion_in_members_only_group}
+    its(:size){ should == 1 }
   end
 
   it "does not return discussions in archived groups" do
-    public_group
     discussion_in_public_group
     public_group.archive!
     Queries::VisibleDiscussions.new.should_not include discussion_in_public_group

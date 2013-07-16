@@ -163,3 +163,27 @@ end
 Then /^we should make this test work$/ do
   pending "For some reason this test isn't working"
 end
+
+Given(/^I am a member of a parent\-group that has sub\-groups I don't belong to$/) do
+  @parent_group = FactoryGirl.create :group
+  @parent_group.add_member! @user
+  @sub_groups = []
+  ['members', 'parent_group_members', 'everyone'].each do |viewable_by|
+    @sub_groups << FactoryGirl.create(:group,
+                                      parent: @parent_group,
+                                      viewable_by: viewable_by)
+  end
+end
+
+Given(/^those sub\-groups have discussions$/) do
+  @discussions = []
+  @sub_groups.each do |sub_group|
+    @discussions << FactoryGirl.create(:discussion, group: sub_group)
+  end
+end
+
+Then(/^I should not see those sub\-groups' discussions$/) do
+  @discussions.each do |discussion|
+    page.should_not have_content(discussion.title)
+  end
+end
