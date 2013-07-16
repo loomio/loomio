@@ -20,11 +20,14 @@ describe Queries::VisibleDiscussions do
   let(:members_only_group){ create :group, viewable_by: 'members' }
   let(:discussion_in_members_only_group) { create :discussion, group: members_only_group }
 
-  let(:members_only_subgroup_of_members_only_group) { create :group, viewable_by: 'members', parent: members_only_group }
-  let(:discussion_in_members_only_subgroup_of_members_only_group) { create :discussion, group: members_only_subgroup_of_members_only_group }
+  let(:public_subgroup_of_members_only_group) { create :group, viewable_by: 'everyone', parent: members_only_group }
+  let(:discussion_in_public_subgroup_of_members_only_group) { create :discussion, group: public_subgroup_of_members_only_group }
 
   let(:parent_group_members_subgroup_of_members_only_group) {create :group, viewable_by: 'parent_group_members', parent: members_only_group }
   let(:discussion_in_parent_group_members_subgroup_of_members_only_group) {create :discussion, group: parent_group_members_subgroup_of_members_only_group}
+
+  let(:members_only_subgroup_of_members_only_group) { create :group, viewable_by: 'members', parent: members_only_group }
+  let(:discussion_in_members_only_subgroup_of_members_only_group) { create :discussion, group: members_only_subgroup_of_members_only_group }
 
   before :all do
     user
@@ -35,11 +38,12 @@ describe Queries::VisibleDiscussions do
     discussion_in_members_only_subgroup_of_public_group
 
     discussion_in_members_only_group
-    discussion_in_members_only_subgroup_of_members_only_group
+    discussion_in_public_subgroup_of_members_only_group
     discussion_in_parent_group_members_subgroup_of_members_only_group
+    discussion_in_members_only_subgroup_of_members_only_group
   end
 
-  describe 'signed out user' do
+  describe 'visitor' do
     describe 'views discussions in public_group', focus: true do
       subject do
         Queries::VisibleDiscussions.new(group: public_group, subgroups: true)
@@ -61,22 +65,16 @@ describe Queries::VisibleDiscussions do
 
   describe 'non member of public_group showing subgroups' do
     subject do
-      Queries::VisibleDiscussions.new(user: user, group: public_group)
-    end
-
-    it 'includes a column indicating it was joined to discussion reader' do
-      subject.first['joined_to_discussion_reader'].should == '1'
-    end
-  end
-
-  describe 'non member of public_group showing subgroups' do
-    subject do
       Queries::VisibleDiscussions.new(user: user, group: public_group, subgroups: true)
     end
 
     it {should include discussion_in_public_group}
     it {should include discussion_in_public_subgroup_of_public_group}
     its(:size){should == 2} # and no more
+
+    it 'includes a column indicating it was joined to discussion reader' do
+      subject.first['joined_to_discussion_reader'].should == '1'
+    end
   end
 
   describe 'non member of public_group not showing subgroups', focus: true do
@@ -88,7 +86,7 @@ describe Queries::VisibleDiscussions do
     its(:size){should == 1} # and no more
   end
 
-  describe "member of public_group" do
+  describe "member viewing public_group" do
     before do
       public_group.add_member! user
     end
@@ -97,61 +95,112 @@ describe Queries::VisibleDiscussions do
       Queries::VisibleDiscussions.new(user: user, group: public_group, subgroups: true)
     end
 
-    # If you're a member of a group, it should not display the subgroups if you're not a member
-    # of the subgroup
     it {should include discussion_in_public_group}
     its(:size){should == 1} # and no more
+
+    context "member viewing public_subgroup_of_public_group" do
+      before do
+        public_subgroup_of_public_group.add_member! user
+      end
+
+      it {should include discussion_in_public_group}
+      it {should include discussion_in_public_subgroup_of_public_group}
+      its(:size){should == 2} # and no more
+    end
   end
 
-  describe "member of members_only_group" do
+  context "member viewing members_only_group" do
     before do
       members_only_group.add_member! user
     end
 
-    describe 'views discussions in members_only_group' do
-      subject do
-        Queries::VisibleDiscussions.new(user: user, group: members_only_group, subgroups: true)
-      end
-
-      it {should include discussion_in_members_only_group}
-      its(:size){should == 1}
-
-      # visible_to: parent_group_members means the group is visible
-      # but the discussions will not cascaded unless you are a member of the subgroup
-      context 'member of parent_group_members_subgroup_of_members_only_group' do
-        before { parent_group_members_subgroup_of_members_only_group.add_member! user}
-
-        subject do
-          Queries::VisibleDiscussions.new(user: user, group: members_only_group, subgroups: true)
-        end
-
-        it {should include discussion_in_members_only_group}
-        it {should include discussion_in_parent_group_members_subgroup_of_members_only_group }
-        its(:size){should == 2}
-      end
+    subject do
+      Queries::VisibleDiscussions.new(user: user, group: members_only_group, subgroups: true)
     end
 
-    context 'and member of members_only_subgroup_of_members_only_group' do
+    it {should include discussion_in_members_only_group}
+    its(:size){should == 1}
+
+    context 'member of public_subgroup_of_members_only_group' do
+      before { public_subgroup_of_members_only_group.add_member! user}
+
+      it {should include discussion_in_members_only_group}
+      it {should include discussion_in_public_subgroup_of_members_only_group }
+      its(:size){should == 2}
+    end
+
+    context 'member of parent_group_members_subgroup_of_members_only_group' do
+      before { parent_group_members_subgroup_of_members_only_group.add_member! user}
+
+      it {should include discussion_in_members_only_group}
+      it {should include discussion_in_parent_group_members_subgroup_of_members_only_group }
+      its(:size){should == 2}
+    end
+
+    context 'member of members_only_subgroup_of_members_only_group' do
       before do
         members_only_subgroup_of_members_only_group.add_member! user
       end
 
-      describe 'views discussions in members_only_group' do
-        subject do
-          Queries::VisibleDiscussions.new(user: user, group: members_only_group, subgroups: true)
-        end
+      it {should include discussion_in_members_only_group}
+      it {should include discussion_in_members_only_subgroup_of_members_only_group}
+      its(:size){should == 2}
+    end
+  end
 
-        it {should include discussion_in_members_only_group}
-        it {should include discussion_in_members_only_subgroup_of_members_only_group}
-        its(:size){should == 2}
-      end
+  context 'parent_group member viewing public_subgroup_of_members_only_group' do
+    before { members_only_group.add_member! user }
+
+    subject do
+      Queries::VisibleDiscussions.new(user: user, group: public_subgroup_of_members_only_group)
     end
 
-    context 'views discussions in parent_group_members_subgroup_of_members_only_group' do
-      subject do
-        Queries::VisibleDiscussions.new(user: user, group: parent_group_members_subgroup_of_members_only_group)
-      end
+    context 'non-member of subgroup' do
+      it {should include discussion_in_public_subgroup_of_members_only_group}
+      its(:size){ should == 1 }
+    end
+
+    context 'member of subgroup' do
+      before { public_subgroup_of_members_only_group.add_member! user }
+      it {should include discussion_in_public_subgroup_of_members_only_group}
+      its(:size){ should == 1 }
+    end
+  end
+
+  context 'parent_group member viewing parent_group_members_subgroup_of_members_only_group' do
+    before { members_only_group.add_member! user }
+
+    subject do
+      Queries::VisibleDiscussions.new(user: user, group: parent_group_members_subgroup_of_members_only_group)
+    end
+
+    context 'non-member of subgroup' do
       it {should include discussion_in_parent_group_members_subgroup_of_members_only_group}
+      its(:size){ should == 1 }
+    end
+
+    context 'member of subgroup' do
+      before { parent_group_members_subgroup_of_members_only_group.add_member! user }
+
+      it {should include discussion_in_parent_group_members_subgroup_of_members_only_group}
+      its(:size){ should == 1 }
+    end
+  end
+
+  context 'parent_group member viewing members_only_subgroup_of_members_only_group' do
+    before { members_only_group.add_member! user }
+
+    subject do
+      Queries::VisibleDiscussions.new(user: user, group: members_only_subgroup_of_members_only_group)
+    end
+
+    context 'non-member of subgroup' do
+      its(:size){ should == 0 }
+    end
+
+    context 'member of subgroup' do
+      before { members_only_subgroup_of_members_only_group.add_member! user }
+      it {should include discussion_in_members_only_subgroup_of_members_only_group}
       its(:size){ should == 1 }
     end
   end
@@ -200,5 +249,93 @@ describe Queries::VisibleDiscussions do
     end
 
     it {should_not include discussion_in_public_group}
+  end
+
+  describe ".list_of_groups_for(group, user)" do
+    context "non-member of public_group" do
+      subject {Queries::VisibleDiscussions.list_of_groups_for(public_group, user)}
+      it {should include public_group}
+      it {should include public_subgroup_of_public_group}
+      its(:size){should == 2}
+    end
+
+    context "non-member of members_only_group" do
+      subject {Queries::VisibleDiscussions.list_of_groups_for(members_only_group, user)}
+      its(:size){should == 0}
+    end
+
+    context "member of public_group" do
+      before {public_group.add_member! user}
+      subject {Queries::VisibleDiscussions.list_of_groups_for(public_group, user)}
+      it {should include public_group}
+      its(:size){should == 1}
+
+      context "member of public_subgroup_of_public_group" do
+        before do
+          public_subgroup_of_public_group.add_member! user
+          public_group.reload
+        end
+        it {should include public_group}
+        it {should include public_subgroup_of_public_group}
+        its(:size){should == 2}
+      end
+
+      context "member of parent_group_members_subgroup_of_public_group" do
+        before do
+          parent_group_members_subgroup_of_public_group.add_member! user
+          public_group.reload
+        end
+        it {should include public_group}
+        it {should include parent_group_members_subgroup_of_public_group}
+        its(:size){should == 2}
+      end
+
+      context "member of members_only_subgroup_of_public_group" do
+        before do
+          members_only_subgroup_of_public_group.add_member! user
+          public_group.reload
+        end
+        it {should include public_group}
+        it {should include members_only_subgroup_of_public_group}
+        its(:size){should == 2}
+      end
+    end
+
+    context "member of members_only_group" do
+      before {members_only_group.add_member! user}
+      subject {Queries::VisibleDiscussions.list_of_groups_for(members_only_group, user)}
+      it {should include members_only_group}
+      its(:size){should == 1}
+
+      context "member of public_subgroup_of_members_only_group" do
+        before do
+          public_subgroup_of_members_only_group.add_member! user
+          members_only_group.reload
+        end
+        it {should include members_only_group}
+        it {should include public_subgroup_of_members_only_group}
+        its(:size){should == 2}
+      end
+
+      context "member of parent_group_members_subgroup_of_members_only_group" do
+        before do
+          parent_group_members_subgroup_of_members_only_group.add_member! user
+          members_only_group.reload
+        end
+        it {should include members_only_group}
+        it {should include parent_group_members_subgroup_of_members_only_group}
+        its(:size){should == 2}
+      end
+
+      context "member of members_only_subgroup_of_members_only_group" do
+        before do
+          members_only_subgroup_of_members_only_group.add_member! user
+          members_only_group.reload
+        end
+        it {should include members_only_group}
+        it {should include members_only_subgroup_of_members_only_group}
+        its(:size){should == 2}
+      end
+    end
   end
 end

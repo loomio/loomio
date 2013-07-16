@@ -82,4 +82,17 @@ class Queries::VisibleDiscussions < Delegator
     @relation = @relation.where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND closed_at IS NULL)")
     self
   end
+
+  def self.list_of_groups_for(group, user)
+    groups = []
+    if user.is_group_member?(group)
+      groups << group
+      group.subgroups.each do |subgroup|
+        if user.is_group_member?(subgroup)
+          groups << subgroup
+        end
+      end
+    end
+    groups
+  end
 end
