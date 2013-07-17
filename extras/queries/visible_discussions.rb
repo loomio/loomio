@@ -3,7 +3,7 @@ class Queries::VisibleDiscussions < Delegator
     @user = user
     @groups = groups
 
-    @relation = Discussion.joins(:group).where('archived_at IS NULL').order('last_comment_at DESC')
+    @relation = Discussion.joins(:group).where('archived_at IS NULL')
 
     if @user.present?
       @relation = @relation.select('discussions.*,

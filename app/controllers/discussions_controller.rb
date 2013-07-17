@@ -44,6 +44,7 @@ class DiscussionsController < GroupBaseController
         @discussions = GroupDiscussionsViewer.
                        for(@group, current_user).
                        without_open_motions.
+                       order_by_latest_comment.
                        page(params[:page]).per(10)
         render :layout => false if request.xhr?
       end
@@ -52,6 +53,7 @@ class DiscussionsController < GroupBaseController
       @discussions = Queries::VisibleDiscussions.
                      new(user: current_user).
                      without_open_motions.
+                     order_by_latest_comment.
                      page(params[:page]).per(10)
       render :layout => false if request.xhr?
     end
