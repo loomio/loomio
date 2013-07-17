@@ -46,7 +46,7 @@ describe Vote do
     vote.motion = motion
     vote.user = user
     vote.save
-    vote.errors.messages[:position].first.should match(/can only be modified while the motion is open/)
+    vote.errors.messages[:position].first.should match(/can only be modified while the motion is in voting phase./)
   end
 
   it 'sends notification email to author if block is issued' do

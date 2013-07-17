@@ -63,21 +63,8 @@ class User < ActiveRecord::Base
   has_many :authored_motions,
            :class_name => 'Motion',
            :foreign_key => 'author_id'
-  has_many :motions_in_voting_phase,
-           :through => :discussions,
-           :source => :motions,
-           :conditions => { phase: 'voting' }
-  has_many :motions_closed,
-           :through => :discussions,
-           :source => :motions,
-           :conditions => { phase: 'closed' },
-           :order => 'close_at DESC'
 
   has_many :votes
-  has_many :open_votes,
-           :class_name => 'Vote',
-           :source => :votes,
-           :through => :motions_in_voting_phase
 
   has_many :announcement_dismissals
 
@@ -100,7 +87,7 @@ class User < ActiveRecord::Base
   after_create :ensure_name_entry
   before_destroy { |user| ViewLogger.delete_all_logs_for(user.id) }
 
-  scope :daily_activity_email_recipients, where("subscribed_to_daily_activity_email IS TRUE AND invitation_token IS NULL")
+  scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
   scope :sorted_by_name, order("lower(name)")
 
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
@@ -110,6 +97,14 @@ class User < ActiveRecord::Base
     @ability ||= Ability.new(self)
   end
   delegate :can?, :cannot?, :to => :ability
+
+  def voting_motions
+    motions.voting
+  end
+
+  def closed_motions
+    motions.closed
+  end
 
   def email_notifications_for_group?(group)
     memberships.where(:group_id => group.id, :subscribed_to_notification_emails => true).present?
@@ -170,31 +165,6 @@ class User < ActiveRecord::Base
   def mark_notifications_as_viewed!(latest_viewed_id)
     unviewed_notifications.where("id <= ?", latest_viewed_id).
       update_all(:viewed_at => Time.now)
-  end
-
-  def discussions_with_current_motion_not_voted_on
-    # TODO: Merge into Queries::VisibleDiscussions
-    if discussions
-      (discussions.includes(:motions).where('motions.phase = ?', "voting") -  discussions_with_current_motion_voted_on)
-    else
-      []
-    end
-  end
-
-  def discussions_with_current_motion_voted_on
-    # TODO: Merge into Queries::VisibleDiscussions
-    if discussions
-      (discussions.includes(:motions => :votes).where('motions.phase = ? AND votes.user_id = ?', "voting", id))
-    else
-      []
-    end
-  end
-
-  def discussions_sorted
-    # TODO: Merge into Queries::VisibleDiscussions
-    discussions
-      .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
-      .order("last_comment_at DESC")
   end
 
   def self.loomio_helper_bot

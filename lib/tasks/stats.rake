@@ -1,5 +1,5 @@
 namespace :stats do
-  task :all => [:environment, :group_requests, :users, :groups, :events, :discussions, :discussion_read_logs] do
+  task :all => [:environment, :group_requests, :users, :groups, :events, :discussions, :discussion_readers] do
   end
 
   task :group_requests => :environment do
@@ -116,15 +116,15 @@ namespace :stats do
     fogwrite('discussions.csv', file)
   end
 
-  task :discussion_read_logs => :environment do
+  task :discussion_readers => :environment do
     require 'csv'
     file = CSV.generate do |csv|
-      csv << ["id", "discussion_id", "created_at", "discussion_last_viewed_at", "user_id"]
-      DiscussionReadLog.find_each do |l|
-        csv << [l.id, l.discussion_id, l.created_at, l.discussion_last_viewed_at, scramble(l.user_id)]
+      csv << ["id", "discussion_id", "created_at", "last_read_at", "user_id"]
+      DiscussionReader.find_each do |l|
+        csv << [l.id, l.discussion_id, l.created_at, l.last_read_at, scramble(l.user_id)]
       end
     end
-    fogwrite('discussion_read_logs.csv', file)
+    fogwrite('discussion_readers.csv', file)
   end
 
 

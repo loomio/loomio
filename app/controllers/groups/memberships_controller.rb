@@ -1,6 +1,6 @@
 class Groups::MembershipsController < GroupBaseController
-  load_and_authorize_resource :except => [:destroy, :index]
-  before_filter :require_current_user_is_group_admin, only: [:make_admin, :remove_admin, :index]
+  load_and_authorize_resource except: [:index]
+  before_filter :require_current_user_is_group_admin, only: [:index]
   before_filter :load_membership, only: [:make_admin, :remove_admin]
 
   # membership actions
@@ -34,18 +34,12 @@ class Groups::MembershipsController < GroupBaseController
   end
 
   def destroy
-    if @membership = Membership.find_by_id(params[:id])
-      authorize! :destroy, @membership
-      @membership.destroy
-      if current_user == @membership.user
-        flash[:notice] = t("notice.you_have_left_group", which_group: @membership.group.name)
-      else
-        flash[:notice] = t("notice.member_removed")
-      end
-      redirect_to group_memberships_path(@membership.group)
+    @membership.destroy
+    if current_user == @membership.user
+      flash[:notice] = t("notice.you_have_left_group", which_group: @membership.group.name)
     else
-      redirect_to :back
+      flash[:notice] = t("notice.member_removed")
     end
+    redirect_to group_memberships_path(@membership.group)
   end
-
 end

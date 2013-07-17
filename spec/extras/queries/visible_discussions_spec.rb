@@ -1,251 +1,200 @@
 require 'spec_helper'
 
 describe Queries::VisibleDiscussions do
-  let(:user) { create :user }
+  let(:non_member) { create :user }
+  let(:member) { create :user }
+  let(:subgroup_member) { create :user }
 
-  describe "::for(group)" do
-    let(:group) { create :group }
+  let(:public_group) { create :group, viewable_by: 'everyone' }
+  let(:discussion_in_public_group) { create :discussion, group: public_group }
 
-    context "public group" do
-      it "returns the group's discussions" do
-        discussion = create :discussion, :group => group
-        discussions = Queries::VisibleDiscussions.for(group)
-        discussions.should include(discussion)
-      end
+  let(:members_only_group){ create :group, viewable_by: 'members' }
+  let(:discussion_in_members_only_group) { create :discussion, group: members_only_group }
 
-      it "returns public subgroup discussions" do
-        subgroup = create :group, :parent => group
-        subgroup_discussion = create :discussion, :group => subgroup
-        discussions = Queries::VisibleDiscussions.for(group)
-        discussions.should include(subgroup_discussion)
-      end
+  let(:public_subgroup) { create :group, parent: public_group, viewable_by: 'everyone' }
+  let(:discussion_in_public_subgroup) { create :discussion, group: public_subgroup }
 
-      it "doesn't return private subgroup discussions" do
-        subgroup1 = create :group, :parent => group,
-                           :viewable_by => :parent_group_members
-        subgroup2 = create :group, :parent => group,
-                           :viewable_by => :members
-        subgroup1_discussion = create :discussion, :group => subgroup1
-        subgroup2_discussion = create :discussion, :group => subgroup2
-        discussions = Queries::VisibleDiscussions.for(group)
-        discussions.should_not include(subgroup1_discussion)
-        discussions.should_not include(subgroup2_discussion)
-      end
-    end
+  let(:parent_group_members_subgroup) {create :group, viewable_by: 'parent_group_members', parent: public_group }
+  let(:discussion_in_parent_group_members_subgroup) {create :discussion, group: parent_group_members_subgroup}
 
-    context "private group" do
-      let(:group) { create :group, :viewable_by => :members }
+  let(:members_only_subgroup) {create :group, parent: public_group, viewable_by: 'members' }
+  let(:discussion_in_members_only_subgroup) { create :discussion, group: members_only_subgroup}
 
-      it "returns no discussions" do
-        discussion = create :discussion, :group => group
-        discussions = Queries::VisibleDiscussions.for(group)
-        discussions.should be_empty
-      end
-    end
+  let(:archived_public_group) { create :group, viewable_by: 'everyone' }
+  let(:discussion_in_archived_public_group) { create :discussion, group: archived_public_group }
 
-    context "visible-to-parent group" do
-      let(:group) { create :group, :viewable_by => :parent_group_members }
+  before :all do
+    # Add members to groups
+    non_member
+    public_group.add_member! member
+    public_group.add_member! subgroup_member
+    members_only_group.add_member! member
+    members_only_group.add_member! subgroup_member
 
-      it "returns no discussions" do
-        discussion = create :discussion, :group => group
-        discussions = Queries::VisibleDiscussions.for(group)
-        discussions.should be_empty
-      end
-    end
+    # Add subgroup_member to subgroups
+    public_subgroup.add_member! subgroup_member
+    parent_group_members_subgroup.add_member! subgroup_member
+    members_only_subgroup.add_member! subgroup_member
+
+    # Generate the discussions
+    discussion_in_public_group
+    discussion_in_members_only_group
+    discussion_in_public_subgroup
+    discussion_in_parent_group_members_subgroup
+    discussion_in_members_only_subgroup
+    discussion_in_archived_public_group
+
+    # Archive the group
+    archived_public_group.archive!
   end
 
-  describe "::for(group, member)" do
-    let(:group) { create :group }
-    before { group.add_member!(user) }
-
-    it "returns the group's discussions" do
-      discussion = create :discussion, :group => group
-      discussions = Queries::VisibleDiscussions.for(group, user)
-      discussions.should include(discussion)
-    end
-
-    it "returns discussions for subgroups the user belongs to" do
-      subgroup1 = create :group, :parent => group,
-                         :viewable_by => :everyone
-      subgroup2 = create :group, :parent => group,
-                         :viewable_by => :parent_group_members
-      subgroup3 = create :group, :parent => group,
-                         :viewable_by => :members
-      subgroup1.add_member!(user)
-      subgroup2.add_member!(user)
-      subgroup3.add_member!(user)
-      subgroup_discussion1 = create :discussion, :group => subgroup1
-      subgroup_discussion2 = create :discussion, :group => subgroup2
-      subgroup_discussion3 = create :discussion, :group => subgroup3
-      discussions = Queries::VisibleDiscussions.for(group, user)
-      discussions.should include(subgroup_discussion1)
-      discussions.should include(subgroup_discussion2)
-      discussions.should include(subgroup_discussion3)
-    end
-
-    it "doesn't return discussions for subgroups the user doesn't belong to" do
-      subgroup1 = create :group, :parent => group,
-                         :viewable_by => :everyone
-      subgroup2 = create :group, :parent => group,
-                         :viewable_by => :parent_group_members
-      subgroup3 = create :group, :parent => group,
-                         :viewable_by => :members
-      subgroup_discussion1 = create :discussion, :group => subgroup1
-      subgroup_discussion2 = create :discussion, :group => subgroup2
-      subgroup_discussion3 = create :discussion, :group => subgroup3
-      discussions = Queries::VisibleDiscussions.for(group, user)
-      discussions.should_not include(subgroup_discussion1)
-      discussions.should_not include(subgroup_discussion2)
-      discussions.should_not include(subgroup_discussion3)
-    end
+  describe ".new" do
+    subject{Queries::VisibleDiscussions.new}
+    its(:size){should == 0}
   end
 
-  describe "::for(group, non_member)" do
-    let(:user) { create :user }
-    let(:group) { create :group }
-
-    it "returns the group's discussions" do
-      discussion = create :discussion, :group => group
-      discussions = Queries::VisibleDiscussions.for(group, user)
-      discussions.should include(discussion)
-    end
-
-    it "doesn't return discussions if group is private" do
-      group.update_attribute(:viewable_by, :members)
-      discussion = create :discussion, :group => group
-      discussions = Queries::VisibleDiscussions.for(group, user)
-      discussions.should_not include(discussion)
-    end
-
-    it "returns discussions for public subgroups" do
-      subgroup = create :group, :parent => group, :viewable_by => :everyone
-      subgroup_discussion = create :discussion, :group => subgroup
-      discussions = Queries::VisibleDiscussions.for(group, user)
-      discussions.should include(subgroup_discussion)
-    end
-
-    it "doesn't return discussions for private subgroups" do
-      subgroup = create :group, :parent => group,
-                         :viewable_by => :parent_group_members
-      subgroup2 = create :group, :parent => group,
-                         :viewable_by => :members
-      subgroup_discussion = create :discussion, :group => subgroup
-      subgroup_discussion2 = create :discussion, :group => subgroup2
-      discussions = Queries::VisibleDiscussions.for(group, user)
-      discussions.should_not include(subgroup_discussion)
-      discussions.should_not include(subgroup_discussion2)
-    end
+  describe ".new(groups: [public_group])" do
+    subject{Queries::VisibleDiscussions.new(groups: [public_group])}
+    it {should include discussion_in_public_group}
+    its(:size){should == 1}
   end
 
-  describe "::for(subgroup, parent_group_member)" do
-    let(:user) { create :user }
-    let(:parent_group) { create :group }
-    let(:subgroup) { create :group, :parent => parent_group }
-    let(:discussion) { create :discussion, :group => subgroup }
-
-    before { parent_group.add_member!(user) }
-
-    context "public subgroup" do
-      it "returns the subgroup's discussions" do
-        discussions = Queries::VisibleDiscussions.for(subgroup, user)
-        discussions.should include(discussion)
-      end
-    end
-
-    context "private subgroup" do
-      it "doesn't return discussions" do
-        subgroup.update_attribute(:viewable_by, :members)
-        discussions = Queries::VisibleDiscussions.for(subgroup, user)
-        discussions.should_not include(discussion)
-      end
-    end
-
-    context "visible-to-parent subgroup" do
-      it "returns the subgroup's discussions" do
-        subgroup.update_attribute(:viewable_by, :parent_group_members)
-        discussions = Queries::VisibleDiscussions.for(subgroup, user)
-        discussions.should include(discussion)
-      end
-    end
+  describe ".new(groups: [members_only_group])" do
+    subject{Queries::VisibleDiscussions.new(groups: [members_only_group])}
+    its(:size){should == 0}
   end
 
-  describe "#with_current_motions" do
-    it "only returns discussions with current motions" do
-      group = create :group
-      discussion = create :discussion, :group => group
-      discussion_with_motion = create :discussion, :group => group
-      motion = create :motion, :discussion => discussion_with_motion
-      discussions = Queries::VisibleDiscussions.for(group).with_current_motions
-      discussions.should_not include(discussion)
-      discussions.should include(discussion_with_motion)
-    end
+  describe ".new(groups: [public_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(groups: [public_subgroup])}
+    it {should include discussion_in_public_subgroup}
+    its(:size){should == 1}
   end
 
-  shared_context "motions with votes" do
+  describe ".new(groups: [parent_group_members_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(groups: [parent_group_members_subgroup])}
+    its(:size){should == 0}
+  end
+
+  describe ".new(groups: [members_only_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(groups: [members_only_subgroup])}
+    its(:size){should == 0}
+  end
+
+  describe ".new(groups: [archived_public_group])" do
+    subject{Queries::VisibleDiscussions.new(groups: [archived_public_group])}
+    its(:size){should == 0}
+  end
+
+  describe ".new(user: non_member)" do
+    subject{Queries::VisibleDiscussions.new(user: non_member)}
+    its(:size){should == 0}
+  end
+
+  describe ".new(user: non_member, groups: [public_group])" do
+    subject{Queries::VisibleDiscussions.new(user: non_member, groups: [public_group])}
+    it {should include discussion_in_public_group}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: non_member, groups: [members_only_group])" do
+    subject{Queries::VisibleDiscussions.new(user: non_member, groups: [members_only_group])}
+    its(:size){should == 0}
+  end
+
+  describe ".new(user: non_member, groups: [public_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: non_member, groups: [public_subgroup])}
+    it {should include discussion_in_public_subgroup}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: non_member, groups: [parent_group_members_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: non_member, groups: [parent_group_members_subgroup])}
+    its(:size){should == 0}
+  end
+
+  describe ".new(user: non_member, groups: [members_only_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: non_member, groups: [members_only_subgroup])}
+    its(:size){should == 0}
+  end
+
+  describe ".new(user: member)" do
+    subject{Queries::VisibleDiscussions.new(user: member)}
+    it {should include discussion_in_public_group}
+    it {should include discussion_in_members_only_group}
+    its(:size){should == 2}
+  end
+
+  describe ".new(user: member, groups: [public_group])" do
+    subject{Queries::VisibleDiscussions.new(user: member, groups: [public_group])}
+    it {should include discussion_in_public_group}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: member, groups: [members_only_group])" do
+    subject{Queries::VisibleDiscussions.new(user: member, groups: [members_only_group])}
+    it {should include discussion_in_members_only_group}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: subgroup_member, groups: [public_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: subgroup_member, groups: [public_subgroup])}
+    it{should include discussion_in_public_subgroup}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: subgroup_member, groups: [parent_group_members_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: subgroup_member, groups: [parent_group_members_subgroup])}
+    it{should include discussion_in_parent_group_members_subgroup}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: subgroup_member, groups: [members_only_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: subgroup_member, groups: [members_only_subgroup])}
+    it{should include discussion_in_members_only_subgroup}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: parent_group_member, groups: [public_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: member, groups: [public_subgroup])}
+    it{should include discussion_in_public_subgroup}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: parent_group_member, groups: [parent_group_members_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: member, groups: [parent_group_members_subgroup])}
+    it{should include discussion_in_parent_group_members_subgroup}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: parent_group_member, groups: [members_only_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: member, groups: [members_only_subgroup])}
+    its(:size){should == 0}
+  end
+
+  describe "#with_open_motions" do
     before do
-      @user = create :user
-      @group = create :group
-      @group.add_member! @user
-      @discussion_with_no_vote = create :discussion, :group => @group, :author => @user
-      motion = create :motion, :discussion => @discussion_with_no_vote, :author => @user
-      @discussion_with_vote = create :discussion, :group => @group, :author => @user
-      motion_with_vote = create :motion, :discussion => @discussion_with_vote, :author => @user
-      vote = Vote.new position: "yes"
-      vote.motion = motion_with_vote
-      vote.user = @user
-      vote.save
+      @discussion_with_motion_in_public_group = create :discussion, group: public_group
+      @motion = create :current_motion, discussion: @discussion_with_motion_in_public_group
     end
+
+    subject do
+      Queries::VisibleDiscussions.new(user: non_member, groups: [public_group]).with_open_motions
+    end
+
+    it {should include @discussion_with_motion_in_public_group}
+    its(:size){should == 1}
   end
 
-  describe "#with_current_motions_user_has_voted_on" do
-    include_context "motions with votes"
-    it "returns only discussions that have a current motion that user has voted on" do
-      discussions = Queries::VisibleDiscussions.for(@group, @user)
-      discussions = discussions.with_current_motions_user_has_voted_on
-      discussions.should include(@discussion_with_vote)
-      discussions.should_not include(@discussion_with_no_vote)
+  describe "#without_open_motions" do
+    before do
+      @discussion_with_motion_in_public_group = create :discussion, group: public_group
+      @motion = create :current_motion, discussion: @discussion_with_motion_in_public_group
     end
 
-    it "returns no discussions if user is nil" do
-      discussions = Queries::VisibleDiscussions.for(@group, nil)
-      discussions = discussions.with_current_motions_user_has_voted_on
-      discussions.should be_empty
-    end
-  end
-
-  describe "#with_current_motions_user_has_not_voted_on" do
-    include_context "motions with votes"
-    it "returns only discussions that have a current motion that user has not voted on" do
-      discussions = Queries::VisibleDiscussions.for(@group, @user)
-      discussions = discussions.with_current_motions_user_has_not_voted_on
-      discussions.should include(@discussion_with_no_vote)
-      discussions.should_not include(@discussion_with_vote)
+    subject do
+      Queries::VisibleDiscussions.new(groups: [public_group]).without_open_motions
     end
 
-    it "returns all discussions with motions if user is nil" do
-      discussions = Queries::VisibleDiscussions.for(@group, nil)
-      discussions = discussions.with_current_motions_user_has_not_voted_on
-      discussions.should include(@discussion_with_no_vote)
-      discussions.should include(@discussion_with_vote)
-    end
-
-    it "returns all discussions with motions if user is not a member" do
-      discussions = Queries::VisibleDiscussions.for(@group, create(:user))
-      discussions = discussions.with_current_motions_user_has_not_voted_on
-      discussions.should include(@discussion_with_no_vote)
-      discussions.should include(@discussion_with_vote)
-    end
-  end
-
-  describe "#without_current_motions" do
-    let(:group) { create :group }
-    it "returns only discussions without a current motion" do
-      discussion = create :discussion, :group => group
-      discussion2 = create :discussion, :group => group
-      motion = create :motion, :discussion => discussion2
-      discussions = Queries::VisibleDiscussions.for(group).without_current_motions
-      discussions.should include(discussion)
-      discussions.should_not include(discussion2)
-    end
+    it {should_not include @discussion_with_motion_in_public_group}
   end
 end
