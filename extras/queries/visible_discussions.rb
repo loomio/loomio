@@ -1,61 +1,23 @@
 class Queries::VisibleDiscussions < Delegator
-  # NOTE (JL): this needs refactoring, it's trying to do too many things
-  # It should be split into more specific classes.
-  # Because right now it's being used to display discussions on the dashboard,
-  # group page, inbox, etc. All of which have very different use-cases. Particulary
-  # depending on whether the user is signed in or signed out.
-  def initialize(user: nil, group: nil, subgroups: false)
+  def initialize(user: nil, groups: nil)
     @user = user
-    @group = group
+    @groups = groups
 
-    @relation = Discussion.joins(:group).where('groups.archived_at IS NULL').order('last_comment_at DESC')
+    @relation = Discussion.joins(:group).where('archived_at IS NULL').order('last_comment_at DESC')
 
-    @relation = if group
-                  if subgroups
-                    @relation.where('group_id = :id OR groups.parent_id = :id', id: group.id)
-                  else
-                    @relation.where(group_id: group.id)
-                  end
-                else
-                  @relation
-                end
-
-    @relation = if @user
-                  @relation = @relation.
-                    select('discussions.*,
-                            1 as joined_to_discussion_reader,
-                            dv.id as viewer_id,
-                            dv.user_id as viewer_user_id,
-                            dv.read_comments_count as read_comments_count,
-                            dv.last_read_at as last_read_at,
-                            dv.following as viewer_following').
-                    joins("LEFT OUTER JOIN discussion_readers dv ON
-                            dv.discussion_id = discussions.id AND dv.user_id = #{@user.id}")
-                  if group
-                    if group.viewable_by == 'parent_group_members'
-                      @relation = @relation.where('groups.id IN (:ids) OR (groups.viewable_by = :parent_group_members AND groups.parent_id IN (:ids))', {ids: user.group_ids, :parent_group_members => 'parent_group_members'} )
-                    elsif group.viewable_by == 'everyone'
-                      #we have some .. interesting behaviours in loomio.
-                      if subgroups
-                        @relation = @relation.where('groups.id IN (:ids) OR 
-                                                  (groups.viewable_by = :everyone AND groups.id = :group_id) OR
-                                                  (groups.viewable_by = :everyone AND groups.parent_id = :group_id)', {ids: user.group_ids, :everyone => 'everyone', :group_id => group.id})
-                      else
-                        @relation = @relation.where('groups.id IN (:ids) OR 
-                                                  (groups.viewable_by = :everyone AND groups.id = :group_id)', {ids: user.group_ids, :everyone => 'everyone', :group_id => group.id})
-                      end
-                    else
-                      @relation = @relation.where(groups: {id: user.group_ids})
-                    end
-                  else
-                    # Only display discussions for groups the user belongs to (dashboard view)
-                    @relation = @relation.where('groups.id IN (:ids)', ids: user.group_ids)
-                  end
-                  @relation
-                else
-                  # only public groups
-                  @relation.where('groups.viewable_by = ?', 'everyone')
-                end
+    if @user.present? && @groups.present?
+      @relation = @relation.where("group_id IN (:group_ids) AND
+                                  (group_id IN (:user_group_ids) OR groups.viewable_by = 'everyone')",
+                                  group_ids: @groups.map(&:id),
+                                  user_group_ids: @user.groups.map(&:id))
+    elsif @user.present? && @groups.blank?
+      @relation = @relation.where('group_id IN (:user_group_ids)', user_group_ids: @user.groups.map(&:id))
+    elsif @user.blank? && @groups.present?
+      @relation = @relation.where("group_id IN (:group_ids) AND groups.viewable_by = 'everyone'",
+                                  group_ids: @groups.map(&:id))
+    else
+      @relation = []
+    end
 
     super(@relation)
   end
@@ -78,8 +40,12 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
-  def without_current_motions
+  def without_open_motions
     @relation = @relation.where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND closed_at IS NULL)")
     self
+  end
+
+  def with_open_motions
+    @relation.joins(:motions).merge(Motion.voting)
   end
 end
