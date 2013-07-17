@@ -5,6 +5,18 @@ class Queries::VisibleDiscussions < Delegator
 
     @relation = Discussion.joins(:group).where('archived_at IS NULL').order('last_comment_at DESC')
 
+    if @user.present?
+      @relation = @relation.select('discussions.*,
+                                    1 as joined_to_discussion_reader,
+                                    dv.id as viewer_id,
+                                    dv.user_id as viewer_user_id,
+                                    dv.read_comments_count as read_comments_count,
+                                    dv.last_read_at as last_read_at,
+                                    dv.following as viewer_following').
+                              joins("LEFT OUTER JOIN discussion_readers dv ON
+                                    dv.discussion_id = discussions.id AND dv.user_id = #{@user.id}")
+    end
+
     if @user.present? && @groups.present?
       @relation = @relation.where("group_id IN (:group_ids) AND
                                   (group_id IN (:user_group_ids) OR groups.viewable_by = 'everyone')",
@@ -46,6 +58,7 @@ class Queries::VisibleDiscussions < Delegator
   end
 
   def with_open_motions
-    @relation.joins(:motions).merge(Motion.voting)
+    @relation = @relation.joins(:motions).merge(Motion.voting)
+    self
   end
 end
