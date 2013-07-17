@@ -66,7 +66,8 @@ class Membership < ActiveRecord::Base
     # TODO: try to merge with approve!
     if request?
       self.inviter = inviter
-      approve!
+      approve
+      save!
       Events::UserAddedToGroup.publish!(self)
     end
   end
