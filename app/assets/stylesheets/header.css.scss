@@ -1,4 +1,6 @@
 @import "settings";
+@import "bootstrap/mixins";
+@import "mixins";
 
 .dropdown-menu {
   a {
@@ -69,6 +71,36 @@
 
   li.nav-item#help {
     float: right;
+    a.nav-link { padding-right: 4px; }
+  }
+
+  li.nav-item#search {
+    form {
+      float: right;
+      margin: 0;
+      padding-right: 8px;
+      .add-on {
+        background-color: #FFF;
+        border: none;
+      }
+      body { color: #fff; }
+      .control-group {
+        display: inline-block;
+        @include ie7-inline-block();
+        margin-bottom: 8px;
+        input {
+          border: none;
+          &[type="text"]:focus {
+            border: none;
+            @include box-shadow(0, 0, 0, 0);
+          }
+        }
+      }
+      .input-prepend {
+        margin-bottom: 0;
+        margin-top: 5px;
+      }
+    }
   }
 
   li.nav-item#notifications-container {
