@@ -19,7 +19,8 @@ class Queries::VisibleDiscussions < Delegator
 
     if @user.present? && @groups.present?
       @relation = @relation.where("group_id IN (:group_ids) AND
-                                  (group_id IN (:user_group_ids) OR groups.viewable_by = 'everyone')",
+                                  (group_id IN (:user_group_ids) OR groups.viewable_by = 'everyone'
+                                   OR (groups.viewable_by = 'parent_group_members' AND groups.parent_id IN (:user_group_ids)))",
                                   group_ids: @groups.map(&:id),
                                   user_group_ids: @user.groups.map(&:id))
     elsif @user.present? && @groups.blank?

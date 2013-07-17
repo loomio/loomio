@@ -42,7 +42,7 @@ class DiscussionsController < GroupBaseController
         head 401
       else
         @discussions = GroupDiscussionsViewer.
-                       for(@group, current_user).
+                       for(group: @group, user: current_user).
                        without_open_motions.
                        order_by_latest_comment.
                        page(params[:page]).per(10)

@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Queries::VisibleDiscussions do
-  let(:user) { create :user }
+  let(:non_member) { create :user }
+  let(:member) { create :user }
+  let(:subgroup_member) { create :user }
 
   let(:public_group) { create :group, viewable_by: 'everyone' }
   let(:discussion_in_public_group) { create :discussion, group: public_group }
@@ -22,16 +24,27 @@ describe Queries::VisibleDiscussions do
   let(:discussion_in_archived_public_group) { create :discussion, group: archived_public_group }
 
   before :all do
-    user
+    # Add members to groups
+    non_member
+    public_group.add_member! member
+    public_group.add_member! subgroup_member
+    members_only_group.add_member! member
+    members_only_group.add_member! subgroup_member
 
+    # Add subgroup_member to subgroups
+    public_subgroup.add_member! subgroup_member
+    parent_group_members_subgroup.add_member! subgroup_member
+    members_only_subgroup.add_member! subgroup_member
+
+    # Generate the discussions
     discussion_in_public_group
     discussion_in_members_only_group
-
     discussion_in_public_subgroup
     discussion_in_parent_group_members_subgroup
     discussion_in_members_only_subgroup
-
     discussion_in_archived_public_group
+
+    # Archive the group
     archived_public_group.archive!
   end
 
@@ -73,84 +86,88 @@ describe Queries::VisibleDiscussions do
   end
 
   describe ".new(user: non_member)" do
-    subject{Queries::VisibleDiscussions.new(user: user)}
+    subject{Queries::VisibleDiscussions.new(user: non_member)}
     its(:size){should == 0}
   end
 
   describe ".new(user: non_member, groups: [public_group])" do
-    subject{Queries::VisibleDiscussions.new(user: user, groups: [public_group])}
+    subject{Queries::VisibleDiscussions.new(user: non_member, groups: [public_group])}
     it {should include discussion_in_public_group}
     its(:size){should == 1}
   end
 
   describe ".new(user: non_member, groups: [members_only_group])" do
-    subject{Queries::VisibleDiscussions.new(user: user, groups: [members_only_group])}
+    subject{Queries::VisibleDiscussions.new(user: non_member, groups: [members_only_group])}
     its(:size){should == 0}
   end
 
   describe ".new(user: non_member, groups: [public_subgroup])" do
-    subject{Queries::VisibleDiscussions.new(user: user, groups: [public_subgroup])}
+    subject{Queries::VisibleDiscussions.new(user: non_member, groups: [public_subgroup])}
     it {should include discussion_in_public_subgroup}
     its(:size){should == 1}
   end
 
   describe ".new(user: non_member, groups: [parent_group_members_subgroup])" do
-    subject{Queries::VisibleDiscussions.new(user: user, groups: [parent_group_members_subgroup])}
+    subject{Queries::VisibleDiscussions.new(user: non_member, groups: [parent_group_members_subgroup])}
     its(:size){should == 0}
   end
 
   describe ".new(user: non_member, groups: [members_only_subgroup])" do
-    subject{Queries::VisibleDiscussions.new(user: user, groups: [members_only_subgroup])}
+    subject{Queries::VisibleDiscussions.new(user: non_member, groups: [members_only_subgroup])}
     its(:size){should == 0}
   end
 
   describe ".new(user: member)" do
-    before do
-      public_group.add_member! user
-      user.reload
-    end
-    subject{Queries::VisibleDiscussions.new(user: user)}
+    subject{Queries::VisibleDiscussions.new(user: member)}
     it {should include discussion_in_public_group}
-    its(:size){should == 1}
+    it {should include discussion_in_members_only_group}
+    its(:size){should == 2}
   end
 
   describe ".new(user: member, groups: [public_group])" do
-    before{public_group.add_member! user}
-    subject{Queries::VisibleDiscussions.new(user: user, groups: [public_group])}
+    subject{Queries::VisibleDiscussions.new(user: member, groups: [public_group])}
     it {should include discussion_in_public_group}
     its(:size){should == 1}
   end
 
   describe ".new(user: member, groups: [members_only_group])" do
-    before{members_only_group.add_member! user}
-    subject{Queries::VisibleDiscussions.new(user: user, groups: [members_only_group])}
-    its(:size){should == 0}
-  end
-
-  describe ".new(user: member, groups: [public_subgroup])" do
-    before do
-      public_subgroup.parent.add_member! user
-      public_subgroup.add_member! user
-    end
-    subject{Queries::VisibleDiscussions.new(user: user, groups: [public_subgroup])}
+    subject{Queries::VisibleDiscussions.new(user: member, groups: [members_only_group])}
+    it {should include discussion_in_members_only_group}
     its(:size){should == 1}
   end
 
-  describe ".new(user: member, groups: [parent_group_members_subgroup])" do
-    before do
-      parent_group_members_subgroup.parent.add_member! user
-      parent_group_members_subgroup.add_member! user
-    end
-    subject{Queries::VisibleDiscussions.new(user: user, groups: [parent_group_members_subgroup])}
-    its(:size){should == 0}
+  describe ".new(user: subgroup_member, groups: [public_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: subgroup_member, groups: [public_subgroup])}
+    it{should include discussion_in_public_subgroup}
+    its(:size){should == 1}
   end
 
-  describe ".new(user: member, groups: [members_only_subgroup])" do
-    before do
-      members_only_subgroup.parent.add_member! user
-      members_only_subgroup.add_member! user
-    end
-    subject{Queries::VisibleDiscussions.new(user: user, groups: [members_only_subgroup])}
+  describe ".new(user: subgroup_member, groups: [parent_group_members_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: subgroup_member, groups: [parent_group_members_subgroup])}
+    it{should include discussion_in_parent_group_members_subgroup}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: subgroup_member, groups: [members_only_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: subgroup_member, groups: [members_only_subgroup])}
+    it{should include discussion_in_members_only_subgroup}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: parent_group_member, groups: [public_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: member, groups: [public_subgroup])}
+    it{should include discussion_in_public_subgroup}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: parent_group_member, groups: [parent_group_members_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: member, groups: [parent_group_members_subgroup])}
+    it{should include discussion_in_parent_group_members_subgroup}
+    its(:size){should == 1}
+  end
+
+  describe ".new(user: parent_group_member, groups: [members_only_subgroup])" do
+    subject{Queries::VisibleDiscussions.new(user: member, groups: [members_only_subgroup])}
     its(:size){should == 0}
   end
 
@@ -161,7 +178,7 @@ describe Queries::VisibleDiscussions do
     end
 
     subject do
-      Queries::VisibleDiscussions.new(user: user, groups: [public_group]).with_open_motions
+      Queries::VisibleDiscussions.new(user: non_member, groups: [public_group]).with_open_motions
     end
 
     it {should include @discussion_with_motion_in_public_group}

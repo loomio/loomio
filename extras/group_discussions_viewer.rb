@@ -1,10 +1,10 @@
 class GroupDiscussionsViewer
-  def self.for(group, user)
-    groups = groups_shown_when_viewing_group(group, user)
+  def self.for(group: nil, user: nil)
+    groups = groups_shown_when_viewing_group(group: group, user: user)
     Queries::VisibleDiscussions.new(groups: groups, user: user)
   end
 
-  def self.groups_shown_when_viewing_group(group, user)
+  def self.groups_shown_when_viewing_group(group: nil, user: nil)
     groups = []
     if user && user.is_group_member?(group)
       groups << group
