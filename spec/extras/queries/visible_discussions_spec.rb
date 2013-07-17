@@ -37,7 +37,6 @@ describe Queries::VisibleDiscussions do
 
   describe ".new" do
     subject{Queries::VisibleDiscussions.new}
-    it{p subject}
     its(:size){should == 0}
   end
 

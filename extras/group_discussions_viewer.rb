@@ -6,7 +6,7 @@ class GroupDiscussionsViewer
 
   def self.groups_shown_when_viewing_group(group, user)
     groups = []
-    if user.is_group_member?(group)
+    if user && user.is_group_member?(group)
       groups << group
       groups += group.subgroups.joins(:memberships).
                       where('memberships.user_id = :user_id', user_id: user.id)
