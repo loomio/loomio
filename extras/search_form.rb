@@ -16,7 +16,8 @@ class SearchForm
   end
 
   def submit(params)
-    @results = @user.discussions.search(params[:query])
+    search_query = params[:query]
+    @results = @user.motions.search(search_query) + @user.discussions.search(search_query)
   end
 
 end

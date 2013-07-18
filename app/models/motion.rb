@@ -16,6 +16,10 @@ class Motion < ActiveRecord::Base
   validates_length_of :name, :maximum => 250
   validates_length_of :outcome, :maximum => 250
 
+  include PgSearch
+  pg_search_scope :search, against: [:name, :description],
+    using: {tsearch: {dictionary: "english"}}
+
   delegate :email, :to => :author, :prefix => :author
   delegate :name, :to => :author, :prefix => :author
   delegate :group, :group_id, :to => :discussion
@@ -214,7 +218,7 @@ class Motion < ActiveRecord::Base
     Vote.unique_votes(self).each do |vote|
       position_counts[vote.position] += 1
     end
-    
+
     Vote::POSITIONS.each do |position|
       self.send("#{position}_votes_count=", position_counts[position])
     end

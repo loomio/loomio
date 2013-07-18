@@ -517,6 +517,15 @@ en:
     link_help: "Click this link to join %{group} on Loomio:"
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
 
+  #
+  # SEARCH
+  #
+
+  search:
+    description: "Below is a list of discussions and proposals that have '%{query}' in their title or description."
+    header: "Search results for '%{query}'"
+    placeholder: "search"
+
 
   #
   # EXAMPLE CONTENT
