@@ -2,13 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
+  before_filter :initialize_search_form
 
   rescue_from CanCan::AccessDenied do |exception|
     request.env["HTTP_REFERER"] = root_url if request.env["HTTP_REFERER"].nil?
     flash[:error] = t("error.access_denied")
     redirect_to :back
   end
-
 
   protected
 
@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
       I18n.locale = params[:locale]
       current_user.language_preference = params[:locale] if current_user
     end
+  end
+
+  def initialize_search_form
+    @search_form = SearchForm.new(current_user)
   end
 
   def extract_locale_from_accept_language_header

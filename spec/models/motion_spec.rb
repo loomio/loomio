@@ -27,6 +27,18 @@ describe Motion do
     end
   end
 
+  describe "#search(query)" do
+    before { @user = create(:user) }
+    it "returns user's motions that match the query string" do
+      motion = create(:motion, name: "jam toast", author: @user)
+      @user.motions.search("jam").should == [motion]
+    end
+    it "does not return discussions that don't belong to the user" do
+      motion = create(:motion, name: "sandwich crumbs")
+      @user.motions.search("sandwich").should_not == [motion]
+    end
+  end
+
   context "events" do
     before do
       @user = create :user
