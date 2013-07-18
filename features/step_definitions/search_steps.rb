@@ -32,3 +32,29 @@ end
 Then(/^I should see the discussion with the description "(.*?)"$/) do |description|
   page.should have_content(@discussion.description)
 end
+
+Given(/^there is a motion in my group titled "(.*?)"$/) do |name|
+  @discussion = FactoryGirl.create :discussion, group: @group
+  @motion = FactoryGirl.create :motion, discussion: @discussion, name: name
+end
+
+Then(/^I should see a motion with the title "(.*?)"$/) do |name|
+  page.should have_content(@motion.name)
+end
+
+Given(/^there is a motion in another group titled "(.*?)"$/) do |name|
+  @other_motion = FactoryGirl.create :motion, name: name
+end
+
+Then(/^I should not see the motion with the title "(.*?)"$/) do |name|
+  page.should_not have_content(@other_motion.name)
+end
+
+Given(/^there is a motion with description "(.*?)"$/) do |description|
+  @discussion = FactoryGirl.create :discussion, group: @group
+  @motion = FactoryGirl.create :motion, discussion: @discussion, description: description
+end
+
+Then(/^I should see the motion with the description "(.*?)"$/) do |description|
+  page.should have_content(@motion.description)
+end

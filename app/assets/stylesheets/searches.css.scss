@@ -26,7 +26,7 @@ body.searches {
             height: 1.7em;
             margin: 0 0.5em;
             width: 2em;
-            .activity-count{
+            .activity-count {
               bottom: 3px;
               position: relative;
               text-align: center;
@@ -36,6 +36,7 @@ body.searches {
               margin: 1px 0 0 1px;
             }
           }
+          .large-icon { margin: 6px 9px; }
           .span11 { margin-left: -10px; }
           .title { font-size: $font-medium-large; }
           #search-results .title a{
