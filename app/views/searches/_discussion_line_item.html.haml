@@ -1,0 +1,10 @@
+%li.discussion.row-fluid{data:{discussion_id: item.id }}
+  = link_to item do
+    .span1
+      .large-icon.discussion-icon.enabled-icon
+        .activity-count{title: 'Unread comments'}
+          &nbsp;
+
+    .span11
+      %span.title= item.title
+      %span.description= "- #{truncate(item.description, length: 180, omission: '...', separator: " ")}" unless item.description.blank?

@@ -376,7 +376,7 @@ en:
       position at any time.</p>
     have_a_discussion: "Have a discussion"
     have_a_discussion_description: "The topic and any relevant background information sit at the top of the page. Use the comment box to add your voice to the discussion."
-    help: "Help tips"
+    help: "Help"
     how_it_works: "How it works"
     invitation_html: |
       <h2>Writing a great invitation</h2>
@@ -516,6 +516,15 @@ en:
     invitation_link: "Invitation link"
     link_help: "Click this link to join %{group} on Loomio:"
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
+
+  #
+  # SEARCH
+  #
+
+  search:
+    description: "Below is a list of discussions and proposals that have '%{query}' in their title or description."
+    header: "Search results for '%{query}'"
+    placeholder: "search"
 
 
   #
