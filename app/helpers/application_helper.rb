@@ -52,7 +52,7 @@ module ApplicationHelper
     extra_classes = " #{args[:class]}"
     data_toggle = args['data-toggle'] || false
     data_confirm = args['data-confirm'] || false
-    title = args[:title] || false
+    title = args[:title] || ""
 
     classes = "btn btn-app" + extra_classes
     content_tag(:a, href: href, 'data-method' => method, class: classes, id: id,
