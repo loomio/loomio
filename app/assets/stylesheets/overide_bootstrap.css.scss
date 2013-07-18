@@ -11,6 +11,11 @@
   }
 }
 
+.navbar-inverse .navbar-inner {
+  background: #252525;
+  padding: 3px 0 1px;
+}
+
 .modal-backdrop {
   background: #999;
   top: 0;
@@ -36,3 +41,4 @@
 .popover-inner {
   background: black;
 }
+.navbar-fixed-top .container { width: 960px; }
