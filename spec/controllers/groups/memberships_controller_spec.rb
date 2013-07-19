@@ -23,7 +23,7 @@ describe Groups::MembershipsController do
       it 'can add an admin' do
         @membership = @group.add_member!(@new_user)
         post :make_admin, :id => @membership.id, group_id: @group.id
-        flash[:notice].should =~ /#{@new_user.name} has been made an admin./
+        flash[:notice].should =~ /#{@new_user.name} has been made a coordinator./
         response.should redirect_to(group_memberships_path(@group))
         assigns(:membership).access_level.should == 'admin'
         @group.admins.should include(@new_user)
@@ -49,7 +49,7 @@ describe Groups::MembershipsController do
       it 'cannot remove an admin' do
         @membership = @group.add_admin!(@new_user)
         post :remove_admin, :id => @membership.id, group_id: @group.id
-        flash[:notice].should =~ /#{@membership.user_name}'s admin rights have been removed./
+        flash[:notice].should =~ /#{@membership.user_name}'s coordinator rights have been removed./
         response.should redirect_to(group_memberships_path(@group))
         assigns(:membership).access_level.should == 'member'
         @group.admins.should_not include(@new_user)

@@ -12,7 +12,7 @@ Feature: Edit Memberships for a group
     Given I am a signed in group admin
     And there is another group member
     When I view click edit memberships from the group page
-    And click 'Make admin' on the member
+    And click 'Make coordinator' on the member
     Then the member should be a group admin
     And I should see the edit memberships page
 
@@ -20,7 +20,7 @@ Feature: Edit Memberships for a group
     Given I am a signed in group admin
     And there is another group admin
     When I view click edit memberships from the group page
-    And click 'Remove admin' on the member
+    And click 'Remove coordinator' on the member
     Then the member should no longer be a group admin
     And I should see the edit memberships page
 
