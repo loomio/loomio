@@ -81,6 +81,8 @@
       .add-on {
         background-color: #FFF;
         border: none;
+        display: inline-block;
+        @include ie7-inline-block();
       }
       body { color: #fff; }
       .control-group {
