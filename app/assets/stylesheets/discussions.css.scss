@@ -240,10 +240,28 @@ body.discussions.show {
         word-wrap: break-word;
       }
       .activity-item-header{
-        p {
-          color: black;
-          &:last-child{margin-bottom: 2px;}
+        blockquote p {
+          font-size: inherit;
         }
+        blockquote, pre {
+          &:first-child {
+            clear: left;
+            position: relative;
+            top: -12px;
+            margin-bottom: -4px;
+           }
+        }
+        h1, h2, h3, h4, ol, ul {
+          &:first-child {
+            clear: left;
+            position: relative;
+            top: -12px;
+            margin-bottom: -12px;
+        }}
+        ol, p, ul {
+          color: black;
+        }
+        p:last-child{margin-bottom: 2px;}
       }
       .activity-item-likes{
         color: $dark-grey;
