@@ -69,4 +69,18 @@ describe ApplicationHelper do
       end
     end
   end
+
+  describe "email_belongs_to_existing_user" do
+    context "for an unrecognised email address" do
+      it "returns false" do
+        helper.email_belongs_to_existing_user?("never_heard_of_him@what.com").should === false
+      end
+    end
+    context "for a recognised email address" do
+      it "returns true" do
+        user = create(:user)
+        helper.email_belongs_to_existing_user?(user.email).should == true
+      end
+    end
+  end
 end

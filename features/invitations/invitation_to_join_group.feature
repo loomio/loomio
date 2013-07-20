@@ -18,17 +18,15 @@ Feature: Invitation to join group
     Given there is a group
     And an invitation to join the group has been sent to "jim@jam.com"
     When I open the email and click the accept invitation link
-    And I sign up as a new user speaking "Español"
+    And I sign up as a new user
     Then I should be a member of the group
     And I should be redirected to the group page
-    And I should see "Página principal"
 
   Scenario: Existing user accepts invitiation to join a group
     Given there is a group
     And an existing user with email "jim@jam.com"
     And an invitation to join the group has been sent to "jim@jam.com"
     When I open the email and click the accept invitation link
-    And I click the link to the sign in form
     And I sign in as "jim@jam.com"
     Then I should be a member of the group
     And I should be redirected to the group page

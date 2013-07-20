@@ -3,6 +3,5 @@
     .inner-container
       .row
         .span6.offset3
-          %h2 #{@invitation.inviter_name} invited you to join #{@invitation.group_name}
-          %p You'll need to sign up or sign in to continue.
+          %h2= t(:"join_group.header", who: @invitation.inviter_name, group_name: @invitation.group_name)
       = render 'form'

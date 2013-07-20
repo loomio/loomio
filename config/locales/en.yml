@@ -149,7 +149,7 @@ en:
   sign_out: "Sign out"
   sign_in: "Sign in"
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
-  or_sign_in_html: "If you've already got an account, <a href='%{link}'0>click here to sign in</a>."
+  or_sign_in_html: "If you've already got an account, <a href='%{link}'>sign in here</a>."
 
   click_to_dismiss: "Click here to dismiss this message"
   generic_confirm: "Are you sure?"
@@ -495,6 +495,16 @@ en:
   forgot_your_password: "Forgot your password?"
   confirmation_not_received: "Didn't receive confirmation instructions?"
   unlock_not_received: "Didn't receive unlock instructions?"
+
+  join_group:
+    header: "%{who} invited you to join %{group_name}"
+    sign_up_intro: "You'll need to create an account to join the group."
+    sign_in_intro: "You'll need to sign in to join the group."
+
+  start_group:
+    header: "Welcome to Loomio"
+    sign_up_intro: "Your request to start a new group on Loomio has been approved! You'll need to set up a new account before you can create your group:"
+    sign_in_intro: "Your request to start a new group on Loomio has been approved! You'll need to sign in before you can create your group:"
 
   #
   # INVITATIONS
