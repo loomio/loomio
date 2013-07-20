@@ -52,7 +52,7 @@ module ApplicationHelper
     extra_classes = " #{args[:class]}"
     data_toggle = args['data-toggle'] || false
     data_confirm = args['data-confirm'] || false
-    title = args[:title] || false
+    title = args[:title] || ""
 
     classes = "btn btn-app" + extra_classes
     content_tag(:a, href: href, 'data-method' => method, class: classes, id: id,
@@ -100,5 +100,8 @@ module ApplicationHelper
   def visitor?
     !user_signed_in?
   end
-end
 
+  def email_belongs_to_existing_user?(email)
+    User.find_by_email(email).present?
+  end
+end

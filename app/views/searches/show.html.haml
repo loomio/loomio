@@ -1,0 +1,17 @@
+.row
+  .span8
+    %h1= t("search.header", query: @query)
+  .span4#explanation
+    %p= t("search.description", query: @query)
+
+
+.search-container
+  - @search_form.results.group_by(&:group).each_pair do |group, items|
+    .search-group
+      %h2= link_to group.full_name, group
+      %ul.search-list
+        - items.each do |item|
+          -if item.is_a? Discussion
+            =render 'discussion_line_item', item: item
+          -if item.is_a? Motion
+            =render 'motion_line_item', item: item

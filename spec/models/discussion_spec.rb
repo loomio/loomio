@@ -34,6 +34,18 @@ describe Discussion do
     discussion.last_comment_at.should == discussion.created_at
   end
 
+  describe "#search(query)" do
+    before { @user = create(:user) }
+    it "returns user's discussions that match the query string" do
+      discussion = create(:discussion, title: "jam toast", author: @user)
+      @user.discussions.search("jam").should == [discussion]
+    end
+    it "does not return discussions that don't belong to the user" do
+      discussion = create(:discussion, title: "sandwich crumbs")
+      @user.discussions.search("sandwich").should_not == [discussion]
+    end
+  end
+
   describe "#latest_comment_time" do
     it "returns time of latest comment if comments exist" do
       discussion = create :discussion
@@ -144,17 +156,15 @@ describe Discussion do
       @discussion = create :discussion
       @motion = create :motion, discussion: @discussion
     end
-    context "where motion is in 'voting' phase" do
+    context "where motion is in open" do
       it "returns motion" do
         @discussion.current_motion.should eq(@motion)
       end
     end
     context "where motion close date has past" do
       before do
-        @motion.close_at_date = (Date.today - 3.day).strftime("%d-%m-%Y")
-        @motion.close_at_time = "12:00"
-        @motion.close_at_time_zone = "Wellington"
-        @motion.save
+        @motion.closed_at = 3.days.ago
+        @motion.save!
       end
       it "does not return motion" do
         @discussion.current_motion.should be_nil

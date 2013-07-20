@@ -12,8 +12,8 @@
     = link_to item.title, item
 
   .span2.time
-    %span.js-format-as-timeago{data:{time: item.close_at.iso8601}}
-      =time_formatted_relative_to_age(item.close_at)
+    %span.js-format-as-timeago{data:{time: item.closing_at.iso8601}}
+      =time_formatted_relative_to_age(item.closing_at)
     left
 
   .span1

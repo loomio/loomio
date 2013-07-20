@@ -10,7 +10,7 @@ class Vote < ActiveRecord::Base
     def validate_each(object, attribute, value)
       if object.motion && (not object.motion.voting?)
         object.errors.add attribute,
-          "can only be modified while the motion is open."
+          "can only be modified while the motion is in voting phase."
       end
     end
   end

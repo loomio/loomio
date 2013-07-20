@@ -19,8 +19,7 @@ class Queries::VisibleDiscussions < SimpleDelegator
                      group.id, group.id, user.id)
         elsif user.is_parent_group_member?(group)
           relation = Discussion.includes(:group).
-                     where("
-                     discussions.group_id = ?
+                     where("discussions.group_id = ?
                      AND (groups.viewable_by = 'everyone'
                      OR groups.viewable_by = 'parent_group_members')",
                      group.id)
@@ -47,7 +46,7 @@ class Queries::VisibleDiscussions < SimpleDelegator
   end
 
   def with_current_motions
-    includes(:motions).where('motions.phase = ?', "voting")
+    includes(:motions).where("motions.closing_at IS NOT NULL AND motions.closed_at IS NULL")
   end
 
   def with_current_motions_user_has_voted_on
@@ -61,6 +60,6 @@ class Queries::VisibleDiscussions < SimpleDelegator
   end
 
   def without_current_motions
-    includes(:motions).where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE phase = 'voting')")
+    includes(:motions).where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND closed_at IS NULL)")
   end
 end

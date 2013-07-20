@@ -74,18 +74,19 @@
     padding: 4px;
   }
 
-  .admin-buttons {
+  .motion-admin-buttons {
     margin: 0 0 5px 0;
     width: 100px;
 
     .btn {
       float: right;
       margin: 5px 0 0 0;
-      width: 60px;
+      width: 50px;
     }
   }
 
   #closed-label { padding-right: 5px; }
+  #add-outcome-submit { margin-top: 5px; }
   #closing-info {
     font-size: $font-smaller;
     color: $mid-grey;
@@ -276,11 +277,17 @@ table.jqplot-table-legend {
       display: inline-block;
       margin-bottom: 0
     }
+
+    .motion-close-at-date {
+      height: 20px;
+      position: relative;
+      top: 1px;
+      width: 100px;
+    }
     .motion-close-at-time, .motion-close-at-time-zone {
       display: inline-block;
-      margin: 0;
+      margin-top: 10px;
     }
-    .motion-close-at-date { width: 130px; }
     .motion-close-at-time { width: 90px; }
     .motion-close-at-time-zone { width: 238px; }
   }

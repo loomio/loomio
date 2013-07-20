@@ -41,7 +41,7 @@ FactoryGirl.define do
   factory :discussion do
     association :author, :factory => :user
     group
-    title { Faker::Lorem.sentence(2) }
+    title { Faker::Lorem.sentence(word_count = 3) }
     description 'A description for this discussion. Should this be *rich*?'
     uses_markdown false
     after(:build) do |discussion|
@@ -71,7 +71,6 @@ FactoryGirl.define do
   factory :motion do
     sequence(:name) { Faker::Name.name }
     association :author, :factory => :user
-    phase 'voting'
     description 'Fake description'
     discussion
     close_at_date "24-12-2044"

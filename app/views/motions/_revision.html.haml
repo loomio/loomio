@@ -6,7 +6,7 @@
       %strong
         = t(:proposal_edit_message)
         = revision.edit_message
-    %div= t(:proposal_closing_when, when: time_ago_in_words(revision.close_at))
+    %div= t(:proposal_closing_when, when: time_ago_in_words(revision.closing_at))
     .proposed-by
       = t(:proposed_when_by_who, when: time_ago_in_words(revision.created_at), who: revision.author_name)
   .span3.revision-info

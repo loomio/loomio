@@ -32,6 +32,18 @@ Given /^an invitiation to start a loomio group has been sent$/ do
                                               message_body: 'We woud love to! {invitation_link}')
 end
 
+Given(/^an invitiation to start a loomio group has been sent to an existing user "(.*?)"$/) do |arg1|
+  user = FactoryGirl.create(:user, email: arg1)
+  @group_request = FactoryGirl.create(:group_request, admin_email: arg1)
+  @group_request.verify!
+  @site_admin = FactoryGirl.create :user, :is_admin => true
+  @setup_group = SetupGroup.new(@group_request)
+  @group = @setup_group.approve_group_request(approved_by: @site_admin)
+  @setup_group.send_invitation_to_start_group(inviter: @site_admin,
+                                              message_body: 'We woud love to! {invitation_link}')
+end
+
+
 When /^the user clicks the invitiation link$/ do
   email = ActionMailer::Base.deliveries.last
   url = email.body.match(/https?:\/\/[\S]+/)[0]

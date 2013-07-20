@@ -25,8 +25,8 @@ Given(/^there is another group member$/) do
 end
 
 
-When(/^click 'Make admin' on the member$/) do
-  click_on 'Make admin'
+When(/^click 'Make coordinator' on the member$/) do
+  click_on 'Make coordinator'
 end
 
 Then(/^the member should be a group admin$/) do
@@ -38,9 +38,9 @@ Given(/^there is another group admin$/) do
   @group.add_admin! @another_user
 end
 
-When(/^click 'Remove admin' on the member$/) do
+When(/^click 'Remove coordinator' on the member$/) do
   within("table.memberships tbody tr#membership-for-user-#{@another_user.id}") do
-    click_on 'Remove admin'
+    click_on 'Remove coordinator'
   end
 end
 

@@ -1,6 +1,6 @@
 %div{id: "comment-container-#{comment.id}"}
   %a{class: "comment-anchor", id: "comment-#{comment.id}"}
-  .activity-item-avatar.medium-user-avatar.avatar-canvas
+  .activity-item-avatar.medium-user-avatar
     = render 'base/avatar', user: comment.user, size: "medium", kind: nil, id: nil
   .activity-item-body
     .activity-item-comment-actor

@@ -4,6 +4,8 @@ Loomio::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  resource :search, only: :show
+
   devise_for :users, controllers: { sessions: 'users/sessions',
                                     registrations: 'users/registrations' }
 
