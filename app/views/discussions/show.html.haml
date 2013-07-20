@@ -38,7 +38,7 @@
             - if can? :edit_close_date, @current_motion
               = render '/motions/edit_close_date', motion: @current_motion, user: @current_user, input_time: @input_time
 
-            - if @discussion.closed_motions.count > 0
+            - if @discussion.closed_motions.present?
               #previous-proposals
                 .clearfix
                   .large-icon.decision-icon
