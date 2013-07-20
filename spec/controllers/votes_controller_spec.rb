@@ -8,7 +8,7 @@ describe VotesController do
       @group = create(:group)
       @group.add_member!(@user)
       @discussion = create(:discussion, group: @group)
-      @motion = create(:motion,discussion: @discussion, phase: 'voting')
+      @motion = create(:motion, discussion: @discussion)
       @motion.save!
       @previous_url = motion_url(@motion)
       @vote_args = { motion_id: @motion.id,
@@ -16,7 +16,7 @@ describe VotesController do
       request.env["HTTP_REFERER"] = @previous_url
     end
 
-    context 'during voting phase' do
+    context 'proposal is open' do
 
       describe "casting a vote" do
         it 'redirects to previous url' do
@@ -97,10 +97,10 @@ describe VotesController do
       end
     end
 
-    context 'during closed phase' do
+    context 'proposal is closed' do
       before :each do
         @discussion = create(:discussion, group: @group, author: @user)
-        @motion = create(:motion, discussion: @discussion, phase: 'closed')
+        @motion = create(:motion, discussion: @discussion, closed_at: 2.days.ago)
       end
 
       it 'cannot vote' do

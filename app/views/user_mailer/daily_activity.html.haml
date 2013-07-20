@@ -13,8 +13,8 @@
       %p
         -@motions.each do |motion|
           =link_to(motion.name, motion_url(motion))
-          -if motion.close_at.present?
-            \- closes in #{time_ago_in_words(motion.close_at)}
+          -if motion.voting?
+            \- closes in #{time_ago_in_words(motion.closing_at)}
           %br
     -if @discussions.present?
       %h4= t :discussions

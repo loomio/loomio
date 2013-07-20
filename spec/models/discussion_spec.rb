@@ -156,17 +156,15 @@ describe Discussion do
       @discussion = create :discussion
       @motion = create :motion, discussion: @discussion
     end
-    context "where motion is in 'voting' phase" do
+    context "where motion is in open" do
       it "returns motion" do
         @discussion.current_motion.should eq(@motion)
       end
     end
     context "where motion close date has past" do
       before do
-        @motion.close_at_date = (Date.today - 3.day).strftime("%d-%m-%Y")
-        @motion.close_at_time = "12:00"
-        @motion.close_at_time_zone = "Wellington"
-        @motion.save
+        @motion.closed_at = 3.days.ago
+        @motion.save!
       end
       it "does not return motion" do
         @discussion.current_motion.should be_nil

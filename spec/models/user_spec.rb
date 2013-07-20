@@ -65,25 +65,6 @@ describe User do
     user.admin_memberships.should include(membership)
   end
 
-  describe "open_votes" do
-    before do
-      @motion = create(:motion)
-      @motion.group.add_member! user
-      @vote = user.votes.new(:position => "yes")
-      @vote.motion = @motion
-      @vote.save
-    end
-
-    it "returns the user's votes on motions that are open" do
-      user.open_votes.should include(@vote)
-    end
-
-    it "does not return the user's votes on motions that are closed" do
-      @motion.close!
-      user.open_votes.should_not include(@vote)
-    end
-  end
-
   it "has authored discussions" do
     group.add_member!(user)
     discussion = Discussion.new(:group => group, :title => "Hello world")
@@ -99,29 +80,29 @@ describe User do
     user.authored_motions.should include(motion)
   end
 
-  describe "motions_in_voting_phase" do
-    it "returns motions that belong to user and are in phase 'voting'" do
+  describe "#voting_motions" do
+    it "returns motions that belong to user and are open" do
       motion = create(:motion, author: user)
-      user.motions_in_voting_phase.should include(motion)
+      user.voting_motions.should include(motion)
     end
 
-    it "should not return motions that belong to the group but are in phase 'closed'" do
+    it "should not return motions that belong to the group but are closed'" do
       motion = create(:motion, author: user)
       motion.close!
-      user.motions_in_voting_phase.should_not include(motion)
+      user.voting_motions.should_not include(motion)
     end
   end
 
-  describe "motions_closed" do
-    it "returns motions that belong to the group and are in phase 'voting'" do
+  describe "closed_motions" do
+    it "returns motions that belong to the group and are closed" do
       motion = create(:motion, author: user)
       motion.close!
-      user.motions_closed.should include(motion)
+      user.closed_motions.should include(motion)
     end
 
-    it "should not return motions that belong to the group but are in phase 'closed'" do
+    it "should not return motions that belong to the group but are closed" do
       motion = create(:motion, author: user)
-      user.motions_closed.should_not include(motion)
+      user.closed_motions.should_not include(motion)
     end
   end
 

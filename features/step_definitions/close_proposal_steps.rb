@@ -22,3 +22,10 @@ end
 Then /^I should not see a link to close the proposal$/ do
   page.should_not have_content("Close proposal")
 end
+
+Then(/^the proposal close date should match the date the event was created$/) do
+  @motion.reload
+  floor = Event.last.created_at - 1.minute
+  ceiling =  Event.last.created_at + 1.minute
+  @motion.closed_at.should > floor && @motion.closed_at.should < ceiling
+end

@@ -71,7 +71,6 @@ FactoryGirl.define do
   factory :motion do
     sequence(:name) { Faker::Name.name }
     association :author, :factory => :user
-    phase 'voting'
     description 'Fake description'
     discussion
     close_at_date '24-12-2044'
