@@ -1,8 +1,7 @@
 .container
-  .section.first
+  %section.first
     .inner-container
       .row
         .span6.offset3
-          %h1 Welcome to Loomio
-          %p Your request to start a new group on Loomio has been approved! You'll need to set up a new account before you can create your group.
+          %h2= t :"start_group.header"
       = render 'form'

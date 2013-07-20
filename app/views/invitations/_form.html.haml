@@ -1,17 +1,21 @@
-.row
-  .span4.offset3
-    .signup-form
-      %p
-        %strong= t :"devise.registrations.sign_up"
-        %br
-    =simple_form_for(@user, url: user_registration_path) do |f|
-      =f.input :name, :input_html => { :value => @user_name }
-      =f.input :email, :input_html => { :value => @invitation.recipient_email }
-      =f.input :password
-      =f.input :password_confirmation
-      =f.input :language_preference, :collection => Translation::LANGUAGES, selected: I18n.locale, include_blank: false
-      =f.submit t("devise.registrations.sign_up"), class: "btn btn-info btn-large"
-.row
-  .span6.offset3
-    %p= t :"or_sign_in_html", link: user_session_path
+- if email_belongs_to_existing_user? @invitation.recipient_email
+  .row
+    .span6.offset3
+      %p= t :"start_group.sign_in_intro" if @invitation.intent == "start_group"
+      %p= t :"join_group.sign_in_intro" if @invitation.intent == "join_group"
+  .row
+    .span4.offset3.signin-form
+      = render "devise/sessions/form"
+
+- else
+  .row
+    .span6.offset3
+      %p= t :"start_group.sign_up_intro" if @invitation.intent == "start_group"
+      %p= t :"join_group.sign_up_intro" if @invitation.intent == "join_group"
+  .row
+    .span4.offset3.signup-form
+      = render "devise/registrations/form"
+  .row
+    .span6.offset3
+      %h3= t :"or_sign_in_html", link: user_session_path
 

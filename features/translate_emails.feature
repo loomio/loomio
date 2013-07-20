@@ -71,11 +71,3 @@ Feature: deliver emails in the user's prefered language
     When "Eduardo" makes an announcement to the group
     Then "John" should receive the group email in English
     And "Viv" should receive the group email in Spanish
-
-  @javascript
-  Scenario: Group request verification email
-    Given "Joan" is a logged-out user
-    When they visit the Request New Group page
-    And their browser header indicates a Spanish language preference
-    When they fill in and submit the Request New Group Form
-    Then they should receive the group request verification email in Spanish

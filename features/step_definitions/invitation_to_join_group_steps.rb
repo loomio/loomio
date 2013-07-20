@@ -85,7 +85,7 @@ Given(/^an existing user with email "(.*?)"$/) do |arg1|
   @user = FactoryGirl.create :user, email: arg1
 end
 
-When(/^I sign in as "(.*?)"$/) do |arg1|
+When(/^(?:I|they) sign in as "(.*?)"$/) do |arg1|
   fill_in :user_email, with: arg1
   fill_in :user_password, with: 'password'
   find('#sign-in-btn').click()
