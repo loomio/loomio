@@ -65,16 +65,6 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, :dependent => :destroy
   has_many :motions, :through => :discussions
-  has_many :motions_in_voting_phase,
-           :through => :discussions,
-           :source => :motions,
-           :conditions => { phase: 'voting' },
-           :order => 'close_at'
-  has_many :motions_closed,
-           :through => :discussions,
-           :source => :motions,
-           :conditions => { phase: 'closed' },
-           :order => 'close_at DESC'
 
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
@@ -84,6 +74,14 @@ class Group < ActiveRecord::Base
   delegate :name, :to => :parent, :prefix => true
 
   paginates_per 20
+
+  def voting_motions
+    motions.voting
+  end
+
+  def closed_motions
+    motions.closed
+  end
 
   def archive!
     self.update_attribute(:archived_at, DateTime.now)

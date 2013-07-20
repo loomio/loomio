@@ -30,6 +30,7 @@ en:
     invalid_close_date: "Invalid close date, please check this date has not passed."
     invalid_email: "Please enter at least one valid email address"
     image_upload_fail: "Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file."
+    motion_closing_inputs: "Invalid closing date"
     permission_to_invite: "You do not have permission to invite new members."
     position_not_updated: "Could not update position."
     settings_not_updated: "Your settings did not get updated."

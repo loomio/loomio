@@ -79,7 +79,7 @@ Given(/^the proposal started by "(.*?)" is closing soon$/) do |arg1|
   author = User.find_by_email("#{arg1}@example.org")
   group = FactoryGirl.create :group
   @discussion = FactoryGirl.create :discussion, group: group
-  @motion = FactoryGirl.create :motion, discussion: @discussion, author: author, close_at: Time.now + 1.hour
+  @motion = FactoryGirl.create :motion, discussion: @discussion, author: author, closing_at: Time.now + 1.hour
 end
 
 Then(/^"(.*?)" should receive the proposal closing soon email in English$/) do |arg1|
