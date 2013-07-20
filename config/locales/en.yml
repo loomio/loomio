@@ -728,6 +728,7 @@ en:
   by: "by"
   cancel: "Cancel"
   change: "Change"
+  change_language: "Click here to use Loomio in %{language}"
   changing: "Changing"
   click_here: "Click here"
   close: "Close"
@@ -760,6 +761,10 @@ en:
   photo:
   proposal: "Proposal"
   prev: "Prev"
+  translate: "help translate Loomio!"
+  options: "Options"
+  other: "Other"
+  ok_got_it: "Okay, got it!"
   remove: "Remove"
   save: "Save"
   saving: "Saving"
