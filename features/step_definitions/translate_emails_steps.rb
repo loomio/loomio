@@ -24,8 +24,7 @@ end
 Then(/^the new discussion email should be delivered to "(.*?)" in Spanish$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
   email = DiscussionMailer.new_discussion_created(@discussion, user)
-  snippet = I18n.t(:"email.create_discussion.intro", who: @discussion.author.name, which_group: @discussion.group.full_name, locale: "es")
-  email.body.encoded.should include(snippet)
+  email.body.encoded.should include("Haz click")
 end
 
 Then(/^the new discussion email should be delivered to "(.*?)" in English$/) do |arg1|
@@ -45,7 +44,7 @@ end
 Then(/^the new proposal email should be delivered to "(.*?)" in Spanish$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
   email = MotionMailer.new_motion_created(@motion, user)
-  email.body.encoded.should include(I18n.t(:group, locale: "es"))
+  email.body.encoded.should include("Grupo")
 end
 
 Then(/^the new proposal email should be delivered to "(.*?)" in English$/) do |arg1|
@@ -67,7 +66,7 @@ end
 
 Then(/^the proposal blocked email should be delivered to "(.*?)" in Spanish$/) do |arg1|
   email = MotionMailer.motion_blocked(@vote)
-  email.body.encoded.should include(I18n.t(:group, locale: "es"))
+  email.body.encoded.should include("Grupo")
 end
 
 Then(/^the proposal blocked email should be delivered to "(.*?)" in English$/) do |arg1|
@@ -91,7 +90,7 @@ end
 Then(/^"(.*?)" should receive the proposal closing soon email in Spanish$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
   email = UserMailer.motion_closing_soon(user, @motion)
-  email.body.encoded.should include(I18n.t(:group, locale: "es"))
+  email.body.encoded.should include("Grupo")
 end
 
 Given(/^"(.*?)" has closed their proposal$/) do |arg1|
@@ -103,7 +102,7 @@ end
 
 Then(/^the proposal closed email should be delivered to "(.*?)" in Spanish$/) do |arg1|
   email = MotionMailer.motion_closed(@motion, "#{arg1}@example.org")
-  email.body.encoded.should include(I18n.t("email.proposal_closed.specify_outcome", locale: "es"))
+  email.body.encoded.should include("haz click")
 end
 
 Then(/^the proposal closed email should be delivered to "(.*?)" in English$/) do |arg1|
@@ -111,19 +110,19 @@ Then(/^the proposal closed email should be delivered to "(.*?)" in English$/) do
   email.body.encoded.should include(I18n.t("email.proposal_closed.specify_outcome", locale: "en"))
 end
 
-When(/^"(.*?)" requests membership to the group$/) do |arg1|
+When(/^"(.*?)" requests membership to a group$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
   group = FactoryGirl.create :group
   @membership_request = FactoryGirl.create :membership_request, group: group, requestor: user
 end
 
 Then(/^the membership request email should be delivered to "(.*?)" in Spanish$/) do |arg1|
-  email = GroupMailer.new_membership_request(@membership_request)
-  email.body.encoded.should include(I18n.t("email.membership_request.view_group", locale: "es"))
+  email = GroupMailer.membership_request(User.find_by_name(arg1), @membership_request)
+  email.body.encoded.should include(I18n.t("email.membership_request.view_group", locale: "es")[0, 5])
 end
 
 Then(/^the membership request email should be delivered to "(.*?)" in English$/) do |arg1|
-  email = GroupMailer.new_membership_request(@membership_request)
+  email = GroupMailer.membership_request(User.find_by_name(arg1), @membership_request)
   email.body.encoded.should include(I18n.t("email.membership_request.view_group", locale: "en"))
 end
 
@@ -137,7 +136,7 @@ When(/^"(.*?)" approves "(.*?)"s group membership request$/) do |arg1, arg2|
 end
 
 Then(/^the group membership request approved email should be delivered in Spanish$/) do
-  @email.body.encoded.should include(I18n.t("email.view_group", locale: "es"))
+  @email.body.encoded.should include("Haz click")
 end
 
 Then(/^the group membership request approved email should be delivered in English$/) do
@@ -173,7 +172,7 @@ end
 Then(/^"(.*?)" should receive the mention email in Spanish$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
   email = UserMailer.mentioned(user, @comment)
-  email.body.encoded.should include(I18n.t("email.mentioned.intro", locale: "es"))
+  email.body.encoded.should include("mencionado")
 end
 
 Then(/^"(.*?)" should receive the mention email in English$/) do |arg1|
@@ -198,7 +197,7 @@ end
 Then(/^"(.*?)" should receive the membership request approval email in Spanish$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
   email = UserMailer.group_membership_approved(user, @group)
-  email.body.encoded.should include(I18n.t("email.view_group", locale: "es"))
+  email.body.encoded.should include("Haz click")
 end
 
 When(/^"(.*?)" makes an announcement to the group$/) do |arg1|
@@ -215,7 +214,7 @@ end
 Then(/^"(.*?)" should receive the group email in Spanish$/) do |arg1|
   recipient = User.find_by_email("#{arg1}@example.org")
   email = GroupMailer.group_email(@group, @sender, "Subject", "message", recipient)
-  email.body.encoded.should include(I18n.t("email.view_group", locale: "es"))
+  email.body.encoded.should include("Haz click")
 end
 
 Given(/^"(.*?)" is a logged\-out user$/) do |arg1|
@@ -229,6 +228,5 @@ end
 Then(/^they should receive the group request verification email in Spanish$/) do
   group_request = GroupRequest.first
   email = StartGroupMailer.verification(group_request)
-  # email.body.encoded.should include("I18n.t("email.verification.header", locale: "es")")
   email.body.encoded.should include("Grupo")
 end

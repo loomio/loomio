@@ -70,8 +70,43 @@ hu:
     members_added: "A tagokat hozzáadtuk a csoporthoz."
     position_submitted: "Rögzítettük az álláspontodat."
     position_updated: "Frissítettük az álláspontodat."
-    proposal_created: "Létrehoztuk a javaslatot-"
+    proposal_created: "Létrehoztuk a javaslatot."
     proposal_deleted: "Töröltük a javaslatot."
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one: "másodperc"
+        other: "%{count} másodperc"
+      x_seconds:
+        one: "1 másodperc"
+        other: "%{count} másodperc"
+      less_than_x_minutes:
+        one: "1 perc"
+        other: "%{count} perc"
+      x_minutes:
+        one: "1 perc"
+        other: "%{count} perc"
+      about_x_hours:
+        one: "1 óra"
+        other: "%{count} óra"
+      x_days:
+        one: "1 nap"
+        other: "%{count} nap"
+      about_x_months:
+        one: "1 hónap"
+        other: "%{count} hónap"
+      x_months:
+        one: "1 hónap"
+        other: "%{count} hónap"
+      about_x_years:
+        one: "1 év"
+        other: "%{count} év"
+      over_x_years:
+        one: "1 év"
+        other: "%{count} év"
+      almost_x_years:
+        one: "1 év"
+        other: "%{count} év"
   inbox:
     dropdown-btn: 'Bejövő üzenetek'
     empty: Naprakész vagy! Minden hozzászólást láttál már.
@@ -170,9 +205,10 @@ hu:
   updating_group: "Frissítem a csoportot"
   start_a_discussion: "Téma indítása"
   group_description: "A csoport leírása"
+  edit_group_description: "A csoport leírásának szerkesztése"
   discussion_items:
-    new_discussion: "létrehoztuk a témát"
-    new_motion: "létrehoztuk a javaslatot"
+    new_discussion: "létrehozta a témát"
+    new_motion: "létrehozta a javaslatot"
     motion_closed:
       by_user: "lezártuk a javaslatot"
       by_expiry: "A javaslat lezárva"
@@ -180,7 +216,7 @@ hu:
     discussion_title_edited: "megváltoztattuk a téma címét"
     discussion_description_edited: "megváltoztattuk a téma leírását"
   discussion: "Téma"
-  current_decision: "Aktuális téma"
+  current_decision: "Jelenlegi döntés"
   previous_decisions: "Korábbi döntések"
   see_previous_decisions: "Korábbi döntések megtekintése"
   create_new_proposal: "Új javaslat létrehozása"
@@ -190,8 +226,6 @@ hu:
   empty_discussion_index: "Egyik csoportodban sincsen semmilyen felvetett téma."
   empty_discussion_index_group: "Ennek a csoportnak még nincsenek felvetett témái."
   discussion_context:
-    started_when: "Az indítás óta eltelt idő: %{when}"
-    last_edited: "Az utolsó változtatás óta eltelt idő: %{when}"
     see_revision_history: "A korábbi változatok megtekintése"
   description_history:
     header: "Korábbi változatok"
@@ -232,26 +266,65 @@ hu:
   no_details: "Szerintem ennél jobbat is ki tudunk találni"
   block_position: "Blokkolom"
   block_details: "Komoly ellenvetéseim vannak a javaslattal szemben és nem szeretném, hogy így döntsünk."
-  not_voted: "[Kik nem foglaltak még álláspontot]"
+  not_voted: "[Kik nem foglaltak még állást]"
   outcome: "Eredmény"
   outcome_placeholder: "Mi lett ennek a javaslatnak az eredménye?"
   help:
     coordinating: 'Koordináljuk a Loomio csoportodat'
+    coordinating_details: |+
+      Te vagy a koordinátor, te indítod el a csoportot és te hívod meg a többieket. A csoportnak nem csak a Loomio használatát kell megtanulnia, hanem azt is, hogy tud jól összedolgozni, hogyan tud közösen döntéseket hozni. Pár jótanács, hogy ez sikerüljön:
+
     different_ways: 'Többféleképpen használhatod a Loomiót'
+    engaging_html: |+
+      <h2>Hogyan vond be a csoportot</h2>
+      <p>Az emberek akkor fognak belevágni a közös gondolkodásba, ha már van valamilyen érdekes javaslat. A jó javaslat előre mutat, megmutatja, mit tegyen a csoport, így mindenkinek egyértelmű, hogy mit jelent, ha ellenzi vagy támogatja. Gondold át, milyen vitákat folytat le a csoport személyesen vagy e-mailben, amit megkönnyíthetne a Loomio használata.</p>
+      <p>Ha most alakult a csoport érdemes valami kisebb fajsúlyú témával kezdeni, hogy mindenki kipróbálhassa a Loomio lehetőségeit.</p>
+      <p>Úgy is bevonhatsz másokat a vitába, ha használod a @név eszközt és a megjegyzésekben megnevezel egyeseket, levelet fognak kapni róla, hogy te megemlítetted őket.</p>
+
+    example1_html: |+
+      <h3>Azt szeretnéd, hogy a csoport tárgyaljon meg egy szerteágazó témát és dolgozzon ki rá megoldást<h3>
+      <p>Stratégia: Tárgyaljátok meg alaposan a témát mielőtt javaslatot tennétek.</p>
+      <p>Gyakran az a legjobb megoldás kulcsa, hogy mindenki pontosan tisztázza miről is van szó, mielőtt elhamarkodottan döntene. Ha a tagok részt vesznek a vitában és a javaslat kidolgozásában, sokkal jobban elfogadják a közös döntést is.</p>
+
+    example2_html: |+
+      <h3>Ha már van döntési javaslatod és szeretnéd, hogy a csoport döntsön róla, hogy továbbléphessetek</h3>
+      <p>Stratégia: Nyisd meg a témát és azonnal tegyél javaslatot is.</p>
+      <p>Ha konkrét elképzelésed van arról, hogy mit kellene tenni, de biztos akarsz benne lenni, hogy senkinek nincs érdemi ellenvetése, a javaslat előrelendítheti a közös döntést.</p>
+      <p>Hasznos lehet ez, ha jóvá kell hagyni egy dokumentumot, egy jelentkezést, bármilyen elvégzett munkát.</p>
+
     get_in_touch: "Kapcsolat"
     get_in_touch_description_html: "Ha kérdésed vagy véleményed van, írj nekünk: <a href='mailto:contact@loomio.org'>contact@loomio.org</a>"
     getting_started: "Kezdjük"
     getting_started_description: "Bal oldalon tárgyalja meg a csoport a témát. Ha döntési javaslat van, az a jobb oldalon jelenik meg."
     getting_the_most: 'Hogyan használd ki a Loomio lehetőségeit'
     have_your_say: "Szólj bele"
+    have_your_say_details_html: |+
+      <p>Ha kialakult az álláspontod kattints a négy döntés gomb egyikére.</p>
+      <p>Ha döntöttél, adj hozzá rövid magyarázatot. A kördiagram alatt láthatod, hogy a többiek mit gondolnak. Így könnyen átláthatod, hogyan alakul a vita. Ha új szempontok merülnek fel, bármikor megváltoztathatod az álláspontodat.</p>
+
     have_a_discussion: "Mi a véleményed?"
     have_a_discussion_description: "A téma és a legfontosabb információk róla az oldal tetején találhatók. A hozzászólással tudod elmondani a véleményedet a témáról."
     help: "Ötletek"
     how_it_works: "Mi ez az egész?"
+    invitation_html: |+
+      <h2>Hogyan írjunk jó meghívót</h2>
+      <p>Az első kérdés, ami minden új tagban felötlik: mire való ez a csoport?</p>
+      <p>Hogyan tudnád a lehető legegyszerűbben leírni a csoportot: Mit akartok elérni? Milyen döntéseket fogtok hozni? Ki vesz részt benne?</p>
+      <p>Érdemes beszélni a csoporttal, mielőtt kiküldöd a meghívókat, arról, hogy mi is ez.</p>
+      <p>Tudni akarják majd, hogy miért hívtad meg őket, mit várnak el tőlük és miért érdemes időt és energiát fektetniük a loomio használatába.</p>
+
     join_the_community: "Csatlakozz a közösséghez"
     join_the_community_description_html: "Mindenkit várunk a Loomio Community csoportba, ahol megbeszélhetjük, hogyan lehet még jobb ez az eszköz. <br /><br /><a href='https://www.loomio.org/groups/3'>Ide kattintva juthatsz a Loomio Community csoportba.</a>"
     images_and_text_formatting: "Képek és szövegformázás"
+    images_and_text_formatting_html: |+
+      <p>A Loomio a képek beillesztéséhez és a szöveg formázásához a "Markdown" rendszert használja. A hozzászólás ablak alatti kis szürke ikonnal kapcsolhatod be a Markdownt.</p>
+      <p><a href='https://www.loomio.org/discussions/1124'>Ide kattintva</a> további információkat kaphatsz a Markdown rendszerről.</p>
+
     keep_up_to_date: "Maradj naprakész"
+    keep_up_to_date_html: |+
+      <p>ha a lap tetején a csoport nevére kattintasz, a csoport oldalára jutsz, ahol a csoport témáit és döntéseit láthatod. Ha több csoport tagja is vagy, az összes csoport tevékenységét láthatod a nyitólapodon.</p>
+      <p>Ha fontos dolgok történnek a csoportban, e-mailben értesítünk. Az e-mail beállításokat <a href="%{link}"">itt</a> változtathatod meg.</p>
+
     make_a_decision: "Dönts!"
     make_a_decision_description: "Ha a csoport készen áll a döntésre, bárki tehet javaslatot. Legyen egyértelmű, hogy mit javasolsz és tisztázd, hogy mit jelent ha avalaki egyetért vele, vagy ellenzi."
     prompt_people_details: "Ha egy adott tag figyelmét akarod felkelteni, írj a megjegyzésbe '@'-t a neve elé. E-mailt fog kapni róla, hogy megemlítetted egy hozzászólásban."
@@ -261,6 +334,10 @@ hu:
     positions_disagree_description: "A <span>Nem értek egyet</span> azt jelenti, hogy szerinted lehet jobb megoldás, de ha így dönt a csoport, elfogadod."
     positions_block_description: "A <span>Blokkolom</span> azt jelenti, hogy komoly fenntartásaid vannak a javaslattal kapcsolatban és nagyon nagy bajnak tartanád, ha elfogadnák."
     start_discussion: "Kezdj izgalmas témát"
+    start_discussion_html: |+
+      <p>Ha új témát nyitsz, gondoskodj róla, hogy a cím egyértelműen utaljon arra, miről van szó. A leírásban megadhatod mindazokat az információkat, amikre a csoportnak szüksége van, hogy megalapozott döntést hozhasson.</p>
+      <p>A leírást frissítheted, ha már folyik a vita, hogy az újonnan felmerült információk is belekerüljenek. Azon túl, hogy tovább tisztázod, miről is van szó, arra is használhatod a leírást, hogy anyagokat ossz meg, összefoglald az addig elhangzottakat vagy éppen vázold a döntéshozatal menetét. </p>
+
     start_proposal: "A javaslat legyen egyértelmű"
     start_proposal_html: |
       <p>Ha a cím egyértelmű és tömör, a tagok rögtön tudni fogják, mit jelent ha egyetértenek vagy ha ellenzik.</p>
@@ -280,9 +357,27 @@ hu:
     any_amount: Bármilyen egyszeri összeg
     monthly_html: Havi rendszeres hozzájárulás <span>(USD)</span>
     one_time_html: Egyszeri hozzájárulás <span>(USD)</span>
-    tooltip: Válaszd ki, hogyan segítesz
+    tooltip: Támogass
     thought_about_contributing: Válaszd ki, hogyan segítesz
-    thank_you_title: Köszi!
+    thought_about_contributing_description: |+
+      A Loomio egy közös vállalkozás, aminek az a célja, hogy mindenki részt vehessen az őt érintő döntésekben és befolyásolhassa azokat.
+
+      Úgy gondoljuk, a pénz nem lehet akadálya annak, hogy valaki használja, ezért olyan rendszert dolgozunk ki, amiben te magad döntheted el, hogy mennyivel támogatsz minket.
+
+      A támogatásodnak köszönhetően maradhat a Loomio független, hirdetésmentes és a felhasználók igényei által irányított.
+
+      Köszönjük, hogy ezt lehetővé teszed!
+
+    thank_you_title: Köszönjük, hogy támogatod a Loomiót!
+    thank_you_body: |+
+      A támogatásodnak köszönhetően a világ minden zugába eljuthat az egyszerű közösségi döntéshozatal.
+
+      Hamarosan e-mailben küldünk nyugtát a hozzájárulásodról.
+
+      Mindenkit várunk a Loomio Community-be, ahol azt beszéljük meg, hogyan hozhatjuk ki a legtöbbet ebből az eszközből és hogyan tehetjük még jobbá.
+
+      <a href='https://www.loomio.org/groups/3'>Megnézem a Loomio Community-t!</a>
+
   resend_confirmation: "Küld újra a megerősítő utasításokat"
   new_password: "Új jelszó"
   confirm_new_password: "Az új jelszó megerősításe"
@@ -297,7 +392,7 @@ hu:
   remember_me: "Emlékezzen rám"
   signing_in: "Belépés"
   dont_have_account: "Nincs fiókod?"
-  closed_beta: "Jelenleg a zért tesztelésben vagyunk és (még) nem fogadjuk a nyilvános jelentkezéseket"
+  closed_beta: "Jelenleg a zárt tesztelésben vagyunk és (még) nem fogadjuk a nyilvános jelentkezéseket"
   closed_beta_details: "Ha egy olyan szervezethez tartozol, ami használja a Loomiót, de még nincs Loomio fiókod, kérd meg azt aki szervezet Loomióját létrehozta, hogy adjon hozzá a csoporthoz."
   forgot_your_password: "Elfelejtetted a jelszót?"
   confirmation_not_received: "Nem kaptad meg a megerősítő instrukciókat?"
@@ -312,6 +407,9 @@ hu:
     invitees_placeholder: "Felhasználónév <egyik@pelda.com>, masik@pelda.com"
     subject: "Csatlakozz az új Loomio csoportunkhoz: %{group}"
     invite_people: "Hívj meg másokat a csoportodba"
+    body_editable: |+
+      Hello, gyere döntsünk együtt! Egy közös döntéshozó rendszert használunk, a Loomiót.
+
     message_body: "Meghívó üzenet"
     invites_more_help2: "<p>Bármikor meghívhatsz résztvevőket a csoportba</p><p>Meghívhatsz most mindenkit egyszerre, vagy kezdheted azokkal, akikkel a legszorosabban dolgozol együtt.</p>"
     send_invitations: "Meghívók küldése"
@@ -319,9 +417,27 @@ hu:
     link_help: "Kattints erre a linkre, hogy csatlakozz a(z) %{group} csoporthoz a Loomión:"
     copy: "Ha valaki nem kapta meg a meghívóját, nyugodtan küld el neki a meghívó linket magad."
   example_discussion:
-    title: "Példa téma: Üdvözlet és beveztés a Loomióba"
+    title: "Példa téma: Üdvözlet és bevezetés a Loomióba"
+    description: |+
+      Üdvözöl a Loomio az új döntéshozó-rendszer.
+
+      Ha megtárgyaltok egy témát, körbejárjátok a felvetülő kérdéseket és meghallgatjátok mindenki véleményét, közösen telálhatják meg a legjobb döntéseket.
+
+      Ezt a példa témát használhatod arra, hogy kipróbáld a Loomio lehetőségeit.
+
+      Hogy lásd miről is van szó, a Loomio Segéd felvetette, hogy nyaraljunk együtt. A jobboldali kördiagramon láthatod, hogy mit gondol erről a csoport. Te is hozzájárulhatsz a döntéshez ha valamelyik álláspont gombra kattintasz.
+
   example_motion:
     name: "Menjünk nyaralni a Holdra!"
+    description: |+
+      Loomio Segéd nagyon szeretné együtt nyaraljunk a Holdon. Szó se róla, nagy kaland lenne. De vajon, mekkora lenne a környezeti terhelés egy ilyen út miatt?
+
+      Jó ötlet? Loomio Segéd szeretné tudni a te véleményedet is!
+
+      Ha tudod már, hogy mi az álláspontod, kattints valamelyik ikonra (ha az ikon fölé viszed az egeret, elolvashatod, mit is jelent az az álláspont).
+
+      lehetőséged van arra is, hogy megindokold a választásodat, így könnyen átlátható, hogy ki mit és miért gondol a javaslatról. A javaslat lezárulta előtt még lehetőséged van változtatni az álláspontodon.
+
   discussion_form:
     header: "Téma indítása"
     who: "Melyik csoportban akarod indítani ezt a témát?"
@@ -418,7 +534,7 @@ hu:
       intro: "%{who} új témát nyitott a %{which_group} csoportban:"
       subject: "Új téma -  %{which}"
     create_proposal:
-      intro: "Új témát hoztak létre egy loomio csoportodban."
+      intro: "Új témát hoztak létre egy Loomio csoportodban."
       closes_in: "Lezáródik"
       subject: "Új javaslat - %{which}"
     daily_activity:
@@ -478,7 +594,7 @@ hu:
   groups: "Csoportok"
   group_admin: "Csoport adminisztrátos"
   home: "Nyitólap"
-  like: "Kedvelem"
+  like: "Tetszik"
   loading: "Töltés..."
   message: "Üzenet"
   name: "Név"
@@ -498,7 +614,7 @@ hu:
   show_more: "Több"
   starting: "Kezdem"
   subject: "Téma"
-  unlike: "Nem kedvelem"
+  unlike: "Nem tetszik"
   until_close: "a zárásig"
   update: "Frissítés"
   common:

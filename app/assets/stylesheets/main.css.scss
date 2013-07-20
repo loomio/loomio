@@ -218,3 +218,17 @@ ul.selector-list {
 
 #cancel-add-description:hover { color: $dark-grey; }
 a.btn-icon:hover { color: $dark-grey; }
+
+.footer{
+  padding: 3px 10px 6px 10px;
+  font-size: 90%;
+  .left{
+    width: 70%;
+    float: left;
+  }
+  .right{
+    width: 30%;
+    float: left;
+    text-align: right;
+  }
+}
