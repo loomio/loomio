@@ -236,8 +236,6 @@ ro:
   empty_discussion_index: "Inca nu exista discutii in grupurile tale."
   empty_discussion_index_group: "Acest grup nu are inca nici o discutie."
   discussion_context:
-    started_when: "A inceput in urma cu %{when} "
-    last_edited: "Ultima data a fost modificata acum %{when}"
     see_revision_history: "Vizualizeaza istoria versiunii"
   description_history:
     header: "Istoria versiunii"
@@ -351,21 +349,7 @@ ro:
     any_amount: O singura contributie
     monthly_html: Contributie lunara <span>(USD)</span>
     one_time_html: O singura contributie <span>(USD)</span>
-    tooltip: Alege contributia ta
     thought_about_contributing: Alege contributia ta
-    thought_about_contributing_description: |
-      Loomio este o organizatie de cooperare sociala care lucreaza pentru a face usoara participarea tuturor in decizii care-i privesc.
-      Noi credem ca banii nu ar trebui sa fie o bariera, asa ca dezvoltam un model de venituri care iti da voie sa decizi singur cat platesti.
-
-      Contributia ta ajuta Loomio sa ramana independent, fara publicitate, si dezvoltat de comunitatea de utilizatori.
-
-      Multumim ca ne ajuti sa facem aceasta posibila!
-    thank_you_title: Multumim!
-    thank_you_body: |
-      Multumim pentru contributia ta pentru Loomio!
-      Contributia ta financiara ne va ajuta sa continuam sa facem procesul de decizie in mod colaborativ mai usor si mai accesibil intregii lumi.
-
-      Vei primi curand un email cu chitanta pentru contributia ta.
   resend_confirmation: "Retrimite instructiunile de confirmare"
   new_password: "Parola noua"
   confirm_new_password: "Confirma noua parola"
@@ -550,7 +534,6 @@ ro:
   approve: "Aproba"
   author: "Autor"
   back: "Inapoi"
-  by: "De catre"
   cancel: "Cancel"
   change: "Modifica"
   changing: "Modific"

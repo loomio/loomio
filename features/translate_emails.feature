@@ -37,9 +37,9 @@ Feature: deliver emails in the user's prefered language
     And the proposal closed email should be delivered to "John" in English
 
   Scenario: membership request email
-    When "John" requests membership to the group
-    Then the membership request email should be delivered to "Eduardo" in Spanish
+    When "John" requests membership to a group
     Then the membership request email should be delivered to "Viv" in English
+    Then the membership request email should be delivered to "Eduardo" in Spanish
 
   Scenario: group membership approved email
     When "John" approves "Eduardo"s group membership request

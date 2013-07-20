@@ -42,7 +42,7 @@ Feature: Language preferences
     Then I should see "Preferencias de Usuario"
 
   @javascript
-  Scenario: Logged in user changes languge preference from URL params
+  Scenario: Logged in user changes languge preference from links in footer
     Given I am logged in
     And my browser language header is set to "es"
     And my language preference is set to "hu"
