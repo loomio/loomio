@@ -31,12 +31,12 @@ class MotionsController < GroupBaseController
       if cannot? :show, @group
         head 401
       else
-        @closed_motions = @group.motions_closed.page(params[:page]).per(7)
+        @closed_motions = @group.motions.closed.page(params[:page]).per(7)
         render :layout => false if request.xhr?
       end
     else
       authenticate_user!
-      @closed_motions= current_user.motions_closed.page(params[:page]).per(7)
+      @closed_motions= current_user.motions.closed.page(params[:page]).per(7)
       render :layout => false if request.xhr?
     end
   end
