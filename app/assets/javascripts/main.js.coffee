@@ -220,3 +220,7 @@ Application.enableInlineEdition = ()->
       $(".discussion-description-helper-text").toggle()
       $(".discussion-additional-info").toggle()
       event.preventDefault()
+
+# Placeholder shim
+$.placeholder.shim();
+
