@@ -1,0 +1,6 @@
+.footer.clearfix
+  .left
+    = Translation.language_links.html_safe
+  .right
+    = link_to t(:about), about_path, target: 'blank'
+    / = link_to "Blog", blog_path
