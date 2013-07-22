@@ -2,40 +2,48 @@ require "spec_helper"
 
 describe GroupMailer do
 
-  describe 'sends email on membership request' do
-    before :all do
+  describe '#new_membership request' do
+    it 'sends email to all the admins' do
       @group = create(:group)
-      @group.add_admin!(create(:user))
-      @membership_request = create(:membership_request, group: @group,
-                                   name: 'bob jones', email: "bobby@jones.org")
-      @mail = GroupMailer.new_membership_request(@membership_request)
+      @membership_request = create(:membership_request, group: @group, name: 'bob jones', email: "bobby@jones.org")
+      mailer = double "mailer"
+
+      mailer.should_receive(:deliver)
+      GroupMailer.should_receive(:membership_request).with(@group.admins.first, @membership_request).
+        and_return(mailer)
+      GroupMailer.new_membership_request(@membership_request)
+    end
+  end
+
+  describe '#membership_request' do
+    before do
+      @group = create(:group)
+      @admin = @group.admins.first
+      @membership_request = create(:membership_request, group: @group, name: 'bob jones', email: "bobby@jones.org")
+      @mail = GroupMailer.membership_request(@admin, @membership_request)
+    end
+
+    it 'renders the subject' do
+      @mail.subject.should ==
+        "[Loomio: #{@group.full_name}] New membership request from #{@membership_request.name}"
+    end
+
+    it "sends email to group admins" do
+      @mail.to.should == [@admin.email]
     end
 
     context "requestor is an existing loomio user" do
-      before { @membership_request.stub(:requestor, create(:user)) }
-      it 'renders the subject' do
-        @mail.subject.should ==
-          "[Loomio: #{@group.full_name}] New membership request from #{@membership_request.name}"
-      end
-
-      it "sends email to group admins" do
-        pending "for some reason this is failing on travis"
-        @mail.to.should == @group.admins.map(&:email)
-      end
-
       it 'renders the sender email' do
         @mail.from.should == ['noreply@loomio.org']
       end
 
       it 'assigns correct reply_to' do
-        pending "This spec is failing on travis for some reason..."
-        @mail.reply_to.should == [@group.admin_email]
+        @mail.reply_to.should == [@membership_request.email]
       end
 
       it 'assigns confirmation_url for email body' do
         @mail.body.encoded.should match(/\/groups\/#{@group.id}/)
       end
-
     end
 
     context "requestor is not a loomio user"
