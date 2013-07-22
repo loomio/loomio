@@ -57,4 +57,5 @@ Feature: Language preferences
     And I sign up as a new user speaking "Español"
     Then I should be a member of the group
     And I should be redirected to the group page
-    And I should see "Página principal"
+    And I should see "Solicitar nuevo grupo"
+    And I should see "Decisiones anteriores"
