@@ -1,6 +1,11 @@
 class Translation
-  LANGUAGES = {"English" => "en", "Español" => "es", "ελληνικά" => "el", "magyar" => "hu"}
-  EXPERIMENTAL_LANGUAGES = {"română" => "ro", "Nederlands" => "nl"}
+  LANGUAGES = {"български" => "bg",
+               "English" => "en",
+               "Español" => "es",
+               "ελληνικά" => "el",
+               "magyar" => "hu",
+               "Nederlands" => "nl"}
+  EXPERIMENTAL_LANGUAGES = {"română" => "ro"}
 
   def self.locales
     LANGUAGES.values
