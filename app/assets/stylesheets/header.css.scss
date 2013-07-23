@@ -73,6 +73,12 @@
     float: right;
   }
 
+  li.nav-item#home {
+    float: left;
+    a.nav-link { padding: 0px; }
+    .large-icon { margin: 6px 7px 0 7px; }
+  }
+
   li.nav-item#search {
     form {
       float: right;

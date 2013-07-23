@@ -117,7 +117,7 @@ Given /^I am not a member of a parent\-group that has a sub\-group viewable by p
 end
 
 Given /^the sub\-group has discussions$/ do
-  @sub_group_discussion = FactoryGirl.create :discussion, :group => @sub_group
+  @sub_group_discussion = FactoryGirl.create :discussion, :group => @sub_group, :title => 'Here is a less brittle title'
   @sub_group_discussion_with_decision = FactoryGirl.create :discussion, :group => @sub_group, :title => 'This is a sub group discussion with decision'
   FactoryGirl.create :motion, :discussion => @sub_group_discussion_with_decision
 end

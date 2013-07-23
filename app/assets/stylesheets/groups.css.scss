@@ -36,7 +36,7 @@ body.groups {
         left: 0;
       }
     }
-
+    .group-title { margin: 0 0 6px 0; }
     .invite-member-checkbox-container {
       label {
         display: inline;
@@ -122,7 +122,6 @@ body.groups {
 
 // group title (on almost all pages)
 .group-title {
-  margin: 0;
   h1 {
     font-size: 24px;
     margin-bottom: 0;
