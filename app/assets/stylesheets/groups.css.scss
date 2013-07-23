@@ -3,6 +3,54 @@
 @import "mixins";
 
 body.groups {
+  &.view_payment_details {
+    color: #000;
+    h1 { margin: 6px 0 22px 0; }
+    p {
+      font-size: 1.2em;
+      font-weight: 300;
+      line-height: 24px;
+    }
+    #contact-us {
+      // color: #005681;
+      display: block;
+    }
+    #footer {
+      font-size: 1.2em;
+      font-weight: 700;
+      margin-top: 20px;
+      line-height: 24px;
+     }
+    #payment-options { margin-top: 16px; }
+    .payment-option-container {
+      border-radius: 4px;
+      display: inline-block;
+      font-size: 1.1em;
+      @include ie7-inline-block();
+      margin-right: 4px;
+      padding: 14px 12px 12px;
+      width: 132px;
+      .flat-btn {
+        border-radius: 4px;
+        box-shadow: 1px 1px 2px 1px #888;
+        color: #FFF;
+        cursor: pointer;
+        display: block;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 18px;
+        margin: 12px 0 0 0;
+        padding: 8px;
+        text-align: center;
+        vertical-align: middle;
+      }
+    }
+    #us-dollars {
+      margin: 10px 54px 0 0;
+      text-align: right;
+      color: $mid-grey;
+    }
+  }
   &.show {
     .discussion-preview .discussion-title { margin-top: 7px; }
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }

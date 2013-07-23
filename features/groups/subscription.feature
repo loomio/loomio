@@ -5,7 +5,6 @@ Feature: Coordinator chooses subscription
 
   Background:
     Given I am logged in
-    And I am a group coordinator
 
   Scenario: Coordinator chooses a plan
     Given I am a coordinator of a subscription group

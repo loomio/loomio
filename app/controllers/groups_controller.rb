@@ -104,6 +104,10 @@ class GroupsController < GroupBaseController
     @group.save!
   end
 
+  def view_payment_details
+    @group = GroupDecorator.new Group.find(params[:id])
+  end
+
   private
 
     def ensure_group_is_setup
