@@ -243,6 +243,7 @@ en:
   start_a_discussion: "Start a discussion"
   group_description: "Group description"
   edit_group_description: "Edit group description"
+  payment_details_link: "Payment details"
 
   #
   # DISCUSSION PAGE
@@ -510,7 +511,6 @@ en:
   # INVITATIONS
   #
 
-
   invitation:
     no_invitations_left: "Sorry you don't have any invitations left"
     no_invitations_left_get_more: "Please email contact@loomio.org and we'll see what we can do to help you"
@@ -531,6 +531,19 @@ en:
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
 
   #
+  # PAYMENT DETAILS
+  #
+
+  payment_details:
+    select_your_plan: "Select your plan"
+    info: "You'll be asked to enter your credit card details after you choose the plan that suits your group."
+    people_limit_html: "Up to <strong>%{people}</strong> people"
+    monthly_amount: "$%{dollars}/month"
+    prices_in_us_dollars: "Prices are in US dollars"
+    footer: "Is your group larger than 100 people?"
+    contact_us_html: "Please contact us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a>"
+
+  #
   # SEARCH
   #
 
@@ -538,7 +551,6 @@ en:
     description: "Below is a list of discussions and proposals that have '%{query}' in their title or description."
     header: "Search results for '%{query}'"
     placeholder: "search"
-
 
   #
   # EXAMPLE CONTENT
