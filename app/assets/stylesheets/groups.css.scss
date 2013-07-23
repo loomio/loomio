@@ -11,10 +11,6 @@ body.groups {
       font-weight: 300;
       line-height: 24px;
     }
-    #contact-us {
-      // color: #005681;
-      display: block;
-    }
     #footer {
       font-size: 1.2em;
       font-weight: 700;
@@ -25,24 +21,19 @@ body.groups {
     .payment-option-container {
       border-radius: 4px;
       display: inline-block;
-      font-size: 1.1em;
       @include ie7-inline-block();
+      font-size: 1.1em;
       margin-right: 4px;
       padding: 14px 12px 12px;
       width: 132px;
-      .flat-btn {
-        border-radius: 4px;
-        box-shadow: 1px 1px 2px 1px #888;
+      .btn {
         color: #FFF;
-        cursor: pointer;
         display: block;
         font-size: 16px;
-        font-weight: 700;
+        font-weight: 500;
         line-height: 18px;
         margin: 12px 0 0 0;
         padding: 8px;
-        text-align: center;
-        vertical-align: middle;
       }
     }
     #us-dollars {
