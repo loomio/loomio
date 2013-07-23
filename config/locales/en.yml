@@ -721,6 +721,7 @@ en:
   # COMMON WORDS
   #
 
+  about_loomio: "About Loomio"
   ago: "%{quantity_of_time} ago"
   approve: "Approve"
   author: "Author"
@@ -761,7 +762,7 @@ en:
   photo:
   proposal: "Proposal"
   prev: "Prev"
-  translate: "help translate Loomio!"
+  translate: "Help translate Loomio!"
   options: "Options"
   other: "Other"
   ok_got_it: "Okay, got it!"
