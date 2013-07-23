@@ -61,7 +61,7 @@ body.discussions.show {
   #discussion-content-container {
     background-color: white;
     border-top: 1px solid $lighter-grey;
-    border-bottom: 1px solid $light-grey;
+    border-bottom: 1px solid $lighter-grey;
     padding-bottom: 20px;
     margin-bottom: 5px;
     #previous-proposals .selector-list { border-top: 1px solid $lighter-grey; }
@@ -135,6 +135,7 @@ body.discussions.show {
         font-size: $font-smaller;
         max-width: 190px;
         .last-edited-by, .started-by { margin-bottom: 10px; }
+        .user-name { white-space: nowrap; }
       }
       #discussion-markdown-dropdown {
         margin-right: 8px;
@@ -242,6 +243,7 @@ body.discussions.show {
       .activity-item-header{
         blockquote p {
           font-size: inherit;
+          font-weight: inherit;
         }
         blockquote, pre {
           &:first-child {
