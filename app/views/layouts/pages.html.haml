@@ -24,12 +24,14 @@
             %h2 collaborative decision-making
         .frontpage-nav
           =link_to('Purpose', '/about#purpose')
-          %span{style: 'padding-left: 3px; padding-right: 3px'}
-            &middot;
+          %span &middot;
 
           =link_to('How it works', '/about#how-it-works')
-          %span{style: 'padding-left: 3px; padding-right: 3px'}
-            &middot;
+          %span &middot;
+
+          =link_to('Pricing', '/pricing')
+          %span &middot;
+
           =link_to('About us', '/about#about-us')
     = yield
   = javascript_include_tag "frontpage"
