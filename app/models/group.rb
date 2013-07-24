@@ -274,6 +274,10 @@ class Group < ActiveRecord::Base
     true
   end
 
+  def subscription_plan
+    30
+  end
+
 # *****
 
 

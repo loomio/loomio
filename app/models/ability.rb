@@ -14,7 +14,8 @@ class Ability
     can :show, Group, :viewable_by => :members, :id => user.group_ids
     can :show, Group, :viewable_by => :parent_group_members,
                       :parent_id => user.group_ids
-    can [:update, :email_members, :edit_privacy, :hide_next_steps, :view_payment_details], Group, :id => user.adminable_group_ids
+    can [:update, :email_members, :edit_privacy, :hide_next_steps], Group, :id => user.adminable_group_ids
+    can [:view_payment_details, :choose_subscription_plan], Group, :id => user.adminable_group_ids, paying_subscription: true
     can :edit_description, Group, :id => user.group_ids
     can [:add_subgroup, :get_members], Group, :id => user.group_ids
     can [:add_members, :manage_membership_requests], Group, :members_invitable_by => :members,

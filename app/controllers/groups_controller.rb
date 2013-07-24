@@ -106,6 +106,11 @@ class GroupsController < GroupBaseController
 
   def view_payment_details
     @group = GroupDecorator.new Group.find(params[:id])
+    redirect_to choose_subscription_plan_group_path unless @group.has_subscription_plan?
+  end
+
+  def choose_subscription_plan
+    @group = GroupDecorator.new Group.find(params[:id])
   end
 
   private

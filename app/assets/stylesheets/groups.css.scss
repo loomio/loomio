@@ -3,7 +3,7 @@
 @import "mixins";
 
 body.groups {
-  &.view_payment_details {
+  &.choose_subscription_plan, &.view_payment_details {
     color: #000;
     h1 { margin: 6px 0 22px 0; }
     p {
@@ -11,6 +11,40 @@ body.groups {
       font-weight: 300;
       line-height: 24px;
     }
+  }
+  &.view_payment_details {
+    .info-box {
+      @include border-radius(4px);
+      background-color: #DEF1DE;
+      color: #555555;
+      margin-top: 30px;
+      padding: 4px 10px;
+      width: 224px;
+      h3 {
+        color: #000;
+        font-weight: 400;
+      }
+      ul {
+        list-style: disc;
+        margin-left: 20px;
+      }
+    }
+    table {
+      margin-bottom: 14px;
+      width: 100%;
+      tr {
+        border-bottom: 1px solid #dadada;
+        height: 30px;
+        td {
+          font-size: 1.2em;
+          font-weight: 300;
+          &:last-child { text-align: right; }
+          span { font-size: .8em; }
+        }
+      }
+    }
+  }
+  &.choose_subscription_plan {
     #footer {
       font-size: 1.2em;
       font-weight: 700;

@@ -84,4 +84,17 @@ module GroupsHelper
     new_params = old_params.merge(params)
     icon_button(new_params)
   end
+
+  def get_subscription_plan(plan)
+    case plan
+    when 30
+      "Up to 10 people (US$30/month)"
+    when 50
+      "Up to 25 people (US$50/month)"
+    when 100
+      "Up to 50 people (US$100/month)"
+    when 200
+      "Up to 100 people (US$200/month)"
+    end
+  end
 end

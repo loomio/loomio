@@ -32,6 +32,7 @@ describe "User abilities" do
     it { should_not be_able_to(:email_members, group) }
     it { should be_able_to(:add_subgroup, group) }
     it { should_not be_able_to(:view_payment_details, group) }
+    it { should_not be_able_to(:choose_subscription_plan, group) }
     it { should be_able_to(:new_proposal, discussion) }
     it { should be_able_to(:add_comment, discussion) }
     it { should be_able_to(:update_description, discussion) }
@@ -130,6 +131,7 @@ describe "User abilities" do
     it { should be_able_to(:email_members, group) }
     it { should be_able_to(:hide_next_steps, group) }
     it { should be_able_to(:view_payment_details, group) }
+    it { should be_able_to(:choose_subscription_plan, group) }
     it { should be_able_to(:destroy, discussion) }
     it { should be_able_to(:move, discussion) }
     it { should be_able_to(:make_admin, @other_user_membership) }
@@ -174,6 +176,7 @@ describe "User abilities" do
 
       it { should be_able_to(:show, group) }
       it { should_not be_able_to(:view_payment_details, group) }
+      it { should_not be_able_to(:choose_subscription_plan, group) }
       it { should be_able_to(:create, my_membership_request) }
       it { should be_able_to(:cancel, my_membership_request) }
       it { should_not be_able_to(:cancel, other_membership_request) }
