@@ -5,4 +5,5 @@
   =f.input :password_confirmation
   =f.input :language_preference, :collection => Translation::LANGUAGES,
            selected: I18n.locale, include_blank: false
-  =f.submit t("devise.registrations.sign_up"), class: "btn btn-info btn-large"
+  =f.submit t(:"devise.registrations.sign_up"), class: "btn btn-info btn-large"
+  .terms-of-service-text=t(:terms_of_service_html, button_text: t(:"devise.registrations.sign_up"), link_path: terms_of_service_path)
