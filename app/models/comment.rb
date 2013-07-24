@@ -132,6 +132,7 @@ class Comment < ActiveRecord::Base
     end
 
     def update_discussion_last_comment_at
+      return if discussion.nil?
       discussion.last_comment_at = discussion.latest_comment_time
       discussion.save
     end

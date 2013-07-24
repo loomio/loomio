@@ -20,16 +20,14 @@ class Motion < ActiveRecord::Base
 
   delegate :email, :to => :author, :prefix => :author
   delegate :name, :to => :author, :prefix => :author
-  delegate :group, :group_id, :to => :discussion
+  delegate :group, :group_id, :to => :discussion, counter_cache: true
   delegate :users, :full_name, :to => :group, :prefix => :group
   delegate :email_new_motion?, to: :group, prefix: :group
 
   before_validation :set_closing_at
   before_save :format_discussion_url
-  after_save :update_counter_cache
   after_create :initialize_discussion
   after_create :fire_new_motion_event
-  after_destroy :update_counter_cache
 
   attr_accessor :create_discussion
 
@@ -270,9 +268,5 @@ class Motion < ActiveRecord::Base
       unless self.discussion_url.match(/^http/) || self.discussion_url.empty?
         self.discussion_url = "http://" + self.discussion_url
       end
-    end
-
-    def update_counter_cache
-      group.update_attribute(:motions_count, group.motions.count)
     end
 end
