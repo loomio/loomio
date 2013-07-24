@@ -309,10 +309,15 @@ describe Discussion do
   end
 
   describe "#delayed_destroy" do
-    it 'sets deleted_at before calling destroy' do
+    it 'sets deleted_at before calling destroy and then destroys everything', :focus do
       @discussion = create(:discussion)
+      @motion = create(:motion, discussion: @discussion)
+      @vote = create(:vote, motion: @motion)
       @discussion.should_receive(:is_deleted=).with(true)
       @discussion.delayed_destroy
+      Discussion.find_by_id(@discussion.id).should be_nil
+      Motion.find_by_id(@motion.id).should be_nil
+      Vote.find_by_id(@vote.id).should be_nil
     end
   end
 end
