@@ -55,10 +55,6 @@ describe 'ManageMembershipRequests' do
       it 'adds the user to the group' do
         group.should_receive(:add_member!).with(requestor)
       end
-
-      it 'creates a membership request approved notification' do
-        Events::UserAddedToGroup.should_receive(:publish!).with('new_membership')
-      end
     end
   end
 

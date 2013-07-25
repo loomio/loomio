@@ -9,8 +9,7 @@ describe "Discussion" do
 
   context "a logged in user" do
     before do
-      @group = build(:group)
-      @group.save
+      @group = create(:group)
       @group.add_member!(user)
     end
 

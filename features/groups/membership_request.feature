@@ -146,6 +146,7 @@ Feature: Individual requests group membership
     Then I should see a flash message confirming the membership request was approved
     And I should no longer see the membership request in the list
     And the requester should be added to the group
+    And the requester should be emailed of the approval
 
   Scenario: An unauthorized member cannot visit the membership requests page of the group
     Given I am logged in

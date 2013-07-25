@@ -13,6 +13,7 @@ class Events::UserAddedToGroup < Event
 
   def notify_users!
     notify!(membership.user)
+    UserMailer.delay.group_membership_approved(membership.user, membership.group)
   end
 
   handle_asynchronously :notify_users!
