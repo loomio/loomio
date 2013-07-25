@@ -136,18 +136,18 @@ Then /^I should see the group's discussions$/ do
 end
 
 Then /^I should not see the group's discussions$/ do
-  page.should_not have_content(@discussion.title)
-  page.should_not have_content(@discussion_with_decision.title)
+  page.should_not have_content(@discussion.title[0, 50])
+  page.should_not have_content(@discussion_with_decision.title[0, 50])
 end
 
 Then /^I should see the sub\-group's discussions$/ do
-  page.should have_content(@sub_group_discussion.title)
-  page.should have_content(@sub_group_discussion_with_decision.title)
+  page.should have_content(@sub_group_discussion.title[0, 50])
+  page.should have_content(@sub_group_discussion_with_decision.title[0, 50])
 end
 
 Then /^I should not see the sub\-group's discussions$/ do
-  page.should_not have_content(@sub_group_discussion.title)
-  page.should_not have_content(@sub_group_discussion_with_decision.title)
+  page.should_not have_content(@sub_group_discussion.title[0, 50])
+  page.should_not have_content(@sub_group_discussion_with_decision.title[0, 50])
 end
 
 Then /^we should make this test work$/ do

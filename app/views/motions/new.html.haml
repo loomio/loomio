@@ -1,5 +1,5 @@
 - set_title @group.name, t(:new_proposal)
-#new-motion
-  = render '/groups/title', group: @group
-  = render 'motions/form', form_args: [@motion, {url: motions_path(group_id: @motion.group)}],
-    submit_text: "Create proposal", :data => { :disable_with => "Creating proposal" }
+= render '/groups/title', group: @group
+
+%h2= t "motion_form.header_new"
+= render 'motions/form', submit_btn_text: t('motion_form.submit_create'), disable_btn_text: t('motion_form.submit_create')

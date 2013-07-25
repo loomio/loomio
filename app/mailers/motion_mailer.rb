@@ -12,6 +12,16 @@ class MotionMailer < BaseMailer
     end
   end
 
+  def motion_edited(motion, email, editor)
+    @editor = editor
+    @motion = motion
+    @group = motion.group
+    set_email_locale(User.find_by_email(email).language_preference, editor.language_preference)
+    @rendered_motion_description = render_rich_text(motion.description, false) #should replace false with motion.uses_markdown in future
+    mail  to: email,
+          subject: "#{email_subject_prefix(@group.full_name)} " + t("email.proposal_edited.subject", which: @motion.name)
+  end
+
   def motion_closed(motion, email)
     @motion = motion
     @group = motion.group

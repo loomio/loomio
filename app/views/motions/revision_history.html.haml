@@ -1,0 +1,12 @@
+- set_title @group.name, t(:edit_proposal)
+= render '/groups/title', group: @group
+
+%h1= t(:revision_history)
+
+%ul#revision-history-list
+  = render 'revision', revision: @motion, version: nil
+  - @motion.versions.reverse.each do |version|
+    - unless version == @motion.versions.first
+      = render 'revision', revision: version.reify, version: version
+
+= link_to 'Back to discussion', discussion_path(@motion.discussion), class: 'btn btn-info btn-large'

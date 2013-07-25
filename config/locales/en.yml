@@ -40,6 +40,7 @@ en:
     group_request_invalid_token: "Sorry! This is an invalid token"
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
+    motion_closing_inputs: "Please enter a valid future date in the format 'dd-mm-yyyy"
     proposal_already_exists: "There is already an open proposal in this discussion."
     user_with_email_address_already_in_group: "A user with that email address already belongs to this group."
     you_have_already_requested_membership: "You have already requested membership to this group."
@@ -127,6 +128,7 @@ en:
     header: "Notifications"
     new_discussion: "started a new discussion"
     new_motion: "created a new proposal"
+    motion_edited: "edited the proposal"
     motion_closed:
       by_user: "closed the proposal"
       by_expiry: "Proposal has closed"
@@ -254,7 +256,7 @@ en:
     motion_closed:
       by_user: "closed the proposal"
       by_expiry: "Proposal closed"
-    motion_close_date_edited: "changed the closing date for the proposal"
+    motion_edited: "edited the proposal"
     discussion_title_edited: "changed the discussion title"
     discussion_description_edited: "changed the discussion description"
 
@@ -302,15 +304,21 @@ en:
 
   new_proposal: "New Proposal"
 
-  close_proposal: "Close proposal"
+  close_proposal: "Close"
   confirm_close_proposal: "Are you sure you want to close this proposal?"
-  change_proposal_close_date: "Change close date"
+  edit_proposal: "Edit"
+  current_version: "Current version"
+  revision_history: "See revision history"
+  revision_edit_info: "Edited %{version_created_at} ago, by"
+  notify_unvoted_members: "Notify people of this change"
+  edit_message: "Please explain the changes you have made, this will be included in the email to the members that have already stated their position on this proposal."
   change_proposal_close_date_header: "Change the close date for the proposal '%{which}'"
   proposal: Proposal
-  proposal_close_date_error: "Please give a future close date"
   proposal_closing_when: "Closing in %{when}"
   proposal_closed_when: "Closed %{when} ago"
   proposed_when_by_who: "Proposed by %{who} %{when} ago"
+  proposal_edit_button_title: "Modify details or change closing date."
+  proposal_edit_message: "Description of change: "
   engagement_on_open_proposal: "%{percent}% of members have stated their position (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}% of members stated their position (%{numerator}/%{denominator})"
 
@@ -570,8 +578,11 @@ en:
     context: "Context"
 
   motion_form:
-    header: "New proposal"
+    header_new: "New proposal"
+    header_edit: "Edit proposal"
     name_helper: "Make the title as clear and succinct as possible."
+    submit_create: "Create proposal"
+    submit_update: "Update proposal"
 
   group_form:
     privacy_settings: "Privacy settings"
@@ -700,6 +711,10 @@ en:
       intro: "You were mentioned in a discussion titled:"
       said: "%{comment_author} said:"
       subject: "%{who} mentioned you in the %{which} group on Loomio"
+    proposal_edited:
+      intro: '%{who} has edited the proposal "%{proposal_name}".'
+      change: "Discription of change: %{edit_message}"
+      subject: "Proposal edited - %{which}"
     proposal_closed:
       intro: 'Your proposal "%{proposal_name}" has closed.'
       specify_outcome: "Please click here to specify an outcome"

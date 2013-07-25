@@ -140,7 +140,6 @@ ActiveRecord::Schema.define(:version => 20130629092802) do
     t.boolean  "following",                 :default => true, :null => false
   end
 
-  add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
   add_index "discussion_read_logs", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
   add_index "discussion_read_logs", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
@@ -336,6 +335,7 @@ ActiveRecord::Schema.define(:version => 20130629092802) do
     t.integer  "no_votes_count",      :default => 0,    :null => false
     t.integer  "abstain_votes_count", :default => 0,    :null => false
     t.integer  "block_votes_count",   :default => 0,    :null => false
+    t.text     "edit_message"
     t.datetime "closing_at"
   end
 
