@@ -22,7 +22,7 @@ class Ability
     can [:add_members, :manage_membership_requests], Group, :members_invitable_by => :admins,
                              :id => user.adminable_group_ids
     can :archive, Group, :id => user.adminable_group_ids
-    can [:create, :request_membership], Group
+    can :create, Group, parent_id: user.group_ids
 
     #
     # MEMBERSHIPS
