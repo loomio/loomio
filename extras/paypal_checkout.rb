@@ -8,6 +8,10 @@ class PaypalCheckout
 
   attr_reader :response, :group
 
+  def self.subscription_text_for(dollars)
+    I18n.t('payment_details.description', people: DOLLARS_TO_PEOPLE[dollars], dollars: dollars)
+  end
+
   def initialize(group: group, dollars: dollars)
     raise StandardError unless DOLLAR_OPTIONS.include?(dollars)
     @dollars = dollars
@@ -35,7 +39,7 @@ class PaypalCheckout
   end
 
   def payment_description
-    I18n.t('payment_details.description', people: DOLLARS_TO_PEOPLE[@dollars], dollars: @dollars)
+    subscription_text_for(@dollars)
   end
 
   def return_url

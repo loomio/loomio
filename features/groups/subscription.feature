@@ -27,7 +27,7 @@ Feature: Coordinator chooses subscription
     Then I should not see a link to payment details
 
     When I visit the payment details page
-    Then I should be redirected to the group page
+    Then I should be redirected to the dashboard
 
   Scenario: Coordinator for PWYC group cannot see payment details
     Given I am a coordinator of a PWYC group
@@ -35,4 +35,4 @@ Feature: Coordinator chooses subscription
     Then I should not see a link to payment details
 
     When I visit the payment details page
-    Then I should be redirected to the group page
+    Then I should be redirected to the dashboard

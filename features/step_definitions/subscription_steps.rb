@@ -21,11 +21,11 @@ Given(/^I have already selected a subscription plan$/) do
 end
 
 Then(/^I should see the payment details for my group$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_css('body.groups.view_payment_details')
 end
 
 Then(/^I should be told that I can email to change my plan$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_link("accounts@loomio.org")
 end
 
 Given(/^I am a member of a subscription group$/) do
@@ -38,7 +38,7 @@ Then(/^I should not see a link to payment details$/) do
 end
 
 When(/^I visit the payment details page$/) do
-  pending # express the regexp above with the code you wish you had
+  visit view_payment_details_group_path(@group)
 end
 
 Given(/^I am a coordinator of a PWYC group$/) do
