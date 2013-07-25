@@ -1,0 +1,28 @@
+.row
+  .span9
+    - set_title @group.name, "", @group.parent
+    = render '/groups/title', group: @group
+    %h1= t("payment_details.details")
+    %p= t("payment_details.current_plan_html", subscription_plan: get_subscription_plan(@group.subscription_plan))
+    %p= t("payment_details.people_in_group", people_in_group: @group.members.count)
+    %p= t("payment_details.payment_plan_contact_html")
+.row
+  .span4
+    .info-box#organisation
+      %table
+        %h3= t("payment_details.subscription.table.title_html")
+        %tr
+          %td= t("payment_details.subscription.table.quantity1")
+          %td= t("payment_details.subscription.table.price1_html")
+        %tr
+          %td= t("payment_details.subscription.table.quantity2")
+          %td= t("payment_details.subscription.table.price2_html")
+        %tr
+          %td= t("payment_details.subscription.table.quantity3")
+          %td= t("payment_details.subscription.table.price3_html")
+        %tr
+          %td= t("payment_details.subscription.table.quantity4")
+          %td= t("payment_details.subscription.table.price4_html")
+        %tr
+          %td= t("payment_details.subscription.table.quantity5")
+          %td= t("payment_details.subscription.table.price5_html")

@@ -266,6 +266,21 @@ class Group < ActiveRecord::Base
     self.full_name = calculate_full_name
   end
 
+# *****
+# To be moved to subscription model
+# *****
+
+  def has_subscription_plan?
+    true
+  end
+
+  def subscription_plan
+    30
+  end
+
+# *****
+
+
   private
 
   def calculate_full_name

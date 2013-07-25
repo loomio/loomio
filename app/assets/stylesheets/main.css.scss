@@ -80,6 +80,34 @@ ul, ol, li {
   text-align: left;
 }
 
+.box-lt-blue { background-color: #E7F5F8; }
+.box-lime { background-color: #E9F1D9; }
+.box-yellow { background-color: #FCF7D7; }
+.box-orange { background-color: #FEEED5; }
+.btn-lt-blue {
+  background-image: linear-gradient(to bottom, #5BC0DE, #2F96B4);
+  background-image: -moz-linear-gradient(top, #5BC0DE, #2F96B4);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5BC0DE), to(#2F96B4));
+  &:hover { background-color: #2F96B4; }
+}
+.btn-lime {
+  background-image: linear-gradient(to bottom, #62C462, #51A351);
+  background-image: -moz-linear-gradient(top, #62C462, #51A351);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62C462), to(#51A351));
+  &:hover { background-color: #51A351; }
+}
+.btn-yellow {
+  background-image: linear-gradient(to bottom, #EEEE02, #DFD601);
+  background-image: -moz-linear-gradient(top, #EEEE02, #DFD601);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#EEEE02), to(#DFD601));
+  &:hover { background-color: #DFD601 }
+}
+.btn-orange {
+  background-image: linear-gradient(to bottom, #FBB450, #f89406);
+  background-image: -moz-linear-gradient(top, #FBB450, #f89406);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FBB450), to(#f89406));
+  &:hover { background-color: #F89406; }
+}
 .btn-grey { color: $mid-grey; }
 
 .cf {
