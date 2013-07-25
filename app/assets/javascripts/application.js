@@ -15,6 +15,7 @@
 //= require lib/jquery.placeholder
 //= require lib/moment.min
 //= require lib/jquery.sparkline.min
+//= require lib/jquery.html5-placeholder-shim
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require underscore
