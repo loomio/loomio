@@ -16,7 +16,6 @@ Loomio::Application.routes.draw do
   match '/inbox/mark_all_as_read', to: 'inbox#mark_all_as_read', as: :mark_all_as_read_inbox
   match '/inbox/unfollow', to: 'inbox#unfollow', as: :unfollow_inbox
 
-
   resources :invitations, only: [:show]
 
   resources :group_requests, only: [:create, :new] do
@@ -33,6 +32,12 @@ Loomio::Application.routes.draw do
       member do
        post :make_admin
        post :remove_admin
+      end
+    end
+    resources :subscriptions, only: [:new], controller: 'groups/subscriptions' do
+      collection do
+        get :checkout
+        get :confirm
       end
     end
 
