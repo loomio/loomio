@@ -1,0 +1,3 @@
+$ ->
+  # Placeholder shim
+  $.placeholder.shim();
