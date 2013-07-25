@@ -1,5 +1,6 @@
 class Groups::SubscriptionsController < GroupBaseController
   before_filter :load_group
+  before_filter :redirect_to_group_if_pwyc
   # TODO: Would be great if we can load_and_authorize_resource
 
   def new
@@ -25,5 +26,15 @@ class Groups::SubscriptionsController < GroupBaseController
     authorize! :view_payment_details, @group
     @group = GroupDecorator.new @group
     redirect_to new_group_subscription_url unless @group.has_subscription_plan?
+  end
+
+  private
+
+  def redirect_to_group_if_pwyc
+    redirect_to group unless group.paying_subscription?
+  end
+
+  def group
+    load_group
   end
 end

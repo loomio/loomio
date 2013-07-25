@@ -16,7 +16,7 @@ class Ability
                       :parent_id => user.group_ids
     can [:update, :email_members, :edit_privacy, :hide_next_steps], Group, :id => user.adminable_group_ids
     # TODO: Refactor below to use subscription resource
-    can [:view_payment_details, :choose_subscription_plan], Group, :id => user.adminable_group_ids, paying_subscription: true
+    can [:view_payment_details, :choose_subscription_plan], Group, :id => user.adminable_group_ids
 
     can :edit_description, Group, :id => user.group_ids
     can [:add_subgroup, :get_members], Group, :id => user.group_ids

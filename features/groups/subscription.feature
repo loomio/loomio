@@ -35,4 +35,4 @@ Feature: Coordinator chooses subscription
     Then I should not see a link to payment details
 
     When I visit the payment details page
-    Then I should be redirected to the dashboard
+    Then I should be redirected to the group page
