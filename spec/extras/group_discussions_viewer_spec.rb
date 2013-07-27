@@ -3,12 +3,10 @@ require 'spec_helper'
 describe GroupDiscussionsViewer do
 
   let(:user) { create :user }
-  let(:non_member) { create :user }
-  let(:member) { create :user }
-  let(:subgroup_member) { create :user }
 
   let(:public_group) { create :group, viewable_by: 'everyone' }
   let(:public_subgroup_of_public_group) { create :group, parent: public_group, viewable_by: 'everyone' }
+
   let(:parent_members_subgroup_of_public_group) {create :group, viewable_by: 'parent_group_members', parent: public_group }
   let(:members_only_subgroup_of_public_group) {create :group, parent: public_group, viewable_by: 'members' }
 
@@ -17,97 +15,91 @@ describe GroupDiscussionsViewer do
   let(:parent_members_subgroup_of_members_only_group) {create :group, viewable_by: 'parent_group_members', parent: members_only_group }
   let(:members_only_subgroup_of_members_only_group) { create :group, viewable_by: 'members', parent: members_only_group }
 
+  def groups_displayed(user: user, group: group)
+    GroupDiscussionsViewer.groups_displayed(user: user, group: group)
+  end
+
+
   before :all do
-    non_member
-    public_group.add_member! member
-    public_group.add_member! subgroup_member
-    members_only_group.add_member! member
-    members_only_group.add_member! subgroup_member
+    user
+  end
+  describe 'groups_displayed when viewing public group' do
+    before :all do
+      public_group
+      public_subgroup_of_public_group
+      parent_members_subgroup_of_public_group
+      members_only_subgroup_of_public_group
+    end
 
-    public_subgroup_of_public_group.add_member! subgroup_member
-    parent_members_subgroup_of_public_group.add_member! subgroup_member
-    members_only_subgroup_of_public_group.add_member! subgroup_member
+    subject { groups_displayed(user: user, group: public_group) }
 
-    public_subgroup_of_members_only_group.add_member! subgroup_member
-    parent_members_subgroup_of_members_only_group.add_member! subgroup_member
-    members_only_subgroup_of_members_only_group.add_member! subgroup_member
+    context 'as guest' do
+      it {should include public_group, 
+                         public_subgroup_of_public_group}
+      its(:size){should == 2}
+    end
+
+    context 'as member of top only' do
+      before { public_group.add_member!(user) }
+
+      it {should include public_group, 
+                         parent_members_subgroup_of_public_group}
+
+      # we dont show public subgroups if you belong to the public group
+      it {should_not include public_subgroup_of_public_group}
+
+      its(:size){should == 2}
+    end
+
+    context 'as member of top and subgroup' do
+      before do
+        public_group.add_member!(user)
+        members_only_subgroup_of_public_group.add_member!(user)
+      end
+
+      it {should include public_group, 
+                         members_only_subgroup_of_public_group,
+                         parent_members_subgroup_of_public_group}
+      its(:size){should == 3}
+    end
   end
 
-  describe ".groups_shown_when_viewing_group(user: non_member, group: public_group)" do
-    subject {GroupDiscussionsViewer.groups_shown_when_viewing_group(group: public_group, user: non_member)}
-    it {should include public_group}
-    it {should include public_subgroup_of_public_group}
-    its(:size){should == 2}
-  end
+  describe 'groups_displayed when viewing members only group' do
+    before :all do
+      members_only_group
+      public_subgroup_of_members_only_group
+      parent_members_subgroup_of_members_only_group
+      members_only_subgroup_of_members_only_group
+    end
 
-  describe ".groups_shown_when_viewing_group(user: non_member, group: members_only_group)" do
-    subject {GroupDiscussionsViewer.groups_shown_when_viewing_group(user: non_member, group: members_only_group)}
-    its(:size){should == 0}
-  end
+    subject { groups_displayed(user: user, 
+                               group: members_only_group) }
 
-  context ".groups_shown_when_viewing_group(user: member, group: public_group)" do
-    subject {GroupDiscussionsViewer.groups_shown_when_viewing_group(user: member, group: public_group)}
-    it {should include public_group}
-    its(:size){should == 1}
-  end
+    context 'as guest' do
+      its(:size){ should == 0 }
+    end
 
-  context ".groups_shown_when_viewing_group(user: member, group: members_only_group)" do
-    subject {GroupDiscussionsViewer.groups_shown_when_viewing_group(user: member, group: members_only_group)}
-    it {should include members_only_group}
-    its(:size){should == 1}
-  end
+    context 'as member of top only' do
+      before do
+        members_only_group.add_member!(user)
+      end
 
-  context ".groups_shown_when_viewing_group(user: subgroup_member, group: public_group)" do
-    subject {GroupDiscussionsViewer.groups_shown_when_viewing_group(user: subgroup_member, group: public_group)}
-    it {should include public_group}
-    it {should include public_subgroup_of_public_group}
-    it {should include parent_members_subgroup_of_public_group}
-    it {should include members_only_subgroup_of_public_group}
-    its(:size){should == 4}
-  end
+      it {should include members_only_group,
+                         parent_members_subgroup_of_members_only_group }
+      its(:size) { should == 2 }
+      # mabye include public subgroup?
+    end
 
-  context ".groups_shown_when_viewing_group(user: subgroup_member, group: members_only_group)" do
-    subject {GroupDiscussionsViewer.groups_shown_when_viewing_group(user: subgroup_member, group: members_only_group)}
-    it {should include members_only_group}
-    it {should include public_subgroup_of_members_only_group}
-    it {should include parent_members_subgroup_of_members_only_group}
-    it {should include members_only_subgroup_of_members_only_group}
-    its(:size){should == 4}
-  end
+    context 'as member of top and subgroup' do
+      before do
+        members_only_group.add_member!(user)
+        members_only_subgroup_of_members_only_group.add_member!(user)
+      end
 
-  context ".groups_shown_when_viewing_group(user: subgroup_member, group: public_subgroup_of_public_group)" do
-    subject {GroupDiscussionsViewer.groups_shown_when_viewing_group(user: subgroup_member, group: public_subgroup_of_public_group)}
-    it {should include public_subgroup_of_public_group}
-    its(:size){should == 1}
-  end
-
-  context ".groups_shown_when_viewing_group(user: subgroup_member, group: parent_members_subgroup_of_public_group)" do
-    subject {GroupDiscussionsViewer.groups_shown_when_viewing_group(user: subgroup_member, group: parent_members_subgroup_of_public_group)}
-    it {should include parent_members_subgroup_of_public_group}
-    its(:size){should == 1}
-  end
-
-  context ".groups_shown_when_viewing_group(user: subgroup_member, group: members_only_subgroup_of_public_group)" do
-    subject {GroupDiscussionsViewer.groups_shown_when_viewing_group(user: subgroup_member, group: members_only_subgroup_of_public_group)}
-    it {should include members_only_subgroup_of_public_group}
-    its(:size){should == 1}
-  end
-
-  context ".groups_shown_when_viewing_group(user: subgroup_member, group: public_subgroup_of_members_only_group)" do
-    subject {GroupDiscussionsViewer.groups_shown_when_viewing_group(user: subgroup_member, group: public_subgroup_of_members_only_group)}
-    it {should include public_subgroup_of_members_only_group}
-    its(:size){should == 1}
-  end
-
-  context ".groups_shown_when_viewing_group(user: subgroup_member, group: parent_members_subgroup_of_members_only_group)" do
-    subject {GroupDiscussionsViewer.groups_shown_when_viewing_group(user: subgroup_member, group: parent_members_subgroup_of_members_only_group)}
-    it {should include parent_members_subgroup_of_members_only_group}
-    its(:size){should == 1}
-  end
-
-  context ".groups_shown_when_viewing_group(user: subgroup_member, group: members_only_subgroup_of_members_only_group)" do
-    subject {GroupDiscussionsViewer.groups_shown_when_viewing_group(user: subgroup_member, group: members_only_subgroup_of_members_only_group)}
-    it {should include members_only_subgroup_of_members_only_group}
-    its(:size){should == 1}
+      it { should include members_only_group, 
+                          members_only_subgroup_of_members_only_group, 
+                          parent_members_subgroup_of_members_only_group }
+      its(:size) { should == 3 }
+    end
   end
 end
