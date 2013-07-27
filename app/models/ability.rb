@@ -7,9 +7,10 @@ class Ability
     cannot :sign_up, User
 
     # GROUPS
-    can :show, Group, :viewable_by => 'everyone'
-    can :show, Group, :viewable_by => 'members', :id => user.group_ids
-    can :show, Group, :viewable_by => 'parent_group_members', :parent_id => user.group_ids
+    can :show, Group, :viewable_by => 'everyone', :archived_at => nil
+    can :show, Group, :viewable_by => 'members', :id => user.group_ids, :archived_at => nil
+    can :show, Group, :viewable_by => 'parent_group_members', :parent_id => user.group_ids, :archived_at => nil
+
     can [:update, :email_members, :edit_privacy, :hide_next_steps], Group, :id => user.adminable_group_ids
     can :edit_description, Group, :id => user.group_ids
     can [:add_subgroup, :get_members], Group, :id => user.group_ids
@@ -49,10 +50,10 @@ class Ability
       group_id: user.adminable_group_ids, group: {members_invitable_by: 'admins'}
 
     # DISCUSSIONS / COMMENTS
-    can :show, Discussion, group: {viewable_by: 'everyone'}
-    can :show, Discussion, group: {viewable_by: 'members'}, group_id: user.group_ids
-    can :show, Discussion, group: {viewable_by: 'parent_group_members'}, group: {parent_id: user.group_ids}
-    can :show, Discussion, group: {viewable_by: 'parent_group_members'}, group_id: user.group_ids
+    can :show, Discussion, group: {viewable_by: 'everyone', archived_at: nil}
+    can :show, Discussion, group: {viewable_by: 'members', archived_at: nil}, group_id: user.group_ids
+    can :show, Discussion, group: {viewable_by: 'parent_group_members', archived_at: nil}, group: {parent_id: user.group_ids}
+    can :show, Discussion, group: {viewable_by: 'parent_group_members', archived_at: nil}, group_id: user.group_ids
 
     can :destroy, Discussion, group_id: user.adminable_group_ids
     can :move, Discussion, group_id: user.adminable_group_ids

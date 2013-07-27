@@ -19,10 +19,10 @@ describe GroupDiscussionsViewer do
     GroupDiscussionsViewer.groups_displayed(user: user, group: group)
   end
 
-
   before :all do
     user
   end
+
   describe 'groups_displayed when viewing public group' do
     before :all do
       public_group

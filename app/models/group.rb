@@ -90,6 +90,10 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def viewable_by?(user)
+    user.can?(:show, self)
+  end
+
   def members_can_invite?
     members_invitable_by == 'members'
   end
