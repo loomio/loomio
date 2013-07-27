@@ -89,5 +89,30 @@ describe GroupDiscussionsViewer do
                           members_only_subgroup_of_members_only_group }
       its(:size) { should == 2 }
     end
+
+    context 'as member of top and parent_members subgroup' do
+      before do
+        members_only_group.add_member!(user)
+        parent_members_subgroup_of_members_only_group.add_member!(user)
+      end
+
+      it { should include members_only_group, 
+                          parent_members_subgroup_of_members_only_group }
+      its(:size) { should == 2 }
+    end
+  end
+
+  describe 'viewing parent_members subgroup' do
+    before do
+      members_only_group
+      parent_members_subgroup_of_members_only_group
+      members_only_group.add_member!(user)
+      parent_members_subgroup_of_members_only_group.add_member!(user)
+    end
+
+    subject { groups_displayed(user: user, 
+                               group: parent_members_subgroup_of_members_only_group) }
+
+    it {should == [parent_members_subgroup_of_members_only_group] }
   end
 end
