@@ -19,12 +19,8 @@ describe GroupDiscussionsViewer do
     GroupDiscussionsViewer.groups_displayed(user: user, group: group)
   end
 
-  before :all do
-    user
-  end
-
   describe 'groups_displayed when viewing public group' do
-    before :all do
+    before do
       public_group
       public_subgroup_of_public_group
       parent_members_subgroup_of_public_group
@@ -46,12 +42,7 @@ describe GroupDiscussionsViewer do
       # once you are a member of a group we dont show public subgroups 
       # unless you belong to them
 
-      it {should include public_group}
-
-      it {should_not include public_subgroup_of_public_group,
-                             parent_members_subgroup_of_public_group}
-
-      its(:size){should == 1}
+      it {should == [public_group]}
     end
 
     context 'as member of top and subgroup' do
@@ -68,7 +59,7 @@ describe GroupDiscussionsViewer do
   end
 
   describe 'groups_displayed when viewing members only group' do
-    before :all do
+    before do
       members_only_group
       public_subgroup_of_members_only_group
       parent_members_subgroup_of_members_only_group
@@ -82,13 +73,10 @@ describe GroupDiscussionsViewer do
       its(:size){ should == 0 }
     end
 
-    context 'as member of top only' do
-      before do
-        members_only_group.add_member!(user)
-      end
+    context 'as member of top only', focus: true do
+      before { members_only_group.add_member!(user) }
 
-      it {should include members_only_group }
-      its(:size) { should == 1 }
+      it { should == [members_only_group] }
     end
 
     context 'as member of top and subgroup' do

@@ -5,8 +5,19 @@ class GroupDiscussionsViewer
   end
 
   def self.groups_displayed(group: nil, user: nil)
-    groups = group.subgroups.all.select {|g| g.viewable_by? user}
-    groups << group if group.viewable_by?(user)
+    groups = []
+
+    if group.viewable_by?(user)
+      groups << group 
+    
+      if group.members.include?(user)
+        # dont include any subgroups unless the user is a member of them
+        groups += group.subgroups.all.select{|g| g.members.include?(user) }
+      else
+        groups += group.subgroups.all.select{|g| g.viewable_by?(user) }
+      end
+    end
+
     groups
   end
 end
