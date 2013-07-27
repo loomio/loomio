@@ -34,6 +34,7 @@ describe GroupDiscussionsViewer do
     subject { groups_displayed(user: user, group: public_group) }
 
     context 'as guest' do
+      # when guest, we also show public subgroups
       it {should include public_group, 
                          public_subgroup_of_public_group}
       its(:size){should == 2}
@@ -42,13 +43,15 @@ describe GroupDiscussionsViewer do
     context 'as member of top only' do
       before { public_group.add_member!(user) }
 
-      it {should include public_group, 
-                         parent_members_subgroup_of_public_group}
+      # once you are a member of a group we dont show public subgroups 
+      # unless you belong to them
 
-      # we dont show public subgroups if you belong to the public group
-      it {should_not include public_subgroup_of_public_group}
+      it {should include public_group}
 
-      its(:size){should == 2}
+      it {should_not include public_subgroup_of_public_group,
+                             parent_members_subgroup_of_public_group}
+
+      its(:size){should == 1}
     end
 
     context 'as member of top and subgroup' do
@@ -58,9 +61,9 @@ describe GroupDiscussionsViewer do
       end
 
       it {should include public_group, 
-                         members_only_subgroup_of_public_group,
-                         parent_members_subgroup_of_public_group}
-      its(:size){should == 3}
+                         members_only_subgroup_of_public_group }
+
+      its(:size){should == 2}
     end
   end
 
@@ -84,10 +87,8 @@ describe GroupDiscussionsViewer do
         members_only_group.add_member!(user)
       end
 
-      it {should include members_only_group,
-                         parent_members_subgroup_of_members_only_group }
-      its(:size) { should == 2 }
-      # mabye include public subgroup?
+      it {should include members_only_group }
+      its(:size) { should == 1 }
     end
 
     context 'as member of top and subgroup' do
@@ -97,9 +98,8 @@ describe GroupDiscussionsViewer do
       end
 
       it { should include members_only_group, 
-                          members_only_subgroup_of_members_only_group, 
-                          parent_members_subgroup_of_members_only_group }
-      its(:size) { should == 3 }
+                          members_only_subgroup_of_members_only_group }
+      its(:size) { should == 2 }
     end
   end
 end
