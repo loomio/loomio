@@ -38,7 +38,7 @@ class GroupsController < GroupBaseController
 
   def show
     @group = GroupDecorator.new @group
-    @subgroups = @group.subgroups.accessible_by(current_ability, :show)
+    @subgroups = @group.subgroups.all.select{|g| g.viewable_by?(current_user) }
     @discussions = GroupDiscussionsViewer.for(group: @group, user: current_user)
     @discussion = Discussion.new(group_id: @group.id)
     assign_meta_data

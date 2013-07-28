@@ -7,16 +7,43 @@ class Ability
     cannot :sign_up, User
 
     # GROUPS
-    can :show, Group, :viewable_by => 'everyone', :archived_at => nil
-    can :show, Group, :viewable_by => 'members', :id => user.group_ids, :archived_at => nil
-    can :show, Group, :viewable_by => 'parent_group_members', :parent_id => user.group_ids, :archived_at => nil
+    can :show, Group do |group|
+      return false if group.archived?
 
-    can [:update, :email_members, :edit_privacy, :hide_next_steps], Group, :id => user.adminable_group_ids
-    can :edit_description, Group, :id => user.group_ids
-    can [:add_subgroup, :get_members], Group, :id => user.group_ids
-    can [:add_members, :manage_membership_requests], Group, :members_invitable_by => 'members', :id => user.group_ids
-    can [:add_members, :manage_membership_requests], Group, :members_invitable_by => 'admins', :id => user.adminable_group_ids
-    can :archive, Group, :id => user.adminable_group_ids
+      case group.viewable_by
+      when 'everyone'
+        true
+      when 'members'
+        group.members.include?(user)
+      when 'parent_group_members'
+        group.members.include?(user) or group.parent.members.include?(user)
+      end
+    end
+
+    can [:update, 
+         :email_members, 
+         :edit_privacy, 
+         :hide_next_steps,
+         :archive], Group do |group|
+      group.admins.include?(user)
+    end
+
+    can [:add_subgroup,
+         :edit_description,
+         :get_members], Group do |group|
+      group.members.include?(user)
+    end
+
+    can [:add_members, 
+         :manage_membership_requests], Group do |group|
+      case group.members_invitable_by
+      when 'members'
+        group.members.include?(user)
+      when 'admins'
+        group.admins.include?(user)
+      end
+    end
+
     can :request_membership, Group
 
     can :create, Group do |group|

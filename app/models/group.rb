@@ -90,8 +90,12 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def archived?
+    self.archived_at.present?
+  end
+
   def viewable_by?(user)
-    user.can?(:show, self)
+    Ability.new(user).can?(:show, self)
   end
 
   def members_can_invite?
