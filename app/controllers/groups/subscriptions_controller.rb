@@ -6,6 +6,9 @@ class Groups::SubscriptionsController < GroupBaseController
   def new
     authorize! :choose_subscription_plan, @group
     @group = GroupDecorator.new @group
+    if @group.has_subscription_plan?
+      redirect_to view_payment_details_group_subscriptions_url(@group)
+    end
   end
 
   def checkout
@@ -17,24 +20,28 @@ class Groups::SubscriptionsController < GroupBaseController
 
   def confirm
     authorize! :choose_subscription_plan, @group
-    @paypal = PaypalConfirm.new(group: @group, dollars: params['dollars'], token: params['token'])
+    @paypal = PaypalConfirm.new(group: @group,
+                                dollars: params['dollars'],
+                                token: params['token'])
+    puts '<<<<<< get checkout details <<<<<<'
     @paypal.get_checkout_details
+    puts @paypal.response.body
+    puts '<<<<<< create recurring payments profile <<<<<<'
     @paypal.create_recurring_payments_profile
+    puts @paypal.response.body
   end
 
   def view_payment_details
     authorize! :view_payment_details, @group
     @group = GroupDecorator.new @group
-    redirect_to new_group_subscription_url unless @group.has_subscription_plan?
+    unless @group.has_subscription_plan?
+      redirect_to new_group_subscription_url(@group)
+    end
   end
 
   private
 
   def redirect_to_group_if_pwyc
-    redirect_to group unless group.paying_subscription?
-  end
-
-  def group
-    load_group
-  end
+    redirect_to @group unless @group.paying_subscription?
+  end 
 end

@@ -55,8 +55,6 @@ Loomio::Application.routes.draw do
     post :edit_description, on: :member
     post :edit_privacy, on: :member
     delete :leave_group, on: :member
-    get :view_payment_details, on: :member
-    get :choose_subscription_plan, on: :member
   end
 
   get 'groups/:group_id/request_membership',   to: 'groups/membership_requests#new',          as: :new_group_membership_request

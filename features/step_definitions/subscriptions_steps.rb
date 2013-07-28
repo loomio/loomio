@@ -12,16 +12,16 @@ When(/^I select Payment details$/) do
   click_on "Payment details"
 end
 
-Then(/^I should see links to the different plans$/) do
-  page.should have_css('.payment-option-container')
-end
+# Then(/^I should see links to the different plans$/) do
+#   page.should have_css('.payment-option-container')
+# end
 
 Given(/^I have already selected a subscription plan$/) do
   @group.has_subscription_plan?.should be_true
 end
 
 Then(/^I should see the payment details for my group$/) do
-  page.should have_css('body.groups.view_payment_details')
+  page.should have_css('body.subscriptions.view_payment_details')
 end
 
 Then(/^I should be told that I can email to change my plan$/) do
@@ -38,7 +38,7 @@ Then(/^I should not see a link to payment details$/) do
 end
 
 When(/^I visit the payment details page$/) do
-  visit view_payment_details_group_path(@group)
+  visit view_payment_details_group_subscriptions_path(@group)
 end
 
 Given(/^I am a coordinator of a PWYC group$/) do

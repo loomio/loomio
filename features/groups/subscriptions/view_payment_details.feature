@@ -1,17 +1,10 @@
-Feature: Coordinator chooses subscription
+Feature: Coordinator views payment details
   As a group Coordinator
   So I can set up a subscription for my group
   I want to select a plan
 
   Background:
     Given I am logged in
-
-  Scenario: Coordinator chooses a plan
-    Given I am a coordinator of a subscription group
-    And I have not selected a subscription plan
-    When I visit the group page
-    And I select Payment details
-    Then I should see links to the different plans
 
   Scenario: Coordinator sees their payment details
     Given I am a coordinator of a subscription group
@@ -20,6 +13,9 @@ Feature: Coordinator chooses subscription
     And I select Payment details
     Then I should see the payment details for my group
     And I should be told that I can email to change my plan
+
+  Scenario: Coordinator is redirected to payment details if they try to choose a new plan when they already are subscribed
+  Scenario: Coordinator is redirected to choose plan if they try to view payment details but don't have a plan
 
   Scenario: Member cannot see payment details
     Given I am a member of a subscription group

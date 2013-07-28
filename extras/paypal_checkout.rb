@@ -12,7 +12,7 @@ class PaypalCheckout
     I18n.t('payment_details.description', people: DOLLARS_TO_PEOPLE[dollars], dollars: dollars)
   end
 
-  def initialize(group: group, dollars: dollars)
+  def initialize(group: nil, dollars: nil)
     raise StandardError unless DOLLAR_OPTIONS.include?(dollars)
     @dollars = dollars
     @group = group
@@ -39,7 +39,7 @@ class PaypalCheckout
   end
 
   def payment_description
-    subscription_text_for(@dollars)
+    self.class.subscription_text_for(@dollars)
   end
 
   def return_url
