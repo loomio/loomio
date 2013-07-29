@@ -452,7 +452,7 @@ en:
     any_amount: Any one-time contribution
     monthly_html: Monthly contribution <span>(USD)</span>
     one_time_html: One-time contribution <span>(USD)</span>
-    tooltip: Contribute
+    tooltip: Learn about our community funding model
     thought_about_contributing: Choose your contribution
     thought_about_contributing_description: |
       Loomio is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
@@ -537,7 +537,7 @@ en:
   search:
     description: "Below is a list of discussions and proposals that have '%{query}' in their title or description."
     header: "Search results for '%{query}'"
-    placeholder: "search"
+    placeholder: "Search"
 
 
   #
