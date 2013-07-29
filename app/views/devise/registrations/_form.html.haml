@@ -5,4 +5,5 @@
   =f.input :password_confirmation
   =f.input :language_preference, :collection => Translation::LANGUAGES,
            selected: I18n.locale, include_blank: false
-  =f.submit t("devise.registrations.sign_up"), class: "btn btn-info btn-large"
+  -sign_up = t(:"devise.registrations.sign_up")
+  =f.submit sign_up, class: "btn btn-info btn-large", :data => {:disable_with => sign_up}
