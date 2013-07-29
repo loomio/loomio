@@ -12,6 +12,8 @@ class Inbox
   def mark_as_read!(item)
     if @user.can? :show, item
       ViewLogger.discussion_viewed(item, @user)
+    else
+      raise 'user cannot mark this item as read'
     end
   end
 

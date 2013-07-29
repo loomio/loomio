@@ -268,3 +268,12 @@ a.btn-icon:hover { color: $dark-grey; }
 }
 
 .sessions.new section { margin-top: 0; }
+
+.pages.terms_of_service {
+  p {font-size: 1.2em;}
+  ol {
+    margin-left: 27px;
+    font-size: 1.2em;
+    li { line-height: 24px; }
+    }
+ }
