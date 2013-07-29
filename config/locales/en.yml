@@ -449,9 +449,11 @@ en:
   #
 
   contribution:
-    any_amount: Any one-time contribution
-    monthly_html: Monthly contribution <span>(USD)</span>
-    one_time_html: One-time contribution <span>(USD)</span>
+    any_amount: or a custom one-off contribution of
+    currency_desc: Amounts are in US dollars
+    monthly_html: I'd like to make a monthly contribution of
+    one_time_html: I'd like to make a one-off contribution of
+    submit: Contribute
     tooltip: Learn about our community funding model
     thought_about_contributing: Choose your contribution
     thought_about_contributing_description: |
