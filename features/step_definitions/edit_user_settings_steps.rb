@@ -34,6 +34,5 @@ When(/^I log in with "(.*?)"$/) do |email|
 end
 
 Then(/^I should see the logged in homepage$/) do
-  view_screenshot
   page.should have_css('body.dashboard.show')
 end
