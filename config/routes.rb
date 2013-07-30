@@ -25,6 +25,8 @@ Loomio::Application.routes.draw do
 
   match "/request_new_group", to: "group_requests#new", as: :request_new_group
 
+  match "/request_new_group", to: "group_requests#new", as: :request_new_group
+
   match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
 
   resources :groups, except: [:index, :new] do
@@ -52,7 +54,7 @@ Loomio::Application.routes.draw do
   end
 
   get 'groups/:group_id/request_membership',   to: 'groups/membership_requests#new',          as: :new_group_membership_request
-  post 'groups/:group_id/membership_requests', to: 'groups/membership_requests#create',       as: :group_membership_requests
+  post 'groups/:group_id/membership_requests', to: 'groups/membership_requests#create'  ,       as: :group_membership_requests
   delete 'membership_requests/:id/cancel',     to: 'groups/membership_requests#cancel',       as: :cancel_membership_request
 
   get 'groups/:group_id/membership_requests',  to: 'groups/manage_membership_requests#index', as: :group_membership_requests

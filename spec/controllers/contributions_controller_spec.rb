@@ -1,11 +1,6 @@
 require 'spec_helper'
 
 describe ContributionsController do
-  let(:current_user) { build_stubbed(User) }
-  before do
-    controller.stub :authenticate_user!
-    controller.stub :current_user => current_user
-  end
 
   describe 'callback' do
     let(:params){
@@ -23,18 +18,39 @@ describe ContributionsController do
       }
     }
 
-    before do
-      get :callback, params
+    context "contribution from user" do
+      let(:user){ create :user }
+
+      before do
+        controller.stub(:current_user).and_return(user)
+        get :callback, params
+      end
+
+      it 'redirects to thanks' do
+        response.should redirect_to thanks_contributions_path
+      end
+
+      it 'records a contribution with user id' do
+        assigns(:contribution).should be_persisted
+        assigns(:contribution).params.should == params.to_json
+        assigns(:contribution).user.should == user
+      end
     end
 
-    it 'redirects to thanks' do
-      response.should redirect_to thanks_contributions_path
-    end
+    context "contribution from guest" do
+      before do
+        get :callback, params
+      end
 
-    it 'records a contribution with user id' do
-      assigns(:contribution).should be_persisted
-      assigns(:contribution).params.should == params.to_json
-      assigns(:contribution).user.should == current_user
+      it 'redirects to thanks' do
+        response.should redirect_to thanks_contributions_path
+      end
+
+      it 'records a contribution with no user id' do
+        assigns(:contribution).should be_persisted
+        assigns(:contribution).params.should == params.to_json
+        assigns(:contribution).user.should == nil
+      end
     end
   end
 
