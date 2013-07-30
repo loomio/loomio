@@ -124,7 +124,6 @@ describe "User abilities" do
     before do
       @user_membership = group.add_admin! user
       @other_user_membership = group.add_member! other_user
-      # @membership_request = group.add_request! create(:user)
     end
 
     it { should be_able_to(:update, group) }
@@ -156,6 +155,13 @@ describe "User abilities" do
       it { should be_able_to(:manage_membership_requests, group) }
       it { should be_able_to(:approve, membership_request) }
       it { should be_able_to(:ignore, membership_request) }
+    end
+
+    context "subgroups should not have accessible subscription settings" do
+      let(:sub_group) { create(:group, parent: group) }
+      before { sub_group.add_admin! user }
+      it { should_not be_able_to(:view_payment_details, sub_group) }
+      it { should_not be_able_to(:choose_subscription_plan, sub_group) }
     end
   end
 

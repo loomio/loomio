@@ -43,5 +43,5 @@ class Groups::SubscriptionsController < GroupBaseController
 
   def redirect_to_group_if_pwyc
     redirect_to @group unless @group.paying_subscription?
-  end 
+  end
 end
