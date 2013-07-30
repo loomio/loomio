@@ -3,4 +3,4 @@
   = f.input :admin_email, label: t("group_request.form.email"), placeholder: t("group_request.form.placeholders.email")
   = f.input :name, label: t("group_request.form.group_name"), placeholder: t("group_request.form.placeholders.group_name")
   = f.input :paying_subscription, as: :hidden
-  = f.submit submit_label, class: 'btn btn-info btn-large', id: 'sign-up-submit'
+  = f.submit submit_label, class: 'btn btn-info btn-large', :data => { :disable_with => submit_label }, id: 'sign-up-submit'
