@@ -50,25 +50,11 @@ describe GroupsController do
       end
 
       context "a non-member" do
-        before :each do
-          @previous_url = groups_url
-          request.env["HTTP_REFERER"] = @previous_url
-        end
         it "viewing a group should redirect to private message page" do
           get :show, :id => @group.id
           response.should render_template('application/display_error', message: I18n.t('error.group_private_or_not_found'))
         end
       end
-    end
-
-    it "creates a group" do
-      user = build(:user, :email => "contact@loomio.org")
-      user.save
-      @group = build(:group)
-      post :create, :group => @group.attributes
-      assigns(:group).users.should include(@user)
-      assigns(:group).admins.should include(@user)
-      response.should redirect_to(group_url(assigns(:group)))
     end
 
     it "creates a subgroup" do
@@ -186,8 +172,6 @@ describe GroupsController do
 
     describe "#email_members" do
       before do
-        @previous_url = group_url group
-        request.env["HTTP_REFERER"] = @previous_url
         Group.stub(:find).with(group.id.to_s).and_return(group)
         controller.stub(:authorize!).and_return(true)
         controller.stub(:can?).with(:email_members, group).and_return(true)
@@ -210,9 +194,9 @@ describe GroupsController do
         flash[:success].should == "Emails sending."
       end
 
-      it "redirects to previous page" do
+      it "redirects to group page" do
         post :email_members, @mailer_args
-        response.should redirect_to(@previous_url)
+        response.should redirect_to(group_url(group))
       end
     end
   end

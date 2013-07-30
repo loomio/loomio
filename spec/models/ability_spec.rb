@@ -12,6 +12,8 @@ describe "User abilities" do
 
   context "member of a group" do
     let(:group) { create(:group) }
+    let(:subgroup) { build(:group, parent: group) }
+    let(:subgroup_for_another_group) { build(:group, parent: create(:group)) }
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }
     let(:discussion) { create(:discussion, group: group) }
     let(:new_discussion) { user.authored_discussions.new(
@@ -31,6 +33,8 @@ describe "User abilities" do
     it { should_not be_able_to(:update, group) }
     it { should_not be_able_to(:email_members, group) }
     it { should be_able_to(:add_subgroup, group) }
+    it { should be_able_to(:create, subgroup) }
+    it { should_not be_able_to(:create, subgroup_for_another_group) }
     it { should be_able_to(:new_proposal, discussion) }
     it { should be_able_to(:add_comment, discussion) }
     it { should be_able_to(:update_description, discussion) }
