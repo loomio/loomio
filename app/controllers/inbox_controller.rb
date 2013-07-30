@@ -1,7 +1,6 @@
 class InboxController < BaseController
-  before_filter :load_inbox, only: [:index, :mark_as_read, :mark_all_as_read, :unfollow]
-
   def index
+    load_inbox
     render layout: false if request.xhr?
   end
 
@@ -17,13 +16,16 @@ class InboxController < BaseController
 
   def mark_as_read
     item = load_resource_from_params
-    @inbox.mark_as_read!(item)
+    item.as_read_by(current_user).viewed!
     redirect_to_group_or_head_ok
   end
 
   def mark_all_as_read
     group = current_user.groups.find(params[:group_id])
-    @inbox.mark_all_as_read!(group)
+    Queries::VisibleDiscussions.new(groups: [group], user: current_user).unread.
+                                order_by_latest_comment.each do |d|
+      d.as_read_by(current_user).viewed!
+    end
     redirect_to_group_or_head_ok
   end
 

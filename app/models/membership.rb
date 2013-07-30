@@ -66,7 +66,8 @@ class Membership < ActiveRecord::Base
     # TODO: try to merge with approve!
     if request?
       self.inviter = inviter
-      approve!
+      approve
+      save!
       Events::UserAddedToGroup.publish!(self)
     end
   end
@@ -98,10 +99,8 @@ class Membership < ActiveRecord::Base
 
   def remove_open_votes
     return if group.nil? #necessary if group is missing (as in case of production data)
-    discussions = Queries::VisibleDiscussions.for(group, user)
-    discussions.with_current_motions_user_has_voted_on.each do |discussion|
-      votes = discussion.current_motion.votes.where(:user_id => user.id)
-      votes.destroy_all
+    group.motions.voting.each do |motion|
+      motion.votes.where(user_id: user.id).each(&:destroy)
     end
   end
 
