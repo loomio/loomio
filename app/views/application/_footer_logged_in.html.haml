@@ -7,8 +7,7 @@
           %b.caret
         %ul.dropdown-menu
           - Translation::LANGUAGES.each do |language|
-            - link_attrs = Translation.language_link_attributes(language)
-            %li= link_to link_attrs[:text], link_attrs[:href], title: link_attrs[:title]
+            %li= Translation.language_link(language)
 
       = link_to t(:translate, default: "help translate Loomio!"), 'https://www.loomio.org/discussions/4896'
 
