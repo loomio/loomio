@@ -1,203 +1,104 @@
 require 'spec_helper'
 
 describe GroupsController do
-  let(:group) { stub_model(Group) }
-  let(:user)  { stub_model(User) }
+  let(:group) { create :group }
+  let(:user)  { create :user }
 
-  context "logged in user" do
-    before :each do
-      @user = create(:user)
-      sign_in @user
-    end
-
+  context 'signed out' do
     context "group viewable by everyone" do
-      before :each do
-        @group = create(:group, viewable_by: :everyone)
-      end
-      context "non-member views group" do
-        it "should show group page" do
-          get :show, :id => @group.id
-          response.should be_success
-        end
+      before { group.update_attribute(:viewable_by, 'everyone') }
+
+      it "show" do
+        get :show, :id => group.id
+        response.should be_success
       end
     end
+
     context "group viewable by members" do
-      before :each do
-        @group = create(:group, viewable_by: :members)
-      end
-      context "a group admin" do
-        before :each do
-          @group.add_admin!(@user)
-        end
-        it "can update the group" do
-          post :update, id: @group.id, group: { name: "New name!" }
-          flash[:notice].should match("Group was successfully updated.")
-          response.should be_redirect
-        end
-      end
-      context "a group member" do
-        before :each do
-          @group.add_member!(@user)
-        end
-        it "shows a group" do
-          get :show, :id => @group.id
-          response.should be_success
-        end
-        it "gets a new subgroup form" do
-          get :add_subgroup, :id => @group.id
-          response.should be_success
-        end
-      end
-
-      context "a non-member" do
-        it "viewing a group should redirect to private message page" do
-          get :show, :id => @group.id
-          response.should render_template('application/display_error', message: I18n.t('error.group_private_or_not_found'))
-        end
-      end
-    end
-
-    it "creates a subgroup" do
-      user = build(:user, :email => "contact@loomio.org")
-      user.save
-      @group = create(:group)
-      @group.add_member! @user
-      @subgroup = build(:group, :parent => @group)
-
-      post :create, :group => @subgroup.attributes
-
-      assigns(:group).parent.should eq(@group)
-      assigns(:group).users.should include(@user)
-      assigns(:group).admins.should include(@user)
-      response.should redirect_to(group_url(assigns(:group)))
-    end
-
-    describe "#edit description" do
-      before do
-        controller.stub(:authorize!).and_return(true)
-        controller.stub(:can?).with(:edit_description, group).and_return(true)
-        Group.stub(:find).and_return(group)
-        group.stub(:save!).and_return(true)
-      end
-      it "assigns description to the model" do
-        group.should_receive(:description=).with "blah"
-        xhr :post, :edit_description,
-          :id => "12051",
-          :description => "blah"
-      end
-      it "saves the model" do
-        group.should_receive :save!
-        xhr :post, :edit_description,
-          :id => group.id,
-          :description => "blah"
-      end
-    end
-
-    describe "#edit privacy" do
-      before do
-        controller.stub(:authorize!).and_return(true)
-        controller.stub(:can?).with(:edit_privacy, group).and_return(true)
-        Group.stub(:find).and_return(group)
-        group.stub(:save!).and_return(true)
-      end
-      it "assigns viewable_by to the model" do
-        group.should_receive(:viewable_by=).with "member"
-        xhr :post, :edit_privacy,
-          :id => "12051",
-          :viewable_by => "member"
-      end
-      it "saves the model" do
-        group.should_receive :save!
-        xhr :post, :edit_privacy,
-          :id => group.id,
-          :viewable_by => "member"
-      end
-    end
-
-    describe "add_members" do
-      before do
-        @user2 = create(:user)
-        @user3 = create(:user)
-        @group = create(:group)
-        @group.add_admin! @user
-        @group.stub(:add_member!)
-        Group.stub(:find).with(@group.id.to_s).and_return(@group)
-        Events::UserAddedToGroup.stub(:publish!)
-      end
-
-      it "adds members to group" do
-        @group.should_receive(:add_member!).with(@user2, @user)
-        @group.should_receive(:add_member!).with(@user3, @user)
-
-        post :add_members, id: @group.id,
-          "user_#{@user2.id}" => 1, "user_#{@user3.id}" => 1
-      end
-    end
-
-    describe "archiving a group" do
-      before do
-        @group = create(:group)
-        @group.add_admin! @user
-        @subgroup = create(:group, :parent => @group)
-        @subgroup.add_member! @user
-        put :archive, :id => @group.id
-      end
-      it "sets archived_at field on the group" do
-        assigns(:group).archived_at.should_not == nil
-      end
-      it "sets archived_at on the group's subgroups" do
-        @subgroup.reload
-        @subgroup.archived_at.should_not == nil
-      end
-      it "sets flash response" do
-        flash[:success].should =~ /Group archived successfully/
-      end
-      it "redirects to the dashboard" do
-        response.should redirect_to('/')
-      end
-    end
-
-    describe "viewing an archived group" do
-      render_views
-      before do
-        @group = create(:group)
-        @group.archived_at = Time.now
-        @group.save!
-      end
-      it "should render the page not found template" do
-        get :show, :id => @group.id
-        response.should render_template('application/display_error', message: I18n.t('error.group_private_or_not_found'))
-      end
-    end
-
-    describe "#email_members" do
-      before do
-        Group.stub(:find).with(group.id.to_s).and_return(group)
-        controller.stub(:authorize!).and_return(true)
-        controller.stub(:can?).with(:email_members, group).and_return(true)
-        @email_subject = "i have something really important to say!"
-        @email_body = "goobly"
-        GroupMailer.stub(:delay).and_return(GroupMailer)
-        GroupMailer.stub(:deliver_group_email)
-        @mailer_args = { :id => group.id, :group_email_body => @email_body,
-                         :group_email_subject => @email_subject }
-      end
-
-      it "sends email to group" do
-        GroupMailer.should_receive(:deliver_group_email).
-          with(group, @user, @email_subject, @email_body)
-        post :email_members, @mailer_args
-      end
-
-      it "populates flash notice" do
-        post :email_members, @mailer_args
-        flash[:success].should == "Emails sending."
-      end
-
-      it "redirects to group page" do
-        post :email_members, @mailer_args
-        response.should redirect_to(group_url(group))
+      before { group.update_attribute('viewable_by', 'members') }
+      it "does not show" do
+        get :show, :id => group.id
+        response.should be_redirect
       end
     end
   end
+
+  context "group viewable by members" do
+    before do 
+      group.update_attribute('viewable_by', 'members')
+      group.add_member!(user)
+      sign_in user
+    end
+
+    it "show" do
+      get :show, :id => group.id
+      response.should be_success
+    end
+
+    it "add_subgroup" do
+      get :add_subgroup, :id => group.id
+      response.should be_success
+    end
+
+    it "create subgroup" do
+      post :create, :group => {parent_id: group.id, name: 'subgroup'}
+      assigns(:group).parent.should eq(group)
+      assigns(:group).admins.should include(user)
+      response.should redirect_to(group_url(assigns(:group)))
+    end
+
+    it "add_members" do
+      added_user = create(:user)
+      post :add_members, id: group.id, "user_#{added_user.id}" => 1
+      group.members.should include added_user
+    end
+
+    context "a group admin" do
+      before { group.add_admin!(user) }
+
+      it "update" do
+        post :update, id: group.id, group: { name: "New name!" }
+        flash[:notice].should == "Group was successfully updated."
+        response.should redirect_to group
+      end
+
+      describe "#edit description" do
+        it "assigns description and saves model" do
+          xhr :post, :edit_description, :id => group.id, :description => "blah"
+          assigns(:group).description.should == 'blah'
+        end
+      end
+
+      describe "#edit privacy" do
+        it "assigns viewable_by and saves" do
+          xhr :post, :edit_privacy, :id => group.id, :viewable_by => "everyone"
+          assigns(:group).viewable_by.should == 'everyone'
+        end
+      end
+
+      describe "archives group" do
+        before { put :archive, :id => group.id }
+
+        it "sets archived_at field on the group" do
+          assigns(:group).archived_at.should_not == nil
+        end
+
+        it "sets flash and redirects to the dashboard" do
+          flash[:success].should =~ /Group archived successfully/
+          response.should redirect_to '/'
+        end
+      end
+    end
+  end
+
+  describe "viewing an archived group" do
+    render_views
+    before { group.archive! }
+
+    it "should render the page not found template" do
+      get :show, :id => group.id
+      response.should render_template('application/display_error', message: I18n.t('error.group_private_or_not_found'))
+    end
+  end
+
 end

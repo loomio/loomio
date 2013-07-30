@@ -28,7 +28,7 @@ describe "User abilities" do
       @user_membership = group.add_member!(user)
       @other_user_membership = group.add_member!(other_user)
     end
-
+    it { should be_able_to(:create, subgroup) }
     it { should be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
     it { should_not be_able_to(:email_members, group) }
@@ -43,7 +43,7 @@ describe "User abilities" do
     it { should be_able_to(:preview_version, discussion) }
     it { should be_able_to(:update_version, discussion) }
     it { should_not be_able_to(:move, discussion) }
-    it { should be_able_to(:index, Discussion) }
+    it { should be_able_to(:show, Discussion) }
     it { should be_able_to(:unfollow, Discussion) }
     it { should be_able_to(:destroy, user_comment) }
     it { should_not be_able_to(:destroy, discussion) }
@@ -73,7 +73,7 @@ describe "User abilities" do
     end
 
     context "group members invitable by members" do
-      before { group.update_attributes(:members_invitable_by => :members) }
+      before { group.update_attributes(:members_invitable_by => 'members') }
       it { should be_able_to(:add_members, group) }
       it { should be_able_to(:manage_membership_requests, group) }
       it { should be_able_to(:approve, membership_request) }
@@ -82,7 +82,7 @@ describe "User abilities" do
     end
 
     context "group members invitable by admins" do
-      before { group.update_attributes(:members_invitable_by => :admins) }
+      before { group.update_attributes(:members_invitable_by => 'admins') }
       it { should_not be_able_to(:add_members, group) }
       it { should_not be_able_to(:manage_membership_requests, group) }
       it { should_not be_able_to(:approve, membership_request) }
@@ -90,25 +90,28 @@ describe "User abilities" do
     end
 
     context "group viewable by members" do
-      before { group.update_attributes(:viewable_by => :members) }
+      before { group.update_attributes(:viewable_by => 'members') }
       it { should be_able_to(:show, group) }
     end
 
     context "viewing a subgroup they do not belong to" do
       let(:subgroup) { create(:group, parent: group) }
       let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
+
       context "public subgroup" do
-        before { subgroup.update_attributes(:viewable_by => :everyone) }
+        before { subgroup.update_attributes(:viewable_by => 'everyone') }
         it { should be_able_to(:show, subgroup) }
         it { should be_able_to(:create, my_subgroup_membership_request) }
       end
+
       context "subgroup viewable by parent group members" do
-        before { subgroup.update_attributes(:viewable_by => :parent_group_members) }
+        before { subgroup.update_attributes(:viewable_by => 'parent_group_members') }
         it { should be_able_to(:show, subgroup) }
         it { should be_able_to(:create, my_subgroup_membership_request) }
       end
+
       context "private subgroup" do
-        before { subgroup.update_attributes(:viewable_by => :members) }
+        before { subgroup.update_attributes(:viewable_by => 'members') }
         it { should_not be_able_to(:show, subgroup) }
         it { should_not be_able_to(:create, my_subgroup_membership_request) }
       end
@@ -151,7 +154,7 @@ describe "User abilities" do
     end
 
     context "group members invitable by admins" do
-      before { group.update_attributes(:members_invitable_by => :admins) }
+      before { group.update_attributes(:members_invitable_by => 'admins') }
       it { should be_able_to(:add_members, group) }
       it { should be_able_to(:manage_membership_requests, group) }
       it { should be_able_to(:approve, membership_request) }
@@ -161,7 +164,7 @@ describe "User abilities" do
 
 
   context "non-member of a group" do
-    let(:group) { create(:group) }
+    let(:group) { create(:group, viewable_by: 'members') }
     let(:discussion) { create(:discussion, group: group) }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
     let(:motion) { create(:motion, discussion: discussion) }
@@ -171,13 +174,35 @@ describe "User abilities" do
     let(:my_membership_request) { create(:membership_request, group: group, requestor: user) }
     let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
 
-    context "public group" do
-      before { group.update_attributes(:viewable_by => :everyone) }
+    it { should_not be_able_to(:update, group) }
+    it { should_not be_able_to(:show, discussion) }
+    it { should_not be_able_to(:email_members, group) }
+    it { should_not be_able_to(:add_subgroup, group) }
+    it { should_not be_able_to(:add_members, group) }
+    it { should_not be_able_to(:hide_next_steps, group) }
+    it { should_not be_able_to(:new_proposal, discussion) }
+    it { should_not be_able_to(:add_comment, discussion) }
+    it { should_not be_able_to(:move, discussion) }
+    it { should_not be_able_to(:unfollow, group) }
+    it { should_not be_able_to(:destroy, discussion) }
+    it { should_not be_able_to(:destroy, another_user_comment) }
+    it { should_not be_able_to(:like, another_user_comment) }
+    it { should_not be_able_to(:unlike, another_user_comment) }
+    it { should_not be_able_to(:create, new_discussion) }
+    it { should_not be_able_to(:create, new_motion) }
+    it { should_not be_able_to(:close, motion) }
+    it { should_not be_able_to(:edit_close_date, motion) }
+    it { should_not be_able_to(:open, motion) }
+    it { should_not be_able_to(:update, motion) }
+    it { should_not be_able_to(:destroy, motion) }
 
+    context "group viewable_by: everyone" do
+      before do 
+        group.update_attributes!(:viewable_by => 'everyone')
+        discussion.reload
+      end
       it { should be_able_to(:show, group) }
-      it { should be_able_to(:create, my_membership_request) }
-      it { should be_able_to(:cancel, my_membership_request) }
-      it { should_not be_able_to(:cancel, other_membership_request) }
+      it { should be_able_to(:show, discussion) }
       it { should be_able_to(:get_and_clear_new_activity, motion) }
       it { should_not be_able_to(:update, group) }
       it { should_not be_able_to(:email_members, group) }
@@ -204,22 +229,27 @@ describe "User abilities" do
       it { should_not be_able_to(:destroy, motion) }
     end
 
-    context "private group" do
-      before { group.update_attributes(:viewable_by => :members) }
-
+    context "group viewable_by: members" do
+      before { group.update_attributes!(:viewable_by => 'members') }
       it { should_not be_able_to(:show, group) }
-      it { should_not be_able_to(:create, my_membership_request) }
+      it { should_not be_able_to(:show, discussion) }
       it { should_not be_able_to(:get_and_clear_new_activity, motion) }
     end
 
-    context "subgroup viewable to everyone" do
-      let(:subgroup) { create(:group, parent: group, viewable_by: :everyone) }
-      let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
+    context 'group viewable by parent group members' do
+      let(:parent_group){ create :group }
 
-      it { should_not be_able_to(:create, my_subgroup_membership_request) }
+      before do
+        group.viewable_by = 'parent_group_members'
+        group.parent = parent_group
+        parent_group.add_member! user
+        group.save!(validate: false)
+      end
+      it { should be_able_to(:show, discussion) }
     end
-    context "subgroup viewable to members" do
-      let(:subgroup) { create(:group, parent: group, viewable_by: :parent_group_members) }
+
+    context "subgroup viewable to members", :focus do
+      let(:subgroup) { create(:group, parent: group, viewable_by: 'parent_group_members') }
       let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
 
       it { should_not be_able_to(:create, my_subgroup_membership_request) }

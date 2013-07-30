@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Comment do
   let(:user) { stub_model(User) }
   let(:discussion) { FactoryGirl.create(:discussion) }
-  let(:comment) { FactoryGirl.create(:comment, commentable: discussion) }
+  let(:comment) { FactoryGirl.create(:comment, discussion: discussion) }
 
   it { should have_many(:events).dependent(:destroy) }
   it { should respond_to(:uses_markdown) }
@@ -21,7 +21,7 @@ describe Comment do
     it 'fires a new_comment! event' do
       Events::NewComment.should_receive(:publish!)
       discussion = create(:discussion)
-      comment = discussion.add_comment discussion.author, "hi", false
+      discussion.add_comment discussion.author, "hi", false
     end
   end
 
@@ -30,7 +30,7 @@ describe Comment do
     let(:discussion) { create(:discussion) }
     context "which is the only comment on a discussion" do
       it "updates discussion.last_comment_at to discussion.created_at" do
-        comment = discussion.add_comment discussion.author, "hi", false
+        discussion.add_comment discussion.author, "hi", false
         discussion.last_comment_at.should == discussion.created_at
       end
     end
