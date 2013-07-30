@@ -10,7 +10,7 @@ Given /^I am a member of a group invitable by members$/ do
 end
 
 Given /^the group is invitable by admins$/ do
-  @group.members_invitable_by = :admins
+  @group.members_invitable_by = 'admins'
   @group.save!
 end
 

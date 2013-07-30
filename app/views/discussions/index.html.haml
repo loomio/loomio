@@ -5,7 +5,4 @@
         %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
     - elsif @no_discussions_exist
       %li.empty-list-message= t :empty_discussion_index_group
-  #discussions-loading
-    %li.selector-item.loading= t :loading
 = paginate @discussions, :window => 3, :remote => :true
-- ViewLogger.group_viewed(@group, current_user) if current_user && params[:group_id]

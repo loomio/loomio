@@ -49,7 +49,8 @@ class Inbox
   end
 
   def unread_discussions_for(group)
-    Queries::UnreadDiscussions.for(@user, group).order('last_comment_at DESC').readonly(false)
+    Queries::VisibleDiscussions.new(user: @user, groups: [group]).unread.
+                                order_by_latest_comment.readonly(false)
   end
 
   def unvoted_motions_for(group)
