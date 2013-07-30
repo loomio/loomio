@@ -2,11 +2,11 @@ module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
   def discussion_activity_count_for(discussion, user)
-    discussion.number_of_comments_since_last_looked(user)
+    discussion.as_read_by(user).unread_comments_count
   end
 
   def enabled_icon_class_for(discussion, user)
-    if discussion_activity_count_for(discussion, user) > 0
+    if discussion.as_read_by(user).unread_content_exists?
       "enabled-icon"
     else
       "disabled-icon"
@@ -16,7 +16,7 @@ module DiscussionsHelper
   def css_class_unread_discussion_activity_for(page_group, discussion, user)
     css_class = "discussion-preview"
     css_class += " showing-group" if (not discussion.group.parent.nil?) && (page_group && (page_group.parent.nil?))
-    css_class += " unread" if discussion.number_of_comments_since_last_looked(user) > 0 || discussion.never_read_by(user)
+    css_class += " unread" if discussion.as_read_by(user).unread_content_exists?
     css_class
   end
 

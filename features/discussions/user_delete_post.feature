@@ -18,6 +18,6 @@ Feature: User deletes post
     Given I am logged in
     And I am a member of a group
     And there is a discussion in the group
-    And the discussion has comments
+    And the discussion has a comment
     When I am on the discussion page
     Then I should not see the delete link on another users comment

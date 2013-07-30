@@ -3,39 +3,24 @@ Feature: User sees the number of new comments on a discussion
   So that I can know if a discussion has had new comments
   I want to know how many new comments a discussion has had since I last viewed it
 
-  @javascript
-  Scenario: User visits dashboard and sees new comments on a discussion they've never read before
+  Background:
     Given I am logged in
     And there is a discussion in a group I belong to
-    And I have never read the discussion before
-    And the discussion has comments
+
+  @javascript
+  Scenario: User sees new discussion has 1 unread
     When I visit the dashboard
-    Then I should see that the discussion has 3 new comments
+    Then I should see that the discussion has 1 unread
 
   @javascript
-  Scenario: User visits dashboard and sees new comments on a discussion they've read before
-    Given I am logged in
-    And there is a discussion in a group I belong to
-    And I have read the discussion before
-    And the discussion has had new comments since I last read it
+  Scenario: User sees new discussion with new comment has 2 unread
+    Given someone comments on the discussion
     When I visit the dashboard
-    Then I should see that the discussion has 2 new comments
+    Then I should see that the discussion has 2 unread
 
   @javascript
-  Scenario: User visits group page and sees new comments on a discussion they've never read before
-    Given I am logged in
-    And there is a discussion in a group I belong to
-    And I have never read the discussion before
-    And the discussion has comments
-    When I visit the group page
-    Then I should see that the discussion has 3 new comments
-
-  @javascript
-  Scenario: User visits group page and sees new comments on a discussion they've read before
-    Given I am logged in
-    And there is a discussion in a group I belong to
-    And I have read the discussion before
-    And the discussion has had new comments since I last read it
-    When I visit the group page
-    Then I should see that the discussion has 2 new comments
-
+  Scenario: User sees read discussion with unread comment has 1 unread
+    Given I read the discussion when it was uncommented
+    And someone comments on the discussion
+    When I visit the dashboard
+    Then I should see that the discussion has 1 unread

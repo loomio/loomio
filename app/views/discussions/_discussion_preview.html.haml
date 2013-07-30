@@ -18,7 +18,7 @@
           - if discussion.current_motion_closing_at
             .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_closing_at)} until close"
         - else
-          .latest-comment-time= "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.latest_comment_time))}"
+          .latest-comment-time= "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.last_comment_at))}"
     - if discussion.current_motion
       - motion_activity = motion_activity_count_for(discussion.current_motion, current_user)
       - popover_title = render 'discussions/graph_preview_pop_over_title', :motion => discussion.current_motion

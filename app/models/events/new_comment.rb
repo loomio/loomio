@@ -2,8 +2,9 @@ class Events::NewComment < Event
   after_create :notify_users!
 
   def self.publish!(comment)
-    create!(:kind => "new_comment", :eventable => comment,
-                    :discussion_id => comment.discussion.id)
+    create!(:kind => "new_comment", 
+            :eventable => comment,
+            :discussion_id => comment.discussion.id)
   end
 
   def comment

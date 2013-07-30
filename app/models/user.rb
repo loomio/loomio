@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
   after_create :ensure_name_entry
   before_destroy { |user| ViewLogger.delete_all_logs_for(user.id) }
 
-  scope :daily_activity_email_recipients, where("subscribed_to_daily_activity_email IS TRUE AND invitation_token IS NULL")
+  scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
   scope :sorted_by_name, order("lower(name)")
 
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
@@ -165,31 +165,6 @@ class User < ActiveRecord::Base
   def mark_notifications_as_viewed!(latest_viewed_id)
     unviewed_notifications.where("id <= ?", latest_viewed_id).
       update_all(:viewed_at => Time.now)
-  end
-
-  def discussions_with_current_motion_not_voted_on
-    # TODO: Merge into Queries::VisibleDiscussions
-    if discussions
-      (discussions.includes(:motions).where('motions.id IS NOT NULL AND motions.closed_at IS NULL') -  discussions_with_current_motion_voted_on)
-    else
-      []
-    end
-  end
-
-  def discussions_with_current_motion_voted_on
-    # TODO: Merge into Queries::VisibleDiscussions
-    if discussions
-      (discussions.includes(:motions => :votes).where('motions.id IS NOT NULL AND motions.closed_at IS NULL AND votes.user_id = ?', id))
-    else
-      []
-    end
-  end
-
-  def discussions_sorted
-    # TODO: Merge into Queries::VisibleDiscussions
-    discussions
-      .where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE motions.id IS NOT NULL AND motions.closed_at IS NULL)")
-      .order("last_comment_at DESC")
   end
 
   def self.loomio_helper_bot
