@@ -3,8 +3,7 @@
     .span1
       .icon.discussion-icon
         .activity-count{title: 'Unread comments'}
-          &nbsp;
-
+          =item.as_read_by(current_user).unread_comments_count
 
     .span9.title
       = item.title

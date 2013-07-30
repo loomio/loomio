@@ -15,18 +15,22 @@ describe Discussion do
     discussion.should_not be_valid
   end
 
+  it 'should have comments_count of 0' do
+    create(:discussion).comments_count.should == 0
+  end
+
   it "group member can add comment" do
     user = create(:user)
     discussion = create(:discussion)
     discussion.group.add_member! user
     comment = discussion.add_comment(user, "this is a test comment", false)
-    discussion.comment_threads.should include(comment)
+    discussion.comments.should include(comment)
   end
 
   it "group non-member cannot add comment" do
     discussion = create(:discussion)
     comment = discussion.add_comment(create(:user), "this is a test comment", false)
-    discussion.comment_threads.should_not include(comment)
+    discussion.comments.should_not include(comment)
   end
 
   it "automatically populates last_comment_at with discussion.created at" do
@@ -46,25 +50,10 @@ describe Discussion do
     end
   end
 
-  describe "#latest_comment_time" do
-    it "returns time of latest comment if comments exist" do
-      discussion = create :discussion
-      discussion.stub :comments => {:count => 1}
-      comment = stub :created_at => 12345
-      comment = discussion.stub_chain(:comments, :order, :first).
-                           and_return(comment)
-      discussion.latest_comment_time.should == 12345
-    end
-    it "returns time of discussion creation if no comments exist" do
-      discussion = create :discussion
-      discussion.latest_comment_time.should == discussion.created_at
-    end
-  end
-
   describe "#last_versioned_at" do
     it "returns the time the discussion was created at if no previous version exists" do
       discussion = create :discussion
-      discussion.last_versioned_at.should == discussion.created_at
+      discussion.last_versioned_at.iso8601.should == discussion.created_at.iso8601
     end
     it "returns the time the previous version was created at" do
       discussion = create :discussion
@@ -92,29 +81,13 @@ describe Discussion do
     end
   end
 
-  describe "#never_read_by(user)" do
-    before do
-      @discussion = create :discussion
-    end
-
-    it "should return true if user is logged out" do
-      @discussion.never_read_by(@user).should == true
-    end
-
-    it "returns true if dicussion has never been read" do
-      @user = create :user
-      @discussion.stub(:read_log_for).with(@user).and_return(nil)
-      @discussion.never_read_by(@user).should == true
-    end
-  end
-
   describe "#activity" do
     it "returns all the activity for the discussion" do
       @user = create :user
       @group = create :group
       @group.add_member! @user
       @discussion = create :discussion, :group => @group
-      @discussion.add_comment(@user, "this is a test comment", false)
+      @discussion.add_comment(@user, "this is a test comment")
       @motion = create :motion, :discussion => @discussion
       @vote = create :vote, :position => 'yes', :motion => @motion
       activity = @discussion.activity
@@ -214,97 +187,14 @@ describe Discussion do
     end
   end
 
-  describe "#update_total_views" do
+  describe "#viewed!" do
     before do
       @discussion = create(:discussion)
     end
     it "increases the total_views by 1" do
       @discussion.total_views.should == 0
-      @discussion.update_total_views
+      @discussion.viewed!
       @discussion.total_views.should == 1
-    end
-  end
-
-  describe "last_looked_at_by(user)" do
-    before do
-      @user = stub_model(User)
-      @discussion = build :discussion
-      @discussion_read_log = mock_model(DiscussionReadLog)
-    end
-    context "the user has not read the discussion" do
-      it "returns the date the user joined the group" do
-        @discussion.stub(:read_log_for).with(@user).and_return(nil)
-        @discussion.last_looked_at_by(@user).should == nil
-      end
-    end
-    context "and has read the discussion" do
-      it "returns the date the discussion was last viewed" do
-        @discussion.stub(:read_log_for).with(@user).and_return(@discussion_read_log)
-        @discussion_read_log.stub(:discussion_last_viewed_at).and_return 5
-        @discussion.last_looked_at_by(@user).should == 5
-      end
-    end
-  end
-
-  describe "has_activity_since_group_last_viewed?(user)" do
-    before do
-      @user = create(:user)
-      @group = create(:group)
-      @membership = create :membership, group: @group, user: @user
-      @discussion = create :discussion, group: @group
-    end
-    it "returns false if user is not a member of the group" do
-      @group.stub(:membership).with(@user)
-      @discussion.has_activity_since_group_last_viewed?(@user).should == false
-    end
-    it "returns true if the discussion had comments since user last viewed their group" do
-      @group.stub(:membership).with(@user).and_return(@membership)
-      @group.discussions.stub_chain(:includes, :where, :count).and_return(3)
-      @discussion.has_activity_since_group_last_viewed?(@user).should == true
-    end
-    it "returns true if the discussion is new since user last viewed their group" do
-      @group.stub(:membership).with(@user).and_return(@membership)
-      @group.discussions.stub_chain(:includes, :where, :count).and_return(0)
-      @discussion.stub(:never_read_by).and_return(true)
-      @membership.stub(:group_last_viewed_at).and_return(1)
-      @discussion.stub(:created_at).and_return(2)
-      @discussion.has_activity_since_group_last_viewed?(@user).should == true
-    end
-    it "returns false if the discussion had no activity since user last viewed their group" do
-      @group.stub(:membership).with(@user).and_return(@membership)
-      @group.discussions.stub_chain(:includes, :where, :count).and_return(0)
-      @discussion.stub(:never_read_by).and_return(false)
-      @discussion.has_activity_since_group_last_viewed?(@user).should == false
-    end
-  end
-
-  describe "number_of_comments_since_last_looked(user)" do
-    before do
-      @user = build(:user)
-      @discussion = create(:discussion)
-    end
-    context "the user is a member of the discussions group" do
-      it "returns the total number of votes if the user has not seen the motion" do
-        @discussion.stub(:last_looked_at_by).with(@user).and_return(nil)
-        @discussion.stub_chain(:comments, :count).and_return(5)
-
-        @discussion.number_of_comments_since_last_looked(@user).should == 6
-      end
-      it "returns the number of votes since the user last looked at the motion" do
-        last_viewed_at = Time.now
-        @discussion.stub(:last_looked_at_by).with(@user).and_return(last_viewed_at)
-        @discussion.stub(:number_of_comments_since).with(last_viewed_at).and_return(3)
-
-        @discussion.number_of_comments_since_last_looked(@user).should == 3
-      end
-    end
-    context "the user is not a member of the group" do
-      it "returns the total number of comments" do
-        @discussion.stub(:last_looked_at_by).with(@user).and_return(nil)
-        @discussion.stub_chain(:comments, :count).and_return(4)
-
-        @discussion.number_of_comments_since_last_looked(nil).should == 4
-      end
     end
   end
 

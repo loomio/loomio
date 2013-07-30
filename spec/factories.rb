@@ -27,7 +27,8 @@ FactoryGirl.define do
   factory :group do
     sequence(:name) { Faker::Name.name }
     description 'A description for this group'
-    viewable_by :everyone
+    viewable_by 'everyone'
+    members_invitable_by 'members'
     after(:create) do |group, evaluator|
       user = FactoryGirl.create(:user)
       if group.parent.present?
@@ -55,7 +56,7 @@ FactoryGirl.define do
 
   factory :comment do
     user
-    association :commentable, factory: :discussion
+    discussion
     title Faker::Lorem.sentence(2)
     body 'body of the comment'
 
@@ -83,6 +84,24 @@ FactoryGirl.define do
     after(:create) do |motion|
       motion.group.save
     end
+  end
+
+  factory :current_motion, class: Motion do
+    name { Faker::Name.name }
+    association :author, :factory => :user
+    description 'current motion'
+    discussion
+    close_at_date { 5.days.from_now.to_date.to_s }
+    close_at_time '16:00'
+    close_at_time_zone 'Wellington'
+    after(:build) do |motion|
+      motion.group.parent.add_member!(motion.author) if motion.group.parent
+      motion.group.add_member!(motion.author)
+    end
+    after(:create) do |motion|
+      motion.group.save
+    end
+
   end
 
   factory :motion_read_log do
@@ -116,8 +135,8 @@ FactoryGirl.define do
     group
     group_name Faker::Name.name
     group_description "My text outlining the group"
-    viewable_by :members
-    members_invitable_by :admins
+    viewable_by 'members'
+    members_invitable_by 'admins'
     discussion_title Faker::Name.name
     discussion_description "My text outlining the discussion"
     motion_title {Faker::Name.name}
