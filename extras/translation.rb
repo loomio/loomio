@@ -1,6 +1,4 @@
 class Translation
-  include ActionView::Helpers::TagHelper
-
   LANGUAGES = {"български" => "bg",
                "English" => "en",
                "Español" => "es",
@@ -21,8 +19,9 @@ class Translation
     EXPERIMENTAL_LANGUAGES.values
   end
 
-  def self.language_link(language)
-    content_tag(:a, "#{language[0]}", href: "?&locale=#{language[1]}",
-                title: "#{I18n.t(:change_language, language: language[0])}")
+  def self.language_link_attributes(language)
+    { href: "?&locale=#{language[1]}"  ,
+      title: "#{I18n.t(:change_language, language: language[0])}",
+      text: "#{language[0]}" }
   end
 end
