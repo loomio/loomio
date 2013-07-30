@@ -5,7 +5,6 @@ class Groups::SubscriptionsController < GroupBaseController
 
   def new
     authorize! :choose_subscription_plan, @group
-    @group = GroupDecorator.new @group
     if @group.has_subscription_plan?
       redirect_to view_payment_details_group_subscriptions_url(@group)
     end
@@ -13,7 +12,7 @@ class Groups::SubscriptionsController < GroupBaseController
 
   def checkout
     authorize! :choose_subscription_plan, @group
-    @paypal = PaypalCheckout.new(group: @group, dollars: params['dollars'])
+    @paypal = PaypalCheckout.new(group: @group, amount: params['amount'])
     @paypal.setup_payment_authorization
     redirect_to @paypal.gateway_url
   end
@@ -21,7 +20,7 @@ class Groups::SubscriptionsController < GroupBaseController
   def confirm
     authorize! :choose_subscription_plan, @group
     @paypal = PaypalConfirm.new(group: @group,
-                                dollars: params['dollars'],
+                                amount: params['amount'],
                                 token: params['token'])
     puts '<<<<<< get checkout details <<<<<<'
     @paypal.get_checkout_details
@@ -33,7 +32,6 @@ class Groups::SubscriptionsController < GroupBaseController
 
   def view_payment_details
     authorize! :view_payment_details, @group
-    @group = GroupDecorator.new @group
     unless @group.has_subscription_plan?
       redirect_to new_group_subscription_url(@group)
     end

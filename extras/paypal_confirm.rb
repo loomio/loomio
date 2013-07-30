@@ -4,11 +4,11 @@ class PaypalConfirm
 
   attr_reader :response
 
-  def initialize(group: nil, dollars:nil, token: nil)
-    raise StandardError unless PaypalCheckout::DOLLAR_OPTIONS.include?(dollars)
+  def initialize(group: nil, amount:nil, token: nil)
+    raise StandardError unless PaypalCheckout::DOLLAR_OPTIONS.include?(amount)
     @group = group
     @token = token
-    @dollars = dollars
+    @amount = amount
   end
 
   def get_checkout_details
@@ -43,11 +43,11 @@ class PaypalConfirm
       payerid: payer_id,
       profilestartdate: (Time.now + 5.minutes).utc.iso8601,
       desc: I18n.t('payment_details.description',
-                   people: PaypalCheckout::DOLLARS_TO_PEOPLE[@dollars],
-                   dollars: @dollars),
+                   people: PaypalCheckout::DOLLARS_TO_PEOPLE[@amount],
+                   amount: @amount),
       billingperiod: "Month",
       billingfrequency: "1",
-      amt: @dollars,
+      amt: @amount,
       currencycode: "USD",
       maxfailedpayments: "3",
       autobilloutamt: "AddToNextBilling",

@@ -3,11 +3,11 @@ When(/^I visit the new subscription page for the group$/) do
 end
 
 When(/^I choose and pay for the plan "(.*?)" successfully$/) do |plan|
-  @dollars = plan.match('\d+').to_s
+  @amount = plan.match('\d+').to_s
   @return_token = "EC-2XE27522GG148073B" # TODO: REPLACE THIS TOKEN WITH NEW ONE
   PaypalCheckout.any_instance.stub(gateway_url:
-    confirm_group_subscriptions_path(@group, dollars: @dollars, token: @return_token))
-  VCR.use_cassette("paypal #{@dollars}",
+    confirm_group_subscriptions_path(@group, amount: @amount, token: @return_token))
+  VCR.use_cassette("paypal #{@amount}",
                    match_requests_on: [:uri, :body],
                    erb: {token: @return_token},
                    record: :new_episodes) do

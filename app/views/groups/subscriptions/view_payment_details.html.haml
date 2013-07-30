@@ -11,10 +11,10 @@
     .info-box#organisation
       %table
         %h3= t("payment_details.subscription.table.title_html")
-        - PaypalCheckout::DOLLAR_OPTIONS.each do |dollars|
+        - PaypalCheckout::DOLLAR_OPTIONS.each do |amount|
           %tr
-            %td= t("payment_details.subscription.table.quantity", people: PaypalCheckout::DOLLARS_TO_PEOPLE[dollars])
-            %td= t("payment_details.subscription.table.price_html", dollars: dollars)
+            %td= t("payment_details.subscription.table.quantity", people: PaypalCheckout::DOLLARS_TO_PEOPLE[amount])
+            %td= t("payment_details.subscription.table.price_html", amount: amount)
         %tr
           %td= t("payment_details.subscription.table.quantity_more")
           %td= t("payment_details.subscription.table.price_talk_html")
