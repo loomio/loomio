@@ -10,15 +10,23 @@ namespace :upgrade_tasks do
     end
   end
   task :update_read_comments_counts => :environment do
+    #funky!
+    if DiscussionReader.present?
+      DiscussionReadLog = DiscussionReader
+      last_viewed_at_column_name = 'last_read_at'
+    else
+      last_viewed_at_column_name = 'discussion_last_viewed_at'
+    end
+      
     DiscussionReadLog.reset_column_information
     DiscussionReadLog.find_each do |drl|
       if drl.discussion.present?
-        count = drl.discussion.comments.where('updated_at <= ?', drl.discussion_last_viewed_at).count
+        count = drl.discussion.comments.where('updated_at <= ?', drl.send(last_viewed_at_column_name)).count
         drl.update_attribute(:read_comments_count, count)
       end
 
       if drl.id % 100 == 0
-        puts drl.id
+        puts 'Updating read_comments_counts for DiscussionReaders: '+drl.id.to_s
       end
     end
   end
