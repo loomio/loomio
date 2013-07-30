@@ -35,6 +35,23 @@ Feature: Inbox
     And I mark the discussion as read
     Then the discussion should disappear
 
+  Scenario: Discussion with no comments gives 1 unread
+    Given I belong to a group with a discussion
+    When I visit the inbox
+    Then I should see the discussion has 1 unread
+
+  Scenario: Discussion with 1 comment gives 2 unread
+    Given I belong to a group with a discussion
+    And the discussion has a comment
+    When I visit the inbox
+    Then I should see the discussion has 2 unread
+
+  Scenario: Read discussion with 1 unread comment gives 1 unread
+    Given I belong to a group with a discussion
+    And I have read the discussion but there is a new comment
+    When I visit the inbox
+    Then I should see the discussion has 1 unread
+
   Scenario: User marks all discussions in group as read
     Given I belong to a group with several discussions
     When I visit the inbox
@@ -47,8 +64,3 @@ Feature: Inbox
     #And I mark the discussion as hidden
     #And there is more activity on the discussion
     #Then the discussion should not show in inbox
-   
-
-
-  Scenario: Signed out user tries to view inbox
-

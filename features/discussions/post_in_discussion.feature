@@ -55,7 +55,7 @@ Feature: Post a comment in a discussion
     Given I am logged in
     And I am a member of a group
     And there is a discussion in the group
-    And the discussion has comments
+    And the discussion has a comment
     When I visit the discussion page
     Then there should be an anchor for the comment
     And I should see a permalink to the anchor for that comment
