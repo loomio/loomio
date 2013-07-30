@@ -1,3 +1,8 @@
+@import "settings";
+@import "bootstrap/mixins";
+@import "mixins";
+
+
 //contributions page
 
 .contributions {
@@ -5,32 +10,54 @@
   &.index {
     margin-top: 1em;
     .input-append { margin-bottom: 0; }
-    .span4#actions {
-      border-left: 1px solid #eee;
+    .input-prepend { margin-bottom: 5px; }
+    .span5#actions {
       margin-left: 3em;
-      padding-left: 3.4em;
       form { margin: .6em 0 0 0.2em; }
-      h2 span { font-size: .6em; }
-      .btn { margin-left: .4em; margin-top: 0; }
-      .btns { margin: .4em 0 0 2.8em; }
       #any-amount {
-        margin-top: 2.2em;
+        margin-top: .4em;
         div, select { margin-left: .6em; }
+        h3 {
+          font-weight: 400;
+          margin-bottom: .4em;
+        }
         select { width: 70px; }
-        .btn { margin-left: 1em; }
+        .btn {
+          margin-right: .2em;
+          padding: 4px 12px;
+        }
+      }
+      .btn {
+        font-size: 16px;
+        margin-left: .2em;
+        margin-top: 0;
+        padding: 6px 14px;
+
+      }
+      #container {
+        background: #D6EAF1;
+        border-left: 1px solid #eee;
+        @include border-radius(4px);
+        padding: 1em;
       }
       #one-time {
-        margin-top: 2.2em;
+        margin-top: 1.4em;
         .btn { margin-top: 0; }
-      }
-      #monthly {
-        .btns { margin-left: 3em; }
       }
     }
     .span5#description {
-      img { width: 340px; }
+      img { width: 380px; }
+      p {
+        font-size: 18px;
+        line-height: 24px;
+      }
       span { font-weight: 700;}
       #thanks { margin: 2em 0 .2em; }
+    }
+    .row#currency-desc {
+      color: #999999;
+      margin-top: .6em;
+      text-align: right;
     }
   }
 }
