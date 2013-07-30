@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130724015029) do
+ActiveRecord::Schema.define(:version => 20130728044913) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20130724015029) do
     t.integer  "discussion_id"
     t.datetime "discussion_last_viewed_at"
     t.boolean  "following",                 :default => true, :null => false
+    t.integer  "read_comments_count"
   end
 
   add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
