@@ -1,0 +1,20 @@
+.row
+  .span9
+    - set_title @group.name, "", @group.parent
+    = render '/groups/title', group: @group
+.row
+  .span5
+    %h1= t("payment_details.select_your_plan")
+.row
+  .span9#payment-options
+    = render 'payment_option', option_color: 'lt-blue', people: 10, amount: 30, group: @group
+    = render 'payment_option', option_color: 'lime', people: 25, amount: 50, group: @group
+    = render 'payment_option', option_color: 'yellow', people: 50, amount: 100, group: @group
+    = render 'payment_option', option_color: 'orange', people: 100, amount: 200, group: @group
+    #us-dollars= t("payment_details.prices_in_us_dollars")
+  .span7
+    #footer
+      = t('payment_details.footer')
+      %div= t('payment_details.contact_us_html')
+    #note-about-paypal
+      %p= t("payment_details.note_about_paypal_html")

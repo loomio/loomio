@@ -92,7 +92,7 @@ group :test do
   gem 'email_spec', '~> 1.2.1'
   gem 'poltergeist', '~> 1.3.0'
   gem 'webmock', '~> 1.9.0'
-  gem 'vcr', '~> 2.4.0'
+  gem 'vcr', '~> 2.5.0'
 end
 
 group :staging, :production do

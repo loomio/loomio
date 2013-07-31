@@ -141,7 +141,6 @@ ActiveRecord::Schema.define(:version => 20130730000000) do
     t.integer  "read_comments_count"
   end
 
-  add_index "discussion_readers", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
   add_index "discussion_readers", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
   add_index "discussion_readers", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
@@ -202,6 +201,7 @@ ActiveRecord::Schema.define(:version => 20130730000000) do
     t.text     "why_do_you_want"
     t.text     "group_core_purpose"
     t.text     "admin_notes"
+    t.boolean  "paying_subscription"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
@@ -269,6 +269,7 @@ ActiveRecord::Schema.define(:version => 20130730000000) do
     t.string   "intent"
     t.integer  "canceller_id"
     t.datetime "cancelled_at"
+    t.string   "recipient_name"
   end
 
   add_index "invitations", ["group_id"], :name => "index_invitations_on_group_id"
