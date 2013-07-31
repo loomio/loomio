@@ -870,6 +870,7 @@ en:
   show_more: "Show More"
   starting: "Starting"
   subject: "Subject"
+  terms_of_service_html: "By clicking %{button_text}, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"
   thanks: "Thanks!"
   unlike: "Unlike"
   until_close: "until close"
