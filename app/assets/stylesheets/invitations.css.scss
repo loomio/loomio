@@ -8,6 +8,7 @@ body.invitations {
   }
   &.show {
     .terms-of-service-text {
+      margin: 0 0 8px 2px;
       font-size: 1em;
       a { font-size: 1em; }
     }
