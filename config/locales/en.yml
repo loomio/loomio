@@ -172,6 +172,7 @@ en:
     header: "Welcome to your Home page"
     message: "<p>The home page shows you all of the current discussions in all the groups you are a member of.</p><p>You can start a discussion on a new topic by clicking the “Start a discussion” button.</p>"
 
+
   #
   # GROUP PAGE
   #
@@ -290,11 +291,13 @@ en:
         price1_html: "<span>US</span> $30/mo"
         price2_html: "<span>US</span> $50/mo"
         price3_html: "<span>US</span> $100/mo"
-        price4_html: "<a mailto='contact@loomio.org'>Talk to us!</a>"
+        price4_html: "<span>US</span> $200/mo"
+        price5_html: "<a mailto='contact@loomio.org'>Talk to us!</a>"
         quantity1: "Up to 10 people"
         quantity2: "Up to 25"
         quantity3: "Up to 50"
-        quantity4: "more than 100"
+        quantity4: "Up to 100"
+        quantity5: "more than 100"
       submit: "Start your free trial!"
   #
   # DISCUSSION PAGE

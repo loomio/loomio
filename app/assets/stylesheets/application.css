@@ -14,6 +14,7 @@
  *= require groups/public_groups
  *= require discussions
  *= require pages
+ *= require application_pages
  *= require notifications
  *= require motions
  *= require votes

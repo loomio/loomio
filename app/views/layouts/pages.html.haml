@@ -24,12 +24,14 @@
             %h2 collaborative decision-making
         .frontpage-nav
           =link_to('Purpose', '/pages/about#purpose')
-          %span{style: 'padding-left: 3px; padding-right: 3px'}
-            &middot;
+          %span &middot;
 
           =link_to('How it works', '/pages/about#how-it-works')
-          %span{style: 'padding-left: 3px; padding-right: 3px'}
-            &middot;
+          %span &middot;
+
+          =link_to('Pricing', '/pages/pricing')
+          %span &middot;
+
           =link_to('About us', '/pages/about#about-us')
     = yield
     = render 'footer_logged_out'
