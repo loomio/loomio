@@ -18,6 +18,7 @@ class GroupBaseController < BaseController
   end
 
   def load_membership
+    load_group
     @membership = @group.memberships.find(params[:id])
   end
 

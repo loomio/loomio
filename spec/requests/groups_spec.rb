@@ -6,7 +6,7 @@ describe "Groups" do
   context "a logged in user" do
     before :each do
       @user = create(:user)
-      @group = create(:group, name: 'Test Group', viewable_by: :members)
+      @group = create(:group, name: 'Test Group', viewable_by: 'members')
       @group.add_member!(@user)
       @discussion = create(:discussion, group: @group, author: @user)
       @motion = create(:motion, name: 'Test Motion',
@@ -59,7 +59,7 @@ describe "Groups" do
       context "members invitable by admins only" do
         pending "should be converted to cucs, broken as specs"
         before :each do
-          @group.members_invitable_by = :admins
+          @group.members_invitable_by = 'admins'
           @group.save
         end
 

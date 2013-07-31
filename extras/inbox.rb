@@ -12,6 +12,8 @@ class Inbox
   def mark_as_read!(item)
     if @user.can? :show, item
       ViewLogger.discussion_viewed(item, @user)
+    else
+      raise 'user cannot mark this item as read'
     end
   end
 
@@ -47,7 +49,8 @@ class Inbox
   end
 
   def unread_discussions_for(group)
-    Queries::UnreadDiscussions.for(@user, group).order('last_comment_at DESC').readonly(false)
+    Queries::VisibleDiscussions.new(user: @user, groups: [group]).unread.
+                                order_by_latest_comment.readonly(false)
   end
 
   def unvoted_motions_for(group)

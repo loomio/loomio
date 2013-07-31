@@ -25,6 +25,9 @@ Loomio::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  config.sass.debug_info = true
+  # support scss support in chrome devtools
+  config.sass.line_comments = false
 
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
