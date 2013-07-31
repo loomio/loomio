@@ -32,6 +32,8 @@
             &middot;
           =link_to('About us', '/about#about-us')
     = yield
+    = render 'footer_logged_out'
+
   = javascript_include_tag "frontpage"
   - if Rails.env.production? || Rails.env.staging?
     / = render 'metrics_listener_data'

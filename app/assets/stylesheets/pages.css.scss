@@ -114,6 +114,18 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.about_us, .woc.index, .we_the_people.index {
   color: black;
 
+  .pages-links {
+    border-top: none;
+    float: none;
+    margin-top: 150px;
+    padding: 10px 0 14px 0;
+    text-align: center;
+    a {
+      color: $dark-grey;
+      padding: 0 3px;
+    }
+  }
+
   .frontpage-nav {
     text-transform:lowercase;
     margin-top: 15px;

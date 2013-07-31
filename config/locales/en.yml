@@ -119,6 +119,14 @@ en:
         one:   "1 year"
         other: "%{count} years"
 
+  footer:
+    about: 'About'
+    blog: 'Blog'
+    contact: 'Contact'
+    pricing: 'Pricing'
+    privacy: 'Privacy'
+    terms: 'Terms'
+
   inbox:
     dropdown-btn: 'Inbox'
     empty: You're up to date! There are no comments you haven't seen.

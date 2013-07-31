@@ -287,16 +287,18 @@ ul.selector-list {
 #cancel-add-description:hover { color: $dark-grey; }
 a.btn-icon:hover { color: $dark-grey; }
 
-.footer{
-  padding: 3px 10px 6px 10px;
-  font-size: 90%;
+.footer {
+  border-top: 2px solid $light-grey;
+  margin-top: 150px;
+  padding: 10px 0 14px 0;
+  a {
+    color: $dark-grey;
+    padding: 0 3px;
+  }
+  .dropdown { display: inline; }
   .left{
-    width: 70%;
+    width: 50%;
     float: left;
   }
-  .right{
-    width: 30%;
-    float: left;
-    text-align: right;
-  }
+  .footer-links { float: right; }
 }
