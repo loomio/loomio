@@ -3,9 +3,6 @@
     = f.input :name
     = f.input :admin_email
     = f.input :admin_name
-    = f.input :approved_by
-    = f.input :expected_size
-    = f.input :max_size
     = f.input :description
     = f.input :admin_notes
     = f.actions
@@ -13,10 +10,5 @@
 - gr = @group_request
 
 %ul
-  - if gr.unverified?
-    %li= link_to('Resend Verification Link', resend_verification_admin_group_request_path(gr))
   - if gr.group.present?
     %li= link_to('Go to group', gr.group)
-  - if gr.approved? && gr.group.present?
-    - invitation = Invitation.where(group_id: gr.group_id, intent: 'start_group').first
-    %li= "Setup link: #{invitation_url(invitation)}"

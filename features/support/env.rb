@@ -9,6 +9,8 @@ require 'spork'
 
 require 'email_spec' # add this line if you use spork
 require 'email_spec/cucumber'
+
+require 'cucumber/rspec/doubles'
 #require 'capybara-screenshot/cucumber'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
