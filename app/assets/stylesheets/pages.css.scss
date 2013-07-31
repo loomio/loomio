@@ -117,11 +117,13 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.about_us, .woc.index, .we_the_people.index {
   color: black;
 
+  .pages-information { min-height: 200px; }
+
   .pages-links {
     border-top: none;
     float: none;
-    margin-top: 150px;
-    padding: 10px 0 14px 0;
+    margin-top: 100px;
+    padding: 10px 0 20px 0;
     text-align: center;
     a {
       color: $dark-grey;
@@ -208,11 +210,6 @@ a.btn-icon:hover { color: $dark-grey; }
   section.first{
     margin-top: 0px;
   }
-
-
-  /*.section#purpose, .section#how-it-works, .section#about-us {*/
-    /*margin-top: 6em;*/
-  /*}*/
 
   #first .inner-container{
     padding: 0 34px;

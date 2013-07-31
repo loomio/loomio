@@ -28,6 +28,8 @@ Capybara.default_wait_time = 20
 ENV['PAYPAL_USERNAME'] = 'jonny'
 ENV['PAYPAL_PASSWORD'] = '12345'
 ENV['PAYPAL_SIGNATURE'] = '54321'
+ENV['PAYPAL_ENDPOINT_URL'] = "https://api-3t.sandbox.paypal.com/nvp"
+ENV['PAYPAL_GATEWAY_URL'] = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token="
 
 # Before do |scenario|
 #   @feature_name = scenario.feature.title

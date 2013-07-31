@@ -2,14 +2,14 @@ class PaypalCheckout
   include HTTParty
   include Routing
 
-  ENDPOINT_URL = "https://api-3t.sandbox.paypal.com/nvp"
+  ENDPOINT_URL = ENV['PAYPAL_ENDPOINT_URL']
   DOLLARS_TO_PEOPLE = {30 => 10, 50 => 25, 100 => 50, 200 => 100}
   AMOUNT_OPTIONS = DOLLARS_TO_PEOPLE.keys
 
   attr_reader :response, :group
 
   def self.subscription_text_for(amount)
-    I18n.t('payment_details.description', people: DOLLARS_TO_PEOPLE[amount], amount: amount)
+    I18n.t('subscriptions.description', people: DOLLARS_TO_PEOPLE[amount], amount: amount)
   end
 
   def initialize(group: nil, amount: nil)
@@ -35,7 +35,7 @@ class PaypalCheckout
   end
 
   def gateway_url
-    "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=#{token}"
+    ENV['PAYPAL_GATEWAY_URL']+token
   end
 
   def payment_description

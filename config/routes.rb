@@ -1,15 +1,17 @@
 Loomio::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
   get "/groups", to: 'groups/public_groups#index', as: :public_groups
 
-  get "/about", to: 'base#about'
-  get "/blog", to: 'base#blog'
-  get "/contact", to: 'base#contact'
-  get "/privacy", to: 'base#privacy'
-  get "/pricing", to: 'base#pricing'
-  get "/terms_of_service", to: 'base#terms_of_service'
-
-  ActiveAdmin.routes(self)
+  scope controller: 'application_pages' do
+    get :about
+    get :blog
+    get :contact
+    get :privacy
+    get :pricing
+    get :terms_of_service
+  end
 
   resource :search, only: :show
 
@@ -147,7 +149,7 @@ Loomio::Application.routes.draw do
   root :to => 'pages#home'
 
   resources 'pages', only: [] do
-    get :about, on: :collection
+    get :about, on: :collection, as: :about
     get :blog, on: :collection
     get :privacy, on: :collection
     get :pricing, on: :collection

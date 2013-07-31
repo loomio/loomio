@@ -287,6 +287,8 @@ ul.selector-list {
 #cancel-add-description:hover { color: $dark-grey; }
 a.btn-icon:hover { color: $dark-grey; }
 
+.row-fluid.pages-information { min-height: 400px; }
+
 .footer {
   border-top: 2px solid $light-grey;
   margin-top: 150px;

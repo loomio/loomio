@@ -26,10 +26,10 @@ class Groups::SubscriptionsController < GroupBaseController
     @paypal.get_checkout_details
     @paypal.create_recurring_payment
     if @paypal.success?
-      @group.subscription = Subscription.new(amount: amount)
+      @group.subscription = Subscription.new(amount: amount, profile_id: @paypal.profile_id)
       @group.save!
       @group.reload
-      flash[:success] = "Thank you! Your subscription payment is now set up."
+      flash[:success] = t(:'subscriptions.payment_success_flash_notice')
       redirect_to group_subscription_url(@group)
     else
       redirect_to payment_failed_group_subscription_url(@group)
