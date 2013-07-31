@@ -6,31 +6,38 @@ class Groups::SubscriptionsController < GroupBaseController
   def new
     authorize! :choose_subscription_plan, @group
     if @group.has_subscription_plan?
-      redirect_to view_payment_details_group_subscriptions_url(@group)
+      redirect_to group_subscription_url(@group)
     end
   end
 
-  def checkout
+  def create
     authorize! :choose_subscription_plan, @group
-    @paypal = PaypalCheckout.new(group: @group, amount: params['amount'])
+    @paypal = PaypalCheckout.new(group: @group, amount: params['amount'].to_i)
     @paypal.setup_payment_authorization
     redirect_to @paypal.gateway_url
   end
 
   def confirm
     authorize! :choose_subscription_plan, @group
-    @paypal = PaypalConfirm.new(group: @group,
-                                amount: params['amount'],
+    amount = params['amount'].to_i
+    @paypal = PaypalSubscription.new(group: @group,
+                                amount: amount,
                                 token: params['token'])
-    puts '<<<<<< get checkout details <<<<<<'
     @paypal.get_checkout_details
-    puts @paypal.response.body
-    puts '<<<<<< create recurring payments profile <<<<<<'
-    @paypal.create_recurring_payments_profile
-    puts @paypal.response.body
+    @paypal.create_recurring_payment
+    if @paypal.success?
+      @group.create_subscription(amount: amount)
+      flash[:success] = "Thank you! Your subscription payment is now set up."
+      redirect_to group_subscription_url(@group)
+    else
+      redirect_to payment_failed_group_subscription_url(@group)
+    end
   end
 
-  def view_payment_details
+  def payment_failed
+  end
+
+  def show
     authorize! :view_payment_details, @group
     unless @group.has_subscription_plan?
       redirect_to new_group_subscription_url(@group)
@@ -41,5 +48,5 @@ class Groups::SubscriptionsController < GroupBaseController
 
   def redirect_to_group_if_pwyc
     redirect_to @group unless @group.paying_subscription?
-  end 
+  end
 end

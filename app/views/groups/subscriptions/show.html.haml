@@ -11,7 +11,7 @@
     .info-box#organisation
       %table
         %h3= t("payment_details.subscription.table.title_html")
-        - PaypalCheckout::DOLLAR_OPTIONS.each do |amount|
+        - PaypalCheckout::AMOUNT_OPTIONS.each do |amount|
           %tr
             %td= t("payment_details.subscription.table.quantity", people: PaypalCheckout::DOLLARS_TO_PEOPLE[amount])
             %td= t("payment_details.subscription.table.price_html", amount: amount)

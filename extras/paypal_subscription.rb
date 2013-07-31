@@ -1,23 +1,32 @@
-class PaypalConfirm
+class PaypalSubscription
   include HTTParty
   include Routing
 
-  attr_reader :response
+  attr_reader :recurring_payments_response, :checkout_details_response, :token
 
-  def initialize(group: nil, amount:nil, token: nil)
-    raise StandardError unless PaypalCheckout::DOLLAR_OPTIONS.include?(amount)
+  def initialize(group: nil, amount: nil, token: nil)
+    raise "invalid amount: #{amount.inspect}" unless PaypalCheckout::AMOUNT_OPTIONS.include?(amount)
     @group = group
     @token = token
     @amount = amount
   end
 
   def get_checkout_details
-    @response = self.class.post(PaypalCheckout::ENDPOINT_URL,
+    @checkout_details_response = self.class.post(PaypalCheckout::ENDPOINT_URL,
                                 body: get_checkout_details_query)
   end
 
+  def create_recurring_payment
+    @recurring_payments_response = self.class.post(PaypalCheckout::ENDPOINT_URL,
+                                body: create_recurring_payment_query)
+  end
+
   def payer_id
-    Rack::Utils.parse_nested_query(@response.body)['PAYERID']
+    Rack::Utils.parse_nested_query(@checkout_details_response.body)['PAYERID']
+  end
+
+  def success?
+    (Rack::Utils.parse_nested_query(@recurring_payments_response.body)['ACK'] == "Success")
   end
 
   def get_checkout_details_query
@@ -29,12 +38,7 @@ class PaypalConfirm
       token: @token }
   end
 
-  def create_recurring_payments_profile
-    @response = self.class.post(PaypalCheckout::ENDPOINT_URL,
-                                body: create_recurring_payments_profile_query)
-  end
-
-  def create_recurring_payments_profile_query
+  def create_recurring_payment_query
     { user: ENV['PAYPAL_USERNAME'],
       pwd: ENV['PAYPAL_PASSWORD'],
       signature: ENV['PAYPAL_SIGNATURE'],

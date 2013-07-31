@@ -1,27 +1,21 @@
 Feature: Coordinator subscribes to plan
 
-  Scenario Outline: Coordinator subscribes to plan
+  Background:
     Given I am logged in
     And I am a coordinator of a subscription group
     And I have not selected a subscription plan
+
+  Scenario: Coordinator subscribes to plan
     When I visit the new subscription page for the group
-    And I choose and pay for the plan "<plan>" <success>
-    Then I should see a page telling me I have <success> subscribed
-    And the system should store my subscription
+    And I choose and pay for the plan "$30/month"
+    Then I should see a page telling me I have subscribed
+    And the group's subscription details should be saved
 
-  @javascript
-  Scenarios: Coordinator successfully subscribes to plan
-    | plan       | success      |
-    | $30/month  | successfully |
-    | $50/month  | successfully |
-    | $100/month | successfully |
-    | $200/month | successfully |
+  Scenario: Paypal confirmation failure
+    When I visit the paypal confirmation page and give bad data
+    Then the group's subscription details should not be saved
+    And I should see a page telling me the payment failed
 
-  @javascript
-  Scenarios: Coordinator unsuccessfully subscribes to plan
-    | plan       | success        |
-    | $30/month  | unsuccessfully |
-    | $50/month  | unsuccessfully |
-    | $100/month | unsuccessfully |
-    | $200/month | unsuccessfully |
-
+  Scenario: All of the plans work
+    When I visit the new subscription page for the group
+    Then I should see buttons for all the different plans

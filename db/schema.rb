@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712035504) do
+ActiveRecord::Schema.define(:version => 20130730093311) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20130712035504) do
     t.integer  "discussion_id"
     t.datetime "discussion_last_viewed_at"
     t.boolean  "following",                 :default => true, :null => false
+    t.integer  "read_comments_count"
   end
 
   add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
@@ -354,6 +355,15 @@ ActiveRecord::Schema.define(:version => 20130712035504) do
 
   add_index "notifications", ["event_id"], :name => "index_notifications_on_event_id"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "amount"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "subscriptions", ["group_id"], :name => "index_subscriptions_on_group_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                                       :default => "",         :null => false
