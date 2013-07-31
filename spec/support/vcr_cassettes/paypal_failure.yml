@@ -32,7 +32,7 @@ http_interactions:
     uri: https://api-3t.sandbox.paypal.com/nvp
     body:
       encoding: UTF-8
-      string: user=jonny&pwd=12345&signature=54321&method=CreateRecurringPaymentsProfile&version=98&payerid=&profilestartdate=2012-12-31T11%3A05%3A00Z&desc=Up%20to%2010%20people%20(US%2430%20monthly)&billingperiod=Month&billingfrequency=1&amt=30&currencycode=USD&maxfailedpayments=3&autobilloutamt=AddToNextBilling&token=fake-token
+      string: user=jonny&pwd=12345&signature=54321&method=CreateRecurringPaymentsProfile&version=98&payerid=&profilestartdate=2013-01-01%2000%3A00%3A00%20%2B1300&desc=Up%20to%2010%20people%20(US%2430%20monthly)&billingperiod=Month&billingfrequency=1&amt=30&currencycode=USD&maxfailedpayments=3&autobilloutamt=AddToNextBilling&token=fake-token
     headers: {}
   response:
     status:
@@ -54,4 +54,4 @@ http_interactions:
       string: TIMESTAMP=2013%2d07%2d30T23%3a45%3a45Z&CORRELATIONID=88bf4e672f80f&ACK=Failure&VERSION=98&BUILD=7084400&L_ERRORCODE0=10002&L_SHORTMESSAGE0=Security%20error&L_LONGMESSAGE0=Security%20header%20is%20not%20valid&L_SEVERITYCODE0=Error
     http_version: 
   recorded_at: Tue, 30 Jul 2013 23:45:45 GMT
-recorded_with: VCR 2.4.0
+recorded_with: VCR 2.5.0

@@ -38,6 +38,7 @@ Loomio::Application.routes.draw do
     resource :subscription, only: [:new, :show, :create], controller: 'groups/subscriptions' do
       collection do
         get :confirm
+        get :payment_failed
       end
     end
 

@@ -4,7 +4,7 @@ end
 
 When(/^I choose and pay for the plan "(.*?)"$/) do |plan|
   @amount = plan.match('\d+')[0].to_i
-  Time.stub(now: Time.new(2013))
+  PaypalSubscription.any_instance.stub(start_time: Time.new(2013))
   PaypalCheckout.any_instance.stub(gateway_url:
     confirm_group_subscription_path(@group, amount: @amount, token: "T0K3N"))
   VCR.use_cassette("paypal success",
@@ -14,7 +14,7 @@ When(/^I choose and pay for the plan "(.*?)"$/) do |plan|
 end
 
 Then(/^I should see a page telling me I have subscribed$/) do
-  page.should have_content("Well done")
+  page.should have_content("Your subscription payment is now set up")
 end
 
 Then(/^the group's subscription details should be saved$/) do
@@ -25,9 +25,10 @@ Then(/^the group's subscription details should be saved$/) do
 end
 
 When(/^I visit the paypal confirmation page and give bad data$/) do
-  Time.stub(now: Time.new(2013))
+  PaypalSubscription.any_instance.stub(start_time: Time.new(2013))
   VCR.use_cassette("paypal failure",
-                   match_requests_on: [:uri, :body]) do
+                   match_requests_on: [:uri, :body],
+                   record: :new_episodes) do
     visit confirm_group_subscription_path(@group, amount: 30, token: "fake-token")
   end
 end
@@ -42,8 +43,12 @@ Then(/^I should see a page telling me the payment failed$/) do
 end
 
 Then(/^I should see buttons for all the different plans$/) do
-  page.should have_link('$30/month', :href => "/groups/#{@group.id}/subscriptions/checkout?amount=30")
-  page.should have_link('$50/month', :href => "/groups/#{@group.id}/subscriptions/checkout?amount=50")
-  page.should have_link('$100/month', :href => "/groups/#{@group.id}/subscriptions/checkout?amount=100")
-  page.should have_link('$200/month', :href => "/groups/#{@group.id}/subscriptions/checkout?amount=200")
+  page.should have_link('$30/month', :href => "/groups/#{@group.id}/subscription?amount=30")
+  page.should have_link('$50/month', :href => "/groups/#{@group.id}/subscription?amount=50")
+  page.should have_link('$100/month', :href => "/groups/#{@group.id}/subscription?amount=100")
+  page.should have_link('$200/month', :href => "/groups/#{@group.id}/subscription?amount=200")
+end
+
+When(/^view screenshot$/) do
+  view_screenshot
 end
