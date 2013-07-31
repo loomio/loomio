@@ -579,32 +579,31 @@ en:
   # PAYMENT DETAILS
   #
 
-  # TODO: rename to subscriptions and scope to controller actions where possible
   subscriptions:
     current_plan_html: "Your current plan is: <strong>%{subscription_plan}</strong>"
-    details: "Payment details"
-    footer: "Is your group larger than 100 people?"
-    select_your_plan: "Select your plan"
-    note_about_paypal_html: "Our payment system currently uses Paypal. If you can't use Paypal, please contact us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a> to set up a payment method that works for you."
-    monthly_amount: "$%{amount}/month"
-    payment_plan_contact_html: "To update your payment plan please contact us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a>"
-    people_in_group: "You have %{people_in_group} people in your group"
-    people_limit_html: "Up to <strong>%{people}</strong> people"
-    prices_in_us_dollars: "Prices are in US dollars"
-    footer: "Is your group larger than 100 people?"
-    contact_us_html: "Email us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a> and we'll figure something out :)"
-    description: "Up to %{people} people (US$%{amount} monthly)"
+    details: Payment details
+    footer: Is your group larger than 100 people?
+    select_your_plan: Select your plan
+    note_about_paypal_html: Our payment system currently uses Paypal. If you can't use Paypal, please contact us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a> to set up a payment method that works for you.
+    monthly_amount: $%{amount}/month
+    payment_plan_contact_html: To update your payment plan please contact us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a>
+    people_in_group: You have %{people_in_group} people in your group
+    people_limit_html: Up to <strong>%{people}</strong> people
+    prices_in_us_dollars: Prices are in US dollars
+    footer: Is your group larger than 100 people?
+    contact_us_html: Email us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a> and we'll figure something out :)
+    description: Up to %{people} people (US$%{amount} monthly)
     payment_failed_title:  Oops! Looks like something went wrong.
     payment_failed_body_html: <p>For some reason your payment couldn't be processed.</p> <p>Please send us an email at <a href="mailto:accounts@loomio.org">accounts@loomio.org</a> and we'll help you out.</p>
     payment_success_flash_notice: Thank you! Your subscription payment is now set up. You'll be billed monthly starting today.
     subscription:
       table:
-        description_html: "You'll be asked to enter credit card details at the end of your <span>30-day free trial.</span>"
-        price_html: "<span>US</span> $%{amount}/mo"
-        price_talk_html: "<a href='mailto:accounts@loomio.org' target='_blank'>Talk to us!</a>"
-        quantity: "Up to %{people} people"
-        quantity_more: "More than 100"
-        title_html: "<strong>Payment plans</strong>"
+        description_html: You'll be asked to enter credit card details at the end of your <span>30-day free trial.</span>
+        price_html: <span>US</span> $%{amount}/mo
+        price_talk_html: <a href='mailto:accounts@loomio.org' target='_blank'>Talk to us!</a>
+        quantity: Up to %{people} people
+        quantity_more: More than 100
+        title_html: <strong>Payment plans</strong>
 
   #
   # SEARCH
