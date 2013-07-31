@@ -3,8 +3,10 @@ Feature: Start new group
   As a group coordinator
   I want to create a new group
 
-Scenario: Visitor creates subscripton group
-  Given I am on the home page of the website
+@javascript
+Scenario: Guest creates subscripton group
+  Given I am a guest
+  And I am on the home page of the website
   When I go to start a new group
   And I choose the subscription plan
   And I fill in and submit the form
@@ -26,8 +28,10 @@ Scenario: User creates subscripton group
   And I setup the group
   Then I should see the group page without a contribute link
 
+@javascript
 Scenario: Logged out user creates subscripton group
-  Given I am on the home page of the website
+  Given I am a logged out user
+  And I am on the home page of the website
   When I go to start a new group
   And I choose the subscription plan
   And I fill in and submit the form
@@ -38,8 +42,9 @@ Scenario: Logged out user creates subscripton group
   And I setup the group
   Then I should see the group page without a contribute link
 
-Scenario: Visitor creates Pay What You Can group
-  Given I am on the home page of the website
+Scenario: Guest creates Pay What You Can group
+  Given I am a guest
+  And I am on the home page of the website
   When I go to start a new group
   And I choose the pay what you can plan
   And I fill in and submit the form
@@ -63,7 +68,8 @@ Scenario: User existing user creates Pay What You Can group
   Then I should see the group page with a contribute link
 
 Scenario: Logged out user creates Pay What You Can group
-  Given I am on the home page of the website
+  Given I am a logged out user
+  And I am on the home page of the website
   When I go to start a new group
   And I choose the pay what you can plan
   And I fill in and submit the form

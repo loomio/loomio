@@ -1,3 +1,11 @@
+Given(/^I am a guest$/) do
+  @user = FactoryGirl.build(:user, name: "Herby Hancock", email: "herb@home.com")
+end
+
+Given(/^I am a logged out user$/) do
+  @user = FactoryGirl.create(:user, name: "Herby Hancock", email: "herb@home.com")
+end
+
 Given(/^I am on the home page of the website$/) do
   visit '/'
 end
@@ -15,7 +23,6 @@ When(/^I go to start a new group$/) do
 end
 
 When(/^I fill in and submit the form$/) do
-  @user = FactoryGirl.create(:user, name: "Herby Hancock", email: "herb@home.com")
   @group_name = "Herby's Erbs"
   fill_in :group_request_admin_name, with: @user.name
   fill_in :group_request_admin_email, with: @user.email
