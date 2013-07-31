@@ -580,7 +580,7 @@ en:
   #
 
   # TODO: rename to subscriptions and scope to controller actions where possible
-  payment_details:
+  subscriptions:
     current_plan_html: "Your current plan is: <strong>%{subscription_plan}</strong>"
     details: "Payment details"
     footer: "Is your group larger than 100 people?"
@@ -594,6 +594,9 @@ en:
     footer: "Is your group larger than 100 people?"
     contact_us_html: "Email us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a> and we'll figure something out :)"
     description: "Up to %{people} people (US$%{amount} monthly)"
+    payment_failed_title:  Oops! Looks like something went wrong.
+    payment_failed_body_html: <p>For some reason your payment couldn't be processed.</p> <p>Please send us an email at <a href="mailto:accounts@loomio.org">accounts@loomio.org</a> and we'll help you out.</p>
+    payment_success_flash_notice: Thank you! Your subscription payment is now set up. You'll be billed monthly starting today.
     subscription:
       table:
         description_html: "You'll be asked to enter credit card details at the end of your <span>30-day free trial.</span>"

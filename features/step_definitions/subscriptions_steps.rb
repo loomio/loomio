@@ -16,7 +16,7 @@ When(/^I select Payment details$/) do
 end
 
 Then(/^I should see the payment details for my group$/) do
-  page.should have_css('body.subscriptions.view_payment_details')
+  page.should have_css('body.subscriptions.show')
 end
 
 Then(/^I should be told that I can email to change my plan$/) do
@@ -40,3 +40,20 @@ Given(/^I am a coordinator of a PWYC group$/) do
   @group = FactoryGirl.create :group, paying_subscription: false
   @group.add_admin!(@user)
 end
+
+When(/^I visit the new subscription plan page$/) do
+  visit new_group_subscription_path(@group)
+end
+
+Then(/^I should be redirected to see my existing subscription$/) do
+  page.should have_css('body.subscriptions.show')
+end
+
+When(/^I visit the show subscription plan page$/) do
+  visit group_subscription_path(@group)
+end
+
+Then(/^I should be redirected to the new subscription plan page$/) do
+  page.should have_css('body.subscriptions.new')
+end
+

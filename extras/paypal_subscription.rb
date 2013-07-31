@@ -50,7 +50,7 @@ class PaypalSubscription
       version: "98",
       payerid: payer_id,
       profilestartdate: start_time,
-      desc: I18n.t('payment_details.description',
+      desc: I18n.t('subscriptions.description',
                    people: PaypalCheckout::DOLLARS_TO_PEOPLE[@amount],
                    amount: @amount),
       billingperiod: "Month",
