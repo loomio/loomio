@@ -9,7 +9,7 @@ class ContributionsController < BaseController
 
   def create
     amount = params[:amount]
-    currency = params[:currency]
+    currency = 'USD' #dumb fix instead of removing all currency support code
     if amount.present? && currency.present? and amount.to_i > 0
       wrapper = SwipeWrapper.new
       identifier = wrapper.create_tx_identifier_for(user: current_user, amount: amount, currency: currency)
