@@ -2,6 +2,13 @@ Loomio::Application.routes.draw do
 
   get "/groups", to: 'groups/public_groups#index', as: :public_groups
 
+  get "/about", to: 'base#about'
+  get "/blog", to: 'base#blog'
+  get "/contact", to: 'base#contact'
+  get "/privacy", to: 'base#privacy'
+  get "/pricing", to: 'base#pricing'
+  get "/terms_of_service", to: 'base#terms_of_service'
+
   ActiveAdmin.routes(self)
 
   resource :search, only: :show
@@ -139,10 +146,12 @@ Loomio::Application.routes.draw do
 
   root :to => 'pages#home'
 
-  scope controller: 'pages' do
-    get :about
-    get :privacy
-    get :terms_of_service
+  resources 'pages', only: [] do
+    get :about, on: :collection
+    get :blog, on: :collection
+    get :privacy, on: :collection
+    get :pricing, on: :collection
+    get :terms_of_service, on: :collection
     get :browser_not_supported
   end
 
@@ -166,13 +175,10 @@ Loomio::Application.routes.draw do
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
 
   #redirect old pages:
-  get '/pages/how*it*works' => redirect('/about#how-it-works')
   get '/pages/home' => redirect('/')
   get '/get*involved' => redirect('/about#how-it-works')
   get '/how*it*works' => redirect('/about#how-it-works')
   get '/pages/get*involved' => redirect('/about')
-  get '/pages/about' => redirect('/about#about-us')
-  get '/pages/contact' => redirect('/about#about-us')
-  get '/contact' => redirect('/about#about-us')
-  get '/pages/privacy' => redirect('/privacy_policy')
+  get '/pages/how*it*works' => redirect('/about#how-it-works')
+  get '/pages/contact' => redirect('/pages/about#about-us')
 end
