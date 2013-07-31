@@ -212,19 +212,12 @@ describe "User abilities" do
         discussion.reload
       end
       it { should be_able_to(:show, group) }
-<<<<<<< HEAD
       it { should_not be_able_to(:view_payment_details, group) }
       it { should_not be_able_to(:choose_subscription_plan, group) }
       it { should be_able_to(:create, my_membership_request) }
       it { should be_able_to(:cancel, my_membership_request) }
       it { should_not be_able_to(:cancel, other_membership_request) }
-||||||| merged common ancestors
-      it { should be_able_to(:create, my_membership_request) }
-      it { should be_able_to(:cancel, my_membership_request) }
-      it { should_not be_able_to(:cancel, other_membership_request) }
-=======
       it { should be_able_to(:show, discussion) }
->>>>>>> be09849ab4014f6fcf638695b0f133ffcd093ae6
       it { should be_able_to(:get_and_clear_new_activity, motion) }
       it { should_not be_able_to(:update, group) }
       it { should_not be_able_to(:email_members, group) }
