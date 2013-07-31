@@ -59,7 +59,7 @@ http_interactions:
     uri: https://api-3t.sandbox.paypal.com/nvp
     body:
       encoding: UTF-8
-      string: user=jonny&pwd=12345&signature=54321&method=CreateRecurringPaymentsProfile&version=98&payerid=HR2KKLPAN43TL&profilestartdate=2012-12-31T11%3A05%3A00Z&desc=Up%20to%2010%20people%20(US%2430%20monthly)&billingperiod=Month&billingfrequency=1&amt=30&currencycode=USD&maxfailedpayments=3&autobilloutamt=AddToNextBilling&token=T0K3N
+      string: user=jonny&pwd=12345&signature=54321&method=CreateRecurringPaymentsProfile&version=98&payerid=HR2KKLPAN43TL&profilestartdate=2013-01-01%2000%3A00%3A00%20%2B1300&desc=Up%20to%2010%20people%20(US%2430%20monthly)&billingperiod=Month&billingfrequency=1&amt=30&currencycode=USD&maxfailedpayments=3&autobilloutamt=AddToNextBilling&token=T0K3N
     headers: {}
   response:
     status:
@@ -81,4 +81,4 @@ http_interactions:
       string: PROFILEID=I%2dPNEE3FYXG819&PROFILESTATUS=ActiveProfile&TIMESTAMP=2013%2d07%2d30T21%3a07%3a12Z&CORRELATIONID=5535c722c1bb7&ACK=Success&VERSION=98&BUILD=7084400
     http_version: 
   recorded_at: Tue, 30 Jul 2013 20:55:01 GMT
-recorded_with: VCR 2.4.0
+recorded_with: VCR 2.5.0

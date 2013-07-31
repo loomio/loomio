@@ -38,6 +38,7 @@ Loomio::Application.routes.draw do
     resource :subscription, only: [:new, :show, :create], controller: 'groups/subscriptions' do
       collection do
         get :confirm
+        get :payment_failed
       end
     end
 
@@ -141,6 +142,7 @@ Loomio::Application.routes.draw do
   scope controller: 'pages' do
     get :about
     get :privacy
+    get :terms_of_service
     get :browser_not_supported
   end
 

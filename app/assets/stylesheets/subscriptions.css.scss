@@ -3,7 +3,7 @@
 @import "mixins";
 
 body.subscriptions {
-  &.new, &.view_payment_details {
+  &.new, &.show {
     color: #000;
     h1 { margin: 6px 0 22px 0; }
     p {
@@ -45,7 +45,7 @@ body.subscriptions {
      }
     #note-about-paypal { margin-top: 15px; }
   }
-  &.view_payment_details {
+  &.show {
     .info-box {
       @include border-radius(4px);
       background-color: #DEF1DE;

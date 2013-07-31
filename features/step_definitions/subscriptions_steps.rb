@@ -4,11 +4,10 @@ Given(/^I am a coordinator of a subscription group$/) do
 end
 
 Given(/^I have not selected a subscription plan$/) do
-  Group.any_instance.stub(has_subscription_plan?: false)
 end
 
 Given(/^I have already selected a subscription plan$/) do
-  Group.any_instance.stub(has_subscription_plan?: true)
+  @group.create_subscription(amount: 30)
 end
 
 When(/^I select Payment details$/) do

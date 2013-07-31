@@ -45,7 +45,7 @@ class PaypalSubscription
       method: "CreateRecurringPaymentsProfile",
       version: "98",
       payerid: payer_id,
-      profilestartdate: (Time.now + 5.minutes).utc.iso8601,
+      profilestartdate: start_time,
       desc: I18n.t('payment_details.description',
                    people: PaypalCheckout::DOLLARS_TO_PEOPLE[@amount],
                    amount: @amount),
@@ -56,5 +56,9 @@ class PaypalSubscription
       maxfailedpayments: "3",
       autobilloutamt: "AddToNextBilling",
       token: @token }
+  end
+  
+  def start_time
+    (Time.now + 5.minutes).utc.iso8601
   end
 end
