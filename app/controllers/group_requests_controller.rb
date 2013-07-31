@@ -1,37 +1,47 @@
 class GroupRequestsController < BaseController
-  before_filter :authenticate_user!, except: [:verify, :new, :create, :confirmation]
-  before_filter :already_verified, only: :verify
-
-  def new
-    @group_request = GroupRequest.new
-  end
+  before_filter :authenticate_user!, except: [:create, :confirmation, :selection, :subscription, :pwyc]
+  before_filter :load_initialize, only: [:subscription, :pwyc]
 
   def create
     @group_request = GroupRequest.new(params[:group_request])
+    @paying_subscription = params[:group_request][:paying_subscription]
     if @group_request.save
-      StartGroupMailer.verification(@group_request).deliver
-      redirect_to group_request_confirmation_url
+      @setup_group = SetupGroup.new(@group_request)
+      @setup_group.setup(@paying_subscription)
+      redirect_to confirmation_group_requests_url
     else
-      render action: 'new'
+      if @paying_subscription == 'true'
+        @group_request.paying_subscription = true
+        render 'subscription'
+      else
+        @group_request.paying_subscription = false
+        render 'pwyc'
+      end
     end
-  end
-
-  def verify
-    group_request.verify!
   end
 
   def confirmation
   end
 
+  def selection
+  end
+
+  def subscription
+    @group_request.paying_subscription = true
+  end
+
+  def pwyc
+    @group_request.paying_subscription = false
+  end
 
   private
 
-  def group_request
-    return @group_request if @group_request
-    @group_request = GroupRequest.find_by_token(params[:token])
+  def load_initialize
+    @group_request = GroupRequest.new
+    if user_signed_in?
+      @group_request.admin_name = current_user.name
+      @group_request.admin_email = current_user.email
+    end
   end
 
-  def already_verified
-    render 'application/display_error', locals: { message: t('error.group_request_already_verified') } if group_request.verified?
-  end
 end

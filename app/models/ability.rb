@@ -20,13 +20,29 @@ class Ability
       end
     end
 
-    can [:update, 
-         :email_members, 
-         :edit_privacy, 
+    can [:update,
+         :email_members,
+         :edit_privacy,
          :hide_next_steps,
          :archive], Group do |group|
       group.admins.include?(user)
     end
+    can :show, Group, :viewable_by => :everyone
+    can :show, Group, :viewable_by => :members, :id => user.group_ids
+    can :show, Group, :viewable_by => :parent_group_members,
+                      :parent_id => user.group_ids
+    can [:update, :email_members, :edit_privacy, :hide_next_steps], Group, :id => user.adminable_group_ids
+    # TODO: Refactor below to use subscription resource
+    can [:view_payment_details, :choose_subscription_plan], Group, :id => user.adminable_group_ids, :parent_id => nil
+
+    can :edit_description, Group, :id => user.group_ids
+    can [:add_subgroup, :get_members], Group, :id => user.group_ids
+    can [:add_members, :manage_membership_requests], Group, :members_invitable_by => :members,
+                             :id => user.group_ids
+    can [:add_members, :manage_membership_requests], Group, :members_invitable_by => :admins,
+                             :id => user.adminable_group_ids
+    can :archive, Group, :id => user.adminable_group_ids
+    can [:request_membership], Group
 
     can [:add_subgroup,
          :edit_description,
@@ -34,7 +50,7 @@ class Ability
       group.members.include?(user)
     end
 
-    can [:add_members, 
+    can [:add_members,
          :manage_membership_requests], Group do |group|
       case group.members_invitable_by
       when 'members'
@@ -87,15 +103,15 @@ class Ability
     can :destroy, Discussion, group_id: user.adminable_group_ids
     can :move, Discussion, group_id: user.adminable_group_ids
 
-    can [:unfollow, 
-         :add_comment, 
-         :new_proposal, 
-         :create, 
-         :update_description, 
-         :edit_title, 
-         :show_description_history, 
-         :preview_version, 
-         :update_version, 
+    can [:unfollow,
+         :add_comment,
+         :new_proposal,
+         :create,
+         :update_description,
+         :edit_title,
+         :show_description_history,
+         :preview_version,
+         :update_version,
          :show], Discussion, :group_id => user.group_ids
 
     can :destroy, Comment, user_id: user.id
