@@ -25,6 +25,10 @@ class PaypalSubscription
     Rack::Utils.parse_nested_query(@checkout_details_response.body)['PAYERID']
   end
 
+  def profile_id
+    Rack::Utils.parse_nested_query(@recurring_payments_response.body)['PROFILEID']
+  end
+
   def success?
     (Rack::Utils.parse_nested_query(@recurring_payments_response.body)['ACK'] == "Success")
   end
@@ -57,7 +61,7 @@ class PaypalSubscription
       autobilloutamt: "AddToNextBilling",
       token: @token }
   end
-  
+
   def start_time
     (Time.now + 5.minutes).utc.iso8601
   end

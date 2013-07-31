@@ -22,6 +22,7 @@ Then(/^the group's subscription details should be saved$/) do
   @subscription = @group.subscription
   @subscription.amount.should == @amount
   @subscription.should be_valid
+  @subscription.profile_id.should_not be_blank
 end
 
 When(/^I visit the paypal confirmation page and give bad data$/) do
