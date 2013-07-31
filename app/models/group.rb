@@ -1,6 +1,6 @@
 class Group < ActiveRecord::Base
 
-  PERMISSION_CATEGORIES = [:everyone, :members, :admins, :parent_group_members]
+  PERMISSION_CATEGORIES = ['everyone', 'members', 'admins', 'parent_group_members']
 
   attr_accessible :name, :viewable_by, :parent_id, :parent, :cannot_contribute,
                   :members_invitable_by, :email_new_motion, :description, :setup_completed_at,
@@ -52,8 +52,7 @@ class Group < ActiveRecord::Base
 
   has_many :members,
            through: :memberships,
-           source: :user,
-           conditions: { :invitation_token => nil }
+           source: :user
 
   has_many :pending_invitations,
            class_name: 'Invitation',
@@ -68,6 +67,8 @@ class Group < ActiveRecord::Base
 
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
+
+  has_one :subscription, dependent: :destroy
 
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
@@ -91,80 +92,21 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def beta_features
-    if parent && (parent.beta_features == true)
-      true
-    else
-      self[:beta_features]
-    end
+  def archived?
+    self.archived_at.present?
   end
 
-  def beta_features?
-    beta_features
-  end
-
-  def viewable_by
-    value = read_attribute(:viewable_by)
-    value.to_sym if value.present?
-  end
-
-  def viewable_by=(value)
-    write_attribute(:viewable_by, value.to_s)
+  def viewable_by?(user)
+    Ability.new(user).can?(:show, self)
   end
 
   def members_can_invite?
-    members_invitable_by == :members
-  end
-
-  def members_invitable_by
-    value = read_attribute(:members_invitable_by)
-    value.to_sym if value.present?
-  end
-
-  def members_invitable_by=(value)
-    write_attribute(:members_invitable_by, value.to_s)
-  end
-
-  def root_name
-    if parent
-      parent_name
-    else
-      name
-    end
+    members_invitable_by == 'members'
   end
 
   def parent_members_visible_to(user)
     parent.users.sorted_by_name
   end
-
-  def activity_since_last_viewed?(user)
-    membership = membership(user)
-    if membership
-      new_comments_since_last_looked_at_group = discussions
-        .includes(:comments)
-        .where('comments.user_id <> ? AND comments.created_at > ?' , user.id, membership.group_last_viewed_at)
-        .count > 0
-      new_comments_since_last_looked_at_discussions = discussions
-        .joins('INNER JOIN discussion_read_logs ON discussions.id = discussion_read_logs.discussion_id')
-        .where('discussion_read_logs.user_id = ? AND discussions.last_comment_at > discussion_read_logs.discussion_last_viewed_at',  user.id)
-        .count > 0
-      unread_comments = new_comments_since_last_looked_at_group &&
-                        new_comments_since_last_looked_at_discussions
-
-      # TODO: Refactor this to an active record query and write tests for it
-      unread_new_discussions = Discussion.find_by_sql(["
-        (SELECT discussions.id FROM discussions WHERE group_id = ? AND discussions.created_at > ?)
-        EXCEPT
-        (SELECT discussions.id FROM discussions
-         INNER JOIN discussion_read_logs ON discussions.id = discussion_read_logs.discussion_id
-         WHERE discussions.group_id = ? AND discussion_read_logs.user_id = ?);",
-        id, membership.group_last_viewed_at, id, user.id])
-
-      return true if unread_comments || unread_new_discussions.present?
-    end
-    false
-  end
-
 
   # would be nice if the following 4 methods were reduced to just one - is_sub_group
   # parent and top_level are the less nice terms
@@ -266,6 +208,15 @@ class Group < ActiveRecord::Base
     self.full_name = calculate_full_name
   end
 
+  def has_subscription_plan?
+    subscription.present?
+  end
+
+  def subscription_plan
+    subscription.amount
+  end
+
+
   private
 
   def calculate_full_name
@@ -282,11 +233,11 @@ class Group < ActiveRecord::Base
 
   def set_defaults
     if is_a_subgroup?
-      self.viewable_by ||= :parent_group_members
+      self.viewable_by ||= 'parent_group_members'
     else
-      self.viewable_by ||= :members
+      self.viewable_by ||= 'members'
     end
-    self.members_invitable_by ||= :members
+    self.members_invitable_by ||= 'members'
   end
 
   def limit_inheritance

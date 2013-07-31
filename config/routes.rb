@@ -16,16 +16,16 @@ Loomio::Application.routes.draw do
   match '/inbox/mark_all_as_read', to: 'inbox#mark_all_as_read', as: :mark_all_as_read_inbox
   match '/inbox/unfollow', to: 'inbox#unfollow', as: :unfollow_inbox
 
-
   resources :invitations, only: [:show]
 
-  resources :group_requests, only: [:create, :new] do
-    get :verify, on: :member
+  resources :group_requests, only: [:create] do
+    collection do
+      get :selection
+      get :subscription
+      get :pwyc
+      get :confirmation
+    end
   end
-
-  match "/request_new_group", to: "group_requests#new", as: :request_new_group
-
-  match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
 
   resources :groups, except: [:index, :new] do
     resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
@@ -33,6 +33,12 @@ Loomio::Application.routes.draw do
       member do
        post :make_admin
        post :remove_admin
+      end
+    end
+    resource :subscription, only: [:new, :show, :create], controller: 'groups/subscriptions' do
+      collection do
+        get :confirm
+        get :payment_failed
       end
     end
 
@@ -152,6 +158,9 @@ Loomio::Application.routes.draw do
   resources :we_the_people, only: :index do
     post :send_request, on: :collection
   end
+
+  #redirect old request for new group
+  match "/request_new_group", to: "group_requests#selection"
 
   #redirect old invites
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"

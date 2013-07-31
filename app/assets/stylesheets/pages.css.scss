@@ -11,7 +11,7 @@ html { height: 100%; }
 body {
   background-color: $main-background;
   height: 100%;
-  color: $dark-grey;
+  color: #000;
 }
 
 hr {
@@ -20,10 +20,10 @@ hr {
 
 // Override bootstrap 2.3 headers with 2.0.3 styles
 h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 .4em;
+  margin: 0 0 0.4em;
   font-family: inherit;
   font-weight: bold;
-  color: inherit;
+  color: #000;
   text-rendering: optimizelegibility;
 }
 h1 {
@@ -268,3 +268,12 @@ a.btn-icon:hover { color: $dark-grey; }
 }
 
 .sessions.new section { margin-top: 0; }
+
+body.pages.home {
+  #button-container {
+    margin-top: 24px;
+    text-align: center;
+    a { width: 200px; }
+  }
+}
+

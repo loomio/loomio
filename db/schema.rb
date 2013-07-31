@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130629092802) do
+ActiveRecord::Schema.define(:version => 20130730093311) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -77,8 +77,7 @@ ActiveRecord::Schema.define(:version => 20130629092802) do
   add_index "comment_votes", ["user_id"], :name => "index_comment_votes_on_user_id"
 
   create_table "comments", :force => true do |t|
-    t.integer  "commentable_id",      :default => 0
-    t.string   "commentable_type",    :default => ""
+    t.integer  "discussion_id",       :default => 0
     t.string   "title",               :default => ""
     t.text     "body",                :default => ""
     t.string   "subject",             :default => ""
@@ -92,7 +91,8 @@ ActiveRecord::Schema.define(:version => 20130629092802) do
     t.integer  "comment_votes_count", :default => 0,     :null => false
   end
 
-  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["discussion_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["discussion_id"], :name => "index_comments_on_discussion_id"
   add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
@@ -131,18 +131,19 @@ ActiveRecord::Schema.define(:version => 20130629092802) do
   add_index "did_not_votes", ["motion_id"], :name => "index_did_not_votes_on_motion_id"
   add_index "did_not_votes", ["user_id"], :name => "index_did_not_votes_on_user_id"
 
-  create_table "discussion_read_logs", :force => true do |t|
+  create_table "discussion_readers", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.datetime "discussion_last_viewed_at"
-    t.boolean  "following",                 :default => true, :null => false
+    t.datetime "last_read_at"
+    t.boolean  "following",           :default => true, :null => false
+    t.integer  "read_comments_count"
   end
 
-  add_index "discussion_read_logs", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
-  add_index "discussion_read_logs", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
-  add_index "discussion_read_logs", ["user_id"], :name => "index_motion_read_logs_on_user_id"
+  add_index "discussion_readers", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
+  add_index "discussion_readers", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
+  add_index "discussion_readers", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
   create_table "discussions", :force => true do |t|
     t.integer  "group_id"
@@ -155,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20130629092802) do
     t.boolean  "uses_markdown",   :default => true,  :null => false
     t.integer  "total_views",     :default => 0,     :null => false
     t.boolean  "is_deleted",      :default => false, :null => false
+    t.integer  "comments_count",  :default => 0,     :null => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -200,6 +202,7 @@ ActiveRecord::Schema.define(:version => 20130629092802) do
     t.text     "why_do_you_want"
     t.text     "group_core_purpose"
     t.text     "admin_notes"
+    t.boolean  "paying_subscription"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
@@ -267,6 +270,7 @@ ActiveRecord::Schema.define(:version => 20130629092802) do
     t.string   "intent"
     t.integer  "canceller_id"
     t.datetime "cancelled_at"
+    t.string   "recipient_name"
   end
 
   add_index "invitations", ["group_id"], :name => "index_invitations_on_group_id"
@@ -353,6 +357,15 @@ ActiveRecord::Schema.define(:version => 20130629092802) do
   add_index "notifications", ["event_id"], :name => "index_notifications_on_event_id"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "amount"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "subscriptions", ["group_id"], :name => "index_subscriptions_on_group_id"
+
   create_table "users", :force => true do |t|
     t.string   "email",                                                       :default => "",         :null => false
     t.string   "encrypted_password",                           :limit => 128, :default => ""
@@ -368,7 +381,6 @@ ActiveRecord::Schema.define(:version => 20130629092802) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "unconfirmed_email"
-    t.string   "invitation_token",                             :limit => 60
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer  "invitation_limit"
@@ -396,7 +408,6 @@ ActiveRecord::Schema.define(:version => 20130629092802) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"
   add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unsubscribe_token"], :name => "index_users_on_unsubscribe_token", :unique => true

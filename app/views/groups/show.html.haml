@@ -16,9 +16,7 @@
       #all-discussions-loading
         %li.selector-item.loading= t(:loading)
       #discussions-with-motions
-        - @discussions.with_current_motions_user_has_not_voted_on.each do |discussion|
-          %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
-        - @discussions.with_current_motions_user_has_voted_on.each do |discussion|
+        - @discussions.with_open_motions.order('motions.closing_at ASC').each do |discussion|
           %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
         .discussion-with-motion-divider.hidden
       #group-discussions.hidden

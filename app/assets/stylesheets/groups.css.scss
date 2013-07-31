@@ -170,3 +170,7 @@ body.groups {
   font-size: 0.6em;
   text-align: center;
 }
+
+body.group_setup.setup {
+  .control-group.radio_buttons { margin-bottom: 20px; }
+}

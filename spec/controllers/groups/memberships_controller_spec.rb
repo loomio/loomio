@@ -38,12 +38,6 @@ describe Groups::MembershipsController do
         it { flash[:notice].should =~ /Member removed/ }
         it { response.should redirect_to group_memberships_path(@membership.group)}
         it { @group.users.should_not include(@new_user) }
-
-        context "that was already removed" do
-          before { delete :destroy, :id => @membership.id }
-
-          it { response.should redirect_to(@group) }
-        end
       end
 
       it 'cannot remove an admin' do

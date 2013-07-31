@@ -1,0 +1,20 @@
+.row
+  .span9
+    - set_title @group.name, "", @group.parent
+    = render '/groups/title', group: @group
+    %h1= t("payment_details.details")
+    %p= t("payment_details.current_plan_html", subscription_plan: PaypalCheckout.subscription_text_for(@group.subscription_plan))
+    %p= t("payment_details.people_in_group", people_in_group: @group.members.count)
+    %p= t("payment_details.payment_plan_contact_html")
+.row
+  .span4
+    .info-box#organisation
+      %table
+        %h3= t("payment_details.subscription.table.title_html")
+        - PaypalCheckout::AMOUNT_OPTIONS.each do |amount|
+          %tr
+            %td= t("payment_details.subscription.table.quantity", people: PaypalCheckout::DOLLARS_TO_PEOPLE[amount])
+            %td= t("payment_details.subscription.table.price_html", amount: amount)
+        %tr
+          %td= t("payment_details.subscription.table.quantity_more")
+          %td= t("payment_details.subscription.table.price_talk_html")

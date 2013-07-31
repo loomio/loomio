@@ -16,7 +16,6 @@ gem 'jqplot-rails', '~> 0.3'
 gem 'rails-backbone', '~> 0.7.2'
 gem 'aasm', '~> 3.0.3'
 gem 'cancan', '~> 1.6.7'
-gem 'acts_as_commentable_with_threading', '~> 1.1.2'
 gem 'draper', '~> 0.11.1' # can this be removed?
 gem 'exception_notification', '~> 2.6.1'
 gem 'browser', '~> 0.1.3' # what is this?
@@ -86,6 +85,7 @@ group :development do
   gem 'launchy', '~> 2.0.5'
   gem 'spork-rails', '~> 3.2.1'
   gem 'awesome_print', '~> 1.0.2'
+  gem 'quiet_assets', '~> 1.0.2'
 end
 
 group :test do
@@ -93,7 +93,7 @@ group :test do
   gem 'email_spec', '~> 1.2.1'
   gem 'poltergeist', '~> 1.3.0'
   gem 'webmock', '~> 1.9.0'
-  gem 'vcr', '~> 2.4.0'
+  gem 'vcr', '~> 2.5.0'
 end
 
 group :staging, :production do

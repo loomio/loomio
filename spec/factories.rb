@@ -27,7 +27,8 @@ FactoryGirl.define do
   factory :group do
     sequence(:name) { Faker::Name.name }
     description 'A description for this group'
-    viewable_by :everyone
+    viewable_by 'everyone'
+    members_invitable_by 'members'
     after(:create) do |group, evaluator|
       user = FactoryGirl.create(:user)
       if group.parent.present?
@@ -55,7 +56,7 @@ FactoryGirl.define do
 
   factory :comment do
     user
-    association :commentable, factory: :discussion
+    discussion
     title Faker::Lorem.sentence(2)
     body 'body of the comment'
 
@@ -85,10 +86,47 @@ FactoryGirl.define do
     end
   end
 
+  factory :current_motion, class: Motion do
+    name { Faker::Name.name }
+    association :author, :factory => :user
+    description 'current motion'
+    discussion
+    close_at_date { 5.days.from_now.to_date.to_s }
+    close_at_time '16:00'
+    close_at_time_zone 'Wellington'
+    after(:build) do |motion|
+      motion.group.parent.add_member!(motion.author) if motion.group.parent
+      motion.group.add_member!(motion.author)
+    end
+    after(:create) do |motion|
+      motion.group.save
+    end
+
+  end
+
   factory :motion_read_log do
     user
     motion
   end
+
+  factory :group_setup do
+    group
+    group_name Faker::Name.name
+    group_description "My text outlining the group"
+    viewable_by 'members'
+    members_invitable_by 'admins'
+    discussion_title Faker::Name.name
+    discussion_description "My text outlining the discussion"
+    motion_title {Faker::Name.name}
+    motion_description "My text outlining the proposal"
+    close_at_date (Date.today + 3.day).strftime("%d-%m-%Y")
+    close_at_time "12:00"
+    close_at_time_zone "Wellington"
+    admin_email Faker::Internet.email
+    recipients "#{Faker::Internet.email}, #{Faker::Internet.email}"
+    message_subject "Welcome to our world"
+    message_body "Please entertain me"
+   end
 
   factory :vote do
     user
@@ -105,30 +143,8 @@ FactoryGirl.define do
 
   factory :group_request do
     name { Faker::Name.name }
-    description "I really like it"
-    expected_size 50
     admin_name { Faker::Name.name }
     admin_email { Faker::Internet.email }
-    cannot_contribute false
-  end
-
-  factory :group_setup do
-    group
-    group_name Faker::Name.name
-    group_description "My text outlining the group"
-    viewable_by :members
-    members_invitable_by :admins
-    discussion_title Faker::Name.name
-    discussion_description "My text outlining the discussion"
-    motion_title {Faker::Name.name}
-    motion_description "My text outlining the proposal"
-    close_at_date (Date.today + 3.day).strftime("%d-%m-%Y")
-    close_at_time "12:00"
-    close_at_time_zone "Wellington"
-    admin_email Faker::Internet.email
-    recipients "#{Faker::Internet.email}, #{Faker::Internet.email}"
-    message_subject "Welcome to our world"
-    message_body "Please entertain me"
   end
 
   factory :invitation do
