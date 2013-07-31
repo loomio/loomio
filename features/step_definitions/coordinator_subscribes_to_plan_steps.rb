@@ -3,8 +3,9 @@ When(/^I visit the new subscription page for the group$/) do
 end
 
 When(/^I choose and pay for the plan "(.*?)"$/) do |plan|
+  @start_time = 100
   @amount = plan.match('\d+')[0].to_i
-  PaypalSubscription.any_instance.stub(start_time: Time.new(2013))
+  PaypalSubscription.any_instance.stub(start_time: @start_time)
   PaypalCheckout.any_instance.stub(gateway_url:
     confirm_group_subscription_path(@group, amount: @amount, token: "T0K3N"))
   VCR.use_cassette("paypal success",
@@ -26,7 +27,7 @@ Then(/^the group's subscription details should be saved$/) do
 end
 
 When(/^I visit the paypal confirmation page and give bad data$/) do
-  PaypalSubscription.any_instance.stub(start_time: Time.new(2013))
+  PaypalSubscription.any_instance.stub(start_time: @start_time)
   VCR.use_cassette("paypal failure",
                    match_requests_on: [:uri, :body],
                    record: :new_episodes) do

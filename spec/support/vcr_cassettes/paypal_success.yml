@@ -59,7 +59,7 @@ http_interactions:
     uri: https://api-3t.sandbox.paypal.com/nvp
     body:
       encoding: UTF-8
-      string: user=jonny&pwd=12345&signature=54321&method=CreateRecurringPaymentsProfile&version=98&payerid=HR2KKLPAN43TL&profilestartdate=2013-01-01%2000%3A00%3A00%20%2B1300&desc=Up%20to%2010%20people%20(US%2430%20monthly)&billingperiod=Month&billingfrequency=1&amt=30&currencycode=USD&maxfailedpayments=3&autobilloutamt=AddToNextBilling&token=T0K3N
+      string: user=jonny&pwd=12345&signature=54321&method=CreateRecurringPaymentsProfile&version=98&payerid=HR2KKLPAN43TL&profilestartdate=100&desc=Up%20to%2010%20people%20(US%2430%20monthly)&billingperiod=Month&billingfrequency=1&amt=30&currencycode=USD&maxfailedpayments=3&autobilloutamt=AddToNextBilling&token=T0K3N
     headers: {}
   response:
     status:
