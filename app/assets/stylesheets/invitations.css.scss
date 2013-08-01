@@ -6,4 +6,12 @@ body.invitations {
     #group_setup_message_body { height: 185px; }
     .email-validation-help { color: $error-color }
   }
+  &.show {
+    .terms-of-service-text {
+      font-size: 1em;
+      a { font-size: 1em; }
+    }
+    select { width: 394px; }
+    input.btn { margin-bottom: 15px; }
+  }
 }

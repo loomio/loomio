@@ -20,6 +20,9 @@ class Ability
       end
     end
 
+    # TODO: Refactor to use subscription resource
+    can [:view_payment_details, :choose_subscription_plan], Group, :id => user.adminable_group_ids, :parent_id => nil
+
     can [:update, 
          :email_members, 
          :edit_privacy, 

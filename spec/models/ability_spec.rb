@@ -35,6 +35,8 @@ describe "User abilities" do
     it { should be_able_to(:add_subgroup, group) }
     it { should be_able_to(:create, subgroup) }
     it { should_not be_able_to(:create, subgroup_for_another_group) }
+    it { should_not be_able_to(:view_payment_details, group) }
+    it { should_not be_able_to(:choose_subscription_plan, group) }
     it { should be_able_to(:new_proposal, discussion) }
     it { should be_able_to(:add_comment, discussion) }
     it { should be_able_to(:update_description, discussion) }
@@ -129,12 +131,13 @@ describe "User abilities" do
     before do
       @user_membership = group.add_admin! user
       @other_user_membership = group.add_member! other_user
-      # @membership_request = group.add_request! create(:user)
     end
 
     it { should be_able_to(:update, group) }
     it { should be_able_to(:email_members, group) }
     it { should be_able_to(:hide_next_steps, group) }
+    it { should be_able_to(:view_payment_details, group) }
+    it { should be_able_to(:choose_subscription_plan, group) }
     it { should be_able_to(:destroy, discussion) }
     it { should be_able_to(:move, discussion) }
     it { should be_able_to(:make_admin, @other_user_membership) }
@@ -159,6 +162,13 @@ describe "User abilities" do
       it { should be_able_to(:manage_membership_requests, group) }
       it { should be_able_to(:approve, membership_request) }
       it { should be_able_to(:ignore, membership_request) }
+    end
+
+    context "subgroups should not have accessible subscription settings" do
+      let(:sub_group) { create(:group, parent: group) }
+      before { sub_group.add_admin! user }
+      it { should_not be_able_to(:view_payment_details, sub_group) }
+      it { should_not be_able_to(:choose_subscription_plan, sub_group) }
     end
   end
 
@@ -202,6 +212,11 @@ describe "User abilities" do
         discussion.reload
       end
       it { should be_able_to(:show, group) }
+      it { should_not be_able_to(:view_payment_details, group) }
+      it { should_not be_able_to(:choose_subscription_plan, group) }
+      it { should be_able_to(:create, my_membership_request) }
+      it { should be_able_to(:cancel, my_membership_request) }
+      it { should_not be_able_to(:cancel, other_membership_request) }
       it { should be_able_to(:show, discussion) }
       it { should be_able_to(:get_and_clear_new_activity, motion) }
       it { should_not be_able_to(:update, group) }

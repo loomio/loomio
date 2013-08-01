@@ -68,6 +68,8 @@ class Group < ActiveRecord::Base
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
 
+  has_one :subscription, dependent: :destroy
+
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
   delegate :name, :to => :parent, :prefix => true
@@ -205,6 +207,15 @@ class Group < ActiveRecord::Base
   def update_full_name
     self.full_name = calculate_full_name
   end
+
+  def has_subscription_plan?
+    subscription.present?
+  end
+
+  def subscription_plan
+    subscription.amount
+  end
+
 
   private
 
