@@ -122,7 +122,6 @@ a.btn-icon:hover { color: $dark-grey; }
   color: black;
 
   .frontpage-nav {
-    text-transform:lowercase;
     margin-top: 15px;
     text-align: center;
     font-size: 130%;
@@ -145,7 +144,7 @@ a.btn-icon:hover { color: $dark-grey; }
 
   .container{
     &#top {
-      .inner-container { padding: 20px 0px 34px; }
+      .inner-container { padding: 0px 0px 26px 0px; }
       h2 { color: rgba(0,0,0,.7); }
     }
     .subhead{
@@ -169,7 +168,9 @@ a.btn-icon:hover { color: $dark-grey; }
       margin-bottom: 18px;
     }
     .buffer{
+      margin-top: 10px;
       margin-bottom: 18px;
+      font-size: 32px;
     }
     #woc-index .buffer{
       margin-bottom: 36px;
@@ -177,6 +178,7 @@ a.btn-icon:hover { color: $dark-grey; }
     .no-bottom-margin{
       margin-bottom: 0px;
     }
+    .homevideo { text-align:right; }
   }
   .subhead h1, .head h1{
     font-size: 50px;
@@ -277,12 +279,17 @@ a.btn-icon:hover { color: $dark-grey; }
 
 .sessions.new section { margin-top: 0; }
 
+body.pages { margin-bottom: 34px; }
+
 body.pages.home {
   #button-container {
     margin-top: 24px;
-    text-align: center;
     a { width: 200px; }
   }
+  hr { margin: 30px 0;  }
+  .homesection {
+    text-align: center;
+    h2 { margin-bottom: 20px; }}
 }
 
 body.pages.pricing {
