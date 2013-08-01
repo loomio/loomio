@@ -175,5 +175,6 @@ Loomio::Application.routes.draw do
   get '/pages/how*it*works' => redirect('/about#how-it-works')
   get '/pages/contact' => redirect('/about#about-us')
   get '/contact' => redirect('/about#about-us')
-
+  get '/pages/privacy' => redirect('/privacy_policy')
+  get '/pages/about' => redirect('/about#about-us')
 end
