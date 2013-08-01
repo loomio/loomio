@@ -31,6 +31,6 @@
             .input-prepend
               %span.add-on= '$'
               %input.input-mini{:id => "custom_amount", :name => "amount", :type => "text"}
-            %input{:id => "custom_amount_input", type: 'submit', value: t("contribution.submit"), class: "btn btn-info"}
+            %input{:id => "custom_amount_input", type: 'submit', value: t("contribution.submit"), class: "btn btn-info", :data => {:disable_with => t("contribution.submit")}}
       .row#currency-desc
         %p= t("contribution.currency_desc")
