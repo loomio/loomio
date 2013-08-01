@@ -1,8 +1,12 @@
 class ContributionsController < BaseController
+  skip_before_filter :authenticate_user!
+
   def callback
     @contribution = Contribution.new
     @contribution.params = params.to_json
-    @contribution.user = current_user
+    if user_signed_in?
+      @contribution.user = current_user
+    end
     @contribution.save!
     redirect_to thanks_contributions_url
   end
