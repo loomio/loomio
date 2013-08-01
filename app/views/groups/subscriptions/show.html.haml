@@ -4,7 +4,7 @@
     = render '/groups/title', group: @group
     %h1= t("subscriptions.details")
     %p= t("subscriptions.current_plan_html", subscription_plan: PaypalCheckout.subscription_text_for(@group.subscription_plan))
-    %p= t("subscriptions.people_in_group", people_in_group: @group.members.count)
+    %p= t("subscriptions.people_in_group", count: @group.members.count)
     %p= t("subscriptions.payment_plan_contact_html")
 .row
   .span4

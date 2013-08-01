@@ -9,7 +9,8 @@
 .row
   .span12#please-wait.hidden
     = t(:'subscriptions.redirecting_please_wait')
-  .span9#payment-options
+.row#payment-options
+  .span9
     = render 'payment_option', option_color: 'lt-blue', people: 10, amount: 30, group: @group
     = render 'payment_option', option_color: 'lime', people: 25, amount: 50, group: @group
     = render 'payment_option', option_color: 'yellow', people: 50, amount: 100, group: @group
