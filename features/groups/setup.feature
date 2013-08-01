@@ -6,9 +6,11 @@ Feature: Setup group
   Background:
     Given I am logged in
 
+  @javascript
   Scenario: Group admin sets up a group
     Given I am an admin of a parent group that has not completed setup
     When I visit the group setup page
+    And screenshot
     And I complete the group setup form
     Then the group should be setup
     And I should be on the group page

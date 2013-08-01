@@ -18,6 +18,16 @@ en:
       for_another_year: '%-d/%-m/%y'
       datepicker: "%d-%m-%Y"
 
+  devise:
+    invitations:
+      send_instructions: 'An invite has been sent to %{email}.'
+      invitation_token_invalid: 'The invitation token provided is not valid!'
+      updated: 'Account created.'
+      no_invitations_remaining: "No invitations remaining"
+    mailer:
+      invitation_instructions:
+        subject: 'Someone has invited you to join their Loomio group'
+
   error:
     access_denied: "You do not have permission to do this."
     cant_join_subgroup: "You cannot join a sub-group if you are not a member of the parent group."
@@ -359,8 +369,8 @@ en:
   proposal_closing_when: "Closing in %{when}"
   proposal_closed_when: "Closed %{when} ago"
   proposed_when_by_who: "Proposed by %{who} %{when} ago"
-  engagement_on_open_proposal: "%{percent}% of members have stated their position (%{numerator}/%{denominator})"
-  engagement_on_closed_proposal: "%{percent}% of members stated their position (%{numerator}/%{denominator})"
+  engagement_on_open_proposal: "%{percent}%% of members have stated their position (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "%{percent}%% of members stated their position (%{numerator}/%{denominator})"
 
   state_your_position: "State your position"
   positions: "Positions"
@@ -710,6 +720,13 @@ en:
     submit: "Take me to my group!"
 
   simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+    error_notification:
+      default_message: "Please review the problems below:"
     labels:
       discussion:
         title: "Title"
