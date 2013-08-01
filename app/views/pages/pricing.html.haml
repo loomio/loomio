@@ -1,1 +1,42 @@
-= render "pricing"
+.container
+  %section.first#purpose
+    .inner-container
+      .row-fluid
+        .span12#intro
+          .subhead
+            %h1 Pricing
+          %p Money shouldn’t be a barrier to good collaborative decision making.
+          %p Organisations using Loomio pay a subscription, and people in informal groups contribute when they can.
+      .row-fluid
+        .span4.offset2
+          .payment-model-box#organisation
+            %h2 Organisations
+            %p.examples e.g. businesses, government agencies, community organisations
+            %table
+              %tr#first
+                %td= t("group_request.subscription.table.quantity1")
+                %td= t("group_request.subscription.table.price1_html")
+              %tr
+                %td= t("group_request.subscription.table.quantity2")
+                %td= t("group_request.subscription.table.price2_html")
+              %tr
+                %td= t("group_request.subscription.table.quantity3")
+                %td= t("group_request.subscription.table.price3_html")
+              %tr
+                %td= t("group_request.subscription.table.quantity4")
+                %td= t("group_request.subscription.table.price4_html")
+              %tr
+                %td= t("group_request.subscription.table.quantity5")
+                %td= t("group_request.subscription.table.price5_html")
+        .span4
+          .payment-model-box#informal-group
+            %h2 Informal groups
+            %p.examples e.g. families, social movements, collectives
+            %p#description Members of your group will be asked to pay what they can
+      .row-fluid
+        .span10.contribution-statement
+          %p Your contribution means we can keep Loomio independent, free of advertising, and driven by our community.
+      .row-fluid
+        .span12
+          #button-container
+            = link_to "Start a group", selection_group_requests_path, class: "btn btn-success btn-large"

@@ -4,15 +4,6 @@ Loomio::Application.routes.draw do
 
   get "/groups", to: 'groups/public_groups#index', as: :public_groups
 
-  scope controller: 'application_pages' do
-    get :about
-    get :blog
-    get :contact
-    get :privacy
-    get :pricing
-    get :terms_of_service
-  end
-
   resource :search, only: :show
 
   devise_for :users, controllers: { sessions: 'users/sessions',
@@ -148,12 +139,12 @@ Loomio::Application.routes.draw do
 
   root :to => 'pages#home'
 
-  resources 'pages', only: [] do
-    get :about, on: :collection, as: :about
-    get :blog, on: :collection
-    get :privacy, on: :collection
-    get :pricing, on: :collection
-    get :terms_of_service, on: :collection
+  scope controller: 'pages' do
+    get :about
+    get :blog
+    get :privacy
+    get :pricing
+    get :terms_of_service
     get :browser_not_supported
   end
 
@@ -182,5 +173,7 @@ Loomio::Application.routes.draw do
   get '/how*it*works' => redirect('/about#how-it-works')
   get '/pages/get*involved' => redirect('/about')
   get '/pages/how*it*works' => redirect('/about#how-it-works')
-  get '/pages/contact' => redirect('/pages/about#about-us')
+  get '/pages/contact' => redirect('/about#about-us')
+  get '/contact' => redirect('/about#about-us')
+
 end
