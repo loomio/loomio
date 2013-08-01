@@ -5,7 +5,7 @@
       = f.input :name
       = f.input :email
       = f.input :language_preference, :collection => Translation::LANGUAGES, include_blank: false
-      = f.submit :class => "btn btn-info btn-large", id: "user-settings-submit"
+      = f.submit :class => "btn btn-info btn-large", id: "user-settings-submit", :data => {:disable_with => t("helpers.submit.user.update")}
 
 .row
   .span6
