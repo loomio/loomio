@@ -112,14 +112,29 @@ a.btn-icon:hover { color: $dark-grey; }
 .registrations.create,
 .pages.donate,
 .pages.home,
-.pages.pricing,
+.pages.about,
+.pages.blog,
 .pages.privacy,
+.pages.pricing,
 .pages.terms_of_service,
 .pages.purpose,
 .pages.how_it_works,
-.pages.about,
 .pages.about_us, .woc.index, .we_the_people.index {
   color: black;
+
+  .pages-information { min-height: 200px; }
+
+  .pages-links {
+    border-top: none;
+    float: none;
+    margin-top: 100px;
+    padding: 10px 0 20px 0;
+    text-align: center;
+    a {
+      color: $dark-grey;
+      padding: 0 3px;
+    }
+  }
 
   .frontpage-nav {
     margin-top: 15px;
@@ -204,11 +219,6 @@ a.btn-icon:hover { color: $dark-grey; }
   section.first{
     margin-top: 0px;
   }
-
-
-  /*.section#purpose, .section#how-it-works, .section#about-us {*/
-    /*margin-top: 6em;*/
-  /*}*/
 
   #first .inner-container{
     padding: 0 34px;
@@ -303,7 +313,7 @@ body.pages.pricing {
     }
     .btn { padding: 18px; }
   }
-  .footer p { font-weight: 700; }
+  .contribution-statement p { font-weight: 700; }
   #intro {
     margin-bottom: 2em;
     p { margin-bottom: 0; }
@@ -348,5 +358,13 @@ body.pages.pricing {
   }
 }
 
+body.pages.terms_of_service {
+  p {font-size: 1.2em;}
+  ol {
+    margin-left: 27px;
+    font-size: 1.2em;
+    li { line-height: 24px; }
+  }
+}
 
 

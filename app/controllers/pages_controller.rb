@@ -5,7 +5,13 @@ class PagesController < ApplicationController
   def about
   end
 
+  def blog
+  end
+
   def privacy
+  end
+
+  def pricing
   end
 
   def terms_of_service
