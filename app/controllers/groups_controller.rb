@@ -41,6 +41,7 @@ class GroupsController < GroupBaseController
     @subgroups = @group.subgroups.all.select{|g| g.viewable_by?(current_user) }
     @discussions = GroupDiscussionsViewer.for(group: @group, user: current_user)
     @discussion = Discussion.new(group_id: @group.id)
+    @group_options = GroupOptions.new(@group, current_user)
     assign_meta_data
   end
 
