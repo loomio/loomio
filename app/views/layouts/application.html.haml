@@ -18,6 +18,7 @@
       = render 'flash_messages', :flash => flash, :on_landing_page => false
       .page-container
         = yield
+      = render 'footer_logged_in'
 
     - if Rails.env.production? || Rails.env.staging?
       = render 'google_analytics'

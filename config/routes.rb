@@ -1,8 +1,8 @@
 Loomio::Application.routes.draw do
 
-  get "/groups", to: 'groups/public_groups#index', as: :public_groups
-
   ActiveAdmin.routes(self)
+
+  get "/groups", to: 'groups/public_groups#index', as: :public_groups
 
   resource :search, only: :show
 
@@ -145,8 +145,9 @@ Loomio::Application.routes.draw do
 
   scope controller: 'pages' do
     get :about
-    get :pricing
+    get :blog
     get :privacy
+    get :pricing
     get :terms_of_service
     get :browser_not_supported
   end
@@ -171,13 +172,13 @@ Loomio::Application.routes.draw do
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
 
   #redirect old pages:
-  get '/pages/how*it*works' => redirect('/about#how-it-works')
   get '/pages/home' => redirect('/')
   get '/get*involved' => redirect('/about#how-it-works')
   get '/how*it*works' => redirect('/about#how-it-works')
   get '/pages/get*involved' => redirect('/about')
-  get '/pages/about' => redirect('/about#about-us')
+  get '/pages/how*it*works' => redirect('/about#how-it-works')
   get '/pages/contact' => redirect('/about#about-us')
   get '/contact' => redirect('/about#about-us')
   get '/pages/privacy' => redirect('/privacy_policy')
+  get '/pages/about' => redirect('/about#about-us')
 end
