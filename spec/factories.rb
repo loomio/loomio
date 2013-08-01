@@ -109,28 +109,6 @@ FactoryGirl.define do
     motion
   end
 
-  factory :vote do
-    user
-    motion
-    ##  update below with Vote::POSITIONS content if changed###
-    position %w[yes no abstain block].sample
-    after(:build) do |vote|
-      vote.motion.group.add_member!(vote.user)
-    end
-    after(:create) do |vote|
-      vote.motion.group.save
-    end
-  end
-
-  factory :group_request do
-    name { Faker::Name.name }
-    description "I really like it"
-    expected_size 50
-    admin_name { Faker::Name.name }
-    admin_email { Faker::Internet.email }
-    cannot_contribute false
-  end
-
   factory :group_setup do
     group
     group_name Faker::Name.name
@@ -148,6 +126,25 @@ FactoryGirl.define do
     recipients "#{Faker::Internet.email}, #{Faker::Internet.email}"
     message_subject "Welcome to our world"
     message_body "Please entertain me"
+   end
+
+  factory :vote do
+    user
+    motion
+    ##  update below with Vote::POSITIONS content if changed###
+    position %w[yes no abstain block].sample
+    after(:build) do |vote|
+      vote.motion.group.add_member!(vote.user)
+    end
+    after(:create) do |vote|
+      vote.motion.group.save
+    end
+  end
+
+  factory :group_request do
+    name { Faker::Name.name }
+    admin_name { Faker::Name.name }
+    admin_email { Faker::Internet.email }
   end
 
   factory :invitation do
