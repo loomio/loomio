@@ -55,7 +55,6 @@ updateMarkdownSetting = (selected, usesMarkdown) ->
   $("#global-uses-markdown").val(usesMarkdown)
   $('.global-markdown-setting .markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
   $(selected).children().first().children().addClass('icon-ok')
-  event.preventDefault()
 
 # Edit description
 Discussion.enableInlineEdition = ()->
@@ -78,7 +77,6 @@ Discussion.enableInlineEdition = ()->
     $('#description-markdown-setting').val(usesMarkdown)
     $('.local-markdown-setting .markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
     $(selected).children().first().children().addClass('icon-ok')
-    event.preventDefault()
 
 $ ->
   Discussion.enableInlineEdition()
