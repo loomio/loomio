@@ -424,7 +424,6 @@ pre{
       padding: 6px 0 5px 5px;
     }
   }
-
   .vote-icon {
     float: left;
     padding-right: 7px;
@@ -451,8 +450,10 @@ pre{
   }
   .pie {
     float: right;
-    width: 36px;
     height: 36px;
+    top: 6px;
+    right: 3px;
+    width: 36px;
     z-index: 1;
   }
   .activity-icon { float: right; }
