@@ -87,15 +87,15 @@ class Ability
     can :destroy, Discussion, group_id: user.adminable_group_ids
     can :move, Discussion, group_id: user.adminable_group_ids
 
-    can [:unfollow, 
-         :add_comment, 
-         :new_proposal, 
-         :create, 
-         :update_description, 
-         :edit_title, 
-         :show_description_history, 
-         :preview_version, 
-         :update_version, 
+    can [:unfollow,
+         :add_comment,
+         :new_proposal,
+         :create,
+         :update_description,
+         :edit_title,
+         :show_description_history,
+         :preview_version,
+         :update_version,
          :show], Discussion, :group_id => user.group_ids
 
     can :destroy, Comment, user_id: user.id
@@ -104,9 +104,6 @@ class Ability
     can [:like, :unlike], Comment, :discussion => { :id => user.discussion_ids }
 
     # MOTIONS
-    can :get_and_clear_new_activity, Motion do |motion|
-      can? :show, motion.group
-    end
     can :create, Motion, :discussion_id => user.discussion_ids
     can [:destroy, :close, :edit_outcome, :edit_close_date], Motion, :author_id => user.id
     can [:destroy, :close, :edit_outcome, :edit_close_date], Motion,

@@ -27,27 +27,6 @@ $ -> # check if discussion with motions list is empty
     if $("#discussions-with-motions").children().html() != ""
       $(".discussion-with-motion-divider").removeClass('hidden')
 
-$ -> # hide/show mini-graph popovers
-  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(".motion-popover-link").click((event) ->
-      $(this).find('.pie').tooltip('hide')
-      if $(this).find(".popover").html() == null
-        event.stopPropagation()
-        currentPie = this
-        $('.motion-popover-link').each(() ->
-          unless this == currentPie
-            $(this).popover('hide')
-        )
-        $(this).find('.button_to').submit()
-        $(this).popover('toggle')
-    )
-
-$ ->
-  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(document).click((event) ->
-      $('.motion-popover-link').popover('hide')
-    )
-
 $ -> # closed motions modal
   if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
     if $("body.groups.show").length > 0 && $("#error-page").length == 0
