@@ -203,7 +203,10 @@ ul, ol, li {
 
 .main-content { margin-top: 20px; }
 
-.page-container { margin-top: 30px; }
+.page-container {
+  margin-top: 30px;
+  min-height: 600px;
+}
 
 ul.selector-list {
   &.bordered { border-top: 1px solid $light-grey }
@@ -294,14 +297,15 @@ a.btn-icon:hover { color: $dark-grey; }
 .row-fluid.pages-information { min-height: 400px; }
 
 .footer {
-  border-top: 2px solid $light-grey;
-  margin-top: 150px;
+  border-top: 2px solid $lighter-grey;
+  margin-top: 40px;
   padding: 10px 0 14px 0;
   a {
     color: $dark-grey;
     padding: 0 3px;
   }
-  .dropdown { display: inline; }
+  .caret { vertical-align: middle; }
+  .dropup { display: inline; }
   .left{
     width: 50%;
     float: left;

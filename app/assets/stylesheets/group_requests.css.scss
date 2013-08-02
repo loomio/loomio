@@ -10,13 +10,7 @@ body.group_requests {
     font-weight: 300;
   }
   #informal-group { background-color: #D8EBF1; }
-  #organisation {
-    background-color: #DEF1DE;
-    p { font-style: italic;
-      span { font-weight: 700; }
-    }
-  }
-  &.group_requests.subscription, &.group_requests.pwyc, &.group_requests.create {
+  &.subscription, &.pwyc, &.create {
     form {
       input[type="email"], input[type="text"] {
         font-size: 18px;
@@ -58,6 +52,12 @@ body.group_requests {
       }
     }
     #intro { margin-bottom: 30px; }
+    #organisation {
+      background-color: #DEF1DE;
+      p { font-style: italic;
+        span { font-weight: 700; }
+      }
+    }
     #pricing { }
     .span4 { width: 310px; }
   }
@@ -66,9 +66,9 @@ body.group_requests {
     .row:last-child {
       p#last { font-weight: 700; }
     }
-    .examples { font-style: italic; color: #777;}
+    p.examples { font-style: italic; color: #333;}
     #intro { margin: 10px 10px 30px; }
-    #organisation p { font-style: normal; }
+    #organisation { background-color: #DEF1DE; }
     #payment_models { margin-bottom: 30px; }
     #trial { font-weight: bold; }
     .payment-model-box {
