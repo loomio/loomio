@@ -127,7 +127,7 @@ a.btn-icon:hover { color: $dark-grey; }
   .pages-links {
     border-top: none;
     float: none;
-    margin-top: 100px;
+    margin-top: 40px;
     padding: 10px 0 20px 0;
     text-align: center;
     a {
@@ -210,10 +210,10 @@ a.btn-icon:hover { color: $dark-grey; }
   .pull-right { margin-top: 10px; }
 
   section{
-    margin-top: 34px;
     background: white;
-    box-shadow: 3px 3px 5px #eee;
     border: 1px solid #eee;
+    box-shadow: 3px 3px 5px #eee;
+    margin-top: 34px;
   }
 
   section.first{
