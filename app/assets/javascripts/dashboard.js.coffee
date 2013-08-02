@@ -27,3 +27,6 @@ $ ->
       )
       e.preventDefault()
   )
+
+$ ->
+  $('.motion-sparkline').sparkline('html', { type: 'pie', height: '26px', width: '26px', sliceColors: [ "#90D490", "#F0BB67", "#D49090", "#dd0000", '#ccc'], disableTooltips: 'true' })

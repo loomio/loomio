@@ -6,6 +6,11 @@ body.groups {
   &.show {
     .discussion-preview .discussion-title { margin-top: 7px; }
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }
+    .icon .motion-sparkline {
+      position: relative;
+      top: 10px;
+      left: 7px;
+    }
     #button-container { margin-top: 5px; }
     #group-description-panel {
       #description-edit-form {
