@@ -8,10 +8,8 @@
     = render 'contribute-options'
 
 -if not signed_in?
-  %h1 Making a donation
+  %h1= t("contribution.making_a_donation")
   .row
     .span5#description
-      %p Loomio is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
-      %p Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users.
-      %p Thanks for making this possible!
+      = simple_format t("contribution.making_a_donation_description")
     = render 'contribute-options'
