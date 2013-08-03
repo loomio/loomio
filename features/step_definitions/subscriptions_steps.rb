@@ -20,7 +20,7 @@ Then(/^I should see the payment details for my group$/) do
 end
 
 Then(/^I should be told that I can email to change my plan$/) do
-  page.should have_link("accounts@loomio.org")
+  page.should have_link("aroha@loomio.org")
 end
 
 Given(/^I am a member of a subscription group$/) do
