@@ -96,11 +96,11 @@ class Group < ActiveRecord::Base
     self.archived_at.present?
   end
 
-  def viewable_by?(user)
-    Ability.new(user).can?(:show, self)
+  def viewable_by_everyone?
+    (viewable_by == 'everyone') and !archived?
   end
 
-  def members_can_invite?
+  def members_can_invite_members?
     members_invitable_by == 'members'
   end
 

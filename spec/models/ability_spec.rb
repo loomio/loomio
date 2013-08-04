@@ -25,9 +25,10 @@ describe "User abilities" do
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
 
     before do
-      @user_membership = group.add_member!(user)
-      @other_user_membership = group.add_member!(other_user)
+      @membership = group.add_member!(user)
+      @other_membership = group.add_member!(other_user)
     end
+
     it { should be_able_to(:create, subgroup) }
     it { should be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
@@ -56,10 +57,10 @@ describe "User abilities" do
     it { should be_able_to(:unlike, another_user_comment) }
     it { should be_able_to(:create, new_discussion) }
     it { should_not be_able_to(:edit_privacy, group) }
-    it { should_not be_able_to(:make_admin, @user_membership) }
-    it { should_not be_able_to(:make_admin, @other_user_membership) }
-    it { should_not be_able_to(:destroy, @other_user_membership) }
-    it { should be_able_to(:destroy, @user_membership) }
+    it { should_not be_able_to(:make_admin, @membership) }
+    it { should_not be_able_to(:make_admin, @other_membership) }
+    it { should_not be_able_to(:destroy, @other_membership) }
+    it { should be_able_to(:destroy, @membership) }
     it { should be_able_to(:create, new_motion) }
     it { should be_able_to(:get_and_clear_new_activity, other_users_motion) }
     it { should be_able_to(:close, user_motion) }
@@ -70,8 +71,8 @@ describe "User abilities" do
     it { should_not be_able_to(:edit_close_date, other_users_motion) }
 
     it "cannot remove themselves if they are the only member of the group" do
-      group.memberships.where("memberships.id != ?", @user_membership.id).destroy_all
-      should_not be_able_to(:destroy, @user_membership)
+      group.memberships.where("memberships.id != ?", @membership.id).destroy_all
+      should_not be_able_to(:destroy, @membership)
     end
 
     context "group members invitable by members" do
@@ -80,7 +81,7 @@ describe "User abilities" do
       it { should be_able_to(:manage_membership_requests, group) }
       it { should be_able_to(:approve, membership_request) }
       it { should be_able_to(:ignore, membership_request) }
-      it { should_not be_able_to(:destroy, @other_user_membership) }
+      it { should_not be_able_to(:destroy, @other_membership) }
     end
 
     context "group members invitable by admins" do
@@ -129,8 +130,8 @@ describe "User abilities" do
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }
 
     before do
-      @user_membership = group.add_admin! user
-      @other_user_membership = group.add_member! other_user
+      @membership = group.add_admin! user
+      @other_membership = group.add_member! other_user
     end
 
     it { should be_able_to(:update, group) }
@@ -140,9 +141,9 @@ describe "User abilities" do
     it { should be_able_to(:choose_subscription_plan, group) }
     it { should be_able_to(:destroy, discussion) }
     it { should be_able_to(:move, discussion) }
-    it { should be_able_to(:make_admin, @other_user_membership) }
-    it { should be_able_to(:remove_admin, @other_user_membership) }
-    it { should be_able_to(:destroy, @other_user_membership) }
+    it { should be_able_to(:make_admin, @other_membership) }
+    it { should be_able_to(:remove_admin, @other_membership) }
+    it { should be_able_to(:destroy, @other_membership) }
     it { should be_able_to(:edit_description, group) }
     it { should be_able_to(:edit_privacy, group) }
     it { should_not be_able_to(:update, other_users_motion) }
@@ -152,8 +153,8 @@ describe "User abilities" do
     it { should be_able_to(:destroy, another_user_comment) }
 
     it "should not be able to delete the only admin of a group" do
-      group.admin_memberships.where("memberships.id != ?", @user_membership.id).destroy_all
-      should_not be_able_to(:destroy, @user_membership)
+      group.admin_memberships.where("memberships.id != ?", @membership.id).destroy_all
+      should_not be_able_to(:destroy, @membership)
     end
 
     context "group members invitable by admins" do
