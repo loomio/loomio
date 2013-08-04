@@ -268,6 +268,12 @@ en:
         name: "e.g. Jane Bloggs"
         email: "e.g. jane@organisation.com"
         group_name: "e.g. Jane's Accounting Services"
+    confirmation:
+      title: You're almost done! Check your email.
+      body_html: |
+        We've sent you an email with an invite to start your group.
+        
+        If you don't see anything in your inbox in a few minutes, email us at <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
     pwyc:
       description_html: "Your group members will be invited to pay what they can.<p>If you would rather pay on behalf of your group, <a href='%{subscription_path}'>sign up for a subscription.</a></p>"
       header: "Pay what you can"
@@ -292,7 +298,7 @@ en:
         price2_html: "<span>US</span> $50/mo"
         price3_html: "<span>US</span> $100/mo"
         price4_html: "<span>US</span> $200/mo"
-        price5_html: "<a mailto='contact@loomio.org'>Talk to us!</a>"
+        price5_html: "<a href='mailto:contact@loomio.org'>Talk to us!</a>"
         quantity1: "Up to 10 people"
         quantity2: "Up to 25"
         quantity3: "Up to 50"
