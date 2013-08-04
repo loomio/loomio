@@ -8,7 +8,7 @@ class Translation
   EXPERIMENTAL_LANGUAGES = {"română" => "ro"}
 
   def self.language(locale)
-    LANGUAGES.index(locale)
+    LANGUAGES.key(locale)
   end
 
   def self.locales
