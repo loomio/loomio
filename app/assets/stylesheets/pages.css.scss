@@ -236,6 +236,7 @@ a.btn-icon:hover { color: $dark-grey; }
     border-top: 1px solid #eee;
     margin: 14px 223px 34px 223px;
   }
+
   .more-link{
     .toggle{
       background: url("link-icon.png") 4px 4px no-repeat #f8f8f8;
@@ -313,10 +314,8 @@ body.pages.pricing {
     }
     .btn { padding: 18px; }
   }
-  .contribution-statement p { font-weight: 700; }
   #intro {
-    margin-bottom: 2em;
-    p { margin-bottom: 0; }
+    margin-bottom: 1.1em;
   }
   .payment-model-box {
     @include border-radius(4px);

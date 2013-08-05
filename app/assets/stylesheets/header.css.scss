@@ -96,6 +96,12 @@
             @include box-shadow(0, 0, 0, 0);
           }
         }
+        input#search_form_query {
+          font-size: 14px;
+          line-height: 18px;
+          height: 18px;
+          margin-top: 0;          
+        }
       }
       .input-prepend {
         margin-bottom: 0;
