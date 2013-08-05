@@ -8,10 +8,6 @@ class PaypalCheckout
 
   attr_reader :response, :group
 
-  def self.subscription_text_for(amount)
-    I18n.t('subscriptions.description', people: DOLLARS_TO_PEOPLE[amount], amount: amount)
-  end
-
   def initialize(group: nil, amount: nil)
     raise "invalid amount: #{amount.inspect}" unless PaypalCheckout::AMOUNT_OPTIONS.include?(amount)
     @amount = amount
@@ -35,11 +31,11 @@ class PaypalCheckout
   end
 
   def gateway_url
-    ENV['PAYPAL_GATEWAY_URL']+token
+    ENV['PAYPAL_GATEWAY_URL'] + token
   end
 
   def payment_description
-    self.class.subscription_text_for(@amount)
+    'Group plan: ' + I18n.t('subscriptions.description', people: DOLLARS_TO_PEOPLE[@amount], amount: @amount)
   end
 
   def return_url

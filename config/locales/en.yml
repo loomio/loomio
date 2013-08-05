@@ -263,10 +263,6 @@ en:
       name: "What is your name?"
       email: "What is your email address?"
       group_name: "What is the name of your group?"
-      placeholders:
-        name: "e.g. Jane Bloggs"
-        email: "e.g. jane@organisation.com"
-        group_name: "e.g. Jane's Accounting Services"
     confirmation:
       title: You're almost done! Check your email.
       body_html: |
@@ -277,6 +273,7 @@ en:
       description_html: "Your group members will be invited to pay what they can.<p>If you would rather pay on behalf of your group, <a href='%{subscription_path}'>sign up for a subscription.</a></p>"
       header: "Pay what you can"
       intro: "Start your group"
+      placeholder: "e.g. Neighbourhood Support Group"
       submit: "Start group!"
     selection:
       description_html: "Money shouldn’t be a barrier to good collaborative decision-making. Groups with a budget pay a subscription for using the tool, members of informal groups contribute what they can.</p><p id='last'>Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users.</p>"
@@ -293,6 +290,7 @@ en:
       intro: "Try Loomio for free"
       table:
         description_html: You'll be asked to enter credit card details at the end of your <span class="nowrap">30-day free trial.</span>
+      placeholder: "e.g. Jane's Accounting Services"
       submit: "Start your free trial!"
   #
   # DISCUSSION PAGE
@@ -573,8 +571,8 @@ en:
 
   start_group:
     header: "Welcome to Loomio"
-    sign_up_intro: "Your request to start a new group on Loomio has been approved! You'll need to set up a new account before you can create your group:"
-    sign_in_intro: "Your request to start a new group on Loomio has been approved! You'll need to sign in before you can create your group:"
+    sign_up_intro: "You'll need to set up a new account before you can create your group:"
+    sign_in_intro: "You'll need to sign in before you can create your group:"
 
   #
   # INVITATIONS
@@ -605,7 +603,7 @@ en:
 
   subscriptions:
     current_plan_html: "Your current plan is: <strong>%{subscription_plan}</strong>"
-    redirecting_please_wait: Redirecting you to PayPal, please wait..
+    redirecting_please_wait: Redirecting you to PayPal, please wait...
     details: Group Subscription
     footer: Is your group larger than 100 people?
     select_your_plan: Select your plan
@@ -613,12 +611,13 @@ en:
     monthly_amount: $%{amount}/month
     payment_plan_contact_html: To update your payment plan please contact us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a>
     people_in_group:
-      one: You have %{count} people in your group
+      one: You have %{count} person in your group
       other: You have %{count} people in your group
     people_limit_html: Up to <strong>%{people}</strong> people
     prices_in_us_dollars: Prices are in US dollars
-    footer: Is your group larger than 100 people?
-    contact_us_html: Email us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a> and we'll figure something out :)
+    contact_us_html: |
+      Is your group larger than 100 people?
+      Email us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a> and we'll figure something out :)
     description: Up to %{people} people (US$%{amount} monthly)
     payment_failed_title:  Oops! Looks like something went wrong.
     payment_failed_body_html: <p>For some reason your payment couldn't be processed.</p> <p>Please send us an email at <a href="mailto:accounts@loomio.org">accounts@loomio.org</a> and we'll help you out.</p>

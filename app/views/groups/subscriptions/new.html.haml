@@ -18,7 +18,6 @@
     #us-dollars= t("subscriptions.prices_in_us_dollars")
   .span7
     #footer
-      = t('subscriptions.footer')
-      %div= t('subscriptions.contact_us_html')
+      = simple_format t('subscriptions.contact_us_html')
     #note-about-paypal
       %p= t("subscriptions.note_about_paypal_html")
