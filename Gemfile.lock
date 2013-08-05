@@ -272,6 +272,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.1)
       pry (>= 0.9.10)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rabl (0.7.10)
       activesupport (>= 2.3.14)
       multi_json (~> 1.0)
@@ -394,7 +396,7 @@ GEM
     valid_email (0.0.4)
       activemodel
       mail
-    vcr (2.4.0)
+    vcr (2.5.0)
     warden (1.2.1)
       rack (>= 1.0)
     webmock (1.9.3)
@@ -458,6 +460,7 @@ DEPENDENCIES
   piwik_analytics (~> 1.0.1)
   poltergeist (~> 1.3.0)
   pry-rails (~> 0.3.0)
+  quiet_assets (~> 1.0.2)
   rabl (~> 0.7.3)
   rack-canonical-host (~> 0.0.8)
   rack-mini-profiler (~> 0.1.23)
@@ -482,5 +485,5 @@ DEPENDENCIES
   uglifier (~> 1.1.0)
   unicorn (~> 4.6.2)
   valid_email (~> 0.0.4)
-  vcr (~> 2.4.0)
+  vcr (~> 2.5.0)
   webmock (~> 1.9.0)

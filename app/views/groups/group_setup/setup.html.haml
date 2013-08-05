@@ -9,7 +9,5 @@
       = f.input :description, as: :text
       %h2= t "group_form.privacy_settings"
       = f.input :viewable_by, :as => 'radio_buttons', collection: [:everyone, :members]
-      %br
       = f.input :members_invitable_by, :as => "radio_buttons", collection: [:admins, :members]
-
-      = f.submit t("group_setup.submit"), class: 'btn btn-info btn-large pull-right', id: 'complete_setup', :data => { :disable_with => t("group_setup.submit") }
+      = f.submit t("group_setup.submit"), class: 'btn btn-info btn-large', id: 'complete_setup', :data => { :disable_with => t("group_setup.submit") }

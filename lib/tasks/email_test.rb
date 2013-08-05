@@ -68,7 +68,7 @@ def create_motion(in_discussion)
       discussion:         in_discussion,
       group:              in_discussion.group,
       author:             author,
-      close_date:         Time.now+rand(300).minutes,
+      closing_at:         Time.now+rand(300).minutes,
       votes_for_graph:    [["Yes (1)", 1, "Yes", [["himful@gmail.com"]]], ["Abstain (0)", 0, "Abstain", [[]]], ["No (0)", 0, "No", [[]]], ["Block (1)", 1, "Block", [["bob@lick.com"]]]],
       percent_voted:      50,
       group_count:        22,
@@ -180,6 +180,8 @@ describe "Test Email:" do
       puts ' '
       puts 'AFTER_MEMBERSHIP_REQUEST_APPROVAL'
 
+      message_body = 'Your membership request has been approved! '+Faker::Lorem.paragraph(4)
+
       addresses.each do |email|
         membership_request.stub email: email
 
@@ -187,7 +189,41 @@ describe "Test Email:" do
                                                                          inviter: admin,
                                                                          group: membership_request.group )
 
-        InvitePeopleMailer.after_membership_request_approval(invitation, admin.email , '').deliver
+        InvitePeopleMailer.after_membership_request_approval(invitation, admin.email, message_body).deliver
+        puts " ~ SENT (#{email})"
+      end
+    end
+
+    it "to_join_group" do
+      puts ' '
+      puts 'TO_JOIN_GROUP'
+
+      message_body = 'Come join us on Loomio! '+Faker::Lorem.paragraph(4)
+
+      addresses.each do |email|
+        membership_request.stub email: email
+
+        invitation = CreateInvitation.to_join_group( recipient_email: membership_request.email,
+                                                                         inviter: admin,
+                                                                         group: membership_request.group )
+
+        InvitePeopleMailer.to_join_group(invitation, admin.email, message_body).deliver
+        puts " ~ SENT (#{email})"
+      end
+    end
+
+    it "to_start_group" do
+      puts ' '
+      puts 'TO_START_GROUP'
+
+      addresses.each do |email|
+        membership_request.stub email: email
+
+        invitation = CreateInvitation.to_start_group( recipient_email: membership_request.email,
+                                                                         inviter: admin,
+                                                                         group: membership_request.group )
+
+        InvitePeopleMailer.to_start_group(invitation, admin.email).deliver
         puts " ~ SENT (#{email})"
       end
     end
