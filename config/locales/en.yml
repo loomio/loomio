@@ -123,7 +123,6 @@ en:
     about: 'About'
     blog: 'Blog'
     contact: 'Contact'
-    pricing: 'Pricing'
     privacy: 'Privacy'
     terms: 'Terms'
 
@@ -494,6 +493,17 @@ en:
     invitation: 'Tips for writing a great invitation'
     proposal: 'Tips for writing a clear proposal'
     vote: 'You can change your position at any time'
+
+  pricing_page:
+    intro: |
+      Money shouldn’t be a barrier to good collaborative decision making.
+      Organisations using Loomio pay a subscription, and people in informal groups contribute when they can.
+      Your contribution means we can keep Loomio independent, free of advertising, and driven by our community.
+    organisations: Organisations
+    organisations_examples: e.g. businesses, government agencies, community organisations
+    informal_groups: Informal groups
+    informal_groups_desc: Members of your group will be asked to pay what they can
+    informal_groups_examples: e.g. families, social movements, collectives
 
   #
   # CONTRIBUTIONS
@@ -876,6 +886,7 @@ en:
   other: "Other"
   password: "Password"
   photo:
+  pricing: 'Pricing'
   proposal: "Proposal"
   prev: "Prev"
   translate: "Help translate Loomio!"
@@ -889,6 +900,7 @@ en:
   send_invite: "Send invite"
   send_email: "Send email"
   show_more: "Show More"
+  start_a_group: "Start a group"
   starting: "Starting"
   subject: "Subject"
   terms_of_service_html: "By clicking %{button_text}, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"
