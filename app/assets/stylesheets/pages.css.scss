@@ -339,21 +339,21 @@ body.pages.pricing {
       font-size: 26px;
       letter-spacing: 0px
     }
-    table {
-      color: #777;
-      font-size: 16px;
-      font-weight: 400;
-      margin-bottom: 14px;
-      width: 100%;
-      tr {
-        border-bottom: 1px solid #dadada;
-        height: 30px;
-        &#first { border-top: 1px solid #dadada; }
-        td {
-          &:last-child { text-align: right; }
-          span { font-size: .8em; }
-        }
-      }
+  }
+}
+
+table#pricing_table {
+  color: #777;
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  tr {
+    border-bottom: 1px solid #dadada;
+    height: 30px;
+    &#first { border-top: 1px solid #dadada; }
+    td {
+      &:last-child { text-align: right; }
+      span { font-size: .8em; }
     }
   }
 }

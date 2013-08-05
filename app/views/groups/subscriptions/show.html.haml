@@ -9,12 +9,5 @@
 .row
   .span4
     .info-box#organisation
-      %table
-        %h3= t("subscriptions.subscription.table.title_html")
-        - PaypalCheckout::AMOUNT_OPTIONS.each do |amount|
-          %tr
-            %td= t("subscriptions.subscription.table.quantity", people: PaypalCheckout::DOLLARS_TO_PEOPLE[amount])
-            %td= t("subscriptions.subscription.table.price_html", amount: amount)
-        %tr
-          %td= t("subscriptions.subscription.table.quantity_more")
-          %td= t("subscriptions.subscription.table.price_talk_html")
+      %h3= t("subscriptions.subscription.table.title_html")
+      = render("groups/subscriptions/pricing_table")

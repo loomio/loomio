@@ -1,11 +1,8 @@
 .page-container
   -if signed_in?
-    =image_tag("loomio-orange.png", :id => "large-logo")
+    = image_tag "loomio-orange.png", :id => "large-logo"
   .row
     .span8.offset2
-      %h2 Thanks, go check your email
+      %h2= t(:"group_request.confirmation.title")
 
-      %p We've sent you an email with an invite to start your group.
-      %p
-        = mail_to 'contact@loomio.org', 'Get in touch'
-        if you don't see anything in your inbox in a few minutes.
+      = simple_format t(:"group_request.confirmation.body_html")
