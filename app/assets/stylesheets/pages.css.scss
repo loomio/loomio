@@ -119,7 +119,9 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.terms_of_service,
 .pages.purpose,
 .pages.how_it_works,
-.pages.about_us, .woc.index, .we_the_people.index {
+.pages.about_us,
+.woc.index,
+.we_the_people.index {
   color: black;
 
   .pages-information { min-height: 200px; }
@@ -154,6 +156,7 @@ a.btn-icon:hover { color: $dark-grey; }
     margin-bottom: 0;
   }
   .home-flash{
+    margin-bottom: 1em;
     margin-top: 1em;
   }
 

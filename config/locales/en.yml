@@ -279,20 +279,20 @@ en:
       intro: "Start your group"
       submit: "Start group!"
     selection:
-      description_html: "Money shouldn’t be a barrier to good collaborative decision making. Groups with a budget pay a subscription for using the tool, members of informal groups contribute what they can.</p><p id='last'>Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users.</p>"
+      description_html: "Money shouldn’t be a barrier to good collaborative decision-making. Groups with a budget pay a subscription for using the tool, members of informal groups contribute what they can.</p><p id='last'>Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users.</p>"
       intro: "What kind of group are you?"
       informal_group:
         description_html: "e.g. families, social movements, collectives</p><p>Members of your group will be asked to pay what they can.</p>"
         header: "Informal group"
         submit: "Pay what you can"
       organisation:
-        description_html: "e.g. businesses, government agencies, community organisations</p><p>Your group will be invoiced monthly after a <span id='trial'>30 day free trial.</span></p>"
+        description_html: "e.g. businesses, government agencies, community organisations</p><p>Your group will be invoiced monthly after a <span id='trial' class='nowrap'>30 day free trial.</span></p>"
         header: "Organisation"
         submit: "Subscription"
     subscription:
       intro: "Try Loomio for free"
       table:
-        description_html: You'll be asked to enter credit card details at the end of your <span>30-day free trial.</span>
+        description_html: You'll be asked to enter credit card details at the end of your <span class="nowrap">30-day free trial.</span>
       submit: "Start your free trial!"
   #
   # DISCUSSION PAGE
@@ -496,7 +496,7 @@ en:
 
   pricing_page:
     intro: |
-      Money shouldn’t be a barrier to good collaborative decision making.
+      Money shouldn’t be a barrier to good collaborative decision-making.
       Organisations using Loomio pay a subscription, and people in informal groups contribute when they can.
       Your contribution means we can keep Loomio independent, free of advertising, and driven by our community.
     organisations: Organisations
@@ -527,7 +527,7 @@ en:
       Thanks for making this possible!
     thank_you_title: Thank you for contributing to Loomio!
     thank_you_body: |
-      Your contribution helps us deliver easy collaborative decision making to the world.
+      Your contribution helps us deliver easy collaborative decision-making to the world.
 
       You will receive an email shortly with a receipt for your contribution.
 
