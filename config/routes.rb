@@ -1,8 +1,8 @@
 Loomio::Application.routes.draw do
 
-  get "/groups", to: 'groups/public_groups#index', as: :public_groups
-
   ActiveAdmin.routes(self)
+
+  get "/groups", to: 'groups/public_groups#index', as: :public_groups
 
   resource :search, only: :show
 
@@ -16,14 +16,16 @@ Loomio::Application.routes.draw do
   match '/inbox/mark_all_as_read', to: 'inbox#mark_all_as_read', as: :mark_all_as_read_inbox
   match '/inbox/unfollow', to: 'inbox#unfollow', as: :unfollow_inbox
 
-
   resources :invitations, only: [:show]
 
-  resources :group_requests, only: [:create, :new] do
-    get :verify, on: :member
+  resources :group_requests, only: [:create] do
+    collection do
+      get :selection
+      get :subscription
+      get :pwyc
+      get :confirmation
+    end
   end
-
-  match "/request_new_group", to: "group_requests#new", as: :request_new_group
 
   match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
 
@@ -33,6 +35,12 @@ Loomio::Application.routes.draw do
       member do
        post :make_admin
        post :remove_admin
+      end
+    end
+    resource :subscription, only: [:new, :show, :create], controller: 'groups/subscriptions' do
+      collection do
+        get :confirm
+        get :payment_failed
       end
     end
 
@@ -52,7 +60,7 @@ Loomio::Application.routes.draw do
   end
 
   get 'groups/:group_id/request_membership',   to: 'groups/membership_requests#new',          as: :new_group_membership_request
-  post 'groups/:group_id/membership_requests', to: 'groups/membership_requests#create',       as: :group_membership_requests
+  post 'groups/:group_id/membership_requests', to: 'groups/membership_requests#create'  ,       as: :group_membership_requests
   delete 'membership_requests/:id/cancel',     to: 'groups/membership_requests#cancel',       as: :cancel_membership_request
 
   get 'groups/:group_id/membership_requests',  to: 'groups/manage_membership_requests#index', as: :group_membership_requests
@@ -94,7 +102,7 @@ Loomio::Application.routes.draw do
   end
 
 
-  resources :users, :only => [:new, :create, :update, :show,] do
+  resources :users, :only => [:new, :update, :show] do
     put :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
   end
@@ -135,7 +143,10 @@ Loomio::Application.routes.draw do
 
   scope controller: 'pages' do
     get :about
+    get :blog
     get :privacy
+    get :pricing
+    get :terms_of_service
     get :browser_not_supported
   end
 
@@ -152,17 +163,20 @@ Loomio::Application.routes.draw do
     post :send_request, on: :collection
   end
 
+  #redirect old request for new group
+  match "/request_new_group", to: "group_requests#selection"
+
   #redirect old invites
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
 
   #redirect old pages:
-  get '/pages/how*it*works' => redirect('/about#how-it-works')
   get '/pages/home' => redirect('/')
   get '/get*involved' => redirect('/about#how-it-works')
   get '/how*it*works' => redirect('/about#how-it-works')
   get '/pages/get*involved' => redirect('/about')
-  get '/pages/about' => redirect('/about#about-us')
+  get '/pages/how*it*works' => redirect('/about#how-it-works')
   get '/pages/contact' => redirect('/about#about-us')
   get '/contact' => redirect('/about#about-us')
   get '/pages/privacy' => redirect('/privacy_policy')
+  get '/pages/about' => redirect('/about#about-us')
 end

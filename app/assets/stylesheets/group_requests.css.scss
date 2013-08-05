@@ -1,13 +1,73 @@
+@import "settings";
+@import "bootstrap/mixins";
+@import "mixins";
+
+
 body.group_requests {
-  &.new, &.create {
-    abbr { display: none; }
-    h1 { margin-bottom: 10px; }
-    textarea { height: 80px; }
-    .radio { padding-top: 10px; }
-    .robot_trap {
-      margin-left: -5000px;
-      margin-bottom: 0;
-      height: 0;
+  abbr { display: none; }
+  p {
+    font-size: $font-medium-large;
+    font-weight: 300;
+  }
+  #informal-group { background-color: #D8EBF1; }
+  &.subscription, &.pwyc, &.create {
+    form {
+      input[type="email"], input[type="text"] {
+        font-size: 18px;
+        line-height: 22px;
+        height: 22px;
+        margin-top: 6px;
+      }
+      label { font-size: 18px; }
+      .btn {
+        font-weight: 700;
+        margin-top: 15px;
+      }
+      .control-group { margin-bottom: 16px; }
     }
+    h6 { font-weight: 400; }
+    .info-box {
+      @include border-radius(4px);
+      background-color: #EEE;
+      color: #555555;
+      margin: 0px 0 0 50px;
+      padding: 25px;
+      td {
+        padding: 5px;
+      }
+      h2 { font-weight: 400; }
+      ul {
+        list-style: disc;
+        margin-left: 20px;
+      }
+    }
+    #intro { margin-bottom: 30px; }
+    #organisation {
+      background-color: #DEF1DE;
+      p { 
+        margin-top: 14px;
+        font-style: italic;
+        span { font-weight: 700; }
+      }
+    }
+    .span4 { width: 310px; }
+  }
+  &.group_requests.selection {
+    p { padding: 0 6px; }
+    .row:last-child {
+      p#last { font-weight: 700; }
+    }
+    p.examples { font-style: italic; color: #333;}
+    #intro { margin: 10px 10px 30px; }
+    #organisation { background-color: #DEF1DE; }
+    #payment_models { margin-bottom: 30px; }
+    #trial { font-weight: bold; }
+    .payment-model-box {
+      @include border-radius(4px);
+      font-weight: 700;
+      padding: 10px 16px 16px;
+      .btn { margin: 20px 0 0; }
+    }
+    .span4 { width: 320px; }
   }
 }

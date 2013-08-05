@@ -1,0 +1,23 @@
+.container
+  %section.first#purpose
+    .inner-container
+      .row-fluid
+        .span12#intro
+          .subhead
+            %h1= t(:pricing)
+          = simple_format t(:'pricing_page.intro')
+      .row-fluid
+        .span4.offset2
+          .payment-model-box#organisation
+            %h2= t(:'pricing_page.organisations')
+            %p.examples= t(:'pricing_page.organisations_examples')
+            = render("groups/subscriptions/pricing_table")
+        .span4
+          .payment-model-box#informal-group
+            %h2= t(:'pricing_page.informal_groups')
+            %p.examples= t(:'pricing_page.informal_groups_examples')
+            %p#description= t(:'pricing_page.informal_groups_desc')
+      .row-fluid
+        .span12
+          #button-container
+            = link_to t(:start_a_group), selection_group_requests_path, class: "btn btn-success btn-large"

@@ -1,11 +1,10 @@
 class Groups::MembershipRequestsController < BaseController
-  before_filter :load_group, except: [:new, :cancel]
+  before_filter :load_group, except:[:cancel]
   before_filter :authenticate_user!, except: [:new, :create, :cancel]
   load_and_authorize_resource :membership_request, only: :cancel, parent: false
 
 
   def new
-    @group = GroupDecorator.new Group.find(params[:group_id])
     @membership_request = MembershipRequest.new
     @membership_request.group = @group
     @membership_request.requestor = current_user

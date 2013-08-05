@@ -1,0 +1,23 @@
+.row
+  .span9
+    - set_title @group.name, "", @group.parent
+    = render '/groups/title', group: @group
+.row
+  .span5
+    %h1= t("subscriptions.select_your_plan")
+
+.row
+  .span12#please-wait.hidden
+    = t(:'subscriptions.redirecting_please_wait')
+.row#payment-options
+  .span9
+    = render 'payment_option', option_color: 'lt-blue', people: 10, amount: 30, group: @group
+    = render 'payment_option', option_color: 'lime', people: 25, amount: 50, group: @group
+    = render 'payment_option', option_color: 'yellow', people: 50, amount: 100, group: @group
+    = render 'payment_option', option_color: 'orange', people: 100, amount: 200, group: @group
+    #us-dollars= t("subscriptions.prices_in_us_dollars")
+  .span7
+    #footer
+      = simple_format t('subscriptions.contact_us_html')
+    #note-about-paypal
+      %p= t("subscriptions.note_about_paypal_html")
