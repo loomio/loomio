@@ -263,10 +263,6 @@ en:
       name: "What is your name?"
       email: "What is your email address?"
       group_name: "What is the name of your group?"
-      placeholders:
-        name: "e.g. Jane Bloggs"
-        email: "e.g. jane@organisation.com"
-        group_name: "e.g. Jane's Accounting Services"
     confirmation:
       title: You're almost done! Check your email.
       body_html: |
@@ -277,6 +273,7 @@ en:
       description_html: "Your group members will be invited to pay what they can.<p>If you would rather pay on behalf of your group, <a href='%{subscription_path}'>sign up for a subscription.</a></p>"
       header: "Pay what you can"
       intro: "Start your group"
+      placeholder: "e.g. Neighbourhood Support Group"
       submit: "Start group!"
     selection:
       description_html: "Money shouldn’t be a barrier to good collaborative decision making. Groups with a budget pay a subscription for using the tool, members of informal groups contribute what they can.</p><p id='last'>Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users.</p>"
@@ -293,6 +290,7 @@ en:
       intro: "Try Loomio for free"
       table:
         description_html: You'll be asked to enter credit card details at the end of your <span>30-day free trial.</span>
+      placeholder: "e.g. Jane's Accounting Services"
       submit: "Start your free trial!"
   #
   # DISCUSSION PAGE
