@@ -47,7 +47,7 @@ end
 
 When(/^I open the email and click the accept invitation link$/) do
   last_email = ActionMailer::Base.deliveries.last
-  url = last_email.body.match(/https?:\/\/[\S]+/)[0]
+  url = links_in_email(last_email).last
   path = URI.parse(url).path
   visit path
 end
