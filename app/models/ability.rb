@@ -51,8 +51,6 @@ class Ability
       end
     end
 
-    can :request_membership, Group
-
     can :create, Group do |group|
       group.parent.members.include? user
     end
@@ -110,14 +108,12 @@ class Ability
          :edit_title,
          :show_description_history,
          :preview_version,
-         :update_version,
-         :show], Discussion do |discussion|
+         :update_version], Discussion do |discussion|
       discussion.group.members.include?(user)
     end
 
     can [:destroy], Comment do |comment|
-      (comment.author == user) or
-      comment.group.admins.include?(user)
+      (comment.author == user) or comment.group.admins.include?(user)
     end
 
     can [:like,
@@ -130,7 +126,7 @@ class Ability
     end
 
     can :create, Motion do |motion|
-      user.groups.include?(motion.group)
+      motion.group.members.include?(user)
     end
 
     can [:destroy,
