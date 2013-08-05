@@ -7,7 +7,6 @@ body.group_requests {
   abbr { display: none; }
   p {
     font-size: $font-medium-large;
-    font-weight: 300;
   }
   #informal-group { background-color: #D8EBF1; }
   &.subscription, &.pwyc, &.create {
