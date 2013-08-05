@@ -97,7 +97,7 @@ describe "User abilities" do
       it { should be_able_to(:show, group) }
     end
 
-    context "viewing a subgroup they do not belong to", :focus do
+    context "viewing a subgroup they do not belong to" do
       let(:subgroup) { create(:group, parent: group) }
       let(:subgroup_membership_request) { build(:membership_request, group: subgroup, requestor: user) }
 
@@ -264,7 +264,7 @@ describe "User abilities" do
       it { should be_able_to(:show, discussion) }
     end
 
-    context "subgroup viewable to members", :focus do
+    context "subgroup viewable to members" do
       let(:subgroup) { create(:group, parent: group, viewable_by: 'parent_group_members') }
       let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
 
