@@ -21,9 +21,8 @@ class InboxController < BaseController
   end
 
   def mark_all_as_read
-    group = current_user.groups.find(params[:group_id])
-    Queries::VisibleDiscussions.new(groups: [group], user: current_user).unread.
-                                order_by_latest_comment.each do |d|
+    discussion_ids = params[:discussion_ids].split('x').map(&:to_i)
+    current_user.discussions.where(id: discussion_ids).each do |d|
       d.as_read_by(current_user).viewed!
     end
     redirect_to_group_or_head_ok

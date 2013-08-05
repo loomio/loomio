@@ -44,4 +44,4 @@
 //= require autodetect_time_zone
 //= require inbox
 //= require searches
-
+//= require subscriptions

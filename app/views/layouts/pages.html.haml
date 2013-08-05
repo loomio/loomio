@@ -11,12 +11,13 @@
   %body{class: "#{controller_name} #{action_name}"}
     .container.home-flash
       = render 'flash_messages', :flash => flash
+    = render 'donate-tab'
     .container#top
       .inner-container
         .row-fluid
           .pull-right
             - if controller_name == 'pages' && (action_name == 'home' || action_name == 'about')
-              =link_to 'Sign up', request_new_group_path, class: 'btn'
+              =link_to 'Start a group', selection_group_requests_path, class: 'btn btn-success'
             =link_to 'Sign in', new_user_session_path, class: 'btn btn-info'
           .span3 &nbsp;
           .span6
@@ -24,14 +25,15 @@
             %h2 collaborative decision-making
         .frontpage-nav
           =link_to('Purpose', '/about#purpose')
-          %span{style: 'padding-left: 3px; padding-right: 3px'}
-            &middot;
+          %span &middot;
 
           =link_to('How it works', '/about#how-it-works')
-          %span{style: 'padding-left: 3px; padding-right: 3px'}
-            &middot;
+          %span &middot;
+
           =link_to('About us', '/about#about-us')
     = yield
+    = render 'footer_logged_out'
+
   = javascript_include_tag "frontpage"
   - if Rails.env.production? || Rails.env.staging?
     / = render 'metrics_listener_data'
