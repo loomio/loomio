@@ -293,17 +293,7 @@ en:
     subscription:
       intro: "Try Loomio for free"
       table:
-        description_html: "You'll be asked to enter credit card details at the end of your <span>30-day free trial.</span>"
-        price1_html: "<span>US</span> $30/mo"
-        price2_html: "<span>US</span> $50/mo"
-        price3_html: "<span>US</span> $100/mo"
-        price4_html: "<span>US</span> $200/mo"
-        price5_html: "<a href='mailto:contact@loomio.org'>Talk to us!</a>"
-        quantity1: "Up to 10 people"
-        quantity2: "Up to 25"
-        quantity3: "Up to 50"
-        quantity4: "Up to 100"
-        quantity5: "more than 100"
+        description_html: You'll be asked to enter credit card details at the end of your <span>30-day free trial.</span>
       submit: "Start your free trial!"
   #
   # DISCUSSION PAGE
@@ -628,7 +618,8 @@ en:
         description_html: You'll be asked to enter credit card details at the end of your <span>30-day free trial.</span>
         price_html: <span>US</span> $%{amount}/mo
         price_talk_html: <a href='mailto:aroha@loomio.org' target='_blank'>Talk to us!</a>
-        quantity: Up to %{people} people
+        quantity: Up to %{people}
+        quantity_with_people: Up to %{people} people
         quantity_more: More than 100
         title_html: <strong>Payment plans</strong>
 

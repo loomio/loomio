@@ -12,22 +12,7 @@
           .payment-model-box#organisation
             %h2 Organisations
             %p.examples e.g. businesses, government agencies, community organisations
-            %table
-              %tr#first
-                %td= t("group_request.subscription.table.quantity1")
-                %td= t("group_request.subscription.table.price1_html")
-              %tr
-                %td= t("group_request.subscription.table.quantity2")
-                %td= t("group_request.subscription.table.price2_html")
-              %tr
-                %td= t("group_request.subscription.table.quantity3")
-                %td= t("group_request.subscription.table.price3_html")
-              %tr
-                %td= t("group_request.subscription.table.quantity4")
-                %td= t("group_request.subscription.table.price4_html")
-              %tr
-                %td= t("group_request.subscription.table.quantity5")
-                %td= t("group_request.subscription.table.price5_html")
+            = render("groups/subscriptions/pricing_table")
         .span4
           .payment-model-box#informal-group
             %h2 Informal groups

@@ -21,7 +21,7 @@ body.group_requests {
       label { font-size: 18px; }
       .btn {
         font-weight: 700;
-        margin-top: 20px;
+        margin-top: 15px;
       }
       .control-group { margin-bottom: 16px; }
     }
@@ -31,34 +31,25 @@ body.group_requests {
       background-color: #EEE;
       color: #555555;
       margin: 0px 0 0 50px;
-      padding: 4px 10px;
-      width: 224px;
+      padding: 25px;
+      td {
+        padding: 5px;
+      }
       h2 { font-weight: 400; }
       ul {
         list-style: disc;
         margin-left: 20px;
       }
     }
-    table {
-      margin-bottom: 14px;
-      width: 100%;
-      tr {
-        border-bottom: 1px solid #dadada;
-        height: 30px;
-        td {
-          &:last-child { text-align: right; }
-          span { font-size: .8em; }
-        }
-      }
-    }
     #intro { margin-bottom: 30px; }
     #organisation {
       background-color: #DEF1DE;
-      p { font-style: italic;
+      p { 
+        margin-top: 14px;
+        font-style: italic;
         span { font-weight: 700; }
       }
     }
-    #pricing { }
     .span4 { width: 310px; }
   }
   &.group_requests.selection {

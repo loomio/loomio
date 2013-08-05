@@ -51,7 +51,7 @@ body.subscriptions {
       background-color: #DEF1DE;
       color: #555555;
       margin-top: 30px;
-      padding: 4px 10px;
+      padding: 15px;
       width: 240px;
       h3 {
         color: #000;
@@ -60,20 +60,6 @@ body.subscriptions {
       ul {
         list-style: disc;
         margin-left: 20px;
-      }
-    }
-    table {
-      margin-bottom: 14px;
-      width: 100%;
-      tr {
-        border-bottom: 1px solid #dadada;
-        height: 30px;
-        td {
-          font-size: 1.2em;
-          font-weight: 300;
-          &:last-child { text-align: right; }
-          span { font-size: .8em; }
-        }
       }
     }
   }

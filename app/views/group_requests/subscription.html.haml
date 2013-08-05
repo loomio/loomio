@@ -1,27 +1,14 @@
 .row
-  .span4.offset1
+  .span5.offset1
     #intro
       %h1= t("group_request.subscription.intro")
 .row
-  .span4.offset1
+  .span5.offset1
     = render 'form', submit_label: t("group_request.subscription.submit")
-  .span4
+  .span5
     .info-box#organisation
-      %table
-        %tr
-          %td= t("group_request.subscription.table.quantity1")
-          %td= t("group_request.subscription.table.price1_html")
-        %tr
-          %td= t("group_request.subscription.table.quantity2")
-          %td= t("group_request.subscription.table.price2_html")
-        %tr
-          %td= t("group_request.subscription.table.quantity3")
-          %td= t("group_request.subscription.table.price3_html")
-        %tr
-          %td= t("group_request.subscription.table.quantity4")
-          %td= t("group_request.subscription.table.price4_html")
-        %tr
-          %td= t("group_request.subscription.table.quantity5")
-          %td= t("group_request.subscription.table.price5_html")
+      = render 'groups/subscriptions/pricing_table'
       %p= t("group_request.subscription.table.description_html")
+
+
 
