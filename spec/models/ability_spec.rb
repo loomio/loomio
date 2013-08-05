@@ -97,26 +97,26 @@ describe "User abilities" do
       it { should be_able_to(:show, group) }
     end
 
-    context "viewing a subgroup they do not belong to" do
+    context "viewing a subgroup they do not belong to", :focus do
       let(:subgroup) { create(:group, parent: group) }
-      let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
+      let(:subgroup_membership_request) { build(:membership_request, group: subgroup, requestor: user) }
 
       context "public subgroup" do
         before { subgroup.update_attributes(:viewable_by => 'everyone') }
         it { should be_able_to(:show, subgroup) }
-        it { should be_able_to(:create, my_subgroup_membership_request) }
+        it { should be_able_to(:create, subgroup_membership_request) }
       end
 
       context "subgroup viewable by parent group members" do
         before { subgroup.update_attributes(:viewable_by => 'parent_group_members') }
         it { should be_able_to(:show, subgroup) }
-        it { should be_able_to(:create, my_subgroup_membership_request) }
+        it { should be_able_to(:create, subgroup_membership_request) }
       end
 
       context "private subgroup" do
         before { subgroup.update_attributes(:viewable_by => 'members') }
         it { should_not be_able_to(:show, subgroup) }
-        it { should_not be_able_to(:create, my_subgroup_membership_request) }
+        it { should_not be_able_to(:create, subgroup_membership_request) }
       end
     end
   end

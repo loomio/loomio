@@ -9,12 +9,14 @@ class Groups::MembershipsController < GroupBaseController
 
   def make_admin
     @membership.make_admin!
-    redirect_to [@group, :memberships]
+    flash[:notice] = "#{@membership.user_name} has been made a coordinator."
+    redirect_to [@membership.group, :memberships]
   end
 
   def remove_admin
     @membership.remove_admin!
-    redirect_to [@group, :memberships]
+    flash[:notice] = "#{@membership.user_name}'s coordinator rights have been removed."
+    redirect_to [@membership.group, :memberships]
   end
 
   def destroy

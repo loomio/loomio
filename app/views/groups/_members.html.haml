@@ -1,6 +1,6 @@
 - unless group.hide_members && (cannot? :update, group)
   .sub-panel#members-panel
-    -if can?(:update, group) or can(:add_members, group)
+    -if can?(:update, group) or can?(:add_members, group)
       .dropdown.btn-group
         %a.btn.btn-grey.btn-small.dropdown-toggle#group-member-options{ href: "#", 'data-toggle' => 'dropdown' }
           = t(:options)
