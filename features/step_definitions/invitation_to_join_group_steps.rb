@@ -46,6 +46,7 @@ Given(/^an invitation to join the group has been sent to "(.*?)"$/) do |arg1|
 end
 
 When(/^I open the email and click the accept invitation link$/) do
+
   invitation_url_regex = /https?:\/\/[\S]+/
   url = last_email_text_body.match(invitation_url_regex)[0]
   path = URI.parse(url).path

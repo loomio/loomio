@@ -102,7 +102,7 @@ Loomio::Application.routes.draw do
   end
 
 
-  resources :users, :only => [:new, :create, :update, :show,] do
+  resources :users, :only => [:new, :update, :show] do
     put :set_avatar_kind, on: :member
     post :upload_new_avatar, on: :member
   end

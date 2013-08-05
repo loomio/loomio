@@ -124,6 +124,8 @@ a.btn-icon:hover { color: $dark-grey; }
 .we_the_people.index {
   color: black;
 
+  .alert { margin: 10px 0; }
+
   .pages-information { min-height: 200px; }
 
   .pages-links {
@@ -298,6 +300,7 @@ a.btn-icon:hover { color: $dark-grey; }
 body.pages { margin-bottom: 34px; }
 
 body.pages.home {
+  .alert { margin: 10px 0; }
   #button-container {
     margin-top: 24px;
     a { width: 200px; }
@@ -369,4 +372,13 @@ body.pages.terms_of_service {
   }
 }
 
-
+.invitations.show, .registrations.create {
+  .alert { margin: 10px 0; }
+  .terms-of-service-text {
+    font-size: 1em;
+    margin: 0 0 8px 2px;
+    a { font-size: 1em; }
+  }
+  select { width: 394px; }
+  input.btn { margin-bottom: 15px; }
+}
