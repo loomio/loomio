@@ -72,6 +72,9 @@ class User < ActiveRecord::Base
            :through => :announcement_dismissals,
            :source => :announcement
 
+  has_many :discussion_readers, dependent: :destroy
+  has_many :motion_read_logs, dependent: :destroy
+
 
   has_many :notifications
   has_many :comments
@@ -85,7 +88,6 @@ class User < ActiveRecord::Base
   before_create :set_default_avatar_kind
   before_create :generate_username
   after_create :ensure_name_entry
-  before_destroy { |user| ViewLogger.delete_all_logs_for(user.id) }
 
   scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
   scope :sorted_by_name, order("lower(name)")

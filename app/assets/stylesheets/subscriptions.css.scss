@@ -1,0 +1,63 @@
+@import "settings";
+@import "bootstrap/mixins";
+@import "mixins";
+
+body.subscriptions {
+  &.new, &.show {
+    color: #000;
+    h1 { margin: 6px 0 22px 0; }
+    p {
+      font-size: 1.2em;
+      font-weight: 300;
+      line-height: 24px;
+    }
+  }
+  &.new {
+    #payment-options { margin-top: 16px; }
+    .payment-option-container {
+      border-radius: 4px;
+      display: inline-block;
+      @include ie7-inline-block();
+      font-size: 1.1em;
+      margin-right: 4px;
+      padding: 14px 12px 12px;
+      width: 132px;
+      .btn {
+        color: #FFF;
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 18px;
+        margin: 12px 0 0 0;
+        padding: 8px;
+      }
+    }
+    #us-dollars {
+      margin: 10px 54px 0 0;
+      text-align: right;
+      color: $mid-grey;
+    }
+    #footer {
+      margin-top: 15px;
+     }
+    #note-about-paypal { margin-top: 15px; }
+  }
+  &.show {
+    .info-box {
+      @include border-radius(4px);
+      background-color: #DEF1DE;
+      color: #555555;
+      margin-top: 30px;
+      padding: 15px;
+      width: 240px;
+      h3 {
+        color: #000;
+        font-weight: 400;
+      }
+      ul {
+        list-style: disc;
+        margin-left: 20px;
+      }
+    }
+  }
+}

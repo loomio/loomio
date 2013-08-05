@@ -1,0 +1,12 @@
+%table#pricing_table
+  - first_amount = PaypalCheckout::AMOUNT_OPTIONS.first
+  %tr#first
+    %td= t("subscriptions.subscription.table.quantity_with_people", people: PaypalCheckout::DOLLARS_TO_PEOPLE[first_amount])
+    %td= t("subscriptions.subscription.table.price_html", amount: first_amount)
+  - PaypalCheckout::AMOUNT_OPTIONS[1, PaypalCheckout::AMOUNT_OPTIONS.count - 1].each do |amount|
+    %tr
+      %td= t("subscriptions.subscription.table.quantity", people: PaypalCheckout::DOLLARS_TO_PEOPLE[amount])
+      %td= t("subscriptions.subscription.table.price_html", amount: amount)
+  %tr
+    %td= t("subscriptions.subscription.table.quantity_more")
+    %td= t("subscriptions.subscription.table.price_talk_html")

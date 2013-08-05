@@ -8,10 +8,6 @@ module GroupsHelper
     group.parent.nil? && (group.subgroups.present? || (current_user && group.users_include?(current_user)))
   end
 
-  def logged_in_member_can_invite?(group)
-    user_signed_in? && current_user.is_group_member?(group) && group.members_can_invite?
-  end
-
   def show_next_steps?(group)
     user_signed_in? && current_user.is_group_admin?(group) && !group.next_steps_completed? && @group.is_top_level?
   end

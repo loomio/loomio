@@ -7,6 +7,7 @@ describe InvitationsController do
     let(:group) { stub_model(Group) }
     let(:invitation) {stub(:invitation,
                            :group => group,
+                           :recipient_email => 'jim@bob.com',
                            :intent => 'join_group',
                            :cancelled? => false,
                            :accepted? => false)}
@@ -18,15 +19,15 @@ describe InvitationsController do
         response.body.should =~ /could not find invitation/i
       end
     end
-    
+
     context "user not signed in" do
       before do
         Invitation.should_receive(:find_by_token).and_return(invitation)
         get :show, :id => 'asdfghjkl'
       end
 
-      it "sets session attribute of the invitation token" do 
-        session[:invitation_token].should == "asdfghjkl" 
+      it "sets session attribute of the invitation token" do
+        session[:invitation_token].should == "asdfghjkl"
       end
 
       it "renders sign in page" do

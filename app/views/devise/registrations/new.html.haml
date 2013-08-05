@@ -1,16 +1,10 @@
 .container
-  .section.first
+  %section.first
     .inner-container
       .row
         .span6.offset3
           %h2 Sign up
-          = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-            = f.error_notification
-            .form-inputs
-              = f.input :name, :required => true, :autofocus => true
-              = f.input :email, :required => true
-              = f.input :password, :required => true
-              = f.input :password_confirmation, :required => true
-            .form-actions
-              = f.button :submit, "Sign up"
-          = render "devise/shared/links"
+          = render "devise/registrations/form"
+      .row
+        .span6.offset3
+          %h3= t :"or_sign_in_html", link: user_session_path

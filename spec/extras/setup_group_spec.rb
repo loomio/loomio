@@ -5,34 +5,34 @@ describe SetupGroup do
     @approver = FactoryGirl.create(:user)
     @group_request = FactoryGirl.create(:group_request)
     @setup_group = SetupGroup.new(@group_request)
-    @group_request.verify!
+    @paying_subscription = true
   end
 
-  describe 'approve_group_request' do
-    before do
-      @group = @setup_group.approve_group_request(approved_by: @approver)
+  describe '#setup(paying_subscription)' do
+
+    it 'assigns the group_request name to the group' do
+      @group = @setup_group.setup(@paying_subscription)
+      @group.name.should == @group_request.name
     end
 
-    it 'creates the group' do
-      @group.should be_persisted
-    end
-
-    it 'copies attributes from group_request' do
-      %w[name country_name cannot_contribute max_size].each do |attr|
-        @group.send(attr).should == @group_request.send(attr)
-      end
-    end
-
-    it 'aprroves the group request' do
-      @group_request.should be_approved
+    it 'assigns the payment model to the group' do
+      @group = @setup_group.setup(@paying_subscription)
+      @group.paying_subscription.should == @paying_subscription
     end
 
     it 'assigns the group_request to the group' do
+      @group = @setup_group.setup(@paying_subscription)
       @group.group_request.should == @group_request
     end
 
-    it 'records who approved the group request' do
-      @group_request.approved_by.should == @approver
+    it 'creates the group' do
+      @group = @setup_group.setup(@paying_subscription)
+      @group.should be_persisted
+    end
+
+    it 'sends an invitation to start the group' do
+      @setup_group.should_receive(:send_invitation_to_start_group)
+      @group = @setup_group.setup('pwyc')
     end
   end
 end
