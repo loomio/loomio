@@ -368,3 +368,15 @@ body.pages.terms_of_service {
 }
 
 
+.invitations.show, .registrations.create {
+  .alert {
+    margin: 10px 0;
+  }
+  .terms-of-service-text {
+    margin: 0 0 8px 2px;
+    font-size: 1em;
+    a { font-size: 1em; }
+  }
+  select { width: 394px; }
+  input.btn { margin-bottom: 15px; }
+}

@@ -69,9 +69,10 @@ class InvitationsController < ApplicationController
   def render_signup_form
     @user = User.new
     if @invitation.intent == 'join_group'
+      @user.email = @invitation.recipient_email
       render template: 'invitations/join_group', layout: 'pages'
     else
-      @user_name = @invitation.group_request_admin_name
+      @user.name = @invitation.group_request_admin_name
       render template: 'invitations/start_group', layout: 'pages'
     end
   end
