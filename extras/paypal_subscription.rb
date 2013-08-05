@@ -61,6 +61,6 @@ class PaypalSubscription
   end
 
   def start_time
-    (Time.now + 5.minutes).utc.iso8601
+    (Time.zone.now + 30.minutes).utc.iso8601
   end
 end
