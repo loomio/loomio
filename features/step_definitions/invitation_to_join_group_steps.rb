@@ -26,7 +26,7 @@ When(/^enter "(.*?)" into the recipients$/) do |arg1|
 end
 
 When(/^fill in the message body$/) do
-  fill_in 'invite_people_message_body', with: 'hi please click the {invitation_link}'
+  fill_in 'invite_people_message_body', with: 'hi please click the invitation_link below'
 end
 
 When(/^click Send Invitations$/) do
@@ -41,13 +41,14 @@ end
 
 Given(/^an invitation to join the group has been sent to "(.*?)"$/) do |arg1|
   @user = FactoryGirl.create(:user)
-  @invite_people = InvitePeople.new(recipients: arg1, message_body: 'please click {invitation_link}')
+  @invite_people = InvitePeople.new(recipients: arg1, message_body: 'please click the invitation link below')
   CreateInvitation.to_people_and_email_them(@invite_people, group: @group, inviter: @user)
 end
 
 When(/^I open the email and click the accept invitation link$/) do
-  last_email = ActionMailer::Base.deliveries.last
-  url = last_email.body.match(/https?:\/\/[\S]+/)[0]
+
+  invitation_url_regex = /https?:\/\/[\S]+/
+  url = last_email_text_body.match(invitation_url_regex)[0]
   path = URI.parse(url).path
   visit path
 end

@@ -41,3 +41,11 @@ def visit_add_subgroup_page(groupname)
   @group = Group.find_by_name(groupname)
   visit add_subgroup_group_path(@group)
 end
+
+def last_email_text_body
+  ActionMailer::Base.deliveries.last.parts[0].body
+end
+
+def last_email_html_body
+  ActionMailer::Base.deliveries.last.parts[1].body
+end

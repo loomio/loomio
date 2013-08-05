@@ -199,7 +199,7 @@ describe Discussion do
   end
 
   describe "#delayed_destroy" do
-    it 'sets deleted_at before calling destroy and then destroys everything', :focus do
+    it 'sets deleted_at before calling destroy and then destroys everything' do
       @discussion = create(:discussion)
       @motion = create(:motion, discussion: @discussion)
       @vote = create(:vote, motion: @motion)

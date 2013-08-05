@@ -25,9 +25,10 @@ describe "User abilities" do
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
 
     before do
-      @user_membership = group.add_member!(user)
-      @other_user_membership = group.add_member!(other_user)
+      @membership = group.add_member!(user)
+      @other_membership = group.add_member!(other_user)
     end
+
     it { should be_able_to(:create, subgroup) }
     it { should be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
@@ -35,6 +36,8 @@ describe "User abilities" do
     it { should be_able_to(:add_subgroup, group) }
     it { should be_able_to(:create, subgroup) }
     it { should_not be_able_to(:create, subgroup_for_another_group) }
+    it { should_not be_able_to(:view_payment_details, group) }
+    it { should_not be_able_to(:choose_subscription_plan, group) }
     it { should be_able_to(:new_proposal, discussion) }
     it { should be_able_to(:add_comment, discussion) }
     it { should be_able_to(:update_description, discussion) }
@@ -54,10 +57,10 @@ describe "User abilities" do
     it { should be_able_to(:unlike, another_user_comment) }
     it { should be_able_to(:create, new_discussion) }
     it { should_not be_able_to(:edit_privacy, group) }
-    it { should_not be_able_to(:make_admin, @user_membership) }
-    it { should_not be_able_to(:make_admin, @other_user_membership) }
-    it { should_not be_able_to(:destroy, @other_user_membership) }
-    it { should be_able_to(:destroy, @user_membership) }
+    it { should_not be_able_to(:make_admin, @membership) }
+    it { should_not be_able_to(:make_admin, @other_membership) }
+    it { should_not be_able_to(:destroy, @other_membership) }
+    it { should be_able_to(:destroy, @membership) }
     it { should be_able_to(:create, new_motion) }
     it { should be_able_to(:get_and_clear_new_activity, other_users_motion) }
     it { should be_able_to(:close, user_motion) }
@@ -68,8 +71,8 @@ describe "User abilities" do
     it { should_not be_able_to(:edit_close_date, other_users_motion) }
 
     it "cannot remove themselves if they are the only member of the group" do
-      group.memberships.where("memberships.id != ?", @user_membership.id).destroy_all
-      should_not be_able_to(:destroy, @user_membership)
+      group.memberships.where("memberships.id != ?", @membership.id).destroy_all
+      should_not be_able_to(:destroy, @membership)
     end
 
     context "group members invitable by members" do
@@ -78,7 +81,7 @@ describe "User abilities" do
       it { should be_able_to(:manage_membership_requests, group) }
       it { should be_able_to(:approve, membership_request) }
       it { should be_able_to(:ignore, membership_request) }
-      it { should_not be_able_to(:destroy, @other_user_membership) }
+      it { should_not be_able_to(:destroy, @other_membership) }
     end
 
     context "group members invitable by admins" do
@@ -96,24 +99,24 @@ describe "User abilities" do
 
     context "viewing a subgroup they do not belong to" do
       let(:subgroup) { create(:group, parent: group) }
-      let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
+      let(:subgroup_membership_request) { build(:membership_request, group: subgroup, requestor: user) }
 
       context "public subgroup" do
         before { subgroup.update_attributes(:viewable_by => 'everyone') }
         it { should be_able_to(:show, subgroup) }
-        it { should be_able_to(:create, my_subgroup_membership_request) }
+        it { should be_able_to(:create, subgroup_membership_request) }
       end
 
       context "subgroup viewable by parent group members" do
         before { subgroup.update_attributes(:viewable_by => 'parent_group_members') }
         it { should be_able_to(:show, subgroup) }
-        it { should be_able_to(:create, my_subgroup_membership_request) }
+        it { should be_able_to(:create, subgroup_membership_request) }
       end
 
       context "private subgroup" do
         before { subgroup.update_attributes(:viewable_by => 'members') }
         it { should_not be_able_to(:show, subgroup) }
-        it { should_not be_able_to(:create, my_subgroup_membership_request) }
+        it { should_not be_able_to(:create, subgroup_membership_request) }
       end
     end
   end
@@ -127,19 +130,20 @@ describe "User abilities" do
     let(:membership_request) { create(:membership_request, group: group, requestor: non_member) }
 
     before do
-      @user_membership = group.add_admin! user
-      @other_user_membership = group.add_member! other_user
-      # @membership_request = group.add_request! create(:user)
+      @membership = group.add_admin! user
+      @other_membership = group.add_member! other_user
     end
 
     it { should be_able_to(:update, group) }
     it { should be_able_to(:email_members, group) }
     it { should be_able_to(:hide_next_steps, group) }
+    it { should be_able_to(:view_payment_details, group) }
+    it { should be_able_to(:choose_subscription_plan, group) }
     it { should be_able_to(:destroy, discussion) }
     it { should be_able_to(:move, discussion) }
-    it { should be_able_to(:make_admin, @other_user_membership) }
-    it { should be_able_to(:remove_admin, @other_user_membership) }
-    it { should be_able_to(:destroy, @other_user_membership) }
+    it { should be_able_to(:make_admin, @other_membership) }
+    it { should be_able_to(:remove_admin, @other_membership) }
+    it { should be_able_to(:destroy, @other_membership) }
     it { should be_able_to(:edit_description, group) }
     it { should be_able_to(:edit_privacy, group) }
     it { should_not be_able_to(:update, other_users_motion) }
@@ -149,8 +153,8 @@ describe "User abilities" do
     it { should be_able_to(:destroy, another_user_comment) }
 
     it "should not be able to delete the only admin of a group" do
-      group.admin_memberships.where("memberships.id != ?", @user_membership.id).destroy_all
-      should_not be_able_to(:destroy, @user_membership)
+      group.admin_memberships.where("memberships.id != ?", @membership.id).destroy_all
+      should_not be_able_to(:destroy, @membership)
     end
 
     context "group members invitable by admins" do
@@ -159,6 +163,13 @@ describe "User abilities" do
       it { should be_able_to(:manage_membership_requests, group) }
       it { should be_able_to(:approve, membership_request) }
       it { should be_able_to(:ignore, membership_request) }
+    end
+
+    context "subgroups should not have accessible subscription settings" do
+      let(:sub_group) { create(:group, parent: group) }
+      before { sub_group.add_admin! user }
+      it { should_not be_able_to(:view_payment_details, sub_group) }
+      it { should_not be_able_to(:choose_subscription_plan, sub_group) }
     end
   end
 
@@ -202,6 +213,11 @@ describe "User abilities" do
         discussion.reload
       end
       it { should be_able_to(:show, group) }
+      it { should_not be_able_to(:view_payment_details, group) }
+      it { should_not be_able_to(:choose_subscription_plan, group) }
+      it { should be_able_to(:create, my_membership_request) }
+      it { should be_able_to(:cancel, my_membership_request) }
+      it { should_not be_able_to(:cancel, other_membership_request) }
       it { should be_able_to(:show, discussion) }
       it { should be_able_to(:get_and_clear_new_activity, motion) }
       it { should_not be_able_to(:update, group) }
@@ -248,7 +264,7 @@ describe "User abilities" do
       it { should be_able_to(:show, discussion) }
     end
 
-    context "subgroup viewable to members", :focus do
+    context "subgroup viewable to members" do
       let(:subgroup) { create(:group, parent: group, viewable_by: 'parent_group_members') }
       let(:my_subgroup_membership_request) { create(:membership_request, group: subgroup, requestor: user) }
 

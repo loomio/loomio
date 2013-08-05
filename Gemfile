@@ -85,6 +85,7 @@ group :development do
   gem 'launchy', '~> 2.0.5'
   gem 'spork-rails', '~> 3.2.1'
   gem 'awesome_print', '~> 1.0.2'
+  gem 'quiet_assets', '~> 1.0.2'
 end
 
 group :test do
@@ -92,7 +93,7 @@ group :test do
   gem 'email_spec', '~> 1.2.1'
   gem 'poltergeist', '~> 1.3.0'
   gem 'webmock', '~> 1.9.0'
-  gem 'vcr', '~> 2.4.0'
+  gem 'vcr', '~> 2.5.0'
 end
 
 group :staging, :production do
