@@ -822,7 +822,7 @@ en:
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on Loomio"
     to_start_group:
-      subject: "Your Loomio group: %{group_name} has been created"
+      subject: "Set up your new Loomio group: %{group_name}"
     trial_expiry:
       header: "%{group_name}: Your Loomio trial is almost up."
       hi: "Hi there,"
