@@ -143,7 +143,6 @@ Loomio::Application.routes.draw do
 
   scope controller: 'pages' do
     get :about
-    get :blog
     get :privacy
     get :pricing
     get :terms_of_service
@@ -179,4 +178,6 @@ Loomio::Application.routes.draw do
   get '/contact' => redirect('/about#about-us')
   get '/pages/privacy' => redirect('/privacy_policy')
   get '/pages/about' => redirect('/about#about-us')
+
+  get 'blog' => redirect('http://blog.loomio.org')
 end
