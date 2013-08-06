@@ -28,6 +28,7 @@ ActiveAdmin.register GroupRequest do
     column 'Subscription' do |gr|
       gr.cannot_contribute? == false
     end
+    column :status
     column :created_at, sortable: :created_at do |gr|
       gr.created_at.to_date
     end
