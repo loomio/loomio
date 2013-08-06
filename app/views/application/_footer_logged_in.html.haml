@@ -1,7 +1,7 @@
 .footer.container.clearfix
   - if user_signed_in?
     .left
-      .dropdown
+      .dropup
         %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
           %span
             = "#{t(:"simple_form.labels.user.language_preference")}:"
