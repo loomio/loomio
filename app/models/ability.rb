@@ -52,7 +52,11 @@ class Ability
     end
 
     can :create, Group do |group|
-      group.parent.members.include? user
+      if group.parent.present?
+        group.parent.members.include? user
+      else
+        false
+      end
     end
 
     can [:make_admin], Membership do |membership|
