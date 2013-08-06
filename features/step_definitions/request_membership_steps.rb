@@ -61,7 +61,8 @@ Then(/^the requester should be added to the group$/) do
 end
 
 Then(/^I should no longer see the membership request in the list$/) do
-  find('#membership-request-list').should_not have_content @membership_request.name
+  page.should_not have_css '#membership-request-list'
+  page.should have_content I18n.t(:no_pending_membership_requests)
 end
 
 Given(/^there is an approved membership request from a user$/) do
