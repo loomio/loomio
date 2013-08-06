@@ -59,6 +59,18 @@ en:
     settings_updated: "Your settings have been updated."
     user_made_admin: "%{which_user} has been made a coordinator."
     you_have_left_group: "You have left %{which_group}."
+    invitations:
+      auto_added:
+        one: "%{count} member added"
+        other: "%{count} members added"
+      existing_member:
+        one: "%{count} member already in group"
+        other: "%{count} members already in group"
+      sent:
+        one: "%{count} invitation sent"
+        other: "%{count} invitations sent"
+      auto_added_and_sent: "%{auto_added_text} and %{sent_text}"
+
   warning:
     cant_remove_last_admin: "You are the last coordinator and cannot be removed."
     membership_request_already_approved: "Membership request has already been approved."
@@ -267,7 +279,7 @@ en:
       title: You're almost done! Check your email.
       body_html: |
         We've sent you an email with an invite to start your group.
-        
+
         If you don't see anything in your inbox in a few minutes, email us at <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
     pwyc:
       description_html: "Your group members will be invited to pay what they can.<p>If you would rather pay on behalf of your group, <a href='%{subscription_path}'>sign up for a subscription.</a></p>"
