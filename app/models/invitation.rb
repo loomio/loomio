@@ -21,6 +21,10 @@ class Invitation < ActiveRecord::Base
   scope :not_cancelled,  -> { where(cancelled_at: nil) }
   scope :pending, -> { not_cancelled.where(accepted_at: nil) }
 
+  def recipient_first_name
+    recipient_name.split(' ').first
+  end
+
   def inviter_name
     inviter.name
   end
