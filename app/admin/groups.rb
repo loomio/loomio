@@ -53,6 +53,7 @@ ActiveAdmin.register Group do
     column :description, :sortable => :description do |group|
       group.description
     end
+    column :paying_subscription
     default_actions
   end
 
