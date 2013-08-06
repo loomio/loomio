@@ -537,7 +537,7 @@ en:
       Loomio is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
 
       Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users.
-      
+
       Thanks for making this possible!
 
   #
@@ -794,10 +794,12 @@ en:
       intro: "Your request for access to the group '%{group_name}' on Loomio has been approved."
       subject: "Membership approved"
     invitation:
-      header: "Start your group on Loomio"
       hi: "Hi %{name},"
       intro: "Click the link below to set up your group %{group_name}:"
-      closing_message: "If you’ve got any questions or if there’s anything at all we can do to help you get up and running, we’d love to hear from you."
+      closing_message: "If you’ve got any questions or if there’s anything at all we can do to help you get up and running, we’d love to hear from you - just reply to this email."
+      thanks: |
+        Thanks!
+        The Loomio Team
     membership_request:
       intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
       subject: "New membership request from %{who}"

@@ -1,8 +1,6 @@
 = render '/application/mailer_doctype'
 %html
-  %h1= t("email.invitation.header")
-
-  %p= t("email.invitation.hi", name: @invitation.recipient_name)
+  %p= t("email.invitation.hi", name: @invitation.recipient_first_name)
 
   %p= t("email.invitation.intro", group_name: @invitation.group_name)
 
@@ -10,4 +8,4 @@
 
   %p= t("email.invitation.closing_message")
 
-  %p= t :thanks
+  %p= simple_format t('email.invitation.thanks')
