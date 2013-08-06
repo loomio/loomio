@@ -304,8 +304,12 @@ a.btn-icon:hover { color: $dark-grey; }
     color: $dark-grey;
     padding: 0 3px;
   }
-  .caret { vertical-align: middle; }
-  .dropup { display: inline; }
+  .caret {margin-top: 10px;}
+  .dropdown {
+    display: inline;
+    a{text-decoration: none;}
+    a:hover span{text-decoration: underline;}
+  }
   .left{
     width: 50%;
     float: left;
