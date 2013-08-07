@@ -13,6 +13,7 @@ Feature: Setup group
     Then the group should be setup
     And I should be on the group page
     And I should be added to the group as a coordinator
+    And I should have received the Welcome to Loomio email
 
   Scenario: Group admin tries to set up a group that alredy has been setup
     Given I am an admin of a group
