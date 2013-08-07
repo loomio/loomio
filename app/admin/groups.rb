@@ -12,6 +12,12 @@ ActiveAdmin.register Group do
   scope "> 85% full" do |group|
     group.where('max_size > ? AND memberships_count/max_size >= ?', 0, 0.85)
   end
+  scope "Subscription" do |group|
+    group.where('paying_subscription IS true')
+  end
+  scope "Paying Subscription" do |group|
+    group.joins(:subscription)
+  end
 
   csv do
     column :id
