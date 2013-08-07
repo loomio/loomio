@@ -8,13 +8,13 @@ Then(/^I should see the contribution page$/) do
 end
 
 Given(/^I am not a member of a paying group$/) do
-  @group = FactoryGirl.create :group, paying_subscription: false
+  @group = FactoryGirl.create :group, payment_plan: 'pwyc'
   @group.save!
   @group.add_member! @user
 end
 
 Given(/^I am a member of a paying group$/) do
-  @group = FactoryGirl.create :group, paying_subscription: true
+  @group = FactoryGirl.create :group, payment_plan: 'subscription'
   @group.save!
   @group.add_member! @user
 end

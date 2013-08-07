@@ -1,26 +1,20 @@
 class SetupGroup
-  attr_accessor :group_request
-
-  def initialize(group_request)
-    self.group_request = group_request
+  def self.from_group_request(group_request)
+    group = Group.new
+    group.name = group_request.name
+    group.payment_plan = group_request.payment_plan
+    group.group_request = group_request
+    group.save!
+    send_invitation_to_start_group(group)
+    group
   end
 
-  def setup(paying_subscription)
-    @group = Group.new
-    @group.name = group_request.name
-    @group.paying_subscription = paying_subscription
-    @group.group_request = group_request
-    @group.save!
-    send_invitation_to_start_group
-    @group
-  end
-
-  def send_invitation_to_start_group()
+  def self.send_invitation_to_start_group(group)
     inviter = SetupGroup.find_or_create_helper_bot
-    invitation = CreateInvitation.to_start_group(group: group_request.group,
+    invitation = CreateInvitation.to_start_group(group: group,
                                                 inviter: inviter,
-                                                recipient_email: group_request.admin_email,
-                                                recipient_name: group_request.admin_name)
+                                                recipient_email: group.group_request.admin_email,
+                                                recipient_name: group.group_request.admin_name)
     InvitePeopleMailer.to_start_group(invitation, inviter.email).deliver
     invitation
   end

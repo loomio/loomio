@@ -405,14 +405,22 @@ describe User do
   end
 
   describe "belongs_to_paying_group" do
-    it "returns true if user is a member of a paying group" do
-      group.paying_subscription = true
+    it "returns true if user is a member of a manual subscription group" do
+      group.payment_plan = 'manual_subscription'
       group.save!
       group.add_member!(user)
-      user.belongs_to_paying_group?.should == true
+      user.belongs_to_paying_group?.should be_true
     end
+
+    it "returns true if user is a member of a subscription group" do
+      group.payment_plan = 'subscription'
+      group.save!
+      group.add_member!(user)
+      user.belongs_to_paying_group?.should be_true
+    end
+
     it "returns false if user is not a member of a paying group" do
-      group.paying_subscription == false
+      user.belongs_to_paying_group?.should be_false
     end
   end
 

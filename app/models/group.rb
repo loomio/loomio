@@ -1,12 +1,14 @@
 class Group < ActiveRecord::Base
 
   PERMISSION_CATEGORIES = ['everyone', 'members', 'admins', 'parent_group_members']
+  PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription']
 
   attr_accessible :name, :viewable_by, :parent_id, :parent, :cannot_contribute,
                   :members_invitable_by, :email_new_motion, :description, :setup_completed_at,
-                  :next_steps_completed, :paying_subscription
+                  :next_steps_completed, :payment_plan
 
   validates_presence_of :name
+  validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   validates :description, :length => { :maximum => 250 }
@@ -76,6 +78,15 @@ class Group < ActiveRecord::Base
 
   paginates_per 20
 
+
+  def requestor_name
+    group_request.try(:admin_name)
+  end
+
+  def requestor_email
+    group_request.try(:admin_email)
+  end
+
   def voting_motions
     motions.voting
   end
@@ -106,6 +117,15 @@ class Group < ActiveRecord::Base
 
   def parent_members_visible_to(user)
     parent.users.sorted_by_name
+  end
+
+  def is_pwyc?
+    payment_plan == 'pwyc'
+  end
+
+  # deliberately does not include manual_subscription
+  def is_subscription?
+    payment_plan == 'subscription'
   end
 
   # would be nice if the following 4 methods were reduced to just one - is_sub_group

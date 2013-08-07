@@ -41,3 +41,12 @@ Feature: Coordinator views payment details
 
     When I visit the payment details page
     Then I should be redirected to the group page
+
+  Scenario: Coordinator for manual subscription group cannot see payment details
+    Given I am a coordinator of a manual subscription group
+    When I visit the group page
+    Then I should not see a link to payment details
+
+    When I visit the payment details page
+    Then I should be redirected to the group page
+
