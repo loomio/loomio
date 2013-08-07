@@ -99,3 +99,9 @@ Then(/^I should see the group page without a contribute link$/) do
   page.should have_css("body.groups.show")
   page.should_not have_css("#contribute")
 end
+
+Then(/^the example content should be created$/) do
+  @group.discussions.first.title.should == I18n.t('example_discussion.title')
+  @group.motions.first.name.should == I18n.t('example_motion.name')
+end
+

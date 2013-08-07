@@ -10,7 +10,7 @@ class Groups::GroupSetupController < GroupBaseController
   def finish
     if @group.update_attributes(params[:group])
       @group.update_attribute(:setup_completed_at, Time.now)
-      SetupGroup.create_example_discussion(@group)
+      InvitePeopleMailer.delay.welcome(@group)
       redirect_to @group
     else
       render 'setup'
