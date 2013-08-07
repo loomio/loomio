@@ -1,17 +1,29 @@
 ActiveAdmin.register Group do
+
+  controller do
+    def collection
+      super.includes(:group_request)
+    end
+  end
+
   actions :index, :show, :edit
   before_filter :set_pagination
-  filter :name
+  filter :name 
+  filter :payment_plan, as: :select, collection: Group::PAYMENT_PLANS
+
 
   scope "Parent groups" do |group|
     group.where(parent_id: nil)
   end
+
   scope "<5 members" do |group|
     group.where('memberships_count <= ?', 5)
   end
+
   scope "> 85% full" do |group|
     group.where('max_size > ? AND memberships_count/max_size >= ?', 0, 0.85)
   end
+
 
   csv do
     column :id
@@ -26,18 +38,14 @@ ActiveAdmin.register Group do
   end
 
   index :download_links => false do
-    if params[:pagination].blank?
-      div :class => "admin-panel-paginate-toggle" do
-        link_to("single page", 'groups?pagination=false', class: "table_tools_button")
-      end
-    else
-      div :class => "admin-panel-paginate-toggle" do
-        link_to("paginate", 'groups', class: "table_tools_button")
-      end
-    end
-
     column :id
     column :name
+    column :contact do |g|
+      admin_name = ERB::Util.h(g.requestor_name)
+      admin_email = ERB::Util.h(g.requestor_email)
+      simple_format "#{admin_name} \n &lt;#{admin_email}&gt;"
+    end
+
     column "Size", :sortable => :memberships_count do |group|
       if group.max_size
         group_max_size = " (#{group.max_size})"
@@ -46,6 +54,7 @@ ActiveAdmin.register Group do
       end
       "#{group.memberships_count}"+group_max_size
     end
+
     column "Discussions", :discussions_count
     column "Motions", :motions_count
     column :created_at
@@ -53,7 +62,7 @@ ActiveAdmin.register Group do
     column :description, :sortable => :description do |group|
       group.description
     end
-    column :paying_subscription
+    column :payment_plan
     default_actions
   end
 
@@ -84,7 +93,7 @@ ActiveAdmin.register Group do
       f.input :id, :input_html => { :disabled => true }
       f.input :name, :input_html => { :disabled => true }
       f.input :max_size
-      f.input :paying_subscription, :as => :radio
+      f.input :payment_plan, :as => :select, :collection => Group::PAYMENT_PLANS
     end
     f.buttons
   end

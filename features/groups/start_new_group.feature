@@ -3,6 +3,23 @@ Feature: Start new group
   As a group coordinator
   I want to create a new group
 
+Scenario: Guest submits invalid subscription group form
+  Given I am a guest
+  And I am on the home page of the website
+  When I go to start a new group
+  And I choose the subscription plan
+  And I click start your free trial
+  Then I should see the subscription group form with errors
+
+Scenario: Guest submits invalid pwyc group form
+  Given I am a guest
+  And I am on the home page of the website
+  When I go to start a new group
+  And I choose the pay what you can plan
+  And I click start your group
+  Then I should see the pwyc group form with errors
+
+
 @javascript
 Scenario: Guest creates subscripton group
   Given I am a guest
@@ -56,7 +73,7 @@ Scenario: Guest creates Pay What You Can group
   And I setup the group
   Then I should see the group page with a contribute link
 
-Scenario: User existing user creates Pay What You Can group
+Scenario: Existing user creates Pay What You Can group
   Given I am logged in
   When I go to start a new group from the navbar
   And I choose the pay what you can plan

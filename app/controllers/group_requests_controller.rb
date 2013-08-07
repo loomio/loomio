@@ -1,20 +1,15 @@
 class GroupRequestsController < BaseController
-  before_filter :authenticate_user!, except: [:create, :confirmation, :selection, :subscription, :pwyc]
-  before_filter :load_initialize, only: [:subscription, :pwyc]
+  skip_before_filter :authenticate_user!
 
   def create
     @group_request = GroupRequest.new(params[:group_request])
-    @paying_subscription = params[:group_request][:paying_subscription]
     if @group_request.save
-      @setup_group = SetupGroup.new(@group_request)
-      @setup_group.setup(@paying_subscription)
+      SetupGroup.from_group_request(@group_request)
       redirect_to confirmation_group_requests_url
     else
-      if @paying_subscription == 'true'
-        @group_request.paying_subscription = true
+      if @group_request.payment_plan == 'subscription'
         render 'subscription'
       else
-        @group_request.paying_subscription = false
         render 'pwyc'
       end
     end
@@ -27,16 +22,18 @@ class GroupRequestsController < BaseController
   end
 
   def subscription
-    @group_request.paying_subscription = true
+    build_group_request
+    @group_request.payment_plan = 'subscription'
   end
 
   def pwyc
-    @group_request.paying_subscription = false
+    build_group_request
+    @group_request.payment_plan = 'pwyc'
   end
 
   private
 
-  def load_initialize
+  def build_group_request
     @group_request = GroupRequest.new
     if user_signed_in?
       @group_request.admin_name = current_user.name

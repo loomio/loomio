@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731045757) do
+ActiveRecord::Schema.define(:version => 20130807015738) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -202,7 +202,6 @@ ActiveRecord::Schema.define(:version => 20130731045757) do
     t.text     "why_do_you_want"
     t.text     "group_core_purpose"
     t.text     "admin_notes"
-    t.boolean  "paying_subscription"
   end
 
   add_index "group_requests", ["group_id"], :name => "index_group_requests_on_group_id"
@@ -239,20 +238,20 @@ ActiveRecord::Schema.define(:version => 20130731045757) do
     t.boolean  "hide_members",         :default => false
     t.boolean  "beta_features",        :default => false
     t.text     "description"
-    t.integer  "memberships_count",    :default => 0,     :null => false
+    t.integer  "memberships_count",    :default => 0,      :null => false
     t.datetime "archived_at"
     t.integer  "max_size"
     t.boolean  "cannot_contribute",    :default => false
     t.integer  "distribution_metric"
     t.string   "sectors"
     t.string   "other_sector"
-    t.integer  "discussions_count",    :default => 0,     :null => false
-    t.integer  "motions_count",        :default => 0,     :null => false
+    t.integer  "discussions_count",    :default => 0,      :null => false
+    t.integer  "motions_count",        :default => 0,      :null => false
     t.string   "country_name"
     t.datetime "setup_completed_at"
-    t.boolean  "next_steps_completed", :default => false, :null => false
+    t.boolean  "next_steps_completed", :default => false,  :null => false
     t.string   "full_name"
-    t.boolean  "paying_subscription",  :default => false, :null => false
+    t.string   "payment_plan",         :default => "pwyc"
   end
 
   add_index "groups", ["full_name"], :name => "index_groups_on_full_name"

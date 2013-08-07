@@ -1,5 +1,5 @@
 Given(/^I am a coordinator of a subscription group$/) do
-  @group = FactoryGirl.create :group, paying_subscription: true
+  @group = FactoryGirl.create :group, payment_plan: 'subscription'
   @group.add_admin!(@user)
 end
 
@@ -24,7 +24,7 @@ Then(/^I should be told that I can email to change my plan$/) do
 end
 
 Given(/^I am a member of a subscription group$/) do
-  @group = FactoryGirl.create :group, paying_subscription: true
+  @group = FactoryGirl.create :group, payment_plan: 'subscription'
   @group.add_member!(@user)
 end
 
@@ -37,7 +37,7 @@ When(/^I visit the payment details page$/) do
 end
 
 Given(/^I am a coordinator of a PWYC group$/) do
-  @group = FactoryGirl.create :group, paying_subscription: false
+  @group = FactoryGirl.create :group, payment_plan: 'pwyc'
   @group.add_admin!(@user)
 end
 
@@ -57,3 +57,7 @@ Then(/^I should be redirected to the new subscription plan page$/) do
   page.should have_css('body.subscriptions.new')
 end
 
+Given(/^I am a coordinator of a manual subscription group$/) do
+  @group = FactoryGirl.create :group, payment_plan: 'manual_subscription'
+  @group.add_admin!(@user)
+end

@@ -279,7 +279,7 @@ class User < ActiveRecord::Base
   end
 
   def belongs_to_paying_group?
-    groups.any? { |group| group.paying_subscription? }
+    groups.where(payment_plan: ['subscription', 'manual_subscription']).exists?
   end
 
   private

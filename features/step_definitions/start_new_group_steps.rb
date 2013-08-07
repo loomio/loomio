@@ -38,12 +38,12 @@ When(/^I click the invitation link$/) do
 end
 
 When(/^I choose the subscription plan$/) do
-  @paying_subscription = true
+  @payment_plan = 'subscription'
   find("#organisation a").click
 end
 
 When(/^I choose the pay what you can plan$/) do
-  @paying_subscription = false
+  @payment_plan = 'pwyc'
   find("#informal-group a").click
 end
 
@@ -76,7 +76,7 @@ end
 Then (/^the group is created with the appropriate payment model$/) do
   @group = Group.where(name: @group_name).first
   @group_request = @group.group_request
-  @group.paying_subscription.should == @paying_subscription
+  @group.payment_plan.should == @payment_plan
 end
 
 Then(/^I should be added to the group as a coordinator$/) do
@@ -98,4 +98,22 @@ end
 Then(/^I should see the group page without a contribute link$/) do
   page.should have_css("body.groups.show")
   page.should_not have_css("#contribute")
+end
+
+When(/^I click start your free trial$/) do
+  click_on I18n.t("group_request.subscription.submit")
+end
+
+Then(/^I should see the subscription group form with errors$/) do
+  page.should have_content '30-day free trial'
+  page.should have_content 'can\'t be blank'
+end
+
+When(/^I click start your group$/) do
+  click_on I18n.t("group_request.pwyc.submit")
+end
+
+Then(/^I should see the pwyc group form with errors$/) do
+  page.should have_content 'Pay what you can'
+  page.should have_content 'can\'t be blank'
 end
