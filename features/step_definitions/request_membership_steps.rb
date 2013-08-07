@@ -187,3 +187,7 @@ Given /^I am a member of a parent\-group that has a public sub\-group$/ do
   step 'a public sub-group exists'
   @parent_group.add_member! @user
 end
+
+Then(/^I should be asked to log in$/) do
+  page.should have_content(I18n.t(:sign_in))
+end
