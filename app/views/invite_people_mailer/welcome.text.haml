@@ -8,11 +8,11 @@ Now that you’ve finished setup, you can invite people to join your group:
 If you’re looking for some pointers on how to get the most out the tool, check out the How It Works page for a quick introduction:
 = help_url
 \
-- if @group.paying_subscription
+- if @group.is_subscription?
   Subscription:
   You’ve got a 30-day free trial, but if you want to take care of payment now, you can visit the Subscription page:
   = group_subscription_url(@group)
-- else
+- elsif @group.is_pwyc?
   Pay what you can:
   As an informal group, there’s no set subscription fee. Instead, people in your group will have an opportunity to make a contribution of their choice. You can find out more about our community funding model on the Contribute page:
   = contributions_url

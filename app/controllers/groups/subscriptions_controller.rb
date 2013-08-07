@@ -1,6 +1,6 @@
 class Groups::SubscriptionsController < GroupBaseController
   before_filter :load_group
-  before_filter :redirect_to_group_if_pwyc
+  before_filter :redirect_to_group_unless_subscription
   # TODO: Would be great if we can load_and_authorize_resource
 
   def new
@@ -48,7 +48,7 @@ class Groups::SubscriptionsController < GroupBaseController
 
   private
 
-  def redirect_to_group_if_pwyc
-    redirect_to @group unless @group.paying_subscription?
+  def redirect_to_group_unless_subscription
+    redirect_to @group unless @group.is_subscription?
   end
 end

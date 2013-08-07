@@ -1,10 +1,12 @@
 class GroupRequest < ActiveRecord::Base
 
-  attr_accessible :name, :admin_name, :admin_email
+  attr_accessible :name, :admin_name, :admin_email, :payment_plan
+  attr_accessor :payment_plan
 
   validates :name, presence: true, length: {maximum: 250}
   validates :admin_name, presence: true, length: {maximum: 250}
   validates :admin_email, presence: true, email: true
+  validates :payment_plan, presence: true
 
   belongs_to :group
 
