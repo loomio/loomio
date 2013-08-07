@@ -17,3 +17,13 @@ end
 When /^I login as "(.*?)" with an incorrect password$/ do |email|
   login(email, 'wrong_password')
 end
+
+When(/^I log in$/) do
+  fill_in 'user_email', with: @user.email
+  fill_in 'user_password', :with => 'password'
+  click_on 'sign-in-btn'
+end
+
+Then(/^I should see the group page$/) do
+  page.should have_css('body.groups.show')
+end
