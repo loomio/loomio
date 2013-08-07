@@ -26,6 +26,7 @@ Scenario: User creates subscripton group
   And I should recieve an email with an invitation link
   When I click the invitation link
   And I setup the group
+  And the example content should be created
   Then I should see the group page without a contribute link
 
 @javascript
