@@ -5,8 +5,6 @@ end
 
 Then(/^the group should be setup$/) do
   @group.reload
-  @group.discussions.first.title.should == I18n.t('example_discussion.title')
-  @group.motions.first.name.should == I18n.t('example_motion.name')
   @group.is_setup?.should be_true
 end
 
@@ -53,6 +51,13 @@ Given(/^I am an admin of a subgroup group that has not completed setup$/) do
   @subgroup = FactoryGirl.create :group, parent: @group
   @subgroup.add_admin! @user
   @subgroup.update_attribute(:setup_completed_at, nil)
+end
+
+Then(/^I should have received the Welcome to Loomio email$/) do
+  address = @user.email
+  subject = "Welcome to Loomio"
+  amount = 1
+  unread_emails_for(address).select { |m| m.subject =~ Regexp.new(subject) }.size.should == parse_email_count(amount)
 end
 
 Then(/^I should see the subgroup page$/) do

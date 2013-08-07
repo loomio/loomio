@@ -117,3 +117,9 @@ Then(/^I should see the pwyc group form with errors$/) do
   page.should have_content 'Pay what you can'
   page.should have_content 'can\'t be blank'
 end
+
+Then(/^the example content should be created$/) do
+  @group.discussions.first.title.should == I18n.t('example_discussion.title')
+  @group.motions.first.name.should == I18n.t('example_motion.name')
+end
+
