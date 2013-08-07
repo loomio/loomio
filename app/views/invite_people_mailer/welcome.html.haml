@@ -11,13 +11,13 @@
   = link_to "How It Works page", help_url
   for a quick introduction.
 
-- if @group.paying_subscription
+- if @group.is_subscription?
   %p
     %strong Subscription:
     %br
     You’ve got a 30-day free trial, but if you want to take care of payment now, you can visit the
     = link_to "Subscription page.", group_subscription_url(@group)
-- else
+- elsif @group.is_pwyc?
   %p
     %strong Pay what you can:
     %br
