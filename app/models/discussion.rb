@@ -16,6 +16,7 @@ class Discussion < ActiveRecord::Base
   has_many :motions, :dependent => :destroy
   has_many :votes, through: :motions
   has_many :comments, :dependent => :destroy
+  has_many :comment_likes, :through => :comments, :source => :comment_votes
   has_many :commenters, :through => :comments, :source => :user, :uniq => true
   has_many :events, :as => :eventable, :dependent => :destroy
   has_many :discussion_readers

@@ -47,4 +47,24 @@ module DiscussionsHelper
       image_tag("markdown_off.png", class: 'markdown-icon markdown-off')
     end
   end
+
+  def comment_likes_count(comment)
+    if @comment_likes_by_comment_id[comment.id].present?
+      @comment_likes_by_comment_id[comment.id].size
+    else
+      0
+    end
+  end
+
+  def current_user_can_like_comments?
+    @can_like_comments
+  end
+
+  def comment_likes_for(comment)
+    @comment_likes_by_comment_id[comment.id]
+  end
+
+  def current_user_likes_comment?(comment)
+    @comment_ids_liked_by_current_user.include?(comment.id)
+  end
 end
