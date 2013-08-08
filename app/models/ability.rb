@@ -4,6 +4,11 @@ class Ability
   def initialize(user)
 
     user ||= User.new
+    @admin_group_ids = user.adminable_group_ids
+    @member_group_ids = user.group_ids
+    @member_discussion_ids = user.discussion_ids
+    @admin_discussion_ids = user.discussions.where(:group_id => @admin_group_ids).pluck(:id)
+
     cannot :sign_up, User
 
     can :show, Group do |group|
@@ -14,9 +19,9 @@ class Ability
         when 'everyone'
           true
         when 'members'
-          group.members.include?(user)
+          @member_group_ids.include?(group.id)
         when 'parent_group_members'
-          group.members.include?(user) or group.parent.members.include?(user)
+          @member_group_ids.include?(group.id) or @member_group_ids.include?(group.parent_id)
         end
       end
     end
@@ -24,7 +29,7 @@ class Ability
     # TODO: Refactor to use subscription resource
     can [:view_payment_details,
          :choose_subscription_plan], Group do |group|
-      group.is_top_level? and group.admins.include?(user)
+      group.is_top_level? and @admin_group_ids.include?(group.id)
     end
 
     can [:update,
@@ -32,35 +37,35 @@ class Ability
          :edit_privacy,
          :hide_next_steps,
          :archive], Group do |group|
-      group.admins.include?(user)
+      @admin_group_ids.include?(group.id)
     end
 
     can [:add_subgroup,
         :edit_description,
         :get_members], Group do |group|
-      group.members.include?(user)
+      @member_group_ids.include?(group.id)
     end
 
     can [:add_members,
          :manage_membership_requests], Group do |group|
       case group.members_invitable_by
       when 'members'
-        group.members.include?(user)
+        @member_group_ids.include?(group.id)
       when 'admins'
-        group.admins.include?(user)
+        @admin_group_ids.include?(group.id)
       end
     end
 
     can :create, Group do |group|
-      if group.parent.present?
-        group.parent.members.include? user
+      if group.parent_id.present?
+        @member_group_ids.include?(group.parent_id)
       else
         false
       end
     end
 
     can [:make_admin], Membership do |membership|
-      membership.group.admins.include?(user)
+      @admin_group_ids.include?(membership.group_id)
     end
 
     can [:remove_admin,
@@ -70,7 +75,7 @@ class Ability
       elsif membership.admin? and membership.group.admins.size == 1
         false
       else
-        (membership.user == user) or membership.group.admins.include?(user)
+        (membership.user == user) or @admin_group_ids.include?(membership.group_id)
       end
     end
 
@@ -101,7 +106,7 @@ class Ability
 
     can [:destroy,
          :move], Discussion do |discussion|
-      discussion.group.admins.include?(user)
+      @admin_group_ids.include?(discussion.group_id)
     end
 
     can [:unfollow,
@@ -113,16 +118,16 @@ class Ability
          :show_description_history,
          :preview_version,
          :update_version], Discussion do |discussion|
-      discussion.group.members.include?(user)
+      @member_group_ids.include?(discussion.group_id)
     end
 
     can [:destroy], Comment do |comment|
-      (comment.author == user) or comment.group.admins.include?(user)
+      (comment.author == user) or @admin_discussion_ids.include?(comment.discussion_id)
     end
 
     can [:like,
          :unlike], Comment do |comment|
-      comment.group.members.include? user
+      @member_discussion_ids.include?(comment.discussion_id)
     end
 
     can :get_and_clear_new_activity, Motion do |motion|
@@ -130,15 +135,14 @@ class Ability
     end
 
     can :create, Motion do |motion|
-      motion.group.members.include?(user)
+      @member_discussion_ids.include?(motion.discussion_id)
     end
 
     can [:destroy,
          :close,
          :edit_outcome,
          :edit_close_date], Motion do |motion|
-      (motion.author == user) or
-      motion.group.admins.include?(user)
+      (motion.author == user) or @admin_discussion_ids.include?(motion.discussion_id)
     end
   end
 end
