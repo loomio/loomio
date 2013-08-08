@@ -1,5 +1,5 @@
 Given(/^I complete the group setup form$/) do
-  fill_in 'name', with: "Fantastic Spinners"
+  fill_in 'group_name', with: "Fantastic Spinners"
   find('#complete_setup').click
 end
 

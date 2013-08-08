@@ -1,11 +1,13 @@
 class Translation
-  LANGUAGES = {"български" => "bg",
-               "English" => "en",
+  LANGUAGES = {"English" => "en",
                "Español" => "es",
+               "български" => "bg",
                "ελληνικά" => "el",
                "magyar" => "hu",
+               "română" => "ro",
                "Nederlands" => "nl"}
-  EXPERIMENTAL_LANGUAGES = {"română" => "ro"}
+  EXPERIMENTAL_LANGUAGES = {"Français" => "fr",
+                            "Tiếng Việt" => "vi"}
 
   def self.language(locale)
     LANGUAGES.key(locale)
