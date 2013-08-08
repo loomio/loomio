@@ -68,6 +68,9 @@ class DiscussionsController < GroupBaseController
     @current_motion = @discussion.current_motion
     # can we take this first call out?
     @activity = @discussion.activity
+
+    load_cached_comment_info
+
     @filtered_activity = @discussion.filtered_activity
     assign_meta_data
     if params[:proposal]
@@ -99,6 +102,7 @@ class DiscussionsController < GroupBaseController
   def add_comment
     if params[:comment].present?
       @comment = @discussion.add_comment(current_user, params[:comment], params[:uses_markdown])
+      load_cached_comment_info
       @discussion.as_read_by(current_user).viewed!
       unless request.xhr?
         redirect_to @discussion
@@ -163,6 +167,18 @@ class DiscussionsController < GroupBaseController
   end
 
   private
+
+
+  def load_cached_comment_info
+    @comment_likes = @discussion.comment_likes
+    @comment_likes_by_comment_id = @comment_likes.group_by{|cv| cv.comment_id}
+    if current_user
+      @comment_ids_liked_by_current_user = @comment_likes.where(user_id: current_user.id).map{|cv|cv.comment_id}
+    else
+      @comment_ids_liked_by_current_user = []
+    end
+    @can_like_comments = can?(:like, @discussion.comments.first)
+  end
 
   def assign_meta_data
     if @group.viewable_by == 'everyone'
