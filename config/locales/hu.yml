@@ -15,7 +15,7 @@ hu:
       for_another_year: '%-nap/%-hónap/%év'
       datepicker: "%d-%m-%Y"
   error:
-    access_denied: "Nincs jogosultságod"
+    access_denied: "Ehhez nincs jogosultságod."
     cant_join_subgroup: "Nem csatlakozhatsz egy alcsoporthoz, ha nem vagy ragja a csoportnak"
     cant_modify_position: "Ez a javaslat lezárult."
     cant_state_position: "Ez a javaslat lezárult."
@@ -36,29 +36,28 @@ hu:
     group_private_or_not_found: "Nincs ilyen csoport.⏎\n⏎\nLehet, hogy ez a csoport zárt. Ha valakitől kaptad a csoport linkjét, kérd meg, hogy vegyen fel a csoportba."
     group_already_setup: "Már van ilyen csoport."
     proposal_already_exists: "Ebben a témában már van aktív javaslat."
+    user_with_email_address_already_in_group: "Az evvel az e-mail címmel rendelkező felhasználó már tagja ennek a csoportnak."
+    you_have_already_requested_membership: "Már kérted a tagságot ebbe a csoportba."
+    you_are_already_a_member_of_this_group: "Már tagja vagy ennek a csoportnak."
     not_found: "Nem találjuk, lehet, hogy már törölték."
   alert:
     duplicate_email: "%{which_email} már tagja a csoportnak."
   notice:
-    admin_rights_removed: "%{which_email} már nem adminisztrátor a csoportban."
-    email_added: "%{which_email}-t hozzáadtuk a csoporthoz."
+    user_added: "%{user_email_or_name}-t hozzáadtuk a csoporthoz."
+    new_user_added: "%{user_email_or_name}-t hozzáadjuk a csoporthoz, miután regisztrált a Loomión."
     member_removed: "A tagot eltávolítottuk."
     membership_approved: "A tagfelvételt jóváhagytuk"
-    membership_requested: "Felvételt kér."
     membership_request_canceled: "A tagfelvételi kérelmet visszavonták."
     membership_request_ignored: "A tagfelvételi kérelmet nem bírálták el."
     settings_updated: "A beállításaidat frissítettük."
-    user_made_admin: "%{which_user} adminisztrátor lett."
     you_have_left_group: "Kiléptél a(z) %{which_group} csoportból."
   warning:
-    cant_remove_last_admin: "Az utolsó adminisztrátort nem lehet letávolítani."
+    membership_request_already_approved: "A tagfelvételi kérelmet már jóváhagytuk."
     membership_request_already_ignored: "A tagfelvételi kérelmet már figyelmen kívül hagyták."
     membership_request_already_canceled: "A tagfelvételi kérelmet már visszavonták."
     position_not_submitted: "Nem tudtuk rögzíteni az álláspontodat"
     proposal_not_created: "AóNem tudtuk létrehozni a javaslatot"
-    user_already_admin: "%{which_user} már adminisztrátor a csoportban."
     user_already_member: "%{which_user} már tagja a csoportnak."
-    user_not_admin: "Bocs, %{which_user}-nek adminisztrátornak kell hogy ehhez hozzáférjen."
   success:
     added_to_group: "Tagja lettél a(z) %{which_group} csoprotnak."
     close_date_changed: "Megváltoztattad a határidőt."
@@ -68,6 +67,7 @@ hu:
     group_archived: "A csoportot archiváltuk."
     group_created: "A csoportot létrehoztuk."
     members_added: "A tagokat hozzáadtuk a csoporthoz."
+    membership_requested: "A tagfelvételi kérelmet elküldtük. Értesítünk, amint jóváhagyják."
     position_submitted: "Rögzítettük az álláspontodat."
     position_updated: "Frissítettük az álláspontodat."
     proposal_created: "Létrehoztuk a javaslatot."
@@ -135,7 +135,6 @@ hu:
   sign_out: "Kijelentkezés"
   sign_in: "Bejelentkezés"
   tagline: "Olyan világot teremtünk, ahol mindenki részt vehet a döntésekben és alakíthatja is azokat."
-  or_sign_in_html: "Ha már van fiókod,  <a href='%{link}'0>ide kattintva jelentkezz be</a>."
   click_to_dismiss: "Ide kattintva eltűnik ez az üzenet"
   generic_confirm: "Biztos?"
   discussion_helper_text:
@@ -154,7 +153,8 @@ hu:
   invite_people: "Hívj meg másokat"
   no_invitations_button: "Nincs több meghívód"
   pending_invitations: 'Függő meghívók'
-  number_pending: 'és %{pending} még nem válaszolt'
+  number_pending: '%{pending} függőben'
+  and_number_pending: 'és %{pending} függőben'
   edit_memberships: 'Tagság szerkesztése'
   add_new_member: "Új tag hozzáadása"
   invite_members_to_group: "Tagok meghívása a %{which_group} csoportba"
@@ -174,13 +174,11 @@ hu:
   confirm_deactivate_group: "Várj!!! Biztosan deaktiválni akarod a(z) %{which_group} csoportot? Többet nem jelenik meg neked a csoport. Ha azonban mégis vissza szeretnéd kapni a csoportot, reaktiválhatjuk, ha a contact@loomio.org címre küldesz egy kérést."
   invited_users: "Meghívott tagok"
   confirm_remove_user: "Biztosan el akarod távolítani %{which_user}-t a csoportból?"
-  remove_admin: "Adminisztrátor jogok eltávolítása"
-  confirm_remove_admin: "Biztos, hogy nem akarod, hogy %{which_user} a csoport adminisztrátora legyen?"
-  make_admin: "Adminisztrátor jogok megadása"
-  confirm_make_admin: "Biztos vagy benne, hogy %{which_user} a csoport adminisztrátora legyen?"
   membership_requests: "Tagkérelmek"
   confirm_approve_membership_request: "Biztos, hogy hozzá akarod adni %{which_user}-t a csoporthoz?"
+  cancel_membership_request: "Kérelem törlése"
   ignore_request: "Kérelem figyelmen kívül hagyása"
+  ignore: "Figyelmen kívül hagyás"
   confirm_ignore_membership_request: "Biztos, hogy figyelmen kívül hagyod %{which_user} tagfelvételi kérelmét?"
   membership_requested: "Felvétel kérve"
   request_membership: "Felvétel kérése"
@@ -226,6 +224,8 @@ hu:
   empty_discussion_index: "Egyik csoportodban sincsen semmilyen felvetett téma."
   empty_discussion_index_group: "Ennek a csoportnak még nincsenek felvetett témái."
   discussion_context:
+    started_html: "<a href='%{link}' class='%{link_class}'>%{who}</a> indította, az indítástól eltelt idő: %{when}"
+    last_edited_html: "Legútóbb módosította: <a href='%{link}' class='%{link_class}'>%{who}</a>, a módosítás óta eltelt idő: %{when}"
     see_revision_history: "A korábbi változatok megtekintése"
   description_history:
     header: "Korábbi változatok"
@@ -304,7 +304,6 @@ hu:
 
     have_a_discussion: "Mi a véleményed?"
     have_a_discussion_description: "A téma és a legfontosabb információk róla az oldal tetején találhatók. A hozzászólással tudod elmondani a véleményedet a témáról."
-    help: "Ötletek"
     how_it_works: "Mi ez az egész?"
     invitation_html: |+
       <h2>Hogyan írjunk jó meghívót</h2>
@@ -354,10 +353,6 @@ hu:
     proposal: 'Hogyan írj egyértelmű javaslatot'
     vote: 'Bármikor megváltoztathatod az álláspontodat'
   contribution:
-    any_amount: Bármilyen egyszeri összeg
-    monthly_html: Havi rendszeres hozzájárulás <span>(USD)</span>
-    one_time_html: Egyszeri hozzájárulás <span>(USD)</span>
-    tooltip: Támogass
     thought_about_contributing: Válaszd ki, hogyan segítesz
     thought_about_contributing_description: |+
       A Loomio egy közös vállalkozás, aminek az a célja, hogy mindenki részt vehessen az őt érintő döntésekben és befolyásolhassa azokat.
@@ -448,7 +443,6 @@ hu:
   group_form:
     privacy_settings: "Adatvédelmi beállítások"
     invitation_settings: "A meghívás beállításai"
-    admins_only: "Csak adminisztrátoroknak"
   vote_form:
     header: "Add meg az álláspontodat"
     edit: "Változtasd meg az álláspontodat"
@@ -487,6 +481,8 @@ hu:
         description: "Add meg a csoport rövid leírását:"
         viewable_by: "Ki láthatja ezt a csoportot?"
         members_invitable_by: "Ki hívhat meg másokat ebbe a csoportba?"
+      membership_request:
+        introduction: "Mutatkozz be!"
       motion:
         name: "Cím"
         description: "Részletek"
@@ -509,6 +505,8 @@ hu:
       discussion:
         title: "Mit szeretnél megtárgyalni?"
         description: "Ez jelenik majd meg a téma oldalán. Írd le a témát, adj annyi információt, hogy vita, beszélgetés alakulhasson ki."
+      membership_request:
+        introduction: "Írj egy pár szót magadról és arról, miért akarsz a %{group_name} csoporthoz csatlakozni."
       motion:
         name: "Mit javasolsz?"
         description: "Adj elég információt, hogy pontosan tudhassák mit jelent, ha egyetértenek vagy ha ellenzik."
@@ -519,7 +517,7 @@ hu:
       discussion:
         create: "Téma indítása"
       motion:
-        create: "Javaslat"
+        create: "Javaslat indítása"
       user:
         create: "Fiók létrehozása"
         update: "beállítások frissítése"
@@ -534,7 +532,7 @@ hu:
       intro: "%{who} új témát nyitott a %{which_group} csoportban:"
       subject: "Új téma -  %{which}"
     create_proposal:
-      intro: "Új témát hoztak létre egy Loomio csoportodban."
+      intro: "Új javaslatot hoztak létre egy Loomio csoportodban."
       closes_in: "Lezáródik"
       subject: "Új javaslat - %{which}"
     daily_activity:
@@ -592,7 +590,6 @@ hu:
   disable: "Kikapcsolás"
   group: "Csoport"
   groups: "Csoportok"
-  group_admin: "Csoport adminisztrátos"
   home: "Nyitólap"
   like: "Tetszik"
   loading: "Töltés..."
