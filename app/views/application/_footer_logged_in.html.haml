@@ -4,7 +4,7 @@
       .dropup
         %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
           %span
-            = "#{t(:"simple_form.labels.user.language_preference")}:"
+            Language:
             = Translation.language(current_user.language_preference)
           %b.caret
         %ul.dropdown-menu
