@@ -16,7 +16,10 @@ code{
 }
 
 form {
-  input, select, textarea { width: 100%; }
+  input, select, textarea {
+    width: 100%;
+    color: #252525;
+  }
   textarea {
     margin-bottom: 0;
     height: 200px;
