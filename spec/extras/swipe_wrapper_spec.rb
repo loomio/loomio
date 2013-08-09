@@ -22,7 +22,7 @@ describe SwipeWrapper do
     end
   end
 
-  context 'get_transaction_identifier' do
+  context 'create_tx_identifier_for' do
     it 'posts to swipeHQ' do
       pending 'untestable'
       amount = 10

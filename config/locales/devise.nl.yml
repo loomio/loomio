@@ -1,0 +1,60 @@
+# Meer vetalingen via https://github.com/plataformatec/devise/wiki/I18n
+# Voeg 'config.i18n.default_locale = :nl' toe in je 'application.rb' en herstart je server
+
+nl:
+  devise:
+    confirmations:
+      confirmed: "Je account is bevestigd, je bent nu ingelogd."
+      send_instructions: "Je zult een e-mail met instructies ontvangen over hoe je jouw account moet bevestigen over een paar minuten."
+      send_paranoid_instructions: "Als je e-mail bestaat in onze database, zul je een e-mail met instructies ontvangen over hoe je jouw account moet bevestigen over een paar minuten."
+    failure:
+      already_authenticated: "Je bent al ingelogd."
+      inactive: "Je account is nog niet geactiveerd."
+      invalid: "Ongeldig e-mail of wachtwoord."
+      invalid_token: "Ongeldig authenticiteit token."
+      locked: "Je account is vergrendeld."
+      not_found_in_database: "Ongeldig e-mail of wachtwoord."
+      timeout: "Je sessie is verlopen, log alsjeblieft opnieuw in om verder te gaan."
+      unauthenticated: "Je moet eerst inloggen of aanmelden, voordat je verder kunt gaan."
+      unconfirmed: "Je moet eerst je account bevestigen, voordat je verder kunt gaan"
+    mailer:
+      confirmation_instructions:
+        subject: "Bevestigingsinstructies"
+      reset_password_instructions:
+        subject: "Reset wachtwoord instructies"
+      unlock_instructions:
+        subject: "Ontgrendel instructies"
+    omniauth_callbacks:
+      failure: "Kan je niet autoriseren van %{kind}, omdat \"%{reason}\"."
+      success: "Succesvol geautoriseerd met %{kind} account."
+    passwords:
+      no_token: "Je kunt deze pagina niet bereiken als je geen e-mail hebt ontvangen met wachtwoord reset instructies. Mocht je dit wel hebben ontvangen kijk dan het URL na in je mail of vraag de instructies opnieuw aan."
+      send_instructions: "Je zult een e-mail met instructies ontvangen over hoe je jouw wachtwoord moet resetten over een paar minuten."
+      send_paranoid_instructions: "Als je e-mail bestaat in onze database, zul je een e-mail met instructies ontvangen over hoe je jouw wachtwoord moet resetten over een paar minuten."
+      updated: "Je wachtwoord is succesvol veranderd, je bent nu ingelogd."
+      updated_not_active: "Je wachtwoord is succesvol veranderd."
+    registrations:
+      destroyed: "Tot ziens! Je account is succesvol verwijderd."
+      signed_up: "Welkom, u bent succesvol ingelogd"
+      signed_up_but_inactive: "Je bent succesvol ingelogd, echter kunnen we nog niet inloggen, omdat je account nog niet is geactiveerd."
+      signed_up_but_locked: "Je bent succesvol ingelogd, echter kunnen we nog niet inloggen, omdat je account is geblokeerd."
+      signed_up_but_unconfirmed: "Een e-mail met een bevestigings URL is verstuurd. Gebruik de URL om je account te activeren."
+      update_needs_confirmation: "Je account is succesvol gewijzigd, echter hebben moet je nog wel je e-mail adres verifiëren."
+      updated: "Je account is succesvol gewijzigd"
+    sessions:
+      signed_in: "Succesvvol ingelogd"
+      signed_out: "Succesvol uitgelogd"
+    unlocks:
+      send_instructions: "Je zult een e-mail met instructies ontvangen over hoe je jouw account moet unlocken over een paar minuten."
+      send_paranoid_instructions: "Als je e-mail bestaat in onze database, zul je een e-mail met instructies ontvangen over hoe je jouw account moet unlocken over een paar minuten."
+      unlocked: "Je account is succesvol geunlockt. Log in om verder te gaan."
+  errors:
+    messages:
+      already_confirmed: "is al bevestigd, probeer in te loggen"
+      confirmation_period_expired: "moet worden bevestigd binnen %{period}, vraag een nieuwe aan"
+      expired: "is verlopen, vraag een nieuwe aan"
+      not_found: "niet gevonden"
+      not_locked: "is gelockt"
+      not_saved:
+        one: "1 fout zorgde ervoor dat %{resource} niet kon worden opgeslagen:"
+        other: "%{count} fouten zorgde ervoor dat %{resource} niet kon worden opgeslagen:"

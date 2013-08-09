@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730000000) do
+ActiveRecord::Schema.define(:version => 20130807015738) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -238,20 +238,20 @@ ActiveRecord::Schema.define(:version => 20130730000000) do
     t.boolean  "hide_members",         :default => false
     t.boolean  "beta_features",        :default => false
     t.text     "description"
-    t.integer  "memberships_count",    :default => 0,     :null => false
+    t.integer  "memberships_count",    :default => 0,      :null => false
     t.datetime "archived_at"
     t.integer  "max_size"
     t.boolean  "cannot_contribute",    :default => false
     t.integer  "distribution_metric"
     t.string   "sectors"
     t.string   "other_sector"
-    t.integer  "discussions_count",    :default => 0,     :null => false
-    t.integer  "motions_count",        :default => 0,     :null => false
+    t.integer  "discussions_count",    :default => 0,      :null => false
+    t.integer  "motions_count",        :default => 0,      :null => false
     t.string   "country_name"
     t.datetime "setup_completed_at"
-    t.boolean  "next_steps_completed", :default => false, :null => false
+    t.boolean  "next_steps_completed", :default => false,  :null => false
     t.string   "full_name"
-    t.boolean  "paying_subscription",  :default => false, :null => false
+    t.string   "payment_plan",         :default => "pwyc"
   end
 
   add_index "groups", ["full_name"], :name => "index_groups_on_full_name"
@@ -269,6 +269,7 @@ ActiveRecord::Schema.define(:version => 20130730000000) do
     t.string   "intent"
     t.integer  "canceller_id"
     t.datetime "cancelled_at"
+    t.string   "recipient_name"
   end
 
   add_index "invitations", ["group_id"], :name => "index_invitations_on_group_id"
@@ -354,6 +355,16 @@ ActiveRecord::Schema.define(:version => 20130730000000) do
 
   add_index "notifications", ["event_id"], :name => "index_notifications_on_event_id"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "amount"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "profile_id"
+  end
+
+  add_index "subscriptions", ["group_id"], :name => "index_subscriptions_on_group_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                                       :default => "",         :null => false

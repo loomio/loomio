@@ -127,14 +127,12 @@ end
 
 Given(/^I have requested membership and been ignored$/) do
   @group = FactoryGirl.create :group
-  membership_request = FactoryGirl.create(:membership_request,
-                        group: @group, requestor: @user, responder: FactoryGirl.create(:user), response: 'ignored')
+  FactoryGirl.create(:membership_request, group: @group, requestor: @user, responder: FactoryGirl.create(:user), response: 'ignored')
 end
 
 Given(/^I have requested membership as a visitor and been ignored$/) do
   @group = FactoryGirl.create :group
-  membership_request = FactoryGirl.create(:membership_request,
-                        group: @group, name: @visitor_name, email: @visitor_email, responder: FactoryGirl.create(:user), response: 'ignored')
+  FactoryGirl.create(:membership_request, group: @group, name: @visitor_name, email: @visitor_email, responder: FactoryGirl.create(:user), response: 'ignored')
 end
 
 Then(/^I should be redirected to the dashboard$/) do
@@ -194,4 +192,8 @@ Then(/^the requester should be emailed of the approval$/) do
   last_email = ActionMailer::Base.deliveries.last
   last_email.to.should include @membership_request.email
   last_email.subject.should include 'Membership approved'
+end
+
+Then(/^I should be asked to log in$/) do
+  page.should have_content(I18n.t(:sign_in))
 end

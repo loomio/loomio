@@ -1,0 +1,7 @@
+%div{ class: "payment-option-container box-#{option_color}" }
+  = t('subscriptions.people_limit_html', people: people)
+  = link_to t('subscriptions.monthly_amount', amount: amount),
+    group_subscription_path(group, amount: amount),
+    method: :post,
+    class: "subscription btn btn-#{option_color}"
+

@@ -1,11 +1,17 @@
 class Translation
-  LANGUAGES = {"български" => "bg",
-               "English" => "en",
+  LANGUAGES = {"English" => "en",
                "Español" => "es",
+               "български" => "bg",
                "ελληνικά" => "el",
                "magyar" => "hu",
+               "română" => "ro",
                "Nederlands" => "nl"}
-  EXPERIMENTAL_LANGUAGES = {"română" => "ro"}
+  EXPERIMENTAL_LANGUAGES = {"Français" => "fr",
+                            "Tiếng Việt" => "vi"}
+
+  def self.language(locale)
+    LANGUAGES.key(locale)
+  end
 
   def self.locales
     LANGUAGES.values
@@ -15,14 +21,9 @@ class Translation
     EXPERIMENTAL_LANGUAGES.values
   end
 
-  def self.language_links
-    language_links = []
-    LANGUAGES.each do |language|
-      language_links << "<a href='?&locale=#{language[1]}'
-                            title='#{I18n.t(:change_language, language: language[0])}'>
-                            #{language[0]}</a>"
-    end
-    language_links << "<a href='https://www.loomio.org/discussions/4896'>#{I18n.t(:translate, default: "help translate Loomio!")}</a>"
-    language_links.join(" &middot; ")
+  def self.language_link_attributes(language)
+    { href: "?&locale=#{language[1]}"  ,
+      title: "#{I18n.t(:change_language, language: language[0])}",
+      text: "#{language[0]}" }
   end
 end

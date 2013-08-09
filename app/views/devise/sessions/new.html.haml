@@ -3,18 +3,7 @@
     .inner-container
       .row-fluid
         .subhead
-          .span1 &nbsp;
-          .span4
+          .span4 &nbsp;
+          .span5
             %h2= t :sign_in
-
-      .row-fluid
-        .span1 &nbsp;
-        .span4
-          = render "form"
-        .span1 &nbsp;
-        .span5
-          %p
-            %strong= t :dont_have_account
-            %br
-            = t :closed_beta
-          %p= t :closed_beta_details
+            = render "form"

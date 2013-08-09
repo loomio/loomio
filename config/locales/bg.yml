@@ -63,7 +63,6 @@ bg:
     proposal_not_created: "Предложението не може да бъде създадено"
     user_already_admin: "%{which_user} е вече координатор на тази група."
     user_already_member: "%{which_user} е вече член на тази група."
-    user_not_admin: "Съжалявам, %{which_user} трабва да бъде координатор на тази група за да може да приеме това."
   success:
     added_to_group: "Вие бяхте добавени към %{which_group}."
     close_date_changed: "Крайната дата е успешно променена."
@@ -364,10 +363,6 @@ bg:
     proposal: 'Насоки за писане на чисти предложения'
     vote: 'Можете да промените позицията си по всяко време'
   contribution:
-    any_amount: Еднократен принос
-    monthly_html: Месечен принос <span>(USD)</span>
-    one_time_html: Еднократен принос <span>(USD)</span>
-    tooltip: Принос
     thought_about_contributing: Изберете вашия принос
     thought_about_contributing_description: |
       Loomio е кооперативно социално предприятие, което работи за това да направи лесно за всеки да участва във вземането на решения, които го засягат.
@@ -434,7 +429,6 @@ bg:
   search:
     description: "Следва списък с дискусии и предложения, които имат '%{query}' в тяхното заглавие или описание."
     header: "Резултати от търсенето за '%{query}'"
-    placeholder: "търсене"
   example_discussion:
     title: "Примерна дискусия: Добре дошли и въведение в Loomio"
     description: |

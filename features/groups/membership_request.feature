@@ -23,13 +23,13 @@ Feature: Individual requests group membership
     Given I am a visitor
     And a private group exists
     When I visit the request membership page for the group
-    Then I should be redirected to the homepage
+    Then I should be asked to log in
 
   Scenario: Visitor cannot request membership to a subgroup
     Given I am a visitor
     And a public sub-group exists
     When I visit the request membership page for the sub-group
-    Then I should be redirected to the homepage
+    Then I should be asked to log in
 
   Scenario: Visitor with pending membership request cannot submit new request
     Given I am a visitor

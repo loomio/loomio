@@ -1,29 +1,22 @@
 class SetupGroup
-  attr_accessor :group_request
-
-  def initialize(group_request)
-    self.group_request = group_request
+  def self.from_group_request(group_request)
+    group = Group.new
+    group.name = group_request.name
+    group.payment_plan = group_request.payment_plan
+    group.group_request = group_request
+    group.save!
+    SetupGroup.create_example_discussion(group)
+    send_invitation_to_start_group(group)
+    group
   end
 
-  def approve_group_request(args)
-    @group = Group.new
-    @group.group_request = group_request
-
-    %w[name cannot_contribute max_size].each do |attr|
-      @group.send("#{attr}=", group_request.send(attr))
-    end
-
-    group_request.approve!(args)
-    @group.save!
-    @group
-  end
-
-  def send_invitation_to_start_group(args)
-    invitation = CreateInvitation.to_start_group(group: group_request.group,
-                                                inviter: args[:inviter],
-                                                recipient_email: group_request.admin_email)
-
-    InvitePeopleMailer.to_start_group(invitation, args[:inviter].email, args[:message_body]).deliver
+  def self.send_invitation_to_start_group(group)
+    inviter = SetupGroup.find_or_create_helper_bot
+    invitation = CreateInvitation.to_start_group(group: group,
+                                                inviter: inviter,
+                                                recipient_email: group.group_request.admin_email,
+                                                recipient_name: group.group_request.admin_name)
+    InvitePeopleMailer.to_start_group(invitation, inviter.email).deliver
     invitation
   end
 
@@ -41,7 +34,7 @@ class SetupGroup
     example_motion.description = I18n.t('example_motion.description')
     example_motion.author = helper_bot
     example_motion.discussion = example_discussion
-    example_motion.close_at_date = 3.days.from_now.to_date
+    example_motion.close_at_date = 14.days.from_now.to_date
     example_motion.close_at_time = Time.now.strftime("%H:00")
     example_motion.close_at_time_zone = helper_bot.time_zone
     example_motion.save!

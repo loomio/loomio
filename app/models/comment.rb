@@ -55,18 +55,6 @@ class Comment < ActiveRecord::Base
     comment_votes.where(:user_id => user.id).each(&:destroy)
   end
 
-  def likes
-    comment_votes
-  end
-
-  def likes_count
-    comment_votes_count
-  end
-
-  def has_not_been_liked_by?(user)
-    !comment_votes.any?{ |cv| cv.user_id == user.id }
-  end
-
   def mentioned_group_members
     usernames = extract_mentioned_screen_names(self.body)
     group.users.where(username: usernames)
