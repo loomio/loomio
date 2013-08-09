@@ -78,7 +78,7 @@ ActiveAdmin.register Group do
           column :name
           column :email do |user|
             if user.email == group.admin_email
-              simple_format "#{mail_to(user.email,user.email)} <<<<< ADMIN_EMAIL"
+              simple_format "#{mail_to(user.email,user.email)}"
             else
               mail_to(user.email,user.email)
             end
@@ -100,6 +100,7 @@ ActiveAdmin.register Group do
 
   member_action :update, :method => :put do
     group = Group.find(params[:id])
+    group.update_attributes(params[:group])
     group.max_size = params[:group][:max_size]
     if group.save
       redirect_to admin_groups_url, :notice => "Group updated."
