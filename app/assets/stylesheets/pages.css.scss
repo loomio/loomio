@@ -321,10 +321,10 @@ body.pages.pricing {
   }
   .payment-model-box {
     @include border-radius(4px);
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 2em;
-    min-height: 268px;
-    padding: 12px 16px 2px;
+    min-height: 278px;
+    padding: 12px 16px 12px;
     .examples {
       color: #888;
       font-size: 16px;

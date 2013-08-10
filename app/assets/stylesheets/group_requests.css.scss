@@ -5,9 +5,7 @@
 
 body.group_requests {
   abbr { display: none; }
-  p {
-    font-size: $font-medium-large;
-  }
+  p { font-size: $font-medium-large; }
   #informal-group { background-color: #D8EBF1; }
   &.subscription, &.pwyc, &.create {
     form {
@@ -43,7 +41,7 @@ body.group_requests {
     #intro { margin-bottom: 30px; }
     #organisation {
       background-color: #DEF1DE;
-      p { 
+      p {
         margin-top: 14px;
         font-style: italic;
         span { font-weight: 700; }
@@ -63,7 +61,6 @@ body.group_requests {
     #trial { font-weight: bold; }
     .payment-model-box {
       @include border-radius(4px);
-      font-weight: 700;
       padding: 10px 16px 16px;
       .btn { margin: 20px 0 0; }
     }
