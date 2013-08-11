@@ -7,12 +7,12 @@ class InvitePeopleMailer < BaseMailer
          subject: t("email.to_start_group.subject", group_name: @invitation.group_name)
   end
 
-  def to_join_group(invitation, sender_email, message_body)
+  def to_join_group(invitation, sender, message_body)
     @invitation = invitation
     @message_body = message_body
     mail to: invitation.recipient_email,
-         from: 'Loomio <contact@loomio.org>',
-         reply_to: sender_email,
+         from: "#{sender.name} <notifications@loomio.org>",
+         reply_to: sender.email,
          subject: t("email.to_join_group.subject", member: @invitation.inviter.name, group_name: @invitation.group_name)
   end
 
