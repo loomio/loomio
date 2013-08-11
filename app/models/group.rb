@@ -248,7 +248,7 @@ class Group < ActiveRecord::Base
   end
 
   def set_max_group_size
-    self.max_size = 50 if (is_a_parent? && max_size.nil?)
+    self.max_size = 300 if (is_a_parent? && max_size.nil?)
   end
 
   def set_defaults
