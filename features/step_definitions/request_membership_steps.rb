@@ -127,14 +127,12 @@ end
 
 Given(/^I have requested membership and been ignored$/) do
   @group = FactoryGirl.create :group
-  membership_request = FactoryGirl.create(:membership_request,
-                        group: @group, requestor: @user, responder: FactoryGirl.create(:user), response: 'ignored')
+  FactoryGirl.create(:membership_request, group: @group, requestor: @user, responder: FactoryGirl.create(:user), response: 'ignored')
 end
 
 Given(/^I have requested membership as a visitor and been ignored$/) do
   @group = FactoryGirl.create :group
-  membership_request = FactoryGirl.create(:membership_request,
-                        group: @group, name: @visitor_name, email: @visitor_email, responder: FactoryGirl.create(:user), response: 'ignored')
+  FactoryGirl.create(:membership_request, group: @group, name: @visitor_name, email: @visitor_email, responder: FactoryGirl.create(:user), response: 'ignored')
 end
 
 Then(/^I should be redirected to the dashboard$/) do
@@ -188,4 +186,8 @@ end
 Given /^I am a member of a parent\-group that has a public sub\-group$/ do
   step 'a public sub-group exists'
   @parent_group.add_member! @user
+end
+
+Then(/^I should be asked to log in$/) do
+  page.should have_content(I18n.t(:sign_in))
 end

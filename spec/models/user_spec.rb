@@ -65,25 +65,6 @@ describe User do
     user.admin_memberships.should include(membership)
   end
 
-  describe "open_votes" do
-    before do
-      @motion = create(:motion)
-      @motion.group.add_member! user
-      @vote = user.votes.new(:position => "yes")
-      @vote.motion = @motion
-      @vote.save
-    end
-
-    it "returns the user's votes on motions that are open" do
-      user.open_votes.should include(@vote)
-    end
-
-    it "does not return the user's votes on motions that are closed" do
-      @motion.close!
-      user.open_votes.should_not include(@vote)
-    end
-  end
-
   it "has authored discussions" do
     group.add_member!(user)
     discussion = Discussion.new(:group => group, :title => "Hello world")
@@ -99,85 +80,29 @@ describe User do
     user.authored_motions.should include(motion)
   end
 
-  describe "motions_in_voting_phase" do
-    it "returns motions that belong to user and are in phase 'voting'" do
+  describe "#voting_motions" do
+    it "returns motions that belong to user and are open" do
       motion = create(:motion, author: user)
-      user.motions_in_voting_phase.should include(motion)
+      user.voting_motions.should include(motion)
     end
 
-    it "should not return motions that belong to the group but are in phase 'closed'" do
+    it "should not return motions that belong to the group but are closed'" do
       motion = create(:motion, author: user)
       motion.close!
-      user.motions_in_voting_phase.should_not include(motion)
+      user.voting_motions.should_not include(motion)
     end
   end
 
-  describe "motions_closed" do
-    it "returns motions that belong to the group and are in phase 'voting'" do
+  describe "closed_motions" do
+    it "returns motions that belong to the group and are closed" do
       motion = create(:motion, author: user)
       motion.close!
-      user.motions_closed.should include(motion)
+      user.closed_motions.should include(motion)
     end
 
-    it "should not return motions that belong to the group but are in phase 'closed'" do
+    it "should not return motions that belong to the group but are closed" do
       motion = create(:motion, author: user)
-      user.motions_closed.should_not include(motion)
-    end
-  end
-
-  context do
-    before do
-      group.add_member! user
-      @discussion1 = create :discussion, :group => group
-      motion1 = create :motion, discussion: @discussion1, author: user
-      @discussion2 = create :discussion, :group => group
-      motion2 = create :motion, discussion: @discussion2, author: user
-      vote = Vote.new position: "yes"
-      vote.motion = motion2
-      vote.user = user
-      vote.save
-    end
-    describe "discussions_with_current_motion_not_voted_on" do
-      it "returns all discussions with a current motion that a user has not voted on" do
-        user.discussions_with_current_motion_not_voted_on.should include(@discussion1)
-        user.discussions_with_current_motion_not_voted_on.should_not include(@discussion2)
-      end
-    end
-
-    describe "discussions_with_current_motion_voted_on" do
-      it "returns all discussions with a current motion that a user has voted on" do
-        user.discussions_with_current_motion_voted_on.should include(@discussion2)
-        user.discussions_with_current_motion_voted_on.should_not include(@discussion1)
-      end
-    end
-  end
-
-  describe "user.discussions_sorted" do
-    before do
-      @user = create :user
-      @group = create :group
-      @group.add_member! @user
-      @discussion1 = create :discussion, group: @group, :author => @user
-    end
-
-    it "returns a list of discussions sorted by last_comment_at" do
-      pending 'this does not help'
-      @discussion2 = create :discussion, :author => @user
-      @discussion2.add_comment @user, "hi", false
-      @discussion3 = create :discussion, :author => @user
-      @discussion1.add_comment @user, "hi", false
-      @user.discussions_sorted.should == [@discussion1, @discussion4, @discussion3, ]
-      @user.discussions_sorted[0].should == @discussion1
-      @user.discussions_sorted[1].should == @discussion4
-      @user.discussions_sorted[2].should == @discussion3
-      @user.discussions_sorted[3].should == @discussion2
-    end
-
-    it "should not include discussions with a current motion" do
-      motion = create :motion, :discussion => @discussion1, author: @user
-      motion.close!
-      motion1 = create :motion, :discussion => @discussion1, author: @user
-      @user.discussions_sorted.should_not include(@discussion1)
+      user.closed_motions.should_not include(motion)
     end
   end
 
@@ -480,14 +405,22 @@ describe User do
   end
 
   describe "belongs_to_paying_group" do
-    it "returns true if user is a member of a paying group" do
-      group.paying_subscription = true
+    it "returns true if user is a member of a manual subscription group" do
+      group.payment_plan = 'manual_subscription'
       group.save!
       group.add_member!(user)
-      user.belongs_to_paying_group?.should == true
+      user.belongs_to_paying_group?.should be_true
     end
+
+    it "returns true if user is a member of a subscription group" do
+      group.payment_plan = 'subscription'
+      group.save!
+      group.add_member!(user)
+      user.belongs_to_paying_group?.should be_true
+    end
+
     it "returns false if user is not a member of a paying group" do
-      group.paying_subscription == false
+      user.belongs_to_paying_group?.should be_false
     end
   end
 

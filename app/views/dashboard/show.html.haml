@@ -8,9 +8,7 @@
         #all-discussions-loading
           %li.selector-item.loading= t(:loading)
         #discussions-with-motions
-          - @discussions_with_current_motion_not_voted_on.each do |discussion|
-            %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
-          - @discussions_with_current_motion_voted_on.each do |discussion|
+          - @discussions.with_open_motions.order('motions.closing_at ASC').each do |discussion|
             %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
           .discussion-with-motion-divider.hidden
         - if current_user && current_user.discussions.count == 0
@@ -21,5 +19,5 @@
       =render '/application/see_closed_motions'
     =render '/application/closed_motions', user: current_user, group: nil
 - else
-  = link_to t(:request_new_group), request_new_group_path
+  = link_to t(:start_a_group), selection_group_requests_path
   = t(:request_new_group_details)

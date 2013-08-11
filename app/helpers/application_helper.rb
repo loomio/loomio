@@ -100,5 +100,8 @@ module ApplicationHelper
   def visitor?
     !user_signed_in?
   end
-end
 
+  def email_belongs_to_existing_user?(email)
+    User.find_by_email(email).present?
+  end
+end

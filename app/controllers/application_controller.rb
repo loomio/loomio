@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include LocalesHelper
   protect_from_forgery
 
   rescue_from Exception do |exception|
@@ -6,9 +7,14 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    request.env["HTTP_REFERER"] = root_url if request.env["HTTP_REFERER"].nil?
-    flash[:error] = t("error.access_denied")
-    redirect_to :back
+    if current_user
+      request.env["HTTP_REFERER"] = root_url if request.env["HTTP_REFERER"].nil?
+      flash[:error] = t("error.access_denied")
+      redirect_to :back
+    else
+      store_location
+      authenticate_user!
+    end
   end
 
   before_filter :set_locale
@@ -16,32 +22,22 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def set_locale
-    if current_user
-      if current_user.language_preference.blank?
-        current_user.language_preference = extract_locale_from_accept_language_header
-      end
-      I18n.locale = current_user.language_preference
-    else
-      I18n.locale = extract_locale_from_accept_language_header
-    end
-    if params[:locale].present? && (Translation::LOCALES.include? params[:locale])
-      I18n.locale = params[:locale]
-      current_user.language_preference = params[:locale] if current_user
-    end
+  def store_location
+    session[:return_to] = request.original_url
+  end
+
+  def clear_stored_location
+    session[:return_to] = nil
+  end
+
+  def after_sign_in_path_for(resource)
+    path = session[:return_to] || root_path
+    clear_stored_location
+    path
   end
 
   def initialize_search_form
     @search_form = SearchForm.new(current_user)
-  end
-
-  def extract_locale_from_accept_language_header
-    browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first).try(:to_s)
-    if Translation::LOCALES.include? browser_locale
-      browser_locale
-    else
-      I18n.default_locale
-    end
   end
 
   def render_raincheck_error(exception)

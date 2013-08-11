@@ -18,4 +18,4 @@
           =check_box_tag 'groups[]', group.id, membership.inbox_position.present?, id: "group_#{group.id}", class: 'checkbox'
           =group.full_name
     -#=f.collection_check_boxes(:groups, @inbox_preferences_form.all_groups, :id, :full_name, {}, {:class => 'checkbox'}){ |input| input.label(:class => 'checkbox') { input.check_box + input.text } }
-  =f.submit 'Save', class: 'btn btn-info'
+  =f.submit 'Save', class: 'btn btn-info', :data => {:disable_with => "Save"}

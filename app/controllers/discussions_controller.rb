@@ -1,9 +1,6 @@
 class DiscussionsController < GroupBaseController
-  inherit_resources
-  load_and_authorize_resource :except => [:show, :new, :create, :index, :activity_counts]
+  load_and_authorize_resource :except => [:new, :create, :index]
   before_filter :authenticate_user!, :except => [:show, :index]
-  before_filter :check_group_read_permissions, :only => :show
-  after_filter :store_location, :only => :show
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.not_found') }
@@ -33,7 +30,6 @@ class DiscussionsController < GroupBaseController
   end
 
   def destroy
-    @discussion = Discussion.find(params[:id])
     @discussion.delayed_destroy
     flash[:success] = t("success.discussion_deleted")
     redirect_to @discussion.group
@@ -45,26 +41,36 @@ class DiscussionsController < GroupBaseController
       if cannot? :show, @group
         head 401
       else
-        @discussions = Queries::VisibleDiscussions.for(@group, current_user).
-                       without_current_motions.page(params[:page]).per(10)
         @no_discussions_exist = (@group.discussions.count == 0)
+        @discussions = GroupDiscussionsViewer.
+                       for(group: @group, user: current_user).
+                       without_open_motions.
+                       order_by_latest_comment.
+                       page(params[:page]).per(10)
         render :layout => false if request.xhr?
       end
     else
       authenticate_user!
-      @discussions = current_user.discussions_sorted.page(params[:page]).per(10)
       @no_discussions_exist = (current_user.discussions.count == 0)
+      @discussions = Queries::VisibleDiscussions.
+                     new(user: current_user).
+                     without_open_motions.
+                     order_by_latest_comment.
+                     page(params[:page]).per(10)
       render :layout => false if request.xhr?
     end
   end
 
   def show
-    @discussion = Discussion.find(params[:id])
-    @last_collaborator = User.find @discussion.originator.to_i if @discussion.has_previous_versions?
+    #@last_collaborator = User.find(@discussion.originator) if @discussion.has_previous_versions?
     @group = GroupDecorator.new(@discussion.group)
     @vote = Vote.new
     @current_motion = @discussion.current_motion
+    # can we take this first call out?
     @activity = @discussion.activity
+
+    load_cached_comment_info
+
     @filtered_activity = @discussion.filtered_activity
     assign_meta_data
     if params[:proposal]
@@ -76,16 +82,16 @@ class DiscussionsController < GroupBaseController
       @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
       @uses_markdown = current_user.uses_markdown?
       ViewLogger.motion_viewed(@current_motion, current_user) if @current_motion
-      ViewLogger.discussion_viewed(@discussion, current_user)
+      @discussion.as_read_by(current_user).viewed!
     end
   end
 
   def move
-    @discussion = Discussion.find(params[:id])
     origin = @discussion.group
     destination = Group.find(params[:discussion][:group_id])
     @discussion.group_id = params[:discussion][:group_id]
-    if DiscussionMover.can_move?(current_user, origin, destination) && @discussion.save!
+    if DiscussionMover.can_move?(current_user, origin, destination) && 
+      @discussion.save!
       flash[:success] = "Discussion successfully moved."
     else
       flash[:error] = "Discussion could not be moved."
@@ -95,10 +101,9 @@ class DiscussionsController < GroupBaseController
 
   def add_comment
     if params[:comment].present?
-      @discussion = Discussion.find(params[:id])
       @comment = @discussion.add_comment(current_user, params[:comment], params[:uses_markdown])
-      current_user.update_attributes(uses_markdown: params[:uses_markdown])
-      ViewLogger.discussion_viewed(@discussion, current_user)
+      load_cached_comment_info
+      @discussion.as_read_by(current_user).viewed!
       unless request.xhr?
         redirect_to @discussion
       end
@@ -161,20 +166,22 @@ class DiscussionsController < GroupBaseController
     redirect_to @version.reify()
   end
 
-  def activity_counts
-    # this ensures that you can't ask for comment counts for discussions you dont belong to 
-    discussion_ids = current_user.discussion_ids & params[:discussion_ids].split('x').map(&:to_i)
-
-    counts = Discussion.find(discussion_ids).map do |discussion|
-      discussion.number_of_comments_since_last_looked(current_user)
-    end
-    render json: counts
-  end
-
   private
 
+
+  def load_cached_comment_info
+    @comment_likes = @discussion.comment_likes
+    @comment_likes_by_comment_id = @comment_likes.group_by{|cv| cv.comment_id}
+    if current_user
+      @comment_ids_liked_by_current_user = @comment_likes.where(user_id: current_user.id).map{|cv|cv.comment_id}
+    else
+      @comment_ids_liked_by_current_user = []
+    end
+    @can_like_comments = can?(:like, @discussion.comments.first)
+  end
+
   def assign_meta_data
-    if @group.viewable_by == :everyone
+    if @group.viewable_by == 'everyone'
       @meta_title = @discussion.title
       @meta_description = @discussion.description
     end

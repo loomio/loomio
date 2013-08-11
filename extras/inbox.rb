@@ -3,21 +3,9 @@ class Inbox
     @user = user
   end
 
-  def mark_all_as_read!(group)
-    unread_discussions_for(group).each do |discussion|
-      ViewLogger.discussion_viewed(discussion, @user)
-    end
-  end 
-
-  def mark_as_read!(item)
-    if @user.can? :show, item
-      ViewLogger.discussion_viewed(item, @user)
-    end
-  end
-
   def unfollow!(item)
     if @user.can? :unfollow, item
-      ViewLogger.discussion_unfollowed(item, @user)
+      raise 'no method yet.. should be added to DiscussionReader'
     end
   end
 
@@ -30,6 +18,14 @@ class Inbox
       @grouped_items[group] = motions + discussions
     end
     self
+  end
+
+  def items_count
+    count = 0
+    @grouped_items.each_pair do |group, items|
+      count += items.size
+    end
+    count
   end
 
   def empty?
@@ -47,7 +43,8 @@ class Inbox
   end
 
   def unread_discussions_for(group)
-    Queries::UnreadDiscussions.for(@user, group).order('last_comment_at DESC').readonly(false)
+    Queries::VisibleDiscussions.new(user: @user, groups: [group]).unread.
+                                order_by_latest_comment.readonly(false)
   end
 
   def unvoted_motions_for(group)
