@@ -13,7 +13,7 @@
       %p= t :"start_group.sign_up_intro" if @invitation.intent == "start_group"
       %p= t :"join_group.sign_up_intro" if @invitation.intent == "join_group"
   .row
-    .span4.offset3.signup-form
+    .span5.offset3.signup-form
       = render "devise/registrations/form"
   .row
     .span6.offset3

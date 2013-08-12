@@ -1,12 +1,14 @@
 class Group < ActiveRecord::Base
 
   PERMISSION_CATEGORIES = ['everyone', 'members', 'admins', 'parent_group_members']
+  PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription']
 
   attr_accessible :name, :viewable_by, :parent_id, :parent, :cannot_contribute,
                   :members_invitable_by, :email_new_motion, :description, :setup_completed_at,
-                  :next_steps_completed, :paying_subscription
+                  :next_steps_completed, :payment_plan
 
   validates_presence_of :name
+  validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
   validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   validates :description, :length => { :maximum => 250 }
@@ -68,11 +70,22 @@ class Group < ActiveRecord::Base
   belongs_to :parent, :class_name => "Group"
   has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
 
+  has_one :subscription, dependent: :destroy
+
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
   delegate :name, :to => :parent, :prefix => true
 
   paginates_per 20
+
+
+  def requestor_name
+    group_request.try(:admin_name)
+  end
+
+  def requestor_email
+    group_request.try(:admin_email)
+  end
 
   def voting_motions
     motions.voting
@@ -94,16 +107,25 @@ class Group < ActiveRecord::Base
     self.archived_at.present?
   end
 
-  def viewable_by?(user)
-    Ability.new(user).can?(:show, self)
+  def viewable_by_everyone?
+    (viewable_by == 'everyone') and !archived?
   end
 
-  def members_can_invite?
+  def members_can_invite_members?
     members_invitable_by == 'members'
   end
 
   def parent_members_visible_to(user)
     parent.users.sorted_by_name
+  end
+
+  def is_pwyc?
+    payment_plan == 'pwyc'
+  end
+
+  # deliberately does not include manual_subscription
+  def is_subscription?
+    payment_plan == 'subscription'
   end
 
   # would be nice if the following 4 methods were reduced to just one - is_sub_group
@@ -206,6 +228,15 @@ class Group < ActiveRecord::Base
     self.full_name = calculate_full_name
   end
 
+  def has_subscription_plan?
+    subscription.present?
+  end
+
+  def subscription_plan
+    subscription.amount
+  end
+
+
   private
 
   def calculate_full_name
@@ -217,7 +248,7 @@ class Group < ActiveRecord::Base
   end
 
   def set_max_group_size
-    self.max_size = 50 if (is_a_parent? && max_size.nil?)
+    self.max_size = 300 if (is_a_parent? && max_size.nil?)
   end
 
   def set_defaults

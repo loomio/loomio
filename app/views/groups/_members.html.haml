@@ -1,6 +1,6 @@
 - unless group.hide_members && (cannot? :update, group)
   .sub-panel#members-panel
-    -if can?(:update, group) or logged_in_member_can_invite?(group)
+    -if can?(:update, group) or can?(:add_members, group)
       .dropdown.btn-group
         %a.btn.btn-grey.btn-small.dropdown-toggle#group-member-options{ href: "#", 'data-toggle' => 'dropdown' }
           = t(:options)
@@ -23,6 +23,7 @@
     %ul#users-list
       - group.members.sorted_by_name.each do |user|
         = render 'membership', user: user
+
     -if can?(:add_members, group) && group.is_top_level?
       = link_to members_pending_count(group), group_invitations_path(group), class: 'bottom-panel-link', id: 'pending-count'
 

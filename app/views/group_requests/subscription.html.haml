@@ -1,0 +1,14 @@
+.row
+  .span5.offset1
+    #intro
+      %h1= t("group_request.subscription.intro")
+.row
+  .span5.offset1
+    = render 'form', submit_label: t("group_request.subscription.submit"), placeholder: t("group_request.subscription.placeholder")
+  .span5
+    .info-box#organisation
+      = render 'groups/subscriptions/pricing_table'
+      %p= t("group_request.subscription.table.description_html")
+
+
+

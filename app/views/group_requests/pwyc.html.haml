@@ -1,0 +1,11 @@
+.row
+  .span8.offset1
+    #intro
+      %h1= t("group_request.pwyc.intro")
+.row
+  .span5.offset1
+    = render 'form', submit_label: t("group_request.pwyc.submit"), placeholder: t("group_request.pwyc.placeholder")
+  .span4
+    .info-box#informal-group
+      %h2= t("group_request.pwyc.header")
+      %p= t("group_request.pwyc.description_html", subscription_path: subscription_group_requests_path)

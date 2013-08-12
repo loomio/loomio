@@ -6,12 +6,16 @@ Feature: Setup group
   Background:
     Given I am logged in
 
+  @javascript
   Scenario: Group admin sets up a group
     Given I am an admin of a parent group that has not completed setup
     When I visit the group setup page
+    And screenshot
     And I complete the group setup form
     Then the group should be setup
     And I should be on the group page
+    And I should be added to the group as a coordinator
+    And I should have received the Welcome to Loomio email
 
   Scenario: Group admin tries to set up a group that alredy has been setup
     Given I am an admin of a group

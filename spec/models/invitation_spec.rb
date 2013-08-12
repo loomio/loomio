@@ -6,6 +6,7 @@ describe Invitation do
 
   before do
     @invitation = Invitation.create(recipient_email: 'test@example.org',
+                                    recipient_name: 'Joinky',
                                     intent: 'join_group',
                                     inviter: admin_user,
                                     group: group)
