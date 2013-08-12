@@ -7,7 +7,8 @@ class Translation
                "română" => "ro",
                "Nederlands" => "nl"}
   EXPERIMENTAL_LANGUAGES = {"Français" => "fr",
-                            "Tiếng Việt" => "vi"}
+                            "Tiếng Việt" => "vi",
+                            "Deutsch" => "de"}
 
   def self.language(locale)
     LANGUAGES.key(locale)
