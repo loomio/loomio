@@ -2,8 +2,9 @@ class ApplicationController < ActionController::Base
   include LocalesHelper
   protect_from_forgery
 
-  before_filter :set_locale
-  before_filter :initialize_search_form
+  rescue_from Exception do |exception|
+    render_raincheck_error(exception)
+  end
 
   rescue_from CanCan::AccessDenied do |exception|
     if current_user
@@ -15,6 +16,9 @@ class ApplicationController < ActionController::Base
       authenticate_user!
     end
   end
+
+  before_filter :set_locale
+  before_filter :initialize_search_form
 
   protected
 
@@ -34,5 +38,17 @@ class ApplicationController < ActionController::Base
 
   def initialize_search_form
     @search_form = SearchForm.new(current_user)
+  end
+
+  def render_raincheck_error(exception)
+    if request.xhr?
+      raise exception
+    else
+      @error_raincheck = ErrorRaincheck.new({action: action_name, controller: controller_name})
+      respond_to do |format|
+        format.html { render "error_rainchecks/error_page" }
+        format.all  { render :nothing => true, :status => 500 }
+      end
+    end
   end
 end

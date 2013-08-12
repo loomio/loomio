@@ -18,6 +18,10 @@ Loomio::Application.routes.draw do
 
   resources :invitations, only: [:show]
 
+  resources :error_rainchecks, only: [:new, :create, :show]
+  get :not_found, to: 'error_rainchecks#error_page'
+  get "/error_raincheck", to: "dashboard#raise_error_raincheck"
+
   resources :group_requests, only: [:create] do
     collection do
       get :selection
@@ -181,3 +185,4 @@ Loomio::Application.routes.draw do
 
   get 'blog' => redirect('http://blog.loomio.org')
 end
+

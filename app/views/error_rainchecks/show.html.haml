@@ -1,0 +1,6 @@
+#error-container
+  -if current_user
+    %img(src="/assets/loomio-orange.png")
+  %h1= t :"error_raincheck.thank_you"
+  %p= t :"error_raincheck.notification_html"
+  %p= link_to t(:"return_home"), root_path, id: "return-home-link"

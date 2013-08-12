@@ -22,6 +22,7 @@
  *= require invitations
  *= require group_requests
  *= require help
+ *= require error_rainchecks
  *= require contributions
  *= require inbox
  *= require manage_membership_requests
