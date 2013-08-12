@@ -16,16 +16,19 @@
             = discussion_activity
       .discussion-date-info
         -if current_motion
-          - if current_motion_closing_at
-            .proposal-close-date= "#{time_ago_in_words(current_motion_closing_at)} until close"
+          - if current_motion.closing_at
+            .proposal-close-date= "#{time_ago_in_words(current_motion.closing_at)} until close"
         - else
           .latest-comment-time= "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.last_comment_at))}"
     - if current_motion
       - motion_activity = motion_activity_count_for(current_motion, current_user)
-      / .pie{:id => "graph_#{discussion.current_motion.id}"}
       .icon{:id => "graph_#{current_motion.id}"}
-        -values = current_motion.vote_counts.values
+        - if current_motion.voting? && motion_activity > 0
+          %span.activity-count.label.label-info
+            = motion_activity
+
         .motion-sparkline
+          -values = current_motion.vote_counts.values
           -if values.sum == 0
             0,0,0,0,1
           -else
