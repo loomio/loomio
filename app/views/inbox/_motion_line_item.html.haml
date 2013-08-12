@@ -1,12 +1,12 @@
 %li.motion.row-fluid{data:{motion_id: item.id}}
   .span1
     .icon
-      -values = item.vote_counts.values
       .motion-sparkline
+        -values = item.vote_counts.values
         -if values.sum == 0
           0,0,0,0,1
         -else
-          =values.join(',') 
+          =values.join(',')
 
   .span8.title
     = link_to item.title, item

@@ -22,7 +22,7 @@
           .latest-comment-time= "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.last_comment_at))}"
     - if current_motion
       - motion_activity = motion_activity_count_for(current_motion, current_user)
-      .icon{:id => "graph_#{current_motion.id}"}
+      .icon.shim{:id => "graph_#{current_motion.id}"}
         - if current_motion.voting? && motion_activity > 0
           %span.activity-count.label.label-info
             = motion_activity
