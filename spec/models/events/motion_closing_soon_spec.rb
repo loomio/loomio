@@ -25,7 +25,7 @@ describe Events::MotionClosingSoon do
                                         discussion_id: motion.discussion.id) }
     before do
       motion.stub(:group_users).and_return([user])
-      UserMailer.stub_chain(:motion_closing_soon, :deliver!)
+      UserMailer.stub_chain(:motion_closing_soon, :deliver)
       user.stub(:subscribed_to_proposal_closure_notifications)
     end
 

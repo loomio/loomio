@@ -13,7 +13,7 @@ class Events::MotionClosed < Event
   private
 
   def notify_users!
-    MotionMailer.motion_closed(motion, motion.author.email).deliver
+    MotionMailer.delay.motion_closed(motion, motion.author.email)
     motion.group_users.each do |group_user|
       unless group_user == user
         notify!(group_user)

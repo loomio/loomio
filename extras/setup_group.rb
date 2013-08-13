@@ -16,7 +16,7 @@ class SetupGroup
                                                 inviter: inviter,
                                                 recipient_email: group.group_request.admin_email,
                                                 recipient_name: group.group_request.admin_name)
-    InvitePeopleMailer.to_start_group(invitation, inviter.email).deliver
+    InvitePeopleMailer.delay.to_start_group(invitation, inviter.email)
     invitation
   end
 

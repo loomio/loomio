@@ -18,7 +18,7 @@ class Events::UserMentioned < Event
   def notify_users!
     unless mentioned_user == comment.user
       if mentioned_user.subscribed_to_mention_notifications?
-        UserMailer.mentioned(mentioned_user, comment).deliver
+        UserMailer.delay.mentioned(mentioned_user, comment)
       end
       notify!(mentioned_user)
     end
