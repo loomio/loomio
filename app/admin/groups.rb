@@ -39,7 +39,9 @@ ActiveAdmin.register Group do
 
   index :download_links => false do
     column :id
-    column :name
+    column :name do |g|
+      simple_format(g.full_name.sub(' - ', "\n \n> "))
+    end
     column :contact do |g|
       admin_name = ERB::Util.h(g.requestor_name)
       admin_email = ERB::Util.h(g.requestor_email)
