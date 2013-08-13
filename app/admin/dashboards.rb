@@ -2,8 +2,8 @@ ActiveAdmin::Dashboards.build do
 
   section "Groups", :priority => 1 do
     h1 { Group.count }
-    div { "New today: #{Group.where('created_at >= ?', 24.hours.ago).count}"}
-    div { "New this week: #{Group.where('created_at >= ?', 1.week.ago).count}"}
+    div { "New today: #{Group.where('parent_id IS NULL AND created_at >= ?', 24.hours.ago).count}"}
+    div { "New this week: #{Group.where('parent_id IS NULL AND created_at >= ?', 1.week.ago).count}"}
     div { link_to "See all groups", admin_groups_path }
   end
 
