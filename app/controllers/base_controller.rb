@@ -4,6 +4,11 @@ class BaseController < ApplicationController
   before_filter :set_time_zone_from_javascript
   helper_method :time_zone
 
+  def permitted_params
+    @permitted_params ||= PermittedParams.new(params, current_user)
+  end
+  helper_method :permitted_params
+
   protected
 
   def time_zone

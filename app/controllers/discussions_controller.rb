@@ -18,8 +18,12 @@ class DiscussionsController < GroupBaseController
 
   def create
     current_user.update_attributes(uses_markdown: params[:discussion][:uses_markdown])
-    @discussion = current_user.authored_discussions.new(params[:discussion])
+    
+    @discussion = Discussion.new(permitted_params.discussion)
+    @discussion.author = current_user
+
     authorize! :create, @discussion
+
     if @discussion.save
       flash[:success] = t("success.discussion_created")
       redirect_to @discussion
@@ -90,7 +94,7 @@ class DiscussionsController < GroupBaseController
     origin = @discussion.group
     destination = Group.find(params[:discussion][:group_id])
     @discussion.group_id = params[:discussion][:group_id]
-    if DiscussionMover.can_move?(current_user, origin, destination) && 
+    if DiscussionMover.can_move?(current_user, origin, destination) &&
       @discussion.save!
       flash[:success] = "Discussion successfully moved."
     else

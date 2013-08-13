@@ -1,6 +1,4 @@
 class UsersController < BaseController
-  before_filter :authenticate_user!, except: [:new, :create]
-
   def show
     @user = User.find(params[:id])
     unless current_user.in_same_group_as?(@user)
@@ -10,7 +8,7 @@ class UsersController < BaseController
   end
 
   def update
-    if current_user.update_attributes(params[:user])
+    if current_user.update_attributes(permitted_params.user)
       set_locale
       flash[:notice] = t("notice.settings_updated")
       redirect_to root_url
