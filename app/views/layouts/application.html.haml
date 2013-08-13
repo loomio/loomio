@@ -8,6 +8,9 @@
     = csrf_meta_tags
     %link{:href => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/flick/jquery-ui.css", :rel => "stylesheet", :type => "text/css"}
 
+    :javascript
+      window.I18n = #{current_translations.to_json.html_safe}
+
     -# Rob took this out because it looked really incomplete and has failing specs
     -#= render 'social_metadata', :description => @meta_description, :title => @meta_title
 
