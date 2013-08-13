@@ -4,7 +4,7 @@
 
 body.subscriptions {
   &.new, &.show {
-    color: #000;
+    color: $text-black;
     h1 { margin: 6px 0 22px 0; }
     p {
       font-size: 1.2em;
@@ -50,7 +50,7 @@ body.subscriptions {
       padding: 15px;
       width: 240px;
       h3 {
-        color: #000;
+        color: $text-black;
         font-weight: 400;
       }
       ul {

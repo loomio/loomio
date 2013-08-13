@@ -15,7 +15,7 @@ html { height: 100%; }
 body {
   background-color: $main-background;
   height: 100%;
-  color: #000;
+  color: $text-black;
 }
 
 hr {
@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 0.4em;
   font-family: inherit;
   font-weight: bold;
-  color: #000;
+  color: $text-black;
   text-rendering: optimizelegibility;
 }
 h1 {
