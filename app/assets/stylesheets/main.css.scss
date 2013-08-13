@@ -5,7 +5,7 @@
 body {
   background-color: $main-background;
   height: 100%;
-  color: $dark-grey;
+  color: $text-black;
 }
 
 code{
@@ -153,7 +153,7 @@ ul, ol, li {
 }
 .btn-grey { color: $mid-grey; }
 
-#start-group-btn { 
+#start-group-btn {
   font-size: 24px;
   padding: 15px;  }
 
