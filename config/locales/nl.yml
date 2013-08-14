@@ -14,6 +14,15 @@ nl:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
       datepicker: "%d-%m-%Y"
+  devise:
+    invitations:
+      send_instructions: 'Een uitnodiging is verstuurd naar %{email}.'
+      invitation_token_invalid: 'De verstrekte uitnodigingstoken is niet geldig!'
+      updated: 'Account gemaakt.'
+      no_invitations_remaining: "Geen uitnodigingen over"
+    mailer:
+      invitation_instructions:
+        subject: 'Iemand heeft je uitgenodigd tot hun Loomio groep'
   error:
     access_denied: "Je hebt geen rechten om dit te doen."
     cant_join_subgroup: "Je kan je niet aansluiten bij een subgroep als je geen lid bent van de hoofdgroep."
@@ -113,6 +122,12 @@ nl:
       almost_x_years:
         one: "1 jaar"
         other: "%{count} jaren"
+  footer:
+    about: 'Over'
+    blog: 'Blog'
+    contact: 'Contact'
+    privacy: 'Privacy'
+    terms: 'Voorwaarden'
   inbox:
     dropdown-btn: 'Inbox'
     empty: Je bent helemaal bij! Er zijn geen ongelezen reacties.
@@ -132,7 +147,7 @@ nl:
     motion_closing_soon: "Voorstel sluit binnenkort"
     motion_blocked: "blokkeerde het voorstel"
   edit_discussion_context: "Bewerk discussie beschrijving"
-  request_new_group: "Vraag Nieuwe Groep aan"
+  request_new_group: "Begin een groep"
   request_new_group_details: "of wacht tot je voor één wordt uitgenodigd."
   empty_notifications: "Je hebt nog geen meldingen."
   see_all_notifications: "Bekijk alle meldingen"
@@ -157,7 +172,7 @@ nl:
   setup_step_1: "Bekijk de voorbeeld discussie"
   setup_step_2: "Begin je eerste discussie"
   setup_step_3: "Nodig mensen uit voor je groep"
-  invite_people: "Nodig mensen uit"
+  invite_people: "Mensen uitnodigen"
   no_invitations_button: "Geen uitnodigingen over"
   pending_invitations: 'Openstaande uitnodigingen'
   number_pending: '%{pending} openstaand'
@@ -217,6 +232,41 @@ nl:
   start_a_discussion: "Start een discussie"
   group_description: "Groepsomschrijving"
   edit_group_description: "Bewerk groepsomschrijving"
+  payment_details_link: "Betalingsgegevens"
+  group_request:
+    form:
+      name: "Wat je naam?"
+      email: "Wat je e-mail adres?"
+      group_name: "Wat is de naam van je groep?"
+    confirmation:
+      title: Je bent bijna klaar! Bekijk je e-mail.
+      body_html: |
+        We hebben je een e-mail gestuurd met een uitnodiging om jouw groep te starten.
+
+        Als je niet binnen een paar minuten iets in je inbox ziet, e-mail ons dan op<a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
+    pwyc:
+      description_html: "Je groepsleden zullen uitgenodigd worden om te betalen wat ze kunnen missen.<p>Als je liever namens je groep betaalt, <a href='%{subscription_path}'>meld je hier aan.</a></p>"
+      header: "Betaal wat je kan missen"
+      intro: "Begin jouw groep"
+      placeholder: "bijv. Buurt Support Groep"
+      submit: "Begin groep!"
+    selection:
+      description_html: "Geld zou geen barrière moeten zijn voor gezamenlijke besluitvorming. Groepen met een budget betalen een abonnement voor het gebruik van dit instrument, leden van informele groepen dragen bij wat ze kunnen.</p><p id='last'>Jouw bijdrage zorgt ervoor dat we Loomio onafhankelijk, vrij van advertenties en door de gemeenschap gedreven kunnen houden."
+      intro: "Wat voor soort groep ben je?"
+      informal_group:
+        description_html: "e.g. families, sociale bewegingen, collectieven</p><p>Leden van jouw groep zullen gevraagd worden om te betalen wat ze kunnen missen.</p>"
+        header: "Informele groep"
+        submit: "Betaal wat je kan missen"
+      organisation:
+        description_html: "bijv. bedrijven, regeringsinstanties, maatschappelijke organisaties</p><p>Jouw groep zal maandelijks gefactureerd worden na een <span id='trial' class='nowrap'>proefperiode van 30 dagen.</span></p>"
+        header: "Organisatie"
+        submit: "Abonnement"
+    subscription:
+      intro: "Probeer Loomio gratis"
+      table:
+        description_html: Je zal naar je creditcardgegevens gevraagd worden aan het einde van je  <span class="nowrap">30-dagen proefperiode.</span>
+      placeholder: "bijv. Jane's Accounting Services"
+      submit: "Begin met je gratis proefabonnement!"
   discussion_items:
     new_discussion: "startte de discussie"
     new_motion: "maakte een voorstel"
@@ -228,8 +278,8 @@ nl:
     discussion_description_edited: "veranderde de omschrijving van de discussie"
   discussion: "Discussie"
   current_decision: "Huidige beslissing"
-  previous_decisions: "Voorgaande beslissingen"
-  see_previous_decisions: "Bekijk voorgaande beslissingen"
+  previous_decisions: "Vorige beslissingen"
+  see_previous_decisions: "Bekijk vorige beslissingen"
   create_new_proposal: "Maak nieuw voorstel"
   empty_decision_list_html: "Klaar om een beslissing te maken? <br> Iedereen kan een voorstel indienen."
   empty_decision_index: "Deze groep heeft nog geen beslissingen genomen."
@@ -251,7 +301,7 @@ nl:
     next: "Volgende"
   comment_form_placeholder: "Zeg iets..."
   comment_form_submit_button: "Plaats reactie"
-  liked_by: "%{who} vond dit leuk"
+  liked_by: "%{who} vindt dit leuk"
   delete_comment: "Verwijder reactie"
   confirm_delete_comment: "Weet je zeker dat je deze reactie wilt verwijderen?"
   markdown_settings_more_info: "Meer info..."
@@ -267,8 +317,8 @@ nl:
   proposal_closing_when: "Sluit over %{when}"
   proposal_closed_when: "%{when} geleden gesloten"
   proposed_when_by_who: "Voorgesteld door %{who} %{when} geleden"
-  engagement_on_open_proposal: "%{percent}% van de leden hebben hun standpunt kenbaar gemaakt (%{numerator}/%{denominator})"
-  engagement_on_closed_proposal: "%{percent}% van de leden hebben hun standpunt kenbaar gemaakt (%{numerator}/%{denominator})"
+  engagement_on_open_proposal: "%{percent}%% van de leden hebben hun standpunt ingenomen (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "%{percent}%% van de leden namen hun standpunt in (%{numerator}/%{denominator})"
   state_your_position: "Maak je standpunt kenbaar"
   positions: "Standpunten"
   yes_position: "Eens"
@@ -283,7 +333,7 @@ nl:
   outcome: "Uitslag"
   outcome_placeholder: "Wat was de uitslag van dit voorstel?"
   help:
-    coordinating: 'Coördineert jouw Loomio groep'
+    coordinating: 'Coördineer jouw Loomio groep'
     coordinating_details: |
       Als coördinator ben je verantwoordelijk voor het instellen van je Loomio groep en het
       uitnodigen van iedereen. Evenals het leren te gebruiken van een nieuw stukje software, leert je groep nieuwe processen om efficiënter samen te werken en goede beslissingen samen te nemen.
@@ -308,7 +358,7 @@ nl:
     have_your_say: "Laat je horen"
     have_your_say_details_html: |
       <p>Als je je standpunt ten opzichte van het voorstel hebt bepaald, kan je klikken op een van de vier beslis-knoppen.</p>
-      <p>Als je je beslissing hebt gemaakt, geef dan een korte uitleg. Onder de taartdiagram kan je zien wat iedereen denkt. Dat maakt het gemakkelijk om bij te blijven met de discussie. Als er nieuwe informatie aan het licht komt, kan je altijd je standpunt veranderen.</p>
+      <p>Als je je beslissing hebt gemaakt, geef dan een korte uitleg. Onder het taartdiagram kan je zien wat iedereen denkt. Dat maakt het gemakkelijk om bij te blijven met de discussie. Als er nieuwe informatie aan het licht komt, kan je altijd je standpunt veranderen.</p>
     have_a_discussion: "Discussieer"
     have_a_discussion_description: "Het onderwerp en relevante achtergrondinformatie staan bovenaan de pagina. Gebruik het reactieveld om je stem te laten horen."
     help: "Help"
@@ -316,11 +366,11 @@ nl:
     invitation_html: |
       <h2>Het schrijven van een geweldige uitnodiging</h2>
       <p>De eerste vraag die elk nieuw lid zich zal stellen is "Waar is deze groep voor bedoeld?"</p>
-      <p>Denk aan de gemakkelijkste manier om je groep te beschrijven. Wat wil je gezamenlijk bereiken? Wat voor beslissingen ga je maken? Wie zijn erbij betrokken?</p>
+      <p>Denk aan de gemakkelijkste manier om je groep te beschrijven. Wat wil je gezamenlijk bereiken? Wat voor beslissingen gaan jullie maken? Wie zijn erbij betrokken?</p>
       <p>Mogelijk is het een goed idee om eerst met je groepsleden te praten voor je ze uitnodigt op Loomio.</p>
-      <p>Mensen zullen willen weten waarom ze uitgenodigd zijn, wat er van hen verwacht wordt, en waarom het 't waard is om een met een nieuw instrument te leren omgaan.</p>
+      <p>Mensen zullen willen weten waarom ze uitgenodigd zijn, wat er van hen verwacht wordt en waarom het 't waard is om met een nieuw instrument te leren omgaan.</p>
     join_the_community: "Word lid van de gemeenschap"
-    join_the_community_description_html: "We verwelkomen iedereen binnen de Loomio Gemeenschap, waar we praten over hoe we het meeste uit dit instrument kunnen halen en hoe we het kunnen verbeteren.<br /><br /><a href='https://www.loomio.org/groups/3'>Klik hier om naar de Loomio Gemeenschap groep te gaan</a>."
+    join_the_community_description_html: "We verwelkomen iedereen binnen de Loomio Community, waar we praten over hoe we het meeste uit dit instrument kunnen halen en hoe we het kunnen verbeteren.<br /><br /><a href='https://www.loomio.org/groups/3'>Klik hier om naar de Loomio Community groep te gaan</a>."
     images_and_text_formatting: "Afbeeldingen en tekstopmaak"
     images_and_text_formatting_html: |
       <p>Loomio gebruikt 'Markdown' voor tekstopmaak en om afbeeldingen in te voegen.
@@ -360,29 +410,47 @@ nl:
     invitation: 'Tips voor het schrijven van een geweldige uitnodiging'
     proposal: 'Tips voor het schrijven van een helder voorstel'
     vote: 'Je kan je standpunt ten alle tijde veranderen'
+  pricing_page:
+    intro: |
+      Geld zou geen barrière moeten zijn voor gezamenlijke besluitvorming. Organisaties betalen een abonnement en leden van informele groepen dragen bij wat ze kunnen.
+      Jouw bijdrage zorgt ervoor dat we Loomio onafhankelijk, vrij van advertenties en door de gemeenschap gedreven kunnen houden.
+    organisations: Organisaties
+    organisations_examples: bijv. bedrijven, regeringsinstanties, maatschappelijke organisaties
+    informal_groups: Informele groepen
+    informal_groups_desc: Leden van jouw groep zullen gevraagd worden om te betalen wat ze kunnen missen
+    informal_groups_examples: bijv. families, sociale bewegingen, collectieven
   contribution:
-    any_amount: Iedere eenmalige bijdrage
-    monthly_html: Maandelijkse bijdrage <span>(USD)</span>
-    one_time_html: Eenmalige bijdrage <span>(USD)</span>
-    tooltip: Draag bij
-    thought_about_contributing: Kies je bijdrage
+    any_amount: of een eenmalige bijdrage naar keuze van
+    currency_desc: Bedragen zijn in US dollars
+    monthly_html: Graag doe ik een maandelijkse bijdrage van
+    one_time_html: Graag draag ik eenmalig bij met
+    submit: Doneer
+    tooltip: Leer meer over ons gemeenschap-financieringsmodel
+    thought_about_contributing: Jouw kans om bij te dragen
     thought_about_contributing_description: |
-      Loomio is een coöperatieve sociale onderneming die zich inzet om het gemakkelijker te maken voor iedereen om deel te nemen in beslissingen die hen aangaan.
+      Loomio is een coöperatieve sociale onderneming die het makkelijk maakt voor iedereen om te participeren in beslissingen die hen aangaan.
 
-      We geloven dat geld geen obstakel moet zijn, dus ontwikkelen we een verdienmodel dat jou de regie geeft over hoeveel je betaalt.
+      Geld zou geen barrière moeten zijn voor gezamenlijke besluitvorming. Loomio wordt gefinancierd door bijdragen uit onze gemeenschap van gebruikers en abonnementen betaald door formele organisaties die het gebruiken.
 
-      Jouw bijdrage zorgt ervoor dat we Loomio onafhankelijk kunnen houden, vrij van advertenties en aangestuurd door de gemeenschap van gebruikers.
+      Jouw groep betaald geen abonnement dus dit is je kans om bij te dragen. Jouw bijdrage betekent dat we Loomio onafhankelijk kunnen houden, vrij van advertenties en gratis beschikbaar voor maatschappelijke groepen zoals die van jou.
 
-      Bedankt dat je dit mogelijk maakt!
+      Bedankt voor het mogelijk maken!
     thank_you_title: Bedankt voor je bijdrage aan Loomio!
     thank_you_body: |
-      Jouw bijdrage helpt ons om gemakkelijke samenwerkende-besluitvorming mogelijk te maken in deze wereld.
+      Jouw bijdrage helpt ons gemakkelijke en gezamenlijke besluitvorming te leveren aan de wereld.
 
-      Je ontvangt binnenkort een e-mail met een ontvangstbewijs van je bijdrage.
+      Je ontvangt snel een e-mail met een ontvangstbewijs van je bijdrage.
 
-      We verwelkomen iedereen binnen de Loomio Gemeenschap, waar we praten over hoe we het meeste uit dit instrument halen en hoe we het kunnen verbeteren.
+      Iedereen is welkom om zich bij de Loomio Community te voegen waar we praten over hoe we het beste maken van dit instrument en hoe het verbeterd kan worden.
 
-      <a href='https://www.loomio.org/groups/3'>Breng me naar de Loomio Gemeenschap groep &raquo;</a>
+      <a href='https://www.loomio.org/groups/3'>Breng me naar de Loomio Community groep&raquo;</a>
+    making_a_donation: Een donatie doen
+    making_a_donation_description: |
+      Loomio is een coöperatieve sociale onderneming die het makkelijk maakt voor iedereen om te participeren in beslissingen die hen aangaan.
+
+      Jouw bijdrage zorgt ervoor dat we Loomio onafhankelijk, vrij van advertenties en door de gemeenschap gedreven kunnen houden.
+
+      Bedankt voor het mogelijk maken!
   resend_confirmation: "Verzend (bevestigings)instructies opnieuw"
   new_password: "Nieuw wachtwoord"
   confirm_new_password: "Bevestig nieuw wachtwoord"
@@ -396,9 +464,6 @@ nl:
   cancel_my_account: "Annuleer mijn account"
   remember_me: "Onthoud mij"
   signing_in: "Aanmelden"
-  dont_have_account: "Heb je geen account?"
-  closed_beta: "We zitten in een gesloten testfase en accepteren openbare aanmeldingen (nog) niet."
-  closed_beta_details: "Als je tot een groep behoort die Loomio gebruikt maar nog geen account hebt, neem dan contact op met de beheerder van Loomio in jouw organisatie en vraag om jou toe te voegen aan de groep."
   forgot_your_password: "Wachtwoord vergeten?"
   confirmation_not_received: "Geen bevestigingsinstructies ontvangen?"
   unlock_not_received: "Geen ontgrendelingsinstructies ontvangen?"
@@ -408,8 +473,8 @@ nl:
     sign_in_intro: "Je moet inloggen om je bij de groep aan te sluiten."
   start_group:
     header: "Welkom bij Loomio"
-    sign_up_intro: "Je aanvraag om een nieuwe groep te starten op Loomio is goedgekeurd! Maak een nieuwe account voor je jouw groep kan maken:"
-    sign_in_intro: "Je aanvraag om een nieuwe groep te starten is goedgekeurd! Log in voor je jouw groep kan maken:"
+    sign_up_intro: "Je moet een nieuwe account maken voor je jouw groep kan maken:"
+    sign_in_intro: "Je moet inloggen voor je jouw groep kan maken:"
   invitation:
     no_invitations_left: "Sorry, je hebt geen uitnodigingen meer over"
     no_invitations_left_get_more: "Stuur een e-mail naar contact@loomio.org waarna we zullen kijken hoe we je kunnen helpen"
@@ -428,17 +493,47 @@ nl:
     invitation_link: "Uitnodigingslink"
     link_help: "Klik op deze link om je aan te sluiten bij %{group} op Loomio:"
     copy: "Als iemand de e-mail met een uitnodiging niet heeft gekregen, dan kan je bovenstaande uitnodigingslink kopiëren en zelf aan de ontvanger sturen."
+  subscriptions:
+    current_plan_html: "Je huidige abonnement is: <strong>%{subscription_plan}</strong>"
+    redirecting_please_wait: Je wordt doorgestuurd naar PayPal, een momentje...
+    details: Groupsomschrijving
+    footer: Is jouw groep groter dan 100 mensen?
+    select_your_plan: Selecteer je abonnement
+    note_about_paypal_html: Ons betalingssysteem gebruikt momenteel Paypal. Als je Paypal niet kan gebruiken, neem dan contact met ons op <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a> om een betalingsmethode in te zetten die werkt voor jou.
+    monthly_amount: $%{amount}/maand
+    payment_plan_contact_html: Om je betalingsplan te updaten, neem contact op met ons via <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a>
+    people_in_group:
+      one: Je hebt %{count} persoon in je groep
+      other: Je hebt %{count} personen in je groep
+    people_limit_html: Tot <strong>%{people}</strong> mensen
+    prices_in_us_dollars: Prijzen zijn in US dollars
+    contact_us_html: |
+      Is jouw groep groter dan 100 mensen?
+      Stuur ons een e-mail op <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a> en we vinden er wel wat op  :)
+    description: Tot %{people} mensen (US$%{amount} maandelijks)
+    payment_failed_title: Oeps! Het lijkt erop dat er iets fout ging.
+    payment_failed_body_html: <p>Om onbekende reden kon je betaling niet verwerkt worden .</p> <p>Stuur alsjeblieft een e-mail naar <a href="mailto:accounts@loomio.org">accounts@loomio.org</a> zodat we je kunnen helpen.</p>
+    payment_success_flash_notice: Bedankt! Je abonnement is nu ingesteld. Vanaf vandaag zal je maandelijks worden gefactureerd.
+    subscription:
+      table:
+        description_html: Je zal naar je creditcardgegevens gevraagd worden aan het einde van je  <span class="nowrap">30-dagen proefperiode.</span>
+        price_html: <span>US</span> $%{amount}/mnd
+        price_talk_html: <a href='mailto:accounts@loomio.org' target='_blank'>Praat met ons!</a>
+        quantity: Tot %{people}
+        quantity_with_people: Tot %{people} mensen
+        quantity_more: Meer dan 100
+        title_html: <strong>Abonnementen</strong>
   search:
     description: "Hieronder staat een lijst met discussies en voorstellen die '%{query}' in de titel of omschrijving hebben."
     header: "Zoekresultaten van '%{query}'"
-    placeholder: "zoek"
+    placeholder: "Zoek"
   example_discussion:
     title: "Voorbeeld Discussie: Welkom en introductie tot Loomio"
     description: |
       Welkom bij Loomio, een nieuw instrument om groepsbeslissingen te maken.
       Door deel te nemen aan een onderwerp, verschillende perspectieven en informatie te bespreken en het benoemen van eventuele problemen die zich voordoen, kan jouw groep de hoofden bij elkaar steken en zo de beste manier vinden om vooruit te komen.
       Je kan deze voorbeelddiscussie gebruiken om wat te spelen met dit gereedschap.
-      Om jullie op gang te helpen, doet de Loomio Helper Bot het geweldige voorstel om samen op vakantie te gaan. De taartdiagram rechts laat zien hoe je groep denkt over dit voorstel. Je kan je zegje doen door te klikken op een van de beslissingsknoppen eronder.
+      Om jullie op gang te helpen, doet de Loomio Helper Bot het geweldige voorstel om samen op vakantie te gaan. Het taartdiagram rechts laat zien hoe je groep denkt over dit voorstel. Je kan je zegje doen door te klikken op een van de beslissingsknoppen eronder.
   example_motion:
     name: "We zouden een vakantie op de maan moeten houden!"
     description: |
@@ -485,6 +580,13 @@ nl:
     intro: "Als groepscoördinator ben je verantwoordelijk voor het instellen en beheren van je Loomio groep. Eerst moet je een aantal instellingen invullen, vervolgens kan je in je nieuwe groep een aantal discussies beginnen en uitnodigingen versturen!"
     submit: "Breng me naar mijn groep!"
   simple_form:
+    'yes': 'Ja'
+    'no': 'Nee'
+    required:
+      text: 'verplicht'
+      mark: '*'
+    error_notification:
+      default_message: "Lees onderstaande problemen:"
     labels:
       discussion:
         title: "Titel"
@@ -524,7 +626,7 @@ nl:
         name: "Welke vervolgstap stel je voor?"
         description: "Geef voldoende informatie zodat iedereen exact weet wat het betekent om het eens of oneens te zijn."
       group:
-        description: "Probeer de makkelijkste manier te verzinnen om jouw groep te beschrijven: Wat wil je gezamenlijk bereiken? Wat voor beslissingen ga jullie maken? Wie zijn erbij betrokken?"
+        description: "Probeer de makkelijkste manier te verzinnen om jouw groep te beschrijven: Wat wil je gezamenlijk bereiken? Wat voor beslissingen gaan jullie maken? Wie zijn erbij betrokken?"
   helpers:
     submit:
       discussion:
@@ -557,6 +659,13 @@ nl:
     group_membership_approved:
       intro: "Je verzoek om toegang tot de groep '%{group_name}' op Loomio is goedgekeurd."
       subject: "Lidmaatschap goedgekeurd"
+    invitation:
+      hi: "Hoi %{name},"
+      intro: "Klik op de link hieronder om jouw groep %{group_name} in te stellen:"
+      closing_message: "Als je vragen hebt of als er iets is wat we kunnen doen zodat je aan de slag kan dan horen we graag van je - antwoord gewoon op deze e-mail."
+      thanks: |
+        Bedankt!
+        Het Loomio Team
     membership_request:
       intro: "%{name} (%{email}) heeft toegang gevraagd tot een van je Loomio groepen."
       subject: "Nieuwe lidmaatschapsaanvraag van %{who}"
@@ -576,10 +685,30 @@ nl:
       closes_in: "Sluit over"
       subject: "Voorstel sluit binnenkort: %{which}"
       summary: "Samenvatting"
+    to_join_group:
+      subject: "%{member} heeft je uitgenodigd om deel te nemen aan %{group_name} op Loomio"
+    to_start_group:
+      subject: "Stel je nieuwe Loomio groep in: %{group_name}"
+    trial_expiry:
+      header: "%{group_name}: Je Loomio proefperiode is bijna voorbij."
+      hi: "Hallo daar,"
+      intro_html: |
+        Gewoon een vriendelijke herinnering om je te laten weten dat je proefperiode verloopt over 5 dagen. We hopen dat je Loomio tot nu toe leuk vindt.
+        <p>Als je proefperiode afloopt, moet je je betalingsgegevens invoeren zodat jouw groep Loomio kan blijven gebruiken.</p>
+        <p><a href=''>Klik hier</a> om je betalingsgegevens nu door te geven.</p>
+        <p>Als je vragen hebt of als er iets is wat we kunnen doen om jouw groep met Loomio te laten slagen dan horen we graag van je.</p>
+    trial_follow_up:
+      header: "%{group_name}: Hoe verloopt je Loomio proefperiode tot nu toe?"
+      hi: "Hallo daar,"
+      intro_html: |
+        Gewoon een vriendelijke herinnering om je te laten weten dat je halverwege je proefperiode bent. We hopen dat je Loomio tot nu toe leuk vindt! Als je wat tips wil om het meeste uit Loomio te halen, <a href='/help#getting-the-most-out-of-Loomio'>kijk even hier.</a>
+        <p>Je moet je betalingsgegevens invoeren voor het einde van je proefperiode om Loomio te kunnen blijven gebruiken. <a href=''>Klik hier</a> om je betalingsgegevens nu door te geven.</p>
+        <p>Als je vragen hebt of als er iets is wat we kunnen doen om jouw groep met Loomio te laten slagen dan horen we graag van je.</p>
     verification:
       header: "Je bent bijna klaar!"
       intro: "Klik op deze verificatielink om je aanvraag te voltooien:"
       ignore: "Je kan deze e-mail negeren als je geen aanvraag hebt ingediend om lid te worden van Loomio."
+  about_loomio: "Over Loomio"
   ago: "%{quantity_of_time} geleden"
   approve: "Goedkeuren"
   author: "Auteur"
@@ -614,9 +743,10 @@ nl:
   new_activity: "Nieuwe activiteit"
   next: "Volgende"
   password: "Wachtwoord"
+  pricing: 'Tarieven'
   proposal: "Voorstel"
   prev: "Vorige"
-  translate: "help Loomio te vertalen!"
+  translate: "Help Loomio te vertalen!"
   options: "Opties"
   other: "Andere"
   ok_got_it: "Okee, ik snap 't!"
@@ -627,8 +757,11 @@ nl:
   send_invite: "Stuur uitnodiging"
   send_email: "Stuur e-mail"
   show_more: "Laat meer zien"
+  start_a_group: "Begin een groep"
   starting: "Starten"
   subject: "Onderwerp"
+  terms_of_service_html: "Door te klikken op %{button_text}, ga je akkoord met Loomio's <a href='%{link_path}' target='_blank'>Algemene Voorwaarden</a>"
+  thanks: "Bedankt!"
   unlike: "Niet leuk"
   until_close: "tot sluiting"
   update: "Bijwerken"
