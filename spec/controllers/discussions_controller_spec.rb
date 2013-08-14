@@ -22,39 +22,6 @@ describe DiscussionsController do
       Group.stub(:find).with(group.id.to_s).and_return(group)
     end
 
-    describe "viewing a discussion" do
-      it "does not render layout if ajax request"
-
-      context do
-        before do
-          motion.stub(:votes_for_graph).and_return([])
-          motion.stub(:user_has_voted?).and_return(true)
-          motion.stub(:open_close_motion)
-          motion.stub(:voting?).and_return(true)
-          discussion.stub(:history)
-          discussion.stub(:filtered_activity)
-          DiscussionMover.stub(:destination_groups)
-        end
-
-        it "responds with success" do
-          get :show, id: discussion.id
-          response.should be_success
-        end
-
-        it "assigns array with discussion history" do
-          discussion.should_receive(:activity).and_return(['fake'])
-          get :show, id: discussion.id
-          assigns(:activity).should eq(['fake'])
-        end
-
-        it "assigns array with group destinations for moving" do
-          DiscussionMover.should_receive(:destination_groups).and_return(['fake'])
-          get :show, id: discussion.id
-          assigns(:destination_groups).should eq(['fake'])
-        end
-      end
-    end
-
     describe "creating a discussion" do
       before do
         discussion.stub(:add_comment)
