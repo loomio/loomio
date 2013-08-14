@@ -5,7 +5,7 @@ class GroupRequestsController < BaseController
     @group_request = GroupRequest.new(params[:group_request])
     if @group_request.save
       SetupGroup.from_group_request(@group_request)
-      redirect_to confirmation_group_requests_url
+      redirect_to confirmation_group_requests_url(plan: @group_request.payment_plan)
     else
       if @group_request.payment_plan == 'subscription'
         render 'subscription'
