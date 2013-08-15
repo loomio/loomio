@@ -591,7 +591,7 @@ en:
     invitation_not_found:  'Could not find invitation with that token. Please ask for a new invitation from the sender.'
     invitation_cancelled: 'This invitation has been cancelled. Please contact the sender of the invitation if you believe this was done in error.'
     invitation_already_used: 'This invitation has already been used. Please sign in to continue to your group.'
-    recipients: "Enter email addresses, seperated by commas:"
+    recipients: "Enter email addresses, separated by commas:"
     invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
     subject: "Please join our new Loomio group, %{group}"
     invite_people: "Invite people to your group"
