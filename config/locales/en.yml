@@ -269,39 +269,13 @@ en:
   #
 
   group_request:
-    form:
-      name: "What is your name?"
-      email: "What is your email address?"
-      group_name: "What is the name of your group?"
     confirmation:
       title: You're almost done! Check your email.
       body_html: |
         We've sent you an email with an invite to start your group.
         
         If you don't see anything in your inbox in a few minutes, email us at <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
-    pwyc:
-      description_html: "Your group members will be invited to pay what they can.<p>If you would rather pay on behalf of your group, <a href='%{subscription_path}'>sign up for a subscription.</a></p>"
-      header: "Pay what you can"
-      intro: "Start your group"
-      placeholder: "e.g. Neighbourhood Support Group"
-      submit: "Start group!"
-    selection:
-      description_html: "Money shouldn’t be a barrier to good collaborative decision-making. Groups with a budget pay a subscription for using the tool, members of informal groups contribute what they can.</p><p id='last'>Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users.</p>"
-      intro: "What kind of group are you?"
-      informal_group:
-        description_html: "e.g. families, social movements, collectives</p><p>Members of your group will be asked to pay what they can.</p>"
-        header: "Informal group"
-        submit: "Pay what you can"
-      organisation:
-        description_html: "e.g. businesses, government agencies, community organisations</p><p>Your group will be invoiced monthly after a <span id='trial' class='nowrap'>30 day free trial.</span></p>"
-        header: "Organisation"
-        submit: "Subscription"
-    subscription:
-      intro: "Try Loomio for free"
-      table:
-        description_html: You'll be asked to enter credit card details at the end of your <span class="nowrap">30-day free trial.</span>
-      placeholder: "e.g. Jane's Accounting Services"
-      submit: "Start your free trial!"
+
   #
   # DISCUSSION PAGE
   #
@@ -504,9 +478,9 @@ en:
 
   pricing_page:
     intro: |
-      Money shouldn’t be a barrier to good collaborative decision-making.
-      Organisations using Loomio pay a subscription, and people in informal groups contribute when they can.
-      Your contribution means we can keep Loomio independent, free of advertising, and driven by our community.
+      Groups with a budget pay a subscription for using the tool.
+      Groups without the means to pay a subscription use the
+      Pay What You Can model: their members are invited to make a voluntary contribution.      Your contribution means we can keep Loomio independent, free of advertising, and driven by our community.
     organisations: Organisations
     organisations_examples: e.g. businesses, government agencies, community organisations
     informal_groups: Informal groups
@@ -603,41 +577,6 @@ en:
     invitation_link: "Invitation link"
     link_help: "Click this link to join %{group} on Loomio:"
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
-
-  #
-  # PAYMENT DETAILS
-  #
-
-  subscriptions:
-    current_plan_html: "Your current plan is: <strong>%{subscription_plan}</strong>"
-    redirecting_please_wait: Redirecting you to PayPal, please wait...
-    details: Group Subscription
-    footer: Is your group larger than 100 people?
-    select_your_plan: Select your plan
-    note_about_paypal_html: Our payment system currently uses Paypal. If you can't use Paypal, please contact us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a> to set up a payment method that works for you.
-    monthly_amount: $%{amount}/month
-    payment_plan_contact_html: To update your payment plan please contact us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a>
-    people_in_group:
-      one: You have %{count} person in your group
-      other: You have %{count} people in your group
-    people_limit_html: Up to <strong>%{people}</strong> people
-    prices_in_us_dollars: Prices are in US dollars
-    contact_us_html: |
-      Is your group larger than 100 people?
-      Email us at <a href='mailto:accounts@loomio.org' target='_blank'>accounts@loomio.org</a> and we'll figure something out :)
-    description: Up to %{people} people (US$%{amount} monthly)
-    payment_failed_title:  Oops! Looks like something went wrong.
-    payment_failed_body_html: <p>For some reason your payment couldn't be processed.</p> <p>Please send us an email at <a href="mailto:accounts@loomio.org">accounts@loomio.org</a> and we'll help you out.</p>
-    payment_success_flash_notice: Thank you! Your subscription payment is now set up. You'll be billed monthly starting today.
-    subscription:
-      table:
-        description_html: You'll be asked to enter credit card details at the end of your <span>30-day free trial.</span>
-        price_html: <span>US</span> $%{amount}/mo
-        price_talk_html: <a href='mailto:accounts@loomio.org' target='_blank'>Talk to us!</a>
-        quantity: Up to %{people}
-        quantity_with_people: Up to %{people} people
-        quantity_more: More than 100
-        title_html: <strong>Payment plans</strong>
 
   #
   # SEARCH

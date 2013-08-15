@@ -2,13 +2,24 @@
   .span9
     - set_title @group.name, "", @group.parent
     = render '/groups/title', group: @group
-    %h1= t("subscriptions.details")
+    %h1 Group Subscription
     - amount = @group.subscription_plan
-    %p= t("subscriptions.current_plan_html", subscription_plan: I18n.t('subscriptions.description', people: PaypalCheckout::DOLLARS_TO_PEOPLE[amount], amount: amount))
-    %p= t("subscriptions.people_in_group", count: @group.members.count)
-    %p= t("subscriptions.payment_plan_contact_html")
+    - people = PaypalCheckout::DOLLARS_TO_PEOPLE[amount]
+    %p
+      Your current plan is:
+      %strong= "Up to #{people} people (US$#{amount} monthly)"
+    - count = @group.members.count
+    - if count == 1
+      %p= "You have 1 person in your group"
+    - else
+      %p= "You have #{count} people in your group"
+
+    %p
+      To update your payment plan please contact us at
+      = mail_to "accounts@loomio.org"
 .row
   .span4
     .info-box#organisation
-      %h3= t("subscriptions.subscription.table.title_html")
+      %h3
+        .strong Payment plans
       = render("groups/subscriptions/pricing_table")

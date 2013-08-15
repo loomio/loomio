@@ -101,7 +101,7 @@ Then(/^I should see the group page without a contribute link$/) do
 end
 
 When(/^I click start your free trial$/) do
-  click_on I18n.t("group_request.subscription.submit")
+  click_on "Start your free trial!"
 end
 
 Then(/^I should see the subscription group form with errors$/) do
@@ -110,7 +110,7 @@ Then(/^I should see the subscription group form with errors$/) do
 end
 
 When(/^I click start your group$/) do
-  click_on I18n.t("group_request.pwyc.submit")
+  click_on "Start group!"
 end
 
 Then(/^I should see the pwyc group form with errors$/) do
