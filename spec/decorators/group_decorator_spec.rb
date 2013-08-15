@@ -6,7 +6,7 @@ describe GroupDecorator do
     c.request = ActionDispatch::TestRequest.new
     c.set_current_view_context
 
-    @group = GroupDecorator.decorate(create(:group))
+    @group = GroupDecorator.decorate(create(:group, name: "Chanelle Hara"))
     @subgroup = GroupDecorator.decorate(create(:group, parent: @group))
   end
 

@@ -1,4 +1,8 @@
 %br
-%h1= t(:'subscriptions.payment_failed_title')
+%h1 Oops! Looks like something went wrong.
 
-= t(:'subscriptions.payment_failed_body_html')
+%p For some reason your payment couldn't be processed.
+%p
+  Please send us an email at
+  = mail_to "accounts@loomio.org"
+  and we'll help you out.
