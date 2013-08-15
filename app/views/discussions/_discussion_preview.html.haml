@@ -1,10 +1,15 @@
+- if discussion_surely_has_no_current_motion
+  - current_motion = nil
+- else
+  - current_motion = discussion.current_motion
+
 .clearfix
   %div{ class: css_class_unread_discussion_activity_for(this_group, discussion, current_user), id: "discussion-preview-#{discussion.id}" }
     %a.selector-discussion-link{ href: discussion_path(discussion) }
-      - if user_signed_in? && discussion.current_motion
+      - if user_signed_in? && current_motion
         .vote-icon
           - if current_user.group_membership(this_group) || this_group.nil?
-            %div{:class => 'activity-icon ' + vote_icon_name(current_user.position(discussion.current_motion))}
+            %div{:class => 'activity-icon ' + vote_icon_name(current_user.position(current_motion))}
       .discussion-title
         = truncate(discussion.title, :length => 60, :separator => ' ')
         .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
@@ -14,26 +19,26 @@
           %span.activity-count.label.label-info
             = discussion_activity
       .discussion-date-info
-        -if discussion.current_motion
+        -if current_motion
           - if discussion.current_motion_closing_at
             .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_closing_at)} until close"
         - else
           .latest-comment-time= "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.last_comment_at))}"
-    - if discussion.current_motion
-      - motion_activity = motion_activity_count_for(discussion.current_motion, current_user)
-      - popover_title = render 'discussions/graph_preview_pop_over_title', :motion => discussion.current_motion
-      - popover_content = render 'discussions/graph_preview_pop_over', :motion => discussion.current_motion, :user => current_user, :motion_activity =>  motion_activity
-      .motion-popover-link{id: "popover_#{discussion.current_motion.id}", 'data-title' => popover_title, 'data-content' => popover_content}
-        .pie{:id => "graph_#{discussion.current_motion.id}"}
-          - if discussion.current_motion.voting? && motion_activity > 0
+    - if current_motion
+      - motion_activity = motion_activity_count_for(current_motion, current_user)
+      - popover_title = render 'discussions/graph_preview_pop_over_title', :motion => current_motion
+      - popover_content = render 'discussions/graph_preview_pop_over', :motion => current_motion, :user => current_user, :motion_activity =>  motion_activity
+      .motion-popover-link{id: "popover_#{current_motion.id}", 'data-title' => popover_title, 'data-content' => popover_content}
+        .pie{:id => "graph_#{current_motion.id}"}
+          - if current_motion.voting? && motion_activity > 0
             %span.activity-count.label.label-info
               = motion_activity
           - if user_signed_in?
-            = button_to '', get_and_clear_new_activity_motion_path(:id => discussion.current_motion.id, :motion_activity => motion_activity), :remote => true, :class =>  "preview-pie-button"
+            = button_to '', get_and_clear_new_activity_motion_path(:id => current_motion.id, :motion_activity => motion_activity), :remote => true, :class =>  "preview-pie-button"
     - else
       .large-icon.pie-icon.activity-icon
 
-- if discussion.current_motion
+- if current_motion
   :coffeescript
     $ ->
       # Display vote graph

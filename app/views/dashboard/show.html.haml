@@ -9,7 +9,7 @@
           %li.selector-item.loading= t(:loading)
         #discussions-with-motions
           - @discussions.with_open_motions.order('motions.closing_at ASC').each do |discussion|
-            %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil
+            %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil, discussion_surely_has_no_current_motion: false
           .discussion-with-motion-divider.hidden
         - if current_user && current_user.discussions.count == 0
           %li.empty-list-message.hidden= t(:empty_discussion_index)
