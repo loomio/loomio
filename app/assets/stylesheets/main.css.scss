@@ -345,19 +345,9 @@ a.btn-icon:hover { color: $dark-grey; }
 
 .nowrap { white-space: nowrap; }
 
-// fix for pie canvas until style-guide 
-
 body.dashboard.show, body.groups.show {
-  .icon.shim {  
-
-    .activity-count { 
-      bottom: 0;
-      top: 6px;
-      left: 22px;
-    }
-    .motion-sparkline { 
-      margin-top: -5px;
-    }
+  .icon.shim {
+    float: right;
+    display: inline-block;
   }
 }
-

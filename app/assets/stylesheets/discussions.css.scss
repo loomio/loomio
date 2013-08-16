@@ -419,8 +419,8 @@ pre{
     &:hover { text-decoration: none; }
     &.selector-discussion-link {
       float: left;
-      width: 653px;
-      padding: 6px 0 5px 5px;
+      width: 690px;
+      padding: 6px 5px;
     }
   }
   .vote-icon {
@@ -458,9 +458,10 @@ pre{
     color: white;
     background-color: $group-activity;
   }
-  .pie .activity-count {
-    bottom: 1px;
-    margin-left: 8px;
+  .icon.shim .activity-count {
+    left: 34px;
+    margin-left: -19px;
+    top: 0px;
     z-index: 2;
   }
   .discussion-link {

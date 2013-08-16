@@ -1,0 +1,14 @@
+- if current_motion
+  - motion_activity = motion_activity_count_for(current_motion, current_user)
+  .icon.shim{:id => "graph_#{current_motion.id}"}
+    - if current_motion.voting? && motion_activity > 0
+      %span.activity-count.label.label-info
+        = motion_activity
+    .motion-sparkline
+      -values = current_motion.vote_counts.values
+      -if values.sum == 0
+        0,0,0,0,1
+      -else
+        =values.join(',')
+- else
+  .large-icon.pie-icon.activity-icon
