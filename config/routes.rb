@@ -27,8 +27,6 @@ Loomio::Application.routes.draw do
     end
   end
 
-  match "/group_request_confirmation", to: "group_requests#confirmation", as: :group_request_confirmation
-
   resources :groups, except: [:index, :new] do
     resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
     resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
