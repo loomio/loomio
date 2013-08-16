@@ -1,11 +1,12 @@
 .divider
 %ul#activity-list
-  - if discussion.filtered_activity.count == 0
+  - if items.count == 0
     %li.selector-item.empty-list-message= t :empty_discussion_list
   - else
-    - discussion.filtered_activity.each do |event|
+    - items.each do |event|
       - if event.kind == 'new_comment'
         %li.activity-item-container= render event.eventable
       - else
         - discussion_item = DiscussionItem.new(event)
         %li.activity-item-container= render 'discussion_item', :item => discussion_item
+    = paginate items
