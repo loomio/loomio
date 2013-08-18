@@ -6,11 +6,6 @@ describe Vote do
   let(:discussion) { create(:discussion, group: group, author: user) }
   let(:motion) { create(:motion, discussion: discussion) }
 
-  it { Vote::POSITION_VERBS['yes'].should == 'agreed' }
-  it { Vote::POSITION_VERBS['abstain'].should == 'abstained' }
-  it { Vote::POSITION_VERBS['no'].should == 'disagreed' }
-  it { Vote::POSITION_VERBS['block'].should == 'blocked' }
-
   it { should have_many(:events).dependent(:destroy) }
 
   context 'a new vote' do
