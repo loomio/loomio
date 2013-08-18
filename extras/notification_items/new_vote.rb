@@ -6,7 +6,7 @@ class NotificationItems::NewVote < NotificationItem
   end
 
   def action_text
-    position = Vote::POSITION_VERBS[@notification.eventable.position]
+    position = I18n.t(@notification.eventable.position, scope: [:position_verbs, :past_tense])
     I18n.t('notifications.new_vote', position: position)
   end
 
