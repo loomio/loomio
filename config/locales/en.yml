@@ -769,7 +769,10 @@ en:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
       group:
-        description: "Give a brief description of your group"
+        description: "Think about the simplest way you can describe your group: What do you want to achieve together? What types of decisions will you be making? Who will be involved?"
+      user:
+        email: "Email"
+        password: "Password"
 
   helpers:
     submit:

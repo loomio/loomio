@@ -2,8 +2,6 @@
   %section#sign-in
     .inner-container
       .row-fluid
-        .subhead
-          .span4 &nbsp;
-          .span5
-            %h2= t :sign_in
-            = render "form"
+        .span6#signin_container
+          %h1= t :sign_in
+          = render "form"
