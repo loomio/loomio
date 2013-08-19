@@ -17,7 +17,6 @@ gem 'rails-backbone', '~> 0.7.2'
 gem 'aasm', '~> 3.0.3'
 gem 'cancan', '~> 1.6.7'
 gem 'draper', '~> 0.11.1' # can this be removed?
-gem 'exception_notification', '~> 2.6.1'
 gem 'browser', '~> 0.1.3' # what is this?
 gem 'rmagick', '~> 2.13.1'
 gem 'gravtastic', '~> 3.2.6'
@@ -41,6 +40,7 @@ gem 'friendly_id', '~> 4.0.9'
 gem 'httparty', '~> 0.11.0'
 gem 'timecop', '~> 0.6.1'
 gem 'pg_search', '~> 0.7.0'
+gem 'crashlog'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
