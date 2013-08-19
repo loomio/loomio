@@ -16,10 +16,7 @@ class Vote < ActiveRecord::Base
   end
 
   POSITIONS = %w[yes abstain no block]
-  POSITION_VERBS = { 'yes' => 'agreed', 
-                     'abstain' => 'abstained',
-                     'no' => 'disagreed', 
-                     'block' => 'blocked' }
+
   belongs_to :motion
   belongs_to :user
   has_many :events, :as => :eventable, :dependent => :destroy
@@ -68,7 +65,7 @@ class Vote < ActiveRecord::Base
   end
 
   def position_to_s
-    return POSITION_VERBS[self.position]
+    return I18n.t(self.position, scope: [:position_verbs, :past_tense])
   end
 
   def previous_vote
