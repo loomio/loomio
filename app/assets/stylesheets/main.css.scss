@@ -349,5 +349,6 @@ body.dashboard.show, body.groups.show {
   .icon.shim {
     float: right;
     display: inline-block;
+    @include ie7-inline-block();
   }
 }
