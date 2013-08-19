@@ -360,6 +360,16 @@ en:
   outcome: "Outcome"
   outcome_placeholder: "What was the outcome of this proposal?"
 
+  position_verbs:
+    "yes": "agree"
+    "no": "disagree"
+    abstain: "abstain"
+    block: "block"
+    past_tense:
+      "yes": "agreed"
+      "no": "disagreed"
+      abstain: "abstained"
+      block: "blocked"
 
   #
   # HELP PAGES
