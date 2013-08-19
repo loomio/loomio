@@ -1,14 +1,16 @@
 .row
   .span5.offset1
     #intro
-      %h1= t("group_request.subscription.intro")
+      %h1 Try Loomio for free
 .row
   .span5.offset1
-    = render 'form', submit_label: t("group_request.subscription.submit"), placeholder: t("group_request.subscription.placeholder")
+    = render 'form', submit_label: "Start your free trial!", placeholder: "e.g. Jane's Accounting Service"
   .span5
     .info-box#organisation
       = render 'groups/subscriptions/pricing_table'
-      %p= t("group_request.subscription.table.description_html")
-
-
-
+      %p
+        You'll be asked to enter credit card details at the end of your
+        %span 30-day free trial.
+      %p
+        If this fee is outside your means, ask us about a scholarship:
+        = mail_to "accounts@loomio.org"
