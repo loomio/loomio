@@ -277,7 +277,7 @@ en:
       title: You're almost done! Check your email.
       body_html: |
         We've sent you an email with an invite to start your group.
-        
+
         If you don't see anything in your inbox in a few minutes, email us at <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
     pwyc:
       description_html: "Your group members will be invited to pay what they can.<p>If you would rather pay on behalf of your group, <a href='%{subscription_path}'>sign up for a subscription.</a></p>"
@@ -716,7 +716,8 @@ en:
     upload_new_image: "Upload a new image"
 
   group_setup:
-    intro: "As the group coordinator, you’re responsible for setting up and managing your Loomio group. First you need to fill in a few settings, then you can get into your new group, start a discussion or two, and send out some invitations!"
+    desc_header: "You're almost there!"
+    desc_html: "As the group coordinator, you’re responsible for setting up and managing your Loomio group. After you choose a few settings, you can get into your new group, start a discussion or two, and send out some invitations! <p>When thinking about the simplest way you can describe your group, ask yourself: What do you want to achieve together? What types of decisions will you be making? Who will be involved?</p>"
     submit: "Take me to my group!"
 
   simple_form:
@@ -733,7 +734,7 @@ en:
         description: "Context"
       group:
         name: "What is the name of your group?"
-        description: "Give a brief description of your group:"
+        description: "Group description:"
         viewable_by: "Who can see this group?"
         members_invitable_by: "Who can invite people to this group?"
       membership_request:
@@ -751,8 +752,8 @@ en:
     options:
       group:
         viewable_by:
-          everyone: 'Public - anyone with the link can see this group'
-          members: 'Members - only members of this group can see it'
+          everyone: 'Everyone'
+          members: 'Members only'
           parent_group_members: "Parent group members - only members of the main group can view this sub-group"
         members_invitable_by:
           admins: 'Coordinators only'
@@ -768,7 +769,7 @@ en:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
       group:
-        description: "Think about the simplest way you can describe your group: What do you want to achieve together? What types of decisions will you be making? Who will be involved?"
+        description: "Give a brief description of your group"
 
   helpers:
     submit:
