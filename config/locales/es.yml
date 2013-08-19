@@ -395,7 +395,7 @@ es:
       group:
         name: "Nombre del Grupo"
         description: "Da una pequeña descripción de tu grupo:"
-        viewable_by: "Quien puede ver esto %{group_or_subgroup}?"
+        viewable_by: "Quien puede ver esto grupo?"
         members_invitable_by: "Quien puede invitar miembros a este grupo?"
       motion:
         name: "Titulo"

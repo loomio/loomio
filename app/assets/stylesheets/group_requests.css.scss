@@ -24,19 +24,9 @@ body.group_requests {
     }
     h6 { font-weight: 400; }
     .info-box {
-      @include border-radius(4px);
-      background-color: #EEE;
-      color: #555555;
       margin: 0px 0 0 50px;
       padding: 25px;
-      td {
-        padding: 5px;
-      }
       h2 { font-weight: 400; }
-      ul {
-        list-style: disc;
-        margin-left: 20px;
-      }
     }
     #intro { margin-bottom: 30px; }
     #organisation {

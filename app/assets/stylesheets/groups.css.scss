@@ -172,5 +172,23 @@ body.groups {
 }
 
 body.group_setup.setup {
-  .control-group.radio_buttons { margin-bottom: 20px; }
+  form.edit_group {
+    .control-group.radio_buttons { margin-bottom: 1.6em; }
+    h2 { margin-bottom: .7em; }
+    input[type="text"] {
+      font-size: 28px;
+      height: 32px;
+      line-height: 32px;
+      margin-bottom: .6em;
+    }
+    input[type="submit"] { margin-top: 1em; }
+    label { font-size: 18px; }
+    textarea {
+      @include placeholder { font-style: italic; }
+      font-size: 18px;
+      margin-bottom: 1.6em;
+    }
+  }
+  #group-setup { margin-top: 2.2em; }
+  .info-box { width: 290px; }
 }
