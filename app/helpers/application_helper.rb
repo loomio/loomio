@@ -104,4 +104,9 @@ module ApplicationHelper
   def email_belongs_to_existing_user?(email)
     User.find_by_email(email).present?
   end
+
+  def current_translations
+    @translations ||= I18n.backend.send(:translations)
+    @translations[I18n.locale].with_indifferent_access
+  end
 end

@@ -41,7 +41,7 @@ Application.validateForm = (form) ->
     )
   formValid = false unless Application.validateEmailsAndConfirm($(".validate-emails"))
   formValid = false unless Application.validateMotionCloseDate($(".motion-closing-inputs"))
-  alert('There is a problem with the form') unless formValid
+  alert(I18n.problem_with_form) unless formValid
   formValid
 
 Application.hideAllErrorMessages = () ->

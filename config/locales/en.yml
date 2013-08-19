@@ -50,6 +50,7 @@ en:
     group_request_invalid_token: "Sorry! This is an invalid token"
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
+    problem_with_form: "There is a problem with the form"
     proposal_already_exists: "There is already an open proposal in this discussion."
     user_with_email_address_already_in_group: "A user with that email address already belongs to this group."
     you_have_already_requested_membership: "You have already requested membership to this group."
