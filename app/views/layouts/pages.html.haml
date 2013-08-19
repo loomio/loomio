@@ -11,7 +11,8 @@
   %body{class: "#{controller_name} #{action_name}"}
     .container.home-flash
       = render 'flash_messages', :flash => flash
-    = render 'donate-tab'
+    - if controller_name == 'pages'
+      = render 'donate-tab'
     .container#top
       .inner-container
         .row-fluid
