@@ -378,3 +378,37 @@ body.pages.terms_of_service {
   select { width: 394px; }
   input.btn { margin-bottom: 15px; }
 }
+
+.sessions.new {
+  .container{
+    h1 {
+      font-size: 36px;
+      margin-bottom: .6em;
+    }
+    input[type="checkbox"] {
+      float: right;
+      margin: 6px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"]  {
+      @include placeholder { font-style: italic; }
+      font-size: 26px;
+      height: 28px;
+      line-height: 32px;
+      width: 412px;
+    }
+    input[type="submit"] {
+      font-size: 1.4em;
+      margin-bottom: .8em;
+    }
+    #input_options {
+      text-align: right;
+      a, label { font-size: 16px; }
+    }
+    #signin_container {
+      float: none;
+      margin: 0 auto;
+    }
+  }
+}
