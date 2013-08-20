@@ -22,7 +22,7 @@ Feature: Language preferences
     And I am logged in
     And I have not set my language preference
     When I am on the settings page
-    Then I should see "Preferencias de Usuario"
+    Then I should see "Ajustes de usuario"
 
   @javascript
   Scenario: Logged in user with language preference
@@ -39,7 +39,7 @@ Feature: Language preferences
     Then I should see "User settings"
     And I change my language preference to Espanol
     When I am on the settings page
-    Then I should see "Preferencias de Usuario"
+    Then I should see "Ajustes de usuario"
 
   @javascript
   Scenario: Logged in user changes languge preference from links in footer
