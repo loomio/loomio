@@ -2,9 +2,9 @@
   .span4.offset3
     %h2 Forgot your password?
     = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
-      = devise_error_messages!
+      - if resource.errors.any?
+        %p The email address you have entered is invalid, please enter a valid email address
       .padding
         = f.label :email, t(:email)
         = f.email_field :email
       = f.submit t(:send_password_reset), class: "btn primary"
-    = render :partial => "devise/shared/links"
