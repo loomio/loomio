@@ -14,11 +14,11 @@ class Events::MotionClosingSoon < Event
   def notify_users!
     motion.group_users.each do |user|
       if user.subscribed_to_proposal_closure_notifications
-        UserMailer.delay.motion_closing_soon(user, motion)
+        # please do not add delayed job here.
+        # this is already being called from a delayed job - rob
+        UserMailer.motion_closing_soon(user, motion).deliver
       end
       notify!(user)
     end
   end
-
-  handle_asynchronously :notify_users!
 end
