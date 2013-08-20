@@ -72,11 +72,6 @@ Loomio::Application.configure do
       :domain         => 'loomio.org'
     }
     config.action_mailer.raise_delivery_errors = true
-    # Email admin when server gets exceptions!
-    config.middleware.use ExceptionNotifier,
-      :email_prefix => "[Loomio STAGING Exception] ",
-      :sender_address => %{"Exception Notifier" <staging-exceptions@loomio.org>},
-      :exception_recipients => [ENV['EXCEPTION_RECIPIENT']]
   else
     config.action_mailer.delivery_method = :test
   end
