@@ -14,7 +14,7 @@ end
 
 Given /^the proposal "(.*?)" is closing in (\d+) hours$/ do |arg1, arg2|
   motion = Motion.find_by_name(arg1)
-  closing_at = Time.zone.now + 24.hours + 30.minutes
+  closing_at = Time.zone.now.at_beginning_of_hour + 24.hours + 30.minutes
   motion.update_attribute(:closing_at, closing_at)
 end
 
