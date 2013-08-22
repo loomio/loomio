@@ -260,7 +260,7 @@ body.discussions.show {
             margin-bottom: -12px;
         }}
         ol, p, ul {
-          color: black;
+          color: $text-black;
         }
         p:last-child{margin-bottom: 2px;}
       }
