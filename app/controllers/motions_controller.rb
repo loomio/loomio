@@ -1,4 +1,5 @@
 class MotionsController < GroupBaseController
+  #rob would like to remove inherited_resources...
   inherit_resources
   load_and_authorize_resource :except => [:create, :show, :index]
   before_filter :authenticate_user!, :except => [:show, :index, :get_and_clear_new_activity]
@@ -10,7 +11,7 @@ class MotionsController < GroupBaseController
       redirect_to @discussion
       flash[:error] = t(:"error.proposal_already_exists")
     else
-      @motion = current_user.authored_motions.new(params[:motion])
+      @motion = current_user.authored_motions.new(permitted_params.motion)
       @group = GroupDecorator.new(@motion.group)
       authorize! :create, @motion
       if @motion.save

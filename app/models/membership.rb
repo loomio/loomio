@@ -1,5 +1,5 @@
 class Membership < ActiveRecord::Base
-  ACCESS_LEVELS = ['request', 'member', 'admin']
+  ACCESS_LEVELS = ['member', 'admin']
   MEMBER_ACCESS_LEVELS = ['member', 'admin']
 
   class MemberOfParentGroupValidator < ActiveModel::EachValidator
@@ -9,8 +9,6 @@ class Membership < ActiveRecord::Base
       end
     end
   end
-
-  attr_accessible :group_id, :access_level
 
   validates :user, member_of_parent_group: true
   validates_presence_of :group, :user
@@ -40,14 +38,11 @@ class Membership < ActiveRecord::Base
 
   include AASM
   aasm :column => :access_level do
-    state :request, :initial => true
-    state :member
+    state :member, :initial => true
     state :admin
-    event :approve do
-      transitions :to => :member, :from => [:request]
-    end
+
     event :make_admin do
-      transitions :to => :admin, :from => [:request, :member, :admin]
+      transitions :to => :admin, :from => [:member, :admin]
     end
     event :remove_admin do
       transitions :to => :member, :from => [:admin]
@@ -60,16 +55,6 @@ class Membership < ActiveRecord::Base
 
   def user_name_or_email
     return user_name ? user_name : user_email
-  end
-
-  def promote_to_member!(inviter=nil)
-    # TODO: try to merge with approve!
-    if request?
-      self.inviter = inviter
-      approve
-      save!
-      Events::UserAddedToGroup.publish!(self)
-    end
   end
 
   def admin?
@@ -92,8 +77,7 @@ class Membership < ActiveRecord::Base
   def destroy_subgroup_memberships
     return if group.nil? #necessary if group is missing (as in case of production data)
     group.subgroups.each do |subgroup|
-      membership = subgroup.memberships.find_by_user_id(user.id)
-      membership.destroy if membership
+      subgroup.memberships.where(user_id: user.id).destroy_all
     end
   end
 
@@ -105,6 +89,6 @@ class Membership < ActiveRecord::Base
   end
 
   def set_defaults
-    self.access_level = 'request' if (access_level == nil) || access_level.is_a?(Array)
+    self.access_level ||= 'member'
   end
 end

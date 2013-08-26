@@ -1,6 +1,5 @@
 class GroupRequest < ActiveRecord::Base
 
-  attr_accessible :name, :admin_name, :admin_email, :payment_plan
   attr_accessor :payment_plan
 
   validates :name, presence: true, length: {maximum: 250}
