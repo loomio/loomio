@@ -69,6 +69,18 @@ en:
     settings_updated: "Your settings have been updated."
     user_made_admin: "%{which_user} has been made a coordinator."
     you_have_left_group: "You have left %{which_group}."
+    invitations:
+      auto_added:
+        one: "%{count} member added"
+        other: "%{count} members added"
+      existing_member:
+        one: "%{count} member already in group"
+        other: "%{count} members already in group"
+      sent:
+        one: "%{count} invitation sent"
+        other: "%{count} invitations sent"
+      auto_added_and_sent: "%{auto_added_text} and %{sent_text}"
+
   warning:
     cant_remove_last_admin: "You are the last coordinator and cannot be removed."
     membership_request_already_approved: "Membership request has already been approved."
@@ -738,6 +750,9 @@ en:
   #
 
   email:
+    added_to_a_group:
+      subject: "You've been added to a group"
+      content: "Congratulations, you've been added to the group '%{which}' on Loomio!"
     unsubscribe: "Unsubscribe or change your email preferences:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
     view_comment: "Click here to view the comment on Loomio"

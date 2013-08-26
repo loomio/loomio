@@ -38,7 +38,7 @@ class Membership < ActiveRecord::Base
 
   include AASM
   aasm :column => :access_level do
-    state :member, :initial => true
+    state :member, initial: true
     state :admin
 
     event :make_admin do
