@@ -100,7 +100,7 @@ Then /^I should see "(.*?)" as an invited user of the subgroup$/ do |email|
 end
 
 Then /^I should see "(.*?)" as a member of the subgroup$/ do |email|
-  find("#users-list").should have_content(email)
+  find("#users-list a[title=#{email}]").should be_present
 end
 
 Then /^I should get an email with subject "(.*?)"$/ do |arg1|
