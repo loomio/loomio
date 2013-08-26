@@ -46,4 +46,10 @@ ActiveAdmin.register User do
     end
     column :memberships_count
   end
+
+  controller do
+    def permitted_params
+      params.permit!
+    end
+  end
 end

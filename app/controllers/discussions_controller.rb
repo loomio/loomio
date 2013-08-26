@@ -18,8 +18,12 @@ class DiscussionsController < GroupBaseController
 
   def create
     current_user.update_attributes(uses_markdown: params[:discussion][:uses_markdown])
-    @discussion = current_user.authored_discussions.new(params[:discussion])
+    
+    @discussion = Discussion.new(permitted_params.discussion)
+    @discussion.author = current_user
+
     authorize! :create, @discussion
+
     if @discussion.save
       flash[:success] = t("success.discussion_created")
       redirect_to @discussion

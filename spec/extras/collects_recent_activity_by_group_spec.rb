@@ -31,7 +31,7 @@ describe CollectsRecentActivityByGroup do
         end
       end
 
-      context 'with a recently commented, old discussion', focus: true do
+      context 'with a recently commented, old discussion' do
         before do
           @discussion = FactoryGirl.create :discussion,
                                           {group: group, created_at: 2.days.ago} 

@@ -1,6 +1,4 @@
 class Discussion < ActiveRecord::Base
-  attr_accessible :group_id, :group, :title, :description, :uses_markdown
-
   default_scope -> {where(is_deleted: false)}
   scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
   scope :order_by_latest_comment, order('last_comment_at DESC')

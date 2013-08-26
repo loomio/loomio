@@ -31,8 +31,7 @@ describe DiscussionsController do
       end
       it "does not send email by default" do
         DiscussionMailer.should_not_receive(:spam_new_discussion_created)
-        get :create, discussion:
-          @discussion_hash.merge({ notify_group_upon_creation: "0" })
+        get :create, discussion: @discussion_hash
       end
 
       it "displays flash success message" do

@@ -73,7 +73,7 @@ describe GroupDiscussionsViewer do
       its(:size){ should == 0 }
     end
 
-    context 'as member of top only', focus: true do
+    context 'as member of top only' do
       before { members_only_group.add_member!(user) }
 
       it { should == [members_only_group] }

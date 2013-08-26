@@ -19,11 +19,6 @@ describe Membership do
       membership.should have(1).errors_on(:user)
     end
 
-    it "should have access_level of request" do
-      membership.valid?
-      membership.access_level.should == 'request'
-    end
-
     it "cannot have duplicate memberships" do
       create(:membership, :user => user, :group => group)
       membership.user = user
@@ -44,6 +39,7 @@ describe Membership do
 
     it "membership_count should be less than the group max_size" do
       group.max_size = 1
+      group.memberships_count = 1
       group.save
       expect { group.add_member!(user) }.to raise_error
     end
@@ -64,22 +60,12 @@ describe Membership do
 
     it "removes subgroup memberships (if existing)" do
       # Removes user from multiple subgroups
-      subgroup = build(:group )
-      subgroup.parent = group
-      subgroup.save!
+      subgroup = create(:group, parent: group)
       subgroup.add_member! user
-      subgroup2 = build(:group)
-      subgroup2.parent = group
-      subgroup2.save
-      subgroup2.add_member! user
-      # Does not try to remove user from subgroup if user is not a member
-      subgroup3 = build(:group)
-      subgroup3.parent = group
-      subgroup3.save
+      group.reload
+      @membership.reload
       @membership.destroy
-
       subgroup.users.should_not include(user)
-      subgroup2.users.should_not include(user)
     end
 
     context do
@@ -112,32 +98,6 @@ describe Membership do
       it "does not fail if motion no longer exists" do
         @motion.delete
         lambda { @membership.destroy }.should_not raise_error
-      end
-    end
-  end
-
-  describe "#promote_to_member!" do
-    before do
-      @membership = build :membership
-      @inviter = mock_model User
-    end
-
-    after { @membership.promote_to_member! @inviter }
-
-    context "membership is a request" do
-      it "approves the membership" do
-        @membership.stub :request? => true
-        @membership.should_receive(:inviter=).with @inviter
-        @membership.should_receive :approve
-        @membership.should_receive :save!
-        Events::UserAddedToGroup.should_receive(:publish!).with(@membership)
-      end
-    end
-
-    context "membership is not a request" do
-      it "does not change the membership" do
-        @membership.stub :request? => false
-        @membership.should_not_receive :approve!
       end
     end
   end

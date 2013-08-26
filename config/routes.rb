@@ -2,6 +2,10 @@ Loomio::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  namespace :admin do
+    resource :email_groups, only: [:create, :new]
+  end
+
   get "/groups", to: 'groups/public_groups#index', as: :public_groups
 
   resource :search, only: :show
@@ -118,7 +122,6 @@ Loomio::Application.routes.draw do
 
   resources :comments , only: :destroy do
     post :like, on: :member
-    post :unlike, on: :member
   end
 
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
@@ -151,14 +154,9 @@ Loomio::Application.routes.draw do
     get :help
   end
 
-  resources :woc, only: :index do
-    post :send_request, on: :collection
-  end
-  get '/collaborate', to: "woc#index", as: :collaborate
-
-  resources :we_the_people, only: :index do
-    post :send_request, on: :collection
-  end
+  get 'we_the_people' => redirect('/')
+  get 'collaborate' => redirect('/')
+  get 'woc' => redirect('/')
 
   #redirect old request for new group
   match "/request_new_group", to: "group_requests#selection"

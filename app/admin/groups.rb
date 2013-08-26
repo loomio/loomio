@@ -38,6 +38,7 @@ ActiveAdmin.register Group do
   end
 
   index :download_links => false do
+    selectable_column
     column :id
     column :name do |g|
       simple_format(g.full_name.sub(' - ', "\n \n> "))
@@ -120,6 +121,18 @@ ActiveAdmin.register Group do
       else
         @per_page = params[:pagination]
       end
+    end
+  end
+
+  config.batch_actions = true
+
+  batch_action :email do |group_ids|
+    redirect_to new_admin_email_groups_path(group_ids: group_ids)
+  end
+
+  controller do
+    def permitted_params
+      params.permit!
     end
   end
 end

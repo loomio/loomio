@@ -27,6 +27,7 @@ Loomio::Application.configure do
   config.assets.debug = true
   config.sass.debug_info = true
   # support scss support in chrome devtools
+  #
   config.sass.line_comments = false
 
   config.action_mailer.raise_delivery_errors = false
@@ -36,6 +37,8 @@ Loomio::Application.configure do
   config.action_mailer.file_settings = {
     :location => Rails.root.join('tmp/mail')
   }
+
+  config.action_controller.action_on_unpermitted_parameters = :raise
 
   #fake production settings
   #config.serve_static_assets = false

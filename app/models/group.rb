@@ -1,11 +1,10 @@
 class Group < ActiveRecord::Base
 
+  class MaximumMembershipsExceeded < Exception
+  end
+
   PERMISSION_CATEGORIES = ['everyone', 'members', 'admins', 'parent_group_members']
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription']
-
-  attr_accessible :name, :viewable_by, :parent_id, :parent, :cannot_contribute,
-                  :members_invitable_by, :email_new_motion, :description, :setup_completed_at,
-                  :next_steps_completed, :payment_plan
 
   validates_presence_of :name
   validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
@@ -78,6 +77,17 @@ class Group < ActiveRecord::Base
 
   paginates_per 20
 
+  def coordinators
+    admins
+  end
+
+  def contact_person
+    admins.order('id asc').first
+  end
+
+  def requestor_name_and_email
+    "#{requestor_name} <#{requestor_email}>"
+  end
 
   def requestor_name
     group_request.try(:admin_name)
@@ -156,26 +166,25 @@ class Group < ActiveRecord::Base
   end
 
   def add_member!(user, inviter=nil)
-    membership = find_or_build_membership_for_user(user)
-    membership.promote_to_member!(inviter)
-    membership
+    if is_a_parent?
+      raise Group::MaximumMembershipsExceeded unless (memberships_count.to_i < max_size.to_i)
+    end
+    find_or_create_membership(user, inviter)
   end
 
   def add_admin!(user, inviter = nil)
-    membership = find_or_build_membership_for_user(user)
+    membership = find_or_create_membership(user, inviter)
     membership.make_admin!
-    membership.inviter = inviter if inviter.present?
     membership
   end
 
-  def find_or_build_membership_for_user(user)
-    membership = Membership.where(:user_id => user, :group_id => self).first
-    membership ||= user.memberships.build(:group_id => id)
+  def find_or_create_membership(user, inviter)
+    membership = memberships.where(:user_id => user).first
+    membership ||= Membership.create!(group: self, user: user, inviter: inviter)
   end
 
   def has_admin_user?(user)
-    return true if admins.include?(user)
-    return true if (parent && parent.admins.include?(user))
+    admins.include?(user) || (parent && parent.admins.include?(user))
   end
 
   def user_membership_or_request_exists? user
