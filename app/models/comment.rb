@@ -1,5 +1,4 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :body, :uses_markdown
   include Twitter::Extractor
 
   has_paper_trail

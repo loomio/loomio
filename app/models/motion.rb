@@ -31,9 +31,6 @@ class Motion < ActiveRecord::Base
 
   attr_accessor :create_discussion
 
-  attr_accessible :name, :description, :discussion_url, :discussion_id
-  attr_accessible :close_at_date, :close_at_time, :close_at_time_zone, :outcome
-
   scope :voting, where('closed_at IS NULL').order('closed_at ASC')
   scope :closed, where('closed_at IS NOT NULL').order('closed_at DESC')
   scope :that_user_has_voted_on, lambda {|user|

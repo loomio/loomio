@@ -29,8 +29,6 @@ class Vote < ActiveRecord::Base
 
   scope :for_user, lambda {|user| where(:user_id => user)}
 
-  attr_accessible :position, :statement
-
   delegate :name, :to => :user, :prefix => :user
   delegate :group, :discussion, :to => :motion
   delegate :users, :to => :group, :prefix => :group

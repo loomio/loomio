@@ -1,12 +1,9 @@
 class VotesController < GroupBaseController
+  # I would like to introduce load_and_authorise_resource rather than use inherited_resources - rob
+
   inherit_resources
   belongs_to :motion
-  # before_filter :ensure_group_member
-  # belongs_to :motion
 
-  # def begin_of_association_chain
-  #   @motion
-  #
   def new
     @motion = Motion.find(params[:motion_id])
     @vote = Vote.new
@@ -26,7 +23,7 @@ class VotesController < GroupBaseController
   def create
     @motion = Motion.find(params[:motion_id])
     if @motion.voting?
-      @vote = Vote.new(params[:vote])
+      @vote = Vote.new(permitted_params.vote)
       @vote.motion = @motion
       @vote.user = current_user
       if @vote.save
@@ -45,7 +42,7 @@ class VotesController < GroupBaseController
     @motion = Motion.find(params[:motion_id])
     if @motion.voting?
       params[:vote].delete(:id)
-      @vote = Vote.new(params[:vote])
+      @vote = Vote.new(permitted_params.vote)
       @vote.motion = @motion
       @vote.user = current_user
       if @vote.save
