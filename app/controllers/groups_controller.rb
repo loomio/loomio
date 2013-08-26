@@ -16,7 +16,7 @@ class GroupsController < GroupBaseController
 
   #for create group
   def create
-    @group = Group.new(params[:group])
+    @group = Group.new(permitted_params.group)
     authorize!(:create, @group)
     if @group.save
       @group.add_admin! current_user
@@ -28,7 +28,7 @@ class GroupsController < GroupBaseController
   end
 
   def update
-    if @group.update_attributes(params[:group])
+    if @group.update_attributes(permitted_params.group)
       flash[:notice] = 'Group was successfully updated.'
       redirect_to @group
     else

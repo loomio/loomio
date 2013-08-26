@@ -12,8 +12,6 @@ class Event < ActiveRecord::Base
   validates_inclusion_of :kind, :in => KINDS
   validates_presence_of :eventable
 
-  attr_accessible :kind, :eventable, :user, :discussion_id
-
   def notify!(user)
     notifications.create!(user: user)
   end

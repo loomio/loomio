@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807015738) do
+ActiveRecord::Schema.define(:version => 20130826012641) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -105,6 +105,14 @@ ActiveRecord::Schema.define(:version => 20130807015738) do
     t.text     "params"
   end
 
+  create_table "custom_email_templates", :force => true do |t|
+    t.string   "name"
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
@@ -162,6 +170,45 @@ ActiveRecord::Schema.define(:version => 20130807015738) do
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
   add_index "discussions", ["group_id"], :name => "index_discussions_on_group_id"
   add_index "discussions", ["is_deleted"], :name => "index_discussions_on_is_deleted"
+
+  create_table "email_template_sent_to_groups", :force => true do |t|
+    t.integer  "email_template_id"
+    t.integer  "group_id"
+    t.integer  "author_id"
+    t.string   "recipients"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "email_template_sent_to_groups", ["author_id"], :name => "index_email_template_sent_to_groups_on_author_id"
+  add_index "email_template_sent_to_groups", ["email_template_id"], :name => "index_email_template_sent_to_groups_on_email_template_id"
+  add_index "email_template_sent_to_groups", ["group_id"], :name => "index_email_template_sent_to_groups_on_group_id"
+
+  create_table "email_templates", :force => true do |t|
+    t.string   "name"
+    t.string   "language"
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "emails", :force => true do |t|
+    t.string   "to"
+    t.string   "from"
+    t.string   "reply_to"
+    t.string   "subject"
+    t.string   "language"
+    t.text     "body"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.datetime "sent_at"
+    t.integer  "email_template_id"
+    t.integer  "recipient_id"
+  end
+
+  add_index "emails", ["email_template_id"], :name => "index_emails_on_email_template_id"
+  add_index "emails", ["recipient_id"], :name => "index_emails_on_recipient_id"
 
   create_table "events", :force => true do |t|
     t.string   "kind"
