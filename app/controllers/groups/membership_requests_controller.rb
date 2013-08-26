@@ -41,7 +41,7 @@ class Groups::MembershipRequestsController < BaseController
   end
 
   def build_membership_request
-    @membership_request = MembershipRequest.new params[:membership_request]
+    @membership_request = MembershipRequest.new(permitted_params.membership_request)
     @membership_request.group = @group
     @membership_request.requestor = current_user if user_signed_in?
   end

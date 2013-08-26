@@ -1,11 +1,20 @@
 class Users::EmailPreferencesController < BaseController
-  inherit_resources
   skip_before_filter :authenticate_user!
   before_filter :authenticate_user_by_unsubscribe_token_or_fallback
-  defaults :instance_name => 'email_preferences'
+
+  def edit
+    resource
+  end
 
   def update
-    update!(:notice => "Your email settings have been updated."){ root_url }
+    resource
+    if resource.update_attributes(permitted_params.email_preferences)
+      flash[:notice] = "Your email settings have been updated."
+      redirect_to root_url
+    else
+      flash[:error] = "Failed to update settings"
+      render :edit
+    end
   end
 
   private

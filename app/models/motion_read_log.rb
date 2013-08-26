@@ -1,6 +1,4 @@
 class MotionReadLog < ActiveRecord::Base
-  attr_accessible :user_id, :motion_id, :motion_last_viewed_at
-
   belongs_to :user
   belongs_to :motion
   validates_presence_of :motion_last_viewed_at, :motion_id, :user_id
