@@ -16,7 +16,8 @@ $ -> # Character counter for limiting input
     $(".error-message").hide()
     max = 250 if $(this).hasClass('limit-250')
     max = 150 if $(this).hasClass('limit-150')
-    chars = $(this).val().length
+    string = $(this).val().replace(/\r\n|\r|\n/g, '11')
+    chars = string.length
     left = max - chars
     display_count(left, $(this))
 
@@ -30,19 +31,19 @@ $ -> # Run validations and prevent default if false
 ### FUNCTIONS ###
 
 Application.validateForm = (form) ->
-  formValid = true
+  formError = ''
   form.find(".validate-presence").each((index, field) ->
-    formValid = false unless validatePresence(field)
+    formError = 'A mandatory field has been left blank, please fill it out and try again' unless validatePresence(field)
     return
     )
   form.find(".validate-length").each((index, field) ->
-    formValid = false unless validateInputLength(field)
+    formError = 'One of the fields has too many characters, please remove some of the characters and try again' unless validateInputLength(field)
     return
     )
-  formValid = false unless Application.validateEmailsAndConfirm($(".validate-emails"))
-  formValid = false unless Application.validateMotionCloseDate($(".motion-closing-inputs"))
-  alert('There is a problem with the form') unless formValid
-  formValid
+  formError = 'There is a problem with the form' unless Application.validateEmailsAndConfirm($(".validate-emails"))
+  formError = 'The date you have chosen is invalid, please choose another date and try again' unless Application.validateMotionCloseDate($(".motion-closing-inputs"))
+  alert(formError) unless formError == ''
+  (formError == '')
 
 Application.hideAllErrorMessages = () ->
   $(".inline-help").hide()
