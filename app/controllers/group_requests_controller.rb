@@ -2,7 +2,7 @@ class GroupRequestsController < BaseController
   skip_before_filter :authenticate_user!
 
   def create
-    @group_request = GroupRequest.new(params[:group_request])
+    @group_request = GroupRequest.new(permitted_params.group_request)
     if @group_request.save
       SetupGroup.from_group_request(@group_request)
       redirect_to confirmation_group_requests_url(plan: @group_request.payment_plan)
