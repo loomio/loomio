@@ -19,6 +19,7 @@ Feature: Member adds user to group
     And I confirm the selection
     Then I should see "David" as a member of the subgroup
     And I should see "Joe" as a member of the subgroup
+    And "David" should receive a notification that they have been added
 
   Scenario: Subgroup member cannot add members to a subgroup invitable by admins
     Given I am a member of a group

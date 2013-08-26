@@ -1,35 +1,14 @@
-# encoding: utf-8
-
-Given(/^there is a group$/) do
-  @group = FactoryGirl.create(:group)
-end
-
-Given(/^I am an admin of that group$/) do
+Given(/^I am a group admin$/) do
   @group_admin = FactoryGirl.create(:user)
+  @group = FactoryGirl.create(:group)
   @group.add_admin! @group_admin
-  login @group_admin
+  login_automatically @group_admin
 end
 
-Given(/^I am on the group show page$/) do
+When(/^I invite "(.*?)" to our group$/) do |arg1|
   visit group_path(@group)
-end
-
-When(/^I click Invite people from the members box$/) do
-  click_on 'group-member-options'
-  within 'ul.group-member-options' do
-    click_on 'Invite people'
-  end
-end
-
-When(/^enter "(.*?)" into the recipients$/) do |arg1|
+  click_on 'invite-new-members'
   fill_in "invitees", with: arg1
-end
-
-When(/^fill in the message body$/) do
-  fill_in 'invite_people_message_body', with: 'hi please click the invitation_link below'
-end
-
-When(/^click Send Invitations$/) do
   click_on 'Send invitations'
 end
 
@@ -39,79 +18,84 @@ Then(/^"(.*?)" should get an invitation to join the group$/) do |arg1|
   last_email.reply_to.should == [@group_admin.email]
 end
 
-Given(/^an invitation to join the group has been sent to "(.*?)"$/) do |arg1|
-  @user = FactoryGirl.create(:user)
-  @invite_people = InvitePeople.new(recipients: arg1, message_body: 'please click the invitation link below')
-  CreateInvitation.to_people_and_email_them(@invite_people, group: @group, inviter: @user)
+Given(/^there is a user called "(.*?)" with email "(.*?)"$/) do |arg1, arg2|
+  @user = FactoryGirl.create(:user, name: arg1, email: arg2)
 end
 
-When(/^I open the email and click the accept invitation link$/) do
+Then(/^"(.*?)" should be auto\-added to the group$/) do |arg1|
+  @group.members.should include User.find_by_email('jim@jam.com')
+end
 
+Given(/^there is a group member with email "(.*?)"$/) do |arg1|
+  @group_member = FactoryGirl.create(:user, email: arg1)
+  @group.add_member! @group_member
+end
+
+Then(/^I should be told "(.*?)" is already a member$/) do |arg1|
+  page.should have_content("already in group")
+end
+
+Given(/^I am invited to join a group$/) do
+  @group_admin = FactoryGirl.create(:user)
+  @group = FactoryGirl.create(:group)
+  @group.add_admin! @group_admin
+  @invite_people = InvitePeople.new(recipients: 'jim@jam.com', message_body: 'please click the invitation link below')
+  CreateInvitation.to_people_and_email_them(@invite_people, group: @group, inviter: @group_admin)
+end
+
+When(/^I accept my invitation via email$/) do
   invitation_url_regex = /https?:\/\/[\S]+/
   url = last_email_text_body.match(invitation_url_regex)[0]
   path = URI.parse(url).path
   visit path
 end
 
-When(/^(?:I|they) sign up as a new user speaking "(.*?)"$/) do |arg1|
-  fill_in :user_name, with: 'Jim Jameson'
-  fill_in :user_email, with: 'jim@jam.com'
-  fill_in :user_password, with: 'password'
-  fill_in :user_password_confirmation, with: 'password'
-  select arg1, from: :user_language_preference
-  find('input[name=commit]').click()
-end
-
-When(/^(?:I|they) sign up as a new user$/) do
+When(/^I sign up as a new user$/) do
   fill_in :user_name, with: 'Jim Jameson'
   fill_in :user_email, with: 'jim@jam.com'
   fill_in :user_password, with: 'password'
   fill_in :user_password_confirmation, with: 'password'
   find('input[name=commit]').click()
+  @user = User.find_by_email('jim@jam.com')
 end
 
-When(/^I click the link to the sign in form$/) do
-  click_on 'click here to sign in'
+Given(/^I am invited at "(.*?)" to join a group$/) do |arg1|
+  @group = FactoryGirl.create(:group)
+  @invite_people = InvitePeople.new(recipients: arg1, message_body: 'please click the invitation link below')
+  CreateInvitation.to_people_and_email_them(@invite_people, group: @group, inviter: @group.admins.first)
 end
 
 Then(/^I should be a member of the group$/) do
-  @group.members.should include User.find_by_email('jim@jam.com')
+  @group.members.should include @user
+end
+
+When(/^I follow an invitation link I have already used$/) do
+  @group = FactoryGirl.create(:group)
+  @user = FactoryGirl.create(:user)
+  @coordinator = FactoryGirl.create(:user)
+  @group.add_admin!(@coordinator)
+  @invitation = CreateInvitation.to_join_group(group: @group,
+                                               inviter: @coordinator,
+                                               recipient_email: 'jim@jimmy.com')
+  AcceptInvitation.and_grant_access!(@invitation, @user)
+  visit invitation_path(@invitation)
 end
 
 Then(/^I should be redirected to the group page$/) do
   URI.parse(current_url).path.should == group_path(@group)
 end
 
-Given(/^an existing user with email "(.*?)"$/) do |arg1|
-  @user = FactoryGirl.create :user, email: arg1
+Then(/^I should be told the invitation link has already been used$/) do
+  page.should have_content("This invitation has already been used. Please sign in to continue to your group.")
 end
 
-When(/^(?:I|they) sign in as "(.*?)"$/) do |arg1|
-  fill_in :user_email, with: arg1
-  fill_in :user_password, with: 'password'
-  find('#sign-in-btn').click()
-end
-
-Given(/^I am signed in as "(.*?)"$/) do |arg1|
-  @user = FactoryGirl.create :user, email: arg1
-  login_automatically @user
-end
-
-Given(/^I am a user but i am not signed in$/) do
-  @user = FactoryGirl.create :user
-end
-
-Given(/^I follow an invitation link I have already used$/) do
+When(/^I click an invitation link I have already used$/) do
+  @group = FactoryGirl.create(:group)
   @coordinator = FactoryGirl.create(:user)
   @group.add_admin!(@coordinator)
-  @invitation = CreateInvitation.to_join_group(group: @group, 
+  @invitation = CreateInvitation.to_join_group(group: @group,
                                                inviter: @coordinator,
                                                recipient_email: 'jim@jimmy.com')
-
   AcceptInvitation.and_grant_access!(@invitation, @user)
   visit invitation_path(@invitation)
-end
-
-Then(/^I should be told the invitation link has already been used$/) do
-  page.should have_content 'invitation has already been used'
 end

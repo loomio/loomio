@@ -18,7 +18,7 @@ describe VotesController do
 
     context 'proposal is open' do
 
-      describe "casting a vote" do
+      describe "casting a vote", focus: true do
         it 'redirects to previous url' do
           post :create, @vote_args
           response.should redirect_to(@previous_url)

@@ -188,6 +188,12 @@ Given /^I am a member of a parent\-group that has a public sub\-group$/ do
   @parent_group.add_member! @user
 end
 
+Then(/^the requester should be emailed of the approval$/) do
+  last_email = ActionMailer::Base.deliveries.last
+  last_email.to.should include @membership_request.email
+  last_email.subject.should include 'Membership approved'
+end
+
 Then(/^I should be asked to log in$/) do
   page.should have_content(I18n.t(:sign_in))
 end

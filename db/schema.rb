@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(:version => 20130826012641) do
     t.datetime "updated_at",                   :null => false
   end
 
+  create_table "attachments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "filename"
+    t.string   "location"
+    t.integer  "comment_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "attachments", ["user_id", "comment_id"], :name => "index_attachments_on_user_id_and_comment_id"
+
   create_table "campaign_signups", :force => true do |t|
     t.integer  "campaign_id"
     t.string   "name"
@@ -351,8 +362,8 @@ ActiveRecord::Schema.define(:version => 20130826012641) do
     t.integer  "inviter_id"
     t.datetime "group_last_viewed_at",                                :null => false
     t.boolean  "subscribed_to_notification_emails", :default => true
-    t.datetime "archived_at"
     t.integer  "inbox_position",                    :default => 0
+    t.datetime "archived_at"
   end
 
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
