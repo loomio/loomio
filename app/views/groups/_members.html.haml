@@ -20,10 +20,9 @@
     %h4
       = "#{ t :members } (#{ group.memberships_count })"
 
-    %ul#users-list
+    %ul#users-list.clearfix
       - group.members.sorted_by_name.each do |user|
         = render 'membership', user: user
 
     -if can?(:add_members, group) && group.is_top_level?
       = link_to members_pending_count(group), group_invitations_path(group), class: 'bottom-panel-link', id: 'pending-count'
-
