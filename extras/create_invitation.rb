@@ -25,7 +25,7 @@ class CreateInvitation
       invitation = to_join_group(recipient_email: recipient_email,
                                  group: args[:group],
                                  inviter: args[:inviter])
-      InvitePeopleMailer.delay.to_join_group(invitation, args[:inviter].email, invite_people.message_body)
+      InvitePeopleMailer.delay.to_join_group(invitation, args[:inviter], invite_people.message_body)
     end
     invite_people.parsed_recipients.size
   end
