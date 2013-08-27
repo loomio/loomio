@@ -236,6 +236,7 @@ en:
   membership_requested: "Membership requested"
   request_membership: "Request membership"
   confirm_remove_membership_request: "Are you sure you wish to withdraw your membership request for this group?"
+  no_pending_membership_requests: "There are currently no pending membership requests for this group."
 
   subgroups: "Sub-groups"
   create_a_subgroup: "Create a sub-group"
