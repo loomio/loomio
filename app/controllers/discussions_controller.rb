@@ -133,7 +133,7 @@ class DiscussionsController < GroupBaseController
 
   def edit_title
     @discussion = Discussion.find(params[:id])
-    @discussion.set_title!(params[:title], current_user)
+    @discussion.set_title!(params.require(:title), current_user)
     redirect_to @discussion
   end
 
