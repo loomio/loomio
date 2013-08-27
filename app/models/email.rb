@@ -18,6 +18,7 @@ class Email < ActiveRecord::Base
 
     renderer = Redcarpet::Render::HTML.new(
       :filter_html         => true,
+      :hard_wrap           => true,
       :link_attributes     => {target: '_blank'}
     )
     markdown = Redcarpet::Markdown.new(renderer, options)

@@ -6,16 +6,7 @@ ActiveAdmin.register EmailTemplate do
     default_actions
   end
 
-  form do |f|
-    f.inputs "Email Template" do
-      f.input :name
-      f.input :language, as: :select, :collection => Translation::LANGUAGES
-      f.input :subject
-      f.input :body
-    end
-
-    f.buttons
-  end
+  form partial: 'form'
 
   show do |template|
     recipient = User.loomio_helper_bot

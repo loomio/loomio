@@ -51,6 +51,5 @@ class EmailTemplate < ActiveRecord::Base
                     group_url: group_url(group) })
     end
     subs
-
   end
 end
