@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe GroupsController do
   let(:group) { create :group }
+  let(:subgroup) { create :group, parent: group}
   let(:user)  { create :user }
 
   context 'signed out' do
@@ -24,7 +25,7 @@ describe GroupsController do
   end
 
   context "group viewable by members" do
-    before do 
+    before do
       group.update_attribute('viewable_by', 'members')
       group.add_member!(user)
       sign_in user
@@ -48,9 +49,12 @@ describe GroupsController do
     end
 
     it "add_members" do
+      subgroup.add_member!(user)
+
       added_user = create(:user)
-      post :add_members, id: group.id, "user_#{added_user.id}" => 1
-      group.members.should include added_user
+      group.add_member!(added_user)
+      post :add_members, id: subgroup.id, "user_#{added_user.id}" => 1
+      subgroup.members.should include added_user
     end
 
     context "a group admin" do

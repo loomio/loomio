@@ -51,7 +51,6 @@ end
 
 Then /^the request is approved$/ do
   @membership = Membership.last
-  @membership.promote_to_member!
   UserMailer.group_membership_approved(@membership.user, @membership.group).deliver
 end
 
@@ -99,8 +98,8 @@ Then /^I should see "(.*?)" as an invited user of the subgroup$/ do |email|
   find("#invited-users").should have_content(email)
 end
 
-Then /^I should see "(.*?)" as a member of the subgroup$/ do |email|
-  find("#users-list").should have_content(email)
+Then /^I should see "(.*?)" as a member of the subgroup$/ do |name|
+  find("#users-list").should have_content(name)
 end
 
 Then /^I should get an email with subject "(.*?)"$/ do |arg1|
@@ -110,4 +109,9 @@ end
 
 When(/^I confirm the selection$/) do
   find("#submit-add-members").click
+end
+
+Then(/^"(.*?)" should receive a notification that they have been added$/) do |arg1|
+  user = User.find_by_name(arg1)
+  Notification.where(user_id: user.id).last.event.kind.should == 'user_added_to_group'
 end
