@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Events::UserAddedToGroup do
+describe Events::InvitationAccepted do
   let(:membership){ mock_model(Membership) }
 
   describe "::publish!" do
@@ -8,26 +8,23 @@ describe Events::UserAddedToGroup do
     before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do
-      Event.should_receive(:create!).with(kind: 'user_added_to_group',
+      Event.should_receive(:create!).with(kind: 'invitation_accepted',
                                           eventable: membership)
-      Events::UserAddedToGroup.publish!(membership)
+      Events::InvitationAccepted.publish!(membership)
     end
 
     it 'returns an event' do
-      Events::UserAddedToGroup.publish!(membership).should == event
+      Events::InvitationAccepted.publish!(membership).should == event
     end
   end
 
   context "after event has been published" do
     let(:user) { mock_model(User) }
-    let(:group) { mock_model(Group) }
-    let(:event) { Events::UserAddedToGroup.new(kind: "user_added_to_group",
+    let(:event) { Events::InvitationAccepted.new(kind: "invitation_accepted",
                                            eventable: membership) }
 
     before do
       membership.stub(:user).and_return(user)
-      membership.stub(:group).and_return(group)
-      UserMailer.stub_chain(:group_membership_approved, :deliver)
     end
 
     it 'notifies the requestor' do

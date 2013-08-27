@@ -4,51 +4,45 @@ Feature: Invitation to join group
 
   @javascript
   Scenario: Group Admin invites new user to join a group
-    Given there is a group
-    And I am an admin of that group
-    And I am on the group show page
-    When I click Invite people from the members box
-    And enter "jim@jam.com" into the recipients
-    And fill in the message body
-    And click Send Invitations
-    Then "jim@jam.com" should get an invitation to join the group
-    And I should be directed to the group page
+    Given I am a group admin
+    When I invite "new@user.com" to our group
+    Then "new@user.com" should get an invitation to join the group
+
+  @javascript
+  Scenario: Inviting existing user auto adds them to the group
+    Given I am a group admin
+    And there is a user called "Jim Jam" with email "jim@jam.com"
+    When I invite "jim@jam.com" to our group
+    Then "Jim Jam" should be auto-added to the group
+    And "Jim Jam" should receive a notification that they have been added
+    And "jim@jam.com" should receive an email
+
+  @javascript
+  Scenario: Coordinator invites existing group member
+    Given I am a group admin
+    And there is a group member with email "tony@tires.com"
+    When I invite "tony@tires.com" to our group
+    Then I should be told "tony" is already a member
 
   Scenario: New user accepts invitiation to join a group
-    Given there is a group
-    And an invitation to join the group has been sent to "jim@jam.com"
-    When I open the email and click the accept invitation link
+    Given I am invited to join a group
+    When I accept my invitation via email
     And I sign up as a new user
     Then I should be a member of the group
-    And I should be redirected to the group page
 
-  Scenario: Existing user accepts invitiation to join a group
-    Given there is a group
-    And an existing user with email "jim@jam.com"
-    And an invitation to join the group has been sent to "jim@jam.com"
-    When I open the email and click the accept invitation link
-    And I sign in as "jim@jam.com"
+  Scenario: Signed in user accepts invitiation to join a group with different email address
+    Given I am logged in
+    And I am invited at "anotheremail@address.com" to join a group
+    When I accept my invitation via email
     Then I should be a member of the group
-    And I should be redirected to the group page
 
-  Scenario: Signed in user accepts invitiation to join a group
-    Given there is a group
-    And I am signed in as "jim@jam.com"
-    And an invitation to join the group has been sent to "jim@jam.com"
-    When I open the email and click the accept invitation link
-    Then I should be a member of the group
-    And I should be redirected to the group page
-
+  @javascript
   Scenario: Signed in user refollows their invitation link
-    Given there is a group
-    And I am signed in as "jim@jam.com"
-    And I follow an invitation link I have already used
-    When I follow the invitation link
+    Given I am logged in
+    When I click an invitation link I have already used
     Then I should be redirected to the group page
 
   Scenario: Signed out user refollows their invitation link
-    Given there is a group
-    And I am a user but i am not signed in
-    And I follow an invitation link I have already used
-    When I follow the invitation link
+    Given I am not logged in
+    When I follow an invitation link I have already used
     Then I should be told the invitation link has already been used

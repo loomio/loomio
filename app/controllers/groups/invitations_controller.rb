@@ -8,15 +8,29 @@ class Groups::InvitationsController < GroupBaseController
   end
 
   def create
+    @emails = params[:invite_people][:recipients].split(',')
+
+    recognised_users = User.where(email: @emails)
+    @members_to_add = recognised_users - @group.members.all
+    @existing_members = recognised_users - @members_to_add
+    @emails_to_invite = @emails - recognised_users.pluck(:email)
+
     @invite_people = InvitePeople.new(params[:invite_people])
-    if @invite_people.valid?
-      num = CreateInvitation.to_people_and_email_them(@invite_people, group: @group, inviter: current_user)
-      flash[:notice] = "#{num} invitation(s) sent" if num > 0
-      redirect_to group_path(@group)
-    else
-      load_decorated_group
-      render :new
+    @invite_people.recipients = @emails_to_invite.join(',')
+
+    memberships = @group.add_members!(@members_to_add, current_user)
+    memberships.each do |membership|
+      Events::UserAddedToGroup.publish!(membership)
+      UserMailer.delay.added_to_a_group(membership.user, membership.inviter, membership.group)
     end
+
+    if @invite_people.valid?
+      CreateInvitation.to_people_and_email_them(@invite_people,
+                                                  group: @group,
+                                                  inviter: current_user)
+    end
+    set_invitation_success_flash
+    redirect_to group_path(@group)
   end
 
   def index
@@ -44,5 +58,23 @@ class Groups::InvitationsController < GroupBaseController
 
   def load_decorated_group
     @group = GroupDecorator.new(Group.find(params[:group_id]))
+  end
+
+  def set_invitation_success_flash
+    unless @emails_to_invite.empty?
+      invitations_sent = t(:'notice.invitations.sent', count: @emails_to_invite.size)
+    end
+
+    unless @members_to_add.empty?
+      members_added = t(:'notice.invitations.auto_added', count: @members_to_add.size)
+    end
+
+    unless @existing_members.empty?
+      members_already_in_group = t(:'notice.invitations.existing_member', count: @existing_members.size)
+    end
+
+    # expected output: 6 people invitations sent, 10 people added to group, 1 member already in group
+    message = [invitations_sent, members_added, members_already_in_group].compact.join(", ")
+    flash[:notice] = message
   end
 end

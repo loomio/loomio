@@ -32,5 +32,9 @@ describe AcceptInvitation do
         group.members.should include user
       end
     end
+
+    it 'notifies the invitor of acceptance' do
+      Event.last.kind.should == 'invitation_accepted'
+    end
   end
 end
