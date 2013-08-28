@@ -26,7 +26,6 @@ class Motion < ActiveRecord::Base
 
   before_validation :set_closing_at
   before_save :format_discussion_url
-  after_create :initialize_discussion
   after_create :fire_new_motion_event
 
   attr_accessor :create_discussion
@@ -54,7 +53,7 @@ class Motion < ActiveRecord::Base
     self.closed_at = Time.now
     save!
     fire_motion_closed_event(user)
-   end
+  end
 
   def close_if_expired
     close! if closing_at <= Time.now
@@ -81,29 +80,12 @@ class Motion < ActiveRecord::Base
     read_log_for(user).motion_last_viewed_at if read_log_for(user)
   end
 
-
-### vote methods ###
-
-  def blocked?
-    unique_votes.each do |v|
-      return true if v.position == "block"
-    end
-    false
-  end
-
   def with_votes
     votes if votes.size > 0
   end
 
   def unique_votes
     Vote.unique_votes(self)
-  end
-
-  def votes_breakdown
-    last_votes = unique_votes()
-    Vote::POSITIONS.map {|position|
-      [position, last_votes.find_all{|vote| vote.position == position}]
-    }.to_hash
   end
 
   def vote_counts
@@ -114,13 +96,18 @@ class Motion < ActiveRecord::Base
     counts
   end
 
+  def total_votes_count
+    yes_votes_count + no_votes_count + abstain_votes_count + block_votes_count
+  end
+
+  # this method sux
   def votes_for_graph
     votes_for_graph = []
-    votes_breakdown.each do |k, v|
-      votes_for_graph.push ["#{k.capitalize} (#{v.size})", v.size, "#{k.capitalize}", [v.map{|b| b.user.email}]]
+    vote_counts.each do |k, v|
+      votes_for_graph.push ["#{k.capitalize} (#{v})", v, "#{k.capitalize}", ([1]*v)]
     end
     if votes.size == 0
-      votes_for_graph.push ["Yet to vote (#{no_vote_count})", no_vote_count, 'Yet to vote', [group.users.map{|u| u.email unless votes.where('user_id = ?', u).exists?}.compact!]]
+      votes_for_graph.push ["Yet to vote (#{no_vote_count})", no_vote_count, 'Yet to vote', ([1]*no_vote_count)]
     end
     return votes_for_graph
   end
@@ -141,17 +128,28 @@ class Motion < ActiveRecord::Base
   end
 
   def latest_vote_time
-    return votes.order('created_at DESC').first.created_at if votes.count > 0
-    created_at
+    if votes.present?
+      votes.order('created_at DESC').first.created_at
+    else
+      created_at
+    end
   end
 
+  # members_not_voted_count
   def no_vote_count
-    return group_count - unique_votes.count if voting?
-    did_not_votes.count
+    if voting?
+      group_count - total_votes_count
+    else
+      did_not_votes_count
+    end
   end
 
   def percent_voted
-    (100-(no_vote_count/group_count.to_f * 100)).to_i
+    if group_count == 0
+      0
+    else
+      (100-(no_vote_count/group_count.to_f * 100)).to_i
+    end
   end
 
   def number_of_votes_since(time)
@@ -159,10 +157,11 @@ class Motion < ActiveRecord::Base
   end
 
   def number_of_votes_since_last_looked(user)
-    if user
-      return number_of_votes_since(last_looked_at_by(user)) if last_looked_at_by(user)
+    if user && last_seen = last_looked_at_by(user)
+      number_of_votes_since(last_seen)
+    else
+      total_votes_count
     end
-    unique_votes.count
   end
 
   def update_vote_counts!
@@ -183,16 +182,13 @@ class Motion < ActiveRecord::Base
     save!
   end
 
-
-### group methods ###
-
+  # group size when voting
   def group_count
-    return group.users.count if voting?
-    unique_votes.count + no_vote_count
-  end
-
-  def group_members
-    group.user/spec/models/vote_spec.rbs
+    if voting?
+      group.memberships_count || 0
+    else
+      total_votes_count + no_vote_count
+    end
   end
 
   def move_to_group(group)
@@ -205,10 +201,6 @@ class Motion < ActiveRecord::Base
   def group_users_without_motion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
   end
-
-
-
-### discussion methods ###
 
   def update_discussion_activity
     discussion.update_activity if discussion
@@ -248,17 +240,8 @@ class Motion < ActiveRecord::Base
           did_not_vote.save
         end
       end
+      update_attribute(:did_not_votes_count, did_not_votes.count)
       reload
-    end
-
-    def initialize_discussion
-      unless discussion
-        self.discussion = Discussion.new(group: group)
-        discussion.author = author
-        discussion.title = name
-        discussion.save
-        save
-      end
     end
 
     def format_discussion_url
