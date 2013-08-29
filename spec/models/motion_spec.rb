@@ -74,30 +74,6 @@ describe Motion do
     end
   end
 
-  describe "#blocked?" do
-    before do
-      @motion = create(:motion)
-      @user1 = build(:user)
-      @user1.save
-      @motion.group.add_member!(@user1)
-    end
-    it "it can remain un-blocked" do
-      vote = Vote.new(position: 'yes')
-      vote.motion = @motion
-      vote.user = @user1
-      vote.save
-      @motion.blocked?.should == false
-    end
-
-    it "it can be blocked" do
-      vote = Vote.new(position: 'block')
-      vote.motion = @motion
-      vote.user = @user1
-      vote.save
-      @motion.blocked?.should == true
-    end
-  end
-
   it "can have a discussion link" do
     @motion = create(:motion)
     @motion.discussion_url = "http://our-discussion.com"
@@ -177,6 +153,7 @@ describe Motion do
       user = create :user
       motion.group.add_member! user
       create :vote, :motion => motion, :position => "yes", :user => user
+      motion.reload
       motion.no_vote_count.should == motion.group_users.count - 1
     end
 
@@ -185,6 +162,7 @@ describe Motion do
       motion.group.add_member! user
       create :vote, :motion => motion, :position => "yes", :user => user
       create :vote, :motion => motion, :position => "no", :user => user
+      motion.reload
       motion.no_vote_count.should == motion.group_users.count - 1
     end
 
@@ -193,7 +171,7 @@ describe Motion do
 
       it "returns the number of members who did not vote" do
         motion.should be_closed
-        motion.stub(:did_not_votes).and_return(stub :count => 99)
+        motion.stub(:did_not_votes_count).and_return(99)
         motion.no_vote_count.should == 99
       end
     end
@@ -207,15 +185,19 @@ describe Motion do
     context "the user is a member of the motions group" do
       it "returns the total number of votes if the user has not seen the motion" do
         @motion.stub(:last_looked_at_by).with(@user).and_return(nil)
-        @motion.stub_chain(:unique_votes, :count).and_return(4)
+        @motion.stub_chain(:total_votes_count).and_return(4)
 
         @motion.number_of_votes_since_last_looked(@user).should == 4
       end
       it "returns the number of votes since the user last looked at the motion" do
         last_viewed_at = Time.now
         @user.stub(:is_group_member?).with(@motion.group).and_return(true)
-        @motion.stub(:last_looked_at_by).with(@user).and_return(last_viewed_at)
-        @motion.stub(:number_of_votes_since).with(last_viewed_at).and_return(3)
+
+        @motion.stub(:last_looked_at_by).
+          with(@user).and_return(last_viewed_at)
+
+        @motion.stub(:number_of_votes_since).
+          with(last_viewed_at).and_return(3)
 
         @motion.number_of_votes_since_last_looked(@user).should == 3
       end
@@ -223,7 +205,7 @@ describe Motion do
     context "the user is not a member of the group" do
       it "returns the total number of votes" do
         @motion.stub(:last_looked_at_by).with(@user).and_return(nil)
-        @motion.stub_chain(:unique_votes, :count).and_return(4)
+        @motion.stub_chain(:total_votes_count).and_return(4)
 
         @motion.number_of_votes_since_last_looked(nil).should == 4
       end
