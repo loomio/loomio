@@ -29,7 +29,7 @@ class Groups::InvitationsController < GroupBaseController
                                                   group: @group,
                                                   inviter: current_user)
     end
-    set_invitation_success_flash
+    set_flash_message
     redirect_to group_path(@group)
   end
 
@@ -60,7 +60,7 @@ class Groups::InvitationsController < GroupBaseController
     @group = GroupDecorator.new(Group.find(params[:group_id]))
   end
 
-  def set_invitation_success_flash
+  def set_flash_message
     unless @emails_to_invite.empty?
       invitations_sent = t(:'notice.invitations.sent', count: @emails_to_invite.size)
     end
