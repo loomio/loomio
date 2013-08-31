@@ -345,9 +345,22 @@ a.btn-icon:hover { color: $dark-grey; }
 
 .nowrap { white-space: nowrap; }
 
-body.dashboard.show, body.groups.show {
-  .icon.shim {
-    float: right;
-    display: inline-block;
+.info-box {
+  @include border-radius(4px);
+  background-color: #DEF1DE;
+  color: #555555;
+  margin-top: 30px;
+  padding: 15px;
+  width: 240px;
+  h3 {
+    color: $text-black;
+    font-weight: 400;
+  }
+  td { padding: 5px; }
+  ul {
+    list-style: disc;
+    margin-left: 20px;
   }
 }
+
+.nowrap { white-space: nowrap; }

@@ -42,7 +42,7 @@ nl:
       update_needs_confirmation: "Je account is succesvol gewijzigd, echter hebben moet je nog wel je e-mail adres verifiëren."
       updated: "Je account is succesvol gewijzigd"
     sessions:
-      signed_in: "Succesvvol ingelogd"
+      signed_in: "Succesvol ingelogd"
       signed_out: "Succesvol uitgelogd"
     unlocks:
       send_instructions: "Je zult een e-mail met instructies ontvangen over hoe je jouw account moet unlocken over een paar minuten."

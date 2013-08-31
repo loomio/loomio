@@ -9,7 +9,7 @@ class PaypalCheckout
   attr_reader :response, :group
 
   def self.payment_description(amount)
-    'Group plan: ' + I18n.t('subscriptions.description', people: DOLLARS_TO_PEOPLE[amount], amount: amount)
+    "Group plan: Up to #{DOLLARS_TO_PEOPLE[amount]} people (US$#{amount} monthly)"
   end
 
   def initialize(group: nil, amount: nil)

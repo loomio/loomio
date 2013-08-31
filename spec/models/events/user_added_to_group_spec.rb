@@ -20,16 +20,19 @@ describe Events::UserAddedToGroup do
 
   context "after event has been published" do
     let(:user) { mock_model(User) }
+    let(:group) { mock_model(Group) }
     let(:event) { Events::UserAddedToGroup.new(kind: "user_added_to_group",
                                            eventable: membership) }
 
     before do
       membership.stub(:user).and_return(user)
+      membership.stub(:group).and_return(group)
+      UserMailer.stub_chain(:group_membership_approved, :deliver)
     end
 
-    it 'notifies group admins' do
+    it 'notifies the requestor' do
       event.should_receive(:notify!).with(user)
-      event.save
+      event.save!
     end
   end
 end

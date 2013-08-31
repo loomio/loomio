@@ -4,20 +4,25 @@
     = render '/groups/title', group: @group
 .row
   .span5
-    %h1= t("subscriptions.select_your_plan")
+    %h1 Select your plan
 
 .row
   .span12#please-wait.hidden
-    = t(:'subscriptions.redirecting_please_wait')
+    Redirecting you to PayPal, please wait...
 .row#payment-options
   .span9
     = render 'payment_option', option_color: 'lt-blue', people: 10, amount: 30, group: @group
     = render 'payment_option', option_color: 'lime', people: 25, amount: 50, group: @group
     = render 'payment_option', option_color: 'yellow', people: 50, amount: 100, group: @group
     = render 'payment_option', option_color: 'orange', people: 100, amount: 200, group: @group
-    #us-dollars= t("subscriptions.prices_in_us_dollars")
+    #us-dollars Prices are in US dollars
   .span7
     #footer
-      = simple_format t('subscriptions.contact_us_html')
+      %p
+        Money shouldn’t be a barrier to good collaborative decision-making. If your group is larger than 100 people, or if this fee is outside your means, talk to us:
+        = mail_to "accounts@loomio.org"
     #note-about-paypal
-      %p= t("subscriptions.note_about_paypal_html")
+      %p
+        Our payment system currently uses Paypal. If you can't use Paypal, please contact us at
+        = mail_to "accounts@loomio.org"
+        to set up a payment method that works for you.

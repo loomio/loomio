@@ -63,4 +63,10 @@ ActiveAdmin.register GroupRequest do
       :notice => "Invitation to start group email sent for " +
       group_request.name
   end
+
+  controller do
+    def permitted_params
+      params.permit!
+    end
+  end
 end

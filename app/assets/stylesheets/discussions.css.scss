@@ -260,7 +260,7 @@ body.discussions.show {
             margin-bottom: -12px;
         }}
         ol, p, ul {
-          color: black;
+          color: $text-black;
         }
         p:last-child{margin-bottom: 2px;}
       }
@@ -449,7 +449,7 @@ pre{
   }
   .activity-icon { float: right; }
   .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
-  .pie-icon.activity-icon { margin: 12px 5px 0 0; }
+  .pie-icon.activity-icon { margin: 6px 0 0 0; }
   .activity-count {
     font-size: $font-tinywiny;
     position: relative;
@@ -458,12 +458,19 @@ pre{
     color: white;
     background-color: $group-activity;
   }
-  .icon.shim .activity-count {
-    left: 34px;
-    margin-left: -19px;
-    top: 0px;
-    z-index: 2;
+  .icon.shim {
+    display: block;
+    float: right;
+    margin-top: 6px;
+    .activity-count {
+      bottom: 32px;
+    }
+    .motion-sparkline {
+      margin-right: 4px;
+      position: relative;
+    }
   }
+
   .discussion-link {
     position: relative;
     z-index: 2;

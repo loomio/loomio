@@ -1,7 +1,10 @@
 = form_for [motion, vote] do |f|
   %h3= form_title
   = f.label :position, t("vote_form.your_position")
-  = f.select :position, Vote::POSITIONS
+  - positions = {}
+  - Vote::POSITIONS.each do |position|
+    - positions[t(position, scope: :position_verbs)] = position
+  = f.select :position, positions
   = f.label :statement, t("vote_form.your_statement")
   .control-group
     = f.text_area :statement, placeholder: t("vote_form.placeholder"), class: "statement validate-length limit-250"

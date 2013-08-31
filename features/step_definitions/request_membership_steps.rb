@@ -61,7 +61,8 @@ Then(/^the requester should be added to the group$/) do
 end
 
 Then(/^I should no longer see the membership request in the list$/) do
-  find('#membership-request-list').should_not have_content @membership_request.name
+  page.should_not have_css '#membership-request-list'
+  page.should have_content I18n.t(:no_pending_membership_requests)
 end
 
 Given(/^there is an approved membership request from a user$/) do
@@ -186,6 +187,12 @@ end
 Given /^I am a member of a parent\-group that has a public sub\-group$/ do
   step 'a public sub-group exists'
   @parent_group.add_member! @user
+end
+
+Then(/^the requester should be emailed of the approval$/) do
+  last_email = ActionMailer::Base.deliveries.last
+  last_email.to.should include @membership_request.email
+  last_email.subject.should include 'Membership approved'
 end
 
 Then(/^I should be asked to log in$/) do

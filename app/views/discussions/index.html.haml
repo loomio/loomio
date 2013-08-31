@@ -2,7 +2,7 @@
   #discussion-list
     - if @discussions.present?
       - @discussions.each do |discussion|
-        %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
+        %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group, discussion_surely_has_no_current_motion: true
     - elsif @no_discussions_exist
       %li.empty-list-message= t :empty_discussion_index_group
 = paginate @discussions, :window => 3, :remote => :true

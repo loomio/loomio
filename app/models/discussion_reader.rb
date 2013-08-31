@@ -1,5 +1,4 @@
 class DiscussionReader < ActiveRecord::Base
-  attr_accessible :user_id, :discussion_id, :last_read_at, :following, :read_comments_count
 
   belongs_to :user
   belongs_to :discussion

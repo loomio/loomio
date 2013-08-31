@@ -1,12 +1,16 @@
 %table#pricing_table
   - first_amount = PaypalCheckout::AMOUNT_OPTIONS.first
   %tr#first
-    %td= t("subscriptions.subscription.table.quantity_with_people", people: PaypalCheckout::DOLLARS_TO_PEOPLE[first_amount])
-    %td= t("subscriptions.subscription.table.price_html", amount: first_amount)
+    %td= "Up to #{PaypalCheckout::DOLLARS_TO_PEOPLE[first_amount]} people"
+    %td
+      %span US
+      = "$#{first_amount}/mo"
   - PaypalCheckout::AMOUNT_OPTIONS[1, PaypalCheckout::AMOUNT_OPTIONS.count - 1].each do |amount|
     %tr
-      %td= t("subscriptions.subscription.table.quantity", people: PaypalCheckout::DOLLARS_TO_PEOPLE[amount])
-      %td= t("subscriptions.subscription.table.price_html", amount: amount)
+      %td= "Up to #{PaypalCheckout::DOLLARS_TO_PEOPLE[amount]}"
+      %td
+        %span US
+        = "$#{amount}/mo"
   %tr
-    %td= t("subscriptions.subscription.table.quantity_more")
-    %td= t("subscriptions.subscription.table.price_talk_html")
+    %td More than 100
+    %td <a href='mailto:accounts@loomio.org' target='_blank'>Talk to us!</a>

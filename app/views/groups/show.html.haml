@@ -17,7 +17,7 @@
         %li.selector-item.loading= t(:loading)
       #discussions-with-motions
         - @discussions.with_open_motions.order('motions.closing_at ASC').each do |discussion|
-          %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group
+          %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group, discussion_surely_has_no_current_motion: false
         .discussion-with-motion-divider.hidden
       #group-discussions.hidden
         %div{ class: "group_#{@group.id}" }

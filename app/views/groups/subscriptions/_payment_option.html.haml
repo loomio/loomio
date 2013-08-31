@@ -1,6 +1,8 @@
 %div{ class: "payment-option-container box-#{option_color}" }
-  = t('subscriptions.people_limit_html', people: people)
-  = link_to t('subscriptions.monthly_amount', amount: amount),
+  Up to
+  %strong= people
+  people
+  = link_to "$#{amount}/month",
     group_subscription_path(group, amount: amount),
     method: :post,
     class: "subscription btn btn-#{option_color}"

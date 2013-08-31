@@ -16,7 +16,7 @@ class GroupsController < GroupBaseController
 
   #for create group
   def create
-    @group = Group.new(params[:group])
+    @group = Group.new(permitted_params.group)
     authorize!(:create, @group)
     if @group.save
       @group.add_admin! current_user
@@ -28,7 +28,7 @@ class GroupsController < GroupBaseController
   end
 
   def update
-    if @group.update_attributes(params[:group])
+    if @group.update_attributes(permitted_params.group)
       flash[:notice] = 'Group was successfully updated.'
       redirect_to @group
     else
@@ -56,13 +56,21 @@ class GroupsController < GroupBaseController
 
 
   def add_members
-    #rob says yuck
+    # params.each_key do |key|
+    #   if key =~ /user_/
+    #     user = User.find(key[5..-1])
+    #     @group.add_member!(user, current_user)
+    #   end
+    # end
+
+    user_ids = []
     params.each_key do |key|
-      if key =~ /user_/
-        user = User.find(key[5..-1])
-        @group.add_member!(user, current_user)
-      end
+      user_ids << key[5..-1] if key =~ /user_/
     end
+    users_to_add = @group.parent.members.where(id: user_ids)
+    memberships = @group.add_members!(users_to_add)
+    memberships.each { |membership| Events::UserAddedToGroup.publish!(membership) }
+
     flash[:success] = t("success.members_added")
     redirect_to @group
   end
