@@ -59,9 +59,10 @@ class Motion < ActiveRecord::Base
     close! if closing_at <= Time.now
   end
 
-  def set_default_close_at_date_and_time
-    self.close_at_date ||= 3.days.from_now.to_date
-    self.close_at_time ||= Time.now.strftime("%H:00")
+  def set_default_close_at_date_and_time(user)
+    Time.zone = user.time_zone_city
+    self.close_at_date ||= (Time.zone.now + 3.days).to_date
+    self.close_at_time ||= Time.zone.now.strftime("%H:00")
   end
 
   def set_outcome!(str)
