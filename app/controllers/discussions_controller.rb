@@ -118,7 +118,6 @@ class DiscussionsController < GroupBaseController
       flash[:notice] = "A current proposal already exists for this disscussion."
     else
       @motion = Motion.new
-      @motion.set_default_close_at_date_and_time(current_user)
       @motion.discussion = discussion
       @group = GroupDecorator.new(discussion.group)
       render 'motions/new'

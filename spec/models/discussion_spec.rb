@@ -52,8 +52,10 @@ describe Discussion do
 
   describe "#last_versioned_at" do
     it "returns the time the discussion was created at if no previous version exists" do
-      discussion = create :discussion
-      discussion.last_versioned_at.iso8601.should == discussion.created_at.iso8601
+      Timecop.freeze do
+        discussion = create :discussion
+        discussion.last_versioned_at.iso8601.should == discussion.created_at.iso8601
+      end
     end
     it "returns the time the previous version was created at" do
       discussion = create :discussion
