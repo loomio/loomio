@@ -40,9 +40,9 @@ Then(/^the flash notice should inform me of (\d+) invitations being sent$/) do |
 end
 
 Given(/^there is a pending invitation to join the group$/) do
-  CreateInvitation.to_join_group(recipient_email: 'me@you.com',
-                                 group: @group,
-                                 inviter: @user)
+  #CreateInvitation.to_join_group(recipient_email: 'me@you.com',
+                                 #group: @group,
+                                 #inviter: @user)
 end
 
 When(/^I cancel the pending invitation$/) do
