@@ -30,6 +30,7 @@ FactoryGirl.define do
     viewable_by 'everyone'
     members_invitable_by 'members'
     after(:create) do |group, evaluator|
+      group.pending_invitations << FactoryGirl.create(:invitation, group: group)
       user = FactoryGirl.create(:user)
       if group.parent.present?
         group.parent.admins << user
