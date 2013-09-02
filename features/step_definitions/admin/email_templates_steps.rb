@@ -12,13 +12,13 @@ When(/^fill in and submit the email template form$/) do
   select 'English', from: 'Language'
   fill_in 'Subject', with: 'We reckon you need to start a discussion in your group'
   fill_in 'Body', with: <<-body
-  Hi {{recipient_first_name}},
+  Hi recipient_first_name,
   ============================
 
   We're really pleased you started a loomio group, but we're sad that
   nothing has been going on in it.
 
-  Why dont you head over to the [start discussion page]({{new_discussion_url}}) and start one?
+  Why dont you head over to the [start discussion page](new_discussion_url) and start one?
 
   - this
   - is
@@ -26,7 +26,7 @@ When(/^fill in and submit the email template form$/) do
   - list
 
   Thanks for your time
-  {{author_first_name}}
+  author_first_name
   body
   click_on 'Create Email template'
 end
