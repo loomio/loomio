@@ -19,6 +19,16 @@
           -if item.is_a? Motion
             =render 'motion_line_item', item: item
 
+        -if @inbox.unread_items_exceeds_max_for(group)
+          %li
+            .row
+              .span1
+              .span11
+                =link_to group do
+                  =@inbox.items_not_shown_count_for(group)
+                  more unread items
+
+
 - if @inbox.empty?
   =t(:'inbox.empty')
 - else

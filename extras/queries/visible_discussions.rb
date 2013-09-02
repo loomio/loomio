@@ -62,4 +62,9 @@ class Queries::VisibleDiscussions < Delegator
     @relation = @relation.joins(:motions).merge(Motion.voting)
     self
   end
+
+  def joined_to_motions
+    @relation = @relation.joins(:motions)
+    self
+  end
 end
