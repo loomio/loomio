@@ -11,15 +11,6 @@ class BaseController < ApplicationController
 
   protected
 
-  def time_zone
-    if user_signed_in?
-      current_user.time_zone
-    else
-      'UTC'
-    end
-  end
-
-
   def load_announcements
     if current_user and not request.xhr?
       @current_and_not_dismissed_announcements = Announcement.current_and_not_dismissed_by(current_user)
