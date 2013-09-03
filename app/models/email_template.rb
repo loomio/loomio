@@ -21,9 +21,8 @@ class EmailTemplate < ActiveRecord::Base
     out_text = in_text.dup
     subs = substitutions(placeholders)
 
-    in_text.scan(/{{([^}]+)}}/) do |match|
-      code = match.first
-      out_text.gsub!("{{#{code}}}", subs[code.to_sym])
+    subs.each_pair do |placeholder, value|
+      out_text.gsub!(placeholder.to_s, value.to_s)
     end
 
     out_text
