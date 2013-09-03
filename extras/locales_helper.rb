@@ -33,7 +33,7 @@ module LocalesHelper
   end
 
   def update_user_locale_preference(locale)
-    current_user.language_preference = locale if current_user
+    current_user.update_attribute(:language_preference, locale) if current_user
   end
 
   def user_locale_preference_exists?

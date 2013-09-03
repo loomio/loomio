@@ -1,12 +1,11 @@
 require 'spec_helper'
 
 describe UsersController do
-  let(:previous_url) { root_url }
   let(:user) { create(:user) }
 
   before do
     sign_in user
-    request.env["HTTP_REFERER"] = previous_url
+    controller.stub(:set_locale)
   end
 
   describe "#update" do
@@ -28,7 +27,7 @@ describe UsersController do
     it "redirects to root on success" do
       user.stub(:save).and_return(true)
       post :update, :id => 999, :user => {:name => "Peter Chilltooth"}
-      response.should redirect_to(previous_url)
+      response.should redirect_to(root_url)
     end
     it "redirects to user settings on failure" do
       user.stub(:save).and_return(false)
