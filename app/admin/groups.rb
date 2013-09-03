@@ -10,6 +10,8 @@ ActiveAdmin.register Group do
   before_filter :set_pagination
   filter :name 
   filter :payment_plan, as: :select, collection: Group::PAYMENT_PLANS
+  filter :memberships_count
+  filter :created_at
 
 
   scope :all
