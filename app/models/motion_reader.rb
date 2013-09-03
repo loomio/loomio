@@ -9,6 +9,6 @@ class MotionReadLog < ActiveRecord::Base
   private
 
   def set_motion_last_viewed_at_to_now
-    self.motion_last_viewed_at = Time.now
+    self.motion_last_viewed_at = Time.zone.now
   end
 end

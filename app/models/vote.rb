@@ -17,7 +17,7 @@ class Vote < ActiveRecord::Base
 
   POSITIONS = %w[yes abstain no block]
 
-  belongs_to :motion
+  belongs_to :motion, counter_cache: true
   belongs_to :user
   has_many :events, :as => :eventable, :dependent => :destroy
 

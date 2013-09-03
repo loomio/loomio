@@ -7,11 +7,10 @@
           %span.count.unread-votes-count
             5
         .motion-sparkline
-          1,2,1,2
-          -#-if values.sum == 0
-            -#0,0,0,0,1
-          -#-else
-            -#=values.join(',') 
+          -if values.sum == 0
+            0,0,0,0,1
+          -else
+            =values.join(',') 
 
     .span8.title
       = item.title

@@ -152,18 +152,6 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  def number_of_votes_since(time)
-    votes.where('votes.created_at > ?', time).count
-  end
-
-  def number_of_votes_since_last_looked(user)
-    if user && last_seen = last_looked_at_by(user)
-      number_of_votes_since(last_seen)
-    else
-      total_votes_count
-    end
-  end
-
   def update_vote_counts!
     position_counts = {}
 
@@ -183,7 +171,7 @@ class Motion < ActiveRecord::Base
   end
 
   # group size when voting
-  def group_count
+  def group_size_when_voting
     if voting?
       group.memberships_count || 0
     else
@@ -209,7 +197,6 @@ class Motion < ActiveRecord::Base
   def comments
     discussion.comments
   end
-
 
   private
 
