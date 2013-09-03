@@ -47,8 +47,12 @@ class EmailTemplate < ActiveRecord::Base
       subs.merge!({ group_id: group.id,
                     group_name: group.name,
                     invite_people_to_group_url: new_group_invitation_url(group),
-                    invitation_to_start_group_url: invitation_url(group.pending_invitations.first),
+                    invitation_to_start_group_url: 'http://invitations_url_placeholder/',
                     group_url: group_url(group) })
+    end
+
+    if group.pending_invitations.present?
+      subs.merge!({invitation_to_start_group_url: invitation_url(group.pending_invitations.first)})
     end
     subs
   end
