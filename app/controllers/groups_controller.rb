@@ -79,11 +79,6 @@ class GroupsController < GroupBaseController
     @group.update_attribute(:next_steps_completed, true)
   end
 
-  def new_motion
-    @group = GroupDecorator.new Group.find(params[:id])
-    @motion = Motion.new
-  end
-
   def email_members
     subject = params[:group_email_subject]
     body = params[:group_email_body]

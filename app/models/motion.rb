@@ -24,6 +24,7 @@ class Motion < ActiveRecord::Base
   delegate :users, :full_name, :to => :group, :prefix => :group
   delegate :email_new_motion?, to: :group, prefix: :group
 
+  after_initialize :set_default_close_at_date_and_time
   before_validation :set_closing_at
   before_save :format_discussion_url
   after_create :fire_new_motion_event
@@ -57,11 +58,6 @@ class Motion < ActiveRecord::Base
 
   def close_if_expired
     close! if closing_at <= Time.now
-  end
-
-  def set_default_close_at_date_and_time
-    self.close_at_date ||= 3.days.from_now.to_date
-    self.close_at_time ||= Time.now.strftime("%H:00")
   end
 
   def set_outcome!(str)
@@ -212,6 +208,10 @@ class Motion < ActiveRecord::Base
 
 
   private
+    def set_default_close_at_date_and_time
+      self.close_at_date ||= (Time.zone.now + 3.days).to_date
+      self.close_at_time ||= Time.zone.now.strftime("%H:00")
+    end
 
     def set_closing_at
       date_time_zone_format = '%Y-%m-%d %H:%M %Z'

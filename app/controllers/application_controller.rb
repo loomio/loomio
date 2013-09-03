@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
   before_filter :initialize_search_form
+  around_filter :user_time_zone, if: :current_user
 
   rescue_from CanCan::AccessDenied do |exception|
     if current_user
@@ -34,5 +35,9 @@ class ApplicationController < ActionController::Base
 
   def initialize_search_form
     @search_form = SearchForm.new(current_user)
+  end
+
+  def user_time_zone(&block)
+    Time.use_zone(current_user.time_zone_city, &block)
   end
 end
