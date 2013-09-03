@@ -51,7 +51,7 @@ class EmailTemplate < ActiveRecord::Base
                     group_url: group_url(group) })
     end
 
-    if group.pending_invitations.present?
+    if group && group.pending_invitations.size > 0
       subs.merge!({invitation_to_start_group_url: invitation_url(group.pending_invitations.first)})
     end
     subs
