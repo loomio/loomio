@@ -4,6 +4,16 @@ $ ->
     title: 'Mark as read'
     delay: 800
 
+  $(".unread-comments-count").tooltip
+    placement: "right",
+    title: "Unread comments"
+    delay: 500
+
+  $(".unread-votes-count").tooltip
+    placement: "right",
+    title: "New votes"
+    delay: 500
+
 fade_time = 150
 
 remove_group_if_empty = (group_div) ->
