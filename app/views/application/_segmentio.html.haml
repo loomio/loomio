@@ -16,7 +16,7 @@
     return seg
   })
 
-  analytics.trackFrom($('form'), 'Submitted form', function (form) {
+  analytics.trackForm($('form'), 'Submitted form', function (form) {
     seg['form_class'] = $(form).prop('class')
     seg['form_id'] = $(form).prop('id')
     return seg

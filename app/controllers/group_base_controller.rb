@@ -23,7 +23,7 @@ class GroupBaseController < BaseController
   end
 
   def load_group
-    @group ||= GroupDecorator.new(Group.find(group_id))
+    @group ||= GroupDecorator.new(Group.find_by_id(group_id))
   end
 
   def group_id
@@ -42,14 +42,16 @@ class GroupBaseController < BaseController
 
   def prepare_segmentio_data
     super
-    load_group
-    @segmentio.merge!({
-      group_id: @group.id,
-      group_parent_id: (@group.parent_id ? @group.parent_id : 'undefined'),
-      top_group: (@group.parent_id ? @group.parent_id : @group.id),
-      group_members: @group.memberships_count,
-      viewable_by: @group.viewable_by,
-      group_cohort: @group.created_at.strftime("%Y-%m")
-    })
+    @group ||= Group.find_by_id(group_id)
+    if @group.present?
+      @segmentio.merge!({
+        group_id: @group.id,
+        group_parent_id: (@group.parent_id ? @group.parent_id : 'undefined'),
+        top_group: (@group.parent_id ? @group.parent_id : @group.id),
+        group_members: @group.memberships_count,
+        viewable_by: @group.viewable_by,
+        group_cohort: @group.created_at.strftime("%Y-%m")
+      })
+    end
   end
 end
