@@ -39,4 +39,17 @@ class GroupBaseController < BaseController
       end
     end
   end
+
+  def prepare_segmentio_data
+    super
+    load_group
+    @segmentio.merge!({
+      group_id: @group.id,
+      group_parent_id: (@group.parent_id ? @group.parent_id : 'undefined'),
+      top_group: (@group.parent_id ? @group.parent_id : @group.id),
+      group_members: @group.memberships_count,
+      viewable_by: @group.viewable_by,
+      group_cohort: @group.created_at.strftime("%Y-%m")
+    })
+  end
 end

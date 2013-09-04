@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
   before_filter :initialize_search_form
+  before_filter :prepare_segmentio_data
   around_filter :user_time_zone, if: :current_user
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -39,5 +40,9 @@ class ApplicationController < ActionController::Base
 
   def user_time_zone(&block)
     Time.use_zone(current_user.time_zone_city, &block)
+  end
+
+  def prepare_segmentio_data
+    @segmentio = {user_id: 'undefined', cohort: 'undefined'}
   end
 end

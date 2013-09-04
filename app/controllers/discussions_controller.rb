@@ -167,7 +167,7 @@ class DiscussionsController < GroupBaseController
     redirect_to @version.reify()
   end
 
-  private
+  protected
 
   def assign_meta_data
     if @group.viewable_by == 'everyone'
@@ -186,5 +186,12 @@ class DiscussionsController < GroupBaseController
     elsif params[:discussion][:group_id]
       Group.find(params[:discussion][:group_id])
     end
+  end
+
+  def prepare_segmentio_data
+    super
+    @segmentio.merge!({
+      discussion_id: params[:id]
+    })
   end
 end
