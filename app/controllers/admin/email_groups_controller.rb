@@ -11,12 +11,10 @@ class Admin::EmailGroupsController < Admin::BaseController
     @email_groups_form = Admin::EmailGroupsForm.new(params[:admin_email_groups_form])
     if @email_groups_form.valid?
       generate_emails(@email_groups_form)
-
     else
       raise [params[:admin_email_groups_form], @email_groups_form.inspect].inspect
       render :new
     end
-
   end
 
   protected
@@ -34,6 +32,8 @@ class Admin::EmailGroupsController < Admin::BaseController
 
     groups.each do |group|
       recipients = case form.recipients
+                    when 'requestor'
+                      [group.group_request]
                     when 'contact_person'
                       [group.contact_person]
                     when 'coordinators'
@@ -51,7 +51,7 @@ class Admin::EmailGroupsController < Admin::BaseController
                                               placeholders: {group: group,
                                                              author: author,
                                                              recipient: recipient})
-        email.save
+        email.save!
       end
       record = EmailTemplateSentToGroup.new(email_template: email_template,
                                             group: group,

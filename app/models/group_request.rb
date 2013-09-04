@@ -18,6 +18,14 @@ class GroupRequest < ActiveRecord::Base
   before_destroy :prevent_destroy_if_group_present
   before_validation :generate_token, on: :create
 
+  def admin_first_name
+    admin_name.split(' ').first
+  end
+
+  def name_and_email
+    "#{admin_name} <#{admin_email}>"
+  end
+
   private
 
   def prevent_destroy_if_group_present
