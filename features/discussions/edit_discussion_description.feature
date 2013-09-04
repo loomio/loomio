@@ -27,6 +27,7 @@ Feature: User edits discussion description
     And I fill in and submit the discussion description form
     Then I should see the description change
     And I should see a record of my change in the discussion feed
+    And I should see a link to revision history
 
   Scenario: User tries to edit the discussion description when they don't belong to the group
     Given there is a discussion in a public group
