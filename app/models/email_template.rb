@@ -7,7 +7,7 @@ class EmailTemplate < ActiveRecord::Base
 
     email = Email.new
     email.email_template = self
-    email.recipient = placeholders[:recipient]
+    email.recipient = placeholders[:recipient] if placeholders[:recipient].is_a? User
     email.subject = substitute_placeholders(subject, placeholders)
     email.body = substitute_placeholders(body, placeholders)
     email.language = language
@@ -32,16 +32,23 @@ class EmailTemplate < ActiveRecord::Base
     group = placeholders[:group]
     recipient = placeholders[:recipient]
     author = placeholders[:author]
+
     subs = {
-      recipient_id: recipient.id,
-      recipient_first_name: recipient.first_name,
-      recipient_name: recipient.name,
       author_id: author.id,
       author_first_name: author.first_name,
       author_name: author.name,
       new_discussion_url: new_discussion_url,
       loomio_url: root_url
     }
+
+    if recipient.is_a? User
+      subs.merge!({recipient_id: recipient.id,
+                   recipient_first_name: recipient.first_name,
+                   recipient_name: recipient.name})
+    elsif group.group_request.present?
+      subs.merge!({recipient_first_name: group.group_request.admin_first_name,
+                   recipient_name: group.group_request.admin_name})
+    end
 
     if group
       subs.merge!({ group_id: group.id,
