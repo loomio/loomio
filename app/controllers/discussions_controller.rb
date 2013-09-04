@@ -18,7 +18,7 @@ class DiscussionsController < GroupBaseController
 
   def create
     current_user.update_attributes(uses_markdown: params[:discussion][:uses_markdown])
-    
+
     @discussion = Discussion.new(permitted_params.discussion)
     @discussion.author = current_user
 
@@ -66,6 +66,9 @@ class DiscussionsController < GroupBaseController
   end
 
   def show
+    if @discussion.has_previous_versions?
+      @last_collaborator = User.find(@discussion.originator.to_i)
+    end
     @group = GroupDecorator.new(@discussion.group)
     @vote = Vote.new
     @current_motion = @discussion.current_motion

@@ -56,7 +56,7 @@ class Discussion < ActiveRecord::Base
   def joined_or_new_discussion_reader_for(user)
     if self[:viewer_user_id].present?
       unless user.id == self[:viewer_user_id].to_i
-        raise "joined for wrong user" 
+        raise "joined for wrong user"
       end
       DiscussionReader.load_from_joined_discussion(self)
     else
@@ -122,7 +122,7 @@ class Discussion < ActiveRecord::Base
   def activity
     Event.includes(:eventable).where(discussion_id: id).order('created_at DESC')
   end
-  
+
   def viewed!
     Discussion.increment_counter(:total_views, id)
     self.total_views += 1
@@ -150,7 +150,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def has_previous_versions?
-    previous_version.present?
+    previous_version.id.present?
   end
 
   def last_versioned_at
