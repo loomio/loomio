@@ -4,6 +4,16 @@ class InboxController < BaseController
     render layout: false if request.xhr?
   end
 
+  def size
+    load_inbox
+
+    if @inbox.size > 0
+      render text: @inbox.size
+    else
+      render text: ''
+    end
+  end
+
   def preferences
     @inbox_preferences_form = InboxPreferencesForm.new(current_user)
   end

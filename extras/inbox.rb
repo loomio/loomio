@@ -1,6 +1,9 @@
 class Inbox
+  attr_reader :size
+
   def initialize(user)
     @user = user
+    @size = 0
   end
 
   def unfollow!(item)
@@ -27,7 +30,13 @@ class Inbox
       other_discussions = discussions - aligned_items
       @grouped_items[group] = aligned_items + other_discussions
     end
+    update_size
     self
+  end
+
+  def update_size
+    @size = 0
+    @grouped_items.each_pair{|group, items| @size += items.size }
   end
 
   def items_count
