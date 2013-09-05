@@ -426,7 +426,7 @@ en:
       you can use the proposal to get quick input into a decision.</p>
       <p>You can do things like finalise a document, approve an application, or sign-off on a piece of work.</p>
     get_in_touch: "Get in touch"
-    get_in_touch_description_html: "If you have any questions or feedback, send us an email: <a href='mailto:contact@loomio.org'>contact@loomio.org</a>"
+    get_in_touch_description_html: "If you have any questions or feedback, fill out this <a href='%{link}'>form</a> or send us an email at <a href='mailto:contact@loomio.org'>contact@loomio.org</a>."
     getting_started: "Getting started"
     getting_started_description: "On the left, the group discusses a topic, exchanging ideas and information. When there’s a decision for the group to make, it comes up on the right."
     getting_the_most: 'Getting the most out of Loomio'
@@ -865,6 +865,7 @@ en:
   groups: "Groups"
   group_admin: "Group Coordinator"
   home: "Home"
+  id: "id"
   like: "Like"
   loading: "Loading..."
   message: "Message"
