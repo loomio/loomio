@@ -110,6 +110,8 @@ a.btn-icon:hover { color: $dark-grey; }
 .invitations.show,
 .sessions.new,
 .registrations.create,
+.contact_messages.new,
+.contact_messages.create,
 .pages.donate,
 .pages.home,
 .pages.about,
@@ -412,3 +414,24 @@ body.pages.terms_of_service {
     }
   }
 }
+
+.container#contact_message {
+  h1 {
+    font-size: 50px;
+    margin-bottom: 40px;
+  }
+  input[type="email"],
+  input[type="text"] {
+    height: 28px;
+    margin: 8px 0 10px 0;
+    width: 360px;
+  }
+  input[type='submit'] { padding: 11px 40px }
+  textarea {
+    height: 100px;
+    margin: 8px 0 10px 0;
+    width: 360px;
+  }
+  #direct_contact { margin-top: 101px; }
+}
+

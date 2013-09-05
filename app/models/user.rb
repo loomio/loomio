@@ -78,6 +78,7 @@ class User < ActiveRecord::Base
 
   has_many :notifications
   has_many :comments
+  has_many :attachments
 
   before_save :set_avatar_initials, :ensure_unsubscribe_token
   before_create :set_default_avatar_kind

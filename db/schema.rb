@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(:version => 20130903214957) do
     t.datetime "updated_at",                   :null => false
   end
 
+  create_table "attachments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "filename"
+    t.string   "location"
+    t.integer  "comment_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "filesize"
+  end
+
+  add_index "attachments", ["user_id", "comment_id"], :name => "index_attachments_on_user_id_and_comment_id"
+
   create_table "campaign_signups", :force => true do |t|
     t.integer  "campaign_id"
     t.string   "name"
@@ -95,6 +107,15 @@ ActiveRecord::Schema.define(:version => 20130903214957) do
   add_index "comments", ["discussion_id"], :name => "index_comments_on_discussion_id"
   add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "contact_messages", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.string   "email"
+    t.text     "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "contributions", :force => true do |t|
     t.integer  "user_id"
@@ -448,8 +469,8 @@ ActiveRecord::Schema.define(:version => 20130903214957) do
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.boolean  "uses_markdown",                                               :default => false
+    t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.string   "language_preference"
     t.string   "time_zone"
   end

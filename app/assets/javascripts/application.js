@@ -44,4 +44,7 @@
 //= require autodetect_time_zone
 //= require inbox
 //= require searches
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+//= require attachments
 //= require subscriptions
