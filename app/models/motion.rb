@@ -152,10 +152,6 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  def voted?(motion)
-    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
-  end
-
   # members_not_voted_count
   # was no_vote_count
   def members_not_voted_count
