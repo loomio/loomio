@@ -133,7 +133,7 @@ initializeHelpNotices= () ->
   )
 
 initializeDatepicker = () ->
-  $('input.datepicker').datepicker(dateFormat: 'dd-mm-yy')
+  $('input.datepicker').datepicker({ dateFormat: 'dd-mm-yy', minDate: - 0})
 
 Application.convertUtcToRelativeTime = ->
   if $(".utc-time").length > 0

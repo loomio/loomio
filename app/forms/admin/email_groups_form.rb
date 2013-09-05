@@ -2,7 +2,7 @@ class Admin::EmailGroupsForm
   extend ActiveModel::Naming
   include ActiveModel::Conversion
   include ActiveModel::Validations
-  RECIPIENTS_OPTIONS = %w[contact_person coordinators members]
+  RECIPIENTS_OPTIONS = %w[requestor contact_person coordinators members]
 
   attr_accessor :recipients
   attr_accessor :group_ids

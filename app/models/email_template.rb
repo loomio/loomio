@@ -7,7 +7,7 @@ class EmailTemplate < ActiveRecord::Base
 
     email = Email.new
     email.email_template = self
-    email.recipient = placeholders[:recipient]
+    email.recipient = placeholders[:recipient] if placeholders[:recipient].is_a? User
     email.subject = substitute_placeholders(subject, placeholders)
     email.body = substitute_placeholders(body, placeholders)
     email.language = language
@@ -21,9 +21,8 @@ class EmailTemplate < ActiveRecord::Base
     out_text = in_text.dup
     subs = substitutions(placeholders)
 
-    in_text.scan(/{{([^}]+)}}/) do |match|
-      code = match.first
-      out_text.gsub!("{{#{code}}}", subs[code.to_sym])
+    subs.each_pair do |placeholder, value|
+      out_text.gsub!(placeholder.to_s, value.to_s)
     end
 
     out_text
@@ -33,10 +32,8 @@ class EmailTemplate < ActiveRecord::Base
     group = placeholders[:group]
     recipient = placeholders[:recipient]
     author = placeholders[:author]
+
     subs = {
-      recipient_id: recipient.id,
-      recipient_first_name: recipient.first_name,
-      recipient_name: recipient.name,
       author_id: author.id,
       author_first_name: author.first_name,
       author_name: author.name,
@@ -44,11 +41,25 @@ class EmailTemplate < ActiveRecord::Base
       loomio_url: root_url
     }
 
+    if recipient.is_a? User
+      subs.merge!({recipient_id: recipient.id,
+                   recipient_first_name: recipient.first_name,
+                   recipient_name: recipient.name})
+    elsif group.group_request.present?
+      subs.merge!({recipient_first_name: group.group_request.admin_first_name,
+                   recipient_name: group.group_request.admin_name})
+    end
+
     if group
       subs.merge!({ group_id: group.id,
                     group_name: group.name,
                     invite_people_to_group_url: new_group_invitation_url(group),
+                    invitation_to_start_group_url: 'http://invitations_url_placeholder/',
                     group_url: group_url(group) })
+    end
+
+    if group && group.pending_invitations.size > 0
+      subs.merge!({invitation_to_start_group_url: invitation_url(group.pending_invitations.first)})
     end
     subs
   end

@@ -2,6 +2,7 @@ Given(/^there is a pending invitation to a group$/) do
   @coordinator = FactoryGirl.create(:user)
   @group = FactoryGirl.create(:group)
   @group.add_admin!(@coordinator)
+  @group.pending_invitations.first.destroy
   @invitation = CreateInvitation.to_join_group(group: @group, 
                                                inviter: @coordinator,
                                                recipient_email: 'jim@jimmy.com')

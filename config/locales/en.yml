@@ -704,6 +704,7 @@ en:
       motion:
         name: "Title"
         description: "Details"
+        close_at_date: "Closing"
       user:
         name: "Full name"
         email: "Email"
