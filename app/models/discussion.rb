@@ -45,8 +45,8 @@ class Discussion < ActiveRecord::Base
       self.discussion_readers.where(user_id: user.id).first
     else
       discussion_reader = self.discussion_readers.build
-      discussion_reader.user = user
       discussion_reader.discussion = self
+      discussion_reader.user = user
       discussion_reader
     end
   end

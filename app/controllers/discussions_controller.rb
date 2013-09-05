@@ -18,7 +18,7 @@ class DiscussionsController < GroupBaseController
 
   def create
     current_user.update_attributes(uses_markdown: params[:discussion][:uses_markdown])
-    
+
     @discussion = Discussion.new(permitted_params.discussion)
     @discussion.author = current_user
 
@@ -79,7 +79,9 @@ class DiscussionsController < GroupBaseController
     if current_user
       @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
       @uses_markdown = current_user.uses_markdown?
-      ViewLogger.motion_viewed(@current_motion, current_user) if @current_motion
+      if @current_motion
+        @current_motion.as_read_by(current_user).viewed!
+      end
       @discussion.as_read_by(current_user).viewed!
     end
     @activity = Kaminari.paginate_array(@discussion.filtered_activity).page(params[:page]).per(50)

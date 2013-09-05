@@ -106,28 +106,6 @@ describe User do
     end
   end
 
-  describe "user.voted?(motion)" do
-    before do
-      group.add_member!(user)
-      discussion = create :discussion, group: group
-      @motion = create :motion, discussion: discussion, author: user
-    end
-    it "it returns true if user has voted on motion" do
-      vote = user.votes.new(position: "abstain")
-      vote.motion = @motion
-      vote.save!
-      user.voted?(@motion).should == true
-    end
-    it "it returns false if user has not voted on motion" do
-      user.voted?(@motion).should == false
-    end
-  end
-
-  it "can find user by email (case-insensitive)" do
-    user = create(:user, email: "foobar@example.com")
-    User.find_by_email("foObAr@exaMPLE.coM").should == user
-  end
-
   describe "mark_notifications_as_viewed" do
     before do
       @notif1 = Notification.create!(:event => mock_model(Event), :user => user)
