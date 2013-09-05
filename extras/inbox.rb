@@ -53,7 +53,7 @@ class Inbox
   end
 
   def unread_per_group_limit
-    3
+    20
   end
 
   def unread_items_exceeds_max_for(group)

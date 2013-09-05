@@ -71,8 +71,8 @@ def create_motion(in_discussion)
       closing_at:         Time.now+rand(300).minutes,
       votes_for_graph:    [["Yes (1)", 1, "Yes", [["himful@gmail.com"]]], ["Abstain (0)", 0, "Abstain", [[]]], ["No (0)", 0, "No", [[]]], ["Block (1)", 1, "Block", [["bob@lick.com"]]]],
       percent_voted:      50,
-      group_count:        22,
-      no_vote_count:      11
+      group_size_when_voting:        22,
+      members_not_voted_count:      11
 end
 
 def create_vote

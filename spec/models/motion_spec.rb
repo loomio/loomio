@@ -146,7 +146,7 @@ describe Motion do
     end
   end
 
-  describe "#no_vote_count" do
+  describe "#members_not_voted_count" do
     let(:motion) { create :motion }
 
     it "returns the number of members who did not vote" do
@@ -154,7 +154,7 @@ describe Motion do
       motion.group.add_member! user
       create :vote, :motion => motion, :position => "yes", :user => user
       motion.reload
-      motion.no_vote_count.should == motion.group_users.count - 1
+      motion.members_not_voted_count.should == motion.group_users.count - 1
     end
 
     it "still works if the same user votes multiple times" do
@@ -163,7 +163,7 @@ describe Motion do
       create :vote, :motion => motion, :position => "yes", :user => user
       create :vote, :motion => motion, :position => "no", :user => user
       motion.reload
-      motion.no_vote_count.should == motion.group_users.count - 1
+      motion.members_not_voted_count.should == motion.group_users.count - 1
     end
 
     context "for a closed motion" do
@@ -172,68 +172,31 @@ describe Motion do
       it "returns the number of members who did not vote" do
         motion.should be_closed
         motion.stub(:did_not_votes_count).and_return(99)
-        motion.no_vote_count.should == 99
+        motion.members_not_voted_count.should == 99
       end
     end
   end
 
-  describe "number_of_votes_since_last_looked(user)" do
-    before do
-      @user = build(:user)
-      @motion = create(:motion)
-    end
-    context "the user is a member of the motions group" do
-      it "returns the total number of votes if the user has not seen the motion" do
-        @motion.stub(:last_looked_at_by).with(@user).and_return(nil)
-        @motion.stub_chain(:total_votes_count).and_return(4)
-
-        @motion.number_of_votes_since_last_looked(@user).should == 4
-      end
-      it "returns the number of votes since the user last looked at the motion" do
-        last_viewed_at = Time.now
-        @user.stub(:is_group_member?).with(@motion.group).and_return(true)
-
-        @motion.stub(:last_looked_at_by).
-          with(@user).and_return(last_viewed_at)
-
-        @motion.stub(:number_of_votes_since).
-          with(last_viewed_at).and_return(3)
-
-        @motion.number_of_votes_since_last_looked(@user).should == 3
-      end
-    end
-    context "the user is not a member of the group" do
-      it "returns the total number of votes" do
-        @motion.stub(:last_looked_at_by).with(@user).and_return(nil)
-        @motion.stub_chain(:total_votes_count).and_return(4)
-
-        @motion.number_of_votes_since_last_looked(nil).should == 4
-      end
-    end
-  end
-
-  describe "last_looked_at_by(user)" do
+  describe '#user_has_voted?' do
     before do
       @user = create :user
       @motion = create :motion
+      @motion.group.add_member!(@user)
     end
-    it "returns the date when the user last looked at the motion" do
-      @motion.stub(:read_log_for).and_return stub :motion_last_viewed_at => 123
-      @motion.last_looked_at_by(@user).should == 123
+    subject {@motion.user_has_voted?(@user)}
+    context 'user has voted' do
+      before do
+        @vote = Vote.new
+        @vote.position = 'yes'
+        @vote.motion = @motion
+        @vote.user = @user
+        @vote.save!
+        @motion.reload
+      end
+      it {should be_true} 
     end
-    it "returns nil if no read log exists" do
-      @motion.stub(:read_log_for).and_return nil
-      @motion.last_looked_at_by(@user).should == nil
-    end
-  end
-
-  describe "number_of_votes_since(time)" do
-    it "returns the number of votes since time" do
-      last_viewed_at = Time.now
-      motion = create(:motion)
-      motion.votes.stub_chain(:where, :count).and_return(4)
-
-      motion.number_of_votes_since(last_viewed_at).should == 4
+    context 'user has not voted' do
+      it {should be_false}
     end
   end
 
@@ -242,8 +205,8 @@ describe Motion do
       @motion = create(:motion)
     end
     it "returns the pecentage of users that have voted" do
-      @motion.stub(:no_vote_count).and_return(10)
-      @motion.stub(:group_count).and_return(20)
+      @motion.stub(:members_not_voted_count).and_return(10)
+      @motion.stub(:group_size_when_voting).and_return(20)
       @motion.percent_voted.should == 50
     end
   end

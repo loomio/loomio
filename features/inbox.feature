@@ -55,7 +55,7 @@ Feature: Inbox
   Scenario: User marks all discussions in group as read
     Given I belong to a group with several discussions
     When I visit the inbox
-    And I click 'Mark all as read'
+    And I click 'Clear'
     Then the discussions should disappear
 
   #Scenario: User unfollows discussion

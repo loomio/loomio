@@ -6,6 +6,7 @@ class Motion < ActiveRecord::Base
   has_many :votes, :dependent => :destroy
   has_many :did_not_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
+  has_many :motion_readers, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
   validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
@@ -71,23 +72,19 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  def read_log_for(user)
-    MotionReadLog.where('motion_id = ? AND user_id = ?',
-      id, user.id).first
+  def as_read_by(user)
+    if user.blank?
+      new_motion_reader_for(nil)
+    else
+      find_or_new_motion_reader_for(user)
+    end
   end
 
-  def last_looked_at_by(user)
-    read_log_for(user).motion_last_viewed_at if read_log_for(user)
+  def has_votes?
+    total_votes_count > 0
   end
 
-  def with_votes
-    votes if votes.size > 0
-  end
-
-  def unique_votes
-    Vote.unique_votes(self)
-  end
-
+  # map of position and votes
   def vote_counts
     counts = {}
     Vote::POSITIONS.each do |position|
@@ -96,8 +93,14 @@ class Motion < ActiveRecord::Base
     counts
   end
 
+  # number of final votes
   def total_votes_count
     yes_votes_count + no_votes_count + abstain_votes_count + block_votes_count
+  end
+
+  # number of vote records - ie: including changes to votes
+  def activity_count
+    votes.size
   end
 
   # this method sux
@@ -107,7 +110,7 @@ class Motion < ActiveRecord::Base
       votes_for_graph.push ["#{k.capitalize} (#{v})", v, "#{k.capitalize}", ([1]*v)]
     end
     if votes.size == 0
-      votes_for_graph.push ["Yet to vote (#{no_vote_count})", no_vote_count, 'Yet to vote', ([1]*no_vote_count)]
+      votes_for_graph.push ["Yet to vote (#{members_not_voted_count})", members_not_voted_count, 'Yet to vote', ([1]*members_not_voted_count)]
     end
     return votes_for_graph
   end
@@ -128,30 +131,51 @@ class Motion < ActiveRecord::Base
   end
 
   def latest_vote_time
-    if votes.present?
-      votes.order('created_at DESC').first.created_at
+    if last_vote_at.present?
+      last_vote_at
     else
+      # this seems incorrect behaviour
+      # and without it this method could be removed
       created_at
     end
   end
 
+  def last_vote_by_user(user)
+    votes.where(user_id: user.id).order('created_at DESC').first
+  end
+
+  def last_position_by_user(user)
+    if vote = last_vote_by_user(user)
+      vote.position
+    else
+      nil
+    end
+  end
+
+  def voted?(motion)
+    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
+  end
+
   # members_not_voted_count
-  def no_vote_count
+  # was no_vote_count
+  def members_not_voted_count
     if voting?
-      group_count - total_votes_count
+      group_size_when_voting - total_votes_count
     else
       did_not_votes_count
     end
   end
 
   def percent_voted
-    if group_count == 0
+    if group_size_when_voting == 0
       0
     else
-      (100-(no_vote_count/group_count.to_f * 100)).to_i
+      (100-(members_not_voted_count/group_size_when_voting.to_f * 100)).to_i
     end
   end
 
+  # recount all the final votes.
+  # rather expensive
   def update_vote_counts!
     position_counts = {}
 
@@ -167,18 +191,21 @@ class Motion < ActiveRecord::Base
       self.send("#{position}_votes_count=", position_counts[position])
     end
 
+    # activity count
+    self[:votes_count] = votes.count
+
     save!
   end
 
-  # group size when voting
   def group_size_when_voting
     if voting?
       group.memberships_count || 0
     else
-      total_votes_count + no_vote_count
+      total_votes_count + members_not_voted_count
     end
   end
 
+  # todo: move to motion mover service
   def move_to_group(group)
     if discussion.present?
       discussion.group = group
@@ -190,15 +217,27 @@ class Motion < ActiveRecord::Base
     group.users.where(User.arel_table[:id].not_eq(author.id))
   end
 
-  def update_discussion_activity
-    discussion.update_activity if discussion
-  end
+  #def update_discussion_activity
+    #discussion.update_activity if discussion
+  #end
 
-  def comments
-    discussion.comments
+  #expensive to call
+  def unique_votes
+    Vote.unique_votes(self)
   end
 
   private
+    def find_or_new_motion_reader_for(user)
+      if self.motion_readers.where(user_id: user.id).exists?
+        self.motion_readers.where(user_id: user.id).first
+      else
+        motion_reader = self.motion_readers.build
+        motion_reader.motion = self
+        motion_reader.user = user
+        motion_reader
+      end
+    end
+
 
     def set_closing_at
       date_time_zone_format = '%Y-%m-%d %H:%M %Z'

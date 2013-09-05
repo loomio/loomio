@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828193943) do
+ActiveRecord::Schema.define(:version => 20130903214957) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -47,24 +47,17 @@ ActiveRecord::Schema.define(:version => 20130828193943) do
     t.datetime "updated_at",                   :null => false
   end
 
-  create_table "campaign_signups", :force => true do |t|
-    t.integer  "campaign_id"
-    t.string   "name"
-    t.string   "email"
-    t.boolean  "spam"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+  create_table "attachments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "filename"
+    t.string   "location"
+    t.integer  "comment_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "filesize"
   end
 
-  add_index "campaign_signups", ["campaign_id"], :name => "index_campaign_signups_on_campaign_id"
-
-  create_table "campaigns", :force => true do |t|
-    t.string   "showcase_url"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "name",          :null => false
-    t.string   "manager_email", :null => false
-  end
+  add_index "attachments", ["user_id", "comment_id"], :name => "index_attachments_on_user_id_and_comment_id"
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -359,13 +352,18 @@ ActiveRecord::Schema.define(:version => 20130828193943) do
   add_index "memberships", ["inviter_id"], :name => "index_memberships_on_inviter_id"
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
-  create_table "motion_read_logs", :force => true do |t|
+  create_table "motion_readers", :force => true do |t|
     t.integer  "motion_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "motion_last_viewed_at"
+    t.datetime "last_read_at"
+    t.boolean  "following",           :default => true, :null => false
+    t.integer  "read_votes_count",    :default => 0,    :null => false
+    t.integer  "read_activity_count", :default => 0,    :null => false
   end
+
+  add_index "motion_readers", ["user_id", "motion_id"], :name => "index_motion_readers_on_user_id_and_motion_id"
 
   create_table "motions", :force => true do |t|
     t.string   "name"
@@ -388,9 +386,11 @@ ActiveRecord::Schema.define(:version => 20130828193943) do
     t.integer  "block_votes_count",   :default => 0,    :null => false
     t.datetime "closing_at"
     t.integer  "did_not_votes_count"
+    t.integer  "votes_count",         :default => 0,    :null => false
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
+  add_index "motions", ["discussion_id", "closed_at"], :name => "index_motions_on_discussion_id_and_closed_at"
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
 
   create_table "notifications", :force => true do |t|
