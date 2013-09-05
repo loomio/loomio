@@ -17,7 +17,7 @@ class Events::NewMotion < Event
       if user.email_notifications_for_group?(motion.group)
         MotionMailer.delay.new_motion_created(motion, user)
       end
-      notify!(user)
+      #notify!(user)
     end
   end
 

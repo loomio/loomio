@@ -61,7 +61,7 @@ describe VotesController do
           post :update, @vote_args
 
           Vote.all.count.should == 2
-          @user.get_vote_for(@motion).position.should == 'no'
+          @motion.last_position_by_user(@user).should == 'no'
         end
         it "assigns flash success message" do
           post :update, @vote_args

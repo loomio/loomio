@@ -30,7 +30,7 @@
                     - if can? :close_voting, @current_motion
                       %li= render '/motions/admin_buttons', :motion => @current_motion
                     %li.selector-item.current-proposal
-                      = render @current_motion, unique_votes: @current_motion.unique_votes
+                      = render @current_motion
                   - else
                     %li.selector-item.current-proposal
                       = render '/motions/motion_preview', motion: @current_motion, this_group: @group
