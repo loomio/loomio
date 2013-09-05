@@ -18,3 +18,6 @@ $ ->
 $ ->
   $("#group-dropdown-items").load('/notifications/groups_tree_dropdown')
   #$('#inbox-container').load('ccn
+
+$ ->
+  $('#inbox-count').load('/inbox/size')

@@ -27,9 +27,9 @@
   .pie{id: "graph_#{motion.id}"}
   .percentage-to-vote
     - if motion.closed?
-      = t(:engagement_on_closed_proposal, percent: motion.percent_voted, :numerator => (motion.group_count - motion.no_vote_count), denominator:  motion.group_count)
+      = t(:engagement_on_closed_proposal, percent: motion.percent_voted, :numerator => (motion.group_size_when_voting - motion.members_not_voted_count), denominator:  motion.group_size_when_voting)
     - else
-      = t(:engagement_on_open_proposal, percent: motion.percent_voted, :numerator => (motion.group_count - motion.no_vote_count), denominator:  motion.group_count)
+      = t(:engagement_on_open_proposal, percent: motion.percent_voted, :numerator => (motion.group_size_when_voting - motion.members_not_voted_count), denominator:  motion.group_size_when_voting)
 
   .votes
     - if display_vote_buttons?(motion, current_user)
@@ -52,7 +52,7 @@
                  "title" => t(:block_position), "data-content" => t(:block_details),
                  class: "position btn vote-block", id: "block-vote"
 
-    .votes-table= render "motions/votes_table", motion: motion, unique_votes: unique_votes
+    .votes-table= render "motions/votes_table", motion: motion
 
   :coffeescript
     $ ->

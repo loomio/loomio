@@ -18,7 +18,7 @@ class Events::NewComment < Event
       Events::UserMentioned.publish!(comment, mentioned_user)
     end
     comment.non_mentioned_discussion_participants.each do |non_mentioned_user|
-      notify!(non_mentioned_user)
+      #notify!(non_mentioned_user)
     end
   end
 

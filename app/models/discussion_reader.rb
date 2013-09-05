@@ -6,8 +6,6 @@ class DiscussionReader < ActiveRecord::Base
   validates_presence_of :discussion_id, :user_id
   validates_uniqueness_of :user_id, :scope => :discussion_id
 
-  after_initialize :set_defaults
-
   def self.load_from_joined_discussion(discussion)
     dv = new
     dv.id = discussion[:viewer_id].to_i
@@ -49,10 +47,5 @@ class DiscussionReader < ActiveRecord::Base
     self.last_read_at = Time.now
     save!
     discussion.viewed!
-  end
-
-  private
-  def set_defaults
-    #self.read_comments_count ||= 0
   end
 end

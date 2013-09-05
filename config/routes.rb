@@ -14,6 +14,7 @@ Loomio::Application.routes.draw do
                                     registrations: 'users/registrations' }
 
   get "/inbox", to: "inbox#index", as: :inbox
+  get "/inbox/size", to: "inbox#size", as: :inbox_size
   get '/inbox/preferences', to: 'inbox#preferences', as: :inbox_preferences
   put '/inbox/update_preferences', to: 'inbox#update_preferences', as: :update_inbox_preferences
   match '/inbox/mark_as_read', to: 'inbox#mark_as_read', as: :mark_as_read_inbox

@@ -117,18 +117,6 @@ class User < ActiveRecord::Base
     memberships.where(:group_id => group.id, :subscribed_to_notification_emails => true).present?
   end
 
-  def get_vote_for(motion)
-    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
-  end
-
-  def get_position_for(motion)
-    vote = Vote.where('motion_id = ? AND user_id = ?', motion.id, id).last
-    vote.position if vote
-  end
-
-  def voted?(motion)
-    Vote.where('motion_id = ? AND user_id = ?', motion.id, id).exists?
-  end
 
   def is_group_admin?(group)
     memberships.for_group(group).with_access('admin').exists?
