@@ -51,7 +51,8 @@
     margin: 1px 0 0 0;
   }
   &.inbox-icon {
-    background-image:url('/assets/inbox-icon-24x22.png');
+    /*background-image:url('/assets/inbox-icon-24x22.png');*/
+    background-image:url('/assets/inbox-empty-22.png');
     margin: 2px 0 0 0px;
   }
   &.notification-icon {
