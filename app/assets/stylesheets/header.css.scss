@@ -111,7 +111,10 @@
     }
   }
 
-  li.nav-item#inbox-container{ float: left; }
+  li.nav-item#inbox-container{
+    float: left;
+    position: relative;
+  }
   li.nav-item#notifications-container {
     float: left;
   }
