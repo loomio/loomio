@@ -18,7 +18,7 @@ class DiscussionsController < GroupBaseController
 
   def create
     current_user.update_attributes(uses_markdown: params[:discussion][:uses_markdown])
-    
+
     @discussion = Discussion.new(permitted_params.discussion)
     @discussion.author = current_user
 

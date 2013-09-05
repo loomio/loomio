@@ -70,7 +70,7 @@ class Motion < ActiveRecord::Base
 
   def as_read_by(user)
     if user.blank?
-      new_motion_reader_for(nil)
+      self.motion_readers.build(motion: self)
     else
       find_or_new_motion_reader_for(user)
     end
@@ -208,10 +208,6 @@ class Motion < ActiveRecord::Base
   def group_users_without_motion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
   end
-
-  #def update_discussion_activity
-    #discussion.update_activity if discussion
-  #end
 
   #expensive to call
   def unique_votes
