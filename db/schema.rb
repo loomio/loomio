@@ -47,17 +47,24 @@ ActiveRecord::Schema.define(:version => 20130903214957) do
     t.datetime "updated_at",                   :null => false
   end
 
-  create_table "attachments", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "filename"
-    t.string   "location"
-    t.integer  "comment_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "filesize"
+  create_table "campaign_signups", :force => true do |t|
+    t.integer  "campaign_id"
+    t.string   "name"
+    t.string   "email"
+    t.boolean  "spam"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "attachments", ["user_id", "comment_id"], :name => "index_attachments_on_user_id_and_comment_id"
+  add_index "campaign_signups", ["campaign_id"], :name => "index_campaign_signups_on_campaign_id"
+
+  create_table "campaigns", :force => true do |t|
+    t.string   "showcase_url"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "name",          :null => false
+    t.string   "manager_email", :null => false
+  end
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -96,14 +103,6 @@ ActiveRecord::Schema.define(:version => 20130903214957) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.text     "params"
-  end
-
-  create_table "custom_email_templates", :force => true do |t|
-    t.string   "name"
-    t.string   "subject"
-    t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -363,6 +362,7 @@ ActiveRecord::Schema.define(:version => 20130903214957) do
     t.integer  "read_activity_count", :default => 0,    :null => false
   end
 
+  add_index "motion_readers", ["user_id", "motion_id", "created_at"], :name => "index_motion_readers_on_user_id_and_motion_id_and_created_at"
   add_index "motion_readers", ["user_id", "motion_id"], :name => "index_motion_readers_on_user_id_and_motion_id"
 
   create_table "motions", :force => true do |t|
@@ -390,7 +390,6 @@ ActiveRecord::Schema.define(:version => 20130903214957) do
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
-  add_index "motions", ["discussion_id", "closed_at"], :name => "index_motions_on_discussion_id_and_closed_at"
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
 
   create_table "notifications", :force => true do |t|
