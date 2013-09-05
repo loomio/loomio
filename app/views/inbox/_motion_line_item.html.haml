@@ -1,20 +1,26 @@
 %li.motion.row-fluid{data:{motion_id: item.id}}
-  .span1
-    .icon
-      -values = item.vote_counts.values
-      .motion-sparkline
-        -if values.sum == 0
-          0,0,0,0,1
-        -else
-          =values.join(',') 
+  =link_to item do
+    .span1
+      .icon
+        -values = item.vote_counts.values
+        .activity-container
+          %span.count.unread-votes-count
+            - count = item.as_read_by(current_user).unread_activity_count
+            - if count != 0
+              =count
+        .motion-sparkline
+          -if values.sum == 0
+            0,0,0,0,1
+          -else
+            =values.join(',') 
 
-  .span8.title
-    = link_to item.title, item
+    .span8.title
+      = item.title
 
-  .span2.time
-    %span.js-format-as-timeago{data:{time: item.closing_at.iso8601}}
-      =time_formatted_relative_to_age(item.closing_at)
-    left
+    .span2.time
+      %span.js-format-as-timeago{data:{time: item.closing_at.iso8601}}
+        =time_formatted_relative_to_age(item.closing_at)
+      left
 
   .span1
     &nbsp;

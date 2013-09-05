@@ -549,19 +549,7 @@ pre{
   .activity-icon { float: right; }
   .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
   .pie-icon.activity-icon { margin: 12px 5px 0 0; }
-  .activity-count {
-    font-size: $font-tinywiny;
-    position: relative;
-    bottom: 8px;
-    left: 16px;
-    color: white;
-    background-color: $group-activity;
-  }
-  .pie .activity-count {
-    bottom: 1px;
-    margin-left: 8px;
-    z-index: 2;
-  }
+
   .discussion-link {
     position: relative;
     z-index: 2;

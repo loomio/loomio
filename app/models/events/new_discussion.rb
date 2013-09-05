@@ -17,7 +17,7 @@ class Events::NewDiscussion < Event
       if user.email_notifications_for_group?(discussion.group)
         DiscussionMailer.delay.new_discussion_created(discussion, user)
       end
-      notify!(user)
+      #notify!(user)
     end
   end
 

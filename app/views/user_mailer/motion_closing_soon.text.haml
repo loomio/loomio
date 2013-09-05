@@ -25,8 +25,8 @@
 \
 = t :engagement_on_open_proposal,
       percent: @motion.percent_voted,
-      numerator: @motion.group_count - @motion.no_vote_count,
-      denominator: @motion.group_count
+      numerator: @motion.total_votes_count,
+      denominator: @motion.group_size_when_voting
 \
 = "#{t :positions}:"
 \
