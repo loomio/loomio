@@ -99,8 +99,11 @@ class DiscussionsController < GroupBaseController
   end
 
   def add_comment
-    if params[:comment].present?
-      @comment = @discussion.add_comment(current_user, params[:comment], params[:uses_markdown])
+    if params[:comment].present? || params[:attachments].present?
+      @discussion = Discussion.find(params[:id])
+      @comment = @discussion.add_comment(current_user, params[:comment],
+                                         uses_markdown: params[:uses_markdown], attachments: params[:attachments])
+      current_user.update_attributes(uses_markdown: params[:uses_markdown])
       load_cached_comment_info
       @discussion.as_read_by(current_user).viewed!
       unless request.xhr?

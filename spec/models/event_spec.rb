@@ -54,7 +54,7 @@ describe Event do
 
     context "kind is different" do
       it "should return false" do
-        @discussion.add_comment(@user, "comment", false)
+        @discussion.add_comment(@user, "comment", uses_markdown: false)
         check_for_repetition(@discussion.activity).should be_false
       end
     end
