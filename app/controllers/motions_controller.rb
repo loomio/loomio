@@ -91,10 +91,10 @@ class MotionsController < GroupBaseController
 
   def get_and_clear_new_activity
     @motion = Motion.find(params[:id])
-    @motion_activity = Integer(params[:motion_activity])
+    @motion_activity = params[:motion_activity].to_i
 
     if user_signed_in?
-      MotionReader.for(@motion, current_user).viewed!
+      @motion.as_read_by(current_user).viewed!
     end
   end
 
