@@ -8,6 +8,10 @@ en:
     messages:
       email: "Not a valid email address"
 
+  attachment:
+    error:
+      too_large: "The file you tried to attach is larger than 50MB, please choose a smaller file."
+
   time:
     formats:
       for_today: '%l:%M %P'
@@ -69,6 +73,7 @@ en:
     settings_updated: "Your settings have been updated."
     user_made_admin: "%{which_user} has been made a coordinator."
     you_have_left_group: "You have left %{which_group}."
+    comment_deleted: "Comment deleted."
     invitations:
       auto_added:
         one: "%{count} member added"

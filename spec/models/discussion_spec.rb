@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Discussion do
+  let(:discussion) { create(:discussion) }
+
   it { should have_many(:events).dependent(:destroy) }
   it { should respond_to(:uses_markdown) }
   it { should validate_presence_of(:title) }
@@ -23,13 +25,13 @@ describe Discussion do
     user = create(:user)
     discussion = create(:discussion)
     discussion.group.add_member! user
-    comment = discussion.add_comment(user, "this is a test comment", false)
+    comment = discussion.add_comment(user, "this is a test comment", uses_markdown: false)
     discussion.comments.should include(comment)
   end
 
   it "group non-member cannot add comment" do
     discussion = create(:discussion)
-    comment = discussion.add_comment(create(:user), "this is a test comment", false)
+    comment = discussion.add_comment(create(:user), "this is a test comment", uses_markdown: false)
     discussion.comments.should_not include(comment)
   end
 
@@ -89,7 +91,7 @@ describe Discussion do
       @group = create :group
       @group.add_member! @user
       @discussion = create :discussion, :group => @group
-      @discussion.add_comment(@user, "this is a test comment")
+      @discussion.add_comment(@user, "this is a test comment", uses_markdown: false)
       @motion = create :motion, :discussion => @discussion
       @vote = create :vote, :position => 'yes', :motion => @motion
       activity = @discussion.activity
@@ -107,7 +109,7 @@ describe Discussion do
       @discussion = create :discussion, :group => @group
       @discussion.set_description!("describy", false, @user)
       @discussion.set_description!("describe", false, @user)
-      @discussion.add_comment(@user, "this is a test comment", false)
+      @discussion.add_comment(@user, "this is a test comment", uses_markdown: false)
     end
     context "there are duplicate events" do
       it "keeps them in the activity list" do
@@ -156,8 +158,8 @@ describe Discussion do
       @group.add_member! @user2
       @group.add_member! @user3
       @group.add_member! @user4
-      @discussion.add_comment(@user2, "givin a shout out to user3!", false)
-      @discussion.add_comment(@user3, "thanks 4 thah love usah two!", false)
+      @discussion.add_comment(@user2, "givin a shout out to user3!", uses_markdown: false)
+      @discussion.add_comment(@user3, "thanks 4 thah love usah two!", uses_markdown: false)
     end
 
     it "should include users who have commented on discussion" do
@@ -202,14 +204,32 @@ describe Discussion do
 
   describe "#delayed_destroy" do
     it 'sets deleted_at before calling destroy and then destroys everything' do
-      @discussion = create(:discussion)
-      @motion = create(:motion, discussion: @discussion)
+      @motion = create(:motion, discussion: discussion)
       @vote = create(:vote, motion: @motion)
-      @discussion.should_receive(:is_deleted=).with(true)
-      @discussion.delayed_destroy
-      Discussion.find_by_id(@discussion.id).should be_nil
+      discussion.should_receive(:is_deleted=).with(true)
+      discussion.delayed_destroy
+      Discussion.find_by_id(discussion.id).should be_nil
       Motion.find_by_id(@motion.id).should be_nil
       Vote.find_by_id(@vote.id).should be_nil
+    end
+  end
+
+  describe "#refresh_last_comment_at!" do
+    it "resets last_comment_at to latest comment.created_at" do
+      comment = discussion.add_comment discussion.author, "hi", uses_markdown: false
+      comment.created_at = Time.zone.now + 2.day
+      comment.save!
+      discussion.update_attribute(:last_comment_at, Time.zone.now + 1.days)
+      discussion.refresh_last_comment_at!
+      discussion.last_comment_at.should == comment.created_at
+    end
+
+    context "no comments in discussion" do
+      it "updates last_comment_at to discussion.created_at" do
+        discussion.update_attribute(:last_comment_at, discussion.created_at + 1.days)
+        discussion.refresh_last_comment_at!
+        discussion.last_comment_at.should == discussion.created_at
+      end
     end
   end
 end

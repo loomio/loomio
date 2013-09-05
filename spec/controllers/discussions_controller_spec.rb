@@ -118,6 +118,26 @@ describe DiscussionsController do
         discussion.stub(add_comment: @comment)
       end
 
+      context 'without any text' do
+        it 'does not add a comment' do
+          discussion.should_not_receive(:add_comment)
+          xhr :post, :add_comment, comment: "", id: discussion.id, uses_markdown: false
+        end
+
+        it 'returns head :ok' do
+          controller.should_receive(:head).with(:ok)
+          xhr :post, :add_comment, comment: "", id: discussion.id, uses_markdown: false
+        end
+
+      end
+
+      context 'without text, but with an attachment' do
+        it 'adds a comment' do
+          discussion.should_receive(:add_comment)
+          xhr :post, :add_comment, comment: "", id: discussion.id, uses_markdown: false, attachments: 2
+        end
+      end
+
       context 'javascript has failed' do
         it 'redirects to discussion' do
           post :add_comment, comment: "Hello!", id: discussion.id, uses_markdown: false
@@ -132,7 +152,7 @@ describe DiscussionsController do
 
       it "calls add_comment on discussion" do
         uses_markdown = false
-        discussion.should_receive(:add_comment).with(user, "Hello!", uses_markdown)
+        discussion.should_receive(:add_comment).with(user, "Hello!", uses_markdown: uses_markdown, attachments: nil)
         xhr :post, :add_comment, comment: "Hello!", id: discussion.id, uses_markdown: uses_markdown
       end
 

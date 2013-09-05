@@ -13,6 +13,7 @@ Feature: User deletes post
     When I click the delete button on a post
     And I accept the popup to confirm
     Then I should no longer see the post in the discussion
+    And I should be told the comment was deleted
 
  Scenario: User tries to delete another user's comment
     Given I am logged in

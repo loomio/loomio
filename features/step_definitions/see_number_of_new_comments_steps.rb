@@ -1,7 +1,7 @@
 Given /^someone comments on the discussion$/ do
   @commenter = FactoryGirl.create :user
   @group.add_member! @commenter
-  @discussion.add_comment @commenter, "hey there", false
+  @discussion.add_comment @commenter, "hey there", uses_markdown: false
 end
 
 When /^I visit the dashboard$/ do
