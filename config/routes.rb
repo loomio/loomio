@@ -158,6 +158,9 @@ Loomio::Application.routes.draw do
   get 'collaborate' => redirect('/')
   get 'woc' => redirect('/')
 
+  resources :contact_messages, only: [:new, :create,]
+  match '/contact', to: 'contact_messages#new'
+
   #redirect old request for new group
   match "/request_new_group", to: "group_requests#selection"
 
@@ -170,10 +173,9 @@ Loomio::Application.routes.draw do
   get '/how*it*works' => redirect('/about#how-it-works')
   get '/pages/get*involved' => redirect('/about')
   get '/pages/how*it*works' => redirect('/about#how-it-works')
-  get '/pages/contact' => redirect('/about#about-us')
-  get '/contact' => redirect('/about#about-us')
   get '/pages/privacy' => redirect('/privacy_policy')
   get '/pages/about' => redirect('/about#about-us')
+  match '/pages/contact', to: 'contact_messages#new'
 
   resources :attachments, only: [:create, :new] do
     collection do
