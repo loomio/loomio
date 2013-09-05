@@ -27,4 +27,5 @@
  *= require manage_membership_requests
  *= require searches
  *= require subscriptions
+ *= require atomic
  */
