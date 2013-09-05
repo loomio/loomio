@@ -52,10 +52,5 @@ describe Events::NewDiscussion do
         event.save
       end
     end
-
-    it 'notifies group_users_without_motion_author' do
-      event.should_receive(:notify!).with(user)
-      event.save
-    end
   end
 end

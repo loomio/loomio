@@ -35,10 +35,5 @@ describe Events::NewComment do
       Events::UserMentioned.should_receive(:publish!).with(comment, mentioned_user)
       event.save
     end
-
-    it 'calls event.notify! for each non mentioned group member' do
-      event.should_receive(:notify!).with(non_mentioned_user)
-      event.save
-    end
   end
 end
