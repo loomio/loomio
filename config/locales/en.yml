@@ -81,6 +81,11 @@ en:
         other: "%{count} invitations sent"
       auto_added_and_sent: "%{auto_added_text} and %{sent_text}"
 
+  views:
+    pagination:
+      previous: "Prev"
+      next: "Next"
+
   warning:
     cant_remove_last_admin: "You are the last coordinator and cannot be removed."
     membership_request_already_approved: "Membership request has already been approved."
