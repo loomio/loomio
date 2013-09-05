@@ -1,9 +1,10 @@
 class CommentsController < BaseController
-  inherit_resources
   load_and_authorize_resource
 
   def destroy
-    destroy!{ discussion_url(resource.discussion) }
+    CommentDeleter.new(@comment).delete_comment
+    flash[:notice] = t(:"notice.comment_deleted")
+    redirect_to discussion_url(@comment.discussion)
   end
 
   def like

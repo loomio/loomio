@@ -24,6 +24,49 @@ body.discussions.new, body.discussions.create {
 
 
 body.discussions.show {
+  .form-container {
+    border: 1px solid #cccccc;
+    @include border-radius(4px);
+    @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.075) inset);
+    margin: 0 12px 0 44px;
+  }
+  #attachment-container {
+    background: #EBEBEB;
+    padding: 0 5px 0 10px;
+    font-size: 12px;
+    .attachment {
+      background: #EBEBEB;
+      margin: 0 0 3px 2px;
+      padding: 2px 2px 2px 0px;
+    }
+    .attachment-uploader {
+      // background: #EBEBEB;
+      padding: 4px 0;
+      height: 22px;
+      .progress {
+        height: 10px;
+        margin: 5px 0 5px 192px;
+        width: 156px;
+       }
+      .uploading-filename {
+        float: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 185px;
+      }
+    }
+    .attachment-success { padding: 4px 0; }
+    .remove-attachment, .cancel-upload { padding-top: 2px; }
+  }
+  .comment-attachment {
+    font-size: .9em;
+    color: $mid-grey;
+    padding: 6px;
+    background: #EBEBEB;
+    margin: 5px 0;
+      a { margin-left: 3px; }
+  }
   .discussion-title-container {
     display: inline-block;
     width: 850px;
@@ -77,6 +120,7 @@ body.discussions.show {
         }
       }
     }
+
     #discussion-context {
       border-bottom: 1px solid $lighter-grey;
       min-height: 70px;
@@ -146,6 +190,11 @@ body.discussions.show {
     }
   }
 
+
+  #fileupload {
+    display: none;
+  }
+
   #content-comments {
     border-right: 1px solid $lighter-grey;
     min-height: 660px;
@@ -176,23 +225,45 @@ body.discussions.show {
       background-color: $comment-color;
       img {
         float:left;
-        margin-right: 10px;
+        margin-right: 11px;
       }
     }
-    #comment-markdown-dropdown {
+
+    .comment-toolbar {
+      float: right;
       margin-top: -32px;
       margin-right: -8px;
+      width: 78px;
+      .attachment-icon {
+        cursor: pointer;
+        margin-top: 6px;
+      }
     }
+
+    .comment-toolbar > * { display: inline-block; }
+
+    #comment-markdown-dropdown {}
     .markdown-setting-dropdown {
       margin-top: -2px;
     }
+
+    textarea #new-comment {
+    }
     #new-comment {
+      background: none;
+      border: 0;
+      color: $dark-grey;
       height: 80px;
-      margin: 0 0 5px 0px;
+      margin: 0;
+      outline: none;
       width: 380px;
+      &:focus {
+        border-color: 0;
+        @include box-shadow(0, 0, 0, 0);
+      }
     }
     #post-new-comment {
-      margin: 5px 5px 5px 45px;
+      margin: 8px 5px 5px 45px;
     }
     /** Code block padding (Stops avatars destroying indentation) */
     pre {
@@ -210,6 +281,9 @@ body.discussions.show {
       li.empty-list-message {
         margin-left: 45px; /*check this still works*/
       }
+
+      .activity-item-text-container { min-height: 1em; }
+
       .activity-icon {margin-left: -26px;}
       .activity-item-actor{
         font-weight: bold;

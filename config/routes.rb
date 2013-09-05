@@ -175,6 +175,13 @@ Loomio::Application.routes.draw do
   get '/pages/privacy' => redirect('/privacy_policy')
   get '/pages/about' => redirect('/about#about-us')
 
+  resources :attachments, only: [:create, :new] do
+    collection do
+      get 'sign'
+      get :iframe_upload_result
+    end
+  end
+
   get 'blog' => redirect('http://blog.loomio.org')
   get 'press' => redirect('http://blog.loomio.org/press-pack')
   get 'press-pack' => redirect('http://blog.loomio.org/press-pack')
