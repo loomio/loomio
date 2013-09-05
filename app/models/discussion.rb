@@ -30,8 +30,6 @@ class Discussion < ActiveRecord::Base
   after_create :populate_last_comment_at
   after_create :fire_new_discussion_event
 
-
-
   def as_read_by(user)
     if user.blank?
       new_discussion_reader_for(nil)
@@ -53,10 +51,18 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  def add_comment(user, comment, options={} )
+    if can_be_commented_on_by? user
+      comment = Comment.build_from self, user, comment, options
+      comment.save!
+      comment
+    end
+  end
+
   def joined_or_new_discussion_reader_for(user)
     if self[:viewer_user_id].present?
       unless user.id == self[:viewer_user_id].to_i
-        raise "joined for wrong user" 
+        raise "joined for wrong user"
       end
       DiscussionReader.load_from_joined_discussion(self)
     else
@@ -91,14 +97,6 @@ class Discussion < ActiveRecord::Base
     group.users.include? user
   end
 
-  def add_comment(user, comment, uses_markdown = false)
-    if can_be_commented_on_by? user
-      comment = Comment.build_from self, user.id, comment, uses_markdown
-      comment.save!
-      comment
-    end
-  end
-
   def current_motion_closing_at
     current_motion.closing_at
   end
@@ -122,7 +120,7 @@ class Discussion < ActiveRecord::Base
   def activity
     Event.includes(:eventable).where(discussion_id: id).order('created_at DESC')
   end
-  
+
   def viewed!
     Discussion.increment_counter(:total_views, id)
     self.total_views += 1
@@ -179,7 +177,21 @@ class Discussion < ActiveRecord::Base
     self.delay.destroy
   end
 
+  def most_recent_comment
+    comments.order("created_at DESC").first
+  end
+
+  def refresh_last_comment_at!
+    if comments.exists?
+      last_comment_time = most_recent_comment.created_at
+    else
+      last_comment_time = created_at
+    end
+    update_attribute(:last_comment_at, last_comment_time)
+  end
+
   private
+
     def populate_last_comment_at
       self.last_comment_at = created_at
       save

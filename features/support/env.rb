@@ -30,6 +30,9 @@ ENV['PAYPAL_PASSWORD'] = '12345'
 ENV['PAYPAL_SIGNATURE'] = '54321'
 ENV['PAYPAL_ENDPOINT_URL'] = "https://api-3t.sandbox.paypal.com/nvp"
 ENV['PAYPAL_GATEWAY_URL'] = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token="
+ENV['AWS_ACCESS_KEY_ID']="notarealaccesskeyid"
+ENV['AWS_SECRET_ACCESS_KEY']="notarealsecretaccesskey"
+ENV['AWS_ATTACHMENTS_BUCKET']="notarealbucker"
 
 # Before do |scenario|
 #   @feature_name = scenario.feature.title

@@ -18,7 +18,7 @@ When /^I click on "(.*?)" in the menu that pops up$/ do |arg1|
 end
 
 When /^a comment exists mentioning "(.*?)"$/ do |text|
-  @discussion.add_comment @user, "Hey #{text}", false
+  @discussion.add_comment @user, "Hey #{text}", uses_markdown: false
 end
 
 When /^I submit a comment mentioning "(.*?)"$/ do |mention|

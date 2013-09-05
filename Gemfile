@@ -6,7 +6,7 @@ gem 'haml-rails', '~> 0.4'
 gem 'devise', '~> 2.2.3'
 gem 'pg', '~> 0.14.1'
 gem 'capistrano'
-gem 'jquery-rails', '~> 1.0.19'
+gem 'jquery-rails', '2.3.0'
 gem 'inherited_resources', '~> 1.4.1'
 gem 'simple_form', '~> 2.0.4'
 gem 'country_select', '~> 1.1.3'
@@ -60,6 +60,7 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.3.1.0'
   gem 'uglifier', '~> 1.1.0'
   gem 'modernizr-rails', '~> 2.6.2'
+  gem 'jquery-fileupload-rails', '~> 0.4.1'
 end
 
 group :development, :test do
