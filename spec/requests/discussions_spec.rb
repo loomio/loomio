@@ -171,7 +171,7 @@ describe "Discussion" do
 
       it "can see link to delete their own comments" do
         pending "should be converted to cucs, broken as specs"
-        comment = @discussion.add_comment(user, "hello!", false)
+        comment = @discussion.add_comment(user, "hello!", uses_markdown: false)
         visit discussion_path(@discussion)
 
         find("#delete-comment-#{comment.id}")
@@ -181,7 +181,7 @@ describe "Discussion" do
         pending "should be converted to cucs, broken as specs"
         @user2 = create(:user)
         @discussion.group.add_member!(@user2)
-        comment = @discussion.add_comment(@user2, "hello!", false)
+        comment = @discussion.add_comment(@user2, "hello!", uses_markdown: false)
         visit discussion_path(@discussion)
 
         find("#comment-#{comment.id}").should_not have_content('Delete')
@@ -191,7 +191,7 @@ describe "Discussion" do
         pending "should be converted to cucs, broken as specs"
         @user2 = create(:user)
         @discussion.group.add_member!(@user2)
-        comment = @discussion.add_comment(@user2, "hello!", false)
+        comment = @discussion.add_comment(@user2, "hello!", uses_markdown: false)
         visit discussion_path(@discussion)
         find("#like-comment-#{comment.id}")
         find_link("Like").click
@@ -206,7 +206,7 @@ describe "Discussion" do
         pending "should be converted to cucs, broken as specs"
         @user2 = create(:user)
         @discussion.group.add_member!(@user2)
-        comment = @discussion.add_comment(@user2, "hello!", false)
+        comment = @discussion.add_comment(@user2, "hello!", uses_markdown: false)
         @discussion.comments.first.like(user)
 
         visit discussion_path(@discussion)

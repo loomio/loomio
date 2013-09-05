@@ -62,3 +62,13 @@
   bottom: 2px;
   position: relative;
 }
+
+.attachment-icon {
+  background-image:url('/assets/paperclip20.png');
+  background-repeat: no-repeat;
+  height: 22px;
+  margin: 0;
+  opacity: .3;
+  width: 22px;
+  &:hover { opacity: .8; }
+}

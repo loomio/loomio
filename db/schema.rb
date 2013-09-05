@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(:version => 20130828193943) do
     t.datetime "updated_at",                   :null => false
   end
 
+  create_table "attachments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "filename"
+    t.string   "location"
+    t.integer  "comment_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "filesize"
+  end
+
+  add_index "attachments", ["user_id", "comment_id"], :name => "index_attachments_on_user_id_and_comment_id"
+
   create_table "campaign_signups", :force => true do |t|
     t.integer  "campaign_id"
     t.string   "name"
@@ -112,14 +124,6 @@ ActiveRecord::Schema.define(:version => 20130828193943) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.text     "params"
-  end
-
-  create_table "custom_email_templates", :force => true do |t|
-    t.string   "name"
-    t.string   "subject"
-    t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|

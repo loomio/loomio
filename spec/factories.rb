@@ -58,7 +58,6 @@ FactoryGirl.define do
   factory :comment do
     user
     discussion
-    title Faker::Lorem.sentence(2)
     body 'body of the comment'
 
     after(:build) do |comment|
@@ -158,5 +157,11 @@ FactoryGirl.define do
   factory :membership_request do
     introduction { Faker::Lorem.sentence(4) }
     group
+  end
+
+  factory :attachment do
+    user
+    filename { Faker::Name.name }
+    location { Faker::Name.name }
   end
 end
