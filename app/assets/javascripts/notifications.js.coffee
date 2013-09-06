@@ -20,12 +20,14 @@ $ ->
   #$('#inbox-container').load('ccn
 
 $ ->
-  load_inbox_count = ->
+  timeout_multiplier = 1
+  load_inbox_count = () =>
+    timeout_multiplier += 1
     $.ajax
       url: '/inbox/size',
       success: (count) ->
         $('#inbox-count').text(count);
       complete: ->
-        setTimeout(load_inbox_count, 60*1000);
+        setTimeout(load_inbox_count, timeout_multiplier*60*1000);
 
   load_inbox_count()
