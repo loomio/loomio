@@ -44,3 +44,9 @@ $ ->
     placement: "right",
     container: "body",
     title: "Text formatting settings and info."
+
+$ ->
+  $("#inbox-container").tooltip
+    placement: "bottom",
+    title: "Inbox"
+    delay: 200

@@ -4,7 +4,14 @@
 @import "settings";
 @import "mixins";
 
+#inbox-head {
+  .span1 { width: 76px; }
+  #inbox-description { margin-top: .7em; }
+ }
+
 .inbox-preferences {
+  margin-top: .7em;
+  width: 192px;
   img {
     margin-bottom: 3px;
   }
@@ -13,6 +20,7 @@
     color: $dark-grey;
   }
 }
+
 
 .inbox-group {
   h3 {
