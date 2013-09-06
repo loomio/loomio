@@ -2,7 +2,7 @@ $ ->
   $(".mark-as-read-btn").tooltip
     placement: "top",
     title: 'Mark as read'
-    delay: 800
+    delay: 500
 
   $(".unread-comments-count").tooltip
     placement: "right",
@@ -32,7 +32,7 @@ $ ->
   if $('body.inbox').length > 0
     $('.ui-sortable').sortable()
 
-    $('.mark-all-as-read-btn').on 'click', (e) -> 
+    $('.mark-all-as-read-btn').on 'click', (e) ->
       group_div = $(e.target).parents('.inbox-group')
 
       group_div.find('li.discussion').fadeOut fade_time, ->
@@ -40,7 +40,7 @@ $ ->
         remove_group_if_empty(group_div)
         show_inbox_empty_msg_if_empty
 
-    $('.mark-as-read-btn, .unfollow-btn').on 'click', (e) -> 
+    $('.mark-as-read-btn, .unfollow-btn').on 'click', (e) ->
       group_div = $(e.target).parents('.inbox-group')
       list = $(e.target).parents('ul')
       row = $(e.target).parents('li')
