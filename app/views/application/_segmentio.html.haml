@@ -8,8 +8,6 @@
   seg.page = (href === '') ? 'home' : href;
   analytics.identify(seg.user_id, seg);
 
-  analytics.track('Page viewed', seg)
-
   analytics.trackLink($('a'), 'Clicked link', function (link) {
     seg['link_class'] = $(link).prop('class')
     seg['link_id'] = $(link).prop('id')
