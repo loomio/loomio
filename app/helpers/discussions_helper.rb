@@ -77,4 +77,13 @@ module DiscussionsHelper
   rescue
     comment.comment_votes.where(user_id: current_user.id).exists?
   end
+
+  def preview_date(discussion, motion)
+    if motion
+      return "#{time_ago_in_words(motion.closing_at)} until close"
+    else
+      return "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.last_comment_at))}"
+    end
+  end
+
 end

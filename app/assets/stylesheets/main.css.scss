@@ -343,6 +343,8 @@ a.btn-icon:hover { color: $dark-grey; }
     -o-transition: all .2s ease-in-out;
 }
 
+.nowrap { white-space: nowrap; }
+
 .info-box {
   @include border-radius(4px);
   background-color: #DEF1DE;
@@ -360,5 +362,3 @@ a.btn-icon:hover { color: $dark-grey; }
     margin-left: 20px;
   }
 }
-
-.nowrap { white-space: nowrap; }
