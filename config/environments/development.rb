@@ -38,6 +38,10 @@ Loomio::Application.configure do
     :location => Rails.root.join('tmp/mail')
   }
 
+  ENV['AWS_ACCESS_KEY_ID']="notarealaccesskeyid"
+  ENV['AWS_SECRET_ACCESS_KEY']="notarealsecretaccesskey"
+  ENV['AWS_ATTACHMENTS_BUCKET']="notarealbucker"
+
   config.action_controller.action_on_unpermitted_parameters = :raise
 
   #fake production settings
