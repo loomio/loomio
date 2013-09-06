@@ -1,11 +1,15 @@
 %h3= t :positions
-- unique_votes = motion.unique_votes
-- if unique_votes.size > 0
+- if motion.has_votes?
   - if current_user && motion.user_has_voted?(current_user)
-    = render "motions/votes_table_vote", vote: current_user.get_vote_for(motion), motion: motion
-  - unique_votes.each do |vote|
-    - unless current_user && vote == current_user.get_vote_for(motion)
+    - current_user_vote = motion.last_vote_by_user(current_user)
+
+  -if current_user_vote
+    = render "motions/votes_table_vote", vote: current_user_vote, motion: motion
+
+  - motion.unique_votes.each do |vote|
+    - unless vote == current_user_vote
       = render "motions/votes_table_vote", vote: vote, motion: motion
+
 #yet-to-vote.hidden
   - Queries::Voters.group_members_that_havent_voted_on(motion).each do |user|
     .position-row.clearfix

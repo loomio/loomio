@@ -7,6 +7,7 @@
             %li.nav-item#logo-home
               %a.nav-logo-link{:href => "/"}
                 = image_tag("top-bar-loomio.png", :alt => "Loomio")
+            = render 'inbox'
             = render 'notifications_dropdown'
             = render 'application/groups_dropdown'
             = render 'user_dropdown'
