@@ -186,7 +186,7 @@ class User < ActiveRecord::Base
 
   def position(motion)
     if motion.user_has_voted?(self)
-      get_vote_for(motion).position
+      motion.last_position_by_user(self)
     end
   end
 
