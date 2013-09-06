@@ -1,7 +1,7 @@
 - if user_signed_in? && user.is_group_member?(motion.group)
   %span.popover-current-position
     = "Your position"
-    %div{:class => 'activity-icon ' + vote_icon_name(user.get_position_for(motion))}
+    %div{:class => 'activity-icon ' + vote_icon_name(motion.last_position_by_user(user))}
 
 .popover-engagement
   = t(:participation) + " #{motion.percent_voted}%"

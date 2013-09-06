@@ -2,22 +2,36 @@
   .span10
     %h1 Inbox
   .span2.inbox-preferences
-    =link_to 'Preferences', inbox_preferences_path, class: 'preferences-link'
+
+    =link_to inbox_preferences_path, class: 'preferences-link' do
+      =image_tag 'options-cog.png'
+      %span Settings
+
 .inbox-container
   - @inbox.items_by_group do |group, items|
     .inbox-group
       .row
         .span10
-          %h2= link_to group.full_name, group
+          %h3= link_to group.full_name, group
         .span2.mark-all-as-read
           - discussion_ids = items.select{|i| i.is_a? Discussion }.map(&:id)
-          =link_to 'Mark all as read', mark_all_as_read_inbox_path(discussion_ids: discussion_ids.join('x')), class: 'mark-all-as-read-btn', remote: true
+          =link_to 'Clear', mark_all_as_read_inbox_path(discussion_ids: discussion_ids.join('x')), class: 'mark-all-as-read-btn', remote: true
       %ul.inbox-list
         - items.each do |item|
           -if item.is_a? Discussion
             =render 'discussion_line_item', item: item
           -if item.is_a? Motion
             =render 'motion_line_item', item: item
+
+        -if @inbox.unread_items_exceeds_max_for(group)
+          %li
+            .row
+              =link_to group do
+                .span1
+                .span11.more-unread-items
+                  =@inbox.items_not_shown_count_for(group)
+                  more unread items
+
 
 - if @inbox.empty?
   =t(:'inbox.empty')

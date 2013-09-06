@@ -65,8 +65,8 @@ Given(/^I belong to a group with several discussions$/) do
   @discussion2 = FactoryGirl.create(:discussion, group: @group)
 end
 
-When(/^I click 'Mark all as read'$/) do
-  click_on 'Mark all as read'
+When(/^I click 'Clear'$/) do
+  click_on 'Clear'
 end
 
 Then(/^the discussions should disappear$/) do
@@ -75,7 +75,7 @@ Then(/^the discussions should disappear$/) do
 end
 
 Then(/^I should see the discussion has (\d+) unread$/) do |arg1|
-  find('.activity-count').should have_content arg1
+  find('.activity-badge').should have_content arg1
 end
 
 Given(/^I have read the discussion but there is a new comment$/) do

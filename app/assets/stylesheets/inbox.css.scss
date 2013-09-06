@@ -5,14 +5,23 @@
 @import "mixins";
 
 .inbox-preferences {
+  img {
+    margin-bottom: 3px;
+  }
   text-align: right;
+  a {
+    color: $dark-grey;
+  }
 }
 
 .inbox-group {
-  h2 {
-    margin: 0.5em 0 0.3em 0;
+  h3 {
+    margin: 0.7em 0 0.3em 0;
   }
   .mark-all-as-read {
+    a{
+      margin-right: .9em;
+    }
     text-align: right;
     margin-top: 1.84em;
   }
@@ -20,14 +29,17 @@
 
 ul.inbox-list{
   li {
-    .title a{
-      display: block;
-      width: 100%;
+    a {
+      color: $dark-grey;
+    }
+    .more-unread-items {
+      text-decoration: underline;
     }
     line-height: 2em;
     padding: .5em 0;
 
     .discussion-icon{
+      text-align: center;
       color: #fff;
       top: 0.2em;
       left: 0.3em;
@@ -35,7 +47,7 @@ ul.inbox-list{
       border-radius: 0.2em;
       position: relative;
       &:before {
-        position:absolute;  
+        position:absolute;
         content: "";
         bottom: -0.3em;
         right: 0.4em;
@@ -46,19 +58,38 @@ ul.inbox-list{
       }
     }
     .icon {
+      position: relative;
       font-size: .9em;
       .motion-sparkline{
-        margin: 1px 0 0 1px;
+        margin: 1px 0 0 .3em;
         line-height: 4em;
       }
       width: 2em;
       margin: 0 0.5em;
       display: inline-block;
       height: 1.7em;
-      .activity-count{
-        bottom: 3px;
+      .activity-badge{
+        color: #fff;
+        font-weight: 700;
+        bottom: 4px;
         position: relative;
         text-align: center;
+      }
+      .activity-container {
+        width: 2em;
+        left: .28em;
+        text-shadow: 1px 1px 2px #666;
+        /*height: 1.3em;*/
+        /*left: 0.68em;*/
+        /*top: 0.5em;*/
+        /*@include border-radius(1000px);*/
+        /*background-color: #fff;*/
+        font-weight: 700;
+        position: absolute;
+        text-align: center;
+        span {
+          color: #fff;
+        }
       }
     }
 
@@ -75,7 +106,9 @@ ul.inbox-list{
       /*width: 2em;*/
       /*height: 2em;*/
     /*}*/
-    background: $even-lighter-grey;
+    &:hover {
+      background: $even-lighter-grey;
+    }
     border-top: 1px solid $lighter-grey;
     .time {
       color: $dark-grey;
@@ -87,3 +120,12 @@ ul.inbox-list{
   }
 }
 
+.navbar {
+  #inbox-count {
+    position: absolute;
+    left: 20px;
+    bottom: 17px;
+    padding: 0px 3px;
+    font-size: $font-tinywiny;
+  }
+}

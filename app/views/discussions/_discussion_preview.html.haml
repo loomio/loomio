@@ -25,7 +25,8 @@
         - else
           .latest-comment-time= "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.last_comment_at))}"
     - if current_motion
-      - motion_activity = motion_activity_count_for(current_motion, current_user)
+      - motion_reader = current_motion.as_read_by(current_user)
+      - motion_activity = motion_reader.unread_activity_count
       - popover_title = render 'discussions/graph_preview_pop_over_title', :motion => current_motion
       - popover_content = render 'discussions/graph_preview_pop_over', :motion => current_motion, :user => current_user, :motion_activity =>  motion_activity
       .motion-popover-link{id: "popover_#{current_motion.id}", 'data-title' => popover_title, 'data-content' => popover_content}
