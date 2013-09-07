@@ -17,7 +17,6 @@ $ ->
         $.post("/notifications/mark_as_viewed?latest_viewed=#{notification_id}")
 $ ->
   $("#group-dropdown-items").load('/notifications/groups_tree_dropdown')
-  #$('#inbox-container').load('ccn
 
 $ ->
   $('#inbox-count').load('/inbox/size')
