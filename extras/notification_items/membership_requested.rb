@@ -7,12 +7,20 @@ class NotificationItems::MembershipRequested < NotificationItem
     @notification = notification
   end
 
+  def actor
+    @notification.eventable.requestor
+  end
+
   def action_text
     I18n.t('notifications.membership_requested')
   end
 
   def title
-    @notification.eventable.group_full_name
+    @notification.eventable.group_name
+  end
+
+  def group_full_name
+    @notification.eventable.group_name
   end
 
   def link
