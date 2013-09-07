@@ -103,7 +103,7 @@ Given(/^I belong to a group with more than max per inbox group discussions$/) do
 end
 
 When(/^I click 'clear them all'$/) do
-  click_on 'clear them all'
+  click_on 'mark them all as read'
 end
 
 Then(/^all the discussions in the group should be marked as read$/) do
