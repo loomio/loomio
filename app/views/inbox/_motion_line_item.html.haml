@@ -23,4 +23,5 @@
       left
 
   .span1
-    &nbsp;
+    .mark-as-read-btn
+      = link_to 'x', mark_as_read_inbox_path(motion_ids: item.id), remote: true, method: :post

@@ -40,6 +40,7 @@ When(/^I have voted on the motion$/) do
   vote.motion = @motion
   vote.user = @user
   vote.save!
+  @motion.as_read_by(@user).viewed!
 end
 
 When(/^I mark the discussion as read$/) do
@@ -56,6 +57,14 @@ end
 
 Then(/^the discussion should not show in inbox$/) do
   page.should_not have_content @discussion.title
+end
+
+When(/^I mark the motion as read$/) do
+  find('.motion .mark-as-read-btn a').click
+end
+
+Then(/^the motion should disappear$/) do
+  page.should_not have_content @motion.title
 end
 
 Given(/^I belong to a group with several discussions$/) do
