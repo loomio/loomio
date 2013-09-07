@@ -29,14 +29,25 @@ show_inbox_empty_msg_if_empty = ->
     $('.inbox-empty-msg').show()
 
 $ ->
+  step = 0
+  load_inbox_count = ->
+    step += 1 if step < 5
+    $.ajax
+      url: '/inbox/size',
+      success: (count) ->
+        $('#inbox-count').text(count);
+      complete: ->
+        setTimeout(load_inbox_count, step*60*1000);
+
+  load_inbox_count()
+
+$ ->
   if $('body.inbox').length > 0
     $('.ui-sortable').sortable()
 
     $('.mark-all-as-read-btn').on 'click', (e) ->
       group_div = $(e.target).parents('.inbox-group')
-
       items = group_div.find('li')
-
       items.fadeOut fade_time, ->
         $(this).remove()
         remove_group_if_empty(group_div)
@@ -54,11 +65,10 @@ $ ->
         show_inbox_empty_msg_if_empty
 
 
+    #load sparklines for motion pies
     $('.motion-sparkline').sparkline('html', { disableTooltips: true, type: 'pie', height: '26px', width: '26px', sliceColors: [ "#90D490", "#F0BB67", "#D49090", "#dd0000", '#ccc'] })
 
-    #
     # find times to be updated in javascript
-    #
     $('.js-format-as-timeago').each ->
       time = moment($(this).data('time'))
       $(this).text(time.fromNow(true))
