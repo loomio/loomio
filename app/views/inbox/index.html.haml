@@ -1,6 +1,9 @@
-.row
-  .span10
+.row#inbox-head
+  .span1
     %h1 Inbox
+  .span8#inbox-description
+    %i.icon-star
+    = "Here is all the activity you haven't read yet."
   .span2.inbox-preferences
 
     =link_to inbox_preferences_path, class: 'preferences-link' do
