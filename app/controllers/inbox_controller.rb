@@ -5,10 +5,11 @@ class InboxController < BaseController
   end
 
   def size
-    load_inbox
+    @inbox = Inbox.new(current_user)
+    size = @inbox.get_size_without_load
 
-    if @inbox.size > 0
-      render text: @inbox.size
+    if size > 0
+      render text: size
     else
       render text: ''
     end
@@ -39,19 +40,28 @@ class InboxController < BaseController
       end
     end
 
-    redirect_to_group_or_head_ok
+    redirect_back_or_head_ok
+  end
+  
+  def mark_all_as_read
+    @inbox = Inbox.new(current_user)
+    group = current_user.groups.find(params[:id])
+    @inbox.clear_all_in_group(group)
+    redirect_back_or_head_ok
   end
 
   def unfollow
     item = load_resource_from_params
     @inbox.unfollow!(item)
-    redirect_to_group_or_head_ok
+    redirect_back_or_head_ok
   end
 
   private
-  def redirect_to_group_or_head_ok
+  def redirect_back_or_head_ok
     if request.xhr?
-      head :ok
+      size = Inbox.new(current_user).get_size_without_load
+      size = '' if size == 0
+      render js: "$('#inbox-count').text('#{size}')"
     else
       redirect_to inbox_path
     end

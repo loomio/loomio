@@ -1,5 +1,7 @@
 class Inbox
+  UNREAD_PER_GROUP_LIMIT = 20
   attr_reader :size
+  attr_reader :grouped_items
 
   def initialize(user)
     @user = user
@@ -10,6 +12,12 @@ class Inbox
     if @user.can? :unfollow, item
       raise 'no method yet.. should be added to DiscussionReader'
     end
+  end
+
+  def get_size_without_load
+    num_discussions = Queries::VisibleDiscussions.new(user: @user, group_ids: group_ids).unread.readonly(false).count
+    num_motions = Queries::VisibleMotions.new(user: @user, group_ids: group_ids).unread.voting.readonly(false).count
+    (num_motions + num_discussions)
   end
 
   def load
@@ -62,7 +70,7 @@ class Inbox
   end
 
   def unread_per_group_limit
-    20
+    UNREAD_PER_GROUP_LIMIT
   end
 
   def unread_items_exceeds_max_for(group)
@@ -75,6 +83,20 @@ class Inbox
 
   def groups
     @user.memberships.where('inbox_position is not null').order(:inbox_position).map(&:group)
+  end
+
+  def group_ids
+    @user.memberships.where('inbox_position is not null').order(:inbox_position).pluck(:group_id)
+  end
+
+  def clear_all_in_group(group)
+    unread_discussions_for(group).each do |discussion|
+      discussion.as_read_by(@user).viewed!
+    end
+
+    unread_motions_for(group).each do |motion|
+      motion.as_read_by(@user).viewed!
+    end
   end
 
   def unread_discussions_for(group)
