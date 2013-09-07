@@ -11,6 +11,7 @@ Feature: Inbox
     When I visit the inbox
     Then I should see the unread discussion
 
+  @javascript
   Scenario: User clears discussion in inbox
     Given I belong to a group with a discussion
     When I visit the inbox
@@ -30,12 +31,14 @@ Feature: Inbox
     #When I visit the inbox
     #Then the inbox should be empty
 
+  @javascript
   Scenario: User marks discussion as read
     Given I belong to a group with a discussion
     When I visit the inbox
     And I mark the discussion as read
     Then the discussion should disappear
 
+  @javascript
   Scenario: User marks motion as read
     Given I belong to a group with a motion
     When I visit the inbox
@@ -59,11 +62,19 @@ Feature: Inbox
     When I visit the inbox
     Then I should see the discussion has 1 unread
 
-  Scenario: User marks all discussions in group as read
+  @javascript
+  Scenario: User marks all in list as read
     Given I belong to a group with several discussions
     When I visit the inbox
     And I click 'Clear'
     Then the discussions should disappear
+
+  @javascript
+  Scenario: User marks all in group as read
+    Given I belong to a group with more than max per inbox group discussions
+    When I visit the inbox
+    And I click 'clear them all'
+    Then all the discussions in the group should be marked as read
 
   #Scenario: User unfollows discussion
     #Given I belong to a group with a discussion

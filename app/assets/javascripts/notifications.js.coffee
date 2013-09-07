@@ -19,14 +19,14 @@ $ ->
   $("#group-dropdown-items").load('/notifications/groups_tree_dropdown')
 
 $ ->
-  timeout_multiplier = 1
+  step = 0
   load_inbox_count = () =>
-    timeout_multiplier += 1
+    step += 1 if step < 5
     $.ajax
       url: '/inbox/size',
       success: (count) ->
         $('#inbox-count').text(count);
       complete: ->
-        setTimeout(load_inbox_count, timeout_multiplier*60*1000);
+        setTimeout(load_inbox_count, step*60*1000);
 
   load_inbox_count()
