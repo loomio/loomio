@@ -25,16 +25,20 @@ class InboxController < BaseController
   end
 
   def mark_as_read
-    item = load_resource_from_params
-    item.as_read_by(current_user).viewed!
-    redirect_to_group_or_head_ok
-  end
-
-  def mark_all_as_read
-    discussion_ids = params[:discussion_ids].split('x').map(&:to_i)
-    current_user.discussions.where(id: discussion_ids).each do |d|
-      d.as_read_by(current_user).viewed!
+    if params.has_key?(:discussion_ids)
+      ids = params[:discussion_ids].split('x').map(&:to_i)
+      current_user.discussions.where(id: ids).each do |discussion|
+        discussion.as_read_by(current_user).viewed!
+      end
     end
+
+    if params.has_key?(:motion_ids)
+      ids = params[:motion_ids].split('x').map(&:to_i)
+      current_user.motions.where(id: ids).each do |motion|
+        motion.as_read_by(current_user).viewed!
+      end
+    end
+
     redirect_to_group_or_head_ok
   end
 
@@ -61,8 +65,11 @@ class InboxController < BaseController
   def load_resource_from_params
     class_name = params[:class]
     id = params[:id]
+
     if class_name == 'Discussion'
-      current_user.discussions.find id
+      current_user.discussions.find_by_id(id)
+    elsif class_name == 'Motion'
+      current_user.motions.find_by_id(id)
     end
   end
 

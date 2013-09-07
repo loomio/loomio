@@ -19,7 +19,7 @@ class Inbox
       @unread_discussions_per_group[group] = unread_discussions_for(group).size
 
       discussions = unread_discussions_for(group).limit(unread_per_group_limit)
-      motions = unvoted_motions_for(group)
+      motions = unread_motions_for(group)
       next if discussions.empty? && motions.empty?
 
       aligned_items = []
@@ -84,5 +84,10 @@ class Inbox
 
   def unvoted_motions_for(group)
     Queries::UnvotedMotions.for(@user, group)
+  end
+
+  def unread_motions_for(group)
+    Queries::VisibleMotions.new(user: @user, groups: [group]).unread.voting.
+                                order_by_latest_activity.readonly(false)
   end
 end

@@ -23,17 +23,24 @@ Feature: Inbox
     When I visit the inbox
     Then I should see the motion
 
-  Scenario: Voted motions don't show in inbox
-    Given I belong to a group with a motion
-    And I have voted on the motion
-    When I visit the inbox
-    Then the inbox should be empty
+  # voted motions will show in inbox.. if there is new activity.
+  #Scenario: Voted motions don't show in inbox
+    #Given I belong to a group with a motion
+    #And I have voted on the motion
+    #When I visit the inbox
+    #Then the inbox should be empty
 
   Scenario: User marks discussion as read
     Given I belong to a group with a discussion
     When I visit the inbox
     And I mark the discussion as read
     Then the discussion should disappear
+
+  Scenario: User marks motion as read
+    Given I belong to a group with a motion
+    When I visit the inbox
+    And I mark the motion as read
+    Then the motion should disappear
 
   Scenario: Discussion with no comments gives 1 unread
     Given I belong to a group with a discussion
