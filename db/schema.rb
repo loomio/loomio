@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20130903214957) do
     t.integer  "filesize"
   end
 
-  add_index "attachments", ["user_id", "comment_id"], :name => "index_attachments_on_user_id_and_comment_id"
+  add_index "attachments", ["comment_id"], :name => "index_attachments_on_comment_id"
 
   create_table "campaign_signups", :force => true do |t|
     t.integer  "campaign_id"
@@ -469,8 +469,8 @@ ActiveRecord::Schema.define(:version => 20130903214957) do
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.boolean  "uses_markdown",                                               :default => false
     t.integer  "memberships_count",                                           :default => 0,          :null => false
+    t.boolean  "uses_markdown",                                               :default => false
     t.string   "language_preference"
     t.string   "time_zone"
   end
