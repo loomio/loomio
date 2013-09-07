@@ -3,7 +3,7 @@
     %h1 Inbox
   .span8#inbox-description
     %i.icon-star
-    = "Here is all the activity you haven't read yet."
+    = "Here is the activity you haven't read yet."
   .span2.inbox-preferences
 
     =link_to inbox_preferences_path, class: 'preferences-link' do
@@ -19,7 +19,10 @@
         .span2.mark-all-as-read
           - discussion_ids = items.select{|i| i.is_a? Discussion }.map(&:id)
           - motion_ids = items.select{|i| i.is_a? Motion }.map(&:id)
-          =link_to 'Clear', mark_as_read_inbox_path(discussion_ids: discussion_ids.join('x'), motion_ids: motion_ids.join('x')), class: 'mark-all-as-read-btn', remote: true
+          =link_to 'Clear',
+            mark_as_read_inbox_path(discussion_ids: discussion_ids.join('x'),
+                                    motion_ids: motion_ids.join('x')),
+            class: 'mark-all-as-read-btn', remote: true
       %ul.inbox-list
         - items.each do |item|
           -if item.is_a? Discussion
@@ -30,11 +33,16 @@
         -if @inbox.unread_items_exceeds_max_for(group)
           %li
             .row
-              =link_to group do
-                .span1
-                .span11.more-unread-items
-                  =@inbox.items_not_shown_count_for(group)
-                  more unread items
+              .span1
+              .span11
+                =@inbox.items_not_shown_count_for(group)
+                more unread items.
+                =link_to 'Visit the group', group, class: 'more-unread-items'
+                or
+                =link_to 'clear them all',
+                  mark_all_as_read_inbox_path(group.id),
+                  class: 'mark-all-as-read-btn more-unread-items',
+                  method: :post
 
 
 - if @inbox.empty?

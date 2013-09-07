@@ -1,7 +1,11 @@
 class Queries::VisibleMotions < Delegator
-  def initialize(user: nil, groups: nil)
+  def initialize(user: nil, groups: nil, group_ids: nil)
     @user = user
-    @groups = groups
+
+    group_ids = []
+    if groups.present?
+      group_ids = groups.map(&:id)
+    end
 
     @relation = Motion.joins(:discussion => :group).where('archived_at IS NULL')
 
@@ -18,17 +22,17 @@ class Queries::VisibleMotions < Delegator
                                     mr.motion_id = motions.id AND mr.user_id = #{@user.id}")
     end
 
-    if @user.present? && @groups.present?
+    if @user.present? && !group_ids.empty?
       @relation = @relation.where("discussions.group_id IN (:group_ids) AND
                                   (discussions.group_id IN (:user_group_ids) OR groups.viewable_by = 'everyone'
                                    OR (groups.viewable_by = 'parent_group_members' AND groups.parent_id IN (:user_group_ids)))",
-                                  group_ids: @groups.map(&:id),
-                                  user_group_ids: @user.groups.map(&:id))
-    elsif @user.present? && @groups.blank?
-      @relation = @relation.where('discussions.group_id IN (:user_group_ids)', user_group_ids: @user.groups.map(&:id))
-    elsif @user.blank? && @groups.present?
+                                  group_ids: group_ids,
+                                  user_group_ids: @user.group_ids)
+    elsif @user.present? && group_ids.empty?
+      @relation = @relation.where('discussions.group_id IN (:user_group_ids)', user_group_ids: @user.group_ids)
+    elsif @user.blank? && !group_ids.empty?
       @relation = @relation.where("discussions.group_id IN (:group_ids) AND groups.viewable_by = 'everyone'",
-                                  group_ids: @groups.map(&:id))
+                                  group_ids: group_ids)
     else
       @relation = []
     end
