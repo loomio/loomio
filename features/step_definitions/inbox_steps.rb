@@ -92,3 +92,21 @@ Given(/^I have read the discussion but there is a new comment$/) do
   @discussion.group.add_member!(@discussion.author)
   @discussion.add_comment(@discussion.author, 'hi')
 end
+
+Given(/^I belong to a group with more than max per inbox group discussions$/) do
+  @discussion = FactoryGirl.create(:discussion)
+  @group = @discussion.group
+  @group.add_member!(@user)
+  Inbox::UNREAD_PER_GROUP_LIMIT.times do
+    FactoryGirl.create(:discussion, group: @group)
+  end
+end
+
+When(/^I click 'clear them all'$/) do
+  click_on 'clear them all'
+end
+
+Then(/^all the discussions in the group should be marked as read$/) do
+  sleep(1)
+  Queries::VisibleDiscussions.new(user: @user, groups: [@group]).unread.size.should == 0
+end
