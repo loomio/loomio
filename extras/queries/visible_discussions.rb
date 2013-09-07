@@ -1,7 +1,10 @@
 class Queries::VisibleDiscussions < Delegator
-  def initialize(user: nil, groups: nil)
+  def initialize(user: nil, groups: nil, group_ids: nil)
     @user = user
-    @groups = groups
+
+    if groups.present?
+      group_ids = groups.map(&:id)
+    end
 
     @relation = Discussion.joins(:group).where('archived_at IS NULL')
 
@@ -17,17 +20,17 @@ class Queries::VisibleDiscussions < Delegator
                                     dv.discussion_id = discussions.id AND dv.user_id = #{@user.id}")
     end
 
-    if @user.present? && @groups.present?
+    if @user.present? && group_ids.present?
       @relation = @relation.where("group_id IN (:group_ids) AND
                                   (group_id IN (:user_group_ids) OR groups.viewable_by = 'everyone'
                                    OR (groups.viewable_by = 'parent_group_members' AND groups.parent_id IN (:user_group_ids)))",
-                                  group_ids: @groups.map(&:id),
-                                  user_group_ids: @user.groups.map(&:id))
-    elsif @user.present? && @groups.blank?
-      @relation = @relation.where('group_id IN (:user_group_ids)', user_group_ids: @user.groups.map(&:id))
-    elsif @user.blank? && @groups.present?
+                                  group_ids: group_ids,
+                                  user_group_ids: @user.group_ids)
+    elsif @user.present? && group_ids.blank?
+      @relation = @relation.where('group_id IN (:user_group_ids)', user_group_ids: @user.group_ids)
+    elsif @user.blank? && group_ids.present?
       @relation = @relation.where("group_id IN (:group_ids) AND groups.viewable_by = 'everyone'",
-                                  group_ids: @groups.map(&:id))
+                                  group_ids: group_ids)
     else
       @relation = []
     end
