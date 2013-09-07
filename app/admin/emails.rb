@@ -7,7 +7,7 @@ ActiveAdmin.register Email do
     selectable_column
     column :to
     column :from
-    column :subject
+    column('Template') {|e| e.email_template.name }
     column :created_at
     column :updated_at
     default_actions
