@@ -21,7 +21,7 @@ class Motion < ActiveRecord::Base
 
   delegate :email, :to => :author, :prefix => :author
   delegate :name, :to => :author, :prefix => :author
-  delegate :group, :group_id, :to => :discussion, counter_cache: true
+  delegate :group, :group_id, :to => :discussion
   delegate :users, :full_name, :to => :group, :prefix => :group
   delegate :email_new_motion?, to: :group, prefix: :group
 
@@ -37,6 +37,7 @@ class Motion < ActiveRecord::Base
   scope :that_user_has_voted_on, lambda {|user|
     joins(:votes).where("votes.user_id = ?", user.id)
   }
+  scope :order_by_latest_activity, -> { order('last_vote_at desc') }
 
   def title
     name

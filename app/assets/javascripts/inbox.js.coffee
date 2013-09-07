@@ -35,7 +35,7 @@ $ ->
     $('.mark-all-as-read-btn').on 'click', (e) ->
       group_div = $(e.target).parents('.inbox-group')
 
-      group_div.find('li.discussion').fadeOut fade_time, ->
+      group_div.find('li').fadeOut fade_time, ->
         $(this).remove()
         remove_group_if_empty(group_div)
         show_inbox_empty_msg_if_empty
