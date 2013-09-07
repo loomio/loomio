@@ -38,11 +38,16 @@
                 =@inbox.items_not_shown_count_for(group)
                 more unread items.
                 =link_to 'Visit the group', group, class: 'more-unread-items'
-                or
-                =link_to 'clear them all',
+                ,
+                =link_to 'mark them all as read',
                   mark_all_as_read_inbox_path(group.id),
                   class: 'mark-all-as-read-btn more-unread-items',
                   method: :post
+                or
+                =link_to 'remove the group from your inbox',
+                  inbox_preferences_path,
+                  class: 'more-unread-items'
+                
 
 
 - if @inbox.empty?

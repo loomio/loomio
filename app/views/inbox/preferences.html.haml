@@ -1,12 +1,12 @@
 %h2 Inbox preferences
 %p 
-  %strong Drag items 
-  to reorder them. 
-  %strong Uncheck 
+  %strong Drag items
+  to reorder them.
+  %strong Uncheck
   to remove from inbox.
 
 
-=simple_form_for @inbox_preferences_form, 
+=simple_form_for @inbox_preferences_form,
   url: update_inbox_preferences_path,
   method: :put do |f|
   .control-group.ui-sortable
