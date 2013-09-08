@@ -1,7 +1,3 @@
-@import "bootstrap/mixins";
-@import "settings";
-@import "mixins";
-
 body.searches {
     &.show {
     #explanation { text-align: right; }

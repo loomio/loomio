@@ -1,7 +1,9 @@
+// Libraries
+@import "bootstrap"
 @import "bootstrap/mixins"
-@import "settings"
-@import "mixins"
 
+
+// ************ atomic structure ***************
 
 // "So, while atoms and quarks define rigid and clear rules for
 // the system overall, and utilities provide the outlining structural
@@ -9,18 +11,42 @@
 // the design can be more flexible and extend styles out from
 // those central tenets of the system."
 
-// @import all css files in here
-
 // Utilites are very basic plumbing
-// @import "utilites/clearfix"
+@import "utilities/vendor"
+@import "utilities/colors"
+@import "utilities/fonts"
 
 // Quarks are HTML elements
 // @import "quarks/paragraphs"
 
 // Atoms are universal abstractions
-// @import "atoms/buttons"
-@import 'atoms/activity_count'
+@import "atoms/activity_count"
 
-// Molecules are for one-off structures, combining quarks and atoms
-// @import "molecules/banner"
-@import 'molecules/inbox_line_item'
+// // Molecules are for one-off structures, combining quarks and atoms
+@import "molecules/inbox_line_item"
+
+// ***********************************************
+
+// // Legacy controller action scoped css to be removed.
+@import "legacy/main"
+@import "legacy/overide_bootstrap"
+@import "legacy/icons"
+@import "legacy/header"
+@import "legacy/dashboard"
+@import "legacy/groups"
+@import "legacy/groups/public_groups"
+@import "legacy/discussions"
+@import "legacy/pages"
+@import "legacy/notifications"
+@import "legacy/motions"
+@import "legacy/votes"
+@import "legacy/users"
+@import "legacy/memberships"
+@import "legacy/invitations"
+@import "legacy/group_requests"
+@import "legacy/help"
+@import "legacy/contributions"
+@import "legacy/inbox"
+@import "legacy/manage_membership_requests"
+@import "legacy/searches"
+@import "legacy/subscriptions"

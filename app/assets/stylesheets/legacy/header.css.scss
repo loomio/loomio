@@ -1,7 +1,3 @@
-@import "settings";
-@import "bootstrap/mixins";
-@import "mixins";
-
 .dropdown-menu {
   a {
     clear: both;
@@ -85,6 +81,7 @@
         border: none;
         display: inline-block;
         @include ie7-inline-block();
+        padding: 3px 5px;
       }
       body { color: #fff; }
       .control-group {

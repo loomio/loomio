@@ -1,8 +1,3 @@
-@import "bootstrap/mixins";
-@import "settings";
-@import "mixins";
-
-
 body.discussions.new, body.discussions.create {
   #discussion-markdown-dropdown {
     float: right;
