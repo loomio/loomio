@@ -7,6 +7,7 @@
     = stylesheet_link_tag    "frontpage"
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
+    = render 'application/google_analytics'
 
   %body{class: "#{controller_name} #{action_name}"}
     .container.home-flash
@@ -39,4 +40,5 @@
     = render 'footer_logged_out'
 
     = javascript_include_tag "frontpage"
-    = render 'application/analytics'
+    = render 'application/segmentio'
+

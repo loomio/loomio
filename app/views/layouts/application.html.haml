@@ -9,7 +9,7 @@
     %link{:href => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/flick/jquery-ui.css", :rel => "stylesheet", :type => "text/css"}
 
     = render 'social_metadata', :description => @meta_description, :title => @meta_title
-
+    = render 'application/analytics'
   %body{class: "#{controller_name} #{action_name}"}
     .main-container.container
       = render 'announcements' if user_signed_in?
@@ -18,4 +18,4 @@
       .page-container
         = yield
       = render 'footer_logged_in'
-      = render 'application/analytics'
+
