@@ -65,7 +65,14 @@ body.discussions.show {
     padding: 6px;
     background: #EBEBEB;
     margin: 5px 0;
-      a { margin-left: 3px; }
+    a { margin-left: 3px; }
+    .attachment-image {
+      margin-left: 0px;
+      padding-top: 6px;
+      display: block;
+      text-align: center;
+    }
+    .paperclip { margin-bottom: 2px; }
   }
   .discussion-title-container {
     display: inline-block;
