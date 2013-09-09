@@ -4,7 +4,7 @@ class Group < ActiveRecord::Base
   end
 
   PERMISSION_CATEGORIES = ['everyone', 'members', 'admins', 'parent_group_members']
-  PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription']
+  PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
 
   validates_presence_of :name
   validates_inclusion_of :payment_plan, in: PAYMENT_PLANS

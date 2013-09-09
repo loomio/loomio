@@ -311,7 +311,7 @@ ActiveRecord::Schema.define(:version => 20130903214957) do
     t.datetime "setup_completed_at"
     t.boolean  "next_steps_completed", :default => false,  :null => false
     t.string   "full_name"
-    t.string   "payment_plan",         :default => "pwyc"
+    t.string   "payment_plan",         :default => "undetermined"
   end
 
   add_index "groups", ["full_name"], :name => "index_groups_on_full_name"
