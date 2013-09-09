@@ -52,6 +52,10 @@ body.group_requests {
       @include border-radius(4px);
       padding: 10px 16px 16px;
       .btn { margin: 20px 0 0; }
+      height: 226px;
+      &#organisation {
+        a { margin-top: 42px; }
+      }
     }
     .span4 { width: 320px; }
   }
