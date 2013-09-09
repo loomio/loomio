@@ -11,19 +11,6 @@
   = link_to "How It Works page", help_url
   for a quick introduction.
 
-- if @group.is_subscription?
-  %p
-    %strong Subscription:
-    %br
-    You’ve got a 30-day free trial, but if you want to take care of payment now, you can visit the
-    = link_to "Subscription page.", group_subscription_url(@group)
-- elsif @group.is_pwyc?
-  %p
-    %strong Pay what you can:
-    %br
-    As an informal group, there’s no set subscription fee. Instead, people in your group will have an opportunity to make a contribution of their choice. You can find out more about our community funding model on the
-    = link_to "Contribute page.", contributions_url
-
 %p If you’ve got any questions or feedback, just reply to this email. I’d love to hear from you!
 
 %p
