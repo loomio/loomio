@@ -73,6 +73,7 @@ class InvitationsController < ApplicationController
       render template: 'invitations/join_group', layout: 'pages'
     else
       @user.name = @invitation.group_request_admin_name
+      @user.email = @invitation.recipient_email
       render template: 'invitations/start_group', layout: 'pages'
     end
   end
