@@ -17,19 +17,4 @@ describe Events::InvitationAccepted do
       Events::InvitationAccepted.publish!(membership).should == event
     end
   end
-
-  context "after event has been published" do
-    let(:user) { mock_model(User) }
-    let(:event) { Events::InvitationAccepted.new(kind: "invitation_accepted",
-                                           eventable: membership) }
-
-    before do
-      membership.stub(:user).and_return(user)
-    end
-
-    it 'notifies the requestor' do
-      event.should_receive(:notify!).with(user)
-      event.save!
-    end
-  end
 end
