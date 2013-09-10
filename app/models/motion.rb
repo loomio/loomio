@@ -87,33 +87,32 @@ class Motion < ActiveRecord::Base
 
   # map of position and votes
   def vote_counts
-    counts = {}
-    Vote::POSITIONS.each do |position|
-      counts[position] = self.send("#{position}_votes_count")
-    end
-    counts
+    {'yes' => yes_votes_count,
+     'abstain' => abstain_votes_count,
+     'no' => no_votes_count,
+     'block' => block_votes_count}
   end
 
   # number of final votes
   def total_votes_count
-    yes_votes_count + no_votes_count + abstain_votes_count + block_votes_count
+    vote_counts.values.sum
   end
 
   # number of vote records - ie: including changes to votes
+  # not to be confused with vote_counts (which is why we call it activity_count)
   def activity_count
-    votes.size
+    votes_count
   end
 
-  # this method sux
   def votes_for_graph
     votes_for_graph = []
     vote_counts.each do |k, v|
       votes_for_graph.push ["#{k.capitalize} (#{v})", v, "#{k.capitalize}", ([1]*v)]
     end
-    if votes.size == 0
+    if activity_count == 0
       votes_for_graph.push ["Yet to vote (#{members_not_voted_count})", members_not_voted_count, 'Yet to vote', ([1]*members_not_voted_count)]
     end
-    return votes_for_graph
+    votes_for_graph
   end
 
   def user_has_voted?(user)
@@ -188,7 +187,7 @@ class Motion < ActiveRecord::Base
       self.send("#{position}_votes_count=", position_counts[position])
     end
 
-    # activity count
+    # set the activity count
     self[:votes_count] = votes.count
 
     save!
