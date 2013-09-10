@@ -14,6 +14,7 @@ describe CommentsController do
       Comment.stub(:find).and_return(comment)
     end
 
+
     context "user likes a comment" do
       before do
         @comment_vote = mock_model(CommentVote)
@@ -21,19 +22,14 @@ describe CommentsController do
         Events::CommentLiked.stub(:publish!)
       end
 
-      it "checks permissions" do
-        app_controller.should_receive(:authorize!).and_return(true)
-        post :like, id: comment.id, like: 'true'
-      end
-
       it "adds like to comment model" do
         comment.should_receive(:like).with(user)
-        post :like, id: comment.id, like: 'true'
+        post :like, id: comment.id, like: 'true', format: :js
       end
 
       it "fires comment_liked! event" do
         Events::CommentLiked.should_receive(:publish!).with(@comment_vote)
-        post :like, id: comment.id, like: 'true'
+        post :like, id: comment.id, like: 'true', format: :js
       end
     end
 
@@ -43,14 +39,13 @@ describe CommentsController do
       end
 
       it "checks permissions" do
-        app_controller.should_receive(:authorize!).and_return(true)
         comment.should_receive(:unlike).with(user) #hack? -PS
-        post :like, id: comment.id, like: 'false'
+        post :like, id: comment.id, like: 'false', format: :js
       end
 
       it "removes like from comment model" do
         comment.should_receive(:unlike).with(user)
-        post :like, id: comment.id, like: 'false'
+        post :like, id: comment.id, like: 'false', format: :js
       end
 
     end

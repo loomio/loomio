@@ -50,6 +50,7 @@ describe Comment do
   context "liked by user" do
     before do
       @like = comment.like user
+      comment.reload
     end
 
     it "increases like count" do
