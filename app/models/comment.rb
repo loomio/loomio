@@ -46,6 +46,7 @@ class Comment < ActiveRecord::Base
   def like(user)
     liker_ids_and_names[user.id] = user.name
     like = comment_votes.build
+    like.comment = self
     like.user = user
     like.save
     save
