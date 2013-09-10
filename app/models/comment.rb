@@ -72,7 +72,9 @@ class Comment < ActiveRecord::Base
   end
 
   def likers_include?(user)
-    liker_ids_and_names.keys.include?(user.id)
+    if liker_ids_and_names.respond_to? :keys
+      liker_ids_and_names.keys.include?(user.id)
+    end
   end
 
   private

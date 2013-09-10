@@ -6,6 +6,7 @@ Feature: Like post
     Given a group "demo-group" with "furry@example.com" as admin
     And I am logged in as "furry@example.com"
 
+  @javascript
   Scenario: Like post
     Given I am viewing a discussion titled "hello" in "demo-group"
     And I am on the discussion page
@@ -13,5 +14,12 @@ Feature: Like post
     And I click the like button on a post
     Then a post should be liked by "furry@example.com"
 
+  @javascript
+  Scenario: UnLike post
+    Given I am viewing a discussion titled "hello" in "demo-group"
+    And I am on the discussion page
+    When I write and submit a comment
+    And I click the like button on a post
+    And I am on the discussion page
     When I click the unlike button on a post
     Then I should not see any liked posts by "furry@example.com"
