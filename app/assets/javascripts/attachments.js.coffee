@@ -45,6 +45,7 @@ $ ->
         $('#attachment-container').append(data.context)
         $('#fileupload').data('filesize', data.files[0].size)
         $('#fileupload').data('filename', data.files[0].name)
+        data.form.find('#content-type').val(file.type)
         jqXHR = data.submit()
 
         data.context.on 'click', '.cancel-upload', (e) ->
