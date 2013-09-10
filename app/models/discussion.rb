@@ -118,7 +118,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def activity
-    Event.includes(:eventable).where(discussion_id: id).order('created_at DESC')
+    Event.includes(:eventable).where(discussion_id: id).order('id DESC')
   end
 
   def viewed!
