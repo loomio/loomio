@@ -30,4 +30,14 @@ namespace :upgrade_tasks do
       end
     end
   end
+
+  task :reset_comment_likers => :environment do
+    Comment.find_each do |c|
+      puts c.id if c.id % 100 == 0
+      c.comment_votes.each do |cv|
+        c.liker_ids_and_names[cv.user_id] = cv.user.name
+      end
+      c.save(validate: false)
+    end
+  end
 end

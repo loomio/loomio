@@ -1,12 +1,9 @@
 %ul
   - if @notifications.empty?
     %li.notifications-placeholder= t :empty_notifications
-  - @notifications.each do |notification|
-    -if notification.user.present?
-      = render notification
+  = render @notifications
 :javascript
   var new_notifications_count = #{@unviewed_notifications.size}
   if (new_notifications_count > 0) {
     $('span#notifications-count').html(new_notifications_count)
   }
-

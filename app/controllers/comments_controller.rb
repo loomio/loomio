@@ -1,5 +1,5 @@
 class CommentsController < BaseController
-  load_and_authorize_resource
+  load_and_authorize_resource only: :destroy
 
   def destroy
     CommentDeleter.new(@comment).delete_comment
@@ -8,18 +8,19 @@ class CommentsController < BaseController
   end
 
   def like
-    like = (params[:like]=='true')
-    if like
-      comment_vote = @comment.like current_user
-      @comment.reload
-      Events::CommentLiked.publish!(comment_vote)
+    @comment = Comment.find(params[:id])
+    if can? :like_comments, @comment.discussion
+      like = (params[:like]=='true')
+      if like
+        comment_vote = @comment.like current_user
+        Events::CommentLiked.publish!(comment_vote)
+      else
+        @comment.unlike current_user
+        @comment.reload
+      end
+      render :template => "comments/comment_likes"
     else
-      @comment.unlike current_user
-      @comment.reload
-    end
-    respond_to do |format|
-    	format.html { redirect_to discussion_url(@comment.discussion) }
-    	format.js { render :template => "comments/comment_likes" }
+      head :bad_request
     end
   end
 end
