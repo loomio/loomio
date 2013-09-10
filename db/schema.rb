@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910015626) do
+ActiveRecord::Schema.define(:version => 20130910070551) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(:version => 20130910015626) do
     t.datetime "updated_at"
     t.boolean  "uses_markdown",       :default => false, :null => false
     t.integer  "comment_votes_count", :default => 0,     :null => false
+    t.integer  "attachments_count",   :default => 0,     :null => false
+    t.text     "liker_ids_and_names"
   end
 
   add_index "comments", ["discussion_id"], :name => "index_comments_on_commentable_id"
@@ -182,6 +184,8 @@ ActiveRecord::Schema.define(:version => 20130910015626) do
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
   add_index "discussions", ["group_id"], :name => "index_discussions_on_group_id"
+  add_index "discussions", ["is_deleted", "group_id"], :name => "index_discussions_on_is_deleted_and_group_id"
+  add_index "discussions", ["is_deleted", "id"], :name => "index_discussions_on_is_deleted_and_id"
   add_index "discussions", ["is_deleted"], :name => "index_discussions_on_is_deleted"
 
   create_table "email_template_sent_to_groups", :force => true do |t|
@@ -314,6 +318,7 @@ ActiveRecord::Schema.define(:version => 20130910015626) do
     t.string   "payment_plan",         :default => "pwyc"
   end
 
+  add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
   add_index "groups", ["full_name"], :name => "index_groups_on_full_name"
   add_index "groups", ["name"], :name => "index_groups_on_name"
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
@@ -368,6 +373,7 @@ ActiveRecord::Schema.define(:version => 20130910015626) do
     t.integer  "inbox_position",                    :default => 0
   end
 
+  add_index "memberships", ["group_id", "user_id", "archived_at", "access_level"], :name => "index_cool_guy"
   add_index "memberships", ["group_id"], :name => "index_memberships_on_group_id"
   add_index "memberships", ["inviter_id"], :name => "index_memberships_on_inviter_id"
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
