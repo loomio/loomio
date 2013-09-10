@@ -1,7 +1,7 @@
--cache user do
-  %div{ class: "#{size}-user-avatar avatar-canvas", id: id }
-    - kind = user.avatar_kind if kind.nil?
-    - if kind == 'initials'
-      = user.avatar_initials
-    - else
-      = image_tag user.avatar_url(size, kind)
+-#-cache user do
+%div{ class: "#{size}-user-avatar avatar-canvas", id: id }
+  - kind = user.avatar_kind if kind.nil?
+  - if kind == 'initials'
+    = user.avatar_initials
+  - else
+    = image_tag user.avatar_url(size, kind)
