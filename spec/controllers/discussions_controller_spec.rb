@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DiscussionsController do
   let(:app_controller) { controller }
-  let(:user) { stub_model(User) }
+  let(:user) { stub_model(User, created_at: Time.zone.now) }
   let(:motion) { mock_model(Motion) }
   let(:group) { mock_model(Group) }
   let(:discussion) { stub_model(Discussion,
@@ -10,7 +10,9 @@ describe DiscussionsController do
                                 author: user,
                                 current_motion: motion,
                                 group: group) }
-
+  before do
+    app_controller.stub(:prepare_segmentio_data)
+  end
   context "authenticated user" do
     before do
       sign_in user
