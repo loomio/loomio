@@ -20,6 +20,9 @@ class NotificationItems::UserAddedToGroup < NotificationItem
   end
 
   def actor
-    @notification.eventable.inviter
+    # JON: Temporary fix until I figure out why inviter is not
+    #      populating
+    inviter = @notification.eventable.inviter
+    inviter or @notification.eventable.user
   end
 end
