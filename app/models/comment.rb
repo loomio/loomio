@@ -14,6 +14,7 @@ class Comment < ActiveRecord::Base
   validate :has_body_or_attachment
   validate :attachments_owned_by_author
 
+  after_initialize :set_defaults
   after_create :update_discussion_last_comment_at
   after_create :fire_new_comment_event
 
@@ -25,6 +26,8 @@ class Comment < ActiveRecord::Base
   delegate :group, :to => :discussion
   delegate :full_name, :to => :group, :prefix => :group
   delegate :title, :to => :discussion, :prefix => :discussion
+
+  serialize :liker_ids_and_names, Hash
 
   alias_method :author, :user
 
@@ -41,14 +44,18 @@ class Comment < ActiveRecord::Base
   end
 
   def like(user)
-    vote = comment_votes.build
-    vote.user = user
-    vote.save if persisted?
-    vote
+    liker_ids_and_names[user.id] = user.name
+    like = comment_votes.build
+    like.user = user
+    like.save
+    save
+    like
   end
 
   def unlike(user)
+    liker_ids_and_names.delete(user.id)
     comment_votes.where(:user_id => user.id).each(&:destroy)
+    save
   end
 
   def mentioned_group_members
@@ -60,7 +67,19 @@ class Comment < ActiveRecord::Base
     (discussion.participants - mentioned_group_members) - [author]
   end
 
+  def likes_count
+    comment_votes_count
+  end
+
+  def likers_include?(user)
+    liker_ids_and_names.keys.include?(user.id)
+  end
+
   private
+    def set_defaults
+      self.liker_ids_and_names ||= {}
+    end
+
     def attachments_owned_by_author
       if attachments.present?
         if attachments.map(&:user_id).uniq != [user.id]

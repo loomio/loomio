@@ -117,17 +117,13 @@ class Ability
          :edit_title,
          :show_description_history,
          :preview_version,
+         :like_comments,
          :update_version], Discussion do |discussion|
       @member_group_ids.include?(discussion.group_id)
     end
 
     can [:destroy], Comment do |comment|
       (comment.author == user) or @admin_discussion_ids.include?(comment.discussion_id)
-    end
-
-    can [:like,
-         :unlike], Comment do |comment|
-      @member_discussion_ids.include?(comment.discussion_id)
     end
 
     can :get_and_clear_new_activity, Motion do |motion|
