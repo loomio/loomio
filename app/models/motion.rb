@@ -43,6 +43,10 @@ class Motion < ActiveRecord::Base
     name
   end
 
+  def user
+    author
+  end
+
   def voting?
     closed_at.nil?
   end
