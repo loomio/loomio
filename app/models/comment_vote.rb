@@ -1,5 +1,4 @@
 class CommentVote < ActiveRecord::Base
-  default_scope include: :user
   belongs_to :comment, counter_cache: true
   belongs_to :user
   has_many :events, :as => :eventable, :dependent => :destroy
