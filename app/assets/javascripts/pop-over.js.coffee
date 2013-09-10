@@ -26,13 +26,6 @@ $ ->
       placement: "right",
       trigger: "manual"
 
-#adds bootstrap tooltip to preview pies
-$ ->
-  if $("body.groups.show").length > 0 || $("body.dashboard.show").length > 0
-    $(".pie").tooltip
-      placement: "top",
-      title: "Click to see more."
-
 #adds bootstrap tooltip to makdown-settings-dropdown
 $ ->
   $("#comment-markdown-dropdown").tooltip
