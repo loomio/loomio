@@ -38,6 +38,7 @@ module UploadHelper
     def fields
       {
         :key => key,
+        'Content-Type' => "",
         :acl => @options[:acl],
         :policy => policy,
         :signature => signature,
@@ -67,6 +68,7 @@ module UploadHelper
         conditions: [
           ["starts-with", "$utf8", ""],
           ["starts-with", "$key", key_prefix],
+          ["starts-with", "$Content-Type", ""],
           ["content-length-range", 0, @options[:max_file_size]],
           {bucket: @options[:bucket]},
           {acl: @options[:acl]}
