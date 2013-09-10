@@ -69,7 +69,6 @@ class DiscussionsController < GroupBaseController
     @group = GroupDecorator.new(@discussion.group)
     @vote = Vote.new
     @current_motion = @discussion.current_motion
-    load_cached_comment_info
     assign_meta_data
     if params[:proposal]
       @displayed_motion = Motion.find(params[:proposal])
@@ -106,7 +105,6 @@ class DiscussionsController < GroupBaseController
       @comment = @discussion.add_comment(current_user, params[:comment],
                                          uses_markdown: params[:uses_markdown], attachments: params[:attachments])
       current_user.update_attributes(uses_markdown: params[:uses_markdown])
-      load_cached_comment_info
       @discussion.as_read_by(current_user).viewed!
       unless request.xhr?
         redirect_to @discussion
@@ -170,18 +168,6 @@ class DiscussionsController < GroupBaseController
   end
 
   private
-
-
-  def load_cached_comment_info
-    @comment_likes = @discussion.comment_likes
-    @comment_likes_by_comment_id = @comment_likes.group_by{|cv| cv.comment_id}
-    if current_user
-      @comment_ids_liked_by_current_user = @comment_likes.where(user_id: current_user.id).map{|cv|cv.comment_id}
-    else
-      @comment_ids_liked_by_current_user = []
-    end
-    @can_like_comments = can?(:like, @discussion.comments.first)
-  end
 
   def assign_meta_data
     if @group.viewable_by == 'everyone'

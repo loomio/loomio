@@ -1,8 +1,8 @@
 .activity-item-time
   = link_to(t('ago', :quantity_of_time => time_ago_in_words(comment.created_at)), "#comment-#{comment.id}")
-  - if current_user_can_like_comments?
+  - if @can_like_comments ||= can?(:like_comments, @discussion)
     = " · "
-    - if current_user_likes_comment?(comment)
+    - if comment.likers_include?(current_user)
       = link_to t(:unlike), like_comment_path(id: comment, like: 'false'), method: :post, remote: true, id: "unlike-comment-#{comment.id}"
     - else
       = link_to t(:like), like_comment_path(id: comment, like: 'true'), method: :post, remote: true, id: "like-comment-#{comment.id}"
@@ -10,11 +10,11 @@
     = " · "
     = link_to t(:delete), "#", 'data-title' => t(:delete_comment), 'data-body' => t(:confirm_delete_comment), 'data-confirm-path' => comment_path(comment), 'data-method-type' => 'delete', class: 'confirm-dialog', id: "delete-comment-#{comment.id}"
 
-- if comment_likes_count(comment) > 0
+- if comment.likes_count > 0
   .activity-item-likes
-    - likers = comment_likes_for(comment).map { |like| link_to(like.user_name, like.user) }
-    - if likers.length > 1
-      - likers = likers.slice(0, likers.length - 1).join(", ").concat(" and " + likers.slice(-1))
+    - liker_links = comment.liker_ids_and_names.map { |id, name| link_to(name, user_path(id)) }
+    - if liker_links.size == 1
+      - likers = liker_links.first
     - else
-      - likers = likers[0]
+      - likers = liker_links.slice(0, liker_links.size - 1).join(", ").concat(" and " + liker_links.last)
     = t(:liked_by, who: likers).html_safe
