@@ -8,7 +8,7 @@ class NotificationItems::MotionClosed < NotificationItem
   end
 
   def actor
-    @notification.event.user
+    @notification.event.eventable.author
   end
 
   def action_text
