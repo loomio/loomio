@@ -18,7 +18,7 @@
         .row-fluid
           .pull-right
             - if controller_name == 'pages' && (action_name == 'home' || action_name == 'about')
-              =link_to 'Start a group', selection_group_requests_path, class: 'btn btn-success'
+              =link_to 'Start a group', new_group_request_path, class: 'btn btn-success'
             =link_to 'Sign in', new_user_session_path, class: 'btn btn-info'
           .span3 &nbsp;
           .span6
