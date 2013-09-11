@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 describe NotificationItems::UserAddedToGroup do
   let(:notification) { stub(:notification) }
   let(:item) { NotificationItems::UserAddedToGroup.new(notification) }
