@@ -2,6 +2,5 @@
   = f.input :admin_name, label: "What is your name?"
   = f.input :admin_email, label: "What is your email address?"
   = f.input :name, label: "What is the name of your group?", placeholder: placeholder
-  = f.input :description, as: :text, label: "If you have a moment: ", required: false, placeholder: "Tell us a bit about your group and why you've chosen to use Loomio"
   = f.input :payment_plan, as: :hidden
   = f.submit submit_label, class: 'btn btn-info btn-large', :data => { :disable_with => submit_label }, id: 'sign-up-submit'

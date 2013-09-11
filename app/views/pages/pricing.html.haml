@@ -4,27 +4,19 @@
       .row-fluid
         .span12#intro
           .subhead
-            %h1 Funding Loomio
-      .content-container
-        .row-fluid
-          .span2.icons
-            = image_tag "loomio-users.png"
-            /image_tag("markdown_on.png", class: 'markdown-icon markdown-on')
-          .span10
-            %h2 Loomio users choose how much to pay
-            %p Loomio has a flexible funding model, because we believe that money shouldn't be a barrier to people participating in decision-making.
-            %p Groups choose a monthly fee that is right for them, based on their means.
+            %h1 Pricing
+          %p Money shouldn’t be a barrier to good collaborative decision-making. Your contribution means we can keep Loomio independent, free of advertising, and driven by our community.
 
-        .row-fluid
-          .span2.icons
-            = image_tag "colablove.png", id: 'colablove'
-          .span10
-            %h2 Sliding-scale payment plans
-            %p Small businesses, government departments, and large NGO's typically pay about $2 per head monthly.
-            %p Groups without a budget adjust their monthly fee to fit their needs, down to $0 a month if need be! Members of these groups will occasionally be invited to make an individual contribution.
-
-        .row-fluid
-          .span12
-            #button-container
-              = link_to "Start a group", new_group_request_path, class: "btn btn-success btn-large"
-
+      .row-fluid
+        .span4.offset2
+          .payment-model-box#organisation
+            %h2 Group subscription
+            %p#description Groups with a budget pay a subscription for using the tool.
+            = render("groups/subscriptions/pricing_table")
+        .span4
+          .payment-model-box#informal-group
+            %h2 Individual contribution
+            %p#description Groups without the means to pay a subscription use the Pay What You Can model: their members are invited to make a voluntary contribution.
+        .span12
+          #button-container
+            = link_to "Start a group", selection_group_requests_path, class: "btn btn-success btn-large"
