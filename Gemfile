@@ -99,6 +99,8 @@ group :test do
 end
 
 group :staging, :production do
+  gem 'memcachier'
+  gem 'dalli'
   gem 'newrelic_rpm', '~> 3.5.7.59'
   gem 'heroku-deflater'
 end

@@ -111,6 +111,7 @@ GEM
       nokogiri (>= 1.5.0)
       rails (~> 3.0)
     daemons (1.1.9)
+    dalli (2.6.4)
     database_cleaner (0.9.1)
     delayed_job (3.0.5)
       activesupport (~> 3.0)
@@ -228,6 +229,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcachier (0.0.2)
     meta_request (0.2.8)
       callsite
       rack-contrib
@@ -440,6 +442,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.2)
   country_select (~> 1.1.3)
   cucumber-rails (~> 1.3.0)
+  dalli
   database_cleaner (~> 0.9.1)
   delayed_job_active_record (~> 0.3.3)
   devise (~> 2.2.3)
@@ -466,6 +469,7 @@ DEPENDENCIES
   jquery-rails (= 2.3.0)
   kaminari (~> 0.13.0)
   launchy (~> 2.0.5)
+  memcachier
   meta_request (~> 0.2.4)
   modernizr-rails (~> 2.6.2)
   newrelic_rpm (~> 3.5.7.59)
