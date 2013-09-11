@@ -1,0 +1,13 @@
+.row
+  .span8.offset1
+    #intro
+      %h1 Start your group
+.row
+  .span5.offset1
+    = render 'form', submit_label: "Start group!", placeholder: "e.g. Neighbourhood Support Group"
+  .span4
+    .info-box#informal-group
+      %h2 Loomio is for everyone
+      %p We have a flexible payment model, including $0!
+      %p
+        = link_to "Find out more", pricing_path
