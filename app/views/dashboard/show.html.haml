@@ -19,5 +19,5 @@
       =render '/application/see_closed_motions'
     =render '/application/closed_motions', user: current_user, group: nil
 - else
-  = link_to t(:start_a_group), new_group_request_path
+  = link_to t(:start_a_group), selection_group_requests_path
   = t(:request_new_group_details)

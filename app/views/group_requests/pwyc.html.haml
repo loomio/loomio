@@ -1,0 +1,14 @@
+.row
+  .span8.offset1
+    #intro
+      %h1 Start your group
+.row
+  .span5.offset1
+    = render 'form', submit_label: "Start group!", placeholder: "e.g. Neighbourhood Support Group"
+  .span4
+    .info-box#informal-group
+      %h2 Pay what you can
+      %p Your group members will be invited to pay what they can.
+      %p
+        If you would rather pay on behalf of your group,
+        = link_to "sign up for a subscription.", subscription_group_requests_path

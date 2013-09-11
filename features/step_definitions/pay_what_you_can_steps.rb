@@ -7,14 +7,8 @@ Then(/^I should see the contribution page$/) do
   page.should have_css('body.contributions.index')
 end
 
-Given(/^I am a member of a pwyc group$/) do
+Given(/^I am not a member of a paying group$/) do
   @group = FactoryGirl.create :group, payment_plan: 'pwyc'
-  @group.save!
-  @group.add_member! @user
-end
-
-Given(/^I am a member of a group with an undetermined payment plan$/) do
-  @group = FactoryGirl.create :group, payment_plan: 'undetermined'
   @group.save!
   @group.add_member! @user
 end
