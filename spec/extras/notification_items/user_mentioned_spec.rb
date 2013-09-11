@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe NotificationItems::UserMentioned do
   let(:notification) { stub(eventable: eventable) }
   let(:eventable) { stub(:eventable) }
