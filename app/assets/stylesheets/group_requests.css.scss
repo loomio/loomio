@@ -4,10 +4,13 @@
 
 
 body.group_requests {
-  abbr { display: none; }
+  abbr {
+    border-bottom: none;
+    color: $mid-grey;
+  }
   p { font-size: $font-medium-large; }
   #informal-group { background-color: #D8EBF1; }
-  &.subscription, &.pwyc, &.create {
+  &.create, &.new {
     form {
       input[type="email"], input[type="text"] {
         font-size: 18px;
@@ -21,11 +24,17 @@ body.group_requests {
         margin-top: 15px;
       }
       .control-group { margin-bottom: 16px; }
+      textarea {
+        font-size: 18px;
+        line-height: 22px;
+        margin-top: 6px;
+      }
     }
     h6 { font-weight: 400; }
     .info-box {
       margin: 0px 0 0 50px;
       padding: 25px;
+      width: 250px;
       h2 { font-weight: 400; }
     }
     #intro { margin-bottom: 30px; }
@@ -37,26 +46,5 @@ body.group_requests {
         span { font-weight: 700; }
       }
     }
-    .span4 { width: 310px; }
-  }
-  &.group_requests.selection {
-    .row:last-child {
-      p#last { font-weight: 700; }
-    }
-    p.examples { font-style: italic; color: #333;}
-    #intro { margin: 10px 10px 30px; }
-    #organisation { background-color: #DEF1DE; }
-    #payment_models { margin-bottom: 30px; }
-    #trial { font-weight: bold; }
-    .payment-model-box {
-      @include border-radius(4px);
-      padding: 10px 16px 16px;
-      .btn { margin: 20px 0 0; }
-      height: 226px;
-      &#organisation {
-        a { margin-top: 42px; }
-      }
-    }
-    .span4 { width: 320px; }
   }
 }
