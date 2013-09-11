@@ -1,11 +1,11 @@
+require 'spec_helper'
+
 describe NotificationItems::MotionClosingSoon do
   let(:notification) { stub(:notification) }
   let(:item) { NotificationItems::MotionClosingSoon.new(notification) }
 
-  it "#actor returns the current user" do
-    user = stub(:user)
-    notification.stub_chain(:eventable, :user).and_return(user)
-    item.actor.should == notification.eventable.user
+  it "#actor returns nil" do
+    item.actor.should == nil
   end
 
   it "#action_text returns a string" do

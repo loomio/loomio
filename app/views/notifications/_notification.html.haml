@@ -1,6 +1,6 @@
 - item = NotificationItem.new(notification).item
 - begin
-  - user = item.actor
+  - actor = item.actor
   - action_text = item.action_text
   - title_text = item.title
   - group_name = item.group_full_name
@@ -14,8 +14,8 @@
     %a{:href => href }
       = render 'avatar', user: avatar, size: "medium", kind: nil, id: nil
       %span.notification-content
-        - unless notification.event_kind == "motion_closing_soon" || (notification.event_kind == "motion_closed" && user.nil?)
-          %span.bold-name= user.name
+        - if actor
+          %span.bold-name= actor.name
         = " #{action_text} "
         - if title_text
           %span.bold-name= truncate(title_text, :length => 80, :omission => '...')

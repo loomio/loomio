@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe NotificationItems::NewMotion do
   let(:notification) { stub(:notification) }
   let(:item) { NotificationItems::NewMotion.new(notification) }

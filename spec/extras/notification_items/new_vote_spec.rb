@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe NotificationItems::NewVote do
   let(:notification) { stub(:notification) }
   let(:item) { NotificationItems::NewVote.new(notification) }
