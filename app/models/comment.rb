@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
   belongs_to :discussion, counter_cache: true
   belongs_to :user
 
-  has_many :comment_votes
+  has_many :comment_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
   has_many :attachments
 
