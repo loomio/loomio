@@ -315,7 +315,7 @@ ActiveRecord::Schema.define(:version => 20130910070551) do
     t.datetime "setup_completed_at"
     t.boolean  "next_steps_completed", :default => false,  :null => false
     t.string   "full_name"
-    t.string   "payment_plan",         :default => "undetermined"
+    t.string   "payment_plan",         :default => "pwyc"
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
