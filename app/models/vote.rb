@@ -83,7 +83,9 @@ class Vote < ActiveRecord::Base
 
   private
   def update_motion_vote_counts
-    motion.try(:update_vote_counts!)
+    unless motion.nil? || motion.discussion.nil?
+      motion.update_vote_counts!
+    end
   end
 
   def update_motion_last_vote_at

@@ -9,6 +9,7 @@ namespace :upgrade_tasks do
 
     end
   end
+
   task :update_read_comments_counts => :environment do
     #funky!
     if DiscussionReader.present?
@@ -38,6 +39,46 @@ namespace :upgrade_tasks do
         c.liker_ids_and_names[cv.user_id] = cv.user.name
       end
       c.save(validate: false)
+    end
+  end
+
+  task :"2013-09_destroy_dangling_discussion_events" => :environment do
+    puts "Destroying discussion events:"
+    Event.where("discussion_id IS NOT NULL").find_each do |event|
+      if event.discussion.nil?
+        puts event.id
+        event.destroy
+      end
+    end
+  end
+
+  task :"2013-09_destroy_dangling_motions" => :environment do
+    puts "Destroying motions:"
+    Motion.find_each do |motion|
+      if motion.discussion.nil?
+        puts motion.id
+        motion.destroy
+      end
+    end
+  end
+
+  task :"2013-09_destroy_dangling_comments" => :environment do
+    puts "Destroying comments:"
+    Comment.find_each do |comment|
+      if comment.discussion.nil?
+        puts comment.id
+        comment.destroy
+      end
+    end
+  end
+
+  task :"2013-09_destroy_dangling_comment_votes" => :environment do
+    puts "Destroying comment votes:"
+    CommentVote.find_each do |comment_vote|
+      if comment_vote.comment.nil?
+        puts comment_vote.id
+        comment_vote.destroy
+      end
     end
   end
 end
