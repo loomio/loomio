@@ -55,6 +55,7 @@ describe GroupsController do
       group.add_member!(added_user)
       post :add_members, id: subgroup.id, "user_#{added_user.id}" => 1
       subgroup.members.should include added_user
+      subgroup.memberships.find_by_user_id(added_user.id).inviter.should == user
     end
 
     context "a group admin" do
