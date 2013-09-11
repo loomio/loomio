@@ -16,3 +16,9 @@ production:
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
+
+benchmark:
+  adapter: postgresql
+  database: loomio_test
+  username: postgres
+
