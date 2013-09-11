@@ -24,12 +24,16 @@ describe Groups::InvitationsController do
 
     before do
       Group.stub(:find).and_return(@group)
+      Group.stub(:find_by_id).and_return(@group)
+      GroupDecorator.stub(:new).and_return(@group)
       @group.stub_chain(:pending_invitations, :find).and_return(invitation)
     end
 
     it 'cancels the invitation' do
+      p @group
+      p invitation
       invitation.should_receive(:cancel!).with({:canceller => @user})
-      delete :destroy, group_id: @group.id
+      delete :destroy, group_id: @group.id, id: 4
     end
 
     it 'redirects to group_invitations_path with flash notice' do

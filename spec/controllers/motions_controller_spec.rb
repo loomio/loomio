@@ -1,13 +1,15 @@
 require 'spec_helper'
 
 describe MotionsController do
+  let(:app_controller) { controller }
   let(:group) { stub_model(Group) }
-  let(:user)  { stub_model(User) }
+  let(:user)  { stub_model(User, created_at: Time.zone.now) }
   let(:discussion)  { stub_model(Discussion, :group => group) }
   let(:motion) { stub_model(Motion, :discussion => discussion) }
   let(:previous_url) { root_url }
 
   before :each do
+    app_controller.stub(:prepare_segmentio_data)
     Motion.stub(:find).with(motion.id.to_s).and_return(motion)
     Group.stub(:find).with(group.id.to_s).and_return(group)
     Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
