@@ -83,7 +83,7 @@ class DiscussionsController < GroupBaseController
       end
       @discussion.as_read_by(current_user).viewed!
     end
-    @activity = Kaminari.paginate_array(@discussion.filtered_activity).page(params[:page]).per(50)
+    @activity = @discussion.activity.page(params[:page]).per(50)
   end
 
   def move
