@@ -50,7 +50,6 @@ gem 'strong_parameters', '~> 0.2.1'
 gem 'sass-rails',   '~> 3.2.6'
 gem 'coffee-rails', '~> 3.2.2'
 gem 'fog'
-gem 'rack-mini-profiler', '~> 0.1.23'
 gem 'roadie', '~> 2.3.4'
 gem 'valid_email', '~> 0.0.4'
 
@@ -73,6 +72,7 @@ group :development, :test do
   gem 'capybara', '~> 2.1.0'
   gem 'database_cleaner', '~> 0.9.1'
   gem 'selenium-webdriver', '~> 2.25.0'
+  gem 'ruby-prof'
 end
 
 group :development do

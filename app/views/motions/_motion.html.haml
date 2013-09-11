@@ -54,24 +54,9 @@
 
     .votes-table= render "motions/votes_table", motion: motion
 
-  :coffeescript
-    $ ->
-      # Display vote graph
-      make_the_graph = ->
-        @pie_graph_view = new Loomio.Views.Utils.GraphView
-          el: '.pie'
-          id_string: "graph_#{motion.id}"
-          legend: true
-          data: #{motion.votes_for_graph.to_json}
-          type: 'pie'
-          tooltip_selector: '#tooltip'
-          diameter: 200
-          padding: 0
-          gap: 5
-          shadow: 0
-
-      # IE8 FIX - for some reason we have to load the graph after everything else.
-      # Otherwise, the graph doesn't display in IE8.
-      #
-      # Ideally, we'd like to be able to delete this line:
-      $(window).load(make_the_graph)
+  = render('motions/motion_pie_javascript',
+      diameter: 200,
+      motion: motion,
+      padding: 0,
+      gap: 5,
+      legend: 'true')

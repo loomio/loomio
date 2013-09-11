@@ -6,12 +6,11 @@ class Queries::Voters
     end
 
     def group_members_that_havent_voted_on(motion)
-      users_that_voted = users_that_voted_on(motion)
-      if users_that_voted.exists?
-        motion.group.users.where(['users.id not in (?)',
-                                 users_that_voted.pluck(:id)])
-      else
+      user_ids_that_voted = User.find motion.votes.pluck(:user_id)
+      if user_ids_that_voted.empty?
         motion.group.users
+      else
+        motion.group.users.where('users.id not in (?)', user_ids_that_voted)
       end
     end
   end
