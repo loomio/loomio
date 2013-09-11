@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe NotificationItems::MembershipRequested do
   let(:notification) { stub(:notification) }
   let(:item) { NotificationItems::MembershipRequested.new(notification) }

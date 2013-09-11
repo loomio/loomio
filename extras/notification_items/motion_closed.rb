@@ -8,7 +8,7 @@ class NotificationItems::MotionClosed < NotificationItem
   end
 
   def actor
-    @notification.event.eventable.author
+    @notification.event.user
   end
 
   def action_text
@@ -25,7 +25,10 @@ class NotificationItems::MotionClosed < NotificationItem
   end
 
   def avatar
-    return actor if actor
-    @notification.eventable.author
+    if actor
+      actor
+    else
+      @notification.eventable.author
+    end
   end
 end

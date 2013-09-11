@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe NotificationItems::MotionBlocked do
   let(:notification) { stub(:notification) }
   let(:item) { NotificationItems::MotionBlocked.new(notification) }
