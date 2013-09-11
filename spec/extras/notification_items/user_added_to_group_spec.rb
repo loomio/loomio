@@ -6,7 +6,7 @@ describe NotificationItems::UserAddedToGroup do
   it "#actor returns the user who invited the new user to the group" do
     notification.stub_chain(:eventable, :inviter).and_return stub
     notification.stub_chain(:eventable, :user).and_return stub
-    item.actor.should == notification.eventable.user
+    item.actor.should == notification.eventable.inviter
   end
 
   it "#action_text returns a string" do
