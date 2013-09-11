@@ -23,8 +23,11 @@ Loomio::Application.routes.draw do
 
   resources :invitations, only: [:show]
 
-  resources :group_requests, only: [:create, :new] do
+  resources :group_requests, only: [:create] do
     collection do
+      get :selection
+      get :subscription
+      get :pwyc
       get :confirmation
     end
   end
@@ -159,10 +162,8 @@ Loomio::Application.routes.draw do
   resources :contact_messages, only: [:new, :create,]
   match '/contact', to: 'contact_messages#new'
 
-  #redirect from wall to new group signup
-  get "group_requests/selection", to: "group_requests#new"
-  get "group_requests/subscription", to: "group_requests#new"
-  get "group_requests/pwyc", to: "group_requests#new"
+  #redirect old request for new group
+  match "/request_new_group", to: "group_requests#selection"
 
   #redirect old invites
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"

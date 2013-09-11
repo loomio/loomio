@@ -1,0 +1,21 @@
+.row
+  .span9.offset1
+    #intro
+      %h1 What kind of payment model suits your group?
+.row#payment_models
+  .span4.offset1
+    .payment-model-box#organisation
+      %h2 Group subscription
+      %p Your group will be invoiced monthly after a <span id='trial' class='nowrap'>30-day free trial.</span>
+      %p.examples e.g. businesses, government agencies, large community organisations
+      = link_to "Subscription",  subscription_group_requests_path, class: "btn btn-success btn-large btn-block"
+  .span4
+    .payment-model-box#informal-group
+      %h2 Individual contribution
+      %p Members of your group will be invited to pay what they can.
+      %p.examples e.g. families, social movements, collectives, small community organisations
+      = link_to "Pay what you can", pwyc_group_requests_path, class: "btn btn-info btn-large btn-block"
+.row
+  .span8.offset1
+    %p Money shouldn’t be a barrier to good collaborative decision-making. Groups with a budget pay a subscription for using the tool. Groups without the means to pay a subscription use the Pay What You Can model: their members will be invited to make a voluntary contribution.
+    %p#last Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users.

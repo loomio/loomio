@@ -5,18 +5,30 @@ class GroupRequestsController < BaseController
     @group_request = GroupRequest.new(permitted_params.group_request)
     if @group_request.save
       SetupGroup.from_group_request(@group_request)
-      redirect_to confirmation_group_requests_url
+      redirect_to confirmation_group_requests_url(plan: @group_request.payment_plan)
     else
-      render :new
+      if @group_request.payment_plan == 'subscription'
+        render 'subscription'
+      else
+        render 'pwyc'
+      end
     end
   end
 
   def confirmation
   end
 
-  def new
+  def selection
+  end
+
+  def subscription
     build_group_request
-    @group_request.payment_plan = 'undetermined'
+    @group_request.payment_plan = 'subscription'
+  end
+
+  def pwyc
+    build_group_request
+    @group_request.payment_plan = 'pwyc'
   end
 
   private
