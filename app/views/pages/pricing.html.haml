@@ -5,18 +5,27 @@
         .span12#intro
           .subhead
             %h1 Pricing
-          %p Money shouldn’t be a barrier to good collaborative decision-making. Your contribution means we can keep Loomio independent, free of advertising, and driven by our community.
+      .content-container
+        .row-fluid
+          .span2.icons
+            = image_tag "loomio-users.png"
+            /image_tag("markdown_on.png", class: 'markdown-icon markdown-on')
+          .span9#content
+            %h2 You choose how much you pay
+            %p Groups with a budget typically choose a monthly rate of <strong>$2 - $5 per person</strong>.<span>(e.g. businesses, government departments, community organisations)</span>
+            %p If your group is flat broke, you can even choose $0!
+        .divider
+        .row-fluid
+          .span2.icons
+            = image_tag "colablove.png", id: 'colablove'
+          .span5
+            %h3  What you're getting
+            %p Make better decisions together, with more participation, less time in meetings and fewer emails.
+          .span5
+            %h3 What you're giving
+            %p Your contribution means we can give Loomio away to groups doing great work in their communities.
+        .row-fluid
+          .span12
+            #button-container
+              = link_to "Start a group", new_group_request_path, class: "btn btn-success btn-large"
 
-      .row-fluid
-        .span4.offset2
-          .payment-model-box#organisation
-            %h2 Group subscription
-            %p#description Groups with a budget pay a subscription for using the tool.
-            = render("groups/subscriptions/pricing_table")
-        .span4
-          .payment-model-box#informal-group
-            %h2 Individual contribution
-            %p#description Groups without the means to pay a subscription use the Pay What You Can model: their members are invited to make a voluntary contribution.
-        .span12
-          #button-container
-            = link_to "Start a group", selection_group_requests_path, class: "btn btn-success btn-large"
