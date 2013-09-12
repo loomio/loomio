@@ -41,9 +41,9 @@ de:
     settings_not_updated: "Deine Einstellungen wurden nicht aktualisiert."
     group_request_already_verified: "Entschuldige. Der Link zur Verifizierung wurde schon bestätigt. Wenn du innerhalb von 48 Stunden nichts von uns hörst, kontaktiere uns unter: contact@loomio.org"
     group_request_already_accepted: "Entschuldigung. Diese Einladung ist ungültig oder wurde schon akzeptiert."
-    group_request_contribution: "Bitte wähle eine Kategorie aus. Dies ist keine Zahlungsverpflichtung, nur nützliche Informationen die uns helfen, unser Modell weiter zu entwickeln. Danke!"
+    group_request_contribution: "Bitte wähle eine Kategorie aus. Dies ist keine Zahlungsverpflichtung, nur nützliche Informationen die uns helfen, unser Modell weiter zu entwickeln. \nDanke!"
     group_request_invalid_token: "Entschuldigung. Dieses Token ist ungültig."
-    group_private_or_not_found: "Gruppe nicht gefunden.Diese Gruppe könnte privat sein. Wenn die jemand diesen Link gegeben hat, bitte ihn dich in die Gruppe einzuladen."
+    group_private_or_not_found: "Gruppe nicht gefunden.\n\nDiese Gruppe könnte privat sein. Wenn die jemand diesen Link gegeben hat, bitte ihn dich in die Gruppe einzuladen."
     group_already_setup: "Die Gruppe, die du einrichten möchtest, existiert schon."
     proposal_already_exists: "Es gibt schon einen offenen Vorschlag in dieser Diskussion."
     user_with_email_address_already_in_group: "Ein Benutzer mit dieser E-Mail-Adresse gehört schon zu dieser Gruppe."
@@ -63,6 +63,17 @@ de:
     settings_updated: "Deine Einstellungen wurden aktualisiert."
     user_made_admin: "%{which_user} wurde zum Koordinator ernannt."
     you_have_left_group: "Du hast %{which_group} verlassen."
+    invitations:
+      auto_added:
+        one: "%{count} Mitglied hinzugefügt"
+        other: "%{count} Mitglieder hinzugefügt"
+      existing_member:
+        one: "%{count} Mitglied schon in der Gruppe"
+        other: "%{count} Mitglieder schon in der Gruppe"
+      sent:
+        one: "%{count} Einladung versendet"
+        other: "%{count} Einladungen versendet"
+      auto_added_and_sent: "%{auto_added_text} und %{sent_text}"
   warning:
     cant_remove_last_admin: "Du bist der letzte Koordinator und kannst nicht entfernt werden."
     membership_request_already_approved: "Mitgliedschaft wurde schon bestätigt."
@@ -211,6 +222,7 @@ de:
   membership_requested: "Mitgliedschaft angefragt"
   request_membership: "Mitgliedschaft anfragen"
   confirm_remove_membership_request: "Bist du sicher, dass du die Mitgliedschaftsanfrage für diese Gruppe zurückziehen möchtest?"
+  no_pending_membership_requests: "Im Moment gibt es keine offenen Mitgliedsanfragen für diese Gruppe."
   subgroups: "Untergruppen"
   create_a_subgroup: "Untergruppe erstellen"
   select_members_to_add: "Wähle Mitglieder aus, die du zu %{which_group} hinzufügen möchtest"
@@ -305,46 +317,53 @@ de:
   not_voted: "[Zeige die Mitglieder, die sich noch nicht entschieden haben]"
   outcome: "Ausgang"
   outcome_placeholder: "Was ist der Ausgang dieses Vorschlags?"
+  position_verbs:
+    'yes': "stimme zu"
+    'no': "stimme nicht zu"
+    abstain: "enthalten"
+    block: "blockieren"
+    past_tense:
+      'yes': "zugestimmt"
+      'no': "nicht zugestimmt"
+      abstain: "enthalten"
+      block: "blockiert"
   help:
     coordinating: 'Koordiniere deine Loomio Gruppe'
-    coordinating_details: "Als der Koordinator bist du verantwortlich für die Einrichtung der Loomio Gruppe und jeden einzuladen. Genauso wie das Lernen wie man ein neues Teil der Software wird deine Gruppe wird lernen neue Prozesse zur besseren und effizienteren Zusammenarbeit und gute Entscheidungen zusammen zu treffen. Hier sind einige Tips um deine Gruppe zum\
-      \ Erfolg zu verhelfen:"
+    coordinating_details: "Als der Koordinator bist du verantwortlich für die Einrichtung der Loomio Gruppe und \njeden einzuladen. Genauso wie das Lernen wie man ein neues Teil der Software wird \ndeine Gruppe wird lernen neue Prozesse zur besseren und effizienteren Zusammenarbeit \nund gute Entscheidungen zusammen zu treffen. Hier sind einige Tips um deine Gruppe \nzum Erfolg zu verhelfen:\n"
     different_ways: 'Verschiedene Wege um Loomio zu benutzen'
-    engaging_html: "<h2>Tips um deine Gruppe zu mobilisieren</h2><p>Die Leute werden begeistert sein und mitmachen, wenn ein einnehmender Vorschlag auf dem Tisch liegt. Ein guter Vorschlag beinhaltet einen Aktionsplan, so dass  es sofort klar ist, was bedeutet, zu zustimmen oder abzulehnen. Denke darüber nach, ob  es Diskussionen oder Entscheidungen gibt, die gerade\
-      \ persönlich oder E-Mail geführt werden  und du denkst es wäre besser, diese auf Loomio zu führen.</p> <p>Wenn deine Gruppe gerade beginnt, könntest du eine unbeschwerte Diskussion beginnen damit jeder eine Chance bekommt mit Loomio rumzuspielen und es in Aktion zu sehen.</p> <p>Ein anderer Weg um Leute zu animieren in einer Diskussion teilzunehmen, ist es das\
-      \ @erwähnen Feature um jemanden aufzufordern; damit wird jemandem eine E-Mail geschickt um demjenigen zu sagen, dass er in einem Kommentar erwähnt wurde.</p>"
-    example1_html: |-
+    engaging_html: "<h2>Tips um deine Gruppe zu mobilisieren</h2>\n<p>Die Leute werden begeistert sein und mitmachen, wenn ein einnehmender\nVorschlag auf dem Tisch liegt. Ein guter Vorschlag beinhaltet einen Aktionsplan, so dass \nes sofort klar ist, was bedeutet, zu zustimmen oder abzulehnen. Denke darüber nach, ob \nes Diskussionen oder Entscheidungen gibt, die gerade persönlich oder E-Mail geführt werden \nund du denkst es wäre besser, diese auf Loomio zu führen.</p>\n<p>Wenn deine\
+      \ Gruppe gerade beginnt, könntest du eine unbeschwerte Diskussion beginnen\ndamit jeder eine Chance bekommt mit Loomio rumzuspielen und es in Aktion zu sehen.</p>\n<p>Ein anderer Weg um Leute zu animieren in einer Diskussion teilzunehmen, ist es das @erwähnen\nFeature um jemanden aufzufordern; damit wird jemandem eine E-Mail geschickt um demjenigen zu\nsagen, dass er in einem Kommentar erwähnt wurde.</p>\n"
+    example1_html: |
       <h3>Du musst deine Gruppe ein umfassendes Thema diskutieren lassen und zusammen eine Lösung finden</h3>
       <p>Strategie: Diskutiert ein Thema eine Weile, bevor du einen Vorschlag erstellst.</p>
       <p>Diskussionen erreichen das beste Ergebnis, wenn ihr ein geteiltes Verständnis über das Problem aufgebaut habt, bevor eine spezielle Lösung diskutiert wird.
       Wenn die Meinungen der einzelnen auf dem Weg zur Lösungsfindung einbezogen sind, werden sie eher bereit
       sein, das Ergebnis zu akzeptieren.</p>
-    example2_html: |-
+    example2_html: |
       <h3>Du hast schon einen Vorschlag vor Augen und du möchtest das Okay von der Gruppe um weiter machen zu können.</h3>
       <p>Strategie: Beginne die Diskussion mit einem speziellen Thema und mache deinen Vorschlag sofort.</p>
       <p>Wenn du meinst, du wüsstest wie die Entscheidung ausfallen wird, aber noch mal auf Nummer sicher gehen willst, kannst du den Vorschlag benutzen, um schnell einen Eindruck zu bekommen.</p>
-      <p>So kannst du über finale Dokumente, eine Bewerbung oder die Abnahme eines Projektes abstimmen.</p> 
+      <p>So kannst du über finale Dokumente, eine Bewerbung oder die Abnahme eines Projektes abstimmen.</p>
     get_in_touch: "Kontakt aufnehmen"
-    get_in_touch_description_html: "Wenn du Fragen oder Feedback hast, sende uns eine E-Mail: <a href='mailto:contact@loomio.org'>contact@loomio.org</a>"
     getting_started: "Loslegen"
     getting_started_description: "Auf der linken Seite diskutiert die Gruppe ein Thema und tauscht Ideen und Informationen aus. Wenn eine Entscheidung gefällt werden soll, erscheint diese auf der rechten Seite."
     getting_the_most: 'Das meiste aus Loomio heraus bekommen'
     have_your_say: "Komme zu Wort"
-    have_your_say_details_html: |-
+    have_your_say_details_html: |
       <p>Wenn du dich entschieden hast, klicke auf einen der vier Entscheidungsbuttons.</p>
-      <p>Wenn du deine Entscheidung getroffen hast, schreibe kurz warum du dich so entschieden hast. Unter dem Kuchendiagramm siehst du, was die anderen denken. So kannst du schnell in das Thema reinkommen. Du kannst jederzeit deine Meinung ändern, wenn zum Beispiel neue Informationen dazukommen.</p> 
+      <p>Wenn du deine Entscheidung getroffen hast, schreibe kurz warum du dich so entschieden hast. Unter dem Kuchendiagramm siehst du, was die anderen denken. So kannst du schnell in das Thema reinkommen. Du kannst jederzeit deine Meinung ändern, wenn zum Beispiel neue Informationen dazukommen.</p>
     have_a_discussion: "Eine Diskussion führen"
     have_a_discussion_description: "Das Thema und der relevante Kontext werden oben auf der Seite platziert. Du kannst das Kommentarfeld nutzen um deine Ansicht in die Diskussion einzubringen. "
     help: "Hilfe"
     how_it_works: "Wie es funktioniert"
-    invitation_html: |-
+    invitation_html: |+
       <h2>Eine großartige Einladung schreiben</h2>
       <p>Die erste Frage eines neuen Mitglieds wird sein: „Wozu gibt es diese Gruppe?</p>
       <p>Denke an die einfachste Beschreibung für deine Gruppe: Was möchtet ihr gemeinsam erreichen? Welche Entscheidungen werden hier getroffen? Wer wird involviert sein?</p>
       <p>Es kann eine gute Idee sein, wenn du zunächst mit deiner Gruppe sprichst und sie erst anschließend zu Loomio einlädst.</p>
       <p>Menschen wollen wissen, warum sie eingeladen worden sind, was von ihnen erwartet wird
       und warum sie ihre Zeit damit verbringen sollten ein neues Tool zu erlernen.</p>
-      
+
     join_the_community: "Tritt der Gemeinschaft bei"
     join_the_community_description_html: "Jeder ist willkommen in der Loomio-Gemeinschaft, wo wir darüber reden, wie man das meiste aus dem Werkzeug heraus holt und wie es verbessert werden kann. <br /><br /><a href='https://www.loomio.org/groups/3'>Klicke hier um zu der Loomio-Gemeinschaftsgruppe zu gelangen</a>."
     images_and_text_formatting: "Bilder und Textformatierung"
@@ -366,8 +385,8 @@ de:
     positions_disagree_description: "<span>Ablehnen</span> bedeutet, du denkst es könnte eine bessere Alternative geben, aber du wirst die Entscheidung der Gruppe akzeptieren."
     positions_block_description: "<span>Blockieren</span> bedeutet, du hast schwere Einwände gegen diesen Vorschlag und du bist nicht einverstanden, dass dieser Vorschlag fortgeführt wird."
     start_discussion: "Starte eine einnehmende Diskussion"
-    start_discussion_html: "<p>Wenn du eine Diskussion geginnst, stelle sicher, dass der Titel das Thema prägnant vermittelt.  Benutze das Kontextmenü um alle Hintergrundinformationen anzugeben, die für eine produktive und informative Diskussion der Gruppe nötig sind.</p><p>Während der Diskussion kann das Kontextmenü aktualisiert werden, wenn neue Informationen eintreffen.\
-      \ Neben der Erläuterung des Themas kannst du diesem Raum nutzen um Ressourcen zu teilen und die fortlaufende Diskussion zusammenzufassen. Weiterhin kannst du den Prozess der Entscheidungsfindung beschreiben, den deine Gruppe nutzt.</p> "
+    start_discussion_html: "<p>Wenn du eine Diskussion geginnst, stelle sicher, dass der Titel das Thema prägnant vermittelt. \nBenutze das Kontextmenü um alle Hintergrundinformationen anzugeben, die für eine produktive und informative Diskussion der Gruppe nötig sind.</p>\n<p>Während der Diskussion kann das Kontextmenü aktualisiert werden, wenn neue Informationen eintreffen. Neben der Erläuterung des Themas kannst du diesem Raum nutzen um Ressourcen zu teilen und die fortlaufende Diskussion\
+      \ zusammenzufassen. Weiterhin kannst du den Prozess der Entscheidungsfindung beschreiben, den deine Gruppe nutzt.</p>\n"
     start_proposal: "Schreibe einen genauen Vorschlag"
     start_proposal_html: |
       <p> Wenn du den Titel kurz und klar machst, werden die Leute sofort wissen, was es bedeutet zuzustimmen oder abzulehnen.</p>
@@ -385,6 +404,10 @@ de:
     proposal: 'Hinweise für das Schreiben eines klaren Vorschlags'
     vote: 'Du kannst deine Meinung jederzeit ändern.'
   pricing_page:
+    intro: |
+      Gruppen mit einem Budget zahlen für die Nutzung des Tools mit einem Abonnement.
+      Gruppen ohne die Möglichkeit für ein Abonnement zu zahlen nutzen das
+      Zahle-was-du-kannst-Modell: ihre Mitglieder werden aufgefordert einen freiwilligen Beitrag zu leisten. Dein Beitrag bedeutet, dass wir Loomio unabhängig, frei von Werbung und getrieben von der Gemeinschaft betreiben können.
     organisations: Organisationen
     organisations_examples: z.B. Firmen, staatliche Behörden, gemeinschaftliche Organisationen
     informal_groups: Informelle Gruppen
@@ -398,14 +421,6 @@ de:
     submit: Beitragen
     tooltip: Lerne mehr über unser gemeinschaftliche Finanzierungsmodell
     thought_about_contributing: Deine Chance um beizutragen
-    thought_about_contributing_description: |
-      Loomio ist ein kooperatives, soziales Unternehmen, das daran arbeitet es für jeden einfach zu machen an Entscheidungen teilzuhaben, die sie oder ihn beeinflussen.
-
-      Geld sollte keine Barriere sein für die kollaborative Entscheidungsfindung. Loomio gründet auf den Beiträgen seiner Gemeinschaft von Benutzern und Abonnements von Organisationen, die es nutzen.
-
-      Deine Gruppe zahlt nicht für ein Abonnement. Daher ist es deine Chance einen Beitrag zu leisten. Dein Beitrag bedeutet, dass wir Loomio unabhängig, frei von Werbung und kostenlos für Gruppen wie deine belassen können.
-
-      Danke, dass du das möglich machst!
     thank_you_title: Danke, dass du einen Beitrag zu Loomio leistest!
     thank_you_body: |
       Dein Beitrag hilft uns einfache, kollaborative Entscheidungsfindung der Welt zur Verfügung zu stellen.
@@ -452,10 +467,11 @@ de:
     invitation_not_found: 'Es konnte keine Einladung mit diesem Token gefunden werden. Bitte frage den Absender nach einer neuen Einladung.'
     invitation_cancelled: 'Diese Einladung wurde abgebrochen. Bitte kontaktiere den Absender der Einladung, vielleicht wurde die Einladung aus Versehen abgebrochen.'
     invitation_already_used: 'Diese Einladung wurde schon benutzt. Bitte melde dich an um in dieser Gruppe fortzufahren.'
+    recipients: "Trage E-Mail-Adressen separiert durch Kommata ein:"
     invitees_placeholder: "Name des Benutzers <benutzer1@beispiel.de>, <benutzer2@beispiel.de>"
     subject: "Bitte tritt unserer neuen Loomio-Gruppe %{group} bei "
     invite_people: "Lade Leute in die Gruppe ein"
-    body_editable: "Hallo ihr, kommt und entscheidet mit uns! Wir benutzen ein kollektives Werkzeug um Entscheidungen zu fällen, genannt Loomio. "
+    body_editable: "Hallo ihr, kommt und entscheidet mit uns! Wir benutzen ein kollektives Werkzeug um Entscheidungen zu fällen, genannt Loomio. \n"
     message_body: "Einladungstext"
     invites_more_help2: "<p>Du kannst zu jeder Zeit Leute in deine Gruppe einladen.</p><p>Wenn du magst, dann kannst du alle Leute deines Teams einladen oder nur die Leute, mit denen du am engsten zusammenarbeitest.</p>"
     send_invitations: "Sende Einladungen"
@@ -473,7 +489,6 @@ de:
       Indem ihr euch mit einem Thema beschäftigt, über verschiedene Aspekte und Informationen diskutiert und euch mit aufkommenden Zweifeln auseinander setzt, kann eure Gruppe den besten Weg nach vorne finden.
       Ihr könnt diese Beispieldiskussion benutzen um mit den Möglichkeiten bei Loomio herumzuspielen.
       Um den Stein ins Rollen zu bringen, schlägt der Loomio Hilferoboter vor, zusammen Urlaub zu machen. Das Kuchendiagramm auf der rechten Seite zeigt, wie der Gruppe der Vorschlag gefällt. Du kannst deine Meinung äußern, indem du auf einen der Buttons unter dem Diagramm klickst.
-       
   example_motion:
     name: "Wir sollten Urlaub auf dem Mond machen!"
     description: |
@@ -518,6 +533,8 @@ de:
     use_avatar_kind: "Nutze %{kind}"
     upload_new_image: "Ein neues Bild hochladen"
   group_setup:
+    desc_header: "Du hast es fast geschafft!"
+    desc_html: "Als Koordinator der Gruppen bist du Verantwortlich für die Erstellung und Verwaltung deiner Loomio-Gruppen. Zuerst musst du ein paar Einstellungen vornehmen, dann gelangst du in deine neue Gruppe. Beginne ein oder zwei Diskussionen und schicke ein paar Einladungen raus!<p>Wenn du an die einfachste Möglichkeit denkst um deine Gruppe zu beschreiben, frage dich: Was wollt ihr zusammen erreichen? Welche Entscheidungen werdet ihr machen? Wer wird involviert sein?</p>"
     submit: "Bring mich zu meiner Gruppe"
   simple_form:
     'yes': 'Ja'
@@ -533,6 +550,7 @@ de:
         description: "Kontext"
       group:
         name: "Was ist der Name deiner Gruppe?"
+        description: "Gruppenbeschreibung:"
         viewable_by: "Wer kann diese Gruppe sehen?"
         members_invitable_by: "Wer kann Leute in diese Gruppe einladen?"
       membership_request:
@@ -549,6 +567,8 @@ de:
     options:
       group:
         viewable_by:
+          everyone: 'Jeder'
+          members: 'Nur Mitglieder'
           parent_group_members: "Mitglieder der Hauptgruppe - nur Mitglieder der Hauptgruppe können diese Untergruppe sehen"
         members_invitable_by:
           admins: 'Nur Koordinatoren'
@@ -562,6 +582,11 @@ de:
       motion:
         name: "Was ist dein Vorschlag zum Handlungsablauf?"
         description: "Gib genug Informationen an, damit jeder weiß, was es bedeutet, wenn man zustimmt oder ablehnt."
+      group:
+        description: "Denke an die einfachste Möglichkeit deine Gruppe zu beschreiben: Was wollt ihr gemeinsam erreichen? Welche Entscheidungen wollt ihr machen? Wer wird involviert sein?"
+      user:
+        email: "E-Mail"
+        password: "Passwort"
   helpers:
     submit:
       discussion:
@@ -572,6 +597,9 @@ de:
         create: "Konto erstellen"
         update: "Einstellungen aktualisieren"
   email:
+    added_to_a_group:
+      subject: "Du wurdest einer Gruppe hinzugefügt."
+      content: "Herzlichen Glückwunsch, du wurdest der Gruppe '%{which}' auf Loomio hinzugefügt!"
     unsubscribe: "Bestelle E-Mails ab oder ändere deine E-Mail Einstellungen:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> um deine E-Mail Einstellungen zu ändern und E-Mails abzubestellen."
     view_comment: "Klicke hier um das Kommentar auf Loomio zu sehen"
@@ -598,9 +626,7 @@ de:
       hi: "Hallo %{name},"
       intro: "Klicke auf den Link unten um deine Gruppe %{group_name} zu erstellen:"
       closing_message: "Wenn du Fragen hast oder es etwas gibt, mit dem wir dir weiterhelfen können, würden wir sehr gerne von dir hören - antworte einfach auf die E-Mail."
-      thanks: |-
-        Danke!
-        Das Loomio Team 
+      thanks: "Danke!\nDas Loomio Team \n"
     membership_request:
       intro: "%{name} (%{email}) möchte Zugang zu einer deiner Loomio Grupper erhalten."
       subject: "Neue Mitgliedschaftsanfrage von %{who}"
