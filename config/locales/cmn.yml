@@ -1,0 +1,73 @@
+cmn:
+  success:
+    emails_sending: "正在发邮件"
+  datetime:
+    distance_in_words:
+      x_minutes:
+        other: "％｛count｝分钟"
+  sign_out: "推出"
+  generic_confirm: "您确定吗？"
+  add_new_member: "加新的成员"
+  invite_members_to_group: "邀请成员加入%{which_group}"
+  get_in_touch_link: "联系我们"
+  invite_members: "邀请成员"
+  everyone: "每一位成员"
+  members: "成员"
+  description_history:
+    previous: "上一个"
+    next: "下一个"
+  delete_comment: "删掉评论"
+  yes_position: "我同意"
+  no_position: "我不同意"
+  help:
+    get_in_touch: "联系我们"
+    getting_started: "开始吧"
+    getting_started_description: "在左手边你的团体能讨论一个题目，交换主义以及咨询。当你的团体要做决定的时候，就会在右手边出现。"
+    have_a_discussion: "讨论吧"
+    how_it_works: "怎么使用？"
+    join_the_community: "加入社会"
+    positions_agree_description: "<span>同意</span>意思就是满意提议的内容"
+    video_id: "52025402"
+    video_tutorial: "视频教育"
+    video_tutorial_description: "看看使用Loomio的示范视频"
+  new_password: "新的密码"
+  remember_me: "记住我"
+  forgot_your_password: "忘记密码？"
+  invitation:
+    invitation_link: "邀请链接"
+  user_settings_form:
+    picture: "图片"
+  simple_form:
+    'yes': '是的'
+    'no': '不是'
+    required:
+      mark: '＊'
+    labels:
+      user:
+        name: "性名"
+        password: "密码"
+    placeholders:
+      user:
+        email: "邮件"
+        password: "密码"
+  helpers:
+    submit:
+      discussion:
+        create: "开始讨论"
+      motion:
+        create: "开始提议"
+      user:
+        update: "更新设置"
+  email:
+    invitation:
+      hi: "您好%{name}"
+    trial_expiry:
+      hi: "您好！"
+    trial_follow_up:
+      hi: "您好！"
+  next: "下一个"
+  prev: "上一个"
+  ok_got_it: "好了，我明白！"
+  thanks: "谢谢您！"
+  common:
+    email: "邮件"
