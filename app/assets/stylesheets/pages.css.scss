@@ -309,8 +309,22 @@ body.pages.home {
     h2 { margin-bottom: 20px; }}
 }
 
-body.pages.pricing {
+body.pages.pricing .container{
+  h3 { margin-bottom: .4em; }
+  .span9#content {
+    width: 80%;
+    p span {
+      font-style: italic;
+      color: $mid-grey;
+    }
+  }
+  .info-box { margin-top: 0; }
+  .content-container { padding: 0 40px; }
+  .span2.icons {
+    #colablove { margin-right: 16px; }
+  }
   #button-container {
+    margin-top: 1em;
     text-align: center;
     a {
       font-size: 24px;
