@@ -1,4 +1,3 @@
-require 'awesome_print'
 Loomio::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -23,6 +22,7 @@ Loomio::Application.configure do
   # Do not compress assets
   config.assets.compress = false
   config.serve_static_assets = false
+  config.cache_store = :memory_store, { size: 128.megabytes }
 
   # Expands the lines which load the assets
   config.assets.debug = true

@@ -299,8 +299,6 @@ GEM
       rack (~> 1.0)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
-    rack-mini-profiler (0.1.29)
-      rack (>= 1.1.3)
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
@@ -359,6 +357,7 @@ GEM
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
     ruby-hmac (0.4.0)
+    ruby-prof (0.13.0)
     rubyzip (0.9.9)
     safe_yaml (0.9.5)
     sass (3.2.10)
@@ -484,7 +483,6 @@ DEPENDENCIES
   quiet_assets (~> 1.0.2)
   rabl (~> 0.7.3)
   rack-canonical-host (~> 0.0.8)
-  rack-mini-profiler (~> 0.1.23)
   rails (~> 3.2.13)
   rails-backbone (~> 0.7.2)
   rb-fchange (~> 0.0.5)
@@ -495,6 +493,7 @@ DEPENDENCIES
   rmagick (~> 2.13.1)
   roadie (~> 2.3.4)
   rspec-rails (~> 2.12.2)
+  ruby-prof
   sass-rails (~> 3.2.6)
   selenium-webdriver (~> 2.25.0)
   shoulda-matchers (~> 1.2.0)
