@@ -148,7 +148,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def has_previous_versions?
-    previous_version.present?
+    previous_version.id.present?
   end
 
   def last_versioned_at

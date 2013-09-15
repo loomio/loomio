@@ -66,6 +66,9 @@ class DiscussionsController < GroupBaseController
   end
 
   def show
+    if @discussion.has_previous_versions?
+      @last_collaborator = User.find(@discussion.originator.to_i)
+    end
     @group = GroupDecorator.new(@discussion.group)
     @vote = Vote.new
     @current_motion = @discussion.current_motion
