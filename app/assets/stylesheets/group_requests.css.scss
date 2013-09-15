@@ -9,7 +9,7 @@ body.group_requests {
     color: $mid-grey;
   }
   p { font-size: $font-medium-large; }
-  #informal-group { background-color: #D8EBF1; }
+  #informal-group { background-color: #FFE6C2; }
   &.create, &.new {
     form {
       input[type="email"], input[type="text"] {
@@ -26,6 +26,7 @@ body.group_requests {
       .control-group { margin-bottom: 16px; }
       textarea {
         font-size: 18px;
+        height: 140px;
         line-height: 22px;
         margin-top: 6px;
       }
@@ -34,7 +35,7 @@ body.group_requests {
     .info-box {
       margin: 0px 0 0 50px;
       padding: 25px;
-      width: 250px;
+      width: 260px;
       h2 { font-weight: 400; }
     }
     #intro { margin-bottom: 30px; }

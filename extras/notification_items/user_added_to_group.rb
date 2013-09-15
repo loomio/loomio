@@ -20,6 +20,6 @@ class NotificationItems::UserAddedToGroup < NotificationItem
   end
 
   def actor
-    @notification.eventable.user
+    @notification.eventable.inviter or @notification.eventable.user
   end
 end

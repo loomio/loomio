@@ -4,25 +4,26 @@
       .row-fluid
         .span12#intro
           .subhead
-            %h1 Funding Loomio
+            %h1 Pricing
       .content-container
         .row-fluid
           .span2.icons
             = image_tag "loomio-users.png"
             /image_tag("markdown_on.png", class: 'markdown-icon markdown-on')
-          .span10
-            %h2 Loomio users choose how much to pay
-            %p Loomio has a flexible funding model, because we believe that money shouldn't be a barrier to people participating in decision-making.
-            %p Groups choose a monthly fee that is right for them, based on their means.
-
+          .span9#content
+            %h2 You choose how much you pay
+            %p Groups with a budget typically choose a monthly rate of <strong>$2 - $5 per person</strong>.<span>(e.g. businesses, government departments, community organisations)</span>
+            %p If your group is flat broke, you can even choose $0!
+        .divider
         .row-fluid
           .span2.icons
             = image_tag "colablove.png", id: 'colablove'
-          .span10
-            %h2 Sliding-scale payment plans
-            %p Small businesses, government departments, and large NGO's typically pay about $2 per head monthly.
-            %p Groups without a budget adjust their monthly fee to fit their needs, down to $0 a month if need be! Members of these groups will occasionally be invited to make an individual contribution.
-
+          .span5
+            %h3  What you're getting
+            %p Make better decisions together, with more participation, less time in meetings and fewer emails.
+          .span5
+            %h3 What you're giving
+            %p Your contribution means we can give Loomio away to groups doing great work in their communities.
         .row-fluid
           .span12
             #button-container
