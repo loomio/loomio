@@ -29,7 +29,7 @@ Given /^there is a discussion in a group$/ do
   @discussion = FactoryGirl.create :discussion, :group => @group
 end
 
-Given(/^I don't see a link to revision history$/) do
+Then(/^I should not see a link to revision history$/) do
   page.should_not have_css(".see-revision-history")
 end
 
