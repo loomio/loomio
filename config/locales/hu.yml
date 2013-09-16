@@ -126,7 +126,6 @@ hu:
     motion_closing_soon: "Hamarosan zárul a javaslat"
     motion_blocked: "blokkolta a javaslatot"
   edit_discussion_context: "A téma leírásának szerkesztése"
-  request_new_group: "Új csoport igénylése"
   request_new_group_details: "vagy várd meg, amíg meghívnak egybe."
   empty_notifications: "Még nincsenek értesítéseid."
   see_all_notifications: "Az összes értesítés megtekintése"
@@ -254,8 +253,6 @@ hu:
   proposal_closing_when: "A lezárásig hátralevő idő: %{when}"
   proposal_closed_when: "A lezárás óta eltelt idő: %{when}"
   proposed_when_by_who: "Javaslattevő:  %{who}, a javaslattétel óta eltelt idő:  %{when}"
-  engagement_on_open_proposal: "a tagok %{percent}% -a állást foglalt (%{numerator}/%{denominator})"
-  engagement_on_closed_proposal: "a tagok %{percent}% -a állást foglalt (%{numerator}/%{denominator})"
   state_your_position: "Add meg az álláspontod"
   positions: "Álláspontok"
   yes_position: "Egyetértek"
@@ -293,7 +290,6 @@ hu:
       <p>Hasznos lehet ez, ha jóvá kell hagyni egy dokumentumot, egy jelentkezést, bármilyen elvégzett munkát.</p>
 
     get_in_touch: "Kapcsolat"
-    get_in_touch_description_html: "Ha kérdésed vagy véleményed van, írj nekünk: <a href='mailto:contact@loomio.org'>contact@loomio.org</a>"
     getting_started: "Kezdjük"
     getting_started_description: "Bal oldalon tárgyalja meg a csoport a témát. Ha döntési javaslat van, az a jobb oldalon jelenik meg."
     getting_the_most: 'Hogyan használd ki a Loomio lehetőségeit'
@@ -353,26 +349,7 @@ hu:
     proposal: 'Hogyan írj egyértelmű javaslatot'
     vote: 'Bármikor megváltoztathatod az álláspontodat'
   contribution:
-    thought_about_contributing: Válaszd ki, hogyan segítesz
-    thought_about_contributing_description: |+
-      A Loomio egy közös vállalkozás, aminek az a célja, hogy mindenki részt vehessen az őt érintő döntésekben és befolyásolhassa azokat.
-
-      Úgy gondoljuk, a pénz nem lehet akadálya annak, hogy valaki használja, ezért olyan rendszert dolgozunk ki, amiben te magad döntheted el, hogy mennyivel támogatsz minket.
-
-      A támogatásodnak köszönhetően maradhat a Loomio független, hirdetésmentes és a felhasználók igényei által irányított.
-
-      Köszönjük, hogy ezt lehetővé teszed!
-
     thank_you_title: Köszönjük, hogy támogatod a Loomiót!
-    thank_you_body: |+
-      A támogatásodnak köszönhetően a világ minden zugába eljuthat az egyszerű közösségi döntéshozatal.
-
-      Hamarosan e-mailben küldünk nyugtát a hozzájárulásodról.
-
-      Mindenkit várunk a Loomio Community-be, ahol azt beszéljük meg, hogyan hozhatjuk ki a legtöbbet ebből az eszközből és hogyan tehetjük még jobbá.
-
-      <a href='https://www.loomio.org/groups/3'>Megnézem a Loomio Community-t!</a>
-
   resend_confirmation: "Küld újra a megerősítő utasításokat"
   new_password: "Új jelszó"
   confirm_new_password: "Az új jelszó megerősításe"
@@ -386,9 +363,6 @@ hu:
   cancel_my_account: "Fiók törlése"
   remember_me: "Emlékezzen rám"
   signing_in: "Belépés"
-  dont_have_account: "Nincs fiókod?"
-  closed_beta: "Jelenleg a zárt tesztelésben vagyunk és (még) nem fogadjuk a nyilvános jelentkezéseket"
-  closed_beta_details: "Ha egy olyan szervezethez tartozol, ami használja a Loomiót, de még nincs Loomio fiókod, kérd meg azt aki szervezet Loomióját létrehozta, hogy adjon hozzá a csoporthoz."
   forgot_your_password: "Elfelejtetted a jelszót?"
   confirmation_not_received: "Nem kaptad meg a megerősítő instrukciókat?"
   unlock_not_received: "Nem kaptad meg a feloldási instrukciókat?"
@@ -398,7 +372,6 @@ hu:
     invitation_not_found: 'nem találtunk meghívót ezzel a kóddal. Kérj új meghívót!'
     invitation_cancelled: 'Ezt a meghívót visszavonták. Írj annak, akitől kaptad, ha szerinted hiba történt.'
     invitation_already_used: 'Ezt a meghívót már elhasználták. Jelentkezz be, hogy csoporthoz juss.'
-    recipients: "Add meg az e-mail címeket, vesszővel elválasztva:"
     invitees_placeholder: "Felhasználónév <egyik@pelda.com>, masik@pelda.com"
     subject: "Csatlakozz az új Loomio csoportunkhoz: %{group}"
     invite_people: "Hívj meg másokat a csoportodba"
@@ -469,7 +442,6 @@ hu:
     use_avatar_kind: "%{kind} használata"
     upload_new_image: "Új kép feltöltése"
   group_setup:
-    intro: "A csoport koordinátoraként neked kell elkészítened és működtetned a csoportot. Elsőként néhány beállítást kell megadnod, azután megnézheted a csoportot, témákat indíthatsz és kiküldheted a meghívókat."
     submit: "Megnézem a csoportom!"
   simple_form:
     labels:
@@ -478,7 +450,6 @@ hu:
         description: "Leírás"
       group:
         name: "Mi legyen a csoport neve?"
-        description: "Add meg a csoport rövid leírását:"
         viewable_by: "Ki láthatja ezt a csoportot?"
         members_invitable_by: "Ki hívhat meg másokat ebbe a csoportba?"
       membership_request:
@@ -495,8 +466,6 @@ hu:
     options:
       group:
         viewable_by:
-          everyone: 'Nyitott - bárki láthatja a csoportot a linkre kattintva'
-          members: 'Tagok - csak a csoport tagjai láthatják'
           parent_group_members: "A főcsoport tagjai - csak a főcsoport tagjai láthatják ezt az alcsoportot"
         members_invitable_by:
           admins: 'Csak a koordinátorok'
@@ -510,8 +479,6 @@ hu:
       motion:
         name: "Mit javasolsz?"
         description: "Adj elég információt, hogy pontosan tudhassák mit jelent, ha egyetértenek vagy ha ellenzik."
-      group:
-        description: "Hogyan tudnád a legegyszerűbben leírni a csoportot: Mit akartok közösen elérni? Milyen jellegű döntéseket fogtok hozni? Ki vesz részt benne?"
   helpers:
     submit:
       discussion:
