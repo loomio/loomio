@@ -2,7 +2,7 @@ class MotionsController < GroupBaseController
   #rob would like to remove inherited_resources...
   inherit_resources
   load_and_authorize_resource :except => [:create, :show, :index]
-  before_filter :authenticate_user!, :except => [:show, :index, :get_and_clear_new_activity]
+  before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :check_group_read_permissions, :only => :show
 
   def create
@@ -87,15 +87,6 @@ class MotionsController < GroupBaseController
       flash[:error] = t("error.invalid_close_date")
     end
     redirect_to discussion_url(@motion.discussion)
-  end
-
-  def get_and_clear_new_activity
-    @motion = Motion.find(params[:id])
-    @motion_activity = params[:motion_activity].to_i
-
-    if user_signed_in?
-      @motion.as_read_by(current_user).viewed!
-    end
   end
 
   private

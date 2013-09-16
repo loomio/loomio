@@ -1,7 +1,0 @@
-%span.popover-header-title
-  =t :proposal
-%span{class: css_class_for_closing_at(motion)}
-  - if motion.voting?
-    = time_ago_in_words(motion.closing_at) + ' ' + t(:until_close)
-.popover-motion-name
-  = motion.name

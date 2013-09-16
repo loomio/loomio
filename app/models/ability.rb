@@ -126,10 +126,6 @@ class Ability
       (comment.author == user) or @admin_discussion_ids.include?(comment.discussion_id)
     end
 
-    can :get_and_clear_new_activity, Motion do |motion|
-      can? :show, motion.group
-    end
-
     can :create, Motion do |motion|
       @member_discussion_ids.include?(motion.discussion_id)
     end
