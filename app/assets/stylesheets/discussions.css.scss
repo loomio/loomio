@@ -386,13 +386,6 @@ body.discussions.show {
   }
 }
 
-li.motion-preview {
-  a {
-    padding: 10px 15px;
-    text-decoration: none;
-  }
-}
-
 
 /* Markdown styling */
 
@@ -507,20 +500,8 @@ pre{
     &:hover { text-decoration: none; }
     &.selector-discussion-link {
       float: left;
-      width: 653px;
-      padding: 6px 0 5px 5px;
-    }
-  }
-
-  .motion-popover-link {
-    cursor: pointer;
-    float: right;
-    height: 47px;
-    width: 42px;
-    .pie { margin: 6px 3px; }
-    .preview-pie-button {
-      border: none;
-      padding: 0;
+      width: 690px;
+      padding: 6px 5px;
     }
   }
   .vote-icon {
@@ -547,15 +528,29 @@ pre{
     padding: 10px 10px 0 0;
     .latest-comment-time, .proposal-close-date { display: inline; }
   }
-  .pie {
-    float: right;
-    width: 36px;
-    height: 36px;
-    z-index: 1;
-  }
   .activity-icon { float: right; }
   .discussion-icon.activity-icon { margin: 8px 6px 0 0; }
-  .pie-icon.activity-icon { margin: 12px 5px 0 0; }
+  .pie-icon.activity-icon { margin: 6px 0 0 0; }
+  .activity-count {
+    font-size: $font-tinywiny;
+    position: relative;
+    bottom: 8px;
+    left: 16px;
+    color: white;
+    background-color: $group-activity;
+  }
+  .icon.shim {
+    display: block;
+    float: right;
+    margin-top: 6px;
+    .activity-count {
+      bottom: 32px;
+    }
+    .motion-sparkline {
+      margin-right: 4px;
+      position: relative;
+    }
+  }
 
   .discussion-link {
     position: relative;

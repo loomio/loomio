@@ -6,58 +6,16 @@
 .clearfix
   %div{ class: css_class_unread_discussion_activity_for(this_group, discussion, current_user), id: "discussion-preview-#{discussion.id}" }
     %a.selector-discussion-link{ href: discussion_path(discussion) }
-      - if user_signed_in? && current_motion
-        .vote-icon
-          - if current_user.group_membership(this_group) || this_group.nil?
-            %div{:class => 'activity-icon ' + vote_icon_name(current_user.position(current_motion))}
+      - current_motion = discussion.current_motion
+      = render '/discussions/preview_vote_icon', motion: current_motion, user: current_user, group: this_group
       .discussion-title
         = truncate(discussion.title, :length => 60, :separator => ' ')
         .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
-      .large-icon.discussion-icon.activity-icon{ class: enabled_icon_class_for(discussion, current_user) }
-        - discussion_activity = discussion_activity_count_for(discussion, current_user)
-        - if discussion_activity > 0
-          %span.activity-count.label.label-info
-            = discussion_activity
+      = render '/discussions/preview_motion_activity', current_motion: current_motion
+      = render '/discussions/preview_discussion_activity', discussion: discussion, user: current_user
       .discussion-date-info
         -if current_motion
           - if discussion.current_motion_closing_at
             .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_closing_at)} until close"
         - else
           .latest-comment-time= "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.last_comment_at))}"
-    - if current_motion
-      - motion_reader = current_motion.as_read_by(current_user)
-      - motion_activity = motion_reader.unread_activity_count
-      - popover_title = render 'discussions/graph_preview_pop_over_title', :motion => current_motion
-      - popover_content = render 'discussions/graph_preview_pop_over', :motion => current_motion, :user => current_user, :motion_activity =>  motion_activity
-      .motion-popover-link{id: "popover_#{current_motion.id}", 'data-title' => popover_title, 'data-content' => popover_content}
-        .pie{:id => "graph_#{current_motion.id}"}
-          - if current_motion.voting? && motion_activity > 0
-            %span.activity-count.label.label-info
-              = motion_activity
-          - if user_signed_in?
-            = button_to '', get_and_clear_new_activity_motion_path(:id => current_motion.id, :motion_activity => motion_activity), :remote => true, :class =>  "preview-pie-button"
-    - else
-      .large-icon.pie-icon.activity-icon
-
-- if current_motion
-  :coffeescript
-    $ ->
-      # Display vote graph
-      make_the_graph = ->
-        @pie_graph_view = new Loomio.Views.Utils.GraphView
-          el: '.pie'
-          id_string: "graph_#{discussion.current_motion.id}"
-          legend: false
-          data: #{discussion.current_motion.votes_for_graph.to_json.html_safe}
-          type: 'pie'
-          tooltip_selector: '#tooltip'
-          diameter: 25
-          padding: 1
-          gap: 1
-          shadow: 0
-
-      # IE8 FIX - for some reason we have to load the graph after everything else.
-      # Otherwise, the graph doesn't display in IE8.
-      #
-      # Ideally, we'd like to be able to delete this line:
-      $(window).load(make_the_graph)

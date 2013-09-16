@@ -59,7 +59,10 @@
     background-image:url('/assets/notification-24.png');
     margin: 0;
   }
-  &.pie-icon { background-image: url("pie-light-24.png"); }
+  &.pie-icon {
+    background-image: url("pie-light-24.png");
+    height: 26px;
+  }
   &.topic-icon { background-image:url('/assets/topic-24.png'); }
 }
 
