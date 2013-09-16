@@ -142,7 +142,6 @@ ro:
     motion_closing_soon: "Propunerea se va inchide in curand"
     motion_blocked: "a blocat propunerea"
   edit_discussion_context: "Modifica contextul discutiei"
-  request_new_group: "Cere un Grup Nou"
   request_new_group_details: "sau asteapta pana esti invitat intr-un grup"
   empty_notifications: "Nu ai inca nici o notificare."
   see_all_notifications: "Vezi toate notificarile"
@@ -277,8 +276,6 @@ ro:
   proposal_closing_when: "Inchidere %{when}"
   proposal_closed_when: "Inchis acum %{when}"
   proposed_when_by_who: "Propus de %{who} acum %{when} "
-  engagement_on_open_proposal: "%{percent}% din membri si-au exprimat pozitia  (%{numerator}/%{denominator})"
-  engagement_on_closed_proposal: "%{percent}% odin membri si-au exprimat pozitia (%{numerator}/%{denominator})"
   state_your_position: "Exprima-ti pozitia"
   positions: "Pozitii"
   yes_position: "Sunt de acord"
@@ -312,7 +309,6 @@ ro:
       poti folosi propunerea pentru a obtine rapid pareri in decizie.</p>
       <p> Poti face lucruri ca finalizarea unui document, aprobarea unei aplicatii, sau semnaturi pentru o idee.</p>
     get_in_touch: "Ia legatura"
-    get_in_touch_description_html: "Daca ai intrebari sau comentarii, trimite-ne un email: <a href='mailto:contact@loomio.org'>contact@loomio.org</a>"
     getting_started: "Pregatit pentru a incepe"
     getting_started_description: "In partea dreapta, grupul discuta o tema, schimband idei si informatii. Cand exista o decizie pe care grupul o ia, apare in partea dreapta."
     getting_the_most: 'Obtine cat mai mult din folosirea Loomio'
@@ -361,25 +357,7 @@ ro:
     proposal: 'Sfaturi pentru a scrie o propunere clara'
     vote: 'Poti sa-ti modifici pozitia oricand doresti'
   contribution:
-    thought_about_contributing: Alege contributia ta
-    thought_about_contributing_description: |
-      Loomio este o companie cooperativa sociala care lucreaza pentru a usura partiparea fiecaruia in deciziile care ii afecteaza.⏎
-      ⏎
-      Noi credem ca banii nu trebuie sa fie o bariera, asa ca dezvoltam un model de venit care da fiecaruia posibilitatea sa decida cat pot sa contribuie.⏎
-      ⏎
-      Contributia ta ne ajuta sa dezvoltam Loomio intr-un mod independent, fara publicitate, si pe baza dorintelor comunitatii de utilizatori.⏎
-      ⏎
-      Multumim ca faci acest lucru posibil.⏎
     thank_you_title: Multumim pentru contributia catre Loomio!
-    thank_you_body: |+
-      Contributia ta ne ajuta sa oferim un mod usor de luare a deciziilor in mod colaborativ in lume.⏎
-      ⏎
-      Vei primi curand un email cu o chitanta pentru contributia ta.⏎
-      ⏎
-      Toata lumea este binevenita sa se alature comunitatii Loomio, unde discutam despre cum sa utilizam la maxim acest mediu, si cum poate fi imbunatatit.⏎
-      ⏎
-      <a href='https://www.loomio.org/groups/3'>Du-ma la grupul comunitatii Loomio  &raquo;</a>⏎
-
   resend_confirmation: "Retrimite instructiunile de confirmare"
   new_password: "Parola noua"
   confirm_new_password: "Confirma noua parola"
@@ -393,9 +371,6 @@ ro:
   cancel_my_account: "Anuleaza contul meu"
   remember_me: "Tine-ma minte"
   signing_in: "Intrare in cont"
-  dont_have_account: "Nu ai inca cont?"
-  closed_beta: "Suntem inca in testare si nu acceptam conturi publice (deocamdata!)."
-  closed_beta_details: "Daca apartii unui grup care utilizeaza Loomio dar nu ai inca cont pe Loomio, te rugam sa contactezi persoana din organizatia ta care a setat grupul pe Loomio si roaga sa te adauge la grup."
   forgot_your_password: "Ti-ai uitat parola?"
   confirmation_not_received: "Nu ai primit instructiunile de confirmare?"
   unlock_not_received: "Nu ai primit instructiunile de deblocare?"
@@ -405,15 +380,12 @@ ro:
     sign_in_intro: "Trebuie sa te loghezi pentru a te alatura grupului."
   start_group:
     header: "Bine ai venit in Loomio"
-    sign_up_intro: "Cererea ta de a creea un nou grup pe Loomio a fost aprobata! Creeaza-ti un cont pe Loomio pentru a putea creea grupul:"
-    sign_in_intro: "Cererea ta de a creea un nou grup pe Loomio a fost aprobata! Intra in contul tau pe Loomio pentru a putea creea grupul:"
   invitation:
     no_invitations_left: "Ne pare rau nu mai ai nici o invitatie ramasa"
     no_invitations_left_get_more: "Te rugam sa contactezi contact@loomio.org si vom vedea ce putem face sa te ajutam"
     invitation_not_found: 'Nu am gasit invitatia cu acest token. Cere o noua invitatie celui care ti-a trimis-o.'
     invitation_cancelled: 'Invitatia a fost retrasa. Te rugam sa contactezi pe cel care ti-a triis invitatia daca crezi ca este o eroare.'
     invitation_already_used: 'Invitatia a fost deja folosita. Te rugam sa te loghezi pentru a ajunge la grupul tau.'
-    recipients: "Introdu adresele email, separate prin virgula:"
     invitees_placeholder: "Nume utilizator <user1@example.com>, user2@example.com"
     subject: "Alatura-te noului grup Loomio,  %{group}"
     invite_people: "Invita oameni in grupul tau"
@@ -477,7 +449,6 @@ ro:
     use_avatar_kind: "Foloseste %{kind}"
     upload_new_image: "Uploadeaza o poza noua"
   group_setup:
-    intro: "Ca coordonator al grupului, esti responsabil pentru setarile si administrarea grupului pe Loomio. Pentru inceput trebuie sa completezi niste setari, apoi poti sa intri in noul grup, sa pornesti o discutie sau doua, si sa trimiti niste invitatii!"
     submit: "Vreau sa intru in grupul meu!"
   simple_form:
     labels:
@@ -486,7 +457,6 @@ ro:
         description: "Context"
       group:
         name: "Care este numele grupului tau?"
-        description: "Adauga o scurta descriere a grupului tau:"
         viewable_by: "Cine poate vedea acest grup?"
         members_invitable_by: "Cine poate trimite invita oameni in acest grup?"
       membership_request:
@@ -503,8 +473,6 @@ ro:
     options:
       group:
         viewable_by:
-          everyone: 'Public - oricine cu link poate vedea acest grup'
-          members: 'Membri - doar membrii acestui grup pot sa-l vada'
           parent_group_members: "Membrii grupului principal - doar membrii grupului principal pot sa vada acest sub-grup"
         members_invitable_by:
           admins: 'Doar coordonatorii'
@@ -518,8 +486,6 @@ ro:
       motion:
         name: "Care este propunerea ta pentru pasii urmatori?"
         description: "Adauga destule informatii pentru ca toti din grupul tau sa poata lua o decizie informata."
-      group:
-        description: "Gandeste-te la cea mai simpla modalitate pentru a descrie grupul tau: Ce vreti sa obtineti impreuna? Ce tipuri de decizii veti lua? Cine va fi implicat?"
   helpers:
     submit:
       discussion:

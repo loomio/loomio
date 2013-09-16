@@ -6,6 +6,9 @@ nl:
   errors:
     messages:
       email: "Ongeldig e-mailadres"
+  attachment:
+    error:
+      too_large: "Het bestand wat je probeerde toe te voegen is groter dan 50BMB. Probeer een kleiner bestand."
   time:
     formats:
       for_today: '%l:%M %P'
@@ -63,6 +66,22 @@ nl:
     settings_updated: "Je instellingen zijn bijgewerkt."
     user_made_admin: "%{which_user} is coördinator gemaakt."
     you_have_left_group: "Je hebt %{which_group} verlaten."
+    comment_deleted: "Reactie verwijderd."
+    invitations:
+      auto_added:
+        one: "%{count} lid toegevoegd"
+        other: "%{count} leden toegevoegd"
+      existing_member:
+        one: "%{count} lid zit al in de groep"
+        other: "%{count} leden zitten al in de groep"
+      sent:
+        one: "%{count} uitnodiging verzonden"
+        other: "%{count} uitnodigingen verzonden"
+      auto_added_and_sent: "%{auto_added_text} en %{sent_text}"
+  views:
+    pagination:
+      previous: "Vorige"
+      next: "Volgende"
   warning:
     cant_remove_last_admin: "Je bent de enige coördinator en kan niet verwijderd worden."
     membership_request_already_approved: "Lidmaatschapsaanvraag is al goedgekeurd."
@@ -161,7 +180,7 @@ nl:
   generic_confirm: "Weet je het zeker?"
   discussion_helper_text:
     header: "Welkom bij je eerste discussie"
-    message: "<p>Het onderwerp staat bovenaan de pagina, met de beschrijving eronder.</p><p>De discussie staat links, beslissingen rechts. Als je denkt dat de groep klaar is om een beslissing te nemen, dan kan je daartoe een voorstel indienen ter overweging.</p>"
+    message: "<p>Het onderwerp staat bovenaan de pagina, met de beschrijving eronder.</p><p>De discussie staat links, beslissingen rechts. Als je denkt dat de groep klaar is om een beslissing te nemen, dan kan je daartoe een voorstel  ter overweging indienen.</p>"
   group_helper_text:
     header: "Welkom bij je nieuwe groep!"
     message: "<p>Dit is de <strong>groepspagina</strong>. Links vind je een lijst met alle discussies in de groep.</p><p>Als je wilt dat de groep een ander onderwerp bediscussieerd, begin dan een nieuwe discussie.</p>"
@@ -197,10 +216,10 @@ nl:
   invited_users: "Uitgenodigde leden"
   confirm_remove_user: "Weet je zeker dat je %{which_user} uit de groep wil verwijderen?"
   remove_coordinator: "Verwijder coördinator"
-  confirm_remove_coordinator: "Weet je zeker dat je %{which_user} wil uitschrijven als coördinator van deze groep?"
+  confirm_remove_coordinator: "Weet je zeker dat je %{which_user} wilt uitschrijven als coördinator van deze groep?"
   make_coordinator: "Maak coördinator"
-  confirm_make_coordinator: "Weet je zeker dat je %{which_user} coördinator wil maken van deze groep?"
-  confirm_remove_member: 'Weet je zeker dat je dit lid wil verwijderen uit de groep?'
+  confirm_make_coordinator: "Weet je zeker dat je %{which_user} coördinator wilt maken van deze groep?"
+  confirm_remove_member: 'Weet je zeker dat je dit lid wilt verwijderen uit de groep?'
   want_to_invite_html: "Wil je <a href='%{link}'>mensen uitnodigen</a> voor deze groep?"
   membership_requests: "Lidmaatschapsverzoeken"
   confirm_approve_membership_request: "Weet je zeker dat je %{which_user} aan de groep toe wilt voegen?"
@@ -211,6 +230,7 @@ nl:
   membership_requested: "Lidmaatschap aangevraagd"
   request_membership: "Vraag lidmaatschap aan"
   confirm_remove_membership_request: "Weet je zeker dat je jouw lidmaatschap van deze groep wilt intrekken?"
+  no_pending_membership_requests: "Er zijn momenteel geen lidmaatschap aanvragen voor deze groep."
   subgroups: "Subgroepen"
   create_a_subgroup: "Maak een subgroep"
   select_members_to_add: "Selecteer leden die je toe wilt voegen aan %{which_group}"
@@ -305,6 +325,16 @@ nl:
   not_voted: "[Laat leden zien die nog niet hebben beslist]"
   outcome: "Uitslag"
   outcome_placeholder: "Wat was de uitslag van dit voorstel?"
+  position_verbs:
+    'yes': "eens"
+    'no': "oneens"
+    abstain: "onthouden"
+    block: "blokkeren"
+    past_tense:
+      'yes': "mee eens"
+      'no': "mee oneens"
+      abstain: "onthouden"
+      block: "geblokkeerd"
   help:
     coordinating: 'Coördineer jouw Loomio groep'
     coordinating_details: |
@@ -321,10 +351,10 @@ nl:
       <h3>Je hebt de groep nodig om een breed onderwerp te bespreken en om samen tot een oplossing te komen</h3>
       <p>Strategie: Begin een tijdje met discussiëren voor er een voorstel wordt gemaakt.</p>
       <p>Discussies bereiken vaak het beste resultaat als er een gedeeld begrip is met betrekking tot het probleem alvorens tot een oplossing te komen. Als mensen betrokken zijn bij het proces, zullen ze meer geneigd zijn de uitkomst te steunen.</p>
-    example2_html: "<h3>Je hebt al een voorstel in gedachten en je wilt een besluit van de groep om verder te kunnen.</h3>\n<p>Strategie: Begin een discussie over een specifieke beslissing en maak meteen een voorstel.</p>\n<p>Als je reeds een heldere uitkomst in gedachten hebt, maar je wilt er zeker van zijn dat niemand bezwaar heeft, \nkan je het voorstel gebruiken om snelle feedback te krijgen met betrekking tot een beslissing.</p>\n\
-      <p>Je kan dingen doen als een document afronden, een aanvraag goedkeuren of een streep zetten onder een klus.</p>\n"
+    example2_html: "<h3>Je hebt al een voorstel in gedachten en je wilt een besluit van de groep om verder te kunnen.</h3>\n<p>Strategie: Begin een discussie over een specifieke beslissing en maak meteen een voorstel.</p>\n<p>Als je reeds een heldere uitkomst in gedachten hebt, maar je wilt er zeker van zijn dat niemand bezwaar heeft, \nkan je het voorstel gebruiken om snelle feedback te krijgen met betrekking tot een beslissing.</p>\n<p>Je kan dingen doen als een document\
+      \ afronden, een aanvraag goedkeuren of een streep zetten onder een klus.</p>\n"
     get_in_touch: "Neem contact op"
-    get_in_touch_description_html: "Als je vragen of feedback hebt, stuur ons een e-mail: <a href='mailto:contact@loomio.org'>contact@loomio.org</a>"
+    get_in_touch_description_html: "Als je vragen of feedback hebt, vul dit <a href='%{link}'>formulier</a> of stuur een e-mail naar <a href='mailto:contact@loomio.org'>contact@loomio.org</a>."
     getting_started: "Aan de slag"
     getting_started_description: "Aan de linkerkant wordt er een onderwerp bediscussieerd. Er worden ideeën en informatie uitgewisseld. Als de groep een beslissing wil maken, zie je dat aan de rechterkant."
     getting_the_most: 'Het meeste uit Loomio halen'
@@ -384,6 +414,10 @@ nl:
     proposal: 'Tips voor het schrijven van een helder voorstel'
     vote: 'Je kunt je standpunt ten alle tijde veranderen'
   pricing_page:
+    intro: |
+      Groepen met een budget betalen een abonnement voor het gebruik van Loomio.
+      Groepen die de kosten van een abonnement niet op kunnen brengen gebruiken het
+      Betaal Wat Je Kan model: hun leden worden gevraagd een vrijwillige bijdrage te doen. Jouw bijdrage zorgt ervoor dat we Loomio onafhankelijk, vrij van advertenties en door de gemeenschap gedreven kunnen houden.
     organisations: Organisaties
     organisations_examples: bijv. bedrijven, regeringsinstanties, maatschappelijke organisaties
     informal_groups: Informele groepen
@@ -402,7 +436,7 @@ nl:
 
       Geld zou geen barrière moeten zijn voor gezamenlijke besluitvorming. Loomio wordt gefinancierd door bijdragen uit onze gemeenschap van gebruikers en abonnementen betaald door formele organisaties die het gebruiken.
 
-      Jouw groep betaalt geen abonnement dus dit is je kans om bij te dragen. Jouw bijdrage betekent dat we Loomio onafhankelijk kunnen houden, vrij van advertenties en gratis beschikbaar voor maatschappelijke groepen zoals die van jou.
+      Jouw bijdrage betekent dat we Loomio onafhankelijk, vrij van advertenties en gratis beschikbaar voor voor gemeenschappen zoals die van jou kunnen houden.
 
       Bedankt dat je dit mogelijk maakt!
     thank_you_title: Bedankt voor je bijdrage aan Loomio!
@@ -411,7 +445,7 @@ nl:
 
       Je ontvangt snel een e-mail met een ontvangstbewijs van je bijdrage.
 
-      Iedereen is welkom om zich bij de Loomio Community te voegen waar we praten over hoe we het beste maken van dit instrument en hoe het verbeterd kan worden.
+      Iedereen is welkom om zich bij de Loomio Community te voegen, waar we praten over hoe we het beste maken van dit instrument en hoe het verbeterd kan worden.
 
       <a href='https://www.loomio.org/groups/3'>Breng me naar de Loomio Community groep&raquo;</a>
     making_a_donation: Een donatie doen
@@ -518,6 +552,7 @@ nl:
     upload_new_image: "Upload een nieuwe afbeelding"
   group_setup:
     desc_header: "Je bent er bijna!"
+    desc_html: "Als groepscoördinator ben je verantwoordelijk voor het opzetten en beheren van jouw Loomio groep. Zodra je enkele instelling hebt gedaan, kun je je nieuwe groep gebruiken, een discussie of twee beginnen en uitnodigingen gaan versturen! <p>Om een simpele omschrijving voor je groep te vinden helpt het om jezelf de volgende dingen te vragen: Wat willen jullie samen bereiken? Wat voor beslissingen zullen jullie nemen? Wie zullen allemaal meedoen?</p>"
     submit: "Breng me naar mijn groep!"
   simple_form:
     'yes': 'Ja'
@@ -541,6 +576,7 @@ nl:
       motion:
         name: "Titel"
         description: "Details"
+        close_at_date: "Sluit op"
       user:
         name: "Volledige naam"
         email: "E-mail"
@@ -566,7 +602,10 @@ nl:
         name: "Welke vervolgstap stel je voor?"
         description: "Geef voldoende informatie zodat iedereen exact weet wat het betekent om het eens of oneens te zijn."
       group:
-        description: "Geef een korte omschrijving van jouw groep"
+        description: "Bedenk een simpele omschrijving voor je groep: Wat willen jullie samen bereiken? Wat voor beslissingen zullen jullie nemen? Wie zullen allemaal meedoen?"
+      user:
+        email: "E-mail"
+        password: "Wachtwoord"
   helpers:
     submit:
       discussion:
@@ -577,6 +616,9 @@ nl:
         create: "Maak account"
         update: "Instellingen bijwerken"
   email:
+    added_to_a_group:
+      subject: "Je bent toegevoegd aan een groep"
+      content: "Gefeliciteerd, je bent toegevoegd aan de groep '%{which}' op Loomio!"
     unsubscribe: "Uitschrijven of je e-mail voorkeuren aanpassen:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> om je uit te schrijven of je e-mail voorkeuren aan te passen."
     view_comment: "Klik hier om de reactie op Loomio te zien"
@@ -602,7 +644,7 @@ nl:
     invitation:
       hi: "Hoi %{name},"
       intro: "Klik op de link hieronder om jouw groep %{group_name} in te stellen:"
-      closing_message: "Als je vragen hebt of als er iets is wat we kunnen doen zodat je aan de slag kan dan horen we graag van je - antwoord gewoon op deze e-mail."
+      closing_message: "Als je vragen hebt of als er iets is wat we kunnen doen zodat je aan de slag kan, dan horen we graag van je - antwoord gewoon op deze e-mail."
       thanks: |
         Bedankt!
         Het Loomio Team
@@ -676,6 +718,7 @@ nl:
   groups: "Groepen"
   group_admin: "Groepscoördinator"
   home: "Home"
+  id: "id"
   like: "Vind ik leuk"
   loading: "Laden..."
   message: "Bericht"
