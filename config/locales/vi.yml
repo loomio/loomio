@@ -17,7 +17,7 @@ vi:
   error:
     access_denied: "Bạn không có quyền thực hiện thao tác này."
     cant_join_subgroup: "Bạn không thể tham gia vào nhóm-con này nếu bạn không phải là thành viên của nhóm gốc."
-    cant_modify_position: "Lời đề nghị đã được đóng lại."
+    cant_modify_position: "Lời đề nghị này đã được đóng lại."
     cant_state_position: "Lời đề nghị này đã được đóng lại."
     cant_view_member_profile: "Bạn không thể xem hồ sơ của thành viên vì bạn và người này không cùng chung nhóm."
     contribution: "Vui lòng đăng nhập để có thể tham gia."
@@ -28,7 +28,7 @@ vi:
     image_upload_fail: "Không thể tải lên hình ảnh. Hãy chắc rằng hình ảnh có dung lượng dưới 1MB và có định dạng .jpeg, .png hoặc .gif."
     motion_closing_inputs: "Ngày đóng lại không hợp lệ"
     permission_to_invite: "Bạn không có quyền mời thành viên mới."
-    position_not_updated: "Không thể cập nhật vị trí."
+    position_not_updated: "Không thể cập nhật phần kiến nghị."
     settings_not_updated: "Thiết lập của bạn vẫn chưa nhận được cập nhật."
     group_request_already_verified: "Rất tiếc! Đường dẫn liên kết để kích hoạt mà bạn vừa click vào đã được xác nhận trước đó. Nếu bạn không nhận được tin tức gì từ phía website của chúng tôi trong vòng 48 giờ, xin vui lòng liên hệ: contact@loomio.org"
     group_request_already_accepted: "Rất tiếc! Lời mời này không hợp lệ hoặc đã được chấp nhận trước đó."
@@ -59,7 +59,7 @@ vi:
     membership_request_already_approved: "Lời đề nghị làm thành viên đã được chấp thuận."
     membership_request_already_ignored: "Yêu cầu làm thành viên đã bị bỏ qua."
     membership_request_already_canceled: "Yêu cầu làm thành viên đã bị hủy bỏ."
-    position_not_submitted: "Không thể đăng lên vị trí của bạn"
+    position_not_submitted: "Không thể đăng phần kiến nghị của bạn"
     proposal_not_created: "Không thể tạo được yêu cầu"
     user_already_admin: "%{which_user} hiện là điều hành viên của nhóm này."
     user_already_member: "%{which_user} hiện đã là thành viên của nhóm này"
@@ -74,44 +74,33 @@ vi:
     group_created: "Đã tạo nhóm thành công."
     members_added: "Đã thêm thành viên vào nhóm."
     membership_requested: "Gửi yêu cầu tham gia làm thành viên. Bạn sẽ được thông báo ngay sau khi lời yêu cầu của bạn được chấp nhận."
-    position_submitted: "Đã đăng lên vị trí"
-    position_updated: "Vị trí đã được cập nhật."
+    position_submitted: "Đã đăng phần kiến nghị"
+    position_updated: "Đã cập nhật phần kiến nghị."
     proposal_created: "Đã tạo lời yêu cầu thành công."
     proposal_deleted: "Đã xóa lời yêu cầu."
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one: "1 giây"
         other: "%{count} giây"
       x_seconds:
-        one: "1 giây"
         other: "%{count} giây"
       less_than_x_minutes:
-        one: "1 phút"
         other: "%{count} phút"
       x_minutes:
-        one: "1 phút"
         other: "%{count} phút"
       about_x_hours:
-        one: "1 giờ"
         other: "%{count} giờ"
       x_days:
-        one: "1 ngày"
         other: "%{count} ngày"
       about_x_months:
-        one: "1 tháng"
         other: "%{count} tháng"
       x_months:
-        one: "1 tháng"
         other: "%{count} tháng"
       about_x_years:
-        one: "1 năm"
         other: "%{count} năm"
       over_x_years:
-        one: "1 năm"
         other: "%{count} năm"
       almost_x_years:
-        one: "1 năm"
         other: "%{count} năm"
   inbox:
     dropdown-btn: 'Hộp thư'
@@ -122,17 +111,16 @@ vi:
     new_motion: "đã tạo yêu cầu mới"
     motion_closed:
       by_user: "đã đóng lại yêu cầu"
-      by_expiry: "Lời yêu cầu đã đóng lại"
+      by_expiry: "Lời yêu cầu đã được đóng lại"
     new_vote: "%{position} của phần yêu cầu"
     new_comment: "đã bình luận vào cuộc thảo luận"
     comment_liked: "đã thích bình luận của bạn trong cuộc thảo luận"
     user_mentioned: "đã đề cập đến bạn trong một bình luận ở"
     membership_requested: "đã gửi yêu cầu làm thành viên đến"
     user_added_to_group: "đã thêm bạn vào nhóm"
-    motion_closing_soon: "Lời yêu cầu sẽ bị đóng lại sớm"
+    motion_closing_soon: "Lời yêu cầu sẽ sớm bị đóng lại"
     motion_blocked: "đã khóa lời yêu cầu"
   edit_discussion_context: "Chỉnh sửa nội dung cuộc thảo luận"
-  request_new_group: "Gửi yêu cầu tạo nhóm mới"
   request_new_group_details: "hoặc đợi cho đến khi bạn được mời vào."
   empty_notifications: "Bạn hiện không có thông báo nào."
   see_all_notifications: "Xem tất cả thông báo"
@@ -221,7 +209,7 @@ vi:
     new_discussion: "đã tạo phần thảo luận"
     new_motion: "đã tạo lời đề nghị"
     motion_closed:
-      by_user: "đóng lại lời đề nghị"
+      by_user: "đã đóng lại lời đề nghị"
       by_expiry: "Đã đóng lại lời đề nghị"
     motion_close_date_edited: "đã thay đổi thời gian hết hạn đối với lời đề nghị"
     discussion_title_edited: "đã thay đổi tiêu đề phần thảo luận"
@@ -267,10 +255,8 @@ vi:
   proposal_closing_when: "Đóng lại vào %{when}"
   proposal_closed_when: "Đã được đóng lại cách đây %{when}"
   proposed_when_by_who: "Được đề nghị bởi %{who} vào %{when} trước"
-  engagement_on_open_proposal: "Tổng cộng %{percent}% lượng thành viên đã được chỉ định vào vị trí của mình (%{numerator}/%{denominator})"
-  engagement_on_closed_proposal: "Tổng cộng %{percent}% lượng thành viên đã được chỉ định vào vị trí của mình (%{numerator}/%{denominator})"
-  state_your_position: "Ứng cử vị trí của bạn"
-  positions: "Các vị trí"
+  state_your_position: "Đưa ra kiến nghị của bạn"
+  positions: "Các kiến nghị"
   yes_position: "Tôi đồng ý"
   yes_details: "Tôi đồng ý với điều này và muốn tiếp tục."
   abstain_position: "Tôi còn do dự"
@@ -313,7 +299,6 @@ vi:
       thì bạn có thể sử dụng lời để nghị để nhanh chóng tạo thành quyết định về việc thi hành ý tưởng của mình.</p>
       <p>Bạn cũng có thể thực hiện các thao tác khác chẳng hạn như tổng kết hóa tài liệu, chấp thuận một ứng dụng, hoặc ký nhận về tiến độ của một phần công việc nào đó.</p>
     get_in_touch: "Giữ liên lạc"
-    get_in_touch_description_html: "Nếu bạn có bất kỳ thắc mắc gì hoặc muốn gửi phản hồi, vui lòng liên hệ chúng tôi thông qua địa chỉ email: <a href='mailto:contact@loomio.org'>contact@loomio.org</a>"
     getting_started: "Chuẩn bị bắt đầu"
     getting_started_description: "Phía bên trái, là khu vực nhóm đang thảo luận về một chủ đề, trao đổi ý kiến cũng như thông tin liên quan. Khi việc quy trình thực thi các quyết định được diễn ra, phần này sẽ hiển thị phía trên bên phải."
     getting_the_most: 'Tìm hiểu về các tính năng trên Loomio'
@@ -339,7 +324,7 @@ vi:
     discussion: 'Gợi ý về cách bắt đầu tham gia thảo luận'
     invitation: 'Gợi ý về cách viết các lời mời để kết nối thêm thành viên'
     proposal: 'Gợi ý về việc viết lời đề nghị theo hướng rõ ràng nhất'
-    vote: 'Bạn có thể thay đổi vị trí của mình vào bất cứ lúc nào'
+    vote: 'Bạn có thể thay đổi kiến nghị của bạn vào bất kỳ thời điểm nào'
   contribution:
     any_amount: hoặc sử dụng tùy chọn cống hiến một lần theo dạng
     currency_desc: Số lượng được tính bằng đơn vị đồng đô la Mỹ
@@ -347,24 +332,7 @@ vi:
     one_time_html: Tôi muốn đóng góp một lần duy nhất
     submit: Đóng góp
     tooltip: Tìm hiểu về mô hình quỹ tài chính của cộng đồng chúng tôi
-    thought_about_contributing: Chọn cách cống hiến của bạn
-    thought_about_contributing_description: |
-      Loomio là một cộng đồng mạng xã hội nhằm tạo ra một môi trường tích hợp trong việc đưa ra bàn thảo và đề nghị về các quyết định trong nhóm.
-
-      Chúng tôi tin tưởng rằng, tài chính không phải là một vấn đề quá lớn lao ở thời điểm này, bởi thế chúng tôi đặt ra một mô hình trả phí do chính bạn quyết định chứ không phải được ấn định sẵn từ phía chúng tôi.
-
-      Phần cống hiến của bạn sẽ giúp cho Loomio được cải thiện và phát triển hơn nữa, cũng như bạn sẽ không thấy sự hiển thị của các quảng cáo trong phần nhóm của mình, và đồng thời tham gia vào việc hỗ trợ cộng đồng người dùng trên Loomio.
-
-      Cảm ơn bạn vì đã thực hiện điều này!
     thank_you_title: Cảm ơn bạn rất nhiều về sự đóng góp mà bạn dành cho Loomio!
-    thank_you_body: |
-      Phần cống hiến của bạn sẽ giúp cho chúng tôi hoàn thiện dịch vụ của mình theo hướng tốt nhất có thể.
-
-      Bạn sẽ nhận được một email kèm theo một biên nhận về sự đóng góp của bạn dành cho cộng đồng Loomio.
-
-      Bất kỳ ai cũng được chào đóng tham gia vào cộng đồng Loomio, và chính ở nơi đây chúng ta có thể bàn luận về các chủ đề, cũng như sự cải thiện cần có theo hướng tự do và dân chủ nhất.
-
-      <a href='https://www.loomio.org/groups/3'>Hãy đưa tôi truy cập đến các nhóm trên Loomio &raquo;</a>
   resend_confirmation: "Gửi lại việc xác nhận hướng dẫn"
   new_password: "Tạo mật khẩu mới"
   confirm_new_password: "Xác định việc tạo mới mật khẩu"
@@ -378,9 +346,6 @@ vi:
   cancel_my_account: "Hủy bỏ tài khoản của tôi"
   remember_me: "Ghi nhớ đăng nhập"
   signing_in: "Đang đăng nhập vào"
-  dont_have_account: "Chưa có tài khoản?"
-  closed_beta: "Hiện chúng tôi đang trong tiến độ thử nghiệm và tạm thời không chấp nhận các yêu cầu đăng ký công khai (sẽ sớm mở lại phần này!)."
-  closed_beta_details: "Nếu bạn thuộc về một nhóm nào đó đang sử dụng Loomio nhưng bạn không có tài khoản Loomio của riêng mình, xin vui lòng liên hệ người thuộc tổ chức mà đã thiết lập Loomio và hỏi họ về việc thêm bạn vào nhóm."
   forgot_your_password: "Quên mật khẩu?"
   confirmation_not_received: "Không nhận được hướng dẫn xác nhận?"
   unlock_not_received: "Không nhận được hướng dẫn mở khóa?"
@@ -390,21 +355,18 @@ vi:
     sign_in_intro: "Bạn cần phải đăng nhập để tham gia vào nhóm."
   start_group:
     header: "Chào mừng bạn đến với Loomio"
-    sign_up_intro: "Lời đề nghị của bạn về việc tạo một nhóm mới trên Loomio đã được chấp thuận! Bạn sẽ cần phải thiết lập một tài khoản mới trước khi có thể tạo nhóm của riêng mình:"
-    sign_in_intro: "Lời đề nghị của bạn về việc tạo một nhóm mới trên Loomio đã được chấp thuận! Bạn sẽ cần phải đăng nhập trước khi có thể tạo nhóm của riêng mình:"
   invitation:
     no_invitations_left: "Rất tiếc, bạn không còn lời mời nào"
     no_invitations_left_get_more: "Vui lòng gửi email đến contact@loomio.org và chúng tôi sẽ xem xét trường hợp của bạn"
     invitation_not_found: 'Không thể tìm thấy lời mời nào khớp với mã xác nhận đó. Hãy yêu cầu người gửi gửi lại cho bạn một lời mời mới.'
     invitation_cancelled: 'Lời mời tham gia này đã bị hủy bỏ. Vui lòng liên hệ người gửi về lời mời tham gia nhóm nếu bạn nghĩ rằng đã có lỗi xảy ra.'
     invitation_already_used: 'Phần lời mời này đã được sử dụng. Vui lòng đăng nhập để tiếp tục vào nhóm của bạn'
-    recipients: "Điền vào các địa chỉ email, cách biệt nhau bằng dấu phẩy:"
     invitees_placeholder: "Tên người dùng <user1@example.com>, user2@example.com"
     subject: "Hãy tham dự nhóm mới của chúng tôi trên Loomio, %{group}"
     invite_people: "Mời những người khác đến nhóm của bạn"
     body_editable: |
       Chào bồ, hãy tham gia chung cùng chúng tôi trong việc đưa ra quyết định nhé! Chúng tôi hiện đang sử dụng một nền tảng tên là Loomio có khả năng tạo ra một môi trường tích hợp giúp các thành viên của một nhóm có thể hợp tác chung với nhau để cùng thảo luận về một chủ đề nào đó.
-    message_body: "Tin nhắn về lời mời"
+    message_body: "Nội dung thư mời"
     invites_more_help2: "<p>Bạn có thể gửi lời mời đến những người mà bạn muốn họ tham gia vào nhóm của mình bất cứ lúc nào.</p><p>Bạn có thể bắt đầu việc đó ngay bây giờ, hoặc bạn chỉ cần gửi lời mời tham gia đến những người thân trong nhóm của mình.</p>"
     send_invitations: "Gửi lời mời"
     invitation_link: "Đường dẫn liên kết đến lời mời"
@@ -426,7 +388,7 @@ vi:
     description: |
       Rôbốt Trợ Giúp Loomio sẵn sàng hỗ trợ nhóm của bạn một phần đầu tư về một chuyến đi lên mặt trăng. Chắc có lẽ nghe hơi kỳ kỳ. Nhưng mục tiêu của chúng ta là nhằm thảo luận về một đề tài nào đó.
       Đây có phải là một ý kiến tốt hay không? Rôbốt Trợ Giúp Loomio muốn biết bạn nghĩ gì về điều này!
-      Nếu bạn đã biết rõ vị trí của mình, hãy click vào một trong số các biểu tượng bên dưới (rê chuột qua nút quyết định để có được mô tả về mỗi đối tượng mà bạn muốn biết ý nghĩa của chúng).
+      Nếu bạn đã biết rõ kiến nghị của mình, hãy click vào một trong số các biểu tượng bên dưới (rê chuột qua nút quyết định để có được mô tả về mỗi đối tượng mà bạn muốn biết ý nghĩa của chúng).
       Bạn sẽ được thông báo một phát biểu ngắn gọn về nguyên nhân đối với việc đưa ra quyết định của mình. Phần này hoàn toàn dễ dàng nhằm tóm lược thông tin về điều mọi người đang suy nghĩ cũng như lý do tại sao. Bạn có thể thay đổi suy nghĩ của mình và thậm chí là chỉnh sửa việc đưa ra quyết định theo cách tự do nhất có thể miễn là trước khi thời hạn dành cho lời đề nghị chưa bị đóng lại.
   discussion_form:
     header: "Bắt đầu một cuộc thảo luận"
@@ -440,13 +402,13 @@ vi:
     invitation_settings: "Cài đặt phần gửi lời mời"
     admins_only: "Chỉ dành cho các điều hành viên"
   vote_form:
-    header: "Ứng cử vị trí của bạn"
-    edit: "Chỉnh sửa vị trí của bạn"
+    header: "Đưa ra kiến nghị của bạn"
+    edit: "Chỉnh sửa kiến nghị của bạn"
     placeholder: "Đưa ra lý do về quyết định của bạn (có hoặc không)"
-    your_position: "Vị trí của bạn"
+    your_position: "Kiến nghị của bạn"
     your_statement: "Phát biểu của bạn"
-    submit: "Đệ trình vị trí"
-    update: "Cập nhật vị trí"
+    submit: "Đệ trình kiến nghị"
+    update: "Cập nhật kiến nghị"
   email_preferences_form:
     header: "Tùy biến email"
     daily_activity_summary: "Tóm tắt diễn biến hằng ngày"
@@ -465,7 +427,6 @@ vi:
     use_avatar_kind: "Sử dụng %{kind}"
     upload_new_image: "Tải lên một hình ảnh mới"
   group_setup:
-    intro: "Với vai trò là người điều hành nhóm, bạn chịu trách nhiệm việc thiết lập và quản lý nhóm của mình trên Loomio. Đầu tiên bạn cần điền vào một vài thông số thiết lập, sau đó bạn có thể tạo nhóm mới của mình, bắt đầu một phần thảo luận hoặc nhiều phần tùy vào bạn, sau đó gửi đi các lời mời tham gia kết nối đến nhóm của mình!"
     submit: "Hãy đưa tôi đến nhóm của mình!"
   simple_form:
     labels:
@@ -474,7 +435,6 @@ vi:
         description: "Nội dung"
       group:
         name: "Tên của nhóm bạn là gì?"
-        description: "Hãy cung cấp một mô tả ngắn gọn về nhóm của bạn:"
         viewable_by: "Ai có thể xem được thông tin về nhóm này?"
         members_invitable_by: "Ai là người có thể thực hiện việc gửi đi lời mời tham gia vào nhóm này?"
       membership_request:
@@ -491,8 +451,6 @@ vi:
     options:
       group:
         viewable_by:
-          everyone: 'Công cộng - bất kỳ ai có đường liên kết truy cập đều có thể xem thông tin về nhóm này'
-          members: 'Thành viên - chỉ có các thành viên trong nhóm mới có thể xem được thông tin về nhóm này'
           parent_group_members: "Thành viên nhóm chính - chỉ có các thành viên của nhóm chính mới có thể xem được nhóm-thành viên này"
         members_invitable_by:
           admins: 'Chỉ dành cho người quản trị'
@@ -506,8 +464,6 @@ vi:
       motion:
         name: "Lời đề nghị về cách giải quyết hành động này là gì?"
         description: "Cung cấp đủ thông tin để mọi người biết đích xác phần này có ý nghĩa gì để đồng thuận hoặc không đồng tình."
-      group:
-        description: "Hãy nghĩ những điều đơn giản nhất để mô tả về nhóm bạn: Mục tiêu của bạn là gì? Loại quyết định được đưa ra như thế nào? Thành viên tham gia bao gồm là ai?"
   helpers:
     submit:
       discussion:

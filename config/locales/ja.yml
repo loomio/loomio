@@ -1,0 +1,12 @@
+ja:
+  error:
+    cant_modify_position: "このプロポーザルは閉めました."
+    cant_state_position: "このプロポーザルは閉めました."
+  alert:
+    duplicate_email: " sadfhklsadjlkads lskadjljasd"
+  group: "グルブ"
+  like: "いいね！"
+  name: "氏名"
+  save: "セーブ"
+  saving: "セーブ"
+  sending: "送信"
