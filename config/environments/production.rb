@@ -90,4 +90,11 @@ Loomio::Application.configure do
     :fog_directory => ENV['AWS_UPLOADS_BUCKET'],
     :fog_public => true
   }
+
+  # Email admin when server gets exceptions!
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Loomio Exception] ",
+    :sender_address => %{"Exception Notifier" <dudley@loomio.org>},
+    :exception_recipients => [ENV['EXCEPTION_RECIPIENT']]
+
 end
