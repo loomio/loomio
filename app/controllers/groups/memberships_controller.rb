@@ -23,10 +23,10 @@ class Groups::MembershipsController < GroupBaseController
     @membership.destroy
     if current_user == @membership.user
       flash[:notice] = t("notice.you_have_left_group", which_group: @membership.group.name)
+      redirect_to root_path
     else
       flash[:notice] = t("notice.member_removed")
+      redirect_to [@membership.group, :memberships]
     end
-    redirect_to group_memberships_path(@membership.group)
   end
-
 end
