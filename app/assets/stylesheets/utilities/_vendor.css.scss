@@ -10,10 +10,6 @@
   }
 }
 
-@mixin debug {
-  border: 1px solid red;
-}
-
 @mixin placeholder {
   &.placeholder { @content; }
   &:-moz-placeholder { @content; }
