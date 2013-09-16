@@ -17,8 +17,7 @@ gem 'rails-backbone', '~> 0.7.2'
 gem 'aasm', '~> 3.0.3'
 gem 'cancan', '~> 1.6.7'
 gem 'draper', '~> 0.11.1' # can this be removed?
-gem 'exception_notification', '~> 2.6.1'
-gem 'browser', '~> 0.1.3' # what is this?
+gem 'browser', '~> 0.1.3'
 gem 'rmagick', '~> 2.13.1'
 gem 'gravtastic', '~> 3.2.6'
 gem 'paperclip', '~> 3.4.0'
