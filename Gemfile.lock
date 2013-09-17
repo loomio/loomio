@@ -370,6 +370,9 @@ GEM
       selenium-webdriver (>= 0.1.2)
     sauce-connect (3.0.2)
       sauce (~> 3.0.6)
+    sauce-cucumber (3.0.0)
+      cucumber (>= 1.2.0)
+      sauce (~> 3.0.0)
     sauce_whisk (0.0.10)
       rest-client
     selenium-webdriver (2.25.0)
@@ -495,6 +498,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.6)
   sauce (~> 3.0.3)
   sauce-connect
+  sauce-cucumber
   selenium-webdriver (~> 2.25.0)
   shoulda-matchers (~> 1.2.0)
   simple_form (~> 2.0.4)

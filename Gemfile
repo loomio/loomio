@@ -78,6 +78,7 @@ group :development, :test do
   gem 'sauce', '~> 3.0.3'
   gem 'sauce-connect'
   gem 'parallel_tests'
+  gem 'sauce-cucumber'
 end
 
 group :development do
