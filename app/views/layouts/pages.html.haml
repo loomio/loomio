@@ -6,6 +6,7 @@
     <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
     = stylesheet_link_tag    "frontpage"
     = csrf_meta_tags
+    = browserid_js_tag
     = render 'social_metadata', description: @meta_description, title: @meta_title
 
   %body{class: "#{controller_name} #{action_name}"}
