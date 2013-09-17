@@ -41,11 +41,14 @@ Spork.prefork do
       :inspector => true,
       :debug => false
     }
-    Capybara.default_driver = :poltergeist
-    Capybara.javascript_driver = :poltergeist
-    Capybara.register_driver :poltergeist do |app|
-      Capybara::Poltergeist::Driver.new(app, polter_options)
-    end
+    # Capybara.default_driver = :poltergeist
+    # Capybara.javascript_driver = :poltergeist
+    # Capybara.register_driver :poltergeist do |app|
+    #   Capybara::Poltergeist::Driver.new(app, polter_options)
+    # end
+
+    Capybara.default_driver = :sauce
+    Capybara.javascript_driver = :sauce
 
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false

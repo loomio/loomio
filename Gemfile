@@ -74,6 +74,9 @@ group :development, :test do
   gem 'database_cleaner', '~> 0.9.1'
   gem 'selenium-webdriver', '~> 2.25.0'
   gem 'ruby-prof'
+  gem 'sauce', '~> 3.0.3'
+  gem 'sauce-connect'
+  gem 'parallel_tests'
 end
 
 group :development do
