@@ -1,5 +1,8 @@
 env:
-  - DB=postgresql
+  global:
+    - DB=postgresql
+    - secure: "ZWrw4s0KmFBd0onOktyZg5kAZH8mZs+8Di+QZ9vf6rT2c1ACIed1iAMW9ggZAYRX523Az3IoMoorZ1MCWpTJnKldcbCRyl10NrsQvf22pZKUZpbswlQDlnhdyZ2t3cBVJYCLX/JhibagZD9WNs7SlKC2ZOoRfoaq90PmfzvWFmw="
+    - secure: "tAl1161uODOgckvGhsrH43yMKpj6I/+5eOcP1XrlJnTSOgsdaDrj66y99YC6SOzKvswgROYlKONqSK69+0QjZzHbj8/NJlV5nC1TeFwMsDlwtU3egekJ+juYIFDAX8lIiDYcOlOxIomkOY87mBG/L/RomUvRMCEOXIeuwMV9nXA="
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install imagemagick libmagickwand-dev -qq -y
@@ -16,4 +19,5 @@ before_script:
   - "bundle exec rake db:schema:load RAILS_ENV=test"
   - "bundle exec rake db:seed RAILS_ENV=test"
   - "sh -e /etc/init.d/xvfb start"
+  - curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
 script: "bundle exec rake travis"
