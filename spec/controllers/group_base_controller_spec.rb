@@ -6,7 +6,7 @@ describe GroupBaseController do
 
     before do
       controller.stub(:current_user).and_return(user)
-      Group.stub(:find).and_return(group)
+      GroupDecorator.stub(:new).and_return(group)
     end
 
     after do

@@ -23,7 +23,7 @@ class GroupBaseController < BaseController
   end
 
   def load_group
-    @group ||= GroupDecorator.new(Group.find(group_id))
+    @group ||= GroupDecorator.new(Group.find_by_id(group_id))
   end
 
   def group_id

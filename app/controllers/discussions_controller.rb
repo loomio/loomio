@@ -170,7 +170,7 @@ class DiscussionsController < GroupBaseController
     redirect_to @version.reify()
   end
 
-  private
+  protected
 
   def assign_meta_data
     if @group.viewable_by == 'everyone'
