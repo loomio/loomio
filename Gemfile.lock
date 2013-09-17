@@ -211,7 +211,7 @@ GEM
     journey (1.0.4)
     jqplot-rails (0.3)
       railties
-    jquery-atwho-rails (0.3.3)
+    jquery-atwho-rails (0.1.7)
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
       railties (>= 3.1)
@@ -467,7 +467,7 @@ DEPENDENCIES
   httparty (~> 0.11.0)
   inherited_resources (~> 1.4.1)
   jqplot-rails (~> 0.3)
-  jquery-atwho-rails (~> 0.3.3)
+  jquery-atwho-rails (~> 0.1.6)
   jquery-fileupload-rails (~> 0.4.1)
   jquery-rails
   kaminari (~> 0.13.0)

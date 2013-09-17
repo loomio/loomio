@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910070551) do
+ActiveRecord::Schema.define(:version => 20130911222112) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -302,18 +302,18 @@ ActiveRecord::Schema.define(:version => 20130910070551) do
     t.boolean  "hide_members",         :default => false
     t.boolean  "beta_features",        :default => false
     t.text     "description"
-    t.integer  "memberships_count",    :default => 0,      :null => false
+    t.integer  "memberships_count",    :default => 0,              :null => false
     t.datetime "archived_at"
     t.integer  "max_size"
     t.boolean  "cannot_contribute",    :default => false
     t.integer  "distribution_metric"
     t.string   "sectors"
     t.string   "other_sector"
-    t.integer  "discussions_count",    :default => 0,      :null => false
-    t.integer  "motions_count",        :default => 0,      :null => false
+    t.integer  "discussions_count",    :default => 0,              :null => false
+    t.integer  "motions_count",        :default => 0,              :null => false
     t.string   "country_name"
     t.datetime "setup_completed_at"
-    t.boolean  "next_steps_completed", :default => false,  :null => false
+    t.boolean  "next_steps_completed", :default => false,          :null => false
     t.string   "full_name"
     t.string   "payment_plan",         :default => "undetermined"
   end
@@ -506,6 +506,8 @@ ActiveRecord::Schema.define(:version => 20130910070551) do
     t.string   "statement"
   end
 
+  add_index "votes", ["created_at"], :name => "index_votes_on_created_at"
+  add_index "votes", ["motion_id", "created_at"], :name => "index_votes_on_motion_id_and_created_at"
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
