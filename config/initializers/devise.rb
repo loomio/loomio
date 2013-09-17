@@ -238,5 +238,10 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+  if Rails.env.production?
+    config.secret_key = ENV['DEVISE_SECRET']
+  else
+    config.secret_key = 'zxcvbnmasdfghjklqwertyuiop1234567890!@#$%^&*()QWERTYUIOPASDFGHJKLZXCVBNM'
+  end
 end
 

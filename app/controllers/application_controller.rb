@@ -40,4 +40,12 @@ class ApplicationController < ActionController::Base
   def user_time_zone(&block)
     Time.use_zone(current_user.time_zone_city, &block)
   end
+
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+  end
+  
 end

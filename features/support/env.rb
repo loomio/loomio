@@ -33,6 +33,7 @@ ENV['PAYPAL_GATEWAY_URL'] = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_
 ENV['AWS_ACCESS_KEY_ID']="notarealaccesskeyid"
 ENV['AWS_SECRET_ACCESS_KEY']="notarealsecretaccesskey"
 ENV['AWS_ATTACHMENTS_BUCKET']="notarealbucker"
+ENV['DEVISE_SECRET'] = 'testvalueaskjdhakjdhaksjhdkajhdkjahdkjashkjdhakjdh'
 
 # Before do |scenario|
 #   @feature_name = scenario.feature.title
