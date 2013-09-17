@@ -28,15 +28,4 @@ class BaseController < ApplicationController
       redirect_to invitation_path(session[:invitation_token])
     end
   end
-
-  def prepare_segmentio_data
-    if current_user
-      @segmentio = {user_id: current_user.id,
-                    cohort: current_user.created_at.strftime("%Y-%m")}
-    else 
-      @segmentio = {user_id: 'undefined',
-                    cohort: 'undefined'}
-    end
-  end
-  
 end

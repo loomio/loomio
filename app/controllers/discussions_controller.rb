@@ -187,26 +187,4 @@ class DiscussionsController < GroupBaseController
       Group.find(params[:discussion][:group_id])
     end
   end
-
-  def prepare_segmentio_data
-    super
-    if params[:id]
-      @segmentio.merge!({
-        discussion_id: params[:id]
-      })
-      if @group.blank?
-        group
-        if @group.present?
-          @segmentio.merge!({
-            group_id: @group.id,
-            group_parent_id: (@group.parent_id ? @group.parent_id : 'undefined'),
-            top_group: (@group.parent_id ? @group.parent_id : @group.id),
-            group_members: @group.memberships_count,
-            viewable_by: @group.viewable_by,
-            group_cohort: @group.created_at.strftime("%Y-%m")
-          })
-        end
-      end
-    end
-  end
 end
