@@ -137,35 +137,9 @@ describe User do
     end
   end
 
-  context "#create" do
-    it "sets the avatar initials" do
-      user.should_receive(:set_avatar_initials)
-      user.save!
-    end
-  end
-
-  context "#save" do
-    it "sets avatar_initials to 'DU' if deleted_at is true (a date is present)" do
-      user.deleted_at = "20/12/2002"
-      user.save!
-      user.avatar_initials.should == "DU"
-    end
-    it "sets avatar_initials to the first two characters in all caps of the email if the user's name is email" do
-      user.name = "bobbysin@tvhosts.com"
-      user.email = "bobbysin@tvhosts.com"
-      user.save!
-      user.avatar_initials.should == "BO"
-    end
-    it "returns the first three initials of the stored name" do
-      user.name = "Bob bobby sinclair deebop"
-      user.save!
-      user.avatar_initials.should == "BBS"
-    end
-    it "works for strange characters" do
-      user.name = "D'Angelo (Loco)"
-      user.save!
-      user.avatar_initials.should == "D("
-    end
+  it "sets avatar initials on save" do
+    user.should_receive(:set_avatar_initials)
+    user.save
   end
 
   describe "#using_initials?" do
@@ -401,5 +375,4 @@ describe User do
       user.belongs_to_paying_group?.should be_false
     end
   end
-
 end

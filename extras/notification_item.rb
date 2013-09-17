@@ -1,7 +1,7 @@
 class NotificationItem
-  attr_accessor :item, :notification
+  include Routing
 
-  delegate :actor, :action_text, :title, :group_full_name, :link, :avatar, :to => :item
+  attr_accessor :item, :notification
 
   def initialize(notification)
     @notification = notification
@@ -32,18 +32,26 @@ class NotificationItem
   end
 
   def actor
-    @notification.eventable.user
+    notification.eventable.user
   end
 
   def title
-    @notification.eventable.discussion_title
+    notification.eventable.discussion_title
   end
 
   def group_full_name
-    @notification.eventable.group_full_name
+    notification.eventable.group_full_name
+  end
+
+  def action_text
+    raise "action_text must be overridden by subclass"
   end
 
   def avatar
     actor
+  end
+
+  def link
+    raise "link must be overridden by subclass"
   end
 end
