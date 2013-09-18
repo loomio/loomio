@@ -79,19 +79,17 @@ class Ability
       end
     end
 
-    can :create, MembershipRequest do |membership_request|
-      group = membership_request.group
+    can :request_membership, Group do |group|
       if group.is_sub_group?
         group.parent.members.include?(user) and can?(:show, group)
       else
-        can?(:show, membership_request.group)
+        can?(:show, group)
       end
     end
 
     can :cancel, MembershipRequest, requestor_id: user.id
 
-    can [:manage_membership_requests,
-         :approve,
+    can [:approve,
          :ignore], MembershipRequest do |membership_request|
       group = membership_request.group
 
