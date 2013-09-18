@@ -6,7 +6,6 @@
     <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
     = stylesheet_link_tag    "frontpage"
     = csrf_meta_tags
-    = browserid_js_tag
     = render 'social_metadata', description: @meta_description, title: @meta_title
 
   %body{class: "#{controller_name} #{action_name}"}
@@ -42,6 +41,7 @@
     = yield
     = render 'footer_logged_out'
 
+  = browserid_js_tag
   = javascript_include_tag "frontpage"
   - if Rails.env.production? || Rails.env.staging?
     / = render 'metrics_listener_data'

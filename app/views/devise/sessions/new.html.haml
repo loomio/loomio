@@ -3,5 +3,8 @@
     .inner-container
       .row-fluid
         .span6#signin_container
+          =link_to 'Sign in with Persona', '#', class: 'persona-login-button'
+      .row-fluid
+        .span6#signin_container
           %h1= t :sign_in
           = render "form"

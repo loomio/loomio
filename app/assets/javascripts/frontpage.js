@@ -8,3 +8,4 @@
 //= require lib/jquery.html5-placeholder-shim
 //= require pages
 //= require autodetect_time_zone
+//= require persona
