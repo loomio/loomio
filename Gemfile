@@ -43,6 +43,7 @@ gem 'pg_search', '~> 0.7.0'
 gem 'strong_parameters', '~> 0.2.1'
 gem 'exception_notification', '~> 2.6.1'
 gem 'bounscale'
+gem 'zip'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
@@ -68,25 +69,25 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.0' # Use this instead of debugger
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker', '~> 1.0.1'
-  gem 'rspec-rails', '~> 2.12.2'
+  gem 'rspec-rails', '~> 2.0'
   gem 'shoulda-matchers', '~> 1.2.0'
   gem 'capybara', '~> 2.1.0'
   gem 'database_cleaner', '~> 0.9.1'
   gem 'selenium-webdriver', '~> 2.25.0'
   gem 'ruby-prof'
+  gem 'sauce', '~> 3.0.3'
+  gem 'sauce-connect'
+  gem 'parallel_tests'
+  gem 'sauce-cucumber'
 end
 
 group :development do
   gem 'meta_request', '~> 0.2.4'
   gem 'better_errors', '~> 0.6.0'
-  gem 'guard', '~> 1.6.1'
-  gem 'guard-spork', '~> 1.4.1'
-  gem 'guard-rspec', '~> 2.3.3'
   gem 'rb-inotify', '~> 0.8.8', :require => false
   gem 'rb-fsevent', '~> 0.9.1', :require => false
   gem 'rb-fchange', '~> 0.0.5', :require => false
   gem 'launchy', '~> 2.0.5'
-  gem 'spork-rails', '~> 3.2.1'
   gem 'awesome_print', '~> 1.0.2'
   gem 'quiet_assets', '~> 1.0.2'
 end
@@ -95,8 +96,8 @@ group :test do
   gem 'cucumber-rails', '~> 1.3.0', :require => false
   gem 'email_spec', '~> 1.2.1'
   gem 'poltergeist', '~> 1.3.0'
-  gem 'webmock', '~> 1.9.0'
-  gem 'vcr', '~> 2.5.0'
+  # gem 'webmock', '~> 1.9.0'
+  # gem 'vcr', '~> 2.5.0'
 end
 
 group :staging, :production do

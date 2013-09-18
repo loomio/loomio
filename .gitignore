@@ -21,3 +21,4 @@ Session.vim
 *.dump
 .env
 .idea
+sauce_connect.log*

@@ -1,92 +1,52 @@
-require 'spork'
-#uncomment the following line to use spork with the debugger
-#require 'spork/ext/ruby-debug'
+# This file is copied to spec/ when you run 'rails generate rspec:install'
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__)
+require 'rspec/rails'
+require 'rspec/autorun'
 
-# Workaround for Spork issue #109 until pull-req #140 gets merged
-AbstractController::Helpers::ClassMethods.module_eval do def helper(*args, &block); modules_for_helpers(args).each {|mod| add_template_helper(mod)}; _helpers.module_eval(&block) if block_given?; end end if Spork.using_spork?
+require 'capybara/rails'
+require 'capybara/rspec'
 
-Spork.prefork do
-  # Loading more in this block will cause your tests to run faster. However,
-  # if you change any configuration or code from libraries loaded here, you'll
-  # need to restart spork for it take effect.
-
-  # This file is copied to spec/ when you run 'rails generate rspec:install'
-  ENV["RAILS_ENV"] ||= 'test'
-
-  # Fix for devise interfering with reloading the user model
-  Spork.trap_method(Rails::Application::RoutesReloader, :reload!) if Spork.using_spork?
-
-  require File.expand_path("../../config/environment", __FILE__)
-
-  require 'vcr'
-  VCR.configure do |c|
-    c.cassette_library_dir = 'spec/support/vcr_cassettes'
-    c.hook_into :webmock
-    c.ignore_localhost = true
-  end
-
-  require 'rspec/rails'
-  require 'rspec/autorun'
-  RSpec.configure do |config|
-    config.mock_with :rspec
-
-    config.treat_symbols_as_metadata_keys_with_true_values = true
-    config.run_all_when_everything_filtered = true
-
-    config.include FactoryGirl::Syntax::Methods
-
-    require 'capybara/poltergeist'
-    polter_options = {
-      :js_errors => true,
-      :inspector => true,
-      :debug => false
-    }
-    Capybara.default_driver = :poltergeist
-    Capybara.javascript_driver = :poltergeist
-    Capybara.register_driver :poltergeist do |app|
-      Capybara::Poltergeist::Driver.new(app, polter_options)
-    end
-
-    # If you're not using ActiveRecord, or you'd prefer not to run each of your
-    # examples within a transaction, remove the following line or assign false
-    # instead of true.
-    config.use_transactional_fixtures = false
-
-    # If true, the base class of anonymous controllers will be inferred
-    # automatically. This will be the default behavior in future versions of
-    # rspec-rails.
-    config.infer_base_class_for_anonymous_controllers = false
-
-    # to make sure paper_trail data from one test doesn't spill over another
-    config.before :each do
-      PaperTrail.controller_info = {}
-      PaperTrail.whodunnit = nil
-    end
-
-    config.before :suite do
-      DatabaseCleaner.strategy = :transaction
-      DatabaseCleaner.clean_with(:truncation)
-    end
-
-    config.before type: :request do
-      DatabaseCleaner.strategy = :truncation
-    end
-
-    config.before do
-      DatabaseCleaner.start
-    end
-
-    config.after do
-      DatabaseCleaner.clean
-    end
-  end
+require 'sauce/capybara'
+Sauce.config do |c|
+  c[:browsers] = [
+    ["Windows 8", "Internet Explorer", "10"]#,
+    # ["Windows 7", "Firefox", "20"],
+    # ["OS X 10.8", "Safari", "6"],
+    # ["Linux", "Chrome", nil]
+  ]
 end
+Capybara.default_driver = :sauce
 
-Spork.each_run do
-  # This code will be run each time you run your specs.
+# Requires supporting ruby files with custom matchers and macros, etc,
+# in spec/support/ and its subdirectories.
+Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-  # Requires supporting ruby files with custom matchers and macros, etc,
-  # in spec/support/ and its subdirectories.
-  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+RSpec.configure do |config|
+  # ## Mock Framework
+  #
+  # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
+  #
+  # config.mock_with :mocha
+  # config.mock_with :flexmock
+  # config.mock_with :rr
 
+  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+
+  # If you're not using ActiveRecord, or you'd prefer not to run each of your
+  # examples within a transaction, remove the following line or assign false
+  # instead of true.
+  config.use_transactional_fixtures = true
+
+  # If true, the base class of anonymous controllers will be inferred
+  # automatically. This will be the default behavior in future versions of
+  # rspec-rails.
+  config.infer_base_class_for_anonymous_controllers = false
+
+  # Run specs in random order to surface order dependencies. If you find an
+  # order dependency and want to debug it, you can fix the order by providing
+  # the seed, which is printed after each run.
+  #     --seed 1234
+  config.order = "random"
 end
