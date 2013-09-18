@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include AvatarInitials
+
   require 'net/http'
   require 'digest/md5'
 
@@ -299,17 +301,5 @@ class User < ActiveRecord::Base
       self.name = email
       save
     end
-  end
-
-  def set_avatar_initials
-    initials = ""
-    if  name.blank? || name == email
-      initials = email[0..1]
-    else
-      name.split.each { |name| initials += name[0] }
-    end
-    initials = initials.upcase.gsub(/ /, '')
-    initials = "DU" if deleted_at
-    self.avatar_initials = initials[0..2]
   end
 end
