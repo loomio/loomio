@@ -113,6 +113,7 @@ class Ability
          :edit_title,
          :show_description_history,
          :preview_version,
+         :show_print,
          :like_comments,
          :update_version], Discussion do |discussion|
       @member_group_ids.include?(discussion.group_id)
