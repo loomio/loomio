@@ -30,9 +30,20 @@ class MotionReader < ActiveRecord::Base
   end
 
   def viewed!
+    update_viewed_attributes
+    save!
+  rescue ActiveRecord::RecordInvalid
+    # race condition occured.. find the original motion reader and mark it as viewed
+    reader = self.class.where(user_id: user_id, motion_id: motion_id).first
+    if reader
+      reader.update_viewed_attributes
+      save!
+    end
+  end
+
+  def update_viewed_attributes
     self.read_votes_count = motion.total_votes_count
     self.read_activity_count = motion.activity_count
     self.last_read_at = Time.zone.now
-    save!
   end
 end
