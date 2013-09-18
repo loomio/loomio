@@ -6,8 +6,6 @@ class Ability
     user ||= User.new
     @admin_group_ids = user.adminable_group_ids
     @member_group_ids = user.group_ids
-    @member_discussion_ids = user.discussion_ids
-    @admin_discussion_ids = user.discussions.where(:group_id => @admin_group_ids).pluck(:id)
 
     cannot :sign_up, User
 
@@ -121,18 +119,19 @@ class Ability
     end
 
     can [:destroy], Comment do |comment|
-      (comment.author == user) or @admin_discussion_ids.include?(comment.discussion_id)
+      (comment.author == user) or @admin_group_ids.include?(comment.group.id)
     end
 
     can :create, Motion do |motion|
-      @member_discussion_ids.include?(motion.discussion_id)
+      @member_group_ids.include?(motion.group.id)
     end
 
     can [:destroy,
          :close,
          :edit_outcome,
          :edit_close_date], Motion do |motion|
-      (motion.author == user) or @admin_discussion_ids.include?(motion.discussion_id)
+      (motion.author == user) or @admin_group_ids.include?(motion.group.id)
     end
   end
 end
+
