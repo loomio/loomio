@@ -43,9 +43,20 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def viewed!
+    update_viewed_attributes
+    discussion.viewed!
+    save!
+  rescue ActiveRecord::RecordInvalid
+    # race condition occured.. find the original reader and mark it as viewed
+    reader = self.class.where(user_id: user_id, discussion_id: discussion_id).first
+    if reader
+      reader.update_viewed_attributes
+      save!
+    end
+  end
+
+  def update_viewed_attributes
     self.read_comments_count = discussion.comments_count
     self.last_read_at = Time.now
-    save!
-    discussion.viewed!
   end
 end
