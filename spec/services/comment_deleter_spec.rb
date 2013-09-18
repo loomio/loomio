@@ -8,7 +8,7 @@ describe CommentDeleter do
                              destroy: true) }
   let(:comment_deleter) { CommentDeleter.new(comment) }
 
-  describe "#delete" do
+  describe "#delete_comment" do
     after do
       comment_deleter.delete_comment
     end
