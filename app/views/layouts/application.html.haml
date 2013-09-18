@@ -7,8 +7,6 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     %link{:href => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/flick/jquery-ui.css", :rel => "stylesheet", :type => "text/css"}
-
-    -# Rob took this out because it looked really incomplete and has failing specs
     = render 'social_metadata', :description => @meta_description, :title => @meta_title
 
   %body{class: "#{controller_name} #{action_name}"}
@@ -20,8 +18,4 @@
         = yield
       = render 'footer_logged_in'
 
-    - if Rails.env.production? || Rails.env.staging?
-      = render 'google_analytics'
-      / = render 'metrics_listener_data'
-      / = javascript_include_tag 'load_metrics_listener'
-      /= piwik_tracking_tag # Disabling piwik until we've moved it over to our own server
+    = render 'analytics'
