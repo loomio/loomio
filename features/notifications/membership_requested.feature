@@ -17,3 +17,8 @@ Feature: User sees notification that someone requested membership to their group
     When I visit the dashboard
     And I click the notifications dropdown
     Then I should see that the user requested access to the group
+
+    When I click the membership request notification
+    Then I should see the membership request page
+
+

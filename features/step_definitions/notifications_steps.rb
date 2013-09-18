@@ -42,3 +42,12 @@ end
 Then(/^I should see that the user requested access to the group$/) do
   step 'I should see that the visitor requested access to the group'
 end
+
+When(/^I click the membership request notification$/) do
+  find(".selector-item, .notification-item").click
+end
+
+Then(/^I should see the membership request page$/) do
+  page.should have_css("body.manage_membership_requests.index")
+end
+

@@ -37,9 +37,9 @@ describe NotificationItems::MembershipRequested do
     item.group_full_name.should == notification.eventable.group_name
   end
 
-  it "#link returns a path to the requested group" do
-    item.should_receive(:group_path).with(group).and_return("/groups/1/")
-    item.link.should eq("/groups/1/")
+  it "#link returns a path to the membersip requests for the requested group" do
+    item.should_receive(:group_membership_requests_path).with(group).and_return("/groups/1/membership_requests")
+    item.link.should eq("/groups/1/membership_requests")
   end
 
   describe "#actor" do
