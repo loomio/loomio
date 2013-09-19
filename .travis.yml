@@ -17,3 +17,7 @@ before_script:
   - "bundle exec rake db:seed RAILS_ENV=test"
   - "sh -e /etc/init.d/xvfb start"
 script: "bundle exec rake travis"
+
+addons:
+  code_climate:
+      repo_token: 85c94a19a9d2fd9a0f36ebeda99becac99b0191ce7dbf6ecaaf137a76146bd70
