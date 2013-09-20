@@ -106,8 +106,8 @@ ActiveAdmin.register Group do
 
   member_action :update, :method => :put do
     group = Group.find(params[:id])
-    group.update_attributes(params[:group])
     group.max_size = params[:group][:max_size]
+    group.payment_plan = params[:group][:payment_plan]
     if group.save
       redirect_to admin_groups_url, :notice => "Group updated."
     else
