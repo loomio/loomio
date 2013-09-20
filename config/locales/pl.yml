@@ -1,0 +1,34 @@
+pl:
+  errors:
+    messages:
+      email: "Nieprawidłowy adres email"
+  error:
+    cant_join_subgroup: "Nie możesz dołączyć do podgrupy jeśli nie jesteś członkiem grupy."
+    cant_modify_position: "Ta propozycja jest zamknięta."
+    cant_state_position: "Ta propozycja jest zamknięta."
+    discussion_not_created: "Dyskusja nie została utworzona."
+    group_not_archived: "Grupa nie może zostać zarchiwizowana. "
+    invalid_close_date: "Nieprawidłowa data zamknięcia, sprawdź czy termin nie upłynął."
+    image_upload_fail: "Nie można przesłać zdjęcie. Upewnij się, że obraz jest mniejszy niż 1 MB i że to plik .jpeg, .png, lub .gif."
+    permission_to_invite: "Nie masz uprawnień, żeby zapraszać członków."
+    position_not_updated: "Nie można zaktualizować pozycji."
+    settings_not_updated: "Twoje ustawienia nie zostało zaktualizowane."
+  alert:
+    duplicate_email: "%{which_email} is already in the group."
+  notice:
+    member_removed: "Członek usunięty."
+    membership_request_canceled: "Prośba o członkostwo anulowana."
+    membership_request_ignored: "Prośba o członkostwo zignorowana."
+    settings_updated: "Twoje ustawienia zostały zaktualizowane."
+    you_have_left_group: "Opuściłeś %{which_group}."
+  warning:
+    membership_request_already_ignored: "Prośba o członkostwo została już zignorowana."
+    membership_request_already_canceled: "Prośba o członkostwo została już anulowana."
+    position_not_submitted: "Twoja pozycja nie może być wysłana."
+    proposal_not_created: "Propozycja nie może być utworzona. "
+  success:
+    added_to_group: "Zostałeś dodany do %{which_group}."
+    close_date_changed: "Data zamknięcia zmieniona."
+    discussion_created: "Dyskusja została utworzona."
+    discussion_deleted: "Dyskusja została usunięta."
+    emails_sending: "Wysyłanie emaili. "
