@@ -1,4 +1,8 @@
 ca:
+  activerecord:
+    errors:
+      messages:
+        blank: "no pot estar en blanc"
   errors:
     messages:
       email: "Direcció de correu invàlida"
@@ -76,7 +80,22 @@ ca:
   tagline: "Creant un món on tothom pot participar en les decissions que li afecten."
   click_to_dismiss: "Clica aquí per descartar aquest missatge"
   generic_confirm: "N'estàs segur?"
+  discussion_helper_text:
+    header: "Benvingut a la teva primera discussió"
+    message: "<p>El tema es troba a la part superior de la pàgina, amb el context a sota.</p><p>La discussió es troba a mà esquerra i les decisions apareixen a la dreta. Si creus que el grup està preparat per prendre una decisió pots fer una proposta per a què el grup la consideri."
+  group_helper_text:
+    header: "Benvingut al teu nou grup!"
+    message: "<p>Aquesta és la pàgina del grup <strong></strong>. A l'esquerra hi ha una llista amb totes les discussions en aquest grup.</p><p>Quan vulguis que el grup discuteixi un altre tema, comença una nova discussió.</p>"
+  dashboard_helper_text:
+    header: "Benvingut a la teva pàgina d'inici"
+    message: "<p>La pàgina d'inici mostra les discussions actuals de tots els grups dels que formes part.<p><p>Pots començar una discussió sobre un nou tema clicant el botó \"Comença una discussió\".</p>"
+  setup_steps_title: "Propers passos:"
+  setup_step_1: "Mira't l'exemple de discussió"
+  setup_step_2: "Comença la teva primera discussió"
+  setup_step_3: "convida gent al teu grup"
   invite_people: "Convida gent"
+  no_invitations_button: "No et queden invitacions"
+  pending_invitations: 'Invitacions pendents'
   edit_memberships: 'Edita les afiliacions'
   add_new_member: "Afegeix un nou membre"
   invite_members_to_group: "Convida membres a %{which_group}"
@@ -195,6 +214,7 @@ ca:
     positions_abstain_description: "<span>M'abstenc</span> vols dir que no n'estàs segur o que estàs d'acord amb que el grup decideixi sense tu. "
     positions_disagree_description: "<span>No hi estic d'acord</span> vol dir que creus que hi pot haver una millor alternativa però acceptaràs la decisió que prengui el grup."
     positions_block_description: "<span>Blouejo</span> vol dir que tens objeccions importants i estaràs extremadament insatisfet si aquesta proposta tira endavant."
+    video_id: "52025402"
     video_tutorial: "Video tutorial"
     video_tutorial_description: "Mira el video per a una demostració ràpida de com utilitzar Loomio."
   resend_confirmation: "Reenvia les instruccions de confirmació"
@@ -214,14 +234,24 @@ ca:
   confirmation_not_received: "No has rebut les instruccions de confirmació_"
   unlock_not_received: "No has rebut les instruccions de desbloqueig?"
   invitation:
-    invitation_not_found: 'No hem pogut trobar la invitació amb aquest '
+    no_invitations_left: "Ho sentim, no et queda cap invitació"
+    no_invitations_left_get_more: "Si us plau, escriu-nos un correu electrònic a contact@loomio.org i veurem què podem fer per ajudar-te "
+    invitation_not_found: 'No hem pogut trobar la invitació amb aquesta sol·licitud. Si us plau, demana una invitació nova a qui te l''hagi enviat.'
+    invitation_cancelled: 'La invitació ha estat cancel·lada. Si creus que es tracta d''un error, si us plau, posa''t en contacte amb qui te l''ha enviat.'
+    invitation_already_used: 'Aquesta invitació ja ha estat utilitzada. Si us plau, inicia la sessió per connectar-te al teu grup.'
     invitees_placeholder: "Nom d'usuari <user1@example.com>, user2@example.com"
     subject: "Si us plau, uneix-te al nou grup de Loomio,  %{group}"
+    invite_people: "Convida gent al teu grup"
     message_body: "missatge d'invitació"
     invites_more_help2: "<p>Pots convidar gent al teu grup en qualsevol moment.<p><p>Pots convidar tots els teus membres de cop o començar convidant aquells amb qui estàs treballant més estretament.</p>"
     send_invitations: "Envia invitacions"
     invitation_link: "Enllaç d'invitació"
+    link_help: "Clica aquest enllaç per unir-te al grup %{group} a Loomio:"
     copy: "Si algú no ha rebut el correu electrònic d'invitació, pots copiar el link de més amunt i passar-lo tu mateix si vols."
+  example_discussion:
+    title: "Exemple de discussió: Benvinguda i introducció a Loomio."
+  example_motion:
+    name: "Hauríem d'anar de vacances a la Lluna!"
   discussion_form:
     header: "Comença una discussió"
     who: "En quin grup vols començar la discussió?"
@@ -230,6 +260,7 @@ ca:
     header: "Nova proposta"
     name_helper: "Escriu un títol tant clar i concís com puguis."
   group_form:
+    privacy_settings: "Configuració de privacitat"
     invitation_settings: "Configuració d'invitacions"
   vote_form:
     header: "Declara la teva posició"
@@ -254,11 +285,17 @@ ca:
     picture: "Foto"
     use_avatar_kind: "Utilitza %{kind}"
     upload_new_image: "Puja una nova foto"
+  group_setup:
+    submit: "Porta'm al meu grup!"
   simple_form:
     labels:
       discussion:
         title: "Títol"
         description: "Context"
+      group:
+        name: "Quin és el nom del teu grup?"
+        viewable_by: "Qui pot veure aquest grup?"
+        members_invitable_by: "Qui pot convidar gent a aquest grup?"
       motion:
         name: "Títol"
         description: "Detalls"
@@ -267,6 +304,13 @@ ca:
         email: "Correu electrònic"
         password: "Contrasenya"
         language_preference: "Idioma"
+    options:
+      group:
+        viewable_by:
+          parent_group_members: "Membres del grup principal - només membres del grup matriu o principal poden veure aquest sub-grup"
+        members_invitable_by:
+          admins: 'Només coordinadors'
+          members: 'Tots els membres del grup'
     placeholders:
       discussion:
         title: "Quin és el tema que vols discutir?"
@@ -308,6 +352,7 @@ ca:
   new_activity: "Nova activitat"
   next: "Següent"
   password: "Contrasenya"
+  proposal: "Proposta"
   prev: "Anterior"
   options: "Opcions"
   ok_got_it: "D'acord, entesos!"
