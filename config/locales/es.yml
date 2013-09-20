@@ -49,7 +49,7 @@ es:
     duplicate_email: "%{which_email} ya esta en el grupo."
   notice:
     admin_rights_removed: "Los derechos de %{which_user} como co-ordinador han sido removidos."
-    user_added: "%{which_email} se ha añadido al grupo."
+    user_added: "%{user_email_or_name} se ha añadido al grupo."
     member_removed: "Miembro eliminado."
     membership_approved: "Membresía aprobada."
     membership_request_canceled: "Pedido de membresía cancelada."
