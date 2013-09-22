@@ -430,13 +430,18 @@ body.pages.terms_of_service {
 }
 
 .container#contact_message {
+
+  abbr { border-bottom: none; }
+
   h1 {
     font-size: 50px;
     margin-bottom: 40px;
   }
   input[type="email"],
   input[type="text"] {
+    font-size: 1.4em;
     height: 28px;
+    line-height: 1.2;
     margin: 8px 0 10px 0;
     width: 360px;
   }

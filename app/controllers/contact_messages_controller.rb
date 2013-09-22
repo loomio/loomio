@@ -18,7 +18,7 @@ class ContactMessagesController < BaseController
       flash[:success] = "Thanks! Someone from our team will get back to you shortly!"
       redirect_to root_path
     else
-      render 'contact_messages/new'
+      render 'new'
     end
   end
 end
