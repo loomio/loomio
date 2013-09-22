@@ -1,4 +1,4 @@
 - if Rails.env.production? || Rails.env.staging?
   - unless controller_name == 'Searches'
     = render 'google_analytics'
-    -#= render 'segmentio'
+    = render 'segmentio'
