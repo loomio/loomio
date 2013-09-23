@@ -9,8 +9,6 @@ class Motion < ActiveRecord::Base
   has_many :motion_readers, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
-  validates_format_of :discussion_url, with: /^((http|https):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i,
-    allow_blank: true
 
   validates_length_of :name, :maximum => 250
   validates_length_of :outcome, :maximum => 250
@@ -27,7 +25,6 @@ class Motion < ActiveRecord::Base
 
   after_initialize :set_default_close_at_date_and_time
   before_validation :set_closing_at
-  before_save :format_discussion_url
   after_create :fire_new_motion_event
 
   attr_accessor :create_discussion
@@ -264,11 +261,5 @@ class Motion < ActiveRecord::Base
       end
       update_attribute(:did_not_votes_count, did_not_votes.count)
       reload
-    end
-
-    def format_discussion_url
-      unless self.discussion_url.match(/^http/) || self.discussion_url.empty?
-        self.discussion_url = "http://" + self.discussion_url
-      end
     end
 end
