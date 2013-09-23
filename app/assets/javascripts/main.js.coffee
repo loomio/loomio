@@ -203,3 +203,20 @@ Application.enableInlineEdition = ()->
 # Placeholder shim
 $.placeholder.shim();
 
+
+help = () ->
+  $('#wmd-help').modal('toggle')
+  return false
+
+$ ->
+  converter = Markdown.getSanitizingConverter();
+  editor = new Markdown.Editor(converter, '', {handler: help});
+  editor.run();
+  preview = $('#wmd-preview');
+  preview_button = $('#preview-comment');
+  $('#preview-comment').click (event) ->
+    preview.toggle 0, () -> preview_button.toggleClass('active')
+  button_bar = $('#wmd-button-bar');
+  formatting_button = $('#comment-formatting')
+  formatting_button.click (event) ->
+    button_bar.toggle 0, () -> formatting_button.toggleClass('active')

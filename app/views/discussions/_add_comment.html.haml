@@ -1,39 +1,123 @@
-- if can? :add_comment, discussion
-  = form_tag add_comment_discussion_path(discussion), :remote => true, id: "new-comment-form" do
-    = render 'avatar', user: current_user, size: "medium", kind: nil, id: nil
-    #comment-input{ data: {group: @group.id} }
-      .form-container
-        = text_area_tag 'comment', "", id: 'new-comment', placeholder: t(:comment_form_placeholder)
-        #attachment-container
+= form_tag add_comment_discussion_path(discussion), :remote => true, id: "new-comment-form" do
+  = render 'avatar', user: current_user, size: "medium", kind: nil, id: nil
+  #comment-form-container
+    = text_area_tag 'comment', "", id: 'wmd-input', placeholder: t(:comment_form_placeholder)
+    #wmd-button-bar.hidden
+    #comment-toolbar
+      = submit_tag t(:comment_form_submit_button), class: "btn btn-success submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
+      %a.btn{id: 'preview-comment'}= "Preview"
+      .pull-right
+        -unless browser.ie? && browser.version.to_i < 10
+          %a.btn#add-attachment-icon
+            .attachment-icon
+        %a.btn#comment-formatting
+          %i.icon-font
+    #wmd-preview.hidden
+    #wmd-help.hide.modal
+      .modal-header
+        %button.close{"data-dismiss" => "modal"}×
+        %h2 Formatting help
+      .modal-body
+        %strong Headers
+        %pre
+          :preserve
+            # This is a top-level header
+            ## This is an second-level header
+            ##### This is a fifth-level header
+        %strong Text styles
+        %pre
+          :preserve
+            *This text will be italic*
+            _This will also be italic_
 
-      = hidden_field_tag 'uses_markdown', @uses_markdown, {id: 'global-uses-markdown'}
-      = submit_tag t(:comment_form_submit_button), class: "btn btn-small submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
-    .comment-toolbar
-      -unless browser.ie? && browser.version.to_i < 10
-        .attachment-icon#add-attachment-icon
-      .dropdown#comment-markdown-dropdown.global-markdown-setting
-        %a.dropdown-toggle{href:'#comment-markdown-dropdown', id:'comment-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
-          = markdown_img(@uses_markdown)
-        = render 'markdown_setting', target: current_user
+            **This text will be bold**
+            __This will also be bold__
 
-  -unless browser.ie? && browser.version.to_i < 10
-    = s3_uploader_form post: attachments_url, as: "attachment[location]", redirect_url: iframe_upload_result_attachments_url do
-      = file_field_tag :file, multiple: true
+            *You **can** combine them*
+        %strong Unordered
+        %pre
+          :preserve
+            * Item 1
+            * Item 2
+              * Item 2a
+              * Item 2b
+        %strong Ordered
+        %pre
+          :preserve
+            1. Item 1
+            2. Item 2
+            3. Item 3
+              * Item 3a
+              * Item 3b
+        %strong Images
+        %p
+          To embed an image in a comment, first it needs to be hosted somewhere (<a href="http://imgur.com">imgur.com</a> is a good option), then you can include it like so:
+        %pre
+          :preserve
+            ![](http://path.to/image.jpg)
+        %strong Links
+        %pre
+          :preserve
+            To download a PDF version of the recipe,
+            [click here](https://example.com/scrambled-eggs.pdf).
+        %strong Blockquotes
+        %pre
+          :preserve
+            As my good friend said:
 
-    %script#template-upload-in-progress{type: "text/x-tmpl"}
-      .attachment-uploader
-        .uploading-filename
-          {%=o.name%}
-        %button.close.cancel-upload &times;
-        .progress.active
-          .bar
+            > I agree with what everyone
+            > has to say.
 
-    %script#template-upload--attached{type: "text/x-tmpl"}
-      .attachments
-        .attachment-success{data: { 'attachment-id' => "{%=o.id%}" } }
-          = link_to "{%=o.name%}", "{%=o.location%}", target: "_blank"
-          ({%= (parseInt(o.size) / (1024*1024)).toFixed(2) + " MB" %})
-          %button.close.remove-attachment &times;
+      .modal-footer
+        = link_to t(:close), "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
 
-    %script#template-upload--comment-input{type: "text/x-tmpl"}
-      %input{type: 'hidden', name: "attachments[]", value: '{%=o.id%}', data: { 'attachment-id' => "{%=o.id%}" }}
+
+
+
+/ - if can? :add_comment, discussion
+/   = form_tag add_comment_discussion_path(discussion), :remote => true, id: "new-comment-form" do
+/     = render 'avatar', user: current_user, size: "medium", kind: nil, id: nil
+/     #comment-input{ data: {group: @group.id} }
+/     #comment-form-container
+/       = text_area_tag 'comment', "", id: 'wmd-input', placeholder: t(:comment_form_placeholder)
+/       #attachment-container
+/       #wmd-button-bar.hidden
+/       = hidden_field_tag 'uses_markdown', @uses_markdown, {id: 'global-uses-markdown'}
+/       #comment-toolbar
+/         = submit_tag t(:comment_form_submit_button), class: "btn btn-success submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
+/         %a.btn{id: 'preview-comment'}= "Preview"
+/         .pull-right
+/           -unless browser.ie? && browser.version.to_i < 10
+/             %a.btn#add-attachment-icon
+/               .attachment-icon
+/           %a.btn#comment-formatting
+/             %i.icon-font
+
+/       #wmd-preview.hidden
+/       #wmd-help.hidden
+/         THIS IS HELPFUL EH
+
+/ -unless browser.ie? && browser.version.to_i < 10
+/   = s3_uploader_form post: attachments_url, as: "attachment[location]", redirect_url: iframe_upload_result_attachments_url do
+/     = file_field_tag :file, multiple: true
+
+/   %script#template-upload-in-progress{type: "text/x-tmpl"}
+/     .attachment-uploader
+/       .uploading-filename
+/         {%=o.name%}
+/       %button.close.cancel-upload &times;
+/       .progress.active
+/         .bar
+
+/   %script#template-upload--attached{type: "text/x-tmpl"}
+/     .attachments
+/       .attachment-success{data: { 'attachment-id' => "{%=o.id%}" } }
+/         = link_to "{%=o.name%}", "{%=o.location%}", target: "_blank"
+/         ({%= (parseInt(o.size) / (1024*1024)).toFixed(2) + " MB" %})
+/         %button.close.remove-attachment &times;
+
+/   %script#template-upload--comment-input{type: "text/x-tmpl"}
+/     %input{type: 'hidden', name: "attachments[]", value: '{%=o.id%}', data: { 'attachment-id' => "{%=o.id%}" }}
+
+
+

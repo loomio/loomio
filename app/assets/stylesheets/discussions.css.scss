@@ -24,12 +24,6 @@ body.discussions.new, body.discussions.create {
 
 
 body.discussions.show {
-  .form-container {
-    border: 1px solid #cccccc;
-    @include border-radius(4px);
-    @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.075) inset);
-    margin: 0 12px 0 44px;
-  }
   #attachment-container {
     background: #EBEBEB;
     padding: 0 5px 0 10px;
@@ -211,10 +205,6 @@ body.discussions.show {
       margin-top: -50px;
       display:block;
     }
-    #comment-markdown-dropdown li i {
-      display: inline-block;
-      width: 15px;
-    }
     #discussion-activity-body {
       padding: 10px 0px 10px 8px;
       .divider {
@@ -222,40 +212,34 @@ body.discussions.show {
         margin: 7px 15px 6px 0px;
       }
     }
-    #discussion-markdown-dropdown li i {
-      display: inline-block;
-      width: 15px;
-    }
     #new-comment-form {
       margin-bottom: 0px;
       padding: 0 0 10px 0;
       background-color: $comment-color;
-      img {
+      .avatar-canvas img {
         float:left;
         margin-right: 11px;
       }
+      #comment-form-container {
+        margin-left: 44px;
+        width: 396px;
+      }
+      textarea {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
     }
 
-    .comment-toolbar {
-      float: right;
-      margin-top: -32px;
-      margin-right: -8px;
-      width: 78px;
-      .attachment-icon {
-        cursor: pointer;
-        margin-top: 6px;
+    #comment-toolbar {
+      margin-top: 4px;
+      #comment-formatting, #add-attachment-icon {
+        width: 20px;
+        padding: 4px 4px;
       }
     }
 
-    .comment-toolbar > * { display: inline-block; }
-
-    #comment-markdown-dropdown {}
-    .markdown-setting-dropdown {
-      margin-top: -2px;
-    }
-
-    textarea #new-comment {
-    }
     #new-comment {
       background: none;
       border: 0;
@@ -268,9 +252,6 @@ body.discussions.show {
         border-color: 0;
         @include box-shadow(0, 0, 0, 0);
       }
-    }
-    #post-new-comment {
-      margin: 8px 5px 5px 45px;
     }
     /** Code block padding (Stops avatars destroying indentation) */
     pre {
