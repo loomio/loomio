@@ -4,7 +4,7 @@
     - title = @title ? @title : "Loomio"
     %title= title
     <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
-    = stylesheet_link_tag    "frontpage"
+    = stylesheet_link_tag    "frontpage", :media => "all"
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
 

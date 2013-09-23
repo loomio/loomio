@@ -44,7 +44,7 @@ gem 'strong_parameters', '~> 0.2.1'
 gem 'exception_notification', '~> 2.6.1'
 gem 'bounscale'
 gem 'crashlog'
-gem 'pdfkit'
+gem 'pdfkit', '~> 0.5.2'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
@@ -91,6 +91,7 @@ group :development do
   gem 'spork-rails', '~> 3.2.1'
   gem 'awesome_print', '~> 1.0.2'
   gem 'quiet_assets', '~> 1.0.2'
+  gem 'wkhtmltopdf-binary', '~> 0.9.5.3'
 end
 
 group :test do
