@@ -1,0 +1,52 @@
+- set_title @group.name, @discussion.title, @group.parent
+=render '/groups/title', group: @group
+.row
+  .span12
+    .selector-panel
+      = render 'title', discussion: @discussion
+      #discussion-content-container
+        #discussion-context= render 'discussion_context'
+        .row
+          .span6#content-comments
+            .large-icon.discussion-icon.enabled-icon
+            %h3.header-text= t :discussion
+            #discussion-activity-body
+              = render 'add_comment', discussion: @discussion
+              #activity-feed
+                = render 'activity', items: @activity
+
+          .span6#content-proposal
+            .large-icon.decision-icon
+            %h3.header-text= t :current_decision
+            .content-proposal-body
+              %ul.selector-list
+                - if @current_motion.nil?
+                  - if can? :create, Motion.new(discussion_id: @discussion.id)
+                    = link_to t(:create_new_proposal), new_proposal_discussion_path(@discussion.id), class: 'btn new-proposal-btn', id: 'new-proposal'
+                    %li.selector-item.empty-list-message#start-proposal-text
+                      = t :empty_decision_list_html
+                - else
+                  - if @displayed_motion == @current_motion
+                    - if can? :close_voting, @current_motion
+                      %li= render '/motions/admin_buttons', :motion => @current_motion
+                    %li.selector-item.current-proposal
+                      = render @current_motion
+                  - else
+                    %li.selector-item.current-proposal
+                      = render '/motions/motion_preview', motion: @current_motion, this_group: @group
+
+            - if can? :edit_close_date, @current_motion
+              = render '/motions/edit_close_date', motion: @current_motion, user: @current_user, input_time: @input_time
+
+            - if @discussion.closed_motions.present?
+              #previous-proposals
+                .clearfix
+                  .large-icon.decision-icon
+                  %h3.header-text= t :previous_decisions
+                .content-proposal-body
+                  %ul.selector-list
+                    - @discussion.closed_motions.each do |closed_motion|
+                      - if closed_motion == @displayed_motion
+                        %li.selector-item= render closed_motion, this_group: @group
+                      - else
+                        %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group

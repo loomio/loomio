@@ -88,6 +88,30 @@ class DiscussionsController < GroupBaseController
     end
     @activity = @discussion.activity.page(params[:page]).per(50)
   end
+  
+  def show_print
+    if @discussion.has_previous_versions?
+      @last_collaborator = User.find(@discussion.originator.to_i)
+    end
+    @group = GroupDecorator.new(@discussion.group)
+    @vote = Vote.new
+    @current_motion = @discussion.current_motion
+    assign_meta_data
+    if params[:proposal]
+      @displayed_motion = Motion.find(params[:proposal])
+    elsif @current_motion
+      @displayed_motion = @current_motion
+    end
+    if current_user
+      @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
+      @uses_markdown = current_user.uses_markdown?
+      if @current_motion
+        @current_motion.as_read_by(current_user).viewed!
+      end
+      @discussion.as_read_by(current_user).viewed!
+    end
+    @activity = @discussion.activity.page(params[:page]).per(50)
+  end
 
   def move
     origin = @discussion.group

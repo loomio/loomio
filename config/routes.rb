@@ -87,6 +87,7 @@ Loomio::Application.routes.draw do
     post :add_comment, :on => :member
     post :show_description_history, :on => :member
     get :new_proposal, :on => :member
+    get :show_print, :on => :member
     post :edit_title, :on => :member
     put :move, :on => :member
   end
