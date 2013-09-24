@@ -1,5 +1,7 @@
 Loomio::Application.routes.draw do
 
+  post "persona/verify", as: 'verify_persona'
+
   ActiveAdmin.routes(self)
 
   namespace :admin do
