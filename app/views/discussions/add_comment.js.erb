@@ -1,5 +1,6 @@
-$("#new-comment").val('');
+$("#comment-form-container #wmd-input").val('');
 $("ul#activity-list").prepend("<li class='activity-item-container'><%=escape_javascript(render @comment)%></li>");
 
 $('.attachment-success').remove()
 $('#new-comment-form').find("input[name='attachments[]']").remove()
+MarkdownSetup.render_markdown()

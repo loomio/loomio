@@ -1,7 +1,8 @@
 .description-container
   .description-body
-    .long-description
-      = render_rich_text(description, description_markdown_setting)
+    .long-description.js-render-as-markdown.markdown
+      = preserve description
+      / = render_rich_text(description, description_markdown_setting)
 
     - if can? :update_description, discussion
       = link_to t(:edit_discussion_context), "#", class: "edit-description edit-discussion-description bottom-panel-link", id: 'edit_description'
