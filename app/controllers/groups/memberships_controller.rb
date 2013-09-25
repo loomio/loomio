@@ -3,7 +3,7 @@ class Groups::MembershipsController < GroupBaseController
   before_filter :require_current_user_is_group_admin, only: [:index]
 
   def index
-    @memberships = @group.memberships
+    @memberships = @group.memberships.joins(:user).order('name')
     @group = GroupDecorator.new(Group.find(params[:group_id]))
   end
 
