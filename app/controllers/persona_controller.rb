@@ -1,6 +1,6 @@
 class PersonaController < ApplicationController
   def verify
-    validator = PersonaAssertionValidator.new(params[:assertion])
+    validator = PersonaValidator.new(params[:assertion])
     if validator.valid?
       persona = Persona.for_email(validator.email)
 

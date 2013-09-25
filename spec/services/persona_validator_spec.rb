@@ -1,0 +1,2 @@
+describe PersonaValidator do
+end
