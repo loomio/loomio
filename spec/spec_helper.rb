@@ -23,7 +23,11 @@ Spork.prefork do
     c.cassette_library_dir = 'spec/support/vcr_cassettes'
     c.hook_into :webmock
     c.ignore_localhost = true
+    c.ignore_hosts 'codeclimate.com'
   end
+
+  require "codeclimate-test-reporter"
+  CodeClimate::TestReporter.start
 
   require 'rspec/rails'
   require 'rspec/autorun'
