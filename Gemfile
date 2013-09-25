@@ -96,6 +96,7 @@ group :test do
   gem 'poltergeist', '~> 1.3.0'
   gem 'webmock', '~> 1.9.0'
   gem 'vcr', '~> 2.5.0'
+  gem "codeclimate-test-reporter", require: nil
 end
 
 group :staging, :production do
