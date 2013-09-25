@@ -74,6 +74,7 @@ group :development, :test do
   gem 'database_cleaner', '~> 0.9.1'
   gem 'selenium-webdriver', '~> 2.25.0'
   gem 'ruby-prof'
+  gem "codeclimate-test-reporter", require: nil
 end
 
 group :development do
