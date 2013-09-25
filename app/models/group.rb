@@ -24,12 +24,36 @@ class Group < ActiveRecord::Base
   default_scope where(:archived_at => nil)
 
   scope :parents_only, where(:parent_id => nil)
+
   scope :visible_to_the_public,
         where(viewable_by: 'everyone').
         where('memberships_count > 4').
         order(:full_name)
 
   scope :search_full_name, lambda { |query| where("full_name ILIKE ?", "%#{query}%") }
+  
+  # Engagement (Email Template) Related Scopes
+  scope :more_than_n_members, lambda { |n| where('memberships_count > ?', n) }
+  scope :more_than_n_discussions, lambda { |n| where('discussions_count > ?', n) }
+  scope :less_than_n_discussions, lambda { |n| where('discussions_count < ?', n) }
+
+  scope :no_active_discussions_since, lambda {|time|
+    includes(:discussions).where('discussions.last_comment_at < ? OR discussions_count = 0', time)
+  }
+
+
+  scope :created_earlier_than, lambda {|time| where('groups.created_at < ?', time) }
+
+  scope :engaged_but_stopped, more_than_n_members(1).
+                              more_than_n_discussions(2).
+                              no_active_discussions_since(2.month.ago).
+                              created_earlier_than(2.months.ago).
+                              parents_only
+
+  scope :has_members_but_never_engaged, more_than_n_members(1).
+                                    less_than_n_discussions(2).
+                                    created_earlier_than(1.month.ago).
+                                    parents_only
 
   has_one :group_request
 
