@@ -1,5 +1,6 @@
 #encoding: UTF-8
 module ApplicationHelper
+
   def time_formatted_relative_to_age(time)
     current_time = Time.zone.now
     if time.to_date == Time.zone.now.to_date

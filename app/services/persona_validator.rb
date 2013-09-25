@@ -1,5 +1,5 @@
 class PersonaValidator
-  VERIFICATION_HOST = 'https://verifier.login.persona.org'
+  VERIFICATION_HOST = 'verifier.login.persona.org'
 
   def initialize(assertion, audience)
     @assertion = assertion
@@ -15,7 +15,6 @@ class PersonaValidator
     verification_request = Net::HTTP::Post.new('/verify')
     verification_request.set_form_data({:assertion => @assertion,
                                         :audience => @audience})
-
     response = http.request(verification_request)
     @asserted = JSON.parse(response.body)
 

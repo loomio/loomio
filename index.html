@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/.
+   - Source: https://github.com/mozilla/browserid/
+   - Current Commit: https://github.com/mozilla/browserid/commit/89c2e24
+-->
+
+
+<html LANG="en" dir="ltr">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="email=no" />
+  <!--[if lt IE 9]>
+    <script src="https://static.login.persona.org/v/4b0d630691/production/html5shim.js"></script>
+  <![endif]-->
+  <link href="https://static.login.persona.org/v/f8904dcc09/production/en/browserid.css" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]>
+    <link href="https://static.login.persona.org/v/ef5f1ed8ba/production/ie8_main.css" rel="stylesheet" type="text/css">
+  <![endif]-->
+  <script src="https://static.login.persona.org/v/0df1071cf2/production/en/browserid.js"></script>
+  <link rel="shortcut icon" href=https://static.login.persona.org/v/425cfa2565/favicon.ico>  
+  <title>Mozilla Persona: A Better Way to Sign In</title>
+</head>
+<body class="loading " >
+
+<div id="errorBackground"></div>
+
+<div id="wrapper">
+
+    <header id="header" class="cf">
+        <a class="home" href="/">Persona Home</a>
+
+        <ul class="nav cf">
+            <li><a href="/about">How it works</a></li>
+            <li class="ifAuthenticated"><a href="/">Account</a></li>
+
+            <li class="ifNotAuthenticated"><a class="signIn" href="/signin">Sign In</a></li>
+            <li class="ifAuthenticated"><a class="signOut" href="/">Sign Out</a></li>
+
+        </ul>
+    </header>
+
+
+    <div id="wait" class="message_screen"><div class="contents"></div></div>
+    <div id="error" class="message_screen"><div class="contents"></div></div>
+    <div id="delay" class="message_screen"><div class="contents"></div></div>
+
+    <!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+  <div id="hAlign" class="display_nonauth">
+      <div id="vAlign">
+          <div id="signUp">
+              <div id="card"><img src="https://static.login.persona.org/v/bc1d781d44/pages/i/slit.png"></div>
+
+              <h1 class="white headline-main">Connect with Mozilla Persona, the safest &amp; easiest way to sign in.</h1>
+              <p class="tour white">
+                <a href="/about" class="button create">Take the tour</a>
+              </p>
+          </div>
+      </div>
+  </div>
+
+  <!--
+    These "templates" below aren't available as EJS client-side, since all
+    EJS tags are processed when this view is served by the server.
+  -->
+
+  <script type="text/html" id="templateUser">
+    <li class="identity cf">
+      <div class="email">{{email}}</div>
+      <button class="delete">remove</button>
+    </li>
+  </script>
+
+  <script type="text/html" id="templateManage">
+    <div id="content">
+        <div class="newsbanner" id="newuser">
+          New to Mozilla Persona? <a href="/about">Learn more</a>
+        </div>
+
+        <div id="manage">
+            <h1>Account Manager</h1>
+
+            <section>
+              <header class="buttonrow cf">
+                  <h2>Your Email Addresses</h2>
+
+                  <button class="edit">edit</button>
+                  <button class="done">done</button>
+              </header>
+
+              <ul id="emailList">
+              </ul>
+            </section>
+
+            <section id="edit_password">
+              <header class="buttonrow cf">
+                <h2>Password</h2>
+
+                <button class="edit">edit</button>
+                <button class="done">cancel</button>
+              </header>
+
+              <form id="edit_password_form" class="showedit">
+                <label for="old_password">Old Password<br>
+                  <input type="password" id="old_password" name="old_password" maxlength="80"/>
+                </label>
+                <label for="new_password">New Password<br>
+                  <input type="password" id="new_password" name="new_password" maxlength="80"/>
+                </label>
+                <button id="changePassword">done</button>
+
+                <div class="tooltip" for="old_password" id="tooltipOldRequired">
+                  Old password required
+                </div>
+                <div class="tooltip" for="old_password" id="tooltipInvalidPassword">
+                  Old password incorrect
+                </div>
+                <div class="tooltip" for="new_password" id="tooltipNewRequired">
+                  New password required
+                </div>
+                <div class="tooltip" for="new_password" id="tooltipPasswordsSame">
+                  Passwords must be different
+                </div>
+                <div class="tooltip" for="new_password" id="tooltipPasswordLength">Password must be 8&ndash;80 characters long
+                </div>
+              </form>
+            </section>
+
+
+            <p id="disclaimer">You may, at any time, <a href="#" id="cancelAccount" class="action">cancel your account</a></p>
+        </div>
+    </div>
+
+  </script>
+
+
+
+</div>
+
+
+<footer style="position: absolute; bottom: 0;">
+    <ul class="cf">
+        <li>By the <a  href='http://identity.mozilla.com' target='_blank'>Identity Team</a> @ <a  href='https://mozilla.org' target='_blank'>Mozilla</a></li>
+        <li><a href="/en/privacy">Privacy &rarr;</a></li>
+        <li><a href="/en/tos">TOS &rarr;</a></li>
+        <li><a href="https://developer.mozilla.org/docs/persona" target="_blank">Developers &rarr;</a></li>
+        <li class="help"><a
+        href="https://support.mozilla.com/kb/what-is-persona-and-how-does-it-work" target="_blank">Need Help? &rarr;</a></li>
+    </ul>
+</footer>
+
+<script src="https://login.persona.org/include.js"></script>
+
+</body>
+</html>

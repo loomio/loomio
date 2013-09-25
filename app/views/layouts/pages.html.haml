@@ -1,6 +1,7 @@
 !!!
 %html
   %head
+    %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
     - title = @title ? @title : "Loomio"
     %title= title
     <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
@@ -41,7 +42,7 @@
     = yield
     = render 'footer_logged_out'
 
-  = browserid_js_tag
+  = javascript_include_tag "https://login.persona.org/include.js"
   = javascript_include_tag "frontpage"
   - if Rails.env.production? || Rails.env.staging?
     / = render 'metrics_listener_data'

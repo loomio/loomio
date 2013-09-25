@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe PersonaController do
+  def response_json
+    JSON.parse(response.body)
+  end
 
   describe "POST verify" do
     let(:validator) { stub(:validator, email: 'jim@jam.com') }
@@ -24,9 +27,9 @@ describe PersonaController do
           post :verify
         end
 
-        it 'redirects a path that should be correct' do
+        it 'sets redirect_to' do
           post :verify
-          response.should be_redirect
+          response_json['redirect_to'].should_not be_blank
         end
       end
 
@@ -42,7 +45,7 @@ describe PersonaController do
         end
 
         it 'redirects to signup or sign in' do
-          response.should redirect_to new_user_registration_path
+          response_json['redirect_to'].should == new_user_registration_path
         end
       end
     end
@@ -54,7 +57,7 @@ describe PersonaController do
 
       it 'redirects to login page' do
         post :verify
-        response.should redirect_to new_user_session_path
+        response_json['redirect_to'].should == root_path
         flash[:error].should == I18n.t(:persona_validation_failed)
       end
     end
