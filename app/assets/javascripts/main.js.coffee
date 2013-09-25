@@ -210,6 +210,7 @@ help = () ->
 
 $ ->
   converter = Markdown.getSanitizingConverter();
+  converter.autoNewLine = true;
   editor = new Markdown.Editor(converter, '', {handler: help});
   editor.run();
   preview = $('#wmd-preview');

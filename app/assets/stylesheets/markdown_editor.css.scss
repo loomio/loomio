@@ -27,12 +27,11 @@
 }
 
 #wmd-button-row {
-	margin-bottom: 0px;
-	.btn{ padding: 4px 10px; }
-  .btn-group > .btn + .btn {
-    /*margin-left: 0;*/
+	margin: 0 0 4px 0;
+	.btn{
+    padding: 4px 10px;
+    margin-bottom: 0px;
   }
-
 }
 
 .icon-link,

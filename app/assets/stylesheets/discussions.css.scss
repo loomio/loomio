@@ -3,6 +3,7 @@
 @import "mixins";
 
 
+
 body.discussions.new, body.discussions.create {
   #discussion-markdown-dropdown {
     float: right;
@@ -27,6 +28,7 @@ body.discussions.show {
   #attachment-container {
     background: #EBEBEB;
     padding: 0 5px 0 10px;
+    margin-bottom: 4px;
     font-size: 12px;
     .attachment {
       background: #EBEBEB;
@@ -51,7 +53,6 @@ body.discussions.show {
       }
     }
     .attachment-success { padding: 4px 0; }
-    .remove-attachment, .cancel-upload { padding-top: 2px; }
   }
   .comment-attachment {
     font-size: .9em;
@@ -228,12 +229,12 @@ body.discussions.show {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+        margin-bottom: 4px;
       }
 
     }
 
     #comment-toolbar {
-      margin-top: 4px;
       #comment-formatting, #add-attachment-icon {
         width: 20px;
         padding: 4px 4px;
@@ -301,31 +302,6 @@ body.discussions.show {
         font-style: italic;
         word-wrap: break-word;
       }
-      .activity-item-header{
-        blockquote p {
-          font-size: inherit;
-          font-weight: inherit;
-        }
-        blockquote, pre {
-          &:first-child {
-            clear: left;
-            position: relative;
-            top: -12px;
-            margin-bottom: -4px;
-           }
-        }
-        h1, h2, h3, h4, ol, ul {
-          &:first-child {
-            clear: left;
-            position: relative;
-            top: -12px;
-            margin-bottom: -12px;
-        }}
-        ol, p, ul {
-          color: $text-black;
-        }
-        p:last-child{margin-bottom: 2px;}
-      }
       .activity-item-likes{
         color: $dark-grey;
         font-size: $font-tiny;
@@ -371,9 +347,10 @@ body.discussions.show {
 /* Markdown styling */
 
 .activity-item-body .popover h3 { padding: 8px 14px; }
-.activity-item-body, .long-description, .motion .description {
+.activity-item-body, .long-description, .motion .description, .markdown-styles {
   p {
     word-wrap: break-word;
+    line-height: 18px;
   }
   ul, ol, li {
     margin-left: 10px;
@@ -384,34 +361,22 @@ body.discussions.show {
     list-style: disc;
     padding: 0 0 9px 0;
   }
-  ol{
-    padding: 0 0 9px 0;
-  }
-  ul ul, ol ul, ul ol, ol ol{
-    padding: 2px 0 6px 0;
-  }
-  h1, h2, h3, h4, h5, h6, h7{
+  ol{ padding: 0 0 9px 0; }
+  ul ul, ol ul, ul ol, ol ol{ padding: 2px 0 6px 0; }
+  h1, h2, h3, h4, h5, h6{
     display: block;
     padding: 4px 0px;
   }
-  h1{
-    font-size: 1.4em;
-  }
-  h2{
-    font-size: 1.3em;
-  }
-  h3{
-    font-size: 1.2em;
-  }
-  h4{
-    font-size: 1.1em;
-  }
-  h5{
-    font-size: 1.0em;
-  }
-  hr{
-    margin: 1em;
-  }
+  h1{ font-size: 1.4em; }
+  h2{ font-size: 1.3em; }
+  h3{ font-size: 1.2em; }
+  h4{ font-size: 1.1em; }
+  h5{ font-size: 1.0em; }
+  hr{ margin: 1em; }
+  h1, h2, h3, h4, ol, ul, blockquote, pre { &:first-child { clear: left; } }
+  ol, p, ul { color: $text-black; }
+  p:last-child{margin-bottom: 2px;}
+  blockquote p{font: inherit; line-height: 18px;}
 }
 
 /** Code block padding (Stops avatars destroying indentation) */

@@ -107,6 +107,11 @@ else
         pluginHooks.addNoop("preConversion");  // called with the orignal text as given to makeHtml. The result of this plugin hook is the actual markdown source that will be cooked
         pluginHooks.addNoop("postConversion"); // called with the final cooked HTML code. The result of this plugin hook is the actual output of makeHtml
 
+        // makes converter instance aviable in private methods
+        var converter = this;
+        this.autoNewLine = false;  // when true, RETURN becomes a literal newline           
+                                   // WARNING: this is a significant deviation from the markdown spec 
+
         //
         // Private state of the converter instance:
         //
@@ -432,7 +437,11 @@ else
             text = _DoItalicsAndBold(text);
 
             // Do hard breaks:
-            text = text.replace(/  +\n/g, " <br>\n");
+            if(converter.autoNewLine) {
+                text = text.replace(/\n/g, " <br>\n");
+            } else {
+                text = text.replace(/  +\n/g, " <br>\n");
+            }
 
             return text;
         }
@@ -515,7 +524,7 @@ else
                         (?:
                             \([^)]*\)       // allow one level of (correctly nested) parens (think MSDN)
                             |
-                            [^()]
+                            [^()\s]
                         )*?
                     )>?                
                     [ \t]*
@@ -530,7 +539,7 @@ else
             /g, writeAnchorTag);
             */
 
-            text = text.replace(/(\[((?:\[[^\]]*\]|[^\[\]])*)\]\([ \t]*()<?((?:\([^)]*\)|[^()])*?)>?[ \t]*((['"])(.*?)\6[ \t]*)?\))/g, writeAnchorTag);
+            text = text.replace(/(\[((?:\[[^\]]*\]|[^\[\]])*)\]\([ \t]*()<?((?:\([^)]*\)|[^()\s])*?)>?[ \t]*((['"])(.*?)\6[ \t]*)?\))/g, writeAnchorTag);
 
             //
             // Last, handle reference-style shortcuts: [link text]
@@ -948,7 +957,7 @@ else
                     codeblock = codeblock.replace(/^\n+/g, ""); // trim leading newlines
                     codeblock = codeblock.replace(/\n+$/g, ""); // trim trailing whitespace
 
-                    codeblock = '<pre class="prettyprint linenums"><code>' + codeblock + '\n</code></pre>';
+                    codeblock = "<pre><code>" + codeblock + "\n</code></pre>";
 
                     return "\n\n" + codeblock + "\n\n" + nextChar;
                 }
@@ -1223,21 +1232,13 @@ else
             /gi, _DoAutoLinks_callback());
             */
 
-            var email_replacer = function(wholematch, m1) {
-                var mailto = 'mailto:'
-                var link
-                var email
-                if (m1.substring(0, mailto.length) != mailto){
-                    link = mailto + m1;
-                    email = m1;
-                } else {
-                    link = m1;
-                    email = m1.substring(mailto.length, m1.length);
+            /* disabling email autolinking, since we don't do that on the server, either
+            text = text.replace(/<(?:mailto:)?([-.\w]+\@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)>/gi,
+                function(wholeMatch,m1) {
+                    return _EncodeEmailAddress( _UnescapeSpecialChars(m1) );
                 }
-                return "<a href=\"" + link + "\">" + pluginHooks.plainLinkText(email) + "</a>";
-            }
-            text = text.replace(/<((?:mailto:)?([-.\w]+\@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+))>/gi, email_replacer);
-
+            );
+            */
             return text;
         }
 
@@ -1307,11 +1308,7 @@ else
                     return "%24";
                 if (match == ":") {
                     if (offset == len - 1 || /[0-9\/]/.test(url.charAt(offset + 1)))
-                        return ":";
-                    if (url.substring(0, 'mailto:'.length) === 'mailto:')
-                        return ":";
-                    if (url.substring(0, 'magnet:'.length) === 'magnet:')
-                        return ":";
+                        return ":"
                 }
                 return "%" + match.charCodeAt(0).toString(16);
             });

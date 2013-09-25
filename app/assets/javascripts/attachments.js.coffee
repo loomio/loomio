@@ -23,7 +23,7 @@ $ ->
   iframe_upload_redirect_url = ->
     $('#fileupload').data('redirect-url')+"/?%s"
 
-  $('.comment-toolbar').on 'click', '#add-attachment-icon', ->
+  $('#comment-toolbar').on 'click', '#add-attachment-icon', ->
     $('input:file').trigger('click')
 
   $('#attachment-container').on 'click', '.attachment-success .remove-attachment', ->
