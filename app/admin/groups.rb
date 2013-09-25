@@ -14,6 +14,7 @@ ActiveAdmin.register Group do
   filter :created_at
 
   scope :parents_only
+  scope :engaged
   scope :engaged_but_stopped
   scope :has_members_but_never_engaged
 

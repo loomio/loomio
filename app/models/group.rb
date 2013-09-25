@@ -41,8 +41,17 @@ class Group < ActiveRecord::Base
     includes(:discussions).where('discussions.last_comment_at < ? OR discussions_count = 0', time)
   }
 
+  scope :active_discussions_since, lambda {|time|
+    includes(:discussions).where('discussions.last_comment_at > ?', time)
+  }
+
 
   scope :created_earlier_than, lambda {|time| where('groups.created_at < ?', time) }
+
+  scope :engaged, more_than_n_members(1).
+                  more_than_n_discussions(2).
+                  active_discussions_since(2.month.ago).
+                  parents_only
 
   scope :engaged_but_stopped, more_than_n_members(1).
                               more_than_n_discussions(2).
