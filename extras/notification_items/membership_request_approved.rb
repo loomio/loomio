@@ -1,4 +1,4 @@
-class NotificationItems::UserAddedToGroup < NotificationItem
+class NotificationItems::MembershipRequestApproved < NotificationItem
   attr_accessor :notification
 
   delegate :url_helpers, to: 'Rails.application.routes'
@@ -8,7 +8,7 @@ class NotificationItems::UserAddedToGroup < NotificationItem
   end
 
   def action_text
-    I18n.t('notifications.user_added_to_group')
+    I18n.t('notifications.membership_request_approved')
   end
 
   def title

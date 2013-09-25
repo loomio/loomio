@@ -1,41 +1,43 @@
 require 'spec_helper'
 
 describe Events::MembershipRequestApproved do
-  let(:user) { mock_model(User) }
+  let(:requestor) { mock_model(User) }
+  let(:approver) { mock_model(User) }
   let(:group) { mock_model(Group) }
-  let(:membership){ mock_model(Membership, user: user, group: group) }
+  let(:membership){ mock_model(Membership, user: requestor, group: group) }
 
   before do
     UserMailer.stub_chain(:delay, :group_membership_approved)
   end
 
-  describe "::publish!" do
+  describe "::publish!(membership, approver)" do
     let(:event) { stub(:event, notify_users!: true) }
     before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do
       Event.should_receive(:create!).with(kind: 'membership_request_approved',
+                                          user: approver,
                                           eventable: membership)
-      Events::MembershipRequestApproved.publish!(membership)
+      Events::MembershipRequestApproved.publish!(membership, approver)
     end
 
     it 'returns an event' do
-      Events::MembershipRequestApproved.publish!(membership).should == event
+      Events::MembershipRequestApproved.publish!(membership, approver).should == event
     end
   end
 
   context "after event has been published" do
-    let(:event) { Events::MembershipRequestApproved.publish!(membership) }
+    let(:event) { Events::MembershipRequestApproved.publish!(membership, approver) }
 
 
     it 'notifies the requestor' do
-      Events::MembershipRequestApproved.any_instance.should_receive(:notify!).with(user)
+      Events::MembershipRequestApproved.any_instance.should_receive(:notify!).with(requestor)
       event
     end
 
     it 'emails the requestor of the approval' do
       delay = stub
-      delay.should_receive(:group_membership_approved).with(user, group)
+      delay.should_receive(:group_membership_approved).with(requestor, group)
       UserMailer.stub(:delay).and_return(delay)
       event.save!
     end

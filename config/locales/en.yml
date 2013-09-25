@@ -174,6 +174,7 @@ en:
     comment_liked: "liked your comment in the discussion"
     user_mentioned: "mentioned you in a comment in"
     membership_requested: "requested membership to"
+    membership_request_approved: 'approved your request to join'
     user_added_to_group: "added you to the group"
     motion_closing_soon: "Proposal is closing soon"
     motion_blocked: "blocked the proposal"
