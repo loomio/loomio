@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130911222112) do
+ActiveRecord::Schema.define(:version => 20130925002533) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -398,7 +398,6 @@ ActiveRecord::Schema.define(:version => 20130911222112) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "discussion_url",      :default => "",   :null => false
     t.datetime "closed_at"
     t.integer  "discussion_id"
     t.string   "outcome"
@@ -429,6 +428,16 @@ ActiveRecord::Schema.define(:version => 20130911222112) do
 
   add_index "notifications", ["event_id"], :name => "index_notifications_on_event_id"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+
+  create_table "personas", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "personas", ["email"], :name => "index_personas_on_email"
+  add_index "personas", ["user_id"], :name => "index_personas_on_user_id"
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "group_id"
