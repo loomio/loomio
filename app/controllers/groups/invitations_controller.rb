@@ -20,7 +20,7 @@ class Groups::InvitationsController < GroupBaseController
 
     memberships = @group.add_members!(@members_to_add, current_user)
     memberships.each do |membership|
-      Events::UserAddedToGroup.publish!(membership)
+      Events::UserAddedToGroup.publish!(membership, current_user)
       UserMailer.delay.added_to_a_group(membership.user, membership.inviter, membership.group)
     end
 

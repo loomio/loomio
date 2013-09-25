@@ -62,7 +62,7 @@ class GroupsController < GroupBaseController
     end
     users_to_add = @group.parent.members.where(id: user_ids)
     memberships = @group.add_members!(users_to_add, current_user)
-    memberships.each { |membership| Events::UserAddedToGroup.publish!(membership) }
+    memberships.each { |membership| Events::UserAddedToGroup.publish!(membership, current_user) }
 
     flash[:success] = t("success.members_added")
     redirect_to @group

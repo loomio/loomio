@@ -8,8 +8,6 @@ class Notification < ActiveRecord::Base
   delegate :kind, :to => :event, :prefix => :event
   delegate :eventable, :to => :event
 
-  default_scope order: "id DESC", include: [:event => [:eventable, :discussion]]
-
   scope :unviewed, where("viewed_at IS NULL")
 end
 
