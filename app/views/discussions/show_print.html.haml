@@ -11,7 +11,7 @@
             .large-icon.discussion-icon.enabled-icon
             %h3.header-text= t :discussion
             #discussion-activity-body
-              = render 'add_comment', discussion: @discussion
+              
               #activity-feed
                 = render 'activity', items: @activity
 
@@ -22,7 +22,7 @@
               %ul.selector-list
                 - if @current_motion.nil?
                   - if can? :create, Motion.new(discussion_id: @discussion.id)
-                    = link_to t(:create_new_proposal), new_proposal_discussion_path(@discussion.id), class: 'btn new-proposal-btn', id: 'new-proposal'
+
                     %li.selector-item.empty-list-message#start-proposal-text
                       = t :empty_decision_list_html
                 - else
