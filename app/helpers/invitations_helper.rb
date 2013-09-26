@@ -16,20 +16,4 @@ module InvitationsHelper
       @invitation = Invitation.pending.find_by_token(session[:invitation_token])
     end
   end
-
-  def set_user_defaults_from_invitation
-    if @invitation
-      @user = User.new
-      if @invitation.intent == 'join_group'
-        @user.email = @invitation.recipient_email
-      else
-        @user.name = @invitation.group_request_admin_name
-        @user.email = @invitation.recipient_email
-      end
-    end
-  end
-
-  def email_belongs_to_existing_user?(email)
-    User.find_by_email(email).present?
-  end
 end

@@ -1,4 +1,4 @@
--if visitor_is_persona_authenticated?
+-if persona_authenticated_and_waiting?
   - load_persona_from_session
   You're signed into persona as #{@persona.email}, sign into your Loomio account to link up.
 -else

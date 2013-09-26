@@ -2,7 +2,7 @@
   =f.error_notification
   =f.input :name
   =f.input :email
-  -unless visitor_is_persona_authenticated?
+  -unless persona_authenticated_and_waiting?
     =f.input :password
     =f.input :password_confirmation
   =f.input :language_preference, :collection => Translation::LANGUAGES,

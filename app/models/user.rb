@@ -94,6 +94,10 @@ class User < ActiveRecord::Base
 
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
 
+  def self.email_taken?(email)
+    User.find_by_email(email).present?
+  end
+
   def first_name
     name.split(' ').first
   end

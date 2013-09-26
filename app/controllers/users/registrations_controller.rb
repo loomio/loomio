@@ -5,7 +5,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   include InvitationsHelper
   before_filter :load_invitation_from_session, only: :new
-  before_filter :set_user_defaults_from_invitation, only: :new
 
   helper :persona
+  def new
+    @user = User.new
+    if @invitation
+      if @invitation.intent == 'join_group'
+        @user.email = @invitation.recipient_email
+      else
+        @user.name = @invitation.group_request_admin_name
+        @user.email = @invitation.recipient_email
+      end
+    end
+  end
 end

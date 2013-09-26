@@ -31,7 +31,7 @@ class BaseController < ApplicationController
   end
 
   def check_for_persona
-    if visitor_is_persona_authenticated? and user_signed_in?
+    if persona_authenticated_and_waiting? and user_signed_in?
       link_persona_to_current_user
     end
   end

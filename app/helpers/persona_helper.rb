@@ -1,5 +1,5 @@
 module PersonaHelper
-  def visitor_is_persona_authenticated?
+  def persona_authenticated_and_waiting?
     session.has_key?(:persona_id)
   end
 

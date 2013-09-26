@@ -59,6 +59,10 @@ When(/^I sign up as a new user$/) do
   @user = User.find_by_email('jim@jam.com')
 end
 
+Then(/^I should see the signup form prepopulated with my email address$/) do
+  page.should have_css('#user_email[value="jim@jam.com"]')
+end
+
 Given(/^I am invited at "(.*?)" to join a group$/) do |arg1|
   @group = FactoryGirl.create(:group)
   @invite_people = InvitePeople.new(recipients: arg1, message_body: 'please click the invitation link below')
