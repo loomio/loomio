@@ -20,18 +20,21 @@
 	-ms-box-sizing: border-box;
 }
 
-.wmd-panel .btn-toolbar {
-	margin-bottom: 0;
-	padding: 0;
-	width: 100%;
-}
-
-#wmd-button-row {
+.wmd-button-bar {
 	margin: 0 0 4px 0;
+	.btn-toolbar {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
 	.btn{
-    padding: 4px 10px;
-    margin-bottom: 0px;
-  }
+	    padding: 4px 10px;
+	    margin-bottom: 0px;
+	}
+	&#wmd-button-bar-discussion-description{
+		width: 70%;
+		float: right;
+	}
 }
 
 .icon-link,

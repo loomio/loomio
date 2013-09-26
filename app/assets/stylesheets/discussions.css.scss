@@ -5,21 +5,9 @@
 
 
 body.discussions.new, body.discussions.create {
-  #discussion-markdown-dropdown {
-    float: right;
-    left: 12px;
-    li i {
-      display: inline-block;
-      width: 15px;
-    }
-  }
   #discussion-submit {
     float: left;
     position: relative;
-  }
-  .markdown-setting-dropdown {
-    margin-top: 2px;
-    margin-left: -10px;
   }
 }
 
@@ -130,25 +118,17 @@ body.discussions.show {
 
       #description-edit-form {
         margin-bottom: 0px;
-        #add-description-submit { float: left; }
-        #cancel-add-description {
-          color: $mid-grey;
-          float: left;
-          font-size: $font-tiny;
-          margin: 0 0 0 10px;
-          position: relative;
-          text-decoration: underline;
-          top: 5px;
-        }
         .control-group { margin-bottom: 0px; }
         .description-body {
           color: black;
           margin-bottom: 10px;
+          padding-bottom: 10px;
         }
-        #description-input {
-          height: 90px;
-          margin-bottom: 5px;
-          width: 600px;
+        textarea{
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          margin-bottom: 4px;
         }
       }
 
@@ -183,11 +163,6 @@ body.discussions.show {
         .last-edited-by, .started-by { margin-bottom: 10px; }
         .user-name { white-space: nowrap; }
       }
-      #discussion-markdown-dropdown {
-        margin-right: 8px;
-        padding-right: 0px;
-      }
-      .long-description { padding-bottom: 10px; }
       .right-context { width: 265px; }
     }
   }
@@ -231,7 +206,6 @@ body.discussions.show {
         box-sizing: border-box;
         margin-bottom: 4px;
       }
-
     }
 
     #comment-toolbar {
@@ -254,6 +228,7 @@ body.discussions.show {
         @include box-shadow(0, 0, 0, 0);
       }
     }
+
     /** Code block padding (Stops avatars destroying indentation) */
     pre {
       display: block;
@@ -347,7 +322,7 @@ body.discussions.show {
 /* Markdown styling */
 
 .activity-item-body .popover h3 { padding: 8px 14px; }
-.activity-item-body, .long-description, .motion .description, .markdown {
+.activity-item-body, .motion .description, .markdown {
   p {
     word-wrap: break-word;
     line-height: 18px;

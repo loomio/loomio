@@ -20,9 +20,8 @@
 
   .row
     .span5
-      .description
-        .long-description
-          = render_rich_text(motion.description, false)
+      .description-body
+        = render_rich_text(motion.description, false)
 
   .pie{id: "graph_#{motion.id}"}
   .percentage-to-vote

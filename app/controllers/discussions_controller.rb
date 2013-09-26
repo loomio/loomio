@@ -132,7 +132,7 @@ class DiscussionsController < GroupBaseController
 
   def update_description
     @discussion = Discussion.find(params[:id])
-    @discussion.set_description!(params[:description], params[:description_uses_markdown], current_user)
+    @discussion.set_description!(params[:description], current_user)
     redirect_to @discussion
   end
 

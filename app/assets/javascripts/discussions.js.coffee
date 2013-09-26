@@ -34,51 +34,9 @@ $ ->
             callback _.toArray(names)
         ), "json"
 
-
-# Global Markdown (new discussion & comments)
-$ ->
-  if $("body.discussions.show").length > 0 || $("body.discussions.new").length > 0 || $("body.discussions.create").length > 0
-    $(".global-markdown-setting .enable-markdown").click((event) ->
-      img_to_replace = $('.global-markdown-setting').children().first()
-      img_to_replace.html('<img alt="Markdown_on" class="markdown-icon markdown-on" src="/assets/markdown_on.png">')
-      updateMarkdownSetting(this, true)
-    )
-$ ->
-  if $("body.discussions.show").length > 0 || $("body.discussions.new").length > 0 || $("body.discussions.create").length > 0
-    $(".global-markdown-setting .disable-markdown").click((event) ->
-      img_to_replace = $('.global-markdown-setting').children().first()
-      img_to_replace.html('<img alt="Markdown_off" class="markdown-icon markdown-off" src="/assets/markdown_off.png">')
-      updateMarkdownSetting(this, false)
-    )
-
-updateMarkdownSetting = (selected, usesMarkdown) ->
-  $("#global-uses-markdown").val(usesMarkdown)
-  $('.global-markdown-setting .markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
-  $(selected).children().first().children().addClass('icon-ok')
-  event.preventDefault()
-
 # Edit description
 Discussion.enableInlineEdition = ()->
   Application.enableInlineEdition
-
-   #edit description markdown setting
-  $(".local-markdown-setting .enable-markdown").click((event) ->
-    img_to_replace = $('#discussion-markdown-dropdown-link')
-    img_to_replace.html('<img alt="Markdown_on" class="markdown-icon markdown-on" src="/assets/markdown_on.png">')
-    editDescriptionMarkdownSetting(this, true)
-  )
-
-  $(".local-markdown-setting .disable-markdown").click((event) ->
-    img_to_replace = $('#discussion-markdown-dropdown-link')
-    img_to_replace.html('<img alt="Markdown_off" class="markdown-icon markdown-off" src="/assets/markdown_off.png">')
-    editDescriptionMarkdownSetting(this, false)
-  )
-
-  editDescriptionMarkdownSetting = (selected, usesMarkdown) ->
-    $('#description-markdown-setting').val(usesMarkdown)
-    $('.local-markdown-setting .markdown-setting-dropdown').find('.icon-ok').removeClass('icon-ok')
-    $(selected).children().first().children().addClass('icon-ok')
-    event.preventDefault()
 
 $ ->
   Discussion.enableInlineEdition()

@@ -2,8 +2,8 @@
   = form_tag add_comment_discussion_path(discussion), :remote => true, id: "new-comment-form" do
     = render 'avatar', user: current_user, size: "medium", kind: nil, id: nil
     #comment-form-container
-      = text_area_tag 'comment', "", id: 'wmd-input', placeholder: t(:comment_form_placeholder)
-      #wmd-button-bar.hide
+      = text_area_tag 'comment', "", id: 'wmd-input-comment', placeholder: t(:comment_form_placeholder)
+      #wmd-button-bar-comment.wmd-button-bar.hide
       #attachment-container
       #comment-toolbar
         = submit_tag t(:comment_form_submit_button), class: "btn btn-success submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
@@ -14,10 +14,7 @@
               .attachment-icon
           %a.btn#comment-formatting
             %i.icon-font
-      #wmd-preview.hide.markdown
-      #wmd-help.hide.modal
-        = render 'application/markdown_help'
-
+      #wmd-preview-comment.hide.markdown
 
 -unless browser.ie? && browser.version.to_i < 10
   = s3_uploader_form post: attachments_url, as: "attachment[location]", redirect_url: iframe_upload_result_attachments_url do

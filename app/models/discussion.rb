@@ -5,7 +5,6 @@ class Discussion < ActiveRecord::Base
 
   validates_presence_of :title, :group, :author
   validates :title, :length => { :maximum => 150 }
-  validates_inclusion_of :uses_markdown, :in => [true,false]
 
   has_paper_trail :only => [:title, :description]
 
@@ -159,9 +158,8 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def set_description!(description, uses_markdown, user)
+  def set_description!(description, user)
     self.description = description
-    self.uses_markdown = uses_markdown
     save!
     fire_edit_description_event(user)
   end
