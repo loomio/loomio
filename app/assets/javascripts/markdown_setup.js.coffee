@@ -20,7 +20,8 @@ MarkdownSetup.rendererRequired = () ->
   $('.discussions.show').length > 0 ||
     $('.groups.show').length > 0 ||
     $('.discussions.new').length > 0 ||
-    $('.new_proposal').length > 0
+    $('.new_proposal').length > 0 ||
+    $('.votes.new').length > 0
 
 MarkdownSetup.showHelp = () ->
   $('#wmd-help').modal('toggle')

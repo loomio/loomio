@@ -6,4 +6,5 @@
   - if @motion.description.present?
     .span5.offset1
       %h3 Proposal details
-      = @motion.description
+      .js-render-as-markdown.markdown
+        = preserve @motion.description
