@@ -2,6 +2,8 @@ class Groups::MembershipsController < GroupBaseController
   load_and_authorize_resource except: [:index]
   before_filter :require_current_user_is_group_admin, only: [:index]
 
+  rescue_from CanCan::AccessDenied, with: :only_group_admin
+
   def index
     @memberships = @group.memberships.joins(:user).order('name')
     @group = GroupDecorator.new(Group.find(params[:group_id]))
@@ -27,6 +29,19 @@ class Groups::MembershipsController < GroupBaseController
     else
       flash[:notice] = t("notice.member_removed")
       redirect_to [@membership.group, :memberships]
+    end
+  end
+
+  def only_group_admin
+    if action_name == 'destroy'
+      flash[:error] = t("error.only_group_coordinator_destroy", add_coordinator: group_memberships_path(@membership.group)).html_safe
+      redirect_to @membership.group
+    elsif action_name == 'remove_admin'
+      flash[:error] = t("error.only_group_coordinator_remove_admin")
+      redirect_to [@membership.group, :memberships]
+    else
+      flash[:error] = t("error.access_denied")
+      redirect_to @membership.group
     end
   end
 end

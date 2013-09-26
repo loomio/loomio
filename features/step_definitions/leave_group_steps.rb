@@ -1,13 +1,34 @@
-When /^I choose to leave the group$/ do
-  find('#group-options').click
-  step 'I click "Leave group"'
-  step 'I confirm the action'
-end
-
 Given(/^there is another admin in the group also$/) do
   @group.add_admin! FactoryGirl.create :user
 end
 
-Then /^I should be removed from the group$/ do
+And(/^I choose to leave the group$/) do
+  find('#group-options').click
+  click_on('Leave group')
+  click_on('Leave group')
+end
+
+Then(/^I should be removed from the group$/) do
   page.should have_content ("You have left #{@group.name}")
+end
+
+And(/^I am the only coordinator of a group$/) do
+  @group = FactoryGirl.create :group
+  @user = @group.admins.first
+  @group.admins.count.should == 1
+end
+
+Then(/^I should see that I can't leave the group$/) do
+  text = (I18n.t("error.only_group_coordinator_destroy", 
+    add_coordinator: group_memberships_path(@group).html_safe).
+    gsub( /<[^<]+?>/ , '' ))
+  page.should have_content(text)
+end
+
+When(/^I click the add another coordinator option in the flash notification$/) do
+  click_link('add a new coordinator')
+end
+
+Then(/^I should be redirected to the edit memberships page$/) do
+  page.should have_content(I18n.t :members)
 end
