@@ -11,5 +11,4 @@ $(".persona-login-button").click (e) ->
         data:
           "assertion": assertion
         success: (data, status) ->
-          console.log data
-          window.location.href = '/'
+          window.location.href = data.redirect_to

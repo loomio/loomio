@@ -1,0 +1,5 @@
+-if visitor_is_persona_authenticated?
+  - load_persona_from_session
+  You're signed into persona as #{@persona.email}, sign into your Loomio account to link up.
+-else
+  =link_to 'Sign in with Persona', '#', class: 'persona-login-button'

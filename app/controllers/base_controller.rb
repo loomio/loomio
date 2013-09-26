@@ -1,6 +1,7 @@
 class BaseController < ApplicationController
   include AutodetectTimeZone
-  before_filter :authenticate_user!, :check_browser, :check_for_invitation, :load_announcements
+  include PersonaHelper
+  before_filter :authenticate_user!, :check_browser, :check_for_invitation, :load_announcements, :check_for_persona
   before_filter :set_time_zone_from_javascript
   helper_method :time_zone
 
@@ -26,6 +27,12 @@ class BaseController < ApplicationController
   def check_for_invitation
     if session[:invitation_token] and user_signed_in?
       redirect_to invitation_path(session[:invitation_token])
+    end
+  end
+
+  def check_for_persona
+    if visitor_is_persona_authenticated? and user_signed_in?
+      link_persona_to_current_user
     end
   end
 end

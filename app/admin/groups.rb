@@ -8,24 +8,15 @@ ActiveAdmin.register Group do
 
   actions :index, :show, :edit
   before_filter :set_pagination
-  filter :name 
+  filter :name
   filter :payment_plan, as: :select, collection: Group::PAYMENT_PLANS
   filter :memberships_count
   filter :created_at
 
-
-  scope :all
-  scope "Parent groups" do |group|
-    group.where(parent_id: nil)
-  end
-
-  scope "<5 members" do |group|
-    group.where('memberships_count <= ?', 5)
-  end
-
-  scope "> 85% full" do |group|
-    group.where('max_size > ? AND memberships_count/max_size >= ?', 0, 0.85)
-  end
+  scope :parents_only
+  scope :engaged
+  scope :engaged_but_stopped
+  scope :has_members_but_never_engaged
 
 
   csv do
@@ -52,14 +43,7 @@ ActiveAdmin.register Group do
       simple_format "#{admin_name} \n &lt;#{admin_email}&gt;"
     end
 
-    column "Size", :sortable => :memberships_count do |group|
-      if group.max_size
-        group_max_size = " (#{group.max_size})"
-      else
-        group_max_size = ""
-      end
-      "#{group.memberships_count}"+group_max_size
-    end
+    column "Size", :memberships_count
 
     column "Discussions", :discussions_count
     column "Motions", :motions_count
@@ -106,8 +90,8 @@ ActiveAdmin.register Group do
 
   member_action :update, :method => :put do
     group = Group.find(params[:id])
-    group.update_attributes(params[:group])
     group.max_size = params[:group][:max_size]
+    group.payment_plan = params[:group][:payment_plan]
     if group.save
       redirect_to admin_groups_url, :notice => "Group updated."
     else

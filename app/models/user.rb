@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include AvatarInitials
+
   require 'net/http'
   require 'digest/md5'
 
@@ -11,7 +13,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable
 
   validates :name, :presence => true
   validates :email, :presence => true, uniqueness: true, email: true
@@ -88,6 +90,7 @@ class User < ActiveRecord::Base
   scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
+  scope :coordinators, joins(:memberships).where('memberships.access_level = ?', 'admin').group('users.id')
 
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
 
@@ -299,17 +302,5 @@ class User < ActiveRecord::Base
       self.name = email
       save
     end
-  end
-
-  def set_avatar_initials
-    initials = ""
-    if  name.blank? || name == email
-      initials = email[0..1]
-    else
-      name.split.each { |name| initials += name[0] }
-    end
-    initials = initials.upcase.gsub(/ /, '')
-    initials = "DU" if deleted_at
-    self.avatar_initials = initials[0..2]
   end
 end

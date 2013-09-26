@@ -25,3 +25,29 @@ Then(/^I should see that someone closed the motion$/) do
   find("#notifications-container").should have_content(@closer.name + " " + I18n.t('notifications.motion_closed.by_user'))
 end
 
+Given(/^a visitor has requested membership to the group$/) do
+  params = { name: "Richie", email: "rich@loomio.org" }
+  @membership_request = RequestMembership.to_group(group: @group, params: params)
+end
+
+Then(/^I should see that the visitor requested access to the group$/) do
+  find("#notifications-container").should have_content(@membership_request.name + " " + I18n.t('notifications.membership_requested'))
+end
+
+Given(/^a user has requested membership to the group$/) do
+  @requestor = FactoryGirl.create :user
+  @membership_request = RequestMembership.to_group(group: @group, requestor: @requestor)
+end
+
+Then(/^I should see that the user requested access to the group$/) do
+  step 'I should see that the visitor requested access to the group'
+end
+
+When(/^I click the membership request notification$/) do
+  find(".selector-item, .notification-item").click
+end
+
+Then(/^I should see the membership request page$/) do
+  page.should have_css("body.manage_membership_requests.index")
+end
+

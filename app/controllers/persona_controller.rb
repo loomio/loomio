@@ -1,26 +1,34 @@
 class PersonaController < ApplicationController
+  include PersonaHelper
+  include InvitationsHelper
   def verify
+    next_page = root_path
+    status = :bad
+
     validator = PersonaValidator.new(params[:assertion], request.host_with_port)
-    result = {}
 
     if validator.valid?
       persona = Persona.for_email(validator.email)
-      result[:status] = :good
+      status = :good
 
-      if user = persona.user
-        sign_in(:user, user)
+      if persona.user
         flash[:notice] = t(:signed_in)
-        result[:redirect_to] = after_sign_in_path_for(user)
+        sign_in(:user, persona.user)
+        next_page = after_sign_in_path_for(persona.user)
       else
-        session[:persona_id] = persona.id
-        result[:redirect_to] = new_user_registration_path
+        save_persona_in_session(persona)
+        if invitation_token_in_session?
+          load_invitation_from_session
+          next_page = invitation_path(@invitation)
+        else
+          # unrecognised persona, and no invitation, so they better sign in 
+          next_page = new_user_session_path
+        end
       end
     else
-      result[:status] = :bad
-      result[:redirect_to] = root_path
       flash[:error] = t(:persona_validation_failed)
     end
 
-    render json: result
+    render json: {status: status, redirect_to: next_page}
   end
 end

@@ -103,7 +103,4 @@ module ApplicationHelper
     !user_signed_in?
   end
 
-  def email_belongs_to_existing_user?(email)
-    User.find_by_email(email).present?
-  end
 end

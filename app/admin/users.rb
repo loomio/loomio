@@ -2,15 +2,16 @@ ActiveAdmin.register User do
   actions :index, :edit, :update
   filter :name
   filter :email
+  filter :created_at
+
+  scope :all
+  scope :coordinators
 
   index do
     column :name
     column :email
     column :created_at
     column :last_sign_in_at
-    column "Coordinator" do |user|
-      user.adminable_groups.any?
-    end
     column "No. of groups", :memberships_count
     default_actions
   end

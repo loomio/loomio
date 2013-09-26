@@ -1,0 +1,13 @@
+.row
+  .span6.offset3
+    %p= t :"start_group.sign_up_intro" if @invitation.intent == "start_group"
+    %p= t :"join_group.sign_up_intro" if @invitation.intent == "join_group"
+.row
+  .span5.offset3.signup-form
+    -if visitor_is_persona_authenticated
+      = render 'devise/registrations/persona_form'
+    -else
+      = render "devise/registrations/form"
+.row
+  .span6.offset3
+    %h3= t :"or_sign_in_html", link: user_session_path

@@ -19,7 +19,4 @@
         = yield
       = render 'footer_logged_in'
 
-    - if Rails.env.production? || Rails.env.staging?
-      = render 'google_analytics'
-      / = render 'metrics_listener_data'
-      / = javascript_include_tag 'load_metrics_listener'
+    = render 'analytics'

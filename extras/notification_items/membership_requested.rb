@@ -1,14 +1,20 @@
 class NotificationItems::MembershipRequested < NotificationItem
   attr_accessor :notification
 
-  delegate :url_helpers, to: 'Rails.application.routes'
-
   def initialize(notification)
     @notification = notification
   end
 
   def actor
-    @notification.eventable.requestor
+    requestor = notification.eventable.requestor
+    if requestor
+      requestor
+    else
+      visitor = Visitor.new(notification.eventable.name,
+                            notification.eventable.email)
+      visitor.set_avatar_initials
+      visitor
+    end
   end
 
   def action_text
@@ -16,14 +22,14 @@ class NotificationItems::MembershipRequested < NotificationItem
   end
 
   def title
-    @notification.eventable.group_name
+    notification.eventable.group_name
   end
 
   def group_full_name
-    @notification.eventable.group_name
+    notification.eventable.group_name
   end
 
   def link
-    url_helpers.group_path(@notification.eventable.group)
+    group_membership_requests_path(notification.eventable.group)
   end
 end

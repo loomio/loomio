@@ -1,22 +1,24 @@
 class Groups::MembershipRequestsController < BaseController
   before_filter :load_group, except:[:cancel]
-  before_filter :authenticate_user!, except: [:new, :create, :cancel]
+  skip_before_filter :authenticate_user!, except: :cancel
   load_and_authorize_resource :membership_request, only: :cancel, parent: false
 
 
   def new
+    authorize! :request_membership, @group
     @membership_request = MembershipRequest.new
     @membership_request.group = @group
     @membership_request.requestor = current_user
-    authorize! :create, @membership_request
   end
 
   def create
-    build_membership_request
-    authorize! :create, @membership_request
-    if @membership_request.save
+    authorize! :request_membership, @group
+    @membership_request = RequestMembership.
+                          to_group(params: permitted_params.membership_request,
+                                   requestor: current_user,
+                                   group: @group)
+    if @membership_request.persisted?
       flash[:success] = t(:'success.membership_requested')
-      Events::MembershipRequested.publish!(@membership_request)
       redirect_to @group
     else
       if @membership_request.errors[:requestor].any?
@@ -38,11 +40,5 @@ class Groups::MembershipRequestsController < BaseController
 
   def load_group
     @group ||= GroupDecorator.new Group.find(params[:group_id])
-  end
-
-  def build_membership_request
-    @membership_request = MembershipRequest.new(permitted_params.membership_request)
-    @membership_request.group = @group
-    @membership_request.requestor = current_user if user_signed_in?
   end
 end

@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :initialize_search_form
   around_filter :user_time_zone, if: :current_user
+  helper :segmentio
 
   rescue_from CanCan::AccessDenied do |exception|
     if current_user

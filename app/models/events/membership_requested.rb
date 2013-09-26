@@ -9,16 +9,14 @@ class Events::MembershipRequested < Event
     eventable
   end
 
+
   private
 
   def notify_users!
-
     GroupMailer.new_membership_request(eventable)
-
     membership_request.group_admins.each do |admin|
       notify!(admin)
     end
   end
-
   handle_asynchronously :notify_users!
 end

@@ -2,8 +2,9 @@
   =f.error_notification
   =f.input :name
   =f.input :email
-  =f.input :password
-  =f.input :password_confirmation
+  -unless visitor_is_persona_authenticated?
+    =f.input :password
+    =f.input :password_confirmation
   =f.input :language_preference, :collection => Translation::LANGUAGES,
            selected: I18n.locale, include_blank: false
 
