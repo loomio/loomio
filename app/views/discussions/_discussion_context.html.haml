@@ -1,6 +1,6 @@
 .row
   .span8
-    =render 'description', discussion: @discussion, description: @discussion.description, description_markdown_setting: @discussion.uses_markdown
+    =render 'description', discussion: @discussion, description: @discussion.description
   .span3.right-context
     .helper-text.discussion-description-helper-text.hidden
       =render "application/hint", text: t(:"hint.context"), anchor: 'starting-an-engaging-discussion'

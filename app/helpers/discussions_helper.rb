@@ -35,16 +35,4 @@ module DiscussionsHelper
   def add_mention_links(comment)
     auto_link_usernames_or_lists(comment, :username_url_base => "#", :username_include_symbol => true)
   end
-
-  def css_for_markdown_link(target, setting)
-    return "icon-ok" if (target.uses_markdown == setting)
-  end
-
-  def markdown_img(uses_markdown)
-    if uses_markdown
-      image_tag("markdown_on.png", class: 'markdown-icon markdown-on')
-    else
-      image_tag("markdown_off.png", class: 'markdown-icon markdown-off')
-    end
-  end
 end

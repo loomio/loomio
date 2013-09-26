@@ -8,7 +8,6 @@ class DiscussionsController < GroupBaseController
 
   def new
     @discussion = Discussion.new
-    @uses_markdown = current_user.uses_markdown
     if params[:group_id]
       @discussion.group_id = params[:group_id]
     else
@@ -17,8 +16,6 @@ class DiscussionsController < GroupBaseController
   end
 
   def create
-    current_user.update_attributes(uses_markdown: params[:discussion][:uses_markdown])
-
     @discussion = Discussion.new(permitted_params.discussion)
     @discussion.author = current_user
 
@@ -80,7 +77,6 @@ class DiscussionsController < GroupBaseController
     end
     if current_user
       @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
-      @uses_markdown = current_user.uses_markdown?
       if @current_motion
         @current_motion.as_read_by(current_user).viewed!
       end
@@ -106,8 +102,7 @@ class DiscussionsController < GroupBaseController
     if params[:comment].present? || params[:attachments].present?
       @discussion = Discussion.find(params[:id])
       @comment = @discussion.add_comment(current_user, params[:comment],
-                                         uses_markdown: params[:uses_markdown], attachments: params[:attachments])
-      current_user.update_attributes(uses_markdown: params[:uses_markdown])
+                                         attachments: params[:attachments])
       @discussion.as_read_by(current_user).viewed!
       unless request.xhr?
         redirect_to @discussion
