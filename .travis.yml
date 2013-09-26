@@ -17,3 +17,10 @@ before_script:
   - "bundle exec rake db:seed RAILS_ENV=test"
   - "sh -e /etc/init.d/xvfb start"
 script: "bundle exec rake travis"
+addons:
+  code_climate:
+    repo_token:
+      secure: "cpHvK1wRBc3dBaLtPLA4+rOqt+BLWbr2LNreAmmjCav13qfUYoV8cBUavJ3sVQuYhxTTsUsHpimS/tSdhV/V0BcAJ13T0FiE4eHeiJMVYaCUwoiAzLTI7nKbgCtIAD+F0oL2onC5Z0j/RM6MnQFPBpl3xmhzYWLMkHYQ5nIt3Yo="
+notifications:
+  hipchat:
+    secure: "Ab0VryffWSq0wgEyvrtQB8JD1m6ZcP5zBKDZxniu4avdT16UuDmiDEIVNCnbm5IEwXjugy/WuKsvczxX+4bOoNW6rJfJTotQAbeT3ZdgIHIr+umzUwRPSHqfCp7eztACeYaIin7BmDLNS2W3GQELMvgjsCPs7cGUYeLjNLqs0RE="

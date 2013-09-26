@@ -51,11 +51,11 @@ class Invitation < ActiveRecord::Base
   end
 
   def to_start_group?
-    intent == 'to_start_group'
+    intent == 'start_group'
   end
 
   def to_join_group?
-    intent == 'to_join_group'
+    intent == 'join_group'
   end
 
   private

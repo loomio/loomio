@@ -1,7 +1,0 @@
-.row
-  .span6.offset3
-    %p= t :"start_group.sign_in_intro" if @invitation.intent == "start_group"
-    %p= t :"join_group.sign_in_intro" if @invitation.intent == "join_group"
-.row
-  .span4.offset3.signin-form
-    = render "devise/sessions/form"
