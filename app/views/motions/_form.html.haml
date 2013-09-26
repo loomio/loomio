@@ -11,9 +11,18 @@
     .row
       .span5
         #description
-          = f.input :description
+          = f.input :description, input_html: { id: "wmd-input-new-motion" }
+        #wmd-button-bar-new-motion.wmd-button-bar.hide
 
         = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}
-        = f.submit :class => "btn btn-large btn-info run-validations", id: "proposal-submit", :data => {:disable_with => t("helpers.submit.motion.create")}
+        = f.submit :class => "btn btn-success run-validations", id: "proposal-submit", :data => {:disable_with => t("helpers.submit.motion.create")}
+        %a.btn{id: 'preview-new-motion'}= "Preview"
+        .pull-right#toolbar
+          %a.btn#motion-formatting{'data-title' => 'Show formatting options'}
+            %i.icon-font
+        %h2#preview-title.hide
+        #wmd-preview-new-motion.hide.markdown
+
         = render 'application/hint', text: t(:"hint.proposal"), anchor: 'writing-a-clear-proposal'
 
+= render 'application/markdown_help'

@@ -10,9 +10,9 @@
         %a.btn{id: 'preview-comment'}= "Preview"
         .pull-right
           -unless browser.ie? && browser.version.to_i < 10
-            %a.btn#add-attachment-icon
+            %a.btn#add-attachment-icon{'data-title' => 'Attach a file'}
               .attachment-icon
-          %a.btn#comment-formatting
+          %a.btn#comment-formatting{'data-title' => 'Show formatting options'}
             %i.icon-font
       #wmd-preview-comment.hide.markdown
 

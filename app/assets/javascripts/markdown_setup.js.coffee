@@ -13,9 +13,14 @@ MarkdownSetup.startEditors = () ->
     MarkdownSetup.start_discussion_description_editor()
   if $('.discussions.new').length > 0
     MarkdownSetup.start_new_discussion_editor()
+  if $('.new_proposal').length > 0
+    MarkdownSetup.start_new_motion_editor()
 
 MarkdownSetup.rendererRequired = () ->
-  $('.discussions.show').length > 0 || $('.groups.show').length > 0 || $('.discussions.new').length > 0
+  $('.discussions.show').length > 0 ||
+    $('.groups.show').length > 0 ||
+    $('.discussions.new').length > 0 ||
+    $('.new_proposal').length > 0
 
 MarkdownSetup.showHelp = () ->
   $('#wmd-help').modal('toggle')
@@ -40,6 +45,11 @@ MarkdownSetup.start_comment_editor = () ->
   formatting_button = $('#comment-formatting')
   formatting_button.click (event) ->
     button_bar.toggle 0, () -> formatting_button.toggleClass('active')
+    $('#comment-toolbar .tooltip').toggle()
+
+  # tooltips
+  formatting_button.tooltip(placement: 'bottom')
+  $('#add-attachment-icon').tooltip(placement: 'bottom')
 
 MarkdownSetup.start_new_discussion_editor = () ->
   editor3 = new Markdown.Editor(MarkdownSetup.converter, '-new-discussion', {handler: MarkdownSetup.showHelp});
@@ -52,8 +62,37 @@ MarkdownSetup.start_new_discussion_editor = () ->
     preview.toggle 0, () -> preview_button.toggleClass('active')
     $('#preview-title').html($('#discussion_title').val()).toggle()
 
+MarkdownSetup.start_new_motion_editor = () ->
+  editor4 = new Markdown.Editor(MarkdownSetup.converter, '-new-motion', {handler: MarkdownSetup.showHelp});
+  editor4.run();
+
+  # toggle preview on and off
+  preview = $('#wmd-preview-new-motion');
+  preview_button = $('#preview-new-motion');
+  preview_button.click (event) ->
+    preview.toggle 0, () -> preview_button.toggleClass('active')
+    $('#preview-title').html($('#motion_name').val()).toggle()
+
+  # toggle formatting buttons on and off
+  button_bar = $('#wmd-button-bar-new-motion');
+  formatting_button = $('#motion-formatting')
+  formatting_button.click (event) ->
+    button_bar.toggle 0, () -> formatting_button.toggleClass('active')
+    $('#toolbar .tooltip').toggle()
+
+  # tooltips
+  formatting_button.tooltip(placement: 'bottom')
+
 MarkdownSetup.render_markdown = (scope = 'body') ->
+  # 0. for each element marked for rendering:
   $(scope + ' .js-render-as-markdown').each ->
-    $(this).html MarkdownSetup.converter.makeHtml($(this).text().
-              replace(/^\s+/, "").
-              replace(/&#x000A;+/g, ""))
+        # 5. replace the markdown formatted content with HTML
+    $(this).html MarkdownSetup.converter.
+        # 4. convert it to HTML
+      makeHtml($(this).
+        # 1. grab the content of this element
+        text().
+        # 2. remove leading whitespace
+        replace(/^\s+/, "").
+        # 3. remove html whitespace entity inserted by haml preserve function
+        replace(/&#x000A;+/g, ""))
