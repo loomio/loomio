@@ -67,7 +67,7 @@
   }
   #notification-dropdown-items {
     overflow-y: auto;
-    height: 390px;
+    max-height: 390px;
     .notification-item {
       background-color: $unhighlighted;
     }
@@ -84,6 +84,7 @@
       text-align: center;
       color: $dark-grey;
       font-weight: bold;
+      min-height: 18px;
     }
     a:hover {
       text-decoration: underline;
@@ -91,6 +92,8 @@
     }
   }
 }
+
+.navbar #notifications-container .dropdown-menu #notifications-see-more a { min-height: 18px; }
 
 li.notification-item.selector-item {
   border-bottom: 1px solid $light-grey;
