@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910070551) do
+ActiveRecord::Schema.define(:version => 20130919003502) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -302,18 +302,18 @@ ActiveRecord::Schema.define(:version => 20130910070551) do
     t.boolean  "hide_members",         :default => false
     t.boolean  "beta_features",        :default => false
     t.text     "description"
-    t.integer  "memberships_count",    :default => 0,      :null => false
+    t.integer  "memberships_count",    :default => 0,              :null => false
     t.datetime "archived_at"
     t.integer  "max_size"
     t.boolean  "cannot_contribute",    :default => false
     t.integer  "distribution_metric"
     t.string   "sectors"
     t.string   "other_sector"
-    t.integer  "discussions_count",    :default => 0,      :null => false
-    t.integer  "motions_count",        :default => 0,      :null => false
+    t.integer  "discussions_count",    :default => 0,              :null => false
+    t.integer  "motions_count",        :default => 0,              :null => false
     t.string   "country_name"
     t.datetime "setup_completed_at"
-    t.boolean  "next_steps_completed", :default => false,  :null => false
+    t.boolean  "next_steps_completed", :default => false,          :null => false
     t.string   "full_name"
     t.string   "payment_plan",         :default => "undetermined"
   end
@@ -398,7 +398,6 @@ ActiveRecord::Schema.define(:version => 20130910070551) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "discussion_url",      :default => "",   :null => false
     t.datetime "closed_at"
     t.integer  "discussion_id"
     t.string   "outcome"
