@@ -1,6 +1,6 @@
 .activity-item-time
   = link_to(t('ago', :quantity_of_time => time_ago_in_words(comment.created_at)), "#comment-#{comment.id}")
-  - if @can_like_comments ||= can?(:like_comments, @discussion)
+  - if @can_like_comments ||= can?(:like_comments, comment.discussion)
     = " · "
     - if comment.likers_include?(current_user)
       = link_to t(:unlike), like_comment_path(id: comment, like: 'false'), method: :post, remote: true, id: "unlike-comment-#{comment.id}"
