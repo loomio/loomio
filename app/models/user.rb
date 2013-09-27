@@ -90,6 +90,7 @@ class User < ActiveRecord::Base
   scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
+  scope :coordinators, joins(:memberships).where('memberships.access_level = ?', 'admin').group('users.id')
 
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
 

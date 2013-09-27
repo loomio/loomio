@@ -2,6 +2,7 @@ ActiveAdmin.register Email do
   scope :unsent, default: true
   scope :all
   actions :index, :show, :edit, :update, :destroy
+  before_filter :set_pagination
 
   index do
     selectable_column
@@ -23,6 +24,18 @@ ActiveAdmin.register Email do
       email.update_attribute(:sent_at, Time.zone.now)
     end
     redirect_to admin_emails_path
+  end
+
+  controller do
+    def set_pagination
+      if params[:pagination].blank?
+        @per_page = 40
+      elsif params[:pagination] == 'false'
+        @per_page = 999999999
+      else
+        @per_page = params[:pagination]
+      end
+    end
   end
 
   controller do

@@ -74,12 +74,6 @@ describe Motion do
     end
   end
 
-  it "can have a discussion link" do
-    @motion = create(:motion)
-    @motion.discussion_url = "http://our-discussion.com"
-    @motion.should be_valid
-  end
-
   it "cannot have an outcome if voting open" do
     @motion = create(:motion)
     @motion.outcome.blank?.should == true

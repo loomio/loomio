@@ -9,14 +9,14 @@
   seg.page = (href === '') ? 'home' : href;
   analytics.identify(seg.user_id, seg);
 
-  analytics.trackLink($('a'), 'Clicked link', function (link) {
-    seg['link_class'] = $(link).prop('class')
-    seg['link_id'] = $(link).prop('id')
-    return seg
-  })
+/ analytics.trackLink($('a'), 'Clicked link', function (link) {
+/   seg['link_class'] = $(link).prop('class')
+/   seg['link_id'] = $(link).prop('id')
+/   return seg
+/ })
 
-  analytics.trackForm($('form'), 'Submitted form', function (form) {
-    seg['form_class'] = $(form).prop('class')
-    seg['form_id'] = $(form).prop('id')
-    return seg
-  })
+/ analytics.trackForm($('form'), 'Submitted form', function (form) {
+/   seg['form_class'] = $(form).prop('class')
+/   seg['form_id'] = $(form).prop('id')
+/   return seg
+/ })
