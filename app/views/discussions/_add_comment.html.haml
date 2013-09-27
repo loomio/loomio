@@ -3,7 +3,7 @@
     = render 'avatar', user: current_user, size: "medium", kind: nil, id: nil
     #comment-form-container
       #comment-input{ data: {group: @group.id} }
-        = text_area_tag 'comment', "", id: 'wmd-input-comment', placeholder: t(:comment_form_placeholder)
+        = text_area_tag 'comment', "", class: 'js-warn-before-navigating-away', id: 'wmd-input-comment', placeholder: t(:comment_form_placeholder)
       #wmd-button-bar-comment.wmd-button-bar.hide
       #attachment-container
       #comment-toolbar

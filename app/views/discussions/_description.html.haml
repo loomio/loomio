@@ -10,7 +10,7 @@
     = form_tag update_description_discussion_path(discussion), :id => "description-edit-form", :class => "hidden" do |f|
       = hidden_field_tag 'id'
       .control-group
-        = text_area_tag 'description', description, {id: 'wmd-input-discussion-description',  :autofocus => true }
+        = text_area_tag 'description', description, {id: 'wmd-input-discussion-description', class: 'js-warn-before-navigating-away', :autofocus => true }
       #wmd-button-bar-discussion-description.wmd-button-bar
       .save-buttons.clearfix
         = submit_tag t(:save), class: 'btn btn-success run-validations submit', id: 'add-description-submit', :data => {:disable_with => t(:saving)}
