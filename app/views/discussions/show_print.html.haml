@@ -20,23 +20,6 @@
             %h3.header-text= t :current_decision
             .content-proposal-body
               %ul.selector-list
-                - if @current_motion.nil?
-                  - if can? :create, Motion.new(discussion_id: @discussion.id)
-
-                    %li.selector-item.empty-list-message#start-proposal-text
-                      = t :empty_decision_list_html
-                - else
-                  - if @displayed_motion == @current_motion
-                    - if can? :close_voting, @current_motion
-                      %li= render '/motions/admin_buttons', :motion => @current_motion
-                    %li.selector-item.current-proposal
-                      = render @current_motion
-                  - else
-                    %li.selector-item.current-proposal
-                      = render '/motions/motion_preview', motion: @current_motion, this_group: @group
-
-            - if can? :edit_close_date, @current_motion
-              = render '/motions/edit_close_date', motion: @current_motion, user: @current_user, input_time: @input_time
 
             - if @discussion.closed_motions.present?
               #previous-proposals

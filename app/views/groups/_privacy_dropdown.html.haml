@@ -1,21 +1,22 @@
 .dropdown.privacy-dropdown
-  %a.dropdown-toggle{ :href => "#", :id => 'privacy', 'data-toggle' => 'dropdown',  "data-title" => t(:group_privacy, who: group.viewable_by.to_s), 'data-container'=> 'body' }
-    = image_tag("privicon_"+group.viewable_by.to_s+".png", alt: group.viewable_by.to_s, :id => 'privacy-image')
-  - if can? :edit, group
-    %ul.dropdown-menu.pull-left
-      %li.privacy-item
-        %a.everyone{:href => "#"}
-          %i{:class => css_for_privacy_link(group, 'everyone')}
-          = t :everyone
-      - if group.parent
+  - if action_name != 'show_print'
+    %a.dropdown-toggle{ :href => "#", :id => 'privacy', 'data-toggle' => 'dropdown',  "data-title" => t(:group_privacy, who: group.viewable_by.to_s), 'data-container'=> 'body' }
+      = image_tag("privicon_"+group.viewable_by.to_s+".png", alt: group.viewable_by.to_s, :id => 'privacy-image')
+    - if can? :edit, group
+      %ul.dropdown-menu.pull-left
         %li.privacy-item
-          %a.parent_group_members{:href => "#"}
-            %i{:class => css_for_privacy_link(group, 'parent_group_members')}
-            = t :parent_group_members
-      %li.privacy-item
-        %a.members{:href => "#"}
-          %i{:class => css_for_privacy_link(group, 'members')}
-          = t :members
-    = form_tag send("edit_privacy_group_path", group.id), :remote => true, id: 'privacy-settings-form' do
-      = hidden_field_tag 'id'
-      = hidden_field_tag 'viewable_by', {id: 'viewable_by'}
+          %a.everyone{:href => "#"}
+            %i{:class => css_for_privacy_link(group, 'everyone')}
+            = t :everyone
+        - if group.parent
+          %li.privacy-item
+            %a.parent_group_members{:href => "#"}
+              %i{:class => css_for_privacy_link(group, 'parent_group_members')}
+              = t :parent_group_members
+        %li.privacy-item
+          %a.members{:href => "#"}
+            %i{:class => css_for_privacy_link(group, 'members')}
+            = t :members
+      = form_tag send("edit_privacy_group_path", group.id), :remote => true, id: 'privacy-settings-form' do
+        = hidden_field_tag 'id'
+        = hidden_field_tag 'viewable_by', {id: 'viewable_by'}
