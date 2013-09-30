@@ -4,7 +4,7 @@
   .description-container
     .description-body
       .js-render-as-markdown.markdown
-        = preserve group.description
+        = preserve h(group.description)
     - if can? :edit_description, group
       = link_to t(:edit_group_description), "#", class: "edit-description bottom-panel-link", id: 'edit_description'
 

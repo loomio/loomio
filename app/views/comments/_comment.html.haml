@@ -7,7 +7,7 @@
       .activity-item-comment-actor
         =link_to comment.user_name, user_path(comment.user), class: "user-name"
       .activity-item-header.js-render-as-markdown.markdown
-        = preserve add_mention_links comment.body
+        = preserve add_mention_links h(comment.body)
 
     -if comment.attachments_count > 0
       -comment.attachments.each do |a|
