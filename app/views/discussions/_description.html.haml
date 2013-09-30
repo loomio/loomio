@@ -1,7 +1,7 @@
 .description-container
-  .description-body
-    .long-description
-      = render_rich_text(description, description_markdown_setting)
+  .description-body#discussion-description
+    .js-render-as-markdown.markdown
+      = preserve h(description)
 
     - if can? :update_description, discussion
       = link_to t(:edit_discussion_context), "#", class: "edit-description edit-discussion-description bottom-panel-link", id: 'edit_description'
@@ -9,13 +9,9 @@
   - if can? :update_description, discussion
     = form_tag update_description_discussion_path(discussion), :id => "description-edit-form", :class => "hidden" do |f|
       = hidden_field_tag 'id'
-      = hidden_field_tag 'description_uses_markdown', description_markdown_setting, {id: 'description-markdown-setting'}
       .control-group
-        = text_area_tag 'description', description, {id: 'description-input',  :autofocus => true }
+        = text_area_tag 'description', description, {id: 'wmd-input-discussion-description', class: 'js-warn-before-navigating-away', :autofocus => true }
+      #wmd-button-bar-discussion-description.wmd-button-bar
       .save-buttons.clearfix
-        = submit_tag t(:save), class: 'btn btn-small btn-grey run-validations', id: 'add-description-submit', :data => {:disable_with => t(:saving)}
-        = link_to t(:cancel), "#", id: 'cancel-add-description'
-        .dropdown#discussion-markdown-dropdown.local-markdown-setting
-          %a.dropdown-toggle{href:'#discussion-markdown-dropdown', id:'discussion-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
-            = markdown_img(description_markdown_setting)
-          = render 'markdown_setting', target: discussion
+        = submit_tag t(:save), class: 'btn btn-success run-validations submit', id: 'add-description-submit', :data => {:disable_with => t(:saving)}
+        = link_to t(:cancel), "#", id: 'cancel-add-description', class: 'btn'

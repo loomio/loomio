@@ -72,11 +72,7 @@
 }
 
 .attachment-icon {
-  background-image:url('/assets/paperclip20.png');
-  background-repeat: no-repeat;
-  height: 22px;
-  margin: 0;
-  opacity: .3;
-  width: 22px;
-  &:hover { opacity: .8; }
+  background: url('paperclip16.png') 2px 1px no-repeat;
+  height: 18px;
+  width: 18px;
 }

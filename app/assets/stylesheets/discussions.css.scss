@@ -2,37 +2,17 @@
 @import "settings";
 @import "mixins";
 
-
 body.discussions.new, body.discussions.create {
-  #discussion-markdown-dropdown {
-    float: right;
-    left: 12px;
-    li i {
-      display: inline-block;
-      width: 15px;
-    }
-  }
   #discussion-submit {
-    float: left;
-    position: relative;
-  }
-  .markdown-setting-dropdown {
-    margin-top: 2px;
-    margin-left: -10px;
+    margin-right: 4px;
   }
 }
 
-
 body.discussions.show {
-  .form-container {
-    border: 1px solid #cccccc;
-    @include border-radius(4px);
-    @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.075) inset);
-    margin: 0 12px 0 44px;
-  }
   #attachment-container {
     background: #EBEBEB;
     padding: 0 5px 0 10px;
+    margin-bottom: 4px;
     font-size: 12px;
     .attachment {
       background: #EBEBEB;
@@ -57,7 +37,6 @@ body.discussions.show {
       }
     }
     .attachment-success { padding: 4px 0; }
-    .remove-attachment, .cancel-upload { padding-top: 2px; }
   }
   .comment-attachment {
     font-size: .9em;
@@ -135,25 +114,14 @@ body.discussions.show {
 
       #description-edit-form {
         margin-bottom: 0px;
-        #add-description-submit { float: left; }
-        #cancel-add-description {
-          color: $mid-grey;
-          float: left;
-          font-size: $font-tiny;
-          margin: 0 0 0 10px;
-          position: relative;
-          text-decoration: underline;
-          top: 5px;
-        }
         .control-group { margin-bottom: 0px; }
         .description-body {
           color: black;
           margin-bottom: 10px;
+          padding-bottom: 10px;
         }
-        #description-input {
-          height: 90px;
-          margin-bottom: 5px;
-          width: 600px;
+        textarea{
+          margin-bottom: 4px;
         }
       }
 
@@ -188,11 +156,6 @@ body.discussions.show {
         .last-edited-by, .started-by { margin-bottom: 10px; }
         .user-name { white-space: nowrap; }
       }
-      #discussion-markdown-dropdown {
-        margin-right: 8px;
-        padding-right: 0px;
-      }
-      .long-description { padding-bottom: 10px; }
       .right-context { width: 265px; }
     }
   }
@@ -211,10 +174,6 @@ body.discussions.show {
       margin-top: -50px;
       display:block;
     }
-    #comment-markdown-dropdown li i {
-      display: inline-block;
-      width: 15px;
-    }
     #discussion-activity-body {
       padding: 10px 0px 10px 8px;
       .divider {
@@ -222,40 +181,33 @@ body.discussions.show {
         margin: 7px 15px 6px 0px;
       }
     }
-    #discussion-markdown-dropdown li i {
-      display: inline-block;
-      width: 15px;
-    }
     #new-comment-form {
       margin-bottom: 0px;
       padding: 0 0 10px 0;
       background-color: $comment-color;
-      img {
+      .avatar-canvas img {
         float:left;
         margin-right: 11px;
       }
-    }
-
-    .comment-toolbar {
-      float: right;
-      margin-top: -32px;
-      margin-right: -8px;
-      width: 78px;
-      .attachment-icon {
-        cursor: pointer;
-        margin-top: 6px;
+      #comment-form-container {
+        margin-left: 44px;
+        width: 396px;
+      }
+      textarea {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-bottom: 4px;
       }
     }
 
-    .comment-toolbar > * { display: inline-block; }
-
-    #comment-markdown-dropdown {}
-    .markdown-setting-dropdown {
-      margin-top: -2px;
+    #comment-toolbar {
+      #comment-formatting, #add-attachment-icon {
+        width: 20px;
+        padding: 4px 4px;
+      }
     }
 
-    textarea #new-comment {
-    }
     #new-comment {
       background: none;
       border: 0;
@@ -269,9 +221,7 @@ body.discussions.show {
         @include box-shadow(0, 0, 0, 0);
       }
     }
-    #post-new-comment {
-      margin: 8px 5px 5px 45px;
-    }
+
     /** Code block padding (Stops avatars destroying indentation) */
     pre {
       display: block;
@@ -320,31 +270,6 @@ body.discussions.show {
         font-style: italic;
         word-wrap: break-word;
       }
-      .activity-item-header{
-        blockquote p {
-          font-size: inherit;
-          font-weight: inherit;
-        }
-        blockquote, pre {
-          &:first-child {
-            clear: left;
-            position: relative;
-            top: -12px;
-            margin-bottom: -4px;
-           }
-        }
-        h1, h2, h3, h4, ol, ul {
-          &:first-child {
-            clear: left;
-            position: relative;
-            top: -12px;
-            margin-bottom: -12px;
-        }}
-        ol, p, ul {
-          color: $text-black;
-        }
-        p:last-child{margin-bottom: 2px;}
-      }
       .activity-item-likes{
         color: $dark-grey;
         font-size: $font-tiny;
@@ -390,9 +315,10 @@ body.discussions.show {
 /* Markdown styling */
 
 .activity-item-body .popover h3 { padding: 8px 14px; }
-.activity-item-body, .long-description, .motion .description {
+.activity-item-body, .motion .description, .markdown {
   p {
     word-wrap: break-word;
+    line-height: 18px;
   }
   ul, ol, li {
     margin-left: 10px;
@@ -403,34 +329,22 @@ body.discussions.show {
     list-style: disc;
     padding: 0 0 9px 0;
   }
-  ol{
-    padding: 0 0 9px 0;
-  }
-  ul ul, ol ul, ul ol, ol ol{
-    padding: 2px 0 6px 0;
-  }
-  h1, h2, h3, h4, h5, h6, h7{
+  ol{ padding: 0 0 9px 0; }
+  ul ul, ol ul, ul ol, ol ol{ padding: 2px 0 6px 0; }
+  h1, h2, h3, h4, h5, h6{
     display: block;
     padding: 4px 0px;
   }
-  h1{
-    font-size: 1.4em;
-  }
-  h2{
-    font-size: 1.3em;
-  }
-  h3{
-    font-size: 1.2em;
-  }
-  h4{
-    font-size: 1.1em;
-  }
-  h5{
-    font-size: 1.0em;
-  }
-  hr{
-    margin: 1em;
-  }
+  h1{ font-size: 1.4em; }
+  h2{ font-size: 1.3em; }
+  h3{ font-size: 1.2em; }
+  h4{ font-size: 1.1em; }
+  h5{ font-size: 1.0em; }
+  hr{ margin: 1em; }
+  h1, h2, h3, h4, ol, ul, blockquote, pre { &:first-child { clear: left; } }
+  ol, p, ul { color: $text-black; }
+  p:last-child{margin-bottom: 2px;}
+  blockquote p{font: inherit; line-height: 18px;}
 }
 
 /** Code block padding (Stops avatars destroying indentation) */

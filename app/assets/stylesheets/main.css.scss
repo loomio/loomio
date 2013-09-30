@@ -17,8 +17,15 @@ code{
 
 form {
   input, select, textarea {
-    width: 100%;
     color: #252525;
+    width: 100%;
+    /*forces box to be the same size as its parent element*/
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+  }
+  input[type=text], input[type=date_picker]{
+    height: 28px;
   }
   textarea {
     margin-bottom: 0;

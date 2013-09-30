@@ -3,13 +3,14 @@ When /^I choose to edit the discussion description$/ do
 end
 
 When /^I fill in and submit the discussion description form$/ do
-  @description_text = "This discussion is more interesting with _this markdown_"
-  fill_in "description-input", :with  => @description_text
+  description_text_markdown = "This discussion is more interesting with _this markdown_"
+  fill_in "wmd-input-discussion-description", :with  => description_text_markdown
   click_on("add-description-submit")
 end
 
 Then /^I should see the description change$/ do
-  find('#discussion-context').should have_content(@description_text)
+  description_text_rendered = "This discussion is more interesting with this markdown"
+  find('#discussion-context').should have_content(description_text_rendered)
 end
 
 Then /^I should see a record of my change in the discussion feed$/ do
@@ -18,10 +19,6 @@ end
 
 Then /^I should not see a link to edit the description$/ do
   page.should_not have_css("edit_description")
-end
-
-Then /^my global markdown preference should still be 'disabled'$/ do
-  find('#comment-markdown-dropdown').should have_css('.markdown-off')
 end
 
 Given /^there is a discussion in a group$/ do

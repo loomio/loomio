@@ -2,7 +2,7 @@ When /^I fill in the proposal details and submit the form$/ do
   @proposal_name = Faker::Lorem.sentence
   @proposal_description = Faker::Lorem.paragraph
   fill_in 'motion_name', with: @proposal_name
-  fill_in 'motion_description', with: @proposal_description
+  fill_in 'wmd-input-new-motion', with: @proposal_description
   click_on 'proposal-submit'
 end
 
@@ -28,7 +28,7 @@ end
 Then /^I should see the proposal details$/ do
   proposal_description = @proposal_description.length > 20 ? @proposal_description[0..19] : @proposal_description
   find('.motion-title').should have_content(@proposal_name)
-  find('.description').should have_content(proposal_description)
+  find('.current-proposal .description-body').should have_content(proposal_description)
 end
 
 Then(/^the time zone should match my time zone setting$/) do

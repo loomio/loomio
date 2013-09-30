@@ -152,8 +152,8 @@ describe DiscussionsController do
 
       it "calls add_comment on discussion" do
         uses_markdown = false
-        discussion.should_receive(:add_comment).with(user, "Hello!", uses_markdown: uses_markdown, attachments: nil)
-        xhr :post, :add_comment, comment: "Hello!", id: discussion.id, uses_markdown: uses_markdown
+        discussion.should_receive(:add_comment).with(user, "Hello!", attachments: nil)
+        xhr :post, :add_comment, comment: "Hello!", id: discussion.id
       end
 
       context "unsuccessfully" do

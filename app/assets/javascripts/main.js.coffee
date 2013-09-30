@@ -12,7 +12,7 @@ $ ->
   initializeDatepicker()
   initializeHelpNotices()
   collapseHomepageAccordian()
-
+  MarkdownSetup.init()
 
 ### EVENTS ###
 $ ->
@@ -180,7 +180,7 @@ Application.enableInlineEdition = ()->
   if $("body.groups.show").length > 0 || $("body.discussions.show").length > 0
     $(".edit-description").click((event) ->
       container = $(this).parents(".description-container")
-      description_height = container.find(".long-description").height()
+      description_height = container.find(".description-body").height()
       container.find(".description-body").toggle()
       container.find("#description-edit-form").toggle()
       if description_height > 90
@@ -193,6 +193,7 @@ Application.enableInlineEdition = ()->
       $(".discussion-additional-info").toggle()
       event.preventDefault()
       )
+
     $("#cancel-add-description").click (event) ->
       $("#description-edit-form").toggle()
       $(".description-body").toggle()
@@ -203,3 +204,7 @@ Application.enableInlineEdition = ()->
 # Placeholder shim
 $.placeholder.shim();
 
+# throws a warning if you try to navigate away from a page with unsaved form changes
+# todo: translate the warning message
+$ ->
+  $('.js-warn-before-navigating-away').safetynet()

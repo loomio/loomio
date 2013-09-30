@@ -20,9 +20,9 @@
 
   .row
     .span5
-      .description
-        .long-description
-          = render_rich_text(motion.description, false)
+      .description-body
+        .js-render-as-markdown.markdown
+          = preserve h(motion.description)
 
   .pie{id: "graph_#{motion.id}"}
   .percentage-to-vote

@@ -5,5 +5,7 @@ if(modal.is(":hidden")){
   modal.modal('show')
 }
 
-modal.html("<%= escape_javascript(render 'description_history')%>")
+modal.html("<%= j render 'description_history' %>")
+MarkdownSetup.render_markdown("#description-revision-history")
+
 modal.find("a.disabled").bind('click', false)

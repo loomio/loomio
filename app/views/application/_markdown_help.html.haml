@@ -1,0 +1,53 @@
+.modal.hide#wmd-help
+  .modal-header
+    %button.close{"data-dismiss" => "modal"}×
+    %h2 Formatting help
+  .modal-body
+    %strong Headers
+    %pre
+      :preserve
+        # This is a top-level header
+        ## This is an second-level header
+        ##### This is a fifth-level header
+    %strong Text styles
+    %pre
+      :preserve
+        *This text will be italic*
+        _This will also be italic_
+
+        **This text will be bold**
+        __This will also be bold__
+
+        *You **can** combine them*
+    %strong Unordered
+    %pre
+      :preserve
+        * Item 1
+        * Item 2
+    %strong Ordered
+    %pre
+      :preserve
+        1. Item 1
+        2. Item 2
+        3. Item 3
+    %strong Images
+    %p
+      To embed an image in a comment, first it needs to be hosted somewhere (<a href="http://imgur.com">imgur.com</a> is a good option), then you can include it like so:
+    %pre
+      :preserve
+        ![](http://path.to/image.jpg)
+    %strong Links
+    %pre
+      :preserve
+        To download a PDF version of the recipe,
+        [click here](https://example.com/scrambled-eggs.pdf).
+    %strong Blockquotes
+    %pre
+      :preserve
+        As my good friend said:
+
+        > I agree with what everyone
+        > has to say.
+
+  .modal-footer
+    = link_to t(:close), "#", "data-dismiss" => "modal", class: "btn btn-small btn-grey"
