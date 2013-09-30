@@ -16,4 +16,12 @@ module InvitationsHelper
       @invitation = Invitation.pending.find_by_token(session[:invitation_token])
     end
   end
+
+  def login_or_signup_path_for_email(email)
+    if User.email_taken?(email)
+      new_user_session_path
+    else
+      new_user_registration_path
+    end
+  end
 end

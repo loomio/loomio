@@ -34,7 +34,7 @@ describe PersonaController do
       end
 
       context 'unrecognised persona' do
-        let(:persona) {stub(:persona, user: nil, id: 1) }
+        let(:persona) {stub(:persona, user: nil, id: 1, email: 'test@example.com') }
 
         before do
           post :verify

@@ -7,11 +7,8 @@ When /^I write and submit a comment$/ do
 end
 
 When /^I enable comment markdown$/ do
-  view_screenshot
   find('#comment-markdown-dropdown-link .markdown-icon').click
-  view_screenshot
   find('#comment-markdown-dropdown .enable-markdown').click
-  view_screenshot
 end
 
 When /^I disable comment markdown$/ do

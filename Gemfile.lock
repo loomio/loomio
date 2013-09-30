@@ -109,11 +109,11 @@ GEM
       gherkin (~> 2.12.1)
       multi_json (>= 1.7.5, < 2.0)
       multi_test (>= 0.0.2)
-    cucumber-rails (1.3.1)
+    cucumber-rails (1.4.0)
       capybara (>= 1.1.2)
       cucumber (>= 1.2.0)
       nokogiri (>= 1.5.0)
-      rails (~> 3.0)
+      rails (>= 3.0.0)
     daemons (1.1.9)
     dalli (2.6.4)
     database_cleaner (1.1.1)
@@ -299,6 +299,9 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rack_session_access (0.1.1)
+      builder (>= 2.0.0)
+      rack (>= 1.0.0)
     rails (3.2.14)
       actionmailer (= 3.2.14)
       actionpack (= 3.2.14)
@@ -450,7 +453,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   coffee-rails
   country_select (~> 1.2.0)
-  cucumber-rails (~> 1.3.0)
+  cucumber-rails (~> 1.4.0)
   dalli
   database_cleaner (~> 1.1.1)
   delayed_job_active_record (~> 4.0.0)
@@ -492,6 +495,7 @@ DEPENDENCIES
   quiet_assets (~> 1.0.2)
   rabl (~> 0.8.6)
   rack-canonical-host (~> 0.0.8)
+  rack_session_access
   rails (~> 3.2.14)
   rails-backbone (~> 0.7.2)
   rb-fchange (~> 0.0.5)

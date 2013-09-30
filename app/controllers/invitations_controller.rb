@@ -42,11 +42,7 @@ class InvitationsController < ApplicationController
       redirect_to_group
     else
       save_invitation_token_to_session
-      if User.email_taken?(@invitation.recipient_email)
-        redirect_to new_user_session_path
-      else
-        redirect_to new_user_registration_path
-      end
+      redirect_to login_or_signup_path_for_email(@invitation.recipient_email)
     end
   end
 

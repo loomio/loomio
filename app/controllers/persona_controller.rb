@@ -17,13 +17,7 @@ class PersonaController < ApplicationController
         next_page = after_sign_in_path_for(persona.user)
       else
         save_persona_in_session(persona)
-        if invitation_token_in_session?
-          load_invitation_from_session
-          next_page = invitation_path(@invitation)
-        else
-          # unrecognised persona, and no invitation, so they better sign in 
-          next_page = new_user_session_path
-        end
+        next_page = login_or_signup_path_for_email(persona.email)
       end
     else
       flash[:error] = t(:persona_validation_failed)

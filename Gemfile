@@ -85,12 +85,13 @@ group :development do
 end
 
 group :test do
-  gem 'cucumber-rails', '~> 1.3.0', :require => false
+  gem 'cucumber-rails', '~> 1.4.0', :require => false
   gem 'email_spec', '~> 1.2.1'
   gem 'poltergeist', '~> 1.3.0'
   gem 'webmock', '~> 1.9.0'
   gem 'vcr', '~> 2.5.0'
   gem "codeclimate-test-reporter", require: nil
+  gem 'rack_session_access'
 end
 
 group :staging, :production do

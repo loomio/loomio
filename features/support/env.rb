@@ -18,6 +18,8 @@ require 'cucumber/rspec/doubles'
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
 
+require "rack_session_access/capybara"
+
 ENV["RAILS_ENV"] ||= test
 Capybara.default_selector = :css
 ActionController::Base.allow_rescue = false
