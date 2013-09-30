@@ -2,15 +2,11 @@
 @import "settings";
 @import "mixins";
 
-
-
 body.discussions.new, body.discussions.create {
   #discussion-submit {
-    float: left;
-    position: relative;
+    margin-right: 4px;
   }
 }
-
 
 body.discussions.show {
   #attachment-container {
@@ -125,9 +121,6 @@ body.discussions.show {
           padding-bottom: 10px;
         }
         textarea{
-          -webkit-box-sizing: border-box;
-          -moz-box-sizing: border-box;
-          box-sizing: border-box;
           margin-bottom: 4px;
         }
       }

@@ -59,9 +59,19 @@ MarkdownSetup.start_new_discussion_editor = () ->
   # toggle preview on and off
   preview = $('#wmd-preview-new-discussion');
   preview_button = $('#preview-new-discussion');
+  title_field = $('#discussion_title');
+  preview_title = $('#preview-title');
+  title_field.change -> preview_title.html(title_field.val())
   preview_button.click (event) ->
     preview.toggle 0, () -> preview_button.toggleClass('active')
-    $('#preview-title').html($('#discussion_title').val()).toggle()
+    preview_title.toggle()
+
+  # toggle formatting buttons on and off
+  button_bar = $('#wmd-button-bar-new-discussion');
+  formatting_button = $('#discussion-formatting')
+  formatting_button.click (event) ->
+    button_bar.toggle 0, () -> formatting_button.toggleClass('active')
+    $('#toolbar .tooltip').toggle()
 
 MarkdownSetup.start_new_motion_editor = () ->
   editor4 = new Markdown.Editor(MarkdownSetup.converter, '-new-motion', {handler: MarkdownSetup.showHelp});
@@ -70,9 +80,12 @@ MarkdownSetup.start_new_motion_editor = () ->
   # toggle preview on and off
   preview = $('#wmd-preview-new-motion');
   preview_button = $('#preview-new-motion');
+  title_field = $('#motion_name');
+  preview_title = $('#preview-title');
+  title_field.change -> preview_title.html(title_field.val())
   preview_button.click (event) ->
     preview.toggle 0, () -> preview_button.toggleClass('active')
-    $('#preview-title').html($('#motion_name').val()).toggle()
+    preview_title.toggle()
 
   # toggle formatting buttons on and off
   button_bar = $('#wmd-button-bar-new-motion');

@@ -1,24 +1,6 @@
+.wmd-input { height: 300px; }
 
-.wmd-panel {
-	width: 100%;
-}
-
-.wmd-input { 
-	height: 300px;
-	width: 100%;
-	box-sizing: border-box;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-}
-
-.wmd-preview {
-	width: 100%;
-	box-sizing: border-box;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-}
+.wmd-preview { width: 100%; }
 
 .wmd-button-bar {
 	margin: 0 0 4px 0;
@@ -35,6 +17,7 @@
 		width: 70%;
 		float: right;
 	}
+  &#wmd-button-bar-new-discussion, &#wmd-button-bar-new-motion{ margin-bottom: 8px; }
 }
 
 .icon-link,
@@ -56,14 +39,7 @@
 .icon-hr-line           { background-position: -144px 0; }
 .icon-undo               { background-position: -168px 0; }
 
-
-
-
-
-.wmd-prompt-background
-{
-	background-color: Black;
-}
+.wmd-prompt-background{	background-color: Black; }
 
 .wmd-prompt-dialog
 {
@@ -75,7 +51,6 @@
 	font-size: 0.8em;
 	font-family: arial, helvetica, sans-serif;
 }
-
 
 .wmd-prompt-dialog > form > input[type="text"] {
 	border: 1px solid #999999;

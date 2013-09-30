@@ -10,9 +10,12 @@
           = f.input :group_id, :as => :hidden
       = f.input :title, autofocus: true
       = f.input :description,  input_html: { id: "wmd-input-new-discussion" }
-      #wmd-button-bar-new-discussion.wmd-button-bar
+      #wmd-button-bar-new-discussion.wmd-button-bar.hide
       = f.submit :class => "btn btn-success", id: "discussion-submit", :data => {:disable_with => t("helpers.submit.discussion.create")}
       %a.btn{id: 'preview-new-discussion'}= "Preview"
+      .pull-right#toolbar
+        %a.btn#discussion-formatting{'data-title' => 'Show formatting options'}
+          %i.icon-font
       %h2#preview-title.hide
       #wmd-preview-new-discussion.hide.markdown
 
