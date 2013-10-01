@@ -40,7 +40,7 @@ class Ability
 
     can [:add_subgroup,
         :edit_description,
-        :get_members], Group do |group|
+        :members_autocomplete], Group do |group|
       @member_group_ids.include?(group.id)
     end
 

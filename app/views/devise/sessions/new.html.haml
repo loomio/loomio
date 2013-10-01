@@ -2,6 +2,18 @@
   %section#sign-in
     .inner-container
       .row-fluid
+        .span6.offset3
+          %h2
+            - if @invitation
+              - if @invitation.to_start_group?
+                = t :"start_group.sign_in_intro"
+              - else
+                = t :"join_group.sign_in_intro"
+            - else
+              = t :sign_in
+      .row-fluid
         .span6#signin_container
-          %h1= t :sign_in
+          = render 'devise/shared/persona_sign_in_button'
+      .row-fluid
+        .span6#signin_container
           = render "form"

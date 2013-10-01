@@ -1,12 +1,20 @@
 class BaseController < ApplicationController
   include AutodetectTimeZone
-  before_filter :authenticate_user!, :check_browser, :check_for_invitation, :load_announcements
-  before_filter :set_time_zone_from_javascript
+  include OmniauthAuthenticationHelper
+
+  before_filter :authenticate_user!, :check_browser
+
+  before_filter :check_for_omniauth_authentication,
+                :check_for_invitation,
+                :load_announcements,
+                :set_time_zone_from_javascript, if: :user_signed_in?
+
   helper_method :time_zone
 
   def permitted_params
     @permitted_params ||= PermittedParams.new(params, current_user)
   end
+
   helper_method :permitted_params
 
   protected
@@ -18,13 +26,11 @@ class BaseController < ApplicationController
   end
 
   def check_browser
-    if browser.ie6? # || browser.ie7?
-      redirect_to browser_not_supported_url
-    end
+    redirect_to browser_not_supported_url if browser.ie6?
   end
 
   def check_for_invitation
-    if session[:invitation_token] and user_signed_in?
+    if session[:invitation_token]
       redirect_to invitation_path(session[:invitation_token])
     end
   end

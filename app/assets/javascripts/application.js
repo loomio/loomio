@@ -6,12 +6,13 @@
 
 //= require lib/excanvas
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
+//= require jquery.ui.datepicker
+//= require jquery.ui.sortable
 //= require jqplot
 //= require jqplot/plugins/pieRenderer
+//= require jquery.caret
 //= require jquery.atwho
-//= require lib/jquery.tokeninput
 //= require lib/jquery.mousewheel
 //= require lib/jquery.placeholder
 //= require lib/moment.min
