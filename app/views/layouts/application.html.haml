@@ -6,7 +6,6 @@
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    %link{:href => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/flick/jquery-ui.css", :rel => "stylesheet", :type => "text/css"}
     = render 'social_metadata', :description => @meta_description, :title => @meta_title
 
   %body{class: "#{controller_name} #{action_name}"}
