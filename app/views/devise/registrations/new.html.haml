@@ -3,8 +3,18 @@
     .inner-container
       .row
         .span6.offset3
-          %h2 Sign up
+          %h2
+            - if @invitation
+              - if @invitation.to_start_group?
+                = t :"start_group.header"
+              -else
+                = t(:"join_group.header", who: @invitation.inviter_name, group_name: @invitation.group_name)
+            - else
+              = t :sign_up
           = render "devise/registrations/form"
+      .row-fluid
+        .span6#signin_container
+          = render 'devise/shared/persona_sign_in_button'
       .row
         .span6.offset3
           %h3= t :"or_sign_in_html", link: user_session_path

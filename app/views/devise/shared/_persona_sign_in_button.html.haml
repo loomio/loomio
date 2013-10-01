@@ -1,0 +1,7 @@
+-if omniauth_authenticated_and_waiting?
+  - load_omniauth_authentication_from_session
+  You're authenticated via #{@omniauth_authentication.provider} as #{@omniauth_authentication.email}, sign into your Loomio account to link up.
+-else
+  = link_to 'Sign in with Google', user_omniauth_authorize_path(:google)
+  = link_to 'Sign in with Facebook', user_omniauth_authorize_path(:facebook)
+  = link_to 'Sign in with Persona', user_omniauth_authorize_path(:browser_id)

@@ -1,5 +1,4 @@
 Loomio::Application.routes.draw do
-
   ActiveAdmin.routes(self)
 
   namespace :admin do
@@ -11,7 +10,8 @@ Loomio::Application.routes.draw do
   resource :search, only: :show
 
   devise_for :users, controllers: { sessions: 'users/sessions',
-                                    registrations: 'users/registrations' }
+                                    registrations: 'users/registrations',
+                                    omniauth_callbacks: 'users/omniauth_callbacks' }
 
   get "/inbox", to: "inbox#index", as: :inbox
   get "/inbox/size", to: "inbox#size", as: :inbox_size
