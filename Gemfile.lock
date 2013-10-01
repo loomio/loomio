@@ -470,7 +470,7 @@ DEPENDENCIES
   httparty (~> 0.11.0)
   inherited_resources (~> 1.4.1)
   jqplot-rails (~> 0.3)
-  jquery-atwho-rails (~> 0.1.6)
+  jquery-atwho-rails (~> 0.1.5)
   jquery-fileupload-rails (~> 0.4.1)
   jquery-rails (= 2.3.0)
   kaminari (~> 0.13.0)

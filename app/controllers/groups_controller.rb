@@ -87,14 +87,9 @@ class GroupsController < GroupBaseController
     @group.save!
   end
 
-  def get_members
-    @users = @group.users
-    if (params[:pre].present?)
-      @users = @users.select { |user| user.username =~ /#{params[:pre]}/ }
-    end
-    respond_to do |format|
-      format.json { render 'groups/users' }
-    end
+  def members_autocomplete
+    users = @group.users.where('username ilike :term or name ilike :term ', {term: "%#{params[:pre]}%"})
+    render json: users.map{|u| [u.name, u.username] }
   end
 
   def edit_privacy
