@@ -16,6 +16,8 @@
 //= require lib/moment.min
 //= require lib/jquery.sparkline.min
 //= require lib/jquery.html5-placeholder-shim
+//= require lib/jquery.safetynet
+//= require lib/jquery.netchanger.min
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require underscore
