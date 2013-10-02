@@ -8,8 +8,8 @@
           = f.collection_select :group_id, user_groups.sort{|a,b| a.full_name <=> b.full_name}, :id, :full_name
         - else
           = f.input :group_id, :as => :hidden
-      = f.input :title, autofocus: true
-      = f.input :description
+      = f.input :title, autofocus: true, input_html: {class: 'js-warn-before-navigating-away'}
+      = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}
       = f.hidden_field 'uses_markdown', value: @uses_markdown, id: 'global-uses-markdown'
       = f.submit :class => "btn btn-large btn-info", id: "discussion-submit", :data => {:disable_with => t("helpers.submit.discussion.create")}
       .dropdown#discussion-markdown-dropdown.global-markdown-setting
