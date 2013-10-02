@@ -7,5 +7,5 @@ class RequestMembership
       Events::MembershipRequested.publish!(membership_request)
     end
     membership_request
-  end 
+  end
 end

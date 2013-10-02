@@ -20,6 +20,8 @@ class NotificationItem
         NotificationItems::CommentLiked.new(notification)
       when "membership_requested"
         NotificationItems::MembershipRequested.new(notification)
+      when "membership_request_approved"
+        NotificationItems::MembershipRequestApproved.new(notification)
       when "user_added_to_group"
         NotificationItems::UserAddedToGroup.new(notification)
       when "user_mentioned"
