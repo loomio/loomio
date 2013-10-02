@@ -49,7 +49,3 @@ Then(/^I should see buttons for all the different plans$/) do
   page.should have_link('$100/month', :href => "/groups/#{@group.id}/subscription?amount=100")
   page.should have_link('$200/month', :href => "/groups/#{@group.id}/subscription?amount=200")
 end
-
-When(/^view screenshot$/) do
-  view_screenshot
-end

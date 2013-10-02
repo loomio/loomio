@@ -1,5 +1,4 @@
 Loomio::Application.routes.draw do
-
   ActiveAdmin.routes(self)
 
   namespace :admin do
@@ -11,7 +10,8 @@ Loomio::Application.routes.draw do
   resource :search, only: :show
 
   devise_for :users, controllers: { sessions: 'users/sessions',
-                                    registrations: 'users/registrations' }
+                                    registrations: 'users/registrations',
+                                    omniauth_callbacks: 'users/omniauth_callbacks' }
 
   get "/inbox", to: "inbox#index", as: :inbox
   get "/inbox/size", to: "inbox#size", as: :inbox_size
@@ -30,13 +30,18 @@ Loomio::Application.routes.draw do
   end
 
   resources :groups, except: [:index, :new] do
+    resources :motions
+    resources :discussions, only: [:index, :new]
+
     resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
+
     resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
       member do
        post :make_admin
        post :remove_admin
       end
     end
+
     resource :subscription, only: [:new, :show, :create], controller: 'groups/subscriptions' do
       collection do
         get :confirm
@@ -44,19 +49,18 @@ Loomio::Application.routes.draw do
       end
     end
 
-    get :setup, on: :member, to: 'groups/group_setup#setup'
-    put :finish, on: :member, to: 'groups/group_setup#finish'
-
-    post :add_members, on: :member
-    post :hide_next_steps, on: :member
-    get :add_subgroup, on: :member
-
-    resources :motions
-    resources :discussions, only: [:index, :new]
-    post :email_members, on: :member
-    post :edit_description, on: :member
-    post :edit_privacy, on: :member
-    delete :leave_group, on: :member
+    member do
+      get :setup, to: 'groups/group_setup#setup'
+      put :finish, to: 'groups/group_setup#finish'
+      post :add_members
+      post :hide_next_steps
+      get :add_subgroup
+      get :members_autocomplete
+      post :email_members
+      post :edit_description
+      post :edit_privacy
+      delete :leave_group
+    end
   end
 
   get 'groups/:group_id/request_membership',   to: 'groups/membership_requests#new',          as: :new_group_membership_request
@@ -72,7 +76,6 @@ Loomio::Application.routes.draw do
   end
 
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
-  match "/groups/:id/members", :to => "groups#get_members", :as => :get_members, :via => :get
 
   resources :motions do
     resources :votes, only: [:new, :edit, :create, :update]
