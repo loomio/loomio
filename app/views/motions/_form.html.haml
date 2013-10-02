@@ -4,14 +4,14 @@
     .row
       .span5
         %p= t "motion_form.name_helper"
-        = f.input :name, id: "motion-name"
+        = f.input :name, id: "motion-name", input_html: {class: 'js-warn-before-navigating-away'}
     .row
       .span9
         = render 'motions/close_at_inputs', form: f, user: @current_user
     .row
       .span5
         #description
-          = f.input :description
+          = f.input :description, input_html: {class: 'js-warn-before-navigating-away'}
 
         = f.input :discussion_id, as: :hidden, input_html: {value: @motion.discussion_id}
         = f.submit :class => "btn btn-large btn-info run-validations", id: "proposal-submit", :data => {:disable_with => t("helpers.submit.motion.create")}
