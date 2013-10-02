@@ -18,6 +18,8 @@ require 'cucumber/rspec/doubles'
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
 
+require "rack_session_access/capybara"
+
 ENV["RAILS_ENV"] ||= test
 Capybara.default_selector = :css
 ActionController::Base.allow_rescue = false
@@ -33,6 +35,7 @@ ENV['PAYPAL_GATEWAY_URL'] = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_
 ENV['AWS_ACCESS_KEY_ID']="notarealaccesskeyid"
 ENV['AWS_SECRET_ACCESS_KEY']="notarealsecretaccesskey"
 ENV['AWS_ATTACHMENTS_BUCKET']="notarealbucker"
+ENV['DEVISE_SECRET'] = 'testvalueaskjdhakjdhaksjhdkajhdkjahdkjashkjdhakjdh'
 
 # Before do |scenario|
 #   @feature_name = scenario.feature.title
