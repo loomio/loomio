@@ -3,7 +3,7 @@
     = render 'avatar', user: current_user, size: "medium", kind: nil, id: nil
     #comment-input{ data: {group: @group.id} }
       .form-container
-        = text_area_tag 'comment', "", id: 'new-comment', placeholder: t(:comment_form_placeholder)
+        = text_area_tag 'comment', "", id: 'new-comment', class: 'js-warn-before-navigating-away', placeholder: t(:comment_form_placeholder)
         #attachment-container
 
       = hidden_field_tag 'uses_markdown', @uses_markdown, {id: 'global-uses-markdown'}

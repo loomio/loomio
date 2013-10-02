@@ -203,3 +203,7 @@ Application.enableInlineEdition = ()->
 # Placeholder shim
 $.placeholder.shim();
 
+# throws a warning if you try to navigate away from a page with unsaved form changes
+# todo: translate the warning message
+$ ->
+  $('.js-warn-before-navigating-away').safetynet()
