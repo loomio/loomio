@@ -8,7 +8,7 @@ describe NotificationsController do
 
   before do
     sign_in user
-    user.stub(:notifications => notifications)
+    user.stub_chain(:notifications, :order, :includes).and_return(notifications)
     controller.stub(:get_notifications)
   end
 

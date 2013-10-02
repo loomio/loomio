@@ -1,9 +1,9 @@
 class Events::MembershipRequestApproved < Event
   after_create :notify_users!
 
-  def self.publish!(membership)
+  def self.publish!(membership, approver)
     UserMailer.delay.group_membership_approved(membership.user, membership.group)
-    create!(:kind => "membership_request_approved", :eventable => membership)
+    create!(:kind => "membership_request_approved", :user => approver, :eventable => membership)
   end
 
   def membership
