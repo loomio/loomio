@@ -1,0 +1,38 @@
+-if omniauth_authenticated_and_waiting?
+  - load_omniauth_authentication_from_session
+  %p
+    %small
+      We will link up your existing Loomio account to #{@omniauth_authentication.provider.titleize}
+-else
+  = link_to user_omniauth_authorize_path(:google), class: 'btn btn-google btn-large login' do
+    %i.icon-google-plus.icon
+    Sign in with Google
+
+  = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-facebook btn-large login' do
+    %i.icon-facebook.icon
+    Sign in with Facebook
+
+  = link_to '#', class: 'btn btn-persona btn-large login', id: 'persona-login-btn', onclick: 'PersonaLogin(); return false' do
+    %i.icon-user.icon
+    Sign in with Persona
+  .separator-container
+    .separator
+      = "or"
+  %h3 Log in with with your email
+
+:javascript
+  function PersonaLogin() {
+    if (navigator.id) {
+      navigator.id.get(function(assertion) {
+        if (assertion) {
+          $('input[name=assertion]').val(assertion);
+          $('#persona_form').submit();
+        } else {
+          window.location = "#{root_url}"
+        }
+      });
+    }
+  }
+
+%form#persona_form{action: user_omniauth_callback_path(:browser_id)}
+  %input{type: 'hidden', name: 'assertion'}

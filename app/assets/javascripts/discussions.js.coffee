@@ -21,18 +21,14 @@ $ ->
 
 $ ->
   if $("body.discussions.show").length > 0
-    $("textarea").atWho "@",
-      cache: false
-      tpl: "<li id='${id}' data-value='${username}'> ${name} <small> @${username}</small></li>"
-      callback: (query, callback) ->
-        group = $("#comment-input").data("group")
-        $.get "/groups/#{group}/members", pre: query, ((result) ->
-            #TODO tidy this up
-            names = _.toArray(result)
-            names = _.map names, (name) ->
-              _.toArray(name)
-            callback _.toArray(names)
-        ), "json"
+    autocomplete_path = $('#comment-input').data('autocomplete-path')
+    $("textarea").atwho
+      at: '@'
+      tpl: "<li id='${id}' data-value='@${username}'> ${real_name} <small> @${username}</small></li>"
+      callbacks:
+        remote_filter: (query, callback) ->
+          $.getJSON autocomplete_path, {q: query} , (data) ->
+            callback(data)
 
 
 # Global Markdown (new discussion & comments)
