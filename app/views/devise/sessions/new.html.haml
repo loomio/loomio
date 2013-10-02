@@ -2,6 +2,18 @@
   %section#sign-in
     .inner-container
       .row-fluid
-        .span6#signin_container
-          %h1= t :sign_in
-          = render "form"
+        .span6.offset3
+          %h1
+            - if @invitation
+              - if @invitation.to_start_group?
+                = t :"start_group.sign_in_intro"
+              - else
+                = t :"join_group.sign_in_intro"
+            - else
+              = t :sign_in
+          .signin_container
+            = render 'devise/shared/omniauth_buttons'
+            .separator-container
+              .separator
+                = "or"
+            = render "form"

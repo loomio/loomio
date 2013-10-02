@@ -3,8 +3,20 @@
     .inner-container
       .row
         .span6.offset3
-          %h2 Sign up
-          = render "devise/registrations/form"
+          %h1
+            - if @invitation
+              - if @invitation.to_start_group?
+                = t :"start_group.header"
+              -else
+                = t(:"join_group.header", who: @invitation.inviter_name, group_name: @invitation.group_name)
+            - else
+              = t :sign_up
+          .signin_container
+            = render 'devise/shared/omniauth_buttons'
+            .separator-container
+              .separator
+                = "or"
+            = render "form"
       .row
         .span6.offset3
           %h3= t :"or_sign_in_html", link: user_session_path

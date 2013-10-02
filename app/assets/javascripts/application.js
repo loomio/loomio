@@ -6,8 +6,9 @@
 
 //= require lib/excanvas
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
+//= require jquery.ui.datepicker
+//= require jquery.ui.sortable
 //= require jqplot
 //= require jqplot/plugins/pieRenderer
 //= require lib/jquery.tokeninput
