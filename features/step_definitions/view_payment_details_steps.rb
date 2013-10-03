@@ -12,7 +12,7 @@ end
 
 When(/^I select Payment details$/) do
   find("#group-options").click
-  click_on "Payment details"
+  click_on "Group subscription"
 end
 
 Then(/^I should see the payment details for my group$/) do
@@ -29,16 +29,11 @@ Given(/^I am a member of a subscription group$/) do
 end
 
 Then(/^I should not see a link to payment details$/) do
-  page.should_not have_content("Payment details")
+  page.should_not have_content("Group subscription")
 end
 
 When(/^I visit the payment details page$/) do
   visit group_subscription_path(@group)
-end
-
-Given(/^I am a coordinator of a PWYC group$/) do
-  @group = FactoryGirl.create :group, payment_plan: 'pwyc'
-  @group.add_admin!(@user)
 end
 
 When(/^I visit the new subscription plan page$/) do

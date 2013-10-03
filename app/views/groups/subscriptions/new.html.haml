@@ -1,28 +1,32 @@
-.row
-  .span9
-    - set_title @group.name, "", @group.parent
-    = render '/groups/title', group: @group
-.row
-  .span5
-    %h1 Select your plan
-
-.row
-  .span12#please-wait.hidden
-    Redirecting you to PayPal, please wait...
-.row#payment-options
-  .span9
-    = render 'payment_option', option_color: 'lt-blue', people: 10, amount: 30, group: @group
-    = render 'payment_option', option_color: 'lime', people: 25, amount: 50, group: @group
-    = render 'payment_option', option_color: 'yellow', people: 50, amount: 100, group: @group
-    = render 'payment_option', option_color: 'orange', people: 100, amount: 200, group: @group
-    #us-dollars Prices are in US dollars
+- set_title @group.name, 'Group subscription', @group.parent
+= render '/groups/title', group: @group
+.row.iconrow
+  .span2
+    = image_tag 'loomio-users.png'
   .span7
-    #footer
-      %p
-        Money shouldn’t be a barrier to good collaborative decision-making. If your group is larger than 100 people, or if this fee is outside your means, talk to us:
-        = mail_to "accounts@loomio.org"
-    #note-about-paypal
-      %p
-        Our payment system currently uses Paypal. If you can't use Paypal, please contact us at
-        = mail_to "accounts@loomio.org"
-        to set up a payment method that works for you.
+    %h1 You choose how much to pay
+.row
+  .span7.offset2
+    %p
+      Groups with a budget typically choose a monthly rate of about
+      %span $2 - $5 per person.
+    %p
+      %em (e.g. business, government, community orgs)
+
+    %p
+      If your group is flat broke, you can even
+      %span
+        choose $0!
+.row.iconrow
+  .span2
+    = image_tag 'colablove.png', id: 'colablove'
+  .span5
+    = simple_form_for @subscription_form, url: checkout_group_subscription_path(@group) do |f|
+      %h2 Set your group subscription:
+      = f.input :preset_amount, collection: @subscription_form.amounts, as: :radio_buttons, label: false
+      #lovenote.hidden
+        &hearts; We'll still love you, even if you can't afford a group subscription. The other members of your group will have an opportunity to contribute later. &hearts;
+
+      %input{type: 'submit', id: 'subscription-submit', value: 'Pay now with Paypal', class: 'btn btn-success btn-block btn-large', data: {disable_with: 'Pay now with Paypal'}}
+
+    %p.small Amounts are in USD. You can change your payment at any time.
