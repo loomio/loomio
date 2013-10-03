@@ -76,8 +76,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'meta_request', '~> 0.2.4'
-  gem 'better_errors', '~> 0.6.0'
   gem 'guard', '~> 1.6.1'
   gem 'guard-spork', '~> 1.4.1'
   gem 'guard-rspec', '~> 2.3.3'
@@ -88,6 +86,9 @@ group :development do
   gem 'spork-rails', '~> 3.2.1'
   gem 'awesome_print', '~> 1.0.2'
   gem 'quiet_assets', '~> 1.0.2'
+  gem 'meta_request'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
