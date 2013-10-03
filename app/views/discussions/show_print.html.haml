@@ -1,35 +1,47 @@
 - set_title @group.name, @discussion.title, @group.parent
-=render '/groups/title', group: @group
+= render 'title', discussion: @discussion
+= render '/groups/title', group: @group
 .row
-  .span12
-    .selector-panel
-      = render 'title', discussion: @discussion
-      #discussion-content-container
-        #discussion-context= render 'discussion_context'
-        .row
-          .span6#content-comments
-            .large-icon.discussion-icon.enabled-icon
-            %h3.header-text= t :discussion
-            #discussion-activity-body
-              
-              #activity-feed
-                = render 'activity', items: @activity
-
-          .span6#content-proposal
-            .large-icon.decision-icon
-            %h3.header-text= t :current_decision
-            .content-proposal-body
-              %ul.selector-list
-
-            - if @discussion.closed_motions.present?
-              #previous-proposals
-                .clearfix
-                  .large-icon.decision-icon
-                  %h3.header-text= t :previous_decisions
-                .content-proposal-body
-                  %ul.selector-list
-                    - @discussion.closed_motions.each do |closed_motion|
-                      - if closed_motion == @displayed_motion
-                        %li.selector-item= render closed_motion, this_group: @group
-                      - else
-                        %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
+  .span8
+    = render 'description', discussion: @discussion, description: @discussion.description, description_markdown_setting: @discussion.uses_markdown
+  .span8
+    = t("discussion_context.started_html",
+    when: time_ago_in_words(@discussion.created_at),
+    who: @discussion.author.name,
+    link: user_path(@discussion.author),
+    link_class: 'user-name')
+    - if @last_collaborator.present?
+      .last-edited-by
+        = t("discussion_context.last_edited_html",
+        when: time_ago_in_words(@discussion.last_versioned_at),
+        who: @last_collaborator.name,
+        link: user_path(@last_collaborator),
+        link_class: 'user-name')
+  .span8
+    .large-icon.discussion-icon.enabled-icon
+    %h3.header-text
+      = t :discussion
+    #discussion-activity-body
+      #activity-feed
+        = render 'activity', items: @activity
+  #content-proposal.span6
+    .large-icon.decision-icon
+    %h3.header-text
+      = t :current_decision
+    .content-proposal-body
+      %ul.selector-list
+    - if @discussion.closed_motions.present?
+      #previous-proposals
+        .clearfix
+          .large-icon.decision-icon
+          %h3.header-text
+            = t :previous_decisions
+        .content-proposal-body
+          %ul.selector-list
+            - @discussion.closed_motions.each do |closed_motion|
+              - if closed_motion == @displayed_motion
+                %li.selector-item
+                  = render closed_motion, this_group: @group
+              - else
+                %li.selector-item
+                  = render '/motions/motion_preview', motion: closed_motion, this_group: @group
