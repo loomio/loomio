@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title= display_title @unviewed_notifications
+    <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %link{:href => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/flick/jquery-ui.css", :rel => "stylesheet", :type => "text/css"}
+    
+  %body{class: "#{controller_name} #{action_name}"}
+    .main-container.container
+      .page-container
+        = yield
+
+
