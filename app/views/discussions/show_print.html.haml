@@ -6,14 +6,14 @@
     = render 'description', discussion: @discussion, description: @discussion.description, description_markdown_setting: @discussion.uses_markdown
   .span8
     = t("discussion_context.started_html",
-    when: time_ago_in_words(@discussion.created_at),
+    when: time_tag(@discussion.created_at),
     who: @discussion.author.name,
     link: user_path(@discussion.author),
     link_class: 'user-name')
     - if @last_collaborator.present?
       .last-edited-by
         = t("discussion_context.last_edited_html",
-        when: time_ago_in_words(@discussion.last_versioned_at),
+        when: time_tag(@discussion.last_versioned_at),
         who: @last_collaborator.name,
         link: user_path(@last_collaborator),
         link_class: 'user-name')

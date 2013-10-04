@@ -23,7 +23,7 @@ body.discussions.new, body.discussions.create {
 }
 
 
-body.discussions.show {
+body.discussions.show, body.discussions.show_print {
   .form-container {
     border: 1px solid #cccccc;
     @include border-radius(4px);
