@@ -326,7 +326,9 @@ en:
 
   discussion_context:
     started_html: "Started %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    started_html_print: "Started on %{when} by %{who}"
     last_edited_html: "Last edited %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    last_edited_html_print: "Last edited on %{when} by %{who}"
     see_revision_history: "See revision history"
 
   description_history:
@@ -365,7 +367,9 @@ en:
   proposal_close_date_error: "Please give a future close date"
   proposal_closing_when: "Closing in %{when}"
   proposal_closed_when: "Closed %{when} ago"
+  proposal_closed_when_print: "Closed on %{when}"
   proposed_when_by_who: "Proposed by %{who} %{when} ago"
+  proposed_when_by_who_print: "Proposed by %{who} on %{when}"
   engagement_on_open_proposal: "%{percent}%% of members have stated their position (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% of members stated their position (%{numerator}/%{denominator})"
 

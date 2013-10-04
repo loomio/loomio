@@ -5,15 +5,15 @@
   .span8
     = render 'description', discussion: @discussion, description: @discussion.description, description_markdown_setting: @discussion.uses_markdown
   .span8
-    = t("discussion_context.started_html",
-    when: time_tag(@discussion.created_at),
+    = t("discussion_context.started_html_print",
+    when: @discussion.created_at.to_date,
     who: @discussion.author.name,
     link: user_path(@discussion.author),
     link_class: 'user-name')
     - if @last_collaborator.present?
       .last-edited-by
-        = t("discussion_context.last_edited_html",
-        when: time_tag(@discussion.last_versioned_at),
+        = t("discussion_context.last_edited_html_print",
+        when: @discussion.last_versioned_at.to_date,
         who: @last_collaborator.name,
         link: user_path(@last_collaborator),
         link_class: 'user-name')

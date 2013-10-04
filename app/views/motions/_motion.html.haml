@@ -9,9 +9,15 @@
         - if motion.voting?
           = t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
         - else
-          %span= t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
+          - if action_name != 'show_print'
+            %span= t(:proposal_closed_when, when: time_ago_in_words(motion.closed_at))
+          - else
+            %span= t(:proposal_closed_when_print, when: motion.closed_at.to_date)
       .proposed-by
-        = t(:proposed_when_by_who, when: time_ago_in_words(motion.created_at), who: motion.author_name)
+        - if action_name != 'show_print'
+          = t(:proposed_when_by_who, when: time_ago_in_words(motion.created_at), who: motion.author_name)
+        - else
+          = t(:proposed_when_by_who_print, when: motion.created_at.to_date, who: motion.author_name)
     .span2.motion-admin-buttons
       = render '/motions/admin_buttons', motion: motion unless motion.closed?
   .row

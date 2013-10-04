@@ -10,7 +10,7 @@
           when: time_ago_in_words(@discussion.created_at),
           who: @discussion.author.name,
           link: user_path(@discussion.author),
-          link_class: 'user-name')
+          link_class: 'user-name') 
       -if @last_collaborator.present?
         .last-edited-by
           = t("discussion_context.last_edited_html",
