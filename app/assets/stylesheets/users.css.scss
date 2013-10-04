@@ -1,7 +1,7 @@
 @import "settings";
 @import "mixins";
 
-body.users.show {
+body.users.show, body.users.show_print {
   p.email, p.username {
     font-size: 1.4em;
     margin-top: .4em;

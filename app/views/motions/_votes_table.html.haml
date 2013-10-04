@@ -15,4 +15,5 @@
     .position-row.clearfix
       .activity-icon= image_tag "questionmark.png"
       = link_to user.name, user_path(user), class: 'user-name'
-= link_to t(:not_voted), '#', class: 'toggle-yet-to-vote'
+- if action_name != 'show_print'
+  = link_to t(:not_voted), '#', class: 'toggle-yet-to-vote'
