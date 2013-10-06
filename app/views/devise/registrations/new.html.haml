@@ -3,8 +3,15 @@
     .inner-container
       .row
         .span6.offset3
-          %h2 Sign up
-          = render "devise/registrations/form"
-      .row
-        .span6.offset3
-          %h3= t :"or_sign_in_html", link: user_session_path
+          %h1
+            - if @invitation
+              - if @invitation.to_start_group?
+                = t :"start_group.header"
+              -else
+                = t(:"join_group.header", who: @invitation.inviter_name, group_name: @invitation.group_name)
+            - else
+              = t :create_an_account
+          .signin_container
+            = render "form"
+  .terms
+    =t(:terms_of_service_html, button_text: t(:"devise.registrations.sign_up"), link_path: terms_of_service_path)

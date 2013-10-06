@@ -1,4 +1,5 @@
 class InvitationsController < ApplicationController
+  include InvitationsHelper
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error',
@@ -21,7 +22,11 @@ class InvitationsController < ApplicationController
 
 
   def show
-    load_invitation
+    @invitation = Invitation.find_by_token(params[:id])
+
+    if @invitation.nil?
+      raise ActiveRecord::RecordNotFound
+    end
 
     if @invitation.cancelled?
       raise Invitation::InvitationCancelled
@@ -33,48 +38,21 @@ class InvitationsController < ApplicationController
 
     if current_user
       AcceptInvitation.and_grant_access!(@invitation, current_user)
-      clear_token_from_session
+      clear_invitation_token_from_session
       redirect_to_group
     else
-      save_token_to_session
-      render_signup_form
+      save_invitation_token_to_session
+      redirect_to new_user_session_path
     end
   end
 
   private
-  def clear_token_from_session
-    session[:invitation_token] = nil
-  end
-
-  def save_token_to_session
-    session[:invitation_token] = params[:id]
-  end
-
-  def load_invitation
-    @invitation = Invitation.find_by_token(params[:id])
-
-    if @invitation.nil?
-      raise ActiveRecord::RecordNotFound
-    end
-  end
 
   def redirect_to_group
     if @invitation.group.admins.include? current_user
       redirect_to setup_group_path(@invitation.group.id)
     else
       redirect_to @invitation.group
-    end
-  end
-
-  def render_signup_form
-    @user = User.new
-    if @invitation.intent == 'join_group'
-      @user.email = @invitation.recipient_email
-      render template: 'invitations/join_group', layout: 'pages'
-    else
-      @user.name = @invitation.group_request_admin_name
-      @user.email = @invitation.recipient_email
-      render template: 'invitations/start_group', layout: 'pages'
     end
   end
 end

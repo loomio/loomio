@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130919003502) do
+ActiveRecord::Schema.define(:version => 20130930094813) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -429,6 +429,20 @@ ActiveRecord::Schema.define(:version => 20130919003502) do
   add_index "notifications", ["event_id"], :name => "index_notifications_on_event_id"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
+  create_table "omniauth_identities", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+  end
+
+  add_index "omniauth_identities", ["email"], :name => "index_personas_on_email"
+  add_index "omniauth_identities", ["provider", "uid"], :name => "index_omniauth_identities_on_provider_and_uid"
+  add_index "omniauth_identities", ["user_id"], :name => "index_personas_on_user_id"
+
   create_table "subscriptions", :force => true do |t|
     t.integer  "group_id"
     t.integer  "amount"
@@ -505,6 +519,8 @@ ActiveRecord::Schema.define(:version => 20130919003502) do
     t.string   "statement"
   end
 
+  add_index "votes", ["created_at"], :name => "index_votes_on_created_at"
+  add_index "votes", ["motion_id", "created_at"], :name => "index_votes_on_motion_id_and_created_at"
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 

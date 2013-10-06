@@ -1,6 +1,6 @@
-@mixin box-shadow($h-offset, $v-offset, $blur-distance, $color) {
+@mixin box-shadow($h-offset, $v-offset, $blur-distance, $spread-distance, $color) {
   @each $target in -moz-box-shadow -webkit-box-shadow box-shadow {
-    #{$target}: $h-offset $v-offset $blur-distance $color;
+    #{$target}: $h-offset $v-offset $blur-distance $spread-distance $color;
   }
 }
 
