@@ -162,15 +162,6 @@ class Group < ActiveRecord::Base
     parent.users.sorted_by_name
   end
 
-  def is_pwyc?
-    payment_plan == 'pwyc'
-  end
-
-  # deliberately does not include manual_subscription
-  def is_subscription?
-    payment_plan == 'subscription'
-  end
-
   # would be nice if the following 4 methods were reduced to just one - is_sub_group
   # parent and top_level are the less nice terms
   #
@@ -284,6 +275,10 @@ class Group < ActiveRecord::Base
 
   def subscription_plan
     subscription.amount
+  end
+
+  def has_manual_subscription?
+    payment_plan == 'manual_subscription'
   end
 
 

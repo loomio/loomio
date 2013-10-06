@@ -5,7 +5,7 @@ class PaypalSubscription
   attr_reader :recurring_payments_response, :checkout_details_response, :token
 
   def initialize(group: nil, amount: nil, token: nil)
-    raise "invalid amount: #{amount.inspect}" unless PaypalCheckout::AMOUNT_OPTIONS.include?(amount)
+    raise "invalid amount: #{amount.inspect}" if amount.to_f <= 0
     @group = group
     @token = token
     @amount = amount
@@ -50,7 +50,7 @@ class PaypalSubscription
       version: "98",
       payerid: payer_id,
       profilestartdate: start_time,
-      desc: PaypalCheckout.payment_description(@amount),
+      desc: PaypalCheckout.payment_description(@amount, @group),
       billingperiod: "Month",
       billingfrequency: "1",
       amt: @amount,

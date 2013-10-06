@@ -37,8 +37,9 @@ Loomio::Application.routes.draw do
        post :remove_admin
       end
     end
-    resource :subscription, only: [:new, :show, :create], controller: 'groups/subscriptions' do
+    resource :subscription, only: [:new, :show], controller: 'groups/subscriptions' do
       collection do
+        post :checkout
         get :confirm
         get :payment_failed
       end

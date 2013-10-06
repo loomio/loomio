@@ -433,7 +433,7 @@ ActiveRecord::Schema.define(:version => 20131003032211) do
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "group_id"
-    t.integer  "amount"
+    t.decimal  "amount",     :precision => 8, :scale => 2
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
     t.string   "profile_id"
@@ -476,8 +476,8 @@ ActiveRecord::Schema.define(:version => 20131003032211) do
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.boolean  "uses_markdown",                                               :default => false
+    t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.string   "language_preference"
     t.string   "time_zone"
   end

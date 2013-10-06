@@ -161,14 +161,23 @@ describe "User abilities" do
       it { should be_able_to(:ignore, membership_request) }
     end
 
-    context "subgroups should not have accessible subscription settings" do
-      let(:sub_group) { create(:group, parent: group) }
-      before { sub_group.add_admin! user }
-      it { should_not be_able_to(:view_payment_details, sub_group) }
-      it { should_not be_able_to(:choose_subscription_plan, sub_group) }
+    context "where group is marked as manual subscription" do
+      before { group.update_attributes(payment_plan: 'manual_subscription') }
+      it { should_not be_able_to(:view_payment_details, group) }
+      it { should_not be_able_to(:choose_subscription_plan, group) }
     end
   end
 
+  context "admin of a subgroup" do
+    let(:group) { create(:group) }
+    let(:sub_group) { create(:group, parent: group) }
+    before do
+      group.add_member! user
+      sub_group.add_admin! user
+    end
+    it { should_not be_able_to(:view_payment_details, sub_group) }
+    it { should_not be_able_to(:choose_subscription_plan, sub_group) }
+  end
 
   context "non-member of a group" do
     let(:group) { create(:group, viewable_by: 'members') }
