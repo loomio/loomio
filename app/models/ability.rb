@@ -27,7 +27,7 @@ class Ability
     # TODO: Refactor to use subscription resource
     can [:view_payment_details,
          :choose_subscription_plan], Group do |group|
-      group.is_top_level? and @admin_group_ids.include?(group.id)
+      group.is_top_level? and @admin_group_ids.include?(group.id) and !group.has_manual_subscription?
     end
 
     can [:update,

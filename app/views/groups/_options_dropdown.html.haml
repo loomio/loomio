@@ -9,8 +9,8 @@
       %ul.dropdown-menu.pull-right
         - if can_edit
           %li= link_to t(:edit_group_settings), edit_group_path(group)
-        - if (can? :view_payment_details, group) && group.is_subscription?
-          %li= link_to t(:payment_details_link), group_subscription_path(group)
+        - if (can? :view_payment_details, group)
+          %li= link_to t(:group_subscription), group_subscription_path(group)
         - if can_leave
           - membership = current_user.group_membership(group)
           %li= link_to t(:leave_group), "#", 'data-title' => t(:leave_group), 'data-body' => t(:confirm_leave_group, which_group: group.name), 'data-confirm-path' => group_membership_path(group, membership), 'data-method-type' => 'delete', class: 'confirm-dialog', id: 'leave group'
