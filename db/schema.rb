@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130919003502) do
+ActiveRecord::Schema.define(:version => 20131003032211) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(:version => 20130919003502) do
     t.datetime "last_read_at"
     t.boolean  "following",           :default => true, :null => false
     t.integer  "read_comments_count"
+    t.integer  "read_events_count",   :default => 0
   end
 
   add_index "discussion_readers", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
@@ -180,6 +181,7 @@ ActiveRecord::Schema.define(:version => 20130919003502) do
     t.integer  "total_views",     :default => 0,     :null => false
     t.boolean  "is_deleted",      :default => false, :null => false
     t.integer  "comments_count",  :default => 0,     :null => false
+    t.integer  "events_count",    :default => 0,     :null => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -432,8 +434,8 @@ ActiveRecord::Schema.define(:version => 20130919003502) do
   create_table "subscriptions", :force => true do |t|
     t.integer  "group_id"
     t.integer  "amount"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "profile_id"
   end
 
