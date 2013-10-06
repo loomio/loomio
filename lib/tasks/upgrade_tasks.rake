@@ -16,6 +16,23 @@ namespace :upgrade_tasks do
     end
   end
 
+  task :update_discussion_events_counts => :environment do
+    puts 'updating discussions'
+    Discussion.reset_column_information
+    Discussion.find_each do |d|
+      d.update_attribute(:events_count, Event.where(discussion_id: d.id).count)
+      puts d.id if d.id % 100 == 0
+    end
+
+    puts 'updating discussion readers'
+    DiscussionReader.reset_column_information
+    DiscussionReader.find_each do |d|
+      read_events_count = Event.where('updated_at <= ?', d.last_read_at)
+      d.update_attribute(:read_events_count, read_events_count)
+      puts d.id if d.id % 100 == 0
+    end
+  end
+
   task :update_comments_counts => :environment do
     Discussion.reset_column_information
     Discussion.find_each do |d|

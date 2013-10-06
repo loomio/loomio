@@ -1,39 +1,40 @@
 - if can? :add_comment, discussion
-  = form_tag add_comment_discussion_path(discussion), :remote => true, id: "new-comment-form" do
-    = render 'avatar', user: current_user, size: "medium", kind: nil, id: nil
-    #comment-input{ data: {group: @group.id} }
-      .form-container
-        = text_area_tag 'comment', "", id: 'new-comment', class: 'js-warn-before-navigating-away', placeholder: t(:comment_form_placeholder)
-        #attachment-container
+  - if last_page?
+    = form_tag add_comment_discussion_path(discussion), :remote => true, id: "new-comment-form" do
+      = render 'avatar', user: current_user, size: "medium", kind: nil, id: nil
+      #comment-input{ data: {group: @group.id} }
+        .form-container
+          = text_area_tag 'comment', "", id: 'new-comment', class: 'js-warn-before-navigating-away', placeholder: t(:comment_form_placeholder)
+          #attachment-container
 
-      = hidden_field_tag 'uses_markdown', @uses_markdown, {id: 'global-uses-markdown'}
-      = submit_tag t(:comment_form_submit_button), class: "btn btn-small submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
-    .comment-toolbar
-      -unless browser.ie? && browser.version.to_i < 10
-        .attachment-icon#add-attachment-icon
-      .dropdown#comment-markdown-dropdown.global-markdown-setting
-        %a.dropdown-toggle{href:'#comment-markdown-dropdown', id:'comment-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
-          = markdown_img(@uses_markdown)
-        = render 'markdown_setting', target: current_user
+        = hidden_field_tag 'uses_markdown', @uses_markdown, {id: 'global-uses-markdown'}
+        = submit_tag t(:comment_form_submit_button), class: "btn btn-small submit", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
+      .comment-toolbar
+        -unless browser.ie? && browser.version.to_i < 10
+          .attachment-icon#add-attachment-icon
+        .dropdown#comment-markdown-dropdown.global-markdown-setting
+          %a.dropdown-toggle{href:'#comment-markdown-dropdown', id:'comment-markdown-dropdown-link', 'data-toggle'=> 'dropdown'}
+            = markdown_img(@uses_markdown)
+          = render 'markdown_setting', target: current_user
 
-  -unless browser.ie? && browser.version.to_i < 10
-    = s3_uploader_form post: attachments_url, as: "attachment[location]", redirect_url: iframe_upload_result_attachments_url do
-      = file_field_tag :file, multiple: true
+    -unless browser.ie? && browser.version.to_i < 10
+      = s3_uploader_form post: attachments_url, as: "attachment[location]", redirect_url: iframe_upload_result_attachments_url do
+        = file_field_tag :file, multiple: true
 
-    %script#template-upload-in-progress{type: "text/x-tmpl"}
-      .attachment-uploader
-        .uploading-filename
-          {%=o.name%}
-        %button.close.cancel-upload &times;
-        .progress.active
-          .bar
+      %script#template-upload-in-progress{type: "text/x-tmpl"}
+        .attachment-uploader
+          .uploading-filename
+            {%=o.name%}
+          %button.close.cancel-upload &times;
+          .progress.active
+            .bar
 
-    %script#template-upload--attached{type: "text/x-tmpl"}
-      .attachments
-        .attachment-success{data: { 'attachment-id' => "{%=o.id%}" } }
-          = link_to "{%=o.name%}", "{%=o.location%}", target: "_blank"
-          ({%= (parseInt(o.size) / (1024*1024)).toFixed(2) + " MB" %})
-          %button.close.remove-attachment &times;
+      %script#template-upload--attached{type: "text/x-tmpl"}
+        .attachments
+          .attachment-success{data: { 'attachment-id' => "{%=o.id%}" } }
+            = link_to "{%=o.name%}", "{%=o.location%}", target: "_blank"
+            ({%= (parseInt(o.size) / (1024*1024)).toFixed(2) + " MB" %})
+            %button.close.remove-attachment &times;
 
-    %script#template-upload--comment-input{type: "text/x-tmpl"}
-      %input{type: 'hidden', name: "attachments[]", value: '{%=o.id%}', data: { 'attachment-id' => "{%=o.id%}" }}
+      %script#template-upload--comment-input{type: "text/x-tmpl"}
+        %input{type: 'hidden', name: "attachments[]", value: '{%=o.id%}', data: { 'attachment-id' => "{%=o.id%}" }}
