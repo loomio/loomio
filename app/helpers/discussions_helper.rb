@@ -47,4 +47,40 @@ module DiscussionsHelper
       image_tag("markdown_off.png", class: 'markdown-icon markdown-off')
     end
   end
+
+  def last_page?
+    actual_total_pages == current_page
+  end
+
+  def actual_total_pages
+    if @activity.total_pages == 0
+      1
+    else
+      @activity.total_pages
+    end
+  end
+
+  def current_page
+    @current_page ||= requested_or_first_unread_page
+  end
+
+  def requested_or_first_unread_page
+    if params[:page]
+      params[:page].to_i
+    else
+      @reader.first_unread_page
+    end
+  end
+
+  def user_has_not_read_event?(event)
+    if @reader and @reader.last_read_at.present?
+      if event.belongs_to?(current_user)
+        false
+      else
+        @reader.last_read_at < event.updated_at
+      end
+    else
+      false
+    end
+  end
 end
