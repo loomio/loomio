@@ -1,4 +1,7 @@
 class Discussion < ActiveRecord::Base
+  PER_PAGE = 50
+  paginates_per PER_PAGE
+
   # default_scope -> {where(is_deleted: false)}
   scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
   scope :order_by_latest_comment, order('last_comment_at DESC')
@@ -118,22 +121,12 @@ class Discussion < ActiveRecord::Base
   end
 
   def activity
-    Event.includes(:eventable).where(discussion_id: id).order('created_at DESC')
+    Event.includes(:eventable).where(discussion_id: id).order('created_at ASC')
   end
 
   def viewed!
     Discussion.increment_counter(:total_views, id)
     self.total_views += 1
-  end
-
-  def filtered_activity
-    filtered_activity = []
-    previous_event = activity.first
-    activity.reverse.each do |event|
-      filtered_activity << event unless event.is_repetition_of?(previous_event)
-      previous_event = event
-    end
-    filtered_activity.reverse
   end
 
   def participants

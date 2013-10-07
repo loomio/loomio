@@ -1,6 +1,8 @@
 class DiscussionsController < GroupBaseController
+  include DiscussionsHelper
   load_and_authorize_resource :except => [:new, :create, :index]
   before_filter :authenticate_user!, :except => [:show, :index]
+  after_filter :mark_as_read, only: :show
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.not_found') }
@@ -78,15 +80,18 @@ class DiscussionsController < GroupBaseController
     elsif @current_motion
       @displayed_motion = @current_motion
     end
+
     if current_user
       @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
       @uses_markdown = current_user.uses_markdown?
       if @current_motion
         @current_motion.as_read_by(current_user).viewed!
       end
-      @discussion.as_read_by(current_user).viewed!
+      @reader = @discussion.as_read_by(current_user)
+      @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
+    else
+      @activity = @discussion.activity.page(params[:page]).per(Discussion::PER_PAGE)
     end
-    @activity = @discussion.activity.page(params[:page]).per(50)
   end
 
   def move
@@ -171,6 +176,12 @@ class DiscussionsController < GroupBaseController
   end
 
   private
+
+  def mark_as_read
+    if @reader and @activity and @activity.last
+      @reader.viewed!(@activity.last.updated_at)
+    end
+  end
 
   def assign_meta_data
     if @group.viewable_by == 'everyone'

@@ -28,7 +28,7 @@ body.discussions.show {
     border: 1px solid #cccccc;
     @include border-radius(4px);
     @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.075) inset);
-    margin: 0 12px 0 44px;
+    margin: 10px 12px 0 44px;
   }
   #attachment-container {
     background: #EBEBEB;
@@ -216,7 +216,7 @@ body.discussions.show {
       width: 15px;
     }
     #discussion-activity-body {
-      padding: 10px 0px 10px 8px;
+      padding: 0 0 10px 8px;
       .divider {
         border-bottom: 1px solid $lighter-grey;
         margin: 7px 15px 6px 0px;
@@ -229,7 +229,6 @@ body.discussions.show {
     #new-comment-form {
       margin-bottom: 0px;
       padding: 0 0 10px 0;
-      background-color: $comment-color;
       img {
         float:left;
         margin-right: 11px;
@@ -283,7 +282,7 @@ body.discussions.show {
     ul#activity-list {
       list-style: none;
       margin: 0 15px 3px 0;
-      padding-top: 3px;
+      padding-top: 1px;
       width: 437px;
       li.empty-list-message {
         margin-left: 45px; /*check this still works*/
@@ -320,6 +319,7 @@ body.discussions.show {
         font-style: italic;
         word-wrap: break-word;
       }
+
       .activity-item-header{
         blockquote p {
           font-size: inherit;
@@ -487,8 +487,6 @@ pre{
   }
 }
 
-
-
 .discussion-preview {
   background-color: $unhighlighted;
   float: left;
@@ -569,4 +567,32 @@ div.jqplot-table-legend-swatch-outline {border: none;}
 div.jqplot-table-legend-swatch{
   border-top-width: 6px;
   border-bottom-width: 6px;
+}
+
+.top-pagination {
+  margin-bottom: 1em;
+  text-align: center;
+  width: 453px;
+  a {
+    background: #eee;
+    color: $light-grey;
+    padding: .2em 11em .2em 10.9em
+  }
+}
+
+.new-activity-divider {
+  border-bottom: 2px solid #7ec6dc;
+  margin: -1px 0 0.8em 0;
+  width: 470px;
+  margin-left: -8px;
+}
+
+.dog-ear {
+  border-left: 16px solid transparent;
+  border-right: 0px solid transparent;
+  border-top: 14px solid #7ec6dc;
+  float: right;
+  height: 0;
+  margin-right: -26px;
+  width: 0;
 }
