@@ -1,10 +1,15 @@
-- title ||= "Loomio"
-- description ||= t(:tagline)
-%meta{'name' => 'description', :content => description}
+- title ||= "Loomio | A User-friendly Tool for Group Decision Making"
+- description ||= "Loomio is an online tool that makes it easy for groups to make decisions"
+- twitter_creator ||= "@LoomioProject"
+%meta{'name' => 'description', content: description }
+%meta{'name' => 'twitter:card', content: 'summary'}
+%meta{'name' => 'twitter:creator', content: twitter_creator }
+%meta{'name' => 'twitter:title', content: title }
+%meta{'name' => 'twitter:description', content: description }
 %meta{ property: 'og:title', content: title }
 %meta{ property: 'og:description', content: description }
 %meta{ property: 'og:type', content: 'website' }
-
+%meta{ property: 'og:site_name', content: 'Loomio'}
 %meta{ property: 'og:image', content: root_url[0..-2]+image_path('FacebookTimeLineImage-01.png') }
 %meta{ property: 'og:image:type', content: 'image/png' }
 %meta{ property: 'og:image:width', content: '800' }
