@@ -56,9 +56,9 @@ class DiscussionReader < ActiveRecord::Base
     discussion.viewed!
 
     if last_read_at.nil? or last_read_at < age_of_last_read_item
-      self.read_comments_count = discussion.comments.where('updated_at <= ?', age_of_last_read_item).count
+      self.read_comments_count = discussion.comments.where('created_at <= ?', age_of_last_read_item).count
       self.read_events_count = Event.where(discussion_id: discussion.id).
-                                     where('updated_at <= ?', age_of_last_read_item).count
+                                     where('created_at <= ?', age_of_last_read_item).count
       self.last_read_at = age_of_last_read_item
     end
 
