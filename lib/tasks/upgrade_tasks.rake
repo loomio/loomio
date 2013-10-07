@@ -1,11 +1,11 @@
 namespace :upgrade_tasks do
   task :'2013-10_update_discussion_events_counts' => :environment do
-    puts 'updating discussions'
-    Discussion.reset_column_information
-    Discussion.find_each do |d|
-      d.update_attribute(:events_count, Event.where(discussion_id: d.id).count)
-      puts d.id if d.id % 100 == 0
-    end
+    #puts 'updating discussions'
+    #Discussion.reset_column_information
+    #Discussion.find_each do |d|
+      #d.update_attribute(:events_count, Event.where(discussion_id: d.id).count)
+      #puts d.id if d.id % 100 == 0
+    #end
 
     puts 'updating discussion readers'
     DiscussionReader.reset_column_information
