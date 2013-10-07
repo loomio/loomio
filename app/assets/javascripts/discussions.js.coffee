@@ -82,3 +82,9 @@ Discussion.enableInlineEdition = ()->
 
 $ ->
   Discussion.enableInlineEdition()
+
+$ ->
+  $("#js-dog-ear").tooltip
+    placement: "right",
+    title: "Here's where you read up to last time"
+

@@ -1,12 +1,19 @@
-.divider
 %ul#activity-list
-  - if items.count == 0
-    %li.selector-item.empty-list-message= t :empty_discussion_list
-  - else
-    - items.each do |event|
+  .top-pagination
+    = link_to_previous_page items, "Show earlier comments"
+
+  -marked_first_unread = false
+  - items.each do |event|
+    - next if event.kind == 'new_discussion'
+    - if user_has_not_read_event?(event) and not marked_first_unread
+      - marked_first_unread = true
+      .dog-ear{id: "js-dog-ear"}
+        &nbsp;
+      .new-activity-divider
+
+    %li.activity-item-container
       - if event.kind == 'new_comment'
-        %li.activity-item-container= render event.eventable
+        = render event.eventable
       - else
         - discussion_item = DiscussionItem.new(event)
-        %li.activity-item-container= render 'discussion_item', :item => discussion_item
-    = paginate items
+        = render 'discussion_item', :item => discussion_item

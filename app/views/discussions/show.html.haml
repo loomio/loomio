@@ -1,5 +1,6 @@
 - set_title @group.name, @discussion.title, @group.parent
 =render '/groups/title', group: @group
+
 .row
   .span12
     .selector-panel
@@ -11,9 +12,12 @@
             .large-icon.discussion-icon.enabled-icon
             %h3.header-text= t :discussion
             #discussion-activity-body
-              = render 'add_comment', discussion: @discussion
               #activity-feed
                 = render 'activity', items: @activity
+
+                = render 'add_comment', discussion: @discussion
+                = paginate @activity
+
 
           .span6#content-proposal
             .large-icon.decision-icon
