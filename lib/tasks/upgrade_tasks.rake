@@ -10,7 +10,7 @@ namespace :upgrade_tasks do
     puts 'updating discussion readers'
     DiscussionReader.reset_column_information
     DiscussionReader.find_each do |d|
-      read_events_count = Event.where('updated_at <= ?', d.last_read_at).count
+      read_events_count = Event.where('updated_at <= ?', d.last_read_at).where(discussion_id: d.discussion_id).count
       d.update_attribute(:read_events_count, read_events_count)
       puts d.id if d.id % 100 == 0
     end
