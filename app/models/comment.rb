@@ -18,7 +18,7 @@ class Comment < ActiveRecord::Base
   after_create :update_discussion_last_comment_at
   after_create :fire_new_comment_event
 
-  default_scope include: [:user], order: "id DESC"
+  default_scope include: :user
 
   delegate :name, :to => :user, :prefix => :user
   delegate :email, :to => :user, :prefix => :user
