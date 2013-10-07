@@ -6,6 +6,8 @@ class DiscussionReader < ActiveRecord::Base
   validates_presence_of :discussion_id, :user_id
   validates_uniqueness_of :user_id, :scope => :discussion_id
 
+  after_initialize :set_defaults
+
   def self.load_from_joined_discussion(discussion)
     dv = new
     dv.id = discussion[:viewer_id].to_i
@@ -29,6 +31,14 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
+  def unread?(time)
+    if self.last_read_at == nil
+      false
+    else
+      self.last_read_at < time
+    end
+  end
+
   def unread_content_exists?
     unread_comments_count > 0
   end
@@ -42,21 +52,35 @@ class DiscussionReader < ActiveRecord::Base
     save!
   end
 
-  def viewed!
-    update_viewed_attributes
+  def viewed!(age_of_last_read_item = Time.now)
     discussion.viewed!
-    save!
-  rescue ActiveRecord::RecordInvalid
-    # race condition occured.. find the original reader and mark it as viewed
-    reader = self.class.where(user_id: user_id, discussion_id: discussion_id).first
-    if reader
-      reader.update_viewed_attributes
-      save!
+
+    if last_read_at.nil? or last_read_at < age_of_last_read_item
+      self.read_comments_count = discussion.comments.where('updated_at <= ?', age_of_last_read_item).count
+      self.read_events_count = Event.where(discussion_id: discussion.id).
+                                     where('updated_at <= ?', age_of_last_read_item).count
+      self.last_read_at = age_of_last_read_item
+    end
+
+    save
+  end
+
+  def first_unread_page
+    per_page = Discussion::PER_PAGE
+    events_count = discussion.events_count
+    remainder = read_events_count % per_page
+
+    if read_events_count == 0
+      1
+    elsif remainder == 0 && events_count > read_events_count
+      (read_events_count.to_f / per_page).ceil + 1
+    else
+      (read_events_count.to_f / per_page).ceil
     end
   end
 
-  def update_viewed_attributes
-    self.read_comments_count = discussion.comments_count
-    self.last_read_at = Time.now
+  private
+  def set_defaults
+    self.read_events_count ||= 0
   end
 end

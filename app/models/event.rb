@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
 
   has_many :notifications, :dependent => :destroy
   belongs_to :eventable, :polymorphic => true
-  belongs_to :discussion
+  belongs_to :discussion, counter_cache: true
   belongs_to :user
 
   validates_inclusion_of :kind, :in => KINDS
@@ -16,10 +16,7 @@ class Event < ActiveRecord::Base
     notifications.create!(user: user)
   end
 
-  def is_repetition_of?(previous_event)
-    (kind == 'discussion_description_edited') &&
-    (kind == previous_event.kind) &&
-    (user == previous_event.user) &&
-    ((created_at - previous_event.created_at) / 60 < 10)
+  def belongs_to?(this_user)
+    self.user && (self.user == this_user)
   end
 end
