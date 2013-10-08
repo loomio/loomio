@@ -4,7 +4,8 @@
   .span2
     = image_tag 'loomio-users.png'
   .span7
-    %h1 You choose how much to pay
+    %h1 Group subscription
+    %h2 You choose how much to pay
 .row
   .span7.offset2
     %p
@@ -25,7 +26,7 @@
       %h2 Set your group subscription:
       = f.input :preset_amount, collection: @subscription_form.amounts, as: :radio_buttons, label: false
       #lovenote.hidden
-        &hearts; We'll still love you, even if you can't afford a group subscription. The other members of your group will have an opportunity to contribute later. &hearts;
+        &hearts; We'll still love you, even if you can't afford a group subscription. The members of your group will have an opportunity to contribute later. &hearts;
 
       %input{type: 'submit', id: 'subscription-submit', value: 'Pay now with Paypal', class: 'btn btn-success btn-block btn-large', data: {disable_with: 'Pay now with Paypal'}}
 
