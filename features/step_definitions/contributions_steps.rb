@@ -1,4 +1,3 @@
-
 When(/^I click the contribute icon$/) do
   find('li#contribute').click
 end
@@ -19,8 +18,8 @@ Given(/^I am a member of a group with an undetermined payment plan$/) do
   @group.add_member! @user
 end
 
-Given(/^I am a member of a paying group$/) do
-  @group = FactoryGirl.create :group, payment_plan: 'subscription'
+Given(/^I am a member of a manual subscription group$/) do
+  @group = FactoryGirl.create :group, payment_plan: 'manual_subscription'
   @group.save!
   @group.add_member! @user
 end
@@ -33,7 +32,7 @@ Then(/^I should see a confirmation page thanking me for my contribution$/) do
   pending # can't be checked because of swipe callback
 end
 
-Then(/^I do not see the pay what you can icon in the navbar$/) do
+Then(/^I should not see the pay what you can icon in the navbar$/) do
   page.should_not have_css("#contribute")
 end
 

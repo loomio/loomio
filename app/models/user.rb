@@ -274,8 +274,8 @@ class User < ActiveRecord::Base
     (group_ids & other_user.group_ids).present?
   end
 
-  def belongs_to_paying_group?
-    groups.where(payment_plan: ['subscription', 'manual_subscription']).exists?
+  def belongs_to_manual_subscription_group?
+    groups.where(payment_plan: ['manual_subscription']).exists?
   end
 
   private

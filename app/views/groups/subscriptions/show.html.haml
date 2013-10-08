@@ -1,25 +1,17 @@
-.row
-  .span9
-    - set_title @group.name, "", @group.parent
-    = render '/groups/title', group: @group
-    %h1 Group Subscription
+- set_title @group.name, "Subscription", @group.parent
+= render '/groups/title', group: @group
+.row.iconrow
+  .span2
+    = image_tag 'colablove.png', id: 'colablove'
+  .span10
+    %h1= "Subscription for #{@group.name}"
     - amount = @group.subscription_plan
-    - people = PaypalCheckout::DOLLARS_TO_PEOPLE[amount]
-    %p
-      Your current plan is:
-      %strong= "Up to #{people} people (US$#{amount} monthly)"
-    - count = @group.members.count
-    - if count == 1
-      %p= "You have 1 person in your group"
-    - else
-      %p= "You have #{count} people in your group"
-
-    %p
-      To update your payment plan please contact us at
-      = mail_to "accounts@loomio.org"
 .row
-  .span4
-    .info-box#organisation
-      %h3
-        .strong Payment plans
-      = render("groups/subscriptions/pricing_table")
+  .span6.offset2
+    %p
+      You are currently paying:
+      ="US#{number_to_currency amount} per month"
+    %h3 Thanks!
+    %p
+      If you'd like to change how much you're paying or have any other questions contact us at
+      = "#{mail_to 'accounts@loomio.org'}.".html_safe
