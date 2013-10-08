@@ -45,6 +45,8 @@ en:
     invalid_email: "Please enter at least one valid email address"
     image_upload_fail: "Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file."
     motion_closing_inputs: "Invalid closing date"
+    only_group_coordinator_destroy: "You cannot leave this group because you are the only coordinator. You can deactivate your group via the options dropdown or <a href='%{add_coordinator}'>add a new coordinator</a> to the group."
+    only_group_coordinator_remove_admin: "The group must have one coordinator. Would you like to add another coordinator to the group?"
     permission_to_invite: "You do not have permission to invite new members."
     position_not_updated: "Could not update position."
     settings_not_updated: "Your settings did not get updated."

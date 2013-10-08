@@ -10,3 +10,13 @@ Feature: Leave Group
     When I visit the group page
     And I choose to leave the group
     Then I should be removed from the group
+
+  @javascript
+  Scenario: Only group coordinator attempts to leave group
+    Given I am the only coordinator of a group
+    And I am logged in
+    When I visit the group page
+    And I choose to leave the group
+    Then I should see that I can't leave the group
+    When I click the add another coordinator option in the flash notification
+    Then I should be redirected to the edit memberships page
