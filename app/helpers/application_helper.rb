@@ -95,7 +95,7 @@ module ApplicationHelper
   end
 
   def show_contribution_icon?
-    current_user && !current_user.belongs_to_paying_group?
+    current_user && !current_user.belongs_to_manual_subscription_group?
   end
 
   def visitor?

@@ -147,10 +147,19 @@ describe Group do
     end
   end
 
-  describe 'archive!' do
-    let(:group) {FactoryGirl.create(:group)}
-    let(:user) {FactoryGirl.create(:user)}
+  describe "#has_manual_subscription?" do
+    let(:group) { create(:group, payment_plan: 'manual_subscription') }
 
+    it "returns true if group is marked as a manual subscription" do
+      group.should have_manual_subscription
+    end
+    it "returns false if group is not marked as a manual subscription" do
+      group.update_attribute(:payment_plan, 'subscription')
+      group.should_not have_manual_subscription
+    end
+  end
+
+  describe 'archive!' do
     before do
       group.add_member!(user)
       group.archive!

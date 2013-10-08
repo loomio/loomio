@@ -32,7 +32,7 @@ http_interactions:
     uri: https://api-3t.sandbox.paypal.com/nvp
     body:
       encoding: UTF-8
-      string: user=jonny&pwd=12345&signature=54321&method=CreateRecurringPaymentsProfile&version=98&payerid=&profilestartdate=100&desc=Group%20plan%3A%20Up%20to%2010%20people%20(US%2430%20monthly)&billingperiod=Month&billingfrequency=1&amt=30&currencycode=USD&maxfailedpayments=3&autobilloutamt=AddToNextBilling&token=fake-token
+      string: user=jonny&pwd=12345&signature=54321&method=CreateRecurringPaymentsProfile&version=98&payerid=&profilestartdate=100&desc=Enspiral%20group%20subscription%20-%20US%2425%20monthly&billingperiod=Month&billingfrequency=1&amt=25&currencycode=USD&maxfailedpayments=3&autobilloutamt=AddToNextBilling&token=fake-token
     headers: {}
   response:
     status:
@@ -59,7 +59,7 @@ http_interactions:
     uri: https://api-3t.sandbox.paypal.com/nvp
     body:
       encoding: UTF-8
-      string: user=jonny&pwd=12345&signature=54321&method=CreateRecurringPaymentsProfile&version=98&payerid=&profilestartdate=&desc=Group%20plan%3A%20Up%20to%2010%20people%20(US%2430%20monthly)&billingperiod=Month&billingfrequency=1&amt=30&currencycode=USD&maxfailedpayments=3&autobilloutamt=AddToNextBilling&token=fake-token
+      string: user=jonny&pwd=12345&signature=54321&method=CreateRecurringPaymentsProfile&version=98&payerid=&profilestartdate=&desc=Enspiral%20group%20subscription%20-%20US%2425%20monthly&billingperiod=Month&billingfrequency=1&amt=25&currencycode=USD&maxfailedpayments=3&autobilloutamt=AddToNextBilling&token=fake-token
     headers: {}
   response:
     status:
@@ -81,4 +81,3 @@ http_interactions:
       string: TIMESTAMP=2013%2d07%2d31T10%3a00%3a26Z&CORRELATIONID=e7c0cb0054ba0&ACK=Failure&VERSION=98&BUILD=7131708&L_ERRORCODE0=10002&L_SHORTMESSAGE0=Security%20error&L_LONGMESSAGE0=Security%20header%20is%20not%20valid&L_SEVERITYCODE0=Error
     http_version: 
   recorded_at: Wed, 31 Jul 2013 10:00:26 GMT
-recorded_with: VCR 2.5.0

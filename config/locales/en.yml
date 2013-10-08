@@ -287,7 +287,7 @@ en:
   start_a_discussion: "Start a discussion"
   group_description: "Group description"
   edit_group_description: "Edit group description"
-  payment_details_link: "Payment details"
+  group_subscription: "Group subscription"
 
 
   #
@@ -540,7 +540,7 @@ en:
 
       Money shouldn’t be a barrier to collaborative decision-making. Loomio is funded by contributions from our community of users, and subscriptions paid by formal organisations using it.
 
-      Your contribution means we can keep Loomio independent, free of advertising, and freely available to community groups like yours.
+      Your contribution means we can keep Loomio independent, free of advertising, and freely available to groups doing great stuff in their communities.
 
       Thanks for making this possible!
     thank_you_title: Thank you for contributing to Loomio!
@@ -556,7 +556,7 @@ en:
     making_a_donation_description: |
       Loomio is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
 
-      Your contribution means we can keep Loomio independent, free of advertising, and driven by our community of users.
+      Your contribution means we can keep Loomio independent, free of advertising, and freely available to groups doing great stuff in their communities.
 
       Thanks for making this possible!
 
