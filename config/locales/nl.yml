@@ -39,6 +39,8 @@ nl:
     invalid_email: "Voer tenminste één geldig e-mailadres in"
     image_upload_fail: "Foto upload mislukt. Controleer of het bestand kleiner is dan 1 MB en van het formaat .jpeg, .png of .gif is."
     motion_closing_inputs: "Ongeldige sluitingsdatum"
+    only_group_coordinator_destroy: "Je kan deze groep niet verlaten omdat je de enige coördinator bent. Je kan je groep deactiveren via het opties-dropdownmenu of <a href='%{add_coordinator}'>een nieuwe coördinator toevoegen</a> aan de groep."
+    only_group_coordinator_remove_admin: "De groep moet een coördinator hebben. Wil je een coördinator toevoegen aan de groep?"
     permission_to_invite: "Je hebt geen toestemming om nieuwe leden uit te nodigen."
     position_not_updated: "Standpunt kan niet worden bijgewerkt."
     settings_not_updated: "Je instellingen zijn niet bijgewerkt."
@@ -162,6 +164,7 @@ nl:
     comment_liked: "waardeert je reactie in de discussie"
     user_mentioned: "noemde je in een reactie in"
     membership_requested: "verzocht lidmaatschap voor"
+    membership_request_approved: 'keurde je aanmelding goed'
     user_added_to_group: "heeft je aan de groep toegevoegd"
     motion_closing_soon: "Voorstel sluit binnenkort"
     motion_blocked: "blokkeerde het voorstel"
@@ -252,7 +255,7 @@ nl:
   start_a_discussion: "Begin een discussie"
   group_description: "Groepsomschrijving"
   edit_group_description: "Bewerk groepsomschrijving"
-  payment_details_link: "Betalingsgegevens"
+  group_subscription: "Groepsabonnement"
   group_request:
     confirmation:
       title: Je bent bijna klaar! Bekijk je e-mail.
@@ -354,7 +357,7 @@ nl:
     example2_html: "<h3>Je hebt al een voorstel in gedachten en je wilt een besluit van de groep om verder te kunnen.</h3>\n<p>Strategie: Begin een discussie over een specifieke beslissing en maak meteen een voorstel.</p>\n<p>Als je reeds een heldere uitkomst in gedachten hebt, maar je wilt er zeker van zijn dat niemand bezwaar heeft, \nkan je het voorstel gebruiken om snelle feedback te krijgen met betrekking tot een beslissing.</p>\n<p>Je kan dingen doen als een document\
       \ afronden, een aanvraag goedkeuren of een streep zetten onder een klus.</p>\n"
     get_in_touch: "Neem contact op"
-    get_in_touch_description_html: "Als je vragen of feedback hebt, vul dit <a href='%{link}'>formulier</a> of stuur een e-mail naar <a href='mailto:contact@loomio.org'>contact@loomio.org</a>."
+    get_in_touch_description_html: "Als je vragen of opmerkingen hebt, <a href='%{link}'>stuur ons een berichtje</a>."
     getting_started: "Aan de slag"
     getting_started_description: "Aan de linkerkant wordt er een onderwerp bediscussieerd. Er worden ideeën en informatie uitgewisseld. Als de groep een beslissing wil maken, zie je dat aan de rechterkant."
     getting_the_most: 'Het meeste uit Loomio halen'
@@ -436,7 +439,7 @@ nl:
 
       Geld zou geen barrière moeten zijn voor gezamenlijke besluitvorming. Loomio wordt gefinancierd door bijdragen uit onze gemeenschap van gebruikers en abonnementen betaald door formele organisaties die het gebruiken.
 
-      Jouw bijdrage betekent dat we Loomio onafhankelijk, vrij van advertenties en gratis beschikbaar voor voor gemeenschappen zoals die van jou kunnen houden.
+      Jouw bijdrage betekent dat we Loomio onafhankelijk kunnen houden, vrij van advertenties en gratis beschikbaar voor groepen die geweldige dingen doen in hun gemeenschappen.
 
       Bedankt dat je dit mogelijk maakt!
     thank_you_title: Bedankt voor je bijdrage aan Loomio!
@@ -452,7 +455,7 @@ nl:
     making_a_donation_description: |
       Loomio is een coöperatieve sociale onderneming die het makkelijk maakt voor iedereen om te participeren in beslissingen die hen aangaan.
 
-      Jouw bijdrage zorgt ervoor dat we Loomio onafhankelijk, vrij van advertenties en door de gemeenschap gedreven kunnen houden.
+      Jouw bijdrage betekent dat we Loomio onafhankelijk kunnen houden, vrij van advertenties en gratis beschikbaar voor groepen die geweldige dingen doen in hun gemeenschappen.
 
       Bedankt dat je dit mogelijk maakt!
   resend_confirmation: "Verzend (bevestigings)instructies opnieuw"

@@ -14,6 +14,9 @@ ro:
       for_this_year: '%e %b'
       for_another_year: '%-d/%-m/%y'
       datepicker: "%d-%m-%Y"
+  devise:
+    invitations:
+      send_instructions: 'O invitatie a fost trimisa la %{email}.'
   error:
     access_denied: "Nu ai permisiune pentru aceasta actiune."
     cant_join_subgroup: "Nu poti sa fii membru intr-un subgrup daca nu esti membru in grupul principal."
@@ -63,6 +66,7 @@ ro:
     proposal_not_created: "Propunerea nu a putut fi creata"
     user_already_admin: "%{which_user} este deja coordonator al acestui grup."
     user_already_member: "%{which_user} este deja membru al acestui grup."
+    user_not_admin: "Ne pare rau, %{which_user} trebuie sa fie coorodnator in acest grup pentru a putea accesa aceasta."
   success:
     added_to_group: "Ai fost adaugat grupului %{which_group}."
     close_date_changed: "Data limita a fost modificata cu succes."
@@ -123,6 +127,12 @@ ro:
         one: "un an"
         few: "%{count} ani"
         other: "%{count} ani"
+  footer:
+    about: 'Despre'
+    blog: 'Blog'
+    contact: 'Contact'
+    privacy: 'Confidentialitate'
+    terms: 'Termeni'
   inbox:
     dropdown-btn: 'Inbox'
     empty: Ai primit toate notificarile! Nu sunt comentarii pe care nu le-ai vazut.
@@ -142,6 +152,7 @@ ro:
     motion_closing_soon: "Propunerea se va inchide in curand"
     motion_blocked: "a blocat propunerea"
   edit_discussion_context: "Modifica contextul discutiei"
+  request_new_group: "Deschide un grup"
   request_new_group_details: "sau asteapta pana esti invitat intr-un grup"
   empty_notifications: "Nu ai inca nici o notificare."
   see_all_notifications: "Vezi toate notificarile"
@@ -226,6 +237,13 @@ ro:
   start_a_discussion: "Incepe o discutie"
   group_description: "Descrierea grupului"
   edit_group_description: "Editeaza descrierea grupului"
+  group_request:
+    confirmation:
+      title: Aproape ai terminat! Verifica-ti mailul.
+      body_html: |-
+        Ti-am trimis un email cu o invitiatie pentru creearea grupului tau,\n
+        \n
+        Daca nu ai primit nici un mail in casuta de inbox, trimite-ne un email la <a href='mailto:contact@loomio.org'>contact@loomio.org</a>\n
   discussion_items:
     new_discussion: "discutia a fost creata"
     new_motion: "propunerea a fost creata"
@@ -356,8 +374,22 @@ ro:
     invitation: 'Sfaturi pentru a scrie o invitatie minunata'
     proposal: 'Sfaturi pentru a scrie o propunere clara'
     vote: 'Poti sa-ti modifici pozitia oricand doresti'
+  pricing_page:
+    organisations: Organizatii
+    organisations_examples: ex. companii, agentii guvernamentale, organizatii comunitare
+    informal_groups: Grupuri Informale
+    informal_groups_desc: Membrii grupului tau vor putea sa plateasca cat vor dori
+    informal_groups_examples: ex. familii, miscari sociale, colectivitati
   contribution:
+    any_amount: sau o contributie aleasa de tine
+    currency_desc: Sumele sunt in USD
+    monthly_html: Vreau sa fac o contributie lunara de
+    one_time_html: Vreau sa fac o contributie de
+    submit: Contribuie
+    tooltip: Afla mai mult despre modelul nostru de finantare a comunitatii
+    thought_about_contributing: Sansa ta sa conrtibui
     thank_you_title: Multumim pentru contributia catre Loomio!
+    making_a_donation: Donatii
   resend_confirmation: "Retrimite instructiunile de confirmare"
   new_password: "Parola noua"
   confirm_new_password: "Confirma noua parola"
@@ -380,6 +412,8 @@ ro:
     sign_in_intro: "Trebuie sa te loghezi pentru a te alatura grupului."
   start_group:
     header: "Bine ai venit in Loomio"
+    sign_up_intro: "Trebuie sa-ti creezi un cont inainte de a putea crea grupul:"
+    sign_in_intro: "Trebuie sa te loghezi inainte de a creea grupul tau:"
   invitation:
     no_invitations_left: "Ne pare rau nu mai ai nici o invitatie ramasa"
     no_invitations_left_get_more: "Te rugam sa contactezi contact@loomio.org si vom vedea ce putem face sa te ajutam"
@@ -400,6 +434,7 @@ ro:
   search:
     description: "Mai jos este o lista a discutiilor si propunerilor care au '%{query}' in titlu sau descriere."
     header: "Cauta rezultate pentru  '%{query}'"
+    placeholder: "Cauta"
   example_discussion:
     title: "Discutie Exemplu: Bine ai venit si introducere pentru Loomio"
     description: "Bine ai venit in Loomi, un nou tool pentru decizii colaborative.\nImplicandu-te intr-o tema, discutand diverse perspective si informatii, si adresand orice retineri care apar, grupul tau poate sa reuseasca sa ajunga la cea mai buna cale de a progresa.\nPoti folosi aceasta discutie exemplu\
@@ -518,6 +553,12 @@ ro:
     group_membership_approved:
       intro: "Cererea ta de acces in grupul '%{group_name}' pe Loomio a fost aprobata."
       subject: "Intrarea in grup a fost aprobata"
+    invitation:
+      hi: "Hi %{name},"
+      intro: "Apasa pe linkul de mai jos pentru a seta numele grupului tau %{group_name}:"
+      thanks: |-
+        Multumim!\n
+        Echipa Loomio\n
     membership_request:
       intro: "%{name} (%{email}) a cerut acces in unul din grupurile tale Loomio."
       subject: "Noua cerere de intrare in grup de la %{who}"
@@ -537,6 +578,15 @@ ro:
       closes_in: "Se inchide in"
       subject: "Propunerea se inchide curand: %{which}"
       summary: "Sumar"
+    to_join_group:
+      subject: "%{member} te-a invitat sa te alaturi grupului %{group_name}  pe Loomio"
+    to_start_group:
+      subject: "Seteaza noul tau grup Loomio:  %{group_name}"
+    trial_expiry:
+      header: "%{group_name}: Evaluarea Loomio va expira in curand."
+      hi: "Salut,"
+    trial_follow_up:
+      hi: "Salut,"
     verification:
       header: "Aproape ai terminat!"
       intro: "Te rugam apasa pe acest link de verificare pentru a finaliza request-ul:"
@@ -576,6 +626,7 @@ ro:
   new_activity: "Activitate noua"
   next: "Urmatorul"
   password: "Parola"
+  pricing: 'Plati'
   proposal: "Propunere"
   prev: "Anteriorul"
   translate: "Ajuta la traducerea Loomio!"
@@ -589,8 +640,10 @@ ro:
   send_invite: "Trimite invitatie"
   send_email: "Trimite email"
   show_more: "Afiseaza mai mult"
+  start_a_group: "Creaza un grup"
   starting: "Incep"
   subject: "Subiect"
+  thanks: "Multumim!"
   unlike: "Nu apreciez"
   until_close: "pana la inchidere"
   update: "Modifica"

@@ -32,3 +32,20 @@ pl:
     discussion_created: "Dyskusja została utworzona."
     discussion_deleted: "Dyskusja została usunięta."
     emails_sending: "Wysyłanie emaili. "
+    group_archived: "Grupa została zarchiwizowana pomyślnie."
+    group_created: "Grupa została utworzona pomyślnie."
+    members_added: "Nowe osoby dodane do grupy."
+    position_submitted: "Głos oddany"
+    position_updated: "Głos zaktualizowany."
+    proposal_created: "Propozycja utworzona pomyślnie."
+    proposal_deleted: "Propozycja usunięta."
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one: "%{count} sekunda"
+        few: "%{count} sekundy"
+        other: "%{count} sekund"
+      x_seconds:
+        one: "%{count} sekunda"
+        few: "%{count} sekundy"
+        other: "%{count} sekund"
