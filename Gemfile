@@ -41,7 +41,7 @@ gem 'httparty', '~> 0.11.0'
 gem 'timecop', '~> 0.6.1'
 gem 'pg_search', '~> 0.7.0'
 gem 'strong_parameters', '~> 0.2.1'
-gem 'exception_notification', '~> 2.6.1'
+gem 'exception_notification', '~> 4.0.1'
 
 # NOTE: sass-rails should be inside :assets group, but currently there is an issue with activeadmin
 #       which does not allow us to do this
