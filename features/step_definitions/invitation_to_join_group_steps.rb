@@ -59,6 +59,11 @@ When(/^I sign up as a new user$/) do
   @user = User.find_by_email('jim@jam.com')
 end
 
+Then(/^I should see the signup form prepopulated with my email address$/) do
+  click_on 'Create one now!'
+  page.should have_css('#user_email[value="jim@jam.com"]')
+end
+
 Given(/^I am invited at "(.*?)" to join a group$/) do |arg1|
   @group = FactoryGirl.create(:group)
   @invite_people = InvitePeople.new(recipients: arg1, message_body: 'please click the invitation link below')
@@ -86,7 +91,7 @@ Then(/^I should be redirected to the group page$/) do
 end
 
 Then(/^I should be told the invitation link has already been used$/) do
-  page.should have_content("This invitation has already been used. Please sign in to continue to your group.")
+  page.should have_content("This invitation has already been used. Please log in to continue to your group.")
 end
 
 When(/^I click an invitation link I have already used$/) do
@@ -98,4 +103,8 @@ When(/^I click an invitation link I have already used$/) do
                                                recipient_email: 'jim@jimmy.com')
   AcceptInvitation.and_grant_access!(@invitation, @user)
   visit invitation_path(@invitation)
+end
+
+When(/^I choose to create an account now$/) do
+  click_on 'Create one now!'
 end

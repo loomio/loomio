@@ -13,5 +13,6 @@ Feature: Autodetect the time zone of the user on login or signup
   Scenario: Invited user signs up and has time_zone defined
     Given I am invited to join a Loomio Group
     And I follow the invitation link
+    And I choose to create an account now
     When I sign up as a new user
     Then the new user should have a time zone

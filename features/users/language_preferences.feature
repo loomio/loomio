@@ -7,7 +7,7 @@ Feature: Language preferences
     Given I am not logged in
     And my browser language header is set to "garbage"
     When I visit the sign in page
-    Then I should see "Sign in"
+    Then I should see "Log in"
 
   @javascript
   Scenario: Logged out user with browser language header that matches available translation

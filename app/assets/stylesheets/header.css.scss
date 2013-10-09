@@ -95,7 +95,7 @@
           border: none;
           &[type="text"]:focus {
             border: none;
-            @include box-shadow(0, 0, 0, 0);
+            @include box-shadow(0, 0, 0, 0, #fff);
           }
         }
         input#search_form_query {

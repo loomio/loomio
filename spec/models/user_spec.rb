@@ -19,10 +19,8 @@ describe User do
     user = User.new
     user.email = '"Joe Gumby" <joe@gumby.com>'
     user.valid?
-    user.should have(2).errors_on(:email)
+    user.should have(1).errors_on(:email)
   end
-
-  it "has uploaded avatar less than 1000kb "
 
   it "cannot have invalid avatar_kinds" do
     user.avatar_kind = 'bad'

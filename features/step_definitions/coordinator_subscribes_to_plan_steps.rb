@@ -87,3 +87,10 @@ end
 Then(/^I should see the button text change$/) do
   find("#subscription-submit").value.should eq "Submit"
 end
+
+Then(/^I should see buttons for all the different plans$/) do
+  page.should have_link('$30/month', :href => "/groups/#{@group.id}/subscription?amount=30")
+  page.should have_link('$50/month', :href => "/groups/#{@group.id}/subscription?amount=50")
+  page.should have_link('$100/month', :href => "/groups/#{@group.id}/subscription?amount=100")
+  page.should have_link('$200/month', :href => "/groups/#{@group.id}/subscription?amount=200")
+end
