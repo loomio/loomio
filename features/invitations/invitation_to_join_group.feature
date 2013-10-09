@@ -24,10 +24,12 @@ Feature: Invitation to join group
     When I invite "tony@tires.com" to our group
     Then I should be told "tony" is already a member
 
+  @javascript
   Scenario: New user accepts invitiation to join a group
     Given I am invited to join a group
     When I accept my invitation via email
-    And I sign up as a new user
+    Then I should see the signup form prepopulated with my email address
+    When I sign up as a new user
     Then I should be a member of the group
 
   Scenario: Signed in user accepts invitiation to join a group with different email address

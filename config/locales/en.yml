@@ -38,7 +38,7 @@ en:
     cant_modify_position: "This proposal has closed."
     cant_state_position: "This proposal has closed."
     cant_view_member_profile: "You're unable to view the member's profile because you are not in the same group."
-    contribution: "Please sign in to make a contribution."
+    contribution: "Please log in to make a contribution."
     discussion_not_created: "Discussion could not be created."
     group_not_archived: "Group could not be archived."
     invalid_close_date: "Invalid close date, please check this date has not passed."
@@ -189,9 +189,10 @@ en:
   user_settings: "User settings"
   email_preferences: "Email preferences"
   sign_out: "Sign out"
-  sign_in: "Sign in"
+  sign_in: "Log in"
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
-  or_sign_in_html: "If you've already got an account, <a href='%{link}'>sign in here</a>."
+  or_sign_in_html: "Already have a Loomio account? <a href='%{link}'>Log in here</a>"
+  or_link_account_html: "Already have a Loomio account? <a href='%{link}'>Link it up</a>"
 
   click_to_dismiss: "Click here to dismiss this message"
   generic_confirm: "Are you sure?"
@@ -563,7 +564,6 @@ en:
   #
   # SIGN IN
   #
-
   resend_confirmation: "Resend confirmation instructions"
   new_password: "New password"
   confirm_new_password: "Confirm new password"
@@ -580,16 +580,15 @@ en:
   forgot_your_password: "Forgot your password?"
   confirmation_not_received: "Didn't receive confirmation instructions?"
   unlock_not_received: "Didn't receive unlock instructions?"
+  create_an_account: 'Create an account'
 
   join_group:
-    header: "%{who} invited you to join %{group_name}"
-    sign_up_intro: "You'll need to create an account to join the group."
-    sign_in_intro: "You'll need to sign in to join the group."
+    log_in: "Log in to join %{group_name}"
+    create_account: "Create an account"
 
   start_group:
-    header: "Welcome to Loomio"
-    sign_up_intro: "You'll need to set up a new account before you can create your group:"
-    sign_in_intro: "You'll need to sign in before you can create your group:"
+    log_in: "Log in to set up your group"
+    create_account: "Create an account"
 
   #
   # INVITATIONS
@@ -600,7 +599,7 @@ en:
     no_invitations_left_get_more: "Please email contact@loomio.org and we'll see what we can do to help you"
     invitation_not_found:  'Could not find invitation with that token. Please ask for a new invitation from the sender.'
     invitation_cancelled: 'This invitation has been cancelled. Please contact the sender of the invitation if you believe this was done in error.'
-    invitation_already_used: 'This invitation has already been used. Please sign in to continue to your group.'
+    invitation_already_used: 'This invitation has already been used. Please log in to continue to your group.'
     recipients: "Enter email addresses, separated by commas:"
     invitees_placeholder: "User Name <user1@example.com>, user2@example.com"
     subject: "Please join our new Loomio group, %{group}"

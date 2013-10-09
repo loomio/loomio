@@ -50,6 +50,14 @@ class Invitation < ActiveRecord::Base
     accepted_by.present?
   end
 
+  def to_start_group?
+    intent == 'start_group'
+  end
+
+  def to_join_group?
+    intent == 'join_group'
+  end
+
   private
   def ensure_token_is_present
     unless self.token.present?

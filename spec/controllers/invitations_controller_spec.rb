@@ -30,8 +30,8 @@ describe InvitationsController do
         session[:invitation_token].should == "asdfghjkl"
       end
 
-      it "renders sign in page" do
-        response.should render_template 'invitations/join_group'
+      it "redirects to sign in" do
+        response.should redirect_to new_user_session_path
       end
 
       it 'does not accept the invitation' do

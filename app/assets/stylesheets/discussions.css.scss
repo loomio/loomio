@@ -27,7 +27,7 @@ body.discussions.show {
   .form-container {
     border: 1px solid #cccccc;
     @include border-radius(4px);
-    @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.075) inset);
+    @include box-shadow(0, 1px, 1px, 0, rgba(0, 0, 0, 0.075) inset);
     margin: 10px 12px 0 44px;
   }
   #attachment-container {
@@ -265,7 +265,7 @@ body.discussions.show {
       width: 380px;
       &:focus {
         border-color: 0;
-        @include box-shadow(0, 0, 0, 0);
+        /*@include box-shadow(0, 0, 0, 0);*/
       }
     }
     #post-new-comment {

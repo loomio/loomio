@@ -31,14 +31,7 @@ class MotionReader < ActiveRecord::Base
 
   def viewed!
     update_viewed_attributes
-    save!
-  rescue ActiveRecord::RecordInvalid
-    # race condition occured.. find the original motion reader and mark it as viewed
-    reader = self.class.where(user_id: user_id, motion_id: motion_id).first
-    if reader
-      reader.update_viewed_attributes
-      save!
-    end
+    save
   end
 
   def update_viewed_attributes
