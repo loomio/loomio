@@ -2,6 +2,7 @@
 %html
   %head
     - title = @title ? @title : "Loomio | A User-friendly Tool for Group Decision Making"
+    %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
     %title= title
     <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
     = stylesheet_link_tag    "frontpage"
@@ -19,7 +20,9 @@
           .pull-right
             - if controller_name == 'pages' && (action_name == 'home' || action_name == 'about')
               =link_to 'Start a group', new_group_request_path, class: 'btn btn-success'
-            =link_to 'Sign in', new_user_session_path, class: 'btn btn-info'
+
+            - unless current_page? new_user_session_path
+              =link_to t(:'devise.sessions.sign_in'), new_user_session_path, class: 'btn btn-info'
           .span3 &nbsp;
           .span6
             =link_to image_tag("logo-426px-mauve-matte.png"), "/"
@@ -39,7 +42,8 @@
 
           =link_to('Blog', blog_path)
     = yield
-    = render 'footer_logged_out'
 
+    = render 'footer_logged_out'
     = javascript_include_tag "frontpage"
+    = javascript_include_tag 'https://browserid.org/include.js'
     = render 'analytics'

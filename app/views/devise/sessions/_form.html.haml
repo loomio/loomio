@@ -1,11 +1,13 @@
 = simple_form_for(@user, url: user_session_path) do |f|
-  - if @invitation
-    = f.input :email, :input_html => { :value => @invitation.recipient_email }, label: false, required: false
-  - else
-    = f.input :email, label: false, required: false
+  = f.input :email, required: false, label: false
   = f.input :password, label: false
   .sign-in-button
-    = f.submit t(:sign_in), class: "btn btn-info btn-large btn-block", id: "sign-in-btn", :data => { :disable_with => t(:sign_in) }
-  #input_options
-    = f.input :remember_me, :as => :boolean, label: false, inline_label: t(:remember_me) if devise_mapping.rememberable?
-    = render "devise/shared/links"
+    = f.submit t(:sign_in), class: "btn btn-info btn-large", id: "sign-in-btn", :data => { :disable_with => t(:sign_in) }
+  .input-options
+    = link_to t(:forgot_your_password), new_password_path(resource_name)
+    #remember-me
+      = f.input :remember_me, :as => :boolean, label: false, inline_label: t(:remember_me) if devise_mapping.rememberable?
+  #new-account
+    = "Don't have an account?"
+    = link_to "Create one now!", new_user_registration_path, id:'create_account'
+

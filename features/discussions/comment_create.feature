@@ -34,7 +34,7 @@ Feature: Post a comment in a discussion
     And the comment should format markdown characters
     And the comment should autolink links
     And the comment should include appropriate new lines
-    And comment markdown should now be on by default
+    #And comment markdown should now be on by default
 
   @javascript
   Scenario: User disable markdown and posts a comment
@@ -49,7 +49,7 @@ Feature: Post a comment in a discussion
     And the comment should not format markdown characters
     And the comment should autolink links
     And the comment should include appropriate new lines
-    And comment markdown should now be off by default
+    #And comment markdown should now be off by default
 
   Scenario: Comments have permalinks
     Given I am logged in

@@ -1,5 +1,4 @@
 Loomio::Application.routes.draw do
-
   ActiveAdmin.routes(self)
 
   namespace :admin do
@@ -11,7 +10,8 @@ Loomio::Application.routes.draw do
   resource :search, only: :show
 
   devise_for :users, controllers: { sessions: 'users/sessions',
-                                    registrations: 'users/registrations' }
+                                    registrations: 'users/registrations',
+                                    omniauth_callbacks: 'users/omniauth_callbacks' }
 
   get "/inbox", to: "inbox#index", as: :inbox
   get "/inbox/size", to: "inbox#size", as: :inbox_size
@@ -45,19 +45,21 @@ Loomio::Application.routes.draw do
       end
     end
 
-    get :setup, on: :member, to: 'groups/group_setup#setup'
-    put :finish, on: :member, to: 'groups/group_setup#finish'
-
-    post :add_members, on: :member
-    post :hide_next_steps, on: :member
-    get :add_subgroup, on: :member
+    member do
+      get :setup, to: 'groups/group_setup#setup'
+      put :finish, to: 'groups/group_setup#finish'
+      post :add_members
+      post :hide_next_steps
+      get :add_subgroup
+      post :email_members
+      post :edit_description
+      post :edit_privacy
+      delete :leave_group
+      get :members_autocomplete
+    end
 
     resources :motions
     resources :discussions, only: [:index, :new]
-    post :email_members, on: :member
-    post :edit_description, on: :member
-    post :edit_privacy, on: :member
-    delete :leave_group, on: :member
   end
 
   get 'groups/:group_id/request_membership',   to: 'groups/membership_requests#new',          as: :new_group_membership_request
@@ -73,38 +75,55 @@ Loomio::Application.routes.draw do
   end
 
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
-  match "/groups/:id/members", :to => "groups#get_members", :as => :get_members, :via => :get
 
   resources :motions do
     resources :votes, only: [:new, :edit, :create, :update]
-    put :close, :on => :member
-    put :edit_outcome, :on => :member
-    put :edit_close_date, :on => :member
+    member do
+      put :close
+      put :edit_outcome
+      put :edit_close_date
+    end
   end
 
   resources :discussions, except: [:edit] do
     get :activity_counts, on: :collection
-    post :update_description, :on => :member
-    post :add_comment, :on => :member
-    post :show_description_history, :on => :member
-    get :new_proposal, :on => :member
-    post :edit_title, :on => :member
-    put :move, :on => :member
+    member do
+      post :update_description
+      post :add_comment
+      post :show_description_history
+      get :new_proposal
+      post :edit_title
+      put :move
+    end
+  end
+
+  resources :comments , only: :destroy do
+    post :like, on: :member
   end
 
   post "/discussion/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
   post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"
 
-  resources :notifications, :only => :index do
-    get :groups_tree_dropdown, on: :collection
-    get :dropdown_items, on: :collection
-    post :mark_as_viewed, :on => :collection, :via => :post
+  resources :attachments, only: [:create, :new] do
+    collection do
+      get 'sign'
+      get :iframe_upload_result
+    end
   end
 
+  resources :notifications, :only => :index do
+    collection do
+      get :groups_tree_dropdown
+      get :dropdown_items
+      post :mark_as_viewed
+    end
+  end
 
   resources :users, :only => [:new, :update, :show] do
-    put :set_avatar_kind, on: :member
-    post :upload_new_avatar, on: :member
+    member do
+      put :set_avatar_kind
+      post :upload_new_avatar
+    end
   end
 
   match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
@@ -118,9 +137,6 @@ Loomio::Application.routes.draw do
   match "/users/dismiss_discussion_notice", :to => "users#dismiss_discussion_notice",
         :as => :dismiss_discussion_notice_for_user, :via => :post
 
-  resources :comments , only: :destroy do
-    post :like, on: :member
-  end
 
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
   get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
@@ -177,12 +193,6 @@ Loomio::Application.routes.draw do
   get '/pages/about' => redirect('/about#about-us')
   match '/pages/contact', to: 'contact_messages#new'
 
-  resources :attachments, only: [:create, :new] do
-    collection do
-      get 'sign'
-      get :iframe_upload_result
-    end
-  end
 
   get 'blog' => redirect('http://blog.loomio.org')
   get 'press' => redirect('http://blog.loomio.org/press-pack')
