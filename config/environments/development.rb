@@ -1,7 +1,4 @@
-require 'awesome_print'
 Loomio::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb
-
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -39,11 +36,4 @@ Loomio::Application.configure do
   }
 
   config.action_controller.action_on_unpermitted_parameters = :raise
-
-  #fake production settings
-  #config.serve_static_assets = false
-  #config.assets.compress = true
-  #config.assets.compile = false
-  #config.assets.digest = true
-  #config.assets.precompile += %w(active_admin.css active_admin.js frontpage.js frontpage.css active_admin.css)
 end

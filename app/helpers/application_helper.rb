@@ -1,5 +1,6 @@
 #encoding: UTF-8
 module ApplicationHelper
+
   def time_formatted_relative_to_age(time)
     current_time = Time.zone.now
     if time.to_date == Time.zone.now.to_date
@@ -102,7 +103,4 @@ module ApplicationHelper
     !user_signed_in?
   end
 
-  def email_belongs_to_existing_user?(email)
-    User.find_by_email(email).present?
-  end
 end

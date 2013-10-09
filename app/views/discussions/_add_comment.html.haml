@@ -2,7 +2,7 @@
   - if last_page?
     = form_tag add_comment_discussion_path(discussion), :remote => true, id: "new-comment-form" do
       = render 'avatar', user: current_user, size: "medium", kind: nil, id: nil
-      #comment-input{ data: {group: @group.id} }
+      #comment-input{ data: {group: @group.id, autocomplete_path: members_autocomplete_group_path(@group) } }
         .form-container
           = text_area_tag 'comment', "", id: 'new-comment', class: 'js-warn-before-navigating-away', placeholder: t(:comment_form_placeholder)
           #attachment-container
