@@ -70,4 +70,42 @@ describe ApplicationHelper do
     end
   end
 
+  describe "analytics scope" do
+    it "executes block in production" do
+      Rails.env.stub :production? => true
+      executed = false
+      helper.analytics_scope do
+        executed = true
+      end    
+      executed.should eq true
+    end
+
+    it "executes block in staging" do
+      Rails.env.stub :staging? => true
+      executed = false
+      helper.analytics_scope do
+        executed = true
+      end    
+      executed.should eq true
+    end
+
+    it "does not execute block in other environments" do
+      Rails.env.stub :development? => true
+      executed = false
+      helper.analytics_scope do
+        executed = true
+      end    
+      executed.should eq false
+    end
+
+    it "does not execute block in the searches controller" do
+      Rails.env.stub :production? => true
+      helper.stub :controller_name => "searches"
+      executed = false
+      helper.analytics_scope do
+        executed = true
+      end    
+      executed.should eq false
+    end
+  end
 end
