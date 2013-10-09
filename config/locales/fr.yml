@@ -35,10 +35,12 @@ fr:
     contribution: "Merci de vous enregistrer pour participer."
     discussion_not_created: "La discussion ne peut pas être créée"
     group_not_archived: "Le groupe ne peut pas être archivé."
-    invalid_close_date: "La date de clôture n'est pas valable, merci de vérifier que la date ne soit pas dépassée."
+    invalid_close_date: "La date de clôture n'est pas valide, merci de vérifier que la date ne soit pas passée."
     invalid_email: "Merci de rentrer au moins une adresse email valide"
-    image_upload_fail: "Impossible de charger l'image. Merci de vérifier qu'elle fait moins d'1 Méga, et qu'elle est en format .jpeg, .png, ou .gif "
+    image_upload_fail: "Impossible de charger l'image. Merci de vérifier qu'elle fait moins d'1 Méga octet, et qu'elle est au format .jpeg, .png, ou .gif."
     motion_closing_inputs: "La date de clôture n'est pas valide"
+    only_group_coordinator_destroy: "Vous ne pouvez pas quitter ce groupe car vous êtes le seul coordinateur. Vous pouvez désactiver votre groupe via la liste déroulante des options, ou <a href='%{add_coordinator}'>ajouter un nouveau coordinateur</a> au groupe."
+    only_group_coordinator_remove_admin: "Le groupe doit avoir un coordinateur. Voulez-vous ajouter un autre coordinateur au groupe ?"
     permission_to_invite: "Vous n'avez pas la permission d'inviter de nouveaux membres."
     position_not_updated: "Impossible d'actualiser la position."
     settings_not_updated: "Vos réglages n'ont pas été actualisés."
@@ -152,32 +154,33 @@ fr:
     empty: Vous êtes à jour ! Il n'y a aucun commentaire que vous n'avez pas vu.
   notifications:
     header: "Notifications"
-    new_discussion: "démarrer une nouvelle discussion"
-    new_motion: "créé une nouvelle proposition"
+    new_discussion: "a démarré une nouvelle discussion"
+    new_motion: "a créé une nouvelle proposition"
     motion_closed:
-      by_user: "fermer la proposition"
+      by_user: "a fermé la proposition"
       by_expiry: "La proposition est close"
     new_vote: "%{position} sur la proposition"
-    new_comment: "commenté sur la discussion"
-    comment_liked: "lié votre commentaire à la discussion"
-    user_mentioned: "vous mentionnez dans un commentaire dans"
-    membership_requested: "Demander l'adhésion à"
-    user_added_to_group: "Vous ajouter au groupe"
-    motion_closing_soon: "Cette proposition sera bientôt fermée"
-    motion_blocked: "Bloquer cette proposition"
+    new_comment: "a commenté sur la discussion"
+    comment_liked: "a aimé votre commentaire dans la discussion"
+    user_mentioned: "vous a mentionné dans un commentaire dans"
+    membership_requested: "a demandé l'adhésion à"
+    membership_request_approved: 'a accepté votre demande d''adhésion'
+    user_added_to_group: "vous a ajouté au groupe"
+    motion_closing_soon: "Cette proposition ferme bientôt"
+    motion_blocked: "a bloqué cette proposition"
   edit_discussion_context: "Editer le contexte de la discussion"
   request_new_group: "Créer un groupe"
   request_new_group_details: "ou attendre jusqu'à ce qu'on vous invite."
-  empty_notifications: "Vous n'avez pas de notifications."
+  empty_notifications: "Vous n'avez pas de notification pour l'instant."
   see_all_notifications: "Voir toutes les notifications"
   user_settings: "Réglages de l'utilisateur"
   email_preferences: "Email"
   sign_out: "Se déconnecter"
   sign_in: "Se connecter"
-  tagline: "Créer un monde ou il est aisé pour tous de participer dans les décisions qui les concernent."
+  tagline: "Créer un monde ou il est facile pour tous de participer aux décisions qui les concernent."
   or_sign_in_html: "Si vous avez déjà un compte,  <a href='%{link}'0>cliquez ici pour vous connecter</a>."
   click_to_dismiss: "Cliquez ici pour annuler ce message"
-  generic_confirm: "Etes vous sur ?"
+  generic_confirm: "Êtes-vous sûr ?"
   discussion_helper_text:
     header: "bienvenue dans votre première discussion"
     message: "<p>Le sujet est en haut de la page, avec le contexte en dessous.</p><p>La discussion est sur la gauche, les décisions viennent sur la droite. Si vous croyez que votre groupe est prêt à prendre une décision, vous pouvez faire une proposition au groupe pour étude.</p>"
@@ -204,7 +207,7 @@ fr:
   get_in_touch_link: "Restons en contact"
   email_members_in_group: "Envoyer un email aux membres dans %{which_group}"
   subject_error: "Merci de remplir un sujet"
-  subject_placeholder: "Ecrire un sujet"
+  subject_placeholder: "Écrire un sujet"
   message_error: "Merci de remplir un message"
   message_placeholder: "Ecrire un message aux membres de %{which_group}."
   email_group_members: "Envoyer un email aux membres du groupe"
@@ -252,7 +255,7 @@ fr:
   start_a_discussion: "Commencer une discussion"
   group_description: "Description du groupe"
   edit_group_description: "Donner la description du groupe"
-  payment_details_link: "Détails du paiement "
+  group_subscription: "Inscription au groupe"
   group_request:
     confirmation:
       title: Vous avez presque fini ! Consultez votre email.
@@ -351,7 +354,7 @@ fr:
     example2_html: "<h3>Vous avez déjà une proposition en tête, et vous voulez obtenir l'aval du groupe pour \naller de l'avant.</h3>⏎\n<p>Stratégie : Démarrer une discussion à propos d'une décision spécifique et faire \nimmédiatement une proposition.</p>⏎\n<p>Si vous avez un résultat clair en tête, mais\
       \ que vous voulez qu'il n'y ait pas de préoccupations⏎\nmajeures, vous pouvez faire une proposition pour avoir un retour rapide.</p>⏎\n<p>Vous pouvez faire des choses comme finaliser un document, approuver une application, ou valider un travail.</p>⏎\n"
     get_in_touch: "Rester en contact"
-    get_in_touch_description_html: "Si vous avez des questions ou des remarques, veuillez remplir ce <a href='%{link}'>formulaire</a> ou envoyez-nous un e-mail à <a href='mailto:contact@loomio.org'>contact@loomio.org</a>."
+    get_in_touch_description_html: "Si vous avez la moindre question ou retour d'expérience, <a href='%{link}'>écrivez-nous</a>."
     getting_started: "Démarrage"
     getting_started_description: "Sur la gauche, le groupe discute d'un sujet, échange des idées et des informations. Lorsqu'une décision peut être prise, cela s'affiche sur la droite."
     getting_the_most: 'Tirer le meilleur parti de Loomio'
@@ -445,6 +448,9 @@ fr:
     submit: Contribuer
     tooltip: 'Apprenez-en plus sur notre modèle de financement communautaire '
     thought_about_contributing: Choisissez votre contribution
+    thought_about_contributing_description: "Loomio est une entreprise sociale coopérative qui travaille à rendre plus facile pour tous la participation aux décisions qui les concernent. \n\nL'argent ne doit pas être une barrière à la prise de décision collaborative. Loomio est financé par les contributions\
+      \ de notre communauté d'utilisateurs, et par les abonnements payés par les organisations formelles qui l'utilisent.\n\nVotre contribution signifie que nous pouvons garder Loomio indépendant, sans publicité, et accessible librement aux groupes qui font de belles choses dans leur communautés.\n\nMerci\
+      \ de rendre cela possible ! \n"
     thank_you_title: Merci de contribuer à Loomio !
     thank_you_body: |
       Votre contribution nous aide à offrir un outil de prise de décision collaborative au monde
@@ -458,7 +464,7 @@ fr:
     making_a_donation_description: |
       Loomio est une entreprise sociale coopérative qui travaille pour rendre plus facile pour tous la participation aux décisions qui les concerne.
 
-      Votre contribution permettra à Loomio de rester indépendant, sans publicité, et diriger par la communauté d'utilisateurs.
+      Votre contribution permettra à Loomio de rester indépendant, sans publicité, et accessible libremetn aux groupes qui font de belles choses dans leurs communautés.
 
       Merci de rendre cela possible !
   resend_confirmation: "Renvoyer les instructions de confirmation"
