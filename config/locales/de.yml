@@ -6,6 +6,9 @@ de:
   errors:
     messages:
       email: "Keine gültige E-Mail-Adresse"
+  attachment:
+    error:
+      too_large: "Die Datei, die du anhängen möchtest, ist größer als 50MB. Bitte wähle eine kleinere Datei aus."
   time:
     formats:
       for_today: '%H:%M'
@@ -63,6 +66,7 @@ de:
     settings_updated: "Deine Einstellungen wurden aktualisiert."
     user_made_admin: "%{which_user} wurde zum Koordinator ernannt."
     you_have_left_group: "Du hast %{which_group} verlassen."
+    comment_deleted: "Kommentar gelöscht."
     invitations:
       auto_added:
         one: "%{count} Mitglied hinzugefügt"
@@ -74,6 +78,10 @@ de:
         one: "%{count} Einladung versendet"
         other: "%{count} Einladungen versendet"
       auto_added_and_sent: "%{auto_added_text} und %{sent_text}"
+  views:
+    pagination:
+      previous: "Zurück"
+      next: "Vorwärts"
   warning:
     cant_remove_last_admin: "Du bist der letzte Koordinator und kannst nicht entfernt werden."
     membership_request_already_approved: "Mitgliedschaft wurde schon bestätigt."
@@ -154,6 +162,7 @@ de:
     comment_liked: "gefällt dein Kommentar zu der Diskussion"
     user_mentioned: "erwähnte dich in einem Kommentar in"
     membership_requested: "hat Mitgliedschaft angefragt zu"
+    membership_request_approved: 'hat deine Teilnahmeanfrage angenommen'
     user_added_to_group: "hat dich zur Gruppe hinzugefügt"
     motion_closing_soon: "Vorschlag wird demnächst geschlossen"
     motion_blocked: "blockiert den Vorschlag"
@@ -244,7 +253,6 @@ de:
   start_a_discussion: "Beginne eine Diskussion"
   group_description: "Gruppenbeschreibung"
   edit_group_description: "Gruppenbeschreibung ändern"
-  payment_details_link: "Zahlungsdetails"
   group_request:
     confirmation:
       title: Du bist fast fertig! Prüfe deine E-Mails.
@@ -345,6 +353,7 @@ de:
       <p>Wenn du meinst, du wüsstest wie die Entscheidung ausfallen wird, aber noch mal auf Nummer sicher gehen willst, kannst du den Vorschlag benutzen, um schnell einen Eindruck zu bekommen.</p>
       <p>So kannst du über finale Dokumente, eine Bewerbung oder die Abnahme eines Projektes abstimmen.</p>
     get_in_touch: "Kontakt aufnehmen"
+    get_in_touch_description_html: "Wenn du Fragen oder Feedback hast, <a href='%{link}'>melde dich bei uns</a>."
     getting_started: "Loslegen"
     getting_started_description: "Auf der linken Seite diskutiert die Gruppe ein Thema und tauscht Ideen und Informationen aus. Wenn eine Entscheidung gefällt werden soll, erscheint diese auf der rechten Seite."
     getting_the_most: 'Das meiste aus Loomio heraus bekommen'
@@ -431,12 +440,6 @@ de:
 
       <a href='https://www.loomio.org/groups/3'>Zeige mir die Loomio Community Gruppe &raquo;</a>⏎
     making_a_donation: Macht eine Spende
-    making_a_donation_description: |
-      Loomio ist ein kooperatives, soziales Unternehmen, das daran arbeitet es für jeden einfach zu machen an Entscheidungen teilzuhaben, die sie oder ihn beeinflussen.
-
-      Dein Beitrag bedeutet, dass wir Loomio unabhängig, frei von Werbung und kostenlos für Gruppen wie deine belassen können.
-
-      Danke, dass du das möglich machst!
   resend_confirmation: "Bestätigungshinweise erneut senden"
   new_password: "Neues Passwort"
   confirm_new_password: "Bestätige neues Passwort"
@@ -558,6 +561,7 @@ de:
       motion:
         name: "Titel"
         description: "Details"
+        close_at_date: "Wird geschlossen"
       user:
         name: "Vollständiger Name"
         email: "E-Mail"
@@ -697,6 +701,7 @@ de:
   groups: "Gruppen"
   group_admin: "Gruppenkoordinator"
   home: "Hauptseite"
+  id: "id"
   like: "Gefällt mir"
   loading: "Laden..."
   message: "Nachricht"

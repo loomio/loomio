@@ -1,1 +1,15 @@
-pt: {}
+pt:
+  errors:
+    messages:
+      email: "Endereço de email inválido"
+  error:
+    cant_join_subgroup: "Não pode afiliar-se a um sub-grupo se não for membro do grupo principal."
+    cant_modify_position: "Esta proposta foi fechada."
+    cant_state_position: "Esta proposta foi fechada."
+    discussion_not_created: "Não foi possível criar a discussão."
+    group_not_archived: "Não foi possível arquivar o Grupo."
+    invalid_close_date: "Data de encerramento inválida, por favor verifique a sua validade."
+    image_upload_fail: "Não foi possível enviar a imagem. Verifique se a imagem tem tamanho inferior a 1 MB e se é um ficheiro .jpeg, .png, ou .gif."
+    permission_to_invite: "Não tem permissão para convidar novos membros."
+    position_not_updated: "Não foi possível atualizar posição."
+    settings_not_updated: "As suas configurações não foram atualizadas."
