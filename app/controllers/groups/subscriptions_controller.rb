@@ -43,6 +43,13 @@ class Groups::SubscriptionsController < GroupBaseController
       flash[:success] = "Thank you! Your subscription payment is now set up. You'll be billed monthly starting today."
       redirect_to group_subscription_url(@group)
     else
+      ExceptionNotifier.notify_exception(
+        PaypalSubscriptionError.new(
+          checkout_details_response: @paypal.checkout_details_response,
+          recurring_payments_response: @paypal.recurring_payments_response
+        ),
+        env: request.env
+      )
       redirect_to payment_failed_group_subscription_url(@group)
     end
   end
@@ -54,6 +61,20 @@ class Groups::SubscriptionsController < GroupBaseController
     authorize! :view_payment_details, @group
     unless @group.has_subscription_plan?
       redirect_to new_group_subscription_url(@group)
+    end
+  end
+
+  class PaypalSubscriptionError < StandardError
+    def initialize(checkout_details_response: nil, recurring_payments_response: nil)
+      @checkout_details_response = checkout_details_response
+      @recurring_payments_response = recurring_payments_response
+    end
+
+    def message
+      "Paypal payment failed.
+      Checkout response: #{@checkout_details_response.inspect}
+      Recurring payments response: #{@recurring_payments_response.inspect}
+      "
     end
   end
 end
