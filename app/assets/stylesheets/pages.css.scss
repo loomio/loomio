@@ -110,6 +110,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .invitations.show,
 .sessions.new,
 .registrations.create,
+.registrations.new,
 .contact_messages.new,
 .contact_messages.create,
 .pages.donate,
@@ -379,11 +380,26 @@ body.pages.terms_of_service {
   input.btn { margin-bottom: 15px; }
 }
 
-.sessions.new {
+.sessions.new,
+.registrations.new {
+  .terms {
+    color: $mid-grey;
+    margin: 1em auto 0;
+    width: 394px;
+    text-align: center;
+  }
   .container{
+
+    label {
+      margin-bottom: .6em;
+    }
+
     h1 {
       font-size: 36px;
-      margin-bottom: .6em;
+      margin-bottom: 1em;
+    }
+    input {
+      @include box-sizing;
     }
     input[type="checkbox"] {
       float: right;
@@ -394,23 +410,88 @@ body.pages.terms_of_service {
     input[type="password"]  {
       @include placeholder { font-style: italic; }
       font-size: 26px;
-      height: 28px;
+      height: 36px;
       line-height: 32px;
-      width: 412px;
     }
     input[type="submit"] {
       font-size: 1.4em;
       margin-bottom: .8em;
     }
-    #input_options {
-      text-align: right;
-      a, label { font-size: 16px; }
+
+    .signin_container {
+      a {
+        text-align: left;
+      }
+      i {
+        margin-left: 5.4em;
+        margin-right: .6em;
+      }
+      float: none;
+      margin: 0 auto;
+      .login {
+        display: block;
+        margin: 0 .2em .8em 0;
+        opacity: .9;
+      }
     }
+  }
+    .separator-container {
+      height: 8px;
+      margin: 2.4em 0em;
+      position: relative;
+      @include box-shadow(0px, 2px, 6px, -3px, #555);
+      // box-shadow: 0px 2px 6px -3px #555;
+      .separator {
+        background: #fff;
+        color: #777;
+        font-size: 1.2em;
+        font-style: italic;
+        margin-left: 188px;
+        height: 20px;
+        position: absolute;
+        text-align: center;
+        width: 50px;
+      }
+    }
+
+    .input-options{
+      a {
+        color: $mid-grey;
+        font-size: 16px;
+      }
+      label {
+        color: $mid-grey;
+        color: $mid-grey;
+      }
+      display: inline-block;
+      text-align: right;
+      vertical-align: top;
+    }
+
+    #new-account {
+      color: #555;
+      font-size: 16px;
+      text-align: left;
+      margin-top: .4em;
+      a { font-size: 16px; }
+    }
+
+    .sign-in-button {
+      display: inline-block;
+    }
+
+    #remember-me {
+      float: right;
+      margin: .2em 0 .8em 0;
+      label { font-size: 16px;}
+    }
+
     #signin_container {
       float: none;
       margin: 0 auto;
     }
-  }
+
+
 }
 
 .container#contact_message {
@@ -438,3 +519,53 @@ body.pages.terms_of_service {
   #direct_contact { margin-top: 101px; }
 }
 
+.btn-facebook {
+  background-color: hsl(218, 70%, 20%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#163e82", endColorstr="#0f2956");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#163e82), to(#0f2956));
+  background-image: -moz-linear-gradient(top, #163e82, #0f2956);
+  background-image: -ms-linear-gradient(top, #163e82, #0f2956);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #163e82), color-stop(100%, #0f2956));
+  background-image: -webkit-linear-gradient(top, #163e82, #0f2956);
+  background-image: -o-linear-gradient(top, #163e82, #0f2956);
+  background-image: linear-gradient(#163e82, #0f2956);
+  border-color: #0f2956 #0f2956 hsl(218, 70%, 17.5%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.16);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-google {
+  background-color: hsl(206, 81%, 42%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#188de6", endColorstr="#1476c1");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#188de6), to(#1476c1));
+  background-image: -moz-linear-gradient(top, #188de6, #1476c1);
+  background-image: -ms-linear-gradient(top, #188de6, #1476c1);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #188de6), color-stop(100%, #1476c1));
+  background-image: -webkit-linear-gradient(top, #188de6, #1476c1);
+  background-image: -o-linear-gradient(top, #188de6, #1476c1);
+  background-image: linear-gradient(#188de6, #1476c1);
+  border-color: #1476c1 #1476c1 hsl(206, 81%, 40%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.13);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-persona {
+  background-color: hsl(37, 97%, 43%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fb9e08", endColorstr="#d88603");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fb9e08), to(#d88603));
+  background-image: -moz-linear-gradient(top, #fb9e08, #d88603);
+  background-image: -ms-linear-gradient(top, #fb9e08, #d88603);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fb9e08), color-stop(100%, #d88603));
+  background-image: -webkit-linear-gradient(top, #fb9e08, #d88603);
+  background-image: -o-linear-gradient(top, #fb9e08, #d88603);
+  background-image: linear-gradient(#fb9e08, #d88603);
+  border-color: #d88603 #d88603 hsl(37, 97%, 41%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.13);
+  -webkit-font-smoothing: antialiased;
+}
