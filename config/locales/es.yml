@@ -6,6 +6,9 @@ es:
   errors:
     messages:
       email: "No es una dirección de correo válida"
+  attachment:
+    error:
+      too_large: "El archivo que tratas de adjuntar es mas grande de 50MB, escoge uno mas pequeño. "
   date:
     formats:
       datepicker: "%d-%m-%Y"
@@ -59,6 +62,12 @@ es:
     you_have_left_group: "Te has ido de %{which_group}."
     comment_deleted: "Comentario eliminado."
     invitations:
+      auto_added:
+        one: "%{count} miembros adheridos"
+        other: "%{count} miembros adheridos"
+      existing_member:
+        one: "%{count} miembros en este grupo"
+        other: "%{count} miembros en este grupo"
       sent:
         one: "%{count} invitaciones enviadas"
         other: "%{count} invitaciones enviadas"
@@ -202,6 +211,7 @@ es:
   confirm_remove_user: "Estas seguro que deseas remover a %{which_user} del grupo?"
   remove_coordinator: "Eliminar co-ordinador"
   make_coordinator: "Crear co-ordinador"
+  confirm_make_coordinator: "Estas seguro que quieres hacer a %{which_user} coordinador de este grupo?"
   confirm_remove_member: 'Estas seguro que deseas remover a este miembro del grupo?'
   want_to_invite_html: "Quieres <a href='%{link}'> invitar gente</a> a este grupo?"
   membership_requests: "Petición de membresías"
@@ -213,6 +223,7 @@ es:
   membership_requested: "Membresía solicitada."
   request_membership: "Petición de membresías"
   confirm_remove_membership_request: "Estas seguro que deseas retirar tu petición de membresía a este grupo?"
+  no_pending_membership_requests: "No hay peticiones de membresía pendientes para este grupo."
   subgroups: "Sub-grupos"
   create_a_subgroup: "Crear un sub-grupo"
   select_members_to_add: "Seleccionar miembros a adherir a %{which_group}"
@@ -234,7 +245,6 @@ es:
   start_a_discussion: "Empezar una discusión"
   group_description: "Descripción del grupo"
   edit_group_description: "Editar descripción del grupo"
-  payment_details_link: "Detalles de pago"
   group_request:
     confirmation:
       title: 'Ya casi terminas! Revisa tu correo electrónico. '
@@ -258,6 +268,7 @@ es:
   empty_discussion_index: "No hay discusiones en ninguno de tus grupos"
   empty_discussion_index_group: "Este grupo no tiene discusiones todavía."
   discussion_context:
+    started_html: "Empezó hace %{when} por <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Ver historial de revisión"
   description_history:
     header: "Historial de revisión"
@@ -324,6 +335,7 @@ es:
     example1_html: "<h3>El grupo debe discutir sobre un tema amplio y desarrollar una solucion conjunta</h3>⏎\n<p>Estrategia: Discutir el tema durante un tiempo antes de iniciar una propuesta.</p>⏎\n<p>A menudo, las discusiones obtienen los mejores resultados si se crea un entendimiento⏎ \ncompartido sobre el problema\
       \ antes de decantarse por una solucion concreta. Cuando la gente⏎\nempieza a participar en el proceso, es mucho mas probable que esten satisfechos con⏎\nel resultado o decision final.⏎</p>\\n"
     get_in_touch: "Ponerse en contacto"
+    get_in_touch_description_html: "Si tienes preguntas o sugerencias, <a href='%{link}'> escribanos a</a>."
     getting_started: "Primeros pasos"
     getting_started_description: "A la izquierda, el grupo debate un tema, intercambiando ideas e información. Cuando hay que tomar una decisión, aparece a la derecha."
     getting_the_most: 'Aprovechando al máximo el uso de Loomio'
@@ -542,6 +554,7 @@ es:
   email:
     added_to_a_group:
       subject: "Has sido adherido al grupo."
+      content: "Felicitaciones, has sido adherido al grupo '%{which}' en Loomio!"
     unsubscribe: "Dale de baja o cambia las preferencias de tu correo electrónico:   "
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para darle de baja o cambiar las preferencias de correo electrónico."
     view_comment: "Haz click aquí para ver el comentario en Loomio"
@@ -595,6 +608,7 @@ es:
       header: "%{group_name}: Tu tiempo de prueba en Loomio ya casi termina."
       hi: "Hola, "
     trial_follow_up:
+      header: "%{group_name}: Como va el tiempo de prueba con Loomio?"
       hi: "Hola, "
     verification:
       header: "Ya casi terminas!"
