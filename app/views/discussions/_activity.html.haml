@@ -7,7 +7,8 @@
     - next if event.kind == 'new_discussion'
     - if user_has_not_read_event?(event) and not marked_first_unread
       - marked_first_unread = true
-      .dog-ear{id: "js-dog-ear"}
+      .shifted_anchor#latest-activity
+      .dog-ear
         &nbsp;
       .new-activity-divider
 

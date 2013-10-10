@@ -9,7 +9,7 @@ class ProposalsClosingSoonJob
   end
 
   def perform
-    Motion.where(:closing_at => time_window).each do |motion|
+    Motion.voting.where(:closing_at => time_window).each do |motion|
       Events::MotionClosingSoon.publish!(motion)
     end
   end
