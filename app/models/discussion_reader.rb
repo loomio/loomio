@@ -6,8 +6,6 @@ class DiscussionReader < ActiveRecord::Base
   validates_presence_of :discussion_id, :user_id
   validates_uniqueness_of :user_id, :scope => :discussion_id
 
-  after_initialize :set_defaults
-
   def self.load_from_joined_discussion(discussion)
     dv = new
     dv.id = discussion[:viewer_id].to_i
@@ -25,7 +23,7 @@ class DiscussionReader < ActiveRecord::Base
   def unread_comments_count
     #we count the discussion itself as a comment.. but it is comment 0
     if read_comments_count.nil?
-      discussion.comments_count + 1
+      discussion.comments_count.to_i + 1
     else
       discussion.comments_count.to_i - read_comments_count
     end
@@ -40,7 +38,11 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def unread_content_exists?
-    unread_comments_count > 0
+    unread_items_count > 0
+  end
+
+  def returning_user_and_unread_content_exist?
+    last_read_at.present? and unread_content_exists?
   end
 
   def self.for(discussion, user)
@@ -57,8 +59,7 @@ class DiscussionReader < ActiveRecord::Base
 
     if last_read_at.nil? or last_read_at < age_of_last_read_item
       self.read_comments_count = discussion.comments.where('created_at <= ?', age_of_last_read_item).count
-      self.read_events_count = Event.where(discussion_id: discussion.id).
-                                     where('created_at <= ?', age_of_last_read_item).count
+      self.read_items_count = discussion.items.where('created_at <= ?', age_of_last_read_item).count
       self.last_read_at = age_of_last_read_item
     end
 
@@ -67,20 +68,18 @@ class DiscussionReader < ActiveRecord::Base
 
   def first_unread_page
     per_page = Discussion::PER_PAGE
-    events_count = discussion.events_count
-    remainder = read_events_count % per_page
+    remainder = read_items_count % per_page
 
-    if read_events_count == 0
+    if read_items_count == 0
       1
-    elsif remainder == 0 && events_count > read_events_count
-      (read_events_count.to_f / per_page).ceil + 1
+    elsif remainder == 0 && discussion.items_count > read_items_count
+      (read_items_count.to_f / per_page).ceil + 1
     else
-      (read_events_count.to_f / per_page).ceil
+      (read_items_count.to_f / per_page).ceil
     end
   end
 
-  private
-  def set_defaults
-    self.read_events_count ||= 0
+  def unread_items_count
+    discussion.items_count - read_items_count
   end
 end
