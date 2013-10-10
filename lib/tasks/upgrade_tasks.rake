@@ -1,36 +1,20 @@
 namespace :upgrade_tasks do
-  task :'2013-10_update_discussion_events_counts' => :environment do
-    #puts 'updating discussions'
-    #Discussion.reset_column_information
-    #Discussion.find_each do |d|
-      #d.update_attribute(:events_count, Event.where(discussion_id: d.id).count)
-      #puts d.id if d.id % 100 == 0
-    #end
-
-    puts 'updating discussion readers'
-    DiscussionReader.reset_column_information
-    DiscussionReader.find_each do |d|
-      read_events_count = Event.where('updated_at <= ?', d.last_read_at).where(discussion_id: d.discussion_id).count
-      d.update_attribute(:read_events_count, read_events_count)
-      puts d.id if d.id % 100 == 0
-    end
-  end
-
-  task :update_discussion_events_counts => :environment do
-    puts 'updating discussions'
-    Discussion.reset_column_information
+  task :'update_item_counts_pre_counter_caches' => :environment do
+    puts 'Updating discussions.items_count'
     Discussion.find_each do |d|
-      d.update_attribute(:events_count, Event.where(discussion_id: d.id).count)
       puts d.id if d.id % 100 == 0
+      d.update_attribute(:items_count, Event.where(discussion_id: d.id).count)
     end
 
-    puts 'updating discussion readers'
-    DiscussionReader.reset_column_information
-    DiscussionReader.find_each do |d|
-      read_events_count = Event.where('updated_at <= ?', d.last_read_at)
-      d.update_attribute(:read_events_count, read_events_count)
-      puts d.id if d.id % 100 == 0
+    puts 'Updating discussion_readers.read_items_count'
+    DiscussionReader.find_each do |dr|
+      next unless dr.discussion.present?
+      puts dr.id if dr.id % 100 == 0
+      dr.update_attribute(:read_items_count,
+                          Event.where(discussion_id: dr.discussion.id).
+                                where('created_at <= ?', dr.last_read_at).count)
     end
+
   end
 
   task :update_comments_counts => :environment do
