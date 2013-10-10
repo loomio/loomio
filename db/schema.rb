@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131003032211) do
+ActiveRecord::Schema.define(:version => 20131010011150) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(:version => 20131003032211) do
     t.boolean  "following",           :default => true, :null => false
     t.integer  "read_comments_count"
     t.integer  "read_events_count",   :default => 0
+    t.integer  "read_items_count",    :default => 0,    :null => false
   end
 
   add_index "discussion_readers", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
@@ -182,6 +183,7 @@ ActiveRecord::Schema.define(:version => 20131003032211) do
     t.boolean  "is_deleted",      :default => false, :null => false
     t.integer  "comments_count",  :default => 0,     :null => false
     t.integer  "events_count",    :default => 0,     :null => false
+    t.integer  "items_count",     :default => 0,     :null => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -239,9 +241,9 @@ ActiveRecord::Schema.define(:version => 20131003032211) do
     t.integer  "discussion_id"
   end
 
+  add_index "events", ["created_at"], :name => "index_events_on_created_at"
   add_index "events", ["discussion_id"], :name => "index_events_on_discussion_id"
-  add_index "events", ["eventable_id"], :name => "index_events_on_eventable_id"
-  add_index "events", ["user_id"], :name => "index_events_on_user_id"
+  add_index "events", ["eventable_type", "eventable_id"], :name => "index_events_on_eventable_type_and_eventable_id"
 
   create_table "group_requests", :force => true do |t|
     t.string   "name"
