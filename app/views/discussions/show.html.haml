@@ -9,7 +9,7 @@
         #discussion-context= render 'discussion_context'
         .row
           .span6#content-comments
-            - if enough_activity_for_jump_link?
+            - if enough_activity_for_jump_link? and @reader.present?
               - if @reader.returning_user_and_unread_content_exist?
                 = link_to path_of_latest_activity, id: 'jump-to-latest', class: 'jump-to-latest-activity btn' do
                   %i.icon-arrow-down
