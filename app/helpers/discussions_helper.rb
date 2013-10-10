@@ -23,9 +23,9 @@ module DiscussionsHelper
       '#comment-input'
     else
       if actual_total_pages == 1
-        discussion_path(@discussion, anchor: '#comment-input')
+        discussion_path(@discussion, anchor: 'comment-input')
       else
-        discussion_path(@discussion, page: actual_total_pages, anchor: '#comment-input')
+        discussion_path(@discussion, page: actual_total_pages, anchor: 'comment-input')
       end
     end
   end
