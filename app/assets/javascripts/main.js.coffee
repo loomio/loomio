@@ -13,7 +13,6 @@ $ ->
   initializeHelpNotices()
   collapseHomepageAccordian()
 
-
 ### EVENTS ###
 $ ->
   $(".dismiss-help-notice").click (event)->

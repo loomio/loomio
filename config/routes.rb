@@ -166,6 +166,7 @@ Loomio::Application.routes.draw do
 
   scope controller: 'help' do
     get :help
+    get :markdown_help
   end
 
   get 'we_the_people' => redirect('/')
