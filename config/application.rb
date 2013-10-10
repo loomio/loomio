@@ -67,6 +67,5 @@ module Loomio
     config.roadie.enable = true
 
     config.assets.precompile += %w(active_admin.css active_admin.js frontpage.js frontpage.css active_admin/print.css load_metrics_listener.js)
-    config.middleware.use "PDFKit::Middleware", :print_media_type => true
   end
 end
