@@ -30,6 +30,31 @@ body.discussions.show {
     @include box-shadow(0, 1px, 1px, 0, rgba(0, 0, 0, 0.075) inset);
     margin: 10px 12px 0 44px;
   }
+
+  .shifted_anchor {
+    position: relative;
+    top: -50px;
+    margin: 0;
+    padding: 0;
+    float: left;
+  }
+
+  #jump-to-latest{
+    a {
+      color: $mid-grey;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+    color: $mid-grey;
+    text-decoration: none;
+    float: right;
+    margin-top: 2px;
+    margin-right: 5px;
+    color: $mid-grey;
+  }
+
   #attachment-container {
     background: #EBEBEB;
     padding: 0 5px 0 10px;
@@ -575,7 +600,7 @@ div.jqplot-table-legend-swatch{
   width: 453px;
   a {
     background: #eee;
-    color: $light-grey;
+    color: $mid-grey;
     padding: .2em 10.5em .2em 11em;
   }
 }

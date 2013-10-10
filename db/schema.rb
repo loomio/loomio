@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131010011150) do
+ActiveRecord::Schema.define(:version => 20131010025113) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -162,7 +162,6 @@ ActiveRecord::Schema.define(:version => 20131010011150) do
     t.datetime "last_read_at"
     t.boolean  "following",           :default => true, :null => false
     t.integer  "read_comments_count"
-    t.integer  "read_events_count",   :default => 0
     t.integer  "read_items_count",    :default => 0,    :null => false
   end
 
@@ -182,7 +181,6 @@ ActiveRecord::Schema.define(:version => 20131010011150) do
     t.integer  "total_views",     :default => 0,     :null => false
     t.boolean  "is_deleted",      :default => false, :null => false
     t.integer  "comments_count",  :default => 0,     :null => false
-    t.integer  "events_count",    :default => 0,     :null => false
     t.integer  "items_count",     :default => 0,     :null => false
   end
 

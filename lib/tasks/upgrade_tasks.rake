@@ -1,5 +1,21 @@
 namespace :upgrade_tasks do
-  task :'update_item_counts_pre_counter_caches' => :environment do
+  task :'2013-10-part2-update_item_counts_post_counter_caches' => :environment do
+    puts 'Updating discussions.items_count'
+    Discussion.find_each do |d|
+      puts d.id if d.id % 100 == 0
+      Discussion.reset_counters(d.id, :items)
+    end
+
+    puts 'Updating discussion_readers.read_items_count'
+    DiscussionReader.find_each do |dr|
+      next unless dr.discussion.present?
+      puts dr.id if dr.id % 100 == 0
+      dr.update_attribute(:read_items_count,
+                          dr.discussion.items.where('created_at <= ?', dr.last_read_at).count)
+    end
+  end
+
+  task :'2013-10-part1-update_item_counts_pre_counter_caches' => :environment do
     puts 'Updating discussions.items_count'
     Discussion.find_each do |d|
       puts d.id if d.id % 100 == 0

@@ -20,6 +20,7 @@ class Discussion < ActiveRecord::Base
   has_many :comment_likes, :through => :comments, :source => :comment_votes
   has_many :commenters, :through => :comments, :source => :user, :uniq => true
   has_many :events, :as => :eventable, :dependent => :destroy
+  has_many :items, class_name: 'Event', include: :eventable, order: 'created_at ASC'
   has_many :discussion_readers
 
   include PgSearch
@@ -43,45 +44,12 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def find_or_new_discussion_reader_for(user)
-    if self.discussion_readers.where(:user_id => user.id).exists?
-      self.discussion_readers.where(user_id: user.id).first
-    else
-      discussion_reader = self.discussion_readers.build
-      discussion_reader.discussion = self
-      discussion_reader.user = user
-      discussion_reader
-    end
-  end
-
   def add_comment(user, comment, options={} )
-    if can_be_commented_on_by? user
+    if user.can?(:add_comment, self)
       comment = Comment.build_from self, user, comment, options
       comment.save!
       comment
     end
-  end
-
-  def joined_or_new_discussion_reader_for(user)
-    if self[:viewer_user_id].present?
-      unless user.id == self[:viewer_user_id].to_i
-        raise "joined for wrong user"
-      end
-      DiscussionReader.load_from_joined_discussion(self)
-    else
-      new_discussion_reader_for(user)
-    end
-  end
-
-  def new_discussion_reader_for(user)
-    discussion_reader = DiscussionReader.new
-    discussion_reader.discussion = self
-    discussion_reader.user = user
-    discussion_reader
-  end
-
-  def joined_to_discussion_reader?
-    self['joined_to_discussion_reader'] == '1'
   end
 
   def voting_motions
@@ -94,10 +62,6 @@ class Discussion < ActiveRecord::Base
 
   def group_users_without_discussion_author
     group.users.where(User.arel_table[:id].not_eq(author_id))
-  end
-
-  def can_be_commented_on_by?(user)
-    group.users.include? user
   end
 
   def current_motion_closing_at
@@ -114,14 +78,6 @@ class Discussion < ActiveRecord::Base
 
   def number_of_comments_since(time)
     comments.where('comments.created_at > ?', time).count
-  end
-
-  def history
-    (comments + votes + motions).sort!{ |a,b| b.created_at <=> a.created_at }
-  end
-
-  def activity
-    Event.includes(:eventable).where(discussion_id: id).order('created_at ASC')
   end
 
   def viewed!
@@ -150,6 +106,10 @@ class Discussion < ActiveRecord::Base
     else
       created_at
     end
+  end
+
+  def activity
+    items
   end
 
   def set_description!(description, uses_markdown, user)
@@ -184,6 +144,39 @@ class Discussion < ActiveRecord::Base
   end
 
   private
+    def joined_or_new_discussion_reader_for(user)
+      if self[:viewer_user_id].present?
+        unless user.id == self[:viewer_user_id].to_i
+          raise "joined for wrong user"
+        end
+        DiscussionReader.load_from_joined_discussion(self)
+      else
+        new_discussion_reader_for(user)
+      end
+    end
+
+
+    def joined_to_discussion_reader?
+      self['joined_to_discussion_reader'] == '1'
+    end
+
+    def find_or_new_discussion_reader_for(user)
+      if self.discussion_readers.where(:user_id => user.id).exists?
+        self.discussion_readers.where(user_id: user.id).first
+      else
+        discussion_reader = self.discussion_readers.build
+        discussion_reader.discussion = self
+        discussion_reader.user = user
+        discussion_reader
+      end
+    end
+
+    def new_discussion_reader_for(user)
+      discussion_reader = DiscussionReader.new
+      discussion_reader.discussion = self
+      discussion_reader.user = user
+      discussion_reader
+    end
 
     def populate_last_comment_at
       self.last_comment_at = created_at

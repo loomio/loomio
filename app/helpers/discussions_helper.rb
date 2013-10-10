@@ -1,8 +1,33 @@
 module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
+
+  def enough_activity_for_jump_link?
+    @discussion.items_count > 3
+  end
+
   def discussion_activity_count_for(discussion, user)
     discussion.as_read_by(user).unread_comments_count
+  end
+
+  def path_of_latest_activity
+    if current_page == @reader.first_unread_page
+      '#latest-activity'.html_safe
+    else
+      discussion_path(@discussion, page: @reader.first_unread_page, anchor: 'latest-activity')
+    end
+  end
+
+  def path_of_add_comment
+    if current_page == @reader.first_unread_page
+      '#comment-input'
+    else
+      if actual_total_pages == 1
+        discussion_path(@discussion, anchor: '#comment-input')
+      else
+        discussion_path(@discussion, page: actual_total_pages, anchor: '#comment-input')
+      end
+    end
   end
 
   def enabled_icon_class_for(discussion, user)
