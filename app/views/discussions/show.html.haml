@@ -9,12 +9,18 @@
         #discussion-context= render 'discussion_context'
         .row
           .span6#content-comments
+            - if enough_activity_for_jump_link?
+              - if @reader.returning_user_and_unread_content_exist?
+                = link_to path_of_latest_activity, id: 'jump-to-latest', class: 'jump-to-latest-activity btn' do
+                  %i.icon-arrow-down
+              -else
+                = link_to path_of_add_comment, id: 'jump-to-latest', class: 'jump-to-add-comment btn' do
+                  %i.icon-arrow-down
             .large-icon.discussion-icon.enabled-icon
             %h3.header-text= t :discussion
             #discussion-activity-body
               #activity-feed
                 = render 'activity', items: @activity
-
                 = render 'add_comment', discussion: @discussion
                 = paginate @activity
 
