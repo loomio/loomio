@@ -12,6 +12,7 @@ class DiscussionReader < ActiveRecord::Base
     dv.discussion_id = discussion.id.to_i
     dv.user_id = discussion[:viewer_user_id].to_i
     dv.read_comments_count = discussion[:read_comments_count].to_i
+    dv.read_items_count = discussion[:read_items_count].to_i
     dv.last_read_at = discussion[:last_read_at]
     dv.following = discussion[:viewer_following]
     dv.discussion = discussion

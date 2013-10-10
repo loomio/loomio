@@ -14,6 +14,7 @@ class Queries::VisibleDiscussions < Delegator
                                     dv.id as viewer_id,
                                     dv.user_id as viewer_user_id,
                                     dv.read_comments_count as read_comments_count,
+                                    dv.read_items_count as read_items_count,
                                     dv.last_read_at as last_read_at,
                                     dv.following as viewer_following').
                               joins("LEFT OUTER JOIN discussion_readers dv ON
