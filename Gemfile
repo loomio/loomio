@@ -55,7 +55,8 @@ gem 'font-awesome-sass-rails'
 group :assets do
   gem 'coffee-rails'
   gem 'sass-rails'
-  gem 'bootstrap-sass', '~> 2.3.2.2'
+  gem 'bootstrap-sass-rails' # Bootstrap 3
+  gem 'bootstrap-sass', '~> 2.3.2.2' # Bootstrap 2
   gem 'uglifier', '~> 2.2.1'
   gem 'modernizr-rails', '~> 2.6.2'
   gem 'jquery-fileupload-rails', '~> 0.4.1'
