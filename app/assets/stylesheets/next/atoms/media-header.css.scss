@@ -1,0 +1,24 @@
+.media-header, .meadia-header__info {
+  overflow: hidden;
+  zoom: 1;
+}
+
+.media-header__img {
+  float: left;
+  margin-right: $gutter-width;
+}
+
+.media-header__text {
+  margin-bottom: $gutter-width;
+}
+
+.media-header__title {
+  margin: 0;
+}
+
+.media-header__details {
+  color: #AAA;
+  font-size: 0.8em;
+  margin-top: 4px;
+}
+

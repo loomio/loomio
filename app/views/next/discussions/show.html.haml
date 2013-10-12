@@ -1,0 +1,54 @@
+= render 'next/navbar'
+- avatar_size = 34
+- avatar_path = "holder.js/#{avatar_size}x#{avatar_size}"
+.card-page
+
+  .card-row
+    .card
+      .card__content
+        %h1.card__title= @discussion.title
+
+  .card-row
+    .card
+      .card__content
+        .iconic-title
+          .iconic-title__icon
+            %span.glyphicon.glyphicon-user
+          .iconic-title__title= link_to @discussion.group.name, @discussion.group
+
+  .card-row
+    .card
+      .card__content
+        .media-header
+          .media-header__img
+            %img.media-object{alt: "...", src: avatar_path}
+          .media-header__text
+            %h4.media-header__title Discussion notes
+            .media-header__details
+              Edited
+              = time_ago_in_words(@discussion.last_versioned_at)
+        .media-content= simple_format @discussion.description
+        %a.edit-content{href: "#"}
+          %span.glyphicon.glyphicon-edit
+          %span.edit-content__text Edit
+
+  - @discussion.comments.each do |comment|
+    .card-row
+      .card
+        .card__content
+          .media-header
+            .media-header__img
+              %img.media-object{alt: "...", src: avatar_path}
+            .media-header__text
+              %h4.media-header__title= comment.author.name
+              .media-header__details= time_ago_in_words(comment.created_at)
+          .media-content
+            = comment.body
+        .toolbar-container
+          .toolbar
+            .toolbar__button.toolbar__button--first
+              %span.glyphicon.glyphicon-thumbs-up
+              Like
+            .toolbar__button
+              %span.glyphicon.glyphicon-comment
+              Reply

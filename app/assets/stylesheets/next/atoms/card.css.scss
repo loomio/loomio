@@ -1,0 +1,21 @@
+.card {
+  @include make-xs-column(12);
+}
+
+.card__content {
+  background: #FFF;
+  padding: $gutter-width;
+  border-radius: 2px;
+  @include box-shadow(0px 0px 2px #888888);
+}
+
+.card__title {
+  font-size: 2em;
+  margin: 0;
+}
+
+// Non-block elements
+.card-row {
+  margin-bottom: $gutter-width;
+  @include make-row();
+}
