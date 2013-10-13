@@ -10,7 +10,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       save_omniauth_authentication_to_session(auth)
 
-      if user = User.find_by_email(auth.email)
+      if user = User.find_by_email(auth.email.to_s)
         sign_in_and_redirect(user)
       else
         redirect_to login_or_signup_path_for_email(auth.email)
