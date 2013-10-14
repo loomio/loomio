@@ -63,7 +63,7 @@ class Comment < ActiveRecord::Base
   end
 
   def mentioned_group_members
-    usernames = extract_mentioned_screen_names(self.body)
+    usernames = extract_mentioned_screen_names(self.body).uniq
     group.users.where(username: usernames)
   end
 
