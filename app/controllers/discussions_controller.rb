@@ -53,7 +53,6 @@ class DiscussionsController < GroupBaseController
                        without_open_motions.
                        order_by_latest_comment.
                        page(params[:page]).per(10)
-        render :layout => false if request.xhr?
       end
     else
       authenticate_user!
@@ -63,7 +62,6 @@ class DiscussionsController < GroupBaseController
                      without_open_motions.
                      order_by_latest_comment.
                      page(params[:page]).per(10)
-      render :layout => false if request.xhr?
     end
   end
 

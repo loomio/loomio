@@ -9,38 +9,6 @@ $ ->
         event.preventDefault()
     )
 
-#*** ajax for discussions on group page ***
-$ ->
-  if $("body.groups.show").length > 0 && $('#group-discussions').html() != null
-    idStr = new Array
-    idStr = $('#group-discussions').children().attr('class').split('_')
-    # params = Application.getPageParam()
-    params = ""
-    $('#group-discussions').load("/groups/#{idStr[1]}/discussions" + params, ->
-      Application.convertUtcToRelativeTime()
-      $("#group-discussions").removeClass('hidden')
-      $("#discussions-loading").addClass('hidden')
-      activate_discussions_tooltips()
-    )
-    $("#all-discussions-loading").addClass('hidden')
-
-$ ->
-  if $("body.groups.show").length > 0
-    $(document).on('click', '#group-discussions .pagination a', (e)->
-      unless $(this).parent().hasClass("gap")
-        # if Application.html5.supported
-        #   window.history.pushState("stateObj", "title_ignored", Application.getNextURL($(this).attr("href")))
-        $("#discussion-list").addClass('hidden')
-        $("#discussions-loading").removeClass('hidden')
-        $('#group-discussions').load($(this).attr('href'), ->
-          Application.convertUtcToRelativeTime()
-          $("#discussion-list").removeClass('hidden')
-          $("#discussions-loading").addClass('hidden')
-          activate_discussions_tooltips()
-        )
-        e.preventDefault()
-    )
-
 $ ->
   $("#privacy").tooltip
     placement: "right"
