@@ -1,9 +1,16 @@
 %nav.navbar.navbar-default.navbar-static-top.loomio-nav{role: "navigation"}
-  .container
-    .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", type: "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{href: "#"} Loomio
+  .navbar-header
+    .modifier
+      -if controller_name == 'inbox'
+        %i.icon-reorder
+      -else
+        %i.icon-angle-left
+    %a{href: next_inbox_path}
+      %i.icon-home
+    .search
+      %input
+      .icon-container
+        %i.icon-search
+    .nav-buttons
+      %i.icon-plus-sign-alt
+      %i.icon-bell

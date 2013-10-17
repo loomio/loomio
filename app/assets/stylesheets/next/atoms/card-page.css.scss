@@ -1,8 +1,5 @@
 .card-page {
   @extend .container;
-  padding-left: $gutter-width;
-  padding-right: $gutter-width;
-  padding-top: $gutter-width;
-  background: #DDD;
   min-height: 100%;
+  margin: 0;
 }
