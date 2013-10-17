@@ -871,6 +871,7 @@ en:
   group: "Group"
   groups: "Groups"
   group_admin: "Group Coordinator"
+  group_name: "Group name"
   home: "Home"
   id: "id"
   like: "Like"

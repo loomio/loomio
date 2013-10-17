@@ -80,3 +80,11 @@
   width: 22px;
   &:hover { opacity: .8; }
 }
+
+.sort-icon {
+  background-image:url('/assets/sort-small.png');
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 14px;
+  width: 20px;
+}

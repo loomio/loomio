@@ -1,12 +1,26 @@
 %h1 Public groups directory
 
+.input-append
+  = form_tag public_groups_path, method: 'get', class: 'form-search' do |f|
+    = text_field_tag :query, params[:query], class: 'search-query'
+    .add-on
+      %i.icon-search
+        = submit_tag "", class: 'submit-search'
+
+
 %table.table.table-striped#directory
   %thead
-    %th
-      = form_tag public_groups_path, method: 'get', class: 'form-search' do |f|
-        = text_field_tag :query, params[:query], class: 'search-query'
-        = submit_tag "Search", class: 'btn btn-grey'
-    %th Members
+    %tr
+      %th.group
+        - order = set_names_order_link
+        %a{ :href => order }
+          = t :group_name
+          %i.sort-icon
+      %th.members
+        - order = set_memberships_count_order_link
+        %a{ :href => order }
+          = t :members
+          %i.sort-icon
   %tbody
     - @groups.each do |group|
       %tr
