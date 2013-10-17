@@ -9,6 +9,28 @@ describe "User abilities" do
   let(:ability) { Ability.new(user) }
   subject { ability }
 
+  context "Loomio admin deactivates other_user", focus: true do
+    before do
+      user.is_admin = true
+    end
+    let(:group) { create(:group) }
+
+    context "other_user is a member of a group with many members" do
+      before do
+        group.add_member!(other_user)
+      end
+      it { should be_able_to(:deactivate, other_user) }
+    end
+
+    context "other_user is the only coordinator of one of their groups" do
+      before do
+        group.admins.destroy_all
+        group.add_admin!(other_user)
+      end
+      it { should_not be_able_to(:deactivate, other_user) }
+    end
+  end
+
 
   context "member of a group" do
     let(:group) { create(:group) }

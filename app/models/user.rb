@@ -47,6 +47,9 @@ class User < ActiveRecord::Base
            :conditions => { :access_level => Membership::MEMBER_ACCESS_LEVELS },
            :dependent => :destroy
 
+  has_many :membership_requests,
+           :foreign_key => 'requestor_id'
+
   has_many :groups,
            :through => :memberships
   has_many :adminable_groups,
@@ -87,6 +90,8 @@ class User < ActiveRecord::Base
   before_create :generate_username
   after_create :ensure_name_entry
 
+  scope :active, where(:deleted_at => nil)
+  scope :inactive, where("deleted_at IS NOT NULL")
   scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
@@ -199,11 +204,20 @@ class User < ActiveRecord::Base
   end
 
   def name
-    deleted_at ? "Deleted user" : read_attribute(:name)
+    if deleted_at.present?
+      "#{self[:name]} (account inactive)"
+    else 
+      self[:name]
+    end
   end
 
   def deactivate!
-    update_attribute(:deleted_at, 1.month.ago)
+    update_attributes(:deleted_at => Time.now,
+                      :subscribed_to_daily_activity_email => false,
+                      :subscribed_to_mention_notifications => false,
+                      :subscribed_to_proposal_closure_notifications => false)
+    memberships.update_all(:archived_at => Time.now)
+    membership_requests.where("responded_at IS NULL").destroy_all
   end
 
   def activate!
@@ -213,6 +227,10 @@ class User < ActiveRecord::Base
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?
     super && !deleted_at
+  end
+
+  def inactive_message
+    I18n.t(:inactive_html, path_to_contact: '/contact').html_safe
   end
 
   def avatar_url(size=nil, kind=nil)

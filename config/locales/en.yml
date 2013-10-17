@@ -580,6 +580,7 @@ en:
   forgot_your_password: "Forgot your password?"
   confirmation_not_received: "Didn't receive confirmation instructions?"
   unlock_not_received: "Didn't receive unlock instructions?"
+  inactive_html: "Sorry, this account is currently inactive. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>."
   create_an_account: 'Create an account'
 
   join_group:
