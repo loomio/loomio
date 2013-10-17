@@ -125,9 +125,9 @@ describe User do
   end
 
   describe "name" do
-    it "returns 'Deleted User' if deleted_at is true (a date is present)" do
-      user.update_attribute(:deleted_at, 1.month.ago)
-      user.name.should == 'Deleted user'
+    it "returns user.name '(account inactive)' if deleted_at is true (a date is present)" do
+      user.update_attribute(:deleted_at, Time.now)
+      user.name.should include('account inactive')
     end
 
     it "returns the stored name if deleted_at is nil" do
@@ -201,9 +201,16 @@ describe User do
     end
   end
 
-  it "sets deleted_at (Time.current) when deactivate! is called" do
+  it "sets deleted_at (Time.now) when deactivate! is called" do
     user.deactivate!
     user.deleted_at.should be_true
+  end
+
+  it "sets subscriptions to false when deactivate! is called" do
+    user.deactivate!
+    user.subscribed_to_daily_activity_email.should be_false
+    user.subscribed_to_mention_notifications.should be_false
+    user.subscribed_to_proposal_closure_notifications.should be_false
   end
 
   it "unsets deleted_at (nil) when activate! is called" do
