@@ -60,7 +60,7 @@ ActiveAdmin.register Group do
     attributes_table do
       row :group_request
       group.attributes.each do |k,v|
-        row k.to_sym
+        row k.to_sym if v.present?
       end
     end
     panel("Group Admins") do
@@ -74,6 +74,10 @@ ActiveAdmin.register Group do
             end
           end
         end
+    end
+
+    panel('Archive') do
+      link_to 'Archive this group', archive_admin_group_path(group), method: :post, confirm: "Are you sure you wanna archive #{group.name}, pal?"
     end
     active_admin_comments
   end
@@ -97,6 +101,13 @@ ActiveAdmin.register Group do
     else
       redirect_to admin_groups_url, :notice => "WARNING: Group could not be updated."
     end
+  end
+
+  member_action :archive, :method => :post do
+    group = Group.find(params[:id])
+    group.archive!
+    flash[:notice] = "Shoved #{group.name} into the filing cabinet that nobody touches"
+    redirect_to [:admin, :groups]
   end
 
   controller do
