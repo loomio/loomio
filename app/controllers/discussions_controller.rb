@@ -66,33 +66,29 @@ class DiscussionsController < GroupBaseController
   end
 
   def show
-    if NextSubdomain.matches?(request) || params[:mobile].present?
-      render 'next/discussions/show', layout: 'next'
-    else
-      if @discussion.has_previous_versions?
-        @last_collaborator = User.find(@discussion.originator.to_i)
-      end
-      @group = GroupDecorator.new(@discussion.group)
-      @vote = Vote.new
-      @current_motion = @discussion.current_motion
-      assign_meta_data
-      if params[:proposal]
-        @displayed_motion = Motion.find(params[:proposal])
-      elsif @current_motion
-        @displayed_motion = @current_motion
-      end
+    if @discussion.has_previous_versions?
+      @last_collaborator = User.find(@discussion.originator.to_i)
+    end
+    @group = GroupDecorator.new(@discussion.group)
+    @vote = Vote.new
+    @current_motion = @discussion.current_motion
+    assign_meta_data
+    if params[:proposal]
+      @displayed_motion = Motion.find(params[:proposal])
+    elsif @current_motion
+      @displayed_motion = @current_motion
+    end
 
-      if current_user
-        @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
-        @uses_markdown = current_user.uses_markdown?
-        if @current_motion
-          @current_motion.as_read_by(current_user).viewed!
-        end
-        @reader = @discussion.as_read_by(current_user)
-        @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
-      else
-        @activity = @discussion.activity.page(params[:page]).per(Discussion::PER_PAGE)
+    if current_user
+      @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
+      @uses_markdown = current_user.uses_markdown?
+      if @current_motion
+        @current_motion.as_read_by(current_user).viewed!
       end
+      @reader = @discussion.as_read_by(current_user)
+      @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
+    else
+      @activity = @discussion.activity.page(params[:page]).per(Discussion::PER_PAGE)
     end
   end
 

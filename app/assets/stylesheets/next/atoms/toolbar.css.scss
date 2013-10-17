@@ -1,5 +1,8 @@
 .toolbar {
   @include make-row();
+  a{
+    color: #333;
+  }
 }
 
 .toolbar__button--first {
@@ -17,5 +20,7 @@
 .toolbar-container {
   @extend .container;
   background-color: #EEE;
+  margin: -$card-gutter;
+  margin-top: $card-gutter;
   @include box-shadow(0px 0px 2px #888888);
 }
