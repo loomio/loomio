@@ -10,6 +10,8 @@ body.public_groups {
       position: relative;
       border-left: 0;
     }
+    h1 { margin-bottom: 0px; }
+    .input-append { margin-left: 65px; }
     form {
       margin-bottom: 0;
       .control-group {
@@ -42,12 +44,17 @@ body.public_groups {
     }
 
     table {
+      color: $dark-grey;
       width: 100%;
       th {
-        font-size: 20px;
+        font-size: 14px;
         padding: 15px 10px;
         width: 80%;
         &.members { text-align: right; }
+        a {
+          color: #333;
+          text-decoration: none;
+        }
       }
 
       td.group {
@@ -55,7 +62,7 @@ body.public_groups {
         .group-name { font-weight: bold; }
       }
       td.members {
-        padding-right: 75px;
+        padding-right: 20px;
         text-align: right;
       }
     }
