@@ -46,7 +46,9 @@ class Groups::SubscriptionsController < GroupBaseController
       ExceptionNotifier.notify_exception(
         PaypalSubscriptionError.new(
           checkout_details_response: @paypal.checkout_details_response,
-          recurring_payments_response: @paypal.recurring_payments_response
+          recurring_payments_response: @paypal.recurring_payments_response,
+          get_checkout_details_query: @paypal.get_checkout_details_query,
+          create_recurring_payment_query: @paypal.create_recurring_payment_query
         ),
         env: request.env
       )
@@ -65,15 +67,22 @@ class Groups::SubscriptionsController < GroupBaseController
   end
 
   class PaypalSubscriptionError < StandardError
-    def initialize(checkout_details_response: nil, recurring_payments_response: nil)
+    def initialize(checkout_details_response: nil,
+                   recurring_payments_response: nil,
+                   get_checkout_details_query: nil,
+                   create_recurring_payment_query: nil)
       @checkout_details_response = checkout_details_response
       @recurring_payments_response = recurring_payments_response
+      @get_checkout_details_query = get_checkout_details_query
+      @create_recurring_payment_query = create_recurring_payment_query
     end
 
     def message
       "Paypal payment failed.
       Checkout response: #{@checkout_details_response.inspect}
       Recurring payments response: #{@recurring_payments_response.inspect}
+      get_checkout_details_query: #{@get_checkout_details_query}
+      create_recurring_payment_query: #{@create_recurring_payment_query}
       "
     end
   end
