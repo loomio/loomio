@@ -11,7 +11,7 @@ body.public_groups {
       border-left: 0;
     }
     h1 { margin-bottom: 0px; }
-    .input-append { margin-left: 65px; }
+    .input-append { margin-left: 60px; }
     form {
       margin-bottom: 0;
       .control-group {
@@ -43,28 +43,40 @@ body.public_groups {
       }
     }
 
-    table {
-      color: $dark-grey;
-      width: 100%;
-      th {
-        font-size: 14px;
-        padding: 15px 10px;
-        width: 80%;
-        &.members { text-align: right; }
-        a {
-          color: #333;
-          text-decoration: none;
-        }
+    .public-groups-container {
+      a {
+        color: #333;
+        font-weight: bold;
+        text-decoration: none;
       }
 
-      td.group {
+      li {
         padding: 10px;
-        .group-name { font-weight: bold; }
+        &:hover { background-color: $selector ! important; }
       }
-      td.members {
-        padding-right: 20px;
-        text-align: right;
+
+      .group-details {
+        display: inline-block;
+        width: 800px;
       }
+      .group-members-count {
+        display: inline;
+        float: right;
+      }
+      .group-name {
+        color: #08c;
+        display: inline;
+        font-weight: bold;
+        padding-right: 10px;
+      }
+      .group-description {
+        display: inline;
+      }
+
+      .row-fluid { padding: 5px 0; }
+      .span10 { padding: 0; }
+      .span2 { text-align: right; }
+
     }
   }
 }

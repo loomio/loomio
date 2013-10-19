@@ -8,27 +8,29 @@
         %i.icon-search
           = submit_tag "", class: 'submit-search'
 
+.public-groups-container
+  .row-fluid
+    .span10
+      - order = set_names_order_link
+      %a{ :href => order }
+        = t :group_name
+        %i.sort-icon
+    .span2
+      - order = set_memberships_count_order_link
+      %a{ :href => order }
+        = t :members
+        %i.sort-icon
 
-%table.table.table-striped#directory
-  %thead
-    %tr
-      %th.group
-        - order = set_names_order_link
-        %a{ :href => order }
-          = t :group_name
-          %i.sort-icon
-      %th.members
-        - order = set_memberships_count_order_link
-        %a{ :href => order }
-          = t :members
-          %i.sort-icon
-  %tbody
+  %ul.selector-list.bordered
     - @groups.each do |group|
-      %tr
-        %td.group
-          = link_to group.full_name + " #{group.description if group.description.present?}", group_path(group), class: 'group-name'
-          / = " - #{group.description}" if group.description.present?
-        %td.members
-          = group.memberships_count
+      %a{href: group_path(group)}
+        %li.selector-item.public-groups
+          .group-details
+            .group-name
+              = group.full_name
+            .group-description
+              = "#{group.description}" if group.description.present?
+          .group-members-count
+            = group.memberships_count
 
 = paginate @groups, :window => 3

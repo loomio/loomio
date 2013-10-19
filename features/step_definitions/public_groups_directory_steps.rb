@@ -20,9 +20,9 @@ When(/^I visit the public groups directory page$/) do
 end
 
 Then(/^I should only see public groups with 5 or more members$/) do
-  find('#directory').should have_content(@public_group1.name)
-  find('#directory').should_not have_content(@public_group2.name)
-  find('#directory').should_not have_content(@private_group.name)
+  find('.public-groups-container').should have_content(@public_group1.name)
+  find('.public-groups-container').should_not have_content(@public_group2.name)
+  find('.public-groups-container').should_not have_content(@private_group.name)
 end
 
 Then(/^the groups should be ordered by name$/) do
@@ -36,8 +36,8 @@ When(/^I search$/) do
 end
 
 Then(/^I should only see groups that match the search$/) do
-  find('#directory').should have_content @public_group1.name
-  find('#directory').should_not have_content @public_group3.name
+  find('.public-groups-container').should have_content @public_group1.name
+  find('.public-groups-container').should_not have_content @public_group3.name
 end
 
 When(/^I choose to sort the public groups list by number of members$/) do
