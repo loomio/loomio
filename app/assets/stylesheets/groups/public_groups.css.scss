@@ -10,8 +10,21 @@ body.public_groups {
       position: relative;
       border-left: 0;
     }
-    h1 { margin-bottom: 0px; }
-    .input-append { margin-left: 60px; }
+    .featured-header {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .featured{ margin: 10px 0 40px; }
+    .featured-row { margin-bottom: 20px; }
+    .header-row { margin-bottom: 30px; }
+    h1 {
+      color: $mid-grey;
+      float: left;
+      margin-bottom: 0px;
+      margin-right: 20px;
+    }
+    h2 { color: $mid-grey; }
+    .input-append { margin: 6px; }
     form {
       margin-bottom: 0;
       .control-group {
@@ -41,6 +54,9 @@ body.public_groups {
         width: 26px;
         opacity: 0;
       }
+    }
+    .span2.featured-image {
+      width: 11.89362%;
     }
 
     .public-groups-container {
