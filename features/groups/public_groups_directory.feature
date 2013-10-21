@@ -8,9 +8,15 @@ Feature: Public groups directory
 
   Scenario: Person sees list of public groups
     When I visit the public groups directory page
-    Then I should only see public groups with 5 or more members
+    Then I should only see public groups with 5 or more members 
+    And the groups should be ordered by name
 
   Scenario: Person searches for a group
     When I visit the public groups directory page
     And I search
     Then I should only see groups that match the search
+
+  Scenario: Person chooses to order list by number of members
+    When I visit the public groups directory page
+    And I choose to sort the public groups list by number of members
+    Then I should see the groups ordered according to the number of members in the group

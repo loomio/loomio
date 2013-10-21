@@ -28,10 +28,10 @@ class Group < ActiveRecord::Base
   scope :visible_to_the_public,
         where(viewable_by: 'everyone').
         where('memberships_count > 4').
-        order(:full_name)
+        parents_only
 
   scope :search_full_name, lambda { |query| where("full_name ILIKE ?", "%#{query}%") }
-  
+
   # Engagement (Email Template) Related Scopes
   scope :more_than_n_members, lambda { |n| where('memberships_count > ?', n) }
   scope :more_than_n_discussions, lambda { |n| where('discussions_count > ?', n) }
