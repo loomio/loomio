@@ -5,15 +5,24 @@
   .row.main-content
     %section.span9
       %ul.selector-list.bordered
-        #all-discussions-loading
-          %li.selector-item.loading= t(:loading)
         #discussions-with-motions
-          - @discussions.with_open_motions.order('motions.closing_at ASC').each do |discussion|
+          - @discussions_with_open_motions.each do |discussion|
             %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil, discussion_surely_has_no_current_motion: false
-          .discussion-with-motion-divider.hidden
-        - if current_user && current_user.discussions.count == 0
-          %li.empty-list-message.hidden= t(:empty_discussion_index)
-      #user-discussions.hidden= t(:loading)
+            - if discussion == @discussions_with_open_motions.last
+              .discussion-with-motion-divider
+      %ul.selector-list
+        #discussion-list
+          - @discussions_without_open_motions.each do |discussion|
+            %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil, discussion_surely_has_no_current_motion: true
+      - if current_user && current_user.discussions.count == 0
+        %li.empty-list-message.hidden= t(:empty_discussion_index)
+
+      = paginate @discussions_without_open_motions, :window => 3
+
+
+
+
+
     %section.span3
       =render 'groups'
       =render '/application/see_closed_motions'
