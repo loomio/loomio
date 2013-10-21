@@ -3,6 +3,11 @@ Loomio::Application.routes.draw do
 
   namespace :admin do
     resource :email_groups, only: [:create, :new]
+    resources :stats, only: [] do
+      collection do
+        get :events
+      end
+    end
   end
 
   get "/groups", to: 'groups/public_groups#index', as: :public_groups
