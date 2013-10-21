@@ -6,8 +6,22 @@
       margin: -20px 12px 0 -2px;
     }
   }
-  button{
-    font-weight: bold;
-    color: white;
-  }
+}
+
+.new-position{
+  margin-top: $card-gutter;
+}
+
+.decision-buttons{
+  .agree{ @include make-xs-column(3); }
+  .abstain{ @include make-xs-column(3); }
+  .disagree{ @include make-xs-column(3); }
+  .block{ @include make-xs-column(3); }
+}
+
+.new-position{
+  .agree{ @include make-xs-column(12); }
+  .abstain{ @include make-xs-column(12); }
+  .disagree{ @include make-xs-column(12); }
+  .block{ @include make-xs-column(12); }
 }
