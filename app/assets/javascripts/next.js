@@ -71,10 +71,34 @@ togglingSearchBox = function(){
   // expandSearchBox();
 }
 
+hideDecisionForms = function(){
+  $('.new-position .agree').hide()
+  $('.new-position .abstain').hide()
+  $('.new-position .disagree').hide()
+  $('.new-position .block').hide()
+}
+
+showDecisionForm = function(el){
+  hideDecisionForms();
+  $('.new-position .' + el).show()
+}
+
+decisionButtons = function(){
+  hideDecisionForms();
+  btns = $('.decision-buttons')
+  if (btns.length > 0){
+    btns.on('click', 'i', function(){
+      showDecisionForm($(this).parent().attr('class'))
+    })
+
+  }
+}
+
 $(document).ready(function () {
   if ($('.discussion').length > 0){
     stickyMotion()
     togglingCommentBox()
+    decisionButtons()
   }
   togglingSearchBox()
 

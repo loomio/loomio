@@ -13,7 +13,8 @@
       .card__content
         .back-to-discussion
           .back-arrow
-            %i.icon-angle-left
+            %a{href: next_discussion_path(@discussion)}
+              %i.icon-angle-left
           %h3.card__title= @discussion.title
           =link_to "Back to discussion", next_discussion_path(@discussion)
 
@@ -25,11 +26,11 @@
         %form
           .form-group
             %label Title
-            %input.form-control
+            %input.form-control{placeholder: "e.g. \"Let's go to the moon\""}
           .form-group
             %label Close Date
             %input.form-control
           .form-group
             %label Details
-            %textarea.form-control{rows: 5}
+            %textarea.form-control{rows: 5, placeholder: 'Give enough information so that everyone knows exactly what it means to agree or disagree.'}
           %button.btn.btn-block Create
