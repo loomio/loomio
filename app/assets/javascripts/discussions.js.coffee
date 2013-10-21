@@ -78,6 +78,9 @@ Discussion.enableInlineEdition = ()->
 
 $ ->
   Discussion.enableInlineEdition()
+  $('#show-markdown-help').on 'click', ->
+    $('#markdown-help-container').load('/markdown_help')
+    false
 
 $ ->
   $("#js-dog-ear").tooltip

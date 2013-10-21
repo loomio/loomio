@@ -264,7 +264,7 @@ body.discussions.show {
       float: right;
       margin-top: -32px;
       margin-right: -8px;
-      width: 78px;
+      width: 98px;
       .attachment-icon {
         cursor: pointer;
         margin-top: 6px;
@@ -415,9 +415,10 @@ body.discussions.show {
 /* Markdown styling */
 
 .activity-item-body .popover h3 { padding: 8px 14px; }
-.activity-item-body, .long-description, .motion .description {
+.activity-item-body, .long-description, .motion .description, .markdown {
   p {
     word-wrap: break-word;
+    line-height: 18px;
   }
   ul, ol, li {
     margin-left: 10px;
@@ -428,34 +429,22 @@ body.discussions.show {
     list-style: disc;
     padding: 0 0 9px 0;
   }
-  ol{
-    padding: 0 0 9px 0;
-  }
-  ul ul, ol ul, ul ol, ol ol{
-    padding: 2px 0 6px 0;
-  }
-  h1, h2, h3, h4, h5, h6, h7{
+  ol{ padding: 0 0 9px 0; }
+  ul ul, ol ul, ul ol, ol ol{ padding: 2px 0 6px 0; }
+  h1, h2, h3, h4, h5, h6{
     display: block;
     padding: 4px 0px;
   }
-  h1{
-    font-size: 1.4em;
-  }
-  h2{
-    font-size: 1.3em;
-  }
-  h3{
-    font-size: 1.2em;
-  }
-  h4{
-    font-size: 1.1em;
-  }
-  h5{
-    font-size: 1.0em;
-  }
-  hr{
-    margin: 1em;
-  }
+  h1{ font-size: 1.4em; }
+  h2{ font-size: 1.3em; }
+  h3{ font-size: 1.2em; }
+  h4{ font-size: 1.1em; }
+  h5{ font-size: 1.0em; }
+  hr{ margin: 1em; }
+  h1, h2, h3, h4, ol, ul, blockquote, pre { &:first-child { clear: left; } }
+  ol, p, ul { color: $text-black; }
+  p:last-child{ margin-bottom: 2px; }
+  blockquote p{ font: inherit; }
 }
 
 /** Code block padding (Stops avatars destroying indentation) */

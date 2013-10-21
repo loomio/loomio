@@ -47,3 +47,5 @@
 //= require searches
 //= require attachments
 //= require subscriptions
+//= require clientside_markdown
+//= require lib/markdown_converter.js
