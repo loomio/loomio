@@ -14,7 +14,7 @@ class Admin::StatsController < Admin::BaseController
 
     if params[:group_id].present?
       @group = Group.find(params[:group_id])
-      @events = @events.include(:eventable).select{|e| e.eventable.present? && e.eventable.group_id == @group.id }
+      @events = @events.includes(:eventable).select{|e| e.eventable.present? && e.eventable.group_id == @group.id }
     end
   end
 end
