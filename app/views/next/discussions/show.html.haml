@@ -35,14 +35,43 @@
           = @current_motion.description
         .clearfix
         .row.decision-buttons
-          .col-xs-3
+          .agree
             %i.icon-thumbs-up{style: "color: green"}
-          .col-xs-3
+          .abstain
             %i.icon-hand-left{style: "color: orange"}
-          .col-xs-3
+          .disagree
             %i.icon-thumbs-down{style: "color: pink"}
-          .col-xs-3
+          .block
             %i.icon-warning-sign{style: "color: red"}
+        .row.new-position
+          .agree
+            %form
+              .form-group
+                %label Agree
+                %textarea.form-control{rows: 3}
+              %button.btn
+                Submit
+          .abstain
+            %form
+              .form-group
+                %label Abstain
+                %textarea.form-control{rows: 3}
+              %button.btn
+                Submit
+          .disagree
+            %form
+              .form-group
+                %label Disagree
+                %textarea.form-control{rows: 3}
+              %button.btn
+                Submit
+          .block
+            %form
+              .form-group
+                %label Block
+                %textarea.form-control{rows: 3}
+              %button.btn
+                Submit                                                
         .card__show-more
           %a View positions
 
