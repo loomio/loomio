@@ -39,9 +39,11 @@ class GroupsController < GroupBaseController
   def show
     @group = GroupDecorator.new @group
     @subgroups = @group.subgroups.all.select{|g| can?(:show, g) }
-    @discussions = GroupDiscussionsViewer.for(group: @group, user: current_user)
     @discussion = Discussion.new(group_id: @group.id)
+    @discussions_with_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).with_open_motions.order('motions.closing_at ASC')
+    @discussions_without_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).without_open_motions.order('created_at DESC').page(params[:page]).per(20)
     assign_meta_data
+
   end
 
   def edit
