@@ -1,6 +1,6 @@
 class Admin::StatsController < Admin::BaseController
   def events
-    scope = Event.unscoped
+    scope = Event.includes(:eventable, :discussion)
 
     if params[:created_at_gt]
       scope = scope.where('created_at > ?', params[:created_at_gt])
@@ -12,9 +12,9 @@ class Admin::StatsController < Admin::BaseController
 
     @events = scope
 
-    if params[:group_id]
+    if params[:group_id].present?
       @group = Group.find(params[:group_id])
-      @events = @events.select{|e| e.eventable.present? && e.eventable.group == @group }
+      @events = @events.include(:eventable).select{|e| e.eventable.present? && e.eventable.group_id == @group.id }
     end
   end
 end

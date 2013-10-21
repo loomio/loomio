@@ -1,8 +1,8 @@
 collection @events, :object_root => false
 attributes :id, :user_id, :kind, :eventable_type, :eventable_id
 node :group_id do |event|
-  if event.eventable.present? and event.eventable.group.present?
-    event.eventable.group.id
+  if event.eventable.present? and event.eventable.respond_to?(:group_id)
+    event.eventable.group_id
   end
 end
 node :eventable do |event|
