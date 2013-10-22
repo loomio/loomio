@@ -21,17 +21,23 @@ class Group < ActiveRecord::Base
   before_validation :set_max_group_size, on: :create
   before_save :update_full_name_if_name_changed
 
+  include PgSearch
+  pg_search_scope :search_full_name, against: [:name, :description],
+    using: {tsearch: {dictionary: "english"}}
+
   default_scope where(:archived_at => nil)
+
+  scope :not_featured, where('id NOT IN (?)', [3,1031,194])
 
   scope :parents_only, where(:parent_id => nil)
 
+  scope :sort_by_popularity,
+        order('memberships_count DESC')
+
   scope :visible_to_the_public,
         where(viewable_by: 'everyone').
-        where('memberships_count > 4').
-        order(:full_name)
+        parents_only
 
-  scope :search_full_name, lambda { |query| where("full_name ILIKE ?", "%#{query}%") }
-  
   # Engagement (Email Template) Related Scopes
   scope :more_than_n_members, lambda { |n| where('memberships_count > ?', n) }
   scope :more_than_n_discussions, lambda { |n| where('discussions_count > ?', n) }
@@ -280,7 +286,6 @@ class Group < ActiveRecord::Base
   def has_manual_subscription?
     payment_plan == 'manual_subscription'
   end
-
 
   private
 
