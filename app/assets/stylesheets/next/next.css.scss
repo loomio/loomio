@@ -1,0 +1,38 @@
+@import 'utilities/bootstrap-utils';
+@import 'utilities/grid-settings';
+@import 'utilities/page-settings';
+
+@import 'atoms/add-comment-form';
+@import 'atoms/buttons';
+@import 'atoms/card';
+@import 'atoms/card-page';
+@import 'atoms/edit-content';
+@import 'atoms/iconic-title';
+@import 'atoms/media-header';
+@import 'atoms/toolbar';
+
+@import 'molecules/navbar';
+@import 'molecules/inbox';
+@import 'molecules/motion';
+
+@import 'font-awesome';
+
+.decision-buttons{
+  i{font-size: 3em;}
+  text-align: center;
+}
+
+#js-mini-motion.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid #888888;
+}
+
+button{
+  font-weight: bold;
+  color: white;
+}

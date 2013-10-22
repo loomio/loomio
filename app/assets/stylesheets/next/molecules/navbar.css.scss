@@ -1,0 +1,34 @@
+@import 'twitter/bootstrap/navs';
+@import 'twitter/bootstrap/navbar';
+
+.navbar {
+  margin-bottom: 0;
+  color: #555;
+  font-size: 34px;
+  line-height: 36px;
+  padding: 5px 14px;
+  a{color: #555;}
+  a:hover{text-decoration: none}
+}
+.nav-buttons{
+  float: right;
+  i{ padding-right: 20px; }
+}
+.search{
+  float: right;
+  input{
+    width: 200px;
+  }
+}
+
+.modifier {
+  float: left;
+  .icon-reorder{
+    margin-left: -0.8em;
+    margin-right: 0.2em;
+  }
+  .icon-angle-left{
+    margin-left: -0.2em;
+    margin-right: 0.1em;
+  }
+}
