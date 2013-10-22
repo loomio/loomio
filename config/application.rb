@@ -28,6 +28,8 @@ module Loomio
                                 #{config.root}/app/models/concerns)
     config.autoload_paths += Dir["#{config.root}/app/forms/**/"]
 
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

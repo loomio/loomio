@@ -1,0 +1,8 @@
+{
+  "name": "Loomio assets",
+  "dependencies": {
+    "jquery-1.9.1": "http://code.jquery.com/jquery-1.9.1.js",
+    "angular": "angular#1.2.0-rc.3",
+    "reveal": "git@github.com:hakimel/reveal.js.git"
+  }
+}
