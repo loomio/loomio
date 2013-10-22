@@ -10,6 +10,13 @@ Loomio::Application.routes.draw do
     end
   end
 
+  namespace :next do
+    resources :discussions
+    get "/discussions/:id/new_proposal", to: "discussions#new_proposal", as: :new_proposal_discussion
+    resources :motions
+    get "/inbox", to: "inbox#index", as: :inbox
+  end
+
   get "/groups", to: 'groups/public_groups#index', as: :public_groups
 
   resource :search, only: :show

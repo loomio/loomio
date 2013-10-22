@@ -1,0 +1,16 @@
+%nav.navbar.navbar-default.navbar-static-top.loomio-nav{role: "navigation"}
+  .navbar-header
+    .modifier
+      -if controller_name == 'inbox'
+        %i.icon-reorder
+      -else
+        %i.icon-angle-left
+    %a{href: next_inbox_path}
+      %i.icon-home
+    .search
+      %input
+      .icon-container
+        %i.icon-search
+    .nav-buttons
+      %i.icon-plus-sign-alt
+      %i.icon-bell
