@@ -12,6 +12,8 @@ body { line-height: 22px; }
   }
 }
 
+[class*="span"].flush { margin-left: 0; }
+
 .navbar-inverse .navbar-inner {
   background: #252525;
   padding: 3px 0 1px;
