@@ -1,0 +1,14 @@
+{
+  "name": "jquery-1.9.1",
+  "_cacheHeaders": {
+    "ETag": "\"51f187e4-4185d\"",
+    "Last-Modified": "Thu, 25 Jul 2013 20:17:40 GMT",
+    "Content-Length": "268381",
+    "Content-Type": "application/x-javascript; charset=utf-8"
+  },
+  "_release": "e-tag:51f187e4-",
+  "main": "index.js",
+  "_source": "http://code.jquery.com/jquery-1.9.1.js",
+  "_target": "*",
+  "_originalSource": "http://code.jquery.com/jquery-1.9.1.js"
+}
