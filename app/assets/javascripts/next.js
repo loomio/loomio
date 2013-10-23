@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require holder.min
 //= require twitter/bootstrap
+//= require reveal/js/reveal
 
 stickyMotion = function(){
   if ($('#js-mini-motion').length > 0){
