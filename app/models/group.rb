@@ -12,13 +12,10 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   validates :description, :length => { :maximum => 250 }
   validates :name, :length => { :maximum => 250 }
-  validates :max_size, presence: true, if: :is_a_parent?
 
   validate :limit_inheritance
-  validate :max_size_is_nil, if: :is_a_subgroup?
 
   after_initialize :set_defaults
-  before_validation :set_max_group_size, on: :create
   before_save :update_full_name_if_name_changed
 
   include PgSearch
@@ -297,10 +294,6 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def set_max_group_size
-    self.max_size = 300 if (is_a_parent? && max_size.nil?)
-  end
-
   def set_defaults
     if is_a_subgroup?
       self.viewable_by ||= 'parent_group_members'
@@ -313,12 +306,6 @@ class Group < ActiveRecord::Base
   def limit_inheritance
     unless parent_id.nil?
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent_id.nil?
-    end
-  end
-
-  def max_size_is_nil
-    unless max_size.nil?
-      errors.add(:max_size, "Cannot be nil")
     end
   end
 end

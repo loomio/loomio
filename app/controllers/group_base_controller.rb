@@ -3,8 +3,8 @@ class GroupBaseController < BaseController
 
   def require_current_user_can_invite_people
     load_group
-    unless can? :add_members, @group
-      flash[:warning] = t("warning.user_not_admin", which_user: current_user.name)
+    unless can? :invite_people, @group
+      flash[:error] = "You are not able to invite people to this group"
       redirect_to @group
     end
   end
