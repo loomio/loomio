@@ -103,4 +103,11 @@ module ApplicationHelper
     !user_signed_in?
   end
 
+  def analytics_scope
+    if Rails.env.production? || Rails.env.staging?
+      unless controller_name == 'searches'
+        yield
+      end
+    end
+  end
 end

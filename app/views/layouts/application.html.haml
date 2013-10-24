@@ -14,6 +14,8 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     = render 'social_metadata', :description => @meta_description, :title => @meta_title
+    - analytics_scope do
+      = render 'google_analytics'
 
   %body{class: "#{controller_name} #{action_name}"}
     .main-container.container
@@ -23,5 +25,5 @@
       .page-container
         = yield
       = render 'footer_logged_in'
-
-    = render 'analytics'
+      - analytics_scope do
+        = render 'segmentio'
