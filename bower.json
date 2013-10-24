@@ -7,6 +7,7 @@
     "jquery": "~2.0.3",
     "underscore": "~1.5.2",
     "backbone": "~1.1.0",
-    "requirejs": "~2.1.9"
+    "requirejs": "~2.1.9",
+    "angular-mocks": "~1.0.8"
   }
 }
