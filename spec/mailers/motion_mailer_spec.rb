@@ -13,14 +13,14 @@ describe MotionMailer do
 
     #ensure that the subject is correct
     it 'renders the subject' do
-      @email.subject.should == "[Loomio: #{group.full_name}] New proposal - #{motion.name}"
+      @email.subject.should == "#{I18n.t(:proposal)}: #{motion.name} - #{group.name}"
     end
 
     #ensure that the sender is correct
     it 'renders the sender email' do
-      @email.from.should == ['noreply@loomio.org']
+      @email.from.should == ["noreply@loomio.org"]
     end
-    
+
     #ensure that reply to is correct
     it 'assigns reply to' do
       @email.reply_to.should == [motion.author_email]
@@ -28,11 +28,6 @@ describe MotionMailer do
 
     it 'sends email to group members but not author' do
       @email.to.should == [user.email]
-    end
-
-    #ensure that the group name variable appears in the email body
-    it 'assigns group.name' do
-      @email.body.encoded.should match(group.full_name)
     end
 
     #ensure that the confirmation_url appears in the email body

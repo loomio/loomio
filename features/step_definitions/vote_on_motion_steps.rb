@@ -64,3 +64,19 @@ end
 Then /^I should see new vote in the activity feed$/ do
   find('#activity-list').should have_content('I love this!!')
 end
+
+When(/^I try to visit the vote page$/) do
+  visit new_motion_vote_path(@motion)
+end
+
+Then(/^I should be returned to the vote page$/) do
+  page.should have_css('body.votes.new')
+end
+
+Given(/^I follow a vote link from an email$/) do
+  visit new_motion_vote_url(motion_id: @motion.id, position: 'yes', from_email: true)
+end
+
+Then(/^I should see my existing vote$/) do
+  page.should have_css('body.votes.new')
+end

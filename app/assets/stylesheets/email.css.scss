@@ -8,10 +8,12 @@ hr{
   margin-left: 0;
 }
 h1, h2, h3, h4, h5, h6{
-  max-width: 25em;
+  max-width: 40em;
+  margin: .2em 0;
 }
 p{
   max-width: 40em;
+  margin-bottom: 0;
 }
 p.unsubscribe{
   font-size: 0.8em;
@@ -23,8 +25,12 @@ table{
   max-width: 40em;
   border-collapse: collapse;
   margin-bottom: 1em;
+  img{
+    margin-right: .4em;
+    width: 40px;
+  }
 }
-td .border-bottom{ border-bottom: 1px solid #999;}
+.cell-border-bottom{ border-bottom: 1px solid #CCCCCC;}
 th{
   text-align: right;
   vertical-align: top;
@@ -32,8 +38,37 @@ th{
 }
 .agreed{ color: #90D490;}
 .abstained{ color: #F0BB67; }
-.blocked{ color: #dd0000; }
 .disagreed{ color: #D49090;}
+.blocked{ color: #dd0000; }
+
+.yes-link{
+  font-weight: bold;
+  margin: 0 5px 0 0;
+}
+.abstain-link{
+  font-weight: bold;
+  margin: 0 5px;
+}
+.no-link{
+  font-weight: bold;
+  margin: 0 5px;
+}
+.block-link{
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+.positions-title, .closes-in-text, .have-say-title, .activity-email-subsection{
+  color: #555;
+  margin: 1em 0 .2em 0;
+}
+
+.author-action { margin: 1em 0 .2em 0; }
+.motion-name{
+  max-width: none;
+  font-weight: bold;
+}
+
 .comment{
   padding-left: 25px;
   max-width: 40em;

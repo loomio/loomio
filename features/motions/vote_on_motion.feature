@@ -60,3 +60,19 @@ Feature: User votes on a motion
     And the discussion has an open proposal
     When I visit the discussion page
     Then I should not see the vote buttons
+
+  Scenario: As logged out user I should be able to follow a vote link easily
+    Given I am a logged out user
+    And there is a discussion in a group I belong to
+    And the discussion has an open proposal
+    When I try to visit the vote page
+    And I sign in
+    Then I should be returned to the vote page
+
+  Scenario: If I have voted and follow an email vote link I should see my existing vote
+    Given I am logged in
+    And there is a discussion in a group I belong to
+    And the discussion has an open proposal
+    And I have voted on the proposal
+    And I follow a vote link from an email
+    Then I should see my existing vote
