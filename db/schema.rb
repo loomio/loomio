@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131010025113) do
+ActiveRecord::Schema.define(:version => 20131024030111) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -306,7 +306,7 @@ ActiveRecord::Schema.define(:version => 20131010025113) do
     t.text     "description"
     t.integer  "memberships_count",    :default => 0,              :null => false
     t.datetime "archived_at"
-    t.integer  "max_size"
+    t.integer  "max_size",             :default => 300,            :null => false
     t.boolean  "cannot_contribute",    :default => false
     t.integer  "distribution_metric"
     t.string   "sectors"
