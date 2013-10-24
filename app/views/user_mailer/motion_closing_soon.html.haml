@@ -1,62 +1,30 @@
 = render '/application/mailer_doctype'
 %html
-  %table
-    %tr
-      %th= t :proposal
-      %td= link_to(@motion.name, motion_url(@motion))
-    %tr
-      %th= t :group
-      %td= @motion.group.name
-    %tr
-      %th= t :author
-      %td= @motion.author.name
+  %p.author-action= t(:"email.proposal_closing_soon.headline", author: @motion.author_name, group: @group.full_name)
+  %p.motion-name= link_to @motion.name, motion_url(@motion, utm_medium: 'email')
 
-    %tr
-      %th.nowrap= t "email.proposal_closing_soon.closes_in"
-      %td= time_ago_in_words(@motion.closing_at) + " (" + @motion.closing_at.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
+  -if @rendered_motion_description.present?
+    = @rendered_motion_description
 
-    - if @rendered_motion_description.present?
-      %tr
-        %th &nbsp;
-        %td &nbsp;
-      %tr
-        %th= t :details
-        %td= @rendered_motion_description
-    %tr
-      %th &nbsp;
-      %td &nbsp;
-    %tr
-      %th= t "proposal_closing_soon.summary"
-      %td
-        -#-if @motion.user_has_voted?(@user)
-          -#- vote = @user.get_vote_for(@motion)
-          -#Your position
-          -#=vote.position
-        -#-else
-          -#Please state your position
-        -#%br
-        -@motion.votes_for_graph.each do |results|
-          ="#{results[0]}, "
-        %br
-        = t :engagement_on_open_proposal,
-              percent: @motion.percent_voted,
-              numerator: @motion.total_votes_count,
-              denominator: @motion.group_size_when_voting
-    %tr
-      %th &nbsp;
-      %td &nbsp;
-    %tr
-      %th= t :positions
-      %td
-        %table
-          -@motion.unique_votes.each do |vote|
-            %tr
-              %td.border-bottom= vote.user_name
-              %td.border-bottom.proposal-position{class: vote.position_to_s}= vote.position_to_s
-              %td.border-bottom
-                -if vote.statement.present?
-                  = vote.statement
+  %p
+    = t(:"email.proposal_closing_soon.closes_at")
+    = @motion.closing_at.in_time_zone(TimeZoneToCity.convert @user.time_zone).strftime('%l:%M%P - %A %-d %b')
 
-  %p= link_to(t("email.view_proposal"), motion_url(@motion))
+  - unless @motion.user_has_voted?(@user)
+    %h4.have-say-title= t(:"help.have_your_say")
+    =render '/motion_mailer/vote_buttons'
+    %br
+
+  -if @motion.unique_votes.present?
+    %h4.positions-title= t(:positions).capitalize
+    %table
+      -last_vote = @motion.unique_votes.last
+      -@motion.unique_votes.each do |vote|
+        %tr{ :class => ("cell-border-bottom" unless vote==last_vote) }
+          %td= vote.user_name
+          %td.proposal-position{class: vote.position_to_s}= vote.position_to_s
+          %td
+            -if vote.statement.present?
+              = vote.statement
 
   =render 'unsubscribe_link'

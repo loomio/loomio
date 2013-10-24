@@ -3,11 +3,11 @@
   %p= t :"email.create_discussion.intro", who: @discussion.author.name, which_group: @discussion.group.full_name
 
   %strong
-    = link_to(@discussion.title, discussion_url(@discussion))
+    = link_to(@discussion.title, discussion_url(@discussion, utm_medium: 'email'))
 
   -if @rendered_discussion_description.present?
     = @rendered_discussion_description
 
-  %p= link_to(t("email.view_discussion"), discussion_url(@discussion))
+  %p= link_to(t("email.view_discussion"), discussion_url(@discussion, utm_medium: 'email'))
 
   = render 'user_mailer/unsubscribe_link'

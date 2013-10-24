@@ -1,29 +1,17 @@
 = render '/application/mailer_doctype'
 %html
-  %p= t("email.create_proposal.intro")
-  %p= link_to(t("email.view_proposal"), motion_url(@motion))
+  %p.author-action= t(:"email.new_motion_created.context", author: @motion.author_name, group_full_name: @group.full_name)
+  %p.motion-name= link_to @motion.name, motion_url(@motion, utm_medium: 'email')
 
-  %table
-    %tr
-      %th= t :proposal
-      %td= @motion.name
-    %tr
-      %th= t :group
-      %td= @motion.group.name
-    %tr
-      %th= t :author
-      %td= @motion.author.name
+  -if @rendered_motion_description.present?
+    = @rendered_motion_description
 
-    %tr
-      %th.nowrap= t("email.create_proposal.closes_in")
-      %td= time_ago_in_words(@motion.closing_at) + " (" + @motion.closing_at.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
+  %p
+    = t(:"email.proposal_closing_soon.closes_on") + ' ' + @motion.closing_at.in_time_zone(TimeZoneToCity.convert @user.time_zone).strftime('%A %-d %b - %l:%M%P')
+    %br
 
-    - if @rendered_motion_description.present?
-      %tr
-        %th &nbsp;
-        %td &nbsp;
-      %tr
-        %th= t :details
-        %td= @rendered_motion_description
+  %h4.have-say-title= t(:"help.have_your_say")
+  = render 'vote_buttons'
 
+  %br
   = render 'user_mailer/unsubscribe_link'

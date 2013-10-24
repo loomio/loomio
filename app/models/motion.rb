@@ -22,6 +22,7 @@ class Motion < ActiveRecord::Base
   delegate :group, :group_id, :to => :discussion
   delegate :users, :full_name, :to => :group, :prefix => :group
   delegate :email_new_motion?, to: :group, prefix: :group
+  delegate :name_and_email, to: :user, prefix: :author
 
   after_initialize :set_default_close_at_date_and_time
   before_validation :set_closing_at
@@ -114,6 +115,10 @@ class Motion < ActiveRecord::Base
 
   def user_has_voted?(user)
     votes.for_user(user).exists?
+  end
+
+  def most_recent_vote_of(user)
+    votes.for_user(user).last
   end
 
   def can_be_voted_on_by?(user)

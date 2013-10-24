@@ -4,7 +4,7 @@ Feature: Proposal closing soon email
   I want to be emailed when a proposal in my group is closing
 
   Scenario: User in group gets email because proposal is closing
-    Given there is a user "Ben"
+    Given there is a user called "Ben" in timezone "Europe/Budapest"
     And "Ben" is subscribed to proposal closing soon notification emails
     And there is a group "Pals"
     And "Ben" belongs to "Pals"
@@ -14,3 +14,4 @@ Feature: Proposal closing soon email
     And the proposal "Party on Saturday" is closing in 24 hours
     When we run the rake task to check for closing proposals, 24 hours before it closes.
     Then "Ben" gets a proposal closing soon email
+    And the email should give him the closing time appropriate for his timezone
