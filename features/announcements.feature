@@ -17,3 +17,11 @@ Feature: Announcements
     And I reload the page
     Then I should not see the announcement
 
+  Scenario: User does not see announcements when starting group
+    Given there is an announcement
+    When I go to start a new group from the navbar
+    Then I should not see the announcement
+    When I fill in the group name and submit the form
+    And I recieve an email with an invitation link
+    When I click the invitation link
+    Then I should not see the announcement
