@@ -30,6 +30,7 @@ class Discussion < ActiveRecord::Base
   delegate :users, :to => :group, :prefix => :group
   delegate :full_name, :to => :group, :prefix => :group
   delegate :email, :to => :author, :prefix => :author
+  delegate :name_and_email, :to => :author, prefix: :author
 
   after_create :populate_last_comment_at
   after_create :fire_new_discussion_event

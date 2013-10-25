@@ -38,12 +38,14 @@ class UserMailer < BaseMailer
   def motion_closing_soon(user, motion)
     @user = user
     @motion = motion
+    @group = motion.group
     @rendered_motion_description = render_rich_text(motion.description, false) #later: change false to motion.uses_markdown
     locale = best_locale(user.language_preference, @motion.author.language_preference)
     I18n.with_locale(locale) do
       mail to: user.email,
-           reply_to: @motion.author.email,
-           subject: "#{email_subject_prefix(@motion.group.full_name)} " + t("email.proposal_closing_soon.subject", which: @motion.name)
+           from: "#{motion.author.name} <noreply@loomio.org>",
+           reply_to: motion.author_name_and_email,
+           subject: "#{t(:"email.proposal_closing_soon.closing_in_24_hours")}: #{motion.name} - #{@group.name}"
     end
   end
 
