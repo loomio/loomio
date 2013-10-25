@@ -21,15 +21,15 @@ class ApplicationController < ActionController::Base
   protected
 
   def store_location
-    session[:return_to] = request.original_url
+    session['user_return_to'] = request.original_url
   end
 
   def clear_stored_location
-    session[:return_to] = nil
+    session['user_return_to'] = nil
   end
 
   def after_sign_in_path_for(resource)
-    path = session[:return_to] || root_path
+    path = session['user_return_to'] || root_path
     clear_stored_location
     path
   end

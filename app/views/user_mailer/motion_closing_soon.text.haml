@@ -1,39 +1,22 @@
-= "#{t :proposal}:"
+= t(:"email.proposal_closing_soon.headline", author: @motion.author_name, group: @group.full_name)
+\
+\
 = @motion.name
-\
-= "#{t('email.view_proposal')}:"
-= motion_url(@motion)
-\
-= "#{t :group}:"
-= @motion.discussion.group.name
-\
-= "#{t :author}:"
-= @motion.author.name
-\
-= "#{t 'email.proposal_closing_soon.closes_in'}:"
-= time_ago_in_words(@motion.closing_at) + " (" + @motion.closing_at.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
-\
-= "#{t :details}:"
-= @motion.description
+= motion_url(@motion, utm_medium: 'email')
 \
 - if @motion.description.present?
-  = "#{t 'email.proposal_closing_soon.summary'}:"
   =@motion.description
 \
-- @motion.votes_for_graph.each do |results|
-  = results[0]
+= t(:"email.proposal_closing_soon.closes_at")
+= @motion.closing_at.in_time_zone(TimeZoneToCity.convert @user.time_zone).strftime('%l:%M%P - %A %-d %b')
 \
-= t :engagement_on_open_proposal,
-      percent: @motion.percent_voted,
-      numerator: @motion.total_votes_count,
-      denominator: @motion.group_size_when_voting
-\
-= "#{t :positions}:"
-\
-- @motion.unique_votes.each do |vote|
-  #{vote.user_name} #{vote.position_to_s}
-  - if vote.statement.present?
-    \ - #{vote.statement}
-    \
+- if @motion.unique_votes.present?
+  = "#{t :positions}:"
+  \
+  - @motion.unique_votes.each do |vote|
+    #{vote.user_name} #{vote.position_to_s}
+    - if vote.statement.present?
+      \ - #{vote.statement}
+      \
 
 =render 'unsubscribe_link_text'

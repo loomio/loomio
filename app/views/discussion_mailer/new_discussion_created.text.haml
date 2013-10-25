@@ -7,6 +7,6 @@
   = @discussion.description
 \
 = "#{t('email.view_discussion')}:"
-= discussion_url(@discussion)
+= discussion_url(@discussion, utm_medium: 'email')
 \
 = render 'user_mailer/unsubscribe_link_text'

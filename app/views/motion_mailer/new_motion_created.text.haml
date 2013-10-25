@@ -1,22 +1,13 @@
-= t("email.create_proposal.intro")
-\
-= "#{t('email.view_proposal')}:"
-= motion_url(@motion)
-\
-= "#{t(:proposal)}:"
+= t(:"email.new_motion_created.context", author: @motion.author_name, group_full_name: @group.full_name)
 = @motion.name
 \
-= "#{t(:group)}:"
-= @motion.group.name
-\
-= "#{t(:author)}:"
-= @motion.author.name
-\
-= "#{t('email.create_proposal.closes_in')}:"
-= time_ago_in_words(@motion.closing_at) + " (" + @motion.closing_at.localtime.strftime('%a %d %b %Y, %I:%M%p, %Z') + ")"
-\
-- if @motion.description.present?
-  = "#{t(:details)}:"
+-if @motion.description.present?
   = @motion.description
+\
+= t(:"email.proposal_closing_soon.closes_on") +' '+ @motion.closing_at.in_time_zone(TimeZoneToCity.convert @user.time_zone).strftime('%A %-d %b - %l:%M%P')
+\
+= t(:"help.have_your_say")
+= motion_url(@motion, utm_medium: 'email')
+\
 \
 = render 'user_mailer/unsubscribe_link_text'

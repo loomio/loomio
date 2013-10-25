@@ -8,22 +8,28 @@ end
 
 Then /^"(.*?)" gets a proposal closing soon email$/ do |arg1|
   user = User.find_by_name(arg1)
-  open_email(user.email, :with_subject => "Proposal closing soon")
-  current_email.default_part_body.to_s.should include("unsubscribe")
+  subject ="#{I18n.t(:"email.proposal_closing_soon.closing_in_24_hours")}: #{@motion.name} - #{@group.name}"
+  @email = open_email(user.email, :with_subject => subject)
+  @email.default_part_body.to_s.should include("unsubscribe")
 end
 
 Given /^the proposal "(.*?)" is closing in (\d+) hours$/ do |arg1, arg2|
-  motion = Motion.find_by_name(arg1)
+  @motion = Motion.find_by_name(arg1)
   closing_at = Time.zone.now.at_beginning_of_hour + 24.hours + 30.minutes
-  motion.update_attribute(:closing_at, closing_at)
+  @motion.update_attribute(:closing_at, closing_at)
 end
 
-Given /^"(.*?)" agreed with the proposal "(.*?)"$/ do |arg1, arg2|
-  user = User.find_by_name(arg1)
-  motion = Motion.find_by_name(arg2)
-  vote = Vote.new
-  vote.motion = motion
-  vote.user = user
-  vote.position = 'yes'
-  vote.save!
+Given /^there is a user called "(.*?)" in timezone "(.*?)"$/ do |arg1, arg2|
+  @user_email = "#{arg1}@example.org"
+  @user = FactoryGirl.create :user, name: arg1,
+                            email: @user_email,
+                            password: 'password',
+                            time_zone: arg2
+end
+
+Then(/^the email should give him the closing time appropriate for his timezone$/) do
+  local_time = @motion.closing_at.in_time_zone(TimeZoneToCity.convert @user.time_zone).
+               strftime('%l:%M%P - %A %-d %b')
+
+  @email.default_part_body.to_s.should include(local_time)
 end

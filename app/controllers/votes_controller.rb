@@ -6,7 +6,8 @@ class VotesController < GroupBaseController
 
   def new
     @motion = Motion.find(params[:motion_id])
-    @vote = Vote.new
+    @vote = @motion.most_recent_vote_of(current_user)
+    @vote = Vote.new unless @vote
     @vote.position = params[:position]
   end
 
