@@ -1,0 +1,23 @@
+/*.media-header, .media-header__info {
+  overflow: hidden;
+  zoom: 1;
+}
+
+*/
+
+
+.media{
+  margin-bottom: 2px;
+}
+.media__title {
+  margin: 0;
+}
+.media__img {
+  float: left;
+  margin-right: $card-gutter;
+}
+.media__details {
+  color: #AAA;
+  font-size: 0.8em;
+  margin-top: 4px;
+}

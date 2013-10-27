@@ -1,0 +1,12 @@
+.edit-content {
+  margin-top: 4px;
+  font-size: 0.9em;
+}
+
+.edit-content:hover {
+  text-decoration: none;
+  .edit-content__text {
+    text-decoration: underline;
+  }
+}
+
