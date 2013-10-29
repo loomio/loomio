@@ -1,7 +1,8 @@
 = render 'next/navbar'
 - avatar_size = 34
 - avatar_path = "holder.js/#{avatar_size}x#{avatar_size}"
-.card-page.discussion
+
+.card-page.discussion{ng_controller: 'DiscussionController'}
   .card-row
     .card#top
       .card__header--standalone
@@ -71,7 +72,7 @@
                 %label Block
                 %textarea.form-control{rows: 3}
               %button.btn
-                Submit                                                
+                Submit
         .card__show-more
           %a View positions
 
@@ -94,27 +95,28 @@
         %i.icon-edit
         Edit
 
-  - @discussion.comments.each do |comment|
-    .card-row
-      .card
-        .card__header
-          .media
-            .media__img
-              %img{alt: "...", src: avatar_path}
-            .media__text
-              %h4.media__title= comment.author.name
-              .media__details= time_ago_in_words(comment.created_at)
-        .card__content
-          = comment.body
-        .toolbar-container
-          .toolbar
-            .toolbar__button.toolbar__button--first
-              %span.glyphicon.glyphicon-thumbs-up
-              Like
-            .toolbar__button.reply
-              %a{href: '#'}
-                %span.glyphicon.glyphicon-comment
-                Reply
+  .card-row{'ng-repeat' => 'comment in comments'}
+    .card
+      .card__header
+        .media
+          .media__img
+            %img{alt: "...", src: avatar_path}
+          .media__text
+            %h4.media__title
+              {{comment.author_name}}
+            .media__details
+              {{comment.created_at | date:'medium' }}
+      .card__content
+        {{ comment.body }}
+      .toolbar-container
+        .toolbar
+          .toolbar__button.toolbar__button--first
+            %span.glyphicon.glyphicon-thumbs-up
+            Like
+          .toolbar__button.reply
+            %a{href: '#'}
+              %span.glyphicon.glyphicon-comment
+              Reply
 
   -unless @current_motion.present?
     .card-row#create-a-proposal

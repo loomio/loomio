@@ -1,12 +1,12 @@
 !!!
-%html
+%html{'ng-app' => 'LoomioApp'}
   %head
     %title= display_title @unviewed_notifications
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     = render 'social_metadata', :description => @meta_description, :title => @meta_title
 
     = stylesheet_link_tag    "next", :media => "all"
-    = javascript_include_tag "next"
+    = javascript_include_tag "next/application"
     = csrf_meta_tags
   %body
     = yield
