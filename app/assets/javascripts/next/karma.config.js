@@ -1,6 +1,3 @@
-// Karma configuration
-// Generated on Wed Oct 23 2013 17:55:12 GMT+1300 (NZDT)
-
 module.exports = function(config) {
   config.set({
 
@@ -15,9 +12,10 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       '../../../../vendor/assets/bower_components/angular/angular.js',
+      '../../../../vendor/assets/bower_components/angular-route/angular-route.js',
       '../../../../vendor/assets/bower_components/angular-mocks/angular-mocks.js',
-      'app/*.js',
-      'tests/*.js'
+      'app/*.js.coffee',
+      'tests/*.js.coffee'
     ],
 
 
@@ -29,7 +27,7 @@ module.exports = function(config) {
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress'],
+    reporters: ['progress', 'dots'],
 
 
     // web server port
