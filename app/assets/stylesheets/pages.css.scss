@@ -199,6 +199,19 @@ a.btn-icon:hover { color: $dark-grey; }
       margin-bottom: 0px;
     }
     .homevideo { text-align:right; }
+    .featured-row {
+      margin-bottom: 1em;
+      h3 {
+        margin-bottom: .4em;
+      }
+      .featured-image {
+        width: 96px;
+      }
+    }
+    .discovergroups {
+      margin-top: 1em;
+      text-align: center;
+    }
   }
   .subhead h1, .head h1{
     font-size: 50px;
