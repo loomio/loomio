@@ -7,14 +7,13 @@ describe Groups::InvitationsController do
     sign_in @user
   end
 
-  context 'create' do
-    # let(:invalid_invite_people){stub(:invite_people, valid?: false)}
-
-    # it 'renders new if invite_people is invalid' do
-    #   InvitePeople.should_receive(:new).and_return(invalid_invite_people)
-    #   post :create, group_id: @group.id, invite_people: {recipients: "bob"}
-    #   response.should render_template(:new)
-    # end
+  context 'new' do
+    it 'redirects with flash error if subgroup' do
+      @subgroup = Group.create(name: 'subgroup', parent: @group)
+      get :new, group_id: @subgroup.id
+      response.should be_redirect
+      flash[:error].should == 'You are not able to invite people to this group'
+    end
   end
 
   describe 'destroy' do
