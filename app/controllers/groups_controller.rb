@@ -41,7 +41,7 @@ class GroupsController < GroupBaseController
     @subgroups = @group.subgroups.all.select{|g| can?(:show, g) }
     @discussion = Discussion.new(group_id: @group.id)
     @discussions_with_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).with_open_motions.order('motions.closing_at ASC')
-    @discussions_without_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).without_open_motions.order('created_at DESC').page(params[:page]).per(20)
+    @discussions_without_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).without_open_motions.order('last_comment_at DESC').page(params[:page]).per(20)
     assign_meta_data
 
   end
