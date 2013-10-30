@@ -39,12 +39,9 @@ class Comment < ActiveRecord::Base
     c.uses_markdown = options[:uses_markdown] || false
     if options[:attachments].present?
       c.attachment_ids = options[:attachments].map{|s| s.to_i}
-      raise 'hello from comment'
       c.attachments_count = options[:attachments].count
     end
     c
-  rescue
-    puts 'hi jimmy'
   end
 
   def like(user)

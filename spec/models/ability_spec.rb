@@ -96,6 +96,7 @@ describe "User abilities" do
     context "group members invitable by members" do
       before { group.update_attributes(:members_invitable_by => 'members') }
       it { should be_able_to(:add_members, group) }
+      it { should be_able_to(:invite_people, group) }
       it { should be_able_to(:manage_membership_requests, group) }
       it { should be_able_to(:approve, membership_request) }
       it { should be_able_to(:ignore, membership_request) }
@@ -105,6 +106,7 @@ describe "User abilities" do
     context "group members invitable by admins" do
       before { group.update_attributes(:members_invitable_by => 'admins') }
       it { should_not be_able_to(:add_members, group) }
+      it { should_not be_able_to(:invite_people, group) }
       it { should_not be_able_to(:manage_membership_requests, group) }
       it { should_not be_able_to(:approve, membership_request) }
       it { should_not be_able_to(:ignore, membership_request) }
@@ -178,6 +180,7 @@ describe "User abilities" do
     context "group members invitable by admins" do
       before { group.update_attributes(:members_invitable_by => 'admins') }
       it { should be_able_to(:add_members, group) }
+      it { should be_able_to(:invite_people, group) }
       it { should be_able_to(:manage_membership_requests, group) }
       it { should be_able_to(:approve, membership_request) }
       it { should be_able_to(:ignore, membership_request) }
@@ -199,6 +202,7 @@ describe "User abilities" do
     end
     it { should_not be_able_to(:view_payment_details, sub_group) }
     it { should_not be_able_to(:choose_subscription_plan, sub_group) }
+    it { should_not be_able_to(:invite_people, sub_group) }
   end
 
   context "non-member of a group" do

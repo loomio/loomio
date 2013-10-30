@@ -54,6 +54,19 @@ class Ability
       end
     end
 
+    can :invite_people, Group do |group|
+      if group.is_a_subgroup?
+        false
+      else
+        case group.members_invitable_by
+        when 'members'
+          @member_group_ids.include?(group.id)
+        when 'admins'
+          @admin_group_ids.include?(group.id)
+        end
+      end
+    end
+
     can :create, Group do |group|
       if group.parent_id.present?
         @member_group_ids.include?(group.parent_id)

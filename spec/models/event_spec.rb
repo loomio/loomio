@@ -1,35 +1,6 @@
 require 'spec_helper'
 
 describe Event do
-  describe 'validating presence of discussion_item_number' do
-    before do
-      @event = Event.new
-      @discussion = FactoryGirl.create(:discussion)
-    end
-
-    context 'discussion is present' do
-      before do
-        @event.discussion = @discussion
-        @event.valid?
-      end
-
-      it 'validates presence of discussion_item_number' do
-        @event.should have(1).error_on(:discussion_item_number)
-      end
-    end
-
-    context 'discussion is absent' do
-      before do
-        @event.discussion = @discussion
-        @event.save
-      end
-
-      it 'does not validate presence of discussion_item_number' do
-        @event.should_not have(1).error_on(:discussion_item_number)
-      end
-    end
-  end
-
   describe "#belongs_to(user)?" do
     context "event was triggered by my action" do
       let(:user) { stub_model(User)}

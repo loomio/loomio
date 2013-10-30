@@ -29,12 +29,6 @@ describe Discussion do
     discussion.comments.should include(comment)
   end
 
-  it "group non-member cannot add comment" do
-    discussion = create(:discussion)
-    comment = discussion.add_comment(create(:user), "this is a test comment", uses_markdown: false)
-    discussion.comments.should_not include(comment)
-  end
-
   it "automatically populates last_comment_at with discussion.created at" do
     discussion = create(:discussion)
     discussion.last_comment_at.should == discussion.created_at

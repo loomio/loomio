@@ -106,8 +106,8 @@ class DiscussionsController < GroupBaseController
   end
 
   def add_comment
-    @discussion = Discussion.find params[:discussion_id]
-    @comment = build_comment
+    @discussion = Discussion.find params[:id]
+    build_comment
     service = AddCommentService.new(current_user, @comment, @discussion)
 
     if service.commit!
@@ -182,6 +182,7 @@ class DiscussionsController < GroupBaseController
     @comment.author = current_user
     @comment.attachment_ids = attachment_ids
     @comment.attachments_count = attachment_ids.size
+    @comment
   end
 
   def mark_as_read
