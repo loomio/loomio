@@ -15,9 +15,6 @@ class Comment < ActiveRecord::Base
   validate :attachments_owned_by_author
 
   after_initialize :set_defaults
-  after_create :update_discussion_last_comment_at
-  after_create :fire_new_comment_event
-
   default_scope include: :user
 
   delegate :name, :to => :user, :prefix => :user
@@ -30,6 +27,7 @@ class Comment < ActiveRecord::Base
   serialize :liker_ids_and_names, Hash
 
   alias_method :author, :user
+  alias_method :author=, :user=
 
   # Helper class method that allows you to build a comment
   # by passing a discussion object, a user_id, and comment text
@@ -41,9 +39,12 @@ class Comment < ActiveRecord::Base
     c.uses_markdown = options[:uses_markdown] || false
     if options[:attachments].present?
       c.attachment_ids = options[:attachments].map{|s| s.to_i}
+      raise 'hello from comment'
       c.attachments_count = options[:attachments].count
     end
     c
+  rescue
+    puts 'hi jimmy'
   end
 
   def like(user)
@@ -97,16 +98,6 @@ class Comment < ActiveRecord::Base
     def has_body_or_attachment
       if body.blank? && attachments.blank?
         errors.add(:body, "Comment cannot be empty")
-      end
-    end
-
-    def fire_new_comment_event
-      Events::NewComment.publish!(self)
-    end
-
-    def update_discussion_last_comment_at
-      if discussion.present?
-        discussion.update_attribute(:last_comment_at, created_at)
       end
     end
 end
