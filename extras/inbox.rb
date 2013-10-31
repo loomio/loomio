@@ -24,8 +24,8 @@ class Inbox
     @grouped_items = {}
     @unread_discussions_per_group = {}
     groups.each do |group|
-      @unread_discussions_per_group[group] = unread_discussions_for(group).size
 
+      @unread_discussions_per_group[group] = unread_discussions_for(group).size
       discussions = unread_discussions_for(group).limit(unread_per_group_limit)
       motions = unread_motions_for(group)
       next if discussions.empty? && motions.empty?
@@ -99,9 +99,12 @@ class Inbox
     end
   end
 
-  def unread_discussions_for(group)
-    Queries::VisibleDiscussions.new(user: @user, groups: [group]).unread.
-                                order_by_latest_comment.readonly(false)
+  def unread_discussions_for(group, options={})
+    Queries::VisibleDiscussions.
+      new(user: @user, groups: [group]).
+      unread.
+      last_comment_after(start_date_for(group)).
+      order_by_latest_comment.readonly(false)
   end
 
   def unvoted_motions_for(group)
@@ -111,5 +114,11 @@ class Inbox
   def unread_motions_for(group)
     Queries::VisibleMotions.new(user: @user, groups: [group]).unread.voting.
                                 order_by_latest_activity.readonly(false)
+  end
+
+  def start_date_for(group)
+    @user.memberships.where(group_id: group.id).
+    first.
+    created_at - 1.week
   end
 end

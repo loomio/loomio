@@ -5,6 +5,7 @@ class Discussion < ActiveRecord::Base
   # default_scope -> {where(is_deleted: false)}
   scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
   scope :order_by_latest_comment, order('last_comment_at DESC')
+  scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
 
   validates_presence_of :title, :group, :author
   validates :title, :length => { :maximum => 150 }
