@@ -5,7 +5,7 @@ describe Events::NewVote do
   let(:vote){ mock_model(Vote, motion: motion) }
 
   describe "::publish!" do
-    let(:event){ stub(:event, notify_users!: true) }
+    let(:event){ double(:event, notify_users!: true) }
     before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do
@@ -21,8 +21,8 @@ describe Events::NewVote do
   end
 
   context "after event has been published" do
-    let(:motion_author) { stub(:motion_author) }
-    let(:discussion_author) { stub(:discussion_author) }
+    let(:motion_author) { double(:motion_author) }
+    let(:discussion_author) { double(:discussion_author) }
     let(:user){ mock_model(User) }
     let(:event) { Events::NewVote.new(kind: "new_vote",
                                         eventable: vote,

@@ -1,15 +1,15 @@
 describe DiscussionItems::MotionClosed do
-  let(:event) { stub(:event) }
-  let(:motion) { stub(:motion) }
+  let(:event) { double(:event) }
+  let(:motion) { double(:motion) }
   let(:item) { DiscussionItems::MotionClosed.new(event, motion) }
 
   it "#icon returns a string indicating the icon-class"
 
   context "Motion is closed by a user" do
-    before { item.stub_chain(:event, :user).and_return(stub(:user)) }
+    before { item.stub_chain(:event, :user).and_return(double(:user)) }
 
     it "#actor returns the user who created a discussion" do
-      actor = stub(:actor)
+      actor = double(:actor)
       item.actor.should == item.event.user
     end
 

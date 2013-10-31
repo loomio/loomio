@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe NotificationItems::NewDiscussion do
-  let(:notification) { stub(:notification) }
+  let(:notification) { double(:notification) }
   let(:item) { NotificationItems::NewDiscussion.new(notification) }
 
   it "#actor returns the user who created a discussion" do
-    actor = stub(:actor)
+    actor = double(:actor)
     notification.stub_chain(:eventable, :author).and_return(actor)
     item.actor.should == notification.eventable.author
   end
@@ -26,7 +26,7 @@ describe NotificationItems::NewDiscussion do
 
   it "#link returns a path to the motion's discussion" do
     item.stub_chain(:url_helpers, :discussion_path).and_return("/discussions/1")
-    notification.stub_chain(:eventable).and_return(stub(:discussion))
+    notification.stub_chain(:eventable).and_return(double(:discussion))
     item.link.should == "/discussions/1"
   end
 end

@@ -5,7 +5,7 @@ describe InvitationsController do
   describe "GET 'show'" do
 
     let(:group) { stub_model(Group) }
-    let(:invitation) {stub(:invitation,
+    let(:invitation) {double(:invitation,
                            :group => group,
                            :recipient_email => 'jim@bob.com',
                            :intent => 'join_group',
