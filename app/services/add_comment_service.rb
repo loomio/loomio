@@ -1,24 +1,17 @@
-class AddCommentService
-  def initialize(user_or_comment, comment = nil, discussion = nil)
+class DiscussionService
+  def self.add_comment(user_or_comment, comment = nil)
     if comment.nil?
-      @comment = user_or_comment
-      @user = @comment.author
-      @discussion = @comment.discussion
+      comment = user_or_comment
+      author = comment.author
     else
-      @user = user_or_comment
-      @comment = comment
-      @discussion = discussion
-      @comment.author = @user
-      @comment.discussion = @discussion
+      author = user_or_comment
     end
-  end
 
-  def commit!
-    @user.ability.authorize! :add_comment, @discussion
-    return false unless @comment.save
+    author.ability.authorize! :add_comment, comment.discussion
+    return false unless comment.save
 
-    event = Events::NewComment.publish!(@comment)
-    @discussion.update_attribute(:last_comment_at, @comment.created_at)
+    event = Events::NewComment.publish!(comment)
+    comment.discussion.update_attribute(:last_comment_at, comment.created_at)
     event
   end
 end
