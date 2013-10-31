@@ -90,7 +90,10 @@ end
 Given(/^I have read the discussion but there is a new comment$/) do
   @discussion.as_read_by(@user).viewed!
   @discussion.group.add_member!(@discussion.author)
-  @discussion.add_comment(@discussion.author, 'hi')
+  @comment = Comment.new(body: 'hi')
+  @comment.author = @user
+  @comment.discussion = @discussion
+  DiscussionService.add_comment(@comment)
 end
 
 Given(/^I belong to a group with more than max per inbox group discussions$/) do
