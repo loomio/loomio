@@ -5,8 +5,10 @@ end
 Given(/^there are two comments$/) do
   @commenter = FactoryGirl.create :user
   @group.add_member! @commenter
-  @first_comment = @discussion.add_comment @commenter, "old comment", uses_markdown: false
-  @second_comment = @discussion.add_comment @commenter, "new comment", uses_markdown: false
+  @first_comment = Comment.new(body: 'old comment')
+  @second_comment = Comment.new(body: 'new comment')
+  AddCommentService.new(@commenter, @first_comment, @discussion).commit!
+  AddCommentService.new(@commenter, @second_comment, @discussion).commit!
   @discussion.reload
 end
 
