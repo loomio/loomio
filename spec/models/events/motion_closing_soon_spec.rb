@@ -4,7 +4,7 @@ describe Events::MotionClosingSoon do
   let(:motion) { mock_model(Motion, discussion: mock_model(Discussion)) }
 
   describe "::publish!" do
-    let(:event){ stub(:event, notify_users!: true) }
+    let(:event){ double(:event, notify_users!: true) }
     before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do

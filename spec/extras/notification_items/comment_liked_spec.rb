@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe NotificationItems::CommentLiked do
-  let(:notification) { stub(eventable: eventable) }
-  let(:eventable) { stub(:eventable) }
+  let(:notification) { double(eventable: eventable) }
+  let(:eventable) { double(:eventable) }
   let(:item) { NotificationItems::CommentLiked.new(notification) }
 
   it "#actor returns the user who liked the comment" do
-    liker = stub(:user)
+    liker = double(:user)
     eventable.stub(user: liker)
     item.actor.should == notification.eventable.user
   end
@@ -27,7 +27,7 @@ describe NotificationItems::CommentLiked do
 
   it "#link returns a path to the comment" do
     item.stub_chain(:url_helpers, :discussion_path).and_return("/discussions/1/")
-    eventable.stub(comment_id: "123", discussion: stub(:discussion))
+    eventable.stub(comment_id: "123", discussion: double(:discussion))
     item.link.should == "/discussions/1/#comment-123"
   end
 end

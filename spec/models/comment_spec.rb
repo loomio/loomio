@@ -128,9 +128,9 @@ describe Comment do
   describe "#non_mentioned_discussion_participants" do
     before do
       @group = create :group
-      @author = stub(:user)
-      @participant = stub(:user)
-      @mentioned_user = stub(:user)
+      @author = double(:user)
+      @participant = double(:user)
+      @mentioned_user = double(:user)
       comment.stub_chain(:discussion, :participants).and_return([@participant, @author, @mentioned_user])
       comment.stub(:mentioned_group_members).and_return([@mentioned_user])
       comment.stub(:author).and_return(@author)

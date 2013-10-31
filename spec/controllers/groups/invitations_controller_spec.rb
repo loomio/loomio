@@ -17,7 +17,7 @@ describe Groups::InvitationsController do
   end
 
   describe 'destroy' do
-    let(:invitation){stub(:invitation,
+    let(:invitation){double(:invitation,
                           recipient_email: 'jim@jam.com',
                           cancel!: true)}
 
