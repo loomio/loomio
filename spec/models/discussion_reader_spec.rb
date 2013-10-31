@@ -56,7 +56,7 @@ describe DiscussionReader do
       it {should == 1}
     end
 
-    context '2 read, 1 unread', focus: true do
+    context '2 read, 1 unread' do
       before do
         discussion.add_comment(other_user, 'hi')
         discussion.add_comment(other_user, 'hi')

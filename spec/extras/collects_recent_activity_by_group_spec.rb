@@ -36,7 +36,10 @@ describe CollectsRecentActivityByGroup do
           @discussion = FactoryGirl.create :discussion,
                                           {group: group, created_at: 2.days.ago} 
           
-          @discussion.add_comment(@discussion.author, 'hi')
+          @comment = Comment.new(body: 'hi')
+          @comment.author = @discussion.author
+          @comment.discussion = @discussion
+          DiscussionService.add_comment(@comment)
         end
         it 'returns the discussion' do
           recent_activity[group.full_name][:discussions].should include @discussion
