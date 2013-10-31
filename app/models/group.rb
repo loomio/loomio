@@ -24,8 +24,6 @@ class Group < ActiveRecord::Base
 
   default_scope where(:archived_at => nil)
 
-  scope :not_featured, where('id NOT IN (?)', [3,1031,194])
-
   scope :parents_only, where(:parent_id => nil)
 
   scope :sort_by_popularity,

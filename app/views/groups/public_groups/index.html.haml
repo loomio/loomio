@@ -1,52 +1,12 @@
 .row-fluid
   .span12.header-row
     %h1 Discover groups on Loomio
-
-- if !params[:query].present? && first_page?
-  .row-fluid
-    .span12
-      %h2 Featured groups
-  .featured
-    .row-fluid.featured-row
-      .span2.featured-image
-        =link_to image_tag("diaspora.jpg"), group_path(id: 194)
-      .span9.flush
-        %h3
-          =link_to "Diaspora Community", group_path(id: 194)
-        .featured-desc
-          The Diaspora Project works with the goal of establishing a decentralized social platform. It is Free and Open Source software, and community-driven.
-    .row-fluid.featured-row
-      .span2.featured-image
-        =link_to image_tag("blag.jpg"), group_path(id: 1031)
-      .span9.flush
-        %h3
-          =link_to "Big Live Arts Group", group_path(id: 1031)
-        .featured-desc
-          To develop a supportive and critically engaged community within the performing arts industry that is anchored by principles of diversity, inclusion, openness and transparency
-    .row-fluid.featured-row
-      .span2.featured-image
-        =link_to image_tag("loomio-community.jpg"), group_path(id: 3)
-      .span9.flush
-        %h3
-          =link_to "Loomio Community", group_path(id: 3)
-        .featured-desc
-          A public group for the international community of Loomio users and supporters to get together, discuss and collaborate.
-
-.row-fluid
-  .span10
-    %h2.search-header Find a public group
     .input-append
       = form_tag public_groups_path, method: 'get', class: 'form-search' do |f|
         = text_field_tag :query, params[:query], class: 'search-query'
         .add-on
           %i.icon-search
             = submit_tag "", class: 'submit-search'
-  - unless params[:query].present?
-    .span2.alphabetise
-      - order = set_names_order_link
-      %a{ :href => order }
-        .icon-container
-          = set_alphabetise_icon
 .public-groups-container
 
   %ul.selector-list.bordered
