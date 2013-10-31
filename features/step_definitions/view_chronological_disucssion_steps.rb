@@ -5,8 +5,10 @@ end
 Given(/^there are two comments$/) do
   @commenter = FactoryGirl.create :user
   @group.add_member! @commenter
-  @first_comment = @discussion.add_comment @commenter, "old comment", uses_markdown: false
-  @second_comment = @discussion.add_comment @commenter, "new comment", uses_markdown: false
+  @first_comment = Comment.new(body: 'old comment')
+  @second_comment = Comment.new(body: 'new comment')
+  AddCommentService.new(@commenter, @first_comment, @discussion).commit!
+  AddCommentService.new(@commenter, @second_comment, @discussion).commit!
   @discussion.reload
 end
 
@@ -21,20 +23,11 @@ Given(/^there is a discussion that I have previously viewed$/) do
   reader.viewed!
 end
 
-Given(/^I have previously viewed the second page of the discussion$/) do
-  reader = @discussion.as_read_by(@user)
-  reader.viewed!
-end
 
 Given(/^there has been new activity$/) do
   @third_comment = @discussion.add_comment @commenter, "newest comment", uses_markdown: false
 end
 
-Given(/^now there is new activity$/) do
-  10.times do
-    FactoryGirl.create(:comment, discussion: @discussion, user: @commenter)
-  end
-end
 
 Then(/^I should not see the new activity indicator$/) do
   page.should_not have_css(".dog-ear")
@@ -48,11 +41,26 @@ Given(/^there is a two page discussion$/) do
   @commenter = FactoryGirl.create :user
   @group.add_member! @commenter
   60.times do
-    FactoryGirl.create(:comment, discussion: @discussion, user: @commenter)
+    comment = Comment.new(body: 'yo wassup')
+    AddCommentService.new(@commenter, comment, @discussion).commit!
+  end
+end
+
+Given(/^I have previously viewed the second page of the discussion$/) do
+  @discussion.reload
+  reader = @discussion.as_read_by(@user)
+  reader.viewed!
+end
+
+Given(/^now there is new activity$/) do
+  10.times do
+    comment = FactoryGirl.build(:comment, discussion: @discussion, user: @commenter)
+    AddCommentService.new(comment).commit!
   end
 end
 
 Then(/^I should see the second page$/) do
+  view_screenshot
   find(".pagination > ul li:nth-child(3).active")
 end
 

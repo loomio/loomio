@@ -1,6 +1,6 @@
 Given(/^a discussion has over (\d+) posts$/) do |arg1|
   51.times do
-    FactoryGirl.create(:comment, discussion: @discussion, user: @user)
+    AddCommentService.new(@user, Comment.new(body:'hi'), @discussion).commit!
   end
 end
 
