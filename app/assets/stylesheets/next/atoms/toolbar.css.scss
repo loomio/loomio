@@ -14,6 +14,9 @@
   text-align: center;
   line-height: 2em;
   font-weight: 700;
+  @include screen-size(medium-up) {
+    @include make-xs-column(2);
+  }
 }
 
 // Non-block elements

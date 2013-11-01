@@ -1,6 +1,9 @@
 @import 'utilities/bootstrap-utils';
 @import 'utilities/grid-settings';
 @import 'utilities/page-settings';
+@import 'utilities/media_queries';
+
+@import 'quarks/ionicons';
 
 @import 'atoms/add-comment-form';
 @import 'atoms/buttons';
@@ -15,7 +18,7 @@
 @import 'molecules/inbox';
 @import 'molecules/motion';
 
-@import 'font-awesome';
+@import 'molecules/motion';
 
 .decision-buttons{
   i{font-size: 3em;}

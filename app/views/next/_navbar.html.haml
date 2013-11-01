@@ -1,16 +1,15 @@
 %nav.navbar.navbar-default.navbar-static-top.loomio-nav{role: "navigation"}
-  .navbar-header
-    .modifier
-      -if controller_name == 'inbox'
-        %i.icon-reorder
-      -else
-        %i.icon-angle-left
-    %a{href: next_inbox_path}
-      %i.icon-home
+  .modifier
+    -if controller_name == 'inbox'
+      %i.icon-drag
+    -else
+      %i.icon-ios7-arrow-left
+    =link_to image_tag("logo.png", class: "navbar__logo"), next_inbox_path
+  .nav-buttons
     .search
       %input
       .icon-container
-        %i.icon-search
-    .nav-buttons
-      %i.icon-plus-sign-alt
-      %i.icon-bell
+        %i.icon-ios7-search-strong
+    %i.icon-chatboxes
+    %i.icon-ios7-bell
+
