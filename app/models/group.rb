@@ -12,26 +12,27 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
   validates :description, :length => { :maximum => 250 }
   validates :name, :length => { :maximum => 250 }
-  validates :max_size, presence: true, if: :is_a_parent?
 
   validate :limit_inheritance
-  validate :max_size_is_nil, if: :is_a_subgroup?
 
   after_initialize :set_defaults
-  before_validation :set_max_group_size, on: :create
   before_save :update_full_name_if_name_changed
+
+  include PgSearch
+  pg_search_scope :search_full_name, against: [:name, :description],
+    using: {tsearch: {dictionary: "english"}}
 
   default_scope where(:archived_at => nil)
 
   scope :parents_only, where(:parent_id => nil)
 
+  scope :sort_by_popularity,
+        order('memberships_count DESC')
+
   scope :visible_to_the_public,
         where(viewable_by: 'everyone').
-        where('memberships_count > 4').
-        order(:full_name)
+        parents_only
 
-  scope :search_full_name, lambda { |query| where("full_name ILIKE ?", "%#{query}%") }
-  
   # Engagement (Email Template) Related Scopes
   scope :more_than_n_members, lambda { |n| where('memberships_count > ?', n) }
   scope :more_than_n_discussions, lambda { |n| where('discussions_count > ?', n) }
@@ -281,7 +282,6 @@ class Group < ActiveRecord::Base
     payment_plan == 'manual_subscription'
   end
 
-
   private
 
   def calculate_full_name
@@ -290,10 +290,6 @@ class Group < ActiveRecord::Base
     else
       parent_name + " - " + name
     end
-  end
-
-  def set_max_group_size
-    self.max_size = 300 if (is_a_parent? && max_size.nil?)
   end
 
   def set_defaults
@@ -308,12 +304,6 @@ class Group < ActiveRecord::Base
   def limit_inheritance
     unless parent_id.nil?
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent_id.nil?
-    end
-  end
-
-  def max_size_is_nil
-    unless max_size.nil?
-      errors.add(:max_size, "Cannot be nil")
     end
   end
 end

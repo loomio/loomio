@@ -1,19 +1,21 @@
-%h1 Public groups directory
-
-%table.table.table-striped#directory
-  %thead
-    %th
+.row-fluid
+  .span12.header-row
+    %h1 Discover groups on Loomio
+    .input-append
       = form_tag public_groups_path, method: 'get', class: 'form-search' do |f|
         = text_field_tag :query, params[:query], class: 'search-query'
-        = submit_tag "Search", class: 'btn btn-grey'
-    %th Members
-  %tbody
+        .add-on
+          %i.icon-search
+            = submit_tag "", class: 'submit-search'
+.public-groups-container
+
+  %ul.selector-list.bordered
     - @groups.each do |group|
-      %tr
-        %td.group
-          = link_to group.full_name, group_path(group), class: 'group-name'
-          = " - #{group.description}" if group.description.present?
-        %td.members
-          = group.memberships_count
+      %a{href: group_path(group)}
+        %li.selector-item
+          .group-name
+            = group.full_name
+          .group-description.clearfix
+            = group.description
 
 = paginate @groups, :window => 3

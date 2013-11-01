@@ -80,3 +80,19 @@
   width: 22px;
   &:hover { opacity: 1; }
 }
+
+.sort-by-alphabet-icon {
+  background-image:url('/assets/sort-by-alphabet.jpg');
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 18px;
+  width: 16px;
+}
+
+.sort-by-alphabet-icon-desc {
+  background-image:url('/assets/sort-by-alphabet-desc.jpg');
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 18px;
+  width: 16px;
+}

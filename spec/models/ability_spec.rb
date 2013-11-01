@@ -40,8 +40,8 @@ describe "User abilities" do
     let(:discussion) { create(:discussion, group: group) }
     let(:new_discussion) { user.authored_discussions.new(
                            group: group, title: "new discussion") }
-    let(:user_comment) { discussion.add_comment(user, "hello", uses_markdown: false) }
-    let(:another_user_comment) { discussion.add_comment(other_user, "hello", uses_markdown: false) }
+    let(:user_comment) { discussion.add_comment(user, "hello") }
+    let(:another_user_comment) { discussion.add_comment(other_user, "hello") }
     let(:user_motion) { create(:motion, author: user, discussion: discussion) }
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
@@ -96,6 +96,7 @@ describe "User abilities" do
     context "group members invitable by members" do
       before { group.update_attributes(:members_invitable_by => 'members') }
       it { should be_able_to(:add_members, group) }
+      it { should be_able_to(:invite_people, group) }
       it { should be_able_to(:manage_membership_requests, group) }
       it { should be_able_to(:approve, membership_request) }
       it { should be_able_to(:ignore, membership_request) }
@@ -105,6 +106,7 @@ describe "User abilities" do
     context "group members invitable by admins" do
       before { group.update_attributes(:members_invitable_by => 'admins') }
       it { should_not be_able_to(:add_members, group) }
+      it { should_not be_able_to(:invite_people, group) }
       it { should_not be_able_to(:manage_membership_requests, group) }
       it { should_not be_able_to(:approve, membership_request) }
       it { should_not be_able_to(:ignore, membership_request) }
@@ -178,6 +180,7 @@ describe "User abilities" do
     context "group members invitable by admins" do
       before { group.update_attributes(:members_invitable_by => 'admins') }
       it { should be_able_to(:add_members, group) }
+      it { should be_able_to(:invite_people, group) }
       it { should be_able_to(:manage_membership_requests, group) }
       it { should be_able_to(:approve, membership_request) }
       it { should be_able_to(:ignore, membership_request) }
@@ -199,6 +202,7 @@ describe "User abilities" do
     end
     it { should_not be_able_to(:view_payment_details, sub_group) }
     it { should_not be_able_to(:choose_subscription_plan, sub_group) }
+    it { should_not be_able_to(:invite_people, sub_group) }
   end
 
   context "non-member of a group" do

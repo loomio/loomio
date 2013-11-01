@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131010025113) do
+ActiveRecord::Schema.define(:version => 20131029013350) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -237,9 +237,11 @@ ActiveRecord::Schema.define(:version => 20131010025113) do
     t.string   "eventable_type"
     t.integer  "user_id"
     t.integer  "discussion_id"
+    t.integer  "sequence_id"
   end
 
   add_index "events", ["created_at"], :name => "index_events_on_created_at"
+  add_index "events", ["discussion_id", "sequence_id"], :name => "index_events_on_discussion_id_and_sequence_id", :unique => true
   add_index "events", ["discussion_id"], :name => "index_events_on_discussion_id"
   add_index "events", ["eventable_type", "eventable_id"], :name => "index_events_on_eventable_type_and_eventable_id"
 
@@ -306,7 +308,7 @@ ActiveRecord::Schema.define(:version => 20131010025113) do
     t.text     "description"
     t.integer  "memberships_count",    :default => 0,              :null => false
     t.datetime "archived_at"
-    t.integer  "max_size"
+    t.integer  "max_size",             :default => 300,            :null => false
     t.boolean  "cannot_contribute",    :default => false
     t.integer  "distribution_metric"
     t.string   "sectors"

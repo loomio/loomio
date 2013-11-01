@@ -30,6 +30,7 @@ class Discussion < ActiveRecord::Base
   delegate :users, :to => :group, :prefix => :group
   delegate :full_name, :to => :group, :prefix => :group
   delegate :email, :to => :author, :prefix => :author
+  delegate :name_and_email, :to => :author, prefix: :author
 
   after_create :populate_last_comment_at
   after_create :fire_new_discussion_event
@@ -44,12 +45,13 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def add_comment(user, comment, options={} )
-    if user.can?(:add_comment, self)
-      comment = Comment.build_from self, user, comment, options
-      comment.save!
-      comment
-    end
+  def add_comment(author, body, options = {})
+    options[:body] = body
+    comment = Comment.new(options)
+    comment.author = author
+    comment.discussion = self
+    DiscussionService.add_comment(comment)
+    comment
   end
 
   def voting_motions

@@ -773,14 +773,14 @@ en:
     view_comment: "Click here to view the comment on Loomio"
     view_discussion: "Click here to view this discussion"
     view_group: "Click here to view the group on Loomio"
-    view_proposal: "Click here to view this proposal on Loomio"
+    view_proposal: "View this proposal on Loomio"
     create_discussion:
       intro: "%{who} started a new discussion in %{which_group}:"
       subject: "New discussion - %{which}"
     create_proposal:
       intro: "A new proposal was created in a Loomio group that you belong to."
       closes_in: "Closes in"
-      subject: "New proposal - %{which}"
+      subject: "New proposal: %{which}"
     daily_activity:
       heading: "Your Loomio Activity"
       intro: "Showing you what’s been happening in your Loomio groups in the last 24 hours"
@@ -805,6 +805,8 @@ en:
       intro: "You were mentioned in a discussion titled:"
       said: "%{comment_author} said:"
       subject: "%{who} mentioned you in the %{which} group on Loomio"
+    new_motion_created:
+      context: "%{author} created a proposal in %{group_full_name}:"
     proposal_closed:
       intro: 'Your proposal "%{proposal_name}" has closed.'
       specify_outcome: "Please click here to specify an outcome"
@@ -813,8 +815,11 @@ en:
       intro: "A proposal you are facilitating has been blocked."
       subject: "Proposal blocked - %{which}"
     proposal_closing_soon:
+      closes_on: "Closes on"
+      closes_at: "Closes at"
       closes_in: "Closes in"
-      subject: "Proposal closing soon: %{which}"
+      closing_in_24_hours: "Closing in 24 hours"
+      headline: "%{author}'s proposal in %{group} is closing soon:"
       summary: "Summary"
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on Loomio"
