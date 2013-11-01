@@ -45,14 +45,6 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def add_comment(user, comment, options={} )
-    if user.can?(:add_comment, self)
-      comment = Comment.build_from self, user, comment, options
-      comment.save!
-      comment
-    end
-  end
-
   def voting_motions
     motions.voting
   end

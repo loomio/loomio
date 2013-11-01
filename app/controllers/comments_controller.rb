@@ -9,18 +9,13 @@ class CommentsController < BaseController
 
   def like
     @comment = Comment.find(params[:id])
-    if can? :like_comments, @comment.discussion
-      like = (params[:like]=='true')
-      if like
-        comment_vote = @comment.like current_user
-        Events::CommentLiked.publish!(comment_vote)
-      else
-        @comment.unlike current_user
-        @comment.reload
-      end
-      render :template => "comments/comment_likes"
+
+    if params[:like] == 'true'
+      DiscussionService.like_comment(current_user, @comment)
     else
-      head :bad_request
+      DiscussionService.unlike_comment(current_user, @comment)
     end
+
+    render :template => "comments/comment_likes"
   end
 end
