@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Events::NewMotion do
   let(:discussion){ mock_model(Discussion) }
-  let(:motion){ mock_model(Motion, discussion: discussion, group: stub(:group)) }
+  let(:motion){ mock_model(Motion, discussion: discussion, group: double(:group)) }
 
   describe "::publish!" do
-    let(:event){ stub(:event, notify_users!: true) }
+    let(:event){ double(:event, notify_users!: true) }
     before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do

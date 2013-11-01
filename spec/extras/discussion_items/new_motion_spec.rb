@@ -1,11 +1,11 @@
 describe DiscussionItems::NewMotion do
-  let(:motion) { stub(:motion) }
+  let(:motion) { double(:motion) }
   let(:item) { DiscussionItems::NewMotion.new(motion) }
 
   it "#icon returns a string indicating the icon-class"
 
   it "#actor returns the user who created a motion" do
-    actor = stub(:actor)
+    actor = double(:actor)
     item.stub_chain(:motion, :author).and_return(actor)
     item.actor.should == item.motion.author
   end

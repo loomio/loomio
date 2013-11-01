@@ -1,11 +1,11 @@
 describe DiscussionItems::NewVote do
-  let(:vote) { stub(:vote) }
+  let(:vote) { double(:vote) }
   let(:item) { DiscussionItems::NewVote.new(vote) }
 
   it "#icon returns a string indicating the icon-class"
 
   it "#actor returns the user who voted" do
-    actor = stub(:actor)
+    actor = double(:actor)
     item.stub_chain(:vote, :user).and_return(actor)
     item.actor.should == item.vote.user
   end
@@ -18,7 +18,7 @@ describe DiscussionItems::NewVote do
   end
 
   context "user has given a statement" do
-    before { item.stub_chain(:vote, :statement).and_return(stub("It's furry!")) }
+    before { item.stub_chain(:vote, :statement).and_return(double("It's furry!")) }
 
     it "#body returns the users statement with a space at front" do
       item.body.should == " #{item.vote.statement}"

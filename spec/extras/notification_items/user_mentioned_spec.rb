@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe NotificationItems::UserMentioned do
-  let(:notification) { stub(eventable: eventable) }
-  let(:eventable) { stub(:eventable) }
+  let(:notification) { double(eventable: eventable) }
+  let(:eventable) { double(:eventable) }
   let(:item) { NotificationItems::UserMentioned.new(notification) }
 
   it "#actor returns the user who mentioned someone" do
-    mentioner = stub(:user)
+    mentioner = double(:user)
     eventable.stub(:user => mentioner)
     item.actor.should == notification.eventable.user
   end
@@ -27,7 +27,7 @@ describe NotificationItems::UserMentioned do
 
   it "#link returns a path to the comment" do
     item.stub_chain(:url_helpers, :discussion_path).and_return("/discussions/1/")
-    eventable.stub(:id => "123", :discussion => stub(:discussion))
+    eventable.stub(:id => "123", :discussion => double(:discussion))
     item.link.should == "/discussions/1/#comment-123"
   end
 end

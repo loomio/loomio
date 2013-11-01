@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe NotificationItems::MotionClosingSoon do
-  let(:notification) { stub(:notification) }
+  let(:notification) { double(:notification) }
   let(:item) { NotificationItems::MotionClosingSoon.new(notification) }
 
   it "#actor returns nil" do
@@ -24,7 +24,7 @@ describe NotificationItems::MotionClosingSoon do
 
   it "#link returns a path to the motion" do
     item.stub_chain(:url_helpers, :motion_path).and_return("/motions/1")
-    notification.stub(:eventable).and_return(stub(:motion))
+    notification.stub(:eventable).and_return(double(:motion))
     item.link.should == "/motions/1"
   end
 
