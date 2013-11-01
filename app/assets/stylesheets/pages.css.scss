@@ -187,6 +187,11 @@ a.btn-icon:hover { color: $dark-grey; }
       line-height: 24px;
       margin-bottom: 18px;
     }
+    .frontpage-text {
+      margin-top: 16px;
+      margin-bottom: 18px;
+      font-size: 30px;
+    }
     .buffer{
       margin-top: 10px;
       margin-bottom: 18px;
@@ -198,7 +203,7 @@ a.btn-icon:hover { color: $dark-grey; }
     .no-bottom-margin{
       margin-bottom: 0px;
     }
-    .homevideo { text-align:right; }
+    .homevideo { text-align: left }
     .featured-row {
       margin-bottom: 1em;
       h3 {
