@@ -112,12 +112,9 @@ describe DiscussionsController do
     end
 
     describe "add_comment" do
-      let(:service) { double(:add_comment_service) }
-
       before do
-        AddCommentService.stub(:new).and_return(service)
         Discussion.stub(:find).and_return(discussion)
-        service.stub(:commit!)
+        DiscussionService.stub(:add_comment)
         Event.stub(:new_comment!)
         @comment = mock_model(Comment, :valid? => true)
       end

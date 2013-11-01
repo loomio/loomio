@@ -1,4 +1,14 @@
 class DiscussionService
+  def self.unlike_comment(user, comment)
+    comment.unlike(user)
+  end
+
+  def self.like_comment(user, comment)
+    user.ability.can?(:like_comments, comment.discussion)
+    comment_vote = comment.like(user)
+    Events::CommentLiked.publish!(comment_vote)
+  end
+
   def self.add_comment(user_or_comment, comment = nil)
     if comment.nil?
       comment = user_or_comment
