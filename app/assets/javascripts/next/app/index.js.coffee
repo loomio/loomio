@@ -1,6 +1,7 @@
 app = angular.module 'LoomioApp', ['ngRoute']
 
-app.controller 'DiscussionController', ($scope, $http) ->
+app.controller 'DiscussionController', ($scope, $http, $location, $routeParams) ->
+  futureDiscussion = $http.get("/next/discussions/#{$routeParams.discussionId}")
   $scope.discussion = {
     author: {id: 1, name: 'Robert Guthrie', email: 'rguthrie@gmail.com'}
 
