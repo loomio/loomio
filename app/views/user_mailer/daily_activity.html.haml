@@ -9,23 +9,22 @@
     - @discussions = @activity[group.full_name][:discussions]
     %h2=group.full_name
     -if @motions.present?
-      %h4= t :decisions
-      %p
-        -@motions.each do |motion|
-          =link_to(motion.name, motion_url(motion))
-          -if motion.voting?
-            \- closes in #{time_ago_in_words(motion.closing_at)}
-          %br
+      %h4.activity-email-subsection= t :decisions
+      -@motions.each do |motion|
+        =link_to(motion.name, motion_url(motion))
+        -if motion.voting?
+          \- closes in #{time_ago_in_words(motion.closing_at)}
+        %br
     -if @discussions.present?
-      %h4= t :discussions
-      %p
-        -@discussions.each do |discussion|
-          =link_to(discussion.title, discussion_url(discussion))
-          - num_new_comments = discussion.number_of_comments_since(@since_time)
-          - if num_new_comments > 0
-            \- #{pluralize(num_new_comments, "new comment", "new comments")}
-          - else
-            \- new discussion
-          %br
+      %h4.activity-email-subsection= t :discussions
+      -@discussions.each do |discussion|
+        =link_to(discussion.title, discussion_url(discussion))
+        - num_new_comments = discussion.number_of_comments_since(@since_time)
+        - if num_new_comments > 0
+          \- #{pluralize(num_new_comments, "new comment", "new comments")}
+        - else
+          \- new discussion
+        %br
+    %br
 
   = render 'unsubscribe_link'

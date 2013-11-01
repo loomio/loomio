@@ -15,13 +15,13 @@ describe GroupBaseController do
 
     context 'user can invite members' do
       it 'does not redirect' do
-        controller.should_receive(:can?).with(:add_members, group).and_return(true)
+        controller.should_receive(:can?).with(:invite_people, group).and_return(true)
         controller.should_not_receive :redirect_to
       end
     end
     context 'user cannot invite members' do
       it "redirects" do
-        controller.should_receive(:can?).with(:add_members, group).and_return(false)
+        controller.should_receive(:can?).with(:invite_people, group).and_return(false)
         controller.should_receive :redirect_to
       end
     end

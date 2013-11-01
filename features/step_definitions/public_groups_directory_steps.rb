@@ -1,32 +1,28 @@
 Given(/^there are various public and private groups$/) do
-  @public_group1 = FactoryGirl.create(:group, name: "hello world", viewable_by: 'everyone')
-  5.times do
-    @public_group1.add_member!(FactoryGirl.create(:user))
-  end
-  @public_group2 = FactoryGirl.create(:group, name: "beebly", viewable_by: 'everyone')
-  @public_group3 = FactoryGirl.create(:group, name: "doodad", viewable_by: 'everyone')
-  5.times do
-    @public_group3.add_member!(FactoryGirl.create(:user))
-  end
-  @private_group = FactoryGirl.create(:group, name: "something else", viewable_by: 'members')
+  @public_group = FactoryGirl.create(:group, viewable_by: 'everyone', memberships_count: 3)
+  @public_group2 = FactoryGirl.create(:group, viewable_by: 'everyone', memberships_count: 5)
+  @private_group = FactoryGirl.create(:group, viewable_by: 'members')
+end
+
+Then(/^I should see the featured groups$/) do
+  page.should have_css(".featured-row")
 end
 
 When(/^I visit the public groups directory page$/) do
   visit '/groups'
 end
 
-Then(/^I should only see public groups with 5 or more members$/) do
-  find('#directory').should have_content(@public_group1.name)
-  find('#directory').should_not have_content(@public_group2.name)
-  find('#directory').should_not have_content(@private_group.name)
+Then(/^I should see all public groups sorted by popularity$/) do
+  find(".selector-list a:first-child").should have_content @public_group2.name
+  find('.public-groups-container').should_not have_content @private_group
 end
 
-When(/^I search$/) do
-  fill_in 'query', with: @public_group1.name
-  click_on 'Search'
+When(/^I search for a group$/) do
+  fill_in 'query', with: @public_group.name
+  find('.submit-search').click
 end
 
-Then(/^I should only see groups that match the search$/) do
-  find('#directory').should have_content @public_group1.name
-  find('#directory').should_not have_content @public_group3.name
+Then(/^I should see groups that match the search$/) do
+  find('.public-groups-container').should have_content @public_group.name
+  find('.public-groups-container').should_not have_content @public_group2.name
 end
