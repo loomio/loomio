@@ -110,3 +110,18 @@ Then(/^all the discussions in the group should be marked as read$/) do
   sleep(1)
   Queries::VisibleDiscussions.new(user: @user, groups: [@group]).unread.size.should == 0
 end
+
+When(/^I join a group$/) do
+  @group = FactoryGirl.create(:group)
+  @old_discussion = FactoryGirl.create(:discussion, group: @group, created_at: 3.weeks.ago)
+  @motion = FactoryGirl.create(:motion, discussion: @old_discussion)
+  @new_discussion = FactoryGirl.create(:discussion, group: @group, created_at: 2.hours.ago)
+  @group.add_member!(@user)
+end
+
+Then(/^I should only see that groups recent discussions and current motions$/) do
+  page.should_not have_content @old_discussion.title
+  page.should have_content @motion.title
+  page.should have_content @new_discussion.title
+end
+
