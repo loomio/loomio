@@ -11,7 +11,7 @@ describe Events::MembershipRequestApproved do
   end
 
   describe "::publish!(membership, approver)" do
-    let(:event) { stub(:event, notify_users!: true) }
+    let(:event) { double(:event, notify_users!: true) }
     before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do
@@ -36,7 +36,7 @@ describe Events::MembershipRequestApproved do
     end
 
     it 'emails the requestor of the approval' do
-      delay = stub
+      delay = double
       delay.should_receive(:group_membership_approved).with(requestor, group)
       UserMailer.stub(:delay).and_return(delay)
       event.save!

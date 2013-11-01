@@ -192,7 +192,7 @@ class Group < ActiveRecord::Base
 
   def add_member!(user, inviter=nil)
     if is_a_parent?
-      unless (memberships_count.to_i < max_size.to_i)
+      if (memberships_count.to_i > max_size.to_i)
         raise Group::MaximumMembershipsExceeded
       end
     end

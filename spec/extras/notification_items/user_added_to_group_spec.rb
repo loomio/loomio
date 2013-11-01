@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe NotificationItems::UserAddedToGroup do
-  let(:notification) { stub(:notification) }
+  let(:notification) { double(:notification) }
   let(:item) { NotificationItems::UserAddedToGroup.new(notification) }
 
   it "#actor returns the user who invited or approved the new user into the group" do
-    notification.stub_chain(:event, :user).and_return stub
-    notification.stub_chain(:eventable, :user).and_return stub
+    notification.stub_chain(:event, :user).and_return double
+    notification.stub_chain(:eventable, :user).and_return double
     item.actor.should == notification.event.user
   end
 
@@ -26,7 +26,7 @@ describe NotificationItems::UserAddedToGroup do
 
   it "#link returns a path to the group" do
     item.stub_chain(:url_helpers, :group_path).and_return("/groups/1/")
-    notification.stub_chain(:eventable, :group).and_return(stub(:group))
+    notification.stub_chain(:eventable, :group).and_return(double(:group))
     item.link.should == "/groups/1/"
   end
 end

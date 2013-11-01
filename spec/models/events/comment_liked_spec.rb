@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Events::CommentLiked do
   describe "::publish!" do
-    let(:event) { stub(:event, :notify_users! => true) }
+    let(:event) { double(:event, :notify_users! => true) }
     let(:comment_like) { mock_model(CommentVote) }
     before { Event.stub(:create!).and_return(event) }
 
@@ -18,8 +18,8 @@ describe Events::CommentLiked do
   end
 
   context "after event has been published" do
-    let(:commenter) { stub(:commenter) }
-    let(:voter) { stub(:voter) }
+    let(:commenter) { double(:commenter) }
+    let(:voter) { double(:voter) }
     let(:comment_like) { mock_model(CommentVote, comment_user: commenter,
                                     user: voter) }
     let(:event) { Events::CommentLiked.new(kind: "new_comment",

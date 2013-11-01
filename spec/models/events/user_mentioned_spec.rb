@@ -6,7 +6,7 @@ describe Events::UserMentioned do
                               :subscribed_to_mention_notifications? => false) }
 
   describe "::publish!" do
-    let(:event) { stub(:event, :notify_users! => true) }
+    let(:event) { double(:event, :notify_users! => true) }
 
     before { Event.stub(:create!).and_return(event) }
 

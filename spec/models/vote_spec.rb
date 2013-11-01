@@ -46,7 +46,7 @@ describe Vote do
 
   it 'sends notification email to author if block is issued' do
     MotionMailer.should_receive(:motion_blocked).with(kind_of(Vote))
-      .and_return(stub(deliver: true))
+      .and_return(double(deliver: true))
     vote = Vote.new(position: 'block', statement: "I'm blocking this motion")
     vote.motion = motion
     vote.user = user
