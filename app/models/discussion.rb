@@ -45,6 +45,11 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  def add_comment(comment)
+    comment.discussion = self
+    DiscussionService.add_comment(comment)
+  end
+
   def voting_motions
     motions.voting
   end
