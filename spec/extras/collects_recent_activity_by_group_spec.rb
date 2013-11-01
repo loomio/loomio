@@ -37,7 +37,9 @@ describe CollectsRecentActivityByGroup do
                                           {group: group, created_at: 2.days.ago} 
           
           @comment = Comment.new(body: 'hi')
-          AddCommentService.new(@discussion.author, @comment, @discussion).commit!
+          @comment.author = @discussion.author
+          @comment.discussion = @discussion
+          DiscussionService.add_comment(@comment)
         end
         it 'returns the discussion' do
           recent_activity[group.full_name][:discussions].should include @discussion
