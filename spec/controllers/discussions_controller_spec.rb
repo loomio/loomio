@@ -112,11 +112,12 @@ describe DiscussionsController do
     end
 
     describe "add_comment", focus: true do
+      let(:comment) { double(:comment).as_null_object }
       before do
         Discussion.stub(:find).and_return(discussion)
         DiscussionService.stub(:add_comment)
         Event.stub(:new_comment!)
-        @comment = mock_model(Comment, :valid? => true)
+        Comment.stub(:new).and_return(comment)
       end
 
       context 'invalid comment' do
@@ -129,7 +130,8 @@ describe DiscussionsController do
 
       context 'valid comment' do
         it 'adds a comment' do
-          DiscussionService.should_receive(:add_comment).with(@comment).and_return(true)
+          DiscussionService.should_receive(:add_comment).
+            with(comment).and_return(true)
           user.should_receive(:update_attributes)
           xhr :post, :add_comment, comment: "", id: discussion.id, uses_markdown: false, attachments: [2]
         end
