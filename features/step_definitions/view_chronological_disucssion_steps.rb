@@ -6,9 +6,14 @@ Given(/^there are two comments$/) do
   @commenter = FactoryGirl.create :user
   @group.add_member! @commenter
   @first_comment = Comment.new(body: 'old comment')
+  @first_comment.author = @commenter
+  @first_comment.discussion = @discussion
+  @second_comment.author = @commenter
+  @second_comment.discussion = @discussion
   @second_comment = Comment.new(body: 'new comment')
-  AddCommentService.new(@commenter, @first_comment, @discussion).commit!
-  AddCommentService.new(@commenter, @second_comment, @discussion).commit!
+  DiscussionService.add_comment @first_comment
+  DiscussionService.add_comment @second_comment
+
   @discussion.reload
 end
 
@@ -42,7 +47,9 @@ Given(/^there is a two page discussion$/) do
   @group.add_member! @commenter
   60.times do
     comment = Comment.new(body: 'yo wassup')
-    AddCommentService.new(@commenter, comment, @discussion).commit!
+    comment.author = @commenter
+    comment.discussion = @discussion
+    DiscussionService.add_comment(comment)
   end
 end
 
@@ -55,7 +62,7 @@ end
 Given(/^now there is new activity$/) do
   10.times do
     comment = FactoryGirl.build(:comment, discussion: @discussion, user: @commenter)
-    AddCommentService.new(comment).commit!
+    DiscussionService.add_comment(comment)
   end
 end
 

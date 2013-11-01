@@ -108,9 +108,7 @@ class DiscussionsController < GroupBaseController
   def add_comment
     @discussion = Discussion.find params[:id]
     build_comment
-    service = AddCommentService.new(current_user, @comment, @discussion)
-
-    if service.commit!
+    if DiscussionService.add_comment(@comment)
       current_user.update_attributes(uses_markdown: params[:uses_markdown])
       @discussion.as_read_by(current_user).viewed!
     else

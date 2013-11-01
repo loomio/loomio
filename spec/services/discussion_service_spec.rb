@@ -1,22 +1,66 @@
-require_relative '../../app/services/add_comment_service'
+require_relative '../../app/services/discussion_service'
 
 module Events
   class NewComment
   end
+  class CommentLiked
+  end
 end
 
 describe 'DiscussionService' do
+  let(:comment_vote) { double(:comment_vote) }
   let(:ability) { double(:ability, :authorize! => true) }
   let(:user) { double(:user, ability: ability) }
-  let(:comment) { double(:comment, save: true, 'author=' => nil, created_at: :a_time, 'discussion=' => nil) }
+  let(:comment) { double(:comment,
+                         save: true,
+                         'author=' => nil,
+                         created_at: :a_time,
+                         discussion: discussion,
+                         author: user) }
+
+
   let(:discussion) { double(:discussion, update_attribute: true) }
   let(:event) { double(:event) }
 
-  before do
-    Events::NewComment.stub(:publish!).and_return(event)
+  describe 'unlike_comment' do
+    after do
+      DiscussionService.unlike_comment(user, comment)
+    end
+
+    it 'calls unlike on the comment' do
+      comment.should_receive(:unlike).with(user)
+    end
+  end
+
+  describe 'like_comment' do
+    before do
+      Events::CommentLiked.stub(:publish!)
+      ability.stub(:can?)
+      comment.stub(:like).and_return(comment_vote)
+    end
+
+    after do
+      DiscussionService.like_comment(user, comment)
+    end
+
+    it 'checks the user can like the comment' do
+      ability.should_receive(:can?).with(:like_comments, discussion)
+    end
+
+    it 'creates a comment vote' do
+      comment.should_receive(:like).with(user).and_return(comment_vote)
+    end
+
+    it 'publishes a like comment event' do
+      Events::CommentLiked.should_receive(:publish!).with(comment_vote)
+    end
   end
 
   describe 'add_comment' do
+    before do
+      Events::NewComment.stub(:publish!).and_return(event)
+    end
+
     after do
       DiscussionService.add_comment(comment)
     end

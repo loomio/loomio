@@ -2,7 +2,9 @@ Given /^someone comments on the discussion$/ do
   @commenter = FactoryGirl.create :user
   @group.add_member! @commenter
   @comment = Comment.new(body: "hey there")
-  AddCommentService.new(@commenter, @comment, @discussion).commit!
+  @comment.author = @commenter
+  @comment.discussion = @discussion
+  DiscussionService.add_comment(@comment)
 end
 
 When /^I visit the dashboard$/ do
