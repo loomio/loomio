@@ -60,7 +60,7 @@ collapseSearchBox = function(){
 
 togglingSearchBox = function(){
   collapseSearchBox();
-  $('.navbar').on('click', '.icon-search', function(){
+  $('.navbar').on('click', '.icon-ios7-search-strong', function(){
     expandSearchBox();
     return false;
   })

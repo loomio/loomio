@@ -7,12 +7,19 @@
   font-size: 34px;
   line-height: 36px;
   padding: 5px 14px;
+  @include make-row();
   a{color: #555;}
   a:hover{text-decoration: none}
 }
+.navbar__logo {
+  width: 38px;
+  vertical-align: top;
+}
 .nav-buttons{
-  float: right;
-  i{ padding-right: 20px; }
+  @include make-xs-column(9, $card-gutter);
+  i { padding-right: 20px; }
+  padding-top: 2px;
+  text-align: right;
 }
 .search{
   float: right;
@@ -22,13 +29,12 @@
 }
 
 .modifier {
-  float: left;
-  .icon-reorder{
+  @include make-xs-column(3, $card-gutter);
+  .icon-drag{
     margin-left: -0.8em;
     margin-right: 0.2em;
   }
-  .icon-angle-left{
-    margin-left: -0.2em;
-    margin-right: 0.1em;
+  .icon-ios7-arrow-left{
+    margin-left: -0.3em;
   }
 }
