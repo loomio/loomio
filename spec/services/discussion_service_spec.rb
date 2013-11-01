@@ -7,7 +7,11 @@ module Events
   end
 end
 
+class Motion
+end
+
 describe 'DiscussionService' do
+  let(:motion) { double(:motion) }
   let(:comment_vote) { double(:comment_vote) }
   let(:ability) { double(:ability, :authorize! => true) }
   let(:user) { double(:user, ability: ability) }
@@ -21,6 +25,43 @@ describe 'DiscussionService' do
 
   let(:discussion) { double(:discussion, update_attribute: true) }
   let(:event) { double(:event) }
+
+  describe 'new_proposal' do
+    before do
+      motion.stub(:discussion=).and_return(discussion)
+      Motion.stub(:new).and_return(motion)
+    end
+
+    context 'motion does not exist for discussion' do
+      before do
+        discussion.stub_chain(:current_motion).and_return(nil)
+      end
+
+      it 'initializes a new motion' do
+        Motion.should_receive(:new)
+        DiscussionService.new_proposal(discussion)
+      end
+
+      it 'sets the motions discuusion' do
+        motion.should_receive(:discussion=).with(discussion)
+        DiscussionService.new_proposal(discussion)
+      end
+
+      it 'returns the new motion' do
+        DiscussionService.new_proposal(discussion).should == motion
+      end
+    end
+
+    context 'motion does not exist for discussion' do
+      before do
+        discussion.stub(:current_motion).and_return(motion)
+      end
+
+      it 'returns nil' do
+        DiscussionService.new_proposal(discussion).should == nil
+      end
+    end
+  end
 
   describe 'unlike_comment' do
     after do

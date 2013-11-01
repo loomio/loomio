@@ -1,4 +1,15 @@
 class DiscussionService
+
+  def self.new_proposal(discussion)
+    if discussion.current_motion.nil?
+      motion = Motion.new
+      motion.discussion = discussion
+      motion
+    else
+      nil
+    end
+  end
+
   def self.unlike_comment(user, comment)
     comment.unlike(user)
   end

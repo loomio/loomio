@@ -118,14 +118,12 @@ class DiscussionsController < GroupBaseController
 
   def new_proposal
     discussion = Discussion.find(params[:id])
-    if discussion.current_motion
-      redirect_to discussion
-      flash[:notice] = "A current proposal already exists for this disscussion."
-    else
-      @motion = Motion.new
-      @motion.discussion = discussion
+    if @motion = DiscussionService.new_proposal(discussion)
       @group = GroupDecorator.new(discussion.group)
       render 'motions/new'
+    else
+      redirect_to discussion
+      flash[:notice] = "A current proposal already exists for this disscussion."
     end
   end
 
