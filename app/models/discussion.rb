@@ -45,9 +45,13 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  def add_comment(comment)
+  def add_comment(author, body, options = {})
+    options[:body] = body
+    comment = Comment.new(options)
+    comment.author = author
     comment.discussion = self
     DiscussionService.add_comment(comment)
+    comment
   end
 
   def voting_motions
