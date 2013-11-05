@@ -1,12 +1,31 @@
 app = angular.module 'LoomioApp', ['ngRoute']
 
-app.controller 'DiscussionController', ($scope, $http, $location, $routeParams) ->
-  futureDiscussion = $http.get("/next/discussions/#{$routeParams.discussionId}")
-  $scope.discussion = {
-    author: {id: 1, name: 'Robert Guthrie', email: 'rguthrie@gmail.com'}
+app.config ($routeProvider, $locationProvider) ->
+  $locationProvider.html5Mode(true)
 
-    comments: [
-      {author_name: 'bill', body: 'hi there', created_at: new Date('2001-01-01 01:01:01')},
-      {author_name: 'steve', body: 'gidday mate', created_at: new Date()}
-    ]
-  }
+  $routeProvider.when '/discussions/:id',
+    templateUrl: '/assets/discussion.html'
+    controller: 'DiscussionController'
+    resolve:
+      discussionPromise: ($route, $http) ->
+        $http.get("/api/discussions/#{$route.current.params.id}")
+  .when '/',
+    templateUrl: '/assets/hello.html'
+  .otherwise
+    redirectTo: '/'
+
+app.controller 'DiscussionController', ($scope, $routeParams, discussionPromise) ->
+  $scope.discussion = discussionPromise.data
+
+app.controller 'AddCommentController', ($scope) ->
+  $scope.isExpanded = false
+  $scope.expand = ->
+    console.log 'expanding'
+    isExpanded = true
+
+  $scope.collapse = ->
+    console.log 'collapsing'
+    isExpanded = false
+
+
+
