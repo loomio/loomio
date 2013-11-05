@@ -29,6 +29,7 @@ module Loomio
     config.autoload_paths += Dir["#{config.root}/app/forms/**/"]
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+    config.assets.paths << Rails.root.join('app', 'assets', 'templates')
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

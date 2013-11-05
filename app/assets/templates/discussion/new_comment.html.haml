@@ -1,0 +1,21 @@
+.card
+  .card__header
+    .media
+      .media__img
+        %div{'ng-include' => "'/assets/user/_avatar.html'", 'ng-init' => "user = event.comment.author"}
+      .media__text
+        %h4.media__title
+          {{event.comment.author.name}}
+        .media__details
+          {{event.comment.created_at | date:'medium' }}
+  .card__content
+    {{ event.comment.body }}
+  .toolbar-container
+    .toolbar
+      .toolbar__button.toolbar__button--first
+        %span.glyphicon.glyphicon-thumbs-up
+        Like
+      .toolbar__button.reply
+        %a{href: '#'}
+          %span.glyphicon.glyphicon-comment
+          Reply

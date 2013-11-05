@@ -11,10 +11,12 @@ Loomio::Application.routes.draw do
   end
 
   namespace :next do
-    resources :discussions
-    get "/discussions/:id/new_proposal", to: "discussions#new_proposal", as: :new_proposal_discussion
-    resources :motions
-    get "/inbox", to: "inbox#index", as: :inbox
+    get '/', to: 'application#index', as: :root
+    get '/*anything', to: 'application#index', as: :root
+  end
+
+  namespace :api, defaults: {format: :json} do
+    resources :discussions, only: :show
   end
 
   get "/groups", to: 'groups/public_groups#index', as: :public_groups
