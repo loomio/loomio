@@ -1,7 +1,10 @@
 Given(/^the discussion has a comment$/) do
   @commenter = FactoryGirl.create :user
   @group.add_member! @commenter
-  @discussion.add_comment @commenter, "post to be deleted", uses_markdown: false
+  @comment = Comment.new(body: 'post to be deleted')
+  @comment.author = @commenter
+  @comment.discussion = @discussion
+  DiscussionService.add_comment(@comment)
 end
 
 When /^I click the delete button on a post$/ do

@@ -40,8 +40,8 @@ describe "User abilities" do
     let(:discussion) { create(:discussion, group: group) }
     let(:new_discussion) { user.authored_discussions.new(
                            group: group, title: "new discussion") }
-    let(:user_comment) { discussion.add_comment(user, "hello", uses_markdown: false) }
-    let(:another_user_comment) { discussion.add_comment(other_user, "hello", uses_markdown: false) }
+    let(:user_comment) { discussion.add_comment(user, "hello") }
+    let(:another_user_comment) { discussion.add_comment(other_user, "hello") }
     let(:user_motion) { create(:motion, author: user, discussion: discussion) }
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
