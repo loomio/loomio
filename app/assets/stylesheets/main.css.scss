@@ -239,7 +239,6 @@ ul.selector-list {
 
 .sub-panel {
   background-color: $sub-selector-panel;
-  border: 1px solid $light-grey;
   @include border-radius(8px);
   margin-bottom: 20px;
   padding: 6px 10px;
