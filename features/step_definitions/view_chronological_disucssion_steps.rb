@@ -1,5 +1,6 @@
 Given(/^discussions per page is (\d+)$/) do |arg1|
-  Discussion::PER_PAGE = 50
+  Discussion.send(:remove_const, 'PER_PAGE')
+  Discussion::PER_PAGE = arg1.to_i
 end
 
 Given(/^there are two comments$/) do
