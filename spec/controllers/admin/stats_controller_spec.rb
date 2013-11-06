@@ -8,11 +8,11 @@ describe Admin::StatsController do
 
   describe "GET 'events'" do
     it "honors created_at range" do
-      discussion = FactoryGirl.create(:discussion)
+      discussion = create_discussion
       y2k_event = Event.create(created_at: Date.parse('2000-01-02'),
                                eventable: discussion,
                                kind: 'new_discussion')
-      
+
       y2k1_event = Event.create(created_at: Date.parse('2001-01-02'),
                                eventable: discussion,
                                kind: 'new_discussion')
@@ -26,8 +26,11 @@ describe Admin::StatsController do
       @nice_group = FactoryGirl.create :group
       @bad_group = FactoryGirl.create :group
 
-      nice_discussion = FactoryGirl.create(:discussion, group: @nice_group)
-      bad_discussion = FactoryGirl.create(:discussion, group: @bad_group)
+      @nice_group.add_member!(@user)
+      @bad_group.add_member!(@user)
+
+      nice_discussion = create_discussion group: @nice_group
+      bad_discussion = create_discussion group: @bad_group
 
       get :events, format: 'json', group_id: @nice_group.id
 

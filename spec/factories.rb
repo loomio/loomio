@@ -37,6 +37,7 @@ FactoryGirl.define do
       end
       group.admins << user
     end
+    max_size 300
     setup_completed_at 1.hour.ago
   end
 

@@ -3,7 +3,7 @@ When(/^I visit the inbox$/) do
 end
 
 Given(/^I belong to a group with a discussion$/) do
-  @discussion = FactoryGirl.create(:discussion)
+  @discussion = create_discussion
   @group = @discussion.group
   @group.add_member!(@user)
 end
@@ -68,10 +68,10 @@ Then(/^the motion should disappear$/) do
 end
 
 Given(/^I belong to a group with several discussions$/) do
-  @discussion = FactoryGirl.create(:discussion)
+  @discussion = create_discussion
   @group = @discussion.group
   @group.add_member!(@user)
-  @discussion2 = FactoryGirl.create(:discussion, group: @group)
+  @discussion2 = create_discussion group: @group
 end
 
 When(/^I click 'Clear'$/) do
@@ -97,11 +97,11 @@ Given(/^I have read the discussion but there is a new comment$/) do
 end
 
 Given(/^I belong to a group with more than max per inbox group discussions$/) do
-  @discussion = FactoryGirl.create(:discussion)
+  @discussion = create_discussion
   @group = @discussion.group
   @group.add_member!(@user)
   Inbox::UNREAD_PER_GROUP_LIMIT.times do
-    FactoryGirl.create(:discussion, group: @group)
+    create_discussion group: @group
   end
 end
 
@@ -116,9 +116,9 @@ end
 
 When(/^I join a group$/) do
   @group = FactoryGirl.create(:group)
-  @old_discussion = FactoryGirl.create(:discussion, group: @group, created_at: 3.weeks.ago)
+  @old_discussion = create_discussion group: @group, created_at: 3.weeks.ago, last_comment_at: 3.weeks.ago
   @motion = FactoryGirl.create(:motion, discussion: @old_discussion)
-  @new_discussion = FactoryGirl.create(:discussion, group: @group, created_at: 2.hours.ago)
+  @new_discussion = create_discussion group: @group, created_at: 2.hours.ago, last_comment_at: 2.hours.ago
   @group.add_member!(@user)
 end
 

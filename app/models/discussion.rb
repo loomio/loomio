@@ -33,8 +33,7 @@ class Discussion < ActiveRecord::Base
   delegate :email, :to => :author, :prefix => :author
   delegate :name_and_email, :to => :author, prefix: :author
 
-  after_create :populate_last_comment_at
-  after_create :fire_new_discussion_event
+  before_create :set_last_comment_at
 
   def as_read_by(user)
     if user.blank?
@@ -147,6 +146,11 @@ class Discussion < ActiveRecord::Base
   end
 
   private
+
+    def set_last_comment_at
+      self.last_comment_at ||= Time.now
+    end
+
     def joined_or_new_discussion_reader_for(user)
       if self[:viewer_user_id].present?
         unless user.id == self[:viewer_user_id].to_i
@@ -181,20 +185,11 @@ class Discussion < ActiveRecord::Base
       discussion_reader
     end
 
-    def populate_last_comment_at
-      self.last_comment_at = created_at
-      save
-    end
-
     def fire_edit_title_event(user)
       Events::DiscussionTitleEdited.publish!(self, user)
     end
 
     def fire_edit_description_event(user)
       Events::DiscussionDescriptionEdited.publish!(self, user)
-    end
-
-    def fire_new_discussion_event
-      Events::NewDiscussion.publish!(self)
     end
 end
