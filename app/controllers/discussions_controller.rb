@@ -169,7 +169,7 @@ class DiscussionsController < GroupBaseController
     @comment = Comment.new(body: params[:comment],
                            uses_markdown: params[:uses_markdown])
 
-    attachment_ids = Array(params[:attachment_ids]).map(&:to_i)
+    attachment_ids = Array(params[:attachments]).map(&:to_i)
 
     @comment.discussion = @discussion
     @comment.author = current_user
