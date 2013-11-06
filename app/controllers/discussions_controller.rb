@@ -19,14 +19,9 @@ class DiscussionsController < GroupBaseController
   end
 
   def create
-    current_user.update_attributes(uses_markdown: params[:discussion][:uses_markdown])
+    build_discussion
 
-    @discussion = Discussion.new(permitted_params.discussion)
-    @discussion.author = current_user
-
-    authorize! :create, @discussion
-
-    if @discussion.save
+    if DiscussionService.start_discussion(@discussion)
       flash[:success] = t("success.discussion_created")
       redirect_to @discussion
     else
@@ -181,6 +176,11 @@ class DiscussionsController < GroupBaseController
     @comment.attachment_ids = attachment_ids
     @comment.attachments_count = attachment_ids.size
     @comment
+  end
+
+  def build_discussion
+    @discussion = Discussion.new(permitted_params.discussion)
+    @discussion.author = current_user
   end
 
   def mark_as_read

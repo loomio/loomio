@@ -13,8 +13,7 @@ describe CollectsRecentActivityByGroup do
 
       context 'with a new discussion' do
         before do
-          @discussion = FactoryGirl.create :discussion,
-                                           {group: group, created_at: DateTime.now}
+          @discussion = create_discussion group: group, created_at: DateTime.now
         end
         it 'returns the discussion' do
           recent_activity[group.full_name][:discussions].should include @discussion
@@ -23,8 +22,7 @@ describe CollectsRecentActivityByGroup do
 
       context 'with an old discussion' do
         before do
-          @discussion = FactoryGirl.create :discussion,
-                                          {group: group, created_at: 2.days.ago} 
+          @discussion = create_discussion group: group, created_at: 2.days.ago, last_comment_at: 2.days.ago
         end
         it 'does not return the discussion' do
           recent_activity[group.full_name].should be_nil
@@ -33,9 +31,8 @@ describe CollectsRecentActivityByGroup do
 
       context 'with a recently commented, old discussion' do
         before do
-          @discussion = FactoryGirl.create :discussion,
-                                          {group: group, created_at: 2.days.ago} 
-          
+          @discussion = create_discussion group: group, created_at: 2.days.ago, last_comment_at: 2.days.ago
+
           @comment = Comment.new(body: 'hi')
           @comment.author = @discussion.author
           @comment.discussion = @discussion
@@ -49,8 +46,7 @@ describe CollectsRecentActivityByGroup do
 
       context 'with an active proposal' do
         before do
-          @discussion = FactoryGirl.create :discussion,
-                                           {group: group, created_at: 2.days.ago} 
+          @discussion = create_discussion group: group, created_at: 2.days.ago
 
           @motion = FactoryGirl.create :motion, discussion: @discussion
         end
@@ -62,8 +58,7 @@ describe CollectsRecentActivityByGroup do
 
       context 'with an inactive proposal' do
         before do
-          @discussion = FactoryGirl.create :discussion,
-                                           {group: group, created_at: 2.days.ago} 
+          @discussion = create_discussion group: group, created_at: 2.days.ago, last_comment_at: 2.days.ago
 
           @motion = FactoryGirl.create :motion, discussion: @discussion
           @motion.close!
