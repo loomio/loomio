@@ -52,6 +52,10 @@ class User < ActiveRecord::Base
 
   has_many :groups,
            :through => :memberships
+  has_many :public_groups,
+           :through => :memberships,
+           :source => :group,
+           :conditions => { :viewable_by => 'everyone' }
   has_many :adminable_groups,
            :through => :admin_memberships,
            :class_name => 'Group',
@@ -96,7 +100,6 @@ class User < ActiveRecord::Base
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
   scope :coordinators, joins(:memberships).where('memberships.access_level = ?', 'admin').group('users.id')
-
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
 
   def self.email_taken?(email)
@@ -206,7 +209,7 @@ class User < ActiveRecord::Base
   def name
     if deleted_at.present?
       "#{self[:name]} (account inactive)"
-    else 
+    else
       self[:name]
     end
   end
