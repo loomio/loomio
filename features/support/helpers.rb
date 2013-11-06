@@ -1,6 +1,14 @@
 include Warden::Test::Helpers
+
+#this is a copy of a 'spec/support/service_helpers.rb' method
+def create_discussion( options={} )
+  discussion = FactoryGirl.build(:discussion, options)
+  DiscussionService.start_discussion(discussion)
+  discussion
+end
+
 def view_screenshot
-  filename = "tmp/screenshots/#{Time.now.to_i}.png" 
+  filename = "tmp/screenshots/#{Time.now.to_i}.png"
   page.driver.render(filename, full: true)
   system("open #{filename}")
 end
