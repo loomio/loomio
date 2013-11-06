@@ -1,7 +1,10 @@
 Given /^someone comments on the discussion$/ do
   @commenter = FactoryGirl.create :user
   @group.add_member! @commenter
-  @discussion.add_comment @commenter, "hey there", uses_markdown: false
+  @comment = Comment.new(body: "hey there")
+  @comment.author = @commenter
+  @comment.discussion = @discussion
+  DiscussionService.add_comment(@comment)
 end
 
 When /^I visit the dashboard$/ do

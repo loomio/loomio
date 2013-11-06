@@ -1,4 +1,18 @@
 namespace :upgrade_tasks do
+  task :'2013-10-add-discussion-item-number' => :environment do
+    ActiveRecord::Base.record_timestamps = false
+    begin
+      Discussion.find_each do |d|
+        d.items.order('created_at asc').each do |event|
+          event.save
+        end
+        puts d.id if (d.id % 100) == 0
+      end
+    ensure
+      ActiveRecord::Base.record_timestamps = true  # don't forget to enable it again!
+    end
+  end
+
   task :'2013-10-part2-update_item_counts_post_counter_caches' => :environment do
     puts 'Updating discussions.items_count'
     Discussion.find_each do |d|
