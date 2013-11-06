@@ -1,0 +1,169 @@
+Options -Indexes
+RewriteEngine on
+rewritecond %{http_host} ^www.angularjs.org [nc]
+rewriterule ^(.*)$ http://angularjs.org/$1 [r=301,nc]
+
+rewritecond %{request_uri}  ^/index\.php$
+rewriterule ^(.*)$ http://angularjs.org/? [r=301,nc]
+
+redirect 301 /Main_Page http://angularjs.org/
+redirect 301 /Angular.attrMarkup http://docs.angularjs.org/#!/api/angular.attrMarkup
+redirect 301 /Angular.bind() http://docs.angularjs.org/#!/api/angular.bind
+redirect 301 /Angular.compile() http://docs.angularjs.org/#!/api/angular.compile
+redirect 301 /Angular.copy() http://docs.angularjs.org/#!/api/angular.Object.copy
+redirect 301 /Angular.directive http://docs.angularjs.org/#!/api/angular.directive
+redirect 301 /Angular.element() http://docs.angularjs.org/#!/api/angular.element
+redirect 301 /Angular.equals() http://docs.angularjs.org/#!/api/angular.Object.equals
+redirect 301 /Angular.extend() http://docs.angularjs.org/#!/api/angular.extend
+redirect 301 /Angular.filter http://docs.angularjs.org/#!/api/angular.filter
+redirect 301 /Angular.foreach() http://docs.angularjs.org/#!/api/angular.forEach
+redirect 301 /Angular.formatter http://docs.angularjs.org/#!/api/angular.formatter
+redirect 301 /Angular.identity() http://docs.angularjs.org/#!/api/angular.identity
+redirect 301 /Angular.isArray() http://docs.angularjs.org/#!/api/angular.isArray
+redirect 301 /Angular.isDefined() http://docs.angularjs.org/#!/api/angular.isDefined
+redirect 301 /Angular.isFunction() http://docs.angularjs.org/#!/api/angular.isFunction
+redirect 301 /Angular.isNumber() http://docs.angularjs.org/#!/api/angular.isNumber
+redirect 301 /Angular.isObject() http://docs.angularjs.org/#!/api/angular.isObject
+redirect 301 /Angular.isString() http://docs.angularjs.org/#!/api/angular.isString
+redirect 301 /Angular.isUndefined() http://docs.angularjs.org/#!/api/angular.isUndefined
+redirect 301 /Angular.markup http://docs.angularjs.org/#!/api/angular.markup
+redirect 301 /Angular.noop() http://docs.angularjs.org/#!/api/angular.noop
+redirect 301 /Angular.scope() http://docs.angularjs.org/#!/api/angular.scope
+redirect 301 /Angular.service http://docs.angularjs.org/#!/api/angular.service
+redirect 301 /Angular.textMarkup http://docs.angularjs.org/#!/api/angular.markup
+redirect 301 /Angular.toJson() http://docs.angularjs.org/#!/api/angular.toJson
+redirect 301 /Angular.validator http://docs.angularjs.org/#!/api/angular.validator
+redirect 301 /Angular.widget http://docs.angularjs.org/#!/api/angular.widget
+redirect 301 /Array:$add() http://docs.angularjs.org/#!/api/angular.Array.add
+redirect 301 /Array:$count() http://docs.angularjs.org/#!/api/angular.Array.count
+redirect 301 /Array:$filter() http://docs.angularjs.org/#!/api/angular.Array.filter
+redirect 301 /Array:$indexOf() http://docs.angularjs.org/#!/api/angular.Array.indexOf
+redirect 301 /Array:$orderBy() http://docs.angularjs.org/#!/api/angular.Array.orderBy
+redirect 301 /Array:$remove() http://docs.angularjs.org/#!/api/angular.Array.remove
+redirect 301 /Array:$size() http://docs.angularjs.org/#!/api/angular.Object.size
+redirect 301 /Array:$sum() http://docs.angularjs.org/#!/api/angular.Array.sum
+redirect 301 /Bootstrap http://docs.angularjs.org/#!guide.bootstrap
+redirect 301 /CSS http://docs.angularjs.org/#!guide.css
+redirect 301 /Collection:$copy() http://docs.angularjs.org/#!/api/angular.Object.copy
+redirect 301 /Collection:$equals() http://docs.angularjs.org/#!/api/angular.Object.equals
+redirect 301 /Collection:$size() http://docs.angularjs.org/#!/api/angular.Object.size
+redirect 301 /Compiler http://docs.angularjs.org/#!guide.compiler
+redirect 301 /Contribute http://docs.angularjs.org/#!guide.contribute
+redirect 301 /Cookbook http://docs.angularjs.org/#!cookbook
+redirect 301 /Cookbook:AdvancedForm http://docs.angularjs.org/#!cookbook.formadvanced
+redirect 301 /Cookbook:BasicForm http://docs.angularjs.org/#!cookbook.form
+redirect 301 /Cookbook:DeepLinking http://docs.angularjs.org/#!cookbook.deeplinking
+redirect 301 /Cookbook:HelloWorld http://docs.angularjs.org/#!cookbook.helloworld
+redirect 301 /Cookbook:MVC http://docs.angularjs.org/#!cookbook.mvc
+redirect 301 /Cookbook:Resources http://docs.angularjs.org/#!cookbook.buzz
+redirect 301 /Css:ng-exception http://docs.angularjs.org/#!guide.css
+redirect 301 /Css:ng-validation-error http://docs.angularjs.org/#!guide.css
+redirect 301 /Data_Binding http://docs.angularjs.org/#!guide.data-binding
+redirect 301 /Directive http://docs.angularjs.org/#!/api/angular.directive
+redirect 301 /Documentation http://docs.angularjs.org/
+redirect 301 /Downloading http://docs.angularjs.org/#!guide.downloading
+redirect 301 /Expression http://docs.angularjs.org/#!guide.expression
+redirect 301 /FAQ http://docs.angularjs.org/#!faq
+redirect 301 /Filter http://docs.angularjs.org/#!/api/angular.filter
+redirect 301 /Filter:currency http://docs.angularjs.org/#!/api/angular.filter.currency
+redirect 301 /Filter:date http://docs.angularjs.org/#!/api/angular.filter.date
+redirect 301 /Filter:html http://docs.angularjs.org/#!/api/angular.filter.html
+redirect 301 /Filter:httml http://docs.angularjs.org/#!/api/angular.filter.html
+redirect 301 /Filter:json http://docs.angularjs.org/#!/api/angular.filter.json
+redirect 301 /Filter:linky http://docs.angularjs.org/#!/api/angular.filter.linky
+redirect 301 /Filter:lowercase http://docs.angularjs.org/#!/api/angular.filter.lowercase
+redirect 301 /Filter:number http://docs.angularjs.org/#!/api/angular.filter.number
+redirect 301 /Filter:uppercase http://docs.angularjs.org/#!/api/angular.filter.uppercase
+redirect 301 /Formatter http://docs.angularjs.org/#!/api/angular.formatter
+redirect 301 /Formatter:boolean http://docs.angularjs.org/#!/api/angular.formatter.boolean
+redirect 301 /Formatter:json http://docs.angularjs.org/#!/api/angular.formatter.json
+redirect 301 /Formatter:list http://docs.angularjs.org/#!/api/angular.formatter.list
+redirect 301 /Formatter:number http://docs.angularjs.org/#!/api/angular.formatter.number
+redirect 301 /Formatter:trim http://docs.angularjs.org/#!/api/angular.formatter.trim
+redirect 301 /Getting_Started http://docs.angularjs.org/#!started
+redirect 301 /Input http://docs.angularjs.org/#!/api/angular.widget.HTML
+redirect 301 /Markup http://docs.angularjs.org/#!/api/angular.markup
+redirect 301 /Ng:bind http://docs.angularjs.org/#!/api/angular.directive.ng:bind
+redirect 301 /Ng:bind-attr http://docs.angularjs.org/#!/api/angular.directive.ng:bind-attr
+redirect 301 /Ng:bind-template http://docs.angularjs.org/#!/api/angular.directive.ng:bind-template
+redirect 301 /Ng:change http://docs.angularjs.org/#!/api/angular.directive.ng:change
+redirect 301 /Ng:class http://docs.angularjs.org/#!/api/angular.directive.ng:class
+redirect 301 /Ng:class-odd http://docs.angularjs.org/#!/api/angular.directive.ng:class-odd
+redirect 301 /Ng:click http://docs.angularjs.org/#!/api/angular.directive.ng:click
+redirect 301 /Ng:controller http://docs.angularjs.org/#!/api/angular.directive.ng:controller
+redirect 301 /Ng:eval http://docs.angularjs.org/#!/api/angular.directive.ng:eval
+redirect 301 /Ng:eval-order http://docs.angularjs.org/#!/api/angular.directive.ng:eval-order
+redirect 301 /Ng:format http://docs.angularjs.org/#!/api/angular.widget.@ng:format
+redirect 301 /Ng:href http://docs.angularjs.org/#!/api/angular.directive.ng:href
+redirect 301 /Ng:include http://docs.angularjs.org/#!/api/angular.widget.ng:include
+redirect 301 /Ng:init http://docs.angularjs.org/#!/api/angular.directive.ng:init
+redirect 301 /Ng:non-bindable http://docs.angularjs.org/#!/api/angular.widget.@ng:non-bindable
+redirect 301 /Ng:repeat http://docs.angularjs.org/#!/api/angular.widget.@ng:repeat
+redirect 301 /Ng:show http://docs.angularjs.org/#!/api/angular.directive.ng:show
+redirect 301 /Ng:src http://docs.angularjs.org/#!/api/angular.directive.ng:src
+redirect 301 /Ng:style http://docs.angularjs.org/#!/api/angular.directive.ng:style
+redirect 301 /Ng:switch http://docs.angularjs.org/#!/api/angular.widget.ng:switch
+redirect 301 /Ng:validate http://docs.angularjs.org/#!/api/angular.widget.@ng:validate
+redirect 301 /Ng:watch http://docs.angularjs.org/#!/api/angular.directive.ng:watch
+redirect 301 /Overview http://docs.angularjs.org/#!guide.overview
+redirect 301 /Reference http://docs.angularjs.org/#!/api/angular
+redirect 301 /Scope http://docs.angularjs.org/#!/api/angular.scope
+redirect 301 /Scope:$bind http://docs.angularjs.org/#!/api/angular.scope.$bind
+redirect 301 /Scope:$bind() http://docs.angularjs.org/#!/api/angular.scope.$bind
+redirect 301 /Scope:$eval http://docs.angularjs.org/#!/api/angular.scope.$eval
+redirect 301 /Scope:$eval() http://docs.angularjs.org/#!/api/angular.scope.$eval
+redirect 301 /Scope:$get http://docs.angularjs.org/#!/api/angular.scope.$get
+redirect 301 /Scope:$get() http://docs.angularjs.org/#!/api/angular.scope.$get
+redirect 301 /Scope:$id http://docs.angularjs.org/#!/api/angular.scope
+redirect 301 /Scope:$onEval http://docs.angularjs.org/#!/api/angular.scope.$onEval
+redirect 301 /Scope:$onEval() http://docs.angularjs.org/#!/api/angular.scope.$onEval
+redirect 301 /Scope:$parent http://docs.angularjs.org/#!/api/angular.scope
+redirect 301 /Scope:$root http://docs.angularjs.org/#!/api/angular.scope
+redirect 301 /Scope:$set http://docs.angularjs.org/#!/api/angular.scope.$set
+redirect 301 /Scope:$set() http://docs.angularjs.org/#!/api/angular.scope.$set
+redirect 301 /Scope:$tryEval() http://docs.angularjs.org/#!/api/angular.scope.$tryEval
+redirect 301 /Scope:$watch() http://docs.angularjs.org/#!/api/angular.scope.$watch
+redirect 301 /Service http://docs.angularjs.org/#!/api/angular.service
+redirect 301 /Service:$document http://docs.angularjs.org/#!/api/angular.service.$document
+redirect 301 /Service:$exceptionHandler http://docs.angularjs.org/#!/api/angular.service.$exceptionHandler
+redirect 301 /Service:$location http://docs.angularjs.org/#!/api/angular.service.$location
+redirect 301 /Service:$log http://docs.angularjs.org/#!/api/angular.service.$log
+redirect 301 /Service:$resource http://docs.angularjs.org/#!/api/angular.service.$resource
+redirect 301 /Service:$route http://docs.angularjs.org/#!/api/angular.service.$route
+redirect 301 /Service:$window http://docs.angularjs.org/#!/api/angular.service.$window
+redirect 301 /Service:$xhr http://docs.angularjs.org/#!/api/angular.service.$xhr
+redirect 301 /Service:$xhr.cache http://docs.angularjs.org/#!/api/angular.service.$xhr.cache
+redirect 301 /Service:$xhr.error http://docs.angularjs.org/#!/api/angular.service.$xhr.error
+redirect 301 /Template http://docs.angularjs.org/#!guide.template
+redirect 301 /Validator http://docs.angularjs.org/#!/api/angular.validator
+redirect 301 /Validator:asynchronous http://docs.angularjs.org/#!/api/angular.validator.asynchronous
+redirect 301 /Validator:date http://docs.angularjs.org/#!/api/angular.validator.date
+redirect 301 /Validator:email http://docs.angularjs.org/#!/api/angular.validator.email
+redirect 301 /Validator:integer http://docs.angularjs.org/#!/api/angular.validator.integer
+redirect 301 /Validator:json http://docs.angularjs.org/#!/api/angular.validator.json
+redirect 301 /Validator:number http://docs.angularjs.org/#!/api/angular.validator.number
+redirect 301 /Validator:phone http://docs.angularjs.org/#!/api/angular.validator.phone
+redirect 301 /Validator:regexp http://docs.angularjs.org/#!/api/angular.validator
+redirect 301 /Validator:ssn http://docs.angularjs.org/#!/api/angular.validator
+redirect 301 /Validator:url http://docs.angularjs.org/#!/api/angular.validator.url
+redirect 301 /Widget http://docs.angularjs.org/#!/api/angular.widget
+
+
+# content-type mappings
+AddType application/javascript .js
+AddType text/cache-manifest .manifest
+
+
+# cache stuff for 60 minutes
+ExpiresActive On
+ExpiresDefault "access plus 120 minutes"
+
+# don't cache manifest at all so that it's easy to reload the appcache
+<FilesMatch "\.manifest$">
+ExpiresDefault "access"
+</FilesMatch>
+
+
+# compression
+SetOutputFilter DEFLATE
+Header set Vary "Accept-Encoding"

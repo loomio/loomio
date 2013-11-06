@@ -51,17 +51,5 @@
         %a{'ng-href' => '/discussions/{{discussion.id}}/new_proposal'}
           Create a proposal
 
-  .add-comment{'ng-controller' => 'AddCommentController'}
-    .card-row#collapsed-comment-box{'ng-show' => '!isExpanded'}
-      .card
-        .card-row
-          %input.form-control{placeholder: "Write a comment...", 'ng-focus' => 'expand()'}
-
-    .card-row#expanded-comment-box{'ng-show' => 'isExpanded'}
-      .card
-        .card-row
-          .left
-            %textarea#expanded-input.form-control{rows: 5, placeholder: "Say something...", 'ng-blur' => 'collapse()'}
-          .right
-            %button.btn.btn-default.btn-block.submit Post
+  %add_comment
 

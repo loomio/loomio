@@ -1,0 +1,7 @@
+{
+  "name": "angularjs.org-misc-tools",
+  "version": "0.0.0",
+  "dependencies" : {
+    "q" : "*"
+  }
+}

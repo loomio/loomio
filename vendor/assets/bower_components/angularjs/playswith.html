@@ -1,0 +1,345 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="Description"
+        content="AngularJS is what HTML would have been, had it been designed for building web-apps.
+                 Declarative templates with data-binding, MVW, MVVM, MVC, dependency injection and great
+                 testability story all implemented with pure client-side JavaScript!">
+  <title>AngularJS — Complimentary Libraries, Tools, and Techniques</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/docs.css">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link href="google-code-prettify/prettify.css" type="text/css" rel="stylesheet">
+  <base href="/">
+
+  ﻿<!--[if lte IE 8]>
+    <script>
+      document.createElement('tabs');
+      document.createElement('pane');
+      document.createElement('ng-pluralize');
+    </script>
+  <![endif]-->
+  <script>
+    /*!
+      * $script.js Async loader & dependency manager
+      * https://github.com/ded/script.js
+      * (c) Dustin Diaz, Jacob Thornton 2011
+      * License: MIT
+      */
+    (function(a,b){typeof module!="undefined"?module.exports=b():typeof define=="function"&&define.amd?define(a,b):this[a]=b()})("$script",function(){function q(a,b,c){for(c=0,j=a.length;c<j;++c)if(!b(a[c]))return k;return 1}function r(a,b){q(a,function(a){return!b(a)})}function s(a,b,i){function o(a){return a.call?a():d[a]}function p(){if(!--n){d[m]=1,k&&k();for(var a in f)q(a.split("|"),o)&&!r(f[a],o)&&(f[a]=[])}}a=a[l]?a:[a];var j=b&&b.call,k=j?b:i,m=j?a.join(""):b,n=a.length;return setTimeout(function(){r(a,function(a){if(h[a])return m&&(e[m]=1),h[a]==2&&p();h[a]=1,m&&(e[m]=1),t(!c.test(a)&&g?g+a+".js":a,p)})},0),s}function t(c,d){var e=a.createElement("script"),f=k;e.onload=e.onerror=e[p]=function(){if(e[n]&&!/^c|loade/.test(e[n])||f)return;e.onload=e[p]=null,f=1,h[c]=2,d()},e.async=1,e.src=c,b.insertBefore(e,b.firstChild)}var a=document,b=a.getElementsByTagName("head")[0],c=/^https?:\/\//,d={},e={},f={},g,h={},i="string",k=!1,l="push",m="DOMContentLoaded",n="readyState",o="addEventListener",p="onreadystatechange";return!a[n]&&a[o]&&(a[o](m,function u(){a.removeEventListener(m,u,k),a[n]="complete"},k),a[n]="loading"),s.get=t,s.order=function(a,b,c){(function d(e){e=a.shift(),a.length?s(e,d):s(e,b,c)})()},s.path=function(a){g=a},s.ready=function(a,b,c){a=a[l]?a:[a];var e=[];return!r(a,function(a){d[a]||e[l](a)})&&q(a,function(a){return d[a]})?b():!function(a){f[a]=f[a]||[],f[a][l](b),c&&c(e)}(a.join("|")),s},s})
+
+
+    var _gaq=[
+      ['_setAccount','UA-8594346-3'],
+      ['_setDomainName', '.angularjs.org'],
+      ['_trackPageview'],['_trackPageLoadTime']
+    ];
+
+    $script('https://apis.google.com/js/plusone.js');
+    $script(('https:'==location.protocol?'//ssl':'http://www')+'.google-analytics.com/ga.js');
+    $script("//platform.twitter.com/widgets.js");
+
+    $script('http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', function() {
+      $script('js/bootstrap.min.js', function() {
+        $().dropdown();
+        bootstrap();
+      });
+      $script('google-code-prettify/prettify.min.js', bootstrap);
+      $script('js/homepage.js', bootstrap);
+      $script('http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js', bootstrap);
+      $script('http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-resource.min.js', bootstrap);
+      $script('http://code.angularjs.org/1.0.3/i18n/angular-locale_sk.js', function() {
+        angular.module('ngLocal.sk', [])._invokeQueue.push(angular.module('ngLocale')._invokeQueue[0]);
+        bootstrap();
+      });
+      $script('http://code.angularjs.org/1.0.3/i18n/angular-locale_en-us.js', function() {
+        angular.module('ngLocal.us', [])._invokeQueue.push(angular.module('ngLocale')._invokeQueue[0]);
+        bootstrap();
+      });
+    });
+
+    function bootstrap() {
+      if (window.prettyPrint && window.$ && $.fn.popover && angular.bootstrap &&
+          hasModule('ngLocal.sk') && hasModule('ngLocal.us') && hasModule('homepage') && hasModule('ngResource')) {
+            $(function(){
+              angular.bootstrap(document, ['homepage', 'ngLocal.us']);
+            });
+      }
+    }
+
+    function hasModule(moduleName) {
+      try {
+        return angular.module(moduleName);
+      } catch (e) {
+        return false;
+      }
+    }
+  </script>
+  <script>
+    /*
+    AngularJS v1.0.3
+    (c) 2010-2012 Google, Inc. http://angularjs.org
+    License: MIT
+    */
+    (function(i){'use strict';function d(c,b,e){return c[b]||(c[b]=e())}return d(d(i,"angular",Object),"module",function(){var c={};return function(b,e,f){e&&c.hasOwnProperty(b)&&(c[b]=null);return d(c,b,function(){function a(a,b,d){return function(){c[d||"push"]([a,b,arguments]);return g}}if(!e)throw Error("No module: "+b);var c=[],d=[],h=a("$injector","invoke"),g={_invokeQueue:c,_runBlocks:d,requires:e,name:b,provider:a("$provide","provider"),factory:a("$provide","factory"),service:a("$provide","service"),
+      value:a("$provide","value"),constant:a("$provide","constant","unshift"),filter:a("$filterProvider","register"),controller:a("$controllerProvider","register"),directive:a("$compileProvider","directive"),config:h,run:function(a){d.push(a);return this}};f&&h(f);return g})}})})(window);
+  </script>
+</head>
+<body  ng-controller="DownloadCtrl">
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <header class="header">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://angularjs.org" style="padding-top: 6px; padding-bottom: 0px;">
+            <img class="AngularJS-small" src="img/AngularJS-small.png">
+          </a>
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            <li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-eye-open icon-white"></i> Learn <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="disabled"><a href="">Home</a></li>
+                <li><a href="http://www.youtube.com/user/angularjs">Videos</a></li>
+                <li><a href="http://docs.angularjs.org/tutorial">Tutorial</a></li>
+                <li><a href="https://builtwith.angularjs.org">Case Studies</a></li>
+                <li><a href="https://github.com/angular/angular-seed">Seed App project template</a></li>
+                <li><a href="http://docs.angularjs.org/misc/faq">FAQ</a></li>
+              </ul>
+            </li>
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-book icon-white"></i> Develop <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="http://docs.angularjs.org/tutorial">Tutorial</a></li>
+                <li><a href="http://docs.angularjs.org/guide/">Developer Guide</a></li>
+                <li><a href="http://docs.angularjs.org/api/">API Reference</a></li>
+                <li><a href="http://docs.angularjs.org/misc/contribute">Contribute</a></li>
+                <li><a href="http://code.angularjs.org/">Download</a></li>
+              </ul>
+            </li>
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-comment icon-white"></i> Discuss <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="http://blog.angularjs.org">Blog</a></li>
+                <li><a href="http://groups.google.com/group/angular">Mailing List</a></li>
+                <li><a href="http://webchat.freenode.net/?channels=angularjs&uio=d4">Chat Room</a></li>
+                <li class="divider"></li>
+                <li><a href="https://twitter.com/#!/angularjs">Twitter</a></li>
+                <li><a href="https://plus.google.com/110323587230527980117">Google+</a></li>
+                <li class="divider"></li>
+                <li><a href="https://github.com/angular/angular.js">GitHub</a></li>
+                <li><a href="https://github.com/angular/angular.js/issues">Issue Tracker</a></li>
+              </ul>
+            </li>
+            <li class="divider-vertical"></li>
+          </ul>
+          <form class="navbar-search pull-right" method="GET" action="https://www.google.com/search">
+            <input type="text" name="as_q" class="search-query" placeholder="Search">
+            <input type="hidden" name="as_sitesearch" value="angularjs.org">
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div role="main" class="container">
+
+    <h1>Complimentary Libraries, Tools, and Techniques</h1>
+
+    <div class="row">
+      <p class="span12">
+        Below are several tools, libraries, tutorials, guides, etc. that we've found useful in developing AngularJS
+        applications.  We can't guarantee the usefulness of any of these for your particular project, but we've
+        worked with each of them to varying degrees and they all look worth investigating.
+      </p>
+      <p class="span12">
+        Do you have something we've missed and should list here?  Please tell us via Google+ or Twitter (+angularjs and
+        @angularjs, respectively).
+      </p>
+    </div>
+
+    <h1>Development</h1>
+    <div class="row">
+      <div class="span4">
+        <h3>Testacular</h3>
+        <p>
+          Testacular runs your unit tests faster than any other tool we know.  The 1K+ AngularJS tests run in ~3 seconds.
+          It runs tests every time you save.  It runs tests on real browsers including Android and iOS.  It integrates
+          with WebStorm's debugger.  It works with any test framework, but comes with specific support for Jasmine and
+          Mocha, and AngularJS' scenario runner.  It will change your life.  No, we can't believe the name either.
+          <a href="http://vojtajina.github.com/testacular/">Testacular on GitHub</a>
+        </p>
+      </div>
+      <div class="span4">
+        <h3>Batarang</h3>
+        <p>
+          Want to see which elements have data bindings, the inheritance tree for your scopes, which $watch expressions
+          need optimization and a dependency graph for your app, all in the Chrome development tools pane?  Well then,
+          the AngularJS debugger extension could be for you.  You can learn more about it in this <a
+          href="http://blog.angularjs.org/2012/07/introducing-angularjs-batarang.html">blog post</a> and install
+          it from the <a href="https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk">
+          Chrome Web Store</a>.
+        </p>
+      </div>
+      <div class="span4">
+        <h3>Yeoman</h3>
+        <p>
+          Yeoman is the swiss-army knife of command-line tools you'll need to build a production-ready web application.
+          The list of features is extensive and includes scaffolding, compiling (CoffeeScript, Compass), linting,
+          package management, and the list goes on.  We've worked with the Yeoman team to create Angular-specific
+          support.  Check out our <a href="http://briantford.com/blog/angular-yeoman.html">blog post</a> and
+          <a href="http://www.youtube.com/watch?v=XOmwZopzcTA">video</a> for using Yeoman with Angular and the main
+          project page at <a href="http://yeoman.io">yeoman.io</a>.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4">
+        <h3>WebStorm</h3>
+        <p>
+          WebStorm offers an Angular syntax-aware plugin for their nifty editor.  Get it at their <a href="http://plugins.jetbrains.net/plugin?pr=webide&pluginId=6971">plugin download site</a>
+          or directly within WebStorm's preferences.  There is also a separate set of LiveTemplates for Angular on
+          <a href="https://github.com/angularjs-livetpls/angularjs-webstorm-livetpls">this GitHub repo</a>.
+        </p>
+      </div>
+      <div class="span4">
+        <h3>Sublime Text</h3>
+        <p>
+          Use CoffeeScript and the Sublime Text editor?  Then check out this extensive set of key-completion snippets as
+          a <a href="https://github.com/EastPoint/Sublime-AngularJS-Coffee-Completions">Sublime keymap</a>.
+        </p>
+      </div>
+    </div>
+
+
+
+
+    <h1>Deployment</h1>
+    <div class="row">
+      <div class="span4">
+        <h3>PhoneGap</h3>
+        <p>
+          Want to build installable mobile apps for Android, iOS and others?  Okay, so there's no specific support for
+          Angular in PhoneGap, but they work just great together.  More at <a href="phonegap.com">phonegap.com</a>
+        </p>
+        <p>
+          Oh, but if you do want slick animations between views on mobile, you might check out the
+          <a href="https://github.com/ajoslin/angular-mobile-nav">Angular Mobile Nav</a> library.
+        </p>
+        </p>
+      </div>
+      <div class="span4">
+        <h3>Chrome Packaged Apps</h3>
+        <p>
+          Packaged apps in Chrome let you create desktop-like applications that get delivered like web pages.  They
+          can have native-like features like accessing the file system, hardware devices, etc.  In short, the sky's
+          the limit in what they can do.  There's a <a href="http://developer.chrome.com/trunk/apps/angular_framework.html">
+          guide to getting started</a> building packaged apps with Angular and an
+          <a href="https://github.com/GoogleChrome/chrome-app-codelab">Angular code lab</a> to expand on these basic
+          concepts.
+        </p>
+      </div>
+      <div class="span4">
+        <h3>UglifyJS</h3>
+        <p>
+          AngularJS offers minified versions of all of its libraries, but what about your code?  If you want your code
+          to load quickly, this may be the tool for you!  <a href="https://github.com/mishoo/UglifyJS">UglifyJS</a>
+        </p>
+      </div>
+    </div>
+
+
+
+
+    <h1>Complimentary Libraries</h1>
+    <div class="row">
+      <div class="span4">
+        <h3>Angular UI</h3>
+        <p>
+          Though not affiliated with the AngularJS project, Angular UI is the largest known collection of open source
+          Angular UI components.  A great source of examples and many useful techniques.
+          <a href="https://github.com/angular-ui/angular-ui">Angular UI</a>
+        </p>
+        </p>
+      </div>
+      <div class="span4">
+        <h3>Bootstrap</h3>
+        <p>
+          Okay, another one with no specific linkage to Angular, but we use Bootstrap extensively on this site as do
+          many other developers in getting a leg up on page layout and starting with sensible defaults for all critical
+          CSS bits.  <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>
+        </p>
+      </div>
+      <div class="span4">
+        <h3>BreezeJS</h3>
+        <p>
+          For folks who want client-side data management, BreezeJS provides and extensive set of client-side features
+          like filtering, ordering, and paging, and much more to let you mirror your server-side model manipulation on
+          in the web client.  They've put together some good examples on how to get started combining with Angular on
+          the <a href="http://www.breezejs.com/angular?utm_source=angular&utm_medium=link">BreezeJS site</a>.
+        </p>
+      </div>
+      <div class="span4">
+        <h3>jQuery Mobile</h3>
+        <p>
+          This project provides a bridge between Angular and the jQuery Mobile allowing you to use all the widgets
+          and many utilities from the jQuery Mobile library.
+          <a href="https://github.com/tigbro/jquery-mobile-angular-adapter">jQuery Mobile Adapter</a>
+
+        </p>
+      </div>
+      <div class="span4">
+        <h3>Wijmo</h3>
+        <p>
+          Wijmo is a complete kit of over 40 UI widgets with everything from interactive menus to rich charts. Built
+          with HTML5, jQuery, CSS3, and SVG, Wijmo widgets make your applications suitable for Today's Web. Wijmo also
+          has an AngularJS Integration Library that exposes all of its widgets as AngularJS components.
+
+          <a href="http://wijmo.com/wiki/index.php/Using_Wijmo_with_AngularJS">wijmo.com</a>
+        </p>
+      </div>
+    </div>
+
+
+
+
+    <div class="spacer"></div>
+
+  </div>
+
+
+
+
+  <footer class="footer">
+    <div class="container">
+      <p class="pull-right"><a href="#">Back to top</a></p>
+      <p>Super-powered by Google  ©2010-2013</p>
+      <p>Code licensed under the
+        <a href="https://github.com/angular/angular.js/blob/master/LICENSE" target="_blank">The
+          MIT License</a>. Documentation licensed under <a
+            href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

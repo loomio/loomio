@@ -1,0 +1,244 @@
+.footer p {
+  margin: 0;
+}
+
+form.jsfiddle {
+  display: inline;
+}
+
+code.nocode {
+  display: inline-block;
+  background-color: #99c2ff;
+  border: 1px solid #7699d1;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  color: #223f7a;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #e1e1e8;
+}
+
+.example {
+  margin-top: 1em;
+}
+
+.container h1,
+.container h2,
+.container h3,
+.container h4 {
+  margin-bottom: .5em;
+}
+
+.container h1 {
+  margin-top: 3.5em;
+}
+
+.container h2 {
+  margin-top: 1em;
+}
+
+.container h3 {
+  margin-top: .5em;
+}
+
+.row.first h1 {
+  margin-top: .5em;
+}
+
+
+.navbar .divider-vertical {margin: 0}
+.navbar .nav > li > a {padding: 10px 23px 11px 20px;}
+
+.center {
+  text-align: center;
+}
+
+.hero-unit h1 {
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+  margin: 0;
+  font-size: 30px;
+  color: #535353;
+  font-family: 'helvetica neue', Helvetica, Arial;
+  font-weight: 300;
+}
+
+.hero-unit .btn-large {
+  font-size: 22px;
+  font-family: Helvetica;
+  font-weight: lighter;
+}
+
+.spacer {
+  display: inline-block;
+  width: 6em;
+  height: 3em;
+}
+
+.hero-unit .btn-large .version {
+  font-size: 12px;
+}
+
+.quick-links {
+  text-align: center;
+  list-style: none;
+  margin-top: 50px;
+}
+
+.quick-links > li {
+  display: inline-block;
+  margin: 0 1em;
+  vertical-align: top;
+}
+
+.google-follow {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+img.AngularJS-large {
+  width: 383px;
+  height: 108px;
+}
+
+img.AngularJS-small {
+  width: 95px;
+  height: 25px;
+}
+
+.video-img {
+  width: 300px;
+  height: 200px;
+  background:url("../img/video-over.png")
+}
+
+.video-img:hover img{
+  position:absolute; left:-999px; top:-999px;
+}
+
+.app-source {
+  min-height: 375px;
+}
+
+img.cache {
+  width: 0;
+  height: 0;
+}
+
+#videoModal {
+  display: block;
+  width: 1000px;
+  height: 705px;
+  margin-left: -500px;
+  margin-top: -337px;
+}
+#videoModal .modal-body {
+  max-height: 611px;
+  height: 611px;
+  overflow: hidden;
+}
+
+.tabs-spacer {
+  height: 30px;
+}
+
+.hero-unit .tag-bullets {
+  padding-top: 21px;
+  font-family: Arial;
+}
+
+.footer {
+  padding-top: 2em;
+  background-color: #333;
+  color: white;
+  padding-bottom: 2em;
+}
+
+.center .dropdown {
+  text-align: left;
+}
+
+.well h1.ng-binding {
+  margin: 0;
+}
+
+.no-margins {
+  margin-top: 0px!important;
+  margin-bottom: 0px!important;
+}
+
+.modal.fade {
+    top: -150%;
+}
+.modal.fade.in {
+    top: 40%;
+}
+#downloadModalBackdrop {
+    display: none;
+    z-index: -2000;
+}
+#downloadModalBackdrop.fade.in {
+    display: block;
+    z-index: 1040;
+}
+
+.popover {
+  z-index: 1200;
+}
+
+.popover-inner {
+  width: 600px!important;
+}
+
+.modal-body .input-xxlarge {
+  width: 400px;
+}
+
+.modal-body > h3 {
+  text-align: center;
+}
+
+.modal-body > h3 > span {
+  display: inline-block;
+}
+
+.modal-body > dl > dt {
+  margin-top: 7px;
+  padding-bottom: 20px;
+}
+
+.modal-body > dl > dd {
+    margin-top: 7px;
+    padding-bottom: 20px;
+}
+
+.modal-footer > a {
+  float: left;
+  padding-right: 20px;
+  padding-top: 7px;
+}
+
+#bluePill {
+ color: #22AA22;
+}
+
+#redPill {
+  color: #BD362F;
+}
+
+#downloadModal {
+  width: 620px;
+}
+
+#extraInfoBranch, #extraInfoBuild, #extraInfoCDN, #extraInfoBower {
+  background-color: #ffffff!important;
+  padding-left: 5px;
+}
+
+div.modal-body button {
+  z-index: 1051;
+}
