@@ -74,6 +74,7 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.1.1'
   gem 'selenium-webdriver', '~> 2.35.1'
   gem 'ruby-prof'
+  gem 'parallel_tests', '~> 0.16.0'
 end
 
 group :development do
