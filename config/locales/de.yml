@@ -32,7 +32,6 @@ de:
     cant_modify_position: "Dieser Vorschlag wurde geschlossen."
     cant_state_position: "Dieser Vorschlag wurde geschlossen."
     cant_view_member_profile: "Du kannst das Profil dieses Mitgliedes nicht sehen, weil ihr nicht in der gleichen Gruppe seid."
-    contribution: "Bitte melde dich an um einen Beitrag einzubringen."
     discussion_not_created: "Diskussion konnte nicht erstellt werden."
     group_not_archived: "Gruppe konnte nicht archiviert werden."
     invalid_close_date: "Ungültiges Enddatum. Bitte stelle sicher, dass das Datum nicht in der Vergangenheit liegt."
@@ -174,9 +173,7 @@ de:
   user_settings: "Benutzereinstellungen"
   email_preferences: "E-Mail-Einstellungen"
   sign_out: "Abmelden"
-  sign_in: "Anmelden"
   tagline: "Eine Welt erschaffen, in der es für jeden einfach ist an Entscheidungen teilzuhaben, die ihn betreffen."
-  or_sign_in_html: "Wenn du schon ein Konto hast, <a href='%{link}'>melde dich hier an</a>."
   click_to_dismiss: "Klicke hier um diese Nachricht zu verwerfen"
   generic_confirm: "Bist du sicher?"
   discussion_helper_text:
@@ -456,20 +453,11 @@ de:
   forgot_your_password: "Passwort vergessen?"
   confirmation_not_received: "Keine Bestätigungshinweise bekommen?"
   unlock_not_received: "Keine Hinweise zum Freischalten bekommen?"
-  join_group:
-    header: "%{who} hat dich eingeladen %{group_name} beizutreten"
-    sign_up_intro: "Du musst ein Konto erstellen um einer Gruppe beitreten zu können."
-    sign_in_intro: "Du musst angemeldet sein um der Gruppe beizutreten."
-  start_group:
-    header: "Willkommen bei Loomio"
-    sign_up_intro: "Du musst ein neues Konto eröffnen bevor du deine Gruppe erstellen kannst:"
-    sign_in_intro: "Du musst dich anmelden bevor du deine Gruppe erstellen kannst:"
   invitation:
     no_invitations_left: "Es tut uns leid, aber du hast keine Einladungen mehr übrig."
     no_invitations_left_get_more: "Bitte wende dich an contact@loomio.org, dann werden wir sehen wie wir dir helfen können"
     invitation_not_found: 'Es konnte keine Einladung mit diesem Token gefunden werden. Bitte frage den Absender nach einer neuen Einladung.'
     invitation_cancelled: 'Diese Einladung wurde abgebrochen. Bitte kontaktiere den Absender der Einladung, vielleicht wurde die Einladung aus Versehen abgebrochen.'
-    invitation_already_used: 'Diese Einladung wurde schon benutzt. Bitte melde dich an um in dieser Gruppe fortzufahren.'
     recipients: "Trage E-Mail-Adressen separiert durch Kommata ein:"
     invitees_placeholder: "Name des Benutzers <benutzer1@beispiel.de>, <benutzer2@beispiel.de>"
     subject: "Bitte tritt unserer neuen Loomio-Gruppe %{group} bei "
@@ -609,14 +597,12 @@ de:
     view_comment: "Klicke hier um das Kommentar auf Loomio zu sehen"
     view_discussion: "Klicke hier um diese Diskussion zu sehen"
     view_group: "Klicke hier um die Gruppe auf Loomio zu sehen"
-    view_proposal: "Klicke hier um den Vorschlag auf Loomio zu sehen"
     create_discussion:
       intro: "%{who} hat eine neue Diskussion in %{which_group} gestartet:"
       subject: "Neue Diskussion - %{which}"
     create_proposal:
       intro: "Ein neuer Vorschlag wurde in einer Loomio Gruppe erstellt, der du angehörst."
       closes_in: "Schließt in"
-      subject: "Neuer Vorschlag - %{which} "
     daily_activity:
       heading: "Deine Loomio Aktivität"
       intro: "Zeigt, was in deinen Loomio Gruppen in den letzten 24 Stunden passiert ist"
@@ -648,7 +634,6 @@ de:
       subject: "Vorschlag blockiert - %{which}"
     proposal_closing_soon:
       closes_in: "Schließt in"
-      subject: "Vorschlag schließt bald: %{which}"
       summary: "Zusammenfassung"
     to_join_group:
       subject: "%{member} hat dich eingeladen %{group_name} auf Loomio beizutreten"

@@ -20,7 +20,6 @@ bg:
     cant_modify_position: "Това предложение е затворено."
     cant_state_position: "Това предложение е затворено."
     cant_view_member_profile: "Не можете да разглеждате профила на този потребител понеже не сте в една и съща група."
-    contribution: "Моля влезте в системата за да дадете свой принос."
     discussion_not_created: "Дискусията не можa да бъде създадена."
     group_not_archived: "Групата не можа да бъде архивирана."
     invalid_close_date: "Невалидна крайна дата, моля проверете дали тази дата не е минала."
@@ -137,9 +136,7 @@ bg:
   user_settings: "Потребителски настройки"
   email_preferences: "E-mail настройки"
   sign_out: "Изход"
-  sign_in: "Вход"
   tagline: "Създавайки свят в който е лесно всички да участват в решенията които ги засягат."
-  or_sign_in_html: "Ако вече имате акаунт, <a href='%{link}'>влезте от тук</a>."
   click_to_dismiss: "Натисни тук за да отмениш това съобщение"
   generic_confirm: "Сигурни ли сте ?"
   discussion_helper_text:
@@ -376,18 +373,11 @@ bg:
   forgot_your_password: "Забравили сте паролата си?"
   confirmation_not_received: "Не получихте инструкции за потвърждение?"
   unlock_not_received: "Не получихте инструкции за отключване?"
-  join_group:
-    header: "%{who} ви покани да се присъедините към %{group_name}"
-    sign_up_intro: "Трябва да създадете акаунт за да можете да се присъедините към групата."
-    sign_in_intro: "трябва да влезете в системата за да се присъедините към групата."
-  start_group:
-    header: "Добре дошли в Loomio"
   invitation:
     no_invitations_left: "Съжалявам, нямате повече останали покани"
     no_invitations_left_get_more: "Моля пишете на contact@loomio.org и ние ще видим какво можем да направим да ви помогнем"
     invitation_not_found: 'Покана с такъв код не е открита. Моля поискайте от изпращача да ви изпрати нова покана.'
     invitation_cancelled: 'Тази покана е отменена. Моля свържете се с изпратилия я ако считате, че това е станало погрешка.'
-    invitation_already_used: 'Тази покана вече е била използвана. Моля влезте в системата за да продължите към вашата група.'
     invitees_placeholder: "Потребителско Име <user1@example.com>, user2@example.com"
     subject: "Моля присъединете се към нашата нова група в Loomio, %{group}"
     invite_people: "Поканете хора във вашата група"
@@ -504,14 +494,12 @@ bg:
     view_comment: "Кликнете тук за да видите коментара в Loomio"
     view_discussion: "Кликнете тук за да видите тази дискусия"
     view_group: "Кликнете тук за да видите групата в Loomio"
-    view_proposal: "Кликнете тук за да видите предложението в Loomio"
     create_discussion:
       intro: "%{who} започна нова дискусия в %{which_group}:"
       subject: "Нова дискусия - %{which}"
     create_proposal:
       intro: "Създадено е ново предложение в Loomio група, на която сте член."
       closes_in: "Затваря след"
-      subject: "Ново предложение - %{which}"
     daily_activity:
       heading: "Вашата Loomio Активност"
       intro: "Показва какво се е случило във вашите Loomio групи през последните 24 часа"
@@ -538,7 +526,6 @@ bg:
       subject: "Блокирано предложение - %{which}"
     proposal_closing_soon:
       closes_in: "Затваря след"
-      subject: "Предложението затваря скоро: %{which}"
       summary: "Резюме"
     verification:
       header: "Почти готово!"
