@@ -49,3 +49,25 @@ pl:
         one: "%{count} sekunda"
         few: "%{count} sekundy"
         other: "%{count} sekund"
+      less_than_x_minutes:
+        one: "minuta"
+        few: "%{count} minut"
+        other: "%{count} minut"
+      x_minutes:
+        one: "minuta"
+        few: "%{count} minut"
+        other: "%{count} minut"
+      about_x_hours:
+        one: "godzina"
+        few: "%{count} godzin"
+        other: "%{count} godzin"
+      x_days:
+        one: "dzień"
+        few: "%{count} dni"
+        other: "%{count} dni"
+  notifications:
+    new_discussion: "rozpocznij nową dyskusję"
+    new_motion: "utwórz nową propozycję"
+    motion_closed:
+      by_user: "zamknij propozycję"
+      by_expiry: "Propozycja została zamknięta"
