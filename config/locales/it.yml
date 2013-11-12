@@ -111,7 +111,6 @@ it:
   empty_notifications: "Non hai ancora notifiche."
   see_all_notifications: "Guarda tutte le notifiche"
   sign_out: "Esci"
-  sign_in: "Accedi"
   tagline: "Creare un mondo in cui chiunque possa prendere facilmente parte a decisioni che lo riguardano."
   click_to_dismiss: "Clicca qui per ignorare questo messaggio"
   generic_confirm: "Sei sicuro?"
@@ -326,7 +325,6 @@ it:
     no_invitations_left_get_more: "Per favore manda una email a contact@loomio.org e vediamo cosa riusciamo a fare per aiutarti"
     invitation_not_found: 'Non è stato possibile trovare un invito con quel token. Chiedi un nuovo invito al mittente.'
     invitation_cancelled: 'Questo invito è stato annullato. Contatta il mittente dell''invito se pensi che si tratti di un errore.'
-    invitation_already_used: 'Questo invito è già stato usato. Accedi per andare al tuo gruppo.'
     invitees_placeholder: "Nome utente <utente1@esempio.it>, utente2@esempio.it"
     subject: "Unisciti al nostro nuovo gruppo Loomio, %{group}"
     invite_people: "Invita qualcuno al tuo gruppo"
@@ -432,13 +430,11 @@ it:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per disiscriverti o cambiare le preferenze email."
     view_comment: "Clicca qui per vedere il commento su Loomio"
     view_group: "Clicca qui per vedere il gruppo su Loomio"
-    view_proposal: "Clicca qui per vedere questa proposta su Loomio"
     create_discussion:
       subject: "Nuova discussione - %{which}"
     create_proposal:
       intro: "È stata creata una nuova proposta in un gruppo Loomio al quale partecipi."
       closes_in: "Chiude tra"
-      subject: "Nuova proposta - %{which}"
     daily_activity:
       heading: "La tua attività su Loomio"
       intro: "Ti facciamo vedere cos'è successo nei tuoi gruppi Loomio nelle ultime 24 ore"
@@ -465,7 +461,6 @@ it:
       subject: "Proposta bloccata - %{which}"
     proposal_closing_soon:
       closes_in: "Chiude tra"
-      subject: "Proposta in chiusura: %{which}"
       summary: "Riassunto"
     verification:
       header: "Hai quasi finito!"

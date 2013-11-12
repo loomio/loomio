@@ -32,7 +32,7 @@ nl:
     cant_modify_position: "Dit voorstel is gesloten."
     cant_state_position: "Dit voorstel is gesloten."
     cant_view_member_profile: "Je kan het profiel van deze gebruiker niet bekijken omdat je niet in dezelfde groep zit."
-    contribution: "Log in om een bijdrage te doen."
+    contribution: "Meld je aan om een bijdrage te doen."
     discussion_not_created: "Discussie kan niet worden aangemaakt."
     group_not_archived: "Groep kon niet worden gearchiveerd."
     invalid_close_date: "Ongeldige sluitingsdatum. Mogelijk ligt deze in het verleden?"
@@ -179,6 +179,7 @@ nl:
   sign_in: "Inloggen"
   tagline: "Een wereld creëren waarin het gemakkelijk is voor iedereen om te participeren in beslissingen die hen aangaan."
   or_sign_in_html: "Als je al een account hebt, <a href='%{link}'>log hier in</a>."
+  or_link_account_html: "Als je al een account hebt, <a href='%{link}'>log hier in</a>."
   click_to_dismiss: "Klik hier om het bericht te sluiten."
   generic_confirm: "Weet je het zeker?"
   discussion_helper_text:
@@ -474,14 +475,14 @@ nl:
   forgot_your_password: "Wachtwoord vergeten?"
   confirmation_not_received: "Geen bevestigingsinstructies ontvangen?"
   unlock_not_received: "Geen ontgrendelingsinstructies ontvangen?"
+  inactive_html: "Sorry, dit account is op dit moment niet actief. <a href='%{path_to_contact}'>Neem contact op</a> als je vragen hebt."
+  create_an_account: 'Maak een account'
   join_group:
-    header: "%{who} nodigde je uit voor %{group_name}"
-    sign_up_intro: "Je moet een account maken om je bij de groep aan te sluiten."
-    sign_in_intro: "Je moet inloggen om je bij de groep aan te sluiten."
+    log_in: "Log in om je bij %{group_name} aan te sluiten"
+    create_account: "Maak een account"
   start_group:
-    header: "Welkom bij Loomio"
-    sign_up_intro: "Je moet een nieuwe account maken voor je jouw groep kan maken:"
-    sign_in_intro: "Je moet inloggen voor je jouw groep aan kan maken:"
+    log_in: "Log in om je groep op te zetten"
+    create_account: "Maak een account"
   invitation:
     no_invitations_left: "Sorry, je hebt geen uitnodigingen meer over"
     no_invitations_left_get_more: "Stuur een e-mail naar contact@loomio.org waarna we zullen kijken hoe we je kunnen helpen"
@@ -659,6 +660,8 @@ nl:
       intro: "Je werd genoemd in een discussie genaamd:"
       said: "%{comment_author} zei:"
       subject: "%{who} noemde je in de %{which} groep op Loomio"
+    new_motion_created:
+      context: "%{author} heeft een voorstel gedaan in %{group_full_name}:"
     proposal_closed:
       intro: 'Je voorstel "%{proposal_name}" is gesloten.'
       specify_outcome: "Klik hier om een resultaat te specificeren"
@@ -667,8 +670,11 @@ nl:
       intro: "Een voorstel dat jij hebt ingediend is geblokkeerd."
       subject: "Voorstel geblokkeerd - %{which}"
     proposal_closing_soon:
+      closes_on: "Sluit op "
+      closes_at: "Sluit om"
       closes_in: "Sluit over"
-      subject: "Voorstel sluit binnenkort: %{which}"
+      closing_in_24_hours: "Sluit in 24 uur"
+      headline: "Het voorstel van %{author}'s in %{group} sluit binnenkort: "
       summary: "Samenvatting"
     to_join_group:
       subject: "%{member} heeft je uitgenodigd om deel te nemen aan %{group_name} op Loomio"
