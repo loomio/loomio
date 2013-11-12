@@ -282,6 +282,11 @@ class Group < ActiveRecord::Base
     payment_plan == 'manual_subscription'
   end
 
+  def is_paying?
+    (payment_plan == 'manual_subscription') ||
+    (subscription.present? && subscription.amount > 0)
+  end
+
   private
 
   def calculate_full_name

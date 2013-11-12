@@ -99,6 +99,11 @@ module ApplicationHelper
     current_user && !current_user.belongs_to_manual_subscription_group?
   end
 
+  def can_ask_for_contribution?(group)
+    !group.has_manual_subscription? || !group.is_paying?
+  end
+
+
   def visitor?
     !user_signed_in?
   end

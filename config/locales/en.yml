@@ -45,6 +45,8 @@ en:
     invalid_email: "Please enter at least one valid email address"
     image_upload_fail: "Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file."
     motion_closing_inputs: "Invalid closing date"
+    motion_outcome_not_created: "Unable to publish outcome."
+    motion_outcome_not_updated: "Unable to update outcome."
     only_group_coordinator_destroy: "You cannot leave this group because you are the only coordinator. You can deactivate your group via the options dropdown or <a href='%{add_coordinator}'>add a new coordinator</a> to the group."
     only_group_coordinator_remove_admin: "The group must have one coordinator. Would you like to add another coordinator to the group?"
     permission_to_invite: "You do not have permission to invite new members."
@@ -113,6 +115,8 @@ en:
     group_created: "Group created successfully."
     members_added: "Members added to group."
     membership_requested: "Membership requested. You will be notified once your request has been approved."
+    motion_outcome_created: "Congratulations, you've created a proposal outcome and your group members have been notified."
+    motion_outcome_updated: "The proposal outcome has been updated."
     position_submitted: "Position submitted"
     position_updated: "Position updated."
     proposal_created: "Proposal successfully created."
@@ -180,6 +184,8 @@ en:
     user_added_to_group: "added you to the group"
     motion_closing_soon: "Proposal is closing soon"
     motion_blocked: "blocked the proposal"
+    motion_outcome_created: "published an outcome for the proposal"
+    motion_outcome_updated: "updated the outcome for the proposal"
 
   edit_discussion_context: "Edit discussion context"
   request_new_group: "Start a group"
@@ -314,6 +320,8 @@ en:
       by_user: "closed the proposal"
       by_expiry: "Proposal closed"
     motion_close_date_edited: "changed the closing date for the proposal"
+    motion_outcome_created: "published an outcome for the proposal"
+    motion_outcome_updated: "updated the outcome for the proposal"
     discussion_title_edited: "changed the discussion title"
     discussion_description_edited: "changed the discussion description"
 
@@ -386,6 +394,7 @@ en:
   not_voted: "[Show members who have not yet decided]"
   outcome: "Outcome"
   outcome_placeholder: "What was the outcome of this proposal?"
+  outcome_submit: "Publish outcome"
 
   position_verbs:
     "yes": "agree"
@@ -774,6 +783,7 @@ en:
     view_discussion: "Click here to view this discussion"
     view_group: "Click here to view the group on Loomio"
     view_proposal: "View this proposal on Loomio"
+    campaign_html: "Was this decision important to you? Consider <a href='%{link_path}'>becoming a Loomio contributor</a> and help us spread Loomio to the world. We're a little team trying to do big things and we need your contribution to keep us growing!"
     create_discussion:
       intro: "%{who} started a new discussion in %{which_group}:"
       subject: "New discussion - %{which}"
@@ -809,8 +819,12 @@ en:
       context: "%{author} created a proposal in %{group_full_name}:"
     proposal_closed:
       intro: 'Your proposal "%{proposal_name}" has closed.'
-      specify_outcome: "Please click here to specify an outcome"
+      intro_html: 'Your proposal "%{proposal_name}" has closed.'
+      specify_outcome_and_notify_group: "Create an outcome and send it to your group!"
+      specify_outcome_and_notify_group_html: "Create an outcome and send it to your group!"
       subject: "Proposal closed - %{which}"
+    proposal_outcome:
+      subject: "Proposal outcome"
     proposal_blocked:
       intro: "A proposal you are facilitating has been blocked."
       subject: "Proposal blocked - %{which}"
@@ -888,10 +902,10 @@ en:
   ok_got_it: "Okay, got it!"
   options: "Options"
   other: "Other"
+  outcome: "Outcome"
   password: "Password"
   photo:
   pricing: 'Pricing'
-  proposal: "Proposal"
   prev: "Prev"
   translate: "Help translate Loomio!"
   options: "Options"

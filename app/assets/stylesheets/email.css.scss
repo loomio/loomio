@@ -1,3 +1,5 @@
+@import "settings";
+
 img{max-width: 500px;}
 blockquote{
   margin: 0 3em;
@@ -64,7 +66,7 @@ th{
 }
 
 .author-action { margin: 1em 0 .2em 0; }
-.motion-name{
+.motion-name {
   max-width: none;
   font-weight: bold;
 }
@@ -80,4 +82,34 @@ th{
   padding: 0 0.5em;
   font-weight: bold;
 }
+
+.proposal-text {
+  margin: 0 auto;
+  font-size: 18px;
+  text-align: center;
+}
+
+.outcome-header {
+  font-size: 1.2em;
+  margin: 14px 0 0;
+}
+.outcome-subheader {
+  font-weight: 700;
+  font-size: 1em;
+  margin: 14px 0 0;
+}
+
+.proposal-outcome p { margin: 0; }
+
+.proposal-details {
+  margin: 0;
+  color: $dark-grey;
+}
+
 .nowrap{ white-space: nowrap; }
+
+p.campaign {
+  background-color: $lighter-grey;
+  padding: 10px;
+  margin-top: 14px;
+}
