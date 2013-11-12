@@ -286,6 +286,7 @@ body.discussions.show {
       color: $dark-grey;
       height: 80px;
       margin: 0;
+      max-width: 380px;
       outline: none;
       width: 380px;
       &:focus {
