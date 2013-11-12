@@ -64,13 +64,6 @@ class Motion < ActiveRecord::Base
     close! if closing_at <= Time.now
   end
 
-  def set_outcome!(str)
-    if closed?
-      self.outcome = str
-      save
-    end
-  end
-
   def as_read_by(user)
     if user.blank?
       self.motion_readers.build(motion: self)
@@ -213,6 +206,11 @@ class Motion < ActiveRecord::Base
 
   def group_users_without_motion_author
     group.users.where(User.arel_table[:id].not_eq(author.id))
+  end
+
+  def group_users_without_outcome_author
+    outcome_author_id = events.where(kind: 'motion_outcome_created').last.user_id
+    group.users.where(User.arel_table[:id].not_eq(outcome_author_id))
   end
 
   #expensive to call

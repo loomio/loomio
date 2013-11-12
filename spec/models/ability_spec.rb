@@ -82,10 +82,12 @@ describe "User abilities" do
     it { should be_able_to(:destroy, @membership) }
     it { should be_able_to(:create, new_motion) }
     it { should be_able_to(:close, user_motion) }
+    it { should be_able_to(:create_outcome, user_motion) }
     it { should be_able_to(:edit_close_date, user_motion) }
     it { should be_able_to(:destroy, user_motion) }
     it { should_not be_able_to(:destroy, other_users_motion) }
     it { should_not be_able_to(:close, other_users_motion) }
+    it { should_not be_able_to(:create_outcome, other_users_motion) }
     it { should_not be_able_to(:edit_close_date, other_users_motion) }
 
     it "cannot remove themselves if they are the only member of the group" do
@@ -169,6 +171,7 @@ describe "User abilities" do
     it { should_not be_able_to(:update, other_users_motion) }
     it { should be_able_to(:destroy, other_users_motion) }
     it { should be_able_to(:close, other_users_motion) }
+    it { should be_able_to(:create_outcome, other_users_motion) }
     it { should be_able_to(:edit_close_date, other_users_motion) }
     it { should be_able_to(:destroy, another_user_comment) }
 

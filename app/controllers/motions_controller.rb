@@ -59,19 +59,28 @@ class MotionsController < GroupBaseController
     flash[:success] = t("success.proposal_deleted")
   end
 
-  # CUSTOM ACTIONS
-
   def close
     resource
     @motion.close! current_user
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
   end
 
-  def edit_outcome
-    resource
-    motion = Motion.find(params[:motion][:id])
-    motion.set_outcome!(params[:motion][:outcome])
-    redirect_to discussion_url(motion.discussion, proposal: motion)
+  def create_outcome
+    if MotionService.create_outcome(@motion, permitted_params.motion, current_user)
+      flash[:success] = t("success.motion_outcome_created")
+    else
+      flash[:error] = t("error.motion_outcome_not_created")
+    end
+    redirect_to discussion_url(@motion.discussion, proposal: @motion)
+  end
+
+  def update_outcome
+    if MotionService.update_outcome(@motion, permitted_params.motion, current_user)
+      flash[:success] = t("success.motion_outcome_updated")
+    else
+      flash[:error] = t("error.motion_outcome_not_updated")
+    end
+    redirect_to discussion_url(@motion.discussion, proposal: @motion)
   end
 
   def edit_close_date
