@@ -29,19 +29,6 @@ show_inbox_empty_msg_if_empty = ->
     $('.inbox-empty-msg').show()
 
 $ ->
-  step = 0
-  load_inbox_count = ->
-    step += 1 if step < 5
-    $.ajax
-      url: '/inbox/size',
-      success: (count) ->
-        $('#inbox-count').text(count);
-      complete: ->
-        setTimeout(load_inbox_count, step*60*1000);
-
-  load_inbox_count()
-
-$ ->
   if $('body.inbox').length > 0
     $('.ui-sortable').sortable()
 

@@ -42,7 +42,7 @@ class InboxController < BaseController
 
     redirect_back_or_head_ok
   end
-  
+
   def mark_all_as_read
     @inbox = Inbox.new(current_user)
     group = current_user.groups.find(params[:id])
@@ -61,7 +61,6 @@ class InboxController < BaseController
     if request.xhr?
       size = Inbox.new(current_user).get_size_without_load
       size = '' if size == 0
-      render js: "$('#inbox-count').text('#{size}')"
     else
       redirect_to inbox_path
     end
