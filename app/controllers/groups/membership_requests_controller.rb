@@ -9,17 +9,16 @@ class Groups::MembershipRequestsController < BaseController
     @membership_request = MembershipRequest.new
     @membership_request.group = @group
     @membership_request.requestor = current_user
+    store_referer_location
   end
 
   def create
     authorize! :request_membership, @group
-    @membership_request = RequestMembership.
-                          to_group(params: permitted_params.membership_request,
-                                   requestor: current_user,
-                                   group: @group)
+    build_membership_request
+
     if @membership_request.persisted?
-      flash[:success] = t(:'success.membership_requested')
-      redirect_to @group
+      flash[:success] = t(:'success.membership_requested', which_group: @group.full_name)
+      redirect_to after_request_membership_path
     else
       if @membership_request.errors[:requestor].any?
         flash[:warning] = @membership_request.errors[:requestor].first
@@ -37,6 +36,23 @@ class Groups::MembershipRequestsController < BaseController
   end
 
   private
+
+  def store_referer_location
+    session['user_return_to'] = request.env['HTTP_REFERER']
+  end
+
+  def after_request_membership_path
+    path = session['user_return_to'] || group_path(@group)
+    clear_stored_location
+    path
+  end
+
+  def build_membership_request
+    @membership_request = RequestMembership.to_group(
+                            params: permitted_params.membership_request,
+                            requestor: current_user,
+                            group: @group)
+  end
 
   def load_group
     @group ||= GroupDecorator.new Group.find(params[:group_id])

@@ -116,7 +116,7 @@ en:
     group_archived: "Group archived successfully."
     group_created: "Group created successfully."
     members_added: "Members added to group."
-    membership_requested: "Membership requested. You will be notified once your request has been approved."
+    membership_requested: "You've asked to join %{which_group}. You will be notified once your request has been approved."
     motion_outcome_created: "Congratulations, you've created a proposal outcome and your group members have been notified."
     motion_outcome_updated: "The proposal outcome has been updated."
     position_submitted: "Position submitted"
@@ -269,6 +269,7 @@ en:
   confirm_ignore_membership_request: "Are you sure you want to ignore the member request from %{which_user}?"
   membership_requested: "Membership requested"
   request_membership: "Request membership"
+  ask_to_join_group: "Ask to join group"
   confirm_remove_membership_request: "Are you sure you wish to withdraw your membership request for this group?"
   no_pending_membership_requests: "There are currently no pending membership requests for this group."
 

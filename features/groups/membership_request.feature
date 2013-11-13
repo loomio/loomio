@@ -9,7 +9,7 @@ Feature: Individual requests group membership
     Given I am a visitor
     And an open group exists
     When I visit the group page
-    And I click "Request membership"
+    And I click "Ask to join group"
     And I fill in and submit the Request membership form
     Then I should see a flash message confirming my membership request
 
@@ -42,7 +42,7 @@ Feature: Individual requests group membership
     Given I am a visitor
     And I have requested membership as a visitor and been ignored
     When I visit the group page
-    And I click "Request membership"
+    And I click "Ask to join group"
     And I fill in and submit the Request membership form
     Then I should see a flash message confirming my membership request
 
@@ -50,7 +50,7 @@ Feature: Individual requests group membership
     Given I am logged in
     And an open group exists
     When I visit the group page
-    And I click "Request membership"
+    And I click "Ask to join group"
     And I fill in and submit the Request membership form (introduction only)
     Then I should see a flash message confirming my membership request
 
@@ -84,7 +84,7 @@ Feature: Individual requests group membership
     Given I am logged in
     And I have requested membership, been accepted to, and then left a group
     When I visit the group page
-    And I click "Request membership"
+    And I click "Ask to join group"
     And I fill in and submit the Request membership form (introduction only)
     Then I should see a flash message confirming my membership request
 
@@ -92,7 +92,7 @@ Feature: Individual requests group membership
     Given I am logged in
     And I have requested membership and been ignored
     When I visit the group page
-    And I click "Request membership"
+    And I click "Ask to join group"
     And I fill in and submit the Request membership form (introduction only)
     Then I should see a flash message confirming my membership request
 

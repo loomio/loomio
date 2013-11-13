@@ -6,7 +6,6 @@ body.groups {
   &.show {
     .discussion-preview .discussion-title { margin-top: 7px; }
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }
-    #button-container { margin-top: 5px; }
     #group-description-panel {
       #description-edit-form {
         margin-bottom: 0px;
@@ -95,6 +94,7 @@ body.groups {
 
     #request-membership {
       margin-bottom: 10px;
+      text-align: center;
       .btn {
         width: 195px;
         color: $mid-grey;

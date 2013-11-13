@@ -73,8 +73,8 @@ module GroupsHelper
 
   def request_membership_icon_button(group, params={})
     old_params = { href: new_group_membership_request_path(group),
-                   text: t(:request_membership),
-                   icon: '/assets/group.png',
+                   text: t(:ask_to_join_group),
+                   icon: nil,
                    id: 'request-membership',
                    class: 'btn-info' }
     new_params = old_params.merge(params)
