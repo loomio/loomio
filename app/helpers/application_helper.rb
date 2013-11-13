@@ -56,9 +56,13 @@ module ApplicationHelper
     title = args[:title] || ""
 
     classes = "btn btn-app" + extra_classes
+    content = content_tag(:span, text)
+    if icon.present?
+      content = image_tag(icon, class: 'button-icon') + content
+    end
     content_tag(:a, href: href, 'data-method' => method, class: classes, id: id,
-                'data-toggle' => data_toggle, 'data-confirm' => data_confirm, title: title) do
-      image_tag(icon, class: 'button-icon') + content_tag(:span, text)
+      'data-toggle' => data_toggle, 'data-confirm' => data_confirm, title: title) do
+      content
     end
   end
 
