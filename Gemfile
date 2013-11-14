@@ -50,6 +50,7 @@ gem 'roadie', '~> 2.4.1'
 gem 'valid_email', '~> 0.0.4'
 gem 'font-awesome-sass-rails'
 gem 'rabl'
+gem 'sequenced'
 
 # Gems used only for assets and not required
 # in production environments by default.

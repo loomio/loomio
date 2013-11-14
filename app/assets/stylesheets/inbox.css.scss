@@ -25,13 +25,16 @@
 .inbox-group {
   h3 {
     margin: 0.7em 0 0.3em 0;
+    a {
+      color: $dark-grey;
+    }
   }
   .mark-all-as-read {
     a{
       margin-right: .9em;
     }
     text-align: right;
-    margin-top: 1.84em;
+    margin-top: 1.2em;
   }
 }
 

@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe NotificationItems::NewComment do
-  let(:notification) { stub(:notification) }
+  let(:notification) { double(:notification) }
   let(:item) { NotificationItems::NewComment.new(notification) }
 
   it "#actor returns the user who posted the new comment" do
-    poster = stub(:user)
+    poster = double(:user)
     notification.stub_chain(:eventable, :user).and_return(poster)
     item.actor.should == notification.eventable.user
   end

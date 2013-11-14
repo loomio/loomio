@@ -23,7 +23,6 @@ ro:
     cant_modify_position: "Propunerea este inchisa acum. Nu mai poti sa-ti modifici optiunea."
     cant_state_position: "Propunerea este inchisa acum. Nu mai poti vota."
     cant_view_member_profile: "Nu poti vizualiza profilul utilizatorului acesta pentru ca nu sunteti in acelasi grup."
-    contribution: "Logheaza-te pentru a-ti aduce contributia"
     discussion_not_created: "Discutia nu poate fi creata."
     group_not_archived: "Grupul nu poate fi arhivat."
     invalid_close_date: "Data limita nevalida, trebuie sa fie o data din viitor."
@@ -159,9 +158,7 @@ ro:
   user_settings: "Setari utilizator"
   email_preferences: "Preferinte email"
   sign_out: "De-logare"
-  sign_in: "Login"
   tagline: "Creand o lume in care este posibil pentru toti sa participe in deciziile care-i afecteaza."
-  or_sign_in_html: "Daca ai deja un cont, <a href='%{link}'0>apasa aici pentru logare</a>."
   click_to_dismiss: "Click aici pentru a ascunde acest mesaj"
   generic_confirm: "Esti sigur?"
   discussion_helper_text:
@@ -406,20 +403,11 @@ ro:
   forgot_your_password: "Ti-ai uitat parola?"
   confirmation_not_received: "Nu ai primit instructiunile de confirmare?"
   unlock_not_received: "Nu ai primit instructiunile de deblocare?"
-  join_group:
-    header: "%{who} te-a invitat sa te alaturi %{group_name}"
-    sign_up_intro: "Trebuie sa-ti creezi cont pentru a te alatura grupului."
-    sign_in_intro: "Trebuie sa te loghezi pentru a te alatura grupului."
-  start_group:
-    header: "Bine ai venit in Loomio"
-    sign_up_intro: "Trebuie sa-ti creezi un cont inainte de a putea crea grupul:"
-    sign_in_intro: "Trebuie sa te loghezi inainte de a creea grupul tau:"
   invitation:
     no_invitations_left: "Ne pare rau nu mai ai nici o invitatie ramasa"
     no_invitations_left_get_more: "Te rugam sa contactezi contact@loomio.org si vom vedea ce putem face sa te ajutam"
     invitation_not_found: 'Nu am gasit invitatia cu acest token. Cere o noua invitatie celui care ti-a trimis-o.'
     invitation_cancelled: 'Invitatia a fost retrasa. Te rugam sa contactezi pe cel care ti-a triis invitatia daca crezi ca este o eroare.'
-    invitation_already_used: 'Invitatia a fost deja folosita. Te rugam sa te loghezi pentru a ajunge la grupul tau.'
     invitees_placeholder: "Nume utilizator <user1@example.com>, user2@example.com"
     subject: "Alatura-te noului grup Loomio,  %{group}"
     invite_people: "Invita oameni in grupul tau"
@@ -536,14 +524,12 @@ ro:
     view_comment: "Apasa aici pentru a vedea comentariul pe Loomio"
     view_discussion: "Apasa aici pentru a vedea aceasta discutie"
     view_group: "Apasa aici pentru a vedea grupul pe Loomio"
-    view_proposal: "Apasa aici pentru a vedea aceasta propunere pe Loomio"
     create_discussion:
       intro: "%{who} a pornit o noua discutie in %{which_group}:"
       subject: "Discutie nou - %{which}"
     create_proposal:
       intro: "O noua propunere a fost creata intr-un grup Loomio de care apartii. "
       closes_in: "Se inchide in"
-      subject: "Propunere noua - %{which}"
     daily_activity:
       heading: "Activitatea ta pe Loomio"
       intro: "Iti aratam ce s-a intamplat in grupurile tale Loomio in ultimele 24 de ore"
@@ -576,7 +562,6 @@ ro:
       subject: "Propunere blocata - %{which}"
     proposal_closing_soon:
       closes_in: "Se inchide in"
-      subject: "Propunerea se inchide curand: %{which}"
       summary: "Sumar"
     to_join_group:
       subject: "%{member} te-a invitat sa te alaturi grupului %{group_name}  pe Loomio"

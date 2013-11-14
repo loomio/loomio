@@ -18,7 +18,7 @@ end
 Given(/^"(.*?)" has created a new discussion$/) do |arg1|
   author = User.find_by_email("#{arg1}@example.org")
   group = FactoryGirl.create :group
-  @discussion = FactoryGirl.create :discussion, :group => group, author: author
+  @discussion = create_discussion :group => group, author: author
 end
 
 Then(/^the new discussion email should be delivered to "(.*?)" in Spanish$/) do |arg1|
@@ -37,7 +37,7 @@ end
 Given(/^"(.*?)" has created a new proposal$/) do |arg1|
   author = User.find_by_email("#{arg1}@example.org")
   group = FactoryGirl.create :group
-  @discussion = FactoryGirl.create :discussion, group: group
+  @discussion = create_discussion group: group
   @motion = FactoryGirl.create :motion, discussion: @discussion, author: author
 end
 
@@ -56,7 +56,7 @@ end
 Given(/^"(.*?)" has blocked a proposal started by "(.*?)"$/) do |arg1, arg2|
   author = User.find_by_email("#{arg2}@example.org")
   group = FactoryGirl.create :group
-  @discussion = FactoryGirl.create :discussion, group: group
+  @discussion = create_discussion group: group
   motion = FactoryGirl.create :motion, discussion: @discussion, author: author
   user = User.find_by_email("#{arg1}@example.org")
   @vote = FactoryGirl.create :vote, position: "block",
@@ -77,7 +77,7 @@ end
 Given(/^the proposal started by "(.*?)" is closing soon$/) do |arg1|
   author = User.find_by_email("#{arg1}@example.org")
   group = FactoryGirl.create :group
-  @discussion = FactoryGirl.create :discussion, group: group
+  @discussion = create_discussion group: group
   @motion = FactoryGirl.create :motion, discussion: @discussion, author: author, closing_at: Time.now + 1.hour
 end
 
@@ -96,7 +96,7 @@ end
 Given(/^"(.*?)" has closed their proposal$/) do |arg1|
   author = User.find_by_email("#{arg1}@example.org")
   group = FactoryGirl.create :group
-  @discussion = FactoryGirl.create :discussion, group: group
+  @discussion = create_discussion group: group
   @motion = FactoryGirl.create :motion, discussion: @discussion, author: author
 end
 
@@ -146,7 +146,7 @@ end
 When(/^the daily activity email is sent$/) do
   user = FactoryGirl.create :user
   group = FactoryGirl.create :group
-  discussion = FactoryGirl.create :discussion, group: group
+  discussion = create_discussion group: group
   @since_time = 24.hours.ago
   @results = CollectsRecentActivityByGroup.new(user, since: @since_time).results
 end

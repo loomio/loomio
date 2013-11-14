@@ -1,6 +1,6 @@
 class DiscussionsController < GroupBaseController
   include DiscussionsHelper
-  load_and_authorize_resource :except => [:new, :create, :index]
+  load_and_authorize_resource :except => [:new, :create, :index, :add_comment]
   before_filter :authenticate_user!, :except => [:show, :index]
   after_filter :mark_as_read, only: :show
 
@@ -19,14 +19,9 @@ class DiscussionsController < GroupBaseController
   end
 
   def create
-    current_user.update_attributes(uses_markdown: params[:discussion][:uses_markdown])
+    build_discussion
 
-    @discussion = Discussion.new(permitted_params.discussion)
-    @discussion.author = current_user
-
-    authorize! :create, @discussion
-
-    if @discussion.save
+    if DiscussionService.start_discussion(@discussion)
       flash[:success] = t("success.discussion_created")
       redirect_to @discussion
     else
@@ -106,17 +101,13 @@ class DiscussionsController < GroupBaseController
   end
 
   def add_comment
-    if params[:comment].present? || params[:attachments].present?
-      @discussion = Discussion.find(params[:id])
-      @comment = @discussion.add_comment(current_user, params[:comment],
-                                         uses_markdown: params[:uses_markdown], attachments: params[:attachments])
+    @discussion = Discussion.find params[:id]
+    build_comment
+    if DiscussionService.add_comment(@comment)
       current_user.update_attributes(uses_markdown: params[:uses_markdown])
       @discussion.as_read_by(current_user).viewed!
-      unless request.xhr?
-        redirect_to @discussion
-      end
     else
-      head :ok
+      head :ok and return
     end
   end
 
@@ -174,6 +165,23 @@ class DiscussionsController < GroupBaseController
   end
 
   private
+  def build_comment
+    @comment = Comment.new(body: params[:comment],
+                           uses_markdown: params[:uses_markdown])
+
+    attachment_ids = Array(params[:attachments]).map(&:to_i)
+
+    @comment.discussion = @discussion
+    @comment.author = current_user
+    @comment.attachment_ids = attachment_ids
+    @comment.attachments_count = attachment_ids.size
+    @comment
+  end
+
+  def build_discussion
+    @discussion = Discussion.new(permitted_params.discussion)
+    @discussion.author = current_user
+  end
 
   def mark_as_read
     if @reader and @activity and @activity.last

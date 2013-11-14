@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Discussion do
-  let(:discussion) { create(:discussion) }
+  let(:discussion) { create_discussion }
 
   it { should have_many(:events).dependent(:destroy) }
   it { should respond_to(:uses_markdown) }
@@ -18,26 +18,18 @@ describe Discussion do
   end
 
   it 'should have comments_count of 0' do
-    create(:discussion).comments_count.should == 0
+    discussion.comments_count.should == 0
   end
 
   it "group member can add comment" do
     user = create(:user)
-    discussion = create(:discussion)
     discussion.group.add_member! user
     comment = discussion.add_comment(user, "this is a test comment", uses_markdown: false)
     discussion.comments.should include(comment)
   end
 
-  it "group non-member cannot add comment" do
-    discussion = create(:discussion)
-    comment = discussion.add_comment(create(:user), "this is a test comment", uses_markdown: false)
-    discussion.comments.should_not include(comment)
-  end
-
-  it "automatically populates last_comment_at with discussion.created at" do
-    discussion = create(:discussion)
-    discussion.last_comment_at.should == discussion.created_at
+  it "automatically populates last_comment_at immediately before creation" do
+    discussion.last_comment_at.to_s.should == discussion.created_at.to_s
   end
 
   describe "#search(query)" do
@@ -70,7 +62,7 @@ describe Discussion do
 
   context "versioning" do
     before do
-      @discussion = create(:discussion)
+      @discussion = create_discussion
       @version_count = @discussion.versions.count
     end
 
@@ -90,7 +82,8 @@ describe Discussion do
       @user = create :user
       @group = create :group
       @group.add_member! @user
-      @discussion = create :discussion, :group => @group
+      @discussion = build :discussion, :group => @group
+      DiscussionService.start_discussion(@discussion)
       @discussion.add_comment(@user, "this is a test comment", uses_markdown: false)
       @motion = create :motion, :discussion => @discussion
       @vote = create :vote, :position => 'yes', :motion => @motion
@@ -167,7 +160,7 @@ describe Discussion do
 
   describe "#viewed!" do
     before do
-      @discussion = create(:discussion)
+      @discussion = create_discussion
     end
     it "increases the total_views by 1" do
       @discussion.total_views.should == 0

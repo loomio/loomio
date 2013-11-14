@@ -23,10 +23,11 @@ describe DiscussionReader do
   describe "#first_unread_page" do
     let(:user) { FactoryGirl.create :user }
     let(:other_user) { FactoryGirl.create :user }
-    let(:discussion) { FactoryGirl.create :discussion }
+    let(:discussion) { create_discussion }
     let(:reader) { discussion.as_read_by(user) }
 
     before do
+      Discussion.send(:remove_const, 'PER_PAGE')
       Discussion::PER_PAGE = 2
       discussion.group.add_member! user
       discussion.group.add_member! other_user
@@ -56,7 +57,7 @@ describe DiscussionReader do
       it {should == 1}
     end
 
-    context '2 read, 1 unread', focus: true do
+    context '2 read, 1 unread' do
       before do
         discussion.add_comment(other_user, 'hi')
         discussion.add_comment(other_user, 'hi')

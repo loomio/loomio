@@ -27,13 +27,15 @@ es:
     cant_modify_position: "La propuesta ha cerrado. Ya no puedes modificar tu posición."
     cant_state_position: "Esta propuesta ha cerrado. Ya no puedes decidir."
     cant_view_member_profile: "No puedes ver el perfil de este miembro porque no perteneces al mismo grupo."
-    contribution: "Por favor inicie sesión para hacer una contribución."
+    contribution: "Inicia sesión para hacer una contribución."
     discussion_not_created: "No se pudo crear la discusión."
     group_not_archived: "El grupo no pudo ser archivado."
     invalid_close_date: "Fecha de cierre invalida. Por favor, comprueba que la fecha no haya pasado."
     invalid_email: "Por favor entre al menos una dirección de correo electrónico valida"
     image_upload_fail: "Imposible subir foto. Asegúrate que el archivo sea inferior a 1 MB y sea un .jpeg, .png, o .gif"
     motion_closing_inputs: "Fecha de cierre inválida"
+    only_group_coordinator_destroy: "No puede irte de este grupo porque eres el único coordinador. Puedes desactivar tu grupo por medio de las opciones\nabajo o <a href='%{add_coordinator}'>adherir a nuevo coordinador</a> al grupo."
+    only_group_coordinator_remove_admin: "El grupo debe tener un coordinador. Te gustaría adherir a otro coordinador al grupo? "
     permission_to_invite: "No tienes permiso para invitar a nuevos miembros."
     position_not_updated: "Su posición no ha sido actualizada."
     settings_not_updated: "Tus ajustes no han sido modificados."
@@ -169,7 +171,8 @@ es:
   sign_out: "Salir"
   sign_in: "Entrar"
   tagline: "Creando un mundo donde es fácil para todos participar de las decisiones que nos afectan."
-  or_sign_in_html: "Si ya tienes una cuenta, <a href='%{link}'>haz click aquí para entrar</a>."
+  or_sign_in_html: "Ya tienes una cuenta en Loomio <a href='%{link}'>Entra aquí</a>"
+  or_link_account_html: "Ya tienes una cuenta en Loomio? <a href='%{link}'>Vincularla a</a>"
   click_to_dismiss: "Presione aquí para deshacerse de este mensaje"
   generic_confirm: "Estas seguro?"
   discussion_helper_text:
@@ -245,6 +248,7 @@ es:
   start_a_discussion: "Empezar una discusión"
   group_description: "Descripción del grupo"
   edit_group_description: "Editar descripción del grupo"
+  group_subscription: "Subscripción grupal "
   group_request:
     confirmation:
       title: 'Ya casi terminas! Revisa tu correo electrónico. '
@@ -339,7 +343,7 @@ es:
     getting_started: "Primeros pasos"
     getting_started_description: "A la izquierda, el grupo debate un tema, intercambiando ideas e información. Cuando hay que tomar una decisión, aparece a la derecha."
     getting_the_most: 'Aprovechando al máximo el uso de Loomio'
-    have_your_say: "Di tu opinión"
+    have_your_say: "Di tu opinión "
     have_your_say_details_html: |-
       <p>Cuando estés listo para decidir, clica en uno de los cuatro botones de decisión.</p>⏎
       <p>Una vez hayas decidido, da una breve explicación. Debajo del gráfico circular⏎
@@ -411,20 +415,20 @@ es:
   forgot_your_password: "Olvidaste tu contraseña?"
   confirmation_not_received: "No has recibido las instrucciones de confirmación?"
   unlock_not_received: "No has recibido instrucciones de desbloqueo?"
+  inactive_html: "Esta cuenta se encuentra inactiva. Si tienes alguna pregunta por favor <a href='%{path_to_contact}'>ponte en \ncontacto</a>."
+  create_an_account: 'Crear una cuenta'
   join_group:
-    header: "%{who} te ha invitado a adherirte a %{group_name}"
-    sign_up_intro: "Necesitas crear una cuenta para adherirte al grupo."
-    sign_in_intro: "Es necesario que ingreses como usuario para participar del grupo."
+    log_in: "Entrar para unirte a %{group_name}"
+    create_account: "Crear una cuenta"
   start_group:
-    header: "Bienvenido/a a Loomio"
-    sign_up_intro: "Tienes que crear una cuenta antes de registrar un grupo:"
-    sign_in_intro: "Tienes que ingresar antes de poder crear un grupo:"
+    log_in: "Entrar para configurar tu grupo"
+    create_account: "Crear una cuenta"
   invitation:
     no_invitations_left: "Ya no tienes mas invitaciones"
     no_invitations_left_get_more: "Por favor envia nos un correo a contact@loomio.org y veremos como podemos ayudar"
     invitation_not_found: 'No se pudo encontrar invitación. Por favor pida una nueva invitación.'
     invitation_cancelled: 'Esta invitación ha sido cancelada. Contacta al remitente si crees que ha habido un error.'
-    invitation_already_used: 'Esta invitación ya ha sido usada. Por favor inicie sesión para continuar.'
+    invitation_already_used: 'Esta invitación ya ha sido usada. Inicia sesión para entrar a tu grupo.'
     recipients: "Introduce las direcciones de correo electrónico, separadas por comas: "
     invitees_placeholder: "Nombre de usuario <user1@example.com>, user2@example.com"
     subject: "Por favor forma parte de nuestro nuevo grupo en Loomio, %{group}"
@@ -560,14 +564,12 @@ es:
     view_comment: "Haz click aquí para ver el comentario en Loomio"
     view_discussion: "Haz click aquí para ver esta discusión "
     view_group: "Haz click aquí para ver el grupo en Loomio"
-    view_proposal: "Haz click aquí para ver la propuesta en Loomio"
     create_discussion:
       intro: "%{who} empezó una discusión en %{which_group}:"
       subject: "Nueva discusión - %{which}"
     create_proposal:
       intro: "Una nueva propuesta fue creada en un grupo de Loomio al que tu perteneces."
       closes_in: "Cierra en"
-      subject: "Nueva propuesta - %{which}"
     daily_activity:
       heading: "Tu actividad en Loomio"
       intro: "Esto es lo que ha pasado en las ultimas 24 horas en tus grupos de Loomio"
@@ -598,7 +600,6 @@ es:
       subject: "Propuesta bloqueada - %{which}"
     proposal_closing_soon:
       closes_in: "Cierra en"
-      subject: "La propuesta está por cerrar: %{which}"
       summary: "Sumario"
     to_join_group:
       subject: "%{member} te ha invitado a unirte a %{group_name} en Loomio"
@@ -666,6 +667,7 @@ es:
   start_a_group: "Empieza un grupo"
   starting: "Empezando"
   subject: "Titulo"
+  terms_of_service_html: "Haciendo click en %{button_text}, aceptas <a href='%{link_path}' target='_blank'>los términos de servicio de Lomio</a>"
   thanks: "Gracias!"
   unlike: "Ya no me gusta"
   until_close: "hasta que cierre"
