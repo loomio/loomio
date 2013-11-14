@@ -1,0 +1,9 @@
+.card-row
+  .card
+    .card-row.fake
+      %input.form-control{placeholder: "Write a comment...", ng_focus: "expand()"}
+    .card-row.real
+      .left
+        %textarea#comment-field.form-control{rows: 5, placeholder: "Say something...", ng_blur: "collapseIfEmpty()"}
+      .right
+        %button#post-comment-btn.btn.btn-default.btn-block.submit Post

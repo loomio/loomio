@@ -1,14 +1,12 @@
 {
   "name": "Loomio assets",
   "dependencies": {
-    "jquery-1.9.1": "http://code.jquery.com/jquery-1.9.1.js",
-    "angular": "angular#1.2.0-rc.3",
-    "reveal": "git@github.com:hakimel/reveal.js.git",
+    "angular": "angular#1.2.0",
     "jquery": "~2.0.3",
     "underscore": "~1.5.2",
-    "backbone": "~1.1.0",
-    "requirejs": "~2.1.9",
-    "angular-mocks": "~1.0.8",
     "angular-route": "~1.2.0-rc.3"
+  },
+  "resolutions": {
+    "angular": "1.2.0"
   }
 }
