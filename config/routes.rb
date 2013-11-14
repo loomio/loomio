@@ -12,8 +12,10 @@ Loomio::Application.routes.draw do
 
   namespace :next do
     get '/', to: 'application#index', as: :root
+    mount JasmineRails::Engine => "/specs" if defined?(JasmineRails)
     get '/*anything', to: 'application#index', as: :root
   end
+
 
   namespace :api, defaults: {format: :json} do
     resources :discussions, only: :show

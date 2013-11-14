@@ -49,6 +49,9 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     addressable (2.2.8)
+    angular-html2js (0.0.4)
+      sprockets (~> 2.0)
+      tilt (~> 1.0)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
@@ -82,6 +85,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-angular (0.0.3)
+      capybara
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     client_side_validations (3.2.6)
@@ -301,6 +306,8 @@ GEM
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
+    phantomjs (1.8.1.1)
+      poltergeist
     poltergeist (1.3.0)
       capybara (~> 2.1.0)
       faye-websocket (>= 0.4.4, < 0.5.0)
@@ -434,6 +441,9 @@ GEM
       actionpack (~> 3.0)
       activemodel (~> 3.0)
       railties (~> 3.0)
+    teaspoon (0.7.4)
+      phantomjs (>= 1.8.1.1)
+      railties (>= 3.2.5, < 5)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
     terminal-table (1.4.5)
@@ -482,6 +492,7 @@ PLATFORMS
 DEPENDENCIES
   aasm (~> 3.0.3)
   activeadmin!
+  angular-html2js
   awesome_print (~> 1.0.2)
   better_errors
   binding_of_caller
@@ -491,6 +502,7 @@ DEPENDENCIES
   cancan (~> 1.6.10)
   capistrano
   capybara (~> 2.1.0)
+  capybara-angular
   client_side_validations
   client_side_validations-simple_form
   codeclimate-test-reporter
@@ -562,6 +574,7 @@ DEPENDENCIES
   simple_form (~> 2.1.0)
   spork-rails (~> 3.2.1)
   strong_parameters (~> 0.2.1)
+  teaspoon
   thin (~> 1.5.1)
   timecop (~> 0.6.3)
   twitter-text (~> 1.6.3)

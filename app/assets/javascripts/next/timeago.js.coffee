@@ -1,4 +1,4 @@
-angular.module("LoomioApp", []).filter "timeAgo", ->
+angular.module("loomioApp", []).filter "timeAgo", ->
   (input, p_allowFuture) ->
     substitute = (stringOrFunction, number, strings) ->
       string = (if $.isFunction(stringOrFunction) then stringOrFunction(number, dateDifference) else stringOrFunction)
