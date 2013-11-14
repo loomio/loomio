@@ -5,22 +5,33 @@ module Events
   end
   class CommentLiked
   end
+  class NewDiscussion
+  end
 end
 
 describe 'DiscussionService' do
   let(:comment_vote) { double(:comment_vote) }
   let(:ability) { double(:ability, :authorize! => true) }
-  let(:user) { double(:user, ability: ability) }
+  let(:user) { double(:user, ability: ability, update_attributes: true) }
+  let(:discussion) { double(:discussion, author: user,
+                                         save: true,
+                                         uses_markdown: true,
+                                         update_attribute: true,
+                                         update_attributes: true,
+                                         created_at: Time.now) }
   let(:comment) { double(:comment,
                          save: true,
                          'author=' => nil,
                          created_at: :a_time,
                          discussion: discussion,
                          author: user) }
-
-
-  let(:discussion) { double(:discussion, update_attribute: true) }
   let(:event) { double(:event) }
+
+
+  before do
+    Events::NewDiscussion.stub(:publish!).and_return(event)
+  end
+
 
   describe 'unlike_comment' do
     after do
@@ -107,6 +118,55 @@ describe 'DiscussionService' do
       it 'does not update discussion' do
         discussion.should_not_receive(:update_attribute)
       end
+    end
+  end
+
+  describe '.start_discussion' do
+    it 'authorizes the user can create the discussion' do
+      ability.should_receive(:authorize!).with(:create, discussion)
+      DiscussionService.start_discussion(discussion)
+    end
+
+    it 'saves the discussion' do
+      discussion.should_receive(:save).and_return(true)
+      DiscussionService.start_discussion(discussion)
+    end
+
+    context 'the discussion is valid' do
+      before { discussion.stub(:save).and_return(true) }
+
+      it 'updates user markdown-preference' do
+        user.should_receive(:update_attributes).with(uses_markdown: discussion.uses_markdown).and_return(true)
+        DiscussionService.start_discussion(discussion)
+      end
+
+      it 'fires a NewDiscussion event' do
+        Events::NewDiscussion.should_receive(:publish!).with(discussion).and_return(true)
+        DiscussionService.start_discussion(discussion)
+      end
+
+      it 'returns the event created' do
+        DiscussionService.start_discussion(discussion).should == event
+      end
+    end
+
+    context 'the discussion is invalid' do
+
+      before { discussion.stub(:save).and_return(false) }
+      it 'returns false' do
+        DiscussionService.start_discussion(discussion).should == false
+      end
+
+      it 'does not update the user markdown-preference' do
+        user.should_not_receive(:update_attributes)
+        DiscussionService.start_discussion(discussion)
+      end
+
+      it 'does not create a NewDiscussion event' do
+        Events::NewDiscussion.should_not_receive(:publish!)
+        DiscussionService.start_discussion(discussion)
+      end
+
     end
   end
 end

@@ -187,7 +187,7 @@ describe Motion do
         @vote.save!
         @motion.reload
       end
-      it {should be_true} 
+      it {should be_true}
     end
     context 'user has not voted' do
       it {should be_false}
@@ -249,7 +249,7 @@ describe Motion do
   describe 'update_vote_counts!' do
     context 'there is 1 vote for each position' do
       let(:group){FactoryGirl.create :group}
-      let(:discussion){FactoryGirl.create :discussion, group: group}
+      let(:discussion){create_discussion group: group}
       let(:motion){FactoryGirl.create :motion, discussion: discussion}
 
       before do

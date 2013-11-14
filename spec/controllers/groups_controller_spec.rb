@@ -41,7 +41,7 @@ describe GroupsController do
       response.should be_success
     end
 
-    it "create subgroup", focus: true do
+    it "create subgroup" do
       post :create, :group => {parent_id: group.id, name: 'subgroup'}
       assigns(:group).parent.should eq(group)
       assigns(:group).admins.should include(user)

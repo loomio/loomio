@@ -10,7 +10,7 @@ describe Events::MembershipRequested do
                                 group: group, requestor: nil) }
 
   describe "::publish!" do
-    let(:event) { stub(:event, :notify_users! => true) }
+    let(:event) { double(:event, :notify_users! => true) }
     before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do
@@ -25,7 +25,7 @@ describe Events::MembershipRequested do
   end
 
   context "after event has been published" do
-    let(:admin) { stub(:admin, email: 'hello@kitty.com', language_preference: "en") }
+    let(:admin) { double(:admin, email: 'hello@kitty.com', language_preference: "en") }
     let(:event) { Events::MembershipRequested.new(kind: "new_comment",
                                                      eventable: membership_request) }
     before {

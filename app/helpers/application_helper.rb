@@ -110,4 +110,12 @@ module ApplicationHelper
       end
     end
   end
+
+  def render_announcements?
+    if user_signed_in?
+      not %w[group_requests group_setup].include? controller_name
+    else
+      false
+    end
+  end
 end

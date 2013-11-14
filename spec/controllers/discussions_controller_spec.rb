@@ -26,7 +26,9 @@ describe DiscussionsController do
       before do
         discussion.stub(:add_comment)
         discussion.stub(:save).and_return(true)
+        discussion.stub(:group_users_without_discussion_author).and_return([])
         DiscussionMailer.stub(:spam_new_discussion_created)
+        user.stub_chain(:ability, :authorize!).and_return(true)
         @discussion_hash = { group_id: group.id, title: "Shinney" }
       end
       it "does not send email by default" do
@@ -36,7 +38,7 @@ describe DiscussionsController do
 
       it "displays flash success message" do
         get :create, discussion: @discussion_hash
-        flash[:success].should match("Discussion successfully created.")
+        flash[:success].should match(I18n.t("success.discussion_created"))
       end
 
       it "redirects to discussion" do
@@ -111,7 +113,7 @@ describe DiscussionsController do
       end
     end
 
-    describe "add_comment", focus: true do
+    describe "add_comment" do
       let(:comment) { double(:comment).as_null_object }
       before do
         Discussion.stub(:find).and_return(discussion)
@@ -196,7 +198,7 @@ describe DiscussionsController do
 
       it "renders the JS template" do
         post :update_version, :version_id => @version.id
-        response.should be_redirect 
+        response.should be_redirect
       end
     end
   end

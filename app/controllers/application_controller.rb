@@ -9,9 +9,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     if current_user
-      request.env["HTTP_REFERER"] = root_url if request.env["HTTP_REFERER"].nil?
       flash[:error] = t("error.access_denied")
-      redirect_to :back
+      redirect_to root_url
     else
       store_location
       authenticate_user!

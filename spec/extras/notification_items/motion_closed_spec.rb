@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe NotificationItems::MotionClosed do
-  let(:notification) { stub(:notification) }
+  let(:notification) { double(:notification) }
   let(:item) { NotificationItems::MotionClosed.new(notification) }
 
   before do
-    @closer = stub(:user)
+    @closer = double(:user)
     notification.stub_chain(:event, :user).and_return(@closer)
     notification.stub_chain(:event, :eventable, :author).and_return(@closer)
   end
@@ -49,7 +49,7 @@ describe NotificationItems::MotionClosed do
 
   it "#link returns a path to the motion" do
     item.stub_chain(:url_helpers, :motion_path).and_return("/motions/1")
-    notification.stub(:eventable).and_return(stub(:motion))
+    notification.stub(:eventable).and_return(double(:motion))
     item.link.should == "/motions/1"
   end
 end

@@ -4,7 +4,7 @@ describe Events::MotionBlocked do
   let(:vote) { mock_model(Vote) }
 
   describe "::publish!" do
-    let(:event) { stub(:event, :notify_users! => true) }
+    let(:event) { double(:event, :notify_users! => true) }
     let(:discussion) { mock_model(Discussion) }
 
     before do
@@ -23,7 +23,7 @@ describe Events::MotionBlocked do
   end
 
   context "after event has been published" do
-    let(:user) { stub(:user) }
+    let(:user) { double(:user) }
     let(:event) { Events::MotionBlocked.new(kind: "new_comment",
                                                   eventable: vote) }
     before { vote.stub(:other_group_members).and_return([user]) }

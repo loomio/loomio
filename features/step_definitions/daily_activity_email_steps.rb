@@ -20,8 +20,7 @@ Given /^"(.*?)" belongs to "(.*?)"$/ do |arg1, arg2|
 end
 
 Given /^there is a discussion "(.*?)" in "(.*?)"$/ do |arg1, arg2|
-  @discussion = FactoryGirl.create :discussion,
-                  {title: arg1, group: Group.find_by_name(arg2)}
+  @discussion = create_discussion title: arg1, group: Group.find_by_name(arg2)
 end
 
 Given /^there is a proposal "(.*?)" from the discussion "(.*?)"$/ do |arg1, arg2|

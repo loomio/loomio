@@ -16,6 +16,18 @@
   float: left;
   margin-right: $card-gutter;
 }
+.media__img--right {
+  float: right;
+  margin-left: $card-gutter;
+}
+.media__img--card {
+  @include screen-size(medium-up) {
+    border: 20px solid green;
+    position: absolute;
+    top: 1px;
+    left: -90px;
+  }
+}
 .media__details {
   color: #AAA;
   font-size: 0.8em;

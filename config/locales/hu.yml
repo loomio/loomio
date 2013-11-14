@@ -20,7 +20,6 @@ hu:
     cant_modify_position: "Ez a javaslat lezárult."
     cant_state_position: "Ez a javaslat lezárult."
     cant_view_member_profile: "Nem láthatod az adatait mert nem vagytok ugyanannak a csoportnak a tagjai."
-    contribution: "Jelentkezz be, hogy hozzászólhass"
     discussion_not_created: "Nem tudtuk létrehozni a témát."
     group_not_archived: "Nem tudtuk archiválni a csoportot."
     invalid_close_date: "Érvénytelen a határidő, lehet, hogy a megadott időpont már elmúlt."
@@ -132,7 +131,6 @@ hu:
   user_settings: "Beállítások"
   email_preferences: "E-mail beállítások"
   sign_out: "Kijelentkezés"
-  sign_in: "Bejelentkezés"
   tagline: "Olyan világot teremtünk, ahol mindenki részt vehet a döntésekben és alakíthatja is azokat."
   click_to_dismiss: "Ide kattintva eltűnik ez az üzenet"
   generic_confirm: "Biztos?"
@@ -371,7 +369,6 @@ hu:
     no_invitations_left_get_more: "Írj a contact@loomio.org címre, hátha segíthetünk"
     invitation_not_found: 'nem találtunk meghívót ezzel a kóddal. Kérj új meghívót!'
     invitation_cancelled: 'Ezt a meghívót visszavonták. Írj annak, akitől kaptad, ha szerinted hiba történt.'
-    invitation_already_used: 'Ezt a meghívót már elhasználták. Jelentkezz be, hogy csoporthoz juss.'
     invitees_placeholder: "Felhasználónév <egyik@pelda.com>, masik@pelda.com"
     subject: "Csatlakozz az új Loomio csoportunkhoz: %{group}"
     invite_people: "Hívj meg másokat a csoportodba"
@@ -494,14 +491,12 @@ hu:
     view_comment: "Kattints ide, hogy megnézd a hozzászólást a Loomión."
     view_discussion: "Ide kattintva nézheted meg ezt a témát"
     view_group: "Kattints ide, hogy megnézd a csoportot a Loomión."
-    view_proposal: "Kattints ide, hogy megnézd a javaslatot a Loomión."
     create_discussion:
       intro: "%{who} új témát nyitott a %{which_group} csoportban:"
       subject: "Új téma -  %{which}"
     create_proposal:
       intro: "Új javaslatot hoztak létre egy Loomio csoportodban."
       closes_in: "Lezáródik"
-      subject: "Új javaslat - %{which}"
     daily_activity:
       heading: "A Loomio tevékenységed"
       intro: "Megmutatjuk, mi történt a Loomio csoportjaidban az elmúlt 24 órában"
@@ -528,7 +523,6 @@ hu:
       subject: "Blokkolt javaslat - %{which}"
     proposal_closing_soon:
       closes_in: "Lezárul"
-      subject: "Hamarosan lezáruló javaslat: %{which}"
       summary: "Összefoglalás"
     verification:
       header: "Mindjárt kész!"

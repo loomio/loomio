@@ -26,7 +26,7 @@ end
 
 Given /^there is a discussion in a group$/ do
   @group = FactoryGirl.create :group
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion = create_discussion :group => @group
 end
 
 Then(/^I should not see a link to revision history$/) do

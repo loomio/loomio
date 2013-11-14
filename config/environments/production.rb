@@ -98,4 +98,11 @@ Loomio::Application.configure do
       :sender_address => %{"Exception Notifier" <dudley@loomio.org>},
       :exception_recipients => [ENV['EXCEPTION_RECIPIENT']]
     }
+
+  # Add the fonts path
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+  # Precompile additional assets
+  config.assets.precompile += %w( .svg .eot .woff .ttf )
+
 end

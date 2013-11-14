@@ -82,32 +82,32 @@ Then /^(?:I|they) should be taken to the group page$/ do
 end
 
 Given /^the group has a discussion with a decision$/ do
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion = create_discussion :group => @group
   @motion = FactoryGirl.create :motion, :discussion => @discussion
 end
 
 Given /^there is a discussion in the group$/ do
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion = create_discussion :group => @group
 end
 
 Given /^there is a discussion in a public group$/ do
   @group = FactoryGirl.create :group, :viewable_by => 'everyone'
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion = create_discussion :group => @group
 end
 
 Given /^there is a discussion in a private group$/ do
   @group = FactoryGirl.create :group, :viewable_by => 'members'
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion = create_discussion :group => @group
 end
 
 Given /^there is a discussion in a group I belong to$/ do
   @group = FactoryGirl.create :group
-  @discussion = FactoryGirl.create :discussion, :group => @group
+  @discussion = create_discussion :group => @group
   @group.add_member! @user
 end
 
 Given /^the subgroup has a discussion$/ do
-  @discussion = FactoryGirl.create :discussion, :group => @subgroup
+  @discussion = create_discussion :group => @subgroup
 end
 
 When /^I fill details for the subgroup$/ do
@@ -190,5 +190,5 @@ end
 Then /^the group has another subgroup with a discussion I am an admin of$/ do
   @subgroup1 = FactoryGirl.create(:group, parent: @group)
   @subgroup1.add_admin!(@user)
-  @discussion = FactoryGirl.create :discussion, :group => @subgroup1
+  @discussion = create_discussion :group => @subgroup1
 end
