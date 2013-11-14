@@ -1,6 +1,6 @@
 Given(/^there is a discussion in another group titled "(.*?)"$/) do |title|
 	@other_group = FactoryGirl.create :group
-	@other_discussion = FactoryGirl.create :discussion, group: @other_group, title: title
+	@other_discussion = create_discussion group: @other_group, title: title
 end
 
 Given(/^I am logged in and belong to a group$/) do
@@ -10,11 +10,11 @@ Given(/^I am logged in and belong to a group$/) do
 end
 
 Given(/^there is a discussion in my group titled "(.*?)"$/) do |title|
-  @discussion = FactoryGirl.create :discussion, group: @group, title: title
+  @discussion = create_discussion group: @group, title: title
 end
 
 Given(/^there is a discussion with description "(.*?)"$/) do |description|
-  @discussion = FactoryGirl.create :discussion, group: @group, description: description
+  @discussion = create_discussion group: @group, description: description
 end
 
 When(/^I search for "(.*?)"$/) do |search_item|
@@ -34,7 +34,7 @@ Then(/^I should see the discussion with the description "(.*?)"$/) do |descripti
 end
 
 Given(/^there is a motion in my group titled "(.*?)"$/) do |name|
-  @discussion = FactoryGirl.create :discussion, group: @group
+  @discussion = create_discussion group: @group
   @motion = FactoryGirl.create :motion, discussion: @discussion, name: name
 end
 
@@ -51,7 +51,7 @@ Then(/^I should not see the motion with the title "(.*?)"$/) do |name|
 end
 
 Given(/^there is a motion with description "(.*?)"$/) do |description|
-  @discussion = FactoryGirl.create :discussion, group: @group
+  @discussion = create_discussion group: @group
   @motion = FactoryGirl.create :motion, discussion: @discussion, description: description
 end
 

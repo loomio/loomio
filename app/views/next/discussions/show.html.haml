@@ -1,14 +1,13 @@
 = render 'next/navbar'
-- avatar_size = 34
+- avatar_size = 32
 - avatar_path = "holder.js/#{avatar_size}x#{avatar_size}"
-
-.card-page.discussion{ng_controller: 'DiscussionController'}
+.card-page.discussion
   .card-row
     .card#top
       .card__header--standalone
         .media
-          .media__img
-            %i.icon-group
+          .media__img--right
+            %i.icon-earth
           %h3.media__title= link_to @discussion.group.name, @discussion.group
 
   .card-row
@@ -16,12 +15,13 @@
       .card__content
         %h1.card__title= @discussion.title
 
+
   -if @current_motion.present?
     %a#js-mini-motion{href: '#top'}
       .clearfix
         .media
           .media__img
-            %i.icon-adjust{style: "font-size: 3em; color: green; margin-left: 10px; line-height: 1em;"}
+            %i.icon-pie-graph{style: "font-size: 3em; color: green; margin-left: 10px; line-height: 1em;"}
           .media__text
             %h4= @current_motion.title
 
@@ -31,18 +31,18 @@
           %h2= @current_motion.title
         .card__content
           .pull-right
-            %i.icon-adjust{style: "font-size: 10em; color: green;"}
+            %i.icon-pie-graph{style: "font-size: 10em; color: green;"}
           = @current_motion.description
         .clearfix
         .row.decision-buttons
           .agree
-            %i.icon-thumbs-up{style: "color: green"}
+            %i.icon-thumbsup{style: "color: green"}
           .abstain
-            %i.icon-hand-left{style: "color: orange"}
+            %i.icon-thumbsdown{style: "color: orange"}
           .disagree
-            %i.icon-thumbs-down{style: "color: pink"}
+            %i.icon-thumbsdown{style: "color: pink"}
           .block
-            %i.icon-warning-sign{style: "color: red"}
+            %i.icon-alert-circled{style: "color: red"}
         .row.new-position
           .agree
             %form
@@ -91,31 +91,30 @@
       .card__content
         = simple_format @discussion.description
       %a.edit-content{href: "#"}
-        %i.icon-edit
+        %i.icon-compose
         Edit
 
-  .card-row{'ng-repeat' => 'comment in comments'}
-    .card
-      .card__header
-        .media
-          .media__img
-            %img{alt: "...", src: avatar_path}
-          .media__text
-            %h4.media__title
-              {{comment.author_name}}
-            .media__details
-              {{comment.created_at | date:'medium' }}
-      .card__content
-        {{ comment.body }}
-      .toolbar-container
-        .toolbar
-          .toolbar__button.toolbar__button--first
-            %span.glyphicon.glyphicon-thumbs-up
-            Like
-          .toolbar__button.reply
-            %a{href: '#'}
-              %span.glyphicon.glyphicon-comment
-              Reply
+  - @discussion.comments.each do |comment|
+    .card-row
+      .card
+        .card__header
+          .media
+            .media__img.media__img--card
+              %img{alt: "...", src: avatar_path}
+            .media__text
+              %h4.media__title= comment.author.name
+              .media__details= time_ago_in_words(comment.created_at)
+        .card__content
+          = comment.body
+        .toolbar-container
+          .toolbar
+            .toolbar__button.toolbar__button--first
+              %span.icon-thumbsup
+              Like
+            .toolbar__button.reply
+              %a{href: '#'}
+                %span.icon-ios7-chatbubble
+                Reply
 
   -unless @current_motion.present?
     .card-row#create-a-proposal
@@ -137,4 +136,3 @@
           %textarea#expanded-input.form-control{rows: 5, placeholder: "Say something..."}
         .right
           %button.btn.btn-default.btn-block.submit Post
-

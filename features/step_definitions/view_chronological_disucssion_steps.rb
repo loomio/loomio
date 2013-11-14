@@ -1,5 +1,6 @@
 Given(/^discussions per page is (\d+)$/) do |arg1|
-  Discussion::PER_PAGE = 50
+  Discussion.send(:remove_const, 'PER_PAGE')
+  Discussion::PER_PAGE = arg1.to_i
 end
 
 Given(/^there are two comments$/) do
@@ -8,9 +9,9 @@ Given(/^there are two comments$/) do
   @first_comment = Comment.new(body: 'old comment')
   @first_comment.author = @commenter
   @first_comment.discussion = @discussion
+  @second_comment = Comment.new(body: 'new comment')
   @second_comment.author = @commenter
   @second_comment.discussion = @discussion
-  @second_comment = Comment.new(body: 'new comment')
   DiscussionService.add_comment @first_comment
   DiscussionService.add_comment @second_comment
 

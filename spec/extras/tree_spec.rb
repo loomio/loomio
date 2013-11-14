@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Tree do
   describe "#new(args)" do
     it "assigns parent, value and children" do
-      parent, value, children = stub(:parent), stub(:value), stub(:children)
+      parent, value, children = double(:parent), double(:value), double(:children)
       root = Tree.new(parent: parent, value: value,
                                 children: children)
       root.parent.should == parent
@@ -14,7 +14,7 @@ describe Tree do
 
   describe "#each" do
     it "yields self, then children (depth first)" do
-      value, child_value = stub(:value), stub(:child_value)
+      value, child_value = double(:value), double(:child_value)
       root = Tree.new
       children = [Tree.new(parent: root), Tree.new(parent: root)]
       grandchild = Tree.new(parent: children[0])

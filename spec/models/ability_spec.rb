@@ -9,7 +9,7 @@ describe "User abilities" do
   let(:ability) { Ability.new(user) }
   subject { ability }
 
-  context "Loomio admin deactivates other_user", focus: true do
+  context "Loomio admin deactivates other_user" do
     before do
       user.is_admin = true
     end

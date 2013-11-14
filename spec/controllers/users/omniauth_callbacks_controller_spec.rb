@@ -10,7 +10,7 @@ describe Users::OmniauthCallbacksController do
     end
 
     context 'existing identity' do
-      let(:identity) {stub(:identity, user: user) }
+      let(:identity) {double(:identity, user: user) }
 
       it 'signs in the user' do
         controller.should_receive(:sign_in).with(:user, user)
@@ -20,7 +20,7 @@ describe Users::OmniauthCallbacksController do
     end
 
     context 'new identity' do
-      let(:identity) {stub(:identity, user: nil, id: 1, email: 'test@example.com') }
+      let(:identity) {double(:identity, user: nil, id: 1, email: 'test@example.com') }
 
       context 'identity email matches user email' do
         before do
