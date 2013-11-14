@@ -26,7 +26,9 @@ describe DiscussionsController do
       before do
         discussion.stub(:add_comment)
         discussion.stub(:save).and_return(true)
+        discussion.stub(:group_users_without_discussion_author).and_return([])
         DiscussionMailer.stub(:spam_new_discussion_created)
+        user.stub_chain(:ability, :authorize!).and_return(true)
         @discussion_hash = { group_id: group.id, title: "Shinney" }
       end
       it "does not send email by default" do
@@ -36,7 +38,7 @@ describe DiscussionsController do
 
       it "displays flash success message" do
         get :create, discussion: @discussion_hash
-        flash[:success].should match("Discussion successfully created.")
+        flash[:success].should match(I18n.t("success.discussion_created"))
       end
 
       it "redirects to discussion" do
@@ -111,60 +113,29 @@ describe DiscussionsController do
       end
     end
 
-    describe "adding a comment" do
+    describe "add_comment" do
+      let(:comment) { double(:comment).as_null_object }
       before do
+        Discussion.stub(:find).and_return(discussion)
+        DiscussionService.stub(:add_comment)
         Event.stub(:new_comment!)
-        @comment = mock_model(Comment, :valid? => true)
-        discussion.stub(add_comment: @comment)
+        Comment.stub(:new).and_return(comment)
       end
 
-      context 'without any text' do
+      context 'invalid comment' do
         it 'does not add a comment' do
-          discussion.should_not_receive(:add_comment)
+          DiscussionService.should_receive(:add_comment).and_return(false)
+          user.should_not_receive(:update_attributes)
           xhr :post, :add_comment, comment: "", id: discussion.id, uses_markdown: false
         end
-
-        it 'returns head :ok' do
-          controller.should_receive(:head).with(:ok)
-          xhr :post, :add_comment, comment: "", id: discussion.id, uses_markdown: false
-        end
-
       end
 
-      context 'without text, but with an attachment' do
+      context 'valid comment' do
         it 'adds a comment' do
-          discussion.should_receive(:add_comment)
-          xhr :post, :add_comment, comment: "", id: discussion.id, uses_markdown: false, attachments: 2
-        end
-      end
-
-      context 'javascript has failed' do
-        it 'redirects to discussion' do
-          post :add_comment, comment: "Hello!", id: discussion.id, uses_markdown: false
-          response.should redirect_to discussion
-        end
-      end
-
-      it "checks permissions" do
-        app_controller.should_receive(:authorize!).and_return(true)
-        xhr :post, :add_comment, comment: "Hello!", id: discussion.id, uses_markdown: false
-      end
-
-      it "calls add_comment on discussion" do
-        uses_markdown = false
-        discussion.should_receive(:add_comment).with(user, "Hello!", uses_markdown: uses_markdown, attachments: nil)
-        xhr :post, :add_comment, comment: "Hello!", id: discussion.id, uses_markdown: uses_markdown
-      end
-
-      context "unsuccessfully" do
-        before do
-          discussion.stub(:add_comment).
-            and_return(mock_model(Comment, :valid? => false))
-        end
-
-        it "does not fire new_comment event" do
-          Event.should_not_receive(:new_comment!)
-          xhr :post, :add_comment, comment: "Hello!", id: discussion.id, global_uses_markdown: false
+          DiscussionService.should_receive(:add_comment).
+            with(comment).and_return(true)
+          user.should_receive(:update_attributes)
+          xhr :post, :add_comment, comment: "", id: discussion.id, uses_markdown: false, attachments: [2]
         end
       end
     end
@@ -227,7 +198,7 @@ describe DiscussionsController do
 
       it "renders the JS template" do
         post :update_version, :version_id => @version.id
-        response.should be_redirect 
+        response.should be_redirect
       end
     end
   end

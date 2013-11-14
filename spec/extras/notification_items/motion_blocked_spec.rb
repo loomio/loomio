@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe NotificationItems::MotionBlocked do
-  let(:notification) { stub(:notification) }
+  let(:notification) { double(:notification) }
   let(:item) { NotificationItems::MotionBlocked.new(notification) }
 
   it "#actor returns the user who blocked the motion" do
-    blocker = stub(:user)
+    blocker = double(:user)
     notification.stub_chain(:eventable, :user).and_return(blocker)
     item.actor.should == notification.eventable.user
   end
@@ -26,7 +26,7 @@ describe NotificationItems::MotionBlocked do
 
   it "#link returns a path to the motion" do
     item.stub_chain(:url_helpers, :discussion_path).and_return("/discussions/1/")
-    notification.stub_chain(:eventable, :discussion).and_return(stub(:discussion))
+    notification.stub_chain(:eventable, :discussion).and_return(double(:discussion))
     notification.stub_chain(:eventable, :motion, :id).and_return("123")
     item.link.should == "/discussions/1/?proposal=123"
   end

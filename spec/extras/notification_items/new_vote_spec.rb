@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe NotificationItems::NewVote do
-  let(:notification) { stub(:notification) }
+  let(:notification) { double(:notification) }
   let(:item) { NotificationItems::NewVote.new(notification) }
 
   it "#actor returns the user who voted" do
-    voter = stub(:user)
+    voter = double(:user)
     notification.stub_chain(:eventable, :user).and_return(voter)
     item.actor.should == notification.eventable.user
   end
@@ -27,7 +27,7 @@ describe NotificationItems::NewVote do
 
   it "#link returns a path to the motion" do
     item.stub_chain(:url_helpers, :discussion_path).and_return("/discussions/1/")
-    notification.stub_chain(:eventable, :discussion).and_return(stub(:discussion))
+    notification.stub_chain(:eventable, :discussion).and_return(double(:discussion))
     notification.stub_chain(:eventable, :motion, :id).and_return("123")
     item.link.should == "/discussions/1/?proposal=123"
   end

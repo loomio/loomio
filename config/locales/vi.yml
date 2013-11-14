@@ -20,7 +20,6 @@ vi:
     cant_modify_position: "Lời đề nghị này đã được đóng lại."
     cant_state_position: "Lời đề nghị này đã được đóng lại."
     cant_view_member_profile: "Bạn không thể xem hồ sơ của thành viên vì bạn và người này không cùng chung nhóm."
-    contribution: "Vui lòng đăng nhập để có thể tham gia."
     discussion_not_created: "Không thể tạo phần thảo luận."
     group_not_archived: "Không thể lưu trữ nhóm."
     invalid_close_date: "Ngày đóng lại không hợp lệ, xin vui lòng kiểm tra lại ngày tháng này liệu có cũ hơn ngày hiện tại không."
@@ -142,9 +141,7 @@ vi:
   user_settings: "Thiết lập về người dùng"
   email_preferences: "Tùy biến email"
   sign_out: "Đăng xuất"
-  sign_in: "Đăng nhập"
   tagline: "Tạo một môi trường để mọi người có thể tham gia vào việc đưa ra các quyết định ảnh hưởng đến họ."
-  or_sign_in_html: "Nếu bạn đã có tài khoản, <a href='%{link}'>hãy đăng nhập tại đây</a>."
   click_to_dismiss: "Click vào đây để bãi bỏ tin nhắn này"
   generic_confirm: "Bạn có chắc không?"
   discussion_helper_text:
@@ -396,20 +393,11 @@ vi:
   forgot_your_password: "Quên mật khẩu?"
   confirmation_not_received: "Không nhận được hướng dẫn xác nhận?"
   unlock_not_received: "Không nhận được hướng dẫn mở khóa?"
-  join_group:
-    header: "%{who} đã mời bạn tham gia %{group_name}"
-    sign_up_intro: "Bạn cần phải tạo một tài khoản để có thể tham gia vào nhóm."
-    sign_in_intro: "Bạn cần phải đăng nhập để tham gia vào nhóm."
-  start_group:
-    header: "Chào mừng bạn đến với Loomio"
-    sign_up_intro: "Bạn sẽ cần cài đặt một tài khoản mới trước khi bạn có thể tạo nhóm của riêng mình:"
-    sign_in_intro: "Bạn cần phải đăng nhập trước khi bạn có thể tạo nhóm mới của riêng mình:"
   invitation:
     no_invitations_left: "Rất tiếc, bạn không còn lời mời nào"
     no_invitations_left_get_more: "Vui lòng gửi email đến contact@loomio.org và chúng tôi sẽ xem xét trường hợp của bạn"
     invitation_not_found: 'Không thể tìm thấy lời mời nào khớp với mã xác nhận đó. Hãy yêu cầu người gửi gửi lại cho bạn một lời mời mới.'
     invitation_cancelled: 'Lời mời tham gia này đã bị hủy bỏ. Vui lòng liên hệ người gửi về lời mời tham gia nhóm nếu bạn nghĩ rằng đã có lỗi xảy ra.'
-    invitation_already_used: 'Phần lời mời này đã được sử dụng. Vui lòng đăng nhập để tiếp tục vào nhóm của bạn'
     recipients: "Điền vào các địa chỉ email, tách biệt bởi dấu phẩy:"
     invitees_placeholder: "Tên người dùng <user1@example.com>, user2@example.com"
     subject: "Hãy tham dự nhóm mới của chúng tôi trên Loomio, %{group}"
@@ -542,14 +530,12 @@ vi:
     view_comment: "Click vào đây để xem các bình luận trên Loomio"
     view_discussion: "Click vào đây để xem phần thảo luận này"
     view_group: "Click vào đây để xem nhóm trên Loomio"
-    view_proposal: "Click vào đây để xem bình luận này trên Loomio"
     create_discussion:
       intro: "%{who} đã bắt đầu một phần thảo luận mới trong %{which_group}:"
       subject: "Thảo luận mới - %{which}"
     create_proposal:
       intro: "Một lời đề nghị mới vừa được tạo trong nhóm Loomio mà bạn đã tham gia vào."
       closes_in: "Đóng lại vào"
-      subject: "Lời đề nghị mới - %{which}"
     daily_activity:
       heading: "Các hoạt động trên Loomio của bạn"
       intro: "Hiển thị các sự kiện đang xảy ra trong các nhóm mà bạn đã tham gia vào trong vòng 24 giờ vừa qua"
@@ -579,7 +565,6 @@ vi:
       subject: "Lời đề nghị bị chặn - %{which}"
     proposal_closing_soon:
       closes_in: "Đóng lại vào"
-      subject: "Sẽ sớm đóng lại lời đề nghị: %{which}"
       summary: "Tóm tắt"
     verification:
       header: "Bạn gần như đã hoàn tất!"

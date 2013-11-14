@@ -76,7 +76,6 @@ ca:
   empty_notifications: "Encara no tens cap notificació."
   see_all_notifications: "Veure totes les notificacions"
   sign_out: "Tanca la sessió"
-  sign_in: "Inicia la sessió"
   tagline: "Creant un món on tothom pot participar en les decissions que li afecten."
   click_to_dismiss: "Clica aquí per descartar aquest missatge"
   generic_confirm: "N'estàs segur?"
@@ -238,7 +237,6 @@ ca:
     no_invitations_left_get_more: "Si us plau, escriu-nos un correu electrònic a contact@loomio.org i veurem què podem fer per ajudar-te "
     invitation_not_found: 'No hem pogut trobar la invitació amb aquesta sol·licitud. Si us plau, demana una invitació nova a qui te l''hagi enviat.'
     invitation_cancelled: 'La invitació ha estat cancel·lada. Si creus que es tracta d''un error, si us plau, posa''t en contacte amb qui te l''ha enviat.'
-    invitation_already_used: 'Aquesta invitació ja ha estat utilitzada. Si us plau, inicia la sessió per connectar-te al teu grup.'
     invitees_placeholder: "Nom d'usuari <user1@example.com>, user2@example.com"
     subject: "Si us plau, uneix-te al nou grup de Loomio,  %{group}"
     invite_people: "Convida gent al teu grup"

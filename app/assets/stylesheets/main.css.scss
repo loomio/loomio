@@ -156,7 +156,8 @@ ul, ol, li {
 
 #start-group-btn {
   font-size: 24px;
-  padding: 15px;  }
+  padding: 15px;  
+  margin-bottom: 22px}
 
 .cf {
   zoom: 1;
@@ -239,7 +240,6 @@ ul.selector-list {
 
 .sub-panel {
   background-color: $sub-selector-panel;
-  border: 1px solid $light-grey;
   @include border-radius(8px);
   margin-bottom: 20px;
   padding: 6px 10px;
@@ -337,7 +337,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .donate-tab {
   left: -11px;
   position: fixed;
-  top: 60px;
+  top: 278px;
   transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;

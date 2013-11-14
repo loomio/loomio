@@ -404,6 +404,9 @@ GEM
       multi_json (~> 1.0)
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
+    sequenced (1.4.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
     shoulda-matchers (2.3.0)
       activesupport (>= 3.0.0)
     simple_form (2.1.0)
@@ -554,6 +557,7 @@ DEPENDENCIES
   ruby-prof
   sass-rails
   selenium-webdriver (~> 2.35.1)
+  sequenced
   shoulda-matchers (~> 2.3.0)
   simple_form (~> 2.1.0)
   spork-rails (~> 3.2.1)

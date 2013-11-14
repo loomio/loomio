@@ -5,7 +5,7 @@ describe Events::UserAddedToGroup do
   let(:inviter) { mock_model(User) }
 
   describe "::publish!(membership, inviter)" do
-    let(:event) { stub(:event, notify_users!: true) }
+    let(:event) { double(:event, notify_users!: true) }
     before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do

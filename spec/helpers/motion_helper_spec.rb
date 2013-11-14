@@ -3,7 +3,7 @@ require 'spec_helper'
 describe MotionsHelper do
   describe "display_vote_buttons?(motion)" do
     before do
-      @user = stub :user
+      @user = double :user
       @motion = mock_model(Motion)
       @motion.stub(:voting?).and_return(true)
       @motion.stub(:user_has_voted?).and_return(false)

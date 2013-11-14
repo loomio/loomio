@@ -195,12 +195,12 @@ describe Group do
 
         Timecop.freeze(1.day.ago) do
           group_with_discussion_1_day_ago
-          FactoryGirl.create(:discussion, group: group_with_discussion_1_day_ago)
+          create_discussion group: group_with_discussion_1_day_ago
         end
 
         Timecop.freeze(3.days.ago) do
           group_with_discussion_3_days_ago
-          FactoryGirl.create(:discussion, group: group_with_discussion_3_days_ago)
+          create_discussion group: group_with_discussion_3_days_ago
         end
       end
 

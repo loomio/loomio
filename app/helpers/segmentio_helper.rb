@@ -14,7 +14,7 @@ module SegmentioHelper
       @group = @discussion.group if @group.nil?
     end
 
-    if @group.present?
+    if @group.present? and @group.persisted?
       segmentio.merge!({
         group_id: @group.id,
         group_parent_id: (@group.parent_id ? @group.parent_id : 'undefined'),
