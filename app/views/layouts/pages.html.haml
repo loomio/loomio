@@ -17,37 +17,12 @@
     - if controller_name == 'pages'
       = render 'github_fork_us'
       = render 'donate-tab'
-    .container#top
-      .inner-container
-        .row-fluid
-          .pull-right
-            - if controller_name == 'pages' && (action_name == 'home' || action_name == 'about')
-              =link_to 'Start a group', new_group_request_path, class: 'btn btn-success'
 
-            - unless current_page? new_user_session_path
-              =link_to t(:'devise.sessions.sign_in'), new_user_session_path, class: 'btn btn-info'
-          .span3 &nbsp;
-          .span6
-            =link_to image_tag("logo-426px-mauve-matte.png"), "/"
-            %h2 collaborative decision-making
-        .frontpage-nav
-          =link_to('Purpose', '/about#purpose')
-          %span &middot;
-
-          =link_to('How it works', '/about#how-it-works')
-          %span &middot;
-
-          =link_to('Pricing', '/pricing')
-          %span &middot;
-
-          =link_to('About us', '/about#about-us')
-          %span &middot;
-
-          =link_to('Blog', blog_path)
     = yield
 
-    = render 'footer_logged_out'
-    = javascript_include_tag "frontpage"
-    = javascript_include_tag 'https://browserid.org/include.js'
-    - analytics_scope do
-      = render 'segmentio'
+    .footer
+      = render 'footer_logged_out'
+      = javascript_include_tag "frontpage"
+      = javascript_include_tag 'https://browserid.org/include.js'
+      - analytics_scope do
+        = render 'segmentio'
