@@ -22,7 +22,6 @@
 }
 .media__img--card {
   @include screen-size(medium-up) {
-    border: 20px solid green;
     position: absolute;
     top: 1px;
     left: -90px;

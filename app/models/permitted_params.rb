@@ -59,7 +59,7 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def comment_attributes
-    [:body, :uses_markdown, :attachment_ids]
+    [:body, :uses_markdown, :attachment_ids, :discussion_id]
   end
 
   def announcement_dismissal_attributes
