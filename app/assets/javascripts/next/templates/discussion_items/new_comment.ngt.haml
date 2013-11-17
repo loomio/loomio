@@ -1,7 +1,7 @@
 .card
   .card__header
     .media
-      .media__img
+      .media__img.media__img--card
         %div{'ng-include' => "'/assets/user/_avatar.html'", 'ng-init' => "user = event.comment.author"}
       .media__text
         %h4.media__title
@@ -13,9 +13,9 @@
   .toolbar-container
     .toolbar
       .toolbar__button.toolbar__button--first
-        %span.glyphicon.glyphicon-thumbs-up
+        %span.icon-thumbsup
         Like
       .toolbar__button.reply
         %a{href: '#'}
-          %span.glyphicon.glyphicon-comment
+          %span.icon-ios7-chatbubble
           Reply

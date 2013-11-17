@@ -1,5 +1,10 @@
 app = angular.module 'loomioApp', ['ngRoute']
 
+# consume the csrf token from the page
+app.config ($httpProvider) ->
+  authToken = $("meta[name=\"csrf-token\"]").attr("content")
+  $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
+
 app.config ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode(true)
 
