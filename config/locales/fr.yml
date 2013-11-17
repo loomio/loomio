@@ -32,6 +32,7 @@ fr:
     cant_modify_position: "Cette proposition est fermée"
     cant_state_position: "Cette proposition est fermée"
     cant_view_member_profile: "Vous ne pouvez pas voir le profil du membre car vous n'êtes pas dans le même groupe."
+    contribution: "Veuillez vous connecter pour faire une contribution."
     discussion_not_created: "La discussion ne peut pas être créée"
     group_not_archived: "Le groupe ne peut pas être archivé."
     invalid_close_date: "La date de clôture n'est pas valide, merci de vérifier que la date ne soit pas passée."
@@ -175,7 +176,10 @@ fr:
   user_settings: "Réglages de l'utilisateur"
   email_preferences: "Email"
   sign_out: "Se déconnecter"
+  sign_in: "Se connecter"
   tagline: "Créer un monde ou il est facile pour tous de participer aux décisions qui les concernent."
+  or_sign_in_html: "Vous avez déjà un compte Loomio ? <a href='%{link}'>Connectez-vous ici</a>"
+  or_link_account_html: "Vous avez déjà un compte Loomio ? <a href='%{link}'>Liez-le</a>"
   click_to_dismiss: "Cliquez ici pour annuler ce message"
   generic_confirm: "Êtes-vous sûr ?"
   discussion_helper_text:
@@ -231,7 +235,7 @@ fr:
   request_membership: "Demander l'adhésion"
   confirm_remove_membership_request: "Etes vous sur de vouloir vous retirer de ce groupe ?"
   no_pending_membership_requests: "Il n'y a pas de demande d'inscription en attente pour ce groupe."
-  subgroups: "Sous-groupes."
+  subgroups: "Sous-groupes"
   create_a_subgroup: "Créer un sous-groupe"
   select_members_to_add: "Choisissez les membres à ajouter à %{which_group}"
   empty_parent_group: "Merci d'ajouter d'abord les membres au groupe parent."
@@ -261,13 +265,13 @@ fr:
         Si vous ne le recevez pas après quelques minutes, envoyez nous un e-mail à <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
   discussion_items:
     new_discussion: "créer la discussion"
-    new_motion: "créer une proposition"
+    new_motion: "a créé une proposition"
     motion_closed:
       by_user: "fermer la proposition"
       by_expiry: "Proposition fermée"
     motion_close_date_edited: "changer la date de clôture de la proposition"
     discussion_title_edited: "changer le titre de la discussion"
-    discussion_description_edited: "changer la description de la discussion"
+    discussion_description_edited: "a modifié la description de la discussion"
   discussion: "Discussion"
   current_decision: "Décision actuelle"
   previous_decisions: "Décisions précédentes"
@@ -279,13 +283,13 @@ fr:
   empty_discussion_index: "il n'y a pas  discussions dans aucun de vos groupes"
   empty_discussion_index_group: "Ce groupe n'a pas encore de discussions."
   discussion_context:
-    started_html: "Débuté le %{when}  par <a href='%{link}' class='%{link_class}'>%{who}</a>"
-    last_edited_html: "Dernière modification le %{when} par <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    started_html: "Débuté il y a %{when} par <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    last_edited_html: "Dernière modification il y a %{when} par <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: "Voir l'historique de révision"
   description_history:
     header: "historique de révision"
     subheader: "Version"
-    edited_by: "Edité par %{who} le %{when} "
+    edited_by: "Edité par %{who} il y a %{when} "
     current: "(actuel)"
     restore: "(Restaurer cette version)"
     applying_changes: "(Appliquer les changements...)"
@@ -308,7 +312,7 @@ fr:
   proposal_close_date_error: "Merci de donner une date de donner une date de clôture postérieure"
   proposal_closing_when: "Se clôture dans  %{when}"
   proposal_closed_when: "Fermé depuis %{when}"
-  proposed_when_by_who: "Proposé par %{who} %{when} le"
+  proposed_when_by_who: "Proposé par %{who} il y a %{when}"
   engagement_on_open_proposal: "%{percent}%% des membres ont donné leur opinion (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% des membres ont pris position (%{numerator}/%{denominator})"
   state_your_position: "Prenez position"
@@ -480,11 +484,20 @@ fr:
   forgot_your_password: "Mot de passe oublié ?"
   confirmation_not_received: "Instructions de confirmation non reçues ?"
   unlock_not_received: "Instructions de déblocage non reçues ?"
+  inactive_html: "Désolé, ce compte est actuellement inactif. Si vous avez la moindre question, n'hésitez pas à <a href='%{path_to_contact}'>nous contacter</a>."
+  create_an_account: 'Créer un compte'
+  join_group:
+    log_in: "Connectez-vous pour rejoindre %{group_name}"
+    create_account: "Créer un compte"
+  start_group:
+    log_in: "Connectez-vous pour mettre en place votre groupe"
+    create_account: "Créer un compte"
   invitation:
     no_invitations_left: "Désolé, vous n'avez plus d'invitations disponibles"
     no_invitations_left_get_more: "Merci de nous envoyer un email à contact@loomio.org et nous verrons comment vous assister"
     invitation_not_found: 'Impossible de trouver une invitation sous cette référence. Merci de demander une nouvelle invitation à celui qui vous l''a envoyé.'
     invitation_cancelled: 'Cette invitation a été annulée. Merci de contacter la personne qui vous l''a envoyée si vous croyez que c''est une erreur.'
+    invitation_already_used: 'Cette invitation a déjà été utilisée. Merci de vous connecter pour continuer dans votre groupe.'
     recipients: "Entrez les adresses emails en les séparant par une virgule: n"
     invitees_placeholder: "Nom de l'utilisateur <user1@example.com>, user2@example.com"
     subject: "Merci de rejoindre notre nouveau groupe Loomio, %{group}"
@@ -625,12 +638,14 @@ fr:
     view_comment: "Cliquez ici pour voir le commentaire sur Loomio"
     view_discussion: "Cliquer ici pour voir la discussion"
     view_group: "Cliquer ici pour voir le groupe sur Loomio"
+    view_proposal: "Voir cette proposition sur Loomio"
     create_discussion:
       intro: "%{who} a démarré une nouvelle discussion dans %{which_group}:"
       subject: "Nouvelle discussion - %{which}"
     create_proposal:
       intro: "Une nouvelle proposition a été créee dans un groupe Loomio auquel vous appartenez"
       closes_in: "Ferme dans"
+      subject: "Nouvelle proposition - %{which}"
     daily_activity:
       heading: "Votre activité Loomio"
       intro: "Pour voir ce qui s'est passé dans vos groupes Loomio durant les dernières 24 heures"
@@ -655,6 +670,8 @@ fr:
       intro: "Vous avez été cité dans une discussion :"
       said: "%{comment_author} a dit : "
       subject: "%{who} vous a cité dans le groupe %{which} sur Loomio"
+    new_motion_created:
+      context: "%{author} a créé une proposition dans %{group_full_name}:"
     proposal_closed:
       intro: 'Votre proposition "%{proposal_name}" est close.'
       specify_outcome: "Merci de cliquer ici pour spécifier un résultat"
@@ -663,7 +680,11 @@ fr:
       intro: "Une proposition sur laquelle vous êtes intervenue a été bloquée."
       subject: "Proposition bloquée - %{which}"
     proposal_closing_soon:
+      closes_on: "Ferme le "
+      closes_at: "Ferme à"
       closes_in: "Ferme dans"
+      closing_in_24_hours: "Ferme dans 24 heures"
+      headline: "La proposition de %{author} dans %{group} ferme bientôt :"
       summary: "Résumé"
     to_join_group:
       subject: "%{member} vous a invité à rejoindre le groupe %{group_name} sur Loomio"
@@ -690,7 +711,7 @@ fr:
       intro: "Merci de cliquer sur le lien de vérification pour finaliser votre demande :"
       ignore: "Si vous n'avez pas demandé à rejoindre Loomio, merci d'ignorer cet email."
   about_loomio: "À propos de Loomio"
-  ago: "%{quantity_of_time} le"
+  ago: "il y a %{quantity_of_time}"
   approve: "Approuvez"
   author: "Auteur"
   back: "Retour"
