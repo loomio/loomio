@@ -12,7 +12,7 @@ $ -> # Remove error class on field if not empty
     hidePresenceErrorMessageFor($(this))
 
 $ -> # Character counter for limiting input
-  $(".validate-length").keyup () ->
+  $(".validate-length").bind 'input propertychange', ->
     $(".error-message").hide()
     max = 250 if $(this).hasClass('limit-250')
     max = 150 if $(this).hasClass('limit-150')
