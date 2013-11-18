@@ -275,7 +275,7 @@ GEM
       faraday
       multi_json
       omniauth (~> 1.0)
-    omniauth-facebook (1.4.1)
+    omniauth-facebook (1.5.0)
       omniauth-oauth2 (~> 1.1.0)
     omniauth-google-oauth2 (0.2.1)
       omniauth (~> 1.0)
@@ -526,10 +526,10 @@ DEPENDENCIES
   modernizr-rails (~> 2.6.2)
   newrelic_rpm (~> 3.5.7.59)
   nokogiri (~> 1.6.0)
-  omniauth
-  omniauth-browserid
-  omniauth-facebook
-  omniauth-google-oauth2
+  omniauth (~> 1.1.4)
+  omniauth-browserid (~> 0.0.1)
+  omniauth-facebook (~> 1.5.0)
+  omniauth-google-oauth2 (~> 0.2.1)
   paper_trail (~> 2.7.2)
   paperclip (~> 3.4.0)
   pg (~> 0.17.0)
