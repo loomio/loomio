@@ -82,7 +82,7 @@ Loomio::Application.routes.draw do
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
 
   resources :motions do
-    resources :votes, only: [:new, :edit, :create, :update]
+    resources :votes, only: [:new, :create, :update]
     member do
       put :close
       put :edit_outcome
