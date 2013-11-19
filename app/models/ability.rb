@@ -139,8 +139,8 @@ class Ability
       (comment.author == user) or @admin_group_ids.include?(comment.group.id)
     end
 
-    can :create, Motion do |motion|
-      @member_group_ids.include?(motion.group.id)
+    can [:create, :vote], Motion do |motion|
+      motion.voting? && @member_group_ids.include?(motion.group.id)
     end
 
     can [:destroy,
