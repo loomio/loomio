@@ -1,21 +1,18 @@
 class Groups::SubscriptionsController < GroupBaseController
-  before_filter :load_group
-  # TODO: Would be great if we can load_and_authorize_resource
-
   def new
-    authorize! :choose_subscription_plan, @group
+    authorize! :choose_subscription_plan, group
     if @group.has_subscription_plan?
-      redirect_to group_subscription_url @group
+      redirect_to group_subscription_url group
     end
     @subscription_form = SubscriptionForm.new
   end
 
   def checkout
-    authorize! :choose_subscription_plan, @group
+    authorize! :choose_subscription_plan, group
     @subscription_form = SubscriptionForm.new(params[:subscription_form])
     if @subscription_form.valid?
       if @subscription_form.amount.to_f <= 0
-        subscription = Subscription.create!(group: @group, amount: 0)
+        Subscription.create!(group: @group, amount: 0)
         flash[:success] = "Thank you! Your $0 subscription is now set up."
         redirect_to group_subscription_url(@group)
       else
@@ -30,7 +27,7 @@ class Groups::SubscriptionsController < GroupBaseController
   end
 
   def confirm
-    authorize! :choose_subscription_plan, @group
+    authorize! :choose_subscription_plan, group
     amount = params['amount']
     @paypal = PaypalSubscription.new(group: @group,
                                 amount: amount,
@@ -60,7 +57,7 @@ class Groups::SubscriptionsController < GroupBaseController
   end
 
   def show
-    authorize! :view_payment_details, @group
+    authorize! :view_payment_details, group
     unless @group.has_subscription_plan?
       redirect_to new_group_subscription_url(@group)
     end
