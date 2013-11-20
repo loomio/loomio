@@ -98,16 +98,27 @@ Given(/^"(.*?)" has closed their proposal$/) do |arg1|
   group = FactoryGirl.create :group
   @discussion = create_discussion group: group
   @motion = FactoryGirl.create :motion, discussion: @discussion, author: author
+  @motion.close!(author)
 end
 
 Then(/^the proposal closed email should be delivered to "(.*?)" in Spanish$/) do |arg1|
   email = MotionMailer.motion_closed(@motion, "#{arg1}@example.org")
-  email.body.encoded.should include("haz click")
+  email.body.encoded.should include(I18n.t("email.proposal_closed.specify_outcome_and_notify_group", locale: "es"))
 end
 
 Then(/^the proposal closed email should be delivered to "(.*?)" in English$/) do |arg1|
   email = MotionMailer.motion_closed(@motion, "#{arg1}@example.org")
-  email.body.encoded.should include(I18n.t("email.proposal_closed.specify_outcome", locale: "en"))
+  email.body.encoded.should include(I18n.t("email.proposal_closed.specify_outcome_and_notify_group", locale: "en"))
+end
+
+Then(/^the proposal outcome email should be delivered to "(.*?)" in Spanish$/) do |arg1|
+  email = MotionMailer.motion_outcome_created(@motion, User.find_by_name(arg1))
+  email.body.encoded.should include(I18n.t("outcome", locale: "es"))
+end
+
+Then(/^the proposal outcome email should be delivered to "(.*?)" in English$/) do |arg1|
+  email = MotionMailer.motion_outcome_created(@motion, User.find_by_name(arg1))
+  email.body.encoded.should include(I18n.t("outcome", locale: "en"))
 end
 
 When(/^"(.*?)" requests membership to a group$/) do |arg1|

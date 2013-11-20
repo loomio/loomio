@@ -74,14 +74,6 @@ describe Motion do
     end
   end
 
-  it "cannot have an outcome if voting open" do
-    @motion = create(:motion)
-    @motion.outcome.blank?.should == true
-    @motion.set_outcome!("blah blah")
-    @motion.save
-    @motion.outcome.blank?.should == true
-  end
-
   context "moving motion to new group" do
     before do
       @new_group = create(:group)
@@ -130,13 +122,6 @@ describe Motion do
     it "stores users who did not vote" do
       not_voted_ids = DidNotVote.all.collect {|u| u.user.id}
       not_voted_ids.should include(@user3.id)
-    end
-
-    it "can have an outcome" do
-      outcome = "Test Outcome"
-      @motion.set_outcome!(outcome)
-      @motion.save
-      @motion.outcome.should == outcome
     end
   end
 

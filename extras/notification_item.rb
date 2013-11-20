@@ -30,6 +30,8 @@ class NotificationItem
         NotificationItems::MotionClosingSoon.new(notification)
       when "motion_blocked"
         NotificationItems::MotionBlocked.new(notification)
+      when "motion_outcome_created"
+        NotificationItems::MotionOutcomeCreated.new(notification)
     end
   end
 

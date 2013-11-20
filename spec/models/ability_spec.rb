@@ -45,6 +45,7 @@ describe "User abilities" do
     let(:user_motion) { create(:motion, author: user, discussion: discussion) }
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
+    let(:closed_motion) { create(:motion, discussion: discussion, closed_at: 1.day.ago) }
 
     before do
       @membership = group.add_member!(user)
@@ -82,11 +83,18 @@ describe "User abilities" do
     it { should be_able_to(:destroy, @membership) }
     it { should be_able_to(:create, new_motion) }
     it { should be_able_to(:close, user_motion) }
+    it { should be_able_to(:create_outcome, user_motion) }
     it { should be_able_to(:edit_close_date, user_motion) }
     it { should be_able_to(:destroy, user_motion) }
     it { should_not be_able_to(:destroy, other_users_motion) }
     it { should_not be_able_to(:close, other_users_motion) }
+    it { should_not be_able_to(:create_outcome, other_users_motion) }
     it { should_not be_able_to(:edit_close_date, other_users_motion) }
+    
+    it { should be_able_to(:vote, user_motion) }
+    it { should be_able_to(:vote, other_users_motion) }
+    it { should_not be_able_to(:vote, closed_motion) }
+
 
     it "cannot remove themselves if they are the only member of the group" do
       group.memberships.where("memberships.id != ?", @membership.id).destroy_all
@@ -169,6 +177,7 @@ describe "User abilities" do
     it { should_not be_able_to(:update, other_users_motion) }
     it { should be_able_to(:destroy, other_users_motion) }
     it { should be_able_to(:close, other_users_motion) }
+    it { should be_able_to(:create_outcome, other_users_motion) }
     it { should be_able_to(:edit_close_date, other_users_motion) }
     it { should be_able_to(:destroy, another_user_comment) }
 
@@ -236,6 +245,8 @@ describe "User abilities" do
     it { should_not be_able_to(:open, motion) }
     it { should_not be_able_to(:update, motion) }
     it { should_not be_able_to(:destroy, motion) }
+
+    it { should_not be_able_to(:vote, motion) }
 
     context "group viewable_by: everyone" do
       before do
