@@ -12,9 +12,11 @@ end
 describe 'DiscussionService' do
   let(:comment_vote) { double(:comment_vote) }
   let(:ability) { double(:ability, :authorize! => true) }
-  let(:user) { double(:user, ability: ability, update_attributes: true) }
+  let(:user) { double(:user, ability: ability, update_attribute: true) }
+  let(:discussion_reader) { double(:discussion_reader, :viewed! => :viewed) }
   let(:discussion) { double(:discussion, author: user,
                                          save: true,
+                                         as_read_by: discussion_reader,
                                          uses_markdown: true,
                                          update_attribute: true,
                                          update_attributes: true,
@@ -23,6 +25,7 @@ describe 'DiscussionService' do
                          save: true,
                          'author=' => nil,
                          created_at: :a_time,
+                         uses_markdown: true,
                          discussion: discussion,
                          author: user) }
   let(:event) { double(:event) }
@@ -97,6 +100,14 @@ describe 'DiscussionService' do
         discussion.should_receive(:update_attribute).with(:last_comment_at, comment.created_at)
       end
 
+      it 'updates user uses_markdown' do
+        user.should_receive(:update_attribute).with(:uses_markdown, comment.uses_markdown)
+      end
+
+      it 'marks the discussion as viewed by the user' do
+        discussion_reader.should_receive(:viewed!)
+      end
+
       it 'returns the event created' do
         DiscussionService.add_comment(comment).should == event
       end
@@ -136,7 +147,7 @@ describe 'DiscussionService' do
       before { discussion.stub(:save).and_return(true) }
 
       it 'updates user markdown-preference' do
-        user.should_receive(:update_attributes).with(uses_markdown: discussion.uses_markdown).and_return(true)
+        user.should_receive(:update_attribute).with(:uses_markdown, discussion.uses_markdown).and_return(true)
         DiscussionService.start_discussion(discussion)
       end
 

@@ -1,8 +1,6 @@
 Given(/^a discussion has over (\d+) posts$/) do |arg1|
   51.times do
-    comment = Comment.new(body: 'hi')
-    comment.author = @user
-    comment.discussion = @discussion
+    comment = FactoryGirl.build(:comment, discussion: @discussion)
     DiscussionService.add_comment(comment)
   end
 end

@@ -134,7 +134,6 @@ describe DiscussionsController do
         it 'adds a comment' do
           DiscussionService.should_receive(:add_comment).
             with(comment).and_return(true)
-          user.should_receive(:update_attributes)
           xhr :post, :add_comment, comment: "", id: discussion.id, uses_markdown: false, attachments: [2]
         end
       end

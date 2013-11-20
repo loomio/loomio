@@ -22,6 +22,8 @@ class DiscussionService
 
     event = Events::NewComment.publish!(comment)
     comment.discussion.update_attribute(:last_comment_at, comment.created_at)
+    author.update_attribute(:uses_markdown, comment.uses_markdown)
+    comment.discussion.as_read_by(author).viewed!
     event
   end
 
@@ -31,7 +33,7 @@ class DiscussionService
 
     return false unless discussion.save
 
-    user.update_attributes(uses_markdown: discussion.uses_markdown)
+    user.update_attribute(:uses_markdown, discussion.uses_markdown)
     Events::NewDiscussion.publish!(discussion)
   end
 

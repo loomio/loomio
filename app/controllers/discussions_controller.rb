@@ -103,11 +103,25 @@ class DiscussionsController < GroupBaseController
   def add_comment
     @discussion = Discussion.find params[:id]
     build_comment
-    if DiscussionService.add_comment(@comment)
-      current_user.update_attributes(uses_markdown: params[:uses_markdown])
-      @discussion.as_read_by(current_user).viewed!
+
+    if success = DiscussionService.add_comment(@comment)
+      # great
     else
-      head :ok and return
+      flash[:error] = "Failed to add your comment"
+    end
+
+    respond_to do |format|
+      # render js response, or head :ok if failed to add comment
+      format.js do
+        if success
+          render
+        else
+          head :ok
+        end
+      end
+
+      # if javascript disabled or failed, this will redirect to discussion
+      format.html { redirect_to @discussion }
     end
   end
 
