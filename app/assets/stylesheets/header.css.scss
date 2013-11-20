@@ -126,6 +126,8 @@
 
   li.nav-item.dropdown#user {
     float: right;
+    max-width: 300px;
+    max-height: 30px;
     #header-user-image {
       border: 1px solid #555;
       position: relative;
