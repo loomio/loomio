@@ -33,8 +33,12 @@ Feature: deliver emails in the user's prefered language
 
   Scenario: proposal closed email
     Given "Eduardo" has closed their proposal
-    Then the proposal closed email should be delivered to "Viv" in Spanish
-    And the proposal closed email should be delivered to "John" in English
+    Then the proposal closed email should be delivered to "Eduardo" in Spanish
+
+  Scenario: proposal outcome email
+    Given "John" has closed their proposal
+    Then the proposal outcome email should be delivered to "Viv" in English
+    And the proposal outcome email should be delivered to "Eduardo" in Spanish
 
   Scenario: membership request email
     When "John" requests membership to a group
