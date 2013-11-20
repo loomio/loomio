@@ -71,11 +71,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def current_motion
-    motion = voting_motions.last
-    if motion
-      motion.close_if_expired
-      motion if motion.voting?
-    end
+    voting_motions.last
   end
 
   def number_of_comments_since(time)
