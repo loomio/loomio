@@ -68,7 +68,6 @@ Given(/^now there is new activity$/) do
 end
 
 Then(/^I should see the second page$/) do
-  view_screenshot
   find(".pagination > ul li:nth-child(3).active")
 end
 

@@ -4,10 +4,10 @@ ruby '2.0.0'
 gem 'rails', '~> 3.2.14'
 gem 'haml-rails', '~> 0.4'
 gem 'devise', '~> 3.1.0'
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-facebook'
-gem 'omniauth-browserid'
+gem 'omniauth', '~> 1.1.4'
+gem 'omniauth-google-oauth2', '~> 0.2.1'
+gem 'omniauth-facebook', '~> 1.5.1'
+gem 'omniauth-browserid', '~> 0.0.1'
 gem 'pg', '~> 0.17.0'
 gem 'capistrano'
 gem 'jquery-rails', '~> 3.0.4'
@@ -77,6 +77,7 @@ group :development, :test do
   gem 'selenium-webdriver', '~> 2.35.1'
   gem 'ruby-prof'
   gem 'teaspoon'
+  gem 'parallel_tests', '~> 0.16.0'
 end
 
 group :development do

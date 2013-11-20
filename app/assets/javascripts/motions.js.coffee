@@ -48,6 +48,9 @@ $ -> # Show form for editing outcome
     $("#outcome-display").toggle()
     event.preventDefault()
 
+$ ->
+  if getParameterByName("focus_outcome_input")
+    $("#outcome-input textarea").focus()
 
 ### FUNCTIONS ###
 
@@ -105,3 +108,9 @@ hideOrShowOutcome = () ->
       $("#outcome-display").addClass("hidden")
   else
       $("#outcome-display").removeClass("hidden")
+
+getParameterByName = (name) ->
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
+  regex = new RegExp("[\\?&]" + name + "=([^&#]*)")
+  results = regex.exec(location.search)
+  (if not results? then "" else decodeURIComponent(results[1].replace(/\+/g, " ")))
