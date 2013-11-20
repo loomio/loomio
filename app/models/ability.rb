@@ -145,7 +145,8 @@ class Ability
 
     can [:destroy,
          :close,
-         :edit_outcome,
+         :create_outcome,
+         :update_outcome,
          :edit_close_date], Motion do |motion|
       (motion.author == user) or @admin_group_ids.include?(motion.group.id)
     end
