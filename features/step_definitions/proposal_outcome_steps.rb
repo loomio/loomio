@@ -63,7 +63,7 @@ Then(/^I should see the outcome has been edited in the activity feed$/) do
 end
 
 Given(/^a proposal outcome has been sent$/) do
-  @motion.close!
+  MotionService.close(@motion)
   MotionService.create_outcome(@motion,
                               {outcome: 'This is what we do.'},
                               @user)

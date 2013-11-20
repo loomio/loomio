@@ -26,24 +26,6 @@ describe Vote do
     vote.should have(1).errors_on(:position)
   end
 
-  it 'motion should only accept votes from users who belong to motion.group' do
-    user2 = build(:user)
-    user2.save
-    vote = Vote.new(position: 'block')
-    vote.motion = motion
-    vote.user = user2
-    vote.should_not be_valid
-  end
-
-  it "motion should only accept votes during the motion's voting phase" do
-    motion.close!
-    vote = Vote.new(position: "yes")
-    vote.motion = motion
-    vote.user = user
-    vote.save
-    vote.errors.messages[:position].first.should match(/can only be modified while the motion is in voting phase./)
-  end
-
   it 'sends notification email to author if block is issued' do
     MotionMailer.should_receive(:motion_blocked).with(kind_of(Vote))
       .and_return(double(deliver: true))
