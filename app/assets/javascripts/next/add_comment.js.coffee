@@ -1,4 +1,6 @@
-angular.module('loomioApp').directive 'addComment', ->
+app = angular.module('loomioApp', [])
+
+app.directive 'addComment', ->
   restrict: 'E'
   templateUrl: 'next/templates/add_comment'
   replace: true
@@ -30,3 +32,16 @@ angular.module('loomioApp').controller 'AddCommentController', ($scope) ->
     if ($scope.commentField.val().length == 0)
       $scope.isExpanded = false
 
+angular.module('loomioApp').factory 'addComment', ($resource) ->
+  class Comment
+    constructor: (discussionId) ->
+      @service = $resource '/api/discussions/:discussion_id/comments/:id',
+        {discussion_id: discussionId, id: '@id'}
+
+    create: (attrs) ->
+      new @service(comment: attrs).$save (comment) ->
+        attrs.id = comment.id
+      attrs
+
+    all: ->
+      @service.query()
