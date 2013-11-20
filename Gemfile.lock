@@ -275,7 +275,7 @@ GEM
       faraday
       multi_json
       omniauth (~> 1.0)
-    omniauth-facebook (1.5.0)
+    omniauth-facebook (1.5.1)
       omniauth-oauth2 (~> 1.1.0)
     omniauth-google-oauth2 (0.2.1)
       omniauth (~> 1.0)
@@ -531,7 +531,7 @@ DEPENDENCIES
   nokogiri (~> 1.6.0)
   omniauth (~> 1.1.4)
   omniauth-browserid (~> 0.0.1)
-  omniauth-facebook (~> 1.5.0)
+  omniauth-facebook (~> 1.5.1)
   omniauth-google-oauth2 (~> 0.2.1)
   paper_trail (~> 2.7.2)
   paperclip (~> 3.4.0)
