@@ -31,6 +31,8 @@ en:
     mailer:
       invitation_instructions:
         subject: 'Someone has invited you to join their Loomio group'
+    sessions:
+      signed_out: ''
 
   error:
     access_denied: "You do not have permission to do this."
