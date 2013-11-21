@@ -67,11 +67,6 @@ describe Motion do
       motion.should_receive(:fire_new_motion_event)
       motion.save!
     end
-    it "adds motion closed activity if a motion is closed" do
-      motion = create :motion, :discussion => @discussion
-      Events::MotionClosed.should_receive(:publish!)
-      motion.close!(@user)
-    end
   end
 
   context "moving motion to new group" do
@@ -116,7 +111,7 @@ describe Motion do
       vote1 = create(:vote, :position => 'yes', :user => @user1, :motion => @motion)
       vote2 = create(:vote, :position => 'no', :user => @user2, :motion => @motion)
       @updated_at = @motion.updated_at
-      @motion.close!
+      MotionService.close(@motion)
     end
 
     it "stores users who did not vote" do
@@ -146,7 +141,7 @@ describe Motion do
     end
 
     context "for a closed motion" do
-      before { motion.close! }
+      before { MotionService.close(motion) }
 
       it "returns the number of members who did not vote" do
         motion.should be_closed
@@ -190,46 +185,6 @@ describe Motion do
     end
   end
 
-  describe "that_user_has_voted_on" do
-    before do
-      @user1 = create :user
-      @motion = create(:motion, author: @user1)
-      @motion1 = create(:motion, author: @user1)
-    end
-    it "returns motions that the user has voted" do
-      @motion.vote!(@user1, 'yes', 'i agree!')
-      Motion.that_user_has_voted_on(@user1).should include(@motion)
-    end
-    it "does not return motions that the user has not voted on (even if another user has)" do
-      @user2 = create :user
-      @motion.group.add_member! @user2
-      @motion.vote!(@user2, 'yes', 'i agree!')
-      Motion.that_user_has_voted_on(@user1).should_not include(@motion)
-    end
-  end
-
-  describe "vote!" do
-    before do
-      @motion = create(:motion)
-      @vote = @motion.vote!(@motion.author, 'yes', 'i agree!')
-    end
-    it "returns a vote object" do
-      @vote.is_a?(Vote).should be_true
-    end
-    it "assigns vote to the motion" do
-      @motion.votes.should include(@vote)
-    end
-    it "assigns given position to vote" do
-      @vote.position.should == 'yes'
-    end
-    it "assigns given statement to vote" do
-      @vote.statement.should == "i agree!"
-    end
-    it "works if no statement given" do
-      @vote = @motion.vote!(@motion.author, 'yes')
-      @vote.should_not be_nil
-    end
-  end
 
   describe 'update_vote_counts!' do
     context 'there is 1 vote for each position' do
