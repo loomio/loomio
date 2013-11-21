@@ -52,14 +52,14 @@ describe Group do
 
     it "should not return motions that belong to the group but are closed" do
       @group = motion.group
-      motion.close!
+      MotionService.close(motion)
       @group.voting_motions.should_not include(motion)
     end
   end
 
   describe "#closed_motions" do
     it "returns motions that belong to the group and are open" do
-      motion.close!
+      MotionService.close(motion)
       @group = motion.group
       @group.closed_motions.should include(motion)
     end

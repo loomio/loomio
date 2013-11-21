@@ -39,7 +39,7 @@ describe Queries::UnvotedMotions do
 
     context 'there is a closed motion in the group' do
       it 'does not return the motion' do
-        motion.close!(user)
+        MotionService.close(motion, user)
         Queries::UnvotedMotions.for(user, group).should_not include(motion)
       end
     end

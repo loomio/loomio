@@ -2,6 +2,7 @@ Given(/^I have a proposal which has expired$/) do
   @motion = FactoryGirl.create :motion, author: @user
   @motion.close_at_date = Date.parse((Time.zone.now - 10.days).to_s)
   @motion.save
+  MotionService.close_all_lapsed_motions
 end
 
 When(/^I click the notifications dropdown$/) do
@@ -18,7 +19,7 @@ Given(/^someone has closed a proposal in a group I belong to$/) do
   @closer = FactoryGirl.create :user
   @group.add_member!(@closer)
   @group.add_member!(@user)
-  @motion.close!(@closer)
+  MotionService.close(@motion, @closer)
 end
 
 Then(/^I should see that someone closed the motion$/) do

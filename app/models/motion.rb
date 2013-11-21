@@ -31,10 +31,9 @@ class Motion < ActiveRecord::Base
   attr_accessor :create_discussion
 
   scope :voting, where('closed_at IS NULL').order('closed_at ASC')
+  scope :lapsed, lambda { where('closing_at < ?', Time.now) }
+  scope :lapsed_but_not_closed, voting.lapsed
   scope :closed, where('closed_at IS NOT NULL').order('closed_at DESC')
-  scope :that_user_has_voted_on, lambda {|user|
-    joins(:votes).where("votes.user_id = ?", user.id)
-  }
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
 
   def title
@@ -51,17 +50,6 @@ class Motion < ActiveRecord::Base
 
   def closed?
     closed_at.present?
-  end
-
-  def close!(user=nil)
-    store_users_that_didnt_vote
-    self.closed_at = Time.now
-    save!
-    fire_motion_closed_event(user)
-  end
-
-  def close_if_expired
-    close! if closing_at <= Time.now
   end
 
   def as_read_by(user)
@@ -116,13 +104,6 @@ class Motion < ActiveRecord::Base
 
   def can_be_voted_on_by?(user)
     user && group.users.include?(user)
-  end
-
-  def vote!(user, position, statement=nil)
-    vote = user.votes.new(:position => position, :statement => statement)
-    vote.motion = self
-    vote.save!
-    vote
   end
 
   def latest_vote_time
@@ -218,6 +199,20 @@ class Motion < ActiveRecord::Base
     Vote.unique_votes(self)
   end
 
+  def store_users_that_didnt_vote
+    did_not_votes.delete_all
+    group.users.each do |user|
+      unless user_has_voted?(user)
+        did_not_vote = DidNotVote.new
+        did_not_vote.user = user
+        did_not_vote.motion = self
+        did_not_vote.save
+      end
+    end
+    update_attribute(:did_not_votes_count, did_not_votes.count)
+    reload
+  end
+
   private
     def find_or_new_motion_reader_for(user)
       if self.motion_readers.where(user_id: user.id).exists?
@@ -244,25 +239,5 @@ class Motion < ActiveRecord::Base
 
     def fire_new_motion_event
       Events::NewMotion.publish!(self)
-    end
-
-    def fire_motion_closed_event(user)
-      Events::MotionClosed.publish!(self, user)
-    end
-
-    def store_users_that_didnt_vote
-      did_not_votes.each do |did_not_vote|
-        did_not_vote.delete
-      end
-      group.users.each do |user|
-        unless user_has_voted?(user)
-          did_not_vote = DidNotVote.new
-          did_not_vote.user = user
-          did_not_vote.motion = self
-          did_not_vote.save
-        end
-      end
-      update_attribute(:did_not_votes_count, did_not_votes.count)
-      reload
     end
 end
