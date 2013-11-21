@@ -1,9 +1,10 @@
-app = angular.module('loomioApp', [])
+app = angular.module 'loomioApp'
 
 app.directive 'addComment', ->
   restrict: 'E'
   templateUrl: 'next/templates/add_comment'
   replace: true
+  require: '^DiscussionController'
   controller: 'AddCommentController',
   link: (scope, element, attrs) ->
     fakeRow = element.find('.fake.card-row')
@@ -11,6 +12,7 @@ app.directive 'addComment', ->
 
     fakeInput = element.find('.fake input')
     realInput = element.find('.real textarea')
+
     scope.commentField = element.find('.real textarea')
 
     scope.$watch 'isExpanded', (isExpanded) ->
@@ -22,26 +24,23 @@ app.directive 'addComment', ->
         fakeRow.removeClass('ng-hide')
         realRow.addClass('ng-hide')
 
-angular.module('loomioApp').controller 'AddCommentController', ($scope) ->
-  $scope.isExpanded = false
+app.service 'addCommentService',
+  class AddComment
+    constructor: (@$http) ->
+    add: (comment) -> @$http.post('/api/comments', comment)
 
-  $scope.expand = () ->
+app.controller 'AddCommentController', ($scope, addCommentService) ->
+  $scope.isExpanded = false
+  $scope.comment = {}
+
+  $scope.expand = ->
     $scope.isExpanded = true
 
-  $scope.collapseIfEmpty = () ->
+  $scope.collapseIfEmpty = ->
     if ($scope.commentField.val().length == 0)
       $scope.isExpanded = false
 
-angular.module('loomioApp').factory 'addComment', ($resource) ->
-  class Comment
-    constructor: (discussionId) ->
-      @service = $resource '/api/discussions/:discussion_id/comments/:id',
-        {discussion_id: discussionId, id: '@id'}
+  $scope.processForm = ->
+    addCommentService.add($scope.comment)
 
-    create: (attrs) ->
-      new @service(comment: attrs).$save (comment) ->
-        attrs.id = comment.id
-      attrs
 
-    all: ->
-      @service.query()
