@@ -362,6 +362,7 @@ en:
 
   markdown_settings_more_info: "More info..."
   edit_discussion_title: "Edit discussion title"
+  move_discussion: "Move discussion"
   delete_discussion: "Delete discussion"
   confirm_delete_discussion: "Are you sure you want to permanently delete this discussion?"
 

@@ -3,18 +3,19 @@
   %ul.dropdown-menu.pull-right
     - if can?(:edit_title, discussion)
       %li= link_to t(:edit_discussion_title), "#", :id => "edit-title"
-    - unless @destination_groups.blank?
-      %li= link_to "Move discussion", '#move-discussion-modal', "data-toggle" => "modal", id: 'move-discussion'
+    - if @destination_groups.present?
+      %li= link_to t(:move_discussion), '#move-discussion-modal', "data-toggle" => "modal", id: 'move-discussion'
     -if can? :destroy, discussion
       %li= link_to t(:delete_discussion), "#", 'data-method-type' => 'delete', 'data-title' => t(:delete_discussion), 'data-body' => t(:confirm_delete_discussion), 'data-confirm-path' => discussion_path(discussion), class: 'confirm-dialog', id: 'delete-discussion'
 
-#move-discussion-modal.modal.hidden
-  .modal-header
-    %button.close{"data-dismiss" => "modal"}×
-    %h3= "Where would you like to move this discussion to?"
-  = simple_form_for discussion, url: move_discussion_path(discussion), method: :put do |f|
-    .modal-body
-      = f.input :group_id, collection: @destination_groups, include_blank: false, label: false, id: "destination_groups"
-    .modal-footer
-      = f.button :submit, "Move discussion", class: "btn btn-danger", id: 'move-discussion-submit', :data => { :disable_with => "Move discussion" }
-      = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn"
+- if @destination_groups.present?
+  #move-discussion-modal.modal.hidden
+    .modal-header
+      %button.close{"data-dismiss" => "modal"}×
+      %h3= "Where would you like to move this discussion to?"
+    = simple_form_for discussion, url: move_discussion_path(discussion), method: :put do |f|
+      .modal-body
+        = f.input :group_id, collection: @destination_groups, include_blank: false, label: false, id: "destination_groups"
+      .modal-footer
+        = f.button :submit, "Move discussion", class: "btn btn-info", id: 'move-discussion-submit', :data => { :disable_with => "Move discussion" }
+        = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn"
