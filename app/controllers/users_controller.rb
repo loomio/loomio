@@ -37,6 +37,7 @@ class UsersController < BaseController
     @avatar_kind = params[:avatar_kind]
     current_user.avatar_kind = @avatar_kind
     current_user.save!
+    redirect_to user_settings_url
   end
 
   def settings
