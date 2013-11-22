@@ -1,0 +1,7 @@
+# i18n usage search in source
+search:
+  # search these directories (relative to your Rails.root directory, default: 'app/')
+  paths:
+    - 'app/'
+    - 'vendor/'
+    - 'extras/'

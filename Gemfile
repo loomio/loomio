@@ -75,6 +75,7 @@ group :development, :test do
   gem 'selenium-webdriver', '~> 2.35.1'
   gem 'ruby-prof'
   gem 'parallel_tests', '~> 0.16.0'
+  gem 'i18n-tasks', '~> 0.1.8'
 end
 
 group :development do

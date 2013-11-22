@@ -214,6 +214,10 @@ GEM
       multi_xml (>= 0.5.2)
     httpauth (0.2.0)
     i18n (0.6.5)
+    i18n-tasks (0.1.8)
+      activesupport
+      rake
+      term-ansicolor
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
@@ -516,6 +520,7 @@ DEPENDENCIES
   haml-rails (~> 0.4)
   heroku-deflater
   httparty (~> 0.11.0)
+  i18n-tasks (~> 0.1.8)
   inherited_resources (~> 1.4.1)
   jqplot-rails (~> 0.3)
   jquery-atwho-rails (~> 0.4.1)
