@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
+  attr_accessor :honeypot
 
   validates :name, :presence => true
   validates :email, :presence => true, uniqueness: true, email: true
@@ -206,7 +207,7 @@ class User < ActiveRecord::Base
   def name
     if deleted_at.present?
       "#{self[:name]} (account inactive)"
-    else 
+    else
       self[:name]
     end
   end

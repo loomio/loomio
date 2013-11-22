@@ -1,5 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'pages'
+
+  before_filter :redirect_if_robot, only: :create
+
   include AutodetectTimeZone
   after_filter :set_time_zone_from_javascript, only: [:create]
 
@@ -22,6 +25,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
       load_omniauth_authentication_from_session
       @user.name = @omniauth_authentication.name
       @user.email = @omniauth_authentication.email
+    end
+  end
+
+  private
+
+  def redirect_if_robot
+    if params[:user][:honeypot].present?
+      flash[:warning] = t(:honeypot_warning)
+      redirect_to new_user_registration_path
     end
   end
 end
