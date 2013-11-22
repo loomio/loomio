@@ -198,6 +198,7 @@ en:
   email_preferences: "Email preferences"
   sign_out: "Sign out"
   sign_in: "Log in"
+  honeypot_warning: "please clear the hidden field and re-submit the form"
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
   or_sign_in_html: "Already have a Loomio account? <a href='%{link}'>Log in here</a>"
   or_link_account_html: "Already have a Loomio account? <a href='%{link}'>Link it up</a>"
