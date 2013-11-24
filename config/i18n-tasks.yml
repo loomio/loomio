@@ -5,3 +5,9 @@ search:
     - 'app/'
     - 'vendor/'
     - 'extras/'
+
+# do not report these keys as unused
+ignore_unused:
+  - simple_form.*
+  - devise.*
+  - datetime.*
