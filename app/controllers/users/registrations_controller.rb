@@ -34,6 +34,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if params[:user][:honeypot].present?
       flash[:warning] = t(:honeypot_warning)
       redirect_to new_user_registration_path
+    else
+      params[:user] = params[:user].except(:honeypot)
     end
   end
 end
