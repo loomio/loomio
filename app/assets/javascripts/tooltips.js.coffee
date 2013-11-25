@@ -18,17 +18,37 @@ $ ->
     placement: "top",
     trigger: "hover"
 
-#adds bootstrap tooltip to makdown-settings-dropdown
+#adds bootstrap tooltips to makdown-settings-dropdown buttons
 $ ->
   $("#comment-markdown-dropdown").tooltip
-    placement: "left",
-    title: "Text formatting settings and info."
+    placement: 'right',
+    title: 'Text formatting settings and info.'
 
-$ ->
   $("#discussion-markdown-dropdown").tooltip
     placement: "right",
     container: "body",
     title: "Text formatting settings and info."
+
+#adds bootstrap tooltip to makdown-settings-dropdown buttons
+$ ->
+  $('#add-attachment-icon').tooltip
+    placement: 'bottom',
+    title: 'Attach files'
+
+#adds bootstrap tooltips to discussion features
+$ ->
+  $("#js-dog-ear").tooltip
+    placement: "right",
+    title: "Here's where you read up to last time"
+
+  $(".jump-to-add-comment").tooltip
+    placement: "top",
+    title: "Jump to add comment"
+
+  $(".jump-to-latest-activity").tooltip
+    placement: "top",
+    title: "Jump to latest unread activity"
+
 
 $ ->
   $("#inbox-container").tooltip

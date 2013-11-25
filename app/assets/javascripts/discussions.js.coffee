@@ -78,17 +78,3 @@ Discussion.enableInlineEdition = ()->
 
 $ ->
   Discussion.enableInlineEdition()
-
-$ ->
-  $("#js-dog-ear").tooltip
-    placement: "right",
-    title: "Here's where you read up to last time"
-
-  $(".jump-to-add-comment").tooltip
-    placement: "right",
-    title: "Jump to add comment"
-
-  $(".jump-to-latest-activity").tooltip
-    placement: "right",
-    title: "Jump to latest unread activity"
-
