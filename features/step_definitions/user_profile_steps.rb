@@ -36,8 +36,8 @@ Then /^I should not see the other user's profile information$/ do
 end
 
 Then(/^I should see the other user's public groups$/) do
-  page.should have_content(@group.name)
-  page.should_not have_content(@private_group.name)
+  page.should have_content(@group.full_name)
+  page.should_not have_content(@private_group.full_name)
 end
 
 Then(/^I should not see any group the other user is in$/) do
