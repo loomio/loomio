@@ -7,6 +7,12 @@ body.users.show {
     margin-top: .4em;
   }
   .span8 { margin-left: 0; }
+
+  #user-groups-list{ margin-top: 40px; }
+  li {
+    list-style-type: none;
+    margin-bottom: 5px;
+  }
 }
 
 body.users {
