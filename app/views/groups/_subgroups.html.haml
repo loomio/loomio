@@ -4,6 +4,6 @@
     - subgroups.each do |subgroup|
       %li
         .group-link
-          = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.viewable_by.to_s
+          = link_to subgroup.name, group_path(subgroup), :class => 'view_'+subgroup.privacy.to_s
   - if (can? :add_subgroup, group) && group.users.include?(current_user)
     = link_to t(:create_a_subgroup), add_subgroup_group_path(group), id: 'subgroup-new', class: 'bottom-panel-link';

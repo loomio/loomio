@@ -48,7 +48,7 @@ ActiveAdmin.register Group do
     column "Discussions", :discussions_count
     column "Motions", :motions_count
     column :created_at
-    column :viewable_by
+    column :privacy
     column :description, :sortable => :description do |group|
       group.description
     end
