@@ -190,8 +190,12 @@ class Motion < ActiveRecord::Base
   end
 
   def group_users_without_outcome_author
-    outcome_author_id = events.where(kind: 'motion_outcome_created').last.user_id
-    group.users.where(User.arel_table[:id].not_eq(outcome_author_id))
+    group.users.where(User.arel_table[:id].not_eq(outcome_author.id))
+  end
+
+  def outcome_author
+    event = events.where(kind: 'motion_outcome_created').last
+    event.present? ? event.user : nil
   end
 
   #expensive to call
