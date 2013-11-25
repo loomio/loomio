@@ -1,12 +1,7 @@
+%h1= t :'group_setup.set_up_your_group'
 .row
   .span6#group-setup
-    = simple_form_for @group, url: finish_group_path, method: :put, validate: true do |f|
-      = f.input :name, label: false
-      = f.input :description, as: :text, label: false
-      %h2= t "group_form.privacy_settings"
-      = f.input :viewable_by, :as => 'radio_buttons', collection: [:everyone, :members]
-      = f.input :members_invitable_by, :as => "radio_buttons", collection: [:admins, :members]
-      = f.submit t("group_setup.submit"), class: 'btn btn-info btn-large', id: 'complete_setup', :data => { :disable_with => t("group_setup.submit") }
+    = render 'groups/form', group: @group, submit_text: t("group_setup.submit"), form_params: { url: finish_group_path, method: :put }
   .span4.offset1
     .info-box
       %h2= t("group_setup.desc_header")

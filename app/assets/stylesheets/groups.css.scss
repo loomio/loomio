@@ -171,24 +171,40 @@ body.groups {
   text-align: center;
 }
 
-body.group_setup.setup {
-  form.edit_group {
+body.group_setup.setup, body.groups.edit, body.groups.add_subgroup {
+  form.edit_group, form.new_group {
     .control-group.radio_buttons { margin-bottom: 1.6em; }
-    h2 { margin-bottom: .7em; }
     input[type="text"] {
       font-size: 28px;
       height: 32px;
       line-height: 32px;
       margin-bottom: .6em;
     }
-    input[type="submit"] { margin-top: 1em; }
+    input[type="submit"] { margin-top: .4em; }
     label { font-size: 18px; }
     textarea {
       @include placeholder { font-style: italic; }
       font-size: 18px;
       margin-bottom: 1.6em;
+      height: 100px;
+    }
+    .control-label.radio_buttons {
+      font-size: 20px;
+    }
+    .radio_buttons .controls { margin-top: .5em; }
+    .radio { font-size: 16px; }
+    .radio p {
+      font-size: 14px;
+      font-style: italic;
+      line-height: 18px;
+      margin-top: 0.2em;
+      margin-bottom: 1em;
+      color: $dark-grey;
     }
   }
-  #group-setup { margin-top: 2.2em; }
-  .info-box { width: 290px; }
+  #group-setup { margin-top: 1.2em; }
+  .info-box { 
+    width: 290px;
+    margin-top: 1.1em
+  }
 }

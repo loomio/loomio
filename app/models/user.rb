@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   has_many :public_groups,
            :through => :memberships,
            :source => :group,
-           :conditions => { :viewable_by => 'everyone' }
+           :conditions => { :privacy => 'public' }
   has_many :adminable_groups,
            :through => :admin_memberships,
            :class_name => 'Group',

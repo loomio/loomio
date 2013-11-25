@@ -200,7 +200,6 @@ bg:
   create_subgroup: "Създай подгрупа"
   creating_subgroup: "Създаване на подгрупа"
   group_privacy: "Конфиденциалност: '%{who}' може да вижда тази група."
-  everyone: "Всеки"
   parent_group_members: "Членове на родителската група"
   members: "Членове"
   new_group: "Нова група"

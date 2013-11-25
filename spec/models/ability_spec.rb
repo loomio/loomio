@@ -76,7 +76,6 @@ describe "User abilities" do
     it { should_not be_able_to(:destroy, another_user_comment) }
     it { should be_able_to(:like_comments, discussion) }
     it { should be_able_to(:create, new_discussion) }
-    it { should_not be_able_to(:edit_privacy, group) }
     it { should_not be_able_to(:make_admin, @membership) }
     it { should_not be_able_to(:make_admin, @other_membership) }
     it { should_not be_able_to(:destroy, @other_membership) }
@@ -120,8 +119,8 @@ describe "User abilities" do
       it { should_not be_able_to(:ignore, membership_request) }
     end
 
-    context "group viewable by members" do
-      before { group.update_attributes(:viewable_by => 'members') }
+    context "secret group" do
+      before { group.update_attributes(:privacy => 'secret') }
       it { should be_able_to(:show, group) }
     end
 
@@ -129,20 +128,20 @@ describe "User abilities" do
       let(:subgroup) { create(:group, parent: group) }
 
       context "public subgroup" do
-        before { subgroup.update_attributes(:viewable_by => 'everyone') }
+        before { subgroup.update_attributes(:privacy => 'public') }
         it { should be_able_to(:show, subgroup) }
         it { should be_able_to(:request_membership, subgroup) }
       end
 
       context "subgroup viewable by parent group members" do
-        before { subgroup.update_attributes(:viewable_by => 'parent_group_members') }
+        before { subgroup.update_attributes(:privacy => 'parent_group_members') }
         it { should be_able_to(:show, subgroup) }
         it { should be_able_to(:request_membership, subgroup) }
         it { should be_able_to(:show, discussion) }
       end
 
-      context "private subgroup" do
-        before { subgroup.update_attributes(:viewable_by => 'members') }
+      context "secret subgroup" do
+        before { subgroup.update_attributes(:privacy => 'secret') }
         it { should_not be_able_to(:show, subgroup) }
         it { should_not be_able_to(:request_membership, subgroup) }
       end
@@ -173,7 +172,6 @@ describe "User abilities" do
     it { should be_able_to(:remove_admin, @other_membership) }
     it { should be_able_to(:destroy, @other_membership) }
     it { should be_able_to(:edit_description, group) }
-    it { should be_able_to(:edit_privacy, group) }
     it { should_not be_able_to(:update, other_users_motion) }
     it { should be_able_to(:destroy, other_users_motion) }
     it { should be_able_to(:close, other_users_motion) }
@@ -215,7 +213,7 @@ describe "User abilities" do
   end
 
   context "non-member of a group" do
-    let(:group) { create(:group, viewable_by: 'members') }
+    let(:group) { create(:group, privacy: 'secret') }
     let(:discussion) { create(:discussion, group: group) }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
     let(:motion) { create(:motion, discussion: discussion) }
@@ -248,9 +246,9 @@ describe "User abilities" do
 
     it { should_not be_able_to(:vote, motion) }
 
-    context "group viewable_by: everyone" do
+    context "group privacy: public" do
       before do
-        group.update_attributes!(:viewable_by => 'everyone')
+        group.update_attributes!(:privacy => 'public')
         discussion.reload
       end
       it { should be_able_to(:show, group) }
@@ -285,15 +283,15 @@ describe "User abilities" do
       it { should_not be_able_to(:destroy, motion) }
     end
 
-    context "group viewable_by: members" do
-      before { group.update_attributes!(:viewable_by => 'members') }
+    context "group privacy: secret" do
+      before { group.update_attributes!(:privacy => 'secret') }
       it { should_not be_able_to(:show, group) }
       it { should_not be_able_to(:show, discussion) }
       it { should_not be_able_to(:request_membership, group) }
     end
 
     context "subgroup viewable to parent members" do
-      let(:subgroup) { create(:group, parent: group, viewable_by: 'parent_group_members') }
+      let(:subgroup) { create(:group, parent: group, privacy: 'parent_group_members') }
       it { should_not be_able_to(:request_membership, subgroup) }
     end
   end
