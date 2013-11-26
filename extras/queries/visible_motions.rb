@@ -25,7 +25,7 @@ class Queries::VisibleMotions < Delegator
     if @user.present? && !group_ids.empty?
       @relation = @relation.where("discussions.group_id IN (:group_ids) AND
                                   (discussions.group_id IN (:user_group_ids) OR groups.privacy = 'public'
-                                   OR (groups.privacy = 'parent_group_members' AND groups.parent_id IN (:user_group_ids)))",
+                                   OR (groups.viewable_by_parent_members = TRUE AND groups.parent_id IN (:user_group_ids)))",
                                   group_ids: group_ids,
                                   user_group_ids: @user.group_ids)
     elsif @user.present? && group_ids.empty?

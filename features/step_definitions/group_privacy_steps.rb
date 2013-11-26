@@ -46,8 +46,7 @@ end
 
 Given /^a sub\-group viewable by parent\-group members exists$/ do
   @parent_group = FactoryGirl.create :group
-  @sub_group = FactoryGirl.create :group, :parent => @parent_group
-  @sub_group.privacy = 'parent_group_members'
+  @sub_group = FactoryGirl.create :group, :parent => @parent_group, privacy: 'secret', viewable_by_parent_members: true
   @sub_group.save
 end
 
@@ -113,7 +112,7 @@ Given /^I am a member of a parent\-group that has a sub\-group viewable by paren
   @parent_group = FactoryGirl.create :group
   @admin_user = FactoryGirl.create :user
   @parent_group.add_admin! @admin_user
-  @sub_group = FactoryGirl.create :group, :parent => @parent_group, :privacy => 'parent_group_members'
+  @sub_group = FactoryGirl.create :group, :parent => @parent_group, :privacy => 'secret', :viewable_by_parent_members => true
   @sub_group.add_admin! @admin_user
   @parent_group.add_member! @user
 end
@@ -168,10 +167,11 @@ Given(/^I am a member of a parent\-group that has sub\-groups I don't belong to$
   @parent_group = FactoryGirl.create :group
   @parent_group.add_member! @user
   @sub_groups = []
-  ['secret', 'parent_group_members', 'public'].each do |privacy|
+  ['secret', 'public'].each do |privacy|
     @sub_groups << FactoryGirl.create(:group,
                                       parent: @parent_group,
-                                      privacy: privacy)
+                                      privacy: privacy,
+                                      viewable_by_parent_members: true)
   end
 end
 
@@ -195,7 +195,7 @@ Given(/^I am a coordinator of a public group$/) do
 end
 
 When(/^I set the group to secret$/) do
-  visit "/groups/" + @group.id.to_s + "/edit"
+  visit edit_group_path(@group)
   choose 'group_privacy_secret'
   click_on 'group_form_submit'
 end
@@ -212,7 +212,7 @@ Given(/^I am a coordinator of a secret group$/) do
 end
 
 When(/^I set the group to public$/) do
-  visit "/groups/" + @group.id.to_s + "/edit"
+  visit edit_group_path(@group)
   choose 'group_privacy_public'
   click_on 'group_form_submit'
 end
@@ -221,4 +221,25 @@ Then(/^the group should be set to public$/) do
   @group = FactoryGirl.create :group
   @group.add_admin! @user
   @group.privacy = 'public'
+end
+
+Given(/^I am a coordinator of a secret subgroup$/) do
+  @parent_group = FactoryGirl.create :group
+  @parent_group.add_member! @user
+  @subgroup = FactoryGirl.create :group, parent: @parent_group
+  @subgroup.add_admin! @user
+end
+
+When(/^I visit the edit subgroup page$/) do
+  visit edit_group_path(@subgroup)
+end
+
+When(/^I set the subgroup to be viewable by parent members$/) do
+  check 'group_viewable_by_parent_members'
+  click_on 'group_form_submit'
+end
+
+Then(/^the subgroup should be viewable by parent members$/) do
+  @subgroup.reload
+  @subgroup.should be_viewable_by_parent_members
 end

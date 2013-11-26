@@ -9,29 +9,6 @@ describe "User abilities" do
   let(:ability) { Ability.new(user) }
   subject { ability }
 
-  context "Loomio admin deactivates other_user" do
-    before do
-      user.is_admin = true
-    end
-    let(:group) { create(:group) }
-
-    context "other_user is a member of a group with many members" do
-      before do
-        group.add_member!(other_user)
-      end
-      it { should be_able_to(:deactivate, other_user) }
-    end
-
-    context "other_user is the only coordinator of one of their groups" do
-      before do
-        group.admins.destroy_all
-        group.add_admin!(other_user)
-      end
-      it { should_not be_able_to(:deactivate, other_user) }
-    end
-  end
-
-
   context "member of a group" do
     let(:group) { create(:group) }
     let(:subgroup) { build(:group, parent: group) }
@@ -133,21 +110,19 @@ describe "User abilities" do
         it { should be_able_to(:request_membership, subgroup) }
       end
 
-      context "subgroup viewable by parent group members" do
-        before { subgroup.update_attributes(:privacy => 'parent_group_members') }
-        it { should be_able_to(:show, subgroup) }
-        it { should be_able_to(:request_membership, subgroup) }
-        it { should be_able_to(:show, discussion) }
-      end
-
       context "secret subgroup" do
         before { subgroup.update_attributes(:privacy => 'secret') }
         it { should_not be_able_to(:show, subgroup) }
         it { should_not be_able_to(:request_membership, subgroup) }
+
+        context "viewable by parent members" do
+          before { subgroup.update_attributes(:viewable_by_parent_members => true) }
+          it { should be_able_to(:show, subgroup) }
+          it { should be_able_to(:request_membership, subgroup) }
+        end
       end
     end
   end
-
 
   context "admin of a group" do
     let(:group) { create(:group) }
@@ -223,30 +198,32 @@ describe "User abilities" do
     let(:my_membership_request) { create(:membership_request, group: group, requestor: user) }
     let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
 
+    it { should_not be_able_to(:show, group) }
+    it { should_not be_able_to(:request_membership, group) }
     it { should_not be_able_to(:update, group) }
-    it { should_not be_able_to(:show, discussion) }
     it { should_not be_able_to(:email_members, group) }
     it { should_not be_able_to(:add_subgroup, group) }
     it { should_not be_able_to(:add_members, group) }
     it { should_not be_able_to(:hide_next_steps, group) }
+    it { should_not be_able_to(:unfollow, group) }
+    it { should_not be_able_to(:create, new_discussion) }
+    it { should_not be_able_to(:show, discussion) }
     it { should_not be_able_to(:new_proposal, discussion) }
     it { should_not be_able_to(:add_comment, discussion) }
     it { should_not be_able_to(:move, discussion) }
-    it { should_not be_able_to(:unfollow, group) }
     it { should_not be_able_to(:destroy, discussion) }
-    it { should_not be_able_to(:destroy, another_user_comment) }
     it { should_not be_able_to(:like_comments, discussion) }
-    it { should_not be_able_to(:create, new_discussion) }
     it { should_not be_able_to(:create, new_motion) }
     it { should_not be_able_to(:close, motion) }
     it { should_not be_able_to(:edit_close_date, motion) }
     it { should_not be_able_to(:open, motion) }
     it { should_not be_able_to(:update, motion) }
     it { should_not be_able_to(:destroy, motion) }
+    it { should_not be_able_to(:destroy, another_user_comment) }
 
     it { should_not be_able_to(:vote, motion) }
 
-    context "group privacy: public" do
+    context "public group" do
       before do
         group.update_attributes!(:privacy => 'public')
         discussion.reload
@@ -283,16 +260,33 @@ describe "User abilities" do
       it { should_not be_able_to(:destroy, motion) }
     end
 
-    context "group privacy: secret" do
-      before { group.update_attributes!(:privacy => 'secret') }
+    context "subgroup viewable to parent members" do
+      let(:subgroup) { create(:group, parent: group, privacy: 'secret',
+                              viewable_by_parent_members: true) }
       it { should_not be_able_to(:show, group) }
-      it { should_not be_able_to(:show, discussion) }
-      it { should_not be_able_to(:request_membership, group) }
+      it { should_not be_able_to(:request_membership, subgroup) }
+    end
+  end
+
+  context "Loomio admin deactivates other_user" do
+    before do
+      user.is_admin = true
+    end
+    let(:group) { create(:group) }
+
+    context "other_user is a member of a group with many members" do
+      before do
+        group.add_member!(other_user)
+      end
+      it { should be_able_to(:deactivate, other_user) }
     end
 
-    context "subgroup viewable to parent members" do
-      let(:subgroup) { create(:group, parent: group, privacy: 'parent_group_members') }
-      it { should_not be_able_to(:request_membership, subgroup) }
+    context "other_user is the only coordinator of one of their groups" do
+      before do
+        group.admins.destroy_all
+        group.add_admin!(other_user)
+      end
+      it { should_not be_able_to(:deactivate, other_user) }
     end
   end
 end

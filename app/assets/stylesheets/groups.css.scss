@@ -192,7 +192,7 @@ body.group_setup.setup, body.groups.edit, body.groups.add_subgroup {
       font-size: 20px;
     }
     .radio_buttons .controls { margin-top: .5em; }
-    .radio { font-size: 16px; }
+    .radio, .checkbox { font-size: 16px; }
     .radio p {
       font-size: 14px;
       font-style: italic;
@@ -201,7 +201,15 @@ body.group_setup.setup, body.groups.edit, body.groups.add_subgroup {
       margin-bottom: 1em;
       color: $dark-grey;
     }
+    .checkbox { margin-bottom: 0px; }
+    .group_viewable_by_parent_members {
+      border-top: 1px solid #DDD;
+      border-bottom: 1px solid #DDD;
+      padding: 1em 0;
+      margin-bottom: 1.8em;
+    }
   }
+  .disabled { color:#ccc; }
   #group-setup { margin-top: 1.2em; }
   .info-box { 
     width: 290px;
