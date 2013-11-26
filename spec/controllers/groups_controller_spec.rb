@@ -6,8 +6,8 @@ describe GroupsController do
   let(:user)  { create :user }
 
   context 'signed out' do
-    context "group viewable by everyone" do
-      before { group.update_attribute(:viewable_by, 'everyone') }
+    context "public group" do
+      before { group.update_attribute(:privacy, :public) }
 
       it "show" do
         get :show, :id => group.id
@@ -15,8 +15,8 @@ describe GroupsController do
       end
     end
 
-    context "group viewable by members" do
-      before { group.update_attribute('viewable_by', 'members') }
+    context "secret group" do
+      before { group.update_attribute(:privacy, :secret) }
       it "does not show" do
         get :show, :id => group.id
         response.should be_redirect
@@ -24,9 +24,9 @@ describe GroupsController do
     end
   end
 
-  context "group viewable by members" do
+  context "secret group" do
     before do
-      group.update_attribute('viewable_by', 'members')
+      group.update_attribute(:privacy, :secret)
       group.add_member!(user)
       sign_in user
     end
@@ -71,13 +71,6 @@ describe GroupsController do
         it "assigns description and saves model" do
           xhr :post, :edit_description, :id => group.id, :description => "blah"
           assigns(:group).description.should == 'blah'
-        end
-      end
-
-      describe "#edit privacy" do
-        it "assigns viewable_by and saves" do
-          xhr :post, :edit_privacy, :id => group.id, :viewable_by => "everyone"
-          assigns(:group).viewable_by.should == 'everyone'
         end
       end
 

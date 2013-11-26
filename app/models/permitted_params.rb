@@ -47,9 +47,9 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def group_attributes
-    [:parent_id, :name, :viewable_by, :members_invitable_by, :description, :next_steps_completed, :payment_plan]
+    [:parent_id, :name, :privacy, :members_invitable_by, :description, :next_steps_completed, :payment_plan]
     #if user.is_admin?
-      #[:parent_id, :name, :viewable_by, :members_invitable_by, :description, :next_steps_completed, :payment_plan, :max_size]
+      #[:parent_id, :name, :privacy, :members_invitable_by, :description, :next_steps_completed, :payment_plan, :max_size]
     #else
     #end
   end

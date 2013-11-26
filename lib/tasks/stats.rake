@@ -9,12 +9,12 @@ namespace :stats do
   task :groups => :environment do    # Export all groups, scramble details of private ones
     require 'csv'
     file = CSV.generate do |csv|
-      csv << ["id", "name", "created_at", "viewable_by", "parent_id", "description", "memberships_count", "archived_at", "distribution_metric", "cannot_contribute"]
+      csv << ["id", "name", "created_at", "privacy", "parent_id", "description", "memberships_count", "archived_at", "distribution_metric", "cannot_contribute"]
       Group.find_each do |group|
-        if group.viewable_by == :everyone
-          csv << [group.id, group.name, group.created_at, group.viewable_by, group.parent_id, group.description, group.memberships_count, group.archived_at, group.distribution_metric, group.cannot_contribute]
+        if group.privacy == :public
+          csv << [group.id, group.name, group.created_at, group.privacy, group.parent_id, group.description, group.memberships_count, group.archived_at, group.distribution_metric, group.cannot_contribute]
         else
-          csv << [scramble(group.id), "Private", group.created_at, group.viewable_by, group.parent_id, "Private", group.memberships_count, group.archived_at, group.distribution_metric, group.cannot_contribute]
+          csv << [scramble(group.id), "Private", group.created_at, group.privacy, group.parent_id, "Private", group.memberships_count, group.archived_at, group.distribution_metric, group.cannot_contribute]
         end
       end
     end
@@ -78,13 +78,13 @@ namespace :stats do
           # scramble users, and (private) groups & subgroups
 
           if group
-            if group.viewable_by == :everyone
+            if group.privacy == :public
               group_id = group.id
             else
               group_id = scramble(group.id)
             end
 
-            if group.parent and group.parent.viewable_by == :everyone
+            if group.parent and group.parent.privacy == :public
               parent_group_id = group.parent.id.to_s
             elsif group.parent  # i.e. the group is not public
               parent_group_id = scramble(group.parent.id)

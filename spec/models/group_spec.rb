@@ -21,8 +21,8 @@ describe Group do
     it "has memberships" do
       @group.respond_to?(:memberships)
     end
-    it "defaults to viewable by members" do
-      @group.viewable_by.should == 'members'
+    it "defaults to secret" do
+      @group.privacy.should == 'secret'
     end
     it "defaults to members invitable by members" do
       @group.members_invitable_by.should == 'members'
@@ -91,7 +91,7 @@ describe Group do
     end
 
     it "defaults to viewable by parent group members" do
-      Group.new(:parent => @group).viewable_by.should == 'parent_group_members'
+      Group.new(:parent => @group).privacy.should == 'parent_group_members'
     end
 
     context "subgroup.full_name" do
@@ -107,9 +107,9 @@ describe Group do
     end
   end
 
-  context "an existing group viewiable by members" do
+  context "an existing secret group" do
     before :each do
-      @group = create(:group, viewable_by: "members")
+      @group = create(:group, privacy: "secret")
       @user = create(:user)
     end
 

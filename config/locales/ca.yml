@@ -244,7 +244,6 @@ ca:
   create_subgroup: "Crear sub-grup"
   creating_subgroup: "Creant el sub-grup"
   group_privacy: "Privacitat: '%{who}' pot veure el grup."
-  everyone: "Tothom"
   parent_group_members: "Els membres del grup principal"
   members: "Membres"
   new_group: "Nou grup"
@@ -571,10 +570,6 @@ ca:
         language_preference: "Idioma"
     options:
       group:
-        viewable_by:
-          everyone: 'Tothom'
-          members: 'Només membres'
-          parent_group_members: "Membres del grup principal - només membres del grup matriu o principal poden veure aquest sub-grup"
         members_invitable_by:
           admins: 'Només coordinadors'
           members: 'Tots els membres del grup'
