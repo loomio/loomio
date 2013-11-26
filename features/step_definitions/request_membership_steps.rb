@@ -2,16 +2,17 @@ When(/^I fill in and submit the Request membership form$/) do
   fill_in 'membership_request_name', with: @visitor_name
   fill_in 'membership_request_email', with: @visitor_email
   fill_in 'membership_request_introduction', with: "Please add me to your group, it seems like the best decission making forum ever."
-  click_on "Request membership"
+  click_on "Ask to join group"
 end
 
 When(/^I fill in and submit the Request membership form \(introduction only\)$/) do
   fill_in 'membership_request_introduction', with: "Please add me to your group, it seems like the best decission making forum ever."
-  click_on "Request membership"
+  click_on "Ask to join group"
 end
 
 Then(/^I should see a flash message confirming my membership request$/) do
-  find('.alert-success').should have_content(I18n.t(:'success.membership_requested'))
+  @group ||= @sub_group
+  find('.alert-success').should have_content(I18n.t(:'success.membership_requested', which_group: @group.full_name))
 end
 
 Then(/^I should see a flash message confirming the membership request was approved$/) do
@@ -177,7 +178,7 @@ When(/^I fill in and submit the Request membership form using email of existing 
   fill_in 'membership_request_name', with: @visitor_name
   fill_in 'membership_request_email', with: @group.admin_email
   fill_in 'membership_request_introduction', with: "Please add me to your group, heh heh heh."
-  click_on "Request membership"
+  click_on "Ask to join group"
 end
 
 Then(/^I should see a field error telling me I am already a member of the group$/) do
