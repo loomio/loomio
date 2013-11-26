@@ -47,11 +47,8 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def group_attributes
-    [:parent_id, :name, :privacy, :members_invitable_by, :description, :next_steps_completed, :payment_plan]
-    #if user.is_admin?
-      #[:parent_id, :name, :privacy, :members_invitable_by, :description, :next_steps_completed, :payment_plan, :max_size]
-    #else
-    #end
+    [:parent_id, :name, :privacy, :members_invitable_by, :description, :next_steps_completed, :payment_plan,
+     :viewable_by_parent_members]
   end
 
   def discussion_attributes

@@ -5,6 +5,8 @@
   = f.input :name, label: false
   = f.input :description, as: :text, label: false
   = f.input :privacy, :as => 'radio_buttons', collection: group_privacy_options(group)
+  - if group.parent
+    = f.input :viewable_by_parent_members, inline_label: group_viewable_by_parent_label(group), label: false
   = f.input :members_invitable_by, :as => "radio_buttons", collection: group_invitable_by_options(group)
   = f.input :parent_id, :as => :hidden, :input_html => { :value => group.parent.id } if group.parent
   = f.submit submit_text, class: 'btn btn-info btn-large', id: 'group_form_submit', :data => { :disable_with => submit_text }

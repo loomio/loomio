@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
   class MaximumMembershipsExceeded < Exception
   end
 
-  PRIVACY_CATEGORIES = ['public', 'secret', 'parent_group_members']
+  PRIVACY_CATEGORIES = ['public', 'secret']
   INVITER_CATEGORIES = ['members', 'admins']
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
 
@@ -299,10 +299,9 @@ class Group < ActiveRecord::Base
   end
 
   def set_defaults
+    self.privacy ||= 'secret'
     if is_a_subgroup?
-      self.privacy ||= 'parent_group_members'
-    else
-      self.privacy ||= 'secret'
+      self.viewable_by_parent_members ||= true
     end
     self.members_invitable_by ||= 'members'
   end
