@@ -11,7 +11,6 @@ cmn:
   invite_members_to_group: "邀请成员加入%{which_group}"
   get_in_touch_link: "联系我们"
   invite_members: "邀请成员"
-  everyone: "每一位成员"
   members: "成员"
   description_history:
     previous: "上一个"

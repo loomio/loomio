@@ -91,12 +91,12 @@ Given /^there is a discussion in the group$/ do
 end
 
 Given /^there is a discussion in a public group$/ do
-  @group = FactoryGirl.create :group, :viewable_by => 'everyone'
+  @group = FactoryGirl.create :group, :privacy => 'public'
   @discussion = create_discussion :group => @group
 end
 
 Given /^there is a discussion in a private group$/ do
-  @group = FactoryGirl.create :group, :viewable_by => 'members'
+  @group = FactoryGirl.create :group, :privacy => 'secret'
   @discussion = create_discussion :group => @group
 end
 
@@ -112,44 +112,44 @@ end
 
 When /^I fill details for the subgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_everyone"
+  choose "group_privacy_public"
   choose "group_members_invitable_by_members"
 end
 
 When /^I fill details for public all members invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_everyone"
+  choose "group_privacy_public"
   choose "group_members_invitable_by_members"
   click_on 'group_form_submit'
 end
 
 When /^I fill details for public admin only invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_everyone"
+  choose "group_privacy_public"
   choose "group_members_invitable_by_admins"
 end
 
 When /^I fill details for members only all members invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_members"
+  choose "group_privacy_secret"
   choose "group_members_invitable_by_members"
 end
 
 When /^I fill details for members only admin invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_members"
+  choose "group_privacy_secret"
   choose "group_members_invitable_by_admins"
 end
 
 When /^I fill details for members and parent members only all members invite subgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_members"
+  choose "group_privacy_secret"
   choose "group_members_invitable_by_members"
 end
 
 When /^I fill details for members and parent members admin only invite ubgroup$/ do
   fill_in "group_name", :with => 'test group'
-  choose "group_viewable_by_members"
+  choose "group_privacy_secret"
   choose "group_members_invitable_by_admins"
 end
 

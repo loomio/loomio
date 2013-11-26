@@ -190,7 +190,7 @@ class DiscussionsController < GroupBaseController
   end
 
   def assign_meta_data
-    if @group.viewable_by == 'everyone'
+    if @group.privacy == 'public'
       @meta_title = @discussion.title
       @meta_description = @discussion.description
     end

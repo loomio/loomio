@@ -165,7 +165,6 @@ pt:
   create_subgroup: "Criar subgrupo"
   creating_subgroup: "Criando subgrupo"
   group_privacy: "Privacidade: '%{who}' pode visualizar este grupo."
-  everyone: "Todos"
   parent_group_members: "Membros do grupo principal"
   members: "Membros"
   new_group: "Novo grupo"
