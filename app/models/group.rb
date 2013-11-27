@@ -300,9 +300,6 @@ class Group < ActiveRecord::Base
 
   def set_defaults
     self.privacy ||= 'secret'
-    if is_a_subgroup?
-      self.viewable_by_parent_members ||= true
-    end
     self.members_invitable_by ||= 'members'
   end
 

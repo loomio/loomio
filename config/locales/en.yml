@@ -762,7 +762,7 @@ en:
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
       group:
         name: "Group name"
-        description: "Describe your group"
+        description: "Group description"
       user:
         email: "Email"
         password: "Password"

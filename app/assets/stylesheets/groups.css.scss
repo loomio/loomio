@@ -185,7 +185,7 @@ body.group_setup.setup, body.groups.edit, body.groups.add_subgroup {
     label { font-size: 18px; }
     textarea {
       @include placeholder { font-style: italic; }
-      font-size: 18px;
+      font-size: 16px;
       margin-bottom: 1.6em;
       height: 100px;
     }
