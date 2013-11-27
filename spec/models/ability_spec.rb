@@ -111,15 +111,15 @@ describe "User abilities" do
       end
 
       context "secret subgroup" do
-        before { subgroup.update_attributes(:privacy => 'secret') }
+        before { subgroup.update_attributes(privacy: 'secret', viewable_by_parent_members: false) }
         it { should_not be_able_to(:show, subgroup) }
         it { should_not be_able_to(:request_membership, subgroup) }
+      end
 
-        context "viewable by parent members" do
-          before { subgroup.update_attributes(:viewable_by_parent_members => true) }
-          it { should be_able_to(:show, subgroup) }
-          it { should be_able_to(:request_membership, subgroup) }
-        end
+      context "secret subgroup viewable by parent members" do
+        before { subgroup.update_attributes(privacy: 'secret', viewable_by_parent_members: true) }
+        it { should be_able_to(:show, subgroup) }
+        it { should be_able_to(:request_membership, subgroup) }
       end
     end
   end
