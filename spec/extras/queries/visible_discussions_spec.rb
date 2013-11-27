@@ -36,11 +36,9 @@ describe Queries::VisibleDiscussions do
       end
     end
 
-    context 'parent_group_members' do
+    context 'viewable by parent group members' do
       let(:parent_group) { create :group }
-      let(:group) { create :group, parent: parent_group }
-
-      before { group.update_attribute(:privacy, 'parent_group_members') }
+      let(:group) { create :group, parent: parent_group, viewable_by_parent_members: true, privacy: 'secret' }
 
       it 'guests cannot see discussions' do
         subject.should_not include discussion

@@ -82,19 +82,17 @@ module GroupsHelper
   end
 
   def group_privacy_options(group)
-    if group.parent.nil?
-      options = ['public', 'secret']
-    else
-      options = ['public', 'secret', 'parent_group_members']
-    end
-
     privacy_settings = []
-    options.each do |privacy_setting|
+    Group::PRIVACY_CATEGORIES.each do |privacy_setting|
       header = t "simple_form.labels.group.privacy_#{privacy_setting}_header"
       description = t "simple_form.labels.group.privacy_#{privacy_setting}_description"
       privacy_settings << ["<span class='privacy-setting-header'>#{header}</strong><br /><p>#{description}</p>".html_safe, privacy_setting.to_sym]
     end
     privacy_settings
+  end
+
+  def group_viewable_by_parent_label(group)
+    t(:'simple_form.labels.group.viewable_by_parent_members_header', group: group.parent.name)
   end
 
   def group_invitable_by_options(group)
