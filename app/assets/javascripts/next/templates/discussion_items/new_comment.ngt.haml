@@ -8,7 +8,7 @@
           {{event.comment.author.name}}
         .media__details
           {{event.comment.created_at | date:'medium' }}
-  .card__content
+  .card__content.comment-body
     {{ event.comment.body }}
   .toolbar-container
     .toolbar

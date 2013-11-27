@@ -100,7 +100,7 @@ group :test do
   gem 'capybara-angular'
   gem 'cucumber-rails', '~> 1.4.0', :require => false
   gem 'email_spec', '~> 1.2.1'
-  gem 'poltergeist', '~> 1.3.0'
+  gem 'poltergeist', '~> 1.4.1'
   gem 'webmock', '~> 1.9.0'
   gem 'vcr', '~> 2.5.0'
   gem "codeclimate-test-reporter", require: nil
