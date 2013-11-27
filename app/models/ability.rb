@@ -13,13 +13,15 @@ class Ability
       if group.archived?
         false
       else
-        case group.viewable_by.to_s
-        when 'everyone'
+        case group.privacy.to_s
+        when 'public'
           true
-        when 'members'
-          @member_group_ids.include?(group.id)
-        when 'parent_group_members'
-          @member_group_ids.include?(group.id) or @member_group_ids.include?(group.parent_id)
+        when 'secret'
+          if group.viewable_by_parent_members?
+            @member_group_ids.include?(group.id) or @member_group_ids.include?(group.parent_id)
+          else
+            @member_group_ids.include?(group.id)
+          end
         end
       end
     end
@@ -32,7 +34,6 @@ class Ability
 
     can [:update,
          :email_members,
-         :edit_privacy,
          :hide_next_steps,
          :archive], Group do |group|
       @admin_group_ids.include?(group.id)

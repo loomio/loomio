@@ -23,14 +23,14 @@ class Queries::VisibleDiscussions < Delegator
 
     if @user.present? && group_ids.present?
       @relation = @relation.where("group_id IN (:group_ids) AND
-                                  (group_id IN (:user_group_ids) OR groups.viewable_by = 'everyone'
-                                   OR (groups.viewable_by = 'parent_group_members' AND groups.parent_id IN (:user_group_ids)))",
+                                  (group_id IN (:user_group_ids) OR groups.privacy = 'public'
+                                   OR (groups.viewable_by_parent_members = TRUE AND groups.parent_id IN (:user_group_ids)))",
                                   group_ids: group_ids,
                                   user_group_ids: @user.group_ids)
     elsif @user.present? && group_ids.blank?
       @relation = @relation.where('group_id IN (:user_group_ids)', user_group_ids: @user.group_ids)
     elsif @user.blank? && group_ids.present?
-      @relation = @relation.where("group_id IN (:group_ids) AND groups.viewable_by = 'everyone'",
+      @relation = @relation.where("group_id IN (:group_ids) AND groups.privacy = 'public'",
                                   group_ids: group_ids)
     else
       @relation = []

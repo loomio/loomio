@@ -3,11 +3,11 @@ When /^I visit the group settings page$/ do
 end
 
 When /^I update the settings to public$/ do
-  choose 'group_viewable_by_everyone'
+  choose 'group_privacy_public'
 end
 
 When /^I update the settings to members only$/ do
-  choose 'group_viewable_by_members'
+  choose 'group_privacy_secret'
 end
 
 When /^I update the group name$/ do
@@ -19,11 +19,11 @@ Then /^the group name is changed$/ do
 end
 
 Then /^the group should be public$/ do
-  Group.where(:name=>"New Test Group", :viewable_by=>"everyone").size > 0
+  Group.where(:name=>"New Test Group", :privacy=>"public").size > 0
 end
 
 Then /^the group should be private$/ do
-  Group.where(:name=>"New Test Group", :viewable_by=>"members").size > 0
+  Group.where(:name=>"New Test Group", :privacy=>"secret").size > 0
 end
 
 Then /^I should not have access to group settings of "(.*?)"$/ do |group|

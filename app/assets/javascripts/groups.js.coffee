@@ -1,18 +1,12 @@
-#*** edit privacy settings from dropdown ***
-$ ->
-  if $("#privacy-settings-form").length > 0
-    $(".privacy-item").click((event) ->
-        $('#viewable_by').val($(this).children().attr('class'))
-        $(".privacy-item").find('.icon-ok').removeClass('icon-ok')
-        $(this).children().first().children().addClass('icon-ok')
-        $("#privacy-settings-form").submit()
-        event.preventDefault()
-    )
-
 $ ->
   $("#privacy").tooltip
     placement: "right"
 
+$ ->
+  if $("body.groups.add_subgroup").length > 0 || $("body.groups.edit").length > 0
+    toggle_viewable_by_parent_members_ability()
+    $('.group_privacy input[type="radio"]').click ->
+      toggle_viewable_by_parent_members_ability()
 
 # adds bootstrap popovers to group activity indicators
 activate_discussions_tooltips = () ->
@@ -21,3 +15,10 @@ activate_discussions_tooltips = () ->
     title: 'There have been new comments on this discussion since you last visited the group.'
 
 
+toggle_viewable_by_parent_members_ability = ->
+  if $('input[name="group[privacy]"]:checked').val() == 'public'
+    $('.group_viewable_by_parent_members label').addClass('disabled')
+    $('input#group_viewable_by_parent_members').attr('disabled', true)
+  else
+    $('.group_viewable_by_parent_members label').removeClass('disabled')
+    $('input#group_viewable_by_parent_members').removeAttr('disabled')

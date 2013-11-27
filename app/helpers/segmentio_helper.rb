@@ -20,7 +20,7 @@ module SegmentioHelper
         group_parent_id: (@group.parent_id ? @group.parent_id : 'undefined'),
         top_group: (@group.parent_id ? @group.parent_id : @group.id),
         group_memberships_count: @group.memberships_count,
-        group_viewable_by: @group.viewable_by,
+        group_privacy: @group.privacy,
         group_cohort: @group.created_at.strftime("%Y-%m")
       })
     end

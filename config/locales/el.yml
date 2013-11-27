@@ -244,7 +244,6 @@ el:
   create_subgroup: "Δημιουργία υπο-ομάδας"
   creating_subgroup: "Δημιουργείτε υπο-ομάδα"
   group_privacy: "Απόρρητο: '%{who}' μπορεί να δει αυτή την ομάδα."
-  everyone: "Όλοι"
   parent_group_members: "Μέλη της κύριας ομάδας"
   members: "Μέλη"
   new_group: "Νέα ομάδα"
@@ -589,10 +588,6 @@ el:
         language_preference: "Γλώσσα"
     options:
       group:
-        viewable_by:
-          everyone: 'Όλοι'
-          members: 'Μόνο μέλη'
-          parent_group_members: "Μέλη κύριας Ομάδας - μόνο τα μέλη της κύριας ομάδας μπορούν να δουν αυτή την υπο-ομάδα"
         members_invitable_by:
           admins: 'Μόνο Συντονιστές'
           members: 'Όλα τα μέλη της Ομάδας'

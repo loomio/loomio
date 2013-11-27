@@ -189,7 +189,6 @@ hu:
   create_subgroup: "Alcsoport létrehozása"
   creating_subgroup: "Hozom létre az alcsoportot"
   group_privacy: "Beállítások: '%{who}'  láthatja ezt a csoportot"
-  everyone: "Mindenki"
   parent_group_members: "A főcsoport tagjai"
   members: "Tagok"
   new_group: "Új csoport"
