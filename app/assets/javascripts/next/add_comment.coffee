@@ -4,8 +4,7 @@ app.directive 'addComment', ->
   restrict: 'E'
   templateUrl: 'next/templates/add_comment'
   replace: true
-  require: '^DiscussionController'
-  controller: 'AddCommentController',
+  controller: 'AddCommentController'
   link: (scope, element, attrs) ->
     fakeRow = element.find('.fake.card-row')
     realRow = element.find('.real.card-row')
@@ -24,14 +23,8 @@ app.directive 'addComment', ->
         fakeRow.removeClass('ng-hide')
         realRow.addClass('ng-hide')
 
-app.service 'addCommentService',
-  class AddComment
-    constructor: (@$http) ->
-    add: (comment) -> @$http.post('/api/comments', comment)
-
 app.controller 'AddCommentController', ($scope, addCommentService) ->
   $scope.isExpanded = false
-  $scope.comment = {}
 
   $scope.expand = ->
     $scope.isExpanded = true
@@ -40,7 +33,18 @@ app.controller 'AddCommentController', ($scope, addCommentService) ->
     if ($scope.commentField.val().length == 0)
       $scope.isExpanded = false
 
-  $scope.processForm = ->
-    addCommentService.add($scope.comment)
+  $scope.processForm = () ->
+    addCommentService.add($scope.comment, $scope.discussion)
+
+
+app.service 'addCommentService',
+  class AddComment
+    constructor: (@$http) ->
+    # i am here.. then append to discussion?
+    add: (comment, discussion) ->
+      @$http.post('/api/comments', comment).then (response) ->
+        discussion.events.push response.data
+
+
 
 

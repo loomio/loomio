@@ -2,10 +2,8 @@ app = angular.module('loomioApp')
 
 app.controller 'DiscussionController', ($scope, $routeParams, discussion) ->
   $scope.discussion = discussion
-
-app.factory 'DiscussionSerivce', ->
-  currentDiscussion: {}
-
+  $scope.comment = {}
+  $scope.comment.discussion_id = discussion.id
 
 app.directive 'activityFeed', ->
   # something for the activity feed..

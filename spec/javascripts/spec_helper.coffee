@@ -1,6 +1,6 @@
 # Teaspoon includes some support files, but you can use anything from your own support path too.
-# require support/jasmine-jquery
-# require support/sinon
+#= require support/jasmine-jquery
+#= require support/sinon
 # require support/your-support-file
 #
 # Deferring execution
@@ -22,6 +22,7 @@
 # For more information: http://github.com/modeset/teaspoon
 #
 # You can require javascript files here. A good place to start is by requiring your application.js.
+#
 #= require next/application
 #= require angular-mocks/angular-mocks
-#= require helpers/jasmine-jquery
+#  require helpers/jasmine-jquery
