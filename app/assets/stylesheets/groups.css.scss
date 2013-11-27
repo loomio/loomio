@@ -102,6 +102,7 @@ body.groups {
       form { display: inline; }
       #request-new-membership { width: 220px; }
     }
+    #request-membership-disabled { text-align: center; }
 
     #setup-next-steps {
       background-color: #D9EDF7;
@@ -203,7 +204,7 @@ body.group_setup.setup, body.groups.edit, body.groups.add_subgroup {
     }
   }
   #group-setup { margin-top: 1.2em; }
-  .info-box { 
+  .info-box {
     width: 290px;
     margin-top: 1.1em
   }
