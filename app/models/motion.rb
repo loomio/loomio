@@ -2,6 +2,7 @@ class Motion < ActiveRecord::Base
   CHART_COLOURS = ["#90D490", "#F0BB67", "#D49090", "#dd0000", '#ccc']
 
   belongs_to :author, :class_name => 'User'
+  belongs_to :outcome_author, :class_name => 'User'
   belongs_to :discussion
   has_many :votes, :dependent => :destroy
   has_many :did_not_votes, :dependent => :destroy
@@ -191,11 +192,6 @@ class Motion < ActiveRecord::Base
 
   def group_users_without_outcome_author
     group.users.where(User.arel_table[:id].not_eq(outcome_author.id))
-  end
-
-  def outcome_author
-    event = events.where(kind: 'motion_outcome_created').last
-    event.present? ? event.user : nil
   end
 
   #expensive to call
