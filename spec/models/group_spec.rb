@@ -90,8 +90,9 @@ describe Group do
       invalid.should_not be_valid
     end
 
-    it "defaults to viewable by parent group members" do
-      Group.new(:parent => @group).privacy.should == 'parent_group_members'
+    it "defaults to viewable secret viewable by parent group members" do
+      Group.new(:parent => @group).privacy.should == 'secret'
+      Group.new(:parent => @group).should be_viewable_by_parent_members
     end
 
     context "subgroup.full_name" do

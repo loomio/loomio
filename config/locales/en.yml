@@ -282,7 +282,6 @@ en:
   create_subgroup: "Create sub-group"
   creating_subgroup: "Creating sub-group"
 
-  parent_group_members: "Parent group members"
   secret: "Secret"
   public: "Public"
 
@@ -737,7 +736,8 @@ en:
         privacy_parent_group_members_description_short: Only members and parent group members can see this group and its discussions.
         group_members_invitable_by:
           "Only coordinators"
-        submit: Submitty
+        submit: Submit
+        viewable_by_parent_members_header: Allow all %{group} members to see this subgroup and its discussions
       membership_request:
         introduction: "Introduce yourself"
       motion:

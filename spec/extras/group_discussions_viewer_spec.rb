@@ -7,12 +7,12 @@ describe GroupDiscussionsViewer do
   let(:public_group) { create :group, privacy: 'public' }
   let(:public_subgroup_of_public_group) { create :group, parent: public_group, privacy: 'public' }
 
-  let(:parent_members_subgroup_of_public_group) {create :group, privacy: 'parent_group_members', parent: public_group }
+  let(:parent_members_subgroup_of_public_group) {create :group, privacy: 'secret', viewable_by_parent_members: true, parent: public_group }
   let(:secret_subgroup_of_public_group) {create :group, parent: public_group, privacy: 'secret' }
 
   let(:secret_group){ create :group, privacy: 'secret' }
   let(:public_subgroup_of_secret_group) { create :group, privacy: 'public', parent: secret_group }
-  let(:parent_members_subgroup_of_secret_group) {create :group, privacy: 'parent_group_members', parent: secret_group }
+  let(:parent_members_subgroup_of_secret_group) {create :group, privacy: 'secret', viewable_by_parent_members: true, parent: secret_group }
   let(:secret_subgroup_of_secret_group) { create :group, privacy: 'secret', parent: secret_group }
 
   def groups_displayed(user: user, group: group)
