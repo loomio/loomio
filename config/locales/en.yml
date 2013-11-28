@@ -818,7 +818,7 @@ en:
         The Loomio Team
     membership_request:
       intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
-      subject: "New membership request from %{who}"
+      subject: "%{who} has requested to join %{which_group}"
       view_group: "You can approve or decline the request here"
     mentioned:
       intro: "You were mentioned in a discussion titled:"
