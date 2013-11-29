@@ -29,25 +29,11 @@ $ ->
     container: "body",
     title: "Text formatting settings and info."
 
-#adds bootstrap tooltip to makdown-settings-dropdown buttons
+#adds bootstrap tooltip to attachment buttons
 $ ->
   $('#add-attachment-icon').tooltip
     placement: 'bottom',
     title: 'Attach files'
-
-#adds bootstrap tooltips to discussion features
-$ ->
-  $("#js-dog-ear").tooltip
-    placement: "right",
-    title: "Here's where you read up to last time"
-
-  $(".jump-to-add-comment").tooltip
-    placement: "top",
-    title: "Jump to add comment"
-
-  $(".jump-to-latest-activity").tooltip
-    placement: "top",
-    title: "Jump to latest unread activity"
 
 
 $ ->
