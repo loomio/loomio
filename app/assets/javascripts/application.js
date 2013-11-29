@@ -40,7 +40,7 @@
 //= require notifications
 //= require dashboard
 //= require votes
-//= require pop-over
+//= require tooltips
 //= require announcements
 //= require autodetect_time_zone
 //= require inbox
