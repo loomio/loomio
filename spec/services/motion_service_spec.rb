@@ -14,7 +14,7 @@ end
 
 describe 'MotionService' do
   let(:group) { double(:group, present?: true) }
-  let(:motion) { double(:motion, update_attributes: true, outcome: "", group: group) }
+  let(:motion) { double(:motion, outcome: "", group: group, :outcome= => true, :outcome_author= => true, :save! => true) }
   let(:ability) { double(:ability, :authorize! => true) }
   let(:user) { double(:user, ability: ability) }
   let(:motion_params) { {outcome: "We won!"} }
@@ -73,8 +73,9 @@ describe 'MotionService' do
     end
 
     it 'updates the outcome and outcome_author attributes' do
-      attributes = { outcome: motion_params[:outcome], outcome_author: user }
-      motion.should_receive(:update_attributes).with(attributes)
+      motion.should_receive(:outcome=).with(motion_params[:outcome])
+      motion.should_receive(:outcome_author=).with(user)
+      motion.should_receive(:save!)
       MotionService.create_outcome(motion, motion_params, user)
     end
 
@@ -85,7 +86,7 @@ describe 'MotionService' do
 
     context 'outcome is invalid' do
       before do
-        motion.stub(:update_attributes).and_return false
+        motion.stub(:save!).and_return false
       end
 
       it 'returns false' do
@@ -106,8 +107,9 @@ describe 'MotionService' do
     end
 
     it 'updates the outcome and outcome_author attributes' do
-      attributes = { outcome: motion_params[:outcome], outcome_author: user }
-      motion.should_receive(:update_attributes).with(attributes)
+      motion.should_receive(:outcome=).with(motion_params[:outcome])
+      motion.should_receive(:outcome_author=).with(user)
+      motion.should_receive(:save!)
       MotionService.update_outcome(motion, motion_params, user)
     end
 
@@ -118,7 +120,7 @@ describe 'MotionService' do
 
     context 'outcome is invalid' do
       before do
-        motion.stub(:update_attributes).and_return false
+        motion.stub(:save!).and_return false
       end
 
       it 'returns false' do
