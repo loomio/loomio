@@ -1,19 +1,14 @@
 -unless omniauth_authenticated_and_waiting?
-  = link_to user_omniauth_authorize_path(:google), class: 'btn btn-google btn-large login' do
-    %i.icon-google-plus.icon
-    Log in with Google
-
-  = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-facebook btn-large login' do
-    %i.icon-facebook.icon
-    Log in with Facebook
-
-  = link_to '#', class: 'btn btn-persona btn-large login', id: 'persona-login-btn', onclick: 'PersonaLogin(); return false' do
-    %i.icon-user.icon
-    Log in with Persona
-  .separator-container
-    .separator
-      = "or"
-  %h3 Log in with your email
+  .row-fluid.sso-btn-row
+    .span4.btn-container
+      = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-facebook btn-large login' do
+        Facebook
+    .span4.btn-container
+      = link_to user_omniauth_authorize_path(:google), class: 'btn btn-google btn-large login' do
+        Google
+    .span4.btn-container
+      = link_to '#', class: 'btn btn-persona btn-large login', id: 'persona-login-btn', onclick: 'PersonaLogin(); return false' do
+        Persona
 
 :javascript
   function PersonaLogin() {
