@@ -2,25 +2,31 @@
   %section.first
     .inner-container
       .row-fluid
-        .span6.offset3
-          - if omniauth_authenticated_and_waiting?
+        - if omniauth_authenticated_and_waiting?
+          .span6.main-content
             %h1 Confirm your details
             %p
               Now that you've logged in with #{@omniauth_authentication.provider_name}, please confirm your details to create a Loomio account.
             %p
               %strong Already have a Loomio account?
               = link_to('Link it up instead', new_user_session_path)
-          -else
-            %h1
+            .signin_container
+              = render "form"
+        -else
+          .span6.main-content
+            %h2
               - if @invitation
                 - if @invitation.to_start_group?
-                  = t :"start_group.create_account"
+                  = t :"start_group.create_account_to_start_group", group_name: @invitation.group.full_name
                 -else
-                  = t(:"join_group.create_account")
+                  = t :"join_group.create_account_to_join_group", group_name: @invitation.group.full_name
               - else
                 = t :create_an_account
-            %p= t :"or_sign_in_html", link: user_session_path
-          .signin_container
-            = render "form"
+            %p= t :"or_sign_in_html", link: user_session_path, link_class: 'existing-user'
+            .signin_container
+              %h3 Sign up via
+              = render 'devise/shared/omniauth_buttons'
+              %h3 or fill in this form
+              = render "form"
   .terms
     =t(:terms_of_service_html, button_text: t(:"devise.registrations.sign_up"), link_path: terms_of_service_path)

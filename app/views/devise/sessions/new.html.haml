@@ -2,7 +2,7 @@
   %section#sign-in
     .inner-container
       .row-fluid
-        .span6.offset3
+        .span6.main-content
           - if omniauth_authenticated_and_waiting?
             %h1 Link up your account
             %p Log in to your Loomio account to link it up with #{@omniauth_authentication.provider_name}.
@@ -17,6 +17,10 @@
                 = t :sign_in
           .signin_container
             = render 'devise/shared/omniauth_buttons'
+            .separator-container
+              .separator
+                = "or"
+            %h2 Log in with your email
             = render "form"
   .terms
     =t(:terms_of_service_html, button_text: t(:"devise.sessions.sign_in"), link_path: terms_of_service_path)
