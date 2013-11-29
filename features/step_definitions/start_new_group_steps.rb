@@ -40,6 +40,7 @@ When(/^I fill in the group name and submit the form$/) do
 end
 
 When(/^I sign in to Loomio$/) do
+  find('.existing-user').click()
   fill_in :user_email, with:  @user.email
   fill_in :user_password, with: @user.password
   find('#sign-in-btn').click()

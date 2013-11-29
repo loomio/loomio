@@ -200,8 +200,8 @@ en:
   sign_in: "Log in"
   honeypot_warning: "Could not create your account. If you're using a screen reader, please make sure the last (hidden) field on the form is blank."
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
-  or_sign_in_html: "Already have a Loomio account? <a href='%{link}'>Log in here</a>"
-  or_link_account_html: "Already have a Loomio account? <a href='%{link}'>Link it up</a>"
+  or_sign_in_html: "If you already have a Loomio account, <a href='%{link}' class='%{link_class}'>log in here</a>"
+  or_link_account_html: "If you already have a Loomio account, <a href='%{link}'>link it up</a>"
 
   click_to_dismiss: "Click here to dismiss this message"
   generic_confirm: "Are you sure?"
@@ -597,11 +597,12 @@ en:
 
   join_group:
     log_in: "Log in to join %{group_name}"
-    create_account: "Create an account"
+    create_account_to_join_group: "Please create an account to join %{group_name}"
 
   start_group:
     log_in: "Log in to set up your group"
-    create_account: "Create an account"
+    create_account_to_start_group: "Please create an account to start your group %{group_name}"
+    create_account: "Please create an account"
 
   #
   # INVITATIONS
