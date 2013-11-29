@@ -205,7 +205,6 @@ vi:
   create_subgroup: "Tạo nhóm-thành viên"
   creating_subgroup: "Đang tạo nhóm-thành viên"
   group_privacy: "Quyền riêng tư: '%{who}' có thể xem thông tin về nhóm này."
-  everyone: "Mọi người"
   parent_group_members: "Thành viên thuộc nhóm chính"
   members: "Thành viên"
   new_group: "Tạo nhóm mới"
@@ -496,10 +495,6 @@ vi:
         language_preference: "Ngôn ngữ"
     options:
       group:
-        viewable_by:
-          everyone: 'Mọi người'
-          members: 'Chỉ dành cho thành viên'
-          parent_group_members: "Thành viên nhóm chính - chỉ có các thành viên của nhóm chính mới có thể xem được nhóm-thành viên này"
         members_invitable_by:
           admins: 'Chỉ dành cho người quản trị'
           members: 'Tất cả thành viên của nhóm'

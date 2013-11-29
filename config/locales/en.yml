@@ -116,7 +116,7 @@ en:
     group_archived: "Group archived successfully."
     group_created: "Group created successfully."
     members_added: "Members added to group."
-    membership_requested: "Membership requested. You will be notified once your request has been approved."
+    membership_requested: "You've asked to join %{which_group}. You will be notified once your request has been approved."
     motion_outcome_created: "Congratulations, you've created a proposal outcome and your group members have been notified."
     motion_outcome_updated: "The proposal outcome has been updated."
     position_submitted: "Position submitted"
@@ -198,6 +198,7 @@ en:
   email_preferences: "Email preferences"
   sign_out: "Sign out"
   sign_in: "Log in"
+  honeypot_warning: "Could not create your account. If you're using a screen reader, please make sure the last (hidden) field on the form is blank."
   tagline: "Creating a world where it's easy for anyone to participate in decisions that affect them."
   or_sign_in_html: "Already have a Loomio account? <a href='%{link}'>Log in here</a>"
   or_link_account_html: "Already have a Loomio account? <a href='%{link}'>Link it up</a>"
@@ -269,6 +270,7 @@ en:
   confirm_ignore_membership_request: "Are you sure you want to ignore the member request from %{which_user}?"
   membership_requested: "Membership requested"
   request_membership: "Request membership"
+  ask_to_join_group: "Ask to join group"
   confirm_remove_membership_request: "Are you sure you wish to withdraw your membership request for this group?"
   no_pending_membership_requests: "There are currently no pending membership requests for this group."
 
@@ -281,10 +283,8 @@ en:
   create_subgroup: "Create sub-group"
   creating_subgroup: "Creating sub-group"
 
-  group_privacy: "Privacy: '%{who}' can see this group."
-  everyone: "Everyone"
-  parent_group_members: "Parent group members"
-  members: "Members"
+  secret: "Secret"
+  public: "Public"
 
   new_group: "New group"
   create_group: "Create group"
@@ -669,7 +669,6 @@ en:
     name_helper: "Make the title as clear and succinct as possible."
 
   group_form:
-    privacy_settings: "Privacy settings"
     invitation_settings: "Invitation Settings"
     admins_only: "Coordinators only"
 
@@ -703,6 +702,7 @@ en:
     upload_new_image: "Upload a new image"
 
   group_setup:
+    set_up_your_group: Set up your group
     desc_header: "You're almost there!"
     desc_html: "As the group coordinator, you’re responsible for setting up and managing your Loomio group. After you choose a few settings, you can get into your new group, start a discussion or two, and send out some invitations! <p>When thinking about the simplest way you can describe your group, ask yourself: What do you want to achieve together? What types of decisions will you be making? Who will be involved?</p>"
     submit: "Take me to my group!"
@@ -720,10 +720,25 @@ en:
         title: "Title"
         description: "Context"
       group:
-        name: "What is the name of your group?"
-        description: "Group description:"
-        viewable_by: "Who can see this group?"
+        name: "Group name"
+        description: "Description"
         members_invitable_by: "Who can invite people to this group?"
+        members_invitable_by_coordinators: "Coordinators only"
+        members_invitable_by_members: "All group members"
+        privacy: Privacy
+        privacy_public_header: Public
+        privacy_public_description: Anyone can see the group and who's in it. Discussions are public by default.
+        privacy_public_description_short: Anyone can see this group and its discussions.
+        privacy_secret_header: Secret
+        privacy_secret_description: Only members can see the group and its discussions. You cannot have public discussions in a secret group.
+        privacy_secret_description_short: Only members can see this group and its discussions.
+        privacy_parent_group_members_header: Viewable by parent group members
+        privacy_parent_group_members_description: Same as secret, only the group and its discussions can be seen by parent group members.
+        privacy_parent_group_members_description_short: Only members and parent group members can see this group and its discussions.
+        group_members_invitable_by:
+          "Only coordinators"
+        submit: Submit
+        viewable_by_parent_members_header: Allow all %{group} members to see this subgroup and its discussions
       membership_request:
         introduction: "Introduce yourself"
       motion:
@@ -737,16 +752,6 @@ en:
         password_confirmation: "Confirm password"
         language_preference: "Language"
 
-    options:
-      group:
-        viewable_by:
-          everyone: 'Everyone'
-          members: 'Members only'
-          parent_group_members: "Parent group members - only members of the main group can view this sub-group"
-        members_invitable_by:
-          admins: 'Coordinators only'
-          members: 'All group members'
-
     placeholders:
       discussion:
         title: "What is the topic you'd like to discuss?"
@@ -757,7 +762,8 @@ en:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
       group:
-        description: "Think about the simplest way you can describe your group: What do you want to achieve together? What types of decisions will you be making? Who will be involved?"
+        name: "Group name"
+        description: "Group description"
       user:
         email: "Email"
         password: "Password"
