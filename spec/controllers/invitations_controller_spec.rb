@@ -30,8 +30,8 @@ describe InvitationsController do
         session[:invitation_token].should == "asdfghjkl"
       end
 
-      it "redirects to sign in" do
-        response.should redirect_to new_user_session_path
+      it "redirects to sign up" do
+        response.should redirect_to new_user_registration_path
       end
 
       it 'does not accept the invitation' do

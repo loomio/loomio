@@ -60,7 +60,6 @@ When(/^I sign up as a new user$/) do
 end
 
 Then(/^I should see the signup form prepopulated with my email address$/) do
-  click_on 'Create one now!'
   page.should have_css('#user_email[value="jim@jam.com"]')
 end
 
@@ -103,8 +102,4 @@ When(/^I click an invitation link I have already used$/) do
                                                recipient_email: 'jim@jimmy.com')
   AcceptInvitation.and_grant_access!(@invitation, @user)
   visit invitation_path(@invitation)
-end
-
-When(/^I choose to create an account now$/) do
-  click_on 'Create one now!'
 end
