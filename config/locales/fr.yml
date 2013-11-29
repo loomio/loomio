@@ -244,7 +244,6 @@ fr:
   create_subgroup: "Créer un sous-groupe"
   creating_subgroup: "Sous-groupe en cours de construction"
   group_privacy: "Sécurité: '%{who}' peut voir ce groupe."
-  everyone: "Tout le monde"
   parent_group_members: "Les membres du groupe parent"
   members: "Les membres"
   new_group: "Nouveau groupe"
@@ -599,10 +598,6 @@ fr:
         language_preference: "Langue"
     options:
       group:
-        viewable_by:
-          everyone: 'Tous'
-          members: 'Réservé aux membres'
-          parent_group_members: "Membre du groupe parent - seuls les membres du groupe parent peuvent voir ce sous-groupe"
         members_invitable_by:
           admins: 'Les coordinateurs seulement'
           members: 'Tout les membres du groupe'

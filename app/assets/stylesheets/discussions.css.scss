@@ -39,6 +39,8 @@ body.discussions.show {
     float: left;
   }
 
+  #request-membership, #request-membership-disabled { text-align: center; }
+
   #jump-to-latest{
     a {
       color: $mid-grey;
