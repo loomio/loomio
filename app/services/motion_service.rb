@@ -22,7 +22,7 @@ class MotionService
 
     motion.outcome = motion_params[:outcome]
     motion.outcome_author = user
-    return false unless motion.save!
+    return false unless motion.save
 
     Events::MotionOutcomeCreated.publish!(motion, user)
   end
@@ -32,7 +32,7 @@ class MotionService
 
     motion.outcome = motion_params[:outcome]
     motion.outcome_author = user
-    return false unless motion.save!
+    return false unless motion.save
 
     Events::MotionOutcomeUpdated.publish!(motion, user)
   end
