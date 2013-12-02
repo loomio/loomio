@@ -1,3 +1,6 @@
 - set_title @group.name, t(:edit_group)
 = render '/groups/title', group: @group
-= render 'form', group: @group, parent: @parent, submit_text: t(:update_group), disable_text: t(:updating_group), form_title: t(:edit_group)
+.row
+  .span6
+    %h2= t :edit_group
+    = render 'form', group: @group, parent: @parent, submit_text: t(:update_group)

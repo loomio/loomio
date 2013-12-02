@@ -61,7 +61,7 @@ describe CollectsRecentActivityByGroup do
           @discussion = create_discussion group: group, created_at: 2.days.ago, last_comment_at: 2.days.ago
 
           @motion = FactoryGirl.create :motion, discussion: @discussion
-          @motion.close!
+          MotionService.close(@motion)
         end
         it 'does not return the proposal' do
           recent_activity[group.full_name].should be_nil

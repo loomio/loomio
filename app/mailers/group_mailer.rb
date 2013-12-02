@@ -14,7 +14,7 @@ class GroupMailer < BaseMailer
     I18n.with_locale(locale) do
       mail  :to => admin.email,
             :reply_to => "#{@membership_request.name} <#{@membership_request.email}>",
-            :subject => "#{email_subject_prefix(@group.full_name)} " + t("email.membership_request.subject", who: @membership_request.name)
+            :subject => t("email.membership_request.subject", who: @membership_request.name, which_group: @group.full_name)
     end
   end
 
@@ -30,6 +30,7 @@ class GroupMailer < BaseMailer
             :subject => "#{email_subject_prefix(@group.full_name)} #{subject}"
     end
   end
+
 
   def deliver_group_email(group, sender, subject, message)
     group.users.each do |user|

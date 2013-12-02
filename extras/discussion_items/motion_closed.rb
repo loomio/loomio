@@ -15,8 +15,7 @@ class DiscussionItems::MotionClosed < DiscussionItem
   end
 
   def header
-    return I18n.t('discussion_items.motion_closed.by_expiry') + ": "if event.user.nil?
-    I18n.t('discussion_items.motion_closed.by_user') + ": "
+    return I18n.t('discussion_items.motion_closed.by_expiry') + ": "
   end
 
   def group

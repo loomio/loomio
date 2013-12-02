@@ -39,6 +39,8 @@ body.discussions.show {
     float: left;
   }
 
+  #request-membership, #request-membership-disabled { text-align: center; }
+
   #jump-to-latest{
     a {
       color: $mid-grey;
@@ -254,10 +256,7 @@ body.discussions.show {
     #new-comment-form {
       margin-bottom: 0px;
       padding: 0 0 10px 0;
-      img {
-        float:left;
-        margin-right: 11px;
-      }
+      img { float:left; }
     }
 
     .comment-toolbar {
@@ -273,7 +272,7 @@ body.discussions.show {
 
     .comment-toolbar > * { display: inline-block; }
 
-    #comment-markdown-dropdown {}
+    #comment-markdown-dropdown { margin-right: 11px }
     .markdown-setting-dropdown {
       margin-top: -2px;
     }

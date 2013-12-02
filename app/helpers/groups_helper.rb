@@ -1,6 +1,6 @@
 module GroupsHelper
   def css_for_privacy_link(group, link)
-    current_privacy_setting = String(group.viewable_by)
+    current_privacy_setting = String(group.privacy)
     return "icon-ok" if link == current_privacy_setting
   end
 
@@ -73,11 +73,30 @@ module GroupsHelper
 
   def request_membership_icon_button(group, params={})
     old_params = { href: new_group_membership_request_path(group),
-                   text: t(:request_membership),
-                   icon: '/assets/group.png',
+                   text: t(:ask_to_join_group),
+                   icon: nil,
                    id: 'request-membership',
                    class: 'btn-info' }
     new_params = old_params.merge(params)
     icon_button(new_params)
+  end
+
+  def group_privacy_options(group)
+    privacy_settings = []
+    Group::PRIVACY_CATEGORIES.each do |privacy_setting|
+      header = t "simple_form.labels.group.privacy_#{privacy_setting}_header"
+      description = t "simple_form.labels.group.privacy_#{privacy_setting}_description"
+      privacy_settings << ["<span class='privacy-setting-header'>#{header}</strong><br /><p>#{description}</p>".html_safe, privacy_setting.to_sym]
+    end
+    privacy_settings
+  end
+
+  def group_viewable_by_parent_label(group)
+    t(:'simple_form.labels.group.viewable_by_parent_members_header', group: group.parent.name)
+  end
+
+  def group_invitable_by_options(group)
+    [[t('simple_form.labels.group.members_invitable_by_coordinators'), :admins],
+     [t('simple_form.labels.group.members_invitable_by_members'), :members]]
   end
 end

@@ -11,7 +11,7 @@ Feature: Coordinator creates proposal outcome
 
   @javascript
   Scenario: Coordinator creates a proposal outcome
-    Given I close the proposal
+    Given the proposal has closed
     And I have recieved an email with subject "Proposal closed"
     When I click the link to create a proposal outcome
     # And I see the proposal outcome field highlighted
@@ -22,7 +22,7 @@ Feature: Coordinator creates proposal outcome
 
   @javascript
   Scenario: Coordinator edits a proposal outcome
-    Given I close the proposal
+    Given the proposal has closed
     And a proposal outcome has been created
     And I edit the proposal outcome
     Then my group members should not receive an email with subject "Proposal outcome"
@@ -37,3 +37,5 @@ Feature: Coordinator creates proposal outcome
     Given my group is not paying a subscription
     And a proposal outcome has been sent
     Then I should see the campaign in the email body
+
+

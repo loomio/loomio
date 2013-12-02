@@ -27,7 +27,7 @@ FactoryGirl.define do
   factory :group do
     sequence(:name) { Faker::Name.name }
     description 'A description for this group'
-    viewable_by 'everyone'
+    privacy 'public'
     members_invitable_by 'members'
     after(:create) do |group, evaluator|
       user = FactoryGirl.create(:user)
@@ -114,7 +114,7 @@ FactoryGirl.define do
     group
     group_name Faker::Name.name
     group_description "My text outlining the group"
-    viewable_by 'members'
+    privacy 'secret'
     members_invitable_by 'admins'
     discussion_title Faker::Name.name
     discussion_description "My text outlining the discussion"

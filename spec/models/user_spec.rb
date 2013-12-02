@@ -86,7 +86,8 @@ describe User do
 
     it "should not return motions that belong to the group but are closed'" do
       motion = create(:motion, author: user)
-      motion.close!
+      MotionService.close(motion)
+
       user.voting_motions.should_not include(motion)
     end
   end
@@ -94,7 +95,7 @@ describe User do
   describe "closed_motions" do
     it "returns motions that belong to the group and are closed" do
       motion = create(:motion, author: user)
-      motion.close!
+      MotionService.close(motion)
       user.closed_motions.should include(motion)
     end
 

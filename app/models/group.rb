@@ -3,13 +3,14 @@ class Group < ActiveRecord::Base
   class MaximumMembershipsExceeded < Exception
   end
 
-  PERMISSION_CATEGORIES = ['everyone', 'members', 'admins', 'parent_group_members']
+  PRIVACY_CATEGORIES = ['public', 'secret']
+  INVITER_CATEGORIES = ['members', 'admins']
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
 
   validates_presence_of :name
   validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
-  validates_inclusion_of :viewable_by, in: PERMISSION_CATEGORIES
-  validates_inclusion_of :members_invitable_by, in: PERMISSION_CATEGORIES
+  validates_inclusion_of :privacy, in: PRIVACY_CATEGORIES
+  validates_inclusion_of :members_invitable_by, in: INVITER_CATEGORIES
   validates :description, :length => { :maximum => 250 }
   validates :name, :length => { :maximum => 250 }
 
@@ -30,7 +31,7 @@ class Group < ActiveRecord::Base
         order('memberships_count DESC')
 
   scope :visible_to_the_public,
-        where(viewable_by: 'everyone').
+        where(privacy: 'public').
         parents_only
 
   # Engagement (Email Template) Related Scopes
@@ -151,8 +152,8 @@ class Group < ActiveRecord::Base
     self.archived_at.present?
   end
 
-  def viewable_by_everyone?
-    (viewable_by == 'everyone') and !archived?
+  def privacy_public?
+    (privacy == 'public') and !archived?
   end
 
   def members_can_invite_members?
@@ -298,11 +299,7 @@ class Group < ActiveRecord::Base
   end
 
   def set_defaults
-    if is_a_subgroup?
-      self.viewable_by ||= 'parent_group_members'
-    else
-      self.viewable_by ||= 'members'
-    end
+    self.privacy ||= 'secret'
     self.members_invitable_by ||= 'members'
   end
 

@@ -18,17 +18,23 @@ $ ->
     placement: "top",
     trigger: "hover"
 
-#adds bootstrap tooltip to makdown-settings-dropdown
+#adds bootstrap tooltips to makdown-settings-dropdown buttons
 $ ->
   $("#comment-markdown-dropdown").tooltip
-    placement: "left",
-    title: "Text formatting settings and info."
+    placement: 'right',
+    title: 'Text formatting settings and info.'
 
-$ ->
   $("#discussion-markdown-dropdown").tooltip
     placement: "right",
     container: "body",
     title: "Text formatting settings and info."
+
+#adds bootstrap tooltip to attachment buttons
+$ ->
+  $('#add-attachment-icon').tooltip
+    placement: 'bottom',
+    title: 'Attach files'
+
 
 $ ->
   $("#inbox-container").tooltip
