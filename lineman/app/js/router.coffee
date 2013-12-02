@@ -1,5 +1,4 @@
 angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
-  alert('yo wassup')
   $locationProvider.html5Mode(true)
 
   $routeProvider.when '/discussions/:id',
