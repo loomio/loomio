@@ -409,7 +409,7 @@ GEM
       activesupport (>= 3.0)
     shoulda-matchers (2.3.0)
       activesupport (>= 3.0.0)
-    simple_form (2.1.0)
+    simple_form (2.1.1)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
     simplecov (0.7.1)
@@ -559,7 +559,7 @@ DEPENDENCIES
   selenium-webdriver (~> 2.35.1)
   sequenced
   shoulda-matchers (~> 2.3.0)
-  simple_form (~> 2.1.0)
+  simple_form (~> 2.1.1)
   spork-rails (~> 3.2.1)
   strong_parameters (~> 0.2.1)
   thin (~> 1.5.1)
