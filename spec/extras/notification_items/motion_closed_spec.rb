@@ -10,20 +10,6 @@ describe NotificationItems::MotionClosed do
     notification.stub_chain(:event, :eventable, :author).and_return(@closer)
   end
 
-  it "#actor returns the user who closed the motion" do
-    item.actor.should == @closer
-  end
-
-  context "user closed motion" do
-    it "#action_text returns a string" do
-      item.action_text.should == I18n.t('notifications.motion_closed.by_user')
-    end
-
-    it "#avatar returns the correct user for the notification avatar" do
-      item.avatar.should == @closer
-    end
-  end
-
   context "motion expired" do
     before { notification.stub_chain(:event, :user).and_return(nil) }
 

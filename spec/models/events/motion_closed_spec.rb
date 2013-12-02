@@ -12,13 +12,12 @@ describe Events::MotionClosed do
     it 'creates an event' do
       Event.should_receive(:create!).with(kind: 'motion_closed',
                                           eventable: motion,
-                                          user: closer,
                                           discussion_id: motion.discussion.id)
-      Events::MotionClosed.publish!(motion, closer)
+      Events::MotionClosed.publish!(motion)
     end
 
     it 'returns an event' do
-      Events::MotionClosed.publish!(motion, closer).should == event
+      Events::MotionClosed.publish!(motion).should == event
     end
   end
 
@@ -26,7 +25,6 @@ describe Events::MotionClosed do
     let(:user) { mock_model(User) }
     let(:event) { Events::MotionClosed.new(kind: "motion_closed",
                                            eventable: motion,
-                                           user: closer,
                                            discussion_id: motion.discussion.id) }
 
     before do
@@ -45,9 +43,5 @@ describe Events::MotionClosed do
       event.save
     end
 
-    it 'does not notify other the closer' do
-      event.should_not_receive(:notify!).with(closer)
-      event.save
-    end
   end
 end

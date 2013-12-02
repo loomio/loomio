@@ -62,14 +62,14 @@ describe MotionsController do
       end
     end
 
-    context "closing a motion" do
+    context "closing a motion manually" do
       before do
         controller.stub(:authorize!).with(:close, motion).and_return(true)
-        MotionService.stub(:close)
+        MotionService.stub(:close_by_user)
       end
 
       it "closes the motion" do
-        MotionService.should_receive(:close).with(motion, user)
+        MotionService.should_receive(:close_by_user).with(motion, user)
         put :close, :id => motion.id
       end
 

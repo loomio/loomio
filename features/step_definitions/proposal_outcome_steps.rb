@@ -4,10 +4,12 @@ Given(/^the discussion has a proposal$/) do
   @group.add_member!(@group_member)
 end
 
-Given(/^I close the proposal$/) do
+Given(/^the proposal has closed$/) do
+  @motion.store_users_that_didnt_vote
+  @motion.closed_at = Time.now
+  @motion.save!
+  Events::MotionClosed.publish!(@motion)
   visit discussion_path(@discussion)
-  find('#close-voting').click
-  find('#confirm-action').click
 end
 
 Given(/^I have recieved an email with subject "(.*?)"$/) do |arg1|
@@ -85,8 +87,4 @@ end
 Then(/^I should not see the campaign in the email body$/) do
   @last_email = ActionMailer::Base.deliveries.last
   @last_email.default_part_body.to_s.should_not include "Was this decision important to you?"
-end
-
-Then(/^I should not see the "(.*?)" in the email body$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
 end
