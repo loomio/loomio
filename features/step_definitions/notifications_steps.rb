@@ -14,12 +14,12 @@ Then(/^I should see that the motion expired$/) do
 end
 
 Given(/^someone has closed a proposal in a group I belong to$/) do
-  @motion = FactoryGirl.create :motion
-  @group = @motion.group
   @closer = FactoryGirl.create :user
+  @motion = FactoryGirl.create :motion, author: @closer
+  @group = @motion.group
   @group.add_member!(@closer)
   @group.add_member!(@user)
-  MotionService.close(@motion, @closer)
+  MotionService.close_by_user(@motion, @closer)
 end
 
 Then(/^I should see that someone closed the motion$/) do

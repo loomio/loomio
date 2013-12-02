@@ -60,7 +60,8 @@ class MotionsController < GroupBaseController
   end
 
   def close
-    MotionService.close(@motion, current_user)
+    MotionService.close_by_user(@motion, current_user)
+    flash[:success] = t("success.motion_closed")
     redirect_to discussion_url(@motion.discussion, proposal: @motion)
   end
 

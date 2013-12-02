@@ -117,6 +117,7 @@ en:
     group_created: "Group created successfully."
     members_added: "Members added to group."
     membership_requested: "You've asked to join %{which_group}. You will be notified once your request has been approved."
+    motion_closed: "Proposal closed. If you like, you can set an outcome below and send it to your group."
     motion_outcome_created: "Congratulations, you've created a proposal outcome and your group members have been notified."
     motion_outcome_updated: "The proposal outcome has been updated."
     position_submitted: "Position submitted"
