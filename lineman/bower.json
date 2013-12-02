@@ -1,12 +1,13 @@
 {
   "name": "Loomio assets",
   "dependencies": {
-    "angular": "angular#1.2.0",
+    "angular": "~1.2.3",
     "jquery": "~2.0.3",
     "underscore": "~1.5.2",
-    "angular-route": "~1.2.0-rc.3"
+    "angular-route": "~1.2.3",
+    "sass-bootstrap": "~3.0.2"
   },
   "resolutions": {
-    "angular": "1.2.0"
+    "angular": "1.2.3"
   }
 }
