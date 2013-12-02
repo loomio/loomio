@@ -5,7 +5,7 @@ class MotionService
     end
   end
 
-  def self.close(motion, user = nil)
+  def self.close(motion)
     # this line is required because motions are not being
     # archived when groups get archived so they dangle
     # TODO ensure that motions get archived with groups
@@ -14,7 +14,20 @@ class MotionService
     motion.store_users_that_didnt_vote
     motion.closed_at = Time.now
     motion.save!
-    Events::MotionClosed.publish!(motion, user)
+
+    Events::MotionClosed.publish!(motion)
+  end
+
+  def self.close_by_user(motion, user)
+    return false unless motion.group.present?
+
+    user.ability.authorize! :close, motion
+
+    motion.store_users_that_didnt_vote
+    motion.closed_at = Time.now
+    motion.save!
+
+    Events::MotionClosedByUser.publish!(motion, user)
   end
 
   def self.create_outcome(motion, motion_params, user)

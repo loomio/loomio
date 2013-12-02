@@ -42,7 +42,7 @@ class InvitationsController < ApplicationController
       redirect_to_group
     else
       save_invitation_token_to_session
-      redirect_to new_user_session_path
+      redirect_to new_user_registration_path
     end
   end
 

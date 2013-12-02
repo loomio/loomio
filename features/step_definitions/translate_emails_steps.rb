@@ -98,7 +98,7 @@ Given(/^"(.*?)" has closed their proposal$/) do |arg1|
   group = FactoryGirl.create :group
   @discussion = create_discussion group: group
   @motion = FactoryGirl.create :motion, discussion: @discussion, author: author
-  MotionService.close(@motion, author)
+  MotionService.close_by_user(@motion, author)
 end
 
 Given(/^"(.*?)" has set a proposal outcome$/) do |arg1|
