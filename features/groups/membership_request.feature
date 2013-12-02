@@ -9,7 +9,7 @@ Feature: Individual requests group membership
     Given I am a visitor
     And an open group exists
     When I visit the group page
-    And I click "Request membership"
+    And I click "Ask to join group"
     And I fill in and submit the Request membership form
     Then I should see a flash message confirming my membership request
 
@@ -19,9 +19,9 @@ Feature: Individual requests group membership
     And I fill in and submit the Request membership form using email of existing member
     Then I should see a field error telling me I am already a member of the group
 
-  Scenario: Vistor cannot request membership to private group
+  Scenario: Vistor cannot request membership to secret group
     Given I am a visitor
-    And a private group exists
+    And a secret group exists
     When I visit the request membership page for the group
     Then I should be asked to log in
 
@@ -42,7 +42,7 @@ Feature: Individual requests group membership
     Given I am a visitor
     And I have requested membership as a visitor and been ignored
     When I visit the group page
-    And I click "Request membership"
+    And I click "Ask to join group"
     And I fill in and submit the Request membership form
     Then I should see a flash message confirming my membership request
 
@@ -50,13 +50,13 @@ Feature: Individual requests group membership
     Given I am logged in
     And an open group exists
     When I visit the group page
-    And I click "Request membership"
+    And I click "Ask to join group"
     And I fill in and submit the Request membership form (introduction only)
     Then I should see a flash message confirming my membership request
 
-  Scenario: User cannot request membership to private group
+  Scenario: User cannot request membership to secret group
     Given I am logged in
-    And a private group exists
+    And a secret group exists
     When I visit the request membership page for the group
     Then I should be redirected to the dashboard
 
@@ -84,7 +84,7 @@ Feature: Individual requests group membership
     Given I am logged in
     And I have requested membership, been accepted to, and then left a group
     When I visit the group page
-    And I click "Request membership"
+    And I click "Ask to join group"
     And I fill in and submit the Request membership form (introduction only)
     Then I should see a flash message confirming my membership request
 
@@ -92,7 +92,7 @@ Feature: Individual requests group membership
     Given I am logged in
     And I have requested membership and been ignored
     When I visit the group page
-    And I click "Request membership"
+    And I click "Ask to join group"
     And I fill in and submit the Request membership form (introduction only)
     Then I should see a flash message confirming my membership request
 

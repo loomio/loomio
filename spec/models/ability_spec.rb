@@ -9,29 +9,6 @@ describe "User abilities" do
   let(:ability) { Ability.new(user) }
   subject { ability }
 
-  context "Loomio admin deactivates other_user" do
-    before do
-      user.is_admin = true
-    end
-    let(:group) { create(:group) }
-
-    context "other_user is a member of a group with many members" do
-      before do
-        group.add_member!(other_user)
-      end
-      it { should be_able_to(:deactivate, other_user) }
-    end
-
-    context "other_user is the only coordinator of one of their groups" do
-      before do
-        group.admins.destroy_all
-        group.add_admin!(other_user)
-      end
-      it { should_not be_able_to(:deactivate, other_user) }
-    end
-  end
-
-
   context "member of a group" do
     let(:group) { create(:group) }
     let(:subgroup) { build(:group, parent: group) }
@@ -77,7 +54,6 @@ describe "User abilities" do
     it { should_not be_able_to(:destroy, another_user_comment) }
     it { should be_able_to(:like_comments, discussion) }
     it { should be_able_to(:create, new_discussion) }
-    it { should_not be_able_to(:edit_privacy, group) }
     it { should_not be_able_to(:make_admin, @membership) }
     it { should_not be_able_to(:make_admin, @other_membership) }
     it { should_not be_able_to(:destroy, @other_membership) }
@@ -121,8 +97,8 @@ describe "User abilities" do
       it { should_not be_able_to(:ignore, membership_request) }
     end
 
-    context "group viewable by members" do
-      before { group.update_attributes(:viewable_by => 'members') }
+    context "secret group" do
+      before { group.update_attributes(:privacy => 'secret') }
       it { should be_able_to(:show, group) }
     end
 
@@ -130,26 +106,24 @@ describe "User abilities" do
       let(:subgroup) { create(:group, parent: group) }
 
       context "public subgroup" do
-        before { subgroup.update_attributes(:viewable_by => 'everyone') }
+        before { subgroup.update_attributes(:privacy => 'public') }
         it { should be_able_to(:show, subgroup) }
         it { should be_able_to(:request_membership, subgroup) }
       end
 
-      context "subgroup viewable by parent group members" do
-        before { subgroup.update_attributes(:viewable_by => 'parent_group_members') }
-        it { should be_able_to(:show, subgroup) }
-        it { should be_able_to(:request_membership, subgroup) }
-        it { should be_able_to(:show, discussion) }
-      end
-
-      context "private subgroup" do
-        before { subgroup.update_attributes(:viewable_by => 'members') }
+      context "secret subgroup" do
+        before { subgroup.update_attributes(privacy: 'secret', viewable_by_parent_members: false) }
         it { should_not be_able_to(:show, subgroup) }
         it { should_not be_able_to(:request_membership, subgroup) }
       end
+
+      context "secret subgroup viewable by parent members" do
+        before { subgroup.update_attributes(privacy: 'secret', viewable_by_parent_members: true) }
+        it { should be_able_to(:show, subgroup) }
+        it { should be_able_to(:request_membership, subgroup) }
+      end
     end
   end
-
 
   context "admin of a group" do
     let(:group) { create(:group) }
@@ -174,7 +148,6 @@ describe "User abilities" do
     it { should be_able_to(:remove_admin, @other_membership) }
     it { should be_able_to(:destroy, @other_membership) }
     it { should be_able_to(:edit_description, group) }
-    it { should be_able_to(:edit_privacy, group) }
     it { should_not be_able_to(:update, other_users_motion) }
     it { should be_able_to(:destroy, other_users_motion) }
     it { should be_able_to(:close, other_users_motion) }
@@ -216,7 +189,7 @@ describe "User abilities" do
   end
 
   context "non-member of a group" do
-    let(:group) { create(:group, viewable_by: 'members') }
+    let(:group) { create(:group, privacy: 'secret') }
     let(:discussion) { create(:discussion, group: group) }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
     let(:motion) { create(:motion, discussion: discussion) }
@@ -227,33 +200,35 @@ describe "User abilities" do
     let(:my_membership_request) { create(:membership_request, group: group, requestor: user) }
     let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
 
+    it { should_not be_able_to(:show, group) }
+    it { should_not be_able_to(:request_membership, group) }
     it { should_not be_able_to(:update, group) }
-    it { should_not be_able_to(:show, discussion) }
     it { should_not be_able_to(:email_members, group) }
     it { should_not be_able_to(:add_subgroup, group) }
     it { should_not be_able_to(:add_members, group) }
     it { should_not be_able_to(:hide_next_steps, group) }
+    it { should_not be_able_to(:unfollow, group) }
+    it { should_not be_able_to(:create, new_discussion) }
+    it { should_not be_able_to(:show, discussion) }
     it { should_not be_able_to(:new_proposal, discussion) }
     it { should_not be_able_to(:add_comment, discussion) }
     it { should_not be_able_to(:create, comment) }
     it { should_not be_able_to(:move, discussion) }
-    it { should_not be_able_to(:unfollow, group) }
     it { should_not be_able_to(:destroy, discussion) }
-    it { should_not be_able_to(:destroy, another_user_comment) }
     it { should_not be_able_to(:like_comments, discussion) }
-    it { should_not be_able_to(:create, new_discussion) }
     it { should_not be_able_to(:create, new_motion) }
     it { should_not be_able_to(:close, motion) }
     it { should_not be_able_to(:edit_close_date, motion) }
     it { should_not be_able_to(:open, motion) }
     it { should_not be_able_to(:update, motion) }
     it { should_not be_able_to(:destroy, motion) }
+    it { should_not be_able_to(:destroy, another_user_comment) }
 
     it { should_not be_able_to(:vote, motion) }
 
-    context "group viewable_by: everyone" do
+    context "public group" do
       before do
-        group.update_attributes!(:viewable_by => 'everyone')
+        group.update_attributes!(:privacy => 'public')
         discussion.reload
       end
       it { should be_able_to(:show, group) }
@@ -288,16 +263,33 @@ describe "User abilities" do
       it { should_not be_able_to(:destroy, motion) }
     end
 
-    context "group viewable_by: members" do
-      before { group.update_attributes!(:viewable_by => 'members') }
+    context "subgroup viewable to parent members" do
+      let(:subgroup) { create(:group, parent: group, privacy: 'secret',
+                              viewable_by_parent_members: true) }
       it { should_not be_able_to(:show, group) }
-      it { should_not be_able_to(:show, discussion) }
-      it { should_not be_able_to(:request_membership, group) }
+      it { should_not be_able_to(:request_membership, subgroup) }
+    end
+  end
+
+  context "Loomio admin deactivates other_user" do
+    before do
+      user.is_admin = true
+    end
+    let(:group) { create(:group) }
+
+    context "other_user is a member of a group with many members" do
+      before do
+        group.add_member!(other_user)
+      end
+      it { should be_able_to(:deactivate, other_user) }
     end
 
-    context "subgroup viewable to parent members" do
-      let(:subgroup) { create(:group, parent: group, viewable_by: 'parent_group_members') }
-      it { should_not be_able_to(:request_membership, subgroup) }
+    context "other_user is the only coordinator of one of their groups" do
+      before do
+        group.admins.destroy_all
+        group.add_admin!(other_user)
+      end
+      it { should_not be_able_to(:deactivate, other_user) }
     end
   end
 end

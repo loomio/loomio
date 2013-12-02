@@ -8,10 +8,9 @@ describe MotionsController do
   let(:previous_url) { root_url }
 
   before :each do
-    Motion.stub(:find).with(motion.id.to_s).and_return(motion)
-    Group.stub(:find).with(group.id.to_s).and_return(group)
-    Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
-    user.stub(:update_motion_read_log).with(motion)
+    Motion.stub(:find).and_return(motion)
+    Group.stub(:find).and_return(group)
+    Discussion.stub(:find).and_return(discussion)
     request.env["HTTP_REFERER"] = previous_url
   end
 
@@ -63,14 +62,14 @@ describe MotionsController do
       end
     end
 
-    context "closing a motion" do
+    context "closing a motion manually" do
       before do
         controller.stub(:authorize!).with(:close, motion).and_return(true)
-        motion.stub(:close!)
+        MotionService.stub(:close_by_user)
       end
 
       it "closes the motion" do
-        motion.should_receive(:close!).with(user)
+        MotionService.should_receive(:close_by_user).with(motion, user)
         put :close, :id => motion.id
       end
 

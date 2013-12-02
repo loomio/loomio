@@ -12,6 +12,8 @@ class NotificationItem
         NotificationItems::NewMotion.new(notification)
       when "motion_closed"
         NotificationItems::MotionClosed.new(notification)
+      when "motion_closed_by_user"
+        NotificationItems::MotionClosedByUser.new(notification)
       when "new_vote"
         NotificationItems::NewVote.new(notification)
       when "new_comment"

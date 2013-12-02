@@ -238,7 +238,6 @@ de:
   create_subgroup: "Untergruppe erstellen"
   creating_subgroup: "Erstellt Untergruppe "
   group_privacy: "Privatsphäre: '%{who}' kann diese Gruppe einsehen."
-  everyone: "Jeder"
   parent_group_members: "Mitglieder der Hauptgruppe"
   members: "Mitglieder"
   new_group: "Neue Gruppe"
@@ -558,10 +557,6 @@ de:
         language_preference: "Sprache"
     options:
       group:
-        viewable_by:
-          everyone: 'Jeder'
-          members: 'Nur Mitglieder'
-          parent_group_members: "Mitglieder der Hauptgruppe - nur Mitglieder der Hauptgruppe können diese Untergruppe sehen"
         members_invitable_by:
           admins: 'Nur Koordinatoren'
           members: 'Alle Gruppenmitglieder'

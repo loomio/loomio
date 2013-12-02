@@ -222,7 +222,6 @@ ro:
   create_subgroup: "Creeaza subgrup"
   creating_subgroup: "Creez subgrup"
   group_privacy: "Confidentialitate: '%{who}' pot vizualiza acest grup."
-  everyone: "Toti"
   parent_group_members: "Membrii grupului principal"
   members: "Membri"
   new_group: "Grup Nou"

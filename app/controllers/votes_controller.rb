@@ -3,7 +3,7 @@ class VotesController < BaseController
 
   def new
     @vote = motion.most_recent_vote_of(current_user) || Vote.new
-    @vote.position = params[:position]
+    @vote.position = params[:position] if params[:position]
   end
 
   def create

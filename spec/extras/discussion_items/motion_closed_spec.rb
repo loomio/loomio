@@ -5,19 +5,6 @@ describe DiscussionItems::MotionClosed do
 
   it "#icon returns a string indicating the icon-class"
 
-  context "Motion is closed by a user" do
-    before { item.stub_chain(:event, :user).and_return(double(:user)) }
-
-    it "#actor returns the user who created a discussion" do
-      actor = double(:actor)
-      item.actor.should == item.event.user
-    end
-
-    it "#header returns a string" do
-      item.header.should == I18n.t('discussion_items.motion_closed.by_user') + ": "
-    end
-  end
-
   context "Motion close date expires" do
     before { item.stub_chain(:event, :user).and_return(nil) }
 

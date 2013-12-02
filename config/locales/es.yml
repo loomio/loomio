@@ -236,7 +236,6 @@ es:
   create_subgroup: "Crear sub-grupo"
   creating_subgroup: "Creando sub-grupo"
   group_privacy: "Privacidad: '%{who}' Quien puede ver este grupo."
-  everyone: "Todos"
   parent_group_members: "Grupo de nivel superior"
   members: "Miembros"
   new_group: "Nuevo grupo"
@@ -525,10 +524,6 @@ es:
         language_preference: "Lenguaje"
     options:
       group:
-        viewable_by:
-          everyone: 'Todos'
-          members: 'Solo miembros'
-          parent_group_members: "Miembros de grupos principales - solo miembros del grupo principal pueden ver este sub-grupo"
         members_invitable_by:
           admins: 'Solo co-ordinadores'
           members: 'Todos los miembros del grupo'
