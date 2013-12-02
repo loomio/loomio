@@ -12,7 +12,6 @@ class NotificationItems::MotionClosed < NotificationItem
   end
 
   def action_text
-    return I18n.t('notifications.motion_closed.by_user') if actor
     I18n.t('notifications.motion_closed.by_expiry') + ": "
   end
 
