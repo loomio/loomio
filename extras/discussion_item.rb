@@ -16,6 +16,8 @@ class DiscussionItem
         DiscussionItems::NewVote.new(event_item)
       when 'motion_closed'
         DiscussionItems::MotionClosed.new(event, event_item)
+      when 'motion_closed_by_user'
+        DiscussionItems::MotionClosedByUser.new(event, event_item)
       when 'motion_close_date_edited'
         DiscussionItems::MotionCloseDateEdited.new(event, event_item)
       when 'discussion_title_edited'

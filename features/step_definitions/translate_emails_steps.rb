@@ -98,7 +98,7 @@ Given(/^"(.*?)" has closed their proposal$/) do |arg1|
   group = FactoryGirl.create :group
   @discussion = create_discussion group: group
   @motion = FactoryGirl.create :motion, discussion: @discussion, author: author
-  MotionService.close(@motion, author)
+  MotionService.close_by_user(@motion, author)
 end
 
 Then(/^the proposal closed email should be delivered to "(.*?)" in Spanish$/) do |arg1|

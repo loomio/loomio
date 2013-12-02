@@ -7,6 +7,8 @@ module Events
   end
   class MotionClosed
   end
+  class MotionClosedByUser
+  end
 end
 
 class Motion
@@ -36,33 +38,57 @@ describe 'MotionService' do
     end
   end
 
-  describe '.close' do
+  describe 'closing the motion' do
     before do
       Events::MotionClosed.stub(:publish!)
+      Events::MotionClosedByUser.stub(:publish!)
       motion.stub(:closed_at=)
       motion.stub(:save!)
       motion.stub(:store_users_that_didnt_vote)
     end
 
-    after do
-      MotionService.close(motion, user)
-    end
-    
-    it 'stores users that did not vote' do
-      motion.should_receive(:store_users_that_didnt_vote)
+    describe '.close' do
+      after { MotionService.close(motion) }
+
+      it 'stores users that did not vote' do
+        motion.should_receive(:store_users_that_didnt_vote)
+      end
+
+      it 'sets closed_at' do
+        motion.should_receive(:closed_at=)
+      end
+
+      it 'saves the motion' do
+        motion.should_receive(:save!)
+      end
+
+      it 'fires motion closed event' do
+        Events::MotionClosed.should_receive(:publish!).with(motion)
+      end
     end
 
-    it 'sets closed_at' do
-      motion.should_receive(:closed_at=)
-    end
+    describe '.close_by_user' do
+      after { MotionService.close_by_user(motion, user) }
 
-    it 'fires motion closed event' do
-      Events::MotionClosed.should_receive(:publish!).with(motion, user)
-    end
+      it 'stores users that did not vote' do
+        motion.should_receive(:store_users_that_didnt_vote)
+      end
 
-    it 'saves the motion' do
-      motion.should_receive(:save!)
-      MotionService.close(motion)
+      it 'sets closed_at' do
+        motion.should_receive(:closed_at=)
+      end
+
+      it 'saves the motion' do
+        motion.should_receive(:save!)
+      end
+
+      it 'authorizes the user' do
+        ability.should_receive(:authorize!).with(:close, motion)
+      end
+
+      it 'fires motion closed by user event' do
+        Events::MotionClosedByUser.should_receive(:publish!).with(motion, user)
+      end
     end
   end
 

@@ -1,4 +1,9 @@
+require_relative '../../extras/migrations/migrate_motions_closed_by_user'
 namespace :upgrade_tasks do
+  task :'2013-11-29-motion-closed-by-user' => :environment do
+    MigrateMotionsClosedByUser.now
+  end
+
   task :'2013-10-add-discussion-item-number' => :environment do
     ActiveRecord::Base.record_timestamps = false
     begin
