@@ -1,6 +1,6 @@
 angular.module('loomioApp').directive 'addComment', ->
   restrict: 'E'
-  templateUrl: 'next/templates/add_comment'
+  templateUrl: 'generated/templates/add_comment.html'
   replace: true
   controller: 'AddCommentController'
   link: (scope, element, attrs) ->

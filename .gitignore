@@ -26,4 +26,5 @@ screenshots/
 /lineman/node_modules
 /lineman/dist
 /lineman/generated
+/lineman/vendor/bower_components
 

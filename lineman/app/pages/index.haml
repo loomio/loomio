@@ -4,10 +4,10 @@
     %title Loomio
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
 
-    = stylesheet_link_tag    "/css/app.css", :media => "all"
-    = csrf_meta_tags
+    %link{href: '/css/app.css', media: 'screen', rel: 'stylesheet', type: 'text/css'}
+    csrf_meta_tags
 
   %body
     -#%base{href: '/next/'}
     .container{'ng-view' => ''}
-    = javascript_include_tag "/js/app.js"
+    %script{ src: '/js/app.js', type: 'text/javascript'}
