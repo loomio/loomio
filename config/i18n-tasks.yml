@@ -1,0 +1,13 @@
+# i18n usage search in source
+search:
+  # search these directories (relative to your Rails.root directory, default: 'app/')
+  paths:
+    - 'app/'
+    - 'vendor/'
+    - 'extras/'
+
+# do not report these keys as unused
+ignore_unused:
+  - simple_form.*
+  - devise.*
+  - datetime.*
