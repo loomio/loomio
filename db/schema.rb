@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131125232607) do
+ActiveRecord::Schema.define(:version => 20131128014456) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -299,7 +299,7 @@ ActiveRecord::Schema.define(:version => 20131125232607) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "privacy"
+    t.string   "privacy",                    :default => "private"
     t.string   "members_invitable_by"
     t.integer  "parent_id"
     t.boolean  "email_new_motion",           :default => true
@@ -493,8 +493,8 @@ ActiveRecord::Schema.define(:version => 20131125232607) do
     t.boolean  "subscribed_to_proposal_closure_notifications",                :default => true,       :null => false
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.boolean  "uses_markdown",                                               :default => false
+    t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.string   "language_preference"
     t.string   "time_zone"
   end

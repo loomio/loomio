@@ -243,3 +243,52 @@ Then(/^the subgroup should be viewable by parent members$/) do
   @subgroup.reload
   @subgroup.should be_viewable_by_parent_members
 end
+
+When(/^I set the group to private$/) do
+  visit edit_group_path(@group)
+  choose 'group_privacy_private'
+  click_on 'group_form_submit'
+end
+
+Then(/^the group should be set to private$/) do
+  @group.reload
+  @group.privacy.should == 'private'
+end
+
+Given(/^a private group exists$/) do
+  @group = FactoryGirl.create :group
+  @group.privacy = 'private'
+  @group.save
+end
+
+Then(/^I should not see the discussion$/) do
+  page.should_not have_content(@discussion.title)
+end
+
+Then(/^I should see the group members$/) do
+  page.should have_css('#users-list')
+end
+
+Then(/^I should not see previous decisions$/) do
+  page.should_not have_css('#show-closed-motions')
+end
+
+Given(/^I am a member of a private group$/) do
+  @group = FactoryGirl.create :group
+  @group.privacy = 'private'
+  @group.add_member! @user
+  @group.save
+end
+
+Given(/^a private sub\-group exists$/) do
+  @parent_group = FactoryGirl.create :group
+  @sub_group = FactoryGirl.create :group, :parent => @parent_group
+  @sub_group.privacy = 'private'
+  @sub_group.save
+end
+
+Given(/^I am a member of a private sub\-group$/) do
+  step "a private sub\-group exists"
+  @parent_group.add_member! @user
+  @sub_group.add_member! @user
+end
