@@ -25,7 +25,8 @@ class GroupsController < GroupBaseController
       flash[:success] = t("success.group_created")
       redirect_to @group
     else
-      render 'groups/new'
+      @subgroup = @group
+      render 'groups/add_subgroup'
     end
   end
 

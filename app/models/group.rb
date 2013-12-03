@@ -311,6 +311,8 @@ class Group < ActiveRecord::Base
   end
 
   def privacy_allowed_by_parent
-    self.privacy == 'secret'
+    if parent.privacy == 'secret' && self.privacy != 'secret'
+      errors[:privacy] << "Parent group is secret, subgroups must also be secret"
+    end
   end
 end
