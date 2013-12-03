@@ -15,6 +15,7 @@ class Group < ActiveRecord::Base
   validates :name, :length => { :maximum => 250 }
 
   validate :limit_inheritance
+  validate :privacy_allowed_by_parent, if: :is_a_subgroup?
 
   after_initialize :set_defaults
   before_save :update_full_name_if_name_changed
@@ -307,5 +308,9 @@ class Group < ActiveRecord::Base
     unless parent_id.nil?
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent_id.nil?
     end
+  end
+
+  def privacy_allowed_by_parent
+    self.privacy == 'secret'
   end
 end

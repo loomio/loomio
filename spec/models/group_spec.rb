@@ -135,6 +135,22 @@ describe Group do
       @group.add_member!(@user)
       @group.add_member!(@user)
     end
+
+    context "creating a subgroup" do
+      before :each do
+        @subgroup = build(:group, :parent => @group)
+      end
+      it "can create secret subgroups" do
+        @subgroup.privacy = 'secret'
+        @subgroup.valid?
+        @subgroup.should have(0).errors_on(:privacy)
+      end
+      it "returns an error when tries to create subgroup that is not secret" do
+        @subgroup.privacy = 'public'
+        @subgroup.valid?
+        @subgroup.should have(1).errors_on(:privacy)
+      end
+    end
   end
 
   describe "#has_manual_subscription?" do
