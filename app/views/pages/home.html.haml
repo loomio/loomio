@@ -1,51 +1,94 @@
-.container
-  %section.first
-    .inner-container
-      .row-fluid
-        .span6.homevideo
-          <iframe class="no-bottom-margin" src="https://player.vimeo.com/video/52025402?title=0&amp;byline=0&amp;portrait=0&amp;badge=0" width="383" height="287" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-        .span6
-          %h2.frontpage-text Loomio is a user-friendly tool for group decision-making.
+.carousel.slide#myCarousel
+  %ol.carousel-indicators
+    %li.active{ data: { 'target' => '#myCarousel', 'slide-to' => '0' }}
+    %li{ data: { 'target' => '#myCarousel', 'slide-to' => '1' }}
+    %li{ data: { 'target' => '#myCarousel', 'slide-to' => '2' }}
+  .carousel-inner
+    .item.active
+      =image_tag("collaboration.jpg")
+      .container-fluid
+        .carousel-caption
+          %h1 Example headline
+          %p These people are not stock photo decision makers!
+          %p <a class="btn btn-large btn-primary" href="#" role="button">Sign up today</a>
+    .item
+      =image_tag("party.jpg")
+      .container-fluid
+        .carousel-caption
+          %h1 Example headline 2
+          %p Blah!
+          %p <a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a>
+    .item
+      =image_tag("party.jpg")
+      .container-fluid
+        .carousel-caption
+          %h1 Example headline 3
+          %p Blah!
+          %p <a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a>
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 
-          %p Creating a world where it’s easy for anyone to participate in decisions that affect them.
+.container-fluid.marketing
+  <!-- Three columns of text below the carousel -->
+  .row
+    .span4
+      =image_tag("coop.png")
+      %h2 Cooperative social enterprise
+      %p
+        Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+        %a{ class: 'btn btn-default', href: '#', role: 'button' }
+          View details
+    .span4
+      =image_tag("independent.png")
+      %h2 Independent and neutral and Blah
+      %p
+        Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+        %a{ class: 'btn btn-default', href: '#', role: 'button' }
+          View details
+    .span4
+      =image_tag("free.png")
+      %h2 Open-source collaboration
+      %p
+        Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+        %a{ class: 'btn btn-default', href: '#', role: 'button' }
+          View details
 
-          %p
-            %strong Want to try it out?
+  %hr.featurette-divider
 
-          #button-container
-            = link_to "Start a group!", new_group_request_path, class: 'btn btn-success btn-large', id: 'start-group-btn'
+  .row.featurette
+    .span7
+      %h2.featurette-heading
+        First featurette heading.
+        %span.text-muted
+          It'll blow your mind
+      %p.lead
+        Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+    .span5.homevideo
+      <iframe class="no-bottom-margin" src="https://player.vimeo.com/video/52025402?title=0&amp;byline=0&amp;portrait=0&amp;badge=0" width="383" height="287" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    .span6
 
-        .row-fluid.homesection
-          %hr
-          %h2 Groups using Loomio
-        .row-fluid.featured-row
-          .span2.featured-image
-            =link_to image_tag("diaspora.jpg"), group_path(id: 194)
-          .span9.flush
-            %h3
-              =link_to "Diaspora Community", group_path(id: 194)
-            %p
-              The Diaspora Project works with the goal of establishing a decentralized social platform. It is Free and Open Source software, and community-driven.
-        .row-fluid.featured-row
-          .span2.featured-image
-            =link_to image_tag("blag.jpg"), group_path(id: 1031)
-          .span9.flush
-            %h3
-              =link_to "Big Live Arts Group", group_path(id: 1031)
-            %p
-              Developing a supportive and critically engaged community within the performing arts industry, anchored by principles of diversity, inclusion, openness and transparency.
-        .row-fluid.featured-row
-          .span2.featured-image
-            =link_to image_tag("loomio-community.jpg"), group_path(id: 3)
-          .span9.flush
-            %h3
-              =link_to "Loomio Community", group_path(id: 3)
-            %p
-              A public group for the international community of Loomio users and supporters to get together, discuss and collaborate.
-        %p.discovergroups
-          =link_to "Discover more public groups using Loomio!", public_groups_path
+  %hr.featurette-divider
 
-        .row-fluid.homesection
-          %hr
-          %h2 How Loomio works
-          =image_tag("how-loomio-works.png")
+  .row.featurette
+    .span5
+      =link_to(image_tag("how-it-works-discussion-ss.jpg"), image_path("how-it-works-discussion-big.jpg"))
+    .span7
+      %h2.featurette-heading
+        First featurette heading.
+        %span.text-muted
+          It'll blow your mind
+      %p.lead
+        Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+
+  %hr.featurette-divider
+
+  .row.featurette
+    .span7
+      %h2.featurette-heading
+        First featurette heading.
+        %span.text-muted
+          It'll blow your mind
+      %p.lead
+        Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+    .span5
+      =image_tag("how-it-works-decision-ss.jpg")

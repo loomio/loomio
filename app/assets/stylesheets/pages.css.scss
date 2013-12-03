@@ -322,6 +322,81 @@ body.pages.home {
     margin-top: 24px;
     a { width: 200px; }
   }
+  // Aarons changes
+  .marketing {
+    padding-right: 0;
+    padding-left: 0;
+    width: 80%;
+  }
+  element.style {
+  }
+  .donate-tab {
+    z-index: 20;
+  }
+  .fork-me-ribbon {
+    z-index: 20;
+  }
+  .carousel {
+    height: 500px;
+    margin-top: -30px;
+    box-sizing: border-box;
+  }
+  .carousel-indicators {
+    left: 50%;
+    text-align: center;
+    width: 60%;
+    padding-left: 0;
+    z-index: 15;
+  }
+  .carousel-inner {
+    box-sizing: border-box;
+    .img {
+      width: 100%;
+    }
+  }
+  .carousel-caption {
+    text-align: center;
+  }
+  .container-fluid {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .row {
+    margin-right: -15px;
+    margin-left: -15px;
+    box-sizing: border-box;
+  }
+  .span4, .span5, .span7 {
+    margin-left: 0;
+    padding: 20px;
+    text-align: center;
+    min-width: 320px;
+    box-sizing: border-box;
+  }
+  .span4 {
+    width: 33.333333333333336%;
+  }
+  .span7 {
+    padding: 0 30px 20px 30px;
+    width: 58.333333333333336%;
+  }
+  .span5 {
+    padding: 0 30px 20px 30px;
+    width: 41.66666666666667%;
+  }
+  .featurette-heading {
+    margin-top: 60px;
+  }
+  .footer {
+    background: #555;
+    a { color: #aaa; }
+  }
+  .pages-links {
+    margin-top: 20px;
+  }
+  // ------------
+
+
   hr { margin: 30px 0;  }
   .homesection {
     text-align: center;
