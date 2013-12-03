@@ -475,14 +475,14 @@ es:
     update: "Update position"
   email_preferences_form:
     header: "Preferencias de correo electrónico "
-    daily_activity_summary: "Sumario de actividades diarias"
+    daily_activity_summary: "Resumen de actividades diarias"
     daily_activity_subscription: "Enviarme actividad diaria resumiendo lo que ha estado pasando en mis grupos"
     global_notifications: "Notificaciones globales"
     proposal_closing_soon_subscription: "Recordarme 24 horas antes del cierre de una propuesta"
     mentions_subscription: "Enviarme correo electrónico cuando alguien me menciona en un comentario"
     group_activity_notifications: "Notificaciones de la actividad del grupo"
     group_activity_details: "Por cada grupo, marca la casilla si deseas recibir un correo electrónico inmediatamente se abra una nueva discusión o decisión."
-    update_preferences: "Preferencias de actualización"
+    update_preferences: "Actualizar preferencias"
   new_user_form:
     create_an_account: "Crear una cuenta"
   user_settings_form:
@@ -568,7 +568,7 @@ es:
     daily_activity:
       heading: "Tu actividad en Loomio"
       intro: "Esto es lo que ha pasado en las ultimas 24 horas en tus grupos de Loomio"
-      subject: "Loomio - Sumario de las ultimas 24 horas"
+      subject: "Loomio - Resumen de las ultimas 24 horas"
     group_email:
       intro: "%{who} hizo un anuncio en %{group}:"
     group_membership_approved:
@@ -595,7 +595,7 @@ es:
       subject: "Propuesta bloqueada - %{which}"
     proposal_closing_soon:
       closes_in: "Cierra en"
-      summary: "Sumario"
+      summary: "Resumen"
     to_join_group:
       subject: "%{member} te ha invitado a unirte a %{group_name} en Loomio"
     to_start_group:
