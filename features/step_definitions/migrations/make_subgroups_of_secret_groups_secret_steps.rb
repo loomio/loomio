@@ -1,6 +1,7 @@
 Given(/^there is a public subgroup of a secret group$/) do
   @parent_group = FactoryGirl.create :group, privacy: 'secret'
-  @sub_group = FactoryGirl.create :group, parent: @parent_group, privacy: 'public'
+  @sub_group = FactoryGirl.build :group, parent: @parent_group, privacy: 'public'
+  @sub_group.save(validate: false)
 end
 
 When(/^I migrate public subgroups of secret groups$/) do
