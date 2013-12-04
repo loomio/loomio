@@ -39,13 +39,13 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       files: [
         expand: true
         cwd: "app/templates/"
-        src: "*.haml"
+        src: "**/*.haml"
         dest: "generated/templates"
         ext: ".html"
        ,
         expand: true
         cwd: "app/pages/"
-        src: "*.haml"
+        src: "**/*.haml"
         dest: "generated/"
         ext: ".html"
       ]
@@ -131,4 +131,5 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       tasks: ["sass", "concat_sourcemap:css"]
 
     pages:
-      files: []
+      files: "app/pages/**/*.haml"
+      tasks: ["haml"]

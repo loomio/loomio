@@ -51,7 +51,6 @@ gem 'valid_email', '~> 0.0.4'
 gem 'font-awesome-sass-rails'
 gem 'rabl'
 gem 'sequenced'
-gem 'angular-html2js'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -76,7 +75,6 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.1.1'
   gem 'selenium-webdriver', '~> 2.35.1'
   gem 'ruby-prof'
-  gem 'teaspoon'
   gem 'parallel_tests', '~> 0.16.0'
 end
 
@@ -97,7 +95,6 @@ group :development do
 end
 
 group :test do
-  gem 'capybara-angular'
   gem 'cucumber-rails', '~> 1.4.0', :require => false
   gem 'email_spec', '~> 1.2.1'
   gem 'poltergeist', '~> 1.4.1'
