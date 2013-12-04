@@ -37,6 +37,7 @@ Feature: deliver emails in the user's prefered language
 
   Scenario: proposal outcome email
     Given "John" has closed their proposal
+    And "John" has set a proposal outcome
     Then the proposal outcome email should be delivered to "Viv" in English
     And the proposal outcome email should be delivered to "Eduardo" in Spanish
 
