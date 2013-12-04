@@ -11,7 +11,6 @@ describe GroupDiscussionsViewer do
   let(:secret_subgroup_of_public_group) {create :group, parent: public_group, privacy: 'secret' }
 
   let(:secret_group){ create :group, privacy: 'secret' }
-  let(:public_subgroup_of_secret_group) { create :group, privacy: 'public', parent: secret_group }
   let(:parent_members_subgroup_of_secret_group) {create :group, privacy: 'secret', viewable_by_parent_members: true, parent: secret_group }
   let(:secret_subgroup_of_secret_group) { create :group, privacy: 'secret', parent: secret_group }
 
@@ -31,7 +30,7 @@ describe GroupDiscussionsViewer do
 
     context 'as guest' do
       # when guest, we also show public subgroups
-      it {should include public_group, 
+      it {should include public_group,
                          public_subgroup_of_public_group}
       its(:size){should == 2}
     end
@@ -39,7 +38,7 @@ describe GroupDiscussionsViewer do
     context 'as member of top only' do
       before { public_group.add_member!(user) }
 
-      # once you are a member of a group we dont show subgroups 
+      # once you are a member of a group we dont show subgroups
       # unless you belong to them
 
       it {should == [public_group]}
@@ -51,7 +50,7 @@ describe GroupDiscussionsViewer do
         secret_subgroup_of_public_group.add_member!(user)
       end
 
-      it {should include public_group, 
+      it {should include public_group,
                          secret_subgroup_of_public_group }
 
       its(:size){should == 2}
@@ -61,12 +60,11 @@ describe GroupDiscussionsViewer do
   describe 'groups_displayed when viewing members only group' do
     before do
       secret_group
-      public_subgroup_of_secret_group
       parent_members_subgroup_of_secret_group
       secret_subgroup_of_secret_group
     end
 
-    subject { groups_displayed(user: user, 
+    subject { groups_displayed(user: user,
                                group: secret_group) }
 
     context 'as guest' do
@@ -85,7 +83,7 @@ describe GroupDiscussionsViewer do
         secret_subgroup_of_secret_group.add_member!(user)
       end
 
-      it { should include secret_group, 
+      it { should include secret_group,
                           secret_subgroup_of_secret_group }
       its(:size) { should == 2 }
     end
@@ -96,7 +94,7 @@ describe GroupDiscussionsViewer do
         parent_members_subgroup_of_secret_group.add_member!(user)
       end
 
-      it { should include secret_group, 
+      it { should include secret_group,
                           parent_members_subgroup_of_secret_group }
       its(:size) { should == 2 }
     end
@@ -110,7 +108,7 @@ describe GroupDiscussionsViewer do
       parent_members_subgroup_of_secret_group.add_member!(user)
     end
 
-    subject { groups_displayed(user: user, 
+    subject { groups_displayed(user: user,
                                group: parent_members_subgroup_of_secret_group) }
 
     it {should == [parent_members_subgroup_of_secret_group] }
