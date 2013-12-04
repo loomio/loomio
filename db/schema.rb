@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131125232607) do
+ActiveRecord::Schema.define(:version => 20131127213528) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -418,6 +418,7 @@ ActiveRecord::Schema.define(:version => 20131125232607) do
     t.datetime "closing_at"
     t.integer  "did_not_votes_count"
     t.integer  "votes_count",         :default => 0,    :null => false
+    t.integer  "outcome_author_id"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
