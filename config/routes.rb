@@ -164,6 +164,7 @@ Loomio::Application.routes.draw do
   scope controller: 'pages' do
     get :about
     get :privacy
+    get :purpose
     get :pricing
     get :terms_of_service
     get :browser_not_supported
@@ -190,10 +191,11 @@ Loomio::Application.routes.draw do
 
   #redirect old pages:
   get '/pages/home' => redirect('/')
-  get '/get*involved' => redirect('/about#how-it-works')
-  get '/how*it*works' => redirect('/about#how-it-works')
+  get '/get*involved' => redirect('/purpose#how-it-works')
+  get '/how*it*works' => redirect('/purpose#how-it-works')
+  get '/about#how-it-works' => redirect('/purpose#how-it-works')
+  get '/pages/how*it*works' => redirect('/purpose#how-it-works')
   get '/pages/get*involved' => redirect('/about')
-  get '/pages/how*it*works' => redirect('/about#how-it-works')
   get '/pages/privacy' => redirect('/privacy_policy')
   get '/pages/about' => redirect('/about#about-us')
   match '/pages/contact', to: 'contact_messages#new'
