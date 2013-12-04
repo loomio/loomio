@@ -12,7 +12,7 @@ describe 'AddComment Controller', ->
     $scope = $rootScope.$new()
     controller = $controller 'AddCommentController',
       $scope: $scope
-      addCommentService: mockAddCommentService
+      CommentService: mockAddCommentService
 
   it 'should start collapsed', ->
     expect($scope.isExpanded).toBe(false)

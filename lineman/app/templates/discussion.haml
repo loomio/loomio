@@ -32,7 +32,7 @@
         Edit
 
   .card-row{'ng-repeat' => 'event in discussion.events'}
-    %div{'ng-include' => "event.kind == 'new_comment' && 'next/templates/discussion_items/'+ event.kind"}
+    %div{'ng-include' => "event.kind == 'new_comment' && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
     -#-#["new_comment",
     -#-#"new_discussion",
     -#-#"new_motion",

@@ -45,14 +45,12 @@ exports.config =
   capabilities:
     browserName: "chrome"
 
-  
   # A base URL for your application under test. Calls to protractor.get()
   # with relative paths will be prepended with this.
   baseUrl: "http://localhost:8000"
-  
+
   # ----- Options to be passed to minijasminenode.
   jasmineNodeOpts:
-    
     # onComplete will be called before the driver quits.
     onComplete: null
     isVerbose: false
