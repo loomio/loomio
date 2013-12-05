@@ -1,10 +1,11 @@
 - form_params ||= {}
 - form_params.merge!({validate: true})
+-
 
 = simple_form_for group, form_params do |f|
   = f.input :name, label: false
   = f.input :description, as: :text, label: false
-  = f.input :privacy, :as => 'radio_buttons', collection: group_privacy_options(group)
+  = f.input :privacy, :as => 'radio_buttons', collection: group_privacy_options(group), :checked => group.privacy
   - if group.parent
     = f.input :viewable_by_parent_members, inline_label: group_viewable_by_parent_label(group), label: false
   = f.input :members_invitable_by, :as => "radio_buttons", collection: group_invitable_by_options(group)

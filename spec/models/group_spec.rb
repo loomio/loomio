@@ -21,8 +21,8 @@ describe Group do
     it "has memberships" do
       @group.respond_to?(:memberships)
     end
-    it "defaults to secret" do
-      @group.privacy.should == 'secret'
+    it "defaults to private" do
+      @group.privacy.should == 'private'
     end
     it "defaults to members invitable by members" do
       @group.members_invitable_by.should == 'members'
@@ -90,9 +90,9 @@ describe Group do
       invalid.should_not be_valid
     end
 
-    it "defaults to viewable secret viewable by parent group members" do
-      Group.new(:parent => @group).privacy.should == 'secret'
-      Group.new(:parent => @group).should be_viewable_by_parent_members
+    it "by default is not viewable by parent members" do
+      Group.new(:parent => @group).privacy.should == 'private'
+      Group.new(:parent => @group).should_not be_viewable_by_parent_members
     end
 
     context "subgroup.full_name" do
