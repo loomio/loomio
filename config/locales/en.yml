@@ -611,6 +611,7 @@ en:
   #
 
   invitation:
+    alternate: "Alternatively, share this link and anyone can ask to join:"
     no_invitations_left: "Sorry you don't have any invitations left"
     no_invitations_left_get_more: "Please email contact@loomio.org and we'll see what we can do to help you"
     invitation_not_found:  'Could not find invitation with that token. Please ask for a new invitation from the sender.'
