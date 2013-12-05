@@ -10,13 +10,7 @@ class GroupDiscussionsViewer
 
     if ability.can?(:show, group)
       groups << group
-
-      if group.members.include?(user)
-        # dont include any subgroups unless the user is a member of them
-        groups += group.subgroups.all.select{|g| g.members.include?(user) }
-      else
-        groups += group.subgroups.all.select{|g| ability.can?(:show, g) }
-      end
+      groups += group.subgroups.all.select{|g| ability.can?(:show, g) }
     end
 
     groups
