@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
   class MaximumMembershipsExceeded < Exception
   end
 
-  PRIVACY_CATEGORIES = ['public', 'secret']
+  PRIVACY_CATEGORIES = ['public', 'private', 'secret']
   INVITER_CATEGORIES = ['members', 'admins']
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
 

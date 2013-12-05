@@ -24,7 +24,9 @@
           #discussion-list
             - @discussions_without_open_motions.each do |discussion|
               %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group, discussion_surely_has_no_current_motion: true
-        - if (@discussions_without_open_motions + @discussions_with_open_motions).count == 0
+        - if @group.privacy == 'private' && @group.members.exclude?(current_user)
+          = t :private_group_discussion_display
+        - elsif (@discussions_without_open_motions + @discussions_with_open_motions).count == 0
           %li.empty-list-message= t :empty_discussion_index_group
 
         = paginate @discussions_without_open_motions, :window => 3
@@ -32,7 +34,8 @@
     =render 'setup_next_steps' if show_next_steps?(@group)
     =render 'groups/description', group: @group
     =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
-    =render '/application/see_closed_motions'
+    - if @group.privacy == 'public' || @group.members.include?(current_user)
+      =render '/application/see_closed_motions'
     =render 'membership_requests', group: @group
     =render 'members', group: @group
   =render '/application/closed_motions', user: nil, group: @group

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131127213528) do
+ActiveRecord::Schema.define(:version => 20131204223341) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -299,7 +299,7 @@ ActiveRecord::Schema.define(:version => 20131127213528) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "privacy"
+    t.string   "privacy",                    :default => "private"
     t.string   "members_invitable_by"
     t.integer  "parent_id"
     t.boolean  "email_new_motion",           :default => true
@@ -320,7 +320,7 @@ ActiveRecord::Schema.define(:version => 20131127213528) do
     t.boolean  "next_steps_completed",       :default => false,          :null => false
     t.string   "full_name"
     t.string   "payment_plan",               :default => "undetermined"
-    t.boolean  "viewable_by_parent_members", :default => true,           :null => false
+    t.boolean  "viewable_by_parent_members", :default => false,          :null => false
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
