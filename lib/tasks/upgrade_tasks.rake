@@ -15,6 +15,12 @@ namespace :upgrade_tasks do
     MigrateMotionsClosedByUser.now
   end
 
+  task :'2013-11-make-subgroups-of-secret-groups-secret' => :environment do
+    require_relative '../../extras/migrations/20131129_migrate_subgroups_of_secret_groups_to_be_secret'
+    MakeSubgroupsOfSecretGroupsSecret.now
+    puts 'Upgrade done'
+  end
+
   task :'2013-10-add-discussion-item-number' => :environment do
     ActiveRecord::Base.record_timestamps = false
     begin

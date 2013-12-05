@@ -25,7 +25,8 @@ class GroupsController < GroupBaseController
       flash[:success] = t("success.group_created")
       redirect_to @group
     else
-      render 'groups/new'
+      @subgroup = @group
+      render 'groups/add_subgroup'
     end
   end
 
@@ -45,7 +46,6 @@ class GroupsController < GroupBaseController
     @discussions_with_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).with_open_motions.order('motions.closing_at ASC')
     @discussions_without_open_motions = GroupDiscussionsViewer.for(group: @group, user: current_user).without_open_motions.order('last_comment_at DESC').page(params[:page]).per(20)
     assign_meta_data
-
   end
 
   def edit
