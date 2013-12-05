@@ -66,7 +66,7 @@ describe "User abilities" do
     it { should_not be_able_to(:close, other_users_motion) }
     it { should_not be_able_to(:create_outcome, other_users_motion) }
     it { should_not be_able_to(:edit_close_date, other_users_motion) }
-    
+
     it { should be_able_to(:vote, user_motion) }
     it { should be_able_to(:vote, other_users_motion) }
     it { should_not be_able_to(:vote, closed_motion) }
@@ -106,6 +106,12 @@ describe "User abilities" do
 
       context "public subgroup" do
         before { subgroup.update_attributes(:privacy => 'public') }
+        it { should be_able_to(:show, subgroup) }
+        it { should be_able_to(:request_membership, subgroup) }
+      end
+
+      context "private subgroup" do
+        before { subgroup.update_attributes(:privacy => 'private') }
         it { should be_able_to(:show, subgroup) }
         it { should be_able_to(:request_membership, subgroup) }
       end
@@ -235,6 +241,43 @@ describe "User abilities" do
       it { should be_able_to(:cancel, my_membership_request) }
       it { should_not be_able_to(:cancel, other_membership_request) }
       it { should be_able_to(:show, discussion) }
+      it { should_not be_able_to(:update, group) }
+      it { should_not be_able_to(:email_members, group) }
+      it { should_not be_able_to(:add_subgroup, group) }
+      it { should_not be_able_to(:add_members, group) }
+      it { should_not be_able_to(:manage_membership_requests, group) }
+      it { should_not be_able_to(:approve, other_membership_request) }
+      it { should_not be_able_to(:ignore, other_membership_request) }
+      it { should_not be_able_to(:hide_next_steps, group) }
+      it { should_not be_able_to(:new_proposal, discussion) }
+      it { should_not be_able_to(:add_comment, discussion) }
+      it { should_not be_able_to(:move, discussion) }
+      it { should_not be_able_to(:unfollow, group) }
+      it { should_not be_able_to(:destroy, discussion) }
+      it { should_not be_able_to(:destroy, another_user_comment) }
+      it { should_not be_able_to(:like, another_user_comment) }
+      it { should_not be_able_to(:unlike, another_user_comment) }
+      it { should_not be_able_to(:create, new_discussion) }
+      it { should_not be_able_to(:create, new_motion) }
+      it { should_not be_able_to(:close, motion) }
+      it { should_not be_able_to(:edit_close_date, motion) }
+      it { should_not be_able_to(:open, motion) }
+      it { should_not be_able_to(:update, motion) }
+      it { should_not be_able_to(:destroy, motion) }
+    end
+
+    context "private group" do
+      before do
+        group.update_attributes!(:privacy => 'private')
+        discussion.reload
+      end
+      it { should be_able_to(:show, group) }
+      it { should_not be_able_to(:view_payment_details, group) }
+      it { should_not be_able_to(:choose_subscription_plan, group) }
+      it { should be_able_to(:request_membership, group) }
+      it { should be_able_to(:cancel, my_membership_request) }
+      it { should_not be_able_to(:cancel, other_membership_request) }
+      it { should_not be_able_to(:show, discussion) }
       it { should_not be_able_to(:update, group) }
       it { should_not be_able_to(:email_members, group) }
       it { should_not be_able_to(:add_subgroup, group) }
