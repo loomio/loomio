@@ -21,8 +21,8 @@ describe Group do
     it "has memberships" do
       @group.respond_to?(:memberships)
     end
-    it "defaults to secret" do
-      @group.privacy.should == 'secret'
+    it "defaults to private" do
+      @group.privacy.should == 'private'
     end
     it "defaults to members invitable by members" do
       @group.members_invitable_by.should == 'members'
@@ -90,9 +90,9 @@ describe Group do
       invalid.should_not be_valid
     end
 
-    it "defaults to viewable secret viewable by parent group members" do
-      Group.new(:parent => @group).privacy.should == 'secret'
-      Group.new(:parent => @group).should be_viewable_by_parent_members
+    it "by default is not viewable by parent members" do
+      Group.new(:parent => @group).privacy.should == 'private'
+      Group.new(:parent => @group).should_not be_viewable_by_parent_members
     end
 
     context "subgroup.full_name" do
@@ -134,6 +134,22 @@ describe Group do
     it "fails silently when trying to add an already-existing member" do
       @group.add_member!(@user)
       @group.add_member!(@user)
+    end
+
+    context "creating a subgroup" do
+      before :each do
+        @subgroup = build(:group, :parent => @group)
+      end
+      it "can create secret subgroups" do
+        @subgroup.privacy = 'secret'
+        @subgroup.valid?
+        @subgroup.should have(0).errors_on(:privacy)
+      end
+      it "returns an error when tries to create subgroup that is not secret" do
+        @subgroup.privacy = 'public'
+        @subgroup.valid?
+        @subgroup.should have(1).errors_on(:privacy)
+      end
     end
   end
 

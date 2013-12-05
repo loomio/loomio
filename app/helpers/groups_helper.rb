@@ -86,9 +86,26 @@ module GroupsHelper
     Group::PRIVACY_CATEGORIES.each do |privacy_setting|
       header = t "simple_form.labels.group.privacy_#{privacy_setting}_header"
       description = t "simple_form.labels.group.privacy_#{privacy_setting}_description"
-      privacy_settings << ["<span class='privacy-setting-header'>#{header}</strong><br /><p>#{description}</p>".html_safe, privacy_setting.to_sym]
+
+      if privacy_setting != 'secret' && group.is_a_subgroup? && group.parent.privacy == 'secret'
+        disabled_class = 'disabled'
+        text_color = '#CCCCCC'
+      else
+        disabled_class = ''
+        text_color = ''
+      end
+      privacy_settings << ["<span class='privacy-setting-header #{disabled_class}'>#{header}</strong><br />
+                            <p style='color:#{text_color}'>#{description}</p>".html_safe, privacy_setting.to_sym]
     end
     privacy_settings
+  end
+
+  def group_privacy_options_disabled(group)
+    if group.is_a_subgroup? && group.parent.privacy == 'secret'
+      ['public', 'private']
+    else
+      []
+    end
   end
 
   def group_viewable_by_parent_label(group)
