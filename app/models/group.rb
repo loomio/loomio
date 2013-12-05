@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
   class MaximumMembershipsExceeded < Exception
   end
 
-  PRIVACY_CATEGORIES = ['public', 'secret']
+  PRIVACY_CATEGORIES = ['public', 'private', 'secret']
   INVITER_CATEGORIES = ['members', 'admins']
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
 
@@ -16,6 +16,7 @@ class Group < ActiveRecord::Base
 
   validate :limit_inheritance
   validate :privacy_allowed_by_parent, if: :is_a_subgroup?
+  validate :subgroups_are_secret, if: :is_secret?
 
   after_initialize :set_defaults
   before_save :update_full_name_if_name_changed
@@ -155,6 +156,10 @@ class Group < ActiveRecord::Base
 
   def privacy_public?
     (privacy == 'public') and !archived?
+  end
+
+  def is_secret?
+    self.privacy == 'secret'
   end
 
   def members_can_invite_members?
@@ -313,6 +318,12 @@ class Group < ActiveRecord::Base
   def privacy_allowed_by_parent
     if parent.privacy == 'secret' && self.privacy != 'secret'
       errors[:privacy] << "Parent group is secret, subgroups must also be secret"
+    end
+  end
+
+  def subgroups_are_secret
+    unless subgroups.all?{|g| g.is_secret?}
+      errors[:privacy] << "There are non secret subgroups, so this group cannot be secret"
     end
   end
 end

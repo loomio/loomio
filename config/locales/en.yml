@@ -338,6 +338,7 @@ en:
   empty_discussion_list: "There is no activity in this discussion yet."
   empty_discussion_index: "There are no discussions in any of your groups."
   empty_discussion_index_group: "This group does not have any discussions yet."
+  private_group_discussion_display: "This group is private. The discussions are only visible to members. If you'd like to participate, you can ask to join."
 
   discussion_context:
     started_html: "Started %{when} ago by <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -731,6 +732,9 @@ en:
         privacy_public_header: Public
         privacy_public_description: Anyone can see the group and who's in it. Discussions are public by default.
         privacy_public_description_short: Anyone can see this group and its discussions.
+        privacy_private_header: Private
+        privacy_private_description: Anyone can see the group and who's in it. Discussions are only visible to members by default.
+        privacy_private_description_short: Anyone can see this group. Only members can see discussions.
         privacy_secret_header: Secret
         privacy_secret_description: Only members can see the group and its discussions. You cannot have public discussions in a secret group.
         privacy_secret_description_short: Only members can see this group and its discussions.
