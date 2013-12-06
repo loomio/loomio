@@ -48,16 +48,6 @@ describe GroupsController do
       response.should redirect_to(group_url(assigns(:group)))
     end
 
-    it "add_members" do
-      subgroup.add_member!(user)
-
-      added_user = create(:user)
-      group.add_member!(added_user)
-      post :add_members, id: subgroup.id, "user_#{added_user.id}" => 1
-      subgroup.members.should include added_user
-      subgroup.memberships.find_by_user_id(added_user.id).inviter.should == user
-    end
-
     context "a group admin" do
       before { group.add_admin!(user) }
 

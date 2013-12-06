@@ -67,5 +67,7 @@ module Loomio
     config.roadie.enable = true
 
     config.assets.precompile += %w(ie7.css ie8.js active_admin.css active_admin.js frontpage.js frontpage.css active_admin/print.css)
+
+    config.quiet_assets = true
   end
 end
