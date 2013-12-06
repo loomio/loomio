@@ -90,7 +90,30 @@ Loomio::Application.routes.draw do
     end
   end
 
-  resources :discussions, except: [:edit] do
+  resources :discussions, :path => 'd', except: [:edit] do
+    get :activity_counts, on: :collection
+    member do
+      post :update_description
+      post :add_comment
+      post :show_description_history
+      get :new_proposal
+      post :edit_title
+      put :move
+    end
+  end
+  get    '/d/*id',                    to: 'discussions#show'
+  put    '/d/*id/update',             to: 'discussions#update'
+  delete '/d/*id',                    to: 'discussions#destroy'
+
+  post   '/d/*id/update_description',       to: 'discussions#update_description'
+  post   '/d/*id/add_comment',              to: 'discussions#add_comment'
+  post   '/d/*id/show_description_history', to: 'discussions#show_description_history'
+  get    '/d/*id/new_proposal',             to: 'discussions#new_proposal'
+  post   '/d/*id/edit_title',               to: 'discussions#edit_title'
+  put    '/d/*id/move',                     to: 'discussions#move'
+
+  # old, but supported, this must be specified second
+  resources :discussions_redirect, :path => 'discussions', except: [:edit] do
     get :activity_counts, on: :collection
     member do
       post :update_description

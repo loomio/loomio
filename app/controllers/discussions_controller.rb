@@ -1,6 +1,8 @@
 class DiscussionsController < GroupBaseController
   include DiscussionsHelper
-  load_and_authorize_resource :except => [:new, :create, :index, :add_comment]
+  # load_and_authorize_resource :except => [:new, :create, :index, :add_comment]
+  before_filter :load_resource_by_key, :except => [:new, :create, :index]
+
   before_filter :authenticate_user!, :except => [:show, :index]
   after_filter :mark_as_read, only: :show
 
@@ -101,7 +103,6 @@ class DiscussionsController < GroupBaseController
   end
 
   def add_comment
-    @discussion = Discussion.find params[:id]
     build_comment
     if DiscussionService.add_comment(@comment)
       current_user.update_attributes(uses_markdown: params[:uses_markdown])
@@ -125,13 +126,11 @@ class DiscussionsController < GroupBaseController
   end
 
   def update_description
-    @discussion = Discussion.find(params[:id])
     @discussion.set_description!(params[:description], params[:description_uses_markdown], current_user)
     redirect_to @discussion
   end
 
   def edit_title
-    @discussion = Discussion.find(params[:id])
     @discussion.set_title!(params.require(:title), current_user)
     redirect_to @discussion
   end
@@ -165,6 +164,12 @@ class DiscussionsController < GroupBaseController
   end
 
   private
+
+  def load_resource_by_key
+    key = params[:id].split('/').first
+    @discussion = Discussion.find_by_key(key)
+  end
+
   def build_comment
     @comment = Comment.new(body: params[:comment],
                            uses_markdown: params[:uses_markdown])
