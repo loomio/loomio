@@ -810,6 +810,10 @@ en:
       heading: "Your Loomio Activity"
       intro: "Showing you what’s been happening in your Loomio groups in the last 24 hours"
       subject: "Loomio - Summary of the last 24 hours"
+    activity_summary:
+      subject: "Loomio activity summary"
+      heading: "Loomio activity summary"
+      sub_header: "Unread activity since your last summary on %{since_time}"
     group_email:
       intro: "%{who} made an announcement to %{group}:"
     group_membership_approved:

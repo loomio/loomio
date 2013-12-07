@@ -1,0 +1,55 @@
+%html
+  %table{ width: '100%' }
+    %tr
+      %td
+        %table{ width: '600', align: 'center', style: 'margin:0 0 10 0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; max-with:600' }
+          %tr
+            %td{ width: '600', style: 'padding:10; background-color:#FAC270;' }
+              %h1{ align: 'left', style: 'color:#fff;' }= t('email.activity_summary.heading')
+          %tr
+            %td{ align: 'right', style: 'padding-top:5; color:#AAA;' }
+              %div{ style: 'color:#AAA; font-size:13;'}= t('email.activity_summary.sub_header', since_time: @since_time)
+        - @groups.each do |group|
+          %table{ width: '600', style: 'margin-bottom:0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
+            %tr
+              %td
+                %h2{ style: 'color:#AAA;' }= group.full_name
+                %hr
+          - group.discussions.each do |discussion|
+            %table{ width: '600', style: 'margin-bottom:0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
+              %tr
+                %td{ width: '50', align: 'center' }
+                  %img{ src:'assets/discussion-24.png', style: 'margin:5 0 0 0; width:24;' }
+                %td{ width: '448' }
+                  %h3= discussion.title
+                %td{ width: '104' }
+                  %a{ href: discussion_url(discussion), align: 'right', style: 'font-size:13;' } View discussion
+            %table{ width: '600', style: 'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;'  }
+              %tr
+                %td{ width: '50' }
+                %td
+                  %p= discussion.description
+            - discussion.comments.each do |comment|
+              %table{ width: '600', style: 'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
+                %tr
+                  %td{ width: '50' }
+                  %td{ width: '50' }
+                    %div{ align: 'center', style: 'width:45; font-size:20; padding:10 0; background-color:#CCC' }
+                      = render 'base/avatar', user: comment.user, size: "medium", kind: nil, id: nil
+                  %td{ width: '478' }
+                    %span{ style: 'font-weight:strong, font-size:14;' }= comment.user_name
+                    %span{style: 'font-size:14;' }
+                      commented
+                    %div{ style: 'color:#AAA; font-size:13;' }= comment.created_at.strftime('%A, %-d %B')
+              %table{ width: '600', style: 'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
+                %tr
+                  %td{ width: '50' }
+                  %td
+                    %p= comment.body
+                %tr
+                  %td{ width: '50' }
+                  %td{ style: 'padding-top:5;' }
+                    %a{ href: discussion_url(discussion), style: 'font-size:13; padding-right:5' } Like
+                    %a{ href: discussion_url(discussion), style: 'font-size:13;' } Reply
+                    %hr
+        = render 'unsubscribe_link'

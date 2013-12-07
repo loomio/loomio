@@ -49,4 +49,11 @@ class UsersController < BaseController
     current_user.save!
     head :ok
   end
+
+  # test for activity summary - to remove 
+  def activity_summary
+    @user = User.find(params[:id])
+    UserMailer.activity_summary(@user, 3.days.ago).deliver
+    redirect_to root_path
+  end
 end

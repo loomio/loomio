@@ -30,3 +30,7 @@
 - else
   = link_to t(:start_a_group), new_group_request_path
   = t(:request_new_group_details)
+
+/ test button to remove
+.test
+  = link_to "Email me an 'Activity summary email'", activity_summary_user_path(current_user), class: 'btn btn-info'

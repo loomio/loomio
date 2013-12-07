@@ -12,6 +12,19 @@ class UserMailer < BaseMailer
     end
   end
 
+   def activity_summary(user, since_time)
+    @user = user
+    # @activity = activity
+    @since_time = since_time.strftime('%B %-d, %Y')
+    # @since_time_formatted = since_time.strftime('%A, %-d %B')
+    @groups = user.groups.sort{|a,b| a.full_name <=> b.full_name }
+    locale = best_locale(user.language_preference, nil)
+    I18n.with_locale(locale) do
+      mail to: @user.email,
+           subject: t("email.activity_summary.subject")
+    end
+  end 
+
   def mentioned(user, comment)
     @user = user
     @comment = comment

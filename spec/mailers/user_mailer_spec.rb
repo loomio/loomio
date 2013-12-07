@@ -31,4 +31,22 @@ describe UserMailer do
       @mail.body.encoded.should match("http://localhost:3000/groups/#{@group.id}")
     end
   end
+
+  describe 'sending an activity summary email' do
+    before(:all) do
+      @user = create(:user)
+      @since_time = 2.days.ago
+      @mail = UserMailer.activity_summary(@user, @since_time)
+    end
+
+    #ensure that the subject is correct
+    it 'renders the subject' do
+      @mail.subject.should match(/Loomio activity summary/)
+    end
+
+    #ensure that the sender is correct
+    it 'renders the sender email' do
+      @mail.from.should == ['noreply@loomio.org']
+    end
+  end
 end
