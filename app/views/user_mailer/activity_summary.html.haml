@@ -33,14 +33,19 @@
               %table{ width: '600', style: 'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
                 %tr
                   %td{ width: '50' }
-                  %td{ width: '50' }
-                    %div{ align: 'center', style: 'width:45; font-size:20; padding:10 0; background-color:#CCC' }
-                      = render 'base/avatar', user: comment.user, size: "medium", kind: nil, id: nil
+                  %td{ width: '40', height: '40', align: 'center', style: 'background-color:#CCC;' }
+                    - kind = comment.user.avatar_kind
+                    - if kind == 'initials'
+                      %span{ width: '40', style: 'font-size:20;' }= comment.user.avatar_initials
+                    - elsif kind == "gravatar"
+                      %img{ src: "#{comment.user.gravatar_url(:size => User::MEDIUM_IMAGE)}", style: 'margin:0' }
+                    - elsif kind == "uploaded"
+                      %img{ src: "#{comment.user.uploaded_avatar.url('medium')}", style: 'margin:0'}
                   %td{ width: '478' }
-                    %span{ style: 'font-weight:strong, font-size:14;' }= comment.user_name
+                    %span{ style: 'margin-left:5; font-weight:strong, font-size:14;' }= comment.user_name
                     %span{style: 'font-size:14;' }
                       commented
-                    %div{ style: 'color:#AAA; font-size:13;' }= comment.created_at.strftime('%A, %-d %B')
+                    %div{ style: 'margin-left:5; color:#AAA; font-size:13;' }= comment.created_at.strftime('%A, %-d %B')
               %table{ width: '600', style: 'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
                 %tr
                   %td{ width: '50' }
