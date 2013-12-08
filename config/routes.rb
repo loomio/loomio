@@ -101,9 +101,6 @@ Loomio::Application.routes.draw do
       put :move
     end
   end
-  get    '/d/*id',                    to: 'discussions#show'
-  put    '/d/*id/update',             to: 'discussions#update'
-  delete '/d/*id',                    to: 'discussions#destroy'
 
   post   '/d/*id/update_description',       to: 'discussions#update_description'
   post   '/d/*id/add_comment',              to: 'discussions#add_comment'
@@ -112,18 +109,24 @@ Loomio::Application.routes.draw do
   post   '/d/*id/edit_title',               to: 'discussions#edit_title'
   put    '/d/*id/move',                     to: 'discussions#move'
 
-  # old, but supported, this must be specified second
-  resources :discussions_redirect, :path => 'discussions', except: [:edit] do
-    get :activity_counts, on: :collection
-    member do
-      post :update_description
-      post :add_comment
-      post :show_description_history
-      get :new_proposal
-      post :edit_title
-      put :move
-    end
-  end
+  get    '/d/*id',                    to: 'discussions#show' #note the * here is dangerous, this GET needs to be specified last
+  put    '/d/*id/update',             to: 'discussions#update'
+  delete '/d/*id',                    to: 'discussions#destroy'
+
+  # old, but supported
+  get    '/discussions/:id',          to: 'discussions_redirect#show'
+###### I think the only redirect we need to maintain support for is show ? ######
+  # resources :discussions_redirect, :path => 'discussions', except: [:edit] do
+  #   get :activity_counts, on: :collection
+  #   member do
+  #     post :update_description
+  #     post :add_comment
+  #     post :show_description_history
+  #     get :new_proposal
+  #     post :edit_title
+  #     put :move
+  #   end
+  # end
 
   resources :comments , only: :destroy do
     post :like, on: :member

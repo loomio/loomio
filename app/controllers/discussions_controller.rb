@@ -2,7 +2,7 @@ class DiscussionsController < GroupBaseController
   include DiscussionsHelper
 
   before_filter :load_resource_by_key, :except => [:new, :create, :index]
-  authorize_resource                    :except => [:new, :create, :index, :add_comment]
+  authorize_resource                   :except => [:new, :create, :index, :add_comment]
 
   before_filter :authenticate_user!, :except => [:show, :index]
   after_filter :mark_as_read, only: :show
@@ -114,13 +114,13 @@ class DiscussionsController < GroupBaseController
   end
 
   def new_proposal
-    if discussion.current_motion
-      redirect_to discussion
-      flash[:notice] = "A current proposal already exists for this disscussion."
+    if @discussion.current_motion
+      redirect_to @discussion
+      flash[:notice] = "A current proposal already exists for this discussion."
     else
       @motion = Motion.new
-      @motion.discussion = discussion
-      @group = GroupDecorator.new(discussion.group)
+      @motion.discussion = @discussion
+      @group = GroupDecorator.new(@discussion.group)
       render 'motions/new'
     end
   end

@@ -1,5 +1,4 @@
 class DiscussionsRedirectController < GroupBaseController
-  # include DiscussionsHelper
   before_filter :load_discussion_from_id, except: []
 
   def show

@@ -20,8 +20,12 @@ describe "routes to the discussions controller" do
     params_key = discussion.key + '/' + discussion.title.parameterize
 
     expect(:get => discussion_path(discussion)).
-      to route_to(controller: "discussions", action: "show", id: params_key)
+      to route_to(controller: 'discussions', action: 'show', id: params_key)
+
+    expect(:get => new_proposal_discussion_path(discussion)).
+      to route_to(controller: 'discussions', action: 'new_proposal', id: params_key)
   end
+
 
 
 end
