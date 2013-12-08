@@ -1,7 +1,8 @@
 class DiscussionsController < GroupBaseController
   include DiscussionsHelper
-  # load_and_authorize_resource :except => [:new, :create, :index, :add_comment]
+
   before_filter :load_resource_by_key, :except => [:new, :create, :index]
+  authorize_resource                   :except => [:new, :create, :index, :add_comment]
 
   before_filter :authenticate_user!, :except => [:show, :index]
   after_filter :mark_as_read, only: :show
@@ -113,7 +114,6 @@ class DiscussionsController < GroupBaseController
   end
 
   def new_proposal
-    discussion = Discussion.find(params[:id])
     if discussion.current_motion
       redirect_to discussion
       flash[:notice] = "A current proposal already exists for this disscussion."
@@ -136,7 +136,6 @@ class DiscussionsController < GroupBaseController
   end
 
   def show_description_history
-    @discussion = Discussion.find(params[:id])
     @originator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js
@@ -146,7 +145,7 @@ class DiscussionsController < GroupBaseController
   def preview_version
     # assign live item if no version_id is passed
     if params[:version_id].nil?
-      @discussion = Discussion.find(params[:id])
+      load_resource_by_key
     else
       version = Version.find(params[:version_id])
       @discussion = version.reify

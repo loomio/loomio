@@ -165,6 +165,7 @@ ActiveRecord::Schema.define(:version => 20131205020955) do
     t.integer  "read_items_count",    :default => 0,    :null => false
   end
 
+  add_index "discussion_readers", ["discussion_id"], :name => "index_motion_read_logs_on_discussion_id"
   add_index "discussion_readers", ["user_id", "discussion_id"], :name => "index_discussion_read_logs_on_user_id_and_discussion_id"
   add_index "discussion_readers", ["user_id"], :name => "index_motion_read_logs_on_user_id"
 
@@ -300,7 +301,7 @@ ActiveRecord::Schema.define(:version => 20131205020955) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "privacy"
+    t.string   "privacy",                    :default => "private"
     t.string   "members_invitable_by"
     t.integer  "parent_id"
     t.boolean  "email_new_motion",           :default => true
@@ -321,7 +322,7 @@ ActiveRecord::Schema.define(:version => 20131205020955) do
     t.boolean  "next_steps_completed",       :default => false,          :null => false
     t.string   "full_name"
     t.string   "payment_plan",               :default => "undetermined"
-    t.boolean  "viewable_by_parent_members", :default => true,           :null => false
+    t.boolean  "viewable_by_parent_members", :default => false,          :null => false
     t.string   "key"
   end
 
