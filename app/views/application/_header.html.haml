@@ -6,12 +6,13 @@
           %ul.nav-bar-list.clearfix
             %li.nav-item#logo-home
               %a.nav-logo-link{:href => "/"}
-                = image_tag("top-bar-loomio.png", :alt => "Loomio")
+                = image_tag(navbar_logo_path?, :alt => "Loomio")
             = render 'inbox'
             = render 'notifications_dropdown'
             = render 'application/groups_dropdown'
             = render 'user_dropdown'
-            = render 'contribute'
+            - if navbar_contribute? == "show"
+              = render 'contribute'
             = render 'help_dropdown'
             = render 'search'
   - else
