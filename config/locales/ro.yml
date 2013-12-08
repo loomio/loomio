@@ -75,7 +75,6 @@ ro:
     group_archived: "Grupul a fost arhivat cu succes."
     group_created: "Grupul a fost creat cu succes."
     members_added: "Membrii au fost adaugati la grup."
-    membership_requested: "Cerere de intrare in grup efectuata. Vei primi o notificare cand cererea este aprobata."
     position_submitted: "Optiunea a fost trimisa"
     position_updated: "Optiunea a fost modificata."
     proposal_created: "Propunerea a fost creata cu succes."
@@ -197,6 +196,7 @@ ro:
   deactivate_group: "Dezactiveaza grup"
   confirm_deactivate_group: "Asteapta!! Esti sigur ca vrei sa dezactivezi grupul %{which_group}? Nu vei mai putea sa vezi acest grup. Daca vei vrea sa re-creezi grupul trimite-ne un mail pe adresa contact@loomio.org."
   invited_users: "Membri invitati"
+  members: "Membri"
   confirm_remove_user: "Esti sigur ca vrei sa elimini %{which_user} din grup?"
   remove_coordinator: "Elimina coordonator"
   confirm_remove_coordinator: "Esti sigur ca vrei ca utilizatorul %{which_user} sa nu mai fie coordonator in acest grup?"
@@ -221,9 +221,6 @@ ro:
   new_subgroup: "Nou subgrup"
   create_subgroup: "Creeaza subgrup"
   creating_subgroup: "Creez subgrup"
-  group_privacy: "Confidentialitate: '%{who}' pot vizualiza acest grup."
-  parent_group_members: "Membrii grupului principal"
-  members: "Membri"
   new_group: "Grup Nou"
   create_group: "Creeaza Grup"
   creating_group: "Creez grup"
@@ -286,6 +283,7 @@ ro:
   confirm_close_proposal: "Confirmi ca vrei sa inchizi aceasta propunere?"
   change_proposal_close_date: "Modifca data de inchidere"
   change_proposal_close_date_header: "Modifica data de inchidere pentru propunerea '%{which}'"
+  proposal: Propunere
   proposal_close_date_error: "Te rugam sa adaugi o data de inchidere din viitor"
   proposal_closing_when: "Inchidere %{when}"
   proposal_closed_when: "Inchis acum %{when}"
@@ -301,7 +299,6 @@ ro:
   block_position: "Ma opun"
   block_details: "Obiectez fata de aceasta propunere si NU sunt de acord sa fie adoptata."
   not_voted: "[Afiseaza utilizatorii care nu s-au decis inca]"
-  outcome: "Rezultat"
   outcome_placeholder: "Care a fost rezultatul acestei propuneri?"
   help:
     coordinating: 'Coordonarea grupului tau Loomio'
@@ -442,7 +439,6 @@ ro:
     header: "Propunere noua"
     name_helper: "Scrie un title cat se poate de clar si scurt astfel incat oamenii sa inteleaga exact la ce te referi cand sunt de acord sau nu cu propunerea ta."
   group_form:
-    privacy_settings: "Setari de confidentialitate pentru datele personale"
     invitation_settings: "Setari pentru Invitatii"
     admins_only: "Doar coordonatorii"
   vote_form:
@@ -478,8 +474,6 @@ ro:
         title: "Titlu"
         description: "Context"
       group:
-        name: "Care este numele grupului tau?"
-        viewable_by: "Cine poate vedea acest grup?"
         members_invitable_by: "Cine poate trimite invita oameni in acest grup?"
       membership_request:
         introduction: "Prezinta-te"
@@ -492,13 +486,6 @@ ro:
         password: "Parola"
         password_confirmation: "Confirma parola"
         language_preference: "Limba"
-    options:
-      group:
-        viewable_by:
-          parent_group_members: "Membrii grupului principal - doar membrii grupului principal pot sa vada acest sub-grup"
-        members_invitable_by:
-          admins: 'Doar coordonatorii'
-          members: 'Toti membrii grupului'
     placeholders:
       discussion:
         title: "Care este tema care vrei sa fie discutata?"
@@ -546,7 +533,6 @@ ro:
         Echipa Loomio\n
     membership_request:
       intro: "%{name} (%{email}) a cerut acces in unul din grupurile tale Loomio."
-      subject: "Noua cerere de intrare in grup de la %{who}"
       view_group: "Aici poti aproba sau nu cererea"
     mentioned:
       intro: "Ai fost mentionat intr-o discutie numita:"
@@ -554,7 +540,6 @@ ro:
       subject: "%{who} te-a mentionat in grupul %{which} pe Loomio"
     proposal_closed:
       intro: 'Propunerea ta "%{proposal_name}" s-a inchis.'
-      specify_outcome: "Apasa aici pentru a specifica un scop"
       subject: "Propunere inchisa - %{which}"
     proposal_blocked:
       intro: "O propunere pe care o facilitezi a fost blocata."
@@ -609,9 +594,9 @@ ro:
   name: "Nume"
   new_activity: "Activitate noua"
   next: "Urmatorul"
+  outcome: "Rezultat"
   password: "Parola"
   pricing: 'Plati'
-  proposal: "Propunere"
   prev: "Anteriorul"
   translate: "Ajuta la traducerea Loomio!"
   options: "Optiuni"

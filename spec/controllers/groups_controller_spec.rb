@@ -42,7 +42,7 @@ describe GroupsController do
     end
 
     it "create subgroup" do
-      post :create, :group => {parent_id: group.id, name: 'subgroup'}
+      post :create, :group => {parent_id: group.id, name: 'subgroup', privacy: 'secret'}
       assigns(:group).parent.should eq(group)
       assigns(:group).admins.should include(user)
       response.should redirect_to(group_url(assigns(:group)))

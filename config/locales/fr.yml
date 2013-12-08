@@ -103,7 +103,6 @@ fr:
     group_archived: "Le Groupe a été correctement archivé."
     group_created: "Le groupe a été correctement créé."
     members_added: "Les membres ont été ajoutés au groupe."
-    membership_requested: "La demande d'adhésion a été signifiée. Vous recevrez une notification lorsque votre demande aura été approuvée."
     position_submitted: "Position enregistrée"
     position_updated: "Position actualisée."
     proposal_created: "La proposition a été correctement créée."
@@ -178,8 +177,6 @@ fr:
   sign_out: "Se déconnecter"
   sign_in: "Se connecter"
   tagline: "Créer un monde ou il est facile pour tous de participer aux décisions qui les concernent."
-  or_sign_in_html: "Vous avez déjà un compte Loomio ? <a href='%{link}'>Connectez-vous ici</a>"
-  or_link_account_html: "Vous avez déjà un compte Loomio ? <a href='%{link}'>Liez-le</a>"
   click_to_dismiss: "Cliquez ici pour annuler ce message"
   generic_confirm: "Êtes-vous sûr ?"
   discussion_helper_text:
@@ -218,6 +215,7 @@ fr:
   deactivate_group: "Désactiver le groupe"
   confirm_deactivate_group: "Attention !!! Etes vous sur de vouloir désactiver %{which_group}?  Vous ne pourrez plus voir le groupe. Cependant, si vous voulez remettre le groupe en service, vous pouvez nous demander de le réactiver en nous envoyant un email à contact@loomio.org."
   invited_users: "Membres invités"
+  members: "Les membres"
   confirm_remove_user: "Etes vous sur de vouloir supprimer %{which_user} du groupe ?"
   remove_coordinator: "Supprimer un coordinateur"
   confirm_remove_coordinator: "Êtes-vous sûr de ne plus vouloir que %{which_user} soit coordinateur du groupe ?"
@@ -243,9 +241,6 @@ fr:
   new_subgroup: "Nouveau sous-groupe"
   create_subgroup: "Créer un sous-groupe"
   creating_subgroup: "Sous-groupe en cours de construction"
-  group_privacy: "Sécurité: '%{who}' peut voir ce groupe."
-  parent_group_members: "Les membres du groupe parent"
-  members: "Les membres"
   new_group: "Nouveau groupe"
   create_group: "Créer un groupe"
   creating_group: "Groupe en cours de création"
@@ -308,6 +303,7 @@ fr:
   confirm_close_proposal: "Etes vous sur de vouloir fermer cette proposition ?"
   change_proposal_close_date: "Changer la date de clôture"
   change_proposal_close_date_header: "Changer la date de clôture pour la proposition '%{which}'"
+  proposal: Proposition
   proposal_close_date_error: "Merci de donner une date de donner une date de clôture postérieure"
   proposal_closing_when: "Se clôture dans  %{when}"
   proposal_closed_when: "Fermé depuis %{when}"
@@ -325,7 +321,6 @@ fr:
   block_position: "Je bloque"
   block_details: "J'ai de fortes objections à cette proposition et ne suis pas d'accord pour qu'elle avance."
   not_voted: "[Montrer les membres qui n'ont pas encore pris position]"
-  outcome: "Résultat"
   outcome_placeholder: "Quel est le résultat de cette proposition ?"
   position_verbs:
     'yes': "pour"
@@ -487,10 +482,8 @@ fr:
   create_an_account: 'Créer un compte'
   join_group:
     log_in: "Connectez-vous pour rejoindre %{group_name}"
-    create_account: "Créer un compte"
   start_group:
     log_in: "Connectez-vous pour mettre en place votre groupe"
-    create_account: "Créer un compte"
   invitation:
     no_invitations_left: "Désolé, vous n'avez plus d'invitations disponibles"
     no_invitations_left_get_more: "Merci de nous envoyer un email à contact@loomio.org et nous verrons comment vous assister"
@@ -535,7 +528,6 @@ fr:
     header: "Nouvelle proposition"
     name_helper: "Rédiger le titre aussi clair et succint que possible"
   group_form:
-    privacy_settings: "Paramètres de confidentialité"
     invitation_settings: "Paramétrage des invitations"
     admins_only: "Réservé aux coordinateurs"
   vote_form:
@@ -580,9 +572,6 @@ fr:
         title: "Titre"
         description: "Contexte"
       group:
-        name: "Quel est le nom de votre groupe ?"
-        description: "Description du groupe"
-        viewable_by: "Qui peut voir ce groupe ?"
         members_invitable_by: "Qui peut inviter des personnes dans ce groupe ?"
       membership_request:
         introduction: "Présentez vous"
@@ -596,11 +585,6 @@ fr:
         password: "Mot de passe"
         password_confirmation: "Confirmer votre mot de passe"
         language_preference: "Langue"
-    options:
-      group:
-        members_invitable_by:
-          admins: 'Les coordinateurs seulement'
-          members: 'Tout les membres du groupe'
     placeholders:
       discussion:
         title: "De quel sujet voulez vous parlez ?"
@@ -610,8 +594,6 @@ fr:
       motion:
         name: "Quel est votre plan d'action ?"
         description: "Donnez suffisamment d'informations pour que tout le monde sache exactement ce que signifie d'être d'accord ou de ne pas être d'accord."
-      group:
-        description: "Décrivez votre groupe le plus simplement possible: Que voulez-vous accomplir ensemble ? Quelles types de décisions prendrez-vous ? Qui sera impliqué ?"
       user:
         email: "Email"
         password: "Mot de passe"
@@ -659,7 +641,6 @@ fr:
         L'équipe de Loomio
     membership_request:
       intro: "%{name} (%{email}) a demandé l'accès à l'un de groupe Loomio."
-      subject: "Nouvelle demande d'adhésion d'un membre de %{who}"
       view_group: "Vous pouvez accepter ou rejeter cette demande"
     mentioned:
       intro: "Vous avez été cité dans une discussion :"
@@ -669,7 +650,6 @@ fr:
       context: "%{author} a créé une proposition dans %{group_full_name}:"
     proposal_closed:
       intro: 'Votre proposition "%{proposal_name}" est close.'
-      specify_outcome: "Merci de cliquer ici pour spécifier un résultat"
       subject: "Fermeture de la proposition - %{which}"
     proposal_blocked:
       intro: "Une proposition sur laquelle vous êtes intervenue a été bloquée."
@@ -740,9 +720,9 @@ fr:
   name: "Nom"
   new_activity: "Nouvelle activité"
   next: "Suivant"
+  outcome: "Résultat"
   password: "Mot de passe"
   pricing: 'Tarification'
-  proposal: "Proposition"
   prev: "Précédent"
   translate: "Aidez-nous à traduire Loomio !"
   options: "Options"
