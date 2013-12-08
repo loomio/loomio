@@ -466,11 +466,11 @@ body.pages.terms_of_service {
       a { text-align: left; }
       .btn-container{ text-align: center; }
       .sso-btn-row { margin-bottom: 2em; }
+      h1 { margin-bottom: 0.5em; }
       .login {
-        width: 88px;
-        text-align: center;
-        opacity: .9;
+        padding: 10px 0;
       }
+      .span4{ text-align: right; }
     }
   }
     .separator-container {

@@ -1,14 +1,10 @@
 -unless omniauth_authenticated_and_waiting?
-  .row-fluid.sso-btn-row
-    .span4.btn-container
-      = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-facebook btn-large login' do
-        Facebook
-    .span4.btn-container
-      = link_to user_omniauth_authorize_path(:google), class: 'btn btn-google btn-large login' do
-        Google
-    .span4.btn-container
-      = link_to '#', class: 'btn btn-persona btn-large login', id: 'persona-login-btn', onclick: 'PersonaLogin(); return false' do
-        Persona
+  %a{ href: 'user_omniauth_authorize_path(:facebook)', class: '' }
+    = image_tag('login-facebook.png', title: 'Log in with Facebook')
+  %a{ href: 'user_omniauth_authorize_path(:google)', class: 'login' }
+    = image_tag('login-google.png', title: 'Log in with Google')
+  %a{ href: '#', class: 'login', id: 'persona-login-btn', onclick: 'PersonaLogin(); return false' }
+    = image_tag('login-persona.png', title: 'Log in with Persona')
 
 :javascript
   function PersonaLogin() {
