@@ -6,7 +6,7 @@ class Queries::VisibleDiscussions < Delegator
       group_ids = groups.map(&:id)
     end
 
-    @relation = Discussion.joins(:group).where('archived_at IS NULL')
+    @relation = Discussion.joins(:group).where('groups.archived_at IS NULL')
 
     if @user.present?
       @relation = @relation.select('discussions.*,
