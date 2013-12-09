@@ -3,7 +3,6 @@ require "spec_helper"
 describe "routes to the discussions controller" do
   let(:discussion) { create_discussion }
 
-  #not sure where to put this spec yet
   it 'generates paths using the key & title attributes' do
     d = discussion
     d.title = "This is a tricky óñe & a hard test!"
@@ -17,16 +16,12 @@ describe "routes to the discussions controller" do
   end
 
   it "routes correctly for new urls" do
-    params_key = discussion.key + '/' + discussion.title.parameterize
-
+    key = discussion.key
+    slug = discussion.title.parameterize
     expect(:get => discussion_path(discussion)).
-      to route_to(controller: 'discussions', action: 'show', id: params_key)
+      to route_to(controller: 'discussions', action: 'show', key: key, slug:slug)
 
     expect(:get => new_proposal_discussion_path(discussion)).
-      to route_to(controller: 'discussions', action: 'new_proposal', id: params_key)
+      to route_to(controller: 'discussions', action: 'new_proposal', key: key, slug: slug)
   end
-
-
-
 end
-

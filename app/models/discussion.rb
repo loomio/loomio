@@ -8,7 +8,7 @@ class Discussion < ActiveRecord::Base
   scope :order_by_latest_comment, order('last_comment_at DESC')
   scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
 
-  validates_presence_of :title, :group, :author, :key
+  validates_presence_of :title, :group, :author
   validates :title, :length => { :maximum => 150 }
   validates_inclusion_of :uses_markdown, :in => [true,false]
   validates :key, uniqueness: true, presence: true
@@ -153,7 +153,7 @@ class Discussion < ActiveRecord::Base
     def set_key
       unless self.key
         new_key = generate_key
-        while Discussion.find_by_key(new_key) != nil
+        while self.class.find_by_key(new_key) != nil
           new_key = generate_key
         end
         self.key = new_key

@@ -1,5 +1,5 @@
 class DiscussionsRedirectController < GroupBaseController
-  before_filter :load_discussion_from_id, except: []
+  before_filter :load_resource_from_id, except: []
 
   def show
     redirect_to discussion_path(@discussion)
@@ -7,8 +7,8 @@ class DiscussionsRedirectController < GroupBaseController
 
   private
 
-    def load_discussion_from_id
-      @discussion = Discussion.find_by(params[:id])
+    def load_resource_from_id
+      @discussion = Discussion.find(params[:id])
     end
 
 end

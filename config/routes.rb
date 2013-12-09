@@ -34,7 +34,9 @@ Loomio::Application.routes.draw do
     end
   end
 
-  resources :groups, except: [:index, :new] do
+
+  ### groups section ###
+  resources :groups, :path => 'g', except: [:index, :new] do
     resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
     resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
       member do
@@ -65,9 +67,11 @@ Loomio::Application.routes.draw do
     resources :motions
     resources :discussions, only: [:index, :new]
   end
+  ## old supported ##
+  get 'group/:id', to: 'groups_redirect#show'
 
   get 'groups/:group_id/request_membership',   to: 'groups/membership_requests#new',          as: :new_group_membership_request
-  post 'groups/:group_id/membership_requests', to: 'groups/membership_requests#create'  ,       as: :group_membership_requests
+  post 'groups/:group_id/membership_requests', to: 'groups/membership_requests#create',       as: :group_membership_requests
   delete 'membership_requests/:id/cancel',     to: 'groups/membership_requests#cancel',       as: :cancel_membership_request
 
   get 'groups/:group_id/membership_requests',  to: 'groups/manage_membership_requests#index', as: :group_membership_requests
@@ -90,16 +94,38 @@ Loomio::Application.routes.draw do
     end
   end
 
-  post   '/d/:key/:slug/update_description',       to: 'discussions#update_description'
-  post   '/d/:key/:slug/add_comment',              to: 'discussions#add_comment'
-  post   '/d/:key/:slug/show_description_history', to: 'discussions#show_description_history'
-  get    '/d/:key/:slug/new_proposal',             to: 'discussions#new_proposal'
-  post   '/d/:key/:slug/edit_title',               to: 'discussions#edit_title'
-  put    '/d/:key/:slug/move',                     to: 'discussions#move'
+  ### discussions section ###
 
-  get    '/d/:key/:slug',                    to: 'discussions#show' #note the * here is dangerous, this GET needs to be specified last
-  put    '/d/:key/:slug/update',             to: 'discussions#update'
+
+  # scope 'discussions', path: 'd' do
+  #   scope ':key' do
+  #     scope ':slug' do
+  #       post   '/update_description',       to: '#update_description'
+  #       post   '/add_comment',              to: '#add_comment'
+  #       post   '/show_description_history', to: '#show_description_history'
+  #       get    '/new_proposal',             to: '#new_proposal'
+  #       post   '/edit_title',               to: '#edit_title'
+  #       put    '/move',                     to: '#move'
+
+  #       get    '',                    to: '#show' #note the * here is dangerous, this GET needs to be specified last
+  #       put    '/update',             to: '#update'
+  #       delete '',                    to: '#destroy'
+  #     end
+  #   end
+  # end
+
+  get    '/d/:key/:slug',                    to: 'discussions#show'
   delete '/d/:key/:slug',                    to: 'discussions#destroy'
+  match  '/d/:key/:slug/:action', controller: 'discussions', constraints: PermittedDiscussionRoutes
+
+  # post   '/d/:key/:slug/update_description',       to: 'discussions#update_description'
+  # post   '/d/:key/:slug/add_comment',              to: 'discussions#add_comment'
+  # post   '/d/:key/:slug/show_description_history', to: 'discussions#show_description_history'
+  # get    '/d/:key/:slug/new_proposal',             to: 'discussions#new_proposal'
+  # post   '/d/:key/:slug/edit_title',               to: 'discussions#edit_title'
+  # put    '/d/:key/:slug/move',                     to: 'discussions#move'
+
+
 
   resources :discussions, :path => 'd', except: [:edit] do
     get :activity_counts, on: :collection
@@ -114,7 +140,7 @@ Loomio::Application.routes.draw do
   end
 
   # old, but supported
-  get    '/discussions/:id',          to: 'discussions_redirect#show'
+  get    '/discussions/:id', to: 'discussions_redirect#show'
 ###### I think the only redirect we need to maintain support for is show ? ######
   # resources :discussions_redirect, :path => 'discussions', except: [:edit] do
   #   get :activity_counts, on: :collection
