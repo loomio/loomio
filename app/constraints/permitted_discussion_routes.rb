@@ -1,17 +1,27 @@
 class PermittedDiscussionRoutes
-  GET_ACTIONS    = %w[ new_proposal ]
-  POST_ACTIONS   = %w[ update_description add_comment show_description_history edit_title ]
-  PUT_ACTIONS    = %w[ move update ]
-  DELETE_ACTIONS = %w[ ]
+ # GET_ACTIONS    = %w[ new_proposal ]
+ #  POST_ACTIONS   = %w[ update_description add_comment show_description_history edit_title ]
+ # PUT_ACTIONS    = %w[ move update ]
+#   DELETE_ACTIONS = %w[ ]
 
   def self.matches?(request)
 
     request_method = request.env['REQUEST_METHOD']
     action =         request.path_parameters[:action]
 
-    puts POST_ACTIONS
+    case request_method
+      when 'GET'
+        %w[ new_proposal ].include? action
+      when 'POST'
+        %w[ update_description add_comment show_description_history edit_title ].include? action
+      when 'PUT'
+        %w[ move update ].include? action
+      when 'DELETE'
+        %w[ ].include? action
+    end
 
-    raise "::#{request_method}_ACTIONS".constantize.inspect #constantize.include? action
+
+  #  raise "::#{request_method}_ACTIONS".constantize.inspect #constantize.include? action
 
   # post   '/d/:key/:slug/update_description',       to: 'discussions#update_description'
   # post   '/d/:key/:slug/add_comment',              to: 'discussions#add_comment'
