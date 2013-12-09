@@ -1,7 +1,7 @@
 class DiscussionsController < GroupBaseController
   include DiscussionsHelper
 
-  before_filter :load_resource_by_key, :except => [:new, :create, :index]
+  before_filter :load_resource_by_key, :except => [:new, :create, :index, :update_version]
   authorize_resource                   :except => [:new, :create, :index, :add_comment]
 
   before_filter :authenticate_user!, :except => [:show, :index]
