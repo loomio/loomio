@@ -143,6 +143,7 @@ class Group < ActiveRecord::Base
   end
 
   def archive!
+    self.discussions.each(&:archive!)
     self.update_attribute(:archived_at, DateTime.now)
     memberships.update_all(:archived_at => DateTime.now)
     subgroups.each do |group|
