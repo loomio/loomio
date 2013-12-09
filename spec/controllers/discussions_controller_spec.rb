@@ -55,14 +55,14 @@ describe DiscussionsController do
       end
       it "destroys discussion" do
         discussion.should_receive(:delayed_destroy)
-        delete :destroy, id: discussion.key
+        delete :destroy, key: discussion.key
       end
       it "redirects to group" do
-        delete :destroy, id: discussion.key
+        delete :destroy, key: discussion.key
         response.should redirect_to(group)
       end
       it "gives flash success message" do
-        delete :destroy, id: discussion.key
+        delete :destroy, key: discussion.key
         flash[:success].should =~ /Discussion successfully deleted/
       end
     end
@@ -75,14 +75,14 @@ describe DiscussionsController do
       end
       it "moves the discussion to the selected group" do
         discussion.should_receive(:group_id=).with(group.id.to_s)
-        put :move, id: discussion.key, discussion: { group_id: group.id }
+        put :move, key: discussion.key, discussion: { group_id: group.id }
       end
       it "redirects to the discussion" do
-        put :move, id: discussion.key, discussion: { group_id: group.id }
+        put :move, key: discussion.key, discussion: { group_id: group.id }
         response.should redirect_to(discussion)
       end
       it "gives flash success message" do
-        put :move, id: discussion.key, discussion: { group_id: group.id }
+        put :move, key: discussion.key, discussion: { group_id: group.id }
         flash[:success].should =~ /Discussion successfully moved./
       end
     end
@@ -90,11 +90,11 @@ describe DiscussionsController do
     describe "creating a new proposal" do
       context "current proposal already exists" do
         it "redirects to the discussion page" do
-          get :new_proposal, id: discussion.key
+          get :new_proposal, key: discussion.key
           response.should redirect_to(discussion)
         end
         it "displays a proposal already exists message" do
-          get :new_proposal, id: discussion.key
+          get :new_proposal, key: discussion.key
           flash[:notice].should =~ /A current proposal already exists for this discussion./
         end
       end
@@ -102,13 +102,13 @@ describe DiscussionsController do
         before do
           discussion.stub(current_motion: nil)
           Discussion.stub(:find).with(discussion.key.to_s).and_return(discussion)
-          get :new_proposal, id: discussion.key
+          get :new_proposal, key: discussion.key
         end
         it "succeeds" do
           response.should be_success
         end
         it "renders new motion template" do
-          get :new_proposal, id: discussion.key
+          get :new_proposal, key: discussion.key
           response.should render_template("motions/new")
         end
       end
@@ -127,7 +127,7 @@ describe DiscussionsController do
         it 'does not add a comment' do
           DiscussionService.should_receive(:add_comment).and_return(false)
           user.should_not_receive(:update_attributes)
-          xhr :post, :add_comment, comment: "", id: discussion.key, uses_markdown: false
+          xhr :post, :add_comment, comment: "", key: discussion.key, uses_markdown: false
         end
       end
 
@@ -136,7 +136,7 @@ describe DiscussionsController do
           DiscussionService.should_receive(:add_comment).
             with(comment).and_return(true)
           user.should_receive(:update_attributes)
-          xhr :post, :add_comment, comment: "", id: discussion.key, uses_markdown: false, attachments: [2]
+          xhr :post, :add_comment, comment: "", key: discussion.key, uses_markdown: false, attachments: [2]
         end
       end
     end
@@ -148,7 +148,7 @@ describe DiscussionsController do
       end
 
       after do
-        post :update_description, :id => discussion.key, :description => "blah"
+        post :update_description, :key => discussion.key, :description => "blah"
       end
 
       it "assigns description to the model" do
@@ -163,7 +163,7 @@ describe DiscussionsController do
 
       after do
         xhr :post, :edit_title,
-          :id => discussion.key,
+          :key => discussion.key,
           :title => "The Butterflys"
       end
 
