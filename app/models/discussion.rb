@@ -151,9 +151,19 @@ class Discussion < ActiveRecord::Base
   private
 
     def set_key
-      self.key ||= (('a'..'z').to_a +
-                    ('A'..'Z').to_a +
-                    (0..9).to_a).sample(KEY_LENGTH).join
+      unless self.key
+        new_key = generate_key
+        while Discussion.find_by_key(new_key) != nil
+          new_key = generate_key
+        end
+        self.key = new_key
+      end
+    end
+
+    def generate_key
+      ( ('a'..'z').to_a +
+        ('A'..'Z').to_a +
+            (0..9).to_a ).sample(KEY_LENGTH).join
     end
 
     def set_last_comment_at
