@@ -33,8 +33,9 @@ describe Discussion do
   end
 
   describe "archive!" do
+    let(:discussion) { FactoryGirl.create(:discussion) }
+
     before do
-      discussion.archived_at.should_not be_present
       discussion.archive!
     end
 
