@@ -61,7 +61,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def archived?
-    self.archived_at.present?
+    archived_at.present?
   end
 
   def voting_motions
