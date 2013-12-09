@@ -165,8 +165,7 @@ class DiscussionsController < GroupBaseController
   private
 
   def load_resource_by_key
-    key = params[:id].split('/').first
-    @discussion = Discussion.find_by_key(key)
+    @discussion = Discussion.find_by_key(params[:key])
   end
 
   def build_comment

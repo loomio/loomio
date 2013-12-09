@@ -4,7 +4,7 @@
       = discussion.title
 
     #edit-discussion-title.hidden
-      = form_tag edit_title_discussion_path, method: :post do |f|
+      = form_tag edit_title_discussion_path(discussion), method: :post do |f|
         = hidden_field_tag 'id'
         .control-group
           = text_field_tag 'title', discussion.title, {id: 'discussion-input', class: 'validate-length limit-150'}

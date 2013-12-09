@@ -90,6 +90,17 @@ Loomio::Application.routes.draw do
     end
   end
 
+  post   '/d/:key/:slug/update_description',       to: 'discussions#update_description'
+  post   '/d/:key/:slug/add_comment',              to: 'discussions#add_comment'
+  post   '/d/:key/:slug/show_description_history', to: 'discussions#show_description_history'
+  get    '/d/:key/:slug/new_proposal',             to: 'discussions#new_proposal'
+  post   '/d/:key/:slug/edit_title',               to: 'discussions#edit_title'
+  put    '/d/:key/:slug/move',                     to: 'discussions#move'
+
+  get    '/d/:key/:slug',                    to: 'discussions#show' #note the * here is dangerous, this GET needs to be specified last
+  put    '/d/:key/:slug/update',             to: 'discussions#update'
+  delete '/d/:key/:slug',                    to: 'discussions#destroy'
+
   resources :discussions, :path => 'd', except: [:edit] do
     get :activity_counts, on: :collection
     member do
@@ -101,17 +112,6 @@ Loomio::Application.routes.draw do
       put :move
     end
   end
-
-  post   '/d/*id/update_description',       to: 'discussions#update_description'
-  post   '/d/*id/add_comment',              to: 'discussions#add_comment'
-  post   '/d/*id/show_description_history', to: 'discussions#show_description_history'
-  get    '/d/*id/new_proposal',             to: 'discussions#new_proposal'
-  post   '/d/*id/edit_title',               to: 'discussions#edit_title'
-  put    '/d/*id/move',                     to: 'discussions#move'
-
-  get    '/d/*id',                    to: 'discussions#show' #note the * here is dangerous, this GET needs to be specified last
-  put    '/d/*id/update',             to: 'discussions#update'
-  delete '/d/*id',                    to: 'discussions#destroy'
 
   # old, but supported
   get    '/discussions/:id',          to: 'discussions_redirect#show'
