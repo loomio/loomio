@@ -16,7 +16,7 @@ end
 
 describe 'MotionService' do
   let(:group) { double(:group, present?: true) }
-  let(:motion) { double(:motion, update_attribute: true, outcome: "", group: group) }
+  let(:motion) { double(:motion, outcome: "", group: group, :outcome= => true, :outcome_author= => true, :save! => true, save: true) }
   let(:ability) { double(:ability, :authorize! => true) }
   let(:user) { double(:user, ability: ability) }
   let(:motion_params) { {outcome: "We won!"} }
@@ -98,8 +98,10 @@ describe 'MotionService' do
       MotionService.create_outcome(motion, motion_params, user)
     end
 
-    it 'updates the motion outcome attribute' do
-      motion.should_receive(:update_attribute).with(:outcome, motion_params[:outcome])
+    it 'updates the outcome and outcome_author attributes' do
+      motion.should_receive(:outcome=).with(motion_params[:outcome])
+      motion.should_receive(:outcome_author=).with(user)
+      motion.should_receive(:save)
       MotionService.create_outcome(motion, motion_params, user)
     end
 
@@ -110,7 +112,7 @@ describe 'MotionService' do
 
     context 'outcome is invalid' do
       before do
-        motion.stub(:update_attribute).and_return false
+        motion.stub(:save).and_return false
       end
 
       it 'returns false' do
@@ -130,8 +132,10 @@ describe 'MotionService' do
       MotionService.update_outcome(motion, motion_params, user)
     end
 
-    it 'updates the motion outcome attribute' do
-      motion.should_receive(:update_attribute).with(:outcome, motion_params[:outcome])
+    it 'updates the outcome and outcome_author attributes' do
+      motion.should_receive(:outcome=).with(motion_params[:outcome])
+      motion.should_receive(:outcome_author=).with(user)
+      motion.should_receive(:save)
       MotionService.update_outcome(motion, motion_params, user)
     end
 
@@ -142,7 +146,7 @@ describe 'MotionService' do
 
     context 'outcome is invalid' do
       before do
-        motion.stub(:update_attribute).and_return false
+        motion.stub(:save).and_return false
       end
 
       it 'returns false' do

@@ -1,7 +1,24 @@
-require_relative '../../extras/migrations/migrate_motions_closed_by_user'
 namespace :upgrade_tasks do
+
+  task :'2013-11-29-set-outcome-author-for-motions' => :environment do
+    ActiveRecord::Base.record_timestamps = false
+    begin
+      require_relative '../../extras/migrations/20131129_set_outcome_author_for_motions'
+      SetOutcomeAuthorForMotionsMigration.now
+    ensure
+      ActiveRecord::Base.record_timestamps = true  # don't forget to enable it again!
+    end
+  end
+
   task :'2013-11-29-motion-closed-by-user' => :environment do
+    require_relative '../../extras/migrations/migrate_motions_closed_by_user'
     MigrateMotionsClosedByUser.now
+  end
+
+  task :'2013-11-make-subgroups-of-secret-groups-secret' => :environment do
+    require_relative '../../extras/migrations/20131129_migrate_subgroups_of_secret_groups_to_be_secret'
+    MakeSubgroupsOfSecretGroupsSecret.now
+    puts 'Upgrade done'
   end
 
   task :'2013-10-add-discussion-item-number' => :environment do

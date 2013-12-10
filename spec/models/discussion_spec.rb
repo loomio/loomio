@@ -32,6 +32,18 @@ describe Discussion do
     discussion.last_comment_at.to_s.should == discussion.created_at.to_s
   end
 
+  describe "archive!" do
+    let(:discussion) { FactoryGirl.create(:discussion) }
+
+    before do
+      discussion.archive!
+    end
+
+    it "sets archived_at on the discussion" do
+      discussion.archived_at.should be_present
+    end
+  end
+
   describe "#search(query)" do
     before { @user = create(:user) }
     it "returns user's discussions that match the query string" do

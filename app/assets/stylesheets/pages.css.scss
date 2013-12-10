@@ -260,6 +260,27 @@ a.btn-icon:hover { color: $dark-grey; }
     margin: 14px 223px 34px 223px;
   }
 
+  #people {
+    blockquote {
+      background-color: $even-lighter-grey;
+      margin-top: 4px;
+      margin-bottom: 3em;
+      border-top: 1px solid $light-grey;
+      border-bottom: 1px solid $light-grey;
+      border-left: none;
+      color: $dark-grey;
+      line-height: 32px;
+      font-style: italic;
+      font-size: 18px;
+      padding: .6em .8em;
+    }
+    p { line-height: 32px; }
+    h2 { margin-bottom: .6em; }
+    .blurb { padding-right: 20px; }
+    .intro-subhead { color: $mid-grey; }
+    .person-img { margin-left: 0; }
+  }
+
   .more-link{
     .toggle{
       background: url("link-icon.png") 4px 4px no-repeat #f8f8f8;
