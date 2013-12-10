@@ -6,7 +6,7 @@ describe "Groups" do
   context "a logged in user" do
     before :each do
       @user = create(:user)
-      @group = create(:group, name: 'Test Group', privacy: 'secret')
+      @group = create(:group, name: 'Test Group', privacy: 'hidden')
       @group.add_member!(@user)
       @discussion = create(:discussion, group: @group, author: @user)
       @motion = create(:motion, name: 'Test Motion',
@@ -50,9 +50,9 @@ describe "Groups" do
       end
     end
 
-    context "group member viewing a secret group" do
+    context "group member viewing a hidden group" do
       before :each do
-        @group.privacy = 'secret'
+        @group.privacy = 'hidden'
         @group.save
       end
 
@@ -117,10 +117,10 @@ describe "Groups" do
       end
     end
 
-    context "group non-member viewing a secret group" do
+    context "group non-member viewing a hidden group" do
       it "displays 'group not found' page" do
         pending "should be converted to cucs, broken as specs"
-        @group2 = build(:group, name: 'Test Group2', privacy: 'secret')
+        @group2 = build(:group, name: 'Test Group2', privacy: 'hidden')
         @group2.save
         @group2.add_member!(create(:user))
         visit group_path(@group2)
@@ -133,7 +133,7 @@ describe "Groups" do
   context "logged-out user" do
     it "viewing a private group redirects to log-in" do
       pending "should be converted to cucs, broken as specs"
-      @group = create(:group, name: 'Test Group', privacy: 'secret')
+      @group = create(:group, name: 'Test Group', privacy: 'hidden')
       visit group_path(@group)
 
       should have_css("body.sessions.new")

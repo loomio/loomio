@@ -87,7 +87,7 @@ module GroupsHelper
       header = t "simple_form.labels.group.privacy_#{privacy_setting}_header"
       description = t "simple_form.labels.group.privacy_#{privacy_setting}_description"
 
-      if privacy_setting != 'secret' && group.is_a_subgroup? && group.parent.privacy == 'secret'
+      if privacy_setting != 'hidden' && group.is_a_subgroup? && group.parent.privacy == 'hidden'
         disabled_class = 'disabled'
         text_color = '#CCCCCC'
       else
@@ -101,7 +101,7 @@ module GroupsHelper
   end
 
   def group_privacy_options_disabled(group)
-    if group.is_a_subgroup? && group.parent.privacy == 'secret'
+    if group.is_a_subgroup? && group.parent.privacy == 'hidden'
       ['public', 'private']
     else
       []
