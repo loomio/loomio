@@ -1,12 +1,23 @@
-zombie = require 'zombie'
+assert = require 'assert'
+path = require 'path'
+
+protractor = require 'protractor'
+webdriver = require 'selenium-webdriver'
+
+driver = new webdriver.Builder().
+  usingServer('http://localhost:4444/wd/hub').
+  withCapabilities(webdriver.Capabilities.chrome()).
+  build()
+
+driver.manage().timeouts().setScriptTimeout(100000)
+
+ptor = protractor.wrapDriver driver
 
 class World
   constructor: (callback) ->
-    @browser = new zombie
+    @browser = ptor
+    @By = protractor.By
+    @assert = assert
+    callback()
 
-  @visit = (url, callback) ->
-    @browser.visit(url, callback);
-
-  callback() # tell Cucumber we're finished and to use 'this' as the world instance
-
-exports.World = World
+module.exports.World = World

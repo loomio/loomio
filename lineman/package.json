@@ -16,7 +16,8 @@
     "grunt-concat-sourcemap": "~0.3.0",
     "lineman": ">=0.11.6",
     "coffee-script": "~1.6.3",
-    "jasmine-jquery": "~1.3.3"
+    "jasmine-jquery": "~1.3.3",
+    "selenium-webdriver": "~2.38.1"
   },
   "engines": {
     "node": "~>0.10.5",
@@ -25,6 +26,6 @@
   "devDependencies": {
     "grunt-contrib-haml": "~0.1.1",
     "grunt-sass": "~0.8.1",
-    "cucumber": "~0.3.3"
+    "cucumber": "latest"
   }
 }
