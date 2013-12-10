@@ -19,9 +19,9 @@ Feature: Individual requests group membership
     And I fill in and submit the Request membership form using email of existing member
     Then I should see a field error telling me I am already a member of the group
 
-  Scenario: Vistor cannot request membership to secret group
+  Scenario: Vistor cannot request membership to hidden group
     Given I am a visitor
-    And a secret group exists
+    And a hidden group exists
     When I visit the request membership page for the group
     Then I should be asked to log in
 
@@ -54,9 +54,9 @@ Feature: Individual requests group membership
     And I fill in and submit the Request membership form (introduction only)
     Then I should see a flash message confirming my membership request
 
-  Scenario: User cannot request membership to secret group
+  Scenario: User cannot request membership to hidden group
     Given I am logged in
-    And a secret group exists
+    And a hidden group exists
     When I visit the request membership page for the group
     Then I should be redirected to the dashboard
 
