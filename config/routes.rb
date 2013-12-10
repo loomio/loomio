@@ -42,7 +42,7 @@ Loomio::Application.routes.draw do
   match  '/g/:key/:slug/:action',    controller: 'groups', constraints: GroupConstraint.new
 
   # match '/g/archive/:id',             to: "groups#archive", :as => :archive_group, :via => :post
-  # post   '/g/:key/:slug/archive',            to: "groups#archive", :as => :archive_group
+  post   '/g/:key/:slug/archive',            to: "groups#archive", :as => :archive_group
 
     # nb: this (with to_params) generates correct helper methods
   resources :groups, :path => 'g', except: [:index, :new] do
