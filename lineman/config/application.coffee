@@ -17,7 +17,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       prefix: 'api'
 
   # configure lineman to load additional angular related npm tasks
-  loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ngmin", "grunt-contrib-haml", 'grunt-sass']
+  loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ngmin", "grunt-contrib-haml", 'grunt-sass', 'grunt-cucumber']
 
   # we don't use the lineman default concat, handlebars, and jst tasks by default
   removeTasks:
