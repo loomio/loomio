@@ -168,16 +168,20 @@ describe Group do
   describe 'archive!' do
     before do
       group.add_member!(user)
+      @discussion = create(:discussion, group_id: group.id)
       group.archive!
     end
 
     it 'sets archived_at on the group' do
       group.archived_at.should be_present
-
     end
 
     it 'archives the memberships of the group' do
       group.memberships.all?{|m| m.archived_at.should be_present}
+    end
+
+    it 'archives the discussions' do
+      group.discussions.all?{|d| d.archived_at.should be_present}
     end
   end
 
