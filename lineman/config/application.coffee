@@ -58,31 +58,17 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       includePaths: ['vendor/bower_components/']
 
 
-  # configuration for grunt-angular-templates
   ngtemplates:
-    loomioApp: # "app" matches the name of the angular module defined in app.js
-      #cwd: 'generated/templates/',
-      #options: {
-      #//url:    function(url) { return 'wassup' },
-      #//prefix: '/'
-      #//base: 'thing',
-      #//path: 'jo',
-      #//cwd: 'yes',
-      #//base: "app/templates"
-      #},
+    loomioApp:
       src: "generated/templates/**/*.html"
-      
-      # puts angular templates in a different spot than lineman looks for other templates in order not to conflict with the watch process
       dest: "generated/angular/template-cache.js"
 
-  
   # configuration for grunt-ngmin, this happens _after_ concat once, which is the ngmin ideal :)
   ngmin:
     js:
       src: "<%= files.js.concatenated %>"
       dest: "<%= files.js.concatenated %>"
 
-  
   # generates a sourcemap for js, specs, and css with inlined sources
   # grunt-angular-templates expects that a module already be defined to inject into
   # this configuration orders the template inclusion _after_ the app level module
