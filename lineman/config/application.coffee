@@ -21,7 +21,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
   # we don't use the lineman default concat, handlebars, and jst tasks by default
   removeTasks:
-    common: ["concat", "handlebars", "jst", 'less', 'pages:dev']
+    common: ["concat", "handlebars", "jst", 'less', 'pages:dev', 'grunt-haml']
     dev: ["pages:dev"]
     dist: ['pages:dev']
 
