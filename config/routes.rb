@@ -66,8 +66,8 @@ Loomio::Application.routes.draw do
     resources :discussions, only: [:index, :new]
   end
 
-  get 'groups/:group_id/request_membership',   to: 'groups/membership_requests#new',          as: :new_group_membership_request
-  post 'groups/:group_id/membership_requests', to: 'groups/membership_requests#create'  ,       as: :group_membership_requests
+  get 'groups/:group_id/ask_to_join',          to: 'groups/membership_requests#new',          as: :new_group_membership_request
+  post 'groups/:group_id/membership_requests', to: 'groups/membership_requests#create',       as: :group_membership_requests
   delete 'membership_requests/:id/cancel',     to: 'groups/membership_requests#cancel',       as: :cancel_membership_request
 
   get 'groups/:group_id/membership_requests',  to: 'groups/manage_membership_requests#index', as: :group_membership_requests
