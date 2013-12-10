@@ -108,9 +108,9 @@ describe Group do
     end
   end
 
-  context "an existing secret group" do
+  context "an existing hidden group" do
     before :each do
-      @group = create(:group, privacy: "secret")
+      @group = create(:group, privacy: "hidden")
       @user = create(:user)
     end
 
@@ -140,12 +140,12 @@ describe Group do
       before :each do
         @subgroup = build(:group, :parent => @group)
       end
-      it "can create secret subgroups" do
-        @subgroup.privacy = 'secret'
+      it "can create hidden subgroups" do
+        @subgroup.privacy = 'hidden'
         @subgroup.valid?
         @subgroup.should have(0).errors_on(:privacy)
       end
-      it "returns an error when tries to create subgroup that is not secret" do
+      it "returns an error when tries to create subgroup that is not hidden" do
         @subgroup.privacy = 'public'
         @subgroup.valid?
         @subgroup.should have(1).errors_on(:privacy)

@@ -18,7 +18,7 @@ class Ability
           true
         when 'private'
           true
-        when 'secret'
+        when 'hidden'
           if group.viewable_by_parent_members?
             @member_group_ids.include?(group.id) or @member_group_ids.include?(group.parent_id)
           else

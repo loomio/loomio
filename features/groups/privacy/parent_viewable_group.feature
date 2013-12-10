@@ -7,7 +7,7 @@ Feature: User views group
     Given I am logged in
 
   Scenario: Coordinator makes subgroup viewable to parent members
-    Given I am a coordinator of a secret subgroup
+    Given I am a coordinator of a hidden subgroup
     When I visit the edit subgroup page
     And I set the subgroup to be viewable by parent members
     Then the subgroup should be viewable by parent members
