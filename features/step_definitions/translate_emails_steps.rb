@@ -101,6 +101,12 @@ Given(/^"(.*?)" has closed their proposal$/) do |arg1|
   MotionService.close_by_user(@motion, author)
 end
 
+Given(/^"(.*?)" has set a proposal outcome$/) do |arg1|
+  author = User.find_by_email("#{arg1}@example.org")
+  motion_params = {outcome: 'This is what we do.'}
+  MotionService.create_outcome(@motion, motion_params, author)
+end
+
 Then(/^the proposal closed email should be delivered to "(.*?)" in Spanish$/) do |arg1|
   email = MotionMailer.motion_closed(@motion, "#{arg1}@example.org")
   email.body.encoded.should include(I18n.t("email.proposal_closed.specify_outcome_and_notify_group", locale: "es"))

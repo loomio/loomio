@@ -1,90 +1,5 @@
 .container
-  %section.first#purpose
-    .inner-container
-      .row-fluid
-        .subhead
-          %h1 Purpose
-      .row-fluid#purpose
-        .span1 &nbsp;
-        .span2
-          =image_tag("world.png")
-        .span6
-          %h2.buffer Creating a world where it’s easy for anyone to participate in decisions that affect them.
-          %p With the right collaborative process, groups generate better ideas, decisions and actions than any individual would by themselves.
-          %p Loomio breaks down the barriers to participation in decision-making at every level: in neighbourhoods, community organisations, businesses, social movements, and local and national governance.
-          %p.no-bottom-margin Collaborative decision-making balances individual autonomy with the collective good.
-
-  %section#principles
-    .inner-container
-      .row-fluid
-        .subhead
-          %h1 Principles
-      .row-fluid#coop
-        .span1 &nbsp;
-        .span2
-          =image_tag("coop.png")
-        .span6
-          %h2 Cooperative social enterprise
-          %h3 Loomio is a social enterprise collectively owned by the people building it.
-          %p Social enterprise creates social and environmental benefit in a way that generates sustainable revenue. Unlike a traditional profit-maximising company, revenue is not an end in itself, but a means towards achieving a core social purpose.
-          %p A worker-owned cooperative structure is a powerful way to live our values of collaboration and collective ownership. This legal structure embodies our commitment to democracy in the workplace and connects us to a global movement based on cooperation.
-      .divider
-      .row-fluid
-        .span1 &nbsp;
-        .span2
-          =image_tag("independent.png")
-        .span6
-          %h2 Independent and neutral
-          %h3 We are committed to remaining independent so we can provide a neutral place for any group to come together.
-          %p We’re immensely proud of our diverse and growing user community: community organisations, businesses, educators, government departments, social activist groups, and families.
-          %p Loomio needs to remain independent to support this diversity. We will never do anything to compromise our autonomy or core purpose. We will never sell your data.
-      .divider
-      .row-fluid#free
-        .span1 &nbsp;
-        .span2
-          =image_tag("free.png")
-        .span6
-          %h2 Open-source collaboration
-          %h3 Loomio is free software, meaning that anyone has the freedom to run, read, learn from, modify and redistribute the code.
-          %p Loomio couldn’t be anything other than open-source.
-          %p Peer-production is transforming the way communities create value, laying the foundation for a new economy of abundance. Open collaboration unlocks collective wisdom on a scale we’ve never seen before, producing invaluable public resources like Wikipedia and Linux.
-          %p Free software is about the freedom of the user, not the price of the service. Groups with a budget contribute financially for the use of Loomio. This means we can gift it to groups without a budget.
-      .divider
-      .row-fluid#adaptive
-        .span1 &nbsp;
-        .span2
-          =image_tag("adaptive.png")
-        .span6
-          %h2.squish Adaptive, reflexive, user-driven
-          %h3 Loomio uses Loomio to develop Loomio.
-          %p Development of Loomio is iterative, self-reflexive and adaptive, driven by the collective wisdom of the user community. We’re developing an open participatory design methodology that will allow anyone affected by Loomio to have a say in how it works.
-      .divider
-      .row-fluid#transparent
-        .span1 &nbsp;
-        .span2
-          =image_tag("transparency.png")
-        .span6
-          %h2 Transparency
-          %h3 Our community of users and contributors must be confident that we’re doing what we say we are.
-          %p.no-bottom-margin We’re committed to remaining open and accountable to our community by sharing information about our internal decision-making, social impact results and finances. Communicating this information effectively is an ongoing challenge that we look forward to undertaking with our community.
-
-.container
-  %section#help-content
-    .inner-container#how-it-works
-      .row-fluid
-        .span1
-          &nbsp;
-        .span10
-          = render 'help/how_it_works'
-      .row-fluid
-        .span1
-          &nbsp;
-        .span10
-          %h2 Build shared understanding
-          %p As the conversation progresses and new information comes to light, you can change your position as many times as you like until the proposal closes. If the group isn’t in love with the first proposal, anyone can suggest a better one and keep moving forward. Through this dynamic process, the collective wisdom of your group can generate better ideas than anyone would have come up with on their own.
-
-  .container
-  %section#about-us
+  %section.first#about-us
     .inner-container
       .row-fluid
         .subhead
@@ -96,13 +11,190 @@
         .span6
           <iframe src="https://player.vimeo.com/video/53696972?title=0&amp;byline=0&amp;portrait=0" width="426" height="239" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
   .container
-  %section
-    .inner-container
-      .row-fluid#contact-us
-        .span6
-          =image_tag("retreat-photo.jpg")
-        .span6
-          %h2 Contact
-          %h3 Interested? Get in touch!
-          %p If you’d like to find out more about the project, <a href="#{contact_path}">drop us a line</a>.
-          %p If you’d rather speak to someone directly, you can call Ben on +6421 0232 5433.
+    %section#people
+      .inner-container
+        .row-fluid
+          %h2 People
+          %h3.intro-subhead Loomio Cooperative members
+          %p There are 12 worker-members (transacting shareholders) in the Loomio Cooperative, who have made a long-term commitment to the project. They bring a diverse range of skills and experiences, each contributing their own perspective to a powerful shared vision.
+
+        .row-fluid
+          %h3 Vivian Maidaborn
+        .row-fluid
+          .span7.offset1.blurb
+            %p Vivien brings a depth of experience in organisational systems, decision making processes and social change acumen. She has been CEO of CCS Disability Action and Relationships Aotearoa, and is the founder of the socialenterprise Lifemark.
+          .span3.person-img
+            =image_tag "people/viv.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            "Working at Loomio is such an exciting adventure on so many levels. We are making it possible for people to have a voice, to participate in generating collective wisdom, and to take tested ideas into action. We are co-creating new ways of approaching authority, accountability and choice in the workplace, but I am perhaps most inspired by the feeling we are creating tools for a more generative and generous future where everyone can be involved in making the decisions that affect them."
+
+        .row-fluid
+          %h3 Aaron Thornton
+        .row-fluid
+          .span7.offset1.blurb
+            %p Aaron has worked in the IT industry for more than eight years since completing a BSc in computer Science at VUW. He brings a calm and focused attitude to the team.
+          .span3.person-img
+            =image_tag "people/aaron.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “I was initially attracted to the Loomio project by a need to combine my passion to work on social good projects and the opportunity to upskill in a dynamic like-minded team committed to agile processes. Aside from the coding, I have owned and operated a cafe with my partner and travelled ￼￼￼￼￼extensively throughout the world. The experiences I encountered and the inequalities I felt encouraged and validated the need for my current undertakings with Loomio. With a very complimentary skill set and the infusion of collaborative ability attained by developing Loomio, I feel I have found the people and the project to pour my soul into.”
+
+        .row-fluid
+          %h3 Richard Bartlett
+        .row-fluid
+          .span7.offset1.blurb
+            %p Rich has a background in open-source engineering, education and community organising. This diverse skill-set sees him contributing to each facet of the Loomio project, including coding, coordination and communications.
+          .span3.person-img
+            =image_tag "people/rich.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “I gave up my engineering business in October 2011 when the global Occupy movement touched down in Civic Square in Wellington. It was the first time I had met people that shared my anger and concern about the inability of institutions to respond rationally to existential threats like ecosystem collapse, resource depletion, extreme inequality, and runaway climate-change. Occupy was my first taste of the transformative power of decentralised collaborative decision-making. The incredible surge of optimism I felt at Occupy has continued unabated throughout Loomio.” ￼￼￼￼
+
+        .row-fluid
+          %h3 Jon Lemmon
+        .row-fluid
+          .span7.offset1.blurb
+            %p Jon brings a powerful combination of technical experience, communication skills, and passion for community. He has several years experience working on software in the film and music industries, and has further experience coordinating and engaging in community-based events and social activism.
+          .span3.person-img
+            =image_tag "people/jon.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “I feel incredibly lucky to be working on Loomio. I am challenged every day, I am surrounded by the most inspiring people I have ever met, and most importantly, I am able to channel my passion and intelligence into building an infrastructure for empowering scalable positive social change. I love this team and this project and there is nothing I’d rather be doing.”
+
+        .row-fluid
+          %h3 Alanna Krause
+        .row-fluid
+          .span7.offset1.blurb
+            %p Alanna has a diverse background, having worked in the government and private sectors in the US, Asia, and Europe before settling in New Zealand. Her skills are at the intersection of technology and people, with a special passion for new- paradigm horizontal management, communications, and business systems.
+          .span3.person-img
+            =image_tag "people/alanna.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “Loomio is the manifestation of my most deeply held values around community, collaboration, and humanistic interaction, both in terms of the tool itself and how we operate as a team. I have already seen the way Loomio transforms how groups work together, and in a world full of possibilities this is the project really capturing my passion. Call me an idealist, but I honestly believe it can change the world.” ￼￼￼￼
+
+        .row-fluid
+          %h3 Ben Knight
+        .row-fluid
+          .span7.offset1.blurb
+            %p Ben has a research background in cognitive neuroscience and the evolution of collective intelligence, and a practical background in community coordination, social justice organising, media and communications.
+          .span3.person-img
+            =image_tag "people/ben.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “One of the things I found most inspiring about the Occupy movement was seeing the real-world outcomes of the collective wisdom that emerges when people participate as equals. To me, Loomio is all about building tools to make it easy for as many people as possible to put their heads together, to come up with better solutions than anyone would have come up with on their own. There’s nothing I’d rather be working on, and no team I’d rather be working with.”
+
+        .row-fluid
+          %h3 Simon Tegg
+        .row-fluid
+          .span7.offset1.blurb
+            %p Simon brings experience in research, data analysis and visualisation. He is driven to make information more accessible to stakeholders to enable better decision-making. This line of work brings him into contact with policy development, community projects, business analytics and marketing.
+          .span3.person-img
+            =image_tag "people/simon.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “Loomio (and the team behind it) combines people-knowledge and technical- knowledge in a way you don’t see very often. It's a thrill to work with people at the top of both of these games, and with them build a tool that people in faraway places have already found hugely valuable.” ￼￼￼￼￼￼
+
+        .row-fluid
+          %h3 Matthew Bartlett
+        .row-fluid
+          .span7.offset1.blurb
+            %p Matthew's background is in web development, design, book publishing, project management and social activism. He is passionate about evidence-based decision-making and collaborative design, and brings that focus to Loomio — iteratively improving the software to make using it a beautiful experience.
+          .span3.person-img
+            =image_tag "people/matthew.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “I’m totally enthused about every aspect of the Loomio project. It is such an inspiring team to work with, and the values-driven approach — ‘walking the talk’ — really appeals to me. Loomio is bringing real democracy into ordinary people’s lives; empowering groups to take control of their destinies.”
+
+        .row-fluid
+          %h3 Rob Guthrie
+        .row-fluid
+          .span7.offset1.blurb
+            %p Rob is an experienced software engineer who has been programming and developing software since he was a young kid on a Commodore 64. He’s since found Enspiral and has been enjoying a mixture of contract and startup software development.
+          .span3.person-img
+            =image_tag "people/rob.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “I’ve always been excited by computers and the internet, particularly the open source software movement. I consider it a shining light of what is possible with the internet. We have a big vision grounded in providing an exceptionally easy user experience. I love working with this team, it’s a real pleasure.”
+
+        .row-fluid
+          %h3 Mix Irving
+        .row-fluid
+          .span7.offset1.blurb
+            %p Mix has dabbled with code, making websites in notepad, modelling bio-mechanics with mathematics, supporting high-schoolers learning python, and crafting death-rays with laser-cutters. He’s studied people through neuroscience, revolutionary education and some art school. His interests converged recently in Loomio.
+          .span3.person-img
+            =image_tag "people/mix.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “Loomio stretches my imagination and ability like little else. It’s one of the most exciting bits of social catalysis to be working on. Also, the people are lovely.”
+
+        .row-fluid
+          %h3 Hannah Salmon
+        .row-fluid
+          .span7.offset1.blurb
+            %p Hannah has a background in creative activism. As an illustrator, animator and zine-maker, she has created work with the intention of challenging the distinction between art and activism in an attempt to utilise the power of art to spur positive social change. Hannah began learning to code so she could contribute to Loomio.
+          .span3.person-img
+            =image_tag "people/hannah.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “Loomio feels like the most exciting and important thing I could possibly be doing. Loomio seeks to foster collaboration, build community and challenge obstacles to communication and participation in decision-making. To me, the values that underpin Loomio are the key to transformative social change. I feel so privileged to have the opportunity to participate in this project and to be part of an amazing team, the members of which I am learning from and am inspired by everyday.”
+
+        .row-fluid
+          %h3 Jesse Doud
+        .row-fluid
+          .span7.offset1.blurb
+            %p After a formal background in English literature, Jesse decided to do something productive and learned how to code. Fueled with a passion for community building and sustainable transport through years of volunteer wrenching at bicycle collectives, he ended a bike tour of New Zealand at Loomio.
+          .span3.person-img
+            =image_tag "people/jesse.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “What really excites me is the effect Loomio can have on those who feel alienated or are genuinely disenfranchised by organizations that have power over their lives. An introduction to good group decision-making can be transformative. Loomio, as an open-source, simple, beautiful tool, is one avenue to this discovery that I’m proud to be a part of.”
+
+        .row-fluid
+          %h3.intro-subhead Establishment Board
+          %p The Loomio Establishment Board provides strategic guidance and expertise in financial transparency and accountability. The board is a mixture of external experts and Loomio co-op members (Vivien Maidaborn, Jon Lemmon, Alanna Krause, Ben Knight).
+
+        .row-fluid
+          %h3 Sophie Jerram
+        .row-fluid
+          .span7.offset1.blurb
+            %p With a background in communications, Sophie now works as a broker between worlds and people, operating at the intersection between the arts, environmental activism, corporate responsibility and ethical investment. Sophie established the Wellington branch of the Sustainable Business Network, then led communications for the national organisation, before co-founding Letting Space, Now Future and Urban Dream Brokerage, all large-scale projects with a focus on facilitating transformative social change through art. Sophie is an investor in clean technology businesses and is currently a director of Celsias, the leading New Zealand based news site on sustainable business, corporate citizenship and action on climate change.
+          .span3.person-img
+            =image_tag "people/sophie.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “It’s easy to be cynical about the direction of the world. It’s much harder to be hopeful. In my years of seeking I have never quite felt such a sense of optimism about the possibilities for systemic change as I have when dealing with the Loomio crew. The Loomio group has an ethos and a vision of collective responsibility that resonates deeply for me: intellectually, financially and socially."
+
+        .row-fluid
+          %h3 Michael Elwood-Smith
+        .row-fluid
+          .span7.offset1.blurb
+            %p Michael brings over 20 years of international business experience to the Loomio Establishment Board, primarily within the ICT industry in New Zealand and Europe. He has recently completed a six-year stint as an advisor at CreativeHQ, Wellington’s leading business incubator where he mentored high- growth potential startup companies aspiring to enter global markets. Michael works with select New Zealand-based companies to establish offshore markets, optimise business performance and accelerate growth. ￼￼￼￼
+          .span3.person-img
+            =image_tag "people/michael.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “The Loomio team is tackling a problem at the very core of the world’s greatest problems. I love working with courageous people as they bring their energy and enthusiasm to change the world, with clear purpose and ethical values. Early indications of real need and interest will likely soon turn into strong market demand and the need for Loomio to scale rapidly, without losing the essence of the value proposition. It is a journey worth taking. This is where I hope I can be of some help.”
+
+        .row-fluid
+          %h3 Nick Gerritsen
+        .row-fluid
+          .span7.offset1.blurb
+            %p Nick is a Marlborough-based catalyst and social entrepreneur. Nick loves big ideas that are going to lead to global structural change. He is committed to the culture of innovation, and isn’t afraid to operate beyond existing boundaries. Nick is a director of leading renewable fuel developer NXT Fuels, along with Celsias and Carbonscape.
+          .span3.person-img
+            =image_tag "people/nick.jpg"
+        .row-fluid
+          %blockquote.span9.offset1
+            “As soon as I learnt about Loomio I was intrigued, because this is the type of proposition that makes the online environment relevant and meaningful. I am naturally drawn to things that have the potential to make a BIG difference, and New Zealand has a history of generating smart and elegant contributions that make a structural impact. I consider Loomio to be one of these, and I feel honoured to have the chance to help out.”
+
+  .container
+    %section
+      .inner-container
+        .row-fluid#contact-us
+          .span6
+            =image_tag("retreat-photo.jpg")
+          .span6
+            %h2 Contact
+            %h3 Interested? Get in touch!
+            %p If you’d like to find out more about the project, <a href="#{contact_path}">drop us a line</a>.
+            %p If you’d rather speak to someone directly, you can call Ben on +6421 0232 5433.

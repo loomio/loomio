@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131125232607) do
+ActiveRecord::Schema.define(:version => 20131209035746) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20131125232607) do
     t.boolean  "is_deleted",      :default => false, :null => false
     t.integer  "comments_count",  :default => 0,     :null => false
     t.integer  "items_count",     :default => 0,     :null => false
+    t.datetime "archived_at"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -299,7 +300,7 @@ ActiveRecord::Schema.define(:version => 20131125232607) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "privacy"
+    t.string   "privacy",                    :default => "private"
     t.string   "members_invitable_by"
     t.integer  "parent_id"
     t.boolean  "email_new_motion",           :default => true
@@ -320,7 +321,7 @@ ActiveRecord::Schema.define(:version => 20131125232607) do
     t.boolean  "next_steps_completed",       :default => false,          :null => false
     t.string   "full_name"
     t.string   "payment_plan",               :default => "undetermined"
-    t.boolean  "viewable_by_parent_members", :default => true,           :null => false
+    t.boolean  "viewable_by_parent_members", :default => false,          :null => false
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
@@ -418,6 +419,7 @@ ActiveRecord::Schema.define(:version => 20131125232607) do
     t.datetime "closing_at"
     t.integer  "did_not_votes_count"
     t.integer  "votes_count",         :default => 0,    :null => false
+    t.integer  "outcome_author_id"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"

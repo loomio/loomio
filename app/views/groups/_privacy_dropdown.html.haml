@@ -3,4 +3,8 @@
   - header = t "simple_form.labels.group.privacy_#{privacy}_header"
   - description = t "simple_form.labels.group.privacy_#{privacy}_description_short"
   %span#privacy{"data-title" => "#{header}: #{description}", 'data-container'=> 'body' }
-    = image_tag("privicon_"+privacy.to_s+".png", alt: privacy.to_s, :id => 'privacy-image')
+    - image_html = image_tag("privicon_"+privacy.to_s+".png", alt: privacy.to_s, :id => 'privacy-image')
+    - if can? :edit, group
+      = link_to image_html, edit_group_path(group)
+    - else
+      = image_html

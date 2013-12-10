@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
   class MaximumMembershipsExceeded < Exception
   end
 
-  PRIVACY_CATEGORIES = ['public', 'secret']
+  PRIVACY_CATEGORIES = ['public', 'private', 'secret']
   INVITER_CATEGORIES = ['members', 'admins']
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
 
@@ -15,6 +15,8 @@ class Group < ActiveRecord::Base
   validates :name, :length => { :maximum => 250 }
 
   validate :limit_inheritance
+  validate :privacy_allowed_by_parent, if: :is_a_subgroup?
+  validate :subgroups_are_secret, if: :is_secret?
 
   after_initialize :set_defaults
   before_save :update_full_name_if_name_changed
@@ -141,6 +143,7 @@ class Group < ActiveRecord::Base
   end
 
   def archive!
+    self.discussions.each(&:archive!)
     self.update_attribute(:archived_at, DateTime.now)
     memberships.update_all(:archived_at => DateTime.now)
     subgroups.each do |group|
@@ -154,6 +157,10 @@ class Group < ActiveRecord::Base
 
   def privacy_public?
     (privacy == 'public') and !archived?
+  end
+
+  def is_secret?
+    self.privacy == 'secret'
   end
 
   def members_can_invite_members?
@@ -306,6 +313,18 @@ class Group < ActiveRecord::Base
   def limit_inheritance
     unless parent_id.nil?
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent_id.nil?
+    end
+  end
+
+  def privacy_allowed_by_parent
+    if parent.privacy == 'secret' && self.privacy != 'secret'
+      errors[:privacy] << "Parent group is secret, subgroups must also be secret"
+    end
+  end
+
+  def subgroups_are_secret
+    unless subgroups.all?{|g| g.is_secret?}
+      errors[:privacy] << "There are non secret subgroups, so this group cannot be secret"
     end
   end
 end

@@ -66,7 +66,6 @@ hu:
     group_archived: "A csoportot archiváltuk."
     group_created: "A csoportot létrehoztuk."
     members_added: "A tagokat hozzáadtuk a csoporthoz."
-    membership_requested: "A tagfelvételi kérelmet elküldtük. Értesítünk, amint jóváhagyják."
     position_submitted: "Rögzítettük az álláspontodat."
     position_updated: "Frissítettük az álláspontodat."
     proposal_created: "Létrehoztuk a javaslatot."
@@ -170,6 +169,7 @@ hu:
   deactivate_group: "Csoport deaktiválása"
   confirm_deactivate_group: "Várj!!! Biztosan deaktiválni akarod a(z) %{which_group} csoportot? Többet nem jelenik meg neked a csoport. Ha azonban mégis vissza szeretnéd kapni a csoportot, reaktiválhatjuk, ha a contact@loomio.org címre küldesz egy kérést."
   invited_users: "Meghívott tagok"
+  members: "Tagok"
   confirm_remove_user: "Biztosan el akarod távolítani %{which_user}-t a csoportból?"
   membership_requests: "Tagkérelmek"
   confirm_approve_membership_request: "Biztos, hogy hozzá akarod adni %{which_user}-t a csoporthoz?"
@@ -188,9 +188,6 @@ hu:
   new_subgroup: "Új alcsoport"
   create_subgroup: "Alcsoport létrehozása"
   creating_subgroup: "Hozom létre az alcsoportot"
-  group_privacy: "Beállítások: '%{who}'  láthatja ezt a csoportot"
-  parent_group_members: "A főcsoport tagjai"
-  members: "Tagok"
   new_group: "Új csoport"
   create_group: "Csoport létrehozása"
   creating_group: "Hozom létre a csoportot"
@@ -246,6 +243,7 @@ hu:
   confirm_close_proposal: "Biztosan le akarod zárni ezt a javaslatot?"
   change_proposal_close_date: "A határidő módosítása"
   change_proposal_close_date_header: "A  '%{which}' javaslat határidejének módosítása"
+  proposal: Javaslat
   proposal_close_date_error: "Olyan dátumot adj meg, ami még nem múlt el"
   proposal_closing_when: "A lezárásig hátralevő idő: %{when}"
   proposal_closed_when: "A lezárás óta eltelt idő: %{when}"
@@ -261,7 +259,6 @@ hu:
   block_position: "Blokkolom"
   block_details: "Komoly ellenvetéseim vannak a javaslattal szemben és nem szeretném, hogy így döntsünk."
   not_voted: "[Kik nem foglaltak még állást]"
-  outcome: "Eredmény"
   outcome_placeholder: "Mi lett ennek a javaslatnak az eredménye?"
   help:
     coordinating: 'Koordináljuk a Loomio csoportodat'
@@ -410,7 +407,6 @@ hu:
     header: "Új javaslat"
     name_helper: "A cím legyen egyértelmű és tömör"
   group_form:
-    privacy_settings: "Adatvédelmi beállítások"
     invitation_settings: "A meghívás beállításai"
   vote_form:
     header: "Add meg az álláspontodat"
@@ -445,8 +441,6 @@ hu:
         title: "Cím"
         description: "Leírás"
       group:
-        name: "Mi legyen a csoport neve?"
-        viewable_by: "Ki láthatja ezt a csoportot?"
         members_invitable_by: "Ki hívhat meg másokat ebbe a csoportba?"
       membership_request:
         introduction: "Mutatkozz be!"
@@ -459,13 +453,6 @@ hu:
         password: "Jelszó"
         password_confirmation: "Jelszó megerősítése"
         language_preference: "Nyelv"
-    options:
-      group:
-        viewable_by:
-          parent_group_members: "A főcsoport tagjai - csak a főcsoport tagjai láthatják ezt az alcsoportot"
-        members_invitable_by:
-          admins: 'Csak a koordinátorok'
-          members: 'Minden tag'
     placeholders:
       discussion:
         title: "Mit szeretnél megtárgyalni?"
@@ -507,7 +494,6 @@ hu:
       subject: "A tagfelvételt jóváhagytuk"
     membership_request:
       intro: "%{name} (%{email}) hozzáférést kért egy Loomio csoportodhoz."
-      subject: "Új tagfelvételi kérelem: %{who}"
       view_group: "Jóváhagyhatod vagy elvetheted a kérelmet itt."
     mentioned:
       intro: "Megemlítettek az alábbi témában:"
@@ -515,7 +501,6 @@ hu:
       subject: "%{who} megemlített téged a %{which} Loomio csoportban"
     proposal_closed:
       intro: 'A "%{proposal_name}" javaslatod lezárult.'
-      specify_outcome: "Ide kattintva adhatod meg a végeredményt"
       subject: "A javaslat lezárult - %{which}"
     proposal_blocked:
       intro: "Az általad kezelt javaslatot blokkolták."
@@ -557,8 +542,8 @@ hu:
   name: "Név"
   new_activity: "Új aktivitás"
   next: "Következő"
+  outcome: "Eredmény"
   password: "Jelszó"
-  proposal: "Javaslat"
   prev: "Előző"
   options: "Lehetőségek"
   other: "Egyéb"
