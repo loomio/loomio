@@ -1,6 +1,7 @@
 class Discussion < ActiveRecord::Base
   PER_PAGE = 50
   paginates_per PER_PAGE
+  KEY_LENGTH = 10
 
   # default_scope -> {where(is_deleted: false)}
   default_scope where(:archived_at => nil)
@@ -12,6 +13,7 @@ class Discussion < ActiveRecord::Base
   validates_presence_of :title, :group, :author
   validates :title, :length => { :maximum => 150 }
   validates_inclusion_of :uses_markdown, :in => [true,false]
+  validates :key, uniqueness: true, presence: true
 
   has_paper_trail :only => [:title, :description]
 
@@ -36,6 +38,11 @@ class Discussion < ActiveRecord::Base
   delegate :name_and_email, :to => :author, prefix: :author
 
   before_create :set_last_comment_at
+  before_validation :set_key
+
+  def to_param
+    key + '/' + title.parameterize
+  end
 
   def as_read_by(user)
     if user.blank?
@@ -152,6 +159,22 @@ class Discussion < ActiveRecord::Base
   end
 
   private
+
+    def set_key
+      unless self.key
+        new_key = generate_key
+        while self.class.find_by_key(new_key) != nil
+          new_key = generate_key
+        end
+        self.key = new_key
+      end
+    end
+
+    def generate_key
+      ( ('a'..'z').to_a +
+        ('A'..'Z').to_a +
+            (0..9).to_a ).sample(KEY_LENGTH).join
+    end
 
     def set_last_comment_at
       self.last_comment_at ||= Time.now

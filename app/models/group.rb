@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+  KEY_LENGTH = 10
 
   class MaximumMembershipsExceeded < Exception
   end
@@ -13,6 +14,7 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :members_invitable_by, in: INVITER_CATEGORIES
   validates :description, :length => { :maximum => 250 }
   validates :name, :length => { :maximum => 250 }
+  validates :key, uniqueness: true, presence: true
 
   validate :limit_inheritance
   validate :privacy_allowed_by_parent, if: :is_a_subgroup?
@@ -20,6 +22,7 @@ class Group < ActiveRecord::Base
 
   after_initialize :set_defaults
   before_save :update_full_name_if_name_changed
+  before_validation :set_key
 
   include PgSearch
   pg_search_scope :search_full_name, against: [:name, :description],
@@ -113,6 +116,10 @@ class Group < ActiveRecord::Base
   delegate :name, :to => :parent, :prefix => true
 
   paginates_per 20
+
+  def to_param
+    key + '/' + full_name.parameterize
+  end
 
   def coordinators
     admins
@@ -297,6 +304,22 @@ class Group < ActiveRecord::Base
 
   private
 
+  def set_key
+    unless self.key
+      new_key = generate_key
+      while self.class.find_by_key(new_key) != nil
+        new_key = generate_key
+      end
+      self.key = new_key
+    end
+  end
+
+  def generate_key
+    ( ('a'..'z').to_a +
+      ('A'..'Z').to_a +
+          (0..9).to_a ).sample(KEY_LENGTH).join
+  end
+
   def calculate_full_name
     if is_a_parent?
       name
@@ -311,13 +334,13 @@ class Group < ActiveRecord::Base
   end
 
   def limit_inheritance
-    unless parent_id.nil?
+    if parent_id.present?
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent_id.nil?
     end
   end
 
   def privacy_allowed_by_parent
-    if parent.privacy == 'secret' && self.privacy != 'secret'
+    if parent && parent.privacy == 'secret' && self.privacy != 'secret'
       errors[:privacy] << "Parent group is secret, subgroups must also be secret"
     end
   end

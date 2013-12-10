@@ -34,12 +34,23 @@ Loomio::Application.routes.draw do
     end
   end
 
-  resources :groups, except: [:index, :new] do
+
+  ### Groups Section ###
+  get    '/g/:key/:slug',                    to: 'groups#show'
+  put    '/g/:key/:slug',                    to: 'groups#update'
+  delete '/g/:key/:slug',                    to: 'groups#destroy'
+  match  '/g/:key/:slug/:action',    controller: 'groups', constraints: GroupConstraint.new
+
+  # match '/g/archive/:id',             to: "groups#archive", :as => :archive_group, :via => :post
+  # post   '/g/:key/:slug/archive',            to: "groups#archive", :as => :archive_group
+
+    # nb: this (with to_params) generates correct helper methods
+  resources :groups, :path => 'g', except: [:index, :new] do
     resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
     resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
       member do
-       post :make_admin
-       post :remove_admin
+        post :make_admin
+        post :remove_admin
       end
     end
     resource :subscription, only: [:new, :show], controller: 'groups/subscriptions' do
@@ -66,8 +77,12 @@ Loomio::Application.routes.draw do
     resources :discussions, only: [:index, :new]
   end
 
+   # old supported routes#
+  get 'group/:id', to: 'groups_redirect#show'
+
+  ### Membership Requests Section ###
   get 'groups/:group_id/request_membership',   to: 'groups/membership_requests#new',          as: :new_group_membership_request
-  post 'groups/:group_id/membership_requests', to: 'groups/membership_requests#create'  ,       as: :group_membership_requests
+  post 'groups/:group_id/membership_requests', to: 'groups/membership_requests#create',       as: :group_membership_requests
   delete 'membership_requests/:id/cancel',     to: 'groups/membership_requests#cancel',       as: :cancel_membership_request
 
   get 'groups/:group_id/membership_requests',  to: 'groups/manage_membership_requests#index', as: :group_membership_requests
@@ -78,8 +93,7 @@ Loomio::Application.routes.draw do
     end
   end
 
-  match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
-
+  ### Motions Section
   resources :motions do
     resources :votes, only: [:new, :create, :update]
     member do
@@ -90,8 +104,13 @@ Loomio::Application.routes.draw do
     end
   end
 
-  resources :discussions, except: [:edit] do
-    get :activity_counts, on: :collection
+  ### discussions section ###
+  get    '/d/:key/:slug',                    to: 'discussions#show'
+  delete '/d/:key/:slug',                    to: 'discussions#destroy'
+  match  '/d/:key/:slug/:action',    controller: 'discussions', constraints: DiscussionConstraint.new
+
+    # nb: this (with to_params) generates correct helper methods
+  resources :discussions, :path => 'd', except: [:edit] do
     member do
       post :update_description
       post :add_comment
@@ -101,6 +120,10 @@ Loomio::Application.routes.draw do
       put :move
     end
   end
+
+    # old discussion urls, supported
+  get '/discussions/:id', to: 'discussions_redirect#show'  #this should only work for older ids
+
 
   resources :comments , only: :destroy do
     post :like, on: :member
