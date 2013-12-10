@@ -1,5 +1,7 @@
 class GroupsController < GroupBaseController
-  load_and_authorize_resource except: :create
+  before_filter :load_resource_by_key, except: :create
+  authorize_resource except: :create
+
   before_filter :authenticate_user!, except: :show
   before_filter :ensure_group_is_setup, only: :show
 
@@ -97,6 +99,11 @@ class GroupsController < GroupBaseController
   end
 
   private
+
+    def load_resource_by_key
+      @group = Group.find_by_key(params[:key])
+    end
+
     def ensure_group_is_setup
       if user_signed_in? && @group.admins.include?(current_user)
         unless @group.is_setup? || @group.is_a_subgroup?

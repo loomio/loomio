@@ -35,15 +35,15 @@ describe "routes to the groups controller" do
 
   context 'action in url' do
     before do
-      GroupConstraint.should_receive(:matches?).and_return(true)
+      GroupConstraint.any_instance.should_receive(:matches?).and_return(true)
     end
 
     it do
-      expect(:post => '/g/abc123/the-party-house/add_members').
-        to route_to(controller: 'groups',
-                        action: 'add_members',
-                           key: 'abc123',
-                          slug: 'the-party-house')
+      {:post => '/g/abc123/the-party-house/add_members'}.
+        should route_to(controller: 'groups',
+                            action: 'add_members',
+                               key: 'abc123',
+                              slug: 'the-party-house')
     end
     it do
       expect(:post => '/g/abc123/the-party-house/hide_next_steps').
@@ -105,7 +105,7 @@ describe "routes to the groups controller" do
 
   context 'non-permitted route' do
     it do
-      GroupConstraint.should_receive(:matches?).and_return(false)
+      GroupConstraint.any_instance.should_receive(:matches?).and_return(false)
       expect(:delete => '/g/abc123/the-party-house/update').
         to_not route_to(controller: 'groups',
                             action: 'update')

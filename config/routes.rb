@@ -39,10 +39,10 @@ Loomio::Application.routes.draw do
   get    '/g/:key/:slug',                    to: 'groups#show'
   put    '/g/:key/:slug',                    to: 'groups#update'
   delete '/g/:key/:slug',                    to: 'groups#destroy'
-  match  '/g/:key/:slug/:action',    controller: 'groups', constraints: GroupConstraint
+  match  '/g/:key/:slug/:action',    controller: 'groups', constraints: GroupConstraint.new
 
   # match '/g/archive/:id',             to: "groups#archive", :as => :archive_group, :via => :post
-  post   '/g/:key/:slug/archive',            to: "groups#archive", :as => :archive_group
+  # post   '/g/:key/:slug/archive',            to: "groups#archive", :as => :archive_group
 
     # nb: this (with to_params) generates correct helper methods
   resources :groups, :path => 'g', except: [:index, :new] do
@@ -107,7 +107,7 @@ Loomio::Application.routes.draw do
   ### discussions section ###
   get    '/d/:key/:slug',                    to: 'discussions#show'
   delete '/d/:key/:slug',                    to: 'discussions#destroy'
-  match  '/d/:key/:slug/:action',    controller: 'discussions', constraints: DiscussionConstraint
+  match  '/d/:key/:slug/:action',    controller: 'discussions', constraints: DiscussionConstraint.new
 
     # nb: this (with to_params) generates correct helper methods
   resources :discussions, :path => 'd', except: [:edit] do

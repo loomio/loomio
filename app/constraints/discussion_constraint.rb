@@ -1,5 +1,5 @@
 class DiscussionConstraint
-  def self.matches?(request)
+  def matches?(request)
 
     request_method = request.env['REQUEST_METHOD']
     action         = request.path_parameters[:action]

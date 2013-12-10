@@ -29,7 +29,7 @@ describe "routes to the discussions controller" do
 
   context 'action in url' do
     before do
-      DiscussionConstraint.should_receive(:matches?).and_return(true)
+      DiscussionConstraint.any_instance.should_receive(:matches?).and_return(true)
     end
 
     it do
@@ -85,7 +85,7 @@ describe "routes to the discussions controller" do
 
   context 'non-permitted route' do
     it do
-      DiscussionConstraint.should_receive(:matches?).and_return(false)
+      DiscussionConstraint.any_instance.should_receive(:matches?).and_return(false)
       expect(:delete => '/d/abc123/lets-go-to-the-moon/update').
         to_not route_to(controller: 'discussions',
                         action: 'update')
