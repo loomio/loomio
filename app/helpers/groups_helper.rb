@@ -1,4 +1,18 @@
 module GroupsHelper
+
+  # def nice_group_path(group)
+  #   group_path( id: group.key, slug: group.full_name.parameterize )
+  # end
+
+  def group_path(group, options={})
+    group_url(group, options.merge(:only_path => true))
+  end
+
+  def group_url(group, options={})
+    url_for(options.merge(:controller => 'groups', :action => 'show',
+                          :id => group.key, :slug => group.full_name.parameterize))
+  end
+
   def css_for_privacy_link(group, link)
     current_privacy_setting = String(group.privacy)
     return "icon-ok" if link == current_privacy_setting

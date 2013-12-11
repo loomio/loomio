@@ -119,10 +119,6 @@ class Group < ActiveRecord::Base
 
   paginates_per 20
 
-  def to_param
-    { id: key, slug: full_name.parameterize }
-  end
-
   def coordinators
     admins
   end
