@@ -2,6 +2,15 @@ module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
 
+  def discussion_path(discussion, options={})
+    discussion_url(discussion, options.merge(:only_path => true))
+  end
+
+  def discussion_url(discussion, options={})
+    url_for(options.merge(:controller => 'discussions', :action => 'show',
+                          :id => discussion.key, :slug => discussion.title.parameterize))
+  end
+
   def enough_activity_for_jump_link?
     @discussion.items_count > 3
   end

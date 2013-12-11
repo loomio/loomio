@@ -92,7 +92,8 @@ Loomio::Application.routes.draw do
     end
   end
 
-  resources :discussions, except: [:edit] do
+  get '/d/:id/:slug', to: 'discussions#show', as: :discussion
+  resources :discussions, path: 'd', except: [:edit, :show] do
     get :activity_counts, on: :collection
     member do
       post :update_description

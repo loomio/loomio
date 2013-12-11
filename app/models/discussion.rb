@@ -2,6 +2,10 @@ class Discussion < ActiveRecord::Base
   PER_PAGE = 50
   paginates_per PER_PAGE
 
+  KEY_LENGTH = 10
+  extend FriendlyId
+  friendly_id :key
+
   # default_scope -> {where(is_deleted: false)}
   default_scope where(:archived_at => nil)
 
@@ -152,6 +156,22 @@ class Discussion < ActiveRecord::Base
   end
 
   private
+
+    def set_key
+      unless self.key
+        new_key = generate_key
+        while self.class.find_by_key(new_key) != nil
+          new_key = generate_key
+        end
+        self.key = new_key
+      end
+    end
+
+    def generate_key
+      ( ('a'..'z').to_a +
+        ('A'..'Z').to_a +
+            (0..9).to_a ).sample(KEY_LENGTH).join
+    end
 
     def set_last_comment_at
       self.last_comment_at ||= Time.now
