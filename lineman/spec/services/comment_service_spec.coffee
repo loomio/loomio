@@ -22,8 +22,8 @@ describe 'CommentService', ->
   beforeEach module 'loomioApp'
 
   beforeEach ->
-    inject ($httpBackend, addCommentService) ->
-      service = addCommentService
+    inject ($httpBackend, CommentService) ->
+      service = CommentService
       httpBackend = $httpBackend
 
   afterEach ->
