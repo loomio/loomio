@@ -34,6 +34,11 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
   appendTasks:
     common: ["concat_sourcemap"]
 
+  cucumberjs:
+    src: 'features/*.feature'
+    options:
+      steps: 'features/step_definitions'
+
   haml:
     dist:
       files: [
