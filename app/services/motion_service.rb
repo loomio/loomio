@@ -3,6 +3,12 @@ class MotionService
     Motion.lapsed_but_not_closed.each do |motion|
       close(motion)
     end
+  rescue Exception => e
+    # why the fart won't heroku let us know a cronjob failed?
+    ExceptionNotifier.notify_exception(
+      UnacceptableMotionError.new(motion, e),
+      env: request.env
+    )
   end
 
   def self.close(motion)
@@ -13,7 +19,7 @@ class MotionService
 
     motion.store_users_that_didnt_vote
     motion.closed_at = Time.now
-    motion.save!
+      motion.save!
 
     Events::MotionClosed.publish!(motion)
   end
@@ -48,5 +54,19 @@ class MotionService
     return false unless motion.save
 
     Events::MotionOutcomeUpdated.publish!(motion, user)
+  end
+
+  class UnacceptableMotionError < StandardError
+    def initialize(motion, exception)
+      @motion = motion
+      @exception = exception
+    end
+
+    def message
+      "Motion close cron job failed. This is going to fuck up
+       all the motions waiting to close for ever until fixed,
+       so fix immediately, Jesus/Jesse.
+       #{motion.inspect} #{exception.inspect}"
+    end
   end
 end
