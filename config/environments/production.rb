@@ -92,10 +92,10 @@ Loomio::Application.configure do
   }
 
   # Email admin when server gets exceptions!
-  config.middleware.use ExceptionNotification::Rack,
-    :email => {
-      :email_prefix => "[Loomio Exception] ",
-      :sender_address => %{"Exception Notifier" <dudley@loomio.org>},
-      :exception_recipients => [ENV['EXCEPTION_RECIPIENT']]
-    }
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Loomio Exception] ",
+    :sender_address => %{"Exception Notifier" <dudley@loomio.org>},
+    :exception_recipients => [ENV['EXCEPTION_RECIPIENT']]
+
+  ExceptionNotifier::Rake.configure
 end
