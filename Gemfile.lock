@@ -143,6 +143,9 @@ GEM
     exception_notification (4.0.1)
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
+    exception_notification-rake (0.1.0)
+      exception_notification (~> 4.0.0)
+      rake (>= 0.9.0)
     excon (0.25.3)
     execjs (2.0.2)
     factory_girl (4.2.0)
@@ -502,7 +505,7 @@ DEPENDENCIES
   devise (~> 3.1.0)
   draper (~> 0.11.1)
   email_spec (~> 1.2.1)
-  exception_notification (~> 4.0.1)
+  exception_notification-rake (~> 0.1.0)
   factory_girl_rails (~> 4.2.1)
   faker (~> 1.2.0)
   fog
