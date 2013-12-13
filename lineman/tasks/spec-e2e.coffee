@@ -10,6 +10,6 @@ module.exports = (grunt) ->
 
   grunt.registerTask "spec-e2e", "run specs in ci mode", (target) ->
     require('coffee-script')
-    process.argv = ["doesnt", "matter", "#{process.cwd()}/config/spec-e2e.js"]
+    process.argv = ["doesnt", "matter", "#{process.cwd()}/config/spec-e2e.coffee"]
     done = @async()
     require("#{process.cwd()}/node_modules/protractor/lib/cli")
