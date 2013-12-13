@@ -16,7 +16,7 @@ describe DiscussionsController do
       sign_in user
       app_controller.stub(:authorize!).and_return(true)
       app_controller.stub(:cannot?).with(:show, group).and_return(false)
-      Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
+      Discussion.stub_chain(:published, :find).with(discussion.id.to_s).and_return(discussion)
       Discussion.stub(:new).and_return(discussion)
       User.stub(:find).and_return(user)
       Group.stub(:find).with(group.id.to_s).and_return(group)

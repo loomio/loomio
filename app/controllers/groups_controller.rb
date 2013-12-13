@@ -1,6 +1,9 @@
 class GroupsController < GroupBaseController
-  load_and_authorize_resource except: :create
   before_filter :authenticate_user!, except: :show
+
+  before_filter :load_group, except: :create
+  authorize_resource except: :create
+
   before_filter :ensure_group_is_setup, only: :show
 
   rescue_from ActiveRecord::RecordNotFound do
@@ -9,7 +12,7 @@ class GroupsController < GroupBaseController
 
   #for new subgroup form
   def add_subgroup
-    parent = Group.find(params[:id])
+    parent = Group.published.find(params[:id])
     @subgroup = Group.new(:parent => parent)
     @subgroup.members_invitable_by = parent.members_invitable_by
   end
@@ -49,7 +52,6 @@ class GroupsController < GroupBaseController
   end
 
   def edit
-    @group = GroupDecorator.new(Group.find(params[:id]))
   end
 
   def archive
@@ -85,7 +87,6 @@ class GroupsController < GroupBaseController
   end
 
   def edit_description
-    @group = Group.find(params[:id])
     @description = params[:description]
     @group.description = @description
     @group.save!
@@ -97,6 +98,10 @@ class GroupsController < GroupBaseController
   end
 
   private
+    def load_group
+      @group = Group.published.find(params[:id])
+    end
+
     def ensure_group_is_setup
       if user_signed_in? && @group.admins.include?(current_user)
         unless @group.is_setup? || @group.is_a_subgroup?
