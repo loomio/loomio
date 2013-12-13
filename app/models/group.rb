@@ -25,8 +25,9 @@ class Group < ActiveRecord::Base
   pg_search_scope :search_full_name, against: [:name, :description],
     using: {tsearch: {dictionary: "english"}}
 
-  default_scope where(:archived_at => nil)
-
+  scope :archived, lambda { where('archived_at IS NOT NULL') }
+  scope :published, lambda { where(archived_at: nil) }
+  
   scope :parents_only, where(:parent_id => nil)
 
   scope :sort_by_popularity,
