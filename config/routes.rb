@@ -204,4 +204,6 @@ Loomio::Application.routes.draw do
   get 'blog' => redirect('http://blog.loomio.org')
   get 'press' => redirect('http://blog.loomio.org/press-pack')
   get 'press-pack' => redirect('http://blog.loomio.org/press-pack')
+  
+  get '/generate_error', to: 'generate_error#new'
 end
