@@ -72,7 +72,7 @@ Loomio::Application.routes.draw do
   match "/g/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
 
   ### MEMBERSHIP REQUESTS ###
-  get 'g/:group_id/request_membership',   to: 'groups/membership_requests#new',          as: :new_group_membership_request
+  get 'g/:group_id/ask_to_join',   to: 'groups/membership_requests#new',          as: :new_group_membership_request
   post 'g/:group_id/membership_requests', to: 'groups/membership_requests#create'  ,     as: :group_membership_requests
   delete 'membership_requests/:id/cancel',     to: 'groups/membership_requests#cancel',       as: :cancel_membership_request
 
@@ -213,4 +213,6 @@ Loomio::Application.routes.draw do
   get 'blog' => redirect('http://blog.loomio.org')
   get 'press' => redirect('http://blog.loomio.org/press-pack')
   get 'press-pack' => redirect('http://blog.loomio.org/press-pack')
+
+  get '/generate_error', to: 'generate_error#new'
 end

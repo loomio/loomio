@@ -118,7 +118,9 @@ class Ability
 
     can :show, Discussion do |discussion|
       group = discussion.group
-      if group.privacy == 'public' || group.members.include?(user)
+      if discussion.archived?
+        false
+      elsif group.privacy == 'public' || group.members.include?(user)
         can? :show, group
       else
         false
