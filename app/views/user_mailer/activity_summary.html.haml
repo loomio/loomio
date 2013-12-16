@@ -15,6 +15,7 @@
               %td
                 %h2{ style: 'color:#AAA;' }= group.full_name
                 %hr
+
           - group.discussions.each do |discussion|
             %table{ width: '600', style: 'margin-bottom:0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
               %tr
@@ -29,23 +30,48 @@
                 %td{ width: '50' }
                 %td
                   %p= discussion.description
-            - discussion.comments.each do |comment|
+
+            - motion = discussion.current_motion
+            - if motion
+              %table{ width: '600', style: 'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
+                %tr
+                  = render 'activity_item_avatar', user: motion.author, item: motion, item_text: 'proposed'
+
               %table{ width: '600', style: 'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
                 %tr
                   %td{ width: '50' }
-                  %td{ width: '40', height: '40', align: 'center', style: 'background-color:#CCC;' }
-                    - kind = comment.user.avatar_kind
-                    - if kind == 'initials'
-                      %span{ width: '40', style: 'font-size:20;' }= comment.user.avatar_initials
-                    - elsif kind == "gravatar"
-                      %img{ src: "#{comment.user.gravatar_url(:size => User::MEDIUM_IMAGE)}", style: 'margin:0' }
-                    - elsif kind == "uploaded"
-                      %img{ src: "#{comment.user.uploaded_avatar.url('medium')}", style: 'margin:0'}
-                  %td{ width: '478' }
-                    %span{ style: 'margin-left:5; font-weight:strong, font-size:14;' }= comment.user_name
-                    %span{style: 'font-size:14;' }
-                      commented
-                    %div{ style: 'margin-left:5; color:#AAA; font-size:13;' }= comment.created_at.strftime('%A, %-d %B')
+                  %td{ width: '40', align: 'center' }
+                    %img{ src:'assets/pie-24.png', style: 'margin:5 0 0 0; width:24;' }
+                  %td
+                    %div{ style: 'margin-left:5;' }= motion.name
+                    %div{ style: 'margin-left:5; color:#AAA; font-size:13;' }= t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
+              %table{ width: '600', style: 'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
+                %tr
+                  %td{ width: '50' }
+                  %td{ width: '45' }
+                  %td
+                    %p= motion.description
+                    %hr
+
+              - motion.votes.each do |vote|
+                %table{ width: '600', style: 'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
+                  %tr
+                    %td{ width: '50' }
+                    = render 'activity_item_avatar', user: vote.user, item: vote, item_text: "has #{vote.position.to_s}"
+                %table{ width: '600', style: 'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }                 
+                  %tr
+                    %td{ width: '50' }
+                    %td{ width: '40' }
+                    %td{ width: '50', align: 'center', style: 'position:relative; bottom:8;' }
+                      %img{ src: "assets/hand-#{vote.position}-18.png", style: 'width:18;' }
+                    %td
+                      %p= vote.statement
+                      %hr
+
+            - discussion.comments.each do |comment|
+              %table{ width: '600', style: 'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
+                %tr
+                  = render 'activity_item_avatar', user: comment.user, item: comment, item_text: 'commented'
               %table{ width: '600', style: 'font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;' }
                 %tr
                   %td{ width: '50' }

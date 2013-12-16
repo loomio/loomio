@@ -129,7 +129,7 @@ Loomio::Application.routes.draw do
       put :set_avatar_kind
       post :upload_new_avatar
 
-      # activity summary - to remove_admin
+      # activity summary - to remove
       get :activity_summary
     end
   end

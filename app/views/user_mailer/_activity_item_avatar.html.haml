@@ -1,0 +1,14 @@
+%td{ width: '50' }
+%td{ width: '39', height: '39', align: 'center', style: 'background-color:#CCC;' }
+  - kind = user.avatar_kind
+  - if kind == 'initials'
+    %span{ width: '39', style: 'font-size:20;' }= user.avatar_initials
+  - elsif kind == "gravatar"
+    %img{ src: "#{user.gravatar_url(:size => User::MEDIUM_IMAGE)}", style: 'margin:0' }
+  - elsif kind == "uploaded"
+    %img{ src: "#{user.uploaded_avatar.url('medium')}", style: 'margin:0'}
+%td{ width: '478' }
+  %span{ style: 'margin-left:5; font-weight:strong, font-size:14;' }= user.name
+  %span{style: 'font-size:14;' }
+    = item_text
+  %div{ style: 'margin-left:5; color:#AAA; font-size:13;' }= item.created_at.strftime('%A, %-d %B')
