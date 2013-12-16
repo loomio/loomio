@@ -32,7 +32,7 @@ class Group < ActiveRecord::Base
 
   scope :archived, lambda { where('archived_at IS NOT NULL') }
   scope :published, lambda { where(archived_at: nil) }
-  
+
   scope :parents_only, where(:parent_id => nil)
 
   scope :sort_by_popularity,

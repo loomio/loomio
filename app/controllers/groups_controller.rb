@@ -43,7 +43,6 @@ class GroupsController < GroupBaseController
   end
 
   def show
-    ensure_url_slugged
     @group = GroupDecorator.new @group
     @subgroups = @group.subgroups.all.select{|g| can?(:show, g) }
     @discussion = Discussion.new(group_id: @group.id)
@@ -99,11 +98,6 @@ class GroupsController < GroupBaseController
   end
 
   private
-    def ensure_url_slugged
-      if params[:slug].blank?
-        redirect_to group_path(id: @group.key, slug: @group.full_name.parameterize)
-      end
-    end
 
     def load_group
       @group = Group.published.find(params[:id])

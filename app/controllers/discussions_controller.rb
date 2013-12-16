@@ -17,7 +17,7 @@ class DiscussionsController < GroupBaseController
     if params[:group_id]
       @discussion.group_id = params[:group_id]
     else
-      @user_groups = current_user.groups.order('name') unless params[:group_id]
+      @user_groups = current_user.groups.order('name')
     end
   end
 

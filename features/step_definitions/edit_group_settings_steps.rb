@@ -1,5 +1,5 @@
 When /^I visit the group settings page$/ do
-  visit "/groups/" + Group.first.id.to_s + "/edit"
+  visit "/g/#{Group.first.key}/edit"
 end
 
 When /^I update the settings to public$/ do

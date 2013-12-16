@@ -11,7 +11,7 @@
 
   %ul.selector-list.bordered
     - @groups.each do |group|
-      = link_to "/g/#{group.key}/#{group.full_name.parameterize}" do
+      = link_to group do
         %li.selector-item
           .group-name
             = group.full_name

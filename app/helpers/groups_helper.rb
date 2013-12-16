@@ -1,9 +1,5 @@
 module GroupsHelper
 
-  # def nice_group_path(group)
-  #   group_path( id: group.key, slug: group.full_name.parameterize )
-  # end
-
   def group_path(group, options={})
     group_url(group, options.merge(:only_path => true))
   end

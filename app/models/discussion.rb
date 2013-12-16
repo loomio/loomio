@@ -39,6 +39,7 @@ class Discussion < ActiveRecord::Base
   delegate :email, :to => :author, :prefix => :author
   delegate :name_and_email, :to => :author, prefix: :author
 
+  before_validation :set_key
   before_create :set_last_comment_at
 
   def as_read_by(user)
@@ -153,6 +154,11 @@ class Discussion < ActiveRecord::Base
       last_comment_time = created_at
     end
     update_attribute(:last_comment_at, last_comment_time)
+  end
+
+  def nice_discussion_url(discussion, options={})
+    url_for(options.merge(:controller => 'discussions', :action => 'show',
+                          :id => discussion.key, :slug => discussion.title.parameterize))
   end
 
   private
