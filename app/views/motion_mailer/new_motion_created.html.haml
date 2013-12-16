@@ -1,7 +1,7 @@
 = render '/application/mailer_doctype'
 %html
   %p.author-action= t(:"email.new_motion_created.context", author: @motion.author_name, group_full_name: @group.full_name)
-  %p.motion-name= link_to @motion.name, motion_url(@motion, utm_medium: 'email')
+  %p.motion-name= link_to @motion.name, motion_url(@motion, @utm_hash)
 
   -if @rendered_motion_description.present?
     = @rendered_motion_description
