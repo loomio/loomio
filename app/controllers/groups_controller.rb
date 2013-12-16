@@ -40,6 +40,7 @@ class GroupsController < GroupBaseController
   end
 
   def show
+    ensure_url_slugged
     @group = GroupDecorator.new @group
     @subgroups = @group.subgroups.all.select{|g| can?(:show, g) }
     @discussion = Discussion.new(group_id: @group.id)
@@ -97,6 +98,12 @@ class GroupsController < GroupBaseController
   end
 
   private
+    def ensure_url_slugged
+      if params[:slug].blank?
+        redirect_to group_path(id: @group.key, slug: @group.full_name.parameterize)
+      end
+    end
+
     def ensure_group_is_setup
       if user_signed_in? && @group.admins.include?(current_user)
         unless @group.is_setup? || @group.is_a_subgroup?

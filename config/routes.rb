@@ -36,8 +36,7 @@ Loomio::Application.routes.draw do
 
 
   ### GROUPS ###
-  get '/g/:id/:slug', to: 'groups#show', as: :group
-
+  get '/g/:id(/:slug)', to: 'groups#show', as: :group
   resources :groups, path: 'g', except: [:index, :new, :show] do
     resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
     resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
@@ -69,11 +68,12 @@ Loomio::Application.routes.draw do
     resources :motions
     resources :discussions, only: [:index, :new]
   end
+
   match "/groups/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
 
   ### MEMBERSHIP REQUESTS ###
   get 'groups/:group_id/request_membership',   to: 'groups/membership_requests#new',          as: :new_group_membership_request
-  post 'groups/:group_id/membership_requests', to: 'groups/membership_requests#create'  ,       as: :group_membership_requests
+  post 'groups/:group_id/membership_requests', to: 'groups/membership_requests#create'  ,     as: :group_membership_requests
   delete 'membership_requests/:id/cancel',     to: 'groups/membership_requests#cancel',       as: :cancel_membership_request
 
   get 'groups/:group_id/membership_requests',  to: 'groups/manage_membership_requests#index', as: :group_membership_requests
@@ -84,7 +84,7 @@ Loomio::Application.routes.draw do
     end
   end
 
-
+  ### MOTIONS ###
   resources :motions do
     resources :votes, only: [:new, :create, :update]
     member do
@@ -95,7 +95,8 @@ Loomio::Application.routes.draw do
     end
   end
 
-  get '/d/:id/:slug', to: 'discussions#show', as: :discussion
+  ### DISCUSSIONS ###
+  get '/d/:id(/:slug)', to: 'discussions#show', as: :discussion
   resources :discussions, path: 'd', except: [:edit, :show] do
     get :activity_counts, on: :collection
     member do
@@ -108,12 +109,14 @@ Loomio::Application.routes.draw do
     end
   end
 
+  get 'discussions/:id', to: 'discussions_redirect#show'
+
+  post "/d/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
+  post "/d/update_version/:version_id",        :to => "discussions#update_version",  :as => "update_version_discussion"
+
   resources :comments , only: :destroy do
     post :like, on: :member
   end
-
-  post "/discussion/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
-  post "/discussion/update_version/:version_id", :to => "discussions#update_version", :as => "update_version_discussion"
 
   resources :attachments, only: [:create, :new] do
     collection do

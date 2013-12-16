@@ -61,6 +61,7 @@ class DiscussionsController < GroupBaseController
   end
 
   def show
+    ensure_url_slugged
     if @discussion.has_previous_versions?
       @last_collaborator = User.find(@discussion.originator.to_i)
     end
@@ -165,6 +166,13 @@ class DiscussionsController < GroupBaseController
   end
 
   private
+
+  def ensure_url_slugged
+    if params[:slug].blank?
+      redirect_to group_path(id: @discussion.key, slug: @discussion.title.parameterize)
+    end
+  end
+
   def build_comment
     @comment = Comment.new(body: params[:comment],
                            uses_markdown: params[:uses_markdown])

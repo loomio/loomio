@@ -1,5 +1,5 @@
 class DiscussionsRedirectController < GroupBaseController
-  BLOCK_ID_GREATER_THAN = 100
+  BLOCK_ID_GREATER_THAN = 10000
 
   before_filter :reject_new_ids
   before_filter :load_resource_from_id
@@ -12,7 +12,7 @@ class DiscussionsRedirectController < GroupBaseController
 
     def reject_new_ids
       if params[:id].to_i > BLOCK_ID_GREATER_THAN
-        flash[:error] = 'this record does not exist'
+        flash[:error] = "use keys to access records with id greater than > #{BLOCK_ID_GREATER_THAN}"
         redirect_to root_path
       end
     end
