@@ -169,6 +169,7 @@ class DiscussionsController < GroupBaseController
     if params[:slug].blank?
       redirect_to group_path(id: @discussion.key, slug: @discussion.title.parameterize)
     end
+  end
 
   def load_discussion
     @discussion ||= Discussion.published.find(params[:id])

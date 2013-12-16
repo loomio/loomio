@@ -103,6 +103,7 @@ class GroupsController < GroupBaseController
       if params[:slug].blank?
         redirect_to group_path(id: @group.key, slug: @group.full_name.parameterize)
       end
+    end
 
     def load_group
       @group = Group.published.find(params[:id])
