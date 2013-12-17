@@ -4,9 +4,10 @@ describe DiscussionsController do
   let(:app_controller) { controller }
   let(:user) { stub_model(User) }
   let(:motion) { mock_model(Motion) }
-  let(:group) { mock_model(Group) }
+  let(:group) { create :group }
   let(:discussion) { stub_model(Discussion,
                                 title: "Top ten",
+                                key: 'abc123',
                                 author: user,
                                 current_motion: motion,
                                 group: group) }
@@ -16,10 +17,9 @@ describe DiscussionsController do
       sign_in user
       app_controller.stub(:authorize!).and_return(true)
       app_controller.stub(:cannot?).with(:show, group).and_return(false)
-      Discussion.stub_chain(:published, :find).with(discussion.id.to_s).and_return(discussion)
-      Discussion.stub(:new).and_return(discussion)
+      Discussion.stub_chain(:published, :find).with(discussion.key).and_return(discussion)
       User.stub(:find).and_return(user)
-      Group.stub(:find).with(group.id.to_s).and_return(group)
+      Group.stub(:find).with(group.key).and_return(group)
     end
 
     describe "creating a discussion" do
@@ -30,7 +30,9 @@ describe DiscussionsController do
         DiscussionMailer.stub(:spam_new_discussion_created)
         user.stub_chain(:ability, :authorize!).and_return(true)
         @discussion_hash = { group_id: group.id, title: "Shinney" }
+        app_controller.stub(:current_user).and_return(user)
       end
+
       it "does not send email by default" do
         DiscussionMailer.should_not_receive(:spam_new_discussion_created)
         get :create, discussion: @discussion_hash
@@ -43,7 +45,7 @@ describe DiscussionsController do
 
       it "redirects to discussion" do
         get :create, discussion: @discussion_hash
-        response.should redirect_to(discussion_path(discussion.id))
+        response.should redirect_to discussion_path( Discussion.last )
       end
     end
 
@@ -54,14 +56,14 @@ describe DiscussionsController do
       end
       it "destroys discussion" do
         discussion.should_receive(:delayed_destroy)
-        delete :destroy, id: discussion.id
+        delete :destroy, id: discussion.key
       end
       it "redirects to group" do
-        delete :destroy, id: discussion.id
+        delete :destroy, id: discussion.key
         response.should redirect_to(group)
       end
       it "gives flash success message" do
-        delete :destroy, id: discussion.id
+        delete :destroy, id: discussion.key
         flash[:success].should =~ /Discussion successfully deleted/
       end
     end
@@ -74,14 +76,14 @@ describe DiscussionsController do
       end
       it "moves the discussion to the selected group" do
         discussion.should_receive(:group_id=).with(group.id.to_s)
-        put :move, id: discussion.id, discussion: { group_id: group.id }
+        put :move, id: discussion.key, discussion: { group_id: group.id }
       end
       it "redirects to the discussion" do
-        put :move, id: discussion.id, discussion: { group_id: group.id }
+        put :move, id: discussion.key, discussion: { group_id: group.id }
         response.should redirect_to(discussion)
       end
       it "gives flash success message" do
-        put :move, id: discussion.id, discussion: { group_id: group.id }
+        put :move, id: discussion.key, discussion: { group_id: group.id }
         flash[:success].should =~ /Discussion successfully moved./
       end
     end
@@ -89,25 +91,25 @@ describe DiscussionsController do
     describe "creating a new proposal" do
       context "current proposal already exists" do
         it "redirects to the discussion page" do
-          get :new_proposal, id: discussion.id
+          get :new_proposal, id: discussion.key
           response.should redirect_to(discussion)
         end
         it "displays a proposal already exists message" do
-          get :new_proposal, id: discussion.id
+          get :new_proposal, id: discussion.key
           flash[:notice].should =~ /A current proposal already exists for this disscussion./
         end
       end
       context "where no current proposal exists" do
         before do
           discussion.stub(current_motion: nil)
-          Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
-          get :new_proposal, id: discussion.id
+          # Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
+          get :new_proposal, id: discussion.key
         end
         it "succeeds" do
           response.should be_success
         end
         it "renders new motion template" do
-          get :new_proposal, id: discussion.id
+          get :new_proposal, id: discussion.key
           response.should render_template("motions/new")
         end
       end
@@ -126,7 +128,7 @@ describe DiscussionsController do
         it 'does not add a comment' do
           DiscussionService.should_receive(:add_comment).and_return(false)
           user.should_not_receive(:update_attributes)
-          xhr :post, :add_comment, comment: "", id: discussion.id, uses_markdown: false
+          xhr :post, :add_comment, comment: "", id: discussion.key, uses_markdown: false
         end
       end
 
@@ -135,7 +137,7 @@ describe DiscussionsController do
           DiscussionService.should_receive(:add_comment).
             with(comment).and_return(true)
           user.should_receive(:update_attributes)
-          xhr :post, :add_comment, comment: "", id: discussion.id, uses_markdown: false, attachments: [2]
+          xhr :post, :add_comment, comment: "", id: discussion.key, uses_markdown: false, attachments: [2]
         end
       end
     end
@@ -147,7 +149,7 @@ describe DiscussionsController do
       end
 
       after do
-        post :update_description, :id => discussion.id, :description => "blah"
+        post :update_description, :id => discussion.key, :description => "blah"
       end
 
       it "assigns description to the model" do
@@ -162,7 +164,7 @@ describe DiscussionsController do
 
       after do
         xhr :post, :edit_title,
-          :id => discussion.id,
+          :id => discussion.key,
           :title => "The Butterflys"
       end
 
@@ -179,7 +181,7 @@ describe DiscussionsController do
 
     describe "change version" do
       before do
-        @version_item = mock_model(Discussion, :description => "new version", :save! => true)
+        @version_item = mock_model(Discussion, :title => 'most important discussion', :description => "new version", key: 'abc1234', :save! => true)
         @version = mock_model(Version, :item => discussion)
         Version.stub(:find).and_return(@version)
         @version.stub(:reify).and_return(@version_item)

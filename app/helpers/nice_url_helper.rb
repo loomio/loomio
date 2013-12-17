@@ -5,7 +5,7 @@ module NiceUrlHelper
   end
 
   def default_port_for_url
-    Rails.env.development? ? ActionMailer::Base.default_url_options[:port] : nil
+    Rails.env.production? ? nil : ActionMailer::Base.default_url_options[:port]
   end
 
 end

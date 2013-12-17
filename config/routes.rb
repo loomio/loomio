@@ -36,8 +36,6 @@ Loomio::Application.routes.draw do
 
 
   ### GROUPS ###
-  get '/g/:id/:slug', to: 'groups#show', as: :group
-
   resources :groups, path: 'g', except: [:index, :new, :show] do
     resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
     resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
@@ -69,6 +67,7 @@ Loomio::Application.routes.draw do
     resources :motions
     resources :discussions, only: [:index, :new]
   end
+  get '/g/:id(/:slug)', to: 'groups#show', as: :group
 
   match "/g/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
 
@@ -108,7 +107,7 @@ Loomio::Application.routes.draw do
       put :move
     end
   end
-  get '/d/:id/:slug', to: 'discussions#show', as: :discussion
+  get '/d/:id(/:slug)', to: 'discussions#show', as: :discussion
   get 'discussions/:id', to: 'discussions_redirect#show'
 
   post "/d/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"

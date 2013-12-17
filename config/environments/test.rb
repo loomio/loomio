@@ -41,6 +41,7 @@ Loomio::Application.configure do
     }
     config.action_mailer.default_url_options = {
       :host           => 'looimo-staging.herokuapp.com',
+      :port           => 3000
     }
     config.action_mailer.perform_deliveries = true
 

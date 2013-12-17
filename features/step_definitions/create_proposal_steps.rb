@@ -22,7 +22,7 @@ end
 When /^I am on a group page$/ do
   pending "is this needed?"
   group = Group.all.first
-  visit "/groups/" + group.id.to_s
+  visit group_path(group)
 end
 
 Then /^I should see the proposal details$/ do
