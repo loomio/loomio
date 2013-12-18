@@ -109,7 +109,7 @@ Loomio::Application.routes.draw do
     end
   end
   get    '/d/:id(/:slug)', to: 'discussions#show', as: :discussion, slug: /[a-zA-Z0-9-]*/
-  delete '/d/:id/:slug',   to: 'discussions#destroy',               slug: /[a-zA-Z0-9-]*/ #this catches the update group form
+  delete '/d/:id/:slug',   to: 'discussions#destroy',               slug: /[a-zA-Z0-9-]*/
 
   post "/d/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
   post "/d/update_version/:version_id",        :to => "discussions#update_version",  :as => "update_version_discussion"

@@ -27,7 +27,7 @@ Then /^the group should be private$/ do
 end
 
 Then /^I should not have access to group settings of "(.*?)"$/ do |group|
-  visit "/groups/" + Group.find_by_name(group).id.to_s + "/edit"
+  visit "/g/" + Group.find_by_name(group).id.to_s + "/edit"
   page.should have_content(I18n.t(:'error.access_denied'))
 end
 

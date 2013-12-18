@@ -1,5 +1,6 @@
 class InvitationsController < ApplicationController
   include InvitationsHelper
+  include GroupsHelper
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error',
@@ -50,9 +51,9 @@ class InvitationsController < ApplicationController
 
   def redirect_to_group
     if @invitation.group.admins.include? current_user
-      redirect_to setup_group_path(@invitation.group.id)
+      redirect_to setup_group_path(@invitation.group)
     else
-      redirect_to @invitation.group
+      redirect_to group_path(@invitation.group)
     end
   end
 end

@@ -5,9 +5,9 @@ end
 When(/^I choose and pay for the plan "(.*?)"$/) do |plan|
   @start_time = 100
   @amount = plan.match('\d+')[0].to_i
-  @group.update_attribute(:name, 'Enspiral')
+  @group.update_attributes(name: 'Enspiral', key: 'abc123')
   PaypalCheckout.any_instance.stub(gateway_url:
-    confirm_group_subscription_path(@group, amount: @amount, token: "T0K3N"))
+    'http://localhost:3000'+confirm_group_subscription_path(@group, amount: @amount, token: "T0K3N"))
   PaypalSubscription.any_instance.stub(start_time: @start_time)
   VCR.use_cassette("paypal success",
                    match_requests_on: [:uri, :body]) do
@@ -19,7 +19,7 @@ end
 When(/^I choose and pay for a custom plan$/) do
   @start_time = 100
   @amount = 25
-  @group.update_attribute(:name, 'Enspiral')
+  @group.update_attributes(name: 'Enspiral', key: 'abc123')
   PaypalCheckout.any_instance.stub(gateway_url:
     confirm_group_subscription_path(@group, amount: @amount, token: "T0K3N"))
   PaypalSubscription.any_instance.stub(start_time: @start_time)
@@ -75,7 +75,7 @@ Then(/^I should be told the amount was invalid$/) do
   page.should have_content("Custom amount was invalid. Please enter a number above 0.")
 end
 
-When(/^I choose the \$0 per month plan$/) do 
+When(/^I choose the \$0 per month plan$/) do
   choose "$0 per month"
   @amount = 0
 end
@@ -89,8 +89,8 @@ Then(/^I should see the button text change$/) do
 end
 
 Then(/^I should see buttons for all the different plans$/) do
-  page.should have_link('$30/month', :href => "/groups/#{@group.id}/subscription?amount=30")
-  page.should have_link('$50/month', :href => "/groups/#{@group.id}/subscription?amount=50")
-  page.should have_link('$100/month', :href => "/groups/#{@group.id}/subscription?amount=100")
-  page.should have_link('$200/month', :href => "/groups/#{@group.id}/subscription?amount=200")
+  page.should have_link('$30/month', :href => group_subscription_path(@group, amount: 30))
+  page.should have_link('$50/month', :href => group_subscription_path(@group, amount: 50))
+  page.should have_link('$100/month', :href => group_subscription_path(@group, amount: 100))
+  page.should have_link('$200/month', :href => group_subscription_path(@group, amount: 200))
 end
