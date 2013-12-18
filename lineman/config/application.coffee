@@ -38,6 +38,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
     src: 'features/*.feature'
     options:
       steps: 'features/step_definitions'
+      coffee: true
 
   haml:
     dist:
