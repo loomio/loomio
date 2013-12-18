@@ -87,7 +87,7 @@ Given /^the group has a discussion with a decision$/ do
 end
 
 Given /^there is a discussion in the group$/ do
-  @discussion = create_discussion :group => @group
+  @discussion = create_discussion group: @group
 end
 
 Given /^there is a discussion in a public group$/ do

@@ -36,7 +36,7 @@ Loomio::Application.routes.draw do
 
 
   ### GROUPS ###
-  resources :groups, path: 'g', except: [:index, :new, :show] do
+  resources :groups, path: 'g', except: [:index, :new, :show, :update] do
     resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
     resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
       member do
@@ -67,14 +67,15 @@ Loomio::Application.routes.draw do
     resources :motions
     resources :discussions, only: [:index, :new]
   end
-  get '/g/:id(/:slug)', to: 'groups#show', as: :group
+  get '/g/:id(/:slug)', to: 'groups#show', as: :group, slug: /[a-zA-Z0-9-]*/
+  put '/g/:id/:slug',   to: 'groups#update',           slug: /[a-zA-Z0-9-]*/ #this catches the edit group form
 
   match "/g/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
 
   ### MEMBERSHIP REQUESTS ###
-  get 'g/:group_id/ask_to_join',   to: 'groups/membership_requests#new',          as: :new_group_membership_request
-  post 'g/:group_id/membership_requests', to: 'groups/membership_requests#create'  ,     as: :group_membership_requests
-  delete 'membership_requests/:id/cancel',     to: 'groups/membership_requests#cancel',       as: :cancel_membership_request
+  get 'g/:group_id/ask_to_join',           to: 'groups/membership_requests#new',          as: :new_group_membership_request
+  post 'g/:group_id/membership_requests',  to: 'groups/membership_requests#create'  ,     as: :group_membership_requests
+  delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel',       as: :cancel_membership_request
 
   get 'g/:group_id/membership_requests',  to: 'groups/manage_membership_requests#index', as: :group_membership_requests
   resources :membership_requests, only: [], controller: 'groups/manage_membership_requests' do
@@ -107,8 +108,8 @@ Loomio::Application.routes.draw do
       put :move
     end
   end
-  get '/d/:id(/:slug)', to: 'discussions#show', as: :discussion
-  get 'discussions/:id', to: 'discussions_redirect#show'
+  get    '/d/:id(/:slug)', to: 'discussions#show', as: :discussion, slug: /[a-zA-Z0-9-]*/
+  delete '/d/:id/:slug',   to: 'discussions#destroy',               slug: /[a-zA-Z0-9-]*/ #this catches the update group form
 
   post "/d/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
   post "/d/update_version/:version_id",        :to => "discussions#update_version",  :as => "update_version_discussion"
@@ -208,6 +209,8 @@ Loomio::Application.routes.draw do
   get '/pages/about' => redirect('/about#about-us')
   match '/pages/contact', to: 'contact_messages#new'
 
+  get 'discussions/:id', to: 'discussions_redirect#show'
+  get 'groups/:id',      to: 'groups_redirect#show'
 
   get 'blog' => redirect('http://blog.loomio.org')
   get 'press' => redirect('http://blog.loomio.org/press-pack')

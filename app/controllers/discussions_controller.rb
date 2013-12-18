@@ -1,7 +1,8 @@
 class DiscussionsController < GroupBaseController
   include DiscussionsHelper
-  before_filter :authenticate_user!, :except => [:show, :index]
+  include GroupsHelper
 
+  before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :load_discussion, except: [:new, :create, :index, :update_version]
   authorize_resource :except => [:new, :create, :index, :add_comment]
 
@@ -26,7 +27,7 @@ class DiscussionsController < GroupBaseController
 
     if DiscussionService.start_discussion(@discussion)
       flash[:success] = t("success.discussion_created")
-      redirect_to @discussion
+      redirect_to discussion_path(@discussion)
     else
       render action: :new
       flash[:error] = t("error.discussion_not_created")
@@ -36,7 +37,7 @@ class DiscussionsController < GroupBaseController
   def destroy
     @discussion.delayed_destroy
     flash[:success] = t("success.discussion_deleted")
-    redirect_to @discussion.group
+    redirect_to group_path(@discussion.group)
   end
 
   def index
@@ -64,7 +65,6 @@ class DiscussionsController < GroupBaseController
   end
 
   def show
-    ensure_url_slugged
     if @discussion.has_previous_versions?
       @last_collaborator = User.find(@discussion.originator.to_i)
     end
@@ -101,7 +101,7 @@ class DiscussionsController < GroupBaseController
     else
       flash[:error] = "Discussion could not be moved."
     end
-    redirect_to @discussion
+    redirect_to discussion_path(@discussion)
   end
 
   def add_comment
@@ -116,7 +116,7 @@ class DiscussionsController < GroupBaseController
 
   def new_proposal
     if @discussion.current_motion
-      redirect_to @discussion
+      redirect_to discussion_path(@discussion)
       flash[:notice] = "A current proposal already exists for this disscussion."
     else
       @motion = Motion.new
@@ -128,12 +128,12 @@ class DiscussionsController < GroupBaseController
 
   def update_description
     @discussion.set_description!(params[:description], params[:description_uses_markdown], current_user)
-    redirect_to @discussion
+    redirect_to discussion_path(@discussion)
   end
 
   def edit_title
     @discussion.set_title!(params.require(:title), current_user)
-    redirect_to @discussion
+    redirect_to discussion_path(@discussion)
   end
 
   def show_description_history
@@ -164,12 +164,6 @@ class DiscussionsController < GroupBaseController
   end
 
   private
-
-  def ensure_url_slugged
-    if params[:slug].blank?
-      redirect_to group_path(id: @discussion.key, slug: @discussion.title.parameterize)
-    end
-  end
 
   def load_discussion
     @discussion ||= Discussion.published.find(params[:id])
