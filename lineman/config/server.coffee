@@ -18,15 +18,15 @@ module.exports = drawRoutes: (app) ->
   #app.post "/logout", (req, res) ->
     #res.json message: "logging out!"
 
-  app.get "/discussions/3000", (req, res) ->
-    res.json [
-      title: "Great Expectations"
-      author: "Dickens"
-    ,
-      title: "Foundation Series"
-      author: "Asimov"
-    ,
-      title: "Treasure Island"
-      author: "Stephenson"
-    ]
+  #app.get "/discussions/3000", (req, res) ->
+    #res.json [
+      #title: "Great Expectations"
+      #author: "Dickens"
+    #,
+      #title: "Foundation Series"
+      #author: "Asimov"
+    #,
+      #title: "Treasure Island"
+      #author: "Stephenson"
+    #]
 

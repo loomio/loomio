@@ -16,7 +16,8 @@ ptor = protractor.wrapDriver driver
 class World
   constructor: (callback) ->
     @browser = ptor
-    @By = protractor.By
+    @driver = driver
+    @by = protractor.By
     @assert = assert
     callback()
 

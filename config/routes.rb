@@ -1,4 +1,7 @@
 Loomio::Application.routes.draw do
+
+  get "angular_support/log_in_and_redirect_to_discussion", to: "angular_support#log_in_and_redirect_to_discussion"
+
   ActiveAdmin.routes(self)
 
   namespace :admin do
