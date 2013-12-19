@@ -57,7 +57,6 @@ gem 'sequenced'
 group :assets do
   gem 'coffee-rails'
   gem 'sass-rails'
-  gem 'bootstrap-sass-rails' # Bootstrap 3
   gem 'bootstrap-sass', '~> 2.3.2.2' # Bootstrap 2
   gem 'uglifier', '~> 2.2.1'
   gem 'modernizr-rails', '~> 2.6.2'
@@ -97,7 +96,7 @@ end
 group :test do
   gem 'cucumber-rails', '~> 1.4.0', :require => false
   gem 'email_spec', '~> 1.2.1'
-  gem 'poltergeist', '~> 1.4.1'
+  gem 'poltergeist', '~> 1.3.0'
   gem 'webmock', '~> 1.9.0'
   gem 'vcr', '~> 2.5.0'
   gem "codeclimate-test-reporter", require: nil
