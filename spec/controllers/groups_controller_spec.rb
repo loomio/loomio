@@ -10,7 +10,7 @@ describe GroupsController do
       before { group.update_attribute(:privacy, :public) }
 
       it "show" do
-        get :show, :id => group.id
+        get :show, :id => group.key
         response.should be_success
       end
     end
@@ -18,7 +18,7 @@ describe GroupsController do
     context "hidden group" do
       before { group.update_attribute(:privacy, :hidden) }
       it "does not show" do
-        get :show, :id => group.id
+        get :show, :id => group.key
         response.should be_redirect
       end
     end
@@ -32,12 +32,12 @@ describe GroupsController do
     end
 
     it "show" do
-      get :show, :id => group.id
+      get :show, :id => group.key
       response.should be_success
     end
 
     it "add_subgroup" do
-      get :add_subgroup, :id => group.id
+      get :add_subgroup, :id => group.key
       response.should be_success
     end
 
@@ -53,7 +53,7 @@ describe GroupsController do
 
       added_user = create(:user)
       group.add_member!(added_user)
-      post :add_members, id: subgroup.id, "user_#{added_user.id}" => 1
+      post :add_members, id: subgroup.key, "user_#{added_user.id}" => 1
       subgroup.members.should include added_user
       subgroup.memberships.find_by_user_id(added_user.id).inviter.should == user
     end
@@ -62,20 +62,20 @@ describe GroupsController do
       before { group.add_admin!(user) }
 
       it "update" do
-        post :update, id: group.id, group: { name: "New name!" }
+        post :update, id: group.key, group: { name: "New name!" }
         flash[:notice].should == "Group was successfully updated."
-        response.should redirect_to group
+        response.should redirect_to "http://localhost:3000/g/#{group.key}/new-name"
       end
 
       describe "#edit description" do
         it "assigns description and saves model" do
-          xhr :post, :edit_description, :id => group.id, :description => "blah"
+          xhr :post, :edit_description, :id => group.key, :description => "blah"
           assigns(:group).description.should == 'blah'
         end
       end
 
       describe "archives group" do
-        before { put :archive, :id => group.id }
+        before { put :archive, :id => group.key }
 
         it "sets archived_at field on the group" do
           assigns(:group).archived_at.should_not == nil
@@ -94,7 +94,7 @@ describe GroupsController do
     before { group.archive! }
 
     it "should render the page not found template" do
-      get :show, :id => group.id
+      get :show, :id => group.key
       response.should render_template('application/display_error', message: I18n.t('error.group_private_or_not_found'))
     end
   end

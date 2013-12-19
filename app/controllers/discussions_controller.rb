@@ -1,9 +1,8 @@
 class DiscussionsController < GroupBaseController
   include DiscussionsHelper
-  include GroupsHelper
 
   before_filter :authenticate_user!, :except => [:show, :index]
-  before_filter :load_discussion, except: [:new, :create, :index, :update_version]
+  before_filter :load_resource_by_key, except: [:new, :create, :index, :update_version]
   authorize_resource :except => [:new, :create, :index, :add_comment]
 
   after_filter :mark_as_read, only: :show
@@ -24,10 +23,9 @@ class DiscussionsController < GroupBaseController
 
   def create
     build_discussion
-
     if DiscussionService.start_discussion(@discussion)
       flash[:success] = t("success.discussion_created")
-      redirect_to discussion_path(@discussion)
+      redirect_to @discussion
     else
       render action: :new
       flash[:error] = t("error.discussion_not_created")
@@ -37,7 +35,7 @@ class DiscussionsController < GroupBaseController
   def destroy
     @discussion.delayed_destroy
     flash[:success] = t("success.discussion_deleted")
-    redirect_to group_path(@discussion.group)
+    redirect_to @discussion.group
   end
 
   def index
@@ -101,7 +99,7 @@ class DiscussionsController < GroupBaseController
     else
       flash[:error] = "Discussion could not be moved."
     end
-    redirect_to discussion_path(@discussion)
+    redirect_to @discussion
   end
 
   def add_comment
@@ -116,7 +114,7 @@ class DiscussionsController < GroupBaseController
 
   def new_proposal
     if @discussion.current_motion
-      redirect_to discussion_path(@discussion)
+      redirect_to @discussion
       flash[:notice] = "A current proposal already exists for this disscussion."
     else
       @motion = Motion.new
@@ -128,12 +126,12 @@ class DiscussionsController < GroupBaseController
 
   def update_description
     @discussion.set_description!(params[:description], params[:description_uses_markdown], current_user)
-    redirect_to discussion_path(@discussion)
+    redirect_to @discussion
   end
 
   def edit_title
     @discussion.set_title!(params.require(:title), current_user)
-    redirect_to discussion_path(@discussion)
+    redirect_to @discussion
   end
 
   def show_description_history
@@ -145,9 +143,7 @@ class DiscussionsController < GroupBaseController
 
   def preview_version
     # assign live item if no version_id is passed
-    if params[:version_id].nil?
-      @discussion = load_discussion
-    else
+    if params[:version_id].present?
       version = Version.find(params[:version_id])
       @discussion = version.reify
     end
@@ -165,8 +161,8 @@ class DiscussionsController < GroupBaseController
 
   private
 
-  def load_discussion
-    @discussion ||= Discussion.published.find(params[:id])
+  def load_resource_by_key
+    @discussion ||= Discussion.published.find_by_key(params[:id])
   end
 
   def build_comment
@@ -175,7 +171,7 @@ class DiscussionsController < GroupBaseController
 
     attachment_ids = Array(params[:attachments]).map(&:to_i)
 
-    @comment.discussion = load_discussion
+    @comment.discussion = @discussion
     @comment.author = current_user
     @comment.attachment_ids = attachment_ids
     @comment.attachments_count = attachment_ids.size

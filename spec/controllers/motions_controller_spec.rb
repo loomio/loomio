@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe MotionsController do
-  let(:group) { stub_model(Group) }
+  let(:group) { stub_model(Group, full_name: 'Bobs Bakery', key: 'aAa121') }
   let(:user)  { stub_model(User) }
-  let(:discussion)  { stub_model(Discussion, :group => group) }
+  let(:discussion)  { stub_model(Discussion, :group => group, title: 'some discussion', key: 'asdf333') }
   let(:motion) { stub_model(Motion, :discussion => discussion) }
   let(:previous_url) { root_url }
 
