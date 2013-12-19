@@ -1,20 +1,6 @@
 module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
-  include NiceUrlHelper
-
-  def discussion_path(discussion, options={})
-    discussion_url(discussion, options.merge(:only_path => true))
-  end
-
-  def discussion_url(discussion, options={})
-    options.reverse_merge! host: default_host_for_url,
-                           port: default_port_for_url
-
-    options.merge! controller: 'discussions', action: 'show',
-                   id: discussion.key, slug: discussion.title.parameterize
-    url_for(options)
-  end
 
   def enough_activity_for_jump_link?
     @discussion.items_count > 3

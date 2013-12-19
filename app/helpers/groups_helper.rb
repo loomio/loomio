@@ -1,18 +1,4 @@
 module GroupsHelper
-  include NiceUrlHelper
-
-  def group_path(group, options={})
-    group_url(group, options.merge(:only_path => true))
-  end
-
-  def group_url(group, options={})
-    options.reverse_merge! host: default_host_for_url,
-                           port: default_port_for_url
-
-    options.merge! :controller => 'groups', :action => 'show',
-                   :id => group.key, :slug => group.full_name.parameterize
-    url_for(options)
-  end
 
   def css_for_privacy_link(group, link)
     current_privacy_setting = String(group.privacy)

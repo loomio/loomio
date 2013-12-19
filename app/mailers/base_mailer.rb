@@ -3,13 +3,7 @@ class BaseMailer < ActionMailer::Base
   include LocalesHelper
   include ERB::Util
   include ActionView::Helpers::TextHelper
-
-  # include GroupsHelper
-  # include DiscussionsHelper
-  # helper :groups
-  # helper :discussions
-  add_template_helper(GroupsHelper)
-  add_template_helper(DiscussionsHelper)
+  add_template_helper(NiceUrlHelper)
 
   UTM_EMAIL = { utm_campaign: 'notifications', utm_medium: 'email' }
 
