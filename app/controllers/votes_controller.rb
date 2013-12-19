@@ -10,9 +10,12 @@ class VotesController < BaseController
     @vote = Vote.new(permitted_params.vote)
     @vote.motion = motion
     @vote.user = current_user
-    @vote.save!
-    flash[:success] = t("success.position_submitted")
-    redirect_to @motion
+    if @vote.save
+      flash[:success] = t("success.position_submitted")
+      redirect_to @motion
+    else
+      render :new
+    end
   end
 
   def update

@@ -20,7 +20,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    aasm (3.0.24)
+    aasm (3.0.25)
     actionmailer (3.2.16)
       actionpack (= 3.2.16)
       mail (~> 2.5.4)
@@ -49,6 +49,9 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     addressable (2.2.8)
+    airbrake (3.1.14)
+      builder
+      json
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.3)
@@ -145,9 +148,6 @@ GEM
       rspec (~> 2.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    exception_notification (4.0.1)
-      actionmailer (>= 3.0.4)
-      activesupport (>= 3.0.4)
     excon (0.28.0)
     execjs (2.0.2)
     factory_girl (4.2.0)
@@ -208,7 +208,7 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hashie (2.0.5)
-    heroku-deflater (0.5.2)
+    heroku-deflater (0.5.3)
       rack (>= 1.4.5)
     hike (1.2.3)
     httparty (0.11.0)
@@ -229,7 +229,7 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (4.1.0)
+    jquery-ui-rails (4.1.1)
       railties (>= 3.1.0)
     json (1.8.1)
     jwt (0.1.8)
@@ -262,7 +262,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
     newrelic_rpm (3.5.7.59)
-    nokogiri (1.6.0)
+    nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -298,7 +298,7 @@ GEM
     parallel (0.9.1)
     parallel_tests (0.16.5)
       parallel
-    pg (0.17.0)
+    pg (0.17.1)
     pg_search (0.7.2)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
@@ -394,7 +394,7 @@ GEM
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     ruby-hmac (0.4.0)
-    ruby-prof (0.13.0)
+    ruby-prof (0.13.1)
     rubyzip (0.9.9)
     safe_yaml (0.9.7)
     sass (3.2.12)
@@ -487,6 +487,7 @@ PLATFORMS
 DEPENDENCIES
   aasm (~> 3.0.3)
   activeadmin!
+  airbrake
   awesome_print (~> 1.0.2)
   better_errors
   binding_of_caller
@@ -508,7 +509,6 @@ DEPENDENCIES
   devise (~> 3.1.0)
   draper (~> 0.11.1)
   email_spec (~> 1.2.1)
-  exception_notification (~> 4.0.1)
   factory_girl_rails (~> 4.2.1)
   faker (~> 1.2.0)
   fog

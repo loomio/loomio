@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
   class MaximumMembershipsExceeded < Exception
   end
 
-  PRIVACY_CATEGORIES = ['public', 'private', 'secret']
+  PRIVACY_CATEGORIES = ['public', 'private', 'hidden']
   INVITER_CATEGORIES = ['members', 'admins']
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
 
@@ -16,7 +16,7 @@ class Group < ActiveRecord::Base
 
   validate :limit_inheritance
   validate :privacy_allowed_by_parent, if: :is_a_subgroup?
-  validate :subgroups_are_secret, if: :is_secret?
+  validate :subgroups_are_hidden, if: :is_hidden?
 
   after_initialize :set_defaults
   before_save :update_full_name_if_name_changed
@@ -25,8 +25,9 @@ class Group < ActiveRecord::Base
   pg_search_scope :search_full_name, against: [:name, :description],
     using: {tsearch: {dictionary: "english"}}
 
-  default_scope where(:archived_at => nil)
-
+  scope :archived, lambda { where('archived_at IS NOT NULL') }
+  scope :published, lambda { where(archived_at: nil) }
+  
   scope :parents_only, where(:parent_id => nil)
 
   scope :sort_by_popularity,
@@ -159,8 +160,8 @@ class Group < ActiveRecord::Base
     (privacy == 'public') and !archived?
   end
 
-  def is_secret?
-    self.privacy == 'secret'
+  def is_hidden?
+    self.privacy == 'hidden'
   end
 
   def members_can_invite_members?
@@ -306,7 +307,7 @@ class Group < ActiveRecord::Base
   end
 
   def set_defaults
-    self.privacy ||= 'secret'
+    self.privacy ||= 'hidden'
     self.members_invitable_by ||= 'members'
   end
 
@@ -317,14 +318,14 @@ class Group < ActiveRecord::Base
   end
 
   def privacy_allowed_by_parent
-    if parent.privacy == 'secret' && self.privacy != 'secret'
-      errors[:privacy] << "Parent group is secret, subgroups must also be secret"
+    if parent.privacy == 'hidden' && self.privacy != 'hidden'
+      errors[:privacy] << "Parent group is hidden, subgroups must also be hidden"
     end
   end
 
-  def subgroups_are_secret
-    unless subgroups.all?{|g| g.is_secret?}
-      errors[:privacy] << "There are non secret subgroups, so this group cannot be secret"
+  def subgroups_are_hidden
+    unless subgroups.all?{|g| g.is_hidden?}
+      errors[:privacy] << "There are non hidden subgroups, so this group cannot be hidden"
     end
   end
 end

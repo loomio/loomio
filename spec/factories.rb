@@ -114,7 +114,7 @@ FactoryGirl.define do
     group
     group_name Faker::Name.name
     group_description "My text outlining the group"
-    privacy 'secret'
+    privacy 'hidden'
     members_invitable_by 'admins'
     discussion_title Faker::Name.name
     discussion_description "My text outlining the discussion"

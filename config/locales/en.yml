@@ -284,7 +284,7 @@ en:
   create_subgroup: "Create sub-group"
   creating_subgroup: "Creating sub-group"
 
-  secret: "Secret"
+  hidden: "Hidden"
   public: "Public"
 
   new_group: "New group"
@@ -611,6 +611,7 @@ en:
   #
 
   invitation:
+    alternate: "Alternatively, share this link and anyone can ask to join:"
     no_invitations_left: "Sorry you don't have any invitations left"
     no_invitations_left_get_more: "Please email contact@loomio.org and we'll see what we can do to help you"
     invitation_not_found:  'Could not find invitation with that token. Please ask for a new invitation from the sender.'
@@ -735,11 +736,11 @@ en:
         privacy_private_header: Private
         privacy_private_description: Anyone can see the group and who's in it. Discussions are only visible to members by default.
         privacy_private_description_short: Anyone can see this group. Only members can see discussions.
-        privacy_secret_header: Secret
-        privacy_secret_description: Only members can see the group and its discussions. You cannot have public discussions in a secret group.
-        privacy_secret_description_short: Only members can see this group and its discussions.
+        privacy_hidden_header: Hidden
+        privacy_hidden_description: Only members can see the group and its discussions. You cannot have public discussions in a hidden group.
+        privacy_hidden_description_short: Only members can see this group and its discussions.
         privacy_parent_group_members_header: Viewable by parent group members
-        privacy_parent_group_members_description: Same as secret, only the group and its discussions can be seen by parent group members.
+        privacy_parent_group_members_description: Same as hidden, only the group and its discussions can be seen by parent group members.
         privacy_parent_group_members_description_short: Only members and parent group members can see this group and its discussions.
         group_members_invitable_by:
           "Only coordinators"

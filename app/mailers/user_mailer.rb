@@ -40,6 +40,7 @@ class UserMailer < BaseMailer
     @motion = motion
     @group = motion.group
     @rendered_motion_description = render_rich_text(motion.description, false) #later: change false to motion.uses_markdown
+    @utm_hash = UTM_EMAIL.merge utm_source: 'motion_closing_soon'
     locale = best_locale(user.language_preference, @motion.author.language_preference)
     I18n.with_locale(locale) do
       mail to: user.email,

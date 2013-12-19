@@ -90,19 +90,4 @@ Loomio::Application.configure do
     :fog_directory => ENV['AWS_UPLOADS_BUCKET'],
     :fog_public => true
   }
-
-  # Email admin when server gets exceptions!
-  config.middleware.use ExceptionNotification::Rack,
-    :email => {
-      :email_prefix => "[Loomio Exception] ",
-      :sender_address => %{"Exception Notifier" <dudley@loomio.org>},
-      :exception_recipients => [ENV['EXCEPTION_RECIPIENT']]
-    }
-
-  # Add the fonts path
-  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-
-  # Precompile additional assets
-  config.assets.precompile += %w( .svg .eot .woff .ttf )
-
 end

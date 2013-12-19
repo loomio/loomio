@@ -64,18 +64,25 @@ ActiveAdmin.register Group do
       end
     end
     panel("Group Admins") do
-        table_for group.admins.each do |admin|
-          column :name
-          column :email do |user|
-            if user.email == group.admin_email
-              simple_format "#{mail_to(user.email,user.email)}"
-            else
-              mail_to(user.email,user.email)
-            end
+      table_for group.admins.each do |admin|
+        column :name
+        column :email do |user|
+          if user.email == group.admin_email
+            simple_format "#{mail_to(user.email,user.email)}"
+          else
+            mail_to(user.email,user.email)
           end
         end
+      end
     end
-
+    panel("Pending invitations") do
+      table_for group.pending_invitations.each do |invitation|
+        column :recipient_email
+        column :link do |i|
+          invitation_url(i)
+        end
+      end
+    end
     panel('Archive') do
       link_to 'Archive this group', archive_admin_group_path(group), method: :post, confirm: "Are you sure you wanna archive #{group.name}, pal?"
     end
