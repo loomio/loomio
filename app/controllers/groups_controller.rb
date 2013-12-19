@@ -13,7 +13,7 @@ class GroupsController < GroupBaseController
   #for new subgroup form
   def add_subgroup
     parent = Group.published.find(params[:id])
-    @subgroup = Group.new(:parent => parent)
+    @subgroup = Group.new(:parent => parent, privacy: parent.privacy)
     @subgroup.members_invitable_by = parent.members_invitable_by
   end
 
@@ -35,6 +35,9 @@ class GroupsController < GroupBaseController
 
   def update
     if @group.update_attributes(permitted_params.group)
+      if @group.is_hidden?
+        @group.discussions.update_all(private: true)
+      end
       flash[:notice] = 'Group was successfully updated.'
       redirect_to @group
     else

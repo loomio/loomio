@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(:version => 20131209035746) do
     t.integer  "comments_count",  :default => 0,     :null => false
     t.integer  "items_count",     :default => 0,     :null => false
     t.datetime "archived_at"
+    t.boolean  "private"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"

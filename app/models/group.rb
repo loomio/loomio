@@ -105,7 +105,7 @@ class Group < ActiveRecord::Base
   has_many :motions, :through => :discussions
 
   belongs_to :parent, :class_name => "Group"
-  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
+  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id', conditions: { archived_at: nil }
 
   has_one :subscription, dependent: :destroy
 
@@ -298,6 +298,10 @@ class Group < ActiveRecord::Base
   def is_paying?
     (payment_plan == 'manual_subscription') ||
     (subscription.present? && subscription.amount > 0)
+  end
+
+  def is_hidden?
+    privacy == "hidden"
   end
 
   private

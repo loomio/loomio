@@ -1,5 +1,17 @@
 namespace :upgrade_tasks do
 
+  task :'2012-12-19-update-discussion-privacy' => :environment do
+    ActiveRecord::Base.record_timestamps = false
+    begin
+      Group.all.each do |g|
+        discussion_is_private = g.privacy != 'public'
+        Discussion.where(group_id: g.id).update_all(private: discussion_is_private)
+      end
+    ensure
+      ActiveRecord::Base.record_timestamps = true
+    end
+  end
+
   task :'2013-11-29-set-outcome-author-for-motions' => :environment do
     ActiveRecord::Base.record_timestamps = false
     begin

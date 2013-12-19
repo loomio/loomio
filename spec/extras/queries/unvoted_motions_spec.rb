@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Queries::UnvotedMotions do
   let(:user) { create(:user) }
-  let(:motion) { create(:motion, author: user) }
+  let(:discussion) { create_discussion }
+  let(:motion) { create(:motion, author: user, discussion: discussion) }
   let(:group) { motion.group }
 
   describe ".for(user, group)" do

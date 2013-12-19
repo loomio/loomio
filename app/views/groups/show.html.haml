@@ -1,12 +1,12 @@
 .row
   .span9
     - set_title @group.name, "", @group.parent
-    = render '/groups/title', group: @group
+    = render '/groups/title', group: @group, discussion: @discussion
     - if can? :create, @discussion
       = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
   .span3#button-container
     - if can?(:add_members, @group)
-      = render 'invite_button', group: @group
+      = render 'invite_button', group: @group, discussion: @discussion
     = render 'options_dropdown', group: @group
     = request_membership_button(@group)
 
@@ -24,7 +24,7 @@
           #discussion-list
             - @discussions_without_open_motions.each do |discussion|
               %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group, discussion_surely_has_no_current_motion: true
-        - if @group.privacy == 'private' && @group.members.exclude?(current_user)
+        - if user_sees_private_discussions_message?(current_user, @group)
           = t :private_group_discussion_display
         - elsif (@discussions_without_open_motions + @discussions_with_open_motions).count == 0
           %li.empty-list-message= t :empty_discussion_index_group
