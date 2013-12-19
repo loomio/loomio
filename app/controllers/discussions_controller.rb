@@ -167,11 +167,16 @@ class DiscussionsController < GroupBaseController
     @discussion ||= Discussion.published.find(params[:id])
   end
 
+  def build_discussion
+    @discussion = Discussion.new(permitted_params.discussion)
+    @discussion.author = current_user
+  end
+
   def build_comment
     @comment = Comment.new(body: params[:comment],
                            uses_markdown: params[:uses_markdown])
 
-    attachment_ids = Array(params[:attachment_ids]).map(&:to_i)
+    attachment_ids = Array(params[:attachments]).map(&:to_i)
 
     @comment.discussion = load_discussion
     @comment.author = current_user
