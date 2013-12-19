@@ -37,7 +37,6 @@ ENV['AWS_SECRET_ACCESS_KEY']="notarealsecretaccesskey"
 ENV['AWS_ATTACHMENTS_BUCKET']="notarealbucker"
 ENV['DEVISE_SECRET'] = 'testvalueaskjdhakjdhaksjhdkajhdkjahdkjashkjdhakjdh'
 
-include Capybara::Angular::DSL
 # Before do |scenario|
 #   @feature_name = scenario.feature.title
 #   @scenario_name = scenario.title
