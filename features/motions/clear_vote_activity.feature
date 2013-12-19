@@ -38,7 +38,7 @@ Feature: Clear vote activity
 
   @javascript
   Scenario: Logged out user views a discussion's proposal activity from the group page
-    Given there is a discussion in a public group
+    Given there is a public discussion in a public group
     And the discussion has an open proposal
     And there is proposal activity on the discussion
     When I visit the group page

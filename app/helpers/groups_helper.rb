@@ -116,4 +116,11 @@ module GroupsHelper
     [[t('simple_form.labels.group.members_invitable_by_coordinators'), :admins],
      [t('simple_form.labels.group.members_invitable_by_members'), :members]]
   end
+
+  def user_sees_private_discussions_message?(user, group)
+    group.privacy == 'private' &&
+    group.members.exclude?(user) &&
+    group.discussions.where('private = ?', false).empty?
+  end
+
 end

@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Group do
-  let(:motion) { create(:motion) }
+  let(:motion) { create(:motion, discussion: discussion) }
   let(:user) { create(:user) }
   let(:group) { create(:group) }
+  let(:discussion) { create_discussion }
 
   it { should have_many :discussions }
 
@@ -168,7 +169,7 @@ describe Group do
   describe 'archive!' do
     before do
       group.add_member!(user)
-      @discussion = create(:discussion, group_id: group.id)
+      @discussion = create_discussion group_id: group.id
       group.archive!
     end
 
@@ -216,6 +217,26 @@ describe Group do
         end
         it {should be_true}
       end
+    end
+  end
+
+  describe "#is_hidden?" do
+    let(:group) { Group.new }
+    subject { group.is_hidden? }
+
+    context "group is public" do
+      before { group.privacy = 'public'}
+      it { should be_false }
+    end
+
+    context "group is private" do
+      before { group.privacy = 'private'}
+      it { should be_false }
+    end
+
+    context "group is hidden" do
+      before { group.privacy = 'hidden'}
+      it { should be_true }
     end
   end
 
@@ -283,4 +304,5 @@ describe Group do
       it {should_not include new_group }
     end
   end
+
 end

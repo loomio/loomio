@@ -47,6 +47,7 @@ FactoryGirl.define do
     title { Faker::Lorem.sentence(word_count = 2) }
     description 'A description for this discussion. Should this be *rich*?'
     uses_markdown false
+    private true
     after(:build) do |discussion|
       discussion.group.parent.add_member!(discussion.author) if discussion.group.parent
       discussion.group.add_member!(discussion.author)

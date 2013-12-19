@@ -1,21 +1,28 @@
 .dropdown#discussion-options
-  = link_to image_tag("dropdown.png"), "#", id: "options-dropdown", class: "dropdown-toggle", 'data-toggle' => 'dropdown'
+  %a.dropdown-toggle{href:"#", id: "options-dropdown", 'data-toggle' => 'dropdown'}
+    %i.icon-cog
   %ul.dropdown-menu.pull-right
-    - if can?(:edit_title, discussion)
-      %li= link_to t(:edit_discussion_title), "#", :id => "edit-title"
-    - if @destination_groups.present?
+    - if can?(:edit, discussion)
+      %li= link_to t(:edit_discussion), edit_discussion_path, class: 'edit-discussion'
+    - if can?(:move, @discussion)
       %li= link_to t(:move_discussion), '#move-discussion-modal', "data-toggle" => "modal", id: 'move-discussion'
     -if can? :destroy, discussion
       %li= link_to t(:delete_discussion), "#", 'data-method-type' => 'delete', 'data-title' => t(:delete_discussion), 'data-body' => t(:confirm_delete_discussion), 'data-confirm-path' => discussion_path(discussion), class: 'confirm-dialog', id: 'delete-discussion'
 
-- if @destination_groups.present?
+- if can?(:move, @discussion)
   #move-discussion-modal.modal.hidden
     .modal-header
       %button.close{"data-dismiss" => "modal"}×
-      %h3= "Where would you like to move this discussion to?"
-    = simple_form_for discussion, url: move_discussion_path(discussion), method: :put do |f|
+      %h3= t :move_discussion_where
+    - destination_groups=  destinations_for(discussion: discussion, user: current_user)
+    - hidden_destination_group_ids = destination_groups.select{|g| g.is_hidden?}.map(&:id)
+    - private_int = @discussion.private ? 1 : 0
+    = form_tag move_discussion_path(discussion), method: :post, data: {hidden_group_ids: hidden_destination_group_ids.join(' '), private_discussion: @discussion.private }, class: 'move-discussion-form' do
       .modal-body
-        = f.input :group_id, collection: @destination_groups, include_blank: false, label: false, id: "destination_groups"
+        = select_tag :destination_group_id, options_for_select(destination_groups.map{|g| [g.name, g.id]})
+      .warn-move-will-make-private{style: "display: none"}
+        %i.icon-lock
+        = t(:move_discussion_to_hidden_group)
       .modal-footer
-        = f.button :submit, "Move discussion", class: "btn btn-info", id: 'move-discussion-submit', :data => { :disable_with => "Move discussion" }
+        = submit_tag t(:move_discussion), class: "btn btn-info", id: 'move-discussion-submit', :data => { :disable_with => "Move discussion" }
         = link_to "Cancel", "#", "data-dismiss" => "modal", class: "btn"

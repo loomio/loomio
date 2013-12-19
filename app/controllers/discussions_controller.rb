@@ -14,10 +14,21 @@ class DiscussionsController < GroupBaseController
   def new
     @discussion = Discussion.new
     @uses_markdown = current_user.uses_markdown
-    if params[:group_id]
-      @discussion.group_id = params[:group_id]
+    @group = Group.find_by_id params[:group_id]
+    @discussion.group = @group
+    @user_groups = current_user.groups.order('name')
+  end
+
+  def edit
+    @uses_markdown = current_user.uses_markdown
+  end
+
+  def update
+    if DiscussionService.edit_discussion(current_user, permitted_params.discussion, @discussion)
+      flash[:notice] = 'Discussion was successfully updated.'
+      redirect_to @discussion
     else
-      @user_groups = current_user.groups.order('name') unless params[:group_id]
+      render :edit
     end
   end
 
@@ -78,7 +89,6 @@ class DiscussionsController < GroupBaseController
     end
 
     if current_user
-      @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
       @uses_markdown = current_user.uses_markdown?
       if @current_motion
         @current_motion.as_read_by(current_user).viewed!
@@ -91,15 +101,17 @@ class DiscussionsController < GroupBaseController
   end
 
   def move
-    origin = @discussion.group
-    destination = Group.find(params[:discussion][:group_id])
-    @discussion.group_id = params[:discussion][:group_id]
-    if DiscussionMover.can_move?(current_user, origin, destination) &&
-      @discussion.save!
-      flash[:success] = "Discussion successfully moved."
+    destination_group = Group.find params[:destination_group_id]
+
+    discussion_mover = MoveDiscussionService.new(discussion: @discussion,
+                                                 destination_group: destination_group,
+                                                 user: current_user)
+    if discussion_mover.move!
+      flash[:notice] = t(:'success.discussion_moved', group_name: destination_group.name)
     else
-      flash[:error] = "Discussion could not be moved."
+      flash[:alert] = t(:'error.discussion_not_moved', group_name: destination_group.name)
     end
+
     redirect_to @discussion
   end
 
