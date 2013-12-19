@@ -2,15 +2,6 @@ class Membership < ActiveRecord::Base
   ACCESS_LEVELS = ['member', 'admin']
   MEMBER_ACCESS_LEVELS = ['member', 'admin']
 
-  class MemberOfParentGroupValidator < ActiveModel::EachValidator
-    def validate_each(object, attribute, value)
-      if object.group_parent.present? && !object.group_parent.users.include?(value)
-        object.errors.add attribute, "must be a member of this group's parent"
-      end
-    end
-  end
-
-  validates :user, member_of_parent_group: true
   validates_presence_of :group, :user
   validates_inclusion_of :access_level, :in => ACCESS_LEVELS
   validates_uniqueness_of :user_id, :scope => :group_id
