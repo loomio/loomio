@@ -5,7 +5,7 @@ end
 When(/^I choose and pay for the plan "(.*?)"$/) do |plan|
   @start_time = 100
   @amount = plan.match('\d+')[0].to_i
-  @group.update_attributes(name: 'Enspiral', key: 'abc123')
+  @group.update_attribute(:name, 'Enspiral')
   PaypalCheckout.any_instance.stub(gateway_url:
     'http://localhost:3000'+confirm_group_subscription_path(@group, amount: @amount, token: "T0K3N"))
   PaypalSubscription.any_instance.stub(start_time: @start_time)
@@ -19,7 +19,7 @@ end
 When(/^I choose and pay for a custom plan$/) do
   @start_time = 100
   @amount = 25
-  @group.update_attributes(name: 'Enspiral', key: 'abc123')
+  @group.update_attribute(:name, 'Enspiral')
   PaypalCheckout.any_instance.stub(gateway_url:
     confirm_group_subscription_path(@group, amount: @amount, token: "T0K3N"))
   PaypalSubscription.any_instance.stub(start_time: @start_time)

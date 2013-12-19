@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api-3t.sandbox.paypal.com/nvp
     body:
       encoding: UTF-8
-      string: user=jonny&pwd=12345&signature=54321&method=SetExpressCheckout&version=98&l_billingtype0=RecurringPayments&l_billingagreementdescription0=Enspiral%20group%20subscription%20-%20US%2425.00%20monthly&cancelurl=http%3A%2F%2Flocalhost%3A3000%2Fg%2Fabc123&returnurl=http%3A%2F%2Flocalhost%3A3000%2Fg%2Fabc123%2Fsubscription%2Fconfirm%3Famount%3D25.00
+      string: user=jonny&pwd=12345&signature=54321&method=SetExpressCheckout&version=98&l_billingtype0=RecurringPayments&l_billingagreementdescription0=Enspiral%20group%20subscription%20-%20US%2425.00%20monthly&cancelurl=http%3A%2F%2Flocalhost%3A3000%2Fg%2Fabc123%2Fenspiral&returnurl=http%3A%2F%2Flocalhost%3A3000%2Fg%2Fabc123%2Fsubscription%2Fconfirm%3Famount%3D25.00
     headers: {}
   response:
     status:
