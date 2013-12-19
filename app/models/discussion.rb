@@ -2,9 +2,8 @@ class Discussion < ActiveRecord::Base
   PER_PAGE = 50
   paginates_per PER_PAGE
 
-  KEY_LENGTH = 10
-  extend FriendlyId
-  friendly_id :key
+  include FriendlyIdKeys
+  KEY_LENGTH = 8
 
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil) }
@@ -156,28 +155,7 @@ class Discussion < ActiveRecord::Base
     update_attribute(:last_comment_at, last_comment_time)
   end
 
-  def nice_discussion_url(discussion, options={})
-    url_for(options.merge(:controller => 'discussions', :action => 'show',
-                          :id => discussion.key, :slug => discussion.title.parameterize))
-  end
-
   private
-
-    def set_key
-      unless self.key
-        new_key = generate_key
-        while self.class.find_by_key(new_key) != nil
-          new_key = generate_key
-        end
-        self.key = new_key
-      end
-    end
-
-    def generate_key
-      ( ('a'..'z').to_a +
-        ('A'..'Z').to_a +
-            (0..9).to_a ).sample(KEY_LENGTH).join
-    end
 
     def set_last_comment_at
       self.last_comment_at ||= Time.now

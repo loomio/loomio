@@ -1,7 +1,6 @@
 class Group < ActiveRecord::Base
-  KEY_LENGTH = 10
-  extend FriendlyId
-  friendly_id :key
+  include FriendlyIdKeys
+  KEY_LENGTH = 8
 
   class MaximumMembershipsExceeded < Exception
   end
@@ -302,22 +301,6 @@ class Group < ActiveRecord::Base
   end
 
   private
-
-  def set_key
-    unless self.key
-      new_key = generate_key
-      while self.class.find_by_key(new_key) != nil
-        new_key = generate_key
-      end
-      self.key = new_key
-    end
-  end
-
-  def generate_key
-    ( ('a'..'z').to_a +
-      ('A'..'Z').to_a +
-          (0..9).to_a ).sample(KEY_LENGTH).join
-  end
 
   def calculate_full_name
     if is_a_parent?
