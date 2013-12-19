@@ -1,12 +1,20 @@
 = render '/groups/title', group: @group
 = simple_form_for(@invite_people, url: group_invitations_path(@group), method: :post) do |f|
   .row
-    .span5
+    .span6
       = render 'groups/invite_users', form: f, group: @group
       = @group.invitations_remaining
       = t :invitations_remaining
       %br
       %br
       = f.submit t("invitation.send_invitations"), :class => "btn btn-info btn-large run-validations", :data => { disable_with: t("invitation.send_invitations") }
-
       =render "application/hint", text: t(:"hint.invitation"), anchor: 'writing-a-great-invitation'
+    .span5.offset1{style: 'margin-top:75px;'}
+      - unless @group.is_hidden?
+        %p
+          %i.icon-star
+          = t :"invitation.alternate"
+        %p
+          %strong= new_group_membership_request_url(@group)
+
+

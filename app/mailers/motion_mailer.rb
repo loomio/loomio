@@ -4,6 +4,7 @@ class MotionMailer < BaseMailer
     @motion = motion
     @group = motion.group
     @rendered_motion_description = render_rich_text(motion.description, false) #should replace false with motion.uses_markdown in future
+    @utm_hash = UTM_EMAIL.merge utm_source: 'new_motion_created'
     locale = best_locale(user.language_preference, motion.author.language_preference)
     I18n.with_locale(locale) do
       mail  to: user.email,
@@ -43,6 +44,7 @@ class MotionMailer < BaseMailer
     @motion = motion
     @group = motion.group
     @rendered_motion_description = render_rich_text(motion.description, false) #should replace false with motion.uses_markdown in future
+    @utm_hash = UTM_EMAIL.merge utm_source: 'motion_outcome_created'
     locale = best_locale(user.language_preference, motion.author.language_preference)
     I18n.with_locale(locale) do
       mail  to: user.email,

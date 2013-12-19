@@ -22,6 +22,7 @@ class TimeZoneToCity
   end
 
   def self.offsets_with_city
-    city_list.map { |city| [ActiveSupport::TimeZone[city].formatted_offset, city] }.to_hash
+    a = city_list.map { |city| [ActiveSupport::TimeZone[city].formatted_offset, city] }.flatten
+    Hash[*a]
   end
 end
