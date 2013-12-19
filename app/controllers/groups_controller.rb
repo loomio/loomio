@@ -60,20 +60,6 @@ class GroupsController < GroupBaseController
     redirect_to root_path
   end
 
-
-  def add_members
-    user_ids = []
-    params.each_key do |key|
-      user_ids << key[5..-1] if key =~ /user_/
-    end
-    users_to_add = @group.parent.members.where(id: user_ids)
-    memberships = @group.add_members!(users_to_add, current_user)
-    memberships.each { |membership| Events::UserAddedToGroup.publish!(membership, current_user) }
-
-    flash[:success] = t("success.members_added")
-    redirect_to @group
-  end
-
   def hide_next_steps
     @group.update_attribute(:next_steps_completed, true)
   end

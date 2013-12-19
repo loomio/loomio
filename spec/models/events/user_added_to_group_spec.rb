@@ -25,12 +25,13 @@ describe Events::UserAddedToGroup do
     let(:group) { mock_model(Group) }
     let(:event) { Events::UserAddedToGroup.new(kind: "user_added_to_group",
                                                user: inviter,
-                                           eventable: membership) }
+                                               eventable: membership) }
 
     before do
       membership.stub(:user).and_return(user)
       membership.stub(:group).and_return(group)
-      UserMailer.stub_chain(:group_membership_approved, :deliver)
+      membership.stub(:inviter).and_return(inviter)
+      UserMailer.stub_chain(:added_to_a_group, :deliver)
     end
 
     it 'notifies the requestor' do
