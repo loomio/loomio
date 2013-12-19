@@ -21,7 +21,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
   # we don't use the lineman default concat, handlebars, and jst tasks by default
   removeTasks:
-    common: ["concat", "handlebars", "jst", 'less', 'pages:dev', 'grunt-haml']
+    common: ["handlebars", "jst", 'less', 'pages:dev', 'grunt-haml']
     dev: ["pages:dev"]
     dist: ['pages:dev']
 
@@ -59,7 +59,8 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
   sass:
     common:
       files:
-        'generated/css/app.css': 'app/css/main.scss'
+        'generated/css/main.css': 'app/css/main.scss'
+
     options:
       includePaths: ['vendor/bower_components/']
 

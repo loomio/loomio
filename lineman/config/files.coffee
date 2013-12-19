@@ -2,6 +2,10 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
   ngtemplates:
     dest: "generated/angular/template-cache.js"
 
+  css:
+    app: ['app/css/main.css']
+    vendor: ['vendor/bower_components/ionicons/css/iconicons.css']
+
   js:
     vendor: ["vendor/bower_components/underscore/underscore.js"
              "vendor/bower_components/jquery/jquery.js"

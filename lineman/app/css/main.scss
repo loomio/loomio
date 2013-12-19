@@ -3,7 +3,6 @@
 @import 'utilities/page-settings';
 @import 'utilities/media_queries';
 
-@import 'quarks/ionicons';
 
 @import 'atoms/add-comment-form';
 @import 'atoms/buttons';
@@ -19,6 +18,8 @@
 @import 'molecules/motion';
 
 @import 'molecules/motion';
+
+@import 'ionicons/css/ionicons.css';
 
 .decision-buttons{
   i{font-size: 3em;}
