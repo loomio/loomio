@@ -2,9 +2,7 @@ class Discussion < ActiveRecord::Base
   PER_PAGE = 50
   paginates_per PER_PAGE
 
-  extend FriendlyId
-  friendly_id :key
-  include FriendlyIdKeys
+  include ReadableUnguessableUrls
 
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil) }

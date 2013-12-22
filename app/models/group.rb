@@ -1,7 +1,5 @@
 class Group < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :key
-  include FriendlyIdKeys
+  include ReadableUnguessableUrls
 
   class MaximumMembershipsExceeded < Exception
   end
