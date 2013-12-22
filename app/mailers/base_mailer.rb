@@ -3,7 +3,7 @@ class BaseMailer < ActionMailer::Base
   include LocalesHelper
   include ERB::Util
   include ActionView::Helpers::TextHelper
-  add_template_helper(NiceUrlHelper)
+  add_template_helper(ReadableUnguessableUrls)
 
   UTM_EMAIL = { utm_campaign: 'notifications', utm_medium: 'email' }
 

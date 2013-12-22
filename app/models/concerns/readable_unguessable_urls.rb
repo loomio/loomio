@@ -1,4 +1,4 @@
-module FriendlyIdKeys
+module ReadableUnguessableUrls
   extend ActiveSupport::Concern
 
   KEY_LENGTH = 8

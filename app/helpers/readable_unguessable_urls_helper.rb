@@ -1,4 +1,4 @@
-module NiceUrlHelper
+module ReadableUnguessableUrlsHelper
 
   def discussion_path(discussion, options={})
     discussion_url(discussion, options.merge(:only_path => true))
