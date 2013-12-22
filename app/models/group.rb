@@ -109,7 +109,7 @@ class Group < ActiveRecord::Base
   has_many :motions, :through => :discussions
 
   belongs_to :parent, :class_name => "Group"
-  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id'
+  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id', conditions: { archived_at: nil }
 
   has_one :subscription, dependent: :destroy
 
@@ -166,6 +166,10 @@ class Group < ActiveRecord::Base
 
   def is_hidden?
     self.privacy == 'hidden'
+  end
+
+  def parent_is_hidden?
+    parent.privacy == 'hidden'
   end
 
   def members_can_invite_members?

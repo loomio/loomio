@@ -58,15 +58,19 @@ class Ability
     end
 
     can :invite_people, Group do |group|
-      if group.is_a_subgroup?
+      case group.members_invitable_by
+      when 'members'
+        @member_group_ids.include?(group.id)
+      when 'admins'
+        @admin_group_ids.include?(group.id)
+      end
+    end
+
+    can :invite_outsiders, Group do |group|
+      if group.is_a_subgroup? and group.parent_is_hidden?
         false
       else
-        case group.members_invitable_by
-        when 'members'
-          @member_group_ids.include?(group.id)
-        when 'admins'
-          @admin_group_ids.include?(group.id)
-        end
+        true
       end
     end
 

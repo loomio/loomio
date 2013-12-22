@@ -14,9 +14,6 @@
             %li=link_to t(:edit_memberships), group_memberships_path(group)
           - if can? :email_members, group
             %li= link_to t(:email_group_members), "#email-members-modal", "data-toggle" => "modal"
-    -if group.is_sub_group?
-      #invite-subgroup-members.modal.hidden
-        = render 'subgroup_add_members', group: group
     %h4
       = "#{ t :members } (#{ group.memberships_count })"
 

@@ -1,6 +1,7 @@
 Feature: Invitation to join group
-  In order to get users into a group
-  We need to send them invitations
+  As a coordinator
+  I want to invite new users to my group
+  So that I can have the right people in my discussions
 
   @javascript
   Scenario: Group Admin invites new user to join a group
@@ -16,13 +17,6 @@ Feature: Invitation to join group
     Then "Jim Jam" should be auto-added to the group
     And "Jim Jam" should receive a notification that they have been added
     And "jim@jam.com" should receive an email
-
-  @javascript
-  Scenario: Coordinator invites existing group member
-    Given I am a group admin
-    And there is a group member with email "tony@tires.com"
-    When I invite "tony@tires.com" to our group
-    Then I should be told "tony" is already a member
 
   @javascript
   Scenario: New user accepts invitiation to join a group
@@ -48,3 +42,33 @@ Feature: Invitation to join group
     Given I am not logged in
     When I follow an invitation link I have already used
     Then I should be told the invitation link has already been used
+
+  @javascript
+  Scenario: Subgroup admin invites people to subgroup
+    Given I am logged in
+    And I am an admin of a group
+    And I am an admin of a subgroup invitable by admins
+    And "David" is a member of the group
+    When I visit the subgroup page
+    And I click invite people
+    And I enter "new@user.com" in the invitations field
+    And I select "David" from the list of members
+    And I confirm the selection
+    Then "new@user.com" should be invited to join the subgroup
+    And I should see "David" as a member of the subgroup
+    And "David" should receive a notification that they have been added
+
+  Scenario: Subgroup member cannot add members to a subgroup invitable by admins
+    Given I am logged in
+    And I am a member of a group
+    And I am a member of a subgroup invitable by admins
+    When I visit the subgroup page
+    Then I should not see the add member button
+
+  Scenario: Subgroup member cannot add members to subgroup with hidden parent
+    Given I am logged in
+    And I am a coordinator of a hidden subgroup with hidden parent
+    When I visit the subgroup page
+    And I click invite people
+    Then I should not see the invitations field
+

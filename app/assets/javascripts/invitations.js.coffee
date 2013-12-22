@@ -18,14 +18,13 @@ parseEmails = (input_emails) ->
 Application.validateEmailsAndConfirm = (field) ->
   if $(field).is(":visible")
     emailList = parseEmails($(field).val())
-    if(emailList.length == 0)
+    parentMembersEmpty = $('.invite_people_form_parent_members_to_add input:checked:enabled').length == 0
+    emailListEmpty = emailList.length == 0
+    if parentMembersEmpty && emailListEmpty
       addValidateEmailErrorMessageFor($(field))
       return false
     else
-      if confirm("#{emailList.length} invitations will be sent")
-        $(".recipients").val(emailList.toString())
-      else
-        event.preventDefault()
+      $(".recipients").val(emailList.toString())
   true
 
 
