@@ -1,5 +1,4 @@
 namespace :upgrade_tasks do
-
   task :'2013-11-29-set-outcome-author-for-motions' => :environment do
     ActiveRecord::Base.record_timestamps = false
     begin

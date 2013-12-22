@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :key
   include FriendlyIdKeys
-  KEY_LENGTH = 8
 
   class MaximumMembershipsExceeded < Exception
   end
@@ -15,7 +16,6 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :members_invitable_by, in: INVITER_CATEGORIES
   validates :description, :length => { :maximum => 250 }
   validates :name, :length => { :maximum => 250 }
-  validates :key, uniqueness: true, presence: true
 
   validate :limit_inheritance
   validate :privacy_allowed_by_parent, if: :is_a_subgroup?
@@ -23,7 +23,6 @@ class Group < ActiveRecord::Base
 
   after_initialize :set_defaults
   before_save :update_full_name_if_name_changed
-  before_validation :set_key
 
   include PgSearch
   pg_search_scope :search_full_name, against: [:name, :description],

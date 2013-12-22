@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include LocalesHelper
+  include NiceUrlHelper
   protect_from_forgery
 
   before_filter :set_locale

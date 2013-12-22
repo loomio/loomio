@@ -2,8 +2,9 @@ class Discussion < ActiveRecord::Base
   PER_PAGE = 50
   paginates_per PER_PAGE
 
+  extend FriendlyId
+  friendly_id :key
   include FriendlyIdKeys
-  KEY_LENGTH = 8
 
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil) }
@@ -38,7 +39,6 @@ class Discussion < ActiveRecord::Base
   delegate :email, :to => :author, :prefix => :author
   delegate :name_and_email, :to => :author, prefix: :author
 
-  before_validation :set_key
   before_create :set_last_comment_at
 
   def as_read_by(user)
@@ -171,7 +171,6 @@ class Discussion < ActiveRecord::Base
         new_discussion_reader_for(user)
       end
     end
-
 
     def joined_to_discussion_reader?
       self['joined_to_discussion_reader'] == '1'

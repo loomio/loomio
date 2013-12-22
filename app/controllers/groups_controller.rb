@@ -26,7 +26,7 @@ class GroupsController < GroupBaseController
     if @group.save
       @group.add_admin! current_user
       flash[:success] = t("success.group_created")
-      redirect_to group_path(@group)
+      redirect_to @group
     else
       @subgroup = @group
       render 'groups/add_subgroup'
@@ -36,7 +36,7 @@ class GroupsController < GroupBaseController
   def update
     if @group.update_attributes(permitted_params.group)
       flash[:notice] = 'Group was successfully updated.'
-      redirect_to group_path(@group)
+      redirect_to @group
     else
       render :edit
     end
@@ -69,7 +69,7 @@ class GroupsController < GroupBaseController
     body = params[:group_email_body]
     GroupMailer.delay.deliver_group_email(@group, current_user, subject, body)
     flash[:success] = t("success.emails_sending")
-    redirect_to group_path(@group)
+    redirect_to @group
   end
 
   def edit_description

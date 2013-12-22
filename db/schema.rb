@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20131209035746) do
     t.boolean  "is_deleted",      :default => false, :null => false
     t.integer  "comments_count",  :default => 0,     :null => false
     t.integer  "items_count",     :default => 0,     :null => false
+    t.boolean  "private"
     t.string   "key"
     t.datetime "archived_at"
   end

@@ -1,5 +1,4 @@
 class GroupBaseController < BaseController
-  include NiceUrlHelper
 
   protected
 

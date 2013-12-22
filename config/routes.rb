@@ -72,7 +72,6 @@ Loomio::Application.routes.draw do
 
   match "/g/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
 
-  ### MEMBERSHIP REQUESTS ###
   get 'g/:group_id/ask_to_join',           to: 'groups/membership_requests#new',          as: :new_group_membership_request
   post 'g/:group_id/membership_requests',  to: 'groups/membership_requests#create'  ,     as: :group_membership_requests
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel',       as: :cancel_membership_request
@@ -85,7 +84,6 @@ Loomio::Application.routes.draw do
     end
   end
 
-  ### MOTIONS ###
   resources :motions do
     resources :votes, only: [:new, :create, :update]
     member do
@@ -96,7 +94,6 @@ Loomio::Application.routes.draw do
     end
   end
 
-  ### DISCUSSIONS ###
   resources :discussions, path: 'd', except: [:edit, :show] do
     get :activity_counts, on: :collection
     member do
