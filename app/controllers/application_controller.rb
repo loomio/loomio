@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include LocalesHelper
-  include ReadableUnguessableUrls
+  include ReadableUnguessableUrlsHelper
   protect_from_forgery
 
   before_filter :set_locale
