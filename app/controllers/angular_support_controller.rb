@@ -5,6 +5,10 @@ class AngularSupportController < ApplicationController
                  email: 'patrick_swayze@loomio.org',
                  password: 'gh0st'}
 
+  COMMENTER_PARAMS = {name: 'Jennifer Grey',
+                      email: 'jennifer_gret@loomio.org',
+                      password: 'gh0st'}
+
   GROUP_NAME = 'Dirty Dancing Shoes'
 
   DISCUSSION_TITLE = 'What size are you?'
@@ -13,6 +17,13 @@ class AngularSupportController < ApplicationController
     reset_database
     sign_in user = User.where(email: USER_PARAMS[:email]).first
     discussion = Discussion.where(title: DISCUSSION_TITLE).first
+    redirect_to "http://localhost:8000/discussions/#{discussion.id}"
+  end
+
+  def add_comment_to_discussion_and_redirect
+    discussion = Discussion.where(title: DISCUSSION_TITLE).first
+
+    commenter = User.create!
     redirect_to "http://localhost:8000/discussions/#{discussion.id}"
   end
 
@@ -27,8 +38,8 @@ class AngularSupportController < ApplicationController
 
     user = User.create!(USER_PARAMS)
     group = Group.create!(name: GROUP_NAME, privacy: 'private')
-    Discussion.create!(title: DISCUSSION_TITLE, group: group, author: user)
-
     group.add_member! user
+
+    Discussion.create!(title: DISCUSSION_TITLE, group: group, author: user)
   end
 end
