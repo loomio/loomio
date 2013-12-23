@@ -67,7 +67,8 @@ class Ability
     end
 
     can :invite_outsiders, Group do |group|
-      if group.is_a_subgroup? and group.parent_is_hidden?
+      # if group.is_a_subgroup? and group.parent_is_hidden?
+      if group.is_a_subgroup?
         false
       else
         true
