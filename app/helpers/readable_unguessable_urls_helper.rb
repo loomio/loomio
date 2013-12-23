@@ -5,8 +5,7 @@ module ReadableUnguessableUrlsHelper
   end
 
   def discussion_url(discussion, options={})
-    #options.reverse_merge! host: default_host_for_url,
-                           #port: default_port_for_url
+    options.merge!(host_and_port)
 
     options.merge! controller: 'discussions', action: 'show',
                    id: discussion.key, slug: discussion.title.parameterize
@@ -18,8 +17,7 @@ module ReadableUnguessableUrlsHelper
   end
 
   def group_url(group, options={})
-    #options.reverse_merge! host: default_host_for_url,
-                           #port: default_port_for_url
+    options.merge!(host_and_port)
 
     options.merge! :controller => 'groups', :action => 'show',
                    :id => group.key, :slug => group.full_name.parameterize
@@ -28,13 +26,11 @@ module ReadableUnguessableUrlsHelper
 
 
   private
-
-  #def default_host_for_url
-    #ENV['CANONICAL_HOST'] ? ENV['CANONICAL_HOST'] : 'localhost'
-  #end
-
-  #def default_port_for_url
-    #Rails.env.production? ? nil : ActionMailer::Base.default_url_options[:port]
-  #end
-
+  def host_and_port
+    if request.present?
+      {host: request.host, port: request.port}
+    else
+      ActionMailer::Base.default_url_options
+    end
+  end
 end

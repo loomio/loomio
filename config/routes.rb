@@ -35,7 +35,6 @@ Loomio::Application.routes.draw do
   end
 
 
-  ### GROUPS ###
   resources :groups, path: 'g', except: [:index, :new, :show, :update] do
     resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
     resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
