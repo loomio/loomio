@@ -14,10 +14,10 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     = render 'social_metadata', :description => @meta_description, :title => @meta_title
+    - analytics_scope do
+      = render 'google_analytics'
 
   %body{class: "#{controller_name} #{action_name}"}
-    - analytics_scope do
-      = render 'google_tag_manager'
     .main-container.container
       = render 'announcements'
       = render 'header'
