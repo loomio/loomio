@@ -8,10 +8,10 @@
     = stylesheet_link_tag    "frontpage"
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
+    - analytics_scope do
+      = render 'google_analytics'
 
   %body{class: "#{controller_name} #{action_name}"}
-    - analytics_scope do
-      = render 'google_tag_manager'
     .container.home-flash
       = render 'flash_messages', :flash => flash
     - if controller_name == 'pages'
