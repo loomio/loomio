@@ -8,4 +8,5 @@ Feature: Comments in a discussion
   Scenario: User likes a comment
     Given I am signed in, viewing a discussion with a comment
     When I click like on the comment
-    Then I should see that I have liked the comment
+    Then the like button should say 'Unlike'
+    And I should see that I have liked the comment
