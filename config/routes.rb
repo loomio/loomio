@@ -36,24 +36,28 @@ Loomio::Application.routes.draw do
 
 
   resources :groups, path: 'g', except: [:index, :new, :show, :update] do
-    resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
-    resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
-      member do
-       post :make_admin
-       post :remove_admin
+    scope module: :groups do
+      resources :invitations, only: [:index, :destroy, :new, :create]
+      resources :memberships, only: [:index, :destroy, :new, :create] do
+        member do
+         post :make_admin
+         post :remove_admin
+        end
       end
-    end
-    resource :subscription, only: [:new, :show], controller: 'groups/subscriptions' do
-      collection do
-        post :checkout
-        get :confirm
-        get :payment_failed
+      resource :subscription, controller: 'subscriptions', only: [:new, :show] do
+        collection do
+          post :checkout
+          get :confirm
+          get :payment_failed
+        end
+      end
+      member do
+        get :setup,  controller: 'group_setup'
+        put :finish, controller: 'group_setup'
       end
     end
 
     member do
-      get :setup, to: 'groups/group_setup#setup'
-      put :finish, to: 'groups/group_setup#finish'
       post :add_members
       post :hide_next_steps
       get :add_subgroup
@@ -66,6 +70,37 @@ Loomio::Application.routes.draw do
     resources :motions
     resources :discussions, only: [:index, :new]
   end
+  # resources :groups, path: 'g', except: [:index, :new, :show, :update] do
+  #   resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
+  #   resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
+  #     member do
+  #      post :make_admin
+  #      post :remove_admin
+  #     end
+  #   end
+  #   resource :subscription, only: [:new, :show], controller: 'groups/subscriptions' do
+  #     collection do
+  #       post :checkout
+  #       get :confirm
+  #       get :payment_failed
+  #     end
+  #   end
+
+  #   member do
+  #     get :setup, to: 'groups/group_setup#setup'
+  #     put :finish, to: 'groups/group_setup#finish'
+  #     post :add_members
+  #     post :hide_next_steps
+  #     get :add_subgroup
+  #     post :email_members
+  #     post :edit_description
+  #     delete :leave_group
+  #     get :members_autocomplete
+  #   end
+
+  #   resources :motions
+  #   resources :discussions, only: [:index, :new]
+  # end
   get '/g/:id(/:slug)', to: 'groups#show', as: :group, slug: /[a-zA-Z0-9-]*/
   put '/g/:id/:slug',   to: 'groups#update',           slug: /[a-zA-Z0-9-]*/ #this catches the edit group form
 

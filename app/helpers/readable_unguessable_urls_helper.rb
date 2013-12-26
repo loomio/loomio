@@ -7,7 +7,7 @@ module ReadableUnguessableUrlsHelper
   def discussion_url(discussion, options={})
     options.merge!(host_and_port)
 
-    options.merge! controller: 'discussions', action: 'show',
+    options.merge! controller: '/discussions', action: 'show',
                    id: discussion.key, slug: discussion.title.parameterize
     url_for(options)
   end
@@ -19,7 +19,7 @@ module ReadableUnguessableUrlsHelper
   def group_url(group, options={})
     options.merge!(host_and_port)
 
-    options.merge! :controller => 'groups', :action => 'show',
+    options.merge! :controller => '/groups', :action => 'show',
                    :id => group.key, :slug => group.full_name.parameterize
     url_for(options)
   end
