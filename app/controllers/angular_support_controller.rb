@@ -23,13 +23,10 @@ class AngularSupportController < ApplicationController
     reset_database
     sign_in patrick
 
-    jennifer = User.create!(COMMENTER_PARAMS)
 
-    MembershipService.add_users_to_group(group: testing_group,
-                                         users: [jennifer],
-                                         inviter: patrick)
-
-    DiscussionService.add_comment Comment.new(author: jennifer, body: 'Hi Patrick, lets go dancing')
+    DiscussionService.add_comment(Comment.new(author: jennifer,
+                                              discussion: testing_discussion,
+                                              body: 'Hi Patrick, lets go dancing'))
 
     redirect_to_discussion
   end
@@ -43,12 +40,12 @@ class AngularSupportController < ApplicationController
     redirect_to "http://localhost:8000/discussions/#{testing_discussion.id}"
   end
 
-  def jennifer
-
+  def patrick
+    User.where(email: USER_PARAMS[:email]).first
   end
 
-  def patrick
-    User.where(email: 'patrick_swayze@loomio.org').first
+  def jennifer
+    User.where(email: COMMENTER_PARAMS[:email]).first
   end
 
   def testing_group
@@ -60,15 +57,25 @@ class AngularSupportController < ApplicationController
   end
 
   def reset_database
+    User.where(email: [USER_PARAMS[:email], COMMENTER_PARAMS[:email]]).each(&:destroy)
+
     if testing_group.present?
       testing_group.users.each(&:destroy)
       testing_group.destroy
     end
 
-    user = User.create!(USER_PARAMS)
-    group = Group.create!(name: GROUP_NAME, privacy: 'private')
-    group.add_member! user
+    patrick = User.create!(USER_PARAMS)
+    jennifer = User.create!(COMMENTER_PARAMS)
 
-    Discussion.create!(title: DISCUSSION_TITLE, group: group, author: user)
+    group = Group.create!(name: GROUP_NAME, privacy: 'private')
+
+    group.add_member! patrick
+    group.add_member! jennifer
+
+    patrick.reload
+    jennifer.reload
+    group.reload
+
+    Discussion.create!(title: DISCUSSION_TITLE, group: group, author: jennifer)
   end
 end

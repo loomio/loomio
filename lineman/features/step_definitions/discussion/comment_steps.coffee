@@ -11,18 +11,23 @@ module.exports = ->
 
   @When /^I add a comment to the discussion$/, (callback) ->
     @browser.findElement(@by.id('fake_comment_input')).click().then =>
-      @browser.findElement(@by.id('comment-field')).sendKeys('I im here from ear to ear').then =>
+      @browser.findElement(@by.id('comment-field')).sendKeys('I am commenting').then =>
         @browser.findElement(@by.id('post-comment-btn')).click().then =>
           callback()
 
   @Then /^I should see the comment has been appended to the discussion$/, (callback) ->
-    @browser.findElement(@by.css('.comment-body')).getText()
-    # express the regexp above with the code you wish you had
-    callback.pending()
+    message = @browser.findElement(@by.css('.comment-body')).getText().then (text) =>
+      @assert.equal text, 'I am commenting'
+      callback()
 
   @When /^I click like on the comment$/, (callback) ->
-    # express the regexp above with the code you wish you had
-    callback.pending()
+    @browser.findElement(@by.css('.like-comment-btn')).click().then =>
+      callback()
+
+  @Then /^the like button should say 'Unlike'$/, (callback) ->
+    @browser.findElement(@by.css('.like-comment-btn')).getText().then (text)=>
+      @assert.equal text, 'Unlike'
+      callback()
 
   @Then /^I should see that I have liked the comment$/, (callback) ->
     # express the regexp above with the code you wish you had
