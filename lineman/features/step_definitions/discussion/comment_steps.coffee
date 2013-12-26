@@ -1,13 +1,12 @@
 module.exports = ->
   @World = require("../../support/world.coffee").World
 
-
-  @Given /^I am signed in and viewing a discussion$/, (callback) ->
-    @driver.get('http://localhost:3000/angular_support/log_in_and_redirect_to_discussion').then =>
+  @Given /^I am signed in, viewing a new discussion$/, (callback) ->
+    @driver.get('http://localhost:3000/angular_support/setup_for_add_comment').then =>
       callback()
 
-  @Given /^there is a comment on the discussion$/, (callback) ->
-    @driver.get('http://localhost:3000/angular_support/add_comment_to_discussion_and_redirect').then =>
+  @Given /^I am signed in, viewing a discussion with a comment$/, (callback) ->
+    @driver.get('http://localhost:3000/angular_support/setup_for_like_comment').then =>
       callback()
 
   @When /^I add a comment to the discussion$/, (callback) ->
