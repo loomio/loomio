@@ -6,35 +6,64 @@ class AngularSupportController < ApplicationController
                  password: 'gh0st'}
 
   COMMENTER_PARAMS = {name: 'Jennifer Grey',
-                      email: 'jennifer_gret@loomio.org',
+                      email: 'jennifer_grey@loomio.org',
                       password: 'gh0st'}
 
   GROUP_NAME = 'Dirty Dancing Shoes'
 
-  DISCUSSION_TITLE = 'What size are you?'
+  DISCUSSION_TITLE = 'What star sign are you?'
 
-  def log_in_and_redirect_to_discussion
+  def setup_for_add_comment
     reset_database
-    sign_in user = User.where(email: USER_PARAMS[:email]).first
-    discussion = Discussion.where(title: DISCUSSION_TITLE).first
-    redirect_to "http://localhost:8000/discussions/#{discussion.id}"
+    sign_in patrick
+    redirect_to_discussion
   end
 
-  def add_comment_to_discussion_and_redirect
-    discussion = Discussion.where(title: DISCUSSION_TITLE).first
+  def setup_for_like_comment
+    reset_database
+    sign_in patrick
 
-    commenter = User.create!
-    redirect_to "http://localhost:8000/discussions/#{discussion.id}"
+    jennifer = User.create!(COMMENTER_PARAMS)
+
+    MembershipService.add_users_to_group(group: testing_group,
+                                         users: [jennifer],
+                                         inviter: patrick)
+
+    DiscussionService.add_comment Comment.new(author: jennifer, body: 'Hi Patrick, lets go dancing')
+
+    redirect_to_discussion
   end
 
   private
   def prevent_production_destruction
     raise "No way!" if Rails.env.production?
   end
-  
+
+  def redirect_to_discussion
+    redirect_to "http://localhost:8000/discussions/#{testing_discussion.id}"
+  end
+
+  def jennifer
+
+  end
+
+  def patrick
+    User.where(email: 'patrick_swayze@loomio.org').first
+  end
+
+  def testing_group
+    Group.where(name: GROUP_NAME).first
+  end
+
+  def testing_discussion
+    testing_group.discussions.first
+  end
+
   def reset_database
-    User.where(email: USER_PARAMS[:email]).first.try(:destroy)
-    Group.where(name: GROUP_NAME).first.try(:destroy)
+    if testing_group.present?
+      testing_group.users.each(&:destroy)
+      testing_group.destroy
+    end
 
     user = User.create!(USER_PARAMS)
     group = Group.create!(name: GROUP_NAME, privacy: 'private')

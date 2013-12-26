@@ -1,6 +1,9 @@
 Loomio::Application.routes.draw do
 
-  get "angular_support/log_in_and_redirect_to_discussion", to: "angular_support#log_in_and_redirect_to_discussion"
+  scope '/angular_support', controller: 'angular_support', path: 'angular_support', as: 'angular_support' do
+    get 'setup_for_add_comment'
+    get 'setup_for_like_comment'
+  end
 
   ActiveAdmin.routes(self)
 
