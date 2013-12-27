@@ -1,10 +1,10 @@
-.card{ng_controlller: 'CommentController'}
+.card{ng_controller: 'CommentController'}
   .card__header
     .media
       .media__img.media__img--card
         %div{'ng-include' => "'generated/templates/user/avatar.html'", 'ng-init' => "user = event.comment.author"}
       .media__text
-        %h4.media__title
+        %h4.media__title{ng_click: 'alert("hello")'}
           {{event.comment.author.name}}
         .media__details
           {{event.comment.created_at | date:'medium' }}
@@ -12,10 +12,16 @@
     {{ event.comment.body }}
   .toolbar-container
     .toolbar
-      .toolbar__button.toolbar__button--first.like-comment-btn
-        %span.icon-thumbsup
+      %a.toolbar__button.toolbar__button--first.like-comment-btn{ng_show: '!currentUserLikesIt()', ng_click: 'like()', href: '#'}
+        -#%span.icon-thumbsup
         Like
+      %a.toolbar__button.toolbar__button--first.unlike-comment-btn{ng_show: 'currentUserLikesIt()', ng_click: 'unlike()', href: '#'}
+        -#%span.icon-thumbsup
+        Unlike
       .toolbar__button.reply
         %a{href: '#'}
           %span.icon-ios7-chatbubble
           Reply
+
+    .liked-by{ng_show: 'anybodyLikesIt()'}
+      Liked by {{ whoLikesIt().join(', ') }}

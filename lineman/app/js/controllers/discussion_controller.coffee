@@ -1,4 +1,5 @@
 angular.module('loomioApp').controller 'DiscussionController', ($scope, $routeParams, discussion) ->
+  $scope.currentUser = discussion.current_user
   $scope.discussion = discussion
-  $scope.new_comment = {}
-  $scope.new_comment.discussion_id = discussion.id
+  $scope.newComment = {}
+  $scope.newComment.discussion_id = discussion.id

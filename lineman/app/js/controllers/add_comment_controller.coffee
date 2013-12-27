@@ -9,4 +9,4 @@ angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentS
       $scope.isExpanded = false
 
   $scope.processForm = () ->
-    CommentService.add($scope.new_comment, $scope.discussion)
+    CommentService.add($scope.newComment, $scope.discussion)
