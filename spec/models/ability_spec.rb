@@ -211,7 +211,7 @@ describe "User abilities" do
     end
     it { should_not be_able_to(:view_payment_details, sub_group) }
     it { should_not be_able_to(:choose_subscription_plan, sub_group) }
-    it { should be_able_to(:invite_outsiders, sub_group) }
+    # it { should be_able_to(:invite_outsiders, sub_group) }
   end
 
   context "non-member of a group" do
