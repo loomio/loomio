@@ -32,11 +32,21 @@ The start lineman
 # Browsing
 First go to the rails app (localhost:3000) and sign in. Now you can use the javascript app at localhost:8000. Just navigate to a discussion (e.g. localhost:8000/discussions/325).
 
-# Testing
+# Unit Testing
 We're going for high test coverage of our JS frontend here.
-You can run the unit rests with
+You can run the unit tests with
 
   $ lineman spec
+
+# Integration testing
+
+## Installing Protractor & Webdriver-manager
+To run the integration tests, you'll need Protractor and Webdriver-manager
+
+  $ npm install -g protractor
+  $ webdriver-manager update --standalone
+
+## Running the cucmber tests
 
 To run the cucumber tests, you need a bit of environment running. It's
 probably easiest if you run these each in their own terminal window.
