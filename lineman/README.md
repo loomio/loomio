@@ -3,12 +3,17 @@ This is the beginnings of a document to introduce people to the
 AngularJS parts of Loomio. It is assumed that you have the rails parts
 of loomio running already.
 
-# Installing NPM and Bower
-Use your system package manager to install NPM and Bower. I use HomeBrew on
-OSX.
+# Installing Node & NPM
+Use NVM to install Node and NPM
 
-  $ brew install npm
+  $ curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+  $ nvm use 0.10
+  $ nvm alias default 0.10
+
+# Installing Bower & Lineman
+
   $ npm install -g bower
+  $ npm install -g lineman
 
 # Installing Dependencies
 in the loomio folder
@@ -22,12 +27,26 @@ Run the rails development server
   (loomio) $ rails s
 
 The start lineman
-  (lineman folder) $ lineman run
+  (loomio/lineman folder) $ lineman run
 
-# Testing
+# Browsing
+First go to the rails app (localhost:3000) and sign in. Now you can use the javascript app at localhost:8000. Just navigate to a discussion (e.g. localhost:8000/discussions/325).
+
+# Unit Testing
 We're going for high test coverage of our JS frontend here.
-You can run the unit rests with
+You can run the unit tests with
+
   $ lineman spec
+
+# Integration testing
+
+## Installing Protractor & Webdriver-manager
+To run the integration tests, you'll need Protractor and Webdriver-manager
+
+  $ npm install -g protractor
+  $ webdriver-manager update --standalone
+
+## Running the cucmber tests
 
 To run the cucumber tests, you need a bit of environment running. It's
 probably easiest if you run these each in their own terminal window.
