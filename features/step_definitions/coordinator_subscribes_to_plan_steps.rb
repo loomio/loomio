@@ -7,7 +7,7 @@ When(/^I choose and pay for the plan "(.*?)"$/) do |plan|
   @amount = plan.match('\d+')[0].to_i
   @group.update_attribute(:name, 'Enspiral')
   PaypalCheckout.any_instance.stub(gateway_url:
-    'http://localhost:3000'+confirm_group_subscription_path(@group, amount: @amount, token: "T0K3N"))
+    confirm_group_subscription_path(@group, amount: @amount, token: "T0K3N"))
   PaypalSubscription.any_instance.stub(start_time: @start_time)
   VCR.use_cassette("paypal success",
                    match_requests_on: [:uri, :body]) do
