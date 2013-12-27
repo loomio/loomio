@@ -15,3 +15,7 @@ end
 node :events do |discussion|
   partial 'api/discussions/item', object: discussion.items
 end
+
+node :current_user do |discussion|
+  partial 'api/discussions/author', object: current_user
+end
