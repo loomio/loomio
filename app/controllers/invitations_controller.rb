@@ -53,7 +53,7 @@ class InvitationsController < ApplicationController
     if @invitation.group.admins.include? current_user
       redirect_to setup_group_path(@invitation.group)
     else
-      redirect_to group_path(@invitation.group)
+      redirect_to @invitation.group
     end
   end
 end
