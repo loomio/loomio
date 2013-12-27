@@ -2,6 +2,7 @@ class PaypalCheckout
   include HTTParty
   include Routing
   include GroupsHelper
+  include ReadableUnguessableUrlsHelper
 
   ENDPOINT_URL = ENV['PAYPAL_ENDPOINT_URL']
 
@@ -46,5 +47,9 @@ class PaypalCheckout
 
   def token
     Rack::Utils.parse_nested_query(@response.body)['TOKEN']
+  end
+
+  def request
+    #this is stub ReadableUnguessableUrlHelper call on request
   end
 end
