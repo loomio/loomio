@@ -17,6 +17,8 @@ class Comment < ActiveRecord::Base
   after_initialize :set_defaults
   default_scope include: :user
 
+  scope :published
+
   delegate :name, :to => :user, :prefix => :user
   delegate :email, :to => :user, :prefix => :user
   delegate :participants, :to => :discussion, :prefix => :discussion

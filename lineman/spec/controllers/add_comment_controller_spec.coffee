@@ -2,7 +2,7 @@ describe 'AddComment Controller', ->
   $scope = null
   controller = null
 
-  mockAddCommentService =
+  mockCommentService =
     add: (comment) ->
       true
 
@@ -12,7 +12,7 @@ describe 'AddComment Controller', ->
     $scope = $rootScope.$new()
     controller = $controller 'AddCommentController',
       $scope: $scope
-      CommentService: mockAddCommentService
+      CommentService: mockCommentService
 
   it 'should start collapsed', ->
     expect($scope.isExpanded).toBe(false)
@@ -26,10 +26,10 @@ describe 'AddComment Controller', ->
     discussion =
       events: []
 
-    $scope.comment = comment
+    $scope.new_comment = comment
     $scope.discussion = discussion
 
-    spyOn(mockAddCommentService, 'add').andReturn(true)
+    spyOn(mockCommentService, 'add').andReturn(true)
     $scope.processForm()
-    expect(mockAddCommentService.add).toHaveBeenCalledWith(comment, discussion)
+    expect(mockCommentService.add).toHaveBeenCalledWith(comment, discussion)
 
