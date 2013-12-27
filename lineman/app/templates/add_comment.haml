@@ -5,6 +5,6 @@
         %input.form-control{placeholder: "Write a comment...", ng_focus: "expand()", id: 'fake_comment_input'}
       .card-row.real
         .left
-          %textarea#comment-field.form-control{name: 'body', rows: 5, placeholder: "Say something...", ng_blur: "collapseIfEmpty()", ng_model: 'new_comment.body'}
+          %textarea#comment-field.form-control{name: 'body', rows: 5, placeholder: "Say something...", ng_blur: "collapseIfEmpty()", ng_model: 'newComment.body'}
         .right
           %button#post-comment-btn.btn.btn-default.btn-block.submit{type: 'submit'} Post

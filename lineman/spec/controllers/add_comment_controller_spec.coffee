@@ -26,7 +26,7 @@ describe 'AddComment Controller', ->
     discussion =
       events: []
 
-    $scope.new_comment = comment
+    $scope.newComment = comment
     $scope.discussion = discussion
 
     spyOn(mockCommentService, 'add').andReturn(true)
