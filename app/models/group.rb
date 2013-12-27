@@ -107,9 +107,10 @@ class Group < ActiveRecord::Base
   belongs_to :parent, :class_name => "Group"
 
   has_many :subgroups,
-           :class_name => "Group",
-           :foreign_key => 'parent_id',
-           :dependent => :destroy
+           class_name: "Group",
+           foreign_key: 'parent_id',
+           dependent: :destroy,
+           conditions: { archived_at: nil }
 
   has_one :subscription, dependent: :destroy
 

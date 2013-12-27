@@ -52,7 +52,8 @@ class User < ActiveRecord::Base
            :foreign_key => 'requestor_id'
 
   has_many :groups,
-           :through => :memberships
+           :through => :memberships,
+           conditions: { archived_at: nil }
   has_many :public_groups,
            :through => :memberships,
            :source => :group,
