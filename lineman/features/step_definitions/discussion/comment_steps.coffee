@@ -25,13 +25,14 @@ module.exports = ->
       callback()
 
   @Then /^the like button should say 'Unlike'$/, (callback) ->
-    @browser.findElement(@by.css('.like-comment-btn')).getText().then (text)=>
+    @browser.findElement(@by.css('.unlike-comment-btn')).getText().then (text)=>
       @assert.equal text, 'Unlike'
       callback()
 
   @Then /^I should see that I have liked the comment$/, (callback) ->
-    # express the regexp above with the code you wish you had
-    callback.pending()
+    @browser.findElement(@by.css('.liked-by')).getText().then (text)=>
+      @assert.equal text, 'Liked by You'
+      callback()
 
     #@browser.get('http://localhost:8000/discussions/1').then ->
       #done()
