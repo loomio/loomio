@@ -75,15 +75,10 @@ Loomio::Application.configure do
 
   config.action_mailer.raise_delivery_errors = true
 
-  if ENV['CANONICAL_HOST']
-    config.action_mailer.default_url_options = {
-      host: ENV['CANONICAL_HOST'],
+  
+  config.action_mailer.default_url_options = {
+      host: ENV['CANONICAL_HOST'] || 'loomio.org',
     }
-  else
-    config.action_mailer.default_url_options = {
-      host: 'loomio.org',
-    }
-  end
 
   # Store avatars on Amazon S3
   config.paperclip_defaults = {
