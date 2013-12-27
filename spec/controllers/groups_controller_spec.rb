@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe GroupsController do
-  let(:group) { create :group }
+  let(:group) { create :group, key: 'abc111' }
   let(:subgroup) { create :group, parent: group}
   let(:user)  { create :user }
 
@@ -52,9 +52,10 @@ describe GroupsController do
       before { group.add_admin!(user) }
 
       it "update" do
+        expected_new_path = group_path(group).gsub(group.full_name.parameterize, 'new-name')
         post :update, id: group.key, group: { name: "New name!" }
         flash[:notice].should == "Group was successfully updated."
-        response.should redirect_to "http://localhost:3000/g/#{group.key}/new-name"
+        response.should redirect_to expected_new_path
       end
 
       describe "#edit description" do

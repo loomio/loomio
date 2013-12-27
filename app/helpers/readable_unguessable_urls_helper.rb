@@ -26,11 +26,27 @@ module ReadableUnguessableUrlsHelper
 
 
   private
+
   def host_and_port
     if request.present?
-      {host: request.host, port: request.port}
+      if include_port?(request)
+        { host: request.host, port: request.port }
+      else
+        { host: request.host, port: nil }
+      end
     else
       ActionMailer::Base.default_url_options
     end
   end
+
+  def include_port?(request)
+    if    request.port == 80  && !request.ssl?
+      false
+    elsif request.port == 443 && request.ssl?
+      false
+    else
+      true
+    end
+  end
+
 end

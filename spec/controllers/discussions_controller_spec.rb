@@ -45,9 +45,7 @@ describe DiscussionsController do
 
       it "redirects to discussion" do
         get :create, discussion: @discussion_hash
-        d = Discussion.last
-        response.should redirect_to "http://localhost:3000/d/#{d.key}/#{d.title.parameterize}"
-           # this test should use discussion_path(d), but found it hard getting test using right host
+        response.should redirect_to discussion_url(Discussion.last)
       end
     end
 

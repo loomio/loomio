@@ -55,6 +55,15 @@ Loomio::Application.routes.draw do
         get :setup,  controller: 'group_setup'
         put :finish, controller: 'group_setup'
       end
+
+      get :ask_to_join, controller: 'membership_requests', action: :new
+      resources :membership_requests, only: [:index, :create]
+      resources :manage_membership_requests, only: [], as: 'membership_requests' do
+        member do
+          post :approve
+          post :ignore
+        end
+      end
     end
 
     member do
@@ -70,53 +79,25 @@ Loomio::Application.routes.draw do
     resources :motions
     resources :discussions, only: [:index, :new]
   end
-  # resources :groups, path: 'g', except: [:index, :new, :show, :update] do
-  #   resources :invitations, only: [:index, :destroy, :new, :create], controller: 'groups/invitations'
-  #   resources :memberships, only: [:index, :destroy, :new, :create], controller: 'groups/memberships' do
-  #     member do
-  #      post :make_admin
-  #      post :remove_admin
-  #     end
-  #   end
-  #   resource :subscription, only: [:new, :show], controller: 'groups/subscriptions' do
-  #     collection do
-  #       post :checkout
-  #       get :confirm
-  #       get :payment_failed
-  #     end
-  #   end
 
-  #   member do
-  #     get :setup, to: 'groups/group_setup#setup'
-  #     put :finish, to: 'groups/group_setup#finish'
-  #     post :add_members
-  #     post :hide_next_steps
-  #     get :add_subgroup
-  #     post :email_members
-  #     post :edit_description
-  #     delete :leave_group
-  #     get :members_autocomplete
-  #   end
-
-  #   resources :motions
-  #   resources :discussions, only: [:index, :new]
-  # end
   get '/g/:id(/:slug)', to: 'groups#show', as: :group, slug: /[a-zA-Z0-9-]*/
   put '/g/:id/:slug',   to: 'groups#update',           slug: /[a-zA-Z0-9-]*/ #this catches the edit group form
 
+
+  # get    'g/:group_id/ask_to_join',         to: 'groups/membership_requests#new',          as: :new_group_membership_request
+  # post   'g/:group_id/membership_requests', to: 'groups/membership_requests#create'  ,     as: :group_membership_requests
+
+  # get    'g/:group_id/membership_requests',  to: 'groups/manage_membership_requests#index', as: :group_membership_requests
+  # resources :membership_requests, only: [], controller: 'groups/manage_membership_requests' do
+  #   member do
+  #     post :approve
+  #     post :ignore
+  #   end
+  # end
+
+  delete 'membership_requests/:id/cancel',  to: 'groups/membership_requests#cancel',       as: :cancel_membership_request
+
   match "/g/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
-
-  get 'g/:group_id/ask_to_join',           to: 'groups/membership_requests#new',          as: :new_group_membership_request
-  post 'g/:group_id/membership_requests',  to: 'groups/membership_requests#create'  ,     as: :group_membership_requests
-  delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel',       as: :cancel_membership_request
-
-  get 'g/:group_id/membership_requests',  to: 'groups/manage_membership_requests#index', as: :group_membership_requests
-  resources :membership_requests, only: [], controller: 'groups/manage_membership_requests' do
-    member do
-      post :approve
-      post :ignore
-    end
-  end
 
   resources :motions do
     resources :votes, only: [:new, :create, :update]
