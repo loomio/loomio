@@ -153,7 +153,7 @@ class Ability
       (comment.author == user) or @admin_group_ids.include?(comment.group.id)
     end
 
-    can [:create], Comment do |comment|
+    can [:create, :like], Comment do |comment|
       @member_group_ids.include?(comment.group.id)
     end
 

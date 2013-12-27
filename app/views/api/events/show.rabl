@@ -4,7 +4,7 @@ attributes :id, :sequence_id, :kind
 child :eventable do |eventable|
   case eventable.class.to_s
   when "Comment"
-    attributes :body, :created_at
+    attributes :body, :created_at, :id
     node :author do
       partial 'api/discussions/author', object: eventable.author
     end
