@@ -9,7 +9,7 @@ gem 'omniauth-google-oauth2', '~> 0.2.1'
 gem 'omniauth-facebook', '~> 1.5.1'
 gem 'omniauth-browserid', '~> 0.0.1'
 gem 'pg', '~> 0.17.0'
-gem 'capistrano'
+gem 'capistrano', '~> 3.0.0'
 gem 'jquery-rails', '~> 3.0.4'
 gem 'jquery-ui-rails'
 gem 'inherited_resources', '~> 1.4.1'
@@ -44,19 +44,19 @@ gem 'httparty', '~> 0.11.0'
 gem 'timecop', '~> 0.6.3'
 gem 'pg_search', '~> 0.7.0'
 gem 'strong_parameters', '~> 0.2.1'
-gem 'airbrake'
-gem 'fog'
+gem 'airbrake', '~> 3.1.14'
+gem 'fog', '~> 1.19.0'
 gem 'roadie', '~> 2.4.3'
 gem 'valid_email', '~> 0.0.4'
 gem 'font-awesome-sass-rails'
-gem 'rabl'
-gem 'sequenced'
+gem 'rabl', '~> 0.8.6'
+gem 'sequenced', '~> 1.4.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'coffee-rails'
-  gem 'sass-rails'
+  gem 'coffee-rails', '~> 3.2.2'
+  gem 'sass-rails', '~> 3.2.6'
   gem 'bootstrap-sass', '~> 2.3.2.2'
   gem 'uglifier', '~> 2.2.1'
   gem 'modernizr-rails', '~> 2.6.2'
@@ -88,9 +88,9 @@ group :development do
   gem 'spork-rails', '~> 3.2.1'
   gem 'awesome_print', '~> 1.0.2'
   gem 'quiet_assets', '~> 1.0.2'
-  gem 'meta_request'
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  gem 'meta_request', '~> 0.2.8'
+  gem 'better_errors', '~> 1.0.1'
+  gem 'binding_of_caller', '~> 0.7.2'
 end
 
 group :test do
@@ -100,12 +100,12 @@ group :test do
   gem 'webmock', '~> 1.9.0'
   gem 'vcr', '~> 2.5.0'
   gem "codeclimate-test-reporter", require: nil
-  gem 'rack_session_access'
+  gem 'rack_session_access', '~> 0.1.1'
 end
 
 group :staging, :production do
-  gem 'memcachier'
-  gem 'dalli'
+  gem 'memcachier', '~> 0.0.2'
+  gem 'dalli', '~> 2.6.4'
   gem 'newrelic_rpm', '~> 3.5.7.59'
-  gem 'heroku-deflater'
+  gem 'heroku-deflater', '~> 0.5.1'
 end
