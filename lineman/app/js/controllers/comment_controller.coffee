@@ -21,5 +21,11 @@ angular.module('loomioApp').controller 'CommentController', ($scope, CommentServ
       names.push('You')
     names
 
+  $scope.reply = ->
+    $scope.$emit 'startCommentReply', $scope.comment
+
+  $scope.isAReply = ->
+    _.isObject($scope.comment.parent)
+
 
 

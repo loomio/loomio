@@ -8,6 +8,36 @@ describe Comment do
   it { should have_many(:events).dependent(:destroy) }
   it { should respond_to(:uses_markdown) }
 
+  describe 'parent_comment_belongs_to_same_discussion' do
+    let(:comment) { build(:comment, discussion: discussion) }
+    let(:comment_save_discussion) { create(:comment, discussion: discussion) }
+    let(:comment_other_discussion) { create(:comment) }
+
+    before { comment.save }
+
+    subject { comment }
+
+    context 'no parent' do
+      it {should have(0).errors_on(:parent) }
+    end
+
+    context 'parent belongs to same discussion' do
+      before do
+        comment.parent = comment_save_discussion
+      end
+
+      it {should have(0).errors_on(:parent) }
+    end
+
+    context 'parent belongs to another discussion' do
+      before do
+        comment.parent = comment_other_discussion
+      end
+
+      it {should have(1).errors_on(:parent) }
+    end
+  end
+
   describe "validate has_body_or_attachment" do
     it "raises error on body if no text or attachment" do
       comment = Comment.build_from discussion, discussion.author, '', attachments: []

@@ -1,4 +1,5 @@
 describe 'AddComment Controller', ->
+  parentScope = null
   $scope = null
   controller = null
 
@@ -9,6 +10,7 @@ describe 'AddComment Controller', ->
   beforeEach module 'loomioApp'
 
   beforeEach inject ($rootScope, $controller) ->
+    parentScope = $rootScope
     $scope = $rootScope.$new()
     controller = $controller 'AddCommentController',
       $scope: $scope
@@ -33,3 +35,21 @@ describe 'AddComment Controller', ->
     $scope.processForm()
     expect(mockCommentService.add).toHaveBeenCalledWith(comment, discussion)
 
+  describe 'startCommentReply is broadcast', ->
+    beforeEach ->
+      $scope.newComment = {}
+      parentScope.$broadcast('startCommentReply', originalComment)
+
+    originalComment =
+      id: 1
+      body: 'gidday there'
+      created_at: new Date()
+      author:
+        name: 'Reggy'
+        id: '3'
+
+    it 'sets the parent_id on the comment model', ->
+      expect($scope.newComment.parent_id).toBe(originalComment.id)
+
+    it 'expands the comment form', ->
+      expect($scope.isExpanded).toBe(true)

@@ -29,15 +29,17 @@ describe 'Comment Controller', ->
   it 'knows its comment id', ->
     expect($scope.comment.id).toBeDefined()
 
-  it 'likes a comment', ->
-    spyOn(mockCommentService, 'like').andReturn(true)
-    $scope.like()
-    expect(mockCommentService.like).toHaveBeenCalledWith($scope.comment)
+  describe 'like()', ->
+    it 'likes a comment', ->
+      spyOn(mockCommentService, 'like').andReturn(true)
+      $scope.like()
+      expect(mockCommentService.like).toHaveBeenCalledWith($scope.comment)
 
-  it 'unlikes a comment', ->
-    spyOn(mockCommentService, 'unlike').andReturn(true)
-    $scope.unlike()
-    expect(mockCommentService.unlike).toHaveBeenCalledWith($scope.comment)
+  describe 'unlike()', ->
+    it 'unlikes a comment', ->
+      spyOn(mockCommentService, 'unlike').andReturn(true)
+      $scope.unlike()
+      expect(mockCommentService.unlike).toHaveBeenCalledWith($scope.comment)
 
   describe 'currentUserLikesIt', ->
     describe 'and the current user does indeed like the comment', ->
@@ -62,4 +64,28 @@ describe 'Comment Controller', ->
 
       it 'is true', ->
         expect($scope.anybodyLikesIt()).toBe(true)
+
+  describe 'reply()', ->
+    it 'emits the startCommentReply signal', ->
+      spyOn($scope, '$emit')
+      $scope.reply()
+      expect($scope.$emit).toHaveBeenCalledWith('startCommentReply', $scope.comment)
+
+  describe 'isAReply()', ->
+    context 'the comment has a parent', ->
+      beforeEach ->
+        $scope.comment.parent =
+          id: 1
+          author:
+            name: 'Jim'
+            id: 1
+          body: 'i am a reply'
+
+      it 'is true', ->
+        expect($scope.isAReply()).toBe(true)
+
+    context 'the comment does not have a parent', ->
+      it 'is false', ->
+        expect($scope.isAReply()).toBe(false)
+
 

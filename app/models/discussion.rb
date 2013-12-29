@@ -48,8 +48,8 @@ class Discussion < ActiveRecord::Base
   end
 
   def add_comment(author, body, options = {})
-    options[:body] = body
     comment = Comment.new(options)
+    comment.body = body
     comment.author = author
     comment.discussion = self
     DiscussionService.add_comment(comment)
