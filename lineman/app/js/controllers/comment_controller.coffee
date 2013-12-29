@@ -1,12 +1,10 @@
 angular.module('loomioApp').controller 'CommentController', ($scope, CommentService) ->
-  $scope.comment = $scope.event.comment
+  $scope.comment = $scope.event.eventable
 
   $scope.like = ->
-    console.log('likey')
     CommentService.like($scope.comment)
 
   $scope.unlike = ->
-    console.log('unlikey')
     CommentService.unlike($scope.comment)
 
   $scope.currentUserLikesIt = ->
@@ -22,7 +20,7 @@ angular.module('loomioApp').controller 'CommentController', ($scope, CommentServ
     names
 
   $scope.reply = ->
-    $scope.$emit 'startCommentReply', $scope.comment
+    $scope.$emit 'replyToCommentClicked', $scope.comment
 
   $scope.isAReply = ->
     _.isObject($scope.comment.parent)

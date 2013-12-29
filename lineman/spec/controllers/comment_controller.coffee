@@ -14,7 +14,7 @@ describe 'Comment Controller', ->
   beforeEach inject ($rootScope, $controller) ->
     $scope = $rootScope.$new()
     $scope.event =
-      comment:
+      eventable:
         id: 1
         body: 'hi there'
         created_at: new Date()
@@ -66,10 +66,10 @@ describe 'Comment Controller', ->
         expect($scope.anybodyLikesIt()).toBe(true)
 
   describe 'reply()', ->
-    it 'emits the startCommentReply signal', ->
+    it 'emits the replyToCommentClicked signal', ->
       spyOn($scope, '$emit')
       $scope.reply()
-      expect($scope.$emit).toHaveBeenCalledWith('startCommentReply', $scope.comment)
+      expect($scope.$emit).toHaveBeenCalledWith('replyToCommentClicked', $scope.comment)
 
   describe 'isAReply()', ->
     context 'the comment has a parent', ->

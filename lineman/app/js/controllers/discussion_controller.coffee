@@ -3,5 +3,6 @@ angular.module('loomioApp').controller 'DiscussionController', ($scope, discussi
   $scope.discussion = discussion
   $scope.newComment = {}
   $scope.newComment.discussion_id = discussion.id
-  $scope.$on 'startCommentReply', (event, originalComment) ->
-    $scope.$broadcast('startCommentReply', originalComment)
+
+  $scope.$on 'replyToCommentClicked', (event, originalComment) ->
+    $scope.$broadcast('showReplyToCommentForm', originalComment)

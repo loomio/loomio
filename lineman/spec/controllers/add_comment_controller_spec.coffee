@@ -38,7 +38,7 @@ describe 'AddComment Controller', ->
   describe 'startCommentReply is broadcast', ->
     beforeEach ->
       $scope.newComment = {}
-      parentScope.$broadcast('startCommentReply', originalComment)
+      parentScope.$broadcast('showReplyToCommentForm', originalComment)
 
     originalComment =
       id: 1
