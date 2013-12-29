@@ -37,7 +37,7 @@ describe 'Discussion Controller', ->
       $scope: $scope
       discussion: discussion
 
-  describe 'a startCommentReply event occurs', ->
+  describe 'a replyToCommentClicked event occurs', ->
     it 'broadcasts startCommentReply', ->
       subscope = $scope.$new()
       spyOn($scope, '$broadcast')
