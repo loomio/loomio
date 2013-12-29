@@ -39,6 +39,8 @@ You can run the unit tests with
   $ lineman spec
 
 # Integration testing
+We're not using linemans default e2e testing stuff. Insted we're going for cucumber.js integration tests.
+
 
 ## Installing Protractor & Webdriver-manager
 To run the integration tests, you'll need Protractor and Webdriver-manager
@@ -60,3 +62,8 @@ probably easiest if you run these each in their own terminal window.
 
   Then finally to run the tests:
   $ lineman grunt cucumberjs
+
+  grunt-cucumberjs does not support the coffeescript flag in the
+  latest version of cucumber.js Sooo.. rather than the above line..
+  I have an alias for: 'node node_modules/cucumber/bin/cucumber.js --require features/step_definitions --coffee'
+  In my shell profile, so I can run the cukes with "cjs" from the command line in my workflow and get coffeescript pending step definitations

@@ -33,15 +33,15 @@
 
   .card-row{'ng-repeat' => 'event in discussion.events'}
     %div{'ng-include' => "event.kind == 'new_comment' && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
-    -#["new_comment",
-    -#"new_discussion",
+    -#"discussion_title_edited",
+    -#"discussion_description_edited",
     -#"new_motion",
     -#"new_vote",
-    -#"discussion_description_edited",
+    -#["new_comment",
     -#"motion_closed",
-    -#"discussion_title_edited",
     -#"motion_close_date_edited",
     -#"motion_blocked"]
+    -#"new_discussion",
 
   .card-row#create-a-proposal
     .card

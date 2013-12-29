@@ -21,29 +21,24 @@ module.exports = ->
       callback()
 
   @When /^I click like on the comment$/, (callback) ->
-    @browser.findElement(@by.css('.like-comment-btn')).click().then =>
+    @browser.findElement(@by.css('.cuke-like-comment-btn')).click().then =>
       callback()
 
   @Then /^the like button should say 'Unlike'$/, (callback) ->
-    @browser.findElement(@by.css('.unlike-comment-btn')).getText().then (text)=>
+    @browser.findElement(@by.css('.cuke-unlike-comment-btn')).getText().then (text)=>
       @assert.equal text, 'Unlike'
       callback()
 
   @Then /^I should see that I have liked the comment$/, (callback) ->
-    @browser.findElement(@by.css('.liked-by')).getText().then (text)=>
+    @browser.findElement(@by.css('.cuke-liked-by-names')).getText().then (text)=>
       @assert.equal text, 'Liked by You'
       callback()
 
-    #@browser.get('http://localhost:8000/discussions/1').then ->
-      #done()
+  @When /^I reply to the comment$/, (callback) ->
+    @browser.findElement(@by.css('.cuke-reply-to-comment-btn')).click().then =>
+      @browser.findElement(@by.id('comment-field')).sendKeys('I am replying').then =>
+        @browser.findElement(@by.id('post-comment-btn')).click().then =>
+          callback()
 
-  #@When /^I add a comment to the discussion$/, (callback) ->
-    #el = @browser.findElement(@by.tagName 'input')
-    #el.clear
-    #el.sendKeys('Yo wassup').then ->
-      #callback()
-
-  #@Then /^I should see the comment has been appended to the discussion$/, (callback) ->
-    #@browser.findElement(@by.tagName 'span').getText().then (text) =>
-      #@assert.equal text, 'Yo wassup'
-      #callback()
+  @Then /^I should see my reply comment in the discussion$/, (callback) ->
+    callback.pending()

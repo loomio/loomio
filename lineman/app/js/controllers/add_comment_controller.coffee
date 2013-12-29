@@ -10,3 +10,8 @@ angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentS
 
   $scope.processForm = () ->
     CommentService.add($scope.newComment, $scope.discussion)
+
+  $scope.$on 'startCommentReply', (event, originalComment) ->
+    $scope.newComment.parent_id = originalComment.id
+    $scope.expand()
+

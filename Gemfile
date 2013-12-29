@@ -51,6 +51,7 @@ gem 'valid_email', '~> 0.0.4'
 gem 'font-awesome-sass-rails'
 gem 'rabl'
 gem 'sequenced'
+gem 'closure_tree'
 
 # Gems used only for assets and not required
 # in production environments by default.

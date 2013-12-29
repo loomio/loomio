@@ -9,6 +9,18 @@ child :eventable do |eventable|
     node :author do
       partial 'api/discussions/author', object: eventable.author
     end
+
+    node :parent do |comment|
+      attributes :id,
+                :body,
+                :discussion_id,
+                :created_at,
+                :updated_at
+
+      node :author do |comment|
+        partial 'api/discussions/author', object: comment.author
+      end
+    end
   when "Discussion"
   when "Motion"
   when "Vote"
