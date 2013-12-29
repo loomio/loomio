@@ -35,5 +35,12 @@ describe GroupsTree do
       traversal.next.should == group2
       tree.should_not include(subgroup2)
     end
+
+    it "yield's the parent group when a subgroup member isn't in the parent group" do
+      subgroup1.add_member!(user)
+      traversal = tree.depth_first_traversal
+      tree.should include(subgroup1)
+      tree.should include(group1)
+    end
   end
 end

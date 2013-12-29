@@ -25,10 +25,14 @@ class GroupsTree
 
   def tree
     root = Tree.new
-    @user.groups.order('parent_id DESC, LOWER(name)').each do |group|
+    user_groups = @user.groups.order('parent_id DESC, LOWER(name)')
+    user_groups.each do |group|
       if group.is_a_parent?
         root.children << Tree.new(parent: root, value: group)
       else
+        if !user_groups.include?(group.parent)
+          root.children << Tree.new(parent: root, value: group.parent)
+        end
         parent = root.children.find { |child| child.value.id == group.parent_id }
         parent.children << Tree.new(parent: parent, value: group)
       end
