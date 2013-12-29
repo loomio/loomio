@@ -41,6 +41,6 @@ describe 'Discussion Controller', ->
     it 'broadcasts startCommentReply', ->
       subscope = $scope.$new()
       spyOn($scope, '$broadcast')
-      subscope.$emit 'startCommentReply', comment
-      expect($scope.$broadcast).toHaveBeenCalledWith 'startCommentReply', comment
+      subscope.$emit 'replyToCommentClicked', comment
+      expect($scope.$broadcast).toHaveBeenCalledWith 'showReplyToCommentForm', comment
 

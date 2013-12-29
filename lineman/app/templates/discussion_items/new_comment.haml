@@ -2,17 +2,17 @@
   .card__header
     .media
       .media__img.media__img--card
-        %div{'ng-include' => "'generated/templates/user/avatar.html'", 'ng-init' => "user = event.comment.author"}
+        %div{'ng-include' => "'generated/templates/user/avatar.html'", 'ng-init' => "user = comment.author"}
       .media__text
         %h4.media__title{ng_click: 'alert("hello")'}
-          {{event.comment.author.name}}
+          {{comment.author.name}}
         .media__details
-          {{event.comment.created_at | date:'medium' }}
+          {{comment.created_at | date:'medium' }}
           %span.in-reply-to{ng_show: 'isAReply()'}
             in reply to {{ comment.parent.author.name }}
 
   .card__content.comment-body
-    {{ event.comment.body }}
+    {{ comment.body }}
   .toolbar-container
     .toolbar
       .toolbar__button.toolbar__button--first{ng_show: '!currentUserLikesIt()'}
