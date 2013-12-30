@@ -18,13 +18,15 @@ Loomio::Application.routes.draw do
                                     registrations: 'users/registrations',
                                     omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  get "/inbox", to: "inbox#index", as: :inbox
-  get "/inbox/size", to: "inbox#size", as: :inbox_size
-  get '/inbox/preferences', to: 'inbox#preferences', as: :inbox_preferences
-  put '/inbox/update_preferences', to: 'inbox#update_preferences', as: :update_inbox_preferences
-  match '/inbox/mark_as_read', to: 'inbox#mark_as_read', as: :mark_as_read_inbox
-  match '/inbox/mark_all_as_read/:id', to: 'inbox#mark_all_as_read', as: :mark_all_as_read_inbox
-  match '/inbox/unfollow', to: 'inbox#unfollow', as: :unfollow_inbox
+  namespace :inbox do
+    get   '/', action: 'index'
+    get   'size'
+    get   'preferences'
+    put   'update_preferences'
+    match 'mark_as_read'
+    match 'mark_all_as_read/:id', action: 'mark_all_as_read', as: :mark_all_as_read
+    match 'unfollow'
+  end
 
   resources :invitations, only: [:show]
 
@@ -72,8 +74,15 @@ Loomio::Application.routes.draw do
 
     resources :motions
     resources :discussions, only: [:index, :new]
-
   end
+
+  scope module: :groups, path: 'g' do
+    get ':id(/:slug)',   action: 'show',   slug: /[a-zA-Z0-9-]*/, as: :group
+    put ':id/:slug',     action: 'update', slug: /[a-zA-Z0-9-]*/ #this catches the edit group form
+
+    post 'archive/:id',  action: 'archive', as: :archive_group
+  end
+
   scope module: :groups do
     resources :manage_membership_requests, only: [], as: 'membership_requests' do
       member do
@@ -83,11 +92,7 @@ Loomio::Application.routes.draw do
     end
   end
 
-  get '/g/:id(/:slug)', to: 'groups#show', as: :group, slug: /[a-zA-Z0-9-]*/
-  put '/g/:id/:slug',   to: 'groups#update',           slug: /[a-zA-Z0-9-]*/ #this catches the edit group form
-
   delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
-  match "/g/archive/:id", :to => "groups#archive", :as => :archive_group, :via => :post
 
   resources :motions do
     resources :votes, only: [:new, :create, :update]
@@ -99,8 +104,9 @@ Loomio::Application.routes.draw do
     end
   end
 
-  resources :discussions, path: 'd', except: [:edit, :show] do
+  resources :discussions, path: 'd', except: [:index, :show, :edit] do
     get :activity_counts, on: :collection
+
     member do
       post :update_description
       post :add_comment
@@ -110,11 +116,14 @@ Loomio::Application.routes.draw do
       put :move
     end
   end
-  get    '/d/:id(/:slug)', to: 'discussions#show', as: :discussion, slug: /[a-zA-Z0-9-]*/
-  delete '/d/:id/:slug',   to: 'discussions#destroy',               slug: /[a-zA-Z0-9-]*/
 
-  post "/d/:id/preview_version/(:version_id)", :to => "discussions#preview_version", :as => "preview_version_discussion"
-  post "/d/update_version/:version_id",        :to => "discussions#update_version",  :as => "update_version_discussion"
+  scope module: :discussions, path: 'd' do
+    get    ':id(/:slug)', action: 'show',    slug: /[a-zA-Z0-9-]*/, as: :discussion
+    delete ':id/:slug',   action: 'destroy', slug: /[a-zA-Z0-9-]*/
+
+    post ':id/preview_version/(:version_id)', action: '#preview_version', as: 'preview_version_discussion'
+    post 'update_version/:version_id',        action: 'update_version',   as: 'update_version_discussion'
+  end
 
   resources :comments , only: :destroy do
     post :like, on: :member
