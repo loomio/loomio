@@ -1,5 +1,5 @@
 class DiscussionsRedirectController < GroupBaseController
-  BLOCK_ID_GREATER_THAN = 10000
+  BLOCK_ID_GREATER_THAN = 11000
 
   before_filter :reject_new_ids
   before_filter :load_resource_from_id
