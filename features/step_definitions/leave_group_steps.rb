@@ -40,3 +40,7 @@ end
 Then(/^I should not be removed from the subgroup$/) do
   @subgroup.members.should include(@user)
 end
+
+Then(/^I should be removed from the subgroup$/) do
+  @subgroup.members.should_not include(@user)
+end

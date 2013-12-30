@@ -48,14 +48,24 @@ describe Membership do
       @membership = group.add_member! user
     end
 
-    it "removes subgroup memberships (if existing)" do
-      # Removes user from multiple subgroups
-      subgroup = create(:group, parent: group)
+    it "removes subgroup memberships if parent is hidden" do
+      group.privacy = 'hidden'
+      group.save
+      subgroup = create(:group, parent: group, privacy: 'hidden')
       subgroup.add_member! user
       group.reload
       @membership.reload
       @membership.destroy
       subgroup.users.should_not include(user)
+    end
+
+    it "doesn't remove subgroup memberships if parent is not hidden" do
+      subgroup = create(:group, parent: group)
+      subgroup.add_member! user
+      group.reload
+      @membership.reload
+      @membership.destroy
+      subgroup.users.should include(user)
     end
 
     context do
