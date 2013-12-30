@@ -41,6 +41,7 @@ describe GroupsTree do
       traversal = tree.depth_first_traversal
       tree.should include(subgroup1)
       tree.should include(group1)
+      tree.count.should == 2
     end
   end
 end

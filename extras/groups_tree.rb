@@ -25,17 +25,18 @@ class GroupsTree
 
   def tree
     root = Tree.new
-    user_groups = @user.groups.order('parent_id DESC, LOWER(name)')
-    user_groups.each do |group|
-      if group.is_a_parent?
-        root.children << Tree.new(parent: root, value: group)
-      else
-        if !user_groups.include?(group.parent)
-          root.children << Tree.new(parent: root, value: group.parent)
-        end
-        parent = root.children.find { |child| child.value.id == group.parent_id }
-        parent.children << Tree.new(parent: parent, value: group)
-      end
+    user_groups = @user.groups
+    parent_groups = user_groups.where('parent_id IS NULL')
+    subgroups = user_groups.where('parent_id IS NOT NULL').order('parent_id DESC, LOWER(name)')
+    parent_groups = (parent_groups + subgroups.map(&:parent)).
+                      uniq.
+                      sort_by{|g| g.name}
+    parent_groups.each do |group|
+      root.children << Tree.new(parent: root, value: group)
+    end
+    subgroups.each do |group|
+      parent = root.children.find { |child| child.value.id == group.parent_id }
+      parent.children << Tree.new(parent: parent, value: group)
     end
     root
   end

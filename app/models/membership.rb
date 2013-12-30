@@ -27,7 +27,6 @@ class Membership < ActiveRecord::Base
   before_create :check_group_max_size
   after_initialize :set_defaults
   before_destroy :remove_open_votes
-  after_destroy :destroy_subgroup_memberships
 
   include AASM
   aasm :column => :access_level do
