@@ -1,6 +1,5 @@
 class InvitationsController < ApplicationController
   include InvitationsHelper
-  include GroupsHelper
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error',

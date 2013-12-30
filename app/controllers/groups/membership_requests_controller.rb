@@ -3,6 +3,7 @@ class Groups::MembershipRequestsController < BaseController
   skip_before_filter :authenticate_user!, except: :cancel
   load_and_authorize_resource :membership_request, only: :cancel, parent: false
 
+
   def new
     authorize! :request_membership, @group
     @membership_request = MembershipRequest.new
