@@ -151,16 +151,18 @@ Loomio::Application.routes.draw do
     end
   end
 
-  match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
+  scope module: :users, path: 'users' do
+    post 'dismiss_system_notice', action: 'dismiss_system_notice',
+                                  as: :dismiss_system_notice_for_user
+    post 'dismiss_dashboard_notice', action: 'dismiss_dashboard_notice',
+                                     as: :dismiss_dashboard_notice_for_user
+    post 'dismiss_group_notice', action: 'dismiss_group_notice',
+                                 as: :dismiss_group_notice_for_user
+    post 'dismiss_discussion_notice', action: 'dismiss_discussion_notice',
+                                      as: :dismiss_discussion_notice_for_user
+  end
 
-  match "/users/dismiss_system_notice", :to => "users#dismiss_system_notice",
-        :as => :dismiss_system_notice_for_user, :via => :post
-  match "/users/dismiss_dashboard_notice", :to => "users#dismiss_dashboard_notice",
-        :as => :dismiss_dashboard_notice_for_user, :via => :post
-  match "/users/dismiss_group_notice", :to => "users#dismiss_group_notice",
-        :as => :dismiss_group_notice_for_user, :via => :post
-  match "/users/dismiss_discussion_notice", :to => "users#dismiss_discussion_notice",
-        :as => :dismiss_discussion_notice_for_user, :via => :post
+  match '/announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
 
 
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
@@ -202,9 +204,11 @@ Loomio::Application.routes.draw do
   match '/contact', to: 'contact_messages#new'
 
   #redirect from wall to new group signup
-  get "group_requests/selection", to: "group_requests#new"
-  get "group_requests/subscription", to: "group_requests#new"
-  get "group_requests/pwyc", to: "group_requests#new"
+  namespace :group_requests do
+    get 'selection', action: 'new'
+    get 'subscription', action: 'new'
+    get 'pwyc', action: 'new'
+  end
 
   #redirect old invites
   match "/groups/:id/invitations/:token" => "group_requests#start_new_group"
