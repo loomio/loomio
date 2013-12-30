@@ -1,7 +1,6 @@
 class PaypalCheckout
   include HTTParty
   include Routing
-  include GroupsHelper
   include ReadableUnguessableUrlsHelper
 
   ENDPOINT_URL = ENV['PAYPAL_ENDPOINT_URL']
