@@ -2,7 +2,7 @@ class GroupsController < GroupBaseController
   before_filter :authenticate_user!, except: :show
 
   before_filter :load_group, except: :create
-  authorize_resource except: :create
+  authorize_resource except: [:create, :upload_profile_image]
 
   before_filter :ensure_group_is_setup, only: :show
 
@@ -81,6 +81,15 @@ class GroupsController < GroupBaseController
   def members_autocomplete
     users = @group.users.where('username ilike :term or name ilike :term ', {term: "%#{params[:q]}%"})
     render json: users.map{|u| {name: "#{u.name} #{u.username}", username: u.username, real_name: u.name} }
+  end
+
+  def upload_profile_image
+    authorize!(:update, @group)
+    @group.profile_image = params[:uploaded_profile_image]
+    unless @group.save
+      flash[:error] = t("error.image_upload_failure", size: "10MB")
+    end
+    redirect_to @group
   end
 
   private

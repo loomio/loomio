@@ -27,6 +27,10 @@ body.groups {
         }
       }
     }
+    .profile-image{
+      margin: -20px -20px 20px -20px;
+      height: 200px;
+    }
     .group-options {
       width: 200px;
       .dropdown-menu {
@@ -34,6 +38,8 @@ body.groups {
         margin-top: 0;
         left: 0;
       }
+      form#upload-form{margin-bottom: 0;}
+      input#upload-profile-image{display: none;}
     }
     .heart-icon {color: red;}
 
