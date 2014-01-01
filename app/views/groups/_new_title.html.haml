@@ -1,7 +1,7 @@
 - if group
   %h1
     - if group.is_a_subgroup?
-      = link_to group.parent.name, group.parent
-      %span.separator &dash;
-    = link_to group.name, group
+      = link_to group.parent.name, group.parent, class: 'shadow'
+      %span.shadow &dash;
+    = link_to group.name, group, class: 'shadow'
     = render 'groups/privacy', :group => group

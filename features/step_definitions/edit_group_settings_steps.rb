@@ -18,6 +18,14 @@ Then /^the group name is changed$/ do
   Group.where(:name=>"Second Test Group").size > 0
 end
 
+When(/^I update the group tagline$/) do
+  fill_in 'group_tagline', with: "A cool group for friends"
+end
+
+Then(/^the group tagline is changed$/) do
+  Group.where(:tagline=>"A cool group for friends").size > 0
+end
+
 Then /^the group should be public$/ do
   Group.where(:name=>"New Test Group", :privacy=>"public").size > 0
 end

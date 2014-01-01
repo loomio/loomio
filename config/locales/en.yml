@@ -725,6 +725,7 @@ en:
         title: "Title"
         description: "Context"
       group:
+        tagline: "Tagline"
         name: "Group name"
         description: "Description"
         members_invitable_by: "Who can invite people to this group?"
@@ -770,6 +771,7 @@ en:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
       group:
+        tagline: "Tagline"
         name: "Group name"
         description: "Group description"
       user:

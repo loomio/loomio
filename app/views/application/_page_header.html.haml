@@ -14,4 +14,7 @@
     - elsif @group.is_a_subgroup? && @group.parent.profile_image.exists?
       - image = @group.parent.profile_image.url(:group_cover_desktop)
     .row.cover-image{style: "background-image: url('#{image}')"}
-      .span9= render 'groups/new_title', group: @group
+      .span9
+        = render 'groups/new_title', group: @group
+        %h2
+          %span.shadow= @group.tagline

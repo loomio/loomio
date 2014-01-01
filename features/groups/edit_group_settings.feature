@@ -28,6 +28,12 @@ Feature: Edit group settings
     And I update the group name
     Then the group name is changed
 
+  Scenario: Change group tagline
+    Given I am logged in as "furry@example.com"
+    When I visit the group settings page
+    And I update the group tagline
+    Then the group tagline is changed
+
   Scenario: Change group invitations to allow all members
     Given I am logged in as "furry@example.com"
     When I visit the group settings page
