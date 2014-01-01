@@ -1,4 +1,5 @@
 class EmailIntegration < ActiveRecord::Base
+  TOKEN_LENGTH = 22
 
   extend FriendlyId
   friendly_id :token
@@ -8,4 +9,28 @@ class EmailIntegration < ActiveRecord::Base
 
   validates_presence_of :user, :email_integrable
   validates :token, presence: true, uniqueness: true
+
+  before_validation :set_token
+
+  private
+
+  def set_token
+    if self.token.blank?
+      self.token = generate_unique_token
+    end
+  end
+
+  def generate_unique_token
+    begin
+      token = generate_token
+    end while self.class.where(token: token).exists?
+      token
+  end
+
+ def generate_token
+   (('a'..'z').to_a +
+    ('A'..'Z').to_a +
+    (0..9).to_a ).sample(TOKEN_LENGTH).join
+ end
+
 end

@@ -28,4 +28,8 @@ class BaseMailer < ActionMailer::Base
       unique_args: { environment: Rails.env, arguments: args.inspect }
     }.to_json
   end
+
+  def inject_reply_token(token, email)
+    email.gsub("@", "+#{token}@")
+  end
 end
