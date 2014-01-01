@@ -1,9 +1,6 @@
 class EmailIntegration < ActiveRecord::Base
   TOKEN_LENGTH = 22
 
-  extend FriendlyId
-  friendly_id :token
-
   belongs_to :user
   belongs_to :email_integrable, polymorphic: true
 
