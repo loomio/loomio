@@ -5,33 +5,31 @@
 body.groups {
   &.show {
     #button-container{
-      margin-bottom: 10px;
+      margin: 0 0 10px 0;
     }
     .cover-image{
       height: 200px;
-      h1{ font-size: 3em; }
+      h1{
+        font-size: 3em;
+        height: 90px;
+      }
     }
     .discussion-preview .discussion-title { margin-top: 7px; }
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }
-    #group-description-panel {
+    #group-discussions{
+      h3{ margin-top: 1em; }
+      #discussion-list{ border-top: 1px solid $light-grey; }
+    }
+
+    #group-description {
       #description-edit-form {
         margin-bottom: 0px;
-        #description-input {
-          width: 184px;
-          height: 90px;
-          margin-bottom: 2px;
-        }
-        .character-counter {
-          width: 196px;
-          top: 0;
-        }
-        .dropdown-menu a {
-          padding-left: 5px;
-        }
-        form {
-          margin: 0;
-          display: inline;
-        }
+        #description-input { margin-bottom: 2px; }
+      }
+      a.edit-description{
+        display: block;
+        float: right;
+        text-decoration: none;
       }
     }
     .group-options {

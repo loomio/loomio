@@ -11,7 +11,6 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
   validates_inclusion_of :privacy, in: PRIVACY_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: INVITER_CATEGORIES
-  validates :description, :length => { :maximum => 250 }
   validates :tagline, :length => { :maximum => 125 }
   validates :name, :length => { :maximum => 250 }
 
