@@ -24,7 +24,6 @@
 
         = paginate @discussions_without_open_motions, :window => 3
   %section.span3
-    = render 'button_container'
     = request_membership_button(@group)
     =render 'setup_next_steps' if show_next_steps?(@group)
     =render 'subscription_prompt' if show_subscription_prompt?(@group)

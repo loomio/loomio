@@ -169,15 +169,27 @@ ul, ol, li {
 }
 .cover-image{
   margin: -15px -20px 20px -20px;
+  position: relative;
   background-color: $light-grey;
+  .text{
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    width: 700px;
+  }
+  .buttons{
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    width: 220px;
+  }
   h1, h2{
     text-shadow: 0 1px 0 white;
     color: white;
   }
   h1{
     line-height: 1;
-    padding-top: 20px;
-    display: block;
+    margin-bottom: 8px;
     a{color: white;}
   }
   h2{

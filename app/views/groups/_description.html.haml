@@ -11,7 +11,6 @@
     .description-body
       - if group.description.present?
         - if can? :edit_description, group
-
           %a{href: "#", class: "edit-description btn" }
             %i.icon-edit
             = t(:edit)
