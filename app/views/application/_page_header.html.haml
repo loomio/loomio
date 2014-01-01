@@ -1,25 +1,17 @@
 - case controller_name
   - when 'discussions'
-    - image = @group.profile_image.url(:discussion_cover_desktop)
-    .row.cover-image{style: "background: url('#{image}')"}
-      .span9
-        - if group
-          %h1
-            - if group.is_a_subgroup?
-              = link_to group.parent.name, group.parent
-              = content_tag :span, "\u25B6", class: 'name-separator'
-            = link_to group.name, group
+    - if @group.profile_image.exists?
+      - image = @group.profile_image.url(:discussion_cover_desktop)
+    - elsif @group.is_a_subgroup? && @group.parent.profile_image.exists?
+      - image = @group.parent.profile_image.url(:discussion_cover_desktop)
+    .row.cover-image{style: "background-image: url('#{image}')"}
+      .span9= render 'groups/new_title', group: @group
       .span3#button-container= request_membership_button(@group)
 
   - when 'groups'
-    - image = @group.profile_image.url(:group_cover_desktop)
-    .row.cover-image{style: "background: url('#{image}')"}
-      .span9
-        - if group
-          %h1
-            - if group.is_a_subgroup?
-              = link_to group.parent.name, group.parent
-              = content_tag :span, "\u25B6", class: 'name-separator'
-            = link_to group.name, group
-            = render 'groups/privacy', :group => group
-
+    - if @group.profile_image.exists?
+      - image = @group.profile_image.url(:group_cover_desktop)
+    - elsif @group.is_a_subgroup? && @group.parent.profile_image.exists?
+      - image = @group.parent.profile_image.url(:group_cover_desktop)
+    .row.cover-image{style: "background-image: url('#{image}')"}
+      .span9= render 'groups/new_title', group: @group
