@@ -244,6 +244,13 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    maildir (2.1.0)
+    mailman (0.7.0)
+      activesupport (>= 2.3.4)
+      i18n (>= 0.4.1)
+      listen (>= 0.4.1)
+      mail (>= 2.0.3)
+      maildir (>= 0.5.0)
     memcachier (0.0.2)
     meta_request (0.2.8)
       callsite
@@ -526,6 +533,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari (~> 0.14.0)
   launchy (~> 2.0.5)
+  mailman
   memcachier (~> 0.0.2)
   meta_request (~> 0.2.8)
   modernizr-rails (~> 2.6.2)

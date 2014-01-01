@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+require "rubygems"
+require "bundler/setup"
+require "mailman"
+
+# Mailman.config.pop3 = {
+#   server: 'pop.gmail.com', port: 995, ssl: true,
+#   username: ENV['GMAIL_REPLY_USERNAME'],
+#   password: ENV['GMAIL_REPLY_PASSWORD']
+# }
+
+Mailman.config.imap = {
+  server: 'imap.gmail.com', port: 993, ssl: true,
+  username: ENV['GMAIL_REPLY_USERNAME'],
+  password: ENV['GMAIL_REPLY_PASSWORD']
+}
+# Mailman.config.poll_interval=60
+
+Mailman::Application.run do
+  default do
+    begin
+      text = message.text_part.decoded.split("\n")
+      text = text.take_while { |t| t !~ /^On\s.+wrote:$/ }
+      text = text.take_while { |t| t !~ /^From:\s.+$/ }
+      text = text.take_while { |t| t != "--" }
+      text = text.take_while { |t| t != "-- " }
+      text = text.take_while { |t| t != "-----Original Message-----" }
+      text = text.take_while { |t| t !~ /^_{30,}$/ }
+      text = text.take_while { |t| t != "________________________________" }
+      text = text.take_while { |t| t !~ /^Sent\sfrom\smy\siPhone.*/ }
+      text = text.take_while { |t| t !~ /^Sent\sfrom\smy\sBlackBerry.*/ }
+      text = text.join("\n").strip
+
+      token = message.to.first.
+                      split('@').first.
+                      split('+').last
+      if e = EmailIntegration.find_by_token(token)
+        discussion = e.email_integrable
+
+        comment = Comment.new(body: text, uses_markdown: e.user.uses_markdown)
+        comment.discussion = e.email_integrable
+        comment.author = e.user
+        DiscussionService.add_comment(comment)
+      end
+
+    rescue
+      # Mailman.logger.error "Exception occurred while receiving message:\n#{message}"
+      # Mailman.logger.error [e, *e.backtrace].join("\n")
+    end
+  end
+end
