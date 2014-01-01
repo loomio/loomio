@@ -4,8 +4,8 @@ class EmailIntegration < ActiveRecord::Base
   belongs_to :user
   belongs_to :email_integrable, polymorphic: true
 
-  validates_presence_of :user, :email_integrable
-  validates :token, presence: true, uniqueness: true
+  validates_presence_of :user, :email_integrable, :token
+  validates_uniqueness_of :token
 
   before_validation :set_token
 
