@@ -19,11 +19,17 @@ Mailman.config.imap = {
 Mailman::Application.run do
   default do
     begin
-      text = message.text_part.decoded.
-                      split("\n").
-                      reject { |s| s[0] == ">" }.
-                      reject { |s| s[0..2] == "On " && s[-6..-1] == "wrote:" }.
-                      join("\n").strip
+      text = message.text_part.decoded.split("\n")
+      text = text.take_while { |t| t !~ /^On\s.+wrote:$/ }
+      text = text.take_while { |t| t !~ /^From:\s.+$/ }
+      text = text.take_while { |t| t != "--" }
+      text = text.take_while { |t| t != "-- " }
+      text = text.take_while { |t| t != "-----Original Message-----" }
+      text = text.take_while { |t| t !~ /^_{30,}$/ }
+      text = text.take_while { |t| t != "________________________________" }
+      text = text.take_while { |t| t !~ /^Sent\sfrom\smy\siPhone.*/ }
+      text = text.take_while { |t| t !~ /^Sent\sfrom\smy\sBlackBerry.*/ }
+      text = text.join("\n").strip
 
       token = message.to.first.
                       split('@').first.
