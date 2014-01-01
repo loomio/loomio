@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+require "rubygems"
+require "bundler/setup"
+require "mailman"
+
+Mailman.config.pop3 = {
+  server: 'pop.gmail.com', port: 995, ssl: true,
+  username: ENV['GMAIL_REPLY_USERNAME'],
+  password: ENV['GMAIL_REPLY_PASSWORD']
+}
+
+Mailman::Application.run do
+  default do
+    begin
+      text = message.text_part.decoded.
+                      split("\n").
+                      select { |s| s[0] != ">"  }[0...-1].
+                      join("\n").strip
+
+      token = message.to.first.
+                      split('@').first.
+                      split('+').last
+      if e = EmailIntegration.find_by_token(token)
+        discussion = e.email_integrable
+
+        comment = Comment.new(body: text, uses_markdown: e.user.uses_markdown)
+        comment.discussion = e.email_integrable
+        comment.author = e.user
+        DiscussionService.add_comment(comment)
+      end
+
+    rescue
+      # Mailman.logger.error "Exception occurred while receiving message:\n#{message}"
+      # Mailman.logger.error [e, *e.backtrace].join("\n")
+    end
+  end
+end
