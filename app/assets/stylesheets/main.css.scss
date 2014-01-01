@@ -167,7 +167,17 @@ ul, ol, li {
     display:table;
   }
 }
-
+.cover-image{
+  margin: -15px -20px 20px -20px;
+  h1{
+    padding-top: 20px;
+    text-shadow: 0 1px 0 white;
+    a{
+      color: white;
+      text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    }
+  }
+}
 .character-counter {
   color: $mid-grey;
   text-align: right;

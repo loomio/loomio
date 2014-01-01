@@ -24,6 +24,10 @@ body.discussions.new, body.discussions.create {
 
 
 body.discussions.show {
+  .cover-image{
+    height: 80px;
+  }
+
   .form-container {
     border: 1px solid #cccccc;
     @include border-radius(4px);

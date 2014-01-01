@@ -51,7 +51,7 @@ describe UsersController do
     it "displays an unsupported file-type message on failure" do
       @user.stub(:save).and_return(false)
       post :upload_new_avatar, :id => 999, :uploaded_avatar => "www.peter_chilltooth.jpg"
-      flash[:error].should =~ /Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file./
+      flash[:error].should =~ /Unable to upload picture. Make sure the picture is under 1MB and is a .jpeg, .png, or .gif file./
     end
     it "redirects to user settings" do
       @user.stub(:save).and_return(true)

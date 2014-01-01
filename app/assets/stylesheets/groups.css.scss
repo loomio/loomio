@@ -4,6 +4,13 @@
 
 body.groups {
   &.show {
+    #button-container{
+      margin-bottom: 10px;
+    }
+    .cover-image{
+      height: 200px;
+      h1{ font-size: 3em; }
+    }
     .discussion-preview .discussion-title { margin-top: 7px; }
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }
     #group-description-panel {
@@ -26,10 +33,6 @@ body.groups {
           display: inline;
         }
       }
-    }
-    .profile-image{
-      margin: -20px -20px 20px -20px;
-      height: 200px;
     }
     .group-options {
       width: 200px;
@@ -129,34 +132,6 @@ body.groups {
   .home-title {
     color: $dark-grey;
     display: inline;
-  }
-  .privacy-dropdown {
-    display: inline;
-    width: 120px;
-    bottom: 5px;
-  }
-  .privacy-dropdown .dropdown-menu a { padding-left: 5px; }
-  li.privacy-item i {
-    display: inline-block;
-    width: 15px;
-  }
-  .privacy-dropdown form {
-    margin: 0px;
-    display: inline;
-  }
-  li.privacy-item button {
-    border: none;
-    border-radius: 0px;
-    -webkit-border-radius: 0px;
-    margin-bottom: 0px;
-    box-shadow: none;
-    width: 180px;
-    padding-left: 25px;
-    text-align: left;
-  }
-  li.privacy-item button:hover {
-    color: white;
-    background-color: #08c;
   }
 }
 

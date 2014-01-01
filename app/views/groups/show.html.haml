@@ -1,16 +1,5 @@
-.profile-image{style: "background: url('#{@group.profile_image.url(:desktop)}')"}
-.row
-  .span9
-    - set_title @group.name, "", @group.parent
-    = render '/groups/title', group: @group
-    - if can? :create, @discussion
-      = icon_button(href: new_discussion_path(:group_id => @group.id), text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
-  .span3#button-container
-    - if can?(:add_members, @group)
-      = render 'invite_button', group: @group
-    = render 'options_dropdown', group: @group
-    = request_membership_button(@group)
-
+- set_title @group.name, "", @group.parent
+= render '/application/page_header', group: @group
 .row.main-content
   %section.span9
     %ul.selector-list.bordered
@@ -32,6 +21,8 @@
 
         = paginate @discussions_without_open_motions, :window => 3
   %section.span3
+    = render 'button_container'
+    = request_membership_button(@group)
     =render 'setup_next_steps' if show_next_steps?(@group)
     =render 'subscription_prompt' if show_subscription_prompt?(@group)
     =render 'groups/description', group: @group

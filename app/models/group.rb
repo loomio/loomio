@@ -21,8 +21,8 @@ class Group < ActiveRecord::Base
   validates_attachment_size :profile_image, :in => 0..10.megabytes
   validates_attachment_content_type :profile_image, :content_type => /^image\/(png|gif|jpeg)/
   has_attached_file    :profile_image,
-                       :styles => { desktop: "980x200#",
-                                    thumbnail: "200x200#" }
+                       :styles => { group_cover_desktop: "980x200#",
+                                    discussion_cover_desktop: "980x80#" }
 
   after_initialize :set_defaults
   before_save :update_full_name_if_name_changed
