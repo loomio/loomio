@@ -22,7 +22,7 @@ class Group < ActiveRecord::Base
   validates_attachment_content_type :profile_image, :content_type => /^image\/(png|gif|jpeg)/
   has_attached_file    :profile_image,
                        :styles => { group_cover_desktop: "980x200#",
-                                    discussion_cover_desktop: "980x80#" }
+                                    discussion_cover_desktop: "980x40#" }
 
   after_initialize :set_defaults
   before_save :update_full_name_if_name_changed

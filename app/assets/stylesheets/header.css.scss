@@ -24,6 +24,12 @@
   min-height: 100%;
   padding: 40px 20px 20px 20px;
 }
+.branded {
+  .main-container, .page-container, .cover-image {
+    padding-top: 0;
+    margin-top: 0;
+  }
+}
 
 .logged-in-navigation {
   .nav-item-icon {

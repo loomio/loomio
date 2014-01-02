@@ -4,16 +4,23 @@
       - image = @group.profile_image.url(:discussion_cover_desktop)
     - elsif @group.is_a_subgroup? && @group.parent.profile_image.exists?
       - image = @group.parent.profile_image.url(:discussion_cover_desktop)
-    .row.cover-image{style: "background-image: url('#{image}')"}
-      .span9= render 'groups/new_title', group: @group
-      .span3#button-container= request_membership_button(@group)
+    .cover-image{style: "background-image: url('#{image}')"}
+      .text= render 'groups/new_title', group: @group
+      .buttons
+        - if !user_signed_in?
+          .request
+            = request_membership_button(@group)
+          .sign-in
+            =link_to 'Sign in', new_user_session_path, class: 'btn btn-info'
+        - else
+          = request_membership_button(@group)
 
   - when 'groups'
     - if @group.profile_image.exists?
       - image = @group.profile_image.url(:group_cover_desktop)
     - elsif @group.is_a_subgroup? && @group.parent.profile_image.exists?
       - image = @group.parent.profile_image.url(:group_cover_desktop)
-    .row.cover-image{style: "background-image: url('#{image}')"}
+    .cover-image{style: "background-image: url('#{image}')"}
       .text
         = render 'groups/new_title', group: @group
         %h2

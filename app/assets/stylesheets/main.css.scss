@@ -167,8 +167,11 @@ ul, ol, li {
     display:table;
   }
 }
+
 .cover-image{
-  margin: -15px -20px 20px -20px;
+  body.logged-in &{ margin-top: 45px; }
+
+  margin: 0px -20px 20px -20px;
   position: relative;
   background-color: $light-grey;
   .text{

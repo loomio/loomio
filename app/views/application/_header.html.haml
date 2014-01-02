@@ -1,12 +1,15 @@
-.logged-in-navigation
-  - if user_signed_in?
+- if user_signed_in?
+  .logged-in-navigation
     .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         .container
           %ul.nav-bar-list.clearfix
             %li.nav-item#logo-home
               %a.nav-logo-link{:href => "/"}
-                = image_tag(navbar_logo_path, :alt => "Loomio")
+                - if branded
+                  Together4Change.org
+                - else
+                  = image_tag(navbar_logo_path, :alt => "Loomio")
             = render 'inbox'
             = render 'notifications_dropdown'
             = render 'application/groups_dropdown'
@@ -15,11 +18,13 @@
               = render 'contribute'
             = render 'help_dropdown'
             = render 'search'
-  - else
-    .container#top
-      .inner-container
-        .row-fluid
-          =link_to image_tag("loomio-orange-header.png"), root_url
-          .pull-right
-            - unless controller_name == "group_requests"
-              =link_to 'Sign in', new_user_session_path, class: 'btn btn-info'
+- elsif branded
+  / no Loomio header on branded pages
+- else
+  .container#top
+    .inner-container
+      .row-fluid
+        =link_to image_tag("loomio-orange-header.png"), root_url
+        .pull-right
+          - unless controller_name == "group_requests"
+            =link_to 'Sign in', new_user_session_path, class: 'btn btn-info'
