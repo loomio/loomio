@@ -326,7 +326,6 @@ ActiveRecord::Schema.define(:version => 20140102050355) do
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
   add_index "groups", ["full_name"], :name => "index_groups_on_full_name"
-  add_index "groups", ["key"], :name => "index_groups_on_key", :unique => true
   add_index "groups", ["name"], :name => "index_groups_on_name"
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
 

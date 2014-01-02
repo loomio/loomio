@@ -182,6 +182,9 @@ GEM
     gherkin (2.12.2)
       multi_json (~> 1.3)
     gravtastic (3.2.6)
+    griddler (0.6.1)
+      htmlentities
+      rails (>= 3.2.0)
     guard (1.6.2)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
@@ -209,6 +212,7 @@ GEM
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
     hike (1.2.3)
+    htmlentities (4.3.1)
     http_parser.rb (0.5.3)
     httparty (0.11.0)
       multi_json (~> 1.0)
@@ -512,6 +516,7 @@ DEPENDENCIES
   foreman (~> 0.63.0)
   friendly_id (~> 4.0.10.1)
   gravtastic (~> 3.2.6)
+  griddler
   guard (~> 1.6.1)
   guard-rspec (~> 2.3.3)
   guard-spork (~> 1.4.1)

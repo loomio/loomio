@@ -51,6 +51,7 @@ gem 'valid_email', '~> 0.0.4'
 gem 'font-awesome-sass-rails'
 gem 'rabl', '~> 0.8.6'
 gem 'sequenced', '~> 1.4.0'
+gem 'griddler', '~> 0.6.1'
 
 # Gems used only for assets and not required
 # in production environments by default.
