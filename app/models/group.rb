@@ -13,6 +13,7 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :members_invitable_by, in: INVITER_CATEGORIES
   validates :tagline, :length => { :maximum => 125 }
   validates :name, :length => { :maximum => 250 }
+  # should there be some validation on the :description?
 
   validate :limit_inheritance
   validate :privacy_allowed_by_parent, if: :is_a_subgroup?

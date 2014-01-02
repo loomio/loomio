@@ -2,7 +2,7 @@ class GroupsController < GroupBaseController
   before_filter :authenticate_user!, except: :show
 
   before_filter :load_group, except: :create
-  authorize_resource except: [:create, :upload_profile_image]
+  authorize_resource except: [:create, :upload_profile_image, :update_description]
 
   before_filter :ensure_group_is_setup, only: :show
 
@@ -40,6 +40,12 @@ class GroupsController < GroupBaseController
     else
       render :edit
     end
+  end
+
+  def update_description
+    authorize!(:update, @group)
+    @group.description = params[:description]
+    redirect_to @group
   end
 
   def show

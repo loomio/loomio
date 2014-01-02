@@ -57,7 +57,7 @@ Loomio::Application.routes.draw do
       post :hide_next_steps
       get :add_subgroup
       post :email_members
-      post :edit_description
+      post :update_description
       post :upload_profile_image
       delete :leave_group
       get :members_autocomplete
