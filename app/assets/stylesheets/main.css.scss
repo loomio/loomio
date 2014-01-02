@@ -7,6 +7,7 @@ body {
   background-color: $main-background;
   height: 100%;
   color: $text-black;
+  &.logged-in { margin-top: 45px; }
 }
 
 code{
@@ -74,7 +75,7 @@ ul, ol, li {
   padding: 0;
 }
 
-.alert { margin: 10px 0; }
+.flash-messages { margin: 10px 0; }
 
 .btn-app {
   line-height: 18px;
@@ -169,7 +170,6 @@ ul, ol, li {
 }
 
 .cover-image{
-  body.logged-in &{ margin-top: 45px; }
   margin: 0px -20px 20px -20px;
   position: relative;
   background-color: $light-grey;
