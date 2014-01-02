@@ -14,7 +14,7 @@
           %a{href: "#", class: "edit-description btn" }
             %i.icon-edit
             = t(:edit)
-          .long-description
-            ~ render_rich_text(group.description, true)
+        .long-description
+          ~ render_rich_text(group.description, true)
       - elsif can? :edit_description, group
         %em= link_to t(:add_group_description), "#", class: "edit-description"

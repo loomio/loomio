@@ -170,14 +170,13 @@ ul, ol, li {
 
 .cover-image{
   body.logged-in &{ margin-top: 45px; }
-
   margin: 0px -20px 20px -20px;
   position: relative;
   background-color: $light-grey;
   .text{
     position: absolute;
     bottom: 0;
-    left: 15px;
+    left: 20px;
     width: 700px;
   }
   .buttons{
