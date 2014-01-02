@@ -2,9 +2,9 @@ class ReplyToken < ActiveRecord::Base
   TOKEN_LENGTH = 42
 
   belongs_to :user
-  belongs_to :email_integrable, polymorphic: true
+  belongs_to :replyable, polymorphic: true
 
-  validates_presence_of :user, :email_integrable, :token
+  validates_presence_of :user, :replyable, :token
   validates_uniqueness_of :token
 
   before_validation :set_token

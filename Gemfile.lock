@@ -516,7 +516,7 @@ DEPENDENCIES
   foreman (~> 0.63.0)
   friendly_id (~> 4.0.10.1)
   gravtastic (~> 3.2.6)
-  griddler
+  griddler (~> 0.6.1)
   guard (~> 1.6.1)
   guard-rspec (~> 2.3.3)
   guard-spork (~> 1.4.1)

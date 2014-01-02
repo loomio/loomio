@@ -17,13 +17,11 @@ class UserMailer < BaseMailer
     @comment = comment
     @rendered_comment_body = render_rich_text(comment.body, comment.uses_markdown)
     @discussion = comment.discussion
-
-    reply_to = tokened_reply_email(recipient: user, replyable: comment)
-
+    reply_to = replyable_email(recipient: user, replyable: comment)
     locale = best_locale(user.language_preference, comment.author.language_preference)
     I18n.with_locale(locale) do
       mail to: @user.email,
-           reply_to: "#{comment.author.name} <#{reply_to}>"
+           reply_to: "#{comment.author.name} <#{reply_to}>",
            subject: t("email.mentioned.subject", who: comment.author.name, which: comment.group.name)
     end
   end
