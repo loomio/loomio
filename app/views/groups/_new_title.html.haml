@@ -1,6 +1,6 @@
-%h1.shadow
-  - if group.is_a_subgroup?
-    = link_to_unless_current group.parent.name, group.parent
-    %span &dash;
-  = link_to_unless_current group.name, group
-  = render 'groups/privacy', :group => group
+%h1
+  .shadow
+    - if group.is_a_subgroup?
+      = link_to_unless_current group.parent.name, group.parent
+      %span &dash;
+    = link_to_unless_current group.name, group

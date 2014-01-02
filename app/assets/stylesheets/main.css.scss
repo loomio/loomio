@@ -178,6 +178,18 @@ ul, ol, li {
     bottom: 0;
     left: 20px;
     width: 700px;
+    text-shadow: 0 1px 0 white;
+    color: white;
+    #privacy{
+      max-width: 100px;
+      margin-left: 15px;
+      padding-bottom: 15px;
+      display: inline-block;
+      background: rgba(0,0,0,.5);
+      @include border-radius(4px);
+      padding: 0 5px;
+      img{padding-bottom: 5px;}
+    }
   }
   .buttons{
     position: absolute;
@@ -185,13 +197,11 @@ ul, ol, li {
     right: 15px;
     width: 220px;
   }
-  h1, h2{
-    text-shadow: 0 1px 0 white;
-    color: white;
-  }
   h1{
     line-height: 1;
+    max-width: 600px;
     margin-bottom: 8px;
+    display: inline-block;
     a{color: white;}
   }
   h2{

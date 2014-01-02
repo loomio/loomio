@@ -5,7 +5,10 @@
     - elsif @group.is_a_subgroup? && @group.parent.profile_image.exists?
       - image = @group.parent.profile_image.url(:discussion_cover_desktop)
     .cover-image{style: "background-image: url('#{image}')"}
-      .text= render 'groups/new_title', group: @group
+      .text
+        = render 'groups/new_title', group: @group
+        = render 'groups/privacy', :group => group if user_signed_in?
+
       .buttons
         - if !user_signed_in?
           .request
@@ -23,8 +26,9 @@
     .cover-image{style: "background-image: url('#{image}')"}
       .text
         = render 'groups/new_title', group: @group
+        = render 'groups/privacy', :group => group if user_signed_in?
         %h2
-          %span.shadow= @group.tagline
+          .shadow= @group.tagline
       .buttons
         = render 'button_container'
 
