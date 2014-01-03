@@ -182,9 +182,8 @@ ul, ol, li {
     color: white;
     #privacy{
       max-width: 100px;
-      margin-left: 15px;
-      padding-bottom: 15px;
-      display: inline-block;
+      margin: 14px 0 0 15px;
+      float: left;
       background: rgba(0,0,0,.5);
       @include border-radius(4px);
       padding: 0 5px;
@@ -201,11 +200,12 @@ ul, ol, li {
     line-height: 1;
     max-width: 600px;
     margin-bottom: 8px;
-    display: inline-block;
+    float: left;
     a{color: white;}
   }
   h2{
     font-weight: normal;
+    clear: both;
     line-height: 1.2;
   }
   .shadow{
