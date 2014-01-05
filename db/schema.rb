@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131209035746) do
+ActiveRecord::Schema.define(:version => 20140102050355) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -449,6 +449,17 @@ ActiveRecord::Schema.define(:version => 20131209035746) do
   add_index "omniauth_identities", ["email"], :name => "index_personas_on_email"
   add_index "omniauth_identities", ["provider", "uid"], :name => "index_omniauth_identities_on_provider_and_uid"
   add_index "omniauth_identities", ["user_id"], :name => "index_personas_on_user_id"
+
+  create_table "reply_tokens", :force => true do |t|
+    t.integer  "user_id",        :null => false
+    t.integer  "replyable_id",   :null => false
+    t.string   "replyable_type", :null => false
+    t.string   "token",          :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "reply_tokens", ["token"], :name => "index_reply_tokens_on_token"
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "group_id"
