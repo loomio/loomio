@@ -3,6 +3,7 @@ class ReplyToken < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :replyable, polymorphic: true
+  # has_many :replies, class_name: "Comment"
 
   validates_presence_of :user, :replyable, :token
   validates_uniqueness_of :token
