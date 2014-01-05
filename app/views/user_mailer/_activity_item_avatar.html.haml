@@ -1,14 +1,13 @@
-%td{ width: '50' }
-%td{ width: '39', height: '39', align: 'center', style: 'background-color:#CCC;' }
+%td.icon-sub-cell.initials
   - kind = user.avatar_kind
   - if kind == 'initials'
-    %span{ width: '39', style: 'font-size:20;' }= user.avatar_initials
+    %span= user.avatar_initials
   - elsif kind == "gravatar"
-    %img{ src: "#{user.gravatar_url(:size => User::MEDIUM_IMAGE)}", style: 'margin:0' }
+    %img.avatar{ src: "#{user.gravatar_url(:size => User::MEDIUM_IMAGE)}"}
   - elsif kind == "uploaded"
-    %img{ src: "#{user.uploaded_avatar.url('medium')}", style: 'margin:0'}
-%td{ width: '478' }
-  %span{ style: 'margin-left:5; font-weight:strong, font-size:14;' }= user.name
-  %span{style: 'font-size:14;' }
+    %img.avatar{ src: "#{user.uploaded_avatar.url('medium')}"}
+%td.content-sub-cell.user-cell
+  %span.user-name= user.name
+  %span
     = item_text
-  %div{ style: 'margin-left:5; color:#AAA; font-size:13;' }= item.created_at.strftime('%A, %-d %B')
+  %div.sub-title= item.created_at.strftime('%A, %-d %B')

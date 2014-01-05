@@ -814,6 +814,8 @@ en:
       subject: "Loomio activity summary"
       heading: "Loomio activity summary"
       sub_header: "Unread activity since your last summary on %{since_time}"
+      discussion_started_by: "Started by %{who}"
+      proposed_by: "Proposed by %{who}"
     group_email:
       intro: "%{who} made an announcement to %{group}:"
     group_membership_approved:

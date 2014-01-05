@@ -12,7 +12,7 @@ class UserMailer < BaseMailer
     end
   end
 
-   def activity_summary(user, since_time)
+  def activity_summary(user, since_time)
     @user = user
     # @activity = activity
     @since_time = since_time.strftime('%B %-d, %Y')
@@ -21,7 +21,8 @@ class UserMailer < BaseMailer
     locale = best_locale(user.language_preference, nil)
     I18n.with_locale(locale) do
       mail to: @user.email,
-           subject: t("email.activity_summary.subject")
+           subject: t('email.activity_summary.subject'),
+           css: 'activity_summary'
     end
   end 
 

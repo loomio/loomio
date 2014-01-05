@@ -1,0 +1,94 @@
+html#activity_summary {
+  h1 { color: #FFF; }
+  h2 { color: #AAA; }
+  h2, h3 { margin: 0; }
+
+  table {
+    &.main { width: 100%; }
+    &.with-font-and-width {
+      width: 600px;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      &.group {
+        margin-top: 15px;
+      }
+    }
+  }
+
+  .created-by-cell {
+    position: relative; 
+    bottom: 6;
+  }
+  .content-cell { width: 542px; }
+  .content-sub-cell { width: 493px; }
+  .discussion-title-cell { width: 448px; }
+  .footer {
+    background-color: #EEE;
+    font-size: 12px;
+    margin-top: 20px;
+    width: 600px;
+    .unsubscribe {
+      padding: 15px;
+    }
+  }
+  .full-width-cell { 
+    text-align: left;
+    width: 600px;
+  }
+  .header-cell { 
+    padding: 10px; 
+    background-color: #FAC270;
+  }
+  .icon-cell {
+    width: 50px;
+    text-align: center;
+  }
+  .icon-sub-cell{
+    width: 40px;
+    text-align: center;
+  }
+  .last-read-cell { 
+    text-align: right;
+    padding-top: 5px;
+    color:#AAA;
+  }
+  .like-cell {
+    padding-top: 5px;
+    a {
+      font-size: 13px; 
+      padding-right: 5px;
+    }
+  }
+  .position-cell { width: 45px; }
+  .user-cell { 
+    padding-left: 5px;
+    .user-name { font-weight: bold; }
+  }
+  .view-link-cell { 
+    width: 104px;
+    a {
+      text-align: right;
+      font-size: 13px;
+    }
+  }
+
+  img.icon-type {
+    margin:5 0 0 0;
+    width:24;
+  }
+  img.avatar {
+    height: 40px;
+    width: 40px;
+  }
+  img.position { width: 18px; }
+
+  .initials {
+    background-color: #CCC;
+    font-size: 20px;
+    height: 40px;
+    margin: 0;
+  }
+  .sub-title {
+    color:#AAA;
+    font-size:13;
+  }
+}
