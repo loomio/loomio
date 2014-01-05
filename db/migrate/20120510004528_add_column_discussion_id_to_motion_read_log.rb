@@ -1,4 +1,7 @@
 class AddColumnDiscussionIdToMotionReadLog < ActiveRecord::Migration
+  class MotionReadLog < ActiveRecord::Base #this helps migration find table
+  end
+
   def up
     add_column :motion_read_logs, :discussion_id, :integer
     MotionReadLog.reset_column_information
