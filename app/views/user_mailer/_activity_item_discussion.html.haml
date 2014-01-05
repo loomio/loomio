@@ -1,0 +1,29 @@
+- new_discussion = new_discussion?(@inbox, discussion, @last_summary_at)
+%table.with-font-and-width
+  %tr
+    %td.full-width-cell
+      %hr
+- if new_discussion
+  %table.with-font-and-width
+    %tr
+      = render 'activity_item_avatar', user: discussion.author, item: discussion, item_text: "started a discussion"
+%table.with-font-and-width
+  %tr
+    %td.icon-cell
+      %img.icon-type{ src:'assets/discussion-24.png' }
+    %td.discussion-title-cell
+      %h3= discussion.title
+    %td.view-link-cell
+      %a{ href: discussion_url(discussion) } View discussion
+  %tr
+    %td.icon-cell
+    %td.created-by-cell
+      %div.sub-title= t('email.activity_summary.discussion_started_by', who: discussion.author.name) 
+%table.with-font-and-width
+  %tr
+    %td.icon-cell
+    %td
+      %p= new_discussion ? discussion.description : truncate(discussion.description, :length => 200, :omission => '...')
+
+- discussion.comments_since(last_summary_at).each do |comment|
+  =render 'activity_item_comment', comment: comment

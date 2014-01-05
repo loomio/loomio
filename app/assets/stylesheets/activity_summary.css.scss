@@ -18,9 +18,9 @@ html#activity_summary {
     position: relative; 
     bottom: 6;
   }
-  .content-cell { width: 542px; }
-  .content-sub-cell { width: 493px; }
-  .discussion-title-cell { width: 448px; }
+  .content-cell { width: 552px; }
+  .content-sub-cell { width: 512px; }
+  .discussion-title-cell { width: 458px; }
   .footer {
     background-color: #EEE;
     font-size: 12px;
@@ -39,7 +39,7 @@ html#activity_summary {
     background-color: #FAC270;
   }
   .icon-cell {
-    width: 50px;
+    width: 40px;
     text-align: center;
   }
   .icon-sub-cell{
@@ -86,6 +86,7 @@ html#activity_summary {
     font-size: 20px;
     height: 40px;
     margin: 0;
+    width: 40;
   }
   .sub-title {
     color:#AAA;
