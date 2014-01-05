@@ -1,15 +1,17 @@
-=link_to t(:"position_verbs.yes").capitalize,
-         new_motion_vote_url(motion_id: @motion.id, position: 'yes', utm_medium: 'email'),
-         class: 'yes-link'
+- utm_hash = @utm_hash.merge utm_campaign: 'vote'
+
+= link_to t(:"position_verbs.yes").capitalize,
+          new_motion_vote_url( @motion, utm_hash.merge(position: 'yes')),
+          class: 'yes-link'
 = " - "
-=link_to t(:"position_verbs.abstain").capitalize,
-         new_motion_vote_url(motion_id: @motion.id, position: 'abstain', utm_medium: 'email'),
-         class: 'abstain-link'
+= link_to t(:"position_verbs.abstain").capitalize,
+          new_motion_vote_url( @motion, utm_hash.merge(position: 'abstain')),
+          class: 'abstain-link'
 = " - "
-=link_to t(:"position_verbs.no").capitalize,
-         new_motion_vote_url(motion_id: @motion.id, position: 'no', utm_medium: 'email'),
-         class: 'no-link'
+= link_to t(:"position_verbs.no").capitalize,
+          new_motion_vote_url( @motion, utm_hash.merge(position: 'no')),
+          class: 'no-link'
 = " - "
-=link_to t(:"position_verbs.block").capitalize,
-         new_motion_vote_url(motion_id: @motion.id, position: 'block', utm_medium: 'email'),
-         class: 'block-link'
+= link_to t(:"position_verbs.block").capitalize,
+          new_motion_vote_url( @motion, utm_hash.merge(position: 'block')),
+          class: 'block-link'

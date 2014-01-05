@@ -56,7 +56,8 @@ class EmailTemplate < ActiveRecord::Base
                     invite_people_to_group_url: new_group_invitation_url(group),
                     invitation_to_start_group_url: 'http://invitations_url_placeholder/',
                     group_subscription_url: group_subscription_url(group),
-                    group_url: group_url(group) })
+                    group_url: group_url(group),
+                    group_settings_url: edit_group_url(group) })
     end
 
     if group && group.pending_invitations.size > 0

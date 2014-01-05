@@ -6,4 +6,5 @@ end
 
 Then(/^my group should be archived$/) do
   page.should have_content(I18n.t('success.group_archived'))
+  page.should_not have_content(@group.name)
 end

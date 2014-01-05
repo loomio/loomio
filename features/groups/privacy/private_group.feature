@@ -7,7 +7,7 @@ Feature: Coordinator sets group privacy to private
     Given I am logged in
 
   Scenario: Coordinator sets group privacy to private
-    Given I am a coordinator of a secret group
+    Given I am a coordinator of a hidden group
     When I visit the group settings page
     And I set the group to private
     Then the group should be set to private

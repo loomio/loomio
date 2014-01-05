@@ -1,7 +1,10 @@
 class DiscussionsController < GroupBaseController
   include DiscussionsHelper
-  load_and_authorize_resource :except => [:new, :create, :index, :add_comment]
   before_filter :authenticate_user!, :except => [:show, :index]
+
+  before_filter :load_discussion, except: [:new, :create, :index, :update_version]
+  authorize_resource :except => [:new, :create, :index, :add_comment]
+
   after_filter :mark_as_read, only: :show
 
   rescue_from ActiveRecord::RecordNotFound do
@@ -101,7 +104,6 @@ class DiscussionsController < GroupBaseController
   end
 
   def add_comment
-    @discussion = Discussion.find params[:id]
     build_comment
     if DiscussionService.add_comment(@comment)
       current_user.update_attributes(uses_markdown: params[:uses_markdown])
@@ -112,32 +114,28 @@ class DiscussionsController < GroupBaseController
   end
 
   def new_proposal
-    discussion = Discussion.find(params[:id])
-    if discussion.current_motion
-      redirect_to discussion
+    if @discussion.current_motion
+      redirect_to @discussion
       flash[:notice] = "A current proposal already exists for this disscussion."
     else
       @motion = Motion.new
-      @motion.discussion = discussion
-      @group = GroupDecorator.new(discussion.group)
+      @motion.discussion = @discussion
+      @group = GroupDecorator.new(@discussion.group)
       render 'motions/new'
     end
   end
 
   def update_description
-    @discussion = Discussion.find(params[:id])
     @discussion.set_description!(params[:description], params[:description_uses_markdown], current_user)
     redirect_to @discussion
   end
 
   def edit_title
-    @discussion = Discussion.find(params[:id])
     @discussion.set_title!(params.require(:title), current_user)
     redirect_to @discussion
   end
 
   def show_description_history
-    @discussion = Discussion.find(params[:id])
     @originator = User.find @discussion.originator.to_i
     respond_to do |format|
       format.js
@@ -147,7 +145,7 @@ class DiscussionsController < GroupBaseController
   def preview_version
     # assign live item if no version_id is passed
     if params[:version_id].nil?
-      @discussion = Discussion.find(params[:id])
+      @discussion = load_discussion
     else
       version = Version.find(params[:version_id])
       @discussion = version.reify
@@ -165,13 +163,17 @@ class DiscussionsController < GroupBaseController
   end
 
   private
+  def load_discussion
+    @discussion ||= Discussion.published.find(params[:id])
+  end
+
   def build_comment
     @comment = Comment.new(body: params[:comment],
                            uses_markdown: params[:uses_markdown])
 
     attachment_ids = Array(params[:attachments]).map(&:to_i)
 
-    @comment.discussion = @discussion
+    @comment.discussion = load_discussion
     @comment.author = current_user
     @comment.attachment_ids = attachment_ids
     @comment.attachments_count = attachment_ids.size
@@ -202,7 +204,7 @@ class DiscussionsController < GroupBaseController
 
   def find_group
     if (params[:id] && (params[:id] != "new"))
-      Discussion.find(params[:id]).group
+      Discussion.published.find(params[:id]).group
     elsif params[:discussion][:group_id]
       Group.find(params[:discussion][:group_id])
     end

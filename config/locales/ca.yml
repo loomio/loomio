@@ -30,7 +30,7 @@ ca:
     access_denied: "Ens sap greu, no tens permisos per fer això."
     cant_join_subgroup: "No pots unir-te a un sub-grup sense formar part del grup matriu o principal"
     cant_modify_position: "La proposta ha tancat"
-    cant_state_position: "Aquesta proposta ha tancat."
+    cant_state_position: "Aquesta proposta s'ha tancat."
     cant_view_member_profile: "No pots veure el perfil de l'usuari perquè no esteu al mateix grup."
     contribution: "Sisplau, inicia la sessió per poder fer una contribució."
     discussion_not_created: "No s'ha pogut crear el debat."
@@ -39,6 +39,8 @@ ca:
     invalid_email: "Introdueix com a mínim una direcció de correu electrònic vàlida, si us plau"
     image_upload_fail: "No s'ha pogut pujar la foto. Assegura't que el tamany és inferior a 1 MB i el format és .jpg, .png o .gif"
     motion_closing_inputs: "Data de tancament no vàlida"
+    motion_outcome_not_created: "No s'ha pogut publicar el resultat"
+    motion_outcome_not_updated: "No s'ha pogut actualitzar el resultat"
     only_group_coordinator_destroy: "No pots deixar aquest grup perquè ets l'únic/a coordinador/a. Pots desactivar el grup al desplegable d'opcions o <a href='%{add_coordinator}'> afegir un/a nou/nova coordinador/a </ a> per al grup."
     only_group_coordinator_remove_admin: "El grup ha de tenir un/a coordinador/a. T'agradaria afegir un altre coordinador/a per al grup?"
     permission_to_invite: "No tens els permisos per invitar nous membres."
@@ -103,7 +105,8 @@ ca:
     group_archived: "Grup desat amb èxit."
     group_created: "Grup creat amb èxit."
     members_added: "Els membres s'an afegit al grup."
-    membership_requested: "Afiliació sol·licitada. Seràs notificat una vegada que la teva sol·licitud hagi estat aprovada."
+    motion_outcome_created: "Gràcies per detallar el resultat de la proposta. S'ha notificat els membres del grup."
+    motion_outcome_updated: "El resultat de la proposta s'ha actualitzat."
     position_submitted: "Has presentat la teva posició"
     position_updated: "Posició modificada."
     proposal_created: "Proposta creada amb èxit."
@@ -168,6 +171,8 @@ ca:
     user_added_to_group: "t'ha afegit al grup"
     motion_closing_soon: "La proposta tancarà aviat"
     motion_blocked: "ha bloquejat la proposta"
+    motion_outcome_created: "ha publicat un resultat per la proposta"
+    motion_outcome_updated: "ha actualitzat el resultat de la proposta"
   edit_discussion_context: "Edita el context del debat"
   request_new_group: "Comença un grup"
   request_new_group_details: "o espera fins que siguis convidat a un."
@@ -178,8 +183,6 @@ ca:
   sign_out: "Tanca la sessió"
   sign_in: "Inicia la sessió"
   tagline: "Creant un món on tothom pot participar en les decissions que li afecten."
-  or_sign_in_html: "Ja tens un compte Loomio?  <a href='%{link}'>Inicia la sessió</a>"
-  or_link_account_html: "Ja tens un compte Loomio?  <a href='%{link}'>Enllaça</a>"
   click_to_dismiss: "Clica aquí per descartar aquest missatge"
   generic_confirm: "N'estàs segur?"
   discussion_helper_text:
@@ -218,6 +221,7 @@ ca:
   deactivate_group: "Desactivar grup"
   confirm_deactivate_group: "Compte! N'estàs segur que vols desactivar %{which_group}? D'ara en endavant no podràs veure el grup. Tanmateix, si vols recuperar-lo pots demanar-nos-en la reactivació enviant un correu electrònic a contact@loomio.org."
   invited_users: "Membres convidats"
+  members: "Membres"
   confirm_remove_user: "Estàs segur que vols eliminar %{which_user} del grup?"
   remove_coordinator: "Treure coordinador/a."
   confirm_remove_coordinator: "Estàs segur que ja no vols que %{which_user} sigui coordinador/a d'aquest grup?"
@@ -243,9 +247,8 @@ ca:
   new_subgroup: "Nou sub-grup"
   create_subgroup: "Crear sub-grup"
   creating_subgroup: "Creant el sub-grup"
-  group_privacy: "Privacitat: '%{who}' pot veure el grup."
-  parent_group_members: "Els membres del grup principal"
-  members: "Membres"
+  secret: "Secret"
+  public: "Públic"
   new_group: "Nou grup"
   create_group: "Crear grup"
   creating_group: "Creant el grup"
@@ -267,6 +270,8 @@ ca:
       by_user: "ha tancat la proposta"
       by_expiry: "Proposta tancada"
     motion_close_date_edited: "ha canviat la data de tancament de la proposta"
+    motion_outcome_created: "ha publicat un resultat per la proposta"
+    motion_outcome_updated: "ha actualitzat el resultat de la proposta"
     discussion_title_edited: "ha canviat el títol de la discussió"
     discussion_description_edited: "ha canviat la descripció de la discussió"
   discussion: "Discussió"
@@ -299,6 +304,7 @@ ca:
   confirm_delete_comment: "Estàs segur de que vols eliminar aquest comentari?"
   markdown_settings_more_info: "Més informació..."
   edit_discussion_title: "Modifica el títol de la discussió"
+  move_discussion: "Mou la discussió"
   delete_discussion: "Eliminar discussió"
   confirm_delete_discussion: "Estàs segur de que vols eliminar permanentment aquesta discussió?"
   new_proposal: "Nova proposta"
@@ -306,6 +312,7 @@ ca:
   confirm_close_proposal: "Estàs segur de que vols tancar aquesta proposta?"
   change_proposal_close_date: "Canvia la data de tancament"
   change_proposal_close_date_header: "Canvia la data de tancament de la proposta '%{which}'"
+  proposal: Proposta
   proposal_close_date_error: "Si us plau, introdueix una data de tancament futura"
   proposal_closing_when: "Tanca en %{when}"
   proposal_closed_when: "Tancada fa %{when}"
@@ -323,8 +330,8 @@ ca:
   block_position: "Bloquejo"
   block_details: "Tinc fortes objeccions contra aquesta proposta i no estic d'acord amb que segueixi endavant."
   not_voted: "[Mostra els membres que encara no han decidit]"
-  outcome: "Resultat"
   outcome_placeholder: "Quin va ser el resultat d'aquesta proposta?"
+  outcome_submit: "Publica el resultat"
   position_verbs:
     'yes': "d'acord"
     'no': "desacord"
@@ -460,10 +467,8 @@ ca:
   create_an_account: 'Crea un compte'
   join_group:
     log_in: "Inicia sessió per unir-te a %{group_name}"
-    create_account: "Crea un compte"
   start_group:
     log_in: "Inicia sessió per a configurar el grup"
-    create_account: "Crea un compte"
   invitation:
     no_invitations_left: "Ho sentim, no et queda cap invitació"
     no_invitations_left_get_more: "Si us plau, escriu-nos un correu electrònic a contact@loomio.org i veurem què podem fer per ajudar-te "
@@ -507,7 +512,6 @@ ca:
     header: "Nova proposta"
     name_helper: "Escriu un títol tant clar i concís com puguis."
   group_form:
-    privacy_settings: "Configuració de privacitat"
     invitation_settings: "Configuració d'invitacions"
     admins_only: "Només coordinadors"
   vote_form:
@@ -536,6 +540,7 @@ ca:
     use_avatar_kind: "Utilitza %{kind}"
     upload_new_image: "Puja una nova foto"
   group_setup:
+    set_up_your_group: Configura el teu grup
     desc_header: "Ja quasi ho tens!"
     desc_html: "Com a coordinador del grup, ets responsable de la creació i la gestió del teu grup de Loomio. Després de triar algunes opcions de configuració, pots entrar al grup nou, iniciar un debat o dos, i enviar unes invitacions. <p> Quan pensis en la manera més simple per descriure el grup, pregunta't: Què és el que volem aconseguir junts? Quin tipus de decisions farem? ¿Qui participarà? </ P>"
     submit: "Porta'm al meu grup!"
@@ -552,10 +557,22 @@ ca:
         title: "Títol"
         description: "Context"
       group:
-        name: "Quin és el nom del teu grup?"
-        description: "Descripció del grup:"
-        viewable_by: "Qui pot veure aquest grup?"
+        name: "Nom del grup"
+        description: "Descripció"
         members_invitable_by: "Qui pot convidar gent a aquest grup?"
+        members_invitable_by_coordinators: "Només coordnadores"
+        members_invitable_by_members: "Totes les membres del grup"
+        privacy: Privacitat
+        privacy_public_header: Públic
+        privacy_public_description: Tothom pot veure el grup i qui hi ha dins. Les discussions són publiques per defecte.
+        privacy_public_description_short: Tothom pot veure aquest grup i les seves discussions.
+        privacy_secret_header: Secret
+        privacy_secret_description: Només les persones membres poden veure el grup i les discussions. No pots tenir discussions públiques a un grup secret.
+        privacy_secret_description_short: Només les persones membres poden veure aquest grup i les seves discussions.
+        privacy_parent_group_members_header: Visible per membres del grup mare.
+        privacy_parent_group_members_description: El mateix que "secret", només els membres del grup mare poden veure el grup i les seves discussions.
+        privacy_parent_group_members_description_short: Només membres i membres del grup mare poden veure aquest grup i les seves discussions.
+        group_members_invitable_by: "Només coordinadores"
       membership_request:
         introduction: "Presenta't"
       motion:
@@ -568,11 +585,6 @@ ca:
         password: "Contrasenya"
         password_confirmation: "Confirma contrassenya"
         language_preference: "Idioma"
-    options:
-      group:
-        members_invitable_by:
-          admins: 'Només coordinadors'
-          members: 'Tots els membres del grup'
     placeholders:
       discussion:
         title: "Quin és el tema que vols discutir?"
@@ -583,7 +595,7 @@ ca:
         name: "Quins passos proposes seguir?"
         description: "Dóna suficient infromació per tal de que tothom sàpiga exactament què vol dir estar d'acord o no estar'hi."
       group:
-        description: "Pensa en la manera més simple per descriure el teu grup: Què és el que vols aconseguir junts? Quin tipus de decisions es faran? ¿Qui participarà?"
+        name: "Nom del grup"
       user:
         email: "Correu electrònic"
         password: "Contrasenya"
@@ -606,6 +618,7 @@ ca:
     view_discussion: "Fes click aquí per veure aquesta discussió"
     view_group: "Fes click per veure el grup a Loomio"
     view_proposal: "Veure aquesta proposta a Loomio"
+    campaign_html: "Aquesta decisió ha estat important per a tu? Considera <a href='%{link_path}'> contribuir a Loomio</a> i ajuda'ns a estendre Loomio pel món. Som un equip petit que intentem fer coses grans i necessitem les teves aportacions per seguir tirant endavant."
     create_discussion:
       intro: "%{who} ha començat una nova discussió a %{which_group}:"
       subject: "Nova discussió - %{which}"
@@ -631,7 +644,6 @@ ca:
         L'equip de Loomio
     membership_request:
       intro: "%{name} (%{email}) ha sol·licitat accés a un dels teus grups de Loomio."
-      subject: "Nova sol·licitut d'accés de %{who}"
       view_group: "Pots aprovar o denegar la sol·licitud aquí"
     mentioned:
       intro: "T'han mencionat a la discussió: "
@@ -641,8 +653,12 @@ ca:
       context: "%{author} ha fet una proposta a %{group_full_name}:"
     proposal_closed:
       intro: 'La teva proposta "%{proposal_name}" s''ha tancat'
-      specify_outcome: "Fes click aquí per especificar el resultat"
+      intro_html: 'La teva proposta "%{proposal_name}" s''ha tancat.'
+      specify_outcome_and_notify_group: "Detalla un resultat i envia'l al grup!"
+      specify_outcome_and_notify_group_html: "Detalla un resultat i envia'l al grup!"
       subject: "Proposta tancada - %{which}"
+    proposal_outcome:
+      subject: "Resultat de la proposta"
     proposal_blocked:
       intro: "Una proposta teva ha estat bloquejada."
       subject: "Proposta bloquejada  - %{which}"
@@ -712,9 +728,9 @@ ca:
   name: "Nom"
   new_activity: "Nova activitat"
   next: "Següent"
+  outcome: "Resultat"
   password: "Contrasenya"
   pricing: 'Preus'
-  proposal: "Proposta"
   prev: "Anterior"
   translate: "Ajuda a traduir Loomio!"
   options: "Opcions"

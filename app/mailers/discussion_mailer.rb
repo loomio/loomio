@@ -4,6 +4,7 @@ class DiscussionMailer < BaseMailer
     @discussion = discussion
     @group = discussion.group
     @rendered_discussion_description = render_rich_text(discussion.description, discussion.uses_markdown)
+    @utm_hash = UTM_EMAIL.merge utm_source: 'new_discussion_created'
     locale = best_locale(user.language_preference, discussion.author.language_preference)
     I18n.with_locale(locale) do
       mail  to: user.email,

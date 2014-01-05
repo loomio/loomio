@@ -12,6 +12,10 @@ module GroupsHelper
     user_signed_in? && current_user.is_group_admin?(group) && !group.next_steps_completed? && @group.is_top_level?
   end
 
+  def show_subscription_prompt?(group)
+    user_signed_in? && current_user.is_group_admin?(group) && (group.created_at < 1.month.ago) && !group.is_paying? && !group.is_sub_group? && (I18n.locale == :en)
+  end
+
   def pending_membership_requests_count(group)
     if group.pending_membership_requests.count > 0
       t(:number_pending, pending: group.pending_membership_requests.count)
@@ -87,7 +91,7 @@ module GroupsHelper
       header = t "simple_form.labels.group.privacy_#{privacy_setting}_header"
       description = t "simple_form.labels.group.privacy_#{privacy_setting}_description"
 
-      if privacy_setting != 'secret' && group.is_a_subgroup? && group.parent.privacy == 'secret'
+      if privacy_setting != 'hidden' && group.is_a_subgroup? && group.parent.privacy == 'hidden'
         disabled_class = 'disabled'
         text_color = '#CCCCCC'
       else
@@ -101,7 +105,7 @@ module GroupsHelper
   end
 
   def group_privacy_options_disabled(group)
-    if group.is_a_subgroup? && group.parent.privacy == 'secret'
+    if group.is_a_subgroup? && group.parent.privacy == 'hidden'
       ['public', 'private']
     else
       []

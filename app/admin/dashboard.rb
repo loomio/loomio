@@ -1,8 +1,10 @@
 def print_month_totals(model)
   if model == "users"
-    collection = User.where('created_at > ?', 6.months.ago).group_by{|u| u.created_at.month}
+    collection = User.where('created_at > ?', 6.months.ago).order("created_at DESC").group_by{|u| u.created_at.month}
+    divisor = 50
   elsif model == "groups"
-    collection = Group.where('parent_id IS NULL AND created_at > ?', 6.months.ago).group_by{|g| g.created_at.month}
+    collection = Group.where('parent_id IS NULL AND created_at > ?', 6.months.ago).order("created_at DESC").group_by{|g| g.created_at.month}
+    divisor = 25
   end
   counts = {}
   collection.each_pair do |k, v|
@@ -10,8 +12,10 @@ def print_month_totals(model)
   end
   month_totals = []
   counts.each_pair do |k,v|
-    month_name = Date::MONTHNAMES[k]
-    month_totals << "#{month_name}: #{v}"
+    graph = ''
+    (v/divisor).times {|x| graph << '.'}
+    month_name = Date::ABBR_MONTHNAMES[k]
+    month_totals << "<span style='font-family:monaco'>#{month_name}#{graph}#{v}</span>"
   end
   month_totals.join("<br>")
 end

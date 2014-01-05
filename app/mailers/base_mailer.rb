@@ -3,6 +3,7 @@ class BaseMailer < ActionMailer::Base
   include LocalesHelper
   include ERB::Util
   include ActionView::Helpers::TextHelper
+  UTM_EMAIL = { utm_campaign: 'notifications', utm_medium: 'email' }
 
   default :from => "Loomio <noreply@loomio.org>", :css => :email
 

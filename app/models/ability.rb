@@ -18,7 +18,7 @@ class Ability
           true
         when 'private'
           true
-        when 'secret'
+        when 'hidden'
           if group.viewable_by_parent_members?
             @member_group_ids.include?(group.id) or @member_group_ids.include?(group.parent_id)
           else
@@ -58,15 +58,20 @@ class Ability
     end
 
     can :invite_people, Group do |group|
+      case group.members_invitable_by
+      when 'members'
+        @member_group_ids.include?(group.id)
+      when 'admins'
+        @admin_group_ids.include?(group.id)
+      end
+    end
+
+    can :invite_outsiders, Group do |group|
+      # if group.is_a_subgroup? and group.parent_is_hidden?
       if group.is_a_subgroup?
         false
       else
-        case group.members_invitable_by
-        when 'members'
-          @member_group_ids.include?(group.id)
-        when 'admins'
-          @admin_group_ids.include?(group.id)
-        end
+        true
       end
     end
 
@@ -118,7 +123,9 @@ class Ability
 
     can :show, Discussion do |discussion|
       group = discussion.group
-      if group.privacy == 'public' || group.members.include?(user)
+      if discussion.archived?
+        false
+      elsif group.privacy == 'public' || group.members.include?(user)
         can? :show, group
       else
         false

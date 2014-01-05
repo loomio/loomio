@@ -3,6 +3,7 @@
 \
 = t(:proposal)
 = @motion.name
+= motion_url(@motion, @utm_hash).html_safe
 \
 = @motion.description
 \

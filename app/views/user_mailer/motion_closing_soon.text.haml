@@ -2,7 +2,7 @@
 \
 \
 = @motion.name
-= motion_url(@motion, utm_medium: 'email')
+= motion_url(@motion, @utm_hash).html_safe
 \
 - if @motion.description.present?
   =@motion.description

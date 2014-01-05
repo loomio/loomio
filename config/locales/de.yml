@@ -100,7 +100,6 @@ de:
     group_archived: "Gruppe erfolgreich archiviert."
     group_created: "Gruppe erfolgreich erstellt."
     members_added: "Mitglieder zur Gruppe hinzugefügt."
-    membership_requested: "Mitgliedschaft angefragt. Du wirst benachrichtigt, wenn deine Anfrage bestätigt wird."
     position_submitted: "Meinung eingereicht"
     position_updated: "Meinung aktualisiert."
     proposal_created: "Vorschlag erfolgreich erstellt."
@@ -212,6 +211,7 @@ de:
   deactivate_group: "Gruppe deaktivieren"
   confirm_deactivate_group: "Stop!!! Bist du sicher, dass du %{which_group} deaktivieren möchtest? Du wirst die Gruppe nicht mehr ansehen können. Jedoch kannst du uns eine E-Mail an contact@loomio.org senden, wenn wir die Gruppe wieder reaktivieren sollen."
   invited_users: "Eingeladene Mitglieder"
+  members: "Mitglieder"
   confirm_remove_user: "Bist du sicher, dass du %{which_user} aus der Gruppe entfernen möchtest?"
   remove_coordinator: "Koordinator entfernen"
   confirm_remove_coordinator: "Bist du sicher, dass %{which_user} nicht mehr Koordinator dieser Gruppe sein soll?"
@@ -237,9 +237,6 @@ de:
   new_subgroup: "Neue Untergruppe"
   create_subgroup: "Untergruppe erstellen"
   creating_subgroup: "Erstellt Untergruppe "
-  group_privacy: "Privatsphäre: '%{who}' kann diese Gruppe einsehen."
-  parent_group_members: "Mitglieder der Hauptgruppe"
-  members: "Mitglieder"
   new_group: "Neue Gruppe"
   create_group: "Gruppe erstellen"
   creating_group: "Erstellt Gruppe"
@@ -302,6 +299,7 @@ de:
   confirm_close_proposal: "Bist du sicher, dass du diesen Vorschlag schließen willst?"
   change_proposal_close_date: "Verändere das Enddatum"
   change_proposal_close_date_header: "Verändere das Enddatum für den Vorschlag '%{which}'"
+  proposal: Vorschlag
   proposal_close_date_error: "Bitte gib einen Enddatum, das in der Zukunft liegt, an"
   proposal_closing_when: "Endet in %{when}"
   proposal_closed_when: "Endete vor %{when}"
@@ -319,7 +317,6 @@ de:
   block_position: "Ich blockiere"
   block_details: "Ich habe starke Abneigungen gegen diesen Vorschlag und ich bin nicht einverstanden damit, fortzufahren."
   not_voted: "[Zeige die Mitglieder, die sich noch nicht entschieden haben]"
-  outcome: "Ausgang"
   outcome_placeholder: "Was ist der Ausgang dieses Vorschlags?"
   position_verbs:
     'yes': "stimme zu"
@@ -494,7 +491,6 @@ de:
     header: "Neuer Vorschlag"
     name_helper: "Mache den Titel so klar und kurz wie möglich."
   group_form:
-    privacy_settings: "Privatsphäre Einstellungen"
     invitation_settings: "Einladungseinstellungen"
     admins_only: "Nur Koordinatoren"
   vote_form:
@@ -539,9 +535,6 @@ de:
         title: "Titel"
         description: "Kontext"
       group:
-        name: "Was ist der Name deiner Gruppe?"
-        description: "Gruppenbeschreibung:"
-        viewable_by: "Wer kann diese Gruppe sehen?"
         members_invitable_by: "Wer kann Leute in diese Gruppe einladen?"
       membership_request:
         introduction: "Stelle dich vor"
@@ -555,11 +548,6 @@ de:
         password: "Passwort"
         password_confirmation: "Passwort bestätigen"
         language_preference: "Sprache"
-    options:
-      group:
-        members_invitable_by:
-          admins: 'Nur Koordinatoren'
-          members: 'Alle Gruppenmitglieder'
     placeholders:
       discussion:
         title: "Welches Thema möchtest du diskutieren?"
@@ -569,8 +557,6 @@ de:
       motion:
         name: "Was ist dein Vorschlag zum Handlungsablauf?"
         description: "Gib genug Informationen an, damit jeder weiß, was es bedeutet, wenn man zustimmt oder ablehnt."
-      group:
-        description: "Denke an die einfachste Möglichkeit deine Gruppe zu beschreiben: Was wollt ihr gemeinsam erreichen? Welche Entscheidungen wollt ihr machen? Wer wird involviert sein?"
       user:
         email: "E-Mail"
         password: "Passwort"
@@ -614,7 +600,6 @@ de:
       thanks: "Danke!\nDas Loomio Team \n"
     membership_request:
       intro: "%{name} (%{email}) möchte Zugang zu einer deiner Loomio Grupper erhalten."
-      subject: "Neue Mitgliedschaftsanfrage von %{who}"
       view_group: "Du kannst die Anfrage hier annehmen oder ablehnen"
     mentioned:
       intro: "Du wurdest erwähnt in der Diskussion mit dem Titel:"
@@ -622,7 +607,6 @@ de:
       subject: "%{who} hat dich erwähnt in der %{which} Gruppe bei Loomio"
     proposal_closed:
       intro: 'Dein Vorschlag "%{proposal_name}" wurde geschlossen.'
-      specify_outcome: "Bitte klicke hier um einen Ausgang zu definieren"
       subject: "Vorschlag geschlossen - %{which}"
     proposal_blocked:
       intro: "Der Vorschlag, den du unterstützt, wurde blockiert."
@@ -688,9 +672,9 @@ de:
   name: "Name"
   new_activity: "Neue Aktivität"
   next: "Nächstes"
+  outcome: "Ausgang"
   password: "Passwort"
   pricing: 'Preisgestaltung'
-  proposal: "Vorschlag"
   prev: "Vorheriges"
   translate: "Hilf Loomio zu übersetzen!"
   options: "Optionen"

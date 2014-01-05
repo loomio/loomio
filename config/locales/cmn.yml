@@ -10,8 +10,8 @@ cmn:
   add_new_member: "加新的成员"
   invite_members_to_group: "邀请成员加入%{which_group}"
   get_in_touch_link: "联系我们"
-  invite_members: "邀请成员"
   members: "成员"
+  invite_members: "邀请成员"
   description_history:
     previous: "上一个"
     next: "下一个"

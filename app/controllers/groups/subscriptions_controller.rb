@@ -40,15 +40,13 @@ class Groups::SubscriptionsController < GroupBaseController
       flash[:success] = "Thank you! Your subscription payment is now set up. You'll be billed monthly starting today."
       redirect_to group_subscription_url(@group)
     else
-      ExceptionNotifier.notify_exception(
-        PaypalSubscriptionError.new(
+      e = PaypalSubscriptionError.new(
           checkout_details_response: @paypal.checkout_details_response,
           recurring_payments_response: @paypal.recurring_payments_response,
           get_checkout_details_query: @paypal.get_checkout_details_query,
           create_recurring_payment_query: @paypal.create_recurring_payment_query
-        ),
-        env: request.env
-      )
+        )
+      Airbrake.notify e.inspect
       redirect_to payment_failed_group_subscription_url(@group)
     end
   end

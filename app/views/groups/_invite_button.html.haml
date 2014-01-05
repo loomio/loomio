@@ -1,4 +1,1 @@
--if group.is_top_level?
-  = icon_button(href: new_group_invitation_path(@group), text: t(:invite_people), icon: '/assets/member-18.png', id: 'invite-new-members', class: 'btn-grey')
--else
-  = icon_button(href: '#invite-subgroup-members', text: t(:add_new_member), icon: '/assets/member-18.png', id: 'group-add-members', class: 'btn-grey', 'data-toggle' => 'modal')
+= icon_button(href: new_group_invitation_path(@group), text: t(:invite_people), icon: '/assets/member-18.png', id: 'invite-new-members', class: 'btn-grey')

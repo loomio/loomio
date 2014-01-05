@@ -71,7 +71,6 @@ bg:
     group_archived: "Групата е архивирана успешно."
     group_created: "Групата е създадена успешно."
     members_added: "Потребители добавени към групата."
-    membership_requested: "Поискано членство. Ще бъдете уведомени веднага след като заявката ви бъде одобрена."
     position_submitted: "Позицията е въведена"
     position_updated: "Позицията е обновена."
     proposal_created: "Предложението е създадено успешно."
@@ -175,6 +174,7 @@ bg:
   deactivate_group: "Деактивирай групата"
   confirm_deactivate_group: "Момент!!! Сигурни ли сте, че искате да деактивирате %{which_group}? Вече няма да имате възможност да виждате групата. Ако желаете да върнете групата можете да поискате да я активираме като изпратите e-mail до contact@loomio.org."
   invited_users: "Поканени потребители"
+  members: "Членове"
   confirm_remove_user: "Сигурни ли сте, че искате да премахнете %{which_user} от групата?"
   remove_coordinator: "Отстраняване на координатор"
   confirm_remove_coordinator: "Сигурни ли сте, че не искате %{which_user} повече да бъде координатор на тази група?"
@@ -199,9 +199,6 @@ bg:
   new_subgroup: "Нова подгрупа"
   create_subgroup: "Създай подгрупа"
   creating_subgroup: "Създаване на подгрупа"
-  group_privacy: "Конфиденциалност: '%{who}' може да вижда тази група."
-  parent_group_members: "Членове на родителската група"
-  members: "Членове"
   new_group: "Нова група"
   create_group: "Създай група"
   creating_group: "Създаване на група"
@@ -257,6 +254,7 @@ bg:
   confirm_close_proposal: "Сигурни ли сте, че искате да затворите това предложение?"
   change_proposal_close_date: "Промени крайна дата"
   change_proposal_close_date_header: "Промени крайната дата за предложението '%{which}'"
+  proposal: Предложение
   proposal_close_date_error: "Моля посочете крайна дата"
   proposal_closing_when: "Приключва след %{when}"
   proposal_closed_when: "Затворено преди %{when}"
@@ -272,7 +270,6 @@ bg:
   block_position: "Блокирам"
   block_details: "Имам силни възражения срещу това предложение и не съм ОК то да продължи."
   not_voted: "[Покажи членове които не са решили още]"
-  outcome: "Резултат"
   outcome_placeholder: "Какъв е резултата от това предложение?"
   help:
     coordinating: 'Координира вашата Loomio група'
@@ -412,7 +409,6 @@ bg:
     header: "Ново предложение"
     name_helper: "Направете заглавието колкото е възможно по-ясно и кратко."
   group_form:
-    privacy_settings: "Настройки по личните данни"
     invitation_settings: "Опции за Покана"
     admins_only: "Само за координатори"
   vote_form:
@@ -448,8 +444,6 @@ bg:
         title: "Заглавие"
         description: "Контекст"
       group:
-        name: "Какво е името на вашата група?"
-        viewable_by: "Кой може да вижда тази група?"
         members_invitable_by: "Кой може да кани хора в тази група?"
       membership_request:
         introduction: "Представете се"
@@ -462,13 +456,6 @@ bg:
         password: "Парола"
         password_confirmation: "Потвърждаване на паролата"
         language_preference: "Език"
-    options:
-      group:
-        viewable_by:
-          parent_group_members: "Членове на родителската група - само членове на главната група могат да виждат тази подгрупа"
-        members_invitable_by:
-          admins: 'Само координатори'
-          members: 'Всички членове на групата'
     placeholders:
       discussion:
         title: "Каква е темата която желаете да обсъждате?"
@@ -510,7 +497,6 @@ bg:
       subject: "Членството е одобрено"
     membership_request:
       intro: "%{name} (%{email}) е поискал достъп до една от вашите групи."
-      subject: "Нова заявка за членство от %{who}"
       view_group: "Можете да одобрите или не заявките тук"
     mentioned:
       intro: "Бяхте споменат в дискусия, озаглавена:"
@@ -518,7 +504,6 @@ bg:
       subject: "%{who} ви спомена в група %{which} в Loomio"
     proposal_closed:
       intro: 'Вашето предложение "%{proposal_name}" е затворено.'
-      specify_outcome: "Моля кликнете тук за да изберете резултат"
       subject: "Предложението е затворено - %{which}"
     proposal_blocked:
       intro: "Предложение, което подкрепяте, беше блокирано."
@@ -562,8 +547,8 @@ bg:
   name: "Име"
   new_activity: "Нова активност"
   next: "Следващо"
+  outcome: "Резултат"
   password: "Парола"
-  proposal: "Предложение"
   prev: "Предишно"
   options: "Опции"
   other: "Друго"

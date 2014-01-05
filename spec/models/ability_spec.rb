@@ -96,9 +96,28 @@ describe "User abilities" do
       it { should_not be_able_to(:ignore, membership_request) }
     end
 
-    context "secret group" do
-      before { group.update_attributes(:privacy => 'secret') }
+    context "that is hidden" do
+      before { group.update_attributes(:privacy => 'hidden') }
       it { should be_able_to(:show, group) }
+
+      context "with hidden subgroup" do
+        before do
+          subgroup.update_attributes(privacy: 'hidden', viewable_by_parent_members: false)
+          subgroup.add_member!(user)
+        end
+
+        context "invitable by members" do
+          before { subgroup.update_attributes(:members_invitable_by => 'members') }
+          it { should_not be_able_to(:invite_outsiders, subgroup) }
+          it { should be_able_to(:invite_people, subgroup) }
+        end
+
+        context "invitable by admins only" do
+          before { subgroup.update_attributes(:members_invitable_by => 'admins') }
+          it { should_not be_able_to(:invite_outsiders, subgroup) }
+          it { should_not be_able_to(:invite_people, subgroup) }
+        end
+      end
     end
 
     context "viewing a subgroup they do not belong to" do
@@ -116,14 +135,14 @@ describe "User abilities" do
         it { should be_able_to(:request_membership, subgroup) }
       end
 
-      context "secret subgroup" do
-        before { subgroup.update_attributes(privacy: 'secret', viewable_by_parent_members: false) }
+      context "hidden subgroup" do
+        before { subgroup.update_attributes(privacy: 'hidden', viewable_by_parent_members: false) }
         it { should_not be_able_to(:show, subgroup) }
         it { should_not be_able_to(:request_membership, subgroup) }
       end
 
-      context "secret subgroup viewable by parent members" do
-        before { subgroup.update_attributes(privacy: 'secret', viewable_by_parent_members: true) }
+      context "hidden subgroup viewable by parent members" do
+        before { subgroup.update_attributes(privacy: 'hidden', viewable_by_parent_members: true) }
         it { should be_able_to(:show, subgroup) }
         it { should be_able_to(:request_membership, subgroup) }
       end
@@ -190,11 +209,11 @@ describe "User abilities" do
     end
     it { should_not be_able_to(:view_payment_details, sub_group) }
     it { should_not be_able_to(:choose_subscription_plan, sub_group) }
-    it { should_not be_able_to(:invite_people, sub_group) }
+    # it { should be_able_to(:invite_outsiders, sub_group) }
   end
 
   context "non-member of a group" do
-    let(:group) { create(:group, privacy: 'secret') }
+    let(:group) { create(:group, privacy: 'hidden') }
     let(:discussion) { create(:discussion, group: group) }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
     let(:motion) { create(:motion, discussion: discussion) }
@@ -304,7 +323,7 @@ describe "User abilities" do
     end
 
     context "subgroup viewable to parent members" do
-      let(:subgroup) { create(:group, parent: group, privacy: 'secret',
+      let(:subgroup) { create(:group, parent: group, privacy: 'hidden',
                               viewable_by_parent_members: true) }
       it { should_not be_able_to(:show, group) }
       it { should_not be_able_to(:request_membership, subgroup) }

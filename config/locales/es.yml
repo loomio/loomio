@@ -97,7 +97,6 @@ es:
     group_archived: "Grupo archivado exitosamente."
     group_created: "Grupo creado exitosamente."
     members_added: "Miembros adheridos al grupo."
-    membership_requested: "Membresía solicitada. Serás notificado una vez que la solicitud haya sido aprobada."
     position_submitted: "Posición enviada"
     position_updated: "Posición actualizada."
     proposal_created: "Propuesta creada exitosamente."
@@ -171,8 +170,6 @@ es:
   sign_out: "Salir"
   sign_in: "Entrar"
   tagline: "Creando un mundo donde es fácil para todos participar de las decisiones que nos afectan."
-  or_sign_in_html: "Ya tienes una cuenta en Loomio <a href='%{link}'>Entra aquí</a>"
-  or_link_account_html: "Ya tienes una cuenta en Loomio? <a href='%{link}'>Vincularla a</a>"
   click_to_dismiss: "Presione aquí para deshacerse de este mensaje"
   generic_confirm: "Estas seguro?"
   discussion_helper_text:
@@ -211,6 +208,7 @@ es:
   deactivate_group: "Desactivar grupo"
   confirm_deactivate_group: "Espera!!! Estas seguro que deseas desactivar %{which_group}? Ya no podrás ver el grupo. Sin embargo, si cambias de opinión puedes pedirnos que lo reactivemos por ti enviándonos un correo electrónico contact@loomio.org."
   invited_users: "Miembros invitados"
+  members: "Miembros"
   confirm_remove_user: "Estas seguro que deseas remover a %{which_user} del grupo?"
   remove_coordinator: "Eliminar co-ordinador"
   make_coordinator: "Crear co-ordinador"
@@ -235,9 +233,6 @@ es:
   new_subgroup: "Nuevo sub-grupo"
   create_subgroup: "Crear sub-grupo"
   creating_subgroup: "Creando sub-grupo"
-  group_privacy: "Privacidad: '%{who}' Quien puede ver este grupo."
-  parent_group_members: "Grupo de nivel superior"
-  members: "Miembros"
   new_group: "Nuevo grupo"
   create_group: "Crear grupo"
   creating_group: "Creando grupo"
@@ -296,6 +291,7 @@ es:
   confirm_close_proposal: "Estas seguro que quieres cerrar esta propuesta?"
   change_proposal_close_date: "Cambiar fecha de cierre"
   change_proposal_close_date_header: "Cambiar la fecha de cierre para la propuesta '%{which}'"
+  proposal: Propuesta
   proposal_close_date_error: "Por favor ponga una fecha futura"
   proposal_closing_when: "Cierra en %{when}"
   proposal_closed_when: "Cerro %{when}"
@@ -313,7 +309,6 @@ es:
   block_position: "Bloqueo"
   block_details: "Tengo fuertes objeciones a esta propuesta y no estoy de acuerdo con que siga adelante."
   not_voted: "[Mostrar los usuarios que aun no han decidido]"
-  outcome: "Resultado"
   outcome_placeholder: "Cual fue el resultado de esta propuesta?"
   position_verbs:
     'yes': "De acuerdo"
@@ -418,10 +413,8 @@ es:
   create_an_account: 'Crear una cuenta'
   join_group:
     log_in: "Entrar para unirte a %{group_name}"
-    create_account: "Crear una cuenta"
   start_group:
     log_in: "Entrar para configurar tu grupo"
-    create_account: "Crear una cuenta"
   invitation:
     no_invitations_left: "Ya no tienes mas invitaciones"
     no_invitations_left_get_more: "Por favor envia nos un correo a contact@loomio.org y veremos como podemos ayudar"
@@ -462,7 +455,6 @@ es:
     header: "Nueva propuesta"
     name_helper: " Haz el título lo más claro y conciso posible para que la gente sepa exactamente lo que quieres decir cuando estén de acuerdo o en desacuerdo con la propuesta."
   group_form:
-    privacy_settings: "Configuración de privacidad"
     invitation_settings: "Configuración de invitaciones"
     admins_only: "Solo co-ordinadores"
   vote_form:
@@ -506,9 +498,6 @@ es:
         title: "Titulo"
         description: "Contexto"
       group:
-        name: "Nombre del Grupo"
-        description: "Descripción del grupo:"
-        viewable_by: "Quien puede ver esto %{group_or_subgroup}?"
         members_invitable_by: "Quien puede invitar miembros a este grupo?"
       membership_request:
         introduction: "Preséntate a ti mismo"
@@ -522,11 +511,6 @@ es:
         password: "Contraseña"
         password_confirmation: "Confirmar  contraseña"
         language_preference: "Lenguaje"
-    options:
-      group:
-        members_invitable_by:
-          admins: 'Solo co-ordinadores'
-          members: 'Todos los miembros del grupo'
     placeholders:
       discussion:
         title: "Cual es el tema que te gustaría discutir?"
@@ -536,8 +520,6 @@ es:
       motion:
         name: "Cual es tu propuesta de plan de acción?"
         description: "Da información suficiente para que cualquier persona en tu grupo pueda tomar una decisión bien informada."
-      group:
-        description: "Piensa en la manera más simple que puedas describir tu grupo: ¿Qué es lo que quieren lograr juntos? ¿Qué tipo de decisiones van a estar haciendo? ¿Quiénes participarán?"
       user:
         email: "Correo electrónico"
         password: "Contraseña"
@@ -580,7 +562,6 @@ es:
       thanks: "Gracias!⏎\nEl Equipo de Loomio⏎ \n"
     membership_request:
       intro: "%{name} (%{email}) ha pedido acceso a uno de tus grupos de Loomio."
-      subject: "Nuevo pedido de membresía de %{who}"
       view_group: "Puedes aceptar o denegar el pedido aquí"
     mentioned:
       intro: "Te han mencionado en el título de una discusión: "
@@ -588,7 +569,6 @@ es:
       subject: "%{who} te mencionó en el grupo de Loomio %{which} "
     proposal_closed:
       intro: 'Tu propuesta "%{proposal_name}" ha cerrado.'
-      specify_outcome: "Por favor haz click aqui para especificar el resultado"
       subject: "Propuesta cerrada - %{which}"
     proposal_blocked:
       intro: "Una propuesta que estas facilitando ha sido bloqueada."
@@ -644,9 +624,9 @@ es:
   name: "Nombre"
   new_activity: "Nueva actividad"
   next: "Siguiente"
+  outcome: "Resultado"
   password: "Contraseña"
   pricing: 'Precios'
-  proposal: "Propuesta"
   prev: "Atrás"
   translate: "Ayúdanos a traducir Loomio!"
   options: "Opciones"

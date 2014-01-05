@@ -30,7 +30,10 @@ Spork.prefork do
   CodeClimate::TestReporter.start
 
   require 'rspec/rails'
-  require 'rspec/autorun'
+
+  # commenting this out means you can run rspecs in zeus. Might break in your setup though:
+  # require 'rspec/autorun'
+
   RSpec.configure do |config|
     config.mock_with :rspec
 

@@ -148,6 +148,7 @@ it:
   deactivate_group: "Disattiva il gruppo"
   confirm_deactivate_group: "Aspetta!!! Sei sicuro che vuoi disattivare %{which_group}? Non sarai più in grado di vedere il gruppo. Se dovessi cambiare idea però, e desiderassi ripristinarlo, puoi chiederci di riattivarlo mandandoci una mail a contact@loomio.org."
   invited_users: "Membri invitati"
+  members: "I membri"
   confirm_remove_user: "Sei sicuro che vuoi rimuovere %{which_user} dal gruppo?"
   membership_requests: "Richieste di iscrizione"
   confirm_approve_membership_request: "Sei sicuro che vuoi aggiungere %{which_user} al gruppo?"
@@ -163,9 +164,6 @@ it:
   new_subgroup: "Nuovo sotto-gruppo"
   create_subgroup: "Crea sotto-gruppo"
   creating_subgroup: "Sto creando il sotto-gruppo"
-  group_privacy: "Privacy: '%{who}' può vedere questo gruppo."
-  parent_group_members: "I membri del gruppo genitore"
-  members: "I membri"
   new_group: "Nuovo gruppo"
   create_group: "Crea gruppo"
   creating_group: "Sto creando il gruppo"
@@ -218,6 +216,7 @@ it:
   confirm_close_proposal: "Sei sicuro di voler chiudere questa proposta?"
   change_proposal_close_date: "Cambia la data di conclusione"
   change_proposal_close_date_header: "Cambia la data di conclusione per la proposta '%{which}'"
+  proposal: Proposta
   proposal_close_date_error: "Imposta una data di conclusione futura"
   proposal_closing_when: "Chiude in %{when}"
   proposal_closed_when: "Chiusa %{when} fa"
@@ -233,7 +232,6 @@ it:
   block_position: "Blocco"
   block_details: "Ho forti obiezioni nei riguardi di questa proposta e non mi va bene che passi."
   not_voted: "[Mostra i membri che non hanno ancora deciso]"
-  outcome: "Risultato"
   outcome_placeholder: "Qual è stato il risultato di questa proposta?"
   help:
     coordinating: 'Coordinazione del tuo gruppo Loomio'
@@ -357,7 +355,6 @@ it:
     header: "Nuova proposta"
     name_helper: "Usa un titolo il più possibile chiaro e sintetico."
   group_form:
-    privacy_settings: "Impostazioni privacy"
     invitation_settings: "Impostazioni Inviti"
   vote_form:
     header: "Dichiara la tua posizione"
@@ -390,8 +387,6 @@ it:
         title: "Titolo"
         description: "Contesto"
       group:
-        name: "Qual è il nome del tuo gruppo?"
-        viewable_by: "Chi può vedere questo gruppo?"
         members_invitable_by: "Chi può invitare gente a questo gruppo?"
       motion:
         name: "Titolo"
@@ -401,13 +396,6 @@ it:
         email: "Email"
         password: "Password"
         language_preference: "Lingua"
-    options:
-      group:
-        viewable_by:
-          parent_group_members: "Membri di gruppi genitori - solo membri del gruppo principale possono vedere questo sotto-gruppo"
-        members_invitable_by:
-          admins: 'Solo i coordinatori'
-          members: 'Tutti i membri del gruppo'
     placeholders:
       discussion:
         title: "Di quale argomento di piacerebbe discutere?"
@@ -445,7 +433,6 @@ it:
       subject: "Iscrizione approvata"
     membership_request:
       intro: "%{name} (%{email}) ha richiesto l'accesso a uno dei tuoi gruppi Loomio."
-      subject: "Nuova richiesta di iscrizione da %{who}"
       view_group: "Puoi approvare o rifiutare la richiesta qui"
     mentioned:
       intro: "Sei stato citato in una discussione intitolata:"
@@ -453,7 +440,6 @@ it:
       subject: "%{who} ti ha citato nel gruppo %{which} su Loomio"
     proposal_closed:
       intro: 'La tua proposta "%{proposal_name}" è chiusa.'
-      specify_outcome: "Clicca qui per precisare un risultato"
       subject: "Proposta chiusa - %{which}"
     proposal_blocked:
       intro: "Una proposta che stavi appoggiando è stata bloccata."
@@ -494,8 +480,8 @@ it:
   name: "Nome"
   new_activity: "Nuova attività"
   next: "Succ"
+  outcome: "Risultato"
   password: "Password"
-  proposal: "Proposta"
   prev: "Prec"
   options: "Opzioni"
   ok_got_it: "Okay, ho capito!"

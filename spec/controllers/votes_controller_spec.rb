@@ -19,7 +19,7 @@ describe VotesController do
 
     it 'saves the vote' do
       vote = double(:vote).as_null_object
-      vote.should_receive(:save!)
+      vote.should_receive(:save)
       Vote.stub(:new).and_return(vote)
       post :create, motion_id: motion.id, vote: {position: 'yes'}
     end

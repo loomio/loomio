@@ -80,7 +80,6 @@ vi:
     group_archived: "Đã sao lưu nhóm thành công."
     group_created: "Đã tạo nhóm thành công."
     members_added: "Đã thêm thành viên vào nhóm."
-    membership_requested: "Gửi yêu cầu tham gia làm thành viên. Bạn sẽ được thông báo ngay sau khi lời yêu cầu của bạn được chấp nhận."
     position_submitted: "Đã đăng phần kiến nghị"
     position_updated: "Đã cập nhật phần kiến nghị."
     proposal_created: "Đã tạo lời yêu cầu thành công."
@@ -180,6 +179,7 @@ vi:
   deactivate_group: "Tái-kích hoạt nhóm"
   confirm_deactivate_group: "Chờ chút!!! Bạn có chắc rằng bạn muốn ngưng kích hoạt %{which_group}? Bạn sẽ không còn được nhìn thấy thông tin về nhóm này nữa. Tuy nhiên, nếu bạn muốn quay trở lại nhóm thì hãy gửi yêu cầu đến chúng tôi tại contact@loomio.org."
   invited_users: "Các thành viên đã mời"
+  members: "Thành viên"
   confirm_remove_user: "Bạn có muốn loại bỏ %{which_user} khỏi nhóm hay không?"
   remove_coordinator: "Loại bỏ điều hành viên"
   confirm_remove_coordinator: "Bạn có chắc bạn không còn muốn %{which_user} đảm nhiệm vai trò điều hành viên của nhóm này không?"
@@ -204,9 +204,6 @@ vi:
   new_subgroup: "Tạo nhóm-thành viên mới"
   create_subgroup: "Tạo nhóm-thành viên"
   creating_subgroup: "Đang tạo nhóm-thành viên"
-  group_privacy: "Quyền riêng tư: '%{who}' có thể xem thông tin về nhóm này."
-  parent_group_members: "Thành viên thuộc nhóm chính"
-  members: "Thành viên"
   new_group: "Tạo nhóm mới"
   create_group: "Tạo nhóm"
   creating_group: "Đang tạo nhóm"
@@ -269,6 +266,7 @@ vi:
   confirm_close_proposal: "Bạn có chắc bạn muốn đóng lại lời đề nghị này?"
   change_proposal_close_date: "Thay đổi ngày hết hạn"
   change_proposal_close_date_header: "Thay đổi ngày hết hạn dành cho lời đề nghị '%{which}'"
+  proposal: Lời đề nghị
   proposal_close_date_error: "Vui lòng cung cấp ngày hết hạn"
   proposal_closing_when: "Đóng lại vào %{when}"
   proposal_closed_when: "Đã được đóng lại cách đây %{when}"
@@ -284,7 +282,6 @@ vi:
   block_position: "Tôi chặn"
   block_details: "Tôi có ý kiến phản đối mạnh mẽ về lời đề nghị này và KHÔNG muốn tiếp tục với điều này."
   not_voted: "[Hiển thị các thành viên vẫn chưa tham gia vào quy trình đưa ra quyết định]"
-  outcome: "Kết quả"
   outcome_placeholder: "Kết quả đã được đưa ra cho lời đề nghị này là gì?"
   position_verbs:
     'yes': "đồng ý"
@@ -435,7 +432,6 @@ vi:
     header: "Tạo lời đề nghị mới"
     name_helper: "Hãy soạn thảo phần tiêu đề theo hướng rõ ràng và ngắn gọn."
   group_form:
-    privacy_settings: "Thiết lập về quyền riêng tư"
     invitation_settings: "Cài đặt phần gửi lời mời"
     admins_only: "Chỉ dành cho các điều hành viên"
   vote_form:
@@ -478,9 +474,6 @@ vi:
         title: "Tiêu đề"
         description: "Nội dung"
       group:
-        name: "Tên của nhóm bạn là gì?"
-        description: "Thông tin mô tả về nhóm:"
-        viewable_by: "Ai có thể xem được thông tin về nhóm này?"
         members_invitable_by: "Ai là người có thể thực hiện việc gửi đi lời mời tham gia vào nhóm này?"
       membership_request:
         introduction: "Tự giới thiệu bản thân bạn"
@@ -493,11 +486,6 @@ vi:
         password: "Mật khẩu"
         password_confirmation: "Xác nhận mật khẩu"
         language_preference: "Ngôn ngữ"
-    options:
-      group:
-        members_invitable_by:
-          admins: 'Chỉ dành cho người quản trị'
-          members: 'Tất cả thành viên của nhóm'
     placeholders:
       discussion:
         title: "Bạn muốn thảo luận về chủ đề gì?"
@@ -545,7 +533,6 @@ vi:
       intro: "Xin hãy click vào đường dẫn liên kết bên dưới để cài đặt nhóm của riêng bạn %{group_name}:"
     membership_request:
       intro: "%{name} (%{email}) đã gửi lời yêu cầu tham gia vào một trong các nhóm trên Loomio của bạn."
-      subject: "Đề nghị tham gia làm thành viên mới từ %{who}"
       view_group: "Bạn có thể chấp thuận hoặc từ chối các lời đề nghị kết nối tại đây"
     mentioned:
       intro: "Tên của bạn vừa được đề cập đến trong phần thảo luận có tiêu đề:"
@@ -553,7 +540,6 @@ vi:
       subject: "%{who} đã đề cập đến bạn trong nhóm %{which} trên Loomio"
     proposal_closed:
       intro: 'Lời đề nghị của bạn "%{proposal_name}" đã đóng lại.'
-      specify_outcome: "Vui lòng click vào đây để xác định kết quả"
       subject: "Lời đề nghị đã đóng lại - %{which}"
     proposal_blocked:
       intro: "Một lời đề nghị của bạn đã bị chặn."
@@ -599,8 +585,8 @@ vi:
   name: "Tên"
   new_activity: "Tạo hoạt động mới"
   next: "Tiếp theo"
+  outcome: "Kết quả"
   password: "Mật khẩu"
-  proposal: "Lời đề nghị"
   prev: "Trước đó"
   translate: "Tham gia vào công tác chuyển ngữ Loomio!"
   options: "Tùy chọn"

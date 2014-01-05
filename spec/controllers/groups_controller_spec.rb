@@ -15,8 +15,8 @@ describe GroupsController do
       end
     end
 
-    context "secret group" do
-      before { group.update_attribute(:privacy, :secret) }
+    context "hidden group" do
+      before { group.update_attribute(:privacy, :hidden) }
       it "does not show" do
         get :show, :id => group.id
         response.should be_redirect
@@ -24,9 +24,9 @@ describe GroupsController do
     end
   end
 
-  context "secret group" do
+  context "hidden group" do
     before do
-      group.update_attribute(:privacy, :secret)
+      group.update_attribute(:privacy, :hidden)
       group.add_member!(user)
       sign_in user
     end
@@ -42,20 +42,10 @@ describe GroupsController do
     end
 
     it "create subgroup" do
-      post :create, :group => {parent_id: group.id, name: 'subgroup', privacy: 'secret'}
+      post :create, :group => {parent_id: group.id, name: 'subgroup', privacy: 'hidden'}
       assigns(:group).parent.should eq(group)
       assigns(:group).admins.should include(user)
       response.should redirect_to(group_url(assigns(:group)))
-    end
-
-    it "add_members" do
-      subgroup.add_member!(user)
-
-      added_user = create(:user)
-      group.add_member!(added_user)
-      post :add_members, id: subgroup.id, "user_#{added_user.id}" => 1
-      subgroup.members.should include added_user
-      subgroup.memberships.find_by_user_id(added_user.id).inviter.should == user
     end
 
     context "a group admin" do

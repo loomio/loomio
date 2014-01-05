@@ -54,6 +54,7 @@ class UserMailer < BaseMailer
     @motion = motion
     @group = motion.group
     @rendered_motion_description = render_rich_text(motion.description, false) #later: change false to motion.uses_markdown
+    @utm_hash = UTM_EMAIL.merge utm_source: 'motion_closing_soon'
     locale = best_locale(user.language_preference, @motion.author.language_preference)
     I18n.with_locale(locale) do
       mail to: user.email,
@@ -65,12 +66,13 @@ class UserMailer < BaseMailer
 
   def added_to_a_group(user, inviter, group)
     @user = user
+    @inviter = inviter
     @group = group
     locale = best_locale(user.language_preference, inviter.language_preference)
     I18n.with_locale(locale) do
       mail to: user.email,
-           reply_to: inviter.email,
-           subject: t("email.added_to_a_group.subject", which: group.name)
+           reply_to: inviter.name_and_email,
+           subject: t("email.user_added_to_a_group.subject", which_group: group.name, who: inviter.name)
     end
   end
 end

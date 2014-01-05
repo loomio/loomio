@@ -27,16 +27,6 @@ describe Membership do
       membership.errors_on(:user_id).should include("has already been taken")
     end
 
-    it "user must be a member of parent group (if one exists)" do
-      group.parent = create(:group)
-      group.save
-      membership.group = group
-      membership.user = user
-      membership.valid?
-      membership.errors_on(:user).should include(
-        "must be a member of this group's parent")
-    end
-
     it "membership_count should be less than the group max_size" do
       group.max_size = 1
       group.memberships_count = 1

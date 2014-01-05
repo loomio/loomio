@@ -57,6 +57,14 @@ ActiveAdmin.register User do
         row k.to_sym if v.present?
       end
     end
+    panel("Memberships") do
+      table_for user.memberships.each do |m|
+        column :group_id
+        column :group_name do |m|
+          Group.find(m.group_id).full_name
+        end
+      end
+    end
     active_admin_comments
   end
 

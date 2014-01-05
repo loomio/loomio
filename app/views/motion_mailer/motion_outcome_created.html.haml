@@ -5,7 +5,7 @@
     %p= @motion.outcome
 
     %h1.outcome-header= t(:proposal)
-    %p= link_to @motion.name, motion_url(@motion, utm_medium: 'email')
+    %p= link_to @motion.name, motion_url(@motion, @utm_hash)
     %p= @motion.description
 
     -if @motion.unique_votes.present?
@@ -25,6 +25,7 @@
     %p.proposal-details= t(:engagement_on_closed_proposal, percent: @motion.percent_voted, :numerator => (@motion.group_size_when_voting - @motion.members_not_voted_count), denominator:  @motion.group_size_when_voting)
 
     -unless @group.is_paying?
-      %p.campaign= t(:'email.campaign_html', link_path: contributions_url(utm_medium: 'email', utm_campaign: 'outcome_ask'))
+      %p.campaign= t(:'email.campaign_html',
+          link_path: contributions_url( @utm_hash.merge utm_campaign: 'fundraising1' ))
 
     = render 'user_mailer/unsubscribe_link'

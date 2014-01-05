@@ -44,7 +44,7 @@ FactoryGirl.define do
   factory :discussion do
     association :author, :factory => :user
     group
-    title { Faker::Lorem.sentence(word_count = 2) }
+    title { Faker::Name.name }
     description 'A description for this discussion. Should this be *rich*?'
     uses_markdown false
     after(:build) do |discussion|
@@ -114,7 +114,7 @@ FactoryGirl.define do
     group
     group_name Faker::Name.name
     group_description "My text outlining the group"
-    privacy 'secret'
+    privacy 'hidden'
     members_invitable_by 'admins'
     discussion_title Faker::Name.name
     discussion_description "My text outlining the discussion"

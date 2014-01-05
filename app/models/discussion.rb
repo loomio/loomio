@@ -2,7 +2,9 @@ class Discussion < ActiveRecord::Base
   PER_PAGE = 50
   paginates_per PER_PAGE
 
-  # default_scope -> {where(is_deleted: false)}
+  scope :archived, -> { where('archived_at is not null') }
+  scope :published, -> { where(archived_at: nil) }
+
   scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
   scope :order_by_latest_comment, order('last_comment_at DESC')
   scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
@@ -52,6 +54,14 @@ class Discussion < ActiveRecord::Base
     comment.discussion = self
     DiscussionService.add_comment(comment)
     comment
+  end
+
+  def archive!
+    self.update_attribute(:archived_at, DateTime.now)
+  end
+
+  def archived?
+    archived_at.present?
   end
 
   def voting_motions

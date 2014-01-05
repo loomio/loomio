@@ -18,7 +18,7 @@ Feature: Login
 
   Scenario: Redirected to original page on login
     Given I am a logged out user
-    And I am a member of a secret group
+    And I am a member of a hidden group
     When I visit the group page
     And I log in
     Then I should see the group page

@@ -7,7 +7,7 @@
 = t(:"email.proposal_closing_soon.closes_on") +' '+ @motion.closing_at.in_time_zone(TimeZoneToCity.convert @user.time_zone).strftime('%A %-d %b - %l:%M%P')
 \
 = t(:"help.have_your_say")
-= motion_url(@motion, utm_medium: 'email')
+= motion_url(@motion, @utm_hash).html_safe
 \
 \
 = render 'user_mailer/unsubscribe_link_text'
