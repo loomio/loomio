@@ -6,7 +6,7 @@ json.eventable do
     json.partial! 'api/comments/comment', comment: item.eventable
   when 'Discussion'
   when 'Motion'
-    json.partial! 'api/motions/motion', motion: item.eventable
+    json.partial! 'api/proposals/proposal_preview', proposal: item.eventable
   when 'Vote'
   end
 end

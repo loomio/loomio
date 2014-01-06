@@ -2,7 +2,9 @@ describe 'StartProposalController', ->
   parentScope = null
   $scope = null
   controller = null
-  discussion = {id: 1, events: [], proposal: null}
+  discussion = null
+  proposal = null
+  errors = null
 
   mockProposalService =
     create: (proposal) ->
@@ -14,6 +16,8 @@ describe 'StartProposalController', ->
     parentScope = $rootScope
     $rootScope.discussion = discussion
     $scope = $rootScope.$new()
+    discussion = {id: 1, events: [], proposal: null}
+    $scope.discussion = discussion
     controller = $controller 'StartProposalController',
       $scope: $scope
       ProposalService: mockProposalService
@@ -23,6 +27,7 @@ describe 'StartProposalController', ->
       expect($scope.isExpanded).toBe(false)
 
     it 'should not be hidden', ->
+      console.log($scope.discussion.proposal)
       expect($scope.isHidden).toBe(false)
 
     it 'should not be disabled', ->
@@ -31,16 +36,23 @@ describe 'StartProposalController', ->
     it 'has 0 errors', ->
       expect($scope.errorMessages.length).toBe(0)
 
+    context 'discussion has a voting proposal', ->
+      beforeEach ->
+        $scope.discussion.proposal = {name: 'hi'}
+
+      it 'starts hidden', ->
+        console.log($scope.discussion.proposal)
+        expect($scope.isHidden).toBe(true)
+
   it 'expands on showForm()', ->
     $scope.showForm()
     expect($scope.isExpanded).toBe(true)
 
   describe '#submitProposal', ->
-    proposal =
-      title: 'Lets do something'
-      discussion_id: 1
-
     beforeEach ->
+      proposal =
+        title: 'Lets do something'
+        discussion_id: 1
       $scope.proposal = proposal
 
     it 'calls ProposalService.create with the model', ->
@@ -73,7 +85,8 @@ describe 'StartProposalController', ->
       expect($scope.isDisabled).toBe(false)
 
   describe '#saveError(errors)', ->
-    errors = ['bad motivator unit']
+    beforeEach ->
+      errors = ['bad motivator unit']
 
     it 'reenables the form', ->
       $scope.saveError(errors)

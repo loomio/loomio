@@ -31,6 +31,8 @@
         %i.icon-edit
         Edit
 
+  %proposal{proposal: 'discussion.proposal'}
+
   .card-row{'ng-repeat' => 'event in discussion.events'}
     %div{'ng-include' => "'generated/templates/discussion_items/'+ event.kind + '.html'"}
     -#"discussion_title_edited",

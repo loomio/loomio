@@ -1,0 +1,58 @@
+.card-row.expanded-motion.cuke-current-proposal{ng_show: 'proposal'}
+  .card
+    .card__header
+      %h2
+        {{proposal.name}}
+      %p proposed by {{proposal.author.name}}
+      %p closing {{proposal.closing_at | date:'medium' }}
+    .card__content
+      .pull-right
+        %i.icon-pie-graph{style: "font-size: 10em; color: green;"}
+      {{proposal.description}}
+    .votes
+      yes: {{proposal.yes_votes_count}}
+      no: {{proposal.no_votes_count}}
+      abstain: {{proposal.abstain_votes_count}}
+      block: {{proposal.block_votes_count}}
+    .clearfix
+    .row.decision-buttons
+      .agree
+        %i.fa.fa-smile-o{style: "color: green"}
+      .abstain
+        %i.fa.fa-meh-o{style: "color: orange"}
+      .disagree
+        %i.fa.fa-frown-o{style: "color: pink"}
+      .block
+        %i.fa.fa-warning{style: "color: red"}
+    -#.row.new-position
+      -#.agree
+        -#%form
+          -#.form-group
+            -#%label Agree
+            -#%textarea.form-control{rows: 3}
+          -#%button.btn
+            -#Submit
+      -#.abstain
+        -#%form
+          -#.form-group
+            -#%label Abstain
+            -#%textarea.form-control{rows: 3}
+          -#%button.btn
+            -#Submit
+      -#.disagree
+        -#%form
+          -#.form-group
+            -#%label Disagree
+            -#%textarea.form-control{rows: 3}
+          -#%button.btn
+            -#Submit
+      -#.block
+        -#%form
+          -#.form-group
+            -#%label Block
+            -#%textarea.form-control{rows: 3}
+          -#%button.btn
+            -#Submit
+    -#.card__show-more
+      -#%a View positions
+
