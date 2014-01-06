@@ -24,6 +24,22 @@ body.discussions.new, body.discussions.create {
 
 
 body.discussions.show {
+  .cover-image{
+    height: 40px;
+    .buttons{
+      bottom: 2px;
+      right: 20px;
+    }
+    .request{
+      width: 150px;
+      float: right;
+      #request-membership{
+        width: 120px;
+        float: right;
+      }
+    }
+  }
+
   .form-container {
     border: 1px solid #cccccc;
     @include border-radius(4px);

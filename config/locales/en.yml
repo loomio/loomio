@@ -45,7 +45,7 @@ en:
     group_not_archived: "Group could not be archived."
     invalid_close_date: "Invalid close date, please check this date has not passed."
     invalid_email: "Please enter at least one valid email address"
-    image_upload_fail: "Unable to upload picture. Make sure the picture is under 1 MB and is a .jpeg, .png, or .gif file."
+    image_upload_failure: "Unable to upload picture. Make sure the picture is under %{size} and is a .jpeg, .png, or .gif file."
     motion_closing_inputs: "Invalid closing date"
     motion_outcome_not_created: "Unable to publish outcome."
     motion_outcome_not_updated: "Unable to update outcome."
@@ -704,7 +704,7 @@ en:
     header: "User settings"
     picture: "Picture"
     use_avatar_kind: "Use %{kind}"
-    upload_new_image: "Upload a new image"
+    upload_new_image: "Upload new image"
 
   group_setup:
     set_up_your_group: Set up your group
@@ -725,6 +725,7 @@ en:
         title: "Title"
         description: "Context"
       group:
+        tagline: "Tagline"
         name: "Group name"
         description: "Description"
         members_invitable_by: "Who can invite people to this group?"
@@ -770,6 +771,7 @@ en:
         name: "What is your proposed course of action?"
         description: "Give enough information so that everyone knows exactly what it means to agree or disagree."
       group:
+        tagline: "Tagline"
         name: "Group name"
         description: "Group description"
       user:
@@ -882,6 +884,7 @@ en:
   #
 
   about_loomio: "About Loomio"
+  add_group_description: "Add a group description"
   ago: "%{quantity_of_time} ago"
   approve: "Approve"
   author: "Author"
@@ -895,6 +898,7 @@ en:
   close: "Close"
   closing: "Closing"
   closed: "Closed"
+  current_decisions: "Current decisions"
   coordinator: "Coordinator"
   decisions: "Decisions"
   delete: "Delete"

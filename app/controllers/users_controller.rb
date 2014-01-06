@@ -28,7 +28,7 @@ class UsersController < BaseController
     end
 
     unless current_user.save
-      flash[:error] = t("error.image_upload_fail")
+      flash[:error] = t("error.image_upload_failure", size: "1MB")
     end
     redirect_to user_settings_url
   end

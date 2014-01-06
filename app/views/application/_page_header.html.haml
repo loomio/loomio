@@ -1,0 +1,34 @@
+- case controller_name
+  - when 'discussions'
+    - if @group.profile_image.exists?
+      - image = @group.profile_image.url(:discussion_cover_desktop)
+    - elsif @group.is_a_subgroup? && @group.parent.profile_image.exists?
+      - image = @group.parent.profile_image.url(:discussion_cover_desktop)
+    .cover-image{style: "background-image: url('#{image}')"}
+      .text
+        = render 'groups/new_title', group: @group
+        = render 'groups/privacy', :group => group if user_signed_in?
+
+      .buttons
+        - if !user_signed_in?
+          .request
+            = request_membership_button(@group)
+          .sign-in
+            =link_to 'Sign in', new_user_session_path, class: 'btn btn-info'
+        - else
+          = request_membership_button(@group)
+
+  - when 'groups'
+    - if @group.profile_image.exists?
+      - image = @group.profile_image.url(:group_cover_desktop)
+    - elsif @group.is_a_subgroup? && @group.parent.profile_image.exists?
+      - image = @group.parent.profile_image.url(:group_cover_desktop)
+    .cover-image{style: "background-image: url('#{image}')"}
+      .text
+        = render 'groups/new_title', group: @group
+        = render 'groups/privacy', :group => group if user_signed_in?
+        %h2
+          .shadow= @group.tagline
+      .buttons
+        = render 'button_container'
+

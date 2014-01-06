@@ -22,3 +22,9 @@ toggle_viewable_by_parent_members_ability = ->
   else
     $('.group_viewable_by_parent_members label').removeClass('disabled')
     $('input#group_viewable_by_parent_members').removeAttr('disabled')
+
+$ ->
+  $("#upload-profile-image").change (event, ui) ->
+    $("#upload-form").submit()
+  $('#js-group-profile-image-upload').click (event) ->
+    $("#upload-profile-image").click()

@@ -11,12 +11,19 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
   validates_inclusion_of :privacy, in: PRIVACY_CATEGORIES
   validates_inclusion_of :members_invitable_by, in: INVITER_CATEGORIES
-  validates :description, :length => { :maximum => 250 }
+  validates :tagline, :length => { :maximum => 125 }
   validates :name, :length => { :maximum => 250 }
+  # should there be some validation on the :description?
 
   validate :limit_inheritance
   validate :privacy_allowed_by_parent, if: :is_a_subgroup?
   validate :subgroups_are_hidden, if: :is_hidden?
+
+  validates_attachment_size :profile_image, :in => 0..10.megabytes
+  validates_attachment_content_type :profile_image, :content_type => /^image\/(png|gif|jpeg)/
+  has_attached_file    :profile_image,
+                       :styles => { group_cover_desktop: "980x200#",
+                                    discussion_cover_desktop: "980x40#" }
 
   after_initialize :set_defaults
   before_save :update_full_name_if_name_changed

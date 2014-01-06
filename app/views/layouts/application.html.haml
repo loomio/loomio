@@ -15,12 +15,19 @@
     = csrf_meta_tags
     = render 'social_metadata', :description => @meta_description, :title => @meta_title
 
-  %body{class: "#{controller_name} #{action_name}"}
+  - body_class = "#{controller_name} #{action_name}"
+  - if (controller_name == 'groups') || (controller_name == 'discussions')
+    - branded = true
+    - body_class += " branded"
+  - if user_signed_in?
+    - body_class += " logged-in"
+
+  %body{class: body_class}
     - analytics_scope do
       = render 'google_tag_manager'
     .main-container.container
       = render 'announcements'
-      = render 'header'
+      = render 'header', branded: branded
       = render 'flash_messages', :flash => flash, :on_landing_page => false
       .page-container
         = yield

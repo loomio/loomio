@@ -4,27 +4,30 @@
 
 body.groups {
   &.show {
+    #button-container{
+      margin: 0 0 10px 0;
+    }
+    .cover-image{
+      height: 200px;
+      h1{ font-size: 3em; }
+      .sign-in{ margin: 0 0 150px 146px; }
+    }
     .discussion-preview .discussion-title { margin-top: 7px; }
     .discussion-preview.showing-group .discussion-title { margin-top: 0; }
-    #group-description-panel {
+    #group-discussions{
+      h3{ margin-top: 1em; }
+      #discussion-list{ border-top: 1px solid $light-grey; }
+    }
+
+    #group-description {
       #description-edit-form {
         margin-bottom: 0px;
-        #description-input {
-          width: 184px;
-          height: 90px;
-          margin-bottom: 2px;
-        }
-        .character-counter {
-          width: 196px;
-          top: 0;
-        }
-        .dropdown-menu a {
-          padding-left: 5px;
-        }
-        form {
-          margin: 0;
-          display: inline;
-        }
+        #description-input { margin-bottom: 2px; }
+      }
+      a.edit-description{
+        display: block;
+        float: right;
+        text-decoration: none;
       }
     }
     .group-options {
@@ -34,6 +37,8 @@ body.groups {
         margin-top: 0;
         left: 0;
       }
+      form#upload-form{margin-bottom: 0;}
+      input#upload-profile-image{display: none;}
     }
     .heart-icon {color: red;}
 
@@ -123,34 +128,6 @@ body.groups {
   .home-title {
     color: $dark-grey;
     display: inline;
-  }
-  .privacy-dropdown {
-    display: inline;
-    width: 120px;
-    bottom: 5px;
-  }
-  .privacy-dropdown .dropdown-menu a { padding-left: 5px; }
-  li.privacy-item i {
-    display: inline-block;
-    width: 15px;
-  }
-  .privacy-dropdown form {
-    margin: 0px;
-    display: inline;
-  }
-  li.privacy-item button {
-    border: none;
-    border-radius: 0px;
-    -webkit-border-radius: 0px;
-    margin-bottom: 0px;
-    box-shadow: none;
-    width: 180px;
-    padding-left: 25px;
-    text-align: left;
-  }
-  li.privacy-item button:hover {
-    color: white;
-    background-color: #08c;
   }
 }
 

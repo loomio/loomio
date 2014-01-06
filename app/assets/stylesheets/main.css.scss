@@ -7,6 +7,7 @@ body {
   background-color: $main-background;
   height: 100%;
   color: $text-black;
+  &.logged-in { margin-top: 45px; }
 }
 
 code{
@@ -74,7 +75,7 @@ ul, ol, li {
   padding: 0;
 }
 
-.alert { margin: 10px 0; }
+.flash-messages { margin: 10px 0; }
 
 .btn-app {
   line-height: 18px;
@@ -168,6 +169,50 @@ ul, ol, li {
   }
 }
 
+.cover-image{
+  margin: 0px -20px 20px -20px;
+  position: relative;
+  background-color: $light-grey;
+  .text{
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 700px;
+    text-shadow: 0 1px 0 white;
+    color: white;
+    #privacy{
+      max-width: 100px;
+      margin: 14px 0 0 15px;
+      float: left;
+      background: rgba(0,0,0,.5);
+      @include border-radius(4px);
+      padding: 0 5px;
+      img{padding-bottom: 5px;}
+    }
+  }
+  .buttons{
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    width: 220px;
+  }
+  h1{
+    line-height: 1;
+    max-width: 600px;
+    margin-bottom: 8px;
+    float: left;
+    a{color: white;}
+  }
+  h2{
+    font-weight: normal;
+    clear: both;
+    line-height: 1.2;
+  }
+  .shadow{
+    text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    color: white;
+  }
+}
 .character-counter {
   color: $mid-grey;
   text-align: right;

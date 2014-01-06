@@ -1,0 +1,6 @@
+- privacy = group.privacy
+- header = t "simple_form.labels.group.privacy_#{privacy}_header"
+- description = t "simple_form.labels.group.privacy_#{privacy}_description_short"
+#privacy.shadow{"data-title" => "#{description}", 'data-container'=> 'body' }
+  = image_tag("privicon_"+privacy.to_s+".png", alt: "#{header}: #{description}", :id => 'privacy-image')
+  = header
