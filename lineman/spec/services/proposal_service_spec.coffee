@@ -1,7 +1,6 @@
 describe 'ProposalService', ->
   service = null
   httpBackend = null
-  proposal = null
   discussion = null
   event = null
   callbacks = null
@@ -15,32 +14,21 @@ describe 'ProposalService', ->
       service = ProposalService
       httpBackend = $httpBackend
 
+  beforeEach ->
+    callbacks =
+      success: (response) -> true
+      error: (response) -> true
+
   afterEach ->
     httpBackend.verifyNoOutstandingExpectation()
     httpBackend.verifyNoOutstandingRequest()
 
   describe 'create', ->
+    proposal = null
     beforeEach ->
-      callbacks =
-        success: (response) ->
-          true
-
-        error: (response) ->
-          true
-
-      proposal =
-        title: 'lets go crazy'
-
-      discussion =
-        title: 'what shall we do?'
-        events: []
-
-      event =
-        id: 1
-        sequence_id: 1
-        eventable: proposal
-        kind: 'new_motion'
-
+      proposal = {title: 'lets go crazy'}
+      discussion = {events: []}
+      event = {eventable: proposal}
       errors = ['no hats selected']
 
     it 'posts the comment to the server', ->
@@ -61,6 +49,35 @@ describe 'ProposalService', ->
         spyOn(callbacks, 'error')
         httpBackend.expectPOST('/api/motions', proposal).respond(400, {errors: errors})
         service.create(proposal, callbacks.success, callbacks.error)
+        httpBackend.flush()
+        expect(callbacks.error).toHaveBeenCalledWith(errors)
+
+  describe 'vote', ->
+    vote = null
+    beforeEach ->
+      vote = {proposal_id: 1, position: 'yes', statement: 'y not'}
+      discussion = {events: []}
+      event = {eventable: vote}
+      errors = ['no hats selected']
+
+    it 'posts the comment to the server', ->
+      httpBackend.expectPOST('/api/motions/vote', vote).respond(200, {event: event})
+      service.saveVote(vote, callbacks.success, callbacks.error)
+      httpBackend.flush()
+
+    context 'proposal was successfully created', ->
+      it 'calls the onSuccess callback with the event', ->
+        spyOn(callbacks, 'success')
+        httpBackend.expectPOST('/api/motions/vote', vote).respond(200, {event: event})
+        service.saveVote(vote, callbacks.success, callbacks.error)
+        httpBackend.flush()
+        expect(callbacks.success).toHaveBeenCalledWith(event)
+
+    context 'proposal failed to save', ->
+      it 'calls the onFailure callback with the errors', ->
+        spyOn(callbacks, 'error')
+        httpBackend.expectPOST('/api/motions/vote', vote).respond(400, {errors: errors})
+        service.saveVote(vote, callbacks.success, callbacks.error)
         httpBackend.flush()
         expect(callbacks.error).toHaveBeenCalledWith(errors)
 

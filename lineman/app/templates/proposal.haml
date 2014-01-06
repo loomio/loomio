@@ -16,14 +16,23 @@
       block: {{proposal.block_votes_count}}
     .clearfix
     .row.decision-buttons
-      .agree
+      .agree{ng_click: 'selectPosition("yes")'}
         %i.fa.fa-smile-o{style: "color: green"}
-      .abstain
+      .abstain{ng_click: 'selectPosition("abstain")'}
         %i.fa.fa-meh-o{style: "color: orange"}
-      .disagree
+      .disagree{ng_click: 'selectPosition("no")'}
         %i.fa.fa-frown-o{style: "color: pink"}
-      .block
+      .block{ng_click: 'selectPosition("block")'}
         %i.fa.fa-warning{style: "color: red"}
+
+    .row.statement-form{ng_show: 'voteFormIsExpanded'}
+      %form{ng_submit: 'submitVote()'}
+        %fieldset{ng_disable: 'voteFormIsDisabled'}
+          .form-group
+            %textarea{ng_model: 'newVote.statement'}
+            %button.btn.btn-primary{type: :submit}
+              Vote
+
     -#.row.new-position
       -#.agree
         -#%form

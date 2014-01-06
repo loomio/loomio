@@ -7,3 +7,9 @@ angular.module('loomioApp').service 'ProposalService',
         onSuccess(response.data.event)
       , (response) ->
         onFailure(response.data.errors)
+
+    saveVote: (vote, onSuccess, onFailure) ->
+      @$http.post('/api/motions/vote', vote).then (response) ->
+        onSuccess(response.data.event)
+      , (response) ->
+        onFailure(response.data.errors)

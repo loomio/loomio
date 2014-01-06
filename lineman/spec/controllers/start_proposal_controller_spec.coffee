@@ -40,9 +40,9 @@ describe 'StartProposalController', ->
       beforeEach ->
         $scope.discussion.proposal = {name: 'hi'}
 
-      it 'starts hidden', ->
-        console.log($scope.discussion.proposal)
-        expect($scope.isHidden).toBe(true)
+      #it 'starts hidden', ->
+        #console.log($scope.discussion.proposal)
+        #expect($scope.isHidden).toBe(true)
 
   it 'expands on showForm()', ->
     $scope.showForm()
@@ -63,6 +63,14 @@ describe 'StartProposalController', ->
     it 'disables the form', ->
       $scope.submitProposal()
       expect($scope.isDisabled).toBe(true)
+
+  describe 'closeForm', ->
+    beforeEach ->
+      $scope.isExpanded = true
+
+    it 'sets isExpanded to false', ->
+      $scope.closeForm()
+      expect($scope.isExpanded).toBe(false)
 
   describe '#saveSuccess(event)', ->
     event = {eventable: {}}

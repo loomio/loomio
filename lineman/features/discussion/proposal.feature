@@ -6,5 +6,12 @@ Feature: Proposals
     Then I'll see the new proposal discussion item
     And the proposal should be running
 
-  Scenario: Extending a proposal
-  Scenario: Closing a proposal
+  Scenario: Voting with statement
+    Given I am signed in, viewing a discussion with a proposal
+    When I click the agree button and enter a statement
+    Then I should see my vote and statement
+
+  Scenario: Extending the close date
+
+  Scenario: Closing and setting outcome
+
