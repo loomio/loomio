@@ -32,24 +32,17 @@
         Edit
 
   .card-row{'ng-repeat' => 'event in discussion.events'}
-    %div{'ng-include' => "event.kind == 'new_comment' && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
+    %div{'ng-include' => "'generated/templates/discussion_items/'+ event.kind + '.html'"}
     -#"discussion_title_edited",
     -#"discussion_description_edited",
     -#"new_motion",
     -#"new_vote",
-    -#["new_comment",
     -#"motion_closed",
     -#"motion_close_date_edited",
     -#"motion_blocked"]
     -#"new_discussion",
 
-  .card-row#create-a-proposal
-    .card
-      .card__header
-        %h3 Ready to make a decision?
-      .card__content
-        %a{'ng-href' => '/discussions/{{discussion.id}}/new_proposal'}
-          Create a proposal
+  %start_proposal{discussion: 'discussion'}
 
-  %add_comment
+  %add_comment{discussion: 'discussion'}
 

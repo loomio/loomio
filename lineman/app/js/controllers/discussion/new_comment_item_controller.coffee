@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'CommentController', ($scope, CommentService) ->
+angular.module('loomioApp').controller 'NewCommentItemController', ($scope, CommentService) ->
   $scope.comment = $scope.event.eventable
 
   $scope.like = ->

@@ -3,6 +3,9 @@ describe 'AddComment Controller', ->
   $scope = null
   controller = null
 
+  discussion =
+    events: []
+
   mockCommentService =
     add: (comment) ->
       true
@@ -12,9 +15,30 @@ describe 'AddComment Controller', ->
   beforeEach inject ($rootScope, $controller) ->
     parentScope = $rootScope
     $scope = $rootScope.$new()
+    $scope.discussion = discussion
     controller = $controller 'AddCommentController',
       $scope: $scope
       CommentService: mockCommentService
+
+  it 'defines a newComment', ->
+    expect($scope.newComment).toBeDefined()
+
+  describe 'collapseIfEmpty()', ->
+    beforeEach ->
+      $scope.isExpanded = true
+
+    context 'text in the real textarea', ->
+      it 'does not collapse', ->
+        $scope.newComment.body = 'hi there'
+        $scope.collapseIfEmpty()
+        expect($scope.isExpanded).toBe(true)
+
+    context 'textarea is empty', ->
+      beforeEach ->
+        $scope.collapseIfEmpty()
+
+      it 'collapses', ->
+        expect($scope.isExpanded).toBe(false)
 
   it 'should start collapsed', ->
     expect($scope.isExpanded).toBe(false)
@@ -25,11 +49,7 @@ describe 'AddComment Controller', ->
       discussion_id: 1,
       body: 'hello'
 
-    discussion =
-      events: []
-
     $scope.newComment = comment
-    $scope.discussion = discussion
 
     spyOn(mockCommentService, 'add').andReturn(true)
     $scope.processForm()

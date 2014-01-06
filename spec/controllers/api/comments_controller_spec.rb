@@ -15,14 +15,14 @@ describe Api::CommentsController do
     let(:comment_params) { {body: 'hello', discussion_id: discussion.id} }
 
     it "creates a comment" do
-      post :create, comment: comment_params
+      post :create, comment: comment_params, format: :json
       response.should be_success
     end
 
-    it 'returns the comment json', focus: true do
-      post :create, comment: comment_params
-      JSON.parse(response.body).keys.should include *(%w[id sequence_id kind comment])
-      JSON.parse(response.body)['comment'].keys.should include *(%w[body author created_at])
+    it 'returns the comment json' do
+      post :create, comment: comment_params, format: :json
+      JSON.parse(response.body).keys.should include *(%w[id sequence_id kind eventable])
+      JSON.parse(response.body)['eventable'].keys.should include *(%w[body author created_at])
     end
   end
 
