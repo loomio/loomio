@@ -23,7 +23,7 @@ describe Api::MotionsController do
         response.should be_success
       end
 
-      it 'returns the proposal json' do
+      it 'returns the event json' do
         post :create, motion: motion_params, format: :json
         event = JSON.parse(response.body)['event']
         event.keys.should include *(%w[id sequence_id kind eventable])
@@ -45,6 +45,18 @@ describe Api::MotionsController do
         errors.should == assigns[:motion].errors.full_messages
       end
     end
+  end
+
+  describe 'vote' do
+    context 'success' do
+      it 'creates a vote'
+      it 'returns the event json'
+    end
+
+    context 'error' do
+
+    end
+
   end
 end
 

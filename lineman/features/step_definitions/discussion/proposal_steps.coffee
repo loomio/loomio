@@ -21,5 +21,21 @@ module.exports = ->
   @Then /^the proposal should be running$/, (callback) ->
     @browser.findElement(@by.css('.cuke-current-proposal')).getText().then (text) =>
       callback.pending()
-      #@assert.equal text, "created a proposal"
+
+  @Given /^I am signed in, viewing a discussion with a proposal$/, (callback) ->
+    @driver.get('http://localhost:3000/angular_support/setup_for_vote_on_proposal').then =>
+      callback()
+
+  @When /^I click the agree button and enter a statement$/, (callback) ->
+    @browser.findElement(@by.css('.cuke-vote-yes-btn')).click().then =>
+      @browser.findElement(@by.id('vote-statement-field')).sendKeys('why not').then =>
+        @browser.findElement(@by.css('cuke-submit-vote-btn')).click().then =>
+          callback()
+
+  @Then /^I should see my vote and statement$/, (callback) ->
+    @browser.findElement(@by.css('.cuke-new-vote-item')).getText().then (text) =>
+      if text.match(/agreed/)
+        callback()
+      else
+        callback.fail()
 

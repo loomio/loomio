@@ -24,6 +24,9 @@ angular.module('loomioApp').controller 'StartProposalController', ($scope, Propo
   $scope.showForm = ->
     $scope.isExpanded = true
 
+  $scope.closeForm = ->
+    $scope.isExpanded = false
+
   $scope.collapseIfEmpty = ->
     if ($scope.commentField.val().length == 0)
       $scope.isExpanded = false

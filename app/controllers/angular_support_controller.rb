@@ -31,6 +31,19 @@ class AngularSupportController < ApplicationController
     redirect_to_discussion
   end
 
+  def setup_for_vote_on_proposal
+    reset_database
+    sign_in patrick
+
+    MotionService.create(Motion.new(author: jennifer,
+                                    name: 'lets go hiking',
+                                    closing_at: 3.days.from_now,
+                                    discussion: testing_discussion))
+
+
+    redirect_to_discussion
+  end
+
   private
   def prevent_production_destruction
     raise "No way!" if Rails.env.production?
