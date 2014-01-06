@@ -1,4 +1,5 @@
 module GroupsHelper
+
   def css_for_privacy_link(group, link)
     current_privacy_setting = String(group.privacy)
     return "icon-ok" if link == current_privacy_setting
@@ -76,7 +77,7 @@ module GroupsHelper
   end
 
   def request_membership_icon_button(group, params={})
-    old_params = { href: new_group_membership_request_path(group),
+    old_params = { href: group_ask_to_join_path(group),
                    text: t(:ask_to_join_group),
                    icon: nil,
                    id: 'request-membership',

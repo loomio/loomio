@@ -37,19 +37,19 @@ describe GroupDecorator do
 
   describe "fancy_link" do
     it "result contains a link to group" do
-      @group.fancy_link.should =~ /\/groups\/#{@group.id}/
+      @group.fancy_link.should =~ /\/g\/#{@group.key}/
     end
     context "of a subgroup" do
       it "result contains a link to subgroup" do
-        @subgroup.fancy_link.should =~ /\/groups\/#{@subgroup.id}/
+        @subgroup.fancy_link.should =~ /\/g\/#{@subgroup.key}/
       end
       it "result contains a link to parent group" do
-        @subgroup.fancy_link.should =~ /\/groups\/#{@group.id}/
+        @subgroup.fancy_link.should =~ /\/g\/#{@group.key}/
       end
     end
     context "where show_parent_name = false" do
       it "result does not contain parent link" do
-        @subgroup.fancy_link(false).should_not =~ /\/groups\/#{@group.id}/
+        @subgroup.fancy_link(false).should_not =~ /\/g\/#{@group.key}/
       end
     end
   end

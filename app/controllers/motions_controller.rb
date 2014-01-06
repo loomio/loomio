@@ -16,7 +16,7 @@ class MotionsController < GroupBaseController
       authorize! :create, @motion
       if @motion.save
         flash[:success] = t("success.proposal_created")
-        redirect_to discussion_path(@discussion)
+        redirect_to @discussion
       else
         flash[:warning] = t("warning.proposal_not_created")
         render action: :new

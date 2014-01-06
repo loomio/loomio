@@ -82,7 +82,7 @@ When(/^I follow an invitation link I have already used$/) do
 end
 
 Then(/^I should be redirected to the group page$/) do
-  URI.parse(current_url).path.should == group_path(@group)
+  URI.parse(current_url).path.should include group_path(@group)
 end
 
 Then(/^I should be told the invitation link has already been used$/) do
