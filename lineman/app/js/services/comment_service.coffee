@@ -4,7 +4,7 @@ angular.module('loomioApp').service 'CommentService',
     # i am here.. then append to discussion?
     add: (comment, discussion) ->
       @$http.post('/api/comments', comment).then (response) ->
-        discussion.events.push response.data
+        discussion.events.push response.data.event
 
     like: (comment) ->
       @$http.post("/api/comments/#{comment.id}/like").then (response) ->

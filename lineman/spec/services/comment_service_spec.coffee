@@ -23,27 +23,28 @@ describe 'CommentService', ->
     httpBackend.verifyNoOutstandingRequest()
 
   describe 'add', ->
-    eventResponse =
-      id: 1
-      sequence_id: 1
-      comment:
-        author:
-          id: 1
-          name: 'jimmy'
-        body: 'hi'
-        discussion_id: 1
+    response =
+      event:
+        id: 1
+        sequence_id: 1
+        comment:
+          author:
+            id: 1
+            name: 'jimmy'
+          body: 'hi'
+          discussion_id: 1
 
     it 'posts the comment to the server', ->
-      httpBackend.expectPOST('/api/comments', comment).respond(200, eventResponse)
+      httpBackend.expectPOST('/api/comments', comment).respond(200, response)
       service.add(comment, discussion)
       httpBackend.flush()
 
     it 'pushes the returned event onto the discussion', ->
-      httpBackend.whenPOST('/api/comments', comment).respond(200, eventResponse)
+      httpBackend.whenPOST('/api/comments', comment).respond(200, response)
       spyOn(discussion.events, 'push')
       service.add(comment, discussion)
       httpBackend.flush()
-      expect(discussion.events.push).toHaveBeenCalledWith(eventResponse)
+      expect(discussion.events.push).toHaveBeenCalledWith(response.event)
 
   describe 'like', ->
     likeResponse =

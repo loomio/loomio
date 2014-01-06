@@ -83,6 +83,7 @@ class Discussion < ActiveRecord::Base
   def current_motion
     voting_motions.last
   end
+  alias_method :current_proposal, :current_motion
 
   def number_of_comments_since(time)
     comments.where('comments.created_at > ?', time).count

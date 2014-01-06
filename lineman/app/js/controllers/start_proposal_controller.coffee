@@ -15,7 +15,9 @@ angular.module('loomioApp').controller 'StartProposalController', ($scope, Propo
     $scope.showDatetimepicker = !$scope.showDatetimepicker
 
   $scope.isExpanded = false
+
   $scope.isHidden = false
+
   $scope.isDisabled = false
   $scope.errorMessages = []
 

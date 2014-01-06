@@ -1,9 +1,6 @@
 describe 'addComment directive', ->
   $scope = {}
   element = {}
-  form = {}
-  fakeInput = {}
-  realInput = {}
   discussion = {id: 1}
 
   beforeEach module 'loomioApp'
