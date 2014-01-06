@@ -1,5 +1,4 @@
 class Api::CommentsController < Api::BaseController
-  respond_to :json
 
   def create
     @comment = Comment.new(permitted_params.comment)

@@ -17,6 +17,7 @@ Loomio::Application.routes.draw do
   end
 
   namespace :api, defaults: {format: :json} do
+    resources :motions, only: [:create]
     resources :comments, only: [:create, :show] do
       member do
         post :like

@@ -16,16 +16,13 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       port: 3000
       prefix: 'api'
 
-  # configure lineman to load additional angular related npm tasks
-  loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ngmin", "grunt-contrib-haml", 'grunt-sass', 'grunt-cucumber']
+  loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ngmin", "grunt-contrib-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy']
 
-  # we don't use the lineman default concat, handlebars, and jst tasks by default
   removeTasks:
     common: ["handlebars", "jst", 'less', 'pages:dev', 'grunt-haml']
     dev: ["pages:dev"]
     dist: ['pages:dev']
 
-  # task override configuration
   prependTasks:
     dist: ["ngmin"] # ngmin should run in dist only
     common: ["haml", "ngtemplates"] # ngtemplates runs in dist and dev
@@ -55,6 +52,23 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
         dest: "generated/"
         ext: ".html"
       ]
+
+  copy:
+    common:
+      files:
+        [
+          expand: true
+          cwd: 'vendor/bower_components/font-awesome/fonts/'
+          src: ['*']
+          dest: 'generated/fonts'
+          flatten: true
+        ,
+          expand: true
+          cwd: 'vendor/bower_components/sass-bootstrap/fonts'
+          src: ['*']
+          dest: 'generated/fonts'
+          flatten: true
+        ]
 
   sass:
     common:
@@ -126,3 +140,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
     pages:
       files: "app/pages/**/*.haml"
       tasks: ["haml"]
+
+    webfonts:
+      files: "<%= files.webfonts.vendor %>"
+      tasks: ["webfonts:dev"]

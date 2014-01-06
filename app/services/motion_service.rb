@@ -5,6 +5,15 @@ class MotionService
     end
   end
 
+  def self.create(motion)
+    motion.author.ability.authorize! :create, motion
+    if motion.save
+      Events::NewMotion.publish!(motion)
+    else
+      false
+    end
+  end
+
   def self.close(motion)
     # this line is required because motions are not being
     # archived when groups get archived so they dangle

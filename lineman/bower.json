@@ -6,6 +6,7 @@
     "underscore": "~1.5.2",
     "angular-route": "~1.2.3",
     "sass-bootstrap": "~3.0.2",
-    "font-awesome": "~4.0.3"
+    "font-awesome": "~4.0.3",
+    "angular-bootstrap-datetimepicker": "latest"
   }
 }

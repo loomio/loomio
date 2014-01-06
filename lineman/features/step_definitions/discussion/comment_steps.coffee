@@ -41,4 +41,5 @@ module.exports = ->
           callback()
 
   @Then /^I should see my reply comment in the discussion$/, (callback) ->
-    callback.pending()
+    @browser.findElement(@by.css('.in-reply-to')).getText().then (text) =>
+      callback()

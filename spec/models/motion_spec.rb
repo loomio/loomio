@@ -1,6 +1,26 @@
 require 'spec_helper'
 
 describe Motion do
+  describe 'validates only one motion voting at a time' do
+    let(:discussion) { create :discussion }
+
+    subject do
+      Motion.create(discussion: discussion, name: 'yoo hoo', author: discussion.author)
+    end
+
+    context 'no other motions voting' do
+      it {should have(0).errors_on(:discussion)}
+    end
+
+    context 'motion already in voting', focus: true do
+      before do
+        @other_motion = Motion.create(discussion: discussion, name: 'yoo hoo', author: discussion.author)
+      end
+
+      it {should have(1).errors_on(:discussion)}
+    end
+  end
+
   describe "#voting?" do
     it "returns true if motion is open" do
       @motion = create :motion
@@ -15,15 +35,6 @@ describe Motion do
       @motion.closed?.should be_true
       @motion.voting?.should be_false
     end
-  end
-
-  it "assigns the close_at from close_at_* fields" do
-    close_date = "23-05-2013"
-    close_time = "15:00"
-    time_zone = "Saskatchewan"
-    motion = build(:motion, close_at_date: close_date, close_at_time: close_time, close_at_time_zone: time_zone)
-    motion.save!
-    motion.closing_at.in_time_zone("Saskatchewan").to_s.should == "2013-05-23 15:00:00 -0600"
   end
 
   describe "#user_has_voted?(user)" do
@@ -52,36 +63,6 @@ describe Motion do
     it "does not return discussions that don't belong to the user" do
       motion = create(:motion, name: "sandwich crumbs")
       @user.motions.search("sandwich").should_not == [motion]
-    end
-  end
-
-  context "events" do
-    before do
-      @user = create :user
-      @group = create :group
-      @group.add_admin! @user
-      @discussion = create :discussion, :group => @group
-    end
-    it "fires new_motion event if a motion is created successfully" do
-      motion = build(:motion)
-      motion.should_receive(:fire_new_motion_event)
-      motion.save!
-    end
-  end
-
-  context "moving motion to new group" do
-    before do
-      @new_group = create(:group)
-      @motion = create(:motion)
-      @motion.move_to_group @new_group
-    end
-
-    it "changes motion group_id to new group" do
-      @motion.group.should == @new_group
-    end
-
-    it "changes motion discussion_id to new group" do
-      @motion.discussion.group.should == @new_group
     end
   end
 

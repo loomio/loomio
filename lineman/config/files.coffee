@@ -4,13 +4,20 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
 
   css:
     app: ['app/css/main.css']
-    vendor: ['vendor/bower_components/ionicons/css/iconicons.css']
+    vendor: ['vendor/bower_components/ionicons/css/iconicons.css',
+             'vendor/bower_components/font-awesome/css/font-awesome.css',
+             'vendor/bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css']
 
   js:
-    vendor: ["vendor/bower_components/underscore/underscore.js"
-             "vendor/bower_components/jquery/jquery.js"
-             "vendor/bower_components/angular/angular.js"
-             "vendor/bower_components/angular-route/angular-route.js"]
+    vendor: ["vendor/bower_components/underscore/underscore.js",
+             "vendor/bower_components/moment/moment.js",
+             "vendor/bower_components/jquery/jquery.js",
+             "vendor/bower_components/angular/angular.js",
+             "vendor/bower_components/angular-route/angular-route.js",
+             "vendor/bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"]
 
     app: ["app/js/app.js"
           "app/js/**/*.js"]
+
+  webfonts:
+    vendor: ["vendor/bower_components/font-awesome/fonts/*"]

@@ -1,4 +1,4 @@
-describe 'Comment Controller', ->
+describe 'Discussion/NewCommentItemController', ->
   $scope = null
   controller = null
 
@@ -22,7 +22,7 @@ describe 'Comment Controller', ->
 
     $scope.currentUser = {id: 1, name: 'Bill Withers'}
 
-    controller = $controller 'CommentController',
+    controller = $controller 'NewCommentItemController',
       $scope: $scope
       CommentService: mockCommentService
 
