@@ -8,15 +8,14 @@
               %h1= t('email.activity_summary.heading')
           %tr
             %td.last-read-cell
-              %div.sub-title= t('email.activity_summary.sub_header', since_time: @last_summary_at.strftime('%B %-d, %Y'))
-        - @inbox.items_by_group do |group, items|
+              %div.sub-title= t('email.activity_summary.sub_header', since_time: @activity_summary.last_sent_at.strftime('%B %-d, %Y'))
+        - @activity_summary.items_by_group do |group, discussion|
           %table.with-font-and-width.group
             %tr
               %td
                 %h2= group.full_name
-          - items.each do |item|
-            -if item.is_a? Discussion
-              =render 'activity_item_discussion', discussion: item, last_summary_at: @last_summary_at
+          - discussion.each do |discussion|
+            = render 'activity_item_discussion', discussion: discussion, last_summary_at: @last_summary_at
 
         %table.with-font-and-width.footer
           %tr

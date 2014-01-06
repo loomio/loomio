@@ -20,7 +20,7 @@ html#activity_summary {
   }
   .content-cell { width: 552px; }
   .content-sub-cell { width: 512px; }
-  .discussion-title-cell { width: 458px; }
+  .discussion-title-cell { width: 468px; }
   .footer {
     background-color: #EEE;
     font-size: 12px;
@@ -39,12 +39,9 @@ html#activity_summary {
     background-color: #FAC270;
   }
   .icon-cell {
-    width: 40px;
+    padding: 0;
     text-align: center;
-  }
-  .icon-sub-cell{
     width: 40px;
-    text-align: center;
   }
   .last-read-cell { 
     text-align: right;
@@ -86,7 +83,7 @@ html#activity_summary {
     font-size: 20px;
     height: 40px;
     margin: 0;
-    width: 40;
+    width: 40px;
   }
   .sub-title {
     color:#AAA;

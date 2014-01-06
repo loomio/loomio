@@ -14,9 +14,8 @@ class UserMailer < BaseMailer
 
   def activity_summary(user, last_summary_at)
     @user = user
-    @inbox = Inbox.new(user)
-    @inbox.load
-    @last_summary_at = last_summary_at
+    @activity_summary = ActivitySummary.new(user, last_summary_at)
+    @activity_summary.load
     locale = best_locale(user.language_preference, nil)
     I18n.with_locale(locale) do
       mail to: @user.email,

@@ -4,43 +4,51 @@
     %td.content-cell
       %hr
 
+- if new_and_unread?(motion, @activity_summary)
+  %table.with-font-and-width
+    %tr
+      %td.icon-cell
+      = render 'activity_item_avatar', user: motion.author, item: motion, item_text: t('email.activity_summary.created_a_proposal')
+
 %table.with-font-and-width
   %tr
     %td.icon-cell
-    %td.icon-sub-cell
+    %td.icon-cell
       %img.icon-type{ src:'assets/pie-24.png' }
     %td
       %h3= motion.name
   %tr
     %td.icon-cell
-    %td.icon-sub-cell
+    %td.icon-cell
     %td.created-by-cell
       %div.sub-title= t('email.activity_summary.proposed_by', who: motion.author.name)
       %div.sub-title= t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
-%table.with-font-and-width
-  %tr
-    %td.icon-cell
-    %td.icon-sub-cell
-    %td
-      %p= motion.description
 
-- motion.votes.each do |vote|
+- unless motion.description.blank?
   %table.with-font-and-width
     %tr
       %td.icon-cell
-      %td.icon-sub-cell
+      %td.icon-cell
+      %td
+        %p= display_description(motion.description, new_and_unread?(motion, @activity_summary))
+
+- motion.votes_since(@activity_summary.last_sent_at).each do |vote|
+  %table.with-font-and-width
+    %tr
+      %td.icon-cell
+      %td.icon-cell
       %td.content-sub-cell
         %hr
   %table.with-font-and-width
     %tr
       %td.icon-cell
       %td.icon-cell
-      = render 'activity_item_avatar', user: vote.user, item: vote, item_text: "has #{vote.position.to_s}"
+      = render 'activity_item_avatar', user: vote.user, item: vote, item_text: "has #{vote.position_to_s}"
   %table.with-font-and-width                
     %tr
       %td.icon-cell
-      %td.icon-sub-cell
-      %td.icon-sub-cell.position-cell
+      %td.icon-cell
+      %td.icon-cell.position-cell
         %img{ src: "assets/hand-#{vote.position}-18.png" }
       %td
         %p= vote.statement

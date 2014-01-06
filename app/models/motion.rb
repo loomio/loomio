@@ -199,6 +199,10 @@ class Motion < ActiveRecord::Base
     Vote.unique_votes(self)
   end
 
+  def votes_since(time)
+    votes.where('created_at >= ?', time)
+  end
+
   def store_users_that_didnt_vote
     did_not_votes.delete_all
     group.users.each do |user|
@@ -211,6 +215,10 @@ class Motion < ActiveRecord::Base
     end
     update_attribute(:did_not_votes_count, did_not_votes.count)
     reload
+  end
+
+  def created_since?(time)
+    created_at >= time
   end
 
   private

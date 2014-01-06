@@ -1,12 +1,13 @@
-- new_discussion = new_discussion?(@inbox, discussion, @last_summary_at)
 %table.with-font-and-width
   %tr
     %td.full-width-cell
       %hr
-- if new_discussion
+
+- if discussion.created_since?(@activity_summary.last_sent_at)
   %table.with-font-and-width
     %tr
-      = render 'activity_item_avatar', user: discussion.author, item: discussion, item_text: "started a discussion"
+      = render 'activity_item_avatar', user: discussion.author, item: discussion, item_text: t('email.activity_summary.started_a_discussion')
+
 %table.with-font-and-width
   %tr
     %td.icon-cell
@@ -18,12 +19,18 @@
   %tr
     %td.icon-cell
     %td.created-by-cell
-      %div.sub-title= t('email.activity_summary.discussion_started_by', who: discussion.author.name) 
-%table.with-font-and-width
-  %tr
-    %td.icon-cell
-    %td
-      %p= new_discussion ? discussion.description : truncate(discussion.description, :length => 200, :omission => '...')
+      %div.sub-title= t('email.activity_summary.discussion_started_by', who: discussion.author.name)
 
-- discussion.comments_since(last_summary_at).each do |comment|
-  =render 'activity_item_comment', comment: comment
+- unless discussion.description.blank?
+  %table.with-font-and-width
+    %tr
+      %td.icon-cell
+      %td
+        %p= display_description(discussion.description, discussion.created_since?(@activity_summary.last_sent_at))
+
+- motion = discussion.current_motion
+- if motion && new_or_unread?(motion, @activity_summary)
+  = render 'activity_item_motion', motion: motion
+
+- discussion.comments_since(@activity_summary.last_sent_at).each do |comment|
+  = render 'activity_item_comment', comment: comment

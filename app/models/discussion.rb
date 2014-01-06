@@ -89,9 +89,13 @@ class Discussion < ActiveRecord::Base
   end
   
   def comments_since(time)
-    comments.where('comments.created_at > ?', time)
+    comments.where('created_at > ?', time)
   end
-  
+
+  def created_since?(time)
+    created_at >= time
+  end
+
   def viewed!
     Discussion.increment_counter(:total_views, id)
     self.total_views += 1
