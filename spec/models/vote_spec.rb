@@ -26,14 +26,6 @@ describe Vote do
     vote.should have(1).errors_on(:position)
   end
 
-  it 'sends notification email to author if block is issued' do
-    MotionMailer.should_receive(:motion_blocked).with(kind_of(Vote))
-      .and_return(double(deliver: true))
-    vote = Vote.new(position: 'block', statement: "I'm blocking this motion")
-    vote.motion = motion
-    vote.user = user
-    vote.save
-  end
 
   it 'can have a statement' do
     vote = Vote.new(position: "yes", statement: "This is what I think about the motion")
@@ -54,7 +46,7 @@ describe Vote do
     vote = Vote.new(position: "yes")
     vote.motion = motion
     vote.user = user
-    vote_time = stub "time"
+    vote_time = double("time")
     motion.stub(:latest_vote_time).and_return(vote_time)
     motion.should_receive(:last_vote_at=).with(vote_time)
     vote.save!
@@ -90,20 +82,6 @@ describe Vote do
       vote2.save!
 
       vote2.previous_vote.id.should == vote.id
-    end
-  end
-  context "when a vote is created" do
-    it "fires a 'new_vote' event" do
-      motion = create :motion
-      Events::NewVote.should_receive(:publish!)
-      vote = create :vote, :motion => motion, :position => "yes"
-    end
-  end
-  context "when a vote is blocked" do
-    it "fires a 'motion_blocked' event" do
-      motion = create :motion
-      Events::MotionBlocked.should_receive(:publish!)
-      vote = create :vote, :motion => motion, :position => "block"
     end
   end
 end

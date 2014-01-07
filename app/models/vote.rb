@@ -37,9 +37,8 @@ class Vote < ActiveRecord::Base
   delegate :name, :to => :motion, :prefix => :motion
   delegate :name, :full_name, :to => :group, :prefix => :group
 
-  after_save :send_notifications, :update_motion_vote_counts
-
-  after_create :update_motion_last_vote_at, :fire_new_vote_event
+  after_save :update_motion_vote_counts
+  after_create :update_motion_last_vote_at
   after_destroy :update_motion_last_vote_at, :update_motion_vote_counts
 
   def other_group_members
@@ -67,19 +66,12 @@ class Vote < ActiveRecord::Base
   end
 
   def previous_vote
-    prev_position = Vote.find(:first,
-      :conditions => [
-        'motion_id = ? AND user_id = ? AND created_at < ?',
-          motion.id, self.user_id, self.created_at
-      ]
-    )
-    return prev_position
+    user.votes.where(motion_id: motion_id).order('id desc').last
   end
 
   def previous_position
     previous_vote.position if previous_vote
   end
-
 
   private
   def update_motion_vote_counts
@@ -92,20 +84,6 @@ class Vote < ActiveRecord::Base
     unless motion.nil? || motion.discussion.nil?
       motion.last_vote_at = motion.latest_vote_time
       motion.save!
-    end
-  end
-
-  def fire_new_vote_event
-    if position == "block"
-      Events::MotionBlocked.publish!(self)
-    else
-      Events::NewVote.publish!(self)
-    end
-  end
-
-  def send_notifications
-    if position == "block" && previous_vote != "block"
-      MotionMailer.delay.motion_blocked(self)
     end
   end
 end

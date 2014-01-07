@@ -61,14 +61,14 @@ describe 'ProposalService', ->
       errors = ['no hats selected']
 
     it 'posts the comment to the server', ->
-      httpBackend.expectPOST('/api/motions/vote', vote).respond(200, {event: event})
+      httpBackend.expectPOST("/api/motions/1/vote", vote).respond(200, {event: event})
       service.saveVote(vote, callbacks.success, callbacks.error)
       httpBackend.flush()
 
     context 'proposal was successfully created', ->
       it 'calls the onSuccess callback with the event', ->
         spyOn(callbacks, 'success')
-        httpBackend.expectPOST('/api/motions/vote', vote).respond(200, {event: event})
+        httpBackend.expectPOST('/api/motions/1/vote', vote).respond(200, {event: event})
         service.saveVote(vote, callbacks.success, callbacks.error)
         httpBackend.flush()
         expect(callbacks.success).toHaveBeenCalledWith(event)
@@ -76,7 +76,7 @@ describe 'ProposalService', ->
     context 'proposal failed to save', ->
       it 'calls the onFailure callback with the errors', ->
         spyOn(callbacks, 'error')
-        httpBackend.expectPOST('/api/motions/vote', vote).respond(400, {errors: errors})
+        httpBackend.expectPOST('/api/motions/1/vote', vote).respond(400, {errors: errors})
         service.saveVote(vote, callbacks.success, callbacks.error)
         httpBackend.flush()
         expect(callbacks.error).toHaveBeenCalledWith(errors)
