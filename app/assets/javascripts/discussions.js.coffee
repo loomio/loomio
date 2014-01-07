@@ -92,3 +92,10 @@ $ ->
   $(".jump-to-latest-activity").tooltip
     placement: "top",
     title: "Jump to latest unread activity"
+
+
+#get some alt-tags on hover yo
+$ ->
+  $("#discussion-context .whos-in-the-room a").each ->
+    o = $(this)
+    o.attr "title", o.attr("alt")  if not o.attr("title") and o.attr("alt")

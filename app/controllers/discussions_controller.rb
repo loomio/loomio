@@ -5,8 +5,6 @@ class DiscussionsController < GroupBaseController
   before_filter :load_discussion, except: [:new, :create, :index, :update_version]
   authorize_resource :except => [:new, :create, :index, :add_comment]
 
-  after_filter :mark_as_read, only: :show
-
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.not_found') }
   end
@@ -85,6 +83,7 @@ class DiscussionsController < GroupBaseController
       end
       @reader = @discussion.as_read_by(current_user)
       @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
+      @reader.viewed!(@activity.last.created_at)
     else
       @activity = @discussion.activity.page(params[:page]).per(Discussion::PER_PAGE)
     end
@@ -183,12 +182,6 @@ class DiscussionsController < GroupBaseController
   def build_discussion
     @discussion = Discussion.new(permitted_params.discussion)
     @discussion.author = current_user
-  end
-
-  def mark_as_read
-    if @reader and @activity and @activity.last
-      @reader.viewed!(@activity.last.updated_at)
-    end
   end
 
   def assign_meta_data
