@@ -21,4 +21,14 @@
         .see-revision-history
           %i.icon-time
           =link_to t("discussion_context.see_revision_history"), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
+      .whos-in-the-room
+        who's in the room?
+        .whos-in-the-room-avatars
+        - in_the_room = @discussion.discussion_readers.order('updated_at DESC').map(&:user)
+        - in_the_room.first(26).each do |user|
+          %a{ href: user_path(user), alt: "#{user.name}" }
+            = render 'base/avatar', user: user, size: "small", kind: nil, id: nil
+        - if in_the_room.count > 26
+          .see-more-avatars
+            = '...'
 #description-revision-history.modal.hidden

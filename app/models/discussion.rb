@@ -90,7 +90,6 @@ class Discussion < ActiveRecord::Base
 
   def viewed!
     Discussion.increment_counter(:total_views, id)
-    self.total_views += 1
   end
 
   def participants

@@ -60,7 +60,7 @@ body.users {
 // app-wide classes for user avataars
 .avatar-canvas {
   background: $selector;
-  border: 1px solid #B9B9B9;
+  border: none;
   text-decoration: none;
   -moz-user-select: none;
   -webkit-user-select: none;

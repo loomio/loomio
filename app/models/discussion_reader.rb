@@ -57,13 +57,11 @@ class DiscussionReader < ActiveRecord::Base
 
   def viewed!(age_of_last_read_item = Time.now)
     discussion.viewed!
-
-    if last_read_at.nil? or last_read_at < age_of_last_read_item
-      self.read_comments_count = discussion.comments.where('created_at <= ?', age_of_last_read_item).count
-      self.read_items_count = discussion.items.where('created_at <= ?', age_of_last_read_item).count
-      self.last_read_at = age_of_last_read_item
+    if last_read_at.nil? or (last_read_at < age_of_last_read_item)
+      read_comments_count = discussion.comments.where('created_at <= ?', age_of_last_read_item).count
+      read_items_count = discussion.items.where('created_at <= ?', age_of_last_read_item).count
+      last_read_at = age_of_last_read_item
     end
-
     save
   end
 
