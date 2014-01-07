@@ -12,15 +12,14 @@ describe VotesController do
   end
 
   describe "casting a vote" do
+    let(:vote) { Vote.new(motion: motion, user: user, position: 'yes') }
     it 'requires the user can vote' do
       VotesController.any_instance.should_receive(:require_user_can_vote)
       post :create, motion_id: motion.id, vote: {position: 'yes'}
     end
 
-    it 'saves the vote' do
-      vote = double(:vote).as_null_object
-      vote.should_receive(:save)
-      Vote.stub(:new).and_return(vote)
+    it 'casts the vote with VoteService' do
+      VoteService.should_receive(:cast).and_return(true)
       post :create, motion_id: motion.id, vote: {position: 'yes'}
     end
 
@@ -28,14 +27,7 @@ describe VotesController do
       post :create, motion_id: motion.id, vote: {position: 'yes'}
 
       flash[:success].should =~ /Position submitted/
-      response.should redirect_to motion
-    end
-  end
-
-  describe "casting a 'block' vote" do
-    it "fires motion_blocked event" do
-      Events::MotionBlocked.should_receive(:publish!)
-      post :create, motion_id: motion.id, vote: { position: 'block' }
+      response.should redirect_to discussion
     end
   end
 end

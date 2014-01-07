@@ -16,6 +16,10 @@ class Events::MotionBlocked < Event
     vote.other_group_members.each do |user|
       notify!(user)
     end
+
+    if eventable.position == "block" && eventable.previous_position != "block"
+      MotionMailer.motion_blocked(eventable).deliver
+    end
   end
 
   handle_asynchronously :notify_users!

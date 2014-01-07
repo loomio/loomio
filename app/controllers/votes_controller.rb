@@ -10,9 +10,9 @@ class VotesController < BaseController
     @vote = Vote.new(permitted_params.vote)
     @vote.motion = motion
     @vote.user = current_user
-    if @vote.save
+    if VoteService.cast(@vote)
       flash[:success] = t("success.position_submitted")
-      redirect_to @motion
+      redirect_to @vote.motion.discussion
     else
       render :new
     end
