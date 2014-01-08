@@ -53,24 +53,22 @@ class DatabaseService
     end
   end
 
-  # def create_deletion_tree_for_model(model, model_dependents={})
-  #   dependents_counter = 0
-  #   model.reflections.values.each do |v|
-  #     if v.macro == :has_many && v.options[:dependent] == :destroy
-  #       association_name = v.name
-  #       association_model_string = v.options[:class_name] || v.name.to_s.classify
-  #       model_dependents[association_name] = association_model_string.constantize
-  #       dependents_counter += 1
-  #     end
-  #   end
 
-  #   return if dependents_counter == 0
+  def create_deletion_tree_for(model)
+    relevant_reflections = model.reflections.values.select { |v| v.macro == :has_many && v.options[:dependent] == :destroy }
 
-  #   model_dependents.each_pair do |association_name, assoction_model|
-  #     model_name = model_dependents[association_name]
-  #     model_dependents[association_name] = {}
-  #     create_deletion_tree_for_model(model_name, model_dependents[association_name] )
-  #   end
-  # end
+    return 'end' if relevant_reflections.empty?
+
+    model_associations = {}
+    relevant_reflections.each do |v|
+      association_name = v.name
+      association_model = (v.options[:class_name] || v.name.to_s.classify).constantize
+
+      model_associations[association_name] = create_deletion_tree_for(association_model)
+    end
+    p model_associations
+    model_associations
+  end
+  # tree = create_deletion_tree_for(Group)
 
 end
