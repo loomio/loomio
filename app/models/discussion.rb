@@ -24,7 +24,7 @@ class Discussion < ActiveRecord::Base
   has_many :commenters, :through => :comments, :source => :user, :uniq => true
   has_many :events, :as => :eventable, :dependent => :destroy
   has_many :items, class_name: 'Event', include: :eventable, order: 'created_at ASC'
-  has_many :discussion_readers
+  has_many :discussion_readers, dependent: :destroy
 
   include PgSearch
   pg_search_scope :search, against: [:title, :description],
