@@ -17,7 +17,7 @@ end
 
 
 When(/^I strip private data from the database$/) do
-  StripPrivateData.go
+  DatabaseService.strip_private_data
 end
 
 Then(/^the database should be empty apart from users$/) do

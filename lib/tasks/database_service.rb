@@ -1,5 +1,5 @@
-class StripPrivateData
-  def self.go
+class DatabaseService
+  def self.strip_private_data
     unless Rails.env.production?
       print "STRIPPING PRIVATE DATA\n"
       print "///////////////////////////////////////////////////"
