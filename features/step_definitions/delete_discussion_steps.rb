@@ -20,6 +20,5 @@ Then /^I should see a message notifying me of the deletion$/ do
 end
 
 When /^I should not see the delete discussion link in the discussion dropdown$/ do
-  find("#options-dropdown").click
-  page.should_not have_css('delete-discussion')
+  page.should_not have_css('#options-dropdown')
 end

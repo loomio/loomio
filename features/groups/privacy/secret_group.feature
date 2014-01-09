@@ -35,3 +35,10 @@ Feature: Coordinator sets group privacy to hidden
     And the sub-group has discussions
     When I visit the sub-group page
     Then I should see the sub-group's discussions
+
+  Scenario: Coordinator changes group to hidden
+    Given I am a coordinator of a non-hidden group
+    And the group has a public discussion
+    When I visit the group settings page
+    And I set the group privacy to hidden
+    Then I should see that the discussions are private

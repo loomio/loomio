@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 describe Motion do
+  let(:discussion) { create_discussion }
+
   describe "#voting?" do
     it "returns true if motion is open" do
-      @motion = create :motion
+      @motion = create :motion, discussion: discussion
       @motion.voting?.should be_true
       @motion.closed?.should be_false
     end
@@ -11,7 +13,7 @@ describe Motion do
 
   describe "#closed?" do
     it "returns true if motion is open" do
-      @motion = create(:motion, closed_at: 2.days.ago)
+      @motion = create(:motion, closed_at: 2.days.ago, discussion: discussion)
       @motion.closed?.should be_true
       @motion.voting?.should be_false
     end
@@ -21,7 +23,7 @@ describe Motion do
     close_date = "23-05-2013"
     close_time = "15:00"
     time_zone = "Saskatchewan"
-    motion = build(:motion, close_at_date: close_date, close_at_time: close_time, close_at_time_zone: time_zone)
+    motion = build(:motion, close_at_date: close_date, close_at_time: close_time, close_at_time_zone: time_zone, discussion: discussion)
     motion.save!
     motion.closing_at.in_time_zone("Saskatchewan").to_s.should == "2013-05-23 15:00:00 -0600"
   end
@@ -29,8 +31,8 @@ describe Motion do
   describe "#user_has_voted?(user)" do
     it "returns true if the given user has voted on motion" do
       @user = create(:user)
-      @motion = create(:motion, :author => @user)
-      @vote = build(:vote,:position => "yes")
+      @motion = create(:motion, :author => @user, discussion: discussion)
+      @vote = build(:vote,:position => "yes", motion: @motion)
       @vote.user = @user
       @vote.motion = @motion
       @vote.save!
@@ -38,7 +40,7 @@ describe Motion do
     end
 
     it "returns false if given nil" do
-      @motion = create(:motion)
+      @motion = create(:motion, discussion: discussion)
       @motion.user_has_voted?(nil).should == false
     end
   end
@@ -46,11 +48,11 @@ describe Motion do
   describe "#search(query)" do
     before { @user = create(:user) }
     it "returns user's motions that match the query string" do
-      motion = create(:motion, name: "jam toast", author: @user)
+      motion = create(:motion, name: "jam toast", author: @user, discussion: discussion)
       @user.motions.search("jam").should == [motion]
     end
     it "does not return discussions that don't belong to the user" do
-      motion = create(:motion, name: "sandwich crumbs")
+      motion = create(:motion, name: "sandwich crumbs", discussion: discussion)
       @user.motions.search("sandwich").should_not == [motion]
     end
   end
@@ -60,10 +62,10 @@ describe Motion do
       @user = create :user
       @group = create :group
       @group.add_admin! @user
-      @discussion = create :discussion, :group => @group
+      @discussion = create_discussion :group => @group
     end
     it "fires new_motion event if a motion is created successfully" do
-      motion = build(:motion)
+      motion = build(:motion, discussion: discussion)
       motion.should_receive(:fire_new_motion_event)
       motion.save!
     end
@@ -72,7 +74,7 @@ describe Motion do
   context "moving motion to new group" do
     before do
       @new_group = create(:group)
-      @motion = create(:motion)
+      @motion = create(:motion, discussion: discussion)
       @motion.move_to_group @new_group
     end
 
@@ -87,7 +89,7 @@ describe Motion do
 
   context "destroying a motion" do
     before do
-      @discussion = create(:discussion)
+      @discussion = create_discussion
       @motion = create(:motion, discussion: @discussion)
       @vote = Vote.create(position: "no", motion: @motion, user: @motion.author)
       @comment = @motion.discussion.add_comment(@motion.author, "hello", uses_markdown: false)
@@ -104,7 +106,7 @@ describe Motion do
       @user1 = create(:user)
       @user2 = create(:user)
       @user3 = create(:user)
-      @discussion = create(:discussion)
+      @discussion = create_discussion
       @motion = create(:motion, discussion: @discussion)
       @motion.group.add_member!(@user2)
       @motion.group.add_member!(@user3)
@@ -121,7 +123,7 @@ describe Motion do
   end
 
   describe "#members_not_voted_count" do
-    let(:motion) { create :motion }
+    let(:motion) { create :motion, discussion: discussion }
 
     it "returns the number of members who did not vote" do
       user = create :user
@@ -154,7 +156,7 @@ describe Motion do
   describe '#user_has_voted?' do
     before do
       @user = create :user
-      @motion = create :motion
+      @motion = create :motion, discussion: discussion
       @motion.group.add_member!(@user)
     end
     subject {@motion.user_has_voted?(@user)}
@@ -176,7 +178,7 @@ describe Motion do
 
   describe "percent_voted" do
     before do
-      @motion = create(:motion)
+      @motion = create(:motion, discussion: discussion)
     end
     it "returns the pecentage of users that have voted" do
       @motion.stub(:members_not_voted_count).and_return(10)

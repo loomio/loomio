@@ -1,7 +1,7 @@
 .dropdown.privacy-dropdown
   - privacy = group.privacy
   - header = t "simple_form.labels.group.privacy_#{privacy}_header"
-  - description = t "simple_form.labels.group.privacy_#{privacy}_description_short"
+  - description = t "simple_form.labels.group.privacy_#{privacy}_description"
   %span#privacy{"data-title" => "#{header}: #{description}", 'data-container'=> 'body' }
     - image_html = image_tag("privicon_"+privacy.to_s+".png", alt: privacy.to_s, :id => 'privacy-image')
     - if can? :edit, group

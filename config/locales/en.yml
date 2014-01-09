@@ -42,6 +42,7 @@ en:
     cant_view_member_profile: "You're unable to view the member's profile because you are not in the same group."
     contribution: "Please log in to make a contribution."
     discussion_not_created: "Discussion could not be created."
+    discussion_not_moved: "You don't have permission to move this discussion to %{destination_group.name}"
     group_not_archived: "Group could not be archived."
     invalid_close_date: "Invalid close date, please check this date has not passed."
     invalid_email: "Please enter at least one valid email address"
@@ -112,6 +113,7 @@ en:
     close_date_changed: "Close date successfully changed."
     discussion_created: "Discussion successfully created."
     discussion_deleted: "Discussion successfully deleted."
+    discussion_moved: "Discussion successfully moved to %{group_name}"
     emails_sending: "Emails sending."
     group_archived: "Group archived successfully."
     group_created: "Group created successfully."
@@ -363,8 +365,10 @@ en:
   confirm_delete_comment: "Are you sure you want to delete this comment?"
 
   markdown_settings_more_info: "More info..."
-  edit_discussion_title: "Edit discussion title"
+  edit_discussion: "Edit discussion"
   move_discussion: "Move discussion"
+  move_discussion_to_hidden_group: "This discussion is currently public. Moving it to this hidden group will make it private."
+  move_discussion_where: "Where would you like to move this discussion to?"
   delete_discussion: "Delete discussion"
   confirm_delete_discussion: "Are you sure you want to permanently delete this discussion?"
 
@@ -665,9 +669,11 @@ en:
   #
 
   discussion_form:
-    header: "Start a discussion"
-    who: "Which group would you like to start this discussion in?"
-    context: "Context"
+    new:
+      header: "Start a discussion"
+      who: "Which group would you like to start this discussion in?"
+    edit:
+      header: "Edit discussion"
 
   motion_form:
     header: "New proposal"
@@ -724,6 +730,13 @@ en:
       discussion:
         title: "Title"
         description: "Context"
+        privacy_public_header: "Public"
+        privacy_public_description: "Anyone can see this discussion"
+        privacy_private_header: "Private"
+        privacy_private_description: "Only members %{group} can see this discussion"
+        privacy_hidden_description: "All discussions in a hidden group are private."
+        of: "of "
+        of_no_group: "of this group"
       group:
         name: "Group name"
         description: "Description"
@@ -732,14 +745,11 @@ en:
         members_invitable_by_members: "All group members"
         privacy: Privacy
         privacy_public_header: Public
-        privacy_public_description: Anyone can see the group and who's in it. Discussions are public by default.
-        privacy_public_description_short: Anyone can see this group and its discussions.
-        privacy_private_header: Private
-        privacy_private_description: Anyone can see the group and who's in it. Discussions are only visible to members by default.
-        privacy_private_description_short: Anyone can see this group. Only members can see discussions.
-        privacy_hidden_header: Hidden
-        privacy_hidden_description: Only members can see the group and its discussions. You cannot have public discussions in a hidden group.
-        privacy_hidden_description_short: Only members can see this group and its discussions.
+        privacy_public_description: Discussions are public, unless made private. Anyone can find the group and ask to join.
+        privacy_private_header: Mostly private
+        privacy_private_description: Discussions are private, unless you explicitly make them public. Anyone can find the group and ask to join.
+        privacy_hidden_header: Hidden (completely private)
+        privacy_hidden_description: Discussions are always private. Finding and joining the group is by invitation only.
         privacy_parent_group_members_header: Viewable by parent group members
         privacy_parent_group_members_description: Same as hidden, only the group and its discussions can be seen by parent group members.
         privacy_parent_group_members_description_short: Only members and parent group members can see this group and its discussions.
@@ -762,8 +772,8 @@ en:
 
     placeholders:
       discussion:
-        title: "What is the topic you'd like to discuss?"
-        description: "This information will appear at the top of the discussion page. Introduce the topic and give enough context for your group to have a well-informed discussion."
+        title: "Title"
+        description: "Give some context..."
       membership_request:
         introduction: "Write a few words about who you are and why you would like to join %{group_name}."
       motion:
@@ -780,6 +790,7 @@ en:
     submit:
       discussion:
         create: "Start discussion"
+        update: "Update discussion"
       motion:
         create: "Start proposal"
       user:
