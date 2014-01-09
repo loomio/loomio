@@ -27,6 +27,7 @@ class DiscussionService
 
   def self.start_discussion(discussion)
     user = discussion.author
+    discussion.inherit_group_privacy!
     user.ability.authorize! :create, discussion
 
     return false unless discussion.save

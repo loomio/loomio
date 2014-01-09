@@ -159,14 +159,22 @@ class Discussion < ActiveRecord::Base
 
   def private?
     if self[:private].nil? and group.present?
-      ['hidden', 'private'].include? group.privacy
+      group_default_is_private?
     else
       self[:private]
     end
   end
 
+  def inherit_group_privacy!
+    self[:private] = group_default_is_private?
+  end
+
   def private
     self.private?
+  end
+
+  def group_default_is_private?
+    ['hidden', 'private'].include? group.privacy
   end
 
 
