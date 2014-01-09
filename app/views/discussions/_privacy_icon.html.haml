@@ -4,7 +4,7 @@
 - description = t "simple_form.labels.discussion.privacy_#{privacy}_description", group: t(:"simple_form.labels.discussion.of_no_group")
 %span
 - if can?(:edit, discussion)
-  %a{ href: edit_discussion_path }
+  %a{ href: edit_discussion_path(discussion) }
     %i{id: "privacy", class: "icon-#{icon_type}", alt: privacy.to_s, "data-title" => "#{header}: #{description}", 'data-container'=> 'body'}
 - else
   %i{id: "privacy", class: "icon-#{icon_type}", alt: privacy.to_s, "data-title" => "#{header}: #{description}", 'data-container'=> 'body'}
