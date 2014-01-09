@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131209035746) do
+ActiveRecord::Schema.define(:version => 20140106020130) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20131209035746) do
     t.boolean  "is_deleted",      :default => false, :null => false
     t.integer  "comments_count",  :default => 0,     :null => false
     t.integer  "items_count",     :default => 0,     :null => false
+    t.string   "key"
     t.datetime "archived_at"
     t.boolean  "private"
   end
@@ -191,6 +192,7 @@ ActiveRecord::Schema.define(:version => 20131209035746) do
   add_index "discussions", ["is_deleted", "group_id"], :name => "index_discussions_on_is_deleted_and_group_id"
   add_index "discussions", ["is_deleted", "id"], :name => "index_discussions_on_is_deleted_and_id"
   add_index "discussions", ["is_deleted"], :name => "index_discussions_on_is_deleted"
+  add_index "discussions", ["key"], :name => "index_discussions_on_key", :unique => true
 
   create_table "email_template_sent_to_groups", :force => true do |t|
     t.integer  "email_template_id"
@@ -323,10 +325,12 @@ ActiveRecord::Schema.define(:version => 20131209035746) do
     t.string   "full_name"
     t.string   "payment_plan",               :default => "undetermined"
     t.boolean  "viewable_by_parent_members", :default => false,          :null => false
+    t.string   "key"
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
   add_index "groups", ["full_name"], :name => "index_groups_on_full_name"
+  add_index "groups", ["key"], :name => "index_groups_on_key", :unique => true
   add_index "groups", ["name"], :name => "index_groups_on_name"
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
 
@@ -421,10 +425,12 @@ ActiveRecord::Schema.define(:version => 20131209035746) do
     t.integer  "did_not_votes_count"
     t.integer  "votes_count",         :default => 0,    :null => false
     t.integer  "outcome_author_id"
+    t.string   "key"
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
+  add_index "motions", ["key"], :name => "index_motions_on_key", :unique => true
 
   create_table "notifications", :force => true do |t|
     t.integer  "user_id"
@@ -500,10 +506,12 @@ ActiveRecord::Schema.define(:version => 20131209035746) do
     t.boolean  "uses_markdown",                                               :default => false
     t.string   "language_preference"
     t.string   "time_zone"
+    t.string   "key"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
+  add_index "users", ["key"], :name => "index_users_on_key", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unsubscribe_token"], :name => "index_users_on_unsubscribe_token", :unique => true
 

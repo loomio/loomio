@@ -9,15 +9,12 @@ When /^I click the 'change close date' button$/ do
 end
 
 When /^I select the new close date$/ do
-  pending
   @close_date = 5.days.from_now
-  fill_in "close_date_at", :with  => @close_date
-  save_and_open_page
-  click_on("change-close-date")
+  fill_in "motion_close_at_date", with: @close_date.strftime("%d-%m-%Y")
+  click_on("modal-change-close-date")
 end
 
-Then /^The proposal close date should be updated$/ do
-  pending
+Then /^the proposal close date should be updated$/ do
   find('#closing-info').should have_content("Closing in 5 days")
 end
 
@@ -28,3 +25,8 @@ end
 Then /^I should see the edit close date modal$/ do
   find("#edit-close-date")
 end
+
+Then(/^I should see "(.*?)" in the discussion feed$/) do |arg1|
+  find('#activity-feed').should have_content(arg1)
+end
+

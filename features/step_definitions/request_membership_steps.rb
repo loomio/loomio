@@ -114,7 +114,7 @@ Then(/^I should see the request membership button$/) do
 end
 
 Given(/^I visit the request membership page for the group$/) do
-  visit new_group_membership_request_path(@group)
+  visit group_ask_to_join_path(@group)
 end
 
 Then(/^I should see a flash message telling me I have already requested membership$/) do
@@ -146,7 +146,7 @@ Then(/^I should be redirected to the homepage$/) do
 end
 
 When(/^I visit the request membership page for the sub\-group$/) do
-  visit new_group_membership_request_path(@sub_group)
+  visit group_ask_to_join_path(@sub_group)
 end
 
 Given(/^I am a visitor$/) do

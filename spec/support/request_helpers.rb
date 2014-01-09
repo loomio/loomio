@@ -1,5 +1,7 @@
 # spec/support/request_helpers.rb
-# require 'spec_helper'
+
+# require 'spec_helper' ### this line was breaking spork
+
 include Warden::Test::Helpers
 
 module RequestHelpers

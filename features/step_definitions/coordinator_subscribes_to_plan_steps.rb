@@ -75,7 +75,7 @@ Then(/^I should be told the amount was invalid$/) do
   page.should have_content("Custom amount was invalid. Please enter a number above 0.")
 end
 
-When(/^I choose the \$0 per month plan$/) do 
+When(/^I choose the \$0 per month plan$/) do
   choose "$0 per month"
   @amount = 0
 end
@@ -89,8 +89,8 @@ Then(/^I should see the button text change$/) do
 end
 
 Then(/^I should see buttons for all the different plans$/) do
-  page.should have_link('$30/month', :href => "/groups/#{@group.id}/subscription?amount=30")
-  page.should have_link('$50/month', :href => "/groups/#{@group.id}/subscription?amount=50")
-  page.should have_link('$100/month', :href => "/groups/#{@group.id}/subscription?amount=100")
-  page.should have_link('$200/month', :href => "/groups/#{@group.id}/subscription?amount=200")
+  page.should have_link('$30/month', :href => group_subscription_path(@group, amount: 30))
+  page.should have_link('$50/month', :href => group_subscription_path(@group, amount: 50))
+  page.should have_link('$100/month', :href => group_subscription_path(@group, amount: 100))
+  page.should have_link('$200/month', :href => group_subscription_path(@group, amount: 200))
 end
