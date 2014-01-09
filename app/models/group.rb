@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+  include ReadableUnguessableUrls
 
   class MaximumMembershipsExceeded < Exception
   end
@@ -320,13 +321,13 @@ class Group < ActiveRecord::Base
   end
 
   def limit_inheritance
-    unless parent_id.nil?
+    if parent_id.present?
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent_id.nil?
     end
   end
 
   def privacy_allowed_by_parent
-    if parent.privacy == 'hidden' && self.privacy != 'hidden'
+    if parent && parent.privacy == 'hidden' && self.privacy != 'hidden'
       errors[:privacy] << "Parent group is hidden, subgroups must also be hidden"
     end
   end

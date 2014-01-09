@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
   def home
+    @diaspora_group = Group.find_by_id(194)
+    @blag_group = Group.find_by_id(1031)
+    @loomio_community_group = Group.find_by_id(3)
   end
 
   def about

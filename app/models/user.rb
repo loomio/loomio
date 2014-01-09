@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include AvatarInitials
+  include ReadableUnguessableUrls
 
   require 'net/http'
   require 'digest/md5'

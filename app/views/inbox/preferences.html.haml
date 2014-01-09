@@ -1,5 +1,5 @@
 %h2 Inbox preferences
-%p 
+%p
   %strong Drag items
   to reorder them.
   %strong Uncheck
@@ -7,7 +7,7 @@
 
 
 =simple_form_for @inbox_preferences_form,
-  url: update_inbox_preferences_path,
+  url: inbox_update_preferences_path,
   method: :put do |f|
   .control-group.ui-sortable
     -@inbox_preferences_form.all_memberships.each do |membership|

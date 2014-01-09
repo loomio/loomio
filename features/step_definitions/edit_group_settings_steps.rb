@@ -1,5 +1,5 @@
 When /^I visit the group settings page$/ do
-  visit "/groups/" + Group.first.id.to_s + "/edit"
+  visit "/g/#{Group.first.key}/edit"
 end
 
 When /^I update the settings to public$/ do
@@ -27,7 +27,7 @@ Then /^the group should be private$/ do
 end
 
 Then /^I should not have access to group settings of "(.*?)"$/ do |group|
-  visit "/groups/" + Group.find_by_name(group).id.to_s + "/edit"
+  visit edit_group_path Group.find_by_name(group)
   page.should have_content(I18n.t(:'error.access_denied'))
 end
 
