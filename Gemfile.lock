@@ -500,7 +500,7 @@ DEPENDENCIES
   capybara (~> 2.1.0)
   client_side_validations
   client_side_validations-simple_form
-  closure_tree
+  closure_tree (~> 4.3.0)
   codeclimate-test-reporter
   coffee-rails (~> 3.2.2)
   country_select (~> 1.2.0)
