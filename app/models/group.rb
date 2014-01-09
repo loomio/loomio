@@ -1,5 +1,6 @@
 class Group < ActiveRecord::Base
-
+  attr_accessible :name, :privacy, :members_invitable_by, :parent, :parent_id, :description, :max_size, :cannot_contribute, :full_name, :payment_plan, :viewable_by_parent_members
+  acts_as_tree
   class MaximumMembershipsExceeded < Exception
   end
 

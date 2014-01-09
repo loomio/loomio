@@ -27,7 +27,7 @@ class Membership < ActiveRecord::Base
   before_create :check_group_max_size
   after_initialize :set_defaults
   before_destroy :remove_open_votes
-  after_destroy :destroy_subgroup_memberships
+  after_destroy :leave_subgroups_of_hidden_parents
 
   include AASM
   aasm :column => :access_level do
@@ -67,8 +67,9 @@ class Membership < ActiveRecord::Base
     self.group_last_viewed_at = Time.now
   end
 
-  def destroy_subgroup_memberships
+  def leave_subgroups_of_hidden_parents
     return if group.nil? #necessary if group is missing (as in case of production data)
+    return unless group.is_hidden?
     group.subgroups.each do |subgroup|
       subgroup.memberships.where(user_id: user.id).destroy_all
     end
