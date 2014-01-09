@@ -300,6 +300,10 @@ class Group < ActiveRecord::Base
     (subscription.present? && subscription.amount > 0)
   end
 
+  def is_hidden?
+    privacy == "hidden"
+  end
+
   private
 
   def calculate_full_name

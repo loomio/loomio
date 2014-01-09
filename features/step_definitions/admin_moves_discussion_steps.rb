@@ -4,7 +4,7 @@ When /^I select the move discussion link from the discussion dropdown$/ do
 end
 
 When /^I select the destination subgroup$/ do
-  select @subgroup.name, from: 'discussion_group_id'
+  select @subgroup.name, from: 'destination_group_id'
 end
 
 Then /^I should see the destination subgroup name in the page title$/ do
@@ -25,4 +25,23 @@ end
 
 Then /^I try to move the discussion but I cannot see the link$/ do
   find('#discussion-options').should_not have_content 'Move discussion'
+end
+
+Given(/^I am an admin of a group with a public discussion$/) do
+  @group = FactoryGirl.create :group
+  @discussion = create_discussion group: @group, private: false, title: "Everyone should know i hate gummy bears"
+  @group.add_admin! @user
+end
+
+Given /^the group has a hidden subgroup$/ do
+  @subgroup = FactoryGirl.create(:group, parent: @group, privacy: 'hidden')
+end
+
+
+When(/^I select the destination hidden group$/) do
+  select @subgroup.name, from: 'discussion_group_id'
+end
+
+Then(/^I should see an alert telling me that the discussion will be changed to private$/) do
+  pending # express the regexp above with the code you wish you had
 end

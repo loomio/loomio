@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Queries::Voters do
-  let(:motion) { create(:motion) }
+  let(:discussion) { create_discussion }
+  let(:motion) { create(:motion, discussion: discussion) }
   let(:member) { create(:user) }
   let(:member2) { create(:user) }
 

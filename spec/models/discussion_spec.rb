@@ -33,7 +33,7 @@ describe Discussion do
   end
 
   describe "archive!" do
-    let(:discussion) { FactoryGirl.create(:discussion) }
+    let(:discussion) { create_discussion }
 
     before do
       discussion.archive!
@@ -47,11 +47,11 @@ describe Discussion do
   describe "#search(query)" do
     before { @user = create(:user) }
     it "returns user's discussions that match the query string" do
-      discussion = create(:discussion, title: "jam toast", author: @user)
+      discussion = create_discussion title: "jam toast", author: @user
       @user.discussions.search("jam").should == [discussion]
     end
     it "does not return discussions that don't belong to the user" do
-      discussion = create(:discussion, title: "sandwich crumbs")
+      discussion = create_discussion title: "sandwich crumbs"
       @user.discussions.search("sandwich").should_not == [discussion]
     end
   end
@@ -59,12 +59,12 @@ describe Discussion do
   describe "#last_versioned_at" do
     it "returns the time the discussion was created at if no previous version exists" do
       Timecop.freeze do
-        discussion = create :discussion
+        discussion = create_discussion
         discussion.last_versioned_at.iso8601.should == discussion.created_at.iso8601
       end
     end
     it "returns the time the previous version was created at" do
-      discussion = create :discussion
+      discussion = create_discussion
       discussion.stub :has_previous_versions? => true
       discussion.stub_chain(:previous_version, :version, :created_at)
                 .and_return 12345
@@ -94,7 +94,7 @@ describe Discussion do
       @user = create :user
       @group = create :group
       @group.add_member! @user
-      @discussion = build :discussion, :group => @group
+      @discussion = build :discussion, :group => @group, private: true
       DiscussionService.start_discussion(@discussion)
       @discussion.add_comment(@user, "this is a test comment", uses_markdown: false)
       @motion = create :motion, :discussion => @discussion
@@ -109,7 +109,7 @@ describe Discussion do
 
   describe "#current_motion" do
     before do
-      @discussion = create :discussion
+      @discussion = create_discussion
       @motion = create :motion, discussion: @discussion
     end
     context "where motion is in open" do
@@ -132,7 +132,7 @@ describe Discussion do
     before do
       @user1, @user2, @user3, @user4 =
         create(:user), create(:user), create(:user), create(:user)
-      @discussion = create(:discussion, author: @user1)
+      @discussion = create_discussion author: @user1
       @group = @discussion.group
       @group.add_member! @user2
       @group.add_member! @user3
@@ -209,6 +209,70 @@ describe Discussion do
         discussion.refresh_last_comment_at!
         discussion.last_comment_at.should == discussion.created_at
       end
+    end
+  end
+
+
+  describe '#private?' do
+    # provides a default when the discussion is new
+    # when present passes the value on unmodified
+    let(:discussion) { Discussion.new }
+    let(:group) { Group.new }
+
+    subject { discussion.private? }
+
+    context "new discussion" do
+      context "with group associated" do
+        before do
+          discussion.group = group
+        end
+        context "group is private" do
+          before { group.privacy = 'private' }
+          it { should be_true }
+        end
+
+        context "group is hidden" do
+          before { group.privacy = 'hidden' }
+          it { should be_true }
+        end
+
+        context "group is public" do
+          before { group.privacy = 'public' }
+          it { should be_false }
+        end
+      end
+
+      context "without group associated" do
+        it { should be_nil }
+      end
+    end
+
+    context "existing discussion" do
+      context "which is private" do
+        before {discussion.private = true}
+        it {should be_true}
+      end
+
+      context "which is not private" do
+        before {discussion.private = false}
+        it {should be_false}
+      end
+    end
+  end
+
+  describe "validator: privacy_is_permitted_by_group" do
+    let(:discussion) { Discussion.new }
+    let(:group) { Group.new }
+    subject { discussion }
+
+
+    context "discussion is public when group is hidden" do
+      before do
+        group.privacy = "hidden"
+        discussion.group = group
+        discussion.valid?
+      end
+      it {should have(1).errors_on(:private)}
     end
   end
 end

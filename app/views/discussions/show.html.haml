@@ -1,7 +1,7 @@
 - set_title @group.name, @discussion.title, @group.parent
 .row
   .span9
-    =render '/groups/title', group: @group
+    =render '/groups/title', group: @group, discussion: @discussion
   .span3#button-container
     = request_membership_button(@group)
 .row

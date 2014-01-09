@@ -19,6 +19,7 @@ Feature: User creates discussion
     And the discussion description should render markdown
     And my global markdown preference should now be 'enabled'
 
+  @javascript
   Scenario: Group member creates discussion from dashboard
     When I visit the dashboard
     And I choose to create a discussion
