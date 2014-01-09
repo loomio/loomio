@@ -23,10 +23,13 @@ $ ->
     img_to_replace = $('.global-markdown-setting').children().first()
     img_to_replace.html('<img alt="Markdown_on" class="markdown-icon markdown-on" src="/assets/markdown_on.png">')
     updateMarkdownSetting(this, true)
+    $('#discussion_uses_markdown').val('true')
+
   $(".global-markdown-setting .disable-markdown").click (event) ->
     img_to_replace = $('.global-markdown-setting').children().first()
     img_to_replace.html('<img alt="Markdown_off" class="markdown-icon markdown-off" src="/assets/markdown_off.png">')
     updateMarkdownSetting(this, false)
+    $('#discussion_uses_markdown').val('false')
 
 updateMarkdownSetting = (selected, usesMarkdown) ->
   $("#global-uses-markdown").val(usesMarkdown)
