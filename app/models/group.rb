@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-
+  acts_as_tree
   class MaximumMembershipsExceeded < Exception
   end
 
