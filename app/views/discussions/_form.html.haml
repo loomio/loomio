@@ -1,7 +1,6 @@
 .row
   .span5
     = simple_form_for discussion, :validate => true do |f|
-      =discussion.errors.messages.inspect
       .control-group
         - if @user_groups && params[:group_id].blank?
           %p= t "discussion_form.new.who"
