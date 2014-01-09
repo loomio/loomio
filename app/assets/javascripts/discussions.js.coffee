@@ -5,20 +5,6 @@ $ ->
   if $("body.discussions.new").length > 0
     $('input, textarea').placeholder()
 
-# Edit title
-$ ->
-  if $("body.discussions.show").length > 0
-    $("#edit-title").click((event) ->
-      $("#discussion-title").addClass('hidden')
-      $("#edit-discussion-title").removeClass('hidden')
-      event.preventDefault()
-    )
-    $("#cancel-edit-title").click((event) ->
-      $("#edit-discussion-title").addClass('hidden')
-      $("#discussion-title").removeClass('hidden')
-      event.preventDefault()
-    )
-
 $ ->
   if $("body.discussions.show").length > 0
     autocomplete_path = $('#comment-input').data('autocomplete-path')
@@ -33,19 +19,14 @@ $ ->
 
 # Global Markdown (new discussion & comments)
 $ ->
-  if $("body.discussions.show").length > 0 || $("body.discussions.new").length > 0 || $("body.discussions.create").length > 0
-    $(".global-markdown-setting .enable-markdown").click((event) ->
-      img_to_replace = $('.global-markdown-setting').children().first()
-      img_to_replace.html('<img alt="Markdown_on" class="markdown-icon markdown-on" src="/assets/markdown_on.png">')
-      updateMarkdownSetting(this, true)
-    )
-$ ->
-  if $("body.discussions.show").length > 0 || $("body.discussions.new").length > 0 || $("body.discussions.create").length > 0
-    $(".global-markdown-setting .disable-markdown").click((event) ->
-      img_to_replace = $('.global-markdown-setting').children().first()
-      img_to_replace.html('<img alt="Markdown_off" class="markdown-icon markdown-off" src="/assets/markdown_off.png">')
-      updateMarkdownSetting(this, false)
-    )
+  $(".global-markdown-setting .enable-markdown").click (event) ->
+    img_to_replace = $('.global-markdown-setting').children().first()
+    img_to_replace.html('<img alt="Markdown_on" class="markdown-icon markdown-on" src="/assets/markdown_on.png">')
+    updateMarkdownSetting(this, true)
+  $(".global-markdown-setting .disable-markdown").click (event) ->
+    img_to_replace = $('.global-markdown-setting').children().first()
+    img_to_replace.html('<img alt="Markdown_off" class="markdown-icon markdown-off" src="/assets/markdown_off.png">')
+    updateMarkdownSetting(this, false)
 
 updateMarkdownSetting = (selected, usesMarkdown) ->
   $("#global-uses-markdown").val(usesMarkdown)
@@ -92,3 +73,18 @@ $ ->
   $(".jump-to-latest-activity").tooltip
     placement: "top",
     title: "Jump to latest unread activity"
+
+# moving discussion
+warn_if_moving_discussion_to_private_group = ->
+  $('.move-discussion-form .warn-move-will-make-private').hide()
+  private_discussion = $(".move-discussion-form").data('private-discussion')
+  unless private_discussion
+    hidden_group_ids = String($(".move-discussion-form").data('hidden-group-ids')).split(' ')
+    selected_group_id = $("select[name=destination_group_id]").val()
+    if _.include(hidden_group_ids, selected_group_id)
+      $('.move-discussion-form .warn-move-will-make-private').show()
+
+$ ->
+  warn_if_moving_discussion_to_private_group()
+  $(".move-discussion-form select").on 'change', (e) ->
+    warn_if_moving_discussion_to_private_group()

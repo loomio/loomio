@@ -90,15 +90,15 @@ Loomio::Application.routes.draw do
     end
   end
 
-  resources :discussions, except: [:edit] do
+  resources :discussions do
     get :activity_counts, on: :collection
     member do
       post :update_description
+      post :update
       post :add_comment
       post :show_description_history
       get :new_proposal
-      post :edit_title
-      put :move
+      post :move
     end
   end
 

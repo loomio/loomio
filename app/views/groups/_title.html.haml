@@ -9,7 +9,8 @@
             = link_to group.parent.name, group.parent
             = content_tag :span, "\u25B6", class: 'name-separator'
           = link_to group.name, group
-        = render 'groups/privacy_dropdown', :group => group
+        -unless controller_name == 'discussions'
+          = render 'groups/privacy_dropdown', :group => group
     - else
       .span10
         %h1.home-title

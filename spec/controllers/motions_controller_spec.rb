@@ -85,7 +85,7 @@ describe MotionsController do
         controller.stub(:authorize!).with(:edit_close_date, motion).and_return(true)
       end
       it "checks user has permission" do
-        Motion.stub(:find).and_return FactoryGirl.create(:motion)
+        Motion.stub(:find).and_return FactoryGirl.create(:motion, :discussion => discussion)
         controller.should_receive(:authorize!)
         put :edit_close_date, :id => motion.id, :motion => { close_at_date: Time.now,
                           close_at_time: "05:00", close_at_time_zone: "Wellington" }
