@@ -22,6 +22,7 @@ describe 'DiscussionService' do
                                          uses_markdown: true,
                                          update_attribute: true,
                                          update_attributes: true,
+                                         private: true,
                                          created_at: Time.now) }
   let(:comment) { double(:comment,
                          save: true,
