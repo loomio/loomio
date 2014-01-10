@@ -20,7 +20,7 @@
           - discussion_ids = items.select{|i| i.is_a? Discussion }.map(&:id)
           - motion_ids = items.select{|i| i.is_a? Motion }.map(&:id)
           =link_to 'Clear',
-            mark_as_read_inbox_path(discussion_ids: discussion_ids.join('x'),
+            inbox_mark_as_read_path(discussion_ids: discussion_ids.join('x'),
                                     motion_ids: motion_ids.join('x')),
             class: 'mark-all-as-read-btn', remote: true
       %ul.inbox-list
@@ -40,14 +40,14 @@
                 =link_to 'Visit the group', group, class: 'more-unread-items'
                 ,
                 =link_to 'mark them all as read',
-                  mark_all_as_read_inbox_path(group.id),
+                  inbox_mark_all_as_read_path(group.id),
                   class: 'mark-all-as-read-btn more-unread-items',
                   method: :post
                 or
                 =link_to 'remove the group from your inbox',
                   inbox_preferences_path,
                   class: 'more-unread-items'
-                
+
 
 
 - if @inbox.empty?

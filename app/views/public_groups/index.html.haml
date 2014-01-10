@@ -11,7 +11,7 @@
 
   %ul.selector-list.bordered
     - @groups.each do |group|
-      %a{href: group_path(group)}
+      = link_to group do
         %li.selector-item
           .group-name
             = group.full_name

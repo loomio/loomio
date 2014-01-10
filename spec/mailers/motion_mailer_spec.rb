@@ -72,7 +72,7 @@ describe MotionMailer do
 
     #ensure that the discussion_url appears in the email body
     it 'assigns url_for motion' do
-      @email.body.encoded.should match(/\/discussions\/#{motion.discussion.id}/)
+      @email.body.encoded.should match(/\/d\/#{motion.discussion.key}/)
     end
   end
 end
