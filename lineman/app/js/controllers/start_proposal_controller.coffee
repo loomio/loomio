@@ -4,6 +4,10 @@ angular.module('loomioApp').controller 'StartProposalController', ($scope, Propo
     discussion_id: $scope.discussion.id
 
   $scope.showDatetimepicker = false
+  $scope.isExpanded = false
+  $scope.isHidden = $scope.discussion.active_proposal?
+  $scope.isDisabled = false
+  $scope.errorMessages = []
 
   $scope.openDatetimepicker = ->
     $scope.showDatetimepicker = true
@@ -13,13 +17,6 @@ angular.module('loomioApp').controller 'StartProposalController', ($scope, Propo
 
   $scope.toggleDatetimepicker = ->
     $scope.showDatetimepicker = !$scope.showDatetimepicker
-
-  $scope.isExpanded = false
-
-  $scope.isHidden = false
-
-  $scope.isDisabled = false
-  $scope.errorMessages = []
 
   $scope.showForm = ->
     $scope.isExpanded = true
@@ -39,9 +36,9 @@ angular.module('loomioApp').controller 'StartProposalController', ($scope, Propo
     $scope.discussion.events.push(event)
     $scope.isHidden = true
     $scope.isDisabled = false
-    $scope.discussion.proposal = event.eventable
+    $scope.discussion.active_proposal = event.proposal
 
-  $scope.saveError = (errors) ->
+  $scope.saveError = (error) ->
     $scope.isDisabled = false
-    $scope.errorMessages = errors
+    $scope.errorMessages = error.error_messages
 

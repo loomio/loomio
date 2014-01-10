@@ -13,9 +13,16 @@ angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentS
       $scope.isExpanded = false
 
   $scope.processForm = () ->
-    CommentService.add($scope.newComment, $scope.discussion)
+    CommentService.add($scope.newComment, $scope.saveSuccess, $scope.saveError)
 
   $scope.$on 'showReplyToCommentForm', (event, originalComment) ->
     $scope.newComment.parent_id = originalComment.id
     $scope.expand()
+
+  $scope.saveSuccess = (event) ->
+    $scope.discussion.events.push(event)
+    #console.log event
+
+  $scope.saveError = (error) ->
+    console.log error
 

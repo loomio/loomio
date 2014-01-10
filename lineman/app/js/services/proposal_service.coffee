@@ -4,12 +4,12 @@ angular.module('loomioApp').service 'ProposalService',
 
     create: (proposal, onSuccess, onFailure) ->
       @$http.post('/api/motions', proposal).then (response) ->
-        onSuccess(response.data.event)
+        onSuccess(response.data.new_motion)
       , (response) ->
-        onFailure(response.data.errors)
+        onFailure(response.data.invalid_model.error_messages)
 
     saveVote: (vote, onSuccess, onFailure) ->
       @$http.post("/api/motions/#{vote.proposal_id}/vote", vote).then (response) ->
-        onSuccess(response.data.event)
+        onSuccess(response.data.new_motion)
       , (response) ->
-        onFailure(response.data.errors)
+        onFailure(response.data.invalid_model.error_messages)

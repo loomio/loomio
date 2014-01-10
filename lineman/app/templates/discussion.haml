@@ -31,18 +31,18 @@
         %i.icon-edit
         Edit
 
-  %proposal{proposal: 'discussion.proposal'}
+  %proposal{proposal: 'discussion.active_proposal', discussion: 'discussion'}
 
   .card-row{'ng-repeat' => 'event in discussion.events'}
-    %div{'ng-include' => "'generated/templates/discussion_items/'+ event.kind + '.html'"}
-    -#"discussion_title_edited",
-    -#"discussion_description_edited",
-    -#"new_motion",
-    -#"new_vote",
-    -#"motion_closed",
-    -#"motion_close_date_edited",
-    -#"motion_blocked"]
-    -#"new_discussion",
+    %div{ng_include: "'generated/templates/discussion_items/'+ event.kind + '.html'"}
+    -#-#"discussion_title_edited",
+    -#-#"discussion_description_edited",
+    -#-#"new_motion",
+    -#-#"new_vote",
+    -#-#"motion_closed",
+    -#-#"motion_close_date_edited",
+    -#-#"motion_blocked"]
+    -#-#"new_discussion",
 
   %start_proposal{discussion: 'discussion'}
 

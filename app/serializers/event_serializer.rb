@@ -1,9 +1,17 @@
 class EventSerializer < ActiveModel::Serializer
-  SUPPORTED_EVENTABLES = ['Comment', 'Motion']
+  attributes :id, :sequence_id, :kind
 
-  attributes :id, :sequence_id, :kind, :eventable
+  has_one :comment, serializer: CommentSerializer
+  has_one :proposal, serializer: MotionSerializer
 
-  def eventable
-    object.eventable if SUPPORTED_EVENTABLES.include?(object.eventable.class.to_s)
+  %w[comment motion].each do |kind|
+    define_method kind do
+      object.eventable if object.eventable_type == kind.classify
+    end
   end
+
+  def proposal
+    motion
+  end
+
 end
