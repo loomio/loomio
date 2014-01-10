@@ -51,7 +51,9 @@ gem 'valid_email', '~> 0.0.4'
 gem 'font-awesome-sass-rails'
 gem 'sequenced', '~> 1.4.0'
 gem 'closure_tree'
-gem 'jbuilder'
+gem 'active_model_serializers', '~> 0.9.0.alpha1'
+gem 'private_pub'
+gem "thin"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -65,7 +67,6 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'thin', '~> 1.5.1'
   gem 'pry-rails', '~> 0.3.2' # Use this instead of debugger
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'faker', '~> 1.2.0'
