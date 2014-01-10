@@ -3,6 +3,7 @@ class MotionsRedirectController < ApplicationController
   # set this to 0 if you don't want any old urls redirected
 
   before_filter :reject_new_ids
+  before_filter :load_resource_from_id
 
 
   def show
