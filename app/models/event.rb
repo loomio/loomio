@@ -13,6 +13,8 @@ class Event < ActiveRecord::Base
   validates_inclusion_of :kind, :in => KINDS
   validates_presence_of :eventable
 
+  after_create :publish_event
+
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? }
 
 
@@ -22,5 +24,11 @@ class Event < ActiveRecord::Base
 
   def belongs_to?(this_user)
     self.user && (self.user == this_user)
+  end
+
+  def publish_event
+    if self.discussion.present?
+      PrivatePub.publish_to "/events/group_#{discussion.group_id}/#{self.kind}", :event => self
+    end
   end
 end

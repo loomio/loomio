@@ -34,6 +34,8 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
+    active_model_serializers (0.9.0.alpha1)
+      activemodel (>= 3.2)
     activemodel (3.2.16)
       activesupport (= 3.2.16)
       builder (~> 3.0.0)
@@ -105,6 +107,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    cookiejar (0.3.0)
     country_select (1.2.0)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
@@ -142,6 +145,14 @@ GEM
     draper (0.11.1)
       activesupport (>= 2.3.10)
     ejs (1.0.0)
+    em-http-request (1.0.3)
+      addressable (>= 2.2.3)
+      cookiejar
+      em-socksify
+      eventmachine (>= 1.0.0.beta.4)
+      http_parser.rb (>= 0.5.3)
+    em-socksify (0.3.0)
+      eventmachine (>= 1.0.0.beta.4)
     email_spec (1.2.1)
       mail (~> 2.2)
       rspec (~> 2.0)
@@ -158,6 +169,13 @@ GEM
       i18n (~> 0.5)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    faye (0.8.9)
+      cookiejar (>= 0.3.0)
+      em-http-request (>= 0.3.0)
+      eventmachine (>= 0.12.0)
+      faye-websocket (>= 0.4.0)
+      rack (>= 1.0.0)
+      yajl-ruby (>= 1.0.0)
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
     ffi (1.9.3)
@@ -221,9 +239,6 @@ GEM
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
-    jbuilder (2.0.2)
-      activesupport (>= 3.0.0)
-      multi_json (>= 1.2.0)
     journey (1.0.4)
     jqplot-rails (0.3)
       railties
@@ -315,6 +330,8 @@ GEM
     polyamorous (0.6.4)
       activerecord (>= 3.0)
     polyglot (0.3.3)
+    private_pub (1.0.3)
+      faye
     pry (0.9.12.4)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -484,12 +501,14 @@ GEM
       activerecord (>= 3.0.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    yajl-ruby (1.2.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   aasm (~> 3.0.3)
+  active_model_serializers (~> 0.9.0.alpha1)
   activeadmin!
   airbrake (~> 3.1.14)
   awesome_print (~> 1.0.2)
@@ -527,7 +546,6 @@ DEPENDENCIES
   heroku-deflater (~> 0.5.1)
   httparty (~> 0.11.0)
   inherited_resources (~> 1.4.1)
-  jbuilder
   jqplot-rails (~> 0.3)
   jquery-atwho-rails (~> 0.4.1)
   jquery-fileupload-rails (~> 0.4.1)
@@ -550,6 +568,7 @@ DEPENDENCIES
   pg (~> 0.17.0)
   pg_search (~> 0.7.0)
   poltergeist (~> 1.3.0)
+  private_pub
   pry-rails (~> 0.3.2)
   quiet_assets (~> 1.0.2)
   rack-canonical-host (~> 0.0.8)
@@ -572,7 +591,7 @@ DEPENDENCIES
   simple_form (~> 2.1.1)
   spork-rails (~> 3.2.1)
   strong_parameters (~> 0.2.1)
-  thin (~> 1.5.1)
+  thin
   timecop (~> 0.6.3)
   twitter-text (~> 1.6.3)
   uglifier (~> 2.2.1)
