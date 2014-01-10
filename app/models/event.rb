@@ -17,7 +17,6 @@ class Event < ActiveRecord::Base
 
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? }
 
-
   def notify!(user)
     notifications.create!(user: user)
   end

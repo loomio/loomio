@@ -14,7 +14,7 @@ describe 'Discussion/NewCommentItemController', ->
   beforeEach inject ($rootScope, $controller) ->
     $scope = $rootScope.$new()
     $scope.event =
-      eventable:
+      comment:
         id: 1
         body: 'hi there'
         created_at: new Date()

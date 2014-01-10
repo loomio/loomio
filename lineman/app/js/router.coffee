@@ -7,7 +7,7 @@ angular.module('loomioApp').config ($routeProvider, $locationProvider) ->
     resolve:
       discussion: ($route, $http) ->
         $http.get("/api/discussions/#{$route.current.params.id}").then (response)->
-          response.data
+          response.data.discussion
   #.when '/',
     #templateUrl: '/templates/hello'
   .otherwise

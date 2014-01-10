@@ -1,6 +1,14 @@
 describe 'CommentService', ->
   service = null
   httpBackend = null
+  response = null
+
+  callbacks =
+    saveSuccess: (event) ->
+      {}
+
+    saveError: (error) ->
+      {error_messages: []}
 
   comment =
     id: 1
@@ -23,28 +31,26 @@ describe 'CommentService', ->
     httpBackend.verifyNoOutstandingRequest()
 
   describe 'add', ->
-    response =
-      event:
-        id: 1
-        sequence_id: 1
-        comment:
-          author:
-            id: 1
-            name: 'jimmy'
-          body: 'hi'
-          discussion_id: 1
+    beforeEach ->
+      response =
+        new_comment:
+          id: 1
+          sequence_id: 1
+          comment:
+            body: 'hi'
+            discussion_id: 1
 
     it 'posts the comment to the server', ->
       httpBackend.expectPOST('/api/comments', comment).respond(200, response)
-      service.add(comment, discussion)
+      service.add(comment, callbacks.saveSuccess, callbacks.saveError)
       httpBackend.flush()
 
-    it 'pushes the returned event onto the discussion', ->
+    it 'calls saveSuccess with the event in the response', ->
       httpBackend.whenPOST('/api/comments', comment).respond(200, response)
-      spyOn(discussion.events, 'push')
-      service.add(comment, discussion)
+      spyOn(callbacks, 'saveSuccess')
+      service.add(comment, callbacks.saveSuccess, callbacks.saveError)
       httpBackend.flush()
-      expect(discussion.events.push).toHaveBeenCalledWith(response.event)
+      expect(callbacks.saveSuccess).toHaveBeenCalledWith(response.new_comment)
 
   describe 'like', ->
     likeResponse =

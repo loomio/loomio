@@ -53,7 +53,7 @@ describe 'AddComment Controller', ->
 
     spyOn(mockCommentService, 'add').andReturn(true)
     $scope.processForm()
-    expect(mockCommentService.add).toHaveBeenCalledWith(comment, discussion)
+    expect(mockCommentService.add).toHaveBeenCalledWith(comment, $scope.saveSuccess, $scope.saveError)
 
   describe 'startCommentReply is broadcast', ->
     beforeEach ->

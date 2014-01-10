@@ -16,6 +16,6 @@ class MotionSerializer < ActiveModel::Serializer
              :closed_at,
              :last_vote_at
 
-  has_one :author
-  has_one :outcome_author
+  has_one :author, serializer: AuthorSerializer
+  has_one :outcome_author, serializer: AuthorSerializer
 end

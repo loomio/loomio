@@ -191,8 +191,6 @@ ActiveRecord::Schema.define(:version => 20140103032938) do
     t.boolean  "is_deleted",      :default => false, :null => false
     t.integer  "comments_count",  :default => 0,     :null => false
     t.integer  "items_count",     :default => 0,     :null => false
-    t.boolean  "private"
-    t.string   "key"
     t.datetime "archived_at"
   end
 
@@ -201,7 +199,6 @@ ActiveRecord::Schema.define(:version => 20140103032938) do
   add_index "discussions", ["is_deleted", "group_id"], :name => "index_discussions_on_is_deleted_and_group_id"
   add_index "discussions", ["is_deleted", "id"], :name => "index_discussions_on_is_deleted_and_id"
   add_index "discussions", ["is_deleted"], :name => "index_discussions_on_is_deleted"
-  add_index "discussions", ["key"], :name => "index_discussions_on_key", :unique => true
 
   create_table "email_template_sent_to_groups", :force => true do |t|
     t.integer  "email_template_id"
@@ -334,12 +331,10 @@ ActiveRecord::Schema.define(:version => 20140103032938) do
     t.string   "full_name"
     t.string   "payment_plan",               :default => "undetermined"
     t.boolean  "viewable_by_parent_members", :default => false,          :null => false
-    t.string   "key"
   end
 
   add_index "groups", ["archived_at", "id"], :name => "index_groups_on_archived_at_and_id"
   add_index "groups", ["full_name"], :name => "index_groups_on_full_name"
-  add_index "groups", ["key"], :name => "index_groups_on_key", :unique => true
   add_index "groups", ["name"], :name => "index_groups_on_name"
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
 

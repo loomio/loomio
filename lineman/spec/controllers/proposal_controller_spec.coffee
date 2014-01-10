@@ -3,6 +3,7 @@ describe 'ProposalController', ->
   $scope = null
   controller = null
   proposal = {id: 1, name: 'hello'}
+  discussion = {id: 1, title: 'yeh'}
 
   mockProposalService = 
     saveVote: ->
@@ -13,6 +14,7 @@ describe 'ProposalController', ->
   beforeEach inject ($rootScope, $controller) ->
     parentScope = $rootScope
     $rootScope.proposal = proposal
+    $rootScope.discussion = discussion
     $scope = $rootScope.$new()
     controller = $controller 'ProposalController',
       $scope: $scope

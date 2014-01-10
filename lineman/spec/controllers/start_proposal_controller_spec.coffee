@@ -27,7 +27,6 @@ describe 'StartProposalController', ->
       expect($scope.isExpanded).toBe(false)
 
     it 'should not be hidden', ->
-      console.log($scope.discussion.proposal)
       expect($scope.isHidden).toBe(false)
 
     it 'should not be disabled', ->
@@ -73,7 +72,7 @@ describe 'StartProposalController', ->
       expect($scope.isExpanded).toBe(false)
 
   describe '#saveSuccess(event)', ->
-    event = {eventable: {}}
+    event = {proposal: {}}
     errors = ['bad times']
     it 'hides the start proposal widget', ->
       $scope.saveSuccess(event)
@@ -86,7 +85,7 @@ describe 'StartProposalController', ->
 
     it 'sets the discussion.proposal', ->
       $scope.saveSuccess(event)
-      expect(discussion.proposal).toBe(event.eventable)
+      expect(discussion.active_proposal).toBe(event.proposal)
 
     it 'reenables the form', ->
       $scope.saveError(errors)
@@ -94,7 +93,8 @@ describe 'StartProposalController', ->
 
   describe '#saveError(errors)', ->
     beforeEach ->
-      errors = ['bad motivator unit']
+      errors = 
+        error_messages: ['bad motivator unit']
 
     it 'reenables the form', ->
       $scope.saveError(errors)
@@ -102,5 +102,5 @@ describe 'StartProposalController', ->
 
     it 'displays the errors', ->
       $scope.saveError(errors)
-      expect($scope.errorMessages).toBe(errors)
+      expect($scope.errorMessages).toBe(errors.error_messages)
 
