@@ -57,7 +57,7 @@ Loomio::Application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.default_url_options = {
-    :host => ENV['CANONICAL_HOST'],
+    host: ENV['CANONICAL_HOST'] || 'staging.loomio.org',
   }
 
   if ENV['ENABLE_STAGING_EMAILS']

@@ -47,7 +47,7 @@ class Groups::InvitationsController < GroupBaseController
   end
 
   def load_decorated_group
-    @group = GroupDecorator.new(Group.find(params[:group_id]))
+    group
   end
 
   def set_flash_message

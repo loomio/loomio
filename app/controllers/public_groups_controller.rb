@@ -1,6 +1,4 @@
-class Groups::PublicGroupsController < BaseController
-  before_filter :authenticate_user!, except: [:index]
-
+class PublicGroupsController < ApplicationController
   def index
     @groups = Group.visible_to_the_public
     if params[:query]

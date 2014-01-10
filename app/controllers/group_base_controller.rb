@@ -1,4 +1,5 @@
 class GroupBaseController < BaseController
+
   protected
 
   def require_current_user_can_invite_people
@@ -16,7 +17,7 @@ class GroupBaseController < BaseController
   end
 
   def group
-    @group ||= GroupDecorator.new(Group.find(group_id))
+    @group ||= GroupDecorator.new(Group.published.find_by_key(group_id))
   end
 
   def group_id
