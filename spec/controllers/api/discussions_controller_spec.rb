@@ -5,21 +5,19 @@ describe Api::DiscussionsController do
   let(:user) { create :user }
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
+  let(:proposal) { create :motion, discussion: discussion, author: user }
 
   before do
     group.admins << user
     sign_in user
   end
 
-  describe 'creating a comment' do
-    before do
-      event = DiscussionService.add_comment(Comment.new(author: user, body: 'hi', discussion: discussion))
-    end
-    it 'returns the comment json' do
+  describe 'show' do
+    it 'returns the discussion json' do
+      proposal
       get :show, id: discussion.id, format: :json
-      raise JSON.parse(response.body)['discussion']['events'].inspect
-      event.keys.should include *(%w[id sequence_id kind comment])
-      event['comment'].keys.should include *(%w[body author created_at])
+      discussion = JSON.parse(response.body)['discussion']
+      discussion.keys.should include *(%w[relationships id author_id event_ids title description active_proposal_id proposal_ids])
     end
   end
 end

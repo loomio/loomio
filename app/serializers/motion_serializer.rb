@@ -17,5 +17,10 @@ class MotionSerializer < ActiveModel::Serializer
              :last_vote_at
 
   has_one :author, serializer: AuthorSerializer
-  has_one :outcome_author, serializer: AuthorSerializer
+  has_one :outcome_author, serializer: AuthorSerializer, root: :authors
+
+  def filter(keys)
+    keys.delete(:outcome_author) unless object.outcome_author.present?
+    keys
+  end
 end

@@ -81,14 +81,15 @@ describe 'ProposalController', ->
       expect($scope.discussion.events.push).toHaveBeenCalledWith(event)
 
   describe 'saveVoteError', ->
-    errors = null
+    error = null
     beforeEach ->
-      errors = ['no bananas today']
-      $scope.saveVoteError(errors)
+      error =
+        messages: ['no bananas today']
+      $scope.saveVoteError(error)
 
     it 'enables the voteForm', ->
       expect($scope.voteFormIsDisabled).toBe(false)
 
     it 'sets the voteErrorMessages', ->
-      expect($scope.voteErrorMessages).toBe(errors)
+      expect($scope.voteErrorMessages).toBe(error.messages)
 

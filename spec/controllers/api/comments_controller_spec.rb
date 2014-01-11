@@ -21,7 +21,7 @@ describe Api::CommentsController do
 
     it 'returns the comment json' do
       post :create, comment: comment_params, format: :json
-      event = JSON.parse(response.body)['new_comment']
+      event = JSON.parse(response.body)['event']
       event.keys.should include *(%w[id sequence_id kind comment])
       event['comment'].keys.should include *(%w[body author created_at])
     end
