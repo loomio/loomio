@@ -34,8 +34,8 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active_model_serializers (0.9.0.alpha1)
-      activemodel (>= 3.2)
+    active_model_serializers (0.8.1)
+      activemodel (>= 3.0)
     activemodel (3.2.16)
       activesupport (= 3.2.16)
       builder (~> 3.0.0)
@@ -508,7 +508,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm (~> 3.0.3)
-  active_model_serializers (~> 0.9.0.alpha1)
+  active_model_serializers (~> 0.8.1)
   activeadmin!
   airbrake (~> 3.1.14)
   awesome_print (~> 1.0.2)

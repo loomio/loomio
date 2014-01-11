@@ -51,7 +51,7 @@ gem 'valid_email', '~> 0.0.4'
 gem 'font-awesome-sass-rails'
 gem 'sequenced', '~> 1.4.0'
 gem 'closure_tree'
-gem 'active_model_serializers', '~> 0.9.0.alpha1'
+gem 'active_model_serializers', '~> 0.8.1'
 gem 'private_pub'
 gem "thin"
 

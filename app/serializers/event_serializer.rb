@@ -1,4 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
+  embed :ids, include: true
   attributes :id, :sequence_id, :kind, :relationships
 
   has_one :comment, serializer: CommentSerializer
