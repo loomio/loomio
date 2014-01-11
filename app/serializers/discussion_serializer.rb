@@ -37,7 +37,7 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   def relationships
     {
-      current_user: {foreign_key: 'current_user_id', collection: 'users'},
+      current_user: {foreign_key: 'current_user_id', collection: 'authors'},
       author: { foreign_key: 'author_id', collection: 'authors' },
       active_proposal: { foreign_key: 'active_proposal_id', collection: 'proposals' },
       events: { foreign_key: 'event_ids', collection: 'events', type: 'list'},

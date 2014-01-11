@@ -1,2 +1,2 @@
 angular.module('loomioApp').controller 'NewMotionItemController', ($scope) ->
-  $scope.motion = $scope.event.eventable
+  $scope.proposal = $scope.event.proposal
