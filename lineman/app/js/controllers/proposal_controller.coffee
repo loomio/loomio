@@ -19,6 +19,6 @@ angular.module('loomioApp').controller 'ProposalController', ($scope, ProposalSe
     $scope.currentUserVote = event.eventable
     $scope.discussion.events.push(event)
 
-  $scope.saveVoteError = (errors) ->
+  $scope.saveVoteError = (error) ->
     $scope.voteFormIsDisabled = false
-    $scope.voteErrorMessages = errors
+    $scope.voteErrorMessages = error.messages

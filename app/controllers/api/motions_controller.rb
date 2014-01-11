@@ -6,7 +6,7 @@ class Api::MotionsController < Api::BaseController
     @motion.discussion = Discussion.find(@motion.discussion_id)
     @event = MotionService.create(@motion)
 
-    render_event_or_invalid_model(@event, @motion)
+    render_event_or_model_error(@event, @motion)
   end
 
   def vote
@@ -15,6 +15,6 @@ class Api::MotionsController < Api::BaseController
     @vote.motion = Motion.find(params[:motion_id])
     @event = VoteService.cast(@vote)
 
-    render_event_or_invalid_model(@event, @vote)
+    render_event_or_model_error(@event, @vote)
   end
 end

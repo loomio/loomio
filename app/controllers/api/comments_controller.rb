@@ -6,7 +6,7 @@ class Api::CommentsController < Api::BaseController
     @comment.discussion = Discussion.find(@comment.discussion_id)
     @event = DiscussionService.add_comment(@comment)
 
-    render_event_or_invalid_model(@event, @comment)
+    render_event_or_model_error(@event, @comment)
   end
 
   def like

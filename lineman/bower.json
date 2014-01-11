@@ -1,12 +1,14 @@
 {
   "name": "Loomio assets",
   "dependencies": {
-    "angular": "~1.2.3",
+    "angular": "~1.2.8",
     "jquery": "~2.0.3",
     "underscore": "~1.5.2",
-    "angular-route": "~1.2.3",
+    "angular-route": "~1.2.8",
     "sass-bootstrap": "~3.0.2",
     "font-awesome": "~4.0.3",
-    "angular-bootstrap-datetimepicker": "latest"
+    "angular-bootstrap-datetimepicker": "latest",
+    "angular-cache": "~2.3.0",
+    "restangular": "~1.2.2"
   }
 }

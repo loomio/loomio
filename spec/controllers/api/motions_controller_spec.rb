@@ -25,7 +25,7 @@ describe Api::MotionsController do
 
       it 'returns the event json' do
         post :create, motion: motion_params, format: :json
-        event = JSON.parse(response.body)['new_motion']
+        event = JSON.parse(response.body)['event']
         event.keys.should include *(%w[id sequence_id kind proposal])
         event['proposal'].keys.should include *(%w[name author created_at description discussion_id closing_at])
       end
@@ -39,10 +39,9 @@ describe Api::MotionsController do
         response.status.should == 400
       end
 
-      it 'returns an errors object' do
+      it 'calls render_event_or_model_error' do
         post :create, motion: motion_params, format: :json
-        puts JSON.parse(response.body)
-        errors = JSON.parse(response.body)['invalid_model']['error_messages']
+        errors = JSON.parse(response.body)['error']['messages']
         errors.should == assigns[:motion].errors.full_messages
       end
     end
