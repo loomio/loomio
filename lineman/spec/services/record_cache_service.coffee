@@ -1,7 +1,7 @@
 describe 'RecordCacheService', ->
   service = null
   cacheFactory = null
-  knownRecordKeys = ['discussions', 'proposals', 'authors', 'events', 'comments']
+  collectionNames = ['discussions', 'proposals', 'authors', 'events', 'comments']
 
   beforeEach ->
     module 'loomioApp'
@@ -12,8 +12,8 @@ describe 'RecordCacheService', ->
   describe 'consumeSideLoadedRecords', ->
     it 'consumes objects from known keys', ->
       discussion = {id: 1, title: 'I am bart simpson'}
-      service.consumeSideLoadedRecords({discussions: [discussion]}, knownRecordKeys)
-      expect(service.localGet('discussions', 1)).toBe(discussion)
+      service.consumeSideLoadedRecords({discussions: [discussion]}, collectionNames)
+      expect(service.get('discussions', 1)).toBe(discussion)
 
 
   describe 'hydrateRelationshipsOn', ->
@@ -28,7 +28,7 @@ describe 'RecordCacheService', ->
             foreign_key: 'author_id'
             collection: 'authors'
       rootNode = {discussions: [discussion], authors: [author]}
-      service.consumeSideLoadedRecords(rootNode, knownRecordKeys)
+      service.consumeSideLoadedRecords(rootNode, collectionNames)
       service.hydrateRelationshipsOn(discussion)
       expect(discussion.author).toBe(author)
 
@@ -44,7 +44,7 @@ describe 'RecordCacheService', ->
             collection: 'events'
             type: 'list'
       rootNode = {discussions: [discussion], events: [event]}
-      service.consumeSideLoadedRecords(rootNode, knownRecordKeys)
+      service.consumeSideLoadedRecords(rootNode, collectionNames)
       service.hydrateRelationshipsOn(discussion)
       expect(discussion.events[0]).toBe(event)
 

@@ -3,9 +3,11 @@ describe 'DiscussionService', ->
   httpBackend = null
   mockCacheService = null
 
+  discussion =
+    id: 1
+
   response_data =
-    discussion:
-      id: 1
+    discussion: discussion
 
   beforeEach ->
     module 'loomioApp'
@@ -14,11 +16,14 @@ describe 'DiscussionService', ->
       mockCacheService =
         consumeSideLoadedRecords: (response_data) ->
         hydrateRelationshipsOn: (record) ->
+        put: (key, record) ->
+        recordKey: (collectionName, key) ->
+          "#{collectionName}/#{key}"
 
       $provide.value('RecordCacheService', mockCacheService)
       return
 
-    inject ($httpBackend, DiscussionService, RecordCacheService) ->
+    inject ($httpBackend, DiscussionService) ->
       httpBackend = $httpBackend
       service = DiscussionService
 
@@ -47,5 +52,15 @@ describe 'DiscussionService', ->
       httpBackend.flush()
       expect(mockCacheService.hydrateRelationshipsOn).toHaveBeenCalledWith({id: 1})
 
-  #describe 'localGet', ->
-    #it 'pulls the discussion from the RecordCache'
+    it 'puts the record into the record cache', ->
+      httpBackend.expectGET('/api/discussions/1').respond(200, response_data)
+      spyOn(mockCacheService, 'put')
+      service.remoteGet(1)
+      httpBackend.flush()
+      expect(mockCacheService.put).toHaveBeenCalledWith('discussions', 1, {id: 1})
+
+  describe 'get', ->
+    context 'cache is warm', ->
+      it 'pulls the discussion from the RecordCache'
+      it 'remoteGets the discussion'
+
