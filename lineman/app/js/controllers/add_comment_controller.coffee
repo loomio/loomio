@@ -20,6 +20,7 @@ angular.module('loomioApp').controller 'AddCommentController', ($scope, CommentS
     $scope.expand()
 
   $scope.saveSuccess = (event) ->
+    console.log(event)
     $scope.discussion.events.push(event)
     #console.log event
 

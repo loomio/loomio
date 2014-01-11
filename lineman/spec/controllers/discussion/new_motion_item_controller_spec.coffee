@@ -8,9 +8,9 @@ describe 'Discussion/NewMotionItemController', ->
 
   beforeEach inject ($rootScope, $controller) ->
     $scope = $rootScope.$new()
-    $scope.event = {eventable: {hi:'hi'}}
+    $scope.event = {proposal: {hi:'hi'}}
     controller = $controller 'NewMotionItemController',
       $scope: $scope
 
   it 'should assign motion', ->
-    expect($scope.motion).toBeDefined()
+    expect($scope.proposal).toBeDefined()

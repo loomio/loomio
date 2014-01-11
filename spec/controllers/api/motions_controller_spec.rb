@@ -26,7 +26,7 @@ describe Api::MotionsController do
       it 'returns the event json' do
         post :create, motion: motion_params, format: :json
         event = JSON.parse(response.body)['event']
-        event.keys.should include *(%w[id sequence_id kind proposal])
+        event.keys.should include *(%w[id sequence_id kind proposal_id])
         event['proposal'].keys.should include *(%w[name author created_at description discussion_id closing_at])
       end
     end
