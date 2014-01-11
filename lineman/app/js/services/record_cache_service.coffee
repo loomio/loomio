@@ -6,24 +6,34 @@ angular.module('loomioApp').service 'RecordCacheService',
     recordKey: (collectionName, id) ->
       "#{collectionName}/#{id}"
 
-    consumeSideLoadedRecords: (rootNode, knownRecordKeys) ->
-      _.each knownRecordKeys, (collection) =>
+    consumeSideLoadedRecords: (rootNode, collectionNames) ->
+      _.each collectionNames, (collection) =>
         if rootNode[collection]?
           _.each rootNode[collection], (record) =>
-            @cache.put @recordKey(collection, record.id), record
+            key = @recordKey(collection, record.id)
+            #console.log('put', key,  collection, record)
+            @cache.put key, record
 
-    localGet: (collectionName, id)->
-      @cache.get @recordKey(collectionName, id)
+    get: (collectionname, id)->
+      @cache.get @recordKey(collectionname, id)
+
+    put: (collectionname, id, record)->
+      @cache.put @recordKey(collectionname, id)
 
     hydrateRelationshipsOn: (record) ->
       if record.relationships?
         _.each record.relationships, (options, key) =>
+          associated_record = null
           switch options.type
             when 'list'
               _.each record[options.foreign_key], (id) =>
-                record[key] = [] unless record.key?
-                record[key].push @cache.get(@recordKey(options.collection, id))
+                record[key] = [] unless record[key]?
+                associated_record = @cache.get(@recordKey(options.collection, id))
+                record[key].push associated_record
+                @hydrateRelationshipsOn(associated_record) if associated_record?
             else
-              record[key] = @cache.get(@recordKey options.collection, record[options.foreign_key])
+              associated_record = @cache.get(@recordKey options.collection, record[options.foreign_key])
+              record[key] = associated_record
+              @hydrateRelationshipsOn(associated_record) if associated_record?
       else
         console.log("record has no relationships: #{record}")
