@@ -1,12 +1,13 @@
 angular.module('loomioApp').service 'RecordCacheService',
   class RecordCacheService
+    collectionNames =  ['discussions', 'proposals', 'authors', 'events', 'comments']
     constructor: (@$http, @$angularCacheFactory) ->
       @cache = @$angularCacheFactory 'recordCache'
 
     recordKey: (collectionName, id) ->
       "#{collectionName}/#{id}"
 
-    consumeSideLoadedRecords: (rootNode, collectionNames) ->
+    consumeSideLoadedRecords: (rootNode) ->
       _.each collectionNames, (collection) =>
         if rootNode[collection]?
           _.each rootNode[collection], (record) =>
