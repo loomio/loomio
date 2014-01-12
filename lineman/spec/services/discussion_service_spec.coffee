@@ -19,6 +19,8 @@ describe 'DiscussionService', ->
         put: (key, record) ->
         recordKey: (collectionName, key) ->
           "#{collectionName}/#{key}"
+        get: (collectionName, key) ->
+          discussion
 
       $provide.value('RecordCacheService', mockCacheService)
       return

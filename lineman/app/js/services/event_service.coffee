@@ -12,10 +12,9 @@ angular.module('loomioApp').service 'EventService',
     play: (event) ->
       switch event.kind
         when 'new_comment'
-          console.log event
           discussion = @RecordCacheService.get('discussions', event.discussion_id)
-          console.log discussion
           discussion.events.push event
+          console.log "EventService pushed event onto discussion:",  event
           discussion.last_comment_at = event.comment.created_at
         when 'new_motion'
           discussion = @RecordCacheService.get('discussions', event.discussion_id)

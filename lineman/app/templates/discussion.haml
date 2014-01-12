@@ -34,7 +34,7 @@
   %proposal{proposal: 'discussion.active_proposal', discussion: 'discussion'}
 
   .card-row{'ng-repeat' => 'event in discussion.events'}
-    %div{ng_include: "'generated/templates/discussion_items/'+ event.kind + '.html'"}
+    %div{ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
     -#-#"discussion_title_edited",
     -#-#"discussion_description_edited",
     -#-#"new_motion",
