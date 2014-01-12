@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Comment do
   let(:user) { stub_model(User) }
-  let(:discussion) { create(:discussion) }
+  let(:discussion) { create_discussion }
   let(:comment) { create(:comment, discussion: discussion) }
 
   it { should have_many(:events).dependent(:destroy) }
@@ -127,7 +127,7 @@ describe Comment do
     before do
       @group = create :group
       @user = create :user
-      @discussion = create :discussion, :author => @user, :group => @group
+      @discussion = create_discussion :author => @user, :group => @group
       Event.stub(:send_new_comment_notifications!)
       @user.stub(:subscribed_to_mention_notifications?).and_return(true)
     end

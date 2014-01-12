@@ -1,14 +1,12 @@
 - form_params ||= {}
-- form_params.merge!({validate: true})
+- form_params.merge!({validate: true, html: {'data-current-privacy' => group.privacy}})
 - privacy_options = group_privacy_options(group)
 - privacy_options_disabled = group_privacy_options_disabled(group)
 
 = simple_form_for group, form_params do |f|
   = f.input :name, label: false
   = f.input :description, as: :text, label: false
-
   = f.input :privacy, :as => 'radio_buttons', collection: privacy_options, disabled: privacy_options_disabled
-
   - if group.is_a_subgroup?
     = f.input :viewable_by_parent_members, inline_label: group_viewable_by_parent_label(group), label: false
 

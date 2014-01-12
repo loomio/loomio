@@ -12,8 +12,8 @@
       = time_formatted_relative_to_age(item.last_comment_at)
     -#.span1
       -#.unfollow-btn
-        -#= link_to 'h', unfollow_inbox_path({class: item.class.to_s, id: item.id}), remote: true, method: :post, id: 'unfollow-btn'
+        -#= link_to 'h', inbox_unfollow_path({class: item.class.to_s, id: item.id}), remote: true, method: :post, id: 'unfollow-btn'
   .span1
     .mark-as-read-btn
-      = link_to 'x', mark_as_read_inbox_path(discussion_ids: item.id), remote: true, method: :post
+      = link_to 'x', inbox_mark_as_read_path(discussion_ids: item.id), remote: true, method: :post
 

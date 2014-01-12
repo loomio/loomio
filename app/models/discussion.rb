@@ -2,6 +2,8 @@ class Discussion < ActiveRecord::Base
   PER_PAGE = 50
   paginates_per PER_PAGE
 
+  include ReadableUnguessableUrls
+
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil) }
 
@@ -10,8 +12,10 @@ class Discussion < ActiveRecord::Base
   scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
 
   validates_presence_of :title, :group, :author
+  validate :private_is_not_nil
   validates :title, :length => { :maximum => 150 }
   validates_inclusion_of :uses_markdown, :in => [true,false]
+  validate :privacy_is_permitted_by_group
 
   has_paper_trail :only => [:title, :description]
 
@@ -152,51 +156,86 @@ class Discussion < ActiveRecord::Base
     update_attribute(:last_comment_at, last_comment_time)
   end
 
+  def public?
+    self.private == false
+  end
+
+  def private?
+    if self[:private].nil? and group.present?
+      group_default_is_private?
+    else
+      self[:private]
+    end
+  end
+
+  def inherit_group_privacy!
+    self[:private] = group_default_is_private?
+  end
+
+  def private
+    self.private?
+  end
+
+  def group_default_is_private?
+    ['hidden', 'private'].include? group.privacy
+  end
+
+
   private
-
-    def set_last_comment_at
-      self.last_comment_at ||= Time.now
+  def private_is_not_nil
+    if self[:private].nil?
+      errors.add(:private, "cannot be nil")
     end
+  end
 
-    def joined_or_new_discussion_reader_for(user)
-      if self[:viewer_user_id].present?
-        unless user.id == self[:viewer_user_id].to_i
-          raise "joined for wrong user"
-        end
-        DiscussionReader.load_from_joined_discussion(self)
-      else
-        new_discussion_reader_for(user)
+  def privacy_is_permitted_by_group
+    if group.present? and group.is_hidden? and not self.private?
+      errors.add(:private, "must be true when group is hidden")
+    end
+  end
+
+  def set_last_comment_at
+    self.last_comment_at ||= Time.now
+  end
+
+  def joined_or_new_discussion_reader_for(user)
+    if self[:viewer_user_id].present?
+      unless user.id == self[:viewer_user_id].to_i
+        raise "joined for wrong user"
       end
+      DiscussionReader.load_from_joined_discussion(self)
+    else
+      new_discussion_reader_for(user)
     end
+  end
 
+  def joined_to_discussion_reader?
+    self['joined_to_discussion_reader'] == '1'
+  end
 
-    def joined_to_discussion_reader?
-      self['joined_to_discussion_reader'] == '1'
-    end
-
-    def find_or_new_discussion_reader_for(user)
-      if self.discussion_readers.where(:user_id => user.id).exists?
-        self.discussion_readers.where(user_id: user.id).first
-      else
-        discussion_reader = self.discussion_readers.build
-        discussion_reader.discussion = self
-        discussion_reader.user = user
-        discussion_reader
-      end
-    end
-
-    def new_discussion_reader_for(user)
-      discussion_reader = DiscussionReader.new
+  def find_or_new_discussion_reader_for(user)
+    if self.discussion_readers.where(:user_id => user.id).exists?
+      self.discussion_readers.where(user_id: user.id).first
+    else
+      discussion_reader = self.discussion_readers.build
       discussion_reader.discussion = self
       discussion_reader.user = user
       discussion_reader
     end
+  end
 
-    def fire_edit_title_event(user)
-      Events::DiscussionTitleEdited.publish!(self, user)
-    end
+  def new_discussion_reader_for(user)
+    discussion_reader = DiscussionReader.new
+    discussion_reader.discussion = self
+    discussion_reader.user = user
+    discussion_reader
+  end
 
-    def fire_edit_description_event(user)
-      Events::DiscussionDescriptionEdited.publish!(self, user)
-    end
+  def fire_edit_title_event(user)
+    Events::DiscussionTitleEdited.publish!(self, user)
+  end
+
+  def fire_edit_description_event(user)
+    Events::DiscussionDescriptionEdited.publish!(self, user)
+  end
 end

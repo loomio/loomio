@@ -585,14 +585,8 @@ el:
         members_invitable_by_members: "Όλα τα μέλη της ομάδας"
         privacy: Ιδιωτικότητα
         privacy_public_header: Δημόσιο
-        privacy_public_description: Οποιοσδήποτε μπορεί να δει την ομάδα και ποιός είναι μέσα σε αυτήν. Οι Συζητήσεις είναι δημόσιες από προεπιλογή.
-        privacy_public_description_short: Οποιοσδήποτε μπορεί να δει αυτή την ομάδα και τις συζητήσεις.
         privacy_secret_header: Κρυφό
-        privacy_secret_description: Μόνο τα μέλη μπορούν να δουν την ομάδα και τις συζητήσεις. Δεν μπορείτε να έχετε δημόσιες συζητήσεις σε κρυφή ομάδα.
-        privacy_secret_description_short: Μόνο τα μέλη μπορούν να δουν αυτή την ομάδα και τις συζητήσεις.
         privacy_parent_group_members_header: Φαίνεται από τα μέλη της κεντρικής ομάδας
-        privacy_parent_group_members_description: Το ίδιο σαν κρυφό, μόνο που η ομάδα και οι συζητήσεις σε αυτήν μπορούν να φανούν από τα μέλη της κύριας ομάδας.
-        privacy_parent_group_members_description_short: Μόνο τα μέλη και τα μέλη της κύριας ομάδας μπορούν να δουν αυτή την ομάδα και τις συζητήσεις τις.
         group_members_invitable_by: "Μόνο συντονιστές"
         submit: Υποβολή
         viewable_by_parent_members_header: Επιτρέψτε σε όλα τα μέλη της ομάδας %{group} να βλέπουν αυτή την υπό-ομάδα και τις συζητήσεις τους

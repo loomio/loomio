@@ -1,7 +1,7 @@
 - set_title @group.name, @discussion.title, @group.parent
 .row
   .span9
-    =render '/groups/title', group: @group
+    =render '/groups/title', group: @group, discussion: @discussion
   .span3#button-container
     = request_membership_button(@group)
 .row
@@ -35,7 +35,7 @@
               %ul.selector-list
                 - if @current_motion.nil?
                   - if can? :create, Motion.new(discussion_id: @discussion.id)
-                    = link_to t(:create_new_proposal), new_proposal_discussion_path(@discussion.id), class: 'btn new-proposal-btn', id: 'new-proposal'
+                    = link_to t(:create_new_proposal), new_proposal_discussion_path(@discussion), class: 'btn new-proposal-btn', id: 'new-proposal'
                     %li.selector-item.empty-list-message#start-proposal-text
                       = t :empty_decision_list_html
                 - else

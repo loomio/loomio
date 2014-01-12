@@ -28,7 +28,7 @@ describe UserMailer do
     end
 
     it 'assigns confirmation_url for email body' do
-      @mail.body.encoded.should match("http://localhost:3000/groups/#{@group.id}")
+      @mail.body.encoded.should match("http://localhost:3000/g/#{@group.key}")
     end
   end
 end

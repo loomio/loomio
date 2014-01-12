@@ -7,6 +7,7 @@ class Ability
     @admin_group_ids = user.adminable_group_ids
     @member_group_ids = user.group_ids
 
+
     cannot :sign_up, User
 
     can :show, Group do |group|
@@ -125,11 +126,17 @@ class Ability
       group = discussion.group
       if discussion.archived?
         false
-      elsif group.privacy == 'public' || group.members.include?(user)
-        can? :show, group
+      elsif group.members.include?(user)
+        true
+      elsif discussion.public?
+        true
       else
         false
       end
+    end
+
+    can :update, Discussion do |discussion|
+      (discussion.author == user) or @admin_group_ids.include?(discussion.group_id)
     end
 
     can [:destroy,

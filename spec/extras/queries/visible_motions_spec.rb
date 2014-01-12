@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Queries::VisibleMotions do
   let(:user) { create :user }
   let(:group) { create :group }
-  let(:discussion) { create :discussion, group: group }
+  let(:discussion) { create_discussion group: group }
   let(:motion) { create :motion, discussion: discussion }
 
   subject do

@@ -1,4 +1,5 @@
 module GroupsHelper
+
   def css_for_privacy_link(group, link)
     current_privacy_setting = String(group.privacy)
     return "icon-ok" if link == current_privacy_setting
@@ -76,7 +77,7 @@ module GroupsHelper
   end
 
   def request_membership_icon_button(group, params={})
-    old_params = { href: new_group_membership_request_path(group),
+    old_params = { href: group_ask_to_join_path(group),
                    text: t(:ask_to_join_group),
                    icon: nil,
                    id: 'request-membership',
@@ -120,4 +121,11 @@ module GroupsHelper
     [[t('simple_form.labels.group.members_invitable_by_coordinators'), :admins],
      [t('simple_form.labels.group.members_invitable_by_members'), :members]]
   end
+
+  def user_sees_private_discussions_message?(user, group)
+    group.privacy == 'private' &&
+    group.members.exclude?(user) &&
+    group.discussions.where('private = ?', false).empty?
+  end
+
 end

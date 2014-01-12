@@ -3,7 +3,89 @@
 @import "mixins";
 
 
-body.discussions.new, body.discussions.create {
+body.discussions.new, body.discussions.create, body.discussions.edit {
+
+// from group
+  .control-group.radio_buttons { margin-bottom: 1.6em; }
+
+  #discussion_title {
+    font-size: 18px;
+    height: 24px;
+    line-height: 22px;
+    margin-bottom: .6em;
+  }
+
+  .hidden-group-discussion-privacy {
+    margin: 2.6em 0 1em;
+    i {
+      font-size: 1.2em;
+      margin-right: 6px;
+      opacity: .6;
+    }
+    .header {
+      font-size: 20px;
+      font-weight: 400;
+    }
+    .subhead { font-size: 16px; }
+    .description {
+      color: $mid-grey;
+      font-size: 14px;
+      font-style: italic;
+    }
+  }
+
+  input[type="submit"] { margin-top: .4em; }
+
+  label { font-size: 18px; }
+
+  textarea {
+    @include placeholder { font-style: italic; }
+    font-size: 16px;
+    height: 100px;
+  }
+
+  .control-label.radio_buttons {
+    font-size: 20px;
+  }
+
+  .radio_buttons .controls { margin-top: .5em; }
+
+  .radio, .checkbox { font-size: 16px; }
+
+  .radio i {
+    margin-right: 6px;
+    opacity: 0.6;
+  }
+
+  .radio p {
+    font-size: 14px;
+    font-style: italic;
+    line-height: 18px;
+    margin-top: 0.2em;
+    margin-bottom: 1em;
+    color: $dark-grey;
+  }
+
+  .checkbox { margin-bottom: 0px; }
+
+  .group_viewable_by_parent_members {
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    padding: 1em 0;
+    margin-bottom: 1.8em;
+  }
+
+  .disabled { color:#ccc; }
+  #group-setup { margin-top: 1.2em; }
+  .info-box {
+    width: 290px;
+    margin-top: 1.1em
+  }
+// -----------
+
+  .discussion_private { margin-top: 2.6em; }
+
+
   #discussion-markdown-dropdown {
     float: right;
     left: 12px;
@@ -29,6 +111,21 @@ body.discussions.show {
     @include border-radius(4px);
     @include box-shadow(0, 1px, 1px, 0, rgba(0, 0, 0, 0.075) inset);
     margin: 10px 12px 0 44px;
+  }
+
+  .warn-move-will-make-private { padding: 0 15px 15px; }
+
+  #options-dropdown {
+    font-size: 1.4em;
+    color: $mid-grey;
+    text-decoration: none;
+  }
+
+  #privacy {
+    margin-left: 4px;
+    font-size: .8em;
+    color: $mid-light-grey;
+    text-decoration: none;
   }
 
   .shifted_anchor {
@@ -107,33 +204,6 @@ body.discussions.show {
     margin: 0 0 0 15px;
 
     #discussion-title { font-size: 22px; }
-    #edit-discussion-title {
-      float: left;
-      #cancel-edit-title {
-        color: $mid-grey;
-        font-size: $font-tiny;
-        margin-left: 10px;
-        text-decoration: underline;
-        position: relative;
-        &:hover { color: $dark-grey; }
-      }
-      .character-counter { bottom: 0; }
-
-      .control-group { margin-bottom: 0px; }
-      form {
-        margin: 4px 0 0 0;
-        width: 830px;
-        .control-group #discussion-input {
-          width: 820px;
-          font-size: $font-xlarge;
-          margin-bottom: 2px;
-        }
-      }
-      .save-buttons {
-        position: relative;
-        bottom: 5px;
-      }
-    }
   }
   #discussion-content-container {
     background-color: white;
@@ -394,7 +464,7 @@ body.discussions.show {
     min-height: 59px;
     .dropdown {
       float: right;
-      padding: 5px 10px;
+      padding: 6px 10px;
       li {
         background-color: white;
         border: none;
