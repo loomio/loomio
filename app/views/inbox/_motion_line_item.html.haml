@@ -12,7 +12,7 @@
           -if values.sum == 0
             0,0,0,0,1
           -else
-            =values.join(',') 
+            =values.join(',')
 
     .span8.title
       = item.title
@@ -24,4 +24,4 @@
 
   .span1
     .mark-as-read-btn
-      = link_to 'x', mark_as_read_inbox_path(motion_ids: item.id), remote: true, method: :post
+      = link_to 'x', inbox_mark_as_read_path(motion_ids: item.id), remote: true, method: :post

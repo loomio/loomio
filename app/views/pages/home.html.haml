@@ -20,26 +20,26 @@
           %h2 Groups using Loomio
         .row-fluid.featured-row
           .span2.featured-image
-            =link_to image_tag("diaspora.jpg"), group_path(id: 194)
+            =link_to image_tag("diaspora.jpg"), @diaspora_group
           .span9.flush
             %h3
-              =link_to "Diaspora Community", group_path(id: 194)
+              =link_to "Diaspora Community", @diaspora_group
             %p
               The Diaspora Project works with the goal of establishing a decentralized social platform. It is Free and Open Source software, and community-driven.
         .row-fluid.featured-row
           .span2.featured-image
-            =link_to image_tag("blag.jpg"), group_path(id: 1031)
+            =link_to image_tag("blag.jpg"), @blag_group
           .span9.flush
             %h3
-              =link_to "Big Live Arts Group", group_path(id: 1031)
+              =link_to "Big Live Arts Group", @blag_group
             %p
               Developing a supportive and critically engaged community within the performing arts industry, anchored by principles of diversity, inclusion, openness and transparency.
         .row-fluid.featured-row
           .span2.featured-image
-            =link_to image_tag("loomio-community.jpg"), group_path(id: 3)
+            =link_to image_tag("loomio-community.jpg"), @loomio_community_group
           .span9.flush
             %h3
-              =link_to "Loomio Community", group_path(id: 3)
+              =link_to "Loomio Community", @loomio_community_group
             %p
               A public group for the international community of Loomio users and supporters to get together, discuss and collaborate.
         %p.discovergroups

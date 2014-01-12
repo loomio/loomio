@@ -3,15 +3,46 @@ require 'spec_helper'
 describe Queries::VisibleDiscussions do
   let(:user) { create :user }
   let(:group) { create :group }
-  let(:discussion) { create :discussion, group: group }
+  let(:discussion) { create_discussion group: group }
 
   subject do
     Queries::VisibleDiscussions.new(user: user, groups: [group])
   end
 
-  describe 'privacy' do
+  describe 'private? (discussusion)' do
+    context 'true (aka private)' do
+      before { discussion.update_attribute(:private, true) }
+
+      it 'guests cannot see discussion' do
+        subject.should_not include discussion
+      end
+
+      it 'members can see discussion' do
+        group.add_member! user
+        subject.should include discussion
+      end
+    end
+
+    context 'false (aka public)' do
+      before { discussion.update_attribute(:private, false) }
+      it 'guests can see discussion' do
+        subject.should include discussion
+      end
+
+      it 'members can see discussion' do
+        group.add_member! user
+        subject.should include discussion
+      end
+    end
+
+  end
+
+  describe 'group privacy' do
     context 'public (aka public)' do
-      before { group.update_attribute(:privacy, 'public') }
+      before do
+        group.update_attribute(:privacy, 'public')
+        discussion.update_attribute(:private, false)
+      end
 
       it 'guests can see discussions' do
         subject.should include discussion

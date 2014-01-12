@@ -13,7 +13,7 @@ Then(/^I should be on the group page$/) do
 end
 
 When(/^I visit the group setup page$/) do
-  visit setup_group_path(@group.id)
+  visit setup_group_path(@group)
 end
 
 Then(/^I should be told that I dont have permission to set up this group$/) do

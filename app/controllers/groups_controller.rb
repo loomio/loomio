@@ -1,7 +1,7 @@
 class GroupsController < GroupBaseController
   before_filter :authenticate_user!, except: :show
 
-  before_filter :load_group, except: :create
+  before_filter :load_resource_by_key, except: :create
   authorize_resource except: :create
 
   before_filter :ensure_group_is_setup, only: :show
@@ -13,7 +13,7 @@ class GroupsController < GroupBaseController
   #for new subgroup form
   def add_subgroup
     parent = Group.published.find(params[:id])
-    @subgroup = Group.new(:parent => parent)
+    @subgroup = Group.new(:parent => parent, privacy: parent.privacy)
     @subgroup.members_invitable_by = parent.members_invitable_by
   end
 
@@ -35,6 +35,9 @@ class GroupsController < GroupBaseController
 
   def update
     if @group.update_attributes(permitted_params.group)
+      if @group.is_hidden?
+        @group.discussions.update_all(private: true)
+      end
       flash[:notice] = 'Group was successfully updated.'
       redirect_to @group
     else
@@ -84,8 +87,10 @@ class GroupsController < GroupBaseController
   end
 
   private
-    def load_group
-      @group = Group.published.find(params[:id])
+
+    def load_resource_by_key
+      group
+      raise ActiveRecord::RecordNotFound if @group.model.blank?
     end
 
     def ensure_group_is_setup

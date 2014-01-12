@@ -564,14 +564,8 @@ ca:
         members_invitable_by_members: "Totes les membres del grup"
         privacy: Privacitat
         privacy_public_header: Públic
-        privacy_public_description: Tothom pot veure el grup i qui hi ha dins. Les discussions són publiques per defecte.
-        privacy_public_description_short: Tothom pot veure aquest grup i les seves discussions.
         privacy_secret_header: Secret
-        privacy_secret_description: Només les persones membres poden veure el grup i les discussions. No pots tenir discussions públiques a un grup secret.
-        privacy_secret_description_short: Només les persones membres poden veure aquest grup i les seves discussions.
         privacy_parent_group_members_header: Visible per membres del grup mare.
-        privacy_parent_group_members_description: El mateix que "secret", només els membres del grup mare poden veure el grup i les seves discussions.
-        privacy_parent_group_members_description_short: Només membres i membres del grup mare poden veure aquest grup i les seves discussions.
         group_members_invitable_by: "Només coordinadores"
       membership_request:
         introduction: "Presenta't"

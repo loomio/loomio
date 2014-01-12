@@ -8,7 +8,7 @@ describe "Votes" do
       @user = create(:user)
       @group = create(:group, name: 'Test Group')
       @group.add_member!(@user)
-      @discussion = create(:discussion, group: @group, author: @user)
+      @discussion = create_discussion group: @group, author: @user
       @motion = create(:motion, name: 'Test Motion',
                               discussion: @discussion,
                               author: @user)

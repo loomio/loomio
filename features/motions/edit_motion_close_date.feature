@@ -12,8 +12,8 @@ Feature: Admin/author edits a proposal close date
     Then I should see the edit close date modal
 
     When I select the new close date
-    Then The proposal close date should change
-    And I should see a record of my change in the discussion feed
+    Then the proposal close date should be updated
+    And I should see "changed the closing date" in the discussion feed
 
   Scenario: Logged in non-admin/author tries to edit the motion close date
     Given there is a discussion in a public group

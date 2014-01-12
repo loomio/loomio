@@ -57,7 +57,7 @@ Loomio::Application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.default_url_options = {
-    :host => ENV['CANONICAL_HOST'],
+    host: ENV['CANONICAL_HOST'] || 'staging.loomio.org',
   }
 
   if ENV['ENABLE_STAGING_EMAILS']
@@ -73,12 +73,6 @@ Loomio::Application.configure do
     }
     config.action_mailer.raise_delivery_errors = true
     # Email admin when server gets exceptions!
-    config.middleware.use ExceptionNotification::Rack,
-      :email => {
-        :email_prefix => "[Loomio STAGING Exception] ",
-        :sender_address => %{"Exception Notifier" <staging-exceptions@loomio.org>},
-        :exception_recipients => [ENV['EXCEPTION_RECIPIENT']]
-      }
   else
     config.action_mailer.delivery_method = :test
   end

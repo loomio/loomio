@@ -1,8 +1,9 @@
 class MotionsController < GroupBaseController
   #rob would like to remove inherited_resources...
   inherit_resources
-  load_and_authorize_resource :except => [:create, :show, :index]
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :load_resource_by_key, except: [:create, :index]
+  authorize_resource except: [:create, :index, :show]
+  before_filter :authenticate_user!, except: [:show, :index]
   before_filter :check_group_read_permissions, :only => :show
 
   def create
@@ -16,7 +17,7 @@ class MotionsController < GroupBaseController
       authorize! :create, @motion
       if @motion.save
         flash[:success] = t("success.proposal_created")
-        redirect_to discussion_path(@discussion)
+        redirect_to @discussion
       else
         flash[:warning] = t("warning.proposal_not_created")
         render action: :new
@@ -43,12 +44,11 @@ class MotionsController < GroupBaseController
   end
 
   def show
-    motion = Motion.find(params[:id])
-    discussion = motion.discussion
-    if motion == discussion.current_motion
+    discussion = @motion.discussion
+    if @motion == discussion.current_motion
       redirect_to discussion_url(discussion)
     else
-      redirect_to discussion_url(discussion, proposal: motion)
+      redirect_to discussion_url(discussion, proposal: @motion)
     end
   end
 
@@ -85,12 +85,11 @@ class MotionsController < GroupBaseController
 
   def edit_close_date
     safe_values = {}
-    motion = Motion.find(params[:id])
     safe_values[:close_at_date] = params[:motion][:close_at_date]
     safe_values[:close_at_time] = params[:motion][:close_at_time]
 
-    if motion.update_attributes(safe_values)
-      Events::MotionCloseDateEdited.publish!(motion, current_user)
+    if @motion.update_attributes(safe_values)
+      Events::MotionCloseDateEdited.publish!(@motion, current_user)
       flash[:success] = t("success.close_date_changed")
     else
       flash[:error] = t("error.invalid_close_date")
@@ -99,6 +98,9 @@ class MotionsController < GroupBaseController
   end
 
   private
+    def load_resource_by_key
+      @motion ||= Motion.find_by_key(params[:id])
+    end
 
     def group
       @group ||= find_group
@@ -106,7 +108,7 @@ class MotionsController < GroupBaseController
 
     def find_group
       if (params[:id] && (params[:id] != "new"))
-        Motion.find(params[:id]).group
+        Motion.find_by_key(params[:id]).group
       elsif params[:motion][:discussion_id]
         Discussion.find(params[:motion][:discussion_id]).group
       end

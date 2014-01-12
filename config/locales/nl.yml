@@ -590,13 +590,8 @@ nl:
         members_invitable_by_members: "Alle groepsleden"
         privacy: Privacy
         privacy_public_header: Openbaar
-        privacy_public_description: Iedereen kan de groep zien en wie erin zitten. Discussies zijn standaard publiek toegankelijk.
-        privacy_public_description_short: Iedereen kan deze groep en de discussies erin zien.
         privacy_secret_header: Geheim
-        privacy_secret_description: Alleen leden kunnen de groep en de discussies erin zien. Je kan geen publieke discussies hebben in een geheime groep.
-        privacy_secret_description_short: Alleen leden kunnen deze groep en de discussies erin zien.
         privacy_parent_group_members_header: Zichtbaar voor hoofd-groepsleden
-        privacy_parent_group_members_description_short: Alleen leden en hoofd-groepsleden kunnen deze groep en de discussies erin zien.
         group_members_invitable_by: "Alleen coördinatoren"
         submit: Verzenden
         viewable_by_parent_members_header: Sta alle %{group} leden toe om deze subgroep en de discussies erin te zien

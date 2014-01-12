@@ -12,7 +12,7 @@
 
 - if comment.liker_ids_and_names.size > 0
   .activity-item-likes
-    - liker_links = comment.liker_ids_and_names.map { |id, name| link_to(name, user_path(id)) }
+    - liker_links = comment.liker_ids_and_names.map { |id, name| name }
     - if liker_links.size == 1
       - likers = liker_links.first
     - else
