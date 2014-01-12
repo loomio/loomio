@@ -6,18 +6,26 @@ describe 'ProposalService', ->
   callbacks = null
   error = null
 
+  mockEventService =
+    consumeEventFromResponseData: ->
+    play: ->
+
 
   beforeEach module 'loomioApp'
-
-  beforeEach ->
-    inject ($httpBackend, ProposalService) ->
-      httpBackend = $httpBackend
-      service = ProposalService
 
   beforeEach ->
     callbacks =
       success: (response) -> true
       error: (response) -> true
+
+    module ($provide) ->
+      $provide.value('EventService', mockEventService)
+      return
+
+    inject ($httpBackend, ProposalService) ->
+      httpBackend = $httpBackend
+      service = ProposalService
+
 
   afterEach ->
     httpBackend.verifyNoOutstandingExpectation()
@@ -53,7 +61,7 @@ describe 'ProposalService', ->
         httpBackend.flush()
         expect(callbacks.error).toHaveBeenCalledWith(error)
 
-  describe 'vote', ->
+  describe 'saveVote', ->
     vote = null
     beforeEach ->
       vote = {proposal_id: 1, position: 'yes', statement: 'y not'}

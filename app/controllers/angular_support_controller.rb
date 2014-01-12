@@ -89,6 +89,6 @@ class AngularSupportController < ApplicationController
     jennifer.reload
     group.reload
 
-    Discussion.create!(title: DISCUSSION_TITLE, group: group, author: jennifer)
+    Discussion.create!(title: DISCUSSION_TITLE, group: group, author: jennifer, private: false)
   end
 end

@@ -1,15 +1,13 @@
 angular.module('loomioApp').service 'CommentService',
   class CommentService
-    constructor: (@$http, @RecordCacheService) ->
+    constructor: (@$http, @EventService) ->
     # i am here.. then append to discussion?
     add: (comment, saveSuccess, saveError) ->
       @$http.post('/api/comments', comment).then (response) =>
-        event = response.data.event
-        @RecordCacheService.consumeSideLoadedRecords(response.data)
-        @RecordCacheService.hydrateRelationshipsOn(event)
-        saveSuccess(event)
+        @EventService.consumeEventFromResponseData(response.data)
+        saveSuccess(response.data.event)
       , (response) ->
-        saveError(response.invalid_model)
+        saveError(response.data.error)
 
     like: (comment) ->
       @$http.post("/api/comments/#{comment.id}/like").then (response) ->
