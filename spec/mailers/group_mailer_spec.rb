@@ -42,7 +42,7 @@ describe GroupMailer do
       end
 
       it 'assigns confirmation_url for email body' do
-        @mail.body.encoded.should match(/\/groups\/#{@group.id}/)
+        @mail.body.encoded.should match(/\/g\/#{@group.key}/)
       end
     end
 
@@ -73,7 +73,7 @@ describe GroupMailer do
 
   describe "#group_email" do
     before :all do
-      @group = stub_model Group, :name => "Blue", :admin_email => "goodbye@world.com"
+      @group = stub_model Group, :name => "Blue", full_name: "Marvin: Blue", :admin_email => "goodbye@world.com", key: 'abc123'
       @sender = stub_model User, :name => "Marvin"
       @recipient = stub_model User, :email => "hello@world.com"
       @subject = "meeby"

@@ -2,15 +2,6 @@
   .discussion-title-container
     %h2#discussion-title
       = discussion.title
-
-    #edit-discussion-title.hidden
-      = form_tag edit_title_discussion_path, method: :post do |f|
-        = hidden_field_tag 'id'
-        .control-group
-          = text_field_tag 'title', discussion.title, {id: 'discussion-input', class: 'validate-length limit-150'}
-          .character-counter
-        .save-buttons.clearfix
-          = submit_tag t(:save), class: 'btn btn-small run-validations', id: 'edit-title-submit', :data => {:disable_with => t(:saving)}
-          = link_to t(:cancel), "#", id: 'cancel-edit-title'
-  - if can?(:edit_title, discussion) || can?(:move, discussion) || can?(:destroy, discussion)
+      = render 'discussions/privacy_icon', discussion: discussion
+  - if can?(:edit, discussion) || can?(:move, discussion) || can?(:destroy, discussion)
     =render "discussions/options", discussion: discussion

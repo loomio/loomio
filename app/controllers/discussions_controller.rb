@@ -1,8 +1,8 @@
 class DiscussionsController < GroupBaseController
   include DiscussionsHelper
-  before_filter :authenticate_user!, :except => [:show, :index]
 
-  before_filter :load_discussion, except: [:new, :create, :index, :update_version]
+  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :load_resource_by_key, except: [:new, :create, :index, :update_version]
   authorize_resource :except => [:new, :create, :index, :add_comment]
 
   after_filter :mark_as_read, only: :show
@@ -13,17 +13,27 @@ class DiscussionsController < GroupBaseController
 
   def new
     @discussion = Discussion.new
-    @uses_markdown = current_user.uses_markdown
-    if params[:group_id]
-      @discussion.group_id = params[:group_id]
+    @discussion.uses_markdown = current_user.uses_markdown
+    @group = Group.find_by_id params[:group_id]
+    @discussion.group = @group
+    @user_groups = current_user.groups.order('name')
+  end
+
+  def edit
+  end
+
+  def update
+    if DiscussionService.edit_discussion(current_user, permitted_params.discussion, @discussion)
+      flash[:notice] = 'Discussion was successfully updated.'
+      redirect_to @discussion
     else
-      @user_groups = current_user.groups.order('name') unless params[:group_id]
+      @user_groups = current_user.groups.order('name')
+      render :edit
     end
   end
 
   def create
     build_discussion
-
     if DiscussionService.start_discussion(@discussion)
       flash[:success] = t("success.discussion_created")
       redirect_to @discussion
@@ -78,7 +88,6 @@ class DiscussionsController < GroupBaseController
     end
 
     if current_user
-      @destination_groups = DiscussionMover.destination_groups(@discussion.group, current_user)
       @uses_markdown = current_user.uses_markdown?
       if @current_motion
         @current_motion.as_read_by(current_user).viewed!
@@ -91,15 +100,17 @@ class DiscussionsController < GroupBaseController
   end
 
   def move
-    origin = @discussion.group
-    destination = Group.find(params[:discussion][:group_id])
-    @discussion.group_id = params[:discussion][:group_id]
-    if DiscussionMover.can_move?(current_user, origin, destination) &&
-      @discussion.save!
-      flash[:success] = "Discussion successfully moved."
+    destination_group = Group.find params[:destination_group_id]
+
+    discussion_mover = MoveDiscussionService.new(discussion: @discussion,
+                                                 destination_group: destination_group,
+                                                 user: current_user)
+    if discussion_mover.move!
+      flash[:notice] = t(:'success.discussion_moved', group_name: destination_group.name)
     else
-      flash[:error] = "Discussion could not be moved."
+      flash[:alert] = t(:'error.discussion_not_moved', group_name: destination_group.name)
     end
+
     redirect_to @discussion
   end
 
@@ -144,9 +155,7 @@ class DiscussionsController < GroupBaseController
 
   def preview_version
     # assign live item if no version_id is passed
-    if params[:version_id].nil?
-      @discussion = load_discussion
-    else
+    if params[:version_id].present?
       version = Version.find(params[:version_id])
       @discussion = version.reify
     end
@@ -163,8 +172,9 @@ class DiscussionsController < GroupBaseController
   end
 
   private
-  def load_discussion
-    @discussion ||= Discussion.published.find(params[:id])
+
+  def load_resource_by_key
+    @discussion ||= Discussion.published.find_by_key(params[:id])
   end
 
   def build_discussion
@@ -178,7 +188,7 @@ class DiscussionsController < GroupBaseController
 
     attachment_ids = Array(params[:attachments]).map(&:to_i)
 
-    @comment.discussion = load_discussion
+    @comment.discussion = @discussion
     @comment.author = current_user
     @comment.attachment_ids = attachment_ids
     @comment.attachments_count = attachment_ids.size

@@ -15,9 +15,14 @@ describe 'DiscussionService' do
   let(:user) { double(:user, ability: ability, update_attributes: true) }
   let(:discussion) { double(:discussion, author: user,
                                          save: true,
+                                         :title= => true,
+                                         :description= => true,
+                                         :private= => true,
+                                         :uses_markdown= => true,
                                          uses_markdown: true,
                                          update_attribute: true,
                                          update_attributes: true,
+                                         private: true,
                                          created_at: Time.now) }
   let(:comment) { double(:comment,
                          save: true,
@@ -26,6 +31,7 @@ describe 'DiscussionService' do
                          discussion: discussion,
                          author: user) }
   let(:event) { double(:event) }
+  let(:discussion_params) { {title: "new title", description: "", private: true, uses_markdown: true} }
 
 
   before do
@@ -46,7 +52,7 @@ describe 'DiscussionService' do
   describe 'like_comment' do
     before do
       Events::CommentLiked.stub(:publish!)
-      ability.stub(:can?)
+      ability.stub(:authorize!)
       comment.stub(:like).and_return(comment_vote)
     end
 
@@ -149,22 +155,45 @@ describe 'DiscussionService' do
         DiscussionService.start_discussion(discussion).should == event
       end
     end
+  end
+
+  describe '.edit-discussion' do
+    it 'authorizes the user can update the discussion' do
+      ability.should_receive(:authorize!).with(:update, discussion)
+      DiscussionService.edit_discussion(user, discussion_params, discussion)
+    end
+
+    it 'sets params' do
+      discussion.should_receive(:private=).with(discussion_params[:private])
+      discussion.should_receive(:title=).with(discussion_params[:title])
+      discussion.should_receive(:description=).with(discussion_params[:description])
+      discussion.should_receive(:uses_markdown=).with(discussion_params[:uses_markdown])
+      DiscussionService.edit_discussion(user, discussion_params, discussion)
+    end
+
+    it 'saves the discussion' do
+      discussion.should_receive(:save).and_return(true)
+      DiscussionService.edit_discussion(user, discussion_params, discussion)
+    end
+
+    context 'the discussion is valid' do
+      before { discussion.stub(:save).and_return(true) }
+
+      it 'updates user markdown-preference' do
+        user.should_receive(:update_attributes).with(uses_markdown: discussion.uses_markdown).and_return(true)
+        DiscussionService.edit_discussion(user, discussion_params, discussion)
+      end
+    end
 
     context 'the discussion is invalid' do
-
       before { discussion.stub(:save).and_return(false) }
       it 'returns false' do
-        DiscussionService.start_discussion(discussion).should == false
+        DiscussionService.edit_discussion(user, discussion_params, discussion).should == false
       end
 
       it 'does not update the user markdown-preference' do
         user.should_not_receive(:update_attributes)
-        DiscussionService.start_discussion(discussion)
-      end
-
-      it 'does not create a NewDiscussion event' do
-        Events::NewDiscussion.should_not_receive(:publish!)
-        DiscussionService.start_discussion(discussion)
+        DiscussionService.edit_discussion(user, discussion_params, discussion)
       end
 
     end

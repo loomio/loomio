@@ -1,6 +1,6 @@
 class UsersController < BaseController
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_key(params[:id])
     unless current_user.in_same_group_as?(@user)
       flash[:error] = t("error.cant_view_member_profile")
       redirect_to root_url

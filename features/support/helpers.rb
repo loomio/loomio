@@ -2,6 +2,7 @@ include Warden::Test::Helpers
 
 #this is a copy of a 'spec/support/service_helpers.rb' method
 def create_discussion( options={} )
+  options[:private] = true unless options.has_key?(:private)
   discussion = FactoryGirl.build(:discussion, options)
   DiscussionService.start_discussion(discussion)
   discussion
