@@ -75,11 +75,6 @@ describe 'ProposalController', ->
     it 'sets currentUserVote', ->
       expect($scope.currentUserVote).toBe(vote)
 
-    it 'pushes the event into discussion.events', ->
-      spyOn($scope.discussion.events, 'push')
-      $scope.saveVoteSuccess(event)
-      expect($scope.discussion.events.push).toHaveBeenCalledWith(event)
-
   describe 'saveVoteError', ->
     error = null
     beforeEach ->

@@ -17,7 +17,6 @@ angular.module('loomioApp').controller 'ProposalController', ($scope, ProposalSe
     $scope.voteFormIsExpanded = false
     $scope.voteFormIsDisabled = false
     $scope.currentUserVote = event.eventable
-    $scope.discussion.events.push(event)
 
   $scope.saveVoteError = (error) ->
     $scope.voteFormIsDisabled = false

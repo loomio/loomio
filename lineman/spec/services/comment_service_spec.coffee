@@ -19,9 +19,17 @@ describe 'CommentService', ->
   discussion =
     events: []
 
+  mockEventService =
+    consumeEventFromResponseData: ->
+    play: ->
+
   beforeEach module 'loomioApp'
 
   beforeEach ->
+    module ($provide) ->
+      $provide.value('EventService', mockEventService)
+      return
+
     inject ($httpBackend, CommentService) ->
       service = CommentService
       httpBackend = $httpBackend
@@ -33,7 +41,7 @@ describe 'CommentService', ->
   describe 'add', ->
     beforeEach ->
       response =
-        new_comment:
+        event:
           id: 1
           sequence_id: 1
           comment:
@@ -50,7 +58,7 @@ describe 'CommentService', ->
       spyOn(callbacks, 'saveSuccess')
       service.add(comment, callbacks.saveSuccess, callbacks.saveError)
       httpBackend.flush()
-      expect(callbacks.saveSuccess).toHaveBeenCalledWith(response.new_comment)
+      expect(callbacks.saveSuccess).toHaveBeenCalledWith(response.event)
 
   describe 'like', ->
     likeResponse =

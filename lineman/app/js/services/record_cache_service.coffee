@@ -18,8 +18,11 @@ angular.module('loomioApp').service 'RecordCacheService',
     get: (collectionname, id)->
       @cache.get @recordKey(collectionname, id)
 
-    put: (collectionname, id, record)->
-      @cache.put @recordKey(collectionname, id)
+    put: (collectionName, id, record)->
+      if old_record = @cache.get @recordKey(collectionName, id)
+        angular.extend(old_record, record)
+      else
+        @cache.put @recordKey(collectionName, id), record
 
     hydrateRelationshipsOn: (record) ->
       if record.relationships?
@@ -38,3 +41,15 @@ angular.module('loomioApp').service 'RecordCacheService',
               @hydrateRelationshipsOn(associated_record) if associated_record?
       else
         console.log("record has no relationships: #{record}")
+
+    #consumeEvent: (event) ->
+      #discussion = null
+      #if _.isNumber?(event.discussion_id)
+        #discussion = @get('discussions', event.discussion_id)
+        #discussion.events.push(event)
+
+      #switch event.kind
+        #when 'new_comment'
+          ##last comment at
+        #when 'new_motion'
+          #discussion.active_proposal = event.proposal
