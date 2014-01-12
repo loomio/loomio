@@ -23,11 +23,13 @@ in the loomio folder
   $ bower install
 
 # Running
-Run the rails development server
+Run the rails development server and Private Pub
   (loomio) $ rails s
+           $ rackup private_pub.ru -s thin -E productio
 
 The start lineman
   (loomio/lineman folder) $ lineman run
+
 
 # Browsing
 First go to the rails app (localhost:3000) and sign in. Now you can use the javascript app at localhost:8000. Just navigate to a discussion (e.g. localhost:8000/discussions/325).
