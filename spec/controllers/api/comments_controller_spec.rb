@@ -23,7 +23,8 @@ describe Api::CommentsController do
       post :create, comment: comment_params, format: :json
       event = JSON.parse(response.body)['event']
       event.keys.should include *(%w[id sequence_id kind comment_id])
-      event['comment'].keys.should include *(%w[body author created_at])
+      comments = JSON.parse(response.body)['comments']
+      comments[0].keys.should include *(%w[body author_id created_at])
     end
   end
 
