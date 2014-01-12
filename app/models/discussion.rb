@@ -11,7 +11,7 @@ class Discussion < ActiveRecord::Base
   scope :order_by_latest_comment, order('last_comment_at DESC')
   scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
 
-  validates_presence_of :title, :group, :author
+  validates_presence_of :title, :group, :author, :group_id
   validate :private_is_not_nil
   validates :title, :length => { :maximum => 150 }
   validates_inclusion_of :uses_markdown, :in => [true,false]
