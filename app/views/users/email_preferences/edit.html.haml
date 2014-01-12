@@ -2,16 +2,16 @@
   .span12
     %h1= t("email_preferences_form.header")
     =simple_form_for(@email_preferences, :url => update_email_preferences_path, :method => :put) do |f|
-      %h2= t("email_preferences_form.daily_activity_summary")
-      -if params[:unsubscribe_token]
-        =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
-      =f.input :subscribed_to_daily_activity_email, :as => :boolean, :inline_label => t("email_preferences_form.daily_activity_subscription"), :label => false
 
-      -#=f.input :subscribed_to_mention_notifications, label: 'When someone mentions your name'
       %h2= t("email_preferences_form.global_notifications")
       =f.input :subscribed_to_proposal_closure_notifications, :as => :boolean, :inline_label => t("email_preferences_form.proposal_closing_soon_subscription"), :label => false
       =f.input :subscribed_to_mention_notifications, :as => :boolean, :inline_label =>  t("email_preferences_form.mentions_subscription"), :label => false
 
+      %h2= t("email_preferences_form.activity_summary_email")
+      -if params[:unsubscribe_token]
+        =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
+      = f.input :days_to_send, label: t("email_preferences_form.activity_summary_subscription"), collection: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], as: :check_boxes, item_wrapper_class: 'inline'
+      = f.input :hour_to_send, as: :select, collection: (0..23), include_blank: false
       %h2= t("email_preferences_form.group_activity_notifications")
       %p= t("email_preferences_form.group_activity_details")
 

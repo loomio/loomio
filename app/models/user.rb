@@ -86,6 +86,7 @@ class User < ActiveRecord::Base
   has_many :discussion_readers, dependent: :destroy
   has_many :motion_read_logs, dependent: :destroy
 
+  has_one :email_preferences
 
   has_many :notifications
   has_many :comments
@@ -95,6 +96,7 @@ class User < ActiveRecord::Base
   before_create :set_default_avatar_kind
   before_create :generate_username
   after_create :ensure_name_entry
+  after_create :create_email_preference
 
   scope :active, where(:deleted_at => nil)
   scope :inactive, where("deleted_at IS NOT NULL")
@@ -307,6 +309,10 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def create_email_preference
+    self.email_preferences = EmailPreferences.create!(user: self)
+  end
 
   def set_default_avatar_kind
     if has_gravatar?

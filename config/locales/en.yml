@@ -688,8 +688,8 @@ en:
 
   email_preferences_form:
     header: "Email preferences"
-    daily_activity_summary: "Daily Activity Summary"
-    daily_activity_subscription: "Send me a daily activity email summarising what’s been happening in my groups"
+    activity_summary_email: "Activity Summary Email"
+    activity_summary_subscription: "Send me new activity in my groups on the following days"
     global_notifications: "Global Notifications"
     proposal_closing_soon_subscription: "Remind me 24 hours before a proposal closes"
     mentions_subscription: "Email me when someone mentions me in a comment"
@@ -888,7 +888,13 @@ en:
   #
   # COMMON WORDS
   #
-
+  monday: "Monday"
+  tuesday: "Tuesday"
+  wednesday: "Wednesday"
+  thursday: "Thursday"
+  friday: "Friday"
+  saturday: "Saturday"
+  sunday: "Sunday"
   about_loomio: "About Loomio"
   ago: "%{quantity_of_time} ago"
   approve: "Approve"

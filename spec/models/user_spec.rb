@@ -380,4 +380,11 @@ describe User do
       user.belongs_to_manual_subscription_group?.should be_false
     end
   end
+
+  describe "create_email_preference" do
+    it 'should create new associated email_preferences for the user' do
+      user = User.create!(name: "Test User", email: "test1@example.com", password: "password")
+      user.email_preferences.should_not be_nil
+    end
+  end
 end

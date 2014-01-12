@@ -3,12 +3,13 @@ class Users::EmailPreferencesController < BaseController
   before_filter :authenticate_user_by_unsubscribe_token_or_fallback
 
   def edit
-    resource
+    load_email_preferences
   end
 
   def update
-    resource
-    if resource.update_attributes(permitted_params.email_preferences)
+    load_email_preferences
+
+    if EmailPreferencesService.update_preferences(@email_preferences, permitted_params.email_preferences)
       flash[:notice] = "Your email settings have been updated."
       redirect_to root_url
     else
@@ -19,8 +20,10 @@ class Users::EmailPreferencesController < BaseController
 
   private
 
-  def resource
-    @email_preferences ||= EmailPreferences.new(@restricted_user || current_user)
+  def load_email_preferences
+    user = @restricted_user || current_user
+    raise if user.nil?
+    @email_preferences = user.email_preferences
   end
 
   def authenticate_user_by_unsubscribe_token_or_fallback
