@@ -18,6 +18,11 @@ Loomio::Application.routes.draw do
   end
 
   namespace :api, defaults: {format: :json} do
+    namespace :faye do
+      get :who_am_i
+      get :subscribe
+    end
+
     resources :motions, only: [:create] do
       member do
         post :vote

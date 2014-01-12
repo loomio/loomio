@@ -9,6 +9,6 @@
     "font-awesome": "~4.0.3",
     "angular-bootstrap-datetimepicker": "latest",
     "angular-cache": "~2.3.0",
-    "restangular": "~1.2.2"
+    "faye": "~1.0.0"
   }
 }

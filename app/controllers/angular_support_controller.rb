@@ -13,6 +13,9 @@ class AngularSupportController < ApplicationController
 
   DISCUSSION_TITLE = 'What star sign are you?'
 
+  def connect_private_pub
+  end
+
   def setup_for_add_comment
     reset_database
     sign_in patrick

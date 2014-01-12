@@ -27,7 +27,9 @@ class Event < ActiveRecord::Base
 
   def publish_event
     if self.discussion.present?
-      PrivatePub.publish_to "/events/group_#{discussion.group_id}/#{self.kind}", :event => self
+      serializer = EventSerializer.new(self)
+      PrivatePub.publish_to "/events", serializer
+      #PrivatePub.publish_to "/events/group_#{discussion.group_id}/#{self.kind}", :event => self
     end
   end
 end
