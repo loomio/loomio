@@ -1,10 +1,9 @@
-angular.module('loomioApp').directive 'pieChart', ->
+angular.module('loomioApp').directive 'pieChart', (d3Helpers) ->
 	scope: { 'ngModel': '='}
 	restrict: 'EA'
 	require: 'ngModel'
 	controller: 'ProposalController'
 	link: (scope, element, attrs, ctrl) ->
-		console.log scope.ngModel
 
 		w = attrs.width || 398
 		h = attrs.height || 249
@@ -22,7 +21,14 @@ angular.module('loomioApp').directive 'pieChart', ->
 		  .append('g')
 		    .attr('transform', 'translate('+w/3+','+h/2+')')
 
-		scope.$watch 'ngModel', (newData, oldData) ->
-			console.log 'newData', newData, d3
+		scope.$watch 'ngModel', (updatedProposal, oldProposal) ->
+
+			if updatedProposal
+				data = d3Helpers.proposalArray updatedProposal
+				console.log 'data', data, updatedProposal
+
+			else
+				return
+
 
 

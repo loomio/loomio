@@ -15,3 +15,6 @@ angular.module('loomioApp').service 'ProposalService',
         onSuccess(response.data.event)
       , (response) ->
         onFailure(response.data.error)
+
+
+
