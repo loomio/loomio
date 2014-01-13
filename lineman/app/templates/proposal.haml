@@ -7,7 +7,7 @@
       %p closing {{proposal.closing_at | date:'medium' }}
     .card__content
       .pull-right
-        %i.icon-pie-graph{style: "font-size: 10em; color: green;"}
+        %div{'pie-chart' => true, ng_model: 'proposal'}
       {{proposal.description}}
     .votes
       yes: {{proposal.yes_votes_count}}

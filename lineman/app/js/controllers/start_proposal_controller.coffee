@@ -2,6 +2,7 @@ angular.module('loomioApp').controller 'StartProposalController', ($scope, Propo
   $scope.proposal =
     closing_at: moment().add('days', 3)
     discussion_id: $scope.discussion.id
+    pie_chart_data: []
 
   $scope.showDatetimepicker = false
   $scope.isExpanded = false
