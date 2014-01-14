@@ -26,6 +26,10 @@ describe 'EventService', ->
       service = EventService
       httpBackend = $httpBackend
 
+  describe 'subscribeTo', ->
+    it "uses the subscription to PrivatePub.sign"
+    it "PrivatePub.subscribes to the channel"
+
   describe 'consumeEventFromResponseData', ->
     beforeEach ->
       spyOn(mockRecordService, 'consumeSideLoadedRecords')
@@ -35,6 +39,10 @@ describe 'EventService', ->
       service.consumeEventFromResponseData(data)
 
     context 'new event', ->
+      beforeEach ->
+        mockRecordService.get = (collectionName, id) ->
+          undefined
+
       it "uses RecordCache to consumeSideLoadedRecords", ->
         expect(mockRecordService.consumeSideLoadedRecords).toHaveBeenCalledWith(data)
 
