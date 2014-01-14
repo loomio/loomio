@@ -4,7 +4,7 @@
       %h2
         {{proposal.name}}
       %p proposed by {{proposal.author.name}}
-      %p closing {{proposal.closing_at | date:'medium' }}
+      %p closing in {{proposal.closing_at | timeFromNowInWords }}
     .card__content
       .pull-right
         %div{'pie-chart' => true, ng_model: 'proposal'}

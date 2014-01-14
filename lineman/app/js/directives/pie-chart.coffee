@@ -38,7 +38,7 @@ angular.module('loomioApp').directive 'pieChart', (d3Helpers) ->
 				type: 'none'
 				count: 0
 
-		## create arc objects with .data() instantiated with initData 
+		## create arc objects with .data() instantiated with initData as holder
 		arcs = svg.selectAll('path').data([initData], (d) -> d.type)
 		  .enter().append('path')
 		  .attr('d', arc)
@@ -47,17 +47,16 @@ angular.module('loomioApp').directive 'pieChart', (d3Helpers) ->
 
 		## watch for changes to proposal; make new array; make pie layout of array;
 		## attach to arcs object; and transition old to new points
-		scope.$watch 'ngModel', (updatedProposal) ->
+		scope.$watch 'ngModel', (updatedProposal, oldProposal) ->
 			if updatedProposal
 				d = d3Helpers.proposalArray updatedProposal
-				arcs.data(pie(d))
-				  .transition()
+				arcs.data(pie(d), (d) -> d.type )
+				  .transition().duration(750).ease('linear')
 				  .attrTween('d', arcTween)
 
 				console.log 'data', d, pie(d), updatedProposal
-
 			else
-				return
+				console.log 'updatedProposal doesnt exist yet', oldProposal
 
 
 
