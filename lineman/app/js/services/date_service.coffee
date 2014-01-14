@@ -1,3 +1,3 @@
 angular.module('loomioApp').filter 'timeFromNowInWords', ->
-	(date) ->
-		moment(date).fromNow(true)
+	(date, excludeAgo) ->
+		moment(date).fromNow(excludeAgo)
