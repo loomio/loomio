@@ -3,8 +3,10 @@
     .card__header
       %h2
         {{proposal.name}}
-      %p proposed by {{proposal.author.name}}
-      %p closing in {{proposal.closing_at | timeFromNowInWords }}
+      .media__details 
+        proposed by {{proposal.author.name}}
+      .media__details 
+        closing in {{proposal.closing_at | timeFromNowInWords:true }}
     .card__content
       .pull-right
         %div{'pie-chart' => true, ng_model: 'proposal'}

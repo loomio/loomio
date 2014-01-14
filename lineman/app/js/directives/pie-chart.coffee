@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'pieChart', (d3Helpers) ->
 		##set attribute defaults and d3 method aliases
 		w = attrs.width || 398
 		h = attrs.height || 249
-		r = attrs.radius || 50
+		r = attrs.radius || 60
 		color = d3.scale.linear()
 		  .domain(['yes', 'no', 'abstain', 'block', 'none'])
 		  .range(['#90D490', '#D49090', '#F0BB67', '#DD0000', '#EBEBEB'])
@@ -27,7 +27,7 @@ angular.module('loomioApp').directive 'pieChart', (d3Helpers) ->
 		  .attr('height', h)
 		  .append('g')
 		    .attr('id', 'arcs')
-		    .attr('transform', 'translate('+w/3+','+h/2+')')
+		    .attr('transform', 'translate('+w/2+','+h/2+')')
 
 		##
 		initData = 
