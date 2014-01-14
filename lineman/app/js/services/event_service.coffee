@@ -2,12 +2,19 @@ angular.module('loomioApp').service 'EventService',
   class EventService
     constructor: (@RecordCacheService) ->
 
+    subscribeTo: (eventSubscription, onEvent) ->
+      PrivatePub.sign(eventSubscription)
+      PrivatePub.subscribe "/events", (data, channel) =>
+        @consumeEventFromResponseData(data)
+        onEvent(event)
+
     consumeEventFromResponseData: (data) ->
       event = data.event
       @RecordCacheService.consumeSideLoadedRecords(data)
       @RecordCacheService.hydrateRelationshipsOn(event)
       @RecordCacheService.put('events', event.id, event)
       @play(event)
+      event
 
     play: (event) ->
       switch event.kind
