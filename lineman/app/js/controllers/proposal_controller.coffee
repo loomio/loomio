@@ -2,10 +2,10 @@ angular.module('loomioApp').controller 'ProposalController', ($scope, ProposalSe
   $scope.voteFormIsDisabled = false
   $scope.voteFormIsExpanded = false
 
-  if $scope.proposal?
-    $scope.newVote = {position: null, statement: null, proposal_id: $scope.proposal.id}
+  $scope.newVote = {position: null, statement: null}
 
   $scope.selectPosition = (position) ->
+    $scope.newVote.proposal_id = $scope.proposal.id
     $scope.newVote.position = position
     $scope.voteFormIsExpanded = true
 

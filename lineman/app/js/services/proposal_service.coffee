@@ -10,6 +10,8 @@ angular.module('loomioApp').service 'ProposalService',
         onFailure(response.data.error)
 
     saveVote: (vote, onSuccess, onFailure) ->
+      console.log(vote)
+      vote.motion_id = vote.proposal_id
       @$http.post("/api/motions/#{vote.proposal_id}/vote", vote).then (response) =>
         @EventService.consumeEventFromResponseData(response.data)
         onSuccess(response.data.event)

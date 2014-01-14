@@ -4,10 +4,12 @@ angular.module('loomioApp').service 'EventService',
 
     consumeEventFromResponseData: (data) ->
       event = data.event
-      @RecordCacheService.consumeSideLoadedRecords(data)
-      @RecordCacheService.hydrateRelationshipsOn(event)
-      @RecordCacheService.put('events', event.id, event)
-      @play(event)
+      stored_event = @RecordCacheService.get('events', event.id)
+      unless stored_event?
+        @RecordCacheService.consumeSideLoadedRecords(data)
+        @RecordCacheService.hydrateRelationshipsOn(event)
+        @RecordCacheService.put('events', event.id, event)
+        @play(event)
 
     play: (event) ->
       switch event.kind
@@ -22,4 +24,7 @@ angular.module('loomioApp').service 'EventService',
           discussion.active_proposal = event.proposal
           discussion.proposals = [] unless discussion.proposals?
           discussion.proposals.push(event.proposal)
+        when 'new_vote'
+          proposal = @RecordCacheService.get('proposals', event.proposal_id)
+          proposal.votes.push event.vote
 
