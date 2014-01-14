@@ -26,14 +26,20 @@ angular.module('loomioApp').directive 'pieChart', (d3Helpers) ->
 		  .attr('width', w)
 		  .attr('height', h)
 		  .append('g')
+		    .attr('id', 'arcs')
 		    .attr('transform', 'translate('+w/3+','+h/2+')')
 
 		##
-		initData = [{type: 'not_yet_voted', count:0}]
-		console.log 'test init', pie(initData)
+		initData = 
+			startAngle: 0
+			endAngle: 0
+			value: 0
+			data:
+				type: 'none'
+				count: 0
 
-		## create arc objects with .data() instantiated blank 
-		arcs = svg.selectAll('path').data(pie(initData), (d) -> d.type)
+		## create arc objects with .data() instantiated with initData 
+		arcs = svg.selectAll('path').data([initData], (d) -> d.type)
 		  .enter().append('path')
 		  .attr('d', arc)
 		  .attr('class', (d) -> d.data.type)
