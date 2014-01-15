@@ -19,10 +19,12 @@ angular.module('loomioApp').service 'RecordCacheService',
       @cache.get @recordKey(collectionname, id)
 
     put: (collectionName, id, record)->
-      if old_record = @cache.get @recordKey(collectionName, id)
+      key = @recordKey(collectionName, id)
+      existing_record = @cache.get(key)
+      if existing_record?
         angular.extend(old_record, record)
       else
-        @cache.put @recordKey(collectionName, id), record
+        @cache.put key, record
 
     hydrateRelationshipsOn: (record) ->
       if record.relationships?

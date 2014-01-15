@@ -1,12 +1,25 @@
 describe 'RecordCacheService', ->
   service = null
   cacheFactory = null
+  thing = {hi: 'hi'}
 
   beforeEach ->
     module 'loomioApp'
     inject ($angularCacheFactory, RecordCacheService) ->
       cacheFactory = $angularCacheFactory
       service = RecordCacheService
+
+  describe 'get', ->
+    context 'nonexistant key', ->
+      it "returns undefined?", ->
+        expect(service.get('nothing', 1)).toBe(undefined)
+
+    context 'existant key', ->
+      beforeEach ->
+        service.put('thing', 1, thing)
+
+      it "returns object", ->
+        expect(service.get('thing', 1)).toBe(thing)
 
   describe 'consumeSideLoadedRecords', ->
     it 'consumes objects from known keys', ->

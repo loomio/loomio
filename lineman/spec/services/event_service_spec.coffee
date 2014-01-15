@@ -5,6 +5,7 @@ describe 'EventService', ->
   events = [events]
   discussion = {events: events}
   comment = {created_at: 'just now'}
+  gettedValue = null
 
   mockRecordService = null
 
@@ -16,7 +17,7 @@ describe 'EventService', ->
       hydrateRelationshipsOn: (record) ->
       put: (collectionName, id, record) ->
       get: (collectionName, id) ->
-        discussion
+        gettedValue
 
     module ($provide) ->
       $provide.value('RecordCacheService', mockRecordService)
@@ -25,6 +26,10 @@ describe 'EventService', ->
     inject ($httpBackend, EventService) ->
       service = EventService
       httpBackend = $httpBackend
+
+  describe 'subscribeTo', ->
+    it "uses the subscription to PrivatePub.sign"
+    it "PrivatePub.subscribes to the channel"
 
   describe 'consumeEventFromResponseData', ->
     beforeEach ->
@@ -35,6 +40,9 @@ describe 'EventService', ->
       service.consumeEventFromResponseData(data)
 
     context 'new event', ->
+      beforeEach ->
+        gettedValue = undefined
+
       it "uses RecordCache to consumeSideLoadedRecords", ->
         expect(mockRecordService.consumeSideLoadedRecords).toHaveBeenCalledWith(data)
 
@@ -53,6 +61,7 @@ describe 'EventService', ->
 
     context 'new_comment event', ->
       beforeEach ->
+        gettedValue = discussion
         event.kind = 'new_comment'
         event.comment = comment
 
