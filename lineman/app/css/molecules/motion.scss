@@ -13,10 +13,22 @@
 }
 
 .decision-buttons{
-  .agree{ @include make-xs-column(3); }
-  .abstain{ @include make-xs-column(3); }
-  .disagree{ @include make-xs-column(3); }
-  .block{ @include make-xs-column(3); }
+  .agree{ 
+    @include make-xs-column(3);
+    color: #90D490; 
+  }
+  .abstain{ 
+    @include make-xs-column(3);
+    color: #F0BB67;
+  }
+  .disagree{ 
+    @include make-xs-column(3);
+    color: #D49090;
+  }
+  .block{ 
+    @include make-xs-column(3);
+    color: #DD0000;
+   }
 }
 
 .new-position{
