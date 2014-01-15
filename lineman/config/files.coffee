@@ -25,3 +25,4 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
 
   webfonts:
     vendor: ["vendor/bower_components/font-awesome/fonts/*"]
+    root: 'webfonts'

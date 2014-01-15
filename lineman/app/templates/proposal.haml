@@ -19,13 +19,13 @@
     .clearfix
     .row.decision-buttons
       .agree{ng_click: 'selectPosition("yes")'}
-        %span.glyphicon.glyphicon-thumbs-up{style: "color: green"}
+        %i.fa.fa-thumbs-up
       .abstain{ng_click: 'selectPosition("abstain")'}
-        %i.fa.fa-meh-o{style: "color: orange"}
+        %i.fa.fa-meh-o
       .disagree{ng_click: 'selectPosition("no")'}
-        %i.fa.fa-frown-o{style: "color: pink"}
+        %i.fa.fa-thumbs-down
       .block{ng_click: 'selectPosition("block")'}
-        %i.fa.fa-warning{style: "color: red"}
+        %i.fa.fa-warning
 
     .row.statement-form{ng_show: 'voteFormIsExpanded'}
       %form{ng_submit: 'submitVote()'}
