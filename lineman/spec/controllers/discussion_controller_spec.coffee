@@ -13,7 +13,7 @@ describe 'Discussion Controller', ->
       id: 3
       name: 'Gilbert'
 
-  discussion =
+  mockDiscussion =
     id: 1
     title: 'title text'
     description: 'description text'
@@ -30,12 +30,36 @@ describe 'Discussion Controller', ->
       eventable: comment
     ]
 
+  mockEventService =
+    subscribeTo: (subscription, onNewEvent) ->
+
+  mockEventSubscription =
+    channel: '/events'
+
+  mockCurentUser =
+    id: 1
+
   beforeEach inject ($rootScope, $controller) ->
+    spyOn(mockEventService, 'subscribeTo')
+
     $scope = $rootScope.$new()
 
     controller = $controller 'DiscussionController',
       $scope: $scope
-      discussion: discussion
+      discussion: mockDiscussion
+      eventSubscription: mockEventSubscription
+      currentUser: mockCurentUser
+      EventService: mockEventService
+
+  describe "initialization", ->
+    it "subscribes to the event channel", ->
+      expect(mockEventService.subscribeTo).toHaveBeenCalledWith(mockEventSubscription, $scope.onNewEventReceived)
+
+    it "assigns $scope.currentUser", ->
+      expect($scope.currentUser).toBe(mockCurentUser)
+
+    it "assigns $scope.discussion", ->
+      expect($scope.discussion).toBe(mockDiscussion)
 
   describe 'a replyToCommentClicked event occurs', ->
     it 'broadcasts startCommentReply', ->
