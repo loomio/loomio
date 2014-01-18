@@ -62,15 +62,15 @@ When(/^I unselect the days to receive the summary email$/) do
 end
 
 Then(/^I should be subscribed to the activity summary email$/) do
-  @user.email_preferences.next_activity_summary_sent_at.should_not be_nil
+  @user.email_preferences.subscribed_to_activity_summary_email?.should be_true
+end
+
+Then(/^I should not be subscribed to the activity summary email$/) do
+  @user.email_preferences.subscribed_to_activity_summary_email?.should be_false
 end
 
 Given(/^I am subscribed to the activity summary email$/) do
   @user.email_preferences.update_attribute(:next_activity_summary_sent_at, 2.days.from_now)
-end
-
-Then(/^I should not be subscribed to the activity summary email$/) do
-  @user.email_preferences.next_activity_summary_sent_at.should be_nil
 end
 
 When(/^I select the time of day$/) do

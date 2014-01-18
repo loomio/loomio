@@ -10,7 +10,7 @@
       %h2= t("email_preferences_form.activity_summary_email")
       -if params[:unsubscribe_token]
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
-      = f.input :days_to_send, label: t("email_preferences_form.activity_summary_subscription"), collection: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], as: :check_boxes, item_wrapper_class: 'inline'
+      = f.input :days_to_send, label: t("email_preferences_form.activity_summary_subscription"), collection: EmailPreferences::DAYS, as: :check_boxes, item_wrapper_class: 'inline'
       = f.input :hour_to_send, as: :select, collection: (0..23), include_blank: false
       %h2= t("email_preferences_form.group_activity_notifications")
       %p= t("email_preferences_form.group_activity_details")

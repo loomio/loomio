@@ -4,7 +4,7 @@ class CreateEmailPreferences < ActiveRecord::Migration
       t.references :user
       t.boolean :subscribed_to_proposal_closure_notifications, default: true, null: false
       t.boolean :subscribed_to_mention_notifications, default: true, null: false
-      t.text :days_to_send, default: "", null: false
+      t.text :days_to_send
       t.integer :hour_to_send, default: 22, null: false
       t.datetime :next_activity_summary_sent_at, null: true
 
