@@ -50,9 +50,4 @@ class UsersController < BaseController
     head :ok
   end
 
-  # to test activity summary - to remove 
-  def activity_summary
-    SendActivitySummary.subscribers_this_hour!
-    redirect_to root_path
-  end
 end
