@@ -15,7 +15,7 @@
               %td
                 %h2= group.full_name
           - discussion.each do |discussion|
-            = render 'activity_item_discussion', discussion: discussion, last_summary_at: @last_summary_at
+            = render 'activity_item_discussion', discussion: discussion
 
         %table.with-font-and-width.footer
           %tr

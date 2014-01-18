@@ -7,6 +7,7 @@ class EmailPreferences < ActiveRecord::Base
   belongs_to :user
 
   before_save :set_next_day_to_send
+  after_create :set_defaults
 
   validates_presence_of :user_id
   validate :validate_days_to_send
@@ -23,6 +24,10 @@ class EmailPreferences < ActiveRecord::Base
     next_activity_summary_sent_at.present?
   end
 
+  def set_last_sent_at
+    self.activity_summary_last_sent_at = Time.now
+  end
+  
   def set_next_day_to_send
     days_to_send != [] ? subscribe_to_email_summary : unsubscribe_to_email_summary
   end
@@ -63,6 +68,10 @@ class EmailPreferences < ActiveRecord::Base
 
   private
 
+  def set_defaults
+    days_to_send = []
+  end
+  
   def validate_days_to_send
     days_to_send.each do |day|
       unless DAYS.include?(day)

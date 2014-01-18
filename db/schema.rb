@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(:version => 20140111204011) do
     t.text     "days_to_send"
     t.integer  "hour_to_send",                                 :default => 22,   :null => false
     t.datetime "next_activity_summary_sent_at"
+    t.datetime "activity_summary_last_sent_at"
     t.datetime "created_at",                                                     :null => false
     t.datetime "updated_at",                                                     :null => false
   end

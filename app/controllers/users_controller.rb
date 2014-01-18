@@ -50,10 +50,9 @@ class UsersController < BaseController
     head :ok
   end
 
-  # test for activity summary - to remove 
+  # to test activity summary - to remove 
   def activity_summary
-    @user = User.find(params[:id])
-    UserMailer.activity_summary(@user, 3.days.ago).deliver
+    SendActivitySummary.subscribers_this_hour!
     redirect_to root_path
   end
 end

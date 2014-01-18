@@ -12,8 +12,9 @@ class UserMailer < BaseMailer
     end
   end
 
-  def activity_summary(user, last_summary_at)
+  def activity_summary(user)
     @user = user
+    last_summary_at = @user.email_preferences.activity_summary_last_sent_at || 7.days.ago
     @activity_summary = ActivitySummary.new(user, last_summary_at)
     @activity_summary.load
     locale = best_locale(user.language_preference, nil)

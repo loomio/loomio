@@ -19,6 +19,7 @@ class Users::EmailPreferencesController < BaseController
     end
   end
 
+
   private
 
   def load_email_preferences

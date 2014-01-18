@@ -690,6 +690,7 @@ en:
     header: "Email preferences"
     activity_summary_email: "Activity Summary Email"
     activity_summary_subscription: "Send me new activity in my groups on the following days"
+    hour_to_send: "at the following hour"
     global_notifications: "Global Notifications"
     proposal_closing_soon_subscription: "Remind me 24 hours before a proposal closes"
     mentions_subscription: "Email me when someone mentions me in a comment"
