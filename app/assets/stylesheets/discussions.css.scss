@@ -282,7 +282,7 @@ body.discussions.show {
         float: right;
         font-size: $font-smaller;
         max-width: 190px;
-        .last-edited-by, .started-by { margin-bottom: 10px; }
+        .last-edited-by, .started-by, .see-revision-history, .fb-share-button { margin-bottom: 10px; }
         .user-name { white-space: nowrap; }
       }
       #discussion-markdown-dropdown {
