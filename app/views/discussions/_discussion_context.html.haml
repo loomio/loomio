@@ -21,6 +21,7 @@
         .see-revision-history
           %i.icon-time
           =link_to t("discussion_context.see_revision_history"), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
-      .share
-        = render 'share'
+      -if !@discussion.private?
+        .share
+          = render 'share'
 #description-revision-history.modal.hidden
