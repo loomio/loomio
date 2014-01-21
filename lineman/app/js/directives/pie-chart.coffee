@@ -46,6 +46,9 @@ angular.module('loomioApp').directive 'pieChart', (d3Helpers) ->
 			if resized?
 				size = sizeChart element
 				d3Helpers.setChartAttrs element, size
+				## reset arc radius
+				arc.outerRadius(size/2)
+				arcs.attr('d', arc)
 
 
 
