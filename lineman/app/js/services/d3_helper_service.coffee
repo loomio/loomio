@@ -32,3 +32,18 @@ angular.module('loomioApp').service 'd3Helpers',
 				initData = pie(@.proposalArray(proposal))
 			return initData
 
+		setChartAttrs: (element, size) ->
+			r = size/2
+			svg = d3.select(element[0]).select('svg') 
+			svg = if svg[0][0] then svg else d3.select(element[0]).append('svg')
+			g = svg.select('g') 
+			g = if g[0][0] then g else svg.append('g').attr('id', 'arcs')
+
+			svg.attr('width', size)
+			   .attr('height', size)
+			
+			g.attr('transform', 'translate('+r+','+r+')')
+
+
+
+
