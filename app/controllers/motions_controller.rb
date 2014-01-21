@@ -108,7 +108,7 @@ class MotionsController < GroupBaseController
 
     def find_group
       if (params[:id] && (params[:id] != "new"))
-        Motion.find_by_key(params[:id]).group
+        Motion.find_by_key!(params[:id]).group
       elsif params[:motion][:discussion_id]
         Discussion.find(params[:motion][:discussion_id]).group
       end
