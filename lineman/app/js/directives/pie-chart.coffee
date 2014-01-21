@@ -5,10 +5,14 @@ angular.module('loomioApp').directive 'pieChart', (d3Helpers) ->
 	controller: 'ProposalController'
 	link: (scope, element, attrs, ctrl) ->
 
+		sizeChart = (proportion) ->
+			cardWidth = element[0].clientWidth
+			cardWidth * proportion
+
 		##set attribute defaults and d3 method aliases
-		w = attrs.width || 398
-		h = attrs.height || 249
-		r = attrs.radius || 60
+		w = attrs.width || sizeChart 1
+		h = attrs.height || w
+		r = attrs.radius || w/2
 		arc = d3.svg.arc().innerRadius(0).outerRadius(r)
 		pie = d3.layout.pie().value (d) -> d.count
 		arcTween = (a) ->
@@ -22,9 +26,10 @@ angular.module('loomioApp').directive 'pieChart', (d3Helpers) ->
 		  .append('svg')
 		  .attr('width', w)
 		  .attr('height', h)
+		  .attr('class', 'img-responsive')
 		  .append('g')
 		    .attr('id', 'arcs')
-		    .attr('transform', 'translate('+w/2+','+h/2+')')
+		    .attr('transform', 'translate('+r+','+r+')')
 
 		## set piechart initial position at angle 0 if proposal.created_at < 3000ms
 		initData = d3Helpers.setPieInitData scope.ngModel, pie
@@ -44,6 +49,9 @@ angular.module('loomioApp').directive 'pieChart', (d3Helpers) ->
 				arcs.data(pie(d), (d) -> d.type )
 				  .transition().duration(750).ease('linear')
 				  .attrTween('d', arcTween)
+
+		scope.$watch scope.getScreenWidth, (newWidth) ->
+			console.log newWidth
 
 
 
