@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProposalController', ($scope, ProposalService) ->
+angular.module('loomioApp').controller 'ProposalController', ($scope, $window, ProposalService) ->
   $scope.voteFormIsDisabled = false
   $scope.voteFormIsExpanded = false
 
@@ -21,3 +21,9 @@ angular.module('loomioApp').controller 'ProposalController', ($scope, ProposalSe
   $scope.saveVoteError = (error) ->
     $scope.voteFormIsDisabled = false
     $scope.voteErrorMessages = error.messages
+
+  $scope.getScreenWidth = () ->
+    $(window).width()
+
+  $window.onresize = () ->
+    $scope.$apply()

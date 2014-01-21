@@ -7,15 +7,11 @@
         proposed by {{proposal.author.name}}
       .media__details 
         closing in {{proposal.closing_at | timeFromNowInWords:true }}
-    .card__content
-      .pull-right
+    .card__content.row
+      .proposal-description
+        {{proposal.description}}
+      .pie-chart
         %div{'pie-chart' => true, ng_model: 'proposal'}
-      {{proposal.description}}
-    .votes
-      yes: {{proposal.yes_votes_count}}
-      no: {{proposal.no_votes_count}}
-      abstain: {{proposal.abstain_votes_count}}
-      block: {{proposal.block_votes_count}}
     .clearfix
     .row.decision-buttons
       .agree{ng_click: 'selectPosition("yes")'}
