@@ -168,7 +168,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def inherit_group_privacy!
-    self[:private] = group_default_is_private?
+    self[:private] = group_default_is_private? if group.present?
   end
 
   def private
