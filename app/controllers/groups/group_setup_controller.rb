@@ -8,7 +8,7 @@ class Groups::GroupSetupController < GroupBaseController
 
   def finish
     if @group.update_attributes(permitted_params.group)
-      @group.update_attribute(:setup_completed_at, Time.zone.now.utc)
+      @group.mark_as_setup!
       InvitePeopleMailer.delay.welcome(@group)
       redirect_to @group
     else
