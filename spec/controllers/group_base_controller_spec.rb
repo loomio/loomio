@@ -6,7 +6,7 @@ describe GroupBaseController do
 
     before do
       controller.stub(:current_user).and_return(user)
-      Group.stub(:find_by_key).and_return(group)
+      Group.stub(:find_by_key!).and_return(group)
     end
 
     after do
