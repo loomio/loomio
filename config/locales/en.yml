@@ -717,6 +717,10 @@ en:
     desc_header: "You're almost there!"
     desc_html: "As the group coordinator, you’re responsible for setting up and managing your Loomio group. After you choose a few settings, you can get into your new group, start a discussion or two, and send out some invitations! <p>When thinking about the simplest way you can describe your group, ask yourself: What do you want to achieve together? What types of decisions will you be making? Who will be involved?</p>"
     submit: "Take me to my group!"
+    payment_model:
+      header: Loomio is for everyone!
+      info: We have a payment model that suits any group, even those with no money :)
+      link: Find out more
 
   simple_form:
     "yes": 'Yes'
@@ -947,6 +951,7 @@ en:
   send_email: "Send email"
   show_more: "Show More"
   start_a_group: "Start a group"
+  start_group: "Start group!"
   starting: "Starting"
   subject: "Subject"
   terms_of_service_html: "By clicking %{button_text}, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"
