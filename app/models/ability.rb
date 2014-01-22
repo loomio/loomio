@@ -77,8 +77,10 @@ class Ability
     end
 
     can :create, Group do |group|
-      if group.parent_id.present?
-        @member_group_ids.include?(group.parent_id)
+      if group.is_top_level?
+        true
+      elsif @member_group_ids.include?(group.parent_id)
+        true
       else
         false
       end
