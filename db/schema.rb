@@ -177,6 +177,7 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
+    t.datetime "last_non_comment_activity_at"
     t.boolean  "uses_markdown",   :default => true,  :null => false
     t.integer  "total_views",     :default => 0,     :null => false
     t.boolean  "is_deleted",      :default => false, :null => false
@@ -185,6 +186,7 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
     t.string   "key"
     t.datetime "archived_at"
     t.boolean  "private"
+
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -439,11 +441,8 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
     t.integer  "did_not_votes_count"
     t.integer  "votes_count",               :default => 0,    :null => false
     t.integer  "outcome_author_id"
-<<<<<<< HEAD
     t.datetime "last_non_vote_activity_at"
-=======
     t.string   "key"
->>>>>>> df2321c598af153bd48d50d2d0b3e27cceb7640a
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"

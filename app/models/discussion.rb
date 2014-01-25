@@ -220,17 +220,6 @@ class Discussion < ActiveRecord::Base
     self.last_comment_at ||= Time.now
   end
 
-  def joined_or_new_discussion_reader_for(user)
-    if self[:viewer_user_id].present?
-      unless user.id == self[:viewer_user_id].to_i
-        raise "joined for wrong user"
-      end
-      DiscussionReader.load_from_joined_discussion(self)
-    else
-      new_discussion_reader_for(user)
-    end
-  end
-
   def joined_to_discussion_reader?
     self['joined_to_discussion_reader'] == '1'
   end

@@ -93,12 +93,14 @@ describe Vote do
       vote2.previous_vote.id.should == vote.id
     end
   end
+
   context "when a vote is created" do
     it "fires a 'new_vote' event" do
       Events::NewVote.should_receive(:publish!)
       vote = create :vote, :motion => motion, :position => "yes"
     end
   end
+
   context "when a vote is blocked" do
     it "fires a 'motion_blocked' event" do
       Events::MotionBlocked.should_receive(:publish!)
