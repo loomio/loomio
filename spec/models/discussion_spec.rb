@@ -32,6 +32,10 @@ describe Discussion do
     discussion.last_comment_at.to_s.should == discussion.created_at.to_s
   end
 
+  it "automatically populates last_non_comment_activity_at immediately before creation" do
+    discussion.last_non_comment_activity_at.to_s.should == discussion.created_at.to_s
+  end
+
   describe "archive!" do
     let(:discussion) { FactoryGirl.create(:discussion) }
 

@@ -5,7 +5,7 @@ class Discussion < ActiveRecord::Base
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil) }
 
-  scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
+  scope :active_since, lambda {|some_time| where('last_non_comment_activity_at >= ? or last_comment_at >= ?', some_time, some_time)}
   scope :order_by_latest_comment, order('last_comment_at DESC')
   scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
 
@@ -35,7 +35,7 @@ class Discussion < ActiveRecord::Base
   delegate :email, :to => :author, :prefix => :author
   delegate :name_and_email, :to => :author, prefix: :author
 
-  before_create :set_last_comment_at
+  before_create :set_last_comment_at, :set_last_non_comment_activity_at
 
   def as_read_by(user)
     if user.blank?
@@ -163,6 +163,10 @@ class Discussion < ActiveRecord::Base
 
     def set_last_comment_at
       self.last_comment_at ||= Time.now
+    end
+
+    def set_last_non_comment_activity_at
+      self.last_non_comment_activity_at = Time.now
     end
 
     def joined_or_new_discussion_reader_for(user)

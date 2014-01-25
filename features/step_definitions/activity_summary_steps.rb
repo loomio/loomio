@@ -8,7 +8,7 @@ Given(/^the discussion has a new comment I have not read$/) do
 end
 
 When(/^I am sent an activity summary email$/) do
-  visit "/users/#{@user.id}/activity_summary"
+  UserMailer.activity_summary(@user).deliver
 end
 
 Then(/^I should see the group name in the email$/) do
@@ -37,7 +37,6 @@ end
 
 Given(/^the discussion has a motion$/) do
   step 'the discussion has a new motion I have not read'
-  visit motion_path(@motion)
 end
 
 Given(/^the motion has a new position statement by another user I have not read$/) do
@@ -96,4 +95,32 @@ end
 Then(/^I should see the description truncated in the email$/) do
   @last_email = ActionMailer::Base.deliveries.last
   @last_email.should have_content("...")
+end
+
+Given(/^the discussion has an old motion with old unread activity I have not read$/) do
+  @motion = FactoryGirl.create :motion, discussion: @discussion
+  step 'the motion has a new position statement by another user I have not read'
+  @motion.last_non_vote_activity_at = 8.day.ago
+  @motion.last_vote_at = 8.days.ago
+  @motion.save
+end
+
+Given(/^the discussion has an old comment I have not read$/) do
+  step 'the discussion has a new comment I have not read'
+  @discussion.last_comment_at = 8.days.ago
+  @discussion.save
+end
+
+Given(/^the motion has been read$/) do
+  visit motion_path(@motion)
+end
+
+Given(/^the discussion has been read in a prvevious summary$/) do
+  @discussion.last_non_comment_activity_at = 8.days.ago
+  @discussion.save
+end
+
+Given(/^the motion has been read in a previous summary$/) do
+  @motion.last_non_vote_activity_at = 8.days.ago
+  @motion.save
 end

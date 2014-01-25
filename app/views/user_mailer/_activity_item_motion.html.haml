@@ -4,7 +4,7 @@
     %td.content-cell
       %hr
 
-- if new_and_unread?(motion, @activity_summary)
+- if motion.created_since?(@activity_summary.last_sent_at)
   %table.with-font-and-width
     %tr
       %td.icon-cell
@@ -30,7 +30,7 @@
       %td.icon-cell
       %td.icon-cell
       %td
-        %p= display_description(motion.description, new_and_unread?(motion, @activity_summary))
+        %p= display_motion_description(motion, @activity_summary)
 
 - motion.votes_since(@activity_summary.last_sent_at).each do |vote|
   %table.with-font-and-width

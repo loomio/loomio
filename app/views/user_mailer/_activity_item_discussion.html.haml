@@ -26,10 +26,10 @@
     %tr
       %td.icon-cell
       %td
-        %p= display_description(discussion.description, discussion.created_since?(@activity_summary.last_sent_at))
+        %p= display_discussion_description(discussion, @activity_summary)
 
 - motion = discussion.current_motion
-- if motion && new_or_unread?(motion, @activity_summary)
+- if motion && unread_motion_activity?(motion, @activity_summary)
   = render 'activity_item_motion', motion: motion
 
 - discussion.comments_since(@activity_summary.last_sent_at).each do |comment|

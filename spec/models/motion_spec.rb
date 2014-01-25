@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe Motion do
+
+  describe "#set_last_non_vote_activity" do
+    it "updates the last_non_vote_activity_at date with the current time" do
+      @motion = create(:motion)
+      @motion.last_non_vote_activity_at.to_s.should == @motion.created_at.to_s
+    end
+  end
+
   describe "#voting?" do
     it "returns true if motion is open" do
       @motion = create :motion

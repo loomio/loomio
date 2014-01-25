@@ -23,6 +23,7 @@ Feature: Activity summary email
 
   Scenario: Discussions with new unread position activity are displayed
     And the discussion has a motion
+    And the motion has been read
     And the motion has a new position statement by another user I have not read
     When I am sent an activity summary email
     Then I should see the discussion title in the email
@@ -34,6 +35,7 @@ Feature: Activity summary email
 
   Scenario: Motions with new unread position activity are displayed
     And the discussion has a motion
+    And the motion has been read
     And the motion has a new position statement by another user I have not read
     When I am sent an activity summary email
     Then I should see the motion name in the email
@@ -45,6 +47,7 @@ Feature: Activity summary email
 
   Scenario: Read positions are not displayed
     And the discussion has a motion
+    And the motion has been read
     And the motion has a position statement by another user I have read
     When I am sent an activity summary email
     Then I should not see the position in the email
@@ -56,19 +59,19 @@ Feature: Activity summary email
 
   Scenario: Previously read discussions with new activity have their description truncated
     And there is a new discussion in the group with a long description
-    And the discussion has been read
+    And the discussion has been read in a prvevious summary
     And the discussion has a new comment I have not read
     When I am sent an activity summary email
     Then I should see the description truncated in the email
 
   Scenario: New unread motions are displayed and do not have thier description truncated
     And the discussion has a new motion I have not read
-    And the motion has a new position statement by another user I have not read
     When I am sent an activity summary email
     Then I should not see the description truncated in the email
 
   Scenario: Previously read motions with new activity have their description truncated
     And the discussion has a motion
+    And the motion has been read in a previous summary
     And the motion has a new position statement by another user I have not read
     When I am sent an activity summary email
     Then I should see the description truncated in the email
@@ -85,11 +88,21 @@ Feature: Activity summary email
 
   Scenario: Motions with no unread activity are not displayed
     And the discussion has a motion
+    And the motion has been read
     When I am sent an activity summary email
     Then I should not see the motion name in the email
 
-  Scenario: Groups with old unread activity are not displayed
+  Scenario: Groups with unread activity older than 7 days are not displayed
+    And the discussion has an old comment I have not read
+    When I am sent an activity summary email
+    Then I should not see the group name in the email
 
-  Scenario: Discussions with old unread activity are not displayed
+  Scenario: Discussions with unread activity older than 7 days are not displayed
+    And the discussion has an old comment I have not read
+    When I am sent an activity summary email
+    Then I should not see the discussion title in the email
 
-  Scenario: Motions with old unread activity are not displayed
+  Scenario: Motions with unread activity older than 7 days are not displayed
+    And the discussion has an old motion with old unread activity I have not read
+    When I am sent an activity summary email
+    Then I should not see the motion name in the email

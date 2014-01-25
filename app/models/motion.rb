@@ -27,6 +27,7 @@ class Motion < ActiveRecord::Base
 
   after_initialize :set_default_close_at_date_and_time
   before_validation :set_closing_at
+  before_create :set_last_non_vote_activity
   after_create :fire_new_motion_event
 
   attr_accessor :create_discussion
@@ -36,6 +37,7 @@ class Motion < ActiveRecord::Base
   scope :lapsed_but_not_closed, voting.lapsed
   scope :closed, where('closed_at IS NOT NULL').order('closed_at DESC')
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
+  scope :active_since, lambda {|time| where('last_vote_at > ? OR motions.last_non_vote_activity_at > ?', time, time) }
 
   def title
     name
@@ -105,16 +107,6 @@ class Motion < ActiveRecord::Base
 
   def can_be_voted_on_by?(user)
     user && group.users.include?(user)
-  end
-
-  def latest_vote_time
-    if last_vote_at.present?
-      last_vote_at
-    else
-      # this seems incorrect behaviour
-      # and without it this method could be removed
-      created_at
-    end
   end
 
   def last_vote_by_user(user)
@@ -203,6 +195,10 @@ class Motion < ActiveRecord::Base
     votes.where('created_at >= ?', time)
   end
 
+  def created_since?(time)
+    created_at >= time
+  end
+
   def store_users_that_didnt_vote
     did_not_votes.delete_all
     group.users.each do |user|
@@ -217,11 +213,13 @@ class Motion < ActiveRecord::Base
     reload
   end
 
-  def created_since?(time)
-    created_at >= time
-  end
 
   private
+
+    def set_last_non_vote_activity
+      self.last_non_vote_activity_at = Time.now
+    end
+
     def find_or_new_motion_reader_for(user)
       if self.motion_readers.where(user_id: user.id).exists?
         self.motion_readers.where(user_id: user.id).first

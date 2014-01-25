@@ -51,13 +51,11 @@ describe Vote do
   end
 
   it 'should update motion_last_vote_at when new vote is created' do
-    vote = Vote.new(position: "yes")
+    vote = Vote.new(position: 'abstain')
     vote.motion = motion
     vote.user = user
-    vote_time = stub "time"
-    motion.stub(:latest_vote_time).and_return(vote_time)
-    motion.should_receive(:last_vote_at=).with(vote_time)
     vote.save!
+    motion.last_vote_at.should == vote.created_at
   end
 
   describe 'other_group_members' do
@@ -94,16 +92,15 @@ describe Vote do
   end
   context "when a vote is created" do
     it "fires a 'new_vote' event" do
-      motion = create :motion
       Events::NewVote.should_receive(:publish!)
       vote = create :vote, :motion => motion, :position => "yes"
     end
   end
   context "when a vote is blocked" do
     it "fires a 'motion_blocked' event" do
-      motion = create :motion
       Events::MotionBlocked.should_receive(:publish!)
       vote = create :vote, :motion => motion, :position => "block"
     end
   end
+
 end
