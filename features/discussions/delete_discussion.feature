@@ -15,6 +15,7 @@ Feature: Admin deletes a discussion on Loomio
     And I should not see the discussion in the list of discussions
     And I should see a message notifying me of the deletion
 
+  @javascript
   Scenario: A non admin tries to delete a discussion from a group
     Given I am logged in
     And there is a discussion in a group I belong to

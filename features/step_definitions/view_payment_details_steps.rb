@@ -1,5 +1,6 @@
 Given(/^I am a coordinator of a subscription group$/) do
-  @group = FactoryGirl.create :group, payment_plan: 'subscription'
+  @group = FactoryGirl.create :group, payment_plan: 'subscription',
+                                      key: 'abc123'
   @group.add_admin!(@user)
 end
 

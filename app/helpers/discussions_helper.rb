@@ -108,4 +108,30 @@ module DiscussionsHelper
       false
     end
   end
+
+  def discussion_privacy_options(discussion)
+    options = []
+    group =
+      if discussion.group_id
+        t(:'simple_form.labels.discussion.of') + discussion.group.name
+      else
+        t :'simple_form.labels.discussion.of_no_group'
+      end
+    icon =
+    header = t "simple_form.labels.discussion.privacy_public_header"
+    description = t 'simple_form.labels.discussion.privacy_public_description'
+    options << ["<span class='discussion-privacy-setting-header'><i class='icon-globe'></i>#{header}<br /><p>#{description}</p>".html_safe, false]
+
+    header = t "simple_form.labels.discussion.privacy_private_header"
+    description = t(:'simple_form.labels.discussion.privacy_private_description', group: group)
+    options << ["<span class='discussion-privacy-setting-header'><i class='icon-lock'></i>#{header}<br /><p>#{description}</p>".html_safe, true ]
+  end
+
+  def privacy_language(discussion)
+    discussion.private? ? "private" : "public"
+  end
+
+  def privacy_icon(discussion)
+    discussion.private? ? "lock" : "globe"
+  end
 end

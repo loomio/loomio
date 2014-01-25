@@ -4,7 +4,7 @@ class DiscussionService
   end
 
   def self.like_comment(user, comment)
-    user.ability.can?(:like_comments, comment.discussion)
+    user.ability.authorize!(:like_comments, comment.discussion)
     comment_vote = comment.like(user)
     Events::CommentLiked.publish!(comment_vote)
   end
@@ -27,12 +27,27 @@ class DiscussionService
 
   def self.start_discussion(discussion)
     user = discussion.author
+    discussion.inherit_group_privacy! if discussion.private.nil?
+
+    return false unless discussion.save
+
     user.ability.authorize! :create, discussion
+
+    user.update_attributes(uses_markdown: discussion.uses_markdown)
+    Events::NewDiscussion.publish!(discussion)
+  end
+
+  def self.edit_discussion(user, discussion_params, discussion)
+    user.ability.authorize! :update, discussion
+
+    discussion.private = discussion_params[:private]
+    discussion.title = discussion_params[:title]
+    discussion.description = discussion_params[:description]
+    discussion.uses_markdown = discussion_params[:uses_markdown]
 
     return false unless discussion.save
 
     user.update_attributes(uses_markdown: discussion.uses_markdown)
-    Events::NewDiscussion.publish!(discussion)
   end
 
 end

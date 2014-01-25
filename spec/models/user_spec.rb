@@ -65,7 +65,7 @@ describe User do
 
   it "has authored discussions" do
     group.add_member!(user)
-    discussion = Discussion.new(:group => group, :title => "Hello world")
+    discussion = Discussion.new(:group => group, :title => "Hello world", private: true)
     discussion.author = user
     discussion.save!
     user.authored_discussions.should include(discussion)
@@ -73,19 +73,21 @@ describe User do
 
   it "has authored motions" do
     group.add_member!(user)
-    discussion = create :discussion, group: group
+    discussion = create_discussion group: group
     motion = create(:motion, discussion: discussion, author: user)
     user.authored_motions.should include(motion)
   end
 
   describe "#voting_motions" do
     it "returns motions that belong to user and are open" do
-      motion = create(:motion, author: user)
+      discussion = create_discussion group: group
+      motion = create(:motion, author: user, discussion: discussion)
       user.voting_motions.should include(motion)
     end
 
     it "should not return motions that belong to the group but are closed'" do
-      motion = create(:motion, author: user)
+      discussion = create_discussion group: group
+      motion = create(:motion, author: user, discussion: discussion)
       MotionService.close(motion)
 
       user.voting_motions.should_not include(motion)
@@ -94,13 +96,15 @@ describe User do
 
   describe "closed_motions" do
     it "returns motions that belong to the group and are closed" do
-      motion = create(:motion, author: user)
+      discussion = create_discussion group: group
+      motion = create(:motion, author: user, discussion: discussion)
       MotionService.close(motion)
       user.closed_motions.should include(motion)
     end
 
     it "should not return motions that belong to the group but are closed" do
-      motion = create(:motion, author: user)
+      discussion = create_discussion group: group
+      motion = create(:motion, author: user, discussion: discussion)
       user.closed_motions.should_not include(motion)
     end
   end

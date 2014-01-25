@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe DiscussionMailer do
-  let(:discussion) { create(:discussion) }
+  let(:discussion) { create_discussion }
   let(:group) { discussion.group }
 
   context 'sending individual email upon new discussion creation' do

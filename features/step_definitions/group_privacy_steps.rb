@@ -292,3 +292,32 @@ Given(/^I am a member of a private sub\-group$/) do
   @parent_group.add_member! @user
   @sub_group.add_member! @user
 end
+
+Then(/^I should see the group title$/) do
+  page.should have_content(@group.full_name)
+end
+
+Then(/^I should see the subgroup title$/) do
+  page.should have_content(@sub_group.name)
+end
+
+Given(/^I am a coordinator of a non\-hidden group$/) do
+  @public_group = FactoryGirl.create :group, privacy: 'public'
+  @public_group.add_admin! @user
+end
+
+Given(/^the group has a public discussion$/) do
+  @discussion = create_discussion group: @public_group, private: false
+end
+
+When(/^I set the group privacy to hidden$/) do
+  visit edit_group_path(@public_group)
+  choose 'group_privacy_hidden'
+  click_on 'group_form_submit'
+end
+
+Then(/^I should see that the discussions are private$/) do
+  visit discussion_path(@discussion)
+  page.should have_css('.icon-lock')
+end
+

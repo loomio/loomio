@@ -1,6 +1,8 @@
 class Motion < ActiveRecord::Base
   CHART_COLOURS = ["#90D490", "#F0BB67", "#D49090", "#dd0000", '#ccc']
 
+  include ReadableUnguessableUrls
+
   belongs_to :author, :class_name => 'User'
   belongs_to :outcome_author, :class_name => 'User'
   belongs_to :discussion

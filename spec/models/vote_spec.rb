@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Vote do
   let(:user) { create(:user) }
   let(:group) { create(:group) }
-  let(:discussion) { create(:discussion, group: group, author: user) }
+  let(:discussion) { create_discussion group: group, author: user }
   let(:motion) { create(:motion, discussion: discussion) }
 
   it { should have_many(:events).dependent(:destroy) }
@@ -21,7 +21,7 @@ describe Vote do
   end
 
   it 'should only accept valid position values' do
-    vote = build(:vote, position: 'bad')
+    vote = build(:vote, position: 'bad', motion: motion)
     vote.valid?
     vote.should have(1).errors_on(:position)
   end
@@ -44,7 +44,7 @@ describe Vote do
 
   it 'cannot have a statement over 250 chars' do
     vote = Vote.new(position: 'yes')
-    vote.motion = create(:motion)
+    vote.motion = create(:motion, discussion: discussion)
     vote.user = user
     vote.statement = "a"*251
     vote.should_not be_valid
@@ -54,6 +54,9 @@ describe Vote do
     vote = Vote.new(position: 'abstain')
     vote.motion = motion
     vote.user = user
+    vote_time = "time"
+    motion.stub(:latest_vote_time).and_return(vote_time)
+    motion.should_receive(:last_vote_at=).with(vote_time)
     vote.save!
     motion.last_vote_at.should == vote.created_at
   end

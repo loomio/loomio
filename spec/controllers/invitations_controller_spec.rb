@@ -4,7 +4,7 @@ describe InvitationsController do
 
   describe "GET 'show'" do
 
-    let(:group) { stub_model(Group) }
+    let(:group) { stub_model(Group, key: 'AaBC1256', full_name: "Gertrude's Emportium") }
     let(:invitation) {double(:invitation,
                            :group => group,
                            :recipient_email => 'jim@bob.com',
@@ -23,11 +23,11 @@ describe InvitationsController do
     context "user not signed in" do
       before do
         Invitation.should_receive(:find_by_token).and_return(invitation)
-        get :show, :id => 'asdfghjkl'
+        get :show, :id => 'AaBC1256'
       end
 
       it "sets session attribute of the invitation token" do
-        session[:invitation_token].should == "asdfghjkl"
+        session[:invitation_token].should == "AaBC1256"
       end
 
       it "redirects to sign up" do
@@ -50,7 +50,7 @@ describe InvitationsController do
 
         it "accepts invitation and redirects to group " do
           AcceptInvitation.should_receive(:and_grant_access!).with(invitation, @user)
-          get :show, :id => 'asdfghjkl'
+          get :show, :id => 'AaBC1256'
           response.should redirect_to group_path(group)
         end
 

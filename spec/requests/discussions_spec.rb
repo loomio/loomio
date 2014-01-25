@@ -15,7 +15,7 @@ describe "Discussion" do
 
     it "can create a new discussion" do
       pending "should be converted to cucs, broken as specs"
-      visit group_path(id: @group.id)
+      visit group_path(@group)
       find('#start-new-discussion').click
       fill_in 'discussion_title', with: 'This is a new discussion'
       fill_in 'discussion_description', with: 'Blahhhhhh'
