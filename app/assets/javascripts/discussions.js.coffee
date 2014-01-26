@@ -16,7 +16,6 @@ $ ->
           $.getJSON autocomplete_path, {q: query} , (data) ->
             callback(data)
 
-
 # Global Markdown (new discussion & comments)
 $ ->
   $(".global-markdown-setting .enable-markdown").click (event) ->
