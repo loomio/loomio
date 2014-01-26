@@ -141,6 +141,7 @@ class Discussion < ActiveRecord::Base
     self.description = description
     self.uses_markdown = uses_markdown
     save!
+    set_last_non_comment_activity_at
     fire_edit_description_event(user)
   end
 

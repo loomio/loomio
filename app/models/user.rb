@@ -107,6 +107,8 @@ class User < ActiveRecord::Base
   scope :coordinators, joins(:memberships).where('memberships.access_level = ?', 'admin').group('users.id')
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
 
+  delegate :subscribed_to_proposal_closure_notifications?, to: :email_preferences, prefix: false
+
   def self.email_taken?(email)
     User.find_by_email(email).present?
   end

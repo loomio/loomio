@@ -138,7 +138,6 @@ class DiscussionsController < GroupBaseController
 
   def update_description
     @discussion.set_description!(params[:description], params[:description_uses_markdown], current_user)
-    @discussion.set_last_non_comment_activity_at
     redirect_to @discussion
   end
 

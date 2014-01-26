@@ -11,6 +11,7 @@ class ActivitySummary
     last_sent_at = limit if last_sent_at.nil? || last_sent_at <= limit
     @last_sent_at = last_sent_at
     @user = user
+    load
   end
 
   def load

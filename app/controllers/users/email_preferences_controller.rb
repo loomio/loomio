@@ -24,7 +24,6 @@ class Users::EmailPreferencesController < BaseController
 
   def load_email_preferences
     user = @restricted_user || current_user
-    raise if user.nil?
     @email_preferences = user.email_preferences
   end
 
