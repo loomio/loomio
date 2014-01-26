@@ -52,6 +52,7 @@ Feature: Activity summary email
     When I am sent an activity summary email
     Then I should not see the position in the email
 
+
   Scenario: New unread discussions are displayed and do not have thier description truncated
     And there is a new discussion in the group with a long description
     When I am sent an activity summary email
@@ -76,6 +77,7 @@ Feature: Activity summary email
     When I am sent an activity summary email
     Then I should see the description truncated in the email
 
+
   Scenario: Groups with no unread activity are not displayed
     And the discussion has been read
     When I am sent an activity summary email
@@ -92,12 +94,15 @@ Feature: Activity summary email
     When I am sent an activity summary email
     Then I should not see the motion name in the email
 
+
   Scenario: Groups with unread activity older than 7 days are not displayed
+    And the discussion has been read in a prvevious summary
     And the discussion has an old comment I have not read
     When I am sent an activity summary email
     Then I should not see the group name in the email
 
   Scenario: Discussions with unread activity older than 7 days are not displayed
+    And the discussion has been read in a prvevious summary
     And the discussion has an old comment I have not read
     When I am sent an activity summary email
     Then I should not see the discussion title in the email
@@ -106,3 +111,20 @@ Feature: Activity summary email
     And the discussion has an old motion with old unread activity I have not read
     When I am sent an activity summary email
     Then I should not see the motion name in the email
+
+
+  Scenario: Old read discussions that have there title updated are displayed
+    And the discussion has been read in a prvevious summary
+    And the discussion has an old comment I have not read
+    And the discussion title is updated by another user
+    When I am sent an activity summary email
+    Then I should see the discussion title in the email
+    And I should not see the description truncated in the email
+
+  Scenario: Old read discussions that have there description updated are displayed
+    And the discussion has been read in a prvevious summary
+    And the discussion has an old comment I have not read
+    And the discussion description is updated by another user
+    When I am sent an activity summary email
+    Then I should see the discussion title in the email
+    And I should not see the description truncated in the email

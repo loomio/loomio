@@ -39,7 +39,8 @@ class Discussion < ActiveRecord::Base
   delegate :email, :to => :author, :prefix => :author
   delegate :name_and_email, :to => :author, prefix: :author
 
-  before_create :set_last_comment_at, :set_last_non_comment_activity_at
+  before_create :set_last_comment_at
+  after_create :set_last_non_comment_activity_at
 
   def as_read_by(user)
     if user.blank?
@@ -98,6 +99,10 @@ class Discussion < ActiveRecord::Base
 
   def created_since?(time)
     created_at >= time
+  end
+
+  def modified_since?(time)
+    last_non_comment_activity_at >= time
   end
 
   def viewed!
@@ -177,6 +182,7 @@ class Discussion < ActiveRecord::Base
 
   def set_last_non_comment_activity_at
     self.last_non_comment_activity_at = Time.now
+    save!
   end
 
   def joined_or_new_discussion_reader_for(user)
@@ -204,6 +210,7 @@ class Discussion < ActiveRecord::Base
 
 
   private
+
   def private_is_not_nil
     if self[:private].nil?
       errors.add(:private, "cannot be nil")

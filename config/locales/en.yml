@@ -824,10 +824,6 @@ en:
       intro: "A new proposal was created in a Loomio group that you belong to."
       closes_in: "Closes in"
       subject: "New proposal: %{which}"
-    daily_activity:
-      heading: "Your Loomio Activity"
-      intro: "Showing you what’s been happening in your Loomio groups in the last 24 hours"
-      subject: "Loomio - Summary of the last 24 hours"
     activity_summary:
       created_a_proposal: "created a proposal"
       discussion_started_by: "Started by %{who}"

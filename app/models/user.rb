@@ -220,10 +220,8 @@ class User < ActiveRecord::Base
   end
 
   def deactivate!
-    update_attributes(:deleted_at => Time.now,
-                      :subscribed_to_daily_activity_email => false,
-                      :subscribed_to_mention_notifications => false,
-                      :subscribed_to_proposal_closure_notifications => false)
+    update_attributes(:deleted_at => Time.now)
+    email_preferences.deactivate!
     memberships.update_all(:archived_at => Time.now)
     membership_requests.where("responded_at IS NULL").destroy_all
   end

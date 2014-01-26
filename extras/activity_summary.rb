@@ -38,7 +38,7 @@ class ActivitySummary
     limit = [start_date_for(group), MAX_DAYS_OF_ACTIVITY.days.ago].max
     Queries::VisibleDiscussions.new(user: @user, groups: [group])
                                .unread
-                               .last_comment_after(limit)
+                               .active_since(limit)
                                .order_by_latest_comment
                                .readonly(false)
   end
@@ -56,5 +56,10 @@ class ActivitySummary
   def start_date_for(group)
     @user.memberships.where(group_id: group.id).first.
     created_at - 1.week
+  end
+
+  def latest_discussion_activity_item(discussion)
+    event = Event.where("discussion = ? AND (kind = 'discussion_title_edited' OR kind = 'discussion_description_edited'", discussion).last
+    DiscussionItem.new(event)
   end
 end

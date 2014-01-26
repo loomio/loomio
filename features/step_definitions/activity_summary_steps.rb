@@ -7,32 +7,8 @@ Given(/^the discussion has a new comment I have not read$/) do
   step 'the discussion has a comment'
 end
 
-When(/^I am sent an activity summary email$/) do
-  UserMailer.activity_summary(@user).deliver
-end
-
-Then(/^I should see the group name in the email$/) do
-  @last_email = ActionMailer::Base.deliveries.last
-  @last_email.should have_content(@group.full_name)
-end
-
-Then(/^I should not see the group name in the email$/) do
-  @last_email = ActionMailer::Base.deliveries.last
-  @last_email.should_not have_content(@group.full_name)
-end
-
-Then(/^I should see the discussion title in the email$/) do
-  @last_email = ActionMailer::Base.deliveries.last
-  @last_email.should have_content(@discussion.title)
-end
-
 Given(/^the discussion has a new motion I have not read$/) do
   @motion = FactoryGirl.create :motion, discussion: @discussion, description: "On and on and on and on and on and on and on and on  and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on to the breaky break of dawn"
-end
-
-Then(/^I should see the motion name in the email$/) do
-  @last_email = ActionMailer::Base.deliveries.last
-  @last_email.should have_content(@motion.name)
 end
 
 Given(/^the discussion has a motion$/) do
@@ -44,23 +20,8 @@ Given(/^the motion has a new position statement by another user I have not read$
   @vote = FactoryGirl.create :vote, :statement => "I like it!", :motion => @motion, :user => another_user
 end
 
-Then(/^I should see the position statement in the email$/) do
-  @last_email = ActionMailer::Base.deliveries.last
-  @last_email.should have_content(@vote.statement)
-end
-
 Given(/^the discussion has been read$/) do
   visit discussion_path(@discussion)
-end
-
-Then(/^I should not see the discussion title in the email$/) do
-  @last_email = ActionMailer::Base.deliveries.last
-  @last_email.should_not have_content(@discussion.title)
-end
-
-Then(/^I should not see the motion name in the email$/) do
-  @last_email = ActionMailer::Base.deliveries.last
-  @last_email.should_not have_content(@motion.name)
 end
 
 Given(/^there is a new discussion in the group with a long description$/) do
@@ -72,29 +33,9 @@ Given(/^the discussion has a comment I have read$/) do
   visit discussion_path(@discussion)
 end
 
-Then(/^I should not see the comment in the email$/) do
-  @last_email = ActionMailer::Base.deliveries.last
-  @last_email.should_not have_content(@comment.body)
-end
-
 Given(/^the motion has a position statement by another user I have read$/) do
   step 'the motion has a new position statement by another user I have not read'
   visit motion_path(@motion)
-end
-
-Then(/^I should not see the position in the email$/) do
-  @last_email = ActionMailer::Base.deliveries.last
-  @last_email.should_not have_content(@vote.statement)
-end
-
-Then(/^I should not see the description truncated in the email$/) do
-  @last_email = ActionMailer::Base.deliveries.last
-  @last_email.should_not have_content("...")
-end
-
-Then(/^I should see the description truncated in the email$/) do
-  @last_email = ActionMailer::Base.deliveries.last
-  @last_email.should have_content("...")
 end
 
 Given(/^the discussion has an old motion with old unread activity I have not read$/) do
@@ -123,4 +64,93 @@ end
 Given(/^the motion has been read in a previous summary$/) do
   @motion.last_non_vote_activity_at = 8.days.ago
   @motion.save
+end
+
+Given(/^I log in as another user in the group$/) do
+  @another_user = FactoryGirl.create :user, email: 'furry@example.com'
+  @group.add_admin! @another_user
+  step 'I log out'
+  step 'I am logged in as "furry@example.com"'
+end
+
+Given(/^the discussion title is updated by another user$/) do
+  step 'I log in as another user in the group'
+  visit discussion_path(@discussion)
+  step 'I choose to edit the discussion title'
+  step 'I fill in and submit the discussion title form'
+  step 'I log out'
+  step 'I am logged in as "#{@user.email}"'
+end
+
+Given(/^the discussion description is updated by another user$/) do
+  step 'I log in as another user in the group'
+  visit discussion_path(@discussion)
+  step 'I choose to edit the discussion description'
+  step 'I fill in and submit the discussion description form'
+  step 'I log out'
+  step 'I am logged in as "#{@user.email}"'
+end
+
+Given(/^the discussion has a motion with no new activity$/) do
+  step 'the discussion has an old motion with old unread activity I have not read'
+end
+
+When(/^I am sent an activity summary email$/) do
+  UserMailer.activity_summary(@user).deliver
+end
+
+Then(/^I should see the group name in the email$/) do
+  @last_email = ActionMailer::Base.deliveries.last
+  @last_email.should have_content(@group.full_name)
+end
+
+Then(/^I should not see the group name in the email$/) do
+  @last_email = ActionMailer::Base.deliveries.last
+  @last_email.should_not have_content(@group.full_name)
+end
+
+Then(/^I should see the discussion title in the email$/) do
+  @discussion.reload
+  @last_email = ActionMailer::Base.deliveries.last
+  @last_email.should have_content(@discussion.title)
+end
+
+Then(/^I should see the motion name in the email$/) do
+  @last_email = ActionMailer::Base.deliveries.last
+  @last_email.should have_content(@motion.name)
+end
+
+Then(/^I should see the position statement in the email$/) do
+  @last_email = ActionMailer::Base.deliveries.last
+  @last_email.should have_content(@vote.statement)
+end
+
+Then(/^I should not see the discussion title in the email$/) do
+  @last_email = ActionMailer::Base.deliveries.last
+  @last_email.should_not have_content(@discussion.title)
+end
+
+Then(/^I should not see the motion name in the email$/) do
+  @last_email = ActionMailer::Base.deliveries.last
+  @last_email.should_not have_content(@motion.name)
+end
+
+Then(/^I should not see the comment in the email$/) do
+  @last_email = ActionMailer::Base.deliveries.last
+  @last_email.should_not have_content(@comment.body)
+end
+
+Then(/^I should not see the position in the email$/) do
+  @last_email = ActionMailer::Base.deliveries.last
+  @last_email.should_not have_content(@vote.statement)
+end
+
+Then(/^I should not see the description truncated in the email$/) do
+  @last_email = ActionMailer::Base.deliveries.last
+  @last_email.should_not have_content("...")
+end
+
+Then(/^I should see the description truncated in the email$/) do
+  @last_email = ActionMailer::Base.deliveries.last
+  @last_email.should have_content("...")
 end

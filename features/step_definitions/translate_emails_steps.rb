@@ -160,7 +160,7 @@ Then(/^the group membership request approved email should be delivered in Englis
   @email.body.encoded.should include(I18n.t("email.view_group", locale: "en"))
 end
 
-When(/^the daily activity email is sent$/) do
+When(/^the activity summary email is sent$/) do
   user = FactoryGirl.create :user
   group = FactoryGirl.create :group
   discussion = create_discussion group: group
@@ -168,16 +168,16 @@ When(/^the daily activity email is sent$/) do
   @results = CollectsRecentActivityByGroup.new(user, since: @since_time).results
 end
 
-Then(/^"(.*?)" should receive the daily activity email in Spanish$/) do |arg1|
+Then(/^"(.*?)" should receive the activity summary email in Spanish$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
-  email = UserMailer.daily_activity(user, @results, @since_time)
-  email.body.encoded.should include(I18n.t("email.daily_activity.heading", locale: "es"))
+  email = UserMailer.activity_summary(user)
+  email.body.encoded.should include(I18n.t("email.activity_summary.heading", locale: "es"))
 end
 
-Then(/^"(.*?)" should receive the daily activity email in English$/) do |arg1|
+Then(/^"(.*?)" should receive the activity summary email in English$/) do |arg1|
   user = User.find_by_email("#{arg1}@example.org")
-  email = UserMailer.daily_activity(user, @results, @since_time)
-  email.body.encoded.should include(I18n.t("email.daily_activity.heading", locale: "en"))
+  email = UserMailer.activity_summary(user)
+  email.body.encoded.should include(I18n.t("email.activity_summary.heading", locale: "en"))
 end
 
 When(/^"(.*?)" mentions "(.*?)" in a comment$/) do |arg1, arg2|

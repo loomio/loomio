@@ -36,7 +36,7 @@ describe UserMailer do
     before(:all) do
       @user = create(:user)
       @since_time = 2.days.ago
-      @mail = UserMailer.activity_summary(@user, @since_time)
+      @mail = UserMailer.activity_summary(@user)
     end
 
     #ensure that the subject is correct

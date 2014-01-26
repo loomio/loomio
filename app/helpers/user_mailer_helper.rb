@@ -4,7 +4,7 @@ module UserMailerHelper
     if discussion.last_non_comment_activity_at >= activity_summary.last_sent_at
       discussion.description
     else
-      truncate(discussion.description, :length => 5, :omission => '...')
+      truncate(discussion.description, :length => 50, :omission => '...')
     end
   end
 
@@ -12,7 +12,7 @@ module UserMailerHelper
     if motion.last_non_vote_activity_at >= activity_summary.last_sent_at
       motion.description
     else
-      truncate(motion.description, :length => 5, :omission => '...')
+      truncate(motion.description, :length => 50, :omission => '...')
     end
   end
 
@@ -20,4 +20,15 @@ module UserMailerHelper
     activity_summary.unread_motions_for(motion.group).include?(motion)
   end
 
+  def info_for_avatar(discussion, activity_summary)
+    if discussion.created_since?(activity_summary.last_sent_at)
+      user = discussion.author
+      item_text = t('email.activity_summary.started_a_discussion')
+    elsif discussion.modified_since?(activity_summary.last_sent_at)
+      activity = activity_summary.latest_discussion_activity_item(discussion)
+      user = activity.actor
+      item_text = activity.body
+    end
+    return user, item_text
+  end
 end

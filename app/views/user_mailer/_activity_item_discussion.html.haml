@@ -2,11 +2,12 @@
   %tr
     %td.full-width-cell
       %hr
-
-- if discussion.created_since?(@activity_summary.last_sent_at)
+- last_sent_at = @activity_summary.last_sent_at
+- if discussion.created_since?(last_sent_at) || discussion.modified_since?(last_sent_at)
+  - user, item_text = info_for_avatar(discussion, @activity_summary)
   %table.with-font-and-width
     %tr
-      = render 'activity_item_avatar', user: discussion.author, item: discussion, item_text: t('email.activity_summary.started_a_discussion')
+      = render 'activity_item_avatar', user: user, item: discussion, item_text: item_text
 
 %table.with-font-and-width
   %tr

@@ -24,6 +24,14 @@ class EmailPreferences < ActiveRecord::Base
     next_activity_summary_sent_at.present?
   end
 
+  def subscribed_to_mention_notifications?
+    subscribed_to_mention_notifications == true
+  end
+
+  def subscribed_to_proposal_closure_notifications?
+    subscribed_to_proposal_closure_notifications == true
+  end
+
   def set_last_sent_at
     self.activity_summary_last_sent_at = Time.now
   end
@@ -63,6 +71,12 @@ class EmailPreferences < ActiveRecord::Base
       date_time_to_send = Time.parse(user_date_time_string)
     end
     self.next_activity_summary_sent_at = date_time_to_send
+  end
+
+  def deactivate!
+    update_attributes(:subscribed_to_mention_notifications => false,
+                      :subscribed_to_proposal_closure_notifications => false,
+                      :days_to_send => [])
   end
 
 

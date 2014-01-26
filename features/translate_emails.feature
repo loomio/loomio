@@ -52,11 +52,11 @@ Feature: deliver emails in the user's prefered language
     When "Eduardo" approves "John"s group membership request
     Then the group membership request approved email should be delivered in English
 
-  Scenario: daily activity email
-    When the daily activity email is sent
-    Then "Eduardo" should receive the daily activity email in Spanish
-    And "John" should receive the daily activity email in English
-    And "Viv" should receive the daily activity email in English
+  Scenario: activity summary email
+    When the activity summary email is sent
+    Then "Eduardo" should receive the activity summary email in Spanish
+    And "John" should receive the activity summary email in English
+    And "Viv" should receive the activity summary email in English
 
   Scenario: mentioned email
     When "John" mentions "Eduardo" in a comment

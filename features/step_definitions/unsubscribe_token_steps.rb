@@ -14,7 +14,7 @@ When /^I visit email_preferences with unsubscribe_token in the params$/ do
 end
 
 Then /^I should be able to update my email preferences$/ do
-  uncheck 'email_preferences[subscribed_to_daily_activity_email]'
+  uncheck 'email_preferences_days_to_send_monday'
   click_on 'Update preferences'
   page.should have_content 'Your email settings have been updated.'
 end

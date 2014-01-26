@@ -214,8 +214,9 @@ describe User do
   it "sets subscriptions to false when deactivate! is called" do
     user.deactivate!
     user.subscribed_to_daily_activity_email.should be_false
-    user.subscribed_to_mention_notifications.should be_false
-    user.subscribed_to_proposal_closure_notifications.should be_false
+    user.email_preferences.subscribed_to_mention_notifications.should be_false
+    user.email_preferences.subscribed_to_proposal_closure_notifications.should be_false
+    user.email_preferences.days_to_send.should be_empty
   end
 
   it "unsets deleted_at (nil) when activate! is called" do

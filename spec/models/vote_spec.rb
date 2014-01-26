@@ -54,9 +54,6 @@ describe Vote do
     vote = Vote.new(position: 'abstain')
     vote.motion = motion
     vote.user = user
-    vote_time = "time"
-    motion.stub(:latest_vote_time).and_return(vote_time)
-    motion.should_receive(:last_vote_at=).with(vote_time)
     vote.save!
     motion.last_vote_at.should == vote.created_at
   end

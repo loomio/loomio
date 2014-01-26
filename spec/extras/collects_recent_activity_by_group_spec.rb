@@ -22,7 +22,9 @@ describe CollectsRecentActivityByGroup do
 
       context 'with an old discussion' do
         before do
-          @discussion = create_discussion group: group, created_at: 2.days.ago, last_comment_at: 2.days.ago
+          @discussion = create_discussion group: group, last_comment_at: 2.days.ago
+          @discussion.last_non_comment_activity_at = 2.days.ago
+          @discussion.save
         end
         it 'does not return the discussion' do
           recent_activity[group.full_name].should be_nil
@@ -31,7 +33,9 @@ describe CollectsRecentActivityByGroup do
 
       context 'with a recently commented, old discussion' do
         before do
-          @discussion = create_discussion group: group, created_at: 2.days.ago, last_comment_at: 2.days.ago
+          @discussion = create_discussion group: group, last_non_comment_activity_at: 2.days.ago, last_comment_at: 2.days.ago
+          @discussion.last_non_comment_activity_at = 2.days.ago
+          @discussion.save
 
           @comment = Comment.new(body: 'hi')
           @comment.author = @discussion.author
@@ -46,8 +50,9 @@ describe CollectsRecentActivityByGroup do
 
       context 'with an active proposal' do
         before do
-          @discussion = create_discussion group: group, created_at: 2.days.ago
-
+          @discussion = create_discussion group: group, last_non_comment_activity_at: 2.days.ago
+          @discussion.last_non_comment_activity_at = 2.days.ago
+          @discussion.save
           @motion = FactoryGirl.create :motion, discussion: @discussion
         end
 
@@ -58,8 +63,9 @@ describe CollectsRecentActivityByGroup do
 
       context 'with an inactive proposal' do
         before do
-          @discussion = create_discussion group: group, created_at: 2.days.ago, last_comment_at: 2.days.ago
-
+          @discussion = create_discussion group: group, last_non_comment_activity_at: 2.days.ago, last_comment_at: 2.days.ago
+          @discussion.last_non_comment_activity_at = 2.days.ago
+          @discussion.save
           @motion = FactoryGirl.create :motion, discussion: @discussion
           MotionService.close(@motion)
         end

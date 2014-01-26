@@ -19,18 +19,18 @@ describe Events::MotionClosingSoon do
   end
 
   context "after event has been published" do
-    let(:user) { mock_model(User) }
+    let(:email_preferences) { double(:email_preferences, :subscribed_to_proposal_closure_notifications? => true)}
+    let(:user) { mock_model(User, :email_preferences => email_preferences ) }
     let(:event) { Events::MotionClosingSoon.new(kind: "motion_closing_soon",
                                         eventable: motion,
                                         discussion_id: motion.discussion.id) }
     before do
       motion.stub(:group_users).and_return([user])
       UserMailer.stub_chain(:motion_closing_soon, :deliver)
-      user.stub(:subscribed_to_proposal_closure_notifications)
     end
 
     context "user is subscribed to proposal closure notifications" do
-      before { user.should_receive(:subscribed_to_proposal_closure_notifications).and_return(true) }
+      before { email_preferences.should_receive(:subscribed_to_proposal_closure_notifications?).and_return(true) }
 
       it 'emails user motion_closing_soon' do
         UserMailer.should_receive(:motion_closing_soon).with(user, motion)
@@ -38,7 +38,7 @@ describe Events::MotionClosingSoon do
       end
     end
     context "user is not subscribed to proposal closure notifications" do
-      before { user.should_receive(:subscribed_to_proposal_closure_notifications).and_return(false) }
+      before { email_preferences.should_receive(:subscribed_to_proposal_closure_notifications?).and_return(false) }
 
       it 'does not email user motion_closing_soon' do
         UserMailer.should_not_receive(:motion_closing_soon)
