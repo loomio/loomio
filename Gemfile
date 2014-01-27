@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.1.0'
+ruby '2.0.0'
 gem 'rails', '~> 3.2.14'
 gem 'haml-rails', '~> 0.4'
 gem 'devise', '~> 3.1.0'
