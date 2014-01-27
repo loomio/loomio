@@ -22,26 +22,23 @@ class InvitationsController < ApplicationController
 
 
   def show
+    clear_invitation_token_from_session
     @invitation = Invitation.find_by_token(params[:id])
 
     if @invitation.nil?
-      clear_invitation_token_from_session
       raise ActiveRecord::RecordNotFound
     end
 
     if @invitation.cancelled?
-      clear_invitation_token_from_session
       raise Invitation::InvitationCancelled
     end
 
     if @invitation.accepted?
-      clear_invitation_token_from_session
       raise Invitation::InvitationAlreadyUsed
     end
 
     if current_user
       AcceptInvitation.and_grant_access!(@invitation, current_user)
-      clear_invitation_token_from_session
       redirect_to_group
     else
       save_invitation_token_to_session
