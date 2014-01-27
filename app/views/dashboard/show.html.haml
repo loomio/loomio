@@ -19,14 +19,11 @@
 
       = paginate @discussions_without_open_motions, :window => 3
 
-
-
-
-
     %section.span3
       =render 'groups'
-      =render '/application/see_closed_motions'
-    =render '/application/closed_motions', user: current_user, group: nil
+      .sub-panel.previous-discussions-panel
+        %h4= t(:previous_decisions)
+        = link_to t(:see_previous_decisions), motions_path, class: 'bottom-panel-link'
 - else
   = link_to t(:start_a_group), new_group_path
   = t(:request_new_group_details)
