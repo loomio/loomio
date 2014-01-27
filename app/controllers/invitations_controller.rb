@@ -25,14 +25,17 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.find_by_token(params[:id])
 
     if @invitation.nil?
+      clear_invitation_token_from_session
       raise ActiveRecord::RecordNotFound
     end
 
     if @invitation.cancelled?
+      clear_invitation_token_from_session
       raise Invitation::InvitationCancelled
     end
 
     if @invitation.accepted?
+      clear_invitation_token_from_session
       raise Invitation::InvitationAlreadyUsed
     end
 
