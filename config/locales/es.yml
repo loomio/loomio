@@ -34,6 +34,8 @@ es:
     invalid_email: "Por favor entre al menos una dirección de correo electrónico valida"
     image_upload_fail: "Imposible subir foto. Asegúrate que el archivo sea inferior a 1 MB y sea un .jpeg, .png, o .gif"
     motion_closing_inputs: "Fecha de cierre inválida"
+    motion_outcome_not_created: "No es posible publicar decisión."
+    motion_outcome_not_updated: "No es posible actualizar discusion."
     only_group_coordinator_destroy: "No puede irte de este grupo porque eres el único coordinador. Puedes desactivar tu grupo por medio de las opciones\nabajo o <a href='%{add_coordinator}'>adherir a nuevo coordinador</a> al grupo."
     only_group_coordinator_remove_admin: "El grupo debe tener un coordinador. Te gustaría adherir a otro coordinador al grupo? "
     permission_to_invite: "No tienes permiso para invitar a nuevos miembros."
@@ -97,6 +99,8 @@ es:
     group_archived: "Grupo archivado exitosamente."
     group_created: "Grupo creado exitosamente."
     members_added: "Miembros adheridos al grupo."
+    motion_outcome_created: "Felicitaciones, has creado la decisión a una propuesta y los miembros del grupo serán notificados."
+    motion_outcome_updated: "La decisión ha sido modificada."
     position_submitted: "Posición enviada"
     position_updated: "Posición actualizada."
     proposal_created: "Propuesta creada exitosamente."
@@ -157,9 +161,11 @@ es:
     comment_liked: "le gusta tu comentario en la discusión"
     user_mentioned: "te mencionó en un comentario sobre"
     membership_requested: "pidió membresía en"
+    membership_request_approved: 'Acepta la petición para participar'
     user_added_to_group: "te agregó al grupo"
     motion_closing_soon: "La propuesta está por cerrar"
     motion_blocked: "bloqueó la propuesta"
+    motion_outcome_created: "Publico una decisión para la propuesta."
   edit_discussion_context: "Editar la discusión información"
   request_new_group: "Empieza un grupo"
   request_new_group_details: "o espera hasta que seas invitado a uno."
@@ -233,6 +239,8 @@ es:
   new_subgroup: "Nuevo sub-grupo"
   create_subgroup: "Crear sub-grupo"
   creating_subgroup: "Creando sub-grupo"
+  hidden: "Escondido"
+  public: "Publico"
   new_group: "Nuevo grupo"
   create_group: "Crear grupo"
   creating_group: "Creando grupo"
@@ -283,7 +291,8 @@ es:
   delete_comment: "Borrar comentario"
   confirm_delete_comment: "Estas seguro que quieres borrar este comentario?"
   markdown_settings_more_info: "Mas información..."
-  edit_discussion_title: "Editar titulo de discusión"
+  edit_discussion: "Editar discusión "
+  move_discussion: "Mover discusión"
   delete_discussion: "Eliminar discusión"
   confirm_delete_discussion: "Estas seguro que quieres eliminar permanentemente esta discusión?"
   new_proposal: "Nueva propuesta"
@@ -413,9 +422,8 @@ es:
   create_an_account: 'Crear una cuenta'
   join_group:
     log_in: "Entrar para unirte a %{group_name}"
-  start_group:
-    log_in: "Entrar para configurar tu grupo"
   invitation:
+    by_email: "Invitar via correo electrónico "
     no_invitations_left: "Ya no tienes mas invitaciones"
     no_invitations_left_get_more: "Por favor envia nos un correo a contact@loomio.org y veremos como podemos ayudar"
     invitation_not_found: 'No se pudo encontrar invitación. Por favor pida una nueva invitación.'
@@ -430,7 +438,6 @@ es:
 
     message_body: "Mensaje de invitación"
     invites_more_help2: "<p>Puedes invitar personas a tu grupo en cualquier momento.</p><p>Podrías invitar a todos los miembros del grupo, o puedes empezar invitando a los  que trabajan contigo diariamente.</p>"
-    send_invitations: "Enviar invitaciones"
     invitation_link: "Enlace a la invitación"
     link_help: "Haz click en este link para unirte al %{group} en loomio:"
     copy: "Si alguien no ha recibido la invitación electrónica, no dudes en copiar el enlace arriba y enviarlo personalmente."
@@ -448,9 +455,10 @@ es:
       \ haz clic en uno de los iconos de abajo (pulsa el cursor sobre los botones de decisiones para una descripción de lo que cada uno de ellos significa). ⏎\nSe te pedirá que realices una breve declaración sobre la razón de tu decisión. Esto hace que sea fácil de ver en forma de resumen de lo que todos piensan y por\
       \ qué. Puedes cambiar de opinión y editar tu decisión libremente hasta que la propuesta se cierra. ⏎ \n"
   discussion_form:
-    header: "Empezar una discusión"
-    who: "Con que grupo te gustaría establecer una discusión?"
-    context: "Contexto"
+    new:
+      header: "Empezar una discusión"
+    edit:
+      header: "Editar discusión "
   motion_form:
     header: "Nueva propuesta"
     name_helper: " Haz el título lo más claro y conciso posible para que la gente sepa exactamente lo que quieres decir cuando estén de acuerdo o en desacuerdo con la propuesta."
@@ -467,14 +475,14 @@ es:
     update: "Update position"
   email_preferences_form:
     header: "Preferencias de correo electrónico "
-    daily_activity_summary: "Sumario de actividades diarias"
+    daily_activity_summary: "Resumen de actividades diarias"
     daily_activity_subscription: "Enviarme actividad diaria resumiendo lo que ha estado pasando en mis grupos"
     global_notifications: "Notificaciones globales"
     proposal_closing_soon_subscription: "Recordarme 24 horas antes del cierre de una propuesta"
     mentions_subscription: "Enviarme correo electrónico cuando alguien me menciona en un comentario"
     group_activity_notifications: "Notificaciones de la actividad del grupo"
     group_activity_details: "Por cada grupo, marca la casilla si deseas recibir un correo electrónico inmediatamente se abra una nueva discusión o decisión."
-    update_preferences: "Preferencias de actualización"
+    update_preferences: "Actualizar preferencias"
   new_user_form:
     create_an_account: "Crear una cuenta"
   user_settings_form:
@@ -497,8 +505,22 @@ es:
       discussion:
         title: "Titulo"
         description: "Contexto"
+        privacy_public_header: "Publico"
+        privacy_private_header: "Privado"
+        privacy_private_description: "Solo miembros de %{group} pueden ver esta discusión"
+        privacy_hidden_description: "Todas las discusiones en un grupo escondido son privadas. "
+        of: "de"
+        of_no_group: "de este grupo"
       group:
+        name: "Nombre del Grupo"
+        description: "Descripción "
         members_invitable_by: "Quien puede invitar miembros a este grupo?"
+        members_invitable_by_coordinators: "Solo para coordinadores"
+        members_invitable_by_members: "Todos los miembros del grupo"
+        privacy: Privacidad
+        privacy_public_header: Publico
+        privacy_private_header: 'Mayoritariamente privado '
+        group_members_invitable_by: "Solo coordinadores"
       membership_request:
         introduction: "Preséntate a ti mismo"
       motion:
@@ -513,13 +535,14 @@ es:
         language_preference: "Lenguaje"
     placeholders:
       discussion:
-        title: "Cual es el tema que te gustaría discutir?"
-        description: " Esta información aparecerá en la parte superior de la página de discusión. Presenta el tema y da un contexto suficiente para que tu grupo tenga una discusión bien informada."
+        title: "Título "
       membership_request:
         introduction: "Escribe algunas palabras acerca de quien eres y porque quieres adherirte a %{group_name}."
       motion:
         name: "Cual es tu propuesta de plan de acción?"
         description: "Da información suficiente para que cualquier persona en tu grupo pueda tomar una decisión bien informada."
+      group:
+        name: "Nombre del Grupo"
       user:
         email: "Correo electrónico"
         password: "Contraseña"
@@ -527,30 +550,30 @@ es:
     submit:
       discussion:
         create: "Empezar discusión"
+        update: "Actualizar discusión"
       motion:
         create: "Empezar propuesta"
       user:
         create: "Crear cuenta"
         update: "Actualizar preferencias"
   email:
-    added_to_a_group:
-      subject: "Has sido adherido al grupo."
-      content: "Felicitaciones, has sido adherido al grupo '%{which}' en Loomio!"
     unsubscribe: "Dale de baja o cambia las preferencias de tu correo electrónico:   "
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para darle de baja o cambiar las preferencias de correo electrónico."
     view_comment: "Haz click aquí para ver el comentario en Loomio"
     view_discussion: "Haz click aquí para ver esta discusión "
     view_group: "Haz click aquí para ver el grupo en Loomio"
+    view_proposal: "Ver esta propuesta en Loomio"
     create_discussion:
       intro: "%{who} empezó una discusión en %{which_group}:"
       subject: "Nueva discusión - %{which}"
     create_proposal:
       intro: "Una nueva propuesta fue creada en un grupo de Loomio al que tu perteneces."
       closes_in: "Cierra en"
+      subject: "Nueva propuesta: %{which}"
     daily_activity:
       heading: "Tu actividad en Loomio"
       intro: "Esto es lo que ha pasado en las ultimas 24 horas en tus grupos de Loomio"
-      subject: "Loomio - Sumario de las ultimas 24 horas"
+      subject: "Loomio - Resumen de las ultimas 24 horas"
     group_email:
       intro: "%{who} hizo un anuncio en %{group}:"
     group_membership_approved:
@@ -574,8 +597,12 @@ es:
       intro: "Una propuesta que estas facilitando ha sido bloqueada."
       subject: "Propuesta bloqueada - %{which}"
     proposal_closing_soon:
+      closes_on: "Cierra en"
+      closes_at: "Cierra a las"
       closes_in: "Cierra en"
-      summary: "Sumario"
+      closing_in_24_hours: "Cierra en 24 Horas"
+      headline: "%{author}'s propuesta en %{group} cerrará pronto:"
+      summary: "Resumen"
     to_join_group:
       subject: "%{member} te ha invitado a unirte a %{group_name} en Loomio"
     to_start_group:

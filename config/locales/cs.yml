@@ -1,0 +1,385 @@
+cs:
+  errors:
+    messages:
+      email: "Není platnou e-mailovou adresou"
+  devise:
+    invitations:
+      updated: 'Účet vytvořen.'
+      no_invitations_remaining: "Nezbývají žádné pozvánky"
+  error:
+    cant_join_subgroup: "Nemůžete se přidat k podskupině, pokud nejste členem rodičovské skupiny."
+    cant_modify_position: "Tento návrh byl uzavřen."
+    cant_state_position: "Tento návrh byl uzavřen."
+    cant_view_member_profile: "Nemůžete zobrazit profil člena, protože nejste ve stejné skupině."
+    discussion_not_created: "Diskuzi se nepodařilo vytvořit."
+    group_not_archived: "Skupinu se nepodařilo archivovat."
+    invalid_close_date: "Neplatné datum uzavření. Prosím zkontrolujte, zda toto datum už neuplynulo."
+    invalid_email: "Prosím vyplňte alespoň jednu platnou emailovou adresu."
+    image_upload_fail: "Nepodařilo se nahrát obrázek. Ujistěte se, že obrázek je pod 1 MB a má formát .jpeg, .png, či .gif."
+    permission_to_invite: "Nemáte povoleno pozvat nové členy."
+    position_not_updated: "Nepodařilo se aktualizovat postoj."
+    settings_not_updated: "Vaše nastavení nebyla aktualizována."
+    group_request_contribution: "Prosím vyberte kategorii. Nevážete se k placení, jen nám předáváte užitečnou informaci, abychom mohli navrhnout náš model. Díky!"
+    group_already_setup: "Skupina, kterou se snažíte vytvořit, už existuje."
+    proposal_already_exists: "V této diskuzi už je otevřený návrh."
+  alert:
+    duplicate_email: "%{which_email} už je ve skupině."
+  notice:
+    member_removed: "Člen odstraněn."
+    membership_request_canceled: "Žádost o členství zrušena."
+    membership_request_ignored: "Žádost o členství ignorována."
+    settings_updated: "Vaše nastavení byla aktualizována."
+    you_have_left_group: "Opustil(a) jste %{which_group}."
+    invitations:
+      auto_added:
+        one: "%{count} člen přidán"
+        few: "%{count} členové přidáni"
+        other: "%{count} členů přidáno"
+  warning:
+    membership_request_already_ignored: "Žádost o členství už byla ignorována."
+    membership_request_already_canceled: "Žádost o členství už byla zrušena."
+    position_not_submitted: "Váš postoj se nepodařilo odeslat"
+    proposal_not_created: "Návrh se nepodařilo vytvořit"
+    user_already_member: "%{which_user} už je členem této skupiny."
+  success:
+    added_to_group: "Byl(a) jste přidán(a) do skupiny %{which_group}."
+    close_date_changed: "Datum uzavření úspěšně změněno."
+    discussion_created: "Diskuze úspěšně vytvořena."
+    discussion_deleted: "Diskuze úspěšně odstraněna."
+    emails_sending: "E-maily se odesílají."
+    group_archived: "Skupina úspěšně archivována."
+    group_created: "Skupina úspěšně vytvořena."
+    members_added: "Členové přidány do skupiny."
+    position_submitted: "Postoj odeslán"
+    position_updated: "Postoj aktualizován."
+    proposal_created: "Návrh úspěšně vytvořen."
+    proposal_deleted: "Návrh odstraněn."
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one: "vteřina"
+        few: "%{count} vteřiny"
+        other: "%{count} vteřin"
+      x_seconds:
+        one: "1 vteřina"
+        few: "%{count} vteřiny"
+        other: "%{count} vteřin"
+      less_than_x_minutes:
+        one: "1 minuta"
+        few: "%{count} minuty"
+        other: "%{count} minut"
+      x_minutes:
+        one: "1 minuta"
+        few: "%{count} minuty"
+        other: "%{count} minut"
+      about_x_hours:
+        one: "1 hodina"
+        few: "%{count} hodiny"
+        other: "%{count} hodin"
+      x_days:
+        one: "1 den"
+        few: "%{count} dny"
+        other: "%{count} dnů"
+      about_x_months:
+        one: "1 měsíc"
+        few: "%{count} měsíce"
+        other: "%{count} měsíců"
+      x_months:
+        one: "1 měsíc"
+        few: "%{count} měsíce"
+        other: "%{count} měsíců"
+      about_x_years:
+        one: "1 rok"
+        few: "%{count} roky"
+        other: "%{count} let"
+      over_x_years:
+        one: "1 rok"
+        few: "%{count} roky"
+        other: "%{count} let"
+      almost_x_years:
+        one: "1 rok"
+        few: "%{count} roky"
+        other: "%{count} let"
+  footer:
+    about: 'O nás'
+    blog: 'Blog'
+    contact: 'Kontakt'
+    privacy: 'Soukromí'
+    terms: 'Podmínky'
+  inbox:
+    dropdown-btn: 'Příchozí'
+  notifications:
+    header: "Upozornění"
+    new_discussion: "zahájil(a) novou diskuzi"
+    new_motion: "vytvořil(a) nový návrh"
+    motion_closed:
+      by_user: "uzavřel(a) návrh"
+      by_expiry: "Návrh byl uzavřen"
+    new_vote: "%{position} k návrhu"
+    new_comment: "okomentoval(a) diskuzi"
+    comment_liked: "se líbí váš komentář v diskuzi"
+    user_mentioned: "vás zmínil(a) v komentáři pod"
+    membership_requested: "požádal(a) o členství v"
+    user_added_to_group: "vás přidal(a) do skupiny"
+    motion_closing_soon: "Návrh se brzy uzavírá"
+    motion_blocked: "blokoval(a) návrh"
+  edit_discussion_context: "Upravit kontext diskuze"
+  request_new_group: "Vytvořit skupinu"
+  request_new_group_details: "nebo počkejte, dokud nebudete do jedné pozván(a)."
+  empty_notifications: "Nemáte zatím žádná upozornění."
+  see_all_notifications: "Zobrazit všechna upozornění"
+  sign_out: "Odhlásit se"
+  sign_in: "Přihlásit se"
+  tagline: "Vytváříme svět, kde je jednoduché pro kohokoliv se podílet na rozhodnutích, které je ovlivňují."
+  click_to_dismiss: "Klikněte sem pro uzavření této zprávy"
+  generic_confirm: "Opravdu?"
+  discussion_helper_text:
+    header: "Vítejte na své první diskuzi"
+  group_helper_text:
+    header: "Vítejte na své nové skupině!"
+  dashboard_helper_text:
+    header: "Vítejte na své domovské stránce"
+  setup_step_2: "Zahajte svou první diskuzi"
+  setup_step_3: "Pozvěte lidi do vaší skupiny"
+  invite_people: "Pozvat další"
+  no_invitations_button: "Nezbývají žádné pozvánky"
+  edit_memberships: 'Upravit členství'
+  add_new_member: "Přidat nového člena"
+  invite_members_to_group: "Pozvat členy do %{which_group}"
+  remaining_invites: "zbývajících pozvánek"
+  email_members_in_group: "E-mailujte členy %{which_group}"
+  subject_error: "Prosím, vyplňte předmět"
+  subject_placeholder: "Napište předmět"
+  message_error: "Prosím, vyplňte zprávu"
+  message_placeholder: "Napište zprávu členům %{which_group}."
+  email_group_members: "E-mailujte členy skupiny"
+  edit_group_settings: "Upravit nastavení skupiny"
+  leave_group: "Opustit skupinu"
+  confirm_leave_group: "Opravdu chcete opustit %{which_group}?"
+  deactivate_group: "Deaktivovat skupinu"
+  invited_users: "Pozvaní členové"
+  members: "Členové"
+  confirm_remove_user: "Opravdu chcete odstranit %{which_user} ze skupiny?"
+  membership_requests: "Žádosti o členství"
+  confirm_approve_membership_request: "Opravdu chcete přidat %{which_user} do skupiny?"
+  cancel_membership_request: "Zrušit žádost"
+  ignore_request: "Ignorovat žádost"
+  ignore: "Ignorovat"
+  confirm_ignore_membership_request: "Opravdu chcete ignorovat žádost o členství od %{which_user}?"
+  membership_requested: "Žádost o členství odeslána"
+  request_membership: "Požádat o členství"
+  confirm_remove_membership_request: "Opravdu chcete odebrat vaší žádost o členství pro tuto skupinu?"
+  subgroups: "Podskupiny"
+  create_a_subgroup: "Vytvořit podskupinu"
+  select_members_to_add: "Vyberte členy, které chcete přidat do skupiny %{which_group}"
+  empty_parent_group: "Prosím nejprve přidejte členy do rodičovské skupiny."
+  invite_members: "Pozvat členy"
+  new_subgroup: "Nová podskupina"
+  create_subgroup: "Vytvořit podskupinu"
+  creating_subgroup: "Podskupina se vytváří"
+  new_group: "Nová skupina"
+  create_group: "Vytvořit skupinu"
+  creating_group: "Skupina se vytváří"
+  edit_group: "Upravit skupinu"
+  update_group: "Aktualizovat skupinu"
+  updating_group: "Skupina se aktualizuje"
+  start_a_discussion: "Zahájit diskuzi"
+  group_description: "Popis skupiny"
+  edit_group_description: "Upravit popis skupiny"
+  discussion_items:
+    new_discussion: "vytvořil(a) diskuzi"
+    new_motion: "vytvořil(a) návrh"
+    motion_closed:
+      by_user: "uzavřel(a) návrh"
+      by_expiry: "Návrh uzavřen"
+    discussion_title_edited: "změnil(a) název diskuze"
+  discussion: "Diskuze"
+  current_decision: "Aktuální rozhodnutí"
+  previous_decisions: "Minulá rozhodnutí"
+  see_previous_decisions: "Zobrazit minulá rozhodnutí"
+  create_new_proposal: "Vytvořit nový návrh"
+  empty_decision_index: "Tato skupina zatím neučinila žádná rozhodnutí."
+  empty_discussion_list: "V této diskuzi zatím není žádná aktivita."
+  empty_discussion_index: "V žádných vašich skupinách nejsou diskuze."
+  empty_discussion_index_group: "Tato skupina zatím nemá žádné diskuze."
+  discussion_context:
+    started_html: "Zahájena <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
+    see_revision_history: "Zobrazit historii revizí"
+  description_history:
+    header: "Historie revizí"
+    subheader: "Verze"
+    previous: "Předch."
+    next: "Násl."
+  comment_form_placeholder: "Řekněte něco..."
+  comment_form_submit_button: "Odeslat komentář"
+  liked_by: "Líbí se %{who}"
+  delete_comment: "Odstranit komentář"
+  confirm_delete_comment: "Opravdu chcete odstranit tento komentář?"
+  markdown_settings_more_info: "Více info..."
+  move_discussion: "Přesunout diskuzi"
+  delete_discussion: "Odstranit diskuzi"
+  confirm_delete_discussion: "Opravdu chcete navždy odstranit tuto diskuzi?"
+  new_proposal: "Nový návrh"
+  close_proposal: "Uzavřít návrh"
+  confirm_close_proposal: "Opravdu chcete uzavřít tento návrh?"
+  change_proposal_close_date: "Změnit datum uzavření"
+  change_proposal_close_date_header: "Změňte datum uzavření návrhu '%{which}'"
+  proposal: Návrh
+  proposal_close_date_error: "Prosím vyberte budoucí datum uzavření"
+  proposal_closing_when: "Uzavírá se za %{when}"
+  proposal_closed_when: "Uzavřeno před %{when}"
+  state_your_position: "Konstatujte svůj postoj"
+  positions: "Postoje"
+  yes_position: "Souhlasím"
+  yes_details: "Souhlasím s tím a chci, aby to prošlo."
+  abstain_position: "Zdržuji se"
+  abstain_details: "Budu rád, když se skupina rozhodne beze mne."
+  no_position: "Nesouhlasím"
+  no_details: "Myslím, že by to šlo lépe."
+  block_details: "Mám silné námitky proti tomuto návrhu a nechci, aby prošel."
+  not_voted: "[Zobrazit členy, co se zatím nerozhodli]"
+  help:
+    help: "Nápověda"
+    how_it_works: "Jak to funguje"
+    join_the_community: "Staňte se součástí komunity"
+    images_and_text_formatting: "Obrázky a formátování textu"
+    make_a_decision: "Rozhodněte se"
+    start_discussion: "Zahájení poutavé diskuze"
+    video_tutorial_description: "Shlédněte video pro rychlou ukázku toho, jak používat Loomio."
+  hint:
+    discussion: 'Rady k zahájení poutavé diskuze'
+    vote: 'Můžete kdykoliv svůj postoj změnit'
+  contribution:
+    submit: Přispějte
+  new_password: "Nové heslo"
+  confirm_new_password: "Potvrdit nové heslo"
+  change_your_password: "Změňte si heslo"
+  change_my_password: "Změnit mé heslo"
+  send_password_reset: "Pošlete mi návod k obnovení hesla"
+  password_confirmation: "Potvrzení hesla"
+  current_password: "Současné heslo"
+  cancel_my_account: "Zrušit můj účet"
+  remember_me: "Pamatovat si mě"
+  signing_in: "Přihlašuji vás"
+  forgot_your_password: "Zapomněli jste své heslo?"
+  create_an_account: 'Vytvořit účet'
+  invitation:
+    no_invitations_left: "Omlouváme se, nezbývají vám žádné pozvánky"
+    invite_people: "Pozvěte lidi do své skupiny"
+    message_body: "Obsah pozvánky"
+    invitation_link: "Odkaz na pozvánku"
+    link_help: "Kilkněte sem, abyste se přidali k %{group} na Loomiu:"
+  search:
+    placeholder: "Vyhledávat"
+  motion_form:
+    header: "Nový návrh"
+  group_form:
+    invitation_settings: "Nastavení pozvánek"
+  vote_form:
+    header: "Konstatujte svůj postoj"
+    edit: "Upravte svůj postoj"
+    placeholder: "Poskytněte důvod k vašemu rozhodnutí (nepovinné)"
+    your_position: "Váš postoj"
+    submit: "Odeslat postoj"
+    update: "Aktualizovat postoj"
+  email_preferences_form:
+    daily_activity_summary: "Denní shrnutí aktivity"
+    global_notifications: "Globální upozornění"
+    update_preferences: "Aktualizovat nastavení"
+  new_user_form:
+    create_an_account: "Vytvořit účet"
+  user_settings_form:
+    picture: "Obrázek"
+    use_avatar_kind: "Použít %{kind}"
+    upload_new_image: "Nahrát nový obrázek"
+  simple_form:
+    'yes': 'Ano'
+    'no': 'Ne'
+    labels:
+      discussion:
+        title: "Název"
+        description: "Kontext"
+      group:
+        members_invitable_by: "Kdo může pozvat lidi do této skupiny?"
+        privacy: Soukromí
+        submit: Odeslat
+      motion:
+        name: "Název"
+        description: "Podrobnosti"
+      user:
+        name: "Jméno a příjmení"
+        email: "E-mail"
+        password: "Heslo"
+        password_confirmation: "Potvrdit heslo"
+        language_preference: "Jazyk"
+    placeholders:
+      group:
+        name: "Název skupiny"
+      user:
+        email: "E-mail"
+        password: "Heslo"
+  helpers:
+    submit:
+      discussion:
+        create: "Zahájit diskuzi"
+      motion:
+        create: "Vytvořit návrh"
+      user:
+        create: "Vytvořit účet"
+        update: "Aktualizovat nastavení"
+  email:
+    create_discussion:
+      intro: "%{who} zahájil(a) novou diskuzi v %{which_group}:"
+      subject: "Nová diskuze - %{which}"
+    daily_activity:
+      heading: "Vaše aktivita na Loomiu"
+      subject: "Loomio -- Souhrn posledních 24 hodin"
+    group_membership_approved:
+      subject: "Členství schváleno"
+    proposal_outcome:
+      subject: "Výsledej návrhu"
+  ago: "před %{quantity_of_time}"
+  author: "Autor"
+  back: "Zpět"
+  cancel: "Zrušit"
+  change: "Změnit"
+  changing: "Mění se"
+  click_here: "Klikněte sem"
+  close: "Uzavřít"
+  closing: "Uzavírá se"
+  closed: "Uzavřeno"
+  decisions: "Rozhodnutí"
+  delete: "Odstranit"
+  details: "Podrobnosti"
+  discussions: "Diskuze"
+  edit: "Upravit"
+  email_address: "E-mailová adresa"
+  enable: "Povolit"
+  participation: "Účast"
+  disable: "Zakázat"
+  group: "Skupina"
+  groups: "Skupiny"
+  home: "Domov"
+  like: "To se mi líbí"
+  loading: "Načítá se..."
+  message: "Zpráva"
+  new_activity: "Nová aktivita"
+  next: "Násl."
+  outcome: "Výsledek"
+  password: "Heslo"
+  prev: "Předch."
+  options: "Nastavení"
+  ok_got_it: "OK, chápu!"
+  save: "Uložit"
+  saving: "Ukládá se"
+  sending: "Odesílá se"
+  send_invite: "Odeslat pozvánku"
+  send_email: "Odeslat e-mail"
+  show_more: "Zobrazit více"
+  start_a_group: "Vytvořit skupinu"
+  starting: "Zahajuje se"
+  subject: "Téma"
+  unlike: "To se mi nelíbí"
+  update: "Aktualizovat"
+  common:
+    email: "E-mail"
