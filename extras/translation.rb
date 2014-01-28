@@ -1,17 +1,19 @@
 class Translation
   LANGUAGES = {"English" => "en",
-               "Español" => "es",
+               "български" => "bg",
                "Català" => "ca",
                "Deutsch" => "de",
-               "Français" => "fr",
-               "български" => "bg",
+               "Español" => "es",
                "ελληνικά" => "el",
+               "Français" => "fr",
+               "Indonesian" => "id",
                "magyar" => "hu",
+               "Nederlands" => "nl",
+               "Português" => "pt",
                "română" => "ro",
-               "Tiếng Việt" => "vi",
-               "Nederlands" => "nl"}
+               "Tiếng Việt" => "vi"}
   EXPERIMENTAL_LANGUAGES = {"Italiano" => "it",
-                            "Português" => "pt"}
+                            "čeština" => "cz"}
 
   def self.language(locale)
     LANGUAGES.key(locale)
