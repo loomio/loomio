@@ -235,7 +235,6 @@ hu:
   delete_comment: "Hozzászólás törlése"
   confirm_delete_comment: "Biztosan törölni akarod ezt a hozzászólást?"
   markdown_settings_more_info: "További információ..."
-  edit_discussion_title: "A téma címének szerkesztése"
   delete_discussion: "A téma törlése"
   confirm_delete_discussion: "Biztosan törölni akarod ezt a témát?"
   new_proposal: "Új javaslat"
@@ -373,7 +372,6 @@ hu:
 
     message_body: "Meghívó üzenet"
     invites_more_help2: "<p>Bármikor meghívhatsz résztvevőket a csoportba</p><p>Meghívhatsz most mindenkit egyszerre, vagy kezdheted azokkal, akikkel a legszorosabban dolgozol együtt.</p>"
-    send_invitations: "Meghívók küldése"
     invitation_link: "Meghívó link"
     link_help: "Kattints erre a linkre, hogy csatlakozz a(z) %{group} csoporthoz a Loomión:"
     copy: "Ha valaki nem kapta meg a meghívóját, nyugodtan küld el neki a meghívó linket magad."
@@ -399,10 +397,6 @@ hu:
 
       lehetőséged van arra is, hogy megindokold a választásodat, így könnyen átlátható, hogy ki mit és miért gondol a javaslatról. A javaslat lezárulta előtt még lehetőséged van változtatni az álláspontodon.
 
-  discussion_form:
-    header: "Téma indítása"
-    who: "Melyik csoportban akarod indítani ezt a témát?"
-    context: "Leírás"
   motion_form:
     header: "Új javaslat"
     name_helper: "A cím legyen egyértelmű és tömör"
@@ -454,9 +448,6 @@ hu:
         password_confirmation: "Jelszó megerősítése"
         language_preference: "Nyelv"
     placeholders:
-      discussion:
-        title: "Mit szeretnél megtárgyalni?"
-        description: "Ez jelenik majd meg a téma oldalán. Írd le a témát, adj annyi információt, hogy vita, beszélgetés alakulhasson ki."
       membership_request:
         introduction: "Írj egy pár szót magadról és arról, miért akarsz a %{group_name} csoporthoz csatlakozni."
       motion:

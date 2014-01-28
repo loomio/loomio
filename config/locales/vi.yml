@@ -55,10 +55,13 @@ vi:
     you_have_left_group: "Bạn chỉ còn lại %{which_group}."
     invitations:
       auto_added:
+        one: "1 thành viên đã được thêm vào"
         other: "%{count} thành viên đã được thêm vào"
       existing_member:
+        one: "1 thành viên hiện có trong nhóm"
         other: "%{count} thành viên hiện có trong nhóm"
       sent:
+        one: "1 lời mời kết nối đã được gửi"
         other: "%{count} lời mời kết nối đã được gửi"
       auto_added_and_sent: "%{auto_added_text} và %{sent_text}"
   warning:
@@ -87,26 +90,37 @@ vi:
   datetime:
     distance_in_words:
       less_than_x_seconds:
+        one: "1 giây"
         other: "%{count} giây"
       x_seconds:
+        one: "1 giây"
         other: "%{count} giây"
       less_than_x_minutes:
+        one: "1 giây"
         other: "%{count} phút"
       x_minutes:
+        one: "1 phút"
         other: "%{count} phút"
       about_x_hours:
+        one: "1 giờ"
         other: "%{count} giờ"
       x_days:
+        one: "1 ngày"
         other: "%{count} ngày"
       about_x_months:
+        one: "1 tháng"
         other: "%{count} tháng"
       x_months:
+        one: "1 tháng"
         other: "%{count} tháng"
       about_x_years:
+        one: "1 năm"
         other: "%{count} năm"
       over_x_years:
+        one: "1 năm"
         other: "%{count} năm"
       almost_x_years:
+        one: "1 năm"
         other: "%{count} năm"
   footer:
     about: 'Dịch bởi Vietnamesel10n'
@@ -258,7 +272,6 @@ vi:
   delete_comment: "Xóa bình luận"
   confirm_delete_comment: "Bạn có chắc muốn xóa bình luận này?"
   markdown_settings_more_info: "Thêm thông tin..."
-  edit_discussion_title: "Chỉnh sửa tiêu đề phần thảo luận"
   delete_discussion: "Xóa phần thảo luận"
   confirm_delete_discussion: "Bạn có chắc muốn xóa hoàn toàn phần thảo luận này?"
   new_proposal: "Tạo lời đề nghị mới"
@@ -402,7 +415,6 @@ vi:
       Chào bồ, hãy tham gia chung cùng chúng tôi trong việc đưa ra quyết định nhé! Chúng tôi hiện đang sử dụng một nền tảng tên là Loomio có khả năng tạo ra một môi trường tích hợp giúp các thành viên của một nhóm có thể hợp tác chung với nhau để cùng thảo luận về một chủ đề nào đó.
     message_body: "Nội dung thư mời"
     invites_more_help2: "<p>Bạn có thể gửi lời mời đến những người mà bạn muốn họ tham gia vào nhóm của mình bất cứ lúc nào.</p><p>Bạn có thể bắt đầu việc đó ngay bây giờ, hoặc bạn chỉ cần gửi lời mời tham gia đến những người thân trong nhóm của mình.</p>"
-    send_invitations: "Gửi lời mời"
     invitation_link: "Đường dẫn liên kết đến lời mời"
     link_help: "Click vào liên kết này để tham gia vào %{group} trên Loomio:"
     copy: "Nếu một ai đó không nhận được email xác nhận lời mời, xin vui lòng sao chép đường dẫn liên kết phía trên và gửi cho chính bạn."
@@ -424,10 +436,6 @@ vi:
       Đây có phải là một ý kiến tốt hay không? Rôbốt Trợ Giúp Loomio muốn biết bạn nghĩ gì về điều này!
       Nếu bạn đã biết rõ kiến nghị của mình, hãy click vào một trong số các biểu tượng bên dưới (rê chuột qua nút quyết định để có được mô tả về mỗi đối tượng mà bạn muốn biết ý nghĩa của chúng).
       Bạn sẽ được thông báo một phát biểu ngắn gọn về nguyên nhân đối với việc đưa ra quyết định của mình. Phần này hoàn toàn dễ dàng nhằm tóm lược thông tin về điều mọi người đang suy nghĩ cũng như lý do tại sao. Bạn có thể thay đổi suy nghĩ của mình và thậm chí là chỉnh sửa việc đưa ra quyết định theo cách tự do nhất có thể miễn là trước khi thời hạn dành cho lời đề nghị chưa bị đóng lại.
-  discussion_form:
-    header: "Bắt đầu một cuộc thảo luận"
-    who: "Bạn muốn bắt đầu phần thảo luận trong nhóm nào?"
-    context: "Nội dung"
   motion_form:
     header: "Tạo lời đề nghị mới"
     name_helper: "Hãy soạn thảo phần tiêu đề theo hướng rõ ràng và ngắn gọn."
@@ -487,9 +495,6 @@ vi:
         password_confirmation: "Xác nhận mật khẩu"
         language_preference: "Ngôn ngữ"
     placeholders:
-      discussion:
-        title: "Bạn muốn thảo luận về chủ đề gì?"
-        description: "Phần thông tin này sẽ được hiển thị phía trên cùng trong trang thảo luận. Hãy giới thiệu về chủ đề và đưa ra nội dung cần thiết cho nhóm của bạn để phần thảo luận được tốt hơn."
       membership_request:
         introduction: "Viết một vài dòng về thông tin cá nhân của bạn cũng như lý do tại sao bạn muốn tham gia %{group_name}."
       motion:
