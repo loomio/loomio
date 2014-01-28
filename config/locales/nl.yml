@@ -106,6 +106,7 @@ nl:
     group_created: "Groep is aangemaakt."
     members_added: "Leden zijn aan de groep toegevoegd."
     membership_requested: "Je hebt gevraagd om lid te worden van %{which_group}. Je wordt op de hoogte gesteld als je aanvraag is goedgekeurd."
+    motion_closed: "Voorstel gesloten. Als je wil, kan je hieronder een conclusie schrijven en deze naar je groep versturen."
     motion_outcome_created: "Gefeliciteerd, je bent tot een resultaat-voorstel gekomen en je groepsleden zijn op de hoogte gesteld."
     motion_outcome_updated: "Je resultaat-voorstel is bijgewerkt."
     position_submitted: "Standpunt verwerkt"
@@ -252,7 +253,7 @@ nl:
   new_subgroup: "Nieuwe subgroep"
   create_subgroup: "Maak subgroep"
   creating_subgroup: "Subgroep wordt gemaakt"
-  secret: "Geheim"
+  hidden: "Verborgen"
   public: "Openbaar"
   new_group: "Nieuwe groep"
   create_group: "Maak groep"
@@ -292,6 +293,7 @@ nl:
   empty_discussion_list: "Er is nog geen activiteit in deze discussie."
   empty_discussion_index: "In geen van je groepen is een discussie gaande."
   empty_discussion_index_group: "Deze groep heeft nog geen discussies."
+  private_group_discussion_display: "Deze groep is privé. De discussies zijn alleen zichtbaar voor leden. Als je mee wilt praten, kan je hierom vragen."
   discussion_context:
     started_html: "%{when} geleden begonnen door <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Laatst bewerkt %{when} geleden door <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -311,7 +313,6 @@ nl:
   delete_comment: "Verwijder reactie"
   confirm_delete_comment: "Weet je zeker dat je deze reactie wilt verwijderen?"
   markdown_settings_more_info: "Meer info..."
-  edit_discussion_title: "Bewerk discussie titel"
   move_discussion: "Verplaats discussie"
   delete_discussion: "Verwijder discussie"
   confirm_delete_discussion: "Weet je zeker dat je deze discussie permanent wilt verwijderen?"
@@ -491,10 +492,6 @@ nl:
   join_group:
     log_in: "Log in om je bij %{group_name} aan te sluiten"
     create_account_to_join_group: "Maak een account om lid te worden van %{group_name}"
-  start_group:
-    log_in: "Log in om je groep in te stellen"
-    create_account_to_start_group: "Maak een account om je groep %{group_name} te beginnen"
-    create_account: "Maak een account"
   invitation:
     no_invitations_left: "Sorry, je hebt geen uitnodigingen meer over"
     no_invitations_left_get_more: "Stuur een e-mail naar contact@loomio.org waarna we zullen kijken hoe we je kunnen helpen"
@@ -509,7 +506,6 @@ nl:
       Hoi, kom beslissingen maken met ons! We gebruiken een gezamenlijk besluitvormingsinstrument genaamd Loomio.
     message_body: "Uitnodigingsbericht"
     invites_more_help2: "<p>Je kan ten alle tijde mensen uitnodigen voor je groep.</p><p>Mogelijk wil je gelijk alle leden in een keer uitnodigen of alleen de mensen met wie je het meeste samenwerkt.</p>"
-    send_invitations: "Verstuur uitnodigingen"
     invitation_link: "Uitnodigingslink"
     link_help: "Klik op deze link om je aan te sluiten bij %{group} op Loomio:"
     copy: "Als iemand de e-mail met een uitnodiging niet heeft gekregen, dan kan je bovenstaande uitnodigingslink kopiëren en zelf aan de ontvanger sturen."
@@ -530,10 +526,6 @@ nl:
       Loomio Helper Bot probeert jouw groep enthousiast te krijgen voor een reis naar de maan. Schijnbaar is de ruimte-kaas heerlijk. Echter, de gevolgen van je co2-voetafdruk zijn zorgelijk. Is het een goed idee? Loomio Helper Bot wil graag weten wat jij denkt!
       Als je je standpunt ten opzichte van dit voorstel helder voor ogen hebt, klik dan op een van icoontjes hieronder (zweef over de beslis-icoontjes heen om een uitleg te krijgen over wat ze betekenen).
       Je wordt gevraagd om een korte uitleg te geven over de reden van je beslissing. Dat maakt het gemakkelijk om een samenvatting te zien van wat iedereen denkt en waarom. Je kan van gedachten veranderen en je standpunt bewerken tot het voorstel sluit.
-  discussion_form:
-    header: "Begin een discussie"
-    who: "In welke groep wil je deze discussie beginnen?"
-    context: "Beschrijving"
   motion_form:
     header: "Nieuw voorstel"
     name_helper: "Maak de titel zo duidelijk en beknopt mogelijk."
@@ -590,8 +582,9 @@ nl:
         members_invitable_by_members: "Alle groepsleden"
         privacy: Privacy
         privacy_public_header: Openbaar
-        privacy_secret_header: Geheim
         privacy_parent_group_members_header: Zichtbaar voor hoofd-groepsleden
+        privacy_parent_group_members_description: Zelfde als verborgen, alleen de groep en de discussies erin kunnen bekeken worden door hoofd-groepsleden.
+        privacy_parent_group_members_description_short: Alleen leden en hoofd-groepsleden kunnen deze groep en de discussies erin zien.
         group_members_invitable_by: "Alleen coördinatoren"
         submit: Verzenden
         viewable_by_parent_members_header: Sta alle %{group} leden toe om deze subgroep en de discussies erin te zien
@@ -608,9 +601,6 @@ nl:
         password_confirmation: "Bevestig wachtwoord"
         language_preference: "Taal"
     placeholders:
-      discussion:
-        title: "Wat is het onderwerp dat je wilt bespreken?"
-        description: "Deze informatie verschijnt bovenaan de discussiepagina. Introduceer het onderwerp en geef voldoende informatie aan je groep om een goed geïnformeerde discussie te beginnen."
       membership_request:
         introduction: "Omschrijf hier wie je bent en waarom je lid wil worden van %{group_name}."
       motion:
@@ -632,9 +622,6 @@ nl:
         create: "Maak account"
         update: "Instellingen bijwerken"
   email:
-    added_to_a_group:
-      subject: "Je bent toegevoegd aan een groep"
-      content: "Gefeliciteerd, je bent toegevoegd aan de groep '%{which}' op Loomio!"
     unsubscribe: "Uitschrijven of je e-mail voorkeuren aanpassen:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> om je uit te schrijven of je e-mail voorkeuren aan te passen."
     view_comment: "Klik hier om de reactie op Loomio te zien"

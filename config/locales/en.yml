@@ -129,7 +129,7 @@ en:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one:   "seconds"
+        one:   "second"
         other: "%{count} seconds"
       x_seconds:
         one:   "1 second"
