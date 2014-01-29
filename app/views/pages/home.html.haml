@@ -15,7 +15,7 @@
           #button-container
             = link_to "Start a group!", new_group_request_path, class: 'btn btn-success btn-large', id: 'start-group-btn'
 
-        .row-fluid.homesection
+        .row-fluid.header
           %hr
           %h2 Groups using Loomio
         .row-fluid.featured-row
@@ -44,8 +44,22 @@
               A public group for the international community of Loomio users and supporters to get together, discuss and collaborate.
         %p.discovergroups
           =link_to "Discover more public groups using Loomio!", public_groups_path
+        %div{"data-ng-controller" => "FeedCtrl"}
+          %span{"ng-show" => "feed.items.length > 0"} 
+            .row-fluid.header
+              %hr
+              %h2 Recent Posts from the Blog
+            .row-fluid.featured-row{"ng-repeat" => "item in feed.items.slice(0, 3)"}
+              .span2.clip-circle
+                %img{"ng-src" => "{{item.mediaGroups[0].contents[0].url}}"}
+              .span9.flush
+                %h3
+                  %a{target: "_blank", href: "{{item.link}}"}
+                    {{item.title}}                                        
+                %p
+                  {{item.contentSnippet}}               
 
-        .row-fluid.homesection
+        .row-fluid.header
           %hr
           %h2 How Loomio works
           =image_tag("how-loomio-works.png")

@@ -212,6 +212,14 @@ a.btn-icon:hover { color: $dark-grey; }
       .featured-image {
         width: 96px;
       }
+      .clip-circle {
+        background:no-repeat; 
+        height:82px;
+        width:82px;
+        border-radius:50%;
+        overflow:hidden;
+        margin:auto;
+      }
     }
     .discovergroups {
       margin-top: 1em;
@@ -344,9 +352,10 @@ body.pages.home {
     a { width: 200px; }
   }
   hr { margin: 30px 0;  }
-  .homesection {
+  .header {
     text-align: center;
-    h2 { margin-bottom: 20px; }}
+    h2 { margin-bottom: 20px; }
+  }
 }
 
 body.pages.pricing .container{
