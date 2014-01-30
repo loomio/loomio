@@ -1,7 +1,14 @@
-- GroupsTree.for_user(current_user).depth_first_traversal do |group|
+- member_group_ids = current_user.group_ids
+- GroupsTree.for_user(current_user).each do |group|
   - li_class = "group-item"
-  - li_class += " sub-group" if group.is_a_subgroup?
+  - orphan_group = group.is_a_subgroup? && (!member_group_ids.include? group.parent_id )
+  - li_class += " sub-group" if group.is_a_subgroup? and member_group_ids.include? group.parent_id
   %li{class: li_class}
     %a.selector-link{ href: group_path(group) }
       .group-link.clearfix
-        .group-link-name= group.name.length < 35 ? group.name : group.name[0..32]+'...'
+        .group-link-name
+          - if orphan_group
+            -name = group.full_name
+          -else
+            -name = group.name
+          = name.length < 45 ? name : name[0..42]+'...'

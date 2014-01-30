@@ -4,6 +4,9 @@ class Group < ActiveRecord::Base
   class MaximumMembershipsExceeded < Exception
   end
 
+  attr_accessible :name, :privacy, :members_invitable_by, :parent, :parent_id, :description, :max_size, :cannot_contribute, :full_name, :payment_plan, :viewable_by_parent_members
+  acts_as_tree
+
   PRIVACY_CATEGORIES = ['public', 'private', 'hidden']
   INVITER_CATEGORIES = ['members', 'admins']
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
