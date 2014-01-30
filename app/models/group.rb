@@ -309,6 +309,11 @@ class Group < ActiveRecord::Base
     privacy == "hidden"
   end
 
+  def membership_for(user)
+    memberships.where(user_id: user.id).first
+  end
+
+
   private
 
   def calculate_full_name
