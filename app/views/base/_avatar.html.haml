@@ -1,6 +1,6 @@
+-kind ||= user.avatar_kind
 -#-cache user do
-%div{ class: "#{size}-user-avatar avatar-canvas", id: id }
-  - kind = user.avatar_kind if kind.nil?
+%div{ class: "#{size}-user-avatar #{kind}-user-avatar avatar-canvas", id: id }
   - if kind == 'initials'
     = user.avatar_initials
   - else
