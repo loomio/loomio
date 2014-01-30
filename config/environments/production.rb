@@ -62,23 +62,23 @@ Loomio::Application.configure do
 
   config.action_mailer.perform_deliveries = true
 
-  # Send emails using SendGrid
+  # Send emails using SMTP service
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '587',
+    :address        => ENV['SMTP_SERVER'],
+    :port           => ENV['SMTP_PORT'],
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'loomio.org'
+    :user_name      => ENV['SMTP_USERNAME'],
+    :password       => ENV['SMTP_PASSWORD'],
+    :domain         => ENV['SMTP_DOMAIN']
   }
 
   config.action_mailer.raise_delivery_errors = true
 
 
   config.action_mailer.default_url_options = {
-      host: ENV['CANONICAL_HOST'] || 'loomio.org',
-    }
+    :host => ENV['SMTP_DOMAIN'],
+  }
 
   # Store avatars on Amazon S3
   config.paperclip_defaults = {

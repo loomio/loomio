@@ -5,8 +5,8 @@ module ReadableUnguessableUrlsHelper
   end
 
   def discussion_url(discussion, options={})
-    options.merge!(host_and_port)
-    options.merge! controller: '/discussions', action: 'show',
+    options = options.merge(host_and_port)
+    options = options.merge controller: '/discussions', action: 'show',
                    id: discussion.key, slug: discussion.title.parameterize
     url_for(options)
   end
@@ -16,8 +16,8 @@ module ReadableUnguessableUrlsHelper
   end
 
   def group_url(group, options={})
-    options.merge!(host_and_port)
-    options.merge! :controller => '/groups', :action => 'show',
+    options = options.merge(host_and_port)
+    options = options.merge :controller => '/groups', :action => 'show',
                    :id => group.key, :slug => group.full_name.parameterize
     url_for(options)
   end
@@ -27,8 +27,8 @@ module ReadableUnguessableUrlsHelper
   end
 
   def user_url(user, options={})
-    options.merge!(host_and_port)
-    options.merge! :controller => '/users', :action => 'show',
+    options = options.merge(host_and_port)
+    options = options.merge :controller => '/users', :action => 'show',
                    :id => user.key, :slug => user.name.parameterize
     url_for(options)
   end
@@ -38,19 +38,10 @@ module ReadableUnguessableUrlsHelper
   end
 
   def motion_url(motion, options={})
-    options.merge!(host_and_port)
-    options.merge! :controller => '/motions', :action => 'show',
+    options = options.merge(host_and_port)
+    options = options.merge :controller => '/motions', :action => 'show',
                    :id => motion.key, :slug => motion.name.parameterize
     url_for(options)
-  end
-
-  def clean_url(url)
-    uri = URI(url)
-    query = uri.query.split('&').reject do |d|
-      ['action', 'controller', 'slug'].include? d.split('=')[0]
-    end
-    uri.query = query.join('&')
-    uri.to_s
   end
 
   private

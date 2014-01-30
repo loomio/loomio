@@ -247,7 +247,6 @@ ca:
   new_subgroup: "Nou sub-grup"
   create_subgroup: "Crear sub-grup"
   creating_subgroup: "Creant el sub-grup"
-  secret: "Secret"
   public: "Públic"
   new_group: "Nou grup"
   create_group: "Crear grup"
@@ -303,7 +302,6 @@ ca:
   delete_comment: "Eliminar comentari"
   confirm_delete_comment: "Estàs segur de que vols eliminar aquest comentari?"
   markdown_settings_more_info: "Més informació..."
-  edit_discussion_title: "Modifica el títol de la discussió"
   move_discussion: "Mou la discussió"
   delete_discussion: "Eliminar discussió"
   confirm_delete_discussion: "Estàs segur de que vols eliminar permanentment aquesta discussió?"
@@ -467,8 +465,6 @@ ca:
   create_an_account: 'Crea un compte'
   join_group:
     log_in: "Inicia sessió per unir-te a %{group_name}"
-  start_group:
-    log_in: "Inicia sessió per a configurar el grup"
   invitation:
     no_invitations_left: "Ho sentim, no et queda cap invitació"
     no_invitations_left_get_more: "Si us plau, escriu-nos un correu electrònic a contact@loomio.org i veurem què podem fer per ajudar-te "
@@ -482,7 +478,6 @@ ca:
     body_editable: "Ei, decideix amb nosaltres! Emprem una eina per \nprendre decissions de manera col·laborativa anomenada Loomio.\n"
     message_body: "missatge d'invitació"
     invites_more_help2: "<p>Pots convidar gent al teu grup en qualsevol moment.<p><p>Pots convidar tots els teus membres de cop o començar convidant aquells amb qui estàs treballant més estretament.</p>"
-    send_invitations: "Envia invitacions"
     invitation_link: "Enllaç d'invitació"
     link_help: "Clica aquest enllaç per unir-te al grup %{group} a Loomio:"
     copy: "Si algú no ha rebut el correu electrònic d'invitació, pots copiar el link de més amunt i passar-lo tu mateix si vols."
@@ -504,10 +499,6 @@ ca:
       Creus que és una bona idea? El Bot d'Ajuda vol saber que en penses!
       Si ho tens clar, prem alguna de les icones de sota (apropa el cursor als botons per veure una descripció de cadascun)
       Se't demanarà que facis un petit raonament sobre la teva decissió. Així serà més fàcil veure un resum de que pensa cadascú i perquè. Pots canviar d'opinió i editar la teva decissió fins que la proposta es tanqui.
-  discussion_form:
-    header: "Comença una discussió"
-    who: "En quin grup vols començar la discussió?"
-    context: "Context"
   motion_form:
     header: "Nova proposta"
     name_helper: "Escriu un títol tant clar i concís com puguis."
@@ -564,8 +555,8 @@ ca:
         members_invitable_by_members: "Totes les membres del grup"
         privacy: Privacitat
         privacy_public_header: Públic
-        privacy_secret_header: Secret
         privacy_parent_group_members_header: Visible per membres del grup mare.
+        privacy_parent_group_members_description_short: Només membres i membres del grup mare poden veure aquest grup i les seves discussions.
         group_members_invitable_by: "Només coordinadores"
       membership_request:
         introduction: "Presenta't"
@@ -580,9 +571,6 @@ ca:
         password_confirmation: "Confirma contrassenya"
         language_preference: "Idioma"
     placeholders:
-      discussion:
-        title: "Quin és el tema que vols discutir?"
-        description: "Aquesta descripció apareixerà a l'encapçalament de la pàgina de discussió. Presenta el tema i posa al grup en el context suficient per tal de tenir una discussió ben informada."
       membership_request:
         introduction: "Fes-nos cinc cèntims sobre qui ets i per què t'agradaria unir-te a %{group_name}."
       motion:
@@ -603,9 +591,6 @@ ca:
         create: "Crea un compte"
         update: "Actualitzar la configuració"
   email:
-    added_to_a_group:
-      subject: "T'han afegit a un grup"
-      content: "Felicitats, has estat afegit al grup '%{which}' a Loomio!"
     unsubscribe: "Dóna't de baixa o canvïa les teves preferències de correu:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-te de baixa o canviar les preferències de correu."
     view_comment: "Fes click per veure el comentari a Loomio"

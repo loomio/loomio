@@ -33,11 +33,6 @@ Given(/^I am an admin of a group with a public discussion$/) do
   @group.add_admin! @user
 end
 
-Given /^the group has a hidden subgroup$/ do
-  @subgroup = FactoryGirl.create(:group, parent: @group, privacy: 'hidden')
-end
-
-
 When(/^I select the destination hidden group$/) do
   select @subgroup.name, from: 'discussion_group_id'
 end

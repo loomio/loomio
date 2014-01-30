@@ -38,6 +38,8 @@ de:
     invalid_email: "Bitte gib mindestens eine gültige E-Mail Adresse an"
     image_upload_fail: "Bild konnte nicht hochgeladen werden. Stelle sicher, dass das Bild kleiner als 1 MB ist und eine .jpeg, .png oder .gif Datei ist."
     motion_closing_inputs: "Ungültiges Enddatum"
+    only_group_coordinator_destroy: "Du kannst diese Gruppe nicht verlassen, da du der einzige Koordinator bist. Aber du kannst die Gruppe über die Optionen im Aufklappmenü deaktivieren oder <a href='%{add_coordinator}'> füge einen neuen Koordinator </a> zur Gruppe hinzu.  "
+    only_group_coordinator_remove_admin: "Die Gruppe muss einen Koordinator haben. Möchtest du noch einen Koordinator zur Gruppe hinzufügen? "
     permission_to_invite: "Du hast keine Berechtigung neue Mitglieder einzuladen."
     position_not_updated: "Meinung konnte nicht aktualisiert werden."
     settings_not_updated: "Deine Einstellungen wurden nicht aktualisiert."
@@ -246,6 +248,7 @@ de:
   start_a_discussion: "Beginne eine Diskussion"
   group_description: "Gruppenbeschreibung"
   edit_group_description: "Gruppenbeschreibung ändern"
+  group_subscription: "Gruppenabonnement"
   group_request:
     confirmation:
       title: Du bist fast fertig! Prüfe deine E-Mails.
@@ -291,7 +294,6 @@ de:
   delete_comment: "Kommentar löschen"
   confirm_delete_comment: "Bist du sicher, dass du diesen Kommentar löschen willst?"
   markdown_settings_more_info: "Mehr Informationen..."
-  edit_discussion_title: "Den Diskussionstitel verändern"
   delete_discussion: "Diskussion löschen"
   confirm_delete_discussion: "Bist du sicher, dass du diese Diskussion dauerhaft löschen willst?"
   new_proposal: "Neuer Vorschlag"
@@ -461,7 +463,6 @@ de:
     body_editable: "Hallo ihr, kommt und entscheidet mit uns! Wir benutzen ein kollektives Werkzeug um Entscheidungen zu fällen, genannt Loomio. \n"
     message_body: "Einladungstext"
     invites_more_help2: "<p>Du kannst zu jeder Zeit Leute in deine Gruppe einladen.</p><p>Wenn du magst, dann kannst du alle Leute deines Teams einladen oder nur die Leute, mit denen du am engsten zusammenarbeitest.</p>"
-    send_invitations: "Sende Einladungen"
     invitation_link: "Link zur Einladung"
     link_help: "Klicke auf diesen Link um der %{group} auf Loomio beizutreten:"
     copy: "Wenn jemand den Link zur Einladung nicht erhalten hat, kannst du ihm den unten angegebenen Link selbst geben."
@@ -483,10 +484,6 @@ de:
       Ist das eine gute Idee? Der Loomio Hilferoboter möchte wissen, was du darüber denkst!
       Wenn du dir deiner Meinung sicher bist, klicke auf eines der Symbole unten (lege den Mauszeiger über den Button um dir eine Beschreibung anzusehen, was die einzelnen Buttons bedeuten).
       Du wirst dann aufgefordert werden, kurz an zu geben, warum du diese Entscheidung getroffen. Das ergibt eine kurze Zusammenfassung davon, was jeder denkt und warum. Du kannst dich noch umentscheiden und deine Meinung bearbeiten bis der Vorschlag beendet wird.
-  discussion_form:
-    header: "Beginne eine Diskussion"
-    who: "In welcher Gruppe möchtest du die Diskussion beginnen?"
-    context: "Kontext"
   motion_form:
     header: "Neuer Vorschlag"
     name_helper: "Mache den Titel so klar und kurz wie möglich."
@@ -549,9 +546,6 @@ de:
         password_confirmation: "Passwort bestätigen"
         language_preference: "Sprache"
     placeholders:
-      discussion:
-        title: "Welches Thema möchtest du diskutieren?"
-        description: "Diese Informationen werden über der Diskussionsseite angezeigt. Stelle das Thema vor und gib genug Kontext, damit die Gruppe gut informiert ist und eine sinnvolle Diskussion führen kann."
       membership_request:
         introduction: "Schreibe einige Worte über dich und warum du %{group_name} beitreten möchtest ."
       motion:
@@ -570,9 +564,6 @@ de:
         create: "Konto erstellen"
         update: "Einstellungen aktualisieren"
   email:
-    added_to_a_group:
-      subject: "Du wurdest einer Gruppe hinzugefügt."
-      content: "Herzlichen Glückwunsch, du wurdest der Gruppe '%{which}' auf Loomio hinzugefügt!"
     unsubscribe: "Bestelle E-Mails ab oder ändere deine E-Mail Einstellungen:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> um deine E-Mail Einstellungen zu ändern und E-Mails abzubestellen."
     view_comment: "Klicke hier um das Kommentar auf Loomio zu sehen"

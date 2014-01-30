@@ -1,0 +1,39 @@
+fi:
+  errors:
+    messages:
+      email: "Sähköpostiosoite ei ole oikeassa muodossa"
+  error:
+    cant_join_subgroup: "Et voi liittyä jäseneksi aliryhmään jos et ole pääryhmän jäsen."
+    cant_modify_position: "Esitys on sulkeutunut."
+    cant_state_position: "Esitys on sulkeutunut."
+    discussion_not_created: "Keskustelua ei voitu tallentaa."
+    group_not_archived: "Ryhmän arkistointi epäonnistui."
+    invalid_close_date: "Valittu päivämäärä on virheellinen. Tarkista ettei se ole menneisyydessä."
+    image_upload_fail: "Kuvaa ei voida ladata. Varmista että se on .jpg, .png tai .gif muodossa, ja että se on kooltaan alle 1 MB."
+    permission_to_invite: "Sinulla ei ole tarpeeksi oikeuksia kutsua lisää jäseniä."
+    position_not_updated: "Antamaasi ääntä ei voitu päivittää."
+    settings_not_updated: "Asetuksia ei voitu tallentaa."
+  alert:
+    duplicate_email: "%{which_email} on jo jäsenenä ryhmässä."
+  notice:
+    member_removed: "Jäsen poistettu."
+    membership_request_canceled: "Jäsenyyspyyntö peruutettu."
+    membership_request_ignored: "Jäsenyyspyyntö ohitettu."
+    settings_updated: "Asetuksesi tallennettiin."
+    you_have_left_group: "Olet poistunut ryhmästä %{which_group}."
+  warning:
+    position_not_submitted: "Ääntäsi ei voitu tallentaa"
+    proposal_not_created: "Esityksen luonti epäonnistui"
+  success:
+    added_to_group: "Sinut on lisätty ryhmään %{which_group}."
+    close_date_changed: "Päättymispäivämäärä päivitetty."
+    discussion_created: "Keskustelu tallennettu."
+    discussion_deleted: "Keskustelun poisto onnistui."
+    emails_sending: "Sähköpostien lähetys meneillään."
+    group_archived: "Ryhmä arkistoitu onnistuneesti."
+    group_created: "Ryhmä luotu onnistuneesti."
+    members_added: "Jäsenet lisätty ryhmään."
+    position_submitted: "Ääni tallennettu"
+    position_updated: "Ääni päivitetty."
+    proposal_created: "Esitys luotu onnistuneesti."
+    proposal_deleted: "Esitys poistettu."
