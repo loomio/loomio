@@ -1,5 +1,9 @@
--#-cache user do
-%div{ class: "#{size}-user-avatar avatar-canvas", id: id }
+- cls = "#{size}-user-avatar avatar-canvas"
+- if @group
+  - membership = @group.membership_for(user)
+  - cls += " #{membership.access_level}"
+
+%div{ class: cls, id: id }
   - kind = user.avatar_kind if kind.nil?
   - if kind == 'initials'
     = user.avatar_initials
