@@ -1,6 +1,5 @@
--cache user do
-  %li{:id => user.id}
-    = render 'avatar', user: user, size: "small", kind: nil, id: nil
-    .user-name
-      %span.membership-user-name
-        = link_to user.name, user_path(user), class: 'user-name'
+%li{:id => user.id}
+  = render 'avatar', user: user, size: "small", kind: nil, id: nil
+  .user-name
+    %span.membership-user-name
+      = link_to user.name, user_path(user), class: 'user-name'
