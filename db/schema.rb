@@ -185,7 +185,6 @@ ActiveRecord::Schema.define(:version => 20140107211331) do
     t.string   "key"
     t.datetime "archived_at"
     t.boolean  "private"
-    t.string   "key"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -466,6 +465,17 @@ ActiveRecord::Schema.define(:version => 20140107211331) do
   add_index "omniauth_identities", ["email"], :name => "index_personas_on_email"
   add_index "omniauth_identities", ["provider", "uid"], :name => "index_omniauth_identities_on_provider_and_uid"
   add_index "omniauth_identities", ["user_id"], :name => "index_personas_on_user_id"
+
+  create_table "reply_tokens", :force => true do |t|
+    t.integer  "user_id",        :null => false
+    t.integer  "replyable_id",   :null => false
+    t.string   "replyable_type", :null => false
+    t.string   "token",          :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "reply_tokens", ["token"], :name => "index_reply_tokens_on_token"
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "group_id"
