@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140106020130) do
+ActiveRecord::Schema.define(:version => 20140107211331) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -185,6 +185,7 @@ ActiveRecord::Schema.define(:version => 20140106020130) do
     t.string   "key"
     t.datetime "archived_at"
     t.boolean  "private"
+    t.string   "key"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -248,6 +249,15 @@ ActiveRecord::Schema.define(:version => 20140106020130) do
   add_index "events", ["discussion_id", "sequence_id"], :name => "index_events_on_discussion_id_and_sequence_id", :unique => true
   add_index "events", ["discussion_id"], :name => "index_events_on_discussion_id"
   add_index "events", ["eventable_type", "eventable_id"], :name => "index_events_on_eventable_type_and_eventable_id"
+
+  create_table "group_hierarchies", :id => false, :force => true do |t|
+    t.integer "ancestor_id",   :null => false
+    t.integer "descendant_id", :null => false
+    t.integer "generations",   :null => false
+  end
+
+  add_index "group_hierarchies", ["ancestor_id", "descendant_id", "generations"], :name => "group_anc_desc_udx", :unique => true
+  add_index "group_hierarchies", ["descendant_id"], :name => "group_desc_idx"
 
   create_table "group_requests", :force => true do |t|
     t.string   "name"
