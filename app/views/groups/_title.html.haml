@@ -1,18 +1,13 @@
 .group-title
-  .row
-    - if group
-      .span10
-        %h1.home-title
-          = link_to t(:home), "/"
-          = content_tag :span, "\u25B6", class: 'name-separator'
-          - if group.is_a_subgroup?
-            = link_to group.parent.name, group.parent
-            = content_tag :span, "\u25B6", class: 'name-separator'
-          = link_to group.name, group
-        -unless controller_name == 'discussions'
-          = render 'groups/privacy_dropdown', :group => group
-    - else
-      .span10
-        %h1.home-title
-          = link_to t(:home), "/"
-
+  - if group
+    %h1.home-title
+      = link_to t(:home), "/"
+      = content_tag :span, "\u25B6", class: 'name-separator'
+      - if group.is_a_subgroup?
+        = link_to group.parent.name, group.parent
+        = content_tag :span, "\u25B6", class: 'name-separator'
+      = link_to group.name, group
+    = render 'groups/privacy_dropdown', :group => group
+  - else
+    %h1.home-title
+      = link_to t(:home), "/"

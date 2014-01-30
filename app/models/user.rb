@@ -104,6 +104,13 @@ class User < ActiveRecord::Base
   scope :admins, where(is_admin: true)
   scope :coordinators, joins(:memberships).where('memberships.access_level = ?', 'admin').group('users.id')
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
+  #
+
+  def top_level_groups
+    parents = groups.parents_only.order(:name)
+    orphans = groups.where('parent_id not in (?)', parents.map(&:id))
+    (parents.to_a + orphans.to_a).sort{|a, b| a.full_name <=> b.full_name }
+  end
 
   def self.email_taken?(email)
     User.find_by_email(email).present?

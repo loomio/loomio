@@ -1,39 +1,24 @@
 require 'spec_helper'
 
 describe GroupsTree do
-  describe "#depth_first_traversal" do
-    let(:user) { create(:user) }
-    let(:group1) { create(:group, name: "group1") }
-    let(:group2) { create(:group, name: "group2") }
-    let(:subgroup1) { create(:group, name: "subgroup1", parent: group1) }
-    let(:subgroup2) { create(:group, name: "subgroup2", parent: group1) }
-    let(:tree) { GroupsTree.for_user(user) }
+  describe "for user" do
+    let(:parent_group) { create :group, name: 'c' }
+    let(:sub_group) { create :group, name: 'b', parent: parent_group }
+    let(:mystery_parent_group) { create :group, name: "a mystery" }
+    let(:orphaned_sub_group) { create :group, name: 'a', parent: mystery_parent_group }
+    let(:user) {create :user}
 
-    it "doesnt yield if user has no groups" do
-      tree.count.should == 0
+    before do
+      parent_group.add_member! user
+      sub_group.add_member! user
+      orphaned_sub_group.add_member! user
     end
 
-    it "yields user's groups" do
-      group1.add_member!(user)
-      group2.add_member!(user)
-      traversal = tree.depth_first_traversal
-      traversal.next.should == group1
-      traversal.next.should == group2
-      tree.should_not include(subgroup1)
-    end
-
-    it "yields user's groups and subgroups" do
-      # group1
-      # - subgroup1
-      # group2
-      group1.add_member!(user)
-      group2.add_member!(user)
-      subgroup1.add_member!(user)
-      traversal = tree.depth_first_traversal
-      traversal.next.should == group1
-      traversal.next.should == subgroup1
-      traversal.next.should == group2
-      tree.should_not include(subgroup2)
+    describe "to_a" do
+      subject do
+        GroupsTree.for_user(user).to_a
+      end
+      it{should == [orphaned_sub_group, parent_group, sub_group]}
     end
   end
 end

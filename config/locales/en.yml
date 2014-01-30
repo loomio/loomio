@@ -252,6 +252,7 @@ en:
   email_group_members: "Email group members"
   edit_group_settings: "Edit group settings"
   leave_group: "Leave group"
+  confirm_leave_hidden_group: "Are you sure you wish to leave %{which_group}? You will also be removed from any subgroups."
   confirm_leave_group: "Are you sure you wish to leave %{which_group}?"
   deactivate_group: "De-activate group"
   confirm_deactivate_group: "Wait!!! Are you sure you want to de-activate %{which_group}? You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@loomio.org."

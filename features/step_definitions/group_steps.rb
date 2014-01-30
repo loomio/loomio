@@ -187,6 +187,10 @@ Given /^the group has a subgroup$/ do
   @subgroup = FactoryGirl.create(:group, parent: @group)
 end
 
+Given /^the group has a hidden subgroup$/ do
+  @subgroup = FactoryGirl.create(:group, parent: @group, privacy: 'hidden')
+end
+
 Given /^the group has a subgroup I am an admin of$/ do
   @subgroup = FactoryGirl.create(:group, parent: @group)
   @subgroup.add_admin!(@user)

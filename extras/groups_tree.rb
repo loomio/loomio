@@ -9,30 +9,15 @@ class GroupsTree
     new(user)
   end
 
-  def depth_first_traversal(&block)
-    return to_enum unless block_given?
-    each(&block)
-  end
-
   def each(&block)
-    return to_enum unless block_given?
-    tree.each do |group_node|
-      yield group_node.value unless group_node.root?
+    list = []
+    @user.top_level_groups.each do |group|
+      list << group
+      list << @user.groups.where(id: group.children.map(&:id)).order(:name)
+    end
+    list.flatten.each do |group|
+      yield group
     end
   end
 
-  private
-
-  def tree
-    root = Tree.new
-    @user.groups.order('parent_id DESC, LOWER(name)').each do |group|
-      if group.is_a_parent?
-        root.children << Tree.new(parent: root, value: group)
-      else
-        parent = root.children.find { |child| child.value.id == group.parent_id }
-        parent.children << Tree.new(parent: parent, value: group)
-      end
-    end
-    root
-  end
 end
