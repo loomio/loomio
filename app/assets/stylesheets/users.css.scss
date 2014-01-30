@@ -69,6 +69,9 @@ body.users {
   float: left;
   margin-right: 3px;
   font-weight: bold;
+  &.gravatar-user-avatar, &.uploaded-user-avatar {
+    border: 1px solid rgba(255, 255, 255, 0)
+  }
 }
 
 .large-user-avatar {
@@ -95,8 +98,9 @@ body.users {
 }
 
 .small-user-avatar {
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
   font-size: 10px;
   line-height: 22px;
 }
+
