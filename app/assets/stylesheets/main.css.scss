@@ -365,3 +365,14 @@ a.btn-icon:hover { color: $dark-grey; }
 }
 
 #button-container { margin-top: 5px; }
+
+#search.nav-item {
+  .icon-search { position: relative; }
+  .submit-search {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 26px;
+    opacity: 0;
+  }
+}

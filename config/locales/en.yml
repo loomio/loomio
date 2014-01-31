@@ -645,6 +645,10 @@ en:
     description: "Below is a list of discussions and proposals that have '%{query}' in their title or description."
     header: "Search results for '%{query}'"
     placeholder: "Search"
+    empty_search: 'Empty search'
+    please_enter_a_search: 'Please enter a query in the search bar above'
+    no_match: 'There were no results that matched your query'
+
 
   #
   # EXAMPLE CONTENT
