@@ -927,6 +927,7 @@ en:
   decisions: "Decisions"
   delete: "Delete"
   details: "Details"
+  discussion: 'Discussion:'
   discussions: "Discussions"
   edit: "Edit"
   email_address: "Email address"
@@ -956,6 +957,7 @@ en:
   options: "Options"
   other: "Other"
   ok_got_it: "Okay, got it!"
+  proposal: 'Proposal:'
   remove: "Remove"
   save: "Save"
   saving: "Saving"

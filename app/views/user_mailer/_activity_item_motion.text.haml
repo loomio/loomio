@@ -1,0 +1,13 @@
+\
+- if motion.created_since?(@activity_summary.last_sent_at)
+  = render 'activity_item_avatar', user: motion.author, item: motion, item_text: t('email.activity_summary.created_a_proposal')
+
+= "#{t(:proposal)} #{motion.name}"
+= "#{t('email.activity_summary.proposed_by', who: motion.author.name)} - #{t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))}"
+
+- unless motion.description.blank?
+  = "'#{display_motion_description(motion, @activity_summary)}'"
+
+- motion.votes_since(@activity_summary.last_sent_at).each do |vote|
+  = render 'activity_item_avatar', user: vote.user, item: vote, item_text: "has #{vote.position_to_s}"
+  = "  '#{vote.statement}'"

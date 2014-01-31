@@ -1,0 +1,16 @@
+- last_sent_at = @activity_summary.last_sent_at
+\
+- if discussion.created_since?(last_sent_at) || discussion.modified_since?(last_sent_at)
+  - user, item_text = info_for_avatar(discussion, @activity_summary)
+  = render 'activity_item_avatar', user: user, item: discussion, item_text: item_text
+
+= "#{t(:discussion)} #{discussion.title}"
+= t('email.activity_summary.discussion_started_by', who: discussion.author.name)
+- unless discussion.description.blank?
+  = "'#{display_discussion_description(discussion, @activity_summary)}'"
+
+- motion = discussion.current_motion
+- if motion && unread_motion_activity?(motion, @activity_summary)
+  = render 'activity_item_motion', motion: motion
+- discussion.comments_since(@activity_summary.last_sent_at).each do |comment|
+  = render 'activity_item_comment', comment: comment
