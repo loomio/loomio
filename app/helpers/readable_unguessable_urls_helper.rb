@@ -1,48 +1,28 @@
 module ReadableUnguessableUrlsHelper
+  MODELS_WITH_SLUGS = { 'discussion' => :title,
+                             'group' => :full_name,
+                              'user' => :name,
+                            'motion' => :name }
 
-  def discussion_path(discussion, options={})
-    discussion_url(discussion, options.merge(:only_path => true))
+  MODELS_WITH_SLUGS.keys.each do |model|
+    model = model.to_s.downcase
+
+    define_method("#{model}_url", ->(instance, options={}) {
+      options = options.merge( host_and_port )
+                       .merge( route_hash(instance, model) )
+
+      url_for(options)
+    })
+
+    define_method("#{model}_path", ->(instance, options={}) {
+      options = options.merge(only_path: true)
+
+      self.send("#{model}_url", instance, options)
+    })
+
   end
 
-  def discussion_url(discussion, options={})
-    options = options.merge(host_and_port)
-    options = options.merge controller: '/discussions', action: 'show',
-                   id: discussion.key, slug: discussion.title.parameterize
-    url_for(options)
-  end
 
-  def group_path(group, options={})
-    group_url(group, options.merge(:only_path => true))
-  end
-
-  def group_url(group, options={})
-    options = options.merge(host_and_port)
-    options = options.merge :controller => '/groups', :action => 'show',
-                   :id => group.key, :slug => group.full_name.parameterize
-    url_for(options)
-  end
-
-  def user_path(user, options={})
-    user_url(user, options.merge(:only_path => true))
-  end
-
-  def user_url(user, options={})
-    options = options.merge(host_and_port)
-    options = options.merge :controller => '/users', :action => 'show',
-                   :id => user.key, :slug => user.name.parameterize
-    url_for(options)
-  end
-
-  def motion_path(motion, options={})
-    motion_url(motion, options.merge(:only_path => true))
-  end
-
-  def motion_url(motion, options={})
-    options = options.merge(host_and_port)
-    options = options.merge :controller => '/motions', :action => 'show',
-                   :id => motion.key, :slug => motion.name.parameterize
-    url_for(options)
-  end
 
   private
 
@@ -66,6 +46,14 @@ module ReadableUnguessableUrlsHelper
     else
       true
     end
+  end
+
+  def route_hash(instance, model)
+    controller = "/#{model.pluralize}"
+    name = MODELS_WITH_SLUGS[model]
+    slug = instance.send(name).parameterize
+
+    { controller: controller, action: 'show', id: instance.key, slug: slug }
   end
 
 end
