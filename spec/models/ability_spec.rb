@@ -5,9 +5,12 @@ describe "User abilities" do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
   let(:non_member) { create(:user) }
+  let(:group) { create(:group) }
 
   let(:ability) { Ability.new(user) }
   subject { ability }
+
+  it { should be_able_to(:create, group) }
 
   context "member of a group" do
     let(:group) { create(:group) }
@@ -213,7 +216,7 @@ describe "User abilities" do
     end
     it { should_not be_able_to(:view_payment_details, sub_group) }
     it { should_not be_able_to(:choose_subscription_plan, sub_group) }
-    # it { should be_able_to(:invite_outsiders, sub_group) }
+    it { should be_able_to(:invite_outsiders, sub_group) }
   end
 
   context "non-member of a group" do

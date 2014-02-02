@@ -295,7 +295,6 @@ fr:
   delete_comment: "Effacer le commentaire"
   confirm_delete_comment: "Etes vous sur de vouloir effacer ce commentaire ?"
   markdown_settings_more_info: "Plus d'info..."
-  edit_discussion_title: "Editer le titre de la discussion"
   delete_discussion: "Effacer la discussion"
   confirm_delete_discussion: "Etes vous sur de vouloir supprimer définitivement cette discussion ?"
   new_proposal: "Nouvelle proposition"
@@ -482,8 +481,6 @@ fr:
   create_an_account: 'Créer un compte'
   join_group:
     log_in: "Connectez-vous pour rejoindre %{group_name}"
-  start_group:
-    log_in: "Connectez-vous pour mettre en place votre groupe"
   invitation:
     no_invitations_left: "Désolé, vous n'avez plus d'invitations disponibles"
     no_invitations_left_get_more: "Merci de nous envoyer un email à contact@loomio.org et nous verrons comment vous assister"
@@ -498,7 +495,6 @@ fr:
       Salut, venez construire des décisions avec nous ! Nous utilisons un outil de collaboration collective appelé Loomio
     message_body: "Message d'invitation"
     invites_more_help2: "<p>Vous pouvez inviter des personnes dans votre groupe à n'importe quel moment.</p><p>Vous pouvez décider d'inviter tous les membres tout de suite, ou vous pouvez démarrer avec un groupe plus restreint des personnes les plus motivées.</p>"
-    send_invitations: "Envoyer des invitations"
     invitation_link: "Lien d'invitation"
     link_help: "Cliquer sur ce lien pour rejoindre %{group}  sur Loomio:"
     copy: "Si quelqu'un ne reçoit pas son email d'invitation, merci de recopier le lien d'invitation ci dessus et de le transmettre directement."
@@ -520,10 +516,6 @@ fr:
       Est ce une bonne idée ? Le Robert d'Aide de Loomio veut savoir ce que vous en pensez !
       Si vous connaissez déjà votre position, cliquez sur l'une des icones ci dessous (survolez les boutons de décision pour une description de la signification de chacun d'eux).
       Vous êtes invité à laisser un bref commentaire sur la raison de votre choix. Ceci permet de rendre plus facile la synthèse de ce que chacun pense et pourquoi. Vous pouvez changer d'avis et revoter sans souci, tant que la proposition n'est pas close.
-  discussion_form:
-    header: "Démarrer une discussion"
-    who: "Dans quel groupe souhaitez vous démarrer cette discussion ?"
-    context: "Contexte"
   motion_form:
     header: "Nouvelle proposition"
     name_helper: "Rédiger le titre aussi clair et succint que possible"
@@ -586,9 +578,6 @@ fr:
         password_confirmation: "Confirmer votre mot de passe"
         language_preference: "Langue"
     placeholders:
-      discussion:
-        title: "De quel sujet voulez vous parlez ?"
-        description: "Cette information va apparaître en haut de la page de discussion. Introduisez le sujet et donnez suffisamment d'informations pour que votre groupe est une discussion structurée."
       membership_request:
         introduction: "Ecrire quelques mots sur vous et pourquoi vous voulez intégrer %{group_name}."
       motion:
@@ -607,9 +596,6 @@ fr:
         create: "Créer un compte"
         update: "Actualiser vos réglages"
   email:
-    added_to_a_group:
-      subject: "Vous avez été ajouté(e) à un groupe"
-      content: "Félicitations, vous avez été ajouté(e) au groupe '%{which}' sur Loomio !"
     unsubscribe: "Désabonnement ou changement d'email :"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pour se désabonner ou changer votre email."
     view_comment: "Cliquez ici pour voir le commentaire sur Loomio"

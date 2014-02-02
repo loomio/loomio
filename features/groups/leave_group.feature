@@ -3,13 +3,28 @@ Feature: Leave Group
   Users must be able to leave groups
 
   @javascript
-  Scenario: Group member leaves group
+  Scenario: Group member leaves hidden group and all subgroups
     Given I am logged in
-    And I am a member of a group
+    And I am a member of a hidden group
+    And the group has a hidden subgroup
+    And I am a member of the subgroup
     And there is another admin in the group also
     When I visit the group page
     And I choose to leave the group
     Then I should be removed from the group
+    And I should be removed from the subgroup
+
+  @javascript
+  Scenario: Group member leaves non-hidden group
+    Given I am logged in
+    And I am a member of a group
+    And the group has a subgroup
+    And I am a member of the subgroup
+    And there is another admin in the group also
+    When I visit the group page
+    And I choose to leave the group
+    Then I should be removed from the group
+    And I should not be removed from the subgroup
 
   @javascript
   Scenario: Only group coordinator attempts to leave group

@@ -22,6 +22,7 @@ class InvitationsController < ApplicationController
 
 
   def show
+    clear_invitation_token_from_session
     @invitation = Invitation.find_by_token(params[:id])
 
     if @invitation.nil?
@@ -38,7 +39,6 @@ class InvitationsController < ApplicationController
 
     if current_user
       AcceptInvitation.and_grant_access!(@invitation, current_user)
-      clear_invitation_token_from_session
       redirect_to_group
     else
       save_invitation_token_to_session

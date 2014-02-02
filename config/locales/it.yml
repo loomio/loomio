@@ -10,6 +10,7 @@ it:
     formats:
       datepicker: "%d-%m-%Y"
   error:
+    access_denied: "Non hai l'autorizzazione per farlo."
     cant_join_subgroup: "Non puoi unirti a un sotto-gruppo se non sei membro del gruppo genitore."
     cant_modify_position: "Questa proposta è chiusa."
     cant_state_position: "Questa proposta è chiusa."
@@ -29,15 +30,20 @@ it:
     group_private_or_not_found: "Gruppo non trovato. \n\nQuesto gruppo potrebbe essere privato. Se qualcuno ti ha dato questo link, chiedigli di invitarti al gruppo."
     group_already_setup: "Il gruppo che stai cercando di creare esiste già."
     proposal_already_exists: "C'è già una proposta aperta in questa discussione."
+    user_with_email_address_already_in_group: "Un utente con questo indirizzo mail fa già parte di questo gruppo."
+    you_have_already_requested_membership: "Hai già richiesto di far parte di questo gruppo."
+    you_are_already_a_member_of_this_group: "Sei già membro di questo gruppo."
   alert:
     duplicate_email: "%{which_email} fa già parte del gruppo."
   notice:
     member_removed: "Membro rimosso."
+    membership_approved: "Iscrizione approvata."
     membership_request_canceled: "Richiesta di iscrizione cancellata."
     membership_request_ignored: "Richiesta di iscrizione ignorata."
     settings_updated: "Le tue impostazioni sono state aggiornate."
     you_have_left_group: "Hai abbandonato %{which_group}."
   warning:
+    membership_request_already_approved: "La richiesta d'iscrizione è già stata approvata."
     membership_request_already_ignored: "La richiesta di iscrizione è stata già ignorata."
     membership_request_already_canceled: "La richiesta di iscrizione è stata già cancellata."
     position_not_submitted: "Non è stato possibile inviare la tua posizione"
@@ -110,6 +116,8 @@ it:
   request_new_group_details: "o aspetta di essere invitato a uno."
   empty_notifications: "Non hai ancora notifiche."
   see_all_notifications: "Guarda tutte le notifiche"
+  user_settings: "Impostazioni utente"
+  email_preferences: "Opzioni email"
   sign_out: "Esci"
   tagline: "Creare un mondo in cui chiunque possa prendere facilmente parte a decisioni che lo riguardano."
   click_to_dismiss: "Clicca qui per ignorare questo messaggio"
@@ -152,7 +160,9 @@ it:
   confirm_remove_user: "Sei sicuro che vuoi rimuovere %{which_user} dal gruppo?"
   membership_requests: "Richieste di iscrizione"
   confirm_approve_membership_request: "Sei sicuro che vuoi aggiungere %{which_user} al gruppo?"
+  cancel_membership_request: "Annulla richiesta "
   ignore_request: "Ignora la richiesta"
+  ignore: "Ignora"
   confirm_ignore_membership_request: "Sei sicuro che vuoi ignorare la richiesta di iscrizione di %{which_user}?"
   request_membership: "Richiedi l'iscrizione"
   confirm_remove_membership_request: "Sei sicuro che vuoi ritirare la richiesta di iscrizione a questo gruppo?"
@@ -208,7 +218,6 @@ it:
   delete_comment: "Cancella il commento"
   confirm_delete_comment: "Sei sicuro che vuoi cancellare questo commento?"
   markdown_settings_more_info: "Più info..."
-  edit_discussion_title: "Modifica il titolo della discussione"
   delete_discussion: "Cancella la discussione"
   confirm_delete_discussion: "Sei sicuro che vuoi cancellare definitivamente questa discussione?"
   new_proposal: "Nuova Proposta"
@@ -295,12 +304,22 @@ it:
       per informazioni su come usare Markdown.</p>
     keep_up_to_date: "Rimani aggiornato"
     make_a_decision: "Prendi una decisione"
+    make_a_decision_description: "Quando il gruppo è pronto a prendere una decisione, chiunque può creare una proposta. Definisci una chiara linea di condotta e dai un po' di contesto in modo che ognuno sappia esattamente cosa significa essere d'accordo oppure no."
+    prompt_people_details: "Se vuoi ottenere l'attenzione di persone specifiche nel tuo gruppo, scrivi '@' seguita dal loro nome. Riceveranno una mail che li avvertirà che le hai nominate in un commento."
     positions_agree_description: "<span>Sono d'accordo</span> significa che la proposta ti sta bene."
     positions_abstain_description: "<span>Mi astengo</span> significa che non sei sicuro, o che ti sta bene che il gruppo decida senza di te."
     positions_disagree_description: "<span>Non sono d'accordo</span> significa che pensi ci sia un'alternativa migliore, ma ti sta bene anche accodarti alla decisione del gruppo."
     positions_block_description: "<span>Blocco</span> significa che hai obiezioni serie e che saresti estremamente insoddisfatto se la proposta dovesse passare."
+    start_discussion: "Iniziare una discussione coinvolgente"
+    start_proposal: "Scrivere una proposta chiara"
     video_tutorial: "Tutorial video"
     video_tutorial_description: "Guarda il video per una dimostrazione veloce di come funziona Loomio."
+  hint:
+    context: 'Consigli per utilizzare il pannello contestuale'
+    discussion: 'Consigli per iniziare una discussione coinvolgente'
+    invitation: 'Consigli per scrivere un bell''invito '
+    proposal: 'Consigli per scrivere una proposta chiara'
+    vote: 'Puoi cambiare la tua posizione in ogni momento'
   resend_confirmation: "Rimanda le istruzioni per la conferma"
   new_password: "Nuova password"
   confirm_new_password: "Conferma la nuova password"
@@ -329,7 +348,6 @@ it:
       Hey ciao, vieni a prendere delle decisioni con noi! Stiamo usando un tool per il decision-making collaborativo che si chiama Loomio.
     message_body: "Messaggio di invito"
     invites_more_help2: "<p>Puoi invitare gente al tuo gruppo in qualsiasi momento.</p><p>Puoi invitare tutti i membri assieme, oppure puoi cominciare invitando solamente quelle persone con cui lavori a stretto contatto.</p>"
-    send_invitations: "Invia inviti"
     invitation_link: "Link invito"
     link_help: "Clicca su questo link per unirti a %{group} su Loomio:"
     copy: "Se qualcuno non ha ricevuto la mail di invito, copia pure il link qui sopra e mandalo direttamente al destinatario in questione."
@@ -347,10 +365,6 @@ it:
       È una buona idea? Il Piccolo Aiutante di Loomio vuole sapere come la pensi!
       Se hai un'opinione formata, clicca su una delle icone sotto (passa il mouse sopra i bottoni per vedere cosa significano).
       Ti chiederanno di fare una piccola dichiarazione circa le ragioni della tua decisione. Questo rende più semplice capire, in breve, cosa pensa ognuno e perché. Puoi comunque cambiare idea e modificare la tua decisione liberamente fino a quando la proposta non sarà chiusa.
-  discussion_form:
-    header: "Comincia una discussione"
-    who: "In che gruppo vuoi cominciare questa discussione?"
-    context: "Contesto"
   motion_form:
     header: "Nuova proposta"
     name_helper: "Usa un titolo il più possibile chiaro e sintetico."
@@ -365,6 +379,7 @@ it:
     submit: "Invia posizione"
     update: "Aggiorna posizione"
   email_preferences_form:
+    header: "Opzioni email "
     daily_activity_summary: "Sommario delle attività della giornata"
     daily_activity_subscription: "Inviami una email sulle attività del giorno che riassuma quello che è successo nei miei gruppi"
     global_notifications: "Notifiche Globali"
@@ -376,6 +391,7 @@ it:
   new_user_form:
     create_an_account: "Crea un account"
   user_settings_form:
+    header: "Impostazioni utente"
     picture: "Immagine"
     use_avatar_kind: "Usa %{kind}"
     upload_new_image: "Carica una nuova immagine"
@@ -397,9 +413,6 @@ it:
         password: "Password"
         language_preference: "Lingua"
     placeholders:
-      discussion:
-        title: "Di quale argomento di piacerebbe discutere?"
-        description: "Queste informazioni appariranno in cima alla pagina della discussione. Introduci l'argomento e fornisci il contesto necessario perché il tuo gruppo abbia una discussione informata."
       motion:
         name: "Che linea d'azione proponi?"
         description: "Fornisci informazioni sufficienti perché tutti sappiano esattamente cosa significa essere o non essere d'accordo."
@@ -416,6 +429,7 @@ it:
     unsubscribe: "Disiscriviti o cambia le preferenze email:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per disiscriverti o cambiare le preferenze email."
     view_comment: "Clicca qui per vedere il commento su Loomio"
+    view_discussion: "Clicca qui per vedere la discussione"
     view_group: "Clicca qui per vedere il gruppo su Loomio"
     create_discussion:
       subject: "Nuova discussione - %{which}"
@@ -484,6 +498,7 @@ it:
   password: "Password"
   prev: "Prec"
   options: "Opzioni"
+  other: "Altro"
   ok_got_it: "Okay, ho capito!"
   save: "Salva"
   saving: "Salvataggio"

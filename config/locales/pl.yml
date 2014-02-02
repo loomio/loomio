@@ -1,7 +1,7 @@
 pl:
   errors:
     messages:
-      email: "Nieprawidłowy adres email"
+      email: "Nieprawidłowy adres e-mail"
   error:
     cant_join_subgroup: "Nie możesz dołączyć do podgrupy jeśli nie jesteś członkiem grupy."
     cant_modify_position: "Ta propozycja jest zamknięta."
@@ -65,9 +65,85 @@ pl:
         one: "dzień"
         few: "%{count} dni"
         other: "%{count} dni"
+      about_x_years:
+        one: "rok"
+        few: "%{count} lata"
+        other: "%{count} lat"
+      over_x_years:
+        one: "rok"
+        few: "%{count} lata"
+        other: "%{count} lat"
+      almost_x_years:
+        one: "rok"
+        few: "%{count} lata"
+        other: "%{count} lat"
+  footer:
+    blog: 'Blog'
+    contact: 'Kontakt'
+    privacy: 'Prywatność'
   notifications:
+    header: "Powiadomienia"
     new_discussion: "rozpocznij nową dyskusję"
     new_motion: "utwórz nową propozycję"
     motion_closed:
       by_user: "zamknij propozycję"
       by_expiry: "Propozycja została zamknięta"
+  see_all_notifications: "Zobacz wszystkie powiadomienia"
+  user_settings: "Ustawienia użytkownika"
+  sign_out: "Wyloguj się"
+  generic_confirm: "Czy jesteś pewien?"
+  invite_people: "Zaproś ludzi"
+  add_new_member: "Dodaj nowego członka"
+  edit_group_settings: "Edycja ustawień grupy"
+  leave_group: "Opuść grupę"
+  invited_users: "Zaproszeni członkowie"
+  members: "Członkowie"
+  ignore_request: "Ignoruj prośbę"
+  ignore: "Ignoruj"
+  subgroups: "Podgrupy"
+  create_a_subgroup: "Utwórz podgrupę"
+  new_subgroup: "Nowa podgrupa"
+  new_group: "Nowa grupa"
+  create_group: "Utwórz grupę"
+  help:
+    help: "Pomoc"
+    how_it_works: "Jak to działa"
+    join_the_community: "Dołącz do społeczności"
+    make_a_decision: "Podejmij decyzję"
+  search:
+    placeholder: "Szukaj"
+  simple_form:
+    'yes': 'Tak'
+    'no': 'Nie'
+    labels:
+      membership_request:
+        introduction: "Przedstaw się"
+      user:
+        password_confirmation: "Potwierdź hasło"
+        language_preference: "Język"
+    placeholders:
+      user:
+        password: "Hasło"
+  helpers:
+    submit:
+      user:
+        update: "Zaktualizuj ustawienia"
+  email:
+    invitation:
+      hi: "Witaj %{name},"
+      thanks: |
+        Dziękujemy!
+        Zespół Loomio
+  author: "Autor"
+  decisions: "Decyzje"
+  details: "Szczegóły"
+  discussions: "Dyskusje"
+  group: "Grupa"
+  password: "Hasło"
+  pricing: 'Opłaty'
+  options: "Opcje"
+  save: "Zapisz"
+  saving: "Zapisywanie"
+  thanks: "Dziękujemy!"
+  common:
+    email: "E-mail"

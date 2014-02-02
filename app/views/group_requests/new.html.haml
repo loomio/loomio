@@ -4,10 +4,6 @@
       %h1 Start your group
 .row
   .span5.offset1
-    = render 'form', submit_label: "Start group!", placeholder: "e.g. Neighbourhood Support Group"
+    = render 'form', submit_label: t(:start_group), placeholder: "e.g. Neighbourhood Support Group"
   .span4
-    .info-box#informal-group
-      %h2 Loomio is for everyone!
-      %p We have a payment model that suits any group, even those with no money :)
-      %p
-        = link_to "Find out more", pricing_path
+    = render 'groups/payment_model_info'

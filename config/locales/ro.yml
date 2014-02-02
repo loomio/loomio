@@ -275,7 +275,6 @@ ro:
   delete_comment: "Sterge comentariu"
   confirm_delete_comment: "Esti sigur ca vrei sa stergi acest comentariu?"
   markdown_settings_more_info: "Mai multe informatii..."
-  edit_discussion_title: "Modifica titlul discutiei"
   delete_discussion: "Sterge discutia"
   confirm_delete_discussion: "Esti sigur ca vrei sa stergi definitiv aceasta discutie?"
   new_proposal: "Propunere Noua"
@@ -411,7 +410,6 @@ ro:
       Salut, vino si ia decizii impreuna cu noi! Noi folosim un tool pentru luarea de decizii in mod colaborativ numit Loomio.
     message_body: "Mesaj invitatie"
     invites_more_help2: "<p> Poti invita oameni la grup in orice moment.</p><p> Poti sa-i inviti pe toti deodata, sau poti sa-i adaugi doar pe cei cu care lucrezi mai des.</p>"
-    send_invitations: "Trimite invitatii"
     invitation_link: "Linkul invitatiei"
     link_help: "Apasa acest link pentru a intra in grupul %{group} pe Loomio:"
     copy: "Daca cineva nu a primit emailul cu invitatia, poti sa copiezi linkul invitatiei de mai sus si sa-l trimiti personal."
@@ -431,10 +429,6 @@ ro:
       E o idee buna? Ajutorul Loomio vrea sa stie ce crezi!
       Daca stii ce vrei, apasa pe unul din butoanele de mai jos (poti sa mergi cu mouse-ul deasupra lor pentru o descriere a fiecaruia)
       Vei fi invitat sa adaugi o propozitie scurta continand motivul deciziei tale. Aceasta usureaza intelegerea rapida a ce doreste fiecare si de ce. Poti sa-ti schimbi parerea si sa-ti modifici decizia de cate ori vrei pana cand propunerea este inchisa.
-  discussion_form:
-    header: "Incepe o discutie"
-    who: "Ce grup vrei sa fie implicat in aceasta discutie?"
-    context: "Context"
   motion_form:
     header: "Propunere noua"
     name_helper: "Scrie un title cat se poate de clar si scurt astfel incat oamenii sa inteleaga exact la ce te referi cand sunt de acord sau nu cu propunerea ta."
@@ -487,9 +481,6 @@ ro:
         password_confirmation: "Confirma parola"
         language_preference: "Limba"
     placeholders:
-      discussion:
-        title: "Care este tema care vrei sa fie discutata?"
-        description: "Aceasta informatie va apare in partea de sus a paginii de discutie. Adauga o introducere a temei si detaliile necesare pentru ca grupul sa poata lua o decizie informata."
       membership_request:
         introduction: "Scrie in cateva cuvinte cine esti si de ce vrei sa te alaturi %{group_name}."
       motion:

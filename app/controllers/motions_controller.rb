@@ -33,12 +33,12 @@ class MotionsController < GroupBaseController
       if cannot? :show, @group
         head 401
       else
-        @closed_motions = @group.motions.closed.page(params[:page]).per(7)
+        @closed_motions = @group.motions.closed.page(params[:page])
         render :layout => false if request.xhr?
       end
     else
       authenticate_user!
-      @closed_motions= current_user.motions.closed.page(params[:page]).per(7)
+      @closed_motions= current_user.motions.closed.page(params[:page])
       render :layout => false if request.xhr?
     end
   end
@@ -108,7 +108,7 @@ class MotionsController < GroupBaseController
 
     def find_group
       if (params[:id] && (params[:id] != "new"))
-        Motion.find_by_key(params[:id]).group
+        Motion.find_by_key!(params[:id]).group
       elsif params[:motion][:discussion_id]
         Discussion.find(params[:motion][:discussion_id]).group
       end

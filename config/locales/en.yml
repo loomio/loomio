@@ -129,7 +129,7 @@ en:
   datetime:
     distance_in_words:
       less_than_x_seconds:
-        one:   "seconds"
+        one:   "second"
         other: "%{count} seconds"
       x_seconds:
         one:   "1 second"
@@ -167,6 +167,7 @@ en:
     blog: 'Blog'
     contact: 'Contact'
     privacy: 'Privacy'
+    public_groups: 'Public groups'
     terms: 'Terms'
 
   inbox:
@@ -251,6 +252,7 @@ en:
   email_group_members: "Email group members"
   edit_group_settings: "Edit group settings"
   leave_group: "Leave group"
+  confirm_leave_hidden_group: "Are you sure you wish to leave %{which_group}? You will also be removed from any subgroups."
   confirm_leave_group: "Are you sure you wish to leave %{which_group}?"
   deactivate_group: "De-activate group"
   confirm_deactivate_group: "Wait!!! Are you sure you want to de-activate %{which_group}? You will no longer be able to view the group. However, if you wish to get the group back you can ask us to reactivate it for you by sending an email to contact@loomio.org."
@@ -643,6 +645,10 @@ en:
     description: "Below is a list of discussions and proposals that have '%{query}' in their title or description."
     header: "Search results for '%{query}'"
     placeholder: "Search"
+    empty_search: 'Empty search'
+    please_enter_a_search: 'Please enter a query in the search bar above'
+    no_match: 'There were no results that matched your query'
+
 
   #
   # EXAMPLE CONTENT
@@ -717,6 +723,10 @@ en:
     desc_header: "You're almost there!"
     desc_html: "As the group coordinator, you’re responsible for setting up and managing your Loomio group. After you choose a few settings, you can get into your new group, start a discussion or two, and send out some invitations! <p>When thinking about the simplest way you can describe your group, ask yourself: What do you want to achieve together? What types of decisions will you be making? Who will be involved?</p>"
     submit: "Take me to my group!"
+    payment_model:
+      header: Loomio is for everyone!
+      info: We have a payment model that suits any group, even those with no money :)
+      link: Find out more
 
   simple_form:
     "yes": 'Yes'
@@ -947,6 +957,7 @@ en:
   send_email: "Send email"
   show_more: "Show More"
   start_a_group: "Start a group"
+  start_group: "Start group!"
   starting: "Starting"
   subject: "Subject"
   terms_of_service_html: "By clicking %{button_text}, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"

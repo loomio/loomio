@@ -174,7 +174,7 @@ class DiscussionsController < GroupBaseController
   private
 
   def load_resource_by_key
-    @discussion ||= Discussion.published.find_by_key(params[:id])
+    @discussion ||= Discussion.published.find_by_key!(params[:id])
   end
 
   def build_comment

@@ -22,7 +22,7 @@ describe Groups::InvitationsController do
                           cancel!: true)}
 
     before do
-      Group.stub_chain(:published, :find_by_key).and_return(@group)
+      Group.stub_chain(:published, :find_by_key!).and_return(@group)
       @group.stub_chain(:pending_invitations, :find).and_return(invitation)
     end
 

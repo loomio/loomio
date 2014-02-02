@@ -14,12 +14,6 @@ class Inbox
     end
   end
 
-  def get_size_without_load
-    num_discussions = Queries::VisibleDiscussions.new(user: @user, group_ids: group_ids).unread.readonly(false).count
-    num_motions = Queries::VisibleMotions.new(user: @user, group_ids: group_ids).unread.voting.readonly(false).count
-    (num_motions + num_discussions)
-  end
-
   def load
     @grouped_items = {}
     @unread_discussions_per_group = {}

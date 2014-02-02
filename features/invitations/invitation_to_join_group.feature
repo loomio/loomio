@@ -51,10 +51,10 @@ Feature: Invitation to join group
     And "David" is a member of the group
     When I visit the subgroup page
     And I click invite people
-    # And I enter "new@user.com" in the invitations field
+    And I enter "new@user.com" in the invitations field
     And I select "David" from the list of members
     And I confirm the selection
-    # Then "new@user.com" should be invited to join the subgroup 
+    Then "new@user.com" should be invited to join the subgroup
     And I should see "David" as a member of the subgroup
     And "David" should receive a notification that they have been added
 

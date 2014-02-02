@@ -14,7 +14,12 @@ module GroupsHelper
   end
 
   def show_subscription_prompt?(group)
-    user_signed_in? && current_user.is_group_admin?(group) && (group.created_at < 1.month.ago) && !group.has_subscription_plan? && !group.is_sub_group? && (I18n.locale == :en)
+    user_signed_in? && current_user.is_group_admin?(group) &&
+      ( group.created_at < 1.month.ago ) &&
+      !group.has_subscription_plan? &&
+      !group.has_manual_subscription? &&
+      !group.is_sub_group? &&
+      ( I18n.locale == :en )
   end
 
   def pending_membership_requests_count(group)
