@@ -136,6 +136,7 @@ Loomio::Application.routes.draw do
 
   resources :comments , only: :destroy do
     post :like, on: :member
+    post :translate, on: :member
   end
 
   resources :attachments, only: [:create, :new] do

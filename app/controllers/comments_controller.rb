@@ -1,5 +1,7 @@
 class CommentsController < BaseController
   load_and_authorize_resource only: :destroy
+  load_resource only: [:like, :translate]
+  skip_before_filter :authenticate_user!, only: :translate
 
   def destroy
     CommentDeleter.new(@comment).delete_comment
@@ -8,8 +10,6 @@ class CommentsController < BaseController
   end
 
   def like
-    @comment = Comment.find(params[:id])
-
     if params[:like] == 'true'
       DiscussionService.like_comment(current_user, @comment)
     else
@@ -18,4 +18,12 @@ class CommentsController < BaseController
 
     render :template => "comments/comment_likes"
   end
+  
+  def translate
+    @translation = @comment.translate @comment.author.primary_language, I18n.locale.to_s
+    @success = @translation.present? && @translation != @comment.body
+    
+    render :template => "comments/comment_translations"
+  end
+
 end
