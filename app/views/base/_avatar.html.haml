@@ -1,7 +1,14 @@
 -kind ||= user.avatar_kind
+-link_to_profile ||= false
 -#-cache user do
 %div{ class: "#{size}-user-avatar #{kind}-user-avatar avatar-canvas", id: id }
-  - if kind == 'initials'
-    = user.avatar_initials
+  - if link_to_profile == true
+    - if kind == 'initials'
+      = link_to user.avatar_initials, user_path(user)
+    - else
+      = link_to image_tag(user.avatar_url(size, kind)), user_path(user)
   - else
-    = image_tag user.avatar_url(size, kind)
+    - if kind == 'initials'
+      = user.avatar_initials
+    - else
+      = image_tag user.avatar_url(size, kind)
