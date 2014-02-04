@@ -123,6 +123,10 @@ class User < ActiveRecord::Base
   def name_and_email
     "#{name} <#{email}>"
   end
+  
+  def primary_language
+    language_preference.split(',').first if language_preference    
+  end
 
   # Provide can? and cannot? as methods for checking permissions
   def ability
