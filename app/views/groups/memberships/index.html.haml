@@ -23,13 +23,10 @@
     -@memberships.each do |membership|
       -user = membership.user
       %tr{id: "membership-for-user-#{user.id}"}
-        %td=render 'avatar', user: user, size: "medium", kind: nil, id: nil, link_to_profile: true
-        -if @group.admins.include?(user)
-          %td
-            %div=user.name
-            %div.access-level="Coordinator"
-        -else
-          %td=user.name
+        %td=render 'avatar', user: user, size: "medium"
+        %td
+          %div= link_to user.name, user_path(user)
+          %div.access-level="Coordinator" if membership.admin?
         %td=user.email
         %td
           -if can? :update, @group
