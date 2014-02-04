@@ -38,7 +38,7 @@ Loomio::Application.routes.draw do
 
   resources :groups, path: 'g', only: [:create, :edit] do
     scope module: :groups do
-      resources :invitations, only: [:index, :destroy, :new, :create]
+      resources :invitations, only: [:destroy, :new, :create]
       resources :memberships, only: [:index, :destroy, :new, :create] do
         member do
          post :make_admin

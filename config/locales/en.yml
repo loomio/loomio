@@ -232,7 +232,6 @@ en:
 
   invite_people: "Invite people"
   no_invitations_button: "No invitations left"
-  pending_invitations: 'Pending invitations'
   number_pending: '%{pending} pending'
   and_number_pending: 'and %{pending} pending'
   edit_memberships: 'Edit memberships'
@@ -636,6 +635,8 @@ en:
     invitation_link: "Invitation link"
     link_help: "Click this link to join %{group} on Loomio:"
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
+    pending_invitations: 'Pending invitations'
+    no_pending_invitations: "There are currently no pending invitations."
 
   #
   # SEARCH
@@ -945,7 +946,7 @@ en:
   photo:
   pricing: 'Pricing'
   prev: "Prev"
-  translate: "Help translate Loomio!"
+  more: "More..."
   options: "Options"
   other: "Other"
   ok_got_it: "Okay, got it!"
@@ -962,6 +963,7 @@ en:
   subject: "Subject"
   terms_of_service_html: "By clicking %{button_text}, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>"
   thanks: "Thanks!"
+  translate: "Help translate Loomio!"
   unlike: "Unlike"
   until_close: "until close"
   update: "Update"

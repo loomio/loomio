@@ -31,9 +31,9 @@ describe Groups::InvitationsController do
       delete :destroy, group_id: @group.key
     end
 
-    it 'redirects to group_invitations_path with flash notice' do
+    it 'redirects to group_memberships_path with flash notice' do
       delete :destroy, group_id: @group.key
-      response.should redirect_to group_invitations_path(@group)
+      response.should redirect_to group_memberships_path(@group)
     end
   end
 end

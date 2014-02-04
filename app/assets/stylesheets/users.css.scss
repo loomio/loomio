@@ -69,6 +69,7 @@ body.users {
   float: left;
   margin-right: 3px;
   font-weight: bold;
+  a { color: $mid-grey; }
   &.gravatar-user-avatar, &.uploaded-user-avatar {
     border: 1px solid rgba(255, 255, 255, 0)
   }

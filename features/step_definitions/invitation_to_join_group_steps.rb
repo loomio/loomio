@@ -201,7 +201,8 @@ Then /^I should see "(.*?)" as an invited user of the subgroup$/ do |email|
 end
 
 Then /^I should see "(.*?)" as a member of the subgroup$/ do |name|
-  find("#users-list").should have_content(name)
+  visit group_memberships_path(@group)
+  page.should have_content(name)
 end
 
 Then /^I should get an email with subject "(.*?)"$/ do |arg1|

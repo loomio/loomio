@@ -20,7 +20,7 @@ class Groups::InvitationsController < GroupBaseController
                                               inviter: current_user)
 
     set_flash_message
-    redirect_to group_path(@group)
+    redirect_to group_memberships_path(@group)
   end
 
   def index
@@ -31,7 +31,7 @@ class Groups::InvitationsController < GroupBaseController
   def destroy
     load_invitation
     @invitation.cancel!(canceller: current_user)
-    redirect_to group_invitations_path(@group), notice: "Invitation to #{@invitation.recipient_email} cancelled"
+    redirect_to group_memberships_path(@group), notice: "Invitation to #{@invitation.recipient_email} cancelled"
   end
 
   private
