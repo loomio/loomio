@@ -170,8 +170,13 @@ Then /^I should not see the list of invited users$/ do
   page.should_not have_css('#invited-users')
 end
 
+When(/^I visit my group's memberships index$/) do
+  visit group_path(@group)
+  click_on 'More'
+end
+
+
 Then /^I email the group members$/ do
-  find('#group-member-options').click()
   click_on "Email group members"
   fill_in "group_email_subject", :with => "Message to group"
   fill_in "group_email_body", :with => "Y'all are great"
