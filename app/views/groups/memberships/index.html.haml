@@ -49,16 +49,17 @@
                 :confirm => t(:confirm_remove_member)
 
 - unless @group.pending_invitations.count == 0
-  %h1=  t :pending_invitations
-  %table.pending-invitations.table.table-striped
-    %thead
-      %th= t "common.email"
-      %th= t "invitation.invitation_link"
-    %tbody
-      - @group.pending_invitations.each do |invitation|
-        %tr
-          %td= invitation.recipient_email
-          %td= invitation_url(invitation)
-          %td= link_to(t(:cancel), group_invitation_path(@group, invitation), method: :delete, class: 'btn')
+  - if can?(:add_members, @group)
+    %h1=  t :pending_invitations
+    %table.pending-invitations.table.table-striped
+      %thead
+        %th= t "common.email"
+        %th= t "invitation.invitation_link"
+      %tbody
+        - @group.pending_invitations.each do |invitation|
+          %tr
+            %td= invitation.recipient_email
+            %td= invitation_url(invitation)
+            %td= link_to(t(:cancel), group_invitation_path(@group, invitation), method: :delete, class: 'btn')
 
-  %p= t "invitation.copy"
+    %p= t "invitation.copy"
