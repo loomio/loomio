@@ -76,7 +76,7 @@ class Inbox
   end
 
   def groups
-    @user.memberships.where('inbox_position is not null').order(:inbox_position).map(&:group)
+    @user.memberships.where('inbox_position is not null').order(:inbox_position).map(&:group).compact
   end
 
   def group_ids
