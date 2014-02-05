@@ -51,6 +51,7 @@ gem 'font-awesome-sass-rails'
 gem 'rabl', '~> 0.8.6'
 gem 'sequenced', '~> 1.4.0'
 gem 'closure_tree', '~> 4.3.0'
+gem 'bing_translator', '~> 4.0.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
