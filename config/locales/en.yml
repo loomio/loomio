@@ -947,6 +947,8 @@ en:
   pricing: 'Pricing'
   prev: "Prev"
   more: "More..."
+  translate: "Help translate Loomio!"
+  translate_this_string: "Translate to %{language}"
   options: "Options"
   other: "Other"
   ok_got_it: "Okay, got it!"
