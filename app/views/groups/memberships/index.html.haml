@@ -23,7 +23,7 @@
     -@memberships.each do |membership|
       -user = membership.user
       %tr{id: "membership-for-user-#{user.id}"}
-        %td=render 'avatar', user: user
+        %td=render 'linked_avatar', user: user
         %td
           %div= link_to user.name, user_path(user)
           %div.access-level="Coordinator" if membership.admin?
