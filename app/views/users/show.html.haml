@@ -1,7 +1,7 @@
 #user-profile
   .row
     .span3
-      = render 'avatar', user: @user, size: "large", kind: nil, id: 'avatar-preview'
+      = render 'avatar', user: @user, size: "large", id: 'avatar-preview'
     .span8
       %h1= @user.name
       %p.username= "@" + @user.username

@@ -3,14 +3,14 @@
   %a{class: "comment-anchor", id: "comment-#{comment.id}"}
   .content-container{class: unread}
     .activity-item-avatar.medium-user-avatar
-      %a{ href: user_path(comment.user), alt: "link to profile: #{comment.user_name}" }
-        = render 'base/avatar', user: comment.user, size: "medium", kind: nil, id: nil
+      = render 'linked_avatar', user: comment.user
     .activity-item-body
       .activity-item-text-container
         .activity-item-comment-actor
           =link_to comment.user_name, user_path(comment.user), class: "user-name"
-        .activity-item-header~ add_mention_links(render_rich_text(comment.body.to_s.force_encoding("UTF-8"), comment.uses_markdown?)).html_safe
-
+        .activity-item-header
+          ~ add_mention_links(render_rich_text(comment.body.to_s.force_encoding("UTF-8"), comment.uses_markdown?)).html_safe
+          .activity-item-translation= t(:loading)
       -if comment.attachments_count > 0
         -comment.attachments.each do |a|
           .comment-attachment

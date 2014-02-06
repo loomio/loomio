@@ -3,23 +3,20 @@ When(/^I click the pending link$/) do
 end
 
 Then(/^I should see the pending invitations for the group$/) do
-  page.should have_content I18n.t(:pending_invitations)
+  page.should have_css(".pending-invitations")
 end
 
-Then(/^I should not see a pending link$/) do
-  page.should_not have_content 'pending-count'
-end
 
 Then(/^I should see the no invitations page$/) do
   page.should have_content I18n.t(:"invitation.no_invitations_left")
 end
 
-Given(/^The group has run out of invites$/) do
+Given(/^the group has run out of invites$/) do
   @group.max_size = 2
   @group.save!
 end
 
-When(/^I click Invite People$/) do
+When(/^I click 'Invite People'$/) do
   click_on 'Invite people'
 end
 
@@ -30,7 +27,7 @@ When(/^invite a couple of people to join the group$/) do
 end
 
 Then(/^there should be a couple of pending invitations to those people$/) do
-  visit group_invitations_path(@group)
+  visit group_memberships_path(@group)
   page.should have_content 'rob@enspiral.com'
   page.should have_content 'joe@webnet.com'
 end
@@ -40,13 +37,14 @@ Then(/^the flash notice should inform me of (\d+) invitations being sent$/) do |
 end
 
 Given(/^there is a pending invitation to join the group$/) do
-  #CreateInvitation.to_join_group(recipient_email: 'me@you.com',
-                                 #group: @group,
-                                 #inviter: @user)
+  @group.pending_invitations.first.destroy
+  @invitation = CreateInvitation.to_join_group(group: @group,
+                                               inviter: @user,
+                                               recipient_email: 'jim@jimmy.com')
 end
 
 When(/^I cancel the pending invitation$/) do
-  visit group_invitations_path(@group)
+  visit group_memberships_path(@group)
   within 'table.pending-invitations' do
     click_link 'Cancel'
   end
@@ -58,4 +56,31 @@ end
 
 Then(/^the flash notice should confirm the cancellation$/) do
   page.should have_content 'cancelled'
+end
+
+
+Given(/^there is a cancelled invitation to a group$/) do
+  @coordinator = FactoryGirl.create(:user)
+  @group = FactoryGirl.create(:group)
+  @group.add_admin!(@coordinator)
+  @invitation = CreateInvitation.to_join_group(group: @group,
+                                               inviter: @coordinator,
+                                               recipient_email: 'jim@jimmy.com')
+  @invitation.cancel!(canceller: @coordinator)
+end
+
+When(/^I click the invitation$/) do
+  visit invitation_path(@invitation)
+end
+
+Then(/^I should be told the invitation was cancelled$/) do
+  page.should have_content('cancelled')
+end
+
+When(/^I load an unknown invitation link$/) do
+  visit invitation_path(id: 'asjdhaskdjhasd')
+end
+
+Then(/^I should be told the invitation token was not found$/) do
+  page.should have_content 'Could not find invitation'
 end

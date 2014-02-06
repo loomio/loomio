@@ -9,11 +9,11 @@ class Translation
                "Indonesian" => "id",
                "magyar" => "hu",
                "Nederlands" => "nl",
-               "Português" => "pt",
+               "Português (Brasil)" => "pt",
                "română" => "ro",
                "Tiếng Việt" => "vi"}
   EXPERIMENTAL_LANGUAGES = {"Italiano" => "it",
-                            "čeština" => "cz"}
+                            "čeština" => "cs"}
 
   def self.language(locale)
     LANGUAGES.key(locale)

@@ -126,6 +126,10 @@ module DiscussionsHelper
     description = t(:'simple_form.labels.discussion.privacy_private_description', group: group)
     options << ["<span class='discussion-privacy-setting-header'><i class='icon-lock'></i>#{header}<br /><p>#{description}</p>".html_safe, true ]
   end
+  
+  def current_language
+    Translation.language I18n.locale.to_s
+  end
 
   def privacy_language(discussion)
     discussion.private? ? "private" : "public"

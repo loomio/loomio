@@ -1,12 +1,11 @@
 class Groups::MembershipsController < GroupBaseController
   load_and_authorize_resource except: [:index]
-  before_filter :require_current_user_is_group_admin, only: [:index]
 
   rescue_from CanCan::AccessDenied, with: :only_group_admin
 
   def index
-    @memberships = @group.memberships.joins(:user).order('name')
     @group = GroupDecorator.new(Group.find(params[:group_id]))
+    @memberships = @group.memberships.joins(:user).order('name')
   end
 
   def make_admin
