@@ -1,6 +1,6 @@
 %li.nav-item.dropdown#user
   %a.nav-link{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
-    = render 'base/avatar', user: current_user, size: "small", id: 'header-user-image', link_to_profile: false
+    = render 'base/avatar', user: current_user, size: "small", id: 'header-user-image'
     %span#user-name-dropdown
       = current_user.name
     %b.caret

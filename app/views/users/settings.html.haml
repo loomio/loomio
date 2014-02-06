@@ -12,7 +12,7 @@
     %h2= t("user_settings_form.picture")
 .row
   .span3
-    = render 'avatar', user: @user, size: "large", id: 'avatar-preview', link_to_profile: false
+    = render 'avatar', user: @user, size: "large", id: 'avatar-preview'
   .span3
     %ul.user-image-options
       - if @user.has_uploaded_image?
