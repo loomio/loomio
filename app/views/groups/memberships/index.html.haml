@@ -15,7 +15,8 @@
   %thead
     %th= t :photo
     %th= t :name
-    %th= t :"common.email"
+    -if can? :update, @group
+      %th= t :"common.email"
     -if can? :update, @group
       %th= t :coordinator
       %th= t :remove
@@ -27,7 +28,8 @@
         %td
           %div= link_to user.name, user_path(user)
           %div.access-level="Coordinator" if membership.admin?
-        %td=user.email
+        -if can? :update, @group
+          %td=user.email
         %td
           -if can? :update, @group
             - if membership.admin?
