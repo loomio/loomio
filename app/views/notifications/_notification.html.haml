@@ -12,7 +12,7 @@
 
   %li.selector-item{:class => "notification-item#{class_name}", :id => "notification-#{notification.id}" }
     %a{:href => href }
-      = render 'avatar', user: avatar, link_to_profile: false
+      = render 'avatar', user: avatar
       %span.notification-content
         - if actor
           %span.bold-name= actor.name

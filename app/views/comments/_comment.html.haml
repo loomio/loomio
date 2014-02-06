@@ -3,7 +3,7 @@
   %a{class: "comment-anchor", id: "comment-#{comment.id}"}
   .content-container{class: unread}
     .activity-item-avatar.medium-user-avatar
-      = render 'base/avatar', user: comment.user
+      = render 'linked_avatar', user: comment.user
     .activity-item-body
       .activity-item-text-container
         .activity-item-comment-actor
