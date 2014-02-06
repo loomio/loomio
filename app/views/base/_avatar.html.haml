@@ -1,21 +1,12 @@
 -id ||= nil
 -kind ||= user.avatar_kind
 -size ||= "medium"
--link_to_profile = ( link_to_profile.nil? ? true : link_to_profile )
--show_title =      ( show_title.nil?     ? false : show_title )
-
+-show_title = ( show_title.nil? ? false : show_title )
 -name = user.name
 -title = ( show_title ? name : nil )
 
--#-cache user do
 %div{ class: "#{size}-user-avatar #{kind}-user-avatar avatar-canvas", id: id, title: title }
-  - if link_to_profile == true
-    - if kind == 'initials'
-      = link_to user.avatar_initials, user_path(user)
-    - else
-      = link_to image_tag(user.avatar_url(size, kind)), user_path(user)
+  - if kind == 'initials'
+    = user.avatar_initials
   - else
-    - if kind == 'initials'
-      = user.avatar_initials
-    - else
-      = image_tag user.avatar_url(size, kind)
+    = image_tag user.avatar_url(size, kind)
