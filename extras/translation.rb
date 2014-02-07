@@ -13,7 +13,8 @@ class Translation
                "română" => "ro",
                "Tiếng Việt" => "vi"}
   EXPERIMENTAL_LANGUAGES = {"Italiano" => "it",
-                            "čeština" => "cs"}
+                            "čeština" => "cs",
+                            'Irish (Ireland)' => 'ga'}
 
   def self.language(locale)
     LANGUAGES.key(locale)

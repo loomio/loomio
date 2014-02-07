@@ -72,9 +72,6 @@ hu:
     proposal_deleted: "Töröltük a javaslatot."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "másodperc"
-        other: "%{count} másodperc"
       x_seconds:
         one: "1 másodperc"
         other: "%{count} másodperc"
@@ -148,7 +145,6 @@ hu:
   setup_step_3: "Hívj meg másokat a csoportba"
   invite_people: "Hívj meg másokat"
   no_invitations_button: "Nincs több meghívód"
-  pending_invitations: 'Függő meghívók'
   number_pending: '%{pending} függőben'
   and_number_pending: 'és %{pending} függőben'
   edit_memberships: 'Tagság szerkesztése'

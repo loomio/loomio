@@ -64,9 +64,6 @@ it:
     proposal_deleted: "Proposta cancellata."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "secondo"
-        other: "%{count} secondi"
       x_seconds:
         one: "1 secondo"
         other: "%{count} secondi"
@@ -137,7 +134,6 @@ it:
   setup_step_3: "Invita gente al gruppo"
   invite_people: "Invita"
   no_invitations_button: "Nessun invito rimasto"
-  pending_invitations: 'Inviti in sospeso'
   edit_memberships: 'Modifica iscrizioni'
   add_new_member: "Aggiungi un nuovo membro"
   invite_members_to_group: "Invita membri a %{which_group}"

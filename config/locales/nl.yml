@@ -115,9 +115,6 @@ nl:
     proposal_deleted: "Voorstel is verwijderd."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "1 seconde"
-        other: "%{count} seconden"
       x_seconds:
         one: "1 seconde"
         other: "%{count} seconden"
@@ -205,7 +202,6 @@ nl:
   setup_step_3: "Nodig mensen uit voor je groep"
   invite_people: "Mensen uitnodigen"
   no_invitations_button: "Geen uitnodigingen over"
-  pending_invitations: 'Openstaande uitnodigingen'
   number_pending: '%{pending} openstaand'
   and_number_pending: 'en %{pending} openstaand'
   edit_memberships: 'Bewerk lidmaatschappen'
@@ -742,7 +738,6 @@ nl:
   password: "Wachtwoord"
   pricing: 'Tarieven'
   prev: "Vorige"
-  translate: "Help Loomio te vertalen!"
   options: "Opties"
   other: "Andere"
   ok_got_it: "Okee, ik snap 't!"
@@ -758,6 +753,7 @@ nl:
   subject: "Onderwerp"
   terms_of_service_html: "Door te klikken op %{button_text}, ga je akkoord met Loomio's <a href='%{link_path}' target='_blank'>Algemene Voorwaarden</a>"
   thanks: "Bedankt!"
+  translate: "Help Loomio te vertalen!"
   unlike: "Niet leuk"
   until_close: "tot sluiting"
   update: "Bijwerken"
