@@ -9,20 +9,20 @@ Feature: Email preferences page
     And "Ben" belongs to "Pals"
     And I login as "ben@example.org"
 
-  Scenario: User enables activity summary email by clicking a day of the week
-    When I visit the email preferences page
-    And I click on Monday
-    And I click on Wednesday
-    And I select the time of day
-    And I click "Update preferences"
-    Then I should be subscribed to the activity summary email
+  # Scenario: User enables activity summary email by clicking a day of the week
+  #   When I visit the email preferences page
+  #   And I click on Monday
+  #   And I click on Wednesday
+  #   And I select the time of day
+  #   And I click "Update preferences"
+  #   Then I should be subscribed to the activity summary email
 
-  Scenario: User disables activity summary email by desellecting all days of the week
-    Given I am subscribed to the activity summary email
-    When I visit the email preferences page
-    And I unselect the days to receive the summary email
-    And I click "Update preferences"
-    Then I should not be subscribed to the activity summary email
+  # Scenario: User disables activity summary email by desellecting all days of the week
+  #   Given I am subscribed to the activity summary email
+  #   When I visit the email preferences page
+  #   And I unselect the days to receive the summary email
+  #   And I click "Update preferences"
+  #   Then I should not be subscribed to the activity summary email
 
   Scenario: User enables 24 hour proposal close notification
     When I visit the email preferences page

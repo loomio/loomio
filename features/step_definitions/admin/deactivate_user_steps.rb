@@ -1,8 +1,6 @@
 Given(/^there is a user in a group$/) do
   @user = FactoryGirl.create(:user, name: "Marge", 
                               email: "marge@large.org")
-  @user.subscribed_to_daily_activity_email = true
-  @user.save!
   @group = FactoryGirl.create :group
   @membership = @group.add_member! @user
 end
@@ -16,7 +14,8 @@ Then(/^the user's deleted_at attribute should be set$/) do
 end
 
 And(/^the user's email notifications should be turned off$/) do
-  @user.email_preferences.subscribed_to_mention_notifications == false
+  @user.email_preferences.subscribed_to_daily_activity_email.should == false
+  @user.email_preferences.subscribed_to_mention_notifications.should == false
   @user.email_preferences.subscribed_to_proposal_closure_notifications.should == false
   @user.email_preferences.days_to_send.should be_empty
 end
