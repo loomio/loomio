@@ -107,9 +107,6 @@ es:
     proposal_deleted: "Propuesta eliminada."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "segundo"
-        other: "%{count} segundos"
       x_seconds:
         one: "1 segundo"
         other: "%{count} segundos"
@@ -193,7 +190,6 @@ es:
   setup_step_3: "Invita personas a tu grupo"
   invite_people: "Invitar personas"
   no_invitations_button: "No hay mas invitaciones"
-  pending_invitations: ' Invitaciones pendientes'
   number_pending: '%{pending} pendiente'
   and_number_pending: 'y %{pending} pendiente'
   edit_memberships: 'Editar membresias'
@@ -655,7 +651,6 @@ es:
   password: "Contraseña"
   pricing: 'Precios'
   prev: "Atrás"
-  translate: "Ayúdanos a traducir Loomio!"
   options: "Opciones"
   other: "Otro"
   ok_got_it: "Bien, lo tengo!"
@@ -671,6 +666,7 @@ es:
   subject: "Titulo"
   terms_of_service_html: "Haciendo click en %{button_text}, aceptas <a href='%{link_path}' target='_blank'>los términos de servicio de Lomio</a>"
   thanks: "Gracias!"
+  translate: "Ayúdanos a traducir Loomio!"
   unlike: "Ya no me gusta"
   until_close: "hasta que cierre"
   update: "Actualizar"

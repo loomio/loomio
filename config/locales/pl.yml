@@ -41,10 +41,6 @@ pl:
     proposal_deleted: "Propozycja usunięta."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "%{count} sekunda"
-        few: "%{count} sekundy"
-        other: "%{count} sekund"
       x_seconds:
         one: "%{count} sekunda"
         few: "%{count} sekundy"
