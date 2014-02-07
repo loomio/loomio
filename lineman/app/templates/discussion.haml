@@ -1,19 +1,22 @@
 .card-page.discussion
   .card-row
-    .card#top
-      .card__header--standalone
-        .media
-          .media__img
-            %i.icon-group
-          %h3.media__title
-            %a{'ng-href' => '/group/{{discussion.group_id}}'}
-              {{discussion.group_name}}
-
-  .card-row
     .card
       .card__content
         %h1.card__title
           {{discussion.title}}
+        .media__details
+          Started {{discussion.created_at | timeFromNowInWords}} by {{discussion.author.name}}
+        .media
+          .media__img
+            %img{alt: "...", src: '{{author.avatar_path}}'}
+          .media_text
+            {{discussion.group.name}}
+            {{discussion.group.memberships.count}} members
+      .card-row
+        %img{alt: "...", src: '{{user.avatar_url}}'}
+        %img{alt: "...", src: '{{user.avatar_url}}'}
+        %img{alt: "...", src: '{{user.avatar_url}}'}
+        %img{alt: "...", src: '{{user.avatar_url}}'}
 
   .card-row
     .card
