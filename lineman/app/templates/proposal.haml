@@ -15,17 +15,13 @@
     .clearfix
     .row.decision-buttons
       .agree{ng_click: 'selectPosition("yes")'}
-        ''
-        %img{ng_src: 'img/abstain.jpg'}
-        / %button{"ng-click" => "img_url = 'https://farm4.staticflickr.com/3261/2801924702_ffbdeda927_d.jpg'"} Click
-
-        %i.fa.fa-thumbs-up
+        %img{src: '/img/yes.jpg'}
       .abstain{ng_click: 'selectPosition("abstain")'}
-        %i.fa.fa-meh-o
+        %img{src: '/img/abstain.jpg'}
       .disagree{ng_click: 'selectPosition("no")'}
-        %i.fa.fa-thumbs-down
+        %img{src: '/img/no.jpg'}
       .block{ng_click: 'selectPosition("block")'}
-        %i.fa.fa-warning
+        %img{src: '/img/block.jpg'}
 
     .row.statement-form{ng_show: 'voteFormIsExpanded'}
       %form{ng_submit: 'submitVote()'}
