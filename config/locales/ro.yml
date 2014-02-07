@@ -81,10 +81,6 @@ ro:
     proposal_deleted: "Propunerea a fost stearsa."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "o secunda"
-        few: "cateva secunde"
-        other: "%{count} secunde"
       x_seconds:
         one: "1 secunda"
         few: "cateva secunde"
@@ -175,7 +171,6 @@ ro:
   setup_step_3: "Invita oameni in grupul tau"
   invite_people: "Invita oameni"
   no_invitations_button: "Nici o invitatie ramasa"
-  pending_invitations: 'Invitatii in asteptare'
   number_pending: '%{pending} in asteptare'
   and_number_pending: 'si %{pending} in asteptare'
   edit_memberships: 'Editeaza membrii'
@@ -589,7 +584,6 @@ ro:
   password: "Parola"
   pricing: 'Plati'
   prev: "Anteriorul"
-  translate: "Ajuta la traducerea Loomio!"
   options: "Optiuni"
   other: "Altele"
   ok_got_it: "Ok, am inteles!"
@@ -604,6 +598,7 @@ ro:
   starting: "Incep"
   subject: "Subiect"
   thanks: "Multumim!"
+  translate: "Ajuta la traducerea Loomio!"
   unlike: "Nu apreciez"
   until_close: "pana la inchidere"
   update: "Modifica"
