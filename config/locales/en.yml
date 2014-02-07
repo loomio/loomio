@@ -701,6 +701,8 @@ en:
 
   email_preferences_form:
     header: "Email preferences"
+    daily_activity_summary: "Daily Activity Summary"
+    daily_activity_subscription: "Send me a daily activity email summarising what’s been happening in my groups"
     activity_summary_email: "Activity Summary Email"
     activity_summary_subscription: "Send me new activity in my groups on the following days"
     hour_to_send: "at the following hour"
@@ -831,6 +833,10 @@ en:
       intro: "A new proposal was created in a Loomio group that you belong to."
       closes_in: "Closes in"
       subject: "New proposal: %{which}"
+    daily_activity:
+      heading: "Your Loomio Activity"
+      intro: "Showing you what’s been happening in your Loomio groups in the last 24 hours"
+      subject: "Loomio - Summary of the last 24 hours"
     activity_summary:
       created_a_proposal: "created a proposal"
       discussion_started_by: "Started by %{who}"

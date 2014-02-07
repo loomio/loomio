@@ -182,10 +182,10 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
     t.boolean  "is_deleted",                   :default => false,                 :null => false
     t.integer  "comments_count",               :default => 0,                     :null => false
     t.integer  "items_count",                  :default => 0,                     :null => false
-    t.string   "key"
     t.datetime "archived_at"
     t.boolean  "private"
-    t.datetime "last_non_comment_activity_at", :default => '2014-01-27 00:18:58', :null => false
+    t.string   "key"
+    t.datetime "last_non_comment_activity_at", :default => '2014-01-29 22:35:41', :null => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -197,14 +197,15 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
 
   create_table "email_preferences", :force => true do |t|
     t.integer  "user_id"
-    t.boolean  "subscribed_to_proposal_closure_notifications", :default => true, :null => false
-    t.boolean  "subscribed_to_mention_notifications",          :default => true, :null => false
+    t.boolean  "subscribed_to_daily_activity_email",           :default => false, :null => false
+    t.boolean  "subscribed_to_proposal_closure_notifications", :default => true,  :null => false
+    t.boolean  "subscribed_to_mention_notifications",          :default => true,  :null => false
     t.text     "days_to_send"
-    t.integer  "hour_to_send",                                 :default => 22,   :null => false
+    t.integer  "hour_to_send",                                 :default => 22,    :null => false
     t.datetime "next_activity_summary_sent_at"
     t.datetime "activity_summary_last_sent_at"
-    t.datetime "created_at",                                                     :null => false
-    t.datetime "updated_at",                                                     :null => false
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
   end
 
   add_index "email_preferences", ["user_id"], :name => "index_email_preferences_on_user_id"
@@ -450,7 +451,7 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
     t.integer  "votes_count",               :default => 0,                     :null => false
     t.integer  "outcome_author_id"
     t.string   "key"
-    t.datetime "last_non_vote_activity_at", :default => '2014-01-27 00:18:58', :null => false
+    t.datetime "last_non_vote_activity_at", :default => '2014-01-29 22:35:41', :null => false
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
@@ -493,12 +494,12 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
   add_index "subscriptions", ["group_id"], :name => "index_subscriptions_on_group_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                             :default => "",         :null => false
-    t.string   "encrypted_password",                 :limit => 128, :default => ""
+    t.string   "email",                                       :default => "",         :null => false
+    t.string   "encrypted_password",           :limit => 128, :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                     :default => 0
+    t.integer  "sign_in_count",                               :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -513,20 +514,19 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.datetime "deleted_at"
-    t.boolean  "has_read_system_notice",                            :default => false,      :null => false
-    t.boolean  "is_admin",                                          :default => false
-    t.string   "avatar_kind",                                       :default => "initials", :null => false
+    t.boolean  "has_read_system_notice",                      :default => false,      :null => false
+    t.boolean  "is_admin",                                    :default => false
+    t.string   "avatar_kind",                                 :default => "initials", :null => false
     t.string   "uploaded_avatar_file_name"
     t.string   "uploaded_avatar_content_type"
     t.integer  "uploaded_avatar_file_size"
     t.datetime "uploaded_avatar_updated_at"
     t.string   "avatar_initials"
     t.string   "username"
-    t.boolean  "subscribed_to_daily_activity_email",                :default => false,      :null => false
     t.string   "authentication_token"
     t.string   "unsubscribe_token"
-    t.integer  "memberships_count",                                 :default => 0,          :null => false
-    t.boolean  "uses_markdown",                                     :default => false
+    t.integer  "memberships_count",                           :default => 0,          :null => false
+    t.boolean  "uses_markdown",                               :default => false
     t.string   "language_preference"
     t.string   "time_zone"
     t.string   "key"

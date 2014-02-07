@@ -101,6 +101,7 @@ class User < ActiveRecord::Base
 
   scope :active, where(:deleted_at => nil)
   scope :inactive, where("deleted_at IS NOT NULL")
+  scope :daily_activity_email_recipients, joins(:email_preferences).where('subscribed_to_daily_activity_email = ?', true)
   scope :activity_summary_email_recipients_this_hour, joins(:email_preferences).where('next_activity_summary_sent_at = ?', Time.now.strftime("%F %H:00:00"))
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)

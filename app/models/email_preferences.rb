@@ -20,6 +20,10 @@ class EmailPreferences < ActiveRecord::Base
     EmailPreferencesService.group_notification_preferences_for(user)
   end
 
+  def subscribed_to_daily_activity_summary_email?
+    subscribed_to_daily_activity_email == true
+  end
+
   def subscribed_to_activity_summary_email?
     next_activity_summary_sent_at.present?
   end
