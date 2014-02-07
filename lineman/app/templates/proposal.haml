@@ -3,9 +3,9 @@
     .card__header
       %h2
         {{proposal.name}}
-      .media__details 
+      .media__details
         proposed by {{proposal.author.name}}
-      .media__details 
+      .media__details
         closing in {{proposal.closing_at | timeFromNowInWords:true }}
     .card__content.row
       .proposal-description
@@ -15,6 +15,10 @@
     .clearfix
     .row.decision-buttons
       .agree{ng_click: 'selectPosition("yes")'}
+        ''
+        %img{ng_src: 'img/abstain.jpg'}
+        / %button{"ng-click" => "img_url = 'https://farm4.staticflickr.com/3261/2801924702_ffbdeda927_d.jpg'"} Click
+
         %i.fa.fa-thumbs-up
       .abstain{ng_click: 'selectPosition("abstain")'}
         %i.fa.fa-meh-o
