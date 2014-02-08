@@ -4,7 +4,7 @@
       %h2
         {{proposal.name}}
       .media__details
-        proposed by {{proposal.author.name}}
+        Proposed by {{proposal.author.name}}
       .media__details
         closing in {{proposal.closing_at | timeFromNowInWords:true }}
     .card__content.row
@@ -22,7 +22,14 @@
         %img{src: '/img/no.jpg'}
       .block{ng_click: 'selectPosition("block")'}
         %img{src: '/img/block.jpg'}
-
+      / .agree{ng_click: 'selectPosition("yes")'}
+      /   %i.fa.fa-smile-o{style: "color: green"}
+      / .abstain{ng_click: 'selectPosition("abstain")'}
+      /   %i.fa.fa-meh-o{style: "color: orange"}
+      / .disagree{ng_click: 'selectPosition("no")'}
+      /   %i.fa.fa-frown-o{style: "color: pink"}
+      / .block{ng_click: 'selectPosition("block")'}
+      /   %i.fa.fa-plus{style: "color: red"}
     .row.statement-form{ng_show: 'voteFormIsExpanded'}
       %form{ng_submit: 'submitVote()'}
         %fieldset{ng_disable: 'voteFormIsDisabled'}
