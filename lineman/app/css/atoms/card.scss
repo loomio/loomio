@@ -30,6 +30,10 @@
   margin-bottom: 0;
   i{font-size: 1.6em;}
 }
+.card__header--details {
+  font-size: .5em;
+  margin-bottom: $card-gutter;
+}
 .card__content{
 }
 .card__show-more{
