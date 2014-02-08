@@ -12,9 +12,8 @@
     .card__content.row
       .proposal-description
         {{proposal.description}}
-      .pie-chart
-        %div{'pie-chart' => true, ng_model: 'proposal'}
-    .clearfix
+      .pie-row
+        .pie-chart{'pie-chart' => true, ng_model: 'proposal'}
     .decision-buttons
       .vote.agree{ng_click: 'selectPosition("yes")'}
         %img{src: '/img/yes.jpg'}
