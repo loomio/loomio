@@ -20,11 +20,16 @@
   }
 }
 
-.pie-chart{
+.pie-row{
   @include make-row($card-gutter);
   margin-bottom: $card-gutter;
+  text-align: center;
   @include screen-size(medium-up) {
     @include make-xs-column(5)
+  }
+  .pie-chart {
+    margin: 0 auto;
+    width: 66.67%;
   }
 }
 
