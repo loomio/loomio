@@ -13,40 +13,27 @@
 }
 
 .proposal-description{
-  @include make-xs-column(7);
+  @include make-xs-column(12);
+  margin-bottom: $card-gutter;
   @include screen-size(medium-up) {
     @include make-xs-column(6)
   }
 }
 
 .pie-chart{
-  @include make-xs-column(5);
+  @include make-row($card-gutter);
+  margin-bottom: $card-gutter;
   @include screen-size(medium-up) {
-    @include make-xs-column(6)
+    @include make-xs-column(5)
   }
 }
 
 .decision-buttons{
-  .agree{ 
+  @include make-row($card-gutter);
+  .vote {
     @include make-xs-column(3);
-    color: #90D490; 
-    cursor: pointer;
+    padding: 0 10px;
   }
-  .abstain{ 
-    @include make-xs-column(3);
-    color: #F0BB67;
-    cursor: pointer;
-  }
-  .disagree{ 
-    @include make-xs-column(3);
-    color: #D49090;
-    cursor: pointer;
-  }
-  .block{ 
-    @include make-xs-column(3);
-    color: #DD0000;
-    cursor: pointer;
-   }
 }
 
 .new-position{

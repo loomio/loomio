@@ -3,24 +3,26 @@
     .card__header
       %h2
         {{proposal.name}}
+        %span.card__header--details
+          %a{ href: '#' }
+            {{proposal.closing_at | timeFromNowInWords:true }} left
+    .media__details
+      Proposed by {{proposal.author.name}} on {{proposal.created_at | timeFromNowInWords:true }}
       .media__details
-        Proposed by {{proposal.author.name}}
-      .media__details
-        closing in {{proposal.closing_at | timeFromNowInWords:true }}
     .card__content.row
       .proposal-description
         {{proposal.description}}
       .pie-chart
         %div{'pie-chart' => true, ng_model: 'proposal'}
     .clearfix
-    .row.decision-buttons
-      .agree{ng_click: 'selectPosition("yes")'}
+    .decision-buttons
+      .vote.agree{ng_click: 'selectPosition("yes")'}
         %img{src: '/img/yes.jpg'}
-      .abstain{ng_click: 'selectPosition("abstain")'}
+      .vote.abstain{ng_click: 'selectPosition("abstain")'}
         %img{src: '/img/abstain.jpg'}
-      .disagree{ng_click: 'selectPosition("no")'}
+      .vote.disagree{ng_click: 'selectPosition("no")'}
         %img{src: '/img/no.jpg'}
-      .block{ng_click: 'selectPosition("block")'}
+      .vote.block{ng_click: 'selectPosition("block")'}
         %img{src: '/img/block.jpg'}
       / .agree{ng_click: 'selectPosition("yes")'}
       /   %i.fa.fa-smile-o{style: "color: green"}
