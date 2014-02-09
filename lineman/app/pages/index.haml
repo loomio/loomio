@@ -8,6 +8,15 @@
 
   %body
     -#%base{href: '/next/'}
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{href: "#"} Noodle
     .container{'ng-view' => ''}
     %script{ src: '/js/app.js', type: 'text/javascript'}
     %script{ src: 'http://localhost:9292/faye/client.js', type: 'text/javascript'}

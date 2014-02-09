@@ -49,7 +49,8 @@ $card-margin: 12px;
 
 .card__discussion-item {
   border-bottom: 1px solid #ddd;
-  margin: $card-margin 0;
+  margin: $card-margin 0 0;
+  padding: 0 0 $card-margin;
 }
 
 // Non-block elements
