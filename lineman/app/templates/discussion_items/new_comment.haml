@@ -14,11 +14,11 @@
   {{ comment.body }}
 .toolbar-container
   .toolbar
-    .toolbar__button.toolbar__button--first{ng_show: '!currentUserLikesIt()'}
+    .toolbar__button{ng_show: '!currentUserLikesIt()'}
       %a.cuke-like-comment-btn{href: '#', ng_click: 'like()'}
         -#%span.icon-thumbsup
         Like
-    .toolbar__button.toolbar__button--first{ng_show: 'currentUserLikesIt()'}
+    .toolbar__button{ng_show: 'currentUserLikesIt()'}
       %a.cuke-unlike-comment-btn{href: '#', ng_click: 'unlike()'}
         -#%span.icon-thumbsdown
         Unlike
