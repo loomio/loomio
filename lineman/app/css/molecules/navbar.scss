@@ -16,7 +16,7 @@
   vertical-align: top;
 }
 .nav-buttons{
-  @include make-xs-column(9, $card-gutter);
+  @include make-xs-column(9, $card-margin);
   i { padding-right: 20px; }
   padding-top: 2px;
   text-align: right;
@@ -29,7 +29,7 @@
 }
 
 .modifier {
-  @include make-xs-column(3, $card-gutter);
+  @include make-xs-column(3, $card-margin);
   .icon-drag{
     margin-left: -0.8em;
     margin-right: 0.2em;

@@ -14,11 +14,11 @@
 }
 .media__img {
   float: left;
-  margin-right: $card-gutter;
+  margin-right: $card-margin;
 }
 .media__img--right {
   float: right;
-  margin-left: $card-gutter;
+  margin-left: $card-margin;
 }
 .media__img--card {
   @include screen-size(medium-up) {
@@ -30,5 +30,5 @@
 .media__details {
   color: #AAA;
   font-size: 0.8em;
-  margin-bottom: $card-gutter;
+  margin-bottom: $card-margin;
 }

@@ -1,7 +1,9 @@
+$card-margin: 12px;
+
 .card {
   @include make-xs-column(12, $card-gutter);
   margin-bottom: $card-gutter;
-  padding: $card-gutter;
+  padding: $card-margin;
   background: #FFF;
   border-radius: 2px;
   @include box-shadow(0px 0px 2px #888888);
@@ -17,14 +19,14 @@
     color: $teal;
     text-decoration: none;
   }
-  &#top{margin-top: $card-gutter;}
+  &#top{margin-top: $card-margin;}
   .action{
     text-align: center;
   }
 }
 
 .card__header {
-  margin-bottom: $card-gutter;
+  margin-bottom: $card-margin;
 }
 .card__header--standalone{
   margin-bottom: 0;
@@ -32,12 +34,12 @@
 }
 .card__header--details {
   font-size: .5em;
-  margin-bottom: $card-gutter;
+  margin-bottom: $card-margin;
 }
 .card__content{
 }
 .card__show-more{
-  margin-top: $card-gutter;
+  margin-top: $card-margin;
 }
 
 #create-a-proposal{
@@ -45,9 +47,14 @@
   a{font-weight: bold;}
 }
 
+.card__discussion-item {
+  border-bottom: 1px solid #ddd;
+  margin: $card-margin 0;
+}
+
 // Non-block elements
 .card-row {
-  @include make-row($card-gutter);
+  @include make-row($card-margin);
 }
 // @media (min-width: @screen-sm-min) {
 //   .media__img {

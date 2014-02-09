@@ -9,7 +9,7 @@
 }
 
 .new-position{
-  margin-top: $card-gutter;
+  margin-top: $card-margin;
 }
 
 .proposal-description{
@@ -22,7 +22,7 @@
 
 .pie-row{
   @include make-row($card-gutter);
-  margin-bottom: $card-gutter;
+  margin-bottom: $card-margin;
   text-align: center;
   @include screen-size(medium-up) {
     @include make-xs-column(5)
@@ -35,7 +35,7 @@
 
 .decision-buttons{
   @include make-row($card-gutter);
-  margin-bottom: $card-gutter;
+  margin-bottom: $card-margin;
   .vote {
     @include make-xs-column(3);
     padding: 0 10px;
