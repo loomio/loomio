@@ -1,32 +1,31 @@
-.card{ng_controller: 'NewCommentItemController'}
-  .card__header
-    .media
-      .media__img.media__img--card
-        %div{'ng-include' => "'generated/templates/user/avatar.html'", 'ng-init' => "user = comment.author"}
-      .media__text
-        %h4.media__title{ng_click: 'alert("hello")'}
-          {{comment.author.name}}
-        .media__details
-          {{comment.created_at | date:'medium' }}
-          %span.in-reply-to{ng_show: 'isAReply()'}
-            in reply to {{ comment.parent.author.name }}
+.card__header{ng_controller: 'NewCommentItemController'}
+  .media
+    .media__img.media__img--card
+      %div{'ng-include' => "'generated/templates/user/avatar.html'", 'ng-init' => "user = comment.author"}
+    .media__text
+      %h4.media__title{ng_click: 'alert("hello")'}
+        {{comment.author.name}}
+      .media__details
+        {{comment.created_at | date:'medium' }}
+        %span.in-reply-to{ng_show: 'isAReply()'}
+          in reply to {{ comment.parent.author.name }}
 
-  .card__content.comment-body
-    {{ comment.body }}
-  .toolbar-container
-    .toolbar
-      .toolbar__button.toolbar__button--first{ng_show: '!currentUserLikesIt()'}
-        %a.cuke-like-comment-btn{href: '#', ng_click: 'like()'}
-          -#%span.icon-thumbsup
-          Like
-      .toolbar__button.toolbar__button--first{ng_show: 'currentUserLikesIt()'}
-        %a.cuke-unlike-comment-btn{href: '#', ng_click: 'unlike()'}
-          -#%span.icon-thumbsdown
-          Unlike
-      .toolbar__button.reply
-        %a.cuke-reply-to-comment-btn{href: '#', ng_click: 'reply()'}
-          -#%span.icon-ios7-chatbubble
-          Reply
+.card__content.comment-body
+  {{ comment.body }}
+.toolbar-container
+  .toolbar
+    .toolbar__button.toolbar__button--first{ng_show: '!currentUserLikesIt()'}
+      %a.cuke-like-comment-btn{href: '#', ng_click: 'like()'}
+        -#%span.icon-thumbsup
+        Like
+    .toolbar__button.toolbar__button--first{ng_show: 'currentUserLikesIt()'}
+      %a.cuke-unlike-comment-btn{href: '#', ng_click: 'unlike()'}
+        -#%span.icon-thumbsdown
+        Unlike
+    .toolbar__button.reply
+      %a.cuke-reply-to-comment-btn{href: '#', ng_click: 'reply()'}
+        -#%span.icon-ios7-chatbubble
+        Reply
 
-    .cuke-liked-by-names{ng_show: 'anybodyLikesIt()'}
-      Liked by {{ whoLikesIt().join(', ') }}
+  .cuke-liked-by-names{ng_show: 'anybodyLikesIt()'}
+    Liked by {{ whoLikesIt().join(', ') }}

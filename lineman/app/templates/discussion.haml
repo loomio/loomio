@@ -4,45 +4,53 @@
       .card__content
         %h1.card__title
           {{discussion.title}}
+          %i.fa.fa-star
         .media__details
           Started {{discussion.created_at | timeFromNowInWords}} by {{discussion.author.name}}
         .media
           .media__img
-            %img{alt: "...", src: '{{author.avatar_path}}'}
-          .media_text
-            {{discussion.group.name}}
-            {{discussion.group.memberships.count}} members
+            %img{src: '/img/group-icon.png'}
+          .media__text
+            / {{discussion.group.name}}
+            / {{discussion.group.memberships_count}} members
+            %a{href: '#'}
+              Loomio community - Contributors
+          .media__text
+            25 members
       .card-row
         %img{src: '/img/group-users.png'}
-
-  .card-row
-    .card
-      .card__header
-        .media
-          .media__img
-            %img{alt: "...", src: '{{author.avatar_path}}'}
-          .media__text
-            %h4.media__title Context
-            .media__details
-              Started {{discussion.created_at | timeFromNowInWords}} by {{discussion.author.name}}
-      .card__content
-        {{discussion.description}}
-      %a.edit-content{href: "#"}
-        %i.icon-edit
-        Edit
+        %i.fa.fa-icon
+        %button.btn.right
+          %i.fa.fa-lock
+          Share
+  / .card-row
+  /   .card
+  /     .card__header
+  /       .media
+  /         .media__img
+  /           %img{alt: "...", src: '{{author.avatar_path}}'}
+  /         .media__text
+  /           %h4.media__title Context
+  /           .media__details
+  /             Started {{discussion.created_at | timeFromNowInWords}} by {{discussion.author.name}}
+  /     .card__content
+  /       {{discussion.description}}
+  /     %a.edit-content{href: "#"}
+  /       %i.icon-edit
+  /       Edit
 
   %proposal{proposal: 'discussion.active_proposal', discussion: 'discussion'}
 
-  .card-row{'ng-repeat' => 'event in discussion.events'}
+  .card-row.card{'ng-repeat' => 'event in discussion.events'}
     %div{ng_include: "safeEvent(event.kind) && 'generated/templates/discussion_items/'+ event.kind + '.html'"}
-    -#-#"discussion_title_edited",
-    -#-#"discussion_description_edited",
-    -#-#"new_motion",
-    -#-#"new_vote",
-    -#-#"motion_closed",
-    -#-#"motion_close_date_edited",
-    -#-#"motion_blocked"]
-    -#-#"new_discussion",
+      -#-#"discussion_title_edited",
+      -#-#"discussion_description_edited",
+      -#-#"new_motion",
+      -#-#"new_vote",
+      -#-#"motion_closed",
+      -#-#"motion_close_date_edited",
+      -#-#"motion_blocked"]
+      -#-#"new_discussion",
 
   %start_proposal{discussion: 'discussion'}
 
