@@ -2,7 +2,7 @@
   @include make-row();
 }
 
-.toolbar__button { @include make-xs-column(1, $card-gutter);}
+.toolbar__button { @include make-xs-column(2, $card-gutter);}
 
 // .toolbar__button--first {
 //   // border-right: 1px solid #888;
