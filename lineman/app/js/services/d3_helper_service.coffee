@@ -1,19 +1,18 @@
 angular.module('loomioApp').service 'd3Helpers',
 	class d3Helper
 		proposalArray: (proposal) ->
-			votes = ['yes_votes', 'no_votes', 'abstain_votes', 'block_votes']
+			votes = ['yes_votes_count', 'no_votes_count', 'abstain_votes_count', 'block_votes_count']
 			if proposal.votes_count is 0
 				datum = {type:'none', count:1}
 				array = [datum]
 			else
-				array = (@voteDatum vote, proposal for vote in votes)
+				array = (@voteDatum vote, proposal for vote in votes when proposal[vote] > 0)
 			return array
 
 		voteDatum:(vote, proposal) ->
-			key = vote + '_count'
 			datum = 
-				type: vote
-				count: proposal[key]	
+				type: vote.slice(0, -6)
+				count: proposal[vote]	
 
 		setPieInitData: (proposal, pie) ->
 			## if the proposal was created < 3000ms ago initiate piechart with endAngle = 0
