@@ -1,3 +1,7 @@
+.container {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .card-page {
   @extend .container;
   min-height: 100%;
