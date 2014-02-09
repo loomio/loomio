@@ -5,15 +5,15 @@
 		fill: #EBEBEB;
 	}
 	.yes_votes{
-		fill: #90D490;
+		fill: $teal;
 	}
 	.no_votes{
-		fill: #D49090;
+		fill: $pink;
 	}
 	.abstain_votes{
-		fill: #F0BB67;
+		fill: $yellow;
 	}
 	.block_votes{
-		fill: #DD0000;
+		fill: $red;
 	}
 }
