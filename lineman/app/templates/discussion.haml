@@ -2,9 +2,10 @@
   .card-row
     .card
       .card__content
-        %h1.card__title
-          {{discussion.title}}
-          %i.card__title--icon.fa.fa-star-o
+        .card__header
+          %h1.card__title
+            {{discussion.title}}
+            %i.card__title--icon.fa.fa-star-o
         .media__details
           Started {{discussion.created_at | timeFromNowInWords}} by {{discussion.author.name}}
         .media
@@ -17,27 +18,26 @@
               Loomio community - Contributors
           .media__text--details
             25 members
-        .card-row
-          %img{src: '/img/group-users.png'}
-          %i.fa.fa-plus
-          %button.btn.btn-primary.right
-            %i.fa.fa-lock.white
-            Share
-  / .card-row
-  /   .card
-  /     .card__header
-  /       .media
-  /         .media__img
-  /           %img{alt: "...", src: '{{author.avatar_path}}'}
-  /         .media__text
-  /           %h4.media__title Context
-  /           .media__details
-  /             Started {{discussion.created_at | timeFromNowInWords}} by {{discussion.author.name}}
-  /     .card__content
-  /       {{discussion.description}}
-  /     %a.edit-content{href: "#"}
-  /       %i.icon-edit
-  /       Edit
+        %img{src: '/img/group-users.png'}
+        %i.fa.fa-plus
+        %button.btn.btn-primary.right
+          %i.fa.fa-lock.white
+          Share
+    / .card-row
+    /   .card
+    /     .card__header
+    /       .media
+    /         .media__img
+    /           %img{alt: "...", src: '{{author.avatar_path}}'}
+    /         .media__text
+    /           %h4.media__title Context
+    /           .media__details
+    /             Started {{discussion.created_at | timeFromNowInWords}} by {{discussion.author.name}}
+    /     .card__content
+    /       {{discussion.description}}
+    /     %a.edit-content{href: "#"}
+    /       %i.icon-edit
+    /       Edit
 
   %proposal{proposal: 'discussion.active_proposal', discussion: 'discussion'}
 
