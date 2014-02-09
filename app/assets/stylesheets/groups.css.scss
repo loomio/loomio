@@ -38,6 +38,7 @@ body.groups {
     .heart-icon {color: red;}
 
     #members-panel {
+      h4 a{color: $text-black;}
       .dropdown-menu {
         min-width: 205px;
         margin-top: 0;
