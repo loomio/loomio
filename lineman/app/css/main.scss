@@ -1,6 +1,7 @@
 @import 'utilities/bootstrap-utils';
 @import 'utilities/grid-settings';
 @import 'utilities/colors';
+@import 'utilities/fonts';
 @import 'utilities/page-settings';
 @import 'utilities/media_queries';
 
@@ -42,3 +43,5 @@ button{
   font-weight: bold;
   color: white;
 }
+
+body {font-family: 'OpenSans';}
