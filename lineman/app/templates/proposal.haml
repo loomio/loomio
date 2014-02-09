@@ -23,8 +23,12 @@
         %img{src: '/img/no.jpg'}
       .vote.block{ng_click: 'selectPosition("block")'}
         %img{src: '/img/block.jpg'}
-      / .agree{ng_click: 'selectPosition("yes")'}
-      /   %i.fa.fa-smile-o{style: "color: green"}
+    .media__details
+      {{proposal.votes_count}} votes
+      .agree{ng_click: 'selectPosition("yes")'}
+
+        / %i.fa.fa-smile-o{style: "color: green"}
+
       / .abstain{ng_click: 'selectPosition("abstain")'}
       /   %i.fa.fa-meh-o{style: "color: orange"}
       / .disagree{ng_click: 'selectPosition("no")'}
