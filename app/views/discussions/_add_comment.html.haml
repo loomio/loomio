@@ -38,3 +38,6 @@
 
       %script#template-upload--comment-input{type: "text/x-tmpl"}
         %input{type: 'hidden', name: "attachments[]", value: '{%=o.id%}', data: { 'attachment-id' => "{%=o.id%}" }}
+
+- else
+  = render "add_comment_placeholder"
