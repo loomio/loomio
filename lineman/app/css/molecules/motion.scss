@@ -14,7 +14,7 @@
 
 .proposal-description{
   @include make-xs-column(12);
-  margin-bottom: $card-gutter;
+  margin-bottom: $card-margin;
   @include screen-size(medium-up) {
     @include make-xs-column(6)
   }
@@ -29,7 +29,7 @@
   }
   .pie-chart {
     margin: 0 auto;
-    width: 50%;
+    width: 66.67%;
   }
 }
 
