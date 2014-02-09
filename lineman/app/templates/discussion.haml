@@ -4,25 +4,25 @@
       .card__content
         %h1.card__title
           {{discussion.title}}
-          %i.fa.fa-star
+          %i.card__title--icon.fa.fa-star-o
         .media__details
           Started {{discussion.created_at | timeFromNowInWords}} by {{discussion.author.name}}
         .media
           .media__img
-            %img{src: '/img/group-icon.png'}
+            %img{src: '/img/group-icon.jpg'}
           .media__text
             / {{discussion.group.name}}
             / {{discussion.group.memberships_count}} members
             %a{href: '#'}
               Loomio community - Contributors
-          .media__text
+          .media__text--details
             25 members
-      .card-row
-        %img{src: '/img/group-users.png'}
-        %i.fa.fa-icon
-        %button.btn.btn-primary.right
-          %i.fa.fa-lock
-          Share
+        .card-row
+          %img{src: '/img/group-users.png'}
+          %i.fa.fa-plus
+          %button.btn.btn-primary.right
+            %i.fa.fa-lock.white
+            Share
   / .card-row
   /   .card
   /     .card__header
