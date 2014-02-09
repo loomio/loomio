@@ -362,6 +362,12 @@ body.discussions.show {
         /*@include box-shadow(0, 0, 0, 0);*/
       }
     }
+    .add-comment-placeholder #new-comment{
+      border: 1px solid $light-grey;
+    }
+    #align-button{
+      margin-top: -4px;
+    }
     #post-new-comment {
       margin: 8px 5px 5px 45px;
     }
