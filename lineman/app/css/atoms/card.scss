@@ -5,17 +5,16 @@ $card-margin: 12px;
   margin-bottom: $card-gutter;
   padding: $card-margin;
   background: #FFF;
-  border-radius: 2px;
   @include box-shadow(0px 0px 2px #888888);
   max-width: 600px;
   @include screen-size(medium-up) {
     margin-left: 100px;
   }
-  h1{font-size: 2em; margin: 0;}
+  h1 {font-size: 2em; margin: 0;}
 
-  h2{font-size: 2em; margin: 0;}
-  h3{font-size: 1.6em; margin: 0;}
-  a{
+  h2 {font-size: 2em; margin: 0;}
+  h3 {font-size: 1.6em; margin: 0;}
+  a {
     color: $teal;
     text-decoration: none;
   }
