@@ -19,9 +19,8 @@ $card-margin: 12px;
     text-decoration: none;
   }
   &#top{margin-top: $card-margin;}
-  .action{
-    text-align: center;
-  }
+  .action { text-align: center; }
+  .btn { min-width: 80px; }
 }
 
 .card__header {
