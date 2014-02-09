@@ -5,7 +5,7 @@ $card-margin: 12px;
   margin-bottom: $card-gutter;
   padding: $card-margin;
   background: #FFF;
-  border: 1px solid #ddd;
+  border: 1px solid #eaeaea;
   max-width: 600px;
   @include screen-size(medium-up) {
     margin-left: 100px;
