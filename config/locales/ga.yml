@@ -116,6 +116,7 @@ ga:
   hidden: "I bhfolach"
   public: "Poiblí"
   new_group: "Baicle nua"
+  create_group: "Cruthaigh grúpa"
   start_a_discussion: "Cuir tús le plé"
   group_request:
     confirmation:
