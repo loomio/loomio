@@ -73,7 +73,8 @@ class Group < ActiveRecord::Base
                                     created_earlier_than(1.month.ago).
                                     parents_only
 
-  has_one :group_request
+  has_one :group_request,
+    dependent: :destroy
 
   has_many :memberships,
     :conditions => {:access_level => Membership::MEMBER_ACCESS_LEVELS},
@@ -99,17 +100,19 @@ class Group < ActiveRecord::Base
 
   has_many :pending_invitations,
            class_name: 'Invitation',
-           conditions: {accepted_at: nil, cancelled_at: nil}
+           conditions: {accepted_at: nil, cancelled_at: nil},
+           dependent: :destroy
 
   alias :users :members
 
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user
-  has_many :discussions, :dependent => :destroy
+  has_many :discussions, dependent: :destroy
   has_many :motions, :through => :discussions
 
   belongs_to :parent, :class_name => "Group"
-  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id', conditions: { archived_at: nil }
+  has_many :subgroups, :class_name => "Group", :foreign_key => 'parent_id', conditions: { archived_at: nil },
+    dependent: :destroy
 
   has_one :subscription, dependent: :destroy
 

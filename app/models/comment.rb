@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
 
   has_many :comment_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
-  has_many :attachments
+  has_many :attachments, dependent: :destroy
 
   validates_presence_of :user
   validate :has_body_or_attachment
