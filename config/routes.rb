@@ -184,10 +184,7 @@ Loomio::Application.routes.draw do
     get :thanks, on: :collection
   end
 
-  authenticated do
-    root :to => 'dashboard#show'
-  end
-
+  get '/dashboard', to: 'dashboard#show', as: 'dashboard'
   root :to => 'pages#home'
 
   scope controller: 'pages' do

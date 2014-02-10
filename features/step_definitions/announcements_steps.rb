@@ -4,7 +4,7 @@ Given /^there is an announcement$/ do
 end
 
 When /^I load the dashboard$/ do
-  visit '/'
+  visit dashboard_path
 end
 
 Then /^I should see the announcement$/ do
@@ -15,8 +15,8 @@ When /^I dismiss the announcement$/ do
   find('.close.dismiss-announcement').click()
 end
 
-When /^I reload the page$/ do
-  visit '/'
+When /^I reload the dashboard$/ do
+  visit dashboard_path
 end
 
 Then /^I should not see the announcement$/ do
