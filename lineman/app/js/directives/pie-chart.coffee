@@ -62,10 +62,10 @@ angular.module('loomioApp').directive 'pieChart', (d3Helpers) ->
 				  .enter().append('path')
 				  .each(arcSet)
 				  .attr('class', (d) -> d.data.type)
-				  .transition().duration(750).ease('linear')
+				  .transition().duration(350)
 				  .attrTween('d', arcTween)
 
-				a.transition().duration(750).ease('linear')
+				a.transition().duration(350)
 				  .attrTween('d', arcTween)
 
 
