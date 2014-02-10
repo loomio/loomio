@@ -16,10 +16,11 @@ class ContactMessagesController < BaseController
   	if @contact_message.save
       ContactMessageMailer.delay.contact_message_email(@contact_message)
       flash[:success] = "Thanks! Someone from our team will get back to you shortly!"
-      redirect_to root_path
+
+      redirect_to dashboard_or_root_path
     else
       render 'new'
     end
   end
-end
 
+end
