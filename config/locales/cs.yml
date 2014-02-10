@@ -6,20 +6,29 @@ cs:
   errors:
     messages:
       email: "Není platnou e-mailovou adresou"
+  attachment:
+    error:
+      too_large: "Soubor, který jste se pokusil(a) přiložit, je větší než 50MB. Prosím, vyberte menší soubor."
   date:
     formats:
       datepicker: "%d-%m-%Y"
   devise:
     invitations:
+      send_instructions: 'Pozvánka byla odeslána na %{email}.'
       updated: 'Účet vytvořen.'
       no_invitations_remaining: "Nezbývají žádné pozvánky"
+    mailer:
+      invitation_instructions:
+        subject: 'Někdo vás pozval do své Loomio skupiny'
   error:
     access_denied: "K této akci nemáte oprávnění."
     cant_join_subgroup: "Nemůžete se přidat k podskupině, pokud nejste členem rodičovské skupiny."
     cant_modify_position: "Tento návrh byl uzavřen."
     cant_state_position: "Tento návrh byl uzavřen."
     cant_view_member_profile: "Nemůžete zobrazit profil člena, protože nejste ve stejné skupině."
+    contribution: "Prosím přihlaste se, abyste přispěl(a)."
     discussion_not_created: "Diskuzi se nepodařilo vytvořit."
+    discussion_not_moved: "Nemáte povolení přesunout tuto diskuzi na %{destination_group.name}"
     group_not_archived: "Skupinu se nepodařilo archivovat."
     invalid_close_date: "Neplatné datum uzavření. Prosím zkontrolujte, zda toto datum už neuplynulo."
     invalid_email: "Prosím vyplňte alespoň jednu platnou emailovou adresu."
@@ -33,6 +42,7 @@ cs:
     group_request_already_verified: "Omlouváme se. Ověřovací odkaz, na který jste klikl(a) už byl potvrzen. Pokud jste od nás neslyšel(a) do 48 hodin, napište nám: contact@loomio.org"
     group_request_already_accepted: "Omlouváme se. Tato pozvánka je neplatná nebo už byla přijata."
     group_request_contribution: "Prosím vyberte kategorii. Nevážete se k placení, jen nám předáváte užitečnou informaci, abychom mohli navrhnout náš model. Díky!"
+    group_private_or_not_found: "Skupina nenalezena.\n\nTato skupina by mohla být soukromá. Pokud vám někdo poslal tento odkaz, požádejte jí/ho, aby vás do skupiny pozval(a)."
     group_already_setup: "Skupina, kterou se snažíte vytvořit, už existuje."
     proposal_already_exists: "V této diskuzi už je otevřený návrh."
     user_with_email_address_already_in_group: "Uživatel s touto emailovou adresou už patří do této skupiny."
@@ -58,6 +68,15 @@ cs:
         one: "%{count} člen přidán"
         few: "%{count} členové přidáni"
         other: "%{count} členů přidáno"
+      existing_member:
+        one: "%{count} člen ve skupině"
+        few: "%{count} členové ve skupině"
+        other: "%{count} členů ve skupině"
+      sent:
+        one: "%{count} pozvánka odeslána"
+        few: "%{count} pozvánky odeslány"
+        other: "%{count} pozvánek odesláno"
+      auto_added_and_sent: "%{auto_added_text} a %{sent_text}"
   views:
     pagination:
       previous: "Před."
@@ -71,15 +90,19 @@ cs:
     proposal_not_created: "Návrh se nepodařilo vytvořit"
     user_already_admin: "%{which_user} už je koordinátorem této skupiny."
     user_already_member: "%{which_user} už je členem této skupiny."
+    user_not_admin: "Omlouváme se, %{which_user} musí být koordinátorem, aby měl k tomuto přístup."
   success:
     added_to_group: "Byl(a) jste přidán(a) do skupiny %{which_group}."
     close_date_changed: "Datum uzavření úspěšně změněno."
     discussion_created: "Diskuze úspěšně vytvořena."
     discussion_deleted: "Diskuze úspěšně odstraněna."
+    discussion_moved: "Diskuze úspěšně přesunuta na %{group_name}"
     emails_sending: "E-maily se odesílají."
     group_archived: "Skupina úspěšně archivována."
     group_created: "Skupina úspěšně vytvořena."
     members_added: "Členové přidány do skupiny."
+    membership_requested: "Zažádal(a) jste o členství v %{which_group}. Budete upozorněn(a), jakmile bude vaše žádost schválena."
+    motion_closed: "Návrh uzavřen. Pokud chcete, můžete sepsat výsledek níže a poslat ho své skupině."
     motion_outcome_created: "Gratulujeme, vytvořil(a) jste výsledek návrhu a členům vaší skupiny to bylo oznámeno."
     motion_outcome_updated: "Výsledek návrhu byl obnoven."
     position_submitted: "Postoj odeslán"
@@ -88,46 +111,50 @@ cs:
     proposal_deleted: "Návrh odstraněn."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "vteřinou"
+        few: "%{count} vteřinami"
+        other: "%{count} vteřinami"
       x_seconds:
-        one: "1 vteřina"
-        few: "%{count} vteřiny"
-        other: "%{count} vteřin"
+        one: "vteřinou"
+        few: "%{count} vteřinami"
+        other: "%{count} vteřinami"
       less_than_x_minutes:
-        one: "1 minuta"
-        few: "%{count} minuty"
-        other: "%{count} minut"
+        one: "minutou"
+        few: "%{count} minutami"
+        other: "%{count} minutami"
       x_minutes:
-        one: "1 minuta"
-        few: "%{count} minuty"
-        other: "%{count} minut"
+        one: "minutou"
+        few: "%{count} minutami"
+        other: "%{count} minutami"
       about_x_hours:
-        one: "1 hodina"
-        few: "%{count} hodiny"
-        other: "%{count} hodin"
+        one: "hodinou"
+        few: "%{count} hodinami"
+        other: "%{count} hodinami"
       x_days:
-        one: "1 den"
+        one: "dnem"
         few: "%{count} dny"
-        other: "%{count} dnů"
+        other: "%{count} dny"
       about_x_months:
-        one: "1 měsíc"
-        few: "%{count} měsíce"
-        other: "%{count} měsíců"
+        one: "měsícem"
+        few: "%{count} měsíci"
+        other: "%{count} měsíci"
       x_months:
-        one: "1 měsíc"
-        few: "%{count} měsíce"
-        other: "%{count} měsíců"
+        one: "měsícem"
+        few: "%{count} měsíci"
+        other: "%{count} měsíci"
       about_x_years:
-        one: "1 rok"
-        few: "%{count} roky"
-        other: "%{count} let"
+        one: "rokem"
+        few: "%{count} lety"
+        other: "%{count} lety"
       over_x_years:
-        one: "1 rok"
-        few: "%{count} roky"
-        other: "%{count} let"
+        one: "rokem"
+        few: "%{count} lety"
+        other: "%{count} lety"
       almost_x_years:
-        one: "1 rok"
-        few: "%{count} roky"
-        other: "%{count} let"
+        one: "rokem"
+        few: "%{count} lety"
+        other: "%{count} lety"
   footer:
     about: 'O nás'
     blog: 'Blog'
@@ -137,6 +164,7 @@ cs:
     terms: 'Podmínky'
   inbox:
     dropdown-btn: 'Příchozí'
+    empty: Jste dobře informován(a)! Nejsou žádné komentáře, které jste neviděl(a).
   notifications:
     header: "Upozornění"
     new_discussion: "zahájil(a) novou diskuzi"
@@ -149,9 +177,10 @@ cs:
     comment_liked: "se líbí váš komentář v diskuzi"
     user_mentioned: "vás zmínil(a) v komentáři pod"
     membership_requested: "požádal(a) o členství v"
+    membership_request_approved: 'schválil(a) vaší žádost o členství'
     user_added_to_group: "vás přidal(a) do skupiny"
     motion_closing_soon: "Návrh se brzy uzavírá"
-    motion_blocked: "blokoval(a) návrh"
+    motion_blocked: "zamítnul(a) návrh"
     motion_outcome_created: "zveřejnil(a) výsledek návrhu"
     motion_outcome_updated: "aktualizoval(a) výsledek návrhu"
   edit_discussion_context: "Upravit kontext diskuze"
@@ -159,9 +188,14 @@ cs:
   request_new_group_details: "nebo počkejte, dokud nebudete do jedné pozván(a)."
   empty_notifications: "Nemáte zatím žádná upozornění."
   see_all_notifications: "Zobrazit všechna upozornění"
+  user_settings: "Uživatelská nastavení"
+  email_preferences: "Nastavení emailu"
   sign_out: "Odhlásit se"
   sign_in: "Přihlásit se"
+  honeypot_warning: "Nepovedlo se vytvořit váš účet. Pokud používáte screen reader, ujistěte se prosím, že poslední (skryté) pole ve formuláři je prázdné."
   tagline: "Vytváříme svět, kde je jednoduché pro kohokoliv se podílet na rozhodnutích, které je ovlivňují."
+  or_sign_in_html: "Pokud už máte Loomio účet, <a href='%{link}' class='%{link_class}'>přihlaste se zde</a>"
+  or_link_account_html: "Pokud už máte Loomio účet, <a href='%{link}'>propojte své účty</a>"
   click_to_dismiss: "Klikněte sem pro uzavření této zprávy"
   generic_confirm: "Jste si jist(a)?"
   discussion_helper_text:
@@ -171,6 +205,7 @@ cs:
   dashboard_helper_text:
     header: "Vítejte na své domovské stránce"
   setup_steps_title: "Následující kroky:"
+  setup_step_1: "Podívejte se na ukázkovou diskuzi"
   setup_step_2: "Zahajte svou první diskuzi"
   setup_step_3: "Pozvěte lidi do vaší skupiny"
   invite_people: "Pozvat další"
@@ -192,12 +227,15 @@ cs:
   leave_group: "Opustit skupinu"
   confirm_leave_group: "Opravdu chcete opustit %{which_group}?"
   deactivate_group: "Deaktivovat skupinu"
+  confirm_deactivate_group: "Počkejte!!! Opravdu chcete deaktivovat %{which_group}? Nebudete nadále moci zobrazovat tuto skupinu. Nicméně pokud chcete skupinu získat zpět, můžete nás požádat, abychom ji reaktivovali emailem na contact@loomio.org."
   invited_users: "Pozvaní členové"
   members: "Členové"
   confirm_remove_user: "Opravdu chcete odstranit %{which_user} ze skupiny?"
   remove_coordinator: "Odstranit koordinátora"
   confirm_remove_coordinator: "Opravdu už nechcete, aby %{which_user} byl koordinátorem této skupiny?"
   make_coordinator: "Udělat koordinátorem"
+  confirm_make_coordinator: "Opravdu chcete udělat %{which_user} koordinátorem této skupiny?"
+  confirm_remove_member: 'Opravdu chcete vyloučit tohoto člena ze skupiny?'
   want_to_invite_html: "Chcete <a href='%{link}'>pozvat lidi</a> do této skupiny?"
   membership_requests: "Žádosti o členství"
   confirm_approve_membership_request: "Opravdu chcete přidat %{which_user} do skupiny?"
@@ -207,7 +245,9 @@ cs:
   confirm_ignore_membership_request: "Opravdu chcete ignorovat žádost o členství od %{which_user}?"
   membership_requested: "Žádost o členství odeslána"
   request_membership: "Požádat o členství"
+  ask_to_join_group: "Zažádat o členství"
   confirm_remove_membership_request: "Opravdu chcete odebrat vaší žádost o členství pro tuto skupinu?"
+  no_pending_membership_requests: "Nemáte zatím žádné nevyřízené žádosti o členství pro tuto skupinu."
   subgroups: "Podskupiny"
   create_a_subgroup: "Vytvořit podskupinu"
   select_members_to_add: "Vyberte členy, které chcete přidat do skupiny %{which_group}"
@@ -216,6 +256,7 @@ cs:
   new_subgroup: "Nová podskupina"
   create_subgroup: "Vytvořit podskupinu"
   creating_subgroup: "Podskupina se vytváří"
+  hidden: "Skrytá"
   public: "Veřejná"
   new_group: "Nová skupina"
   create_group: "Vytvořit skupinu"
@@ -226,12 +267,20 @@ cs:
   start_a_discussion: "Zahájit diskuzi"
   group_description: "Popis skupiny"
   edit_group_description: "Upravit popis skupiny"
+  group_request:
+    confirmation:
+      title: Jste téměř u konce! Zkontrolujte si email.
+      body_html: |
+        Poslali jsme vám email s pozvánkou k vytvoření vaší skupiny.
+
+        Pokud nic neuvidíte ve své přijaté poště během několika minut, napište nám na <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
   discussion_items:
     new_discussion: "vytvořil(a) diskuzi"
     new_motion: "vytvořil(a) návrh"
     motion_closed:
       by_user: "uzavřel(a) návrh"
       by_expiry: "Návrh uzavřen"
+    motion_close_date_edited: "změnil(a) datum uzavření návrhu"
     motion_outcome_created: "zveřejnil(a) výsledek návrhu"
     motion_outcome_updated: "aktualizoval(a) výsledek návrhu"
     discussion_title_edited: "změnil(a) název diskuze"
@@ -241,25 +290,28 @@ cs:
   previous_decisions: "Minulá rozhodnutí"
   see_previous_decisions: "Zobrazit minulá rozhodnutí"
   create_new_proposal: "Vytvořit nový návrh"
+  empty_decision_list_html: "Jsi připraven(a) učinit rozhodnutí?<br>Každý může vytvořit návrh."
   empty_decision_index: "Tato skupina zatím neučinila žádná rozhodnutí."
   empty_discussion_list: "V této diskuzi zatím není žádná aktivita."
   empty_discussion_index: "V žádných vašich skupinách nejsou diskuze."
   empty_discussion_index_group: "Tato skupina zatím nemá žádné diskuze."
+  private_group_discussion_display: "Tato skupina je soukromá. Diskuze jsou viditelné jen členům. Pokud byste se rád(a) zúčastnil(a), můžete zažádat o členství."
   discussion_context:
-    started_html: "Zahájena <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
+    started_html: "Zahájil(a) <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
+    last_edited_html: "Naposledy upravil(a) <a href='%{link}' class='%{link_class}'>%{who}</a> před %{when}"
     see_revision_history: "Zobrazit historii revizí"
   description_history:
     header: "Historie revizí"
     subheader: "Verze"
-    edited_by: "Upraveno přibližně před %{when} členem %{who}"
-    current: "(současné)"
+    edited_by: "Upravil(a) %{who} přibližně před %{when}"
+    current: "(aktuální)"
     restore: "(Obnovit tuto verzi)"
     applying_changes: "(Změny se aplikují...)"
     previous: "Předch."
     next: "Násl."
   comment_form_placeholder: "Řekněte něco..."
   comment_form_submit_button: "Odeslat komentář"
-  liked_by: "Líbí se %{who}"
+  liked_by: "To se líbí %{who}"
   delete_comment: "Odstranit komentář"
   confirm_delete_comment: "Opravdu chcete odstranit tento komentář?"
   markdown_settings_more_info: "Více info..."
@@ -278,7 +330,9 @@ cs:
   proposal_close_date_error: "Prosím vyberte budoucí datum uzavření"
   proposal_closing_when: "Uzavírá se za %{when}"
   proposal_closed_when: "Uzavřeno před %{when}"
-  proposed_when_by_who: "Navrženo %{who} před %{when}"
+  proposed_when_by_who: "Navrhl(a) %{who} před %{when}"
+  engagement_on_open_proposal: "%{percent}%% členů vyjádřilo svůj názor (%{numerator}/%{denominator})"
+  engagement_on_closed_proposal: "%{percent}%% členů vyjádřilo svůj názor (%{numerator}/%{denominator})"
   state_your_position: "Konstatujte svůj postoj"
   positions: "Postoje"
   yes_position: "Souhlasím"
@@ -287,24 +341,45 @@ cs:
   abstain_details: "Budu rád, když se skupina rozhodne beze mne."
   no_position: "Nesouhlasím"
   no_details: "Myslím, že by to šlo lépe."
+  block_position: "Zamítám"
   block_details: "Mám silné námitky proti tomuto návrhu a nechci, aby prošel."
   not_voted: "[Zobrazit členy, co se zatím nerozhodli]"
   outcome_placeholder: "Jak dopadl tento návrh?"
   outcome_submit: "Publikovat výsledek"
+  position_verbs:
+    'yes': "souhlasím"
+    'no': "nesouhlasím"
+    abstain: "zdržuji se"
+    block: "zamítám"
+    past_tense:
+      'yes': "souhlasil(a)"
+      'no': "nesouhlasil(a)"
+      abstain: "se zdržel(a)"
+      block: "zamítl(a)"
   help:
     coordinating: 'Koordinace vaší Loomio skupiny'
     different_ways: 'Různé způsoby jak použít Loomio'
     get_in_touch: "Spojte se s námi"
+    get_in_touch_description_html: "Pokud máte jakékoli otázky nebo připomínky, <a href='%{link}'>napište nám</a>."
+    getting_started: "Jak začít"
     getting_started_description: "Nalevo skupina prodiskutuje téma, vymění si názory a informace. Když nastane čas pro rozhodnutí, rozhodnutí se objeví napravo."
+    getting_the_most: 'Získání co nejvíce z Loomio'
+    have_your_say: "Vyjádři svůj názor"
+    have_a_discussion: "Mějte diskuzi"
+    have_a_discussion_description: "Téma a veškeré relevantní související informace se nacházejí v horní části stránky. Pomocí pole pro komentář vneste svůj hlas do diskuze."
     help: "Nápověda"
     how_it_works: "Jak to funguje"
     join_the_community: "Staňte se součástí komunity"
     images_and_text_formatting: "Obrázky a formátování textu"
     keep_up_to_date: "Zůstaň informován(a)"
     make_a_decision: "Rozhodněte se"
+    make_a_decision_description: "Když je skupina připravena učinit rozhodnutí, každý může vytvořit návrh. Krátce popište jasný postup a poskytněte určitý základ, aby každý věděl, co přesně znamená souhlasit či nesouhlasit."
+    prompt_people_details: "Pokud chcete získat pozornost konkrétní osoby ve vaší skupině, napište ‚@‘ následované jejich jménem. Obdrží email, který jim dá vědět, že jste je zmínil(a)."
+    prompt_people_html: "Pobídněte lidi pomocí <span class='blue'>@zmínění</span>"
     positions_agree_description: "<span>Souhlasím</span> znamená, že jsi spokojen(a) s návrhem."
     positions_abstain_description: "<span>Zdržuji se</span> znamená, že si nejste jist(a), nebo že budeš rád(a), když se skupina rozhodne bez tebe."
     positions_disagree_description: "<span>Nesouhlasím</span> znamená, že myslíš, že by mohla existovat lepší možnost, ale jsi ochotna/ochoten přijmout rozhodnutí skupiny."
+    positions_block_description: "<span>Zamítám</span> znamená, že máte vážné námitky a budete velmi nešťastná/ý, pokud se bude podle návrhu postupovat."
     start_discussion: "Zahájení poutavé diskuze"
     start_proposal: "Napsání jasného návrhu"
     video_id: "52025402"
@@ -320,12 +395,17 @@ cs:
     organisations: Organizace
     organisations_examples: např. firmy, vládní agentury, komunitní organizace
     informal_groups: neformální skupiny
+    informal_groups_desc: Členové vaší skupiny budou vyzváni aby zaplatili co mohou
     informal_groups_examples: např. rodiny, sociální hnutí, kolektivy
   contribution:
+    any_amount: nebo jednorázový příspěvek
     currency_desc: Částky jsou uvedeny v amerických dolarech
     monthly_html: Rád(a) bych přispíval(a) měsíčním příspěvkem ve výši
     one_time_html: Rád(a) bych přispěl(a) jednorázovým příspěvkem ve výši
     submit: Přispějte
+    tooltip: Dověďte se více o našem komunitním modelu financování
+    thought_about_contributing: Vaše šance přispět
+    thank_you_title: Děkujeme za přispění k Loomio!
     making_a_donation: Poskytnutí daru
   resend_confirmation: "Znovu poslat pokyny k potvrzení"
   new_password: "Nové heslo"
@@ -343,21 +423,39 @@ cs:
   forgot_your_password: "Zapomněli jste své heslo?"
   confirmation_not_received: "Nepřišly vám pokyny k potvrzení?"
   unlock_not_received: "Nepřišly vám pokyny k odemčení?"
+  inactive_html: "Omlouváme se, tento účet je momentálně neaktivní. Pokud máte nějaké otázky, prosím <a href='%{path_to_contact}'>spojte se s námi</a>."
   create_an_account: 'Vytvořit účet'
+  join_group:
+    log_in: "Napište nám, abyste se přidal(a) k %{group_name}"
+    create_account_to_join_group: "Prosím vytvořte si účet pro členství v %{group_name}"
   invitation:
+    alternate: "Případně sdílejte tento odkaz a každý vás může zažádat o členství:"
     by_email: "Pozvat emailem"
     no_invitations_left: "Omlouváme se, nezbývají vám žádné pozvánky"
+    no_invitations_left_get_more: "Prosím emailujte contact@loomio.org a uvidíme, co můžeme udělat, abychom vám pomohli"
+    invitation_cancelled: 'Tato pozvánka byla zrušena. Prosím kontaktujte odesílatele této pozvánky pokud myslíte, že došlo k chybě.'
+    invitation_already_used: 'Tato pozvánka už byla použita. Prosím přihlaste se, abyste pokračoval(a) ke své skupině.'
+    recipients: "Zadejte emailové adresy, oddělené čárkami:"
     invitees_placeholder: "Uživatelské jméno <uzivatel1@priklad.cz>, uzivatel2@priklad.cz"
     subject: "Prosím přidejte se do naší nové skupiny %{group} na Loomio"
     invite_people: "Pozvěte lidi do své skupiny"
     select_members: "Přidat členy z %{group_name}"
     message_body: "Obsah pozvánky"
+    invites_more_help2: "<p>Do této skupiny můžete kdykoliv pozvat lidi.</p><p>Možná chcete rovnou pozvat všechny členy, nebo můžete začít pozváním jen těch, s kterými pracujete nejvíce.</p>"
     invitation_link: "Odkaz na pozvánku"
     link_help: "Kilkněte sem, abyste se přidali k %{group} na Loomiu:"
+    copy: "Pokud někdo neobdržel svou pozvánku, neváhejte zkopírovat odkaz na pozvánku výše a poskytnout jej příjemci."
+    pending_invitations: 'Nevyřízené pozvánky'
+    no_pending_invitations: "Nemáte zatím žádné nevyřízené pozvánky"
   search:
     description: "Níže je seznam diskuzí a návrhů, které mají ‚%{query}‘ v názvu nebo v popisu."
     header: "Výsledky vyhledávání ‚%{query}‘"
     placeholder: "Vyhledávat"
+    empty_search: 'Prázdné vyhledávání'
+    please_enter_a_search: 'Prosím zadejte výraz do vyhledávacího pole výše'
+    no_match: 'Žádné výsledky neodpovídali vašemu výrazu'
+  example_discussion:
+    title: "Ukázková diskuze: Přivítání a úvod do Loomio"
   example_motion:
     name: "Měli bychom mít dovolenou na měsíci!"
   discussion_form:
@@ -371,30 +469,48 @@ cs:
     name_helper: "Vyberte co nejjasnější a nejstručnější název."
   group_form:
     invitation_settings: "Nastavení pozvánek"
-    admins_only: "Jen pro koordinátory"
+    admins_only: "Jen koordinátoři"
   vote_form:
     header: "Konstatujte svůj postoj"
     edit: "Upravte svůj postoj"
     placeholder: "Poskytněte důvod k vašemu rozhodnutí (nepovinné)"
     your_position: "Váš postoj"
+    your_statement: "Vaše prohlášení"
     submit: "Odeslat postoj"
     update: "Aktualizovat postoj"
   email_preferences_form:
+    header: "Nastavení emailu"
     daily_activity_summary: "Denní shrnutí aktivity"
+    daily_activity_subscription: "Posílejte mi emaily denní aktivity shrnující co se dělo v mých skupinách"
     global_notifications: "Globální upozornění"
+    proposal_closing_soon_subscription: "Připomeňte mi 24 hodin předtím, než se návrh uzavře"
+    mentions_subscription: "Emailujte mě vždy, když mě někdo zmíní v komentáři"
+    group_activity_notifications: "Upozornění o aktivitě skupiny"
+    group_activity_details: "Pro každou skupinu zatrhněte políčko pokud chcete dostávat emaily o nových diskuzích a návrzích hned jak vzniknou."
     update_preferences: "Aktualizovat nastavení"
   new_user_form:
     create_an_account: "Vytvořit účet"
   user_settings_form:
+    header: "Uživatelská nastavení"
     picture: "Obrázek"
     use_avatar_kind: "Použít %{kind}"
     upload_new_image: "Nahrát nový obrázek"
   group_setup:
+    set_up_your_group: Zřiďte si skupinu
+    desc_header: "Už jste skoro tam!"
+    submit: "Hurá do skupiny!"
     payment_model:
       header: Loomio je pro všechny!
+      info: Máme platební model, který vyhovuje jakékoliv skupině, i těm bez peněz :)
+      link: Dověďte se více
   simple_form:
     'yes': 'Ano'
     'no': 'Ne'
+    required:
+      text: 'požadované'
+      mark: '*'
+    error_notification:
+      default_message: "Prosím zkontrolujte problémy níže:"
     labels:
       discussion:
         title: "Název"
@@ -404,18 +520,26 @@ cs:
         privacy_private_header: "Soukromá"
         privacy_private_description: "Jen členové %{group} vidí tuto diskuzi"
         privacy_hidden_description: "Všechny diskuze ve skryté skupině jsou soukromé."
+        of: "z"
         of_no_group: "této skupiny"
       group:
         name: "Název skupiny"
         description: "Popis"
         members_invitable_by: "Kdo může pozvat lidi do této skupiny?"
+        members_invitable_by_coordinators: "Jen koordinátoři"
+        members_invitable_by_members: "Všichni členové skupiny"
         privacy: Soukromí
+        privacy_public_header: Veřejná
         privacy_public_description: Diskuze jsou veřejné pokud nejsou udělány soukromými. Každý může najít skupinu a zažádat o členství.
-        privacy_private_header: Převážně soukromé
+        privacy_private_header: Převážně soukromá
         privacy_private_description: Diskuze jsou soukromé pokud je výslovně neoznačíte za veřejné. Každý může najít skupinu a zažádat o členství.
-        privacy_hidden_header: Skryté (zcela soukromé)
+        privacy_hidden_header: Skrytá (zcela soukromá)
         privacy_hidden_description: Diskuze jsou vždy soukromé. Nalézt skupinu a připojení se k ní lze jen skrz pozvánku.
+        privacy_parent_group_members_header: Viditelné členům rodičovské skupiny
+        privacy_parent_group_members_description_short: Jen členové a členové rodičovské skupiny vidí tuto skupinu a její diskuze.
+        group_members_invitable_by: "Jen koordinátoři"
         submit: Odeslat
+        viewable_by_parent_members_header: Povolit všem členům %{group} vidět tuto podskupinu a diskuze v ní
       membership_request:
         introduction: "Představte se"
       motion:
@@ -431,10 +555,15 @@ cs:
     placeholders:
       discussion:
         title: "Název"
+        description: "Poskytněte kontext..."
       membership_request:
         introduction: "Napište pár slov o sobě a proč se chcete přidat k %{group_name}."
+      motion:
+        name: "Jaké řešení navrhujete?"
+        description: "Poskytněte dostatek informací, aby každý věděl, co vlastně znamená, když souhlasí nebo nesouhlasí."
       group:
         name: "Název skupiny"
+        description: "Popis skupiny"
       user:
         email: "E-mail"
         password: "Heslo"
@@ -449,38 +578,78 @@ cs:
         create: "Vytvořit účet"
         update: "Aktualizovat nastavení"
   email:
+    user_added_to_a_group:
+      subject: "%{who} vás přidal(a) k %{which_group}"
+      content: "%{who} vás přidal(a) k %{which_group} na Loomio. Klikněte sem, abyste navštívil(a) skupinu:"
+    unsubscribe: "Odhlašte se nebo si změňte nastavení emailu:"
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, abyste se odhlásil(a) nebo změnil(a) nastavení emailu."
     view_comment: "Klikněte sem pro zobrazení komentáře na Loomio"
     view_discussion: "Klikněte sem pro zobrazení této diskuze"
     view_group: "Klikněte sem pro zobrazení skupiny na Loomio"
+    view_proposal: "Zobrazte si tento návrh na Loomio"
     create_discussion:
       intro: "%{who} zahájil(a) novou diskuzi v %{which_group}:"
       subject: "Nová diskuze - %{which}"
+    create_proposal:
+      intro: "Nový návrh byl vytvořen v Loomio skupině, ke které patříte"
+      closes_in: "Uzavře se"
+      subject: "Nový návrh: %{which}"
     daily_activity:
       heading: "Vaše aktivita na Loomiu"
+      intro: "Zobrazuje se, co se dělo ve vašich Loomio skupinách během posledních 24 hodin"
       subject: "Loomio -- Souhrn posledních 24 hodin"
+    group_email:
+      intro: "%{who} oznámil(a) skupině %{group}:"
     group_membership_approved:
+      intro: "Vaše žádost o přístup ke skupině ‚%{group_name}‘ na Loomio byla přijata."
       subject: "Členství schváleno"
+    invitation:
+      hi: "Ahoj %{name},"
+      intro: "Klikněte na odkaz níže, abyste si zřídil(a) svou skupinu %{group_name}:"
+      closing_message: "Pokud máte nějaké otázky nebo pokud existuje způsob, jak vám pomoct se rozjet, rádi od vás uslyšíme - stačí odepsat na tento email."
+      thanks: |
+        Děkujeme!
+        Tým Loomio
     membership_request:
+      intro: "%{name} (%{email}) zažádal(a) o přístup k jedné z vašich Loomio skupin."
+      subject: "%{who} zažádal(a) o členství v %{which_group}"
       view_group: "Můžete schválit či odmítnout žádost zde"
     mentioned:
       intro: "Byl(a) jste zmíněn(a) v diskuzi:"
       said: "%{comment_author} řekl(a):"
       subject: "%{who} vás zmínil(a) ve skupině %{which} na Loomio"
+    new_motion_created:
+      context: "%{author} vytvořil(a) návrh v %{group_full_name}:"
     proposal_closed:
+      intro: 'Váš návrh „%{proposal_name}“ byl uzavřen.'
+      intro_html: 'Váš návrh „%{proposal_name}“ byl uzavřen.'
       specify_outcome_and_notify_group: "Vytvořte výsledek a pošlete ho své skupině!"
       specify_outcome_and_notify_group_html: "Vytvořte výsledek a pošlete ho své skupině!"
       subject: "Návrh uzavřen - %{which}"
     proposal_outcome:
       subject: "Výsledej návrhu"
+    proposal_blocked:
+      subject: "Návrh zamítnut - %{which}"
     proposal_closing_soon:
       closes_on: "Uzavírá se"
       closes_at: "Uzavírá se"
       closes_in: "Uzavírá se za"
       closing_in_24_hours: "Uzavírá se do 24 hodin"
+      headline: "návrh %{author} v %{group} se brzy uzavírá:"
       summary: "Shrnutí"
+    to_join_group:
+      subject: "%{member} vás pozval(a) do skupiny %{group_name} na Loomio"
+    to_start_group:
+      subject: "Zřiďte si svou novou Loomio skupinu: %{group_name}"
+    trial_expiry:
+      hi: "Zdravíme,"
+    trial_follow_up:
+      header: "%{group_name}: Jak se ti zatím líbí tvá zkouška Loomio?"
+      hi: "Zdravíme,"
     verification:
       header: "jste skoro hotov(a)!"
       intro: "Prosím klikněte na tento ověřovací odkaz pro dokončení vaší žádosti:"
+      ignore: "Pokud jste nezažádal(a) o členství na Loomio, prosím ignorujte tento email."
   about_loomio: "O Loomio"
   ago: "před %{quantity_of_time}"
   approve: "Schválit"
@@ -518,9 +687,11 @@ cs:
   pricing: 'Ceník'
   prev: "Předch."
   more: "Více..."
-  translate_this_string: "Přeložit do jazyku %{language}"
+  translate_this_string: "Přeložit do %{language}"
   options: "Nastavení"
+  other: "Ostatní"
   ok_got_it: "OK, chápu!"
+  remove: "Vyloučit"
   save: "Uložit"
   saving: "Ukládá se"
   sending: "Odesílá se"
@@ -531,6 +702,7 @@ cs:
   start_group: "Vytvořte skupinu!"
   starting: "Zahajuje se"
   subject: "Téma"
+  thanks: "Děkujeme!"
   translate: "Pomozte přeložit Loomio!"
   unlike: "To se mi nelíbí"
   until_close: "do uzavření"
