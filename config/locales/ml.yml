@@ -1,1 +1,400 @@
-ml: {}
+ml:
+  activerecord:
+    errors:
+      messages:
+        blank: "ശൂന്യമാവരുതു്"
+  errors:
+    messages:
+      email: "സാധുവായൊരു ഈമെയില്‍ വിലാസമല്ല"
+  time:
+    formats:
+      for_today: '%l:%M %P'
+  date:
+    formats:
+      for_this_year: '%e %b'
+      for_another_year: '%-d/%-m/%y'
+      datepicker: "%d-%m-%Y"
+  devise:
+    invitations:
+      no_invitations_remaining: "ക്ഷണങ്ങള്‍ ബാക്കിയില്ല"
+  error:
+    access_denied: "നിങ്ങള്‍ക്ക് ഇതു ചെയ്യാനുള്ള സമ്മതമ്മില്ല"
+    cant_modify_position: "ഈ നിര്‍ദ്ദേശത്തിനുള്ള സമയം തീര്‍ന്നിരിയ്ക്കുന്നു."
+    cant_state_position: "ഈ നിര്‍ദ്ദേശത്തിനുള്ള സമയം തീര്‍ന്നിരിയ്ക്കുന്നു."
+    discussion_not_created: "ഒരു ചര്‍ച്ച തുടങ്ങാന്‍ സാധിച്ചില്ല."
+    invalid_close_date: "അവസാന ദിവസം സാധുവല്ല, ദയവായി ഈ ദിവസം കഴിഞ്ഞതല്ലെന്നുറപ്പാക്കുക."
+    image_upload_fail: "ചിത്രം ചേര്‍ക്കാനായില്ല. ചിത്രം 1 എംബിയില്‍ കുറവാണെന്നും .jpeg, .png, അല്ലെങ്കില്‍ .gif തരം ഫയലാണെന്നും ഉറപ്പാക്കുക. "
+    permission_to_invite: "നിങ്ങള്‍ക്കു് പുതിയ അംഗങ്ങളെ ക്ഷണിയ്ക്കാനുള്ള അനുമതിയില്ല."
+    position_not_updated: "നിലപാടു് പുതുക്കാനായില്ല."
+    settings_not_updated: "താങ്കളുടെ ക്രമീകരണങ്ങള്‍ പുതുക്കാനായില്ല."
+    you_have_already_requested_membership: "നിങ്ങള്‍ ഈ കൂട്ടത്തിന്റെ അംഗത്വം മുമ്പ് അപേക്ഷിച്ചതാണ്"
+    you_are_already_a_member_of_this_group: "നിലവില്‍ നിങ്ങള്‍ ഈ കൂട്ടത്തിലെ ഒരു അംഗമാണ്"
+  alert:
+    duplicate_email: "%{which_email} നേരത്തെ തന്നെ അംഗമാണു്."
+  notice:
+    member_removed: "അംഗത്തെ നീക്കിയിരിക്കുന്നു."
+    membership_approved: "അംഗത്വം സ്ഥിരീകരിച്ചു"
+    membership_request_canceled: "അംഗത്വ അപേക്ഷ റദ്ദുചെയ്തിരിക്കുന്നു."
+    membership_request_ignored: "അംഗത്വ അപേക്ഷ നിരസ്സിച്ചിരിക്കുന്നു."
+    settings_updated: "താങ്കളുടെ ക്രമീകരണങ്ങള്‍ പുതുക്കിയിരിക്കുന്നു."
+    you_have_left_group: "നിങ്ങള്‍ %{which_group} കൂട്ടം വിട്ടിരിയ്ക്കുന്നു."
+  views:
+    pagination:
+      previous: "മുമ്പുള്ളത്"
+      next: "അടുത്തത്"
+  warning:
+    membership_request_already_approved: "അംഗത്വ അപേക്ഷ നേരത്തെ തന്നെ സ്ഥിരീകരിച്ചതാണ്."
+    membership_request_already_ignored: "അംഗത്വ അപേക്ഷ നേരത്തെ തന്നെ നിരസ്സിച്ചിരിക്കുന്നു."
+    membership_request_already_canceled: "അംഗത്വ അപേക്ഷ നേരത്തെ തന്നെ റദ്ദുചെയ്തിരിക്കുന്നു."
+    position_not_submitted: "നിങ്ങളുടെ നിലപാടു് അയയ്ക്കാന്‍ സാധിച്ചില്ല."
+    proposal_not_created: "നിങ്ങളുടെ ശുപാര്‍ശ തുടങ്ങാനായില്ല"
+  success:
+    added_to_group: "നിങ്ങളെ %{which_group} കൂട്ടത്തില്‍ ചേര്‍ത്തിരിയ്ക്കുന്നു."
+    close_date_changed: "അവസാന ദിവസം വിജയകരമായി മാറ്റിയിരിയ്ക്കുന്നു."
+    discussion_created: "ചര്‍ച്ച വിജയകരമായി സൃഷ്ടിച്ചു."
+    discussion_deleted: "ചര്‍ച്ച വിജയകരമായി നീക്കം ചെയ്തിരിക്കുന്നു."
+    emails_sending: "ഈമെയിലുകള്‍ അയക്കുന്നു."
+    group_created: "കൂട്ടം വിജയകരമായി സൃഷ്ടിച്ചിരിക്കുന്നു"
+    members_added: "അംഗങ്ങളെ കൂട്ടത്തില്‍ ചേര്‍ത്തി."
+    motion_outcome_updated: "ശുപാര്‍ശയുടെ ഫലം പുതുക്കിയിട്ടുണ്ടു്."
+    position_submitted: "നിലപാടു് സമര്‍പ്പിച്ചു"
+    position_updated: "നിലപാടു് പുതുക്കി"
+    proposal_created: "ശുപാര്‍ശ വിജയകരമായി ചേര്‍ത്തു."
+    proposal_deleted: "ശുപാര്‍ശ നീക്കം ചെയ്തു."
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one: "സെക്കന്റ്"
+        other: "%{count} സെക്കന്റുകള്‍"
+      x_seconds:
+        one: "ഒരു സെക്കന്റ്"
+        other: "%{count} സെക്കന്റുകള്‍"
+      less_than_x_minutes:
+        one: "ഒരു മിനുട്ട്"
+        other: "%{count} മിനുട്ടുകള്‍"
+      x_minutes:
+        one: "ഒരു മിനുട്ട്"
+        other: "%{count} മിനുട്ടുകള്‍"
+      about_x_hours:
+        one: "ഒരു മണിക്കൂര്‍"
+        other: "%{count} മണിക്കൂറുകള്‍"
+      x_days:
+        one: "ഒരു ദിവസം"
+        other: "%{count} ദിവസങ്ങള്‍"
+      about_x_months:
+        one: "ഒരു മാസം"
+        other: "%{count} മാസങ്ങള്‍"
+      x_months:
+        one: "ഒരു മാസം"
+        other: "%{count} മാസങ്ങള്‍"
+      about_x_years:
+        one: "ഒരു വര്‍ഷം"
+        other: "%{count} വര്‍ഷങ്ങള്‍"
+      over_x_years:
+        one: "ഒരു വര്‍ഷം"
+        other: "%{count} വര്‍ഷങ്ങള്‍"
+      almost_x_years:
+        one: "ഒരു വര്‍ഷം"
+        other: "%{count} വര്‍ഷങ്ങള്‍"
+  footer:
+    about: 'കുറിച്ച്'
+    blog: 'ബ്ലോഗ്'
+    contact: 'ബന്ധപ്പെടുക'
+    privacy: 'സ്വകാര്യത'
+    terms: 'വ്യവസ്ഥകള്‍'
+  notifications:
+    header: "അറിയിപ്പുകള്‍"
+    new_discussion: "പുതിയൊരു ചര്‍ച്ച തുടങ്ങിയിരിക്കുന്നു."
+    new_motion: "പുതിയൊരു പ്രസ്താവന തുടങ്ങിയിരിക്കുന്നു."
+    motion_closed:
+      by_user: "ശുപാര്‍ശ അവസാനിപ്പിച്ചു"
+      by_expiry: "ശുപാര്‍ശ അവസാനിച്ചു"
+    user_added_to_group: "നിങ്ങളെ കൂട്ടത്തില്‍ ചേര്‍ത്തിരിക്കുന്നു"
+    motion_blocked: "ശുപാര്‍ശ തടഞ്ഞു"
+    motion_outcome_created: "ശുപാര്‍ശയുടെ ഫലം പ്രസിദ്ധീകരിച്ചു"
+    motion_outcome_updated: "ശുപാര്‍ശയുടെ ഫലം പുതുക്കി"
+  edit_discussion_context: "ചര്‍ചാ പശ്ചാത്തലം തിരുത്തുക"
+  request_new_group: "ഒരു കൂട്ടം ആരംഭിക്കുക!"
+  see_all_notifications: "എല്ലാ അറിയിപ്പുകളും കാണുക"
+  user_settings: "ഉപയോക്താവിന്റെ ക്രമീകരണങ്ങള്‍"
+  email_preferences: "ഈമെയില്‍ മുന്‍ഗണനകള്‍"
+  sign_out: "പുറത്തു കടക്കുക"
+  sign_in: "പ്രവേശിക്കുക"
+  click_to_dismiss: "ഈ സന്ദേശം ഒഴിവാക്കാന്‍ ഇവിടെ ഞെക്കുക"
+  generic_confirm: "താങ്കള്‍ക്ക് ഉറപ്പാണോ?"
+  discussion_helper_text:
+    header: "നിങ്ങളുടെ ആദ്യ ചര്‍ച്ചയിലേക്ക് സ്വാഗതം"
+  group_helper_text:
+    header: "നിങ്ങളുടെ പുതിയ കൂട്ടത്തിലേക്ക് സ്വാഗതം!"
+  dashboard_helper_text:
+    header: "നിങ്ങളുടെ പൂമുഖ താളിലേക്ക് സ്വാഗതം"
+  setup_step_2: "നിങ്ങളുടെ ആദ്യ ചര്‍ച്ച ആരംഭിക്കൂ"
+  invite_people: "ആളുകളെ ക്ഷണിക്കുക"
+  no_invitations_button: "യാതൊരു ക്ഷണങ്ങളും ബാക്കിയില്ല"
+  edit_memberships: 'അംഗത്വങ്ങള്‍ തിരുത്തുക'
+  add_new_member: "പുതിയ അംഗത്തെ ചേര്‍ക്കുക"
+  remaining_invites: "ബാക്കിയുള്ള ക്ഷണങ്ങള്‍"
+  get_in_touch_link: "ഞങ്ങളുമായി ബന്ധപ്പെടുക"
+  email_members_in_group: "%{which_group} കൂട്ടത്തിലെ അംഗങ്ങള്‍ക്കു് ഈമെയില്‍ അയയ്ക്കുക"
+  subject_error: "ദയവായി ഒരു വിഷയം ചേര്‍ക്കുക"
+  subject_placeholder: "ഒരു വിഷയം എഴുത്തുക"
+  message_error: "ദയവായി ഒരു സന്ദേശം ചേര്‍ക്കുക"
+  message_placeholder: "%{which_group} കൂട്ടത്തിലെ അംഗങ്ങള്‍ക്കൊരു സന്ദേശം എഴുതുക."
+  email_group_members: "കൂട്ടത്തിലെ അംഗങ്ങള്‍ക്കു് ഈമെയില്‍ അയയ്ക്കുക"
+  edit_group_settings: "കൂട്ടത്തിന്റെ ക്രമീകരണങ്ങള്‍ മാറ്റുക"
+  leave_group: "കൂട്ടം വിടുക"
+  deactivate_group: "കൂട്ടം പ്രവര്‍ത്തനരഹിതമാക്കുക"
+  invited_users: "ക്ഷണിക്കപ്പെട്ട അംഗങ്ങള്‍"
+  members: "അംഗങ്ങള്‍"
+  remove_coordinator: "എകോപകനെ നീക്കുക"
+  make_coordinator: "എകോപകൻ ആക്കുക"
+  membership_requests: "അംഗത്വ അപേക്ഷകള്‍"
+  cancel_membership_request: "അപേക്ഷ റദ്ദുചെയ്യുക"
+  ignore_request: "അപേക്ഷ നിരസ്സിച്ചിരിക്കുന്നു"
+  ignore: "നിരസ്സിക്കുക"
+  membership_requested: "അംഗത്വം അപേക്ഷിച്ചിരിക്കുന്നു"
+  request_membership: "അംഗത്വം അപേക്ഷിക്കുക"
+  ask_to_join_group: "കൂട്ടത്തില്‍ ചേരാന്‍ ചോടിക്കുക"
+  confirm_remove_membership_request: "ഈ കൂട്ടത്തിലേയ്ക്കുള്ള നിങ്ങളുടെ അംഗത്വ അപേക്ഷ പിന്‍വലിയ്ക്കണമെന്നു് നിങ്ങള്‍ക്കുറപ്പുണ്ടോ?"
+  invite_members: "അംഗങ്ങളെ ക്ഷണിയ്ക്കുക"
+  public: "എല്ലാവരും"
+  new_group: "പുതിയ കൂട്ടം"
+  create_group: "കൂട്ടം നിര്‍മ്മിക്കുക"
+  creating_group: "കൂട്ടം നിര്‍മ്മിക്കുന്നു"
+  edit_group: "കൂട്ടം തിരുത്തുക"
+  update_group: "കൂട്ടം പുതുക്കുക"
+  updating_group: "കൂട്ടം തിരുത്തുന്നു"
+  start_a_discussion: "പുതിയൊരു ചര്‍ച്ച ആരംഭിക്കുക"
+  group_description: "കൂട്ടത്തിന്റെ വിവരണം"
+  edit_group_description: "കൂട്ടത്തിന്റെ വിവരണം തിരുത്തുക"
+  discussion_items:
+    new_discussion: "സംവാദം തുടങ്ങിയിരിക്കുന്നു."
+    new_motion: "ശുപാര്‍ശ തുടങ്ങിയിരിക്കുന്നു"
+    motion_closed:
+      by_user: "ശുപാര്‍ശ അവസാനിപ്പിച്ചിരിക്കുന്നു"
+      by_expiry: "ശുപാര്‍ശ അവസാനിച്ചു"
+    motion_outcome_created: "ശുപാര്‍ശയുടെ ഫലം പ്രസിദ്ധീകരിച്ചു"
+    motion_outcome_updated: "ശുപാര്‍ശയുടെ ഫലം പുതുക്കി"
+    discussion_title_edited: "ചര്‍ച്ചയുടെ തലക്കെട്ട് മറ്റിയിരിക്കുന്നു"
+  discussion: "ചര്‍ച്ച"
+  current_decision: "ഇപ്പോഴത്തെ തീരുമാനം"
+  previous_decisions: "മുമ്പത്തെ തീരുമാനങ്ങള്‍"
+  see_previous_decisions: "മുമ്പത്തെ തീരുമാനങ്ങള്‍ കാണുക"
+  create_new_proposal: "പുതിയ ശുപാര്‍ശ തുടങ്ങുക"
+  empty_decision_index: "ഈ കൂട്ടം ഇതുവരെ തീരുമാനങ്ങളൊന്നുമെടുത്തിട്ടില്ല"
+  description_history:
+    subheader: "പതിപ്പ്"
+    applying_changes: "(മാറ്റങ്ങള്‍ പ്രാബല്യത്തിലാക്കുന്നു...)"
+    previous: "മുമ്പുള്ളത്"
+    next: "അടുത്തത്"
+  comment_form_placeholder: "എന്തെങ്കിലും പറയൂ..."
+  comment_form_submit_button: "അഭിപ്രായം രേഖപ്പെടുത്തുക"
+  delete_comment: "അഭിപ്രായം നീക്കം ചെയ്യുക"
+  markdown_settings_more_info: "കൂടുതല്‍ വിവരങ്ങള്‍..."
+  edit_discussion: "ചര്‍ച്ച തിരുത്തുക"
+  delete_discussion: "ചര്‍ച്ച നീക്കം ചെയ്യുക"
+  new_proposal: "പുതിയ ശുപാര്‍ശ"
+  close_proposal: "ശുപാര്‍ശ അവസാനിപ്പിക്കുക"
+  change_proposal_close_date: "അടയ്ക്കുന്ന തിയ്യതി മാറ്റുക"
+  proposal: 'ശുപാര്‍ശ '
+  state_your_position: "നിങ്ങളുടെ നിലപാടു് വ്യക്തമാക്കുക"
+  positions: "നിലപാടുകള്‍"
+  yes_position: "ഞാന്‍ യോജിക്കുന്നു"
+  yes_details: "ഞാന്‍ ഇതിനോട് യോജിക്കുകയും ഇതുമായി മുന്നോട്ട് പോകാന്‍ ആഗ്രഹിക്കുകയും ചെയ്യുന്നു"
+  abstain_position: "ഞാന്‍ വിട്ടു നില്‍ക്കുന്നു"
+  no_position: "ഞാന്‍ വിയോജിക്കുന്നു"
+  no_details: "നമ്മുക്ക് കൂടുതല്‍ നന്നായി ചെയ്യാനാവുമെന്നു ഞാന്‍ കരുതുന്നു."
+  block_position: "ഞാന്‍ തടയുന്നു"
+  outcome_submit: "ഫലം പ്രസിദ്ധീകരിയ്ക്കുക"
+  position_verbs:
+    'yes': "യോജിക്കുന്നു"
+    'no': "വിയോജിക്കുന്നു"
+    abstain: "വിട്ടു നില്‍ക്കുന്നു"
+    block: "തടയുന്നു"
+    past_tense:
+      'yes': "യോജിച്ചു"
+      'no': "വിയോജിച്ചു"
+      abstain: "വിട്ടു നിന്നു"
+      block: "തടാഞ്ഞു"
+  help:
+    coordinating: 'നിങ്ങളുടെ ലൂമിയോ ഗ്രൂപ്പ് ഏകോപിപ്പിക്കുന്നു'
+    help: "സഹായം"
+    how_it_works: "എങ്ങനെ പ്രവര്‍ത്തിക്കും"
+    join_the_community: "സമൂഹത്തില്‍ ചേരുക"
+    images_and_text_formatting: "ചിത്രങ്ങളുടെയും അക്ഷരങ്ങളുടെയും വിന്യാസം"
+    make_a_decision: "ഒരു തീരുമാനം എടുക്കുക"
+    start_proposal: "വ്യക്തമായോരു ശുപാര്‍ശ എഴുത്തുക"
+    video_id: "52025402"
+    video_tutorial: "വീഡിയോ സഹായി"
+  hint:
+    proposal: 'വ്യക്തമായോരു ശുപാര്‍ശ എഴുതാനുള്ള നുറുങ്ങുകള്‍'
+  pricing_page:
+    organisations: സംഘടനകള്‍
+  contribution:
+    currency_desc: തുകകള്‍ യൂ എസ്സ് ഡോളറിലാണ്
+    submit: പങ്കെടുക്കുക
+  new_password: "പുതിയ അടയാളവാക്ക്"
+  confirm_new_password: "പുതിയ അടയാളവാക്ക് തീര്‍ച്ചപ്പെടുത്തുക"
+  change_your_password: "നിങ്ങളുടെ അടയാളവാക്ക് മാറ്റുക"
+  change_my_password: "എന്റെ അടയാളവാക്ക് മാറ്റുക"
+  send_password_reset: "അടയാളവാക്ക് ക്രമീകരിക്കാനുള്ള നിര്‍ദ്ദേശങ്ങള്‍ എനിക്ക് അയക്കൂ"
+  password_confirmation: "അടയാളവാക്ക് സ്ഥിരീകരിക്കല്‍"
+  current_password: "ഇപ്പോഴത്തെ അടയാളവാക്ക്"
+  cancel_my_account: "എന്റെ അക്കൗണ്ട് റദ്ദാക്കുക"
+  remember_me: "എന്നെ ഓര്‍ക്കുക"
+  signing_in: "പ്രവേശിക്കുന്നു"
+  forgot_your_password: "അടയാളവാക്ക് മറന്നുവോ?"
+  create_an_account: 'ഒരു അക്കൗണ്ട് തുടങ്ങുക'
+  invitation:
+    by_email: "ഇമെയില്‍ വഴി ക്ഷണിക്കുക"
+    invite_people: "നിങ്ങളുടെ കൂട്ടത്തിലേക്ക് ആളുകളേ‌ ക്ഷണിക്കുക"
+  search:
+    placeholder: "തിരയുക"
+  discussion_form:
+    new:
+      header: "പുതിയൊരു ചര്‍ച്ച ആരംഭിക്കുക"
+  motion_form:
+    header: "പുതിയ ശുപാര്‍ശ"
+  group_form:
+    invitation_settings: "ക്ഷണ ക്രമീകരണങ്ങള്‍"
+    admins_only: "എകോപകര്‍ മാത്രം"
+  vote_form:
+    header: "നിങ്ങളുടെ നിലപാടു് വ്യക്തമാക്കുക"
+    edit: "നിങ്ങളുടെ നിലപാടു് തിരുത്തുക"
+    your_position: "നിങ്ങളുടെ നിലപാടു്"
+    your_statement: "നിങ്ങളുടെ പ്രസ്താവന"
+    submit: "നിലപാടു് സമര്‍പ്പിക്കുക"
+    update: "നിലപാടു് പുതുക്കുക"
+  email_preferences_form:
+    header: "ഈമെയില്‍ മുന്‍ഗണനകള്‍"
+    daily_activity_summary: "ദൈനംദിന പ്രവര്‍ത്തനത്തിന്റെ ചുരുക്കം"
+    global_notifications: "ആഗോള അറിയിപ്പുകള്‍"
+    proposal_closing_soon_subscription: "ശുപാര്‍ശ്ശ അടയ്ക്കുന്നതിനു 24 മണിക്കൂര്‍ മുമ്പ് എന്നെ ഓര്‍മ്മപെടുത്തുക"
+    update_preferences: "മുന്‍ഗണനകള്‍ പുതുക്കുക"
+  new_user_form:
+    create_an_account: "ഒരു അക്കൗണ്ട് തുടങ്ങുക"
+  user_settings_form:
+    header: "ഉപയോക്താവിന്റെ ക്രമീകരണങ്ങള്‍"
+    picture: "ചിത്രം"
+  group_setup:
+    submit: "എന്നെ എന്റെ കൂട്ടത്തിലേക്ക് കൊണ്ടുപോവൂ!"
+    payment_model:
+      header: ലൂമിയോ എല്ലാവര്‍ക്കുമായുള്ളതാണ്!
+  simple_form:
+    'yes': 'അതെ'
+    'no': 'അല്ല'
+    required:
+      text: 'ആവശ്യമാണ്'
+      mark: '*'
+    labels:
+      discussion:
+        title: "തലക്കെട്ട്"
+        description: "പശ്ചാത്തലം"
+      group:
+        name: "കൂട്ടത്തിന്റെ പേരു്"
+        description: "വിവരണം"
+        members_invitable_by_coordinators: "എകോപകര്‍ മാത്രം"
+        members_invitable_by_members: "കൂട്ടത്തിലെ എല്ലാ അംഗങ്ങളും"
+        privacy: സ്വകാര്യത
+        privacy_public_header: എല്ലാവരും
+        group_members_invitable_by: "എകോപകര്‍ മാത്രം"
+      membership_request:
+        introduction: "സ്വയം പരിചയപെടുത്തുക"
+      motion:
+        name: "തലക്കെട്ട്"
+        description: "വിശദാംശങ്ങള്‍"
+        close_at_date: "അടയ്ക്കുന്നു"
+      user:
+        name: "മുഴുവന്‍ പേര്"
+        email: "ഈമെയില്‍"
+        password: "അടയാളവാക്ക്"
+        password_confirmation: "അടയാളവാക്ക് സ്ഥിരീകരിക്കുക"
+        language_preference: "ഭാഷ"
+    placeholders:
+      discussion:
+        title: "തലക്കെട്ട്"
+      group:
+        name: "കൂട്ടത്തിന്റെ പേരു്"
+        description: "കൂട്ടത്തിന്റെ വിവരണം"
+      user:
+        email: "ഈമെയില്‍"
+        password: "അടയാളവാക്ക്"
+  helpers:
+    submit:
+      discussion:
+        create: "പുതിയൊരു ചര്‍ച്ച ആരംഭിക്കുക"
+        update: "ചര്‍ച്ച പുതുക്കുക"
+      motion:
+        create: "ശുപാര്‍ശ തുടങ്ങുക"
+      user:
+        create: "അക്കൗണ്ട് തുടങ്ങുക"
+        update: "ക്രമീകരണങ്ങള്‍ പുതുക്കുക"
+  email:
+    view_group: "ലൂമിയോയില്‍ ഈ കൂട്ടം കാണാന്‍ ഇവിടെ ക്ലീക്ക് ചെയ്യുക"
+    daily_activity:
+      heading: "നിങ്ങളുടെ ലൂമിയോ പ്രവര്‍ത്തനം"
+    group_membership_approved:
+      subject: "അംഗത്വം സ്ഥിരീകരിച്ചു"
+    proposal_closing_soon:
+      summary: "ചുരുക്കം"
+    trial_expiry:
+      hi: "നമസ്കാരം,"
+    trial_follow_up:
+      hi: "നമസ്കാരം,"
+    verification:
+      header: "ദേ ഇപ്പത്തീരും!"
+  about_loomio: "ലൂമിയോയെ കുടിച്ച് "
+  approve: "സ്ഥിരീകരിക്കുക"
+  author: "സൃഷ്ടാവ്"
+  back: "പുറകിലേക്ക്"
+  cancel: "റദ്ദുചെയ്യുക"
+  change: "മാറ്റുക"
+  changing: "മാറ്റുന്നു"
+  click_here: "ഇവിടെ ക്ലിക്ക് ചെയ്യുക"
+  close: "അടക്കുക"
+  closing: "അടയ്ക്കുന്നു"
+  closed: "അടച്ചു"
+  coordinator: "എകോപകൻ"
+  decisions: "തീരുമാനങ്ങള്‍"
+  delete: "നീക്കം ചെയ്യുക"
+  details: "വിശദാംശങ്ങള്‍"
+  discussions: "ചര്‍ച്ചകള്‍"
+  edit: "തിരുത്തുക"
+  email_address: "ഈമെയില്‍ വിലാസം"
+  enable: "സജ്ജമാക്കുക"
+  participation: "പങ്കെടുക്കല്‍"
+  disable: "അസാധുവാക്കുക"
+  group: "കൂട്ടം"
+  groups: "കൂട്ടങ്ങള്‍"
+  group_admin: "കൂട്ടത്തിന്റെ എകോപകൻ"
+  home: "പൂമുഖം"
+  like: "ഇഷ്ടപെടുക"
+  loading: "ലോഡ് ചെയ്യുന്നു..."
+  message: "സന്ദേശം"
+  name: "പേരു്"
+  new_activity: "പുതിയ പ്രവര്‍ത്തനം"
+  next: "അടുത്തത്"
+  outcome: "ഫലം"
+  password: "അടയാളവാക്ക്"
+  prev: "മുമ്പുള്ളത്"
+  more: "കൂടുതല്‍..."
+  options: "ഐച്ഛികങ്ങള്‍"
+  other: "മറ്റുള്ളത്"
+  ok_got_it: "ശരി, മനസ്സിലായി!"
+  remove: "നീക്കുക"
+  save: "സൂക്ഷിക്കുക"
+  saving: "സൂക്ഷിക്കുന്നു"
+  sending: "അയക്കുന്നു"
+  send_invite: "ക്ഷണം അയക്കുക"
+  send_email: "ഈമെയില്‍ അയക്കുക"
+  show_more: "കൂടുതല്‍ കാണിക്കുക"
+  start_a_group: "കൂട്ടം ആരംഭിക്കുക!"
+  start_group: "കൂട്ടം ആരംഭിക്കുക!"
+  starting: "തുടങ്ങുന്നു"
+  subject: "വിഷയം"
+  thanks: "നന്ദി!"
+  translate: "ലൂമിയോ തര്‍ജ്ജിമ ചെയ്യാന്‍ സഹായിക്കൂ!"
+  until_close: "അടയ്ക്കുന്ന വരെ"
+  update: "പുതുക്കുക"
+  common:
+    email: "ഈമെയില്‍"
