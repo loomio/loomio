@@ -1,20 +1,23 @@
 class Translation
-  LANGUAGES = {"English" => "en",
-               "български" => "bg",
-               "Català" => "ca",
-               "Deutsch" => "de",
-               "Español" => "es",
-               "ελληνικά" => "el",
-               "Français" => "fr",
-               "Indonesian" => "id",
-               "magyar" => "hu",
-               "Nederlands" => "nl",
-               "Português (Brasil)" => "pt",
-               "română" => "ro",
-               "Tiếng Việt" => "vi"}
-  EXPERIMENTAL_LANGUAGES = {"Italiano" => "it",
-                            "čeština" => "cs",
-                            'Irish (Ireland)' => 'ga'}
+  LANGUAGES = {'English' => 'en',
+               'български' => 'bg',
+               'Català' => 'ca',
+               'čeština' => 'cs',
+               'Deutsch' => 'de',
+               'Español' => 'es',
+               'ελληνικά' => 'el',
+               'Français' => 'fr',
+               'Indonesian' => 'id',
+               'magyar' => 'hu',
+               'Nederlands' => 'nl',
+               'Português (Brasil)' => 'pt',
+               'română' => 'ro',
+               'Tiếng Việt' => 'vi'}
+
+  EXPERIMENTAL_LANGUAGES = {'Italiano' => 'it',
+                            'മലയാളം' => 'ml',
+                            'తెలుగు' => 'te',
+                            'Gaelic (Irish)' => 'ga'}
 
   def self.language(locale)
     LANGUAGES.key(locale)
