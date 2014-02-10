@@ -7,7 +7,8 @@ angular.module('loomioApp').controller 'ProposalController', ($scope, $window, P
 
 	$scope.selectPosition = (position) ->
 		$scope.newVote.position = position
-		$scope.voteFormIsExpanded = true
+		## lets not expand it for the demo
+		# $scope.voteFormIsExpanded = true
 		##faked
 		console.log $scope.proposal, position
 		newProposal = angular.copy($scope.proposal)
