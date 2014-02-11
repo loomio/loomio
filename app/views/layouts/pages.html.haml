@@ -28,19 +28,19 @@
               =link_to t(:'devise.sessions.sign_in'), new_user_session_path, class: 'btn btn-info'
           .span3 &nbsp;
           .span6
-            =link_to image_tag("logo-426px-mauve-matte.png"), root_path
+            =link_to image_tag("logo-426px-mauve-matte.png"), "/"
             %h2 collaborative decision-making
         .frontpage-nav
-          =link_to 'Purpose', purpose_path
+          =link_to('Purpose', '/purpose')
           %span &middot;
 
-          =link_to 'How it works', purpose_path(anchor: 'how-it-works')
+          =link_to('How it works', '/purpose#how-it-works')
           %span &middot;
 
-          =link_to 'Pricing', pricing_path
+          =link_to('Pricing', '/pricing')
           %span &middot;
 
-          =link_to 'About us', about_path
+          =link_to('About us', '/about')
           %span &middot;
 
           =link_to('Blog', blog_path)
