@@ -220,6 +220,11 @@ en:
     header: "Welcome to your Home page"
     message: "<p>The home page shows you all of the current discussions in all the groups you are a member of.</p><p>You can start a discussion on a new topic by clicking the “Start a discussion” button.</p>"
 
+  prompt_visitor_to_authenticate:
+    header: "Log in or join group to participate"
+    body_html: |
+      <p>If you're a member of this group, you'll have to log in to participate.</p>
+      <p>If you're not a member, you can ask to join.</p>
 
   #
   # GROUP PAGE
@@ -601,6 +606,7 @@ en:
   unlock_not_received: "Didn't receive unlock instructions?"
   inactive_html: "Sorry, this account is currently inactive. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>."
   create_an_account: 'Create an account'
+  log_in: "Log in"
 
   join_group:
     log_in: "Log in to join %{group_name}"
@@ -744,7 +750,7 @@ en:
         privacy_public_header: "Public"
         privacy_public_description: "Anyone can see this discussion"
         privacy_private_header: "Private"
-        privacy_private_description: "Only members %{group} can see this discussion"
+        privacy_private_description: "Only members of %{group} can see this discussion"
         privacy_hidden_description: "All discussions in a hidden group are private."
         of: "of "
         of_no_group: "of this group"
