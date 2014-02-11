@@ -37,7 +37,8 @@ class Vote < ActiveRecord::Base
   delegate :name, :to => :motion, :prefix => :motion
   delegate :name, :full_name, :to => :group, :prefix => :group
 
-  after_save :send_notifications, :update_motion_vote_counts
+  before_create :age_previous_votes
+  after_save :update_motion_vote_counts, :send_notifications
 
   after_create :update_motion_last_vote_at, :fire_new_vote_event
   after_destroy :update_motion_last_vote_at, :update_motion_vote_counts
@@ -50,38 +51,24 @@ class Vote < ActiveRecord::Base
     current_user && user == current_user
   end
 
-  def self.unique_votes(motion)
-    Vote.find_by_sql(
-      "SELECT * FROM votes a WHERE created_at = (SELECT  MAX(created_at) as  created_at FROM votes b WHERE a.user_id = b.user_id AND motion_id = #{motion.id})
-      ORDER   BY  Case    a.position
-        When    'block'     Then    0
-        When    'no'        Then    1
-        When    'abstain'   Then    2
-        When    'yes'       Then    3
-        Else    -1
-      End")
-  end
-
   def position_to_s
     return I18n.t(self.position, scope: [:position_verbs, :past_tense])
   end
 
   def previous_vote
-    prev_position = Vote.find(:first,
-      :conditions => [
-        'motion_id = ? AND user_id = ? AND created_at < ?',
-          motion.id, self.user_id, self.created_at
-      ]
-    )
-    return prev_position
+    motion.votes.where(user_id: user.id, age: age+1).first
   end
 
   def previous_position
     previous_vote.position if previous_vote
   end
 
-
   private
+
+  def age_previous_votes
+    motion.votes.where(user_id: user.id).update_all('age = age + 1')
+  end
+
   def update_motion_vote_counts
     unless motion.nil? || motion.discussion.nil?
       motion.update_vote_counts!
