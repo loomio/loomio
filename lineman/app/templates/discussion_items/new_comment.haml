@@ -13,7 +13,6 @@
 
   .card__content.comment-body
     {{ comment.body }}
-  .toolbar-container
     .toolbar
       .toolbar__button{ng_show: '!currentUserLikesIt()'}
         %a.cuke-like-comment-btn{href: '#', ng_click: 'like()'}
@@ -30,5 +29,6 @@
           -#%span.icon-ios7-chatbubble
           Reply
 
-    .cuke-liked-by-names{ng_show: 'anybodyLikesIt()'}
-      Liked by {{ whoLikesIt().join(', ') }}
+  .cuke-liked-by-names{ng_show: 'anybodyLikesIt()'}
+    Liked by {{ whoLikesIt().join(', ') }}
+
