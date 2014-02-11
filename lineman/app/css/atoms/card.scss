@@ -1,9 +1,10 @@
 $card-margin: 12px;
+$card-padding: 18px;
 
 .card {
   @include make-xs-column(12, $card-gutter);
   margin-bottom: $card-gutter;
-  padding: $card-margin;
+  padding: $card-padding;
   background: #FFF;
   border: 1px solid #eaeaea;
   max-width: 600px;
