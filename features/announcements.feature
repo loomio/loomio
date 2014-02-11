@@ -14,7 +14,7 @@ Feature: Announcements
     Given there is an announcement
     When I load the dashboard
     And I dismiss the announcement
-    And I reload the page
+    And I reload the dashboard
     Then I should not see the announcement
 
   Scenario: User does not see announcements when starting group

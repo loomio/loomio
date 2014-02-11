@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     if current_user
       flash[:error] = t("error.access_denied")
-      redirect_to root_url
+      redirect_to dashboard_path
     else
       store_location
       authenticate_user!
@@ -19,6 +19,14 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def dashboard_or_root_path
+    if current_user
+      dashboard_path
+    else
+      root_path
+    end
+  end
 
   def store_location
     session['user_return_to'] = request.original_url
@@ -29,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    path = session['user_return_to'] || root_path
+    path = session['user_return_to'] || dashboard_path
     clear_stored_location
     path
   end
@@ -44,8 +52,6 @@ class ApplicationController < ActionController::Base
 
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
-
-  protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|

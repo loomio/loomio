@@ -5,7 +5,7 @@
         .container
           %ul.nav-bar-list.clearfix
             %li.nav-item#logo-home
-              %a.nav-logo-link{:href => "/"}
+              %a.nav-logo-link{:href => dashboard_path}
                 = image_tag(navbar_logo_path, :alt => "Loomio")
             = render 'inbox'
             = render 'notifications_dropdown'
