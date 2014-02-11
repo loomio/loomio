@@ -24,10 +24,10 @@ describe UsersController do
       post :update, :id => 999, :user => {:name => "Peter Chilltooth"}
       flash[:error].should =~ /Your settings did not get updated./
     end
-    it "redirects to dashboard on success" do
+    it "redirects to root on success" do
       user.stub(:save).and_return(true)
       post :update, :id => 999, :user => {:name => "Peter Chilltooth"}
-      response.should redirect_to(dashboard_path)
+      response.should redirect_to(root_url)
     end
     it "redirects to user settings on failure" do
       user.stub(:save).and_return(false)
