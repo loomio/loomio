@@ -7,6 +7,7 @@ class Motion < ActiveRecord::Base
   belongs_to :outcome_author, :class_name => 'User'
   belongs_to :discussion
   has_many :votes, :dependent => :destroy
+  has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }
   has_many :did_not_votes, :dependent => :destroy
   has_many :events, :as => :eventable, :dependent => :destroy
   has_many :motion_readers, dependent: :destroy
@@ -45,6 +46,14 @@ class Motion < ActiveRecord::Base
 
   def user
     author
+  end
+
+  def voters
+    votes.map(&:user).uniq.compact
+  end
+
+  def voter_ids
+    votes.pluck(:user_id).uniq.compact
   end
 
   def voting?
@@ -158,7 +167,7 @@ class Motion < ActiveRecord::Base
       position_counts[position] = 0
     end
 
-    Vote.unique_votes(self).each do |vote|
+    unique_votes.each do |vote|
       position_counts[vote.position] += 1
     end
 
@@ -194,11 +203,6 @@ class Motion < ActiveRecord::Base
 
   def group_users_without_outcome_author
     group.users.where(User.arel_table[:id].not_eq(outcome_author.id))
-  end
-
-  #expensive to call
-  def unique_votes
-    Vote.unique_votes(self)
   end
 
   def store_users_that_didnt_vote
