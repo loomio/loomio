@@ -52,6 +52,10 @@ class Motion < ActiveRecord::Base
     votes.map(&:user).uniq.compact
   end
 
+  def voter_ids
+    votes.pluck(:user_id).uniq.compact
+  end
+
   def voting?
     closed_at.nil?
   end
