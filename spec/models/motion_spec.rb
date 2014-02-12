@@ -3,6 +3,20 @@ require 'spec_helper'
 describe Motion do
   let(:discussion) { create_discussion }
 
+  describe "#unique_votes" do
+    it "returns only the most recent votes of a user for a motion" do
+      user = FactoryGirl.create :user
+      motion = create :motion, discussion: discussion
+      discussion.group.add_member! user
+      vote1 = Vote.create(motion_id: motion.id, user_id: user.id, position: "no")
+      vote2 = Vote.create(motion_id: motion.id, user_id: user.id, position: "yes")
+
+      motion.votes.count.should == 2
+      motion.unique_votes.count.should == 1
+      motion.unique_votes.first.should == vote2
+    end
+  end
+
   describe "#voting?" do
     it "returns true if motion is open" do
       @motion = create :motion, discussion: discussion
@@ -203,6 +217,7 @@ describe Motion do
           vote.motion = motion
           vote.user = user
           vote.save!
+          motion.reload
         end
       end
 

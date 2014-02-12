@@ -6,13 +6,13 @@ class DiscussionItems::NewVote < DiscussionItem
   end
 
   def icon
-    if vote.position
-      return 'position-yes-icon' if vote.position == "yes"
-      return 'position-abstain-icon' if vote.position == "abstain"
-      return 'position-no-icon' if vote.position == "no"
-      return 'position-block-icon' if vote.position == "block"
+    case vote.position
+    when "yes"     then 'position-yes-icon'
+    when "abstain" then 'position-abstain-icon'
+    when "no"      then 'position-no-icon'
+    when "block"   then 'position-block-icon'
     else
-      return 'position-unvoted-icon'
+      'position-unvoted-icon'
     end
   end
 

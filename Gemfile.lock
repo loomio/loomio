@@ -399,6 +399,7 @@ GEM
       rspec-mocks (~> 2.14.0)
     ruby-hmac (0.4.0)
     ruby-prof (0.13.1)
+    ruby-progressbar (1.4.1)
     rubyzip (0.9.9)
     safe_yaml (0.9.7)
     sass (3.2.13)
@@ -567,6 +568,7 @@ DEPENDENCIES
   roadie (~> 2.4.3)
   rspec-rails (~> 2.14.0)
   ruby-prof
+  ruby-progressbar (= 1.4.1)
   sass-rails (~> 3.2.6)
   selenium-webdriver (~> 2.35.1)
   sequenced (~> 1.4.0)
