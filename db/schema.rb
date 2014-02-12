@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140107211331) do
+ActiveRecord::Schema.define(:version => 20140211233243) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -182,9 +182,9 @@ ActiveRecord::Schema.define(:version => 20140107211331) do
     t.boolean  "is_deleted",      :default => false, :null => false
     t.integer  "comments_count",  :default => 0,     :null => false
     t.integer  "items_count",     :default => 0,     :null => false
+    t.boolean  "private"
     t.string   "key"
     t.datetime "archived_at"
-    t.boolean  "private"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -542,9 +542,10 @@ ActiveRecord::Schema.define(:version => 20140107211331) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "statement"
+    t.integer  "age",        :default => 0, :null => false
   end
 
+  add_index "votes", ["motion_id", "user_id", "age"], :name => "aged_votes_for_motions", :unique => true
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"
-  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end
