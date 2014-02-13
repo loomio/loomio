@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140211233243) do
+ActiveRecord::Schema.define(:version => 20140213024300) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -476,6 +476,12 @@ ActiveRecord::Schema.define(:version => 20140211233243) do
 
   add_index "subscriptions", ["group_id"], :name => "index_subscriptions_on_group_id"
 
+  create_table "test", :id => false, :force => true do |t|
+    t.integer "age"
+  end
+
+  add_index "test", ["age"], :name => "test_age_key", :unique => true
+
   create_table "users", :force => true do |t|
     t.string   "email",                                                       :default => "",         :null => false
     t.string   "encrypted_password",                           :limit => 128, :default => ""
@@ -545,7 +551,8 @@ ActiveRecord::Schema.define(:version => 20140211233243) do
     t.integer  "age",        :default => 0, :null => false
   end
 
-  add_index "votes", ["motion_id", "user_id", "age"], :name => "aged_votes_for_motions", :unique => true
+  add_index "votes", ["motion_id", "user_id", "age"], :name => "vote_age_per_user_per_motion", :unique => true
+  add_index "votes", ["motion_id", "user_id"], :name => "index_votes_on_motion_id_and_user_id"
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"
 
 end
