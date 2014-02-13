@@ -9,7 +9,7 @@ $card-padding: 18px;
   border: 1px solid #eaeaea;
   max-width: 600px;
   @include screen-size(medium-up) {
-    margin-left: 100px;
+    margin-left: 440px;
   }
   h1 {font-size: 2em; margin: 0;}
 
@@ -26,6 +26,7 @@ $card-padding: 18px;
 
 .card__header {
   margin-bottom: $card-margin;
+  h1, h2 { line-height: 1.2; }
 }
 .card__header--standalone{
   margin-bottom: 0;
@@ -65,3 +66,12 @@ $card-padding: 18px;
 //       border: 20px solid green;
 //     }
 // }
+
+.sidebar {
+  display: none;
+  position: fixed;
+  margin-top: -6px;
+  @include screen-size(medium-up) {
+    display: block;
+  }
+}
