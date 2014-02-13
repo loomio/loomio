@@ -76,11 +76,7 @@ class Inbox
   end
 
   def groups
-    @user.memberships.where('inbox_position is not null').order(:inbox_position).map(&:group).compact
-  end
-
-  def group_ids
-    @user.memberships.where('inbox_position is not null').order(:inbox_position).pluck(:group_id)
+    @user.groups.where('memberships.inbox_position is not null').order(:inbox_position)
   end
 
   def clear_all_in_group(group)
