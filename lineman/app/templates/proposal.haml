@@ -12,8 +12,8 @@
     .card__content
       .proposal-description
         {{proposal.description}}
-      .pie-row
-        .pie-chart{'pie-chart' => true, ng_model: 'proposal'}
+      .pie
+        .pie-graph{'pie-chart' => true, ng_model: 'proposal'}
       .decision-tools
         .vote.agree{ng_click: 'selectPosition("yes")'}
           %img{src: '/img/yes.jpg'}
@@ -23,7 +23,7 @@
           %img{src: '/img/no.jpg'}
         .vote.block{ng_click: 'selectPosition("block")'}
           %img{src: '/img/block.jpg'}
-        .media__details--vote_count
+      .vote_count
         {{proposal.votes_count}} votes
       .agree{ng_click: 'selectPosition("yes")'}
 
