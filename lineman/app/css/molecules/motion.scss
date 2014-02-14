@@ -13,14 +13,15 @@
 }
 
 .proposal-description{
-  @include make-xs-column(12);
+  @include make-row($card-gutter);
   margin-bottom: $card-margin;
   @include screen-size(medium-up) {
-    @include make-xs-column(6)
+    @include make-xs-column(6);
+    padding-left: 0;
   }
 }
 
-.pie-row{
+.pie {
   @include make-row($card-gutter);
   margin-bottom: $card-margin;
   margin-right: $card-margin;
@@ -28,8 +29,9 @@
     @include make-xs-column(5);
     float: right;
   }
-  .pie-chart {
+  .pie-graph {
     margin: 0 auto;
+    text-align: center;
     width: 66.67%;
     @include screen-size(medium-up) {
       width: 100%;
@@ -41,20 +43,27 @@
   @include make-row($card-gutter);
   text-align: center;
   margin-bottom: $card-margin;
+  @include screen-size(medium-up) {
+    @include make-xs-column(6);
+    padding-left: 0;
+  }
   .vote {
-    @include make-xs-column(3);
-    padding: 0 10px;
+    @include screen(small-medium) {
+      @include make-xs-column(3);
+    }
     @include screen-size(medium-up) {
-      @include make-xs-column(1.5);
+      float: left;
+      margin-right: 16px;
     }
   }
 
 }
 
-.media__details--vote_count {
-  @extend .media__details;
+.vote_count {
+  @include make-row($card-gutter);
   @include screen-size(medium-up) {
-    @include make-row($card-gutter);
+    @include make-xs-column(6);
+    padding-left: 0;
   }
 }
 
