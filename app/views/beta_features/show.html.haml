@@ -1,0 +1,4 @@
+%h1 Beta features
+= simple_form_for current_user, url: beta_features_path, method: :post do |f|
+  = f.input :beta_features, as: :check_boxes, collection: BETA_FEATURE_NAMES
+  = f.submit

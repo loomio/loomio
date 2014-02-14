@@ -318,6 +318,10 @@ class User < ActiveRecord::Base
     groups.where(payment_plan: ['manual_subscription']).exists?
   end
 
+  def beta_feature_enabled?(beta_feature)
+    beta_features.include? beta_feature
+  end
+
   private
 
   def set_default_avatar_kind
