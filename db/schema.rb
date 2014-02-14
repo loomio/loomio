@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140214223622) do
+ActiveRecord::Schema.define(:version => 20140214224038) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -409,7 +409,6 @@ ActiveRecord::Schema.define(:version => 20140214223622) do
     t.integer  "read_activity_count", :default => 0,    :null => false
   end
 
-  add_index "motion_readers", ["user_id", "motion_id", "created_at"], :name => "index_motion_readers_on_user_id_and_motion_id_and_created_at"
   add_index "motion_readers", ["user_id", "motion_id"], :name => "index_motion_readers_on_user_id_and_motion_id"
 
   create_table "motions", :force => true do |t|
