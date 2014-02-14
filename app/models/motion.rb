@@ -6,9 +6,9 @@ class Motion < ActiveRecord::Base
   belongs_to :author, :class_name => 'User'
   belongs_to :outcome_author, :class_name => 'User'
   belongs_to :discussion
-  has_many :votes, :dependent => :destroy
-  has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }
-  has_many :did_not_votes, :dependent => :destroy
+  has_many :votes, :dependent => :destroy, include: :user
+  has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }, include: :user
+  has_many :did_not_votes, :dependent => :destroy, include: :user
   has_many :events, :as => :eventable, :dependent => :destroy
   has_many :motion_readers, dependent: :destroy
 
