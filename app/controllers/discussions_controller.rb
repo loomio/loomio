@@ -82,7 +82,7 @@ class DiscussionsController < GroupBaseController
     @current_motion = @discussion.current_motion
     assign_meta_data
     if params[:proposal]
-      @displayed_motion = Motion.find(params[:proposal])
+      @displayed_motion = @discussion.motions.find(params[:proposal])
     elsif @current_motion
       @displayed_motion = @current_motion
     end
