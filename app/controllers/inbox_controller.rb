@@ -8,7 +8,9 @@ class InboxController < BaseController
     load_inbox
     size = @inbox.items_count
 
-    if size > 0
+    if size > 50
+      render text: '50+'
+    elsif size > 0
       render text: size
     else
       render text: ''
