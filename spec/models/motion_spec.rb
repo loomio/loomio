@@ -52,11 +52,6 @@ describe Motion do
       @vote.save!
       @motion.user_has_voted?(@user).should == true
     end
-
-    it "returns false if given nil" do
-      @motion = create(:motion, discussion: discussion)
-      @motion.user_has_voted?(nil).should == false
-    end
   end
 
   describe "#search(query)" do
