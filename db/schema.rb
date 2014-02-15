@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140214224038) do
+ActiveRecord::Schema.define(:version => 20140215042942) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -452,6 +452,7 @@ ActiveRecord::Schema.define(:version => 20140214224038) do
   add_index "notifications", ["event_id", "user_id"], :name => "index_notifications_on_event_id_and_user_id"
   add_index "notifications", ["event_id"], :name => "index_notifications_on_event_id"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+  add_index "notifications", ["viewed_at"], :name => "index_notifications_on_viewed_at"
 
   create_table "omniauth_identities", :force => true do |t|
     t.integer  "user_id"
