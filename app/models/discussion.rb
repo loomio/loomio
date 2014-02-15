@@ -21,13 +21,14 @@ class Discussion < ActiveRecord::Base
 
   belongs_to :group, :counter_cache => true
   belongs_to :author, class_name: 'User'
+  belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   has_many :motions, :dependent => :destroy
   has_many :votes, through: :motions
   has_many :comments, :dependent => :destroy
   has_many :comment_likes, :through => :comments, :source => :comment_votes
   has_many :commenters, :through => :comments, :source => :user, :uniq => true
   has_many :events, :as => :eventable, :dependent => :destroy
-  has_many :items, class_name: 'Event', include: :eventable, order: 'created_at ASC'
+  has_many :items, class_name: 'Event', include: {:eventable => :user}, order: 'created_at ASC'
   has_many :discussion_readers
 
   include PgSearch

@@ -4,12 +4,13 @@ class Motion < ActiveRecord::Base
   include ReadableUnguessableUrls
 
   belongs_to :author, :class_name => 'User'
+  belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   belongs_to :outcome_author, :class_name => 'User'
   belongs_to :discussion
   has_many :votes, :dependent => :destroy, include: :user
   has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }, include: :user
   has_many :did_not_votes, :dependent => :destroy, include: :user
-  has_many :events, :as => :eventable, :dependent => :destroy
+  has_many :events, :as => :eventable, :dependent => :destroy, include: :eventable
   has_many :motion_readers, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
@@ -107,11 +108,11 @@ class Motion < ActiveRecord::Base
   end
 
   def user_has_voted?(user)
-    votes.for_user(user).exists?
+    votes.for_user(user.id).exists?
   end
 
   def most_recent_vote_of(user)
-    votes.for_user(user).last
+    votes.for_user(user.id).last
   end
 
   def can_be_voted_on_by?(user)
