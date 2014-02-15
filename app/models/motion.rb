@@ -108,6 +108,7 @@ class Motion < ActiveRecord::Base
   end
 
   def user_has_voted?(user)
+    return false if user.nil?
     votes.for_user(user.id).exists?
   end
 
