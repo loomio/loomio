@@ -106,6 +106,10 @@ class User < ActiveRecord::Base
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
   #
 
+  def cached_group_ids
+    @cached_group_ids ||= group_ids
+  end
+
   def top_level_groups
     parents = groups.parents_only.order(:name)
     orphans = groups.where('parent_id not in (?)', parents.map(&:id))
