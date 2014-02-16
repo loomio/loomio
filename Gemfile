@@ -53,6 +53,7 @@ gem 'sequenced', '~> 1.4.0'
 gem 'closure_tree', '~> 4.3.0'
 gem 'ruby-progressbar', '1.4.1'
 gem 'bing_translator', '~> 4.0.0'
+gem 'oboe-heroku'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -80,6 +81,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet'
   gem 'guard', '~> 1.6.1'
   gem 'guard-spork', '~> 1.4.1'
   gem 'guard-rspec', '~> 2.3.3'
