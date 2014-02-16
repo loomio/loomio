@@ -53,8 +53,6 @@ gem 'sequenced', '~> 1.4.0'
 gem 'closure_tree', '~> 4.3.0'
 gem 'ruby-progressbar', '1.4.1'
 gem 'bing_translator', '~> 4.0.0'
-gem 'oboe-heroku'
-gem 'hirefire-resource'
 
 # Gems used only for assets and not required
 # in production environments by default.
