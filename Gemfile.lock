@@ -218,6 +218,7 @@ GEM
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
     hike (1.2.3)
+    hirefire-resource (0.2.2)
     http_parser.rb (0.5.3)
     httparty (0.11.0)
       multi_json (~> 1.0)
@@ -537,6 +538,7 @@ DEPENDENCIES
   guard-spork (~> 1.4.1)
   haml-rails (~> 0.4)
   heroku-deflater (~> 0.5.1)
+  hirefire-resource
   httparty (~> 0.11.0)
   inherited_resources (~> 1.4.1)
   jqplot-rails (~> 0.3)
