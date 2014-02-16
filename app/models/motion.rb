@@ -41,6 +41,13 @@ class Motion < ActiveRecord::Base
   scope :closed, where('closed_at IS NOT NULL').order('closed_at DESC')
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
 
+  def grouped_unique_votes
+    order = ['block', 'no', 'abstain', 'yes']
+    unique_votes.sort do |a,b|
+      order.index(a.position) <=> order.index(b.position)
+    end
+  end
+
   def title
     name
   end
@@ -159,6 +166,7 @@ class Motion < ActiveRecord::Base
       (100-(members_not_voted_count/group_size_when_voting.to_f * 100)).to_i
     end
   end
+
 
   # recount all the final votes.
   # rather expensive
