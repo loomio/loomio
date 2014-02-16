@@ -218,7 +218,6 @@ GEM
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
     hike (1.2.3)
-    hirefire-resource (0.2.2)
     http_parser.rb (0.5.3)
     httparty (0.11.0)
       multi_json (~> 1.0)
@@ -279,10 +278,6 @@ GEM
       jwt (~> 0.1.4)
       multi_json (~> 1.0)
       rack (~> 1.2)
-    oboe (2.5.0.7)
-      json
-    oboe-heroku (0.9.7.1)
-      oboe (>= 2.4.0.1)
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
@@ -538,7 +533,6 @@ DEPENDENCIES
   guard-spork (~> 1.4.1)
   haml-rails (~> 0.4)
   heroku-deflater (~> 0.5.1)
-  hirefire-resource
   httparty (~> 0.11.0)
   inherited_resources (~> 1.4.1)
   jqplot-rails (~> 0.3)
@@ -553,7 +547,6 @@ DEPENDENCIES
   modernizr-rails (~> 2.6.2)
   newrelic_rpm (~> 3.5.7.59)
   nokogiri (~> 1.6.0)
-  oboe-heroku
   omniauth (~> 1.1.4)
   omniauth-browserid (~> 0.0.1)
   omniauth-facebook (~> 1.5.1)
