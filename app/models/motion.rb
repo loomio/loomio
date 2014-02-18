@@ -35,10 +35,10 @@ class Motion < ActiveRecord::Base
 
   attr_accessor :create_discussion
 
-  scope :voting, where('closed_at IS NULL').order('closed_at ASC')
+  scope :voting, where('motions.closed_at IS NULL').order('motions.closed_at ASC')
   scope :lapsed, lambda { where('closing_at < ?', Time.now) }
   scope :lapsed_but_not_closed, voting.lapsed
-  scope :closed, where('closed_at IS NOT NULL').order('closed_at DESC')
+  scope :closed, where('closed_at IS NOT NULL').order('motions.closed_at DESC')
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
 
   def grouped_unique_votes

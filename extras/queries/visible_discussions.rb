@@ -6,7 +6,7 @@ class Queries::VisibleDiscussions < Delegator
       group_ids = groups.map(&:id)
     end
 
-    @relation = Discussion.published.joins(:group).where('groups.archived_at IS NULL')
+    @relation = Discussion.joins(:group).merge(Group.published).published.preload(:group, :current_motion)
 
     if @user.present?
       @relation = @relation.select('discussions.*,
@@ -65,7 +65,7 @@ class Queries::VisibleDiscussions < Delegator
   end
 
   def without_open_motions
-    @relation = @relation.where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND closed_at IS NULL)")
+    @relation = @relation.where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND motions.closed_at IS NULL)")
     self
   end
 

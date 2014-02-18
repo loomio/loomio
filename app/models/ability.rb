@@ -127,9 +127,9 @@ class Ability
       group = discussion.group
       if discussion.archived?
         false
-      elsif group.members.include?(user)
-        true
       elsif discussion.public?
+        true
+      elsif group.members.include?(user)
         true
       else
         false
