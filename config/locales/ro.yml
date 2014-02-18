@@ -551,7 +551,6 @@ ro:
   approve: "Aproba"
   author: "Autor"
   back: "Inapoi"
-  by: "de catre"
   cancel: "Cancel"
   change: "Modifica"
   change_language: "Apasa aici pentru a utiliza Loomio in %{language}"

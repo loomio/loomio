@@ -1,4 +1,8 @@
 te:
+  activerecord:
+    errors:
+      messages:
+        blank: "ఖాళీగా ఉండకూడదు"
   errors:
     messages:
       email: "ఈమెయిలు చిరునామా సరికాదు"
@@ -16,10 +20,30 @@ te:
   error:
     cant_modify_position: "ఈ ప్రతిపాదన మూసివేయబడింది."
     cant_state_position: "ఈ ప్రతిపాదన మూసివేయబడింది."
+    motion_closing_inputs: "చెల్లని ముగిసే తేదీ"
+    position_not_updated: "స్థానాన్ని నవీకరించలేకపోతూంది."
+    settings_not_updated: "మీ అమరికలు నవీకరించబడలేదు."
+    group_request_invalid_token: "క్షమించండి! ఇది చెల్లని టోకెన్"
+  alert:
+    duplicate_email: "%{which_email} సమూహంలో ఇదివరకే ఉన్నది."
   notice:
     member_removed: "సభ్యుడు తీసివేయబడ్డాడు."
     membership_approved: "సభ్యత్వం ఆమోదించబడింది."
+    membership_request_canceled: "సభ్యత్వ అభ్యర్థన రద్దుచేయబడింది."
+    membership_request_ignored: "సభ్యత్వ అభ్యర్థన విస్మరించబడింది."
+    settings_updated: "మీ అమరికలు నవీకరించబడినవి."
+    you_have_left_group: "మీరు %{which_group} ను వదిలివేసారు."
+    comment_deleted: "వ్యాఖ్య తొలగించబడింది."
+  views:
+    pagination:
+      previous: "ముందు"
+      next: "తరువాత"
   success:
+    emails_sending: "ఈమెయిళ్ళు పంపబడుతోన్నవి."
+    group_created: "సమూహం విజయవంతంగా సృష్టించబడింది."
+    position_submitted: "స్థానము సమర్పించబడింది"
+    position_updated: "స్థానము నవీకరించబడింది."
+    proposal_created: "ప్రతిపాదన విజయవంతంగా సృష్టించబడింది."
     proposal_deleted: "ప్రతిపాదన తొలిగించబడింది."
   datetime:
     distance_in_words:
@@ -65,6 +89,7 @@ te:
     terms: 'షరతులు'
   inbox:
     dropdown-btn: 'సందేశాలపెట్టె'
+    empty: మీరు తాజాగానే ఉన్నారు! మీరు చూడనటువంటి వ్యాఖ్యలేమీ లేవు.
   notifications:
     header: "గమనికలు"
     new_discussion: "ఒక కొత్త చర్చను ప్రారంభించండి"
@@ -72,17 +97,42 @@ te:
     motion_closed:
       by_user: "ప్రతిపాదనను మూసివేసారు"
       by_expiry: "ప్రతిపాదన మూసివేయబడింది"
+    user_added_to_group: "మిమ్మల్ని సమూహానికి చేర్చారు"
+    motion_closing_soon: "ప్రతిపాదన తొందరలోనే ముగియనుంది"
+  edit_discussion_context: "చర్చ సందర్భాన్ని సవరించు"
   request_new_group: "ఒక సమూహాన్ని ప్రారంభించండి"
+  request_new_group_details: "లేదా ఎవరైనా ఆహ్వానించే వరకూ వేచివుండండి."
+  empty_notifications: "మీకు ఇంకా ఎటువంటి గమనికలు లేవు."
   see_all_notifications: "అన్ని గమనికలను చూడండి"
   user_settings: "వాడుకరి అమరికలు"
   email_preferences: "వేగు అభిరుచులు"
   sign_out: "నిష్క్రమించండి"
   sign_in: "ప్రవేశించండి"
   click_to_dismiss: "ఈ సందేశాన్ని రద్దుచేయుటకు ఇక్కడ నొక్కండి"
+  generic_confirm: "మీరు ఖచ్ఛితంగా ఇలా చేయాలనుకుంటున్నారా?"
+  discussion_helper_text:
+    header: "మీ మొదటి చర్చకు స్వాగతం"
+  group_helper_text:
+    header: "మీ కొత్త సమూహానికి స్వాగతం!"
+  dashboard_helper_text:
+    header: "మీ ముంగిలి పుటకు స్వాగతం"
   setup_steps_title: "తరువాతి అంచెలు:"
+  setup_step_2: "మీ మొదటి చర్చను మొదలుపెట్టండి"
+  setup_step_3: "మీ సమూహానికి ప్రజలను ఆహ్వానించండి"
   invite_people: "వ్యక్తులను ఆహ్వానించండి"
+  no_invitations_button: "ఆహ్వానాలేమీ మిగిలి లేవు"
+  edit_memberships: 'సభ్యత్వాలను సవరించండి'
   add_new_member: "కొత్త సభ్యున్ని చేర్చండి"
+  invite_members_to_group: "%{which_group} కు సభ్యులను ఆహ్వానించండి"
+  remaining_invites: "మిగిలిన ఆహ్వానాలు"
+  subject_error: "దయచేసి ఒక విషయాన్ని పూరించండి"
+  subject_placeholder: "ఒక విషయాన్ని వ్రాయండి"
+  message_error: "దయచేసి ఒక సందేశాన్ని పూరించండి"
+  email_group_members: "ఈమెయిలు సమూహ సభ్యులు"
+  edit_group_settings: "సమూహ అమరికలను సవరించండి"
   leave_group: "సమూహాన్ని వదిలివెళ్ళండి"
+  deactivate_group: "సమూహాన్ని అక్రియాశీలించు"
+  invited_users: "ఆహ్వానించబడిన సభ్యులు"
   members: "సభ్యులు"
   remove_coordinator: "సమన్వయకర్తను తీసివేయి"
   membership_requests: "సభ్యత్వ అభ్యర్థనలు"
@@ -94,35 +144,52 @@ te:
   ask_to_join_group: "సమూహంలో చేరుటకు అడగండి"
   subgroups: "ఉప-సమూహాలు"
   create_a_subgroup: "ఒక ఉప-సమూహాన్ని సృష్టించండి"
+  empty_parent_group: "దయచేసి సభ్యులను మొదట మూల సమూహానికి జతచేయండి"
   invite_members: "సభ్యులను ఆహ్వానించండి"
   new_subgroup: "కొత్త ఉప-సమూహాం"
   create_subgroup: "ఉప-సమూహాన్ని సృష్టించండి"
   creating_subgroup: "ఉప-సమూహాన్ని సృష్టిస్తూంది"
+  public: "బహిరంగం"
   new_group: "కొత్త సమూహం"
   create_group: "సమూహాన్ని సృష్టించండి"
   creating_group: "సమూహాం సృష్టించబడుతోంది"
   edit_group: "సమూహాన్ని సవరించు"
   update_group: "సమూహాన్ని నవీకరించు"
+  updating_group: "సమూహాన్ని నవీకరిస్తూంది"
   start_a_discussion: "ఒక చర్చను ప్రారంభించండి"
   group_description: "సమూహ వివరణ"
   edit_group_description: "సమూహ వివరణను సవరించండి"
+  group_subscription: "సమూహ చందా"
   discussion_items:
     new_discussion: "చర్చను సృష్టించారు"
     new_motion: "ఒక ప్రతిపాదనను సృష్టించారు"
     motion_closed:
       by_user: "ప్రతిపాదనను మూసివేసారు"
       by_expiry: "ప్రతిపాదన మూసివేయబడింది"
+    motion_close_date_edited: "ప్రతిపాదన ముగిసే తేదీని మార్చారు"
+    discussion_title_edited: "చర్చా శీర్షికను మార్చారు"
+    discussion_description_edited: "చర్చా వివరణను మార్చారు"
   discussion: "చర్చ"
   current_decision: "ప్రస్తుత చర్చ"
   previous_decisions: "మునుపటి చర్చ"
   see_previous_decisions: "మునుపటి చర్చలను చూడండి"
   create_new_proposal: "కొత్త ప్రతిపాదనను సృష్టించండి"
+  empty_decision_index: "ఈ సమూహంలో చర్చలేవీ ఇంకా చేపట్టలేదు."
   description_history:
     subheader: "రూపాంతరం"
+    current: "(ప్రస్తుతం)"
+    applying_changes: "(మార్పులను వర్తిస్తూంది...)"
+    previous: "ముందు"
+    next: "తరువాత"
+  comment_form_submit_button: "వ్యాఖ్యను టపాకట్టండి"
+  delete_comment: "వ్యాఖ్యను తొలగించు"
   markdown_settings_more_info: "మరింత సమాచారం..."
+  move_discussion: "చర్చను తరలించండి"
   delete_discussion: "చర్చను తొలగించు"
   new_proposal: "కొత్త ప్రతిపాదన"
   close_proposal: "ప్రతిపాదనను మూసివేయి"
+  confirm_close_proposal: "ఈ ప్రతిపాదనను మీరు ఖచ్ఛితంగా మూసివేయాలనుకుంటున్నారా?"
+  change_proposal_close_date: "ముగిసే తేదీని మార్చండి"
   proposal: ప్రతిపాదన
   positions: "స్థానాలు"
   yes_position: "నేను అంగీకరిస్తున్నాను"
@@ -131,6 +198,7 @@ te:
     'no': "తిరస్కరించు"
     block: "నిరోధించు"
   help:
+    getting_started: "ఆరంభించండి"
     help: "సహాయం"
     how_it_works: "ఎలా పనిచేస్తుంది"
     join_the_community: "సంఘంలో చేరండి"
@@ -152,7 +220,11 @@ te:
   signing_in: "ప్రవేశం"
   forgot_your_password: "మీ సంకేతపదాన్ని మర్చిపోయారా?"
   create_an_account: 'ఒక ఖాతాను సృష్టించుకోండి'
+  join_group:
+    log_in: "%{group_name} చేరుటకు ప్రవేశించండి"
   invitation:
+    invite_people: "మీ సమూహానికి ప్రజలను ఆహ్వానించండి"
+    message_body: "ఆహ్వాన సందేశం"
     invitation_link: "ఆహ్వానపు లంకె"
   search:
     placeholder: "వెతుకు"
@@ -165,9 +237,11 @@ te:
     header: "కొత్త ప్రతిపాదన"
   group_form:
     invitation_settings: "ఆహ్వాన అమరికలు"
+    admins_only: "సమన్వయకర్తలు మాత్రమే"
   vote_form:
     edit: "మీ స్థానాన్ని సవరించుకోండి"
     your_position: "మీ స్థానము"
+    your_statement: "మీ ప్రకటన"
     submit: "స్థానాన్ని సమర్పించండి"
     update: "స్థానాన్ని నవీకరించండి"
   email_preferences_form:
@@ -181,7 +255,9 @@ te:
     picture: "చిత్రం"
     upload_new_image: "ఒక కొత్త బొమ్మను ఎక్కించండి"
   group_setup:
+    submit: "నన్ను నా సమూహానికి తీసుకెళ్ళు"
     payment_model:
+      header: లూమియో అందరికోసం రూపొందించబడింది!
       link: మరింత తెలుసుకోండి
   simple_form:
     'yes': 'అవును'
@@ -197,10 +273,12 @@ te:
       group:
         name: "సమూహం పేరు"
         description: "వివరణ"
+        members_invitable_by: "ఈ సమూహానికి ఎవరెవరు వ్యక్తులను ఆహ్వానించవచ్చు?"
         members_invitable_by_coordinators: "సమన్వయకర్తలు మాత్రమే"
         members_invitable_by_members: "సమూహ సభ్యులు అందరు"
         privacy: గోప్యత
         privacy_public_header: బహిరంగం
+        privacy_private_header: దాదాపు గోప్యం
         group_members_invitable_by: "సమన్వయకర్తలు మాత్రమే"
         submit: సమర్పయామి
       membership_request:
@@ -234,9 +312,19 @@ te:
         create: "ఖాతాను సృష్టించండి"
         update: "అమరికలను నవీకరించు"
   email:
+    unsubscribe: "మీ ఈమెయిలు అభిరుచులను మార్చండి లేదా చందావిరమించుకోండి:"
+    create_discussion:
+      subject: "కొత్త చర్చ - %{which}"
+    create_proposal:
+      subject: "కొత్త ప్రతిపాదన: %{which}"
+    group_membership_approved:
+      subject: "సభ్యత్వం ఆమోదించబడింది"
+    proposal_closed:
+      subject: "ప్రతిపాదన మూసివేయబడింది - %{which}"
     proposal_closing_soon:
       summary: "సారాంశం"
   about_loomio: "లూమియో గురించి"
+  ago: "%{quantity_of_time} క్రితం"
   approve: "ఆమోదించండి"
   author: "రచయిత"
   back: "వెనక్కి"
@@ -258,6 +346,7 @@ te:
   groups: "సమూహాలు"
   group_admin: "సమూహ సమన్వయకర్త"
   home: "నివాసం"
+  id: "గుచి"
   like: "ఇష్టం"
   loading: "లోడవుతూంది..."
   message: "సందేశం"
@@ -268,6 +357,7 @@ te:
   pricing: 'ధర'
   prev: "మునుపటిది"
   more: "మరింత..."
+  translate_this_string: "%{language} లోకి అనువదించండి"
   options: "ఐచ్ఛికాలు"
   other: "ఇతరాలు"
   ok_got_it: "సరే, అర్థమైంది!"
@@ -285,6 +375,7 @@ te:
   thanks: "ధన్యవాదాలు!"
   translate: "లూమియోను అనువదించుటలో సహాయం చేయండి!"
   unlike: "అయిష్టం"
+  until_close: "ముగిసే వరకూ"
   update: "నవీకరించు"
   common:
     email: "వేగు"
