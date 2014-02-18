@@ -7,7 +7,7 @@ class Queries::VisibleMotions < Delegator
       group_ids = groups.map(&:id)
     end
 
-    @relation = Motion.joins(:discussion => :group).includes(:discussion).where('groups.archived_at IS NULL')
+    @relation = Motion.joins(:discussion => :group).merge(Group.published).preload(:discussion)
 
     if @user.present?
       @relation = @relation.select('motions.*,

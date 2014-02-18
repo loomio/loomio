@@ -4,7 +4,7 @@
       - if current_user
         .vote-icon
           - if current_user.group_membership(this_group) || this_group.nil?
-            %div{:class => 'activity-icon ' + vote_icon_name(current_user.position(motion))}
+            %div{:class => 'activity-icon ' + vote_icon_name(motion.last_position_by_user(current_user))}
       .proposal-title-container
         .proposal-title.word-break= truncate(motion.name, :length => 60, :separator => ' ')
         .clearfix
