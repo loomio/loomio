@@ -1,10 +1,12 @@
-.motion
+.motion.translate-parent{id:"motion-#{motion.id}"}
   .row
     .span4.motion-header-info
       .clearfix
         %h3.motion-title.word-break= motion.name
         - if motion.closed?
           %span.label.label-important= t(:closed)
+        .translated-title.translated
+          = t(:loading)
       #closing-info
         - if motion.voting?
           = t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))
@@ -14,6 +16,8 @@
         = t(:proposed_when_by_who, when: time_ago_in_words(motion.created_at), who: motion.author_name)
     .span2.motion-admin-buttons
       = render '/motions/admin_buttons', motion: motion unless motion.closed?
+      - if TranslationService.can_translate? motion
+        = translate_link_for motion, 'btn btn-small'
   .row
     .span5
       =render "motions/outcome_statement", motion: motion, this_group: this_group if motion.closed?
@@ -23,7 +27,8 @@
       .description
         .long-description
           = render_rich_text(motion.description, false)
-
+        .translated-description.translated
+          = t(:loading)
   .pie{id: "graph_#{motion.id}"}
   .percentage-to-vote
     - if motion.closed?

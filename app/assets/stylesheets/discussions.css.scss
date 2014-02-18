@@ -445,11 +445,6 @@ body.discussions.show {
         }
         p:last-child{margin-bottom: 2px;}
       }
-      .activity-item-translation {
-        display: none;
-        padding: 0 0 5px 5px;
-        font-style: italic;
-      }
       .activity-item-likes{
         color: $dark-grey;
         font-size: $font-tiny;
@@ -701,3 +696,10 @@ div.jqplot-table-legend-swatch{
   margin-right: -26px;
   width: 0;
 }
+
+.translated {
+  display: none;
+  padding: 0 0 5px 5px;
+  font-style: italic;
+}
+

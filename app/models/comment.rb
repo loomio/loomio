@@ -1,9 +1,9 @@
 class Comment < ActiveRecord::Base
   include Twitter::Extractor
-  include Translatable
 
   has_paper_trail
-
+  is_translatable on: :body
+  
   belongs_to :discussion, counter_cache: true
   belongs_to :user
 
@@ -24,6 +24,7 @@ class Comment < ActiveRecord::Base
   delegate :group, :to => :discussion
   delegate :full_name, :to => :group, :prefix => :group
   delegate :title, :to => :discussion, :prefix => :discussion
+  delegate :language, to: :user
 
   serialize :liker_ids_and_names, Hash
 

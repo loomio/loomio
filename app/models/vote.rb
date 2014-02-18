@@ -1,4 +1,5 @@
 class Vote < ActiveRecord::Base
+
   class UserCanVoteValidator < ActiveModel::EachValidator
     def validate_each(object, attribute, value)
       unless value && object.motion.can_be_voted_on_by?(User.find(value))
@@ -19,6 +20,7 @@ class Vote < ActiveRecord::Base
 
   belongs_to :motion, counter_cache: true
   belongs_to :user
+
   has_many :events, :as => :eventable, :dependent => :destroy
 
   validates_presence_of :motion, :user, :position
@@ -26,6 +28,8 @@ class Vote < ActiveRecord::Base
   validates_length_of :statement, maximum: 250
   validates :user_id, user_can_vote: true
   validates :position, :statement, closable: true
+
+  is_translatable on: :statement
 
   scope :for_user, lambda {|user_id| where(:user_id => user_id)}
 
@@ -36,6 +40,7 @@ class Vote < ActiveRecord::Base
   delegate :author, :to => :discussion, :prefix => :discussion
   delegate :name, :to => :motion, :prefix => :motion
   delegate :name, :full_name, :to => :group, :prefix => :group
+  delegate :language, :to => :user
 
   before_create :age_previous_votes
   after_save :update_motion_vote_counts, :send_notifications

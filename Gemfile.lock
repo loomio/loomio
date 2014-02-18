@@ -42,6 +42,10 @@ GEM
       activesupport (= 3.2.16)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-postgres-hstore (0.7.7)
+      activerecord (>= 3.1)
+      pg-hstore (>= 1.1.5)
+      rake
     activeresource (3.2.16)
       activemodel (= 3.2.16)
       activesupport (= 3.2.16)
@@ -307,6 +311,7 @@ GEM
     parallel_tests (0.16.5)
       parallel
     pg (0.17.1)
+    pg-hstore (1.2.0)
     pg_search (0.7.2)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
@@ -497,6 +502,7 @@ PLATFORMS
 DEPENDENCIES
   aasm (~> 3.0.3)
   activeadmin!
+  activerecord-postgres-hstore
   airbrake (~> 3.1.14)
   awesome_print (~> 1.0.2)
   better_errors (~> 1.0.1)

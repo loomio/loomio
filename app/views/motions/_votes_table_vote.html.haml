@@ -1,6 +1,9 @@
-.position-row.clearfix
+.position-row.translate-parent.clearfix{id: "vote-#{vote.id}"}
   %div{ :class => 'activity-icon ' + vote_icon_name(vote.position) }
   = link_to vote.user_name, user_path(vote.user), class: 'user-name'
   - if vote.can_be_edited_by?(current_user) && motion.voting?
     =link_to "edit", new_motion_vote_path(motion), class: 'btn btn-mini', id: 'edit-vote'
   %span.word-break~ vote.statement
+  .translated-position.translated= t(:loading)
+  - if TranslationService.can_translate? vote
+    =translate_link_for vote

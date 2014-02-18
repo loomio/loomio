@@ -165,7 +165,19 @@ class Ability
     can [:create, :vote], Motion do |motion|
       motion.voting? && @member_group_ids.include?(motion.group.id)
     end
-
+    
+    can [:show], Comment do |comment|
+      can?(:show, comment.discussion)      
+    end
+    
+    can [:show], Motion do |motion|
+      can?(:show, motion.discussion)      
+    end
+    
+    can [:show], Vote do |vote|
+      can?(:show, vote.motion)      
+    end
+    
     can [:destroy,
          :close,
          :create_outcome,

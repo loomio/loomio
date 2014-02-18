@@ -1,7 +1,8 @@
-.clearfix
+.clearfix.discussion-header-container
   .discussion-title-container
     %h2#discussion-title
       = discussion.title
       = render 'discussions/privacy_icon', discussion: discussion
   - if can?(:edit, discussion) || can?(:move, discussion) || can?(:destroy, discussion)
     =render "discussions/options", discussion: discussion
+  .discussion-title-translation.translated= t(:loading)

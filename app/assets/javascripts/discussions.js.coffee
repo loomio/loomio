@@ -18,8 +18,10 @@ $ ->
 
 # Show translation div
 $ ->
-  $('.activity-item-container').on 'click', '.translate-comment', (event) ->
-    $(this).slideUp().closest('.activity-item-body').find('.activity-item-translation').slideDown()
+  $('.translate-parent').on 'click', '.translate-link', (event) ->
+    parent = $(this).closest('.translate-parent')
+    $(this).slideUp()
+    parent.find('.translated').not(parent.find('.translate-parent .translated')).slideDown()
 
 # Global Markdown (new discussion & comments)
 $ ->

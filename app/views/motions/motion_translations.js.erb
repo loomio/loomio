@@ -1,0 +1,5 @@
+title = "<%= get_translation @translation, :title %>";
+description = "<%= get_translation @translation, :description %>";
+motion = $('#motion-<%= @translation[:id].to_s %>');
+motion.find('.translated-title').html(title);
+motion.find('.translated-description').html(description);

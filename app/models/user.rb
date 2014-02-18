@@ -131,6 +131,7 @@ class User < ActiveRecord::Base
   def primary_language
     language_preference.split(',').first if language_preference    
   end
+  alias :language :primary_language
 
   # Provide can? and cannot? as methods for checking permissions
   def ability
