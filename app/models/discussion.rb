@@ -1,4 +1,5 @@
 class Discussion < ActiveRecord::Base
+
   PER_PAGE = 50
   paginates_per PER_PAGE
 
@@ -16,7 +17,8 @@ class Discussion < ActiveRecord::Base
   validates :title, :length => { :maximum => 150 }
   validates_inclusion_of :uses_markdown, :in => [true,false]
   validate :privacy_is_permitted_by_group
-
+  
+  is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   has_paper_trail :only => [:title, :description]
 
   belongs_to :group, :counter_cache => true
@@ -39,6 +41,7 @@ class Discussion < ActiveRecord::Base
   delegate :full_name, :to => :group, :prefix => :group
   delegate :email, :to => :author, :prefix => :author
   delegate :name_and_email, :to => :author, prefix: :author
+  delegate :language, to: :author
 
   before_create :set_last_comment_at
 
@@ -179,7 +182,6 @@ class Discussion < ActiveRecord::Base
   def group_default_is_private?
     ['hidden', 'private'].include? group.privacy
   end
-
 
   private
   def private_is_not_nil

@@ -1,4 +1,4 @@
-class Translation
+class Translation < ActiveRecord::Base
   LANGUAGES = {'English' => 'en',
                'български' => 'bg',
                'Català' => 'ca',
@@ -19,6 +19,18 @@ class Translation
                             'తెలుగు' => 'te',
                             'Gaelic (Irish)' => 'ga'}
 
+  belongs_to :translatable, polymorphic: true
+  
+  serialize :fields, ActiveRecord::Coders::Hstore
+  
+  scope :to_language, ->(language) { where(language: language) }
+
+  validates_presence_of :translatable, :language
+  
+  def as_json
+    { id: translatable_id }.merge(fields)
+  end
+  
   def self.language(locale)
     LANGUAGES.key(locale)
   end
@@ -36,4 +48,5 @@ class Translation
       title: "#{I18n.t(:change_language, language: language[0])}",
       text: "#{language[0]}" }
   end
+  
 end
