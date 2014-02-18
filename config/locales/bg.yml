@@ -77,9 +77,6 @@ bg:
     proposal_deleted: "Предложението е изтрито."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "%{count} секунда"
-        other: "%{count} секунди"
       x_seconds:
         one: "%{count} секунда"
         other: "%{count} секунди"
@@ -153,7 +150,6 @@ bg:
   setup_step_3: "Поканете хора в групата ви"
   invite_people: "Поканете хора"
   no_invitations_button: "Няма останали покани"
-  pending_invitations: 'Чакащи покани'
   number_pending: '%{pending} чакащи'
   and_number_pending: 'и %{pending} чакащи'
   edit_memberships: 'Редакция на членството'
@@ -510,7 +506,6 @@ bg:
   approve: "Одобряване"
   author: "Автор"
   back: "Назад"
-  by: "от"
   cancel: "Отказ"
   change: "Промяна"
   changing: "Променя се"
