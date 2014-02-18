@@ -55,9 +55,7 @@ en:
     permission_to_invite: "You do not have permission to invite new members."
     position_not_updated: "Could not update position."
     settings_not_updated: "Your settings did not get updated."
-    group_request_already_verified: "Sorry! The verification link you clicked has already been confirmed. If you haven't heard from us within 48 hours, get in touch: contact@loomio.org"
     group_request_already_accepted: "Sorry! This invitation is invalid or has already been accepted."
-    group_request_contribution: "Please select a category. This isn’t a commitment to pay, just useful information to help us design our model. Thanks!"
     group_request_invalid_token: "Sorry! This is an invalid token"
     group_private_or_not_found: "Group not found. \n\nThis group might be private. If someone gave you this link, ask them to invite you to the group."
     group_already_setup: "The group you are trying to setup already exists."
@@ -244,7 +242,6 @@ en:
   add_new_member: "Add new member"
   invite_members_to_group: "Invite members to %{which_group}"
   remaining_invites: "remaining invites"
-  need_more_invites_html: "Need more? Loomio is in closed beta, which means we're still in development and have limited resources for user support. If you'd like to increase the size of your group %{href}."
   get_in_touch_link: "get in touch"
 
   email_members_in_group: "Email the members in %{which_group}"
@@ -884,21 +881,6 @@ en:
       subject: "%{member} has invited you to join %{group_name} on Loomio"
     to_start_group:
       subject: "Set up your new Loomio group: %{group_name}"
-    trial_expiry:
-      header: "%{group_name}: Your Loomio trial is almost up."
-      hi: "Hi there,"
-      intro_html: |
-        Just a friendly reminder to let you know that your trial will expire in 5 days. We hope you're enjoying Loomio so far.
-        <p>Once the trial period runs out, you'll need to enter your payment details so your group can keep using Loomio.</p>
-        <p><a href=''>Click here</a> to set up your payment details now.</p>
-        <p>If you’ve got any questions or if there’s anything at all we can do to help your group succeed with Loomio, we’d love to hear from you.</p>
-    trial_follow_up:
-      header: "%{group_name}: How’s your Loomio trial going so far?"
-      hi: "Hi there,"
-      intro_html: |
-        Just a friendly reminder to let you know you're halfway through your trial. We hope you’re enjoying Loomio so far! If you’d like some tips about getting the most out of Loomio, <a href='/help#getting-the-most-out-of-Loomio'>have a look here.</a>
-        <p>You'll need to enter your payment information before the end of your trial to keep using Loomio. <a href=''>Click here</a> to set up your payment details now.</p>
-        <p>If you’ve got any questions or if there’s anything at all we can do to help your group succeed with Loomio, we’d love to hear from you.</p>
     verification:
       header: "You're almost done!"
       intro: "Please click this verification link to finalise your request:"
