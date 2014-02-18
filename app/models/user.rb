@@ -218,12 +218,6 @@ class User < ActiveRecord::Base
     groups.where("parent_id IS NULL").order("LOWER(name)")
   end
 
-  def position(motion)
-    if motion.user_has_voted?(self)
-      motion.last_position_by_user(self)
-    end
-  end
-
   def name
     if deleted_at.present?
       "#{self[:name]} (account inactive)"
