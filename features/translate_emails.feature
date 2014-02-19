@@ -32,7 +32,7 @@ Feature: deliver emails in the user's prefered language
     And "Viv" should receive the proposal closing soon email in Spanish
 
   Scenario: proposal closed email
-    Given "Eduardo" has closed their proposal
+    Given "John" has closed their proposal
     Then the proposal closed email should be delivered to "Eduardo" in Spanish
 
   Scenario: proposal outcome email
