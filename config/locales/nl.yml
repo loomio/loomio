@@ -750,7 +750,6 @@ nl:
   approve: "Goedkeuren"
   author: "Auteur"
   back: "Terug"
-  by: "door"
   cancel: "Annuleren"
   change: "Verander"
   change_language: "Klik hier om om Loomio te gebruiken in het %{language}"
