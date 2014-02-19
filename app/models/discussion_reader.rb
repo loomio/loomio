@@ -6,20 +6,7 @@ class DiscussionReader < ActiveRecord::Base
   validates_presence_of :discussion_id, :user_id
   validates_uniqueness_of :user_id, :scope => :discussion_id
 
-  def self.load_from_joined_discussion(discussion)
-    dv = new
-    dv.id = discussion[:viewer_id].to_i
-    dv.discussion_id = discussion.id.to_i
-    dv.user_id = discussion[:viewer_user_id].to_i
-    dv.read_comments_count = discussion[:read_comments_count].to_i
-    dv.read_items_count = discussion[:read_items_count].to_i
-    dv.last_read_at = discussion[:last_read_at]
-    dv.following = discussion[:viewer_following]
-    dv.discussion = discussion
-    dv.instance_variable_set :@attributes_cache, dv.attributes
-    dv.instance_variable_set :@new_record, false
-    dv
-  end
+  scope :for_user, -> (user) { where(user_id: user.id) }
 
   def unread_comments_count
     #we count the discussion itself as a comment.. but it is comment 0

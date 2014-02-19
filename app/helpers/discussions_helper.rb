@@ -2,12 +2,12 @@ module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
 
-  def enough_activity_for_jump_link?
-    @discussion.items_count > 3
+  def no_discussions_available?
+    (@discussion_readers_with_open_motions.size + @discussion_readers_without_open_motions.size) == 0
   end
 
-  def discussion_activity_count_for(discussion, user)
-    discussion.as_read_by(user).unread_comments_count
+  def enough_activity_for_jump_link?
+    @discussion.items_count > 3
   end
 
   def path_of_latest_activity
@@ -30,31 +30,12 @@ module DiscussionsHelper
     end
   end
 
-  def enabled_icon_class_for(discussion, user)
-    if discussion.as_read_by(user).unread_content_exists?
-      "enabled-icon"
-    else
-      "disabled-icon"
-    end
-  end
-
-  def css_class_unread_discussion_activity_for(page_group, discussion, user)
-    css_class = "discussion-preview"
-    css_class += " showing-group" if (not discussion.group.parent_id.nil?) && (page_group && (page_group.parent_id.nil?))
-    css_class += " unread" if discussion.as_read_by(user).unread_content_exists?
-    css_class
-  end
-
-  def css_class_for_closing_at(motion)
-    css_class = "popover-close-date label"
-
-    if motion.voting?
-      hours_left = (((Time.now - motion.closing_at) / 60) / 60) * -1
-      css_class += " color-urgent" if hours_left < 30
-      css_class += " color-warning" if (hours_left >= 3) && (hours_left <= 24)
-      css_class += " color-ok" if hours_left > 24
-    end
-    css_class
+  def css_classes_for_discussion_preview(page_group, discussion_reader)
+    discussion = discussion_reader.discussion
+    class_names = []
+    class_names << 'showing-group' if (not discussion.group.parent_id.nil?) && (page_group && (page_group.parent_id.nil?))
+    class_names << 'unread' if discussion_reader.unread_content_exists?
+    class_names.join(' ')
   end
 
   def add_mention_links(comment)
