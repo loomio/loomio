@@ -9,7 +9,7 @@
   - if can? :destroy, comment
     = " · "
     = link_to t(:delete), "#", 'data-title' => t(:delete_comment), 'data-body' => t(:confirm_delete_comment), 'data-confirm-path' => comment_path(comment), 'data-method-type' => 'delete', class: 'confirm-dialog', id: "delete-comment-#{comment.id}"
-  - if I18n.locale.to_s != comment.author.primary_language
+  - if false # (temporarily disable translation feature) I18n.locale.to_s != comment.author.primary_language
     = " . "
     = link_to t(:translate_this_string, language: current_language), translate_comment_path(id: comment), method: :post, remote: true, class: 'translate-comment', id: "translate-comment-#{comment.id}", rel: 'nofollow'
 - if comment.liker_ids_and_names.size > 0
