@@ -106,6 +106,10 @@ class User < ActiveRecord::Base
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
   #
 
+  def cached_group_ids
+    @cached_group_ids ||= group_ids
+  end
+
   def top_level_groups
     parents = groups.parents_only.order(:name)
     orphans = groups.where('parent_id not in (?)', parents.map(&:id))
@@ -212,12 +216,6 @@ class User < ActiveRecord::Base
 
   def parent_groups
     groups.where("parent_id IS NULL").order("LOWER(name)")
-  end
-
-  def position(motion)
-    if motion.user_has_voted?(self)
-      motion.last_position_by_user(self)
-    end
   end
 
   def name

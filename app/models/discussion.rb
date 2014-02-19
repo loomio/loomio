@@ -21,13 +21,15 @@ class Discussion < ActiveRecord::Base
 
   belongs_to :group, :counter_cache => true
   belongs_to :author, class_name: 'User'
+  belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   has_many :motions, :dependent => :destroy
+  has_one :current_motion, class_name: 'Motion', conditions: {'motions.closed_at' => nil}, order: 'motions.closed_at asc'
   has_many :votes, through: :motions
   has_many :comments, :dependent => :destroy
   has_many :comment_likes, :through => :comments, :source => :comment_votes
   has_many :commenters, :through => :comments, :source => :user, :uniq => true
-  has_many :events, :as => :eventable, :dependent => :destroy
-  has_many :items, class_name: 'Event', include: :eventable, order: 'created_at ASC'
+  has_many :events, :as => :eventable, :dependent => :destroy, include: :user
+  has_many :items, class_name: 'Event', include: [{:eventable => :user}, :user], order: 'created_at ASC'
   has_many :discussion_readers
 
   include PgSearch
@@ -68,10 +70,6 @@ class Discussion < ActiveRecord::Base
     archived_at.present?
   end
 
-  def voting_motions
-    motions.voting
-  end
-
   def closed_motions
     motions.closed
   end
@@ -82,10 +80,6 @@ class Discussion < ActiveRecord::Base
 
   def current_motion_closing_at
     current_motion.closing_at
-  end
-
-  def current_motion
-    voting_motions.last
   end
 
   def number_of_comments_since(time)
@@ -198,10 +192,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def joined_or_new_discussion_reader_for(user)
-    if self[:viewer_user_id].present?
-      unless user.id == self[:viewer_user_id].to_i
-        raise "joined for wrong user"
-      end
+    if user.id == read_attribute(:viewer_user_id).to_i
       DiscussionReader.load_from_joined_discussion(self)
     else
       new_discussion_reader_for(user)
@@ -209,7 +200,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def joined_to_discussion_reader?
-    self['joined_to_discussion_reader'] == '1'
+    read_attribute(:joined_to_discussion_reader).present?
   end
 
   def find_or_new_discussion_reader_for(user)

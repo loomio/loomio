@@ -7,8 +7,7 @@ Feature: View user profile
     Given I am logged in
     And I am in one of the same groups as another user
     When I visit the other user's profile page
-    Then I should see the other user's profile information
-    And I should see the other user's public groups
+    Then I should see the other user's public groups
 
   Scenario: User tries to view other user's profile page when not in the same group
     Given I am logged in

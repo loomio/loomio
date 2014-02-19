@@ -4,12 +4,13 @@ class Motion < ActiveRecord::Base
   include ReadableUnguessableUrls
 
   belongs_to :author, :class_name => 'User'
+  belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   belongs_to :outcome_author, :class_name => 'User'
   belongs_to :discussion
-  has_many :votes, :dependent => :destroy
-  has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }
-  has_many :did_not_votes, :dependent => :destroy
-  has_many :events, :as => :eventable, :dependent => :destroy
+  has_many :votes, :dependent => :destroy, include: :user
+  has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }, include: :user
+  has_many :did_not_votes, :dependent => :destroy, include: :user
+  has_many :events, :as => :eventable, :dependent => :destroy, include: :eventable
   has_many :motion_readers, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
@@ -34,11 +35,18 @@ class Motion < ActiveRecord::Base
 
   attr_accessor :create_discussion
 
-  scope :voting, where('closed_at IS NULL').order('closed_at ASC')
+  scope :voting, where('motions.closed_at IS NULL').order('motions.closed_at ASC')
   scope :lapsed, lambda { where('closing_at < ?', Time.now) }
   scope :lapsed_but_not_closed, voting.lapsed
-  scope :closed, where('closed_at IS NOT NULL').order('closed_at DESC')
+  scope :closed, where('closed_at IS NOT NULL').order('motions.closed_at DESC')
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
+
+  def grouped_unique_votes
+    order = ['block', 'no', 'abstain', 'yes']
+    unique_votes.sort do |a,b|
+      order.index(a.position) <=> order.index(b.position)
+    end
+  end
 
   def title
     name
@@ -107,11 +115,12 @@ class Motion < ActiveRecord::Base
   end
 
   def user_has_voted?(user)
-    votes.for_user(user).exists?
+    return false if user.nil?
+    votes.for_user(user.id).exists?
   end
 
   def most_recent_vote_of(user)
-    votes.for_user(user).last
+    votes.for_user(user.id).last
   end
 
   def can_be_voted_on_by?(user)
@@ -157,6 +166,7 @@ class Motion < ActiveRecord::Base
       (100-(members_not_voted_count/group_size_when_voting.to_f * 100)).to_i
     end
   end
+
 
   # recount all the final votes.
   # rather expensive

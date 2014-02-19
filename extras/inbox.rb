@@ -93,7 +93,7 @@ class Inbox
     Queries::VisibleDiscussions.
       new(user: @user, groups: [group]).
       unread.
-      last_comment_after(start_date_for(group)).
+      last_comment_after(3.months.ago).
       order_by_latest_comment.readonly(false)
   end
 

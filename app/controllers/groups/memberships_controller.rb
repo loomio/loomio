@@ -5,7 +5,7 @@ class Groups::MembershipsController < GroupBaseController
 
   def index
     @group = GroupDecorator.new(Group.find(params[:group_id]))
-    @memberships = @group.memberships.joins(:user).order('name')
+    @memberships = @group.memberships.joins(:user).includes(:user).order('name')
     if current_user.is_group_admin?(@group)
       render "coordinator_index"
     else

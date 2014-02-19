@@ -27,7 +27,7 @@ class Vote < ActiveRecord::Base
   validates :user_id, user_can_vote: true
   validates :position, :statement, closable: true
 
-  scope :for_user, lambda {|user| where(:user_id => user)}
+  scope :for_user, lambda {|user_id| where(:user_id => user_id)}
 
   delegate :name, :to => :user, :prefix => :user
   delegate :group, :discussion, :to => :motion

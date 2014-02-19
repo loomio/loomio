@@ -6,7 +6,7 @@ class Queries::VisibleDiscussions < Delegator
       group_ids = groups.map(&:id)
     end
 
-    @relation = Discussion.published.joins(:group).where('groups.archived_at IS NULL')
+    @relation = Discussion.joins(:group).merge(Group.published).published.preload(:group, :current_motion)
 
     if @user.present?
       @relation = @relation.select('discussions.*,
@@ -31,9 +31,9 @@ class Queries::VisibleDiscussions < Delegator
                                   -- or user belongs to parent group...... and that helps
                                   (groups.viewable_by_parent_members = TRUE AND groups.parent_id IN (:user_group_ids)))",
                                   group_ids: group_ids,
-                                  user_group_ids: @user.group_ids)
+                                  user_group_ids: @user.cached_group_ids)
     elsif @user.present? && group_ids.blank?
-      @relation = @relation.where('group_id IN (:user_group_ids)', user_group_ids: @user.group_ids)
+      @relation = @relation.where('group_id IN (:user_group_ids)', user_group_ids: @user.cached_group_ids)
     elsif @user.blank? && group_ids.present?
       @relation = @relation.where("group_id IN (:group_ids) AND
                                   (private = FALSE AND groups.privacy IN ('private', 'public')) AND
@@ -65,7 +65,7 @@ class Queries::VisibleDiscussions < Delegator
   end
 
   def without_open_motions
-    @relation = @relation.where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND closed_at IS NULL)")
+    @relation = @relation.where("discussions.id NOT IN (SELECT discussion_id FROM motions WHERE id IS NOT NULL AND motions.closed_at IS NULL)")
     self
   end
 
