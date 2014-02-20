@@ -2,14 +2,15 @@
 - unread_comments_count = discussion_reader.unread_comments_count
 - motion = discussion.current_motion
 - motion_reader = @motion_reader_cache.get_for(motion) if motion
+- last_vote = @last_vote_cache.get_for(motion) if motion
 
 .clearfix
   %div.discussion-preview{ class: css_classes_for_discussion_preview(@page_group, discussion_reader) }
     %a.selector-discussion-link{ href: discussion_path(discussion) }
-      - if user_signed_in? && discussion.current_motion
+      - if user_signed_in? && motion
         .vote-icon
           - if can?(:vote, motion)
-            %div{:class => 'activity-icon ' + vote_icon_name(@last_vote_cache.get_for(motion).position)}
+            %div{:class => 'activity-icon ' + vote_icon_name(last_vote.position)}
 
       .discussion-title
         = truncate(discussion.title, :length => 60, :separator => ' ')
