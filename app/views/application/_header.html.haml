@@ -1,9 +1,10 @@
-.logged-in-navigation
-  - if user_signed_in?
-    .navbar.navbar-inverse.navbar-fixed-top
-      .navbar-inner
-        .container
-          %ul.nav-bar-list.clearfix
+-color_navbar = "navbar-inverse" if user_signed_in?
+.toolbar-navigation
+  .navbar.navbar-fixed-top{ class: color_navbar }
+    .navbar-inner
+      .container
+        %ul.nav-bar-list.clearfix
+          - if user_signed_in?
             %li.nav-item#logo-home
               %a.nav-logo-link{:href => "/"}
                 = image_tag(navbar_logo_path, :alt => "Loomio")
@@ -15,11 +16,10 @@
               = render 'contribute'
             = render 'help_dropdown'
             = render 'search'
-  - else
-    .container#top
-      .inner-container
-        .row-fluid
-          =link_to image_tag("loomio-orange-header.png"), root_url
-          .pull-right
-            - unless controller_name == "group_requests"
-              =link_to t(:log_in), new_user_session_path, class: 'btn btn-info'
+          - else
+            %li.nav-item#logo-home
+              %a.nav-logo-link.logged-out{:href => "/"}
+                = image_tag('top-bar-loomio-orange.png', :alt => "Loomio")
+            %li.pull-right
+              - unless controller_name == "group_requests"
+                =link_to t(:log_in), new_user_session_path, class: 'btn btn-info'
