@@ -3,6 +3,7 @@ class MotionReaderCache
   attr_accessor :readers
 
   def initialize(user, readers)
+    @user = user
     @readers = readers
     @readers_by_motion_id = {}
     @readers.each do |reader|

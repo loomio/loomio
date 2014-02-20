@@ -9,7 +9,7 @@
     #discussion-list
       - @discussions_without_open_motions.each do |discussion|
         %li.selector-item= render '/discussions/discussion_preview', discussion: discussion
-  - if @page_group
+  - if @group
     - if user_sees_private_discussions_message?(current_user, @group)
       = t :private_group_discussion_display
     - elsif @discussions_without_open_motions.empty? && @discussions_with_open_motions.empty?

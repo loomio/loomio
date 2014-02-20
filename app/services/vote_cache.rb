@@ -3,6 +3,7 @@ class VoteCache
   attr_accessor :motions
 
   def initialize(user, votes)
+    @user = user
     @votes = votes
     @votes_by_motion_id = {}
     @votes.each do |vote|
@@ -11,6 +12,6 @@ class VoteCache
   end
 
   def get_for(motion)
-    @votes_by_motion_id.fetch(motion.id) { Vote.new(motion: motion) }
+    @votes_by_motion_id.fetch(motion.id) { Vote.new(motion: motion, user: user) }
   end
 end

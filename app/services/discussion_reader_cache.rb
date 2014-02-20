@@ -3,6 +3,7 @@ class DiscussionReaderCache
   attr_accessor :readers
 
   def initialize(user, readers)
+    @user = user
     @readers = readers
     @readers_by_discussion_id = {}
     @readers.each do |reader|
