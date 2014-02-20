@@ -24,6 +24,7 @@ body { line-height: 22px; }
 .navbar-fixed-top.navbar-inverse .navbar-inner {
   background: #252525;
   @include box-shadow(0, 0, 0, 0);
+  border: 1px solid #252525;
   padding: 3px 0 1px;
 }
 
