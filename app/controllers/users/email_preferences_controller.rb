@@ -29,7 +29,8 @@ class Users::EmailPreferencesController < BaseController
 
   def set_attributes
     @attributes = permitted_params.email_preferences
-    # @attributes[:days_to_send] = @attributes[:days_to_send].reject(&:blank?)
+    if @email_preferences.user.beta_feature_enabled('activity_summary')
+      @attributes[:days_to_send] = @attributes[:days_to_send].reject(&:blank?)
     @group_email_preferences = @attributes.delete(:group_email_preferences)
   end
 
