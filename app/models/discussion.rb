@@ -36,6 +36,7 @@ class Discussion < ActiveRecord::Base
   pg_search_scope :search, against: [:title, :description],
     using: {tsearch: {dictionary: "english"}}
 
+  delegate :name, :to => :group, :prefix => :group
   delegate :users, :to => :group, :prefix => :group
   delegate :full_name, :to => :group, :prefix => :group
   delegate :email, :to => :author, :prefix => :author

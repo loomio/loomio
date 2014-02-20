@@ -163,7 +163,7 @@ class Ability
     end
 
     can [:create, :vote], Motion do |motion|
-      motion.voting? && @member_group_ids.include?(motion.group.id)
+      motion.voting? && @member_group_ids.include?(motion.discussion.group_id)
     end
 
     can [:destroy,

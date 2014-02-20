@@ -30,10 +30,9 @@ module DiscussionsHelper
     end
   end
 
-  def css_classes_for_discussion_preview(page_group, discussion_reader)
-    discussion = discussion_reader.discussion
+  def css_classes_for_discussion_preview(discussion, discussion_reader)
     class_names = []
-    class_names << 'showing-group' if (not discussion.group.parent_id.nil?) && (page_group && (page_group.parent_id.nil?))
+    class_names << 'showing-group' unless @group == discussion.group
     class_names << 'unread' if discussion_reader.unread_content_exists?
     class_names.join(' ')
   end
@@ -107,7 +106,7 @@ module DiscussionsHelper
     description = t(:'simple_form.labels.discussion.privacy_private_description', group: group)
     options << ["<span class='discussion-privacy-setting-header'><i class='icon-lock'></i>#{header}<br /><p>#{description}</p>".html_safe, true ]
   end
-  
+
   def current_language
     Translation.language I18n.locale.to_s
   end

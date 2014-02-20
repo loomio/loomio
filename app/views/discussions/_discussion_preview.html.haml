@@ -5,7 +5,7 @@
 - last_vote = @last_vote_cache.get_for(motion) if motion
 
 .clearfix
-  %div.discussion-preview{ class: css_classes_for_discussion_preview(@page_group, discussion_reader) }
+  %div.discussion-preview{ class: css_classes_for_discussion_preview(discussion, discussion_reader) }
     %a.selector-discussion-link{ href: discussion_path(discussion) }
       - if user_signed_in? && motion
         .vote-icon
@@ -14,9 +14,9 @@
 
       .discussion-title
         = truncate(discussion.title, :length => 60, :separator => ' ')
-        - if @page_group.nil?
+        - if @group.nil?
           .group-name= GroupDecorator.new(discussion.group).fancy_name
-        - elsif @page_group != discussion.group
+        - elsif @group != discussion.group
           .group-name= discussion.group_name
 
       - if motion
