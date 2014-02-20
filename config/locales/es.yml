@@ -41,9 +41,7 @@ es:
     permission_to_invite: "No tienes permiso para invitar a nuevos miembros."
     position_not_updated: "Su posición no ha sido actualizada."
     settings_not_updated: "Tus ajustes no han sido modificados."
-    group_request_already_verified: "Lo siento! El código de validación ya ha sido confirmado. Si no tienes novedades de nosotros en 48 horas, ponte en contacto: contact@loomio.org"
     group_request_already_accepted: "Lo siento! Esta invitación es invalida o ya sido aceptada."
-    group_request_contribution: "Por favor selecciona una categoría. Esto no significa que tienes que pagar, solo información útil para ayudarnos a diseñar nuestro modelo. Gracias!"
     group_request_invalid_token: "Lo siento! Ese código es invalido"
     group_private_or_not_found: "No se encontro grupo. ⏎\n⏎\nEste grupo puede ser privado. Si alguien te ha dado este enlace, pide que te agreguen al grupo."
     group_already_setup: "El grupo que estas tratando de configurar ya existe."
@@ -198,7 +196,6 @@ es:
   add_new_member: "Adherir Nuevo miembro"
   invite_members_to_group: "Invitar miembros a %{which_group}"
   remaining_invites: "invitaciones restantes"
-  need_more_invites_html: "Necesitas mas? Loomio se encuentra en fase beta cerrada, lo que significa que estamos en desarrollo y tenemos recursos limitados para apoyo al usuario. Si te gustaría aumentar el tamaño de tu grupo %{href} y veremos como te podemos ayudar."
   get_in_touch_link: "ponerse en contacto"
   email_members_in_group: "Enviar correo electrónico a los miembros de %{which_group}"
   subject_error: "Por favor escriba un titulo"
@@ -623,12 +620,6 @@ es:
       subject: "%{member} te ha invitado a unirte a %{group_name} en Loomio"
     to_start_group:
       subject: "Configura tu nuevo grupo en Loomio: %{group_name}"
-    trial_expiry:
-      header: "%{group_name}: Tu tiempo de prueba en Loomio ya casi termina."
-      hi: "Hola, "
-    trial_follow_up:
-      header: "%{group_name}: Como va el tiempo de prueba con Loomio?"
-      hi: "Hola, "
     verification:
       header: "Ya casi terminas!"
       intro: "Por favor haz click en el enlace de verificación para finalizar tu solicitud:"
