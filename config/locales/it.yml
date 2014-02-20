@@ -8,7 +8,11 @@ it:
       email: "Indirizzo email non valido"
   date:
     formats:
+      for_another_year: '%-d/%-m/%y'
       datepicker: "%d-%m-%Y"
+  devise:
+    invitations:
+      updated: 'Account creato.'
   error:
     access_denied: "Non hai l'autorizzazione per farlo."
     cant_join_subgroup: "Non puoi unirti a un sotto-gruppo se non sei membro del gruppo genitore."
@@ -20,12 +24,11 @@ it:
     invalid_close_date: "La data di conclusione non è valida. Controlla che non sia già passata."
     invalid_email: "Inserisci almeno un indirizzo email valido"
     image_upload_fail: "Non riusciamo a caricare la foto. Assicurati che sia più piccola di 1 MB e che sia un file .jpeg, .png, o .gif."
+    motion_closing_inputs: "Data di chiusura invalida"
     permission_to_invite: "Non hai i permessi per invitare nuovi membri."
     position_not_updated: "Non è stato possibile aggiornare la posizione."
     settings_not_updated: "Le impostazioni non sono state aggiornate."
-    group_request_already_verified: "OPS! Il link di verifica sul quale hai cliccato è già stato confermato. Se non hai nostre notizie entro le prossime 48 ore, scrivici: contact@loomio.org"
     group_request_already_accepted: "OPS! Questo invito non è valido o è già stato accettato."
-    group_request_contribution: "Seleziona una categoria. In questo modo non ti impegni a pagare, ma ci dai informazioni preziose per aiutarci a disegnare il nostro modello. Grazie!"
     group_request_invalid_token: "OPS! Questo token non è valido"
     group_private_or_not_found: "Gruppo non trovato. \n\nQuesto gruppo potrebbe essere privato. Se qualcuno ti ha dato questo link, chiedigli di invitarti al gruppo."
     group_already_setup: "Il gruppo che stai cercando di creare esiste già."
@@ -43,12 +46,14 @@ it:
     settings_updated: "Le tue impostazioni sono state aggiornate."
     you_have_left_group: "Hai abbandonato %{which_group}."
   warning:
+    cant_remove_last_admin: "Tu sei l'ultimo coordinatore e non puoi essere rimosso."
     membership_request_already_approved: "La richiesta d'iscrizione è già stata approvata."
     membership_request_already_ignored: "La richiesta di iscrizione è stata già ignorata."
     membership_request_already_canceled: "La richiesta di iscrizione è stata già cancellata."
     position_not_submitted: "Non è stato possibile inviare la tua posizione"
     proposal_not_created: "Non è stato possibile creare la proposta"
     user_already_member: "%{which_user} è già un membro di questo gruppo."
+    user_not_admin: "Scusa, %{which_user} dev'essere il coordinatoredi questo gruppo per accedere."
   success:
     added_to_group: "Sei stato aggiunto a %{which_group}."
     close_date_changed: "Data di conclusione modificata correttamente."
@@ -64,6 +69,9 @@ it:
     proposal_deleted: "Proposta cancellata."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "1 secondo"
+        other: "%{count} secondi"
       x_seconds:
         one: "1 secondo"
         other: "%{count} secondi"
@@ -94,6 +102,8 @@ it:
       almost_x_years:
         one: "1 anno"
         other: "%{count} anni"
+  footer:
+    public_groups: 'Gruppi pubblici'
   notifications:
     header: "Notifiche"
     new_discussion: "ha iniziato una nuova discussione"
@@ -116,6 +126,7 @@ it:
   user_settings: "Impostazioni utente"
   email_preferences: "Opzioni email"
   sign_out: "Esci"
+  sign_in: "Accedi"
   tagline: "Creare un mondo in cui chiunque possa prendere facilmente parte a decisioni che lo riguardano."
   click_to_dismiss: "Clicca qui per ignorare questo messaggio"
   generic_confirm: "Sei sicuro?"
@@ -134,11 +145,12 @@ it:
   setup_step_3: "Invita gente al gruppo"
   invite_people: "Invita"
   no_invitations_button: "Nessun invito rimasto"
+  number_pending: '%{pending} in sospeso'
+  and_number_pending: 'e %{pending} in sospeso'
   edit_memberships: 'Modifica iscrizioni'
   add_new_member: "Aggiungi un nuovo membro"
   invite_members_to_group: "Invita membri a %{which_group}"
   remaining_invites: "inviti rimanenti"
-  need_more_invites_html: "Vuoi di più? Loomio è in beta privata, il che significa che stiamo ancora sviluppando e che abbiamo risorse limitate per il supporto agli utenti. Se vuoi ingrandire il tuo gruppo %{href}."
   get_in_touch_link: "contattaci"
   email_members_in_group: "Invia una mail ai membri di %{which_group}"
   subject_error: "Inserisci un oggetto"
@@ -154,12 +166,15 @@ it:
   invited_users: "Membri invitati"
   members: "I membri"
   confirm_remove_user: "Sei sicuro che vuoi rimuovere %{which_user} dal gruppo?"
+  remove_coordinator: "Rimuovi coordinatore"
+  want_to_invite_html: "Vuoi <a href='%{link}'>invitare persone</a> a questo gruppo?"
   membership_requests: "Richieste di iscrizione"
   confirm_approve_membership_request: "Sei sicuro che vuoi aggiungere %{which_user} al gruppo?"
   cancel_membership_request: "Annulla richiesta "
   ignore_request: "Ignora la richiesta"
   ignore: "Ignora"
   confirm_ignore_membership_request: "Sei sicuro che vuoi ignorare la richiesta di iscrizione di %{which_user}?"
+  membership_requested: "Iscrizione richiesta"
   request_membership: "Richiedi l'iscrizione"
   confirm_remove_membership_request: "Sei sicuro che vuoi ritirare la richiesta di iscrizione a questo gruppo?"
   subgroups: "Sotto-gruppi"
@@ -178,6 +193,7 @@ it:
   updating_group: "Sto aggiornando il gruppo"
   start_a_discussion: "Comincia una discussione"
   group_description: "Descrizione del gruppo"
+  edit_group_description: "Modifica la descrizione del gruppo"
   discussion_items:
     new_discussion: "ha creato la discussione"
     new_motion: "ha creato una proposta"
@@ -214,6 +230,7 @@ it:
   delete_comment: "Cancella il commento"
   confirm_delete_comment: "Sei sicuro che vuoi cancellare questo commento?"
   markdown_settings_more_info: "Più info..."
+  edit_discussion: "Modifica discussione"
   delete_discussion: "Cancella la discussione"
   confirm_delete_discussion: "Sei sicuro che vuoi cancellare definitivamente questa discussione?"
   new_proposal: "Nuova Proposta"
@@ -316,6 +333,11 @@ it:
     invitation: 'Consigli per scrivere un bell''invito '
     proposal: 'Consigli per scrivere una proposta chiara'
     vote: 'Puoi cambiare la tua posizione in ogni momento'
+  contribution:
+    currency_desc: Cifre sono in dollaro statunitense
+    monthly_html: 'Mi piacerebbe fare una contribuzione mensile di '
+    one_time_html: Mi piacerebbe fare una contribuzione una tantum di
+    tooltip: Conosci il nostro modello per il finanziamento della comunità
   resend_confirmation: "Rimanda le istruzioni per la conferma"
   new_password: "Nuova password"
   confirm_new_password: "Conferma la nuova password"
@@ -332,6 +354,7 @@ it:
   forgot_your_password: "Dimenticato la password?"
   confirmation_not_received: "Non hai ricevuto le istruzioni per la conferma?"
   unlock_not_received: "Non hai ricevuto le istruzioni per lo sblocco?"
+  create_an_account: 'Crea un account'
   invitation:
     no_invitations_left: "Non hai più inviti"
     no_invitations_left_get_more: "Per favore manda una email a contact@loomio.org e vediamo cosa riusciamo a fare per aiutarti"
@@ -340,6 +363,7 @@ it:
     invitees_placeholder: "Nome utente <utente1@esempio.it>, utente2@esempio.it"
     subject: "Unisciti al nostro nuovo gruppo Loomio, %{group}"
     invite_people: "Invita qualcuno al tuo gruppo"
+    select_members: "Aggiungi membri da %{group_name}"
     body_editable: |
       Hey ciao, vieni a prendere delle decisioni con noi! Stiamo usando un tool per il decision-making collaborativo che si chiama Loomio.
     message_body: "Messaggio di invito"
@@ -361,6 +385,11 @@ it:
       È una buona idea? Il Piccolo Aiutante di Loomio vuole sapere come la pensi!
       Se hai un'opinione formata, clicca su una delle icone sotto (passa il mouse sopra i bottoni per vedere cosa significano).
       Ti chiederanno di fare una piccola dichiarazione circa le ragioni della tua decisione. Questo rende più semplice capire, in breve, cosa pensa ognuno e perché. Puoi comunque cambiare idea e modificare la tua decisione liberamente fino a quando la proposta non sarà chiusa.
+  discussion_form:
+    new:
+      header: "Comincia discussione"
+    edit:
+      header: "Modifica discussione"
   motion_form:
     header: "Nuova proposta"
     name_helper: "Usa un titolo il più possibile chiaro e sintetico."
@@ -392,14 +421,20 @@ it:
     use_avatar_kind: "Usa %{kind}"
     upload_new_image: "Carica una nuova immagine"
   group_setup:
+    set_up_your_group: Imposta il tuo gruppo
     submit: "Portami al mio gruppo!"
   simple_form:
+    'yes': 'Sì'
+    'no': 'No'
     labels:
       discussion:
         title: "Titolo"
         description: "Contesto"
+        privacy_public_description: "Tutti possono vedere questa discussione"
       group:
+        description: "Descrizione"
         members_invitable_by: "Chi può invitare gente a questo gruppo?"
+        group_members_invitable_by: "Solo coordinatori"
       motion:
         name: "Titolo"
         description: "Dettagli"
@@ -407,15 +442,27 @@ it:
         name: "Nome completo"
         email: "Email"
         password: "Password"
+        password_confirmation: "Conferma la password"
         language_preference: "Lingua"
     placeholders:
+      discussion:
+        title: "Titolo"
+      membership_request:
+        introduction: "Scrivi un paio di parole su di te stesso e perché vorresti unirti a %{group_name}."
       motion:
         name: "Che linea d'azione proponi?"
         description: "Fornisci informazioni sufficienti perché tutti sappiano esattamente cosa significa essere o non essere d'accordo."
+      group:
+        name: "Nome del gruppo"
+        description: "Descrizione del gruppo"
+      user:
+        email: "Email"
+        password: "Password"
   helpers:
     submit:
       discussion:
         create: "Comincia discussione"
+        update: "Aggiorna discussione"
       motion:
         create: "Lancia una proposta"
       user:
@@ -441,6 +488,8 @@ it:
     group_membership_approved:
       intro: "La tua richiesta di accesso al gruppo '%{group_name}' su Loomio è stata approvata."
       subject: "Iscrizione approvata"
+    invitation:
+      hi: "Ciao %{name},"
     membership_request:
       intro: "%{name} (%{email}) ha richiesto l'accesso a uno dei tuoi gruppi Loomio."
       view_group: "Puoi approvare o rifiutare la richiesta qui"
@@ -461,17 +510,20 @@ it:
       header: "Hai quasi finito!"
       intro: "Clicca su questo link di verifica per completare la tua richiesta:"
       ignore: "Se non hai fatto richiesta per unirti a Loomio per favore ignora questa email."
+  about_loomio: "Informazioni su Loomio"
   ago: "%{quantity_of_time} fa"
   approve: "Approva"
   author: "Autore"
   back: "Indietro"
   cancel: "Annulla"
   change: "Cambia"
+  change_language: "Clicca qui per usar Loomio in %{language}"
   changing: "Cambiamento"
   click_here: "Clicca qui"
   close: "Chiudi"
   closing: "Chiusura"
   closed: "Chiuso"
+  coordinator: "Coordinatore"
   decisions: "Decisioni"
   delete: "Cancella"
   details: "Dettagli"
@@ -493,9 +545,11 @@ it:
   outcome: "Risultato"
   password: "Password"
   prev: "Prec"
+  translate_this_string: "Traduci in %{language}"
   options: "Opzioni"
   other: "Altro"
   ok_got_it: "Okay, ho capito!"
+  remove: "Rimuovi"
   save: "Salva"
   saving: "Salvataggio"
   sending: "Invio"
@@ -504,6 +558,7 @@ it:
   show_more: "Mostra di più"
   starting: "Cominciando"
   subject: "Oggetto"
+  translate: "Aiuta tradurre Loomio"
   unlike: "Unlike"
   until_close: "alla conclusione"
   update: "Aggiornamento"

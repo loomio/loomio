@@ -17,7 +17,8 @@ class Translation
 
   EXPERIMENTAL_LANGUAGES = {'Italiano' => 'it',
                             'తెలుగు' => 'te',
-                            'Gaelic (Irish)' => 'ga'}
+                            'Gaelic (Irish)' => 'ga',
+                            'Türkçe' => 'tr'}
 
   def self.language(locale)
     LANGUAGES.key(locale)

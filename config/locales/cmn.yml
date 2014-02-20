@@ -60,10 +60,6 @@ cmn:
   email:
     invitation:
       hi: "您好%{name}"
-    trial_expiry:
-      hi: "您好！"
-    trial_follow_up:
-      hi: "您好！"
   next: "下一个"
   prev: "上一个"
   ok_got_it: "好了，我明白！"
