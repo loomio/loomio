@@ -11,15 +11,15 @@ module DiscussionsHelper
   end
 
   def path_of_latest_activity
-    if current_page == @reader.first_unread_page
+    if current_page == @discussion_reader.first_unread_page
       '#latest-activity'.html_safe
     else
-      discussion_path(@discussion, page: @reader.first_unread_page, anchor: 'latest-activity')
+      discussion_path(@discussion, page: @discussion_reader.first_unread_page, anchor: 'latest-activity')
     end
   end
 
   def path_of_add_comment
-    if current_page == @reader.first_unread_page
+    if current_page == @discussion_reader.first_unread_page
       '#comment-input'
     else
       if actual_total_pages == 1
@@ -73,16 +73,16 @@ module DiscussionsHelper
     if params[:page]
       params[:page].to_i
     else
-      @reader.first_unread_page
+      @discussion_reader.first_unread_page
     end
   end
 
   def user_has_not_read_event?(event)
-    if @reader and @reader.last_read_at.present?
+    if @discussion_reader and @discussion_reader.last_read_at.present?
       if event.belongs_to?(current_user)
         false
       else
-        @reader.last_read_at < event.updated_at
+        @discussion_reader.last_read_at < event.updated_at
       end
     else
       false

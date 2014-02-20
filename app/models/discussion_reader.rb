@@ -8,6 +8,14 @@ class DiscussionReader < ActiveRecord::Base
 
   scope :for_user, -> (user) { where(user_id: user.id) }
 
+  def self.for(user, discussion)
+    if user.is_logged_in?
+      new(discussion: discussion)
+    else
+      where(user_id: user.id, discussion_id: discussion.id).first || new(discussion: discussion, user: user)
+    end
+  end
+
   def unread_comments_count
     #we count the discussion itself as a comment.. but it is comment 0
     if read_comments_count.nil?
@@ -43,6 +51,7 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def viewed!(age_of_last_read_item = Time.now)
+    return unless user.is_logged_in?
     discussion.viewed!
 
     if last_read_at.nil? or last_read_at < age_of_last_read_item

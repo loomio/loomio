@@ -30,6 +30,7 @@ class MotionReader < ActiveRecord::Base
   end
 
   def viewed!
+    return unless user.is_logged_in?
     update_viewed_attributes
     save
   end

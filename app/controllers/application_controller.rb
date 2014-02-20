@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def current_user_or_visitor
+    current_user || UnregisteredUser.new
+  end
+
   def store_location
     session['user_return_to'] = request.original_url
   end
