@@ -54,7 +54,7 @@
     line-height: 18px;
   }
   li.nav-item a.nav-link:hover{
-    color: white;
+    color: #999999;
     text-decoration: none;
     .caret { border-top: 4px solid white; }
     span.nav-item-icon{ opacity: 1; }
@@ -184,6 +184,10 @@
     a { color: $mid-grey; }
     background-color: #eee;
   }
+
+  .fa { font-size: 22px; }
+  .fa-bell, .fa-group { font-size: 18px; }
+
 }
 
 .toolbar-navigation #contribute a {
