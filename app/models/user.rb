@@ -106,6 +106,10 @@ class User < ActiveRecord::Base
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
   #
 
+  def is_logged_in?
+    true
+  end
+
   def cached_group_ids
     @cached_group_ids ||= group_ids
   end

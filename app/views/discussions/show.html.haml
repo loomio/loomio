@@ -34,7 +34,7 @@
             .content-proposal-body
               %ul.selector-list
                 - if @current_motion.nil?
-                  - if can? :create, Motion.new(discussion_id: @discussion.id)
+                  - if can? :create, Motion.new(discussion: @discussion)
                     = link_to t(:create_new_proposal), new_proposal_discussion_path(@discussion), class: 'btn new-proposal-btn', id: 'new-proposal'
                     %li.selector-item.empty-list-message#start-proposal-text
                       = t :empty_decision_list_html
@@ -51,7 +51,7 @@
             - if can? :edit_close_date, @current_motion
               = render '/motions/edit_close_date', motion: @current_motion, user: @current_user, input_time: @input_time
 
-            - if @discussion.closed_motions.present?
+            - if @discussion.closed_motions.any?
               #previous-proposals
                 .clearfix
                   .large-icon.decision-icon

@@ -10,9 +10,12 @@ class DiscussionReader < ActiveRecord::Base
 
   def self.for(user, discussion)
     if user.is_logged_in?
-      new(discussion: discussion)
+      where(user_id: user.id, discussion_id: discussion.id).first_or_initialize do |dr|
+        dr.discussion = discussion
+        dr.user = user
+      end
     else
-      where(user_id: user.id, discussion_id: discussion.id).first || new(discussion: discussion, user: user)
+      new(user:user, discussion: discussion)
     end
   end
 
@@ -25,11 +28,11 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
-  def unread?(time)
-    if self.last_read_at == nil
-      false
+  def has_read?(event)
+    if last_read_at.present?
+      self.last_read_at > event.updated_at
     else
-      self.last_read_at < time
+      false
     end
   end
 

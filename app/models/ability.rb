@@ -159,7 +159,7 @@ class Ability
     end
 
     can [:destroy], Comment do |comment|
-      (comment.author == user) or @admin_group_ids.include?(comment.group.id)
+      (comment.author == user) or @admin_group_ids.include?(comment.discussion.group_id)
     end
 
     can [:create, :vote], Motion do |motion|

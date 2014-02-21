@@ -87,11 +87,11 @@ class DiscussionsController < GroupBaseController
       @displayed_motion = @current_motion
     end
 
-    @discussion_reader = DiscussionReader.for_user_and_discussion(current_user_or_visitor, discussion)
+    @discussion_reader = DiscussionReader.for(current_user_or_visitor, @discussion)
 
     @uses_markdown = current_user.uses_markdown?
     if @current_motion
-      @motion_reader = MotionReader.for_user_and_motion(current_user_or_visitor, motion)
+      @motion_reader = MotionReader.for(current_user_or_visitor, @current_motion)
     end
     @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
   end
@@ -193,10 +193,10 @@ class DiscussionsController < GroupBaseController
   end
 
   def mark_as_read
-    if @activity and @activity.last
-      @discussion_reader.viewed!(@activity.last.updated_at)
-      @motion_reader.viewed!(@activity.last.updated_at)
-    end
+    #if @activity and @activity.last
+      #@discussion_reader.viewed!(@activity.last.updated_at)
+      #@motion_reader.viewed!
+    #end
   end
 
   def assign_meta_data

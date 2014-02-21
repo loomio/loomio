@@ -4,13 +4,19 @@
 
   -marked_first_unread = false
   - items.each do |event|
+    last_read_at: #{@discussion_reader.inspect} this item updated at: #{event.updated_at}
     - next if event.kind == 'new_discussion'
-    - if user_has_not_read_event?(event) and not marked_first_unread
-      - marked_first_unread = true
-      .shifted_anchor#latest-activity
-      .dog-ear#js-dog-ear
-        &nbsp;
-      .new-activity-divider
+    - unless marked_first_unread
+      - if @discussion_reader.has_read?(event)
+        read it
+      -else
+        not read it
+        -#- unless event.belongs_to? current_user_or_visitor
+        - marked_first_unread = true
+        .shifted_anchor#latest-activity
+        .dog-ear#js-dog-ear
+          &nbsp;
+        .new-activity-divider
 
     %li.activity-item-container
       - if event.kind == 'new_comment'

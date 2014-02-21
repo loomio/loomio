@@ -78,7 +78,7 @@ module DiscussionsHelper
   end
 
   def user_has_not_read_event?(event)
-    if @discussion_reader and @discussion_reader.last_read_at.present?
+    if @discussion_reader.last_read_at.present?
       if event.belongs_to?(current_user)
         false
       else
