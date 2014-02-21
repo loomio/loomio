@@ -1,5 +1,5 @@
 class Inbox
-  UNREAD_PER_GROUP_LIMIT = 3
+  UNREAD_PER_GROUP_LIMIT = 20
   attr_reader :size
   attr_reader :grouped_items
 
