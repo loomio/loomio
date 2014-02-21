@@ -207,11 +207,6 @@ class Motion < ActiveRecord::Base
     group.users.where(User.arel_table[:id].not_eq(outcome_author.id))
   end
 
-  #expensive to call
-  def unique_votes
-    Vote.unique_votes(self)
-  end
-
   def votes_since(time)
     votes.where('created_at >= ?', time)
   end

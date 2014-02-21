@@ -735,6 +735,10 @@ en:
       info: We have a payment model that suits any group, even those with no money :)
       link: Find out more
 
+  beta_features:
+    heading: "Beta features"
+    submit: "Update beta features"
+
   simple_form:
     "yes": 'Yes'
     "no": 'No'
