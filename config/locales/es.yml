@@ -41,9 +41,7 @@ es:
     permission_to_invite: "No tienes permiso para invitar a nuevos miembros."
     position_not_updated: "Su posición no ha sido actualizada."
     settings_not_updated: "Tus ajustes no han sido modificados."
-    group_request_already_verified: "Lo siento! El código de validación ya ha sido confirmado. Si no tienes novedades de nosotros en 48 horas, ponte en contacto: contact@loomio.org"
     group_request_already_accepted: "Lo siento! Esta invitación es invalida o ya sido aceptada."
-    group_request_contribution: "Por favor selecciona una categoría. Esto no significa que tienes que pagar, solo información útil para ayudarnos a diseñar nuestro modelo. Gracias!"
     group_request_invalid_token: "Lo siento! Ese código es invalido"
     group_private_or_not_found: "No se encontro grupo. ⏎\n⏎\nEste grupo puede ser privado. Si alguien te ha dado este enlace, pide que te agreguen al grupo."
     group_already_setup: "El grupo que estas tratando de configurar ya existe."
@@ -95,6 +93,7 @@ es:
     close_date_changed: "Fecha de cierre cambiada exitosamente."
     discussion_created: "Discusión creada exitosamente."
     discussion_deleted: "Discusión exitosamente eliminada."
+    discussion_moved: "Discusión satisfactoriamente movida a %{group_name}"
     emails_sending: "Enviando correos electrónicos."
     group_archived: "Grupo archivado exitosamente."
     group_created: "Grupo creado exitosamente."
@@ -163,6 +162,7 @@ es:
     motion_closing_soon: "La propuesta está por cerrar"
     motion_blocked: "bloqueó la propuesta"
     motion_outcome_created: "Publico una decisión para la propuesta."
+    motion_outcome_updated: "resultado de propuesta modificado"
   edit_discussion_context: "Editar la discusión información"
   request_new_group: "Empieza un grupo"
   request_new_group_details: "o espera hasta que seas invitado a uno."
@@ -196,7 +196,6 @@ es:
   add_new_member: "Adherir Nuevo miembro"
   invite_members_to_group: "Invitar miembros a %{which_group}"
   remaining_invites: "invitaciones restantes"
-  need_more_invites_html: "Necesitas mas? Loomio se encuentra en fase beta cerrada, lo que significa que estamos en desarrollo y tenemos recursos limitados para apoyo al usuario. Si te gustaría aumentar el tamaño de tu grupo %{href} y veremos como te podemos ayudar."
   get_in_touch_link: "ponerse en contacto"
   email_members_in_group: "Enviar correo electrónico a los miembros de %{which_group}"
   subject_error: "Por favor escriba un titulo"
@@ -225,6 +224,7 @@ es:
   confirm_ignore_membership_request: "Estas seguro que deseas ignorar la petición al grupo de %{which_user}?"
   membership_requested: "Membresía solicitada."
   request_membership: "Petición de membresías"
+  ask_to_join_group: "Pedir pertenencia a grupo"
   confirm_remove_membership_request: "Estas seguro que deseas retirar tu petición de membresía a este grupo?"
   no_pending_membership_requests: "No hay peticiones de membresía pendientes para este grupo."
   subgroups: "Sub-grupos"
@@ -257,6 +257,8 @@ es:
       by_user: "cerrar propuesta"
       by_expiry: "se ha cerrado la propuesta"
     motion_close_date_edited: "cambio la fecha de cierre de la propuesta"
+    motion_outcome_created: "resultado de propuesta publicado"
+    motion_outcome_updated: "resultado de propuesta modificado"
     discussion_title_edited: "cambio el titulo de discusión"
     discussion_description_edited: "cambio descripción de discusión"
   discussion: "Discusión"
@@ -315,6 +317,7 @@ es:
   block_details: "Tengo fuertes objeciones a esta propuesta y no estoy de acuerdo con que siga adelante."
   not_voted: "[Mostrar los usuarios que aun no han decidido]"
   outcome_placeholder: "Cual fue el resultado de esta propuesta?"
+  outcome_submit: "Publicar resultado"
   position_verbs:
     'yes': "De acuerdo"
     'no': "en desacuerdo"
@@ -429,6 +432,7 @@ es:
     invitees_placeholder: "Nombre de usuario <user1@example.com>, user2@example.com"
     subject: "Por favor forma parte de nuestro nuevo grupo en Loomio, %{group}"
     invite_people: "Invitar personas"
+    select_members: "Adherir miembros de %{group_name}"
     body_editable: |+
       Hola, ven a tomar decisiones con nosotros! Estamos usando una herramienta para la toma de decisiones colectiva llamada Loomio!
 
@@ -487,6 +491,7 @@ es:
     use_avatar_kind: "Usar %{kind}"
     upload_new_image: "Subir nueva imagen"
   group_setup:
+    set_up_your_group: Establecer grupo
     desc_header: "Ya casi terminas!"
     submit: "Ir a mi grupo!"
   simple_form:
@@ -503,7 +508,6 @@ es:
         description: "Contexto"
         privacy_public_header: "Publico"
         privacy_private_header: "Privado"
-        privacy_private_description: "Solo miembros de %{group} pueden ver esta discusión"
         privacy_hidden_description: "Todas las discusiones en un grupo escondido son privadas. "
         of: "de"
         of_no_group: "de este grupo"
@@ -516,7 +520,10 @@ es:
         privacy: Privacidad
         privacy_public_header: Publico
         privacy_private_header: 'Mayoritariamente privado '
+        privacy_parent_group_members_header: Puede ser visto por miembros de grupo superior
+        privacy_parent_group_members_description_short: Solo miembros y miembros de grupo superior pueden ver este grupo y sus discusiones.
         group_members_invitable_by: "Solo coordinadores"
+        submit: Enviar
       membership_request:
         introduction: "Preséntate a ti mismo"
       motion:
@@ -539,6 +546,7 @@ es:
         description: "Da información suficiente para que cualquier persona en tu grupo pueda tomar una decisión bien informada."
       group:
         name: "Nombre del Grupo"
+        description: "Descripción del grupo"
       user:
         email: "Correo electrónico"
         password: "Contraseña"
@@ -553,6 +561,8 @@ es:
         create: "Crear cuenta"
         update: "Actualizar preferencias"
   email:
+    user_added_to_a_group:
+      subject: "%{who} te ha adherido a  %{which_group}"
     unsubscribe: "Dale de baja o cambia las preferencias de tu correo electrónico:   "
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para darle de baja o cambiar las preferencias de correo electrónico."
     view_comment: "Haz click aquí para ver el comentario en Loomio"
@@ -586,9 +596,16 @@ es:
       intro: "Te han mencionado en el título de una discusión: "
       said: "%{comment_author} dijo:"
       subject: "%{who} te mencionó en el grupo de Loomio %{which} "
+    new_motion_created:
+      context: "%{author} ha creado una propuesta en %{group_full_name}:"
     proposal_closed:
       intro: 'Tu propuesta "%{proposal_name}" ha cerrado.'
+      intro_html: 'Tu propuesta "%{proposal_name}" ha cerrado.'
+      specify_outcome_and_notify_group: "Crear un resultado y envíalo a tu grupo!"
+      specify_outcome_and_notify_group_html: "Crear un resultado y envíalo a tu grupo!"
       subject: "Propuesta cerrada - %{which}"
+    proposal_outcome:
+      subject: "Resultado de la propuesta"
     proposal_blocked:
       intro: "Una propuesta que estas facilitando ha sido bloqueada."
       subject: "Propuesta bloqueada - %{which}"
@@ -603,12 +620,6 @@ es:
       subject: "%{member} te ha invitado a unirte a %{group_name} en Loomio"
     to_start_group:
       subject: "Configura tu nuevo grupo en Loomio: %{group_name}"
-    trial_expiry:
-      header: "%{group_name}: Tu tiempo de prueba en Loomio ya casi termina."
-      hi: "Hola, "
-    trial_follow_up:
-      header: "%{group_name}: Como va el tiempo de prueba con Loomio?"
-      hi: "Hola, "
     verification:
       header: "Ya casi terminas!"
       intro: "Por favor haz click en el enlace de verificación para finalizar tu solicitud:"
@@ -618,7 +629,6 @@ es:
   approve: "Aprobar"
   author: "Autor"
   back: "Atrás"
-  by: "por"
   cancel: "Cancelar"
   change: "Cambiar"
   change_language: "Haz click aquí para usar Loomio en %{language}"

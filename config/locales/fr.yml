@@ -34,19 +34,20 @@ fr:
     cant_view_member_profile: "Vous ne pouvez pas voir le profil du membre car vous n'êtes pas dans le même groupe."
     contribution: "Veuillez vous connecter pour faire une contribution."
     discussion_not_created: "La discussion ne peut pas être créée"
+    discussion_not_moved: "Vous n'avez pas la permission de déplacer cette discussion vers %{destination_group.name}"
     group_not_archived: "Le groupe ne peut pas être archivé."
     invalid_close_date: "La date de clôture n'est pas valide, merci de vérifier que la date ne soit pas passée."
     invalid_email: "Merci de rentrer au moins une adresse email valide"
     image_upload_fail: "Impossible de charger l'image. Merci de vérifier qu'elle fait moins d'1 Méga octet, et qu'elle est au format .jpeg, .png, ou .gif."
     motion_closing_inputs: "La date de clôture n'est pas valide"
+    motion_outcome_not_created: "Impossible de publier le résultat du vote."
+    motion_outcome_not_updated: "Impossible de modifier le résultat du vote."
     only_group_coordinator_destroy: "Vous ne pouvez pas quitter ce groupe car vous êtes le seul coordinateur. Vous pouvez désactiver votre groupe via la liste déroulante des options, ou <a href='%{add_coordinator}'>ajouter un nouveau coordinateur</a> au groupe."
     only_group_coordinator_remove_admin: "Le groupe doit avoir un coordinateur. Voulez-vous ajouter un autre coordinateur au groupe ?"
     permission_to_invite: "Vous n'avez pas la permission d'inviter de nouveaux membres."
     position_not_updated: "Impossible d'actualiser la position."
     settings_not_updated: "Vos réglages n'ont pas été actualisés."
-    group_request_already_verified: "Désolé, le lien de vérification que vous venez de cliquer a déjà été confirmé. Si vous n'aviez pas de nos nouvelles sous 48h, recontactez nous : contact@loomio.org"
     group_request_already_accepted: "Désolé, l'invitation est invalide ou a déjà été acceptée."
-    group_request_contribution: "Merci de sélectionner une catégorie. Ceci n'est pas un engagement à payer, juste une information utile pour améliorer le désign. Merci !"
     group_request_invalid_token: "Désolé, c'est un token invalide"
     group_private_or_not_found: "Groupe non trouvé.\n\nCe groupe peut être privé. Si quelqu'un vous a donné ce lien, demander lui de vous inviter dans ce groupe."
     group_already_setup: "Le groupe que vous essayez de créer existe déjà."
@@ -99,16 +100,24 @@ fr:
     close_date_changed: "La date de clôture a été correctement changée."
     discussion_created: "La discussion a été correctement créée."
     discussion_deleted: "La discussion a été correctement supprimée."
+    discussion_moved: "La discussion a été déplacée vers %{group_name} avec succès"
     emails_sending: "Envois d'emails."
     group_archived: "Le Groupe a été correctement archivé."
     group_created: "Le groupe a été correctement créé."
     members_added: "Les membres ont été ajoutés au groupe."
+    membership_requested: "Vous avez demandé à rejoindre %{which_group}. Vous serez notifié lorsque votre requête aura été approuvée."
+    motion_closed: "La proposition a fermé. Si vous voulez, vous pouvez décider d'un résultat du vote ci-dessous et l'envoyer à votre groupe."
+    motion_outcome_created: "Bravo, vous avez créé un résultat de vote et les membres de votre groupe ont été notifiés."
+    motion_outcome_updated: "Le résultat de la proposition a été modifié."
     position_submitted: "Position enregistrée"
     position_updated: "Position actualisée."
     proposal_created: "La proposition a été correctement créée."
     proposal_deleted: "La proposition a été effacée."
   datetime:
     distance_in_words:
+      less_than_x_seconds:
+        one: "seconde"
+        other: "%{count} secondes"
       x_seconds:
         one: "%{count} seconde"
         other: "%{count} secondes"
@@ -144,6 +153,7 @@ fr:
     blog: 'Blog'
     contact: 'Contact'
     privacy: 'Confidentialité'
+    public_groups: 'Groupes publics'
     terms: 'Termes '
   inbox:
     dropdown-btn: 'Boîte de réception'
@@ -164,6 +174,8 @@ fr:
     user_added_to_group: "vous a ajouté au groupe"
     motion_closing_soon: "Cette proposition ferme bientôt"
     motion_blocked: "a bloqué cette proposition"
+    motion_outcome_created: "a publié un résultat pour la proposition"
+    motion_outcome_updated: "a modifié le résultat de la proposition"
   edit_discussion_context: "Editer le contexte de la discussion"
   request_new_group: "Créer un groupe"
   request_new_group_details: "ou attendre jusqu'à ce qu'on vous invite."
@@ -173,7 +185,10 @@ fr:
   email_preferences: "Email"
   sign_out: "Se déconnecter"
   sign_in: "Se connecter"
+  honeypot_warning: "Nous n'avons pas pu créer votre compte. Si vous utilisez un lecteur d'écran, veuillez vous assurer que le dernier champ (caché) du formulaire est vide."
   tagline: "Créer un monde ou il est facile pour tous de participer aux décisions qui les concernent."
+  or_sign_in_html: "Si vous avez déjà un compte Loomio, <a href='%{link}' class='%{link_class}'>Connectez-vous ici</a>"
+  or_link_account_html: "Si vous avez déjà un compte Loomio, <a href='%{link}'>liez-le</a>"
   click_to_dismiss: "Cliquez ici pour annuler ce message"
   generic_confirm: "Êtes-vous sûr ?"
   discussion_helper_text:
@@ -185,6 +200,11 @@ fr:
   dashboard_helper_text:
     header: "Bienvenue sur votre page d'accueil"
     message: "<p>La page d'accueil vous présente toutes les discussions actuelles dans tous vos groupes.</p><p>Vous pouvez démarrer une nouvelle discussion sur un nouveau sujet en cliquant sur le bouton \"démarrer une discussion\".</p>"
+  prompt_visitor_to_authenticate:
+    header: "Connectez-vous ou rejoignez le groupe pour y participer"
+    body_html: |
+      <p>Si vous êtes un membre de ce groupe, vous devrez vous connecter pour y participer.</p>
+      <p>Si vous n'êtes pas membre du groupe, vous pouvez demander à le rejoindre.</p>
   setup_steps_title: "Prochaines étapes :"
   setup_step_1: "Découvrez un exemple de discussion"
   setup_step_2: "Commencez votre première discussion"
@@ -197,7 +217,6 @@ fr:
   add_new_member: "Ajouter un nouveau membre"
   invite_members_to_group: "Inviter des membres à %{which_group}"
   remaining_invites: "invitations restantes"
-  need_more_invites_html: "Besoin de plus ? Loomio est en version béta, ce qui signifie que nous sommes toujours en développement et avons des ressources limitées pour le \"support utilisateur\". Si vous souhaitez accroître la taille de votre groupe %{href}."
   get_in_touch_link: "Restons en contact"
   email_members_in_group: "Envoyer un email aux membres dans %{which_group}"
   subject_error: "Merci de remplir un sujet"
@@ -207,6 +226,7 @@ fr:
   email_group_members: "Envoyer un email aux membres du groupe"
   edit_group_settings: "Editer les réglages du groupe"
   leave_group: "Quitter le groupe"
+  confirm_leave_hidden_group: "Êtes-vous certain de vouloir quitter %{which_group} ? Vous serez alors également retiré de ses éventuels sous-groupes."
   confirm_leave_group: "Etes vous certains de vouloir quitter %{which_group}?"
   deactivate_group: "Désactiver le groupe"
   confirm_deactivate_group: "Attention !!! Etes vous sur de vouloir désactiver %{which_group}?  Vous ne pourrez plus voir le groupe. Cependant, si vous voulez remettre le groupe en service, vous pouvez nous demander de le réactiver en nous envoyant un email à contact@loomio.org."
@@ -227,6 +247,7 @@ fr:
   confirm_ignore_membership_request: "Etes vous sur e vouloir ignorer la demande d'adhésion de %{which_user} en tant que membre ?"
   membership_requested: "Demande d'adhésion faite"
   request_membership: "Demander l'adhésion"
+  ask_to_join_group: "Demander à rejoindre le groupe"
   confirm_remove_membership_request: "Etes vous sur de vouloir vous retirer de ce groupe ?"
   no_pending_membership_requests: "Il n'y a pas de demande d'inscription en attente pour ce groupe."
   subgroups: "Sous-groupes"
@@ -237,6 +258,8 @@ fr:
   new_subgroup: "Nouveau sous-groupe"
   create_subgroup: "Créer un sous-groupe"
   creating_subgroup: "Sous-groupe en cours de construction"
+  hidden: "Caché"
+  public: "Public"
   new_group: "Nouveau groupe"
   create_group: "Créer un groupe"
   creating_group: "Groupe en cours de création"
@@ -260,6 +283,8 @@ fr:
       by_user: "fermer la proposition"
       by_expiry: "Proposition fermée"
     motion_close_date_edited: "changer la date de clôture de la proposition"
+    motion_outcome_created: "a publié un résultat du vote pour la proposition"
+    motion_outcome_updated: "a modifié le résultat du vote pour la proposition"
     discussion_title_edited: "changer le titre de la discussion"
     discussion_description_edited: "a modifié la description de la discussion"
   discussion: "Discussion"
@@ -272,6 +297,7 @@ fr:
   empty_discussion_list: "Il n'y a pas d'activité dans cette discussion pour l'instant."
   empty_discussion_index: "il n'y a pas  discussions dans aucun de vos groupes"
   empty_discussion_index_group: "Ce groupe n'a pas encore de discussions."
+  private_group_discussion_display: "Ce groupe est privé. Les discussions sont seulement visibles par ses membres. Si vous voulez participer, vous pouvez demander à rejoindre le groupe."
   discussion_context:
     started_html: "Débuté il y a %{when} par <a href='%{link}' class='%{link_class}'>%{who}</a>"
     last_edited_html: "Dernière modification il y a %{when} par <a href='%{link}' class='%{link_class}'>%{who}</a>"
@@ -291,6 +317,10 @@ fr:
   delete_comment: "Effacer le commentaire"
   confirm_delete_comment: "Etes vous sur de vouloir effacer ce commentaire ?"
   markdown_settings_more_info: "Plus d'info..."
+  edit_discussion: "Modifier la discussion"
+  move_discussion: "Déplacer la discussion"
+  move_discussion_to_hidden_group: "Cette discussion est actuellement publique. La déplacer vers ce groupe caché la rendra privée."
+  move_discussion_where: "Vers où voudriez-vous déplacer cette discussion ?"
   delete_discussion: "Effacer la discussion"
   confirm_delete_discussion: "Etes vous sur de vouloir supprimer définitivement cette discussion ?"
   new_proposal: "Nouvelle proposition"
@@ -317,6 +347,7 @@ fr:
   block_details: "J'ai de fortes objections à cette proposition et ne suis pas d'accord pour qu'elle avance."
   not_voted: "[Montrer les membres qui n'ont pas encore pris position]"
   outcome_placeholder: "Quel est le résultat de cette proposition ?"
+  outcome_submit: "Publier le résultat du vote"
   position_verbs:
     'yes': "pour"
     'no': "contre"
@@ -329,20 +360,20 @@ fr:
       block: "a bloqué"
   help:
     coordinating: 'Coordonner vos groupes Loomio'
-    coordinating_details: "En tant que coordinateur, vous êtes responsables du paramétrage du groupe Loomio et des \ninvitations. Tout comme apprendre un nouveau logiciel, votre groupe va\napprendre un nouveau process pour collaborer plus efficacement et prendre de bonnes décisions\nensemble. Voilà quelques\
-      \ trucs pour supporter votre groupe :\n\n"
+    coordinating_details: "En tant que coordinateur, vous êtes responsables du paramétrage du groupe Loomio et des \ninvitations. Tout comme apprendre un nouveau logiciel, votre groupe va\napprendre un nouveau process pour collaborer plus efficacement et prendre de bonnes décisions\nensemble. Voilà quelques trucs pour supporter votre groupe\
+      \ :\n\n"
     different_ways: 'Les différentes possibilités d''utiliser Loomio'
-    engaging_html: "<h2>Les trucs pour commencer votre groupe</h2>⏎\n<p>Les personnes seront heureuses de participer dans un projet lorsqu'il y a de bonnes \npropositions sur la table.  Une bonne proposition contient un plan d'action pour le groupe,\nceci afin qu'il soit aisé d'agréer ou de rejeter.  Pensez\
-      \ à la manière dont vous pourrez \naméliorer les décisions/discussions du groupe lorsqu'elles seront sur Loomio.</p>⏎\n<p>Si votre groupe démarre, vous pouvez une petite discussion légère, pour donner à chacun\nune chance de jour avec l'outil, et voir le processus de prise de décision en action.</p>⏎\n\
-      <p>Une autre manière simple d'encourager les gens à initier une discussion est d'utiliser le\n@mention pour alerter des personnes spécifiques ; cela leur enverra un email pour leur dire\nque vous les avez mentionné sur un commentaire.</p>\n"
+    engaging_html: "<h2>Les trucs pour commencer votre groupe</h2>⏎\n<p>Les personnes seront heureuses de participer dans un projet lorsqu'il y a de bonnes \npropositions sur la table.  Une bonne proposition contient un plan d'action pour le groupe,\nceci afin qu'il soit aisé d'agréer ou de rejeter.  Pensez à la manière dont vous pourrez \n\
+      améliorer les décisions/discussions du groupe lorsqu'elles seront sur Loomio.</p>⏎\n<p>Si votre groupe démarre, vous pouvez une petite discussion légère, pour donner à chacun\nune chance de jour avec l'outil, et voir le processus de prise de décision en action.</p>⏎\n<p>Une autre manière simple d'encourager les gens à initier une discussion\
+      \ est d'utiliser le\n@mention pour alerter des personnes spécifiques ; cela leur enverra un email pour leur dire\nque vous les avez mentionné sur un commentaire.</p>\n"
     example1_html: |
       <h3>Vous avez besoin du groupe pour discuter d'un sujet et construire une solution en commun</h3>⏎
       <p>Stratégie : Discuter d'un sujet avant de construire une proposition.</p>⏎
       <p>Les discussions obtiennent souvent de meilleurs résultats si vous avez construit une solution ensemble⏎
       avant d'adopter une solution spécifique. Lorsque les gens participent dans un processus,
       ils apprécieront de participer au résultat</p>⏎
-    example2_html: "<h3>Vous avez déjà une proposition en tête, et vous voulez obtenir l'aval du groupe pour \naller de l'avant.</h3>⏎\n<p>Stratégie : Démarrer une discussion à propos d'une décision spécifique et faire \nimmédiatement une proposition.</p>⏎\n<p>Si vous avez un résultat clair en tête, mais\
-      \ que vous voulez qu'il n'y ait pas de préoccupations⏎\nmajeures, vous pouvez faire une proposition pour avoir un retour rapide.</p>⏎\n<p>Vous pouvez faire des choses comme finaliser un document, approuver une application, ou valider un travail.</p>⏎\n"
+    example2_html: "<h3>Vous avez déjà une proposition en tête, et vous voulez obtenir l'aval du groupe pour \naller de l'avant.</h3>⏎\n<p>Stratégie : Démarrer une discussion à propos d'une décision spécifique et faire \nimmédiatement une proposition.</p>⏎\n<p>Si vous avez un résultat clair en tête, mais que vous voulez qu'il n'y ait pas de\
+      \ préoccupations⏎\nmajeures, vous pouvez faire une proposition pour avoir un retour rapide.</p>⏎\n<p>Vous pouvez faire des choses comme finaliser un document, approuver une application, ou valider un travail.</p>⏎\n"
     get_in_touch: "Rester en contact"
     get_in_touch_description_html: "Si vous avez la moindre question ou retour d'expérience, <a href='%{link}'>écrivez-nous</a>."
     getting_started: "Démarrage"
@@ -423,8 +454,8 @@ fr:
     proposal: 'Conseils pour écrire une proposition claire'
     vote: 'Vous pouvez changer votre position à tout moment'
   pricing_page:
-    intro: "Les groupes qui ont un budget paient un abonnement pour pour utiliser l’outil.\nLes groupes qui n'en n'ont pas les moyens utilisent le modèle \n\"Donne ce que tu peux\": leurs membres sont invités à faire des dons. Vos contributions permettent à Loomio de conserver son indépendance, d'être gratuit,\
-      \ sans pubs et géré par notre communauté. \n"
+    intro: "Les groupes qui ont un budget paient un abonnement pour pour utiliser l’outil.\nLes groupes qui n'en n'ont pas les moyens utilisent le modèle \n\"Donne ce que tu peux\": leurs membres sont invités à faire des dons. Vos contributions permettent à Loomio de conserver son indépendance, d'être gratuit, sans pubs et géré par notre communauté.\
+      \ \n"
     organisations: Organisations
     organisations_examples: 'par exemple: entreprises, agences gouvernementales, organisations communautaires'
     informal_groups: Groupes non-officiels
@@ -438,9 +469,8 @@ fr:
     submit: Contribuer
     tooltip: 'Apprenez-en plus sur notre modèle de financement communautaire '
     thought_about_contributing: Choisissez votre contribution
-    thought_about_contributing_description: "Loomio est une entreprise sociale coopérative qui travaille à rendre plus facile pour tous la participation aux décisions qui les concernent. \n\nL'argent ne doit pas être une barrière à la prise de décision collaborative. Loomio est financé par les contributions\
-      \ de notre communauté d'utilisateurs, et par les abonnements payés par les organisations formelles qui l'utilisent.\n\nVotre contribution signifie que nous pouvons garder Loomio indépendant, sans publicité, et accessible librement aux groupes qui font de belles choses dans leur communautés.\n\nMerci\
-      \ de rendre cela possible ! \n"
+    thought_about_contributing_description: "Loomio est une entreprise sociale coopérative qui travaille à rendre plus facile pour tous la participation aux décisions qui les concernent. \n\nL'argent ne doit pas être une barrière à la prise de décision collaborative. Loomio est financé par les contributions de notre communauté d'utilisateurs,\
+      \ et par les abonnements payés par les organisations formelles qui l'utilisent.\n\nVotre contribution signifie que nous pouvons garder Loomio indépendant, sans publicité, et accessible librement aux groupes qui font de belles choses dans leur communautés.\n\nMerci de rendre cela possible ! \n"
     thank_you_title: Merci de contribuer à Loomio !
     thank_you_body: |
       Votre contribution nous aide à offrir un outil de prise de décision collaborative au monde
@@ -475,9 +505,13 @@ fr:
   unlock_not_received: "Instructions de déblocage non reçues ?"
   inactive_html: "Désolé, ce compte est actuellement inactif. Si vous avez la moindre question, n'hésitez pas à <a href='%{path_to_contact}'>nous contacter</a>."
   create_an_account: 'Créer un compte'
+  log_in: "Se connecter"
   join_group:
     log_in: "Connectez-vous pour rejoindre %{group_name}"
+    create_account_to_join_group: "Veuillez créer un compte pour rejoindre le groupe %{group_name}"
   invitation:
+    alternate: "Alternativement, partagez ce lien et n'importe qui peut demander à rejoindre :"
+    by_email: "Inviter par email"
     no_invitations_left: "Désolé, vous n'avez plus d'invitations disponibles"
     no_invitations_left_get_more: "Merci de nous envoyer un email à contact@loomio.org et nous verrons comment vous assister"
     invitation_not_found: 'Impossible de trouver une invitation sous cette référence. Merci de demander une nouvelle invitation à celui qui vous l''a envoyé.'
@@ -487,6 +521,7 @@ fr:
     invitees_placeholder: "Nom de l'utilisateur <user1@example.com>, user2@example.com"
     subject: "Merci de rejoindre notre nouveau groupe Loomio, %{group}"
     invite_people: "Inviter des personnes dans votre groupe"
+    select_members: "Ajouter des membres de %{which_group}"
     body_editable: |
       Salut, venez construire des décisions avec nous ! Nous utilisons un outil de collaboration collective appelé Loomio
     message_body: "Message d'invitation"
@@ -494,10 +529,15 @@ fr:
     invitation_link: "Lien d'invitation"
     link_help: "Cliquer sur ce lien pour rejoindre %{group}  sur Loomio:"
     copy: "Si quelqu'un ne reçoit pas son email d'invitation, merci de recopier le lien d'invitation ci dessus et de le transmettre directement."
+    pending_invitations: 'Invitations en cours'
+    no_pending_invitations: "Il n'y a pas d'invitation en attente pour l'instant."
   search:
     description: "Voici la liste des discussions et des projets qui contiennent '%{query}' dans leur titre ou dans leur description. "
     header: "Résultat des recherches pour '%{query}'"
     placeholder: "Chercher "
+    empty_search: 'Vider la recherche'
+    please_enter_a_search: 'Veuillez entrer une requête dans la barre de recherche ci-dessus'
+    no_match: 'Aucun résultat ne correspond à votre recherche'
   example_discussion:
     title: "Exemple de Discussion : Bienvenue et introduction à Loomio"
     description: |
@@ -512,6 +552,12 @@ fr:
       Est ce une bonne idée ? Le Robert d'Aide de Loomio veut savoir ce que vous en pensez !
       Si vous connaissez déjà votre position, cliquez sur l'une des icones ci dessous (survolez les boutons de décision pour une description de la signification de chacun d'eux).
       Vous êtes invité à laisser un bref commentaire sur la raison de votre choix. Ceci permet de rendre plus facile la synthèse de ce que chacun pense et pourquoi. Vous pouvez changer d'avis et revoter sans souci, tant que la proposition n'est pas close.
+  discussion_form:
+    new:
+      header: "Démarrer une discussion"
+      who: "Dans quel groupe souhaitez vous démarrer cette discussion ?"
+    edit:
+      header: "Modifier la discussion"
   motion_form:
     header: "Nouvelle proposition"
     name_helper: "Rédiger le titre aussi clair et succint que possible"
@@ -544,9 +590,14 @@ fr:
     use_avatar_kind: "Utiliser %{kind}"
     upload_new_image: "Charger une nouvelle image"
   group_setup:
+    set_up_your_group: Mettre en place votre groupe
     desc_header: "Vous y êtes presque !"
     desc_html: "En tant que coordinateur du groupe, vous êtes responsable des réglages et de la gestion de votre groupe Loomio. Après quelques paramétrages, vous pourrez lui donner vie, démarrer une conversation ou deux et envoyer des invitations !"
     submit: "M'emmener dans mon groupe !"
+    payment_model:
+      header: Loomio est pour tout le monde !
+      info: Nous avons un modèle de paiement qui convient à tous les groupes, même ceux qui n'ont pas d'argent :)
+      link: En savoir plus
   simple_form:
     'yes': 'Oui'
     'no': 'Non'
@@ -559,8 +610,32 @@ fr:
       discussion:
         title: "Titre"
         description: "Contexte"
+        privacy_public_header: "Public"
+        privacy_public_description: "Tout le monde peut voir cette discussion"
+        privacy_private_header: "Privé(e)"
+        privacy_private_description: "Seuls les membres du groupe %{group} peuvent voir cette discussion."
+        privacy_hidden_description: "Toutes les discussions d'un groupe caché sont privées."
+        of: "de"
+        of_no_group: "de ce groupe"
       group:
+        name: "Nom du groupe"
+        description: "Description"
         members_invitable_by: "Qui peut inviter des personnes dans ce groupe ?"
+        members_invitable_by_coordinators: "Les coordinateurs seulement"
+        members_invitable_by_members: "Tout les membres du groupe"
+        privacy: Confidentialité
+        privacy_public_header: Public
+        privacy_public_description: Les discussions sont publiques, sauf lorsqu'elles sont rendues privées. N'importe qui peut trouver le groupe et demander à le rejoindre.
+        privacy_private_header: Principalement privé(e)
+        privacy_private_description: Les discussions sont privées, sauf si vous les rendez explicitement publiques. N'importe qui peut trouver le groupe et demander à le rejoindre.
+        privacy_hidden_header: Caché(e) (complètement privé)
+        privacy_hidden_description: Les discussions sont toujours privées. Trouver et rejoindre le groupe ne peuvent se faire que par invitation.
+        privacy_parent_group_members_header: Visible par les membres du groupe parent
+        privacy_parent_group_members_description: Comme caché, sauf que le groupe et ses discussions peuvent être vues par les membres du groupe parent.
+        privacy_parent_group_members_description_short: Seuls les membres du groupe et les membres du groupe parent peuvent voir ce groupe et ses discussions.
+        group_members_invitable_by: "Seulement les coordinateurs"
+        submit: Envoyer
+        viewable_by_parent_members_header: Autoriser tous les membres du groupe %{group} à voir ce sous-groupe et ses discussions
       membership_request:
         introduction: "Présentez vous"
       motion:
@@ -574,11 +649,17 @@ fr:
         password_confirmation: "Confirmer votre mot de passe"
         language_preference: "Langue"
     placeholders:
+      discussion:
+        title: "Titre"
+        description: "Donnez du contexte..."
       membership_request:
         introduction: "Ecrire quelques mots sur vous et pourquoi vous voulez intégrer %{group_name}."
       motion:
         name: "Quel est votre plan d'action ?"
         description: "Donnez suffisamment d'informations pour que tout le monde sache exactement ce que signifie d'être d'accord ou de ne pas être d'accord."
+      group:
+        name: "Nom du groupe"
+        description: "Description du groupe"
       user:
         email: "Email"
         password: "Mot de passe"
@@ -586,18 +667,23 @@ fr:
     submit:
       discussion:
         create: "Commencez la discussion"
+        update: "Modifier la discussion"
       motion:
         create: "Commencez la proposition"
       user:
         create: "Créer un compte"
         update: "Actualiser vos réglages"
   email:
+    user_added_to_a_group:
+      subject: "%{who} vous a ajouté au groupe %{which_group}"
+      content: "%{who} vous a ajouté au groupe %{which_group} sur Loomio. Cliquez ici pour aller dans le groupe :"
     unsubscribe: "Désabonnement ou changement d'email :"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pour se désabonner ou changer votre email."
     view_comment: "Cliquez ici pour voir le commentaire sur Loomio"
     view_discussion: "Cliquer ici pour voir la discussion"
     view_group: "Cliquer ici pour voir le groupe sur Loomio"
     view_proposal: "Voir cette proposition sur Loomio"
+    campaign_html: "Est-ce que cette décision était importante pour vous ? Envisagez de <a href='%{link_path}'>devenir un contributeur de Loomio</a> et aidez-nous à diffuser Loomio dans le monde. Nous sommes une petite équipe qui essaye de faire de geandes choses et nous avons besoin de votre contribution pour nous aider à grandir !"
     create_discussion:
       intro: "%{who} a démarré une nouvelle discussion dans %{which_group}:"
       subject: "Nouvelle discussion - %{which}"
@@ -623,6 +709,7 @@ fr:
         L'équipe de Loomio
     membership_request:
       intro: "%{name} (%{email}) a demandé l'accès à l'un de groupe Loomio."
+      subject: "%{who} a demandé à rejoindre %{which_group}"
       view_group: "Vous pouvez accepter ou rejeter cette demande"
     mentioned:
       intro: "Vous avez été cité dans une discussion :"
@@ -632,7 +719,12 @@ fr:
       context: "%{author} a créé une proposition dans %{group_full_name}:"
     proposal_closed:
       intro: 'Votre proposition "%{proposal_name}" est close.'
+      intro_html: 'Votre proposition "%{proposal_name}" a fermé.'
+      specify_outcome_and_notify_group: "Créez un résultat du vote et envoyez-le à votre groupe !"
+      specify_outcome_and_notify_group_html: "Créez un résultat du vote et envoyez-le à votre groupe !"
       subject: "Fermeture de la proposition - %{which}"
+    proposal_outcome:
+      subject: "Résultat du vote"
     proposal_blocked:
       intro: "Une proposition sur laquelle vous êtes intervenue a été bloquée."
       subject: "Proposition bloquée - %{which}"
@@ -647,22 +739,6 @@ fr:
       subject: "%{member} vous a invité à rejoindre le groupe %{group_name} sur Loomio"
     to_start_group:
       subject: "Créer votre nouveau groupe Loomio: %{group_name}"
-    trial_expiry:
-      header: "%{group_name}: Votre période d'essai sur Loomio est presque écoulée."
-      hi: "Salut,"
-      intro_html: |
-        Nous vous rappelons seulement que votre période d’essai expire dans 5 jours. Nous espérons que vous vous plaisez sur Loomio.
-        <p>Dès que votre période d'essai arrivera à terme, vous devrez régler les modalités de paiement afin que votre groupe puisse continuer d'utiliser Loomio.</p>
-        <p><a href=">Cliquez ici</a> pour régler les modalités de paiement dès maintenant.<p/>
-        Si vous avez des questions ou si nous pouvons faire quelque chose pour que Loomio soit apprécié par votre groupe, nous serions très heureux que vous nous en fassiez part.
-    trial_follow_up:
-      header: "%{group_name}: Comment se passe votre période d'essai ?"
-      hi: "Salut,"
-      intro_html: |
-        Nous vous rappelons seulement que vous êtes arrivé(e) à la moitié de votre période d'essai. Nous espérons que vous vous plaisez sur Loomio.
-        <p>Dès que votre période d'essai arrivera à terme, vous devrez régler les modalités de paiement afin que votre groupe puisse continuer d'utiliser Loomio.</p>
-        <p><a href=">Cliquez ici</a> pour régler les modalités de paiement dès maintenant.<p/>
-        Si vous avez des questions ou si nous pouvons faire quelque chose pour que Loomio soit apprécié par votre groupe, nous serions très heureux que vous nous en fassiez part.
     verification:
       header: "Vous avez presque fini !"
       intro: "Merci de cliquer sur le lien de vérification pour finaliser votre demande :"
@@ -672,7 +748,6 @@ fr:
   approve: "Approuvez"
   author: "Auteur"
   back: "Retour"
-  by: "Par"
   cancel: "Annuler"
   change: "Modifier"
   change_language: "Cliquez ici pour utiliser Loomio en %{language}"
@@ -706,6 +781,8 @@ fr:
   password: "Mot de passe"
   pricing: 'Tarification'
   prev: "Précédent"
+  more: "Plus..."
+  translate_this_string: "Traduire en %{language}"
   options: "Options"
   other: "Autre"
   ok_got_it: "Ok, j'ai!"
@@ -717,6 +794,7 @@ fr:
   send_email: "Envoyer email"
   show_more: "Plus d'info"
   start_a_group: "Créer un groupe"
+  start_group: "Créer un groupe !"
   starting: "Démarrez"
   subject: "Sujet"
   terms_of_service_html: "En cliquant sur %{button_text}, vous acceptez les <a href='%{link_path}' target='_blank'>conditions</a> de Loomio"

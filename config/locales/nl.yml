@@ -47,9 +47,7 @@ nl:
     permission_to_invite: "Je bent niet gemachtigd om nieuwe leden uit te nodigen."
     position_not_updated: "Standpunt kan niet worden bijgewerkt."
     settings_not_updated: "Je instellingen zijn niet bijgewerkt."
-    group_request_already_verified: "Sorry! De verificatielink is al goedgekeurd. Als je niet binnen 48 uur van ons hebt gehoord, neem dan contact op: contact@loomio.org"
     group_request_already_accepted: "Sorry! Deze uitnodiging is niet geldig of is al geaccepteerd."
-    group_request_contribution: "Selecteer een categorie. Dit is geen verplichting om te betalen, alleen nuttige informatie om ons model te ontwerpen. Bedankt!"
     group_request_invalid_token: "Sorry! Deze token is niet geldig"
     group_private_or_not_found: "Groep niet gevonden.\n\nDeze groep is mogelijk afgeschermd. Als iemand je deze link heeft gegeven, vraag diegene om je uit te nodigen voor de groep."
     group_already_setup: "De groep die je probeert aan te maken bestaat al."
@@ -214,7 +212,6 @@ nl:
   add_new_member: "Nieuw lid toevoegen"
   invite_members_to_group: "Nodig leden uit voor %{which_group}"
   remaining_invites: "openstaande uitnodigingen"
-  need_more_invites_html: "Meer nodig? Loomio is op dit moment in gesloten beta fase, wat betekent dat we nog steeds in ontwikkeling zijn en beperkte middelen hebben om gebruikers te ondersteunen. Als je de grootte van je groep aan wilt passen %{href}."
   get_in_touch_link: "neem contact op"
   email_members_in_group: "E-mail de leden in %{which_group}"
   subject_error: "Vul een onderwerp in"
@@ -726,21 +723,6 @@ nl:
       subject: "%{member} heeft je uitgenodigd om deel te nemen aan %{group_name} op Loomio"
     to_start_group:
       subject: "Stel je nieuwe Loomio groep in: %{group_name}"
-    trial_expiry:
-      header: "%{group_name}: Je Loomio proefperiode is bijna voorbij."
-      hi: "Hallo daar,"
-      intro_html: |
-        Gewoon een vriendelijke herinnering om je te laten weten dat je proefperiode verloopt over 5 dagen. We hopen dat je Loomio tot nu toe leuk vindt.
-        <p>Als je proefperiode afloopt, moet je je betalingsgegevens invoeren zodat jouw groep Loomio kan blijven gebruiken.</p>
-        <p><a href=''>Klik hier</a> om je betalingsgegevens nu door te geven.</p>
-        <p>Als je vragen hebt of als er iets is wat we kunnen doen om jouw groep met Loomio te laten slagen dan horen we graag van je.</p>
-    trial_follow_up:
-      header: "%{group_name}: Hoe verloopt je Loomio proefperiode tot nu toe?"
-      hi: "Hallo daar,"
-      intro_html: |
-        Gewoon een vriendelijke herinnering om je te laten weten dat je halverwege je proefperiode bent. We hopen dat je Loomio tot nu toe leuk vindt! Als je wat tips wil om het meeste uit Loomio te halen, <a href='/help#getting-the-most-out-of-Loomio'>kijk even hier.</a>
-        <p>Je moet je betalingsgegevens invoeren voor het einde van je proefperiode om Loomio te kunnen blijven gebruiken. <a href=''>Klik hier</a> om je betalingsgegevens nu door te geven.</p>
-        <p>Als je vragen hebt of als er iets is wat we kunnen doen om jouw groep met Loomio te laten slagen dan horen we graag van je.</p>
     verification:
       header: "Je bent bijna klaar!"
       intro: "Klik op deze verificatielink om je aanvraag te voltooien:"
@@ -750,7 +732,6 @@ nl:
   approve: "Goedkeuren"
   author: "Auteur"
   back: "Terug"
-  by: "door"
   cancel: "Annuleren"
   change: "Verander"
   change_language: "Klik hier om om Loomio te gebruiken in het %{language}"

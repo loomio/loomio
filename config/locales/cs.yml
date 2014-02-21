@@ -36,12 +36,12 @@ cs:
     motion_closing_inputs: "Neplatné datum uzavření"
     motion_outcome_not_created: "Nepovedlo se publikovat výsledek."
     motion_outcome_not_updated: "Nepovedlo se aktualizovat výsledek."
+    only_group_coordinator_destroy: "Nemůžete opustit tuto skupinu, protože jste jediným koordinátorem. Můžete deaktivovat svou skupinu pomocí nabídky nastavení nebo <a href='%{add_coordinator}'>přidat nového koordinátora</a> ke skupině."
+    only_group_coordinator_remove_admin: "Skupina musí mít koordinátora. Chcete přidat dalšího koordinátora ke skupině?"
     permission_to_invite: "Nemáte povoleno pozvat nové členy."
     position_not_updated: "Nepodařilo se aktualizovat postoj."
     settings_not_updated: "Vaše nastavení nebyla aktualizována."
-    group_request_already_verified: "Omlouváme se. Ověřovací odkaz, na který jste klikl(a) už byl potvrzen. Pokud jste od nás neslyšel(a) do 48 hodin, napište nám: contact@loomio.org"
     group_request_already_accepted: "Omlouváme se. Tato pozvánka je neplatná nebo už byla přijata."
-    group_request_contribution: "Prosím vyberte kategorii. Nevážete se k placení, jen nám předáváte užitečnou informaci, abychom mohli navrhnout náš model. Díky!"
     group_private_or_not_found: "Skupina nenalezena.\n\nTato skupina by mohla být soukromá. Pokud vám někdo poslal tento odkaz, požádejte jí/ho, aby vás do skupiny pozval(a)."
     group_already_setup: "Skupina, kterou se snažíte vytvořit, už existuje."
     proposal_already_exists: "V této diskuzi už je otevřený návrh."
@@ -204,6 +204,12 @@ cs:
     header: "Vítejte na své nové skupině!"
   dashboard_helper_text:
     header: "Vítejte na své domovské stránce"
+    message: "<p>Domovská stránka vám ukáže všechny aktuální diskuze ze všech skupin, ve kterých jste členem.</p><p>Můžete zahájit diskuzi o novém tématu kliknutím na tlačítko „Zahájit diskuzi“.</p>"
+  prompt_visitor_to_authenticate:
+    header: "Přihlaste se nebo se přidejte ke skupině, abyste se zúčastnil(a)"
+    body_html: |
+      <p>Pokud jste členem této skupiny, musíte se přihlásit, abyste se mohl(a) zúčastnit.</p>
+      <p>Pokud ne, můžete zažádat o členství.</p>
   setup_steps_title: "Následující kroky:"
   setup_step_1: "Podívejte se na ukázkovou diskuzi"
   setup_step_2: "Zahajte svou první diskuzi"
@@ -225,6 +231,7 @@ cs:
   email_group_members: "E-mailujte členy skupiny"
   edit_group_settings: "Upravit nastavení skupiny"
   leave_group: "Opustit skupinu"
+  confirm_leave_hidden_group: "Opravdu chcete opustit %{which_group}? Budete také vyloučen(a) ze všech podskupin."
   confirm_leave_group: "Opravdu chcete opustit %{which_group}?"
   deactivate_group: "Deaktivovat skupinu"
   confirm_deactivate_group: "Počkejte!!! Opravdu chcete deaktivovat %{which_group}? Nebudete nadále moci zobrazovat tuto skupinu. Nicméně pokud chcete skupinu získat zpět, můžete nás požádat, abychom ji reaktivovali emailem na contact@loomio.org."
@@ -425,6 +432,7 @@ cs:
   unlock_not_received: "Nepřišly vám pokyny k odemčení?"
   inactive_html: "Omlouváme se, tento účet je momentálně neaktivní. Pokud máte nějaké otázky, prosím <a href='%{path_to_contact}'>spojte se s námi</a>."
   create_an_account: 'Vytvořit účet'
+  log_in: "Přihlásit se"
   join_group:
     log_in: "Napište nám, abyste se přidal(a) k %{group_name}"
     create_account_to_join_group: "Prosím vytvořte si účet pro členství v %{group_name}"
@@ -587,6 +595,7 @@ cs:
     view_discussion: "Klikněte sem pro zobrazení této diskuze"
     view_group: "Klikněte sem pro zobrazení skupiny na Loomio"
     view_proposal: "Zobrazte si tento návrh na Loomio"
+    campaign_html: "Bylo toto rozhodnutí pro vás důležité? Zvažte <a href='%{link_path}'>příspěvek Loomio</a> a pomozte nám Loomio šířit. Jsme malý tým, co se snaží dělat velké věci, a potřebujeme váš příspevek, abychom mohli nadále růst!"
     create_discussion:
       intro: "%{who} zahájil(a) novou diskuzi v %{which_group}:"
       subject: "Nová diskuze - %{which}"
@@ -627,7 +636,7 @@ cs:
       specify_outcome_and_notify_group_html: "Vytvořte výsledek a pošlete ho své skupině!"
       subject: "Návrh uzavřen - %{which}"
     proposal_outcome:
-      subject: "Výsledej návrhu"
+      subject: "Výsledek návrhu"
     proposal_blocked:
       subject: "Návrh zamítnut - %{which}"
     proposal_closing_soon:
@@ -641,11 +650,6 @@ cs:
       subject: "%{member} vás pozval(a) do skupiny %{group_name} na Loomio"
     to_start_group:
       subject: "Zřiďte si svou novou Loomio skupinu: %{group_name}"
-    trial_expiry:
-      hi: "Zdravíme,"
-    trial_follow_up:
-      header: "%{group_name}: Jak se ti zatím líbí tvá zkouška Loomio?"
-      hi: "Zdravíme,"
     verification:
       header: "jste skoro hotov(a)!"
       intro: "Prosím klikněte na tento ověřovací odkaz pro dokončení vaší žádosti:"
@@ -680,6 +684,7 @@ cs:
   like: "To se mi líbí"
   loading: "Načítá se..."
   message: "Zpráva"
+  name: "Jméno"
   new_activity: "Nová aktivita"
   next: "Násl."
   outcome: "Výsledek"

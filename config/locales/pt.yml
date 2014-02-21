@@ -47,9 +47,7 @@ pt:
     permission_to_invite: "Você não tem permissão para convidar novos membros."
     position_not_updated: "Não foi possível atualizar a posição."
     settings_not_updated: "Suas configurações não foram atualizadas."
-    group_request_already_verified: "Desculpe! O link de verificação que você clicou já foi confirmado. Se você não receber nenhuma notificação nossa nas próximas 24 horas, entre em contato: contact@loomio.org"
     group_request_already_accepted: "Desculpe! Este convite é inválido ou já foi aceito."
-    group_request_contribution: "Por favor escolha uma categoria. Isto não é um compromisso de pagar, mas apenas uma informação útil para nos ajudar a construir nosso modelo. Obrigado!"
     group_request_invalid_token: "Desculpe! Este token não é válido"
     group_private_or_not_found: "Grupo não encontrado.\n\nPode ser um grupo privado. Se alguém te passou este link, peça a esta pessoa que te convide para entrar no grupo."
     group_already_setup: "O grupo que você está tentando criar já existe."
@@ -210,7 +208,6 @@ pt:
   add_new_member: "Adicionar novo membro"
   invite_members_to_group: "Convidar membros para %{which_group}"
   remaining_invites: "convites restantes"
-  need_more_invites_html: "Precisa de mais? O Loomio está em versão beta fechada. Isso significa que ainda estamos na fase de desenvolvimento e temos recursos limitados de suporte ao usuário. Se você deseja aumentar o tamanho de seu grupo %{href}."
   get_in_touch_link: "entre em contato"
   email_members_in_group: "Envie email para os membros em %{which_group}"
   subject_error: "Por favor, preencha o assunto"
@@ -575,7 +572,6 @@ pt:
         privacy_public_header: "Público"
         privacy_public_description: "Qualquer um pode ver essa discussão"
         privacy_private_header: "Privado"
-        privacy_private_description: "Apenas membros do %{group} podem ver esta discussão"
         privacy_hidden_description: "Todas as discussões em um grupo secreto são privadas."
         of: "de"
         of_no_group: "deste grupo"
@@ -701,22 +697,6 @@ pt:
       subject: "%{member} foi convidada(o) a participar do grupo %{group_name} no Loomio"
     to_start_group:
       subject: "Configure seu novo grupo Loomio: %{group_name}"
-    trial_expiry:
-      header: "%{group_name}: Seu período de teste no Loomio está quase esgotado."
-      hi: "Olá,"
-      intro_html: |
-        Lembrete: o período de teste expira em 5 dias. Esperamos que esteja gostando do Loomio.
-        <p>Assim que o período de teste terminar, você precisará enviar os detalhes de pagamento para que seu grupo possa continuar usando o Loomio.</p>
-        <p><a href=''>Clique aqui</a> para fornecer os detalhes do pagamento agora.</p>
-        <p>Se você tiver qualquer pergunta ou se houver qualquer coisa que possamos fazer para ajudar seu grupo a ter sucesso com o Loomio, adoraríamos ouvir de você.</p>
-    trial_follow_up:
-      header: "%{group_name}: Como anda o seu período de teste do Loomio até agora?"
-      hi: "Olá,"
-      intro_html: |+
-        Apenas um aviso para que saiba que está na metade de seu período de teste. Esperamos que esteja gostando do Loomio! Se quiser algumas dicas sobre como aproveitar o melhor do Loomio, <a href='/help#getting-the-most-out-of-Loomio'>dê uma olhada aqui.</a>
-        <p>Você precisará fornecer as informações para pagamento antes de seu período de teste terminar para continuar usando o Loomio. <a href=''>Clique aqui</a> para fornecer os detalhes do pagamento agora.</p>
-        <p>Se você tiver qualquer pergunta ou se houver qualquer coisa que possamos fazer para ajudar seu grupo a ter sucesso com o Loomio, adoraríamos ouvir de você.</p>
-
     verification:
       header: "Você está quase terminando!"
       intro: "Por favor, clique neste link de verificação para finalizar sua solicitação:"
@@ -726,7 +706,6 @@ pt:
   approve: "Aprovar"
   author: "Autor(a)"
   back: "Voltar"
-  by: "por"
   cancel: "Cancelar"
   change: "Mudar"
   change_language: "Clique aqui para utilizar o Loomio em %{language}"

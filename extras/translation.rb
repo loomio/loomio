@@ -9,15 +9,16 @@ class Translation
                'Français' => 'fr',
                'Indonesian' => 'id',
                'magyar' => 'hu',
+               'മലയാളം' => 'ml',
                'Nederlands' => 'nl',
                'Português (Brasil)' => 'pt',
                'română' => 'ro',
                'Tiếng Việt' => 'vi'}
 
   EXPERIMENTAL_LANGUAGES = {'Italiano' => 'it',
-                            'മലയാളം' => 'ml',
                             'తెలుగు' => 'te',
-                            'Gaelic (Irish)' => 'ga'}
+                            'Gaelic (Irish)' => 'ga',
+                            'Türkçe' => 'tr'}
 
   def self.language(locale)
     LANGUAGES.key(locale)

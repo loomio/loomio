@@ -29,9 +29,7 @@ bg:
     permission_to_invite: "Нямате разрешение да каните нови членове."
     position_not_updated: "Позицията не можа да бъде обновена. "
     settings_not_updated: "Вашите настройки не бяха обновени."
-    group_request_already_verified: "Sorry! Линкът за верификация, върху който сте кликнали вече е бил одобрен. Ако нямате нищо от нас повече от 48 часа, пишете ни: contact@loomio.org"
     group_request_already_accepted: "Sorry! Тази покана е невалидна или вече е била приета."
-    group_request_contribution: "Моля изберете категория. Това не представлява съгласие за плащане, а само полезна информация, която ще ни помогне да проектираме нашия модел. Благодаря!"
     group_request_invalid_token: "Съжалявам! Този код е невалиден"
     group_private_or_not_found: "Групата не е намерена. \n\nВъзможно е тази група да е частна. Ако някой ви е дал този линк, помолете го да ви покани в групата."
     group_already_setup: "Групата, която се опитвате да създадете вече съществува."
@@ -77,9 +75,6 @@ bg:
     proposal_deleted: "Предложението е изтрито."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "%{count} секунда"
-        other: "%{count} секунди"
       x_seconds:
         one: "%{count} секунда"
         other: "%{count} секунди"
@@ -153,14 +148,12 @@ bg:
   setup_step_3: "Поканете хора в групата ви"
   invite_people: "Поканете хора"
   no_invitations_button: "Няма останали покани"
-  pending_invitations: 'Чакащи покани'
   number_pending: '%{pending} чакащи'
   and_number_pending: 'и %{pending} чакащи'
   edit_memberships: 'Редакция на членството'
   add_new_member: "Добави нов потребител"
   invite_members_to_group: "Покани потребители в %{which_group}"
   remaining_invites: "оставащи покани"
-  need_more_invites_html: "Нуждаете се от още? Лумио е в затворена бета, което означава, че все още сме в развитие и имаме ограничени ресурси за потребителска поддръжка. Ако желаете да увеличите размера на вашата група %{href}."
   get_in_touch_link: "свържете се"
   email_members_in_group: "Изпрати e-mail до членовете на %{which_group}"
   subject_error: "Моля попълнете заглавие"
@@ -510,7 +503,6 @@ bg:
   approve: "Одобряване"
   author: "Автор"
   back: "Назад"
-  by: "от"
   cancel: "Отказ"
   change: "Промяна"
   changing: "Променя се"

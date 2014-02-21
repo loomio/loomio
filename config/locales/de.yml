@@ -43,9 +43,7 @@ de:
     permission_to_invite: "Du hast keine Berechtigung neue Mitglieder einzuladen."
     position_not_updated: "Meinung konnte nicht aktualisiert werden."
     settings_not_updated: "Deine Einstellungen wurden nicht aktualisiert."
-    group_request_already_verified: "Entschuldige. Der Link zur Verifizierung wurde schon bestätigt. Wenn du innerhalb von 48 Stunden nichts von uns hörst, kontaktiere uns unter: contact@loomio.org"
     group_request_already_accepted: "Entschuldigung. Diese Einladung ist ungültig oder wurde schon akzeptiert."
-    group_request_contribution: "Bitte wähle eine Kategorie aus. Dies ist keine Zahlungsverpflichtung, nur nützliche Informationen die uns helfen, unser Modell weiter zu entwickeln. \nDanke!"
     group_request_invalid_token: "Entschuldigung. Dieses Token ist ungültig."
     group_private_or_not_found: "Gruppe nicht gefunden.\n\nDiese Gruppe könnte privat sein. Wenn die jemand diesen Link gegeben hat, bitte ihn dich in die Gruppe einzuladen."
     group_already_setup: "Die Gruppe, die du einrichten möchtest, existiert schon."
@@ -195,7 +193,6 @@ de:
   add_new_member: "Neues Mitglied hinzufügen"
   invite_members_to_group: "Mitglieder zu %{which_group} einladen"
   remaining_invites: "verbleibende Einladungen"
-  need_more_invites_html: "Brauchst du mehr? Loomio befindet sich in einer geschlossenen Beta-Phase. Das bedeutet, dass es ständig weiterentwickelt wird und nur begrenzte Ressourcen für neue Benutzer zur Verfügung stehen. Wenn du deine Gruppe vergrößern möchtest %{href}."
   get_in_touch_link: "Melde dich bei uns"
   email_members_in_group: "Benachrichtige die Mitglieder in %{which_group} per E-Mail"
   subject_error: "Bitte füge einen Betreff hinzu"
@@ -605,21 +602,6 @@ de:
       subject: "%{member} hat dich eingeladen %{group_name} auf Loomio beizutreten"
     to_start_group:
       subject: "Richte deine neue Loomio-Gruppe ein: %{group_name}"
-    trial_expiry:
-      header: "%{group_name}: Deine Loomio-Probezeit ist fast abgelaufen."
-      hi: "Hallo ihr,"
-      intro_html: |
-        Nur ein freundlicher Hinweis darüber, dass deine Probezeit in fünf Tagen abläuft. Wir hoffen, dass du Loomio bis jetzt genießt!⏎
-        <p>Wenn deine Probezeit abgelaufen ist, musst du deine Zahlungsdetails eingeben damit deine Gruppe Loomio weiter nutzen kann.</p>⏎
-        <a href=''>Klicke hier</a> um deine Zahlungsdetails jetzt einzurichten.</p>⏎
-        <p>Wenn du Fragen hast oder es etwas gibt, mit dem wir dir helfen können damit deine Gruppe erfolgreich mit Loomio ist, würden wir sehr gerne von dir hören.</p>⏎
-    trial_follow_up:
-      header: "%{group_name}: Wie läuft deine Loomio-Probezeit bis jetzt?"
-      hi: "Hallo ihr,"
-      intro_html: |
-        Nur ein freundlicher Hinweis darüber, dass deine Probezeit zur Hälfte verstrichen ist. Wir hoffen, dass du Loomio bis jetzt genießt! Wenn du einige Tipps haben möchtest, wie man das Meiste aus Loomio heraus holt, <a href='/help#getting-the-most-out-of-Loomio'>schaue mal hier.</a>⏎
-        <p>Du musst deine Zahlungsdaten vor Ende der Probezeit eingeben um Loomio weiter nutzen zu können. <a href=''>Klicke hier</a> um deine Zahlungsdetails jetzt einzurichten.</p>⏎
-        <p>Wenn du Fragen hast oder es etwas gibt, mit dem wir dir helfen können damit deine Gruppe erfolgreich mit Loomio ist, würden wir sehr gerne von dir hören.</p>⏎
     verification:
       header: "Du bist fast fertig!"
       intro: "Bitte klicke auf diesen Link zur Verifizierung um deine Anfrage abzuschließen:"
@@ -629,7 +611,6 @@ de:
   approve: "Zustimmen"
   author: "Autor"
   back: "Zurück"
-  by: "von"
   cancel: "Abbrechen"
   change: "Ändern"
   change_language: "Klicke hier um Loomio auf %{language} zu nutzen"

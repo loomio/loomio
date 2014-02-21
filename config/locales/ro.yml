@@ -32,9 +32,7 @@ ro:
     permission_to_invite: "Nu ai dreptul sa inviti noi membri."
     position_not_updated: "Modificarea votului nu a reusit."
     settings_not_updated: "Setarile nu au fost modificate."
-    group_request_already_verified: "Ne pare rau! Linkul de verificare pe care ai apasat este deja confirmat. Daca nu ai primit nici o confirmare in 48 de ore trimite-ne un mail: contact@loomio.org"
     group_request_already_accepted: "Ne pare rau! Aceasta invitatie este nevalida sau a fost deja acceptata."
-    group_request_contribution: "Selecteaza o categorie. Aceasta nu este o anagajament de plata, doar o informatie utila pentru a ne ajuta sa gandim modelul nostru. Multumim!"
     group_request_invalid_token: "Ne pare rau! Acesta este un token invalid"
     group_private_or_not_found: "Grupul nu a fost gasit.⏎\n⏎\nAcest grup poate fi privat. Daca cineva ti-a trimis acest link, cere-i sa te adauge in grup."
     group_already_setup: "Grupul pe care incerci sa-l creezi exista deja."
@@ -177,7 +175,6 @@ ro:
   add_new_member: "Invita un membru nou"
   invite_members_to_group: "Invita membri in %{which_group}"
   remaining_invites: "invitatii ramase"
-  need_more_invites_html: "AI nevoie de mai multe? Loomio este in faza beta, ceea ce inseamna ca este inca in dezvoltare si resursele pentru mai multi utilizatori sunt limitate. Daca vrei sa inviti mai multi membri in grupul tau %{href} vom verifica daca putem ajuta."
   get_in_touch_link: "contacteaza"
   email_members_in_group: "Trimite email membrilor din %{which_group}"
   subject_error: "Te rugam sa completezi subiectul"
@@ -537,11 +534,6 @@ ro:
       subject: "%{member} te-a invitat sa te alaturi grupului %{group_name}  pe Loomio"
     to_start_group:
       subject: "Seteaza noul tau grup Loomio:  %{group_name}"
-    trial_expiry:
-      header: "%{group_name}: Evaluarea Loomio va expira in curand."
-      hi: "Salut,"
-    trial_follow_up:
-      hi: "Salut,"
     verification:
       header: "Aproape ai terminat!"
       intro: "Te rugam apasa pe acest link de verificare pentru a finaliza request-ul:"
@@ -551,7 +543,6 @@ ro:
   approve: "Aproba"
   author: "Autor"
   back: "Inapoi"
-  by: "de catre"
   cancel: "Cancel"
   change: "Modifica"
   change_language: "Apasa aici pentru a utiliza Loomio in %{language}"

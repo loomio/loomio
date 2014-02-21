@@ -46,9 +46,7 @@ ca:
     permission_to_invite: "No tens els permisos per invitar nous membres."
     position_not_updated: "No s'ha pogut actualitzar la posició."
     settings_not_updated: "La teva configuració no s'ha actualitzat."
-    group_request_already_verified: "Ho sentim, l'enllaç de verificació ja ha estat confirmat. SI no rebs notícies nostres en 48 hores, posa´t en contacte amb nosaltres: contact@loomio.org"
     group_request_already_accepted: "Ho sentim! La invitació no és vàlida o ja ha estat acceptada."
-    group_request_contribution: "Si us plau, sel·lecciona una categoria. Això no et compromet a pagar, només ens dóna informació útil que ens ajuda a desenvolupar el nostre model. Gràcies!"
     group_request_invalid_token: "Ho sentim! Aquest símbol no és vàlid"
     group_private_or_not_found: "No s'ha trobat el grup.\n\nÉs possible que el grup sigui privat. Si algú t'ha passat aquest enllaç demana-li que et convidi al grup."
     group_already_setup: "El grup que intentes configurar ja existeix."
@@ -113,9 +111,6 @@ ca:
     proposal_deleted: "Proposta eliminada."
   datetime:
     distance_in_words:
-      less_than_x_seconds:
-        one: "segons"
-        other: "%{count} segons"
       x_seconds:
         one: "1 segon"
         other: "%{count} segons"
@@ -200,14 +195,12 @@ ca:
   setup_step_3: "convida gent al teu grup"
   invite_people: "Convida gent"
   no_invitations_button: "No et queden invitacions"
-  pending_invitations: 'Invitacions pendents'
   number_pending: '%{pending} pendent'
   and_number_pending: 'i %{pending} pendent'
   edit_memberships: 'Edita les afiliacions'
   add_new_member: "Afegeix un nou membre"
   invite_members_to_group: "Convida membres a %{which_group}"
   remaining_invites: "Invitacions restants"
-  need_more_invites_html: "Necessites més? Loomio es troba en fase beta tancada, el que significa que encara estem en procés de desenvolupament i tenim recursos recursos de suport als usuaris limitats. Si vols augmentar la mida del grup %{href}."
   get_in_touch_link: "Posar-se en contacte"
   email_members_in_group: "Envia un correu electrònic als membres de %{which_group}"
   subject_error: "Omple l'assumpte, si us plau."
@@ -652,22 +645,6 @@ ca:
       subject: "%{member} t'ha convidat a unir-te a %{group_name} a Loomio"
     to_start_group:
       subject: "Configura el teu nou grup de Loomio: %{group_name}"
-    trial_expiry:
-      header: "%{group_name}: El teu demo de Loomio gairebé s'ha acabat."
-      hi: "Ei,"
-      intro_html: |
-        Només un recordatori amistós per fer-te saber que la versió de prova caduca en 5 dies. Esperem que estiguis gaudint Loomio fins ara.
-        <p> Una vegada esgotat el període de prova, hauràs d'introduir les teves dades de pagament perquè el teu grup pugui seguir utilitzant Loomio. </p>
-        <p><a href=''> Clic aquí </a> per configurar ara les teves dades de pagament. </p>
-        <p> Si tens alguna pregunta o si hi ha alguna cosa que podem fer per ajudar el teu grup a tenir èxit amb Loomio, ens encantaria saber-ho. </p>
-    trial_follow_up:
-      header: "%{group_name}: Com va la teva demo de Loomio fins ara?"
-      hi: "Ei,"
-      intro_html: |
-        Només un recordatori amistós per fer-te saber que la versió de prova ha arribat a mig camí. Esperem que estiguis gaudint Loomio fins ara!
-        <p> Hauràs d'introduir les teves dades de pagament abans d'exaurir el termini per tal que el teu grup pugui seguir utilitzant Loomio. </p>
-        <p><a href=''> Clic aquí </a> per configurar ara les teves dades de pagament. </p>
-        <p> Si tens alguna pregunta o si hi ha alguna cosa que podem fer per ajudar el teu grup a tenir èxit amb Loomio, ens encantaria saber-ho. </p>
     verification:
       header: "Ja quasi ho tens!"
       intro: "Sisplau, fes click a aquest link per verificar la teva sol·licitud:"
@@ -677,7 +654,6 @@ ca:
   approve: "Aprovar"
   author: "Autor"
   back: "Enrere"
-  by: "per"
   cancel: "Cancelar"
   change: "Canviar"
   change_language: "Fes clic aquí per utilitzar Loomio en %{language}"
@@ -711,7 +687,6 @@ ca:
   password: "Contrasenya"
   pricing: 'Preus'
   prev: "Anterior"
-  translate: "Ajuda a traduir Loomio!"
   options: "Opcions"
   other: "Altres"
   ok_got_it: "D'acord, entesos!"
@@ -727,6 +702,7 @@ ca:
   subject: "Tema"
   terms_of_service_html: "En fer clic a %{button_text},  acceptes els  <a href='%{link_path}' target='_blank'>Termes de servei</a> de Loomio"
   thanks: "Mercès!"
+  translate: "Ajuda a traduir Loomio!"
   unlike: "No m'agrada"
   until_close: "fins al tancament"
   update: "Actualitzar"
