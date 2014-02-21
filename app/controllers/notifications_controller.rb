@@ -12,8 +12,17 @@ class NotificationsController < BaseController
   def index
     @notifications = []
     @notifications = current_user.notifications.order('created_at DESC')
-                     .includes(:event => [:eventable, :discussion])
+                     .includes(:event => [:eventable, :user])
                      .page(params[:page]).per(15)
+
+    motions = @notifications.select { |n| n.eventable.kind_of? Motion }.map(&:eventable)
+    ActiveRecord::Associations::Preloader.new(motions, [{:discussion => :group}, :author]).run
+
+    discussions = @notifications.select { |n| n.eventable.kind_of? Discussion }.map(&:eventable)
+    ActiveRecord::Associations::Preloader.new(discussions, [:group, :author]).run
+
+    comments = @notifications.select { |n| n.eventable.kind_of? Comment }.map(&:eventable)
+    ActiveRecord::Associations::Preloader.new(comments, [{:discussion => :group}, :user]).run
   end
 
   def mark_as_viewed
