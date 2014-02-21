@@ -4,14 +4,14 @@ class MotionReader < ActiveRecord::Base
   validates_presence_of :last_read_at, :motion_id, :user_id
   validates_uniqueness_of :user_id, scope: :motion_id
 
-  def self.for(user, motion)
+  def self.for(user: nil, motion: nil)
     if user.is_logged_in?
       where(user_id: user.id, motion_id: motion.id).first_or_initialize do |mr|
         mr.user = user
         mr.motion = motion
       end
     else
-      new(motion: motion, user: user)
+      new(motion: motion)
     end
   end
 

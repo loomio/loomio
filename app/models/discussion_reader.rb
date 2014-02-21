@@ -8,14 +8,14 @@ class DiscussionReader < ActiveRecord::Base
 
   scope :for_user, -> (user) { where(user_id: user.id) }
 
-  def self.for(user, discussion)
+  def self.for(user: nil, discussion: nil)
     if user.is_logged_in?
       where(user_id: user.id, discussion_id: discussion.id).first_or_initialize do |dr|
         dr.discussion = discussion
         dr.user = user
       end
     else
-      new(user:user, discussion: discussion)
+      new(discussion: discussion)
     end
   end
 
@@ -42,10 +42,6 @@ class DiscussionReader < ActiveRecord::Base
 
   def returning_user_and_unread_content_exist?
     last_read_at.present? and unread_content_exists?
-  end
-
-  def self.for(discussion, user)
-    self.first_or_create(discussion_id: discussion.id, user_id: user.id)
   end
 
   def unfollow!

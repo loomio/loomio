@@ -87,11 +87,11 @@ class DiscussionsController < GroupBaseController
       @displayed_motion = @current_motion
     end
 
-    @discussion_reader = DiscussionReader.for(current_user_or_visitor, @discussion)
+    @discussion_reader = DiscussionReader.for(user: current_user_or_visitor, discussion: @discussion)
 
-    @uses_markdown = current_user.uses_markdown?
+    @uses_markdown = current_user_or_visitor.uses_markdown?
     if @current_motion
-      @motion_reader = MotionReader.for(current_user_or_visitor, @current_motion)
+      @motion_reader = MotionReader.for(user: current_user_or_visitor, motion: @current_motion)
     end
     @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
   end
