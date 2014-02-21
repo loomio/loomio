@@ -320,6 +320,7 @@ class User < ActiveRecord::Base
   end
 
   def beta_feature_enabled?(beta_feature)
+    return false if beta_features.nil?
     beta_features.include? beta_feature
   end
 

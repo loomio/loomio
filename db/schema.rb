@@ -177,15 +177,15 @@ ActiveRecord::Schema.define(:version => 20140215042942) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",   :default => true,  :null => false
-    t.integer  "total_views",     :default => 0,     :null => false
-    t.boolean  "is_deleted",      :default => false, :null => false
-    t.integer  "comments_count",  :default => 0,     :null => false
-    t.integer  "items_count",     :default => 0,     :null => false
+    t.boolean  "uses_markdown",                :default => true,                  :null => false
+    t.integer  "total_views",                  :default => 0,                     :null => false
+    t.boolean  "is_deleted",                   :default => false,                 :null => false
+    t.integer  "comments_count",               :default => 0,                     :null => false
+    t.integer  "items_count",                  :default => 0,                     :null => false
     t.datetime "archived_at"
     t.boolean  "private"
     t.string   "key"
-    t.datetime "last_non_comment_activity_at", :default => '2014-01-29 22:35:41', :null => false
+    t.datetime "last_non_comment_activity_at", :default => '2014-02-13 00:54:32', :null => false
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -450,7 +450,7 @@ ActiveRecord::Schema.define(:version => 20140215042942) do
     t.integer  "votes_count",               :default => 0,                     :null => false
     t.integer  "outcome_author_id"
     t.string   "key"
-    t.datetime "last_non_vote_activity_at", :default => '2014-01-29 22:35:41', :null => false
+    t.datetime "last_non_vote_activity_at", :default => '2014-02-13 00:54:32', :null => false
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"

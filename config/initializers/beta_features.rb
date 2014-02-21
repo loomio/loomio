@@ -1,1 +1,1 @@
-BETA_FEATURE_NAMES = ['does_nothing']
+BETA_FEATURE_NAMES = ['activity_summary_email']
