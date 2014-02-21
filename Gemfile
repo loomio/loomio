@@ -47,7 +47,7 @@ gem 'airbrake', '~> 3.1.14'
 gem 'fog', '~> 1.19.0'
 gem 'roadie', '~> 2.4.3'
 gem 'valid_email', '~> 0.0.4'
-gem 'font-awesome-sass-rails'
+gem "font-awesome-rails"
 gem 'rabl', '~> 0.8.6'
 gem 'sequenced', '~> 1.4.0'
 gem 'closure_tree', '~> 4.3.0'

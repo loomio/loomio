@@ -43,16 +43,12 @@
     }
   }
   li.nav-item a.nav-logo-link {
-    padding: 0px 8px 1px 0px;
+    padding: 4px 8px 1px 0px;
     display: block;
   }
 
-  li.nav-item a.nav-logo-link.logged-out {
-    padding-top: 4px;
-  }
-
   li.nav-item a.nav-link {
-    color: $light-grey;
+    color: #5a5a5a;
     display: block;
     padding: 8px 8px;
     line-height: 18px;
