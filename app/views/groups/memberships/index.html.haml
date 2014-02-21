@@ -5,63 +5,19 @@
   .span3#button-container
     - if can?(:add_members, @group)
       = icon_button(href: new_group_invitation_path(@group), text: t(:invite_people), icon: '/assets/member-18.png', id: 'invite-new-members', class: 'btn-grey')
-    - if can? :email_members, @group
-      #email-members-modal.modal.hidden
-        = render "groups/email_members", :group => @group
-      = icon_button "data-toggle" => "modal", href: "#email-members-modal", text: t(:email_group_members), icon: '/assets/email.png', class: 'btn-grey'
 
-
-%table.memberships.table.table-striped
-  %thead
-    %th= t :photo
-    %th= t :name
-    -if can? :update, @group
-      %th= t :"common.email"
-    -if can? :update, @group
-      %th= t :coordinator
-      %th= t :remove
-  %tbody
-    -@memberships.each do |membership|
-      -user = membership.user
-      %tr{id: "membership-for-user-#{user.id}"}
-        %td=render 'linked_avatar', user: user
-        %td
-          %div= link_to user.name, user_path(user)
-          %div.access-level="Coordinator" if membership.admin?
-        -if can? :update, @group
-          %td=user.email
-        %td
-          -if can? :update, @group
-            - if membership.admin?
-              = link_to t(:remove_coordinator),
-                remove_admin_group_membership_path(@group, membership),
-                method: :post,
-                class: :btn,
-                :confirm => t(:confirm_remove_coordinator, which_user: user.name)
-            - else
-              = link_to t(:make_coordinator),
-                make_admin_group_membership_path(@group, membership),
-                method: :post,
-                class: :btn,
-                :confirm => t(:confirm_make_coordinator, which_user: user.name)
-            %td=link_to t(:remove),
-                group_membership_path(@group, membership),
-                method: :delete,
-                class: 'btn btn-danger',
-                :confirm => t(:confirm_remove_member)
-
-- unless @group.pending_invitations.count == 0
-  - if can?(:add_members, @group)
-    %h1=  t :pending_invitations
-    %table.pending-invitations.table.table-striped
+.row
+  .span12
+    %table.memberships.table.table-striped
       %thead
-        %th= t "common.email"
-        %th= t "invitation.invitation_link"
+        %th.span1= t :photo
+        %th.span11= t :name
       %tbody
-        - @group.pending_invitations.each do |invitation|
-          %tr
-            %td= invitation.recipient_email
-            %td= invitation_url(invitation)
-            %td= link_to(t(:cancel), group_invitation_path(@group, invitation), method: :delete, class: 'btn')
-
-    %p= t "invitation.copy"
+        -@memberships.each do |membership|
+          -user = membership.user
+          %tr{id: "membership-for-user-#{user.id}"}
+            %td=render 'avatar', user: user
+            %td
+              %div
+                = link_to user.name, user_path(user)
+              %div.access-level= t :coordinator if membership.admin?

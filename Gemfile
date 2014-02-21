@@ -80,6 +80,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet'
   gem 'guard', '~> 1.6.1'
   gem 'guard-spork', '~> 1.4.1'
   gem 'guard-rspec', '~> 2.3.3'

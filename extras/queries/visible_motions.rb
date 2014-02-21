@@ -7,7 +7,7 @@ class Queries::VisibleMotions < Delegator
       group_ids = groups.map(&:id)
     end
 
-    @relation = Motion.joins(:discussion => :group).where('groups.archived_at IS NULL')
+    @relation = Motion.joins(:discussion => :group).merge(Group.published).preload(:discussion)
 
     if @user.present?
       @relation = @relation.select('motions.*,
@@ -27,9 +27,9 @@ class Queries::VisibleMotions < Delegator
                                   (discussions.group_id IN (:user_group_ids) OR groups.privacy = 'public'
                                    OR (groups.viewable_by_parent_members = TRUE AND groups.parent_id IN (:user_group_ids)))",
                                   group_ids: group_ids,
-                                  user_group_ids: @user.group_ids)
+                                  user_group_ids: @user.cached_group_ids)
     elsif @user.present? && group_ids.empty?
-      @relation = @relation.where('discussions.group_id IN (:user_group_ids)', user_group_ids: @user.group_ids)
+      @relation = @relation.where('discussions.group_id IN (:user_group_ids)', user_group_ids: @user.cached_group_ids)
     elsif @user.blank? && !group_ids.empty?
       @relation = @relation.where("discussions.group_id IN (:group_ids) AND groups.privacy = 'public'",
                                   group_ids: group_ids)

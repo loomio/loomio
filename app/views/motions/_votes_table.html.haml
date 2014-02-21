@@ -6,7 +6,7 @@
   -if current_user_vote
     = render "motions/votes_table_vote", vote: current_user_vote, motion: motion
 
-  - motion.unique_votes.each do |vote|
+  - motion.grouped_unique_votes.each do |vote|
     - unless vote == current_user_vote
       = render "motions/votes_table_vote", vote: vote, motion: motion
 

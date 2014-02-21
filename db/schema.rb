@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140125033908) do
+ActiveRecord::Schema.define(:version => 20140215042942) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -177,11 +177,11 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",                :default => true,                  :null => false
-    t.integer  "total_views",                  :default => 0,                     :null => false
-    t.boolean  "is_deleted",                   :default => false,                 :null => false
-    t.integer  "comments_count",               :default => 0,                     :null => false
-    t.integer  "items_count",                  :default => 0,                     :null => false
+    t.boolean  "uses_markdown",   :default => true,  :null => false
+    t.integer  "total_views",     :default => 0,     :null => false
+    t.boolean  "is_deleted",      :default => false, :null => false
+    t.integer  "comments_count",  :default => 0,     :null => false
+    t.integer  "items_count",     :default => 0,     :null => false
     t.datetime "archived_at"
     t.boolean  "private"
     t.string   "key"
@@ -425,7 +425,6 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
     t.integer  "read_activity_count", :default => 0,    :null => false
   end
 
-  add_index "motion_readers", ["user_id", "motion_id", "created_at"], :name => "index_motion_readers_on_user_id_and_motion_id_and_created_at"
   add_index "motion_readers", ["user_id", "motion_id"], :name => "index_motion_readers_on_user_id_and_motion_id"
 
   create_table "motions", :force => true do |t|
@@ -455,6 +454,7 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
   end
 
   add_index "motions", ["author_id"], :name => "index_motions_on_author_id"
+  add_index "motions", ["discussion_id", "closed_at"], :name => "index_motions_on_discussion_id_and_closed_at", :order => {"closed_at"=>:desc}
   add_index "motions", ["discussion_id"], :name => "index_motions_on_discussion_id"
   add_index "motions", ["key"], :name => "index_motions_on_key", :unique => true
 
@@ -466,8 +466,10 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
     t.datetime "viewed_at"
   end
 
+  add_index "notifications", ["event_id", "user_id"], :name => "index_notifications_on_event_id_and_user_id"
   add_index "notifications", ["event_id"], :name => "index_notifications_on_event_id"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+  add_index "notifications", ["viewed_at"], :name => "index_notifications_on_viewed_at"
 
   create_table "omniauth_identities", :force => true do |t|
     t.integer  "user_id"
@@ -492,6 +494,12 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
   end
 
   add_index "subscriptions", ["group_id"], :name => "index_subscriptions_on_group_id"
+
+  create_table "test", :id => false, :force => true do |t|
+    t.integer "age"
+  end
+
+  add_index "test", ["age"], :name => "test_age_key", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                       :default => "",         :null => false
@@ -530,6 +538,7 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
     t.string   "language_preference"
     t.string   "time_zone"
     t.string   "key"
+    t.text     "beta_features"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -556,9 +565,11 @@ ActiveRecord::Schema.define(:version => 20140125033908) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "statement"
+    t.integer  "age",        :default => 0, :null => false
   end
 
+  add_index "votes", ["motion_id", "user_id", "age"], :name => "vote_age_per_user_per_motion", :unique => true
+  add_index "votes", ["motion_id", "user_id"], :name => "index_votes_on_motion_id_and_user_id"
   add_index "votes", ["motion_id"], :name => "index_votes_on_motion_id"
-  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DiscussionsController do
   let(:app_controller) { controller }
   let(:user) { stub_model(User) }
-  let(:motion) { mock_model(Motion) }
+  let(:motion) { mock_model(Motion).as_null_object }
   let(:group) { create :group }
   let(:discussion) { stub_model(Discussion,
                                 title: "Top ten",

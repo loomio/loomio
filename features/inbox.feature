@@ -83,7 +83,7 @@ Feature: Inbox
     #And there is more activity on the discussion
     #Then the discussion should not show in inbox
 
-  Scenario: User joins new group and only sees recent activity
-    When I join a group
-    And I visit the inbox
-    Then I should only see that groups recent discussions and current motions
+  #Scenario: User joins new group and only sees recent activity
+    #When I join a group
+    #And I visit the inbox
+    #Then I should only see that groups recent discussions and current motions

@@ -22,4 +22,4 @@
           =link_to image_tag("loomio-orange-header.png"), root_url
           .pull-right
             - unless controller_name == "group_requests"
-              =link_to 'Sign in', new_user_session_path, class: 'btn btn-info'
+              =link_to t(:log_in), new_user_session_path, class: 'btn btn-info'

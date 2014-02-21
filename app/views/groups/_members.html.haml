@@ -1,7 +1,9 @@
 - unless group.hide_members && (cannot? :update, group)
   .sub-panel#members-panel
     %h4
-      = "#{ t :members } (#{ group.memberships_count })"
+      = link_to group_memberships_path(group) do
+        = t :members
+        = "(#{ group.memberships_count })"
 
     %ul#users-list.clearfix
       - group.members.first(15).each do |user|

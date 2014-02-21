@@ -16,6 +16,8 @@ namespace :languages do
         languages_hash[language] += [lang_code]
       end
     end
+    p "current languages:"
+    p languages_hash
 
     def update(lang_code)
       response = HTTParty.get("http://www.transifex.com/api/2/project/loomio-1/resource/github-linked-version/translation/#{lang_code}", @options)
@@ -37,6 +39,8 @@ namespace :languages do
     languages_hash.each_pair do |language, lang_code_array|
       if language == 'pt'
         update('pt_BR')
+      elsif language == 'ga'
+        update('ga_IE')
       elsif lang_code_array.length > 1
         raise "there are multiple dialects for this language and we currently don't support this!"
       else

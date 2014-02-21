@@ -420,6 +420,7 @@ body.pages.terms_of_service {
 }
 
 .sessions.new,
+.registrations.create,
 .registrations.new {
   .terms {
     color: $mid-grey;
@@ -453,6 +454,7 @@ body.pages.terms_of_service {
       line-height: 28px;
       margin-bottom: 4px;
     }
+    .user_honeypot { display: none }
     input[type="submit"] {
       font-size: 1.4em;
       margin-bottom: .8em;
@@ -605,5 +607,3 @@ body.pages.terms_of_service {
   top: 0;
   left: 0; border: 0;
 }
-
-body.registrations.new .user_honeypot { display: none }

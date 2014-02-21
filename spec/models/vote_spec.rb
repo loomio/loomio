@@ -20,6 +20,29 @@ describe Vote do
     it {should have(2).errors_on(:position)}
   end
 
+  context 'user votes' do
+    let(:vote) { Vote.create(user: user, motion: motion, position: "no") }
+    subject { vote }
+
+    its(:age) { should == 0 }
+
+    context 'user changes their position' do
+      let(:vote2) { Vote.create(user: user, motion: motion, position: "yes") }
+      before do
+        vote
+        vote2
+      end
+
+      subject { vote2 }
+      its(:age) { should == 0 }
+
+      it "should age the first vote" do
+        vote.reload
+        vote.age.should == 1
+      end
+    end
+  end
+
   it 'should only accept valid position values' do
     vote = build(:vote, position: 'bad', motion: motion)
     vote.valid?

@@ -76,11 +76,7 @@ class Inbox
   end
 
   def groups
-    @user.memberships.where('inbox_position is not null').order(:inbox_position).map(&:group).compact
-  end
-
-  def group_ids
-    @user.memberships.where('inbox_position is not null').order(:inbox_position).pluck(:group_id)
+    @user.groups.where('memberships.inbox_position is not null').order(:inbox_position)
   end
 
   def clear_all_in_group(group)
@@ -97,7 +93,7 @@ class Inbox
     Queries::VisibleDiscussions.
       new(user: @user, groups: [group]).
       unread.
-      last_comment_after(start_date_for(group)).
+      last_comment_after(3.months.ago).
       order_by_latest_comment.readonly(false)
   end
 
