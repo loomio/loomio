@@ -31,15 +31,15 @@ class InboxController < BaseController
   def mark_as_read
     if params.has_key?(:discussion_ids)
       ids = params[:discussion_ids].split('x').map(&:to_i)
-      current_user.discussions.where(id: ids).each do |discussion|
-        discussion.as_read_by(current_user).viewed!
+      DiscussionReader.where(user_id: current_user.id, discussion_id: ids).each do |dr|
+        dr.viewed!
       end
     end
 
     if params.has_key?(:motion_ids)
       ids = params[:motion_ids].split('x').map(&:to_i)
-      current_user.motions.where(id: ids).each do |motion|
-        motion.as_read_by(current_user).viewed!
+      MotionReader.where(user_id: current_user.id, motion_id: ids).each do |mr|
+        mr.viewed!
       end
     end
 

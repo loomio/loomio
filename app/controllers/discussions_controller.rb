@@ -115,7 +115,7 @@ class DiscussionsController < GroupBaseController
     build_comment
     if DiscussionService.add_comment(@comment)
       current_user.update_attributes(uses_markdown: params[:uses_markdown])
-      @discussion.as_read_by(current_user).viewed!
+      DiscussionReader.for(user: current_user, discussion: @discussion).viewed!
     else
       head :ok and return
     end
@@ -193,10 +193,10 @@ class DiscussionsController < GroupBaseController
   end
 
   def mark_as_read
-    #if @activity and @activity.last
-      #@discussion_reader.viewed!(@activity.last.updated_at)
-      #@motion_reader.viewed!
-    #end
+    if @activity and @activity.last
+      @discussion_reader.viewed!(@activity.last.updated_at)
+      @motion_reader.viewed! if @motion_reader
+    end
   end
 
   def assign_meta_data
