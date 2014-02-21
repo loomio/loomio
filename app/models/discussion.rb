@@ -5,7 +5,7 @@ class Discussion < ActiveRecord::Base
   include ReadableUnguessableUrls
 
   scope :archived, -> { where('archived_at is not null') }
-  scope :published, -> { where(archived_at: nil) }
+  scope :published, -> { where(archived_at: nil, is_deleted: false) }
 
   scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
   scope :order_by_latest_comment, order('last_comment_at DESC')

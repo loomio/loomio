@@ -19,6 +19,14 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
+  def first_read?
+    last_read_at.blank?
+  end
+
+  def user_or_logged_out_user
+    user || LoggedOutUser.new
+  end
+
   def unread_comments_count
     #we count the discussion itself as a comment.. but it is comment 0
     if read_comments_count.nil?
@@ -50,7 +58,7 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def viewed!(age_of_last_read_item = Time.now)
-    return unless user.is_logged_in?
+    return if user.nil?
     discussion.viewed!
 
     if last_read_at.nil? or last_read_at < age_of_last_read_item

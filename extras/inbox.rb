@@ -1,5 +1,5 @@
 class Inbox
-  UNREAD_PER_GROUP_LIMIT = 20
+  UNREAD_PER_GROUP_LIMIT = 3
   attr_reader :size
   attr_reader :grouped_items
 
@@ -16,18 +16,8 @@ class Inbox
 
   def load
     @grouped_items = {}
-    @discussions = Queries::VisibleDiscussions.
-                    new(user: @user, groups: groups).
-                    unread.
-                    last_comment_after(3.months.ago).
-                    includes(:group).
-                    order_by_latest_comment.readonly(false)
-
-    @motions =     Queries::VisibleMotions.
-                    new(user: @user, groups: groups).
-                    unread.voting.
-                    includes({:discussion => :group}).
-                    order_by_latest_activity.readonly(false)
+    @discussions = unread_discussions_for(groups)
+    @motions = unread_motions_for(groups)
 
     @grouped_unread_discussions = @discussions.group_by { |d| d.group }
     @grouped_unread_motions = @motions.group_by { |m| m.group }
@@ -39,7 +29,7 @@ class Inbox
       next if discussions.nil?
 
       limited_discussions = discussions.first(unread_per_group_limit)
-      @unread_discussions_count_per_group[group] = limited_discussions.size
+      @unread_discussions_count_per_group[group] = discussions.size
       motions = @grouped_unread_motions.fetch(group, [])
 
       next if limited_discussions.empty? && motions.empty?
@@ -104,21 +94,33 @@ class Inbox
 
   def clear_all_in_group(group)
     unread_discussions_for(group).each do |discussion|
-      discussion.as_read_by(@user).viewed!
+      DiscussionReader.for(user: @user, discussion: discussion).viewed!
     end
 
     unread_motions_for(group).each do |motion|
-      motion.as_read_by(@user).viewed!
+      MotionReader.for(user: @user, motion: motion).viewed!
     end
+  end
+
+  def unread_discussions_for(group_or_groups)
+    Queries::VisibleDiscussions.
+      new(user: @user, groups: group_or_groups).
+      unread.
+      last_comment_after(3.months.ago).
+      includes(:group).
+      order_by_latest_comment.readonly(false)
   end
 
   def unvoted_motions_for(group)
     Queries::UnvotedMotions.for(@user, group)
   end
 
-  def unread_motions_for(group)
-    Queries::VisibleMotions.new(user: @user, groups: [group]).unread.voting.
-                                order_by_latest_activity.readonly(false)
+  def unread_motions_for(group_or_groups)
+    Queries::VisibleMotions.
+                    new(user: @user, groups: group_or_groups).
+                    unread.voting.
+                    includes({:discussion => :group}).
+                    order_by_latest_activity.readonly(false)
   end
 
   def start_date_for(group)

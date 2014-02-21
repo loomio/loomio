@@ -3,7 +3,7 @@ class Queries::VisibleDiscussions < Delegator
     @user = user
 
     if groups.present?
-      group_ids = groups.map(&:id)
+      group_ids = Array(groups).map(&:id)
     end
 
     @relation = Discussion.joins(:group).merge(Group.published).published
