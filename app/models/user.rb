@@ -184,17 +184,6 @@ class User < ActiveRecord::Base
     notifications.unviewed
   end
 
-  # Returns most recent notifications
-  #   lower_limit - (minimum # of notifications returned)
-  #   upper_limit - (maximum # of notifications returned)
-  def recent_notifications(lower_limit=10, upper_limit=25)
-    if unviewed_notifications.count < lower_limit
-      notifications.limit(lower_limit)
-    else
-      unviewed_notifications.limit(upper_limit)
-    end
-  end
-
   def mark_notifications_as_viewed!(latest_viewed_id)
     notifications.where('id <= ?', latest_viewed_id).
       update_all(:viewed_at => Time.zone.now)
