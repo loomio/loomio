@@ -5,12 +5,15 @@
   -marked_first_unread = false
   - items.each do |event|
     - next if event.kind == 'new_discussion'
-    - if user_has_not_read_event?(event) and not marked_first_unread
-      - marked_first_unread = true
-      .shifted_anchor#latest-activity
-      .dog-ear#js-dog-ear
-        &nbsp;
-      .new-activity-divider
+    -unless @discussion_reader.first_read?
+      - unless marked_first_unread
+        - unless @discussion_reader.has_read?(event)
+          - unless event.belongs_to? current_user_or_visitor
+            - marked_first_unread = true
+            .shifted_anchor#latest-activity
+            .dog-ear#js-dog-ear
+              &nbsp;
+            .new-activity-divider
 
     %li.activity-item-container
       - if event.kind == 'new_comment'

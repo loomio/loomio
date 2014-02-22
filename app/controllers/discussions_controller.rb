@@ -78,25 +78,22 @@ class DiscussionsController < GroupBaseController
       @last_collaborator = User.find(@discussion.originator.to_i)
     end
     @group = GroupDecorator.new(@discussion.group)
-    @vote = Vote.new
     @current_motion = @discussion.current_motion
     assign_meta_data
+
     if params[:proposal]
       @displayed_motion = @discussion.motions.find(params[:proposal])
     elsif @current_motion
       @displayed_motion = @current_motion
     end
 
-    if current_user
-      @uses_markdown = current_user.uses_markdown?
-      if @current_motion
-        @current_motion.as_read_by(current_user).viewed!
-      end
-      @reader = @discussion.as_read_by(current_user)
-      @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
-    else
-      @activity = @discussion.activity.page(params[:page]).per(Discussion::PER_PAGE)
+    @discussion_reader = DiscussionReader.for(user: current_user_or_visitor, discussion: @discussion)
+
+    @uses_markdown = current_user_or_visitor.uses_markdown?
+    if @current_motion
+      @motion_reader = MotionReader.for(user: current_user_or_visitor, motion: @current_motion)
     end
+    @activity = @discussion.activity.page(requested_or_first_unread_page).per(Discussion::PER_PAGE)
   end
 
   def move
@@ -118,7 +115,7 @@ class DiscussionsController < GroupBaseController
     build_comment
     if DiscussionService.add_comment(@comment)
       current_user.update_attributes(uses_markdown: params[:uses_markdown])
-      @discussion.as_read_by(current_user).viewed!
+      DiscussionReader.for(user: current_user, discussion: @discussion).viewed!
     else
       head :ok and return
     end
@@ -196,8 +193,9 @@ class DiscussionsController < GroupBaseController
   end
 
   def mark_as_read
-    if @reader and @activity and @activity.last
-      @reader.viewed!(@activity.last.updated_at)
+    if @activity and @activity.last
+      @discussion_reader.viewed!(@activity.last.updated_at)
+      @motion_reader.viewed! if @motion_reader
     end
   end
 

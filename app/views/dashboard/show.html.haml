@@ -1,23 +1,11 @@
 - if current_user.parent_groups.present?
-  =render '/groups/title', group: nil
+  .group-title
+    %h1.home-title
+      = link_to t(:home), "/"
   .clearfix
     = icon_button(href: new_discussion_path, text: t(:start_a_discussion), icon: '/assets/topic-18.png', id: 'start-new-discussion', class: 'btn-grey')
   .row.main-content
-    %section.span9
-      %ul.selector-list.bordered
-        #discussions-with-motions
-          - @discussions_with_open_motions.each do |discussion|
-            %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil, discussion_surely_has_no_current_motion: false
-            - if discussion == @discussions_with_open_motions.last
-              .discussion-with-motion-divider
-      %ul.selector-list
-        #discussion-list
-          - @discussions_without_open_motions.each do |discussion|
-            %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: nil, discussion_surely_has_no_current_motion: true
-      - if current_user && current_user.discussions.count == 0
-        %li.empty-list-message.hidden= t(:empty_discussion_index)
-
-      = paginate @discussions_without_open_motions, :window => 3
+    =render 'discussions/discussion_list'
 
     %section.span3
       =render 'groups'
