@@ -39,7 +39,7 @@ class InboxController < BaseController
 
     if params.has_key?(:motion_ids)
       ids = params[:motion_ids].split('x').map(&:to_i)
-      motions = @user.motions.published.where(id: ids)
+      motions = current_user.motions.published.where(id: ids)
       motions.each do |motion|
         MotionReader.for(user: current_user, motion: motion).viewed!
       end
