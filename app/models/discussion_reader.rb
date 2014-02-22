@@ -6,19 +6,25 @@ class DiscussionReader < ActiveRecord::Base
   validates_presence_of :discussion_id, :user_id
   validates_uniqueness_of :user_id, :scope => :discussion_id
 
-  def self.load_from_joined_discussion(discussion)
-    dv = new
-    dv.id = discussion[:viewer_id].to_i
-    dv.discussion_id = discussion.id.to_i
-    dv.user_id = discussion[:viewer_user_id].to_i
-    dv.read_comments_count = discussion[:read_comments_count].to_i
-    dv.read_items_count = discussion[:read_items_count].to_i
-    dv.last_read_at = discussion[:last_read_at]
-    dv.following = discussion[:viewer_following]
-    dv.discussion = discussion
-    dv.instance_variable_set :@attributes_cache, dv.attributes
-    dv.instance_variable_set :@new_record, false
-    dv
+  scope :for_user, -> (user) { where(user_id: user.id) }
+
+  def self.for(user: nil, discussion: nil)
+    if user.is_logged_in?
+      where(user_id: user.id, discussion_id: discussion.id).first_or_initialize do |dr|
+        dr.discussion = discussion
+        dr.user = user
+      end
+    else
+      new(discussion: discussion)
+    end
+  end
+
+  def first_read?
+    last_read_at.blank?
+  end
+
+  def user_or_logged_out_user
+    user || LoggedOutUser.new
   end
 
   def unread_comments_count
@@ -30,11 +36,11 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
-  def unread?(time)
-    if self.last_read_at == nil
-      false
+  def has_read?(event)
+    if last_read_at.present?
+      self.last_read_at > event.updated_at
     else
-      self.last_read_at < time
+      false
     end
   end
 
@@ -46,16 +52,13 @@ class DiscussionReader < ActiveRecord::Base
     last_read_at.present? and unread_content_exists?
   end
 
-  def self.for(discussion, user)
-    self.first_or_create(discussion_id: discussion.id, user_id: user.id)
-  end
-
   def unfollow!
     self.following = false
     save!
   end
 
   def viewed!(age_of_last_read_item = Time.now)
+    return if user.nil?
     discussion.viewed!
 
     if last_read_at.nil? or last_read_at < age_of_last_read_item

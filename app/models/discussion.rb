@@ -5,7 +5,7 @@ class Discussion < ActiveRecord::Base
   include ReadableUnguessableUrls
 
   scope :archived, -> { where('archived_at is not null') }
-  scope :published, -> { where(archived_at: nil) }
+  scope :published, -> { where(archived_at: nil, is_deleted: false) }
 
   scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
   scope :order_by_latest_comment, order('last_comment_at DESC')
@@ -36,6 +36,7 @@ class Discussion < ActiveRecord::Base
   pg_search_scope :search, against: [:title, :description],
     using: {tsearch: {dictionary: "english"}}
 
+  delegate :name, :to => :group, :prefix => :group
   delegate :users, :to => :group, :prefix => :group
   delegate :full_name, :to => :group, :prefix => :group
   delegate :email, :to => :author, :prefix => :author
@@ -43,16 +44,8 @@ class Discussion < ActiveRecord::Base
 
   before_create :set_last_comment_at
 
-  def as_read_by(user)
-    if user.blank?
-      new_discussion_reader_for(nil)
-    elsif joined_to_discussion_reader?
-      joined_or_new_discussion_reader_for(user)
-    else
-      find_or_new_discussion_reader_for(user)
-    end
-  end
-
+  # don't use this.. it needs to be removed.
+  # use DiscussionService.add_comment directly
   def add_comment(author, body, options = {})
     options[:body] = body
     comment = Comment.new(options)
@@ -189,36 +182,6 @@ class Discussion < ActiveRecord::Base
 
   def set_last_comment_at
     self.last_comment_at ||= Time.now
-  end
-
-  def joined_or_new_discussion_reader_for(user)
-    if user.id == read_attribute(:viewer_user_id).to_i
-      DiscussionReader.load_from_joined_discussion(self)
-    else
-      new_discussion_reader_for(user)
-    end
-  end
-
-  def joined_to_discussion_reader?
-    read_attribute(:joined_to_discussion_reader).present?
-  end
-
-  def find_or_new_discussion_reader_for(user)
-    if self.discussion_readers.where(:user_id => user.id).exists?
-      self.discussion_readers.where(user_id: user.id).first
-    else
-      discussion_reader = self.discussion_readers.build
-      discussion_reader.discussion = self
-      discussion_reader.user = user
-      discussion_reader
-    end
-  end
-
-  def new_discussion_reader_for(user)
-    discussion_reader = DiscussionReader.new
-    discussion_reader.discussion = self
-    discussion_reader.user = user
-    discussion_reader
   end
 
   def fire_edit_title_event(user)

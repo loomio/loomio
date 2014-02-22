@@ -5,7 +5,7 @@
         -values = item.vote_counts.values
         .activity-container
           %span.count.unread-votes-count
-            - count = item.as_read_by(current_user).unread_activity_count
+            - count = @motion_reader_cache.get_for(item).unread_activity_count
             - if count != 0
               =count
         .motion-sparkline

@@ -2,24 +2,24 @@ module DiscussionsHelper
   include Twitter::Extractor
   include Twitter::Autolink
 
+  def no_discussions_available?
+    (@discussion_readers_with_open_motions.size + @discussion_readers_without_open_motions.size) == 0
+  end
+
   def enough_activity_for_jump_link?
     @discussion.items_count > 3
   end
 
-  def discussion_activity_count_for(discussion, user)
-    discussion.as_read_by(user).unread_comments_count
-  end
-
   def path_of_latest_activity
-    if current_page == @reader.first_unread_page
+    if current_page == @discussion_reader.first_unread_page
       '#latest-activity'.html_safe
     else
-      discussion_path(@discussion, page: @reader.first_unread_page, anchor: 'latest-activity')
+      discussion_path(@discussion, page: @discussion_reader.first_unread_page, anchor: 'latest-activity')
     end
   end
 
   def path_of_add_comment
-    if current_page == @reader.first_unread_page
+    if current_page == @discussion_reader.first_unread_page
       '#comment-input'
     else
       if actual_total_pages == 1
@@ -30,31 +30,11 @@ module DiscussionsHelper
     end
   end
 
-  def enabled_icon_class_for(discussion, user)
-    if discussion.as_read_by(user).unread_content_exists?
-      "enabled-icon"
-    else
-      "disabled-icon"
-    end
-  end
-
-  def css_class_unread_discussion_activity_for(page_group, discussion, user)
-    css_class = "discussion-preview"
-    css_class += " showing-group" if (not discussion.group.parent_id.nil?) && (page_group && (page_group.parent_id.nil?))
-    css_class += " unread" if discussion.as_read_by(user).unread_content_exists?
-    css_class
-  end
-
-  def css_class_for_closing_at(motion)
-    css_class = "popover-close-date label"
-
-    if motion.voting?
-      hours_left = (((Time.now - motion.closing_at) / 60) / 60) * -1
-      css_class += " color-urgent" if hours_left < 30
-      css_class += " color-warning" if (hours_left >= 3) && (hours_left <= 24)
-      css_class += " color-ok" if hours_left > 24
-    end
-    css_class
+  def css_classes_for_discussion_preview(discussion, discussion_reader)
+    class_names = []
+    class_names << 'showing-group' unless @group == discussion.group
+    class_names << 'unread' if discussion_reader.unread_content_exists?
+    class_names.join(' ')
   end
 
   def add_mention_links(comment)
@@ -93,16 +73,16 @@ module DiscussionsHelper
     if params[:page]
       params[:page].to_i
     else
-      @reader.first_unread_page
+      @discussion_reader.first_unread_page
     end
   end
 
   def user_has_not_read_event?(event)
-    if @reader and @reader.last_read_at.present?
+    if @discussion_reader.last_read_at.present?
       if event.belongs_to?(current_user)
         false
       else
-        @reader.last_read_at < event.updated_at
+        @discussion_reader.last_read_at < event.updated_at
       end
     else
       false
@@ -126,7 +106,7 @@ module DiscussionsHelper
     description = t(:'simple_form.labels.discussion.privacy_private_description', group: group)
     options << ["<span class='discussion-privacy-setting-header'><i class='icon-lock'></i>#{header}<br /><p>#{description}</p>".html_safe, true ]
   end
-  
+
   def current_language
     Translation.language I18n.locale.to_s
   end

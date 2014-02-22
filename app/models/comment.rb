@@ -16,7 +16,7 @@ class Comment < ActiveRecord::Base
   validate :attachments_owned_by_author
 
   after_initialize :set_defaults
-  default_scope include: :user
+  default_scope include: [:user, :attachments, :discussion]
 
   delegate :name, :to => :user, :prefix => :user
   delegate :email, :to => :user, :prefix => :user
