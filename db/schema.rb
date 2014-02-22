@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140215042942) do
+ActiveRecord::Schema.define(:version => 20140220222310) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20140215042942) do
     t.text     "message"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "destination", :default => "contact@loomio.org"
   end
 
   create_table "contributions", :force => true do |t|

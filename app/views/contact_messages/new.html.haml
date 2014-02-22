@@ -9,6 +9,7 @@
             = f.input :name, label: "Your name"
             = f.input :email, label: "Your email address"
             = f.input :message, label: "Your message"
+            = f.input :destination, label: "Where shall we send your message?", as: :select, collection: @contact_message.class::DESTINATIONS, include_blank: false
             = f.submit :submit, :value => "Send message", class: 'btn btn-info btn-large', data: { disable_with: "Send message" }
         .span5.offset1#direct_contact
           %p Fill out this form, or send an email to <a href="mailto:contact@loomio.org">contact@loomio.org</a>
