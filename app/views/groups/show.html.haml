@@ -11,31 +11,13 @@
     = request_membership_button(@group)
 
 .row.main-content
-  %section.span9
-    %ul.selector-list.bordered
-      #discussions-with-motions
-        - @discussions_with_open_motions.each do |discussion|
-          %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group, discussion_surely_has_no_current_motion: false
-          - if discussion == @discussions_with_open_motions.last
-            .discussion-with-motion-divider
-    #group-discussions
-      %div{ class: "group_#{@group.id}" }
-        %ul.selector-list
-          #discussion-list
-            - @discussions_without_open_motions.each do |discussion|
-              %li.selector-item= render '/discussions/discussion_preview', discussion: discussion, this_group: @group, discussion_surely_has_no_current_motion: true
-        - if user_sees_private_discussions_message?(current_user, @group)
-          = t :private_group_discussion_display
-        - elsif (@discussions_without_open_motions + @discussions_with_open_motions).count == 0
-          %li.empty-list-message= t :empty_discussion_index_group
-
-        = paginate @discussions_without_open_motions, :window => 3
+  =render 'discussions/discussion_list'
   %section.span3
     =render 'setup_next_steps' if show_next_steps?(@group)
     =render 'subscription_prompt' if show_subscription_prompt?(@group)
     =render 'groups/description', group: @group
     =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
-    - if @group.privacy == 'public' || @group.members.include?(current_user)
+    - if can? :show, @group
       .sub-panel.previous-discussions-panel
         %h4= t(:previous_decisions)
         = link_to t(:see_previous_decisions), group_motions_path(@group), class: 'bottom-panel-link'

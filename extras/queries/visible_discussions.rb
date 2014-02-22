@@ -3,22 +3,13 @@ class Queries::VisibleDiscussions < Delegator
     @user = user
 
     if groups.present?
-      group_ids = groups.map(&:id)
+      group_ids = Array(groups).map(&:id)
     end
 
-    @relation = Discussion.joins(:group).merge(Group.published).published.preload(:group, :current_motion)
+    @relation = Discussion.joins(:group).merge(Group.published).published
 
     if @user.present?
-      @relation = @relation.select('discussions.*,
-                                    1 as joined_to_discussion_reader,
-                                    dv.id as viewer_id,
-                                    dv.user_id as viewer_user_id,
-                                    dv.read_comments_count as read_comments_count,
-                                    dv.read_items_count as read_items_count,
-                                    dv.last_read_at as last_read_at,
-                                    dv.following as viewer_following').
-                              joins("LEFT OUTER JOIN discussion_readers dv ON
-                                    dv.discussion_id = discussions.id AND dv.user_id = #{@user.id}")
+      @relation = @relation.joins("LEFT OUTER JOIN discussion_readers dv ON dv.discussion_id = discussions.id AND dv.user_id = #{@user.id}")
     end
 
     if @user.present? && group_ids.present?

@@ -1,20 +1,47 @@
-- if discussion_surely_has_no_current_motion
-  - current_motion = nil
-- else
-  - current_motion = discussion.current_motion
+- discussion_reader = @discussion_reader_cache.get_for(discussion)
+- unread_comments_count = discussion_reader.unread_comments_count
+- motion = discussion.current_motion
+- motion_reader = @motion_reader_cache.get_for(motion) if motion
+- last_vote = @last_vote_cache.get_for(motion) if motion
 
 .clearfix
-  %div{ class: css_class_unread_discussion_activity_for(this_group, discussion, current_user), id: "discussion-preview-#{discussion.id}" }
+  %div.discussion-preview{ class: css_classes_for_discussion_preview(discussion, discussion_reader) }
     %a.selector-discussion-link{ href: discussion_path(discussion) }
-      = render '/discussions/preview_vote_icon', motion: current_motion, user: current_user, group: this_group
+      - if user_signed_in? && motion
+        .vote-icon
+          - if can?(:vote, motion)
+            %div{:class => 'activity-icon ' + vote_icon_name(last_vote.position)}
+
       .discussion-title
         = truncate(discussion.title, :length => 60, :separator => ' ')
-        .group-name= DiscussionDecorator.new(discussion).display_group_name(this_group)
-      = render '/discussions/preview_motion_activity', current_motion: current_motion
-      = render '/discussions/preview_discussion_activity', discussion: discussion, user: current_user
+        - if @group.nil?
+          .group-name= GroupDecorator.new(discussion.group).fancy_name
+        - elsif @group != discussion.group
+          .group-name= discussion.group_name
+
+      - if motion
+        .icon.shim{:id => "graph_#{motion.id}"}
+          .motion-sparkline
+            -values = motion.vote_counts.values
+            -if values.sum == 0
+              0,0,0,0,1
+            -else
+              =values.join(',')
+          - if motion.voting? && motion_reader.unread_activity_count > 0
+            %span.activity-count.label.label-info
+              = motion_reader.unread_activity_count
+      - else
+        .large-icon.pie-icon.activity-icon
+
+      - if unread_comments_count == 0
+        .large-icon.discussion-icon.activity-icon.disabled-icon
+      -else
+        .large-icon.discussion-icon.activity-icon.enabled-icon
+          %span.activity-count.label.label-info
+            = unread_comments_count
+
       .discussion-date-info
-        -if current_motion
-          - if discussion.current_motion_closing_at
-            .proposal-close-date= "#{time_ago_in_words(discussion.current_motion_closing_at)} until close"
+        -if motion
+          .proposal-close-date= "#{time_ago_in_words(motion.closing_at)} until close"
         - else
           .latest-comment-time= "#{t('ago', :quantity_of_time => time_ago_in_words(discussion.last_comment_at))}"
