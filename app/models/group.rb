@@ -10,7 +10,6 @@ class Group < ActiveRecord::Base
   PRIVACY_CATEGORIES = ['public', 'private', 'hidden']
   INVITER_CATEGORIES = ['members', 'admins']
   PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
-
   validates_presence_of :name
   validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
   validates_inclusion_of :privacy, in: PRIVACY_CATEGORIES
@@ -183,20 +182,20 @@ class Group < ActiveRecord::Base
   # would be nice if the following 4 methods were reduced to just one - is_sub_group
   # parent and top_level are the less nice terms
   #
+  def is_a_parent?
+    parent_id.blank?
+  end
+
   def is_top_level?
-    parent.blank?
+    is_a_parent?
   end
 
   def is_sub_group?
-    parent.present?
-  end
-
-  def is_a_parent?
-    parent.nil?
+    !is_a_parent?
   end
 
   def is_a_subgroup?
-    parent.present?
+    is_sub_group?
   end
 
   def admin_email
