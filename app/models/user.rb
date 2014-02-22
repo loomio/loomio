@@ -106,12 +106,16 @@ class User < ActiveRecord::Base
   #scope :unviewed_notifications, notifications.where('viewed_at IS NULL')
   #
 
+  def is_logged_in?
+    true
+  end
+
   def cached_group_ids
     @cached_group_ids ||= group_ids
   end
 
   def top_level_groups
-    parents = groups.parents_only.order(:name)
+    parents = groups.parents_only.order(:name).includes(:children)
     orphans = groups.where('parent_id not in (?)', parents.map(&:id))
     (parents.to_a + orphans.to_a).sort{|a, b| a.full_name <=> b.full_name }
   end
@@ -127,9 +131,9 @@ class User < ActiveRecord::Base
   def name_and_email
     "#{name} <#{email}>"
   end
-  
+
   def primary_language
-    language_preference.split(',').first if language_preference    
+    language_preference.split(',').first if language_preference
   end
 
   # Provide can? and cannot? as methods for checking permissions
@@ -178,17 +182,6 @@ class User < ActiveRecord::Base
 
   def unviewed_notifications
     notifications.unviewed
-  end
-
-  # Returns most recent notifications
-  #   lower_limit - (minimum # of notifications returned)
-  #   upper_limit - (maximum # of notifications returned)
-  def recent_notifications(lower_limit=10, upper_limit=25)
-    if unviewed_notifications.count < lower_limit
-      notifications.limit(lower_limit)
-    else
-      unviewed_notifications.limit(upper_limit)
-    end
   end
 
   def mark_notifications_as_viewed!(latest_viewed_id)

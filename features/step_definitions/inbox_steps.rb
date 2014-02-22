@@ -88,7 +88,7 @@ Then(/^I should see the discussion has (\d+) unread$/) do |arg1|
 end
 
 Given(/^I have read the discussion but there is a new comment$/) do
-  @discussion.as_read_by(@user).viewed!
+  DiscussionReader.for(user:@user, discussion: @discussion).viewed!
   @discussion.group.add_member!(@discussion.author)
   @comment = Comment.new(body: 'hi')
   @comment.author = @user

@@ -7,6 +7,7 @@ class Motion < ActiveRecord::Base
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   belongs_to :outcome_author, :class_name => 'User'
   belongs_to :discussion
+  # has_one :group, through: :discussion
   has_many :votes, :dependent => :destroy, include: :user
   has_many :unique_votes, class_name: 'Vote', conditions: { age: 0 }, include: :user
   has_many :did_not_votes, :dependent => :destroy, include: :user
