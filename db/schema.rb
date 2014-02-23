@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140222070435) do
+ActiveRecord::Schema.define(:version => 20140222234734) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -551,7 +551,8 @@ ActiveRecord::Schema.define(:version => 20140222070435) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "statement"
-    t.integer  "age",        :default => 0, :null => false
+    t.integer  "age",              :default => 0, :null => false
+    t.integer  "previous_vote_id"
   end
 
   add_index "votes", ["motion_id", "user_id", "age"], :name => "vote_age_per_user_per_motion", :unique => true
