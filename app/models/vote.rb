@@ -16,9 +16,10 @@ class Vote < ActiveRecord::Base
   end
 
   POSITIONS = %w[yes abstain no block]
-
+  default_scope include: :previous_vote
   belongs_to :motion, counter_cache: true
   belongs_to :user
+  belongs_to :previous_vote, class_name: 'Vote'
   has_many :events, :as => :eventable, :dependent => :destroy
 
   validates_presence_of :motion, :user, :position
@@ -38,7 +39,7 @@ class Vote < ActiveRecord::Base
   delegate :name, :to => :motion, :prefix => :motion
   delegate :name, :full_name, :to => :group, :prefix => :group
 
-  before_create :age_previous_votes
+  before_create :age_previous_votes, :associate_previous_vote
   after_save :update_motion_vote_counts, :send_notifications
 
   after_create :update_motion_last_vote_at, :fire_new_vote_event
@@ -53,11 +54,7 @@ class Vote < ActiveRecord::Base
   end
 
   def position_to_s
-    return I18n.t(self.position, scope: [:position_verbs, :past_tense])
-  end
-
-  def previous_vote
-    motion.votes.where(user_id: user.id, age: age+1).first
+    I18n.t(self.position, scope: [:position_verbs, :past_tense])
   end
 
   def previous_position
@@ -65,9 +62,12 @@ class Vote < ActiveRecord::Base
   end
 
   private
+  def associate_previous_vote
+    self.previous_vote = motion.votes.where(user_id: user_id, age: age + 1).first
+  end
 
   def age_previous_votes
-    motion.votes.where(user_id: user.id).update_all('age = age + 1')
+    motion.votes.where(user_id: user_id).update_all('age = age + 1')
   end
 
   def update_motion_vote_counts
