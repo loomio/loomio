@@ -48,6 +48,12 @@ Given /^I am subscribed to group notifications about "(.*?)"$/ do |arg1|
   membership.update_attribute(:subscribed_to_notification_emails, true)
 end
 
+Given(/^I am testing all activity summary email beta feature$/) do
+  visit beta_features_path
+  check 'activity_summary_email'
+  click_on 'Update beta features'
+end
+
 When /^I click on Monday$/ do
   check 'email_preferences_days_to_send_monday'
 end

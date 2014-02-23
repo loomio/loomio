@@ -12,7 +12,7 @@
       =f.input :subscribed_to_proposal_closure_notifications, :as => :boolean, :inline_label => t("email_preferences_form.proposal_closing_soon_subscription"), :label => false
       =f.input :subscribed_to_mention_notifications, :as => :boolean, :inline_label =>  t("email_preferences_form.mentions_subscription"), :label => false
 
-      - if @current_user.beta_feature_enabled?('activity_summary_email')
+      - if @email_preferences.user.beta_feature_enabled?('activity_summary_email')
         %h2= t("email_preferences_form.activity_summary_email")
         -if params[:unsubscribe_token]
           =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]

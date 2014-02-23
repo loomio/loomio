@@ -8,6 +8,7 @@ Feature: Email preferences page
     And there is a group "Pals"
     And "Ben" belongs to "Pals"
     And I login as "ben@example.org"
+    And I am testing all activity summary email beta feature
 
   Scenario: User enables activity summary email by clicking a day of the week
     When I visit the email preferences page
