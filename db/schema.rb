@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140215042942) do
+ActiveRecord::Schema.define(:version => 20140222070435) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -186,7 +186,6 @@ ActiveRecord::Schema.define(:version => 20140215042942) do
     t.boolean  "private"
     t.string   "key"
     t.datetime "last_non_comment_activity_at", :default => '2014-02-13 00:54:32', :null => false
-  end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
   add_index "discussions", ["group_id"], :name => "index_discussions_on_group_id"
@@ -390,6 +389,7 @@ ActiveRecord::Schema.define(:version => 20140215042942) do
   end
 
   add_index "membership_requests", ["email"], :name => "index_membership_requests_on_email"
+  add_index "membership_requests", ["group_id", "response"], :name => "index_membership_requests_on_group_id_and_response"
   add_index "membership_requests", ["group_id"], :name => "index_membership_requests_on_group_id"
   add_index "membership_requests", ["name"], :name => "index_membership_requests_on_name"
   add_index "membership_requests", ["requestor_id"], :name => "index_membership_requests_on_requestor_id"

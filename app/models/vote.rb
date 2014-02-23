@@ -28,6 +28,7 @@ class Vote < ActiveRecord::Base
   validates :position, :statement, closable: true
 
   scope :for_user, lambda {|user_id| where(:user_id => user_id)}
+  scope :most_recent, -> { where age: 0  }
 
   delegate :name, :to => :user, :prefix => :user
   delegate :group, :discussion, :to => :motion

@@ -307,10 +307,6 @@ ga:
       closes_in: "Dúnann sé i gceann"
       closing_in_24_hours: "Ag dúnadh i gceann 24 uair an chloig"
       summary: "Achoimre"
-    trial_expiry:
-      hi: "Hóra,"
-    trial_follow_up:
-      hi: "Hóra"
     verification:
       header: "Tá beagnach críochnaithe agat!"
   about_loomio: "Maidir le Loomio"

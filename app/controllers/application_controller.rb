@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :initialize_search_form
   around_filter :user_time_zone, if: :current_user
   helper :analytics_data
+  helper_method :current_user_or_visitor
 
   rescue_from CanCan::AccessDenied do |exception|
     if current_user
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def current_user_or_visitor
+    current_user || LoggedOutUser.new
+  end
 
   def store_location
     session['user_return_to'] = request.original_url

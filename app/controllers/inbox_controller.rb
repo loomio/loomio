@@ -1,6 +1,7 @@
 class InboxController < BaseController
   def index
     load_inbox
+    build_discussion_index_caches
     render layout: false if request.xhr?
   end
 
@@ -30,21 +31,23 @@ class InboxController < BaseController
   def mark_as_read
     if params.has_key?(:discussion_ids)
       ids = params[:discussion_ids].split('x').map(&:to_i)
-      current_user.discussions.where(id: ids).each do |discussion|
-        discussion.as_read_by(current_user).viewed!
+      discussions = current_user.discussions.published.where(id: ids)
+      discussions.each do |discussion|
+        DiscussionReader.for(user: current_user, discussion: discussion).viewed!
       end
     end
 
     if params.has_key?(:motion_ids)
       ids = params[:motion_ids].split('x').map(&:to_i)
-      current_user.motions.where(id: ids).each do |motion|
-        motion.as_read_by(current_user).viewed!
+      motions = current_user.motions.where(id: ids)
+      motions.each do |motion|
+        MotionReader.for(user: current_user, motion: motion).viewed!
       end
     end
 
     redirect_back_or_head_ok
   end
-  
+
   def mark_all_as_read
     @inbox = Inbox.new(current_user)
     group = current_user.groups.find(params[:id])
@@ -59,6 +62,38 @@ class InboxController < BaseController
   end
 
   private
+
+  def build_discussion_index_caches
+    @discussions = []
+    @motions = []
+    @inbox.items_by_group do |group, items|
+      items.each do |item|
+        if item.kind_of? Discussion
+          @discussions << item
+        elsif item.kind_of? Motion
+          @motions << item
+        end
+      end
+    end
+
+    if current_user
+      @discussion_readers = DiscussionReader.where(user_id: current_user.id,
+                                                    discussion_id: @discussions.map(&:id)).includes(:discussion)
+      @motion_readers = MotionReader.where(user_id: current_user.id,
+                                           motion_id: @motions.map(&:id) ).includes(:motion)
+      @last_votes = Vote.most_recent.where(user_id: current_user, motion_id: @motions.map(&:id))
+    else
+      @discussion_readers =[]
+      @motion_readers = []
+      @last_votes = []
+    end
+
+    @discussion_reader_cache = DiscussionReaderCache.new(current_user, @discussion_readers)
+    @motion_reader_cache = MotionReaderCache.new(current_user, @motion_readers)
+
+    @last_vote_cache = VoteCache.new(current_user, @last_votes)
+  end
+
   def redirect_back_or_head_ok
     if request.xhr?
       load_inbox

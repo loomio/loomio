@@ -1,4 +1,0 @@
-- if user_signed_in? && motion
-  .vote-icon
-    - if user.group_membership(group) || group.nil?
-      %div{:class => 'activity-icon ' + vote_icon_name(motion.last_position_by_user(user))}

@@ -25,8 +25,7 @@ end
 Given(/^there is a discussion that I have previously viewed$/) do
   step 'I visit the discussion page'
   step 'there are two comments'
-  reader = @discussion.as_read_by(@user)
-  reader.viewed!
+  DiscussionReader.for(user: @user, discussion: @discussion).viewed!
 end
 
 
@@ -56,8 +55,7 @@ end
 
 Given(/^I have previously viewed the second page of the discussion$/) do
   @discussion.reload
-  reader = @discussion.as_read_by(@user)
-  reader.viewed!
+  DiscussionReader.for(user: @user, discussion: @discussion).viewed!
 end
 
 Given(/^now there is new activity$/) do
