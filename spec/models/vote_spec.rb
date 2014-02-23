@@ -40,6 +40,10 @@ describe Vote do
         vote.reload
         vote.age.should == 1
       end
+
+      it 'the second vote should associate the first as the previous' do
+        vote2.previous_vote_id.should == vote.id
+      end
     end
   end
 
