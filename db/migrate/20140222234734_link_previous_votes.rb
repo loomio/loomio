@@ -1,11 +1,5 @@
 class LinkPreviousVotes < ActiveRecord::Migration
   class Vote < ActiveRecord::Base
-    belongs_to :motion
-    belongs_to :previous_vote, class_name: 'Vote'
-
-    def associate_previous_vote
-      self.previous_vote = motion.votes.where(user_id: user_id, age: age + 1).first
-    end
   end
 
 
@@ -15,8 +9,9 @@ class LinkPreviousVotes < ActiveRecord::Migration
 
     Vote.find_each do |vote|
       progress_bar.increment
-      vote.associate_previous_vote
-      vote.save!
+      if previous_vote = Vote.where(motion_id: vote.motion_id, user_id: vote.user_id, age: vote.age + 1).first
+        vote.update_attribute(:previous_vote_id, previous_vote.id)
+      end
     end
   end
 
