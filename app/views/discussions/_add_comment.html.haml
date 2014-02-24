@@ -1,5 +1,5 @@
-- if can? :add_comment, discussion
-  - if last_page?
+- if last_page?
+  - if can? :add_comment, discussion
     = form_tag add_comment_discussion_path(discussion), :remote => true, id: "new-comment-form" do
       = render 'avatar', user: current_user
       #comment-input{ data: {group: @group.id, autocomplete_path: members_autocomplete_group_path(@group) } }
@@ -39,5 +39,5 @@
       %script#template-upload--comment-input{type: "text/x-tmpl"}
         %input{type: 'hidden', name: "attachments[]", value: '{%=o.id%}', data: { 'attachment-id' => "{%=o.id%}" }}
 
-- else
-  = render "add_comment_placeholder"
+  - else
+    = render "add_comment_placeholder"

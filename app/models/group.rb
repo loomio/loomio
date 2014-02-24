@@ -53,7 +53,6 @@ class Group < ActiveRecord::Base
     includes(:discussions).where('discussions.last_comment_at > ?', time)
   }
 
-
   scope :created_earlier_than, lambda {|time| where('groups.created_at < ?', time) }
 
   scope :engaged, more_than_n_members(1).
@@ -114,6 +113,7 @@ class Group < ActiveRecord::Base
 
   delegate :include?, :to => :users, :prefix => true
   delegate :users, :to => :parent, :prefix => true
+  delegate :members, :to => :parent, :prefix => true
   delegate :name, :to => :parent, :prefix => true
 
   paginates_per 20
@@ -167,8 +167,12 @@ class Group < ActiveRecord::Base
     self.privacy == 'hidden'
   end
 
+  def is_not_hidden?
+    !is_hidden?
+  end
+
   def parent_is_hidden?
-    parent.privacy == 'hidden'
+    parent.is_hidden?
   end
 
   def members_can_invite_members?
@@ -179,7 +183,7 @@ class Group < ActiveRecord::Base
     parent.users.sorted_by_name
   end
 
-  # would be nice if the following 4 methods were reduced to just one - is_sub_group
+  # would be nice if the following 3 methods were reduced to just one - is_subgroup
   # parent and top_level are the less nice terms
   #
   def is_a_parent?
@@ -240,20 +244,8 @@ class Group < ActiveRecord::Base
     Membership.where(:user_id => user, :group_id => self).exists?
   end
 
-  def user_can_join? user
-    is_a_parent? || user_is_a_parent_member?(user)
-  end
-
-  def is_a_parent?
-    parent_id.nil?
-  end
-
-  def is_a_subgroup?
-    parent_id.present?
-  end
-
   def user_is_a_parent_member? user
-    user.group_membership(parent)
+    parent.members.include? user
   end
 
   def invitations_remaining

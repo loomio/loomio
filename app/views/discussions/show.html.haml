@@ -63,3 +63,6 @@
                         %li.selector-item= render closed_motion, this_group: @group
                       - else
                         %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
+
+- unless current_user
+  = render 'discussions/prompt_visitor_to_authenticate_modal'

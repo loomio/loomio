@@ -18,7 +18,7 @@ module GroupsHelper
       ( group.created_at < 1.month.ago ) &&
       !group.has_subscription_plan? &&
       !group.has_manual_subscription? &&
-      !group.is_sub_group? &&
+      !group.is_a_subgroup? &&
       ( I18n.locale == :en )
   end
 
@@ -38,29 +38,17 @@ module GroupsHelper
     end
   end
 
-  # sorry, not gonna bother refactoring this right now (Jon)
   def request_membership_button(group)
     if visitor?
-      if group.is_a_parent?
-        request_membership_icon_button(group)
-      else
-        disabled_request_membership_button(group)
-      end
+      request_membership_icon_button(group)
     else
       return if group.users_include?(current_user)
-      membership_request = group.membership_requests.where(requestor_id: current_user.id, response: nil).first
+
+      membership_request = group.membership_requests.pending.requested_by(current_user).first
       if membership_request.present?
         cancel_membership_request_button(membership_request)
       else
-        if group.is_a_parent?
-          request_membership_icon_button(group)
-        else
-          if group.user_is_a_parent_member?(current_user)
-            request_membership_icon_button(group)
-          else
-            disabled_request_membership_button(group)
-          end
-        end
+        request_membership_icon_button(group)
       end
     end
   end

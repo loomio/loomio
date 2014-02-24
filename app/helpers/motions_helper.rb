@@ -1,7 +1,7 @@
 module MotionsHelper
 
   def display_vote_buttons?(motion, user)
-    motion.voting? && (not motion.user_has_voted?(user)) && motion.group.users_include?(user)
+    motion.voting? && (not motion.user_has_voted?(user))
   end
 
   def time_select_options
