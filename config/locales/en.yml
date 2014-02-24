@@ -678,6 +678,12 @@ en:
   #
 
   contact_page:
+    labels:
+      name:         'Your name'
+      address:      'Your email address'
+      message:      'Your message'
+      destination:  'Where shall we send your message?'
+      submit:       'Send message'
     destinations:
       contact:      'General enquiries'
       tech:         'Tech support / bug reports / feature requests'
