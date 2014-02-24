@@ -99,7 +99,3 @@ $ ->
 $ ->
   $(".js-prompt-user-to-join-or-authenticate").on "click", (e) ->
     $('#prompt-user-to-join-or-authenticate').modal('show')
-
-# $ ->
-#   $(".js-prompt-visitor-to-authenticate").on "click", (e) ->
-#     $('#prompt-visitor-to-authenticate').modal('show')
