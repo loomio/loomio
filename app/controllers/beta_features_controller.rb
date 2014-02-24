@@ -1,5 +1,4 @@
 class BetaFeaturesController < BaseController
-  FEATURE_NAMES = ['nothing']
 
   def show
   end
