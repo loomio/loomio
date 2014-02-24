@@ -1,7 +1,6 @@
 class ContactMessageMailer < BaseMailer
   default :to => "contact@loomio.org"
   def contact_message_email(contact_message)
-    # binding.pry
     @email = contact_message.email
     @name = contact_message.name
     @message = contact_message.message
