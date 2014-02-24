@@ -3,5 +3,5 @@
     %h2
       %i.icon-user
 
-  = text_area_tag 'comment_placeholder', "", id: 'new-comment', placeholder: t(:comment_form_placeholder), class: 'js-prompt-visitor-to-authenticate'
-  = submit_tag t(:comment_form_submit_button), class: "btn btn-small submit js-prompt-visitor-to-authenticate", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
+  = text_area_tag 'comment_placeholder', "", id: 'new-comment', placeholder: t(:comment_form_placeholder), class: 'js-prompt-user-to-join-or-authenticate'
+  = submit_tag t(:comment_form_submit_button), class: "btn btn-small submit js-prompt-user-to-join-or-authenticate", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}

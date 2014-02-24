@@ -64,4 +64,7 @@
                       - else
                         %li.selector-item= render '/motions/motion_preview', motion: closed_motion, this_group: @group
 
-= render 'discussions/prompt_visitor_to_authenticate_modal'
+- if current_user_or_visitor.is_logged_in?
+  = render 'discussions/prompt_logged_in_user_to_join_modal'
+- else
+  = render 'discussions/prompt_logged_out_user_to_authenticate_or_signup_modal'
