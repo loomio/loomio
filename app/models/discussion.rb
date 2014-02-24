@@ -146,8 +146,12 @@ class Discussion < ActiveRecord::Base
     self.private == false
   end
 
+  def private
+    self.private?
+  end
+
   def private?
-    if self[:private].nil? and group.present?
+    if self[:private].nil? and group.present?  # this is some hideously unconfident code. discussions have a validation on private col
       group_default_is_private?
     else
       self[:private]
@@ -158,9 +162,6 @@ class Discussion < ActiveRecord::Base
     self[:private] = group_default_is_private? if group.present?
   end
 
-  def private
-    self.private?
-  end
 
   def group_default_is_private?
     ['hidden', 'private'].include? group.privacy

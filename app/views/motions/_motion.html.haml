@@ -32,25 +32,11 @@
       = t(:engagement_on_open_proposal, percent: motion.percent_voted, :numerator => (motion.group_size_when_voting - motion.members_not_voted_count), denominator:  motion.group_size_when_voting)
 
   .votes
-    - if display_vote_buttons?(motion, current_user)
-      %h3= t :state_your_position
-      .vote-buttons.clearfix
-        =link_to image_tag("hand-yes.png", :title => t(:yes_position), :alt => t(:yes_position)),
-                 new_motion_vote_path(motion_id: motion.id, position: 'yes'),
-                 "title" => t(:yes_position), "data-content" => t(:yes_details),
-                 class: "position btn vote-yes", id: "yes-vote"
-        =link_to image_tag("hand-abstain.png", :title => t(:abstain_position), :alt => t(:abstain_position)),
-                 new_motion_vote_path(motion_id: motion.id, position: 'abstain'),
-                 "title" => t(:abstain_position), "data-content" => t(:abstain_details),
-                 class: "position btn vote-abstain", id: "abstain-vote"
-        =link_to image_tag("hand-no.png", :title => t(:no_position), :alt => t(:no_position)),
-                 new_motion_vote_path(motion_id: motion.id, position: 'no'),
-                 "title" => t(:no_position), "data-content" => t(:no_details),
-                 class: "position btn vote-disagree", id: "no-vote"
-        =link_to image_tag("hand-block.png", :title => t(:block_position), :alt => t(:block_position)),
-                 new_motion_vote_path(motion_id: motion.id, position: 'block'),
-                 "title" => t(:block_position), "data-content" => t(:block_details),
-                 class: "position btn vote-block", id: "block-vote"
+    - if can? :vote, motion
+      - if display_vote_buttons?(motion, current_user)
+        = render 'motions/cast_vote', motion: motion
+    - else
+      = render 'motions/cast_vote', motion: motion, prompt_visitor_to_authenticate: true
 
     .votes-table= render "motions/votes_table", motion: motion
 

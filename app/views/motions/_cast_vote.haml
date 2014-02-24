@@ -1,0 +1,24 @@
+- if prompt_visitor_to_authenticate ||= false
+  - prompt_class = 'js-prompt-visitor-to-authenticate'
+  - prompt_link = '#'
+- else
+  - prompt_class = ''
+
+%h3= t :state_your_position
+.vote-buttons.clearfix
+  =link_to image_tag("hand-yes.png", :title => t(:yes_position), :alt => t(:yes_position)),
+           prompt_link || new_motion_vote_path(motion_id: motion.id, position: 'yes'),
+           "title" => t(:yes_position), "data-content" => t(:yes_details),
+           class: "position btn vote-yes #{prompt_class}", id: "yes-vote"
+  =link_to image_tag("hand-abstain.png", :title => t(:abstain_position), :alt => t(:abstain_position)),
+           prompt_link || new_motion_vote_path(motion_id: motion.id, position: 'abstain'),
+           "title" => t(:abstain_position), "data-content" => t(:abstain_details),
+           class: "position btn vote-abstain #{prompt_class}", id: "abstain-vote"
+  =link_to image_tag("hand-no.png", :title => t(:no_position), :alt => t(:no_position)),
+           prompt_link || new_motion_vote_path(motion_id: motion.id, position: 'no'),
+           "title" => t(:no_position), "data-content" => t(:no_details),
+           class: "position btn vote-disagree #{prompt_class}", id: "no-vote"
+  =link_to image_tag("hand-block.png", :title => t(:block_position), :alt => t(:block_position)),
+           prompt_link || new_motion_vote_path(motion_id: motion.id, position: 'block'),
+           "title" => t(:block_position), "data-content" => t(:block_details),
+           class: "position btn vote-block #{prompt_class}", id: "block-vote"

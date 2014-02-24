@@ -105,10 +105,14 @@ class Ability
     end
 
     can :request_membership, Group do |group|
-      if group.is_sub_group?
-        group.parent.members.include?(user) and can?(:show, group)
+      if group.archived?
+        false
+      elsif group.is_not_hidden?
+        true
+      elsif group.is_a_subgroup? and group.viewable_by_parent_members? and @member_group_ids.include?(group.parent_id) # assumes group is hidden
+        true
       else
-        can?(:show, group)
+        false
       end
     end
 
