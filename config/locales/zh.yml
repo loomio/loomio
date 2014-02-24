@@ -1,0 +1,10 @@
+zh:
+  errors:
+    messages:
+      email: "你的 Email 不被認可喔"
+  error:
+    cant_join_subgroup: "就算不是母群組，你也可以加入一個子群組。"
+    cant_modify_position: "這項提議已經關閉囉。"
+    cant_state_position: "這項提議已經關閉囉。"
+    discussion_not_created: "無法建立這個討論塊。"
+    group_not_archived: "無法封存這個群組。"

@@ -13,12 +13,12 @@ class Translation
                'Nederlands' => 'nl',
                'Português (Brasil)' => 'pt',
                'română' => 'ro',
-               'Tiếng Việt' => 'vi'}
+               'Tiếng Việt' => 'vi',
+               'Türkçe' => 'tr'}
 
   EXPERIMENTAL_LANGUAGES = {'Italiano' => 'it',
                             'తెలుగు' => 'te',
-                            'Gaelic (Irish)' => 'ga',
-                            'Türkçe' => 'tr'}
+                            'Gaelic (Irish)' => 'ga'}
 
   def self.language(locale)
     LANGUAGES.key(locale)
