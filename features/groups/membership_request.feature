@@ -66,11 +66,13 @@ Feature: Individual requests group membership
     When I visit the request membership page for the sub-group
     Then I should be redirected to the dashboard
 
-  Scenario: User cannot request membership to a sub-group if they are not member of parent
+  Scenario: User can request membership to a sub-group if they are not member of parent
     Given I am logged in
     And a public sub-group exists
-    When I visit the request membership page for the sub-group
-    Then I should be redirected to the dashboard
+    When I visit the sub-group page
+    And I click "Ask to join group"
+    And I fill in and submit the Request membership form (introduction only)
+    Then I should see a flash message confirming my membership request
 
   Scenario: User with pending membership request cannot submit new request
     Given I am logged in

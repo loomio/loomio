@@ -5,14 +5,3 @@
 
   = text_area_tag 'comment_placeholder', "", id: 'new-comment', placeholder: t(:comment_form_placeholder), class: 'js-prompt-visitor-to-authenticate'
   = submit_tag t(:comment_form_submit_button), class: "btn btn-small submit js-prompt-visitor-to-authenticate", id: 'post-new-comment', :data => {:disable_with => t(:comment_form_submit_button)}
-
-
-.modal.hide#prompt-visitor-to-authenticate
-  .modal-header
-    %h3= t :"prompt_visitor_to_authenticate.header"
-    %button.close{"data-dismiss" => "modal"}×
-  .modal-body
-    =t :"prompt_visitor_to_authenticate.body_html"
-  .modal-footer
-    =link_to t(:log_in), new_user_session_path, class: "btn btn-large btn-success"
-    =link_to t(:ask_to_join_group), group_ask_to_join_path(@group), class: "btn btn-large btn-primary", id: "align-button"
