@@ -99,7 +99,7 @@ class MotionsController < GroupBaseController
 
   private
     def load_resource_by_key
-      @motion ||= Motion.find_by_key(params[:id])
+      @motion ||= Motion.find_by_key!(params[:id])
     end
 
     def group
