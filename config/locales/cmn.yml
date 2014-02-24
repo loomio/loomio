@@ -1,23 +1,87 @@
 cmn:
+  errors:
+    messages:
+      email: "不是一个有效的电子邮箱地址"
+  error:
+    cant_join_subgroup: "如果你不是母公司的一员那你就不能加入一个子公司"
+    cant_modify_position: "这提议已经关闭了"
+    cant_state_position: "这提议已经关闭了"
+    discussion_not_created: "讨论不代表创建了"
+    image_upload_fail: "无法上传图片。确定图片是在1MB之内并且格式是jpeg.png或者是gif"
+    permission_to_invite: "你没有邀请成员的许可"
+    position_not_updated: "无法更新位置"
+    settings_not_updated: "您的位置还没有更新"
+  alert:
+    duplicate_email: "%（哪封邮件）已经在这个团队里了？"
+  notice:
+    member_removed: "删除成员。"
   success:
     emails_sending: "正在发邮件"
+    position_submitted: "提交的位置"
+    position_updated: "更新位置"
+    proposal_created: "提案成功创建"
+    proposal_deleted: "建议删除"
   datetime:
     distance_in_words:
+      x_seconds:
+        other: "%{count}秒数"
+      less_than_x_minutes:
+        other: "%{count}分钟"
       x_minutes:
-        other: "％｛count｝分钟"
+        other: "%{count}分钟"
+      about_x_hours:
+        other: "%{count}小时"
+      about_x_months:
+        other: "%{count}月"
+      x_months:
+        other: "%{count}月"
+      about_x_years:
+        other: "%{count}年"
+      over_x_years:
+        other: "%{count}年"
+      almost_x_years:
+        other: "%{count}年"
+  notifications:
+    new_discussion: "新开始了一个讨论"
+    new_motion: "创建一个新的提议"
   sign_out: "推出"
+  click_to_dismiss: "点击这里移除这条信息。"
   generic_confirm: "您确定吗？"
   add_new_member: "加新的成员"
   invite_members_to_group: "邀请成员加入%{which_group}"
   get_in_touch_link: "联系我们"
+  leave_group: "离开团队"
+  confirm_leave_group: "你确定你想要离开%（那个团队）？"
   members: "成员"
   invite_members: "邀请成员"
+  discussion_items:
+    new_discussion: "创建了这个讨论。"
+    new_motion: "创建了这个提议。"
+    motion_closed:
+      by_user: "关闭这一提议。"
+      by_expiry: "提议关闭了"
+    motion_close_date_edited: "改变了提案的截止日期。"
+    discussion_title_edited: "改变了讨论题目。"
   description_history:
     previous: "上一个"
     next: "下一个"
+  comment_form_placeholder: "说点什么吧。"
+  comment_form_submit_button: "文章评论"
   delete_comment: "删掉评论"
+  confirm_delete_comment: "你确定你想要删掉这条评论吗？"
+  markdown_settings_more_info: "更多信息..."
+  delete_discussion: "删除讨论"
+  confirm_delete_discussion: "你确定你想要永久的删除这个讨论吗？"
+  new_proposal: "新提议"
+  close_proposal: "关闭的提议"
+  confirm_close_proposal: "你确定你想要关闭这个提议吗？"
+  change_proposal_close_date: "更改截止日期"
+  proposal_close_date_error: "请给一个未来的截止日期"
   yes_position: "我同意"
+  abstain_position: "我弃权。"
+  abstain_details: "我很开心我不在时集团所做的决定。"
   no_position: "我不同意"
+  no_details: "我认为我们可以做的更好。"
   help:
     get_in_touch: "联系我们"
     getting_started: "开始吧"
@@ -30,10 +94,17 @@ cmn:
     video_tutorial: "视频教育"
     video_tutorial_description: "看看使用Loomio的示范视频"
   new_password: "新的密码"
+  confirm_new_password: "确认新密码"
+  change_your_password: "改你的密码"
+  change_my_password: "改我的密码"
+  send_password_reset: "给我重置密码的指令"
   remember_me: "记住我"
   forgot_your_password: "忘记密码？"
   invitation:
     invitation_link: "邀请链接"
+  motion_form:
+    header: "新提议"
+    name_helper: "尽可能让这个标题清晰和简洁"
   user_settings_form:
     picture: "图片"
   simple_form:

@@ -12,7 +12,11 @@ it:
       datepicker: "%d-%m-%Y"
   devise:
     invitations:
+      send_instructions: 'Un invito è stato mandato a %{email}.'
       updated: 'Account creato.'
+    mailer:
+      invitation_instructions:
+        subject: 'Qualcuno ti ha invitato a far parte del loro gruppo di Loomio.'
   error:
     access_denied: "Non hai l'autorizzazione per farlo."
     cant_join_subgroup: "Non puoi unirti a un sotto-gruppo se non sei membro del gruppo genitore."
@@ -139,6 +143,8 @@ it:
   dashboard_helper_text:
     header: "Benvenuto nella tua Home"
     message: "<p>La Home mostra tutte le discussioni in corso in tutti i gruppi di cui sei membro</p><p>Puoi cominciare una discussione su un nuovo argomento cliccando il bottone \"Comincia discussione\".</p>"
+  prompt_visitor_to_authenticate:
+    header: "Login o unirsi al gruppo per partecipare"
   setup_steps_title: "Prossimi passi:"
   setup_step_1: "Controlla la discussione di esempio"
   setup_step_2: "Comincia la tua prima discussione"
@@ -338,6 +344,8 @@ it:
     monthly_html: 'Mi piacerebbe fare una contribuzione mensile di '
     one_time_html: Mi piacerebbe fare una contribuzione una tantum di
     tooltip: Conosci il nostro modello per il finanziamento della comunità
+    making_a_donation_description: "Loomio è una società cooperativa sociale che lavora per rendere più facile per chiunque di partecipare alle decisioni che li riguardano.\n\nIl tuo contributo ci permetterà di mantenere Loomio indipendente, privo di pubblicità, e liberamente a disposizione di gruppi che fanno grandi\
+      \ cose nelle loro comunità. \n\nGrazie per aver reso possibile tutto questo! \n"
   resend_confirmation: "Rimanda le istruzioni per la conferma"
   new_password: "Nuova password"
   confirm_new_password: "Conferma la nuova password"
@@ -360,6 +368,7 @@ it:
     no_invitations_left_get_more: "Per favore manda una email a contact@loomio.org e vediamo cosa riusciamo a fare per aiutarti"
     invitation_not_found: 'Non è stato possibile trovare un invito con quel token. Chiedi un nuovo invito al mittente.'
     invitation_cancelled: 'Questo invito è stato annullato. Contatta il mittente dell''invito se pensi che si tratti di un errore.'
+    recipients: "Inserire indirizzi email, separati con virgole:"
     invitees_placeholder: "Nome utente <utente1@esempio.it>, utente2@esempio.it"
     subject: "Unisciti al nostro nuovo gruppo Loomio, %{group}"
     invite_people: "Invita qualcuno al tuo gruppo"
@@ -371,6 +380,7 @@ it:
     invitation_link: "Link invito"
     link_help: "Clicca su questo link per unirti a %{group} su Loomio:"
     copy: "Se qualcuno non ha ricevuto la mail di invito, copia pure il link qui sopra e mandalo direttamente al destinatario in questione."
+    no_pending_invitations: "Attualmente non ci sono inviti in sospeso."
   example_discussion:
     title: "Discussione Esempio: Benvenuto e introduzione a Loomio"
     description: |
@@ -426,6 +436,8 @@ it:
   simple_form:
     'yes': 'Sì'
     'no': 'No'
+    error_notification:
+      default_message: "Per piacere rivedi i problemi qui sotto:"
     labels:
       discussion:
         title: "Titolo"
@@ -545,6 +557,7 @@ it:
   outcome: "Risultato"
   password: "Password"
   prev: "Prec"
+  more: "Altro..."
   translate_this_string: "Traduci in %{language}"
   options: "Opzioni"
   other: "Altro"
