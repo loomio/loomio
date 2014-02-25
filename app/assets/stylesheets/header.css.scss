@@ -43,14 +43,14 @@
     }
   }
   li.nav-item a.nav-logo-link {
-    padding: 4px 8px 1px 0px;
+    padding: 6px 8px 1px 0px;
     display: block;
   }
 
   li.nav-item a.nav-link {
-    color: #5a5a5a;
+    color: #727272;
     display: block;
-    padding: 8px 8px;
+    padding: 12px 10px 8px;
     line-height: 18px;
   }
   li.nav-item a.nav-link:hover{
@@ -82,10 +82,11 @@
       margin: 0;
       padding-right: 8px;
       .add-on {
-        background-color: #FFF;
-        border: none;
+        background-color: #F4F4F4;
+        border-right: none;
         display: inline-block;
         @include ie7-inline-block();
+        @include box-shadow(0, 1px, 1px, 0, rgba(0,0,0,.07) inset);
       }
       body { color: #fff; }
       .control-group {
@@ -93,13 +94,13 @@
         @include ie7-inline-block();
         margin-bottom: 8px;
         input {
-          border: none;
+          border-left: none;
           &[type="text"]:focus {
-            border: none;
-            @include box-shadow(0, 0, 0, 0, #fff);
+            border-left: none;
           }
         }
         input#search_form_query {
+          background-color: #F4F4F4;
           font-size: 14px;
           line-height: 18px;
           height: 18px;
@@ -108,7 +109,7 @@
       }
       .input-prepend {
         margin-bottom: 0;
-        margin-top: 4px;
+        margin-top: 6px;
       }
     }
   }
@@ -130,7 +131,6 @@
     max-width: 300px;
     max-height: 30px;
     #header-user-image {
-      border: 1px solid #555;
       position: relative;
       bottom: 5px;
       margin-right: 5px;
@@ -185,15 +185,25 @@
     background-color: #eee;
   }
 
-  .fa { font-size: 22px; }
-  .fa-bell, .fa-group { font-size: 18px; }
+  .fa { font-size: 18px; }
+  .fa-inbox { font-size: 24px; }
+  .fa-group { margin-right: 3px; }
+  .fa-star { font-size: 14px; }
+  .fa-search {
+    color: #adadad;
+    font-size: 15px;
+  }
+
+  .activity-count { background-color: #08C;}
 
 }
+
+#inbox-container { margin-top: 0; }
 
 .toolbar-navigation #contribute a {
   height: 20px;
 }
 
 .navbar-fixed-top .navbar-inner {
-  @include box-shadow (0, 1px, 4px, 0px, #f1f1f1);
+
 }
