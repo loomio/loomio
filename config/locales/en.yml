@@ -680,7 +680,7 @@ en:
   contact_page:
     labels:
       name:         'Your name'
-      address:      'Your email address'
+      email:        'Your email address'
       message:      'Your message'
       destination:  'Where shall we send your message?'
       submit:       'Send message'
@@ -690,6 +690,10 @@ en:
       press:        'Media enquiries'
       sales:        'Sales and customer enquiries'
       translations: 'Translation enquiries'
+    messages:
+      email:        "Fill out this form, or send an email to <a href='mailto:%{email}'>%{email}</a>"
+      phone:        "If you'd rather speak to someone directly, you can call %{name} on %{number}"
+      social:       "You can also join us on <a href='%{facebook}' target=\'_blank\'>facebook</a> and <a href='%{twitter}' target=\'_blank\'>twitter</a>!"
 
   #
   # FORMS
