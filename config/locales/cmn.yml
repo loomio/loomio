@@ -46,24 +46,34 @@ cmn:
   datetime:
     distance_in_words:
       x_seconds:
+        one: "1秒数"
         other: "%{count}秒数"
       less_than_x_minutes:
+        one: "1分钟"
         other: "%{count}分钟"
       x_minutes:
+        one: "1分钟"
         other: "%{count}分钟"
       about_x_hours:
+        one: "1小时"
         other: "%{count}小时"
       x_days:
+        one: "1天"
         other: "%{count}天"
       about_x_months:
+        one: "1月"
         other: "%{count}月"
       x_months:
+        one: "1月"
         other: "%{count}月"
       about_x_years:
+        one: "1年"
         other: "%{count}年"
       over_x_years:
+        one: "1年"
         other: "%{count}年"
       almost_x_years:
+        one: "1年"
         other: "%{count}年"
   notifications:
     new_discussion: "新开始了一个讨论"
