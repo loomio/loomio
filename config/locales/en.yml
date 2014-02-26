@@ -673,6 +673,27 @@ en:
       Is it a good idea? Loomio Helper Bot wants to know what you think!
       If you’re clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).
       You’ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes.
+  #
+  # CONTACT PAGE
+  #
+
+  contact_page:
+    labels:
+      name:         'Your name'
+      email:        'Your email address'
+      message:      'Your message'
+      destination:  'Where shall we send your message?'
+      submit:       'Send message'
+    destinations:
+      contact:      'General enquiries'
+      tech:         'Tech support / bug reports / feature requests'
+      press:        'Media enquiries'
+      sales:        'Sales and customer enquiries'
+      translations: 'Translation enquiries'
+    messages:
+      email:        "Fill out this form, or send an email to <a href='mailto:%{email}'>%{email}</a>"
+      phone:        "If you'd rather speak to someone directly, you can call %{name} on %{number}"
+      social:       "You can also join us on <a href='%{facebook}' target=\'_blank\'>facebook</a> and <a href='%{twitter}' target=\'_blank\'>twitter</a>!"
 
   #
   # FORMS

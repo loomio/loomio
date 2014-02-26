@@ -68,6 +68,6 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def contact_message_attributes
-    [:email, :message, :name]
+    [:email, :message, :name, :destination]
   end
 end
