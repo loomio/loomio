@@ -64,24 +64,34 @@ ja:
   datetime:
     distance_in_words:
       x_seconds:
+        one: "1 秒"
         other: "%{count} 秒"
       less_than_x_minutes:
+        one: "1 分"
         other: "%{count} 分"
       x_minutes:
+        one: "1 分"
         other: "%{count} 分"
       about_x_hours:
+        one: "1 時間"
         other: "%{count} 時間"
       x_days:
+        one: "1 日"
         other: "%{count} 日"
       about_x_months:
+        one: "1 月"
         other: "%{count} 月"
       x_months:
+        one: "1 月"
         other: "%{count} 月"
       about_x_years:
+        one: "1 年"
         other: "%{count} 年"
       over_x_years:
+        one: "1 年"
         other: "%{count} 年"
       almost_x_years:
+        one: "1 年"
         other: "%{count} 年"
   notifications:
     header: "通知"
