@@ -1,7 +1,17 @@
 ja:
+  activerecord:
+    errors:
+      messages:
+        blank: "空白にできません"
   errors:
     messages:
       email: "有効ではないEメールアドレス"
+  date:
+    formats:
+      datepicker: "%日-%月-%年"
+  devise:
+    invitations:
+      send_instructions: '%{email}　へ招待を送りました'
   error:
     cant_join_subgroup: "親グループのメンバーでない場合は子グループに参加できません"
     cant_modify_position: "この提案は決定されました"
@@ -16,8 +26,10 @@ ja:
     position_not_updated: "意見をアップデートできません"
     settings_not_updated: "設定がアップデートされませんでした"
     group_request_already_accepted: "ごめんなさい！この招待は無効になっているか、すでに承認されています"
-    group_private_or_not_found: "グループが見つかりません\nこのグループはプライベートかもしれません\n誰かがあなたにリンクを提供した場合、そのグループにあなたを招待するようにその人に頼んでください"
+    group_request_invalid_token: "(*_ _)人ゴメンナサイ~ 無効なトークンです"
+    group_private_or_not_found: "グループが見つかりません。このグループはプライベートかもしれません。誰かがあなたにリンクを提供した場合、そのグループにあなたを招待するようにその人に頼んでください。"
     group_already_setup: "セットアップしているグループは既に存在します"
+    proposal_already_exists: "このディスカッションには、既に開始されている提案があります。"
   alert:
     duplicate_email: "%{which_email} は既にグループにあります"
   notice:
@@ -26,11 +38,16 @@ ja:
     membership_request_ignored: "メンバーリクエストを拒否しました"
     settings_updated: "設定がアップデートされました"
     you_have_left_group: "%{which_group} を離れました"
+  views:
+    pagination:
+      previous: "前"
+      next: "次"
   warning:
     membership_request_already_ignored: "メンバーリクエストは既に拒否されています"
     membership_request_already_canceled: "メンバーリクエストはすでにキャンセルされています"
     position_not_submitted: "意見は送信されませんでした"
     proposal_not_created: "提案は作成されませんでした"
+    user_already_member: "%{which_user} はすでにこのグループのメンバーです"
   success:
     added_to_group: "%{which_group} に追加されました"
     close_date_changed: "締切日は変更されました"
@@ -73,18 +90,38 @@ ja:
     motion_closed:
       by_user: "提案を締め切ります"
       by_expiry: "提案が締め切られました"
+    new_vote: "が提案に「%{position}」と言いました"
+    new_comment: "がディスカッションにコメントしました"
     comment_liked: "があなたのコメントにいいね！しました。"
     user_added_to_group: "がグループにあなたを追加しました"
     motion_closing_soon: "提案はもうすぐ締め切られます"
     motion_blocked: "が提案をブロックしました"
   edit_discussion_context: "ディスカッションの情報を編集"
+  request_new_group_details: "グループに招待されるまで待ってください"
   empty_notifications: "通知はありません"
   see_all_notifications: "全ての通知を見る"
+  user_settings: "ユーザーの設定"
+  email_preferences: "Eメールの設定"
   sign_out: "サインアウト"
+  sign_in: "ログイン"
   tagline: "影響がある決定に誰もが簡単に関わることができる世界へ"
   click_to_dismiss: "メッセージを閉じる"
   generic_confirm: "よろしいですか？"
-  invite_people: "招待する"
+  discussion_helper_text:
+    header: "初めてのディスカッションにようこそ！"
+    message: "<p>トピックはページのトップに、内容はその下にあります</p><p>ディスッカションは左側にあり、決定は右側に現れます。\nもしグループはすでに決定を行う準備ができていると考える場合、提案をすることができます</p>"
+  group_helper_text:
+    header: "新しいグループへようこそ！"
+    message: "<p>これは<strong>グループページ<strong>です。左側はこのグループのディスカッション全ての一覧です</p>\n<p>グループが違うトピックに関して話し合いたい時には、新しいディスカッションを開始してください</p>"
+  dashboard_helper_text:
+    header: "ホームページにようこそ！"
+    message: "<p>ホームページは、あなたがメンバーになっている全てのグループの現在のディスカッションを全て表示します</p>\n<p>\"ディスカッションを開始する\"ボタンをクリックすると新しいトピックについてのディスカッションを開始することができます</p>"
+  setup_steps_title: "次のステップ："
+  setup_step_1: "ディスカッションの例を参考にしてください"
+  setup_step_2: "初めてのディスカッションを開始してください"
+  setup_step_3: "グループにメンバーを招待してください"
+  invite_people: "メンバーを招待する"
+  no_invitations_button: "招待はありません"
   edit_memberships: 'メンバーを編集する'
   add_new_member: "新しいメンバーを追加します"
   invite_members_to_group: "%{which_group} にメンバーを招待する"
@@ -126,6 +163,7 @@ ja:
   updating_group: "グループをアップデート中"
   start_a_discussion: "ディスカッションを開始する"
   group_description: "グループ情報"
+  edit_group_description: "グループ情報を編集する"
   discussion_items:
     new_discussion: "ディスカッションを作成しました"
     new_motion: "提案を作成しました"
@@ -140,7 +178,7 @@ ja:
   previous_decisions: "過去の提案"
   see_previous_decisions: "過去の提案を見る"
   create_new_proposal: "新しい提案を作成する"
-  empty_decision_list_html: "決定を行う準備はできましたか？\n誰でも提案を開始することができます"
+  empty_decision_list_html: "決定を行う準備はできましたか？\n誰でも提案を開始することができます。"
   empty_decision_index: "このグループはまだ提案を終了していません"
   empty_discussion_list: "コメントはまだありません"
   empty_discussion_index: "まだディスカッションはありません"
@@ -162,6 +200,7 @@ ja:
   delete_comment: "コメントを削除します"
   confirm_delete_comment: "本当にコメントを削除しますか？"
   markdown_settings_more_info: "続きを見る..."
+  edit_discussion: "ディスカッションを編集する"
   delete_discussion: "ディスカッションを削除します"
   confirm_delete_discussion: "本当にこのディスカッションを削除したいですか？"
   new_proposal: "新しい提案"
@@ -169,6 +208,7 @@ ja:
   confirm_close_proposal: "本当に提案を締め切りたいですか？"
   change_proposal_close_date: "締切日を変更します"
   change_proposal_close_date_header: " '%{which}' の締切日を変更します"
+  proposal: 提案
   proposal_close_date_error: "未来の締切日を設定してください"
   proposal_closing_when: " %{when} 後に締め切ります"
   proposal_closed_when: "%{when} 前に締め切られました"
@@ -186,28 +226,71 @@ ja:
   not_voted: "[意見を選択していないメンバーを表示]"
   outcome_placeholder: "この提案の結論は何でしたか？"
   help:
-    getting_started_description: "左側では、グループがトピックについてディスカッションをしたり、アイディアや情報を交換したりします\nグループが決定を行うとき、右側に現れます"
+    get_in_touch: "ご連絡ください"
+    getting_started: "始めるには"
+    getting_started_description: "左側では、グループがトピックについてディスカッションをしたり、アイディアや情報を交換したりします。グループが決定を行うとき、右側に現れます。"
     have_a_discussion: "ディスカッションをする"
-    have_a_discussion_description: "トピックやそれに関連する情報はページのトップに表示されます\nディスカッションにあなたの声を反映させるにはコメント欄を使ってください"
+    have_a_discussion_description: "トピックやそれに関連する情報はページのトップに表示されます。ディスカッションにあなたの声を反映させるにはコメント欄を使ってください。"
+    how_it_works: "使い方"
     join_the_community: "コミュニティに参加する"
     make_a_decision: "決定を行う"
+    positions_agree_description: "<span>賛成</span>は、提案に納得したことを意味します"
+    positions_abstain_description: "<span>棄権</span>は、確信がない、またはあなた抜きでグループに決定を行ってほしいことを意味します"
+    positions_disagree_description: "<span>反対</span>は、より良い代替案があると考えますがグループの決定を尊重することを意味します"
+    positions_block_description: "<span>ブロック</span>は、真剣に異議を唱え、その提案が決定されることに対して納得がいかないことを意味します"
     video_tutorial: "ビデオのチュートリアル"
-    video_tutorial_description: "Loomioの使い方の手短なデモンストレーションに関してはこのビデオをチェックしてください"
+    video_tutorial_description: "Loomioの使い方の手短なデモンストレーションに関してはこのビデオを見てください。"
   new_password: "新しいパスワード"
   confirm_new_password: "新しいパスワードを再入力してください"
   change_your_password: "パスワードを変更します"
   change_my_password: "パスワードを変更します"
   send_password_reset: "パスワードをリセットする手順を送信"
   blank_details: "(変更したくない場合は空白にしてください)"
+  password_confirmation: "パスワードの確認"
   current_password: "現在のパスワード"
   password_details: "(変更をするために現在のパスワードが必要です)"
   cancel_my_account: "アカウントをキャンセルします"
   remember_me: "ログインしたままにする"
   signing_in: "サインイン中"
   forgot_your_password: "パスワードを忘れた場合はこちら"
+  invitation:
+    by_email: "Eメールで招待を送る"
+    no_invitations_left: "(*_ _)人ゴメンナサイ　招待はありません"
+    no_invitations_left_get_more: "contact@loomio.org にメールを送ってください\nあなたを助けるために何ができるか考えます"
+    invitation_not_found: 'そのトークンでは招待を見つけられませんでした。送信者に新しい招待を要求してください'
+    invitation_cancelled: 'この招待はキャンセルされました。エラーによるものだと考えられる場合、招待の送信者に連絡を取ってください'
+    subject: " %{group} という新しいLoomioのグループに参加してください"
+    invite_people: "グループにメンバーを招待する"
+    select_members: "%{group_name}　からメンバーを追加する"
+    body_editable: |
+      どうも！一緒に考えて結論を出しましょう！私たちはLoomioという共同意思決定ツールを使っています
+    message_body: "招待メッセージ"
+    invites_more_help2: "<p>グループにいつでもメンバーを招待できます。</p>\n<p>すべてのメンバーをすぐに招待することも、近くで働いている人たちだけを招待することから始めることもできます。</p>"
+    invitation_link: "招待リンク"
+    link_help: "Loomioの  %{group} に参加するにはこのリンクを押してください"
+    copy: "招待のメールを受け取らなかった場合、ご自由に上記の招待リンクをコピーして受取人に提供してください"
+  example_discussion:
+    description: |
+      グループの意志決定のための新しいツールであるLoomioにようこそ。
+      トピックに参加し、様々な見方と情報について議論し、または心配ごとを問いかけることによって、最善の道を見つけるために同じ方向を見ることができます。
+      このツールの特徴を試すために、このディスカッションの例を使うことができます。
+      始めに、Loomio ボットくんはあなたのグループが一緒に休暇をとることが素晴らしいアイディアだと考えています。
+      右の円グラフは、あなたのグループが提案についてどのように感じているかを表しています。下の意見ボタンのうち一つをクリックすることによって意見を表明することができます。
+  example_motion:
+    name: "月で休暇をとるべきだ！"
+    description: |
+      Loomio ボットくんは、あなたのグループが月への旅行に投資することにとても興味を示しています。ご存知の通り、スペース・チーズは美味しいです。しかし汚染の影響が心配されます。
+      これはいいアイディアですか？Loomio ボットくんはあなたが何を考えているか知りたいです！
+      あなたの意見がハッキリとしているならば、下のアイコンのうち一つをクリックしてください(意見ボタンの上にマウスを合わせると各ボタンの説明を見ることができます)
+      あなたの意見の理由について短文を添えることが求められます。そうすることで、皆が何をどうしてそう思うかについて簡単に要約を見ることができます。提案が締め切られるまでは、あなたの気が変わっても意見を編集することができます。
+  discussion_form:
+    edit:
+      header: "ディスカッションを編集する"
   motion_form:
     header: "新しい提案"
     name_helper: "タイトルは出来るだけ簡潔にしてください"
+  group_form:
+    invitation_settings: "招待の設定"
   vote_form:
     header: "意見を選択しください"
     edit: "意見を変更"
@@ -217,6 +300,7 @@ ja:
     submit: "意見を送信"
     update: "意見をアップデート"
   email_preferences_form:
+    header: "Eメールの設定"
     daily_activity_summary: "一日のイベント要約"
     daily_activity_subscription: "グループに起こったイベントの要約を毎日配信する"
     global_notifications: "全ての通知"
@@ -228,6 +312,7 @@ ja:
   new_user_form:
     create_an_account: "アカウントを作成します"
   user_settings_form:
+    header: "ユーザーの設定"
     picture: "画像"
     use_avatar_kind: " %{kind} を使う"
     upload_new_image: "新しい画像をアップロードする"
@@ -235,6 +320,11 @@ ja:
     labels:
       discussion:
         title: "タイトル"
+      group:
+        name: "グループ名"
+        description: "情報"
+        members_invitable_by: "誰がこのグループにメンバーを招待できますか？"
+        members_invitable_by_members: "すべてのメンバー"
       motion:
         name: "タイトル"
         description: "詳細"
@@ -242,10 +332,18 @@ ja:
         name: "フルネーム"
         email: "Eメール"
         password: "パスワード"
+        password_confirmation: "パスワードの確認"
         language_preference: "言語"
     placeholders:
       motion:
+        name: "何を提案したいですか？"
         description: "賛成か反対かどうか誰もがわかるように十分な情報をください"
+      group:
+        name: "グループ名"
+        description: "グループ情報"
+      user:
+        email: "Eメール"
+        password: "パスワード"
   helpers:
     submit:
       discussion:
@@ -255,12 +353,28 @@ ja:
       user:
         create: "アカウントを作成します"
         update: "アップデート設定"
+  email:
+    user_added_to_a_group:
+      subject: "%{who}　が　%{which_group}　にあなたを追加しました"
+    unsubscribe: "購読をやめる、またはEメール設定を変更する："
+    view_comment: "Loomioのコメントを見るにはここをクリックしてください"
+    view_group: "Loomioのグループを見るにはここをクリックしてください"
+    create_discussion:
+      subject: "新しいディスカッション -  %{which}"
+    create_proposal:
+      intro: "あなたのいるLoomioグループで新しい提案が作成されました"
+    daily_activity:
+      heading: "あなたのLoomioイベント"
+    group_membership_approved:
+      intro: "%{group_name}　というLoomio グループへのメンバーリクエストが承認されました。"
+      subject: "メンバーリクエストが承認"
+    proposal_closing_soon:
+      closes_on: "締め切り日："
   ago: "%{quantity_of_time} 前"
   approve: "承認"
   back: "戻る"
   cancel: "キャンセル"
   change: "変更"
-  changing: "変更中"
   delete: "削除"
   edit: "編集"
   email_address: "Eメールアドレス"
@@ -272,12 +386,18 @@ ja:
   message: "メッセージ"
   name: "氏名"
   new_activity: "新しいイベント"
+  next: "次"
   outcome: "結論"
   password: "パスワード"
+  prev: "前"
   options: "オプション"
+  ok_got_it: "了解です！"
   save: "セーブ"
   saving: "セーブ"
-  sending: "送信"
+  sending: "送信中"
   send_invite: "招待を送信する"
-  send_email: "eメールを送信する"
+  send_email: "Eメールを送信する"
+  show_more: "全部を見る"
+  thanks: "ありがとうございます！"
+  unlike: "ええね！を消す"
   update: "アプデート"

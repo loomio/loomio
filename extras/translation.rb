@@ -16,9 +16,11 @@ class Translation
                'Tiếng Việt' => 'vi',
                'Türkçe' => 'tr'}
 
-  EXPERIMENTAL_LANGUAGES = {'Italiano' => 'it',
+  EXPERIMENTAL_LANGUAGES = { 'Chinese (Mandarin)' => 'cmn',
+                            'Italiano' => 'it',
                             'తెలుగు' => 'te',
-                            'Gaelic (Irish)' => 'ga'}
+                            'Gaelic (Irish)' => 'ga',
+                            '日本語' => 'ja'}
 
   def self.language(locale)
     LANGUAGES.key(locale)
