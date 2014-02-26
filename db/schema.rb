@@ -115,8 +115,9 @@ ActiveRecord::Schema.define(:version => 20140222234734) do
     t.integer  "user_id"
     t.string   "email"
     t.text     "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.string   "destination", :default => "contact@loomio.org"
   end
 
   create_table "contributions", :force => true do |t|
