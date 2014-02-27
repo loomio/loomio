@@ -17,9 +17,9 @@
             %h2
               - if @invitation
                 - if @invitation.to_start_group?
-                  = t :"start_group.create_account_to_start_group", group_name: @invitation.group.full_name
-                -else
-                  = t :"join_group.create_account_to_join_group", group_name: @invitation.group.full_name
+                  = t :"start_group.create_account_to_start_group", group_name: @invitation.invitable_name
+                -elsif @invitation.to_join_group?
+                  = t :"join_group.create_account_to_join_group", group_name: @invitation.invitable_name
               - else
                 = t :create_an_account
             %p= t :"or_sign_in_html", link: user_session_path, link_class: 'existing-user'

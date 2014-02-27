@@ -12,7 +12,7 @@
                 - if @invitation.to_start_group?
                   = t :"start_group.log_in"
                 - else
-                  = t(:"join_group.log_in", group_name: @invitation.group_name)
+                  = t(:"join_group.log_in", group_name: @invitation.invitable_name)
               - else
                 = t :sign_in
           .signin_container

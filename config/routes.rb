@@ -1,4 +1,5 @@
 Loomio::Application.routes.draw do
+
   slug_regex = /[a-z0-9\-\_]*/i
   ActiveAdmin.routes(self)
 
@@ -30,15 +31,14 @@ Loomio::Application.routes.draw do
     match 'unfollow'
   end
 
-  resources :invitations, only: [:show]
-
   resources :group_requests, only: [:create, :new] do
     get :confirmation, on: :collection
   end
 
+  resources :invitations, only: [:show, :create, :destroy]
+
   resources :groups, path: 'g', only: [:create, :edit] do
     scope module: :groups do
-      resources :invitations, only: [:destroy, :new, :create]
       resources :memberships, only: [:index, :destroy, :new, :create] do
         member do
          post :make_admin
@@ -76,6 +76,7 @@ Loomio::Application.routes.draw do
 
     resources :motions,     only: [:index]
     resources :discussions, only: [:index, :new]
+    resources :invitations, only: [:new, :destroy]
   end
 
   scope module: :groups, path: 'g', slug: slug_regex do
@@ -114,6 +115,7 @@ Loomio::Application.routes.draw do
 
   resources :discussions, path: 'd', only: [:new, :edit, :create] do
     get :activity_counts, on: :collection
+    resources :invitations, only: [:new]
 
     member do
       post :update_description

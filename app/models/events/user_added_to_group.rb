@@ -13,7 +13,6 @@ class Events::UserAddedToGroup < Event
 
   def notify_users!
     notify!(membership.user)
-    UserMailer.added_to_a_group(membership.user, membership.inviter, membership.group).deliver
   end
 
   handle_asynchronously :notify_users!
