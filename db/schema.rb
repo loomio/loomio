@@ -115,8 +115,9 @@ ActiveRecord::Schema.define(:version => 20140222234734) do
     t.integer  "user_id"
     t.string   "email"
     t.text     "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.string   "destination", :default => "contact@loomio.org"
   end
 
   create_table "contributions", :force => true do |t|
@@ -519,7 +520,6 @@ ActiveRecord::Schema.define(:version => 20140222234734) do
     t.string   "language_preference"
     t.string   "time_zone"
     t.string   "key"
-    t.boolean  "subscribed_to_loomio_news",                                   :default => false,      :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
