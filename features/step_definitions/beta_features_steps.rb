@@ -4,7 +4,7 @@ end
 
 When(/^enable the beta feature$/) do
   check 'does_nothing'
-  click_on 'Update settings'
+  click_on 'Update beta features'
 end
 
 Then(/^the beta features should be enabled$/) do

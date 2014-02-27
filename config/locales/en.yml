@@ -759,6 +759,7 @@ en:
   beta_features:
     heading: "Beta features"
     submit: "Update beta features"
+    beta_features_updated: "Beta features updated."
 
   simple_form:
     "yes": 'Yes'
@@ -926,13 +927,7 @@ en:
   #
   # COMMON WORDS
   #
-  monday: "Monday"
-  tuesday: "Tuesday"
-  wednesday: "Wednesday"
-  thursday: "Thursday"
-  friday: "Friday"
-  saturday: "Saturday"
-  sunday: "Sunday"
+
   about_loomio: "About Loomio"
   ago: "%{quantity_of_time} ago"
   approve: "Approve"

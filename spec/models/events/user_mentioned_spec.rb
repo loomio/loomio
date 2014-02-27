@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Events::UserMentioned do
   let(:comment){ mock_model(Comment) }
   let(:email_preferences) { double(:email_preferences, :subscribed_to_mention_notifications? => false )}
-  let(:mentioned_user) { mock_model(User, :email_preferences => email_preferences )}
+  let(:mentioned_user) { mock_model(User, :email_preferences => email_preferences, :subscribed_to_mention_notifications? => false )}
 
   describe "::publish!" do
     let(:event) { double(:event, :notify_users! => true) }
@@ -37,7 +37,7 @@ describe Events::UserMentioned do
 
     context 'mentioned user is subscribed to email notifications' do
       before do
-        email_preferences.should_receive(:subscribed_to_mention_notifications?).
+        mentioned_user.should_receive(:subscribed_to_mention_notifications?).
                                       and_return(true)
         UserMailer.stub_chain(:mentioned, :deliver)
       end
