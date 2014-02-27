@@ -192,6 +192,7 @@ Loomio::Application.routes.draw do
 
   scope controller: 'pages' do
     get :about
+    get :crowd
     get :privacy
     get :purpose
     get :pricing
