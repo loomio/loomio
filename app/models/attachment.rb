@@ -5,8 +5,19 @@ class Attachment < ActiveRecord::Base
   validates_presence_of :filename, :location, :user_id
 
   def is_an_image?
-    extension = self.filename.split('.').last.downcase
-    %w[jpg jpeg png].include?(extension)
+    %w[jpg jpeg png gif].include?(filetype)
+  end
+
+  def truncated_filename(length = 30)
+    if filename.length > length
+      filename.truncate(length) + filetype
+    else
+      filename
+    end
+  end
+
+  def filetype
+    filename.split('.').last.downcase
   end
 end
 
