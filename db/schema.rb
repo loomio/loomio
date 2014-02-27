@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(:version => 20140227000252) do
     t.boolean  "private"
     t.string   "key"
     t.datetime "last_non_comment_activity_at", :default => '2014-02-13 00:54:32', :null => false
+  end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
   add_index "discussions", ["group_id"], :name => "index_discussions_on_group_id"
@@ -495,6 +496,12 @@ ActiveRecord::Schema.define(:version => 20140227000252) do
   end
 
   add_index "subscriptions", ["group_id"], :name => "index_subscriptions_on_group_id"
+
+  create_table "test", :id => false, :force => true do |t|
+    t.integer "age"
+  end
+
+  add_index "test", ["age"], :name => "test_age_key", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                       :default => "",         :null => false
