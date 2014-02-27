@@ -99,7 +99,7 @@ describe Comment do
       @user = create :user
       @discussion = create_discussion :author => @user, :group => @group
       Event.stub(:send_new_comment_notifications!)
-      @user.stub_chain(:email_notifications, :subscribed_to_mention_notifications?).and_return(true)
+      @user.stub(:subscribed_to_mention_notifications?).and_return(true)
     end
     context "user mentions another group member" do
       before do

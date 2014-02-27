@@ -38,7 +38,7 @@ class DiscussionReader < ActiveRecord::Base
 
   def has_read?(event)
     if last_read_at.present?
-      self.last_read_at > event.updated_at
+      self.last_read_at >= event.updated_at
     else
       false
     end

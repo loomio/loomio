@@ -55,6 +55,6 @@ class Groups::MembershipRequestsController < BaseController
   end
 
   def load_group
-    @group ||= GroupDecorator.new Group.find(params[:group_id])
+    @group ||= GroupDecorator.new Group.find_by_key!(params[:group_id])
   end
 end

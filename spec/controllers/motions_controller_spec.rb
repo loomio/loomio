@@ -8,7 +8,7 @@ describe MotionsController do
   let(:previous_url) { root_url }
 
   before :each do
-    Motion.stub(:find_by_key).with(motion.key).and_return motion
+    Motion.stub(:find_by_key!).with(motion.key).and_return motion
     Group.stub(:find).and_return(group)
     Discussion.stub(:find).and_return(discussion)
     request.env["HTTP_REFERER"] = previous_url
@@ -84,7 +84,7 @@ describe MotionsController do
         controller.stub(:authorize!).with(:edit_close_date, motion).and_return(true)
       end
       it "checks user has permission" do
-        Motion.stub(:find_by_key).with(motion.key).and_return FactoryGirl.create(:motion, :discussion => discussion)
+        Motion.stub(:find_by_key!).with(motion.key).and_return FactoryGirl.create(:motion, :discussion => discussion)
         controller.should_receive(:authorize!)
         put :edit_close_date, :id => motion.key, :motion => { close_at_date: Time.now,
                           close_at_time: "05:00", close_at_time_zone: "Wellington" }

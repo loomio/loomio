@@ -112,7 +112,7 @@ module ApplicationHelper
   end
 
   def analytics_scope
-    if Rails.env.production? || Rails.env.staging?
+    if Rails.env.production? || Rails.env.staging? 
       unless controller_name == 'searches'
         yield
       end

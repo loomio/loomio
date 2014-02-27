@@ -123,6 +123,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.purpose,
 .pages.how_it_works,
 .pages.about_us,
+.pages.crowd,
 .woc.index,
 .we_the_people.index {
   color: black;
@@ -526,6 +527,27 @@ body.pages.terms_of_service {
 
 }
 
+.crowd {
+  #hero {
+    text-align: center;
+    line-height: 57px;
+    margin-bottom: 42px;
+  }
+  .subheader { text-align: center; }
+  #points {
+    list-style: disc;
+    margin: 0 40px;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 18px;
+    li { margin-bottom: 14px; }
+  }
+  figure {
+    text-align: center;
+    img { width: 600px; }
+  }
+}
+
 .container#contact_message {
 
   abbr { border-bottom: none; }
@@ -548,6 +570,7 @@ body.pages.terms_of_service {
     margin: 8px 0 10px 0;
     width: 360px;
   }
+  select { margin: 8px 0 10px 0; }
   #direct_contact { margin-top: 101px; }
 }
 
