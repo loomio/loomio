@@ -118,6 +118,10 @@ class Ability
 
     can :cancel, MembershipRequest, requestor_id: user.id
 
+    can :cancel, Invitation do |invitation|
+      (invitation.inviter == user) or (@admin_group_ids.include?(invitation.group.id))
+    end
+
     can [:approve,
          :ignore], MembershipRequest do |membership_request|
       group = membership_request.group
