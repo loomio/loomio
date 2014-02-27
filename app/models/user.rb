@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   gravtastic  :rating => 'pg',
               :default => 'none'
 
-  serialize :beta_fetaures, Array
+  serialize :beta_features, Array
 
   has_attached_file :uploaded_avatar,
     :styles => {
