@@ -3,63 +3,212 @@
     .inner-container
       .row-fluid
         .subhead
-          %h1#hero The world needs a better way to make decisions together
-          %h2.subheader We're building it.
-        %p
-          %strong [mailchimp and thunderclap]
-      .divider
+          .span12
+            %h1#hero
+              Real
+              %span.animate democracy
+              needs to
+              %br
+              include everyone.
+            %h2.subheader Let's make it happen together.
+            %br
+            %br
       .row-fluid
-        %p
-          %strong Loomio is free and open software for collaborative decision-making. We’re crowdfunding to build a new platform to deliver on a big vision: everyone should be able to participate in decisions that affect them.
-        %p
-          %strong Crowdfunding launches March 11. We can’t do this without you.
-        %p Loomio fills a critical gap. Social media has made it so easy to communicate that one person can reach thousands in a matter of hours. But when it’s time to move beyond talking and take collective action, there’s no easy way.
-        %p We’ve built a prototype already being used by thousands of amazing groups around the world. Loomio has been released in more than a dozen languages, and is being used in communities, schools, workplaces, and social movements.
-        %p But to really change things on a large scale, Loomio needs to be so easy to use that good decision-making becomes second nature. A platform for truly inclusive decision making has to be accessible to everyone.
-        %p
-          %strong We’ve taken all the learning from thousands of early users and designed a whole new platform to deliver on our big vision of a more democratic world at every level: Loomio 1.0.
-        .divider
-        %figure
+        .span8.offset2
+          %p We're crowdfunding a <b>free open-source platform</b> for anyone, anywhere to <b>participate in decisions</b> that affect them.
+          %br
+      .row-fluid
+        .span4.offset2
+          %button.btn.btn-block.btn-large.btn-success
+            1. Join the Thunderclap
+          %br
+          %p Thunderclap will auto-share the campaign for you the day we launch.
+        .span4
+          %button.btn.btn-block.btn-large.btn-primary
+            2. Join the mailing list
+          %br
+          %p We'll let you know when we launch the campaign.
+  / %section
+  /   .inner-container
+  /     / .row-fluid
+  /     /   .span12.offset2
+  /     /     %h2
+  /     /       Crowdfunding launches March 11th 2014.
+
+  /     .row-fluid
+  /       .span8.offset2
+  /         %p We're crowdfunding a <b>free open-source platform</b> for anyone, anywhere to <b>participate in decisions</b> that affect them. We need you to do two things.
+  /     .row-fluid
+  /       .span4.offset2
+  /         %button.btn.btn-block.btn-large.btn-success
+  /           1. Join the Thunderclap
+  /         %br
+  /         %p Thunderclap will auto-share the campaign for you the day we launch.
+  /       .span4
+  /         %button.btn.btn-block.btn-large.btn-primary
+  /           2. Join the mailing list
+  /         %br
+  /         %p We'll let you know when we launch the campaign.
+
+  /         / %h3 1. Spread the word
+  /         / %p
+  /         /   Join the
+  /         /   =link_to "Thunderclap campaign:", '#'
+  /         /   a whole crowd broadcasting this message to the world.
+  /         / %h3 2. Join the mailing list
+  /     / .row-fluid
+  /     /   .span3.offset3
+  /     /     %button.btn.btn-block.btn-large.btn-primary
+  /     /       Join the mailing list
+  /     /   .span3
+  /     /     %button.btn.btn-block.btn-large.btn-success
+  /     /       Spread the word
+  %section
+    .inner-container
+      .row-fluid
+        .span8.offset2
+          %h2
+            Loomio is free open-source software
+            %br
+            for anyone, anywhere 
+            %br 
+            to participate in decisions that affect them.
+            %br
+            %br
+
+      .row-fluid
+        .span8.offset2
+          =image_tag('sneak-peak.png')
+          %br
+          %br
+          %h3
+            Crowdfunding launches March 11th 2014.
+            %br
+            We can’t do it without you.
+          %br
+          %p Real democracy is about collaboration: groups of people getting together and making decisions that work for everyone.
+
+          %p Loomio fills a critical gap. Social media has made it so easy to communicate that one person can reach thousands in a matter of hours. But a decision is what turns talk into action, and there's no easy way to make decisions together online.
+
+          %p
+            We've taken all the learning from thousands of groups using our beta prototype and
+            %strong designed a whole new mobile platform
+            for truly inclusive decision-making: Loomio 1.0
+          .divider
           =image_tag('loomio1.png')
+          .divider
 
-        %ul#points
-          %li It’s totally mobile, opening it up to developing countries where millions of people only have access to the internet through mobile devices.
-          %li It’s being built with the best in open technologies so it’s fast, responsive and beautiful.
-          %li Because it’s open source, you can host the data yourself, so it’s safe no matter what your security requirements are.
-          %li And we’ve made it super easy and accessible, so anyone can use it.
+          %h2 Help us build a truly inclusive platform
+          %br
+          %h3
+            %i.fa-mobile
+            It needs to be
+            %strong mobile,
+            to include people in places where computers and internet are scarce.
+          %p
+            So we’re building a platform that works on any device, built with best in open mobile technology: Ruby on Rails, AngularJS, HTML5
+          .divider
+          %h3
+            It needs to be
+            %strong easy,
+            to include all kinds of people.
+          %p
+            So we’ve designed it to be as easy to use as email, so you don’t need to be a computer geek to participate.
+          .divider
+          %h3
+            It needs to be
+            %strong safe,
+            to include people discussing sensitive topics.
+          %p
+            So we’re making it really easy to set up and run your own independent version, so your privacy is entirely under your own control.
+          .divider
+          %h3
+            It needs to be
+            %strong accessible,
+            to include people of all levels of ability.
+          %p
+            So we’re making it work great with screen-readers and other assistive technologies.
+          .divider
+          %h3
+            It needs to be
+            %strong open,
+            to include everyone.
+          %p So we’re building 100% free and open source. We're building public infrastructure for decision-making, held in the commons. 
 
-        %p We’ve done all the research and design, now we just have to fund the development needed to release it to the world. An amazing team has come together to make this happen.
-        %p We’re crowdfunding so that the project will be driven by the community of people who want it to happen, not by advertisers or corporate interests. Public infrastructure for decision-making needs to be open-source and held in the commons.
 
-        %h3 We’re launching March 11. We can’t make Loomio 1.0 without your help.
+  %section
+    .inner-container
+      .row-fluid
 
-        %a{href: '[mailchimp and thunderclap]'}
+        .span8.offset2
+          %h2
+            We’re launching March 11th 2014.
+            %br
+          %br
+          %p We’ve done all the research and design, now we just have to fund the development needed to release it to the world. 
+          %p We’re crowdfunding so that the project will be driven by the community of people who want it to happen, not by advertisers or corporate interests.
+          %h2
+            We can’t make Loomio 1.0 without you.
+            %br
+          %br
+      .row-fluid
+        .span4.offset2
+          %button.btn.btn-block.btn-large.btn-success
+            1. Join the Thunderclap
+          %br
+          %p Thunderclap will auto-share the campaign for you the day we launch.
+        .span4
+          %button.btn.btn-block.btn-large.btn-primary
+            2. Join the mailing list
+          %br
+          %p We'll let you know when we launch the campaign.
 
-        %h3 More Information
-        %p
-          %strong Contact us
-        %p
-          Press inquiries:
-          %span
-            = mail_to 'press@loomio.org'
-        %p
-          Technical inquiries:
-          %span
-            = mail_to 'tech@loomio.org'
-        %p
-          General inquiries:
-          %span
-            = mail_to 'contact@loomio.org'
-        %p Find out how the current prototype works, and sign your group up to use it now.
-        %p Loomio is a worker-owned cooperative social enterprise based in Wellington, New Zealand. Find out about our purpose and and our story and our team.
-        %p
-          Keep up to date on the
-          %a{href: blog_path}
-            Loomio Blog
-          ,
-          %a{href: 'https://www.facebook.com/Loomio'}
-            Facebook
-          , and
-          %a{href: 'https://www.twitter.com/loomio'}
-            Twitter
-          \. See case studies, press, and videos.
+  %section
+    .inner-container
+      .row-fluid
+        .span8.offset2
+          %h3 More Information
+          %p
+            %strong Contact us
+          %p
+            Press inquiries:
+            %span
+              = mail_to 'press@loomio.org'
+          %p
+            Technical inquiries:
+            %span
+              = mail_to 'tech@loomio.org'
+          %p
+            General inquiries:
+            %span
+              = mail_to 'contact@loomio.org'
+          %p Find out how the current prototype works, and sign your group up to use it now.
+          %p
+            Keep up to date on the
+            %a{href: blog_path}
+              Loomio Blog
+            ,
+            %a{href: 'https://www.facebook.com/Loomio'}
+              Facebook
+            , and
+            %a{href: 'https://www.twitter.com/loomio'}
+              Twitter
+            \. See case studies, press, and videos.
+
+
+          / / %p We’ve done all the research and design, now we just have to fund the development needed to release it to the world. 
+          / %p We’re crowdfunding so that the project will be driven by the community of people who want it to happen, not by advertisers or corporate interests.
+
+          / %h2 You can help make this happen
+          / %br
+
+          / %h3 1. Spread the word:
+          / %p 
+          /   Join the
+          /   =link_to "Thunderclap campaign:", '#'
+          /   a whole crowd broadcasting this message to the world.
+          / %h3 2. Join the mailing list:
+          / %form.form
+          /   %label We'll let you know when the campaign launches:
+
+          /   %input{type: 'email', placeholder: "you@example.com"}
