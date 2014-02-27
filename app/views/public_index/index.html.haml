@@ -7,15 +7,24 @@
         .add-on
           %i.icon-search
             = submit_tag "", class: 'submit-search'
+    .search-other-domain
+      - new_params = params.reject { |k,v| k == 'model' }
+      - case @model
+      - when 'group'
+        = link_to 'search public discussions', public_discussions_path(new_params)
+      - when 'discussion'
+        = link_to 'search public groups', public_groups_path(new_params)
 .public-groups-container
 
   %ul.selector-list.bordered
     - @public_items.each do |item|
       = link_to item do
         %li.selector-item
-          .group-name
-            = item.title
-          .group-description.clearfix
-            = item.description.to_s
+          .search-item-name= item.title
+          - if @model == 'discussion'
+            .search-item-group= item.group.title
+
+          .item-description.clearfix
+            = item.description.to_s.truncate(300)
 
 = paginate @public_items, :window => 3

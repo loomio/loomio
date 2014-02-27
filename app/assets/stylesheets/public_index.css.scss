@@ -85,8 +85,14 @@ body.public_index {
       .group-details {
         display: inline-block;
       }
-      .group-name {
+      .search-item-name {
         color: $link-blue;
+        font-weight: 700;
+        float: left;
+        margin-right: 8px;
+      }
+      .search-item-group {
+        color: #555555;
         font-weight: 700;
         float: left;
         margin-right: 8px;

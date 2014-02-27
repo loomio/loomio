@@ -7,9 +7,9 @@ class PublicIndexController < ApplicationController
   end
 
   private
-  
+
   def model
     @model.singularize.humanize.constantize
   end
-  
+
 end
