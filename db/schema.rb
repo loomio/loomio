@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140222070435) do
+ActiveRecord::Schema.define(:version => 20140227000252) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20140222070435) do
   create_table "attachments", :force => true do |t|
     t.integer  "user_id"
     t.string   "filename"
-    t.string   "location"
+    t.text     "location"
     t.integer  "comment_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -115,8 +115,9 @@ ActiveRecord::Schema.define(:version => 20140222070435) do
     t.integer  "user_id"
     t.string   "email"
     t.text     "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.string   "destination", :default => "contact@loomio.org"
   end
 
   create_table "contributions", :force => true do |t|
@@ -495,12 +496,6 @@ ActiveRecord::Schema.define(:version => 20140222070435) do
 
   add_index "subscriptions", ["group_id"], :name => "index_subscriptions_on_group_id"
 
-  create_table "test", :id => false, :force => true do |t|
-    t.integer "age"
-  end
-
-  add_index "test", ["age"], :name => "test_age_key", :unique => true
-
   create_table "users", :force => true do |t|
     t.string   "email",                                       :default => "",         :null => false
     t.string   "encrypted_password",           :limit => 128, :default => ""
@@ -565,7 +560,8 @@ ActiveRecord::Schema.define(:version => 20140222070435) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "statement"
-    t.integer  "age",        :default => 0, :null => false
+    t.integer  "age",              :default => 0, :null => false
+    t.integer  "previous_vote_id"
   end
 
   add_index "votes", ["motion_id", "user_id", "age"], :name => "vote_age_per_user_per_motion", :unique => true
