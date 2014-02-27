@@ -70,6 +70,10 @@ class Group < ActiveRecord::Base
                                     less_than_n_discussions(2).
                                     created_earlier_than(1.month.ago).
                                     parents_only
+  
+  def self.search_or_sort(query = nil)
+    query ? search_full_name(query) : sort_by_popularity
+  end
 
   has_one :group_request
 
@@ -100,6 +104,7 @@ class Group < ActiveRecord::Base
            conditions: {accepted_at: nil, cancelled_at: nil}
 
   alias :users :members
+  alias_attribute :title, :full_name
 
   has_many :requested_users, :through => :membership_requests, source: :user
   has_many :admins, through: :admin_memberships, source: :user

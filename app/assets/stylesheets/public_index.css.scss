@@ -2,7 +2,7 @@
 @import "settings";
 @import "mixins";
 
-body.public_groups {
+body.public_index {
   &.index, &.find {
     .btn { margin-left: 10px; }
     .add-on {

@@ -1,6 +1,6 @@
 .row-fluid
   .span12.header-row
-    %h1 Discover groups on Loomio
+    %h1= "Discover #{@model.pluralize} on Loomio"
     .input-append
       = form_tag public_groups_path, method: 'get', class: 'form-search' do |f|
         = text_field_tag :query, params[:query], class: 'search-query'
@@ -10,12 +10,12 @@
 .public-groups-container
 
   %ul.selector-list.bordered
-    - @groups.each do |group|
-      = link_to group do
+    - @public_items.each do |item|
+      = link_to item do
         %li.selector-item
           .group-name
-            = group.full_name
+            = item.title
           .group-description.clearfix
-            = group.description
+            = item.description.to_s
 
-= paginate @groups, :window => 3
+= paginate @public_items, :window => 3

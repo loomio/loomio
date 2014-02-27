@@ -12,7 +12,7 @@
  *= require header
  *= require dashboard
  *= require groups
- *= require groups/public_groups
+ *= require public_index
  *= require discussions
  *= require pages
  *= require notifications
