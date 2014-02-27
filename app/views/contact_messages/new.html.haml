@@ -6,11 +6,12 @@
         .span5#contact_form
           %h1 Contact us
           = simple_form_for @contact_message, :defaults => {:required => true}, :validate => true do |f|
-            = f.input :name, label: "Your name"
-            = f.input :email, label: "Your email address"
-            = f.input :message, label: "Your message"
-            = f.submit :submit, :value => "Send message", class: 'btn btn-info btn-large', data: { disable_with: "Send message" }
+            = f.input :name, label: t(:"contact_page.labels.name")
+            = f.input :email, label: t(:"contact_page.labels.email")
+            = f.input :message, label: t(:"contact_page.labels.message")
+            = f.input :destination, label: t(:"contact_page.labels.destination"), as: :select, collection: contact_destinations, include_blank: false
+            = f.submit :submit, value: t(:"contact_page.labels.submit"), class: 'btn btn-info btn-large', data: { disable_with: t(:"contact_page.labels.submit") }
         .span5.offset1#direct_contact
-          %p Fill out this form, or send an email to <a href="mailto:contact@loomio.org">contact@loomio.org</a>
-          %p If you'd rather speak to someone directly, you can call Ben on +64 21 0232 5433
-          %p You can also join us on <a href="https://www.facebook.com/Loomio" target='_blank'>facebook</a> and <a href="https://twitter.com/LoomioProject" target='_blank'>twitter</a>!
+          %p= t(:"contact_page.messages.email_html", email: "contact@loomio.org")
+          %p= t(:"contact_page.messages.phone", name: "Ben", number: "+64 21 0232 5433")
+          %p= t(:"contact_page.messages.social_html", facebook: "https://www.facebook.com/Loomio", twitter: "https://twitter.com/Loomio")
