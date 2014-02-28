@@ -1,0 +1,7 @@
+= render '/application/mailer_doctype'
+%html
+  %p= t("email.to_join_discussion.content", discussion: @discussion.title)
+  %p= t("email.to_join_discussion.message_intro", who: @inviter.name)
+  %p= @message
+  %p
+    = link_to t("email.to_join_discussion.link"), discussion_url(@discussion)
