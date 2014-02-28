@@ -1,4 +1,7 @@
-%h1= t("user_settings_form.header")
+%h1
+  = t :'user_settings_form.profile'
+  %span= link_to t(:'user_settings_form.view'), user_path(@user), id: 'edit-profile'
+
 .row
   .span4
     = simple_form_for @user do |f|

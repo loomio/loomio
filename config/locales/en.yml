@@ -717,7 +717,8 @@ en:
     create_an_account: "Create an account"
 
   user_settings_form:
-    header: "User settings"
+    view: "View it"
+    profile: "Edit profile"
     picture: "Picture"
     use_avatar_kind: "Use %{kind}"
     upload_new_image: "Upload a new image"

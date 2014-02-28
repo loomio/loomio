@@ -19,6 +19,6 @@
               link: user_path(@last_collaborator),
               link_class: 'user-name')
         .see-revision-history
-          %i.icon-time
+          %i.fa.fa-time
           =link_to t("discussion_context.see_revision_history"), show_description_history_discussion_path(@discussion), :method => :post, :class => "see-description-history", :remote => true
 #description-revision-history.modal.hidden

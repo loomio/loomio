@@ -13,7 +13,6 @@ ul { list-style: none; }
 html { height: 100%; }
 
 body {
-  background-color: $main-background;
   height: 100%;
   color: $text-black;
 }
@@ -104,6 +103,7 @@ li.selector-item a.selector-link:hover {
 .btn-grey { color: $mid-grey; }
 a.btn-icon:hover { color: $dark-grey; }
 
+body.pages { background-color: #f7f7f7; }
 
 .pages.home p:last-child { margin-bottom: 0; }
 

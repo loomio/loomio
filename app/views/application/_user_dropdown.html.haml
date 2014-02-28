@@ -5,6 +5,21 @@
       = current_user.name
     %b.caret
   %ul.dropdown-menu
-    %li= link_to t(:user_settings), user_settings_path
-    %li= link_to t(:email_preferences), email_preferences_path
-    %li= link_to(t(:sign_out), destroy_user_session_path, method: :delete)
+    %li
+      %a{href: user_settings_path}
+        %i.fa.fa-cog
+        / = t(:user_settings)
+        Profile
+    %li
+      %a{href: email_preferences_path}
+        %i.fa.fa-envelope
+        / = t(:email_preferences)
+        Email settings
+    %li
+      %a{href: help_path}
+        %i.fa.fa-star
+        %span= t :"help.help"
+    %li
+      %a{href: destroy_user_session_path, method: :delete}
+        %i.fa.fa-sign-out
+        = t(:sign_out)
