@@ -22,7 +22,7 @@
       .span4.invite-members-of-parent
         %h3= t :"invitation.select_members", group_name: @group.parent.name
         .parent-members
-          - addable_users = @group.parent.members.map{|u| [u.name, u.id] }
+          - addable_users = @group.parent_members.sorted_by_name.map{|u| [u.name, u.id] }
           - existing_user_ids = @group.members.map(&:id)
           - if addable_users.count > 1
             .invite-member-checkbox-container
