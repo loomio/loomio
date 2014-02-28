@@ -1,5 +1,5 @@
 = t("email.user_added_to_a_group.content", which_group: @group.name, who: @inviter.name)
 \
-= link_to group_url(@group), group_url(@group)
+= @message
 \
-= render 'unsubscribe_link_text'
+= link_to group_url(@group), group_url(@group)

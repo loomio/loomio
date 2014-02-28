@@ -7,7 +7,7 @@ describe MotionMailer do
   let(:motion) { create(:motion, discussion: discussion) }
 
   describe 'sending email on new motion creation' do
-    before(:all) do
+    before do
       @email = MotionMailer.new_motion_created(motion, user)
     end
 
@@ -37,7 +37,7 @@ describe MotionMailer do
   end
 
   describe 'sending email when motion is blocked' do
-    before(:all) do
+    before do
       @vote = Vote.new(position: "block")
       @vote.motion = motion
       @vote.user = user
