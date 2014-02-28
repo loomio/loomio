@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe EmailPreferences do
+describe EmailPreference do
   let(:user) { stub_model(User) }
   let(:days_to_send) { ['Monday', 'Wednesday'] }
 
   before do
-    @email_preferences = EmailPreferences.new(user: user)
+    @email_preferences = EmailPreference.new(user: user)
   end
 
   describe "#all_memberships" do

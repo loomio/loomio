@@ -6,7 +6,7 @@ Given /^I have a user account but not I'm logged in$/ do
 end
 
 Given /^I am subscribed to daily activity email$/ do
-  @user.email_preferences.update_attribute(:subscribed_to_daily_activity_email, true)
+  @user.email_preference.update_attribute(:subscribed_to_daily_activity_email, true)
 end
 
 When /^I visit email_preferences with unsubscribe_token in the params$/ do

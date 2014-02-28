@@ -1,7 +1,7 @@
 class MoveEmailPreferencesFromUserToEmailPreferences < ActiveRecord::Migration
   class User < ActiveRecord::Base
   end
-  class EmailPreferences < ActiveRecord::Base
+  class EmailPreference < ActiveRecord::Base
   end
 
   require 'ruby-progressbar'
@@ -12,7 +12,7 @@ class MoveEmailPreferencesFromUserToEmailPreferences < ActiveRecord::Migration
     User.find_each do |user|
       progress_bar.increment
 
-      EmailPreferences.create!(user_id: user.id,
+      EmailPreference.create!(user_id: user.id,
                               subscribed_to_daily_activity_email: user.subscribed_to_daily_activity_email,
                               subscribed_to_mention_notifications: user.subscribed_to_mention_notifications,
                               subscribed_to_proposal_closure_notifications: user.subscribed_to_proposal_closure_notifications
@@ -24,13 +24,13 @@ class MoveEmailPreferencesFromUserToEmailPreferences < ActiveRecord::Migration
   end
 
   def down
-    progress_bar = ProgressBar.create( format: "(%c/%C) |%B| %a", total: EmailPreferences.count )
+    progress_bar = ProgressBar.create( format: "(%c/%C) |%B| %a", total: EmailPreference.count )
 
     add_column :users, :subscribed_to_daily_activity_email, :boolean, default: false, null: false
     add_column :users, :subscribed_to_mention_notifications, :boolean, default: true, null: false
     add_column :users, :subscribed_to_proposal_closure_notifications, :boolean, default: true, null: false
     User.reset_column_information
-    EmailPreferences.find_each do |email_preferences|
+    EmailPreference.find_each do |email_preferences|
       progress_bar.increment
 
       user = User.find(email_preferences.user_id)
