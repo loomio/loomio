@@ -244,8 +244,11 @@
 
 .toolbar-navigation #contribute a {
   height: 20px;
+  padding-top: 10px;
+  .fa-heart-o {
+    font-size: 20px;
+  }
 }
-
 .navbar-fixed-top .navbar-inner {
   min-height: 44px;
 }
