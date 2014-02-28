@@ -24,11 +24,11 @@ class Users::EmailPreferencesController < BaseController
 
   def load_email_preferences
     user = @restricted_user || current_user
-    @email_preferences = user.email_preferences
+    @email_preferences = user.email_preference
   end
 
   def set_attributes
-    @attributes = permitted_params.email_preferences
+    @attributes = permitted_params.email_preference
     if @email_preferences.user.beta_feature_enabled?('activity_summary_email')
       @attributes[:days_to_send] = @attributes[:days_to_send].reject(&:blank?)
     end

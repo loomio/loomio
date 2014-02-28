@@ -213,10 +213,10 @@ describe User do
 
   it "sets subscriptions to false when deactivate! is called" do
     user.deactivate!
-    user.email_preferences.subscribed_to_daily_activity_email.should be_false
-    user.email_preferences.subscribed_to_mention_notifications.should be_false
-    user.email_preferences.subscribed_to_proposal_closure_notifications.should be_false
-    user.email_preferences.days_to_send.should be_empty
+    user.email_preference.subscribed_to_daily_activity_email.should be_false
+    user.email_preference.subscribed_to_mention_notifications.should be_false
+    user.email_preference.subscribed_to_proposal_closure_notifications.should be_false
+    user.email_preference.days_to_send.should be_empty
   end
 
   it "unsets deleted_at (nil) when activate! is called" do
@@ -364,7 +364,7 @@ describe User do
   describe "create_email_preference" do
     it 'should create new associated email_preferences for the user' do
       user = User.create!(name: "Test User", email: "test1@example.com", password: "password")
-      user.email_preferences.should_not be_nil
+      user.email_preference.should_not be_nil
     end
   end
 end

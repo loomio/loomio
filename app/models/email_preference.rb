@@ -1,4 +1,4 @@
-class EmailPreferences < ActiveRecord::Base
+class EmailPreference < ActiveRecord::Base
 
   DAYS = Date::DAYNAMES
   

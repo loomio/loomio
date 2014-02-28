@@ -1,5 +1,5 @@
 Given /^"(.*?)" is subscribed to proposal closing soon notification emails$/ do |arg1|
-  User.find_by_name(arg1).email_preferences.update_attribute('subscribed_to_proposal_closure_notifications', true)
+  User.find_by_name(arg1).email_preference.update_attribute('subscribed_to_proposal_closure_notifications', true)
 end
 
 When /^we run the rake task to check for closing proposals, (\d+) hours before it closes\.$/ do |arg1|

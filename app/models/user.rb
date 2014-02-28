@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
   has_many :discussion_readers, dependent: :destroy
   has_many :motion_read_logs, dependent: :destroy
 
-  has_one :email_preferences
+  has_one :email_preference
 
   has_many :notifications
   has_many :comments
@@ -126,7 +126,7 @@ class User < ActiveRecord::Base
   end
 
   delegate :subscribed_to_proposal_closure_notifications?, to: :email_preferences, prefix: false
-  delegate :subscribed_to_mention_notifications?, to: :email_preferences, prefix: false
+  delegate :subscribed_to_mention_notifications?, to: :email_preference, prefix: false
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -229,7 +229,7 @@ class User < ActiveRecord::Base
 
   def deactivate!
     update_attributes(:deleted_at => Time.now)
-    email_preferences.deactivate!
+    email_preference.deactivate!
     memberships.update_all(:archived_at => Time.now)
     membership_requests.where("responded_at IS NULL").destroy_all
   end
@@ -323,7 +323,7 @@ class User < ActiveRecord::Base
   private
 
   def create_email_preference
-    self.email_preferences = EmailPreferences.create!(user: self)
+    self.email_preference = EmailPreference.create!(user: self)
   end
 
   def set_default_avatar_kind

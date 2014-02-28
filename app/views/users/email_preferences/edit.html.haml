@@ -16,7 +16,7 @@
         %h2= t("email_preferences_form.activity_summary_email")
         -if params[:unsubscribe_token]
           =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
-        = f.input :days_to_send, label: t("email_preferences_form.activity_summary_subscription"), collection: EmailPreferences::DAYS, as: :check_boxes, item_wrapper_class: 'inline'
+        = f.input :days_to_send, label: t("email_preferences_form.activity_summary_subscription"), collection: EmailPreference::DAYS, as: :check_boxes, item_wrapper_class: 'inline'
         .row
           .span2
             = f.input :hour_to_send, as: :select, collection: (0..23), include_blank: false, label: t("email_preferences_form.hour_to_send")
