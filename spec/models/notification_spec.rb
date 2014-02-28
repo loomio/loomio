@@ -17,10 +17,10 @@ describe Notification do
     }.should raise_error(ActiveRecord::RecordInvalid, /has already been taken/)
     lambda {
       Notification.create!(:event => mock_model(Event), :user => user)
-    }.should_not raise_error(ActiveRecord::RecordInvalid, /has already been taken/)
+    }.should_not raise_error
     lambda {
       Notification.create!(:event => event, :user => mock_model(User))
-    }.should_not raise_error(ActiveRecord::RecordInvalid, /has already been taken/)
+    }.should_not raise_error
   end
 
   before do
