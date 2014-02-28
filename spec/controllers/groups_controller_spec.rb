@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe GroupsController do
-  let(:group) { create :group, key: 'abc111' }
+  let(:group) { create :group }
   let(:subgroup) { create :group, parent: group}
   let(:user)  { create :user }
 
