@@ -100,11 +100,11 @@ module DiscussionsHelper
     icon =
     header = t "simple_form.labels.discussion.privacy_public_header"
     description = t 'simple_form.labels.discussion.privacy_public_description'
-    options << ["<span class='discussion-privacy-setting-header'><i class='icon-globe'></i>#{header}<br /><p>#{description}</p>".html_safe, false]
+    options << ["<span class='discussion-privacy-setting-header'><i class='fa fa-globe'></i>#{header}<br /><p>#{description}</p>".html_safe, false]
 
     header = t "simple_form.labels.discussion.privacy_private_header"
     description = t(:'simple_form.labels.discussion.privacy_private_description', group: group)
-    options << ["<span class='discussion-privacy-setting-header'><i class='icon-lock'></i>#{header}<br /><p>#{description}</p>".html_safe, true ]
+    options << ["<span class='discussion-privacy-setting-header'><i class='fa fa-lock'></i>#{header}<br /><p>#{description}</p>".html_safe, true ]
   end
 
   def current_language
