@@ -325,25 +325,6 @@ a.btn-icon:hover { color: $dark-grey; }
   .footer-links { float: right; }
 }
 
-#donate-container { position: relative; }
-
-#donate-container:hover .donate-tab {
-  transform: translate(7px,0);
-    -webkit-transform: translate(7px,0);
-    -o-transform: translate(7px,0);
-    -moz-transform: translate(7px,0);
-}
-
-.donate-tab {
-  left: -11px;
-  position: fixed;
-  top: 278px;
-  transition: all .2s ease-in-out;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-}
-
 .nowrap { white-space: nowrap; }
 
 .info-box {

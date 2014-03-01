@@ -43,18 +43,8 @@ body.groups {
         min-width: 205px;
         margin-top: 0;
       }
-      #group-member-options {
-        float: right;
-        height: 14px;
-        line-height: 16px;
-        margin-top: 1px;
-      }
-      .membership-count {
-        background-color: $light-grey;
-        color: white;
-        font-size: $font-small;
-        margin: 2px;
-        float: right;
+      .memberships_link {
+        margin-bottom: 10px;
       }
     }
     #request-membership {

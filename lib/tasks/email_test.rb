@@ -205,7 +205,7 @@ describe "Test Email:" do
       addresses.each do |email|
         membership_request.stub email: email
 
-        invitation = CreateInvitation.after_membership_request_approval( recipient_email: membership_request.email,
+        invitation = Invitation.after_membership_request_approval( recipient_email: membership_request.email,
                                                                          inviter: admin,
                                                                          group: membership_request.group )
 
@@ -223,9 +223,9 @@ describe "Test Email:" do
       addresses.each do |email|
         membership_request.stub email: email
 
-        invitation = CreateInvitation.to_join_group( recipient_email: membership_request.email,
-                                                                         inviter: admin,
-                                                                         group: membership_request.group )
+        invitation = InvitationService.invite_to_join_group( recipient_email: membership_request.email,
+                                                             inviter: admin,
+                                                             group: membership_request.group )
 
         InvitePeopleMailer.to_join_group(invitation, admin, message_body).deliver
         puts " ~ SENT (#{email})"
@@ -239,7 +239,7 @@ describe "Test Email:" do
       addresses.each do |email|
         membership_request.stub email: email
 
-        invitation = CreateInvitation.to_start_group( recipient_email: membership_request.email,
+        invitation = InvitationService.invite_to_start_group( recipient_email: membership_request.email,
                                                       recipient_name: membership_request.name,
                                                       inviter: admin,
                                                       group: membership_request.group )

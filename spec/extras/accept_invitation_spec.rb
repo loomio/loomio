@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe AcceptInvitation do
   let(:group) { FactoryGirl.create(:group) }
-  let(:invitation) { FactoryGirl.create(:invitation, group: group) }
+  let(:invitation) { FactoryGirl.create(:invitation, invitable: group) }
   let(:user) { FactoryGirl.create(:user) }
 
   context 'and_grant_access!' do
@@ -20,7 +20,7 @@ describe AcceptInvitation do
     context 'to_be_admin' do
       let(:invitation) { FactoryGirl.create(:invitation,
                                             to_be_admin: true,
-                                            group: group) }
+                                            invitable: group) }
 
       it 'makes the user a group admin' do
         group.admins.should include user

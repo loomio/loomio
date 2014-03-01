@@ -279,8 +279,8 @@ body.discussions.show {
       }
       .discussion-additional-info {
         color: $mid-grey;
-        float: right;
         font-size: $font-smaller;
+        margin-left: 60px;
         max-width: 190px;
         .last-edited-by, .started-by { margin-bottom: 10px; }
         .user-name { white-space: nowrap; }
@@ -290,7 +290,13 @@ body.discussions.show {
         padding-right: 0px;
       }
       .long-description { padding-bottom: 10px; }
-      .right-context { width: 265px; }
+      .right-context {
+        width: 265px;
+        #invite-new-members {
+          margin-bottom: 20px;
+          margin-left: 50px;
+        }
+      }
     }
   }
 

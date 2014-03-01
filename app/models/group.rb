@@ -95,7 +95,7 @@ class Group < ActiveRecord::Base
            through: :memberships,
            source: :user
 
-  has_many :pending_invitations,
+  has_many :pending_invitations, :as => :invitable,
            class_name: 'Invitation',
            conditions: {accepted_at: nil, cancelled_at: nil}
 
