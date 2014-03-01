@@ -212,19 +212,25 @@
     a { color: $mid-grey; }
     background-color: #eee;
   }
-  li.group-item.new-group {
+
+  li#groups ul.dropdown-menu li.group-item.group-links {
     border-top: 1px solid #E7E7E7;
     a {
-      display: block;
-      padding: 8px;
+      margin: 8px auto;
+      display: inline-block;
+      font-size: 14px;
+      min-width: 0;
+      width: 100px;
+      padding: 8px 36px;
       text-align: center;
       color: #08C;
       &:hover {
-        color: white;
-        border-bottom-right-radius: 4px;
-        border-bottom-left-radius: 4px;
+        background-image: none;
+        background-color: #fff;
+        text-decoration: underline;;
       }
     }
+    .new-group { border-right: 1px solid rgb(221, 221, 221); }
   }
 
   .fa { font-size: 18px; }
