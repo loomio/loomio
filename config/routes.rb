@@ -164,7 +164,7 @@ Loomio::Application.routes.draw do
   end
 
   scope module: :users do
-    match '/settings',          action: 'settings', as: :user_settings
+    match '/profile',          action: 'profile', as: :profile
     scope module: :email_preferences do
       get '/email_preferences', action: 'edit',   as: :email_preferences
       put '/email_preferences', action: 'update', as: :update_email_preferences

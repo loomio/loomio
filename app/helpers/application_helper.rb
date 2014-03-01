@@ -107,12 +107,16 @@ module ApplicationHelper
     !group.has_manual_subscription? || !group.is_paying?
   end
 
+  def hide_beta_logo?
+    current_user_or_visitor.belongs_to_manual_subscription_group?
+  end
+
   def visitor?
     !user_signed_in?
   end
 
   def analytics_scope
-    if Rails.env.production? || Rails.env.staging? 
+    if Rails.env.production? || Rails.env.staging?
       unless controller_name == 'searches'
         yield
       end

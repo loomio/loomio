@@ -11,7 +11,7 @@ Given(/^I am on the home page of the website$/) do
 end
 
 When(/^I go to start a new group from the navbar$/) do
-  find(".new-group a").click
+  find(".group-links a").click
 end
 
 When(/^I go to start a new group$/) do

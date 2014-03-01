@@ -5,7 +5,7 @@
       = form_tag public_groups_path, method: 'get', class: 'form-search' do |f|
         = text_field_tag :query, params[:query], class: 'search-query'
         .add-on
-          %i.icon-search
+          %i.fa.fa-search
             = submit_tag "", class: 'submit-search'
 .public-groups-container
 
