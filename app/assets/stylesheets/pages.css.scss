@@ -103,8 +103,6 @@ li.selector-item a.selector-link:hover {
 .btn-grey { color: $mid-grey; }
 a.btn-icon:hover { color: $dark-grey; }
 
-body.pages { background-color: #f7f7f7; }
-
 .pages.home p:last-child { margin-bottom: 0; }
 
 .invitations.show,
@@ -126,6 +124,7 @@ body.pages { background-color: #f7f7f7; }
 .woc.index,
 .we_the_people.index {
   color: black;
+  background-color: #f7f7f7;
 
   .pages-information { min-height: 200px; }
 

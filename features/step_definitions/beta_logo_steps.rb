@@ -13,6 +13,5 @@ When(/^I am not a member of a manual subcription group$/) do
 end
 
 Then(/^I should see the beta logo$/) do
-    view_screenshot
     page.should have_css('.loomio-beta-logo')
   end

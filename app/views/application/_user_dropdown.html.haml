@@ -6,20 +6,18 @@
     %b.caret
   %ul.dropdown-menu
     %li
-      %a{href: user_settings_path}
+      %a{href: profile_path}
         %i.fa.fa-cog
-        / = t(:user_settings)
-        Profile
+        = t :profile
     %li
       %a{href: email_preferences_path}
         %i.fa.fa-envelope
-        / = t(:email_preferences)
-        Email settings
+        = t :email_settings
     %li
       %a{href: help_path}
         %i.fa.fa-star
-        %span= t :"help.help"
+        = t :"help.help"
     %li
-      %a{href: destroy_user_session_path, method: :delete}
+      %a{href: destroy_user_session_path, 'data-method' => 'delete'}
         %i.fa.fa-sign-out
-        = t(:sign_out)
+        = t :sign_out

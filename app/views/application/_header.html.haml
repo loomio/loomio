@@ -6,9 +6,9 @@
           %li.nav-item#logo-home
             %a.nav-logo-link{:href => "/"}
               - if show_beta_logo?
-                = image_tag('navbar-logo-beta-v2.jpg', :alt => "Loomio", class: 'loomio-beta-logo')
+                = image_tag('navbar-logo-beta.jpg', :alt => "Loomio", class: 'loomio-beta-logo')
               - else
-                = image_tag('top-bar-loomio-orange.png', :alt => "Loomio", class: 'loomio-logo')
+                = image_tag('navbar-logo.png', :alt => "Loomio", class: 'loomio-logo')
           - if user_signed_in?
             = render 'inbox'
             = render 'notifications_dropdown'

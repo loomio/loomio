@@ -230,6 +230,7 @@
   .fa { font-size: 18px; }
   .fa-inbox { font-size: 24px; }
   .fa-group { margin-right: 3px; }
+  .fa-heart-o { font-size: 20px; }
   .fa-star { font-size: 14px; }
   .fa-search {
     color: #adadad;
@@ -245,10 +246,5 @@
 .toolbar-navigation #contribute a {
   height: 20px;
   padding-top: 10px;
-  .fa-heart-o {
-    font-size: 20px;
-  }
-}
-.navbar-fixed-top .navbar-inner {
-  min-height: 44px;
+
 }
