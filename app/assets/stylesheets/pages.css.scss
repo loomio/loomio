@@ -546,6 +546,10 @@ body.pages.terms_of_service {
     text-align: center;
     img { width: 600px; }
   }
+  .plain-white-link {
+    color: #ffffff;
+    &:hover { text-decoration: none; }
+  }
 }
 
 .container#contact_message {
