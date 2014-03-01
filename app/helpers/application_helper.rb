@@ -107,8 +107,8 @@ module ApplicationHelper
     !group.has_manual_subscription? || !group.is_paying?
   end
 
-  def show_beta_logo?
-    current_user && !current_user.belongs_to_manual_subscription_group?
+  def hide_beta_logo?
+    current_user_or_visitor.belongs_to_manual_subscription_group?
   end
 
   def visitor?

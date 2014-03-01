@@ -24,9 +24,9 @@ Given(/^I am invited to join a Loomio Group$/) do
   @user = FactoryGirl.create(:user)
   @group = FactoryGirl.create(:group)
   @group.add_admin!(@user)
-  @invitation = CreateInvitation.to_join_group(group: @group,
-                                               inviter: @user,
-                                               recipient_email: 'me@email.com')
+  @invitation = InvitationService.create_invite_to_join_group(group: @group,
+                                                              inviter: @user,
+                                                              recipient_email: 'me@email.com')
 end
 
 Then(/^the new user should have a time zone$/) do

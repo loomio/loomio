@@ -16,7 +16,6 @@
       = render 'flash_messages', :flash => flash
     - if controller_name == 'pages'
       = render 'github_fork_us'
-      = render 'donate-tab'
     .container#top
       .inner-container
         .row-fluid
@@ -44,6 +43,7 @@
           %span &middot;
 
           =link_to('Blog', blog_path)
+
     = yield
 
     = render 'footer_logged_out'

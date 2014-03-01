@@ -1,10 +1,11 @@
 class ContactMessageMailer < BaseMailer
   default :to => "contact@loomio.org"
   def contact_message_email(contact_message)
-    @name = contact_message.name
     @email = contact_message.email
+    @name = contact_message.name
     @message = contact_message.message
     @user_id = contact_message.user_id
-    mail(from: "#{@name} <#{@email}>", subject: "Enquiry - #{@name}")
+    @destination = contact_message.destination + '@' + ENV.fetch('CANONICAL_HOST', 'loomio.org')
+    mail(from: "#{@name} <#{@email}>", to: @destination, subject: "Enquiry - #{@name}")
   end
 end

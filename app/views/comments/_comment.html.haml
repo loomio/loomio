@@ -15,13 +15,12 @@
         -comment.attachments.each do |a|
           .comment-attachment
             %img{src: '/assets/paperclip22.png', class: 'paperclip'}
-            =link_to a.filename, a.location, { target: 'blank' }
+            =link_to a.truncated_filename(38), a.location, { target: 'blank' }
             -fileSizeText = (a.filesize >= 1048576) ? (a.filesize/1048576.0).round(1).to_s + ' MB' : (a.filesize/1024.0).round.to_s + ' kB';
             ="("+fileSizeText+")"
 
-            -if a.filesize < 1048576
-              -if a.is_an_image?
-                =link_to image_tag(a.location), a.location, { target: 'blank', class: 'attachment-image' }
+            -if a.is_an_image? && a.filesize < 1048576
+              =link_to image_tag(a.location), a.location, { target: 'blank', class: 'attachment-image' }
 
       .comment-time-and-likes
         =render 'comments/comment_likes', comment: comment

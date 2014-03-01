@@ -5,10 +5,10 @@
         %ul.nav-bar-list.clearfix
           %li.nav-item#logo-home
             %a.nav-logo-link{:href => "/"}
-              - if show_beta_logo?
-                = image_tag('navbar-logo-beta.jpg', :alt => "Loomio", class: 'loomio-beta-logo')
-              - else
+              - if hide_beta_logo?
                 = image_tag('navbar-logo.png', :alt => "Loomio", class: 'loomio-logo')
+              - else
+                = image_tag('navbar-logo-beta.jpg', :alt => "Loomio", class: 'loomio-beta-logo')
           - if user_signed_in?
             = render 'inbox'
             = render 'notifications_dropdown'

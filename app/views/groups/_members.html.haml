@@ -9,4 +9,5 @@
       - group.members.first(15).each do |user|
         %li{:id => user.id}
           = render 'linked_avatar', user: user, show_title: true
+    %div.memberships_link
       = link_to t(:more), group_memberships_path(group), class: 'bottom-panel-link'
