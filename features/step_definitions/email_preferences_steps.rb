@@ -80,5 +80,5 @@ Given(/^I am subscribed to the activity summary email$/) do
 end
 
 When(/^I select the time of day$/) do
-  select '10', from: :email_preferences_hour_to_send
+  select '10', from: :email_preference_hour_to_send
 end

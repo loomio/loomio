@@ -27,27 +27,27 @@ Feature: Email preferences page
 
   Scenario: User enables 24 hour proposal close notification
     When I visit the email preferences page
-    And I check "email_preferences_subscribed_to_proposal_closure_notifications"
+    And I check "email_preference_subscribed_to_proposal_closure_notifications"
     And I click "Update preferences"
     Then I should be subscribed to proposal closure notification emails
 
   Scenario: User disables 24 hour proposal close notification
     When I visit the email preferences page
-    And I uncheck "email_preferences_subscribed_to_proposal_closure_notifications"
+    And I uncheck "email_preference_subscribed_to_proposal_closure_notifications"
     And I click "Update preferences"
     Then I should not be subscribed to proposal closure notification emails
 
   Scenario: User enables mention email notifications
     Given I am not subscribed to mention email notifications
     When I visit the email preferences page
-    And I check "email_preferences_subscribed_to_mention_notifications"
+    And I check "email_preference_subscribed_to_mention_notifications"
     And I click "Update preferences"
     Then I should be subscribed to mention notifications
 
   Scenario: User disables mention email notifications
     Given I am subscribed to mention email notifications
     When I visit the email preferences page
-    And I uncheck "email_preferences_subscribed_to_mention_notifications"
+    And I uncheck "email_preference_subscribed_to_mention_notifications"
     And I click "Update preferences"
     Then I should not be subscribed to mention notifications
 
