@@ -10,7 +10,6 @@ Feature: No beta logo for manual subscription users
     When I am a member a manual subcription group
     Then I should not see the beta logo
 
-  @javascript
   Scenario: All other users see beta logo
     When I am not a member of a manual subcription group
     Then I should see the beta logo
