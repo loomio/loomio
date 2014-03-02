@@ -527,31 +527,6 @@ body.pages.terms_of_service {
 
 }
 
-.crowd {
-  #hero {
-    text-align: center;
-    line-height: 57px;
-    margin-bottom: 42px;
-  }
-  .subheader { text-align: center; }
-  #points {
-    list-style: disc;
-    margin: 0 40px;
-    font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 18px;
-    li { margin-bottom: 14px; }
-  }
-  figure {
-    text-align: center;
-    img { width: 600px; }
-  }
-  .plain-white-link {
-    color: #ffffff;
-    &:hover { text-decoration: none; }
-  }
-}
-
 .container#contact_message {
 
   abbr { border-bottom: none; }
@@ -633,4 +608,58 @@ body.pages.terms_of_service {
   position: absolute;
   top: 0;
   left: 0; border: 0;
+}
+
+
+body.pages.crowd {
+  #hero {
+    text-align: center;
+    line-height: 57px;
+    margin-bottom: 42px;
+  }
+  .subheader { text-align: center; }
+  #points {
+    list-style: disc;
+    margin: 0 40px;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 18px;
+    li { margin-bottom: 14px; }
+  }
+  figure {
+    text-align: center;
+    img { width: 600px; }
+  }
+  .plain-white-link {
+    color: #ffffff;
+    &:hover { text-decoration: none; }
+  }
+
+  .frontpage-nav { display: none; }
+  .log-in-button { display: none; }
+
+  .mailchimp-subscription-field {
+    #mc_embed_signup form {
+      padding: 2px 0 10px 3%;
+    }
+  }
+
+  #mailchimp-subscribe-button { margin-bottom: 18px; }
+
+  .mc-field-group {
+    padding-bottom: 0;
+    min-height: 0;
+  }
+
+  #mc_embed_signup {
+    #mce-responses {
+      margin: 0;
+      .response {
+        margin: 0 0 15px 0;
+        padding: 0;
+        font-weight: normal;
+        width: 100%;
+      }
+    }
+  }
 }

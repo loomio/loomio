@@ -4,28 +4,30 @@
       .row-fluid
         .subhead
           .span12
-            %h1#hero
-              Real democracy needs to
+            %h2.subheader
+              Real democracy needs to include everyone.
               %br
-              include everyone.
-            %h2.subheader Let's make it happen together.
-            %br
-            %br
+              Democracy = Collaboration.
+              %br
+            %h3.subheader Let's make it happen together.
+
       .row-fluid
         .span8.offset2
-          %p We're crowdfunding a <b>free open-source platform</b> for anyone, anywhere to <b>participate in decisions</b> that affect them.
+          %p Loomio is free, open-source software for anyone, anywhere to particpate in decisions that affect them, built by a small team of developers, facilitators, and activists in New Zealand.
+          %p We're crowdfunding to create a totally inclusive platform, and we can't do this without you. Launching March 11, 2014.
           %br
       .row-fluid
         .span4.offset2
           %button.btn.btn-block.btn-large.btn-success
             =link_to "1. Join the Thunderclap", "https://www.thunderclap.it/projects/9310-bring-loomio-to-the-world", target: '_blank', class: 'plain-white-link'
           %br
-          %p Thunderclap will auto-share the campaign for you the day we launch.
+          %p Automatically share the link on the day of launch - amplify the call to action!
         .span4
-          %button.btn.btn-block.btn-large.btn-primary
-            =link_to "2. Join the mailing list", 'http://eepurl.com/Pr8Xz', target: '_blank', class: 'plain-white-link'
-          %br
-          %p We'll let you know when we launch the campaign.
+          %button.btn.btn-block.btn-large.btn-primary#mailchimp-subscribe-button
+            2. Join the mailing list
+          .mailchimp-subscribe-form.hide
+            =render 'pages/crowd/mailchimp_form'
+          %p Stay up to date (only important stuff, promise)
 
   %section
     .inner-container
@@ -45,19 +47,13 @@
           =image_tag('sneak-peak-reduced.png')
           %br
           %br
-          %h3
-            Crowdfunding launches March 11th 2014.
-            %br
-            We can’t do it without you.
-          %br
-          %p Real democracy is about collaboration: groups of people getting together and making decisions that work for everyone.
 
-          %p Loomio fills a critical gap. Social media has made it so easy to communicate that one person can reach thousands in a matter of hours. But a decision is what turns talk into action, and there's no easy way to make decisions together online.
+          %h3 Real democracy is about collaboration: groups of people getting together and making decisions that work for everyone.
+
+          %p Loomio fills a critical gap: bringing online talk to real world action. Social media and email have made it so easy to communicate, but a decision is what turns talk into action. Right now, there's no easy way to make decisions together online. It's like a missing piece of the internet.
 
           %p
-            We've taken all the learning from thousands of groups using our beta prototype and
-            %strong designed a whole new mobile platform
-            for truly inclusive decision-making: Loomio 1.0
+            We've taken all the learning from thousands of groups using our beta prototype and designed a whole new platform for truly inclusive decision-making: Loomio 1.0
           .divider
           =image_tag('loomio1.png')
           .divider
@@ -110,7 +106,7 @@
             %br
           %br
           %p We’ve done all the research and design, now we just have to fund the development needed to release it to the world.
-          %p We’re crowdfunding so that the project will be driven by the community of people who want it to happen, not by advertisers or corporate interests.
+          %p We’re crowdfunding so that the project will be driven by the community of people who want it to happen, not by advertisers or people who want to sell your data.
 
 
           %h2
@@ -120,14 +116,14 @@
       .row-fluid
         .span4.offset2
           %button.btn.btn-block.btn-large.btn-success
-            1. Join the Thunderclap
+            =link_to "1. Join the Thunderclap", "https://www.thunderclap.it/projects/9310-bring-loomio-to-the-world", target: '_blank', class: 'plain-white-link'
           %br
-          %p Thunderclap will auto-share the campaign for you the day we launch.
+          %p Automatically share the link on the day of launch - amplify the call to action!
         .span4
           %button.btn.btn-block.btn-large.btn-primary
-            2. Join the mailing list
+            =link_to '2. Join the mailing list', 'http://eepurl.com/Pr8Xz', class: 'plain-white-link'
           %br
-          %p We'll let you know when we launch the campaign.
+          %p Stay up to date (only important stuff, promise)
 
   %section
     .inner-container

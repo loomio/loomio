@@ -24,7 +24,7 @@
               =link_to 'Start a group', new_group_request_path, class: 'btn btn-success'
 
             - unless current_page? new_user_session_path
-              =link_to t(:'devise.sessions.sign_in'), new_user_session_path, class: 'btn btn-info'
+              =link_to t(:'devise.sessions.sign_in'), new_user_session_path, class: 'btn btn-info log-in-button'
           .span3 &nbsp;
           .span6
             =link_to image_tag("logo-426px-mauve-matte.png"), "/"
