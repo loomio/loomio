@@ -6,7 +6,7 @@ Given /^there is a user "(.*?)"$/ do |arg1|
 end
 
 Given /^"(.*?)" is subscribed to daily activity emails$/ do |arg1|
-  User.find_by_name(arg1).update_attribute(:subscribed_to_daily_activity_email, true)
+  User.find_by_name(arg1).email_preference.update_attribute(:subscribed_to_daily_activity_email, true)
 end
 
 Given /^there is a group "(.*?)"$/ do |arg1|

@@ -40,6 +40,7 @@ class DiscussionService
   def self.edit_discussion(user, discussion_params, discussion)
     user.ability.authorize! :update, discussion
 
+    title_changed = true if discussion_params[:title] != discussion.title
     discussion.private = discussion_params[:private]
     discussion.title = discussion_params[:title]
     discussion.description = discussion_params[:description]
@@ -48,6 +49,7 @@ class DiscussionService
     return false unless discussion.save
 
     user.update_attributes(uses_markdown: discussion.uses_markdown)
+    discussion.set_last_non_comment_activity_at if title_changed
   end
 
 end

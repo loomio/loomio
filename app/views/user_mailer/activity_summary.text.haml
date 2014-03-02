@@ -1,0 +1,11 @@
+= t("email.activity_summary.heading")
+= t("email.activity_summary.sub_header", since_time: @activity_summary.last_sent_at.strftime('%B %-d, %Y'))
+\
+- @activity_summary.items_by_group do |group, discussion|
+  \
+  = group.full_name
+  = '---------------------------------------------------------------------------'
+  - discussion.each do |discussion|
+    = render 'activity_item_discussion.text', discussion: discussion
+
+= render 'unsubscribe_link_text'

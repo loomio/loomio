@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Events::UserMentioned do
-  let(:comment){ mock_model(Comment)}
-  let(:mentioned_user) { mock_model(User,
-                              :subscribed_to_mention_notifications? => false) }
+  let(:comment){ mock_model(Comment) }
+  let(:email_preferences) { double(:email_preferences, :subscribed_to_mention_notifications? => false )}
+  let(:mentioned_user) { mock_model(User, :email_preferences => email_preferences, :subscribed_to_mention_notifications? => false )}
 
   describe "::publish!" do
     let(:event) { double(:event, :notify_users! => true) }

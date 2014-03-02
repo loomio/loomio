@@ -49,4 +49,5 @@ class UsersController < BaseController
     current_user.save!
     head :ok
   end
+
 end

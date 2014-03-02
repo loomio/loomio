@@ -1,4 +1,11 @@
 class SendActivitySummary
+  def self.subscribers_this_hour!
+    User.activity_summary_email_recipients_this_hour.each do |user|
+      UserMailer.activity_summary(user).deliver
+      user.email_preference.set_last_sent_at
+    end
+  end
+
   def self.to_subscribers!
     since_time = 24.hours.ago
     User.daily_activity_email_recipients.each do |user|

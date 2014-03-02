@@ -213,9 +213,10 @@ describe User do
 
   it "sets subscriptions to false when deactivate! is called" do
     user.deactivate!
-    user.subscribed_to_daily_activity_email.should be_false
-    user.subscribed_to_mention_notifications.should be_false
-    user.subscribed_to_proposal_closure_notifications.should be_false
+    user.email_preference.subscribed_to_daily_activity_email.should be_false
+    user.email_preference.subscribed_to_mention_notifications.should be_false
+    user.email_preference.subscribed_to_proposal_closure_notifications.should be_false
+    user.email_preference.days_to_send.should be_empty
   end
 
   it "unsets deleted_at (nil) when activate! is called" do
@@ -333,6 +334,13 @@ describe User do
     it "returns false if user is a member of a paying group" do
       group.update_attribute :payment_plan, 'pwyc'
       user.belongs_to_manual_subscription_group?.should be_false
+    end
+  end
+
+  describe "create_email_preference" do
+    it 'should create new associated email_preferences for the user' do
+      user = User.create!(name: "Test User", email: "test1@example.com", password: "password")
+      user.email_preference.should_not be_nil
     end
   end
 end

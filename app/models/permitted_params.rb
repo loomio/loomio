@@ -2,18 +2,19 @@ class PermittedParams < Struct.new(:params, :user)
 
   %w[user vote subscription motion membership membership_request
    invitation group_request group discussion comment announcement_dismissal
-   email_preferences attachment contact_message].each do |kind|
+   email_preference attachment contact_message].each do |kind|
     define_method(kind) do
       permitted_attributes = self.send("#{kind}_attributes")
       params.require(kind).permit(*permitted_attributes)
     end
   end
 
-  def email_preferences_attributes
+  def email_preference_attributes
     [{:group_email_preferences => []},
      :subscribed_to_daily_activity_email,
      :subscribed_to_proposal_closure_notifications,
-     :subscribed_to_mention_notifications]
+     :subscribed_to_mention_notifications,
+     {:days_to_send => []}, :hour_to_send]
   end
 
   def user_attributes

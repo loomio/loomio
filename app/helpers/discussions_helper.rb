@@ -118,4 +118,5 @@ module DiscussionsHelper
   def privacy_icon(discussion)
     discussion.private? ? "lock" : "globe"
   end
+
 end

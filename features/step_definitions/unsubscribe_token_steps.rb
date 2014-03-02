@@ -6,7 +6,7 @@ Given /^I have a user account but not I'm logged in$/ do
 end
 
 Given /^I am subscribed to daily activity email$/ do
-  @user.update_attribute(:subscribed_to_daily_activity_email, true)
+  @user.email_preference.update_attribute(:subscribed_to_daily_activity_email, true)
 end
 
 When /^I visit email_preferences with unsubscribe_token in the params$/ do
@@ -14,7 +14,7 @@ When /^I visit email_preferences with unsubscribe_token in the params$/ do
 end
 
 Then /^I should be able to update my email preferences$/ do
-  uncheck 'email_preferences[subscribed_to_daily_activity_email]'
+  uncheck 'email_preference_subscribed_to_daily_activity_email'
   click_on 'Update preferences'
   page.should have_content 'Your email settings have been updated.'
 end

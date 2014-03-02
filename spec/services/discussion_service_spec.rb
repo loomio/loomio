@@ -15,6 +15,7 @@ describe 'DiscussionService' do
   let(:user) { double(:user, ability: ability, update_attributes: true) }
   let(:discussion) { double(:discussion, author: user,
                                          save: true,
+                                         title: true,
                                          :title= => true,
                                          :description= => true,
                                          :private= => true,
@@ -22,6 +23,7 @@ describe 'DiscussionService' do
                                          uses_markdown: true,
                                          update_attribute: true,
                                          update_attributes: true,
+                                         set_last_non_comment_activity_at: true,
                                          private: true,
                                          created_at: Time.now) }
   let(:comment) { double(:comment,

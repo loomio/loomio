@@ -12,6 +12,18 @@ class UserMailer < BaseMailer
     end
   end
 
+  def activity_summary(user)
+    @user = user
+    last_summary_at = @user.email_preference.activity_summary_last_sent_at
+    @activity_summary = ActivitySummary.new(user, last_summary_at)
+    locale = best_locale(user.language_preference, nil)
+    I18n.with_locale(locale) do
+      mail to: @user.email,
+           subject: t('email.activity_summary.subject'),
+           css: 'activity_summary'
+    end
+  end 
+
   def mentioned(user, comment)
     @user = user
     @comment = comment

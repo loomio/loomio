@@ -8,43 +8,46 @@ Feature: Email preferences page
     And there is a group "Pals"
     And "Ben" belongs to "Pals"
     And I login as "ben@example.org"
+    And I am testing all activity summary email beta feature
 
-  Scenario: User enables daily email
+  Scenario: User enables activity summary email by clicking a day of the week
     When I visit the email preferences page
-    And I check "email_preferences_subscribed_to_daily_activity_email"
+    And I click on Monday
+    And I click on Wednesday
+    And I select the time of day
     And I click "Update preferences"
-    Then I should be subscribed to the daily actitivy email
+    Then I should be subscribed to the activity summary email
 
-  Scenario: User disables daily email
-    Given I am subscribed to the daily activity email
+  Scenario: User disables activity summary email by desellecting all days of the week
+    Given I am subscribed to the activity summary email
     When I visit the email preferences page
-    And I uncheck "email_preferences_subscribed_to_daily_activity_email"
+    And I unselect the days to receive the summary email
     And I click "Update preferences"
-    Then I should not be subscribed to the daily actitivy email
+    Then I should not be subscribed to the activity summary email
 
   Scenario: User enables 24 hour proposal close notification
     When I visit the email preferences page
-    And I check "email_preferences_subscribed_to_proposal_closure_notifications"
+    And I check "email_preference_subscribed_to_proposal_closure_notifications"
     And I click "Update preferences"
     Then I should be subscribed to proposal closure notification emails
 
   Scenario: User disables 24 hour proposal close notification
     When I visit the email preferences page
-    And I uncheck "email_preferences_subscribed_to_proposal_closure_notifications"
+    And I uncheck "email_preference_subscribed_to_proposal_closure_notifications"
     And I click "Update preferences"
     Then I should not be subscribed to proposal closure notification emails
 
   Scenario: User enables mention email notifications
     Given I am not subscribed to mention email notifications
     When I visit the email preferences page
-    And I check "email_preferences_subscribed_to_mention_notifications"
+    And I check "email_preference_subscribed_to_mention_notifications"
     And I click "Update preferences"
     Then I should be subscribed to mention notifications
 
   Scenario: User disables mention email notifications
     Given I am subscribed to mention email notifications
     When I visit the email preferences page
-    And I uncheck "email_preferences_subscribed_to_mention_notifications"
+    And I uncheck "email_preference_subscribed_to_mention_notifications"
     And I click "Update preferences"
     Then I should not be subscribed to mention notifications
 

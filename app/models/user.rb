@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
   gravtastic  :rating => 'pg',
               :default => 'none'
 
+  serialize :beta_features, Array
+
   has_attached_file :uploaded_avatar,
     :styles => {
       :large => "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
@@ -87,6 +89,7 @@ class User < ActiveRecord::Base
   has_many :discussion_readers, dependent: :destroy
   has_many :motion_read_logs, dependent: :destroy
 
+  has_one :email_preference
 
   has_many :notifications
   has_many :comments
@@ -96,10 +99,12 @@ class User < ActiveRecord::Base
   before_create :set_default_avatar_kind
   before_create :generate_username
   after_create :ensure_name_entry
+  after_create :create_email_preference
 
   scope :active, where(:deleted_at => nil)
   scope :inactive, where("deleted_at IS NOT NULL")
-  scope :daily_activity_email_recipients, where(:subscribed_to_daily_activity_email => true)
+  scope :daily_activity_email_recipients, joins(:email_preference).where('subscribed_to_daily_activity_email = ?', true)
+  scope :activity_summary_email_recipients_this_hour, joins(:email_preference).where('next_activity_summary_sent_at = ?', Time.now.utc.strftime("%F %H:00:00"))
   scope :sorted_by_name, order("lower(name)")
   scope :admins, where(is_admin: true)
   scope :coordinators, joins(:memberships).where('memberships.access_level = ?', 'admin').group('users.id')
@@ -119,6 +124,9 @@ class User < ActiveRecord::Base
     orphans = groups.where('parent_id not in (?)', parents.map(&:id))
     (parents.to_a + orphans.to_a).sort{|a, b| a.full_name <=> b.full_name }
   end
+
+  delegate :subscribed_to_proposal_closure_notifications?, to: :email_preference, prefix: false
+  delegate :subscribed_to_mention_notifications?, to: :email_preference, prefix: false
 
   def self.email_taken?(email)
     User.find_by_email(email).present?
@@ -220,10 +228,8 @@ class User < ActiveRecord::Base
   end
 
   def deactivate!
-    update_attributes(:deleted_at => Time.now,
-                      :subscribed_to_daily_activity_email => false,
-                      :subscribed_to_mention_notifications => false,
-                      :subscribed_to_proposal_closure_notifications => false)
+    update_attributes(:deleted_at => Time.now)
+    email_preference.deactivate!
     memberships.update_all(:archived_at => Time.now)
     membership_requests.where("responded_at IS NULL").destroy_all
   end
@@ -309,7 +315,16 @@ class User < ActiveRecord::Base
     groups.where(payment_plan: ['manual_subscription']).exists?
   end
 
+  def beta_feature_enabled?(beta_feature)
+    return false if beta_features.nil?
+    beta_features.include? beta_feature
+  end
+
   private
+
+  def create_email_preference
+    self.email_preference = EmailPreference.create!(user: self)
+  end
 
   def set_default_avatar_kind
     if has_gravatar?

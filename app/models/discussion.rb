@@ -7,7 +7,7 @@ class Discussion < ActiveRecord::Base
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }
 
-  scope :active_since, lambda {|some_time| where('created_at >= ? or last_comment_at >= ?', some_time, some_time)}
+  scope :active_since, lambda {|some_time| where('last_non_comment_activity_at >= ? or last_comment_at >= ?', some_time, some_time)}
   scope :order_by_latest_comment, order('last_comment_at DESC')
   scope :last_comment_after, lambda {|time| where('last_comment_at > ?', time)}
 
@@ -43,6 +43,7 @@ class Discussion < ActiveRecord::Base
   delegate :name_and_email, :to => :author, prefix: :author
 
   before_create :set_last_comment_at
+  after_create :set_last_non_comment_activity_at
 
   # don't use this.. it needs to be removed.
   # use DiscussionService.add_comment directly
@@ -76,7 +77,19 @@ class Discussion < ActiveRecord::Base
   end
 
   def number_of_comments_since(time)
-    comments.where('comments.created_at > ?', time).count
+    comments_since(time).count
+  end
+  
+  def comments_since(time)
+    comments.where('created_at > ?', time)
+  end
+
+  def created_since?(time)
+    created_at >= time
+  end
+
+  def modified_since?(time)
+    last_non_comment_activity_at >= time
   end
 
   def viewed!
@@ -115,6 +128,7 @@ class Discussion < ActiveRecord::Base
     self.description = description
     self.uses_markdown = uses_markdown
     save!
+    set_last_non_comment_activity_at
     fire_edit_description_event(user)
   end
 
@@ -158,6 +172,11 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  def set_last_non_comment_activity_at
+    self.last_non_comment_activity_at = Time.now
+    save!
+  end
+
   def inherit_group_privacy!
     self[:private] = group_default_is_private? if group.present?
   end
@@ -169,6 +188,7 @@ class Discussion < ActiveRecord::Base
 
 
   private
+
   def private_is_not_nil
     if self[:private].nil?
       errors.add(:private, "cannot be nil")

@@ -78,7 +78,7 @@ class Vote < ActiveRecord::Base
 
   def update_motion_last_vote_at
     unless motion.nil? || motion.discussion.nil?
-      motion.last_vote_at = motion.latest_vote_time
+      motion.last_vote_at = created_at
       motion.save!
     end
   end

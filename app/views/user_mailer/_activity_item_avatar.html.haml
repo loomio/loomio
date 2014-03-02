@@ -1,0 +1,13 @@
+%td.icon-cell.initials
+  - kind = user.avatar_kind
+  - if kind == 'initials'
+    %span= user.avatar_initials
+  - elsif kind == "gravatar"
+    %img.avatar{ src: "#{user.gravatar_url(:size => User::MEDIUM_IMAGE)}"}
+  - elsif kind == "uploaded"
+    %img.avatar{ src: "#{user.uploaded_avatar.url('medium')}"}
+%td.content-sub-cell.user-cell
+  %span.user-name= user.name
+  %span
+    = item_text
+  %div.sub-title= item.created_at.strftime('%A, %-d %B')

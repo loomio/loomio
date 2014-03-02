@@ -3,12 +3,14 @@ class Users::EmailPreferencesController < BaseController
   before_filter :authenticate_user_by_unsubscribe_token_or_fallback
 
   def edit
-    resource
+    load_email_preferences
   end
 
   def update
-    resource
-    if resource.update_attributes(permitted_params.email_preferences)
+    load_email_preferences
+    set_attributes
+    if @email_preferences.update_attributes(@attributes)
+      EmailPreferencesService.update_group_notification_preferences_for(@email_preferences.user, @group_email_preferences)
       flash[:notice] = "Your email settings have been updated."
       redirect_to root_url
     else
@@ -17,10 +19,20 @@ class Users::EmailPreferencesController < BaseController
     end
   end
 
+
   private
 
-  def resource
-    @email_preferences ||= EmailPreferences.new(@restricted_user || current_user)
+  def load_email_preferences
+    user = @restricted_user || current_user
+    @email_preferences = user.email_preference
+  end
+
+  def set_attributes
+    @attributes = permitted_params.email_preference
+    if @email_preferences.user.beta_feature_enabled?('activity_summary_email')
+      @attributes[:days_to_send] = @attributes[:days_to_send].reject(&:blank?)
+    end
+    @group_email_preferences = @attributes.delete(:group_email_preferences)
   end
 
   def authenticate_user_by_unsubscribe_token_or_fallback

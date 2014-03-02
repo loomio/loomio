@@ -1,7 +1,15 @@
 require 'spec_helper'
 
 describe Motion do
+
   let(:discussion) { create_discussion }
+  
+  describe "#set_last_non_vote_activity" do
+    it "updates the last_non_vote_activity_at date with the current time" do
+      @motion = create(:motion)
+      @motion.last_non_vote_activity_at.to_s.should == @motion.created_at.to_s
+    end
+  end
 
   describe "#unique_votes" do
     it "returns only the most recent votes of a user for a motion" do

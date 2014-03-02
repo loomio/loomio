@@ -1,0 +1,19 @@
+%table.with-font-and-width
+  %tr
+    %td.icon-cell
+    %td.content-cell
+      %hr
+%table.with-font-and-width
+  %tr
+    %td.icon-cell
+    = render 'activity_item_avatar', user: comment.user, item: comment, item_text: 'commented'
+%table.with-font-and-width
+  %tr
+    %td.icon-cell
+    %td
+      %p= comment.body
+  %tr
+    %td.icon-cell
+    %td.like-cell
+      %a{ href: discussion_url(comment.discussion) } Like
+      %a{ href: discussion_url(comment.discussion) } Reply

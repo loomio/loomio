@@ -136,6 +136,10 @@ describe DiscussionsController do
       it "assigns description to the model" do
         discussion.should_receive(:set_description!)
       end
+
+      it "sets the last_non_comment_activity_at date" do
+        discussion.should_receive(:last_non_comment_activity_at)
+      end
     end
 
     describe "edit title" do
@@ -152,9 +156,11 @@ describe DiscussionsController do
       it "assigns title to the model" do
         discussion.should_receive(:title=).with "The Butterflys"
       end
+
       it "saves the model" do
         discussion.should_receive :save!
       end
+
       it "creates activity in the events table" do
         discussion.should_receive :fire_edit_title_event
       end

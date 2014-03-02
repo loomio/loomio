@@ -32,6 +32,7 @@ class Motion < ActiveRecord::Base
 
   after_initialize :set_default_close_at_date_and_time
   before_validation :set_closing_at
+  before_create :set_last_non_vote_activity
   after_create :fire_new_motion_event
 
   attr_accessor :create_discussion
@@ -41,6 +42,7 @@ class Motion < ActiveRecord::Base
   scope :lapsed_but_not_closed, voting.lapsed
   scope :closed, where('closed_at IS NOT NULL').order('motions.closed_at DESC')
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
+  scope :active_since, lambda {|time| where('last_vote_at > ? OR motions.last_non_vote_activity_at > ?', time, time) }
 
   def grouped_unique_votes
     order = ['block', 'no', 'abstain', 'yes']
@@ -128,16 +130,6 @@ class Motion < ActiveRecord::Base
     user && group.users.include?(user)
   end
 
-  def latest_vote_time
-    if last_vote_at.present?
-      last_vote_at
-    else
-      # this seems incorrect behaviour
-      # and without it this method could be removed
-      created_at
-    end
-  end
-
   def last_vote_by_user(user)
     votes.where(user_id: user.id).order('created_at DESC').first
   end
@@ -216,6 +208,14 @@ class Motion < ActiveRecord::Base
     group.users.where(User.arel_table[:id].not_eq(outcome_author.id))
   end
 
+  def votes_since(time)
+    votes.where('created_at >= ?', time)
+  end
+
+  def created_since?(time)
+    created_at >= time
+  end
+
   def store_users_that_didnt_vote
     did_not_votes.delete_all
     group.users.each do |user|
@@ -230,7 +230,13 @@ class Motion < ActiveRecord::Base
     reload
   end
 
+
   private
+
+    def set_last_non_vote_activity
+      self.last_non_vote_activity_at = Time.now
+    end
+
     def find_or_new_motion_reader_for(user)
       if self.motion_readers.where(user_id: user.id).exists?
         self.motion_readers.where(user_id: user.id).first

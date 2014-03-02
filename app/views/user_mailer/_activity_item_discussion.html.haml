@@ -1,0 +1,37 @@
+%table.with-font-and-width
+  %tr
+    %td.full-width-cell
+      %hr
+- last_sent_at = @activity_summary.last_sent_at
+- if discussion.created_since?(last_sent_at) || discussion.modified_since?(last_sent_at)
+  - user, item_text = info_for_avatar(discussion, @activity_summary)
+  %table.with-font-and-width
+    %tr
+      = render 'activity_item_avatar', user: user, item: discussion, item_text: item_text
+
+%table.with-font-and-width
+  %tr
+    %td.icon-cell
+      %img.icon-type{ src:'assets/discussion-24.png' }
+    %td.discussion-title-cell
+      %h3= discussion.title
+    %td.view-link-cell
+      %a{ href: discussion_url(discussion) } View discussion
+  %tr
+    %td.icon-cell
+    %td.created-by-cell
+      %div.sub-title= t('email.activity_summary.discussion_started_by', who: discussion.author.name)
+
+- unless discussion.description.blank?
+  %table.with-font-and-width
+    %tr
+      %td.icon-cell
+      %td
+        %p= display_discussion_description(discussion, @activity_summary)
+
+- motion = discussion.current_motion
+- if motion && unread_motion_activity?(motion, @activity_summary)
+  = render 'activity_item_motion', motion: motion
+
+- discussion.comments_since(@activity_summary.last_sent_at).each do |comment|
+  = render 'activity_item_comment', comment: comment

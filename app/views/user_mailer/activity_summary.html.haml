@@ -1,0 +1,23 @@
+%html#activity_summary
+  %table.main
+    %tr
+      %td
+        %table.with-font-and-width
+          %tr
+            %td.header-cell
+              %h1= t('email.activity_summary.heading')
+          %tr
+            %td.last-read-cell
+              %div.sub-title= t('email.activity_summary.sub_header', since_time: @activity_summary.last_sent_at.strftime('%B %-d, %Y'))
+        - @activity_summary.items_by_group do |group, discussion|
+          %table.with-font-and-width.group
+            %tr
+              %td
+                %h2= group.full_name
+          - discussion.each do |discussion|
+            = render 'activity_item_discussion', discussion: discussion
+
+        %table.with-font-and-width.footer
+          %tr
+            %td
+              = render 'unsubscribe_link'
