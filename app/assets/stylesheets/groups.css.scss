@@ -165,7 +165,7 @@ body.groups {
   text-align: center;
 }
 
-body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgroup {
+body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.create, body.groups.update, body.groups.add_subgroup {
   form.edit_group, form.new_group {
     .control-group.radio_buttons { margin-bottom: 1.6em; }
     input[type="text"] {
@@ -201,6 +201,19 @@ body.group_setup.setup, body.groups.new, body.groups.edit, body.groups.add_subgr
       border-bottom: 1px solid #DDD;
       padding: 1em 0;
       margin-bottom: 1.8em;
+    }
+    .group_hotlink_short_url {
+      label { 
+        display: inline-block;
+        font-size: 16px;
+        font-weight: normal;
+        padding-top: 5px;
+        vertical-align: top; 
+      }
+      .controls { 
+        display: inline-block; 
+        margin-left: .25em; 
+      }
     }
   }
   .disabled { color:#ccc; }

@@ -12,4 +12,5 @@
 
   = f.input :members_invitable_by, :as => "radio_buttons", collection: group_invitable_by_options(group)
   = f.input :parent_id, :as => :hidden, :input_html => { :value => group.parent.id } if group.parent
+  = render partial: '/hotlinks/form', locals: { f: f }
   = f.submit submit_text, class: 'btn btn-info btn-large', id: 'group_form_submit', :data => { :disable_with => submit_text }

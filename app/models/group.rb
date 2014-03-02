@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
-
+  include Linkable
+  
   class MaximumMembershipsExceeded < Exception
   end
 

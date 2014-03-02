@@ -1,4 +1,6 @@
 class Discussion < ActiveRecord::Base
+  include Linkable
+  
   PER_PAGE = 50
   paginates_per PER_PAGE
 
