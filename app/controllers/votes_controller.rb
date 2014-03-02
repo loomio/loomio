@@ -26,7 +26,7 @@ class VotesController < BaseController
     def require_user_can_vote
       unless can?(:vote, motion)
         flash[:notice] = "You don't have permission to vote on the motion"
-        redirect_to dashboard_path
+        redirect_to root_url
       end
     end
 

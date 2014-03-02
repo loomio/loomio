@@ -76,7 +76,7 @@ class GroupsController < GroupBaseController
   def archive
     @group.archive!
     flash[:success] = t("success.group_archived")
-    redirect_to dashboard_path
+    redirect_to root_path
   end
 
   def hide_next_steps
