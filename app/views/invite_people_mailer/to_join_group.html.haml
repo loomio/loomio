@@ -3,6 +3,6 @@
   %p=@message_body
 
   %p
-    =t(:"invitation.link_help", group: @invitation.group.name)
+    =t(:"invitation.link_help", group: @invitation.invitable_name)
     %br
     = link_to "#{invitation_url(@invitation)}", invitation_url(@invitation)

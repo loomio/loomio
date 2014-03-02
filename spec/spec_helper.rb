@@ -75,10 +75,6 @@ Spork.prefork do
       DatabaseCleaner.clean_with(:truncation)
     end
 
-    config.before type: :request do
-      DatabaseCleaner.strategy = :truncation
-    end
-
     config.before do
       DatabaseCleaner.start
     end

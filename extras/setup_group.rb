@@ -12,10 +12,10 @@ class SetupGroup
 
   def self.send_invitation_to_start_group(group)
     inviter = SetupGroup.find_or_create_helper_bot
-    invitation = CreateInvitation.to_start_group(group: group,
-                                                inviter: inviter,
-                                                recipient_email: group.group_request.admin_email,
-                                                recipient_name: group.group_request.admin_name)
+    invitation = InvitationService.create_invite_to_start_group(group: group,
+                                                                inviter: inviter,
+                                                                recipient_email: group.group_request.admin_email,
+                                                                recipient_name: group.group_request.admin_name)
     InvitePeopleMailer.delay.to_start_group(invitation, inviter.email)
     invitation
   end
