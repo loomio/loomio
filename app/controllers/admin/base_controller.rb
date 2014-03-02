@@ -7,7 +7,7 @@ class Admin::BaseController < ApplicationController
   def require_admin
     unless current_user.is_admin?
       flash[:error] = "You need to be a system admin for that"
-      redirect_to root_path
+      redirect_to dashboard_path
     end
   end
 end
