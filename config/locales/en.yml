@@ -220,9 +220,11 @@ en:
 
   prompt_visitor_to_authenticate:
     header: "Log in or join group to participate"
-    body_html: |
-      <p>If you're a member of this group, you'll have to log in to participate.</p>
-      <p>If you're not a member, you can ask to join.</p>
+    body: "If you're a member of this group, you'll have to log in to participate."
+
+  prompt_user_to_join:
+    header: "Join the group to participate"
+    body: "To comment or vote, you need to be a member of this group."
 
   #
   # GROUP PAGE

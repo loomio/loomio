@@ -24,6 +24,7 @@ class Discussion < ActiveRecord::Base
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   has_many :motions, :dependent => :destroy
   has_one :current_motion, class_name: 'Motion', conditions: {'motions.closed_at' => nil}, order: 'motions.closed_at asc'
+  has_one :most_recent_motion, class_name: 'Motion', order: 'motions.created_at desc'
   has_many :votes, through: :motions
   has_many :comments, :dependent => :destroy
   has_many :comment_likes, :through => :comments, :source => :comment_votes
@@ -65,6 +66,11 @@ class Discussion < ActiveRecord::Base
 
   def closed_motions
     motions.closed
+  end
+
+  def last_collaborator
+    return nil if originator.nil?
+    User.find_by_id(originator.to_i)
   end
 
   def group_users_without_discussion_author

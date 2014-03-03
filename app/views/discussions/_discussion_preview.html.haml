@@ -10,7 +10,7 @@
       - if user_signed_in? && motion
         .vote-icon
           - if can?(:vote, motion)
-            %div{:class => 'activity-icon ' + vote_icon_name(last_vote.position)}
+            .activity-icon{class: "position-#{last_vote.position}-icon"}
 
       .discussion-title
         = truncate(discussion.title, :length => 60, :separator => ' ')
