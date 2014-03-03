@@ -13,7 +13,6 @@ ul { list-style: none; }
 html { height: 100%; }
 
 body {
-  background-color: $main-background;
   height: 100%;
   color: $text-black;
 }
@@ -104,7 +103,6 @@ li.selector-item a.selector-link:hover {
 .btn-grey { color: $mid-grey; }
 a.btn-icon:hover { color: $dark-grey; }
 
-
 .pages.home p:last-child { margin-bottom: 0; }
 
 .invitations.show,
@@ -127,6 +125,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .woc.index,
 .we_the_people.index {
   color: black;
+  background-color: #f7f7f7;
 
   .pages-information { min-height: 200px; }
 
@@ -259,6 +258,7 @@ a.btn-icon:hover { color: $dark-grey; }
   .divider{
     border-top: 1px solid #eee;
     margin: 14px 223px 34px 223px;
+    &.hero { margin: 24px 223px 44px 223px; }
   }
 
   #people {
@@ -612,53 +612,130 @@ body.pages.terms_of_service {
 
 
 body.pages.crowd {
-  #hero {
-    text-align: center;
-    line-height: 57px;
-    margin-bottom: 42px;
+  section.first { }
+  .divider {
+    margin: 44px 223px 54px 223px;
+    .bullet { margin: 44px 223px 44px 223px; }
   }
-  .subheader { text-align: center; }
-  #points {
-    list-style: disc;
-    margin: 0 40px;
-    font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 18px;
-    li { margin-bottom: 14px; }
-  }
-  figure {
-    text-align: center;
-    img { width: 600px; }
-  }
-  .plain-white-link {
-    color: #ffffff;
-    &:hover { text-decoration: none; }
-  }
-
-  .frontpage-nav { display: none; }
-  .log-in-button { display: none; }
-
-  .mailchimp-subscription-field {
-    #mc_embed_signup form {
-      padding: 2px 0 10px 3%;
+  .last { margin-bottom: 40px; }
+  .container {
+    h1 {
+      text-align: center;
+      font-size: 50px;
+      line-height: 56px;
+      margin-bottom: 20px;
+      font-weight: 400;
+      &.smaller {
+        font-size: 42px;
+        line-height: 46px;
+        margin-bottom: 40px;
+      }
+      // span { font-weight: 400; }
     }
-  }
+    h3 { margin-bottom: 6px; }
+    .first .inner-container {
+      padding: 20px 34px 34px;
+    }
+    .head { margin-top: 40px; }
+    .inner-container.first {
+      padding-bottom: 6px;
+    }
+    .inner-container.with-action-row {
+      padding-bottom: 6px;
+    }
+    #ipad-loomio {
+      margin-bottom: 80px;
+    }
+    #hero {
+      text-align: center;
+      line-height: 57px;
+      margin-bottom: 42px;
+    }
+    .subheader {
+      text-align: center;
+      font-weight: 400;
+      margin-bottom: 36px;
+      font-size: 28px;
+      line-height: 31px;
+      &#tagline {
+        font-size: 36px;
+        margin: 28px 0 10px;
+      }
+      &.bullet { margin-bottom: 6px; }
+    }
+    #points {
+      list-style: disc;
+      margin: 0 40px;
+      font-size: 18px;
+      line-height: 24px;
+      margin-bottom: 18px;
+      li { margin-bottom: 14px; }
+    }
+    .team {
+      margin-bottom: 34px;
+      font-size: 18px;
+      text-align: center;
+    }
+    .btn {
+      background-image: none;
+      border: 1px solid;
+      margin-bottom: 7px;
+    }
+    figure {
+      text-align: center;
+      img { width: 600px; }
+    }
+    .plain-white-link {
+      color: #ffffff;
+      padding: 11px 136px;
+      &:hover { text-decoration: none; }
+    }
+    .action-row {
+      padding-bottom: 54px;
+      p {
+        margin-bottom: 4px;
+        font-size: 16px;
+      }
+    }
+    .button-info { text-align: center; }
+    .launch {
+      margin-bottom: 26px;
+      font-size: 36px;
+      font-weight: 400;
+    }
+    .launch-container {
+      i { color: rgb(100, 97, 97); }
+      text-align: center;
+      p {
+        font-size: 20px;
+        margin-bottom: 40px;
+      }
+    }
+    .frontpage-nav { display: none; }
+    .log-in-button { display: none; }
 
-  #mailchimp-subscribe-button { margin-bottom: 18px; }
+    .mailchimp-subscription-field {
+      #mc_embed_signup form {
+        padding: 4px 0 10px 3%;
+      }
+    }
 
-  .mc-field-group {
-    padding-bottom: 0;
-    min-height: 0;
-  }
+    #mailchimp-subscribe-button { margin-bottom: 18px; }
 
-  #mc_embed_signup {
-    #mce-responses {
-      margin: 0;
-      .response {
-        margin: 0 0 15px 0;
-        padding: 0;
-        font-weight: normal;
-        width: 100%;
+    .mc-field-group {
+      padding-bottom: 0;
+      min-height: 0;
+    }
+
+    #mc_embed_signup {
+      #mce-responses {
+        margin: 0;
+        .response {
+          margin: 0 0 15px 0;
+          padding: 0;
+          font-weight: normal;
+          width: 100%;
+        }
       }
     }
   }

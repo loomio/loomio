@@ -23,8 +23,6 @@ Feature: User edits discussion description
     Given I am logged in
     And there is a discussion in a group I belong to
     And I am on the discussion page
-    Then I should not see a link to revision history
-
     When I choose to edit the discussion description
     And I fill in and submit the discussion description form
     Then I should see the description change

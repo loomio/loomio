@@ -106,13 +106,14 @@ body.groups {
 
 // group title (on almost all pages)
 .group-title {
-  margin: 0;
+  margin: 0 0 8px;
   h1 {
     font-size: 24px;
+    font-weight: 400;
     margin-bottom: 0;
   }
   .home-title {
-    color: $dark-grey;
+    color: #727272;
     display: inline;
   }
   .privacy-dropdown {
@@ -150,8 +151,8 @@ body.groups {
   @include ie7-inline-block();
   width: 15px;
   position: relative;
-  bottom: 1px;
-  font-size: 0.6em;
+  bottom: 2px;
+  font-size: 0.5em;
   text-align: center;
 }
 

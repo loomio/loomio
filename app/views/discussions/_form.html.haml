@@ -17,7 +17,7 @@
       - if discussion.group.present? and discussion.group.is_hidden?
         .hidden-group-discussion-privacy
           %h3.header= t :'simple_form.labels.group.privacy'
-          %i.icon-lock
+          %i.fa.fa-lock
           %span.subhead= t :'simple_form.labels.discussion.privacy_private_header'
           .description= t :'simple_form.labels.discussion.privacy_hidden_description'
           = f.input_field :private, as: :hidden, value: true

@@ -1,4 +1,4 @@
-Feature: Edit user settings
+Feature: User edits profile
   As a user
   So that I can customise my profile
   I want to update my display name
@@ -6,7 +6,7 @@ Feature: Edit user settings
   Background:
     Given I am logged in
     And I am a member of a group
-    And I visit the user settings page
+    And I visit the profile page
 
   @javascript
   Scenario: User updates display name
@@ -24,5 +24,5 @@ Feature: Edit user settings
 
   @javascript
   Scenario: User updates profile photo
-    Given I visit the user settings page
+    Given I visit the profile page
     And I upload a profile image

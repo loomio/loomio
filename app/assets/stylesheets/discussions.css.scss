@@ -477,7 +477,7 @@ body.discussions.show {
     background-color: $selector-panel;
     @include border-radius(8px);
     border: 1px solid $lighter-grey;
-    margin: 10px 0 20px 0;
+    margin: 0 0 20px 0;
     min-height: 59px;
     .dropdown {
       float: right;
