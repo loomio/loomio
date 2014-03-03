@@ -616,9 +616,12 @@ body.pages.crowd {
     h1 {
       text-align: center;
       font-size: 50px;
-      line-height: 60px;
+      line-height: 56px;
       margin-bottom: 20px;
       font-weight: 400;
+    }
+    .first .inner-container {
+      padding: 60px 34px 0;
     }
     #hero {
       text-align: center;
@@ -628,7 +631,7 @@ body.pages.crowd {
     .subheader {
       text-align: center;
       font-weight: 400;
-      margin-bottom: 30px;
+      margin-bottom: 14px;
     }
     #points {
       list-style: disc;
@@ -641,7 +644,7 @@ body.pages.crowd {
     button {
       background-image: none;
       border: 1px solid;
-      margin-bottom: 10px;
+      margin-bottom: 7px;
     }
     figure {
       text-align: center;
@@ -651,7 +654,25 @@ body.pages.crowd {
       color: #ffffff;
       &:hover { text-decoration: none; }
     }
-
+    .action-row {
+      padding-bottom: 34px;
+      p {
+        margin-bottom: 4px;
+        font-size: 16px;
+      }
+    }
+    .button-info { text-align: center; }
+    .launch {
+      margin-bottom: 26px;
+      font-size: 36px;
+      font-weight: 400;
+    }
+    .launch-container {
+      p {
+        font-size: 20px;
+        margin-bottom: 40px;
+      }
+    }
     .frontpage-nav { display: none; }
     .log-in-button { display: none; }
 
