@@ -15,6 +15,6 @@ optional:
   BING_TRANSLATION_SECRET: ""
   NAVBAR_LOGO_PATH: top-bar-loomio.png
   NAVBAR_CONTRIBUTE: show
-  # CANONICAL_HOST: "localhost:3000"
+  # CANONICAL_HOST: loomio.org
   FOG_DIRECTORY: ""
   TAG_MANAGER_ID: ""

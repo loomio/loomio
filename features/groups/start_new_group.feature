@@ -22,7 +22,7 @@ Scenario: Guest creates group
   And I choose to create an account now
   And I sign up as a new user
   And I setup the group
-  Then I should see the group page with a contribute link
+  Then I should see the group page
 
 Scenario: User creates group
   Given I am logged in
@@ -41,4 +41,4 @@ Scenario: User creates group
   When I click the invitation link
   And I sign in to Loomio
   And I setup the group
-  Then I should see the group page with a contribute link
+  Then I should see the group page
