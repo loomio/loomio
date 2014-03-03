@@ -11,7 +11,7 @@ Given(/^I am on the home page of the website$/) do
 end
 
 When(/^I go to start a new group from the navbar$/) do
-  find(".new-group a").click
+  find(".group-links a.new-group").click
 end
 
 When(/^I go to start a new group$/) do
@@ -64,11 +64,6 @@ Then (/^I should recieve an email with an invitation link$/) do
   open_email(@user.email)
   @invitation = Invitation.find_by_recipient_email(@user.email)
   current_email.should have_content(invitation_path(@invitation))
-end
-
-Then(/^I should see the group page with a contribute link$/) do
-  page.should have_css("body.groups.show")
-  page.should have_css("#contribute")
 end
 
 Then(/^I should be taken to the new group$/) do
