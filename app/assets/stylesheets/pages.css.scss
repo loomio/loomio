@@ -13,7 +13,6 @@ ul { list-style: none; }
 html { height: 100%; }
 
 body {
-  background-color: $main-background;
   height: 100%;
   color: $text-black;
 }
@@ -104,7 +103,6 @@ li.selector-item a.selector-link:hover {
 .btn-grey { color: $mid-grey; }
 a.btn-icon:hover { color: $dark-grey; }
 
-
 .pages.home p:last-child { margin-bottom: 0; }
 
 .invitations.show,
@@ -127,6 +125,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .woc.index,
 .we_the_people.index {
   color: black;
+  background-color: #f7f7f7;
 
   .pages-information { min-height: 200px; }
 
@@ -619,7 +618,9 @@ body.pages.crowd {
       line-height: 56px;
       margin-bottom: 20px;
       font-weight: 400;
+      // span { font-weight: 400; }
     }
+    h3 { margin-bottom: 6px; }
     .first .inner-container {
       padding: 60px 34px 0;
     }
@@ -641,7 +642,7 @@ body.pages.crowd {
       margin-bottom: 18px;
       li { margin-bottom: 14px; }
     }
-    button {
+    .btn {
       background-image: none;
       border: 1px solid;
       margin-bottom: 7px;
@@ -668,6 +669,8 @@ body.pages.crowd {
       font-weight: 400;
     }
     .launch-container {
+      i { color: rgb(100, 97, 97); }
+      text-align: center;
       p {
         font-size: 20px;
         margin-bottom: 40px;
@@ -678,7 +681,7 @@ body.pages.crowd {
 
     .mailchimp-subscription-field {
       #mc_embed_signup form {
-        padding: 2px 0 10px 3%;
+        padding: 4px 0 10px 3%;
       }
     }
 

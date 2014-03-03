@@ -17,18 +17,12 @@ body { line-height: 22px; }
 
 
 .navbar-fixed-top .navbar-inner {
-  background-image: linear-gradient(to bottom, white, #fcfcfc);
-  border: 1px solid #dbdbdb;
+  background-image: linear-gradient(to bottom, white, white);
+  border-bottom: 1px solid #dbdbdb;
+  min-height: 44px;
 }
 
-.navbar-fixed-top.navbar-inverse .navbar-inner {
-  background: #252525;
-  @include box-shadow(0, 0, 0, 0);
-  border: 1px solid #252525;
-  padding: 3px 0 1px;
-}
-
-.navbar .btn { margin-top: 6px; }
+.navbar .btn { margin-top: 8px; }
 
 .modal-backdrop {
   background: #999;
@@ -56,3 +50,5 @@ body { line-height: 22px; }
   background: black;
 }
 .navbar-fixed-top .container { width: 960px; }
+
+.dropdown-menu { border: 1px solid #E7E7E7; }

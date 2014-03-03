@@ -2,6 +2,6 @@
   =simple_form_for @search_form, url: search_path, method: :get, id: 'search-form' do |f|
     .input-prepend
       .add-on
-        %i.icon-search
+        %i.fa.fa-search
           = submit_tag "", class: 'submit-search'
       = f.input :query, label: false, placeholder: t("search.placeholder"), input_html: { class: 'input-medium', tabindex: 1 }

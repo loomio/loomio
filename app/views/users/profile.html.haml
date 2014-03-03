@@ -1,15 +1,16 @@
-%h1= t("user_settings_form.header")
+%h1= t :'profile_form.profile'
 .row
   .span4
+    = link_to t(:'profile_form.view'), user_path(current_user), id: 'edit-profile'
     = simple_form_for @user do |f|
       = f.input :name
       = f.input :email
       = f.input :language_preference, :collection => Translation::LANGUAGES, include_blank: false
-      = f.submit :class => "btn btn-info btn-large", id: "user-settings-submit", :data => {:disable_with => t("helpers.submit.user.update")}
+      = f.submit :class => "btn btn-info btn-large", id: "profile-submit", :data => {:disable_with => t("helpers.submit.user.update")}
 
 .row
   .span6
-    %h2= t("user_settings_form.picture")
+    %h2= t("profile_form.picture")
 .row
   .span3
     = render 'avatar', user: @user, size: "large", id: 'avatar-preview'
@@ -21,7 +22,7 @@
         = render 'avatar_setting_option', user: @user, kind: 'gravatar'
       = render 'avatar_setting_option', user: @user, kind: 'initials'
       %li.image-setting
-        = link_to t("user_settings_form.upload_new_image"), '#', class: 'btn btn-grey', id: 'upload-new-image'
+        = link_to t("profile_form.upload_new_image"), '#', class: 'btn btn-grey', id: 'upload-new-image'
         = form_for [@user], :html => { :multipart => true, :id => 'upload-form' }, :url => upload_new_avatar_user_path(@user), :method => 'post' do
           = file_field_tag :uploaded_avatar, id: 'uploaded-avatar'
           = hidden_field_tag("user[avatar_kind]", "", :id => "user-avatar-kind")

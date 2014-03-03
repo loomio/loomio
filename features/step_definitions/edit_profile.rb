@@ -1,5 +1,5 @@
-Given /^I visit the user settings page$/ do
-  visit "/settings"
+Given /^I visit the profile page$/ do
+  visit profile_path
 end
 
 Then /^I should see my display name has been updated$/ do
@@ -10,7 +10,7 @@ end
 Given /^I fill in and submit the new name$/ do
   @display_name = Faker::Name.name
   fill_in 'user_name', with: @display_name
-  click_on 'user-settings-submit'
+  click_on 'profile-submit'
 end
 
 Then /^I upload a profile image$/ do
@@ -19,7 +19,7 @@ end
 
 Given(/^I change my email to "(.*?)" and submit the form$/) do |email|
   fill_in 'user_email', with: email
-  click_on 'user-settings-submit'
+  click_on 'profile-submit'
 end
 
 When(/^I log out$/) do

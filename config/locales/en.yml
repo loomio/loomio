@@ -196,8 +196,8 @@ en:
   request_new_group_details: "or wait until you are invited to one."
   empty_notifications: "You do not have any notifications yet."
   see_all_notifications: "See all notifications"
-  user_settings: "User settings"
-  email_preferences: "Email preferences"
+  profile: "Profile"
+  email_settings: "Email settings"
   sign_out: "Sign out"
   sign_in: "Log in"
   honeypot_warning: "Could not create your account. If you're using a screen reader, please make sure the last (hidden) field on the form is blank."
@@ -742,8 +742,9 @@ en:
   new_user_form:
     create_an_account: "Create an account"
 
-  user_settings_form:
-    header: "User settings"
+  profile_form:
+    view: "View my profile"
+    profile: "Edit profile"
     picture: "Picture"
     use_avatar_kind: "Use %{kind}"
     upload_new_image: "Upload a new image"
