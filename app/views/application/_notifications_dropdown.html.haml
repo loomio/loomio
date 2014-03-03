@@ -1,7 +1,7 @@
-%li.nav-item.dropdown#notifications-container
+%li.nav-item.dropdown.left-side#notifications-container
   %a#notifications-toggle.dropdown-toggle.nav-link{'data-toggle' => 'dropdown', :href => '#'}
-    %span.header-bar-icon.nav-item-icon.large-icon.notification-icon
-    %span#notifications-count.label.label-important
+    %i.fa.fa-bell
+    %span#notifications-count.label.activity-count
   %ul.dropdown-menu
     %li
       %h3= t("notifications.header")

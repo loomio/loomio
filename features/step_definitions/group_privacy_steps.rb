@@ -318,6 +318,6 @@ end
 
 Then(/^I should see that the discussions are private$/) do
   visit discussion_path(@discussion)
-  page.should have_css('.icon-lock')
+  page.should have_css('.fa-lock')
 end
 

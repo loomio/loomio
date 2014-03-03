@@ -1,5 +1,5 @@
-When /^I am on the settings page$/ do
-  visit "/settings"
+When /^I am on the profile page$/ do
+  visit profile_path
 end
 
 When /^I enter my desired username$/ do
