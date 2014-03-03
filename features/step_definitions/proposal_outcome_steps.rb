@@ -43,7 +43,6 @@ end
 
 When(/^I edit the proposal outcome$/) do
   visit discussion_path(@discussion)
-  find('.previous-proposals, .selector-item a:first-child').click
   find('#edit-outcome').click
   fill_in 'motion[outcome]', with: "Let's talk to Hank about doing that thing."
   find('#add-outcome-submit').click

@@ -1,6 +1,0 @@
-.position-row.clearfix
-  %div{ :class => 'activity-icon ' + vote_icon_name(vote.position) }
-  = link_to vote.user_name, user_path(vote.user), class: 'user-name'
-  - if vote.can_be_edited_by?(current_user) && motion.voting?
-    =link_to "edit", new_motion_vote_path(motion), class: 'btn btn-mini', id: 'edit-vote'
-  %span.word-break~ vote.statement

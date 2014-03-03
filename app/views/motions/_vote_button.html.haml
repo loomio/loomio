@@ -1,0 +1,9 @@
+- position_key = "#{position}_position"
+= link_to image_tag("hand-#{position}.png",
+                    title: t(position_key),
+                    alt: t(position_key)),
+          new_motion_vote_path(motion, position: position),
+          title: t(position_key),
+          "data-content" => t("#{position}_details"),
+          class: "position btn vote-#{position}",
+          id: "#{position}-vote"
