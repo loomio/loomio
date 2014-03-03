@@ -38,7 +38,6 @@
 //= require motions
 //= require users
 //= require notifications
-//= require dashboard
 //= require votes
 //= require tooltips
 //= require announcements

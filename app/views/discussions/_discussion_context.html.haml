@@ -12,12 +12,13 @@
           who: @discussion.author.name,
           link: user_path(@discussion.author),
           link_class: 'user-name')
-      -if @last_collaborator.present?
+      -if @discussion.originator.present?
+        - last_collaborator = @discussion.last_collaborator
         .last-edited-by
           = t("discussion_context.last_edited_html",
               when: time_ago_in_words(@discussion.last_versioned_at),
-              who: @last_collaborator.name,
-              link: user_path(@last_collaborator),
+              who: last_collaborator.name,
+              link: user_path(last_collaborator),
               link_class: 'user-name')
         .see-revision-history
           %i.icon-time

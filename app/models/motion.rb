@@ -120,6 +120,10 @@ class Motion < ActiveRecord::Base
     votes.for_user(user.id).exists?
   end
 
+  def user_has_not_voted?(user)
+    !user_has_voted?(user)
+  end
+
   def most_recent_vote_of(user)
     votes.for_user(user.id).last
   end
@@ -139,14 +143,16 @@ class Motion < ActiveRecord::Base
   end
 
   def last_vote_by_user(user)
-    votes.where(user_id: user.id).order('created_at DESC').first
+    return nil if user.nil?
+
+    votes.where(user_id: user.id, age: 0).first
   end
 
   def last_position_by_user(user)
     if vote = last_vote_by_user(user)
       vote.position
     else
-      nil
+      'unvoted'
     end
   end
 
