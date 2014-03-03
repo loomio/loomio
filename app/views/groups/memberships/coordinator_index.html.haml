@@ -30,7 +30,7 @@
             = link_to t(:remove_coordinator),
               remove_admin_group_membership_path(@group, membership),
               method: :post,
-              class: :btn,
+              class: 'btn btn-danger',
               :confirm => t(:confirm_remove_coordinator, which_user: user.name)
           - else
             = link_to t(:make_coordinator),
