@@ -1,6 +1,6 @@
 .dropdown#discussion-options
   %a.dropdown-toggle{href:"#", id: "options-dropdown", 'data-toggle' => 'dropdown'}
-    %i.icon-cog
+    %i.fa.fa-cog
   %ul.dropdown-menu.pull-right
     - if can?(:edit, discussion)
       %li= link_to t(:edit_discussion), edit_discussion_path, class: 'edit-discussion'
@@ -21,7 +21,7 @@
       .modal-body
         = select_tag :destination_group_id, options_for_select(destination_groups.map{|g| [g.name, g.id]})
       .warn-move-will-make-private{style: "display: none"}
-        %i.icon-lock
+        %i.fa.fa-lock
         = t(:move_discussion_to_hidden_group)
       .modal-footer
         = submit_tag t(:move_discussion), class: "btn btn-info", id: 'move-discussion-submit', :data => { :disable_with => "Move discussion" }
