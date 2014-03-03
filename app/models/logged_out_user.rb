@@ -12,4 +12,7 @@ class LoggedOutUser
     false
   end
 
+  def belongs_to_manual_subscription_group?
+    false
+  end
 end

@@ -1,8 +1,9 @@
-%li.nav-item.dropdown#groups
+%li.nav-item.dropdown.left-side#groups
   %a.nav-link{href: "#",  class: 'dropdown-toggle', 'data-toggle' => 'dropdown'}
-    %span.header-bar-icon.nav-item-icon.large-icon.group-icon
+    %i.fa.fa-group
     %span= t :groups
   %ul.dropdown-menu
     #group-dropdown-items
-    %li.group-item.new-group
-      =link_to t(:request_new_group), new_group_path
+    %li.group-item.group-links
+      =link_to t(:request_new_group), new_group_path, class: 'new-group'
+      =link_to 'Find a group', public_groups_path, class: 'find-group'
