@@ -110,6 +110,10 @@ class User < ActiveRecord::Base
     true
   end
 
+  def is_logged_out?
+    !is_logged_in?
+  end
+
   def cached_group_ids
     @cached_group_ids ||= group_ids
   end

@@ -97,5 +97,5 @@ $ ->
     warn_if_moving_discussion_to_private_group()
 
 $ ->
-  $(".js-prompt-visitor-to-authenticate").on "click", (e) ->
-    $('#prompt-visitor-to-authenticate').modal('show')
+  $(".js-prompt-user-to-join-or-authenticate").on "click", (e) ->
+    $('#prompt-user-to-join-or-authenticate').modal('show')

@@ -1,0 +1,12 @@
+.modal.hide#prompt-user-to-join-or-authenticate
+  .modal-header
+    %h3= t :"prompt_visitor_to_authenticate.header"
+    %button.close{"data-dismiss" => "modal"}×
+  .modal-body
+    %p= t :"prompt_visitor_to_authenticate.body"
+    %p= t :"prompt_user_to_join.body"
+  .modal-footer
+    =link_to t(:log_in), new_user_session_path, class: "btn btn-large btn-success"
+    =link_to t(:ask_to_join_group), group_ask_to_join_path(@group), class: "btn btn-large btn-primary", id: "align-button"
+
+= render 'discussions/js_prompt_user_to_join_or_authenticate'
