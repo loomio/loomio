@@ -17,7 +17,7 @@
     - if can? :set_volume, @discussion
       - current_volume = @discussion_reader.volume
       .btn-group.dropdown.volume-dropdown
-        %button{type: 'button', class:"btn btn-left btn-default dropdown-toggle", 'data-toggle': "dropdown", 'aria-expanded': false}
+        %button{type: 'button', class:"btn btn-left btn-default dropdown-toggle", 'data-toggle' => "dropdown", 'aria-expanded' => false}
           %i.fa.fa-lg.fa-fw{class: icon_class_for_volume(current_volume)}
           = t :"volume.#{current_volume}"
           %span.caret
