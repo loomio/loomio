@@ -38,10 +38,10 @@ th{
   vertical-align: top;
   padding-right: 0.5em;
 }
-.agreed{ color: #90D490;}
-.abstained{ color: #F0BB67; }
-.disagreed{ color: #D49090;}
-.blocked{ color: #dd0000; }
+.agreed, .yes { color: #90D490;}
+.abstained, .abstain { color: #F0BB67; }
+.disagreed, .no { color: #D49090;}
+.blocked, .block { color: #dd0000; }
 
 .yes-link{
   font-weight: bold;
