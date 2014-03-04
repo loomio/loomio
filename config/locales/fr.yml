@@ -181,8 +181,6 @@ fr:
   request_new_group_details: "ou attendre jusqu'à ce qu'on vous invite."
   empty_notifications: "Vous n'avez pas de notification pour l'instant."
   see_all_notifications: "Voir toutes les notifications"
-  user_settings: "Réglages de l'utilisateur"
-  email_preferences: "Email"
   sign_out: "Se déconnecter"
   sign_in: "Se connecter"
   honeypot_warning: "Nous n'avons pas pu créer votre compte. Si vous utilisez un lecteur d'écran, veuillez vous assurer que le dernier champ (caché) du formulaire est vide."
@@ -584,11 +582,6 @@ fr:
     update_preferences: "Actualiser vos préférences"
   new_user_form:
     create_an_account: "Créer un compte"
-  user_settings_form:
-    header: "Réglages de l'utilisateur"
-    picture: "image"
-    use_avatar_kind: "Utiliser %{kind}"
-    upload_new_image: "Charger une nouvelle image"
   group_setup:
     set_up_your_group: Mettre en place votre groupe
     desc_header: "Vous y êtes presque !"
@@ -674,6 +667,10 @@ fr:
         create: "Créer un compte"
         update: "Actualiser vos réglages"
   email:
+    to_join_group:
+      subject: "%{member} vous a invité à rejoindre le groupe %{group_name} sur Loomio"
+    to_start_group:
+      subject: "Créer votre nouveau groupe Loomio: %{group_name}"
     user_added_to_a_group:
       subject: "%{who} vous a ajouté au groupe %{which_group}"
       content: "%{who} vous a ajouté au groupe %{which_group} sur Loomio. Cliquez ici pour aller dans le groupe :"
@@ -735,10 +732,6 @@ fr:
       closing_in_24_hours: "Ferme dans 24 heures"
       headline: "La proposition de %{author} dans %{group} ferme bientôt :"
       summary: "Résumé"
-    to_join_group:
-      subject: "%{member} vous a invité à rejoindre le groupe %{group_name} sur Loomio"
-    to_start_group:
-      subject: "Créer votre nouveau groupe Loomio: %{group_name}"
     verification:
       header: "Vous avez presque fini !"
       intro: "Merci de cliquer sur le lien de vérification pour finaliser votre demande :"

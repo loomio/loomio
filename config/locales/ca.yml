@@ -176,8 +176,6 @@ ca:
   request_new_group_details: "o espera fins que siguis convidat a un."
   empty_notifications: "Encara no tens cap notificació."
   see_all_notifications: "Veure totes les notificacions"
-  user_settings: "Preferències del compte"
-  email_preferences: "Preferències del correu electrònic"
   sign_out: "Tanca la sessió"
   sign_in: "Inicia la sessió"
   honeypot_warning: "No s'ha pogut crear el compte. Si utilitzes un lector de pantalla assegura't de que l'última casella (amagada) del formulari està buida."
@@ -531,11 +529,6 @@ ca:
     update_preferences: "Actualitza les preferències"
   new_user_form:
     create_an_account: "Crea un compte"
-  user_settings_form:
-    header: "Preferències del compte"
-    picture: "Foto"
-    use_avatar_kind: "Utilitza %{kind}"
-    upload_new_image: "Puja una nova foto"
   group_setup:
     set_up_your_group: Configura el teu grup
     desc_header: "Ja quasi ho tens!"
@@ -601,6 +594,10 @@ ca:
         create: "Crea un compte"
         update: "Actualitzar la configuració"
   email:
+    to_join_group:
+      subject: "%{member} t'ha convidat a unir-te a %{group_name} a Loomio"
+    to_start_group:
+      subject: "Configura el teu nou grup de Loomio: %{group_name}"
     user_added_to_a_group:
       subject: "%{who} t'ha afegit a %{which_group}"
       content: "%{who} t'ha afegit a %{which_group} a Loomio. Clica aquí per visitar el grup:"
@@ -662,10 +659,6 @@ ca:
       closing_in_24_hours: "Tanca en 24 hores"
       headline: "La proposta de %{author} a %{group} tancarà aviat:"
       summary: "Sumari"
-    to_join_group:
-      subject: "%{member} t'ha convidat a unir-te a %{group_name} a Loomio"
-    to_start_group:
-      subject: "Configura el teu nou grup de Loomio: %{group_name}"
     verification:
       header: "Ja quasi ho tens!"
       intro: "Sisplau, fes click a aquest link per verificar la teva sol·licitud:"
