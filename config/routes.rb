@@ -163,6 +163,8 @@ Loomio::Application.routes.draw do
     end
   end
 
+  resource :beta_features, only: [:show, :create]
+
   scope module: :users do
     match '/profile',          action: 'profile', as: :profile
     scope module: :email_preferences do

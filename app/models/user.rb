@@ -313,6 +313,10 @@ class User < ActiveRecord::Base
     groups.manual_subscription.any?
   end
 
+  def beta_feature_enabled?(beta_feature)
+    beta_features.include? beta_feature
+  end
+
   private
 
   def set_default_avatar_kind

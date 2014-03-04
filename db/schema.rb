@@ -195,6 +195,21 @@ ActiveRecord::Schema.define(:version => 20140227000252) do
   add_index "discussions", ["is_deleted"], :name => "index_discussions_on_is_deleted"
   add_index "discussions", ["key"], :name => "index_discussions_on_key", :unique => true
 
+  create_table "email_preferences", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "subscribed_to_daily_activity_email",           :default => false, :null => false
+    t.boolean  "subscribed_to_proposal_closure_notifications", :default => true,  :null => false
+    t.boolean  "subscribed_to_mention_notifications",          :default => true,  :null => false
+    t.text     "days_to_send"
+    t.integer  "hour_to_send",                                 :default => 22,    :null => false
+    t.datetime "next_activity_summary_sent_at"
+    t.datetime "activity_summary_last_sent_at"
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
+  end
+
+  add_index "email_preferences", ["user_id"], :name => "index_email_preferences_on_user_id"
+
   create_table "email_template_sent_to_groups", :force => true do |t|
     t.integer  "email_template_id"
     t.integer  "group_id"
@@ -520,6 +535,7 @@ ActiveRecord::Schema.define(:version => 20140227000252) do
     t.string   "language_preference"
     t.string   "time_zone"
     t.string   "key"
+    t.text     "beta_features"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
