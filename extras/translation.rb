@@ -20,7 +20,8 @@ class Translation
                             'Italiano' => 'it',
                             'తెలుగు' => 'te',
                             'Gaelic (Irish)' => 'ga',
-                            '日本語' => 'ja'}
+                            '日本語' => 'ja',
+                            'українська мова' => 'uk'}
 
   def self.language(locale)
     LANGUAGES.key(locale)
