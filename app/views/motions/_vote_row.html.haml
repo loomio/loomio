@@ -1,0 +1,6 @@
+.position-row.clearfix
+  %div.activity-icon{ class: "position-#{vote.position}-icon" }
+  = link_to vote.user_name, vote.user, class: 'user-name'
+  - if vote.user == current_user
+    = link_to "edit", new_motion_vote_path(motion), class: 'btn btn-mini', id: 'edit-vote'
+  %span.word-break~ vote.statement

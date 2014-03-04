@@ -85,7 +85,6 @@ pl:
       by_user: "zamknij propozycję"
       by_expiry: "Propozycja została zamknięta"
   see_all_notifications: "Zobacz wszystkie powiadomienia"
-  user_settings: "Ustawienia użytkownika"
   sign_out: "Wyloguj się"
   generic_confirm: "Czy jesteś pewien?"
   invite_people: "Zaproś ludzi"

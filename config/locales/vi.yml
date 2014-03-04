@@ -29,9 +29,7 @@ vi:
     permission_to_invite: "Bạn không có quyền mời thành viên mới."
     position_not_updated: "Không thể cập nhật phần kiến nghị."
     settings_not_updated: "Thiết lập của bạn vẫn chưa nhận được cập nhật."
-    group_request_already_verified: "Rất tiếc! Đường dẫn liên kết để kích hoạt mà bạn vừa click vào đã được xác nhận trước đó. Nếu bạn không nhận được tin tức gì từ phía website của chúng tôi trong vòng 48 giờ, xin vui lòng liên hệ: contact@loomio.org"
     group_request_already_accepted: "Rất tiếc! Lời mời này không hợp lệ hoặc đã được chấp nhận trước đó."
-    group_request_contribution: "Vui lòng chọn một phân loại. Đây không phải là điều bắt buộc, chỉ là phần này sẽ cung cấp các thông tin hữu ích nhằm hoàn thiện mô hình dịch vụ mà chúng tôi đang cung cấp. Xin cảm ơn rất nhiều!"
     group_request_invalid_token: "Rất tiếc! Mã xác nhận này không hợp lệ"
     group_private_or_not_found: "Không tìm thấy nhóm.\n\nNhóm này có thể được đặt ở chế độ riêng tư. Nếu một ai đó đã cung cấp cho bạn liên kết này, hãy hỏi họ để mời bạn tham gia vào nhóm."
     group_already_setup: "Nhóm mà bạn đang muốn tạo đã tồn tại sẵn."
@@ -151,8 +149,6 @@ vi:
   request_new_group_details: "hoặc đợi cho đến khi bạn được mời vào."
   empty_notifications: "Bạn hiện không có thông báo nào."
   see_all_notifications: "Xem tất cả thông báo"
-  user_settings: "Thiết lập về người dùng"
-  email_preferences: "Tùy biến email"
   sign_out: "Đăng xuất"
   tagline: "Tạo một môi trường để mọi người có thể tham gia vào việc đưa ra các quyết định ảnh hưởng đến họ."
   click_to_dismiss: "Click vào đây để bãi bỏ tin nhắn này"
@@ -172,14 +168,12 @@ vi:
   setup_step_3: "Mời thành viên tham gia vào nhóm của bạn"
   invite_people: "Mời thành viên"
   no_invitations_button: "Hiện không còn lời mời nào"
-  pending_invitations: 'Đang đợi thư mời'
   number_pending: '%{pending} đang đợi'
   and_number_pending: 'và %{pending} đang đợi'
   edit_memberships: 'Chỉnh sửa thành viên'
   add_new_member: "Thêm thành viên mới"
   invite_members_to_group: "Mời thành viên đến %{which_group}"
   remaining_invites: "lời mời còn lại"
-  need_more_invites_html: "Cần thêm? Loomio hiện đang ở giai đoạn thử nghiệm cuối, có nghĩa rằng chúng tôi hiện vẫn đang phát triển các dịch vụ của mình nên nguồn tài nguyên dịch vụ hiện vẫn còn hạn chế đối với từng người dùng. Nếu bạn muốn tăng số lượng nhóm bạn thích %{href}."
   get_in_touch_link: "liên lạc"
   email_members_in_group: "Gửi email cho thành viên trong %{which_group}"
   subject_error: "Xin điền vào chủ đề"
@@ -462,11 +456,6 @@ vi:
     update_preferences: "Cập nhật phần tùy biến"
   new_user_form:
     create_an_account: "Tạo một tài khoản"
-  user_settings_form:
-    header: "Thiết lập về người dùng"
-    picture: "Hình ảnh"
-    use_avatar_kind: "Sử dụng %{kind}"
-    upload_new_image: "Tải lên một hình ảnh mới"
   group_setup:
     submit: "Hãy đưa tôi đến nhóm của mình!"
   simple_form:
@@ -561,7 +550,6 @@ vi:
   approve: "Chấp thuậ"
   author: "Tác giả"
   back: "Quay lại"
-  by: "bởi"
   cancel: "Hủy bỏ"
   change: "Thay đổi"
   change_language: "Click vào đây để sử dụng Loomio phiên bản tiếng %{language}"
@@ -593,7 +581,6 @@ vi:
   outcome: "Kết quả"
   password: "Mật khẩu"
   prev: "Trước đó"
-  translate: "Tham gia vào công tác chuyển ngữ Loomio!"
   options: "Tùy chọn"
   other: "Khác"
   ok_got_it: "Ô kê con tê tê, tôi đã hiểu rồi!"
@@ -606,6 +593,7 @@ vi:
   show_more: "Hiển thị thêm"
   starting: "Đang bắt đầu"
   subject: "Chủ đề"
+  translate: "Tham gia vào công tác chuyển ngữ Loomio!"
   unlike: "Không thích"
   until_close: "cho đến khi đóng lại"
   update: "Cập nhật"
