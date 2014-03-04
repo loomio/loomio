@@ -166,8 +166,6 @@ de:
   request_new_group_details: "oder warte bis du zu einer eingeladen wirst."
   empty_notifications: "Du hast noch keine Benachrichtigungen."
   see_all_notifications: "Alle Benachrichtigungen ansehen"
-  user_settings: "Benutzereinstellungen"
-  email_preferences: "E-Mail-Einstellungen"
   sign_out: "Abmelden"
   tagline: "Eine Welt erschaffen, in der es für jeden einfach ist an Entscheidungen teilzuhaben, die ihn betreffen."
   click_to_dismiss: "Klicke hier um diese Nachricht zu verwerfen"
@@ -503,11 +501,6 @@ de:
     update_preferences: "Aktualisiere Einstellungen"
   new_user_form:
     create_an_account: "Ein Konto erstellen"
-  user_settings_form:
-    header: "Benutzereinstellungen"
-    picture: "Bild"
-    use_avatar_kind: "Nutze %{kind}"
-    upload_new_image: "Ein neues Bild hochladen"
   group_setup:
     desc_header: "Du hast es fast geschafft!"
     desc_html: "Als Koordinator der Gruppen bist du Verantwortlich für die Erstellung und Verwaltung deiner Loomio-Gruppen. Zuerst musst du ein paar Einstellungen vornehmen, dann gelangst du in deine neue Gruppe. Beginne ein oder zwei Diskussionen und schicke ein paar Einladungen raus!<p>Wenn du an die einfachste Möglichkeit denkst um deine Gruppe zu beschreiben, frage dich: Was wollt ihr zusammen erreichen? Welche Entscheidungen werdet ihr machen? Wer wird involviert sein?</p>"
@@ -557,6 +550,10 @@ de:
         create: "Konto erstellen"
         update: "Einstellungen aktualisieren"
   email:
+    to_join_group:
+      subject: "%{member} hat dich eingeladen %{group_name} auf Loomio beizutreten"
+    to_start_group:
+      subject: "Richte deine neue Loomio-Gruppe ein: %{group_name}"
     unsubscribe: "Bestelle E-Mails ab oder ändere deine E-Mail Einstellungen:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> um deine E-Mail Einstellungen zu ändern und E-Mails abzubestellen."
     view_comment: "Klicke hier um das Kommentar auf Loomio zu sehen"
@@ -598,10 +595,6 @@ de:
     proposal_closing_soon:
       closes_in: "Schließt in"
       summary: "Zusammenfassung"
-    to_join_group:
-      subject: "%{member} hat dich eingeladen %{group_name} auf Loomio beizutreten"
-    to_start_group:
-      subject: "Richte deine neue Loomio-Gruppe ein: %{group_name}"
     verification:
       header: "Du bist fast fertig!"
       intro: "Bitte klicke auf diesen Link zur Verifizierung um deine Anfrage abzuschließen:"

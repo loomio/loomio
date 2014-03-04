@@ -2,6 +2,14 @@ cmn:
   errors:
     messages:
       email: "不是一个有效的电子邮箱地址"
+  time:
+    formats:
+      for_today: '%1：%M%P'
+  date:
+    formats:
+      for_this_year: '%e%b'
+      for_another_year: '%-d/%-m/%y'
+      datepicker: "%天-%月-%年"
   error:
     cant_join_subgroup: "如果你不是大组的一员那你就不能加入一个小组"
     cant_modify_position: "这提议已经关闭了"
@@ -9,10 +17,13 @@ cmn:
     discussion_not_created: "讨论不代表创建"
     group_not_archived: "组是不能存档的"
     invalid_close_date: "日期无效，请检查这个日期是否通过"
+    invalid_email: "请输入至少一个有效邮箱地址"
     image_upload_fail: "无法上传图片。确定图片是在1MB之内并且格式是jpeg.png或者是gif"
     permission_to_invite: "你没有邀请成员的许可"
     position_not_updated: "无法更新位置"
     settings_not_updated: "您的位置还没有更新"
+    group_request_already_accepted: "对不起！这个邀请无效或者已经接受过"
+    proposal_already_exists: "已经有一个开放式的建议在此讨论"
   alert:
     duplicate_email: "%{which email}已经在这个团队里了？"
   notice:
@@ -75,6 +86,10 @@ cmn:
       almost_x_years:
         one: "1年"
         other: "%{count}年"
+  footer:
+    public_groups: '公共组团'
+  inbox:
+    dropdown-btn: '收件箱'
   notifications:
     new_discussion: "新开始了一个讨论"
     new_motion: "创建一个新的提议"
@@ -99,7 +114,11 @@ cmn:
   generic_confirm: "您确定吗？"
   discussion_helper_text:
     header: "欢迎你来参与第一次的讨论"
+  setup_steps_title: "下一步"
   setup_step_2: "开始你的第一个讨论"
+  setup_step_3: "邀请人到你的组里"
+  invite_people: "邀请人"
+  edit_memberships: '编辑会员'
   add_new_member: "加新的成员"
   invite_members_to_group: "邀请成员加入%{which_group}"
   remaining_invites: "剩余的邀请"
@@ -112,6 +131,7 @@ cmn:
   email_group_members: "给组员发邮件"
   edit_group_settings: "编辑团队设置"
   leave_group: "离开团队"
+  confirm_leave_hidden_group: "你确定你要离开%{which_group}吗？同时你也会被其他小组给移除的"
   confirm_leave_group: "你确定你想要离开%（那个团队）？"
   deactivate_group: "取消团队"
   confirm_deactivate_group: "等等！！！你确定你想要取消%{which_group}？那你就再也查不到这个组了，但是，如果你想要重新激活这个组，你可以通过发送邮件到contact@loomio.org"
@@ -162,10 +182,15 @@ cmn:
     see_revision_history: "看历史修订"
   description_history:
     header: "历史修订"
+    subheader: "版本"
+    current: "(当前的)"
+    restore: "(恢复这个版本)"
+    applying_changes: "(申请更改)"
     previous: "上一个"
     next: "下一个"
   comment_form_placeholder: "说点什么吧。"
   comment_form_submit_button: "文章评论"
+  liked_by: "喜欢%{who}"
   delete_comment: "删掉评论"
   confirm_delete_comment: "你确定你想要删掉这条评论吗？"
   markdown_settings_more_info: "更多信息..."
@@ -175,12 +200,22 @@ cmn:
   close_proposal: "关闭的提议"
   confirm_close_proposal: "你确定你想要关闭这个提议吗？"
   change_proposal_close_date: "更改截止日期"
+  change_proposal_close_date_header: "为这条建议更改关闭日期%{which}"
   proposal_close_date_error: "请给一个未来的截止日期"
+  proposal_closing_when: "更在关闭%{when}"
+  proposal_closed_when: "%{when}之前就已经关闭了"
+  state_your_position: "陈述你的位置"
+  positions: "位置"
   yes_position: "我同意"
+  yes_details: "我同意这一点并且希望它可以继续下去"
   abstain_position: "我弃权。"
   abstain_details: "我很开心我不在时集团所做的决定。"
   no_position: "我不同意"
   no_details: "我认为我们可以做的更好。"
+  block_position: "我反对"
+  block_details: "我强烈反对这个提议并且我不希望它继续下去"
+  not_voted: "[成员显示尚未决定]"
+  outcome_placeholder: "这个建议的结果是什么"
   help:
     get_in_touch: "联系我们"
     getting_started: "开始吧"
@@ -188,24 +223,42 @@ cmn:
     have_a_discussion: "讨论吧"
     how_it_works: "怎么使用？"
     join_the_community: "加入社会"
+    make_a_decision: "做决定"
     positions_agree_description: "<span>同意</span>意思就是满意提议的内容"
+    start_proposal: "写一个很清晰的提议"
     video_id: "52025402"
     video_tutorial: "视频教育"
     video_tutorial_description: "看看使用Loomio的示范视频"
+  hint:
+    vote: '任何时候你都可以更改位置'
+  resend_confirmation: "重新发送确认指令"
   new_password: "新的密码"
   confirm_new_password: "确认新密码"
   change_your_password: "改你的密码"
   change_my_password: "改我的密码"
   send_password_reset: "给我重置密码的指令"
+  blank_details: "(如果你不想更改那就留空格)"
+  password_confirmation: "确定密码"
+  current_password: "当前密码"
+  password_details: "(我们需要你当前密码来确认密码更改)"
+  cancel_my_account: "取消我的账户"
   remember_me: "记住我"
+  signing_in: "签署"
   forgot_your_password: "忘记密码？"
+  confirmation_not_received: "没有收到确认指令吗？"
+  unlock_not_received: "没有收到解锁指令吗？"
   invitation:
+    message_body: "邀请信息"
     invitation_link: "邀请链接"
     copy: "如果有些人没有得到他们的邀请邮件，请自觉的复制这上面的邀请链接并且发送给他们"
   motion_form:
     header: "新提议"
     name_helper: "尽可能让这个标题清晰和简洁"
+  group_form:
+    invitation_settings: "邀请设置"
   vote_form:
+    header: "陈述你的位置"
+    edit: "编辑你的位置"
     placeholder: "提供你做这个决定的原因(可选)"
     your_position: "你的位置"
     your_statement: "你的说法"
@@ -214,18 +267,40 @@ cmn:
   email_preferences_form:
     daily_activity_summary: "每日活动总结"
     daily_activity_subscription: "给我发一封总结组里发生的事情的邮件"
-  user_settings_form:
-    picture: "图片"
+    global_notifications: "全球通知"
+    proposal_closing_soon_subscription: "在建议关闭前24小时提醒我"
+    mentions_subscription: "当有人提到我的评论时就给我发邮件"
+    group_activity_notifications: "小组活动通知"
+    group_activity_details: "对每个组而言，当你想要收到关于新的讨论及决策时可以查看邮箱"
+    update_preferences: "偏好更新"
+  new_user_form:
+    create_an_account: "创建一个账户"
+  group_setup:
+    submit: "把我放到我的组里"
+    payment_model:
+      header: 每个人都可以用Loomio
+      link: 找出更多
   simple_form:
     'yes': '是的'
     'no': '不是'
     required:
       mark: '＊'
     labels:
+      discussion:
+        title: "标题"
+        description: "上下文"
+      motion:
+        name: "标题"
+        description: "细节"
       user:
         name: "性名"
+        email: "邮件"
         password: "密码"
+        language_preference: "语言"
     placeholders:
+      motion:
+        name: "你提议的目的是什么"
+        description: "请给足信息，这样每个人同意或不同意的时候就会知道它到底是什么意思"
       user:
         email: "邮件"
         password: "密码"
@@ -233,11 +308,20 @@ cmn:
     submit:
       discussion:
         create: "开始讨论"
+        update: "更新讨论"
       motion:
         create: "开始提议"
       user:
+        create: "创建账户"
         update: "更新设置"
   email:
+    view_comment: "点击这里查看Loomio的评论"
+    view_discussion: "点击这里查看讨论"
+    view_group: "点击这里查看Loomio的组队"
+    create_proposal:
+      closes_in: "将要关闭"
+    daily_activity:
+      intro: "展示上一个24小时你的Loomio所发生的事情"
     invitation:
       hi: "您好%{name}"
     proposal_closing_soon:
@@ -246,6 +330,8 @@ cmn:
     verification:
       header: "你快要完成了"
       ignore: "如果你不想请求加入Loomio请忽略这封邮件"
+  approve: "批准"
+  back: "返回"
   cancel: "取消"
   change: "更改"
   changing: "更改中"
@@ -254,23 +340,36 @@ cmn:
   closing: "关闭中"
   closed: "关闭了"
   decisions: "决定"
+  delete: "删除"
   discussions: "讨论"
   edit: "编辑"
   email_address: "邮件地址"
   enable: "启用"
   participation: "参与"
   disable: "不可能"
+  group: "组"
   groups: "组群"
+  home: "主页"
   id: "ID"
+  like: "喜欢"
+  loading: "稍等..."
+  message: "信息"
   name: "名字"
+  new_activity: "新活动"
   next: "下一个"
+  outcome: "结果"
+  password: "密码"
   prev: "上一个"
+  options: "选项"
+  other: "其他的"
   ok_got_it: "好了，我明白！"
+  save: "保存"
   saving: "存档中"
   sending: "发送中"
   send_invite: "发送邀请"
   send_email: "发邮件"
   show_more: "展示更多"
+  start_group: "开始组团！"
   starting: "正在开始"
   subject: "标题"
   thanks: "谢谢您！"

@@ -83,7 +83,6 @@ ga:
   request_new_group: "Cuir baicle ar bun"
   empty_notifications: "Níl aon fhógra agat fós."
   see_all_notifications: "Féach gach fógra"
-  email_preferences: "Sainroghanna ríomhphoist"
   sign_out: "Scoir"
   sign_in: "Logáil isteach"
   or_sign_in_html: "Má tá cuntas Loomio agat cheana féin, dean logáil isteach anseo .........."
@@ -217,10 +216,6 @@ ga:
     update_preferences: "Leasaigh na sainroghanna agat"
   new_user_form:
     create_an_account: "Cruthaigh cuntas"
-  user_settings_form:
-    picture: "Grianghraf"
-    use_avatar_kind: "Bain feidhm as %{kind}"
-    upload_new_image: "Uasluchtaigh íomhá nua"
   group_setup:
     desc_header: "Tá beagnach críochnaithe agat!"
     payment_model:
