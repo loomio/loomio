@@ -13,8 +13,8 @@ class DiscussionsRedirectController < ApplicationController
 
     def reject_new_ids
       if params[:id].to_i > BLOCK_ID_GREATER_THAN
-        flash[:error] = "use keys to access records with id greater than > #{BLOCK_ID_GREATER_THAN}"
-        redirect_to root_path
+        flash[:error] = "use keys to access records with id greater than #{BLOCK_ID_GREATER_THAN}"
+        redirect_to dashboard_path
       end
     end
 
