@@ -9,6 +9,7 @@ class Translation
                'Français' => 'fr',
                'Indonesian' => 'id',
                'magyar' => 'hu',
+               '日本語' => 'ja',
                'മലയാളം' => 'ml',
                'Nederlands' => 'nl',
                'Português (Brasil)' => 'pt',
@@ -20,7 +21,6 @@ class Translation
                             'Italiano' => 'it',
                             'తెలుగు' => 'te',
                             'Gaelic (Irish)' => 'ga',
-                            '日本語' => 'ja',
                             'українська мова' => 'uk'}
 
   def self.language(locale)

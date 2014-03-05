@@ -205,9 +205,6 @@ cs:
     message: "<p>Domovská stránka vám ukáže všechny aktuální diskuze ze všech skupin, ve kterých jste členem.</p><p>Můžete zahájit diskuzi o novém tématu kliknutím na tlačítko „Zahájit diskuzi“.</p>"
   prompt_visitor_to_authenticate:
     header: "Přihlaste se nebo se přidejte ke skupině, abyste se zúčastnil(a)"
-    body_html: |
-      <p>Pokud jste členem této skupiny, musíte se přihlásit, abyste se mohl(a) zúčastnit.</p>
-      <p>Pokud ne, můžete zažádat o členství.</p>
   setup_steps_title: "Následující kroky:"
   setup_step_1: "Podívejte se na ukázkovou diskuzi"
   setup_step_2: "Zahajte svou první diskuzi"
