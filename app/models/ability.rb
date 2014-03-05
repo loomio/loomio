@@ -132,12 +132,14 @@ class Ability
     end
 
     can :show, Discussion do |discussion|
-      group = discussion.group
       if discussion.archived?
         false
       elsif discussion.public?
         true
-      elsif group.members.include?(user)
+      elsif @member_group_ids.include?(discussion.group_id)
+        true
+      elsif discussion.group.viewable_by_parent_members? &&
+            @member_group_ids.include?(discussion.group.parent_id)
         true
       else
         false

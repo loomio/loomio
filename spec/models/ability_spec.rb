@@ -136,29 +136,45 @@ describe "User abilities" do
 
     context "viewing a subgroup they do not belong to" do
       let(:subgroup) { create(:group, parent: group) }
+      let(:private_subgroup_discussion) { create_discussion group: subgroup, private: true }
+      let(:public_subgroup_discussion) { create_discussion group: subgroup, private: false }
 
       context "public subgroup" do
         before { subgroup.update_attributes(:privacy => 'public') }
         it { should     be_able_to(:show, subgroup) }
         it { should     be_able_to(:request_membership, subgroup) }
+        it { should_not be_able_to(:show, private_subgroup_discussion) }
+        it { should     be_able_to(:show, public_subgroup_discussion) }
       end
 
       context "private subgroup" do
         before { subgroup.update_attributes(:privacy => 'private') }
         it { should     be_able_to(:show, subgroup) }
         it { should     be_able_to(:request_membership, subgroup) }
+        it { should_not be_able_to(:show, private_subgroup_discussion) }
+        it { should     be_able_to(:show, public_subgroup_discussion) }
+      end
+
+      context "private subgroup viewable by parent members" do
+        before { subgroup.update_attributes(:privacy => 'private', viewable_by_parent_members: true) }
+        it { should     be_able_to(:show, subgroup) }
+        it { should     be_able_to(:request_membership, subgroup) }
+        it { should     be_able_to(:show, private_subgroup_discussion) }
+        it { should     be_able_to(:show, public_subgroup_discussion) }
       end
 
       context "hidden subgroup" do
-        before { subgroup.update_attributes(privacy: 'hidden', viewable_by_parent_members: false) }
+        before { subgroup.update_attributes(privacy: 'hidden') }
         it { should_not be_able_to(:show, subgroup) }
         it { should_not be_able_to(:request_membership, subgroup) }
+        it { should_not be_able_to(:show, private_subgroup_discussion) }
       end
 
       context "hidden subgroup viewable by parent members" do
         before { subgroup.update_attributes(privacy: 'hidden', viewable_by_parent_members: true) }
         it { should     be_able_to(:show, subgroup) }
         it { should     be_able_to(:request_membership, subgroup) }
+        it { should     be_able_to(:show, private_subgroup_discussion) }
       end
     end
   end
