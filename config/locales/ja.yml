@@ -15,6 +15,12 @@ ja:
   devise:
     invitations:
       send_instructions: '%{email}　へ招待を送りました'
+      invitation_token_invalid: '与えられた招待トークンは有効ではありません！'
+      updated: 'アカウントが作成されました'
+      no_invitations_remaining: "残っている招待はありません"
+    mailer:
+      invitation_instructions:
+        subject: '誰かがあなたをLoomioのグループに招待しました'
   error:
     access_denied: "これを行う許可がありません"
     cant_join_subgroup: "親グループのメンバーでない場合は子グループに参加できません"
@@ -170,10 +176,6 @@ ja:
   dashboard_helper_text:
     header: "ホームページにようこそ！"
     message: "<p>ホームページは、あなたがメンバーになっている全てのグループの現在のディスカッションを全て表示します</p>\n<p>\"ディスカッションを開始する\"ボタンをクリックすると新しいトピックについてのディスカッションを開始することができます</p>"
-  prompt_visitor_to_authenticate:
-    body_html: |
-      <p>あなたがこのグループのメンバーならば、参加するためにログインしなければいけません</p>
-      <p>メンバーでないのなら、参加できるように頼んでください</p>
   setup_steps_title: "次のステップ："
   setup_step_1: "ディスカッションの例を参考にしてください"
   setup_step_2: "初めてのディスカッションを開始してください"
@@ -293,6 +295,7 @@ ja:
   proposal_closing_when: " %{when} 後に締め切ります"
   proposal_closed_when: "%{when} 前に締め切られました"
   proposed_when_by_who: " %{who} によって %{when} 前に提案されました "
+  engagement_on_open_proposal: "%{percent}% パーセントのメンバーが意見を選択しました  (%{numerator}/%{denominator})"
   state_your_position: "意見を選択しください"
   positions: "意見"
   yes_position: "賛成"
@@ -502,6 +505,7 @@ ja:
     upload_new_image: "新しい画像をアップロードする"
   group_setup:
     set_up_your_group: あなたのグループを立ち上げる
+    submit: "私のグループのところに連れて行って！"
   simple_form:
     'yes': 'はい'
     'no': 'いいえ'
@@ -577,6 +581,7 @@ ja:
       subject: "新しいディスカッション -  %{which}"
     create_proposal:
       intro: "あなたのいるLoomioグループで新しい提案が作成されました"
+      closes_in: "後に締め切ります"
       subject: "新しい提案： %{which}"
     daily_activity:
       heading: "あなたのLoomioイベント"
@@ -624,6 +629,7 @@ ja:
   about_loomio: "Loomioについて"
   ago: "%{quantity_of_time} 前"
   approve: "承認"
+  author: "作成者"
   back: "戻る"
   cancel: "キャンセル"
   change: "変更"

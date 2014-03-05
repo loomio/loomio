@@ -183,9 +183,6 @@ tr:
     message: "<p>Ana sayfa üyesi olduğun gruplardaki güncel müzakerelerin tümünü gösterir.</p><p>\"Bir müzakere başlat\" düğmesine tıklayarak yeni bir konu üzerinde bir müzakere başlatabilirsin.</p>"
   prompt_visitor_to_authenticate:
     header: "Katılımda bulunmak için oturum açın ya da gruba katılın"
-    body_html: |
-      <p>Eğer bu grubun bir üyesi iseniz, katılımda bulunmak için oturum açmanız gerekir.</p>
-      <p>Eğer üye değilseniz, katılmak için başvurabilirsiniz.</p>
   setup_steps_title: "Sonraki adımlar:"
   setup_step_1: "Örnek müzakereye göz at"
   setup_step_2: "İlk müzakereni başlat"
