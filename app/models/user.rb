@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
            :source => :announcement
 
   has_many :discussion_readers, dependent: :destroy
-  has_many :motion_read_logs, dependent: :destroy
+  has_many :motion_readers, dependent: :destroy
 
 
   has_many :notifications
