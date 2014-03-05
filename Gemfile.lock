@@ -328,6 +328,8 @@ GEM
     rabl (0.8.6)
       activesupport (>= 2.3.14)
     rack (1.4.5)
+    rack-attack (2.3.0)
+      rack
     rack-cache (1.2)
       rack (>= 0.4)
     rack-canonical-host (0.0.8)
@@ -559,6 +561,7 @@ DEPENDENCIES
   pry-rails (~> 0.3.2)
   quiet_assets (~> 1.0.2)
   rabl (~> 0.8.6)
+  rack-attack (~> 2.3.0)
   rack-canonical-host (~> 0.0.8)
   rack_session_access (~> 0.1.1)
   rails (~> 3.2.14)
