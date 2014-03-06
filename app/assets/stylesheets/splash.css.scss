@@ -33,10 +33,12 @@ p {
 
 .btn-lg { padding: 8px 26px; }
 
-.fa-angle-right {
-  vertical-align: middle;
-  margin: -5px 0 0 10px;
-  font-size: 1.6em;
+.btn {
+  .fa-angle-right {
+    vertical-align: middle;
+    margin: -5px 0 0 10px;
+    font-size: 1.6em;
+  }
 }
 
 a:hover { text-decoration: none; }
@@ -143,6 +145,111 @@ a:hover { text-decoration: none; }
   padding-top: 26px;
 }
 //
+
+#product-carousel, #prototype-carousel {
+  cursor: pointer;
+  .carousel-control {
+    position: absolute;
+    z-index: 5;
+    display: inline-block;
+
+    .fa {
+      color: #37362F;
+      font-size: 56px;
+    }
+
+    &.left-ctrl {
+      left: -77px;
+    }
+
+    &.right-ctrl {
+      left: 890px;
+    }
+  }
+}
+
+#product-carousel {
+  .carousel-control {
+    top: 44%;
+  }
+}
+
+#prototype-carousel {
+  .carousel-control {
+    top: 34%;
+  }
+}
+
+.step {
+  cursor: pointer;
+}
+
+.step-img {
+  margin: auto;
+  width: 128px;
+  height: 128p  x;
+  background-repeat: no-repeat;
+}
+
+#threads .step-img {
+  background-image:url(/assets/threads-hover.png);
+  &.hide-background {
+    background:transparent;
+  }
+
+}
+
+#weaving .step-img {
+  background-image:url(/assets/weaving-hover.png);
+  &.hide-background {
+    background:transparent;
+  }
+
+}
+
+#braid .step-img {
+  background-image:url(/assets/braid-hover.png);
+  &.hide-background {
+    background:transparent;
+  }
+}
+
+.decision-steps {
+
+  h2 {
+    @include transition(color, .4s, ease-in-out);
+    font-weight: 700;
+    color: $disabled;
+  }
+
+  p {
+    @include transition(color, .4s, ease-in-out);
+    color: $disabled;
+    &.active {
+      color: #37362f;
+    }
+  }
+
+  #threads {
+    h2.active {
+      color: #439AE0;
+    }
+  }
+
+  #weaving {
+    h2.active {
+      color: #855881;
+    }
+  }
+
+  #braid {
+    h2.active {
+      color: #23C092;
+    }
+
+  }
+}
+
 
 
 .crowdfunding {

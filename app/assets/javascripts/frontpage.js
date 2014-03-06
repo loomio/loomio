@@ -2,6 +2,8 @@
 //= require jquery_ujs
 //= require bootstrap-alert.js
 //= require bootstrap-modal.js
+//= require bootstrap-transition.js
+//= require bootstrap-carousel.js
 //= require validations
 //= require lib/jquery.cookie.js
 //= require lib/jstz-1.0.4.min

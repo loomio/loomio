@@ -53,21 +53,34 @@
               %h1= t(:'frontpage.product.header_html')
           .row.decision-steps
             .content
-              .col-xs-4
-                = image_tag 'threads-hover.png'
-                %h2= t(:'frontpage.product.step1.header')
-                %p= t(:'frontpage.product.step1.desc')
-              .col-xs-4
-                = image_tag 'weaving.png'
+              #threads.col-xs-4.step
+                .step-img
+                  = image_tag 'threads.png', {class: 'top', style: 'opacity:0'}
+                %h2.active= t(:'frontpage.product.step1.header')
+                %p.active= t(:'frontpage.product.step1.desc')
+              #weaving.col-xs-4.step
+                .step-img.hide-background
+                  = image_tag 'weaving.png', {class: 'top'}
                 %h2= t(:'frontpage.product.step2.header')
                 %p= t(:'frontpage.product.step2.desc')
-              .col-xs-4
-                = image_tag 'braid.png'
+              #braid.col-xs-4.step
+                .step-img.hide-background
+                  = image_tag 'braid.png', {class: 'top'}
                 %h2= t(:'frontpage.product.step3.header')
                 %p= t(:'frontpage.product.step3.desc')
           .row
-            .content.product-carousel
-              = image_tag 'ipad.png'
+            #product-carousel.content.product-carousel.carousel.slide{"data-ride" => 'carousel'}
+              .carousel-inner
+                .item.active
+                  = image_tag 'ipad-1.png'
+                .item
+                  = image_tag 'ipad-2.png'
+                .item
+                  = image_tag 'ipad-3.png'
+              %a.carousel-control.left-ctrl{href: '#product-carousel', "data-slide" => 'prev'}
+                %i.fa.fa-angle-left
+              %a.carousel-control.right-ctrl{href: '#product-carousel', "data-slide" => 'next'}
+                %i.fa.fa-angle-right
 
 
       .row.crowdfunding
@@ -80,10 +93,25 @@
 
       .row.prototype
         .content-container
-          .content
-            %h1= t(:'frontpage.prototype.header_html')
-            = image_tag 'wikimedia.png'
-            %p.hero-text= t(:'frontpage.prototype.subhead_html', try_loomio_link: new_group_request_path, join_campaign_link: crowd_path)
+          .row
+            .content.header
+              %h1= t(:'frontpage.prototype.header_html')
+          .row
+            #prototype-carousel.content.prototype-carousel.carousel.slide{"data-ride" => 'carousel'}
+              .carousel-inner
+                .item.active
+                  = image_tag 'wikimedia.png'
+                .item
+                  = image_tag 'wikimedia.png'
+                .item
+                  = image_tag 'wikimedia.png'
+                .item
+                  = image_tag 'wikimedia.png'
+              %a.carousel-control.left-ctrl{href: '#prototype-carousel', "data-slide" => 'prev'}
+                %i.fa.fa-angle-left
+              %a.carousel-control.right-ctrl{href: '#prototype-carousel', "data-slide" => 'next'}
+                %i.fa.fa-angle-right
+            %p.hero-text= t(:'frontpage.prototype.subhead_html')
 
 
       .row.quote
