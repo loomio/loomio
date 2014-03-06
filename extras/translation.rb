@@ -35,6 +35,10 @@ class Translation
     EXPERIMENTAL_LANGUAGES.values
   end
 
+  def self.permitted_locale?(locale)
+    (LANGUAGES.values + EXPERIMENTAL_LANGUAGES.values).include? locale.to_s
+  end
+
   def self.language_link_attributes(language)
     { href: "?&locale=#{language[1]}"  ,
       title: "#{I18n.t(:change_language, language: language[0])}",

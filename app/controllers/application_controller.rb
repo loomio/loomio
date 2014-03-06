@@ -3,15 +3,16 @@ class ApplicationController < ActionController::Base
   include ReadableUnguessableUrlsHelper
   protect_from_forgery
 
-  around_filter :user_time_zone, if: :current_user
-  before_filter :set_application_locale
-  before_filter :save_selected_locale_if_possible
   helper :analytics_data
   helper :locales
   helper_method :current_user_or_visitor
 
+  before_filter :set_application_locale
+  before_filter :save_selected_locale, if: :user_signed_in?
+  around_filter :user_time_zone, if: :user_signed_in?
+
   rescue_from CanCan::AccessDenied do |exception|
-    if current_user
+    if user_signed_in?
       flash[:error] = t("error.access_denied")
       redirect_to dashboard_path
     else
@@ -30,11 +31,15 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_or_visitor
-    current_user || LoggedOutUser.new
+    if user_signed_in?
+      current_user
+    else
+      LoggedOutUser.new
+    end
   end
 
   def dashboard_or_root_path
-    if current_user
+    if user_signed_in?
       dashboard_path
     else
       root_path
