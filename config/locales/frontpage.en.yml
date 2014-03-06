@@ -12,11 +12,11 @@ en:
       privacy: 'Privacy'
       services: 'Services'
     hero:
-      head: 'The world needs a better way to make decisions together.'
+      head_html: 'The world needs a better way to <strong>make decisions together.</strong>'
       subhead: 'Help us build it.'
       desc: 'Loomio is free and open software for anyone, anywhere, to participate in decisions that aﬀect them'
     product:
-      header: 'When we hear all voices, we make better decisions.'
+      header_html: 'When we hear <strong>all voices</strong>, we make <strong>better decisions.</strong>'
       step1:
         header: '1. Talk things through'
         desc: 'Start a discussion on any topic, and bring in the right people. Share diverse perspectives and develop ideas together.'
@@ -29,14 +29,14 @@ en:
     crowdfunding:
         header: 'We’re crowdfunding so we can ﬁnish building this new platform and give it away to the world.'
     prototype:
-      header: "We've already built a prototype, and people all over the world are doing amazing things with it:"
-      subhead: 'Try Loomio Beta now. Or join the campaign to get early access to Loomio 1.0.'
+      header_html: "We've already built a <strong>prototype</strong>, and people <strong>all over the world</strong> are doing amazing things with it:"
+      subhead_html: '<a href="#">Try Loomio Beta</a> now. Or <a href="#">join the campaign</a> to get early access to Loomio 1.0.'
     mobile:
       header: 'Loomio 1.0 lets people make decisions together wherever they are.'
     quote:
       header:
-        rushkoff: "Loomio unleashes the internet's potential to bring people towards consensus rather than polarized debate. -Douglas Rushkoff"
-        sifry: 'Loomio is hitting a sweet spot between individual voice and collective decision. -Micah Sifry'
+        rushkoff_html: "\"Loomio <strong>unleashes the internet's potential</strong> to bring people towards consensus rather than polarized debate.\" -Douglas Rushkoff"
+        sifry_html: 'Loomio is hitting a sweet spot between <strong>individual voice</strong> and <strong>collective decision</strong>. -Micah Sifry'
     team:
       header: 'About Loomio'
       desc: 'We’re a small team of open-source developers and social justice activists working at Enspiral in Aotearoa New Zealand, with a wider network of friends, supporters and advisors all over the world.'
