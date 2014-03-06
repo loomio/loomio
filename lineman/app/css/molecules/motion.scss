@@ -43,10 +43,13 @@
   @include make-row($card-gutter);
   text-align: center;
   margin-bottom: $card-margin;
+  margin-top: 10px;
+  margin-left: -20px;
   @include screen-size(medium-up) {
     @include make-xs-column(6);
     padding-left: 0;
   }
+  img { width: 140%; }
   .vote {
     @include screen(small-medium) {
       @include make-xs-column(3);
