@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include LocalesHelper
+  include CurrentUserHelper
   include ReadableUnguessableUrlsHelper
   protect_from_forgery
 
@@ -27,14 +28,6 @@ class ApplicationController < ActionController::Base
       super.merge({locale: selected_locale})
     else
       super
-    end
-  end
-
-  def current_user_or_visitor
-    if user_signed_in?
-      current_user
-    else
-      LoggedOutUser.new
     end
   end
 

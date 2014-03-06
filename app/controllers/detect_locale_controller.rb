@@ -1,8 +1,10 @@
 class DetectLocaleController < ActionController::Base
   include LocalesHelper
+  include CurrentUserHelper
 
   def show
-    if suggest_detected_locale?
+    if detected_locale.present? and 
+      (detected_locale != params[:current_locale])
       I18n.locale = best_available_locale
     else
       head :ok
