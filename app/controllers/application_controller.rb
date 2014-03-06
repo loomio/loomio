@@ -3,10 +3,11 @@ class ApplicationController < ActionController::Base
   include ReadableUnguessableUrlsHelper
   protect_from_forgery
 
-  before_filter :set_locale
-  before_filter :initialize_search_form
   around_filter :user_time_zone, if: :current_user
+  before_filter :set_application_locale
+  before_filter :save_selected_locale_if_possible
   helper :analytics_data
+  helper :locales
   helper_method :current_user_or_visitor
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -20,6 +21,13 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  def default_url_options
+    if !user_signed_in? and params.has_key?(:locale)
+      super.merge({locale: selected_locale})
+    else
+      super
+    end
+  end
 
   def current_user_or_visitor
     current_user || LoggedOutUser.new
@@ -42,19 +50,15 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    save_detected_locale
     path = session['user_return_to'] || dashboard_path
     clear_stored_location
     path
   end
 
-  def initialize_search_form
-    @search_form = SearchForm.new(current_user)
-  end
-
   def user_time_zone(&block)
     Time.use_zone(current_user.time_zone_city, &block)
   end
-
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 

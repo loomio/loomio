@@ -24,7 +24,7 @@ class Translation
                             'українська мова' => 'uk'}
 
   def self.language(locale)
-    LANGUAGES.key(locale)
+    LANGUAGES.key(locale.to_s)
   end
 
   def self.locales
