@@ -9,12 +9,13 @@ Feature: Language preferences
     When I visit the sign in page
     Then I should see "Log in"
 
-  @javascript
-  Scenario: Logged out user with browser language header that matches available translation
-    Given I am not logged in
-    And my browser language header is set to "es"
-    When I visit the sign in page
-    Then I should see "Entrar"
+  #@javascript
+  # user should see offer to view page in espan0l
+  #Scenario: Logged out user with browser language header that matches available translation
+    #Given I am not logged in
+    #And my browser language header is set to "es"
+    #When I visit the sign in page
+    #Then I should see "Entrar"
 
   @javascript
   Scenario: Logged in user without language preference
@@ -22,7 +23,7 @@ Feature: Language preferences
     And I am logged in
     And I have not set my language preference
     When I am on the profile page
-#    Then I should see "Ajustes de usuario"
+    Then I should see "Ajustes de usuario"
 
   @javascript
   Scenario: Logged in user with language preference
@@ -39,7 +40,7 @@ Feature: Language preferences
     Then I should see "profile"
     And I change my language preference to Espanol
     When I am on the profile page
-#    Then I should see "Ajustes de usuario"
+    Then I should see "Ajustes de usuario"
 
   @javascript
   Scenario: Logged in user changes languge preference from links in footer
