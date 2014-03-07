@@ -193,7 +193,7 @@ en:
 
   edit_discussion_context: "Edit discussion context"
   request_new_group: "Start a group"
-  request_new_group_details: "or wait until you are invited to one."
+  request_or_find_new_group_html: "<a href='%{new_group_link}'>Start a new group</a>, or <a href='%{existing_group_link}'>find an existing group </a>"
   empty_notifications: "You do not have any notifications yet."
   see_all_notifications: "See all notifications"
   profile: "Profile"
