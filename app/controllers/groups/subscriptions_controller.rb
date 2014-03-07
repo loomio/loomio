@@ -57,7 +57,8 @@ class Groups::SubscriptionsController < GroupBaseController
   def show
     authorize! :view_payment_details, group
     unless @group.has_subscription_plan?
-      redirect_to new_group_subscription_url(@group)
+      redirect_to crowd_path
+      # redirect_to new_group_subscription_url(@group)
     end
   end
 
