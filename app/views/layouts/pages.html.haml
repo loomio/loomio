@@ -9,42 +9,28 @@
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
 
+
   %body{class: "#{controller_name} #{action_name}"}
     - analytics_scope do
       = render 'google_tag_manager'
+
+
+    .navbar.navbar-top
+      .navbar-inner
+        .navbar-container
+          = link_to image_tag("logo-orange.png"), root_path, class: 'brand', alt: 'Loomio'
+
     .container.home-flash
       = render 'flash_messages', :flash => flash
     - if controller_name == 'pages'
       = render 'github_fork_us'
-    .container#top
-      .inner-container
-        .row-fluid
-          .pull-right
-            - if controller_name == 'pages' && (action_name == 'home' || action_name == 'about')
-              =link_to 'Start a group', new_group_request_path, class: 'btn btn-success'
 
-            - unless current_page? new_user_session_path
-              =link_to t(:'devise.sessions.sign_in'), new_user_session_path, class: 'btn btn-info log-in-button'
-          .span3 &nbsp;
-          .span6
-            =link_to image_tag("logo-426px-mauve-matte.png"), root_path
-            %h2 collaborative decision-making
-        .frontpage-nav
-          =link_to 'Purpose', purpose_path
-          %span &middot;
 
-          =link_to 'How it works', purpose_path(anchor: 'how-it-works')
-          %span &middot;
+    .row.hero
+      .content-container
+        .content
+          = yield
 
-          =link_to 'Pricing', pricing_path
-          %span &middot;
-
-          =link_to 'About us', about_path
-          %span &middot;
-
-          =link_to('Blog', blog_path)
-
-    = yield
 
     = render 'footer_logged_out'
     = javascript_include_tag "frontpage"
