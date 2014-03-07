@@ -1,0 +1,157 @@
+!!!
+%html
+  %head
+    - title = @title ? @title : "Loomio | Collaborative Decision-Making"
+    %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
+    %title= title
+    <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
+    %link{href: "http://fonts.googleapis.com/css?family=Open+Sans:300,400,700", rel: "stylesheet", type: "text/css"}
+    = stylesheet_link_tag  "marketing"
+    = csrf_meta_tags
+    = render 'social_metadata', description: @meta_description, title: @meta_title
+
+  %body{class: "#{controller_name} #{action_name}"}
+    - analytics_scope do
+      = render 'google_tag_manager'
+      = render 'flash_messages', :flash => flash
+
+    .container-fluid
+      %nav.navbar.navbar-default
+        .content
+          .navbar-header
+            = link_to image_tag("logo-orange.png"), root_path, class: 'navbar-brand', alt: 'Loomio'
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a{href: '#'}
+                %i.fa.fa-github
+            %li
+              %a{href: '#'}
+                %i.fa.fa-twitter
+            %li
+              %a{href: '#'}
+                %i.fa.fa-facebook
+            %li= link_to t(:'frontpage.link.blog'), '#', class: 'blog'
+            %li= link_to t(:'frontpage.link.contact'), '#', class: 'contact'
+            %li= link_to t(:'frontpage.link.log_in'), '#', class: 'btn btn-orange'
+
+      .row.hero
+        .content-container
+          .content
+            =image_tag 'globe.png', class: 'image'
+            %h1.header= t(:'frontpage.hero.head_html')
+            %h2.subhead= t(:'frontpage.hero.subhead')
+            %p.hero-text.description= t(:'frontpage.hero.desc')
+            %a{href: '', class: 'btn btn-teal btn-lg hero-text js-not-yet-button'}
+              = t(:'frontpage.link.crowdfunding')
+              %i.fa.fa-angle-right
+
+
+      .row.product
+        .content-container
+          .row
+            .content.header
+              %h1= t(:'frontpage.product.header_html')
+          .row.decision-steps
+            .content
+              .col-xs-4
+                = image_tag 'threads-hover.png'
+                %h2= t(:'frontpage.product.step1.header')
+                %p= t(:'frontpage.product.step1.desc')
+              .col-xs-4
+                = image_tag 'weaving.png'
+                %h2= t(:'frontpage.product.step2.header')
+                %p= t(:'frontpage.product.step2.desc')
+              .col-xs-4
+                = image_tag 'braid.png'
+                %h2= t(:'frontpage.product.step3.header')
+                %p= t(:'frontpage.product.step3.desc')
+          .row
+            .content.product-carousel
+              = image_tag 'ipad.png'
+
+
+      .row.crowdfunding
+        %a{href: '#', class: 'block-link js-not-yet-row'}
+          .content
+            %h1= t(:'frontpage.crowdfunding.header')
+            %h2
+              = t(:'frontpage.link.crowdfunding')
+              %i.fa.fa-angle-right
+
+      .row.prototype
+        .content-container
+          .content
+            %h1= t(:'frontpage.prototype.header_html')
+            = image_tag 'wikimedia.png'
+            %p.hero-text= t(:'frontpage.prototype.subhead_html')
+
+
+      .row.quote
+        .content
+          %blockquote= t(:'frontpage.quote.header.rushkoff_html')
+
+
+      .row.mobile
+
+      .row.quote
+        .content
+          %blockquote= t(:'frontpage.quote.header.sifry_html')
+
+      .row
+        = image_tag 'team.png'
+
+      .row.team
+        %a{href: '#', class: 'block-link'}
+          .content
+            %h1= t(:'frontpage.team.header')
+            %p.hero-text= t(:'frontpage.team.desc')
+            %h2
+              = t(:'frontpage.link.more')
+              %i.fa.fa-angle-right
+
+      .row.ideals
+        .content.first
+          .row
+            .col-xs-6
+              = image_tag 'community.png'
+              %h2= t(:'frontpage.ideals.community.header')
+              %p= t(:'frontpage.ideals.community.desc')
+            .col-xs-6
+              = image_tag 'indi.png'
+              %h2= t(:'frontpage.ideals.independent.header')
+              %p= t(:'frontpage.ideals.independent.desc')
+      .row.ideals
+        .content
+          .row
+            .col-xs-6
+              = image_tag 'open.png'
+              %h2= t(:'frontpage.ideals.open.header')
+              %p.open= t(:'frontpage.ideals.open.desc_html')
+            .col-xs-6
+              = image_tag 'gift.png'
+              %h2= t(:'frontpage.ideals.gift.header')
+              %p.gift= t(:'frontpage.ideals.gift.desc')
+
+      .row.vision
+        %a{href: '#', class: 'block-link js-not-yet-row'}
+          .content
+            %h1= t(:'frontpage.vision.header')
+            %h2
+              = t(:'frontpage.link.crowdfunding')
+              %i.fa.fa-angle-right
+
+      .row.footer
+        .content
+          %ul
+            %li
+              = t(:'frontpage.link.top')
+              %i.fa.fa-angle-up
+          %ul.pull-right
+            %li= t(:'frontpage.link.public_groups')
+            %li= t(:'frontpage.link.terms')
+            %li= t(:'frontpage.link.privacy')
+            %li= t(:'frontpage.link.services')
+
+    = javascript_include_tag "frontpage"
+    = javascript_include_tag 'https://browserid.org/include.js'
+

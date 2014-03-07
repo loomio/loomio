@@ -1,0 +1,228 @@
+@import "twitter/bootstrap";
+@import "twitter/bootstrap/mixins";
+@import "media_queries";
+@import "color";
+@import "buttons";
+
+// * { border: 1px solid #fff; }
+
+
+body, h1, h2, h3, h4, h5 {
+  font-family: 'OpenSans-Light';
+  color: $font;
+}
+
+h1, blockquote { font-size: 40px; line-height: 1.2; }
+
+blockquote {
+  border: none;
+  margin: 0;
+}
+
+h2 {
+  font-family: 'OpenSans';
+  font-size: 22px;
+}
+
+p {
+  font-family: 'OpenSans';
+  font-size: 16px;
+}
+
+.btn-lg { padding: 8px 26px; }
+
+.fa-angle-right {
+  vertical-align: middle;
+  margin: -5px 0 0 10px;
+  font-size: 1.6em;
+}
+
+
+.home {
+
+
+
+  text-align: center;
+  a:hover { text-decoration: none; }
+
+  .hero-text {
+    font-size: 24px;
+    font-family: 'OpenSans-Light';
+  }
+
+  .block-link {
+    display: block;
+    h1, h2, h3, h4, h5, p { color: white; }
+    h2 {
+      font-weight: 400px;
+      font-size: 24px;
+      letter-spacing: 1.4px;
+    }
+  }
+
+  .decision-steps {
+    h2 {
+      font-weight: 700;
+      color: $disabled;
+    }
+    p { color: $disabled; }
+  }
+  .content-container { padding-bottom: 40px; }
+  .content {
+    padding: 52px 26px;
+    @include screen-size(small-up) {
+      width: 960px;
+      margin: 0 auto;
+    }
+  }
+
+  .navbar {
+    text-align: left;
+    border: none;
+    background-color: white;
+    margin-bottom: 0;
+    .content {
+      padding: 15px 0 36px;
+      margin-bottom: 25px;
+    }
+    li a{
+      color: $charcoal;
+      font-size: 16px;
+      font-family: 'OpenSans';
+    }
+    li a.btn {
+      color: white;
+      padding: 6px 20px;
+      margin: 10px 0 10px 10px;
+    }
+    i { font-size: 22px; }
+  }
+
+  .navbar-brand {
+    padding: 0 15px;
+    img {
+      width: 90%;
+      padding: 4px 15px 0 0;
+    }
+  }
+
+  .hero {
+    background-color: $ash;
+    border-bottom: 1px solid $ash;
+    .image { width: 180px; }
+    .header {
+      font-size: 62px;
+      margin-bottom: 52px;
+      span { font-family: 'OpenSans-semibold'}
+    }
+    .subhead {
+      font-family: 'OpenSans-semibold';
+      font-size: 40px;
+      margin-bottom: 26px;
+    }
+    .hero-text.description {
+      margin: 0 auto 26px;
+      width: 70%;
+    }
+    .content { padding-top: 40px; }
+  }
+
+  // gross customization of grio
+  .content.header {
+    padding-bottom: 0;
+    width: 40%;
+  }
+
+  .decision-steps.content {
+    padding-top: 38px;
+  }
+
+  .content.product-carousel {
+    padding-top: 26px;
+  }
+  //
+
+
+  .crowdfunding {
+    background-color: $blue;
+    &:hover { background-color: darken($blue, 6%); }
+  }
+
+  .mobile {
+    background-color: $teal;
+    background-image:url('/assets/mobile.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 600px;
+
+  }
+
+  .quote {
+    background-color: $ash;
+  }
+
+  .team {
+    background-color: $orange;
+    .hero-text {
+      width: 88%;
+      margin: 0 auto;
+    }
+    &:hover { background-color: darken($orange, 6%); }
+  }
+
+  .ideals {
+    h2 {
+      font-weight: 700;
+      margin-top: 14px;
+    }
+    p {
+      width: 90%;
+      margin: 0 auto;
+    }
+    .open { width: 72%; }
+    .gift { width: 94%; }
+    .content.first { padding-bottom: 0; }
+  }
+
+  .vision {
+    background-color: $purple;
+    &:hover { background-color: darken($purple, 6%); }
+    i { font-size: 1.6em; }
+  }
+
+  .footer {
+    background-color: $slate;
+    background-color: #37362F;
+    color: $disabled;
+    height: 82px;
+    .content { padding: 0; }
+    ul {
+      float: left;
+      padding-left: 0;
+      font-size: 16px;
+      li {
+        float: left;
+        position: relative;
+        display: block;
+        padding: 20px;
+      }
+    }
+  }
+
+  .coming-soon-button {
+    font-size: 28px;
+    border-radius: 8px;
+  }
+  .coming-soon-row {
+    padding: 52px 26px;
+    color: #FFF;
+    font-size: 28px;
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+    .header {
+      font-size: 40px;
+    }
+  }
+}
