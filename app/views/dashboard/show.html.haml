@@ -13,5 +13,4 @@
         %h4= t(:previous_decisions)
         = link_to t(:see_previous_decisions), motions_path, class: 'bottom-panel-link'
 - else
-  = link_to t(:start_a_group), new_group_path
-  = t(:request_new_group_details)
+  = t(:request_or_find_new_group_html, new_group_link: new_group_path, existing_group_link: public_groups_path)
