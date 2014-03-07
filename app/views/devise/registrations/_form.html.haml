@@ -1,6 +1,6 @@
 =simple_form_for(@user, url: user_registration_path, :defaults => {:required => false}) do |f|
   =f.error_notification
-  =f.input :name, placeholder: 'Name', label: false
+  =f.input :name, placeholder: 'Your name', label: false
   =f.input :email, placeholder: 'Email', label: false
   -unless omniauth_authenticated_and_waiting?
     =f.input :password, placeholder: 'Password', label: false
