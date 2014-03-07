@@ -7,7 +7,9 @@ def from_config(key, field)
 end
 
 def throttle_request?(key, req)
-  from_config(key, :method) == req.env['REQUEST_METHOD'] && /#{from_config(key, :path)}/.match(req.path.to_s)
+  !Rails.env.test? &&
+  from_config(key, :method) == req.env['REQUEST_METHOD'] && 
+  /#{from_config(key, :path)}/.match(req.path.to_s)
 end
 
 @config.keys.each do |key|

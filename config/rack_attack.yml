@@ -2,7 +2,7 @@
 #
 # group:
 #   route: (GROUP_ROUTE_REGEX)
-#   period: 10.seconds
+#   period: 10
 #   limit: 5
 # (don't allow more than 5 group creations per 10 seconds)
 
