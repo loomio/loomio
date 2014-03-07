@@ -182,6 +182,8 @@ Loomio::Application.routes.draw do
   get '/group_requests/:id/start_new_group' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('token=','')}"}
 
   get '/contributions' => redirect('/crowd')
+  get '/contributions/thanks' => redirect('/crowd')
+  get '/contributions/callback' => redirect('/crowd')
 
   # resources :contributions, only: [:index] do
   #   get :callback, on: :collection
