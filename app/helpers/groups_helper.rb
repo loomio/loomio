@@ -19,7 +19,7 @@ module GroupsHelper
       !group.has_subscription_plan? &&
       !group.has_manual_subscription? &&
       !group.is_a_subgroup? &&
-      ( I18n.locale == :en )
+      ( I18n.locale.to_sym == :en )
   end
 
   def pending_membership_requests_count(group)

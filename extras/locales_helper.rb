@@ -8,7 +8,7 @@ module LocalesHelper
   end
 
   def detected_locale
-    (browser_accepted_locales & Translation.locales).first
+    (browser_accepted_locales & Translation.locales).first.to_s
   end
 
   def default_locale
@@ -35,6 +35,10 @@ module LocalesHelper
     selected_locale || default_locale
   end
 
+  def best_locale(first, second = nil)
+    first || second || default_locale
+  end
+
   def suggest_detected_locale?
     !locale_selected? and
     detected_locale.present? and
@@ -51,8 +55,8 @@ module LocalesHelper
     langs.sort_by { |lang, q| q }.map { |lang, q| lang }.reverse
   end
 
-  def save_detected_locale
-    current_user.update_attribute(:detected_locale, detected_locale)
+  def save_detected_locale(user = nil)
+    (user || current_user).update_attribute(:detected_locale, detected_locale)
   end
 
   def save_selected_locale

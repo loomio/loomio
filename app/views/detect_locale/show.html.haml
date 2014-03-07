@@ -1,1 +1,1 @@
-= link_to t(:view_this_in_your_language), "?locale=#{I18n.locale}"
+= link_to t(:'frontpage.view_this_in_your_language', language: Translation.language(I18n.locale)), "?locale=#{I18n.locale}"

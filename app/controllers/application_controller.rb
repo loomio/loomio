@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include LocalesHelper
   include CurrentUserHelper
   include ReadableUnguessableUrlsHelper
+
   protect_from_forgery
 
   helper :analytics_data
@@ -48,7 +49,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    save_detected_locale
+    save_detected_locale(resource)
     path = session['user_return_to'] || dashboard_path
     clear_stored_location
     path
@@ -62,11 +63,11 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:email, :name, :password, :password_confirmation, :language_preference)
+      u.permit(:email, :name, :password, :password_confirmation)
     end
 
     devise_parameter_sanitizer.for(:sign_in) do |u|
-      u.permit(:email, :password, :language_preference, :remember_me)
+      u.permit(:email, :password, :remember_me)
     end
   end
 end
