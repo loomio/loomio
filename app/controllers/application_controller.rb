@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   around_filter :user_time_zone, if: :current_user
   helper :analytics_data
   helper_method :current_user_or_visitor
+  helper_method :dashboard_or_root_path
 
   rescue_from CanCan::AccessDenied do |exception|
     if current_user
@@ -26,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def dashboard_or_root_path
-    if current_user
+    if user_signed_in?
       dashboard_path
     else
       root_path
