@@ -1,6 +1,6 @@
 module LocalesHelper
   def selected_locale
-    params[:locale] || current_user_or_visitor.selected_locale
+    (params[:locale] || current_user_or_visitor.selected_locale).try(:to_sym)
   end
 
   def locale_selected?
@@ -8,11 +8,11 @@ module LocalesHelper
   end
 
   def detected_locale
-    (browser_accepted_locales & Translation.locales).first.to_s
+    (browser_accepted_locales & Translation.locales).first
   end
 
   def default_locale
-    I18n.default_locale.to_s
+    I18n.default_locale.to_sym
   end
 
   def current_locale
@@ -50,7 +50,7 @@ module LocalesHelper
     return [] if http_accept_language.blank?
     langs = http_accept_language.scan(/([a-zA-Z]{2,4})(?:-[a-zA-Z]{2})?(?:;q=(1|0?\.[0-9]{1,3}))?/).map do |pair|
       lang, q = pair
-      [lang, (q || '1').to_f]
+      [lang.to_sym, (q || '1').to_f]
     end
     langs.sort_by { |lang, q| q }.map { |lang, q| lang }.reverse
   end

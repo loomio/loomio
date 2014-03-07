@@ -1,30 +1,30 @@
 class Translation
-  LANGUAGES = {'English' => 'en',
-               'български' => 'bg',
-               'Català' => 'ca',
-               'čeština' => 'cs',
-               'Deutsch' => 'de',
-               'Español' => 'es',
-               'ελληνικά' => 'el',
-               'Français' => 'fr',
-               'Indonesian' => 'id',
-               'magyar' => 'hu',
-               '日本語' => 'ja',
-               'മലയാളം' => 'ml',
-               'Nederlands' => 'nl',
-               'Português (Brasil)' => 'pt',
-               'română' => 'ro',
-               'Tiếng Việt' => 'vi',
-               'Türkçe' => 'tr'}
+  LANGUAGES = {'English' => :en,
+               'български' => :bg,
+               'Català' => :ca,
+               'čeština' => :cs,
+               'Deutsch' => :de,
+               'Español' => :es,
+               'ελληνικά' => :el,
+               'Français' => :fr,
+               'Indonesian' => :id,
+               'magyar' => :hu,
+               '日本語' => :ja,
+               'മലയാളം' => :ml,
+               'Nederlands' => :nl,
+               'Português (Brasil)' => :pt,
+               'română' => :ro,
+               'Tiếng Việt' => :vi,
+               'Türkçe' => :tr}
 
-  EXPERIMENTAL_LANGUAGES = { 'Chinese (Mandarin)' => 'cmn',
-                            'Italiano' => 'it',
-                            'తెలుగు' => 'te',
-                            'Gaelic (Irish)' => 'ga',
-                            'українська мова' => 'uk'}
+  EXPERIMENTAL_LANGUAGES = {'Chinese (Mandarin)' => :cmn,
+                            'Italiano' => :it,
+                            'తెలుగు' => :te,
+                            'Gaelic (Irish)' => :ga,
+                            'українська мова' => :uk}
 
   def self.language(locale)
-    LANGUAGES.key(locale.to_s)
+    LANGUAGES.key(locale.to_sym)
   end
 
   def self.locales
@@ -36,7 +36,8 @@ class Translation
   end
 
   def self.permitted_locale?(locale)
-    (LANGUAGES.values + EXPERIMENTAL_LANGUAGES.values).include? locale.to_s
+    return false if locale.blank?
+    (LANGUAGES.values + EXPERIMENTAL_LANGUAGES.values).include? locale.to_sym
   end
 
   def self.language_link_attributes(language)
