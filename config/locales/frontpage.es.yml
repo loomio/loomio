@@ -1,0 +1,25 @@
+es:
+  frontpage:
+    link:
+      blog: 'Blog'
+      contact: 'Contacto'
+      log_in: 'Entrar'
+      more: 'Más'
+      top: 'Arriba'
+      public_groups: 'Grupos abiertos al público'
+      terms: 'Terminos'
+      privacy: 'Privacidad'
+      services: 'Servicios'
+    hero:
+      subhead: 'Ayúdanos a crearlo.'
+    product:
+      header: 'Cuando escuchamos todas las voces, tomamos mejores decisiones.'
+      step3:
+        header: '3. Decide juntos'
+    team:
+      header: 'Acerca de Loomio'
+    ideals:
+      independent:
+        header: 'Independiente y neutral'
+      gift:
+        header: 'Economía del regalo'
