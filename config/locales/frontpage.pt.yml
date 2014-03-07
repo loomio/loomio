@@ -1,0 +1,57 @@
+pt:
+  frontpage:
+    link:
+      blog: 'Blog'
+      contact: 'Contato'
+      log_in: 'Entrar'
+      crowdfunding: 'Conheça a campanha de financiamento coletivo'
+      more: 'Mais'
+      top: 'Início'
+      public_groups: 'Grupos públicos'
+      terms: 'Termos'
+      privacy: 'Privacidade'
+      services: 'Serviços'
+    hero:
+      head: 'O mundo precisa de um jeito melhor para tomar decisões em conjunto. '
+      subhead: 'Ajude-nos a construí-lo.'
+      desc: 'Loomio é um programa de código livre e aberto para qualquer pessoa de qualquer lugar participar das decisões que as afete.'
+    product:
+      header: 'Quando nós ouvimos todas as vozes, nós tomamos decisões melhores. '
+      step1:
+        header: '1. Converse sobre as coisas. '
+        desc: 'Inicie uma discussão sobre qualquer assunto e traga as pessoas certas. Compartilhe perspectivas diversas e desenvolva as ideias em conjunto. '
+      step2:
+        header: '2. Construa o consenso'
+        desc: 'Qualquer pessoa pode propor algo a ser feito. As pessoas podem concordar, abster-se, discordar, ou bloquear – para que você possa ver como todo mundo se sente, e por quê.'
+      step3:
+        header: '3. Decida em conjunto'
+        desc: 'Desenvolva a proposta em conjunto para que ela funciona para todo mundo. Toda decisão tem um prazo claro, para que você sempre tenha um resultado claro.'
+    crowdfunding:
+      header: 'Estamos buscando o financiamento coletivo para que possamos terminar de construir esta nova plataforma e entregá-la para o mundo.'
+    prototype:
+      header: "Nós já construímos um protótipo e as pessoas de todo o mundo estão fazendo coisas incríveis com ele:"
+      subhead: 'Experimente o Loomio Beta agora. Ou junte-se à campanha para obter acesso antecipado ao Loomio 1.0.'
+    mobile:
+      header: 'O Loomio 1.0 deixa as pessoas tomar decisões em conjunto onde quer que elas estejam.'
+    quote:
+      header:
+        rushkoff: "O Loomio libera o potencial da internet de levar as pessoas em direção ao consenso em vez do debate polarizado. -Douglas Rushkoff"
+        sifry: 'O Loomio está atingindo um ponto ideal entre a voz individual e decisão coletiva. -Micah Sifry'
+    team:
+      header: 'Sobre o Loomio'
+      desc: 'Somos uma pequena equipe de desenvolvedores de código aberto e ativistas de justiça social que trabalham na Enspiral na Aotearoa Nova Zelândia, com uma rede mais ampla de amigos, apoiadores e conselheiros de todo o mundo.'
+    ideals:
+      community:
+        header: 'Cooperação conduzida pela comunidade'
+        desc: 'O Loomio é construído por uma cooperativa de propriedade dos trabalhadores. Somos uma empresa social que trabalha para maximizar o impacto social positivo, e não o lucro.'
+      independent:
+        header: 'Independente and neutro'
+        desc: 'Mantemos um espaço para qualquer grupo se reunir, que é independente de interesses políticos ou corporativos. Nós nunca venderemos seus dados.'
+      open:
+        header: 'Programa de código livre e aberto'
+        desc: 'O código do Loomio é um recurso público que qualquer pessoa pode executar, ler, estudar, modificar e redistribuir.'
+      gift:
+        header: 'Economia de oferta'
+        desc: 'O Loomio é apoiado por aqueles que pagam de acordo com suas possibilidades. Isso mantém a plataforma livre de publicidade e acessível a grupos sem dinheiro.'
+    vision:
+      header: 'Ajude-nos a transformar essa visão em realidade.'
