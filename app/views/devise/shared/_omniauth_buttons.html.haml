@@ -2,13 +2,13 @@
   .row-fluid.sso-btn-row
     .span4.btn-container
       = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-facebook btn-large login' do
-        Facebook
+        = t :facebook
     .span4.btn-container
       = link_to user_omniauth_authorize_path(:google), class: 'btn btn-google btn-large login' do
-        Google
+        = t :google
     .span4.btn-container
       = link_to '#', class: 'btn btn-persona btn-large login', id: 'persona-login-btn', onclick: 'PersonaLogin(); return false' do
-        Persona
+        = t :persona
 
 :javascript
   function PersonaLogin() {

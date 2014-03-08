@@ -4,22 +4,22 @@
       .row-fluid
         .span6.main-content
           - if omniauth_authenticated_and_waiting?
-            %h1 Link up your account
-            %p Log in to your Loomio account to link it up with #{@omniauth_authentication.provider_name}.
+            %h1= t :link_up_your_account
+            %p= t :log_in_to_your_loomio_account, provider_name: @omniauth_authentication.provider_name
           -else
             %h1
               - if @invitation
                 - if @invitation.to_start_group?
-                  = t :"start_group.log_in"
+                  = t :'start_group.log_in'
                 - else
-                  = t(:"join_group.log_in", group_name: @invitation.invitable_name)
+                  = t(:'join_group.log_in', group_name: @invitation.invitable_name)
               - else
                 = t :sign_in
           .signin_container
             = render 'devise/shared/omniauth_buttons'
             .separator-container
               .separator
-                = "or"
+                = t :or
             = render "form"
   .terms
-    =t(:terms_of_service_html, button_text: t(:"devise.sessions.sign_in"), link_path: terms_of_service_path)
+    =t(:terms_of_service_html, button_text: t(:'devise.sessions.sign_in'), link_path: terms_of_service_path)
