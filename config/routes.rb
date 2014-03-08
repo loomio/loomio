@@ -196,7 +196,7 @@ Loomio::Application.routes.draw do
     get :crowd
     get :privacy
     get :purpose
-    get :pricing
+    get :services
     get :terms_of_service
     get :third_parties
     get :browser_not_supported

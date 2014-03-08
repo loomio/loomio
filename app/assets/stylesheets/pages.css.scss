@@ -117,7 +117,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.about,
 .pages.blog,
 .pages.privacy,
-.pages.pricing,
+.pages.services,
 .pages.terms_of_service,
 .pages.third_parties,
 .pages.purpose,
@@ -352,7 +352,7 @@ body.pages.home {
     h2 { margin-bottom: 20px; }}
 }
 
-body.pages.pricing .container{
+body.pages.services .container{
   h3 { margin-bottom: .4em; }
   .span9#content {
     width: 80%;
