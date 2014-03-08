@@ -187,7 +187,9 @@ Loomio::Application.routes.draw do
   end
 
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
-  root :to => 'pages#home'
+  root :to => 'marketing#index'
+
+  resources :marketing
 
   scope controller: 'pages' do
     get :about
