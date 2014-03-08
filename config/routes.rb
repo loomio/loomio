@@ -185,7 +185,7 @@ Loomio::Application.routes.draw do
   get '/contributions/thanks' => redirect('/crowd')
   get '/contributions/callback' => redirect('/crowd')
 
-  # resources :contributions, only: [:index] do
+  # resources :contributions, only: [:index, :create] do
   #   get :callback, on: :collection
   #   get :thanks, on: :collection
   # end
