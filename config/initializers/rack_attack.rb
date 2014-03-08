@@ -1,5 +1,6 @@
 Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
 Rack::Attack.throttled_response = ->(env) { [429, {}, [ActionView::Base.new.render(file: 'public/429.html')]] }
+Harness.config.collector = Statsd.new 'localhost'
 
 @config = YAML.load_file("#{Rails.root}/config/rack_attack.yml").with_indifferent_access
 
@@ -19,6 +20,6 @@ end
   end unless key == 'default'
   
   ActiveSupport::Notifications.subscribe('rack.attack') do |name, start, finish, request_id, req|
-
-  end  
+    Harness.increment "#{key}_throttled"
+  end
 end
