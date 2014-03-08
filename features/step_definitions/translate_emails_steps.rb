@@ -1,13 +1,13 @@
 Given(/^"(.*?)" is a user with an English language preference$/) do |arg1|
   user = FactoryGirl.create :user, name: arg1,
                             email: "#{arg1}@example.org",
-                            language_preference: "en"
+                            selected_locale: "en"
 end
 
 Given(/^"(.*?)" is a user with a Spanish language preference$/) do |arg1|
   user = FactoryGirl.create :user, name: arg1,
                             email: "#{arg1}@example.org",
-                            language_preference: "es"
+                            selected_locale: "es"
 end
 
 Given(/^"(.*?)" is a user without a specified language preference$/) do |arg1|

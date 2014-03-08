@@ -1,10 +1,9 @@
 !!!
-%html
+%html{locale: current_locale}
   %head
     - title = @title ? @title : "Loomio | Collaborative Decision-Making"
     %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
     %title= title
-    <!--[if lt IE 9]><script type="text/javascript" src="/assets/lib/excanvas.js"></script><![endif]-->
     = stylesheet_link_tag    "frontpage"
     = csrf_meta_tags
     = render 'social_metadata', description: @meta_description, title: @meta_title
@@ -14,8 +13,8 @@
       = render 'google_tag_manager'
     .container.home-flash
       = render 'flash_messages', :flash => flash
-    - if controller_name == 'pages'
-      = render 'github_fork_us'
+    -#- if controller_name == 'pages'
+      -#= render 'github_fork_us'
     .container#top
       .inner-container
         .row-fluid
@@ -50,5 +49,4 @@
     = yield
 
     = render 'footer_logged_out'
-    = javascript_include_tag "frontpage"
-    = javascript_include_tag 'https://browserid.org/include.js'
+  = javascript_include_tag "frontpage"

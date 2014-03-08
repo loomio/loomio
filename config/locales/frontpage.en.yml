@@ -1,5 +1,6 @@
 en:
   frontpage:
+    view_this_in_your_language: 'View this site in %{language}'
     link:
       blog: 'Blog'
       contact: 'Contact'
