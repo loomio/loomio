@@ -55,8 +55,8 @@ module LocalesHelper
     langs.sort_by { |lang, q| q }.map { |lang, q| lang }.reverse
   end
 
-  def save_detected_locale(user = nil)
-    (user || current_user).update_attribute(:detected_locale, detected_locale)
+  def save_detected_locale(user)
+    user.update_attribute(:detected_locale, detected_locale)
   end
 
   def save_selected_locale
