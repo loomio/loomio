@@ -8,7 +8,8 @@
 
 
 body, h1, h2, h3, h4, h5 {
-  font-family: 'OpenSans-Light';
+  font-family: 'OpenSans', sans-serif;
+  font-weight: 300;
   color: $font;
   text-align: center;
 }
@@ -21,12 +22,12 @@ blockquote {
 }
 
 h2 {
-  font-family: 'OpenSans';
+  font-family: 'OpenSans', sans-serif;
   font-size: 22px;
 }
 
 p {
-  font-family: 'OpenSans';
+  font-family: 'OpenSans', sans-serif;
   font-size: 16px;
 }
 
@@ -42,7 +43,8 @@ a:hover { text-decoration: none; }
 
 .hero-text {
   font-size: 24px;
-  font-family: 'OpenSans-Light';
+  font-family: 'OpenSans', sans-serif;
+  font-weight: 300;
 }
 
 .block-link {
@@ -83,7 +85,7 @@ a:hover { text-decoration: none; }
   li a{
     color: $charcoal;
     font-size: 16px;
-    font-family: 'OpenSans';
+    font-family: 'OpenSans', sans-serif;
   }
   li a.btn {
     color: white;
@@ -108,10 +110,15 @@ a:hover { text-decoration: none; }
   .header {
     font-size: 62px;
     margin-bottom: 52px;
-    span { font-family: 'OpenSans-semibold'}
+    span { 
+      font-family: 'OpenSans', sans-serif;
+      font-weight: 600;
+    }
+
   }
   .subhead {
-    font-family: 'OpenSans-semibold';
+    font-family: 'OpenSans', sans-serif;
+    font-weight: 600;
     font-size: 40px;
     margin-bottom: 26px;
   }
