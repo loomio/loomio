@@ -13,7 +13,7 @@
   %body{class: "#{controller_name} #{action_name}"}
     - analytics_scope do
       = render 'google_tag_manager'
-      = render 'flash_messages', :flash => flash
+    = render 'flash_messages'
 
     .container-fluid
       %nav.navbar.navbar-default
@@ -30,8 +30,8 @@
             %li
               %a{href: '#'}
                 %i.fa.fa-facebook
-            %li= link_to t(:'frontpage.link.blog'), '#', class: 'blog'
-            %li= link_to t(:'frontpage.link.contact'), '#', class: 'contact'
+            %li= link_to t(:'frontpage.link.blog'), blog_path, class: 'blog'
+            %li= link_to t(:'frontpage.link.contact'), contact_path, class: 'contact'
             %li= link_to t(:'frontpage.link.log_in'), new_user_session_path, class: 'btn btn-orange'
 
       .row.hero
@@ -83,7 +83,7 @@
           .content
             %h1= t(:'frontpage.prototype.header_html')
             = image_tag 'wikimedia.png'
-            %p.hero-text= t(:'frontpage.prototype.subhead_html')
+            %p.hero-text= t(:'frontpage.prototype.subhead_html', try_loomio_link: new_group_request_path, join_campaign_link: crowd_path)
 
 
       .row.quote
@@ -147,10 +147,10 @@
               = t(:'frontpage.link.top')
               %i.fa.fa-angle-up
           %ul.pull-right
-            %li= t(:'frontpage.link.public_groups')
-            %li= t(:'frontpage.link.terms')
-            %li= t(:'frontpage.link.privacy')
-            %li= t(:'frontpage.link.services')
+            %li= link_to t(:'frontpage.link.public_groups'), public_groups_path
+            %li= link_to t(:'frontpage.link.terms'), terms_of_service_path
+            %li= link_to t(:'frontpage.link.privacy'), privacy_path
+            %li= link_to t(:'frontpage.link.services'), services_path
 
     = javascript_include_tag "frontpage"
     = javascript_include_tag 'https://browserid.org/include.js'
