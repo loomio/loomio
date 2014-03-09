@@ -252,7 +252,10 @@ a:hover { text-decoration: none; }
 }
 
 .groups {
-  .group { padding: 26px 0; }
+  .group {
+    padding: 26px 0;
+    img { margin-left: 2px; }
+  }
   &.content { padding-top: 0; }
   .col-xs-3 {
     background: $ash;
@@ -260,6 +263,47 @@ a:hover { text-decoration: none; }
   }
 }
 
+.col-xs-3 {
+  &#wikimedia {
+    background-image:url('/assets/genzero-logo-white.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &#pathways {
+    background-image:url('/assets/pathways-logo-white.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &#genzero {
+    background-image:url('/assets/genzero-logo-white.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &#nvc {
+    background-image:url('/assets/genzero-logo-white.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.col-xs-3.active {
+  background-color: $charcoal;
+}
+
+.col-xs-3.active:before {
+  position: absolute;
+  top: -14px;
+  right: 98px;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #ccc;
+  border-left: 14px solid transparent;
+  border-bottom-color: $charcoal;
+  content: '';
+}
+
+// .col-xs-3.active:before {
+//   background-color: $charcoal;
+// }
 
 .crowdfunding {
   background-color: $blue;
