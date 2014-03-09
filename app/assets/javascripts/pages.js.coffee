@@ -31,22 +31,19 @@ $ ->
     )
     return false
 
-
 $ ->
   $('#product-carousel').carousel('pause')
-  $('#threads').on 'click', () ->
+
+  $('#threads').on 'click', ->
     $('#product-carousel').carousel(0)
-  $('#weaving').on 'click', () ->
+  $('#weaving').on 'click', ->
     $('#product-carousel').carousel(1)
-  $('#braid').on 'click', () ->
+  $('#braid').on 'click', ->
     $('#product-carousel').carousel(2)
 
   $('.carousel-inner').on 'click', ->
     $('#product-carousel').carousel('next')
   return
-
-
-
 
 $ ->
   $('#prototype-carousel').carousel('pause')
@@ -94,7 +91,6 @@ $ ->
       when 2 then fadeIn('braid')
 
 
-
   return
 
 $ ->
@@ -114,8 +110,6 @@ $ ->
   $('#prototype-carousel').on 'slide.bs.carousel', (e) ->
     oldIndex = $(this).find('.active').index()
     newIndex = $(e.relatedTarget).index()
-
-    console.log oldIndex, newIndex
 
     switch oldIndex
       when 0 then fadeOut('wikimedia')
