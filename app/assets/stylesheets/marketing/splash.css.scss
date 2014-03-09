@@ -175,10 +175,31 @@ a:hover { text-decoration: none; }
 }
 
 #prototype-carousel {
+  height: 300px;
   .carousel-control {
     top: 34%;
   }
+  .carousel-image {
+    float: left;
+    margin-right: 24px;
+    margin-top: 6px;
+    width: 38%;
+  }
+  .carousel-desc {
+    float: left;
+    width: 58%;
+  }
+  .item {
+    font-size: 16px;
+    font-family: OpenSans;
+    text-align: left;
+  }
+  .quote {
+    margin: 10px 0;
+    padding: 8px 16px;
+  }
 }
+
 
 .step {
   cursor: pointer;
@@ -305,12 +326,13 @@ a:hover { text-decoration: none; }
   .col-xs-3 {
     background: $ash;
     border: 1px solid white;
+    height: 77px;
   }
 }
 
 .col-xs-3 {
   &#wikimedia {
-    background-image:url('/assets/genzero-logo-white.png');
+    background-image:url('/assets/wikimedia-logo-white.png');
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -325,7 +347,7 @@ a:hover { text-decoration: none; }
     background-position: center;
   }
   &#nvc {
-    background-image:url('/assets/genzero-logo-white.png');
+    background-image:url('/assets/nvc-logo-white.png');
     background-repeat: no-repeat;
     background-position: center;
   }
