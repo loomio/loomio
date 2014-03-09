@@ -45,8 +45,19 @@ $ ->
     $('#product-carousel').carousel('next')
   return
 
+
+
+
 $ ->
   $('#prototype-carousel').carousel('pause')
+  $('#wikimedia').on 'click', () ->
+    $('#prototype-carousel').carousel(0)
+  $('#pathways').on 'click', () ->
+    $('#prototype-carousel').carousel(1)
+  $('#genzero').on 'click', () ->
+    $('#prototype-carousel').carousel(2)
+  $('#nvc').on 'click', () ->
+    $('#prototype-carousel').carousel(3)
 
 
 $ ->
@@ -81,6 +92,42 @@ $ ->
       when 0 then fadeIn('threads')
       when 1 then fadeIn('weaving')
       when 2 then fadeIn('braid')
+
+
+
+  return
+
+$ ->
+
+  fadeIn = (key) ->
+    element = '#' + key
+    $(element).find('.group').fadeTo(0, 0)
+    $(element).addClass('active')
+    return
+
+  fadeOut = (key) ->
+    element = '#' + key
+    $(element).removeClass('active')
+    $(element).find('.group').fadeTo(0, 1)
+    return
+
+  $('#prototype-carousel').on 'slide.bs.carousel', (e) ->
+    oldIndex = $(this).find('.active').index()
+    newIndex = $(e.relatedTarget).index()
+
+    console.log oldIndex, newIndex
+
+    switch oldIndex
+      when 0 then fadeOut('wikimedia')
+      when 1 then fadeOut('pathways')
+      when 2 then fadeOut('genzero')
+      when 3 then fadeOut('nvc')
+
+    switch newIndex
+      when 0 then fadeIn('wikimedia')
+      when 1 then fadeIn('pathways')
+      when 2 then fadeIn('genzero')
+      when 3 then fadeIn('nvc')
 
 
 

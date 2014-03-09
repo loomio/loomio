@@ -4,6 +4,7 @@ es:
       blog: 'Blog'
       contact: 'Contacto'
       log_in: 'Entrar'
+      crowdfunding: 'Echa un vistazo a la campaña de financiación colectiva'
       more: 'Más'
       top: 'Arriba'
       public_groups: 'Grupos abiertos al público'
@@ -11,15 +12,35 @@ es:
       privacy: 'Privacidad'
       services: 'Servicios'
     hero:
+      head_html: 'El mundo necesita mejores caminos para <strong>tomar ediciones en conjunto.</strong>'
       subhead: 'Ayúdanos a crearlo.'
+      desc: 'Loomio es una plataforma de  software gratis y abierto a tod@s, en cualquier lugar, para poder participar en las decisiones que les afectan'
     product:
-      header: 'Cuando escuchamos todas las voces, tomamos mejores decisiones.'
+      header_html: 'Cuando escuchamos <strong>todas las voces</strong>, tomamos <strong>mejores decisiones. </strong>'
+      step1:
+        header: '1. Hablemos las cosas'
+        desc: 'Empieza una discusión en cualquier tema, e invita a las personas que quieras. Comparte perspectivas diversas y desarrolla las ideas en conjunto.'
+      step2:
+        header: '2. Construye acuerdo'
+        desc: 'Todos pueden proponer un curso de acción. Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear - de esa manera podrás ver como se siente el grupo y porque.'
       step3:
         header: '3. Decide juntos'
+    crowdfunding:
+      header: 'Estamos en el proceso de financiación colectiva para poder construir esta nueva plataforma y poder regalarse al mundo.'
+    mobile:
+      header: 'Loomio 1.0 te permite tomar decisiones donde sea que te encuentres.'
     team:
       header: 'Acerca de Loomio'
+      desc: 'Somos un pequeño grupo de open-source desarolladores y activistas comunitarios que trabajamos en Ensipral, Aotearoa, Nueva Zelanda con una gran comunidad de amigos, voluntarios y asesores al rededor del mundo.'
     ideals:
+      community:
+        header: 'Cooperativa comunitaria'
       independent:
         header: 'Independiente y neutral'
+      open:
+        header: 'Software gratis y abierto'
       gift:
         header: 'Economía del regalo'
+        desc: 'Loomio es financiada por aquellos que contribuyen en acuerdo a sus recursos, Esto mantiene la plataforma libre de propagandas comerciales y accesible a grupos sin recursos financieros.'
+    vision:
+      header: 'Ayúdanos a transformar esta  vision en realidad.'

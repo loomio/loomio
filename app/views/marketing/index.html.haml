@@ -2,7 +2,7 @@
 %html{locale: current_locale}
   %head
     %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
-    %title Loomio | Collaborative Decision-Making
+    %title Loomio | #{t(:'frontpage.title.collaborative_decision_making')}
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
     = stylesheet_link_tag  "marketing"
     = csrf_meta_tags
@@ -99,10 +99,13 @@
               .carousel-inner
                 .item.active
                   = image_tag 'wikimedia.png'
+                  / The Wikimedia Foundation is the non-profit organization that operates Wikipedia and other free knowledge projects. Wikipedia is the world's largest and most popular encyclopedia. It is online, free to use for any purpose, and free of advertising.  It is a collaborative creation that has been added to and edited by millions of people that has become the largest collection of shared knowledge in human history. The Wikimedia Foundation has been using Loomio for staff collaboration in the office.
+                .item
+                  = image_tag 'pathways.png'
+                  / Pathways is New Zealand's leading national provider of community-based mental health and wellness services. Pathways is rolling out Loomio organisation-wide as a mechanism to increase its culture of participatory decision making, consultation and collaboration, and transparency.
                 .item
                   = image_tag 'wikimedia.png'
-                .item
-                  = image_tag 'wikimedia.png'
+                  / Generation Zero is a youth-led network of climate change activists, founded to provide to cut carbon pollution through smarter transport, liveable cities, and independence from fossil fuels. They use Loomio to brainstorm, test ideas, make decisions, obtain feedback, post about activities, and discuss issues that arise. Decisions that are made on Loomio inform their national campaigns and events.
                 .item
                   = image_tag 'wikimedia.png'
               %a.carousel-control.left-ctrl{href: '#prototype-carousel', "data-slide" => 'prev'}
@@ -111,18 +114,18 @@
                 %i.fa.fa-angle-right
 
             .content.groups
-              .col-xs-3
+              .col-xs-3#wikimedia.active
                 .group
-                  = image_tag 'genzero.png'
-              .col-xs-3
+                  = image_tag 'genzero-logo.png', {style: 'opacity:0'}
+              .col-xs-3#pathways
                 .group
-                  = image_tag 'genzero.png'
-              .col-xs-3
+                  = image_tag 'pathways-logo.png', alt: "Pathways"
+              .col-xs-3#genzero
                 .group
-                  = image_tag 'genzero.png'
-              .col-xs-3
+                  = image_tag 'genzero-logo.png', alt: "Generation Zero"
+              .col-xs-3#nvc
                 .group
-                  = image_tag 'genzero.png'
+                  = image_tag 'genzero-logo.png'
           .row
             .content
               %p.hero-text= t(:'frontpage.prototype.subhead_html', try_loomio_link: new_group_request_path, join_campaign_link: crowd_path)
