@@ -84,7 +84,7 @@
 
 
       .row.crowdfunding
-        %a{href: '#', class: 'block-link js-not-yet-row'}
+        %a{href: 'https://love.loomio.org', class: 'block-link js-not-yet-row'}
           .content
             %h1= t(:'frontpage.crowdfunding.header')
             %h2
@@ -111,8 +111,23 @@
                 %i.fa.fa-angle-left
               %a.carousel-control.right-ctrl{href: '#prototype-carousel', "data-slide" => 'next'}
                 %i.fa.fa-angle-right
-            %p.hero-text= t(:'frontpage.prototype.subhead_html')
 
+            .content.groups
+              .col-xs-3
+                .group
+                  = image_tag 'genzero.png'
+              .col-xs-3
+                .group
+                  = image_tag 'genzero.png'
+              .col-xs-3
+                .group
+                  = image_tag 'genzero.png'
+              .col-xs-3
+                .group
+                  = image_tag 'genzero.png'
+          .row
+            .content
+              %p.hero-text= t(:'frontpage.prototype.subhead_html', try_loomio_link: new_group_request_path, join_campaign_link: crowd_path)
 
       .row.quote
         .content
@@ -154,7 +169,7 @@
             .col-xs-6
               = image_tag 'open.png'
               %h2= t(:'frontpage.ideals.open.header')
-              %p.open= t(:'frontpage.ideals.open.desc_html')
+              %p.open= t(:'frontpage.ideals.open.desc')
             .col-xs-6
               = image_tag 'gift.png'
               %h2= t(:'frontpage.ideals.gift.header')
