@@ -47,13 +47,14 @@ $ ->
 
 $ ->
   $('#prototype-carousel').carousel('pause')
-  $('#wikimedia').on 'click', () ->
+
+  $('#wikimedia').on 'click', ->
     $('#prototype-carousel').carousel(0)
-  $('#pathways').on 'click', () ->
+  $('#pathways').on 'click', ->
     $('#prototype-carousel').carousel(1)
-  $('#genzero').on 'click', () ->
+  $('#genzero').on 'click', ->
     $('#prototype-carousel').carousel(2)
-  $('#nvc').on 'click', () ->
+  $('#nvc').on 'click', ->
     $('#prototype-carousel').carousel(3)
 
 
@@ -61,7 +62,7 @@ $ ->
 
   fadeIn = (key) ->
     element = '#' + key
-    $(element).find('.step-img').removeClass('hide-background').find('.top').fadeTo(400, 0)
+    $(element).find('.step-img').removeClass('hide-background').find('.top').addClass('active')
     $(element).find('h2').addClass('active')
     $(element).find('p').addClass('active')
     return
@@ -70,10 +71,8 @@ $ ->
     element = '#' + key
     $(element).find('h2').removeClass('active')
     $(element).find('p').removeClass('active')
-    $(element).find('.top').fadeTo(300, 1, ->
-      $(element).find('.step-img').addClass('hide-background')
-      return
-    )
+    $(element).find('.top').removeClass('active')
+    $(element).find('.step-img').addClass("hide-background")
     return
 
   $('#product-carousel').on 'slide.bs.carousel', (e) ->
@@ -89,7 +88,6 @@ $ ->
       when 0 then fadeIn('threads')
       when 1 then fadeIn('weaving')
       when 2 then fadeIn('braid')
-
 
   return
 
