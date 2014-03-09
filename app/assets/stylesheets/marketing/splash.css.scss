@@ -196,8 +196,8 @@ a:hover { text-decoration: none; }
   &.hide-background {
     background:transparent;
   }
-
 }
+
 
 #weaving .step-img {
   background-image:url(/assets/weaving-hover.png);
@@ -230,9 +230,22 @@ a:hover { text-decoration: none; }
     }
   }
 
+  .step:hover {
+    p {
+      color: #37362f;
+    }
+  }
+
+
   #threads {
     h2.active {
       color: #439AE0;
+    }
+
+    &:hover {
+      h2 {
+        color: #439AE0;
+      }
     }
   }
 
@@ -240,11 +253,23 @@ a:hover { text-decoration: none; }
     h2.active {
       color: #855881;
     }
+    &:hover {
+      h2 {
+        color: #855881;
+      }
+    }
+
+
   }
 
   #braid {
     h2.active {
       color: #23C092;
+    }
+    &:hover {
+      h2 {
+        color: #23C092;
+      }
     }
 
   }
