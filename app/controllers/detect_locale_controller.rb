@@ -3,8 +3,9 @@ class DetectLocaleController < ActionController::Base
   include CurrentUserHelper
 
   def show
-    if detected_locale.present? and (current_locale != detected_locale)
-      I18n.locale = detected_locale
+    d = detected_locale(Translation.frontpage_locales)
+    if d.present? and (current_locale != d)
+      I18n.locale = d
     else
       head :ok
     end
