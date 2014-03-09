@@ -8,7 +8,7 @@
 
 
 body, h1, h2, h3, h4, h5 {
-  font-family: 'OpenSans', sans-serif;
+  font-family: 'OpenSans-Light', 'OpenSans', sans-serif;
   font-weight: 300;
   color: $font;
   text-align: center;
@@ -110,7 +110,7 @@ a:hover { text-decoration: none; }
   .header {
     font-size: 62px;
     margin-bottom: 52px;
-    span { 
+    span {
       font-family: 'OpenSans', sans-serif;
       font-weight: 600;
     }
