@@ -68,9 +68,6 @@ GEM
       nokogiri (~> 1.6.0)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
-    bootstrap-sass-rails (3.0.2.1)
-      railties (>= 3.1.0)
-      sass-rails (>= 3.1.0)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
@@ -505,7 +502,6 @@ DEPENDENCIES
   binding_of_caller (~> 0.7.2)
   bing_translator (~> 4.0.0)
   bootstrap-sass (~> 2.3.2.2)
-  bootstrap-sass-rails
   browser (~> 0.1.3)
   bullet
   cancan (~> 1.6.10)
