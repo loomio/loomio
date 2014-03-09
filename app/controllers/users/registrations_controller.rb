@@ -13,10 +13,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     @user = User.new
     if @invitation
-      if @invitation.intent == 'join_group'
+      if @invitation.intent == 'start_group'
+        @user.name = @invitation.recipient_name
         @user.email = @invitation.recipient_email
       else
-        @user.name = @invitation.group_request_admin_name
         @user.email = @invitation.recipient_email
       end
     end
