@@ -3,7 +3,7 @@
 @import "mixins";
 
 
-body.discussions.new, body.discussions.create, body.discussions.edit {
+body.discussions.new, body.discussions.create, body.discussions.edit, body.discussions.update, body.discussions.create {
 
 // from group
   .control-group.radio_buttons { margin-bottom: 1.6em; }
@@ -94,6 +94,21 @@ body.discussions.new, body.discussions.create, body.discussions.edit {
       width: 15px;
     }
   }
+  
+  .discussion_hotlink_short_url {
+    label { 
+      display: inline-block;
+      font-size: 16px;
+      font-weight: normal;
+      padding-top: 5px;
+      vertical-align: top; 
+    }
+    .controls { 
+      display: inline-block; 
+      margin-left: .25em; 
+    }
+  }
+  
   #discussion-submit {
     float: left;
     position: relative;

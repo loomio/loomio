@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140227000252) do
+ActiveRecord::Schema.define(:version => 20140228011603) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -343,6 +343,15 @@ ActiveRecord::Schema.define(:version => 20140227000252) do
   add_index "groups", ["key"], :name => "index_groups_on_key", :unique => true
   add_index "groups", ["name"], :name => "index_groups_on_name"
   add_index "groups", ["parent_id"], :name => "index_groups_on_parent_id"
+
+  create_table "hotlinks", :force => true do |t|
+    t.integer  "linkable_id"
+    t.string   "linkable_type"
+    t.string   "short_url"
+    t.integer  "use_count",     :default => 0
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
 
   create_table "invitations", :force => true do |t|
     t.string   "recipient_email",                    :null => false
