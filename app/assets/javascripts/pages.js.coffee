@@ -48,13 +48,13 @@ $ ->
 $ ->
   $('#prototype-carousel').carousel('pause')
 
-  $('#wikimedia').on 'click', () ->
+  $('#wikimedia').on 'click', ->
     $('#prototype-carousel').carousel(0)
-  $('#pathways').on 'click', () ->
+  $('#pathways').on 'click', ->
     $('#prototype-carousel').carousel(1)
-  $('#genzero').on 'click', () ->
+  $('#genzero').on 'click', ->
     $('#prototype-carousel').carousel(2)
-  $('#nvc').on 'click', () ->
+  $('#nvc').on 'click', ->
     $('#prototype-carousel').carousel(3)
 
 
@@ -72,11 +72,7 @@ $ ->
     $(element).find('h2').removeClass('active')
     $(element).find('p').removeClass('active')
     $(element).find('.top').removeClass('active')
-
-    setTimeout (->
-      $(element).find('.step-img').addClass "hide-background"
-      return
-    ), 300
+    $(element).find('.step-img').addClass("hide-background")
     return
 
   $('#product-carousel').on 'slide.bs.carousel', (e) ->
