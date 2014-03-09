@@ -14,7 +14,7 @@
   =render 'discussions/discussion_list'
   %section.span3
     =render 'setup_next_steps' if show_next_steps?(@group)
-    =render 'subscription_prompt' if show_subscription_prompt?(@group)
+    / =render 'subscription_prompt' if show_subscription_prompt?(@group)
     =render 'groups/description', group: @group
     =render 'subgroups', subgroups: @subgroups, group: @group if display_subgroups_block?(@group)
     - if can? :show, @group

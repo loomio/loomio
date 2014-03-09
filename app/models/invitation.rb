@@ -49,7 +49,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def group_request_admin_name
-    if invitable == 'Group'
+    if invitable_type == 'Group'
       invitable.group_request.admin_name
     end
   end
