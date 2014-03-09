@@ -1,7 +1,7 @@
 = simple_form_for @group_request do |f|
-  = f.input :admin_name, label: "What is your name?"
-  = f.input :admin_email, label: "What is your email address?"
-  = f.input :name, label: "What is the name of your group?", placeholder: placeholder
-  = f.input :description, as: :text, label: "If you have a moment, tell us about your group ", required: false, placeholder: "We'd love to hear about your group and why you want to use Loomio."
+  = f.input :admin_name
+  = f.input :admin_email
+  = f.input :name, placeholder: placeholder
+  = f.input :description, as: :text, required: false
   = f.input :payment_plan, as: :hidden
   = f.submit submit_label, class: 'btn btn-info btn-large', :data => { :disable_with => submit_label }, id: 'sign-up-submit'

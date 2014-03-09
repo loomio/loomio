@@ -4,12 +4,11 @@
       .row-fluid
         - if omniauth_authenticated_and_waiting?
           .span6.main-content
-            %h1 Confirm your details
+            %h1= t :confirm_your_details
+            %p= t :now_that_your_logged_in, provider_name: @omniauth_authentication.provider_name
             %p
-              Now that you've logged in with #{@omniauth_authentication.provider_name}, please confirm your details to create a Loomio account.
-            %p
-              %strong Already have a Loomio account?
-              = link_to('Link it up instead', new_user_session_path)
+              %strong= t :already_have_account
+              = link_to( t(:link_it_up_instead), new_user_session_path)
             .signin_container
               = render "form"
         -else
@@ -17,16 +16,16 @@
             %h2
               - if @invitation
                 - if @invitation.to_start_group?
-                  = t :"start_group.create_account_to_start_group", group_name: @invitation.invitable_name
+                  = t :'start_group.create_account_to_start_group', group_name: @invitation.invitable_name
                 -elsif @invitation.to_join_group?
-                  = t :"join_group.create_account_to_join_group", group_name: @invitation.invitable_name
+                  = t :'join_group.create_account_to_join_group', group_name: @invitation.invitable_name
               - else
                 = t :create_an_account
-            %p= t :"or_sign_in_html", link: user_session_path, link_class: 'existing-user'
+            %p= t :or_sign_in_html, link: user_session_path, link_class: 'existing-user'
             .signin_container
-              %h3 Sign up via
+              %h3= t :sign_up_via
               = render 'devise/shared/omniauth_buttons'
-              %h3 or fill in this form
+              %h3= t :or_fill_in_this_form
               = render "form"
   .terms
-    =t(:terms_of_service_html, button_text: t(:"devise.registrations.sign_up"), link_path: terms_of_service_path)
+    =t(:terms_of_service_html, button_text: t(:'devise.registrations.sign_up'), link_path: terms_of_service_path)
