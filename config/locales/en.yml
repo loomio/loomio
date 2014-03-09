@@ -312,6 +312,7 @@ en:
   #
 
   group_request:
+    neighbourhood_support_group: "e.g. Neighbourhood Support Group"
     confirmation:
       title: You're almost done! Check your email.
       body_html: |
@@ -597,10 +598,21 @@ en:
   password_confirmation: "Password confirmation"
   current_password: "Current password"
   password_details: "(we need your current password to confirm your changes)"
+  confirm_password: "Confirm password"
   cancel_my_account: "Cancel my account"
   remember_me: "Remember me"
   signing_in: "Signing in"
+  or: "or"
   forgot_your_password: "Forgot your password?"
+  dont_have_an_account: "Don't have an account?"
+  link_it_up_instead: "Link it up instead"
+  sign_up_via: "Sign up via"
+  or_fill_in_this_form: "or fill in this form"
+  already_have_account: "Already have a Loomio account?"
+  confirm_your_details: "Confirm your details"
+  link_up_your_account: "Link up your account"
+  log_in_to_your_loomio_account: "Log in to your Loomio account to link it up with %{provider_name}."
+  now_that_your_logged_in: "Now that you've logged in with %{provider_name}, please confirm your details to create a Loomio account."
   confirmation_not_received: "Didn't receive confirmation instructions?"
   unlock_not_received: "Didn't receive unlock instructions?"
   inactive_html: "Sorry, this account is currently inactive. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>."
@@ -812,6 +824,11 @@ en:
         password: "Password"
         password_confirmation: "Confirm password"
         language_preference: "Language"
+      group_request:
+        admin_name: "What is your name?"
+        admin_email: "What is your email address?"
+        name: "What is the name of your group?"
+        description: "If you have a moment, tell us about your group"
 
     placeholders:
       discussion:
@@ -828,6 +845,8 @@ en:
       user:
         email: "Email"
         password: "Password"
+      group_request:
+        description: "We'd love to hear about your group and why you want to use Loomio."
 
   helpers:
     submit:
@@ -964,7 +983,8 @@ en:
   other: "Other"
   outcome: "Outcome"
   password: "Password"
-  photo:
+  leave_this_field_blank: "leave this field blank"
+  photo: 'Photo'
   pricing: 'Pricing'
   prev: "Prev"
   more: "More..."
@@ -990,6 +1010,9 @@ en:
   unlike: "Unlike"
   until_close: "until close"
   update: "Update"
+  facebook: "Facebook"
+  google: "Google"
+  persona: "Persona"
 
   common:
     email: "Email"
