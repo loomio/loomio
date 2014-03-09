@@ -1,5 +1,4 @@
-@import "twitter/bootstrap";
-@import "twitter/bootstrap/mixins";
+@import "bootstrap3_subset";
 @import "media_queries";
 @import "color";
 @import "buttons";
@@ -148,6 +147,7 @@ a:hover { text-decoration: none; }
 
 #product-carousel, #prototype-carousel {
   cursor: pointer;
+  &.content { padding-bottom: 28px; }
   .carousel-control {
     position: absolute;
     z-index: 5;
@@ -250,6 +250,14 @@ a:hover { text-decoration: none; }
   }
 }
 
+.groups {
+  .group { padding: 26px 0; }
+  &.content { padding-top: 0; }
+  .col-xs-3 {
+    background: $ash;
+    border: 1px solid white;
+  }
+}
 
 
 .crowdfunding {

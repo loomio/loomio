@@ -3,8 +3,6 @@
   %head
     %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
     %title Loomio | Collaborative Decision-Making
-    -#%link{href: "https://fonts.googleapis.com/css?family=Open+Sans:300,400,700", rel: "stylesheet", type: "text/css"}
-
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
     = stylesheet_link_tag  "marketing"
     = csrf_meta_tags
@@ -111,8 +109,23 @@
                 %i.fa.fa-angle-left
               %a.carousel-control.right-ctrl{href: '#prototype-carousel', "data-slide" => 'next'}
                 %i.fa.fa-angle-right
-            %p.hero-text= t(:'frontpage.prototype.subhead_html', try_loomio_link: new_group_request_path, join_campaign_link: crowd_path)
 
+            .content.groups
+              .col-xs-3
+                .group
+                  = image_tag 'genzero.png'
+              .col-xs-3
+                .group
+                  = image_tag 'genzero.png'
+              .col-xs-3
+                .group
+                  = image_tag 'genzero.png'
+              .col-xs-3
+                .group
+                  = image_tag 'genzero.png'
+          .row
+            .content
+              %p.hero-text= t(:'frontpage.prototype.subhead_html', try_loomio_link: new_group_request_path, join_campaign_link: crowd_path)
 
       .row.quote
         .content
