@@ -111,7 +111,6 @@
                 %i.fa.fa-angle-left
               %a.carousel-control.right-ctrl{href: '#prototype-carousel', "data-slide" => 'next'}
                 %i.fa.fa-angle-right
-            %p.hero-text= t(:'frontpage.prototype.subhead_html', try_loomio_link: new_group_request_path, join_campaign_link: crowd_path)
 
             .content.groups
               .col-xs-3
@@ -128,7 +127,7 @@
                   = image_tag 'genzero.png'
           .row
             .content
-              %p.hero-text= t(:'frontpage.prototype.subhead_html')
+              %p.hero-text= t(:'frontpage.prototype.subhead_html', try_loomio_link: new_group_request_path, join_campaign_link: crowd_path)
 
       .row.quote
         .content
