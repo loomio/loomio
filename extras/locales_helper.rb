@@ -7,8 +7,8 @@ module LocalesHelper
     params.has_key?(:locale) || current_user_or_visitor.locale.present?
   end
 
-  def detected_locale
-    (browser_accepted_locales & Translation.locales).first
+  def detected_locale(supported_locales = Translation.locales)
+    (browser_accepted_locales & supported_locales).first
   end
 
   def default_locale

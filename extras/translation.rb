@@ -17,6 +17,8 @@ class Translation
                'Tiếng Việt' => :vi,
                'Türkçe' => :tr}
 
+  FRONTPAGE_SUPPORTED_LOCALES = [:en, :ca, :pt, :el, :cs]
+
   EXPERIMENTAL_LANGUAGES = {'Chinese (Mandarin)' => :cmn,
                             'Italiano' => :it,
                             'తెలుగు' => :te,
@@ -29,6 +31,10 @@ class Translation
 
   def self.locales
     LANGUAGES.values
+  end
+
+  def self.frontpage_locales
+    FRONTPAGE_SUPPORTED_LOCALES
   end
 
   def self.experimental_locales
