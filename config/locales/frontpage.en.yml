@@ -1,5 +1,6 @@
 en:
   frontpage:
+    view_this_in_your_language: 'View this site in %{language}'
     link:
       blog: 'Blog'
       contact: 'Contact'
@@ -14,7 +15,7 @@ en:
     hero:
       head_html: 'The world needs a better way to <strong>make decisions together.</strong>'
       subhead: 'Help us build it.'
-      desc: 'Loomio is free and open software for anyone, anywhere, to participate in decisions that aﬀect them'
+      desc: 'Loomio is free and open software for anyone, anywhere, to participate in decisions that affect them'
     product:
       header_html: 'When we hear <strong>all voices</strong>, we make <strong>better decisions.</strong>'
       step1:

@@ -198,12 +198,15 @@ Loomio::Application.routes.draw do
     get :purpose
     get :services
     get :terms_of_service
+    get :third_parties
     get :browser_not_supported
   end
 
   scope controller: 'help' do
     get :help
   end
+
+  get '/detect_locale' => 'detect_locale#show'
 
   resources :contact_messages, only: [:new, :create]
   match 'contact', to: 'contact_messages#new'
