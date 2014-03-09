@@ -1,6 +1,6 @@
 //= require jquery
-//= require bootstrap-alert.js
-//= require bootstrap-transition.js
-//= require bootstrap-carousel.js
+//= require bootstrap-alert
+//= require bootstrap-transition
+//= require bootstrap-carousel
 //= require detect_locale
-//= require marketing/corousel
+//= require marketing/carousel

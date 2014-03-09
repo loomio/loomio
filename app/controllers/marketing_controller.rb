@@ -1,8 +1,8 @@
-class MarketingController < BaseController
-  before_filter :authenticate_user!, except: :index
-  layout false
+class MarketingController < ApplicationController
+  caches_action :index, :cache_path => Proc.new { |c| c.params }
 
   def index
+    render layout: false
   end
 
 end
