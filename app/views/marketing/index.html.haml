@@ -22,13 +22,13 @@
             = link_to image_tag("logo-orange.png"), root_path, class: 'navbar-brand', alt: 'Loomio'
           %ul.nav.navbar-nav.navbar-right
             %li
-              %a{href: '#'}
+              %a{href: 'https://github.com/loomio/loomio'}
                 %i.fa.fa-github
             %li
-              %a{href: '#'}
+              %a{href: 'https://twitter.com/Loomio'}
                 %i.fa.fa-twitter
             %li
-              %a{href: '#'}
+              %a{href: 'https://www.facebook.com/Loomio'}
                 %i.fa.fa-facebook
             %li= link_to t(:'frontpage.link.blog'), blog_path, class: 'blog'
             %li= link_to t(:'frontpage.link.contact'), contact_path, class: 'contact'
@@ -41,7 +41,7 @@
             %h1.header= t(:'frontpage.hero.head_html')
             %h2.subhead= t(:'frontpage.hero.subhead')
             %p.hero-text.description= t(:'frontpage.hero.desc')
-            %a{href: '', class: 'btn btn-teal btn-lg hero-text js-not-yet-button'}
+            %a{href: 'https://love.loomio.org', class: 'btn btn-teal btn-lg hero-text js-not-yet-button'}
               = t(:'frontpage.link.crowdfunding')
               %i.fa.fa-angle-right
 
@@ -101,7 +101,7 @@
         = image_tag 'team.png'
 
       .row.team
-        %a{href: '#', class: 'block-link'}
+        %a{href: about_path, class: 'block-link'}
           .content
             %h1= t(:'frontpage.team.header')
             %p.hero-text= t(:'frontpage.team.desc')
@@ -133,7 +133,7 @@
               %p.gift= t(:'frontpage.ideals.gift.desc')
 
       .row.vision
-        %a{href: '#', class: 'block-link js-not-yet-row'}
+        %a{href: 'https://love.loomio.org', class: 'block-link js-not-yet-row'}
           .content
             %h1= t(:'frontpage.vision.header')
             %h2
@@ -144,7 +144,7 @@
         .content
           %ul
             %li
-              = t(:'frontpage.link.top')
+              = link_to t(:'frontpage.link.top'), '#'
               %i.fa.fa-angle-up
           %ul.pull-right
             %li= link_to t(:'frontpage.link.public_groups'), public_groups_path

@@ -104,7 +104,7 @@ a:hover { text-decoration: none; }
 .hero {
   background-color: $ash;
   border-bottom: 1px solid $ash;
-  .image { width: 180px; }
+  .image { width: 160px; }
   .header {
     font-size: 62px;
     margin-bottom: 52px;
@@ -201,6 +201,9 @@ a:hover { text-decoration: none; }
       display: block;
       padding: 20px;
     }
+  }
+  .pull-right {
+    a { color: #C0C4C2; }
   }
 }
 
