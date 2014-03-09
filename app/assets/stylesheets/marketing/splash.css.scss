@@ -189,6 +189,16 @@ a:hover { text-decoration: none; }
   width: 128px;
   height: 128p  x;
   background-repeat: no-repeat;
+  &.hide-background {
+    background:transparent;
+  }
+
+  .top {
+    &.active {
+      opacity: 0;
+    }
+  }
+
 }
 
 #threads .step-img {
@@ -198,13 +208,19 @@ a:hover { text-decoration: none; }
   }
 }
 
+#threads:hover .step-img.hide-background {
+  background-image:url(/assets/threads-hover.png);
+}
 
 #weaving .step-img {
   background-image:url(/assets/weaving-hover.png);
   &.hide-background {
     background:transparent;
   }
+}
 
+#weaving:hover .step-img.hide-background {
+  background-image:url(/assets/weaving-hover.png);
 }
 
 #braid .step-img {
@@ -213,6 +229,11 @@ a:hover { text-decoration: none; }
     background:transparent;
   }
 }
+
+#braid:hover .step-img.hide-background {
+  background-image:url(/assets/braid-hover.png);
+}
+
 
 .decision-steps {
 
@@ -231,6 +252,12 @@ a:hover { text-decoration: none; }
   }
 
   .step:hover {
+
+
+    .top {
+      opacity: 0;
+    }
+
     p {
       color: #37362f;
     }
