@@ -1,5 +1,4 @@
 class LoggedOutUser
-
   def id
     nil
   end
@@ -18,5 +17,13 @@ class LoggedOutUser
 
   def belongs_to_manual_subscription_group?
     false
+  end
+
+  def locale
+    nil
+  end
+
+  def selected_locale
+    nil
   end
 end

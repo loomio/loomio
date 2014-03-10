@@ -6,9 +6,9 @@ Feature: Public groups directory
   Background:
     Given there are various public and private groups
 
-    Scenario: Person sees featured groups
-      When I visit the home page
-      Then I should see the featured groups
+    # Scenario: Person sees featured groups
+    #   When I visit the home page
+    #   Then I should see the featured groups
 
     Scenario: Person sees sorted list of public groups
       When I visit the public groups directory page
