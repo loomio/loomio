@@ -184,6 +184,7 @@ Loomio::Application.routes.draw do
   get '/contributions' => redirect('/crowd')
   get '/contributions/thanks' => redirect('/crowd')
   get '/contributions/callback' => redirect('/crowd')
+  get '/crowd' => redirect('https://love.loomio.org/')
 
   # resources :contributions, only: [:index, :create] do
   #   get :callback, on: :collection
@@ -195,7 +196,6 @@ Loomio::Application.routes.draw do
 
   scope controller: 'pages' do
     get :about
-    get :crowd
     get :privacy
     get :purpose
     get :services
