@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140227000252) do
+ActiveRecord::Schema.define(:version => 20140306061922) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -183,9 +183,9 @@ ActiveRecord::Schema.define(:version => 20140227000252) do
     t.boolean  "is_deleted",      :default => false, :null => false
     t.integer  "comments_count",  :default => 0,     :null => false
     t.integer  "items_count",     :default => 0,     :null => false
-    t.datetime "archived_at"
     t.boolean  "private"
     t.string   "key"
+    t.datetime "archived_at"
   end
 
   add_index "discussions", ["author_id"], :name => "index_discussions_on_author_id"
@@ -517,9 +517,10 @@ ActiveRecord::Schema.define(:version => 20140227000252) do
     t.string   "unsubscribe_token"
     t.integer  "memberships_count",                                           :default => 0,          :null => false
     t.boolean  "uses_markdown",                                               :default => false
-    t.string   "language_preference"
+    t.string   "selected_locale"
     t.string   "time_zone"
     t.string   "key"
+    t.string   "detected_locale"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -119,7 +119,6 @@ hu:
     motion_closing_soon: "Hamarosan zárul a javaslat"
     motion_blocked: "blokkolta a javaslatot"
   edit_discussion_context: "A téma leírásának szerkesztése"
-  request_new_group_details: "vagy várd meg, amíg meghívnak egybe."
   empty_notifications: "Még nincsenek értesítéseid."
   see_all_notifications: "Az összes értesítés megtekintése"
   sign_out: "Kijelentkezés"

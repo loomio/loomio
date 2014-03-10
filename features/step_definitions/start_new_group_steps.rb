@@ -15,7 +15,7 @@ When(/^I go to start a new group from the navbar$/) do
 end
 
 When(/^I go to start a new group$/) do
-  click_on "start-group-btn"
+  visit new_group_request_path
 end
 
 When(/^I fill in and submit the form$/) do

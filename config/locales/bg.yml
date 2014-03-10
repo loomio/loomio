@@ -124,7 +124,6 @@ bg:
     motion_closing_soon: "Предложението приключва скоро"
     motion_blocked: "блокира предложението"
   edit_discussion_context: "Редактирай контекста на дискусията"
-  request_new_group_details: "или изчакай докато бъдеш поканен в съществуваща."
   empty_notifications: "Все още нямате никакви известия."
   see_all_notifications: "Виж всички известия"
   sign_out: "Изход"

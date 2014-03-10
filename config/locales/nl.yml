@@ -178,7 +178,6 @@ nl:
     motion_outcome_updated: "werkte de uitkomst van het voorstel bij"
   edit_discussion_context: "Bewerk discussie beschrijving"
   request_new_group: "Begin een groep"
-  request_new_group_details: "of wacht tot je voor één wordt uitgenodigd."
   empty_notifications: "Je hebt nog geen meldingen."
   see_all_notifications: "Bekijk alle meldingen"
   sign_out: "Uitloggen"

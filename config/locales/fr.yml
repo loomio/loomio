@@ -178,7 +178,6 @@ fr:
     motion_outcome_updated: "a modifié le résultat de la proposition"
   edit_discussion_context: "Editer le contexte de la discussion"
   request_new_group: "Créer un groupe"
-  request_new_group_details: "ou attendre jusqu'à ce qu'on vous invite."
   empty_notifications: "Vous n'avez pas de notification pour l'instant."
   see_all_notifications: "Voir toutes les notifications"
   profile: "Profil"
