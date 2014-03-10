@@ -68,7 +68,7 @@ a:hover { text-decoration: none; }
 .content-container { padding-bottom: 40px; }
 .content {
   padding: 52px 26px;
-  @include screen-size(small-up) {
+  @include screen-size(medium-up) {
     width: 960px;
     margin: 0 auto;
   }
@@ -105,8 +105,13 @@ a:hover { text-decoration: none; }
 }
 
 .hero {
-  background-color: $ash;
+  background-icolor: $ash;
   border-bottom: 1px solid $ash;
+  .btn {
+    @include screen-size(medium-up) {
+      font-size: 15px;
+    }
+  }
   .image { width: 160px; }
   .header {
     font-size: 62px;
@@ -115,7 +120,6 @@ a:hover { text-decoration: none; }
       font-family: 'OpenSans', sans-serif;
       font-weight: 600;
     }
-
   }
   .subhead {
     font-family: 'OpenSans', sans-serif;
@@ -133,7 +137,8 @@ a:hover { text-decoration: none; }
 // gross customization of grio
 .content.header {
   padding-bottom: 0;
-  width: 40%;
+  width: 38%;
+  margin: 0 auto;
 }
 
 .decision-steps.content {

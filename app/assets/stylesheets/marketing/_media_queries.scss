@@ -1,7 +1,7 @@
-@mixin screen-size($small-up) {
+@mixin screen-size($medium-up) {
   @media (min-width: 768px) { @content; }
 }
 
-// @mixin screen($small-medium) {
-//   @media (max-width:768px) { @content; }
-// }
+@mixin screen($medium-down) {
+  @media (max-width: 768px) { @content; }
+}
