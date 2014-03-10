@@ -164,7 +164,6 @@ tr:
     motion_outcome_updated: "önerinin sonucunu güncelledi"
   edit_discussion_context: "Tartışma içeriğini düzenle"
   request_new_group: "Bir grup başlat"
-  request_new_group_details: "ya da birine davet edilinceye kadar bekle."
   empty_notifications: "Henüz herhangi bir bildiriminiz yok."
   see_all_notifications: "Tüm bildirimleri gör"
   sign_out: "Oturumu kapat"

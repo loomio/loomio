@@ -124,7 +124,6 @@ it:
     motion_closing_soon: "La proposta chiuderà a breve"
     motion_blocked: "ha bloccato la proposta"
   edit_discussion_context: "Modifica il contesto della discussione"
-  request_new_group_details: "o aspetta di essere invitato a uno."
   empty_notifications: "Non hai ancora notifiche."
   see_all_notifications: "Guarda tutte le notifiche"
   sign_out: "Esci"
