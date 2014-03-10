@@ -480,12 +480,6 @@ ActiveRecord::Schema.define(:version => 20140306061922) do
 
   add_index "subscriptions", ["group_id"], :name => "index_subscriptions_on_group_id"
 
-  create_table "test", :id => false, :force => true do |t|
-    t.integer "age"
-  end
-
-  add_index "test", ["age"], :name => "test_age_key", :unique => true
-
   create_table "users", :force => true do |t|
     t.string   "email",                                                       :default => "",         :null => false
     t.string   "encrypted_password",                           :limit => 128, :default => ""
