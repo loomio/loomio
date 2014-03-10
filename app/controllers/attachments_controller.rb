@@ -10,6 +10,7 @@ class AttachmentsController < BaseController
     attachment.user = current_user
 
     if attachment.save
+      Measurement.increment('comment.attachment.upload')
       render json: { saved: true, attachment_id: attachment.id }
     else
       render json: { saved: false }

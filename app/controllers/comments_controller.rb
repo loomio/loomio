@@ -11,8 +11,10 @@ class CommentsController < BaseController
 
   def like
     if params[:like] == 'true'
+      Measurement.increment('comment.like')
       DiscussionService.like_comment(current_user, @comment)
     else
+      Measurement.increment('comment.unlike')
       DiscussionService.unlike_comment(current_user, @comment)
     end
     @discussion = @comment.discussion

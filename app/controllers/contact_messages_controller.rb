@@ -14,6 +14,7 @@ class ContactMessagesController < BaseController
   	@contact_message = ContactMessage.new(permitted_params.contact_message)
     @contact_message.user = current_user
   	if @contact_message.save
+      Measurement.increment('contact_message.create')
       ContactMessageMailer.delay.contact_message_email(@contact_message)
       flash[:success] = "Thanks! Someone from our team will get back to you shortly!"
 

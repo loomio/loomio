@@ -6,7 +6,9 @@ class DetectLocaleController < ActionController::Base
     d = detected_locale(Translation.frontpage_locales)
     if d.present? and (current_locale != d)
       I18n.locale = d
+      Measurement.increment('detect_locale.foreign')
     else
+      Measurement.increment('detect_locale.default')
       head :ok
     end
   end
