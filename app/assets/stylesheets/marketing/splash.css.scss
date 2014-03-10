@@ -108,9 +108,9 @@ a:hover { text-decoration: none; }
   background-icolor: $ash;
   border-bottom: 1px solid $ash;
   .btn {
-    @include screen-size(medium-up) {
-      font-size: 15px;
-    }
+    // @include screen-size(medium-down) {
+    //   font-size: 15px;
+    // }
   }
   .image { width: 160px; }
   .header {
