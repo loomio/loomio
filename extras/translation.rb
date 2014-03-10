@@ -33,6 +33,10 @@ class Translation
     LANGUAGES.values
   end
 
+  def self.locale_strings
+    LANGUAGES.values.map(&:to_s)
+  end
+
   def self.frontpage_locales
     FRONTPAGE_SUPPORTED_LOCALES
   end
