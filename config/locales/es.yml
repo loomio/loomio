@@ -423,6 +423,7 @@ es:
   create_an_account: 'Crear una cuenta'
   join_group:
     log_in: "Entrar para unirte a %{group_name}"
+    create_account_to_join_group: "Crear cuenta para acceder a %{group_name}"
   invitation:
     by_email: "Invitar via correo electrónico "
     no_invitations_left: "Ya no tienes mas invitaciones"
@@ -592,6 +593,7 @@ es:
       thanks: "Gracias!⏎\nEl Equipo de Loomio⏎ \n"
     membership_request:
       intro: "%{name} (%{email}) ha pedido acceso a uno de tus grupos de Loomio."
+      subject: "%{who} pidió acceso a %{which_group}"
       view_group: "Puedes aceptar o denegar el pedido aquí"
     mentioned:
       intro: "Te han mencionado en el título de una discusión: "

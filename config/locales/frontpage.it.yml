@@ -8,6 +8,6 @@ it:
       privacy: 'Privacy'
       services: 'Servizi'
     hero:
-      head_html: 'Il mondo ha bisogno di un modo migliore per <strong>decidere insieme.</strong>'
+      head_html: 'Il mondo ha bisogno di un modo migliore per <strong>decidere insieme</strong>.'
     team:
       header: 'Informazioni su Loomio'
