@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def measurement_name
-    "#{controller_name}\##{action_name}"
+    "#{controller_name}.#{action_name}"
   end
 
   def default_url_options

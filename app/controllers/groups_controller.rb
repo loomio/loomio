@@ -93,7 +93,7 @@ class GroupsController < GroupBaseController
     subject = params[:group_email_subject]
     body = params[:group_email_body]
     GroupMailer.delay.deliver_group_email(@group, current_user, subject, body)
-    Measurement.measure('group.email_members', @group.members.size)
+    Measurement.measure('groups.email_members.size', @group.members.size)
     flash[:success] = t("success.emails_sending")
     redirect_to @group
   end

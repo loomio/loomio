@@ -26,11 +26,9 @@ class DiscussionsController < GroupBaseController
 
   def update
     if DiscussionService.edit_discussion(current_user, permitted_params.discussion, @discussion)
-      Measurement.increment('discussion.update.success')
       flash[:notice] = 'Discussion was successfully updated.'
       redirect_to @discussion
     else
-      Measurement.increment('discussion.update.error')
       @user_groups = current_user.groups.order('name')
       render :edit
     end
@@ -39,11 +37,9 @@ class DiscussionsController < GroupBaseController
   def create
     build_discussion
     if DiscussionService.start_discussion(@discussion)
-      Measurement.increment('discussion.create.success')
       flash[:success] = t("success.discussion_created")
       redirect_to @discussion
     else
-      Measurement.increment('discussion.create.error')
       render action: :new
       flash[:error] = t("error.discussion_not_created")
     end

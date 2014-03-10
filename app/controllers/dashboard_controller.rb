@@ -1,6 +1,5 @@
 class DashboardController <  GroupBaseController
   def show
-    Measurement.increment('dashboard.show')
     @discussions_with_open_motions = GroupDiscussionsViewer.for(user: current_user).
                                                             with_open_motions.
                                                             order('motions.closing_at ASC').
