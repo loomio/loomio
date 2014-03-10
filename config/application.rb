@@ -27,6 +27,8 @@ module Loomio
                                 #{config.root}/app/services
                                 #{config.root}/app/models/concerns)
     config.autoload_paths += Dir["#{config.root}/app/forms/**/"]
+    
+    config.middleware.use Rack::Attack
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -66,7 +68,7 @@ module Loomio
     # Enable roadie (email css-->inline style gem)
     config.roadie.enable = true
 
-    config.assets.precompile += %w(ie8.js active_admin.css active_admin.js frontpage.js frontpage.css active_admin/print.css)
+    config.assets.precompile += %w(ie8.js active_admin.css active_admin.js frontpage.js frontpage.css active_admin/print.css marketing.js marketing.css)
 
     config.quiet_assets = true
   end

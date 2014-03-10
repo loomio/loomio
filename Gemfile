@@ -47,19 +47,20 @@ gem 'airbrake', '~> 3.1.14'
 gem 'fog', '~> 1.19.0'
 gem 'roadie', '~> 2.4.3'
 gem 'valid_email', '~> 0.0.4'
-gem "font-awesome-rails"
+gem "font-awesome-sass"
 gem 'rabl', '~> 0.8.6'
 gem 'sequenced', '~> 1.4.0'
 gem 'closure_tree', '~> 4.3.0'
 gem 'ruby-progressbar', '1.4.1'
 gem 'bing_translator', '~> 4.0.0'
+gem 'rack-attack', '~> 2.3.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'sass-rails', '~> 3.2.6'
-  gem 'bootstrap-sass', '~> 2.3.2.2'
+  gem 'bootstrap-sass', '~> 2.3.2.2' # Bootstrap 2
   gem 'uglifier', '~> 2.2.1'
   gem 'modernizr-rails', '~> 2.6.2'
   gem 'jquery-fileupload-rails', '~> 0.4.1'

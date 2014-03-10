@@ -37,6 +37,17 @@ ActiveAdmin.register User do
     user.save
     redirect_to admin_users_url, :notice => "User updated"
   end
+  
+  member_action :destroy, :method => :post do
+    user = User.find(params[:id])
+    relations = User.reflect_on_all_associations(:has_many)
+                    .select { |d| d.options[:dependent] != :destroy }
+                    .collect(&:name)
+    relations.each { |relation| user.send(relation).destroy_all }
+    user.destroy
+    
+    redirect_to admin_users_url, :notice => "User destroyed"
+  end
 
   show do |user|
     panel("Deactivate") do
