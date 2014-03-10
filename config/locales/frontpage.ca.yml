@@ -35,7 +35,7 @@ ca:
     quote:
       header:
         rushkoff_html: "\"Loomio <strong>desencadena el potencial d’internet</strong> per coduïr a la gent cap al concens enlloc del debat polaritzat\". <br />– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor de <em>Present Shock</em>"
-        sifry_html: "“Loomio està encertant en el punt clau entre <nobr><strong>la veu individual</strong></nobr> i la <strong>decisió col·lectiva</strong>.” <br />– Micah Sifry, Editor, <em><a href=\"http://techpresident.com\">TechPresident</em>"
+        sifry_html: "“Loomio està encertant en el punt clau entre <nobr><strong>la veu individual</strong></nobr> i la <strong>decisió col·lectiva</strong>.” <br />– Micah Sifry, Editor, <em><a href=\"http://techpresident.com\">TechPresident</a></em>"
     team:
       header: 'Sobre Loomio'
       desc: 'Som un petit grup de desenvolupadors de software lliure i activistes per la justícia social treballant per Enspiral a Aotearoa, Nova Zelanda, amb una xarxa d’amics, partidaris i assessors arreu del món.'
