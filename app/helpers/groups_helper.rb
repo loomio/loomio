@@ -18,8 +18,7 @@ module GroupsHelper
       ( group.created_at < 1.month.ago ) &&
       !group.has_subscription_plan? &&
       !group.has_manual_subscription? &&
-      !group.is_a_subgroup? &&
-      ( I18n.locale == :en )
+      !group.is_a_subgroup?
   end
 
   def pending_membership_requests_count(group)

@@ -191,14 +191,16 @@ Loomio::Application.routes.draw do
   # end
 
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
-  root :to => 'pages#home'
+  root :to => 'marketing#index'
+
+  resources :marketing
 
   scope controller: 'pages' do
     get :about
     get :crowd
     get :privacy
     get :purpose
-    get :pricing
+    get :services
     get :terms_of_service
     get :third_parties
     get :browser_not_supported
@@ -207,6 +209,8 @@ Loomio::Application.routes.draw do
   scope controller: 'help' do
     get :help
   end
+
+  get '/detect_locale' => 'detect_locale#show'
 
   resources :contact_messages, only: [:new, :create]
   match 'contact', to: 'contact_messages#new'

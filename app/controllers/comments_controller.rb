@@ -22,11 +22,6 @@ class CommentsController < BaseController
   
   def translate
     raise NotImplementedError # (temporarily disable translation feature) 
-    
-    @translation = @comment.translate @comment.author.primary_language, I18n.locale.to_s
-    @success = @translation.present? && @translation != @comment.body
-    
-    render :template => "comments/comment_translations"
   end
 
 end
