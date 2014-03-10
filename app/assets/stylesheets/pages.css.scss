@@ -352,56 +352,6 @@ body.pages.home {
     h2 { margin-bottom: 20px; }}
 }
 
-body.pages.services .container{
-  h3 { margin-bottom: .4em; }
-  .span9#content {
-    width: 80%;
-    p span {
-      font-style: italic;
-      color: $mid-grey;
-    }
-  }
-  .info-box { margin-top: 0; }
-  .content-container { padding: 0 40px; }
-  .span2.icons {
-    #colablove { margin-right: 16px; }
-  }
-  #button-container {
-    margin-top: 1em;
-    text-align: center;
-    a {
-      font-size: 24px;
-      width: 200px;
-    }
-    .btn { padding: 18px; }
-  }
-  #intro {
-    margin-bottom: 1.1em;
-  }
-  .payment-model-box {
-    @include border-radius(4px);
-    font-weight: 400;
-    margin-bottom: 2em;
-    min-height: 278px;
-    padding: 12px 16px 12px;
-    #description { color: #333; }
-    .examples {
-      color: #888;
-      font-size: 16px;
-      font-style: italic;
-      margin-bottom: 14px;
-    }
-    &#informal-group {
-      background-color: #D8EBF1;
-    }
-    &#organisation { background-color: #DEF1DE; }
-    h2 {
-      font-size: 22px;
-      letter-spacing: 0px
-    }
-  }
-}
-
 body.pages.terms_of_service, body.pages.privacy {
   p {font-size: 1.2em;}
   ol {
