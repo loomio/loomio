@@ -1,5 +1,8 @@
 es:
   frontpage:
+    view_this_in_your_language: 'Vea esta página en %{language}'
+    title:
+      collaborative_decision_making: Toma de decisiones Colectiva
     link:
       blog: 'Blog'
       contact: 'Contacto'
@@ -12,17 +15,17 @@ es:
       privacy: 'Privacidad'
       services: 'Servicios'
     hero:
-      head_html: 'El mundo necesita mejores caminos para <strong>tomar ediciones en conjunto.</strong>'
+      head_html: 'El mundo necesita mejores caminos para <strong>tomar ediciones en conjunto</strong>.'
       subhead: 'Ayúdanos a crearlo.'
-      desc: 'Loomio es una plataforma de  software gratis y abierto a tod@s, en cualquier lugar, para poder participar en las decisiones que les afectan'
+      desc: 'Loomio es gratis y open-source software para le toma de cisiones para tod@s, en cualquier parte '
     product:
-      header_html: 'Cuando escuchamos <strong>todas las voces</strong>, tomamos <strong>mejores decisiones. </strong>'
+      header_html: 'Cuando escuchamos <strong>todas las voces</strong>, tomamos <strong>mejores decisiones</strong>.'
       step1:
         header: '1. Hablemos las cosas'
         desc: 'Empieza una discusión en cualquier tema, e invita a las personas que quieras. Comparte perspectivas diversas y desarrolla las ideas en conjunto.'
       step2:
         header: '2. Construye acuerdo'
-        desc: 'Todos pueden proponer un curso de acción. Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear - de esa manera podrás ver como se siente el grupo y porque.'
+        desc: 'Todos pueden proponer un curso de acción. Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo, o bloquear – de esa manera podrás ver como se siente el grupo y porque.'
       step3:
         header: '3. Decide juntos'
         desc: 'Desarrolla la propuesta colectivamente para que funcione para todos. Cada decisión posee una fecha limite, siempre obteniendo un resultado claro.'
@@ -35,8 +38,8 @@ es:
       header: 'Loomio 1.0 te permite tomar decisiones donde sea que te encuentres.'
     quote:
       header:
-        rushkoff_html: "\"Loomio <strong>desata el potencial de la internet</strong> para acercar a las personas al consenso envés de al debate polarizado.\" -Douglas Rushkoff"
-        sifry_html: 'Loomio esta teniendo mucho éxito entre <strong>la voz individual</strong> y </strong>la decisión colectiva</strong>. -Micah Sifry'
+        rushkoff_html: "“Loomio <strong>desata el potencial de la internet</strong> para acercar a las personas al consenso envés de al debate polarizado.” <br />– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, autor del <em>Present Shock</em>"
+        sifry_html: "“Loomio está golpeando fuerte entre la  <strong> voz individual </ strong> y <strong>la decisión colectiva</strong>.” <br />– Micah Sifry, Editor, <em><a href=\"http://techpresident.com\">TechPresident</em>"
     team:
       header: 'Acerca de Loomio'
       desc: 'Somos un pequeño grupo de open-source desarolladores y activistas comunitarios que trabajamos en Ensipral, Aotearoa, Nueva Zelanda con una gran comunidad de amigos, voluntarios y asesores al rededor del mundo.'
@@ -54,4 +57,4 @@ es:
         header: 'Economía del regalo'
         desc: 'Loomio es financiada por aquellos que contribuyen en acuerdo a sus recursos, Esto mantiene la plataforma libre de propagandas comerciales y accesible a grupos sin recursos financieros.'
     vision:
-      header: 'Ayúdanos a transformar esta  vision en realidad.'
+      header: 'Ayúdanos a transformar esta vision en realidad.'

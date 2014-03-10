@@ -17,7 +17,7 @@ class Translation
                'Tiếng Việt' => :vi,
                'Türkçe' => :tr}
 
-  FRONTPAGE_SUPPORTED_LOCALES = [:en, :ca, :pt, :el, :cs]
+  FRONTPAGE_SUPPORTED_LOCALES = [:en, :ca, :pt, :el, :cs, :fr, :es]
 
   EXPERIMENTAL_LANGUAGES = {'Chinese (Mandarin)' => :cmn,
                             'Italiano' => :it,
