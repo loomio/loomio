@@ -60,7 +60,7 @@ Given(/^"(.*?)" is a Spanish\-speaking member of the group$/) do |arg1|
   user = FactoryGirl.create :user, name: arg1,
                             email: "#{arg1}@example.org",
                             password: 'password'
-  user.update_attribute(:language_preference, "es")
+  user.update_attribute(:selected_locale, "es")
   @group.add_member! user
 end
 

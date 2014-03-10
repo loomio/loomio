@@ -10,7 +10,7 @@ When(/^I fill in and submit the contact form$/) do
 end
 
 Then(/^I should be redirected to the home page$/) do
-  page.should have_css("body.pages.home")
+  page.should have_css("body.marketing.index")
 end
 
 Then(/^I should see a thank you flash message$/) do
