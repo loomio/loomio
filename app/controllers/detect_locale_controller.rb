@@ -13,6 +13,12 @@ class DetectLocaleController < ActionController::Base
 
   private
   def current_locale
-    params[:current_locale].to_sym
+    locale = (Translation.locales & [params[:current_locale]]).first
+
+    if locale.present?
+      locale.to_sym
+    else
+      default_locale
+    end
   end
 end
