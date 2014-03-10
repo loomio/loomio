@@ -40,7 +40,6 @@ class InvitationsController < ApplicationController
                                         message: @invite_people_form.message_body,
                                         group: @invitable,
                                         inviter: current_user)
-
     elsif @invitable.kind_of?(Discussion)
       MembershipService.add_users_to_discussion(users: @invite_people_form.members_to_add,
                                                 discussion: @discussion,
@@ -52,6 +51,8 @@ class InvitationsController < ApplicationController
                                              discussion: @invitable,
                                              inviter: current_user)
     end
+    Measurement.measure('invitations.invite_members', @invite_people_form.members_to_add.size)
+    Measurement.measure('invitations.invite_new_emails', @invite_people_form.emails_to_invite.size)
 
     set_flash_message
     redirect_to @invitable

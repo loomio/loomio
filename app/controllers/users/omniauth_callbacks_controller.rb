@@ -6,13 +6,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     auth = OmniauthIdentity.from_omniauth(request.env["omniauth.auth"])
 
     if auth.user
+      Measurement.increment('omniauth.success.recognised')
       sign_in_and_redirect(auth.user)
     else
       save_omniauth_authentication_to_session(auth)
 
       if user = User.find_by_email(auth.email.to_s)
+        Measurement.increment('omniauth.success.recognised_first_auth')
         sign_in_and_redirect(user)
       else
+        Measurement.increment('omniauth.success.unrecognised_first_auth')
         redirect_to login_or_signup_path_for_email(auth.email)
       end
     end

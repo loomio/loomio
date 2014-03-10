@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
   before_filter :save_selected_locale, if: :user_signed_in?
   around_filter :user_time_zone, if: :user_signed_in?
 
+  after_filter :increment_measurement
+
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
       flash[:error] = t("error.access_denied")
@@ -25,6 +27,14 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  def increment_measurement
+    Measurement.increment(measurement_name)
+  end
+
+  def measurement_name
+    "#{controller_name}.#{action_name}"
+  end
+
   def default_url_options
     if !user_signed_in? and params.has_key?(:locale)
       super.merge({locale: selected_locale})
