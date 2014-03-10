@@ -145,7 +145,6 @@ ro:
     motion_blocked: "a blocat propunerea"
   edit_discussion_context: "Modifica contextul discutiei"
   request_new_group: "Deschide un grup"
-  request_new_group_details: "sau asteapta pana esti invitat intr-un grup"
   empty_notifications: "Nu ai inca nici o notificare."
   see_all_notifications: "Vezi toate notificarile"
   sign_out: "De-logare"
